@@ -168,8 +168,36 @@
     "habit_label_color": "Warna Tema",
     "habit_btn_save": "Simpan Habit",
     "habit_btn_cancel": "Batal",
-    "habit_delete_confirm": "Yakin mau hapus habit ini?"
+    "habit_delete_confirm": "Yakin mau hapus habit ini?",
 
+"greet_morning": "Selamat Pagi",
+    "greet_noon": "Selamat Siang",
+    "greet_afternoon": "Selamat Sore",
+    "greet_night": "Selamat Malam",
+    "greet_subtitle": "Fokus satu hari aja. Besok urusan besok.",
+    
+    "habit_btn_new": "Habit Baru",
+    "habit_modal_title": "Habit Baru",
+    "habit_modal_question": "Mau rutin ngapain?",
+    "habit_modal_icon": "Pilih Ikon",
+    "habit_modal_color": "Warna",
+    "habit_modal_target": "Target",
+    "habit_modal_btn_save": "Mulai Kebiasaan",
+    
+    "habit_table_target": "Target",
+    "habit_table_total": "Total",
+    "habit_table_progress": "Progress",
+    
+    "stats_consistency": "Rata-rata Konsistensi",
+    "stats_total_check": "Total Checklist",
+    "stats_mood": "Mood Tracker",
+    "stats_mood_desc": "On Fire!",
+    
+    "habit_empty_title": "Mulai Bersih",
+    "habit_empty_desc": "Belum ada habit bulan ini.",
 
+    "habit_delete_title": "Hapus Habit Ini?",
+    "habit_delete_desc": "Yakin mau menghapus habit",
+    "habit_btn_delete_confirm": "Ya, Hapus!"
 
 }

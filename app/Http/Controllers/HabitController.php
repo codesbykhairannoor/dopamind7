@@ -14,27 +14,27 @@ class HabitController extends Controller
     /**
      * Tampilkan Halaman Utama Habit Tracker
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
         
-        // 1. Ambil Habit milik user + Log BULAN INI aja
+        // 1. Tentukan Tanggal Acuan (Default: Hari Ini, atau ambil dari Request)
+        // Kalau ada ?month=2025-12, pake itu. Kalau gak ada, pake Now.
+        $queryDate = $request->input('month') 
+            ? Carbon::parse($request->input('month') . '-01') 
+            : Carbon::now();
+
+        // 2. Ambil Habit & Filter Log Sesuai Bulan Yang Dipilih
         $habits = Habit::where('user_id', $user->id)
-            ->where('is_archived', false) // Cuma yang aktif
-            ->with(['logs' => function ($query) {
-                // Filter log cuma dari tanggal 1 bulan ini sampai hari ini
-                $query->whereMonth('date', Carbon::now()->month)
-                      ->whereYear('date', Carbon::now()->year);
+            ->where('is_archived', false)
+            ->with(['logs' => function ($query) use ($queryDate) {
+                $query->whereMonth('date', $queryDate->month)
+                      ->whereYear('date', $queryDate->year);
             }])
             ->get()
-            ->map(function ($habit) {
-                // 2. Modifikasi Data biar gampang dipake di Vue
-                
-                // Hitung total completed bulan ini (Volume)
+            ->map(function ($habit) use ($queryDate) {
+                // Hitung progress bulan TERSEBUT (Bukan bulan ini)
                 $completedCount = $habit->logs->where('status', 'completed')->count();
-                
-                // Cek status hari ini (buat tombol Checkbox)
-                $todayLog = $habit->logs->where('date', Carbon::today()->format('Y-m-d'))->first();
                 
                 return [
                     'id' => $habit->id,
@@ -42,28 +42,24 @@ class HabitController extends Controller
                     'icon' => $habit->icon,
                     'color' => $habit->color,
                     'monthly_target' => $habit->monthly_target,
+                    'progress_count' => $completedCount,
+                    'progress_percent' => $habit->monthly_target > 0 
+                        ? min(100, round(($completedCount / $habit->monthly_target) * 100)) 
+                        : 0,
                     
-                    // Data Tambahan (Computed)
-                    'progress_count' => $completedCount, // Misal: 12
-                    'progress_percent' => min(100, round(($completedCount / $habit->monthly_target) * 100)), // Misal: 60%
-                    
-                    // Status Hari Ini: null (belum isi), 'completed', atau 'skipped'
-                    'today_status' => $todayLog ? $todayLog->status : null,
-                    
-                    // Kirim semua logs bulan ini buat visualisasi kalender (opsional nanti)
+                    // Kita kirim logs biar frontend bisa render
                     'logs' => $habit->logs->map(function ($log) {
-                        return [
-                            'date' => $log->date,
-                            'status' => $log->status
-                        ];
+                        return ['date' => $log->date, 'status' => $log->status];
                     })
                 ];
             });
 
-        // 3. Render ke Halaman Vue (Kita akan buat file 'Habits/Index.vue' habis ini)
         return Inertia::render('Habits/Index', [
             'habits' => $habits,
-            'currentMonth' => Carbon::now()->isoFormat('MMMM Y'), // Contoh: "Februari 2026"
+            // Kirim info bulan ke Frontend biar judulnya bener (Desember 2025 / Januari 2026)
+            'currentMonth' => $queryDate->isoFormat('MMMM Y'), 
+            // Kirim raw date buat navigasi (2025-12)
+            'monthQuery' => $queryDate->format('Y-m'), 
         ]);
     }
     
@@ -130,6 +126,31 @@ class HabitController extends Controller
         if ($habit->user_id !== Auth::id()) abort(403);
         
         $habit->delete();
+        return back();
+    }
+
+    /**
+     * Update Habit
+     */
+    public function update(Request $request, Habit $habit)
+    {
+        // Pastikan yang edit adalah pemilik habit
+        if ($habit->user_id !== Auth::id()) abort(403);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'icon' => 'required|string|max:10',
+            'color' => 'required|string|max:7',
+            'monthly_target' => 'required|integer|min:1|max:31',
+        ]);
+
+        $habit->update([
+            'name' => $request->name,
+            'icon' => $request->icon,
+            'color' => $request->color,
+            'monthly_target' => $request->monthly_target,
+        ]);
+
         return back();
     }
 }

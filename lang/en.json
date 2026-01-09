@@ -167,7 +167,38 @@
     "habit_label_color": "Theme Color",
     "habit_btn_save": "Save Habit",
     "habit_btn_cancel": "Cancel",
-    "habit_delete_confirm": "Are you sure you want to delete this?"
+    "habit_delete_confirm": "Are you sure you want to delete this?",
+
+    "greet_morning": "Good Morning",
+    "greet_noon": "Good Afternoon",
+    "greet_afternoon": "Good Afternoon",
+    "greet_night": "Good Evening",
+    "greet_subtitle": "Focus on today. Tomorrow is another day.",
+    
+    "habit_btn_new": "New Habit",
+    "habit_modal_title": "New Habit",
+    "habit_modal_question": "What to track?",
+    "habit_modal_icon": "Pick Icon",
+    "habit_modal_color": "Color",
+    "habit_modal_target": "Target",
+    "habit_modal_btn_save": "Start Habit",
+    
+    "habit_table_target": "Target",
+    "habit_table_total": "Total",
+    "habit_table_progress": "Progress",
+    
+    "stats_consistency": "Avg. Consistency",
+    "stats_total_check": "Total Checks",
+    "stats_mood": "Mood Tracker",
+    "stats_mood_desc": "On Fire!",
+    
+    "habit_empty_title": "Fresh Start",
+    "habit_empty_desc": "No habits for this month yet.",
+
+    "habit_delete_title": "Delete this Habit?",
+    "habit_delete_desc": "Are you sure you want to delete",
+    
+    "habit_btn_delete_confirm": "Yes, Delete!"
 
 
 

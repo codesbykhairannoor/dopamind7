@@ -43,6 +43,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/habits', [HabitController::class, 'index'])->name('habits.index');
     Route::post('/habits', [HabitController::class, 'store'])->name('habits.store'); // <-- BARU: Simpan
     Route::delete('/habits/{habit}', [HabitController::class, 'destroy'])->name('habits.destroy'); // <-- BARU: Hapus
+    Route::patch('/habits/{habit}', [HabitController::class, 'update'])->name('habits.update');
     Route::post('/habits/{habit}/log', [HabitController::class, 'storeLog'])->name('habits.log');
 
     // Profile (System)
