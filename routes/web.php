@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SocialController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\SettingsController;
 
 
 
@@ -45,7 +46,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/habits/{habit}', [HabitController::class, 'destroy'])->name('habits.destroy'); // <-- BARU: Hapus
     Route::patch('/habits/{habit}', [HabitController::class, 'update'])->name('habits.update');
     Route::post('/habits/{habit}/log', [HabitController::class, 'storeLog'])->name('habits.log');
-
+Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
     // Profile (System)
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -260,7 +260,49 @@ const executeDelete = () => {
     });
 };
 
+// --- LOGIC KEYBOARD NAVIGATION & SPASI ---
+// 🔥 UPDATE: Tambahkan parameter habitId & dateString biar spasi jalan
+const handleGridNav = (e, hIndex, dIndex, habitId, dateString) => {
+    const key = e.key;
 
+    // 1. LOGIC SPASI (Manual Toggle)
+    if (key === ' ') {
+        e.preventDefault(); // Cegah layar scroll ke bawah saat spasi
+        toggleStatus(habitId, dateString); // 🔥 Eksekusi centang/uncentang
+        return; 
+    }
+
+    // 2. LOGIC PANAH (Navigasi)
+    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) return;
+
+    e.preventDefault(); // Cegah scroll browser bawaan
+
+    let targetH = hIndex;
+    let targetD = dIndex;
+
+    // Hitung Koordinat Baru
+    if (key === 'ArrowUp') targetH--;
+    if (key === 'ArrowDown') targetH++;
+    if (key === 'ArrowLeft') targetD--;
+    if (key === 'ArrowRight') targetD++;
+
+    // Cari elemen tetangga
+    const targetId = `cell-${targetH}-${targetD}`;
+    const el = document.getElementById(targetId);
+
+    if (el) {
+        // A. Pindahkan Fokus (Biar ring pink pindah)
+        el.focus();
+
+        // B. AUTO SCROLL (Biar ngikutin zoom level berapapun)
+        // 'nearest' artinya: "Geser scroll CUMA KALAU elemennya ketutupan/kepotong"
+        el.scrollIntoView({ 
+            behavior: 'auto', // Gerakannya halus
+            block: 'nearest',   // Vertikal: Jaga posisi atas/bawah
+            inline: 'nearest'   // Horizontal: Jaga posisi kiri/kanan (PENTING BUAT TABEL)
+        });
+    }
+};
 </script>
 
 <template>
@@ -367,7 +409,7 @@ const executeDelete = () => {
                             </div>
                         </div>
 
-                        <button @click="openCreateModal = true" class="flex-shrink-0 flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-bold text-xs md:text-sm shadow-lg hover:bg-indigo-700 transition">
+                        <button @click="openCreateModal" class="flex-shrink-0 flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-bold text-xs md:text-sm shadow-lg hover:bg-indigo-700 transition">
                             <span>+</span> <span class="hidden sm:inline">{{ $t('habit_btn_new') }}</span>
                         </button>
                     </div>
@@ -444,7 +486,7 @@ const executeDelete = () => {
         </div>
 
                         <div class="divide-y divide-slate-50">
-                            <div v-for="habit in localHabits" :key="habit.id" class="flex hover:bg-slate-50/50 transition-colors group">
+                            <div v-for="(habit, hIndex) in localHabits" :key="habit.id" class="flex hover:bg-slate-50/50 transition-colors group">
                                 
                               <div class="sticky left-0 z-20 w-36 md:w-72 bg-white group-hover:bg-slate-50 transition-colors border-r border-slate-100 p-3 md:p-4 flex items-center gap-3 md:gap-4 flex-shrink-0">
     
@@ -480,25 +522,35 @@ const executeDelete = () => {
 </div>
 
                                 <div class="flex items-center px-2 md:px-4 py-2 md:py-3 gap-1 md:gap-1.5">
-                                    <div v-for="day in monthDates" :key="day.dateString" class="w-8 flex justify-center">
-                                        <button 
-                                            @click="toggleStatus(habit.id, day.dateString)"
-                                            :disabled="day.isFuture"
-                                            class="w-7 h-7 md:w-8 md:h-8 rounded-md md:rounded-lg flex items-center justify-center transition-all duration-75 relative"
-                                            :class="{
-                                                'shadow-sm text-white scale-100': getStatus(habit, day.dateString) === 'completed',
-                                                'bg-slate-100 text-slate-400': getStatus(habit, day.dateString) === 'skipped',
-                                                'bg-white border border-slate-200 hover:border-indigo-300': getStatus(habit, day.dateString) === 'empty' && !day.isFuture,
-                                                'bg-slate-50 border border-slate-50 opacity-30 cursor-not-allowed': day.isFuture,
-                                                'ring-2 ring-indigo-500 ring-offset-1 z-10': day.isToday
-                                            }"
-                                            :style="getStatus(habit, day.dateString) === 'completed' ? { backgroundColor: habit.color } : {}"
-                                        >
-                                            <span v-if="getStatus(habit, day.dateString) === 'completed'" class="text-[10px] md:text-xs font-bold">✓</span>
-                                            <span v-if="getStatus(habit, day.dateString) === 'skipped'" class="text-[10px] md:text-xs font-bold">-</span>
-                                        </button>
-                                    </div>
-                                </div>
+    
+    <div v-for="(day, dIndex) in monthDates" :key="day.dateString" class="w-8 flex justify-center">
+        
+       <button 
+    :id="`cell-${hIndex}-${dIndex}`"
+    @keydown="handleGridNav($event, hIndex, dIndex, habit.id, day.dateString)"
+    @click="toggleStatus(habit.id, day.dateString)"
+    :disabled="day.isFuture"
+    
+    class="
+        scroll-mt-24 md:scroll-mt-32 scroll-ml-36 md:scroll-ml-72 
+        w-7 h-7 md:w-8 md:h-8 rounded-md md:rounded-lg flex items-center justify-center transition-all duration-75 relative outline-none focus:ring-4 focus:ring-fuchsia-400 focus:ring-offset-2 z-0 focus:z-20
+    " 
+    
+    :class="{
+        'shadow-sm text-white scale-100': getStatus(habit, day.dateString) === 'completed',
+        'bg-slate-100 text-slate-400': getStatus(habit, day.dateString) === 'skipped',
+        'bg-white border border-slate-200 hover:border-indigo-300': getStatus(habit, day.dateString) === 'empty' && !day.isFuture,
+        'bg-slate-50 border border-slate-50 opacity-30 cursor-not-allowed': day.isFuture,
+        'ring-2 ring-indigo-500 ring-offset-1 z-10': day.isToday
+    }"
+    :style="getStatus(habit, day.dateString) === 'completed' ? { backgroundColor: habit.color } : {}"
+>
+    <span v-if="getStatus(habit, day.dateString) === 'completed'" class="text-[10px] md:text-xs font-bold">✓</span>
+    <span v-if="getStatus(habit, day.dateString) === 'skipped'" class="text-[10px] md:text-xs font-bold">-</span>
+</button>
+        
+    </div>
+</div>
 
                                 <div class="hidden md:flex sticky right-0 z-20 w-32 bg-white group-hover:bg-slate-50 transition-colors border-l border-slate-100 p-4 flex-col justify-center shadow-[-10px_0_20px_rgba(255,255,255,0.8)]">
                                     <div class="flex justify-between items-end mb-1">
@@ -520,7 +572,7 @@ const executeDelete = () => {
                 <div class="w-16 h-16 md:w-20 md:h-20 bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center text-3xl md:text-4xl mx-auto mb-4">🌱</div>
                 <h3 class="text-lg md:text-xl font-bold text-slate-800">{{ $t('habit_empty_title') }}</h3>
                 <p class="text-sm md:text-base text-slate-500 mb-6">{{ $t('habit_empty_desc') }}</p>
-                <button @click="openCreateModal = true" class="text-indigo-600 font-bold hover:underline">+ {{ $t('habit_btn_new') }}</button>
+                <button @click="openCreateModal" class="text-indigo-600 font-bold hover:underline">+ {{ $t('habit_btn_new') }}</button>
             </div>
 
             <div v-if="localHabits.length > 0" class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 animate-in slide-in-from-bottom-5 px-4 md:px-0">

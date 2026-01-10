@@ -198,6 +198,9 @@
 
     "habit_delete_title": "Hapus Habit Ini?",
     "habit_delete_desc": "Yakin mau menghapus habit",
-    "habit_btn_delete_confirm": "Ya, Hapus!"
+    "habit_btn_delete_confirm": "Ya, Hapus!",
+
+    "nav_settings": "Pengaturan Aplikasi",
+    "nav_logout" : "Keluar"
 
 }

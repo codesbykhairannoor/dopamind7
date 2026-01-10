@@ -13,6 +13,8 @@ use Carbon\Carbon;
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
+
+    
     {
         // 1. Bikin User Test
         $user = User::create([
@@ -20,7 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@DopaMind.com',
             'password' => Hash::make('password'), // Password gampang
         ]);
-
+$this->call(HabitSeeder::class);
         echo "✅ User dibuat: admin@DopaMind.com\n";
 
         // 2. Bikin Periode (Januari 2026)

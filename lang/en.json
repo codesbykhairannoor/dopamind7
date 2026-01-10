@@ -198,7 +198,10 @@
     "habit_delete_title": "Delete this Habit?",
     "habit_delete_desc": "Are you sure you want to delete",
     
-    "habit_btn_delete_confirm": "Yes, Delete!"
+    "habit_btn_delete_confirm": "Yes, Delete!",
+    "nav_settings": "App Settings",
+    "nav_logout" : "Log Out"
+
 
 
 
