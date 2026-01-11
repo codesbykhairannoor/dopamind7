@@ -200,7 +200,20 @@
     
     "habit_btn_delete_confirm": "Yes, Delete!",
     "nav_settings": "App Settings",
-    "nav_logout" : "Log Out"
+    "nav_logout" : "Log Out",
+
+    "habit_copy_title": "Copy Habits",
+    "habit_copy_desc": "Do you want to copy all habits from the previous month? Check history will be reset.",
+    "habit_btn_copy_confirm": "Yes, Copy Now",
+    "habit_salin_btn": "Copy From Previous Month",
+
+    "mood_title": "Your Mood",
+    "mood_fire": "On Fire!",
+    "mood_happy": "Happy",
+    "mood_neutral": "Neutral",
+    "mood_sad": "Sad",
+    "mood_stress": "Stressed",
+    "mood_sick": "Sick"
 
 
 

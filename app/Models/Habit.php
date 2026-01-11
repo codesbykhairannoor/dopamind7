@@ -10,7 +10,7 @@ class Habit extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'name', 'icon', 'color', 'monthly_target', 'is_archived'
+        'user_id', 'period','name', 'icon', 'color', 'monthly_target', 'is_archived'
     ];
 
     // Relasi: Satu Habit punya banyak Log harian

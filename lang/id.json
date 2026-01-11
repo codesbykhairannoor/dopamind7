@@ -201,6 +201,19 @@
     "habit_btn_delete_confirm": "Ya, Hapus!",
 
     "nav_settings": "Pengaturan Aplikasi",
-    "nav_logout" : "Keluar"
+    "nav_logout" : "Keluar",
+
+    "habit_copy_title": "Salin Kebiasaan",
+    "habit_copy_desc": "Kamu yakin ingin menyalin semua kebiasaan dari bulan lalu ke bulan ini? Progres centang akan di-reset.",
+    "habit_btn_copy_confirm": "Ya, Salin Sekarang",
+    "habit_salin_btn": "Salin Dari Bulan Lalu",
+
+    "mood_title": "Mood Kamu",
+    "mood_fire": "Semangat Membara!",
+    "mood_happy": "Bahagia",
+    "mood_neutral": "Biasa Aja",
+    "mood_sad": "Sedih",
+    "mood_stress": "Stres Berat",
+    "mood_sick": "Lagi Sakit"
 
 }

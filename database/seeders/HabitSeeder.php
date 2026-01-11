@@ -7,88 +7,65 @@ use App\Models\Habit;
 use App\Models\HabitLog;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class HabitSeeder extends Seeder
 {
     public function run(): void
     {
-        // 1. Ambil User Pertama (atau bikin kalau belum ada)
-        $user = User::first();
-        
-        if (!$user) {
-            $user = User::create([
-                'name' => 'Test User',
-                'email' => 'test@example.com',
-                'password' => bcrypt('password'),
-            ]);
-        }
+        // ==========================================
+        // 🔥 EMAIL SPESIFIK KAMU 🔥
+        // ==========================================
+        $targetEmail = 'khairking6@gmail.com'; 
 
-        // 2. Daftar Kebiasaan Contoh
+        // 1. Cari User / Buat User
+        $user = User::firstOrCreate(
+            ['email' => $targetEmail],
+            [
+                'name' => 'Khairan',
+                'password' => Hash::make('password'),
+            ]
+        );
+
+        // 2. Daftar Kebiasaan
         $habits = [
-            [
-                'name' => 'Lari Pagi',
-                'icon' => '🏃‍♂️',
-                'color' => '#10b981', // Emerald-500
-                'monthly_target' => 20,
-            ],
-            [
-                'name' => 'Baca Buku',
-                'icon' => '📚',
-                'color' => '#6366f1', // Indigo-500
-                'monthly_target' => 15,
-            ],
-            [
-                'name' => 'Minum Air 2L',
-                'icon' => '💧',
-                'color' => '#3b82f6', // Blue-500
-                'monthly_target' => 30, // Tiap hari
-            ],
-            [
-                'name' => 'Meditasi',
-                'icon' => '🧘‍♂️',
-                'color' => '#f59e0b', // Amber-500
-                'monthly_target' => 10,
-            ],
+            ['name' => 'Lari Pagi', 'icon' => '🏃‍♂️', 'color' => '#10b981', 'monthly_target' => 20],
+            ['name' => 'Baca Buku', 'icon' => '📚', 'color' => '#6366f1', 'monthly_target' => 15],
+            ['name' => 'Minum Air 2L', 'icon' => '💧', 'color' => '#3b82f6', 'monthly_target' => 30],
+            ['name' => 'Deep Work', 'icon' => '💻', 'color' => '#f59e0b', 'monthly_target' => 25],
         ];
 
-        // 3. Loop buat masukin ke Database
-        foreach ($habits as $data) {
-            $habit = Habit::create([
-                'user_id' => $user->id,
-                'name' => $data['name'],
-                'icon' => $data['icon'],
-                'color' => $data['color'],
-                'monthly_target' => $data['monthly_target'],
-            ]);
+        // 3. Masukkan ke Database
+        // 🔥 KITA SET PERIODE KE BULAN INI (BIAR MUNCUL DI DASHBOARD) 🔥
+        $currentPeriod = Carbon::now()->format('Y-m'); // Contoh: "2026-01"
 
-            // 4. Bikin Riwayat Palsu (Logs) untuk Bulan Ini
-            // Kita isi acak dari tanggal 1 sampai hari ini
+        foreach ($habits as $data) {
+            $habit = Habit::firstOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'name' => $data['name'],
+                    'period' => $currentPeriod // <--- INI PERBAIKANNYA!
+                ],
+                [
+                    'icon' => $data['icon'],
+                    'color' => $data['color'],
+                    'monthly_target' => $data['monthly_target'],
+                ]
+            );
+
+            // 4. Bikin Log Centang/Skip
             $startDate = Carbon::now()->startOfMonth();
             $today = Carbon::now();
 
-            for ($date = $startDate; $date->lte($today); $date->addDay()) {
-                
-                // Logic acak: 
-                // 60% Kemungkinan Completed
-                // 10% Kemungkinan Skipped
-                // 30% Kemungkinan Kosong (Gak bikin log)
-                
-                $chance = rand(1, 100);
+            HabitLog::where('habit_id', $habit->id)->delete();
 
+            for ($date = $startDate; $date->lte($today); $date->addDay()) {
+                $chance = rand(1, 100);
                 if ($chance <= 60) {
-                    HabitLog::create([
-                        'habit_id' => $habit->id,
-                        'date' => $date->format('Y-m-d'),
-                        'status' => 'completed',
-                    ]);
+                    HabitLog::create(['habit_id' => $habit->id, 'date' => $date->format('Y-m-d'), 'status' => 'completed']);
                 } elseif ($chance > 60 && $chance <= 70) {
-                    HabitLog::create([
-                        'habit_id' => $habit->id,
-                        'date' => $date->format('Y-m-d'),
-                        'status' => 'skipped', // Izin/Skip
-                    ]);
+                    HabitLog::create(['habit_id' => $habit->id, 'date' => $date->format('Y-m-d'), 'status' => 'skipped']);
                 }
-                // Sisanya (chance > 70) gak bikin record apa-apa (artinya Missed/Kosong)
             }
         }
     }

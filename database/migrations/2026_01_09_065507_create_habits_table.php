@@ -15,7 +15,7 @@ return new class extends Migration
         $table->id();
         // Hubungkan ke User (Penting!)
         $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        
+        $table->string('period');
         $table->string('name'); // Contoh: "Lari Pagi"
         $table->string('icon')->nullable(); // Contoh: "🏃‍♂️" (Kita simpan emojinya langsung)
         $table->string('color')->default('#6366f1'); // Warna tema (Default Indigo)

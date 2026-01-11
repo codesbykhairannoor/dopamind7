@@ -46,6 +46,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/habits/{habit}', [HabitController::class, 'destroy'])->name('habits.destroy'); // <-- BARU: Hapus
     Route::patch('/habits/{habit}', [HabitController::class, 'update'])->name('habits.update');
     Route::post('/habits/{habit}/log', [HabitController::class, 'storeLog'])->name('habits.log');
+    Route::post('/habits/copy', [HabitController::class, 'copyFromPrevious'])->name('habits.copy');
+    Route::post('/habits/mood', [App\Http\Controllers\HabitController::class, 'updateMood'])->name('habits.mood');
 Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
 Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
     // Profile (System)
