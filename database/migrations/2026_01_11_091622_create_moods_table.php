@@ -6,29 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('moods', function (Blueprint $table) {
             $table->id();
-            // Hubungkan ke tabel users
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             
-            // Simpan periode (misal: "2026-01")
-            $table->string('period')->index(); 
-            
-            // Simpan kode mood (misal: "fire", "happy")
-            $table->string('mood_code'); 
+            // Hemat size
+            $table->string('period', 7); // "2026-01"
+            $table->string('mood_code', 20); // "fire", "sad" (Cukup 20 char)
             
             $table->timestamps();
+
+            // 🔥 COMPOSITE INDEX: Query mood user langsung ketemu tanpa scan satu tabel
+            $table->index(['user_id', 'period']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('moods');

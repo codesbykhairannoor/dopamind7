@@ -56,7 +56,7 @@ class HabitSeeder extends Seeder
             // 4. Bikin Log Centang/Skip
             $startDate = Carbon::now()->startOfMonth();
             $today = Carbon::now();
-
+$currentPeriod = '2026-01';
             HabitLog::where('habit_id', $habit->id)->delete();
 
             for ($date = $startDate; $date->lte($today); $date->addDay()) {

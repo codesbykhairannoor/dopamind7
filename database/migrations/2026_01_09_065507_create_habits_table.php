@@ -6,33 +6,34 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
-{
-    Schema::create('habits', function (Blueprint $table) {
-        $table->id();
-        // Hubungkan ke User (Penting!)
-        $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        $table->string('period');
-        $table->string('name'); // Contoh: "Lari Pagi"
-        $table->string('icon')->nullable(); // Contoh: "🏃‍♂️" (Kita simpan emojinya langsung)
-        $table->string('color')->default('#6366f1'); // Warna tema (Default Indigo)
-        
-        // Target Bulanan (Volume over Streak)
-        $table->integer('monthly_target')->default(30); // Target berapa kali sebulan
-        
-        // Buat arsip kalau bulan depan mau ganti habit
-        $table->boolean('is_archived')->default(false);
-        
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('habits', function (Blueprint $table) {
+            $table->id();
+            
+            // Relasi User
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            
+            // 🔥 OPTIMASI 1: Period cuma butuh 7 char ("2026-01")
+            $table->string('period', 7); 
+            
+            $table->string('name', 100); // Nama habit cukup 100 char
+            $table->string('icon', 10)->nullable(); // Emoji pendek
+            
+            // 🔥 OPTIMASI 2: Warna cuma butuh 7 char (#123456)
+            $table->string('color', 7)->default('#6366f1'); 
+            
+            // 🔥 OPTIMASI 3: Target max 31 hari. Pake TinyInteger (Hemat 300% storage vs Integer biasa)
+            $table->unsignedTinyInteger('monthly_target')->default(30); 
+            
+            $table->boolean('is_archived')->default(false);
+            $table->timestamps();
 
-    /**
-     * Reverse the migrations.
-     */
+            // 🔥 INDEXING: Filter habit user per bulan jadi 0.00ms
+            $table->index(['user_id', 'period']);
+        });
+    }
+
     public function down(): void
     {
         Schema::dropIfExists('habits');

@@ -13,7 +13,7 @@ import localeData from 'dayjs/plugin/localeData';
 dayjs.extend(localeData);
 
 const props = defineProps({
-    habits: Array,
+    habits: Object,
     currentMonth: String,
     monthQuery: String, // Format: YYYY-MM
     hasPrevHabits: Boolean, // <--- Props Baru
@@ -24,11 +24,11 @@ const props = defineProps({
 const user = usePage().props.auth.user;
 
 // --- STATE LOKAL (OPTIMISTIC UI) ---
-const localHabits = ref(JSON.parse(JSON.stringify(props.habits)));
+const localHabits = ref(JSON.parse(JSON.stringify(props.habits.data)));
 
 // Sync kalau props berubah (misal ganti bulan)
 watch(() => props.habits, (newVal) => {
-    localHabits.value = JSON.parse(JSON.stringify(newVal));
+    localHabits.value = JSON.parse(JSON.stringify(newVal.data));
 }, { deep: true });
 
 const showCreateModal = ref(false);

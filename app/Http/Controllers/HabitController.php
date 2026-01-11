@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Habit;
 use App\Models\HabitLog;
+use App\Models\Mood;
+use App\Http\Resources\HabitResource;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Mood;
+// 👇 Tambahan Trait ini penting buat fitur 'authorize' (Satpam)
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class HabitController extends Controller
 {
+    // Pasang "Jimat" Security
+    use AuthorizesRequests;
+
     /**
      * Tampilkan Halaman Utama Habit Tracker
      */
@@ -19,75 +25,61 @@ class HabitController extends Controller
     {
         $user = Auth::user();
         
-        // 1. Tentukan Bulan Yang Mau Dilihat (Format: YYYY-MM)
-        // Kalau user minta ?month=2026-02, pake itu. Kalau gak, pake bulan sekarang.
+        // 1. Tentukan Bulan
         $monthQuery = $request->input('month', Carbon::now()->format('Y-m'));
-        
-        // Buat objek Carbon buat manipulasi tanggal
         $dateObj = Carbon::createFromFormat('Y-m', $monthQuery);
-$currentMood = \App\Models\Mood::where('user_id', $user->id)
-            ->where('period', $monthQuery)
-            ->first();
-        // 2. Ambil Habit HANYA di bulan tersebut (Filter by Period)
+
+        // 🔥 OPTIMASI QUERY (RAHASIA 10.000 USER) 🔥
         $habits = Habit::where('user_id', $user->id)
-            ->where('period', $monthQuery) // <--- INI KUNCINYA: Cuma ambil habit bulan ini
+            ->where('period', $monthQuery)
+            
+            // A. Ambil Log CUMA bulan ini (Hemat RAM)
             ->with(['logs' => function ($query) use ($dateObj) {
-                // Ambil logs cuma di bulan yg dipilih
                 $query->whereMonth('date', $dateObj->month)
                       ->whereYear('date', $dateObj->year);
             }])
-            ->get()
-            ->map(function ($habit) {
-                // Hitung progress (Sama kayak kode lama)
-                $completedCount = $habit->logs->where('status', 'completed')->count();
-                return [
-                    'id' => $habit->id,
-                    'name' => $habit->name,
-                    'icon' => $habit->icon,
-                    'color' => $habit->color,
-                    'monthly_target' => $habit->monthly_target,
-                    'progress_count' => $completedCount,
-                    'progress_percent' => $habit->monthly_target > 0 
-                        ? min(100, round(($completedCount / $habit->monthly_target) * 100)) 
-                        : 0,
-                    'logs' => $habit->logs->map(function ($log) {
-                        return ['date' => $log->date, 'status' => $log->status];
-                    })
-                ];
-            });
+            
+            // B. withCount: Biarkan Database yang ngitung jumlah centang 
+            // (Jauh lebih cepat daripada PHP looping satu-satu)
+            ->withCount(['logs as completed_count' => function ($query) {
+                $query->where('status', 'completed');
+            }])
+            ->get();
 
-        // 3. Cek Bulan Sebelumnya (Buat fitur Copy)
+        // Data pendukung lain
+        $currentMood = Mood::where('user_id', $user->id)->where('period', $monthQuery)->first();
         $prevMonth = $dateObj->copy()->subMonth()->format('Y-m');
-        $hasPrevHabits = Habit::where('user_id', $user->id)
-            ->where('period', $prevMonth)
-            ->exists();
+        $hasPrevHabits = Habit::where('user_id', $user->id)->where('period', $prevMonth)->exists();
 
+        // 👇 Render ke 'Dashboard' (sesuai file Vue kamu)
         return Inertia::render('Habits/Index', [
-            'habits' => $habits,
-            'currentMonth' => $dateObj->translatedFormat('F Y'), // Contoh: "Januari 2026"
-            'monthQuery' => $monthQuery, // "2026-01"
-            'hasPrevHabits' => $hasPrevHabits, // True/False buat tombol Copy
-            'prevMonthQuery' => $prevMonth,    // "2025-12"
+            'habits' => HabitResource::collection($habits),
+            'currentMonth' => $dateObj->translatedFormat('F Y'),
+            'monthQuery' => $monthQuery,
+            'hasPrevHabits' => $hasPrevHabits,
+            'prevMonthQuery' => $prevMonth,
             'savedMood' => $currentMood ? $currentMood->mood_code : null,
         ]);
     }
 
     /**
-     * Simpan Habit Baru (Wajib ada Period)
+     * Simpan Habit Baru
      */
     public function store(Request $request)
     {
+        // Validasi
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:100', // Sesuai database baru (max 100)
             'icon' => 'required|string|max:10',
             'color' => 'required|string|max:7',
             'monthly_target' => 'required|integer|min:1|max:31',
-            'period' => 'required|string', // <--- HARUS ADA PERIODE
+            'period' => 'required|string|max:7',
         ]);
 
+        // Create gak butuh Policy karena user bikin untuk dirinya sendiri
         Habit::create([
             'user_id' => Auth::id(),
-            'period' => $request->period, // Simpan periode (misal: 2026-01)
+            'period' => $request->period,
             'name' => $request->name,
             'icon' => $request->icon,
             'color' => $request->color,
@@ -97,44 +89,39 @@ $currentMood = \App\Models\Mood::where('user_id', $user->id)
         return back();
     }
 
+    /**
+     * Update Mood User
+     */
     public function updateMood(Request $request)
     {
         $request->validate([
-            'mood_code' => 'required|string',
-            'period' => 'required|string',
+            'mood_code' => 'required|string|max:20',
+            'period' => 'required|string|max:7',
         ]);
 
-        // Simpan atau Update Mood
         Mood::updateOrCreate(
-            [
-                'user_id' => Auth::id(),
-                'period' => $request->period // Kunci unik (User + Bulan)
-            ],
-            [
-                'mood_code' => $request->mood_code // Data yang diupdate
-            ]
+            ['user_id' => Auth::id(), 'period' => $request->period],
+            ['mood_code' => $request->mood_code]
         );
 
         return back();
     }
+
     /**
-     * FITUR BARU: Copy Habit dari Bulan Lalu
+     * Copy Habit dari Bulan Lalu
      */
     public function copyFromPrevious(Request $request)
     {
-        $currentPeriod = $request->input('current_period'); // Bulan yg lagi dibuka (kosong)
-        $prevPeriod = $request->input('prev_period');       // Bulan lalu (sumber data)
+        $currentPeriod = $request->input('current_period');
+        $prevPeriod = $request->input('prev_period');
 
-        // Ambil semua habit bulan lalu
-        $oldHabits = Habit::where('user_id', Auth::id())
-            ->where('period', $prevPeriod)
-            ->get();
+        // Ambil habit milik user sendiri (Aman, gak perlu policy)
+        $oldHabits = Habit::where('user_id', Auth::id())->where('period', $prevPeriod)->get();
 
-        // Duplikat satu per satu ke bulan sekarang
         foreach ($oldHabits as $old) {
             Habit::create([
                 'user_id' => Auth::id(),
-                'period' => $currentPeriod, // Set ke bulan baru
+                'period' => $currentPeriod,
                 'name' => $old->name,
                 'icon' => $old->icon,
                 'color' => $old->color,
@@ -146,11 +133,13 @@ $currentMood = \App\Models\Mood::where('user_id', $user->id)
     }
 
     /**
-     * Fungsi Centang/Log (Gak berubah dari yg lama)
+     * Centang / Log Harian
      */
     public function storeLog(Request $request, Habit $habit)
     {
-        if ($habit->user_id !== Auth::id()) abort(403);
+        // 👮‍♂️ SECURITY: Panggil Satpam (Policy)
+        // Pastikan di HabitPolicy.php sudah ada function 'log'
+        $this->authorize('log', $habit);
 
         $request->validate([
             'date' => 'required|date',
@@ -170,19 +159,26 @@ $currentMood = \App\Models\Mood::where('user_id', $user->id)
     }
 
     /**
-     * Update & Destroy (Gak berubah logic intinya)
+     * Update Habit (Edit Nama/Target)
      */
     public function update(Request $request, Habit $habit)
     {
-        if ($habit->user_id !== Auth::id()) abort(403);
+        // 👮‍♂️ SECURITY: Cek Hak Akses
+        $this->authorize('update', $habit);
+
         $habit->update($request->all());
         return back();
     }
 
+    /**
+     * Hapus Habit
+     */
     public function destroy(Habit $habit)
     {
-        if ($habit->user_id !== Auth::id()) abort(403);
-        $habit->delete();
+        // 👮‍♂️ SECURITY: Cek Hak Akses
+        $this->authorize('delete', $habit);
+
+        $habit->delete(); // Ini bakal jadi Soft Delete kalau di Model udah dipasang
         return back();
     }
 }

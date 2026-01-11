@@ -11,10 +11,15 @@ return new class extends Migration
         Schema::create('tracker_entries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tracker_id')->constrained('trackers')->cascadeOnDelete();
-            $table->date('date')->index();
-            $table->decimal('value', 15, 2); // 1.00 (Done) atau 50000 (Duit)
-            $table->text('note')->nullable();
+            
+            $table->date('date');
+            $table->decimal('value', 15, 2);
+            $table->string('note', 255)->nullable(); // Ganti text ke string (lebih ringan) kalau cuma catetan pendek
+            
             $table->timestamps();
+
+            // 🔥 THE KING OF INDEX: Ini penyelamat performa Chart & Kalender
+            $table->index(['tracker_id', 'date']);
         });
     }
 

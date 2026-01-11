@@ -10,13 +10,22 @@ return new class extends Migration
     {
         Schema::create('trackers', function (Blueprint $table) {
             $table->id();
+            
+            // 🚨 INI YANG TADI HILANG DI KODE KAMU 🚨
             $table->foreignId('period_id')->constrained()->cascadeOnDelete();
-            $table->string('type')->index(); // 'habit', 'finance', 'goal'
-            $table->string('name'); // 'Lari Pagi', 'Uang Makan'
-            $table->string('icon')->nullable();
-            $table->decimal('target_value', 15, 2)->default(0); // Target angka
-            $table->string('unit')->nullable(); // 'km', 'IDR', 'kali'
+            
+            // 🔥 DIET DATA: Batasi panjang string biar hemat storage
+            $table->string('type', 20); // Cukup 20 char (habit, finance, goal)
+            $table->string('name', 100); // Nama habit gak mungkin novel
+            $table->string('icon', 10)->nullable(); // Emoji pendek
+            
+            $table->decimal('target_value', 15, 2)->default(0); 
+            $table->string('unit', 10)->nullable(); // km, ltr, IDR (pendek aja)
+            
             $table->timestamps();
+
+            // 🔥 COMPOSITE INDEX: Filter tipe habit dalam 1 periode ngebut
+            $table->index(['period_id', 'type']);
         });
     }
 
