@@ -20,6 +20,8 @@ class SocialController extends Controller
     public function callback()
     {
         try {
+            // 🔥 TAMBAHAN: Kasih tau PHPStan kalau ini User dari Socialite v2
+            /** @var \Laravel\Socialite\Two\User $googleUser */
             $googleUser = Socialite::driver('google')->user();
 
             // Cek: Apakah user ini udah ada di database?

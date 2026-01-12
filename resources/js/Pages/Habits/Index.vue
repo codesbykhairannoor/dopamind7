@@ -7,16 +7,18 @@ import { Head, router, useForm, usePage } from '@inertiajs/vue3';
 import { ref, computed, watch } from 'vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
-import 'dayjs/locale/en'; // Import locale Inggris juga
+import 'dayjs/locale/en';
 import localeData from 'dayjs/plugin/localeData';
+import HabitChart from '@/Components/HabitChart.vue'; 
+import axios from 'axios'; 
 
 dayjs.extend(localeData);
 
 const props = defineProps({
     habits: Object,
     currentMonth: String,
-    monthQuery: String, // Format: YYYY-MM
-    hasPrevHabits: Boolean, // <--- Props Baru
+    monthQuery: String, 
+    hasPrevHabits: Boolean, 
     prevMonthQuery: String,
     savedMood: String
 });
@@ -26,13 +28,13 @@ const user = usePage().props.auth.user;
 // --- STATE LOKAL (OPTIMISTIC UI) ---
 const localHabits = ref(JSON.parse(JSON.stringify(props.habits.data)));
 
-// Sync kalau props berubah (misal ganti bulan)
+// Sync kalau props berubah
 watch(() => props.habits, (newVal) => {
     localHabits.value = JSON.parse(JSON.stringify(newVal.data));
 }, { deep: true });
 
 const showCreateModal = ref(false);
-const todayDate = dayjs().locale('id').format('dddd, D MMMM YYYY'); // Tanggal hari ini tetap Indo
+const todayDate = dayjs().locale('id').format('dddd, D MMMM YYYY');
 
 // Logic Sapaan
 const greetingKey = computed(() => {
@@ -58,7 +60,7 @@ const colorPalette = [
 ];
 
 const form = useForm({
-    id: null, // <-- Tambah ini
+    id: null,
     name: '', 
     icon: '⚡', 
     color: '#6366f1', 
@@ -69,14 +71,10 @@ const form = useForm({
 // 3. LOGIC TANGGALAN & STATS
 // ==========================================
 const monthDates = computed(() => {
-    // 1. Cek Bahasa Aktif
     const activeLang = usePage().props.locale || 'id'; 
     dayjs.locale(activeLang); 
 
-    // 2. Pake Bulan dari Controller (Navigasi)
-    // Kalau props.monthQuery kosong, fallback ke hari ini
     const targetDate = props.monthQuery ? dayjs(props.monthQuery) : dayjs();
-    
     const daysInMonth = targetDate.daysInMonth();
     let days = [];
     
@@ -85,7 +83,6 @@ const monthDates = computed(() => {
         days.push({
             dateString: date.format('YYYY-MM-DD'),
             dayNumber: i,
-            // Format 3 Huruf (Sen, Sel / Mon, Tue)
             dayName: date.format('ddd'), 
             isToday: date.isSame(dayjs(), 'day'),
             isFuture: date.isAfter(dayjs(), 'day')
@@ -94,7 +91,7 @@ const monthDates = computed(() => {
     return days;
 });
 
-// Progress Hari Ini (Header)
+// Progress Hari Ini
 const todayProgress = computed(() => {
     if (localHabits.value.length === 0) return 0;
     const todayStr = dayjs().format('YYYY-MM-DD');
@@ -124,7 +121,6 @@ const overallPercentage = computed(() => {
 // 4. ACTION HANDLERS (CRUD & TOGGLE)
 // ==========================================
 const changeMonth = (direction) => {
-    // Logic ganti bulan (Maju/Mundur)
     const current = props.monthQuery ? dayjs(props.monthQuery) : dayjs();
     const newDate = direction === 'next' 
         ? current.add(1, 'month') 
@@ -133,7 +129,7 @@ const changeMonth = (direction) => {
     router.get(route('habits.index'), { 
         month: newDate.format('YYYY-MM') 
     }, {
-        preserveState: false, // Refresh data total
+        preserveState: false,
         preserveScroll: true 
     });
 };
@@ -143,23 +139,34 @@ const getStatus = (habit, dateString) => {
     return log ? log.status : 'empty';
 };
 
-const toggleStatus = (habitId, dateString) => {
+// 👇 FUNCTION TOGGLE STATUS (SUDAH DIBERSIHKAN)
+const toggleStatus = async (habitId, dateString, forceStatus = null) => {
+    // 1. Cek masa depan
     if (dayjs(dateString).isAfter(dayjs(), 'day')) return;
 
-    // 1. Update Lokal Dulu (Optimistic)
+    // 2. Cari Data Lokal
     const habitIndex = localHabits.value.findIndex(h => h.id === habitId);
     if (habitIndex === -1) return;
     const habit = localHabits.value[habitIndex];
-    
+
+    // 3. Tentukan Status Sekarang
     const logIndex = habit.logs.findIndex(l => l.date === dateString);
     const currentStatus = logIndex !== -1 ? habit.logs[logIndex].status : 'empty';
-    
-    // LOGIC BARU: CUMA 2 STATUS (CENTANG / KOSONG)
-    let newStatus = 'completed';
-    if (currentStatus === 'completed') {
-        newStatus = 'uncheck';
-    }
 
+    // 4. Logic Baru (Support Klik Kanan/Skip)
+    let newStatus = 'completed';
+
+    if (forceStatus) {
+        newStatus = (currentStatus === forceStatus) ? 'uncheck' : forceStatus;
+    } else {
+        // KLIK KIRI BIASA: Cuma Centang <-> Kosong (Gak ada Skip)
+        if (currentStatus === 'completed' || currentStatus === 'skipped') {
+            newStatus = 'uncheck'; // Kalau udah centang/skip, jadi kosong
+        } else {
+            newStatus = 'completed'; // Kalau kosong, jadi centang
+        }}
+
+    // 5. Update Tampilan (Optimistic UI)
     if (logIndex !== -1) {
         if (newStatus === 'uncheck') habit.logs.splice(logIndex, 1);
         else habit.logs[logIndex].status = newStatus;
@@ -167,16 +174,25 @@ const toggleStatus = (habitId, dateString) => {
         habit.logs.push({ date: dateString, status: newStatus });
     }
 
-    // Recalculate Progress Habit Lokal
+    // 6. Hitung Ulang Progress (SUDAH MASUK KANDANG)
     const newCompletedCount = habit.logs.filter(l => l.status === 'completed').length;
     habit.progress_count = newCompletedCount;
-    habit.progress_percent = Math.min(100, Math.round((newCompletedCount / habit.monthly_target) * 100));
+    habit.progress_percent = habit.monthly_target > 0 
+        ? Math.min(100, Math.round((newCompletedCount / habit.monthly_target) * 100)) 
+        : 0;
 
-    // 2. Kirim Server (Silent)
-    router.post(route('habits.log', habitId), {
-        date: dateString, status: newStatus
-    }, { preserveScroll: true, preserveState: true });
+    // 7. Kirim ke Server (Silent Mode / Axios)
+    try {
+        await axios.post(route('habits.log', habitId), {
+            date: dateString, 
+            status: newStatus
+        });
+    } catch (e) { 
+        console.error("Gagal save:", e); 
+    }
 };
+
+
 
 // --- UPDATE FUNGSI SUBMIT ---
 const submitHabit = () => {
@@ -521,46 +537,123 @@ const selectMood = (code) => {
             </div>
         </div>
 
-        <div class="bg-white border-b border-slate-100 sticky top-0 z-40">
-            <div class="max-w-full mx-auto px-4 py-4 md:py-6">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    
-                    <div class="w-full md:w-auto text-left">
-                        <div class="inline-flex items-center gap-2 text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-1">
-                            <span>📅</span> {{ todayDate }}
-                        </div>
-                        <h1 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight">
-                            {{ $t(greetingKey) }}, <span class="text-indigo-600">{{ user.name.split(' ')[0] }}</span>!
-                        </h1>
-                        <p class="text-slate-500 text-sm mt-1 hidden md:block">{{ $t('greet_subtitle') }}</p>
-                    </div>
+         <div class="bg-white border-b border-slate-100 sticky top-0 z-40">
+  <div class="max-w-full mx-auto px-4 py-4 md:py-6">
 
-                    <div class="flex items-center justify-between w-full md:w-auto gap-3">
-                        <div class="flex items-center bg-slate-50 rounded-xl border border-slate-200 p-1 flex-1 md:flex-none justify-center">
-                            <button @click="changeMonth('prev')" class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-white hover:shadow-sm transition">‹</button>
-                            
-                            <span class="px-2 md:px-4 text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-wide min-w-[80px] text-center">{{ props.currentMonth }}</span>
-                            
-                            <button @click="changeMonth('next')" class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-white hover:shadow-sm transition">›</button>
-                        </div>
+    <!-- HEADER TOP -->
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
 
-                        <div class="hidden md:flex flex-col items-end mr-2">
-                            <span class="text-[10px] font-bold text-slate-400 uppercase">Today</span>
-                            <div class="flex items-center gap-2">
-                                <div class="w-16 md:w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full bg-emerald-500 rounded-full transition-all duration-500" :style="{ width: todayProgress + '%' }"></div>
-                                </div>
-                                <span class="text-xs font-black text-slate-700">{{ todayProgress }}%</span>
-                            </div>
-                        </div>
-
-                        <button @click="openCreateModal" class="flex-shrink-0 flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-bold text-xs md:text-sm shadow-lg hover:bg-indigo-700 transition">
-                            <span>+</span> <span class="hidden sm:inline">{{ $t('habit_btn_new') }}</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+      <!-- LEFT: GREETING -->
+      <div class="w-full md:w-auto text-left">
+        <div class="inline-flex items-center gap-2 text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-1">
+          <span>📅</span>
+          <span>{{ todayDate }}</span>
         </div>
+
+        <h1 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight">
+          {{ $t(greetingKey) }},
+          <span class="text-indigo-600">
+            {{ user.name.split(' ')[0] }}
+          </span>!
+        </h1>
+
+        <p class="text-slate-500 text-sm mt-1 hidden md:block">
+          {{ $t('greet_subtitle') }}
+        </p>
+      </div>
+
+      <!-- RIGHT: CONTROLS -->
+      <div class="flex items-center justify-between w-full md:w-auto gap-3">
+
+        <!-- MONTH NAV -->
+        <div class="flex items-center bg-slate-50 rounded-xl border border-slate-200 p-1 flex-1 md:flex-none justify-center">
+          <button
+            @click="changeMonth('prev')"
+            class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-white hover:shadow-sm transition"
+          >
+            ‹
+          </button>
+
+          <span class="px-2 md:px-4 text-[10px] md:text-xs font-bold text-slate-700 uppercase tracking-wide min-w-[80px] text-center">
+            {{ props.currentMonth }}
+          </span>
+
+          <button
+            @click="changeMonth('next')"
+            class="w-8 h-8 flex items-center justify-center rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-white hover:shadow-sm transition"
+          >
+            ›
+          </button>
+        </div>
+
+        <!-- TODAY PROGRESS -->
+        <div class="hidden md:flex flex-col items-end mr-2">
+          <span class="text-[10px] font-bold text-slate-400 uppercase"> {{ $t('today_is') }}</span>
+
+          <div class="flex items-center gap-2">
+            <div class="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div
+                class="h-full bg-emerald-500 rounded-full transition-all duration-500"
+                :style="{ width: todayProgress + '%' }"
+              ></div>
+            </div>
+            <span class="text-xs font-black text-slate-700">
+              {{ todayProgress }}%
+            </span>
+          </div>
+        </div>
+
+        <!-- ADD BUTTON -->
+        <button
+          @click="openCreateModal"
+          class="flex-shrink-0 flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 md:px-5 md:py-2.5 rounded-xl font-bold text-xs md:text-sm shadow-lg hover:bg-indigo-700 transition"
+        >
+          <span>+</span>
+          <span class="hidden sm:inline">
+            {{ $t('habit_btn_new') }}
+          </span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="border-t border-slate-100 pt-2 mt-3 flex items-center gap-4 md:gap-6 overflow-x-auto pb-1 md:pb-0 scrollbar-hide">
+      <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider shrink-0">
+        {{ $t('legend_instruction') }}
+      </span>
+
+      <div class="flex items-center gap-1.5 shrink-0">
+        <div class="w-4 h-4 rounded bg-indigo-600 text-white flex items-center justify-center text-[9px] shadow-sm">
+          ✓
+        </div>
+        <span class="text-[10px] md:text-xs text-slate-600 font-bold">
+          {{ $t('legend_left_click') }}
+        </span>
+      </div>
+
+      <div class="flex items-center gap-1.5 shrink-0">
+        <div class="w-4 h-4 rounded bg-slate-100 text-slate-400 flex items-center justify-center text-[9px] border border-slate-200">
+          -
+        </div>
+        <span class="text-[10px] md:text-xs text-slate-600 font-bold">
+          {{ $t('legend_right_click') }}
+        </span>
+      </div>
+
+      <div class="flex items-center gap-1.5 shrink-0">
+        <div class="w-4 h-4 rounded bg-white border border-slate-200 hover:border-indigo-300"></div>
+        <span class="text-[10px] md:text-xs text-slate-500 font-medium">
+          {{ $t('legend_reset') }}
+        </span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        
+   
 
         <div class="w-full md:max-w-[95%] mx-auto md:px-2 pt-4 md:pt-8 pb-20">
             
@@ -640,26 +733,52 @@ const selectMood = (code) => {
         
        <button 
     :id="`cell-${hIndex}-${dIndex}`"
+
+    @click="toggleStatus(habit.id, day.dateString)" 
+    @contextmenu.prevent="toggleStatus(habit.id, day.dateString, 'skipped')"
     @keydown="handleGridNav($event, hIndex, dIndex, habit.id, day.dateString)"
-    @click="toggleStatus(habit.id, day.dateString)"
     :disabled="day.isFuture"
     
     class="
+        /* 1. Layout Dasar */
         scroll-mt-24 md:scroll-mt-32 scroll-ml-36 md:scroll-ml-72 
-        w-7 h-7 md:w-8 md:h-8 rounded-md md:rounded-lg flex items-center justify-center transition-all duration-75 relative outline-none focus:ring-4 focus:ring-fuchsia-400 focus:ring-offset-2 z-0 focus:z-20
+        w-7 h-7 md:w-8 md:h-8 rounded-md md:rounded-lg 
+        flex items-center justify-center relative outline-none z-0 
+        
+        /* 2. 🔥 MAGIC ANIMASI 'JUICY' (Biar gak kaku) 🔥 */
+        transition-all duration-200 cubic-bezier(0.175, 0.885, 0.32, 1.275) 
+        hover:scale-110 hover:z-10
+        active:scale-75 
+        focus:ring-4 focus:ring-indigo-100 focus:z-20
     " 
     
     :class="{
-        'shadow-sm text-white scale-100': getStatus(habit, day.dateString) === 'completed',
+        /* Status: Completed (Ada Shadow biar nimbul) */
+        'shadow-md text-white scale-100 border-transparent': getStatus(habit, day.dateString) === 'completed',
+        
+        /* Status: Skipped */
         'bg-slate-100 text-slate-400': getStatus(habit, day.dateString) === 'skipped',
+        
+        /* Status: Kosong (Kasih border tipis) */
         'bg-white border border-slate-200 hover:border-indigo-300': getStatus(habit, day.dateString) === 'empty' && !day.isFuture,
+        
+        /* Masa Depan (Disabled) */
         'bg-slate-50 border border-slate-50 opacity-30 cursor-not-allowed': day.isFuture,
-        'ring-2 ring-indigo-500 ring-offset-1 z-10': day.isToday
+        
+        /* Hari Ini (Kasih Ring biar focus) */
+        'ring-2 ring-indigo-500 ring-offset-2 z-10': day.isToday
     }"
+    
+   
     :style="getStatus(habit, day.dateString) === 'completed' ? { backgroundColor: habit.color } : {}"
 >
-    <span v-if="getStatus(habit, day.dateString) === 'completed'" class="text-[10px] md:text-xs font-bold">✓</span>
-    <span v-if="getStatus(habit, day.dateString) === 'skipped'" class="text-[10px] md:text-xs font-bold">-</span>
+    <span v-if="getStatus(habit, day.dateString) === 'completed'" class="text-[10px] md:text-xs font-black drop-shadow-sm">
+        ✓
+    </span>
+    
+    <span v-if="getStatus(habit, day.dateString) === 'skipped'" class="text-[10px] md:text-xs font-bold">
+        -
+    </span>
 </button>
         
     </div>

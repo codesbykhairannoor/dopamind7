@@ -39,36 +39,31 @@ Route::get('/auth/google/callback', [SocialController::class, 'callback']);
 // --- GROUP 3: AUTHENTICATED APP (Sidebar Area) ---
 Route::middleware(['auth', 'verified'])->group(function () {
     
-    // 🔥 PERUBAHAN UTAMA: Dashboard sekarang dipegang HabitController
-    // Jadi '/dashboard' itu isinya Habit Tracker. Gak perlu '/habits' terpisah.
-    Route::get('/dashboard', [HabitController::class, 'index'])->name('dashboard');
+    // 1. DASHBOARD (Halaman Depan / Rangkuman)
+    // Pake DashboardController yang baru kita buat
+    Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
 
-    // === ROUTE HABITS (Logic) ===
-    // Kita group biar rapi dan depannya otomatis '/habits'
+    // 2. HABIT TRACKER (Manajemen Habit)
+    // Aksesnya via url '/habits', bukan dashboard lagi
     Route::prefix('habits')->name('habits.')->group(function () {
-        // Karena halaman utamanya udah di '/dashboard', index di sini opsional.
-        // Tapi kalau sidebar lu ngarah ke route('habits.index'), kita arahin ke controller yg sama.
-        Route::get('/', [HabitController::class, 'index'])->name('index'); 
+        Route::get('/', [\App\Http\Controllers\HabitController::class, 'index'])->name('index'); 
+        Route::post('/', [\App\Http\Controllers\HabitController::class, 'store'])->name('store');
+        Route::post('/copy', [\App\Http\Controllers\HabitController::class, 'copyFromPrevious'])->name('copy');
+        Route::post('/mood', [\App\Http\Controllers\HabitController::class, 'updateMood'])->name('mood');
         
-        Route::post('/', [HabitController::class, 'store'])->name('store');
-        Route::post('/copy', [HabitController::class, 'copyFromPrevious'])->name('copy');
-        Route::post('/mood', [HabitController::class, 'updateMood'])->name('mood');
-        
-        // Route yang butuh ID spesifik
-        Route::patch('/{habit}', [HabitController::class, 'update'])->name('update');
-        Route::delete('/{habit}', [HabitController::class, 'destroy'])->name('destroy');
-        Route::post('/{habit}/log', [HabitController::class, 'storeLog'])->name('log');
+        Route::patch('/{habit}', [\App\Http\Controllers\HabitController::class, 'update'])->name('update');
+        Route::delete('/{habit}', [\App\Http\Controllers\HabitController::class, 'destroy'])->name('destroy');
+        Route::post('/{habit}/log', [\App\Http\Controllers\HabitController::class, 'storeLog'])->name('log');
     });
 
-    // === ROUTE SETTINGS ===
-    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
+    // ... settings & profile tetap sama ...
+    Route::get('/settings', [\App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [\App\Http\Controllers\SettingsController::class, 'update'])->name('settings.update');
 
-    // === ROUTE PROFILE ===
     Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', [ProfileController::class, 'edit'])->name('edit');
-        Route::patch('/', [ProfileController::class, 'update'])->name('update');
-        Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
+        Route::get('/', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('edit');
+        Route::patch('/', [\App\Http\Controllers\ProfileController::class, 'update'])->name('update');
+        Route::delete('/', [\App\Http\Controllers\ProfileController::class, 'destroy'])->name('destroy');
     });
 });
 

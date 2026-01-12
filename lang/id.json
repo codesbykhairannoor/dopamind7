@@ -214,6 +214,11 @@
     "mood_neutral": "Biasa Aja",
     "mood_sad": "Sedih",
     "mood_stress": "Stres Berat",
-    "mood_sick": "Lagi Sakit"
+    "mood_sick": "Lagi Sakit",
+    "legend_instruction": "Cara Pakai:",
+    "legend_left_click": "Klik Kiri: Selesai",
+    "legend_right_click": "Klik Kanan: Skip",
+    "legend_reset": "Klik Lagi: Hapus",
+"today_is" : "Hari Ini"
 
 }

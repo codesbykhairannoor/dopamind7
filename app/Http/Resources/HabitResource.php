@@ -5,12 +5,22 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @mixin \App\Models\Habit
+ */
 class HabitResource extends JsonResource
 {
+    /**
+     * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
+     */
     public function toArray(Request $request): array
     {
         // PENTING: Kita pakai 'completed_count' yang dihitung otomatis sama Database (lebih cepat)
-        // Kalau gak ada (misal dipanggil manual), baru hitung manual.
+        // Kalau gak ada (misal dipanggil manual tanpa withCount), baru hitung manual dari relation logs.
+        
+        // Catatan: completed_count adalah properti dinamis dari withCount() di Controller
         $completedCount = $this->completed_count ?? $this->logs->where('status', 'completed')->count();
         
         return [
@@ -26,11 +36,13 @@ class HabitResource extends JsonResource
                 ? min(100, round(($completedCount / $this->monthly_target) * 100)) 
                 : 0,
             
-            // Logs tetap dikirim buat kalender (tapi nanti kita filter di controller)
+            // Logs tetap dikirim buat kalender
+            // Kita pakai whenLoaded biar hemat memori kalau relation logs gak dipanggil di controller
             'logs' => $this->whenLoaded('logs', function () {
                 return $this->logs->map(fn($log) => [
                     'date' => $log->date,
-                    'status' => $log->status
+                    // Pastikan log->status ini sesuai sama Enum/String yang lo pake
+                    'status' => $log->status 
                 ]);
             }),
         ];

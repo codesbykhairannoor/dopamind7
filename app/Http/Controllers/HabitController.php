@@ -6,16 +6,17 @@ use App\Models\Habit;
 use App\Models\HabitLog;
 use App\Models\Mood;
 use App\Http\Resources\HabitResource;
+use App\Http\Requests\StoreHabitRequest; // ✅ Panggil Request yang baru dibuat
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-// 👇 Tambahan Trait ini penting buat fitur 'authorize' (Satpam)
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Enums\HabitStatus;
+use Illuminate\Validation\Rule;
 
 class HabitController extends Controller
 {
-    // Pasang "Jimat" Security
     use AuthorizesRequests;
 
     /**
@@ -25,33 +26,22 @@ class HabitController extends Controller
     {
         $user = Auth::user();
         
-        // 1. Tentukan Bulan
+        // Default ke bulan sekarang kalau tidak ada request
         $monthQuery = $request->input('month', Carbon::now()->format('Y-m'));
         $dateObj = Carbon::createFromFormat('Y-m', $monthQuery);
 
-        // 🔥 OPTIMASI QUERY (RAHASIA 10.000 USER) 🔥
+        // 🔥 OPTIMASI QUERY: Eager Load logs cuma untuk bulan yang dipilih
         $habits = Habit::where('user_id', $user->id)
             ->where('period', $monthQuery)
-            
-            // A. Ambil Log CUMA bulan ini (Hemat RAM)
-            ->with(['logs' => function ($query) use ($dateObj) {
-                $query->whereMonth('date', $dateObj->month)
-                      ->whereYear('date', $dateObj->year);
-            }])
-            
-            // B. withCount: Biarkan Database yang ngitung jumlah centang 
-            // (Jauh lebih cepat daripada PHP looping satu-satu)
-            ->withCount(['logs as completed_count' => function ($query) {
-                $query->where('status', 'completed');
-            }])
+            ->with(['logs' => fn($q) => $q->whereMonth('date', $dateObj->month)->whereYear('date', $dateObj->year)])
+            ->withCount(['logs as completed_count' => fn($q) => $q->where('status', 'completed')])
             ->get();
 
-        // Data pendukung lain
+        // Data pendukung (Mood & Habit bulan lalu)
         $currentMood = Mood::where('user_id', $user->id)->where('period', $monthQuery)->first();
         $prevMonth = $dateObj->copy()->subMonth()->format('Y-m');
         $hasPrevHabits = Habit::where('user_id', $user->id)->where('period', $prevMonth)->exists();
 
-        // 👇 Render ke 'Dashboard' (sesuai file Vue kamu)
         return Inertia::render('Habits/Index', [
             'habits' => HabitResource::collection($habits),
             'currentMonth' => $dateObj->translatedFormat('F Y'),
@@ -63,28 +53,60 @@ class HabitController extends Controller
     }
 
     /**
-     * Simpan Habit Baru
+     * Simpan Habit Baru (CLEAN VERSION ✨)
      */
-    public function store(Request $request)
+    public function store(StoreHabitRequest $request)
     {
-        // Validasi
-        $request->validate([
-            'name' => 'required|string|max:100', // Sesuai database baru (max 100)
-            'icon' => 'required|string|max:10',
-            'color' => 'required|string|max:7',
-            'monthly_target' => 'required|integer|min:1|max:31',
-            'period' => 'required|string|max:7',
+        // Gak perlu validasi manual lagi, Laravel otomatis cek StoreHabitRequest
+        Habit::create(array_merge(
+            ['user_id' => Auth::id()],
+            $request->validated() // Ambil data yang sudah lolos validasi
+        ));
+
+        return back();
+    }
+
+    /**
+     * Update Habit (Edit Nama/Target)
+     */
+    public function update(Request $request, Habit $habit)
+    {
+        $this->authorize('update', $habit);
+
+        // Validasi inline sederhana (karena update biasanya optional/sedikit)
+        $validated = $request->validate([
+            'name' => 'sometimes|string|max:100',
+            'icon' => 'sometimes|string|max:10',
+            'color' => 'sometimes|string|max:7',
+            'monthly_target' => 'sometimes|integer|min:1|max:31',
         ]);
 
-        // Create gak butuh Policy karena user bikin untuk dirinya sendiri
-        Habit::create([
-            'user_id' => Auth::id(),
-            'period' => $request->period,
-            'name' => $request->name,
-            'icon' => $request->icon,
-            'color' => $request->color,
-            'monthly_target' => $request->monthly_target,
+        $habit->update($validated);
+        return back();
+    }
+
+    /**
+     * Centang / Log Harian
+     */
+    public function storeLog(Request $request, Habit $habit)
+    {
+        $this->authorize('log', $habit);
+
+        $validated = $request->validate([
+            'date' => 'required|date',
+            'status' => ['required', Rule::enum(HabitStatus::class)],
         ]);
+
+        if ($validated['status'] === 'uncheck') {
+            HabitLog::where('habit_id', $habit->id)
+                ->where('date', $validated['date'])
+                ->delete();
+        } else {
+            HabitLog::updateOrCreate(
+                ['habit_id' => $habit->id, 'date' => $validated['date']],
+                ['status' => $validated['status']]
+            );
+        }
 
         return back();
     }
@@ -94,14 +116,14 @@ class HabitController extends Controller
      */
     public function updateMood(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'mood_code' => 'required|string|max:20',
             'period' => 'required|string|max:7',
         ]);
 
         Mood::updateOrCreate(
-            ['user_id' => Auth::id(), 'period' => $request->period],
-            ['mood_code' => $request->mood_code]
+            ['user_id' => Auth::id(), 'period' => $validated['period']],
+            ['mood_code' => $validated['mood_code']]
         );
 
         return back();
@@ -112,16 +134,20 @@ class HabitController extends Controller
      */
     public function copyFromPrevious(Request $request)
     {
-        $currentPeriod = $request->input('current_period');
-        $prevPeriod = $request->input('prev_period');
+        // Validasi input biar aman
+        $request->validate([
+            'current_period' => 'required|date_format:Y-m',
+            'prev_period' => 'required|date_format:Y-m',
+        ]);
 
-        // Ambil habit milik user sendiri (Aman, gak perlu policy)
-        $oldHabits = Habit::where('user_id', Auth::id())->where('period', $prevPeriod)->get();
+        $oldHabits = Habit::where('user_id', Auth::id())
+            ->where('period', $request->prev_period)
+            ->get();
 
         foreach ($oldHabits as $old) {
             Habit::create([
                 'user_id' => Auth::id(),
-                'period' => $currentPeriod,
+                'period' => $request->current_period, // Pakai periode baru
                 'name' => $old->name,
                 'icon' => $old->icon,
                 'color' => $old->color,
@@ -133,52 +159,12 @@ class HabitController extends Controller
     }
 
     /**
-     * Centang / Log Harian
-     */
-    public function storeLog(Request $request, Habit $habit)
-    {
-        // 👮‍♂️ SECURITY: Panggil Satpam (Policy)
-        // Pastikan di HabitPolicy.php sudah ada function 'log'
-        $this->authorize('log', $habit);
-
-        $request->validate([
-            'date' => 'required|date',
-            'status' => 'required|in:completed,skipped,uncheck'
-        ]);
-
-        if ($request->status === 'uncheck') {
-            HabitLog::where('habit_id', $habit->id)->where('date', $request->date)->delete();
-        } else {
-            HabitLog::updateOrCreate(
-                ['habit_id' => $habit->id, 'date' => $request->date],
-                ['status' => $request->status]
-            );
-        }
-
-        return back();
-    }
-
-    /**
-     * Update Habit (Edit Nama/Target)
-     */
-    public function update(Request $request, Habit $habit)
-    {
-        // 👮‍♂️ SECURITY: Cek Hak Akses
-        $this->authorize('update', $habit);
-
-        $habit->update($request->all());
-        return back();
-    }
-
-    /**
      * Hapus Habit
      */
     public function destroy(Habit $habit)
     {
-        // 👮‍♂️ SECURITY: Cek Hak Akses
         $this->authorize('delete', $habit);
-
-        $habit->delete(); // Ini bakal jadi Soft Delete kalau di Model udah dipasang
+        $habit->delete();
         return back();
     }
 }

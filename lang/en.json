@@ -213,7 +213,13 @@
     "mood_neutral": "Neutral",
     "mood_sad": "Sad",
     "mood_stress": "Stressed",
-    "mood_sick": "Sick"
+    "mood_sick": "Sick",
+    "legend_instruction": "How to use:",
+    "legend_left_click": "Left Click: Done",
+    "legend_right_click": "Right Click: Skip",
+    "legend_reset": "Click Again: Reset",
+"today_is" : "Today"
+
 
 
 

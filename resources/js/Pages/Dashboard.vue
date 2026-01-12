@@ -2,7 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, usePage, Link } from '@inertiajs/vue3';
 import { computed } from 'vue';
-
+import HabitChart from '@/Components/HabitChart.vue'; // 👈 Tambah ini
 const user = usePage().props.auth.user;
 
 // Waktu sapaan dinamis
@@ -68,11 +68,14 @@ const greeting = computed(() => {
                 </div>
             </div>
 
-            <div class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-3xl h-64 flex flex-col items-center justify-center text-slate-400">
-                <span class="text-4xl mb-4">📊</span>
-                <p class="font-bold">Grafik Analitik akan muncul di sini</p>
-                <p class="text-sm">(Fitur coming soon)</p>
-            </div>
+            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm mt-6">
+    <h3 class="font-bold text-slate-700 mb-4">📊 Statistik Bulan Ini</h3>
+
+    <HabitChart 
+    :habits="localHabits" 
+    :dates="monthDates" 
+/>
+</div>
 
         </div>
     </AuthenticatedLayout>
