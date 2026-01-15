@@ -37,7 +37,7 @@ Route::get('/auth/google', [SocialController::class, 'redirect'])->name('google.
 Route::get('/auth/google/callback', [SocialController::class, 'callback']);
 
 // --- GROUP 3: AUTHENTICATED APP (Sidebar Area) ---
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     
     // 1. DASHBOARD (Halaman Depan / Rangkuman)
     // Pake DashboardController yang baru kita buat
