@@ -28,6 +28,7 @@ const switchLang = (lang) => {
 };
 
 // --- HELPER ACTIVE LINK ---
+// Kita bikin lebih fleksibel buat ngecek sub-route
 const isActive = (routeName) => route().current(routeName);
 </script>
 
@@ -63,8 +64,18 @@ const isActive = (routeName) => route().current(routeName);
                     <span class="text-xl">🌱</span>
                     <span>{{ $t('habit_page_title') }}</span>
                 </Link>
+
+                <Link 
+                    v-if="showModule('planner')"
+                    :href="route('planner.index')" 
+                    class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
+                    :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
+                >
+                    <span class="text-xl">📅</span>
+                    <span>Daily Planner</span>
+                </Link>
                 
-                </nav>
+            </nav>
 
             <div class="p-6 border-t border-slate-100 bg-slate-50/50 space-y-4">
                 
@@ -115,6 +126,10 @@ const isActive = (routeName) => route().current(routeName);
                 
                 <Link v-if="showModule('habit')" :href="route('habits.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">
                     {{ $t('habit_page_title') }}
+                </Link>
+
+                <Link v-if="showModule('planner')" :href="route('planner.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">
+                    Daily Planner
                 </Link>
 
                 <Link :href="route('settings.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">

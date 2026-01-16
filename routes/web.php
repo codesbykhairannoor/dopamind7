@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HabitController; // DashboardController kita buang aja
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\Auth\SocialController;
+use App\Http\Controllers\PlannerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
@@ -43,6 +44,21 @@ Route::middleware(['auth'])->group(function () {
     // Pake DashboardController yang baru kita buat
     Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
 
+
+    Route::middleware('auth')->group(function () {
+    
+    // Halaman Utama Planner
+    Route::get('/planner', [PlannerController::class, 'index'])->name('planner.index');
+    
+    // CRUD Biasa
+    Route::post('/planner', [PlannerController::class, 'store'])->name('planner.store');
+    Route::patch('/planner/{plannerTask}', [PlannerController::class, 'update'])->name('planner.update');
+    Route::delete('/planner/{plannerTask}', [PlannerController::class, 'destroy'])->name('planner.destroy');
+Route::post('/planner/log', [PlannerController::class, 'updateLog'])->name('planner.updateLog');
+    // 🔥 Route Tombol "Reset/New Day"
+    Route::post('/planner/reset', [PlannerController::class, 'resetBoard'])->name('planner.reset');
+
+});
     // 2. HABIT TRACKER (Manajemen Habit)
     // Aksesnya via url '/habits', bukan dashboard lagi
     Route::prefix('habits')->name('habits.')->group(function () {
