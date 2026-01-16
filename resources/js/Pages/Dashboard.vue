@@ -2,7 +2,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, usePage, Link } from '@inertiajs/vue3';
 import { computed } from 'vue';
-import HabitChart from '@/Components/HabitChart.vue'; // 👈 Tambah ini
+
+// ❌ HAPUS IMPORT CHART DULU BIAR GA ERROR
+// import HabitChart from '@/Components/HabitChart.vue'; 
+
 const user = usePage().props.auth.user;
 
 // Waktu sapaan dinamis
@@ -37,9 +40,9 @@ const greeting = computed(() => {
                         <Link :href="route('habits.index')" class="bg-white text-indigo-700 px-6 py-3 rounded-xl font-bold hover:bg-indigo-50 transition shadow-lg transform hover:-translate-y-1">
                             🌱 Buka Habit Tracker
                         </Link>
-                        <Link v-if="user.settings?.modules?.planner" :href="route('planner.index')" class="bg-indigo-700/50 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition backdrop-blur-sm">
-                            📅 Cek Jadwal
-                        </Link>
+                        <button disabled class="bg-indigo-700/50 text-white/50 cursor-not-allowed px-6 py-3 rounded-xl font-bold backdrop-blur-sm">
+                            📅 Planner (Coming Soon)
+                        </button>
                     </div>
                 </div>
             </div>
@@ -48,35 +51,24 @@ const greeting = computed(() => {
                 <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-4">🔥</div>
                     <div class="text-slate-500 font-bold text-xs uppercase tracking-wider">Total Habit</div>
-                    <div class="text-3xl font-black text-slate-800 mt-1">
-                        5 Habit
-                    </div>
+                    <div class="text-3xl font-black text-slate-800 mt-1">Check App</div>
                 </div>
 
                 <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-4">⚡</div>
                     <div class="text-slate-500 font-bold text-xs uppercase tracking-wider">Current Streak</div>
-                    <div class="text-3xl font-black text-slate-800 mt-1">12 Hari</div>
+                    <div class="text-3xl font-black text-slate-800 mt-1">- Hari</div>
                 </div>
 
                 <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-2xl mb-4">❤️</div>
                     <div class="text-slate-500 font-bold text-xs uppercase tracking-wider">Status Member</div>
                     <div class="text-3xl font-black text-slate-800 mt-1">
-                        {{ user.is_premium ? 'Premium' : 'Free Plan' }}
+                        Free Plan
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm mt-6">
-    <h3 class="font-bold text-slate-700 mb-4">📊 Statistik Bulan Ini</h3>
-
-    <HabitChart 
-    :habits="localHabits" 
-    :dates="monthDates" 
-/>
-</div>
-
-        </div>
+            </div>
     </AuthenticatedLayout>
 </template>

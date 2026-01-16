@@ -4,11 +4,11 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { useHabits } from '@/Composables/useHabits';
 
-// Import Komponen Pecahan
-import HabitHeader from '@/Components/Habits/HabitHeader.vue';
-import HabitGrid from '@/Components/Habits/HabitGrid.vue';
-import HabitStats from '@/Components/Habits/HabitStats.vue';
-import HabitModals from '@/Components/Habits/HabitModals.vue';
+// ✅ PERBAIKAN IMPORT: Gunakan './' karena file ada di folder yang sama
+import HabitHeader from './HabitHeader.vue';
+import HabitGrid from './HabitGrid.vue';
+import HabitStats from './HabitStats.vue';
+import HabitModals from './HabitModals.vue';
 
 // Props TETAP DISINI
 const props = defineProps({
