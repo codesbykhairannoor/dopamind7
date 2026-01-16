@@ -11,24 +11,24 @@ return new class extends Migration
         Schema::create('habit_logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('habit_id')->constrained('habits')->onDelete('cascade');
-            
-            $table->date('date'); 
-            
+
+            $table->date('date');
+
             // Status Enum (Ringan)
             $table->enum('status', ['completed', 'skipped'])->default('completed');
-            
+
             // Catatan: Kalau user jarang ngisi, nullable text gapapa.
-            $table->text('notes')->nullable(); 
-            
+            $table->text('notes')->nullable();
+
             $table->timestamps();
-            
+
             // 🔥 SUPER INDEX:
             // 1. Mencegah duplikat (Data Integrity)
             // 2. Sekaligus jadi Index pencarian (Performance)
-            $table->unique(['habit_id', 'date']); 
+            $table->unique(['habit_id', 'date']);
 
             // 🔥 INDEX TAMBAHAN: Buat ngitung progress bar persenan (completed vs total)
-            $table->index('status'); 
+            $table->index('status');
         });
     }
 

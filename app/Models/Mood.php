@@ -13,6 +13,6 @@ class Mood extends Model
     protected $fillable = [
         'user_id',
         'period',
-        'mood_code'
+        'mood_code',
     ];
 }

@@ -34,9 +34,9 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class, // <--- 1. SESSION NYALA DULU
-            
+
             // ✅ POSISI YANG BENAR DISINI:
-            \App\Http\Middleware\HandleLocalization::class, 
+            \App\Http\Middleware\HandleLocalization::class,
 
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,

@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\HabitController; // DashboardController kita buang aja
-use App\Http\Controllers\SettingsController;
+// DashboardController kita buang aja
 use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\PlannerController;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +12,7 @@ Route::get('/lang/{locale}', function ($locale) {
     if (in_array($locale, ['id', 'en'])) {
         Session::put('locale', $locale);
     }
+
     return back();
 })->name('lang.switch');
 
@@ -23,6 +22,7 @@ Route::get('/', function () {
     if (auth()->check()) {
         return redirect()->route('dashboard');
     }
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -39,34 +39,33 @@ Route::get('/auth/google/callback', [SocialController::class, 'callback']);
 
 // --- GROUP 3: AUTHENTICATED APP (Sidebar Area) ---
 Route::middleware(['auth'])->group(function () {
-    
+
     // 1. DASHBOARD (Halaman Depan / Rangkuman)
     // Pake DashboardController yang baru kita buat
     Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
 
-
     Route::middleware('auth')->group(function () {
-    
-    // Halaman Utama Planner
-    Route::get('/planner', [PlannerController::class, 'index'])->name('planner.index');
-    
-    // CRUD Biasa
-    Route::post('/planner', [PlannerController::class, 'store'])->name('planner.store');
-    Route::patch('/planner/{plannerTask}', [PlannerController::class, 'update'])->name('planner.update');
-    Route::delete('/planner/{plannerTask}', [PlannerController::class, 'destroy'])->name('planner.destroy');
-Route::post('/planner/log', [PlannerController::class, 'updateLog'])->name('planner.updateLog');
-    // 🔥 Route Tombol "Reset/New Day"
-    Route::post('/planner/reset', [PlannerController::class, 'resetBoard'])->name('planner.reset');
 
-});
+        // Halaman Utama Planner
+        Route::get('/planner', [PlannerController::class, 'index'])->name('planner.index');
+
+        // CRUD Biasa
+        Route::post('/planner', [PlannerController::class, 'store'])->name('planner.store');
+        Route::patch('/planner/{plannerTask}', [PlannerController::class, 'update'])->name('planner.update');
+        Route::delete('/planner/{plannerTask}', [PlannerController::class, 'destroy'])->name('planner.destroy');
+        Route::post('/planner/log', [PlannerController::class, 'updateLog'])->name('planner.updateLog');
+        // 🔥 Route Tombol "Reset/New Day"
+        Route::post('/planner/reset', [PlannerController::class, 'resetBoard'])->name('planner.reset');
+
+    });
     // 2. HABIT TRACKER (Manajemen Habit)
     // Aksesnya via url '/habits', bukan dashboard lagi
     Route::prefix('habits')->name('habits.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\HabitController::class, 'index'])->name('index'); 
+        Route::get('/', [\App\Http\Controllers\HabitController::class, 'index'])->name('index');
         Route::post('/', [\App\Http\Controllers\HabitController::class, 'store'])->name('store');
         Route::post('/copy', [\App\Http\Controllers\HabitController::class, 'copyFromPrevious'])->name('copy');
         Route::post('/mood', [\App\Http\Controllers\HabitController::class, 'updateMood'])->name('mood');
-        
+
         Route::patch('/{habit}', [\App\Http\Controllers\HabitController::class, 'update'])->name('update');
         Route::delete('/{habit}', [\App\Http\Controllers\HabitController::class, 'destroy'])->name('destroy');
         Route::post('/{habit}/log', [\App\Http\Controllers\HabitController::class, 'storeLog'])->name('log');

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialController extends Controller
 {
@@ -30,6 +30,7 @@ class SocialController extends Controller
             if ($user) {
                 // Kalau ada, langsung login
                 Auth::login($user);
+
                 return redirect('/dashboard');
             } else {
                 // Cek lagi: Apakah emailnya udah dipake daftar manual?
@@ -49,7 +50,7 @@ class SocialController extends Controller
                     ]);
                     Auth::login($newUser);
                 }
-                
+
                 return redirect('/dashboard');
             }
         } catch (\Exception $e) {

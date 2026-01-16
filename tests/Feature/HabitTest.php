@@ -1,8 +1,7 @@
 <?php
 
-use App\Models\User;
 use App\Models\Habit;
-use App\Models\HabitLog;
+use App\Models\User;
 use Carbon\Carbon;
 use Inertia\Testing\AssertableInertia as Assert;
 
@@ -59,28 +58,28 @@ test('user TIDAK BISA edit habit milik orang lain (Security Check)', function ()
     // Skenario: Hacker (User B) mau ubah Habit User A
     $userA = User::factory()->create();
     $userB = User::factory()->create(); // Hacker
-    
+
     $habitMilikA = Habit::create([
         'user_id' => $userA->id, // Punya A
         'name' => 'Rahasia A',
         'period' => '2026-01',
         'monthly_target' => 1,
         'icon' => '🔒',
-        'color' => '#000'
+        'color' => '#000',
     ]);
 
     // User B mencoba maksa Update
     $response = $this->actingAs($userB)->patch("/habits/{$habitMilikA->id}", [
-        'name' => 'Hacked by B'
+        'name' => 'Hacked by B',
     ]);
 
     // Harapannya: Ditolak Satpam (403 Forbidden)
     $response->assertStatus(403);
-    
+
     // Pastikan data di database GAK BERUBAH
     $this->assertDatabaseHas('habits', [
         'id' => $habitMilikA->id,
-        'name' => 'Rahasia A' // Masih nama lama
+        'name' => 'Rahasia A', // Masih nama lama
     ]);
 });
 
@@ -92,7 +91,7 @@ test('user bisa melakukan log (centang) habit', function () {
         'period' => '2026-01',
         'monthly_target' => 30,
         'icon' => '💧',
-        'color' => '#fff'
+        'color' => '#fff',
     ]);
 
     $date = '2026-01-01';
@@ -100,7 +99,7 @@ test('user bisa melakukan log (centang) habit', function () {
     // Aksi: Centang habit
     $response = $this->actingAs($user)->post("/habits/{$habit->id}/log", [
         'date' => $date,
-        'status' => 'completed'
+        'status' => 'completed',
     ]);
 
     $response->assertRedirect();
@@ -109,6 +108,6 @@ test('user bisa melakukan log (centang) habit', function () {
     $this->assertDatabaseHas('habit_logs', [
         'habit_id' => $habit->id,
         'date' => $date,
-        'status' => 'completed'
+        'status' => 'completed',
     ]);
 });

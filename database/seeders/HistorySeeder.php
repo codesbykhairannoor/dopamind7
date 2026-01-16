@@ -2,21 +2,22 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Habit;
 use App\Models\HabitLog;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class HistorySeeder extends Seeder
 {
     public function run()
     {
         // 1. Ambil User Pertama (Khairan)
-        $user = User::first(); 
+        $user = User::first();
 
-        if (!$user) {
+        if (! $user) {
             $this->command->info('Belum ada user! Bikin user dulu lewat Register.');
+
             return;
         }
 
@@ -26,7 +27,7 @@ class HistorySeeder extends Seeder
             [
                 'icon' => '💻',
                 'color' => '#f59e0b', // Amber
-                'monthly_target' => 25
+                'monthly_target' => 25,
             ]
         );
 
@@ -38,8 +39,8 @@ class HistorySeeder extends Seeder
             $date = Carbon::create(2025, 12, $i)->format('Y-m-d');
 
             // Random status: Completed, Skipped, atau Kosong
-            $rand = rand(1, 3); 
-            $status = match($rand) {
+            $rand = rand(1, 3);
+            $status = match ($rand) {
                 1 => 'completed',
                 2 => 'skipped',
                 default => null
@@ -53,6 +54,6 @@ class HistorySeeder extends Seeder
             }
         }
 
-        $this->command->info('Data Desember 2025 berhasil dibuat untuk user: ' . $user->name);
+        $this->command->info('Data Desember 2025 berhasil dibuat untuk user: '.$user->name);
     }
 }

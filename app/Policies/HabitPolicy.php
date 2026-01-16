@@ -30,7 +30,7 @@ class HabitPolicy
     {
         return $user->id === $habit->user_id;
     }
-    
+
     /**
      * Siapa yang boleh centang log harian?
      */

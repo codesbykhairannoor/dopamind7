@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\PlannerTask;
-use App\Models\DailyLog; // 🔥 Jangan lupa import ini (Model baru)
+use App\Models\DailyLog;
+use App\Models\PlannerTask; // 🔥 Jangan lupa import ini (Model baru)
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class PlannerController extends Controller
 {
@@ -24,13 +23,13 @@ class PlannerController extends Controller
             ['user_id' => Auth::id()],
             [
                 'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''],
-                'notes' => ''
+                'notes' => '',
             ]
         );
 
         return Inertia::render('Planner/Index', [
             'tasks' => $tasks,
-            'dailyLog' => $dailyLog
+            'dailyLog' => $dailyLog,
         ]);
     }
 
@@ -42,7 +41,7 @@ class PlannerController extends Controller
             'start_time' => 'nullable|date_format:H:i', // Format jam:menit
             'end_time' => 'nullable|date_format:H:i|after:start_time',
             'type' => 'required|integer|in:1,2,3', // 1=Work, 2=Personal, 3=Urgent
-            'notes' => 'nullable|string'
+            'notes' => 'nullable|string',
         ]);
 
         // Simpan dengan User ID
@@ -67,7 +66,7 @@ class PlannerController extends Controller
             'start_time' => 'nullable|date_format:H:i',
             'end_time' => 'nullable|date_format:H:i',
             'type' => 'sometimes|integer|in:1,2,3',
-            'notes' => 'nullable|string'
+            'notes' => 'nullable|string',
         ]);
 
         $plannerTask->update($validated);
@@ -83,7 +82,7 @@ class PlannerController extends Controller
         }
 
         $plannerTask->update([
-            'is_completed' => !$plannerTask->is_completed
+            'is_completed' => ! $plannerTask->is_completed,
         ]);
 
         return back();
@@ -112,6 +111,7 @@ class PlannerController extends Controller
         }
 
         $plannerTask->delete();
+
         return back();
     }
 
@@ -124,7 +124,7 @@ class PlannerController extends Controller
         // 2. Reset Log Harian jadi kosong
         DailyLog::where('user_id', Auth::id())->update([
             'notes' => '',
-            'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => '']
+            'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''],
         ]);
 
         return back();

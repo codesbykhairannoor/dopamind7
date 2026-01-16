@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Habit;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
-use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
@@ -33,7 +33,7 @@ class DashboardController extends Controller
             ->get();
 
         $totalCompleted = $habits->sum('completed_count');
-        
+
         // Rumus: (Total Centang / (Total Habit * Hari yg sudah lewat)) * 100
         // Ini estimasi kasar buat motivasi
         $daysPassed = Carbon::now()->day;
@@ -46,7 +46,7 @@ class DashboardController extends Controller
                 'consistency' => $consistency,
                 'streak' => 12, // Nanti bisa dibikin logic real-nya
                 'is_premium' => $user->is_premium ?? false, // Asumsi ada kolom ini atau false
-            ]
+            ],
         ]);
     }
 }

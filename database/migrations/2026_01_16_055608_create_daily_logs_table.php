@@ -9,16 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   public function up(): void
-{
-    Schema::create('daily_logs', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-        $table->text('notes')->nullable();
-        $table->json('meals')->nullable(); // Simpan {breakfast: '', lunch: '', dinner: ''}
-        $table->timestamps();
-    });
-}
+    public function up(): void
+    {
+        Schema::create('daily_logs', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->text('notes')->nullable();
+            $table->json('meals')->nullable(); // Simpan {breakfast: '', lunch: '', dinner: ''}
+            $table->timestamps();
+        });
+    }
+
     /**
      * Reverse the migrations.
      */

@@ -22,7 +22,7 @@ class Habit extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'period','name', 'icon', 'color', 'monthly_target', 'is_archived'
+        'user_id', 'period', 'name', 'icon', 'color', 'monthly_target', 'is_archived',
     ];
 
     // 🔥 3. Tambahkan ': HasMany' (Ini Kuncinya!)
@@ -30,7 +30,7 @@ class Habit extends Model
     {
         return $this->hasMany(HabitLog::class);
     }
-    
+
     // 🔥 4. Tambahkan ': HasOne' sekalian biar rapi
     public function todayLog(): HasOne
     {

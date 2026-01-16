@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Habit;
-use App\Models\HabitLog;
-use App\Models\Mood;
-use App\Http\Resources\HabitResource;
-use App\Http\Requests\StoreHabitRequest; // ✅ Panggil Request yang baru dibuat
-use Illuminate\Http\Request;
-use Inertia\Inertia;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Enums\HabitStatus;
+use App\Http\Requests\StoreHabitRequest;
+use App\Http\Resources\HabitResource;
+use App\Models\Habit;
+use App\Models\HabitLog; // ✅ Panggil Request yang baru dibuat
+use App\Models\Mood;
+use Carbon\Carbon;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Inertia\Inertia;
 
 class HabitController extends Controller
 {
@@ -25,7 +25,7 @@ class HabitController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        
+
         // Default ke bulan sekarang kalau tidak ada request
         $monthQuery = $request->input('month', Carbon::now()->format('Y-m'));
         $dateObj = Carbon::createFromFormat('Y-m', $monthQuery);
@@ -33,8 +33,8 @@ class HabitController extends Controller
         // 🔥 OPTIMASI QUERY: Eager Load logs cuma untuk bulan yang dipilih
         $habits = Habit::where('user_id', $user->id)
             ->where('period', $monthQuery)
-            ->with(['logs' => fn($q) => $q->whereMonth('date', $dateObj->month)->whereYear('date', $dateObj->year)])
-            ->withCount(['logs as completed_count' => fn($q) => $q->where('status', 'completed')])
+            ->with(['logs' => fn ($q) => $q->whereMonth('date', $dateObj->month)->whereYear('date', $dateObj->year)])
+            ->withCount(['logs as completed_count' => fn ($q) => $q->where('status', 'completed')])
             ->get();
 
         // Data pendukung (Mood & Habit bulan lalu)
@@ -82,6 +82,7 @@ class HabitController extends Controller
         ]);
 
         $habit->update($validated);
+
         return back();
     }
 
@@ -165,6 +166,7 @@ class HabitController extends Controller
     {
         $this->authorize('delete', $habit);
         $habit->delete();
+
         return back();
     }
 }

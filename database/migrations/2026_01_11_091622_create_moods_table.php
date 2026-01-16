@@ -11,11 +11,11 @@ return new class extends Migration
         Schema::create('moods', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            
+
             // Hemat size
             $table->string('period', 7); // "2026-01"
             $table->string('mood_code', 20); // "fire", "sad" (Cukup 20 char)
-            
+
             $table->timestamps();
 
             // 🔥 COMPOSITE INDEX: Query mood user langsung ketemu tanpa scan satu tabel

@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Enums\HabitStatus;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 class StoreHabitRequest extends FormRequest
@@ -23,7 +23,7 @@ class StoreHabitRequest extends FormRequest
     {
         return [
             // Ini aturan yang kita pindahin dari Controller
-            'name' => 'required|string|max:100', 
+            'name' => 'required|string|max:100',
             'icon' => 'required|string|max:10',
             'color' => 'required|string|max:7',
             'monthly_target' => 'required|integer|min:1|max:31',

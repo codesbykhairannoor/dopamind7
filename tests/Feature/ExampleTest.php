@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use App\Models\Habit;
+use App\Models\User;
 use Inertia\Testing\AssertableInertia as Assert;
 
 // Wajib pakai RefreshDatabase biar data test dihapus lagi setelah selesai
@@ -18,7 +18,6 @@ test('halaman dashboard bisa dibuka user login', function () {
     $response->assertStatus(200);
 });
 
-
 test('halaman dashboard menampilkan data habit', function () {
     // 1. Setup Data
     $user = User::factory()->create();
@@ -26,7 +25,7 @@ test('halaman dashboard menampilkan data habit', function () {
         'user_id' => $user->id,
         'name' => 'Lari Pagi', // Kita cari ini nanti
         'period' => '2026-01',
-        'monthly_target' => 30
+        'monthly_target' => 30,
     ]);
 
     // 2. Action

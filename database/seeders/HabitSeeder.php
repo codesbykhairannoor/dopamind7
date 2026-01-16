@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\Habit;
 use App\Models\HabitLog;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +16,7 @@ class HabitSeeder extends Seeder
         // ==========================================
         // 🔥 EMAIL SPESIFIK KAMU 🔥
         // ==========================================
-        $targetEmail = 'khairking6@gmail.com'; 
+        $targetEmail = 'khairking6@gmail.com';
 
         // 1. Cari User / Buat User
         $user = User::firstOrCreate(
@@ -44,7 +44,7 @@ class HabitSeeder extends Seeder
                 [
                     'user_id' => $user->id,
                     'name' => $data['name'],
-                    'period' => $currentPeriod // <--- INI PERBAIKANNYA!
+                    'period' => $currentPeriod, // <--- INI PERBAIKANNYA!
                 ],
                 [
                     'icon' => $data['icon'],
@@ -56,7 +56,7 @@ class HabitSeeder extends Seeder
             // 4. Bikin Log Centang/Skip
             $startDate = Carbon::now()->startOfMonth();
             $today = Carbon::now();
-$currentPeriod = '2026-01';
+            $currentPeriod = '2026-01';
             HabitLog::where('habit_id', $habit->id)->delete();
 
             for ($date = $startDate; $date->lte($today); $date->addDay()) {

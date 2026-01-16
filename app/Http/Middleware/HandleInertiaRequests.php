@@ -17,7 +17,7 @@ class HandleInertiaRequests extends Middleware
     /**
      * Determine the current asset version.
      */
-    public function version(Request $request): string|null
+    public function version(Request $request): ?string
     {
         return parent::version($request);
     }
@@ -33,7 +33,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            // CUKUP INI AJA. 
+            // CUKUP INI AJA.
             // Kita gak butuh kirim 'translations' manual lagi karena library frontend udah handle.
             'locale' => app()->getLocale(),
         ]);

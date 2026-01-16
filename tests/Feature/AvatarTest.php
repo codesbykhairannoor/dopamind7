@@ -9,10 +9,10 @@ uses(Illuminate\Foundation\Testing\RefreshDatabase::class);
 test('user bisa upload avatar profil', function () {
     // 1. Pura-pura kita punya Storage S3 (Mocking)
     // Jadi gak beneran upload ke cloud, cuma di memori aja
-    Storage::fake('s3'); 
+    Storage::fake('s3');
 
     $user = User::factory()->create();
-    
+
     // 2. Bikin file gambar palsu
     $file = UploadedFile::fake()->image('ganteng.jpg');
 

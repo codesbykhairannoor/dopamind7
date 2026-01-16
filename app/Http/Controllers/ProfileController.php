@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage; // <--- WAJIB: Buat akses S3/Local
-use Intervention\Image\Laravel\Facades\Image; // <--- WAJIB: Buat kompres gambar
-use Inertia\Inertia;
+use Inertia\Inertia; // <--- WAJIB: Buat kompres gambar
 use Inertia\Response;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -59,7 +59,7 @@ class ProfileController extends Controller
 
             // C. Buat Nama File Unik
             // Format: avatars/USERID-TIMESTAMP.jpg
-            $filename = 'avatars/' . $user->id . '-' . time() . '.jpg';
+            $filename = 'avatars/'.$user->id.'-'.time().'.jpg';
 
             // D. Upload ke Storage (Otomatis detect S3 atau Local dari .env)
             Storage::put($filename, $image);

@@ -4,15 +4,15 @@ namespace App\Models;
 
 // 🔥 1. HILANGKAN KOMENTAR DI SINI
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Sanctum\HasApiTokens;
 
 // 🔥 2. TAMBAHKAN 'implements MustVerifyEmail'
-class User extends Authenticatable 
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -32,9 +32,9 @@ class User extends Authenticatable
     protected function avatarUrl(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->avatar_path 
+            get: fn () => $this->avatar_path
                 ? Storage::url($this->avatar_path)
-                : 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4FF'
+                : 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF'
         );
     }
 
