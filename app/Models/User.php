@@ -68,7 +68,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return Attribute::make(
             get: fn () => ($this->attributes['avatar_path'] ?? null)
                 ? Storage::url($this->attributes['avatar_path'])
-                : 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4FF'
+                : 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF'
         );
     }
 
