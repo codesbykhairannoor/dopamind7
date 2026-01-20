@@ -150,7 +150,7 @@
     
     "reset_placeholder_pass": "Min. 8 karakter",
     "reset_btn": "Simpan Password",
-
+"habit_name": "Nama Habit",
     "habit_page_title": "Habit Tracker",
     "habit_subtitle": "Bangun konsistensi, pelan tapi pasti.",
     "habit_progress": "Progress Bulan Ini",
@@ -192,6 +192,8 @@
     "stats_total_check": "Total Checklist",
     "stats_mood": "Mood Tracker",
     "stats_mood_desc": "On Fire!",
+
+    
     
     "habit_empty_title": "Mulai Bersih",
     "habit_empty_desc": "Belum ada habit bulan ini.",
@@ -219,6 +221,90 @@
     "legend_left_click": "Klik Kiri: Selesai",
     "legend_right_click": "Klik Kanan: Skip",
     "legend_reset": "Klik Lagi: Hapus",
-"today_is" : "Hari Ini"
+"today_is" : "Hari Ini",
+
+"planner_title": "Jadwal Harian",
+    "planner_time_fmt": "WIB",
+    "planner_click_hint": "Klik untuk tambah jadwal",
+    
+    "cat_work": "Kerjaan",
+    "cat_life": "Pribadi",
+    "cat_urgent": "Penting",
+    "cat_other": "Lainnya",
+    
+    "task_notes": "Catatan",
+    "sidebar_daily_focus": "Fokus Hari Ini",
+    "sidebar_tasks_done": "Tugas Selesai",
+    "sidebar_all_done_msg": "Luar biasa! Semua beres! 🎉",
+    "sidebar_keep_going_msg": "Ayo, selesaikan sisanya! 💪",
+    "sidebar_inbox_title": "Kotak Masuk",
+    "sidebar_inbox_empty": "Belum ada tugas antre.",
+    "sidebar_meals_title": "Menu Makan",
+    "sidebar_notes_title": "Catatan Cepat",
+    "sidebar_notes_placeholder": "Tulis ide dadakan disini...",
+    
+    "btn_add": "Tambah",
+    "btn_save": "Simpan",
+    "btn_update": "Perbarui",
+    "btn_delete": "Hapus",
+    "btn_cancel": "Batal",
+
+    "meal_breakfast": "Sarapan...",
+    "meal_lunch": "Makan Siang...",
+    "meal_dinner": "Makan Malam...",
+
+    "modal_edit_title": "Edit Tugas",
+    "modal_new_title": "Tugas Baru",
+    "modal_label_task_name": "Apa tugasnya?",
+    "modal_placeholder_task_name": "Contoh: Beli Kopi...",
+    "modal_label_color": "Kategori",
+
+  "sidebar_inbox_focus": "STATUS INBOX",
+  "sidebar_tasks_unit": "Tugas",
+  "sidebar_msg_complete": "Luar biasa! Semua tuntas 🚀",
+  "sidebar_msg_progress": "Ayo gas terus, kamu bisa! 🔥",
+
+  "modal_new_simple_title": "Tugas Baru",
+  "modal_edit_simple_title": "Edit Tugas",
+  "modal_placeholder_simple_task": "Mau ngerjain apa?",
+  "modal_label_priority": "PRIORITAS",
+  
+  "prio_important": "Penting Banget",
+  "prio_important_desc": "Harus selesai, jangan ditunda.",
+  "prio_normal": "Normal",
+  "prio_normal_desc": "Kerjakan sesuai alur biasa.",
+  "prio_optional": "Opsional",
+  "prio_optional_desc": "Kalau ada waktu sisa aja.",
+
+  "btn_add_task": "Simpan Tugas",
+  "icon_tooltip": "Ikon Prioritas",
+
+  
+    
+  "modal_title_new": "✨ Rencana Baru",
+  "modal_title_edit": "✏️ Edit Rencana",
+  "label_activity": "Nama Kegiatan",
+  "placeholder_activity": "Contoh: Belajar Coding...",
+  "label_start_time": "Jam Mulai",
+  "label_end_time": "Jam Selesai (Opsional)",
+  "error_conflict": "⛔ Pilih jam yang kosong ya!",
+  "label_priority": "Prioritas / Kategori",
+  "priority_work": "💼 Work",
+  "priority_normal": "🧘 Normal",
+  "priority_urgent": "🔥 Urgent",
+  "label_notes": "Catatan / Notes",
+  "placeholder_notes": "Detail tambahan...",
+ 
+  "btn_create": "Buat Jadwal",
+  
+  "header_title": "Daily Planner",
+  "header_progress": "Progress",
+  "header_done_suffix": "Selesai",
+  "header_completed": "Selesai",
+  "header_pending": "Pending",
+  "btn_reset": "Reset",
+  "btn_reset_tooltip": "Hapus semua task hari ini"
+
+   
 
 }

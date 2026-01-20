@@ -25,7 +25,7 @@ defineProps({
 
                     <div class="sticky top-0 z-30 bg-white border-b border-slate-100 flex shadow-sm">
                         <div class="sticky left-0 z-40 bg-white w-36 md:w-72 border-r border-slate-100 p-3 md:p-4 flex items-center font-bold text-slate-400 text-[10px] md:text-xs uppercase tracking-wider">
-                            <span class="truncate">Kebiasaan</span>
+                            <span class="truncate"> {{ $t('habit_name') }}</span>
                         </div>
 
                         <div class="flex items-center px-2 md:px-4 py-2 md:py-3 gap-1 md:gap-1.5">

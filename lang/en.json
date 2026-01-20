@@ -186,6 +186,9 @@
     "habit_table_target": "Target",
     "habit_table_total": "Total",
     "habit_table_progress": "Progress",
+
+"habit_name": "Habit Name",
+
     
     "stats_consistency": "Avg. Consistency",
     "stats_total_check": "Total Checks",
@@ -218,8 +221,90 @@
     "legend_left_click": "Left Click: Done",
     "legend_right_click": "Right Click: Skip",
     "legend_reset": "Click Again: Reset",
-"today_is" : "Today"
+"today_is" : "Today",
 
+"planner_title": "Daily Timeline",
+    "planner_time_fmt": "AM/PM",
+    "planner_click_hint": "Click to add schedule",
+    
+    "cat_work": "Work",
+    "cat_life": "Life",
+    "cat_urgent": "Urgent",
+    "cat_other": "Other",
+    
+    "task_notes": "Notes",
+
+    "sidebar_daily_focus": "Daily Focus",
+    "sidebar_tasks_done": "Tasks Done",
+    "sidebar_all_done_msg": "Awesome! All clear! 🎉",
+    "sidebar_keep_going_msg": "Keep pushing forward! 💪",
+    "sidebar_inbox_title": "Inbox",
+    "sidebar_inbox_empty": "No backlog tasks.",
+    "sidebar_meals_title": "Meal Plan",
+    "sidebar_notes_title": "Quick Notes",
+    "sidebar_notes_placeholder": "Type quick ideas here...",
+    
+    "btn_add": "Add",
+    "btn_save": "Save",
+    "btn_update": "Update",
+    "btn_delete": "Delete",
+    "btn_cancel": "Cancel",
+
+    "meal_breakfast": "Breakfast...",
+    "meal_lunch": "Lunch...",
+    "meal_dinner": "Dinner...",
+
+    "modal_edit_title": "Edit Task",
+    "modal_new_title": "New Task",
+    "modal_label_task_name": "Task Name",
+    "modal_placeholder_task_name": "Ex: Buy Coffee...",
+    "modal_label_color": "Category",
+
+  "sidebar_inbox_focus": "INBOX STATUS",
+  "sidebar_tasks_unit": "Tasks",
+  "sidebar_msg_complete": "Awesome! All done 🚀",
+  "sidebar_msg_progress": "Keep the momentum going! 🔥",
+
+  "modal_new_simple_title": "New Task",
+  "modal_edit_simple_title": "Edit Task",
+  "modal_placeholder_simple_task": "What needs to be done?",
+  "modal_label_priority": "PRIORITY",
+  
+  "prio_important": "Urgent / Important",
+  "prio_important_desc": "Must be done, do not delay.",
+  "prio_normal": "Normal",
+  "prio_normal_desc": "Standard workflow routine.",
+  "prio_optional": "Optional",
+  "prio_optional_desc": "Only if you have extra time.",
+
+  "btn_add_task": "Add Task",
+  "icon_tooltip": "Priority Icon",
+
+  
+  "modal_title_new": "✨ New Plan",
+  "modal_title_edit": "✏️ Edit Plan",
+  "label_activity": "Activity Name",
+  "placeholder_activity": "Example: Coding Study...",
+  "label_start_time": "Start Time",
+  "label_end_time": "End Time (Optional)",
+  "error_conflict": "⛔ Please choose an empty slot!",
+  "label_priority": "Priority / Category",
+  "priority_work": "💼 Work",
+  "priority_normal": "🧘 Normal",
+  "priority_urgent": "🔥 Urgent",
+  "label_notes": "Notes",
+  "placeholder_notes": "Additional details...",
+  "btn_create": "Create Schedule",
+
+  "header_title": "Daily Planner",
+  "header_progress": "Progress",
+  "header_done_suffix": "Done",
+  "header_completed": "Completed",
+  "header_pending": "Pending",
+  "btn_reset": "Reset",
+  "btn_reset_tooltip": "Delete all tasks for today"
+
+ 
 
 
 

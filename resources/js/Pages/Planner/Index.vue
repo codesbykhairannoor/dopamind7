@@ -3,25 +3,24 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import { usePlanner } from '@/Composables/Planner/usePlanner';
 
-// Import semua komponen anak
 import PlannerHeader from './PlannerHeader.vue';
 import PlannerSidebar from './PlannerSidebar.vue';
 import PlannerTimeline from './PlannerTimeline.vue';
 import PlannerModal from './PlannerModal.vue';
-import SimpleModal from './SimpleModal.vue'; // 🔥 Import Modal Baru
+import SimpleModal from './SimpleModal.vue';
 
 const props = defineProps({ 
     tasks: Array, 
     dailyLog: Object 
 });
 
-// Panggil Logic Manajer
 const {
-    scheduledTasks, inboxTasks, timeSlots, stats,
-    form, isModalOpen, isEditing, activeModalType, // 🔥 Ambil variable activeModalType
+    scheduledTasks, inboxTasks, timeSlots, 
+    scheduledStats, inboxStats,
+    form, isModalOpen, isEditing, activeModalType,
     openModal, submitTask, deleteTask, resetBoard, toggleComplete,
     onDragStart, onDrop, getTypeColor,
-    localNotes, localMeals
+    localNotes, localMeals, conflictError
 } = usePlanner(props);
 </script>
 
@@ -29,26 +28,27 @@ const {
     <Head title="Daily Planner" />
 
     <AuthenticatedLayout>
-        <div class="max-w-[1600px] mx-auto p-4 md:p-6 h-[calc(100vh-80px)] flex flex-col font-sans">
+        <div class="max-w-[1600px] mx-auto p-4 md:p-6 flex flex-col font-sans h-auto md:h-[calc(100vh-80px)]">
             
             <PlannerHeader 
                 :openModal="openModal" 
                 :resetBoard="resetBoard"
-                :stats="stats"
+                :stats="scheduledStats" 
                 class="flex-shrink-0" 
             />
 
-            <div class="flex-1 flex flex-col md:flex-row gap-6 overflow-hidden mt-4">
+            <div class="flex flex-col md:flex-row gap-6 mt-4 h-auto md:flex-1 md:overflow-hidden">
                 
                 <PlannerSidebar 
                     :inboxTasks="inboxTasks"
-                    :stats="stats"
+                    :stats="inboxStats"
                     v-model:localNotes="localNotes"
                     v-model:localMeals="localMeals"
                     :onDragStart="onDragStart"
                     :openModal="openModal"
                     :toggleComplete="toggleComplete"
                     :getTypeColor="getTypeColor"
+                    class="w-full md:w-[30%] flex-shrink-0"
                 />
 
                 <PlannerTimeline 
@@ -59,6 +59,7 @@ const {
                     :openModal="openModal"
                     :toggleComplete="toggleComplete" 
                     :getTypeColor="getTypeColor"
+                    class="w-full md:flex-1 min-h-[500px]"
                 />
 
             </div>
@@ -79,7 +80,7 @@ const {
             :show="isModalOpen"
             :form="form"
             :isEditing="isEditing"
-            :close="() => isModalOpen = false"
+            :conflictError="conflictError"  :close="() => isModalOpen = false"
             :submit="submitTask"
             :remove="deleteTask"
         />
