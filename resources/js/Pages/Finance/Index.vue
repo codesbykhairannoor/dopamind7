@@ -8,7 +8,7 @@ import TransactionList from './TransactionList.vue';
 import BudgetSidebar from './BudgetSidebar.vue';
 import TransactionModal from './TransactionModal.vue';
 import BudgetModal from './BudgetModal.vue'; // 🔥 IMPORT BARU
-
+import DailyTrendChart from './DailyTrendChart.vue';
 import { useFinanceCalendar } from '@/Composables/Finance/useFinanceCalendar';
 import { useFinanceForm } from '@/Composables/Finance/useFinanceForm';
 
@@ -75,6 +75,11 @@ const handleTransactionSubmit = () => {
                     />
                 </div>
             </div>
+
+            <DailyTrendChart 
+                :transactions="transactions" 
+                :currentDate="filters.date" 
+            />
 
             <TransactionModal 
                 :show="showTransactionModal"
