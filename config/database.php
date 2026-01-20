@@ -76,6 +76,10 @@ return [
             'prefix_indexes' => true,
             'search_path' => 'public',
             'sslmode' => 'prefer',
+            // TAMBAHAN WAJIB BUAT SUPABASE PORT 6543:
+            'attributes' => [
+                PDO::ATTR_EMULATE_PREPARES => true,
+            ],
         ],
 
         'sqlsrv' => [
