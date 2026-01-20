@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Daftarkan Telescope hanya jika di environment local
+        if ($this->app->environment('local') && class_exists(\App\Providers\TelescopeServiceProvider::class)) {
+            $this->app->register(\App\Providers\TelescopeServiceProvider::class);
+        }
     }
 
     /**
@@ -22,10 +25,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::shouldBeStrict(! $this->app->isProduction());
+
         // Kalau di Production (Live), paksa semua link jadi HTTPS
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
-
         }
     }
 }
