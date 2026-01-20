@@ -9,18 +9,13 @@ import PlannerTimeline from './PlannerTimeline.vue';
 import PlannerModal from './PlannerModal.vue';
 import SimpleModal from './SimpleModal.vue';
 
-const props = defineProps({ 
-    tasks: Array, 
-    dailyLog: Object 
-});
+const props = defineProps({ tasks: Array, dailyLog: Object });
 
 const {
-    scheduledTasks, inboxTasks, timeSlots, 
-    scheduledStats, inboxStats,
+    scheduledTasks, inboxTasks, timeSlots, scheduledStats, inboxStats,
     form, isModalOpen, isEditing, activeModalType,
     openModal, submitTask, deleteTask, resetBoard, toggleComplete,
-    onDragStart, onDrop, getTypeColor,
-    localNotes, localMeals, conflictError
+    onDragStart, onDrop, getTypeColor, localNotes, localMeals, conflictError
 } = usePlanner(props);
 </script>
 
@@ -28,62 +23,50 @@ const {
     <Head title="Daily Planner" />
 
     <AuthenticatedLayout>
-        <div class="max-w-[1600px] mx-auto p-4 md:p-6 flex flex-col font-sans h-auto md:h-[calc(100vh-80px)]">
-            
-            <PlannerHeader 
-                :openModal="openModal" 
-                :resetBoard="resetBoard"
-                :stats="scheduledStats" 
-                class="flex-shrink-0" 
-            />
+        
+        <div class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <PlannerHeader 
+                    :openModal="openModal" 
+                    :resetBoard="resetBoard"
+                    :stats="scheduledStats" 
+                />
+            </div>
+        </div>
 
-            <div class="flex flex-col md:flex-row gap-6 mt-4 h-auto md:flex-1 md:overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                 
-                <PlannerSidebar 
-                    :inboxTasks="inboxTasks"
-                    :stats="inboxStats"
-                    v-model:localNotes="localNotes"
-                    v-model:localMeals="localMeals"
-                    :onDragStart="onDragStart"
-                    :openModal="openModal"
-                    :toggleComplete="toggleComplete"
-                    :getTypeColor="getTypeColor"
-                    class="w-full md:w-[30%] flex-shrink-0"
-                />
+                <div class="lg:col-span-1">
+                    <PlannerSidebar 
+                        :inboxTasks="inboxTasks"
+                        :stats="inboxStats"
+                        v-model:localNotes="localNotes"
+                        v-model:localMeals="localMeals"
+                        :onDragStart="onDragStart"
+                        :openModal="openModal"
+                        :toggleComplete="toggleComplete"
+                        :getTypeColor="getTypeColor"
+                    />
+                </div>
 
-                <PlannerTimeline 
-                    :timeSlots="timeSlots"
-                    :scheduledTasks="scheduledTasks"
-                    :onDrop="onDrop"
-                    :onDragStart="onDragStart"
-                    :openModal="openModal"
-                    :toggleComplete="toggleComplete" 
-                    :getTypeColor="getTypeColor"
-                    class="w-full md:flex-1 min-h-[500px]"
-                />
+                <div class="lg:col-span-2">
+                    <PlannerTimeline 
+                        :timeSlots="timeSlots"
+                        :scheduledTasks="scheduledTasks"
+                        :onDrop="onDrop"
+                        :onDragStart="onDragStart"
+                        :openModal="openModal"
+                        :toggleComplete="toggleComplete" 
+                        :getTypeColor="getTypeColor"
+                    />
+                </div>
 
             </div>
         </div>
 
-        <SimpleModal
-            v-if="activeModalType === 'simple'"
-            :show="isModalOpen"
-            :form="form"
-            :isEditing="isEditing"
-            :close="() => isModalOpen = false"
-            :submit="submitTask"
-            :remove="deleteTask"
-        />
-
-        <PlannerModal 
-            v-else
-            :show="isModalOpen"
-            :form="form"
-            :isEditing="isEditing"
-            :conflictError="conflictError"  :close="() => isModalOpen = false"
-            :submit="submitTask"
-            :remove="deleteTask"
-        />
+        <SimpleModal v-if="activeModalType === 'simple'" :show="isModalOpen" :form="form" :isEditing="isEditing" :close="() => isModalOpen = false" :submit="submitTask" :remove="deleteTask" />
+        <PlannerModal v-else :show="isModalOpen" :form="form" :isEditing="isEditing" :conflictError="conflictError" :close="() => isModalOpen = false" :submit="submitTask" :remove="deleteTask" />
 
     </AuthenticatedLayout>
 </template>

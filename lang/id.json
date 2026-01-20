@@ -303,7 +303,29 @@
   "header_completed": "Selesai",
   "header_pending": "Pending",
   "btn_reset": "Reset",
-  "btn_reset_tooltip": "Hapus semua task hari ini"
+  "btn_reset_tooltip": "Hapus semua task hari ini",
+
+    "sidebar_target_daily": "Target Harian",
+    "sidebar_done_suffix": "Selesai",
+    "sidebar_inbox_subtitle": "Drag ke timeline untuk jadwal",
+    "btn_add_task_short": "Task",
+    "btn_add_schedule": "Tambah Jadwal",
+    
+    "label_urgent": "PENTING",
+    "label_routine": "RUTIN",
+    "label_chill": "SANTAI",
+    "label_todo": "TODO",
+    "label_work": "KERJA",
+    "label_break": "ISTIRAHAT",
+    
+    "sidebar_meal_title": "MENU MAKAN",
+    "placeholder_breakfast": "Sarapan apa?",
+    "placeholder_lunch": "Makan Siang...",
+    "placeholder_dinner": "Makan Malam...",
+    
+    
+    "timeline_title": "Jadwal Harian",
+    "timeline_now": "SEKARANG"
 
    
 

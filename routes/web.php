@@ -6,6 +6,7 @@ use App\Http\Controllers\PlannerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
+use App\Http\Controllers\FinanceController;
 
 // --- UTILITY: SWITCH LANGUAGE ---
 Route::get('/lang/{locale}', function ($locale) {
@@ -69,6 +70,16 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/{habit}', [\App\Http\Controllers\HabitController::class, 'update'])->name('update');
         Route::delete('/{habit}', [\App\Http\Controllers\HabitController::class, 'destroy'])->name('destroy');
         Route::post('/{habit}/log', [\App\Http\Controllers\HabitController::class, 'storeLog'])->name('log');
+    });
+
+    // FINANCE ROUTES
+    Route::prefix('finance')->name('finance.')->group(function () {
+        Route::get('/', [FinanceController::class, 'index'])->name('index'); // Halaman Utama
+        Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
+        Route::delete('/transaction/{financeTransaction}', [FinanceController::class, 'destroyTransaction'])->name('transaction.destroy');
+        
+        Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
+        // Route untuk ganti bulan (opsional, bisa pake query param ?month=2026-02 di index)
     });
 
     // ... settings & profile tetap sama ...

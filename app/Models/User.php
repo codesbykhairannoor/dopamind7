@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
@@ -75,8 +76,26 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Relationships
      */
-    public function periods()
+    public function periods(): HasMany
     {
         return $this->hasMany(Period::class);
+    }
+
+    // --- RELASI FINANCE (INI YANG TADI MISSING) ---
+
+    /**
+     * User memiliki banyak transaksi keuangan.
+     */
+    public function financeTransactions(): HasMany
+    {
+        return $this->hasMany(FinanceTransaction::class);
+    }
+
+    /**
+     * User memiliki banyak rencana anggaran (budget).
+     */
+    public function financeBudgets(): HasMany
+    {
+        return $this->hasMany(FinanceBudget::class);
     }
 }

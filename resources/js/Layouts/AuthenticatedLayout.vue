@@ -28,14 +28,13 @@ const switchLang = (lang) => {
 };
 
 // --- HELPER ACTIVE LINK ---
-// Kita bikin lebih fleksibel buat ngecek sub-route
 const isActive = (routeName) => route().current(routeName);
 </script>
 
 <template>
     <div class="flex h-screen bg-slate-50 font-sans overflow-hidden selection:bg-indigo-500 selection:text-white">
         
-       <aside class="w-72 bg-white border-r border-slate-100 hidden md:flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] flex-shrink-0 transition-all duration-300">
+        <aside class="w-72 bg-white border-r border-slate-100 hidden md:flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] flex-shrink-0 transition-all duration-300">
             
             <div class="h-24 flex items-center px-8">
                 <Link :href="route('dashboard')" class="group flex items-center gap-3">
@@ -74,6 +73,16 @@ const isActive = (routeName) => route().current(routeName);
                     <span class="text-xl">📅</span>
                     <span>Daily Planner</span>
                 </Link>
+
+                <Link 
+                    v-if="showModule('finance')"
+                    :href="route('finance.index')" 
+                    class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
+                    :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
+                >
+                    <span class="text-xl">💸</span>
+                    <span>Finance</span>
+                </Link>
                 
             </nav>
 
@@ -105,6 +114,7 @@ const isActive = (routeName) => route().current(routeName);
                 </div>
             </div>
         </aside>
+
         <main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50">
             
             <div class="md:hidden bg-white/80 backdrop-blur-md h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-30 shadow-sm">
@@ -130,6 +140,10 @@ const isActive = (routeName) => route().current(routeName);
 
                 <Link v-if="showModule('planner')" :href="route('planner.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">
                     Daily Planner
+                </Link>
+                
+                <Link v-if="showModule('finance')" :href="route('finance.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">
+                    Finance
                 </Link>
 
                 <Link :href="route('settings.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">

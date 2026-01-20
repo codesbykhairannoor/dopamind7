@@ -302,7 +302,28 @@
   "header_completed": "Completed",
   "header_pending": "Pending",
   "btn_reset": "Reset",
-  "btn_reset_tooltip": "Delete all tasks for today"
+  "btn_reset_tooltip": "Delete all tasks for today",
+
+  "sidebar_target_daily": "Daily Target",
+    "sidebar_done_suffix": "Done",
+    "sidebar_inbox_subtitle": "Drag to timeline to schedule",
+    "btn_add_task_short": "Task",
+    "btn_add_schedule": "Add Schedule",
+    
+    "label_urgent": "URGENT",
+    "label_routine": "ROUTINE",
+    "label_chill": "CHILL",
+    "label_todo": "TODO",
+    "label_work": "WORK",
+    "label_break": "BREAK",
+    
+    "sidebar_meal_title": "MEAL PLAN",
+    "placeholder_breakfast": "What's for breakfast?",
+    "placeholder_lunch": "Lunch...",
+    "placeholder_dinner": "Dinner...",
+    
+    "timeline_title": "Daily Schedule",
+    "timeline_now": "NOW"
 
  
 
