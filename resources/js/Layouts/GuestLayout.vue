@@ -33,10 +33,15 @@ const isActive = (routeName) => route().current(routeName);
         <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all animate-in slide-in-from-top-full duration-700">
             <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative">
                 
-                <Link :href="route('home')" class="group text-2xl font-black text-brand-600 tracking-tighter flex items-center gap-2 hover:opacity-80 transition z-20">
-                    <span class="text-3xl transition-transform duration-500 group-hover:rotate-180">✦</span> 
-                    DopaMind.
-                </Link>
+                <Link :href="route('home')" class="group text-2xl font-black text-indigo-600 tracking-tighter flex items-center gap-2 hover:opacity-80 transition z-20">
+    <img 
+        src="/favicon.ico?v=2" 
+        alt="DopaMind Logo" 
+        class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
+    />
+    
+    <span>DopaMind<span class="text-indigo-400">.</span></span>
+</Link>
 
                 <div class="hidden md:flex items-center gap-2 font-medium text-sm absolute left-1/2 -translate-x-1/2">
                     <Link 

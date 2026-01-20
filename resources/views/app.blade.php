@@ -6,6 +6,9 @@
 
         <title inertia>{{ config('app.name', 'DopaMind') }}</title>
 
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2">
+
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet" />
 

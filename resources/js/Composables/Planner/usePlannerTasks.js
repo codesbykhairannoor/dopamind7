@@ -9,14 +9,14 @@ export function usePlannerTasks(props) {
         localTasks.value = [...newTasks];
     }, { deep: true });
 
-    // 🔥 1. DEFINISI KATEGORI TASK DULU (Biar bisa dihitung stats-nya)
+    // 🔥 1. DEFINISI KATEGORI TASK
     const scheduledTasks = computed(() => 
         localTasks.value.filter(t => t.start_time).sort((a, b) => a.start_time.localeCompare(b.start_time))
     );
 
     const inboxTasks = computed(() => localTasks.value.filter(t => !t.start_time));
 
-    // 🔥 2. FUNGSI HELPER HITUNG STATS (Biar gak ngoding ulang)
+    // 🔥 2. FUNGSI HELPER HITUNG STATS
     const calculateStats = (tasks) => {
         const total = tasks.length;
         const completed = tasks.filter(t => t.is_completed).length;
@@ -29,13 +29,10 @@ export function usePlannerTasks(props) {
     };
 
     // 🔥 3. PISAH STATS JADI DUA
-    // Stats buat Header (Timeline/Scheduled)
     const scheduledStats = computed(() => calculateStats(scheduledTasks.value));
-    
-    // Stats buat Sidebar (Inbox/Simple)
     const inboxStats = computed(() => calculateStats(inboxTasks.value));
 
-    // --- FORM & LOGIC LAIN TETAP SAMA ---
+    // --- FORM & MODAL STATE ---
     const form = useForm({
         id: null, title: '', start_time: null, end_time: null, type: 1, notes: ''
     });
@@ -44,6 +41,7 @@ export function usePlannerTasks(props) {
     const isEditing = ref(false);
     const activeModalType = ref('full'); 
 
+    // --- LOGIC VALIDASI WAKTU (FULL) ---
     const validateTime = () => {
         conflictError.value = null;
         if (!form.start_time) return;
@@ -71,6 +69,7 @@ export function usePlannerTasks(props) {
 
     watch(() => [form.start_time, form.end_time], validateTime);
 
+    // --- MODAL CONTROL ---
     const openModal = (task = null, timeSlot = null, type = 'full') => {
         form.reset();
         conflictError.value = null;
@@ -101,12 +100,16 @@ export function usePlannerTasks(props) {
         isModalOpen.value = true;
     };
 
+    // --- CRUD ACTIONS (SILENT OPTIMIZED) ---
     const submitTask = () => {
         if (conflictError.value) return; 
 
         const options = {
             onSuccess: () => isModalOpen.value = false,
-            preserveScroll: true
+            preserveScroll: true,
+            preserveState: true,
+            only: ['tasks'], // 🔥 Cuma refresh list tasks
+            showProgress: false // 🔥 Matiin loading bar browser
         };
 
         if (isEditing.value) {
@@ -119,26 +122,36 @@ export function usePlannerTasks(props) {
     const deleteTask = (id) => {
         if(confirm('Hapus task ini?')) {
             router.delete(route('planner.destroy', id), {
+                preserveScroll: true,
+                only: ['tasks'],
+                showProgress: false,
                 onSuccess: () => isModalOpen.value = false
             });
         }
     };
 
     const toggleComplete = (task) => {
-        task.is_completed = !task.is_completed;
-        router.post(route('planner.toggle', task.id), {}, { preserveScroll: true });
+        task.is_completed = !task.is_completed; // Optimistic
+        router.post(route('planner.toggle', task.id), {}, { 
+            preserveScroll: true, 
+            preserveState: true,
+            only: ['tasks'],
+            showProgress: false 
+        });
     };
 
     const resetBoard = () => {
         if(confirm('Mulai hari baru?')) {
-            router.post(route('planner.reset'), {}, { preserveScroll: true });
+            router.post(route('planner.reset'), {}, { 
+                preserveScroll: true,
+                showProgress: false 
+            });
         }
     };
 
-    // 🔥 RETURN scheduledStats & inboxStats (GANTIKAN STATS LAMA)
     return {
         localTasks, scheduledTasks, inboxTasks, 
-        scheduledStats, inboxStats, // <--- INI YG BARU
+        scheduledStats, inboxStats,
         form, isModalOpen, isEditing, activeModalType, conflictError,
         openModal, submitTask, deleteTask, resetBoard, toggleComplete
     };

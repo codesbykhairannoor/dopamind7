@@ -211,6 +211,67 @@ const toggleFaq = (index) => {
             </div>
         </section>
 
+<section class="py-24 bg-gray-50 border-t border-gray-100 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="relative bg-white rounded-[3rem] p-8 md:p-16 shadow-xl shadow-indigo-100 border border-indigo-50 overflow-hidden flex flex-col md:flex-row items-center gap-12">
+            
+            <div class="absolute -right-20 -top-20 w-80 h-80 bg-indigo-50 rounded-full blur-3xl opacity-60"></div>
+            
+            <div class="w-full md:w-1/2 relative flex justify-center">
+                <div class="relative w-64 h-[500px] bg-slate-900 rounded-[2.5rem] border-[8px] border-slate-800 shadow-2xl overflow-hidden transform md:-rotate-6 hover:rotate-0 transition-transform duration-500">
+                    <div class="absolute top-0 w-full h-6 bg-slate-800 flex justify-center items-center">
+                        <div class="w-16 h-4 bg-slate-900 rounded-full"></div>
+                    </div>
+                    <div class="p-4 mt-8 space-y-4">
+                        <div class="h-32 bg-indigo-600/20 rounded-2xl animate-pulse"></div>
+                        <div class="space-y-2">
+                            <div class="h-4 w-3/4 bg-slate-700 rounded-full"></div>
+                            <div class="h-4 w-1/2 bg-slate-700 rounded-full"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-8">
+                            <div class="h-20 bg-emerald-500/20 rounded-xl"></div>
+                            <div class="h-20 bg-blue-500/20 rounded-xl"></div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-8 w-full px-6">
+                        <div class="h-12 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/50 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-widest">DopaMind App</div>
+                    </div>
+                </div>
+                <div class="absolute top-10 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-indigo-50 animate-bounce">
+                    <span class="text-2xl">📱</span>
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 text-center md:text-left relative z-10">
+                <span class="inline-block bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">
+                    Coming Soon
+                </span>
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+                    {{ $t('waitlist_title') }}
+                </h2>
+                <p class="text-gray-500 text-lg mb-10 leading-relaxed">
+                    {{ $t('waitlist_desc') }}
+                </p>
+
+                <form @submit.prevent="" class="flex flex-col sm:flex-row gap-3">
+                    <input 
+                        type="email" 
+                        :placeholder="$t('waitlist_input_placeholder')"
+                        class="flex-1 px-6 py-4 rounded-2xl bg-gray-50 border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none font-medium transition-all"
+                        required
+                    />
+                    <button class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform active:scale-95">
+                        {{ $t('waitlist_btn') }}
+                    </button>
+                </form>
+                <p class="mt-4 text-xs text-gray-400 font-medium">
+                    {{ $t('waitlist_note') }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
         <section class="py-24 px-6 text-center">
             <div class="max-w-5xl mx-auto bg-indigo-950 rounded-[3rem] p-12 md:p-24 text-white relative overflow-hidden shadow-2xl animate-in zoom-in-95 fade-in duration-1000 delay-200 fill-mode-both">
                 <div class="absolute top-0 left-0 w-64 h-64 bg-indigo-600 rounded-full mix-blend-screen filter blur-[80px] opacity-30 animate-pulse duration-[4000ms]"></div>

@@ -29,6 +29,15 @@ const switchLang = (lang) => {
 
 // --- HELPER ACTIVE LINK ---
 const isActive = (routeName) => route().current(routeName);
+
+// --- NAVIGASI CLEAN (Mencegah Partial Reload Leakage) ---
+const navigateTo = (routeName) => {
+    showingNavigationDropdown.value = false;
+    router.get(route(routeName), {}, {
+        preserveState: false, // Memastikan state halaman sebelumnya dibuang
+        preserveScroll: false
+    });
+};
 </script>
 
 <template>
@@ -130,23 +139,51 @@ const isActive = (routeName) => route().current(routeName);
 
             <div v-show="showingNavigationDropdown" class="md:hidden bg-white border-b border-slate-100 p-4 shadow-xl space-y-2 animate-in slide-in-from-top-2 absolute w-full z-40">
                 
-                <Link :href="route('dashboard')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">
+                <Link 
+                    :href="route('dashboard')" 
+                    class="block px-4 py-3 rounded-xl font-bold transition" 
+                    :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
+                    @click="showingNavigationDropdown = false"
+                >
                     {{ $t('nav_dashboard') }}
                 </Link>
-                
-                <Link v-if="showModule('habit')" :href="route('habits.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">
+
+                <Link 
+                    v-if="showModule('habit')" 
+                    :href="route('habits.index')" 
+                    class="block px-4 py-3 rounded-xl font-bold transition" 
+                    :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
+                    @click="showingNavigationDropdown = false"
+                >
                     {{ $t('habit_page_title') }}
                 </Link>
 
-                <Link v-if="showModule('planner')" :href="route('planner.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">
+                <Link 
+                    v-if="showModule('planner')" 
+                    :href="route('planner.index')" 
+                    class="block px-4 py-3 rounded-xl font-bold transition" 
+                    :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
+                    @click="showingNavigationDropdown = false"
+                >
                     Daily Planner
                 </Link>
-                
-                <Link v-if="showModule('finance')" :href="route('finance.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">
+
+                <Link 
+                    v-if="showModule('finance')" 
+                    :href="route('finance.index')" 
+                    class="block px-4 py-3 rounded-xl font-bold transition" 
+                    :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
+                    @click="showingNavigationDropdown = false"
+                >
                     Finance
                 </Link>
 
-                <Link :href="route('settings.index')" class="block px-4 py-3 rounded-xl font-bold transition" :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'">
+                <Link 
+                    :href="route('settings.index')" 
+                    class="block px-4 py-3 rounded-xl font-bold transition" 
+                    :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
+                    @click="showingNavigationDropdown = false"
+                >
                     {{ $t('nav_settings') }}
                 </Link>
 
@@ -171,10 +208,3 @@ const isActive = (routeName) => route().current(routeName);
         </main>
     </div>
 </template>
-
-<style>
-.custom-scrollbar::-webkit-scrollbar { width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-</style>

@@ -243,6 +243,25 @@
     "sidebar_meals_title": "Meal Plan",
     "sidebar_notes_title": "Quick Notes",
     "sidebar_notes_placeholder": "Type quick ideas here...",
+
+    "dash_greet_morning": "Good Morning",
+    "dash_greet_afternoon": "Good Afternoon",
+    "dash_greet_evening": "Good Evening",
+    "dash_greet_night": "Good Night",
+    "dash_welcome_sub": "Ready to make 1% progress today? Manage your habits, schedule, and finances all in one place.",
+    "dash_habit_desc": "Track your daily habits and build long-term consistency.",
+    "dash_planner_desc": "Organize your daily tasks to stay focused and productive.",
+    "dash_finance_desc": "Record expenses and income to maintain your financial health.",
+    "dash_open_module": "Open Module",
+    "dash_status_label": "Account Status",
+
+    
+    "waitlist_title": "DopaMind in Your Pocket.",
+    "waitlist_desc": "We are building a mobile app to help you stay productive on the go. Be the first to know when we launch on App Store & Play Store.",
+    "waitlist_input_placeholder": "Enter your email address...",
+    "waitlist_btn": "Get Early Access",
+    "waitlist_note": "Don't worry, we don't spam. Only launch news.",
+
     
     "btn_add": "Add",
     "btn_save": "Save",
