@@ -28,7 +28,6 @@ class StoreHabitRequest extends FormRequest
             'color' => 'required|string|max:7',
             'monthly_target' => 'required|integer|min:1|max:31',
             'period' => 'required|string|max:7',
-            'status' => ['required', Rule::enum(HabitStatus::class)],
         ];
     }
 }

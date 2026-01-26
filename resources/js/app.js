@@ -5,8 +5,6 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
-
-// 1. IMPORT LIBRARY i18n
 import { i18nVue } from 'laravel-vue-i18n';
 
 const appName = import.meta.env.VITE_APP_NAME || 'DopaMind';
@@ -18,7 +16,6 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
-            // 2. AKTIFKAN LIBRARY DISINI
             .use(i18nVue, {
                 resolve: async lang => {
                     const langs = import.meta.glob('../../lang/*.json');
@@ -27,9 +24,6 @@ createInertiaApp({
             })
             .mount(el);
     },
-    progress: {
-        color: '#4f46e5',
-        showSpinner: true,
-        includeCSS: true,
-    },
+    // 🔥 UBAH BAGIAN INI: Set progress ke false untuk mematikan garis loading biru
+    progress: false,
 });
