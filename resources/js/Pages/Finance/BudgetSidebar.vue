@@ -6,9 +6,7 @@ const props = defineProps({
     expenseStats: Object
 });
 
-// 🔥 TAMBAH INI: Biar bisa kirim sinyal klik ke parent
-const emit = defineEmits(['add']);
-
+const emit = defineEmits(['add', 'delete-budget', 'edit-budget']);
 const { formatRupiah, getCategoryDetails } = useFinanceFormat();
 
 const getProgress = (category, limit) => {
@@ -28,13 +26,7 @@ const getBarColor = (percent) => {
     <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm h-fit sticky top-6">
         <div class="flex justify-between items-center mb-6">
             <h3 class="font-bold text-slate-800">Budgeting</h3>
-            
-            <button 
-                @click="$emit('add')" 
-                class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg hover:bg-indigo-100 transition"
-            >
-                + Set
-            </button>
+            <button @click="$emit('add')" class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg hover:bg-indigo-100 transition">+ Set</button>
         </div>
 
         <div v-if="budgets.length === 0" class="text-center py-4">
@@ -42,15 +34,24 @@ const getBarColor = (percent) => {
         </div>
 
         <div class="space-y-6">
-            <div v-for="budget in budgets" :key="budget.id">
-                <div class="flex justify-between text-sm mb-1">
+            <div v-for="budget in budgets" :key="budget.id" class="group">
+                <div class="flex justify-between text-sm mb-1 items-start">
                     <div class="flex items-center gap-2">
                         <span>{{ getCategoryDetails(budget.category).icon }}</span>
-                        <span class="font-bold text-slate-700 capitalize">{{ budget.category }}</span>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-slate-700 capitalize leading-none">{{ budget.category }}</span>
+                            <div class="flex gap-2 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button @click="$emit('edit-budget', budget)" class="text-[10px] text-indigo-500 hover:text-indigo-700 font-bold uppercase">Edit</button>
+                                <span class="text-[10px] text-slate-200">|</span>
+                                <button @click="$emit('delete-budget', budget.id)" class="text-[10px] text-rose-400 hover:text-rose-600 font-bold uppercase">Hapus</button>
+                            </div>
+                        </div>
                     </div>
-                    <span class="text-slate-400 text-xs">
-                        {{ formatRupiah(props.expenseStats[budget.category] || 0) }} / {{ formatRupiah(budget.limit_amount) }}
-                    </span>
+                    <div class="text-right">
+                        <span class="text-slate-400 text-[10px] block">
+                            {{ formatRupiah(props.expenseStats[budget.category] || 0) }} / {{ formatRupiah(budget.limit_amount) }}
+                        </span>
+                    </div>
                 </div>
                 
                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">

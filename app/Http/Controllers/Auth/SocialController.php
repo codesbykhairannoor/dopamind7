@@ -10,51 +10,55 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialController extends Controller
 {
-    // 1. Lempar User ke Google
     public function redirect()
     {
         return Socialite::driver('google')->redirect();
     }
 
-    // 2. Google Balikin User ke Kita
     public function callback()
     {
         try {
-            // 🔥 TAMBAHAN: Kasih tau PHPStan kalau ini User dari Socialite v2
             /** @var \Laravel\Socialite\Two\User $googleUser */
             $googleUser = Socialite::driver('google')->user();
 
-            // Cek: Apakah user ini udah ada di database?
+            // Cek user berdasarkan google_id
             $user = User::where('google_id', $googleUser->id)->first();
 
             if ($user) {
-                // Kalau ada, langsung login
-                Auth::login($user);
+                // LOGIN DENGAN REMEMBER ME TRUE
+                Auth::login($user, true);
+                return redirect()->intended('/dashboard');
+            } 
 
-                return redirect('/dashboard');
+            // Cek berdasarkan email jika google_id belum ada
+            $existingUser = User::where('email', $googleUser->email)->first();
+
+            if ($existingUser) {
+                $existingUser->update(['google_id' => $googleUser->id]);
+                Auth::login($existingUser, true);
             } else {
-                // Cek lagi: Apakah emailnya udah dipake daftar manual?
-                $existingUser = User::where('email', $googleUser->email)->first();
-
-                if ($existingUser) {
-                    // Kalau email sama, kita sambungin akun Google-nya
-                    $existingUser->update(['google_id' => $googleUser->id]);
-                    Auth::login($existingUser);
-                } else {
-                    // Kalau belum ada sama sekali, bikin user baru
-                    $newUser = User::create([
-                        'name' => $googleUser->name,
-                        'email' => $googleUser->email,
-                        'google_id' => $googleUser->id,
-                        'password' => bcrypt(Str::random(16)), // Password acak (dummy)
-                    ]);
-                    Auth::login($newUser);
-                }
-
-                return redirect('/dashboard');
+                // Buat user baru jika belum terdaftar
+                $newUser = User::create([
+                    'name' => $googleUser->name,
+                    'email' => $googleUser->email,
+                    'google_id' => $googleUser->id,
+                    'password' => bcrypt(Str::random(16)),
+                    // Inisialisasi settings default jika diperlukan
+                    'settings' => [
+                        'modules' => [
+                            'habit' => true,
+                            'planner' => true,
+                            'finance' => true,
+                        ]
+                    ]
+                ]);
+                Auth::login($newUser, true);
             }
+
+            return redirect()->intended('/dashboard');
+
         } catch (\Exception $e) {
-            return redirect('/login')->with('error', 'Login Google Gagal.');
+            return redirect('/login')->with('error', 'Login Google Gagal: ' . $e->getMessage());
         }
     }
 }

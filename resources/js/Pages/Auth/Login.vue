@@ -15,9 +15,13 @@ const form = useForm({
     email: '',
     password: '',
     remember: false,
+    timezone: '',
 });
 
 const submit = () => {
+    // Deteksi timezone browser secara otomatis (Contoh: "Asia/Jakarta")
+    form.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
     form.post(route('login'), {
         onFinish: () => form.reset('password'),
     });

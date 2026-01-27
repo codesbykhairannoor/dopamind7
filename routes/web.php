@@ -42,8 +42,8 @@ Route::middleware(['auth'])->group(function () {
     // 1. DASHBOARD
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-    // 2. PLANNER (Task Management)
-    Route::prefix('planner')->name('planner.')->group(function () {
+    // 2. PLANNER (Task Management) - PROTECTED
+    Route::middleware(['module:planner'])->prefix('planner')->name('planner.')->group(function () {
         Route::get('/', [PlannerController::class, 'index'])->name('index');
         Route::post('/', [PlannerController::class, 'store'])->name('store');
         Route::patch('/{plannerTask}', [PlannerController::class, 'update'])->name('update');
@@ -53,8 +53,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/reset', [PlannerController::class, 'resetBoard'])->name('reset');
     });
 
-    // 3. HABIT TRACKER
-    Route::prefix('habits')->name('habits.')->group(function () {
+    // 3. HABIT TRACKER - PROTECTED
+    Route::middleware(['module:habit'])->prefix('habits')->name('habits.')->group(function () {
         Route::get('/', [HabitController::class, 'index'])->name('index');
         Route::post('/', [HabitController::class, 'store'])->name('store');
         Route::post('/copy', [HabitController::class, 'copyFromPrevious'])->name('copy');
@@ -64,21 +64,22 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/{habit}/log', [HabitController::class, 'storeLog'])->name('log');
     });
 
-    // 4. FINANCE (Manajemen Keuangan) - INI YANG DIPERBAIKI & DITAMBAH
-    Route::prefix('finance')->name('finance.')->group(function () {
-        Route::get('/', [FinanceController::class, 'index'])->name('index');
-        
-        // Transactions
-        Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
-        Route::patch('/transaction/{financeTransaction}', [FinanceController::class, 'updateTransaction'])->name('transaction.update'); // <-- BARU: Biar bisa edit
-        Route::delete('/transaction/{financeTransaction}', [FinanceController::class, 'destroyTransaction'])->name('transaction.destroy');
-        
-        // Budgets
-        Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
-        Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy'); // <-- BARU: Biar bisa hapus budget
-    });
+   // 4. FINANCE - PROTECTED
+Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->group(function () {
+    Route::get('/', [FinanceController::class, 'index'])->name('index');
+    
+    // Transaksi
+    Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
+    Route::patch('/transaction/{financeTransaction}', [FinanceController::class, 'updateTransaction'])->name('transaction.update');
+    Route::delete('/transaction/{financeTransaction}', [FinanceController::class, 'destroyTransaction'])->name('transaction.destroy');
+    
+    // Budget (Pastikan pakai {financeBudget} agar sinkron dengan Controller)
+    Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
+    Route::put('/budget/{financeBudget}', [FinanceController::class, 'updateBudget'])->name('budget.update');
+    Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy');
+});
 
-    // 5. SETTINGS & PROFILE
+    // 5. SETTINGS & PROFILE (Always Accessible)
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 

@@ -1,10 +1,11 @@
-// resources/js/Composables/Finance/useFinanceForm.js
 import { useForm, router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 
 export function useFinanceForm() {
     
+    // --- 1. TRANSACTION LOGIC ---
     const transactionForm = useForm({
+        id: null,
         title: '',
         amount: '',
         type: 'expense',
@@ -13,40 +14,51 @@ export function useFinanceForm() {
         notes: ''
     });
 
+    // Fungsi sakti untuk memindahkan data dari list ke form saat edit
+    const setEditTransaction = (trx) => {
+        transactionForm.id = trx.id;
+        transactionForm.title = trx.title;
+        transactionForm.amount = trx.amount;
+        transactionForm.type = trx.type;
+        transactionForm.category = trx.category;
+        transactionForm.date = trx.date;
+        transactionForm.notes = trx.notes ?? '';
+    };
+
     const submitTransaction = (onSuccessCallback) => {
-        transactionForm.post(route('finance.transaction.store'), {
+        const method = transactionForm.id ? 'patch' : 'post';
+        const url = transactionForm.id 
+            ? route('finance.transaction.update', transactionForm.id) 
+            : route('finance.transaction.store');
+
+        transactionForm[method](url, {
             preserveScroll: true,
             preserveState: true,
-            only: ['transactions', 'stats', 'budgets'],
-            showProgress: false, 
-            // Jurus Instan: Tutup modal duluan lewat callback sebelum request selesai 
             onBefore: () => {
                 if(onSuccessCallback) onSuccessCallback();
             },
             onSuccess: () => {
-                transactionForm.reset('title', 'amount', 'notes');
+                transactionForm.reset();
             },
             onError: () => {
-                // Balikin modal kalau gagal (opsional)
-                alert('Gagal simpan transaksi');
+                alert('Gagal memproses transaksi. Cek kembali inputan kamu.');
             }
         });
     };
 
-    const deleteTransaction = (id) => {
-        // Ganti confirm bawaan browser dengan custom UI nanti biar lebih mobile-feel
-        if(confirm('Hapus transaksi?')) {
-            router.delete(route('finance.transaction.destroy', id), {
-                preserveScroll: true,
-                preserveState: true,
-                only: ['transactions', 'stats', 'budgets'],
-                showProgress: false,
-                // Tanpa reload halaman sama sekali
-            });
-        }
+    // Hapus id saja tanpa confirm() browser
+    const deleteTransaction = (id, onSuccessCallback) => {
+        router.delete(route('finance.transaction.destroy', id), {
+            preserveScroll: true,
+            onSuccess: () => {
+                if (onSuccessCallback) onSuccessCallback();
+            }
+        });
     };
 
+    // --- 2. BUDGET LOGIC ---
     const budgetForm = useForm({
+        id: null,
         category: 'food',
         limit_amount: '',
         month: ''
@@ -54,24 +66,35 @@ export function useFinanceForm() {
 
     const submitBudget = (monthKey, onSuccessCallback) => {
         budgetForm.month = monthKey;
-        budgetForm.post(route('finance.budget.store'), {
+        const method = budgetForm.id ? 'put' : 'post';
+        const url = budgetForm.id 
+            ? route('finance.budget.update', budgetForm.id) 
+            : route('finance.budget.store');
+
+        budgetForm[method](url, {
             preserveScroll: true,
-            showProgress: false,
-            only: ['budgets', 'stats'],
             onBefore: () => {
                 if(onSuccessCallback) onSuccessCallback();
             },
             onSuccess: () => {
-                budgetForm.reset('limit_amount');
+                budgetForm.reset();
             }
+        });
+    };
+
+    const deleteBudget = (id) => {
+        router.delete(route('finance.budget.destroy', id), {
+            preserveScroll: true
         });
     };
 
     return {
         transactionForm,
+        setEditTransaction,
         submitTransaction,
         deleteTransaction,
         budgetForm,
-        submitBudget
+        submitBudget,
+        deleteBudget
     };
 }

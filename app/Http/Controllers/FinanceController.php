@@ -63,6 +63,8 @@ class FinanceController extends Controller
         ]);
     }
 
+    // --- TRANSACTIONS ---
+
     public function storeTransaction(Request $request)
     {
         $validated = $request->validate([
@@ -75,7 +77,6 @@ class FinanceController extends Controller
         ]);
 
         $request->user()->financeTransactions()->create($validated);
-
         return back()->with('success', 'Transaksi berhasil disimpan!');
     }
 
@@ -93,7 +94,6 @@ class FinanceController extends Controller
         ]);
 
         $financeTransaction->update($validated);
-
         return back()->with('success', 'Transaksi berhasil diperbarui!');
     }
 
@@ -104,6 +104,8 @@ class FinanceController extends Controller
         $financeTransaction->delete();
         return back()->with('success', 'Transaksi dihapus.');
     }
+
+    // --- BUDGETS ---
 
     public function storeBudget(Request $request)
     {
@@ -119,12 +121,23 @@ class FinanceController extends Controller
                 'category' => $validated['category'],
                 'month' => $validated['month']
             ],
-            [
-                'limit_amount' => $validated['limit_amount']
-            ]
+            ['limit_amount' => $validated['limit_amount']]
         );
 
         return back()->with('success', 'Budget berhasil diatur!');
+    }
+
+    public function updateBudget(Request $request, FinanceBudget $financeBudget)
+    {
+        if ($financeBudget->user_id !== Auth::id()) abort(403);
+
+        $validated = $request->validate([
+            'limit_amount' => 'required|numeric|min:1',
+            'category' => 'required|string',
+        ]);
+
+        $financeBudget->update($validated);
+        return back()->with('success', 'Budget berhasil diperbarui!');
     }
 
     public function destroyBudget(FinanceBudget $financeBudget)
