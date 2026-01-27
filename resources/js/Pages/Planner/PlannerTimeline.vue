@@ -16,12 +16,13 @@ let timerInterval;
 onMounted(() => { timerInterval = setInterval(() => now.value = new Date(), 60000); });
 onUnmounted(() => clearInterval(timerInterval));
 
-// Helper: Kembalikan Key Label untuk $t
+// SINKRONISASI ID: 1=Urgent, 2=Work, 3=Normal/Break
 const getTaskMeta = (type) => {
-    switch (type) {
-        case 1: return { icon: '🔥', labelKey: 'label_urgent', textClass: 'text-rose-700', bgClass: 'bg-rose-50' };
-        case 2: return { icon: '⚡', labelKey: 'label_work', textClass: 'text-indigo-700', bgClass: 'bg-indigo-50' };
-        case 3: return { icon: '☕', labelKey: 'label_break', textClass: 'text-emerald-700', bgClass: 'bg-emerald-50' };
+    const t = parseInt(type);
+    switch (t) {
+        case 1: return { icon: '🔥', labelKey: 'priority_urgent', textClass: 'text-rose-700', bgClass: 'bg-rose-50' };
+        case 2: return { icon: '⚡', labelKey: 'priority_work', textClass: 'text-indigo-700', bgClass: 'bg-indigo-50' };
+        case 3: return { icon: '☕', labelKey: 'priority_normal', textClass: 'text-emerald-700', bgClass: 'bg-emerald-50' };
         default: return { icon: '📝', labelKey: 'label_todo', textClass: 'text-slate-700', bgClass: 'bg-slate-50' };
     }
 };
@@ -113,7 +114,6 @@ const formatTimeRange = (task) => {
                 :class="[getTypeColor(task.type), task.is_completed ? 'opacity-60 grayscale bg-slate-50 !border-slate-300' : 'bg-white']">
                 
                 <div class="px-4 py-2 flex justify-between items-start h-full gap-3 relative overflow-hidden">
-                    
                     <div class="absolute -right-2 -bottom-2 text-6xl opacity-[0.03] pointer-events-none select-none">
                         {{ getTaskMeta(task.type).icon }}
                     </div>
@@ -144,7 +144,6 @@ const formatTimeRange = (task) => {
                     </button>
                 </div>
             </div>
-
         </div>
     </div>
 </template>

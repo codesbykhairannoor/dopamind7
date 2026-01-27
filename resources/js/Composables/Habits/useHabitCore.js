@@ -26,9 +26,12 @@ export function useHabitCore(props) {
         if (localHabits.value.length === 0) return 0;
         const todayStr = dayjs().format('YYYY-MM-DD');
         let completed = 0;
+        
         localHabits.value.forEach(h => {
-            const log = h.logs.find(l => l.date === todayStr);
-            if (log && log.status === 'completed') completed++;
+            // ✅ SPEED: Langsung cek key, gak pake .find()
+            if (h.logs && h.logs[todayStr] === 'completed') {
+                completed++;
+            }
         });
         return Math.round((completed / localHabits.value.length) * 100);
     });
@@ -48,8 +51,8 @@ export function useHabitCore(props) {
 
     // --- TOGGLE LOGIC ---
     const getStatus = (habit, dateString) => {
-        const log = habit.logs.find(l => l.date === dateString);
-        return log ? log.status : 'empty';
+        // ✅ SPEED: O(1) Access
+        return habit.logs && habit.logs[dateString] ? habit.logs[dateString] : 'empty';
     };
 
     const toggleStatus = async (habitId, dateString, forceStatus = null) => {
@@ -59,8 +62,8 @@ export function useHabitCore(props) {
         if (habitIndex === -1) return;
         const habit = localHabits.value[habitIndex];
 
-        const logIndex = habit.logs.findIndex(l => l.date === dateString);
-        const currentStatus = logIndex !== -1 ? habit.logs[logIndex].status : 'empty';
+        // ✅ SPEED: Ambil status lama langsung dari object
+        const currentStatus = habit.logs[dateString] || 'empty';
 
         let newStatus = 'completed';
         if (forceStatus) {
@@ -69,21 +72,23 @@ export function useHabitCore(props) {
             newStatus = (currentStatus === 'completed' || currentStatus === 'skipped') ? 'uncheck' : 'completed';
         }
 
-        if (logIndex !== -1) {
-            if (newStatus === 'uncheck') habit.logs.splice(logIndex, 1);
-            else habit.logs[logIndex].status = newStatus;
-        } else if (newStatus !== 'uncheck') {
-            habit.logs.push({ date: dateString, status: newStatus });
+        // ✅ Update Object (Optimistic)
+        if (newStatus === 'uncheck') {
+            delete habit.logs[dateString];
+        } else {
+            habit.logs[dateString] = newStatus;
         }
 
-        // Recalculate Progress
-        const newCompletedCount = habit.logs.filter(l => l.status === 'completed').length;
+        // Recalculate Progress (Hitung dari value object logs)
+        const newCompletedCount = Object.values(habit.logs).filter(status => status === 'completed').length;
+        
         habit.progress_count = newCompletedCount;
         habit.progress_percent = habit.monthly_target > 0
             ? Math.min(100, Math.round((newCompletedCount / habit.monthly_target) * 100))
             : 0;
 
         try {
+            // Tetap kirim ke server di background
             await axios.post(route('habits.log', habitId), { date: dateString, status: newStatus });
         } catch (e) {
             console.error("Gagal save:", e);

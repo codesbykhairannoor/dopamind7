@@ -11,33 +11,19 @@ const currentLang = computed(() => page.props.locale || 'id');
 // --- STATE NAVIGASI MOBILE ---
 const showingNavigationDropdown = ref(false);
 
-// --- LOGIC CEK MODUL AKTIF ---
 const showModule = (moduleName) => {
     return user.value.settings?.modules?.[moduleName] ?? true;
 };
 
-// --- FUNGSI GANTI BAHASA ---
 const switchLang = (lang) => {
     router.visit(route('lang.switch', lang), {
         method: 'get',
         preserveScroll: true,
-        onSuccess: () => {
-            loadLanguageAsync(lang);
-        }
+        onSuccess: () => loadLanguageAsync(lang)
     });
 };
 
-// --- HELPER ACTIVE LINK ---
 const isActive = (routeName) => route().current(routeName);
-
-// --- NAVIGASI CLEAN (Mencegah Partial Reload Leakage) ---
-const navigateTo = (routeName) => {
-    showingNavigationDropdown.value = false;
-    router.get(route(routeName), {}, {
-        preserveState: false, // Memastikan state halaman sebelumnya dibuang
-        preserveScroll: false
-    });
-};
 </script>
 
 <template>
@@ -56,6 +42,8 @@ const navigateTo = (routeName) => {
                 
                 <Link 
                     :href="route('dashboard')" 
+                    prefetch 
+                    cache-for="5s"
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
                     :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
                 >
@@ -66,6 +54,8 @@ const navigateTo = (routeName) => {
                 <Link 
                     v-if="showModule('habit')"
                     :href="route('habits.index')" 
+                    prefetch
+                    cache-for="5s"
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
                     :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
                 >
@@ -76,6 +66,7 @@ const navigateTo = (routeName) => {
                 <Link 
                     v-if="showModule('planner')"
                     :href="route('planner.index')" 
+                    prefetch
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
                     :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
                 >
@@ -86,6 +77,7 @@ const navigateTo = (routeName) => {
                 <Link 
                     v-if="showModule('finance')"
                     :href="route('finance.index')" 
+                    prefetch
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
                     :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
                 >
@@ -99,6 +91,7 @@ const navigateTo = (routeName) => {
                 
                 <Link 
                     :href="route('settings.index')" 
+                    prefetch
                     class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-500 hover:text-indigo-600 hover:bg-white transition border border-transparent hover:border-slate-200 hover:shadow-sm"
                 >
                     <span class="text-lg">⚙️</span>
@@ -141,6 +134,7 @@ const navigateTo = (routeName) => {
                 
                 <Link 
                     :href="route('dashboard')" 
+                    prefetch
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
                     @click="showingNavigationDropdown = false"
@@ -151,6 +145,7 @@ const navigateTo = (routeName) => {
                 <Link 
                     v-if="showModule('habit')" 
                     :href="route('habits.index')" 
+                    prefetch
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
                     @click="showingNavigationDropdown = false"
@@ -161,6 +156,7 @@ const navigateTo = (routeName) => {
                 <Link 
                     v-if="showModule('planner')" 
                     :href="route('planner.index')" 
+                    prefetch
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
                     @click="showingNavigationDropdown = false"
@@ -171,6 +167,7 @@ const navigateTo = (routeName) => {
                 <Link 
                     v-if="showModule('finance')" 
                     :href="route('finance.index')" 
+                    prefetch
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
                     @click="showingNavigationDropdown = false"
@@ -180,6 +177,7 @@ const navigateTo = (routeName) => {
 
                 <Link 
                     :href="route('settings.index')" 
+                    prefetch
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
                     @click="showingNavigationDropdown = false"

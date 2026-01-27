@@ -1,9 +1,22 @@
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
     show: Boolean,
     form: Object,
+    budgets: Array, // Kita ambil data budget untuk list kategori
     close: Function,
     submit: Function
+});
+
+// List kategori pintar: Bawaan + Kategori yang pernah dibuat di Budget
+const availableCategories = computed(() => {
+    const defaults = ['food', 'transport', 'bills', 'shopping', 'others'];
+    // Ambil kategori unik dari budget yang sudah ada di database
+    const fromBudgets = props.budgets ? props.budgets.map(b => b.category) : [];
+    
+    // Gabungkan dan hapus duplikat
+    return [...new Set([...defaults, ...fromBudgets])];
 });
 </script>
 
@@ -11,39 +24,50 @@ const props = defineProps({
     <div v-if="show" class="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div @click="close" class="absolute inset-0 bg-slate-900/30 backdrop-blur-sm transition-opacity"></div>
         
-        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl z-10 p-6 transform transition-all scale-100">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl z-10 p-6 transform transition-all scale-100 animate-in zoom-in duration-200">
             <h3 class="text-xl font-black text-slate-800 mb-6">✨ Catat Baru</h3>
             
             <form @submit.prevent="submit" class="space-y-4">
                 <div class="flex bg-slate-100 p-1 rounded-xl">
-                    <button type="button" @click="form.type = 'expense'" class="flex-1 py-2 rounded-lg text-sm font-bold transition" :class="form.type === 'expense' ? 'bg-white text-rose-600 shadow-sm' : 'text-slate-400'">Pengeluaran</button>
-                    <button type="button" @click="form.type = 'income'" class="flex-1 py-2 rounded-lg text-sm font-bold transition" :class="form.type === 'income' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-400'">Pemasukan</button>
+                    <button type="button" @click="form.type = 'expense'" 
+                        class="flex-1 py-2 rounded-lg text-sm font-bold transition" 
+                        :class="form.type === 'expense' ? 'bg-white text-rose-600 shadow-sm' : 'text-slate-400'">
+                        Pengeluaran
+                    </button>
+                    <button type="button" @click="form.type = 'income'" 
+                        class="flex-1 py-2 rounded-lg text-sm font-bold transition" 
+                        :class="form.type === 'income' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-400'">
+                        Pemasukan
+                    </button>
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-500 mb-1">Untuk apa?</label>
-                    <input v-model="form.title" type="text" placeholder="Contoh: Nasi Goreng" class="w-full px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 placeholder:font-normal">
+                    <input v-model="form.title" type="text" placeholder="Contoh: Nasi Goreng" 
+                        class="w-full px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 placeholder:font-normal">
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-500 mb-1">Nominal (Rp)</label>
-                    <input v-model="form.amount" type="number" placeholder="0" class="w-full px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700">
+                    <input v-model="form.amount" type="number" placeholder="0" 
+                        class="w-full px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700">
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-500 mb-1">Kategori</label>
-                    <select v-model="form.category" class="w-full px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700">
-                        <option value="food">🍔 Makanan</option>
-                        <option value="transport">🛵 Transport</option>
-                        <option value="bills">⚡ Tagihan</option>
-                        <option value="shopping">🛍️ Belanja</option>
-                        <option value="others">📦 Lainnya</option>
+                    <select v-model="form.category" 
+                        class="w-full px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 capitalize">
+                        <option v-for="cat in availableCategories" :key="cat" :value="cat">
+                            {{ cat }}
+                        </option>
                     </select>
+                    <p class="text-[10px] text-slate-400 mt-1 italic">*Kategori baru bisa ditambah via menu Set Budget</p>
                 </div>
 
                 <div>
                     <label class="block text-xs font-bold text-slate-500 mb-1">Tanggal</label>
-                    <input v-model="form.date" type="date" class="w-full px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700">
+                    <input v-model="form.date" type="date" 
+                        class="w-full px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700">
                 </div>
 
                 <div class="flex gap-3 pt-4">

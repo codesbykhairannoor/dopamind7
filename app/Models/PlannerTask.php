@@ -12,7 +12,15 @@ class PlannerTask extends Model
 
     // 🔥 FIX: Ijinkan semua kolom diisi kecuali ID
     protected $guarded = ['id'];
-
+protected $fillable = [
+    'user_id',
+    'title',
+    'start_time',
+    'end_time',
+    'type',
+    'notes',
+    'is_completed', // tambahin ini juga kalau ada
+];
     protected $casts = [
         'is_completed' => 'boolean',
         'type' => 'integer',

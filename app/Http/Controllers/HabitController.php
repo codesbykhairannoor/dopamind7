@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Enums\HabitStatus;
-use App\Http\Requests\StoreHabitRequest;
+use App\Http\Requests\LogHabitRequest;   // ✅ Request Baru
+use App\Http\Requests\StoreHabitRequest; // ✅ Request Create
+use App\Http\Requests\UpdateHabitRequest; // ✅ Request Update Baru
 use App\Http\Resources\HabitResource;
 use App\Models\Habit;
-use App\Models\HabitLog; // ✅ Panggil Request yang baru dibuat
+use App\Models\HabitLog;
 use App\Models\Mood;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class HabitController extends Controller
@@ -20,30 +21,36 @@ class HabitController extends Controller
     use AuthorizesRequests;
 
     /**
-     * Tampilkan Halaman Utama Habit Tracker
+     * Tampilkan Halaman Utama & Data API
      */
     public function index(Request $request)
     {
         $user = Auth::user();
-
-        // Default ke bulan sekarang kalau tidak ada request
         $monthQuery = $request->input('month', Carbon::now()->format('Y-m'));
         $dateObj = Carbon::createFromFormat('Y-m', $monthQuery);
 
-        // 🔥 OPTIMASI QUERY: Eager Load logs cuma untuk bulan yang dipilih
+        // --- QUERY DATABASE ---
         $habits = Habit::where('user_id', $user->id)
             ->where('period', $monthQuery)
+            // Eager load logs hanya bulan yang diminta
             ->with(['logs' => fn ($q) => $q->whereMonth('date', $dateObj->month)->whereYear('date', $dateObj->year)])
             ->withCount(['logs as completed_count' => fn ($q) => $q->where('status', 'completed')])
             ->get();
 
-        // Data pendukung (Mood & Habit bulan lalu)
+        $dataResource = HabitResource::collection($habits);
+
+        // 📱 JIKA MOBILE APP (API)
+        if ($request->wantsJson()) {
+            return $dataResource;
+        }
+
+        // 💻 JIKA WEB (INERTIA)
         $currentMood = Mood::where('user_id', $user->id)->where('period', $monthQuery)->first();
         $prevMonth = $dateObj->copy()->subMonth()->format('Y-m');
         $hasPrevHabits = Habit::where('user_id', $user->id)->where('period', $prevMonth)->exists();
 
         return Inertia::render('Habits/Index', [
-            'habits' => HabitResource::collection($habits),
+            'habits' => $dataResource,
             'currentMonth' => $dateObj->translatedFormat('F Y'),
             'monthQuery' => $monthQuery,
             'hasPrevHabits' => $hasPrevHabits,
@@ -53,60 +60,72 @@ class HabitController extends Controller
     }
 
     /**
-     * Simpan Habit Baru (CLEAN VERSION ✨)
+     * Simpan Habit Baru
      */
     public function store(StoreHabitRequest $request)
     {
-        // Gak perlu validasi manual lagi, Laravel otomatis cek StoreHabitRequest
-        Habit::create(array_merge(
+        $habit = Habit::create(array_merge(
             ['user_id' => Auth::id()],
-            $request->validated() // Ambil data yang sudah lolos validasi
+            $request->validated()
         ));
 
+        // 📱 API Response
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Habit created successfully',
+                'data' => new HabitResource($habit)
+            ], 201);
+        }
+
+        // 💻 Web Redirect
         return back();
     }
 
     /**
      * Update Habit (Edit Nama/Target)
      */
-    public function update(Request $request, Habit $habit)
+    public function update(UpdateHabitRequest $request, Habit $habit)
     {
         $this->authorize('update', $habit);
 
-        // Validasi inline sederhana (karena update biasanya optional/sedikit)
-        $validated = $request->validate([
-            'name' => 'sometimes|string|max:100',
-            'icon' => 'sometimes|string|max:10',
-            'color' => 'sometimes|string|max:7',
-            'monthly_target' => 'sometimes|integer|min:1|max:31',
-        ]);
+        $habit->update($request->validated());
 
-        $habit->update($validated);
+        // 📱 API Response
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Habit updated',
+                'data' => new HabitResource($habit)
+            ]);
+        }
 
         return back();
     }
 
     /**
      * Centang / Log Harian
+     * Menggunakan LogHabitRequest untuk validasi
      */
-    public function storeLog(Request $request, Habit $habit)
+    public function storeLog(LogHabitRequest $request, Habit $habit)
     {
         $this->authorize('log', $habit);
 
-        $validated = $request->validate([
-            'date' => 'required|date',
-            'status' => ['required', Rule::enum(HabitStatus::class)],
-        ]);
+        // Validasi sudah ditangani LogHabitRequest, tinggal ambil
+        $data = $request->validated();
 
-        if ($validated['status'] === 'uncheck') {
+        if ($data['status'] === 'uncheck') {
             HabitLog::where('habit_id', $habit->id)
-                ->where('date', $validated['date'])
+                ->where('date', $data['date'])
                 ->delete();
         } else {
             HabitLog::updateOrCreate(
-                ['habit_id' => $habit->id, 'date' => $validated['date']],
-                ['status' => $validated['status']]
+                ['habit_id' => $habit->id, 'date' => $data['date']],
+                ['status' => $data['status']]
             );
+        }
+
+        // 📱 API Response
+        if ($request->wantsJson()) {
+            return response()->json(['message' => 'Log updated successfully']);
         }
 
         return back();
@@ -117,15 +136,20 @@ class HabitController extends Controller
      */
     public function updateMood(Request $request)
     {
+        // Tetap validasi manual disini karena simpel & jarang dipanggil
         $validated = $request->validate([
             'mood_code' => 'required|string|max:20',
             'period' => 'required|string|max:7',
         ]);
 
-        Mood::updateOrCreate(
+        $mood = Mood::updateOrCreate(
             ['user_id' => Auth::id(), 'period' => $validated['period']],
             ['mood_code' => $validated['mood_code']]
         );
+
+        if ($request->wantsJson()) {
+            return response()->json(['message' => 'Mood saved', 'data' => $mood]);
+        }
 
         return back();
     }
@@ -135,7 +159,6 @@ class HabitController extends Controller
      */
     public function copyFromPrevious(Request $request)
     {
-        // Validasi input biar aman
         $request->validate([
             'current_period' => 'required|date_format:Y-m',
             'prev_period' => 'required|date_format:Y-m',
@@ -145,15 +168,21 @@ class HabitController extends Controller
             ->where('period', $request->prev_period)
             ->get();
 
+        $count = 0;
         foreach ($oldHabits as $old) {
             Habit::create([
                 'user_id' => Auth::id(),
-                'period' => $request->current_period, // Pakai periode baru
+                'period' => $request->current_period,
                 'name' => $old->name,
                 'icon' => $old->icon,
                 'color' => $old->color,
                 'monthly_target' => $old->monthly_target,
             ]);
+            $count++;
+        }
+
+        if ($request->wantsJson()) {
+            return response()->json(['message' => "$count habits copied successfully"]);
         }
 
         return back();
@@ -165,7 +194,12 @@ class HabitController extends Controller
     public function destroy(Habit $habit)
     {
         $this->authorize('delete', $habit);
+        
         $habit->delete();
+
+        if (request()->wantsJson()) {
+            return response()->json(['message' => 'Habit deleted'], 200);
+        }
 
         return back();
     }

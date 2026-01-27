@@ -7,7 +7,7 @@ import FinanceHeader from './FinanceHeader.vue';
 import TransactionList from './TransactionList.vue';
 import BudgetSidebar from './BudgetSidebar.vue';
 import TransactionModal from './TransactionModal.vue';
-import BudgetModal from './BudgetModal.vue'; // 🔥 IMPORT BARU
+import BudgetModal from './BudgetModal.vue'; 
 import DailyTrendChart from './DailyTrendChart.vue';
 import { useFinanceCalendar } from '@/Composables/Finance/useFinanceCalendar';
 import { useFinanceForm } from '@/Composables/Finance/useFinanceForm';
@@ -19,22 +19,20 @@ const props = defineProps({
     filters: Object 
 });
 
-// 1. Calendar Logic (Kita butuh currentMonthKey buat budget)
+// 1. Calendar Logic
 const { formattedMonth, changeMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
 
 // 2. Form Logic
-// Ambil budgetForm dan submitBudget dari composable
 const { transactionForm, submitTransaction, deleteTransaction, budgetForm, submitBudget } = useFinanceForm();
 
 // --- STATE MODALS ---
 const showTransactionModal = ref(false);
-const showBudgetModal = ref(false); // 🔥 State baru buat modal budget
+const showBudgetModal = ref(false); 
 
-// Fungsi Submit Budget
+// Submit Handlers
 const handleBudgetSubmit = () => {
-    // Kita kirim 'currentMonthKey' (misal: "2026-01") biar backend tau ini budget bulan apa
     submitBudget(currentMonthKey.value, () => {
-        showBudgetModal.value = false; // Tutup kalau sukses
+        showBudgetModal.value = false; 
     });
 };
 
@@ -84,6 +82,7 @@ const handleTransactionSubmit = () => {
             <TransactionModal 
                 :show="showTransactionModal"
                 :form="transactionForm"
+                :budgets="budgets"
                 :close="() => showTransactionModal = false"
                 :submit="handleTransactionSubmit"
             />
@@ -91,6 +90,7 @@ const handleTransactionSubmit = () => {
             <BudgetModal 
                 :show="showBudgetModal"
                 :form="budgetForm"
+                :budgets="budgets"
                 :close="() => showBudgetModal = false"
                 :submit="handleBudgetSubmit"
             />

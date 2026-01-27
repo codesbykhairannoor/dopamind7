@@ -1,95 +1,91 @@
 <?php
 
-// DashboardController kita buang aja
 use App\Http\Controllers\Auth\SocialController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\HabitController;
 use App\Http\Controllers\PlannerController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
-use App\Http\Controllers\FinanceController;
 
 // --- UTILITY: SWITCH LANGUAGE ---
 Route::get('/lang/{locale}', function ($locale) {
     if (in_array($locale, ['id', 'en'])) {
         Session::put('locale', $locale);
     }
-
     return back();
 })->name('lang.switch');
 
 // --- GROUP 1: PUBLIC PAGES (Guest) ---
 Route::get('/', function () {
-    // Kalau user udah login, lempar langsung ke Dashboard (Habit Tracker)
     if (auth()->check()) {
         return redirect()->route('dashboard');
     }
-
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
     ]);
 })->name('home');
 
-Route::get('/about', function () {
-    return Inertia::render('About');
-})->name('about');
+Route::get('/about', fn () => Inertia::render('About'))->name('about');
 
 // --- GROUP 2: SOCIAL LOGIN ---
 Route::get('/auth/google', [SocialController::class, 'redirect'])->name('google.login');
 Route::get('/auth/google/callback', [SocialController::class, 'callback']);
 
-// --- GROUP 3: AUTHENTICATED APP (Sidebar Area) ---
+// --- GROUP 3: AUTHENTICATED APP ---
 Route::middleware(['auth'])->group(function () {
 
-    // 1. DASHBOARD (Halaman Depan / Rangkuman)
-    // Pake DashboardController yang baru kita buat
-    Route::get('/dashboard', \App\Http\Controllers\DashboardController::class)->name('dashboard');
+    // 1. DASHBOARD
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-    Route::middleware('auth')->group(function () {
-
-        // Halaman Utama Planner
-        Route::get('/planner', [PlannerController::class, 'index'])->name('planner.index');
-
-        // CRUD Biasa
-        Route::post('/planner', [PlannerController::class, 'store'])->name('planner.store');
-        Route::patch('/planner/{plannerTask}', [PlannerController::class, 'update'])->name('planner.update');
-        Route::delete('/planner/{plannerTask}', [PlannerController::class, 'destroy'])->name('planner.destroy');
-        Route::post('/planner/log', [PlannerController::class, 'updateLog'])->name('planner.updateLog');
-        // 🔥 Route Tombol "Reset/New Day"
-        Route::post('/planner/reset', [PlannerController::class, 'resetBoard'])->name('planner.reset');
-
+    // 2. PLANNER (Task Management)
+    Route::prefix('planner')->name('planner.')->group(function () {
+        Route::get('/', [PlannerController::class, 'index'])->name('index');
+        Route::post('/', [PlannerController::class, 'store'])->name('store');
+        Route::patch('/{plannerTask}', [PlannerController::class, 'update'])->name('update');
+        Route::delete('/{plannerTask}', [PlannerController::class, 'destroy'])->name('destroy');
+        Route::patch('/{plannerTask}/toggle', [PlannerController::class, 'toggle'])->name('toggle');
+        Route::post('/log', [PlannerController::class, 'updateLog'])->name('updateLog');
+        Route::post('/reset', [PlannerController::class, 'resetBoard'])->name('reset');
     });
-    // 2. HABIT TRACKER (Manajemen Habit)
-    // Aksesnya via url '/habits', bukan dashboard lagi
+
+    // 3. HABIT TRACKER
     Route::prefix('habits')->name('habits.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\HabitController::class, 'index'])->name('index');
-        Route::post('/', [\App\Http\Controllers\HabitController::class, 'store'])->name('store');
-        Route::post('/copy', [\App\Http\Controllers\HabitController::class, 'copyFromPrevious'])->name('copy');
-        Route::post('/mood', [\App\Http\Controllers\HabitController::class, 'updateMood'])->name('mood');
-
-        Route::patch('/{habit}', [\App\Http\Controllers\HabitController::class, 'update'])->name('update');
-        Route::delete('/{habit}', [\App\Http\Controllers\HabitController::class, 'destroy'])->name('destroy');
-        Route::post('/{habit}/log', [\App\Http\Controllers\HabitController::class, 'storeLog'])->name('log');
+        Route::get('/', [HabitController::class, 'index'])->name('index');
+        Route::post('/', [HabitController::class, 'store'])->name('store');
+        Route::post('/copy', [HabitController::class, 'copyFromPrevious'])->name('copy');
+        Route::post('/mood', [HabitController::class, 'updateMood'])->name('mood');
+        Route::patch('/{habit}', [HabitController::class, 'update'])->name('update');
+        Route::delete('/{habit}', [HabitController::class, 'destroy'])->name('destroy');
+        Route::post('/{habit}/log', [HabitController::class, 'storeLog'])->name('log');
     });
 
-    // FINANCE ROUTES
+    // 4. FINANCE (Manajemen Keuangan) - INI YANG DIPERBAIKI & DITAMBAH
     Route::prefix('finance')->name('finance.')->group(function () {
-        Route::get('/', [FinanceController::class, 'index'])->name('index'); // Halaman Utama
+        Route::get('/', [FinanceController::class, 'index'])->name('index');
+        
+        // Transactions
         Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
+        Route::patch('/transaction/{financeTransaction}', [FinanceController::class, 'updateTransaction'])->name('transaction.update'); // <-- BARU: Biar bisa edit
         Route::delete('/transaction/{financeTransaction}', [FinanceController::class, 'destroyTransaction'])->name('transaction.destroy');
         
+        // Budgets
         Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
-        // Route untuk ganti bulan (opsional, bisa pake query param ?month=2026-02 di index)
+        Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy'); // <-- BARU: Biar bisa hapus budget
     });
 
-    // ... settings & profile tetap sama ...
-    Route::get('/settings', [\App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');
-    Route::post('/settings', [\App\Http\Controllers\SettingsController::class, 'update'])->name('settings.update');
+    // 5. SETTINGS & PROFILE
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 
     Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('edit');
-        Route::patch('/', [\App\Http\Controllers\ProfileController::class, 'update'])->name('update');
-        Route::delete('/', [\App\Http\Controllers\ProfileController::class, 'destroy'])->name('destroy');
+        Route::get('/', [ProfileController::class, 'edit'])->name('edit');
+        Route::patch('/', [ProfileController::class, 'update'])->name('update');
+        Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
     });
 });
 

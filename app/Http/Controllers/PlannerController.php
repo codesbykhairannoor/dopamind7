@@ -2,79 +2,106 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateLogRequest;
+use App\Http\Requests\UpdateTaskRequest;
+use App\Http\Resources\DailyLogResource;
+use App\Http\Resources\PlannerTaskResource;
 use App\Models\DailyLog;
-use App\Models\PlannerTask; // 🔥 Jangan lupa import ini (Model baru)
+use App\Models\PlannerTask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class PlannerController extends Controller
 {
-    public function index()
+    /**
+     * Menampilkan Halaman Planner
+     */
+    /**
+     * Menampilkan Halaman Planner
+     */
+    public function index(Request $request)
     {
-        // 1. Ambil Task (Urutkan dari pagi ke malam)
+        // 1. Ambil Task
         $tasks = PlannerTask::where('user_id', Auth::id())
             ->orderBy('start_time', 'asc')
             ->get();
 
         // 2. Ambil Data Harian (Notes & Meals)
-        // Pakai firstOrCreate biar gak error kalau pengguna baru pertama kali buka
         $dailyLog = DailyLog::firstOrCreate(
             ['user_id' => Auth::id()],
             [
-                'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''],
+                'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], // Pastikan ini array di model cast
                 'notes' => '',
             ]
         );
 
-        return Inertia::render('Planner/Index', [
-            'tasks' => $tasks,
-            'dailyLog' => $dailyLog,
-        ]);
-    }
+        // Siapkan Resource
+        $tasksResource = PlannerTaskResource::collection($tasks);
+        $logResource = new DailyLogResource($dailyLog);
 
-    public function store(Request $request)
-    {
-        // Validasi input
-        $validated = $request->validate([
-            'title' => 'required|string|max:150',
-            'start_time' => 'nullable|date_format:H:i', // Format jam:menit
-            'end_time' => 'nullable|date_format:H:i|after:start_time',
-            'type' => 'required|integer|in:1,2,3', // 1=Work, 2=Personal, 3=Urgent
-            'notes' => 'nullable|string',
-        ]);
-
-        // Simpan dengan User ID
-        PlannerTask::create(array_merge(
-            ['user_id' => Auth::id()],
-            $validated
-        ));
-
-        return back();
-    }
-
-    public function update(Request $request, PlannerTask $plannerTask)
-    {
-        // Pastikan task milik user yang sedang login
-        if ($plannerTask->user_id !== Auth::id()) {
-            abort(403);
+        // 📱 JIKA MOBILE / API (Tetap pakai format { data: ... })
+        if ($request->wantsJson()) {
+            return response()->json([
+                'tasks' => $tasksResource,
+                'dailyLog' => $logResource
+            ]);
         }
 
-        // Validasi 'sometimes' agar bisa update sebagian (misal cuma geser jam)
-        $validated = $request->validate([
-            'title' => 'sometimes|string|max:150',
-            'start_time' => 'nullable|date_format:H:i',
-            'end_time' => 'nullable|date_format:H:i',
-            'type' => 'sometimes|integer|in:1,2,3',
-            'notes' => 'nullable|string',
+        // 💻 JIKA WEB / INERTIA (Buka bungkusnya pakai ->resolve())
+        // ✅ INI PERBAIKANNYA:
+        return Inertia::render('Planner/Index', [
+            'tasks' => $tasksResource->resolve(),     // Mengubah {data:[...]} kembali jadi [...]
+            'dailyLog' => $logResource->resolve(),    // Mengubah {data:{...}} kembali jadi {...}
         ]);
+    }
 
-        $plannerTask->update($validated);
+    /**
+     * Simpan Task Baru
+     */
+    public function store(StoreTaskRequest $request)
+    {
+        $task = PlannerTask::create(array_merge(
+            ['user_id' => Auth::id()],
+            $request->validated()
+        ));
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Task created',
+                'data' => new PlannerTaskResource($task)
+            ], 201);
+        }
 
         return back();
     }
 
-    // 🔥 LOGIC BARU: TOGGLE CHECKLIST (Selesai/Belum)
+    /**
+     * Update Task
+     */
+    public function update(UpdateTaskRequest $request, PlannerTask $plannerTask)
+    {
+        // Pastikan task milik user (Security Check)
+        if ($plannerTask->user_id !== Auth::id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $plannerTask->update($request->validated());
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Task updated',
+                'data' => new PlannerTaskResource($plannerTask)
+            ]);
+        }
+
+        return back();
+    }
+
+    /**
+     * Toggle Checklist (Selesai/Belum)
+     */
     public function toggle(PlannerTask $plannerTask)
     {
         if ($plannerTask->user_id !== Auth::id()) {
@@ -85,25 +112,43 @@ class PlannerController extends Controller
             'is_completed' => ! $plannerTask->is_completed,
         ]);
 
+        if (request()->wantsJson()) {
+            return response()->json([
+                'message' => 'Status toggled',
+                'data' => new PlannerTaskResource($plannerTask)
+            ]);
+        }
+
         return back();
     }
 
-    // 🔥 LOGIC BARU: SAVE NOTES / MEALS (Control Panel Kiri)
-    public function updateLog(Request $request)
+    /**
+     * Save Notes / Meals
+     */
+    public function updateLog(UpdateLogRequest $request)
     {
-        $log = DailyLog::where('user_id', Auth::id())->firstOrFail();
+        // Gunakan updateOrCreate untuk keamanan ekstra (jika user baru via API)
+        $log = DailyLog::firstOrCreate(
+            ['user_id' => Auth::id()],
+            ['meals' => [], 'notes' => '']
+        );
 
-        if ($request->has('notes')) {
-            $log->update(['notes' => $request->input('notes')]);
-        }
+        // Update hanya field yang dikirim
+        $log->update($request->validated());
 
-        if ($request->has('meals')) {
-            $log->update(['meals' => $request->input('meals')]);
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Log updated',
+                'data' => new DailyLogResource($log)
+            ]);
         }
 
         return back();
     }
 
+    /**
+     * Hapus Task
+     */
     public function destroy(PlannerTask $plannerTask)
     {
         if ($plannerTask->user_id !== Auth::id()) {
@@ -112,20 +157,28 @@ class PlannerController extends Controller
 
         $plannerTask->delete();
 
+        if (request()->wantsJson()) {
+            return response()->json(['message' => 'Task deleted']);
+        }
+
         return back();
     }
 
-    // 🔥 RESET BOARD (Hapus Task + Bersihkan Notes/Meals)
+    /**
+     * Reset Board (Hapus Task + Bersihkan Notes/Meals)
+     */
     public function resetBoard()
     {
-        // 1. Hapus semua task user
         PlannerTask::where('user_id', Auth::id())->delete();
 
-        // 2. Reset Log Harian jadi kosong
         DailyLog::where('user_id', Auth::id())->update([
             'notes' => '',
             'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''],
         ]);
+
+        if (request()->wantsJson()) {
+            return response()->json(['message' => 'Board reset successful']);
+        }
 
         return back();
     }

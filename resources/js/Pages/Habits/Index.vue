@@ -1,16 +1,21 @@
 <script setup>
-import { defineProps } from 'vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+// 1. Hapus import 'defineProps' (tidak perlu di-import manual di <script setup>)
 import { Head } from '@inertiajs/vue3';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'; // Import Layout
 import { useHabits } from '@/Composables/useHabits';
 
-// ✅ PERBAIKAN IMPORT: Gunakan './' karena file ada di folder yang sama
+// Component Anak
 import HabitHeader from './HabitHeader.vue';
 import HabitGrid from './HabitGrid.vue';
 import HabitStats from './HabitStats.vue';
 import HabitModals from './HabitModals.vue';
 
-// Props TETAP DISINI
+// 🔥 RAHASIA 1: PERSISTENT LAYOUT
+// Ini memberitahu Vue: "Jangan hancurkan Layout ini saat pindah halaman, update slot-nya saja."
+defineOptions({
+    layout: AuthenticatedLayout
+});
+
 const props = defineProps({
     habits: Object,
     currentMonth: String,
@@ -20,7 +25,7 @@ const props = defineProps({
     savedMood: String
 });
 
-// Panggil Logic dari Composable
+// Panggil Logic Composable
 const {
     user, localHabits, showCreateModal, isEditing, todayDate, greetingKey,
     iconList, colorPalette, form, monthDates, todayProgress,
@@ -35,9 +40,7 @@ const {
 <template>
     <Head title="Habit Tracker" />
 
-    <AuthenticatedLayout>
-        
-        <HabitHeader
+    <div class="space-y-6 pb-12"> <HabitHeader
             :user="user"
             :greetingKey="greetingKey"
             :todayDate="todayDate"
@@ -85,12 +88,12 @@ const {
             :executeCopy="executeCopy"
             :deleteFromEdit="deleteFromEdit"
         />
-
-    </AuthenticatedLayout>
+        
+    </div>
 </template>
 
 <style>
-/* Style global buat scrollbar di semua komponen anak */
+/* Style global scrollbar tetap aman disini */
 .custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
 .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }

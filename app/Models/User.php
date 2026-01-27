@@ -65,13 +65,18 @@ class User extends Authenticatable implements MustVerifyEmail
      * Menggunakan $this->attributes untuk menghindari MissingAttributeException di SQLite CI.
      */
     protected function avatarUrl(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => ($this->attributes['avatar_path'] ?? null)
-                ? Storage::url($this->attributes['avatar_path'])
-                : 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF'
-        );
-    }
+{
+    return Attribute::make(
+        get: function () {
+            $path = $this->attributes['avatar_path'] ?? null;
+            if ($path) {
+                // Gunakan asset() agar domain (http://domain.com) ikut terbawa
+                return asset(Storage::url($path)); 
+            }
+            return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF';
+        }
+    );
+}
 
     /**
      * Relationships

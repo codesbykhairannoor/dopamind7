@@ -1,8 +1,9 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { usePlanner } from '@/Composables/Planner/usePlanner';
 
+// Components
 import PlannerHeader from './PlannerHeader.vue';
 import PlannerSidebar from './PlannerSidebar.vue';
 import PlannerTimeline from './PlannerTimeline.vue';
@@ -23,7 +24,6 @@ const {
     <Head title="Daily Planner" />
 
     <AuthenticatedLayout>
-        
         <div class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <PlannerHeader 
@@ -65,8 +65,25 @@ const {
             </div>
         </div>
 
-        <SimpleModal v-if="activeModalType === 'simple'" :show="isModalOpen" :form="form" :isEditing="isEditing" :close="() => isModalOpen = false" :submit="submitTask" :remove="deleteTask" />
-        <PlannerModal v-else :show="isModalOpen" :form="form" :isEditing="isEditing" :conflictError="conflictError" :close="() => isModalOpen = false" :submit="submitTask" :remove="deleteTask" />
+        <SimpleModal 
+            v-if="activeModalType === 'simple'" 
+            :show="isModalOpen" 
+            :form="form" 
+            :isEditing="isEditing" 
+            :close="() => isModalOpen = false" 
+            :submit="submitTask" 
+            :remove="deleteTask" 
+        />
+        <PlannerModal 
+            v-else 
+            :show="isModalOpen" 
+            :form="form" 
+            :isEditing="isEditing" 
+            :conflictError="conflictError" 
+            :close="() => isModalOpen = false" 
+            :submit="submitTask" 
+            :remove="deleteTask" 
+        />
 
     </AuthenticatedLayout>
 </template>
