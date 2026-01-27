@@ -11,8 +11,10 @@ const currentLang = computed(() => page.props.locale || 'id');
 // --- STATE NAVIGASI MOBILE ---
 const showingNavigationDropdown = ref(false);
 
+// Logic untuk filter menu
 const showModule = (moduleName) => {
-    return user.value.settings?.modules?.[moduleName] ?? true;
+    // Menggunakan !== false agar jika datanya null (user baru), fitur tetap muncul secara default (true)
+    return user.value.settings?.modules?.[moduleName] !== false;
 };
 
 const switchLang = (lang) => {
@@ -30,7 +32,6 @@ const isActive = (routeName) => route().current(routeName);
     <div class="flex h-screen bg-slate-50 font-sans overflow-hidden selection:bg-indigo-500 selection:text-white">
         
         <aside class="w-72 bg-white border-r border-slate-100 hidden md:flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] flex-shrink-0 transition-all duration-300">
-            
             <div class="h-24 flex items-center px-8">
                 <Link :href="route('dashboard')" class="group flex items-center gap-3">
                     <span class="text-3xl transition-transform duration-500 group-hover:rotate-180 text-indigo-600">✦</span>
@@ -40,47 +41,30 @@ const isActive = (routeName) => route().current(routeName);
 
             <nav class="flex-1 px-6 space-y-2 overflow-y-auto py-6 custom-scrollbar">
                 
-                <Link 
-                    :href="route('dashboard')" 
-                    prefetch 
-                    cache-for="5s"
+                <Link :href="route('dashboard')" 
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
-                    :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
-                >
+                    :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">🏠</span>
                     <span>{{ $t('nav_dashboard') }}</span>
                 </Link>
 
-                <Link 
-                    v-if="showModule('habit')"
-                    :href="route('habits.index')" 
-                    prefetch
-                    cache-for="5s"
+                <Link v-if="showModule('habit')" :href="route('habits.index')" 
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
-                    :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
-                >
+                    :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">🌱</span>
                     <span>{{ $t('habit_page_title') }}</span>
                 </Link>
 
-                <Link 
-                    v-if="showModule('planner')"
-                    :href="route('planner.index')" 
-                    prefetch
+                <Link v-if="showModule('planner')" :href="route('planner.index')" 
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
-                    :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
-                >
+                    :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">📅</span>
                     <span>Daily Planner</span>
                 </Link>
 
-                <Link 
-                    v-if="showModule('finance')"
-                    :href="route('finance.index')" 
-                    prefetch
+                <Link v-if="showModule('finance')" :href="route('finance.index')" 
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
-                    :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'"
-                >
+                    :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">💸</span>
                     <span>Finance</span>
                 </Link>
@@ -88,12 +72,8 @@ const isActive = (routeName) => route().current(routeName);
             </nav>
 
             <div class="p-6 border-t border-slate-100 bg-slate-50/50 space-y-4">
-                
-                <Link 
-                    :href="route('settings.index')" 
-                    prefetch
-                    class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-500 hover:text-indigo-600 hover:bg-white transition border border-transparent hover:border-slate-200 hover:shadow-sm"
-                >
+                <Link :href="route('settings.index')" 
+                    class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-500 hover:text-indigo-600 hover:bg-white transition border border-transparent hover:border-slate-200 hover:shadow-sm">
                     <span class="text-lg">⚙️</span>
                     <span>{{ $t('nav_settings') }}</span>
                 </Link>
@@ -132,56 +112,38 @@ const isActive = (routeName) => route().current(routeName);
 
             <div v-show="showingNavigationDropdown" class="md:hidden bg-white border-b border-slate-100 p-4 shadow-xl space-y-2 animate-in slide-in-from-top-2 absolute w-full z-40">
                 
-                <Link 
-                    :href="route('dashboard')" 
-                    prefetch
+                <Link :href="route('dashboard')" 
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false"
-                >
+                    @click="showingNavigationDropdown = false">
                     {{ $t('nav_dashboard') }}
                 </Link>
 
-                <Link 
-                    v-if="showModule('habit')" 
-                    :href="route('habits.index')" 
-                    prefetch
+                <Link v-if="showModule('habit')" :href="route('habits.index')" 
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false"
-                >
+                    @click="showingNavigationDropdown = false">
                     {{ $t('habit_page_title') }}
                 </Link>
 
-                <Link 
-                    v-if="showModule('planner')" 
-                    :href="route('planner.index')" 
-                    prefetch
+                <Link v-if="showModule('planner')" :href="route('planner.index')" 
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false"
-                >
+                    @click="showingNavigationDropdown = false">
                     Daily Planner
                 </Link>
 
-                <Link 
-                    v-if="showModule('finance')" 
-                    :href="route('finance.index')" 
-                    prefetch
+                <Link v-if="showModule('finance')" :href="route('finance.index')" 
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false"
-                >
+                    @click="showingNavigationDropdown = false">
                     Finance
                 </Link>
 
-                <Link 
-                    :href="route('settings.index')" 
-                    prefetch
+                <Link :href="route('settings.index')" 
                     class="block px-4 py-3 rounded-xl font-bold transition" 
                     :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false"
-                >
+                    @click="showingNavigationDropdown = false">
                     {{ $t('nav_settings') }}
                 </Link>
 
@@ -190,13 +152,6 @@ const isActive = (routeName) => route().current(routeName);
                 <div class="flex gap-2 px-2">
                     <button @click="switchLang('id')" class="flex-1 py-2 rounded-lg text-xs font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDO</button>
                     <button @click="switchLang('en')" class="flex-1 py-2 rounded-lg text-xs font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENG</button>
-                </div>
-
-                <div class="pt-2 border-t border-slate-100 px-4 flex justify-between items-center mt-2">
-                    <span class="text-sm font-bold text-slate-700">{{ user.name }}</span>
-                    <Link :href="route('logout')" method="post" as="button" class="text-sm text-rose-500 font-bold">
-                        {{ $t('nav_logout') }}
-                    </Link>
                 </div>
             </div>
 

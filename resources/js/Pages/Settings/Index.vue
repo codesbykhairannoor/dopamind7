@@ -9,9 +9,9 @@ const props = defineProps({ userSettings: Object });
 const form = useForm({
     settings: {
         modules: {
-            habit: props.userSettings?.modules?.habit ?? true, // Default Nyala
+            habit: props.userSettings?.modules?.habit ?? true, 
             planner: props.userSettings?.modules?.planner ?? true,
-            finance: props.userSettings?.modules?.finance ?? true,
+            finance: props.userSettings?.modules?.finance ?? true, // Pastikan ini ada
         }
     }
 });
@@ -20,10 +20,6 @@ const form = useForm({
 const saveSettings = () => {
     form.post(route('settings.update'), { 
         preserveScroll: true,
-        onSuccess: () => {
-            // Opsional: Reload halaman biar sidebar ke-update
-            // window.location.reload(); 
-        }
     });
 };
 </script>
@@ -48,7 +44,6 @@ const saveSettings = () => {
                                 <p class="text-xs text-slate-400">Pantau kebiasaan harianmu</p>
                             </div>
                         </div>
-                        
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" v-model="form.settings.modules.habit" class="sr-only peer" @change="saveSettings">
                             <div class="w-14 h-8 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-indigo-500"></div>
@@ -60,12 +55,26 @@ const saveSettings = () => {
                             <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">📅</div>
                             <div>
                                 <h4 class="font-bold text-slate-700 text-lg">Daily Planner</h4>
-                                <p class="text-xs text-slate-400">Jadwal & Agenda (Segera)</p>
+                                <p class="text-xs text-slate-400">Jadwal & Agenda Harian</p>
                             </div>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" v-model="form.settings.modules.planner" class="sr-only peer" @change="saveSettings">
-                            <div class="w-14 h-8 bg-slate-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-indigo-500"></div>
+                            <div class="w-14 h-8 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-indigo-500"></div>
+                        </label>
+                    </div>
+
+                    <div class="flex items-center justify-between p-5 bg-slate-50 rounded-2xl border border-slate-100 transition hover:border-indigo-200">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">💸</div>
+                            <div>
+                                <h4 class="font-bold text-slate-700 text-lg">Finance Management</h4>
+                                <p class="text-xs text-slate-400">Atur budget & pengeluaran</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" v-model="form.settings.modules.finance" class="sr-only peer" @change="saveSettings">
+                            <div class="w-14 h-8 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-indigo-500"></div>
                         </label>
                     </div>
 
