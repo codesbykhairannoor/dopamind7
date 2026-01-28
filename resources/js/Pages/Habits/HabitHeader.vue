@@ -1,108 +1,167 @@
 <script setup>
-import { computed } from 'vue';
-import { usePage } from '@inertiajs/vue3';
-// Import helper date yang tadi kita bahas (Opsional jika ingin format di sini)
-// import { formatToLocal } from '@/Utils/date';
+import { ref, computed } from 'vue';
+import dayjs from 'dayjs';
 
 const props = defineProps({
     user: Object,
     greetingKey: String,
-    todayDate: String, // Pastikan ini dikirim dalam format terlokalisasi dari parent/backend
+    todayDate: String,
     currentMonth: String,
+    currentMonthValue: String,
     todayProgress: [Number, String],
     changeMonth: Function,
     openCreateModal: Function,
 });
 
-// Optimization: Ambil timezone untuk keperluan format jika perlu
-const userTz = computed(() => usePage().props.auth.user.timezone);
+const isOpen = ref(false);
+const showHint = ref(true); // State untuk kontrol legend/hint
+
+const months = [
+    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+];
+
+const activeYear = computed(() =>
+    props.currentMonthValue ? dayjs(props.currentMonthValue).year() : dayjs().year()
+);
+
+const activeMonthNum = computed(() =>
+    props.currentMonthValue ? dayjs(props.currentMonthValue).month() : dayjs().month()
+);
+
+const selectMonth = (monthIndex) => {
+    const month = String(monthIndex + 1).padStart(2, '0');
+    const payload = `${activeYear.value}-${month}`;
+    isOpen.value = false;
+    props.changeMonth(payload);
+};
+
+const changeYear = (offset) => {
+    const payload = `${activeYear.value + offset}-${String(activeMonthNum.value + 1).padStart(2, '0')}`;
+    props.changeMonth(payload);
+};
 </script>
 
 <template>
-    <div class="bg-white/95 backdrop-blur-sm border-b border-slate-100 sticky top-0 z-40 transition-all">
+    <div class="bg-white/80 backdrop-blur-xl border-b border-slate-100 sticky top-0 z-40 transition-all">
         <div class="max-w-full mx-auto px-4 py-3 md:py-6">
-
+            
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-
-                <div class="w-full md:w-auto text-left">
-                    <div class="inline-flex items-center gap-2 text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-1">
-                        <span class="text-base">📅</span>
-                        <span>{{ todayDate }}</span>
+                <div class="w-full md:w-auto">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                        </span>
+                        <span class="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-[0.2em]">
+                            {{ todayDate }}
+                        </span>
                     </div>
-
-                    <h1 class="text-xl md:text-3xl font-black text-slate-800 tracking-tight leading-tight">
-                        {{ $t(greetingKey) }},
-                        <span class="text-indigo-600 block sm:inline"> {{ user.name.split(' ')[0] }}
+                    <h1 class="text-2xl md:text-3xl font-black text-slate-800 tracking-tight">
+                        {{ $t(greetingKey) }}, 
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                            {{ user.name.split(' ')[0] }}
                         </span>!
                     </h1>
-
-                    <p class="text-slate-500 text-sm mt-1 hidden md:block">
-                        {{ $t('greet_subtitle') }}
-                    </p>
                 </div>
 
-                <div class="flex items-center justify-between w-full md:w-auto gap-2 md:gap-4">
-
-                    <div class="flex items-center bg-slate-50 rounded-2xl border border-slate-200 p-1 flex-1 md:flex-none justify-between md:justify-center">
-                        <button @click="changeMonth('prev')" 
-                                class="w-9 h-9 flex items-center justify-center rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-white hover:shadow-sm active:scale-95 transition">
-                            <span class="text-lg">‹</span>
+                <div class="flex items-center gap-3 w-full md:w-auto">
+                    
+                    <div class="relative flex-1 md:flex-none">
+                        <button @click="isOpen = !isOpen" 
+                            class="w-full flex items-center justify-between gap-4 bg-slate-50 border border-slate-200 pl-4 pr-3 py-3 rounded-2xl font-extrabold text-slate-700 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all active:scale-95">
+                            <div class="flex flex-col items-start leading-none">
+                                <span class="text-[9px] text-slate-400 uppercase tracking-tighter mb-1">Periode</span>
+                                <span class="text-sm uppercase tracking-wide">{{ currentMonth }}</span>
+                            </div>
+                            <div class="bg-white p-1.5 rounded-xl border border-slate-100 shadow-sm">
+                                <svg class="w-4 h-4 text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 9l-7 7-7-7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
                         </button>
 
-                        <span class="px-2 md:px-4 text-[10px] md:text-xs font-extrabold text-slate-700 uppercase tracking-widest min-w-[90px] text-center">
-                            {{ currentMonth }}
-                        </span>
-
-                        <button @click="changeMonth('next')" 
-                                class="w-9 h-9 flex items-center justify-center rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-white hover:shadow-sm active:scale-95 transition">
-                            <span class="text-lg">›</span>
-                        </button>
+                        <Transition name="slide-fade">
+                            <div v-if="isOpen" class="absolute right-0 mt-3 w-72 bg-white rounded-3xl shadow-2xl shadow-indigo-100 border border-slate-100 p-4 z-50">
+                                <div class="flex items-center justify-between mb-4 px-2">
+                                    <button @click="changeYear(-1)" class="p-2 hover:bg-slate-50 rounded-xl text-slate-400 hover:text-indigo-600 transition">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="3"></path></svg>
+                                    </button>
+                                    <span class="text-lg font-black text-slate-800 tracking-tighter">{{ activeYear }}</span>
+                                    <button @click="changeYear(1)" class="p-2 hover:bg-slate-50 rounded-xl text-slate-400 hover:text-indigo-600 transition">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="3"></path></svg>
+                                    </button>
+                                </div>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button v-for="(month, index) in months" :key="month" @click="selectMonth(index)"
+                                        :class="[
+                                            'py-3 rounded-2xl text-[10px] font-black transition-all uppercase tracking-widest',
+                                            activeMonthNum === index 
+                                                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200' 
+                                                : 'hover:bg-indigo-50 text-slate-500 hover:text-indigo-600'
+                                        ]">
+                                        {{ month.slice(0, 3) }}
+                                    </button>
+                                </div>
+                            </div>
+                        </Transition>
                     </div>
 
-                    <div class="hidden lg:flex flex-col items-end mr-2">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter"> {{ $t('today_is') }}</span>
-                        <div class="flex items-center gap-2">
-                            <div class="w-20 h-2 bg-slate-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-emerald-500 rounded-full transition-all duration-700 ease-out" 
-                                     :style="{ width: todayProgress + '%' }"></div>
-                            </div>
-                            <span class="text-xs font-black text-slate-700">{{ todayProgress }}%</span>
+                    <div class="hidden lg:flex items-center gap-4 px-6 border-x border-slate-100">
+                        <div class="text-right">
+                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1.5">Daily Progress</p>
+                            <p class="text-xl font-black text-slate-700 leading-none">{{ todayProgress }}%</p>
+                        </div>
+                        <div class="relative w-16 h-16">
+                            <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                                <circle cx="18" cy="18" r="16" fill="none" class="stroke-slate-100" stroke-width="3.5"></circle>
+                                <circle cx="18" cy="18" r="16" fill="none" class="stroke-indigo-600 transition-all duration-1000" stroke-width="3.5" stroke-linecap="round"
+                                    :style="{ strokeDasharray: `${todayProgress}, 100` }"></circle>
+                            </svg>
                         </div>
                     </div>
 
                     <button @click="openCreateModal" 
-                            class="flex-shrink-0 h-11 w-11 md:h-auto md:w-auto flex items-center justify-center gap-2 bg-indigo-600 text-white md:px-5 md:py-3 rounded-2xl font-bold text-sm shadow-indigo-200 shadow-lg hover:bg-indigo-700 active:scale-95 transition-all">
-                        <span class="text-xl md:text-sm">+</span>
-                        <span class="hidden sm:inline">{{ $t('habit_btn_new') }}</span>
+                        class="h-[52px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-600 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-slate-200 transition-all duration-300">
+                        <div class="bg-white/20 rounded-lg p-1">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-width="3" stroke-linecap="round"></path></svg>
+                        </div>
+                        <span class="hidden md:inline uppercase text-xs tracking-widest">Baru</span>
                     </button>
-
                 </div>
             </div>
 
-            <div class="border-t border-slate-50 pt-3 mt-4 flex items-center gap-5 md:gap-8 overflow-x-auto no-scrollbar pb-1">
-                <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest shrink-0">
-                    {{ $t('legend_instruction') }}
-                </span>
-
-                <div v-for="(item, index) in [
-                    { icon: '✓', color: 'bg-indigo-600', text: 'legend_left_click', textCol: 'text-white' },
-                    { icon: '-', color: 'bg-slate-100', text: 'legend_right_click', textCol: 'text-slate-400', border: 'border border-slate-200' },
-                ]" :key="index" class="flex items-center gap-2 shrink-0">
-                    <div :class="[item.color, item.textCol, item.border, 'w-5 h-5 rounded-lg flex items-center justify-center text-[10px] shadow-sm font-bold']">
-                        {{ item.icon }}
+            <Transition name="fade">
+                <div v-if="showHint" class="flex items-center justify-between mt-4 p-2 bg-indigo-50/50 rounded-2xl border border-indigo-100/50">
+                    <div class="flex items-center gap-6 px-2 overflow-x-auto no-scrollbar">
+                        <div class="flex items-center gap-2 shrink-0">
+                            <span class="flex items-center justify-center w-5 h-5 bg-indigo-600 text-white text-[8px] rounded-md font-bold shadow-sm">L</span>
+                            <span class="text-[10px] font-bold text-indigo-900/60 uppercase tracking-tight">Klik Kiri: Selesai</span>
+                        </div>
+                        <div class="flex items-center gap-2 shrink-0 border-l border-indigo-200/50 pl-6">
+                            <span class="flex items-center justify-center w-5 h-5 bg-white text-slate-400 text-[8px] rounded-md font-bold border border-slate-200 shadow-sm">R</span>
+                            <span class="text-[10px] font-bold text-indigo-900/60 uppercase tracking-tight">Klik Kanan: Lewati</span>
+                        </div>
                     </div>
-                    <span class="text-[10px] md:text-xs text-slate-600 font-bold tracking-tight italic md:not-italic">
-                        {{ $t(item.text) }}
-                    </span>
+                    <button @click="showHint = false" class="p-1 hover:bg-indigo-100 rounded-lg text-indigo-400 transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2.5"></path></svg>
+                    </button>
                 </div>
-            </div>
-
+            </Transition>
         </div>
     </div>
 </template>
 
 <style scoped>
-/* Menghilangkan scrollbar agar tetap clean di mobile tapi bisa digeser */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ANIMASI DROPDOWN */
+.slide-fade-enter-active { transition: all 0.3s ease-out; }
+.slide-fade-leave-active { transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1); }
+.slide-fade-enter-from, .slide-fade-leave-to { transform: translateY(10px); opacity: 0; }
+
+/* ANIMASI FADE HINT */
+.fade-enter-active, .fade-leave-active { transition: opacity 0.5s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>

@@ -1,7 +1,6 @@
 <script setup>
-// 1. Hapus import 'defineProps' (tidak perlu di-import manual di <script setup>)
 import { Head } from '@inertiajs/vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'; // Import Layout
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useHabits } from '@/Composables/useHabits';
 
 // Component Anak
@@ -10,8 +9,7 @@ import HabitGrid from './HabitGrid.vue';
 import HabitStats from './HabitStats.vue';
 import HabitModals from './HabitModals.vue';
 
-// 🔥 RAHASIA 1: PERSISTENT LAYOUT
-// Ini memberitahu Vue: "Jangan hancurkan Layout ini saat pindah halaman, update slot-nya saja."
+// PERSISTENT LAYOUT
 defineOptions({
     layout: AuthenticatedLayout
 });
@@ -38,64 +36,71 @@ const {
 </script>
 
 <template>
-    <Head title="Habit Tracker" />
+    <div class="min-h-screen bg-slate-50/50">
+        <Head title="Habit Tracker" />
 
-    <div class="space-y-6 pb-12"> <HabitHeader
-            :user="user"
-            :greetingKey="greetingKey"
-            :todayDate="todayDate"
-            :currentMonth="props.currentMonth"
-            :todayProgress="todayProgress"
-            :changeMonth="changeMonth"
-            :openCreateModal="openCreateModal"
-        />
+        <div class="space-y-6 pb-12"> 
+            <HabitHeader
+                :user="user"
+                :greetingKey="greetingKey"
+                :todayDate="todayDate"
+                :currentMonth="props.currentMonth"
+                :currentMonthValue="props.monthQuery" 
+                :todayProgress="todayProgress"
+                :changeMonth="changeMonth"
+                :openCreateModal="openCreateModal"
+            />
 
-        <HabitGrid 
-            :localHabits="localHabits"
-            :monthDates="monthDates"
-            :hasPrevHabits="props.hasPrevHabits"
-            :toggleStatus="toggleStatus"
-            :handleGridNav="handleGridNav"
-            :getStatus="getStatus"
-            :editHabit="editHabit"
-            :confirmDelete="confirmDelete"
-            :openCreateModal="openCreateModal"
-            :openCopyModal="openCopyModal"
-        />
+            <HabitGrid 
+                :localHabits="localHabits"
+                :monthDates="monthDates"
+                :hasPrevHabits="props.hasPrevHabits"
+                :toggleStatus="toggleStatus"
+                :handleGridNav="handleGridNav"
+                :getStatus="getStatus"
+                :editHabit="editHabit"
+                :confirmDelete="confirmDelete"
+                :openCreateModal="openCreateModal"
+                :openCopyModal="openCopyModal"
+            />
 
-        <HabitStats 
-            :localHabits="localHabits"
-            :overallPercentage="overallPercentage"
-            :totalCompletions="totalCompletions"
-            :currentMoodData="currentMoodData"
-            :moodOptions="moodOptions"
-            :savedMood="props.savedMood"
-            :selectMood="selectMood"
-        />
+            <HabitStats 
+                :localHabits="localHabits"
+                :overallPercentage="overallPercentage"
+                :totalCompletions="totalCompletions"
+                :currentMoodData="currentMoodData"
+                :moodOptions="moodOptions"
+                :savedMood="props.savedMood"
+                :selectMood="selectMood"
+            />
 
-        <HabitModals 
-            :showDeleteModal="showDeleteModal"
-            :showCopyModal="showCopyModal"
-            :showCreateModal="showCreateModal"
-            :isEditing="isEditing"
-            :form="form"
-            :habitToDelete="habitToDelete"
-            :iconList="iconList"
-            :colorPalette="colorPalette"
-            :closeModal="closeModal"
-            :submitHabit="submitHabit"
-            :executeDelete="executeDelete"
-            :executeCopy="executeCopy"
-            :deleteFromEdit="deleteFromEdit"
-        />
-        
+            <HabitModals 
+                :showDeleteModal="showDeleteModal"
+                :showCopyModal="showCopyModal"
+                :showCreateModal="showCreateModal"
+                :isEditing="isEditing"
+                :form="form"
+                :habitToDelete="habitToDelete"
+                :iconList="iconList"
+                :colorPalette="colorPalette"
+                :closeModal="closeModal"
+                :submitHabit="submitHabit"
+                :executeDelete="executeDelete"
+                :executeCopy="executeCopy"
+                :deleteFromEdit="deleteFromEdit"
+            />
+        </div>
     </div>
 </template>
 
 <style>
-/* Style global scrollbar tetap aman disini */
+/* Style global scrollbar */
 .custom-scrollbar::-webkit-scrollbar { height: 6px; width: 6px; }
 .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Menghilangkan scrollbar pada elemen tertentu jika perlu */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>

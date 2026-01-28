@@ -31,19 +31,28 @@ export function useHabitDates(props) {
         return days;
     });
 
-    const changeMonth = (direction) => {
-        const current = props.monthQuery ? dayjs(props.monthQuery) : dayjs();
-        const newDate = direction === 'next'
-            ? current.add(1, 'month')
-            : current.subtract(1, 'month');
+    const changeMonth = (payload) => {
+        let newMonth;
+
+        // Cek apakah payload dari tombol manual ('next'/'prev') atau dari Input Bulan ('YYYY-MM')
+        if (payload === 'next' || payload === 'prev') {
+            const current = props.monthQuery ? dayjs(props.monthQuery) : dayjs();
+            newMonth = payload === 'next' 
+                ? current.add(1, 'month').format('YYYY-MM') 
+                : current.subtract(1, 'month').format('YYYY-MM');
+        } else {
+            // Ini yang ditrigger oleh input type="month"
+            newMonth = payload;
+        }
 
         router.get(route('habits.index'), {
-            month: newDate.format('YYYY-MM')
+            month: newMonth
         }, {
-            preserveState: false,
+            preserveState: false, // Force reload buat ambil data bulan baru
             preserveScroll: true
         });
     };
 
     return { todayDate, monthDates, changeMonth };
+
 }

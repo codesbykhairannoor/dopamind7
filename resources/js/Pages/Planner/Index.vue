@@ -74,15 +74,16 @@ const {
             :submit="submitTask" 
             :remove="deleteTask" 
         />
+    
         <PlannerModal 
-            v-else 
+            v-else
             :show="isModalOpen" 
             :form="form" 
             :isEditing="isEditing" 
             :conflictError="conflictError" 
             :close="() => isModalOpen = false" 
             :submit="submitTask" 
-            :remove="deleteTask" 
+            :remove="deleteTask"
         />
 
     </AuthenticatedLayout>

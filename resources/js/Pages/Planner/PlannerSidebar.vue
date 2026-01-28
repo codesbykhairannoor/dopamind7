@@ -1,15 +1,40 @@
 <script setup>
-defineProps({
+import { ref, onMounted, watch } from 'vue';
+
+const props = defineProps({
     inboxTasks: { type: Array, default: () => [] },
     stats: { type: Object, default: () => ({ percent: 0, completed: 0, total: 0 }) }, 
     localNotes: String, 
     localMeals: { type: Object, default: () => ({ breakfast: '', lunch: '', dinner: '' }) },
-    onDragStart: Function, openModal: Function, toggleComplete: Function, getTypeColor: Function
+    onDragStart: Function, 
+    openModal: Function, 
+    toggleComplete: Function, 
+    getTypeColor: Function
 });
 
 const emit = defineEmits(['update:localNotes', 'update:localMeals']);
 
-// Helper: Mengembalikan KEY (string), bukan teks langsung
+/* =========================
+   LOGIC: PERSISTENT STATE (Local Storage)
+   Data ini bakal awet di browser, gak ilang pas refresh.
+========================= */
+const waterIntake = ref(0);
+const energyLevel = ref(0);
+const gratitudeText = ref('');
+
+onMounted(() => {
+    // Ambil data pas komponen muncul
+    waterIntake.value = Number(localStorage.getItem('p_water')) || 0;
+    energyLevel.value = Number(localStorage.getItem('p_energy')) || 0;
+    gratitudeText.value = localStorage.getItem('p_gratitude') || '';
+});
+
+// Watcher buat Auto-Save tiap ada perubahan
+watch(waterIntake, (v) => localStorage.setItem('p_water', v));
+watch(energyLevel, (v) => localStorage.setItem('p_energy', v));
+watch(gratitudeText, (v) => localStorage.setItem('p_gratitude', v));
+
+// Helper Label
 const getTaskLabel = (type) => {
     switch (type) {
         case 1: return { textKey: 'label_urgent', icon: '🔥', style: 'bg-rose-100 text-rose-700 border-rose-200' };
@@ -21,16 +46,13 @@ const getTaskLabel = (type) => {
 </script>
 
 <template>
-    <div class="flex flex-col gap-6">
+    <div class="flex flex-col gap-6 pb-10">
         
-        <div class="bg-white p-6 rounded-2xl shadow-[0_2px_10px_-4px_rgba(0,0,0,0.1)] border border-slate-200 relative overflow-hidden group">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 relative overflow-hidden group">
             <div class="absolute -right-4 -top-4 w-24 h-24 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-700"></div>
-
             <div class="flex justify-between items-end mb-4 relative z-10">
                 <div>
-                    <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">
-                        {{ $t('sidebar_daily_focus') }}
-                    </h3>
+                    <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">{{ $t('sidebar_daily_focus') }}</h3>
                     <div class="flex items-baseline gap-1">
                         <span class="text-4xl font-black text-slate-800 tracking-tighter">{{ stats?.percent || 0 }}<span class="text-xl text-slate-400 font-bold">%</span></span>
                     </div>
@@ -39,11 +61,9 @@ const getTaskLabel = (type) => {
                     <span class="text-2xl animate-bounce" style="animation-duration: 3s;">{{ (stats?.percent || 0) === 100 ? '🏆' : '🔥' }}</span>
                 </div>
             </div>
-            
             <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden mb-3 border border-slate-50">
                 <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(99,102,241,0.5)]" :style="{ width: (stats?.percent || 0) + '%' }"></div>
             </div>
-            
             <div class="flex justify-between items-center text-xs font-medium">
                 <span class="text-slate-400">{{ $t('sidebar_target_daily') }}</span>
                 <span class="text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-100">
@@ -55,47 +75,44 @@ const getTaskLabel = (type) => {
         <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
             <div class="flex justify-between items-center mb-5">
                 <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600">📥</div>
+                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center">📥</div>
                     <div>
                         <h3 class="font-bold text-slate-800 text-sm leading-tight">{{ $t('sidebar_inbox_title') }}</h3>
                         <p class="text-[10px] text-slate-400 font-medium">{{ $t('sidebar_inbox_subtitle') }}</p>
                     </div>
                 </div>
-                <button @click="openModal(null, null, 'simple')" class="text-xs font-bold text-white bg-slate-900 hover:bg-indigo-600 px-3 py-2 rounded-lg transition-all shadow-sm flex items-center gap-1">
+                <button @click="openModal(null, null, 'simple')" class="text-xs font-bold text-white bg-slate-900 hover:bg-indigo-600 px-3 py-2 rounded-lg transition-all flex items-center gap-1">
                     <span>+</span> {{ $t('btn_add_task_short') }}
                 </button>
             </div>
-
-            <div v-if="!inboxTasks || inboxTasks.length === 0" class="text-center py-8 border-2 border-dashed border-slate-100 rounded-xl bg-slate-50/50">
+            <div v-if="!inboxTasks?.length" class="text-center py-8 border-2 border-dashed border-slate-100 rounded-xl bg-slate-50/50">
                 <p class="text-xs text-slate-400 font-medium italic">{{ $t('sidebar_inbox_empty') }}</p>
             </div>
-
-            <div v-else class="space-y-3 max-h-[400px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-slate-200">
+            <div v-else class="space-y-3 max-h-[400px] overflow-y-auto pr-1 scrollbar-thin">
                 <div v-for="task in inboxTasks" :key="task.id" draggable="true" @dragstart="onDragStart($event, task)"
-                    class="group relative flex items-start gap-3 p-3 rounded-xl border border-slate-100 bg-white hover:border-indigo-300 hover:shadow-md transition-all cursor-grab active:cursor-grabbing"
+                    class="group relative flex items-start gap-3 p-3 rounded-xl border border-slate-100 bg-white hover:border-indigo-300 transition-all cursor-grab active:cursor-grabbing"
                     :class="{'opacity-60 bg-slate-50': task.is_completed}">
-                    
-                    <div class="absolute left-1 top-1/2 -translate-y-1/2 text-slate-300 opacity-0 group-hover:opacity-100 cursor-grab">⋮⋮</div>
-
                     <button @click="toggleComplete(task)" class="mt-0.5 w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 transition-colors z-10 bg-white"
                         :class="task.is_completed ? '!bg-emerald-500 border-emerald-500 text-white' : 'border-slate-300 hover:border-indigo-400'">
-                        <svg v-if="task.is_completed" class="w-3 h-3 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        <svg v-if="task.is_completed" class="w-3 h-3 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
                     </button>
-                    
                     <div class="flex-1 min-w-0" @click="openModal(task, null, 'simple')">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[9px] font-black px-1.5 py-0.5 rounded border uppercase tracking-wide flex items-center gap-1"
-                                :class="getTaskLabel(task.type).style">
-                                <span>{{ getTaskLabel(task.type).icon }}</span>
-                                {{ $t(getTaskLabel(task.type).textKey) }}
-                            </span>
-                        </div>
-                        <p class="text-sm font-bold text-slate-700 leading-snug group-hover:text-indigo-700 transition-colors" 
-                           :class="{'line-through text-slate-400': task.is_completed}">
-                           {{ task.title }}
-                        </p>
+                        <span class="text-[9px] font-black px-1.5 py-0.5 rounded border uppercase tracking-wide inline-flex items-center gap-1 mb-1" :class="getTaskLabel(task.type).style">
+                            {{ getTaskLabel(task.type).icon }} {{ $t(getTaskLabel(task.type).textKey) }}
+                        </span>
+                        <p class="text-sm font-bold text-slate-700 leading-snug group-hover:text-indigo-700" :class="{'line-through text-slate-400': task.is_completed}">{{ task.title }}</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+         <div class="bg-yellow-50 p-1 rounded-2xl shadow-sm border border-yellow-200 transform rotate-1">
+            <div class="bg-yellow-100/50 p-5 rounded-xl border-dashed border-2 border-yellow-200/60">
+                <h3 class="text-[10px] font-black text-yellow-700/70 uppercase tracking-widest mb-2 flex items-center gap-2">📌 {{ $t('sidebar_notes_title') }}</h3>
+                <textarea :value="localNotes" @input="$emit('update:localNotes', $event.target.value)" 
+                    class="w-full bg-transparent border-0 focus:ring-0 text-sm font-handwriting text-slate-700 p-0 h-32 resize-none leading-[24px]" 
+                    style="background-image: linear-gradient(transparent, transparent 23px, #eab30820 24px); background-size: 100% 24px;"
+                    :placeholder="$t('placeholder_notes')"></textarea>
             </div>
         </div>
 
@@ -104,39 +121,30 @@ const getTaskLabel = (type) => {
                 <span class="bg-orange-100 text-orange-600 p-1 rounded">🍽️</span> {{ $t('sidebar_meal_title') }}
             </h3>
             <div class="space-y-3">
-                <div class="flex items-center gap-3 p-2 rounded-xl bg-orange-50/50 border border-orange-100 group focus-within:bg-white focus-within:border-orange-300 focus-within:shadow-sm transition-all">
-                    <span class="text-lg opacity-80 group-hover:scale-110 transition-transform">🍳</span>
-                    <input :value="localMeals?.breakfast" @input="$emit('update:localMeals', { ...localMeals, breakfast: $event.target.value })" 
-                        class="w-full text-xs font-semibold border-0 focus:ring-0 p-0 bg-transparent text-slate-700 placeholder:text-slate-400/70" 
-                        :placeholder="$t('placeholder_breakfast')" />
-                </div>
-                <div class="flex items-center gap-3 p-2 rounded-xl bg-orange-50/50 border border-orange-100 group focus-within:bg-white focus-within:border-orange-300 focus-within:shadow-sm transition-all">
-                    <span class="text-lg opacity-80 group-hover:scale-110 transition-transform">🍱</span>
-                    <input :value="localMeals?.lunch" @input="$emit('update:localMeals', { ...localMeals, lunch: $event.target.value })" 
-                        class="w-full text-xs font-semibold border-0 focus:ring-0 p-0 bg-transparent text-slate-700 placeholder:text-slate-400/70" 
-                        :placeholder="$t('placeholder_lunch')" />
-                </div>
-                <div class="flex items-center gap-3 p-2 rounded-xl bg-orange-50/50 border border-orange-100 group focus-within:bg-white focus-within:border-orange-300 focus-within:shadow-sm transition-all">
-                    <span class="text-lg opacity-80 group-hover:scale-110 transition-transform">🥗</span>
-                    <input :value="localMeals?.dinner" @input="$emit('update:localMeals', { ...localMeals, dinner: $event.target.value })" 
-                        class="w-full text-xs font-semibold border-0 focus:ring-0 p-0 bg-transparent text-slate-700 placeholder:text-slate-400/70" 
-                        :placeholder="$t('placeholder_dinner')" />
+                <div v-for="(icon, key) in { breakfast: '🍳', lunch: '🍱', dinner: '🥗' }" :key="key" 
+                    class="flex items-center gap-3 p-2 rounded-xl bg-orange-50/50 border border-orange-100 focus-within:bg-white focus-within:border-orange-300 transition-all">
+                    <span class="text-lg">{{ icon }}</span>
+                    <input :value="localMeals?.[key]" @input="$emit('update:localMeals', { ...localMeals, [key]: $event.target.value })" 
+                        class="w-full text-xs font-semibold border-0 focus:ring-0 p-0 bg-transparent text-slate-700" 
+                        :placeholder="$t('placeholder_' + key)" />
                 </div>
             </div>
         </div>
 
-        <div class="bg-yellow-50 p-1 rounded-2xl shadow-sm border border-yellow-200 transform rotate-1 hover:rotate-0 transition-transform duration-300">
-            <div class="bg-yellow-100/50 p-5 rounded-xl border-dashed border-2 border-yellow-200/60 h-full">
-                <h3 class="text-[10px] font-black text-yellow-700/70 uppercase tracking-widest mb-2 flex items-center gap-2">
-                    📌 {{ $t('sidebar_notes_title') }}
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-600 p-1 rounded">💧</span> Water Intake
                 </h3>
-                <textarea 
-                    :value="localNotes" 
-                    @input="$emit('update:localNotes', $event.target.value)" 
-                    class="w-full bg-transparent border-0 focus:ring-0 text-sm font-handwriting text-slate-700 p-0 h-32 resize-none placeholder-yellow-700/30 leading-relaxed" 
-                    style="background-image: linear-gradient(transparent, transparent 23px, #eab30820 24px); background-size: 100% 24px; line-height: 24px;"
-                    :placeholder="$t('placeholder_notes')">
-                </textarea>
+                <span class="text-xs font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-lg">{{ waterIntake }} / 8</span>
+            </div>
+            <div class="flex justify-between p-1 bg-slate-50 rounded-2xl border border-slate-100">
+                <button v-for="glass in 8" :key="glass" type="button"
+                    @click="waterIntake = (glass === waterIntake ? glass - 1 : glass)"
+                    class="flex-1 py-3 flex items-center justify-center transition-all duration-300 transform active:scale-75"
+                    :class="glass <= waterIntake ? 'bg-white shadow-sm rounded-xl' : 'opacity-30 hover:opacity-100'">
+                    <span class="text-lg">💧</span>
+                </button>
             </div>
         </div>
 
