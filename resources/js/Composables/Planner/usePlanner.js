@@ -56,22 +56,21 @@ export function usePlanner(props) {
         return colors[type] || 'bg-white text-slate-700 border-slate-200';
     };
 
-    // 7. MASTER RESET FUNCTION
     const resetBoard = () => {
-        if (confirm('Hapus SEMUA data hari ini (Tasks, Meals, Notes)?')) {
-            // A. Reset Tampilan (Optimistic UI)
-            localNotes.value = '';
-            localMeals.value = { breakfast: '', lunch: '', dinner: '' };
-            taskLogic.localTasks.value = []; 
+        // 🔥 HAPUS baris 'if (confirm(...))' ini. Langsung hajar logic reset-nya.
+        
+        // A. Reset Tampilan (Optimistic UI)
+        localNotes.value = '';
+        localMeals.value = { breakfast: '', lunch: '', dinner: '' };
+        taskLogic.localTasks.value = []; 
 
-            // B. Hapus di Database via Inertia
-            router.post(route('planner.reset'), {}, {
-                preserveScroll: true,
-                preserveState: true,
-                onSuccess: () => console.log('Board cleared'),
-                onError: (err) => console.error('Reset failed', err)
-            });
-        }
+        // B. Hapus di Database via Inertia
+        router.post(route('planner.reset'), {}, {
+            preserveScroll: true,
+            preserveState: true,
+            onSuccess: () => console.log('Board cleared'),
+            onError: (err) => console.error('Reset failed', err)
+        });
     };
 
     // 8. Custom Open Modal (Override default untuk menentukan tipe)

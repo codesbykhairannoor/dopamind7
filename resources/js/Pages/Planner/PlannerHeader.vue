@@ -1,9 +1,10 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 import { usePage } from '@inertiajs/vue3'; 
+import Modal from '@/Components/Modal.vue'; // Import Modal bawaan Jetstream
 
 const props = defineProps({
     openModal: Function,
@@ -19,6 +20,22 @@ const todayDate = computed(() => {
         .locale(currentLocale) 
         .format('dddd, D MMMM YYYY');
 });
+
+// --- LOGIC KONFIRMASI RESET ---
+const isConfirmingReset = ref(false);
+
+const confirmReset = () => {
+    isConfirmingReset.value = true;
+};
+
+const closeResetModal = () => {
+    isConfirmingReset.value = false;
+};
+
+const executeReset = () => {
+    props.resetBoard();
+    isConfirmingReset.value = false;
+};
 </script>
 
 <template>
@@ -59,8 +76,9 @@ const todayDate = computed(() => {
                 >
                     <span>+</span> {{ $t('btn_add_task') }}
                 </button>
+                
                 <button 
-                    @click="resetBoard" 
+                    @click="confirmReset" 
                     class="px-3 py-2.5 bg-rose-50 text-rose-500 rounded-xl font-bold hover:bg-rose-100 transition border border-rose-100 text-sm"
                     :title="$t('btn_reset_tooltip')"
                 >
@@ -68,5 +86,42 @@ const todayDate = computed(() => {
                 </button>
             </div>
         </div>
+
+        <Modal :show="isConfirmingReset" @close="closeResetModal" maxWidth="sm">
+            <div class="bg-white rounded-2xl relative overflow-hidden p-6 text-center">
+                
+                <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                    </div>
+                    
+                    <h3 class="text-lg font-black text-slate-800 mb-2">{{ $t('modal_reset_title') || 'Reset Semua?' }}</h3>
+                    
+                    <p class="text-slate-500 text-xs mb-6 px-4 leading-relaxed">
+                        {{ $t('modal_reset_desc') || 'Semua task yang sudah selesai akan dihapus dan task yang belum selesai akan kembali ke Inbox. Yakin?' }}
+                    </p>
+
+                    <div class="flex gap-3 justify-center">
+                        <button 
+                            @click="closeResetModal" 
+                            class="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-sm font-bold hover:bg-slate-50 transition"
+                        >
+                            {{ $t('btn_cancel') || 'Batal' }}
+                        </button>
+                        
+                        <button 
+                            @click="executeReset" 
+                            class="px-5 py-2.5 rounded-xl bg-orange-500 text-white text-sm font-bold shadow-lg shadow-orange-200 hover:bg-orange-600 transition transform active:scale-95"
+                        >
+                            {{ $t('btn_confirm_reset') || 'Ya, Reset Board' }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </Modal>
     </div>
 </template>

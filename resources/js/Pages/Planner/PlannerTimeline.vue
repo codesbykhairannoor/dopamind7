@@ -2,12 +2,30 @@
 import { computed, ref, onMounted, onUnmounted, watch } from 'vue';
 
 const props = defineProps({
-    scheduledTasks: Array, 
-    onDrop: Function, 
-    onDragStart: Function,
-    openModal: Function, 
-    toggleComplete: Function, 
-    getTypeColor: Function
+    scheduledTasks: {
+        type: Array,
+        default: () => []
+    },
+    openModal: {
+        type: Function,
+        required: true
+    },
+    toggleComplete: {
+        type: Function,
+        required: true
+    },
+    getTypeColor: {
+        type: Function,
+        default: (t) => 'border-slate-500' // Default warna kalau lupa dikirim
+    },
+    onDrop: {
+        type: Function,
+        default: () => {}
+    },
+    onDragStart: {
+        type: Function,
+        default: () => {}
+    }
 });
 
 // KONFIGURASI VIEWPORT

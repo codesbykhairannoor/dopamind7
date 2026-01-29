@@ -2,6 +2,7 @@
 import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { usePlanner } from '@/Composables/Planner/usePlanner';
+import { usePlannerBatch } from '@/Composables/Planner/usePlannerBatch'; // 👈 Import Baru
 
 // Components
 import PlannerHeader from './PlannerHeader.vue';
@@ -9,15 +10,34 @@ import PlannerSidebar from './PlannerSidebar.vue';
 import PlannerTimeline from './PlannerTimeline.vue';
 import PlannerModal from './PlannerModal.vue';
 import SimpleModal from './SimpleModal.vue';
+import PlannerBatchModal from './PlannerBatchModal.vue'; // 👈 Import Baru
 
 const props = defineProps({ tasks: Array, dailyLog: Object });
 
+// Logic Single (Existing)
 const {
     scheduledTasks, inboxTasks, timeSlots, scheduledStats, inboxStats,
     form, isModalOpen, isEditing, activeModalType,
     openModal, submitTask, deleteTask, resetBoard, toggleComplete,
     onDragStart, onDrop, getTypeColor, localNotes, localMeals, conflictError
 } = usePlanner(props);
+
+// Logic Batch (Baru)
+const {
+    isBatchModalOpen, batchForm, openBatchModal,
+    addBatchRow, removeBatchRow, submitBatch
+} = usePlannerBatch();
+
+// Helper Switcher antar Modal
+const switchToBatch = () => {
+    isModalOpen.value = false;
+    openBatchModal();
+};
+
+const switchToSingle = () => {
+    isBatchModalOpen.value = false;
+    openModal();
+};
 </script>
 
 <template>
@@ -67,23 +87,25 @@ const {
 
         <SimpleModal 
             v-if="activeModalType === 'simple'" 
-            :show="isModalOpen" 
-            :form="form" 
-            :isEditing="isEditing" 
-            :close="() => isModalOpen = false" 
-            :submit="submitTask" 
-            :remove="deleteTask" 
+            :show="isModalOpen" :form="form" :isEditing="isEditing" 
+            :close="() => isModalOpen = false" :submit="submitTask" :remove="deleteTask" 
         />
     
         <PlannerModal 
             v-else
-            :show="isModalOpen" 
-            :form="form" 
-            :isEditing="isEditing" 
-            :conflictError="conflictError" 
-            :close="() => isModalOpen = false" 
-            :submit="submitTask" 
-            :remove="deleteTask"
+            :show="isModalOpen" :form="form" :isEditing="isEditing" :conflictError="conflictError" 
+            :close="() => isModalOpen = false" :submit="submitTask" :remove="deleteTask"
+            @switch-to-batch="switchToBatch" 
+        />
+
+        <PlannerBatchModal 
+            :show="isBatchModalOpen" 
+            :form="batchForm" 
+            :close="() => isBatchModalOpen = false" 
+            :submit="submitBatch" 
+            :addRow="addBatchRow" 
+            :removeRow="removeBatchRow"
+            :switchToSingle="switchToSingle"
         />
 
     </AuthenticatedLayout>

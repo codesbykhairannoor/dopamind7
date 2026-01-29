@@ -13,8 +13,11 @@ const props = defineProps({
     conflictError: String,
     close: Function,
     submit: Function,
-    remove: Function // Fungsi confirmDelete dari usePlannerTasks
+    remove: Function
 });
+
+// 🔥 1. WAJIB DITAMBAH: Definisi Emits biar Vue tau ada event ini
+const emit = defineEmits(['switch-to-batch']);
 
 // State lokal untuk switch antara tampilan FORM dan tampilan KONFIRMASI HAPUS
 const isConfirmingDeletion = ref(false);
@@ -64,23 +67,33 @@ const confirmDelete = () => {
                 </div>
             </div>
 
-            <div v-else class="p-6">
+            <div v-else>
                 <div v-if="conflictError" class="absolute top-0 left-0 right-0 bg-rose-500 text-white text-xs font-bold px-6 py-2 text-center animate-pulse z-50 shadow-md">
                     {{ conflictError }}
                 </div>
 
-                <div class="flex justify-between items-center mb-6 mt-2">
+                <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center mt-2">
                     <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
                         <span class="w-2 h-8 bg-indigo-500 rounded-full"></span>
                         {{ isEditing ? $t('modal_title_edit') : $t('modal_title_new') }}
                     </h2>
-                    <button @click="handleClose" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-rose-100 hover:text-rose-500 transition font-bold">✕</button>
+                    
+                    <div class="flex items-center gap-2">
+                        <button v-if="!isEditing" 
+                            @click="$emit('switch-to-batch')"
+                            type="button"
+                            class="text-xs font-bold px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-600 border border-indigo-200 hover:bg-indigo-100 hover:text-indigo-700 transition flex items-center gap-1">
+                            ✨ Batch Mode
+                        </button>
+                        <button @click="handleClose" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-rose-100 hover:text-rose-500 transition font-bold">✕</button>
+                    </div>
                 </div>
                 
-                <div class="space-y-5">
+                <div class="p-6 space-y-5">
                     <div>
                         <InputLabel :value="$t('label_activity')" />
                         <TextInput v-model="form.title" class="w-full text-lg font-medium" :placeholder="$t('placeholder_activity')" autofocus />
+                        <div v-if="form.errors?.title" class="text-rose-500 text-xs mt-1">{{ form.errors.title }}</div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">

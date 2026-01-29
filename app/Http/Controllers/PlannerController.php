@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateLogRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\DailyLogResource;
 use App\Http\Resources\PlannerTaskResource;
+use App\Http\Requests\StoreBatchTaskRequest;
 use App\Models\DailyLog;
 use App\Models\PlannerTask;
 use Illuminate\Http\Request;
@@ -125,6 +126,34 @@ class PlannerController extends Controller
     /**
      * Save Notes / Meals
      */
+
+    public function batchStore(StoreBatchTaskRequest $request)
+    {
+        $userId = auth()->id();
+        $tasksData = [];
+        $now = now();
+
+        // Mapping data biar siap insert sekali jalan (Bulk Insert Query)
+        foreach ($request->validated()['tasks'] as $task) {
+            $tasksData[] = [
+                'user_id'      => $userId,
+                'title'        => $task['title'],
+                'start_time'   => $task['start_time'],
+                'end_time'     => $task['end_time'],
+                'type'         => $task['type'],
+                'notes'        => $task['notes'] ?? null,
+                'is_completed' => false,
+                'created_at'   => $now,
+                'updated_at'   => $now,
+            ];
+        }
+
+        // Insert sekaligus (Lebih cepat daripada loop create satu-satu)
+        PlannerTask::insert($tasksData);
+
+        return back()->with('success', count($tasksData) . ' activities added successfully!');
+    }
+
     public function updateLog(UpdateLogRequest $request)
     {
         // Gunakan updateOrCreate untuk keamanan ekstra (jika user baru via API)

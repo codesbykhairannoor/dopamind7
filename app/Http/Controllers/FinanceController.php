@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Finance\BudgetRequest;       // 👈 Cuma import ini
+use App\Http\Requests\Finance\TransactionRequest;  // 👈 Sama ini
 use App\Http\Resources\FinanceBudgetResource;
 use App\Http\Resources\FinanceTransactionResource;
 use App\Models\FinanceBudget;
 use App\Models\FinanceTransaction;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class FinanceController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $user = Auth::user();
         
@@ -21,7 +25,7 @@ class FinanceController extends Controller
         $date = $request->input('date', now()->format('Y-m-d'));
         $carbonDate = Carbon::parse($date);
         
-        // 2. Ambil Transaksi
+        // 2. Ambil Transaksi (Logic tetap sama sesuai file asli lo)
         $transactions = FinanceTransaction::where('user_id', $user->id)
             ->whereMonth('date', $carbonDate->month)
             ->whereYear('date', $carbonDate->year)
@@ -33,12 +37,11 @@ class FinanceController extends Controller
         $income = $transactions->where('type', 'income')->sum('amount');
         $expense = $transactions->where('type', 'expense')->sum('amount');
         
-        // 4. Kelompokkan pengeluaran per kategori
         $expenseByCategory = $transactions->where('type', 'expense')
             ->groupBy('category')
             ->map(fn($row) => $row->sum('amount'));
 
-        // 5. Ambil Budget & Suntikkan Data 'Spent'
+        // 4. Ambil Budget
         $budgets = FinanceBudget::where('user_id', $user->id)
             ->where('month', $carbonDate->format('Y-m'))
             ->get()
@@ -49,15 +52,15 @@ class FinanceController extends Controller
 
         return Inertia::render('Finance/Index', [
             'transactions' => FinanceTransactionResource::collection($transactions)->resolve(),
-            'budgets' => FinanceBudgetResource::collection($budgets)->resolve(),
-            'stats' => [
-                'total_income' => (float) $income,
-                'total_expense' => (float) $expense,
-                'balance' => (float) ($income - $expense),
+            'budgets'      => FinanceBudgetResource::collection($budgets)->resolve(),
+            'stats'        => [
+                'total_income'        => (float) $income,
+                'total_expense'       => (float) $expense,
+                'balance'             => (float) ($income - $expense),
                 'expense_by_category' => $expenseByCategory,
             ],
-            'filters' => [
-                'date' => $carbonDate->format('Y-m-d'),
+            'filters'      => [
+                'date'       => $carbonDate->format('Y-m-d'),
                 'month_name' => $carbonDate->translatedFormat('F Y'),
             ]
         ]);
@@ -65,86 +68,81 @@ class FinanceController extends Controller
 
     // --- TRANSACTIONS ---
 
-    public function storeTransaction(Request $request)
+    /**
+     * Pake TransactionRequest buat Store
+     */
+    public function storeTransaction(TransactionRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'amount' => 'required|numeric|min:1',
-            'type' => 'required|in:income,expense',
-            'category' => 'required|string',
-            'date' => 'required|date',
-            'notes' => 'nullable|string'
-        ]);
-
-        $request->user()->financeTransactions()->create($validated);
+        $request->user()->financeTransactions()->create($request->validated());
+        
         return back()->with('success', 'Transaksi berhasil disimpan!');
     }
 
-    public function updateTransaction(Request $request, FinanceTransaction $financeTransaction)
+    /**
+     * Pake TransactionRequest buat Update juga
+     */
+    public function updateTransaction(TransactionRequest $request, FinanceTransaction $financeTransaction): RedirectResponse
     {
-        if ($financeTransaction->user_id !== Auth::id()) abort(403);
-
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'amount' => 'required|numeric|min:1',
-            'type' => 'required|in:income,expense',
-            'category' => 'required|string',
-            'date' => 'required|date',
-            'notes' => 'nullable|string'
-        ]);
-
-        $financeTransaction->update($validated);
+        // Auth check udah otomatis jalan di TransactionRequest::authorize()
+        
+        $financeTransaction->update($request->validated());
+        
         return back()->with('success', 'Transaksi berhasil diperbarui!');
     }
 
-    public function destroyTransaction(FinanceTransaction $financeTransaction)
+    public function destroyTransaction(FinanceTransaction $financeTransaction): RedirectResponse
     {
-        if ($financeTransaction->user_id !== Auth::id()) abort(403);
+        // Delete simple tetep manual check, atau bisa pake Policy kalau mau lebih rapi lagi
+        if ($financeTransaction->user_id !== Auth::id()) {
+            abort(403);
+        }
 
         $financeTransaction->delete();
+        
         return back()->with('success', 'Transaksi dihapus.');
     }
 
     // --- BUDGETS ---
 
-    public function storeBudget(Request $request)
+    /**
+     * Pake BudgetRequest buat Store
+     */
+    public function storeBudget(BudgetRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-            'category' => 'required|string',
-            'limit_amount' => 'required|numeric|min:1',
-            'month' => 'required|date_format:Y-m',
-        ]);
+        $data = $request->validated();
 
         FinanceBudget::updateOrCreate(
             [
-                'user_id' => Auth::id(),
-                'category' => $validated['category'],
-                'month' => $validated['month']
+                'user_id'  => Auth::id(),
+                'category' => $data['category'],
+                'month'    => $data['month'] // Field ini pasti ada karena validasi conditional di Request
             ],
-            ['limit_amount' => $validated['limit_amount']]
+            ['limit_amount' => $data['limit_amount']]
         );
 
         return back()->with('success', 'Budget berhasil diatur!');
     }
 
-    public function updateBudget(Request $request, FinanceBudget $financeBudget)
+    /**
+     * Pake BudgetRequest buat Update juga
+     */
+    public function updateBudget(BudgetRequest $request, FinanceBudget $financeBudget): RedirectResponse
     {
-        if ($financeBudget->user_id !== Auth::id()) abort(403);
-
-        $validated = $request->validate([
-            'limit_amount' => 'required|numeric|min:1',
-            'category' => 'required|string',
-        ]);
-
-        $financeBudget->update($validated);
+        // Auth check udah otomatis jalan di BudgetRequest::authorize()
+        
+        $financeBudget->update($request->validated());
+        
         return back()->with('success', 'Budget berhasil diperbarui!');
     }
 
-    public function destroyBudget(FinanceBudget $financeBudget)
+    public function destroyBudget(FinanceBudget $financeBudget): RedirectResponse
     {
-        if ($financeBudget->user_id !== Auth::id()) abort(403);
+        if ($financeBudget->user_id !== Auth::id()) {
+            abort(403);
+        }
 
         $financeBudget->delete();
+        
         return back()->with('success', 'Budget dihapus.');
     }
 }

@@ -51,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
         Route::patch('/{plannerTask}/toggle', [PlannerController::class, 'toggle'])->name('toggle');
         Route::post('/log', [PlannerController::class, 'updateLog'])->name('updateLog');
         Route::post('/reset', [PlannerController::class, 'resetBoard'])->name('reset');
+        Route::post('/batch', [PlannerController::class, 'batchStore'])->name('batchStore');
     });
 
     // 3. HABIT TRACKER - PROTECTED
