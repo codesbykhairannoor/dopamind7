@@ -1,5 +1,6 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+// 🔥 IMPORT useForm dan usePage biar nggak error 'not defined'
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3'; 
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import { ref, computed } from 'vue';
 
@@ -11,9 +12,13 @@ const toggleFaq = (index) => {
     activeFaq.value = activeFaq.value === index ? null : index;
 };
 
-// Ambil pesan sukses dari session (backend)
-const page = usePage();
-const successMessage = computed(() => page.props.flash?.success);
+// --- LOGIC WAITLIST ---
+const form = useForm({
+    email: ''
+});
+
+// 🔥 Gunakan usePage() yang sudah diimport di atas
+const successMessage = computed(() => usePage().props.flash?.success);
 
 const submitWaitlist = () => {
     form.post(route('waitlist.store'), {
