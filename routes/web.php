@@ -10,6 +10,8 @@ use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
+use App\Models\Waitlist; // 👈 Import Model Waitlist
+use Illuminate\Http\Request; // 👈 Import Request
 
 // --- UTILITY: SWITCH LANGUAGE ---
 Route::get('/lang/{locale}', function ($locale) {
@@ -29,6 +31,17 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
     ]);
 })->name('home');
+
+// 🔥 ROUTE BARU BUAT WAITLIST (Taruh sini aja)
+Route::post('/waitlist', function (Request $request) {
+    $validated = $request->validate([
+        'email' => 'required|email|unique:waitlists,email'
+    ]);
+
+    Waitlist::create($validated);
+
+    return back()->with('success', 'You have been added to the waitlist!');
+})->name('waitlist.store');
 
 Route::get('/about', fn () => Inertia::render('About'))->name('about');
 
