@@ -2,50 +2,24 @@
 import { computed, ref, onMounted, onUnmounted, watch } from 'vue';
 
 const props = defineProps({
-    scheduledTasks: {
-        type: Array,
-        default: () => []
-    },
-    openModal: {
-        type: Function,
-        required: true
-    },
-    toggleComplete: {
-        type: Function,
-        required: true
-    },
-    getTypeColor: {
-        type: Function,
-        default: (t) => 'border-slate-500' // Default warna kalau lupa dikirim
-    },
-    onDrop: {
-        type: Function,
-        default: () => {}
-    },
-    onDragStart: {
-        type: Function,
-        default: () => {}
-    }
+    scheduledTasks: { type: Array, default: () => [] },
+    openModal: { type: Function, required: true },
+    toggleComplete: { type: Function, required: true },
 });
 
-// KONFIGURASI VIEWPORT
+// --- KONFIGURASI ---
 const VIEW_LIMIT = 14; 
-const HOUR_HEIGHT = 80; 
+const HOUR_HEIGHT = 120; // 1 Jam = 120px
 const TIME_COL_WIDTH = 80; 
+const VISUAL_GAP = 3; 
 
-// STATE: Jam Mulai (Persistent)
 const startHour = ref(6); 
-
 onMounted(() => {
     const savedStart = localStorage.getItem('planner_start_time');
     if (savedStart) startHour.value = parseInt(savedStart);
 });
+watch(startHour, (val) => localStorage.setItem('planner_start_time', val));
 
-watch(startHour, (val) => {
-    localStorage.setItem('planner_start_time', val);
-});
-
-// GENERATE SLOTS
 const visibleTimeSlots = computed(() => {
     const slots = [];
     for (let i = 0; i < VIEW_LIMIT; i++) {
@@ -60,166 +34,245 @@ let timerInterval;
 onMounted(() => { timerInterval = setInterval(() => now.value = new Date(), 60000); });
 onUnmounted(() => clearInterval(timerInterval));
 
-const getTaskMeta = (type) => {
+// --- THEME ENGINE ---
+const getTaskTheme = (type) => {
     const t = parseInt(type);
     switch (t) {
-        case 1: return { icon: '🔥', labelKey: 'priority_urgent', textClass: 'text-rose-700', bgClass: 'bg-rose-50' };
-        case 2: return { icon: '⚡', labelKey: 'priority_work', textClass: 'text-indigo-700', bgClass: 'bg-indigo-50' };
-        case 3: return { icon: '☕', labelKey: 'priority_normal', textClass: 'text-emerald-700', bgClass: 'bg-emerald-50' };
-        default: return { icon: '📝', labelKey: 'label_todo', textClass: 'text-slate-700', bgClass: 'bg-slate-50' };
+        case 1: // URGENT
+            return { 
+                icon: '🔥', 
+                labelKey: 'priority_urgent',
+                card: 'bg-rose-50 border-rose-200 hover:border-rose-300',
+                text: 'text-rose-900',
+                subtext: 'text-rose-500',
+                badge: 'bg-rose-100 text-rose-700 border-rose-200',
+                notes: 'bg-rose-100/60 text-rose-900 border-rose-200',
+                check: 'text-rose-300 border-rose-300 hover:bg-rose-100'
+            };
+        case 2: // WORK
+            return { 
+                icon: '💼', 
+                labelKey: 'priority_work',
+                card: 'bg-indigo-50 border-indigo-200 hover:border-indigo-300',
+                text: 'text-indigo-900',
+                subtext: 'text-indigo-500',
+                badge: 'bg-indigo-100 text-indigo-700 border-indigo-200',
+                notes: 'bg-indigo-100/60 text-indigo-900 border-indigo-200',
+                check: 'text-indigo-300 border-indigo-300 hover:bg-indigo-100'
+            };
+        case 3: // NORMAL
+            return { 
+                icon: '☕', 
+                labelKey: 'priority_normal',
+                card: 'bg-emerald-50 border-emerald-200 hover:border-emerald-300',
+                text: 'text-emerald-900',
+                subtext: 'text-emerald-500',
+                badge: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+                notes: 'bg-emerald-100/60 text-emerald-900 border-emerald-200',
+                check: 'text-emerald-300 border-emerald-300 hover:bg-emerald-100'
+            };
+        default: // TODO
+            return { 
+                icon: '📝', 
+                labelKey: 'label_todo',
+                card: 'bg-white border-slate-200 hover:border-slate-300 shadow-sm',
+                text: 'text-slate-800',
+                subtext: 'text-slate-500',
+                badge: 'bg-slate-100 text-slate-700 border-slate-200',
+                notes: 'bg-slate-50 text-slate-700 border-slate-200',
+                check: 'text-slate-300 border-slate-300 hover:bg-slate-50'
+            };
     }
+};
+
+const formatTimeRange = (task) => `${task.start_time} - ${task.end_time || '??'}`;
+
+const getDurationMinutes = (task) => {
+    const [startH, startM] = task.start_time.split(':').map(Number);
+    let [endH, endM] = task.end_time ? task.end_time.split(':').map(Number) : [startH + 1, startM];
+    let duration = (endH * 60 + endM) - (startH * 60 + startM);
+    if (duration < 0) duration += 1440;
+    return duration;
+};
+
+// --- STYLE & POSISI ---
+const getTaskStyle = (task) => {
+    const [startH, startM] = task.start_time.split(':').map(Number);
+    let diffStart = startH - startHour.value;
+    if (diffStart < 0) diffStart += 24;
+    
+    if (diffStart >= VIEW_LIMIT) return { display: 'none' };
+
+    const startMinutesTotal = (diffStart * 60) + startM;
+    const duration = getDurationMinutes(task);
+
+    const topPx = (startMinutesTotal / 60) * HOUR_HEIGHT;
+    const heightPx = (duration / 60) * HOUR_HEIGHT;
+
+    const finalHeight = Math.max(heightPx - VISUAL_GAP, 24);
+
+    return {
+        top: `${topPx}px`,
+        height: `${finalHeight}px`,
+        left: `${TIME_COL_WIDTH + 8}px`,  
+        right: '8px', 
+        zIndex: 10 
+    };
+};
+
+// --- VIEW MODE ---
+const getTaskViewMode = (task) => {
+    const duration = getDurationMinutes(task);
+    if (duration < 45) return 'MICRO'; 
+    if (duration < 90) return 'MEDIUM'; 
+    return 'MACRO'; 
 };
 
 const currentTimeIndicatorStyle = computed(() => {
     const currentH = now.value.getHours();
     const currentM = now.value.getMinutes();
-    
     let diff = currentH - startHour.value;
     if (diff < 0) diff += 24; 
-
     if (diff >= VIEW_LIMIT) return { display: 'none' };
-    
     const minutesFromStart = (diff * 60) + currentM;
-    const topPx = (minutesFromStart / 60) * HOUR_HEIGHT;
-    return { top: `${topPx}px`, left: `${TIME_COL_WIDTH}px`, right: '0px' };
+    return { top: `${(minutesFromStart / 60) * HOUR_HEIGHT}px`, left: `${TIME_COL_WIDTH}px`, right: '0px' };
 });
-
-// --- PERBAIKAN LOGIC DISINI ---
-const getTaskStyle = (task) => {
-    const [startH, startM] = task.start_time.split(':').map(Number);
-    let [endH, endM] = task.end_time ? task.end_time.split(':').map(Number) : [startH + 1, startM];
-
-    let diffStart = startH - startHour.value;
-    if (diffStart < 0) diffStart += 24;
-
-    if (diffStart >= VIEW_LIMIT) return { display: 'none' };
-
-    const startMinutes = (diffStart * 60) + startM;
-    
-    // Hitung Durasi Real
-    let durationMinutes = (endH * 60 + endM) - (startH * 60 + startM);
-    if (durationMinutes < 0) durationMinutes += 1440; 
-
-    // Hitung tinggi berdasarkan waktu
-    const timeHeight = (durationMinutes / 60) * HOUR_HEIGHT;
-
-    // MINIMUM VISUAL HEIGHT: 
-    // Kita paksa tinggi minimal 110px agar konten (Badge + Judul + Waktu) muat
-    // meskipun durasi aslinya pendek (misal 30 menit / 1 jam).
-    const visualHeight = Math.max(timeHeight, 110);
-
-    return {
-        top: `${(startMinutes / 60) * HOUR_HEIGHT}px`,
-        height: `${visualHeight}px`, 
-        position: 'absolute',
-        left: `${TIME_COL_WIDTH + 16}px`,  
-        right: '16px', 
-        // Z-Index trick: Task pendek dikasih z-index lebih tinggi biar kalau numpuk dia ada di atas
-        zIndex: durationMinutes < 60 ? 20 : 10 
-    };
-};
-
-const formatTimeRange = (task) => {
-    if (!task.end_time) {
-        const [h, m] = task.start_time.split(':').map(Number);
-        const end = `${((h + 1) % 24).toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
-        return `${task.start_time} - ${end}`;
-    }
-    return `${task.start_time} - ${task.end_time}`;
-};
 </script>
 
 <template>
-    <div class="bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+    <div class="bg-slate-50 rounded-3xl shadow-xl border border-slate-200 overflow-hidden select-none flex flex-col h-full">
         
-        <div class="px-6 py-5 border-b border-slate-100 flex flex-wrap justify-between items-center bg-white sticky top-0 z-30 gap-4">
-            <div class="flex items-center gap-4">
-                <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
-                    <span class="bg-indigo-600 text-white p-1.5 rounded-lg text-xs shadow-lg shadow-indigo-200">📅</span> 
-                    {{ $t('timeline_title') }}
-                </h3>
-                
-                <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
-                    <span class="text-[10px] font-black text-slate-400 px-2 uppercase tracking-tighter">Start at</span>
-                    <select v-model="startHour" class="bg-white border-none text-xs font-bold rounded-lg py-1 pl-2 pr-8 focus:ring-2 focus:ring-indigo-500 shadow-sm cursor-pointer">
-                        <option v-for="h in 24" :key="h-1" :value="h-1">
-                            {{ (h-1).toString().padStart(2, '0') }}:00
-                        </option>
-                    </select>
-                </div>
-            </div>
-
+        <div class="px-6 py-4 border-b border-slate-200 bg-white sticky top-0 z-50 shadow-sm flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="flex items-center gap-2 px-3 py-1.5 bg-slate-900 text-white rounded-xl shadow-lg shadow-slate-200">
-                    <div class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></div>
-                    <span class="text-xs font-bold font-mono tracking-widest">{{ now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }}</span>
-                </div>
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-lg shadow-indigo-200 shadow-lg">📅</div>
+                <h3 class="font-black text-slate-800 text-base leading-none">{{ $t('timeline_title') }}</h3>
+            </div>
+            
+            <div class="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200">
+                <span class="text-[10px] font-bold text-slate-400 px-2">START</span>
+                <select v-model="startHour" class="bg-transparent text-xs font-bold py-1 focus:outline-none cursor-pointer">
+                    <option v-for="h in 24" :key="h-1" :value="h-1">{{ (h-1).toString().padStart(2, '0') }}:00</option>
+                </select>
             </div>
         </div>
         
-        <div class="relative w-full bg-white transition-all duration-500" :style="{ height: `${VIEW_LIMIT * HOUR_HEIGHT}px` }">
+        <div class="relative w-full bg-white overflow-y-auto custom-scrollbar" :style="{ height: `${VIEW_LIMIT * HOUR_HEIGHT}px` }">
             
             <div v-for="(time, index) in visibleTimeSlots" :key="time" 
-                class="absolute w-full flex group border-b border-slate-50"
+                class="absolute w-full flex border-b border-slate-100"
                 :style="{ top: `${index * HOUR_HEIGHT}px`, height: `${HOUR_HEIGHT}px` }">
-                
-                <div class="flex flex-col items-center justify-start pt-3 border-r border-slate-100 bg-slate-50/50 w-[80px] shrink-0">
-                    <span class="text-xs font-black text-slate-400 font-mono group-hover:text-indigo-500 transition-colors">{{ time }}</span>
+                <div class="w-[80px] shrink-0 border-r border-slate-100 bg-slate-50/40 flex justify-center pt-3">
+                    <span class="text-[11px] font-bold text-slate-400 font-mono">{{ time }}</span>
                 </div>
-                
-                <div class="flex-1 relative group/zone">
-                    <div class="absolute w-full top-1/2 border-t border-dashed border-slate-100/50"></div>
-                    
-                    <div class="absolute inset-2 rounded-xl hover:bg-indigo-50/60 transition-all cursor-pointer flex items-center justify-center opacity-0 hover:opacity-100 border-2 border-dashed border-indigo-200" 
-                        @click="openModal(null, time)">
-                        <span class="text-indigo-600 text-[10px] font-black uppercase tracking-widest">+ Add to {{ time }}</span>
+                <div class="flex-1 relative group/slot cursor-pointer" @click="openModal(null, time)">
+                    <div class="absolute inset-x-2 top-0.5 bottom-0.5 rounded border border-transparent group-hover/slot:border-indigo-100 group-hover/slot:bg-indigo-50/30 flex items-center justify-center">
+                        <span class="opacity-0 group-hover/slot:opacity-100 text-indigo-400 text-[10px] font-bold tracking-widest">+ ADD</span>
                     </div>
                 </div>
             </div>
 
-            <div class="absolute z-20 flex items-center pointer-events-none w-full" :style="currentTimeIndicatorStyle">
-                <div class="w-[80px] text-right pr-2">
-                    <span class="text-[10px] font-black text-rose-500 bg-rose-50 px-1.5 py-0.5 rounded-full border border-rose-200">NOW</span>
+            <div class="absolute z-30 flex items-center pointer-events-none w-full" :style="currentTimeIndicatorStyle">
+                <div class="w-[80px] flex justify-end pr-2">
+                    <span class="text-[9px] font-black text-white bg-rose-500 px-1.5 rounded-sm shadow-sm">NOW</span>
                 </div>
-                <div class="w-3 h-3 -ml-1.5 rounded-full bg-rose-500 ring-4 ring-rose-500/20 shadow-sm shadow-rose-500/50"></div>
-                <div class="h-0.5 w-full bg-rose-500/40 shadow-[0_0_8px_rgba(244,63,94,0.3)]"></div>
+                <div class="flex-1 h-[2px] bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
             </div>
 
-            <div v-for="task in scheduledTasks" :key="task.id" @click="openModal(task)" :style="getTaskStyle(task)"
-                class="group absolute rounded-2xl border-l-[6px] border border-slate-200 transition-all duration-300 flex flex-col shadow-sm hover:shadow-2xl hover:-translate-y-1 bg-white"
+            <div v-for="task in scheduledTasks" :key="task.id" 
+                @click="openModal(task)" 
+                :style="getTaskStyle(task)"
+                class="group absolute rounded-xl border px-0 py-0 shadow-sm cursor-pointer overflow-hidden transition-all hover:shadow-md hover:scale-[1.005]"
                 :class="[
-                    getTypeColor(task.type), 
-                    task.is_completed ? 'opacity-40 grayscale !border-slate-300' : '',
-                    // Gunakan overflow-visible saat hover agar tooltip/isi panjang tetap terlihat jika perlu
-                    'overflow-hidden hover:overflow-visible' 
+                    getTaskTheme(task.type).card,
+                    task.is_completed ? 'opacity-60 grayscale filter' : ''
                 ]">
                 
-                <div class="px-4 py-3 flex flex-col h-full gap-1 relative justify-between">
-                    <div class="flex justify-between items-start shrink-0">
-                        <span class="text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded-lg shadow-sm"
-                            :class="[getTaskMeta(task.type).bgClass, getTaskMeta(task.type).textClass]">
-                            {{ getTaskMeta(task.type).icon }} {{ $t(getTaskMeta(task.type).labelKey) }}
-                        </span>
+                <div class="w-full h-full relative" :title="task.notes ? `📝 ${task.notes}` : ''">
+
+                    <div v-if="getTaskViewMode(task) === 'MICRO'" class="flex items-center justify-between h-full px-3 gap-2">
+    <div class="flex items-center gap-2 overflow-hidden">
+        <span class="text-sm shrink-0">{{ getTaskTheme(task.type).icon }}</span>
+        <span class="font-extrabold text-xs truncate leading-none" 
+            :class="[getTaskTheme(task.type).text, task.is_completed && 'line-through']">
+            {{ task.title }}
+        </span>
+    </div>
+
+    <button @click.stop="toggleComplete(task)" class="w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-colors bg-white hover:scale-110" 
+        :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
+        <svg v-if="task.is_completed" class="w-2.5 h-2.5 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
+    </button>
+</div>
+
+                    <div v-else-if="getTaskViewMode(task) === 'MEDIUM'" class="flex flex-col h-full px-3 py-2 gap-0.5">
+                        <div class="flex justify-between items-center shrink-0">
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border flex items-center gap-1 opacity-90"
+                                :class="getTaskTheme(task.type).badge">
+                                {{ getTaskTheme(task.type).icon }} {{ $t(getTaskTheme(task.type).labelKey) }}
+                            </span>
+                            
+                            <button @click.stop="toggleComplete(task)" class="w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition-colors bg-white hover:scale-110" 
+                                :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
+                                <svg v-if="task.is_completed" class="w-3 h-3 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
+                            </button>
+                        </div>
                         
-                        <button @click.stop="toggleComplete(task)" 
-                            class="w-7 h-7 rounded-xl border-2 flex items-center justify-center transition-all shadow-sm z-20 shrink-0"
-                            :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : 'bg-white border-slate-100 text-slate-300 hover:border-indigo-400 hover:text-indigo-400'">
-                            <svg v-if="task.is_completed" class="w-4 h-4 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
-                        </button>
+                        <h4 class="font-bold text-sm leading-tight truncate shrink-0 mt-1.5" 
+                            :class="[getTaskTheme(task.type).text, task.is_completed && 'line-through']">
+                            {{ task.title }}
+                        </h4>
+
+                        <div v-if="task.notes" class="mt-0.5 truncate text-[11px] opacity-80" :class="getTaskTheme(task.type).text">
+                            📝 {{ task.notes }}
+                        </div>
+                        
+                        <span class="text-xs font-mono shrink-0 mt-auto" :class="getTaskTheme(task.type).subtext">
+                            {{ formatTimeRange(task) }}
+                        </span>
                     </div>
 
-                    <h4 class="font-black text-sm text-slate-800 leading-snug py-1" 
-                        :class="{'line-through text-slate-400': task.is_completed}">
-                        {{ task.title }}
-                    </h4>
-                    
-                    <div class="mt-auto shrink-0">
-                        <span class="text-[10px] font-bold font-mono text-slate-400 bg-slate-100 px-2 py-1 rounded-lg inline-block">
-                            🕒 {{ formatTimeRange(task) }}
-                        </span>
+                    <div v-else class="flex flex-col h-full px-4 py-3 gap-2">
+                        <div class="flex justify-between items-start shrink-0">
+                             <span class="text-xs font-bold uppercase tracking-widest px-2 py-1 rounded-md border flex items-center gap-1.5 shadow-sm"
+                                :class="getTaskTheme(task.type).badge">
+                                {{ getTaskTheme(task.type).icon }} {{ $t(getTaskTheme(task.type).labelKey) }}
+                            </span>
+                            
+                            <button @click.stop="toggleComplete(task)" class="w-7 h-7 rounded-full border bg-white flex items-center justify-center hover:scale-110 transition-transform shrink-0 shadow-sm" 
+                                :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
+                                <svg class="w-4 h-4 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
+                            </button>
+                        </div>
+
+                        <h4 class="font-black text-lg leading-snug mt-1 shrink-0 line-clamp-2" 
+                            :class="[getTaskTheme(task.type).text, task.is_completed && 'line-through opacity-50']">
+                            {{ task.title }}
+                        </h4>
+                        
+                        <div v-if="task.notes" class="mt-1 rounded-lg p-2.5 flex-1 min-h-0 overflow-hidden border"
+                            :class="getTaskTheme(task.type).notes">
+                            <p class="text-sm font-medium italic line-clamp-3 leading-relaxed">
+                                "{{ task.notes }}"
+                            </p>
+                        </div>
+                        
+                        <div class="mt-auto shrink-0 pt-2 flex items-center gap-2">
+                            <div class="h-[1px] flex-1 opacity-20 bg-current"></div>
+                            <span class="text-xs font-bold font-mono px-2 py-0.5 rounded-full bg-white/60 border border-black/5"
+                                :class="getTaskTheme(task.type).text">
+                                ⏱ {{ formatTimeRange(task) }}
+                            </span>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-</template>``
+</template>
+
+<style scoped>
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+</style>
