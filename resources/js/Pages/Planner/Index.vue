@@ -99,14 +99,14 @@ const switchToSingle = () => {
         />
 
         <PlannerBatchModal 
-            :show="isBatchModalOpen" 
-            :form="batchForm" 
-            :close="() => isBatchModalOpen = false" 
-            :submit="submitBatch" 
-            :addRow="addBatchRow" 
-            :removeRow="removeBatchRow"
-            :switchToSingle="switchToSingle"
-        />
+    :show="isBatchModalOpen" 
+    :form="batchForm" 
+    :conflictError="globalConflictError"  :close="() => isBatchModalOpen = false" 
+    :submit="submitBatch" 
+    :addRow="addBatchRow" 
+    :removeRow="removeBatchRow"
+    :switchToSingle="switchToSingle"
+/>
 
     </AuthenticatedLayout>
 </template>

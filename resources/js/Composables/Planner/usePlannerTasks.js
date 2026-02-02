@@ -3,7 +3,7 @@ import { router, useForm } from '@inertiajs/vue3';
 
 export function usePlannerTasks(props) {
     const localTasks = ref([...props.tasks]);
-    const conflictError = ref(null); // State error bentrok
+    const conflictError = ref(null); // State error (Bentrok atau Durasi Pendek)
     const isModalOpen = ref(false);
     const isEditing = ref(false);
     const activeModalType = ref('full');
@@ -12,28 +12,34 @@ export function usePlannerTasks(props) {
         id: null, title: '', start_time: null, end_time: null, type: 1, notes: ''
     });
 
-    // --- 1. LOGIC CEK BENTROK (Anti-Clash) ---
+    // --- 1. HELPER: Konversi Jam ke Menit ---
     const timeToMin = (t) => {
         if (!t) return 0;
         const [h, m] = t.split(':').map(Number);
         return h * 60 + m;
     };
 
-    const checkTimeConflict = () => {
-        conflictError.value = null;
-        // Hanya cek jika ada jam mulai & selesai
+    // --- 2. LOGIC VALIDASI (Anti-Clash & Min Duration) ---
+    const checkTimeValidity = () => {
+        conflictError.value = null; // Reset error dulu
+        
+        // Hanya cek jika jam mulai & selesai sudah diisi
         if (!form.start_time || !form.end_time) return;
 
         const newStart = timeToMin(form.start_time);
-        const newEnd = timeToMin(form.end_time);
+        let newEnd = timeToMin(form.end_time);
 
-        // Cek validasi dasar
-        if (newEnd <= newStart) {
-            conflictError.value = "Jam selesai harus lebih dari jam mulai!";
-            return;
+        // Handle case lintas hari (misal 23:00 - 01:00) -> anggap +24 jam
+        if (newEnd < newStart) newEnd += 1440; 
+
+        // 🔥 VALIDASI 1: Minimal Durasi 15 Menit
+        const duration = newEnd - newStart;
+        if (duration < 15) {
+            conflictError.value = "⛔ Durasi minimal 15 menit, Bro!";
+            return; // Stop di sini, jangan cek bentrok dulu
         }
 
-        // Cek bentrok dengan task lain
+        // 🔥 VALIDASI 2: Cek Bentrok dengan Task Lain
         const hasConflict = localTasks.value.some(task => {
             // Jangan cek diri sendiri saat edit
             if (isEditing.value && task.id === form.id) return false;
@@ -41,31 +47,34 @@ export function usePlannerTasks(props) {
             if (!task.start_time) return false;
 
             const taskStart = timeToMin(task.start_time);
-            // Kalau task lain gak punya end_time, anggap durasi 1 jam
-            const taskEnd = task.end_time ? timeToMin(task.end_time) : taskStart + 60;
+            // Kalau task lain gak punya end_time, anggap durasi default 1 jam
+            let taskEnd = task.end_time ? timeToMin(task.end_time) : taskStart + 60;
+            
+            if (taskEnd < taskStart) taskEnd += 1440; // Handle lintas hari task lain
 
-            // Rumus tabrakan waktu
+            // Rumus tabrakan waktu: (Start A < End B) && (End A > Start B)
             return (newStart < taskEnd && newEnd > taskStart);
         });
 
         if (hasConflict) {
-            conflictError.value = "Jadwal bentrok dengan aktivitas lain!";
+            conflictError.value = "⚠️ Jadwal bentrok dengan aktivitas lain!";
         }
     };
 
-    // Pantau perubahan jam di form real-time
-    watch(() => [form.start_time, form.end_time], checkTimeConflict);
+    // Pantau perubahan jam di form secara real-time
+    watch(() => [form.start_time, form.end_time], checkTimeValidity);
 
-    // --- 2. LOGIC CRUD ---
+    // --- 3. LOGIC CRUD ---
     const submitTask = () => {
-        // Stop jika ada error bentrok
+        // Cek validasi sekali lagi sebelum submit (jaga-jaga user nge-bypass)
+        checkTimeValidity();
         if (conflictError.value) return; 
 
         const payload = { ...form.data() };
         isModalOpen.value = false;
 
         if (isEditing.value) {
-            // Update Lokal
+            // Update Lokal (Optimistic UI)
             const index = localTasks.value.findIndex(t => t.id === form.id);
             if (index !== -1) {
                 localTasks.value[index] = { ...localTasks.value[index], ...payload };
@@ -77,7 +86,7 @@ export function usePlannerTasks(props) {
                 onFinish: () => form.reset()
             });
         } else {
-            // Create Lokal
+            // Create Lokal (Optimistic UI)
             const tempId = 'temp_' + Date.now();
             const newTask = { ...payload, id: tempId, is_completed: false };
             localTasks.value.push(newTask);
@@ -87,6 +96,7 @@ export function usePlannerTasks(props) {
                 preserveScroll: true,
                 onSuccess: () => {}, 
                 onError: () => {
+                    // Revert kalau gagal
                     localTasks.value = localTasks.value.filter(t => t.id !== tempId);
                 },
                 onFinish: () => form.reset()
@@ -94,13 +104,11 @@ export function usePlannerTasks(props) {
         }
     };
 
-    // Fungsi Delete Tanpa Confirm Browser (Karena Modal UI yang handle)
+    // Fungsi Delete
     const deleteTask = (id) => {
-        // Hapus Lokal
         localTasks.value = localTasks.value.filter(t => t.id !== id);
         isModalOpen.value = false;
 
-        // Hapus Server
         router.delete(route('planner.destroy', id), {
             preserveScroll: true,
             preserveState: true
@@ -114,7 +122,7 @@ export function usePlannerTasks(props) {
         });
     };
 
-    // --- 3. COMPUTED & HELPERS ---
+    // --- 4. COMPUTED & HELPERS ---
     watch(() => props.tasks, (newTasks) => {
         localTasks.value = [...newTasks];
     }, { deep: true });
@@ -136,7 +144,7 @@ export function usePlannerTasks(props) {
     const openModal = (task = null, timeSlot = null, type = 'full') => {
         form.reset();
         form.clearErrors();
-        conflictError.value = null; // Reset error tiap buka modal
+        conflictError.value = null; 
         activeModalType.value = type;
         
         if (task) {
@@ -152,7 +160,7 @@ export function usePlannerTasks(props) {
             form.id = null;
             if (timeSlot) {
                 form.start_time = timeSlot;
-                // Auto set end time +1 jam biar UX enak
+                // Auto set end time +1 jam (aman karena > 15 menit)
                 const [h, m] = timeSlot.split(':').map(Number);
                 form.end_time = `${(h+1).toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
             }
