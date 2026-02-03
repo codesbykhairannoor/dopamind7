@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Finance\BudgetRequest;       // 👈 Cuma import ini
-use App\Http\Requests\Finance\TransactionRequest;  // 👈 Sama ini
+use App\Http\Requests\BudgetRequest;       // 👈 Cuma import ini
+use App\Http\Requests\TransactionRequest;  // 👈 Sama ini
 use App\Http\Resources\FinanceBudgetResource;
 use App\Http\Resources\FinanceTransactionResource;
 use App\Models\FinanceBudget;

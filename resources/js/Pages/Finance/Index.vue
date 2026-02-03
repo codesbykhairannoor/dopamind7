@@ -34,6 +34,15 @@ const handleEdit = (trx) => {
     showTransactionModal.value = true; // Munculkan Modal Form
 };
 
+// Edit budget handler (munculkan modal dan isi form)
+const handleEditBudget = (budget) => {
+    budgetForm.id = budget.id;
+    budgetForm.category = budget.category;
+    budgetForm.limit_amount = budget.limit_amount;
+    budgetForm.month = budget.month || currentMonthKey.value;
+    showBudgetModal.value = true;
+};
+
 const askDelete = (id, type = 'transaction') => {
     deleteState.value = { show: true, id, type };
 };
@@ -69,6 +78,7 @@ const confirmDelete = () => {
                         :budgets="budgets" :expenseStats="stats.expense_by_category"
                         @add="showBudgetModal = true"
                         @delete-budget="(id) => askDelete(id, 'budget')"
+                        @edit-budget="handleEditBudget"
                     />
                 </div>
             </div>
@@ -79,6 +89,14 @@ const confirmDelete = () => {
     :budgets="budgets"
     :close="() => showTransactionModal = false"
     :submit="() => submitTransaction(() => { showTransactionModal = false })"
+/>
+
+<BudgetModal 
+    :show="showBudgetModal" 
+    :form="budgetForm" 
+    :budgets="budgets"
+    :close="() => showBudgetModal = false"
+    :submit="() => submitBudget(currentMonthKey, () => { showBudgetModal = false })"
 />
 
             <Modal :show="deleteState.show" @close="deleteState.show = false" maxWidth="sm">

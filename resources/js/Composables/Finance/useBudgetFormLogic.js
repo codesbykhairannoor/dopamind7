@@ -4,38 +4,91 @@ import { ref, computed } from 'vue';
 export function useBudgetFormLogic(props) {
     const isAddingNew = ref(false);
     const newCategoryInput = ref('');
+    const newCategoryIcon = ref('📦');
 
-    // Ambil kategori unik dari budget yang sudah ada + default
+    const CUSTOM_KEY = 'finance_custom_categories_v1';
+    const readCustom = () => {
+        try { return JSON.parse(localStorage.getItem(CUSTOM_KEY) || '{}'); } catch(e){ return {}; }
+    };
+
+    // small reactive counter to force recompute when custom categories change
+    const customVersion = ref(0);
+
+    // Ambil kategori unik dari budget yang sudah ada + default + custom dari localStorage
     const categories = computed(() => {
+        // depend on customVersion so it recomputes when we add new ones
+        const _v = customVersion.value;
         const defaults = ['food', 'transport', 'bills', 'shopping', 'others'];
-        // Pastikan props.budgets ada sebelum di-map
         const fromBudgets = (props.budgets || []).map(b => b.category);
-        return [...new Set([...defaults, ...fromBudgets])];
+        const custom = Object.keys(readCustom());
+        return [...new Set([...defaults, ...fromBudgets, ...custom])];
     });
 
+    const iconsPalette = ['🍔','🍜','☕','🛵','⚡','🛍️','💰','📦','🎯','🍎','🚕','🏠','💡','🧾','🍳','🍩','🥤','🎁','⚖️','📈'];
+
     const addNewCategory = () => {
-        if (newCategoryInput.value.trim()) {
-            // Ubah input jadi slug (contoh: "Makan Malam" -> "makan_malam")
-            const slug = newCategoryInput.value.toLowerCase().replace(/\s+/g, '_');
-            
-            // Update langsung ke form yang dipassing lewat props
+        const name = newCategoryInput.value.trim();
+        if (name) {
+            const slug = name.toLowerCase().replace(/\s+/g, '_');
+            // Simpan ke localStorage sebagai custom category dengan icon
+            try {
+                const map = readCustom();
+                map[slug] = { name, icon: newCategoryIcon.value || '📦' };
+                localStorage.setItem(CUSTOM_KEY, JSON.stringify(map));
+                // bump version to make categories recompute reactively
+                customVersion.value += 1;
+                // notify other components to update
+                window.dispatchEvent(new CustomEvent('finance:custom-updated'));
+            } catch (e) { /* ignore */ }
+
+            // Set form value ke slug yang baru dibuat
             props.form.category = slug;
-            
-            // Reset state input
+
+            // Reset UI
             isAddingNew.value = false;
             newCategoryInput.value = '';
+            newCategoryIcon.value = '📦';
         }
+    };
+
+    const updateCategoryIcon = (slug, icon) => {
+        try {
+            const map = readCustom();
+            // create entry if not exist (allow overriding defaults)
+            if (!map[slug]) map[slug] = { name: slug, icon: icon || '📦' };
+            else map[slug].icon = icon || '📦';
+            localStorage.setItem(CUSTOM_KEY, JSON.stringify(map));
+            customVersion.value += 1;
+            window.dispatchEvent(new CustomEvent('finance:custom-updated'));
+            return true;
+        } catch (e) { return false; }
     };
 
     const toggleNewCategory = () => {
         isAddingNew.value = !isAddingNew.value;
     };
 
+    const deleteCustomCategory = (slug) => {
+        try {
+            const map = readCustom();
+            if (!map[slug]) return false;
+            delete map[slug];
+            localStorage.setItem(CUSTOM_KEY, JSON.stringify(map));
+            customVersion.value += 1;
+            window.dispatchEvent(new CustomEvent('finance:custom-updated'));
+            return true;
+        } catch (e) { return false; }
+    };
+
     return {
         categories,
         isAddingNew,
         newCategoryInput,
+        newCategoryIcon,
+        iconsPalette,
         addNewCategory,
-        toggleNewCategory
+        toggleNewCategory,
+        updateCategoryIcon,
+        deleteCustomCategory
     };
 }

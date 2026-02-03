@@ -78,6 +78,10 @@ export function useFinanceForm() {
             },
             onSuccess: () => {
                 budgetForm.reset();
+            },
+            onError: (errors) => {
+                console.error('Budget submit error', errors);
+                alert('Gagal menyimpan budget. Cek inputan atau lihat console untuk detail.');
             }
         });
     };

@@ -1,4 +1,5 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 
 const props = defineProps({
@@ -8,6 +9,18 @@ const props = defineProps({
 
 const emit = defineEmits(['add', 'delete-budget', 'edit-budget']);
 const { formatRupiah, getCategoryDetails } = useFinanceFormat();
+
+const refreshCounter = ref(0);
+onMounted(() => {
+    const handler = () => refreshCounter.value += 1;
+    window.addEventListener('finance:custom-updated', handler);
+    window.__finance_budget_sidebar_handler = handler;
+});
+onUnmounted(() => {
+    const h = window.__finance_budget_sidebar_handler;
+    if (h) window.removeEventListener('finance:custom-updated', h);
+    delete window.__finance_budget_sidebar_handler;
+});
 
 const getProgress = (category, limit) => {
     const used = props.expenseStats[category] || 0;
@@ -23,7 +36,7 @@ const getBarColor = (percent) => {
 </script>
 
 <template>
-    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm h-fit sticky top-6">
+    <div :key="refreshCounter" class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm h-fit sticky top-6">
         <div class="flex justify-between items-center mb-6">
             <h3 class="font-bold text-slate-800">Budgeting</h3>
             <button @click="$emit('add')" class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg hover:bg-indigo-100 transition">+ Set</button>
@@ -39,7 +52,7 @@ const getBarColor = (percent) => {
                     <div class="flex items-center gap-2">
                         <span>{{ getCategoryDetails(budget.category).icon }}</span>
                         <div class="flex flex-col">
-                            <span class="font-bold text-slate-700 capitalize leading-none">{{ budget.category }}</span>
+                            <span class="font-bold text-slate-700 capitalize leading-none">{{ getCategoryDetails(budget.category).name || budget.category }}</span>
                             <div class="flex gap-2 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <button @click="$emit('edit-budget', budget)" class="text-[10px] text-indigo-500 hover:text-indigo-700 font-bold uppercase">Edit</button>
                                 <span class="text-[10px] text-slate-200">|</span>
