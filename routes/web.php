@@ -81,7 +81,8 @@ Route::middleware(['auth'])->group(function () {
    // 4. FINANCE - PROTECTED
 Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->group(function () {
     Route::get('/', [FinanceController::class, 'index'])->name('index');
-    
+    Route::post('/income-target', [App\Http\Controllers\FinanceController::class, 'updateIncomeTarget'])
+        ->name('income-target.update');
     // Transaksi
     Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
     Route::patch('/transaction/{financeTransaction}', [FinanceController::class, 'updateTransaction'])->name('transaction.update');

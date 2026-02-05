@@ -21,7 +21,7 @@ const props = defineProps({
 const { formattedMonth, changeMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
 const { 
     transactionForm, setEditTransaction, submitTransaction, deleteTransaction, 
-    budgetForm, submitBudget, deleteBudget 
+    budgetForm, submitBudget, deleteBudget ,updateIncomeTarget,
 } = useFinanceForm();
 
 const showTransactionModal = ref(false);
@@ -58,11 +58,14 @@ const confirmDelete = () => {
     <Head title="Finance Plan" />
     <AuthenticatedLayout>
         <div class="max-w-7xl mx-auto px-4 py-8">
-            <FinanceHeader 
-                :currentMonth="formattedMonth" :stats="stats"
-                :onPrev="() => changeMonth('prev')" :onNext="() => changeMonth('next')"
-                :onAddClick="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
-            />
+           <FinanceHeader 
+    :currentMonth="formattedMonth" 
+    :stats="stats"
+    :onPrev="() => changeMonth('prev')" 
+    :onNext="() => changeMonth('next')"
+    :onAddClick="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
+    :onUpdateTarget="(amount) => updateIncomeTarget(currentMonthKey, amount)" 
+/>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 space-y-8">

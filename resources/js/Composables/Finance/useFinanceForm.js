@@ -92,6 +92,13 @@ export function useFinanceForm() {
         });
     };
 
+    const updateIncomeTarget = (month, amount) => {
+    router.post(route('finance.income-target.update'), {
+        month: month,
+        amount: amount
+    }, { preserveScroll: true });
+};
+
     return {
         transactionForm,
         setEditTransaction,
@@ -99,6 +106,7 @@ export function useFinanceForm() {
         deleteTransaction,
         budgetForm,
         submitBudget,
+        updateIncomeTarget,
         deleteBudget
     };
 }
