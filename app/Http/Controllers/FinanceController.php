@@ -8,7 +8,7 @@ use App\Http\Resources\FinanceBudgetResource;
 use App\Http\Resources\FinanceTransactionResource;
 use App\Models\FinanceBudget;
 use App\Models\FinanceTransaction;
-use App\Models\DailyLog; // 🔥 WAJIB IMPORT INI
+use App\Models\DailyLog;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -26,13 +26,11 @@ class FinanceController extends Controller
         $date = $request->input('date', now()->format('Y-m-d'));
         $carbonDate = Carbon::parse($date);
         
-        // 2. 🔥 AMBIL DATA GAJI / TARGET BULAN INI
-        // Kita pakai cara langsung (Direct Model) biar gak error di User Model
+        // 2. AMBIL DATA GAJI / TARGET BULAN INI
         $log = DailyLog::where('user_id', $user->id)
             ->whereDate('date', $carbonDate->startOfMonth()->format('Y-m-d'))
             ->first();
             
-        // Kalau gak ada data, default 0
         $incomeTarget = $log ? (float) $log->income_target : 0;
 
         // 3. Ambil Transaksi
@@ -43,11 +41,17 @@ class FinanceController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        // 4. Hitung Total Masuk & Keluar Harian
+        // 4. Hitung Total Masuk & Keluar
         $totalIncome = $transactions->where('type', 'income')->sum('amount');
         $totalExpense = $transactions->where('type', 'expense')->sum('amount');
         
+        // Grouping Pengeluaran
         $expenseByCategory = $transactions->where('type', 'expense')
+            ->groupBy('category')
+            ->map(fn($row) => $row->sum('amount'));
+
+        // 🔥 Grouping Pemasukan (Baru)
+        $incomeByCategory = $transactions->where('type', 'income')
             ->groupBy('category')
             ->map(fn($row) => $row->sum('amount'));
 
@@ -60,19 +64,19 @@ class FinanceController extends Controller
                 return $budget;
             });
 
-        // 6. 🔥 RUMUS SISA SALDO YANG LU MINTA
-        // Saldo = (Gaji Awal + Pemasukan Harian) - Pengeluaran
+        // 6. Hitung Saldo
         $balance = ($incomeTarget + $totalIncome) - $totalExpense;
 
         return Inertia::render('Finance/Index', [
             'transactions' => FinanceTransactionResource::collection($transactions)->resolve(),
             'budgets'      => FinanceBudgetResource::collection($budgets)->resolve(),
             'stats'        => [
-                'total_income'  => (float) $totalIncome,
-                'total_expense' => (float) $totalExpense,
-                'income_target' => (float) $incomeTarget, // Kirim Gaji ke Frontend
-                'balance'       => (float) $balance,      // Kirim Saldo yang udah dihitung
+                'total_income'        => (float) $totalIncome,
+                'total_expense'       => (float) $totalExpense,
+                'income_target'       => (float) $incomeTarget,
+                'balance'             => (float) $balance,
                 'expense_by_category' => $expenseByCategory,
+                'income_by_category'  => $incomeByCategory, // 🔥 Kirim data ini ke frontend
             ],
             'filters' => [
                 'date'       => $carbonDate->format('Y-m-d'),
@@ -81,7 +85,7 @@ class FinanceController extends Controller
         ]);
     }
 
-    // --- FITUR BARU: UPDATE GAJI ---
+    // --- FITUR UPDATE GAJI ---
     public function updateIncomeTarget(Request $request): RedirectResponse
     {
         $request->validate([
@@ -89,11 +93,10 @@ class FinanceController extends Controller
             'amount' => 'required|numeric|min:0'
         ]);
 
-        // Simpan ke database (Update kalau ada, Create kalau belum)
         DailyLog::updateOrCreate(
             [
                 'user_id' => Auth::id(),
-                'date'    => $request->month . '-01' // Selalu simpan di tgl 1 bulan tsb
+                'date'    => $request->month . '-01'
             ],
             ['income_target' => $request->amount]
         );
@@ -101,8 +104,7 @@ class FinanceController extends Controller
         return back()->with('success', 'Gaji bulanan berhasil diatur!');
     }
 
-    // --- TRANSACTIONS (Tetap Sama) ---
-
+    // --- TRANSACTIONS ---
     public function storeTransaction(TransactionRequest $request): RedirectResponse
     {
         $request->user()->financeTransactions()->create($request->validated());
@@ -124,8 +126,7 @@ class FinanceController extends Controller
         return back()->with('success', 'Transaksi dihapus.');
     }
 
-    // --- BUDGETS (Tetap Sama) ---
-
+    // --- BUDGETS ---
     public function storeBudget(BudgetRequest $request): RedirectResponse
     {
         $data = $request->validated();

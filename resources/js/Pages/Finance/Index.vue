@@ -15,13 +15,16 @@ import { useFinanceCalendar } from '@/Composables/Finance/useFinanceCalendar';
 import { useFinanceForm } from '@/Composables/Finance/useFinanceForm';
 
 const props = defineProps({
-    transactions: Array, budgets: Array, stats: Object, filters: Object 
+    transactions: Array, 
+    budgets: Array, 
+    stats: Object, // Di dalam object ini ada 'income_by_category' dari controller
+    filters: Object 
 });
 
 const { formattedMonth, changeMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
 const { 
     transactionForm, setEditTransaction, submitTransaction, deleteTransaction, 
-    budgetForm, submitBudget, deleteBudget ,updateIncomeTarget,
+    budgetForm, submitBudget, deleteBudget, updateIncomeTarget,
 } = useFinanceForm();
 
 const showTransactionModal = ref(false);
@@ -58,16 +61,18 @@ const confirmDelete = () => {
     <Head title="Finance Plan" />
     <AuthenticatedLayout>
         <div class="max-w-7xl mx-auto px-4 py-8">
-           <FinanceHeader 
-    :currentMonth="formattedMonth" 
-    :stats="stats"
-    :onPrev="() => changeMonth('prev')" 
-    :onNext="() => changeMonth('next')"
-    :onAddClick="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
-    :onUpdateTarget="(amount) => updateIncomeTarget(currentMonthKey, amount)" 
-/>
+            
+            <FinanceHeader 
+                :currentMonth="formattedMonth" 
+                :currentMonthKey="currentMonthKey"
+                :stats="stats"
+                :onAddClick="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
+                :onUpdateTarget="(amount) => updateIncomeTarget(currentMonthKey, amount)"
+                :onChangeDate="(payload) => changeMonth(payload)"
+            />
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
                 <div class="lg:col-span-2 space-y-8">
                     <TransactionList 
                         :transactions="transactions" 
@@ -76,31 +81,34 @@ const confirmDelete = () => {
                     />
                     <DailyTrendChart :transactions="transactions" :currentDate="filters.date" />
                 </div>
+
                 <div class="lg:col-span-1">
                     <BudgetSidebar 
-                        :budgets="budgets" :expenseStats="stats.expense_by_category"
+                        :budgets="budgets" 
+                        :expenseStats="stats.expense_by_category"
+                        :incomeStats="stats.income_by_category" 
                         @add="showBudgetModal = true"
                         @delete-budget="(id) => askDelete(id, 'budget')"
                         @edit-budget="handleEditBudget"
                     />
-                </div>
+                    </div>
             </div>
 
             <TransactionModal 
-    :show="showTransactionModal" 
-    :form="transactionForm" 
-    :budgets="budgets"
-    :close="() => showTransactionModal = false"
-    :submit="() => submitTransaction(() => { showTransactionModal = false })"
-/>
+                :show="showTransactionModal" 
+                :form="transactionForm" 
+                :budgets="budgets"
+                :close="() => showTransactionModal = false"
+                :submit="() => submitTransaction(() => { showTransactionModal = false })"
+            />
 
-<BudgetModal 
-    :show="showBudgetModal" 
-    :form="budgetForm" 
-    :budgets="budgets"
-    :close="() => showBudgetModal = false"
-    :submit="() => submitBudget(currentMonthKey, () => { showBudgetModal = false })"
-/>
+            <BudgetModal 
+                :show="showBudgetModal" 
+                :form="budgetForm" 
+                :budgets="budgets"
+                :close="() => showBudgetModal = false"
+                :submit="() => submitBudget(currentMonthKey, () => { showBudgetModal = false })"
+            />
 
             <Modal :show="deleteState.show" @close="deleteState.show = false" maxWidth="sm">
                 <div class="p-6 text-center">
@@ -113,6 +121,7 @@ const confirmDelete = () => {
                     </div>
                 </div>
             </Modal>
+
         </div>
     </AuthenticatedLayout>
 </template>
