@@ -25,8 +25,6 @@ class FinanceTransaction extends Model
 
     /**
      * Casting tipe data otomatis.
-     * Penting: 'date' dicast jadi object Carbon biar bisa diformat enak di frontend/backend.
-     * 'amount' dicast jadi integer/float biar gak dianggap string.
      */
     protected $casts = [
         'date' => 'date',

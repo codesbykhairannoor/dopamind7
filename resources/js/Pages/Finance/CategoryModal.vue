@@ -1,61 +1,98 @@
 <script setup>
-import { ref } from 'vue';
-import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+import { ref, watch } from 'vue';
+import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
     show: Boolean,
+    categoryToEdit: Object, // { id, name, icon, slug }
     close: Function
 });
 
-const { addCustomCategory } = useFinanceFormat();
+const form = useForm({
+    name: '',
+    icon: '💰',
+    type: 'income'
+});
 
-const form = ref({ name: '', icon: '💰' });
-const iconPalette = ['💰','💸','🏦','💎','🎥','🎤','🚗','🏠','🎓','🎮','🛒','💊','🔧','🎨','🖥️','📱','🎸','🧸','🍔','☕'];
+const showIconGrid = ref(false);
+const iconPalette = ['💰','💸','🏦','💎','🎥','🎤','🚗','🏠','🎓','🛒','🔧','🎨','🖥️','📱','🪙','💵'];
+
+watch(() => props.show, (val) => {
+    if (val) {
+        showIconGrid.value = false;
+        if (props.categoryToEdit) {
+            form.name = props.categoryToEdit.name;
+            form.icon = props.categoryToEdit.icon;
+        } else {
+            form.reset();
+            form.name = '';
+            form.icon = '💰';
+        }
+    }
+});
 
 const submit = () => {
-    if (!form.value.name) return;
-    
-    // Bikin slug (nama_kategori)
-    const slug = form.value.name.toLowerCase().replace(/\s+/g, '_');
-    
-    // Simpan ke LocalStorage
-    addCustomCategory(slug, form.value.name, form.value.icon);
-    
-    // Trigger event biar komponen lain (Sidebar/Transaction) tau ada data baru
-    window.dispatchEvent(new CustomEvent('finance:custom-updated'));
-    
-    // Reset & Tutup
-    form.value.name = '';
-    form.value.icon = '💰';
-    props.close();
+    if (props.categoryToEdit) {
+        // UPDATE
+        form.put(route('finance.categories.update', props.categoryToEdit.id), {
+            onSuccess: () => {
+                form.reset();
+                props.close();
+            },
+            onError: () => alert('Gagal update kategori')
+        });
+    } else {
+        // CREATE
+        form.post(route('finance.categories.store'), {
+            onSuccess: () => {
+                form.reset();
+                props.close();
+            },
+            onError: () => alert('Gagal buat kategori')
+        });
+    }
 };
 </script>
 
 <template>
-    <div v-if="show" class="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div @click="close" class="absolute inset-0 bg-slate-900/30 backdrop-blur-sm"></div>
-        
-        <div class="bg-white w-full max-w-sm rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200">
-            <h3 class="text-lg font-black text-slate-800 mb-4">✨ Tambah Sumber Dana</h3>
+    <Teleport to="body">
+        <div v-if="show" class="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            <div @click="close" class="absolute inset-0 bg-slate-900/40 backdrop-blur-md transition-opacity"></div>
             
-            <form @submit.prevent="submit" class="space-y-4">
-                <div class="flex gap-3">
-                    <div class="relative group w-16">
-                        <select v-model="form.icon" class="w-full p-3 rounded-xl bg-slate-50 border-none text-center text-2xl appearance-none cursor-pointer focus:ring-2 focus:ring-indigo-500">
-                            <option v-for="icon in iconPalette" :key="icon" :value="icon">{{ icon }}</option>
-                        </select>
-                    </div>
-                    <input v-model="form.name" type="text" placeholder="Nama (mis: Jualan Kue)" 
-                        class="flex-1 px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700"
-                        autoFocus
-                    >
-                </div>
+            <div class="bg-white w-full max-w-sm rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200">
+                <h3 class="text-xl font-black text-slate-800 mb-6">
+                    {{ categoryToEdit ? '✏️ Edit Sumber Dana' : '✨ Tambah Sumber Dana' }}
+                </h3>
+                
+                <form @submit.prevent="submit" class="space-y-5">
+                    <div>
+                        <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Nama Pemasukan</label>
+                        <div class="flex gap-2">
+                            <div class="relative">
+                                <button type="button" @click="showIconGrid = !showIconGrid" class="w-12 h-12 flex items-center justify-center bg-slate-50 rounded-xl text-2xl border border-slate-100 hover:bg-slate-100 transition active:scale-95">
+                                    {{ form.icon }}
+                                </button>
+                                
+                                <div v-if="showIconGrid" class="absolute top-14 left-0 w-64 p-3 bg-white rounded-2xl shadow-xl border border-slate-100 z-50 grid grid-cols-6 gap-2 animate-in fade-in zoom-in-95 duration-100">
+                                    <button v-for="icon in iconPalette" :key="icon" type="button" @click="form.icon = icon; showIconGrid = false" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-emerald-50 text-lg transition">
+                                        {{ icon }}
+                                    </button>
+                                </div>
+                                <div v-if="showIconGrid" @click="showIconGrid = false" class="fixed inset-0 z-40"></div>
+                            </div>
 
-                <div class="flex gap-2 pt-2">
-                    <button type="button" @click="close" class="flex-1 py-3 text-slate-400 font-bold hover:text-slate-600">Batal</button>
-                    <button type="submit" class="flex-[2] py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg active:scale-95 transition-all">Simpan</button>
-                </div>
-            </form>
+                            <input v-model="form.name" type="text" placeholder="Misal: Freelance" class="flex-1 px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-emerald-500 font-bold text-slate-700" required autoFocus>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-2">
+                        <button type="button" @click="close" class="flex-1 py-3 text-slate-400 font-bold hover:text-slate-600 rounded-xl hover:bg-slate-50">Batal</button>
+                        <button type="submit" class="flex-[2] py-3 bg-emerald-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-200 active:scale-95 transition-all" :disabled="form.processing">
+                            {{ form.processing ? 'Menyimpan...' : 'Simpan' }}
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    </Teleport>
 </template>

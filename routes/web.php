@@ -87,11 +87,16 @@ Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->grou
     Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
     Route::patch('/transaction/{financeTransaction}', [FinanceController::class, 'updateTransaction'])->name('transaction.update');
     Route::delete('/transaction/{financeTransaction}', [FinanceController::class, 'destroyTransaction'])->name('transaction.destroy');
-    
+    Route::get('/category/check/{category}', [FinanceController::class, 'checkCategoryUsage'])->name('category.check');
+    Route::post('/category/rename', [FinanceController::class, 'renameCategory'])->name('category.rename');
     // Budget (Pastikan pakai {financeBudget} agar sinkron dengan Controller)
     Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
     Route::put('/budget/{financeBudget}', [FinanceController::class, 'updateBudget'])->name('budget.update');
     Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy');
+
+    Route::post('/categories', [FinanceController::class, 'storeCategory'])->name('categories.store');
+    Route::put('/categories/{category}', [FinanceController::class, 'updateCategory'])->name('categories.update');
+    Route::delete('/categories/{category}', [FinanceController::class, 'destroyCategory'])->name('categories.destroy');
 });
 
     // 5. SETTINGS & PROFILE (Always Accessible)

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import Modal from '@/Components/Modal.vue';
 
 import FinanceHeader from './FinanceHeader.vue';
@@ -17,8 +17,9 @@ import { useFinanceForm } from '@/Composables/Finance/useFinanceForm';
 const props = defineProps({
     transactions: Array, 
     budgets: Array, 
-    stats: Object, // Di dalam object ini ada 'income_by_category' dari controller
-    filters: Object 
+    stats: Object,
+    filters: Object,
+    categories: Array, // Data Kategori dari DB
 });
 
 const { formattedMonth, changeMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
@@ -33,11 +34,10 @@ const deleteState = ref({ show: false, id: null, type: 'transaction' });
 
 // --- HANDLERS ---
 const handleEdit = (trx) => {
-    setEditTransaction(trx); // Isi form dengan data yang akan diedit
-    showTransactionModal.value = true; // Munculkan Modal Form
+    setEditTransaction(trx);
+    showTransactionModal.value = true;
 };
 
-// Edit budget handler (munculkan modal dan isi form)
 const handleEditBudget = (budget) => {
     budgetForm.id = budget.id;
     budgetForm.category = budget.category;
@@ -51,9 +51,30 @@ const askDelete = (id, type = 'transaction') => {
 };
 
 const confirmDelete = () => {
-    if (deleteState.value.type === 'transaction') deleteTransaction(deleteState.value.id);
-    else deleteBudget(deleteState.value.id);
-    deleteState.value.show = false;
+    if (deleteState.value.type === 'transaction') {
+        // Hapus Transaksi Biasa
+        deleteTransaction(deleteState.value.id, () => {
+            deleteState.value.show = false;
+        });
+    } else {
+        // Hapus Budget (Punya proteksi pengecekan transaksi di Backend)
+        deleteBudget(deleteState.value.id, {
+            onSuccess: () => {
+                deleteState.value.show = false;
+            },
+            onError: (errors) => {
+                // Muncul alert kalau backend nolak hapus (karena transaksi masih ada)
+                alert(errors.error || 'Gagal menghapus budget.');
+                deleteState.value.show = false;
+            }
+        });
+    }
+};
+
+const submitNewTransaction = () => {
+    submitTransaction(() => {
+        showTransactionModal.value = false;
+    });
 };
 </script>
 
@@ -76,6 +97,7 @@ const confirmDelete = () => {
                 <div class="lg:col-span-2 space-y-8">
                     <TransactionList 
                         :transactions="transactions" 
+                        :categories="categories" 
                         :onDelete="askDelete" 
                         :onEdit="handleEdit" 
                     />
@@ -85,21 +107,23 @@ const confirmDelete = () => {
                 <div class="lg:col-span-1">
                     <BudgetSidebar 
                         :budgets="budgets" 
+                        :categories="categories" 
                         :expenseStats="stats.expense_by_category"
-                        :incomeStats="stats.income_by_category" 
+                        :incomeStats="stats.income_by_category"
                         @add="showBudgetModal = true"
                         @delete-budget="(id) => askDelete(id, 'budget')"
                         @edit-budget="handleEditBudget"
                     />
-                    </div>
+                </div>
             </div>
 
             <TransactionModal 
                 :show="showTransactionModal" 
                 :form="transactionForm" 
-                :budgets="budgets"
-                :close="() => showTransactionModal = false"
-                :submit="() => submitTransaction(() => { showTransactionModal = false })"
+                :budgets="budgets" 
+                :categories="categories"
+                :close="() => showTransactionModal = false" 
+                :submit="submitNewTransaction" 
             />
 
             <BudgetModal 
@@ -112,12 +136,23 @@ const confirmDelete = () => {
 
             <Modal :show="deleteState.show" @close="deleteState.show = false" maxWidth="sm">
                 <div class="p-6 text-center">
-                    <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">🗑️</div>
-                    <h3 class="text-lg font-black text-slate-800">Hapus Data?</h3>
-                    <p class="text-slate-500 text-sm mt-2">Data ini akan hilang permanen.</p>
+                    <div class="w-16 h-16 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                        {{ deleteState.type === 'budget' ? '📊' : '🗑️' }}
+                    </div>
+                    <h3 class="text-lg font-black text-slate-800">
+                        Hapus {{ deleteState.type === 'budget' ? 'Budget' : 'Transaksi' }}?
+                    </h3>
+                    <p class="text-slate-500 text-sm mt-2">
+                        {{ deleteState.type === 'budget' 
+                            ? 'Sistem akan menolak jika budget ini sudah memiliki riwayat transaksi.' 
+                            : 'Data transaksi ini akan dihapus secara permanen.' 
+                        }}
+                    </p>
                     <div class="flex gap-3 mt-6">
-                        <button @click="deleteState.show = false" class="flex-1 py-3 font-bold text-slate-500">Batal</button>
-                        <button @click="confirmDelete" class="flex-1 py-3 font-bold bg-rose-500 text-white rounded-xl shadow-lg shadow-rose-100">Hapus</button>
+                        <button @click="deleteState.show = false" class="flex-1 py-3 font-bold text-slate-500 hover:bg-slate-50 rounded-xl transition">Batal</button>
+                        <button @click="confirmDelete" class="flex-1 py-3 font-bold bg-rose-500 text-white rounded-xl shadow-lg shadow-rose-100 hover:bg-rose-600 active:scale-95 transition-all">
+                            Ya, Hapus
+                        </button>
                     </div>
                 </div>
             </Modal>

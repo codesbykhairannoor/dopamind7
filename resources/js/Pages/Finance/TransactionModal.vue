@@ -1,54 +1,55 @@
 <script setup>
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 
 const props = defineProps({
     show: Boolean,
     form: Object,
-    budgets: Array,
+    budgets: Array,     // Data Budget (Expense) dari DB
+    categories: Array,  // Data Categories (Income/Expense) dari DB
     close: Function,
     submit: Function
 });
 
-const { getCategoryDetails, getCustomCategories } = useFinanceFormat();
+const { getCategoryDetails } = useFinanceFormat();
 
-// --- LOGIC KATEGORI DINAMIS ---
-const defaultExpenseCats = ['food', 'transport', 'bills', 'shopping', 'others'];
-const defaultIncomeCats = ['salary', 'freelance', 'ojol', 'trading', 'gift', 'income'];
-
-// Trigger refresh saat ada kategori baru ditambahkan dari sidebar
-const customVersion = ref(0);
-const refreshHandler = () => customVersion.value++;
-
-onMounted(() => window.addEventListener('finance:custom-updated', refreshHandler));
-onUnmounted(() => window.removeEventListener('finance:custom-updated', refreshHandler));
-
+// --- LOGIC KATEGORI ---
 const availableCategories = computed(() => {
-    // Dependency palsu
-    const _v = customVersion.value;
-    const custom = Object.keys(getCustomCategories());
-
+    
     if (props.form.type === 'income') {
-        // Mode Pemasukan: Default Income + Custom Categories
-        return [...new Set([...defaultIncomeCats, ...custom])];
+        // 🔥 LOGIC INCOME: Ambil dari tabel 'finance_categories' yang type='income'
+        // Filter array props.categories yang dikirim dari controller
+        return (props.categories || [])
+            .filter(c => c.type === 'income')
+            .map(c => c.slug);
     } else {
-        // Mode Pengeluaran: Default Expense + Budget + Custom (Opsional: kalau mau custom muncul di expense juga, masukkan 'custom' disini)
-        // Sesuai request: "Jangan sampai nyampur". Kita batasi Expense strictly.
-        const budgetCats = props.budgets ? props.budgets.map(b => b.category) : [];
-        return [...new Set([...defaultExpenseCats, ...budgetCats])];
+        // 🔥 LOGIC EXPENSE: HANYA Ambil dari Budget yang sudah di-set
+        // Karena expense wajib punya budget dulu
+        return (props.budgets || []).map(b => b.category);
     }
 });
 
-// Safety Watcher: Reset kategori kalau ganti tipe biar gak error
+// Helper buat dapetin detail (Nama & Icon) dari DB Categories atau fallback
+const getDetail = (slug) => {
+    // Coba cari di props.categories
+    const found = (props.categories || []).find(c => c.slug === slug);
+    if (found) return { icon: found.icon, name: found.name };
+    
+    // Kalau gak ketemu (misal data lama), pake helper default
+    return getCategoryDetails(slug);
+};
+
+// Reset kategori saat ganti tipe (biar gak nyampur)
 watch(() => props.form.type, (newType) => {
-    if (newType === 'income') {
-        props.form.category = 'freelance'; 
-    } else {
-        props.form.category = 'food';
-    }
+    props.form.category = ''; 
 });
 
-const formatDisplay = (val) => val ? val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : '';
+// Format Rupiah di Input
+const formatDisplay = (val) => {
+    if (!val) return '';
+    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+};
+
 const onInput = (e) => {
     let value = e.target.value.replace(/\./g, '');
     if (!isNaN(value)) props.form.amount = value;
@@ -60,11 +61,10 @@ const onInput = (e) => {
         <div @click="close" class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"></div>
         
         <div class="bg-white w-full max-w-md rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200 border border-slate-100">
+            
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-xl font-black text-slate-800">✨ Catat Transaksi</h3>
-                <button @click="close" class="bg-slate-50 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
+                <button @click="close" class="bg-slate-50 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition">✕</button>
             </div>
             
             <form @submit.prevent="submit" class="space-y-5">
@@ -84,16 +84,15 @@ const onInput = (e) => {
 
                 <div>
                     <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Keterangan</label>
-                    <input v-model="form.title" type="text" placeholder="Contoh: Gaji / Project Website" 
-                        class="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 placeholder:text-slate-300 transition-all">
+                    <input v-model="form.title" type="text" placeholder="Catatan transaksi..." class="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 placeholder:text-slate-300 transition-all">
                 </div>
 
                 <div>
                     <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Nominal (Rp)</label>
-                    <div class="relative">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">Rp</span>
+                    <div class="relative group">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold group-focus-within:text-indigo-500 transition-colors">Rp</span>
                         <input type="text" :value="formatDisplay(form.amount)" @input="onInput" placeholder="0" 
-                            class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-black text-lg text-slate-700">
+                            class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-black text-lg text-slate-700 placeholder:text-slate-300 transition-all">
                     </div>
                 </div>
 
@@ -101,17 +100,24 @@ const onInput = (e) => {
                     <div>
                         <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Kategori</label>
                         <div class="relative">
-                            <select v-model="form.category" class="w-full pl-4 pr-8 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 capitalize text-sm appearance-none cursor-pointer">
-                                <option v-for="cat in availableCategories" :key="cat" :value="cat">
-                                    {{ getCategoryDetails(cat).icon }} {{ getCategoryDetails(cat).name }}
+                            <select v-model="form.category" class="w-full pl-4 pr-8 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 capitalize text-sm appearance-none cursor-pointer transition-all hover:bg-slate-50">
+                                <option value="" disabled selected>Pilih...</option>
+                                
+                                <option v-for="catSlug in availableCategories" :key="catSlug" :value="catSlug">
+                                    {{ getDetail(catSlug).icon }} {{ getDetail(catSlug).name }}
                                 </option>
                             </select>
+                            
+                            <div v-if="availableCategories.length === 0" class="absolute top-12 left-0 w-[200px] text-[10px] text-rose-500 font-bold leading-tight animate-pulse">
+                                {{ form.type === 'expense' ? 'Belum ada budget! Atur di Sidebar.' : 'Belum ada sumber dana! Tambah di Sidebar.' }}
+                            </div>
+
                             <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">▼</div>
                         </div>
                     </div>
                     <div>
                         <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Tanggal</label>
-                        <input v-model="form.date" type="date" class="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 text-sm cursor-pointer">
+                        <input v-model="form.date" type="date" class="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 text-sm cursor-pointer transition-all hover:bg-slate-50">
                     </div>
                 </div>
 
