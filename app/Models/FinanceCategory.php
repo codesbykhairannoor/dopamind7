@@ -9,5 +9,6 @@ class FinanceCategory extends Model
 {
     use HasFactory;
 
+    // 🔥 FIX: Guarded ID saja
     protected $guarded = ['id'];
 }

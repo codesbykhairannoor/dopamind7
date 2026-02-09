@@ -10,18 +10,9 @@ class FinanceTransaction extends Model
 {
     use HasFactory;
 
-    /**
-     * Kolom yang boleh diisi (Mass Assignment).
-     */
-    protected $fillable = [
-        'user_id',
-        'title',
-        'amount',
-        'type',      // 'income' atau 'expense'
-        'category',  // 'food', 'transport', dll
-        'date',
-        'notes',
-    ];
+    // 🔥 FIX: Ijinkan semua kolom diisi massal KECUALI 'id'
+    // Ini solusi biar gak perlu nulis $fillable panjang lebar dan menghindari error 'id' null.
+    protected $guarded = ['id'];
 
     /**
      * Casting tipe data otomatis.
@@ -31,9 +22,6 @@ class FinanceTransaction extends Model
         'amount' => 'decimal:2',
     ];
 
-    /**
-     * Relasi balik ke User.
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

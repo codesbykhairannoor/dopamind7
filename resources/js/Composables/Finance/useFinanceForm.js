@@ -3,18 +3,17 @@ import dayjs from 'dayjs';
 
 export function useFinanceForm() {
     
-    // --- 1. TRANSACTION LOGIC ---
+    // --- TRANSACTION ---
     const transactionForm = useForm({
         id: null,
         title: '',
         amount: '',
         type: 'expense',
-        category: 'food',
+        category: '',
         date: dayjs().format('YYYY-MM-DD'),
         notes: ''
     });
 
-    // Fungsi sakti untuk memindahkan data dari list ke form saat edit
     const setEditTransaction = (trx) => {
         transactionForm.id = trx.id;
         transactionForm.title = trx.title;
@@ -33,39 +32,40 @@ export function useFinanceForm() {
 
         transactionForm[method](url, {
             preserveScroll: true,
-            preserveState: true,
-            onBefore: () => {
-                if(onSuccessCallback) onSuccessCallback();
-            },
             onSuccess: () => {
                 transactionForm.reset();
+                if(onSuccessCallback) onSuccessCallback();
             },
-            onError: () => {
-                alert('Gagal memproses transaksi. Cek kembali inputan kamu.');
-            }
+            onError: () => alert('Gagal simpan transaksi.')
         });
     };
 
-    // Hapus id saja tanpa confirm() browser
     const deleteTransaction = (id, onSuccessCallback) => {
-        router.delete(route('finance.transaction.destroy', id), {
-            preserveScroll: true,
-            onSuccess: () => {
-                if (onSuccessCallback) onSuccessCallback();
-            }
-        });
+        if(confirm('Hapus transaksi ini?')) {
+            router.delete(route('finance.transaction.destroy', id), {
+                preserveScroll: true,
+                onSuccess: () => { if (onSuccessCallback) onSuccessCallback(); }
+            });
+        }
     };
 
-    // --- 2. BUDGET LOGIC ---
+    // --- BUDGET ---
     const budgetForm = useForm({
         id: null,
-        category: 'food',
+        category: '', // Slug
+        name: '',     // Display Name (dikirim ke backend buat create/update category)
+        icon: '💸',   // Icon
         limit_amount: '',
         month: ''
     });
 
     const submitBudget = (monthKey, onSuccessCallback) => {
         budgetForm.month = monthKey;
+        // Generate slug dari nama jika kategori baru
+        if (!budgetForm.category && budgetForm.name) {
+            budgetForm.category = budgetForm.name.toLowerCase().replace(/\s+/g, '_');
+        }
+
         const method = budgetForm.id ? 'put' : 'post';
         const url = budgetForm.id 
             ? route('finance.budget.update', budgetForm.id) 
@@ -73,31 +73,30 @@ export function useFinanceForm() {
 
         budgetForm[method](url, {
             preserveScroll: true,
-            onBefore: () => {
-                if(onSuccessCallback) onSuccessCallback();
-            },
             onSuccess: () => {
                 budgetForm.reset();
+                if(onSuccessCallback) onSuccessCallback();
             },
-            onError: (errors) => {
-                console.error('Budget submit error', errors);
-                alert('Gagal menyimpan budget. Cek inputan atau lihat console untuk detail.');
+            onError: (err) => {
+                console.error(err);
+                alert('Gagal simpan budget.');
             }
         });
     };
 
-    const deleteBudget = (id) => {
+    const deleteBudget = (id, options = {}) => {
         router.delete(route('finance.budget.destroy', id), {
-            preserveScroll: true
+            preserveScroll: true,
+            ...options
         });
     };
 
     const updateIncomeTarget = (month, amount) => {
-    router.post(route('finance.income-target.update'), {
-        month: month,
-        amount: amount
-    }, { preserveScroll: true });
-};
+        router.post(route('finance.income-target.update'), {
+            month: month,
+            amount: amount
+        }, { preserveScroll: true });
+    };
 
     return {
         transactionForm,
