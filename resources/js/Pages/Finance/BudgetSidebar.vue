@@ -3,10 +3,11 @@ import { ref, computed } from 'vue';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 import { router } from '@inertiajs/vue3';
 import CategoryModal from './CategoryModal.vue'; 
+import Swal from 'sweetalert2'; // Pastikan import ini
 
 const props = defineProps({
     budgets: Array,
-    categories: Array, // Sumber kebenaran data
+    categories: Array, // Sumber data
     expenseStats: Object,
     incomeStats: Object 
 });
@@ -14,14 +15,14 @@ const props = defineProps({
 const emit = defineEmits(['add', 'delete-budget', 'edit-budget']);
 const { formatRupiah, getCategoryDetails } = useFinanceFormat();
 
-// Gunakan helper yang sudah diupdate
+// Helper untuk cari detail kategori expense
 const getCat = (slug) => getCategoryDetails(slug, props.categories);
 
 const activeTab = ref('expense');
 const showCategoryModal = ref(false);
 const incomeToEdit = ref(null);
 
-// LIST INCOME (Filter dari DB categories type='income')
+// LIST INCOME (Filter dari categories DB yang type='income')
 const incomeList = computed(() => {
     return props.categories
         .filter(c => c.type === 'income')
@@ -32,13 +33,62 @@ const incomeList = computed(() => {
         .sort((a, b) => b.amount - a.amount);
 });
 
-// CRUD Income
+// --- HELPER SWEET ALERT ---
+const toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
+
+// --- ACTIONS ---
+
 const openAddIncome = () => { incomeToEdit.value = null; showCategoryModal.value = true; };
 const openEditIncome = (cat) => { incomeToEdit.value = cat; showCategoryModal.value = true; };
+
+// UPDATE LOGIC DELETE: Pakai SweetAlert + Error Handling
 const deleteIncomeCategory = (cat) => {
-    if(confirm(`Hapus sumber dana "${cat.name}"?`)) {
-        router.delete(route('finance.categories.destroy', cat.id), { preserveScroll: true });
-    }
+    Swal.fire({
+        title: 'Hapus Sumber Dana?',
+        text: `Data "${cat.name}" akan dihapus permanen.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#f43f5e',
+        cancelButtonColor: '#cbd5e1',
+        confirmButtonText: 'Ya, Hapus!',
+        cancelButtonText: 'Batal',
+        reverseButtons: true,
+        customClass: {
+            popup: 'rounded-[2rem]',
+            confirmButton: 'rounded-xl',
+            cancelButton: 'rounded-xl'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            router.delete(route('finance.categories.destroy', cat.id), {
+                preserveScroll: true,
+                onSuccess: () => {
+                    toast.fire({ icon: 'success', title: 'Terhapus!' });
+                },
+                onError: (errors) => {
+                    // Tampilkan Error dari Backend (misal: Masih ada transaksi)
+                    const msg = errors.error || 'Gagal menghapus data.';
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal Hapus',
+                        text: msg,
+                        confirmButtonColor: '#f43f5e',
+                        customClass: { popup: 'rounded-[2rem]', confirmButton: 'rounded-xl' }
+                    });
+                }
+            });
+        }
+    });
 };
 
 const getProgress = (cat, limit) => limit > 0 ? Math.min(((props.expenseStats[cat]||0)/limit)*100, 100) : 0;
@@ -74,8 +124,8 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
                         <div class="h-full transition-all duration-1000 rounded-full" :class="getBarColor(getProgress(b.category, b.limit_amount))" :style="{ width: `${getProgress(b.category, b.limit_amount)}%` }"></div>
                     </div>
                     <div class="flex gap-2 mt-1 opacity-0 group-hover:opacity-100 transition-all">
-                         <button @click="$emit('edit-budget', b)" class="text-[10px] text-indigo-500 font-bold">Edit</button>
-                         <button @click="$emit('delete-budget', b.id)" class="text-[10px] text-rose-500 font-bold">Hapus</button>
+                         <button @click="$emit('edit-budget', b)" class="text-[10px] text-indigo-500 font-bold hover:underline">Edit</button>
+                         <button @click="$emit('delete-budget', b.id)" class="text-[10px] text-rose-500 font-bold hover:underline">Hapus</button>
                     </div>
                 </div>
             </div>
@@ -100,9 +150,10 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="font-black text-emerald-600 text-sm">+{{ formatRupiah(item.amount) }}</span>
+                        
                         <div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-all">
-                            <button @click="openEditIncome(item)" class="p-1 text-indigo-400 hover:text-indigo-600">✎</button>
-                            <button @click="deleteIncomeCategory(item)" class="p-1 text-rose-400 hover:text-rose-600">✕</button>
+                            <button @click="openEditIncome(item)" class="p-1 text-indigo-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition" title="Edit">✎</button>
+                            <button @click="deleteIncomeCategory(item)" class="p-1 text-rose-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition" title="Hapus">✕</button>
                         </div>
                     </div>
                 </div>

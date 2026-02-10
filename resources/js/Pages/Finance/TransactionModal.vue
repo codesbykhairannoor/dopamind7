@@ -16,11 +16,13 @@ const { getCategoryDetails } = useFinanceFormat();
 // --- LOGIC KATEGORI ---
 const availableCategories = computed(() => {
     if (props.form.type === 'income') {
+        // Ambil kategori tipe income
         return props.categories.filter(c => c.type === 'income').map(c => c.slug);
     } else {
-        // Expense cuma boleh yang ada di budget (atau ambil dari master category expense kalau mau bebas)
-        // Di sini saya ikuti logic: harus ada budgetnya dulu biar rapi.
-        return props.budgets.map(b => b.category);
+        // Untuk Expense, tampilkan list dari Budget yang aktif bulan ini
+        // Plus, tampilkan juga kategori master 'expense' lain jaga-jaga kalau budget dihapus tapi mau catat expense (optional, disini saya fokus ke budget)
+        const budgetSlugs = props.budgets.map(b => b.category);
+        return budgetSlugs;
     }
 });
 
@@ -58,7 +60,7 @@ const onInput = (e) => {
 
                 <div>
                     <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Keterangan</label>
-                    <input v-model="form.title" type="text" placeholder="Catatan transaksi..." class="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 placeholder:text-slate-300 transition-all">
+                    <input v-model="form.title" type="text" placeholder="Beli apa / Dari mana..." class="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 placeholder:text-slate-300 transition-all">
                 </div>
 
                 <div>
@@ -81,7 +83,9 @@ const onInput = (e) => {
                             </select>
                             <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">▼</div>
                         </div>
+                        <p v-if="form.type === 'expense' && availableCategories.length === 0" class="text-[9px] text-rose-500 mt-1">Buat budget dulu!</p>
                     </div>
+
                     <div>
                         <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Tanggal</label>
                         <input v-model="form.date" type="date" class="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 text-sm cursor-pointer hover:bg-slate-50">

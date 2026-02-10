@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { Link, usePage, router } from '@inertiajs/vue3';
 import { loadLanguageAsync } from 'laravel-vue-i18n';
 
@@ -13,7 +13,6 @@ const showingNavigationDropdown = ref(false);
 
 // Logic untuk filter menu
 const showModule = (moduleName) => {
-    // Menggunakan !== false agar jika datanya null (user baru), fitur tetap muncul secara default (true)
     return user.value.settings?.modules?.[moduleName] !== false;
 };
 
@@ -26,6 +25,11 @@ const switchLang = (lang) => {
 };
 
 const isActive = (routeName) => route().current(routeName);
+
+// Tutup menu otomatis saat pindah halaman
+watch(() => page.url, () => {
+    showingNavigationDropdown.value = false;
+});
 </script>
 
 <template>
@@ -40,7 +44,6 @@ const isActive = (routeName) => route().current(routeName);
             </div>
 
             <nav class="flex-1 px-6 space-y-2 overflow-y-auto py-6 custom-scrollbar">
-                
                 <Link :href="route('dashboard')" 
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
                     :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
@@ -68,7 +71,6 @@ const isActive = (routeName) => route().current(routeName);
                     <span class="text-xl">💸</span>
                     <span>Finance</span>
                 </Link>
-                
             </nav>
 
             <div class="p-6 border-t border-slate-100 bg-slate-50/50 space-y-4">
@@ -99,63 +101,77 @@ const isActive = (routeName) => route().current(routeName);
 
         <main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50">
             
-            <div class="md:hidden bg-white/80 backdrop-blur-md h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-30 shadow-sm">
+            <div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">
                 <Link :href="route('dashboard')" class="flex items-center gap-2">
                     <span class="text-2xl text-indigo-600">✦</span>
                     <span class="font-black text-indigo-950 text-lg tracking-tight">DopaMind.</span>
                 </Link>
-                <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-slate-500 hover:text-indigo-600 transition">
+                <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-slate-500 hover:text-indigo-600 transition p-2 rounded-lg hover:bg-slate-50">
                     <span v-if="!showingNavigationDropdown" class="text-2xl">☰</span>
-                    <span v-else class="text-2xl">✕</span>
+                    <span v-else class="text-2xl font-bold">✕</span>
                 </button>
             </div>
 
-            <div v-show="showingNavigationDropdown" class="md:hidden bg-white border-b border-slate-100 p-4 shadow-xl space-y-2 animate-in slide-in-from-top-2 absolute w-full z-40">
-                
-                <Link :href="route('dashboard')" 
-                    class="block px-4 py-3 rounded-xl font-bold transition" 
-                    :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false">
-                    {{ $t('nav_dashboard') }}
-                </Link>
+            <Transition
+                enter-active-class="transition ease-out duration-200"
+                enter-from-class="opacity-0 -translate-y-2"
+                enter-to-class="opacity-100 translate-y-0"
+                leave-active-class="transition ease-in duration-150"
+                leave-from-class="opacity-100 translate-y-0"
+                leave-to-class="opacity-0 -translate-y-2"
+            >
+                <div v-show="showingNavigationDropdown" class="md:hidden fixed inset-0 top-16 z-40 bg-white/95 backdrop-blur-lg overflow-y-auto">
+                    <div class="p-4 space-y-2 pb-24">
+                        <Link :href="route('dashboard')" 
+                            class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
+                            :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            @click="showingNavigationDropdown = false">
+                            <span>🏠</span> {{ $t('nav_dashboard') }}
+                        </Link>
 
-                <Link v-if="showModule('habit')" :href="route('habits.index')" 
-                    class="block px-4 py-3 rounded-xl font-bold transition" 
-                    :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false">
-                    {{ $t('habit_page_title') }}
-                </Link>
+                        <Link v-if="showModule('habit')" :href="route('habits.index')" 
+                            class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
+                            :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            @click="showingNavigationDropdown = false">
+                            <span>🌱</span> {{ $t('habit_page_title') }}
+                        </Link>
 
-                <Link v-if="showModule('planner')" :href="route('planner.index')" 
-                    class="block px-4 py-3 rounded-xl font-bold transition" 
-                    :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false">
-                    Daily Planner
-                </Link>
+                        <Link v-if="showModule('planner')" :href="route('planner.index')" 
+                            class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
+                            :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            @click="showingNavigationDropdown = false">
+                            <span>📅</span> Daily Planner
+                        </Link>
 
-                <Link v-if="showModule('finance')" :href="route('finance.index')" 
-                    class="block px-4 py-3 rounded-xl font-bold transition" 
-                    :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false">
-                    Finance
-                </Link>
+                        <Link v-if="showModule('finance')" :href="route('finance.index')" 
+                            class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
+                            :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            @click="showingNavigationDropdown = false">
+                            <span>💸</span> Finance
+                        </Link>
 
-                <Link :href="route('settings.index')" 
-                    class="block px-4 py-3 rounded-xl font-bold transition" 
-                    :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600'"
-                    @click="showingNavigationDropdown = false">
-                    {{ $t('nav_settings') }}
-                </Link>
+                        <Link :href="route('settings.index')" 
+                            class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
+                            :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            @click="showingNavigationDropdown = false">
+                            <span>⚙️</span> {{ $t('nav_settings') }}
+                        </Link>
 
-                <hr class="border-slate-100 my-2">
+                        <div class="border-t border-slate-100 my-4 pt-4">
+                            <div class="flex gap-2 px-2 mb-6">
+                                <button @click="switchLang('id')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDONESIA</button>
+                                <button @click="switchLang('en')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
+                            </div>
 
-                <div class="flex gap-2 px-2">
-                    <button @click="switchLang('id')" class="flex-1 py-2 rounded-lg text-xs font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDO</button>
-                    <button @click="switchLang('en')" class="flex-1 py-2 rounded-lg text-xs font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENG</button>
+                            <Link :href="route('logout')" method="post" as="button" class="w-full text-center py-3 text-rose-500 font-bold bg-rose-50 rounded-xl hover:bg-rose-100 transition">
+                                {{ $t('nav_logout') }}
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </Transition>
 
-            <div class="w-full h-full">
+            <div class="w-full relative z-0">
                 <slot />
             </div>
         </main>

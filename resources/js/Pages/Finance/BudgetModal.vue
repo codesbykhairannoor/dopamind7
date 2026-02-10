@@ -4,7 +4,7 @@ import { ref, watch } from 'vue';
 const props = defineProps({
     show: Boolean,
     form: Object, 
-    categories: Array, // Data dari DB untuk lookup nama/icon awal
+    categories: Array, // Penting untuk lookup nama/icon
     close: Function,
     submit: Function
 });
@@ -12,40 +12,34 @@ const props = defineProps({
 const showIconGrid = ref(false);
 const iconPalette = ['🍔','🛵','⚡','🛍️','🏠','💊','📚','🎮','🍿','✈️','🐶','🔧','💄','⚽','💻','🎁','💸','⛽','👗'];
 
-// Sinkronisasi data saat modal dibuka
 watch(() => props.show, (isOpen) => {
     if (isOpen) {
         showIconGrid.value = false;
         
-        // Jika mode edit (form.category ada isinya)
-        if (props.form.category) {
-            // Cari detail nama & icon asli dari props.categories
+        // Mode EDIT: Cari data master category agar nama & icon tampil benar
+        if (props.form.id && props.form.category) {
             const existing = props.categories.find(c => c.slug === props.form.category);
             if (existing) {
                 props.form.name = existing.name;
                 props.form.icon = existing.icon;
-            } else {
-                // Fallback kalau data kategori master hilang tapi budget ada
-                if(!props.form.name) props.form.name = props.form.category; 
             }
-        } else {
-            // Mode create baru
+        } else if (!props.form.id) {
+            // Mode CREATE
             props.form.reset();
             props.form.icon = '💸';
         }
     }
 });
 
-// Format tampilan duit
 const formatDisplay = (val) => val ? val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") : '';
 const onInputAmount = (e) => {
     let value = e.target.value.replace(/\./g, '');
     if (!isNaN(value)) props.form.limit_amount = value;
 };
 
-// Generate slug saat user ngetik nama (hanya visual, backend handle re-slugging)
 const onNameInput = (e) => {
-    if (!props.form.id) { // Cuma auto-slug pas create baru
+    // Hanya auto-slug saat CREATE. Saat EDIT, slug dihandle backend via logic rename.
+    if (!props.form.id) {
         props.form.category = e.target.value.toLowerCase().trim().replace(/\s+/g, '_');
     }
 };
@@ -57,12 +51,12 @@ const onNameInput = (e) => {
         
         <div class="bg-white w-full max-w-sm rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200">
             <h3 class="text-xl font-black text-slate-800 mb-6">
-                {{ form.id ? '✏️ Edit Budget' : '🎯 Atur Budget Baru' }}
+                {{ form.id ? '✏️ Edit Budget' : '🎯 Budget Baru' }}
             </h3>
             
             <form @submit.prevent="submit" class="space-y-5">
                 <div>
-                    <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Nama Pengeluaran</label>
+                    <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Nama Kategori</label>
                     <div class="flex gap-2">
                         <div class="relative">
                             <button type="button" @click="showIconGrid = !showIconGrid" class="w-12 h-12 flex items-center justify-center bg-slate-50 rounded-xl text-2xl border border-slate-100 hover:bg-slate-100 transition">
@@ -75,12 +69,14 @@ const onNameInput = (e) => {
                             </div>
                             <div v-if="showIconGrid" @click="showIconGrid = false" class="fixed inset-0 z-40"></div>
                         </div>
+
                         <input v-model="form.name" @input="onNameInput" type="text" placeholder="Misal: Jajan" class="flex-1 px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700" required>
                     </div>
+                    <p v-if="form.id" class="text-[10px] text-slate-400 mt-1 italic">*Mengubah nama akan merubah data di riwayat transaksi juga.</p>
                 </div>
 
                 <div>
-                    <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Batas Maksimal</label>
+                    <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">Batas Budget</label>
                     <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">Rp</span>
                         <input type="text" :value="formatDisplay(form.limit_amount)" @input="onInputAmount" placeholder="0" class="w-full pl-12 pr-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-black text-lg text-slate-700" required>

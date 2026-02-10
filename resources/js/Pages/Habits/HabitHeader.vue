@@ -14,7 +14,7 @@ const props = defineProps({
 });
 
 const isOpen = ref(false);
-const showHint = ref(true); // State untuk kontrol legend/hint
+const showHint = ref(true); 
 
 const months = [
     'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
@@ -44,45 +44,52 @@ const changeYear = (offset) => {
 
 <template>
     <div class="bg-white/80 backdrop-blur-xl border-b border-slate-100 sticky top-0 z-40 transition-all">
-        <div class="max-w-full mx-auto px-4 py-3 md:py-6">
+        <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-4">
             
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="w-full md:w-auto">
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-                        </span>
-                        <span class="text-[10px] md:text-xs font-bold text-slate-400 uppercase tracking-[0.2em]">
-                            {{ todayDate }}
-                        </span>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                
+                <div class="flex items-center gap-4 w-full md:w-auto">
+                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-2xl text-white shadow-lg shadow-indigo-200 shrink-0">
+                        ✨
                     </div>
-                    <h1 class="text-2xl md:text-3xl font-black text-slate-800 tracking-tight">
-                        {{ $t(greetingKey) }}, 
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-                            {{ user.name.split(' ')[0] }}
-                        </span>!
-                    </h1>
+
+                    <div>
+                        <div class="flex items-center gap-2 mb-0.5">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                            </span>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                                {{ todayDate }}
+                            </span>
+                        </div>
+                        <h1 class="text-xl md:text-2xl font-black text-slate-800 tracking-tight leading-none">
+                            {{ $t(greetingKey) }}, 
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                                {{ user.name.split(' ')[0] }}
+                            </span>!
+                        </h1>
+                    </div>
                 </div>
 
                 <div class="flex items-center gap-3 w-full md:w-auto">
                     
                     <div class="relative flex-1 md:flex-none">
                         <button @click="isOpen = !isOpen" 
-                            class="w-full flex items-center justify-between gap-4 bg-slate-50 border border-slate-200 pl-4 pr-3 py-3 rounded-2xl font-extrabold text-slate-700 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all active:scale-95">
+                            class="w-full flex items-center justify-between gap-4 bg-slate-50 border border-slate-200 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all active:scale-95">
                             <div class="flex flex-col items-start leading-none">
-                                <span class="text-[9px] text-slate-400 uppercase tracking-tighter mb-1">Periode</span>
-                                <span class="text-sm uppercase tracking-wide">{{ currentMonth }}</span>
+                                <span class="text-[9px] text-slate-400 uppercase tracking-tighter mb-0.5">Periode</span>
+                                <span class="text-xs uppercase tracking-wide">{{ currentMonth }}</span>
                             </div>
-                            <div class="bg-white p-1.5 rounded-xl border border-slate-100 shadow-sm">
-                                <svg class="w-4 h-4 text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-white p-1 rounded-lg border border-slate-100 shadow-sm">
+                                <svg class="w-3 h-3 text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path d="M19 9l-7 7-7-7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                             </div>
                         </button>
 
                         <Transition name="slide-fade">
-                            <div v-if="isOpen" class="absolute right-0 mt-3 w-72 bg-white rounded-3xl shadow-2xl shadow-indigo-100 border border-slate-100 p-4 z-50">
+                            <div v-if="isOpen" class="absolute right-0 mt-2 w-72 bg-white rounded-3xl shadow-2xl shadow-indigo-100 border border-slate-100 p-4 z-50">
                                 <div class="flex items-center justify-between mb-4 px-2">
                                     <button @click="changeYear(-1)" class="p-2 hover:bg-slate-50 rounded-xl text-slate-400 hover:text-indigo-600 transition">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="3"></path></svg>
@@ -107,32 +114,32 @@ const changeYear = (offset) => {
                         </Transition>
                     </div>
 
-                    <div class="hidden lg:flex items-center gap-4 px-6 border-x border-slate-100">
+                    <div class="hidden lg:flex items-center gap-3 px-4 border-x border-slate-100/80">
                         <div class="text-right">
-                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1.5">Daily Progress</p>
-                            <p class="text-xl font-black text-slate-700 leading-none">{{ todayProgress }}%</p>
+                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Harian</p>
+                            <p class="text-lg font-black text-slate-700 leading-none">{{ todayProgress }}%</p>
                         </div>
-                        <div class="relative w-16 h-16">
+                        <div class="relative w-10 h-10">
                             <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                                <circle cx="18" cy="18" r="16" fill="none" class="stroke-slate-100" stroke-width="3.5"></circle>
-                                <circle cx="18" cy="18" r="16" fill="none" class="stroke-indigo-600 transition-all duration-1000" stroke-width="3.5" stroke-linecap="round"
+                                <circle cx="18" cy="18" r="16" fill="none" class="stroke-slate-100" stroke-width="4"></circle>
+                                <circle cx="18" cy="18" r="16" fill="none" class="stroke-indigo-600 transition-all duration-1000" stroke-width="4" stroke-linecap="round"
                                     :style="{ strokeDasharray: `${todayProgress}, 100` }"></circle>
                             </svg>
                         </div>
                     </div>
 
                     <button @click="openCreateModal" 
-                        class="h-[52px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-600 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-slate-200 transition-all duration-300">
-                        <div class="bg-white/20 rounded-lg p-1">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-width="3" stroke-linecap="round"></path></svg>
+                        class="h-[46px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-200 transition-all duration-300">
+                        <div class="bg-white/20 rounded-lg p-0.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-width="3" stroke-linecap="round"></path></svg>
                         </div>
-                        <span class="hidden md:inline uppercase text-xs tracking-widest">Baru</span>
+                        <span class="hidden md:inline uppercase text-xs tracking-widest">Habit</span>
                     </button>
                 </div>
             </div>
 
             <Transition name="fade">
-                <div v-if="showHint" class="flex items-center justify-between mt-4 p-2 bg-indigo-50/50 rounded-2xl border border-indigo-100/50">
+                <div v-if="showHint" class="flex items-center justify-between mt-4 p-2 bg-indigo-50/50 rounded-xl border border-indigo-100/50">
                     <div class="flex items-center gap-6 px-2 overflow-x-auto no-scrollbar">
                         <div class="flex items-center gap-2 shrink-0">
                             <span class="flex items-center justify-center w-5 h-5 bg-indigo-600 text-white text-[8px] rounded-md font-bold shadow-sm">L</span>
