@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 
 const props = defineProps({
     show: Boolean,
-    form: Object, // Terima form dari parent
+    form: Object, 
     close: Function,
     submit: Function
 });
@@ -49,7 +49,7 @@ watch(() => props.show, (val) => {
                                 <div v-if="showIconGrid" @click="showIconGrid = false" class="fixed inset-0 z-40"></div>
                             </div>
 
-                            <input v-model="form.name" type="text" :placeholder="$t('placeholder_name')" class="flex-1 px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-emerald-500 font-bold text-slate-700" required>
+                            <input v-model="form.name" type="text" :placeholder="$t('placeholder_name')" class="flex-1 px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-emerald-500 font-bold text-slate-700">
                         </div>
                     </div>
 

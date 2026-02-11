@@ -35,5 +35,10 @@ createInertiaApp({
             })
             .mount(el);
     },
-    progress: false,
+   progress: {
+        // Warna bar yang muncul di atas
+        color: '#4f46e5', // Warna Indigo biar senada sama brand DopaMind
+        // Apakah ingin menampilkan spinner di pojok?
+        showSpinner: false,
+    },
 });

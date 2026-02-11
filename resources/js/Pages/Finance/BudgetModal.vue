@@ -14,7 +14,6 @@ const { activeCurrency } = useFinanceFormat();
 const showIconGrid = ref(false);
 const iconPalette = ['🍔','🛵','⚡','🛍️','🏠','💊','📚','🎮','🍿','✈️','🐶','🔧','💄','⚽','💻','🎁','💸','⛽','👗'];
 
-// Logic pemisah ribuan dinamis
 const isDotSeparator = computed(() => ['IDR', 'EUR', 'de-DE'].includes(activeCurrency.value));
 const currencySymbol = computed(() => {
     const map = { IDR: 'Rp', USD: '$', GBP: '£', EUR: '€', JPY: '¥' };
@@ -85,7 +84,7 @@ const onNameInput = (e) => {
                             <div v-if="showIconGrid" @click="showIconGrid = false" class="fixed inset-0 z-40"></div>
                         </div>
 
-                        <input v-model="form.name" @input="onNameInput" type="text" :placeholder="$t('placeholder_name')" class="flex-1 px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700" required>
+                        <input v-model="form.name" @input="onNameInput" type="text" :placeholder="$t('placeholder_name')" class="flex-1 px-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700">
                     </div>
                     <p v-if="form.id" class="text-[10px] text-slate-400 mt-1 italic">*{{ $t('budget_warning') }}</p>
                 </div>
@@ -94,7 +93,7 @@ const onNameInput = (e) => {
                     <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">{{ $t('budget_limit') }}</label>
                     <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">{{ currencySymbol }}</span>
-                        <input type="text" :value="formatDisplay(form.limit_amount)" @input="onInputAmount" placeholder="0" class="w-full pl-12 pr-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-black text-lg text-slate-700" required>
+                        <input type="text" :value="formatDisplay(form.limit_amount)" @input="onInputAmount" placeholder="0" class="w-full pl-12 pr-4 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-black text-lg text-slate-700">
                     </div>
                 </div>
 

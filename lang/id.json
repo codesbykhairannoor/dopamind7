@@ -367,7 +367,9 @@
     "daily_net": "Net Harian",
     "old_data_hint": "Gunakan filter tanggal untuk melihat data lama",
     "transaction_count": ":count Transaksi",
-    
+
+    "warn_empty_category_name": "Nama Kosong",
+    "warn_empty_category_name_text": "Kasih nama dulu buat kategorinya ya.",
 
 
     "____ SECTION_8 ____": "=== TOMBOL & LABEL UMUM ===",

@@ -1,6 +1,10 @@
 <script setup>
-import { computed, watch } from 'vue';
+import { ref, computed, watch } from 'vue';
+import dayjs from 'dayjs';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+
+// Import Kalender Custom
+import FinanceDatePicker from './FinanceDatePicker.vue';
 
 const props = defineProps({
     show: Boolean,
@@ -11,8 +15,11 @@ const props = defineProps({
     submit: Function
 });
 
-// Ambil logic formatting yang sudah kita perbaiki
-const { activeCurrency, getCategoryDetails, cleanAmount } = useFinanceFormat();
+// Ambil logic formatting & Locale
+const { activeCurrency, getCategoryDetails, cleanAmount, appLocale } = useFinanceFormat();
+
+// State untuk Kalender
+const showDatePicker = ref(false);
 
 // --- LOGIC KATEGORI ---
 const availableCategories = computed(() => {
@@ -37,23 +44,30 @@ const currencySymbol = computed(() => {
     return map[activeCurrency.value] || activeCurrency.value;
 });
 
-// Format Tampilan (Visual Saja)
+// --- LOGIC TAMPILAN TANGGAL DI INPUT ---
+const dateDisplay = computed(() => {
+    if (!props.form.date) return '';
+    // Ambil locale code (id, en)
+    const loc = appLocale.value ? appLocale.value.split('-')[0] : 'id';
+    return dayjs(props.form.date).locale(loc).format('dddd, DD MMMM YYYY');
+});
+
+// Format Tampilan Uang
 const formatDisplay = (val) => {
     if (!val) return '';
     const str = val.toString();
     if (isDotSeparator.value) {
-        return str.replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Pemisah ribuan Titik
+        return str.replace(/\B(?=(\d{3})+(?!\d))/g, "."); 
     } else {
-        return str.replace(/\B(?=(\d{3})+(?!\d))/g, ","); // Pemisah ribuan Koma
+        return str.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
     }
 };
 
-// Handle Input
+// Handle Input Uang
 const onInput = (e) => {
     let rawValue = e.target.value;
     let cleanVal;
 
-    // Bersihkan karakter pemisah biar jadi angka murni
     if (isDotSeparator.value) {
         cleanVal = rawValue.replace(/\./g, ''); 
     } else {
@@ -72,8 +86,7 @@ const onInput = (e) => {
             
             <div @click="close" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
             
-            <div class="bg-white w-full max-w-md rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200 border border-slate-100 relative">
-                <div class="flex justify-between items-center mb-6">
+            <div class="bg-white w-full max-w-md rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200 border border-slate-100 relative overflow-visible"> <div class="flex justify-between items-center mb-6">
                     <h3 class="text-xl font-black text-slate-800">✨ {{ $t('record_transaction') }}</h3>
                     <button @click="close" class="bg-slate-50 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition">✕</button>
                 </div>
@@ -116,9 +129,36 @@ const onInput = (e) => {
                             <p v-if="form.type === 'expense' && availableCategories.length === 0" class="text-[9px] text-rose-500 mt-1">{{ $t('create_budget_first') }}</p>
                         </div>
 
-                        <div>
+                        <div class="relative">
                             <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">{{ $t('date') }}</label>
-                            <input v-model="form.date" type="date" class="w-full px-4 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 text-sm cursor-pointer hover:bg-slate-50">
+                            
+                            <button 
+                                type="button"
+                                @click="showDatePicker = !showDatePicker"
+                                class="w-full px-4 py-3.5 rounded-2xl bg-slate-50 hover:bg-slate-100 text-left font-bold text-slate-700 text-sm transition-all flex items-center justify-between"
+                                :class="showDatePicker ? 'ring-2 ring-indigo-500 bg-white' : ''"
+                            >
+                                <span class="truncate">{{ dateDisplay }}</span>
+                                <span class="text-slate-400 text-xs">📅</span>
+                            </button>
+
+                            <transition
+                                enter-active-class="transition ease-out duration-200"
+                                enter-from-class="opacity-0 translate-y-2"
+                                enter-to-class="opacity-100 translate-y-0"
+                                leave-active-class="transition ease-in duration-150"
+                                leave-from-class="opacity-100 translate-y-0"
+                                leave-to-class="opacity-0 translate-y-2"
+                            >
+                                <div v-if="showDatePicker" class="absolute bottom-full right-0 mb-2 z-50 shadow-2xl rounded-3xl origin-bottom-right">
+                                    <FinanceDatePicker 
+                                        :show="true" 
+                                        :modelValue="form.date"
+                                        @update:modelValue="(val) => form.date = val"
+                                        @close="showDatePicker = false"
+                                    />
+                                </div>
+                            </transition>
                         </div>
                     </div>
 

@@ -90,12 +90,15 @@ const confirmDelete = () => {
                 </div>
                 
                 <div class="p-6 space-y-5">
-                    <div>
-                        <InputLabel :value="$t('label_activity')" />
-                        <TextInput v-model="form.title" class="w-full text-lg font-medium" :placeholder="$t('placeholder_activity')" autofocus />
-                        <div v-if="form.errors?.title" class="text-rose-500 text-xs mt-1">{{ form.errors.title }}</div>
-                    </div>
-
+                   <div>
+    <InputLabel :value="$t('label_activity')" />
+    <TextInput 
+        v-model="form.title" 
+        class="w-full text-lg font-medium" 
+        :placeholder="$t('placeholder_activity')" 
+        autofocus 
+    /> <div v-if="form.errors?.title" class="text-rose-500 text-xs mt-1">{{ form.errors.title }}</div>
+</div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <InputLabel :value="$t('label_start_time')" />

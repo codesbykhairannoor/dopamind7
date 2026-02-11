@@ -6,9 +6,7 @@ import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 export function useFinanceForm() {
     const { cleanAmount } = useFinanceFormat();
 
-    /**
-     * Helper Translasi Aman (Fallback ke English jika belum load)
-     */
+    // --- 1. HELPER TRANSLASI ---
     const t = (key, fallback) => {
         if (typeof window.trans === 'function') {
             const result = window.trans(key);
@@ -17,47 +15,72 @@ export function useFinanceForm() {
         return fallback;
     };
 
-    const toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-    });
-
-    const confirmDelete = (titleKey, textKey, defTitle, defText) => {
-        return Swal.fire({
-            title: t(titleKey, defTitle),
-            text: t(textKey, defText),
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#f43f5e',
-            cancelButtonColor: '#cbd5e1',
-            confirmButtonText: t('btn_yes_delete', 'Yes, Delete!'),
-            cancelButtonText: t('btn_cancel', 'Cancel'),
-            reverseButtons: true,
+    // --- 2. CONFIG: TOAST NOTIFIKASI (SOLID INDIGO) ---
+    const fireToast = (icon, message) => {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            background: '#4f46e5', 
+            iconColor: '#ffffff',
+            icon: icon,
+            title: `<span style="color: white; font-weight: 900; font-size: 14px; line-height: 1.2;">${message}</span>`,
             customClass: {
-                popup: 'rounded-[2rem]',
-                confirmButton: 'rounded-xl',
-                cancelButton: 'rounded-xl'
+                container: '!fixed !top-5 !right-5 !p-0 !z-[100000] !items-start !justify-end',
+                popup: '!flex !items-center !gap-3 !py-3 !px-6 !rounded-full !shadow-2xl !border-none !m-0 !w-auto !min-w-[280px]',
+                timerProgressBar: '!bg-white/40 !h-1 !rounded-b-full'
             }
         });
     };
 
-    // --- 1. TRANSACTION LOGIC ---
+    // --- 3. CONFIG: ALERT KONFIRMASI ---
+    const swalTheme = {
+        customClass: {
+            popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
+            title: 'text-2xl font-black text-slate-800 mb-2 font-sans',
+            confirmButton: 'bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-2xl shadow-xl active:scale-95 transition-all outline-none mx-2 tracking-wide',
+            cancelButton: 'bg-slate-50 text-slate-400 font-bold py-3.5 px-8 rounded-2xl hover:bg-slate-100 active:scale-95 transition-all outline-none mx-2 tracking-wide',
+            actions: 'mt-6 gap-3',
+        },
+        buttonsStyling: false, 
+        focusConfirm: false
+    };
+
+    const confirmDelete = (titleKey, defTitle) => {
+        return Swal.fire({
+            ...swalTheme,
+            title: t(titleKey, defTitle),
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: t('btn_yes_delete', 'Yes, Delete!'),
+            cancelButtonText: t('btn_cancel', 'Cancel'),
+            customClass: {
+                ...swalTheme.customClass,
+                confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl shadow-xl shadow-rose-200'
+            }
+        });
+    };
+
+    // ==========================================
+    // 4. LOGIC DATA (CRUD)
+    // ==========================================
+    
+    // --- TRANSAKSI ---
     const transactionForm = useForm({
-        id: null,
-        title: '',
-        amount: '',
-        type: 'expense',
-        category: '',
-        date: dayjs().format('YYYY-MM-DD'),
-        notes: ''
+        id: null, 
+        title: '', 
+        amount: '', 
+        type: 'expense', 
+        category: '', 
+        date: dayjs().format('YYYY-MM-DD'), 
+        notes: '' // Notes tetap ada tapi opsional
     });
 
     const setEditTransaction = (trx) => {
         transactionForm.id = trx.id;
-        transactionForm.title = trx.title;
+        transactionForm.title = trx.title ?? '';
         transactionForm.amount = trx.amount;
         transactionForm.type = trx.type;
         transactionForm.category = trx.category;
@@ -66,74 +89,65 @@ export function useFinanceForm() {
     };
 
     const submitTransaction = (onSuccessCallback) => {
-        if (!transactionForm.title) {
-            Swal.fire({ icon: 'warning', title: t('warn_empty_title', 'Title Required'), text: t('warn_empty_title_text', 'Please enter a title.') });
-            return false;
-        }
-        if (!transactionForm.amount) {
-            Swal.fire({ icon: 'warning', title: t('warn_empty_amount', 'Amount Required'), text: t('warn_empty_amount_text', 'How much?') });
-            return false;
+        // 🔥 VALIDASI: WAJIB TITLE
+        if (!transactionForm.title || transactionForm.title.trim() === '') {
+            return fireToast('warning', t('warn_empty_title', 'Title is required!'));
         }
 
+        if (!transactionForm.amount || cleanAmount(transactionForm.amount) <= 0) {
+            return fireToast('warning', t('warn_empty_amount', 'Amount required!'));
+        }
+
+        if (!transactionForm.category) {
+            return fireToast('warning', t('warn_empty_category', 'Please select a category!'));
+        }
+
+        if(onSuccessCallback) onSuccessCallback();
+
+        const url = transactionForm.id ? route('finance.transaction.update', transactionForm.id) : route('finance.transaction.store');
         const method = transactionForm.id ? 'patch' : 'post';
-        const url = transactionForm.id 
-            ? route('finance.transaction.update', transactionForm.id) 
-            : route('finance.transaction.store');
 
         transactionForm.transform((data) => ({
             ...data,
-            amount: cleanAmount(data.amount), 
+            amount: cleanAmount(data.amount),
         }))[method](url, {
             preserveScroll: true,
             onSuccess: () => {
                 transactionForm.reset();
                 transactionForm.date = dayjs().format('YYYY-MM-DD');
-                toast.fire({ icon: 'success', title: t('success_transaction_saved', 'Saved!') });
-                if(onSuccessCallback) onSuccessCallback();
+                fireToast('success', t('success_saved', 'Saved successfully!'));
             },
-            onError: (errors) => {
-                const msg = Object.values(errors)[0];
-                Swal.fire({ icon: 'error', title: t('error_title', 'Error'), text: msg });
-            }
+            onError: (err) => fireToast('error', Object.values(err)[0])
         });
     };
 
     const deleteTransaction = (id, onSuccessCallback) => {
-        confirmDelete('delete_trx_title', 'delete_trx_text', 'Delete Transaction?', 'Gone forever.').then((result) => {
-            if (result.isConfirmed) {
+        confirmDelete('delete_trx_title', 'Delete Transaction?').then((res) => {
+            if (res.isConfirmed) {
+                if (onSuccessCallback) onSuccessCallback(); 
                 router.delete(route('finance.transaction.destroy', id), {
                     preserveScroll: true,
-                    onSuccess: () => {
-                        toast.fire({ icon: 'success', title: t('success_deleted', 'Deleted') });
-                        if (onSuccessCallback) onSuccessCallback();
-                    }
+                    onSuccess: () => fireToast('success', t('success_deleted', 'Deleted!'))
                 });
             }
         });
     };
 
-    // --- 2. BUDGET LOGIC ---
-    const budgetForm = useForm({
-        id: null,
-        category: '', 
-        name: '', 
-        icon: '💸', 
-        limit_amount: '',
-        month: ''
-    });
+    // --- BUDGET ---
+    const budgetForm = useForm({ id: null, category: '', name: '', icon: '💸', limit_amount: '', month: '' });
 
     const submitBudget = (monthKey, onSuccessCallback) => {
         budgetForm.month = monthKey;
-        if (!budgetForm.name) {
-            Swal.fire({ icon: 'warning', title: t('warn_empty_budget_name', 'Name Required'), text: t('warn_empty_budget_name_text', 'Enter name.') });
-            return false;
-        }
-        if (!budgetForm.category && budgetForm.name) {
-            budgetForm.category = budgetForm.name.toLowerCase().replace(/\s+/g, '_');
-        }
+        if (!budgetForm.name) return fireToast('warning', t('warn_empty_budget_name', 'Enter budget name!'));
+        const cleanVal = cleanAmount(budgetForm.limit_amount);
+        if (!cleanVal || cleanVal <= 0) return fireToast('warning', t('warn_empty_amount', 'Valid amount required!'));
 
-        const method = budgetForm.id ? 'put' : 'post';
+        if (!budgetForm.category && budgetForm.name) budgetForm.category = budgetForm.name.toLowerCase().replace(/\s+/g, '_');
+
+        if(onSuccessCallback) onSuccessCallback();
+
         const url = budgetForm.id ? route('finance.budget.update', budgetForm.id) : route('finance.budget.store');
+        const method = budgetForm.id ? 'put' : 'post';
 
         budgetForm.transform((data) => ({
             ...data,
@@ -142,73 +156,55 @@ export function useFinanceForm() {
             preserveScroll: true,
             onSuccess: () => {
                 budgetForm.reset();
-                toast.fire({ icon: 'success', title: t('success_budget_saved', 'Saved!') });
-                if(onSuccessCallback) onSuccessCallback();
+                fireToast('success', t('success_saved', 'Budget updated!'));
             },
-            onError: (errors) => {
-                const msg = Object.values(errors)[0];
-                Swal.fire({ icon: 'error', title: t('error_title', 'Error'), text: msg });
-            }
+            onError: (err) => fireToast('error', Object.values(err)[0])
         });
     };
 
     const deleteBudget = (id) => {
-        confirmDelete('delete_budget_title', 'delete_budget_text', 'Delete Budget?', 'Target removed.').then((result) => {
-            if (result.isConfirmed) {
+        confirmDelete('delete_budget_title', 'Delete Budget?').then((res) => {
+            if (res.isConfirmed) {
                 router.delete(route('finance.budget.destroy', id), {
                     preserveScroll: true,
-                    onSuccess: () => toast.fire({ icon: 'success', title: t('success_deleted', 'Deleted') })
+                    onSuccess: () => fireToast('success', t('success_deleted', 'Budget removed!'))
                 });
             }
         });
     };
 
-    // --- 3. CATEGORY LOGIC (BARU) ---
-    const categoryForm = useForm({
-        name: '',
-        icon: '💰',
-        type: 'income' // Default type
-    });
+    // --- KATEGORI ---
+    const categoryForm = useForm({ name: '', icon: '💰', type: 'income' });
 
     const setEditCategory = (cat) => {
         categoryForm.name = cat.name;
         categoryForm.icon = cat.icon;
-        // Kita tidak ubah type saat edit biasanya, tapi bisa disesuaikan
     };
 
     const submitCategory = (categoryToEdit, onSuccessCallback) => {
-        const url = categoryToEdit 
-            ? route('finance.categories.update', categoryToEdit.id) 
-            : route('finance.categories.store');
+        if (!categoryForm.name) return fireToast('warning', t('warn_empty_category_name', 'Name required!'));
+        if (onSuccessCallback) onSuccessCallback();
+
+        const url = categoryToEdit ? route('finance.categories.update', categoryToEdit.id) : route('finance.categories.store');
         const method = categoryToEdit ? 'put' : 'post';
 
         categoryForm[method](url, {
             preserveScroll: true,
             onSuccess: () => { 
                 categoryForm.reset(); 
-                toast.fire({ icon: 'success', title: t('success_saved', 'Saved successfully') });
-                if (onSuccessCallback) onSuccessCallback();
+                fireToast('success', t('success_saved', 'Category saved!'));
             },
-            onError: (errors) => {
-                const msg = Object.values(errors)[0] || 'Error saving data.';
-                Swal.fire({ icon: 'error', title: t('error_title', 'Error'), text: msg });
-            }
+            onError: (err) => fireToast('error', Object.values(err)[0])
         });
     };
 
     const deleteCategory = (id, onSuccessCallback) => {
-        confirmDelete('confirm_delete_title', 'delete_confirm_msg', 'Are you sure?', 'Permanently deleted.').then((result) => {
-            if (result.isConfirmed) {
+        confirmDelete('confirm_delete_title', 'Are you sure?').then((res) => {
+            if (res.isConfirmed) {
+                if (onSuccessCallback) onSuccessCallback();
                 router.delete(route('finance.categories.destroy', id), {
                     preserveScroll: true,
-                    onSuccess: () => {
-                        toast.fire({ icon: 'success', title: t('success_deleted', 'Deleted successfully') });
-                        if (onSuccessCallback) onSuccessCallback();
-                    },
-                    onError: (errors) => {
-                        const msg = errors.error || 'Failed to delete category.';
-                        Swal.fire({ icon: 'error', title: t('error_title', 'Error'), text: msg });
-                    }
+                    onSuccess: () => fireToast('success', t('success_deleted', 'Deleted!'))
                 });
             }
         });
@@ -219,14 +215,9 @@ export function useFinanceForm() {
     };
 
     return {
-        // Transaction
         transactionForm, setEditTransaction, submitTransaction, deleteTransaction,
-        // Budget
-        budgetForm, submitBudget, deleteBudget,
-        // Category (Unified)
+        budgetForm, submitBudget, deleteBudget, 
         categoryForm, setEditCategory, submitCategory, deleteCategory,
-        // Utils
-        updateIncomeTarget,
-        t // Export helper translasi jika butuh di komponen
+        updateIncomeTarget, t
     };
 }

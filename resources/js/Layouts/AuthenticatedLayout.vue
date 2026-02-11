@@ -129,28 +129,28 @@ watch(() => page.url, () => {
                             <span>🏠</span> {{ $t('nav_dashboard') }}
                         </Link>
 
-                        <Link v-if="showModule('habit')" :href="route('habits.index')" 
+                        <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>🌱</span> {{ $t('habit_page_title') }}
                         </Link>
 
-                        <Link v-if="showModule('planner')" :href="route('planner.index')" 
+                        <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>📅</span> Daily Planner
                         </Link>
 
-                        <Link v-if="showModule('finance')" :href="route('finance.index')" 
+                        <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>💸</span> Finance
                         </Link>
 
-                        <Link :href="route('settings.index')" 
+                        <Link :href="route('settings.index')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">

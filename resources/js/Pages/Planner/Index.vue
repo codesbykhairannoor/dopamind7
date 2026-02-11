@@ -9,15 +9,14 @@ import PlannerHeader from './PlannerHeader.vue';
 import PlannerSidebar from './PlannerSidebar.vue';
 import PlannerTimeline from './PlannerTimeline.vue';
 import PlannerModal from './PlannerModal.vue';
-import SimpleModal from './SimpleModal.vue';
 import PlannerBatchModal from './PlannerBatchModal.vue';
 
 const props = defineProps({ tasks: Array, dailyLog: Object });
 
 // Logic Single
 const {
-    scheduledTasks, inboxTasks, timeSlots, scheduledStats, inboxStats,
-    form, isModalOpen, isEditing, activeModalType,
+    scheduledTasks, timeSlots, scheduledStats,
+    form, isModalOpen, isEditing,
     openModal, submitTask, deleteTask, resetBoard, toggleComplete,
     onDragStart, onDrop, getTypeColor, localNotes, localMeals, conflictError
 } = usePlanner(props);
@@ -30,6 +29,15 @@ const {
 
 const switchToBatch = () => { isModalOpen.value = false; openBatchModal(); };
 const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
+
+// 🔥 Fungsi Reset Gabungan (Database + LocalStorage)
+const handleFullReset = () => {
+    // 1. Reset Database via Composable
+    resetBoard(); 
+    
+    // 2. Kirim event ke Sidebar untuk hapus localStorage
+    window.dispatchEvent(new Event('reset-local-storage'));
+};
 </script>
 
 <template>
@@ -37,8 +45,8 @@ const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
 
     <AuthenticatedLayout>
         <PlannerHeader 
-            :openModal="openModal" 
-            :resetBoard="resetBoard"
+            :openModal="() => openModal(null, null, 'full')" 
+            :resetBoard="handleFullReset"
             :stats="scheduledStats" 
         />
 
@@ -59,28 +67,16 @@ const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
 
                 <div class="lg:col-span-1 order-2 lg:order-1">
                     <PlannerSidebar 
-                        :inboxTasks="inboxTasks"
-                        :stats="inboxStats"
+                        :stats="scheduledStats"
                         v-model:localNotes="localNotes"
                         v-model:localMeals="localMeals"
-                        :onDragStart="onDragStart"
-                        :openModal="openModal"
-                        :toggleComplete="toggleComplete"
-                        :getTypeColor="getTypeColor"
                     />
                 </div>
 
             </div>
         </div>
 
-        <SimpleModal 
-            v-if="activeModalType === 'simple'" 
-            :show="isModalOpen" :form="form" :isEditing="isEditing" 
-            :close="() => isModalOpen = false" :submit="submitTask" :remove="deleteTask" 
-        />
-    
         <PlannerModal 
-            v-else
             :show="isModalOpen" :form="form" :isEditing="isEditing" :conflictError="conflictError" 
             :close="() => isModalOpen = false" :submit="submitTask" :remove="deleteTask"
             @switch-to-batch="switchToBatch" 
@@ -96,6 +92,5 @@ const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
             :removeRow="removeBatchRow"
             :switchToSingle="switchToSingle"
         />
-
     </AuthenticatedLayout>
 </template>

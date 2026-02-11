@@ -1,28 +1,34 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+import { usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
+import 'dayjs/locale/id';
+import 'dayjs/locale/en';
 
 const props = defineProps({
-    currentMonth: String, // String: "Februari 2026"
-    currentMonthKey: String, // String: "2026-02"
+    currentMonth: String, 
+    currentMonthKey: String, 
     onChangeDate: Function,
     onAddClick: Function
 });
 
-const { activeCurrency, supportedCurrencies, setCurrency } = useFinanceFormat();
+const page = usePage();
+const { activeCurrency, supportedCurrencies, setCurrency, appLocale } = useFinanceFormat();
+
+// --- LOGIC HARI INI (I18N) ---
+const todayDisplay = computed(() => {
+    const loc = appLocale.value ? appLocale.value.split('-')[0] : 'id';
+    return dayjs().locale(loc).format('dddd, D MMM'); 
+});
 
 // --- LOGIC DROPDOWN TANGGAL ---
-const isDropdownOpen = ref(false);
-
-// Menggunakan key kamus agar bisa ditranslasi
+const isDateDropdownOpen = ref(false);
 const months = [
-    { name: 'month_jan', short: 'Jan' }, { name: 'month_feb', short: 'Feb' },
-    { name: 'month_mar', short: 'Mar' }, { name: 'month_apr', short: 'Apr' },
-    { name: 'month_may', short: 'May' }, { name: 'month_jun', short: 'Jun' },
-    { name: 'month_jul', short: 'Jul' }, { name: 'month_aug', short: 'Aug' },
-    { name: 'month_sep', short: 'Sep' }, { name: 'month_oct', short: 'Oct' },
-    { name: 'month_nov', short: 'Nov' }, { name: 'month_dec', short: 'Dec' }
+    { name: 'month_jan' }, { name: 'month_feb' }, { name: 'month_mar' },
+    { name: 'month_apr' }, { name: 'month_may' }, { name: 'month_jun' },
+    { name: 'month_jul' }, { name: 'month_aug' }, { name: 'month_sep' },
+    { name: 'month_oct' }, { name: 'month_nov' }, { name: 'month_dec' }
 ];
 
 const activeYear = computed(() => 
@@ -34,9 +40,8 @@ const activeMonthNum = computed(() =>
 
 const selectMonth = (monthIndex) => {
     const month = String(monthIndex + 1).padStart(2, '0');
-    const payload = `${activeYear.value}-${month}`;
-    isDropdownOpen.value = false;
-    props.onChangeDate(payload);
+    props.onChangeDate(`${activeYear.value}-${month}`);
+    isDateDropdownOpen.value = false;
 };
 
 const changeYear = (offset) => {
@@ -44,69 +49,129 @@ const changeYear = (offset) => {
     const month = String(activeMonthNum.value + 1).padStart(2, '0');
     props.onChangeDate(`${newYear}-${month}`);
 };
+
+// --- LOGIC DROPDOWN CURRENCY ---
+const isCurrencyDropdownOpen = ref(false);
+const activeCurrencyDetails = computed(() => 
+    supportedCurrencies.find(c => c.code === activeCurrency.value) || supportedCurrencies[0]
+);
 </script>
 
 <template>
-    <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 md:sticky top-0 z-30 transition-all">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="bg-white/90 backdrop-blur-lg border-b border-slate-200 relative md:sticky top-0 z-40 transition-all">
+        <div class="max-w-7xl mx-auto px-4 py-3 md:px-6 md:py-4">
             
-            <div class="flex items-center gap-4 w-full md:w-auto">
-                <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-2xl text-white shadow-lg shadow-indigo-200">
-                    💸
+            <div class="flex items-center justify-between gap-2">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-indigo-600 rounded-xl md:rounded-2xl flex items-center justify-center text-xl md:text-2xl text-white shadow-lg shadow-indigo-200 shrink-0">
+                        💸
+                    </div>
+                    <div class="min-w-0">
+                        <h2 class="text-base md:text-xl font-black text-slate-800 tracking-tight leading-none truncate">
+                            {{ $t('finance_plan') }}
+                        </h2>
+                        <p class="text-indigo-500 font-bold text-[9px] md:text-[10px] uppercase tracking-wider mt-1 opacity-80 truncate">
+                            {{ todayDisplay }}
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="text-xl font-black text-slate-800 tracking-tight">{{ $t('finance_plan') }}</h2>
-                    
+
+                <div class="hidden md:block relative">
+                    <button 
+                        @click="isDateDropdownOpen = !isDateDropdownOpen"
+                        class="flex items-center gap-3 px-4 py-2.5 bg-slate-50 hover:bg-slate-100 rounded-2xl border border-slate-100 transition-all"
+                    >
+                        <span class="text-slate-400 text-sm">📅</span>
+                        <span class="text-sm font-black text-slate-700 capitalize">{{ currentMonth }}</span>
+                        <svg class="w-4 h-4 text-slate-400 transition-transform" :class="{'rotate-180': isDateDropdownOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-2">
                     <div class="relative">
                         <button 
-                            @click="isDropdownOpen = !isDropdownOpen"
-                            class="flex items-center gap-1.5 text-slate-500 font-medium text-xs capitalize hover:text-indigo-600 transition-colors mt-0.5"
+                            @click="isCurrencyDropdownOpen = !isCurrencyDropdownOpen"
+                            class="p-2 md:px-3 md:py-2.5 bg-white border border-slate-200 rounded-xl md:rounded-2xl flex items-center gap-2 hover:border-indigo-300 transition-all shadow-sm"
                         >
-                            {{ currentMonth }} 
-                            <svg class="w-3 h-3 transition-transform duration-300" :class="{'rotate-180': isDropdownOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                            <span class="text-base">{{ activeCurrencyDetails.icon }}</span>
+                            <span class="hidden md:inline text-xs font-black text-slate-600">{{ activeCurrency }}</span>
                         </button>
 
                         <Transition name="slide-fade">
-                            <div v-if="isDropdownOpen" class="absolute left-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 z-50">
-                                <div class="flex justify-between items-center mb-2 px-1">
-                                    <button @click.stop="changeYear(-1)" class="p-1 hover:bg-slate-100 rounded text-slate-400">←</button>
-                                    <span class="font-bold text-slate-700 text-sm">{{ activeYear }}</span>
-                                    <button @click.stop="changeYear(1)" class="p-1 hover:bg-slate-100 rounded text-slate-400">→</button>
-                                </div>
-                                <div class="grid grid-cols-3 gap-1">
-                                    <button v-for="(m, i) in months" :key="m.name" 
-                                        @click="selectMonth(i)"
-                                        class="text-[10px] font-bold py-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition"
-                                        :class="(activeMonthNum === i) ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-500'"
-                                    >
-                                        {{ $t(m.name).slice(0,3) }}
-                                    </button>
-                                </div>
+                            <div v-if="isCurrencyDropdownOpen" class="absolute right-0 top-full mt-2 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
+                                <button 
+                                    v-for="c in supportedCurrencies" :key="c.code"
+                                    @click="setCurrency(c.code); isCurrencyDropdownOpen = false"
+                                    class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-50 rounded-xl transition-colors"
+                                    :class="activeCurrency === c.code ? 'bg-indigo-50' : ''"
+                                >
+                                    <span>{{ c.icon }}</span>
+                                    <div class="text-left">
+                                        <p class="text-[10px] font-black text-slate-800">{{ c.code }}</p>
+                                        <p class="text-[9px] text-slate-400 font-medium">{{ c.label }}</p>
+                                    </div>
+                                </button>
                             </div>
                         </Transition>
-                        <div v-if="isDropdownOpen" @click="isDropdownOpen = false" class="fixed inset-0 z-40"></div>
+                        <div v-if="isCurrencyDropdownOpen" @click="isCurrencyDropdownOpen = false" class="fixed inset-0 z-40"></div>
                     </div>
+
+                    <button 
+                        @click="onAddClick" 
+                        class="px-4 py-2 md:px-6 md:py-2.5 bg-indigo-600 text-white rounded-xl md:rounded-2xl font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 flex items-center justify-center gap-2 active:scale-95"
+                    >
+                        <span class="text-lg leading-none">+</span>
+                        <span class="hidden md:inline text-sm">{{ $t('btn_transaction') }}</span>
+                        <span class="md:hidden text-[10px] uppercase tracking-tighter">{{ $t('btn_transaction').split(' ')[0] }}</span>
+                    </button>
                 </div>
             </div>
 
-            <div class="flex items-center gap-3 w-full md:w-auto">
-                <select 
-                    :value="activeCurrency" 
-                    @change="(e) => setCurrency(e.target.value)"
-                    class="bg-white border border-slate-200 hover:border-indigo-300 text-slate-600 text-xs font-bold uppercase rounded-xl px-3 py-2.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500/20 shadow-sm"
-                >
-                    <option v-for="c in supportedCurrencies" :key="c.code" :value="c.code">
-                        {{ c.icon }} {{ c.code }}
-                    </option>
-                </select>
-
+            <div class="mt-3 md:hidden flex items-center bg-slate-50 border border-slate-100 p-1 rounded-2xl">
                 <button 
-                    @click="onAddClick" 
-                    class="flex-1 md:flex-none px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 flex items-center justify-center gap-2 text-sm"
+                    @click="isDateDropdownOpen = !isDateDropdownOpen"
+                    class="flex-1 flex items-center justify-between px-4 py-2.5 text-xs font-black text-slate-700 capitalize"
                 >
-                    <span>+</span> {{ $t('btn_transaction') }}
+                    <div class="flex items-center gap-2">
+                        <span class="opacity-50">📅</span>
+                        {{ currentMonth }}
+                    </div>
+                    <svg class="w-4 h-4 text-slate-400 transition-transform" :class="{'rotate-180': isDateDropdownOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
             </div>
+
+            <Transition name="slide-fade">
+                <div v-if="isDateDropdownOpen" class="absolute left-4 right-4 md:left-auto md:right-auto md:translate-x-0 top-full mt-3 md:w-72 bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-4 z-50">
+                    <div class="flex justify-between items-center mb-4 px-2">
+                        <button @click.stop="changeYear(-1)" class="w-8 h-8 flex items-center justify-center hover:bg-slate-100 rounded-full text-slate-400 font-bold">❮</button>
+                        <span class="font-black text-slate-800 text-lg">{{ activeYear }}</span>
+                        <button @click.stop="changeYear(1)" class="w-8 h-8 flex items-center justify-center hover:bg-slate-100 rounded-full text-slate-400 font-bold">❯</button>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button v-for="(m, i) in months" :key="m.name" 
+                            @click="selectMonth(i)"
+                            class="text-xs font-bold py-3 rounded-xl transition-all"
+                            :class="(activeMonthNum === i) 
+                                ? 'bg-indigo-600 text-white shadow-lg' 
+                                : 'text-slate-500 hover:bg-indigo-50'"
+                        >
+                            {{ $t(m.name).slice(0,3) }}
+                        </button>
+                    </div>
+                </div>
+            </Transition>
+            <div v-if="isDateDropdownOpen" @click="isDateDropdownOpen = false" class="fixed inset-0 z-40"></div>
+
         </div>
     </div>
 </template>
+
+<style scoped>
+.slide-fade-enter-active { transition: all 0.3s ease-out; }
+.slide-fade-leave-active { transition: all 0.2s ease-in; }
+.slide-fade-enter-from, .slide-fade-leave-to {
+    transform: translateY(10px);
+    opacity: 0;
+}
+</style>

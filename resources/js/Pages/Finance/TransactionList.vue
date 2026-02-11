@@ -1,7 +1,12 @@
 <script setup>
+import { ref } from 'vue';
+import dayjs from 'dayjs';
 import { useFinanceHistory } from '@/Composables/Finance/useFinanceHistory';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 import ArchiveModal from './ArchiveModal.vue'; 
+
+// Import Kalender Cantik Kita
+import FinanceDatePicker from '@/Components/FinanceDatePicker.vue'; 
 
 const props = defineProps({
     transactions: Array,
@@ -12,9 +17,12 @@ const props = defineProps({
 
 // Ambil logic tanggal dari useFinanceHistory
 const { visibleStats, filterDate, isArchiveOpen, selectedDayData, openDetail } = useFinanceHistory(props);
+
 // Ambil logic uang dari useFinanceFormat
 const { formatMoney } = useFinanceFormat();
 
+// State buat kontrol Popover Kalender
+const showFilterPicker = ref(false);
 </script>
 
 <template>
@@ -22,6 +30,7 @@ const { formatMoney } = useFinanceFormat();
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div class="flex items-center gap-2">
                 <h3 class="text-lg font-bold text-slate-800">{{ $t('daily_history') }}</h3>
+                
                 <span v-if="!filterDate" class="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-lg">
                     {{ $t('last_5') }}
                 </span>
@@ -30,17 +39,36 @@ const { formatMoney } = useFinanceFormat();
                 </span>
             </div>
 
-            <div class="relative">
-                <input 
-                    type="date" 
-                    v-model="filterDate"
-                    class="pl-3 pr-2 py-1.5 text-xs font-bold text-slate-600 bg-white border border-slate-200 rounded-lg shadow-sm outline-none transition-all w-full sm:w-auto cursor-pointer focus:ring-2 focus:ring-indigo-500/20"
-                />
-                <button 
-                    v-if="filterDate" 
-                    @click="filterDate = ''"
-                    class="absolute -right-2 -top-2 bg-rose-500 text-white w-4 h-4 rounded-full flex items-center justify-center text-[10px] shadow-sm hover:bg-rose-600 transition-colors"
-                >✕</button>
+            <div class="relative z-20"> <div class="flex items-center">
+                    <button 
+                        @click="showFilterPicker = !showFilterPicker"
+                        class="pl-3 pr-8 py-2 text-xs font-bold bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-300 hover:ring-2 hover:ring-indigo-500/10 transition-all flex items-center gap-2 min-w-[150px]"
+                        :class="filterDate ? 'text-indigo-600 border-indigo-200' : 'text-slate-500'"
+                    >
+                        <span class="text-base">📅</span>
+                        <span>{{ filterDate ? dayjs(filterDate).locale('id').format('DD MMM YYYY') : 'Filter Tanggal' }}</span>
+                    </button>
+                    
+                    <button 
+                        v-if="filterDate" 
+                        @click.stop="filterDate = ''"
+                        class="absolute right-2 text-slate-300 hover:text-rose-500 hover:bg-rose-50 p-1 rounded-full transition-all"
+                        title="Hapus Filter"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="absolute right-0 top-full mt-2">
+                    <FinanceDatePicker 
+                        :show="showFilterPicker"
+                        :modelValue="filterDate"
+                        @update:modelValue="(val) => filterDate = val"
+                        @close="showFilterPicker = false"
+                    />
+                </div>
             </div>
         </div>
 

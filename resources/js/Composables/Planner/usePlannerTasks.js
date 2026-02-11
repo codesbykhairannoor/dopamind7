@@ -1,9 +1,10 @@
 import { ref, computed, watch } from 'vue'; 
 import { router, useForm } from '@inertiajs/vue3';
+import Swal from 'sweetalert2';
 
 export function usePlannerTasks(props) {
     const localTasks = ref([...props.tasks]);
-    const conflictError = ref(null); // State error (Bentrok atau Durasi Pendek)
+    const conflictError = ref(null);
     const isModalOpen = ref(false);
     const isEditing = ref(false);
     const activeModalType = ref('full');
@@ -12,106 +13,118 @@ export function usePlannerTasks(props) {
         id: null, title: '', start_time: null, end_time: null, type: 1, notes: ''
     });
 
-    // --- 1. HELPER: Konversi Jam ke Menit ---
+    // --- ALERT CONFIG (INDIGO SOLID UNTUK VALIDASI) ---
+    const fireWarning = (message) => {
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            background: '#4f46e5', // Indigo solid
+            iconColor: '#ffffff',
+            icon: 'warning',
+            title: `<span style="color: white; font-weight: 900; font-size: 14px;">${message}</span>`,
+            customClass: {
+                container: '!fixed !top-5 !right-5 !p-0 !z-[100000] !items-start !justify-end',
+                popup: '!flex !items-center !gap-3 !py-3 !px-6 !rounded-full !shadow-2xl !border-none !w-auto !h-auto !min-w-[280px] !m-0',
+            }
+        });
+    };
+
     const timeToMin = (t) => {
         if (!t) return 0;
         const [h, m] = t.split(':').map(Number);
         return h * 60 + m;
     };
 
-    // --- 2. LOGIC VALIDASI (Anti-Clash & Min Duration) ---
     const checkTimeValidity = () => {
-        conflictError.value = null; // Reset error dulu
-        
-        // Hanya cek jika jam mulai & selesai sudah diisi
+        conflictError.value = null;
         if (!form.start_time || !form.end_time) return;
-
         const newStart = timeToMin(form.start_time);
         let newEnd = timeToMin(form.end_time);
-
-        // Handle case lintas hari (misal 23:00 - 01:00) -> anggap +24 jam
         if (newEnd < newStart) newEnd += 1440; 
 
-        // 🔥 VALIDASI 1: Minimal Durasi 15 Menit
         const duration = newEnd - newStart;
         if (duration < 15) {
-            conflictError.value = "⛔ Durasi minimal 15 menit, Bro!";
-            return; // Stop di sini, jangan cek bentrok dulu
+            conflictError.value = "⛔ Minimal 15 menit!";
+            return;
         }
 
-        // 🔥 VALIDASI 2: Cek Bentrok dengan Task Lain
         const hasConflict = localTasks.value.some(task => {
-            // Jangan cek diri sendiri saat edit
             if (isEditing.value && task.id === form.id) return false;
-            // Abaikan inbox task (yang gak punya jam)
             if (!task.start_time) return false;
-
             const taskStart = timeToMin(task.start_time);
-            // Kalau task lain gak punya end_time, anggap durasi default 1 jam
             let taskEnd = task.end_time ? timeToMin(task.end_time) : taskStart + 60;
-            
-            if (taskEnd < taskStart) taskEnd += 1440; // Handle lintas hari task lain
-
-            // Rumus tabrakan waktu: (Start A < End B) && (End A > Start B)
+            if (taskEnd < taskStart) taskEnd += 1440;
             return (newStart < taskEnd && newEnd > taskStart);
         });
 
-        if (hasConflict) {
-            conflictError.value = "⚠️ Jadwal bentrok dengan aktivitas lain!";
-        }
+        if (hasConflict) conflictError.value = "⚠️ Jadwal bentrok!";
     };
 
-    // Pantau perubahan jam di form secara real-time
     watch(() => [form.start_time, form.end_time], checkTimeValidity);
 
-    // --- 3. LOGIC CRUD ---
-    const submitTask = () => {
-        // Cek validasi sekali lagi sebelum submit (jaga-jaga user nge-bypass)
-        checkTimeValidity();
-        if (conflictError.value) return; 
+    // --- LOGIC CRUD ---
+  const submitTask = () => {
+    // 🔥 VALIDASI 1: Judul Wajib Ada (Berlaku untuk SEMUA Modal)
+    if (!form.title || form.title.trim() === '') {
+        return fireWarning('Judulnya diisi dulu, Bro!');
+    }
 
-        const payload = { ...form.data() };
-        isModalOpen.value = false;
-
-        if (isEditing.value) {
-            // Update Lokal (Optimistic UI)
-            const index = localTasks.value.findIndex(t => t.id === form.id);
-            if (index !== -1) {
-                localTasks.value[index] = { ...localTasks.value[index], ...payload };
-            }
-            // Update Server
-            router.patch(route('planner.update', form.id), payload, {
-                preserveScroll: true,
-                preserveState: true,
-                onFinish: () => form.reset()
-            });
-        } else {
-            // Create Lokal (Optimistic UI)
-            const tempId = 'temp_' + Date.now();
-            const newTask = { ...payload, id: tempId, is_completed: false };
-            localTasks.value.push(newTask);
-
-            // Create Server
-            router.post(route('planner.store'), payload, {
-                preserveScroll: true,
-                onSuccess: () => {}, 
-                onError: () => {
-                    // Revert kalau gagal
-                    localTasks.value = localTasks.value.filter(t => t.id !== tempId);
-                },
-                onFinish: () => form.reset()
-            });
+    /** * 🔥 VALIDASI 2: Deteksi Kebutuhan Jam
+     * Kita hanya menagih jam jika 'activeModalType' bernilai 'full'.
+     * Jika tipenya 'simple', kita abaikan validasi jam dan biarkan start_time/end_time null.
+     */
+    if (activeModalType.value === 'full') {
+        if (!form.start_time || !form.end_time) {
+            return fireWarning('Tentukan jam mulai & selesai!');
         }
-    };
 
-    // Fungsi Delete
+        // Cek bentrok & durasi minimal khusus untuk modal full
+        checkTimeValidity(); 
+        if (conflictError.value) return;
+    } else {
+        // 🔥 PENTING: Jika di Simple Modal, pastikan jam dikosongkan agar tidak nyasar ke Timeline
+        form.start_time = null;
+        form.end_time = null;
+    }
+
+    // --- PROSES INSTAN ---
+    const payload = { ...form.data() };
+    isModalOpen.value = false;
+
+    if (isEditing.value) {
+        // Update Lokal Instan
+        const index = localTasks.value.findIndex(t => t.id === form.id);
+        if (index !== -1) localTasks.value[index] = { ...localTasks.value[index], ...payload };
+        
+        router.patch(route('planner.update', form.id), payload, {
+            preserveScroll: true,
+            onFinish: () => form.reset()
+        });
+    } else {
+        // Create Lokal Instan
+        const tempId = 'temp_' + Date.now();
+        localTasks.value.push({ ...payload, id: tempId, is_completed: false });
+
+        router.post(route('planner.store'), payload, {
+            preserveScroll: true,
+            onError: () => {
+                localTasks.value = localTasks.value.filter(t => t.id !== tempId);
+                fireWarning('Gagal menyimpan ke server!');
+            },
+            onFinish: () => form.reset()
+        });
+    }
+};
+
     const deleteTask = (id) => {
         localTasks.value = localTasks.value.filter(t => t.id !== id);
         isModalOpen.value = false;
-
         router.delete(route('planner.destroy', id), {
             preserveScroll: true,
-            preserveState: true
+            // ❌ Notif sukses dihapus
         });
     };
 
@@ -122,7 +135,7 @@ export function usePlannerTasks(props) {
         });
     };
 
-    // --- 4. COMPUTED & HELPERS ---
+    // ... (rest of the code remains the same)
     watch(() => props.tasks, (newTasks) => {
         localTasks.value = [...newTasks];
     }, { deep: true });
@@ -135,7 +148,7 @@ export function usePlannerTasks(props) {
     const calculateStats = (tasks) => {
         const total = tasks.length;
         const completed = tasks.filter(t => t.is_completed).length;
-        return { total, completed, pending: total - completed, percent: total > 0 ? Math.round((completed / total) * 100) : 0 };
+        return { total, completed, percent: total > 0 ? Math.round((completed / total) * 100) : 0 };
     };
 
     const scheduledStats = computed(() => calculateStats(scheduledTasks.value));
@@ -146,7 +159,6 @@ export function usePlannerTasks(props) {
         form.clearErrors();
         conflictError.value = null; 
         activeModalType.value = type;
-        
         if (task) {
             isEditing.value = true;
             form.id = task.id;
@@ -160,7 +172,6 @@ export function usePlannerTasks(props) {
             form.id = null;
             if (timeSlot) {
                 form.start_time = timeSlot;
-                // Auto set end time +1 jam (aman karena > 15 menit)
                 const [h, m] = timeSlot.split(':').map(Number);
                 form.end_time = `${(h+1).toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
             }

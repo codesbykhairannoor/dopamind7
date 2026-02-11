@@ -379,6 +379,9 @@
     "transaction_count": ":count Transactions",
     "old_data_hint": "Use date filter to see older data",
 
+    "warn_empty_category_name": "Name Empty",
+    "warn_empty_category_name_text": "Please provide a name for this category.",
+
          "____ SECTION_8 ____": "=== BUTTONS & GENERAL LABELS ===",
     "btn_add": "Add",
     "btn_save": "Save",
