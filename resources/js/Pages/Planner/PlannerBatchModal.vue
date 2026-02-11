@@ -28,14 +28,14 @@ const props = defineProps({
             <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-white shrink-0 z-20" :class="{'mt-10': conflictError}">
                 <h2 class="text-xl font-black text-slate-800 flex items-center gap-2">
                     <span class="w-2 h-8 rounded-full bg-emerald-500"></span>
-                    Batch Entry Mode
+                    {{ $t('batch_mode_title') }}
                 </h2>
                 
                 <div class="flex items-center gap-2">
                     <button @click="switchToSingle" 
                         type="button"
                         class="text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-indigo-600 transition flex items-center gap-1">
-                        ↩️ Single
+                        ↩️ {{ $t('btn_single_mode') }}
                     </button>
                     <button @click="close" class="w-8 h-8 rounded-full bg-slate-50 text-slate-400 hover:bg-rose-100 hover:text-rose-500 transition font-bold flex items-center justify-center">
                         ✕
@@ -46,10 +46,10 @@ const props = defineProps({
             <div class="flex-1 overflow-y-auto custom-scrollbar bg-white p-6">
                 
                 <div class="grid grid-cols-12 gap-2 mb-2 px-1 text-[10px] font-black text-slate-400 uppercase tracking-widest sticky top-0 bg-white z-10 py-2 border-b border-slate-50">
-                    <div class="col-span-5 pl-1">Activity Name <span class="text-rose-500">*</span></div>
-                    <div class="col-span-2 text-center">Start</div>
-                    <div class="col-span-2 text-center">End</div>
-                    <div class="col-span-2">Priority</div>
+                    <div class="col-span-5 pl-1">{{ $t('col_activity') }} <span class="text-rose-500">*</span></div>
+                    <div class="col-span-2 text-center">{{ $t('col_start') }}</div>
+                    <div class="col-span-2 text-center">{{ $t('col_end') }}</div>
+                    <div class="col-span-2">{{ $t('col_priority') }}</div>
                     <div class="col-span-1"></div>
                 </div>
 
@@ -60,7 +60,7 @@ const props = defineProps({
                         <div class="col-span-5">
                             <TextInput 
                                 v-model="task.title" 
-                                placeholder="Activity name..." 
+                                :placeholder="$t('placeholder_activity')" 
                                 class="w-full text-sm py-2 px-3 !rounded-xl border-slate-200 focus:border-emerald-500 focus:ring-emerald-500 transition-shadow" 
                                 :class="{'!border-rose-300 !bg-rose-50': form.errors[`tasks.${index}.title`]}"
                             />
@@ -92,9 +92,9 @@ const props = defineProps({
                                         'text-indigo-600 bg-indigo-50 border-indigo-100': task.type == 2,
                                         'text-emerald-600 bg-emerald-50 border-emerald-100': task.type == 3
                                     }">
-                                    <option :value="1">🔥 Urgent</option>
-                                    <option :value="2">⚡ Work</option>
-                                    <option :value="3">☕ Normal</option>
+                                    <option :value="1">{{ $t('prio_urgent') }}</option>
+                                    <option :value="2">{{ $t('prio_work') }}</option>
+                                    <option :value="3">{{ $t('prio_normal') }}</option>
                                 </select>
                                 <div class="absolute inset-y-0 right-1 flex items-center pointer-events-none text-slate-400 text-[10px]">▼</div>
                             </div>
@@ -113,22 +113,22 @@ const props = defineProps({
 
                 <button @click="addRow" type="button" class="mt-6 w-full py-3 border-2 border-dashed border-slate-200 rounded-xl text-slate-400 font-bold hover:border-emerald-400 hover:text-emerald-600 hover:bg-emerald-50 transition flex items-center justify-center gap-2 group">
                     <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center text-xs group-hover:bg-emerald-200 group-hover:text-emerald-700 transition">+</span> 
-                    Add Another Task
+                    {{ $t('btn_add_another') }}
                 </button>
             </div>
 
             <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-between items-center shrink-0">
                 <div class="text-xs text-slate-400 font-medium">
-                    Total: <span class="text-slate-800 font-bold">{{ form.tasks.length }}</span> tasks
+                    {{ $t('total_label') }} <span class="text-slate-800 font-bold">{{ form.tasks.length }}</span> {{ $t('total_suffix') }}
                 </div>
                 <div class="flex gap-3">
-                    <SecondaryButton @click="close">Cancel</SecondaryButton>
+                    <SecondaryButton @click="close">{{ $t('btn_cancel') }}</SecondaryButton>
                     
                     <PrimaryButton @click="submit" :disabled="form.processing || conflictError" 
                         class="!bg-emerald-500 hover:!bg-emerald-600 !rounded-xl !py-2.5 !px-6 shadow-lg shadow-emerald-200 transition-all transform active:scale-95"
                         :class="{'!bg-slate-300 !text-slate-500 !cursor-not-allowed !shadow-none !transform-none': conflictError}">
-                        <span v-if="form.processing">Saving...</span>
-                        <span v-else>💾 Save All Tasks</span>
+                        <span v-if="form.processing">{{ $t('btn_saving') }}</span>
+                        <span v-else>{{ $t('btn_save_all') }}</span>
                     </PrimaryButton>
                 </div>
             </div>

@@ -45,7 +45,19 @@ const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                 
-                <div class="lg:col-span-1">
+                <div class="lg:col-span-2 order-1 lg:order-2">
+                    <PlannerTimeline 
+                        :timeSlots="timeSlots"
+                        :scheduledTasks="scheduledTasks"
+                        :onDrop="onDrop"
+                        :onDragStart="onDragStart"
+                        :openModal="openModal"
+                        :toggleComplete="toggleComplete" 
+                        :getTypeColor="getTypeColor"
+                    />
+                </div>
+
+                <div class="lg:col-span-1 order-2 lg:order-1">
                     <PlannerSidebar 
                         :inboxTasks="inboxTasks"
                         :stats="inboxStats"
@@ -54,18 +66,6 @@ const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
                         :onDragStart="onDragStart"
                         :openModal="openModal"
                         :toggleComplete="toggleComplete"
-                        :getTypeColor="getTypeColor"
-                    />
-                </div>
-
-                <div class="lg:col-span-2">
-                    <PlannerTimeline 
-                        :timeSlots="timeSlots"
-                        :scheduledTasks="scheduledTasks"
-                        :onDrop="onDrop"
-                        :onDragStart="onDragStart"
-                        :openModal="openModal"
-                        :toggleComplete="toggleComplete" 
                         :getTypeColor="getTypeColor"
                     />
                 </div>
@@ -89,7 +89,8 @@ const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
         <PlannerBatchModal 
             :show="isBatchModalOpen" 
             :form="batchForm" 
-            :conflictError="globalConflictError"  :close="() => isBatchModalOpen = false" 
+            :conflictError="conflictError"  
+            :close="() => isBatchModalOpen = false" 
             :submit="submitBatch" 
             :addRow="addBatchRow" 
             :removeRow="removeBatchRow"

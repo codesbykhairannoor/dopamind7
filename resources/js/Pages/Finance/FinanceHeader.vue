@@ -2,7 +2,6 @@
 import { ref, computed } from 'vue';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 import dayjs from 'dayjs';
-import 'dayjs/locale/id';
 
 const props = defineProps({
     currentMonth: String, // String: "Februari 2026"
@@ -15,9 +14,15 @@ const { activeCurrency, supportedCurrencies, setCurrency } = useFinanceFormat();
 
 // --- LOGIC DROPDOWN TANGGAL ---
 const isDropdownOpen = ref(false);
+
+// Menggunakan key kamus agar bisa ditranslasi
 const months = [
-    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    { name: 'month_jan', short: 'Jan' }, { name: 'month_feb', short: 'Feb' },
+    { name: 'month_mar', short: 'Mar' }, { name: 'month_apr', short: 'Apr' },
+    { name: 'month_may', short: 'May' }, { name: 'month_jun', short: 'Jun' },
+    { name: 'month_jul', short: 'Jul' }, { name: 'month_aug', short: 'Aug' },
+    { name: 'month_sep', short: 'Sep' }, { name: 'month_oct', short: 'Oct' },
+    { name: 'month_nov', short: 'Nov' }, { name: 'month_dec', short: 'Dec' }
 ];
 
 const activeYear = computed(() => 
@@ -42,7 +47,7 @@ const changeYear = (offset) => {
 </script>
 
 <template>
-    <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 sticky top-0 z-30 transition-all">
+    <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 md:sticky top-0 z-30 transition-all">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             
             <div class="flex items-center gap-4 w-full md:w-auto">
@@ -50,7 +55,7 @@ const changeYear = (offset) => {
                     💸
                 </div>
                 <div>
-                    <h2 class="text-xl font-black text-slate-800 tracking-tight">Finance Plan</h2>
+                    <h2 class="text-xl font-black text-slate-800 tracking-tight">{{ $t('finance_plan') }}</h2>
                     
                     <div class="relative">
                         <button 
@@ -69,12 +74,12 @@ const changeYear = (offset) => {
                                     <button @click.stop="changeYear(1)" class="p-1 hover:bg-slate-100 rounded text-slate-400">→</button>
                                 </div>
                                 <div class="grid grid-cols-3 gap-1">
-                                    <button v-for="(m, i) in months" :key="m" 
+                                    <button v-for="(m, i) in months" :key="m.name" 
                                         @click="selectMonth(i)"
                                         class="text-[10px] font-bold py-2 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 transition"
                                         :class="(activeMonthNum === i) ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-500'"
                                     >
-                                        {{ m.slice(0,3) }}
+                                        {{ $t(m.name).slice(0,3) }}
                                     </button>
                                 </div>
                             </div>
@@ -99,15 +104,9 @@ const changeYear = (offset) => {
                     @click="onAddClick" 
                     class="flex-1 md:flex-none px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 flex items-center justify-center gap-2 text-sm"
                 >
-                    <span>+</span> Transaksi
+                    <span>+</span> {{ $t('btn_transaction') }}
                 </button>
             </div>
         </div>
     </div>
 </template>
-
-<style scoped>
-.slide-fade-enter-active { transition: all 0.2s ease-out; }
-.slide-fade-leave-active { transition: all 0.15s cubic-bezier(1, 0.5, 0.8, 1); }
-.slide-fade-enter-from, .slide-fade-leave-to { transform: translateY(-10px); opacity: 0; }
-</style>

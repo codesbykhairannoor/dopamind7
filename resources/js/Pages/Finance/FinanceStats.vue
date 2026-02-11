@@ -49,15 +49,13 @@ const saveSalary = () => {
 
 <template>
     <div class="animate-in fade-in slide-in-from-bottom-4 duration-700">
-        
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 items-stretch">
             
             <div class="lg:col-span-7 relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-indigo-600 via-indigo-500 to-violet-600 p-6 md:p-8 text-white shadow-2xl shadow-indigo-200/50 flex flex-col justify-center min-h-[200px]">
-                
                 <div class="relative z-10 flex flex-col h-full justify-between">
                     <div class="flex justify-between items-start">
                         <div>
-                            <p class="font-bold text-[10px] uppercase tracking-widest text-indigo-100/80 mb-2">Sisa Saldo Tersedia</p>
+                            <p class="font-bold text-[10px] uppercase tracking-widest text-indigo-100/80 mb-2">{{ $t('available_balance') }}</p>
                             <h3 class="text-4xl md:text-5xl font-black tracking-tight leading-none">
                                 {{ formatMoney(stats.balance) }}
                             </h3>
@@ -72,21 +70,18 @@ const saveSalary = () => {
                             <div class="w-6 h-6 rounded-full bg-indigo-300 border-2 border-indigo-600"></div>
                             <div class="w-6 h-6 rounded-full bg-violet-300 border-2 border-indigo-600"></div>
                          </div>
-                         <span class="text-[10px] font-medium text-indigo-100">Keuanganmu bulan ini</span>
+                         <span class="text-[10px] font-medium text-indigo-100">{{ $t('monthly_finance_desc') }}</span>
                     </div>
                 </div>
-
                 <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 bg-fuchsia-500/20 rounded-full blur-3xl"></div>
             </div>
 
             <div class="lg:col-span-5 grid grid-rows-2 gap-4">
-                
                 <div class="bg-white border border-slate-100 rounded-[2rem] px-6 py-5 shadow-sm hover:shadow-md transition-all relative overflow-hidden group flex items-center justify-between">
-                    
                     <div class="flex-1 min-w-0"> 
                         <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 flex items-center gap-1">
-                            Base / Modal
+                            {{ $t('base_capital') }}
                             <span v-if="!isEditingSalary" class="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-indigo-500 transition-colors"></span>
                         </p>
                         
@@ -98,29 +93,13 @@ const saveSalary = () => {
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                             </button>
                         </div>
-
-                        <div v-else class="flex items-center gap-2 animate-in zoom-in-95 duration-200">
-                            <input 
-                                ref="inputSalaryRef"
-                                v-model="displaySalary" 
-                                type="text" 
-                                class="w-full bg-indigo-50/50 border border-indigo-200 rounded-lg px-2 py-1 text-lg font-black text-indigo-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
-                                @keyup.enter="saveSalary"
-                            >
-                            <button @click="saveSalary" class="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-emerald-500 text-white hover:bg-emerald-600 shadow-sm transition active:scale-90">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                            </button>
-                            <button @click="cancelEdit" class="shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-slate-100 text-slate-400 hover:bg-slate-200 hover:text-slate-600 transition active:scale-90">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
-                            </button>
                         </div>
-                    </div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-emerald-50/40 border border-emerald-100/60 rounded-[2rem] p-5 flex flex-col justify-center relative overflow-hidden group hover:bg-emerald-50 transition-colors">
                         <div class="flex items-center justify-between mb-1">
-                            <p class="text-[9px] font-bold text-emerald-600/60 uppercase tracking-widest">Masuk</p>
+                            <p class="text-[9px] font-bold text-emerald-600/60 uppercase tracking-widest">{{ $t('income') }}</p>
                             <div class="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center text-[10px] text-emerald-600 group-hover:scale-110 transition">↓</div>
                         </div>
                         <h4 class="text-lg md:text-xl font-black text-emerald-700 truncate">
@@ -130,7 +109,7 @@ const saveSalary = () => {
 
                     <div class="bg-rose-50/40 border border-rose-100/60 rounded-[2rem] p-5 flex flex-col justify-center relative overflow-hidden group hover:bg-rose-50 transition-colors">
                         <div class="flex items-center justify-between mb-1">
-                            <p class="text-[9px] font-bold text-rose-600/60 uppercase tracking-widest">Keluar</p>
+                            <p class="text-[9px] font-bold text-rose-600/60 uppercase tracking-widest">{{ $t('expense') }}</p>
                             <div class="w-5 h-5 bg-rose-100 rounded-full flex items-center justify-center text-[10px] text-rose-600 group-hover:scale-110 transition">↑</div>
                         </div>
                         <h4 class="text-lg md:text-xl font-black text-rose-700 truncate">
@@ -138,7 +117,6 @@ const saveSalary = () => {
                         </h4>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

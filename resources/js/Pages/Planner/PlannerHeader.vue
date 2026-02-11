@@ -39,7 +39,7 @@ const executeReset = () => {
 </script>
 
 <template>
-    <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 sticky top-0 z-30 transition-all">
+    <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 md:sticky top-0 z-30 transition-all">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             
             <div class="flex items-center gap-4 w-full md:w-auto">

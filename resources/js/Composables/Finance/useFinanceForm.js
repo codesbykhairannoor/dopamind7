@@ -1,32 +1,40 @@
 import { useForm, router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
+import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 
 export function useFinanceForm() {
-    
-    // --- HELPER ALERTS ---
+    const { cleanAmount } = useFinanceFormat();
+
+    /**
+     * Helper Translasi Aman (Fallback ke English jika belum load)
+     */
+    const t = (key, fallback) => {
+        if (typeof window.trans === 'function') {
+            const result = window.trans(key);
+            return result !== key ? result : fallback;
+        }
+        return fallback;
+    };
+
     const toast = Swal.mixin({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
         timer: 2000,
         timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
     });
 
-    const confirmDelete = (title, text) => {
+    const confirmDelete = (titleKey, textKey, defTitle, defText) => {
         return Swal.fire({
-            title: title || 'Yakin hapus?',
-            text: text || "Data tidak bisa dikembalikan!",
+            title: t(titleKey, defTitle),
+            text: t(textKey, defText),
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#f43f5e',
             cancelButtonColor: '#cbd5e1',
-            confirmButtonText: 'Ya, Hapus!',
-            cancelButtonText: 'Batal',
+            confirmButtonText: t('btn_yes_delete', 'Yes, Delete!'),
+            cancelButtonText: t('btn_cancel', 'Cancel'),
             reverseButtons: true,
             customClass: {
                 popup: 'rounded-[2rem]',
@@ -36,7 +44,7 @@ export function useFinanceForm() {
         });
     };
 
-    // --- TRANSACTION ---
+    // --- 1. TRANSACTION LOGIC ---
     const transactionForm = useForm({
         id: null,
         title: '',
@@ -58,13 +66,12 @@ export function useFinanceForm() {
     };
 
     const submitTransaction = (onSuccessCallback) => {
-        // Validasi
         if (!transactionForm.title) {
-            Swal.fire({ icon: 'warning', title: 'Judul Kosong', text: 'Kasih nama transaksinya dulu ya.' });
+            Swal.fire({ icon: 'warning', title: t('warn_empty_title', 'Title Required'), text: t('warn_empty_title_text', 'Please enter a title.') });
             return false;
         }
         if (!transactionForm.amount) {
-            Swal.fire({ icon: 'warning', title: 'Nominal Kosong', text: 'Berapa duit nih?' });
+            Swal.fire({ icon: 'warning', title: t('warn_empty_amount', 'Amount Required'), text: t('warn_empty_amount_text', 'How much?') });
             return false;
         }
 
@@ -75,29 +82,29 @@ export function useFinanceForm() {
 
         transactionForm.transform((data) => ({
             ...data,
-            amount: data.amount.toString().replace(/\./g, ''), 
+            amount: cleanAmount(data.amount), 
         }))[method](url, {
             preserveScroll: true,
             onSuccess: () => {
                 transactionForm.reset();
-                transactionForm.date = dayjs().format('YYYY-MM-DD'); // Reset date to today
-                toast.fire({ icon: 'success', title: 'Transaksi tersimpan' });
+                transactionForm.date = dayjs().format('YYYY-MM-DD');
+                toast.fire({ icon: 'success', title: t('success_transaction_saved', 'Saved!') });
                 if(onSuccessCallback) onSuccessCallback();
             },
             onError: (errors) => {
                 const msg = Object.values(errors)[0];
-                Swal.fire({ icon: 'error', title: 'Gagal', text: msg });
+                Swal.fire({ icon: 'error', title: t('error_title', 'Error'), text: msg });
             }
         });
     };
 
     const deleteTransaction = (id, onSuccessCallback) => {
-        confirmDelete('Hapus Transaksi?', 'Hilang selamanya nih.').then((result) => {
+        confirmDelete('delete_trx_title', 'delete_trx_text', 'Delete Transaction?', 'Gone forever.').then((result) => {
             if (result.isConfirmed) {
                 router.delete(route('finance.transaction.destroy', id), {
                     preserveScroll: true,
                     onSuccess: () => {
-                        toast.fire({ icon: 'success', title: 'Terhapus' });
+                        toast.fire({ icon: 'success', title: t('success_deleted', 'Deleted') });
                         if (onSuccessCallback) onSuccessCallback();
                     }
                 });
@@ -105,7 +112,7 @@ export function useFinanceForm() {
         });
     };
 
-    // --- BUDGET ---
+    // --- 2. BUDGET LOGIC ---
     const budgetForm = useForm({
         id: null,
         category: '', 
@@ -117,65 +124,109 @@ export function useFinanceForm() {
 
     const submitBudget = (monthKey, onSuccessCallback) => {
         budgetForm.month = monthKey;
-
         if (!budgetForm.name) {
-            Swal.fire({ icon: 'warning', title: 'Nama Budget?', text: 'Isi dulu nama budgetnya.' });
+            Swal.fire({ icon: 'warning', title: t('warn_empty_budget_name', 'Name Required'), text: t('warn_empty_budget_name_text', 'Enter name.') });
             return false;
         }
-
-        // Auto Slug jika category kosong (create mode)
         if (!budgetForm.category && budgetForm.name) {
             budgetForm.category = budgetForm.name.toLowerCase().replace(/\s+/g, '_');
         }
 
         const method = budgetForm.id ? 'put' : 'post';
-        const url = budgetForm.id 
-            ? route('finance.budget.update', budgetForm.id) 
-            : route('finance.budget.store');
+        const url = budgetForm.id ? route('finance.budget.update', budgetForm.id) : route('finance.budget.store');
 
         budgetForm.transform((data) => ({
             ...data,
-            limit_amount: data.limit_amount.toString().replace(/\./g, ''),
+            limit_amount: cleanAmount(data.limit_amount),
         }))[method](url, {
             preserveScroll: true,
             onSuccess: () => {
                 budgetForm.reset();
-                toast.fire({ icon: 'success', title: 'Budget disimpan' });
+                toast.fire({ icon: 'success', title: t('success_budget_saved', 'Saved!') });
                 if(onSuccessCallback) onSuccessCallback();
             },
             onError: (errors) => {
                 const msg = Object.values(errors)[0];
-                Swal.fire({ icon: 'error', title: 'Gagal', text: msg });
+                Swal.fire({ icon: 'error', title: t('error_title', 'Error'), text: msg });
             }
         });
     };
 
     const deleteBudget = (id) => {
-        confirmDelete('Hapus Budget?', 'Riwayat transaksi budget ini akan TETAP ADA, tapi target bulanannya dihapus.').then((result) => {
+        confirmDelete('delete_budget_title', 'delete_budget_text', 'Delete Budget?', 'Target removed.').then((result) => {
             if (result.isConfirmed) {
                 router.delete(route('finance.budget.destroy', id), {
                     preserveScroll: true,
-                    onSuccess: () => toast.fire({ icon: 'success', title: 'Budget dihapus' })
+                    onSuccess: () => toast.fire({ icon: 'success', title: t('success_deleted', 'Deleted') })
+                });
+            }
+        });
+    };
+
+    // --- 3. CATEGORY LOGIC (BARU) ---
+    const categoryForm = useForm({
+        name: '',
+        icon: '💰',
+        type: 'income' // Default type
+    });
+
+    const setEditCategory = (cat) => {
+        categoryForm.name = cat.name;
+        categoryForm.icon = cat.icon;
+        // Kita tidak ubah type saat edit biasanya, tapi bisa disesuaikan
+    };
+
+    const submitCategory = (categoryToEdit, onSuccessCallback) => {
+        const url = categoryToEdit 
+            ? route('finance.categories.update', categoryToEdit.id) 
+            : route('finance.categories.store');
+        const method = categoryToEdit ? 'put' : 'post';
+
+        categoryForm[method](url, {
+            preserveScroll: true,
+            onSuccess: () => { 
+                categoryForm.reset(); 
+                toast.fire({ icon: 'success', title: t('success_saved', 'Saved successfully') });
+                if (onSuccessCallback) onSuccessCallback();
+            },
+            onError: (errors) => {
+                const msg = Object.values(errors)[0] || 'Error saving data.';
+                Swal.fire({ icon: 'error', title: t('error_title', 'Error'), text: msg });
+            }
+        });
+    };
+
+    const deleteCategory = (id, onSuccessCallback) => {
+        confirmDelete('confirm_delete_title', 'delete_confirm_msg', 'Are you sure?', 'Permanently deleted.').then((result) => {
+            if (result.isConfirmed) {
+                router.delete(route('finance.categories.destroy', id), {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        toast.fire({ icon: 'success', title: t('success_deleted', 'Deleted successfully') });
+                        if (onSuccessCallback) onSuccessCallback();
+                    },
+                    onError: (errors) => {
+                        const msg = errors.error || 'Failed to delete category.';
+                        Swal.fire({ icon: 'error', title: t('error_title', 'Error'), text: msg });
+                    }
                 });
             }
         });
     };
 
     const updateIncomeTarget = (month, amount) => {
-        router.post(route('finance.income-target.update'), {
-            month: month,
-            amount: amount
-        }, { preserveScroll: true });
+        router.post(route('finance.income-target.update'), { month, amount }, { preserveScroll: true });
     };
 
     return {
-        transactionForm,
-        setEditTransaction,
-        submitTransaction,
-        deleteTransaction,
-        budgetForm,
-        submitBudget,
+        // Transaction
+        transactionForm, setEditTransaction, submitTransaction, deleteTransaction,
+        // Budget
+        budgetForm, submitBudget, deleteBudget,
+        // Category (Unified)
+        categoryForm, setEditCategory, submitCategory, deleteCategory,
+        // Utils
         updateIncomeTarget,
-        deleteBudget
+        t // Export helper translasi jika butuh di komponen
     };
 }

@@ -1,34 +1,41 @@
 import { ref, computed } from 'vue';
 import { router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
+import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+
+// Import locale yang dibutuhkan dayjs
 import 'dayjs/locale/id';
+import 'dayjs/locale/en';
 
 export function useFinanceCalendar(initialDate) {
-    dayjs.locale('id');
-    
-    // Inisialisasi tanggal dari props/URL
+    // Destructure activeLocale dari format
+    const { activeLocale } = useFinanceFormat();
+
     const currentDate = ref(dayjs(initialDate));
+
+    // Computed: Ambil kode bahasa (ex: 'id' dari 'id-ID')
+    const localeCode = computed(() => {
+        // SAFETY CHECK: Kalau activeLocale undefined, fallback ke 'en'
+        if (!activeLocale || !activeLocale.value) return 'en';
+        
+        // Ambil 2 huruf pertama (id, en, de, dll)
+        return activeLocale.value.split('-')[0];
+    });
 
     const changeMonth = (input) => {
         let newDate;
 
         if (input === 'next') {
-            // 1. Logic Tombol Kanan (Maju)
             newDate = currentDate.value.add(1, 'month');
         } else if (input === 'prev') {
-            // 2. Logic Tombol Kiri (Mundur)
             newDate = currentDate.value.subtract(1, 'month');
         } else {
-            // 3. 🔥 LOGIC DROPDOWN (Terima format "YYYY-MM")
-            // Input dari dropdown misal: "2024-11"
-            // Kita paksa jadi tanggal 1: "2024-11-01" biar valid
+            // Logic Dropdown (YYYY-MM) -> Paksa tgl 01
             newDate = dayjs(`${input}-01`);
         }
         
-        // Update state lokal biar UI langsung berubah
         currentDate.value = newDate;
 
-        // Update URL & Data via Inertia
         router.get(route('finance.index'), 
             { date: newDate.format('YYYY-MM-DD') }, 
             { 
@@ -40,8 +47,18 @@ export function useFinanceCalendar(initialDate) {
         );
     };
 
-    const formattedMonth = computed(() => currentDate.value.format('MMMM YYYY'));
+    // Format Tampilan Bulan (Februari 2026)
+    const formattedMonth = computed(() => {
+        return currentDate.value.locale(localeCode.value).format('MMMM YYYY');
+    });
+
+    // Key untuk value dropdown (2026-02)
     const currentMonthKey = computed(() => currentDate.value.format('YYYY-MM'));
 
-    return { currentDate, changeMonth, formattedMonth, currentMonthKey };
+    return { 
+        currentDate, 
+        changeMonth, 
+        formattedMonth, 
+        currentMonthKey 
+    };
 }

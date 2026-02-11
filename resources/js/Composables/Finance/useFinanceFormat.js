@@ -1,11 +1,20 @@
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { usePage } from '@inertiajs/vue3';
+import { getActiveLanguage } from 'laravel-vue-i18n';
 
-// State global
+// State global untuk MATA UANG (Bukan Bahasa Aplikasi)
 const activeCurrency = ref(localStorage.getItem('finance_currency') || 'IDR');
-const activeLocale = ref(localStorage.getItem('finance_locale') || 'id-ID');
+const currencyLocale = ref(localStorage.getItem('finance_locale') || 'id-ID');
 
 export function useFinanceFormat() {
     
+    // 🔥 FIX UTAMA: Gunakan usePage() untuk mendeteksi bahasa aplikasi secara Reaktif
+    const appLocale = computed(() => {
+        const page = usePage();
+        // Cek props locale dari Inertia, atau fallback ke library, atau default 'id'
+        return page.props.locale || getActiveLanguage() || 'id';
+    });
+
     const supportedCurrencies = [
         { code: 'IDR', locale: 'id-ID', label: 'Rupiah (Rp)', icon: '🇮🇩' },
         { code: 'USD', locale: 'en-US', label: 'Dollar ($)', icon: '🇺🇸' },
@@ -14,11 +23,13 @@ export function useFinanceFormat() {
         { code: 'JPY', locale: 'ja-JP', label: 'Yen (¥)', icon: '🇯🇵' },
     ];
 
+    const needsDecimal = ['USD', 'GBP', 'EUR'].includes(activeCurrency.value);
+
     const setCurrency = (code) => {
         const target = supportedCurrencies.find(c => c.code === code);
         if (target) {
             activeCurrency.value = target.code;
-            activeLocale.value = target.locale;
+            currencyLocale.value = target.locale;
             localStorage.setItem('finance_currency', target.code);
             localStorage.setItem('finance_locale', target.locale);
             window.location.reload(); 
@@ -26,31 +37,23 @@ export function useFinanceFormat() {
     };
 
     const formatMoney = (number) => {
-        return new Intl.NumberFormat(activeLocale.value, {
+        return new Intl.NumberFormat(currencyLocale.value, {
             style: 'currency', 
             currency: activeCurrency.value, 
-            minimumFractionDigits: 0, 
-            maximumFractionDigits: 0
+            minimumFractionDigits: needsDecimal ? 2 : 0, 
+            maximumFractionDigits: needsDecimal ? 2 : 0
         }).format(number);
     };
 
-    // --- ALIAS (PENTING BIAR GAK WHITE SCREEN) ---
-    // Komponen lama (TransactionList dll) masih manggil formatRupiah
-    const formatRupiah = formatMoney; 
-
     const cleanAmount = (value) => {
         if (!value) return 0;
-        const str = value.toString();
-        if (['IDR', 'EUR', 'de-DE'].includes(activeCurrency.value)) {
-            return str.replace(/\./g, '');
-        } 
-        return str.replace(/,/g, '');
-    };
-
-    const formatInputDisplay = (value) => {
-        if (!value) return '';
-        const raw = value.toString().replace(/\D/g, ''); 
-        return new Intl.NumberFormat(activeLocale.value).format(raw);
+        let str = value.toString();
+        if (['USD', 'GBP'].includes(activeCurrency.value)) {
+            str = str.replace(/,/g, ''); 
+        } else if (['IDR', 'EUR', 'de-DE'].includes(activeCurrency.value)) {
+            str = str.replace(/\./g, '').replace(/,/g, '.');
+        }
+        return parseFloat(str) || 0;
     };
 
     const getCategoryDetails = (slug, categories = []) => {
@@ -63,12 +66,11 @@ export function useFinanceFormat() {
 
     return {
         activeCurrency,
+        appLocale, // Export Reactive Locale
         supportedCurrencies,
         setCurrency,
         formatMoney,
-        formatRupiah, // Export alias ini
         cleanAmount,
-        formatInputDisplay,
         getCategoryDetails
     };
 }

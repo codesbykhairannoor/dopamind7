@@ -1,7 +1,22 @@
 import { computed } from 'vue';
 import dayjs from 'dayjs';
+import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 
 export function useFinanceChart(props) {
+    const { formatMoney } = useFinanceFormat();
+
+    /**
+     * Helper Translasi Aman
+     * Copas dari useFinanceForm biar konsisten logic-nya
+     */
+    const t = (key, fallback) => {
+        if (typeof window.trans === 'function') {
+            const result = window.trans(key);
+            // Kalau hasil translasi beda dengan key, berarti ketemu
+            return result !== key ? result : fallback;
+        }
+        return fallback;
+    };
     
     // --- TRANSFORMASI DATA ---
     const chartData = computed(() => {
@@ -26,14 +41,16 @@ export function useFinanceChart(props) {
             labels: labels,
             datasets: [
                 {
-                    label: 'Pemasukan',
+                    // Pakai helper t() biar aman & i18n support
+                    label: t('income', 'Income'),
                     backgroundColor: 'rgba(16, 185, 129, 0.1)',
                     borderColor: '#10b981',
                     data: incomeData,
                     tension: 0.4, fill: true, pointRadius: 0, pointHoverRadius: 6
                 },
                 {
-                    label: 'Pengeluaran',
+                    // Pakai helper t() biar aman & i18n support
+                    label: t('expense', 'Expense'),
                     backgroundColor: 'rgba(244, 63, 94, 0.1)',
                     borderColor: '#f43f5e',
                     data: expenseData,
@@ -48,11 +65,17 @@ export function useFinanceChart(props) {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
-            legend: { position: 'top', align: 'end', labels: { usePointStyle: true, boxWidth: 8 } },
+            legend: { 
+                position: 'top', 
+                align: 'end', 
+                labels: { usePointStyle: true, boxWidth: 8 } 
+            },
             tooltip: { 
-                mode: 'index', intersect: false,
+                mode: 'index', 
+                intersect: false,
                 callbacks: {
-                    label: (context) => ` ${context.dataset.label}: Rp ${new Intl.NumberFormat('id-ID').format(context.raw)}`
+                    // FORMAT UANG DINAMIS ($ / Rp)
+                    label: (context) => ` ${context.dataset.label}: ${formatMoney(context.raw)}`
                 }
             }
         },
@@ -60,6 +83,7 @@ export function useFinanceChart(props) {
             y: { 
                 beginAtZero: true, 
                 grid: { color: '#f1f5f9', borderDash: [5, 5] },
+                // Format angka sumbu Y (misal 10k, 20k)
                 ticks: { callback: (val) => (val / 1000) + 'k' } 
             },
             x: { grid: { display: false } }

@@ -5,14 +5,14 @@ const props = defineProps({
     scheduledTasks: { type: Array, default: () => [] },
     openModal: { type: Function, required: true },
     toggleComplete: { type: Function, required: true },
-    getTypeColor: { type: Function, default: () => '' } // Fallback props
+    getTypeColor: { type: Function, default: () => '' }
 });
 
 // --- KONFIGURASI ---
 const VIEW_LIMIT = 14; 
-const HOUR_HEIGHT = 80; // 🔥 SUDAH DIUBAH JADI 80px
+const HOUR_HEIGHT = 80; 
 const TIME_COL_WIDTH = 80; 
-const VISUAL_GAP = 2; // Gap diperkecil biar makin rapi
+const VISUAL_GAP = 2; 
 
 const startHour = ref(6); 
 onMounted(() => {
@@ -103,7 +103,6 @@ const getTaskStyle = (task) => {
     const topPx = (startMinutesTotal / 60) * HOUR_HEIGHT;
     const heightPx = (duration / 60) * HOUR_HEIGHT;
 
-    // 🔥 Minimum height 28px biar konten gak kepotong meskipun durasi pendek
     const finalHeight = Math.max(heightPx - VISUAL_GAP, 28);
 
     return {
@@ -111,14 +110,13 @@ const getTaskStyle = (task) => {
         height: `${finalHeight}px`,
         left: `${TIME_COL_WIDTH + 8}px`,  
         right: '8px', 
-        zIndex: duration < 30 ? 20 : 10 // Task pendek ditaruh di atas layer
+        zIndex: duration < 30 ? 20 : 10
     };
 };
 
 // --- VIEW MODE ---
 const getTaskViewMode = (task) => {
     const duration = getDurationMinutes(task);
-    // 🔥 Logic diubah: di bawah 45 menit pakai tampilan MICRO (satu baris)
     if (duration < 45) return 'MICRO'; 
     return 'NORMAL'; 
 };
@@ -137,7 +135,7 @@ const currentTimeIndicatorStyle = computed(() => {
 <template>
     <div class="bg-slate-50 rounded-3xl shadow-xl border border-slate-200 overflow-hidden select-none flex flex-col h-full">
         
-        <div class="px-6 py-4 border-b border-slate-200 bg-white sticky top-0 z-50 shadow-sm flex justify-between items-center">
+        <div class="px-6 py-4 border-b border-slate-200 bg-white sticky top-0 z-50 shadow-sm flex justify-between items-center shrink-0">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-lg shadow-indigo-200 shadow-lg">📅</div>
                 <h3 class="font-black text-slate-800 text-base leading-none">{{ $t('timeline_title') }}</h3>
@@ -151,94 +149,98 @@ const currentTimeIndicatorStyle = computed(() => {
             </div>
         </div>
         
-        <div class="relative w-full bg-white overflow-y-auto custom-scrollbar" :style="{ height: `${VIEW_LIMIT * HOUR_HEIGHT}px` }">
+        <div class="flex-1 relative w-full bg-white overflow-y-auto overflow-x-hidden custom-scrollbar">
             
-            <div v-for="(time, index) in visibleTimeSlots" :key="time" 
-                class="absolute w-full flex border-b border-slate-100"
-                :style="{ top: `${index * HOUR_HEIGHT}px`, height: `${HOUR_HEIGHT}px` }">
-                <div class="w-[80px] shrink-0 border-r border-slate-100 bg-slate-50/40 flex justify-center pt-3">
-                    <span class="text-[11px] font-bold text-slate-400 font-mono">{{ time }}</span>
-                </div>
-                <div class="flex-1 relative group/slot cursor-pointer" @click="openModal(null, time)">
-                    <div class="absolute inset-x-2 top-0.5 bottom-0.5 rounded border border-transparent group-hover/slot:border-indigo-100 group-hover/slot:bg-indigo-50/30 flex items-center justify-center">
-                        <span class="opacity-0 group-hover/slot:opacity-100 text-indigo-400 text-[10px] font-bold tracking-widest">+ ADD</span>
+            <div class="relative w-full" :style="{ height: `${VIEW_LIMIT * HOUR_HEIGHT}px` }">
+            
+                <div v-for="(time, index) in visibleTimeSlots" :key="time" 
+                    class="absolute w-full flex border-b border-slate-100"
+                    :style="{ top: `${index * HOUR_HEIGHT}px`, height: `${HOUR_HEIGHT}px` }">
+                    <div class="w-[80px] shrink-0 border-r border-slate-100 bg-slate-50/40 flex justify-center pt-3">
+                        <span class="text-[11px] font-bold text-slate-400 font-mono">{{ time }}</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="absolute z-30 flex items-center pointer-events-none w-full" :style="currentTimeIndicatorStyle">
-                <div class="w-[80px] flex justify-end pr-2">
-                    <span class="text-[9px] font-black text-white bg-rose-500 px-1.5 rounded-sm shadow-sm">NOW</span>
-                </div>
-                <div class="flex-1 h-[2px] bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
-            </div>
-
-            <div v-for="task in scheduledTasks" :key="task.id" 
-                @click="openModal(task)" 
-                :style="getTaskStyle(task)"
-                class="group absolute rounded-lg border px-0 py-0 shadow-sm cursor-pointer overflow-hidden transition-all hover:shadow-md hover:scale-[1.005]"
-                :class="[
-                    getTaskTheme(task.type).card,
-                    task.is_completed ? 'opacity-60 grayscale filter' : ''
-                ]">
-                
-                <div class="w-full h-full relative" :title="task.notes ? `📝 ${task.notes}` : ''">
-
-                    <div v-if="getTaskViewMode(task) === 'MICRO'" class="flex items-center justify-between h-full px-2 gap-2">
-                        <div class="flex items-center gap-1.5 overflow-hidden flex-1 min-w-0">
-                            <span class="text-xs shrink-0 opacity-80">{{ getTaskTheme(task.type).icon }}</span>
-                            
-                            <span class="font-bold text-xs truncate leading-none" 
-                                :class="[getTaskTheme(task.type).text, task.is_completed && 'line-through']">
-                                {{ task.title }}
-                            </span>
-
-                            <span class="text-[10px] font-mono opacity-60 whitespace-nowrap shrink-0" :class="getTaskTheme(task.type).subtext">
-                                ({{ formatTimeRange(task) }})
-                            </span>
+                    <div class="flex-1 relative group/slot cursor-pointer" @click="openModal(null, time)">
+                        <div class="absolute inset-x-2 top-0.5 bottom-0.5 rounded border border-transparent group-hover/slot:border-indigo-100 group-hover/slot:bg-indigo-50/30 flex items-center justify-center">
+                            <span class="opacity-0 group-hover/slot:opacity-100 text-indigo-400 text-[10px] font-bold tracking-widest">+ ADD</span>
                         </div>
-
-                        <button @click.stop="toggleComplete(task)" class="w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors bg-white hover:scale-110" 
-                            :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
-                            <svg v-if="task.is_completed" class="w-2.5 h-2.5 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
-                        </button>
                     </div>
+                </div>
 
-                    <div v-else class="flex flex-col h-full px-3 py-2 gap-1">
-                        
-                        <div class="flex justify-between items-center shrink-0">
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border flex items-center gap-1 shadow-sm opacity-90"
-                                    :class="getTaskTheme(task.type).badge">
-                                    {{ getTaskTheme(task.type).icon }} {{ $t(getTaskTheme(task.type).labelKey) }}
+                <div class="absolute z-30 flex items-center pointer-events-none w-full" :style="currentTimeIndicatorStyle">
+                    <div class="w-[80px] flex justify-end pr-2">
+                        <span class="text-[9px] font-black text-white bg-rose-500 px-1.5 rounded-sm shadow-sm">NOW</span>
+                    </div>
+                    <div class="flex-1 h-[2px] bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
+                </div>
+
+                <div v-for="task in scheduledTasks" :key="task.id" 
+                    @click="openModal(task)" 
+                    :style="getTaskStyle(task)"
+                    class="group absolute rounded-lg border px-0 py-0 shadow-sm cursor-pointer overflow-hidden transition-all hover:shadow-md hover:scale-[1.005]"
+                    :class="[
+                        getTaskTheme(task.type).card,
+                        task.is_completed ? 'opacity-60 grayscale filter' : ''
+                    ]">
+                    
+                    <div class="w-full h-full relative" :title="task.notes ? `📝 ${task.notes}` : ''">
+
+                        <div v-if="getTaskViewMode(task) === 'MICRO'" class="flex items-center justify-between h-full px-2 gap-2">
+                            <div class="flex items-center gap-1.5 overflow-hidden flex-1 min-w-0">
+                                <span class="text-xs shrink-0 opacity-80">{{ getTaskTheme(task.type).icon }}</span>
+                                
+                                <span class="font-bold text-xs truncate leading-none" 
+                                    :class="[getTaskTheme(task.type).text, task.is_completed && 'line-through']">
+                                    {{ task.title }}
                                 </span>
-                                <span class="text-[10px] font-mono font-bold opacity-60" :class="getTaskTheme(task.type).text">
-                                    {{ formatTimeRange(task) }}
+
+                                <span class="text-[10px] font-mono opacity-60 whitespace-nowrap shrink-0" :class="getTaskTheme(task.type).subtext">
+                                    ({{ formatTimeRange(task) }})
                                 </span>
                             </div>
-                            
-                            <button @click.stop="toggleComplete(task)" class="w-5 h-5 rounded border bg-white flex items-center justify-center hover:scale-110 transition-transform shrink-0 shadow-sm" 
+
+                            <button @click.stop="toggleComplete(task)" class="w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors bg-white hover:scale-110" 
                                 :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
-                                <svg v-if="task.is_completed" class="w-3 h-3 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
+                                <svg v-if="task.is_completed" class="w-2.5 h-2.5 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
                             </button>
                         </div>
 
-                        <div class="flex items-center gap-2 mt-0.5 min-h-0">
-                            <h4 class="font-black text-sm leading-tight truncate shrink-0 max-w-[50%]" 
-                                :class="[getTaskTheme(task.type).text, task.is_completed && 'line-through opacity-50']">
-                                {{ task.title }}
-                            </h4>
+                        <div v-else class="flex flex-col h-full px-3 py-2 gap-1">
                             
-                            <span v-if="task.notes" class="text-xs opacity-30 text-slate-400">|</span>
-
-                            <div v-if="task.notes" class="truncate text-xs italic opacity-70 flex-1" :class="getTaskTheme(task.type).text">
-                                {{ task.notes }}
+                            <div class="flex justify-between items-center shrink-0">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded border flex items-center gap-1 shadow-sm opacity-90"
+                                        :class="getTaskTheme(task.type).badge">
+                                        {{ getTaskTheme(task.type).icon }} {{ $t(getTaskTheme(task.type).labelKey) }}
+                                    </span>
+                                    <span class="text-[10px] font-mono font-bold opacity-60" :class="getTaskTheme(task.type).text">
+                                        {{ formatTimeRange(task) }}
+                                    </span>
+                                </div>
+                                
+                                <button @click.stop="toggleComplete(task)" class="w-5 h-5 rounded border bg-white flex items-center justify-center hover:scale-110 transition-transform shrink-0 shadow-sm" 
+                                    :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
+                                    <svg v-if="task.is_completed" class="w-3 h-3 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
+                                </button>
                             </div>
-                        </div>
-                        
-                    </div>
 
+                            <div class="flex items-center gap-2 mt-0.5 min-h-0">
+                                <h4 class="font-black text-sm leading-tight truncate shrink-0 max-w-[50%]" 
+                                    :class="[getTaskTheme(task.type).text, task.is_completed && 'line-through opacity-50']">
+                                    {{ task.title }}
+                                </h4>
+                                
+                                <span v-if="task.notes" class="text-xs opacity-30 text-slate-400">|</span>
+
+                                <div v-if="task.notes" class="truncate text-xs italic opacity-70 flex-1" :class="getTaskTheme(task.type).text">
+                                    {{ task.notes }}
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

@@ -43,7 +43,7 @@ const changeYear = (offset) => {
 </script>
 
 <template>
-    <div class="bg-white/80 backdrop-blur-xl border-b border-slate-100 sticky top-0 z-40 transition-all">
+    <div class="bg-white/80 backdrop-blur-xl border-b border-slate-100 md:sticky top-0 z-40 transition-all">
         <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-4">
             
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
