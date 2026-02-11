@@ -6,7 +6,7 @@ import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 import ArchiveModal from './ArchiveModal.vue'; 
 
 // Import Kalender Cantik Kita
-import FinanceDatePicker from '@/Components/FinanceDatePicker.vue'; 
+import FinanceDatePicker from `'./FinanceDatePicker.vue'`; 
 
 const props = defineProps({
     transactions: Array,
