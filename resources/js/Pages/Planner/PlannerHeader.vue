@@ -22,8 +22,9 @@ const todayDate = computed(() => {
 </script>
 
 <template>
-    <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 md:sticky top-0 z-30 transition-all">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 lg:px-8 py-4 md:sticky top-0 z-30 transition-all">
+        
+        <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4">
             
             <div class="flex items-center gap-4 w-full md:w-auto">
                 <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-2xl text-white shadow-lg shadow-indigo-200">
@@ -35,7 +36,7 @@ const todayDate = computed(() => {
                 </div>
             </div>
 
-            <div class="flex-1 w-full md:px-12">
+            <div class="flex-1 w-full md:px-12 max-w-4xl"> 
                 <div class="flex justify-between text-[10px] font-black text-slate-400 mb-1 uppercase tracking-widest">
                     <span>{{ $t('header_progress') }}</span>
                     <span class="text-indigo-600">{{ stats.percent }}%</span>

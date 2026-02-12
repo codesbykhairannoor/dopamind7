@@ -30,12 +30,9 @@ const {
 const switchToBatch = () => { isModalOpen.value = false; openBatchModal(); };
 const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
 
-// 🔥 Fungsi Reset Gabungan (Database + LocalStorage)
+// Fungsi Reset
 const handleFullReset = () => {
-    // 1. Reset Database via Composable
     resetBoard(); 
-    
-    // 2. Kirim event ke Sidebar untuk hapus localStorage
     window.dispatchEvent(new Event('reset-local-storage'));
 };
 </script>
@@ -50,10 +47,11 @@ const handleFullReset = () => {
             :stats="scheduledStats" 
         />
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div class="w-full min-h-screen bg-slate-50/50 px-4 sm:px-6 lg:px-8 py-8">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
                 
-                <div class="lg:col-span-2 order-1 lg:order-2">
+                <div class="lg:col-span-3 order-1 lg:order-2 w-full">
                     <PlannerTimeline 
                         :timeSlots="timeSlots"
                         :scheduledTasks="scheduledTasks"
@@ -65,7 +63,7 @@ const handleFullReset = () => {
                     />
                 </div>
 
-                <div class="lg:col-span-1 order-2 lg:order-1">
+                <div class="lg:col-span-2 order-2 lg:order-1 w-full space-y-6 md:sticky md:top-24">
                     <PlannerSidebar 
                         :stats="scheduledStats"
                         v-model:localNotes="localNotes"

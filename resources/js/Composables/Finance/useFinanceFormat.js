@@ -36,6 +36,19 @@ export function useFinanceFormat() {
         }
     };
 
+    const formatInputDisplay = (val) => {
+        if (!val && val !== 0) return '';
+        const str = val.toString();
+        // Cek apakah mata uang pakai Titik atau Koma sebagai pemisah ribuan
+        if (['IDR', 'EUR', 'de-DE'].includes(activeCurrency.value)) {
+            // Indo/Jerman: Pake Titik (1.000.000)
+            return str.replace(/\B(?=(\d{3})+(?!\d))/g, "."); 
+        } else {
+            // US/Inggris: Pake Koma (1,000,000)
+            return str.replace(/\B(?=(\d{3})+(?!\d))/g, ","); 
+        }
+    };
+
     const formatMoney = (number) => {
         return new Intl.NumberFormat(currencyLocale.value, {
             style: 'currency', 
@@ -71,6 +84,7 @@ export function useFinanceFormat() {
         setCurrency,
         formatMoney,
         cleanAmount,
+        formatInputDisplay,
         getCategoryDetails
     };
 }

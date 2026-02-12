@@ -17,16 +17,13 @@ const page = usePage();
 const { activeCurrency, supportedCurrencies, setCurrency, appLocale } = useFinanceFormat();
 
 // --- LOGIC HARI INI ---
-// --- LOGIC HARI INI ---
 const todayDisplay = computed(() => {
-    // Ambil locale dari appLocale (misal: 'id-ID' atau 'en-US') 
-    // atau gunakan fallback dari page props seperti di kode Planner-mu
     const currentLocale = (appLocale.value ? appLocale.value.split('-')[0] : (page.props.locale || 'id'));
-    
     return dayjs()
         .locale(currentLocale)
-        .format('dddd, D MMMM YYYY'); // 'dddd' = Hari, 'D' = Tgl, 'MMMM' = Bulan Full, 'YYYY' = Tahun
+        .format('dddd, D MMMM YYYY'); 
 });
+
 // --- LOGIC DROPDOWN TANGGAL ---
 const isDateDropdownOpen = ref(false);
 const months = [
@@ -63,8 +60,9 @@ const activeCurrencyDetails = computed(() =>
 </script>
 
 <template>
-  <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky top-0 z-40 transition-all">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+  <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 lg:px-8 py-4 md:sticky top-0 z-40 transition-all">
+    
+    <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4">
       
       <div class="flex items-center gap-4 w-full md:w-auto">
         <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-2xl text-white shadow-lg shadow-indigo-200 shrink-0">
@@ -85,9 +83,9 @@ const activeCurrencyDetails = computed(() =>
         <div class="relative">
           <button
             @click="isDateDropdownOpen = !isDateDropdownOpen"
-            class="h-12 px-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-center gap-2 hover:bg-white hover:border-indigo-300 transition shadow-sm group"
+            class="h-12 px-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-center gap-2 hover:bg-white hover:border-indigo-300 transition shadow-sm group w-full md:w-auto justify-between md:justify-start"
           >
-            <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest">
+            <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest whitespace-nowrap">
               {{ currentMonth }}
             </span>
             <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-500 transition-transform"
@@ -99,7 +97,7 @@ const activeCurrencyDetails = computed(() =>
 
           <Transition name="slide-fade">
             <div v-if="isDateDropdownOpen"
-              class="absolute left-0 md:left-auto md:right-0 top-full mt-2 w-64 bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-4 z-50">
+              class="absolute right-0 top-full mt-2 w-64 bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-4 z-50 origin-top-right">
               <div class="flex justify-between items-center mb-3 px-1">
                 <button @click.stop="changeYear(-1)" class="p-1 hover:bg-slate-100 rounded-lg text-slate-400">❮</button>
                 <span class="font-black text-slate-800">{{ activeYear }}</span>
@@ -127,7 +125,7 @@ const activeCurrencyDetails = computed(() =>
 
           <Transition name="slide-fade">
             <div v-if="isCurrencyDropdownOpen"
-              class="absolute right-0 top-full mt-2 w-40 bg-white rounded-2xl shadow-xl border border-slate-100 p-1.5 z-50">
+              class="absolute right-0 top-full mt-2 w-40 bg-white rounded-2xl shadow-xl border border-slate-100 p-1.5 z-50 origin-top-right">
               <button v-for="c in supportedCurrencies" :key="c.code"
                 @click="setCurrency(c.code); isCurrencyDropdownOpen = false"
                 class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-50 rounded-xl transition"
@@ -141,11 +139,11 @@ const activeCurrencyDetails = computed(() =>
 
         <button 
           @click="onAddClick"
-          class="flex-1 md:flex-none h-12 px-6 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 text-sm active:scale-95"
+          class="flex-1 md:flex-none h-12 px-6 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 text-sm active:scale-95 whitespace-nowrap"
         >
           <span class="text-xl">+</span>
-          <span class="uppercase tracking-tight">{{ $t('btn_transaction') }}</span>
-        </button>
+          <span class="uppercase tracking-tight hidden md:inline">{{ $t('btn_transaction') }}</span>
+          <span class="uppercase tracking-tight md:hidden">{{ $t('btn_add') || 'ADD' }}</span> </button>
 
       </div>
     </div>

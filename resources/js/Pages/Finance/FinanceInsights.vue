@@ -1,119 +1,227 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+import { useFinanceForm } from '@/Composables/Finance/useFinanceForm'; 
 import dayjs from 'dayjs';
+import Swal from 'sweetalert2'; // Wajib import ini
 
 const props = defineProps({
-    transactions: { type: Array, default: () => [] },
     expenseStats: { type: Object, default: () => ({}) },
     incomeStats: { type: Object, default: () => ({}) },
     budgets: { type: Array, default: () => [] }
 });
 
-const { formatMoney } = useFinanceFormat();
+const { formatMoney, cleanAmount } = useFinanceFormat();
+const { submitTransaction, transactionForm, t } = useFinanceForm(); 
 
-// --- LOGIC 1: BURN RATE (Kecepatan Ngabisin Duit) ---
-const burnRate = computed(() => {
-    const today = dayjs();
-    const daysPassed = today.date() || 1; // Anti bagi nol
-    
-    // Hitung total pengeluaran dari object stats
-    const totalExpense = Object.values(props.expenseStats).reduce((a, b) => Number(a) + Number(b), 0) || 0;
-    const avgDaily = totalExpense / daysPassed;
-    
-    // Hitung rata-rata budget ideal per hari
-    const totalLimit = props.budgets.reduce((a, b) => a + Number(b.limit_amount), 0) || 0;
-    const idealDaily = totalLimit / (today.daysInMonth() || 30);
-    
-    const isOverSpeed = avgDaily > idealDaily;
-    const diff = idealDaily > 0 ? Math.abs(Math.round(((avgDaily - idealDaily) / idealDaily) * 100)) : 0;
-    
-    return { avgDaily, idealDaily, isOverSpeed, diffPercent: diff || 0 };
+// --- STATE ASSETS ---
+const assets = ref([]);
+onMounted(() => {
+    const saved = localStorage.getItem('dopamind_assets');
+    if (saved) assets.value = JSON.parse(saved);
 });
+watch(assets, (val) => localStorage.setItem('dopamind_assets', JSON.stringify(val)), { deep: true });
 
-// --- LOGIC 2: UANG DINGIN (Potensi Investasi) ---
-const milestone = computed(() => {
+// --- LOGIC 1: DAILY ALLOWANCE ---
+const dailyAllowance = computed(() => {
+    const today = dayjs();
+    const lastDay = today.endOf('month').date();
+    const remainingDays = (lastDay - today.date()) + 1;
     const totalIn = Object.values(props.incomeStats).reduce((a, b) => Number(a) + Number(b), 0) || 0;
     const totalOut = Object.values(props.expenseStats).reduce((a, b) => Number(a) + Number(b), 0) || 0;
-    
-    const moneyLeft = totalIn - totalOut; // Ini "Uang Dingin" lu
-    const target = 5000000; // Target tabungan (Bisa lu ubah sesuka hati)
-    const progress = target > 0 ? Math.min(Math.round((moneyLeft / target) * 100), 100) : 0;
-    
-    return { 
-        savings: Math.max(0, moneyLeft), // Kalau minus tampilin 0
-        progress: Math.max(0, progress), 
-        target 
-    };
+    const currentBalance = totalIn - totalOut; 
+    const safeDaily = currentBalance > 0 ? currentBalance / remainingDays : 0;
+    return { safeDaily, remainingDays, progress: (today.date() / lastDay) * 100 };
 });
+
+// --- LOGIC 2: INVESTMENT LAB ---
+const portfolioSummary = computed(() => {
+    const currentValue = assets.value.reduce((a, b) => a + (Number(b.capital) * (1 + (Number(b.percent)/100))), 0);
+    const totalCapital = assets.value.reduce((a, b) => a + Number(b.capital), 0);
+    return { currentValue, totalReturn: currentValue - totalCapital };
+});
+
+// --- SWEET ALERT HANDLERS ---
+
+// 1. TAMBAH ASET (EXPENSE)
+const handleAddAsset = () => {
+    Swal.fire({
+        title: '<span class="text-xl font-black text-slate-800">Alokasi Aset Baru</span>',
+        html: `
+            <div class="flex flex-col gap-3 text-left">
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Nama Aset</label>
+                    <input id="swal-name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-800 focus:ring-2 focus:ring-indigo-500 outline-none transition-all" placeholder="Contoh: Saham BBCA">
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Modal (Rp)</label>
+                    <input id="swal-capital" type="number" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-800 focus:ring-2 focus:ring-indigo-500 outline-none transition-all" placeholder="0">
+                    <p class="text-[10px] text-rose-500 mt-1 font-bold italic">*Akan tercatat sebagai Pengeluaran.</p>
+                </div>
+            </div>
+        `,
+        showCancelButton: true,
+        confirmButtonText: 'Konfirmasi & Bayar',
+        cancelButtonText: 'Batal',
+        // Styling SweetAlert Biar Mirip DopaMind
+        customClass: {
+            popup: '!rounded-[2.5rem] !p-8 !border !border-slate-100 !shadow-2xl',
+            confirmButton: '!bg-indigo-600 !text-white !font-bold !py-3 !px-6 !rounded-xl !shadow-lg !shadow-indigo-200 !text-xs !uppercase !tracking-widest',
+            cancelButton: '!bg-slate-100 !text-slate-500 !font-bold !py-3 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest',
+            actions: '!mt-6 !gap-2'
+        },
+        backdrop: `rgba(15, 23, 42, 0.6) backdrop-blur-sm`, // 🔥 EFEK BLUR TELEPORT
+        preConfirm: () => {
+            const name = document.getElementById('swal-name').value;
+            const capitalRaw = document.getElementById('swal-capital').value;
+            const capital = cleanAmount(capitalRaw); // Pakai formatter lu
+
+            if (!name || capital <= 0) {
+                Swal.showValidationMessage('Nama dan Modal wajib diisi!');
+                return false;
+            }
+            return { name, capital };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { name, capital } = result.value;
+
+            // Logic Submit Transaction (EXPENSE)
+            transactionForm.reset();
+            transactionForm.title = `Invest: ${name}`;
+            transactionForm.amount = capital;
+            transactionForm.type = 'expense';
+            transactionForm.category = 'investment'; // Pastikan kategori ini ada
+            transactionForm.date = dayjs().format('YYYY-MM-DD');
+            transactionForm.notes = `Modal awal investasi ${name}`;
+
+            submitTransaction(() => {
+                // Simpan ke Local Aset setelah sukses DB
+                assets.value.push({
+                    id: Date.now(),
+                    name: name,
+                    capital: capital,
+                    percent: 0
+                });
+            });
+        }
+    });
+};
+
+// 2. QUIT ASET (INCOME)
+const handleQuit = (asset) => {
+    const finalValue = asset.capital * (1 + (asset.percent / 100));
+    const profit = finalValue - asset.capital;
+
+    Swal.fire({
+        title: '<span class="text-xl font-black text-slate-800">Withdraw Aset?</span>',
+        html: `
+            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 mb-2">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase">Modal Awal</span>
+                    <span class="text-xs font-black text-slate-600">${formatMoney(asset.capital)}</span>
+                </div>
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase">Return (${asset.percent}%)</span>
+                    <span class="text-xs font-black ${asset.percent >= 0 ? 'text-emerald-500' : 'text-rose-500'}">
+                        ${asset.percent >= 0 ? '+' : ''}${formatMoney(profit)}
+                    </span>
+                </div>
+                <div class="border-t border-slate-200 my-2"></div>
+                <div class="flex justify-between items-center">
+                    <span class="text-[10px] font-bold text-slate-800 uppercase">Total Cair</span>
+                    <span class="text-sm font-black text-indigo-600">${formatMoney(finalValue)}</span>
+                </div>
+            </div>
+            <p class="text-xs font-bold text-slate-400">Dana akan dikembalikan ke saldo utama.</p>
+        `,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, Cairkan',
+        cancelButtonText: 'Batal',
+        customClass: {
+            popup: '!rounded-[2.5rem] !p-8 !border !border-slate-100 !shadow-2xl',
+            confirmButton: '!bg-rose-500 !text-white !font-bold !py-3 !px-6 !rounded-xl !shadow-lg !shadow-rose-200 !text-xs !uppercase !tracking-widest',
+            cancelButton: '!bg-slate-100 !text-slate-500 !font-bold !py-3 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest',
+            actions: '!mt-4 !gap-2'
+        },
+        backdrop: `rgba(15, 23, 42, 0.6) backdrop-blur-sm`
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Logic Submit Transaction (INCOME)
+            transactionForm.reset();
+            transactionForm.title = `Withdraw: ${asset.name}`;
+            transactionForm.amount = finalValue;
+            transactionForm.type = 'income';
+            transactionForm.category = 'investment';
+            transactionForm.date = dayjs().format('YYYY-MM-DD');
+            transactionForm.notes = `Return: ${formatMoney(profit)} (${asset.percent}%)`;
+
+            submitTransaction(() => {
+                assets.value = assets.value.filter(a => a.id !== asset.id);
+            });
+        }
+    });
+};
 </script>
 
 <template>
-    <div class="mt-6 space-y-4">
-        
-        <div class="bg-white p-6 rounded-[2.5rem] border-2 border-slate-50 shadow-sm relative overflow-hidden group">
-            <div class="absolute left-0 top-1/4 bottom-1/4 w-1 bg-indigo-500 rounded-r-full"></div>
+    <div class="mt-6 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+     
 
-            <div class="relative z-10">
-                <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3">
-                    {{ $t('insight_radar_title') }}
-                </h3>
+        <div class="bg-indigo-900 rounded-[2.5rem] p-1 shadow-2xl shadow-indigo-200/50 relative overflow-hidden group">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-indigo-900"></div>
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-1000"></div>
 
-                <div class="flex items-baseline gap-2 mb-1">
-                    <h4 class="text-2xl font-black text-slate-800 tracking-tighter">{{ formatMoney(burnRate.avgDaily) }}</h4>
-                    <span class="text-[10px] font-bold text-slate-400 uppercase">/ {{ $t('insight_day_suffix') }}</span>
-                </div>
-
-                <p class="text-[10px] font-bold mb-4" :class="burnRate.isOverSpeed ? 'text-rose-500' : 'text-emerald-500'">
-                    {{ burnRate.isOverSpeed ? $t('insight_status_fast') : $t('insight_status_safe') }}
-                </p>
-
-                <div class="space-y-2 pt-2 border-t border-slate-50">
-                    <div class="flex justify-between text-[9px] font-black uppercase tracking-widest text-slate-400">
-                        <span>{{ $t('insight_efficiency_label') }}</span>
-                        <span :class="burnRate.isOverSpeed ? 'text-rose-500' : 'text-indigo-600'">
-                            {{ burnRate.isOverSpeed ? '+' : '-' }}{{ burnRate.diffPercent }}% {{ $t('insight_target_diff') }}
-                        </span>
-                    </div>
-                    <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                        <div class="h-full bg-indigo-500 transition-all duration-1000" :style="{ width: Math.min(burnRate.diffPercent, 100) + '%' }"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-indigo-600 rounded-[2.5rem] p-7 text-white shadow-xl shadow-indigo-200 relative overflow-hidden group transition-all hover:-translate-y-1">
-            <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-all duration-1000"></div>
-
-            <div class="relative z-10">
+            <div class="relative z-10 p-6">
                 <div class="flex justify-between items-start mb-6">
                     <div>
-                        <p class="text-indigo-200 text-[10px] font-black uppercase tracking-[0.2em] mb-1">
-                            {{ $t('insight_cold_money_label') }}
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-lg">🧪</span>
+                            <p class="text-indigo-200 text-[10px] font-black uppercase tracking-[0.2em]">Investment Lab</p>
+                        </div>
+                        <h4 class="text-2xl font-black text-white tracking-tighter">{{ formatMoney(portfolioSummary.currentValue) }}</h4>
+                        <p class="text-[10px] font-bold mt-1" :class="portfolioSummary.totalReturn >= 0 ? 'text-emerald-300' : 'text-rose-300'">
+                            {{ portfolioSummary.totalReturn >= 0 ? '+' : '' }}{{ formatMoney(portfolioSummary.totalReturn) }} (Total P/L)
                         </p>
-                        <h4 class="text-xl font-black tracking-tighter">{{ formatMoney(milestone.savings) }}</h4>
                     </div>
-                    <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl border border-white/20 shadow-inner">
-                        💹
+                    <button @click="handleAddAsset" class="w-10 h-10 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-xl text-white border border-white/10 transition-all active:scale-95 shadow-lg">
+                        ＋
+                    </button>
+                </div>
+
+                <div v-if="assets.length > 0" class="space-y-2 max-h-[300px] overflow-y-auto custom-scrollbar pr-1">
+                    <div v-for="asset in assets" :key="asset.id" class="bg-indigo-800/40 border border-indigo-500/20 rounded-2xl p-3 flex items-center justify-between group/card hover:bg-indigo-800/60 transition-colors">
+                        <div class="flex-1 min-w-0 mr-3">
+                            <div class="flex items-center gap-2 mb-1">
+                                <h5 class="text-xs font-black text-white truncate">{{ asset.name }}</h5>
+                                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-white/10 text-white/70">{{ formatMoney(asset.capital) }}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input type="number" v-model="asset.percent" class="w-10 bg-transparent border-b border-white/20 text-[10px] font-black text-center text-yellow-300 focus:outline-none focus:border-yellow-300 p-0">
+                                <span class="text-[9px] text-indigo-300">% Growth</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-sm font-black tracking-tight mb-1" :class="asset.percent >= 0 ? 'text-emerald-400' : 'text-rose-400'">
+                                {{ formatMoney(asset.capital * (1 + (asset.percent/100))) }}
+                            </p>
+                            <button @click="handleQuit(asset)" class="text-[9px] font-bold text-white bg-rose-500/80 hover:bg-rose-500 px-3 py-1 rounded-lg transition-all shadow-md active:scale-95 opacity-60 group-hover/card:opacity-100">
+                                QUIT
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="space-y-2">
-                    <div class="flex justify-between items-end">
-                        <span class="text-[9px] font-black uppercase tracking-widest text-indigo-200">
-                            {{ $t('insight_milestone_label') }}
-                        </span>
-                        <span class="text-xs font-black">{{ milestone.progress }}%</span>
-                    </div>
-                    <div class="h-2 w-full bg-indigo-900/40 rounded-full overflow-hidden p-0.5">
-                        <div class="h-full bg-yellow-400 rounded-full transition-all duration-1000" :style="{ width: milestone.progress + '%' }"></div>
-                    </div>
+                <div v-else class="py-8 text-center border-2 border-dashed border-white/10 rounded-3xl opacity-50">
+                    <p class="text-[10px] font-bold text-white uppercase tracking-widest">Lab Kosong</p>
                 </div>
-
-                <p class="mt-5 text-[9px] text-indigo-200 font-bold italic leading-relaxed opacity-80 uppercase tracking-tighter">
-                    {{ $t('insight_cold_money_hint') }}
-                </p>
             </div>
         </div>
     </div>
 </template>
+
+<style scoped>
+.custom-scrollbar::-webkit-scrollbar { width: 3px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+</style>

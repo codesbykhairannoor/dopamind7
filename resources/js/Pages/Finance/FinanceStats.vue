@@ -78,6 +78,7 @@ const saveSalary = () => {
             </div>
 
             <div class="lg:col-span-5 grid grid-rows-2 gap-4">
+                
                 <div class="bg-white border border-slate-100 rounded-[2rem] px-6 py-5 shadow-sm hover:shadow-md transition-all relative overflow-hidden group flex items-center justify-between">
                     <div class="flex-1 min-w-0"> 
                         <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 flex items-center gap-1">
@@ -91,6 +92,24 @@ const saveSalary = () => {
                             </h4>
                             <button @click="startEditing" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 hover:bg-indigo-600 hover:text-white transition-all transform scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 shadow-sm">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                            </button>
+                        </div>
+
+                        <div v-else class="flex items-center gap-2 w-full animate-in zoom-in-95 duration-200">
+                            <input 
+                                ref="inputSalaryRef"
+                                v-model="displaySalary"
+                                type="text" 
+                                class="w-full bg-slate-50 border-none rounded-xl px-3 py-1 text-xl font-black text-slate-800 focus:ring-2 focus:ring-indigo-500 transition-all"
+                                @keyup.enter="saveSalary"
+                                @keyup.esc="cancelEdit"
+                                @blur="saveSalary"
+                            />
+                            <button @click="saveSalary" class="p-2 rounded-lg bg-emerald-50 text-emerald-600 hover:bg-emerald-100 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </button>
+                            <button @click="cancelEdit" class="p-2 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>
                             </button>
                         </div>
                         </div>

@@ -53,7 +53,7 @@ export function useFinanceHistory(props) {
         if (filterDate.value) {
             return sorted.filter(day => day.date === filterDate.value);
         }
-        return sorted.slice(0, 5); 
+        return sorted.slice(0, 4); 
     });
 
     const openDetail = (dayData) => {
