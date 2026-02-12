@@ -2,17 +2,17 @@ import { useForm, router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+// 1. Import trans agar bahasa berubah instan tanpa refresh
+import { trans } from 'laravel-vue-i18n'; 
 
 export function useFinanceForm() {
     const { cleanAmount } = useFinanceFormat();
 
-    // --- 1. HELPER TRANSLASI ---
+    // --- 1. HELPER TRANSLASI REAKTIF ---
     const t = (key, fallback) => {
-        if (typeof window.trans === 'function') {
-            const result = window.trans(key);
-            return result !== key ? result : fallback;
-        }
-        return fallback;
+        const result = trans(key);
+        // Jika hasil sama dengan key, berarti translasi tidak ditemukan, pakai fallback
+        return result !== key ? result : fallback;
     };
 
     // --- 2. CONFIG: TOAST NOTIFIKASI (SOLID INDIGO) ---
@@ -35,7 +35,7 @@ export function useFinanceForm() {
         });
     };
 
-    // --- 3. CONFIG: ALERT KONFIRMASI ---
+    // --- 3. CONFIG: ALERT KONFIRMASI (STYLE DOPAMIND) ---
     const swalTheme = {
         customClass: {
             popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
@@ -75,7 +75,7 @@ export function useFinanceForm() {
         type: 'expense', 
         category: '', 
         date: dayjs().format('YYYY-MM-DD'), 
-        notes: '' // Notes tetap ada tapi opsional
+        notes: ''
     });
 
     const setEditTransaction = (trx) => {
@@ -139,10 +139,13 @@ export function useFinanceForm() {
     const submitBudget = (monthKey, onSuccessCallback) => {
         budgetForm.month = monthKey;
         if (!budgetForm.name) return fireToast('warning', t('warn_empty_budget_name', 'Enter budget name!'));
+        
         const cleanVal = cleanAmount(budgetForm.limit_amount);
         if (!cleanVal || cleanVal <= 0) return fireToast('warning', t('warn_empty_amount', 'Valid amount required!'));
 
-        if (!budgetForm.category && budgetForm.name) budgetForm.category = budgetForm.name.toLowerCase().replace(/\s+/g, '_');
+        if (!budgetForm.category && budgetForm.name) {
+            budgetForm.category = budgetForm.name.toLowerCase().replace(/\s+/g, '_');
+        }
 
         if(onSuccessCallback) onSuccessCallback();
 

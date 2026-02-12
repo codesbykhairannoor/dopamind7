@@ -78,7 +78,6 @@ const topHabit = computed(() => {
 })
 </script>
 <template>
-  <!-- FOOTER CONTAINER -->
   <section
     v-if="localHabits.length"
     class="mt-16 pb-16 w-full"
@@ -87,13 +86,12 @@ const topHabit = computed(() => {
       class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 px-4 md:px-0 md:max-w-[95%] mx-auto"
     >
 
-      <!-- KONSISTENSI -->
       <div
         class="md:col-span-5 bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100 relative overflow-hidden"
       >
         <div class="relative z-10">
           <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-1">
-            Konsistensi
+            {{ $t('label_consistency') }}
           </span>
 
           <div class="flex items-end gap-1">
@@ -109,13 +107,12 @@ const topHabit = computed(() => {
         </div>
       </div>
 
-      <!-- MVP HABIT -->
       <div
         class="md:col-span-3 bg-indigo-600 rounded-[2.5rem] p-6 text-white shadow-xl shadow-indigo-100 relative overflow-hidden"
       >
         <div v-if="topHabit">
           <span class="text-[10px] font-black uppercase tracking-widest text-indigo-200 block mb-3">
-            MVP Habit
+            {{ $t('label_mvp_habit') }}
           </span>
           <div class="text-3xl mb-1">{{ topHabit.icon }}</div>
           <div class="text-lg font-black truncate">
@@ -125,7 +122,7 @@ const topHabit = computed(() => {
 
         <div class="mt-4 flex justify-between items-center">
           <span class="text-[10px] font-bold uppercase text-indigo-200">
-            Check-ins
+            {{ $t('label_checkins') }}
           </span>
           <span class="text-xl font-black">
             {{ totalCompletions }}
@@ -133,7 +130,6 @@ const topHabit = computed(() => {
         </div>
       </div>
 
-      <!-- MOOD SELECTOR -->
       <div class="md:col-span-4 relative">
         <button
           @click="showMoodDropdownLocal = !showMoodDropdownLocal"
@@ -148,7 +144,7 @@ const topHabit = computed(() => {
 
           <div class="flex-1 min-w-0">
             <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-1">
-              Status Mood
+              {{ $t('label_mood_status') }}
             </span>
             <div class="text-xl font-black truncate uppercase">
               {{ $t(currentMoodData.label_key) }}
@@ -156,7 +152,6 @@ const topHabit = computed(() => {
           </div>
         </button>
 
-        <!-- DROPDOWN KE ATAS (FOOTER FRIENDLY) -->
         <Transition name="pop">
           <div
             v-if="showMoodDropdownLocal"

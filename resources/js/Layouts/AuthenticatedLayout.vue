@@ -122,7 +122,7 @@ watch(() => page.url, () => {
             >
                 <div v-show="showingNavigationDropdown" class="md:hidden fixed inset-0 top-16 z-40 bg-white/95 backdrop-blur-lg overflow-y-auto">
                     <div class="p-4 space-y-2 pb-24">
-                        <Link :href="route('dashboard')" 
+                        <Link :href="route('dashboard')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
@@ -147,7 +147,7 @@ watch(() => page.url, () => {
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
-                            <span>💸</span> Finance
+                            <span>💸</span> Finance Management
                         </Link>
 
                         <Link :href="route('settings.index')" prefetch
@@ -159,11 +159,11 @@ watch(() => page.url, () => {
 
                         <div class="border-t border-slate-100 my-4 pt-4">
                             <div class="flex gap-2 px-2 mb-6">
-                                <button @click="switchLang('id')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDONESIA</button>
-                                <button @click="switchLang('en')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
+                                <button @click="switchLang('id')" prefetch class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDONESIA</button>
+                                <button @click="switchLang('en')" prefetch class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
                             </div>
 
-                            <Link :href="route('logout')" method="post" as="button" class="w-full text-center py-3 text-rose-500 font-bold bg-rose-50 rounded-xl hover:bg-rose-100 transition">
+                            <Link :href="route('logout')" prefetch method="post" as="button" class="w-full text-center py-3 text-rose-500 font-bold bg-rose-50 rounded-xl hover:bg-rose-100 transition">
                                 {{ $t('nav_logout') }}
                             </Link>
                         </div>

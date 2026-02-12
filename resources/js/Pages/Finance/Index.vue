@@ -14,6 +14,7 @@ import BudgetModal from './BudgetModal.vue';
 import CategoryModal from './CategoryModal.vue'; 
 import DailyTrendChart from './DailyTrendChart.vue'; 
 import ArchiveModal from './ArchiveModal.vue'; // Import Baru
+import FinanceInsights from './FinanceInsights.vue'; 
 
 // Import Kalender Cantik Kita
 import FinanceDatePicker from './FinanceDatePicker.vue'; // Import Baru
@@ -171,12 +172,7 @@ const submitNewTransaction = () => {
                                 leave-to-class="opacity-0 translate-y-2"
                             >
                                 <div v-if="showFilterPicker" class="absolute right-0 top-full mt-2 z-50 origin-top-right shadow-2xl rounded-3xl">
-                                    <FinanceDatePicker 
-    :show="showFilterPicker" 
-    :modelValue="filterDate"
-    :transactions="transactions"  @update:modelValue="(val) => filterDate = val"
-    @close="showFilterPicker = false"
-/>
+                                   
                                 </div>
                             </transition>
                         </div>
@@ -239,21 +235,28 @@ const submitNewTransaction = () => {
                     <DailyTrendChart v-if="transactions.length" :transactions="transactions" :currentDate="filters.date" />
                 </div>
 
-                <div class="lg:col-span-1">
-                    <BudgetSidebar 
-                        :budgets="budgets" 
-                        :categories="categories" 
-                        :expenseStats="stats.expense_by_category"
-                        :incomeStats="stats.income_by_category"
-                        @add="() => { budgetForm.reset(); budgetForm.id = null; showBudgetModal = true; }"
-                        @delete-budget="deleteBudget"
-                        @edit-budget="handleEditBudget"
-                        
-                        @add-category="handleAddCategory"
-                        @edit-category="handleEditCategory"
-                        @delete-category="handleDeleteCategory"
-                    />
-                </div>
+                <div class="lg:col-span-1 relative"> <div class="md:sticky md:top-8 flex flex-col gap-4 self-start"> 
+        <BudgetSidebar 
+            :budgets="budgets" 
+            :categories="categories" 
+            :expenseStats="stats.expense_by_category"
+            :incomeStats="stats.income_by_category"
+            @add="() => { budgetForm.reset(); budgetForm.id = null; showBudgetModal = true; }"
+            @delete-budget="deleteBudget"
+            @edit-budget="handleEditBudget"
+            @add-category="handleAddCategory"
+            @edit-category="handleEditCategory"
+            @delete-category="handleDeleteCategory"
+        />
+
+        <FinanceInsights 
+            :expense-stats="stats.expense_by_category" 
+            :income-stats="stats.income_by_category" 
+            :budgets="budgets" 
+        />
+        
+    </div>
+</div>
             </div>
 
             <TransactionModal 

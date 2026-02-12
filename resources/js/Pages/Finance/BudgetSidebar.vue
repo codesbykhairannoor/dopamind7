@@ -33,7 +33,7 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
 </script>
 
 <template>
-    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm h-fit sticky top-6 flex flex-col gap-6">
+    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm h-fit flex flex-col gap-6">
         
         <div class="flex p-1 bg-slate-50 rounded-xl border border-slate-100">
             <button @click="activeTab = 'expense'" class="flex-1 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'expense' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">{{ $t('expense') }}</button>

@@ -32,7 +32,7 @@ export function useFinanceFormat() {
             currencyLocale.value = target.locale;
             localStorage.setItem('finance_currency', target.code);
             localStorage.setItem('finance_locale', target.locale);
-            window.location.reload(); 
+            // window.location.reload(); 
         }
     };
 

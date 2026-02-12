@@ -13,7 +13,7 @@ const VIEW_LIMIT = 14;
 const HOUR_HEIGHT = 80; 
 const TIME_COL_WIDTH = 80; 
 const VISUAL_GAP = 2; 
-
+const isStartHourOpen = ref(false); // Untuk kontrol buka tutup panel
 const startHour = ref(6); 
 onMounted(() => {
     const savedStart = localStorage.getItem('planner_start_time');
@@ -141,12 +141,42 @@ const currentTimeIndicatorStyle = computed(() => {
                 <h3 class="font-black text-slate-800 text-base leading-none">{{ $t('timeline_title') }}</h3>
             </div>
             
-            <div class="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200">
-                <span class="text-[10px] font-bold text-slate-400 px-2">START</span>
-                <select v-model="startHour" class="bg-transparent text-xs font-bold py-1 focus:outline-none cursor-pointer">
-                    <option v-for="h in 24" :key="h-1" :value="h-1">{{ (h-1).toString().padStart(2, '0') }}:00</option>
-                </select>
-            </div>
+           <div class="relative">
+    <button 
+        @click="isStartHourOpen = !isStartHourOpen"
+        class="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200 hover:bg-slate-200 transition-all group"
+    >
+        <span class="text-[10px] font-black text-slate-400 px-2 uppercase tracking-tighter">{{ $t('label_start') }}</span>
+        <div class="bg-white px-2 py-0.5 rounded-md shadow-sm border border-slate-200 flex items-center gap-1">
+            <span class="text-xs font-black text-indigo-600 font-mono">{{ startHour.toString().padStart(2, '0') }}:00</span>
+            <svg class="w-3 h-3 text-slate-400 group-hover:text-indigo-500 transition-transform" :class="{'rotate-180': isStartHourOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
+        </div>
+    </button>
+
+    <div v-if="isStartHourOpen" class="absolute right-0 top-full mt-2 w-72 bg-white rounded-[1.5rem] shadow-2xl border border-slate-100 p-4 z-[60] animate-in fade-in zoom-in-95 duration-200">
+        <div class="flex justify-between items-center mb-4 px-1">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ $t('select_hour') }}</span>
+            <button @click="isStartHourOpen = false" class="text-slate-300 hover:text-rose-500 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+        
+        <div class="grid grid-cols-4 gap-2">
+            <button 
+                v-for="h in 24" :key="h-1"
+                @click="startHour = h-1; isStartHourOpen = false"
+                class="py-2.5 flex items-center justify-center rounded-xl text-[10px] font-black font-mono transition-all border-2"
+                :class="startHour === h-1 
+                    ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg shadow-indigo-100' 
+                    : 'bg-slate-50 border-transparent text-slate-500 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-100'"
+            >
+                {{ (h-1).toString().padStart(2, '0') }}:00
+            </button>
+        </div>
+    </div>
+
+    <div v-if="isStartHourOpen" @click="isStartHourOpen = false" class="fixed inset-0 z-50"></div>
+</div>
         </div>
         
         <div class="flex-1 relative w-full bg-white overflow-y-auto overflow-x-hidden custom-scrollbar">
@@ -161,14 +191,14 @@ const currentTimeIndicatorStyle = computed(() => {
                     </div>
                     <div class="flex-1 relative group/slot cursor-pointer" @click="openModal(null, time)">
                         <div class="absolute inset-x-2 top-0.5 bottom-0.5 rounded border border-transparent group-hover/slot:border-indigo-100 group-hover/slot:bg-indigo-50/30 flex items-center justify-center">
-                            <span class="opacity-0 group-hover/slot:opacity-100 text-indigo-400 text-[10px] font-bold tracking-widest">+ ADD</span>
+                            <span class="opacity-0 group-hover/slot:opacity-100 text-indigo-400 text-[10px] font-bold tracking-widest">+ {{ $t('btn_add_timeline') }}</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="absolute z-30 flex items-center pointer-events-none w-full" :style="currentTimeIndicatorStyle">
                     <div class="w-[80px] flex justify-end pr-2">
-                        <span class="text-[9px] font-black text-white bg-rose-500 px-1.5 rounded-sm shadow-sm">NOW</span>
+                        <span class="text-[9px] font-black text-white bg-rose-500 px-1.5 rounded-sm shadow-sm">{{ $t('label_now') }}</span>
                     </div>
                     <div class="flex-1 h-[2px] bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
                 </div>

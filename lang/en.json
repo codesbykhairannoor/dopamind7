@@ -207,6 +207,17 @@
     "legend_left_click": "Left Click: Done",
     "legend_right_click": "Right Click: Skip",
     "legend_reset": "Click Again: Reset",
+    "label_period": "Period",
+    "label_daily": "Daily",
+    "btn_add_habit": "Habit",
+    "hint_click_done": "Left Click: Done",
+    "hint_click_skip": "Right Click: Skip",
+    "hint_tap_done": "One Tap: Done",
+    "hint_hold_skip": "Long Press: Skip",
+    "label_consistency": "Consistency",
+    "label_mvp_habit": "MVP Habit",
+    "label_checkins": "Check-ins",
+    "label_mood_status": "Mood Status",
 
     "____ SECTION_6 ____": "=== DAILY PLANNER ===",
     "planner_title": "Daily Timeline",
@@ -305,6 +316,15 @@
     "total_suffix": "tasks",
     "btn_saving": "Saving...",
     "btn_save_all": "💾 Save All Tasks",
+     "sidebar_persistent": "Auto Persistence",
+    "sidebar_water_title": "HYDRATION",
+"delete_activity_title": "Delete Activity?",
+    "delete_activity_desc": "Are you sure you want to delete this activity? This action cannot be undone.",
+    "default_activity_name": "this activity",
+    "label_start": "START",
+    "btn_add_timeline": "ADD",
+    "label_now": "NOW",
+    "select_hour": "Select Hour",
 
    
 
@@ -353,6 +373,16 @@
     "finance_trend": "Finance Trend",
     "daily_chart": "Daily Chart",
 
+    "insight_radar_title": "Burn Rate Radar",
+    "insight_day_suffix": "day",
+    "insight_status_fast": "🏃‍♂️ You are spending too fast!",
+    "insight_status_safe": "🚶‍♂️ Spending speed is safe.",
+    "insight_efficiency_label": "Efficiency",
+    "insight_target_diff": "from daily target",
+    "insight_cold_money_label": "Cold Money (Net)",
+    "insight_milestone_label": "Milestone Progress",
+    "insight_cold_money_hint": "*Use this ammunition when your stock chart bounces off support, bro!,",
+
     "finance_plan": "Finance Plan",
     "btn_transaction": "Transaction",
     "month_jan": "January",
@@ -381,6 +411,7 @@
 
     "warn_empty_category_name": "Name Empty",
     "warn_empty_category_name_text": "Please provide a name for this category.",
+    "warn_empty_category": "Please select a category!",
 
          "____ SECTION_8 ____": "=== BUTTONS & GENERAL LABELS ===",
     "btn_add": "Add",

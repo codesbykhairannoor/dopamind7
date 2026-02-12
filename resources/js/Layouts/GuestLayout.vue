@@ -45,7 +45,7 @@ const isActive = (routeName) => route().current(routeName);
 
                 <div class="hidden md:flex items-center gap-2 font-medium text-sm absolute left-1/2 -translate-x-1/2">
                     <Link 
-                        :href="route('home')" 
+                        :href="route('home')" prefetch
                         class="px-5 py-2.5 rounded-full transition-all duration-300"
                         :class="isActive('home') 
                             ? 'bg-brand-50 text-brand-600 font-bold shadow-sm ring-1 ring-brand-100' 
@@ -55,7 +55,7 @@ const isActive = (routeName) => route().current(routeName);
                     </Link>
 
                     <Link 
-                        :href="route('about')" 
+                        :href="route('about')" prefetch
                         class="px-5 py-2.5 rounded-full transition-all duration-300"
                         :class="isActive('about') 
                             ? 'bg-brand-50 text-brand-600 font-bold shadow-sm ring-1 ring-brand-100' 
@@ -68,15 +68,15 @@ const isActive = (routeName) => route().current(routeName);
                 <div class="hidden md:flex items-center gap-5 z-20">
                     
                     <div class="flex items-center bg-gray-100 rounded-full p-1 border border-gray-200">
-                        <button 
-                            @click="switchLang('id')" 
+                        <button
+                            @click="switchLang('id')" prefetch
                             class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
                             :class="currentLang === 'id' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
                         >
-                            ID
+                            ID 
                         </button>
-                        <button 
-                            @click="switchLang('en')" 
+                        <button
+                            @click="switchLang('en')" prefetch
                             class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
                             :class="currentLang === 'en' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
                         >
@@ -88,15 +88,15 @@ const isActive = (routeName) => route().current(routeName);
                     <div class="h-6 w-px bg-gray-200"></div> 
 
                     <div v-if="user">
-                        <Link :href="route('dashboard')" class="text-sm font-bold text-brand-600 border border-brand-100 px-5 py-2.5 rounded-full hover:bg-brand-50 transition shadow-sm hover:shadow-md">
+                        <Link :href="route('dashboard')" prefetch class="text-sm font-bold text-brand-600 border border-brand-100 px-5 py-2.5 rounded-full hover:bg-brand-50 transition shadow-sm hover:shadow-md">
                             {{ $t('nav_dashboard') }} →
                         </Link>
                     </div>
                     <div v-else class="flex items-center gap-3">
-                        <Link :href="route('login')" class="px-4 py-2 text-sm font-bold text-gray-900 hover:text-brand-600 transition">
+                        <Link :href="route('login')" prefetch class="px-4 py-2 text-sm font-bold text-gray-900 hover:text-brand-600 transition">
                             {{ $t('nav_login') }}
                         </Link>
-                        <Link :href="route('register')" class="px-6 py-2.5 text-sm font-bold text-white bg-brand-600 rounded-full hover:bg-brand-700 shadow-lg shadow-brand-200 transition transform hover:-translate-y-0.5 active:scale-95">
+                        <Link :href="route('register')" prefetch class="px-6 py-2.5 text-sm font-bold text-white bg-brand-600 rounded-full hover:bg-brand-700 shadow-lg shadow-brand-200 transition transform hover:-translate-y-0.5 active:scale-95">
                             {{ $t('nav_register') }}
                         </Link>
                     </div>

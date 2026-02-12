@@ -12,7 +12,7 @@ import Modal from '@/Components/Modal.vue';
 const props = defineProps({
     show: Boolean,
     dayData: Object, 
-    categories: Array, // Pastikan ini diterima dari parent
+    categories: Array, 
     close: Function,
     onDelete: Function,
     onEdit: Function 
@@ -34,9 +34,19 @@ const formattedDate = computed(() => {
     return dayjs(props.dayData.date).locale(lang).format('dddd, D MMMM YYYY');
 });
 
+// Handler Edit: Tutup modal arsip dulu, baru buka modal edit
 const handleEditAction = (trx) => {
     props.close();
     props.onEdit(trx);
+};
+
+// 🔥 FIX UTAMA: Handler Delete Otomatis Tutup Modal
+const handleDeleteAction = (id) => {
+    // Kita panggil onDelete dan kirim callback () => props.close()
+    // Pastikan di useFinanceForm.js fungsi deleteTransaction lu menjalankan callback ini di 'onSuccess'
+    props.onDelete(id, () => {
+        props.close(); 
+    });
 };
 </script>
 
@@ -66,7 +76,7 @@ const handleEditAction = (trx) => {
                 </div>
             </div>
 
-            <div class="p-0 bg-slate-50 max-h-[60vh] overflow-y-auto">
+            <div class="p-0 bg-slate-50 max-h-[60vh] overflow-y-auto custom-scrollbar">
                 <div class="divide-y divide-slate-100">
                     <div v-for="trx in dayData.transactions" :key="trx.id" class="bg-white p-4 flex items-center gap-3 hover:bg-slate-50 transition group">
                         
@@ -86,8 +96,12 @@ const handleEditAction = (trx) => {
                                 {{ trx.type === 'income' ? '+' : '-' }} {{ formatMoney(trx.amount) }}
                             </p>
                             <div class="flex gap-3 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button @click="handleEditAction(trx)" class="text-[10px] font-bold text-indigo-500 hover:underline">{{ $t('edit') }}</button>
-                                <button @click="onDelete(trx.id)" class="text-[10px] font-bold text-rose-400 hover:text-rose-600">{{ $t('delete') }}</button>
+                                <button @click="handleEditAction(trx)" class="text-[10px] font-bold text-indigo-500 hover:underline">
+                                    {{ $t('edit') }}
+                                </button>
+                                <button @click="handleDeleteAction(trx.id)" class="text-[10px] font-bold text-rose-400 hover:text-rose-600">
+                                    {{ $t('delete') }}
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -96,3 +110,9 @@ const handleEditAction = (trx) => {
         </div>
     </Modal>
 </template>
+
+<style scoped>
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+</style>
