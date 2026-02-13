@@ -1,4 +1,4 @@
-name: Dopamind CI
+name: OneForMind CI
 
 on:
   push:

@@ -46,7 +46,7 @@ export function usePlanner(props) {
             confirmButtonText: 'Ya, Bersihkan!',
             cancelButtonText: 'Batal',
             buttonsStyling: false,
-            // Custom Class untuk mengikuti tema Rounded DopaMind
+            // Custom Class untuk mengikuti tema Rounded OneForMind
             customClass: {
                 popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
                 title: 'text-2xl font-black text-slate-800 mb-2 font-sans',

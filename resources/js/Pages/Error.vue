@@ -16,7 +16,7 @@ const title = computed(() => {
 const description = computed(() => {
     return {
         503: 'Maaf bro, server lagi maintenance sebentar. Balik lagi nanti ya!',
-        500: 'Waduh, ada kabel putus di server kita. Tim DopaMind lagi benerin!',
+        500: 'Waduh, ada kabel putus di server kita. Tim OneForMind lagi benerin!',
         404: 'Halaman yang lu cari nggak ada bro, mungkin nyasar.',
         403: 'Eits, lu nggak punya akses masuk ke sini!',
     }[props.status] || 'Ada kendala teknis yang nggak terduga.';

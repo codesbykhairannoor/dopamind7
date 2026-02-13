@@ -19,7 +19,7 @@ export default {
                 sans: ['"Plus Jakarta Sans"', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                // Warna Brand DopaMind
+                // Warna Brand OneForMind
                 brand: {
                     50: '#eef2ff',
                     100: '#e0e7ff',

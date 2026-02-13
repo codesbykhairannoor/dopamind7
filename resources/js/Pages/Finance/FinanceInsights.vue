@@ -17,10 +17,10 @@ const { submitTransaction, transactionForm, t } = useFinanceForm();
 // --- STATE ASSETS ---
 const assets = ref([]);
 onMounted(() => {
-    const saved = localStorage.getItem('dopamind_assets');
+    const saved = localStorage.getItem('OneForMind_assets');
     if (saved) assets.value = JSON.parse(saved);
 });
-watch(assets, (val) => localStorage.setItem('dopamind_assets', JSON.stringify(val)), { deep: true });
+watch(assets, (val) => localStorage.setItem('OneForMind_assets', JSON.stringify(val)), { deep: true });
 
 // --- LOGIC 1: DAILY ALLOWANCE ---
 const dailyAllowance = computed(() => {
@@ -63,7 +63,7 @@ const handleAddAsset = () => {
         showCancelButton: true,
         confirmButtonText: 'Konfirmasi & Bayar',
         cancelButtonText: 'Batal',
-        // Styling SweetAlert Biar Mirip DopaMind
+        // Styling SweetAlert Biar Mirip OneForMind
         customClass: {
             popup: '!rounded-[2.5rem] !p-8 !border !border-slate-100 !shadow-2xl',
             confirmButton: '!bg-indigo-600 !text-white !font-bold !py-3 !px-6 !rounded-xl !shadow-lg !shadow-indigo-200 !text-xs !uppercase !tracking-widest',

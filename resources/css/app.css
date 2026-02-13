@@ -4,7 +4,7 @@
 
 /* Pastikan warna indigo lo muncul */
 #nprogress .bar {
-    background: #4f46e5 !important; /* Warna Indigo DopaMind */
+    background: #4f46e5 !important; /* Warna Indigo OneForMind */
     position: fixed;
     z-index: 999999;
     top: 0;

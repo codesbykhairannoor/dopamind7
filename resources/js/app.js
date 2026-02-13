@@ -12,7 +12,7 @@ import NProgress from 'nprogress';
 
 window.trans = trans; 
 
-const appName = import.meta.env.VITE_APP_NAME || 'DopaMind';
+const appName = import.meta.env.VITE_APP_NAME || 'OneForMind';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

@@ -39,7 +39,7 @@ watch(() => page.url, () => {
             <div class="h-24 flex items-center px-8">
                 <Link :href="route('dashboard')" class="group flex items-center gap-3">
                     <span class="text-3xl transition-transform duration-500 group-hover:rotate-180 text-indigo-600">✦</span>
-                    <span class="text-2xl font-black text-indigo-950 tracking-tighter">DopaMind.</span>
+                    <span class="text-2xl font-black text-indigo-950 tracking-tighter">OneForMind.</span>
                 </Link>
             </div>
 
@@ -104,7 +104,7 @@ watch(() => page.url, () => {
             <div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">
                 <Link :href="route('dashboard')" class="flex items-center gap-2">
                     <span class="text-2xl text-indigo-600">✦</span>
-                    <span class="font-black text-indigo-950 text-lg tracking-tight">DopaMind.</span>
+                    <span class="font-black text-indigo-950 text-lg tracking-tight">OneForMind.</span>
                 </Link>
                 <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-slate-500 hover:text-indigo-600 transition p-2 rounded-lg hover:bg-slate-50">
                     <span v-if="!showingNavigationDropdown" class="text-2xl">☰</span>

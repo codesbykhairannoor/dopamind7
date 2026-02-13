@@ -36,11 +36,11 @@ const isActive = (routeName) => route().current(routeName);
                 <Link :href="route('home')" class="group text-2xl font-black text-indigo-600 tracking-tighter flex items-center gap-2 hover:opacity-80 transition z-20">
     <img 
         src="/favicon.ico?v=2" 
-        alt="DopaMind Logo" 
+        alt="OneForMind Logo" 
         class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
     />
     
-    <span>DopaMind<span class="text-indigo-400">.</span></span>
+    <span>OneForMind<span class="text-indigo-400">.</span></span>
 </Link>
 
                 <div class="hidden md:flex items-center gap-2 font-medium text-sm absolute left-1/2 -translate-x-1/2">
@@ -150,7 +150,7 @@ const isActive = (routeName) => route().current(routeName);
 
         <footer class="bg-white border-t border-gray-100 py-10 mt-auto">
             <div class="max-w-7xl mx-auto px-6 text-center text-gray-400 text-sm animate-in fade-in duration-1000 delay-500">
-                <p>&copy; 2026 DopaMind. {{ $t('footer_rights') }}</p>
+                <p>&copy; 2026 OneForMind. {{ $t('footer_rights') }}</p>
             </div>
         </footer>
     </div>

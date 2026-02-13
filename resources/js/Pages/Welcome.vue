@@ -250,7 +250,7 @@ const submitWaitlist = () => {
                                 </div>
                             </div>
                             <div class="absolute bottom-8 w-full px-6">
-                                <div class="h-12 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/50 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-widest">DopaMind App</div>
+                                <div class="h-12 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/50 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-widest">OneForMind App</div>
                             </div>
                         </div>
                         <div class="absolute top-10 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-indigo-50 animate-bounce">

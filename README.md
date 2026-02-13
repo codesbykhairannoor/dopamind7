@@ -1,5 +1,5 @@
 
-<h1 align="center">✦ DopaMind.</h1>
+<h1 align="center">✦ OneForMind.</h1>
 
 <p align="center">
   <i>The all-in-one productivity OS for growth, clarity, and control.</i>
@@ -17,7 +17,7 @@
 
 ## 🧠 About
 
-**DopaMind** is my personal holistic web platform designed to help regain control over daily life. Unlike fragmented tools, DopaMind integrates three core pillars of productivity into a single, seamless experience tailored to my specific workflow.
+**OneForMind** is my personal holistic web platform designed to help regain control over daily life. Unlike fragmented tools, OneForMind integrates three core pillars of productivity into a single, seamless experience tailored to my specific workflow.
 
 Key focus areas:
 
@@ -61,7 +61,7 @@ const stack = {
 ## 📦 Project Structure
 
 ```txt
-dopamind
+OneForMind
  ┣ 📂 app
  ┃ ┣ 📂 Http/Controllers   # Logic for Finance, Habits, etc.
  ┃ ┗ 📂 Models             # Eloquent Models
@@ -103,5 +103,5 @@ graph LR
 ---
 
 <p align="center">
-<sub>Private Project &copy; 2026 DopaMind. All Rights Reserved.</sub>
+<sub>Private Project &copy; 2026 OneForMind. All Rights Reserved.</sub>
 </p>
