@@ -12,37 +12,35 @@ use App\Models\DailyLog;
 use App\Models\PlannerTask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class PlannerController extends Controller
 {
     /**
-     * Menampilkan Halaman Planner
-     */
-    /**
-     * Menampilkan Halaman Planner
+     * Menampilkan Halaman Planner (Single Board Concept)
      */
     public function index(Request $request)
     {
-        // 1. Ambil Task
-        $tasks = PlannerTask::where('user_id', Auth::id())
+        $userId = Auth::id();
+
+        // 1. Ambil Task (Sangat kencang karena tidak perlu filter tanggal)
+        $tasks = PlannerTask::where('user_id', $userId)
             ->orderBy('start_time', 'asc')
             ->get();
 
-        // 2. Ambil Data Harian (Notes & Meals)
+        // 2. Ambil Data Harian (Satu user murni hanya punya 1 row DailyLog)
         $dailyLog = DailyLog::firstOrCreate(
-            ['user_id' => Auth::id()],
+            ['user_id' => $userId],
             [
-                'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], // Pastikan ini array di model cast
+                'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], 
                 'notes' => '',
             ]
         );
 
-        // Siapkan Resource
         $tasksResource = PlannerTaskResource::collection($tasks);
         $logResource = new DailyLogResource($dailyLog);
 
-        // 📱 JIKA MOBILE / API (Tetap pakai format { data: ... })
         if ($request->wantsJson()) {
             return response()->json([
                 'tasks' => $tasksResource,
@@ -50,11 +48,9 @@ class PlannerController extends Controller
             ]);
         }
 
-        // 💻 JIKA WEB / INERTIA (Buka bungkusnya pakai ->resolve())
-        // ✅ INI PERBAIKANNYA:
         return Inertia::render('Planner/Index', [
-            'tasks' => $tasksResource->resolve(),     // Mengubah {data:[...]} kembali jadi [...]
-            'dailyLog' => $logResource->resolve(),    // Mengubah {data:{...}} kembali jadi {...}
+            'tasks' => $tasksResource->resolve(),
+            'dailyLog' => $logResource->resolve(),
         ]);
     }
 
@@ -83,10 +79,7 @@ class PlannerController extends Controller
      */
     public function update(UpdateTaskRequest $request, PlannerTask $plannerTask)
     {
-        // Pastikan task milik user (Security Check)
-        if ($plannerTask->user_id !== Auth::id()) {
-            abort(403, 'Unauthorized action.');
-        }
+        if ($plannerTask->user_id !== Auth::id()) abort(403);
 
         $plannerTask->update($request->validated());
 
@@ -105,9 +98,7 @@ class PlannerController extends Controller
      */
     public function toggle(PlannerTask $plannerTask)
     {
-        if ($plannerTask->user_id !== Auth::id()) {
-            abort(403);
-        }
+        if ($plannerTask->user_id !== Auth::id()) abort(403);
 
         $plannerTask->update([
             'is_completed' => ! $plannerTask->is_completed,
@@ -124,16 +115,14 @@ class PlannerController extends Controller
     }
 
     /**
-     * Save Notes / Meals
+     * Simpan Task Massal (Super Fast Bulk Insert)
      */
-
     public function batchStore(StoreBatchTaskRequest $request)
     {
-        $userId = auth()->id();
+        $userId = Auth::id();
         $tasksData = [];
         $now = now();
 
-        // Mapping data biar siap insert sekali jalan (Bulk Insert Query)
         foreach ($request->validated()['tasks'] as $task) {
             $tasksData[] = [
                 'user_id'      => $userId,
@@ -148,21 +137,24 @@ class PlannerController extends Controller
             ];
         }
 
-        // Insert sekaligus (Lebih cepat daripada loop create satu-satu)
-        PlannerTask::insert($tasksData);
+        // Bungkus dengan Transaction agar DB mengeksekusi Bulk Insert dalam 1 nafas
+        DB::transaction(function () use ($tasksData) {
+            PlannerTask::insert($tasksData);
+        });
 
         return back()->with('success', count($tasksData) . ' activities added successfully!');
     }
 
+    /**
+     * Update Notes / Meals
+     */
     public function updateLog(UpdateLogRequest $request)
     {
-        // Gunakan updateOrCreate untuk keamanan ekstra (jika user baru via API)
         $log = DailyLog::firstOrCreate(
             ['user_id' => Auth::id()],
-            ['meals' => [], 'notes' => '']
+            ['meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], 'notes' => '']
         );
 
-        // Update hanya field yang dikirim
         $log->update($request->validated());
 
         if ($request->wantsJson()) {
@@ -176,13 +168,11 @@ class PlannerController extends Controller
     }
 
     /**
-     * Hapus Task
+     * Hapus Task Tunggal
      */
     public function destroy(PlannerTask $plannerTask)
     {
-        if ($plannerTask->user_id !== Auth::id()) {
-            abort(403);
-        }
+        if ($plannerTask->user_id !== Auth::id()) abort(403);
 
         $plannerTask->delete();
 
@@ -194,16 +184,21 @@ class PlannerController extends Controller
     }
 
     /**
-     * Reset Board (Hapus Task + Bersihkan Notes/Meals)
+     * Reset Board (Nuke the whiteboard!)
      */
     public function resetBoard()
     {
-        PlannerTask::where('user_id', Auth::id())->delete();
+        $userId = Auth::id();
 
-        DailyLog::where('user_id', Auth::id())->update([
-            'notes' => '',
-            'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''],
-        ]);
+        // Eksekusi pembersihan serentak di level DB (Jauh lebih cepat dari looping)
+        DB::transaction(function () use ($userId) {
+            PlannerTask::where('user_id', $userId)->delete();
+
+            DailyLog::where('user_id', $userId)->update([
+                'notes' => '',
+                'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''],
+            ]);
+        });
 
         if (request()->wantsJson()) {
             return response()->json(['message' => 'Board reset successful']);

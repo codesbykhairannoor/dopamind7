@@ -29,11 +29,15 @@ class HabitController extends Controller
         $monthQuery = $request->input('month', Carbon::now()->format('Y-m'));
         $dateObj = Carbon::createFromFormat('Y-m', $monthQuery);
 
+        // 🔥 OPTIMASI: Pakai whereBetween untuk performa Database (Index Friendly)
+        $startOfMonth = $dateObj->copy()->startOfMonth()->format('Y-m-d');
+        $endOfMonth = $dateObj->copy()->endOfMonth()->format('Y-m-d');
+
         // --- QUERY DATABASE ---
         $habits = Habit::where('user_id', $user->id)
             ->where('period', $monthQuery)
-            // Eager load logs hanya bulan yang diminta
-            ->with(['logs' => fn ($q) => $q->whereMonth('date', $dateObj->month)->whereYear('date', $dateObj->year)])
+            // Eager load logs hanya bulan yang diminta menggunakan whereBetween
+            ->with(['logs' => fn ($q) => $q->whereBetween('date', [$startOfMonth, $endOfMonth])])
             ->withCount(['logs as completed_count' => fn ($q) => $q->where('status', 'completed')])
             ->get();
 
@@ -168,18 +172,29 @@ class HabitController extends Controller
             ->where('period', $request->prev_period)
             ->get();
 
-        $count = 0;
+        $newHabits = [];
+        $now = Carbon::now();
+
+        // 🔥 OPTIMASI: Siapkan data ke dalam array
         foreach ($oldHabits as $old) {
-            Habit::create([
+            $newHabits[] = [
                 'user_id' => Auth::id(),
                 'period' => $request->current_period,
                 'name' => $old->name,
                 'icon' => $old->icon,
                 'color' => $old->color,
                 'monthly_target' => $old->monthly_target,
-            ]);
-            $count++;
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
         }
+
+        // 🔥 OPTIMASI: Bulk Insert dalam 1 Query (Menghindari N+1 Insert Issue)
+        if (!empty($newHabits)) {
+            Habit::insert($newHabits);
+        }
+
+        $count = count($newHabits);
 
         if ($request->wantsJson()) {
             return response()->json(['message' => "$count habits copied successfully"]);

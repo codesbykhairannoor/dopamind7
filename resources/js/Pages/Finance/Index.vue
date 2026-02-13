@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch, reactive } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
@@ -14,7 +14,6 @@ import CategoryModal from './CategoryModal.vue';
 import DailyTrendChart from './DailyTrendChart.vue'; 
 import ArchiveModal from './ArchiveModal.vue'; 
 import FinanceInsights from './FinanceInsights.vue'; 
-// import FinanceDatePicker from './FinanceDatePicker.vue'; // Jika belum dipakai bisa dikomen dulu
 
 // Composables
 import { useFinanceCalendar } from '@/Composables/Finance/useFinanceCalendar'; 
@@ -23,14 +22,24 @@ import { useFinanceHistory } from '@/Composables/Finance/useFinanceHistory';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat'; 
 
 const props = defineProps({
-    transactions: Array, 
-    budgets: Array, 
-    stats: Object,
-    filters: Object,
-    categories: Array, 
+    transactions: Array, budgets: Array, stats: Object, filters: Object, categories: Array, 
 });
 
-// --- Logic Lama (Calendar & Forms) ---
+// 🔥 MAGIC OPTIMISTIC UI: Buat State Lokal (Memori Layar)
+const localTransactions = ref([...props.transactions]);
+const localBudgets = ref([...props.budgets]);
+
+// Sinkronkan otomatis saat server memberi update data asli 
+watch(() => props.transactions, (newVal) => localTransactions.value = [...newVal], { deep: true });
+watch(() => props.budgets, (newVal) => localBudgets.value = [...newVal], { deep: true });
+
+// Bungkus props menjadi reactive agar History List membaca data instan
+const historyProps = reactive({
+    ...props,
+    get transactions() { return localTransactions.value; },
+    get budgets() { return localBudgets.value; }
+});
+
 const { formattedMonth, changeMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
 
 const { 
@@ -43,19 +52,14 @@ const {
 const showTransactionModal = ref(false);
 const showBudgetModal = ref(false); 
 const showCategoryModal = ref(false);
-
-// --- Logic Baru (History & Format) ---
-const { visibleStats, filterDate, isArchiveOpen, selectedDayData, openDetail } = useFinanceHistory(props);
-const { formatMoney } = useFinanceFormat();
-
-// State buat kontrol Popover Kalender
 const showFilterPicker = ref(false);
 
+// Oper magic prop ke Composables History
+const { visibleStats, filterDate, isArchiveOpen, selectedDayData, openDetail } = useFinanceHistory(historyProps);
+const { formatMoney } = useFinanceFormat();
+
 // --- Handlers ---
-const handleEdit = (trx) => {
-    setEditTransaction(trx);
-    showTransactionModal.value = true;
-};
+const handleEdit = (trx) => { setEditTransaction(trx); showTransactionModal.value = true; };
 
 const handleEditBudget = (budget) => {
     const catDetail = props.categories.find(c => c.slug === budget.category);
@@ -68,25 +72,61 @@ const handleEditBudget = (budget) => {
     showBudgetModal.value = true;
 };
 
-const handleEditCategory = (cat) => {
-    categoryForm.id = cat.id; 
-    setEditCategory(cat);
-    showCategoryModal.value = true;
-};
+const handleEditCategory = (cat) => { categoryForm.id = cat.id; setEditCategory(cat); showCategoryModal.value = true; };
+const handleAddCategory = () => { categoryForm.reset(); categoryForm.id = null; showCategoryModal.value = true; };
+const handleDeleteCategory = (cat) => { deleteCategory(cat.id); showCategoryModal.value = false; };
 
-const handleAddCategory = () => {
-    categoryForm.reset();
-    categoryForm.id = null;
-    showCategoryModal.value = true;
-};
-
-const handleDeleteCategory = (cat) => {
-    deleteCategory(cat.id);
-    showCategoryModal.value = false; 
-};
-
+// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK TRANSAKSI
 const submitNewTransaction = () => {
-    submitTransaction(() => { showTransactionModal.value = false; });
+    showTransactionModal.value = false; // Langsung tutup 0ms
+    submitTransaction({
+        onOptimistic: (data, isEditing) => {
+            if (isEditing) {
+                const idx = localTransactions.value.findIndex(t => t.id === data.id);
+                if (idx !== -1) localTransactions.value[idx] = { ...localTransactions.value[idx], ...data };
+            } else {
+                localTransactions.value.unshift(data); // Dorong langsung ke list
+            }
+        },
+        onError: (id, isEditing) => {
+            if (!isEditing) localTransactions.value = localTransactions.value.filter(t => t.id !== id);
+            showTransactionModal.value = true; // Munculin modal kalau error
+        }
+    });
+};
+
+const triggerDeleteTransaction = (id) => {
+    isArchiveOpen.value = false; // Instan close modal archive
+    deleteTransaction(id, {
+        onOptimistic: (targetId) => {
+            localTransactions.value = localTransactions.value.filter(t => t.id !== targetId);
+        }
+    });
+};
+
+// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK BUDGET
+const submitNewBudget = () => {
+    showBudgetModal.value = false; // Langsung tutup 0ms
+    submitBudget(currentMonthKey.value, {
+        onOptimistic: (data, isEditing) => {
+            if (isEditing) {
+                const idx = localBudgets.value.findIndex(b => b.id === data.id);
+                if (idx !== -1) localBudgets.value[idx] = { ...localBudgets.value[idx], ...data };
+            } else {
+                localBudgets.value.push(data);
+            }
+        },
+        onError: (id, isEditing) => {
+            if (!isEditing) localBudgets.value = localBudgets.value.filter(b => b.id !== id);
+            showBudgetModal.value = true;
+        }
+    });
+};
+
+const triggerDeleteBudget = (id) => {
+    deleteBudget(id, {
+        onOptimistic: (targetId) => { localBudgets.value = localBudgets.value.filter(b => b.id !== targetId); }
+    });
 };
 </script>
 
@@ -167,7 +207,7 @@ const submitNewTransaction = () => {
                             </div>
                         </div>
 
-                        <div v-if="transactions.length === 0" class="text-center py-12 bg-white rounded-3xl border border-dashed border-slate-200">
+                        <div v-if="localTransactions.length === 0" class="text-center py-12 bg-white rounded-3xl border border-dashed border-slate-200">
                             <div class="text-3xl mb-2">📒</div>
                             <p class="text-slate-400 text-sm font-medium">{{ $t('no_transaction') }}</p>
                         </div>
@@ -216,22 +256,22 @@ const submitNewTransaction = () => {
                             :dayData="selectedDayData" 
                             :categories="categories"
                             :close="() => isArchiveOpen = false"
-                            :onDelete="deleteTransaction"
+                            :onDelete="triggerDeleteTransaction"
                             :onEdit="handleEdit" 
                         />
                     </div>
 
-                    <DailyTrendChart v-if="transactions.length" :transactions="transactions" :currentDate="filters.date" />
+                    <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" />
                 </div>
 
                 <div class="lg:col-span-2 w-full md:sticky md:top-24 h-fit space-y-6"> 
                     <BudgetSidebar 
-                        :budgets="budgets" 
+                        :budgets="localBudgets" 
                         :categories="categories" 
                         :expenseStats="stats.expense_by_category"
                         :incomeStats="stats.income_by_category"
                         @add="() => { budgetForm.reset(); budgetForm.id = null; showBudgetModal = true; }"
-                        @delete-budget="deleteBudget"
+                        @delete-budget="triggerDeleteBudget"
                         @edit-budget="handleEditBudget"
                         @add-category="handleAddCategory"
                         @edit-category="handleEditCategory"
@@ -241,7 +281,7 @@ const submitNewTransaction = () => {
                     <FinanceInsights 
                         :expense-stats="stats.expense_by_category" 
                         :income-stats="stats.income_by_category" 
-                        :budgets="budgets" 
+                        :budgets="localBudgets" 
                     />
                 </div>
 
@@ -250,7 +290,7 @@ const submitNewTransaction = () => {
             <TransactionModal 
                 :show="showTransactionModal" 
                 :form="transactionForm" 
-                :budgets="budgets" 
+                :budgets="localBudgets" 
                 :categories="categories"
                 :close="() => showTransactionModal = false" 
                 :submit="submitNewTransaction" 
@@ -261,7 +301,7 @@ const submitNewTransaction = () => {
                 :form="budgetForm" 
                 :categories="categories"
                 :close="() => showBudgetModal = false"
-                :submit="() => submitBudget(currentMonthKey, () => { showBudgetModal = false })"
+                :submit="submitNewBudget"
             />
 
             <CategoryModal

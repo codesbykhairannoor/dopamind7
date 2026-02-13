@@ -2,7 +2,6 @@ import { useForm, router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
-// 1. Import trans agar bahasa berubah instan tanpa refresh
 import { trans } from 'laravel-vue-i18n'; 
 
 export function useFinanceForm() {
@@ -11,11 +10,10 @@ export function useFinanceForm() {
     // --- 1. HELPER TRANSLASI REAKTIF ---
     const t = (key, fallback) => {
         const result = trans(key);
-        // Jika hasil sama dengan key, berarti translasi tidak ditemukan, pakai fallback
         return result !== key ? result : fallback;
     };
 
-    // --- 2. CONFIG: TOAST NOTIFIKASI (SOLID INDIGO) ---
+    // --- 2. CONFIG: TOAST NOTIFIKASI ---
     const fireToast = (icon, message) => {
         Swal.fire({
             toast: true,
@@ -35,7 +33,7 @@ export function useFinanceForm() {
         });
     };
 
-    // --- 3. CONFIG: ALERT KONFIRMASI (STYLE DOPAMIND) ---
+    // --- 3. CONFIG: ALERT KONFIRMASI ---
     const swalTheme = {
         customClass: {
             popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
@@ -64,18 +62,12 @@ export function useFinanceForm() {
     };
 
     // ==========================================
-    // 4. LOGIC DATA (CRUD)
+    // 4. LOGIC DATA (CRUD - SILENT & INSTANT!)
     // ==========================================
     
     // --- TRANSAKSI ---
     const transactionForm = useForm({
-        id: null, 
-        title: '', 
-        amount: '', 
-        type: 'expense', 
-        category: '', 
-        date: dayjs().format('YYYY-MM-DD'), 
-        notes: ''
+        id: null, title: '', amount: '', type: 'expense', category: '', date: dayjs().format('YYYY-MM-DD'), notes: ''
     });
 
     const setEditTransaction = (trx) => {
@@ -88,46 +80,57 @@ export function useFinanceForm() {
         transactionForm.notes = trx.notes ?? '';
     };
 
-    const submitTransaction = (onSuccessCallback) => {
-        // 🔥 VALIDASI: WAJIB TITLE
-        if (!transactionForm.title || transactionForm.title.trim() === '') {
-            return fireToast('warning', t('warn_empty_title', 'Title is required!'));
+    const submitTransaction = ({ onOptimistic, onSuccess, onError }) => {
+        if (!transactionForm.title || transactionForm.title.trim() === '') return fireToast('warning', t('warn_empty_title', 'Title is required!'));
+        if (!transactionForm.amount || cleanAmount(transactionForm.amount) <= 0) return fireToast('warning', t('warn_empty_amount', 'Amount required!'));
+        if (!transactionForm.category) return fireToast('warning', t('warn_empty_category', 'Please select a category!'));
+
+        const payload = { ...transactionForm.data() };
+        const isEditing = !!payload.id;
+        const tempId = isEditing ? payload.id : 'temp_' + Date.now();
+        const url = isEditing ? route('finance.transaction.update', payload.id) : route('finance.transaction.store');
+        const method = isEditing ? 'patch' : 'post';
+
+        // 🔥 OPTIMISTIC UPDATE: Update UI Instan 0ms!
+        if (onOptimistic) {
+            onOptimistic({ ...payload, id: tempId, amount: cleanAmount(payload.amount), created_at: new Date().toISOString() }, isEditing);
         }
 
-        if (!transactionForm.amount || cleanAmount(transactionForm.amount) <= 0) {
-            return fireToast('warning', t('warn_empty_amount', 'Amount required!'));
-        }
-
-        if (!transactionForm.category) {
-            return fireToast('warning', t('warn_empty_category', 'Please select a category!'));
-        }
-
-        if(onSuccessCallback) onSuccessCallback();
-
-        const url = transactionForm.id ? route('finance.transaction.update', transactionForm.id) : route('finance.transaction.store');
-        const method = transactionForm.id ? 'patch' : 'post';
-
-        transactionForm.transform((data) => ({
-            ...data,
-            amount: cleanAmount(data.amount),
-        }))[method](url, {
+        transactionForm.transform((data) => ({ ...data, amount: cleanAmount(data.amount) }))[method](url, {
             preserveScroll: true,
+            preserveState: true,
+            showProgress: false,
             onSuccess: () => {
                 transactionForm.reset();
                 transactionForm.date = dayjs().format('YYYY-MM-DD');
+                if (onSuccess) onSuccess();
                 fireToast('success', t('success_saved', 'Saved successfully!'));
             },
-            onError: (err) => fireToast('error', Object.values(err)[0])
+            onError: (err) => {
+                if (onError) onError(tempId, isEditing); // 🔥 Rollback kalau server gagal
+                fireToast('error', Object.values(err)[0]);
+            }
         });
     };
 
-    const deleteTransaction = (id, onSuccessCallback) => {
+    const deleteTransaction = (id, { onOptimistic, onSuccess, onError }) => {
         confirmDelete('delete_trx_title', 'Delete Transaction?').then((res) => {
             if (res.isConfirmed) {
-                if (onSuccessCallback) onSuccessCallback(); 
+                // 🔥 OPTIMISTIC UPDATE: Hapus Instan 0ms!
+                if (onOptimistic) onOptimistic(id);
+
                 router.delete(route('finance.transaction.destroy', id), {
                     preserveScroll: true,
-                    onSuccess: () => fireToast('success', t('success_deleted', 'Deleted!'))
+                    preserveState: true,
+                    showProgress: false,
+                    onSuccess: () => {
+                        if (onSuccess) onSuccess();
+                        fireToast('success', t('success_deleted', 'Deleted!'));
+                    },
+                    onError: () => {
+                        if (onError) onError(id); // 🔥 Rollback
+                        fireToast('error', 'Failed to delete data');
+                    }
                 });
             }
         });
@@ -136,67 +139,67 @@ export function useFinanceForm() {
     // --- BUDGET ---
     const budgetForm = useForm({ id: null, category: '', name: '', icon: '💸', limit_amount: '', month: '' });
 
-    const submitBudget = (monthKey, onSuccessCallback) => {
+    const submitBudget = (monthKey, { onOptimistic, onSuccess, onError }) => {
         budgetForm.month = monthKey;
         if (!budgetForm.name) return fireToast('warning', t('warn_empty_budget_name', 'Enter budget name!'));
-        
         const cleanVal = cleanAmount(budgetForm.limit_amount);
         if (!cleanVal || cleanVal <= 0) return fireToast('warning', t('warn_empty_amount', 'Valid amount required!'));
 
-        if (!budgetForm.category && budgetForm.name) {
-            budgetForm.category = budgetForm.name.toLowerCase().replace(/\s+/g, '_');
+        if (!budgetForm.category && budgetForm.name) budgetForm.category = budgetForm.name.toLowerCase().replace(/\s+/g, '_');
+
+        const payload = { ...budgetForm.data() };
+        const isEditing = !!payload.id;
+        const tempId = isEditing ? payload.id : 'temp_' + Date.now();
+        const url = isEditing ? route('finance.budget.update', payload.id) : route('finance.budget.store');
+        const method = isEditing ? 'put' : 'post';
+
+        // 🔥 OPTIMISTIC UPDATE Instan
+        if (onOptimistic) {
+            onOptimistic({ ...payload, id: tempId, limit_amount: cleanVal }, isEditing);
         }
 
-        if(onSuccessCallback) onSuccessCallback();
-
-        const url = budgetForm.id ? route('finance.budget.update', budgetForm.id) : route('finance.budget.store');
-        const method = budgetForm.id ? 'put' : 'post';
-
-        budgetForm.transform((data) => ({
-            ...data,
-            limit_amount: cleanAmount(data.limit_amount),
-        }))[method](url, {
-            preserveScroll: true,
+      budgetForm.transform((data) => ({ ...data, limit_amount: cleanAmount(data.limit_amount) }))[method](url, {
+            preserveScroll: true, preserveState: true, showProgress: false,
             onSuccess: () => {
                 budgetForm.reset();
+                if (onSuccess) onSuccess();
                 fireToast('success', t('success_saved', 'Budget updated!'));
             },
-            onError: (err) => fireToast('error', Object.values(err)[0])
+            onError: (err) => {
+                if (onError) onError(tempId, isEditing);
+                fireToast('error', Object.values(err)[0]);
+            }
         });
     };
 
-    const deleteBudget = (id) => {
+    const deleteBudget = (id, { onOptimistic, onSuccess, onError }) => {
         confirmDelete('delete_budget_title', 'Delete Budget?').then((res) => {
             if (res.isConfirmed) {
+                if (onOptimistic) onOptimistic(id);
                 router.delete(route('finance.budget.destroy', id), {
-                    preserveScroll: true,
-                    onSuccess: () => fireToast('success', t('success_deleted', 'Budget removed!'))
+                    preserveScroll: true, preserveState: true, showProgress: false,
+                    onSuccess: () => {
+                        if (onSuccess) onSuccess();
+                        fireToast('success', t('success_deleted', 'Budget removed!'));
+                    },
+                    onError: () => {
+                        if (onError) onError(id);
+                    }
                 });
             }
         });
     };
 
-    // --- KATEGORI ---
+    // --- KATEGORI (Tetap Pessimistic karena jarang dilakukan) ---
     const categoryForm = useForm({ name: '', icon: '💰', type: 'income' });
-
-    const setEditCategory = (cat) => {
-        categoryForm.name = cat.name;
-        categoryForm.icon = cat.icon;
-    };
-
+    const setEditCategory = (cat) => { categoryForm.name = cat.name; categoryForm.icon = cat.icon; };
     const submitCategory = (categoryToEdit, onSuccessCallback) => {
         if (!categoryForm.name) return fireToast('warning', t('warn_empty_category_name', 'Name required!'));
-        if (onSuccessCallback) onSuccessCallback();
-
         const url = categoryToEdit ? route('finance.categories.update', categoryToEdit.id) : route('finance.categories.store');
         const method = categoryToEdit ? 'put' : 'post';
-
         categoryForm[method](url, {
-            preserveScroll: true,
-            onSuccess: () => { 
-                categoryForm.reset(); 
-                fireToast('success', t('success_saved', 'Category saved!'));
-            },
+            preserveScroll: true, preserveState: true, showProgress: false,
+            onSuccess: () => { categoryForm.reset(); if (onSuccessCallback) onSuccessCallback(); fireToast('success', t('success_saved', 'Category saved!')); },
             onError: (err) => fireToast('error', Object.values(err)[0])
         });
     };
@@ -204,17 +207,16 @@ export function useFinanceForm() {
     const deleteCategory = (id, onSuccessCallback) => {
         confirmDelete('confirm_delete_title', 'Are you sure?').then((res) => {
             if (res.isConfirmed) {
-                if (onSuccessCallback) onSuccessCallback();
                 router.delete(route('finance.categories.destroy', id), {
-                    preserveScroll: true,
-                    onSuccess: () => fireToast('success', t('success_deleted', 'Deleted!'))
+                    preserveScroll: true, preserveState: true, showProgress: false,
+                    onSuccess: () => { if (onSuccessCallback) onSuccessCallback(); fireToast('success', t('success_deleted', 'Deleted!')); }
                 });
             }
         });
     };
 
     const updateIncomeTarget = (month, amount) => {
-        router.post(route('finance.income-target.update'), { month, amount }, { preserveScroll: true });
+        router.post(route('finance.income-target.update'), { month, amount }, { preserveScroll: true, preserveState: true, showProgress: false });
     };
 
     return {

@@ -23,43 +23,44 @@ class FinanceController extends Controller
         $user = Auth::user();
         $date = $request->input('date', now()->format('Y-m-d'));
         $carbonDate = Carbon::parse($date);
+        
+        // 🔥 OPTIMASI 1: Siapkan tanggal awal dan akhir bulan untuk whereBetween
+        $startOfMonth = $carbonDate->copy()->startOfMonth()->format('Y-m-d');
+        $endOfMonth = $carbonDate->copy()->endOfMonth()->format('Y-m-d');
 
-        // 1. Ambil Semua Kategori (Untuk Dropdown & List Income)
+        // 1. Ambil Semua Kategori
         $categories = FinanceCategory::where('user_id', $user->id)->get();
 
-        // 2. Transaksi
+        // 2. Transaksi (Tarik dari DB CUKUP 1 KALI SAJA pakai whereBetween)
         $transactions = FinanceTransaction::where('user_id', $user->id)
-            ->whereMonth('date', $carbonDate->month)
-            ->whereYear('date', $carbonDate->year)
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
             ->orderBy('date', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        // 3. Statistik (SQL Aggregate)
-        $statsRaw = FinanceTransaction::where('user_id', $user->id)
-            ->whereMonth('date', $carbonDate->month)
-            ->whereYear('date', $carbonDate->year)
-            ->select('type', 'category', DB::raw('sum(amount) as total'))
-            ->groupBy('type', 'category')
-            ->get();
+        // 🔥 OPTIMASI 2: Hitung Statistik langsung dari Memory (Collection), JANGAN query DB lagi!
+        $incomeCollection = $transactions->where('type', 'income');
+        $expenseCollection = $transactions->where('type', 'expense');
 
-        $expenseStats = $statsRaw->where('type', 'expense')->pluck('total', 'category');
-        $incomeStats = $statsRaw->where('type', 'income')->pluck('total', 'category');
+        $totalIncome = $incomeCollection->sum('amount');
+        $totalExpense = $expenseCollection->sum('amount');
 
-        $totalIncome = $statsRaw->where('type', 'income')->sum('total');
-        $totalExpense = $statsRaw->where('type', 'expense')->sum('total');
+        // Kelompokkan pengeluaran dan pemasukan berdasarkan kategori
+        $expenseStats = $expenseCollection->groupBy('category')->map->sum('amount');
+        $incomeStats = $incomeCollection->groupBy('category')->map->sum('amount');
 
-        // 4. Budget
+        // 3. Budget
         $budgets = FinanceBudget::where('user_id', $user->id)
             ->where('month', $carbonDate->format('Y-m'))
             ->get()
             ->map(function ($budget) use ($expenseStats) {
+                // Ambil nilai pengeluaran dari hasil kalkulasi Collection di atas
                 $budget->spent = $expenseStats[$budget->category] ?? 0;
                 return $budget;
             });
 
-        // 5. Daily Log (Income Target)
-        $log = DailyLog::where('user_id', $user->id)->whereDate('date', $carbonDate->startOfMonth())->first();
+        // 4. Daily Log (Income Target)
+        $log = DailyLog::where('user_id', $user->id)->whereDate('date', $startOfMonth)->first();
         $incomeTarget = $log ? (float) $log->income_target : 0;
         $balance = ($incomeTarget + $totalIncome) - $totalExpense;
 
@@ -126,16 +127,12 @@ class FinanceController extends Controller
     public function destroyCategory(FinanceCategory $category)
     {
         if ($category->user_id !== Auth::id()) abort(403);
-
-        // 🔥 UPDATE: Langsung hapus tanpa cek transaksi!
-        // Kategori hilang dari pilihan dropdown/sidebar,
-        // tapi history transaksi dengan kategori ini TETAP ADA 
-        // (karena di tabel transaksi yang disimpan adalah slug/text-nya, bukan ID relasi).
         
         $category->delete();
         
         return back();
     }
+
     // --- TRANSAKSI ---
 
     public function storeTransaction(Request $request)
@@ -192,8 +189,6 @@ class FinanceController extends Controller
             $exists = FinanceCategory::where('user_id', Auth::id())
                 ->where('slug', $request->category)->exists();
 
-            // Jika kategori belum ada di master, buat baru.
-            // Jika sudah ada, update namanya (jaga-jaga user ganti nama pas create).
             if (!$exists && $request->has('name')) {
                 FinanceCategory::create([
                     'user_id' => Auth::id(),
@@ -229,30 +224,24 @@ class FinanceController extends Controller
         DB::transaction(function () use ($request, $financeBudget) {
             
             // 1. CEK PERUBAHAN NAMA KATEGORI
-            // Ambil master category berdasarkan slug lama di budget
             $oldSlug = $financeBudget->category;
             $masterCategory = FinanceCategory::where('user_id', Auth::id())->where('slug', $oldSlug)->first();
 
-            // Jika user mengirim nama baru dan berbeda dengan database
             if ($masterCategory && $request->has('name') && ($request->name !== $masterCategory->name || $request->icon !== $masterCategory->icon)) {
                 
                 $newSlug = Str::slug($request->name, '_');
 
-                // Update Master Category
                 $masterCategory->update([
                     'name' => $request->name,
-                    'slug' => $newSlug, // Slug berubah jadi jajan_1
+                    'slug' => $newSlug,
                     'icon' => $request->icon
                 ]);
 
-                // Update Foreign Key di Budget & Transaksi
                 if ($oldSlug !== $newSlug) {
-                    // Update Budget ini (dan budget bulan lain yang pakai kategori sama)
                     FinanceBudget::where('user_id', Auth::id())
                         ->where('category', $oldSlug)
                         ->update(['category' => $newSlug]);
                     
-                    // Update History Transaksi (Jajan -> Jajan1)
                     FinanceTransaction::where('user_id', Auth::id())
                         ->where('category', $oldSlug)
                         ->update(['category' => $newSlug]);
@@ -260,7 +249,6 @@ class FinanceController extends Controller
             }
 
             // 2. Update Limit Budget
-            // Kita refresh model budget karena slug-nya mungkin barusan diupdate query di atas
             $financeBudget->refresh(); 
             $financeBudget->update(['limit_amount' => $request->limit_amount]);
         });
@@ -271,12 +259,7 @@ class FinanceController extends Controller
     public function destroyBudget(FinanceBudget $financeBudget)
     {
         if ($financeBudget->user_id !== Auth::id()) abort(403);
-
-        // Hapus target budget-nya saja.
-        // History transaksi TETAP ADA.
-        // Kategori Master (FinanceCategory) TETAP ADA (supaya nama/icon di history transaksi tidak error).
         $financeBudget->delete();
-
         return back();
     }
 
