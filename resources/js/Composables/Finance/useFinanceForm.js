@@ -99,7 +99,7 @@ export function useFinanceForm() {
         transactionForm.transform((data) => ({ ...data, amount: cleanAmount(data.amount) }))[method](url, {
             preserveScroll: true,
             preserveState: true,
-            showProgress: false,
+            progress: false, // ✅ INI YANG BENER
             onSuccess: () => {
                 transactionForm.reset();
                 transactionForm.date = dayjs().format('YYYY-MM-DD');
@@ -122,7 +122,7 @@ export function useFinanceForm() {
                 router.delete(route('finance.transaction.destroy', id), {
                     preserveScroll: true,
                     preserveState: true,
-                    showProgress: false,
+                    progress: false, // ✅ INI YANG BENER
                     onSuccess: () => {
                         if (onSuccess) onSuccess();
                         fireToast('success', t('success_deleted', 'Deleted!'));
@@ -159,7 +159,9 @@ export function useFinanceForm() {
         }
 
       budgetForm.transform((data) => ({ ...data, limit_amount: cleanAmount(data.limit_amount) }))[method](url, {
-            preserveScroll: true, preserveState: true, showProgress: false,
+            preserveScroll: true, 
+            preserveState: true, 
+            progress: false, // ✅ INI YANG BENER
             onSuccess: () => {
                 budgetForm.reset();
                 if (onSuccess) onSuccess();
@@ -177,7 +179,9 @@ export function useFinanceForm() {
             if (res.isConfirmed) {
                 if (onOptimistic) onOptimistic(id);
                 router.delete(route('finance.budget.destroy', id), {
-                    preserveScroll: true, preserveState: true, showProgress: false,
+                    preserveScroll: true, 
+                    preserveState: true, 
+                    progress: false, // ✅ INI YANG BENER
                     onSuccess: () => {
                         if (onSuccess) onSuccess();
                         fireToast('success', t('success_deleted', 'Budget removed!'));
@@ -198,7 +202,9 @@ export function useFinanceForm() {
         const url = categoryToEdit ? route('finance.categories.update', categoryToEdit.id) : route('finance.categories.store');
         const method = categoryToEdit ? 'put' : 'post';
         categoryForm[method](url, {
-            preserveScroll: true, preserveState: true, showProgress: false,
+            preserveScroll: true, 
+            preserveState: true, 
+            progress: false, // ✅ INI YANG BENER
             onSuccess: () => { categoryForm.reset(); if (onSuccessCallback) onSuccessCallback(); fireToast('success', t('success_saved', 'Category saved!')); },
             onError: (err) => fireToast('error', Object.values(err)[0])
         });
@@ -208,7 +214,9 @@ export function useFinanceForm() {
         confirmDelete('confirm_delete_title', 'Are you sure?').then((res) => {
             if (res.isConfirmed) {
                 router.delete(route('finance.categories.destroy', id), {
-                    preserveScroll: true, preserveState: true, showProgress: false,
+                    preserveScroll: true, 
+                    preserveState: true, 
+                    progress: false, // ✅ INI YANG BENER
                     onSuccess: () => { if (onSuccessCallback) onSuccessCallback(); fireToast('success', t('success_deleted', 'Deleted!')); }
                 });
             }
@@ -216,7 +224,11 @@ export function useFinanceForm() {
     };
 
     const updateIncomeTarget = (month, amount) => {
-        router.post(route('finance.income-target.update'), { month, amount }, { preserveScroll: true, preserveState: true, showProgress: false });
+        router.post(route('finance.income-target.update'), { month, amount }, { 
+            preserveScroll: true, 
+            preserveState: true, 
+            progress: false // ✅ INI YANG BENER
+        });
     };
 
     return {

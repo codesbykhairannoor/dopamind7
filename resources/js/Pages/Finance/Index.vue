@@ -77,13 +77,15 @@ const handleAddCategory = () => { categoryForm.reset(); categoryForm.id = null; 
 const handleDeleteCategory = (cat) => { deleteCategory(cat.id); showCategoryModal.value = false; };
 
 // 🔥 EKSEKUSI OPTIMISTIC UI UNTUK TRANSAKSI
+// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK TRANSAKSI (STYLE HABIT)
 const submitNewTransaction = () => {
     showTransactionModal.value = false; // Langsung tutup 0ms
     submitTransaction({
         onOptimistic: (data, isEditing) => {
             if (isEditing) {
+                // PAKAI TRIK OBJECT.ASSIGN BIKIN RENDER ULANG HANYA DI ELEMEN TERKAIT
                 const idx = localTransactions.value.findIndex(t => t.id === data.id);
-                if (idx !== -1) localTransactions.value[idx] = { ...localTransactions.value[idx], ...data };
+                if (idx !== -1) Object.assign(localTransactions.value[idx], data);
             } else {
                 localTransactions.value.unshift(data); // Dorong langsung ke list
             }
@@ -104,14 +106,15 @@ const triggerDeleteTransaction = (id) => {
     });
 };
 
-// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK BUDGET
+// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK BUDGET (STYLE HABIT)
 const submitNewBudget = () => {
     showBudgetModal.value = false; // Langsung tutup 0ms
     submitBudget(currentMonthKey.value, {
         onOptimistic: (data, isEditing) => {
             if (isEditing) {
+                // PAKAI TRIK OBJECT.ASSIGN BIKIN RENDER ULANG HANYA DI ELEMEN TERKAIT
                 const idx = localBudgets.value.findIndex(b => b.id === data.id);
-                if (idx !== -1) localBudgets.value[idx] = { ...localBudgets.value[idx], ...data };
+                if (idx !== -1) Object.assign(localBudgets.value[idx], data);
             } else {
                 localBudgets.value.push(data);
             }
@@ -127,6 +130,7 @@ const triggerDeleteBudget = (id) => {
     deleteBudget(id, {
         onOptimistic: (targetId) => { localBudgets.value = localBudgets.value.filter(b => b.id !== targetId); }
     });
+
 };
 </script>
 
