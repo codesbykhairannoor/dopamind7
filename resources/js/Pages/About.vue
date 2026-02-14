@@ -48,7 +48,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
                     <div class="absolute inset-0 bg-gradient-to-br from-red-100 to-orange-100 opacity-50"></div>
                     <div class="relative z-10 text-center transform rotate-3 transition hover:rotate-0 duration-500">
                         <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs mx-auto animate-pulse duration-[4000ms]">
-                            <div class="flex justify-between text-xs text-gray-400 mb-4 font-bold tracking-widest uppercase">My To-Do List</div>
+                            <div class="flex justify-between text-xs text-gray-500 mb-4 font-bold tracking-widest uppercase">My To-Do List</div>
                             <div class="space-y-3">
                                 <div class="h-3 bg-red-200 rounded w-full"></div>
                                 <div class="h-3 bg-red-200 rounded w-3/4"></div>

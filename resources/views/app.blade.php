@@ -3,13 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="description" content="OneForMind - Your ultimate personal development and productivity tracker.">
 
         <title inertia>{{ config('app.name', 'OneForMind') }}</title>
 
         <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2">
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
         <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet" />
 
         @routes
@@ -55,6 +57,7 @@
                 }, 'google_translate_element');
             }
         </script>
-        <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        
+        <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
     </body>
 </html>

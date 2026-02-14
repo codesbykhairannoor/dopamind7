@@ -155,7 +155,7 @@ const submitWaitlist = () => {
                         </div>
                         <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100 absolute bottom-20 right-10 transform rotate-3 w-56">
                             <div class="h-2 bg-gray-200 w-3/4 rounded mb-2"></div>
-                            <div class="text-xs text-gray-400">Task from 2024...</div>
+                            <div class="text-xs text-gray-500">Task from 2024...</div>
                         </div>
                     </div>
                 </div>
@@ -293,7 +293,7 @@ const submitWaitlist = () => {
                             ✅ {{ successMessage }}
                         </div>
 
-                        <p class="mt-4 text-xs text-gray-400 font-medium">
+                        <p class="mt-4 text-xs text-gray-500 font-medium">
                             {{ $t('waitlist_note') }}
                         </p>
                     </div>

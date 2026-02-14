@@ -27,6 +27,7 @@ defineProps({
 </script>
 
 <template>
+    <Teleport to="body">
     <div v-if="showDeleteModal" class="fixed inset-0 z-[60] flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="closeModal"></div>
         
@@ -124,4 +125,5 @@ defineProps({
             </form>
         </div>
     </div>
+    </Teleport>
 </template>

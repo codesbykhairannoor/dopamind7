@@ -104,7 +104,7 @@ watch(() => page.url, () => {
             <div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">
                 <Link :href="route('dashboard')" class="flex items-center gap-2">
                      <img 
-        src="/favicon.ico?v=2" 
+        src="/favicon.png?v=2" 
         alt="OneForMind Logo" 
         class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
     />

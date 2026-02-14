@@ -35,7 +35,7 @@ const isActive = (routeName) => route().current(routeName);
                 
                 <Link :href="route('home')" class="group text-2xl font-black text-indigo-600 tracking-tighter flex items-center gap-2 hover:opacity-80 transition z-20">
     <img 
-        src="/favicon.ico?v=2" 
+        src="/favicon.png?v=2" 
         alt="OneForMind Logo" 
         class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
     />
@@ -69,19 +69,21 @@ const isActive = (routeName) => route().current(routeName);
                     
                     <div class="flex items-center bg-gray-100 rounded-full p-1 border border-gray-200">
                         <button
-                            @click="switchLang('id')" prefetch
-                            class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
-                            :class="currentLang === 'id' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
-                        >
-                            ID 
-                        </button>
-                        <button
-                            @click="switchLang('en')" prefetch
-                            class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
-                            :class="currentLang === 'en' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
-                        >
-                            EN
-                        </button>
+    @click="switchLang('id')" prefetch
+    class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
+    :class="currentLang === 'id' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
+    aria-label="Switch language to Indonesian"
+>
+    ID 
+</button>
+<button
+    @click="switchLang('en')" prefetch
+    class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
+    :class="currentLang === 'en' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
+    aria-label="Switch language to English"
+>
+    EN
+</button>
                         
                     </div>
 
@@ -102,10 +104,15 @@ const isActive = (routeName) => route().current(routeName);
                     </div>
                 </div>
 
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition z-20">
-                    <svg v-if="!mobileMenuOpen" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    <svg v-else class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
+               <button 
+    @click="mobileMenuOpen = !mobileMenuOpen" 
+    class="md:hidden text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition z-20"
+    aria-label="Toggle mobile menu"
+    :aria-expanded="mobileMenuOpen"
+>
+    <svg v-if="!mobileMenuOpen" aria-hidden="true" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+    <svg v-else aria-hidden="true" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+</button>
             </div>
             
             <div v-show="mobileMenuOpen" class="md:hidden bg-white border-b border-gray-100 p-6 shadow-xl animate-in slide-in-from-top-5 duration-300">
