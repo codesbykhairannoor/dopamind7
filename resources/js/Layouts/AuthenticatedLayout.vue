@@ -24,8 +24,6 @@ const switchLang = (lang) => {
     });
 };
 
-const isActive = (routeName) => route().current(routeName);
-
 // Tutup menu otomatis saat pindah halaman
 watch(() => page.url, () => {
     showingNavigationDropdown.value = false;
@@ -46,28 +44,28 @@ watch(() => page.url, () => {
             <nav class="flex-1 px-6 space-y-2 overflow-y-auto py-6 custom-scrollbar">
                 <Link :href="route('dashboard')" 
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
-                    :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
+                    :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">🏠</span>
                     <span>{{ $t('nav_dashboard') }}</span>
                 </Link>
 
                 <Link v-if="showModule('habit')" :href="route('habits.index')" 
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
-                    :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
+                    :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">🌱</span>
                     <span>{{ $t('habit_page_title') }}</span>
                 </Link>
 
                 <Link v-if="showModule('planner')" :href="route('planner.index')" 
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
-                    :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
+                    :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">📅</span>
                     <span>Daily Planner</span>
                 </Link>
 
                 <Link v-if="showModule('finance')" :href="route('finance.index')" 
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
-                    :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
+                    :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">💸</span>
                     <span>Finance</span>
                 </Link>
@@ -104,10 +102,10 @@ watch(() => page.url, () => {
             <div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">
                 <Link :href="route('dashboard')" class="flex items-center gap-2">
                      <img 
-        src="/favicon.svg?v=2" 
-        alt="OneForMind Logo" 
-        class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
-    />
+                        src="/favicon.svg?v=2" 
+                        alt="OneForMind Logo" 
+                        class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
+                    />
                     <span class="font-black text-indigo-950 text-lg tracking-tight">OneForMind.</span>
                 </Link>
                 <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-slate-500 hover:text-indigo-600 transition p-2 rounded-lg hover:bg-slate-50">
@@ -128,35 +126,35 @@ watch(() => page.url, () => {
                     <div class="p-4 space-y-2 pb-24">
                         <Link :href="route('dashboard')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
-                            :class="isActive('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>🏠</span> {{ $t('nav_dashboard') }}
                         </Link>
 
                         <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
-                            :class="isActive('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>🌱</span> {{ $t('habit_page_title') }}
                         </Link>
 
                         <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
-                            :class="isActive('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>📅</span> Daily Planner
                         </Link>
 
                         <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
-                            :class="isActive('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>💸</span> Finance Management
                         </Link>
 
                         <Link :href="route('settings.index')" prefetch
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
-                            :class="isActive('settings.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            :class="route().current('settings.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>⚙️</span> {{ $t('nav_settings') }}
                         </Link>
