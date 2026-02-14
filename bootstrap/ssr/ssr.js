@@ -2,7 +2,7 @@ import { createSSRApp, h as h$1 } from "vue";
 import { renderToString } from "@vue/server-renderer";
 import { createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
-import { r as resolvePageComponent } from "./assets/vendor-koWuargk.js";
+import { r as resolvePageComponent } from "./assets/vendor-core-koWuargk.js";
 import { i18nVue } from "laravel-vue-i18n";
 const nav_home$2 = "Home";
 const nav_about$2 = "About Us";

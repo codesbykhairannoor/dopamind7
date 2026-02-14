@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
-import viteCompression from 'vite-plugin-compression'; // 🔥 1. Import plugin kompresinya
 
 export default defineConfig({
     plugins: [
@@ -18,21 +17,27 @@ export default defineConfig({
                 },
             },
         }),
-        // 🔥 2. Panggil pluginnya di sini biar Vite bikin file .gz otomatis
-        viteCompression({
-            algorithm: 'gzip',
-            ext: '.gz',
-        }),
     ],
-    // 🔥 3. THE MAGIC TRICK: Vendor Splitting
     build: {
+        // 🔥 STRATEGI BARU: Pecah Vendor jadi Spesifik
         rollupOptions: {
             output: {
                 manualChunks(id) {
-                    // Kalau kode itu berasal dari folder node_modules (Vue, Inertia, SweetAlert, dll)
                     if (id.includes('node_modules')) {
-                        // Pisahkan jadi file bernama 'vendor.js'
-                        return 'vendor'; 
+                        // Pisahkan Vue & kawan-kawannya
+                        if (id.includes('@vue') || id.includes('vue')) {
+                            return 'vendor-vue';
+                        }
+                        // Pisahkan Inertia
+                        if (id.includes('@inertiajs')) {
+                            return 'vendor-inertia';
+                        }
+                        // Pisahkan library lain (misal lodash, axios, sweetalert)
+                        if (id.includes('axios') || id.includes('lodash') || id.includes('sweetalert')) {
+                            return 'vendor-utils';
+                        }
+                        // Sisanya masuk ke vendor-core
+                        return 'vendor-core';
                     }
                 }
             }
