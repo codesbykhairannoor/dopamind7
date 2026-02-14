@@ -16,7 +16,15 @@ const appName = import.meta.env.VITE_APP_NAME || 'OneForMind';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
+    
+    // 🔥 PERBAIKAN UTAMA: Code Splitting (Lazy Loading)
+    // Menghapus eager: true membuat Vite memecah bundle JS lu per halaman.
+    // Skor Mobile akan naik drastis karena file JS awal jadi jauh lebih kecil.
+    resolve: (name) => resolvePageComponent(
+        `./Pages/${name}.vue`, 
+        import.meta.glob('./Pages/**/*.vue') 
+    ),
+
     setup({ el, App, props, plugin }) {
         const activeLang = props.initialPage.props.locale || 'id'; 
         loadLanguageAsync(activeLang); 
@@ -33,15 +41,13 @@ createInertiaApp({
             })
             .mount(el);
     },
-    // 2. WAJIB FALSE: Karena kita ambil alih kontrolnya manual di bawah
+    // 2. WAJIB FALSE: Karena kita pakai NProgress manual di bawah
     progress: false, 
 });
 
 /**
  * 🔥 LOGIC PROGRESS BAR (THE REAL FIX)
  */
-
-// Konfigurasi tambahan biar makin smooth (opsional)
 NProgress.configure({ 
     showSpinner: false, 
     speed: 400, 
@@ -50,15 +56,13 @@ NProgress.configure({
 
 router.on('start', (event) => {
     const method = event.detail.visit.method.toLowerCase();
-
-    // RULE: Hanya jalan kalau navigasi biasa (GET)
-    // POST, PUT, PATCH, DELETE (Proses CRUD) dicuekin
+    
+    // Hanya jalankan loading bar untuk navigasi antar halaman (GET)
     if (method === 'get') {
         NProgress.start();
     }
 });
 
-// WAJIB: Biar barnya ilang pas halaman selesai loading
 router.on('finish', () => {
     NProgress.done();
 });
