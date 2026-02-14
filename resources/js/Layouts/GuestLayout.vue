@@ -34,11 +34,13 @@ const isActive = (routeName) => route().current(routeName);
             <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative">
                 
                 <Link :href="route('home')" class="group text-2xl font-black text-indigo-600 tracking-tighter flex items-center gap-2 hover:opacity-80 transition z-20">
-    <img 
-        src="/favicon.png?v=2" 
-        alt="OneForMind Logo" 
-        class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
-    />
+   <img 
+    src="/favicon.svg?v=2" 
+    alt="OneForMind Logo" 
+    width="32" 
+    height="32" 
+    class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
+/>
     
     <span>OneForMind<span class="text-indigo-400">.</span></span>
 </Link>
