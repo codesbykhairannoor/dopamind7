@@ -10,16 +10,22 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::create('finance_budgets', function (Blueprint $table) {
-        $table->id();
-        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-        $table->string('category'); // Kategori yang mau di-budget-in
-        $table->decimal('limit_amount', 15, 2); // Batas maksimal (Rp)
-        $table->string('month'); // Format: "2026-01" (Biar gampang filter per bulan)
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('finance_budgets', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            
+            // 🔥 PERBAIKAN: Tambahkan ->index() agar update/pencarian kategori instan
+            $table->string('category')->index(); 
+            
+            $table->decimal('limit_amount', 15, 2); 
+            
+            // 🔥 PERBAIKAN: Tambahkan ->index() karena sering difilter per bulan di controller
+            $table->string('month')->index(); 
+            
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.

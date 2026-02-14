@@ -1,6 +1,7 @@
 import { ref, computed, watch } from 'vue'; 
 import { router, useForm } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
+import { trans } from 'laravel-vue-i18n';
 
 export function usePlannerTasks(props) {
     const localTasks = ref([...props.tasks]);
@@ -13,17 +14,23 @@ export function usePlannerTasks(props) {
         id: null, title: '', start_time: null, end_time: null, type: 1, notes: ''
     });
 
-    // --- ALERT CONFIG (INDIGO SOLID UNTUK VALIDASI) ---
-    const fireWarning = (message) => {
+    // --- HELPER TRANSLASI ---
+    const t = (key, fallback) => {
+        const result = trans(key);
+        return result !== key ? result : fallback;
+    };
+
+    // --- ALERT CONFIG (Kini mendukung custom background) ---
+    const fireToast = (icon, message, bgColor = '#4f46e5') => {
         Swal.fire({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
             timer: 2000,
             timerProgressBar: true,
-            background: '#4f46e5', // Indigo solid
+            background: bgColor, 
             iconColor: '#ffffff',
-            icon: 'warning',
+            icon: icon,
             title: `<span style="color: white; font-weight: 900; font-size: 14px;">${message}</span>`,
             customClass: {
                 container: '!fixed !top-5 !right-5 !p-0 !z-[100000] !items-start !justify-end',
@@ -31,6 +38,10 @@ export function usePlannerTasks(props) {
             }
         });
     };
+
+    const fireWarning = (message) => fireToast('warning', message, '#4f46e5'); // Tetap Indigo
+    const fireSuccess = (message) => fireToast('success', message, '#4f46e5'); // Tetap Indigo
+    const fireError = (message) => fireToast('error', message, '#4f46e5'); // Tetap Indigo
 
     const timeToMin = (t) => {
         if (!t) return 0;
@@ -47,7 +58,7 @@ export function usePlannerTasks(props) {
 
         const duration = newEnd - newStart;
         if (duration < 15) {
-            conflictError.value = "⛔ Minimal 15 menit!";
+            conflictError.value = `⛔ ${t('err_min_15_mins', 'Minimal 15 menit!')}`;
             return;
         }
 
@@ -60,71 +71,71 @@ export function usePlannerTasks(props) {
             return (newStart < taskEnd && newEnd > taskStart);
         });
 
-        if (hasConflict) conflictError.value = "⚠️ Jadwal bentrok!";
+        if (hasConflict) conflictError.value = `⚠️ ${t('err_schedule_conflict', 'Jadwal bentrok!')}`;
     };
 
     watch(() => [form.start_time, form.end_time], checkTimeValidity);
 
     // --- LOGIC CRUD ---
-  const submitTask = () => {
-    // 🔥 VALIDASI 1: Judul Wajib Ada (Berlaku untuk SEMUA Modal)
-    if (!form.title || form.title.trim() === '') {
-        return fireWarning('Judulnya diisi dulu, Bro!');
-    }
-
-    /** * 🔥 VALIDASI 2: Deteksi Kebutuhan Jam
-     * Kita hanya menagih jam jika 'activeModalType' bernilai 'full'.
-     * Jika tipenya 'simple', kita abaikan validasi jam dan biarkan start_time/end_time null.
-     */
-    if (activeModalType.value === 'full') {
-        if (!form.start_time || !form.end_time) {
-            return fireWarning('Tentukan jam mulai & selesai!');
+    const submitTask = () => {
+        if (!form.title || form.title.trim() === '') {
+            return fireWarning(t('warn_empty_title', 'Judulnya diisi dulu, Bro!'));
         }
 
-        // Cek bentrok & durasi minimal khusus untuk modal full
-        checkTimeValidity(); 
-        if (conflictError.value) return;
-    } else {
-        // 🔥 PENTING: Jika di Simple Modal, pastikan jam dikosongkan agar tidak nyasar ke Timeline
-        form.start_time = null;
-        form.end_time = null;
-    }
+        if (activeModalType.value === 'full') {
+            if (!form.start_time || !form.end_time) {
+                return fireWarning(t('warn_empty_time', 'Tentukan jam mulai & selesai!'));
+            }
 
-    // --- PROSES INSTAN ---
-    const payload = { ...form.data() };
-    isModalOpen.value = false;
+            checkTimeValidity(); 
+            if (conflictError.value) return;
+        } else {
+            form.start_time = null;
+            form.end_time = null;
+        }
 
-    if (isEditing.value) {
-        // Update Lokal Instan
-        const index = localTasks.value.findIndex(t => t.id === form.id);
-        if (index !== -1) localTasks.value[index] = { ...localTasks.value[index], ...payload };
-        
-        router.patch(route('planner.update', form.id), payload, {
-            preserveScroll: true,
-            onFinish: () => form.reset()
-        });
-    } else {
-        // Create Lokal Instan
-        const tempId = 'temp_' + Date.now();
-        localTasks.value.push({ ...payload, id: tempId, is_completed: false });
+        // --- PROSES INSTAN ---
+        const payload = { ...form.data() };
+        isModalOpen.value = false;
 
-        router.post(route('planner.store'), payload, {
-            preserveScroll: true,
-            onError: () => {
-                localTasks.value = localTasks.value.filter(t => t.id !== tempId);
-                fireWarning('Gagal menyimpan ke server!');
-            },
-            onFinish: () => form.reset()
-        });
-    }
-};
+        // 🔥 MUNCULKAN NOTIFIKASI SUKSES INSTAN (Warna Indigo)
+        fireSuccess(t('success_saved', 'Tersimpan!')); 
+
+        if (isEditing.value) {
+            const index = localTasks.value.findIndex(t => t.id === form.id);
+            if (index !== -1) localTasks.value[index] = { ...localTasks.value[index], ...payload };
+            
+            router.patch(route('planner.update', form.id), payload, {
+                preserveScroll: true,
+                onFinish: () => form.reset()
+            });
+        } else {
+            const tempId = 'temp_' + Date.now();
+            localTasks.value.push({ ...payload, id: tempId, is_completed: false });
+
+            router.post(route('planner.store'), payload, {
+                preserveScroll: true,
+                onError: () => {
+                    localTasks.value = localTasks.value.filter(t => t.id !== tempId);
+                    fireError(t('err_save_failed', 'Gagal menyimpan ke server!'));
+                },
+                onFinish: () => form.reset()
+            });
+        }
+    };
 
     const deleteTask = (id) => {
         localTasks.value = localTasks.value.filter(t => t.id !== id);
         isModalOpen.value = false;
+        
+        // 🔥 MUNCULKAN NOTIFIKASI SUKSES INSTAN (Warna Indigo)
+        fireSuccess(t('success_deleted', 'Dihapus!'));
+
         router.delete(route('planner.destroy', id), {
             preserveScroll: true,
-            // ❌ Notif sukses dihapus
+            onError: () => {
+                fireError(t('err_delete_failed', 'Gagal menghapus data!'));
+            }
         });
     };
 
@@ -135,7 +146,6 @@ export function usePlannerTasks(props) {
         });
     };
 
-    // ... (rest of the code remains the same)
     watch(() => props.tasks, (newTasks) => {
         localTasks.value = [...newTasks];
     }, { deep: true });

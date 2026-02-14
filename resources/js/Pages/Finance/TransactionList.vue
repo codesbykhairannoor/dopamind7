@@ -45,7 +45,9 @@ const showFilterPicker = ref(false);
                         :class="filterDate ? 'text-indigo-600 border-indigo-200' : 'text-slate-500'"
                     >
                         <span class="text-base">📅</span>
-                        <span>{{ filterDate ? dayjs(filterDate).locale('id').format('DD MMM YYYY') : 'Filter Tanggal' }}</span>
+                       <span>
+    {{ filterDate ? dayjs(filterDate).locale($page.props.locale).format('DD MMM YYYY') : $t('date_filter') }}
+</span>
                     </button>
                     
                     <button 

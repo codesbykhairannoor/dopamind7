@@ -90,18 +90,38 @@ const getDurationMinutes = (task) => {
 };
 
 // --- STYLE & POSISI ---
+// --- STYLE & POSISI ---
 const getTaskStyle = (task) => {
     const [startH, startM] = task.start_time.split(':').map(Number);
-    let diffStart = startH - startHour.value;
-    if (diffStart < 0) diffStart += 24;
-    
-    if (diffStart >= VIEW_LIMIT) return { display: 'none' };
-
-    const startMinutesTotal = (diffStart * 60) + startM;
     const duration = getDurationMinutes(task);
 
-    const topPx = (startMinutesTotal / 60) * HOUR_HEIGHT;
-    const heightPx = (duration / 60) * HOUR_HEIGHT;
+    const taskStartMinutes = startH * 60 + startM;
+    const viewStartMinutes = startHour.value * 60;
+
+    // 1. Cari posisi awal relatif terhadap jam planner dimulai (startHour)
+    let relStart = taskStartMinutes - viewStartMinutes;
+    
+    // Koreksi misal loncat hari (contoh: planner mulai jam 20:00, task mulai jam 02:00 besoknya)
+    if (relStart < -720) relStart += 1440; 
+    else if (relStart > 720) relStart -= 1440;
+
+    const relEnd = relStart + duration;
+
+    // 2. Hide JIKA task benar-benar selesai sebelum planner mulai ATAU baru mulai setelah planner habis
+    if (relEnd <= 0) return { display: 'none' }; 
+    if (relStart >= VIEW_LIMIT * 60) return { display: 'none' }; 
+
+    // 3. CLAMPING: Potong visual task biar cuma nampilin porsi jam yang masuk di layar
+    // Jika task mulai dari jam 3 dan layar dari jam 6, renderStart otomatis di-set ke 0 (paling atas)
+    const renderStart = Math.max(0, relStart);
+    const renderEnd = Math.min(VIEW_LIMIT * 60, relEnd);
+    const renderDuration = renderEnd - renderStart;
+
+    // Safety check tambahan
+    if (renderDuration <= 0) return { display: 'none' };
+
+    const topPx = (renderStart / 60) * HOUR_HEIGHT;
+    const heightPx = (renderDuration / 60) * HOUR_HEIGHT;
 
     const finalHeight = Math.max(heightPx - VISUAL_GAP, 28);
 
@@ -113,7 +133,6 @@ const getTaskStyle = (task) => {
         zIndex: duration < 30 ? 20 : 10
     };
 };
-
 // --- VIEW MODE ---
 const getTaskViewMode = (task) => {
     const duration = getDurationMinutes(task);

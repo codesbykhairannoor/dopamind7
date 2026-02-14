@@ -10,9 +10,13 @@ return new class extends Migration
     {
         Schema::create('finance_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            // user_id otomatis ter-index karena constrained foreign key
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete(); 
             $table->string('name');
-            $table->string('slug'); // misal: jajan_vio
+            
+            // 🔥 PERBAIKAN: Tambahkan ->index() di sini agar query pemanggilan kategori melesat cepat
+            $table->string('slug')->index(); 
+            
             $table->string('type'); // 'income' atau 'expense'
             $table->string('icon')->default('💰');
             $table->string('color')->nullable();

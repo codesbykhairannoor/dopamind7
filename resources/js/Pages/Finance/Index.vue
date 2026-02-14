@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, reactive } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 
 // Components
@@ -14,6 +14,7 @@ import CategoryModal from './CategoryModal.vue';
 import DailyTrendChart from './DailyTrendChart.vue'; 
 import ArchiveModal from './ArchiveModal.vue'; 
 import FinanceInsights from './FinanceInsights.vue'; 
+import FinanceDatePicker from './FinanceDatePicker.vue';
 
 // Composables
 import { useFinanceCalendar } from '@/Composables/Finance/useFinanceCalendar'; 
@@ -25,19 +26,24 @@ const props = defineProps({
     transactions: Array, budgets: Array, stats: Object, filters: Object, categories: Array, 
 });
 
+const page = usePage();
+
 // 🔥 MAGIC OPTIMISTIC UI: Buat State Lokal (Memori Layar)
 const localTransactions = ref([...props.transactions]);
 const localBudgets = ref([...props.budgets]);
+const localCategories = ref([...props.categories]);
 
 // Sinkronkan otomatis saat server memberi update data asli 
 watch(() => props.transactions, (newVal) => localTransactions.value = [...newVal], { deep: true });
 watch(() => props.budgets, (newVal) => localBudgets.value = [...newVal], { deep: true });
+watch(() => props.categories, (newVal) => localCategories.value = [...newVal], { deep: true });
 
 // Bungkus props menjadi reactive agar History List membaca data instan
 const historyProps = reactive({
     ...props,
     get transactions() { return localTransactions.value; },
-    get budgets() { return localBudgets.value; }
+    get budgets() { return localBudgets.value; },
+    get categories() { return localCategories.value; }
 });
 
 const { formattedMonth, changeMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
@@ -62,7 +68,8 @@ const { formatMoney } = useFinanceFormat();
 const handleEdit = (trx) => { setEditTransaction(trx); showTransactionModal.value = true; };
 
 const handleEditBudget = (budget) => {
-    const catDetail = props.categories.find(c => c.slug === budget.category);
+    // 🔥 PERBAIKAN ICON: Ambil dari localCategories, bukan props
+    const catDetail = localCategories.value.find(c => c.slug === budget.category);
     budgetForm.id = budget.id;
     budgetForm.category = budget.category;
     budgetForm.name = catDetail ? catDetail.name : budget.category; 
@@ -74,25 +81,22 @@ const handleEditBudget = (budget) => {
 
 const handleEditCategory = (cat) => { categoryForm.id = cat.id; setEditCategory(cat); showCategoryModal.value = true; };
 const handleAddCategory = () => { categoryForm.reset(); categoryForm.id = null; showCategoryModal.value = true; };
-const handleDeleteCategory = (cat) => { deleteCategory(cat.id); showCategoryModal.value = false; };
 
 // 🔥 EKSEKUSI OPTIMISTIC UI UNTUK TRANSAKSI
-// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK TRANSAKSI (STYLE HABIT)
 const submitNewTransaction = () => {
     showTransactionModal.value = false; // Langsung tutup 0ms
     submitTransaction({
         onOptimistic: (data, isEditing) => {
             if (isEditing) {
-                // PAKAI TRIK OBJECT.ASSIGN BIKIN RENDER ULANG HANYA DI ELEMEN TERKAIT
                 const idx = localTransactions.value.findIndex(t => t.id === data.id);
                 if (idx !== -1) Object.assign(localTransactions.value[idx], data);
             } else {
-                localTransactions.value.unshift(data); // Dorong langsung ke list
+                localTransactions.value.unshift(data); 
             }
         },
         onError: (id, isEditing) => {
             if (!isEditing) localTransactions.value = localTransactions.value.filter(t => t.id !== id);
-            showTransactionModal.value = true; // Munculin modal kalau error
+            showTransactionModal.value = true; 
         }
     });
 };
@@ -106,13 +110,12 @@ const triggerDeleteTransaction = (id) => {
     });
 };
 
-// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK BUDGET (STYLE HABIT)
+// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK BUDGET
 const submitNewBudget = () => {
     showBudgetModal.value = false; // Langsung tutup 0ms
     submitBudget(currentMonthKey.value, {
         onOptimistic: (data, isEditing) => {
             if (isEditing) {
-                // PAKAI TRIK OBJECT.ASSIGN BIKIN RENDER ULANG HANYA DI ELEMEN TERKAIT
                 const idx = localBudgets.value.findIndex(b => b.id === data.id);
                 if (idx !== -1) Object.assign(localBudgets.value[idx], data);
             } else {
@@ -130,7 +133,34 @@ const triggerDeleteBudget = (id) => {
     deleteBudget(id, {
         onOptimistic: (targetId) => { localBudgets.value = localBudgets.value.filter(b => b.id !== targetId); }
     });
+};
 
+// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK KATEGORI
+const submitNewCategory = () => {
+    showCategoryModal.value = false; // Instan Tutup
+    submitCategory({
+        onOptimistic: (data, isEditing) => {
+            if (isEditing) {
+                const idx = localCategories.value.findIndex(c => c.id === data.id);
+                if (idx !== -1) Object.assign(localCategories.value[idx], data);
+            } else {
+                localCategories.value.push(data);
+            }
+        },
+        onError: (id, isEditing) => {
+            if (!isEditing) localCategories.value = localCategories.value.filter(c => c.id !== id);
+            showCategoryModal.value = true;
+        }
+    });
+};
+
+// 🔥 PERBAIKAN DELETE KATEGORI: Pastiin yang dilempar cat, disaring pake targetId (ID String)
+const triggerDeleteCategory = (cat) => {
+    deleteCategory(cat, {
+        onOptimistic: (targetId) => {
+            localCategories.value = localCategories.value.filter(c => c.id !== targetId);
+        }
+    });
 };
 </script>
 
@@ -179,7 +209,9 @@ const triggerDeleteBudget = (id) => {
                                         :class="filterDate ? 'text-indigo-600 border-indigo-200' : 'text-slate-500'"
                                     >
                                         <span class="text-base">📅</span>
-                                        <span>{{ filterDate ? dayjs(filterDate).locale('id').format('DD MMM YYYY') : 'Filter Tanggal' }}</span>
+                                      <span>
+    {{ filterDate ? dayjs(filterDate).locale($page.props.locale).format('DD MMM YYYY') : $t('date_filter') }}
+</span>
                                         <span class="absolute right-3 text-slate-400 text-[10px]">
                                             {{ showFilterPicker ? '▲' : '▼' }}
                                         </span>
@@ -196,18 +228,24 @@ const triggerDeleteBudget = (id) => {
                                         </svg>
                                     </button>
                                 </div>
-                                <transition
-                                    enter-active-class="transition ease-out duration-200"
-                                    enter-from-class="opacity-0 translate-y-2"
-                                    enter-to-class="opacity-100 translate-y-0"
-                                    leave-active-class="transition ease-in duration-150"
-                                    leave-from-class="opacity-100 translate-y-0"
-                                    leave-to-class="opacity-0 translate-y-2"
-                                >
-                                    <div v-if="showFilterPicker" class="absolute right-0 top-full mt-2 z-50 origin-top-right shadow-2xl rounded-3xl bg-white p-4 w-72 border border-slate-100">
-                                        <p class="text-xs text-center text-slate-400">Pilih Tanggal (Component Calendar Here)</p>
-                                    </div>
-                                </transition>
+                               <transition
+    enter-active-class="transition ease-out duration-200"
+    enter-from-class="opacity-0 translate-y-2"
+    enter-to-class="opacity-100 translate-y-0"
+    leave-active-class="transition ease-in duration-150"
+    leave-from-class="opacity-100 translate-y-0"
+    leave-to-class="opacity-0 translate-y-2"
+>
+    <div v-if="showFilterPicker" class="absolute right-0 top-full mt-2 z-50 origin-top-right">
+        <FinanceDatePicker 
+            :show="showFilterPicker"
+            :modelValue="filterDate"
+            :transactions="localTransactions"
+            @update:modelValue="(val) => filterDate = val"
+            @close="showFilterPicker = false"
+        />
+    </div>
+</transition>
                             </div>
                         </div>
 
@@ -271,7 +309,7 @@ const triggerDeleteBudget = (id) => {
                 <div class="lg:col-span-2 w-full md:sticky md:top-24 h-fit space-y-6"> 
                     <BudgetSidebar 
                         :budgets="localBudgets" 
-                        :categories="categories" 
+                        :categories="localCategories" 
                         :expenseStats="stats.expense_by_category"
                         :incomeStats="stats.income_by_category"
                         @add="() => { budgetForm.reset(); budgetForm.id = null; showBudgetModal = true; }"
@@ -279,7 +317,7 @@ const triggerDeleteBudget = (id) => {
                         @edit-budget="handleEditBudget"
                         @add-category="handleAddCategory"
                         @edit-category="handleEditCategory"
-                        @delete-category="handleDeleteCategory"
+                        @delete-category="triggerDeleteCategory"
                     />
 
                     <FinanceInsights 
@@ -309,11 +347,11 @@ const triggerDeleteBudget = (id) => {
             />
 
             <CategoryModal
-                :show="showCategoryModal"
-                :form="categoryForm"
-                :close="() => showCategoryModal = false"
-                :submit="() => submitCategory(categoryForm.id ? { id: categoryForm.id } : null, () => { showCategoryModal = false })"
-            />
+    :show="showCategoryModal"
+    :form="categoryForm"
+    :close="() => showCategoryModal = false"
+    :submit="submitNewCategory"
+/>
 
         </div>
     </AuthenticatedLayout>

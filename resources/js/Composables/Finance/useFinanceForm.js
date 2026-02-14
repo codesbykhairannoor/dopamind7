@@ -96,6 +96,9 @@ export function useFinanceForm() {
             onOptimistic({ ...payload, id: tempId, amount: cleanAmount(payload.amount), created_at: new Date().toISOString() }, isEditing);
         }
 
+        // 🔥 TOAST INSTAN (Dipindah ke luar dari onSuccess)
+        fireToast('success', t('success_saved', 'Saved successfully!'));
+
         transactionForm.transform((data) => ({ ...data, amount: cleanAmount(data.amount) }))[method](url, {
             preserveScroll: true,
             preserveState: true,
@@ -104,7 +107,7 @@ export function useFinanceForm() {
                 transactionForm.reset();
                 transactionForm.date = dayjs().format('YYYY-MM-DD');
                 if (onSuccess) onSuccess();
-                fireToast('success', t('success_saved', 'Saved successfully!'));
+                // Toast sudah dihapus dari sini biar gak delay
             },
             onError: (err) => {
                 if (onError) onError(tempId, isEditing); // 🔥 Rollback kalau server gagal
@@ -119,13 +122,16 @@ export function useFinanceForm() {
                 // 🔥 OPTIMISTIC UPDATE: Hapus Instan 0ms!
                 if (onOptimistic) onOptimistic(id);
 
+                // 🔥 TOAST INSTAN
+                fireToast('success', t('success_deleted', 'Deleted!'));
+
                 router.delete(route('finance.transaction.destroy', id), {
                     preserveScroll: true,
                     preserveState: true,
                     progress: false, // ✅ INI YANG BENER
                     onSuccess: () => {
                         if (onSuccess) onSuccess();
-                        fireToast('success', t('success_deleted', 'Deleted!'));
+                        // Toast sudah dihapus dari sini biar gak delay
                     },
                     onError: () => {
                         if (onError) onError(id); // 🔥 Rollback
@@ -158,14 +164,17 @@ export function useFinanceForm() {
             onOptimistic({ ...payload, id: tempId, limit_amount: cleanVal }, isEditing);
         }
 
-      budgetForm.transform((data) => ({ ...data, limit_amount: cleanAmount(data.limit_amount) }))[method](url, {
+        // 🔥 TOAST INSTAN
+        fireToast('success', t('success_saved', 'Budget updated!'));
+
+        budgetForm.transform((data) => ({ ...data, limit_amount: cleanAmount(data.limit_amount) }))[method](url, {
             preserveScroll: true, 
             preserveState: true, 
             progress: false, // ✅ INI YANG BENER
             onSuccess: () => {
                 budgetForm.reset();
                 if (onSuccess) onSuccess();
-                fireToast('success', t('success_saved', 'Budget updated!'));
+                // Toast sudah dihapus dari sini biar gak delay
             },
             onError: (err) => {
                 if (onError) onError(tempId, isEditing);
@@ -177,52 +186,97 @@ export function useFinanceForm() {
     const deleteBudget = (id, { onOptimistic, onSuccess, onError }) => {
         confirmDelete('delete_budget_title', 'Delete Budget?').then((res) => {
             if (res.isConfirmed) {
+                // 🔥 OPTIMISTIC UPDATE
                 if (onOptimistic) onOptimistic(id);
+
+                // 🔥 TOAST INSTAN
+                fireToast('success', t('success_deleted', 'Budget removed!'));
+
                 router.delete(route('finance.budget.destroy', id), {
                     preserveScroll: true, 
                     preserveState: true, 
                     progress: false, // ✅ INI YANG BENER
                     onSuccess: () => {
                         if (onSuccess) onSuccess();
-                        fireToast('success', t('success_deleted', 'Budget removed!'));
+                        // Toast sudah dihapus dari sini biar gak delay
                     },
                     onError: () => {
                         if (onError) onError(id);
+                        fireToast('error', 'Failed to delete budget');
                     }
                 });
             }
         });
     };
 
-    // --- KATEGORI (Tetap Pessimistic karena jarang dilakukan) ---
-    const categoryForm = useForm({ name: '', icon: '💰', type: 'income' });
-    const setEditCategory = (cat) => { categoryForm.name = cat.name; categoryForm.icon = cat.icon; };
-    const submitCategory = (categoryToEdit, onSuccessCallback) => {
+    // --- KATEGORI (Diubah jadi Optimistic) ---
+    const categoryForm = useForm({ id: null, name: '', icon: '💰', type: 'income', slug: '' });
+    
+    const setEditCategory = (cat) => { 
+        categoryForm.id = cat.id;
+        categoryForm.name = cat.name; 
+        categoryForm.icon = cat.icon;
+        categoryForm.type = cat.type;
+        categoryForm.slug = cat.slug;
+    };
+
+    const submitCategory = ({ onOptimistic, onSuccess, onError }) => {
         if (!categoryForm.name) return fireToast('warning', t('warn_empty_category_name', 'Name required!'));
-        const url = categoryToEdit ? route('finance.categories.update', categoryToEdit.id) : route('finance.categories.store');
-        const method = categoryToEdit ? 'put' : 'post';
+        
+        const payload = { ...categoryForm.data() };
+        const isEditing = !!payload.id;
+        const tempId = isEditing ? payload.id : 'temp_' + Date.now();
+        const url = isEditing ? route('finance.categories.update', payload.id) : route('finance.categories.store');
+        const method = isEditing ? 'put' : 'post';
+
+        // Bikin slug sementara kalau bikin baru biar bisa dirender
+        if (!isEditing) payload.slug = payload.name.toLowerCase().replace(/\s+/g, '_');
+
+        // 🔥 OPTIMISTIC UPDATE INSTAN
+        if (onOptimistic) {
+            onOptimistic({ ...payload, id: tempId }, isEditing);
+        }
+
+        fireToast('success', t('success_saved', 'Category saved!'));
+
         categoryForm[method](url, {
             preserveScroll: true, 
             preserveState: true, 
-            progress: false, // ✅ INI YANG BENER
-            onSuccess: () => { categoryForm.reset(); if (onSuccessCallback) onSuccessCallback(); fireToast('success', t('success_saved', 'Category saved!')); },
-            onError: (err) => fireToast('error', Object.values(err)[0])
-        });
-    };
-
-    const deleteCategory = (id, onSuccessCallback) => {
-        confirmDelete('confirm_delete_title', 'Are you sure?').then((res) => {
-            if (res.isConfirmed) {
-                router.delete(route('finance.categories.destroy', id), {
-                    preserveScroll: true, 
-                    preserveState: true, 
-                    progress: false, // ✅ INI YANG BENER
-                    onSuccess: () => { if (onSuccessCallback) onSuccessCallback(); fireToast('success', t('success_deleted', 'Deleted!')); }
-                });
+            progress: false, 
+            onSuccess: () => { 
+                categoryForm.reset(); 
+                if (onSuccess) onSuccess(); 
+            },
+            onError: (err) => {
+                if (onError) onError(tempId, isEditing);
+                fireToast('error', Object.values(err)[0]);
             }
         });
     };
 
+    const deleteCategory = (cat, { onOptimistic, onSuccess, onError }) => {
+        confirmDelete('confirm_delete_title', 'Are you sure?').then((res) => {
+            if (res.isConfirmed) {
+                // 🔥 OPTIMISTIC UPDATE INSTAN
+                if (onOptimistic) onOptimistic(cat.id);
+                
+                fireToast('success', t('success_deleted', 'Deleted!'));
+
+                router.delete(route('finance.categories.destroy', cat.id), {
+                    preserveScroll: true, 
+                    preserveState: true, 
+                    progress: false, 
+                    onSuccess: () => { 
+                        if (onSuccess) onSuccess(); 
+                    },
+                    onError: () => {
+                        if (onError) onError(cat.id);
+                        fireToast('error', 'Failed to delete data');
+                    }
+                });
+            }
+        });
+    };
     const updateIncomeTarget = (month, amount) => {
         router.post(route('finance.income-target.update'), { month, amount }, { 
             preserveScroll: true, 

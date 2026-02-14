@@ -4,18 +4,20 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTaskRequest extends FormRequest // ✅ Perhatikan nama class ini beda
+class UpdateTaskRequest extends FormRequest
 {
     public function authorize(): bool 
     { 
-        return true; 
+        // Ambil data task dari URL route parameter
+        $task = $this->route('plannerTask');
+        
+        // Pengecekan otomatis! Pastikan task ini milik user yang sedang login
+        return $task && $task->user_id === $this->user()->id; 
     }
 
     public function rules(): array
     {
         return [
-            // Gunakan 'sometimes' karena user mungkin cuma mau edit judul doang,
-            // tanpa ngirim jam atau tipe lagi.
             'title' => 'sometimes|string|max:150',
             'start_time' => 'nullable|date_format:H:i',
             'end_time' => 'nullable|date_format:H:i', 

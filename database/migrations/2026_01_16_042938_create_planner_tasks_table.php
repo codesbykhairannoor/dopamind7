@@ -32,8 +32,7 @@ return new class extends Migration
 
             $table->timestamps();
 
-            // Index biar cepet load-nya
-            $table->index('user_id');
+         
         });
     }
 

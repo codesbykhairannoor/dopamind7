@@ -326,6 +326,12 @@
     "label_now": "NOW",
     "select_hour": "Select Hour",
 
+    "err_min_15_mins": "Minimum 15 minutes!",
+    "err_schedule_conflict": "Schedule conflict!",
+    "warn_empty_time": "Set start & end time!",
+    "err_save_failed": "Failed to save to server!",
+    "err_delete_failed": "Failed to delete data!",
+
    
 
     "____ SECTION_7 ____": "=== FINANCE FLOW ===",
@@ -382,6 +388,7 @@
     "insight_cold_money_label": "Cold Money (Net)",
     "insight_milestone_label": "Milestone Progress",
     "insight_cold_money_hint": "*Use this ammunition when your stock chart bounces off support, bro!,",
+    "date_filter": "Date Filter",
 
     "finance_plan": "Finance Plan",
     "btn_transaction": "Transaction",

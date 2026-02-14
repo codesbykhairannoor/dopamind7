@@ -378,6 +378,11 @@
     "month_oct": "Oktober",
     "month_nov": "November",
     "month_dec": "Desember",
+    "err_min_15_mins": "Minimal 15 menit!",
+    "err_schedule_conflict": "Jadwal bentrok!",
+    "warn_empty_time": "Tentukan jam mulai & selesai!",
+    "err_save_failed": "Gagal menyimpan ke server!",
+    "err_delete_failed": "Gagal menghapus data!",
     
     "available_balance": "Sisa Saldo Tersedia",
     "monthly_finance_desc": "Keuanganmu bulan ini",
@@ -389,6 +394,7 @@
     "daily_net": "Net Harian",
     "old_data_hint": "Gunakan filter tanggal untuk melihat data lama",
     "transaction_count": ":count Transaksi",
+    "date_filter": "Filter Tanggal",
 
     "warn_empty_category_name": "Nama Kosong",
     "warn_empty_category_name_text": "Kasih nama dulu buat kategorinya ya.",
