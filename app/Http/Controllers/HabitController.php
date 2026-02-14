@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Enums\HabitStatus;
-use App\Http\Requests\LogHabitRequest;   // ✅ Request Baru
-use App\Http\Requests\StoreHabitRequest; // ✅ Request Create
-use App\Http\Requests\UpdateHabitRequest; // ✅ Request Update Baru
+use App\Http\Requests\LogHabitRequest;   
+use App\Http\Requests\StoreHabitRequest; 
+use App\Http\Requests\UpdateHabitRequest; 
 use App\Http\Resources\HabitResource;
 use App\Models\Habit;
 use App\Models\HabitLog;
@@ -27,16 +27,17 @@ class HabitController extends Controller
     {
         $user = Auth::user();
         $monthQuery = $request->input('month', Carbon::now()->format('Y-m'));
-        $dateObj = Carbon::createFromFormat('Y-m', $monthQuery);
+        
+        // 🔥 PERBAIKAN 1: Cegah BUG Carbon Overflow di akhir bulan (tanggal 29, 30, 31)
+        // Kita paksa baca dari tanggal 1 agar kalkulasi bulan tidak pernah meleset
+        $dateObj = Carbon::parse($monthQuery . '-01');
 
-        // 🔥 OPTIMASI: Pakai whereBetween untuk performa Database (Index Friendly)
         $startOfMonth = $dateObj->copy()->startOfMonth()->format('Y-m-d');
         $endOfMonth = $dateObj->copy()->endOfMonth()->format('Y-m-d');
 
         // --- QUERY DATABASE ---
         $habits = Habit::where('user_id', $user->id)
             ->where('period', $monthQuery)
-            // Eager load logs hanya bulan yang diminta menggunakan whereBetween
             ->with(['logs' => fn ($q) => $q->whereBetween('date', [$startOfMonth, $endOfMonth])])
             ->withCount(['logs as completed_count' => fn ($q) => $q->where('status', 'completed')])
             ->get();
@@ -73,7 +74,6 @@ class HabitController extends Controller
             $request->validated()
         ));
 
-        // 📱 API Response
         if ($request->wantsJson()) {
             return response()->json([
                 'message' => 'Habit created successfully',
@@ -81,7 +81,6 @@ class HabitController extends Controller
             ], 201);
         }
 
-        // 💻 Web Redirect
         return back();
     }
 
@@ -94,7 +93,6 @@ class HabitController extends Controller
 
         $habit->update($request->validated());
 
-        // 📱 API Response
         if ($request->wantsJson()) {
             return response()->json([
                 'message' => 'Habit updated',
@@ -107,13 +105,11 @@ class HabitController extends Controller
 
     /**
      * Centang / Log Harian
-     * Menggunakan LogHabitRequest untuk validasi
      */
     public function storeLog(LogHabitRequest $request, Habit $habit)
     {
         $this->authorize('log', $habit);
 
-        // Validasi sudah ditangani LogHabitRequest, tinggal ambil
         $data = $request->validated();
 
         if ($data['status'] === 'uncheck') {
@@ -127,7 +123,6 @@ class HabitController extends Controller
             );
         }
 
-        // 📱 API Response
         if ($request->wantsJson()) {
             return response()->json(['message' => 'Log updated successfully']);
         }
@@ -140,7 +135,6 @@ class HabitController extends Controller
      */
     public function updateMood(Request $request)
     {
-        // Tetap validasi manual disini karena simpel & jarang dipanggil
         $validated = $request->validate([
             'mood_code' => 'required|string|max:20',
             'period' => 'required|string|max:7',
@@ -168,6 +162,19 @@ class HabitController extends Controller
             'prev_period' => 'required|date_format:Y-m',
         ]);
 
+        // 🔥 PERBAIKAN 2: Mencegah user mem-paste data berulang-ulang (Jebakan Duplikasi)
+        $alreadyHasHabits = Habit::where('user_id', Auth::id())
+            ->where('period', $request->current_period)
+            ->exists();
+
+        if ($alreadyHasHabits) {
+            if ($request->wantsJson()) {
+                return response()->json(['message' => 'Habit bulan ini sudah ada!'], 400);
+            }
+            // Kembalikan error agar frontend Inertia bisa memunculkan toast notification
+            return back()->with('error', 'Habit untuk bulan ini sudah ada! Tidak bisa copy lagi.');
+        }
+
         $oldHabits = Habit::where('user_id', Auth::id())
             ->where('period', $request->prev_period)
             ->get();
@@ -175,7 +182,6 @@ class HabitController extends Controller
         $newHabits = [];
         $now = Carbon::now();
 
-        // 🔥 OPTIMASI: Siapkan data ke dalam array
         foreach ($oldHabits as $old) {
             $newHabits[] = [
                 'user_id' => Auth::id(),
@@ -189,9 +195,8 @@ class HabitController extends Controller
             ];
         }
 
-        // 🔥 OPTIMASI: Bulk Insert dalam 1 Query (Menghindari N+1 Insert Issue)
         if (!empty($newHabits)) {
-            Habit::insert($newHabits);
+            Habit::insert($newHabits); // Tetap pertahankan Bulk Insert ini, sangat kencang!
         }
 
         $count = count($newHabits);
@@ -200,7 +205,7 @@ class HabitController extends Controller
             return response()->json(['message' => "$count habits copied successfully"]);
         }
 
-        return back();
+        return back()->with('success', "$count habits berhasil disalin!");
     }
 
     /**
