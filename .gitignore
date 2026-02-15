@@ -16,7 +16,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/public/build
-/bootstrap/ssr
 node_modules
 .env.local

@@ -145,7 +145,7 @@
     "isDynamicEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app-Bonrnbuf.css",
+    "file": "assets/app-om6UKirs.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -740,7 +740,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-Bx2rd-Pk.js",
+    "file": "assets/app-StoSRtGh.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -794,7 +794,7 @@
       "lang/zh.json"
     ],
     "css": [
-      "assets/app-Bonrnbuf.css"
+      "assets/app-om6UKirs.css"
     ]
   }
 }
