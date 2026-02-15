@@ -1,0 +1,10 @@
+# nixpacks.toml
+
+[phases.setup]
+nixPkgs = ["php82", "nodejs_20", "composer"]
+
+[phases.build]
+cmds = ["composer install --no-dev --optimize-autoloader", "npm install", "npm run build"]
+
+[variables]
+NODE_ENV = "production"

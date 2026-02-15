@@ -17,16 +17,18 @@ const appName = import.meta.env.VITE_APP_NAME || 'OneForMind';
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     
-    // 🔥 PERBAIKAN UTAMA: Code Splitting (Lazy Loading)
-    // Menghapus eager: true membuat Vite memecah bundle JS lu per halaman.
-    // Skor Mobile akan naik drastis karena file JS awal jadi jauh lebih kecil.
+    // 🔥 PERFORMANCE: Code Splitting (Lazy Loading)
+    // Tanpa 'eager: true' agar JS di-load hanya saat halaman dibuka.
     resolve: (name) => resolvePageComponent(
         `./Pages/${name}.vue`, 
         import.meta.glob('./Pages/**/*.vue') 
     ),
 
     setup({ el, App, props, plugin }) {
+        // 🔥 BRIDGE BAHASA: Ambil locale yang dikirim Laravel via HandleInertiaRequests
         const activeLang = props.initialPage.props.locale || 'id'; 
+        
+        // Pastikan bahasa dimuat sebelum app di-mount
         loadLanguageAsync(activeLang); 
 
         return createApp({ render: () => h(App, props) })
@@ -41,12 +43,14 @@ createInertiaApp({
             })
             .mount(el);
     },
-    // 2. WAJIB FALSE: Karena kita pakai NProgress manual di bawah
+
+    // 2. WAJIB FALSE: Karena pakai NProgress manual untuk kontrol penuh
     progress: false, 
 });
 
 /**
  * 🔥 LOGIC PROGRESS BAR (THE REAL FIX)
+ * Konfigurasi ini memastikan loading bar muncul saat pindah halaman
  */
 NProgress.configure({ 
     showSpinner: false, 
@@ -54,10 +58,9 @@ NProgress.configure({
     minimum: 0.2 
 });
 
+// Jalankan NProgress hanya pada navigasi internal (GET)
 router.on('start', (event) => {
     const method = event.detail.visit.method.toLowerCase();
-    
-    // Hanya jalankan loading bar untuk navigasi antar halaman (GET)
     if (method === 'get') {
         NProgress.start();
     }
