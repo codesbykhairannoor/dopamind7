@@ -1,7 +1,7 @@
 import { ref, watch, computed, unref, withCtx, isRef, createVNode, useSSRContext } from "vue";
 import { ssrRenderComponent } from "vue/server-renderer";
 import { useForm, router, usePage, Head } from "@inertiajs/vue3";
-import { _ as _sfc_main$1 } from "./AuthenticatedLayout-DRZDarU_.js";
+import { _ as _sfc_main$1 } from "./AuthenticatedLayout-B2_TjefJ.js";
 import Swal from "sweetalert2";
 import { trans } from "laravel-vue-i18n";
 import axios from "axios";

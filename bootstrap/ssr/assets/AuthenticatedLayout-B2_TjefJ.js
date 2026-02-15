@@ -1,7 +1,6 @@
 import { computed, ref, watch, mergeProps, unref, withCtx, createVNode, toDisplayString, createTextVNode, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent, ssrInterpolate, ssrRenderClass, ssrRenderStyle, ssrRenderSlot } from "vue/server-renderer";
 import { usePage, Link } from "@inertiajs/vue3";
-import "laravel-vue-i18n";
 const _sfc_main = {
   __name: "AuthenticatedLayout",
   __ssrInlineRender: true,
@@ -11,13 +10,14 @@ const _sfc_main = {
     const currentLang = computed(() => page.props.locale || "id");
     const showingNavigationDropdown = ref(false);
     const showModule = (moduleName) => {
-      var _a, _b;
-      return ((_b = (_a = user.value.settings) == null ? void 0 : _a.modules) == null ? void 0 : _b[moduleName]) !== false;
+      var _a, _b, _c;
+      return ((_c = (_b = (_a = user.value) == null ? void 0 : _a.settings) == null ? void 0 : _b.modules) == null ? void 0 : _c[moduleName]) !== false;
     };
     watch(() => page.url, () => {
       showingNavigationDropdown.value = false;
     });
     return (_ctx, _push, _parent, _attrs) => {
+      var _a, _b, _c;
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "flex h-screen bg-slate-50 font-sans overflow-hidden selection:bg-indigo-500 selection:text-white" }, _attrs))}><aside class="w-72 bg-white border-r border-slate-100 hidden md:flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] flex-shrink-0 transition-all duration-300"><div class="h-24 flex items-center px-8">`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("dashboard"),
@@ -129,25 +129,7 @@ const _sfc_main = {
         }),
         _: 1
       }, _parent));
-      _push(`<div class="flex bg-white p-1 rounded-xl border border-slate-200 shadow-sm"><button class="${ssrRenderClass([currentLang.value === "id" ? "bg-indigo-100 text-indigo-700 shadow-sm" : "text-slate-400 hover:text-slate-600", "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all"])}">🇮🇩 ID</button><button class="${ssrRenderClass([currentLang.value === "en" ? "bg-indigo-100 text-indigo-700 shadow-sm" : "text-slate-400 hover:text-slate-600", "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all"])}">🇬🇧 EN</button></div><div class="flex items-center gap-3 pt-2 border-t border-slate-200/50"><div class="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-indigo-200">${ssrInterpolate(user.value.name.charAt(0).toUpperCase())}</div><div class="flex-1 overflow-hidden"><p class="text-xs font-bold text-indigo-950 truncate">${ssrInterpolate(user.value.name)}</p>`);
-      _push(ssrRenderComponent(unref(Link), {
-        href: _ctx.route("logout"),
-        method: "post",
-        as: "button",
-        class: "text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide"
-      }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`${ssrInterpolate(_ctx.$t("nav_logout"))}`);
-          } else {
-            return [
-              createTextVNode(toDisplayString(_ctx.$t("nav_logout")), 1)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`</div></div></div></aside><main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50"><div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">`);
+      _push(`<div class="flex bg-white p-1 rounded-xl border border-slate-200 shadow-sm"><button class="${ssrRenderClass([currentLang.value === "id" ? "bg-indigo-100 text-indigo-700 shadow-sm" : "text-slate-400 hover:text-slate-600", "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all"])}">🇮🇩 ID</button><button class="${ssrRenderClass([currentLang.value === "en" ? "bg-indigo-100 text-indigo-700 shadow-sm" : "text-slate-400 hover:text-slate-600", "flex-1 py-1.5 text-xs font-bold rounded-lg transition-all"])}">🇬🇧 EN</button></div><div class="flex items-center gap-3 pt-2 border-t border-slate-200/50"><div class="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-indigo-200">${ssrInterpolate(((_b = (_a = user.value) == null ? void 0 : _a.name) == null ? void 0 : _b.charAt(0).toUpperCase()) || "U")}</div><div class="flex-1 overflow-hidden"><p class="text-xs font-bold text-indigo-950 truncate">${ssrInterpolate(((_c = user.value) == null ? void 0 : _c.name) || "User")}</p><button type="button" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide text-left">${ssrInterpolate(_ctx.$t("nav_logout"))}</button></div></div></div></aside><main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50"><div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("dashboard"),
         class: "flex items-center gap-2"
@@ -177,7 +159,6 @@ const _sfc_main = {
       _push(`</button></div><div class="md:hidden fixed inset-0 top-16 z-40 bg-white/95 backdrop-blur-lg overflow-y-auto" style="${ssrRenderStyle(showingNavigationDropdown.value ? null : { display: "none" })}"><div class="p-4 space-y-2 pb-24">`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("dashboard"),
-        prefetch: "",
         class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("dashboard") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
         onClick: ($event) => showingNavigationDropdown.value = false
       }, {
@@ -196,7 +177,6 @@ const _sfc_main = {
       if (showModule("habit")) {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("habits.index"),
-          prefetch: "",
           class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("habits.*") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
           onClick: ($event) => showingNavigationDropdown.value = false
         }, {
@@ -218,7 +198,6 @@ const _sfc_main = {
       if (showModule("planner")) {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("planner.index"),
-          prefetch: "",
           class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("planner.*") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
           onClick: ($event) => showingNavigationDropdown.value = false
         }, {
@@ -240,7 +219,6 @@ const _sfc_main = {
       if (showModule("finance")) {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("finance.index"),
-          prefetch: "",
           class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("finance.*") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
           onClick: ($event) => showingNavigationDropdown.value = false
         }, {
@@ -261,7 +239,6 @@ const _sfc_main = {
       }
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("settings.index"),
-        prefetch: "",
         class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("settings.*") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
         onClick: ($event) => showingNavigationDropdown.value = false
       }, {
@@ -277,26 +254,7 @@ const _sfc_main = {
         }),
         _: 1
       }, _parent));
-      _push(`<div class="border-t border-slate-100 my-4 pt-4"><div class="flex gap-2 px-2 mb-6"><button prefetch class="${ssrRenderClass([currentLang.value === "id" ? "bg-indigo-50 border-indigo-200 text-indigo-700" : "border-slate-100 text-slate-400", "flex-1 py-3 rounded-xl text-sm font-bold border transition"])}">🇮🇩 INDONESIA</button><button prefetch class="${ssrRenderClass([currentLang.value === "en" ? "bg-indigo-50 border-indigo-200 text-indigo-700" : "border-slate-100 text-slate-400", "flex-1 py-3 rounded-xl text-sm font-bold border transition"])}">🇬🇧 ENGLISH</button></div>`);
-      _push(ssrRenderComponent(unref(Link), {
-        href: _ctx.route("logout"),
-        prefetch: "",
-        method: "post",
-        as: "button",
-        class: "w-full text-center py-3 text-rose-500 font-bold bg-rose-50 rounded-xl hover:bg-rose-100 transition"
-      }, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(`${ssrInterpolate(_ctx.$t("nav_logout"))}`);
-          } else {
-            return [
-              createTextVNode(toDisplayString(_ctx.$t("nav_logout")), 1)
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
-      _push(`</div></div></div><div class="w-full relative z-0">`);
+      _push(`<div class="border-t border-slate-100 my-4 pt-4"><div class="flex gap-2 px-2 mb-6"><button class="${ssrRenderClass([currentLang.value === "id" ? "bg-indigo-50 border-indigo-200 text-indigo-700" : "border-slate-100 text-slate-400", "flex-1 py-3 rounded-xl text-sm font-bold border transition"])}">🇮🇩 INDONESIA</button><button class="${ssrRenderClass([currentLang.value === "en" ? "bg-indigo-50 border-indigo-200 text-indigo-700" : "border-slate-100 text-slate-400", "flex-1 py-3 rounded-xl text-sm font-bold border transition"])}">🇬🇧 ENGLISH</button></div><button type="button" class="w-full text-center py-4 text-rose-500 font-bold bg-rose-50 rounded-2xl hover:bg-rose-100 transition flex items-center justify-center gap-2"><span>🚪</span> ${ssrInterpolate(_ctx.$t("nav_logout"))}</button></div></div></div><div class="w-full relative z-0">`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       _push(`</div></main></div>`);
     };

@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
-import { Link, usePage } from '@inertiajs/vue3'; // 'router' dihapus karena tidak dipakai lagi
-import { router } from '@inertiajs/vue3';
+import { Link, usePage, router } from '@inertiajs/vue3'; 
 
 // --- DATA USER & HALAMAN ---
 const page = usePage();
@@ -16,22 +15,31 @@ const showModule = (moduleName) => {
     return user.value?.settings?.modules?.[moduleName] !== false;
 };
 
-// 🔥 JURUS PAMUNGKAS ANTI JSON & MODAL
+/**
+ * 🔥 FIX GANTI BAHASA: Pake router.get
+ * Ini bakal ngetrigger route '/lang/{locale}' di Laravel.
+ * Karena Laravel balikin Inertia::location, browser bakal reload otomatis.
+ */
 const switchLang = (lang) => {
-    // Memaksa browser reload penuh, membuang state Inertia lama,
-    // dan mengambil session bahasa baru dari server.
-    window.location.href = route('lang.switch', lang);
+    router.get(route('lang.switch', lang), {}, {
+        preserveState: false,
+        preserveScroll: false,
+        replace: true
+    });
+};
+
+/**
+ * 🔥 FIX LOGOUT: Anti 419 Session Expired
+ * router.post otomatis ngambil token CSRF terbaru dari meta tag/cookie.
+ */
+const handleLogout = () => {
+    router.post(route('logout'));
 };
 
 // Tutup menu otomatis saat pindah halaman
 watch(() => page.url, () => {
     showingNavigationDropdown.value = false;
 });
-
-const handleLogout = () => {
-    // router.post akan otomatis menyertakan token CSRF terbaru
-    router.post(route('logout'));
-};
 </script>
 
 <template>
@@ -93,9 +101,9 @@ const handleLogout = () => {
                     </div>
                     <div class="flex-1 overflow-hidden">
                         <p class="text-xs font-bold text-indigo-950 truncate">{{ user?.name || 'User' }}</p>
-                        <Link :href="route('logout')" method="post" as="button" type="button" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide">
+                        <button @click="handleLogout" type="button" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide text-left">
                             {{ $t('nav_logout') }}
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -128,35 +136,35 @@ const handleLogout = () => {
             >
                 <div v-show="showingNavigationDropdown" class="md:hidden fixed inset-0 top-16 z-40 bg-white/95 backdrop-blur-lg overflow-y-auto">
                     <div class="p-4 space-y-2 pb-24">
-                        <Link :href="route('dashboard')" prefetch
+                        <Link :href="route('dashboard')" 
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>🏠</span> {{ $t('nav_dashboard') }}
                         </Link>
 
-                        <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch
+                        <Link v-if="showModule('habit')" :href="route('habits.index')" 
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>🌱</span> {{ $t('habit_page_title') }}
                         </Link>
 
-                        <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch
+                        <Link v-if="showModule('planner')" :href="route('planner.index')" 
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>📅</span> Daily Planner
                         </Link>
 
-                        <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch
+                        <Link v-if="showModule('finance')" :href="route('finance.index')" 
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>💸</span> Finance Management
                         </Link>
 
-                        <Link :href="route('settings.index')" prefetch
+                        <Link :href="route('settings.index')" 
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('settings.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
@@ -169,9 +177,9 @@ const handleLogout = () => {
                                 <button @click="switchLang('en')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
                             </div>
 
-                          <button @click="handleLogout" type="button" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide">
-    {{ $t('nav_logout') }}
-</button>
+                            <button @click="handleLogout" type="button" class="w-full text-center py-4 text-rose-500 font-bold bg-rose-50 rounded-2xl hover:bg-rose-100 transition flex items-center justify-center gap-2">
+                                <span>🚪</span> {{ $t('nav_logout') }}
+                            </button>
                         </div>
                     </div>
                 </div>

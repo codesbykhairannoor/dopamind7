@@ -1,8 +1,7 @@
 import { unref, withCtx, createVNode, withDirectives, vModelCheckbox, Transition, createBlock, createCommentVNode, openBlock, useSSRContext } from "vue";
 import { ssrRenderComponent, ssrIncludeBooleanAttr, ssrLooseContain } from "vue/server-renderer";
-import { _ as _sfc_main$1 } from "./AuthenticatedLayout-DRZDarU_.js";
+import { _ as _sfc_main$1 } from "./AuthenticatedLayout-B2_TjefJ.js";
 import { useForm, Head } from "@inertiajs/vue3";
-import "laravel-vue-i18n";
 const _sfc_main = {
   __name: "Index",
   __ssrInlineRender: true,

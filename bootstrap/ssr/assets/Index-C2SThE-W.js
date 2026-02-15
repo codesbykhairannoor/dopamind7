@@ -1,7 +1,7 @@
 import { computed, ref, watch, mergeProps, unref, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent } from "vue/server-renderer";
 import { usePage, router, useForm, Head } from "@inertiajs/vue3";
-import { _ as _sfc_main$1 } from "./AuthenticatedLayout-DRZDarU_.js";
+import { _ as _sfc_main$1 } from "./AuthenticatedLayout-B2_TjefJ.js";
 import dayjs from "dayjs";
 import "dayjs/locale/id.js";
 import "dayjs/locale/en.js";
@@ -11,7 +11,6 @@ import HabitHeader from "./HabitHeader-D7De_7e0.js";
 import HabitGrid from "./HabitGrid-DS2mRgp4.js";
 import HabitStats from "./HabitStats-mtvxIp2G.js";
 import _sfc_main$2 from "./HabitModals-Ctd51TO4.js";
-import "laravel-vue-i18n";
 import "./_plugin-vue_export-helper-1tPrXgE0.js";
 import "vue-chartjs";
 import "chart.js";

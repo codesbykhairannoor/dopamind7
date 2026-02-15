@@ -37,6 +37,7 @@ Route::get('/lang/{locale}', function (Request $request, $locale) {
     return redirect()->to($referer);
 })->middleware('web')->name('lang.switch');
 
+
 // --- GROUP 1: PUBLIC PAGES (Guest) ---
 Route::get('/', function () {
     if (auth()->check()) {

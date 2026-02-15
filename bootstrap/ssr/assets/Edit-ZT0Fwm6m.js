@@ -1,11 +1,10 @@
 import { unref, withCtx, createVNode, useSSRContext } from "vue";
 import { ssrRenderComponent } from "vue/server-renderer";
-import { _ as _sfc_main$1 } from "./AuthenticatedLayout-DRZDarU_.js";
+import { _ as _sfc_main$1 } from "./AuthenticatedLayout-B2_TjefJ.js";
 import _sfc_main$4 from "./DeleteUserForm-dr_yCB-k.js";
 import _sfc_main$3 from "./UpdatePasswordForm-JQWqzoYf.js";
 import _sfc_main$2 from "./UpdateProfileInformationForm-DYjWslze.js";
 import { Head } from "@inertiajs/vue3";
-import "laravel-vue-i18n";
 import "./_plugin-vue_export-helper-1tPrXgE0.js";
 import "./InputError-CjMsDEOH.js";
 import "./InputLabel-BgCYZe1F.js";

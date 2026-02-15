@@ -1,8 +1,7 @@
 import { computed, unref, withCtx, createVNode, toDisplayString, createTextVNode, useSSRContext } from "vue";
 import { ssrRenderComponent, ssrInterpolate } from "vue/server-renderer";
-import { _ as _sfc_main$1 } from "./AuthenticatedLayout-DRZDarU_.js";
+import { _ as _sfc_main$1 } from "./AuthenticatedLayout-B2_TjefJ.js";
 import { usePage, Head, Link } from "@inertiajs/vue3";
-import "laravel-vue-i18n";
 const _sfc_main = {
   __name: "Dashboard",
   __ssrInlineRender: true,
