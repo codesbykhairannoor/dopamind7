@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Daftarkan Telescope hanya jika di environment local
+        // 🔥 Hanya daftarkan Telescope di environment local
         if ($this->app->environment('local') && class_exists(\App\Providers\TelescopeServiceProvider::class)) {
             $this->app->register(\App\Providers\TelescopeServiceProvider::class);
         }
@@ -24,9 +24,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Model::shouldBeStrict(! $this->app->isProduction());
+        /**
+         * Mencegah lazy loading, silent assignment, dan akses atribut yang tidak ada.
+         * Kita matikan fitur ini khusus di environment 'production'.
+         */
+        Model::shouldBeStrict(! $this->app->environment('production'));
 
-        // Kalau di Production (Live), paksa semua link jadi HTTPS
+        /**
+         * 🔥 THE REAL FIX: Paksa HTTPS di Production.
+         * Supaya redirect ganti bahasa nggak bikin web lo jadi teks JSON.
+         */
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }

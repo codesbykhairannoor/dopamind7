@@ -12,38 +12,51 @@ use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use App\Models\Waitlist; // 👈 Import Model Waitlist
 use Illuminate\Http\Request; // 👈 Import Request
-
 // --- UTILITY: SWITCH LANGUAGE ---
+// Perbaikan: Paksa redirect bersih agar tidak muncul teks JSON di Production
 Route::get('/lang/{locale}', function ($locale) {
     if (in_array($locale, ['id', 'en'])) {
         Session::put('locale', $locale);
+        Session::save(); // 🔥 Paksa simpan session ke database/file
+        app()->setLocale($locale);
     }
-    return back();
+
+    // Ambil URL asal, jika tidak ada atau mengandung loop, balik ke home
+    $url = url()->previous();
+    if (!$url || str_contains($url, '/lang/')) {
+        return redirect()->to('/');
+    }
+
+    // 🔥 JANGAN PAKE back(). Pake redirect()->to() biar header Inertia dibersihkan
+    return redirect()->to($url);
 })->name('lang.switch');
 
 // --- GROUP 1: PUBLIC PAGES (Guest) ---
 Route::get('/', function () {
+    // Jika sudah login, langsung lempar ke dashboard (Vue)
     if (auth()->check()) {
         return redirect()->route('dashboard');
     }
     
-    // Ganti Inertia dengan Blade View
+    // Landing page pake Blade
     return view('welcome'); 
 })->name('home');
 
-// 🔥 ROUTE BARU BUAT WAITLIST (Taruh sini aja)
+// 🔥 ROUTE WAITLIST
 Route::post('/waitlist', function (Request $request) {
     $validated = $request->validate([
         'email' => 'required|email|unique:waitlists,email'
     ]);
 
-    Waitlist::create($validated);
+    \App\Models\Waitlist::create($validated);
 
-    return back()->with('success', 'You have been added to the waitlist!');
+    return redirect()->back()->with('success', 'You have been added to the waitlist!');
 })->name('waitlist.store');
 
-// Ganti Inertia dengan Blade View
-Route::get('/about', fn () => view('about'))->name('about');
+// Route About pake Blade
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 
 // --- GROUP 2: SOCIAL LOGIN ---
 Route::get('/auth/google', [SocialController::class, 'redirect'])->name('google.login');
