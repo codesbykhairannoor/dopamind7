@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN'),
+    'domain' => env('SESSION_DOMAIN'), // set this to your production host (e.g. ".example.com")
 
     /*
     |--------------------------------------------------------------------------
@@ -166,9 +166,12 @@ return [
     | to the server if the browser has a HTTPS connection. This will keep
     | the cookie from being sent to you when it can't be done securely.
     |
+    |
+    | We default to true when APP_ENV=production so that cookies are marked
+    | secure automatically. You can still override via env var if needed.
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE'),
+    'secure' => env('SESSION_SECURE_COOKIE', env('APP_ENV') === 'production'),
 
     /*
     |--------------------------------------------------------------------------
