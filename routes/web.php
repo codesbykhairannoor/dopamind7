@@ -19,25 +19,23 @@ use Illuminate\Http\Request;
 Route::get('/lang/{locale}', function (Request $request, $locale) {
     if (in_array($locale, ['id', 'en'])) {
         Session::put('locale', $locale);
-        Session::save(); // Tulis ke database detik ini juga
+        Session::save(); // Mastiin session kesimpen detik ini juga
+        
+        // Simpan di cookie buat backup halaman Blade murni
+        cookie()->queue('selected_locale', $locale, 60 * 24 * 30); 
         App::setLocale($locale);
     }
 
-    $referer = $request->headers->get('referer');
-    
-    // 🔥 FIX ERROR ROUTE NOT FOUND: Pake url('/') bukan route('home')
-    if (!$referer || str_contains($referer, '/lang/')) {
-        $referer = url('/');
-    }
+    $referer = $request->headers->get('referer') ?? url('/');
 
-    // 🔥 JURUS TAMENG ANTI JSON & MODAL PAGE
+    // JURUS PAMUNGKAS: Kalau dari Inertia, harus pake Inertia::location 
+    // biar state SPA bener-bener ke-reset.
     if ($request->hasHeader('X-Inertia')) {
         return Inertia::location($referer);
     }
 
     return redirect()->to($referer);
-})->middleware('web')->name('lang.switch'); 
-
+})->middleware('web')->name('lang.switch');
 
 // --- GROUP 1: PUBLIC PAGES (Guest) ---
 Route::get('/', function () {

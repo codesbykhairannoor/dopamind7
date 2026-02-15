@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
 import { Link, usePage } from '@inertiajs/vue3'; // 'router' dihapus karena tidak dipakai lagi
+import { router } from '@inertiajs/vue3';
 
 // --- DATA USER & HALAMAN ---
 const page = usePage();
@@ -26,6 +27,11 @@ const switchLang = (lang) => {
 watch(() => page.url, () => {
     showingNavigationDropdown.value = false;
 });
+
+const handleLogout = () => {
+    // router.post akan otomatis menyertakan token CSRF terbaru
+    router.post(route('logout'));
+};
 </script>
 
 <template>
@@ -163,9 +169,9 @@ watch(() => page.url, () => {
                                 <button @click="switchLang('en')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
                             </div>
 
-                            <Link :href="route('logout')" method="post" as="button" type="button" class="w-full text-center py-3 text-rose-500 font-bold bg-rose-50 rounded-xl hover:bg-rose-100 transition">
-                                {{ $t('nav_logout') }}
-                            </Link>
+                          <button @click="handleLogout" type="button" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide">
+    {{ $t('nav_logout') }}
+</button>
                         </div>
                     </div>
                 </div>
