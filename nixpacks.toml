@@ -9,4 +9,4 @@ nixPkgs = ['php82', 'nodejs_20', 'npm']
 cmds = ['composer install --no-dev --optimize-autoloader', 'npm ci', 'npm run build']
 
 [phases.deploy]
-cmds = ['php artisan migrate --force', 'php artisan inertia:start-ssr & php artisan serve --host 0.0.0.0 --port $PORT']
+cmds = ['php artisan optimize:clear', 'php artisan migrate --force', 'php artisan serve --host 0.0.0.0 --port $PORT']
