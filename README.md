@@ -116,9 +116,16 @@ Before pushing to a live host make sure:
      request is an Inertia visit.
    * This eliminates the previous hack of looking at `X-Inertia` and manually
      returning `Inertia::location()`, which was the source of JSON dumps and
-     occasional modal loops.  With the simplified route, plain anchor clicks on the
+     modal loops.  With the simplified route, plain anchor clicks on the
      landing page work, and we always do a hard reload so the language change is
      fully respected.
+
+> **IMPORTANT:** after editing any JS-layouts (AuthenticatedLayout.vue or
+> GuestLayout.vue) you must rebuild frontend assets (`npm run dev` or
+> `npm run build`) and deploy the fresh output; stale bundles will continue to
+> call `router.visit` which reintroduces the JSON/modal behaviour.  Likewise,
+> clear any route/view/config caches on the server (`php artisan route:clear
+> view:clear config:cache`).
 
 4. **Other env vars**
    * `SESSION_LIFETIME`, `APP_URL` etc. should match your production domain.
