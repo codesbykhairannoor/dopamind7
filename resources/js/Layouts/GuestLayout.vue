@@ -1,5 +1,5 @@
 <script setup>
-import { Link, usePage, router } from '@inertiajs/vue3'; // <--- Tambah 'router' disini
+import { Link, usePage, router } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
 import { loadLanguageAsync } from 'laravel-vue-i18n'; 
 
@@ -24,7 +24,9 @@ const switchLang = (lang) => {
     });
 };
 
-const isActive = (routeName) => route().current(routeName);
+const isActive = (routeName) => {
+    return typeof route !== 'undefined' ? route().current(routeName) : false;
+};
 </script>
 
 <template>
@@ -33,59 +35,58 @@ const isActive = (routeName) => route().current(routeName);
         <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all animate-in slide-in-from-top-full duration-700">
             <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative">
                 
-                <Link :href="route('home')" class="group text-2xl font-black text-indigo-600 tracking-tighter flex items-center gap-2 hover:opacity-80 transition z-20">
-   <img 
-    src="/favicon.svg?v=2" 
-    alt="OneForMind Logo" 
-    width="32" 
-    height="32" 
-    class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
-/>
-    
-    <span>OneForMind<span class="text-indigo-400">.</span></span>
-</Link>
+                <a :href="route('home')" class="group text-2xl font-black text-indigo-600 tracking-tighter flex items-center gap-2 hover:opacity-80 transition z-20">
+                   <img 
+                    src="/favicon.svg?v=2" 
+                    alt="OneForMind Logo" 
+                    width="32" 
+                    height="32" 
+                    class="w-8 h-8 transition-transform duration-500 group-hover:rotate-[360deg] group-hover:scale-110"
+                   />
+                   <span>OneForMind<span class="text-indigo-400">.</span></span>
+                </a>
 
                 <div class="hidden md:flex items-center gap-2 font-medium text-sm absolute left-1/2 -translate-x-1/2">
-                    <Link 
-                        :href="route('home')" prefetch
+                    <a 
+                        :href="route('home')"
                         class="px-5 py-2.5 rounded-full transition-all duration-300"
                         :class="isActive('home') 
                             ? 'bg-brand-50 text-brand-600 font-bold shadow-sm ring-1 ring-brand-100' 
                             : 'text-gray-500 hover:text-brand-600 hover:bg-gray-50'"
                     >
                         {{ $t('nav_home') }}
-                    </Link>
+                    </a>
 
-                    <Link 
-                        :href="route('about')" prefetch
+                    <a 
+                        :href="route('about')"
                         class="px-5 py-2.5 rounded-full transition-all duration-300"
                         :class="isActive('about') 
                             ? 'bg-brand-50 text-brand-600 font-bold shadow-sm ring-1 ring-brand-100' 
                             : 'text-gray-500 hover:text-brand-600 hover:bg-gray-50'"
                     >
                         {{ $t('nav_about') }}
-                    </Link>
+                    </a>
                 </div>
 
                 <div class="hidden md:flex items-center gap-5 z-20">
                     
                     <div class="flex items-center bg-gray-100 rounded-full p-1 border border-gray-200">
                         <button
-    @click="switchLang('id')" prefetch
-    class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
-    :class="currentLang === 'id' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
-    aria-label="Switch language to Indonesian"
->
-    ID 
-</button>
-<button
-    @click="switchLang('en')" prefetch
-    class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
-    :class="currentLang === 'en' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
-    aria-label="Switch language to English"
->
-    EN
-</button>
+                            @click="switchLang('id')"
+                            class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
+                            :class="currentLang === 'id' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
+                            aria-label="Switch language to Indonesian"
+                        >
+                            ID 
+                        </button>
+                        <button
+                            @click="switchLang('en')"
+                            class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300"
+                            :class="currentLang === 'en' ? 'bg-white text-brand-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'"
+                            aria-label="Switch language to English"
+                        >
+                            EN
+                        </button>
                         
                     </div>
 
@@ -107,32 +108,32 @@ const isActive = (routeName) => route().current(routeName);
                 </div>
 
                <button 
-    @click="mobileMenuOpen = !mobileMenuOpen" 
-    class="md:hidden text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition z-20"
-    aria-label="Toggle mobile menu"
-    :aria-expanded="mobileMenuOpen"
->
-    <svg v-if="!mobileMenuOpen" aria-hidden="true" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-    <svg v-else aria-hidden="true" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-</button>
+                    @click="mobileMenuOpen = !mobileMenuOpen" 
+                    class="md:hidden text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition z-20"
+                    aria-label="Toggle mobile menu"
+                    :aria-expanded="mobileMenuOpen"
+                >
+                    <svg v-if="!mobileMenuOpen" aria-hidden="true" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg v-else aria-hidden="true" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
             </div>
             
             <div v-show="mobileMenuOpen" class="md:hidden bg-white border-b border-gray-100 p-6 shadow-xl animate-in slide-in-from-top-5 duration-300">
                  <div class="flex flex-col gap-4 text-center font-bold text-gray-600">
-                     <Link 
+                     <a 
                         :href="route('home')" 
                         class="py-2 rounded-xl transition"
                         :class="isActive('home') ? 'bg-brand-50 text-brand-600' : ''"
                     >
                         {{ $t('nav_home') }}
-                    </Link>
-                     <Link 
+                    </a>
+                     <a 
                         :href="route('about')" 
                         class="py-2 rounded-xl transition"
                         :class="isActive('about') ? 'bg-brand-50 text-brand-600' : ''"
                     >
                         {{ $t('nav_about') }}
-                    </Link>
+                    </a>
                      
                      <hr class="border-gray-100 my-2">
 

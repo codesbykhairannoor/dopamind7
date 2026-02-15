@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
 
@@ -41,6 +41,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        // 🔥 Memaksa keluar dari mode SPA dan memuat ulang halaman secara penuh ke Blade
+        return Inertia::location('/');
     }
 }

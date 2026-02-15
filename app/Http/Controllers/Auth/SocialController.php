@@ -27,7 +27,9 @@ class SocialController extends Controller
             if ($user) {
                 // LOGIN DENGAN REMEMBER ME TRUE
                 Auth::login($user, true);
-                return redirect()->intended('/dashboard');
+                
+                // 🔥 GANTI: Paksa langsung ke dashboard, jangan pakai intended()
+                return redirect()->route('dashboard');
             } 
 
             // Cek berdasarkan email jika google_id belum ada
@@ -43,7 +45,7 @@ class SocialController extends Controller
                     'email' => $googleUser->email,
                     'google_id' => $googleUser->id,
                     'password' => bcrypt(Str::random(16)),
-                    // Inisialisasi settings default jika diperlukan
+                    // Inisialisasi settings default
                     'settings' => [
                         'modules' => [
                             'habit' => true,
@@ -55,10 +57,14 @@ class SocialController extends Controller
                 Auth::login($newUser, true);
             }
 
-            return redirect()->intended('/dashboard');
+            // 🔥 GANTI: Paksa langsung ke dashboard
+            return redirect()->route('dashboard');
 
         } catch (\Exception $e) {
-            return redirect('/login')->with('error', 'Login Google Gagal: ' . $e->getMessage());
+            // 🔥 GANTI SEMENTARA: Biar error-nya kelihatan jelas di layar, nggak disembunyiin
+            dd('ERROR GOOGLE LOGIN: ' . $e->getMessage());
+            
+            // return redirect('/login')->with('error', 'Login Google Gagal: ' . $e->getMessage());
         }
     }
 }

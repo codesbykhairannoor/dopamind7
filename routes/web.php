@@ -26,10 +26,9 @@ Route::get('/', function () {
     if (auth()->check()) {
         return redirect()->route('dashboard');
     }
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
+    
+    // Ganti Inertia dengan Blade View
+    return view('welcome'); 
 })->name('home');
 
 // 🔥 ROUTE BARU BUAT WAITLIST (Taruh sini aja)
@@ -43,7 +42,8 @@ Route::post('/waitlist', function (Request $request) {
     return back()->with('success', 'You have been added to the waitlist!');
 })->name('waitlist.store');
 
-Route::get('/about', fn () => Inertia::render('About'))->name('about');
+// Ganti Inertia dengan Blade View
+Route::get('/about', fn () => view('about'))->name('about');
 
 // --- GROUP 2: SOCIAL LOGIN ---
 Route::get('/auth/google', [SocialController::class, 'redirect'])->name('google.login');
