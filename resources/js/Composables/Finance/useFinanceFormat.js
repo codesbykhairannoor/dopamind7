@@ -2,9 +2,13 @@ import { ref, computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { getActiveLanguage } from 'laravel-vue-i18n';
 
-// State global untuk MATA UANG (Bukan Bahasa Aplikasi)
-const activeCurrency = ref(localStorage.getItem('finance_currency') || 'IDR');
-const currencyLocale = ref(localStorage.getItem('finance_locale') || 'id-ID');
+// Helper untuk cek apakah kita sedang di browser atau di server (SSR)
+const isBrowser = typeof window !== 'undefined';
+
+// State global dengan proteksi SSR
+// Jika di server, kita kasih nilai default dulu
+const activeCurrency = ref(isBrowser ? (localStorage.getItem('finance_currency') || 'IDR') : 'IDR');
+const currencyLocale = ref(isBrowser ? (localStorage.getItem('finance_locale') || 'id-ID') : 'id-ID');
 
 export function useFinanceFormat() {
     
@@ -12,7 +16,7 @@ export function useFinanceFormat() {
     const appLocale = computed(() => {
         const page = usePage();
         // Cek props locale dari Inertia, atau fallback ke library, atau default 'id'
-        return page.props.locale || getActiveLanguage() || 'id';
+        return page?.props?.locale || getActiveLanguage() || 'id';
     });
 
     const supportedCurrencies = [
@@ -23,16 +27,19 @@ export function useFinanceFormat() {
         { code: 'JPY', locale: 'ja-JP', label: 'Yen (¥)', icon: '🇯🇵' },
     ];
 
-    const needsDecimal = ['USD', 'GBP', 'EUR'].includes(activeCurrency.value);
+    const needsDecimal = computed(() => ['USD', 'GBP', 'EUR'].includes(activeCurrency.value));
 
     const setCurrency = (code) => {
         const target = supportedCurrencies.find(c => c.code === code);
         if (target) {
             activeCurrency.value = target.code;
             currencyLocale.value = target.locale;
-            localStorage.setItem('finance_currency', target.code);
-            localStorage.setItem('finance_locale', target.locale);
-            // window.location.reload(); 
+            
+            // Cek browser sebelum nulis ke localStorage
+            if (isBrowser) {
+                localStorage.setItem('finance_currency', target.code);
+                localStorage.setItem('finance_locale', target.locale);
+            }
         }
     };
 
@@ -53,8 +60,8 @@ export function useFinanceFormat() {
         return new Intl.NumberFormat(currencyLocale.value, {
             style: 'currency', 
             currency: activeCurrency.value, 
-            minimumFractionDigits: needsDecimal ? 2 : 0, 
-            maximumFractionDigits: needsDecimal ? 2 : 0
+            minimumFractionDigits: needsDecimal.value ? 2 : 0, 
+            maximumFractionDigits: needsDecimal.value ? 2 : 0
         }).format(number);
     };
 
@@ -79,7 +86,7 @@ export function useFinanceFormat() {
 
     return {
         activeCurrency,
-        appLocale, // Export Reactive Locale
+        appLocale, 
         supportedCurrencies,
         setCurrency,
         formatMoney,

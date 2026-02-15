@@ -78,7 +78,7 @@
 
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 fill-mode-both">
-                <h2 class="text-indigo-400 font-bold tracking-widest uppercase mb-2 text-sm">{{ __('manifesto_badge') }}</h2>
+                <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-2 text-sm">{{ __('manifesto_badge') }}</h2>
                 <h3 class="text-4xl md:text-5xl font-black">{{ __('manifesto_title') }}</h3>
             </div>
 
@@ -119,7 +119,7 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-indigo-950">{{ __('dev_name') }}</h3>
-                            <span class="text-xs font-bold tracking-wider text-indigo-500 uppercase bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
+                            <span class="text-xs font-bold tracking-wider text-indigo-600 uppercase bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">
                                 {{ __('dev_role') }}
                             </span>
                         </div>
@@ -172,7 +172,7 @@
                     {{ __('cta_about_btn') }}
                 </a>
             </div>
-            <p class="mt-6 text-sm text-indigo-400">{{ __('cta_about_sub') }}</p>
+            <p class="mt-6 text-sm text-indigo-600">{{ __('cta_about_sub') }}</p>
         </div>
     </div>
 @endsection

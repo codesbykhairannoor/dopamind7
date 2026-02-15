@@ -291,7 +291,7 @@
                 <a href="{{ route('register') }}" class="inline-block bg-white text-indigo-950 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl">
                     {{ __('cta_final_btn') }}
                 </a>
-                <p class="mt-8 text-sm text-indigo-300 font-medium">{{ __('cta_final_sub') }}</p>
+                <p class="mt-8 text-sm text-indigo-600 font-medium">{{ __('cta_final_sub') }}</p>
             </div>
         </div>
     </section>

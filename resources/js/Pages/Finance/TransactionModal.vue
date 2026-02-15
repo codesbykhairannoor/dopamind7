@@ -47,7 +47,6 @@ const currencySymbol = computed(() => {
 // --- LOGIC TAMPILAN TANGGAL DI INPUT ---
 const dateDisplay = computed(() => {
     if (!props.form.date) return '';
-    // Ambil locale code (id, en)
     const loc = appLocale.value ? appLocale.value.split('-')[0] : 'id';
     return dayjs(props.form.date).locale(loc).format('dddd, DD MMMM YYYY');
 });
@@ -82,11 +81,12 @@ const onInput = (e) => {
 
 <template>
     <Teleport to="body">
-        <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div v-if="show" class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
             
             <div @click="close" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
             
-            <div class="bg-white w-full max-w-md rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200 border border-slate-100 relative overflow-visible"> <div class="flex justify-between items-center mb-6">
+            <div class="bg-white w-full max-w-md rounded-[2rem] shadow-2xl z-10 p-6 animate-in slide-in-from-bottom-10 sm:zoom-in-95 duration-200 border border-slate-100 relative overflow-visible"> 
+                <div class="flex justify-between items-center mb-6">
                     <h3 class="text-xl font-black text-slate-800">✨ {{ $t('record_transaction') }}</h3>
                     <button @click="close" class="bg-slate-50 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition">✕</button>
                 </div>
@@ -114,8 +114,8 @@ const onInput = (e) => {
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
+                    <div class="flex flex-col sm:grid sm:grid-cols-2 gap-4">
+                        <div class="w-full">
                             <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">{{ $t('category') }}</label>
                             <div class="relative">
                                 <select v-model="form.category" class="w-full pl-4 pr-8 py-3.5 rounded-2xl bg-slate-50 border-none focus:ring-2 focus:ring-indigo-500 font-bold text-slate-700 capitalize text-sm appearance-none cursor-pointer hover:bg-slate-50">
@@ -126,10 +126,9 @@ const onInput = (e) => {
                                 </select>
                                 <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">▼</div>
                             </div>
-                            <p v-if="form.type === 'expense' && availableCategories.length === 0" class="text-[9px] text-rose-500 mt-1">{{ $t('create_budget_first') }}</p>
                         </div>
 
-                        <div class="relative">
+                        <div class="relative w-full">
                             <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">{{ $t('date') }}</label>
                             
                             <button 
@@ -150,7 +149,7 @@ const onInput = (e) => {
                                 leave-from-class="opacity-100 translate-y-0"
                                 leave-to-class="opacity-0 translate-y-2"
                             >
-                                <div v-if="showDatePicker" class="absolute bottom-full right-0 mb-2 z-50 shadow-2xl rounded-3xl origin-bottom-right">
+                                <div v-if="showDatePicker" class="absolute bottom-full right-0 sm:right-0 mb-2 z-50 shadow-2xl rounded-3xl origin-bottom sm:origin-bottom-right">
                                     <FinanceDatePicker 
                                         :show="true" 
                                         :modelValue="form.date"

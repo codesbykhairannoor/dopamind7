@@ -33,31 +33,32 @@
     "/build/assets/TextInput-BNWZnSh4.js"
   ],
   "resources/js/Composables/Finance/useFinanceCalendar.js": [
-    "/build/assets/Index-DHpJ35Bo.js"
+    "/build/assets/Index-CIRLx4MM.js"
   ],
   "resources/js/Composables/Finance/useFinanceChart.js": [
-    "/build/assets/DailyTrendChart-CZScDsjQ.js"
+    "/build/assets/DailyTrendChart-CXp2VHmQ.js",
+    "/build/assets/DailyTrendChart-BK2I52By.css"
   ],
   "resources/js/Composables/Finance/useFinanceForm.js": [
-    "/build/assets/FinanceInsights-VaiDV3_T.js",
+    "/build/assets/FinanceInsights-CpA838YJ.js",
     "/build/assets/FinanceInsights-DYltIiwF.css"
   ],
   "resources/js/Composables/Finance/useFinanceFormat.js": [
-    "/build/assets/useFinanceFormat-DRbxJZsx.js"
+    "/build/assets/useFinanceFormat-CRSb1fg_.js"
   ],
   "resources/js/Composables/Finance/useFinanceHistory.js": [
-    "/build/assets/useFinanceHistory-YqpF_siy.js"
+    "/build/assets/useFinanceHistory-BTN46c6X.js"
   ],
   "resources/js/Composables/Habits/useHabitCore.js": [
-    "/build/assets/Index-7FrLt7Sl.js",
+    "/build/assets/Index-BigGI7pO.js",
     "/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Habits/useHabitDates.js": [
-    "/build/assets/Index-7FrLt7Sl.js",
+    "/build/assets/Index-BigGI7pO.js",
     "/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Habits/useHabitModals.js": [
-    "/build/assets/Index-7FrLt7Sl.js",
+    "/build/assets/Index-BigGI7pO.js",
     "/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Planner/usePlanner.js": [
@@ -73,7 +74,7 @@
     "/build/assets/Index-DakZOWVE.js"
   ],
   "resources/js/Composables/useHabits.js": [
-    "/build/assets/Index-7FrLt7Sl.js",
+    "/build/assets/Index-BigGI7pO.js",
     "/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Layouts/AuthenticatedLayout.vue": [
@@ -110,55 +111,60 @@
     "/build/assets/Error-CR45xnbP.js"
   ],
   "resources/js/Pages/Finance/ArchiveModal.vue": [
-    "/build/assets/ArchiveModal-C7OlW1zb.js",
+    "/build/assets/ArchiveModal-9Jsuj87o.js",
     "/build/assets/ArchiveModal-Cco3n92g.css"
   ],
   "resources/js/Pages/Finance/ArchiveModal.vue?vue&type=style&index=0&scoped=4de5cc17&lang.css": [
-    "/build/assets/ArchiveModal-C7OlW1zb.js",
+    "/build/assets/ArchiveModal-9Jsuj87o.js",
     "/build/assets/ArchiveModal-Cco3n92g.css"
   ],
   "resources/js/Pages/Finance/BudgetModal.vue": [
-    "/build/assets/BudgetModal-CPSHdw4j.js"
+    "/build/assets/BudgetModal-CfxiaRiu.js"
   ],
   "resources/js/Pages/Finance/BudgetSidebar.vue": [
-    "/build/assets/BudgetSidebar-B2P1x4ya.js"
+    "/build/assets/BudgetSidebar-DTOzfZFR.js"
   ],
   "resources/js/Pages/Finance/CategoryModal.vue": [
     "/build/assets/CategoryModal-DYpCHnR4.js"
   ],
   "resources/js/Pages/Finance/DailyTrendChart.vue": [
-    "/build/assets/DailyTrendChart-CZScDsjQ.js"
+    "/build/assets/DailyTrendChart-CXp2VHmQ.js",
+    "/build/assets/DailyTrendChart-BK2I52By.css"
+  ],
+  "resources/js/Pages/Finance/DailyTrendChart.vue?vue&type=style&index=0&scoped=6de8d020&lang.css": [
+    "/build/assets/DailyTrendChart-CXp2VHmQ.js",
+    "/build/assets/DailyTrendChart-BK2I52By.css"
   ],
   "resources/js/Pages/Finance/FinanceDatePicker.vue": [
-    "/build/assets/FinanceDatePicker-Br0HfQLf.js"
+    "/build/assets/FinanceDatePicker-St-Mq15S.js"
   ],
   "resources/js/Pages/Finance/FinanceHeader.vue": [
-    "/build/assets/FinanceHeader-CT14ESXS.js",
-    "/build/assets/FinanceHeader-BWEIWJro.css"
+    "/build/assets/FinanceHeader-BJ8CV00e.js",
+    "/build/assets/FinanceHeader-CutOREAj.css"
   ],
-  "resources/js/Pages/Finance/FinanceHeader.vue?vue&type=style&index=0&scoped=6dd38b8c&lang.css": [
-    "/build/assets/FinanceHeader-CT14ESXS.js",
-    "/build/assets/FinanceHeader-BWEIWJro.css"
+  "resources/js/Pages/Finance/FinanceHeader.vue?vue&type=style&index=0&scoped=8e87cac6&lang.css": [
+    "/build/assets/FinanceHeader-BJ8CV00e.js",
+    "/build/assets/FinanceHeader-CutOREAj.css"
   ],
   "resources/js/Pages/Finance/FinanceInsights.vue": [
-    "/build/assets/FinanceInsights-VaiDV3_T.js",
+    "/build/assets/FinanceInsights-CpA838YJ.js",
     "/build/assets/FinanceInsights-DYltIiwF.css"
   ],
   "resources/js/Pages/Finance/FinanceInsights.vue?vue&type=style&index=0&scoped=4f7bd725&lang.css": [
-    "/build/assets/FinanceInsights-VaiDV3_T.js",
+    "/build/assets/FinanceInsights-CpA838YJ.js",
     "/build/assets/FinanceInsights-DYltIiwF.css"
   ],
   "resources/js/Pages/Finance/FinanceStats.vue": [
-    "/build/assets/FinanceStats-CszjiDeO.js"
+    "/build/assets/FinanceStats-DtovxEUs.js"
   ],
   "resources/js/Pages/Finance/Index.vue": [
-    "/build/assets/Index-DHpJ35Bo.js"
+    "/build/assets/Index-CIRLx4MM.js"
   ],
   "resources/js/Pages/Finance/TransactionList.vue": [
-    "/build/assets/TransactionList-RfOAvGPD.js"
+    "/build/assets/TransactionList-DbmE5xgI.js"
   ],
   "resources/js/Pages/Finance/TransactionModal.vue": [
-    "/build/assets/TransactionModal-DZ3y--1h.js"
+    "/build/assets/TransactionModal-Ct0_JNG9.js"
   ],
   "resources/js/Pages/Habits/HabitGrid.vue": [
     "/build/assets/HabitGrid-DS2mRgp4.js",
@@ -169,12 +175,12 @@
     "/build/assets/HabitGrid-D1Jq9Pnv.css"
   ],
   "resources/js/Pages/Habits/HabitHeader.vue": [
-    "/build/assets/HabitHeader-DWnXSHLa.js",
-    "/build/assets/HabitHeader-C-JAT9GR.css"
+    "/build/assets/HabitHeader-D7De_7e0.js",
+    "/build/assets/HabitHeader-D6anQaGl.css"
   ],
-  "resources/js/Pages/Habits/HabitHeader.vue?vue&type=style&index=0&scoped=65b12d59&lang.css": [
-    "/build/assets/HabitHeader-DWnXSHLa.js",
-    "/build/assets/HabitHeader-C-JAT9GR.css"
+  "resources/js/Pages/Habits/HabitHeader.vue?vue&type=style&index=0&scoped=fb04fb9a&lang.css": [
+    "/build/assets/HabitHeader-D7De_7e0.js",
+    "/build/assets/HabitHeader-D6anQaGl.css"
   ],
   "resources/js/Pages/Habits/HabitModals.vue": [
     "/build/assets/HabitModals-Ctd51TO4.js"
@@ -188,11 +194,11 @@
     "/build/assets/HabitStats-CHsK7-sK.css"
   ],
   "resources/js/Pages/Habits/Index.vue": [
-    "/build/assets/Index-7FrLt7Sl.js",
+    "/build/assets/Index-BigGI7pO.js",
     "/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Pages/Habits/Index.vue?vue&type=style&index=0&lang.css": [
-    "/build/assets/Index-7FrLt7Sl.js",
+    "/build/assets/Index-BigGI7pO.js",
     "/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Pages/Planner/Index.vue": [
