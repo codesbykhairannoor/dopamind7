@@ -33,6 +33,7 @@ class HandleLocalization
                     // Tembak API gratisan (ip-api.com)
                     // Timeout 2 detik aja, biar kalau API mati, web kita gak ikut lemot
                     $response = Http::timeout(2)->get("http://ip-api.com/json/{$ip}");
+                    $response = Http::timeout(2)->get("https://demo.ip-api.com/json/{$ip}");
 
                     if ($response->successful()) {
                         $data = $response->json();
