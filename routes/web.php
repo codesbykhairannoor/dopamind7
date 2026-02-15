@@ -12,35 +12,23 @@ use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
 use App\Models\Waitlist; // 👈 Import Model Waitlist
 use Illuminate\Http\Request; // 👈 Import Request
-// use Inertia\Inertia; // already imported above, duplicate removed
-// --- UTILITY: SWITCH LANGUAGE ---
-// Perbaikan: response harus sensitif terhadap Inertia
-// di production Inertia masih menganggap ini request AJAX karena
-// `X-Inertia` header tersisa, sehingga kita kadang mendapat JSON
-// dan modal yang terbuka.
-// solusinya: pakai `Inertia::location()` untuk *paksa reload penuh*.
+
+// BAHASA
+// simpler implementation: always redirect back to previous URL or home.
+// Inertia middleware will translate the 302 into a X-Inertia-Location when
+// appropriate, so we don't need to handle it manually.
 Route::get('/lang/{locale}', function (Request $request, $locale) {
     if (in_array($locale, ['id', 'en'])) {
-        Session::put('locale', $locale);
-        Session::save(); // 🔥 Paksa simpan session ke database/file
+        session()->put('locale', $locale);
         app()->setLocale($locale);
     }
 
-    // Ambil URL asal, jika tidak ada atau mengandung loop, balik ke home
-    $url = url()->previous();
-    if (!$url || str_contains($url, '/lang/')) {
-        // Inertia::location akan menghasilkan redirect JavaScript
-        return $request->header('X-Inertia') ? Inertia::location(route('home')) : redirect()->to('/');
+    $referer = $request->headers->get('referer');
+    if (!$referer || str_contains($referer, '/lang/')) {
+        return redirect()->route('home');
     }
 
-    // Jika ini datang dari Inertia (SPA), kita ingin memaksa
-    // browser melakukan full reload dan menghapus header Inertia.
-    if ($request->header('X-Inertia')) {
-        return Inertia::location($url);
-    }
-
-    // Default: normal redirect biasa (guest atau non-Inertia)
-    return redirect()->to($url);
+    return redirect()->to($referer);
 })->name('lang.switch');
 
 // --- GROUP 1: PUBLIC PAGES (Guest) ---

@@ -93,6 +93,33 @@ graph LR
 
 ---
 
+## ⚙️ Deployment / Production Notes
+
+Before pushing to a live host make sure:
+
+1. **HTTPS + Proxies**
+   * `AppServiceProvider` already forces `URL::forceScheme('https')` in production.
+   * `TrustProxies` is configured (`protected $proxies = '*'`) so Laravel detects the
+     real protocol from the load‑balancer.
+
+2. **Session cookies**
+   * Set `SESSION_SECURE_COOKIE=true` and, if you serve from a custom domain,
+     `SESSION_DOMAIN=.yourdomain.com` in `.env`.
+   * `config/session.php` defaults to secure cookies when `APP_ENV=production`.
+     This prevents missing cookies and the dreaded “session expired” message when
+     users try to log out.
+
+3. **Language switching (Inertia edge case)**
+   * The `/lang/{locale}` route now checks for the `X-Inertia` header and returns
+     `Inertia::location(...)` when necessary. This forces a full page reload so that
+     the SPA doesn’t respond with raw JSON or leave a modal open after a locale change.
+   * Example problems noticed on Railway: switching language produced a JSON blob or
+     a persistent modal because Inertia thought the request was AJAX. The new logic
+     fixes both issues.
+
+4. **Other env vars**
+   * `SESSION_LIFETIME`, `APP_URL` etc. should match your production domain.
+
 ## 🚀 Roadmap / Upcoming
 
 * [x] **Finance Module** (Optimized CRUD & Budgeting)

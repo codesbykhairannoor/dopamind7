@@ -6,54 +6,46 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Session; // 🔥 Kita butuh ini buat nembak API
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class HandleLocalization
 {
     public function handle(Request $request, Closure $next): Response
     {
-        // 1. Cek apakah session locale SUDAH ADA?
+        // 1. PRIORITAS UTAMA: Jika session sudah ada, pakai itu dan LANGSUNG LANJUT.
+        // Ini mencegah "bahasa mental balik ke English" setelah 1 detik di Production.
         if (Session::has('locale')) {
-            // Kalau ada (user pernah ganti manual atau sudah dideteksi sebelumnya), pakai itu.
             App::setLocale(Session::get('locale'));
-        } else {
-            // 2. Kalau BELUM ADA (Pengunjung Baru), kita deteksi lokasinya
-            try {
-                // Default bahasa Inggris dulu
-                $detectedLocale = 'en';
+            return $next($request); 
+        }
 
-                // Ambil IP User
-                $ip = $request->ip();
+        // 2. Jika BELUM ADA Session (Pengunjung Baru), baru deteksi lokasi
+        try {
+            $detectedLocale = 'en'; // Default
+            $ip = $request->ip();
 
-                // ⚠️ PENTING: Kalau di Localhost (127.0.0.1), IP API gak bisa deteksi.
-                // Jadi kita skip request API kalau di localhost biar gak error.
-                if ($ip !== '127.0.0.1' && $ip !== '::1') {
+            // Skip deteksi jika di localhost
+            if ($ip !== '127.0.0.1' && $ip !== '::1') {
+                // Gunakan HTTPS (Wajib di Railway)
+                $response = Http::timeout(2)->get("https://ipapi.co/{$ip}/json/");
 
-                    // Tembak API gratisan (ip-api.com)
-                    // Timeout 2 detik aja, biar kalau API mati, web kita gak ikut lemot
-                    $response = Http::timeout(2)->get("http://ip-api.com/json/{$ip}");
-                    $response = Http::timeout(2)->get("https://demo.ip-api.com/json/{$ip}");
-
-                    if ($response->successful()) {
-                        $data = $response->json();
-
-                        // Cek Country Code-nya
-                        if (isset($data['countryCode']) && $data['countryCode'] === 'ID') {
-                            $detectedLocale = 'id';
-                        }
+                if ($response->successful()) {
+                    $data = $response->json();
+                    // ipapi.co menggunakan 'country_code'
+                    if (isset($data['country_code']) && $data['country_code'] === 'ID') {
+                        $detectedLocale = 'id';
                     }
                 }
-
-                // 3. Simpan hasil deteksi ke Session & App
-                Session::put('locale', $detectedLocale);
-                App::setLocale($detectedLocale);
-
-            } catch (\Exception $e) {
-                // Kalau ada error (internet putus/API down), fallback ke Inggris aman
-                Session::put('locale', 'en');
-                App::setLocale('en');
             }
+
+            // 3. Simpan hasil deteksi ke Session agar request berikutnya gak nembak API lagi
+            Session::put('locale', $detectedLocale);
+            Session::save(); // Paksa tulis ke storage
+            App::setLocale($detectedLocale);
+
+        } catch (\Exception $e) {
+            App::setLocale('en');
         }
 
         return $next($request);

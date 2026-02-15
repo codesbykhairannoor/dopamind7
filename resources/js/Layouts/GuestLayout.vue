@@ -12,16 +12,9 @@ const currentLang = computed(() => page.props.locale || 'id');
 
 // --- FUNGSI GANTI BAHASA (FIXED) ---
 const switchLang = (lang) => {
-    // Kita pake 'router.visit' biar session PHP bener-bener kesimpen dulu
-    // baru halaman otomatis reload.
-    router.visit(route('lang.switch', lang), {
-        method: 'get',
-        preserveScroll: true, // Biar gak scroll ke atas lagi
-        onSuccess: () => {
-            // Setelah sukses reload dari server, baru ganti kamus di frontend
-            loadLanguageAsync(lang);
-        }
-    });
+    // bypass Inertia completely – full reload ensures the new locale is
+    // read from the session and removes any chance of partial JSON output.
+    window.location.href = route('lang.switch', lang);
 };
 
 const isActive = (routeName) => {

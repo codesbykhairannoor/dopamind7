@@ -17,11 +17,9 @@ const showModule = (moduleName) => {
 };
 
 const switchLang = (lang) => {
-    router.visit(route('lang.switch', lang), {
-        method: 'get',
-        preserveScroll: true,
-        onSuccess: () => loadLanguageAsync(lang)
-    });
+    // perform a full page reload; avoids Inertia edge-cases and
+    // eliminates the brief 'flash' of wrong language on the client.
+    window.location.href = route('lang.switch', lang);
 };
 
 // Tutup menu otomatis saat pindah halaman
