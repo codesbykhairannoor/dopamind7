@@ -110,12 +110,15 @@ Before pushing to a live host make sure:
      users try to log out.
 
 3. **Language switching (Inertia edge case)**
-   * The `/lang/{locale}` route now checks for the `X-Inertia` header and returns
-     `Inertia::location(...)` when necessary. This forces a full page reload so that
-     the SPA doesn’t respond with raw JSON or leave a modal open after a locale change.
-   * Example problems noticed on Railway: switching language produced a JSON blob or
-     a persistent modal because Inertia thought the request was AJAX. The new logic
-     fixes both issues.
+   * The `/lang/{locale}` route now simply sets `session('locale')` and performs a
+     normal `redirect()->back()` (or home if no referer).  Inertia's middleware will
+     automatically convert that redirect into a proper client-side location when the
+     request is an Inertia visit.
+   * This eliminates the previous hack of looking at `X-Inertia` and manually
+     returning `Inertia::location()`, which was the source of JSON dumps and
+     occasional modal loops.  With the simplified route, plain anchor clicks on the
+     landing page work, and we always do a hard reload so the language change is
+     fully respected.
 
 4. **Other env vars**
    * `SESSION_LIFETIME`, `APP_URL` etc. should match your production domain.

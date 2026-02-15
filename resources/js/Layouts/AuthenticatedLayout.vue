@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
-import { Link, usePage, router } from '@inertiajs/vue3';
-import { loadLanguageAsync } from 'laravel-vue-i18n';
+import { Link, usePage } from '@inertiajs/vue3'; // 'router' dihapus karena tidak dipakai lagi
 
 // --- DATA USER & HALAMAN ---
 const page = usePage();
@@ -11,14 +10,15 @@ const currentLang = computed(() => page.props.locale || 'id');
 // --- STATE NAVIGASI MOBILE ---
 const showingNavigationDropdown = ref(false);
 
-// Logic untuk filter menu
+// Logic untuk filter menu (dengan null safety)
 const showModule = (moduleName) => {
-    return user.value.settings?.modules?.[moduleName] !== false;
+    return user.value?.settings?.modules?.[moduleName] !== false;
 };
 
+// 🔥 JURUS PAMUNGKAS ANTI JSON & MODAL
 const switchLang = (lang) => {
-    // perform a full page reload; avoids Inertia edge-cases and
-    // eliminates the brief 'flash' of wrong language on the client.
+    // Memaksa browser reload penuh, membuang state Inertia lama,
+    // dan mengambil session bahasa baru dari server.
     window.location.href = route('lang.switch', lang);
 };
 
@@ -83,11 +83,11 @@ watch(() => page.url, () => {
 
                 <div class="flex items-center gap-3 pt-2 border-t border-slate-200/50">
                     <div class="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-md shadow-indigo-200">
-                        {{ user.name.charAt(0).toUpperCase() }}
+                        {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
                     </div>
                     <div class="flex-1 overflow-hidden">
-                        <p class="text-xs font-bold text-indigo-950 truncate">{{ user.name }}</p>
-                        <Link :href="route('logout')" method="post" as="button" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide">
+                        <p class="text-xs font-bold text-indigo-950 truncate">{{ user?.name || 'User' }}</p>
+                        <Link :href="route('logout')" method="post" as="button" type="button" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide">
                             {{ $t('nav_logout') }}
                         </Link>
                     </div>
@@ -159,11 +159,11 @@ watch(() => page.url, () => {
 
                         <div class="border-t border-slate-100 my-4 pt-4">
                             <div class="flex gap-2 px-2 mb-6">
-                                <button @click="switchLang('id')" prefetch class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDONESIA</button>
-                                <button @click="switchLang('en')" prefetch class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
+                                <button @click="switchLang('id')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDONESIA</button>
+                                <button @click="switchLang('en')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
                             </div>
 
-                            <Link :href="route('logout')" prefetch method="post" as="button" class="w-full text-center py-3 text-rose-500 font-bold bg-rose-50 rounded-xl hover:bg-rose-100 transition">
+                            <Link :href="route('logout')" method="post" as="button" type="button" class="w-full text-center py-3 text-rose-500 font-bold bg-rose-50 rounded-xl hover:bg-rose-100 transition">
                                 {{ $t('nav_logout') }}
                             </Link>
                         </div>

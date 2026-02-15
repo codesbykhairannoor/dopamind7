@@ -13,21 +13,29 @@ use Inertia\Inertia;
 use App\Models\Waitlist; // 👈 Import Model Waitlist
 use Illuminate\Http\Request; // 👈 Import Request
 
-// BAHASA
-// simpler implementation: always redirect back to previous URL or home.
-// Inertia middleware will translate the 302 into a X-Inertia-Location when
-// appropriate, so we don't need to handle it manually.
+
 Route::get('/lang/{locale}', function (Request $request, $locale) {
     if (in_array($locale, ['id', 'en'])) {
         session()->put('locale', $locale);
+        session()->save(); // make sure it's written before the redirect
         app()->setLocale($locale);
     }
 
     $referer = $request->headers->get('referer');
+    
+    // Safety check biar nggak infinite loop
     if (!$referer || str_contains($referer, '/lang/')) {
-        return redirect()->route('home');
+        $referer = route('home');
     }
 
+    // 🔥 FIX JSON & MODAL PAGE:
+    // Cek apakah request datang dari Vue (Inertia) atau dari Blade.
+    // Jika dari Inertia, pakai location() untuk paksa Hard Reload di browser.
+    if ($request->hasHeader('X-Inertia')) {
+        return Inertia::location($referer);
+    }
+
+    // Jika dari Blade (Landing page), lakukan redirect biasa.
     return redirect()->to($referer);
 })->name('lang.switch');
 
@@ -48,7 +56,7 @@ Route::post('/waitlist', function (Request $request) {
         'email' => 'required|email|unique:waitlists,email'
     ]);
 
-    \App\Models\Waitlist::create($validated);
+    Waitlist::create($validated);
 
     return redirect()->back()->with('success', 'You have been added to the waitlist!');
 })->name('waitlist.store');
