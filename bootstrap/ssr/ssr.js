@@ -11,6 +11,28 @@ const nav_register$2 = "Get Started";
 const nav_dashboard$2 = "Dashboard";
 const nav_settings$1 = "App Settings";
 const nav_logout$1 = "Log Out";
+const seo_meta_desc_1$1 = "Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.";
+const seo_about_desc$1 = "Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.";
+const footer_legal$1 = "Privacy & Terms";
+const legal_title$1 = "Legal Information";
+const legal_ref$1 = "Official Privacy Reference:";
+const privacy_title$1 = "Privacy Policy for Oneformind";
+const privacy_p1$1 = "At Oneformind, accessible from https://oneformind.com, one of our main priorities is the privacy of our visitors.";
+const privacy_consent_title$1 = "Consent";
+const privacy_consent_p$1 = "By using our website, you hereby consent to our Privacy Policy and agree to its terms.";
+const privacy_info_title$1 = "Information we collect";
+const privacy_info_p$1 = "The personal information that you are asked to provide will be made clear to you at the point we ask you to provide it.";
+const tos_title$1 = "Terms of Service";
+const tos_intro$1 = "By accessing and using Oneformind, you agree to be bound by the following terms:";
+const tos_service_title$1 = "1. Service Availability";
+const tos_service_p$1 = 'Oneformind is provided on an "as is" and "as available" basis. While we strive for maximum uptime, we do not guarantee that the service will be uninterrupted, error-free, or completely secure.';
+const tos_data_title$1 = "2. Data Accuracy & Responsibility";
+const tos_data_p$1 = "You are solely responsible for the financial, habit, and planner data you input. Oneformind is a productivity tool, not a certified financial advisor. We are not liable for any financial losses or decisions made based on the data displayed.";
+const tos_security_title$1 = "3. Fair Use & Security";
+const tos_security_p$1 = "Users are strictly prohibited from attempting to breach system security, conducting SQL injections, scraping data, or disrupting the platform's infrastructure.";
+const tos_termination_title$1 = "4. Account Termination";
+const tos_termination_p$1 = "We reserve the right to suspend or terminate accounts immediately, without prior notice, if a user is found violating these terms or abusing system resources.";
+const legal_close$1 = "Close & Understand";
 const hero_badge$2 = "✨ v1.0: The Anti-Burnout System";
 const hero_title_1$2 = "One System";
 const hero_title_2$2 = "For a Clear Mind.";
@@ -48,7 +70,7 @@ const sol_card_2_title$2 = "Money Flow";
 const sol_card_2_desc$2 = "Input expenses in just 3 seconds. 'Coffee - $2'. Done. See exactly where your money is leaking this month.";
 const sol_card_3_title$2 = "The OneForMind Space";
 const sol_card_3_desc$2 = "All the features you need, perfectly integrated. Give your mind room to breathe without fragmented apps.";
-const about_badge$2 = "About - Our Story";
+const about_badge$2 = "👋 Hello, Humans.";
 const about_title_1$2 = "We Built This Because";
 const about_title_2$2 = "We Were Exhausted.";
 const about_desc$2 = "An honest story about burnout, red notifications, and the search for sanity in a digital world.";
@@ -431,6 +453,28 @@ const en = {
   nav_dashboard: nav_dashboard$2,
   nav_settings: nav_settings$1,
   nav_logout: nav_logout$1,
+  seo_meta_desc_1: seo_meta_desc_1$1,
+  seo_about_desc: seo_about_desc$1,
+  footer_legal: footer_legal$1,
+  legal_title: legal_title$1,
+  legal_ref: legal_ref$1,
+  privacy_title: privacy_title$1,
+  privacy_p1: privacy_p1$1,
+  privacy_consent_title: privacy_consent_title$1,
+  privacy_consent_p: privacy_consent_p$1,
+  privacy_info_title: privacy_info_title$1,
+  privacy_info_p: privacy_info_p$1,
+  tos_title: tos_title$1,
+  tos_intro: tos_intro$1,
+  tos_service_title: tos_service_title$1,
+  tos_service_p: tos_service_p$1,
+  tos_data_title: tos_data_title$1,
+  tos_data_p: tos_data_p$1,
+  tos_security_title: tos_security_title$1,
+  tos_security_p: tos_security_p$1,
+  tos_termination_title: tos_termination_title$1,
+  tos_termination_p: tos_termination_p$1,
+  legal_close: legal_close$1,
   "____ SECTION_2 ____": "=== PRE-LOGIN (LANDING PAGE) ===",
   hero_badge: hero_badge$2,
   hero_title_1: hero_title_1$2,
@@ -1008,6 +1052,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   faq_title: faq_title$2,
   finance_plan: finance_plan$1,
   finance_trend: finance_trend$1,
+  footer_legal: footer_legal$1,
   fund_source: fund_source$1,
   greet_afternoon: greet_afternoon$1,
   greet_morning: greet_morning$1,
@@ -1097,6 +1142,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   label_urgent: label_urgent$1,
   label_work: label_work$1,
   last_5: last_5$1,
+  legal_close: legal_close$1,
+  legal_ref: legal_ref$1,
+  legal_title: legal_title$1,
   legend_instruction: legend_instruction$1,
   legend_left_click: legend_left_click$1,
   legend_reset: legend_reset$1,
@@ -1178,6 +1226,12 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   priority_normal: priority_normal$1,
   priority_urgent: priority_urgent$1,
   priority_work: priority_work$1,
+  privacy_consent_p: privacy_consent_p$1,
+  privacy_consent_title: privacy_consent_title$1,
+  privacy_info_p: privacy_info_p$1,
+  privacy_info_title: privacy_info_title$1,
+  privacy_p1: privacy_p1$1,
+  privacy_title: privacy_title$1,
   prob_1_desc: prob_1_desc$2,
   prob_1_point_1: prob_1_point_1$2,
   prob_1_point_2: prob_1_point_2$2,
@@ -1199,6 +1253,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   search_result: search_result$1,
   select_hour: select_hour$1,
   select_placeholder: select_placeholder$1,
+  seo_about_desc: seo_about_desc$1,
+  seo_meta_desc_1: seo_meta_desc_1$1,
   set_budget: set_budget$1,
   sidebar_all_done_msg: sidebar_all_done_msg$1,
   sidebar_daily_focus: sidebar_daily_focus$1,
@@ -1250,6 +1306,16 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   timeline_now: timeline_now$1,
   timeline_title: timeline_title$1,
   today_is: today_is$1,
+  tos_data_p: tos_data_p$1,
+  tos_data_title: tos_data_title$1,
+  tos_intro: tos_intro$1,
+  tos_security_p: tos_security_p$1,
+  tos_security_title: tos_security_title$1,
+  tos_service_p: tos_service_p$1,
+  tos_service_title: tos_service_title$1,
+  tos_termination_p: tos_termination_p$1,
+  tos_termination_title: tos_termination_title$1,
+  tos_title: tos_title$1,
   total_label: total_label$1,
   total_suffix: total_suffix$1,
   transaction_count: transaction_count$1,
@@ -1280,8 +1346,30 @@ const nav_register$1 = "Mulai Gratis";
 const nav_dashboard$1 = "Dashboard";
 const nav_settings = "Pengaturan Aplikasi";
 const nav_logout = "Keluar";
+const seo_about_desc = "Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.";
+const footer_legal = "Privasi & Ketentuan";
+const legal_title = "Informasi Legal";
+const legal_ref = "Referensi Privasi Resmi:";
+const privacy_title = "Kebijakan Privasi Oneformind";
+const privacy_p1 = "Di Oneformind, yang dapat diakses dari https://oneformind.com, salah satu prioritas utama kami adalah privasi pengunjung kami.";
+const privacy_consent_title = "Persetujuan";
+const privacy_consent_p = "Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan Privasi kami dan menyetujui ketentuan-ketentuannya.";
+const privacy_info_title = "Informasi yang kami kumpulkan";
+const privacy_info_p = "Informasi pribadi yang diminta dari Anda akan dijelaskan secara transparan pada saat kami meminta Anda untuk memberikannya.";
+const tos_title = "Syarat dan Ketentuan (ToS)";
+const tos_intro = "Dengan mengakses dan menggunakan Oneformind, Anda menyetujui aturan berikut:";
+const tos_service_title = "1. Ketersediaan Layanan";
+const tos_service_p = 'Oneformind disediakan "sebagaimana adanya" dan "sebagaimana tersedia". Meskipun kami berusaha menjaga stabilitas, kami tidak menjamin layanan 100% tanpa gangguan, bebas dari kesalahan, atau sepenuhnya aman.';
+const tos_data_title = "2. Akurasi Data & Tanggung Jawab";
+const tos_data_p = "Anda bertanggung jawab penuh atas data finansial, habit, dan perencana yang Anda masukkan. Oneformind adalah alat produktivitas, bukan penasihat keuangan bersertifikat. Kami tidak bertanggung jawab atas kerugian finansial atau keputusan yang diambil berdasarkan data di platform ini.";
+const tos_security_title = "3. Penggunaan Wajar & Keamanan";
+const tos_security_p = "Pengguna dilarang keras mencoba merusak keamanan sistem, melakukan injeksi SQL, mengambil data secara paksa (scraping), atau mengganggu infrastruktur platform.";
+const tos_termination_title = "4. Pemutusan Akun";
+const tos_termination_p = "Kami berhak menangguhkan atau menghapus akun secara sepihak dan tanpa pemberitahuan sebelumnya jika pengguna terbukti melanggar ketentuan ini atau menyalahgunakan sumber daya sistem.";
+const legal_close = "Tutup & Pahami";
 const hero_badge$1 = "✨ v1.0: Sistem Anti-Burnout";
 const hero_title_1$1 = "Satu Sistem.";
+const seo_meta_desc_1 = "Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.";
 const hero_title_2$1 = "Untuk Jernihkan Pikiran.";
 const hero_desc$1 = "Sistem operasi personal yang menggabungkan semua aspek hidup kamu. Fokus pada apa yang penting hari ini, lupakan mental clutter dengan OneForMind.";
 const hero_cta_primary$1 = "Mulai Gratis Sekarang";
@@ -1700,9 +1788,31 @@ const id = {
   nav_dashboard: nav_dashboard$1,
   nav_settings,
   nav_logout,
+  seo_about_desc,
+  footer_legal,
+  legal_title,
+  legal_ref,
+  privacy_title,
+  privacy_p1,
+  privacy_consent_title,
+  privacy_consent_p,
+  privacy_info_title,
+  privacy_info_p,
+  tos_title,
+  tos_intro,
+  tos_service_title,
+  tos_service_p,
+  tos_data_title,
+  tos_data_p,
+  tos_security_title,
+  tos_security_p,
+  tos_termination_title,
+  tos_termination_p,
+  legal_close,
   "____ SECTION_2 ____": "=== TAMPILAN SEBELUM LOGIN (LANDING PAGE) ===",
   hero_badge: hero_badge$1,
   hero_title_1: hero_title_1$1,
+  seo_meta_desc_1,
   hero_title_2: hero_title_2$1,
   hero_desc: hero_desc$1,
   hero_cta_primary: hero_cta_primary$1,
@@ -2277,6 +2387,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   faq_title: faq_title$1,
   finance_plan,
   finance_trend,
+  footer_legal,
   fund_source,
   greet_afternoon,
   greet_morning,
@@ -2366,6 +2477,9 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   label_urgent,
   label_work,
   last_5,
+  legal_close,
+  legal_ref,
+  legal_title,
   legend_instruction,
   legend_left_click,
   legend_reset,
@@ -2447,6 +2561,12 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   priority_normal,
   priority_urgent,
   priority_work,
+  privacy_consent_p,
+  privacy_consent_title,
+  privacy_info_p,
+  privacy_info_title,
+  privacy_p1,
+  privacy_title,
   prob_1_desc: prob_1_desc$1,
   prob_1_point_1: prob_1_point_1$1,
   prob_1_point_2: prob_1_point_2$1,
@@ -2468,6 +2588,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   search_result,
   select_hour,
   select_placeholder,
+  seo_about_desc,
+  seo_meta_desc_1,
   set_budget,
   sidebar_all_done_msg,
   sidebar_daily_focus,
@@ -2519,6 +2641,16 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   timeline_now,
   timeline_title,
   today_is,
+  tos_data_p,
+  tos_data_title,
+  tos_intro,
+  tos_security_p,
+  tos_security_title,
+  tos_service_p,
+  tos_service_title,
+  tos_termination_p,
+  tos_termination_title,
+  tos_title,
   total_label,
   total_suffix,
   transaction_count,
