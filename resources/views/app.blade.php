@@ -49,5 +49,6 @@
     </head>
     <body class="font-sans antialiased selection:bg-indigo-500 selection:text-white">
         @inertia
+        <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipfj96/40GiaZa98qONIGLqo7f8IKqoDzJ8XRRWWB9ID10n0Ea6G3D9a"></script>
     </body>
 </html>
