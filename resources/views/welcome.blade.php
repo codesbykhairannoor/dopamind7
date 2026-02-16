@@ -135,9 +135,9 @@
                                 <span class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl">🎨</span>
                             </div>
                             <h4 class="text-xl font-bold mb-2">{{ __('eco_job_title') }}</h4>
-                            <p class="text-indigo-100 text-sm">{{ __('eco_job_desc') }}</p>
+                            <p class="text-white/90 text-sm">{{ __('eco_job_desc') }}</p>
                         </div>
-                        <div class="bg-white/20 px-4 py-2 rounded-lg text-xs font-bold text-indigo-200 border border-white/10">
+                        <div class="bg-indigo-800 px-4 py-2 rounded-lg text-xs font-bold text-white">
                             {{ __('eco_coming_soon') }}
                         </div>
                     </div>
@@ -175,9 +175,9 @@
                 <div class="order-2 md:order-1 relative h-[400px] bg-indigo-900 rounded-[3rem] p-8 flex items-center justify-center overflow-hidden animate-in slide-in-from-left-12 fade-in duration-700 delay-100 fill-mode-both">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500 rounded-full blur-[80px] opacity-40"></div>
                     <div class="grid grid-cols-2 gap-4 w-64">
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center"><div class="text-2xl mb-2">💰</div><div class="text-xs text-white/70">Excel</div></div>
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center"><div class="text-2xl mb-2">✅</div><div class="text-xs text-white/70">Todo</div></div>
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center col-span-2"><div class="text-2xl mb-2">🤯</div><div class="text-xs text-white/70">Chaos</div></div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center"><div class="text-2xl mb-2">💰</div><div class="text-xs text-white/90">Excel</div></div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center"><div class="text-2xl mb-2">✅</div><div class="text-xs text-white/90">Todo</div></div>
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center col-span-2"><div class="text-2xl mb-2">🤯</div><div class="text-xs text-white/90">Chaos</div></div>
                     </div>
                 </div>
                 <div class="order-1 md:order-2 animate-in slide-in-from-right-12 fade-in duration-700 delay-200 fill-mode-both">
@@ -330,7 +330,7 @@
                 <a href="{{ route('register') }}" class="inline-block bg-white text-indigo-950 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl">
                     {{ __('cta_final_btn') }}
                 </a>
-                <p class="mt-8 text-sm text-indigo-700 font-bold">{{ __('cta_final_sub') }}</p>
+                <p class="mt-8 text-sm text-white/80 font-bold">{{ __('cta_final_sub') }}</p>
             </div>
         </div>
     </section>
