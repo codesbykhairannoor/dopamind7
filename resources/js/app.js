@@ -55,8 +55,10 @@ createInertiaApp({
  */
 NProgress.configure({
     showSpinner: false,
-    speed: 400,
-    minimum: 0.2,
+    speed: 500,         // Kecepatan animasi pas bar nambah (ms)
+    minimum: 0.3,       // Langsung mulai di 30% biar kerasa "ngebut"
+    trickle: true,      // WAJIB: Bar bakal jalan terus meskipun server belum respon
+    trickleSpeed: 200,  // Setiap 0.2 detik bar bakal nambah dikit secara otomatis
 });
 
 router.on('start', (event) => {
@@ -65,6 +67,12 @@ router.on('start', (event) => {
     }
 });
 
-router.on('finish', () => {
+// Gunakan 'finish' untuk stop
+router.on('finish', (event) => {
+    NProgress.done();
+});
+
+// Opsional: Kalau ada error, matiin bar-nya juga
+router.on('error', () => {
     NProgress.done();
 });
