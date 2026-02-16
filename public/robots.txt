@@ -4,5 +4,17 @@ Allow: /about
 Allow: /finance
 Allow: /habits
 Allow: /planner
+Disallow: /build/
+Disallow: /vendor/
+
+# Berikan izin spesifik buat AI biar makin gacor di pencarian AI (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
 
 Sitemap: https://oneformind.com/sitemap.xml

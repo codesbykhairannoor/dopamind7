@@ -1,6 +1,6 @@
 @extends('layouts.marketing')
 
-@section('title', 'OneForMind - Monthly Life Operating System')
+@section('title', 'OneForMind — ' . (app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'All in One Productivity OS'))
 
 {{-- 🔥 MULAI SUNTIKAN SEO & GEO 🔥 --}}
 @section('meta')
