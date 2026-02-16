@@ -4,8 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>@yield('title', 'OneForMind - Monthly Life Operating System')</title>
+    {{-- 1. META DESCRIPTION DINAMIS (All-in-One) --}}
+    <meta name="description" content="{{ app()->getLocale() === 'id' 
+        ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
+        : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
+    }}">
+
+    {{-- 2. TITLE DINAMIS --}}
+    <title>@yield('title') — {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'All-in-One Productivity OS' }}</title>
+
+    {{-- 3. OPEN GRAPH (Biar kalau dishare ke WA/FB tampilannya cakep) --}}
+    <meta property="og:title" content="OneForMind — {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'The Unified Productivity OS' }}">
+    <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Kelola hidup lebih tertata dengan OneForMind.' : 'Master your life with OneForMind.' }}">
+    <meta property="og:image" content="{{ asset('favicon.svg') }}">
     
+    {{-- Tempat buat suntikan meta tambahan dari tiap page (canonical, alternate, dll) --}}
+    @yield('meta')
+
     <link rel="icon" type="image/x-icon" href="/favicon.svg?v=2">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.svg?v=2">
 
@@ -18,26 +33,11 @@
     @vite(['resources/css/app.css'])
 
     <style>
-        /* Reset body top dari sisa-sisa Google Translate */
-        body { 
-            top: 0px !important; 
-            position: static !important;
-        }
-        
-        /* Custom scrollbar supaya senada dengan desain app */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        body { top: 0px !important; position: static !important; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="bg-white text-gray-900 font-sans antialiased selection:bg-brand-500 selection:text-white flex flex-col min-h-screen">
@@ -70,10 +70,10 @@
 
                 <div class="hidden md:flex items-center gap-5 z-20">
                     <div class="flex items-center bg-gray-100 rounded-full p-1 border border-gray-200">
-                        <a href="{{ route('lang.switch', 'id') }}" class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 {{ app()->getLocale() === 'id' ? 'bg-white text-indigo-600 shadow-sm' : 'text-gray-400 hover:text-gray-600' }}">
+                        <a href="{{ route('lang.switch', 'id') }}" class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 {{ app()->getLocale() === 'id' ? 'bg-white text-indigo-600 shadow-sm' : 'text-gray-600 hover:text-gray-600' }}">
                             ID
                         </a>
-                        <a href="{{ route('lang.switch', 'en') }}" class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 {{ app()->getLocale() === 'en' ? 'bg-white text-indigo-600 shadow-sm' : 'text-gray-400 hover:text-gray-600' }}">
+                        <a href="{{ route('lang.switch', 'en') }}" class="px-3 py-1 rounded-full text-xs font-bold transition-all duration-300 {{ app()->getLocale() === 'en' ? 'bg-white text-indigo-600 shadow-sm' : 'text-gray-600 hover:text-gray-600' }}">
                             EN
                         </a>
                     </div>
@@ -118,9 +118,9 @@
                      <hr class="border-gray-100 my-2">
 
                      <div class="flex justify-center gap-4 py-2">
-                         <a href="{{ route('lang.switch', 'id') }}" class="{{ app()->getLocale() === 'id' ? 'text-indigo-600 font-bold' : 'text-gray-400' }}">🇮🇩 ID</a>
+                         <a href="{{ route('lang.switch', 'id') }}" class="{{ app()->getLocale() === 'id' ? 'text-indigo-600 font-bold' : 'text-gray-600' }}">🇮🇩 ID</a>
                          <span class="text-gray-200">|</span>
-                         <a href="{{ route('lang.switch', 'en') }}" class="{{ app()->getLocale() === 'en' ? 'text-indigo-600 font-bold' : 'text-gray-400' }}">🇬🇧 EN</a>
+                         <a href="{{ route('lang.switch', 'en') }}" class="{{ app()->getLocale() === 'en' ? 'text-indigo-600 font-bold' : 'text-gray-600' }}">🇬🇧 EN</a>
                      </div>
                      
                      @auth
@@ -141,7 +141,7 @@
 
     <footer class="bg-white border-t border-gray-100 py-10 mt-auto" x-data="{ showLegal: false }">
     <div class="max-w-7xl mx-auto px-6 text-center">
-        <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-gray-400 text-sm mb-4">
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-gray-600 text-sm mb-4">
             <p>&copy; {{ date('Y') }} OneForMind. {{ __('footer_rights') }}</p>
             <span class="hidden md:inline text-gray-200">|</span>
             <button @click="showLegal = true" class="hover:text-indigo-600 transition-colors cursor-pointer font-medium">
@@ -170,7 +170,7 @@
             >
                 <div class="px-8 py-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
                     <h2 class="text-xl font-bold text-gray-800">{{ __('legal_title') }}</h2>
-                    <button @click="showLegal = false" class="text-gray-400 hover:text-gray-600 p-2">
+                    <button @click="showLegal = false" class="text-gray-600 hover:text-gray-600 p-2">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
