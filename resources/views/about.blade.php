@@ -4,17 +4,10 @@
 
 {{-- 🔥 MULAI SUNTIKAN SEO & GEO (ABOUT PAGE) 🔥 --}}
 @section('meta')
-    @php
-        $isIndo = app()->getLocale() === 'id';
-        $aboutDesc = $isIndo
-            ? 'Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.'
-            : 'Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.';
-    @endphp
-
-    <meta name="description" content="{{ $aboutDesc }}">
+    <meta name="description" content="{{ app()->getLocale() === 'id' ? 'Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.' : 'Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.' }}">
     
-    <meta property="og:title" content="About OneForMind - The Creator">
-    <meta property="og:description" content="{{ $aboutDesc }}">
+    <meta property="og:title" content="{{ app()->getLocale() === 'id' ? 'Tentang OneForMind - Visi & Misi' : 'About OneForMind - The Vision' }}">
+    <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.' : 'Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.' }}">
     <meta property="og:type" content="profile"> 
     <meta property="og:url" content="{{ url('/about') }}">
     <meta property="og:image" content="{{ asset('favicon.svg') }}">

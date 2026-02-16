@@ -30,11 +30,12 @@
     "tos_termination_p": "Kami berhak menangguhkan atau menghapus akun secara sepihak dan tanpa pemberitahuan sebelumnya jika pengguna terbukti melanggar ketentuan ini atau menyalahgunakan sumber daya sistem.",
     "legal_close": "Tutup & Pahami",
 
+
     "____ SECTION_2 ____": "=== TAMPILAN SEBELUM LOGIN (LANDING PAGE) ===",
     "hero_badge": "✨ v1.0: Sistem Anti-Burnout",
     "hero_title_1": "Satu Sistem.",
     "seo_meta_desc_1": "Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.",
-
+    "footer_rights": "© 2026 Oneformind. All rights reserved.",
     "hero_title_2": "Untuk Jernihkan Pikiran.",
     "hero_desc": "Sistem operasi personal yang menggabungkan semua aspek hidup kamu. Fokus pada apa yang penting hari ini, lupakan mental clutter dengan OneForMind.",
     "hero_cta_primary": "Mulai Gratis Sekarang",

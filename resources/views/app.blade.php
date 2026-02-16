@@ -4,20 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-       @php
-        $isIndo = app()->getLocale() === 'id';
-        // 2. Branding Baru: "One Productivity App"
-        $brandDesc = $isIndo 
-            ? 'Satu aplikasi produktivitas untuk segalanya. Kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
-            : 'The only productivity app you need. Manage finances, habits, and daily plans in one unified, minimalist dashboard.';
-    @endphp
-
-        <meta name="description" content="{{ $metaDesc }}" inertia>
+     <meta name="description" content="{{ app()->getLocale() === 'id' ? 'Satu aplikasi produktivitas untuk segalanya. Kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' : 'The only productivity app you need. Manage finances, habits, and daily plans in one unified, minimalist dashboard.' }}" inertia>
         
-        <meta property="og:title" content="{{ config('app.name', 'OneForMind') }}" inertia>
-        <meta property="og:description" content="{{ $metaDesc }}" inertia>
+        <meta property="og:title" content="{{ config('app.name', 'OneForMind') }} — {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'The Unified Productivity OS' }}" inertia>
+        <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Satu aplikasi produktivitas untuk segalanya. Kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' : 'The only productivity app you need. Manage finances, habits, and daily plans in one unified, minimalist dashboard.' }}" inertia>
         <meta property="og:image" content="{{ asset('favicon.svg') }}" inertia>
-        <title inertia>{{ config('app.name', 'OneForMind') }}</title>
+        
+        <title inertia>{{ config('app.name', 'OneForMind') }} — {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'The Unified Productivity OS' }}</title>
 
         <link rel="icon" type="image/x-icon" href="/favicon.svg?v=2">
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.svg?v=2">

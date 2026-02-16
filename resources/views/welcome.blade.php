@@ -4,17 +4,10 @@
 
 {{-- 🔥 MULAI SUNTIKAN SEO & GEO 🔥 --}}
 @section('meta')
-    @php
-        $isIndo = app()->getLocale() === 'id';
-        $metaDesc = $isIndo 
-            ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' 
-            : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.';
-    @endphp
-
-    <meta name="description" content="{{ $metaDesc }}">
+    <meta name="description" content="{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}">
     
     <meta property="og:title" content="OneForMind - {{ __('hero_title_1') }}">
-    <meta property="og:description" content="{{ $metaDesc }}">
+    <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:image" content="{{ asset('favicon.svg') }}">
@@ -32,7 +25,7 @@
       "name": "OneForMind",
       "operatingSystem": "WebBrowser",
       "applicationCategory": "ProductivityApplication",
-      "description": "{{ $metaDesc }}",
+      "description": "{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}",
       "url": "{{ url('/') }}",
       "offers": {
         "@type": "Offer",
