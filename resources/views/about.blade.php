@@ -2,6 +2,31 @@
 
 @section('title', __('about_badge') . ' - OneForMind')
 
+{{-- 🔥 MULAI SUNTIKAN SEO & GEO (ABOUT PAGE) 🔥 --}}
+@section('meta')
+    @php
+        $isIndo = app()->getLocale() === 'id';
+        $aboutDesc = $isIndo
+            ? 'Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.'
+            : 'Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.';
+    @endphp
+
+    <meta name="description" content="{{ $aboutDesc }}">
+    
+    <meta property="og:title" content="About OneForMind - The Creator">
+    <meta property="og:description" content="{{ $aboutDesc }}">
+    <meta property="og:type" content="profile"> 
+    <meta property="og:url" content="{{ url('/about') }}">
+    <meta property="og:image" content="{{ asset('favicon.svg') }}">
+
+    <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
+    <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ url('/about') }}" />
+    
+    <link rel="canonical" href="{{ url('/about') }}" />
+@endsection
+{{-- 🔥 AKHIR SUNTIKAN SEO 🔥 --}}
+
 @section('content')
     <div class="pt-32 pb-20 px-6 text-center max-w-4xl mx-auto overflow-hidden">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-bold text-xs mb-8 uppercase tracking-wider animate-in fade-in slide-in-from-bottom-4 duration-700">

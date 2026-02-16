@@ -2,6 +2,52 @@
 
 @section('title', 'OneForMind - Monthly Life Operating System')
 
+{{-- 🔥 MULAI SUNTIKAN SEO & GEO 🔥 --}}
+@section('meta')
+    @php
+        $isIndo = app()->getLocale() === 'id';
+        $metaDesc = $isIndo 
+            ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' 
+            : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.';
+    @endphp
+
+    <meta name="description" content="{{ $metaDesc }}">
+    
+    <meta property="og:title" content="OneForMind - {{ __('hero_title_1') }}">
+    <meta property="og:description" content="{{ $metaDesc }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:image" content="{{ asset('favicon.svg') }}">
+
+    <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
+    <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
+    
+    <link rel="canonical" href="{{ url('/') }}" />
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OneForMind",
+      "operatingSystem": "WebBrowser",
+      "applicationCategory": "ProductivityApplication",
+      "description": "{{ $metaDesc }}",
+      "url": "{{ url('/') }}",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "IDR",
+        "availability": "https://schema.org/InStock"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "OneForMind Core Team"
+      }
+    }
+    </script>
+@endsection
+
 @section('content')
     <header class="pt-32 pb-24 px-6 text-center relative overflow-hidden">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-indigo-50/80 to-white rounded-full blur-[100px] -z-10 animate-pulse duration-[5000ms]"></div>

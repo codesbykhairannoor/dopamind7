@@ -139,12 +139,86 @@
             @yield('content')
         </main>
 
-        <footer class="bg-white border-t border-gray-100 py-10 mt-auto">
-            <div class="max-w-7xl mx-auto px-6 text-center text-gray-400 text-sm">
-                <p>&copy; {{ date('Y') }} OneForMind. {{ __('footer_rights') }}</p>
-            </div>
-        </footer>
+    <footer class="bg-white border-t border-gray-100 py-10 mt-auto" x-data="{ showLegal: false }">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <div class="flex flex-col md:flex-row justify-center items-center gap-4 text-gray-400 text-sm mb-4">
+            <p>&copy; {{ date('Y') }} OneForMind. {{ __('footer_rights') }}</p>
+            <span class="hidden md:inline text-gray-200">|</span>
+            <button @click="showLegal = true" class="hover:text-indigo-600 transition-colors cursor-pointer font-medium">
+                {{ __('footer_legal') }}
+            </button>
+        </div>
+    </div>
 
+    <div 
+        x-show="showLegal" 
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 z-[100] overflow-y-auto" 
+        style="display: none;"
+    >
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm" @click="showLegal = false"></div>
+
+        <div class="relative min-h-screen flex items-center justify-center p-4">
+            <div 
+                class="relative bg-white max-w-3xl w-full rounded-3xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden"
+                @click.away="showLegal = false"
+            >
+                <div class="px-8 py-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-10">
+                    <h2 class="text-xl font-bold text-gray-800">{{ __('legal_title') }}</h2>
+                    <button @click="showLegal = false" class="text-gray-400 hover:text-gray-600 p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="p-8 overflow-y-auto text-left prose prose-slate max-w-none">
+                    
+                    <div class="mb-8 p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
+                        <p class="text-xs text-indigo-600 font-bold uppercase tracking-wider mb-1">{{ __('legal_ref') }}</p>
+                        <a href="https://www.privacypolicies.com/live/43c87685-eb88-487d-a449-535e2ded4cac" 
+                           target="_blank" 
+                           class="text-sm break-all font-semibold hover:text-indigo-800 transition-colors">
+                            https://www.privacypolicies.com/live/43c87685-eb88-487d-a449-535e2ded4cac
+                        </a>
+                    </div>
+
+                    <h1>{{ __('privacy_title') }}</h1>
+                    <p>{{ __('privacy_p1') }}</p>
+                    
+                    <h2>{{ __('privacy_consent_title') }}</h2>
+                    <p>{{ __('privacy_consent_p') }}</p>
+
+                    <h2>{{ __('privacy_info_title') }}</h2>
+                    <p>{{ __('privacy_info_p') }}</p>
+
+                    <hr class="my-8">
+
+                    <h1>{{ __('tos_title') }}</h1>
+                    <p>{{ __('tos_intro') }}</p>
+                    
+                    <ul>
+                        <li><strong>{{ __('tos_service_title') }}:</strong> {{ __('tos_service_p') }}</li>
+                        <li><strong>{{ __('tos_data_title') }}:</strong> {{ __('tos_data_p') }}</li>
+                        <li><strong>{{ __('tos_security_title') }}:</strong> {{ __('tos_security_p') }}</li>
+                        <li><strong>{{ __('tos_termination_title') }}:</strong> {{ __('tos_termination_p') }}</li>
+                    </ul>
+                </div>
+
+                <div class="px-8 py-4 border-t border-gray-100 bg-gray-50 flex justify-end">
+                    <button @click="showLegal = false" class="px-8 py-2.5 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-200">
+                        {{ __('legal_close') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
     </div>
 </body>
 </html>

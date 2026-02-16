@@ -62,6 +62,37 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+// ==========================================
+// 🔥 SEO: SITEMAP (ROBOTS DIBUAT MANUAL DI FOLDER PUBLIC)
+// ==========================================
+Route::get('/sitemap.xml', function () {
+    // 1. Definisikan halaman statis utama
+    $pages = [
+        ['url' => url('/'), 'priority' => '1.0', 'freq' => 'weekly'],
+        ['url' => url('/about'), 'priority' => '0.8', 'freq' => 'monthly'],
+        ['url' => url('/login'), 'priority' => '0.5', 'freq' => 'monthly'],
+        ['url' => url('/register'), 'priority' => '0.5', 'freq' => 'monthly'],
+    ];
+
+    // 2. Definisikan halaman fitur (Meskipun di balik auth, bot perlu tahu URL-nya ada)
+    $features = ['finance', 'habits', 'planner'];
+    foreach ($features as $feature) {
+        $pages[] = [
+            'url' => url('/' . $feature),
+            'priority' => '0.9',
+            'freq' => 'daily'
+        ];
+    }
+
+    // 3. Render ke format XML (Fix agar tidak jadi teks memanjang)
+
+return response()->view('seo.sitemap', [
+        'pages' => $pages,
+        'date' => now()->toAtomString()
+    ])->header('Content-Type', 'application/xml');
+})->name('sitemap');
+// ==========================================
+
 
 // --- GROUP 2: SOCIAL LOGIN ---
 Route::get('/auth/google', [SocialController::class, 'redirect'])->name('google.login');

@@ -1,5 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import forms from '@tailwindcss/typography'; // Tambahan plugin untuk styling konten teks panjang seperti artikel, deskripsi, dll.
 
 /** @type {import('tailwindcss').Config} */
 export default {
