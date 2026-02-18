@@ -62,6 +62,10 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+Route::get('/pricing', function () {
+    return view('pricing');
+})->name('pricing');
+
 // ==========================================
 // 🔥 SEO: SITEMAP (ROBOTS DIBUAT MANUAL DI FOLDER PUBLIC)
 // ==========================================
@@ -70,7 +74,7 @@ Route::get('/sitemap.xml', function () {
     $pages = [
         ['url' => url('/'), 'priority' => '1.0', 'freq' => 'weekly'],
         ['url' => url('/about'), 'priority' => '0.8', 'freq' => 'monthly'],
-        ['url' => url('/login'), 'priority' => '0.5', 'freq' => 'monthly'],
+        ['url' => url('/pricing'), 'priority' => '0.8', 'freq' => 'monthly'],
         ['url' => url('/register'), 'priority' => '0.5', 'freq' => 'monthly'],
     ];
 
@@ -92,6 +96,81 @@ return response()->view('seo.sitemap', [
     ])->header('Content-Type', 'application/xml');
 })->name('sitemap');
 // ==========================================
+
+// ==========================================
+// FEATURES
+// ==========================================
+
+Route::get('/features/habit', function () {
+    return view('features.habit');
+})->name('features.habit');
+
+Route::get('/features/finance', function () {
+    return view('features.finance');
+})->name('features.finance');
+
+Route::get('/features/planner', function () {
+    return view('features.planner');
+})->name('features.planner');
+
+Route::get('/features/journal', function () {
+    return view('features.journal');
+})->name('features.journal');
+
+Route::get('/features/calendar', function () {
+    return view('features.calendar');
+})->name('features.calendar');
+
+
+// ==========================================
+// SOLUTIONS
+// ==========================================
+
+Route::get('/solutions/student', function () {
+    return view('solutions.student');
+})->name('solutions.student');
+
+
+Route::get('/solutions/freelancer', function () {
+    return view('solutions.freelancer');
+})->name('solutions.freelancer');
+
+Route::get('/solutions/personalgrowth', function () {
+    return view('solutions.personalgrowth');
+})->name('solutions.personalgrowth');
+
+
+// ==========================================
+// RESOURCES
+// ==========================================
+
+Route::get('resources/guide', function () {
+    return view('resources.guide');
+})->name('resources.guide');
+
+
+Route::get('resources/blog', function () {
+    return view('resources.blog');
+})->name('resources.blog');
+
+Route::get('resources/stories', function () {
+    return view('resources.stories');
+})->name('resources.stories');
+
+
+
+// ==========================================
+// COMPANY
+// ==========================================
+
+
+Route::get('company/privacy', function () {
+    return view('company.privacy');
+})->name('company.privacy');
+
+Route::get('company/terms', function () {
+    return view('company.terms');
+})->name('company.terms');
 
 
 // --- GROUP 2: SOCIAL LOGIN ---

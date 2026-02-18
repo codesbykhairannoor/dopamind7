@@ -136,35 +136,35 @@ watch(() => page.url, () => {
             >
                 <div v-show="showingNavigationDropdown" class="md:hidden fixed inset-0 top-16 z-40 bg-white/95 backdrop-blur-lg overflow-y-auto">
                     <div class="p-4 space-y-2 pb-24">
-                        <Link :href="route('dashboard')" 
+                        <Link :href="route('dashboard')" prefetch="hover"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>🏠</span> {{ $t('nav_dashboard') }}
                         </Link>
 
-                        <Link v-if="showModule('habit')" :href="route('habits.index')" 
+                        <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="hover"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>🌱</span> {{ $t('habit_page_title') }}
                         </Link>
 
-                        <Link v-if="showModule('planner')" :href="route('planner.index')" 
+                        <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="hover"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>📅</span> Daily Planner
                         </Link>
 
-                        <Link v-if="showModule('finance')" :href="route('finance.index')" 
+                        <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="hover"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>💸</span> Finance Management
                         </Link>
 
-                        <Link :href="route('settings.index')" 
+                        <Link :href="route('settings.index')" prefetch="hover"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('settings.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
@@ -173,8 +173,8 @@ watch(() => page.url, () => {
 
                         <div class="border-t border-slate-100 my-4 pt-4">
                             <div class="flex gap-2 px-2 mb-6">
-                                <button @click="switchLang('id')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDONESIA</button>
-                                <button @click="switchLang('en')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
+                                <button @click="switchLang('id')" prefetch="hover" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDONESIA</button>
+                                <button @click="switchLang('en')" prefetch="hover" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
                             </div>
 
                             <button @click="handleLogout" type="button" class="w-full text-center py-4 text-rose-500 font-bold bg-rose-50 rounded-2xl hover:bg-rose-100 transition flex items-center justify-center gap-2">

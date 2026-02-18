@@ -31,7 +31,7 @@ createInertiaApp({
 
         vueApp
             .use(plugin)
-            .use(ZiggyVue)
+            .use(ZiggyVue, window.Ziggy)
             .use(i18nVue, {
                 lang: activeLang,
                 fallbackLang: 'id', // Opsional tapi bagus: jaga-jaga kalau bahasa hilang
@@ -53,6 +53,8 @@ createInertiaApp({
 /**
  * 🔥 NPROGRESS
  */
+
+
 NProgress.configure({
     showSpinner: false,
     speed: 500,         // Kecepatan animasi pas bar nambah (ms)

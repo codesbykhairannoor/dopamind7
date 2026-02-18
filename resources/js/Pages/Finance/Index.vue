@@ -32,6 +32,7 @@ const page = usePage();
 const localTransactions = ref([...props.transactions]);
 const localBudgets = ref([...props.budgets]);
 const localCategories = ref([...props.categories]);
+defineOptions({ layout: AuthenticatedLayout });
 
 // Sinkronkan otomatis saat server memberi update data asli 
 watch(() => props.transactions, (newVal) => localTransactions.value = [...newVal], { deep: true });
@@ -166,7 +167,7 @@ const triggerDeleteCategory = (cat) => {
 
 <template>
     <Head title="Finance Plan" />
-    <AuthenticatedLayout>
+    <div>
         
         <FinanceHeader 
             :currentMonth="formattedMonth" 
@@ -352,7 +353,6 @@ const triggerDeleteCategory = (cat) => {
     :close="() => showCategoryModal = false"
     :submit="submitNewCategory"
 />
-
+</div>
         </div>
-    </AuthenticatedLayout>
 </template>

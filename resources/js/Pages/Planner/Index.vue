@@ -12,7 +12,7 @@ import PlannerModal from './PlannerModal.vue';
 import PlannerBatchModal from './PlannerBatchModal.vue';
 
 const props = defineProps({ tasks: Array, dailyLog: Object });
-
+defineOptions({ layout: AuthenticatedLayout });
 // Logic Single
 const {
     scheduledTasks, timeSlots, scheduledStats,
@@ -40,7 +40,6 @@ const handleFullReset = () => {
 <template>
     <Head title="Daily Planner" />
 
-    <AuthenticatedLayout>
         <PlannerHeader 
             :openModal="() => openModal(null, null, 'full')" 
             :resetBoard="handleFullReset"
@@ -90,5 +89,4 @@ const handleFullReset = () => {
             :removeRow="removeBatchRow"
             :switchToSingle="switchToSingle"
         />
-    </AuthenticatedLayout>
 </template>

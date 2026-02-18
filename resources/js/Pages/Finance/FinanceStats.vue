@@ -48,7 +48,6 @@ const saveSalary = () => {
 </script>
 
 <template>
-    <div class="animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6 items-stretch">
             
             <div class="lg:col-span-7 relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-indigo-600 via-indigo-500 to-violet-600 p-6 md:p-8 text-white shadow-2xl shadow-indigo-200/50 flex flex-col justify-center min-h-[200px]">
@@ -138,5 +137,4 @@ const saveSalary = () => {
                 </div>
             </div>
         </div>
-    </div>
 </template>

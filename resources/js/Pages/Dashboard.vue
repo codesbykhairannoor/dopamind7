@@ -4,6 +4,7 @@ import { Head, usePage, Link } from '@inertiajs/vue3';
 import { computed } from 'vue';
 
 const user = usePage().props.auth.user;
+defineOptions({ layout: AuthenticatedLayout });
 
 // Waktu sapaan dinamis berdasarkan jam
 const greetingKey = computed(() => {
@@ -18,7 +19,6 @@ const greetingKey = computed(() => {
 <template>
     <Head :title="$t('nav_dashboard')" />
 
-    <AuthenticatedLayout>
         <div class="max-w-7xl mx-auto p-4 md:p-8 space-y-8">
             
             <div class="relative overflow-hidden bg-indigo-600 rounded-[2.5rem] p-8 md:p-12 text-white shadow-xl shadow-indigo-200">
@@ -83,5 +83,4 @@ const greetingKey = computed(() => {
                 </Link>
             </div>
         </div>
-    </AuthenticatedLayout>
 </template>

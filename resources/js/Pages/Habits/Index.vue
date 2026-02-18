@@ -14,6 +14,7 @@ defineOptions({
     layout: AuthenticatedLayout
 });
 
+
 const props = defineProps({
     habits: Object,
     currentMonth: String,
