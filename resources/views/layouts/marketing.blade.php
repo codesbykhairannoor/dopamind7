@@ -50,7 +50,7 @@
         >
             <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative">
                 
-                {{-- LOGO (Acting as Home Link) --}}
+                {{-- LOGO --}}
                 <a href="{{ route('home') }}" class="group flex items-center gap-2.5 z-[110]">
                     <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
                         <img src="/favicon.svg?v=2" alt="Logo" class="w-6 h-6 brightness-0 invert" />
@@ -123,9 +123,7 @@
                     </div>
 
                     @auth
-                        <a href="{{ route('dashboard') }}" class="px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold shadow-lg">
-                            Dashboard
-                        </a>
+                        <a href="{{ route('dashboard') }}" class="px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold shadow-lg">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm font-bold text-slate-600 hover:text-indigo-600 transition">{{ __('nav_login') }}</a>
                         <a href="{{ route('register') }}" class="px-6 py-2.5 bg-indigo-600 text-white rounded-full text-sm font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
@@ -144,14 +142,11 @@
                 </button>
             </div>
 
-            {{-- MOBILE MENU OVERLAY (NATIVE FEEL) --}}
+            {{-- MOBILE MENU OVERLAY --}}
             <div x-show="mobileMenuOpen" 
                  x-transition:enter="transition ease-out duration-300"
                  x-transition:enter-start="opacity-0 translate-y-4"
                  x-transition:enter-end="opacity-100 translate-y-0"
-                 x-transition:leave="transition ease-in duration-200"
-                 x-transition:leave-start="opacity-100 translate-y-0"
-                 x-transition:leave-end="opacity-0 translate-y-4"
                  x-cloak 
                  class="lg:hidden fixed inset-0 top-0 bg-white z-[100] pt-24 px-6 pb-10 flex flex-col h-screen overflow-y-auto">
                 
@@ -188,10 +183,24 @@
                         </div>
                     </div>
 
+                    {{-- FIX: Added Mobile Resources Accordion --}}
+                    <div class="border-b border-slate-50">
+                        <button @click="activeAccordion === 'resources' ? activeAccordion = null : activeAccordion = 'resources'" class="w-full py-5 flex justify-between items-center text-xl font-black text-slate-900">
+                            <span>{{ __('nav_resources') }}</span>
+                            <svg :class="activeAccordion === 'resources' ? 'rotate-180' : ''" class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="activeAccordion === 'resources'" x-collapse>
+                            <div class="grid grid-cols-1 gap-1 pb-4 text-left">
+                                <x-nav-item-mobile href="{{ route('resources.guide') }}" icon="📖" title="User Guide" />
+                                <x-nav-item-mobile href="{{ route('resources.blog') }}" icon="✍️" title="Blog" />
+                                <x-nav-item-mobile href="{{ route('resources.stories') }}" icon="✨" title="User Stories" />
+                            </div>
+                        </div>
+                    </div>
+
                     <a href="{{ route('pricing') }}" class="block py-5 text-xl font-black text-slate-900 border-b border-slate-50">{{ __('nav_pricing') }}</a>
                 </div>
 
-                {{-- Mobile Footer Actions --}}
                 <div class="pt-8 space-y-6">
                     <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
                         <span class="text-sm font-bold text-slate-500">Language</span>
@@ -213,7 +222,6 @@
             </div>
         </nav>
 
-        {{-- MAIN CONTENT --}}
         <main class="flex-grow">
             @yield('content')
         </main>
@@ -221,14 +229,15 @@
         {{-- FOOTER --}}
         <footer class="bg-slate-50 border-t border-slate-100 pt-20 pb-10">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid md:grid-cols-4 gap-12 mb-16 text-left">
+                {{-- Updated grid-cols from 4 to 5 for Desktop --}}
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16 text-left">
                     {{-- Column 1: Branding --}}
-                    <div>
+                    <div class="col-span-2 md:col-span-1">
                         <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6">
                             <img src="/favicon.svg?v=2" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
                         </a>
-                        <p class="text-sm text-slate-500 leading-relaxed max-w-xs">
+                        <p class="text-sm text-slate-500 leading-relaxed">
                             The unified productivity system designed to bring clarity to your life, habits, and finances.
                         </p>
                     </div>
@@ -244,7 +253,18 @@
                         </ul>
                     </div>
 
-                    {{-- Column 3: Company --}}
+                    {{-- Column 3: NEW COMPARE --}}
+                    <div>
+                        <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h4>
+                        <ul class="space-y-4 text-sm font-bold text-slate-500">
+                            <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">vs Paper Planner</a></li>
+                            <li><a href="{{ route('compare.sheets') }}" class="hover:text-indigo-600 transition">vs Spreadsheets</a></li>
+                            <li><a href="{{ route('compare.management-tools') }}" class="hover:text-indigo-600 transition">vs Task Tools</a></li>
+                            <li><a href="{{ route('compare.habit-apps') }}" class="hover:text-indigo-600 transition">vs Habit Apps</a></li>
+                        </ul>
+                    </div>
+
+                    {{-- Column 4: Company --}}
                     <div>
                         <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h4>
                         <ul class="space-y-4 text-sm font-bold text-slate-500">
@@ -254,7 +274,7 @@
                         </ul>
                     </div>
 
-                    {{-- Column 4: Social --}}
+                    {{-- Column 5: Social --}}
                     <div>
                         <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</h4>
                         <div class="flex gap-4">
@@ -272,7 +292,6 @@
         </footer>
     </div>
 
-    {{-- Instant Page for preloading --}}
     <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipfj96/40GiaZa98qONIGLqo7f8IKqoDzJ8XRRWWB9ID10n0Ea6G3D9a"></script>
 </body>
 </html>

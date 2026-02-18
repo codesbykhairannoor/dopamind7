@@ -172,6 +172,27 @@ Route::get('company/terms', function () {
     return view('company.terms');
 })->name('company.terms');
 
+// ==========================================
+// COMPARE
+// ==========================================
+
+
+Route::get('compare/paper', function () {
+    return view('compare.paper');
+})->name('compare.paper');
+
+Route::get('compare/sheets', function () {
+    return view('compare.sheets');
+})->name('compare.sheets');
+
+Route::get('compare/management-tools', function () {
+    return view('compare.management-tools');
+})->name('compare.management-tools');
+
+Route::get('compare/habit-apps', function () {
+    return view('compare.habit-apps');
+})->name('compare.habit-apps');
+
 
 // --- GROUP 2: SOCIAL LOGIN ---
 Route::get('/auth/google', [SocialController::class, 'redirect'])->name('google.login');

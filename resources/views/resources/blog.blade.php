@@ -13,44 +13,87 @@
 
 @section('content')
 
-   {{-- SECTION 1: HERO (THE FEATURED EDITORIAL - SUPER CLEAN) --}}
-    <header class="pt-32 pb-20 px-6 bg-white relative">
-        <div class="max-w-5xl mx-auto text-center animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
-            
-            {{-- Category / Badge --}}
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 font-bold text-xs mb-8 uppercase tracking-wider">
-                ⭐ {{ __('blog_hero_badge') }}
-            </div>
+   {{-- SECTION 1: HERO (EDITORIAL STYLE - MATCHED WITH STORIES) --}}
+    <header class="pt-32 pb-32 px-6 relative overflow-hidden bg-white border-b border-gray-100">
+        {{-- Subtle Background: Grid & Glow --}}
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] [background-size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-indigo-50/50 rounded-full blur-[100px] -z-20"></div>
 
-            {{-- Massive Editorial Headline --}}
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-8 text-gray-900 leading-[1.1] tracking-tight hover:text-indigo-600 transition-colors duration-300 cursor-pointer">
-                {{ __('blog_feat_title') }}
-            </h1>
+        {{-- LEFT FLOATER ICONS: Writing & Idea Vibes --}}
+        <div class="hidden xl:block absolute left-20 top-1/2 -translate-y-1/2 space-y-12 animate-in slide-in-from-left-12 duration-1000">
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-[4500ms]">🖋️</div>
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-[5500ms] delay-500 ml-12">✨</div>
+        </div>
 
-            {{-- Author & Meta Info --}}
-            <div class="flex items-center justify-center gap-4 text-sm font-medium text-gray-500 mb-12">
-                <div class="flex items-center gap-3">
-                    <img src="https://ui-avatars.com/api/?name=K+N&background=4f46e5&color=fff" alt="Author" class="w-10 h-10 rounded-full border border-gray-200">
-                    <div class="text-left">
-                        <p class="font-bold text-gray-900">Khairan N.</p>
-                        <p class="text-xs">Founder, OneForMind</p>
+        {{-- RIGHT FLOATER ICONS: Knowledge & Growth --}}
+        <div class="hidden xl:block absolute right-20 top-1/2 -translate-y-1/2 space-y-12 animate-in slide-in-from-right-12 duration-1000">
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-[4200ms] delay-300">🧠</div>
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-[3800ms] mr-12">📄</div>
+        </div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
+                
+                {{-- Editorial Badge --}}
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs mb-8 uppercase tracking-wider shadow-sm border border-indigo-200">
+                    ⭐ {{ __('blog_hero_badge') }}
+                </div>
+
+                {{-- Headline: Matched with Stories Size (7xl) --}}
+                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                    {{ __('blog_hero_title_1') }} <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('blog_hero_title_2') }}</span>
+                </h1>
+
+                {{-- Author & Meta: Styled like a clean Dashboard label --}}
+                <div class="flex flex-wrap items-center justify-center gap-6 mb-16">
+                    <div class="flex items-center gap-3 bg-gray-50 px-4 py-2 rounded-2xl border border-gray-100">
+                        <img src="https://ui-avatars.com/api/?name=K+N&background=4f46e5&color=fff" alt="Author" class="w-8 h-8 rounded-full border border-white shadow-sm">
+                        <div class="text-left">
+                            <p class="font-black text-gray-900 text-xs leading-none">Khairan N.</p>
+                            <p class="text-[10px] text-indigo-600 font-bold uppercase tracking-tighter">Founder</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs font-black text-gray-400 uppercase tracking-widest">
+                        <span>{{ __('blog_meta_date') }}</span>
+                        <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                        <span>8 Min Read</span>
                     </div>
                 </div>
-                <div class="w-1 h-1 rounded-full bg-gray-300"></div>
-                <p>Feb 18, 2026</p>
-                <div class="w-1 h-1 rounded-full bg-gray-300"></div>
-                <p>8 min read</p>
-            </div>
 
-            {{-- Panoramic Featured Image --}}
-            <a href="#" class="block relative w-full h-[300px] md:h-[500px] rounded-[2rem] overflow-hidden group shadow-2xl shadow-indigo-100/50 border border-gray-100 transform transition duration-500 hover:-translate-y-2">
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-100 via-purple-100 to-sky-100 group-hover:scale-105 transition duration-700 ease-out"></div>
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30 mix-blend-overlay"></div>
-                {{-- Abstract visual placeholder for the featured image --}}
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/40 rounded-full blur-[80px]"></div>
-                <div class="absolute bottom-0 right-0 text-9xl transform translate-x-1/4 translate-y-1/4 opacity-20 group-hover:scale-110 transition duration-500">🏔️</div>
-            </a>
-            
+                {{-- Featured Editorial Card --}}
+                <div class="relative w-full max-w-4xl mx-auto group">
+                    {{-- Soft Glow Behind Card --}}
+                    <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-[3rem] blur opacity-15 transition duration-500 group-hover:opacity-25"></div>
+                    
+                    <a href="#" class="block relative bg-white rounded-[3rem] overflow-hidden border border-white shadow-2xl transform transition duration-500 hover:scale-[1.01]">
+                        {{-- Panoramic Featured Visual --}}
+                        <div class="h-[300px] md:h-[450px] relative overflow-hidden bg-gradient-to-br from-indigo-600 to-purple-700">
+                            {{-- Pattern Overlay --}}
+                            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+                            
+                            {{-- Abstract Glass Element --}}
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/10 rounded-full blur-[80px]"></div>
+                            
+                            {{-- Featured Content Info (Overlay) --}}
+                            <div class="absolute inset-0 flex flex-col justify-end p-8 md:p-12 text-left bg-gradient-to-t from-black/60 via-transparent to-transparent">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.2em] mb-4 border border-white/20 w-fit">
+                                    {{ __('blog_feat_label') }}
+                                </div>
+                                <h2 class="text-2xl md:text-4xl font-black text-white leading-tight max-w-2xl mb-4 group-hover:text-indigo-200 transition">
+                                    {{ __('blog_feat_title') }}
+                                </h2>
+                                <p class="text-white/80 font-medium text-sm md:text-base max-w-xl line-clamp-2">
+                                    {{ __('blog_feat_desc') }}
+                                </p>
+                            </div>
+
+                            {{-- Corner Icon --}}
+                            <div class="absolute top-8 right-8 text-6xl opacity-20 group-hover:scale-125 group-hover:rotate-12 transition duration-700">🏔️</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 

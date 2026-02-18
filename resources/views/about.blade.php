@@ -1,6 +1,8 @@
 @extends('layouts.marketing')
 
 @section('title', __('about_badge') . ' - OneForMind')
+@section('title', 'About | ' . (app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'All in One Productivity OS'))
+
 
 {{-- 🔥 MULAI SUNTIKAN SEO & GEO (ABOUT PAGE) 🔥 --}}
 @section('meta')
