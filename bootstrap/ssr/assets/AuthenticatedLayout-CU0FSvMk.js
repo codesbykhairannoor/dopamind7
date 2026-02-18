@@ -159,6 +159,7 @@ const _sfc_main = {
       _push(`</button></div><div class="md:hidden fixed inset-0 top-16 z-40 bg-white/95 backdrop-blur-lg overflow-y-auto" style="${ssrRenderStyle(showingNavigationDropdown.value ? null : { display: "none" })}"><div class="p-4 space-y-2 pb-24">`);
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("dashboard"),
+        prefetch: "hover",
         class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("dashboard") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
         onClick: ($event) => showingNavigationDropdown.value = false
       }, {
@@ -177,6 +178,7 @@ const _sfc_main = {
       if (showModule("habit")) {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("habits.index"),
+          prefetch: "hover",
           class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("habits.*") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
           onClick: ($event) => showingNavigationDropdown.value = false
         }, {
@@ -198,6 +200,7 @@ const _sfc_main = {
       if (showModule("planner")) {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("planner.index"),
+          prefetch: "hover",
           class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("planner.*") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
           onClick: ($event) => showingNavigationDropdown.value = false
         }, {
@@ -219,6 +222,7 @@ const _sfc_main = {
       if (showModule("finance")) {
         _push(ssrRenderComponent(unref(Link), {
           href: _ctx.route("finance.index"),
+          prefetch: "hover",
           class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("finance.*") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
           onClick: ($event) => showingNavigationDropdown.value = false
         }, {
@@ -239,6 +243,7 @@ const _sfc_main = {
       }
       _push(ssrRenderComponent(unref(Link), {
         href: _ctx.route("settings.index"),
+        prefetch: "hover",
         class: ["block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg", _ctx.route().current("settings.*") ? "bg-indigo-50 text-indigo-700 shadow-sm" : "text-slate-600 hover:bg-slate-50"],
         onClick: ($event) => showingNavigationDropdown.value = false
       }, {
@@ -254,7 +259,7 @@ const _sfc_main = {
         }),
         _: 1
       }, _parent));
-      _push(`<div class="border-t border-slate-100 my-4 pt-4"><div class="flex gap-2 px-2 mb-6"><button class="${ssrRenderClass([currentLang.value === "id" ? "bg-indigo-50 border-indigo-200 text-indigo-700" : "border-slate-100 text-slate-400", "flex-1 py-3 rounded-xl text-sm font-bold border transition"])}">🇮🇩 INDONESIA</button><button class="${ssrRenderClass([currentLang.value === "en" ? "bg-indigo-50 border-indigo-200 text-indigo-700" : "border-slate-100 text-slate-400", "flex-1 py-3 rounded-xl text-sm font-bold border transition"])}">🇬🇧 ENGLISH</button></div><button type="button" class="w-full text-center py-4 text-rose-500 font-bold bg-rose-50 rounded-2xl hover:bg-rose-100 transition flex items-center justify-center gap-2"><span>🚪</span> ${ssrInterpolate(_ctx.$t("nav_logout"))}</button></div></div></div><div class="w-full relative z-0">`);
+      _push(`<div class="border-t border-slate-100 my-4 pt-4"><div class="flex gap-2 px-2 mb-6"><button prefetch="hover" class="${ssrRenderClass([currentLang.value === "id" ? "bg-indigo-50 border-indigo-200 text-indigo-700" : "border-slate-100 text-slate-400", "flex-1 py-3 rounded-xl text-sm font-bold border transition"])}">🇮🇩 INDONESIA</button><button prefetch="hover" class="${ssrRenderClass([currentLang.value === "en" ? "bg-indigo-50 border-indigo-200 text-indigo-700" : "border-slate-100 text-slate-400", "flex-1 py-3 rounded-xl text-sm font-bold border transition"])}">🇬🇧 ENGLISH</button></div><button type="button" class="w-full text-center py-4 text-rose-500 font-bold bg-rose-50 rounded-2xl hover:bg-rose-100 transition flex items-center justify-center gap-2"><span>🚪</span> ${ssrInterpolate(_ctx.$t("nav_logout"))}</button></div></div></div><div class="w-full relative z-0">`);
       ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       _push(`</div></main></div>`);
     };

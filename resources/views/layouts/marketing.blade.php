@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="view-transition" content="same-origin">
+    
+    {{-- 🔥 1. SMART REDIRECT (Trik ClickUp): Cek cookie, langsung lempar ke dashboard --}}
+    <script>
+        if (document.cookie.includes('oneformind_session')) {
+            window.location.replace('/dashboard');
+        }
+    </script>
+
     <meta name="description" content="{{ app()->getLocale() === 'id' 
         ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
         : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
@@ -17,21 +25,80 @@
     @yield('meta')
 
     <link rel="icon" type="image/x-icon" href="/favicon.svg?v=2">
-    <link rel="preconnect" href="https://fonts.bunny.net">
+    
+    {{-- 🔥 2. DNS PREFETCH: Buka jalur tol lebih awal --}}
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.bunny.net">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    {{-- Font Loading --}}
     <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet" />
 
-    {{-- Plugin Alpine.js Collapse --}}
+    {{-- Plugin Alpine.js --}}
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
+    {{-- Vite otomatis handle preload CSS yang benar, JANGAN hardcode link CSS di sini --}}
     @vite(['resources/css/app.css'])
+
+    {{-- 🔥 3. SPECULATION RULES: Prerender halaman penting (0ms load) --}}
+   {{-- 🔥 3. SPECULATION RULES: Prerender SEMUA halaman publik (Teleportasi Mode) --}}
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": [
+            /* --- CORE --- */
+            "/login", 
+            "/register", 
+            "/about", 
+            "/pricing",
+
+            /* --- FEATURES --- */
+            "/features/habit",
+            "/features/finance",
+            "/features/planner",
+            "/features/journal",
+            "/features/calendar",
+
+            /* --- SOLUTIONS --- */
+            "/solutions/student",
+            "/solutions/freelancer",
+            "/solutions/personalgrowth",
+
+            /* --- RESOURCES --- */
+            "/resources/guide",
+            "/resources/blog",
+            "/resources/stories",
+
+            /* --- COMPANY --- */
+            "/company/privacy",
+            "/company/terms",
+
+            /* --- COMPARE --- */
+            "/compare/paper",
+            "/compare/sheets",
+            "/compare/management-tools",
+            "/compare/habit-apps"
+          ]
+        }
+      ]
+    }
+    </script>
 
     <style>
         [x-cloak] { display: none !important; }
         body { position: static !important; }
+        /* Fix scrollbar biar cantik */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     </style>
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 </head>
+{{-- HTMX Boost + Smooth Scroll --}}
 <body hx-boost="true" class="bg-white text-slate-900 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700 flex flex-col min-h-screen">
 
     <div x-data="{ 
@@ -43,6 +110,7 @@
     @scroll.window="scrolled = (window.pageYOffset > 20)"
     class="relative">
         
+        {{-- NAVBAR --}}
         {{-- NAVBAR --}}
         <nav 
             :class="(scrolled || mobileMenuOpen) ? 'bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'bg-transparent'"
@@ -62,51 +130,77 @@
                 <div class="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
                     
                     {{-- DROPDOWN: FEATURES --}}
-                    <div class="relative" @mouseenter="activeMenu = 'features'" @mouseleave="activeMenu = null">
-                        <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all flex items-center gap-1">
+                    <div class="relative group" @mouseenter="activeMenu = 'features'" @mouseleave="activeMenu = null">
+                        <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all flex items-center gap-1 group-hover:text-indigo-600">
                             {{ __('nav_features') }}
-                            <svg class="w-4 h-4 opacity-50 transition-transform" :class="activeMenu === 'features' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg class="w-4 h-4 opacity-50 transition-transform group-hover:rotate-180" :class="activeMenu === 'features' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         
+                        {{-- Wrapper Jembatan (pt-4 untuk bridging) --}}
                         <div x-show="activeMenu === 'features'" 
                              x-transition:enter="transition ease-out duration-200"
                              x-transition:enter-start="opacity-0 translate-y-2"
                              x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 translate-y-2"
                              x-cloak 
-                             class="absolute top-full left-0 w-[500px] mt-2 p-4 bg-white border border-slate-100 shadow-2xl rounded-[2rem] overflow-hidden z-50">
-                            <div class="grid grid-cols-2 gap-2 text-left">
-                                <x-nav-item href="{{ route('features.habit') }}" icon="🌱" title="Habit Tracker" desc="Build consistency every day." />
-                                <x-nav-item href="{{ route('features.finance') }}" icon="💰" title="Finance" desc="Master your cash flow." />
-                                <x-nav-item href="{{ route('features.planner') }}" icon="🎯" title="Planner" desc="Organize your daily tasks." />
-                                <x-nav-item href="{{ route('features.journal') }}" icon="📔" title="Journal" desc="Clear your mental clutter." />
-                                <x-nav-item href="{{ route('features.calendar') }}" icon="📅" title="Calendar" desc="Visual time management." />
+                             class="absolute top-full left-0 w-[500px] pt-4 z-50">
+                            
+                            {{-- Kartu Visual --}}
+                            <div class="bg-white border border-slate-100 shadow-2xl rounded-[2rem] overflow-hidden p-4">
+                                <div class="grid grid-cols-2 gap-2 text-left">
+                                    <x-nav-item href="{{ route('features.habit') }}" icon="🌱" title="Habit Tracker" desc="Build consistency every day." />
+                                    <x-nav-item href="{{ route('features.finance') }}" icon="💰" title="Finance" desc="Master your cash flow." />
+                                    <x-nav-item href="{{ route('features.planner') }}" icon="🎯" title="Planner" desc="Organize your daily tasks." />
+                                    <x-nav-item href="{{ route('features.journal') }}" icon="📔" title="Journal" desc="Clear your mental clutter." />
+                                    <x-nav-item href="{{ route('features.calendar') }}" icon="📅" title="Calendar" desc="Visual time management." />
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     {{-- DROPDOWN: SOLUTIONS --}}
-                    <div class="relative" @mouseenter="activeMenu = 'solutions'" @mouseleave="activeMenu = null">
-                        <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1">
+                    <div class="relative group" @mouseenter="activeMenu = 'solutions'" @mouseleave="activeMenu = null">
+                        <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
                             {{ __('nav_solutions') }}
-                            <svg class="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg class="w-4 h-4 opacity-50 transition-transform group-hover:rotate-180" :class="activeMenu === 'solutions' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="activeMenu === 'solutions'" x-transition x-cloak class="absolute top-full left-0 w-[280px] mt-2 p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem] z-50">
-                            <x-nav-item href="{{ route('solutions.student') }}" icon="🎓" title="For Students" desc="Manage studies and life." />
-                            <x-nav-item href="{{ route('solutions.freelancer') }}" icon="💻" title="For Freelancers" desc="Track projects and income." />
-                            <x-nav-item href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal Growth" desc="Unlock your best self." />
+                        
+                        {{-- Wrapper Jembatan --}}
+                        <div x-show="activeMenu === 'solutions'" 
+                             x-transition 
+                             x-cloak 
+                             class="absolute top-full left-0 w-[280px] pt-4 z-50">
+                            
+                            {{-- Kartu Visual --}}
+                            <div class="p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem]">
+                                <x-nav-item href="{{ route('solutions.student') }}" icon="🎓" title="For Students" desc="Manage studies and life." />
+                                <x-nav-item href="{{ route('solutions.freelancer') }}" icon="💻" title="For Freelancers" desc="Track projects and income." />
+                                <x-nav-item href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal Growth" desc="Unlock your best self." />
+                            </div>
                         </div>
                     </div>
 
                     {{-- DROPDOWN: RESOURCES --}}
-                    <div class="relative" @mouseenter="activeMenu = 'resources'" @mouseleave="activeMenu = null">
-                        <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1">
+                    <div class="relative group" @mouseenter="activeMenu = 'resources'" @mouseleave="activeMenu = null">
+                        <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
                             {{ __('nav_resources') }}
-                            <svg class="w-4 h-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg class="w-4 h-4 opacity-50 transition-transform group-hover:rotate-180" :class="activeMenu === 'resources' ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="activeMenu === 'resources'" x-transition x-cloak class="absolute top-full left-0 w-[280px] mt-2 p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem] z-50 text-left">
-                            <x-nav-item href="{{ route('resources.guide') }}" icon="📖" title="User Guide" desc="Learn the system." />
-                            <x-nav-item href="{{ route('resources.blog') }}" icon="✍️" title="Blog" desc="Tips and stories." />
-                            <x-nav-item href="{{ route('resources.stories') }}" icon="✨" title="User Stories" desc="Success community." />
+
+                        {{-- Wrapper Jembatan --}}
+                        <div x-show="activeMenu === 'resources'" 
+                             x-transition 
+                             x-cloak 
+                             class="absolute top-full left-0 w-[280px] pt-4 z-50 text-left">
+                            
+                            {{-- Kartu Visual --}}
+                            <div class="p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem]">
+                                <x-nav-item href="{{ route('resources.guide') }}" icon="📖" title="User Guide" desc="Learn the system." />
+                                <x-nav-item href="{{ route('resources.blog') }}" icon="✍️" title="Blog" desc="Tips and stories." />
+                                <x-nav-item href="{{ route('resources.stories') }}" icon="✨" title="User Stories" desc="Success community." />
+                            </div>
                         </div>
                     </div>
 
@@ -123,7 +217,7 @@
                     </div>
 
                     @auth
-                        <a href="{{ route('dashboard') }}" class="px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold shadow-lg">Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm font-bold text-slate-600 hover:text-indigo-600 transition">{{ __('nav_login') }}</a>
                         <a href="{{ route('register') }}" class="px-6 py-2.5 bg-indigo-600 text-white rounded-full text-sm font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
@@ -142,7 +236,7 @@
                 </button>
             </div>
 
-            {{-- MOBILE MENU OVERLAY --}}
+            {{-- MOBILE MENU OVERLAY (Isi sama dengan kodemu, aman) --}}
             <div x-show="mobileMenuOpen" 
                  x-transition:enter="transition ease-out duration-300"
                  x-transition:enter-start="opacity-0 translate-y-4"
@@ -183,7 +277,7 @@
                         </div>
                     </div>
 
-                    {{-- FIX: Added Mobile Resources Accordion --}}
+                    {{-- Mobile Resources Accordion --}}
                     <div class="border-b border-slate-50">
                         <button @click="activeAccordion === 'resources' ? activeAccordion = null : activeAccordion = 'resources'" class="w-full py-5 flex justify-between items-center text-xl font-black text-slate-900">
                             <span>{{ __('nav_resources') }}</span>
@@ -229,9 +323,7 @@
         {{-- FOOTER --}}
         <footer class="bg-slate-50 border-t border-slate-100 pt-20 pb-10">
             <div class="max-w-7xl mx-auto px-6">
-                {{-- Updated grid-cols from 4 to 5 for Desktop --}}
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16 text-left">
-                    {{-- Column 1: Branding --}}
                     <div class="col-span-2 md:col-span-1">
                         <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6">
                             <img src="/favicon.svg?v=2" alt="Logo" class="w-7 h-7" />
@@ -242,7 +334,6 @@
                         </p>
                     </div>
 
-                    {{-- Column 2: Product --}}
                     <div>
                         <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h4>
                         <ul class="space-y-4 text-sm font-bold text-slate-500">
@@ -253,7 +344,6 @@
                         </ul>
                     </div>
 
-                    {{-- Column 3: NEW COMPARE --}}
                     <div>
                         <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h4>
                         <ul class="space-y-4 text-sm font-bold text-slate-500">
@@ -264,7 +354,6 @@
                         </ul>
                     </div>
 
-                    {{-- Column 4: Company --}}
                     <div>
                         <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h4>
                         <ul class="space-y-4 text-sm font-bold text-slate-500">
@@ -274,7 +363,6 @@
                         </ul>
                     </div>
 
-                    {{-- Column 5: Social --}}
                     <div>
                         <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</h4>
                         <div class="flex gap-4">
@@ -284,14 +372,80 @@
                     </div>
                 </div>
 
-                <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-400">
+                {{-- 🔥 FIX CONTRAST: Ganti slate-400 jadi slate-600 --}}
+                <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-600">
                     <p>&copy; {{ date('Y') }} OneForMind. All rights reserved.</p>
                     <p>Made with ✨ by Dopamind7 Team</p>
                 </div>
             </div>
         </footer>
     </div>
+    
+    {{-- 3. Load Library --}}
+    <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <script src="//instant.page/5.2.0" type="module"></script>
 
-    <script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipfj96/40GiaZa98qONIGLqo7f8IKqoDzJ8XRRWWB9ID10n0Ea6G3D9a"></script>
+    {{-- 4. 🔥 SCRIPT "JEMBATAN" (Blade rasa Vue) --}}
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. KONFIGURASI NPROGRESS (Match dengan Vue/Inertia lu)
+        NProgress.configure({ 
+            showSpinner: false, 
+            speed: 500, 
+            minimum: 0.3, 
+            trickle: true, 
+            trickleSpeed: 200 
+        });
+
+        // 2. LOGIKA NAVIGASI HTMX (Handling hx-boost)
+        
+        // Mulai NProgress pas request jalan
+        document.addEventListener('htmx:configRequest', () => {
+            NProgress.start();
+        });
+
+        // FIX MOBILE SLIDING: Matikan smooth scroll tepat sebelum konten diganti
+        document.addEventListener('htmx:beforeTransition', () => {
+            document.documentElement.classList.remove('scroll-smooth');
+        });
+
+        // SETELAH KONTEN DITERIMA: Paksa balik ke atas secara instan
+        document.addEventListener('htmx:afterSwap', () => {
+            // Paksa browser "teleportasi" ke koordinat 0,0 (paling atas)
+            window.scrollTo({ top: 0, behavior: 'instant' }); 
+            
+            NProgress.done();
+
+            // Balikin lagi fitur scroll-smooth setelah jeda dikit
+            // biar fitur anchor link (#) di dalem halaman tetep mulus
+            setTimeout(() => {
+                document.documentElement.classList.add('scroll-smooth');
+            }, 100);
+        });
+
+        // Handle tombol back browser
+        document.addEventListener('htmx:historyRestore', () => {
+            NProgress.remove();
+        });
+
+        // 3. FALLBACK LINK BIASA (Transisi Blade -> Inertia/Dashboard)
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            
+            if (link && 
+                link.href.startsWith(window.location.origin) && 
+                link.target !== '_blank' && 
+                !link.getAttribute('href').startsWith('#') &&
+                !link.getAttribute('hx-boost')
+            ) {
+                // Untuk link non-HTMX, kita nggak bisa matiin scroll-smooth lewat event htmx,
+                // jadi kita matiin manual di sini sebelum pindah page.
+                document.documentElement.classList.remove('scroll-smooth');
+                NProgress.start();
+            }
+        });
+    });
+</script>
 </body>
 </html>

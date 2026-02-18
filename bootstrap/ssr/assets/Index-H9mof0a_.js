@@ -1,7 +1,7 @@
-import { ref, watch, computed, unref, withCtx, isRef, createVNode, useSSRContext } from "vue";
+import { ref, watch, computed, unref, isRef, useSSRContext } from "vue";
 import { ssrRenderComponent } from "vue/server-renderer";
 import { useForm, router, usePage, Head } from "@inertiajs/vue3";
-import { _ as _sfc_main$1 } from "./AuthenticatedLayout-B2_TjefJ.js";
+import { _ as _sfc_main$1 } from "./AuthenticatedLayout-CU0FSvMk.js";
 import Swal from "sweetalert2";
 import { trans } from "laravel-vue-i18n";
 import axios from "axios";
@@ -433,7 +433,7 @@ function usePlannerBatch() {
     submitBatch
   };
 }
-const _sfc_main = {
+const _sfc_main = /* @__PURE__ */ Object.assign({ layout: _sfc_main$1 }, {
   __name: "Index",
   __ssrInlineRender: true,
   props: { tasks: Array, dailyLog: Object },
@@ -481,113 +481,54 @@ const _sfc_main = {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<!--[-->`);
       _push(ssrRenderComponent(unref(Head), { title: "Daily Planner" }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$1, null, {
-        default: withCtx((_, _push2, _parent2, _scopeId) => {
-          if (_push2) {
-            _push2(ssrRenderComponent(_sfc_main$2, {
-              openModal: () => unref(openModal)(null, null, "full"),
-              resetBoard: handleFullReset,
-              stats: unref(scheduledStats)
-            }, null, _parent2, _scopeId));
-            _push2(`<div class="w-full min-h-screen bg-slate-50/50 px-4 sm:px-6 lg:px-8 py-8"${_scopeId}><div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start"${_scopeId}><div class="lg:col-span-3 order-1 lg:order-2 w-full"${_scopeId}>`);
-            _push2(ssrRenderComponent(PlannerTimeline, {
-              timeSlots: unref(timeSlots),
-              scheduledTasks: unref(scheduledTasks),
-              onDrop: unref(onDrop),
-              onDragStart: unref(onDragStart),
-              openModal: unref(openModal),
-              toggleComplete: unref(toggleComplete),
-              getTypeColor: unref(getTypeColor)
-            }, null, _parent2, _scopeId));
-            _push2(`</div><div class="lg:col-span-2 order-2 lg:order-1 w-full space-y-6 md:sticky md:top-24"${_scopeId}>`);
-            _push2(ssrRenderComponent(_sfc_main$3, {
-              stats: unref(scheduledStats),
-              localNotes: unref(localNotes),
-              "onUpdate:localNotes": ($event) => isRef(localNotes) ? localNotes.value = $event : null,
-              localMeals: unref(localMeals),
-              "onUpdate:localMeals": ($event) => isRef(localMeals) ? localMeals.value = $event : null
-            }, null, _parent2, _scopeId));
-            _push2(`</div></div></div>`);
-            _push2(ssrRenderComponent(_sfc_main$4, {
-              show: unref(isModalOpen),
-              form: unref(form),
-              isEditing: unref(isEditing),
-              conflictError: unref(conflictError),
-              close: () => isModalOpen.value = false,
-              submit: unref(submitTask),
-              remove: unref(deleteTask),
-              onSwitchToBatch: switchToBatch
-            }, null, _parent2, _scopeId));
-            _push2(ssrRenderComponent(PlannerBatchModal, {
-              show: unref(isBatchModalOpen),
-              form: unref(batchForm),
-              conflictError: unref(conflictError),
-              close: () => isBatchModalOpen.value = false,
-              submit: unref(submitBatch),
-              addRow: unref(addBatchRow),
-              removeRow: unref(removeBatchRow),
-              switchToSingle
-            }, null, _parent2, _scopeId));
-          } else {
-            return [
-              createVNode(_sfc_main$2, {
-                openModal: () => unref(openModal)(null, null, "full"),
-                resetBoard: handleFullReset,
-                stats: unref(scheduledStats)
-              }, null, 8, ["openModal", "stats"]),
-              createVNode("div", { class: "w-full min-h-screen bg-slate-50/50 px-4 sm:px-6 lg:px-8 py-8" }, [
-                createVNode("div", { class: "grid grid-cols-1 lg:grid-cols-5 gap-8 items-start" }, [
-                  createVNode("div", { class: "lg:col-span-3 order-1 lg:order-2 w-full" }, [
-                    createVNode(PlannerTimeline, {
-                      timeSlots: unref(timeSlots),
-                      scheduledTasks: unref(scheduledTasks),
-                      onDrop: unref(onDrop),
-                      onDragStart: unref(onDragStart),
-                      openModal: unref(openModal),
-                      toggleComplete: unref(toggleComplete),
-                      getTypeColor: unref(getTypeColor)
-                    }, null, 8, ["timeSlots", "scheduledTasks", "onDrop", "onDragStart", "openModal", "toggleComplete", "getTypeColor"])
-                  ]),
-                  createVNode("div", { class: "lg:col-span-2 order-2 lg:order-1 w-full space-y-6 md:sticky md:top-24" }, [
-                    createVNode(_sfc_main$3, {
-                      stats: unref(scheduledStats),
-                      localNotes: unref(localNotes),
-                      "onUpdate:localNotes": ($event) => isRef(localNotes) ? localNotes.value = $event : null,
-                      localMeals: unref(localMeals),
-                      "onUpdate:localMeals": ($event) => isRef(localMeals) ? localMeals.value = $event : null
-                    }, null, 8, ["stats", "localNotes", "onUpdate:localNotes", "localMeals", "onUpdate:localMeals"])
-                  ])
-                ])
-              ]),
-              createVNode(_sfc_main$4, {
-                show: unref(isModalOpen),
-                form: unref(form),
-                isEditing: unref(isEditing),
-                conflictError: unref(conflictError),
-                close: () => isModalOpen.value = false,
-                submit: unref(submitTask),
-                remove: unref(deleteTask),
-                onSwitchToBatch: switchToBatch
-              }, null, 8, ["show", "form", "isEditing", "conflictError", "close", "submit", "remove"]),
-              createVNode(PlannerBatchModal, {
-                show: unref(isBatchModalOpen),
-                form: unref(batchForm),
-                conflictError: unref(conflictError),
-                close: () => isBatchModalOpen.value = false,
-                submit: unref(submitBatch),
-                addRow: unref(addBatchRow),
-                removeRow: unref(removeBatchRow),
-                switchToSingle
-              }, null, 8, ["show", "form", "conflictError", "close", "submit", "addRow", "removeRow"])
-            ];
-          }
-        }),
-        _: 1
-      }, _parent));
+      _push(ssrRenderComponent(_sfc_main$2, {
+        openModal: () => unref(openModal)(null, null, "full"),
+        resetBoard: handleFullReset,
+        stats: unref(scheduledStats)
+      }, null, _parent));
+      _push(`<div class="w-full min-h-screen bg-slate-50/50 px-4 sm:px-6 lg:px-8 py-8"><div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start"><div class="lg:col-span-3 order-1 lg:order-2 w-full">`);
+      _push(ssrRenderComponent(PlannerTimeline, {
+        timeSlots: unref(timeSlots),
+        scheduledTasks: unref(scheduledTasks),
+        onDrop: unref(onDrop),
+        onDragStart: unref(onDragStart),
+        openModal: unref(openModal),
+        toggleComplete: unref(toggleComplete),
+        getTypeColor: unref(getTypeColor)
+      }, null, _parent));
+      _push(`</div><div class="lg:col-span-2 order-2 lg:order-1 w-full space-y-6 md:sticky md:top-24">`);
+      _push(ssrRenderComponent(_sfc_main$3, {
+        stats: unref(scheduledStats),
+        localNotes: unref(localNotes),
+        "onUpdate:localNotes": ($event) => isRef(localNotes) ? localNotes.value = $event : null,
+        localMeals: unref(localMeals),
+        "onUpdate:localMeals": ($event) => isRef(localMeals) ? localMeals.value = $event : null
+      }, null, _parent));
+      _push(`</div></div></div>`);
+      _push(ssrRenderComponent(_sfc_main$4, {
+        show: unref(isModalOpen),
+        form: unref(form),
+        isEditing: unref(isEditing),
+        conflictError: unref(conflictError),
+        close: () => isModalOpen.value = false,
+        submit: unref(submitTask),
+        remove: unref(deleteTask),
+        onSwitchToBatch: switchToBatch
+      }, null, _parent));
+      _push(ssrRenderComponent(PlannerBatchModal, {
+        show: unref(isBatchModalOpen),
+        form: unref(batchForm),
+        conflictError: unref(conflictError),
+        close: () => isBatchModalOpen.value = false,
+        submit: unref(submitBatch),
+        addRow: unref(addBatchRow),
+        removeRow: unref(removeBatchRow),
+        switchToSingle
+      }, null, _parent));
       _push(`<!--]-->`);
     };
   }
-};
+});
 const _sfc_setup = _sfc_main.setup;
 _sfc_main.setup = (props, ctx) => {
   const ssrContext = useSSRContext();

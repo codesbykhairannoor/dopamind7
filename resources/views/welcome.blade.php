@@ -15,6 +15,7 @@
     <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
     <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
     <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
+    <link rel="preload" as="style" href="{{ asset('build/assets/app-EImXTUY8.css') }}">
     
     <link rel="canonical" href="{{ url('/') }}" />
     

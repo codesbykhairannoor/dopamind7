@@ -1,7 +1,7 @@
 import { computed, ref, watch, mergeProps, unref, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent } from "vue/server-renderer";
 import { usePage, router, useForm, Head } from "@inertiajs/vue3";
-import { _ as _sfc_main$1 } from "./AuthenticatedLayout-B2_TjefJ.js";
+import { _ as _sfc_main$1 } from "./AuthenticatedLayout-CU0FSvMk.js";
 import dayjs from "dayjs";
 import "dayjs/locale/id.js";
 import "dayjs/locale/en.js";

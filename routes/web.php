@@ -53,9 +53,9 @@ Route::post('/waitlist', function (Request $request) {
         'email' => 'required|email|unique:waitlists,email'
     ]);
 
-    Waitlist::create($validated);
+ Waitlist::create($validated);
     return redirect()->back()->with('success', 'You have been added to the waitlist!');
-})->name('waitlist.store');
+})->name('waitlist.store')->middleware('throttle:waitlist'); // 👈 Tambahan di sini
 
 
 Route::get('/about', function () {
@@ -65,35 +65,91 @@ Route::get('/about', function () {
 Route::get('/pricing', function () {
     return view('pricing');
 })->name('pricing');
-
 // ==========================================
-// 🔥 SEO: SITEMAP (ROBOTS DIBUAT MANUAL DI FOLDER PUBLIC)
+// 🔥 SEO: DYNAMIC SITEMAP GENERATOR
 // ==========================================
 Route::get('/sitemap.xml', function () {
-    // 1. Definisikan halaman statis utama
-    $pages = [
-        ['url' => url('/'), 'priority' => '1.0', 'freq' => 'weekly'],
-        ['url' => url('/about'), 'priority' => '0.8', 'freq' => 'monthly'],
-        ['url' => url('/pricing'), 'priority' => '0.8', 'freq' => 'monthly'],
-        ['url' => url('/register'), 'priority' => '0.5', 'freq' => 'monthly'],
+    $pages = [];
+
+    // 1. HALAMAN UTAMA (Priority: High)
+    // Halaman statis paling penting
+    $statics = [
+        '/' => '1.0',
+        '/about' => '0.8',
+        '/pricing' => '0.9',
+        '/login' => '0.8',
+        '/register' => '0.8',
     ];
 
-    // 2. Definisikan halaman fitur (Meskipun di balik auth, bot perlu tahu URL-nya ada)
-    $features = ['finance', 'habits', 'planner'];
-    foreach ($features as $feature) {
+    foreach ($statics as $uri => $priority) {
         $pages[] = [
-            'url' => url('/' . $feature),
-            'priority' => '0.9',
-            'freq' => 'daily'
+            'url' => url($uri),
+            'priority' => $priority,
+            'freq' => 'weekly'
         ];
     }
 
-    // 3. Render ke format XML (Fix agar tidak jadi teks memanjang)
+    // 2. FEATURES (Prefix: /features/...)
+    // Ini halaman "jualan" utama lu
+    $features = ['habit', 'finance', 'planner', 'journal', 'calendar'];
+    foreach ($features as $feature) {
+        $pages[] = [
+            'url' => url("/features/{$feature}"), // Fix: Tambah prefix /features/
+            'priority' => '0.9',
+            'freq' => 'weekly'
+        ];
+    }
 
-return response()->view('seo.sitemap', [
+    // 3. SOLUTIONS (Prefix: /solutions/...)
+    // Target audience spesifik
+    $solutions = ['student', 'freelancer', 'personalgrowth'];
+    foreach ($solutions as $solution) {
+        $pages[] = [
+            'url' => url("/solutions/{$solution}"),
+            'priority' => '0.8',
+            'freq' => 'monthly'
+        ];
+    }
+
+    // 4. RESOURCES (Prefix: /resources/...)
+    // Konten edukasi
+    $resources = ['guide', 'blog', 'stories'];
+    foreach ($resources as $resource) {
+        $pages[] = [
+            'url' => url("/resources/{$resource}"),
+            'priority' => '0.7', // Sedikit lebih rendah dari fitur
+            'freq' => 'weekly'
+        ];
+    }
+
+    // 5. COMPARE & COMPANY (Campuran)
+    // Halaman pendukung SEO (vs competitor) & Legal
+    $others = [
+        // Compare Pages (Penting buat SEO "Alternative to...")
+        '/compare/paper', 
+        '/compare/sheets', 
+        '/compare/management-tools', 
+        '/compare/habit-apps',
+        
+        // Legal Pages
+        '/company/privacy', 
+        '/company/terms'
+    ];
+
+    foreach ($others as $uri) {
+        $pages[] = [
+            'url' => url($uri),
+            'priority' => '0.6',
+            'freq' => 'monthly'
+        ];
+    }
+
+    // 6. Render ke View Blade XML
+    return response()->view('seo.sitemap', [
         'pages' => $pages,
         'date' => now()->toAtomString()
-    ])->header('Content-Type', 'application/xml');
+    ])->header('Content-Type', 'text/xml');
+
 })->name('sitemap');
 // ==========================================
 
@@ -200,7 +256,7 @@ Route::get('/auth/google/callback', [SocialController::class, 'callback']);
 
 
 // --- GROUP 3: AUTHENTICATED APP ---
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tambahan di sini
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
