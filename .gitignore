@@ -17,4 +17,5 @@ yarn-error.log
 /.idea
 /.vscode
 node_modules
+resources/js/ziggy.js
 .env.local
