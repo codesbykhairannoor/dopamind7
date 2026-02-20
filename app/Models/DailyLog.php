@@ -18,6 +18,7 @@ class DailyLog extends Model
         'date',   // 🔥 WAJIB ADA untuk sistem agenda harian
         'meals', 'water', 'task_box',
         'notes',
+        'income_target',
     ];
 
     /**
@@ -27,6 +28,7 @@ class DailyLog extends Model
         'meals' => 'array',
         'task_box' => 'array',
         'date'  => 'date', // Memastikan format tanggal konsisten
+        'income_target' => 'float',
     ];
 
     /**
