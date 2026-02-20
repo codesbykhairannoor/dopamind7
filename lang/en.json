@@ -15,6 +15,12 @@
     "nav_resources": "Resources",
     "nav_pricing": "Pricing",
 
+    
+    "modal_logout_title": "Want to say goodbye?",
+    "modal_logout_subtitle": "Don't forget to come back soon, your progress for today has been saved securely!",
+    "modal_logout_confirm": "Yes, Logout",
+    "modal_logout_cancel": "Cancel",
+
 "seo_about_desc": "Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.",
 
     "footer_legal": "Privacy & Terms",

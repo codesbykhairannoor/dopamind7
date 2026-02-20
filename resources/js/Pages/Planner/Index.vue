@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { usePlanner } from '@/Composables/Planner/usePlanner';
 import { usePlannerBatch } from '@/Composables/Planner/usePlannerBatch';
+import { usePlannerCalendar } from '@/Composables/Planner/usePlannerCalendar'; // 🔥 Import Kalender Logic
 
 // Components
 import PlannerHeader from './PlannerHeader.vue';
@@ -11,21 +12,31 @@ import PlannerTimeline from './PlannerTimeline.vue';
 import PlannerModal from './PlannerModal.vue';
 import PlannerBatchModal from './PlannerBatchModal.vue';
 
-const props = defineProps({ tasks: Array, dailyLog: Object });
+// 🔥 TERIMA currentDate DARI CONTROLLER
+const props = defineProps({ 
+    tasks: Array, 
+    dailyLog: Object,
+    currentDate: String 
+});
+
 defineOptions({ layout: AuthenticatedLayout });
-// Logic Single
+
+// 🔥 INIT CALENDAR LOGIC
+const { currentDate, formattedDate, changeDate, changeDay } = usePlannerCalendar(props.currentDate);
+
+// Logic Single (Kirim props ke usePlanner)
 const {
     scheduledTasks, timeSlots, scheduledStats,
     form, isModalOpen, isEditing,
     openModal, submitTask, deleteTask, resetBoard, toggleComplete,
-    onDragStart, onDrop, getTypeColor, localNotes, localMeals, conflictError
+    onDragStart, onDrop, getTypeColor, localNotes, localMeals, conflictError, localWater, localTaskBox
 } = usePlanner(props);
 
-// Logic Batch
+// Logic Batch (Kirim ref currentDate agar save massal masuk ke tanggal yang benar)
 const {
     isBatchModalOpen, batchForm, openBatchModal,
     addBatchRow, removeBatchRow, submitBatch
-} = usePlannerBatch();
+} = usePlannerBatch(currentDate);
 
 const switchToBatch = () => { isModalOpen.value = false; openBatchModal(); };
 const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
@@ -41,6 +52,11 @@ const handleFullReset = () => {
     <Head title="Daily Planner" />
 
         <PlannerHeader 
+            :currentDate="currentDate"
+            :formattedDate="formattedDate"
+            :tasks="tasks"
+            @change-date="changeDate"
+            @change-day="changeDay"
             :openModal="() => openModal(null, null, 'full')" 
             :resetBoard="handleFullReset"
             :stats="scheduledStats" 
@@ -63,11 +79,13 @@ const handleFullReset = () => {
                 </div>
 
                 <div class="lg:col-span-2 order-2 lg:order-1 w-full space-y-6 md:sticky md:top-24">
-                    <PlannerSidebar 
-                        :stats="scheduledStats"
-                        v-model:localNotes="localNotes"
-                        v-model:localMeals="localMeals"
-                    />
+                   <PlannerSidebar 
+    :stats="scheduledStats"
+    v-model:localNotes="localNotes"
+    v-model:localMeals="localMeals"
+    v-model:localWater="localWater"
+    v-model:localTaskBox="localTaskBox"
+/>
                 </div>
 
             </div>

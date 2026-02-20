@@ -18,23 +18,29 @@ use Inertia\Inertia;
 class PlannerController extends Controller
 {
     /**
-     * Menampilkan Halaman Planner (Single Board Concept)
+     * Menampilkan Halaman Planner (Date Based Concept)
      */
     public function index(Request $request)
     {
         $userId = Auth::id();
+        
+        // 🔥 TANGKAP TANGGAL DARI URL (Default hari ini jika kosong)
+        $date = $request->query('date', now()->format('Y-m-d'));
 
-        // 1. Ambil Task (Sangat kencang karena tidak perlu filter tanggal)
+        // 1. Ambil Task TANGGAL TERSEBUT
         $tasks = PlannerTask::where('user_id', $userId)
+            ->where('date', $date) // 🔥 Filter Date
             ->orderBy('start_time', 'asc')
             ->get();
 
-        // 2. Ambil Data Harian (Satu user murni hanya punya 1 row DailyLog)
+        // 2. Ambil Data Harian TANGGAL TERSEBUT (Termasuk Water & TaskBox)
         $dailyLog = DailyLog::firstOrCreate(
-            ['user_id' => $userId],
+            ['user_id' => $userId, 'date' => $date], // Cari / Buat berdasarkan Date
             [
-                'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], 
-                'notes' => '',
+                'meals'    => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], 
+                'notes'    => '',
+                'water'    => 0, // Default Water
+                'task_box' => [] // Default Task Box
             ]
         );
 
@@ -43,14 +49,16 @@ class PlannerController extends Controller
 
         if ($request->wantsJson()) {
             return response()->json([
-                'tasks' => $tasksResource,
-                'dailyLog' => $logResource
+                'tasks'       => $tasksResource,
+                'dailyLog'    => $logResource,
+                'currentDate' => $date
             ]);
         }
 
         return Inertia::render('Planner/Index', [
-            'tasks' => $tasksResource->resolve(),
-            'dailyLog' => $logResource->resolve(),
+            'tasks'       => $tasksResource->resolve(),
+            'dailyLog'    => $logResource->resolve(),
+            'currentDate' => $date, // 🔥 Kirim tanggal ke Vue
         ]);
     }
 
@@ -61,7 +69,7 @@ class PlannerController extends Controller
     {
         $task = PlannerTask::create(array_merge(
             ['user_id' => Auth::id()],
-            $request->validated()
+            $request->validated() // Pastikan form/request ngirim 'date'
         ));
 
         if ($request->wantsJson()) {
@@ -122,10 +130,14 @@ class PlannerController extends Controller
         $userId = Auth::id();
         $tasksData = [];
         $now = now();
+        
+        // Tangkap tanggal untuk disematkan ke semua batch insert
+        $date = $request->input('date', now()->format('Y-m-d'));
 
         foreach ($request->validated()['tasks'] as $task) {
             $tasksData[] = [
                 'user_id'      => $userId,
+                'date'         => $date,
                 'title'        => $task['title'],
                 'start_time'   => $task['start_time'],
                 'end_time'     => $task['end_time'],
@@ -137,7 +149,6 @@ class PlannerController extends Controller
             ];
         }
 
-        // Bungkus dengan Transaction agar DB mengeksekusi Bulk Insert dalam 1 nafas
         DB::transaction(function () use ($tasksData) {
             PlannerTask::insert($tasksData);
         });
@@ -146,13 +157,21 @@ class PlannerController extends Controller
     }
 
     /**
-     * Update Notes / Meals
+     * Update Notes / Meals / Water / TaskBox
      */
     public function updateLog(UpdateLogRequest $request)
     {
+        // 🔥 Harus ambil tanggal dari request, agar tidak numpuk di log hari ini
+        $date = $request->input('date', now()->format('Y-m-d'));
+
         $log = DailyLog::firstOrCreate(
-            ['user_id' => Auth::id()],
-            ['meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], 'notes' => '']
+            ['user_id' => Auth::id(), 'date' => $date], // Cari log di tanggal tersebut
+            [
+                'meals'    => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], 
+                'notes'    => '',
+                'water'    => 0,
+                'task_box' => []
+            ]
         );
 
         $log->update($request->validated());
@@ -186,18 +205,27 @@ class PlannerController extends Controller
     /**
      * Reset Board (Nuke the whiteboard!)
      */
-    public function resetBoard()
+    public function resetBoard(Request $request)
     {
         $userId = Auth::id();
+        
+        // Tangkap tanggal board mana yang mau dihapus
+        $date = $request->input('date', now()->format('Y-m-d'));
 
-        // Eksekusi pembersihan serentak di level DB (Jauh lebih cepat dari looping)
-        DB::transaction(function () use ($userId) {
-            PlannerTask::where('user_id', $userId)->delete();
+        // Eksekusi pembersihan serentak (Hanya HAPUS DATA DI TANGGAL TERSEBUT)
+        DB::transaction(function () use ($userId, $date) {
+            PlannerTask::where('user_id', $userId)
+                ->where('date', $date)
+                ->delete();
 
-            DailyLog::where('user_id', $userId)->update([
-                'notes' => '',
-                'meals' => ['breakfast' => '', 'lunch' => '', 'dinner' => ''],
-            ]);
+            DailyLog::where('user_id', $userId)
+                ->where('date', $date)
+                ->update([
+                    'notes'    => '',
+                    'meals'    => ['breakfast' => '', 'lunch' => '', 'dinner' => ''],
+                    'water'    => 0,   // 🔥 Kosongin juga water-nya
+                    'task_box' => []   // 🔥 Kosongin juga task box-nya
+                ]);
         });
 
         if (request()->wantsJson()) {

@@ -13,6 +13,12 @@
     "nav_resources": "Resources",
     "nav_pricing": "Pricing",
 
+    
+    "modal_logout_title": "Mau pamit dulu?",
+    "modal_logout_subtitle": "Jangan lupa balik lagi ya, progres kamu hari ini sudah tersimpan dengan aman!",
+    "modal_logout_confirm": "Iya, Keluar",
+    "modal_logout_cancel": "Batal",
+
 "seo_about_desc": "Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.",
     "footer_legal": "Privasi & Ketentuan",
     "legal_title": "Informasi Legal",

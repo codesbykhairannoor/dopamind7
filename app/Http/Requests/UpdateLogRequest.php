@@ -16,6 +16,8 @@ class UpdateLogRequest extends FormRequest
             'meals.breakfast' => 'nullable|string',
             'meals.lunch' => 'nullable|string',
             'meals.dinner' => 'nullable|string',
+            'water' => 'nullable|integer|min:0|max:8',
+            'task_box' => 'nullable|array',
         ];
     }
 }

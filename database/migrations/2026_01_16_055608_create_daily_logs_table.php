@@ -14,9 +14,21 @@ return new class extends Migration
         Schema::create('daily_logs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            
+            // 🔥 TANGGAL: Kunci utama agar catatan tidak bercampur antar hari
+            $table->date('date');
+
+            // 📝 JURNAL / CATATAN HARIAN
             $table->text('notes')->nullable();
-            $table->json('meals')->nullable(); // Simpan {breakfast: '', lunch: '', dinner: ''}
+
+            // 🍱 MEALS: Disimpan dalam format JSON 
+            // Contoh isi: {"breakfast": "Nasi Goreng", "lunch": "Sate Ayam", "dinner": ""}
+            $table->json('meals')->nullable(); 
+
             $table->timestamps();
+
+            // OPTIONAL: Mencegah duplikasi log untuk user yang sama di tanggal yang sama
+            $table->unique(['user_id', 'date']);
         });
     }
 

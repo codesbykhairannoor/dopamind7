@@ -239,14 +239,14 @@
                         <a href="{{ route('lang.switch', 'en') }}" class="px-3 py-1 rounded-full text-[10px] font-black transition-all {{ app()->getLocale() === 'en' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500' }}">EN</a>
                     </div>
 
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm font-bold text-slate-600 hover:text-indigo-600 transition">{{ __('nav_login') }}</a>
-                        <a href="{{ route('register') }}" class="px-6 py-2.5 bg-indigo-600 text-white rounded-full text-sm font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
-                            {{ __('nav_register') }}
-                        </a>
-                    @endauth
+                   @auth
+    <a hx-boost="false" href="{{ route('dashboard') }}" class="px-6 py-2.5 bg-slate-900 text-white rounded-full text-sm font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
+@else
+    <a hx-boost="false" href="{{ route('login') }}" class="text-sm font-bold text-slate-600 hover:text-indigo-600 transition">{{ __('nav_login') }}</a>
+    <a hx-boost="false" href="{{ route('register') }}" class="px-6 py-2.5 bg-indigo-600 text-white rounded-full text-sm font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
+        {{ __('nav_register') }}
+    </a>
+@endauth
                 </div>
 
                 {{-- MOBILE HAMBURGER BUTTON --}}
@@ -327,14 +327,14 @@
                         </div>
                     </div>
                     
-                    @guest
-                        <div class="grid grid-cols-1 gap-3">
-                            <a href="{{ route('login') }}" class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">Log in</a>
-                            <a href="{{ route('register') }}" class="w-full py-4 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">Get Started free</a>
-                        </div>
-                    @else
-                        <a href="{{ route('dashboard') }}" class="block w-full py-4 text-center font-black text-white bg-slate-900 rounded-2xl">Go to Dashboard</a>
-                    @endguest
+                   @guest
+    <div class="grid grid-cols-1 gap-3">
+        <a hx-boost="false" href="{{ route('login') }}" class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">Log in</a>
+        <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">Get Started free</a>
+    </div>
+@else
+    <a hx-boost="false" href="{{ route('dashboard') }}" class="block w-full py-4 text-center font-black text-white bg-slate-900 rounded-2xl">Go to Dashboard</a>
+@endguest
                 </div>
             </div>
         </nav>

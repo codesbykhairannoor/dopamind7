@@ -1,57 +1,71 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch, computed } from 'vue';
+import { computed } from 'vue';
 
 const props = defineProps({
     stats: { type: Object, default: () => ({ percent: 0, completed: 0, total: 0 }) }, 
     localNotes: String, 
     localMeals: { type: Object, default: () => ({ breakfast: '', lunch: '', dinner: '' }) },
+    // 🔥 Data dari Database
+    localWater: { type: Number, default: 0 },
+    localTaskBox: { type: Array, default: () => [] }
 });
 
-const emit = defineEmits(['update:localNotes', 'update:localMeals']);
+const emit = defineEmits(['update:localNotes', 'update:localMeals', 'update:localWater', 'update:localTaskBox']);
 
 /* ==========================================
-   LOGIC: PERSISTENT STATE (LocalStorage)
+   LOGIC: DATABASE BACKED STATE (via Emit)
 ========================================== */
-const manualTasks = ref([]);
-const waterIntake = ref(0);
-const notesText = ref(''); // 🔥 State Lokal untuk Notes
 
-const performLocalReset = () => {
-    manualTasks.value = [];
-    waterIntake.value = 0;
-    notesText.value = ''; // 🔥 Ikut direset
-    localStorage.removeItem('p_manual_tasks');
-    localStorage.removeItem('p_water');
-    localStorage.removeItem('p_notes'); // 🔥 Hapus dari storage
+// Helper: Kloning array agar tidak memutasi props secara langsung (Aturan Vue)
+const cloneTasks = () => props.localTaskBox ? props.localTaskBox.map(t => ({ ...t })) : [];
+
+const updateTaskBox = (newTasks) => {
+    emit('update:localTaskBox', newTasks);
 };
 
-onMounted(() => {
-    manualTasks.value = JSON.parse(localStorage.getItem('p_manual_tasks')) || [];
-    waterIntake.value = Number(localStorage.getItem('p_water')) || 0;
-    notesText.value = localStorage.getItem('p_notes') || ''; // 🔥 Ambil data notes
-    window.addEventListener('reset-local-storage', performLocalReset);
-});
-
-onUnmounted(() => {
-    window.removeEventListener('reset-local-storage', performLocalReset);
-});
-
-// Auto-save perubahan
-watch(manualTasks, (v) => localStorage.setItem('p_manual_tasks', JSON.stringify(v)), { deep: true });
-watch(waterIntake, (v) => localStorage.setItem('p_water', v));
-watch(notesText, (v) => localStorage.setItem('p_notes', v)); // 🔥 Simpan notes otomatis
-
-// --- Fungsi Manipulasi Task ---
+// --- Fungsi Manipulasi Task Inbox ---
 const addNewTask = () => {
-    manualTasks.value.unshift({ id: Date.now(), title: '', is_completed: false, type: 2 });
+    const tasks = cloneTasks();
+    tasks.unshift({ id: Date.now(), title: '', is_completed: false, type: 2 });
+    updateTaskBox(tasks);
 };
 
 const removeTask = (id) => {
-    manualTasks.value = manualTasks.value.filter(t => t.id !== id);
+    const tasks = cloneTasks().filter(t => t.id !== id);
+    updateTaskBox(tasks);
 };
 
 const cycleTaskType = (task) => {
-    task.type = task.type >= 3 ? 1 : task.type + 1;
+    const tasks = cloneTasks();
+    const target = tasks.find(t => t.id === task.id);
+    if(target) {
+        target.type = target.type >= 3 ? 1 : target.type + 1;
+        updateTaskBox(tasks);
+    }
+};
+
+const toggleTaskComplete = (task) => {
+    const tasks = cloneTasks();
+    const target = tasks.find(t => t.id === task.id);
+    if(target) {
+        target.is_completed = !target.is_completed;
+        updateTaskBox(tasks);
+    }
+};
+
+const updateTaskTitle = (task, title) => {
+    const tasks = cloneTasks();
+    const target = tasks.find(t => t.id === task.id);
+    if(target) {
+        target.title = title;
+        updateTaskBox(tasks);
+    }
+};
+
+// --- Fungsi Manipulasi Water ---
+const updateWater = (glass) => {
+    const newWater = glass === props.localWater ? glass - 1 : glass;
+    emit('update:localWater', newWater);
 };
 
 const getTaskIcon = (type) => {
@@ -69,8 +83,8 @@ const getTaskIcon = (type) => {
 const combinedStats = computed(() => {
     const dbCompleted = props.stats?.completed || 0;
     const dbTotal = props.stats?.total || 0;
-    const manualCompleted = manualTasks.value.filter(t => t.is_completed).length;
-    const manualTotal = manualTasks.value.length;
+    const manualCompleted = (props.localTaskBox || []).filter(t => t.is_completed).length;
+    const manualTotal = (props.localTaskBox || []).length;
     const total = dbTotal + manualTotal;
     const completed = dbCompleted + manualCompleted;
     return { 
@@ -81,10 +95,11 @@ const combinedStats = computed(() => {
 });
 
 const categoryDistribution = computed(() => {
+    const tasks = props.localTaskBox || [];
     return [
-        { count: manualTasks.value.filter(t => t.type === 1).length, color: 'bg-rose-400' },
-        { count: manualTasks.value.filter(t => t.type === 2).length, color: 'bg-indigo-400' },
-        { count: manualTasks.value.filter(t => t.type === 3).length, color: 'bg-emerald-400' },
+        { count: tasks.filter(t => t.type === 1).length, color: 'bg-rose-400' },
+        { count: tasks.filter(t => t.type === 2).length, color: 'bg-indigo-400' },
+        { count: tasks.filter(t => t.type === 3).length, color: 'bg-emerald-400' },
     ];
 });
 </script>
@@ -109,7 +124,7 @@ const categoryDistribution = computed(() => {
             </div>
             <div class="flex h-2 w-full bg-slate-100 rounded-full overflow-hidden mb-4 p-0.5 border border-slate-50">
                 <div v-for="(stat, idx) in categoryDistribution" :key="idx" 
-                    :style="{ width: (stat.count / (manualTasks.length || 1) * 100) + '%' }"
+                    :style="{ width: (stat.count / ((localTaskBox || []).length || 1) * 100) + '%' }"
                     :class="[stat.color, 'transition-all duration-1000 h-full first:rounded-l-full last:rounded-r-full']">
                 </div>
             </div>
@@ -132,15 +147,15 @@ const categoryDistribution = computed(() => {
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M12 4v16m8-8H4" /></svg>
                 </button>
             </div>
-            <div v-if="!manualTasks.length" class="text-center py-10 border-2 border-dashed border-slate-100 rounded-[2rem] bg-slate-50/30">
+            <div v-if="!(localTaskBox || []).length" class="text-center py-10 border-2 border-dashed border-slate-100 rounded-[2rem] bg-slate-50/30">
                 <p class="text-xs text-slate-400 font-black italic tracking-widest">{{ $t('sidebar_inbox_empty') }}</p>
             </div>
             <div v-else class="space-y-3 max-h-[350px] overflow-y-auto pr-1 scrollbar-none">
-                <div v-for="task in manualTasks" :key="task.id" 
+                <div v-for="task in localTaskBox" :key="task.id" 
                     class="group flex items-center justify-between gap-3 p-3 rounded-2xl border-2 border-slate-50 bg-white hover:border-indigo-100 transition-all"
                     :class="{'opacity-50 grayscale-[0.5] bg-slate-50': task.is_completed}">
                     <div class="flex items-center gap-3 min-w-0 flex-1">
-                        <button @click="task.is_completed = !task.is_completed" 
+                        <button @click="toggleTaskComplete(task)" 
                             class="w-6 h-6 rounded-lg border-2 flex items-center justify-center flex-shrink-0 transition-all"
                             :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-200 hover:border-indigo-400'">
                             <svg v-if="task.is_completed" class="w-4 h-4 stroke-[4]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
@@ -148,7 +163,9 @@ const categoryDistribution = computed(() => {
                         <button @click="cycleTaskType(task)" class="w-8 h-8 rounded-xl border flex items-center justify-center text-sm transition active:scale-90 flex-shrink-0" :class="getTaskIcon(task.type).style">
                             {{ getTaskIcon(task.type).icon }}
                         </button>
-                        <input v-model="task.title" class="flex-1 bg-transparent border-0 focus:ring-0 p-0 text-sm font-black text-slate-700 placeholder-slate-300 truncate" :class="{'line-through text-slate-400': task.is_completed}" placeholder="..." />
+                        <input :value="task.title" @input="updateTaskTitle(task, $event.target.value)" 
+                            class="flex-1 bg-transparent border-0 focus:ring-0 p-0 text-sm font-black text-slate-700 placeholder-slate-300 truncate" 
+                            :class="{'line-through text-slate-400': task.is_completed}" placeholder="..." />
                     </div>
                     <button @click="removeTask(task.id)" class="opacity-0 group-hover:opacity-100 text-rose-300 hover:text-rose-600 transition-all flex-shrink-0">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M6 18L18 6M6 6l12 12" /></svg>
@@ -163,7 +180,8 @@ const categoryDistribution = computed(() => {
                     📌 {{ $t('sidebar_notes_title') }}
                 </h3>
                 <textarea 
-                    v-model="notesText" 
+                    :value="localNotes"
+                    @input="$emit('update:localNotes', $event.target.value)"
                     class="w-full bg-transparent border-0 focus:ring-0 text-sm font-medium text-slate-700 p-0 h-32 resize-none leading-[24px]" 
                     style="background-image: linear-gradient(transparent, transparent 23px, #eab30820 24px); background-size: 100% 24px;"
                     :placeholder="$t('sidebar_notes_placeholder')"></textarea>
@@ -190,13 +208,13 @@ const categoryDistribution = computed(() => {
                 <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
                     <span class="bg-blue-100 text-blue-600 p-1.5 rounded-lg text-xs">💧</span> {{ $t('sidebar_water_title') }}
                 </h3>
-                <span class="text-xs font-black text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">{{ waterIntake }} / 8</span>
+                <span class="text-xs font-black text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">{{ localWater }} / 8</span>
             </div>
             <div class="grid grid-cols-4 gap-2 p-1 bg-slate-50 rounded-[1.5rem] border border-slate-100">
                 <button v-for="glass in 8" :key="glass" type="button"
-                    @click="waterIntake = (glass === waterIntake ? glass - 1 : glass)"
+                    @click="updateWater(glass)"
                     class="h-10 flex items-center justify-center transition-all duration-300 transform active:scale-75 rounded-xl"
-                    :class="glass <= waterIntake ? 'bg-white shadow-md' : 'opacity-20 grayscale'">
+                    :class="glass <= localWater ? 'bg-white shadow-md' : 'opacity-20 grayscale'">
                     <span class="text-lg">💧</span>
                 </button>
             </div>

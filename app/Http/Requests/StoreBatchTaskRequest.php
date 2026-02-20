@@ -14,8 +14,12 @@ class StoreBatchTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
+            // 🔥 WAJIB: Tanggal utama untuk batch ini
+            'date'               => ['required', 'date'],
+
+            // Array Tasks
             'tasks'              => ['required', 'array', 'min:1'],
-            'tasks.*.title'      => ['required', 'string', 'max:255'],
+            'tasks.*.title'      => ['required', 'string', 'max:150'],
             'tasks.*.start_time' => ['required', 'date_format:H:i'],
             'tasks.*.end_time'   => ['required', 'date_format:H:i', 'after:tasks.*.start_time'],
             'tasks.*.type'       => ['required', 'integer', 'in:1,2,3'],

@@ -7,8 +7,9 @@ const page = usePage();
 const user = computed(() => page.props.auth.user);
 const currentLang = computed(() => page.props.locale || 'id'); 
 
-// --- STATE NAVIGASI MOBILE ---
+// --- STATE NAVIGASI MOBILE & MODAL ---
 const showingNavigationDropdown = ref(false);
+const showLogoutModal = ref(false); // 🔥 State baru buat buka/tutup modal
 
 // Logic untuk filter menu (dengan null safety)
 const showModule = (moduleName) => {
@@ -29,10 +30,9 @@ const switchLang = (lang) => {
 };
 
 /**
- * 🔥 FIX LOGOUT: Anti 419 Session Expired
- * router.post otomatis ngambil token CSRF terbaru dari meta tag/cookie.
+ * 🔥 FIX LOGOUT: Konfirmasi Modal
  */
-const handleLogout = () => {
+const confirmLogout = () => { 
     router.post(route('logout'));
 };
 
@@ -43,7 +43,7 @@ watch(() => page.url, () => {
 </script>
 
 <template>
-    <div class="flex h-screen bg-slate-50 font-sans overflow-hidden selection:bg-indigo-500 selection:text-white">
+    <div class="flex h-screen bg-slate-50 font-sans overflow-hidden selection:bg-indigo-500 selection:text-white relative">
         
         <aside class="w-72 bg-white border-r border-slate-100 hidden md:flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] flex-shrink-0 transition-all duration-300">
             <div class="h-24 flex items-center px-8">
@@ -101,7 +101,7 @@ watch(() => page.url, () => {
                     </div>
                     <div class="flex-1 overflow-hidden">
                         <p class="text-xs font-bold text-indigo-950 truncate">{{ user?.name || 'User' }}</p>
-                        <button @click="handleLogout" type="button" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide text-left">
+                        <button @click="showLogoutModal = true" type="button" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold hover:underline transition uppercase tracking-wide text-left">
                             {{ $t('nav_logout') }}
                         </button>
                     </div>
@@ -177,7 +177,7 @@ watch(() => page.url, () => {
                                 <button @click="switchLang('en')" prefetch="hover" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
                             </div>
 
-                            <button @click="handleLogout" type="button" class="w-full text-center py-4 text-rose-500 font-bold bg-rose-50 rounded-2xl hover:bg-rose-100 transition flex items-center justify-center gap-2">
+                            <button @click="showLogoutModal = true; showingNavigationDropdown = false" type="button" class="w-full text-center py-4 text-rose-500 font-bold bg-rose-50 rounded-2xl hover:bg-rose-100 transition flex items-center justify-center gap-2">
                                 <span>🚪</span> {{ $t('nav_logout') }}
                             </button>
                         </div>
@@ -189,5 +189,58 @@ watch(() => page.url, () => {
                 <slot />
             </div>
         </main>
+
+        <Transition
+            enter-active-class="transition duration-300 ease-out"
+            enter-from-class="opacity-0"
+            enter-to-class="opacity-100"
+            leave-active-class="transition duration-200 ease-in"
+            leave-from-class="opacity-100"
+            leave-to-class="opacity-0"
+        >
+            <div v-if="showLogoutModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+                <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="showLogoutModal = false"></div>
+
+                <div class="relative bg-white w-full max-w-sm rounded-[2.5rem] shadow-2xl border border-slate-100 overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
+    <div class="p-8 text-center">
+        <div class="w-20 h-20 bg-rose-50 text-rose-500 rounded-[2rem] flex items-center justify-center text-4xl mx-auto mb-6 shadow-inner">
+            👋
+        </div>
+        <h3 class="text-2xl font-black text-slate-800 tracking-tight mb-2">
+            {{ $t('modal_logout_title') }}
+        </h3>
+        <p class="text-slate-500 text-sm font-medium leading-relaxed">
+            {{ $t('modal_logout_subtitle') }}
+        </p>
+    </div>
+
+    <div class="p-6 bg-slate-50/80 border-t border-slate-100 flex flex-col gap-3">
+        <button 
+            @click="confirmLogout"
+            class="w-full bg-rose-500 text-white font-black py-4 rounded-2xl shadow-lg shadow-rose-200 hover:bg-rose-600 active:scale-[0.98] transition-all"
+        >
+            {{ $t('modal_logout_confirm') }}
+        </button>
+        <button 
+            @click="showLogoutModal = false"
+            class="w-full bg-white text-slate-500 font-bold py-4 rounded-2xl border border-slate-200 hover:bg-slate-100 active:scale-[0.98] transition-all"
+        >
+            {{ $t('modal_logout_cancel') }}
+        </button>
+    </div>
+</div>
+            </div>
+        </Transition>
+
     </div>
 </template>
+
+<style scoped>
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+</style>

@@ -1,24 +1,18 @@
 <script setup>
-import { computed } from 'vue';
-import dayjs from 'dayjs';
-import 'dayjs/locale/id';
-import 'dayjs/locale/en';
-import { usePage } from '@inertiajs/vue3'; 
+import { ref } from 'vue';
+import PlannerDatePicker from './PlannerDatePicker.vue'; 
 
 const props = defineProps({
+    currentDate: String,
+    formattedDate: String, // Tanggal yang sudah diformat dari parent
+    tasks: Array, // Untuk dikirim ke kalender (titik indikator)
     openModal: Function,
     resetBoard: Function,
     stats: Object
 });
 
-const page = usePage();
-
-const todayDate = computed(() => {
-    const currentLocale = page.props.locale || 'id'; 
-    return dayjs()
-        .locale(currentLocale) 
-        .format('dddd, D MMMM YYYY');
-});
+const emit = defineEmits(['change-date', 'change-day']);
+const showDatePicker = ref(false);
 </script>
 
 <template>
@@ -31,14 +25,46 @@ const todayDate = computed(() => {
                     📅
                 </div>
                 <div>
-                    <h2 class="text-xl font-black text-slate-800 tracking-tight">{{ $t('header_title') }}</h2>
-                    <p class="text-slate-500 font-medium text-xs capitalize">{{ todayDate }}</p>
+                    <h2 class="text-xl font-black text-slate-800 tracking-tight">{{ $t('header_title', 'Daily Planner') }}</h2>
+                    
+                    <div class="flex items-center gap-1 mt-0.5 relative z-50">
+                        <button @click="emit('change-day', 'prev')" class="text-slate-300 hover:text-indigo-600 hover:bg-slate-100 rounded px-1 transition">
+                            ◀
+                        </button>
+                        
+                        <button @click="showDatePicker = !showDatePicker" class="text-slate-500 hover:text-indigo-600 font-medium text-xs capitalize transition-colors flex items-center gap-1 px-1 rounded hover:bg-slate-50">
+                            {{ formattedDate }} <span class="text-[8px] text-slate-400">{{ showDatePicker ? '▲' : '▼' }}</span>
+                        </button>
+
+                        <button @click="emit('change-day', 'next')" class="text-slate-300 hover:text-indigo-600 hover:bg-slate-100 rounded px-1 transition">
+                            ▶
+                        </button>
+
+                        <transition
+                            enter-active-class="transition ease-out duration-200"
+                            enter-from-class="opacity-0 translate-y-2 scale-95"
+                            enter-to-class="opacity-100 translate-y-0 scale-100"
+                            leave-active-class="transition ease-in duration-150"
+                            leave-from-class="opacity-100 translate-y-0 scale-100"
+                            leave-to-class="opacity-0 translate-y-2 scale-95"
+                        >
+                            <div v-if="showDatePicker" class="absolute left-0 top-full mt-2 z-[100] origin-top-left">
+                                <PlannerDatePicker 
+                                    :show="showDatePicker"
+                                    :modelValue="currentDate"
+                                    :tasks="tasks"
+                                    @update:modelValue="(val) => emit('change-date', val)"
+                                    @close="showDatePicker = false"
+                                />
+                            </div>
+                        </transition>
+                    </div>
                 </div>
             </div>
 
             <div class="flex-1 w-full md:px-12 max-w-4xl"> 
                 <div class="flex justify-between text-[10px] font-black text-slate-400 mb-1 uppercase tracking-widest">
-                    <span>{{ $t('header_progress') }}</span>
+                    <span>{{ $t('header_progress', 'Progress') }}</span>
                     <span class="text-indigo-600">{{ stats.percent }}%</span>
                 </div>
                 <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-50">
@@ -48,9 +74,9 @@ const todayDate = computed(() => {
                     ></div>
                 </div>
                 <div class="flex gap-4 mt-1.5 text-[10px] font-bold text-slate-500 uppercase tracking-tight">
-                    <span>⚡ {{ stats.completed }} {{ $t('header_completed') }}</span>
+                    <span>⚡ {{ stats.completed }} {{ $t('header_completed', 'Selesai') }}</span>
                     <span class="text-slate-300">|</span>
-                    <span>⏳ {{ stats.pending }} {{ $t('header_pending') }}</span>
+                    <span>⏳ {{ (stats.total - stats.completed) }} {{ $t('header_pending', 'Tertunda') }}</span>
                 </div>
             </div>
 
@@ -59,13 +85,13 @@ const todayDate = computed(() => {
                     @click="openModal()" 
                     class="flex-1 md:flex-none px-6 py-3 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 text-sm active:scale-95"
                 >
-                    <span>+</span> {{ $t('btn_add_task') }}
+                    <span>+</span> {{ $t('btn_add_task', 'Add Task') }}
                 </button>
                 
                 <button 
                     @click="resetBoard" 
                     class="px-4 py-3 bg-rose-50 text-rose-500 rounded-2xl font-black hover:bg-rose-100 transition border border-rose-100 text-sm active:scale-95 shadow-sm"
-                    :title="$t('btn_reset_tooltip')"
+                    :title="$t('btn_reset_tooltip', 'Reset Board')"
                 >
                     🔄
                 </button>

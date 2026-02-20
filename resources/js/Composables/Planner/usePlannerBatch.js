@@ -1,12 +1,14 @@
 import { ref } from 'vue';
 import { useForm, usePage } from '@inertiajs/vue3';
 
-export function usePlannerBatch() {
+// 🔥 FIX: Terima param 'currentDate' dari file utama agar batch tersimpan di tanggal yang benar
+export function usePlannerBatch(currentDateRef) {
     const isBatchModalOpen = ref(false);
-    const globalConflictError = ref(null); // 🔥 Error global buat nampilin notif di atas modal
+    const globalConflictError = ref(null); 
 
-    // Form khusus Batch
+    // Form khusus Batch + Field 'date'
     const batchForm = useForm({
+        date: currentDateRef.value, // Set awal
         tasks: [
             { title: '', start_time: '08:00', end_time: '09:00', type: 1, notes: '' }
         ]
@@ -14,6 +16,7 @@ export function usePlannerBatch() {
 
     const openBatchModal = () => {
         batchForm.reset();
+        batchForm.date = currentDateRef.value; // Pastikan update saat modal dibuka
         batchForm.tasks = [{ title: '', start_time: '08:00', end_time: '09:00', type: 1, notes: '' }];
         batchForm.clearErrors();
         globalConflictError.value = null;
@@ -66,12 +69,10 @@ export function usePlannerBatch() {
         batchForm.clearErrors();
         globalConflictError.value = null;
         
-        // Ambil data task yang SUDAH ADA di timeline (dari props page)
         const existingTasks = usePage().props.tasks || []; 
-
         let isValid = true;
 
-        // 1. Cek Validasi Per Baris (Durasi & Format)
+        // 1. Cek Validasi Per Baris
         batchForm.tasks.forEach((task, index) => {
             if (!task.title) {
                 batchForm.setError(`tasks.${index}.title`, 'Required');
@@ -80,16 +81,14 @@ export function usePlannerBatch() {
 
             const start = timeToMin(task.start_time);
             let end = timeToMin(task.end_time);
-            if (end < start) end += 1440; // Lintas hari
+            if (end < start) end += 1440; 
 
-            // Rule A: Min 15 Menit
             if (end - start < 15) {
-                batchForm.setError(`tasks.${index}.end_time`, 'Min 15 mins'); // Error spesifik di field
+                batchForm.setError(`tasks.${index}.end_time`, 'Min 15 mins'); 
                 globalConflictError.value = `Row ${index + 1}: Duration must be at least 15 minutes!`;
                 isValid = false;
             }
 
-            // Rule B: Cek Bentrok dengan Timeline (Existing Tasks)
             const clashExternal = existingTasks.some(existing => {
                 if (!existing.start_time || !existing.end_time) return false;
                 
@@ -109,7 +108,7 @@ export function usePlannerBatch() {
 
         if (!isValid) return false;
 
-        // Rule C: Cek Bentrok Antar Baris di Batch (Internal Clash)
+        // Rule C: Cek Bentrok Antar Baris di Batch
         for (let i = 0; i < batchForm.tasks.length; i++) {
             const taskA = batchForm.tasks[i];
             const startA = timeToMin(taskA.start_time);
@@ -135,7 +134,9 @@ export function usePlannerBatch() {
     };
 
     const submitBatch = () => {
-        if (!validateBatch()) return; // Stop kalau ada error
+        if (!validateBatch()) return; 
+        
+        batchForm.date = currentDateRef.value; // Pastikan data date dikirim
 
         batchForm.post(route('planner.batchStore'), {
             preserveScroll: true,
@@ -151,7 +152,7 @@ export function usePlannerBatch() {
     return {
         isBatchModalOpen,
         batchForm,
-        globalConflictError, // 🔥 Return ini biar bisa dipake di Modal
+        globalConflictError, 
         openBatchModal,
         closeBatchModal,
         addBatchRow,

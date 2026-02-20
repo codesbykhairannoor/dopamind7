@@ -10,8 +10,20 @@ export function usePlannerTasks(props) {
     const isEditing = ref(false);
     const activeModalType = ref('full');
 
+    // 🔥 FIX: Tambahkan 'date' dan default ambil dari props.currentDate
     const form = useForm({
-        id: null, title: '', start_time: null, end_time: null, type: 1, notes: ''
+        id: null, 
+        date: props.currentDate, 
+        title: '', 
+        start_time: null, 
+        end_time: null, 
+        type: 1, 
+        notes: ''
+    });
+
+    // 🔥 FIX: Pantau perubahan tanggal. Jika user klik tombol "Besok", otomatis form ikut update
+    watch(() => props.currentDate, (newDate) => {
+        form.date = newDate;
     });
 
     // --- HELPER TRANSLASI ---
@@ -20,7 +32,7 @@ export function usePlannerTasks(props) {
         return result !== key ? result : fallback;
     };
 
-    // --- ALERT CONFIG (Kini mendukung custom background) ---
+    // --- ALERT CONFIG ---
     const fireToast = (icon, message, bgColor = '#4f46e5') => {
         Swal.fire({
             toast: true,
@@ -39,9 +51,9 @@ export function usePlannerTasks(props) {
         });
     };
 
-    const fireWarning = (message) => fireToast('warning', message, '#4f46e5'); // Tetap Indigo
-    const fireSuccess = (message) => fireToast('success', message, '#4f46e5'); // Tetap Indigo
-    const fireError = (message) => fireToast('error', message, '#4f46e5'); // Tetap Indigo
+    const fireWarning = (message) => fireToast('warning', message, '#4f46e5');
+    const fireSuccess = (message) => fireToast('success', message, '#4f46e5');
+    const fireError = (message) => fireToast('error', message, '#4f46e5');
 
     const timeToMin = (t) => {
         if (!t) return 0;
@@ -94,11 +106,9 @@ export function usePlannerTasks(props) {
             form.end_time = null;
         }
 
-        // --- PROSES INSTAN ---
         const payload = { ...form.data() };
         isModalOpen.value = false;
 
-        // 🔥 MUNCULKAN NOTIFIKASI SUKSES INSTAN (Warna Indigo)
         fireSuccess(t('success_saved', 'Tersimpan!')); 
 
         if (isEditing.value) {
@@ -128,7 +138,6 @@ export function usePlannerTasks(props) {
         localTasks.value = localTasks.value.filter(t => t.id !== id);
         isModalOpen.value = false;
         
-        // 🔥 MUNCULKAN NOTIFIKASI SUKSES INSTAN (Warna Indigo)
         fireSuccess(t('success_deleted', 'Dihapus!'));
 
         router.delete(route('planner.destroy', id), {
@@ -169,9 +178,11 @@ export function usePlannerTasks(props) {
         form.clearErrors();
         conflictError.value = null; 
         activeModalType.value = type;
+        
         if (task) {
             isEditing.value = true;
             form.id = task.id;
+            form.date = task.date || props.currentDate; // 🔥 FIX: Pastikan tanggal terisi saat edit
             form.title = task.title;
             form.start_time = task.start_time;
             form.end_time = task.end_time;
@@ -180,6 +191,8 @@ export function usePlannerTasks(props) {
         } else {
             isEditing.value = false;
             form.id = null;
+            form.date = props.currentDate; // 🔥 FIX: Pastikan tanggal baru sesuai hari yg lagi dibuka
+            
             if (timeSlot) {
                 form.start_time = timeSlot;
                 const [h, m] = timeSlot.split(':').map(Number);
