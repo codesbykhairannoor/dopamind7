@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,14 +31,20 @@
     <link rel="dns-prefetch" href="https://fonts.bunny.net">
     <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" media="print" onload="this.media='all'" />
 
     {{-- Font Loading --}}
-    <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" rel="stylesheet" />
+    <noscript>
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" />
+</noscript>
 
     {{-- Plugin Alpine.js --}}
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
     
     {{-- Vite otomatis handle preload CSS yang benar, JANGAN hardcode link CSS di sini --}}
     @vite(['resources/css/app.css'])
@@ -96,6 +102,23 @@
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        /* 3. 🔥 CUSTOM NPROGRESS COLOR (Indigo 600) */
+        #nprogress .bar {
+            background: #4f46e5 !important;
+            height: 3px !important;
+        }
+        #nprogress .peg {
+            box-shadow: 0 0 10px #4f46e5, 0 0 5px #4f46e5 !important;
+        }
+
+        /* Fix scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        /* Re-enable smooth scroll secara terbatas agar tidak ganggu HTMX */
+        .allow-smooth { scroll-behavior: smooth; }
     </style>
 </head>
 {{-- HTMX Boost + Smooth Scroll --}}
@@ -227,7 +250,7 @@
                 </div>
 
                 {{-- MOBILE HAMBURGER BUTTON --}}
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 text-slate-900 relative z-[110] focus:outline-none">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 text-slate-900 relative z-[110] focus:outline-none" aria-label="Open Navigation">
                     <div class="w-6 flex flex-col items-end gap-1.5">
                         <span :class="mobileMenuOpen ? 'rotate-45 translate-y-2 w-6' : 'w-6'" class="h-0.5 bg-current transition-all duration-300"></span>
                         <span :class="mobileMenuOpen ? 'opacity-0' : 'w-4'" class="h-0.5 bg-current transition-all duration-300"></span>
@@ -335,7 +358,7 @@
                     </div>
 
                     <div>
-                        <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h4>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-500">
                             <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
                             <li><a href="{{ route('features.finance') }}" class="hover:text-indigo-600 transition">Finance Tracker</a></li>
@@ -345,7 +368,7 @@
                     </div>
 
                     <div>
-                        <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h4>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-500">
                             <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">vs Paper Planner</a></li>
                             <li><a href="{{ route('compare.sheets') }}" class="hover:text-indigo-600 transition">vs Spreadsheets</a></li>
@@ -355,7 +378,7 @@
                     </div>
 
                     <div>
-                        <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h4>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-500">
                             <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">About Us</a></li>
                             <li><a href="{{ route('company.privacy') }}" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
@@ -364,7 +387,7 @@
                     </div>
 
                     <div>
-                        <h4 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</h4>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</h3>
                         <div class="flex gap-4">
                             <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">𝕏</a>
                             <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">📸</a>
@@ -387,65 +410,66 @@
     <script src="//instant.page/5.2.0" type="module"></script>
 
     {{-- 4. 🔥 SCRIPT "JEMBATAN" (Blade rasa Vue) --}}
-   <script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. KONFIGURASI NPROGRESS (Match dengan Vue/Inertia lu)
+        // 1. Inisialisasi NProgress untuk Halaman Blade
         NProgress.configure({ 
             showSpinner: false, 
-            speed: 500, 
-            minimum: 0.3, 
-            trickle: true, 
-            trickleSpeed: 200 
+            speed: 400,
+            minimum: 0.3,
+            trickle: true,
+            trickleSpeed: 200
         });
 
-        // 2. LOGIKA NAVIGASI HTMX (Handling hx-boost)
-        
-        // Mulai NProgress pas request jalan
-        document.addEventListener('htmx:configRequest', () => {
+        // 2. Integrasi NProgress dengan HTMX
+        // Ketika HTMX mulai mengambil halaman baru
+        document.body.addEventListener('htmx:configRequest', (event) => {
             NProgress.start();
         });
 
-        // FIX MOBILE SLIDING: Matikan smooth scroll tepat sebelum konten diganti
-        document.addEventListener('htmx:beforeTransition', () => {
-            document.documentElement.classList.remove('scroll-smooth');
-        });
-
-        // SETELAH KONTEN DITERIMA: Paksa balik ke atas secara instan
-        document.addEventListener('htmx:afterSwap', () => {
-            // Paksa browser "teleportasi" ke koordinat 0,0 (paling atas)
-            window.scrollTo({ top: 0, behavior: 'instant' }); 
+        // FIX SLIDING MOBILE: Matikan scroll halus TEPAT SEBELUM konten ditukar
+        document.body.addEventListener('htmx:beforeSwap', (event) => {
+            document.documentElement.style.scrollBehavior = 'auto'; // Matikan animasi
             
+            // JIKA BUKAN REQUEST KE TAB ATAU MODAL (Ganti halaman penuh)
+            if (event.detail.target === document.body || event.detail.target.tagName === 'MAIN') {
+                 window.scrollTo(0, 0); // "Teleportasi" instan ke atas
+            }
+        });
+
+        // Ketika konten baru sudah selesai dimuat oleh HTMX
+        document.body.addEventListener('htmx:afterSwap', (event) => {
             NProgress.done();
-
-            // Balikin lagi fitur scroll-smooth setelah jeda dikit
-            // biar fitur anchor link (#) di dalem halaman tetep mulus
+            
+            // Nyalakan kembali scroll halus (opsional, jika kamu pakai anchor link #)
             setTimeout(() => {
-                document.documentElement.classList.add('scroll-smooth');
-            }, 100);
+                document.documentElement.style.scrollBehavior = ''; // Kembalikan ke default CSS
+            }, 50);
         });
 
-        // Handle tombol back browser
-        document.addEventListener('htmx:historyRestore', () => {
-            NProgress.remove();
+        // Tangani error atau interupsi
+        document.body.addEventListener('htmx:onLoadError', () => NProgress.done());
+        document.body.addEventListener('htmx:historyRestore', () => {
+            NProgress.remove(); // Bersihkan bar saat tombol back ditekan
+            document.documentElement.style.scrollBehavior = '';
         });
 
-        // 3. FALLBACK LINK BIASA (Transisi Blade -> Inertia/Dashboard)
-        document.addEventListener('click', (e) => {
-            const link = e.target.closest('a');
+        // 3. Fallback: Navigasi keluar dari sistem HTMX (misal klik "Dashboard" ke Inertia)
+        document.addEventListener('click', (event) => {
+            let link = event.target.closest('a');
             
             if (link && 
+                link.href && 
+                !link.hasAttribute('hx-boost') && 
                 link.href.startsWith(window.location.origin) && 
-                link.target !== '_blank' && 
-                !link.getAttribute('href').startsWith('#') &&
-                !link.getAttribute('hx-boost')
+                !link.href.includes('#') &&
+                link.target !== '_blank'
             ) {
-                // Untuk link non-HTMX, kita nggak bisa matiin scroll-smooth lewat event htmx,
-                // jadi kita matiin manual di sini sebelum pindah page.
-                document.documentElement.classList.remove('scroll-smooth');
                 NProgress.start();
+                document.documentElement.style.scrollBehavior = 'auto'; // Matikan scroll halus
             }
         });
     });
-</script>
+    </script>
 </body>
 </html>

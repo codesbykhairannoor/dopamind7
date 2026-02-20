@@ -16,9 +16,9 @@ class SecurityHeaders
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
 
-        // 2. CSP Versi Cerdas (Auto-Detect Local vs Production)
+        // 2. CSP Versi Cerdas
         if (app()->environment('local')) {
-            // JIKA DI LOCAL: Izinkan semua yang berhubungan dengan localhost/Vite
+            // JIKA DI LOCAL: Sangat longgar untuk kebutuhan Vite & Debugging
             $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval'; ";
             $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: data: blob:; ";
             $csp .= "style-src 'self' 'unsafe-inline' https: http:; ";
@@ -26,13 +26,31 @@ class SecurityHeaders
             $csp .= "font-src 'self' data: https: http:; ";
             $csp .= "connect-src 'self' https: http: ws: wss:; ";
         } else {
-            // JIKA DI PRODUCTION: Sangat Ketat
+            // JIKA DI PRODUCTION: Ketat tapi mengizinkan CDN yang kamu pakai
             $csp = "default-src 'self'; ";
-            $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net; ";
-            $csp .= "style-src 'self' 'unsafe-inline' https://fonts.bunny.net; ";
+
+            // SCRIPT: Izinkan unpkg, jsdelivr, cdnjs (untuk nprogress), instant.page, dan cloudflare insights
+            $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+                https://unpkg.com 
+                https://cdn.jsdelivr.net 
+                https://cdnjs.cloudflare.com 
+                https://instant.page 
+                https://static.cloudflareinsights.com; ";
+
+            // STYLE: Izinkan fonts bunny dan cdnjs (untuk css nprogress)
+            $csp .= "style-src 'self' 'unsafe-inline' 
+                https://fonts.bunny.net 
+                https://cdnjs.cloudflare.com; ";
+
+            // IMG: Izinkan data: (untuk favicon/svg) dan https:
             $csp .= "img-src 'self' data: https:; ";
+
+            // FONT: Izinkan fonts bunny
             $csp .= "font-src 'self' data: https://fonts.bunny.net; ";
-            $csp .= "connect-src 'self'; ";
+
+            // CONNECT: Izinkan analytics cloudflare (biar ga error di konsol)
+            $csp .= "connect-src 'self' https://cloudflareinsights.com; ";
+
             $csp .= "upgrade-insecure-requests;";
         }
 
