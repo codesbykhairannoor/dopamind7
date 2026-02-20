@@ -787,7 +787,7 @@
     "notes_sol_title_highlight": "Terhubung",
     "notes_sol_desc": "Berhenti memperlakukan hidupmu seperti daftar belanja. Di OneForMind, target bukan cuma teks. Ia terhubung ke kalender, kebiasaan, bahkan anggaranmu.",
     "notes_sol_box_title": "Perbedaannya:",
-    "notes_sol_box_desc": "Jika kamu ingin \"Hemat Uang\", catatan cuma diam saja. <br> <strong>OFM</strong> membuat anggaran, melacak pengeluaran, dan menunjukkan grafiknya.",
+    "notes_sol_box_desc": "Jika kamu ingin \"Hemat Uang\", catatan cuma diam saja. <br> <strong>OneForMind</strong> membuat anggaran, melacak pengeluaran, dan menunjukkan grafiknya.",
     
     "notes_compare_title": "Bandingkan Logikanya",
     "notes_compare_desc": "Kenapa beralih dari buku catatan ke OS mengubah segalanya.",
@@ -867,7 +867,7 @@
     "blank_sol_title_highlight": "Sintaks",
     "blank_sol_desc": "Kamu nggak perlu jago coding rumus cuma buat nyatet habit. OneForMind memberimu struktur yang teruji biar kamu fokus eksekusi, bukan konfigurasi.",
     "blank_sol_box_title": "Realitanya:",
-    "blank_sol_box_desc": "Di Notion, kamu harus bikin database, relasi, dan tampilan sendiri. <br> <strong>OFM</strong> sudah siap sejak detik pertama kamu daftar.",
+    "blank_sol_box_desc": "Di Notion, kamu harus bikin database, relasi, dan tampilan sendiri. <br> <strong>OneForMind</strong> sudah siap sejak detik pertama kamu daftar.",
     
     "blank_compare_title": "Logika vs Lego",
     "blank_compare_desc": "Kenapa OS terdedikasi mengalahkan sekotak balok lego.",
@@ -894,16 +894,16 @@
 
 
     "pm_meta_title": "ClickUp, Trello & Monday vs OneForMind — Stop Ribet Sendiri",
-    "pm_meta_desc": "Project management tools itu buat tim, bukan individu. Berhenti bayar fitur yang gak lu butuhin. Ganti ke OS personal growth.",
-    "pm_meta_og_title": "Lu bukan Perusahaan Tbk. Gak usah sok ribet.",
-    "pm_meta_og_desc": "Kenapa pake alat korporat buat hidup pribadi? Pake sistem yang emang buat LU.",
+    "pm_meta_desc": "Project management tools itu buat tim, bukan individu. Berhenti bayar fitur yang tidak kamu butuhin. Ganti ke OS personal growth.",
+    "pm_meta_og_title": "Kamu bukan Perusahaan Tbk. Tidak usah sok ribet.",
+    "pm_meta_og_desc": "Kenapa pake alat korporat buat hidup pribadi? Pake sistem yang emang buat KAMU.",
     
     "pm_badge": "Jebakan Korporat",
     "pm_hero_title_1": "Kamu itu Manusia.",
     "pm_hero_title_2": "Bukan Proyek Kantor.",
-    "pm_hero_desc": "Tools kayak <strong>ClickUp, Monday, atau Asana</strong> dibuat buat bos memantau karyawan. Kalau lu pake sendiri, lu cuma micromanaging diri sendiri pake software berat.",
+    "pm_hero_desc": "Tools kayak <strong>ClickUp, Monday, atau Asana</strong> dibuat buat bos memantau karyawan. Kalau kamu pake sendiri, kamu cuma micromanaging diri sendiri pake software berat.",
     "pm_hero_cta": "Fokus ke Diri Sendiri",
-    "pm_hero_note": "Gak ada harga 'Per User'.",
+    "pm_hero_note": "Tidak ada harga 'Per User'.",
     
     "pm_mockup_status": "Fokus",
     "pm_mockup_title": "Visi Saya",
@@ -915,16 +915,16 @@
     "pm_cycle_title": "Kelelahan 'Manajer'",
     "pm_cycle_desc": "Kenapa memperlakukan hidup kayak tiket JIRA itu menyiksa jiwa.",
     "pm_cycle_1_title": "Fantasi CEO",
-    "pm_cycle_1_desc": "Lu setup Trello atau ClickUp. Bikin kolom, tag, dan assign tugas ke diri sendiri. Berasa jadi bos besar.",
+    "pm_cycle_1_desc": "Kamu setup Trello atau ClickUp. Bikin kolom, tag, dan assign tugas ke diri sendiri. Berasa jadi bos besar.",
     "pm_cycle_2_title": "Neraka Input Data",
-    "pm_cycle_2_desc": "Setiap tugas butuh status, prioritas, dan deadline. Lu abis waktu ngurusin tiket daripada ngerjain tugasnya.",
+    "pm_cycle_2_desc": "Setiap tugas butuh status, prioritas, dan deadline. Kamu abis waktu ngurusin tiket daripada ngerjain tugasnya.",
     "pm_cycle_3_title": "Burnout",
-    "pm_cycle_3_desc": "Notifikasi numpuk. Tampilan terlalu rumit. Lu nyerah dan balik lagi ke kertas.",
+    "pm_cycle_3_desc": "Notifikasi numpuk. Tampilan terlalu rumit. Kamu nyerah dan balik lagi ke kertas.",
     
     "pm_prob_title_1": "Menderita karena",
     "pm_prob_title_highlight": "Obesitas Fitur",
-    "pm_prob_desc": "Gantt chart? Dependencies? Izin tim? Lu gak butuh itu semua. Fitur-fitur itu cuma nambah gesekan antara lu dan tujuan lu.",
-    "pm_prob_point_1": "Desain buat Tim (Bukan Lu)",
+    "pm_prob_desc": "Gantt chart? Dependencies? Izin tim? Kamu tidak butuh itu semua. Fitur-fitur itu cuma nambah gesekan antara kamu dan tujuan kamu.",
+    "pm_prob_point_1": "Desain buat Tim (Bukan Kamu)",
     "pm_prob_point_2": "Spam Notifikasi",
     "pm_prob_point_3": "UI Lambat & Berat",
     
@@ -936,9 +936,9 @@
     
     "pm_sol_title_1": "Ambil Alih",
     "pm_sol_title_highlight": "Kendali",
-    "pm_sol_desc": "OneForMind adalah Personal OS. Gak ada chat tim, gak ada 'assignee', gak ada berisik. Cuma ruang bersih buat habit, duit, dan tujuan lu.",
+    "pm_sol_desc": "OneForMind adalah Personal OS. Tidak ada chat tim, tidak ada 'assignee', tidak ada berisik. Cuma ruang bersih buat habit, duit, dan tujuan kamu.",
     "pm_sol_box_title": "Coba pikir deh:",
-    "pm_sol_box_desc": "Kenapa lu harus 'Assign' tugas ke diri sendiri? <br> Di <strong>OFM</strong>, semuanya otomatis punya lu.",
+    "pm_sol_box_desc": "Kenapa kamu harus 'Assign' tugas ke diri sendiri? <br> Di <strong>OneForMind</strong>, semuanya otomatis punya kamu.",
     
     "pm_compare_title": "Bloatware vs. Growthware",
     "pm_compare_desc": "Bedanya mengatur orang lain vs memimpin diri sendiri.",
