@@ -15,8 +15,10 @@ import DailyTrendChart from './DailyTrendChart.vue';
 import ArchiveModal from './ArchiveModal.vue'; 
 import FinanceInsights from './FinanceInsights.vue'; 
 import FinanceDatePicker from './FinanceDatePicker.vue';
+import FinanceBatchModal from './FinanceBatchModal.vue';
 
 // Composables
+import { useFinanceBatch } from '@/Composables/Finance/useFinanceBatch';
 import { useFinanceCalendar } from '@/Composables/Finance/useFinanceCalendar'; 
 import { useFinanceForm } from '@/Composables/Finance/useFinanceForm';
 import { useFinanceHistory } from '@/Composables/Finance/useFinanceHistory'; 
@@ -27,12 +29,12 @@ const props = defineProps({
 });
 
 const page = usePage();
+defineOptions({ layout: AuthenticatedLayout });
 
 // 🔥 MAGIC OPTIMISTIC UI: Buat State Lokal (Memori Layar)
 const localTransactions = ref([...props.transactions]);
 const localBudgets = ref([...props.budgets]);
 const localCategories = ref([...props.categories]);
-defineOptions({ layout: AuthenticatedLayout });
 
 // Sinkronkan otomatis saat server memberi update data asli 
 watch(() => props.transactions, (newVal) => localTransactions.value = [...newVal], { deep: true });
@@ -61,6 +63,14 @@ const showBudgetModal = ref(false);
 const showCategoryModal = ref(false);
 const showFilterPicker = ref(false);
 
+// 🔥 FIX ERROR DI SINI: Deklarasikan filterDateRef SEBELUM memanggil useFinanceBatch
+const filterDateRef = ref(props.filters.date || dayjs().format('YYYY-MM-DD'));
+
+const { 
+    isBatchModalOpen, batchForm, globalConflictError, 
+    openBatchModal, closeBatchModal, addBatchRow, removeBatchRow, submitBatch 
+} = useFinanceBatch(filterDateRef);
+
 // Oper magic prop ke Composables History
 const { visibleStats, filterDate, isArchiveOpen, selectedDayData, openDetail } = useFinanceHistory(historyProps);
 const { formatMoney } = useFinanceFormat();
@@ -69,7 +79,6 @@ const { formatMoney } = useFinanceFormat();
 const handleEdit = (trx) => { setEditTransaction(trx); showTransactionModal.value = true; };
 
 const handleEditBudget = (budget) => {
-    // 🔥 PERBAIKAN ICON: Ambil dari localCategories, bukan props
     const catDetail = localCategories.value.find(c => c.slug === budget.category);
     budgetForm.id = budget.id;
     budgetForm.category = budget.category;
@@ -85,9 +94,10 @@ const handleAddCategory = () => { categoryForm.reset(); categoryForm.id = null; 
 
 // 🔥 EKSEKUSI OPTIMISTIC UI UNTUK TRANSAKSI
 const submitNewTransaction = () => {
-    showTransactionModal.value = false; // Langsung tutup 0ms
     submitTransaction({
         onOptimistic: (data, isEditing) => {
+    showTransactionModal.value = false; // Langsung tutup 0ms
+
             if (isEditing) {
                 const idx = localTransactions.value.findIndex(t => t.id === data.id);
                 if (idx !== -1) Object.assign(localTransactions.value[idx], data);
@@ -155,13 +165,26 @@ const submitNewCategory = () => {
     });
 };
 
-// 🔥 PERBAIKAN DELETE KATEGORI: Pastiin yang dilempar cat, disaring pake targetId (ID String)
 const triggerDeleteCategory = (cat) => {
     deleteCategory(cat, {
         onOptimistic: (targetId) => {
             localCategories.value = localCategories.value.filter(c => c.id !== targetId);
         }
     });
+};
+
+// Logic Switcher
+const switchToBatch = () => {
+    showTransactionModal.value = false; // Tutup mode single
+    setTimeout(() => { openBatchModal(); }, 150); // Buka mode batch dengan sedikit delay untuk animasi
+};
+
+const switchToSingle = () => {
+    closeBatchModal(); // Tutup batch
+    setTimeout(() => { 
+        transactionForm.reset(); transactionForm.id = null; 
+        showTransactionModal.value = true; 
+    }, 150);
 };
 </script>
 
@@ -337,6 +360,20 @@ const triggerDeleteCategory = (cat) => {
                 :categories="categories"
                 :close="() => showTransactionModal = false" 
                 :submit="submitNewTransaction" 
+                @switch-to-batch="switchToBatch"
+            />
+
+            <FinanceBatchModal 
+                :show="isBatchModalOpen"
+                :form="batchForm"
+                :categories="categories"
+                :budgets="localBudgets"
+                :conflictError="globalConflictError"
+                :close="closeBatchModal"
+                :submit="submitBatch"
+                :addRow="addBatchRow"
+                :removeRow="removeBatchRow"
+                :switchToSingle="switchToSingle"
             />
 
             <BudgetModal 
@@ -348,11 +385,11 @@ const triggerDeleteCategory = (cat) => {
             />
 
             <CategoryModal
-    :show="showCategoryModal"
-    :form="categoryForm"
-    :close="() => showCategoryModal = false"
-    :submit="submitNewCategory"
-/>
-</div>
+                :show="showCategoryModal"
+                :form="categoryForm"
+                :close="() => showCategoryModal = false"
+                :submit="submitNewCategory"
+            />
         </div>
+    </div>
 </template>

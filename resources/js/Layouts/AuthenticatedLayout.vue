@@ -54,28 +54,28 @@ watch(() => page.url, () => {
             </div>
 
             <nav class="flex-1 px-6 space-y-2 overflow-y-auto py-6 custom-scrollbar">
-                <Link :href="route('dashboard')" 
+                <Link :href="route('dashboard')" prefetch="hover"
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
                     :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">🏠</span>
                     <span>{{ $t('nav_dashboard') }}</span>
                 </Link>
 
-                <Link v-if="showModule('habit')" :href="route('habits.index')" 
+                <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="hover"
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
                     :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">🌱</span>
                     <span>{{ $t('habit_page_title') }}</span>
                 </Link>
 
-                <Link v-if="showModule('planner')" :href="route('planner.index')" 
+                <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="hover"
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
                     :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">📅</span>
                     <span>Daily Planner</span>
                 </Link>
 
-                <Link v-if="showModule('finance')" :href="route('finance.index')" 
+                <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="hover"
                     class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
                     :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
                     <span class="text-xl">💸</span>
@@ -84,15 +84,15 @@ watch(() => page.url, () => {
             </nav>
 
             <div class="p-6 border-t border-slate-100 bg-slate-50/50 space-y-4">
-                <Link :href="route('settings.index')" 
+                <Link :href="route('settings.index')" prefetch="hover"
                     class="flex items-center gap-3 px-4 py-2 rounded-xl text-sm font-bold text-slate-500 hover:text-indigo-600 hover:bg-white transition border border-transparent hover:border-slate-200 hover:shadow-sm">
                     <span class="text-lg">⚙️</span>
                     <span>{{ $t('nav_settings') }}</span>
                 </Link>
 
                 <div class="flex bg-white p-1 rounded-xl border border-slate-200 shadow-sm">
-                    <button @click="switchLang('id')" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition-all" :class="currentLang === 'id' ? 'bg-indigo-100 text-indigo-700 shadow-sm' : 'text-slate-400 hover:text-slate-600'">🇮🇩 ID</button>
-                    <button @click="switchLang('en')" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition-all" :class="currentLang === 'en' ? 'bg-indigo-100 text-indigo-700 shadow-sm' : 'text-slate-400 hover:text-slate-600'">🇬🇧 EN</button>
+                    <button @click="switchLang('id')" prefetch="hover" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition-all" :class="currentLang === 'id' ? 'bg-indigo-100 text-indigo-700 shadow-sm' : 'text-slate-400 hover:text-slate-600'">🇮🇩 ID</button>
+                    <button @click="switchLang('en')" prefetch="hover" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition-all" :class="currentLang === 'en' ? 'bg-indigo-100 text-indigo-700 shadow-sm' : 'text-slate-400 hover:text-slate-600'">🇬🇧 EN</button>
                 </div>
 
                 <div class="flex items-center gap-3 pt-2 border-t border-slate-200/50">

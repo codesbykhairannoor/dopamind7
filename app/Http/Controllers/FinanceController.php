@@ -212,4 +212,36 @@ class FinanceController extends Controller
         );
         return back();
     }
+
+    // --- BATCH TRANSAKSI ---
+    public function batchStoreTransaction(Request $request)
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'transactions' => 'required|array|min:1',
+            'transactions.*.title' => 'required|string|max:255',
+            'transactions.*.amount' => 'required|numeric|min:1',
+            'transactions.*.type' => 'required|in:income,expense',
+            'transactions.*.category' => 'required|string',
+        ]);
+
+        $userId = Auth::id();
+        $date = $request->date;
+
+        DB::transaction(function () use ($request, $userId, $date) {
+            foreach ($request->transactions as $trx) {
+                FinanceTransaction::create([
+                    'user_id' => $userId,
+                    'date' => $date,
+                    'title' => $trx['title'],
+                    'amount' => $trx['amount'],
+                    'type' => $trx['type'],
+                    'category' => $trx['category'],
+                    'notes' => $trx['notes'] ?? null,
+                ]);
+            }
+        });
+
+        return back();
+    }
 }

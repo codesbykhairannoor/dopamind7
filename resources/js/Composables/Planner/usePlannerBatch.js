@@ -1,14 +1,13 @@
 import { ref } from 'vue';
 import { useForm, usePage } from '@inertiajs/vue3';
+import Swal from 'sweetalert2';
 
-// 🔥 FIX: Terima param 'currentDate' dari file utama agar batch tersimpan di tanggal yang benar
 export function usePlannerBatch(currentDateRef) {
     const isBatchModalOpen = ref(false);
     const globalConflictError = ref(null); 
 
-    // Form khusus Batch + Field 'date'
     const batchForm = useForm({
-        date: currentDateRef.value, // Set awal
+        date: currentDateRef.value, 
         tasks: [
             { title: '', start_time: '08:00', end_time: '09:00', type: 1, notes: '' }
         ]
@@ -16,7 +15,7 @@ export function usePlannerBatch(currentDateRef) {
 
     const openBatchModal = () => {
         batchForm.reset();
-        batchForm.date = currentDateRef.value; // Pastikan update saat modal dibuka
+        batchForm.date = currentDateRef.value; 
         batchForm.tasks = [{ title: '', start_time: '08:00', end_time: '09:00', type: 1, notes: '' }];
         batchForm.clearErrors();
         globalConflictError.value = null;
@@ -57,14 +56,12 @@ export function usePlannerBatch(currentDateRef) {
         }
     };
 
-    // --- HELPER TIME ---
     const timeToMin = (t) => {
         if (!t) return 0;
         const [h, m] = t.split(':').map(Number);
         return h * 60 + m;
     };
 
-    // --- VALIDASI SEBELUM SUBMIT ---
     const validateBatch = () => {
         batchForm.clearErrors();
         globalConflictError.value = null;
@@ -72,7 +69,6 @@ export function usePlannerBatch(currentDateRef) {
         const existingTasks = usePage().props.tasks || []; 
         let isValid = true;
 
-        // 1. Cek Validasi Per Baris
         batchForm.tasks.forEach((task, index) => {
             if (!task.title) {
                 batchForm.setError(`tasks.${index}.title`, 'Required');
@@ -91,11 +87,9 @@ export function usePlannerBatch(currentDateRef) {
 
             const clashExternal = existingTasks.some(existing => {
                 if (!existing.start_time || !existing.end_time) return false;
-                
                 const eStart = timeToMin(existing.start_time);
                 let eEnd = timeToMin(existing.end_time);
                 if (eEnd < eStart) eEnd += 1440;
-
                 return (start < eEnd && end > eStart);
             });
 
@@ -108,7 +102,6 @@ export function usePlannerBatch(currentDateRef) {
 
         if (!isValid) return false;
 
-        // Rule C: Cek Bentrok Antar Baris di Batch
         for (let i = 0; i < batchForm.tasks.length; i++) {
             const taskA = batchForm.tasks[i];
             const startA = timeToMin(taskA.start_time);
@@ -136,12 +129,21 @@ export function usePlannerBatch(currentDateRef) {
     const submitBatch = () => {
         if (!validateBatch()) return; 
         
-        batchForm.date = currentDateRef.value; // Pastikan data date dikirim
+        batchForm.date = currentDateRef.value; 
 
         batchForm.post(route('planner.batchStore'), {
             preserveScroll: true,
+            preserveState: true,
+            progress: false, // ✅ Matikan loading default
+            only: ['tasks', 'errors'], // ✅ Tarik data Planner (tasks) saja!
             onSuccess: () => {
                 closeBatchModal();
+                Swal.fire({
+                    toast: true, position: 'top-end', showConfirmButton: false, timer: 2000, timerProgressBar: true,
+                    background: '#4f46e5', iconColor: '#ffffff', icon: 'success',
+                    title: `<span style="color: white; font-weight: 900; font-size: 14px;">Batch Saved Successfully!</span>`,
+                    customClass: { popup: '!rounded-full' }
+                });
             },
             onError: (errors) => {
                 console.error("Batch Error", errors);

@@ -10,7 +10,6 @@ export function usePlannerTasks(props) {
     const isEditing = ref(false);
     const activeModalType = ref('full');
 
-    // 🔥 FIX: Tambahkan 'date' dan default ambil dari props.currentDate
     const form = useForm({
         id: null, 
         date: props.currentDate, 
@@ -21,18 +20,15 @@ export function usePlannerTasks(props) {
         notes: ''
     });
 
-    // 🔥 FIX: Pantau perubahan tanggal. Jika user klik tombol "Besok", otomatis form ikut update
     watch(() => props.currentDate, (newDate) => {
         form.date = newDate;
     });
 
-    // --- HELPER TRANSLASI ---
     const t = (key, fallback) => {
         const result = trans(key);
         return result !== key ? result : fallback;
     };
 
-    // --- ALERT CONFIG ---
     const fireToast = (icon, message, bgColor = '#4f46e5') => {
         Swal.fire({
             toast: true,
@@ -88,17 +84,14 @@ export function usePlannerTasks(props) {
 
     watch(() => [form.start_time, form.end_time], checkTimeValidity);
 
-    // --- LOGIC CRUD ---
+    // --- LOGIC CRUD DIPERCEPAT ---
     const submitTask = () => {
         if (!form.title || form.title.trim() === '') {
             return fireWarning(t('warn_empty_title', 'Judulnya diisi dulu, Bro!'));
         }
 
         if (activeModalType.value === 'full') {
-            if (!form.start_time || !form.end_time) {
-                return fireWarning(t('warn_empty_time', 'Tentukan jam mulai & selesai!'));
-            }
-
+            if (!form.start_time || !form.end_time) return fireWarning(t('warn_empty_time', 'Tentukan jam mulai & selesai!'));
             checkTimeValidity(); 
             if (conflictError.value) return;
         } else {
@@ -117,6 +110,9 @@ export function usePlannerTasks(props) {
             
             router.patch(route('planner.update', form.id), payload, {
                 preserveScroll: true,
+                preserveState: true,
+                progress: false, // ✅ Matikan loading bar atas
+                only: ['tasks', 'errors'], // ✅ Jangan load ulang halaman penuh
                 onFinish: () => form.reset()
             });
         } else {
@@ -125,6 +121,9 @@ export function usePlannerTasks(props) {
 
             router.post(route('planner.store'), payload, {
                 preserveScroll: true,
+                preserveState: true,
+                progress: false, // ✅ Matikan loading bar atas
+                only: ['tasks', 'errors'], // ✅ The Magic Speed!
                 onError: () => {
                     localTasks.value = localTasks.value.filter(t => t.id !== tempId);
                     fireError(t('err_save_failed', 'Gagal menyimpan ke server!'));
@@ -142,6 +141,9 @@ export function usePlannerTasks(props) {
 
         router.delete(route('planner.destroy', id), {
             preserveScroll: true,
+            preserveState: true,
+            progress: false, // ✅ Kilat!
+            only: ['tasks', 'errors'],
             onError: () => {
                 fireError(t('err_delete_failed', 'Gagal menghapus data!'));
             }
@@ -151,7 +153,10 @@ export function usePlannerTasks(props) {
     const toggleComplete = (task) => {
         task.is_completed = !task.is_completed;
         router.patch(route('planner.toggle', { plannerTask: task.id }), {}, { 
-            preserveScroll: true, preserveState: true
+            preserveScroll: true, 
+            preserveState: true,
+            progress: false, 
+            only: ['tasks', 'errors'] // ✅ Checklist Instan!
         });
     };
 
@@ -182,7 +187,7 @@ export function usePlannerTasks(props) {
         if (task) {
             isEditing.value = true;
             form.id = task.id;
-            form.date = task.date || props.currentDate; // 🔥 FIX: Pastikan tanggal terisi saat edit
+            form.date = task.date || props.currentDate; 
             form.title = task.title;
             form.start_time = task.start_time;
             form.end_time = task.end_time;
@@ -191,7 +196,7 @@ export function usePlannerTasks(props) {
         } else {
             isEditing.value = false;
             form.id = null;
-            form.date = props.currentDate; // 🔥 FIX: Pastikan tanggal baru sesuai hari yg lagi dibuka
+            form.date = props.currentDate; 
             
             if (timeSlot) {
                 form.start_time = timeSlot;

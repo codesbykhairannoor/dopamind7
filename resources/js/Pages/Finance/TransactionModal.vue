@@ -15,6 +15,9 @@ const props = defineProps({
     submit: Function
 });
 
+// 🔥 DEFINISIKAN EMIT UNTUK BATCH MODE
+const emit = defineEmits(['switch-to-batch']);
+
 // Ambil logic formatting & Locale
 const { activeCurrency, getCategoryDetails, cleanAmount, appLocale } = useFinanceFormat();
 
@@ -86,9 +89,21 @@ const onInput = (e) => {
             <div @click="close" class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
             
             <div class="bg-white w-full max-w-md rounded-[2rem] shadow-2xl z-10 p-6 animate-in slide-in-from-bottom-10 sm:zoom-in-95 duration-200 border border-slate-100 relative overflow-visible"> 
+                
                 <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xl font-black text-slate-800">✨ {{ $t('record_transaction') }}</h3>
-                    <button @click="close" class="bg-slate-50 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition">✕</button>
+                    <div class="flex items-center gap-3">
+                        <h3 class="text-xl font-black text-slate-800">
+                            ✨ {{ form.id ? 'Edit Transaction' : $t('record_transaction') }}
+                        </h3>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <button v-if="!form.id" @click="$emit('switch-to-batch')" type="button" 
+                            class="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-600 border border-indigo-100 hover:bg-indigo-100 transition flex items-center gap-1 active:scale-95">
+                            Batch
+                        </button>
+                        <button @click="close" class="bg-slate-50 w-8 h-8 flex items-center justify-center rounded-full text-slate-400 hover:bg-rose-50 hover:text-rose-500 transition font-bold">✕</button>
+                    </div>
                 </div>
                 
                 <form @submit.prevent="submit" class="space-y-5">
@@ -163,8 +178,8 @@ const onInput = (e) => {
 
                     <div class="flex gap-3 pt-4">
                         <button type="button" @click="close" class="flex-1 py-3.5 text-slate-500 font-bold hover:bg-slate-50 rounded-2xl transition">{{ $t('btn_cancel') }}</button>
-                        <button type="submit" class="flex-[2] py-3.5 text-white font-bold rounded-2xl shadow-lg active:scale-95 transition-all flex justify-center items-center gap-2" :class="form.type === 'expense' ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-200' : 'bg-emerald-500 hover:bg-emerald-600 shadow-emerald-200'">
-                            {{ $t('btn_save') }}
+                        <button type="submit" :disabled="form.processing" class="flex-[2] py-3.5 text-white font-bold rounded-2xl shadow-lg active:scale-95 transition-all flex justify-center items-center gap-2 disabled:opacity-50" :class="form.type === 'expense' ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-200' : 'bg-emerald-500 hover:bg-emerald-600 shadow-emerald-200'">
+                            {{ form.processing ? '...' : $t('btn_save') }}
                         </button>
                     </div>
                 </form>

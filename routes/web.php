@@ -282,20 +282,28 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     });
 
     Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->group(function () {
-        Route::get('/', [FinanceController::class, 'index'])->name('index');
-        Route::post('/income-target', [FinanceController::class, 'updateIncomeTarget'])->name('income-target.update');
-        Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
-        Route::patch('/transaction/{financeTransaction}', [FinanceController::class, 'updateTransaction'])->name('transaction.update');
-        Route::delete('/transaction/{financeTransaction}', [FinanceController::class, 'destroyTransaction'])->name('transaction.destroy');
-        Route::get('/category/check/{category}', [FinanceController::class, 'checkCategoryUsage'])->name('category.check');
-        Route::post('/category/rename', [FinanceController::class, 'renameCategory'])->name('category.rename');
-        Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
-        Route::put('/budget/{financeBudget}', [FinanceController::class, 'updateBudget'])->name('budget.update');
-        Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy');
-        Route::post('/categories', [FinanceController::class, 'storeCategory'])->name('categories.store');
-        Route::put('/categories/{category}', [FinanceController::class, 'updateCategory'])->name('categories.update');
-        Route::delete('/categories/{category}', [FinanceController::class, 'destroyCategory'])->name('categories.destroy');
-    });
+    Route::get('/', [FinanceController::class, 'index'])->name('index');
+    Route::post('/income-target', [FinanceController::class, 'updateIncomeTarget'])->name('income-target.update');
+    
+    // Transaksi Singel
+    Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
+    Route::patch('/transaction/{financeTransaction}', [FinanceController::class, 'updateTransaction'])->name('transaction.update');
+    Route::delete('/transaction/{financeTransaction}', [FinanceController::class, 'destroyTransaction'])->name('transaction.destroy');
+    
+    // 🔥 FIX BATCH ENTRY: Hilangkan kata 'finance' di URL dan Name
+    Route::post('/transactions-batch', [FinanceController::class, 'batchStoreTransaction'])->name('transaction.batchStore');  
+
+    Route::get('/category/check/{category}', [FinanceController::class, 'checkCategoryUsage'])->name('category.check');
+    Route::post('/category/rename', [FinanceController::class, 'renameCategory'])->name('category.rename');
+    
+    Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
+    Route::put('/budget/{financeBudget}', [FinanceController::class, 'updateBudget'])->name('budget.update');
+    Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy');
+    
+    Route::post('/categories', [FinanceController::class, 'storeCategory'])->name('categories.store');
+    Route::put('/categories/{category}', [FinanceController::class, 'updateCategory'])->name('categories.update');
+    Route::delete('/categories/{category}', [FinanceController::class, 'destroyCategory'])->name('categories.destroy');
+});
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
