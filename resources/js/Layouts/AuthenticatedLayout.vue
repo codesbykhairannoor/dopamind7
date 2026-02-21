@@ -81,6 +81,12 @@ watch(() => page.url, () => {
                     <span class="text-xl">💸</span>
                     <span>Finance</span>
                 </Link>
+                <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="hover"
+    class="flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all duration-300 group"
+    :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
+    <span class="text-xl">📓</span>
+    <span>Journal</span>
+</Link>
             </nav>
 
             <div class="p-6 border-t border-slate-100 bg-slate-50/50 space-y-4">
@@ -163,6 +169,13 @@ watch(() => page.url, () => {
                             @click="showingNavigationDropdown = false">
                             <span>💸</span> Finance Management
                         </Link>
+                        <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="hover"
+                            class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
+
+    :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
+    <span class="text-xl">📓</span>
+    <span>Journal</span>
+</Link>
 
                         <Link :href="route('settings.index')" prefetch="hover"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 

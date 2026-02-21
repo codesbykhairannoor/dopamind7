@@ -305,6 +305,21 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     Route::delete('/categories/{category}', [FinanceController::class, 'destroyCategory'])->name('categories.destroy');
 });
 
+// --- MODULE: JOURNAL ---
+    Route::prefix('journal')->name('journal.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\JournalController::class, 'index'])->name('index');
+        Route::get('/write/{id?}', [\App\Http\Controllers\JournalController::class, 'write'])->name('write');
+        
+        // 🔥 Sistem CRUD yang Benar
+        Route::post('/', [\App\Http\Controllers\JournalController::class, 'store'])->name('store');
+        Route::patch('/{id}', [\App\Http\Controllers\JournalController::class, 'update'])->name('update');
+        Route::delete('/{id}', [\App\Http\Controllers\JournalController::class, 'destroy'])->name('destroy');
+        
+        // Image Upload
+        Route::post('/image', [\App\Http\Controllers\JournalController::class, 'uploadImage'])->name('uploadImage');
+        Route::delete('/image/{id}', [\App\Http\Controllers\JournalController::class, 'deleteImage'])->name('deleteImage');
+    });
+
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 
