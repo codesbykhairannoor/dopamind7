@@ -40,6 +40,13 @@ const activeMonthNum = computed(() =>
   props.currentMonthKey ? dayjs(props.currentMonthKey).month() : dayjs().month()
 );
 
+// Format bulan singkat untuk mobile (misal: "Feb 2026")
+const shortMonthDisplay = computed(() => {
+    if (!props.currentMonthKey) return '';
+    const currentLocale = (appLocale.value ? appLocale.value.split('-')[0] : (page.props.locale || 'id'));
+    return dayjs(props.currentMonthKey).locale(currentLocale).format('MMM YYYY');
+});
+
 const activeCurrencyDetails = computed(() => 
   supportedCurrencies.find(c => c.code === activeCurrency.value) || supportedCurrencies[0]
 );
@@ -56,32 +63,39 @@ const changeYear = (offset) => {
   const month = String(activeMonthNum.value + 1).padStart(2, '0');
   props.onChangeDate(`${newYear}-${month}`);
 };
+
 </script>
 
 <template>
-  <div class="sticky top-0 z-50 px-4 py-4 transition-all bg-white border-b shadow-sm border-slate-200 sm:px-6 lg:px-8">
-    <div class="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
+  <div class="relative z-[60] px-4 py-4 transition-all bg-white border-b shadow-sm border-slate-200 sm:px-6 lg:px-8 md:sticky md:top-0">
+    <div class="flex flex-col items-center justify-between w-full gap-3 md:flex-row">
       
-      <div class="flex items-center w-full gap-4 md:w-auto">
-        <div class="flex items-center justify-center text-2xl text-white shadow-lg w-12 h-12 bg-indigo-600 rounded-xl shadow-indigo-200 shrink-0">
-          💸
-        </div>
-        <div>
-          <h2 class="text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('finance_plan') }}</h2>
-          <p class="mt-0.5 text-xs font-medium capitalize text-slate-500">{{ todayDisplay }}</p>
+      <div class="flex items-center justify-between w-full md:w-auto">
+        <div class="flex items-center gap-3 md:gap-4">
+            <div class="flex items-center justify-center text-xl md:text-2xl text-white shadow-lg w-10 h-10 md:w-12 md:h-12 bg-indigo-600 rounded-xl shadow-indigo-200 shrink-0">
+            💸
+            </div>
+            <div>
+            <h2 class="text-lg md:text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('finance_plan') }}</h2>
+            <p class="mt-0.5 text-[10px] md:text-xs font-medium capitalize text-slate-500">{{ todayDisplay }}</p>
+            </div>
         </div>
       </div>
 
-      <div class="flex items-center w-full gap-3 md:w-auto">
+      <div class="flex items-center w-full gap-2 md:w-auto mt-1 md:mt-0">
         
-        <div class="relative flex-1 md:flex-none">
+        <div class="relative shrink-0">
           <button 
-            @click="isDateDropdownOpen = !isDateDropdownOpen" 
-            class="flex items-center justify-between w-full h-12 px-4 transition border bg-slate-50 border-slate-200 rounded-2xl gap-2 hover:bg-white hover:border-indigo-300 shadow-sm group md:justify-start"
+            @click="isDateDropdownOpen = !isDateDropdownOpen; isCurrencyDropdownOpen = false" 
+            class="flex items-center justify-center w-[90px] md:w-auto md:px-4 h-11 transition border bg-slate-50 border-slate-200 rounded-xl gap-1.5 hover:bg-white hover:border-indigo-300 shadow-sm group"
+            :class="{'bg-indigo-50 border-indigo-200': isDateDropdownOpen}"
           >
-            <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest whitespace-nowrap">{{ currentMonth }}</span>
+            <span class="text-[9px] md:text-[10px] font-black text-slate-600 uppercase tracking-widest whitespace-nowrap">
+                <span class="md:hidden">{{ shortMonthDisplay }}</span>
+                <span class="hidden md:inline">{{ currentMonth }}</span>
+            </span>
             <svg 
-              class="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-500 transition-transform" 
+              class="w-3 h-3 text-slate-400 group-hover:text-indigo-500 transition-transform shrink-0" 
               :class="{'rotate-180': isDateDropdownOpen}" 
               fill="none" stroke="currentColor" viewBox="0 0 24 24"
             >
@@ -91,7 +105,8 @@ const changeYear = (offset) => {
 
           <Transition name="slide-fade">
             <div v-if="isDateDropdownOpen" 
-     class="absolute left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0 top-full mt-2 w-[calc(100vw-2rem)] sm:w-64 bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-4 z-[999] origin-top md:origin-top-right">
+                 class="absolute left-0 md:left-auto md:right-0 top-full mt-2 w-[260px] bg-white rounded-[1.5rem] shadow-2xl border border-slate-100 p-4 z-[100] origin-top-left md:origin-top-right">
+              
               <div class="fixed inset-0 z-[-1]" @click="isDateDropdownOpen = false"></div>
               
               <div class="relative z-10 flex items-center justify-between px-1 mb-3">
@@ -105,8 +120,8 @@ const changeYear = (offset) => {
                   v-for="(m, i) in months" 
                   :key="m.name" 
                   @click="selectMonth(i)" 
-                  class="text-[10px] font-bold py-3 rounded-xl transition-all" 
-                  :class="(activeMonthNum === i) ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-500 hover:bg-indigo-50'"
+                  class="text-[9px] sm:text-[10px] font-bold py-2.5 rounded-lg transition-all uppercase tracking-wider" 
+                  :class="(activeMonthNum === i) ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-500 hover:bg-indigo-50'"
                 >
                   {{ $t(m.name).slice(0,3) }}
                 </button>
@@ -117,15 +132,15 @@ const changeYear = (offset) => {
 
         <div class="relative shrink-0">
           <button 
-            @click="isCurrencyDropdownOpen = !isCurrencyDropdownOpen" 
-            class="flex items-center h-12 px-3 transition border bg-slate-50 border-slate-200 rounded-2xl gap-2 hover:bg-white shadow-sm"
+            @click="isCurrencyDropdownOpen = !isCurrencyDropdownOpen; isDateDropdownOpen = false" 
+            class="flex items-center justify-center h-11 px-2.5 transition border bg-slate-50 border-slate-200 rounded-xl gap-1 hover:bg-white shadow-sm"
           >
-            <span class="text-lg">{{ activeCurrencyDetails.icon }}</span>
-            <span class="text-[10px] font-black text-slate-600">{{ activeCurrency }}</span>
+            <span class="text-base">{{ activeCurrencyDetails.icon }}</span>
+            <span class="text-[9px] font-black text-slate-600">{{ activeCurrency }}</span>
           </button>
 
           <Transition name="slide-fade">
-            <div v-if="isCurrencyDropdownOpen" class="absolute right-0 top-full mt-2 w-40 bg-white rounded-2xl shadow-xl border border-slate-100 p-1.5 z-[999] origin-top-right">
+            <div v-if="isCurrencyDropdownOpen" class="absolute right-0 top-full mt-2 w-36 bg-white rounded-2xl shadow-xl border border-slate-100 p-1.5 z-[100] origin-top-right">
               <div class="fixed inset-0 z-[-1]" @click="isCurrencyDropdownOpen = false"></div>
               <div class="relative z-10">
                 <button 
@@ -135,7 +150,7 @@ const changeYear = (offset) => {
                   class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-50 rounded-xl transition" 
                   :class="activeCurrency === c.code ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600'"
                 >
-                  <span class="text-xl">{{ c.icon }}</span>
+                  <span class="text-lg">{{ c.icon }}</span>
                   <span class="text-[11px] font-bold">{{ c.code }}</span>
                 </button>
               </div>
@@ -145,10 +160,10 @@ const changeYear = (offset) => {
 
         <button 
           @click="onAddClick" 
-          class="flex items-center justify-center flex-1 h-12 px-6 text-sm font-black text-white transition shadow-lg md:flex-none bg-indigo-600 rounded-2xl hover:bg-indigo-700 shadow-indigo-100 gap-2 active:scale-95 whitespace-nowrap"
+          class="flex items-center justify-center flex-1 h-11 px-3 md:px-6 transition shadow-lg bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-indigo-100 gap-1.5 active:scale-95 whitespace-nowrap min-w-0"
         >
-          <span class="text-xl">+</span>
-          <span class="tracking-tight md:inline">{{ $t('btn_transaction') }}</span>
+          <span class="text-base font-bold text-white leading-none">+</span>
+          <span class="text-[10px] md:text-xs font-black text-white tracking-tight uppercase truncate">{{ $t('btn_transaction') }}</span>
         </button>
 
       </div>
@@ -156,3 +171,11 @@ const changeYear = (offset) => {
   </div>
 </template>
 
+<style scoped>
+.slide-fade-enter-active { transition: all 0.2s ease-out; }
+.slide-fade-leave-active { transition: all 0.15s cubic-bezier(1, 0.5, 0.8, 1); }
+.slide-fade-enter-from, .slide-fade-leave-to { 
+  transform: translateY(10px) scale(0.95); 
+  opacity: 0; 
+}
+</style>

@@ -169,13 +169,12 @@ watch(() => page.url, () => {
                             @click="showingNavigationDropdown = false">
                             <span>💸</span> Finance Management
                         </Link>
-                        <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="hover"
+                         <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="hover"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
-
-    :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium'">
-    <span class="text-xl">📓</span>
-    <span>Journal</span>
-</Link>
+                            :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            @click="showingNavigationDropdown = false">
+                            <span>📓</span> Journal
+                        </Link>
 
                         <Link :href="route('settings.index')" prefetch="hover"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
