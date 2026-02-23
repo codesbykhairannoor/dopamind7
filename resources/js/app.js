@@ -78,3 +78,12 @@ router.on('finish', (event) => {
 router.on('error', () => {
     NProgress.done();
 });
+
+router.on('navigate', (event) => {
+    if (typeof gtag !== 'undefined' && window.GA_MEASUREMENT_ID) {
+        gtag('config', window.GA_MEASUREMENT_ID, {
+            page_path: event.detail.page.url,
+            page_title: document.title
+        });
+    }
+});

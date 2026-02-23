@@ -47,6 +47,17 @@
             }
         </style>
     </head>
+    @if(env('VITE_GA_MEASUREMENT_ID'))
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('VITE_GA_MEASUREMENT_ID') }}"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                window.GA_MEASUREMENT_ID = '{{ env('VITE_GA_MEASUREMENT_ID') }}';
+                gtag('config', window.GA_MEASUREMENT_ID);
+            </script>
+        @endif
     <body class="font-sans antialiased selection:bg-indigo-500 selection:text-white">
         @inertia
     </body>

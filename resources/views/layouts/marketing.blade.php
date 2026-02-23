@@ -120,6 +120,17 @@
         /* Re-enable smooth scroll secara terbatas agar tidak ganggu HTMX */
         .allow-smooth { scroll-behavior: smooth; }
     </style>
+    @if(env('VITE_GA_MEASUREMENT_ID'))
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('VITE_GA_MEASUREMENT_ID') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            window.GA_MEASUREMENT_ID = '{{ env('VITE_GA_MEASUREMENT_ID') }}';
+            gtag('config', window.GA_MEASUREMENT_ID);
+        </script>
+    @endif
 </head>
 {{-- HTMX Boost + Smooth Scroll --}}
 <body hx-boost="true" class="bg-white text-slate-900 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700 flex flex-col min-h-screen">
@@ -438,13 +449,23 @@
         });
 
         // Ketika konten baru sudah selesai dimuat oleh HTMX
+       // Ketika konten baru sudah selesai dimuat oleh HTMX
         document.body.addEventListener('htmx:afterSwap', (event) => {
             NProgress.done();
             
-            // Nyalakan kembali scroll halus (opsional, jika kamu pakai anchor link #)
+            // Nyalakan kembali scroll halus
             setTimeout(() => {
-                document.documentElement.style.scrollBehavior = ''; // Kembalikan ke default CSS
+                document.documentElement.style.scrollBehavior = ''; 
             }, 50);
+
+            // ✅ 2. TAMBAHAN TRACKING GOOGLE ANALYTICS SAAT PINDAH HALAMAN VIA HTMX ✅
+            if (typeof gtag !== 'undefined' && window.GA_MEASUREMENT_ID) {
+                gtag('config', window.GA_MEASUREMENT_ID, {
+                    page_path: window.location.pathname,
+                    page_title: document.title
+                });
+            }
+            // ===================================================================
         });
 
         // Tangani error atau interupsi
