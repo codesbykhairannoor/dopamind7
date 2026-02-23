@@ -63,7 +63,7 @@ class JournalController extends Controller
         ]);
     }
 
-    // BIKIN JURNAL BARU
+    // 🔥 FIX: Pake Redirect Langsung ke ID Jurnal Baru
     public function store(Request $request)
     {
         $request->validate(['title' => 'nullable|string', 'content' => 'nullable|string', 'mood' => 'nullable|string']);
@@ -79,15 +79,20 @@ class JournalController extends Controller
         return redirect()->route('journal.write', $journal->id);
     }
 
-    // UPDATE JURNAL LAMA
     public function update(Request $request, $id)
     {
         $journal = Journal::where('user_id', Auth::id())->findOrFail($id);
+        
+        // Fitur Pembersih Otomatis (Kalau isinya diapus total sama user)
+        if (empty($request->title) && empty(trim(strip_tags($request->content))) && empty($request->mood) && empty($journal->image_path)) {
+            $journal->delete();
+            return redirect()->route('journal.index');
+        }
+
         $journal->update($request->only(['title', 'content', 'mood']));
         return back();
     }
 
-    // HAPUS JURNAL FULL
     public function destroy($id)
     {
         $journal = Journal::where('user_id', Auth::id())->findOrFail($id);
@@ -96,7 +101,6 @@ class JournalController extends Controller
         return redirect()->route('journal.index');
     }
 
-    // UPLOAD FOTO
     public function uploadImage(Request $request)
     {
         $request->validate(['image' => 'required|image']);
@@ -109,7 +113,10 @@ class JournalController extends Controller
         $path = $request->file('image')->store('journals', 'public');
         $journal->update(['image_path' => $path]);
 
-        return $request->id ? back() : redirect()->route('journal.write', $journal->id);
+        if (!$request->id) {
+            return redirect()->route('journal.write', $journal->id);
+        }
+        return back();
     }
 
     public function deleteImage($id)

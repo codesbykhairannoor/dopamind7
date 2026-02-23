@@ -1462,7 +1462,7 @@
     "delete_budget_text": "Riwayat transaksi tetap ada, tapi target dihapus.",
 
     
-    "journal_title": "Jurnal Saya 📓",
+    "journal_title": "Jurnal Saya",
     "journal_subtitle": "Rekam jejak pikiran dan perasaanmu setiap hari.",
     "journal_tasks": "Tugas",
     "journal_habit": "Habit",
@@ -1476,6 +1476,7 @@
     "journal_no_content": "Tidak ada teks...",
     "journal_confirm_delete": "Hapus Jurnal?",
     "journal_delete_warn": "Data ini akan hilang selamanya.",
+    
 
     
     "btn_back_dashboard": "Kembali ke Dashboard",

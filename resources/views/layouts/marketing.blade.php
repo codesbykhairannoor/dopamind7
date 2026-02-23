@@ -17,7 +17,7 @@
         : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
     }}">
 
-    <title>@yield('title') — OneForMind</title>
+    <title>@yield('title') | OneForMind</title>
 
     <meta property="og:title" content="OneForMind | Productivity OS">
     <meta property="og:image" content="{{ asset('favicon.svg') }}">
