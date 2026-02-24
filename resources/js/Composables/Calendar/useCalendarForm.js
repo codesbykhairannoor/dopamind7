@@ -71,16 +71,20 @@ export function useCalendarForm() {
         const url = isEditing ? route('calendar.events.update', eventForm.id) : route('calendar.events.store');
         const method = isEditing ? 'put' : 'post';
 
+        // 🚀 OPTIMISTIC UI: Langsung tutup modal agar terasa "Instan"
+        isEventModalOpen.value = false;
+
         eventForm[method](url, {
             preserveScroll: true,
             preserveState: true,
-            progress: false,
+            progress: false, // Matikan bar loading Inertia di atas layar
             onSuccess: () => {
-                isEventModalOpen.value = false;
                 fireToast('success', t('success_saved', 'Acara Berhasil Disimpan!'));
                 eventForm.reset();
             },
             onError: (err) => {
+                // Munculkan kembali modal jika gagal save di backend
+                isEventModalOpen.value = true;
                 fireToast('error', Object.values(err)[0]);
             }
         });
@@ -107,7 +111,6 @@ export function useCalendarForm() {
                 router.delete(route('calendar.events.destroy', id), {
                     preserveScroll: true, preserveState: true, progress: false,
                     onSuccess: () => {
-                        isEventModalOpen.value = false;
                         fireToast('success', t('success_deleted', 'Berhasil Dihapus!'));
                     }
                 });

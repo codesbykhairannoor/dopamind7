@@ -307,32 +307,31 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     Route::put('/categories/{category}', [FinanceController::class, 'updateCategory'])->name('categories.update');
     Route::delete('/categories/{category}', [FinanceController::class, 'destroyCategory'])->name('categories.destroy');
 });
-
 // --- MODULE: JOURNAL ---
-    Route::prefix('journal')->name('journal.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\JournalController::class, 'index'])->name('index');
-        Route::get('/write/{id?}', [\App\Http\Controllers\JournalController::class, 'write'])->name('write');
-        
-        // 🔥 Sistem CRUD yang Benar
-        Route::post('/', [\App\Http\Controllers\JournalController::class, 'store'])->name('store');
-        Route::patch('/{id}', [\App\Http\Controllers\JournalController::class, 'update'])->name('update');
-        Route::delete('/{id}', [\App\Http\Controllers\JournalController::class, 'destroy'])->name('destroy');
-        
-        // Image Upload
-        Route::post('/image', [\App\Http\Controllers\JournalController::class, 'uploadImage'])->name('uploadImage');
-        Route::delete('/image/{id}', [\App\Http\Controllers\JournalController::class, 'deleteImage'])->name('deleteImage');
-    });
+Route::middleware(['module:journal'])->prefix('journal')->name('journal.')->group(function () {
+    Route::get('/', [JournalController::class, 'index'])->name('index');
+    Route::get('/write/{id?}', [JournalController::class, 'write'])->name('write');
+    
+    // Sistem CRUD
+    Route::post('/', [JournalController::class, 'store'])->name('store');
+    Route::patch('/{id}', [JournalController::class, 'update'])->name('update');
+    Route::delete('/{id}', [JournalController::class, 'destroy'])->name('destroy');
+    
+    // Image Upload
+    Route::post('/image', [JournalController::class, 'uploadImage'])->name('uploadImage');
+    Route::delete('/image/{id}', [JournalController::class, 'deleteImage'])->name('deleteImage');
+});
 
 
-    // --- MODULE: CALENDAR ---
-    Route::prefix('calendar')->name('calendar.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\CalendarController::class, 'index'])->name('index');
-        
-        // CRUD untuk Event
-        Route::post('/events', [\App\Http\Controllers\CalendarController::class, 'storeEvent'])->name('events.store');
-        Route::put('/events/{id}', [\App\Http\Controllers\CalendarController::class, 'updateEvent'])->name('events.update');
-        Route::delete('/events/{id}', [\App\Http\Controllers\CalendarController::class, 'destroyEvent'])->name('events.destroy');
-    });
+// --- MODULE: CALENDAR ---
+Route::middleware(['module:calendar'])->prefix('calendar')->name('calendar.')->group(function () {
+    Route::get('/', [CalendarController::class, 'index'])->name('index');
+    
+    // CRUD untuk Event
+    Route::post('/events', [CalendarController::class, 'storeEvent'])->name('events.store');
+    Route::put('/events/{id}', [CalendarController::class, 'updateEvent'])->name('events.update');
+    Route::delete('/events/{id}', [CalendarController::class, 'destroyEvent'])->name('events.destroy');
+});
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');

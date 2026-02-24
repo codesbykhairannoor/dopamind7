@@ -23,10 +23,9 @@ const {
     openEventModal, submitEvent, deleteEvent, openDayDetail, calendarDays
 } = useCalendar(props);
 
-// Logic Ganti Bulan
-const changeMonth = (offset) => {
-    const newMonth = dayjs(props.currentMonth).add(offset, 'month').format('YYYY-MM');
-    router.get(route('calendar.index'), { month: newMonth }, { 
+// Logic Ganti Bulan yang Benar
+const changeMonth = (newMonthPayload) => {
+    router.get(route('calendar.index'), { month: newMonthPayload }, { 
         preserveState: true, 
         preserveScroll: true,
         progress: false 
@@ -45,7 +44,7 @@ const changeMonth = (offset) => {
             @add-event="() => openEventModal()"
         />
 
-        <div class="w-full px-4 py-6 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="w-full px-4 py-6 sm:px-6 lg:px-8 max-w-full mx-auto">
             <CalendarGrid 
                 :calendarDays="calendarDays"
                 @open-detail="openDayDetail"

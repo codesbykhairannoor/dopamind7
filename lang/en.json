@@ -1482,6 +1482,32 @@
     "calendar_no_tasks": "No tasks",
     "calendar_habits": "Habits",
     "calendar_habits_done": "Completed",
+
+    
+    "calendar_title": "Master Calendar",
+    "calendar_subtitle": "Your bird-eye view",
+    "calendar_new_event": "New Event",
+    "calendar_edit_event": "Edit Event",
+    "label_title": "Event Title",
+    "label_start_date": "Start Date",
+    "label_end_date": "End Date (Optional)",
+    "label_color": "Label Color",
+    "label_description": "Additional Notes",
+    "ph_event_title": "e.g., Team Meeting",
+    "ph_event_desc": "Write event details here...",
+    "btn_add_event": "Event",
+    "color_indigo": "Indigo", "color_sky": "Sky", "color_emerald": "Emerald",
+    "color_amber": "Amber", "color_rose": "Rose", "color_purple": "Purple",
+
+    
+
+    "calendar_expense_short": "Spent",
+    "calendar_expense_label": "Expenses",
+    "calendar_no_events_title": "Empty Day",
+    "calendar_no_events_desc": "No events are scheduled for today.",
+    "calendar_today": "Today",
+    "calendar_open": "Open",
+    "calendar_more_events": "more events",
     
  
 
