@@ -136,6 +136,18 @@ watch(() => page.url, () => {
                     <span class="text-xl">📓</span>
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Journal</span>
                 </Link>
+
+                 <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="hover"
+                    class="flex items-center rounded-2xl transition-all duration-300 group"
+                    :class="[
+                        route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                    ]"
+                    :title="isSidebarCollapsed ? 'Calendar' : ''"
+                >
+                    <span class="text-xl">📅</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Calendar</span>
+                </Link>
             </nav>
 
             <div class="p-4 border-t border-slate-100 bg-slate-50/50 space-y-4" :class="isSidebarCollapsed ? 'px-3' : 'px-6'">
@@ -176,9 +188,18 @@ watch(() => page.url, () => {
         <main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50 custom-scrollbar">
             
             <div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">
-                <Link :href="route('dashboard')" class="flex items-center gap-2">
-                     <span class="text-2xl text-indigo-600">✦</span>
-                    <span class="font-black text-indigo-950 text-lg tracking-tight">OneForMind.</span>
+                  <Link :href="route('dashboard')" class="group flex items-center gap-3">
+                    
+                    <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200 shrink-0">
+                        <img src="/favicon.svg?v=2" alt="Logo" class="w-6 h-6 brightness-0 invert" />
+                    </div>
+                    
+                    <Transition name="fade">
+                        <span v-if="!isSidebarCollapsed" class="text-xl font-black tracking-tighter text-slate-900 whitespace-nowrap">
+                            OneForMind<span class="text-indigo-600">.</span>
+                        </span>
+                    </Transition>
+
                 </Link>
                 <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-slate-500 hover:text-indigo-600 transition p-2 rounded-lg hover:bg-slate-50">
                     <span v-if="!showingNavigationDropdown" class="text-2xl">☰</span>
@@ -229,6 +250,13 @@ watch(() => page.url, () => {
                             :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>📓</span> Journal
+                        </Link>
+
+                        <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="hover"
+                            class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
+                            :class="route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
+                            @click="showingNavigationDropdown = false">
+                            <span>📅</span> Calendar
                         </Link>
 
                         <Link :href="route('settings.index')" prefetch="hover"

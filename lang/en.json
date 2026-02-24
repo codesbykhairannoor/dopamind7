@@ -1459,6 +1459,29 @@
     "journal_no_content": "No text content...",
     "journal_confirm_delete": "Delete Journal?",
     "journal_delete_warn": "This data will be lost forever.",
+
+
+
+
+
+    "calendar_more": "more",
+    "journal_filled": "Journal written",
+    "calendar_tasks": "Tasks",
+    "calendar_expense": "Expense",
+    "habit_completed": "Habits completed",
+    "calendar_day_summary": "Daily Summary",
+    "calendar_events_schedule": "Events / Schedule",
+    "calendar_no_events": "No events today.",
+    "btn_edit": "Edit",
+    "calendar_life_os_summary": "Life OS Summary",
+    "calendar_journal": "Journal",
+    "calendar_journal_written": "✓ Written",
+    "calendar_empty": "Empty",
+    "calendar_daily_tasks": "Daily Tasks",
+    "calendar_tasks_done": "Done",
+    "calendar_no_tasks": "No tasks",
+    "calendar_habits": "Habits",
+    "calendar_habits_done": "Completed",
     
  
 

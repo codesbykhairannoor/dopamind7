@@ -5,6 +5,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\HabitController;
 use App\Http\Controllers\PlannerController;
+use App\Http\Controllers\JournalController;
+use App\Http\Controllers\CalendarController;
+
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
@@ -318,6 +321,17 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
         // Image Upload
         Route::post('/image', [\App\Http\Controllers\JournalController::class, 'uploadImage'])->name('uploadImage');
         Route::delete('/image/{id}', [\App\Http\Controllers\JournalController::class, 'deleteImage'])->name('deleteImage');
+    });
+
+
+    // --- MODULE: CALENDAR ---
+    Route::prefix('calendar')->name('calendar.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\CalendarController::class, 'index'])->name('index');
+        
+        // CRUD untuk Event
+        Route::post('/events', [\App\Http\Controllers\CalendarController::class, 'storeEvent'])->name('events.store');
+        Route::put('/events/{id}', [\App\Http\Controllers\CalendarController::class, 'updateEvent'])->name('events.update');
+        Route::delete('/events/{id}', [\App\Http\Controllers\CalendarController::class, 'destroyEvent'])->name('events.destroy');
     });
 
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');

@@ -1486,7 +1486,27 @@
     "journal_mood_label": "Mood Hari Ini:",
     "journal_add_photo": "Sisipkan Foto Jurnal",
     "journal_write_placeholder": "Mulai menulis cerita harimu...",
-    "journal_title_placeholder": "Beri judul harimu..."
+    "journal_title_placeholder": "Beri judul harimu...",
+
+
+    "calendar_more": "lagi",
+    "journal_filled": "Jurnal telah ditulis",
+    "calendar_tasks": "Tugas",
+    "calendar_expense": "Pengeluaran",
+    "habit_completed": "Habit selesai",
+    "calendar_day_summary": "Rangkuman Hari",
+    "calendar_events_schedule": "Acara / Jadwal",
+    "calendar_no_events": "Tidak ada acara hari ini.",
+    "btn_edit": "Edit",
+    "calendar_life_os_summary": "Rangkuman Life OS",
+    "calendar_journal": "Jurnal",
+    "calendar_journal_written": "✓ Sudah Ditulis",
+    "calendar_empty": "Kosong",
+    "calendar_daily_tasks": "Tugas Harian",
+    "calendar_tasks_done": "Selesai",
+    "calendar_no_tasks": "Tidak ada tugas",
+    "calendar_habits": "Habit",
+    "calendar_habits_done": "Tuntas"
    
 
 
