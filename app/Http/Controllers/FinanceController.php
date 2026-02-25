@@ -89,7 +89,12 @@ class FinanceController extends Controller
     // --- KATEGORI (Income & Umum) ---
     public function storeCategory(Request $request)
     {
-        $request->validate(['name' => 'required', 'type' => 'required']);
+        $request->validate([
+            'name' => 'required|string|max:255', 
+            'type' => 'required|in:income,expense',
+            'icon' => 'nullable|string|max:50'
+        ]);
+        
         $slug = Str::slug($request->name, '_');
 
         FinanceCategory::firstOrCreate(
@@ -104,6 +109,12 @@ class FinanceController extends Controller
     {
         if ($category->user_id !== Auth::id()) abort(403);
 
+        // 🔥 FIX: Validasi ditambahkan agar aplikasi tidak crash jika input 'name' kosong
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'icon' => 'nullable|string|max:50'
+        ]);
+
         $oldSlug = $category->slug;
         $newSlug = Str::slug($request->name, '_');
 
@@ -114,9 +125,14 @@ class FinanceController extends Controller
                 'icon' => $request->icon
             ]);
 
+            // Cascade update ke transaksi dan budget jika slug berubah
             if ($oldSlug !== $newSlug) {
-                FinanceTransaction::where('user_id', Auth::id())->where('category', $oldSlug)->update(['category' => $newSlug]);
-                FinanceBudget::where('user_id', Auth::id())->where('category', $oldSlug)->update(['category' => $newSlug]);
+                FinanceTransaction::where('user_id', Auth::id())
+                    ->where('category', $oldSlug)
+                    ->update(['category' => $newSlug]);
+                FinanceBudget::where('user_id', Auth::id())
+                    ->where('category', $oldSlug)
+                    ->update(['category' => $newSlug]);
             }
         });
 
@@ -154,7 +170,9 @@ class FinanceController extends Controller
     public function storeBudget(BudgetRequest $request)
     {
         DB::transaction(function () use ($request) {
-            $exists = FinanceCategory::where('user_id', Auth::id())->where('slug', $request->category)->exists();
+            $exists = FinanceCategory::where('user_id', Auth::id())
+                ->where('slug', $request->category)
+                ->exists();
 
             if (!$exists && $request->has('name')) {
                 FinanceCategory::create([
@@ -179,15 +197,25 @@ class FinanceController extends Controller
     {
         DB::transaction(function () use ($request, $financeBudget) {
             $oldSlug = $financeBudget->category;
-            $masterCategory = FinanceCategory::where('user_id', Auth::id())->where('slug', $oldSlug)->first();
+            $masterCategory = FinanceCategory::where('user_id', Auth::id())
+                ->where('slug', $oldSlug)
+                ->first();
 
             if ($masterCategory && $request->has('name')) {
                 $newSlug = Str::slug($request->name, '_');
-                $masterCategory->update(['name' => $request->name, 'slug' => $newSlug, 'icon' => $request->icon]);
+                $masterCategory->update([
+                    'name' => $request->name, 
+                    'slug' => $newSlug, 
+                    'icon' => $request->icon
+                ]);
 
                 if ($oldSlug !== $newSlug) {
-                    FinanceBudget::where('user_id', Auth::id())->where('category', $oldSlug)->update(['category' => $newSlug]);
-                    FinanceTransaction::where('user_id', Auth::id())->where('category', $oldSlug)->update(['category' => $newSlug]);
+                    FinanceBudget::where('user_id', Auth::id())
+                        ->where('category', $oldSlug)
+                        ->update(['category' => $newSlug]);
+                    FinanceTransaction::where('user_id', Auth::id())
+                        ->where('category', $oldSlug)
+                        ->update(['category' => $newSlug]);
                 }
             }
             $financeBudget->update(['limit_amount' => $request->limit_amount]);

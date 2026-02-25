@@ -96,7 +96,7 @@ export function useFinanceForm() {
             onOptimistic({ ...payload, id: tempId, amount: cleanAmount(payload.amount), created_at: new Date().toISOString() }, isEditing);
         }
 
-        // 🔥 TOAST INSTAN (Dipindah ke luar dari onSuccess)
+        // 🔥 TOAST INSTAN
         fireToast('success', t('success_saved', 'Saved successfully!'));
 
         transactionForm.transform((data) => ({ ...data, amount: cleanAmount(data.amount) }))[method](url, {
@@ -107,7 +107,6 @@ export function useFinanceForm() {
                 transactionForm.reset();
                 transactionForm.date = dayjs().format('YYYY-MM-DD');
                 if (onSuccess) onSuccess();
-                // Toast sudah dihapus dari sini biar gak delay
             },
             onError: (err) => {
                 if (onError) onError(tempId, isEditing); // 🔥 Rollback kalau server gagal
@@ -131,7 +130,6 @@ export function useFinanceForm() {
                     progress: false, // ✅ INI YANG BENER
                     onSuccess: () => {
                         if (onSuccess) onSuccess();
-                        // Toast sudah dihapus dari sini biar gak delay
                     },
                     onError: () => {
                         if (onError) onError(id); // 🔥 Rollback
@@ -174,7 +172,6 @@ export function useFinanceForm() {
             onSuccess: () => {
                 budgetForm.reset();
                 if (onSuccess) onSuccess();
-                // Toast sudah dihapus dari sini biar gak delay
             },
             onError: (err) => {
                 if (onError) onError(tempId, isEditing);
@@ -198,7 +195,6 @@ export function useFinanceForm() {
                     progress: false, // ✅ INI YANG BENER
                     onSuccess: () => {
                         if (onSuccess) onSuccess();
-                        // Toast sudah dihapus dari sini biar gak delay
                     },
                     onError: () => {
                         if (onError) onError(id);
@@ -209,7 +205,7 @@ export function useFinanceForm() {
         });
     };
 
-    // --- KATEGORI (Diubah jadi Optimistic) ---
+    // --- KATEGORI (Optimistic) ---
     const categoryForm = useForm({ id: null, name: '', icon: '💰', type: 'income', slug: '' });
     
     const setEditCategory = (cat) => { 
@@ -277,6 +273,7 @@ export function useFinanceForm() {
             }
         });
     };
+
     const updateIncomeTarget = (month, amount) => {
         router.post(route('finance.income-target.update'), { month, amount }, { 
             preserveScroll: true, 

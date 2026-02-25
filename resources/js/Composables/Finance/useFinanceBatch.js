@@ -14,7 +14,7 @@ export function useFinanceBatch(currentDateRef) {
         return result !== key ? result : fallback;
     };
 
-    // 🔥 ALERT DESIGN SAMA DENGAN SINGLE MODAL
+    // 🔥 ALERT DESIGN
     const fireToast = (icon, message) => {
         Swal.fire({
             toast: true,
@@ -103,9 +103,11 @@ export function useFinanceBatch(currentDateRef) {
         return isValid;
     };
 
-    const submitBatch = () => {
+    // 🔥 INSTANT CRUD LOGIC (FIXED: SNAPSHOT DATA DULU BARU RESET)
+    const submitBatch = ({ onOptimistic, onSuccess, onError } = {}) => {
         if (!validateBatch()) return;
 
+        // 1. AMANKAN DATA KE VARIABLE PAYLOAD SEBELUM FORM DI-RESET
         const payload = {
             date: batchForm.date, 
             transactions: batchForm.transactions.map(t => ({
@@ -114,18 +116,41 @@ export function useFinanceBatch(currentDateRef) {
             }))
         };
 
-        fireToast('success', t('success_saved', 'Menyimpan Batch...'));
+        // 2. Buat Dummy Data (Optimistic) dari payload yg sudah aman
+        const optimisticTransactions = payload.transactions.map((t, idx) => ({
+            ...t,
+            id: 'temp_batch_' + Date.now() + '_' + idx, // ID Sementara
+            date: payload.date,
+            created_at: new Date().toISOString()
+        }));
 
+        // 3. Eksekusi Instan ke UI
+        if (onOptimistic) onOptimistic(optimisticTransactions);
+
+        // 4. Tutup modal & Reset Form (Sekarang AMAN karena data ada di 'payload')
+        closeBatchModal();
+
+        // 5. Toast instan
+        fireToast('success', t('success_saved', 'Batch Saved!'));
+
+        // 6. Kirim data yang sudah diamankan tadi ke server
         router.post(route('finance.transaction.batchStore'), payload, {
             preserveScroll: true,
             preserveState: true,
-            progress: false,
-            only: ['transactions', 'stats', 'budgets', 'categories', 'errors'],
+            progress: false, // Matikan loading bar atas
             onSuccess: () => {
-                closeBatchModal();
+                if (onSuccess) onSuccess();
             },
-            onError: () => {
-                fireToast('error', t('err_save_failed', 'Gagal menyimpan data!'));
+            onError: (err) => {
+                // 🔥 Rollback jika server menolak
+                if (onError) onError(optimisticTransactions.map(t => t.id));
+                
+                // Kembalikan data ke form agar user tidak perlu ngetik ulang
+                batchForm.date = payload.date;
+                batchForm.transactions = payload.transactions;
+                
+                isBatchModalOpen.value = true; // Buka lagi modalnya
+                fireToast('error', Object.values(err)[0] || t('err_save_failed', 'Gagal menyimpan data!'));
             }
         });
     };

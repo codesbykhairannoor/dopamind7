@@ -1487,6 +1487,10 @@
     "journal_add_photo": "Sisipkan Foto Jurnal",
     "journal_write_placeholder": "Mulai menulis cerita harimu...",
     "journal_title_placeholder": "Beri judul harimu...",
+    "status_deleted": "Berhasil Dihapus!",
+    "status_image_saved": "Gambar Tersimpan!",
+    "status_image_deleted": "Gambar Dihapus!",
+
 
 
     "calendar_more": "lagi",
@@ -1533,7 +1537,16 @@
     "calendar_no_events_desc": "Belum ada acara yang dijadwalkan untuk hari ini.",
     "calendar_today": "Hari Ini",
     "calendar_open": "Buka",
-    "calendar_more_events": "acara lain"
+    "calendar_more_events": "acara lain",
+
+    
+  "calendar_focus": "Fokus",
+  "calendar_events": "Events",
+  "calendar_planner": "Planner",
+  "calendar_finance": "Finance",
+  "calendar_journal_short": "Journal",
+  "calendar_habits_short": "Habit",
+  "calendar_tasks_short": "Tasks"
    
 
 

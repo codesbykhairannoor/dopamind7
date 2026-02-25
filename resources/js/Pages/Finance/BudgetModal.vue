@@ -56,6 +56,12 @@ const onNameInput = (e) => {
         props.form.category = e.target.value.toLowerCase().trim().replace(/\s+/g, '_');
     }
 };
+
+// 🔥 KUNCI UTAMA INSTAN: Fungsi untuk tembak API dan tutup Modal bersamaan!
+const handleInstantSubmit = () => {
+    props.submit(); // Jalankan request dan Optimistic Update di background
+    props.close();  // Langsung hancurkan modal dari layar (0ms Delay)
+};
 </script>
 
 <template>
@@ -68,7 +74,7 @@ const onNameInput = (e) => {
                 {{ form.id ? '✏️ ' + $t('edit_budget') : '🎯 ' + $t('new_budget') }}
             </h3>
             
-            <form @submit.prevent="submit" class="space-y-5">
+            <form @submit.prevent="handleInstantSubmit" class="space-y-5">
                 <div>
                     <label class="block text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5">{{ $t('category_name') }}</label>
                     <div class="flex gap-2">
@@ -98,9 +104,9 @@ const onNameInput = (e) => {
                 </div>
 
                 <div class="flex gap-3 pt-2">
-                    <button type="button" @click="close" class="flex-1 py-3 text-slate-500 font-bold hover:bg-slate-50 rounded-xl">{{ $t('cancel') }}</button>
-                    <button type="submit" :disabled="form.processing" class="flex-[2] py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg active:scale-95 transition-all disabled:opacity-50">
-                        {{ form.processing ? $t('saving') : $t('save') }}
+                    <button type="button" @click="close" class="flex-1 py-3 text-slate-500 font-bold hover:bg-slate-50 rounded-xl transition">{{ $t('cancel') }}</button>
+                    <button type="submit" class="flex-[2] py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 active:scale-95 transition-all">
+                        {{ $t('save') }}
                     </button>
                 </div>
             </form>

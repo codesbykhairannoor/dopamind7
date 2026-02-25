@@ -1,11 +1,10 @@
 <script setup>
-import { ref, watch, computed, onMounted } from 'vue';
+import { ref, watch } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
 import { useJournalForm } from '@/Composables/Journal/useJournalForm';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 
-// Pastikan memanggil Tiptap
 import { useEditor, EditorContent } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
@@ -15,8 +14,8 @@ const props = defineProps({
     date: String
 });
 
-// Ambil silentSave dari composable
-const { form, isSaving, handleImageUpload, removeImage, silentSave } = useJournalForm(props.journal, props.date);
+// 🔥 Panggil currentImageUrl dari composable, HAPUS localImagePreview
+const { form, isSaving, currentImageUrl, handleImageUpload, removeImage, silentSave } = useJournalForm(props.journal, props.date);
 
 const fileInputRef = ref(null);
 
@@ -42,7 +41,6 @@ const editor = useEditor({
     }
 });
 
-const getImageUrl = computed(() => props.journal?.image_path ? `/storage/${props.journal.image_path}` : null);
 const triggerFileInput = () => fileInputRef.value.click();
 </script>
 
@@ -50,7 +48,6 @@ const triggerFileInput = () => fileInputRef.value.click();
     <Head :title="`Menulis Jurnal - ${date}`" />
 
     <div class="min-h-screen bg-slate-50 relative selection:bg-indigo-100 pb-32">
-        
         <div class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 px-4 md:px-6 py-4 flex items-center justify-between shadow-sm">
             <Link :href="route('journal.index')" class="text-xs md:text-sm font-bold text-slate-500 hover:text-indigo-600 transition-colors flex items-center gap-2 bg-slate-100 hover:bg-indigo-50 px-3 md:px-4 py-2 rounded-xl">
                 <span>←</span> <span class="hidden sm:inline">{{ $t('btn_back_dashboard', 'Kembali ke Dashboard') }}</span>
@@ -75,9 +72,7 @@ const triggerFileInput = () => fileInputRef.value.click();
         </div>
 
         <div class="max-w-3xl mx-auto w-full px-4 py-8 md:py-12">
-            
             <div class="bg-white p-6 md:p-14 rounded-[2rem] md:rounded-[2.5rem] shadow-sm border border-slate-100 relative">
-                
                 <div class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 mb-6 flex items-center gap-2">
                     <span>📅</span> {{ dayjs(date).locale($page.props.locale || 'id').format('dddd, DD MMMM YYYY') }}
                 </div>
@@ -94,9 +89,10 @@ const triggerFileInput = () => fileInputRef.value.click();
                 <div class="mb-10 group relative">
                     <input type="file" ref="fileInputRef" class="hidden" accept="image/jpeg, image/png, image/webp" @change="handleImageUpload" />
                     
-                    <div v-if="getImageUrl" class="relative rounded-[2rem] overflow-hidden border border-slate-100 shadow-sm">
-                        <img :src="getImageUrl" alt="Journal Image" class="w-full h-auto max-h-[500px] object-cover" />
-                        <button @click="removeImage" class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur text-rose-500 rounded-full flex items-center justify-center shadow-lg hover:bg-rose-500 hover:text-white transition-all opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100">
+                    <div v-if="currentImageUrl" class="relative rounded-[2rem] overflow-hidden border border-slate-100 shadow-sm">
+                        <img :src="currentImageUrl" alt="Journal Image" class="w-full h-auto max-h-[500px] object-cover" />
+                        
+                        <button @click="removeImage" type="button" class="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur text-rose-500 rounded-full flex items-center justify-center shadow-lg hover:bg-rose-500 hover:text-white transition-all opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 z-10 cursor-pointer">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                         </button>
                     </div>
@@ -123,9 +119,8 @@ const triggerFileInput = () => fileInputRef.value.click();
 </template>
 
 <style>
-.tiptap p.is-editor-empty:first-child::before {
-  color: #cbd5e1; content: attr(data-placeholder); float: left; height: 0; pointer-events: none;
-}
+/* CSS bawaanmu di sini tidak ada yang saya ubah */
+.tiptap p.is-editor-empty:first-child::before { color: #cbd5e1; content: attr(data-placeholder); float: left; height: 0; pointer-events: none; }
 .tiptap h2 { font-weight: 900; margin-top: 1.5em; margin-bottom: 0.5em; color: #1e293b; font-size: 1.5em; }
 .tiptap ul { list-style-type: disc; padding-left: 1.5em; margin-top: 0.5em; margin-bottom: 0.5em; }
 .tiptap li { margin-bottom: 0.25em; }

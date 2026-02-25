@@ -68,7 +68,7 @@ const filterDateRef = ref(props.filters.date || dayjs().format('YYYY-MM-DD'));
 
 const { 
     isBatchModalOpen, batchForm, globalConflictError, 
-    openBatchModal, closeBatchModal, addBatchRow, removeBatchRow, submitBatch 
+    openBatchModal, closeBatchModal, addBatchRow, removeBatchRow, submitBatch: executeBatch // <-- ubah jadikan alias
 } = useFinanceBatch(filterDateRef);
 
 // Oper magic prop ke Composables History
@@ -121,39 +121,72 @@ const triggerDeleteTransaction = (id) => {
     });
 };
 
+// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK BATCH TRANSAKSI
+const triggerSubmitBatch = () => {
+    executeBatch({
+        onOptimistic: (newTransactionsArray) => {
+            // Karena ini batch (array), kita unshift semuanya sekaligus ke paling atas memori UI
+            localTransactions.value.unshift(...newTransactionsArray);
+        },
+        onError: (tempIdsArray) => {
+            // Kalau server gagal, hapus id sementara dari array UI
+            localTransactions.value = localTransactions.value.filter(t => !tempIdsArray.includes(t.id));
+        }
+    });
+};
+
+
 // 🔥 EKSEKUSI OPTIMISTIC UI UNTUK BUDGET
 const submitNewBudget = () => {
     showBudgetModal.value = false; // Langsung tutup 0ms
     submitBudget(currentMonthKey.value, {
         onOptimistic: (data, isEditing) => {
             if (isEditing) {
+                // 1. Update angka limit di list Budget
                 const idx = localBudgets.value.findIndex(b => b.id === data.id);
                 if (idx !== -1) Object.assign(localBudgets.value[idx], data);
+
+                // 2. 🔥 FIX UTAMA: Update Master Kategori secara Instan!
+                // Cari kategori berdasarkan slug lama, lalu tembak nama & icon barunya
+                const catIdx = localCategories.value.findIndex(c => c.slug === data.category);
+                if (catIdx !== -1) {
+                    localCategories.value[catIdx].name = data.name;
+                    localCategories.value[catIdx].icon = data.icon;
+                }
             } else {
                 localBudgets.value.push(data);
+                // Jika bikin budget baru sekaligus kategori baru yg belum ada
+                if (!localCategories.value.find(c => c.slug === data.category)) {
+                    localCategories.value.push({ 
+                        id: 'temp_' + Date.now(), 
+                        slug: data.category, 
+                        name: data.name, 
+                        icon: data.icon, 
+                        type: 'expense' 
+                    });
+                }
             }
         },
         onError: (id, isEditing) => {
             if (!isEditing) localBudgets.value = localBudgets.value.filter(b => b.id !== id);
-            showBudgetModal.value = true;
+            showBudgetModal.value = true; // Buka lagi kalau server error
         }
     });
 };
 
-const triggerDeleteBudget = (id) => {
-    deleteBudget(id, {
-        onOptimistic: (targetId) => { localBudgets.value = localBudgets.value.filter(b => b.id !== targetId); }
-    });
-};
-
-// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK KATEGORI
+// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK KATEGORI (Income Source dll)
 const submitNewCategory = () => {
     showCategoryModal.value = false; // Instan Tutup
     submitCategory({
         onOptimistic: (data, isEditing) => {
             if (isEditing) {
                 const idx = localCategories.value.findIndex(c => c.id === data.id);
-                if (idx !== -1) Object.assign(localCategories.value[idx], data);
+                if (idx !== -1) {
+                    // 🔥 FIX: Hanya update Nama dan Icon saja!
+                    // Jangan ubah slug-nya secara optimis, biar relasi history transaksi gak kedip/hilang
+                    localCategories.value[idx].name = data.name;
+                    localCategories.value[idx].icon = data.icon;
+                }
             } else {
                 localCategories.value.push(data);
             }
@@ -164,6 +197,14 @@ const submitNewCategory = () => {
         }
     });
 };
+
+const triggerDeleteBudget = (id) => {
+    deleteBudget(id, {
+        onOptimistic: (targetId) => { localBudgets.value = localBudgets.value.filter(b => b.id !== targetId); }
+    });
+};
+
+
 
 const triggerDeleteCategory = (cat) => {
     deleteCategory(cat, {
@@ -363,18 +404,17 @@ const switchToSingle = () => {
                 @switch-to-batch="switchToBatch"
             />
 
-            <FinanceBatchModal 
-                :show="isBatchModalOpen"
-                :form="batchForm"
-                :categories="categories"
-                :budgets="localBudgets"
-                :conflictError="globalConflictError"
-                :close="closeBatchModal"
-                :submit="submitBatch"
-                :addRow="addBatchRow"
-                :removeRow="removeBatchRow"
-                :switchToSingle="switchToSingle"
-            />
+           <FinanceBatchModal 
+    :show="isBatchModalOpen"
+    :form="batchForm"
+    :categories="categories"
+    :budgets="localBudgets"
+    :conflictError="globalConflictError"
+    :close="closeBatchModal"
+    :submit="triggerSubmitBatch" :addRow="addBatchRow"
+    :removeRow="removeBatchRow"
+    :switchToSingle="switchToSingle"
+/>
 
             <BudgetModal 
                 :show="showBudgetModal" 

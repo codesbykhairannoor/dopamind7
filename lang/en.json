@@ -1460,6 +1460,9 @@
     "journal_confirm_delete": "Delete Journal?",
     "journal_delete_warn": "This data will be lost forever.",
 
+    "status_deleted": "Successfully Deleted!",
+    "status_image_saved": "Image Saved!",
+    "status_image_deleted": "Image Deleted!",
 
 
 
@@ -1508,6 +1511,13 @@
     "calendar_today": "Today",
     "calendar_open": "Open",
     "calendar_more_events": "more events",
+    "calendar_focus": "Focus",
+  "calendar_events": "Events",
+  "calendar_planner": "Planner",
+  "calendar_finance": "Finance",
+  "calendar_journal_short": "Journal",
+  "calendar_habits_short": "Habit",
+  "calendar_tasks_short": "Tasks",
     
  
 

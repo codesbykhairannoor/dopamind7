@@ -5,6 +5,7 @@ import { trans } from 'laravel-vue-i18n';
 
 export function useJournalForm(journal, date) {
     const isSaving = ref(false);
+    const currentImageUrl = ref(journal?.image_url || null); 
     let saveTimeout = null;
 
     const t = (key, fallback) => {
@@ -36,20 +37,13 @@ export function useJournalForm(journal, date) {
     const silentSave = (isManual = false) => {
         const plainText = form.content.replace(/<[^>]*>?/gm, '').trim();
         if (!form.id && !form.title && plainText === '' && !form.mood) return;
-
-        // 🔥 KUNCI PENCEGAH DOUBLE CARD: 
-        // Jika belum punya ID dan Inertia masih memproses request sebelumnya, BATALKAN POST ini.
-        // Nanti triggerAutoSave akan otomatis mencoba lagi.
         if (!form.id && form.processing) return;
 
         isSaving.value = true;
 
         if (form.id) {
-            // PATCH (Update)
             form.patch(route('journal.update', form.id), {
-                preserveScroll: true,
-                preserveState: true,
-                progress: false,
+                preserveScroll: true, preserveState: true, progress: false,
                 onSuccess: () => {
                     isSaving.value = false;
                     if (isManual) fireToast('success', t('status_saved', 'Berhasil Disimpan!'));
@@ -57,17 +51,11 @@ export function useJournalForm(journal, date) {
                 onError: () => { isSaving.value = false; }
             });
         } else {
-            // POST (Create)
             form.post(route('journal.store'), {
-                preserveScroll: true,
-                preserveState: true, // preserveState mencegah Editor mereset ketikan kamu
-                progress: false,
+                preserveScroll: true, preserveState: true, progress: false,
                 onSuccess: (page) => {
                     isSaving.value = false;
-                    // Ambil ID dari prop journal yang dikirim redirect()
-                    if (page.props.journal && page.props.journal.id) {
-                        form.id = page.props.journal.id;
-                    }
+                    if (page.props.journal && page.props.journal.id) form.id = page.props.journal.id;
                     if (isManual) fireToast('success', t('status_saved', 'Berhasil Disimpan!'));
                 },
                 onError: () => { isSaving.value = false; }
@@ -78,14 +66,9 @@ export function useJournalForm(journal, date) {
     const triggerAutoSave = () => {
         isSaving.value = true;
         if (saveTimeout) clearTimeout(saveTimeout);
-        
         saveTimeout = setTimeout(() => {
-            // Kalau masih loading bikin jurnal pertama, TUNDA requestnya lalu coba lagi 1 detik ke depan
-            if (!form.id && form.processing) {
-                triggerAutoSave();
-            } else {
-                silentSave(false);
-            }
+            if (!form.id && form.processing) triggerAutoSave();
+            else silentSave(false);
         }, 1000);
     };
 
@@ -114,6 +97,13 @@ export function useJournalForm(journal, date) {
     const handleImageUpload = async (event) => {
         const file = event.target.files[0];
         if (!file) return;
+        
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            currentImageUrl.value = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        
         isSaving.value = true;
         const compressedFile = await compressImage(file);
         const imageForm = useForm({ id: form.id, date: date, image: compressedFile });
@@ -123,59 +113,68 @@ export function useJournalForm(journal, date) {
             onSuccess: (page) => {
                 isSaving.value = false;
                 if (!form.id && page.props.journal) form.id = page.props.journal.id;
-                fireToast('success', 'Gambar Tersimpan!');
+                if (page.props.journal?.image_url) currentImageUrl.value = page.props.journal.image_url;
+                fireToast('success', t('status_image_saved', 'Gambar Tersimpan!'));
             },
-            onError: () => { isSaving.value = false; }
+            onError: () => { isSaving.value = false; currentImageUrl.value = null; }
         });
     };
 
     const removeImage = () => {
         if (!form.id) return;
+        
+        currentImageUrl.value = null; 
         isSaving.value = true;
+        
         router.delete(route('journal.deleteImage', form.id), {
             preserveScroll: true, preserveState: true, progress: false,
-            onSuccess: () => { isSaving.value = false; }
+            onSuccess: () => { 
+                isSaving.value = false; 
+                fireToast('success', t('status_image_deleted', 'Gambar Dihapus!')); 
+            }
         });
     };
 
-  const deleteFullJournal = () => {
-    if (!form.id) { 
-        router.get(route('journal.index')); 
-        return; 
-    }
-
-    Swal.fire({
-        title: t('journal_confirm_delete', 'Hapus Jurnal?'),
-        text: t('journal_delete_warn', 'Data ini akan hilang selamanya.'),
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: t('btn_yes_delete', 'Ya, Hapus'),
-        cancelButtonText: t('btn_cancel', 'Batal'),
-        customClass: { 
-            confirmButton: 'bg-rose-500 text-white font-bold py-3 px-6 rounded-xl mx-2 shadow-lg', 
-            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3 px-6 rounded-xl mx-2' 
-        }, 
-        buttonsStyling: false
-    }).then((res) => {
-        if (res.isConfirmed) {
-            router.delete(route('journal.destroy', form.id), { 
-                progress: false,
-                onSuccess: () => fireToast('success', t('success_deleted', 'Berhasil Dihapus!'))
-            });
+    const deleteFullJournal = () => {
+        if (!form.id) { 
+            router.get(route('journal.index')); 
+            return; 
         }
-    });
-};
+
+        Swal.fire({
+            title: t('journal_confirm_delete', 'Hapus Jurnal?'),
+            text: t('journal_delete_warn', 'Data ini akan hilang selamanya.'),
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: t('btn_yes_delete', 'Ya, Hapus'),
+            cancelButtonText: t('btn_cancel', 'Batal'),
+            customClass: { 
+                confirmButton: 'bg-rose-500 text-white font-bold py-3 px-6 rounded-xl mx-2 shadow-lg', 
+                cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3 px-6 rounded-xl mx-2' 
+            }, 
+            buttonsStyling: false,
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                return new Promise((resolve) => {
+                    router.delete(route('journal.destroy', form.id), { 
+                        progress: false,
+                        onSuccess: () => {
+                            fireToast('success', t('status_deleted', 'Berhasil Dihapus!'));
+                            resolve();
+                        }
+                    });
+                });
+            }
+        });
+    };
 
     watch(() => [form.title, form.content, form.mood], (newVal, oldVal) => {
         if (oldVal[0] === undefined && !newVal[0]) return;
-        
-        // Abaikan auto-save kalau editor cuman ngerender <p></p> kosong tanpa teks real
         const oldText = oldVal[1] ? oldVal[1].replace(/<[^>]*>?/gm, '').trim() : '';
         const newText = newVal[1] ? newVal[1].replace(/<[^>]*>?/gm, '').trim() : '';
         if (oldVal[0] === newVal[0] && oldVal[2] === newVal[2] && oldText === newText) return;
-        
         triggerAutoSave();
     }, { deep: true });
 
-    return { form, isSaving, handleImageUpload, removeImage, deleteFullJournal, silentSave, t };
+    return { form, isSaving, currentImageUrl, handleImageUpload, removeImage, deleteFullJournal, silentSave, t };
 }
