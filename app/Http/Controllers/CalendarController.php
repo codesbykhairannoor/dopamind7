@@ -60,11 +60,10 @@ class CalendarController extends Controller
             ->groupBy('date')
             ->pluck('total_expense', 'date'); 
 
-        // 4. Ambil Rangkuman Tugas (Planner)
-        // 4. Ambil Rangkuman Tugas (Planner)
+        // 4. Ambil Rangkuman Tugas (Planner) - 🔥 FIXED UNTUK POSTGRESQL (RAILWAY)
         $planners = PlannerTask::where('user_id', $user->id)
             ->whereBetween('date', [$startDate, $endDate])
-            ->selectRaw('date, COUNT(*) as total_tasks, SUM(CASE WHEN is_completed = 1 OR is_completed = true THEN 1 ELSE 0 END) as completed_tasks')
+            ->selectRaw("date, COUNT(*) as total_tasks, SUM(CASE WHEN is_completed = true THEN 1 ELSE 0 END) as completed_tasks")
             ->groupBy('date')
             ->get()
             ->mapWithKeys(function ($item) {
@@ -76,7 +75,7 @@ class CalendarController extends Controller
                 ];
             });
 
-        // 5. Ambil Rangkuman Habit Selesai
+        // 5. Ambil Rangkuman Habit Selesai - 🔥 FIXED DENGAN toArray()
         $habits = HabitLog::selectRaw('date, COUNT(*) as completed_habits')
             ->whereIn('habit_id', function ($query) use ($user) {
                 $query->select('id')->from('habits')->where('user_id', $user->id);
@@ -84,7 +83,8 @@ class CalendarController extends Controller
             ->whereBetween('date', [$startDate, $endDate])
             ->where('status', 'completed')
             ->groupBy('date')
-            ->pluck('completed_habits', 'date');
+            ->pluck('completed_habits', 'date')
+            ->toArray();
 
         // ==========================================
         // Return Data ke Vue via Inertia
@@ -92,9 +92,7 @@ class CalendarController extends Controller
         return Inertia::render('Calendar/Index', [
             'currentMonth' => $activeDate->format('Y-m'),
             'data' => [
-                // 🔥 TAMBAHKAN ->resolve() DI SINI
                 'events' => CalendarEventResource::collection($events)->resolve(),
-                
                 'journals' => $journals,
                 'finances' => $finances,
                 'planners' => $planners,
