@@ -61,9 +61,10 @@ class CalendarController extends Controller
             ->pluck('total_expense', 'date'); 
 
         // 4. Ambil Rangkuman Tugas (Planner)
+        // 4. Ambil Rangkuman Tugas (Planner)
         $planners = PlannerTask::where('user_id', $user->id)
             ->whereBetween('date', [$startDate, $endDate])
-            ->selectRaw('date, COUNT(*) as total_tasks, SUM(is_completed) as completed_tasks')
+            ->selectRaw('date, COUNT(*) as total_tasks, SUM(CASE WHEN is_completed = 1 OR is_completed = true THEN 1 ELSE 0 END) as completed_tasks')
             ->groupBy('date')
             ->get()
             ->mapWithKeys(function ($item) {
