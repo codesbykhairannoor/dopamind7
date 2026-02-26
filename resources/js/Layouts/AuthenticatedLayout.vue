@@ -11,10 +11,9 @@ const currentLang = computed(() => page.props.locale || 'id');
 const showingNavigationDropdown = ref(false);
 const showLogoutModal = ref(false);
 
-// 🔥 STATE SIDEBAR DESKTOP COLLAPSE (Tersimpan di LocalStorage)
+// 🔥 STATE SIDEBAR DESKTOP COLLAPSE
 const isSidebarCollapsed = ref(false);
 
-// Saat komponen dimuat, cek apakah user sebelumnya menutup sidebar
 onMounted(() => {
     const savedState = localStorage.getItem('sidebar_collapsed');
     if (savedState !== null) {
@@ -22,7 +21,6 @@ onMounted(() => {
     }
 });
 
-// Fungsi Toggle Sidebar & Simpan ke LocalStorage
 const toggleSidebar = () => {
     isSidebarCollapsed.value = !isSidebarCollapsed.value;
     localStorage.setItem('sidebar_collapsed', isSidebarCollapsed.value);
@@ -60,24 +58,22 @@ watch(() => page.url, () => {
                 <svg v-if="!isSidebarCollapsed" class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>
                 <svg v-else class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
             </button>
-<div class="h-24 flex items-center px-6" :class="isSidebarCollapsed ? 'justify-center' : 'justify-start px-8'">
+            
+            <div class="h-24 flex items-center px-6" :class="isSidebarCollapsed ? 'justify-center' : 'justify-start px-8'">
                 <Link :href="route('dashboard')" class="group flex items-center gap-3">
-                    
                     <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200 shrink-0">
                         <img src="/favicon.svg?v=2" alt="Logo" class="w-6 h-6 brightness-0 invert" />
                     </div>
-                    
                     <Transition name="fade">
                         <span v-if="!isSidebarCollapsed" class="text-xl font-black tracking-tighter text-slate-900 whitespace-nowrap">
                             OneForMind<span class="text-indigo-600">.</span>
                         </span>
                     </Transition>
-
                 </Link>
             </div>
 
             <nav class="flex-1 px-4 space-y-2 overflow-y-auto py-6 custom-scrollbar" :class="isSidebarCollapsed ? 'px-4' : 'px-6'">
-                <Link :href="route('dashboard')" prefetch="hover"
+                <Link :href="route('dashboard')"
                     class="flex items-center rounded-2xl transition-all duration-300 group"
                     :class="[
                         route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -89,7 +85,7 @@ watch(() => page.url, () => {
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('nav_dashboard') }}</span>
                 </Link>
 
-                <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="hover"
+                <Link v-if="showModule('habit')" :href="route('habits.index')"
                     class="flex items-center rounded-2xl transition-all duration-300 group"
                     :class="[
                         route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -101,7 +97,7 @@ watch(() => page.url, () => {
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('habit_page_title') }}</span>
                 </Link>
 
-                <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="hover"
+                <Link v-if="showModule('planner')" :href="route('planner.index')"
                     class="flex items-center rounded-2xl transition-all duration-300 group"
                     :class="[
                         route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -113,7 +109,7 @@ watch(() => page.url, () => {
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Daily Planner</span>
                 </Link>
 
-                <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="hover"
+                <Link v-if="showModule('finance')" :href="route('finance.index')"
                     class="flex items-center rounded-2xl transition-all duration-300 group"
                     :class="[
                         route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -125,7 +121,7 @@ watch(() => page.url, () => {
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Finance</span>
                 </Link>
 
-                <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="hover"
+                <Link v-if="showModule('journal')" :href="route('journal.index')"
                     class="flex items-center rounded-2xl transition-all duration-300 group"
                     :class="[
                         route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -137,7 +133,7 @@ watch(() => page.url, () => {
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Journal</span>
                 </Link>
 
-                 <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="hover"
+                 <Link v-if="showModule('calendar')" :href="route('calendar.index')"
                     class="flex items-center rounded-2xl transition-all duration-300 group"
                     :class="[
                         route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -151,8 +147,7 @@ watch(() => page.url, () => {
             </nav>
 
             <div class="p-4 border-t border-slate-100 bg-slate-50/50 space-y-4" :class="isSidebarCollapsed ? 'px-3' : 'px-6'">
-                
-                <Link :href="route('settings.index')" prefetch="hover"
+                <Link :href="route('settings.index')"
                     class="flex items-center rounded-xl text-sm font-bold text-slate-500 hover:text-indigo-600 hover:bg-white transition border border-transparent hover:border-slate-200 hover:shadow-sm"
                     :class="isSidebarCollapsed ? 'p-2 justify-center' : 'px-4 py-2 gap-3'"
                     :title="isSidebarCollapsed ? $t('nav_settings') : ''"
@@ -189,17 +184,14 @@ watch(() => page.url, () => {
             
             <div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">
                   <Link :href="route('dashboard')" class="group flex items-center gap-3">
-                    
                     <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200 shrink-0">
                         <img src="/favicon.svg?v=2" alt="Logo" class="w-6 h-6 brightness-0 invert" />
                     </div>
-                    
                     <Transition name="fade">
                         <span v-if="!isSidebarCollapsed" class="text-xl font-black tracking-tighter text-slate-900 whitespace-nowrap">
                             OneForMind<span class="text-indigo-600">.</span>
                         </span>
                     </Transition>
-
                 </Link>
                 <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-slate-500 hover:text-indigo-600 transition p-2 rounded-lg hover:bg-slate-50">
                     <span v-if="!showingNavigationDropdown" class="text-2xl">☰</span>
@@ -217,49 +209,49 @@ watch(() => page.url, () => {
             >
                 <div v-show="showingNavigationDropdown" class="md:hidden fixed inset-0 top-16 z-40 bg-white/95 backdrop-blur-lg overflow-y-auto">
                     <div class="p-4 space-y-2 pb-24">
-                        <Link :href="route('dashboard')" prefetch="hover"
+                        <Link :href="route('dashboard')"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>🏠</span> {{ $t('nav_dashboard') }}
                         </Link>
 
-                        <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="hover"
+                        <Link v-if="showModule('habit')" :href="route('habits.index')"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>🌱</span> {{ $t('habit_page_title') }}
                         </Link>
 
-                        <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="hover"
+                        <Link v-if="showModule('planner')" :href="route('planner.index')"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>📅</span> Daily Planner
                         </Link>
 
-                        <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="hover"
+                        <Link v-if="showModule('finance')" :href="route('finance.index')"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>💸</span> Finance Management
                         </Link>
 
-                        <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="hover"
+                        <Link v-if="showModule('journal')" :href="route('journal.index')"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>📓</span> Journal
                         </Link>
 
-                        <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="hover"
+                        <Link v-if="showModule('calendar')" :href="route('calendar.index')"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
                             <span>📅</span> Calendar
                         </Link>
 
-                        <Link :href="route('settings.index')" prefetch="hover"
+                        <Link :href="route('settings.index')"
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('settings.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
@@ -268,8 +260,8 @@ watch(() => page.url, () => {
 
                         <div class="border-t border-slate-100 my-4 pt-4">
                             <div class="flex gap-2 px-2 mb-6">
-                                <button @click="switchLang('id')" prefetch="hover" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDONESIA</button>
-                                <button @click="switchLang('en')" prefetch="hover" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
+                                <button @click="switchLang('id')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'id' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇮🇩 INDONESIA</button>
+                                <button @click="switchLang('en')" class="flex-1 py-3 rounded-xl text-sm font-bold border transition" :class="currentLang === 'en' ? 'bg-indigo-50 border-indigo-200 text-indigo-700' : 'border-slate-100 text-slate-400'">🇬🇧 ENGLISH</button>
                             </div>
 
                             <button @click="showLogoutModal = true; showingNavigationDropdown = false" type="button" class="w-full text-center py-4 text-rose-500 font-bold bg-rose-50 rounded-2xl hover:bg-rose-100 transition flex items-center justify-center gap-2">
@@ -321,7 +313,6 @@ watch(() => page.url, () => {
 .custom-scrollbar::-webkit-scrollbar { width: 4px; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
 
-/* Menghilangkan teks tapi menjaga ikon tetap di tengah dengan halus */
 .fade-enter-active, .fade-leave-active { transition: opacity 0.2s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>

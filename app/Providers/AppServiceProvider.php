@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // 🔥 Hanya daftarkan Telescope di environment local
+        // Hanya daftarkan Telescope di environment local
         if ($this->app->environment('local') && class_exists(\App\Providers\TelescopeServiceProvider::class)) {
             $this->app->register(\App\Providers\TelescopeServiceProvider::class);
         }
@@ -22,19 +22,19 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+   public function boot(): void
     {
         /**
          * Mencegah lazy loading, silent assignment, dan akses atribut yang tidak ada.
-         * Kita matikan fitur ini khusus di environment 'production'.
          */
         Model::shouldBeStrict(! $this->app->environment('production'));
 
         /**
-         * 🔥 THE REAL FIX: Paksa HTTPS di Production.
-         * Supaya redirect ganti bahasa nggak bikin web lo jadi teks JSON.
+         * Paksa HTTPS HANYA jika bukan di lokal.
+         * Jadi di production (OneForMind.com) tetap dipaksa HTTPS,
+         * tapi di komputermu (127.0.0.1) tetap bisa pakai HTTP biasa.
          */
-        if ($this->app->environment('production')) {
+        if (! $this->app->environment('local')) {
             URL::forceScheme('https');
         }
     }
