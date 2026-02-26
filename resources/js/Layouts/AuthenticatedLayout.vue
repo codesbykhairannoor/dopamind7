@@ -105,7 +105,7 @@ watch(() => page.url, () => {
                     ]"
                     :title="isSidebarCollapsed ? 'Daily Planner' : ''"
                 >
-                    <span class="text-xl">📅</span>
+                    <span class="text-xl">📋</span>
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Daily Planner</span>
                 </Link>
 
@@ -227,7 +227,7 @@ watch(() => page.url, () => {
                             class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" 
                             :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'"
                             @click="showingNavigationDropdown = false">
-                            <span>📅</span> Daily Planner
+                            <span>📋</span> Daily Planner
                         </Link>
 
                         <Link v-if="showModule('finance')" :href="route('finance.index')"
