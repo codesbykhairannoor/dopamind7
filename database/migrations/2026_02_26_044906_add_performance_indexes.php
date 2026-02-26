@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -10,23 +9,20 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-    Schema::table('habits', function (Blueprint $table) {
-        // Biar nyari habit berdasarkan user & bulan jadi secepat kilat
-        $table->index(['user_id', 'period']); 
-    });
-
-    Schema::table('habit_logs', function (Blueprint $table) {
-        // Biar ngitung status 'completed' ga berat
-        $table->index(['habit_id', 'status']); 
-    });
-}
+    {
+        // Menggunakan Raw SQL dengan IF NOT EXISTS agar PostgreSQL tidak error
+        // jika indeks ternyata sudah terlanjur terbuat sebelumnya.
+        
+        DB::statement('CREATE INDEX IF NOT EXISTS habits_user_id_period_index ON habits (user_id, period)');
+        DB::statement('CREATE INDEX IF NOT EXISTS habit_logs_habit_id_status_index ON habit_logs (habit_id, status)');
+    }
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        //
+        DB::statement('DROP INDEX IF EXISTS habits_user_id_period_index');
+        DB::statement('DROP INDEX IF EXISTS habit_logs_habit_id_status_index');
     }
 };
