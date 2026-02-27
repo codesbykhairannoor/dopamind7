@@ -14,7 +14,6 @@ defineOptions({
     layout: AuthenticatedLayout
 });
 
-
 const props = defineProps({
     habits: Object,
     currentMonth: String,
@@ -24,16 +23,26 @@ const props = defineProps({
     savedMood: String
 });
 
-// Panggil Logic Composable
+// 🔥 FIX UTAMA: Ekstrak SEMUA state dan action Batch dari useHabits
 const {
-    user, localHabits, showCreateModal, isEditing, todayDate, greetingKey,
-    iconList, colorPalette, form, monthDates, todayProgress,
-    totalCompletions, overallPercentage, changeMonth, getStatus,
-    toggleStatus, openCreateModal, editHabit, closeModal, submitHabit,
+    // Data Utama
+    user, localHabits, todayDate, greetingKey, monthDates, todayProgress,
+    totalCompletions, overallPercentage, changeMonth, getStatus, toggleStatus, handleGridNav,
+    moodOptions, showMoodDropdown, currentMoodData, selectMood,
+    
+    // Modal Single Habit
+    iconList, colorPalette, form,
+    showCreateModal, isEditing, openCreateModal, editHabit, closeModal, submitHabit,
+    
+    // Modal Delete & Copy
     showDeleteModal, habitToDelete, confirmDelete, executeDelete, deleteFromEdit,
-    showCopyModal, openCopyModal, executeCopy, handleGridNav,
-    moodOptions, showMoodDropdown, currentMoodData, selectMood
+    showCopyModal, openCopyModal, executeCopy,
+    
+    // 🔥 Modal Batch Habit (INI YANG KEMARIN KELUPAAN DIAMBIL)
+    showBatchModal, batchForm, openBatchModal, closeBatchModal, 
+    addBatchRow, removeBatchRow, submitBatchHabit, switchToBatch, switchToSingle
 } = useHabits(props);
+
 </script>
 
 <template>
@@ -89,6 +98,15 @@ const {
                 :executeDelete="executeDelete"
                 :executeCopy="executeCopy"
                 :deleteFromEdit="deleteFromEdit"
+                
+                :showBatchModal="showBatchModal"
+                :batchForm="batchForm"
+                :closeBatchModal="closeBatchModal"
+                :submitBatchHabit="submitBatchHabit"
+                :addBatchRow="addBatchRow"
+                :removeBatchRow="removeBatchRow"
+                :switchToBatch="switchToBatch"
+                :switchToSingle="switchToSingle"
             />
         </div>
     </div>

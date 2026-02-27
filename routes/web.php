@@ -277,6 +277,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     Route::middleware(['module:habit'])->prefix('habits')->name('habits.')->group(function () {
         Route::get('/', [HabitController::class, 'index'])->name('index');
         Route::post('/', [HabitController::class, 'store'])->name('store');
+        Route::post('/batch', [HabitController::class, 'batchStore'])->name('batchStore');
         Route::post('/copy', [HabitController::class, 'copyFromPrevious'])->name('copy');
         Route::post('/mood', [HabitController::class, 'updateMood'])->name('mood');
         Route::patch('/{habit}', [HabitController::class, 'update'])->name('update');

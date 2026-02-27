@@ -20,22 +20,15 @@ class HabitController extends Controller
 {
     use AuthorizesRequests;
 
-    /**
-     * Tampilkan Halaman Utama & Data API
-     */
     public function index(Request $request)
     {
         $user = Auth::user();
         $monthQuery = $request->input('month', Carbon::now()->format('Y-m'));
         
-        // 🔥 PERBAIKAN 1: Cegah BUG Carbon Overflow di akhir bulan (tanggal 29, 30, 31)
-        // Kita paksa baca dari tanggal 1 agar kalkulasi bulan tidak pernah meleset
         $dateObj = Carbon::parse($monthQuery . '-01');
-
         $startOfMonth = $dateObj->copy()->startOfMonth()->format('Y-m-d');
         $endOfMonth = $dateObj->copy()->endOfMonth()->format('Y-m-d');
 
-        // --- QUERY DATABASE ---
         $habits = Habit::where('user_id', $user->id)
             ->where('period', $monthQuery)
             ->with(['logs' => fn ($q) => $q->whereBetween('date', [$startOfMonth, $endOfMonth])])
@@ -44,12 +37,10 @@ class HabitController extends Controller
 
         $dataResource = HabitResource::collection($habits);
 
-        // 📱 JIKA MOBILE APP (API)
         if ($request->wantsJson()) {
             return $dataResource;
         }
 
-        // 💻 JIKA WEB (INERTIA)
         $currentMood = Mood::where('user_id', $user->id)->where('period', $monthQuery)->first();
         $prevMonth = $dateObj->copy()->subMonth()->format('Y-m');
         $hasPrevHabits = Habit::where('user_id', $user->id)->where('period', $prevMonth)->exists();
@@ -64,9 +55,6 @@ class HabitController extends Controller
         ]);
     }
 
-    /**
-     * Simpan Habit Baru
-     */
     public function store(StoreHabitRequest $request)
     {
         $habit = Habit::create(array_merge(
@@ -84,13 +72,9 @@ class HabitController extends Controller
         return back();
     }
 
-    /**
-     * Update Habit (Edit Nama/Target)
-     */
     public function update(UpdateHabitRequest $request, Habit $habit)
     {
         $this->authorize('update', $habit);
-
         $habit->update($request->validated());
 
         if ($request->wantsJson()) {
@@ -103,13 +87,9 @@ class HabitController extends Controller
         return back();
     }
 
-    /**
-     * Centang / Log Harian
-     */
     public function storeLog(LogHabitRequest $request, Habit $habit)
     {
         $this->authorize('log', $habit);
-
         $data = $request->validated();
 
         if ($data['status'] === 'uncheck') {
@@ -130,9 +110,6 @@ class HabitController extends Controller
         return back();
     }
 
-    /**
-     * Update Mood User
-     */
     public function updateMood(Request $request)
     {
         $validated = $request->validate([
@@ -152,9 +129,6 @@ class HabitController extends Controller
         return back();
     }
 
-    /**
-     * Copy Habit dari Bulan Lalu
-     */
     public function copyFromPrevious(Request $request)
     {
         $request->validate([
@@ -162,7 +136,6 @@ class HabitController extends Controller
             'prev_period' => 'required|date_format:Y-m',
         ]);
 
-        // 🔥 PERBAIKAN 2: Mencegah user mem-paste data berulang-ulang (Jebakan Duplikasi)
         $alreadyHasHabits = Habit::where('user_id', Auth::id())
             ->where('period', $request->current_period)
             ->exists();
@@ -171,7 +144,6 @@ class HabitController extends Controller
             if ($request->wantsJson()) {
                 return response()->json(['message' => 'Habit bulan ini sudah ada!'], 400);
             }
-            // Kembalikan error agar frontend Inertia bisa memunculkan toast notification
             return back()->with('error', 'Habit untuk bulan ini sudah ada! Tidak bisa copy lagi.');
         }
 
@@ -180,7 +152,8 @@ class HabitController extends Controller
             ->get();
 
         $newHabits = [];
-        $now = Carbon::now();
+        // 🔥 FIX 1: Konversi Object Carbon jadi String SQL
+        $now = Carbon::now()->toDateTimeString(); 
 
         foreach ($oldHabits as $old) {
             $newHabits[] = [
@@ -196,11 +169,10 @@ class HabitController extends Controller
         }
 
         if (!empty($newHabits)) {
-            Habit::insert($newHabits); // Tetap pertahankan Bulk Insert ini, sangat kencang!
+            Habit::insert($newHabits);
         }
 
         $count = count($newHabits);
-
         if ($request->wantsJson()) {
             return response()->json(['message' => "$count habits copied successfully"]);
         }
@@ -208,13 +180,9 @@ class HabitController extends Controller
         return back()->with('success', "$count habits berhasil disalin!");
     }
 
-    /**
-     * Hapus Habit
-     */
     public function destroy(Habit $habit)
     {
         $this->authorize('delete', $habit);
-        
         $habit->delete();
 
         if (request()->wantsJson()) {
@@ -222,5 +190,44 @@ class HabitController extends Controller
         }
 
         return back();
+    }
+
+    public function batchStore(Request $request)
+    {
+        $request->validate([
+            'period' => 'required|date_format:Y-m',
+            'habits' => 'required|array|min:1',
+            'habits.*.name' => 'required|string|max:255',
+            'habits.*.icon' => 'required|string',
+            'habits.*.color' => 'required|string',
+            'habits.*.monthly_target' => 'required|integer|min:1|max:31',
+        ]);
+
+        // 🔥 FIX 2: Konversi Object Carbon jadi String SQL
+        $now = now()->toDateTimeString(); 
+        $habitsData = [];
+
+        foreach ($request->habits as $habit) {
+            $habitsData[] = [
+                'user_id' => Auth::id(),
+                'period' => $request->period,
+                'name' => $habit['name'],
+                'icon' => $habit['icon'],
+                'color' => $habit['color'],
+                'monthly_target' => $habit['monthly_target'],
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
+        }
+
+        if (!empty($habitsData)) {
+            Habit::insert($habitsData);
+        }
+
+        if ($request->wantsJson()) {
+            return response()->json(['message' => 'Batch habits saved successfully.']);
+        }
+
+        return back()->with('success', 'Habit berhasil ditambahkan secara massal!');
     }
 }

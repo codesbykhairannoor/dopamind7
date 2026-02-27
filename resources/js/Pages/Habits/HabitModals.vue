@@ -1,72 +1,68 @@
 <script setup>
+import HabitBatchModal from './HabitBatchModal.vue';
+
 defineProps({
-    // States
+    // States Single
     showDeleteModal: Boolean,
     showCopyModal: Boolean,
     showCreateModal: Boolean,
     isEditing: Boolean,
     
+    // States Batch 🔥
+    showBatchModal: Boolean,
+    batchForm: Object,
+
     // Data & Forms
     form: Object,
     habitToDelete: Object,
     iconList: Array,
     colorPalette: Array,
     
-    // Actions
-    closeModal: Function, // Untuk menutup semua modal
+    // Actions Single
+    closeModal: Function, 
     submitHabit: Function,
     executeDelete: Function,
     executeCopy: Function,
     deleteFromEdit: Function,
     
-    // Helper buat nutup spesifik modal (optional, bisa pake closeModal semua)
-    setShowDeleteModal: Function,
-    setShowCopyModal: Function,
-    setShowCreateModal: Function,
+    // Actions Batch 🔥
+    closeBatchModal: Function,
+    submitBatchHabit: Function,
+    addBatchRow: Function,
+    removeBatchRow: Function,
+    switchToBatch: Function,
+    switchToSingle: Function,
 });
 </script>
 
 <template>
     <Teleport to="body">
+    
     <div v-if="showDeleteModal" class="fixed inset-0 z-[60] flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="closeModal"></div>
-        
         <div class="bg-white rounded-[2rem] p-6 md:p-8 w-full max-w-sm relative z-10 shadow-2xl animate-in zoom-in-95 text-center overflow-hidden">
-            <div class="w-16 h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-sm">
-                🗑️
-            </div>
+            <div class="w-16 h-16 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-sm">🗑️</div>
             <h3 class="text-xl font-black text-slate-800 mb-2">{{ $t('habit_delete_title') }}</h3>
             <p class="text-sm text-slate-500 mb-6 leading-relaxed">
                 {{ $t('habit_delete_desc') }} <br>
                 <span class="font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded">{{ habitToDelete?.name }}</span>?
             </p>
             <div class="flex gap-3">
-                <button @click="closeModal" class="flex-1 py-3 rounded-xl font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
-                    {{ $t('habit_btn_cancel') }}
-                </button>
-                <button @click="executeDelete" class="flex-1 py-3 rounded-xl font-bold text-white bg-rose-500 hover:bg-rose-600 shadow-lg shadow-rose-200 transition transform hover:-translate-y-0.5">
-                    {{ $t('habit_btn_delete_confirm') }}
-                </button>
+                <button @click="closeModal" class="flex-1 py-3 rounded-xl font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition">{{ $t('habit_btn_cancel') }}</button>
+                <button @click="executeDelete" class="flex-1 py-3 rounded-xl font-bold text-white bg-rose-500 hover:bg-rose-600 shadow-lg shadow-rose-200 transition transform hover:-translate-y-0.5">{{ $t('habit_btn_delete_confirm') }}</button>
             </div>
         </div>
     </div>
 
     <div v-if="showCopyModal" class="fixed inset-0 z-[60] flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="closeModal"></div>
-        
         <div class="bg-white rounded-[2rem] p-6 md:p-8 w-full max-w-sm relative z-10 shadow-2xl animate-in zoom-in-95 text-center overflow-hidden border border-slate-100">
-            <div class="w-16 h-16 bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-sm">
-                📂
-            </div>
+            <div class="w-16 h-16 bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-sm">📂</div>
             <h3 class="text-xl font-black text-slate-800 mb-2">{{ $t('habit_copy_title') }}</h3>
             <p class="text-sm text-slate-500 mb-8 leading-relaxed">{{ $t('habit_copy_desc') }}</p>
             <div class="flex gap-3">
-                <button @click="closeModal" class="flex-1 py-3.5 rounded-xl font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition">
-                    {{ $t('habit_btn_cancel') }}
-                </button>
-                <button @click="executeCopy" class="flex-1 py-3.5 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5">
-                    {{ $t('habit_btn_copy_confirm') }}
-                </button>
+                <button @click="closeModal" class="flex-1 py-3.5 rounded-xl font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition">{{ $t('habit_btn_cancel') }}</button>
+                <button @click="executeCopy" class="flex-1 py-3.5 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5">{{ $t('habit_btn_copy_confirm') }}</button>
             </div>
         </div>
     </div>
@@ -76,10 +72,16 @@ defineProps({
         <div class="bg-white rounded-[2rem] p-6 md:p-8 w-full max-w-lg relative z-10 shadow-2xl animate-in zoom-in-95">
             
             <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl md:text-2xl font-black text-slate-800">
-                    {{ isEditing ? 'Edit Habit' : $t('habit_modal_title') }}
-                </h3>
-                <button @click="closeModal" class="bg-slate-100 w-8 h-8 rounded-full text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">✕</button>
+                <div>
+                    <h3 class="text-xl md:text-2xl font-black text-slate-800">
+                        {{ isEditing ? 'Edit Habit' : $t('habit_modal_title') }}
+                    </h3>
+                    <button v-if="!isEditing" @click="switchToBatch" type="button" 
+                        class="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-xl bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition flex items-center gap-1.5 active:scale-95 w-fit border border-indigo-100 mt-2">
+                        <span>⚡</span> Batch Mode
+                    </button>
+                </div>
+                <button @click="closeModal" class="bg-slate-100 w-8 h-8 rounded-full text-slate-500 hover:bg-slate-200 flex items-center justify-center transition -mt-6">✕</button>
             </div>
 
             <form @submit.prevent="submitHabit" class="space-y-5">
@@ -103,14 +105,14 @@ defineProps({
                     <div class="flex-1">
                         <label class="text-xs font-bold text-slate-400 uppercase mb-2 block">{{ $t('habit_modal_color') }}</label>
                         <div class="flex flex-wrap gap-2">
-                            <button type="button" v-for="c in colorPalette" :key="c" @click="form.color = c" class="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition hover:scale-110" :style="{ backgroundColor: c }">
+                            <button type="button" v-for="c in colorPalette" :key="c" @click="form.color = c" class="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition hover:scale-110 shadow-sm" :style="{ backgroundColor: c }">
                                 <span v-if="form.color === c" class="text-white font-bold text-xs">✓</span>
                             </button>
                         </div>
                     </div>
                     <div class="flex-1">
                         <label class="text-xs font-bold text-slate-400 uppercase mb-2 block">{{ $t('habit_modal_target') }}: {{ form.monthly_target }}</label>
-                        <input v-model="form.monthly_target" type="range" min="1" max="31" class="w-full accent-indigo-600 h-2 bg-slate-200 rounded-lg cursor-pointer">
+                        <input v-model="form.monthly_target" type="range" min="1" max="31" class="w-full accent-indigo-600 h-2 bg-slate-200 rounded-lg cursor-pointer mt-3">
                     </div>
                 </div>
 
@@ -125,5 +127,18 @@ defineProps({
             </form>
         </div>
     </div>
+
+    <HabitBatchModal 
+        :show="showBatchModal"
+        :form="batchForm"
+        :iconList="iconList"
+        :colorPalette="colorPalette"
+        :close="closeBatchModal"
+        :submit="submitBatchHabit"
+        :addRow="addBatchRow"
+        :removeRow="removeBatchRow"
+        :switchToSingle="switchToSingle"
+    />
+
     </Teleport>
 </template>

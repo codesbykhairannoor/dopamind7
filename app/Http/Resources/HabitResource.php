@@ -35,18 +35,21 @@ class HabitResource extends JsonResource
                 ? min(100, round(($completedCount / $this->monthly_target) * 100))
                 : 0),
 
-            // 🔥 SPREADSHEET SPEED LOGIC 🔥
-            // Hanya diproses jika relasi 'logs' di-load untuk menghindari error null
+         // 🔥 SPREADSHEET SPEED LOGIC 🔥
             'logs' => $this->whenLoaded('logs', function () {
                 return $this->logs->mapWithKeys(function ($log) {
-                    // Pastikan format tanggal konsisten YYYY-MM-DD
                     $dateKey = is_string($log->date) 
                         ? substr($log->date, 0, 10) 
                         : $log->date->format('Y-m-d');
                     
-                    return [$dateKey => $log->status];
+                    // AMBIL VALUE DARI ENUM (pakai ->value) atau fallback string
+                    $statusValue = $log->status instanceof \BackedEnum 
+                        ? $log->status->value 
+                        : $log->status;
+
+                    return [$dateKey => $statusValue];
                 });
-            }, (object)[]), // Jika tidak di-load, kembalikan object kosong bukan null
+            }, (object)[]),
 
             // Metadata untuk Mobile Sync
             'created_at' => $this->created_at?->toIso8601String(),
