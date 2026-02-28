@@ -20,7 +20,7 @@ const closeDatePicker = () => {
 </script>
 
 <template>
-    <div class="relative z-[60] bg-white dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 transition-all md:sticky md:top-0">
+    <div class="relative z-[60] bg-white/80 backdrop-blur-xl border-b border-slate-200 transition-all md:sticky md:top-0">
         <div class="px-4 sm:px-6 lg:px-8 py-4">
             
             <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4">

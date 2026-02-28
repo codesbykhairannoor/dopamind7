@@ -171,7 +171,7 @@ const handleQuit = (asset) => {
 
         <div class="bg-indigo-900 rounded-[2.5rem] p-1 shadow-2xl shadow-indigo-200/50 relative overflow-hidden group">
             <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-indigo-900"></div>
-            <div class="absolute -right-10 -top-10 w-40 h-40 bg-white dark:bg-slate-900/10 rounded-full blur-3xl group-hover:bg-white dark:bg-slate-900/20 transition-all duration-1000"></div>
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-1000"></div>
 
             <div class="relative z-10 p-6">
                 <div class="flex justify-between items-start mb-6">
@@ -185,7 +185,7 @@ const handleQuit = (asset) => {
                             {{ portfolioSummary.totalReturn >= 0 ? '+' : '' }}{{ formatMoney(portfolioSummary.totalReturn) }} (Total P/L)
                         </p>
                     </div>
-                    <button @click="handleAddAsset" class="w-10 h-10 rounded-2xl bg-white dark:bg-slate-900/10 hover:bg-white dark:bg-slate-900/20 backdrop-blur-md flex items-center justify-center text-xl text-white border border-white/10 transition-all active:scale-95 shadow-lg">
+                    <button @click="handleAddAsset" class="w-10 h-10 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-xl text-white border border-white/10 transition-all active:scale-95 shadow-lg">
                         ＋
                     </button>
                 </div>
@@ -195,7 +195,7 @@ const handleQuit = (asset) => {
                         <div class="flex-1 min-w-0 mr-3">
                             <div class="flex items-center gap-2 mb-1">
                                 <h5 class="text-xs font-black text-white truncate">{{ asset.name }}</h5>
-                                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-white dark:bg-slate-900/10 text-white/70">{{ formatMoney(asset.capital) }}</span>
+                                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-white/10 text-white/70">{{ formatMoney(asset.capital) }}</span>
                             </div>
                             <div class="flex items-center gap-2">
                                 <input type="number" v-model="asset.percent" class="w-10 bg-transparent border-b border-white/20 text-[10px] font-black text-center text-yellow-300 focus:outline-none focus:border-yellow-300 p-0">

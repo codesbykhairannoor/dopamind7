@@ -35,7 +35,7 @@ const switchLang = (lang) => {
     <div class="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-indigo-100 selection:text-indigo-700 relative">
         
         <nav 
-            :class="(scrolled || mobileMenuOpen) ? 'bg-white dark:bg-slate-900/90 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'bg-transparent'"
+            :class="(scrolled || mobileMenuOpen) ? 'bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'bg-transparent'"
             class="fixed top-0 w-full z-[100] transition-all duration-300"
         >
             <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative">
@@ -64,7 +64,7 @@ const switchLang = (lang) => {
                             leave-to-class="opacity-0 translate-y-2"
                         >
                             <div v-show="activeMenu === 'features'" class="absolute top-full left-0 w-[500px] pt-4 z-50">
-                                <div class="bg-white dark:bg-slate-900 border border-slate-100 shadow-2xl rounded-[2rem] overflow-hidden p-4">
+                                <div class="bg-white border border-slate-100 shadow-2xl rounded-[2rem] overflow-hidden p-4">
                                     <div class="grid grid-cols-2 gap-2 text-left">
                                         <a :href="route('features.habit')" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                             <span class="text-xl group-hover/item:scale-110 transition-transform">🌱</span>
@@ -107,7 +107,7 @@ const switchLang = (lang) => {
                             leave-to-class="opacity-0 translate-y-2"
                         >
                             <div v-show="activeMenu === 'solutions'" class="absolute top-full left-0 w-[280px] pt-4 z-50">
-                                <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 shadow-2xl rounded-[1.5rem] flex flex-col gap-1 text-left">
+                                <div class="p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem] flex flex-col gap-1 text-left">
                                     <a :href="route('solutions.student')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                         <span class="text-lg group-hover/item:scale-110 transition-transform">🎓</span>
                                         <div><h4 class="font-bold text-slate-900 text-sm">For Students</h4></div>
@@ -140,7 +140,7 @@ const switchLang = (lang) => {
                             leave-to-class="opacity-0 translate-y-2"
                         >
                             <div v-show="activeMenu === 'resources'" class="absolute top-full left-0 w-[280px] pt-4 z-50 text-left">
-                                <div class="p-3 bg-white dark:bg-slate-900 border border-slate-100 shadow-2xl rounded-[1.5rem] flex flex-col gap-1">
+                                <div class="p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem] flex flex-col gap-1">
                                     <a :href="route('resources.guide')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                         <span class="text-lg group-hover/item:scale-110 transition-transform">📖</span>
                                         <div><h4 class="font-bold text-slate-900 text-sm">User Guide</h4></div>
@@ -165,8 +165,8 @@ const switchLang = (lang) => {
 
                 <div class="hidden lg:flex items-center gap-4">
                     <div class="flex items-center bg-slate-100 rounded-full p-1 border border-slate-200 mr-2">
-                        <button @click="switchLang('id')" class="px-3 py-1 rounded-full text-[10px] font-black transition-all" :class="currentLang === 'id' ? 'bg-white dark:bg-slate-900 text-indigo-600 shadow-sm' : 'text-slate-500'">ID</button>
-                        <button @click="switchLang('en')" class="px-3 py-1 rounded-full text-[10px] font-black transition-all" :class="currentLang === 'en' ? 'bg-white dark:bg-slate-900 text-indigo-600 shadow-sm' : 'text-slate-500'">EN</button>
+                        <button @click="switchLang('id')" class="px-3 py-1 rounded-full text-[10px] font-black transition-all" :class="currentLang === 'id' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500'">ID</button>
+                        <button @click="switchLang('en')" class="px-3 py-1 rounded-full text-[10px] font-black transition-all" :class="currentLang === 'en' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500'">EN</button>
                     </div>
 
                     <div v-if="user">
@@ -197,7 +197,7 @@ const switchLang = (lang) => {
                 leave-from-class="opacity-100 translate-y-0"
                 leave-to-class="opacity-0 translate-y-4"
             >
-                <div v-show="mobileMenuOpen" class="lg:hidden fixed inset-0 top-0 bg-white dark:bg-slate-900 z-[100] pt-24 px-6 pb-10 flex flex-col h-screen overflow-y-auto">
+                <div v-show="mobileMenuOpen" class="lg:hidden fixed inset-0 top-0 bg-white z-[100] pt-24 px-6 pb-10 flex flex-col h-screen overflow-y-auto">
                     
                     <div class="flex-grow space-y-2">
                         <div class="border-b border-slate-50">
@@ -245,13 +245,13 @@ const switchLang = (lang) => {
                         <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
                             <span class="text-sm font-bold text-slate-500">Language</span>
                             <div class="flex gap-2">
-                                <button @click="switchLang('id')" class="px-3 py-1 rounded-lg text-xs font-black transition-all" :class="currentLang === 'id' ? 'bg-indigo-600 text-white shadow-md' : 'bg-white dark:bg-slate-900 text-slate-400'">ID</button>
-                                <button @click="switchLang('en')" class="px-3 py-1 rounded-lg text-xs font-black transition-all" :class="currentLang === 'en' ? 'bg-indigo-600 text-white shadow-md' : 'bg-white dark:bg-slate-900 text-slate-400'">EN</button>
+                                <button @click="switchLang('id')" class="px-3 py-1 rounded-lg text-xs font-black transition-all" :class="currentLang === 'id' ? 'bg-indigo-600 text-white shadow-md' : 'bg-white text-slate-400'">ID</button>
+                                <button @click="switchLang('en')" class="px-3 py-1 rounded-lg text-xs font-black transition-all" :class="currentLang === 'en' ? 'bg-indigo-600 text-white shadow-md' : 'bg-white text-slate-400'">EN</button>
                             </div>
                         </div>
                         
                         <div v-if="!user" class="grid grid-cols-1 gap-3">
-                            <Link :href="route('login')" class="w-full py-4 text-center font-bold text-slate-900 bg-white dark:bg-slate-900 border border-slate-200 rounded-2xl">{{ $t('nav_login', 'Log in') }}</Link>
+                            <Link :href="route('login')" class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">{{ $t('nav_login', 'Log in') }}</Link>
                             <Link :href="route('register')" class="w-full py-4 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">{{ $t('nav_register', 'Get Started free') }}</Link>
                         </div>
                         <div v-else>
@@ -311,8 +311,8 @@ const switchLang = (lang) => {
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</h3>
                         <div class="flex gap-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-900 border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">𝕏</a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-white dark:bg-slate-900 border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">📸</a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">𝕏</a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">📸</a>
                         </div>
                     </div>
                 </div>

@@ -26,7 +26,7 @@ const description = computed(() => {
 <template>
     <Head :title="title" />
     <div class="min-h-screen bg-slate-50 flex items-center justify-center p-6 text-center">
-        <div class="bg-white dark:bg-slate-900 p-10 rounded-[3rem] shadow-2xl max-w-md border border-slate-100 animate-in zoom-in-95 duration-300">
+        <div class="bg-white p-10 rounded-[3rem] shadow-2xl max-w-md border border-slate-100 animate-in zoom-in-95 duration-300">
             <div class="text-7xl mb-6">🛠️</div>
             <h1 class="text-3xl font-black text-slate-800 mb-2">{{ title }}</h1>
             <p class="text-slate-500 font-bold mb-8 leading-relaxed">

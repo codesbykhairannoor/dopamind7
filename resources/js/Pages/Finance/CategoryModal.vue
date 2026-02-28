@@ -24,7 +24,7 @@ watch(() => props.show, (val) => {
             
             <div @click="close" class="absolute inset-0 bg-slate-900/30 backdrop-blur-md animate-in fade-in duration-200"></div>
             
-            <div class="bg-white dark:bg-slate-900 w-full max-w-sm rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200">
+            <div class="bg-white w-full max-w-sm rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200">
                 <div class="flex justify-between items-center mb-6">
                     <h3 class="text-xl font-black text-slate-800">
                         {{ form.id ? '✏️ ' + $t('edit_source') : '✨ ' + $t('add_source') }}
@@ -41,7 +41,7 @@ watch(() => props.show, (val) => {
                                     {{ form.icon }}
                                 </button>
                                 
-                                <div v-if="showIconGrid" class="absolute top-14 left-0 w-64 p-3 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 z-50 grid grid-cols-6 gap-2 animate-in fade-in zoom-in-95 duration-100">
+                                <div v-if="showIconGrid" class="absolute top-14 left-0 w-64 p-3 bg-white rounded-2xl shadow-xl border border-slate-100 z-50 grid grid-cols-6 gap-2 animate-in fade-in zoom-in-95 duration-100">
                                     <button v-for="icon in iconPalette" :key="icon" type="button" @click="form.icon = icon; showIconGrid = false" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-emerald-50 text-lg transition">
                                         {{ icon }}
                                     </button>

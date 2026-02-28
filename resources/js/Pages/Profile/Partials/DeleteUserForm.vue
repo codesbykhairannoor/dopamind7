@@ -51,7 +51,7 @@ const closeModal = () => {
         </DangerButton>
 
         <Modal :show="confirmingUserDeletion" @close="closeModal" maxWidth="md">
-            <div class="p-8 bg-white dark:bg-slate-900 rounded-[2rem]">
+            <div class="p-8 bg-white rounded-[2rem]">
                 <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-3xl mb-6 mx-auto">
                     🚨
                 </div>

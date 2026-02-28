@@ -67,7 +67,7 @@ const changeYear = (offset) => {
 </script>
 
 <template>
-  <div class="relative z-[60] px-4 py-4 transition-all bg-white dark:bg-slate-900 border-b shadow-sm border-slate-200 sm:px-6 lg:px-8 md:sticky md:top-0">
+  <div class="relative z-[60] px-4 py-4 transition-all bg-white border-b shadow-sm border-slate-200 sm:px-6 lg:px-8 md:sticky md:top-0">
     <div class="flex flex-col items-center justify-between w-full gap-3 md:flex-row">
       
       <div class="flex items-center justify-between w-full md:w-auto">
@@ -87,7 +87,7 @@ const changeYear = (offset) => {
         <div class="relative shrink-0">
           <button 
             @click="isDateDropdownOpen = !isDateDropdownOpen; isCurrencyDropdownOpen = false" 
-            class="flex items-center justify-center w-[90px] md:w-auto md:px-4 h-11 transition border bg-slate-50 border-slate-200 rounded-xl gap-1.5 hover:bg-white dark:bg-slate-900 hover:border-indigo-300 shadow-sm group"
+            class="flex items-center justify-center w-[90px] md:w-auto md:px-4 h-11 transition border bg-slate-50 border-slate-200 rounded-xl gap-1.5 hover:bg-white hover:border-indigo-300 shadow-sm group"
             :class="{'bg-indigo-50 border-indigo-200': isDateDropdownOpen}"
           >
             <span class="text-[9px] md:text-[10px] font-black text-slate-600 uppercase tracking-widest whitespace-nowrap">
@@ -105,7 +105,7 @@ const changeYear = (offset) => {
 
           <Transition name="slide-fade">
             <div v-if="isDateDropdownOpen" 
-                 class="absolute left-0 md:left-auto md:right-0 top-full mt-2 w-[260px] bg-white dark:bg-slate-900 rounded-[1.5rem] shadow-2xl border border-slate-100 p-4 z-[100] origin-top-left md:origin-top-right">
+                 class="absolute left-0 md:left-auto md:right-0 top-full mt-2 w-[260px] bg-white rounded-[1.5rem] shadow-2xl border border-slate-100 p-4 z-[100] origin-top-left md:origin-top-right">
               
               <div class="fixed inset-0 z-[-1]" @click="isDateDropdownOpen = false"></div>
               
@@ -133,14 +133,14 @@ const changeYear = (offset) => {
         <div class="relative shrink-0">
           <button 
             @click="isCurrencyDropdownOpen = !isCurrencyDropdownOpen; isDateDropdownOpen = false" 
-            class="flex items-center justify-center h-11 px-2.5 transition border bg-slate-50 border-slate-200 rounded-xl gap-1 hover:bg-white dark:bg-slate-900 shadow-sm"
+            class="flex items-center justify-center h-11 px-2.5 transition border bg-slate-50 border-slate-200 rounded-xl gap-1 hover:bg-white shadow-sm"
           >
             <span class="text-base">{{ activeCurrencyDetails.icon }}</span>
             <span class="text-[9px] font-black text-slate-600">{{ activeCurrency }}</span>
           </button>
 
           <Transition name="slide-fade">
-            <div v-if="isCurrencyDropdownOpen" class="absolute right-0 top-full mt-2 w-36 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 p-1.5 z-[100] origin-top-right">
+            <div v-if="isCurrencyDropdownOpen" class="absolute right-0 top-full mt-2 w-36 bg-white rounded-2xl shadow-xl border border-slate-100 p-1.5 z-[100] origin-top-right">
               <div class="fixed inset-0 z-[-1]" @click="isCurrencyDropdownOpen = false"></div>
               <div class="relative z-10">
                 <button 

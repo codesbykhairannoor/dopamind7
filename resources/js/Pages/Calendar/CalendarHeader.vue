@@ -44,7 +44,7 @@ const changeYear = (offset) => {
 </script>
 
 <template>
-    <div class="relative z-[60] transition-all bg-white dark:bg-slate-900/80 backdrop-blur-xl border-b shadow-sm border-slate-200 md:sticky md:top-0">
+    <div class="relative z-[60] transition-all bg-white/80 backdrop-blur-xl border-b shadow-sm border-slate-200 md:sticky md:top-0">
         <div class="max-w-full px-4 py-4 mx-auto sm:px-6 lg:px-8">
             
             <div class="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
@@ -64,13 +64,13 @@ const changeYear = (offset) => {
                     <div class="relative flex-1 md:flex-none">
                         <button 
                             @click="isOpen = !isOpen" 
-                            class="w-full flex items-center justify-between gap-4 bg-slate-50 border border-slate-200 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-white dark:bg-slate-900 hover:border-indigo-300 hover:shadow-sm transition-all active:scale-95"
+                            class="w-full flex items-center justify-between gap-4 bg-slate-50 border border-slate-200 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all active:scale-95"
                         >
                             <div class="flex flex-col items-start leading-none">
                                 <span class="text-[9px] text-slate-400 uppercase tracking-tighter mb-0.5">{{ $t('label_period', 'Periode') }}</span>
                                 <span class="text-xs uppercase tracking-wide whitespace-nowrap">{{ displayMonth }}</span>
                             </div>
-                            <div class="p-1 bg-white dark:bg-slate-900 border shadow-sm rounded-lg border-slate-100">
+                            <div class="p-1 bg-white border shadow-sm rounded-lg border-slate-100">
                                 <svg class="w-3 h-3 text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path d="M19 9l-7 7-7-7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
@@ -78,16 +78,16 @@ const changeYear = (offset) => {
                         </button>
 
                         <Transition name="slide-fade">
-                            <div v-if="isOpen" class="absolute right-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-100 p-4 z-[60] origin-top-right">
+                            <div v-if="isOpen" class="absolute right-0 mt-2 w-72 bg-white rounded-3xl shadow-2xl border border-slate-100 p-4 z-[60] origin-top-right">
                                 <div class="fixed inset-0 z-[-1]" @click="isOpen = false"></div>
                                 
                                 <div class="relative z-10">
                                     <div class="flex items-center justify-between px-2 mb-4 bg-slate-50 rounded-2xl py-1">
-                                        <button @click.stop="changeYear(-1)" class="p-2 transition rounded-xl hover:bg-white dark:bg-slate-900 text-slate-400 hover:text-indigo-600 shadow-sm">
+                                        <button @click.stop="changeYear(-1)" class="p-2 transition rounded-xl hover:bg-white text-slate-400 hover:text-indigo-600 shadow-sm">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="3"></path></svg>
                                         </button>
                                         <span class="text-lg font-black tracking-tighter text-slate-800">{{ activeYear }}</span>
-                                        <button @click.stop="changeYear(1)" class="p-2 transition rounded-xl hover:bg-white dark:bg-slate-900 text-slate-400 hover:text-indigo-600 shadow-sm">
+                                        <button @click.stop="changeYear(1)" class="p-2 transition rounded-xl hover:bg-white text-slate-400 hover:text-indigo-600 shadow-sm">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="3"></path></svg>
                                         </button>
                                     </div>
@@ -116,7 +116,7 @@ const changeYear = (offset) => {
                         @click="emit('add-event')" 
                         class="h-[46px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-200 transition-all duration-300 shrink-0"
                     >
-                        <div class="bg-white dark:bg-slate-900/20 rounded-lg p-0.5">
+                        <div class="bg-white/20 rounded-lg p-0.5">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-width="3" stroke-linecap="round"></path></svg>
                         </div>
                         <span class="hidden md:inline uppercase text-xs tracking-widest">{{ $t('btn_add_event', 'Acara') }}</span>

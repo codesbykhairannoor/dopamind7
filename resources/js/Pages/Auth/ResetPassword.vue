@@ -31,7 +31,7 @@ const submit = () => {
         <div class="min-h-[80vh] flex items-center justify-center px-4 py-12 relative overflow-hidden">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-50/70 rounded-full blur-[100px] -z-10"></div>
 
-            <div class="w-full max-w-[450px] bg-white dark:bg-slate-900 p-8 md:p-10 rounded-[2rem] shadow-2xl border border-gray-100 relative z-10">
+            <div class="w-full max-w-[450px] bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl border border-gray-100 relative z-10">
                 
                 <div class="text-center mb-8">
                     <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-sm">

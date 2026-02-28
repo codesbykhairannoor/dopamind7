@@ -18,14 +18,14 @@ const props = defineProps({
 
 <template>
     <Modal :show="show" @close="close" maxWidth="2xl">
-        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-300 border border-slate-100 shadow-2xl">
+        <div class="bg-white rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-300 border border-slate-100 shadow-2xl">
             
             <div v-if="conflictError" class="absolute top-0 left-0 right-0 bg-rose-500 text-white text-[10px] font-black px-6 py-3.5 text-center animate-in slide-in-from-top-full z-50 shadow-lg flex items-center justify-center gap-2 uppercase tracking-[0.1em]">
                 <svg class="w-4 h-4 shrink-0 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                 <span>{{ conflictError }}</span>
             </div>
 
-            <div class="px-8 py-6 border-b border-slate-50 flex justify-between items-center bg-white dark:bg-slate-900 shrink-0 z-20" :class="{'mt-12': conflictError}">
+            <div class="px-8 py-6 border-b border-slate-50 flex justify-between items-center bg-white shrink-0 z-20" :class="{'mt-12': conflictError}">
                 <div class="flex items-center gap-4">
                     <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-xl text-white shadow-lg shadow-indigo-100">
                         ✨
@@ -62,7 +62,7 @@ const props = defineProps({
 
                 <div class="space-y-4 md:space-y-3 mt-2">
                     <div v-for="(task, index) in form.tasks" :key="index" 
-                        class="bg-white dark:bg-slate-900 md:bg-transparent p-5 md:p-0 rounded-[2rem] md:rounded-none border border-slate-100 md:border-none shadow-sm md:shadow-none animate-in fade-in slide-in-from-bottom-4 duration-300 group">
+                        class="bg-white md:bg-transparent p-5 md:p-0 rounded-[2rem] md:rounded-none border border-slate-100 md:border-none shadow-sm md:shadow-none animate-in fade-in slide-in-from-bottom-4 duration-300 group">
                         
                         <div class="grid grid-cols-12 gap-3 md:gap-4 items-center">
                             
@@ -71,7 +71,7 @@ const props = defineProps({
                                 <TextInput 
                                     v-model="task.title" 
                                     :placeholder="$t('placeholder_activity')" 
-                                    class="w-full text-sm font-bold py-3.5 px-4 !rounded-2xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-0 transition-all bg-white dark:bg-slate-900" 
+                                    class="w-full text-sm font-bold py-3.5 px-4 !rounded-2xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-0 transition-all bg-white" 
                                     :class="{'!border-rose-300 !bg-rose-50': form.errors[`tasks.${index}.title`]}"
                                 />
                             </div>
@@ -81,7 +81,7 @@ const props = defineProps({
                                 <input 
                                     type="time" 
                                     v-model="task.start_time" 
-                                    class="w-full border-2 border-slate-200 bg-white dark:bg-slate-900 rounded-2xl text-sm py-3.5 px-1 text-center font-black text-slate-700 focus:border-indigo-500 focus:ring-0 cursor-pointer transition-all shadow-sm" 
+                                    class="w-full border-2 border-slate-200 bg-white rounded-2xl text-sm py-3.5 px-1 text-center font-black text-slate-700 focus:border-indigo-500 focus:ring-0 cursor-pointer transition-all shadow-sm" 
                                     :class="{'!border-rose-500 !bg-rose-50 !text-rose-700': form.errors[`tasks.${index}.start_time`]}"
                                 />
                             </div>
@@ -91,7 +91,7 @@ const props = defineProps({
                                 <input 
                                     type="time" 
                                     v-model="task.end_time" 
-                                    class="w-full border-2 border-slate-200 bg-white dark:bg-slate-900 rounded-2xl text-sm py-3.5 px-1 text-center font-black text-slate-700 focus:border-indigo-500 focus:ring-0 cursor-pointer transition-all shadow-sm" 
+                                    class="w-full border-2 border-slate-200 bg-white rounded-2xl text-sm py-3.5 px-1 text-center font-black text-slate-700 focus:border-indigo-500 focus:ring-0 cursor-pointer transition-all shadow-sm" 
                                     :class="{'!border-rose-500 !bg-rose-50 !text-rose-700': form.errors[`tasks.${index}.end_time`]}"
                                 />
                             </div>
@@ -99,7 +99,7 @@ const props = defineProps({
                             <div class="col-span-10 md:col-span-2">
                                 <label class="md:hidden text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1 block">{{ $t('col_priority') }}</label>
                                 <div class="relative">
-                                    <select v-model="task.type" class="w-full border-2 border-slate-200 rounded-2xl text-[10px] py-3.5 pl-3 pr-8 font-black uppercase tracking-tighter text-slate-700 focus:border-indigo-500 focus:ring-0 bg-white dark:bg-slate-900 appearance-none cursor-pointer transition-all"
+                                    <select v-model="task.type" class="w-full border-2 border-slate-200 rounded-2xl text-[10px] py-3.5 pl-3 pr-8 font-black uppercase tracking-tighter text-slate-700 focus:border-indigo-500 focus:ring-0 bg-white appearance-none cursor-pointer transition-all"
                                         :class="{
                                             '!text-rose-600 !bg-rose-50': task.type == 1,
                                             '!text-indigo-600 !bg-indigo-50': task.type == 2,
@@ -127,13 +127,13 @@ const props = defineProps({
                     </div>
                 </div>
 
-                <button @click="addRow" type="button" class="mt-8 w-full py-4 border-2 border-dashed border-slate-200 rounded-[1.5rem] text-slate-400 font-black uppercase tracking-widest text-[10px] hover:border-indigo-400 hover:text-indigo-600 hover:bg-white dark:bg-slate-900 transition-all flex items-center justify-center gap-3 group active:scale-95 shadow-sm">
+                <button @click="addRow" type="button" class="mt-8 w-full py-4 border-2 border-dashed border-slate-200 rounded-[1.5rem] text-slate-400 font-black uppercase tracking-widest text-[10px] hover:border-indigo-400 hover:text-indigo-600 hover:bg-white transition-all flex items-center justify-center gap-3 group active:scale-95 shadow-sm">
                     <span class="w-6 h-6 rounded-lg bg-slate-100 text-slate-400 flex items-center justify-center text-xs group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">+</span> 
                     {{ $t('btn_add_another') }}
                 </button>
             </div>
 
-            <div class="px-8 py-6 bg-white dark:bg-slate-900 border-t border-slate-50 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0">
+            <div class="px-8 py-6 bg-white border-t border-slate-50 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0">
                 <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
                     {{ $t('total_label') }} <span class="text-indigo-600 text-sm font-black">{{ form.tasks.length }}</span> {{ $t('total_suffix') }}

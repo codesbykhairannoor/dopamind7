@@ -67,14 +67,14 @@ const changeType = (index, type) => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="2xl">
-        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-300 border border-slate-100 shadow-2xl">
+        <div class="bg-white rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-300 border border-slate-100 shadow-2xl">
             
             <div v-if="conflictError" class="absolute top-0 left-0 right-0 bg-rose-500 text-white text-[10px] font-black px-6 py-3.5 text-center animate-in slide-in-from-top-full z-50 shadow-lg flex items-center justify-center gap-2 uppercase tracking-[0.1em] rounded-t-[2.5rem] shrink-0">
                 <svg class="w-4 h-4 shrink-0 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                 <span>{{ conflictError }}</span>
             </div>
 
-            <div class="px-8 py-6 border-b border-slate-50 flex justify-between items-center bg-white dark:bg-slate-900 shrink-0 z-20 rounded-t-[2.5rem]" :class="{'mt-12': conflictError}">
+            <div class="px-8 py-6 border-b border-slate-50 flex justify-between items-center bg-white shrink-0 z-20 rounded-t-[2.5rem]" :class="{'mt-12': conflictError}">
                 <div class="flex items-center gap-4">
                     <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-xl text-white shadow-lg shadow-indigo-100">
                         ✨
@@ -116,7 +116,7 @@ const changeType = (index, type) => {
                 
                 <div class="space-y-4">
                     <div v-for="(trx, index) in form.transactions" :key="index" 
-                        class="bg-white dark:bg-slate-900 p-5 rounded-[2rem] border border-slate-100 shadow-sm relative group animate-in fade-in slide-in-from-bottom-4 duration-300">
+                        class="bg-white p-5 rounded-[2rem] border border-slate-100 shadow-sm relative group animate-in fade-in slide-in-from-bottom-4 duration-300">
                         
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-lg"
@@ -134,10 +134,10 @@ const changeType = (index, type) => {
                                 <div>
                                     <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1 block">{{ $t('type', 'Tipe') }}</label>
                                     <div class="flex bg-slate-50 p-1 rounded-xl h-11 border border-slate-100">
-                                        <button type="button" @click="changeType(index, 'expense')" class="flex-1 rounded-lg text-[10px] font-black transition-all flex items-center justify-center tracking-wider uppercase" :class="trx.type === 'expense' ? 'bg-white dark:bg-slate-900 text-rose-600 shadow-sm border border-slate-200' : 'text-slate-400 hover:text-slate-600'">
+                                        <button type="button" @click="changeType(index, 'expense')" class="flex-1 rounded-lg text-[10px] font-black transition-all flex items-center justify-center tracking-wider uppercase" :class="trx.type === 'expense' ? 'bg-white text-rose-600 shadow-sm border border-slate-200' : 'text-slate-400 hover:text-slate-600'">
                                             {{ $t('out', 'Keluar') }}
                                         </button>
-                                        <button type="button" @click="changeType(index, 'income')" class="flex-1 rounded-lg text-[10px] font-black transition-all flex items-center justify-center tracking-wider uppercase" :class="trx.type === 'income' ? 'bg-white dark:bg-slate-900 text-emerald-600 shadow-sm border border-slate-200' : 'text-slate-400 hover:text-slate-600'">
+                                        <button type="button" @click="changeType(index, 'income')" class="flex-1 rounded-lg text-[10px] font-black transition-all flex items-center justify-center tracking-wider uppercase" :class="trx.type === 'income' ? 'bg-white text-emerald-600 shadow-sm border border-slate-200' : 'text-slate-400 hover:text-slate-600'">
                                             {{ $t('in', 'Masuk') }}
                                         </button>
                                     </div>
@@ -146,7 +146,7 @@ const changeType = (index, type) => {
                                 <div>
                                     <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1 block">{{ $t('category', 'Kategori') }}</label>
                                     <div class="relative">
-                                        <select v-model="trx.category" class="w-full pl-3 pr-8 h-11 !rounded-xl border-2 border-slate-200 bg-slate-50 focus:bg-white dark:bg-slate-900 focus:ring-0 font-bold text-slate-700 capitalize text-xs appearance-none cursor-pointer transition-all"
+                                        <select v-model="trx.category" class="w-full pl-3 pr-8 h-11 !rounded-xl border-2 border-slate-200 bg-slate-50 focus:bg-white focus:ring-0 font-bold text-slate-700 capitalize text-xs appearance-none cursor-pointer transition-all"
                                             :class="[
                                                 form.errors[`transactions.${index}.category`] ? '!border-rose-300 !bg-rose-50 text-rose-600' : '',
                                                 trx.type === 'expense' ? 'focus:border-rose-400' : 'focus:border-emerald-400'
@@ -169,7 +169,7 @@ const changeType = (index, type) => {
                                     <div class="relative group">
                                         <span class="absolute left-3 top-1/2 -translate-y-1/2 font-black text-[12px]" :class="trx.type === 'expense' ? 'text-rose-500' : 'text-emerald-500'">{{ currencySymbol }}</span>
                                         <input type="text" :value="formatDisplay(trx.amount)" @input="e => onInputAmount(e, index)" placeholder="0" 
-                                            class="w-full h-11 pl-10 pr-3 !rounded-xl border-2 bg-white dark:bg-slate-900 focus:ring-0 font-black text-sm transition-all"
+                                            class="w-full h-11 pl-10 pr-3 !rounded-xl border-2 bg-white focus:ring-0 font-black text-sm transition-all"
                                             :class="[
                                                 form.errors[`transactions.${index}.amount`] ? '!border-rose-300 !bg-rose-50 text-rose-600' : 'border-slate-200 text-slate-700',
                                                 trx.type === 'expense' ? 'focus:border-rose-500' : 'focus:border-emerald-500'
@@ -183,7 +183,7 @@ const changeType = (index, type) => {
                                     <TextInput 
                                         v-model="trx.title" 
                                         :placeholder="$t('desc_placeholder', 'Cth: Kopi...')" 
-                                        class="w-full text-xs font-bold h-11 px-3 !rounded-xl border-2 border-slate-200 bg-slate-50 focus:bg-white dark:bg-slate-900 transition-all focus:ring-0" 
+                                        class="w-full text-xs font-bold h-11 px-3 !rounded-xl border-2 border-slate-200 bg-slate-50 focus:bg-white transition-all focus:ring-0" 
                                         :class="[
                                             form.errors[`transactions.${index}.title`] ? '!border-rose-300 !bg-rose-50 text-rose-600' : '',
                                             trx.type === 'expense' ? 'focus:border-rose-400' : 'focus:border-emerald-400'
@@ -202,7 +202,7 @@ const changeType = (index, type) => {
                 </button>
             </div>
 
-            <div class="px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-50 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 rounded-b-[2.5rem]">
+            <div class="px-8 py-5 bg-white border-t border-slate-50 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 rounded-b-[2.5rem]">
                 <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
                     {{ $t('total_label', 'Total Input:') }} <span class="text-indigo-600 text-sm font-black">{{ form.transactions.length }}</span>

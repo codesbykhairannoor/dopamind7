@@ -10,9 +10,9 @@ defineEmits(['close']);
 
 <template>
     <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4" @click.self="$emit('close')">
-        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-3xl w-full max-h-[85vh] shadow-2xl flex flex-col relative overflow-hidden">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[85vh] shadow-2xl flex flex-col relative overflow-hidden">
             
-            <div class="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-white dark:bg-slate-900 sticky top-0 z-10">
+            <div class="px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-white sticky top-0 z-10">
                 <h2 class="text-2xl font-bold text-slate-800">Privacy Policy</h2>
                 <button @click="$emit('close')" class="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-400 hover:text-slate-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

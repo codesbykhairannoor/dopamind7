@@ -72,7 +72,7 @@ const submitTextForm = () => {
                 
                 <div class="flex-1">
                     <input type="file" ref="avatarInput" @change="handleAvatarUpload" class="hidden" accept="image/jpeg, image/png, image/jpg">
-                    <button type="button" @click="selectNewPhoto" class="px-5 py-2.5 bg-white dark:bg-slate-900 border-2 border-slate-200 rounded-xl text-[11px] font-black uppercase tracking-widest text-indigo-600 shadow-sm hover:border-indigo-300 hover:bg-indigo-50 transition-all active:scale-95">
+                    <button type="button" @click="selectNewPhoto" class="px-5 py-2.5 bg-white border-2 border-slate-200 rounded-xl text-[11px] font-black uppercase tracking-widest text-indigo-600 shadow-sm hover:border-indigo-300 hover:bg-indigo-50 transition-all active:scale-95">
                         {{ $t('change_photo', 'Ganti Foto') }}
                     </button>
                     <InputError class="mt-2" :message="$page.props.errors.avatar" />

@@ -87,7 +87,7 @@ const topHabit = computed(() => {
     >
 
       <div
-        class="md:col-span-5 bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 shadow-sm border border-slate-100 relative overflow-hidden"
+        class="md:col-span-5 bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100 relative overflow-hidden"
       >
         <div class="relative z-10">
           <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-1">
@@ -133,7 +133,7 @@ const topHabit = computed(() => {
       <div class="md:col-span-4 relative">
         <button
           @click="showMoodDropdownLocal = !showMoodDropdownLocal"
-          class="w-full h-full bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 border border-slate-100 shadow-sm flex items-center gap-5 text-left"
+          class="w-full h-full bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-sm flex items-center gap-5 text-left"
         >
           <div
             class="w-16 h-16 rounded-3xl flex items-center justify-center text-3xl shadow-inner"
@@ -155,7 +155,7 @@ const topHabit = computed(() => {
         <Transition name="pop">
           <div
             v-if="showMoodDropdownLocal"
-            class="absolute bottom-full mb-4 left-0 w-full bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl border border-slate-100 p-3 z-30 grid grid-cols-2 gap-2"
+            class="absolute bottom-full mb-4 left-0 w-full bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-3 z-30 grid grid-cols-2 gap-2"
           >
             <button
               v-for="m in moodOptions"

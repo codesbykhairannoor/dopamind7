@@ -34,7 +34,7 @@ const loginWithGoogle = () => {
         <div class="min-h-[85vh] flex items-center justify-center px-4 py-12 relative overflow-hidden">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-50/70 rounded-full blur-[100px] -z-10"></div>
 
-            <div class="w-full max-w-[450px] bg-white dark:bg-slate-900 p-8 md:p-10 rounded-[2rem] shadow-2xl border border-gray-100 relative z-10">
+            <div class="w-full max-w-[450px] bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl border border-gray-100 relative z-10">
                 
                 <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-sm">
                     🚀
@@ -77,13 +77,13 @@ const loginWithGoogle = () => {
 
                 <div class="relative my-6">
                     <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200"></div></div>
-                    <div class="relative flex justify-center text-xs uppercase font-bold text-gray-400"><span class="px-2 bg-white dark:bg-slate-900">{{ $t('auth_divider') }}</span></div>
+                    <div class="relative flex justify-center text-xs uppercase font-bold text-gray-400"><span class="px-2 bg-white">{{ $t('auth_divider') }}</span></div>
                 </div>
 
                 <button 
                    type="button" 
                    @click="loginWithGoogle"
-                   class="flex items-center justify-center w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm bg-white dark:bg-slate-900 hover:bg-gray-50 transition group">
+                   class="flex items-center justify-center w-full px-4 py-3 border border-gray-200 rounded-xl shadow-sm bg-white hover:bg-gray-50 transition group">
                     <svg class="w-5 h-5 mr-3" viewBox="0 0 24 24">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                         <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>

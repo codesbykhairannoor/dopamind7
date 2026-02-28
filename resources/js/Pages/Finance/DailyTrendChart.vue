@@ -120,7 +120,7 @@ const monthInsights = computed(() => {
 </script>
 
 <template>
-    <div class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-[2rem] shadow-sm border border-slate-200 w-full mt-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div class="bg-white p-6 md:p-8 rounded-[2rem] shadow-sm border border-slate-200 w-full mt-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
         
         <div class="flex justify-between items-start mb-6">
             <div>
@@ -166,7 +166,7 @@ const monthInsights = computed(() => {
                 <div class="relative z-10">
                     <div class="flex items-center gap-2 mb-1">
                         <span class="text-[10px] font-bold text-rose-400 uppercase tracking-widest">{{ $t('most_wasteful', 'Paling Boros') }}</span>
-                        <span class="text-[9px] bg-white dark:bg-slate-900 border border-rose-100 text-rose-500 font-bold px-1.5 py-0.5 rounded shadow-sm">{{ monthInsights.highestExpenseDate }}</span>
+                        <span class="text-[9px] bg-white border border-rose-100 text-rose-500 font-bold px-1.5 py-0.5 rounded shadow-sm">{{ monthInsights.highestExpenseDate }}</span>
                     </div>
                     <h4 class="text-sm font-black text-rose-600">{{ formatMoney(monthInsights.highestExpenseAmount) }}</h4>
                 </div>
@@ -178,7 +178,7 @@ const monthInsights = computed(() => {
                 <div class="relative z-10">
                     <div class="flex items-center gap-2 mb-1">
                         <span class="text-[10px] font-bold text-emerald-500/70 uppercase tracking-widest">{{ $t('busiest_day', 'Paling Sibuk') }}</span>
-                        <span class="text-[9px] bg-white dark:bg-slate-900 border border-emerald-100 text-emerald-600 font-bold px-1.5 py-0.5 rounded shadow-sm">{{ monthInsights.busiestDate }}</span>
+                        <span class="text-[9px] bg-white border border-emerald-100 text-emerald-600 font-bold px-1.5 py-0.5 rounded shadow-sm">{{ monthInsights.busiestDate }}</span>
                     </div>
                     <h4 class="text-sm font-black text-emerald-700">{{ monthInsights.busiestCount }} {{ $t('transactions_count', 'Transaksi') }}</h4>
                 </div>

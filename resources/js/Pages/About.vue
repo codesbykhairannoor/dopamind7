@@ -47,7 +47,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
                 <div class="order-1 md:order-2 relative h-96 bg-gray-100 rounded-[3rem] overflow-hidden flex items-center justify-center animate-in slide-in-from-right-12 fade-in duration-700 delay-200 fill-mode-both">
                     <div class="absolute inset-0 bg-gradient-to-br from-red-100 to-orange-100 opacity-50"></div>
                     <div class="relative z-10 text-center transform rotate-3 transition hover:rotate-0 duration-500">
-                        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs mx-auto animate-pulse duration-[4000ms]">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs mx-auto animate-pulse duration-[4000ms]">
                             <div class="flex justify-between text-xs text-gray-500 mb-4 font-bold tracking-widest uppercase">My To-Do List</div>
                             <div class="space-y-3">
                                 <div class="h-3 bg-red-200 rounded w-full"></div>
@@ -88,20 +88,20 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white dark:bg-slate-900/5 p-8 rounded-3xl border border-white/10 hover:border-indigo-500 hover:bg-white dark:bg-slate-900/10 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
-                        <div class="w-14 h-14 bg-white dark:bg-slate-900/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-indigo-600 transition">🛡️</div>
+                    <div class="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-indigo-500 hover:bg-white/10 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-indigo-600 transition">🛡️</div>
                         <h4 class="text-xl font-bold mb-3">{{ $t('manifesto_1_title') }}</h4>
                         <p class="text-indigo-200 leading-relaxed">{{ $t('manifesto_1_desc') }}</p>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-900/5 p-8 rounded-3xl border border-white/10 hover:border-indigo-500 hover:bg-white dark:bg-slate-900/10 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-400 fill-mode-both">
-                        <div class="w-14 h-14 bg-white dark:bg-slate-900/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-indigo-600 transition">🔄</div>
+                    <div class="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-indigo-500 hover:bg-white/10 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-400 fill-mode-both">
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-indigo-600 transition">🔄</div>
                         <h4 class="text-xl font-bold mb-3">{{ $t('manifesto_2_title') }}</h4>
                         <p class="text-indigo-200 leading-relaxed">{{ $t('manifesto_2_desc') }}</p>
                     </div>
 
-                    <div class="bg-white dark:bg-slate-900/5 p-8 rounded-3xl border border-white/10 hover:border-indigo-500 hover:bg-white dark:bg-slate-900/10 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
-                        <div class="w-14 h-14 bg-white dark:bg-slate-900/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-indigo-600 transition">🌱</div>
+                    <div class="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-indigo-500 hover:bg-white/10 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
+                        <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-indigo-600 transition">🌱</div>
                         <h4 class="text-xl font-bold mb-3">{{ $t('manifesto_3_title') }}</h4>
                         <p class="text-indigo-200 leading-relaxed">{{ $t('manifesto_3_desc') }}</p>
                     </div>
@@ -114,7 +114,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
             
             <div class="grid md:grid-cols-2 gap-8">
                 
-                <div class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-indigo-100 hover:-translate-y-2 transition duration-300 group relative overflow-hidden">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-indigo-100 hover:-translate-y-2 transition duration-300 group relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-indigo-100 transition"></div>
                     
                     <div class="relative z-10">
@@ -135,7 +135,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-100 hover:-translate-y-2 transition duration-300 group relative overflow-hidden">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-purple-100 hover:-translate-y-2 transition duration-300 group relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-purple-50 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-purple-100 transition"></div>
                     
                     <div class="relative z-10">

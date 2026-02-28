@@ -41,11 +41,11 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
 </script>
 
 <template>
-    <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 shadow-sm h-fit flex flex-col gap-6">
+    <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm h-fit flex flex-col gap-6">
         
         <div class="flex p-1 bg-slate-50 rounded-xl border border-slate-100">
-            <button @click="activeTab = 'expense'" class="flex-1 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'expense' ? 'bg-white dark:bg-slate-900 text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">{{ $t('expense') }}</button>
-            <button @click="activeTab = 'income'" class="flex-1 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'income' ? 'bg-white dark:bg-slate-900 text-emerald-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">{{ $t('income') }}</button>
+            <button @click="activeTab = 'expense'" class="flex-1 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'expense' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">{{ $t('expense') }}</button>
+            <button @click="activeTab = 'income'" class="flex-1 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'income' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">{{ $t('income') }}</button>
         </div>
 
         <div v-if="activeTab === 'expense'" class="space-y-6">
@@ -80,7 +80,7 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
                         
                         <div class="flex justify-between items-end text-sm mb-2">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-white dark:bg-slate-900 border border-slate-100 shadow-sm flex items-center justify-center text-sm">
+                                <div class="w-8 h-8 rounded-lg bg-white border border-slate-100 shadow-sm flex items-center justify-center text-sm">
                                     {{ getCat(b.category).icon }}
                                 </div>
                                 <div class="flex flex-col">

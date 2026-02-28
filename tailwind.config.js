@@ -4,7 +4,7 @@ import forms from '@tailwindcss/typography'; // Tambahan plugin untuk styling ko
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: 'class', // Opsional: Biar aman kalau nanti mau main Dark Mode
+    // darkMode: 'class', // Opsional: Biar aman kalau nanti mau main Dark Mode
 
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
