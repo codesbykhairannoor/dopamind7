@@ -16,13 +16,13 @@ defineProps({
 <template>
     <div class="w-full md:max-w-[95%] mx-auto md:px-2 pt-4 md:pt-8 pb-20">
 
-        <div v-if="localHabits.length > 0" class="bg-white md:rounded-3xl shadow-sm md:shadow-[0_2px_20px_rgba(0,0,0,0.04)] border-y md:border border-slate-100 overflow-hidden relative">
+        <div v-if="localHabits.length > 0" class="bg-white dark:bg-slate-900 md:rounded-3xl shadow-sm md:shadow-[0_2px_20px_rgba(0,0,0,0.04)] border-y md:border border-slate-100 overflow-hidden relative">
 
             <div class="overflow-x-auto custom-scrollbar relative">
                 <div class="min-w-max">
 
-                    <div class="sticky top-0 z-30 bg-white border-b border-slate-100 flex shadow-sm">
-                        <div class="sticky left-0 z-40 bg-white w-36 md:w-72 border-r border-slate-100 p-3 md:p-4 flex items-center font-bold text-slate-400 text-[10px] md:text-xs uppercase tracking-wider">
+                    <div class="sticky top-0 z-30 bg-white dark:bg-slate-900 border-b border-slate-100 flex shadow-sm">
+                        <div class="sticky left-0 z-40 bg-white dark:bg-slate-900 w-36 md:w-72 border-r border-slate-100 p-3 md:p-4 flex items-center font-bold text-slate-400 text-[10px] md:text-xs uppercase tracking-wider">
                             <span class="truncate"> {{ $t('habit_name') }}</span>
                         </div>
 
@@ -37,7 +37,7 @@ defineProps({
                             </div>
                         </div>
 
-                        <div class="hidden md:flex sticky right-0 z-40 bg-white w-32 p-4 border-l border-slate-100 items-center justify-end font-bold text-slate-400 text-xs uppercase tracking-wider shadow-[-10px_0_20px_rgba(255,255,255,0.8)]">
+                        <div class="hidden md:flex sticky right-0 z-40 bg-white dark:bg-slate-900 w-32 p-4 border-l border-slate-100 items-center justify-end font-bold text-slate-400 text-xs uppercase tracking-wider shadow-[-10px_0_20px_rgba(255,255,255,0.8)]">
                             {{ $t('habit_table_total') }}
                         </div>
                     </div>
@@ -45,7 +45,7 @@ defineProps({
                     <div class="divide-y divide-slate-50">
                         <div v-for="(habit, hIndex) in localHabits" :key="habit.id" class="flex hover:bg-slate-50/50 transition-colors group">
 
-                            <div class="sticky left-0 z-20 w-36 md:w-72 bg-white group-hover:bg-slate-50 transition-colors border-r border-slate-100 p-3 md:p-4 flex items-center gap-3 md:gap-4 flex-shrink-0">
+                            <div class="sticky left-0 z-20 w-36 md:w-72 bg-white dark:bg-slate-900 group-hover:bg-slate-50 transition-colors border-r border-slate-100 p-3 md:p-4 flex items-center gap-3 md:gap-4 flex-shrink-0">
                                 <div class="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center text-base md:text-xl bg-slate-50 border border-slate-100" :style="{ color: habit.color }">
                                     {{ habit.icon }}
                                 </div>
@@ -65,7 +65,7 @@ defineProps({
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                                         </button>
                                         
-                                        <div class="hidden md:flex opacity-0 group-hover:opacity-100 transition items-center gap-1 bg-white/80 backdrop-blur-sm px-1 rounded-md absolute right-2 top-1/2 -translate-y-1/2 shadow-sm border border-slate-100 z-50">
+                                        <div class="hidden md:flex opacity-0 group-hover:opacity-100 transition items-center gap-1 bg-white dark:bg-slate-900/80 backdrop-blur-sm px-1 rounded-md absolute right-2 top-1/2 -translate-y-1/2 shadow-sm border border-slate-100 z-50">
                                             <button @click="editHabit(habit)" class="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition" title="Edit">
                                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                                             </button>
@@ -95,7 +95,7 @@ defineProps({
         'bg-slate-100 text-slate-400 border-slate-200': getStatus(habit, day.dateString) === 'skipped',
         
         /* KONDISI: KOSONG (BISA DIISI) */
-        'bg-white border border-slate-200 hover:border-indigo-400': getStatus(habit, day.dateString) === 'empty' && !day.isFuture,
+        'bg-white dark:bg-slate-900 border border-slate-200 hover:border-indigo-400': getStatus(habit, day.dateString) === 'empty' && !day.isFuture,
         
         /* KONDISI: MASA DEPAN (LOCKED) */
         'bg-slate-50 border-slate-50 opacity-30 cursor-not-allowed': day.isFuture,
@@ -118,7 +118,7 @@ defineProps({
                                 </div>
                             </div>
 
-                            <div class="hidden md:flex sticky right-0 z-20 w-32 bg-white group-hover:bg-slate-50 transition-colors border-l border-slate-100 p-4 flex-col justify-center shadow-[-10px_0_20px_rgba(255,255,255,0.8)]">
+                            <div class="hidden md:flex sticky right-0 z-20 w-32 bg-white dark:bg-slate-900 group-hover:bg-slate-50 transition-colors border-l border-slate-100 p-4 flex-col justify-center shadow-[-10px_0_20px_rgba(255,255,255,0.8)]">
                                 <div class="flex justify-between items-end mb-1">
                                     <span class="text-lg font-black text-slate-700">{{ habit.progress_count }}</span>
                                     <span class="text-[10px] font-bold text-slate-400 mb-1">{{ Math.round(habit.progress_percent) }}%</span>
@@ -135,7 +135,7 @@ defineProps({
             </div>
         </div>
 
-        <div v-else class="bg-white rounded-3xl p-8 md:p-12 text-center shadow-lg border border-slate-100 mt-6 mx-4 md:mx-0">
+        <div v-else class="bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 text-center shadow-lg border border-slate-100 mt-6 mx-4 md:mx-0">
             <div class="w-16 h-16 md:w-20 md:h-20 bg-indigo-50 text-indigo-500 rounded-full flex items-center justify-center text-3xl md:text-4xl mx-auto mb-4">🌱</div>
             <h3 class="text-lg md:text-xl font-bold text-slate-800">{{ $t('habit_empty_title') }}</h3>
             <p class="text-sm md:text-base text-slate-500 mb-6">{{ $t('habit_empty_desc') }}</p>

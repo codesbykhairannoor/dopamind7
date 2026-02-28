@@ -40,7 +40,7 @@ const colorOptions = [
                     leave-from-class="opacity-100 translate-y-0 scale-100"
                     leave-to-class="opacity-0 translate-y-8 scale-95"
                 >
-                    <div v-if="show" class="bg-white/95 backdrop-blur-xl rounded-[2rem] shadow-2xl w-full max-w-lg relative z-10 overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50">
+                    <div v-if="show" class="bg-white dark:bg-slate-900/95 backdrop-blur-xl rounded-[2rem] shadow-2xl w-full max-w-lg relative z-10 overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50">
                         
                         <div class="px-6 py-5 border-b border-slate-100/80 flex items-center justify-between">
                             <h3 class="text-lg font-black text-slate-800 flex items-center gap-3">
@@ -94,7 +94,7 @@ const colorOptions = [
                         </div>
 
                         <div class="p-5 border-t border-slate-100/80 bg-slate-50/50 flex gap-3">
-                            <button @click="emit('close')" type="button" class="flex-1 py-3.5 rounded-xl font-bold text-slate-500 bg-white border border-slate-200 hover:bg-slate-50 transition-all active:scale-95">
+                            <button @click="emit('close')" type="button" class="flex-1 py-3.5 rounded-xl font-bold text-slate-500 bg-white dark:bg-slate-900 border border-slate-200 hover:bg-slate-50 transition-all active:scale-95">
                                 {{ $t('btn_cancel', 'Batal') }}
                             </button>
                             

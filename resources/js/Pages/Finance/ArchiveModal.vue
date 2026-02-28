@@ -52,24 +52,24 @@ const handleDeleteAction = (id) => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="lg">
-        <div class="bg-white rounded-2xl overflow-hidden shadow-xl" v-if="dayData">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-xl" v-if="dayData">
             
             <div class="bg-indigo-600 px-6 py-5 relative overflow-hidden text-white">
-                <div class="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="absolute -right-6 -top-6 w-32 h-32 bg-white dark:bg-slate-900/10 rounded-full blur-2xl"></div>
                 <div class="relative z-10 flex justify-between items-start">
                     <div>
                         <span class="text-indigo-200 text-[10px] font-bold uppercase tracking-widest">{{ $t('daily_detail') }}</span>
                         <h3 class="text-xl font-black mt-0.5 capitalize">{{ formattedDate }}</h3>
                     </div>
-                    <button @click="close" class="bg-white/10 hover:bg-white/20 p-1.5 rounded-lg transition">✕</button>
+                    <button @click="close" class="bg-white dark:bg-slate-900/10 hover:bg-white dark:bg-slate-900/20 p-1.5 rounded-lg transition">✕</button>
                 </div>
                 
                 <div class="flex gap-3 mt-4">
-                    <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 flex-1">
+                    <div class="bg-white dark:bg-slate-900/10 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 flex-1">
                         <span class="text-[10px] text-indigo-100 uppercase block font-bold">{{ $t('income') }}</span>
                         <span class="text-sm font-bold text-emerald-300">+ {{ formatMoney(dayData.total_income) }}</span>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 flex-1">
+                    <div class="bg-white dark:bg-slate-900/10 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 flex-1">
                         <span class="text-[10px] text-indigo-100 uppercase block font-bold">{{ $t('expense') }}</span>
                         <span class="text-sm font-bold text-rose-300">- {{ formatMoney(dayData.total_expense) }}</span>
                     </div>
@@ -78,7 +78,7 @@ const handleDeleteAction = (id) => {
 
             <div class="p-0 bg-slate-50 max-h-[60vh] overflow-y-auto custom-scrollbar">
                 <div class="divide-y divide-slate-100">
-                    <div v-for="trx in dayData.transactions" :key="trx.id" class="bg-white p-4 flex items-center gap-3 hover:bg-slate-50 transition group">
+                    <div v-for="trx in dayData.transactions" :key="trx.id" class="bg-white dark:bg-slate-900 p-4 flex items-center gap-3 hover:bg-slate-50 transition group">
                         
                         <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 transition-colors" :class="getCategoryDetails(trx.category, categories).bg || 'bg-slate-100'">
                             {{ getCategoryDetails(trx.category, categories).icon }}

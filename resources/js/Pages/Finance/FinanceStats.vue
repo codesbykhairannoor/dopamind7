@@ -59,7 +59,7 @@ const saveSalary = () => {
                                 {{ formatMoney(stats.balance) }}
                             </h3>
                         </div>
-                        <div class="bg-white/10 p-2 rounded-xl backdrop-blur-md">
+                        <div class="bg-white dark:bg-slate-900/10 p-2 rounded-xl backdrop-blur-md">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
                         </div>
                     </div>
@@ -72,13 +72,13 @@ const saveSalary = () => {
                          <span class="text-[10px] font-medium text-indigo-100">{{ $t('monthly_finance_desc') }}</span>
                     </div>
                 </div>
-                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-48 h-48 bg-white dark:bg-slate-900/10 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-48 h-48 bg-fuchsia-500/20 rounded-full blur-3xl"></div>
             </div>
 
             <div class="lg:col-span-5 grid grid-rows-2 gap-4">
                 
-                <div class="bg-white border border-slate-100 rounded-[2rem] px-6 py-5 shadow-sm hover:shadow-md transition-all relative overflow-hidden group flex items-center justify-between">
+                <div class="bg-white dark:bg-slate-900 border border-slate-100 rounded-[2rem] px-6 py-5 shadow-sm hover:shadow-md transition-all relative overflow-hidden group flex items-center justify-between">
                     <div class="flex-1 min-w-0"> 
                         <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 flex items-center gap-1">
                             {{ $t('base_capital') }}

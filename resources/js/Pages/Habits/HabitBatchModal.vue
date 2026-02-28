@@ -37,9 +37,9 @@ onUnmounted(() => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="2xl">
-        <div class="bg-white flex flex-col max-h-[85vh] relative overflow-hidden transition-all duration-300 border border-slate-200 shadow-2xl rounded-[2.5rem]">
+        <div class="bg-white dark:bg-slate-900 flex flex-col max-h-[85vh] relative overflow-hidden transition-all duration-300 border border-slate-200 shadow-2xl rounded-[2.5rem]">
             
-            <div class="px-6 md:px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-white z-20 shrink-0">
+            <div class="px-6 md:px-8 py-6 border-b border-slate-100 flex justify-between items-center bg-white dark:bg-slate-900 z-20 shrink-0">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-indigo-200 shrink-0">
                         ⚡
@@ -76,7 +76,7 @@ onUnmounted(() => {
 
                 <div class="space-y-4 md:space-y-3">
                     <div v-for="(trx, index) in form.habits" :key="index" 
-                        class="bg-white md:bg-transparent p-5 md:p-0 rounded-[2rem] md:rounded-none border border-slate-100 md:border-none shadow-sm md:shadow-none relative group animate-in fade-in slide-in-from-bottom-4 duration-300">
+                        class="bg-white dark:bg-slate-900 md:bg-transparent p-5 md:p-0 rounded-[2rem] md:rounded-none border border-slate-100 md:border-none shadow-sm md:shadow-none relative group animate-in fade-in slide-in-from-bottom-4 duration-300">
                         
                         <div class="flex justify-between items-center mb-4 md:hidden">
                             <span class="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-lg bg-indigo-50 text-indigo-500">
@@ -87,12 +87,12 @@ onUnmounted(() => {
                             </button>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-3 items-center md:bg-white md:p-2.5 md:rounded-2xl md:border md:border-slate-200 md:shadow-sm">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-3 items-center md:bg-white dark:bg-slate-900 md:p-2.5 md:rounded-2xl md:border md:border-slate-200 md:shadow-sm">
                             
                             <div class="col-span-1 md:col-span-4">
                                 <label class="md:hidden text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">{{ $t('habit_name', 'Nama Habit') }}</label>
                                 <input v-model="trx.name" :placeholder="$t('habit_name_placeholder', 'Cth: Lari Pagi...')" 
-                                    class="w-full text-xs font-bold h-12 md:h-11 px-4 !rounded-xl border-2 border-slate-200 bg-slate-50 focus:bg-white focus:border-indigo-500 transition-all focus:ring-0" 
+                                    class="w-full text-xs font-bold h-12 md:h-11 px-4 !rounded-xl border-2 border-slate-200 bg-slate-50 focus:bg-white dark:bg-slate-900 focus:border-indigo-500 transition-all focus:ring-0" 
                                     :class="{'!border-rose-300 !bg-rose-50 placeholder-rose-300': form.errors?.[`habits.${index}.name`]}" />
                             </div>
 
@@ -100,14 +100,14 @@ onUnmounted(() => {
                                 <label class="md:hidden text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">{{ $t('habit_icon', 'Ikon') }}</label>
                                 
                                 <button type="button" @click="openIconDropdown = openIconDropdown === index ? null : index" 
-                                    class="w-full h-12 md:h-11 flex items-center justify-center gap-2 border-2 border-slate-200 bg-slate-50 hover:bg-white rounded-xl transition-all focus:border-indigo-500"
-                                    :class="openIconDropdown === index ? 'border-indigo-500 ring-2 ring-indigo-100 bg-white' : ''">
+                                    class="w-full h-12 md:h-11 flex items-center justify-center gap-2 border-2 border-slate-200 bg-slate-50 hover:bg-white dark:bg-slate-900 rounded-xl transition-all focus:border-indigo-500"
+                                    :class="openIconDropdown === index ? 'border-indigo-500 ring-2 ring-indigo-100 bg-white dark:bg-slate-900' : ''">
                                     <span class="text-xl">{{ trx.icon }}</span>
                                     <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M19 9l-7 7-7-7"/></svg>
                                 </button>
 
                                 <transition enter-active-class="transition ease-out duration-100" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
-                                    <div v-if="openIconDropdown === index" class="absolute z-[100] top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white border border-slate-200 rounded-2xl shadow-xl p-3 grid grid-cols-4 gap-2 origin-top max-h-48 overflow-y-auto custom-scrollbar">
+                                    <div v-if="openIconDropdown === index" class="absolute z-[100] top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white dark:bg-slate-900 border border-slate-200 rounded-2xl shadow-xl p-3 grid grid-cols-4 gap-2 origin-top max-h-48 overflow-y-auto custom-scrollbar">
                                         <button type="button" v-for="icon in iconList" :key="icon" 
                                             @click="trx.icon = icon; openIconDropdown = null"
                                             class="w-8 h-8 flex items-center justify-center text-lg rounded-lg hover:bg-indigo-50 hover:scale-110 transition-all"
@@ -133,7 +133,7 @@ onUnmounted(() => {
                                 <label class="md:hidden text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">{{ $t('target_days', 'Target (Hari)') }}</label>
                                 <div class="relative flex items-center">
                                     <input type="number" v-model="trx.monthly_target" min="1" max="31" 
-                                        class="w-full text-center text-xs font-black h-12 md:h-11 pl-2 pr-6 !rounded-xl border-2 border-slate-200 bg-slate-50 focus:bg-white focus:border-indigo-500 transition-all focus:ring-0 text-indigo-700" 
+                                        class="w-full text-center text-xs font-black h-12 md:h-11 pl-2 pr-6 !rounded-xl border-2 border-slate-200 bg-slate-50 focus:bg-white dark:bg-slate-900 focus:border-indigo-500 transition-all focus:ring-0 text-indigo-700" 
                                         :class="{'!border-rose-300 !bg-rose-50 text-rose-600': form.errors?.[`habits.${index}.monthly_target`]}" />
                                     <span class="absolute right-3 text-[9px] font-bold text-slate-400 uppercase tracking-widest pointer-events-none">Hr</span>
                                 </div>
@@ -158,7 +158,7 @@ onUnmounted(() => {
                 </button>
             </div>
 
-            <div class="px-6 md:px-8 py-5 bg-white border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 z-20 rounded-b-[2.5rem]">
+            <div class="px-6 md:px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 z-20 rounded-b-[2.5rem]">
                 <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
                     {{ $t('total_input', 'Total Input:') }} <span class="text-indigo-600 text-sm font-black">{{ form.habits.length }}</span>

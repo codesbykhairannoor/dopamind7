@@ -53,7 +53,7 @@ const formatCurrency = (angka) => {
                     <div v-if="show" class="relative w-full max-w-2xl bg-slate-50/95 backdrop-blur-xl rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(79,70,229,0.4)] overflow-hidden flex flex-col max-h-[90vh]">
                         
                         <div class="px-6 py-6 sm:px-8 bg-gradient-to-br from-indigo-600 to-blue-700 text-white relative overflow-hidden shrink-0">
-                            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white dark:bg-slate-900/10 rounded-full blur-2xl"></div>
                             <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-32 h-32 bg-indigo-900/20 rounded-full blur-xl"></div>
                             
                             <div class="flex items-center justify-between relative z-10">
@@ -61,7 +61,7 @@ const formatCurrency = (angka) => {
                                     <p class="text-indigo-200 text-[10px] sm:text-xs font-black tracking-widest uppercase mb-1">{{ $t('calendar_day_summary') }}</p>
                                     <h2 class="text-xl sm:text-3xl font-black tracking-tight drop-shadow-sm">{{ displayDate }}</h2>
                                 </div>
-                                <button @click="emit('close')" class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 border border-white/10 backdrop-blur-sm transition-all text-white active:scale-90">
+                                <button @click="emit('close')" class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white dark:bg-slate-900/10 hover:bg-white dark:bg-slate-900/20 border border-white/10 backdrop-blur-sm transition-all text-white active:scale-90">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
                                 </button>
                             </div>
@@ -79,7 +79,7 @@ const formatCurrency = (angka) => {
                                     
                                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                                         
-                                        <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                                        <div class="bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group">
                                             <div class="absolute -right-2 -top-2 text-4xl opacity-5 group-hover:scale-110 transition-transform">📓</div>
                                             <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{{ $t('calendar_journal') }}</p>
                                             <div v-if="dayData.hasJournal" class="flex items-center gap-1.5 text-purple-600">
@@ -89,7 +89,7 @@ const formatCurrency = (angka) => {
                                             <p v-else class="text-xs font-bold text-slate-300">-</p>
                                         </div>
 
-                                        <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                                        <div class="bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group">
                                             <div class="absolute -right-2 -top-2 text-4xl opacity-5 group-hover:scale-110 transition-transform">💸</div>
                                             <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{{ $t('calendar_expense_short') }}</p>
                                             <p class="text-sm sm:text-base font-black text-rose-500 truncate" :title="formatCurrency(dayData.expense)">
@@ -97,7 +97,7 @@ const formatCurrency = (angka) => {
                                             </p>
                                         </div>
 
-                                        <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                                        <div class="bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group">
                                             <div class="absolute -right-2 -top-2 text-4xl opacity-5 group-hover:scale-110 transition-transform">🌱</div>
                                             <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{{ $t('calendar_habits') }}</p>
                                             <div v-if="dayData.habitDone > 0" class="flex items-baseline gap-1">
@@ -107,7 +107,7 @@ const formatCurrency = (angka) => {
                                             <p v-else class="text-xs font-bold text-slate-300">-</p>
                                         </div>
 
-                                        <div class="bg-white p-3 sm:p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group">
+                                        <div class="bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-2xl border border-slate-100 shadow-sm flex flex-col justify-between relative overflow-hidden group">
                                             <div class="absolute -right-2 -top-2 text-4xl opacity-5 group-hover:scale-110 transition-transform">📅</div>
                                             <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">{{ $t('calendar_tasks') }}</p>
                                             <div v-if="dayData.planner" class="flex items-baseline gap-1">
@@ -130,14 +130,14 @@ const formatCurrency = (angka) => {
                                         </h3>
                                     </div>
                                     
-                                    <div v-if="dayData.events.length === 0" class="bg-white rounded-[1.5rem] p-8 border border-dashed border-slate-200 flex flex-col items-center justify-center text-center">
+                                    <div v-if="dayData.events.length === 0" class="bg-white dark:bg-slate-900 rounded-[1.5rem] p-8 border border-dashed border-slate-200 flex flex-col items-center justify-center text-center">
                                         <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-3 text-2xl">🍃</div>
                                         <h4 class="text-sm font-black text-slate-600 mb-1">{{ $t('calendar_no_events_title') }}</h4>
                                         <p class="text-xs font-medium text-slate-400">{{ $t('calendar_no_events_desc') }}</p>
                                     </div>
 
                                     <div v-else class="space-y-3">
-                                        <div v-for="ev in dayData.events" :key="ev.id" class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm flex items-start gap-4 group hover:shadow-md transition-shadow">
+                                        <div v-for="ev in dayData.events" :key="ev.id" class="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-slate-100 shadow-sm flex items-start gap-4 group hover:shadow-md transition-shadow">
                                             <div class="w-2 h-full min-h-[40px] rounded-full shrink-0" :style="`background-color: ${ev.color}`"></div>
                                             <div class="flex-1 py-0.5">
                                                 <h4 class="font-black text-slate-800 leading-tight text-sm sm:text-base">{{ ev.title }}</h4>

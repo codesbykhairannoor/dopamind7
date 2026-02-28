@@ -8,10 +8,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Storage; // <--- WAJIB: Buat akses S3/Local
-use Inertia\Inertia; // <--- WAJIB: Buat kompres gambar
+use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
 use Inertia\Response;
-use Intervention\Image\Laravel\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -33,39 +32,26 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        // 1. Validasi Data Teks (Nama & Email)
-        $user->fill($request->validated());
+        // 🔥 FIX: Hanya ambil 'name' dan 'email' untuk di-fill. 
+        // Jangan masukkan 'avatar' karena 'avatar' itu berupa file gambar, bukan teks biasa!
+        $user->fill($request->only(['name', 'email']));
 
         // =========================================================
-        // 📸 LOGIC UPLOAD AVATAR (ANTI NYESEL MASA DEPAN)
+        // 📸 LOGIC UPLOAD AVATAR (NATIVE LARAVEL - TANPA EXTENSION GD)
         // =========================================================
         if ($request->hasFile('avatar')) {
-            // Validasi Khusus Gambar (Max 2MB)
-            $request->validate([
-                'avatar' => ['image', 'mimes:jpeg,png,jpg', 'max:2048'],
-            ]);
-
-            // A. Hapus Avatar Lama (Jika ada)
-            // Biar storage gak penuh sama foto mantan (file lama)
+            
+            // A. Hapus Avatar Lama (Jika ada) supaya storage tidak penuh
             if ($user->avatar_path) {
-                Storage::delete($user->avatar_path);
+                Storage::disk('public')->delete($user->avatar_path);
             }
 
-            // B. Proses Kompresi & Resize
-            // Kita paksa jadi kotak 300x300 biar rapi di lingkaran CSS
-            $image = Image::read($request->file('avatar'))
-                ->cover(300, 300) // Crop tengah (Center)
-                ->toJpeg(80);     // Convert ke JPG kualitas 80% (Hemat Size)
+            // B. Simpan file asli langsung ke storage (storage/app/public/avatars)
+            // Otomatis membuat nama file hash yang unik
+            $path = $request->file('avatar')->store('avatars', 'public');
 
-            // C. Buat Nama File Unik
-            // Format: avatars/USERID-TIMESTAMP.jpg
-            $filename = 'avatars/'.$user->id.'-'.time().'.jpg';
-
-            // D. Upload ke Storage (Otomatis detect S3 atau Local dari .env)
-            Storage::put($filename, $image);
-
-            // E. Simpan Path ke Database
-            $user->avatar_path = $filename;
+            // C. Simpan Path ke Database (Tabel kita pakainya avatar_path)
+            $user->avatar_path = $path;
         }
         // =========================================================
 
@@ -94,7 +80,7 @@ class ProfileController extends Controller
 
         // 🔥 TAMBAHAN: Hapus foto profil dari storage pas akun dihapus
         if ($user->avatar_path) {
-            Storage::delete($user->avatar_path);
+            Storage::disk('public')->delete($user->avatar_path);
         }
 
         $user->delete();

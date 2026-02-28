@@ -1435,12 +1435,19 @@
     "transaction": "Transaksi",
     "out": "Keluar",
     "in": "Masuk",
+    "status_active": "Aktif",
+    "preparing_analytics": "Menyiapkan Analitik...",
+    "avg_daily_spend": "Rata-Rata Harian",
+    "per_day": "/ hari",
+    "most_wasteful": "Paling Boros",
+    "busiest_day": "Paling Sibuk",
+    "transactions_count": "Transaksi",
     
     "available_balance": "Sisa Saldo Tersedia",
     "monthly_finance_desc": "Keuanganmu bulan ini",
     "base_capital": "Base / Modal",
     "daily_history": "Riwayat Harian",
-    "last_5": "4 Terakhir",
+    "last_5": "5 Terakhir",
     "search_result": "Hasil Pencarian",
     "no_transaction": "Belum ada transaksi di bulan ini",
     "daily_net": "Net Harian",
@@ -1578,9 +1585,49 @@
   "calendar_finance": "Finance",
   "calendar_journal_short": "Journal",
   "calendar_habits_short": "Habit",
-  "calendar_tasks_short": "Tasks"
+  "calendar_tasks_short": "Tasks",
    
 
+    "profile_settings": "Pengaturan Profil",
+    "profile_info_title": "Informasi Pribadi",
+    "profile_info_desc": "Perbarui foto profil, nama, dan alamat email akun Anda.",
+    "change_photo": "Ganti Foto",
+    "photo_format_allowed": "Format yang diizinkan: JPG, JPEG, PNG.",
+    "photo_max_size": "Maksimal ukuran file: 2MB.",
+    "full_name": "Nama Lengkap",
+    "email_address": "Alamat Email",
+    "save_changes": "Simpan Perubahan",
+    "saved": "Tersimpan",
+    
+    "password_security_title": "Keamanan Sandi",
+    "password_security_desc": "Pastikan akun Anda menggunakan kata sandi acak yang panjang agar tetap aman.",
+    "current_password": "Sandi Saat Ini",
+    "new_password": "Sandi Baru",
+    "confirm_new_password": "Konfirmasi Sandi Baru",
+    "update_password": "Perbarui Sandi",
+    "password_updated": "Sandi Berubah",
+    
+    "delete_account_title": "Hapus Akun",
+    "delete_account_desc": "Setelah akun Anda dihapus, semua data dan sumber daya yang terkait akan dihapus secara permanen. Pastikan Anda telah mengunduh data apa pun yang ingin Anda simpan.",
+    "delete_account_btn": "Hapus Akun Permanen",
+    "delete_account_confirm_title": "Apakah Anda yakin ingin menghapus akun Anda?",
+    "delete_account_confirm_desc": "Tindakan ini tidak dapat dibatalkan. Masukkan sandi Anda untuk mengonfirmasi.",
+    "your_password": "Sandi Anda",
+    "enter_password_placeholder": "Masukkan sandi...",
+
+    "edit_profile": "Edit Profil",
+    "settings_title": "Pengaturan",
+    "settings_desc": "Sesuaikan pengalaman aplikasi Oneformind Anda.",
+    "settings_language_title": "Bahasa Aplikasi",
+    "settings_language_desc": "Pilih bahasa antarmuka aplikasi.",
+    "settings_modules_title": "Modul Aplikasi",
+    "settings_modules_desc": "Aktifkan atau nonaktifkan fitur yang ingin kamu gunakan.",
+    "module_habit_desc": "Pantau kebiasaan harianmu",
+    "module_planner_desc": "Jadwal & Agenda Harian",
+    "module_finance_desc": "Atur budget & pengeluaran",
+    "module_journal_desc": "Catat kegiatan harian",
+    "settings_saved": "Pengaturan tersimpan otomatis!"
+   
 
 
 }

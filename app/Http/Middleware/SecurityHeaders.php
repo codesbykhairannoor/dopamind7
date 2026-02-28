@@ -20,7 +20,8 @@ class SecurityHeaders
         // 2. CSP (Content Security Policy)
         if (app()->environment('local')) {
             // Longgar di lokal agar Vite dan Debugbar lancar
-            $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: data: blob:; style-src 'self' 'unsafe-inline' https: http:; img-src 'self' data: https: http:; font-src 'self' data: https: http:; connect-src 'self' https: http: ws: wss:;";
+            // 🔥 FIX: Ditambahkan 'blob:' pada img-src agar preview gambar URL.createObjectURL() diizinkan
+            $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: data: blob:; style-src 'self' 'unsafe-inline' https: http:; img-src 'self' data: https: http: blob:; font-src 'self' data: https: http:; connect-src 'self' https: http: ws: wss:;";
         } else {
             // KETAT DI PRODUCTION (Tapi mengizinkan GTM & Analytics)
             $csp = "default-src 'self'; ";
@@ -32,7 +33,8 @@ class SecurityHeaders
             $csp .= "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://cdnjs.cloudflare.com; ";
             
             // Image: Tambah Google Analytics (untuk tracking pixel)
-            $csp .= "img-src 'self' data: https: https://www.google-analytics.com https://www.googletagmanager.com; ";
+            // 🔥 FIX: Ditambahkan 'blob:' agar saat Production preview foto tetep jalan
+            $csp .= "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com; ";
             
             // Fonts
             $csp .= "font-src 'self' data: https://fonts.bunny.net; ";

@@ -104,7 +104,7 @@ const compactCurrency = (value) => {
                     class="min-h-[85px] sm:min-h-[140px] flex flex-col transition-all duration-500 relative group rounded-xl sm:rounded-[1.25rem] overflow-hidden border border-transparent"
                     :class="[
                         !day.date ? '' : 
-                        !day.isCurrentMonth ? 'bg-white/40 text-slate-300 border-slate-50' : 'bg-white border-slate-100 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-100/50 cursor-pointer hover:-translate-y-1 z-10',
+                        !day.isCurrentMonth ? 'bg-white dark:bg-slate-900/40 text-slate-300 border-slate-50' : 'bg-white dark:bg-slate-900 border-slate-100 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-100/50 cursor-pointer hover:-translate-y-1 z-10',
                     ]"
                 >
                     <template v-if="day.date">

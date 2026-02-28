@@ -17,7 +17,6 @@ const form = useForm({
 
 const confirmUserDeletion = () => {
     confirmingUserDeletion.value = true;
-
     nextTick(() => passwordInput.value.focus());
 };
 
@@ -32,7 +31,6 @@ const deleteUser = () => {
 
 const closeModal = () => {
     confirmingUserDeletion.value = false;
-
     form.reset();
 };
 </script>
@@ -40,53 +38,52 @@ const closeModal = () => {
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">Delete Account</h2>
-
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting
-                your account, please download any data or information that you wish to retain.
+            <h2 class="text-lg font-black text-rose-600 uppercase tracking-widest flex items-center gap-2">
+                ⚠️ {{ $t('delete_account_title', 'Hapus Akun') }}
+            </h2>
+            <p class="mt-1 text-sm text-rose-500/80 font-medium">
+                {{ $t('delete_account_desc', 'Setelah akun Anda dihapus, semua data dan sumber daya yang terkait akan dihapus secara permanen. Pastikan Anda telah mengunduh data apa pun yang ingin Anda simpan.') }}
             </p>
         </header>
 
-        <DangerButton @click="confirmUserDeletion">Delete Account</DangerButton>
+        <DangerButton @click="confirmUserDeletion" class="!rounded-xl !py-3.5 !px-8 !bg-rose-500 hover:!bg-rose-600 !shadow-lg !shadow-rose-200 !text-[11px] !font-black !uppercase !tracking-widest transition-all active:scale-95">
+            {{ $t('delete_account_btn', 'Hapus Akun Permanen') }}
+        </DangerButton>
 
-        <Modal :show="confirmingUserDeletion" @close="closeModal">
-            <div class="p-6">
-                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    Are you sure you want to delete your account?
+        <Modal :show="confirmingUserDeletion" @close="closeModal" maxWidth="md">
+            <div class="p-8 bg-white dark:bg-slate-900 rounded-[2rem]">
+                <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-3xl mb-6 mx-auto">
+                    🚨
+                </div>
+                
+                <h2 class="text-xl font-black text-slate-800 text-center mb-2 leading-tight">
+                    {{ $t('delete_account_confirm_title', 'Apakah Anda yakin ingin menghapus akun Anda?') }}
                 </h2>
-
-                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    Once your account is deleted, all of its resources and data will be permanently deleted. Please
-                    enter your password to confirm you would like to permanently delete your account.
+                <p class="text-sm text-slate-500 text-center mb-6 font-medium">
+                    {{ $t('delete_account_confirm_desc', 'Tindakan ini tidak dapat dibatalkan. Masukkan sandi Anda untuk mengonfirmasi.') }}
                 </p>
 
                 <div class="mt-6">
-                    <InputLabel for="password" value="Password" class="sr-only" />
-
+                    <InputLabel for="password" :value="$t('your_password', 'Sandi Anda')" class="sr-only" />
                     <TextInput
                         id="password"
                         ref="passwordInput"
                         v-model="form.password"
                         type="password"
-                        class="mt-1 block w-3/4"
-                        placeholder="Password"
+                        class="mt-1 block w-full !rounded-xl !border-slate-200 focus:!border-rose-500 focus:!ring-0 font-bold text-slate-700 h-14 px-4 text-center"
+                        :placeholder="$t('enter_password_placeholder', 'Masukkan sandi...')"
                         @keyup.enter="deleteUser"
                     />
-
-                    <InputError :message="form.errors.password" class="mt-2" />
+                    <InputError :message="form.errors.password" class="mt-2 text-center" />
                 </div>
 
-                <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> Cancel </SecondaryButton>
+                <div class="mt-6 flex gap-3">
+                    <SecondaryButton @click="closeModal" class="flex-1 !py-3.5 !rounded-xl !border-2 !border-slate-200 !text-slate-500 hover:!bg-slate-50 hover:!text-slate-700 justify-center !text-[11px] !font-black !uppercase !tracking-widest">
+                        {{ $t('cancel', 'Batal') }}
+                    </SecondaryButton>
 
-                    <DangerButton
-                        class="ms-3"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                        @click="deleteUser"
-                    >
-                        Delete Account
+                    <DangerButton class="flex-1 justify-center !rounded-xl !py-3.5 !bg-rose-600 hover:!bg-rose-700 !text-[11px] !font-black !uppercase !tracking-widest shadow-lg shadow-rose-200" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" @click="deleteUser">
+                        {{ $t('yes_delete', 'Ya, Hapus') }}
                     </DangerButton>
                 </div>
             </div>

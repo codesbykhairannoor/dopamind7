@@ -21,7 +21,7 @@ const todayDisplay = computed(() => {
 </script>
 
 <template>
-    <div class="relative z-[60] px-4 py-4 transition-all bg-white border-b shadow-sm border-slate-200 sm:px-6 lg:px-8 md:sticky md:top-0">
+    <div class="relative z-[60] px-4 py-4 transition-all bg-white dark:bg-slate-900 border-b shadow-sm border-slate-200 sm:px-6 lg:px-8 md:sticky md:top-0">
         <div class="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
             
             <div class="flex items-center w-full gap-4 md:w-auto">

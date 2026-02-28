@@ -270,7 +270,7 @@ const switchToSingle = () => {
                                 <div class="flex items-center gap-2">
                                     <button 
                                         @click="showFilterPicker = !showFilterPicker"
-                                        class="pl-3 pr-8 py-2 text-xs font-bold bg-white border border-slate-200 rounded-xl shadow-sm hover:border-indigo-300 hover:ring-2 hover:ring-indigo-500/10 transition-all flex items-center gap-2 min-w-[150px] relative"
+                                        class="pl-3 pr-8 py-2 text-xs font-bold bg-white dark:bg-slate-900 border border-slate-200 rounded-xl shadow-sm hover:border-indigo-300 hover:ring-2 hover:ring-indigo-500/10 transition-all flex items-center gap-2 min-w-[150px] relative"
                                         :class="filterDate ? 'text-indigo-600 border-indigo-200' : 'text-slate-500'"
                                     >
                                         <span class="text-base">📅</span>
@@ -314,18 +314,18 @@ const switchToSingle = () => {
                             </div>
                         </div>
 
-                        <div v-if="localTransactions.length === 0" class="text-center py-12 bg-white rounded-3xl border border-dashed border-slate-200">
+                        <div v-if="localTransactions.length === 0" class="text-center py-12 bg-white dark:bg-slate-900 rounded-3xl border border-dashed border-slate-200">
                             <div class="text-3xl mb-2">📒</div>
                             <p class="text-slate-400 text-sm font-medium">{{ $t('no_transaction') }}</p>
                         </div>
 
-                        <div v-else class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden divide-y divide-slate-50">
+                        <div v-else class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 overflow-hidden divide-y divide-slate-50">
                             <div v-for="day in visibleStats" :key="day.date" 
                                 @click="openDetail(day)"
                                 class="group p-4 flex items-center justify-between hover:bg-indigo-50/50 transition-colors cursor-pointer"
                             >
                                 <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex flex-col items-center justify-center group-hover:bg-white transition-all shadow-sm">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex flex-col items-center justify-center group-hover:bg-white dark:bg-slate-900 transition-all shadow-sm">
                                         <span class="text-[10px] uppercase font-black text-slate-400 leading-none">{{ day.dateObj.format('MMM') }}</span>
                                         <span class="text-xl font-black leading-none text-slate-700 mt-0.5">{{ day.dateObj.format('DD') }}</span>
                                     </div>
@@ -368,7 +368,12 @@ const switchToSingle = () => {
                         />
                     </div>
 
-                    <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" />
+                   <DailyTrendChart 
+    v-if="localTransactions.length" 
+    :transactions="localTransactions" 
+    :currentDate="filters.date"
+    @day-click="openDetail" 
+/>
                 </div>
 
                 <div class="lg:col-span-2 w-full md:sticky md:top-24 h-fit space-y-6"> 

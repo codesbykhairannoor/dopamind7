@@ -43,7 +43,7 @@ const confirmDelete = () => {
 
 <template>
     <Modal :show="show" @close="handleClose">
-        <div class="bg-white rounded-2xl relative overflow-hidden transition-all duration-300 border border-slate-100 shadow-2xl">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl relative overflow-hidden transition-all duration-300 border border-slate-100 shadow-2xl">
             
             <div v-if="isConfirmingDeletion" class="p-8 text-center animate-in fade-in zoom-in duration-200">
                 <div class="w-20 h-20 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -95,12 +95,12 @@ const confirmDelete = () => {
                     </div>
                 </div>
                 
-                <div class="p-6 space-y-5 bg-white">
+                <div class="p-6 space-y-5 bg-white dark:bg-slate-900">
                     <div>
                         <InputLabel :value="$t('label_activity')" class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ml-1" />
                         <TextInput 
                             v-model="form.title" 
-                            class="w-full text-sm font-bold py-3 px-4 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-0 transition-all bg-white" 
+                            class="w-full text-sm font-bold py-3 px-4 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-0 transition-all bg-white dark:bg-slate-900" 
                             :placeholder="$t('placeholder_activity')" 
                             autofocus 
                         />
@@ -140,7 +140,7 @@ const confirmDelete = () => {
                     <div>
                         <InputLabel :value="$t('label_notes')" class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5 ml-1" />
                         <textarea v-model="form.notes" 
-                            class="w-full border-2 border-slate-200 rounded-xl h-24 focus:border-indigo-500 focus:ring-0 resize-none p-4 text-sm font-medium text-slate-600 bg-white"
+                            class="w-full border-2 border-slate-200 rounded-xl h-24 focus:border-indigo-500 focus:ring-0 resize-none p-4 text-sm font-medium text-slate-600 bg-white dark:bg-slate-900"
                             :placeholder="$t('placeholder_notes')"></textarea>
                     </div>
 

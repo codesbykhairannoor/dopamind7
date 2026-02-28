@@ -18,6 +18,8 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            // 🔥 Tambahkan validasi avatar di sini agar file maksimal 2MB
+            'avatar' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:2048'], 
         ];
     }
 }

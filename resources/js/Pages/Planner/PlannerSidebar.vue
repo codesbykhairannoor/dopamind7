@@ -107,7 +107,7 @@ const categoryDistribution = computed(() => {
 <template>
     <div class="flex flex-col gap-6 pb-10 select-none">
         
-        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-200 relative overflow-hidden group">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] shadow-sm border border-slate-200 relative overflow-hidden group">
             <div class="absolute -right-4 -top-4 w-24 h-24 bg-indigo-50/50 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
             <div class="flex justify-between items-start mb-6 relative z-10">
                 <div>
@@ -134,7 +134,7 @@ const categoryDistribution = computed(() => {
             </div>
         </div>
 
-        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-200">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] shadow-sm border border-slate-200">
             <div class="flex justify-between items-center mb-5">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-xl">📥</div>
@@ -152,7 +152,7 @@ const categoryDistribution = computed(() => {
             </div>
             <div v-else class="space-y-3 max-h-[350px] overflow-y-auto pr-1 scrollbar-none">
                 <div v-for="task in localTaskBox" :key="task.id" 
-                    class="group flex items-center justify-between gap-3 p-3 rounded-2xl border-2 border-slate-50 bg-white hover:border-indigo-100 transition-all"
+                    class="group flex items-center justify-between gap-3 p-3 rounded-2xl border-2 border-slate-50 bg-white dark:bg-slate-900 hover:border-indigo-100 transition-all"
                     :class="{'opacity-50 grayscale-[0.5] bg-slate-50': task.is_completed}">
                     <div class="flex items-center gap-3 min-w-0 flex-1">
                         <button @click="toggleTaskComplete(task)" 
@@ -188,13 +188,13 @@ const categoryDistribution = computed(() => {
             </div>
         </div>
 
-        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-200">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] shadow-sm border border-slate-200">
             <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <span class="bg-orange-100 text-orange-600 p-1.5 rounded-lg text-xs">🍽️</span> {{ $t('sidebar_meal_title') }}
             </h3>
             <div class="space-y-3">
                 <div v-for="(icon, key) in { breakfast: '🍳', lunch: '🍱', dinner: '🥗' }" :key="key" 
-                    class="flex items-center gap-3 p-3 rounded-2xl bg-orange-50/30 border border-orange-50 focus-within:bg-white focus-within:border-orange-200 transition-all">
+                    class="flex items-center gap-3 p-3 rounded-2xl bg-orange-50/30 border border-orange-50 focus-within:bg-white dark:bg-slate-900 focus-within:border-orange-200 transition-all">
                     <span class="text-xl flex-shrink-0">{{ icon }}</span>
                     <input :value="localMeals?.[key]" @input="$emit('update:localMeals', { ...localMeals, [key]: $event.target.value })" 
                         class="w-full text-xs font-black border-0 focus:ring-0 p-0 bg-transparent text-slate-700 placeholder-orange-200" 
@@ -203,7 +203,7 @@ const categoryDistribution = computed(() => {
             </div>
         </div>
 
-        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-200">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] shadow-sm border border-slate-200">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
                     <span class="bg-blue-100 text-blue-600 p-1.5 rounded-lg text-xs">💧</span> {{ $t('sidebar_water_title') }}
@@ -214,7 +214,7 @@ const categoryDistribution = computed(() => {
                 <button v-for="glass in 8" :key="glass" type="button"
                     @click="updateWater(glass)"
                     class="h-10 flex items-center justify-center transition-all duration-300 transform active:scale-75 rounded-xl"
-                    :class="glass <= localWater ? 'bg-white shadow-md' : 'opacity-20 grayscale'">
+                    :class="glass <= localWater ? 'bg-white dark:bg-slate-900 shadow-md' : 'opacity-20 grayscale'">
                     <span class="text-lg">💧</span>
                 </button>
             </div>

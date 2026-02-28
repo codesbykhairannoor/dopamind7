@@ -65,7 +65,7 @@ const isToday = (day) => dayjs().format('YYYY-MM-DD') === currentMonth.value.dat
     <div v-if="show" class="w-[280px] sm:w-[320px]">
         <div class="fixed inset-0 z-40" @click="emit('close')"></div>
 
-        <div class="relative z-50 bg-white rounded-3xl shadow-xl border border-slate-100 p-5">
+        <div class="relative z-50 bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-100 p-5">
             <div class="flex items-center justify-between mb-4">
                 <button @click.prevent="prevMonth" class="p-2 rounded-xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600 transition">◀</button>
                 <h4 class="font-bold text-slate-700 capitalize text-sm">{{ formattedHeader }}</h4>

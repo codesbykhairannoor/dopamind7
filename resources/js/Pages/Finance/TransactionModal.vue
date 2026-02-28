@@ -64,7 +64,7 @@ const onInput = (e) => {
     <Modal :show="show" @close="close" maxWidth="md">
         <div class="bg-slate-50 flex flex-col max-h-[85vh] relative overflow-hidden transition-all duration-300 border border-slate-200 shadow-2xl rounded-[2.5rem]">
             
-            <div class="px-6 md:px-8 py-6 border-b border-slate-200 flex justify-between items-center bg-white z-20 shrink-0">
+            <div class="px-6 md:px-8 py-6 border-b border-slate-200 flex justify-between items-center bg-white dark:bg-slate-900 z-20 shrink-0">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-indigo-200 shrink-0">
                         ✨
@@ -87,10 +87,10 @@ const onInput = (e) => {
             <div class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-8 space-y-5">
                 
                 <div class="flex bg-slate-100 p-1.5 rounded-2xl">
-                    <button type="button" @click="form.type = 'expense'" class="flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2" :class="form.type === 'expense' ? 'bg-white text-rose-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">
+                    <button type="button" @click="form.type = 'expense'" class="flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2" :class="form.type === 'expense' ? 'bg-white dark:bg-slate-900 text-rose-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">
                         {{ $t('out', 'Keluar') }}
                     </button>
-                    <button type="button" @click="form.type = 'income'" class="flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2" :class="form.type === 'income' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">
+                    <button type="button" @click="form.type = 'income'" class="flex-1 py-3 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2" :class="form.type === 'income' ? 'bg-white dark:bg-slate-900 text-emerald-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">
                         {{ $t('in', 'Masuk') }}
                     </button>
                 </div>
@@ -102,7 +102,7 @@ const onInput = (e) => {
                     <div class="relative group">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 font-black text-lg" :class="form.type === 'expense' ? 'text-rose-500' : 'text-emerald-500'">{{ currencySymbol }}</span>
                         <input type="text" :value="formatDisplay(form.amount)" @input="onInput" placeholder="0" 
-                            class="w-full pl-12 pr-4 h-14 rounded-xl border-2 bg-white focus:ring-0 font-black text-2xl transition-all"
+                            class="w-full pl-12 pr-4 h-14 rounded-xl border-2 bg-white dark:bg-slate-900 focus:ring-0 font-black text-2xl transition-all"
                             :class="[
                                 form.errors?.amount ? '!border-rose-300 !bg-rose-50 text-rose-600' : 'border-slate-200 text-slate-700',
                                 form.type === 'expense' ? 'focus:border-rose-500' : 'focus:border-emerald-500'
@@ -113,7 +113,7 @@ const onInput = (e) => {
                 <div>
                     <label class="block text-[10px] uppercase font-black text-slate-400 tracking-widest mb-2">{{ $t('description', 'Keterangan') }}</label>
                     <input v-model="form.title" type="text" :placeholder="$t('desc_placeholder', 'Cth: Kopi, Gaji...')" 
-                        class="w-full px-4 h-12 rounded-xl border-2 border-slate-200 bg-white focus:border-indigo-500 focus:ring-0 font-bold text-sm text-slate-700 transition-all"
+                        class="w-full px-4 h-12 rounded-xl border-2 border-slate-200 bg-white dark:bg-slate-900 focus:border-indigo-500 focus:ring-0 font-bold text-sm text-slate-700 transition-all"
                         :class="{'!border-rose-300 !bg-rose-50 text-rose-600 placeholder-rose-300': form.errors?.title}">
                 </div>
 
@@ -121,7 +121,7 @@ const onInput = (e) => {
                     <div>
                         <label class="block text-[10px] uppercase font-black text-slate-400 tracking-widest mb-2">{{ $t('category', 'Kategori') }}</label>
                         <div class="relative">
-                            <select v-model="form.category" class="w-full pl-4 pr-8 h-12 rounded-xl border-2 border-slate-200 bg-white focus:border-indigo-500 focus:ring-0 font-bold text-slate-700 capitalize text-sm appearance-none cursor-pointer transition-all"
+                            <select v-model="form.category" class="w-full pl-4 pr-8 h-12 rounded-xl border-2 border-slate-200 bg-white dark:bg-slate-900 focus:border-indigo-500 focus:ring-0 font-bold text-slate-700 capitalize text-sm appearance-none cursor-pointer transition-all"
                                 :class="{'!border-rose-300 !bg-rose-50 text-rose-600': form.errors?.category}">
                                 <option value="" disabled>{{ $t('select_placeholder', 'Pilih...') }}</option>
                                 <option v-for="catSlug in availableCategories" :key="catSlug" :value="catSlug">
@@ -136,7 +136,7 @@ const onInput = (e) => {
 
                     <div class="relative">
                         <label class="block text-[10px] uppercase font-black text-slate-400 tracking-widest mb-2">{{ $t('date', 'Tanggal') }}</label>
-                        <button type="button" @click="showDatePicker = !showDatePicker" class="w-full px-4 h-12 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-300 font-bold text-slate-700 text-sm transition-all flex items-center justify-between">
+                        <button type="button" @click="showDatePicker = !showDatePicker" class="w-full px-4 h-12 rounded-xl border-2 border-slate-200 bg-white dark:bg-slate-900 hover:border-indigo-300 font-bold text-slate-700 text-sm transition-all flex items-center justify-between">
                             <span class="truncate">{{ dateDisplay }}</span>
                             <span class="text-slate-400">📅</span>
                         </button>
@@ -155,8 +155,8 @@ const onInput = (e) => {
 
             </div>
 
-            <div class="px-6 md:px-8 py-5 bg-white border-t border-slate-200 flex gap-3 z-20 shrink-0">
-                <SecondaryButton @click="close" class="flex-1 !py-3.5 !rounded-xl !text-[11px] !font-black !uppercase !tracking-widest !border-2 !text-slate-400 hover:!text-slate-600 hover:bg-slate-50 bg-white">
+            <div class="px-6 md:px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-200 flex gap-3 z-20 shrink-0">
+                <SecondaryButton @click="close" class="flex-1 !py-3.5 !rounded-xl !text-[11px] !font-black !uppercase !tracking-widest !border-2 !text-slate-400 hover:!text-slate-600 hover:bg-slate-50 bg-white dark:bg-slate-900">
                     {{ $t('btn_cancel', 'Batal') }}
                 </SecondaryButton>
                 

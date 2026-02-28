@@ -243,33 +243,47 @@ class FinanceController extends Controller
 
     // --- BATCH TRANSAKSI ---
     public function batchStoreTransaction(Request $request)
-    {
-        $request->validate([
-            'date' => 'required|date',
-            'transactions' => 'required|array|min:1',
-            'transactions.*.title' => 'required|string|max:255',
-            'transactions.*.amount' => 'required|numeric|min:1',
-            'transactions.*.type' => 'required|in:income,expense',
-            'transactions.*.category' => 'required|string',
-        ]);
+{
+    // 1. Validasi input tetap dipertahankan untuk keamanan data
+    $request->validate([
+        'date' => 'required|date',
+        'transactions' => 'required|array|min:1',
+        'transactions.*.title' => 'required|string|max:255',
+        'transactions.*.amount' => 'required|numeric|min:1',
+        'transactions.*.type' => 'required|in:income,expense',
+        'transactions.*.category' => 'required|string',
+    ]);
 
-        $userId = Auth::id();
-        $date = $request->date;
+    $userId = Auth::id();
+    $date = $request->date;
+    
+    // Karena menggunakan Query Builder (insert), timestamps harus diisi manual
+    $now = Carbon::now(); 
 
-        DB::transaction(function () use ($request, $userId, $date) {
-            foreach ($request->transactions as $trx) {
-                FinanceTransaction::create([
-                    'user_id' => $userId,
-                    'date' => $date,
-                    'title' => $trx['title'],
-                    'amount' => $trx['amount'],
-                    'type' => $trx['type'],
-                    'category' => $trx['category'],
-                    'notes' => $trx['notes'] ?? null,
-                ]);
-            }
-        });
-
-        return back();
+    // 2. Siapkan data dalam bentuk array koleksi
+    $insertData = [];
+    foreach ($request->transactions as $trx) {
+        $insertData[] = [
+            'user_id'    => $userId,
+            'date'       => $date,
+            'title'      => $trx['title'],
+            'amount'     => $trx['amount'],
+            'type'       => $trx['type'],
+            'category'   => $trx['category'],
+            'notes'      => $trx['notes'] ?? null,
+            'created_at' => $now, // Wajib diisi manual saat menggunakan insert()
+            'updated_at' => $now,
+        ];
     }
+
+    // 3. Jalankan Bulk Insert dalam satu transaksi database
+    DB::transaction(function () use ($insertData) {
+        if (!empty($insertData)) {
+            // Menggunakan insert() jauh lebih cepat daripada create() di dalam loop
+            FinanceTransaction::insert($insertData);
+        }
+    });
+
+    return back();
+}
 }

@@ -70,7 +70,7 @@ const getTaskTheme = (type) => {
             return { 
                 icon: '📝', 
                 labelKey: 'label_todo',
-                card: 'bg-white border-slate-200 hover:border-slate-300 shadow-sm',
+                card: 'bg-white dark:bg-slate-900 border-slate-200 hover:border-slate-300 shadow-sm',
                 text: 'text-slate-800',
                 subtext: 'text-slate-500',
                 badge: 'bg-slate-100 text-slate-700 border-slate-200',
@@ -154,7 +154,7 @@ const currentTimeIndicatorStyle = computed(() => {
 <template>
     <div class="bg-slate-50 rounded-3xl shadow-xl border border-slate-200 overflow-hidden select-none flex flex-col h-full">
         
-        <div class="px-6 py-4 border-b border-slate-200 bg-white sticky top-0 z-50 shadow-sm flex justify-between items-center shrink-0">
+        <div class="px-6 py-4 border-b border-slate-200 bg-white dark:bg-slate-900 sticky top-0 z-50 shadow-sm flex justify-between items-center shrink-0">
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-lg shadow-indigo-200 shadow-lg">📅</div>
                 <h3 class="font-black text-slate-800 text-base leading-none">{{ $t('timeline_title') }}</h3>
@@ -166,13 +166,13 @@ const currentTimeIndicatorStyle = computed(() => {
         class="flex items-center bg-slate-100 p-1 rounded-lg border border-slate-200 hover:bg-slate-200 transition-all group"
     >
         <span class="text-[10px] font-black text-slate-400 px-2 uppercase tracking-tighter">{{ $t('label_start') }}</span>
-        <div class="bg-white px-2 py-0.5 rounded-md shadow-sm border border-slate-200 flex items-center gap-1">
+        <div class="bg-white dark:bg-slate-900 px-2 py-0.5 rounded-md shadow-sm border border-slate-200 flex items-center gap-1">
             <span class="text-xs font-black text-indigo-600 font-mono">{{ startHour.toString().padStart(2, '0') }}:00</span>
             <svg class="w-3 h-3 text-slate-400 group-hover:text-indigo-500 transition-transform" :class="{'rotate-180': isStartHourOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/></svg>
         </div>
     </button>
 
-    <div v-if="isStartHourOpen" class="absolute right-0 top-full mt-2 w-72 bg-white rounded-[1.5rem] shadow-2xl border border-slate-100 p-4 z-[60] animate-in fade-in zoom-in-95 duration-200">
+    <div v-if="isStartHourOpen" class="absolute right-0 top-full mt-2 w-72 bg-white dark:bg-slate-900 rounded-[1.5rem] shadow-2xl border border-slate-100 p-4 z-[60] animate-in fade-in zoom-in-95 duration-200">
         <div class="flex justify-between items-center mb-4 px-1">
             <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ $t('select_hour') }}</span>
             <button @click="isStartHourOpen = false" class="text-slate-300 hover:text-rose-500 transition-colors">
@@ -198,7 +198,7 @@ const currentTimeIndicatorStyle = computed(() => {
 </div>
         </div>
         
-        <div class="flex-1 relative w-full bg-white overflow-y-auto overflow-x-hidden custom-scrollbar">
+        <div class="flex-1 relative w-full bg-white dark:bg-slate-900 overflow-y-auto overflow-x-hidden custom-scrollbar">
             
             <div class="relative w-full" :style="{ height: `${VIEW_LIMIT * HOUR_HEIGHT}px` }">
             
@@ -247,7 +247,7 @@ const currentTimeIndicatorStyle = computed(() => {
                                 </span>
                             </div>
 
-                            <button @click.stop="toggleComplete(task)" class="w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors bg-white hover:scale-110" 
+                            <button @click.stop="toggleComplete(task)" class="w-4 h-4 rounded border flex items-center justify-center shrink-0 transition-colors bg-white dark:bg-slate-900 hover:scale-110" 
                                 :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
                                 <svg v-if="task.is_completed" class="w-2.5 h-2.5 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
                             </button>
@@ -266,7 +266,7 @@ const currentTimeIndicatorStyle = computed(() => {
                                     </span>
                                 </div>
                                 
-                                <button @click.stop="toggleComplete(task)" class="w-5 h-5 rounded border bg-white flex items-center justify-center hover:scale-110 transition-transform shrink-0 shadow-sm" 
+                                <button @click.stop="toggleComplete(task)" class="w-5 h-5 rounded border bg-white dark:bg-slate-900 flex items-center justify-center hover:scale-110 transition-transform shrink-0 shadow-sm" 
                                     :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
                                     <svg v-if="task.is_completed" class="w-3 h-3 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
                                 </button>

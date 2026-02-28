@@ -69,7 +69,7 @@ const handleInstantSubmit = () => {
     <div v-if="show" class="fixed inset-0 z-50 flex items-center justify-center p-4">
         <div @click="close" class="absolute inset-0 bg-slate-900/30 backdrop-blur-md transition-opacity"></div>
         
-        <div class="bg-white w-full max-w-sm rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200">
+        <div class="bg-white dark:bg-slate-900 w-full max-w-sm rounded-[2rem] shadow-2xl z-10 p-6 animate-in zoom-in-95 duration-200">
             <h3 class="text-xl font-black text-slate-800 mb-6">
                 {{ form.id ? '✏️ ' + $t('edit_budget') : '🎯 ' + $t('new_budget') }}
             </h3>
@@ -82,7 +82,7 @@ const handleInstantSubmit = () => {
                             <button type="button" @click="showIconGrid = !showIconGrid" class="w-12 h-12 flex items-center justify-center bg-slate-50 rounded-xl text-2xl border border-slate-100 hover:bg-slate-100 transition">
                                 {{ form.icon }}
                             </button>
-                            <div v-if="showIconGrid" class="absolute top-14 left-0 w-64 p-3 bg-white rounded-2xl shadow-xl border border-slate-100 z-50 grid grid-cols-6 gap-2 animate-in fade-in zoom-in-95 duration-100">
+                            <div v-if="showIconGrid" class="absolute top-14 left-0 w-64 p-3 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 z-50 grid grid-cols-6 gap-2 animate-in fade-in zoom-in-95 duration-100">
                                 <button v-for="icon in iconPalette" :key="icon" type="button" @click="form.icon = icon; showIconGrid = false" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-indigo-50 text-lg transition">
                                     {{ icon }}
                                 </button>

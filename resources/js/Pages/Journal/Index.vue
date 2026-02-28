@@ -22,7 +22,7 @@ const fireToast = (icon, message) => {
         customClass: {
             container: '!fixed !top-5 !right-5 !p-0 !z-[100000] !items-start !justify-end',
             popup: '!flex !items-center !gap-3 !py-3 !px-6 !rounded-full !shadow-2xl !border-none !m-0 !w-auto !min-w-[280px]',
-            timerProgressBar: '!bg-white/40 !h-1 !rounded-b-full'
+            timerProgressBar: '!bg-white dark:bg-slate-900/40 !h-1 !rounded-b-full'
         }
     });
 };
@@ -70,7 +70,7 @@ const deleteJournal = (id) => {
                 <h3 class="text-xl font-black text-slate-800">{{ $t('journal_history', 'Story History') }}</h3>
             </div>
 
-            <div v-if="journals.length === 0" class="text-center py-20 bg-white rounded-[2.5rem] border border-dashed border-slate-200 max-w-4xl mx-auto">
+            <div v-if="journals.length === 0" class="text-center py-20 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 max-w-4xl mx-auto">
                 <div class="mb-4 text-5xl opacity-50">🌱</div>
                 <h3 class="mb-2 text-xl font-black text-slate-700">{{ $t('journal_empty_title', 'Belum ada cerita.') }}</h3>
                 <p class="font-medium text-slate-400">{{ $t('journal_empty_subtitle', 'Mulai tulis jurnal pertamamu hari ini!') }}</p>
