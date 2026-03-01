@@ -1,0 +1,22 @@
+{
+    
+    "____ SECTION_4 ____": "=== DASHBOARD GENERAL ===",
+    "dash_greet_morning": "Good Morning",
+    "dash_greet_afternoon": "Good Afternoon",
+    "dash_greet_evening": "Good Evening",
+    "dash_greet_night": "Good Night",
+    "dash_welcome_sub": "Ready to make 1% progress today? Manage your habits, schedule, and finances all in one place.",
+    "dash_habit_desc": "Track your daily habits and build long-term consistency.",
+    "dash_planner_desc": "Organize your daily tasks to stay focused and productive.",
+    "dash_finance_desc": "Record expenses and income to maintain your financial health.",
+    "dash_open_module": "Open Module",
+    "dash_status_label": "Account Status",
+    "today_is" : "Today",
+    "greet_morning": "Good Morning",
+    "greet_noon": "Good Afternoon",
+    "greet_afternoon": "Good Afternoon",
+    "greet_night": "Good Evening",
+    "greet_subtitle": "Focus on today. Tomorrow is another day."
+
+   
+}

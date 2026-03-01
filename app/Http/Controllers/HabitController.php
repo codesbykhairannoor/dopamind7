@@ -30,6 +30,8 @@ class HabitController extends Controller
         $endOfMonth = $dateObj->copy()->endOfMonth()->format('Y-m-d');
 
         $habits = Habit::where('user_id', $user->id)
+        ->orderBy('position', 'asc') // 🔥 TAMBAHKAN INI
+            ->orderBy('created_at', 'asc')
             ->where('period', $monthQuery)
             ->with(['logs' => fn ($q) => $q->whereBetween('date', [$startOfMonth, $endOfMonth])])
             ->withCount(['logs as completed_count' => fn ($q) => $q->where('status', 'completed')])
@@ -230,4 +232,21 @@ class HabitController extends Controller
 
         return back()->with('success', 'Habit berhasil ditambahkan secara massal!');
     }
+
+    public function reorder(Request $request)
+{
+    $request->validate([
+        'habits' => 'required|array',
+        'habits.*.id' => 'required|exists:habits,id',
+        'habits.*.position' => 'required|integer',
+    ]);
+
+    foreach ($request->habits as $habitData) {
+        Habit::where('id', $habitData['id'])
+             ->where('user_id', Auth::id())
+             ->update(['position' => $habitData['position']]);
+    }
+
+    return response()->json(['message' => 'Urutan disimpan']);
+}
 }

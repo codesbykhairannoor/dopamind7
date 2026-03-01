@@ -1,4 +1,4 @@
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
 import { usePage, router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 import axios from 'axios';
@@ -28,7 +28,6 @@ export function useHabitCore(props) {
         let completed = 0;
         
         localHabits.value.forEach(h => {
-            // ✅ SPEED: Langsung cek key, gak pake .find()
             if (h.logs && h.logs[todayStr] === 'completed') {
                 completed++;
             }
@@ -49,12 +48,52 @@ export function useHabitCore(props) {
         return Math.round(totalPercent / localHabits.value.length);
     });
 
-    // --- TOGGLE LOGIC ---
     const getStatus = (habit, dateString) => {
-        // ✅ SPEED: O(1) Access
         return habit.logs && habit.logs[dateString] ? habit.logs[dateString] : 'empty';
     };
 
+    // --- SPREADSHEET-LIKE DRAG & SELECT LOGIC 🔥 ---
+    const isDragging = ref(false);
+    const selectedCells = ref(new Set()); // Set agar tidak ada duplikat 'habitId_date'
+
+    // Format ID unik untuk sel: "habitId|dateString"
+    const getCellId = (habitId, dateString) => `${habitId}|${dateString}`;
+
+    // 1. Mouse ditekan (Mulai Blok)
+    const handleMouseDown = (habitId, dateString) => {
+        if (dayjs(dateString).isAfter(dayjs(), 'day')) return; // Jangan bisa blok masa depan
+        isDragging.value = true;
+        
+        // Opsional: Kalau ditekan tanpa shift/ctrl, reset blok yang lama
+        if (!window.event.ctrlKey && !window.event.shiftKey) {
+            selectedCells.value.clear();
+        }
+        
+        selectedCells.value.add(getCellId(habitId, dateString));
+    };
+
+    // 2. Mouse digeser sambil ditekan (Meluaskan Blok)
+    const handleMouseEnter = (habitId, dateString) => {
+        if (!isDragging.value) return;
+        if (dayjs(dateString).isAfter(dayjs(), 'day')) return;
+        selectedCells.value.add(getCellId(habitId, dateString));
+    };
+
+    // 3. Mouse dilepas (Selesai Blokir)
+    const handleMouseUp = () => {
+        isDragging.value = false;
+    };
+
+    // Cek apakah sel ini lagi di-blok? (Buat UI css)
+    const isCellSelected = (habitId, dateString) => {
+        return selectedCells.value.has(getCellId(habitId, dateString));
+    };
+
+    // Supaya kalau user ngelepas klik di luar grid, drag-nya tetep berhenti
+    onMounted(() => window.addEventListener('mouseup', handleMouseUp));
+    onUnmounted(() => window.removeEventListener('mouseup', handleMouseUp));
+
+    // --- SINGLE TOGGLE ---
     const toggleStatus = async (habitId, dateString, forceStatus = null) => {
         if (dayjs(dateString).isAfter(dayjs(), 'day')) return;
 
@@ -62,7 +101,6 @@ export function useHabitCore(props) {
         if (habitIndex === -1) return;
         const habit = localHabits.value[habitIndex];
 
-        // ✅ SPEED: Ambil status lama langsung dari object
         const currentStatus = habit.logs[dateString] || 'empty';
 
         let newStatus = 'completed';
@@ -72,37 +110,115 @@ export function useHabitCore(props) {
             newStatus = (currentStatus === 'completed' || currentStatus === 'skipped') ? 'uncheck' : 'completed';
         }
 
-        // ✅ Update Object (Optimistic)
+        // Optimistic UI
         if (newStatus === 'uncheck') {
             delete habit.logs[dateString];
         } else {
             habit.logs[dateString] = newStatus;
         }
 
-        // Recalculate Progress (Hitung dari value object logs)
+        // Recalculate
         const newCompletedCount = Object.values(habit.logs).filter(status => status === 'completed').length;
-        
         habit.progress_count = newCompletedCount;
         habit.progress_percent = habit.monthly_target > 0
             ? Math.min(100, Math.round((newCompletedCount / habit.monthly_target) * 100))
             : 0;
 
         try {
-            // Tetap kirim ke server di background
             await axios.post(route('habits.log', habitId), { date: dateString, status: newStatus });
         } catch (e) {
             console.error("Gagal save:", e);
         }
     };
 
+    // --- MULTI-TOGGLE (SPASI PADA SEL YG DIBLOK) 🔥 ---
+    const toggleSelectedCells = async () => {
+        if (selectedCells.value.size === 0) return;
+
+        // Asumsi: Kita akan nembak semua cell jadi 'completed' (atau 'uncheck' kalau udah komplit semua)
+        // Cek dulu apakah mayoritas udah completed?
+        let isAllCompleted = true;
+        let payloadQueue = [];
+
+        // Loop untuk update UI secara Optimistic seketika!
+        selectedCells.value.forEach(cellId => {
+            const [hIdStr, dStr] = cellId.split('|');
+            const hId = parseInt(hIdStr);
+            const habit = localHabits.value.find(h => h.id === hId);
+            
+            if (habit) {
+                if (habit.logs[dStr] !== 'completed') isAllCompleted = false;
+            }
+        });
+
+        // Tentukan target status massalnya (Kalau full centang, maka dibikin kosong. Sebaliknya jadi centang)
+        const targetStatus = isAllCompleted ? 'uncheck' : 'completed';
+
+        // Apply ke memori UI
+        selectedCells.value.forEach(cellId => {
+            const [hIdStr, dStr] = cellId.split('|');
+            const hId = parseInt(hIdStr);
+            const habit = localHabits.value.find(h => h.id === hId);
+            
+            if (habit) {
+                if (targetStatus === 'uncheck') {
+                    delete habit.logs[dStr];
+                } else {
+                    habit.logs[dStr] = targetStatus;
+                }
+
+                // Kalkulasi ulang bar
+                const newCompletedCount = Object.values(habit.logs).filter(status => status === 'completed').length;
+                habit.progress_count = newCompletedCount;
+                habit.progress_percent = habit.monthly_target > 0
+                    ? Math.min(100, Math.round((newCompletedCount / habit.monthly_target) * 100))
+                    : 0;
+
+                // Masukkan ke antrian untuk ditembak ke DB
+                payloadQueue.push({ habit_id: hId, date: dStr, status: targetStatus });
+            }
+        });
+
+        // Kosongkan blok seleksi setelah selesai
+        selectedCells.value.clear();
+
+        // Tembak massal ke server! (Gunakan endpoint log yang sama, bisa dioptimasi kalau server punya batch logic)
+        try {
+            // Karena ini pakai axios bawaan Laravel, ngirim N buah request sekaligus pakai Promise.all
+            // (Batas aman: biasanya < 20 sel sekali blok gak masalah)
+            await Promise.all(
+                payloadQueue.map(p => axios.post(route('habits.log', p.habit_id), { date: p.date, status: p.status }))
+            );
+        } catch (e) {
+            console.error("Gagal save massal:", e);
+        }
+    };
+
+
     // --- KEYBOARD NAV ---
     const handleGridNav = (e, hIndex, dIndex, habitId, dateString) => {
         const key = e.key;
+
+        // 🔥 BATCH TOGGLE TRIGGER (SPACE BAR)
         if (key === ' ') {
             e.preventDefault();
-            toggleStatus(habitId, dateString);
+            // Jika ada sel yang terblok, toggle semuanya. Kalau cuma 1 yang difokus, toggle 1 aja.
+            if (selectedCells.value.size > 1) {
+                toggleSelectedCells();
+            } else {
+                toggleStatus(habitId, dateString);
+                // Biar jelas seleksinya ilang
+                selectedCells.value.clear();
+            }
             return;
         }
+
+        // Kalau Esc, batalin blok
+        if (key === 'Escape') {
+            selectedCells.value.clear();
+            return;
+        }
+
         if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) return;
         e.preventDefault();
 
@@ -118,6 +234,15 @@ export function useHabitCore(props) {
         if (el) {
             el.focus();
             el.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'nearest' });
+
+            // Kalau user nahan SHIFT + Arah, langsung ke-blok! (Kayak Excel sungguhan)
+            if (e.shiftKey) {
+                // Di sini lu butuh parse ID asli target untuk di add ke selectedCells
+                // Kita sederhanakan dengan cara nembak function aja (lihat di HabitGrid.vue)
+            } else {
+                // Kalau gerak biasa tanpa shift, ilangin seleksi
+                selectedCells.value.clear();
+            }
         }
     };
 
@@ -144,11 +269,37 @@ export function useHabitCore(props) {
             period: props.monthQuery
         }, { preserveScroll: true });
     };
+/// ==========================================
+    // 🔥 DRAG & DROP REORDER (VIA VUEDRAGGABLE) 🔥
+    // ==========================================
+    const saveHabitOrder = async (newHabitsList) => {
+        // 1. Update state lokal seketika (Optimistic UI)
+        localHabits.value = newHabitsList;
+
+        // 2. Siapkan data untuk dikirim ke backend
+        const orderedHabits = newHabitsList.map((habit, index) => ({
+            id: habit.id,
+            position: index
+        }));
+
+        // 3. Tembak ke server secara background
+        try {
+            await axios.post(route('habits.reorder'), { habits: orderedHabits });
+        } catch (e) {
+            console.error("Gagal simpan urutan", e);
+        }
+    };
 
     return {
         user, localHabits, greetingKey,
         todayProgress, totalCompletions, overallPercentage,
         getStatus, toggleStatus, handleGridNav,
+        isDragging, handleMouseDown, handleMouseEnter, isCellSelected, toggleSelectedCells,
+        
+        // 🔥 EKSPOR FUNGSI BARU INI AJA
+        saveHabitOrder,
+
         moodOptions, showMoodDropdown, currentMoodData, selectMood
     };
+   
 }

@@ -1,0 +1,30 @@
+{
+    "journal_title": "Jurnal Saya",
+    "journal_subtitle": "Rekam jejak pikiran dan perasaanmu setiap hari.",
+    "journal_tasks": "Tugas",
+    "journal_habit": "Habit",
+    "journal_habit_done": "Selesai",
+    "journal_expense": "Keluar",
+    "journal_history": "Riwayat Cerita",
+    "journal_add": "Tambah Jurnal",
+    "journal_empty_title": "Belum ada cerita.",
+    "journal_empty_subtitle": "Mulai tulis jurnal pertamamu hari ini!",
+    "journal_untitled": "Cerita Hari Ini",
+    "journal_no_content": "Tidak ada teks...",
+    "journal_confirm_delete": "Hapus Jurnal?",
+    "journal_delete_warn": "Data ini akan hilang selamanya.",
+    
+
+    
+    "btn_back_dashboard": "Kembali ke Dashboard",
+    "status_saving": "Menyimpan...",
+    "status_saved": "Tersimpan",
+    "btn_save_manual": "Simpan",
+    "journal_mood_label": "Mood Hari Ini:",
+    "journal_add_photo": "Sisipkan Foto Jurnal",
+    "journal_write_placeholder": "Mulai menulis cerita harimu...",
+    "journal_title_placeholder": "Beri judul harimu...",
+    "status_deleted": "Berhasil Dihapus!",
+    "status_image_saved": "Gambar Tersimpan!",
+    "status_image_deleted": "Gambar Dihapus!"
+}

@@ -1,0 +1,20 @@
+{
+    "dash_greet_morning": "Selamat Pagi",
+    "dash_greet_afternoon": "Selamat Siang",
+    "dash_greet_evening": "Selamat Sore",
+    "dash_greet_night": "Selamat Malam",
+    "dash_welcome_sub": "Siap membuat progres 1% lebih baik hari ini? Kelola habit, jadwal, dan keuanganmu di satu tempat.",
+    "dash_habit_desc": "Pantau kebiasaan harianmu dan bangun konsistensi jangka panjang.",
+    "dash_planner_desc": "Susun tugas harianmu agar tetap fokus dan produktif setiap saat.",
+    "dash_finance_desc": "Catat pengeluaran dan pemasukan untuk menjaga kesehatan finansialmu.",
+    "dash_open_module": "Buka Modul",
+    "dash_status_label": "Status Akun",
+    "today_is" : "Hari Ini",
+    "greet_morning": "Selamat Pagi",
+    "greet_noon": "Selamat Siang",
+    "greet_afternoon": "Selamat Sore",
+    "greet_night": "Selamat Malam",
+    "greet_subtitle": "Fokus satu hari aja. Besok urusan besok."
+
+    
+}

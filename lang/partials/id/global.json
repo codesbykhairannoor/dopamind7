@@ -1,0 +1,105 @@
+{     "____ SECTION_1 ____": "=== NAVIGASI & GLOBAL ===",
+    "nav_home": "Beranda",
+    "nav_about": "Tentang Kami",
+    "nav_login": "Masuk",
+    "nav_register": "Mulai Gratis",
+    "nav_dashboard": "Dashboard",
+    "nav_settings": "Pengaturan Aplikasi",
+    "nav_logout": "Keluar",
+
+      "nav_features": "Features",
+    "nav_solutions": "Solutions",
+    "nav_resources": "Resources",
+    "nav_pricing": "Pricing",
+
+    
+    "modal_logout_title": "Mau pamit dulu?",
+    "modal_logout_subtitle": "Jangan lupa balik lagi ya, progres kamu hari ini sudah tersimpan dengan aman!",
+    "modal_logout_confirm": "Iya, Keluar",
+    "modal_logout_cancel": "Batal",
+
+"seo_about_desc": "Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.",
+    "footer_legal": "Privasi & Ketentuan",
+    "legal_title": "Informasi Legal",
+    "legal_ref": "Referensi Privasi Resmi:",
+    "privacy_title": "Kebijakan Privasi Oneformind",
+    "privacy_p1": "Di Oneformind, yang dapat diakses dari https://oneformind.com, salah satu prioritas utama kami adalah privasi pengunjung kami.",
+    "privacy_consent_title": "Persetujuan",
+    "privacy_consent_p": "Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan Privasi kami dan menyetujui ketentuan-ketentuannya.",
+    "privacy_info_title": "Informasi yang kami kumpulkan",
+    "privacy_info_p": "Informasi pribadi yang diminta dari Anda akan dijelaskan secara transparan pada saat kami meminta Anda untuk memberikannya.",
+    "tos_title": "Syarat dan Ketentuan (ToS)",
+    "tos_intro": "Dengan mengakses dan menggunakan Oneformind, Anda menyetujui aturan berikut:",
+    "tos_service_title": "1. Ketersediaan Layanan",
+    "tos_service_p": "Oneformind disediakan \"sebagaimana adanya\" dan \"sebagaimana tersedia\". Meskipun kami berusaha menjaga stabilitas, kami tidak menjamin layanan 100% tanpa gangguan, bebas dari kesalahan, atau sepenuhnya aman.",
+    "tos_data_title": "2. Akurasi Data & Tanggung Jawab",
+    "tos_data_p": "Anda bertanggung jawab penuh atas data finansial, habit, dan perencana yang Anda masukkan. Oneformind adalah alat produktivitas, bukan penasihat keuangan bersertifikat. Kami tidak bertanggung jawab atas kerugian finansial atau keputusan yang diambil berdasarkan data di platform ini.",
+    "tos_security_title": "3. Penggunaan Wajar & Keamanan",
+    "tos_security_p": "Pengguna dilarang keras mencoba merusak keamanan sistem, melakukan injeksi SQL, mengambil data secara paksa (scraping), atau mengganggu infrastruktur platform.",
+    "tos_termination_title": "4. Pemutusan Akun",
+    "tos_termination_p": "Kami berhak menangguhkan atau menghapus akun secara sepihak dan tanpa pemberitahuan sebelumnya jika pengguna terbukti melanggar ketentuan ini atau menyalahgunakan sumber daya sistem.",
+    "legal_close": "Tutup & Pahami",
+
+
+
+
+    
+    
+  
+
+
+
+   
+
+
+
+
+
+    
+
+
+
+  
+
+ 
+   
+
+    "____ SECTION_8 ____": "=== TOMBOL & LABEL UMUM ===",
+    "btn_add": "Tambah",
+    "btn_save": "Simpan",
+    "btn_update": "Perbarui",
+    "btn_delete": "Hapus",
+    "btn_cancel": "Batal",
+    "btn_add_task": "Simpan Tugas",
+    "btn_add_task_short": "Task",
+    "btn_add_schedule": "Tambah Jadwal",
+    "btn_create": "Buat Jadwal",
+    "btn_reset": "Reset",
+    "btn_reset_tooltip": "Hapus semua task hari ini",
+    "btn_confirm_reset": "Ya",
+
+    
+
+    
+   
+
+
+
+   
+
+    "profile_settings": "Pengaturan Profil",
+    "profile_info_title": "Informasi Pribadi",
+    "profile_info_desc": "Perbarui foto profil, nama, dan alamat email akun Anda.",
+    "change_photo": "Ganti Foto",
+    "photo_format_allowed": "Format yang diizinkan: JPG, JPEG, PNG.",
+    "photo_max_size": "Maksimal ukuran file: 2MB.",
+    "full_name": "Nama Lengkap",
+    "email_address": "Alamat Email",
+    "save_changes": "Simpan Perubahan",
+    "saved": "Tersimpan",
+    
+    "password_security_title": "Keamanan Sandi",
+    "password_security_desc": "Pastikan akun Anda menggunakan kata sandi acak yang panjang agar tetap aman.",
+    "current_password": "Sandi Saat Ini"
+
+}

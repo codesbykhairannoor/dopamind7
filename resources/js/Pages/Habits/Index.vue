@@ -40,7 +40,8 @@ const {
     
     // 🔥 Modal Batch Habit (INI YANG KEMARIN KELUPAAN DIAMBIL)
     showBatchModal, batchForm, openBatchModal, closeBatchModal, 
-    addBatchRow, removeBatchRow, submitBatchHabit, switchToBatch, switchToSingle
+    addBatchRow, removeBatchRow, submitBatchHabit, switchToBatch, switchToSingle, handleMouseDown, handleMouseEnter, isCellSelected, 
+    saveHabitOrder
 } = useHabits(props);
 
 </script>
@@ -61,18 +62,23 @@ const {
                 :openCreateModal="openCreateModal"
             />
 
-            <HabitGrid 
-                :localHabits="localHabits"
-                :monthDates="monthDates"
-                :hasPrevHabits="props.hasPrevHabits"
-                :toggleStatus="toggleStatus"
-                :handleGridNav="handleGridNav"
-                :getStatus="getStatus"
-                :editHabit="editHabit"
-                :confirmDelete="confirmDelete"
-                :openCreateModal="openCreateModal"
-                :openCopyModal="openCopyModal"
-            />
+           <HabitGrid 
+    :localHabits="localHabits"
+    :monthDates="monthDates"
+    :hasPrevHabits="hasPrevHabits"
+    :toggleStatus="toggleStatus"
+    :handleGridNav="handleGridNav"
+    :getStatus="getStatus"
+    :editHabit="editHabit"
+    :confirmDelete="confirmDelete"
+    :openCreateModal="openCreateModal"
+    :openCopyModal="openCopyModal"
+    
+    :handleMouseDown="handleMouseDown"
+    :handleMouseEnter="handleMouseEnter"
+    :isCellSelected="isCellSelected"
+  :saveHabitOrder="saveHabitOrder"
+/>
 
             <HabitStats 
                 :localHabits="localHabits"

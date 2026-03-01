@@ -13,8 +13,6 @@ const showLogoutModal = ref(false);
 // 🔥 STATE SIDEBAR DESKTOP COLLAPSE
 const isSidebarCollapsed = ref(false);
 
-
-
 onMounted(() => {
     const savedState = localStorage.getItem('sidebar_collapsed');
     if (savedState !== null) {
@@ -75,7 +73,7 @@ watch(() => page.url, () => {
                     :title="isSidebarCollapsed ? $t('nav_dashboard') : ''"
                 >
                     <span class="text-xl shrink-0">🏠</span>
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('nav_dashboard') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('nav_dashboard', 'Dashboard') }}</span>
                     <div v-if="route().current('dashboard') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
@@ -88,7 +86,7 @@ watch(() => page.url, () => {
                     :title="isSidebarCollapsed ? $t('habit_page_title') : ''"
                 >
                     <span class="text-xl shrink-0">🌱</span>
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('habit_page_title') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('habit_page_title', 'Habit Tracker') }}</span>
                     <div v-if="route().current('habits.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
@@ -182,35 +180,81 @@ watch(() => page.url, () => {
         <main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50 custom-scrollbar">
             
             <div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">
-                  <Link :href="route('dashboard')" class="group flex items-center gap-3">
+                <Link :href="route('dashboard')" class="group flex items-center gap-3">
                     <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center shadow-md shrink-0">
                         <img src="/favicon.svg?v=2" alt="Logo" class="w-6 h-6 brightness-0 invert" />
                     </div>
                     <span class="text-lg font-black tracking-tighter text-slate-900">OneForMind<span class="text-indigo-600">.</span></span>
                 </Link>
-                <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-slate-500 hover:text-indigo-600 transition p-2 rounded-lg hover:bg-slate-50">
+                <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-slate-500 hover:text-indigo-600 transition p-2 rounded-lg hover:bg-slate-50 focus:outline-none">
                     <span v-if="!showingNavigationDropdown" class="text-2xl">☰</span>
                     <span v-else class="text-2xl font-bold">✕</span>
                 </button>
             </div>
 
-            <Transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 -translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-2">
-                <div v-show="showingNavigationDropdown" class="md:hidden fixed inset-0 top-16 z-40 bg-white/95 backdrop-blur-lg overflow-y-auto">
-                    <div class="p-4 space-y-2 pb-24">
-                        <Link :href="route('dashboard')" class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'" @click="showingNavigationDropdown = false">
-                            <span>🏠</span> {{ $t('nav_dashboard', 'Dashboard') }}
+            <Transition 
+                enter-active-class="transition duration-300 ease-out" 
+                enter-from-class="opacity-0 translate-y-[-20px]" 
+                enter-to-class="opacity-100 translate-y-0" 
+                leave-active-class="transition duration-200 ease-in" 
+                leave-from-class="opacity-100 translate-y-0" 
+                leave-to-class="opacity-0 translate-y-[-20px]"
+            >
+                <div v-show="showingNavigationDropdown" class="md:hidden fixed inset-0 top-16 z-40 bg-slate-50/95 backdrop-blur-2xl overflow-y-auto custom-scrollbar">
+                    <div class="p-6 space-y-6 pb-32">
+                        
+                        <Link :href="route('profile.edit')" @click="showingNavigationDropdown = false" class="flex items-center gap-4 p-5 bg-white rounded-[2rem] shadow-sm border border-slate-100 active:scale-[0.98] transition-transform">
+                            <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-14 h-14 rounded-full object-cover shadow-sm border-2 border-white shrink-0" />
+                            <div v-else class="w-14 h-14 rounded-full bg-indigo-600 text-white flex items-center justify-center font-black text-xl shadow-md shrink-0">
+                                {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-base font-black text-slate-800 truncate leading-tight mb-1">{{ user?.name || 'User' }}</p>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-indigo-500">{{ $t('edit_profile', 'Edit Profil') }}</p>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                            </div>
                         </Link>
-                        <Link :href="route('settings.index')" class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg" :class="route().current('settings.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm' : 'text-slate-600 hover:bg-slate-50'" @click="showingNavigationDropdown = false">
-                            <span>⚙️</span> {{ $t('nav_settings', 'Pengaturan') }}
-                        </Link>
-                        <Link :href="route('profile.edit')" class="block px-4 py-4 rounded-2xl font-bold transition flex items-center gap-3 text-lg text-slate-600 hover:bg-slate-50" @click="showingNavigationDropdown = false">
-                            <span>👤</span> {{ $t('edit_profile', 'Profil') }}
-                        </Link>
-                        <div class="border-t border-slate-100 my-4 pt-4">
-                            <button @click="showLogoutModal = true; showingNavigationDropdown = false" type="button" class="w-full text-center py-4 text-rose-500 font-bold bg-rose-50 rounded-2xl hover:bg-rose-100 transition flex items-center justify-center gap-2">
-                                <span>🚪</span> {{ $t('nav_logout', 'Keluar') }}
+
+                        <div class="bg-white rounded-[2rem] p-3 shadow-sm border border-slate-100 flex flex-col gap-1">
+                            <Link :href="route('dashboard')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                                <span class="text-xl">🏠</span> {{ $t('nav_dashboard', 'Dashboard') }}
+                            </Link>
+
+                            <Link v-if="showModule('habit')" :href="route('habits.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                                <span class="text-xl">🌱</span> {{ $t('habit_page_title', 'Habit Tracker') }}
+                            </Link>
+
+                            <Link v-if="showModule('planner')" :href="route('planner.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                                <span class="text-xl">📋</span> Daily Planner
+                            </Link>
+
+                            <Link v-if="showModule('finance')" :href="route('finance.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                                <span class="text-xl">💸</span> Finance
+                            </Link>
+
+                            <Link v-if="showModule('journal')" :href="route('journal.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                                <span class="text-xl">📓</span> Journal
+                            </Link>
+
+                            <Link v-if="showModule('calendar')" :href="route('calendar.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                                <span class="text-xl">📅</span> Calendar
+                            </Link>
+                        </div>
+
+                        <div class="bg-white rounded-[2rem] p-3 shadow-sm border border-slate-100 flex flex-col gap-1">
+                            <Link :href="route('settings.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('settings.*') ? 'bg-slate-100 text-slate-800' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                                <span class="text-xl">⚙️</span> {{ $t('nav_settings', 'Pengaturan') }}
+                            </Link>
+                            
+                            <div class="h-px w-full bg-slate-100 my-1"></div>
+
+                            <button @click="showLogoutModal = true; showingNavigationDropdown = false" type="button" class="w-full px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center justify-center gap-3 text-base text-rose-500 bg-rose-50 hover:bg-rose-100 active:scale-[0.98]">
+                                <span class="text-xl">🚪</span> {{ $t('nav_logout', 'Keluar') }}
                             </button>
                         </div>
+
                     </div>
                 </div>
             </Transition>

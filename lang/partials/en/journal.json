@@ -1,0 +1,30 @@
+{
+     
+    "journal_title": "My Journal",
+    "journal_subtitle": "Keep track of your thoughts and feelings every day.",
+    "journal_tasks": "Tasks",
+    "journal_habit": "Habits",
+    "journal_habit_done": "Done",
+    "journal_expense": "Expense",
+    "journal_history": "Story History",
+    "journal_add": "Add Journal",
+    "journal_empty_title": "No stories yet.",
+    "journal_empty_subtitle": "Start writing your first journal today!",
+    "journal_untitled": "Today's Story",
+    "journal_no_content": "No text content...",
+    "journal_confirm_delete": "Delete Journal?",
+    "journal_delete_warn": "This data will be lost forever.",
+
+    "status_deleted": "Successfully Deleted!",
+    "status_image_saved": "Image Saved!",
+    "status_image_deleted": "Image Deleted!",
+    
+    "btn_back_dashboard": "Back to Dashboard",
+    "status_saving": "Saving...",
+    "status_saved": "Saved",
+    "btn_save_manual": "Save",
+    "journal_mood_label": "Today's Mood:",
+    "journal_add_photo": "Insert Journal Photo",
+    "journal_write_placeholder": "Start writing your story...",
+    "journal_title_placeholder": "Give your day a title..."
+}

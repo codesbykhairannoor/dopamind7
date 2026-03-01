@@ -1,0 +1,59 @@
+{
+   
+    "calendar_more": "lagi",
+    "journal_filled": "Jurnal telah ditulis",
+    "calendar_tasks": "Tugas",
+    "calendar_expense": "Pengeluaran",
+    "habit_completed": "Habit selesai",
+    "calendar_day_summary": "Rangkuman Hari",
+    "calendar_events_schedule": "Acara / Jadwal",
+    "calendar_no_events": "Tidak ada acara hari ini.",
+    "btn_edit": "Edit",
+    "calendar_life_os_summary": "Rangkuman Life OS",
+    "calendar_journal": "Jurnal",
+    "calendar_journal_written": "✓ Sudah Ditulis",
+    "calendar_empty": "Kosong",
+    "calendar_daily_tasks": "Tugas Harian",
+    "calendar_tasks_done": "Selesai",
+    "calendar_no_tasks": "Tidak ada tugas",
+    "calendar_habits": "Habit",
+    "calendar_habits_done": "Tuntas",
+
+    
+    "calendar_title": "Master Kalender",
+    "calendar_subtitle": "Pantau semua aktivitasmu",
+    "calendar_new_event": "Acara Baru",
+    "calendar_edit_event": "Edit Acara",
+    "label_title": "Judul Acara",
+    "label_start_date": "Mulai",
+    "label_end_date": "Selesai (Opsional)",
+    "label_color": "Warna Label",
+    "label_description": "Catatan Tambahan",
+    "ph_event_title": "Cth: Rapat BEM",
+    "ph_event_desc": "Tulis detail acara di sini...",
+    "btn_add_event": "Acara",
+  
+    "color_indigo": "Indigo", "color_sky": "Langit", "color_emerald": "Zamrud",
+    "color_amber": "Kuning", "color_rose": "Mawar", "color_purple": "Ungu",
+
+    
+
+    "calendar_expense_short": "Keluar",
+    "calendar_expense_label": "Pengeluaran",
+    "calendar_no_events_title": "Hari yang Kosong",
+    "calendar_no_events_desc": "Belum ada acara yang dijadwalkan untuk hari ini.",
+    "calendar_today": "Hari Ini",
+    "calendar_open": "Buka",
+    "calendar_more_events": "acara lain",
+
+    
+  "calendar_focus": "Fokus",
+  "calendar_events": "Events",
+  "calendar_planner": "Planner",
+  "calendar_finance": "Finance",
+  "calendar_journal_short": "Journal",
+  "calendar_habits_short": "Habit",
+  "calendar_tasks_short": "Tasks"
+
+    
+}

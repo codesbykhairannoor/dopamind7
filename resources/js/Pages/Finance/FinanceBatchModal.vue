@@ -217,7 +217,7 @@ const changeType = (index, type) => {
                         class="flex-[2] sm:flex-none !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3 !px-8 shadow-xl shadow-indigo-100 transition-all transform active:scale-95 font-black uppercase tracking-widest text-[10px]"
                         :class="{'!bg-slate-300 !text-slate-500 !cursor-not-allowed !shadow-none !transform-none': conflictError}">
                         <span v-if="form.processing">...</span>
-                        <span v-else>{{ $t('btn_save_all', 'Simpan Batch') }}</span>
+                        <span v-else>{{ $t('btn_save_all_transactions', 'Simpan Batch') }}</span>
                     </PrimaryButton>
                 </div>
             </div>
