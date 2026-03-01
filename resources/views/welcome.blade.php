@@ -221,25 +221,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-white">
-        <div class="max-w-3xl mx-auto px-6" x-data="{ activeFaq: null }">
-            <h2 class="text-3xl font-black text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">{{ __('faq_title') }}</h2>
-            
-            <div class="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
-                @foreach([1, 2, 3] as $faq)
-                    <div class="border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300" :class="activeFaq === {{ $faq }} ? 'bg-gray-50 shadow-md' : 'bg-white'">
-                        <button @click="activeFaq = activeFaq === {{ $faq }} ? null : {{ $faq }}" class="flex justify-between items-center w-full p-6 text-left font-bold text-gray-900 hover:text-indigo-600 transition">
-                            <span>{{ __("faq_q{$faq}") }}</span>
-                            <span class="text-indigo-600 transition-transform" :class="activeFaq === {{ $faq }} ? 'rotate-180' : ''">▼</span>
-                        </button>
-                        <div x-show="activeFaq === {{ $faq }}" x-collapse x-cloak class="px-6 pb-6 text-gray-500 leading-relaxed">
-                            {{ __("faq_a{$faq}") }}
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+   
 
     <section class="py-24 bg-gray-50 border-t border-gray-100 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
@@ -314,6 +296,26 @@
                         {{ __('waitlist_note') }}
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+     <section class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6" x-data="{ activeFaq: null }">
+            <h2 class="text-3xl font-black text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">{{ __('faq_title') }}</h2>
+            
+            <div class="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
+                @foreach([1, 2, 3] as $faq)
+                    <div class="border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300" :class="activeFaq === {{ $faq }} ? 'bg-gray-50 shadow-md' : 'bg-white'">
+                        <button @click="activeFaq = activeFaq === {{ $faq }} ? null : {{ $faq }}" class="flex justify-between items-center w-full p-6 text-left font-bold text-gray-900 hover:text-indigo-600 transition">
+                            <span>{{ __("faq_q{$faq}") }}</span>
+                            <span class="text-indigo-600 transition-transform" :class="activeFaq === {{ $faq }} ? 'rotate-180' : ''">▼</span>
+                        </button>
+                        <div x-show="activeFaq === {{ $faq }}" x-collapse x-cloak class="px-6 pb-6 text-gray-500 leading-relaxed">
+                            {{ __("faq_a{$faq}") }}
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
