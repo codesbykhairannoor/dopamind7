@@ -21,4 +21,12 @@ class FinanceBudget extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeOfUser($query, $userId) {
+    return $query->where('user_id', $userId);
+}
+
+public function scopeForMonth($query, $month) {
+    return $query->where('month', $month);
+}
 }

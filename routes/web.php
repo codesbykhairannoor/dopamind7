@@ -274,18 +274,23 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
         Route::post('/batch', [PlannerController::class, 'batchStore'])->name('batchStore');
     });
 
-    Route::middleware(['module:habit'])->prefix('habits')->name('habits.')->group(function () {
-        Route::get('/', [HabitController::class, 'index'])->name('index');
-        Route::post('/', [HabitController::class, 'store'])->name('store');
-        Route::post('/batch', [HabitController::class, 'batchStore'])->name('batchStore');
-        Route::post('/copy', [HabitController::class, 'copyFromPrevious'])->name('copy');
-        Route::post('/mood', [HabitController::class, 'updateMood'])->name('mood');
-        Route::patch('/{habit}', [HabitController::class, 'update'])->name('update');
-        Route::delete('/{habit}', [HabitController::class, 'destroy'])->name('destroy');
-        Route::post('/{habit}/log', [HabitController::class, 'storeLog'])->name('log');
-        Route::post('/habits/reorder', [HabitController::class, 'reorder'])->name('habits.reorder');
-        Route::post('/habits/batch-log', [HabitController::class, 'batchLog'])->name('habits.batch-log');
-    });
+   Route::middleware(['module:habit'])->prefix('habits')->name('habits.')->group(function () {
+    Route::get('/', [HabitController::class, 'index'])->name('index');
+    Route::post('/', [HabitController::class, 'store'])->name('store');
+    
+    Route::post('/batch', [HabitController::class, 'batchStore'])->name('batchStore');
+    Route::post('/copy', [HabitController::class, 'copyFromPrevious'])->name('copy');
+    Route::post('/mood', [HabitController::class, 'updateMood'])->name('mood');
+    
+    // 🔥 PERBAIKAN DI SINI: hapus '/habits' dan 'habits.' karena sudah ada di grup atas
+    Route::post('/reorder', [HabitController::class, 'reorder'])->name('reorder');
+    Route::post('/batch-log', [HabitController::class, 'batchLog'])->name('batch-log');
+
+    // Ini harus di bawah supaya tidak bentrok (Laravel membaca /reorder dulu baru /{habit})
+    Route::patch('/{habit}', [HabitController::class, 'update'])->name('update');
+    Route::delete('/{habit}', [HabitController::class, 'destroy'])->name('destroy');
+    Route::post('/{habit}/log', [HabitController::class, 'storeLog'])->name('log');
+});
 
     Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->group(function () {
     Route::get('/', [FinanceController::class, 'index'])->name('index');

@@ -17,8 +17,6 @@ class HabitResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // 1. Hitung completed count secara aman
-        // Cek apakah completed_count ada (dari withCount), jika tidak cek logs, jika logs null kasih 0
         $completedCount = $this->completed_count 
             ?? ($this->relationLoaded('logs') ? $this->logs->where('status', 'completed')->count() : 0);
 
@@ -28,6 +26,7 @@ class HabitResource extends JsonResource
             'icon' => (string) $this->icon,
             'color' => (string) $this->color,
             'monthly_target' => (int) $this->monthly_target,
+            'position' => (int) $this->position, // 🔥 FIX: Wajib disertakan agar drag-drop tidak tereset!
 
             // Statistik
             'progress_count' => (int) $completedCount,
@@ -35,14 +34,13 @@ class HabitResource extends JsonResource
                 ? min(100, round(($completedCount / $this->monthly_target) * 100))
                 : 0),
 
-         // 🔥 SPREADSHEET SPEED LOGIC 🔥
+            // 🔥 SPREADSHEET SPEED LOGIC 🔥
             'logs' => $this->whenLoaded('logs', function () {
                 return $this->logs->mapWithKeys(function ($log) {
                     $dateKey = is_string($log->date) 
                         ? substr($log->date, 0, 10) 
                         : $log->date->format('Y-m-d');
                     
-                    // AMBIL VALUE DARI ENUM (pakai ->value) atau fallback string
                     $statusValue = $log->status instanceof \BackedEnum 
                         ? $log->status->value 
                         : $log->status;
@@ -51,7 +49,6 @@ class HabitResource extends JsonResource
                 });
             }, (object)[]),
 
-            // Metadata untuk Mobile Sync
             'created_at' => $this->created_at?->toIso8601String(),
             'updated_at' => $this->updated_at?->toIso8601String(),
         ];

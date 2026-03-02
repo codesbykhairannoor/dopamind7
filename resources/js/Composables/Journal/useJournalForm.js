@@ -1,10 +1,12 @@
 import { ref, watch } from 'vue';
 import { useForm, router } from '@inertiajs/vue3';
+import axios from 'axios';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 
 export function useJournalForm(journal, date) {
     const isSaving = ref(false);
+    const isCreating = ref(false); 
     const currentImageUrl = ref(journal?.image_url || null); 
     let saveTimeout = null;
 
@@ -34,32 +36,47 @@ export function useJournalForm(journal, date) {
         });
     };
 
-    const silentSave = (isManual = false) => {
+    const silentSave = async (isManual = false) => {
         const plainText = form.content.replace(/<[^>]*>?/gm, '').trim();
         if (!form.id && !form.title && plainText === '' && !form.mood) return;
-        if (!form.id && form.processing) return;
+        
+        // Mencegah penembakan request Create ganda
+        if (!form.id && isCreating.value) return; 
 
         isSaving.value = true;
+        if (!form.id) {
+            isCreating.value = true;
+        }
 
+        const url = form.id ? route('journal.update', form.id) : route('journal.store');
+        
+        // 🔥 FIX 2: METHOD SPOOFING (Cegah Error 405)
+        // Kita paksa Axios selalu menembak sebagai POST.
+        // Tapi kita selipkan `_method: 'patch'` agar Laravel menganggapnya sebagai PATCH.
+        const payload = form.data();
         if (form.id) {
-            form.patch(route('journal.update', form.id), {
-                preserveScroll: true, preserveState: true, progress: false,
-                onSuccess: () => {
-                    isSaving.value = false;
-                    if (isManual) fireToast('success', t('status_saved', 'Berhasil Disimpan!'));
-                },
-                onError: () => { isSaving.value = false; }
+            payload._method = 'patch';
+        }
+
+        try {
+            // Selalu gunakan axios.post
+            const res = await axios.post(url, payload, {
+                headers: {
+                    'Accept': 'application/json' // Beri tahu Laravel untuk merespon dengan JSON
+                }
             });
-        } else {
-            form.post(route('journal.store'), {
-                preserveScroll: true, preserveState: true, progress: false,
-                onSuccess: (page) => {
-                    isSaving.value = false;
-                    if (page.props.journal && page.props.journal.id) form.id = page.props.journal.id;
-                    if (isManual) fireToast('success', t('status_saved', 'Berhasil Disimpan!'));
-                },
-                onError: () => { isSaving.value = false; }
-            });
+            
+            // Tangkap ID yang baru saja dibuat
+            if (res.data?.data?.id && !form.id) {
+                form.id = res.data.data.id;
+                window.history.replaceState({}, '', route('journal.write', form.id));
+            }
+            if (isManual) fireToast('success', t('status_saved', 'Berhasil Disimpan!'));
+        } catch (err) {
+            console.error("Auto-save failed", err);
+        } finally {
+            isSaving.value = false;
+            isCreating.value = false;
         }
     };
 
@@ -67,8 +84,7 @@ export function useJournalForm(journal, date) {
         isSaving.value = true;
         if (saveTimeout) clearTimeout(saveTimeout);
         saveTimeout = setTimeout(() => {
-            if (!form.id && form.processing) triggerAutoSave();
-            else silentSave(false);
+            silentSave(false);
         }, 1000);
     };
 
@@ -97,6 +113,13 @@ export function useJournalForm(journal, date) {
     const handleImageUpload = async (event) => {
         const file = event.target.files[0];
         if (!file) return;
+
+        if (saveTimeout) clearTimeout(saveTimeout);
+
+        if (isCreating.value) {
+            fireToast('warning', 'Menyiapkan jurnal, coba sedetik lagi.');
+            return;
+        }
         
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -105,34 +128,59 @@ export function useJournalForm(journal, date) {
         reader.readAsDataURL(file);
         
         isSaving.value = true;
-        const compressedFile = await compressImage(file);
-        const imageForm = useForm({ id: form.id, date: date, image: compressedFile });
+        if (!form.id) isCreating.value = true;
 
-        imageForm.post(route('journal.uploadImage'), {
-            preserveScroll: true, preserveState: true, progress: false, forceFormData: true,
-            onSuccess: (page) => {
-                isSaving.value = false;
-                if (!form.id && page.props.journal) form.id = page.props.journal.id;
-                if (page.props.journal?.image_url) currentImageUrl.value = page.props.journal.image_url;
+        const compressedFile = await compressImage(file);
+        
+        const formData = new FormData();
+        formData.append('image', compressedFile);
+        formData.append('date', date);
+        if (form.id) formData.append('id', form.id);
+
+        try {
+            const response = await axios.post(route('journal.uploadImage'), formData, {
+                headers: { 
+                    'Content-Type': 'multipart/form-data',
+                    'Accept': 'application/json' 
+                }
+            });
+
+            if (response.data.success) {
+                if (!form.id && response.data.journal_id) {
+                    form.id = response.data.journal_id;
+                    window.history.replaceState({}, '', route('journal.write', form.id));
+                    
+                    // Lanjutkan save teks yang tertunda
+                    silentSave(false); 
+                }
+                currentImageUrl.value = response.data.url;
                 fireToast('success', t('status_image_saved', 'Gambar Tersimpan!'));
-            },
-            onError: () => { isSaving.value = false; currentImageUrl.value = null; }
-        });
+            }
+        } catch (error) {
+            console.error("Upload Image Error:", error);
+            currentImageUrl.value = null; 
+        } finally {
+            isSaving.value = false;
+            isCreating.value = false; 
+        }
     };
 
-    const removeImage = () => {
+    const removeImage = async () => {
         if (!form.id) return;
         
-        currentImageUrl.value = null; 
         isSaving.value = true;
         
-        router.delete(route('journal.deleteImage', form.id), {
-            preserveScroll: true, preserveState: true, progress: false,
-            onSuccess: () => { 
-                isSaving.value = false; 
+        try {
+            const response = await axios.delete(route('journal.deleteImage', form.id));
+            if (response.data.success) {
+                currentImageUrl.value = null; 
                 fireToast('success', t('status_image_deleted', 'Gambar Dihapus!')); 
             }
-        });
+        } catch (error) {
+            console.error("Delete Image Error:", error);
+        } finally {
+            isSaving.value = false; 
+        }
     };
 
     const deleteFullJournal = () => {
@@ -173,6 +221,7 @@ export function useJournalForm(journal, date) {
         const oldText = oldVal[1] ? oldVal[1].replace(/<[^>]*>?/gm, '').trim() : '';
         const newText = newVal[1] ? newVal[1].replace(/<[^>]*>?/gm, '').trim() : '';
         if (oldVal[0] === newVal[0] && oldVal[2] === newVal[2] && oldText === newText) return;
+        
         triggerAutoSave();
     }, { deep: true });
 

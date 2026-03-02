@@ -30,11 +30,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * 🔥 DEFENSIVE PROGRAMMING
-     * Menjamin key 'avatar_path' selalu ada meskipun kolomnya belum ada di DB (saat testing).
      */
     protected $attributes = [
         'avatar_path' => null,
-        'settings' => '{}', // Default JSON kosong biar cast array aman
+        'settings' => '{}',
     ];
 
     /**
@@ -63,16 +62,27 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * 🔥 AVATAR LOGIC (RESILIENT MODE)
-     * Menggunakan $this->attributes untuk menghindari MissingAttributeException.
+     * Otomatis deteksi Storage (Local vs Cloudinary)
      */
     protected function avatarUrl(): Attribute
     {
         return Attribute::make(
             get: function () {
                 $path = $this->attributes['avatar_path'] ?? null;
+                
                 if ($path) {
-                    return asset(Storage::url($path)); 
+                    // Cek jika ini adalah URL utuh (Google Auth/Cloudinary raw string)
+                    if (str_starts_with($path, 'http')) {
+                        return $path;
+                    }
+                    
+                    // Ambil config default filesystem ('public' di local, 'cloudinary' di prod)
+                    $disk = config('filesystems.default');
+                    
+                    // Gunakan Storage::disk()->url() agar Cloudinary mengembalikan URL https yang benar
+                    return Storage::disk($disk)->url($path); 
                 }
+                
                 return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF';
             }
         );
@@ -89,9 +99,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Period::class);
     }
 
-    /**
-     * Relasi Keuangan (Transactions & Budgets)
-     */
     public function financeTransactions(): HasMany
     {
         return $this->hasMany(FinanceTransaction::class);
@@ -102,26 +109,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(FinanceBudget::class);
     }
 
-    /**
-     * 🔥 RELASI KUNCI UNTUK STRESS TEST
-     * Dibutuhkan agar $request->user()->financeCategories() tidak error.
-     */
     public function financeCategories(): HasMany
     {
         return $this->hasMany(FinanceCategory::class);
     }
 
-    /**
-     * Relasi Jurnal
-     */
     public function journals(): HasMany
     {
         return $this->hasMany(Journal::class);
     }
 
-    /**
-     * Relasi Habit & Planner (Lengkap untuk masa depan)
-     */
     public function habits(): HasMany
     {
         return $this->hasMany(Habit::class);

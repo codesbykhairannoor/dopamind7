@@ -3,136 +3,127 @@
 namespace App\Http\Controllers;
 
 use App\Models\Journal;
-use App\Models\PlannerTask;
-use App\Models\FinanceTransaction;
-use App\Models\Habit;
 use App\Http\Requests\StoreJournalRequest;
 use App\Http\Requests\UploadJournalImageRequest;
 use App\Http\Resources\JournalResource;
+use App\Services\JournalService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class JournalController extends Controller
 {
-    /**
-     * Helper untuk mengambil data Synergy & Hari ini
-     */
-    private function getSynergyData($user)
-    {
-        $todayStr = now()->timezone($user->timezone ?? 'Asia/Jakarta')->format('Y-m-d');
-        
-        $plannerTasks = PlannerTask::where('user_id', $user->id)->where('date', $todayStr)->get();
-        $financeTotal = FinanceTransaction::where('user_id', $user->id)->where('date', $todayStr)->where('type', 'expense')->sum('amount');
-        
-        $habitsCompleted = Habit::where('user_id', $user->id)->whereHas('logs', function ($q) use ($todayStr) {
-            $q->where('date', $todayStr)->where('status', 'completed');
-        })->count();
-
-        return [
-            'todayDate' => $todayStr,
-            'synergy' => [
-                'tasks_completed'  => $plannerTasks->where('is_completed', true)->count(),
-                'tasks_total'      => $plannerTasks->count(),
-                'expense_total'    => $financeTotal,
-                'habits_completed' => $habitsCompleted,
-            ]
-        ];
-    }
+    public function __construct(private JournalService $journalService) {}
 
     public function index()
     {
         $user = Auth::user();
-        $journals = Journal::where('user_id', $user->id)->latest()->get();
-        $synergyData = $this->getSynergyData($user);
+        $journals = Journal::ofUser($user->id)->latest()->get();
+        $synergy = $this->journalService->getSynergyStats($user->id, $user->timezone ?? 'Asia/Jakarta');
 
         return Inertia::render('Journal/Index', array_merge([
-            // 🔥 Tambahkan ->resolve() di sini agar Vue menerima bentuk Array [...] bukan Object {"data": [...]}
             'journals' => JournalResource::collection($journals)->resolve(),
-        ], $synergyData));
+        ], $synergy));
     }
 
     public function write($id = null)
     {
         $user = Auth::user();
-        $journal = $id ? Journal::where('user_id', $user->id)->findOrFail($id) : null;
-        $synergyData = $this->getSynergyData($user);
+        $journal = $id ? Journal::ofUser($user->id)->findOrFail($id) : null;
+        $synergy = $this->journalService->getSynergyStats($user->id, $user->timezone ?? 'Asia/Jakarta');
 
         return Inertia::render('Journal/Write', array_merge([
-            // 🔥 Tambahkan ->resolve() di sini juga
             'journal' => $journal ? (new JournalResource($journal))->resolve() : null,
-            'date'    => $journal ? $journal->date : $synergyData['todayDate'],
-        ], $synergyData));
+            'date'    => $journal ? $journal->date : $synergy['todayDate'],
+        ], $synergy));
     }
 
     public function store(StoreJournalRequest $request)
     {
-        // Validasi sudah otomatis tertangani oleh StoreJournalRequest
-        $journal = Journal::create([
-            'user_id' => Auth::id(),
-            'date'    => now()->timezone(Auth::user()->timezone ?? 'Asia/Jakarta')->format('Y-m-d'),
-            'title'   => $request->title,
-            'content' => $request->content,
-            'mood'    => $request->mood,
-        ]);
+        $user = Auth::user();
+        $journal = Journal::create(array_merge($request->validated(), [
+            'user_id' => $user->id,
+            'date'    => now()->timezone($user->timezone ?? 'Asia/Jakarta')->format('Y-m-d'),
+        ]));
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Journal created',
+                'data' => (new JournalResource($journal))->resolve()
+            ]);
+        }
 
         return redirect()->route('journal.write', $journal->id);
     }
 
     public function update(StoreJournalRequest $request, $id)
     {
-        $journal = Journal::where('user_id', Auth::id())->findOrFail($id);
-        
+        $journal = Journal::ofUser(Auth::id())->findOrFail($id);
+        $input = $request->validated();
+
         // Fitur Pembersih Otomatis
-        if (empty($request->title) && empty(trim(strip_tags($request->content))) && empty($request->mood) && empty($journal->image_path)) {
+        if ($this->journalService->isEmpty($journal, $input)) {
+            $this->journalService->deleteImage($journal->image_path);
             $journal->delete();
-            return redirect()->route('journal.index');
+
+            return $request->wantsJson() 
+                ? response()->json(['message' => 'Deleted', 'deleted' => true])
+                : redirect()->route('journal.index');
         }
 
-        $journal->update($request->validated());
-        return back();
+        $journal->update($input);
+
+        return $request->wantsJson()
+            ? response()->json(['message' => 'Updated', 'data' => (new JournalResource($journal))->resolve()])
+            : back();
     }
 
     public function destroy($id)
     {
-        $journal = Journal::where('user_id', Auth::id())->findOrFail($id);
-        if ($journal->image_path) {
-            Storage::disk('public')->delete($journal->image_path);
-        }
+        $journal = Journal::ofUser(Auth::id())->findOrFail($id);
+        $this->journalService->deleteImage($journal->image_path);
         $journal->delete();
-        
+
         return redirect()->route('journal.index');
     }
 
     public function uploadImage(UploadJournalImageRequest $request)
     {
-        $journal = $request->id 
-            ? Journal::where('user_id', Auth::id())->findOrFail($request->id) 
-            : Journal::create(['user_id' => Auth::id(), 'date' => now()->format('Y-m-d')]);
+        $user = Auth::user();
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
 
-        // Hapus gambar lama jika ada
-        if ($journal->image_path) {
-            Storage::disk('public')->delete($journal->image_path);
-        }
+        $journal = $request->id 
+            ? Journal::ofUser($user->id)->findOrFail($request->id) 
+            : Journal::create([
+                'user_id' => $user->id, 
+                'date' => now()->timezone($user->timezone ?? 'Asia/Jakarta')->format('Y-m-d')
+            ]);
+
+        // Hapus image lama
+        $this->journalService->deleteImage($journal->image_path);
         
-        $path = $request->file('image')->store('journals', 'public');
+        $path = $request->file('image')->store('journals', $disk);
         $journal->update(['image_path' => $path]);
 
-        if (!$request->id) {
-            return redirect()->route('journal.write', $journal->id);
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'url' => asset(Storage::disk($disk)->url($path)),
+                'journal_id' => $journal->id
+            ]);
         }
-        
-        return back();
+
+        return $request->id ? back() : redirect()->route('journal.write', $journal->id);
     }
 
     public function deleteImage($id)
     {
-        $journal = Journal::where('user_id', Auth::id())->findOrFail($id);
-        if ($journal->image_path) {
-            Storage::disk('public')->delete($journal->image_path);
-            $journal->update(['image_path' => null]);
-        }
-        
-        return back();
+        $journal = Journal::ofUser(Auth::id())->findOrFail($id);
+        $this->journalService->deleteImage($journal->image_path);
+        $journal->update(['image_path' => null]);
+
+        return request()->wantsJson() 
+            ? response()->json(['success' => true]) 
+            : back();
     }
 }

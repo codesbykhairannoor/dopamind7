@@ -16,7 +16,8 @@ class DailyLogResource extends JsonResource
             'task_box' => $this->task_box,
             // Pastikan meals selalu object/array yang valid
             'meals' => is_string($this->meals) ? json_decode($this->meals) : $this->meals,
-            'updated_at' => $this->updated_at->toIso8601String(),
+            
+            'updated_at' => $this->updated_at?->toIso8601String(), 
         ];
     }
 }

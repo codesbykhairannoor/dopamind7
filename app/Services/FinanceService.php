@@ -1,0 +1,171 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\FinanceBudget;
+use App\Models\FinanceCategory;
+use App\Models\FinanceTransaction;
+use App\Models\DailyLog;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+class FinanceService
+{
+    /**
+     * Mengambil dan mengkalkulasi semua data dashboard Finance dalam satu tempat
+     */
+    public function getDashboardData(int $userId, string $dateStr, string $timezone): array
+    {
+        try {
+            $carbonDate = Carbon::parse($dateStr)->timezone($timezone);
+        } catch (\Exception $e) {
+            $carbonDate = now()->timezone($timezone);
+        }
+        
+        $startOfMonth = $carbonDate->copy()->startOfMonth()->format('Y-m-d');
+        $endOfMonth = $carbonDate->copy()->endOfMonth()->format('Y-m-d');
+        $monthKey = $carbonDate->format('Y-m');
+
+        $categories = FinanceCategory::ofUser($userId)->get();
+
+        $transactions = FinanceTransaction::ofUser($userId)
+            ->inMonth($startOfMonth, $endOfMonth)
+            ->get();
+
+        $incomeTransactions = $transactions->where('type', 'income');
+        $expenseTransactions = $transactions->where('type', 'expense');
+
+        $totalIncome = $incomeTransactions->sum('amount');
+        $totalExpense = $expenseTransactions->sum('amount');
+
+        $expenseStats = $expenseTransactions->groupBy('category')->map(fn($g) => $g->sum('amount'));
+        $incomeStats = $incomeTransactions->groupBy('category')->map(fn($g) => $g->sum('amount'));
+
+        $budgets = FinanceBudget::ofUser($userId)->forMonth($monthKey)->get()
+            ->map(function ($budget) use ($expenseStats) {
+                $budget->spent = $expenseStats[$budget->category] ?? 0;
+                return $budget;
+            });
+
+        $log = DailyLog::where('user_id', $userId)->whereDate('date', $startOfMonth)->first();
+        $incomeTarget = $log ? (float) $log->income_target : 0;
+        
+        return [
+            'transactions' => $transactions,
+            'budgets'      => $budgets,
+            'categories'   => $categories,
+            'stats'        => [
+                'total_income'        => $totalIncome,
+                'total_expense'       => $totalExpense,
+                'income_target'       => $incomeTarget,
+                'balance'             => ($incomeTarget + $totalIncome) - $totalExpense,
+                'expense_by_category' => $expenseStats,
+                'income_by_category'  => $incomeStats,
+            ],
+            'filters'      => [
+                'date'       => $carbonDate->format('Y-m-d'), 
+                'month_name' => $carbonDate->translatedFormat('F Y')
+            ]
+        ];
+    }
+
+    public function updateCategoryCascade(FinanceCategory $category, string $newName, ?string $icon): void
+    {
+        $oldSlug = $category->slug;
+        $newSlug = Str::slug($newName, '_');
+
+        DB::transaction(function () use ($category, $newName, $oldSlug, $newSlug, $icon) {
+            $category->update(['name' => $newName, 'slug' => $newSlug, 'icon' => $icon]);
+
+            if ($oldSlug !== $newSlug) {
+                FinanceTransaction::ofUser($category->user_id)->where('category', $oldSlug)->update(['category' => $newSlug]);
+                FinanceBudget::ofUser($category->user_id)->where('category', $oldSlug)->update(['category' => $newSlug]);
+            }
+        });
+    }
+
+    public function destroyCategorySafely(FinanceCategory $category): void
+    {
+        DB::transaction(function () use ($category) {
+            FinanceTransaction::ofUser($category->user_id)
+                ->where('category', $category->slug)
+                ->update(['category' => 'uncategorized']);
+            
+            FinanceBudget::ofUser($category->user_id)
+                ->where('category', $category->slug)
+                ->delete();
+
+            $category->delete();
+        });
+    }
+
+    public function storeBudget(int $userId, array $data): void
+    {
+        DB::transaction(function () use ($userId, $data) {
+            $exists = FinanceCategory::ofUser($userId)->where('slug', $data['category'])->exists();
+
+            if (!$exists && isset($data['name'])) {
+                FinanceCategory::create([
+                    'user_id' => $userId,
+                    'slug'    => $data['category'],
+                    'name'    => $data['name'],
+                    'icon'    => $data['icon'] ?? '💸',
+                    'type'    => 'expense'
+                ]);
+            }
+
+            FinanceBudget::updateOrCreate(
+                ['user_id' => $userId, 'category' => $data['category'], 'month' => $data['month']],
+                ['limit_amount' => $data['limit_amount']]
+            );
+        });
+    }
+
+    public function updateBudgetCascade(FinanceBudget $budget, array $data): void
+    {
+        DB::transaction(function () use ($budget, $data) {
+            $oldSlug = $budget->category;
+            $masterCategory = FinanceCategory::ofUser($budget->user_id)->where('slug', $oldSlug)->first();
+
+            if ($masterCategory && isset($data['name'])) {
+                $newSlug = Str::slug($data['name'], '_');
+                $masterCategory->update([
+                    'name' => $data['name'], 
+                    'slug' => $newSlug, 
+                    'icon' => $data['icon'] ?? $masterCategory->icon
+                ]);
+
+                if ($oldSlug !== $newSlug) {
+                    FinanceBudget::ofUser($budget->user_id)->where('category', $oldSlug)->update(['category' => $newSlug]);
+                    FinanceTransaction::ofUser($budget->user_id)->where('category', $oldSlug)->update(['category' => $newSlug]);
+                }
+            }
+            $budget->update(['limit_amount' => $data['limit_amount']]);
+        });
+    }
+
+    public function batchStoreTransactions(int $userId, string $date, array $transactions, string $timezone): void
+    {
+        $now = now()->timezone($timezone)->toDateTimeString(); 
+        $insertData = [];
+
+        foreach ($transactions as $trx) {
+            $insertData[] = [
+                'user_id'    => $userId,
+                'date'       => $date,
+                'title'      => $trx['title'],
+                'amount'     => $trx['amount'],
+                'type'       => $trx['type'],
+                'category'   => $trx['category'],
+                'notes'      => $trx['notes'] ?? null,
+                'created_at' => $now, 
+                'updated_at' => $now,
+            ];
+        }
+
+        if (!empty($insertData)) {
+            DB::transaction(fn () => FinanceTransaction::insert($insertData));
+        }
+    }
+}

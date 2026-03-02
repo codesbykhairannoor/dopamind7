@@ -4,36 +4,39 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany; // 👈 1. Import Ini
-use Illuminate\Database\Eloquent\Relations\HasOne;  // 👈 2. Import Ini juga
 
-/**
- * @property int $id
- * @property int $user_id
- * @property string $name
- * @property string $period
- * @property string $icon
- * @property string $color
- * @property int $monthly_target
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\HabitLog[] $logs
- */
 class Habit extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id', 'period', 'name', 'icon', 'color', 'monthly_target', 'status', 'is_archived',
-    ];
+    protected $guarded = ['id'];
 
-    // 🔥 3. Tambahkan ': HasMany' (Ini Kuncinya!)
-    public function logs(): HasMany
+    public function logs()
     {
         return $this->hasMany(HabitLog::class);
     }
 
-    // 🔥 4. Tambahkan ': HasOne' sekalian biar rapi
-    public function todayLog(): HasOne
+    // --- LOCAL SCOPES (Clean Query Helpers) ---
+
+    public function scopeOfUser($query, $userId)
     {
-        return $this->hasOne(HabitLog::class)->where('date', date('Y-m-d'));
+        return $query->where('user_id', $userId);
+    }
+
+    public function scopeForPeriod($query, $period)
+    {
+        return $query->where('period', $period);
+    }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('position', 'asc')->orderBy('created_at', 'asc');
+    }
+
+    public function scopeWithLogStats($query, $startOfMonth, $endOfMonth)
+    {
+        return $query
+            ->with(['logs' => fn ($q) => $q->whereBetween('date', [$startOfMonth, $endOfMonth])])
+            ->withCount(['logs as completed_count' => fn ($q) => $q->where('status', 'completed')]);
     }
 }

@@ -34,4 +34,16 @@ class CalendarEvent extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeOfUser($query, $userId) {
+        return $query->where('user_id', $userId);
+    }
+
+    public function scopeOverlappingMonth($query, $startDate, $endDate) {
+        return $query->where('start_date', '<=', $endDate)
+            ->where(function($q) use ($startDate) {
+                $q->where('end_date', '>=', $startDate)
+                  ->orWhereNull('end_date');
+            });
+    }
 }

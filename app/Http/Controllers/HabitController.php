@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\HabitStatus;
+use App\Http\Requests\IndexHabitRequest;
 use App\Http\Requests\LogHabitRequest;   
 use App\Http\Requests\StoreHabitRequest; 
 use App\Http\Requests\UpdateHabitRequest; 
 use App\Http\Resources\HabitResource;
 use App\Models\Habit;
-use App\Models\HabitLog;
 use App\Models\Mood;
-use Carbon\Carbon;
+use App\Services\HabitService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,57 +19,47 @@ class HabitController extends Controller
 {
     use AuthorizesRequests;
 
-    public function index(Request $request)
+    public function __construct(private HabitService $habitService) 
+    {
+        // Service di-inject secara otomatis oleh Laravel
+    }
+
+    public function index(IndexHabitRequest $request)
     {
         $user = Auth::user();
-        $monthQuery = $request->input('month', Carbon::now()->format('Y-m'));
+        $timezone = $user->timezone ?? 'Asia/Jakarta';
         
-        $dateObj = Carbon::parse($monthQuery . '-01');
-        $startOfMonth = $dateObj->copy()->startOfMonth()->format('Y-m-d');
-        $endOfMonth = $dateObj->copy()->endOfMonth()->format('Y-m-d');
+        // 1. Ambil perhitungan tanggal yang sudah bersih dari Request Class
+        $dates = $request->getMonthData($timezone);
 
-        $habits = Habit::where('user_id', $user->id)
-            ->orderBy('position', 'asc') // 🔥 TAMBAHKAN INI
-            ->orderBy('created_at', 'asc')
-            ->where('period', $monthQuery)
-            ->with(['logs' => fn ($q) => $q->whereBetween('date', [$startOfMonth, $endOfMonth])])
-            ->withCount(['logs as completed_count' => fn ($q) => $q->where('status', 'completed')])
+        // 2. Tarik Data menggunakan Model Scopes (Sangat Terbaca / Human Readable)
+        $habits = Habit::ofUser($user->id)
+            ->forPeriod($dates['query'])
+            ->ordered()
+            ->withLogStats($dates['start'], $dates['end'])
             ->get();
 
         $dataResource = HabitResource::collection($habits);
 
-        if ($request->wantsJson()) {
-            return $dataResource;
-        }
-
-        $currentMood = Mood::where('user_id', $user->id)->where('period', $monthQuery)->first();
-        $prevMonth = $dateObj->copy()->subMonth()->format('Y-m');
-        $hasPrevHabits = Habit::where('user_id', $user->id)->where('period', $prevMonth)->exists();
+        if ($request->wantsJson()) return $dataResource;
 
         return Inertia::render('Habits/Index', [
             'habits' => $dataResource,
-            'currentMonth' => $dateObj->translatedFormat('F Y'),
-            'monthQuery' => $monthQuery,
-            'hasPrevHabits' => $hasPrevHabits,
-            'prevMonthQuery' => $prevMonth,
-            'savedMood' => $currentMood ? $currentMood->mood_code : null,
+            'currentMonth' => $dates['translated'],
+            'monthQuery' => $dates['query'],
+            'hasPrevHabits' => Habit::ofUser($user->id)->forPeriod($dates['prev'])->exists(),
+            'prevMonthQuery' => $dates['prev'],
+            'savedMood' => Mood::where('user_id', $user->id)->where('period', $dates['query'])->value('mood_code'),
         ]);
     }
 
     public function store(StoreHabitRequest $request)
     {
-        $habit = Habit::create(array_merge(
-            ['user_id' => Auth::id()],
-            $request->validated()
-        ));
+        $habit = $this->habitService->createHabit(Auth::id(), $request->validated());
 
         if ($request->wantsJson()) {
-            return response()->json([
-                'message' => 'Habit created successfully',
-                'data' => new HabitResource($habit)
-            ], 201);
+            return response()->json(['message' => 'Habit created', 'data' => new HabitResource($habit)], 201);
         }
-
         return back();
     }
 
@@ -80,36 +69,93 @@ class HabitController extends Controller
         $habit->update($request->validated());
 
         if ($request->wantsJson()) {
-            return response()->json([
-                'message' => 'Habit updated',
-                'data' => new HabitResource($habit)
-            ]);
+            return response()->json(['message' => 'Habit updated', 'data' => new HabitResource($habit)]);
         }
+        return back();
+    }
 
+    public function destroy(Habit $habit)
+    {
+        $this->authorize('delete', $habit);
+        $habit->delete();
+
+        if (request()->wantsJson()) return response()->json(['message' => 'Habit deleted'], 200);
         return back();
     }
 
     public function storeLog(LogHabitRequest $request, Habit $habit)
     {
         $this->authorize('log', $habit);
-        $data = $request->validated();
+        $this->habitService->logHabit($habit, $request->date, $request->status);
 
-        if ($data['status'] === 'uncheck') {
-            HabitLog::where('habit_id', $habit->id)
-                ->where('date', $data['date'])
-                ->delete();
-        } else {
-            HabitLog::updateOrCreate(
-                ['habit_id' => $habit->id, 'date' => $data['date']],
-                ['status' => $data['status']]
-            );
-        }
-
-        if ($request->wantsJson()) {
-            return response()->json(['message' => 'Log updated successfully']);
-        }
-
+        if ($request->wantsJson()) return response()->json(['message' => 'Log updated']);
         return back();
+    }
+
+    public function copyFromPrevious(Request $request)
+    {
+        $request->validate([
+            'current_period' => 'required|date_format:Y-m',
+            'prev_period' => 'required|date_format:Y-m',
+        ]);
+
+        try {
+            $count = $this->habitService->copyFromPreviousMonth(
+                Auth::id(), 
+                $request->prev_period, 
+                $request->current_period, 
+                Auth::user()->timezone ?? 'Asia/Jakarta'
+            );
+
+            if ($request->wantsJson()) return response()->json(['message' => "$count habits copied"]);
+            return back()->with('success', "$count habits berhasil disalin!");
+
+        } catch (\Exception $e) {
+            if ($request->wantsJson()) return response()->json(['message' => $e->getMessage()], 400);
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    public function batchStore(Request $request)
+    {
+        $request->validate([
+            'period' => 'required|date_format:Y-m',
+            'habits' => 'required|array|min:1',
+            'habits.*.name' => 'required|string|max:255',
+            'habits.*.icon' => 'required|string',
+            'habits.*.color' => 'required|string',
+            'habits.*.monthly_target' => 'required|integer|min:1|max:31',
+        ]);
+
+        $this->habitService->batchStore(Auth::id(), $request->period, $request->habits, Auth::user()->timezone ?? 'Asia/Jakarta');
+
+        if ($request->wantsJson()) return response()->json(['message' => 'Batch habits saved.']);
+        return back()->with('success', 'Habit berhasil ditambahkan secara massal!');
+    }
+
+    public function reorder(Request $request)
+    {
+        $request->validate([
+            'habits' => 'required|array',
+            'habits.*.id' => 'required|exists:habits,id',
+            'habits.*.position' => 'required|integer',
+        ]);
+
+        $this->habitService->reorder(Auth::id(), $request->habits);
+        return response()->json(['message' => 'Urutan disimpan']);
+    }
+
+    public function batchLog(Request $request)
+    {
+        $request->validate([
+            'logs' => 'required|array',
+            'logs.*.habit_id' => 'required|exists:habits,id',
+            'logs.*.date' => 'required|date',
+            'logs.*.status' => 'required|string'
+        ]);
+
+        $this->habitService->batchLog(Auth::id(), $request->logs);
+        return response()->json(['message' => 'Batch logs updated!']);
     }
 
     public function updateMood(Request $request)
@@ -124,156 +170,7 @@ class HabitController extends Controller
             ['mood_code' => $validated['mood_code']]
         );
 
-        if ($request->wantsJson()) {
-            return response()->json(['message' => 'Mood saved', 'data' => $mood]);
-        }
-
+        if ($request->wantsJson()) return response()->json(['message' => 'Mood saved', 'data' => $mood]);
         return back();
-    }
-
-    public function copyFromPrevious(Request $request)
-    {
-        $request->validate([
-            'current_period' => 'required|date_format:Y-m',
-            'prev_period' => 'required|date_format:Y-m',
-        ]);
-
-        $alreadyHasHabits = Habit::where('user_id', Auth::id())
-            ->where('period', $request->current_period)
-            ->exists();
-
-        if ($alreadyHasHabits) {
-            if ($request->wantsJson()) {
-                return response()->json(['message' => 'Habit bulan ini sudah ada!'], 400);
-            }
-            return back()->with('error', 'Habit untuk bulan ini sudah ada! Tidak bisa copy lagi.');
-        }
-
-        $oldHabits = Habit::where('user_id', Auth::id())
-            ->where('period', $request->prev_period)
-            ->get();
-
-        $newHabits = [];
-        $now = Carbon::now()->toDateTimeString(); 
-
-        foreach ($oldHabits as $old) {
-            $newHabits[] = [
-                'user_id' => Auth::id(),
-                'period' => $request->current_period,
-                'name' => $old->name,
-                'icon' => $old->icon,
-                'color' => $old->color,
-                'monthly_target' => $old->monthly_target,
-                'created_at' => $now,
-                'updated_at' => $now,
-            ];
-        }
-
-        if (!empty($newHabits)) {
-            Habit::insert($newHabits);
-        }
-
-        $count = count($newHabits);
-        if ($request->wantsJson()) {
-            return response()->json(['message' => "$count habits copied successfully"]);
-        }
-
-        return back()->with('success', "$count habits berhasil disalin!");
-    }
-
-    public function destroy(Habit $habit)
-    {
-        $this->authorize('delete', $habit);
-        $habit->delete();
-
-        if (request()->wantsJson()) {
-            return response()->json(['message' => 'Habit deleted'], 200);
-        }
-
-        return back();
-    }
-
-    public function batchStore(Request $request)
-    {
-        $request->validate([
-            'period' => 'required|date_format:Y-m',
-            'habits' => 'required|array|min:1',
-            'habits.*.name' => 'required|string|max:255',
-            'habits.*.icon' => 'required|string',
-            'habits.*.color' => 'required|string',
-            'habits.*.monthly_target' => 'required|integer|min:1|max:31',
-        ]);
-
-        $now = now()->toDateTimeString(); 
-        $habitsData = [];
-
-        foreach ($request->habits as $habit) {
-            $habitsData[] = [
-                'user_id' => Auth::id(),
-                'period' => $request->period,
-                'name' => $habit['name'],
-                'icon' => $habit['icon'],
-                'color' => $habit['color'],
-                'monthly_target' => $habit['monthly_target'],
-                'created_at' => $now,
-                'updated_at' => $now,
-            ];
-        }
-
-        if (!empty($habitsData)) {
-            Habit::insert($habitsData);
-        }
-
-        if ($request->wantsJson()) {
-            return response()->json(['message' => 'Batch habits saved successfully.']);
-        }
-
-        return back()->with('success', 'Habit berhasil ditambahkan secara massal!');
-    }
-
-    public function reorder(Request $request)
-    {
-        $request->validate([
-            'habits' => 'required|array',
-            'habits.*.id' => 'required|exists:habits,id',
-            'habits.*.position' => 'required|integer',
-        ]);
-
-        foreach ($request->habits as $habitData) {
-            Habit::where('id', $habitData['id'])
-                ->where('user_id', Auth::id())
-                ->update(['position' => $habitData['position']]);
-        }
-
-        return response()->json(['message' => 'Urutan disimpan']);
-    }
-
-    // 🔥 TAMBAHKAN FUNGSI INI UNTUK BATCH LOG 🔥
-    public function batchLog(Request $request)
-    {
-        $request->validate([
-            'logs' => 'required|array',
-            'logs.*.habit_id' => 'required|exists:habits,id',
-            'logs.*.date' => 'required|date',
-            'logs.*.status' => 'required|string'
-        ]);
-
-        foreach ($request->logs as $log) {
-            $habit = Habit::findOrFail($log['habit_id']);
-            $this->authorize('log', $habit);
-
-            if ($log['status'] === 'uncheck') {
-                HabitLog::where('habit_id', $log['habit_id'])
-                    ->where('date', $log['date'])
-                    ->delete();
-            } else {
-                HabitLog::updateOrCreate(
-                    ['habit_id' => $log['habit_id'], 'date' => $log['date']],
-                    ['status' => $log['status']]
-                );
-            }
-        }
-
-        return response()->json(['message' => 'Batch logs updated!']);
     }
 }

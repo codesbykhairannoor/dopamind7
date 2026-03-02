@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, watch } from 'vue';
 import draggable from 'vuedraggable';
 
 const props = defineProps({
@@ -17,18 +17,24 @@ const props = defineProps({
     handleMouseDown: Function,
     handleMouseEnter: Function,
     isCellSelected: Function,
-
-    // 🔥 FUNGSI SAVE DARI DRAGGABLE 🔥
     saveHabitOrder: Function,
 });
 
-// Proxy setter agar VueDraggable bisa ngubah urutan dengan aman
-const draggableHabits = computed({
-    get: () => props.localHabits,
-    set: (newVal) => {
-        if (props.saveHabitOrder) props.saveHabitOrder(newVal);
+// 🔥 FIX: 1. Buat referensi array lokal khusus untuk Draggable 
+// (Agar tidak terjadi bentrok "Mutating Props" di Vue)
+const draggableList = ref([...props.localHabits]);
+
+// 🔥 FIX: 2. Jika ada penambahan/perubahan habit dari atas (parent), update list draggable-nya
+watch(() => props.localHabits, (newVal) => {
+    draggableList.value = [...newVal];
+}, { deep: true });
+
+// 🔥 FIX: 3. Eksekusi tembak API ke server HANYA KETIKA proses drag (geser) selesai
+const handleDragEnd = () => {
+    if (props.saveHabitOrder) {
+        props.saveHabitOrder(draggableList.value);
     }
-});
+};
 </script>
 
 <template>
@@ -56,7 +62,8 @@ const draggableHabits = computed({
                     </div>
 
                     <draggable 
-                        v-model="draggableHabits"
+                        v-model="draggableList"
+                        @end="handleDragEnd"
                         item-key="id"
                         handle=".drag-handle"
                         animation="250"
@@ -108,7 +115,7 @@ const draggableHabits = computed({
                                             @click="toggleStatus(habit.id, day.dateString)" 
                                             @contextmenu.prevent="toggleStatus(habit.id, day.dateString, 'skipped')"
                                             @keydown="handleGridNav($event, hIndex, dIndex, habit.id, day.dateString)"
-                                            @mousedown="handleMouseDown && handleMouseDown(habit.id, day.dateString)"
+                                            @mousedown="handleMouseDown && handleMouseDown($event, habit.id, day.dateString)"
                                             @mouseenter="handleMouseEnter && handleMouseEnter(habit.id, day.dateString)"
                                             :disabled="day.isFuture"
                                             tabindex="0"

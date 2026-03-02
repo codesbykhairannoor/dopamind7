@@ -2,104 +2,59 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FinanceBudget;
-use App\Models\FinanceTransaction;
-use App\Models\FinanceCategory;
-use App\Models\DailyLog;
-use App\Http\Resources\FinanceBudgetResource;
-use App\Http\Resources\FinanceTransactionResource;
+use App\Http\Requests\FinanceDateRequest;
 use App\Http\Requests\TransactionRequest;
 use App\Http\Requests\BudgetRequest;
-use Carbon\Carbon;
+use App\Http\Resources\FinanceBudgetResource;
+use App\Http\Resources\FinanceTransactionResource;
+use App\Models\FinanceBudget;
+use App\Models\FinanceCategory;
+use App\Models\FinanceTransaction;
+use App\Models\DailyLog;
+use App\Services\FinanceService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
-use Illuminate\Support\Str;
 
 class FinanceController extends Controller
 {
-    public function index(Request $request): Response
+    public function __construct(private FinanceService $financeService)
+    {
+        // Service injected otomatis
+    }
+
+    public function index(FinanceDateRequest $request): Response
     {
         $user = Auth::user();
-        $date = $request->input('date', now()->format('Y-m-d'));
-        $carbonDate = Carbon::parse($date);
-        
-        $startOfMonth = $carbonDate->copy()->startOfMonth()->format('Y-m-d');
-        $endOfMonth = $carbonDate->copy()->endOfMonth()->format('Y-m-d');
+        $timezone = $user->timezone ?? 'Asia/Jakarta';
+        $validDate = $request->getValidDate($timezone);
 
-        // 1. Ambil Data Dasar dari Database
-        $categories = FinanceCategory::where('user_id', $user->id)->get();
-
-        // 🔥 OPTIMASI UTAMA: Tarik SEMUA transaksi bulan ini sekaligus dalam SATU query saja.
-        $allMonthTransactions = FinanceTransaction::where('user_id', $user->id)
-            ->whereBetween('date', [$startOfMonth, $endOfMonth])
-            ->orderBy('date', 'desc')
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        // 2. Olah Data di RAM (PHP Collections) - Jauh lebih cepat daripada bolak-balik SQL
-        $incomeTransactions = $allMonthTransactions->where('type', 'income');
-        $expenseTransactions = $allMonthTransactions->where('type', 'expense');
-
-        $totalIncome = $incomeTransactions->sum('amount');
-        $totalExpense = $expenseTransactions->sum('amount');
-
-        // Hitung stats per kategori tanpa query tambahan
-        $expenseStats = $expenseTransactions->groupBy('category')
-            ->map(fn($group) => $group->sum('amount'));
-
-        $incomeStats = $incomeTransactions->groupBy('category')
-            ->map(fn($group) => $group->sum('amount'));
-
-        // 3. Tarik & Map Budget
-        $budgets = FinanceBudget::where('user_id', $user->id)
-            ->where('month', $carbonDate->format('Y-m'))
-            ->get()
-            ->map(function ($budget) use ($expenseStats) {
-                $budget->spent = $expenseStats[$budget->category] ?? 0;
-                return $budget;
-            });
-
-        // 4. Daily Log & Kalkulasi Balance
-        $log = DailyLog::where('user_id', $user->id)->whereDate('date', $startOfMonth)->first();
-        $incomeTarget = $log ? (float) $log->income_target : 0;
-        $balance = ($incomeTarget + $totalIncome) - $totalExpense;
+        // Lempar semua kalkulasi berat ke Service
+        $data = $this->financeService->getDashboardData($user->id, $validDate, $timezone);
 
         return Inertia::render('Finance/Index', [
-            'transactions' => FinanceTransactionResource::collection($allMonthTransactions)->resolve(),
-            'budgets'      => FinanceBudgetResource::collection($budgets)->resolve(),
-            'categories'   => $categories,
-            'stats'        => [
-                'total_income'        => $totalIncome,
-                'total_expense'       => $totalExpense,
-                'income_target'       => $incomeTarget,
-                'balance'             => $balance,
-                'expense_by_category' => $expenseStats,
-                'income_by_category'  => $incomeStats,
-            ],
-            'filters'      => [
-                'date' => $date, 
-                'month_name' => $carbonDate->translatedFormat('F Y')
-            ]
+            'transactions' => FinanceTransactionResource::collection($data['transactions'])->resolve(),
+            'budgets'      => FinanceBudgetResource::collection($data['budgets'])->resolve(),
+            'categories'   => $data['categories'],
+            'stats'        => $data['stats'],
+            'filters'      => $data['filters']
         ]);
     }
 
-    // --- KATEGORI (Income & Umum) ---
+    // --- KATEGORI ---
     public function storeCategory(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255', 
             'type' => 'required|in:income,expense',
             'icon' => 'nullable|string|max:50'
         ]);
         
-        $slug = Str::slug($request->name, '_');
-
         FinanceCategory::firstOrCreate(
-            ['user_id' => Auth::id(), 'slug' => $slug],
-            ['name' => $request->name, 'type' => $request->type, 'icon' => $request->icon ?? '💰']
+            ['user_id' => Auth::id(), 'slug' => Str::slug($validated['name'], '_')],
+            ['name' => $validated['name'], 'type' => $validated['type'], 'icon' => $validated['icon'] ?? '💰']
         );
 
         return back()->with('success', 'Kategori berhasil disimpan.');
@@ -109,52 +64,32 @@ class FinanceController extends Controller
     {
         if ($category->user_id !== Auth::id()) abort(403);
 
-        // 🔥 FIX: Validasi ditambahkan agar aplikasi tidak crash jika input 'name' kosong
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'icon' => 'nullable|string|max:50'
         ]);
 
-        $oldSlug = $category->slug;
-        $newSlug = Str::slug($request->name, '_');
-
-        DB::transaction(function () use ($category, $request, $oldSlug, $newSlug) {
-            $category->update([
-                'name' => $request->name,
-                'slug' => $newSlug,
-                'icon' => $request->icon
-            ]);
-
-            // Cascade update ke transaksi dan budget jika slug berubah
-            if ($oldSlug !== $newSlug) {
-                FinanceTransaction::where('user_id', Auth::id())
-                    ->where('category', $oldSlug)
-                    ->update(['category' => $newSlug]);
-                FinanceBudget::where('user_id', Auth::id())
-                    ->where('category', $oldSlug)
-                    ->update(['category' => $newSlug]);
-            }
-        });
-
+        $this->financeService->updateCategoryCascade($category, $validated['name'], $validated['icon']);
         return back()->with('success', 'Kategori diperbarui.');
     }
 
     public function destroyCategory(FinanceCategory $category)
     {
         if ($category->user_id !== Auth::id()) abort(403);
-        $category->delete();
+        $this->financeService->destroyCategorySafely($category);
         return back();
     }
 
-    // --- TRANSAKSI ---
+    // --- TRANSAKSI TUNGGAL ---
     public function storeTransaction(TransactionRequest $request)
     {
-        $request->user()->financeTransactions()->create($request->validated());
+        Auth::user()->financeTransactions()->create($request->validated());
         return back();
     }
 
     public function updateTransaction(TransactionRequest $request, FinanceTransaction $financeTransaction)
     {
+        if ($financeTransaction->user_id !== Auth::id()) abort(403);
         $financeTransaction->update($request->validated());
         return back();
     }
@@ -169,58 +104,14 @@ class FinanceController extends Controller
     // --- BUDGET ---
     public function storeBudget(BudgetRequest $request)
     {
-        DB::transaction(function () use ($request) {
-            $exists = FinanceCategory::where('user_id', Auth::id())
-                ->where('slug', $request->category)
-                ->exists();
-
-            if (!$exists && $request->has('name')) {
-                FinanceCategory::create([
-                    'user_id' => Auth::id(),
-                    'slug' => $request->category,
-                    'name' => $request->name,
-                    'icon' => $request->icon ?? '💸',
-                    'type' => 'expense'
-                ]);
-            }
-
-            FinanceBudget::updateOrCreate(
-                ['user_id' => Auth::id(), 'category' => $request->category, 'month' => $request->month],
-                ['limit_amount' => $request->limit_amount]
-            );
-        });
-
+        $this->financeService->storeBudget(Auth::id(), $request->all());
         return back();
     }
 
     public function updateBudget(BudgetRequest $request, FinanceBudget $financeBudget)
     {
-        DB::transaction(function () use ($request, $financeBudget) {
-            $oldSlug = $financeBudget->category;
-            $masterCategory = FinanceCategory::where('user_id', Auth::id())
-                ->where('slug', $oldSlug)
-                ->first();
-
-            if ($masterCategory && $request->has('name')) {
-                $newSlug = Str::slug($request->name, '_');
-                $masterCategory->update([
-                    'name' => $request->name, 
-                    'slug' => $newSlug, 
-                    'icon' => $request->icon
-                ]);
-
-                if ($oldSlug !== $newSlug) {
-                    FinanceBudget::where('user_id', Auth::id())
-                        ->where('category', $oldSlug)
-                        ->update(['category' => $newSlug]);
-                    FinanceTransaction::where('user_id', Auth::id())
-                        ->where('category', $oldSlug)
-                        ->update(['category' => $newSlug]);
-                }
-            }
-            $financeBudget->update(['limit_amount' => $request->limit_amount]);
-        });
-
+        if ($financeBudget->user_id !== Auth::id()) abort(403);
+        $this->financeService->updateBudgetCascade($financeBudget, $request->all());
         return back();
     }
 
@@ -231,59 +122,40 @@ class FinanceController extends Controller
         return back();
     }
 
+    // --- TARGET INCOME & BATCH ---
     public function updateIncomeTarget(Request $request)
     {
-        $request->validate(['month' => 'required', 'amount' => 'required|numeric']);
+        $validated = $request->validate([
+            'month'  => 'required|date_format:Y-m', 
+            'amount' => 'required|numeric|min:0'
+        ]);
+        
         DailyLog::updateOrCreate(
-            ['user_id' => Auth::id(), 'date' => $request->month . '-01'],
-            ['income_target' => $request->amount]
+            ['user_id' => Auth::id(), 'date' => $validated['month'] . '-01'],
+            ['income_target' => $validated['amount']]
         );
+        
         return back();
     }
 
-    // --- BATCH TRANSAKSI ---
     public function batchStoreTransaction(Request $request)
-{
-    // 1. Validasi input tetap dipertahankan untuk keamanan data
-    $request->validate([
-        'date' => 'required|date',
-        'transactions' => 'required|array|min:1',
-        'transactions.*.title' => 'required|string|max:255',
-        'transactions.*.amount' => 'required|numeric|min:1',
-        'transactions.*.type' => 'required|in:income,expense',
-        'transactions.*.category' => 'required|string',
-    ]);
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'transactions' => 'required|array|min:1',
+            'transactions.*.title' => 'required|string|max:255',
+            'transactions.*.amount' => 'required|numeric|min:1',
+            'transactions.*.type' => 'required|in:income,expense',
+            'transactions.*.category' => 'required|string',
+        ]);
 
-    $userId = Auth::id();
-    $date = $request->date;
-    
-    // Karena menggunakan Query Builder (insert), timestamps harus diisi manual
-    $now = Carbon::now(); 
+        $this->financeService->batchStoreTransactions(
+            Auth::id(), 
+            $request->date, 
+            $request->transactions, 
+            Auth::user()->timezone ?? 'Asia/Jakarta'
+        );
 
-    // 2. Siapkan data dalam bentuk array koleksi
-    $insertData = [];
-    foreach ($request->transactions as $trx) {
-        $insertData[] = [
-            'user_id'    => $userId,
-            'date'       => $date,
-            'title'      => $trx['title'],
-            'amount'     => $trx['amount'],
-            'type'       => $trx['type'],
-            'category'   => $trx['category'],
-            'notes'      => $trx['notes'] ?? null,
-            'created_at' => $now, // Wajib diisi manual saat menggunakan insert()
-            'updated_at' => $now,
-        ];
+        return back();
     }
-
-    // 3. Jalankan Bulk Insert dalam satu transaksi database
-    DB::transaction(function () use ($insertData) {
-        if (!empty($insertData)) {
-            // Menggunakan insert() jauh lebih cepat daripada create() di dalam loop
-            FinanceTransaction::insert($insertData);
-        }
-    });
-
-    return back();
-}
 }

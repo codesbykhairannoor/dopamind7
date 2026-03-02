@@ -14,10 +14,7 @@ use Inertia\Response;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
-  public function edit(Request $request): Response
+    public function edit(Request $request): Response
     {
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
@@ -26,37 +23,23 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = $request->user();
-
-        // 🔥 FIX: Hanya ambil 'name' dan 'email' untuk di-fill. 
-        // Jangan masukkan 'avatar' karena 'avatar' itu berupa file gambar, bukan teks biasa!
         $user->fill($request->only(['name', 'email']));
 
-        // =========================================================
-        // 📸 LOGIC UPLOAD AVATAR (NATIVE LARAVEL - TANPA EXTENSION GD)
-        // =========================================================
         if ($request->hasFile('avatar')) {
-            
-            // A. Hapus Avatar Lama (Jika ada) supaya storage tidak penuh
-            if ($user->avatar_path) {
-                Storage::disk('public')->delete($user->avatar_path);
+            // 🔥 Sama, fallback public agar gambar tidak error
+            $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+
+            if ($user->avatar_path && !str_starts_with($user->avatar_path, 'http')) {
+                Storage::disk($disk)->delete($user->avatar_path);
             }
 
-            // B. Simpan file asli langsung ke storage (storage/app/public/avatars)
-            // Otomatis membuat nama file hash yang unik
-            $path = $request->file('avatar')->store('avatars', 'public');
-
-            // C. Simpan Path ke Database (Tabel kita pakainya avatar_path)
+            $path = $request->file('avatar')->store('avatars', $disk);
             $user->avatar_path = $path;
         }
-        // =========================================================
 
-        // Reset verifikasi email kalau email diganti
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
@@ -66,9 +49,6 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit');
     }
 
-    /**
-     * Delete the user's account.
-     */
     public function destroy(Request $request): RedirectResponse
     {
         $request->validate([
@@ -76,12 +56,12 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
 
         Auth::logout();
 
-        // 🔥 TAMBAHAN: Hapus foto profil dari storage pas akun dihapus
-        if ($user->avatar_path) {
-            Storage::disk('public')->delete($user->avatar_path);
+        if ($user->avatar_path && !str_starts_with($user->avatar_path, 'http')) {
+            Storage::disk($disk)->delete($user->avatar_path);
         }
 
         $user->delete();
