@@ -64,33 +64,43 @@ export function useCalendarForm() {
         isEventModalOpen.value = true;
     };
 
-    const submitEvent = () => {
+    // 🔥 TAMBAHKAN PARAMETER CALLBACK DI SINI
+    const submitEvent = (callbacks = {}) => {
         if (!eventForm.title) return fireToast('warning', t('warn_empty_title', 'Judul harus diisi!'));
 
         const isEditing = !!eventForm.id;
         const url = isEditing ? route('calendar.events.update', eventForm.id) : route('calendar.events.store');
         const method = isEditing ? 'put' : 'post';
 
-        // 🚀 OPTIMISTIC UI: Langsung tutup modal agar terasa "Instan"
+        // 1. Buat Data Palsu (Optimistic Data)
+        const tempId = eventForm.id || `temp_${Date.now()}`;
+        const optimisticData = { ...eventForm.data(), id: tempId };
+
+        // 2. Langsung tutup modal agar terasa "Instan" 0ms
         isEventModalOpen.value = false;
+
+        // 3. Tembak UI Update di Index.vue
+        if (callbacks.onOptimistic) callbacks.onOptimistic(optimisticData, isEditing);
 
         eventForm[method](url, {
             preserveScroll: true,
             preserveState: true,
-            progress: false, // Matikan bar loading Inertia di atas layar
+            progress: false, // Matikan loading Inertia
             onSuccess: () => {
                 fireToast('success', t('success_saved', 'Acara Berhasil Disimpan!'));
                 eventForm.reset();
             },
             onError: (err) => {
-                // Munculkan kembali modal jika gagal save di backend
+                // Kembalikan ke keadaan semula jika gagal
                 isEventModalOpen.value = true;
-                fireToast('error', Object.values(err)[0]);
+                fireToast('error', Object.values(err)[0] || 'Terjadi kesalahan!');
+                if (callbacks.onError) callbacks.onError(tempId, isEditing);
             }
         });
     };
 
-    const deleteEvent = (id) => {
+    // 🔥 TAMBAHKAN PARAMETER CALLBACK DI SINI
+    const deleteEvent = (id, callbacks = {}) => {
         Swal.fire({
             title: t('confirm_delete_title', 'Hapus Acara?'),
             text: t('confirm_delete_text', 'Data ini akan dihapus permanen.'),
@@ -108,10 +118,19 @@ export function useCalendarForm() {
             buttonsStyling: false,
         }).then((res) => {
             if (res.isConfirmed) {
+                // 1. Eksekusi Optimistic: Hilangkan dari kalender detik itu juga
+                if (callbacks.onOptimistic) callbacks.onOptimistic(id);
+
                 router.delete(route('calendar.events.destroy', id), {
-                    preserveScroll: true, preserveState: true, progress: false,
+                    preserveScroll: true, 
+                    preserveState: true, 
+                    progress: false,
                     onSuccess: () => {
                         fireToast('success', t('success_deleted', 'Berhasil Dihapus!'));
+                    },
+                    onError: () => {
+                        // Undo jika server gagal
+                        if(callbacks.onError) callbacks.onError(id);
                     }
                 });
             }

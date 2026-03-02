@@ -34,5 +34,10 @@
     "module_planner_desc": "Jadwal & Agenda Harian",
     "module_finance_desc": "Atur budget & pengeluaran",
     "module_journal_desc": "Catat kegiatan harian",
-    "settings_saved": "Pengaturan tersimpan otomatis!"
+    "settings_saved": "Pengaturan tersimpan otomatis!",
+    "photo_adjust_instruction": "Pilih foto, lalu Anda dapat menyesuaikan posisi gambar sebelum diunggah.",
+    "adjust_photo_title": "Sesuaikan Foto",
+    "pan_instruction": "Gunakan Mouse/Sentuhan Untuk Menggeser",
+    "cancel": "Batal",
+    "save_photo": "Simpan Foto"
 }

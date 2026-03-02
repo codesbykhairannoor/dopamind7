@@ -131,68 +131,49 @@ export function useHabitCore(props) {
         }
     };
 
-    // --- MULTI-TOGGLE (SPASI PADA SEL YG DIBLOK) 🔥 ---
-    const toggleSelectedCells = async () => {
-        if (selectedCells.value.size === 0) return;
+   const toggleSelectedCells = async () => {
+    if (selectedCells.value.size === 0) return;
 
-        // Asumsi: Kita akan nembak semua cell jadi 'completed' (atau 'uncheck' kalau udah komplit semua)
-        // Cek dulu apakah mayoritas udah completed?
-        let isAllCompleted = true;
-        let payloadQueue = [];
+    let isAllCompleted = true;
+    let logsPayload = []; // Kumpulin semua di sini
 
-        // Loop untuk update UI secara Optimistic seketika!
-        selectedCells.value.forEach(cellId => {
-            const [hIdStr, dStr] = cellId.split('|');
-            const hId = parseInt(hIdStr);
-            const habit = localHabits.value.find(h => h.id === hId);
-            
-            if (habit) {
-                if (habit.logs[dStr] !== 'completed') isAllCompleted = false;
-            }
-        });
+    selectedCells.value.forEach(cellId => {
+        const [hIdStr, dStr] = cellId.split('|');
+        const hId = parseInt(hIdStr);
+        const habit = localHabits.value.find(h => h.id === hId);
+        if (habit && habit.logs[dStr] !== 'completed') isAllCompleted = false;
+    });
 
-        // Tentukan target status massalnya (Kalau full centang, maka dibikin kosong. Sebaliknya jadi centang)
-        const targetStatus = isAllCompleted ? 'uncheck' : 'completed';
+    const targetStatus = isAllCompleted ? 'uncheck' : 'completed';
 
-        // Apply ke memori UI
-        selectedCells.value.forEach(cellId => {
-            const [hIdStr, dStr] = cellId.split('|');
-            const hId = parseInt(hIdStr);
-            const habit = localHabits.value.find(h => h.id === hId);
-            
-            if (habit) {
-                if (targetStatus === 'uncheck') {
-                    delete habit.logs[dStr];
-                } else {
-                    habit.logs[dStr] = targetStatus;
-                }
+    selectedCells.value.forEach(cellId => {
+        const [hIdStr, dStr] = cellId.split('|');
+        const hId = parseInt(hIdStr);
+        const habit = localHabits.value.find(h => h.id === hId);
+        
+        if (habit) {
+            // Update UI Instan
+            if (targetStatus === 'uncheck') { delete habit.logs[dStr]; } 
+            else { habit.logs[dStr] = targetStatus; }
 
-                // Kalkulasi ulang bar
-                const newCompletedCount = Object.values(habit.logs).filter(status => status === 'completed').length;
-                habit.progress_count = newCompletedCount;
-                habit.progress_percent = habit.monthly_target > 0
-                    ? Math.min(100, Math.round((newCompletedCount / habit.monthly_target) * 100))
-                    : 0;
-
-                // Masukkan ke antrian untuk ditembak ke DB
-                payloadQueue.push({ habit_id: hId, date: dStr, status: targetStatus });
-            }
-        });
-
-        // Kosongkan blok seleksi setelah selesai
-        selectedCells.value.clear();
-
-        // Tembak massal ke server! (Gunakan endpoint log yang sama, bisa dioptimasi kalau server punya batch logic)
-        try {
-            // Karena ini pakai axios bawaan Laravel, ngirim N buah request sekaligus pakai Promise.all
-            // (Batas aman: biasanya < 20 sel sekali blok gak masalah)
-            await Promise.all(
-                payloadQueue.map(p => axios.post(route('habits.log', p.habit_id), { date: p.date, status: p.status }))
-            );
-        } catch (e) {
-            console.error("Gagal save massal:", e);
+            // Masukkan ke payload
+            logsPayload.push({
+                habit_id: hId,
+                date: dStr,
+                status: targetStatus
+            });
         }
-    };
+    });
+
+    selectedCells.value.clear();
+
+    // 🔥 HANYA 1 REQUEST UNTUK SEMUA SEL
+    try {
+        await axios.post(route('habits.batch-log'), { logs: logsPayload });
+    } catch (e) {
+        console.error("Gagal save massal:", e);
+    }
+};
 
 
     // --- KEYBOARD NAV ---

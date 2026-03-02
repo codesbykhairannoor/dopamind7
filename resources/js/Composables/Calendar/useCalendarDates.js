@@ -20,43 +20,61 @@ export function useCalendarDates(props) {
         const startOfMonth = dayjs(yearMonth).startOf('month');
         const endOfMonth = dayjs(yearMonth).endOf('month');
         const daysInMonth = startOfMonth.daysInMonth();
-        const startDayOfWeek = startOfMonth.day() === 0 ? 6 : startOfMonth.day() - 1; 
+        
+        // Perbaikan index hari (Minggu = 0 di dayjs, tapi kita ingin Senin = 1)
+        const firstDay = startOfMonth.day();
+        const startDayOfWeek = firstDay === 0 ? 6 : firstDay - 1; 
         
         let days = [];
 
+        // 🚀 SURPRISE ME: PRE-COMPUTE EVENTS (O(N) MAPPING)
+        // Kita bikin "Kamus Event" duluan supaya saat ngeloop 31 hari, kita tinggal "cabut" dari kamus.
+        // Nggak ada lagi array.filter() di dalam loop yang bikin HP panas!
+        const eventsMap = {};
+        if (props.data?.events) {
+            props.data.events.forEach(ev => {
+                const start = dayjs(ev.start_date);
+                const end = ev.end_date ? dayjs(ev.end_date) : start;
+                
+                // Masukkan event ke setiap tanggal yang dilewatinya
+                let curr = start;
+                while (curr.isSameOrBefore(end, 'day')) {
+                    const dateKey = curr.format('YYYY-MM-DD');
+                    if (!eventsMap[dateKey]) eventsMap[dateKey] = [];
+                    eventsMap[dateKey].push(ev);
+                    curr = curr.add(1, 'day');
+                }
+            });
+        }
+
+        // 1. PADDING AWAL BULAN
         for (let i = 0; i < startDayOfWeek; i++) {
             days.push({ isCurrentMonth: false, date: null });
         }
 
+        // 2. ISI TANGGAL
         for (let i = 1; i <= daysInMonth; i++) {
             const currentDateStr = startOfMonth.date(i).format('YYYY-MM-DD');
             
-            // 1. EVENT MAPPER
-            const dailyEvents = props.data?.events?.filter(ev => {
-                if (ev.end_date) return dayjs(currentDateStr).isBetween(ev.start_date, ev.end_date, 'day', '[]');
-                return ev.start_date === currentDateStr;
-            }) || [];
+            // Ambil dari Kamus Event (SUPER CEPAT)
+            const dailyEvents = eventsMap[currentDateStr] || [];
             
-            // 2. JOURNAL & FINANCE MAPPER
+            // Ambil data metric lainnya
             const dailyJournal = props.data?.journals?.[currentDateStr] || null;
             const dailyFinance = props.data?.finances?.[currentDateStr] || 0;
             const dailyHabitCount = props.data?.habits?.[currentDateStr] || 0;
 
-            // 🔥 3. PLANNER MAPPER (ANTI-BUG / FOOLPROOF)
-            // Mencari data planner meskipun key dari database formatnya 'YYYY-MM-DD T00:00:00Z'
+            // PLANNER FALLBACK (Anti-Bug)
             let dailyPlanner = null;
             if (props.data?.planners) {
-                // Coba ambil langsung
                 if (props.data.planners[currentDateStr]) {
                     dailyPlanner = props.data.planners[currentDateStr];
                 } else {
-                    // Coba cari pakai metode fallback (kalau ada buntut jamnya)
                     const fuzzyKey = Object.keys(props.data.planners).find(key => String(key).startsWith(currentDateStr));
                     if (fuzzyKey) dailyPlanner = props.data.planners[fuzzyKey];
                 }
             }
 
-            // Memastikan data diolah sebagai ANGKA (Number) bukan Teks (String)
             const plannerData = dailyPlanner ? { 
                 done: Number(dailyPlanner.completed_tasks || 0), 
                 total: Number(dailyPlanner.total_tasks || 0) 
@@ -70,11 +88,12 @@ export function useCalendarDates(props) {
                 events: dailyEvents,
                 hasJournal: !!dailyJournal,
                 expense: dailyFinance,
-                planner: plannerData, // Hasil anti-bug dimasukkan ke sini
+                planner: plannerData,
                 habitDone: Number(dailyHabitCount) 
             });
         }
 
+        // 3. PADDING AKHIR BULAN
         const totalCells = days.length;
         const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
         for (let i = 0; i < remainingCells; i++) {

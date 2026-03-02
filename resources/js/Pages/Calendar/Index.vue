@@ -1,4 +1,5 @@
 <script setup>
+import { ref, watch, reactive } from 'vue';
 import { Head, router } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useCalendar } from '@/Composables/Calendar/useCalendar';
@@ -12,18 +13,70 @@ import CalendarDayDetail from './CalendarDayDetail.vue';
 
 const props = defineProps({
     currentMonth: String, 
-    data: Object
+    data: [Object, Array] // Biasanya data berisi array list event dari backend
 });
 
 defineOptions({ layout: AuthenticatedLayout });
 
-// Tarik logic dari Composable
+// ==========================================
+// 🔥 MAGIC OPTIMISTIC UI: Buat Local State 
+// ==========================================
+// Deep clone data bawaan dari Laravel
+const localData = ref(Array.isArray(props.data) ? [...props.data] : JSON.parse(JSON.stringify(props.data)));
+
+// Pantau jika ada pembaruan sukses yang datang dari server (Background sync)
+watch(() => props.data, (newVal) => {
+    localData.value = Array.isArray(newVal) ? [...newVal] : JSON.parse(JSON.stringify(newVal));
+}, { deep: true });
+
+// Bungkus props menggunakan 'reactive' agar composable useCalendar membaca localData (bukan props)
+const calendarProps = reactive({
+    ...props,
+    get data() { return localData.value; }
+});
+
+// Tarik logic dari Composable dengan mem-passing calendarProps (Local State)
 const {
     selectedDate, isEventModalOpen, isDetailModalOpen, eventForm,
     openEventModal, submitEvent, deleteEvent, openDayDetail, calendarDays
-} = useCalendar(props);
+} = useCalendar(calendarProps);
 
-// Logic Ganti Bulan yang Benar
+
+// ==========================================
+// 🔥 TRIGGER OPTIMISTIC SUBMIT / DELETE
+// ==========================================
+const triggerSubmitEvent = () => {
+    submitEvent({
+        onOptimistic: (newData, isEditing) => {
+            // Asumsi localData berupa Array. Jika objek (misal: paginasi/data wrap), ubah ke localData.value.data
+            const targetArray = Array.isArray(localData.value) ? localData.value : localData.value.data;
+
+            if (targetArray) {
+                if (isEditing) {
+                    const idx = targetArray.findIndex(e => e.id === newData.id);
+                    if (idx !== -1) Object.assign(targetArray[idx], newData);
+                } else {
+                    targetArray.push(newData);
+                }
+            }
+        }
+    });
+};
+
+const triggerDeleteEvent = (id) => {
+    isDetailModalOpen.value = false; // Tutup day detail instan
+    deleteEvent(id, {
+        onOptimistic: (targetId) => {
+            if (Array.isArray(localData.value)) {
+                localData.value = localData.value.filter(e => e.id !== targetId);
+            } else if (localData.value.data) {
+                localData.value.data = localData.value.data.filter(e => e.id !== targetId);
+            }
+        }
+    });
+};
+
+// Logic Ganti Bulan
 const changeMonth = (newMonthPayload) => {
     router.get(route('calendar.index'), { month: newMonthPayload }, { 
         preserveState: true, 
@@ -55,7 +108,7 @@ const changeMonth = (newMonthPayload) => {
             :show="isEventModalOpen"
             :form="eventForm"
             @close="isEventModalOpen = false"
-            @submit="submitEvent"
+            @submit="triggerSubmitEvent" 
         />
 
         <CalendarDayDetail 
@@ -64,7 +117,7 @@ const changeMonth = (newMonthPayload) => {
             :calendarDays="calendarDays"
             @close="isDetailModalOpen = false"
             @edit-event="openEventModal"
-            @delete-event="deleteEvent"
+            @delete-event="triggerDeleteEvent" 
         />
 
     </div>

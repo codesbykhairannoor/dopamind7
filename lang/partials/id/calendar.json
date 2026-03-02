@@ -53,7 +53,21 @@
   "calendar_finance": "Finance",
   "calendar_journal_short": "Journal",
   "calendar_habits_short": "Habit",
-  "calendar_tasks_short": "Tasks"
+  "calendar_tasks_short": "Tasks",
+
+    "calendar_day_overview": "Pusat Komando",
+    "calendar_events_count": "Acara",
+    "calendar_empty_journal": "Kamu belum menulis jurnal hari ini.",
+    "calendar_mood_label": "Suasana Hati",
+    "calendar_empty_habit": "Belum ada habit yang diselesaikan.",
+    "calendar_empty_planner": "Belum ada tugas yang dicatat.",
+    "calendar_empty_finance": "Tidak ada transaksi keuangan.",
+    "btn_delete": "Hapus",
+    "btn_save": "Simpan Acara",
+    "btn_saving": "Menyimpan...",
+    "btn_cancel": "Batal",
+    "label_period": "Periode"
+
 
     
 }

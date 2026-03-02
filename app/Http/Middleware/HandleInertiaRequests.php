@@ -34,6 +34,7 @@ class HandleInertiaRequests extends Middleware
                     'email'    => $request->user()->email,
                     'settings' => $request->user()->settings,
                     'timezone' => $request->user()->timezone ?? config('app.timezone'),
+                    'avatar_url' => $request->user()->avatar_url,
                 ] : null,
             ],
 

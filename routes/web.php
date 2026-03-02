@@ -284,6 +284,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
         Route::delete('/{habit}', [HabitController::class, 'destroy'])->name('destroy');
         Route::post('/{habit}/log', [HabitController::class, 'storeLog'])->name('log');
         Route::post('/habits/reorder', [HabitController::class, 'reorder'])->name('habits.reorder');
+        Route::post('/habits/batch-log', [HabitController::class, 'batchLog'])->name('habits.batch-log');
     });
 
     Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->group(function () {

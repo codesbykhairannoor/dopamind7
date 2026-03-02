@@ -11,7 +11,8 @@ const props = defineProps({
     stats: Object
 });
 
-const emit = defineEmits(['change-date', 'change-day']);
+// 'change-day' dihilangkan dari emit karena tombolnya sudah dihapus
+const emit = defineEmits(['change-date']);
 const showDatePicker = ref(false);
 
 const closeDatePicker = () => {
@@ -35,11 +36,7 @@ const closeDatePicker = () => {
                             {{ $t('header_title', 'Daily Planner') }}
                         </h2>
                         
-                        <div class="flex items-center gap-1 mt-1 relative">
-                            <button @click="emit('change-day', 'prev')" class="text-slate-400 hover:text-indigo-600 hover:bg-slate-100 rounded px-1.5 py-0.5 transition">
-                                ◀
-                            </button>
-                            
+                        <div class="flex items-center mt-1 relative">
                             <div class="relative">
                                 <button 
                                     @click="showDatePicker = !showDatePicker" 
@@ -71,10 +68,6 @@ const closeDatePicker = () => {
                                     </div>
                                 </transition>
                             </div>
-
-                            <button @click="emit('change-day', 'next')" class="text-slate-400 hover:text-indigo-600 hover:bg-slate-100 rounded px-1.5 py-0.5 transition">
-                                ▶
-                            </button>
                         </div>
                     </div>
                 </div>

@@ -34,5 +34,11 @@
     "module_planner_desc": "Daily schedule & agenda",
     "module_finance_desc": "Manage budget & expenses",
     "module_journal_desc": "Write your daily activities",
-    "settings_saved": "Settings auto-saved!"
+    "settings_saved": "Settings auto-saved!",
+
+"photo_adjust_instruction": "Select a photo, then you can adjust the image position before uploading.",
+    "adjust_photo_title": "Adjust Photo",
+    "pan_instruction": "Use Mouse/Tap to Pan",
+    "cancel": "Cancel",
+    "save_photo": "Save Photo"
 }

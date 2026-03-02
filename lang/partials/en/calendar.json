@@ -50,5 +50,19 @@
   "calendar_finance": "Finance",
   "calendar_journal_short": "Journal",
   "calendar_habits_short": "Habit",
-  "calendar_tasks_short": "Tasks"
+  "calendar_tasks_short": "Tasks",
+
+
+      "calendar_day_overview": "Command Center",
+    "calendar_events_count": "Events",
+    "calendar_empty_journal": "You haven't written your journal today.",
+    "calendar_mood_label": "Mood",
+    "calendar_empty_habit": "No habits completed yet.",
+    "calendar_empty_planner": "No tasks recorded yet.",
+    "calendar_empty_finance": "No financial transactions.",
+    "btn_delete": "Delete",
+    "btn_save": "Save Event",
+    "btn_saving": "Saving...",
+    "btn_cancel": "Cancel",
+    "label_period": "Period"
 }

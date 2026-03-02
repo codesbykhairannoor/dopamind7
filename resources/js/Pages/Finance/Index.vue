@@ -31,15 +31,19 @@ const props = defineProps({
 const page = usePage();
 defineOptions({ layout: AuthenticatedLayout });
 
-// 🔥 MAGIC OPTIMISTIC UI: Buat State Lokal (Memori Layar)
+// 🔥 MAGIC OPTIMISTIC UI: Buat State Lokal (Memori Layar) Termasuk STATS!
 const localTransactions = ref([...props.transactions]);
 const localBudgets = ref([...props.budgets]);
 const localCategories = ref([...props.categories]);
 
-// Sinkronkan otomatis saat server memberi update data asli 
+// Bikin salinan stats (Deep clone biar aman)
+const localStats = ref(JSON.parse(JSON.stringify(props.stats))); 
+
+// Sinkronkan otomatis saat server memberi update data asli (Background Sync)
 watch(() => props.transactions, (newVal) => localTransactions.value = [...newVal], { deep: true });
 watch(() => props.budgets, (newVal) => localBudgets.value = [...newVal], { deep: true });
 watch(() => props.categories, (newVal) => localCategories.value = [...newVal], { deep: true });
+watch(() => props.stats, (newVal) => localStats.value = JSON.parse(JSON.stringify(newVal)), { deep: true });
 
 // Bungkus props menjadi reactive agar History List membaca data instan
 const historyProps = reactive({
@@ -63,19 +67,17 @@ const showBudgetModal = ref(false);
 const showCategoryModal = ref(false);
 const showFilterPicker = ref(false);
 
-// 🔥 FIX ERROR DI SINI: Deklarasikan filterDateRef SEBELUM memanggil useFinanceBatch
 const filterDateRef = ref(props.filters.date || dayjs().format('YYYY-MM-DD'));
 
 const { 
     isBatchModalOpen, batchForm, globalConflictError, 
-    openBatchModal, closeBatchModal, addBatchRow, removeBatchRow, submitBatch: executeBatch // <-- ubah jadikan alias
+    openBatchModal, closeBatchModal, addBatchRow, removeBatchRow, submitBatch: executeBatch
 } = useFinanceBatch(filterDateRef);
 
-// Oper magic prop ke Composables History
 const { visibleStats, filterDate, isArchiveOpen, selectedDayData, openDetail } = useFinanceHistory(historyProps);
 const { formatMoney } = useFinanceFormat();
 
-// --- Handlers ---
+// --- Handlers Modal ---
 const handleEdit = (trx) => { setEditTransaction(trx); showTransactionModal.value = true; };
 
 const handleEditBudget = (budget) => {
@@ -92,30 +94,71 @@ const handleEditBudget = (budget) => {
 const handleEditCategory = (cat) => { categoryForm.id = cat.id; setEditCategory(cat); showCategoryModal.value = true; };
 const handleAddCategory = () => { categoryForm.reset(); categoryForm.id = null; showCategoryModal.value = true; };
 
+// =========================================================================
+// 🔥 CORE FIX: FUNGSI HELPER UNTUK MENGHITUNG STATS SECARA MATEMATIS INSTAN
+// =========================================================================
+const updateLocalStatsInstantly = (type, categorySlug, amount, isSubtract = false) => {
+    const val = Number(amount) * (isSubtract ? -1 : 1);
+    
+    if (type === 'income') {
+        localStats.value.total_income += val;
+        localStats.value.balance += val;
+        // Update per category
+        if (!localStats.value.income_by_category[categorySlug]) localStats.value.income_by_category[categorySlug] = 0;
+        localStats.value.income_by_category[categorySlug] += val;
+    } 
+    else if (type === 'expense') {
+        localStats.value.total_expense += val;
+        localStats.value.balance -= val;
+        // Update per category (Ini yang bikin Bar Budget Instan jalan!)
+        if (!localStats.value.expense_by_category[categorySlug]) localStats.value.expense_by_category[categorySlug] = 0;
+        localStats.value.expense_by_category[categorySlug] += val;
+    }
+};
+
 // 🔥 EKSEKUSI OPTIMISTIC UI UNTUK TRANSAKSI
 const submitNewTransaction = () => {
+    // 1. Simpan salinan data lama (jika edit) untuk menghitung selisih (margin)
+    const oldTrx = transactionForm.id ? localTransactions.value.find(t => t.id === transactionForm.id) : null;
+    const oldAmount = oldTrx ? Number(oldTrx.amount) : 0;
+    const oldType = oldTrx ? oldTrx.type : null;
+    const oldCategory = oldTrx ? oldTrx.category : null;
+
     submitTransaction({
         onOptimistic: (data, isEditing) => {
-    showTransactionModal.value = false; // Langsung tutup 0ms
+            showTransactionModal.value = false; // Langsung tutup 0ms
 
             if (isEditing) {
                 const idx = localTransactions.value.findIndex(t => t.id === data.id);
                 if (idx !== -1) Object.assign(localTransactions.value[idx], data);
+                
+                // 2. Kalkulasi Ulang (Kurangi nilai lama, tambahkan nilai baru)
+                if(oldType) updateLocalStatsInstantly(oldType, oldCategory, oldAmount, true); // Undo lama
+                updateLocalStatsInstantly(data.type, data.category, data.amount, false); // Apply baru
             } else {
                 localTransactions.value.unshift(data); 
+                // 2. Langsung tembak matematika nambah stats & budget bar
+                updateLocalStatsInstantly(data.type, data.category, data.amount, false);
             }
         },
         onError: (id, isEditing) => {
-            if (!isEditing) localTransactions.value = localTransactions.value.filter(t => t.id !== id);
             showTransactionModal.value = true; 
         }
     });
 };
 
 const triggerDeleteTransaction = (id) => {
-    isArchiveOpen.value = false; // Instan close modal archive
+    isArchiveOpen.value = false;
+    
+    // Cari data yang mau dihapus untuk ngurangin hitungan matematisnya
+    const target = localTransactions.value.find(t => t.id === id);
+
     deleteTransaction(id, {
         onOptimistic: (targetId) => {
+            if(target) {
+                // Kurangi (undo) angkanya dari total stats dan bar budget
+                updateLocalStatsInstantly(target.type, target.category, target.amount, true);
+            }
             localTransactions.value = localTransactions.value.filter(t => t.id !== targetId);
         }
     });
@@ -125,29 +168,27 @@ const triggerDeleteTransaction = (id) => {
 const triggerSubmitBatch = () => {
     executeBatch({
         onOptimistic: (newTransactionsArray) => {
-            // Karena ini batch (array), kita unshift semuanya sekaligus ke paling atas memori UI
             localTransactions.value.unshift(...newTransactionsArray);
+            
+            // Looping untuk nambahin semua angka secara instan ke stats
+            newTransactionsArray.forEach(data => {
+                updateLocalStatsInstantly(data.type, data.category, data.amount, false);
+            });
         },
         onError: (tempIdsArray) => {
-            // Kalau server gagal, hapus id sementara dari array UI
             localTransactions.value = localTransactions.value.filter(t => !tempIdsArray.includes(t.id));
         }
     });
 };
 
-
 // 🔥 EKSEKUSI OPTIMISTIC UI UNTUK BUDGET
 const submitNewBudget = () => {
-    showBudgetModal.value = false; // Langsung tutup 0ms
+    showBudgetModal.value = false; 
     submitBudget(currentMonthKey.value, {
         onOptimistic: (data, isEditing) => {
             if (isEditing) {
-                // 1. Update angka limit di list Budget
                 const idx = localBudgets.value.findIndex(b => b.id === data.id);
                 if (idx !== -1) Object.assign(localBudgets.value[idx], data);
-
-                // 2. 🔥 FIX UTAMA: Update Master Kategori secara Instan!
-                // Cari kategori berdasarkan slug lama, lalu tembak nama & icon barunya
                 const catIdx = localCategories.value.findIndex(c => c.slug === data.category);
                 if (catIdx !== -1) {
                     localCategories.value[catIdx].name = data.name;
@@ -155,35 +196,27 @@ const submitNewBudget = () => {
                 }
             } else {
                 localBudgets.value.push(data);
-                // Jika bikin budget baru sekaligus kategori baru yg belum ada
                 if (!localCategories.value.find(c => c.slug === data.category)) {
                     localCategories.value.push({ 
-                        id: 'temp_' + Date.now(), 
-                        slug: data.category, 
-                        name: data.name, 
-                        icon: data.icon, 
-                        type: 'expense' 
+                        id: 'temp_' + Date.now(), slug: data.category, name: data.name, icon: data.icon, type: 'expense' 
                     });
                 }
             }
         },
         onError: (id, isEditing) => {
             if (!isEditing) localBudgets.value = localBudgets.value.filter(b => b.id !== id);
-            showBudgetModal.value = true; // Buka lagi kalau server error
+            showBudgetModal.value = true;
         }
     });
 };
 
-// 🔥 EKSEKUSI OPTIMISTIC UI UNTUK KATEGORI (Income Source dll)
 const submitNewCategory = () => {
-    showCategoryModal.value = false; // Instan Tutup
+    showCategoryModal.value = false;
     submitCategory({
         onOptimistic: (data, isEditing) => {
             if (isEditing) {
                 const idx = localCategories.value.findIndex(c => c.id === data.id);
                 if (idx !== -1) {
-                    // 🔥 FIX: Hanya update Nama dan Icon saja!
-                    // Jangan ubah slug-nya secara optimis, biar relasi history transaksi gak kedip/hilang
                     localCategories.value[idx].name = data.name;
                     localCategories.value[idx].icon = data.icon;
                 }
@@ -204,8 +237,6 @@ const triggerDeleteBudget = (id) => {
     });
 };
 
-
-
 const triggerDeleteCategory = (cat) => {
     deleteCategory(cat, {
         onOptimistic: (targetId) => {
@@ -216,12 +247,12 @@ const triggerDeleteCategory = (cat) => {
 
 // Logic Switcher
 const switchToBatch = () => {
-    showTransactionModal.value = false; // Tutup mode single
-    setTimeout(() => { openBatchModal(); }, 150); // Buka mode batch dengan sedikit delay untuk animasi
+    showTransactionModal.value = false;
+    setTimeout(() => { openBatchModal(); }, 150);
 };
 
 const switchToSingle = () => {
-    closeBatchModal(); // Tutup batch
+    closeBatchModal();
     setTimeout(() => { 
         transactionForm.reset(); transactionForm.id = null; 
         showTransactionModal.value = true; 
@@ -244,7 +275,7 @@ const switchToSingle = () => {
             
             <div class="mb-8">
                 <FinanceStats 
-                    :stats="stats"
+                    :stats="localStats"
                     :onUpdateTarget="(amount) => updateIncomeTarget(currentMonthKey, amount)"
                 />
             </div>
@@ -275,8 +306,8 @@ const switchToSingle = () => {
                                     >
                                         <span class="text-base">📅</span>
                                       <span>
-    {{ filterDate ? dayjs(filterDate).locale($page.props.locale).format('DD MMM YYYY') : $t('date_filter') }}
-</span>
+                                          {{ filterDate ? dayjs(filterDate).locale($page.props.locale).format('DD MMM YYYY') : $t('date_filter') }}
+                                      </span>
                                         <span class="absolute right-3 text-slate-400 text-[10px]">
                                             {{ showFilterPicker ? '▲' : '▼' }}
                                         </span>
@@ -293,24 +324,24 @@ const switchToSingle = () => {
                                         </svg>
                                     </button>
                                 </div>
-                               <transition
-    enter-active-class="transition ease-out duration-200"
-    enter-from-class="opacity-0 translate-y-2"
-    enter-to-class="opacity-100 translate-y-0"
-    leave-active-class="transition ease-in duration-150"
-    leave-from-class="opacity-100 translate-y-0"
-    leave-to-class="opacity-0 translate-y-2"
->
-    <div v-if="showFilterPicker" class="absolute right-0 top-full mt-2 z-50 origin-top-right">
-        <FinanceDatePicker 
-            :show="showFilterPicker"
-            :modelValue="filterDate"
-            :transactions="localTransactions"
-            @update:modelValue="(val) => filterDate = val"
-            @close="showFilterPicker = false"
-        />
-    </div>
-</transition>
+                                <transition
+                                    enter-active-class="transition ease-out duration-200"
+                                    enter-from-class="opacity-0 translate-y-2"
+                                    enter-to-class="opacity-100 translate-y-0"
+                                    leave-active-class="transition ease-in duration-150"
+                                    leave-from-class="opacity-100 translate-y-0"
+                                    leave-to-class="opacity-0 translate-y-2"
+                                >
+                                    <div v-if="showFilterPicker" class="absolute right-0 top-full mt-2 z-50 origin-top-right">
+                                        <FinanceDatePicker 
+                                            :show="showFilterPicker"
+                                            :modelValue="filterDate"
+                                            :transactions="localTransactions"
+                                            @update:modelValue="(val) => filterDate = val"
+                                            @close="showFilterPicker = false"
+                                        />
+                                    </div>
+                                </transition>
                             </div>
                         </div>
 
@@ -369,19 +400,19 @@ const switchToSingle = () => {
                     </div>
 
                    <DailyTrendChart 
-    v-if="localTransactions.length" 
-    :transactions="localTransactions" 
-    :currentDate="filters.date"
-    @day-click="openDetail" 
-/>
+                       v-if="localTransactions.length" 
+                       :transactions="localTransactions" 
+                       :currentDate="filters.date"
+                       @day-click="openDetail" 
+                   />
                 </div>
 
                 <div class="lg:col-span-2 w-full md:sticky md:top-24 h-fit space-y-6"> 
                     <BudgetSidebar 
                         :budgets="localBudgets" 
                         :categories="localCategories" 
-                        :expenseStats="stats.expense_by_category"
-                        :incomeStats="stats.income_by_category"
+                        :expenseStats="localStats.expense_by_category"
+                        :incomeStats="localStats.income_by_category"
                         @add="() => { budgetForm.reset(); budgetForm.id = null; showBudgetModal = true; }"
                         @delete-budget="triggerDeleteBudget"
                         @edit-budget="handleEditBudget"
@@ -391,8 +422,8 @@ const switchToSingle = () => {
                     />
 
                     <FinanceInsights 
-                        :expense-stats="stats.expense_by_category" 
-                        :income-stats="stats.income_by_category" 
+                        :expense-stats="localStats.expense_by_category" 
+                        :income-stats="localStats.income_by_category" 
                         :budgets="localBudgets" 
                     />
                 </div>
@@ -410,16 +441,17 @@ const switchToSingle = () => {
             />
 
            <FinanceBatchModal 
-    :show="isBatchModalOpen"
-    :form="batchForm"
-    :categories="categories"
-    :budgets="localBudgets"
-    :conflictError="globalConflictError"
-    :close="closeBatchModal"
-    :submit="triggerSubmitBatch" :addRow="addBatchRow"
-    :removeRow="removeBatchRow"
-    :switchToSingle="switchToSingle"
-/>
+               :show="isBatchModalOpen"
+               :form="batchForm"
+               :categories="categories"
+               :budgets="localBudgets"
+               :conflictError="globalConflictError"
+               :close="closeBatchModal"
+               :submit="triggerSubmitBatch" 
+               :addRow="addBatchRow"
+               :removeRow="removeBatchRow"
+               :switchToSingle="switchToSingle"
+           />
 
             <BudgetModal 
                 :show="showBudgetModal" 

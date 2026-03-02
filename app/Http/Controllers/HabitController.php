@@ -30,7 +30,7 @@ class HabitController extends Controller
         $endOfMonth = $dateObj->copy()->endOfMonth()->format('Y-m-d');
 
         $habits = Habit::where('user_id', $user->id)
-        ->orderBy('position', 'asc') // 🔥 TAMBAHKAN INI
+            ->orderBy('position', 'asc') // 🔥 TAMBAHKAN INI
             ->orderBy('created_at', 'asc')
             ->where('period', $monthQuery)
             ->with(['logs' => fn ($q) => $q->whereBetween('date', [$startOfMonth, $endOfMonth])])
@@ -154,7 +154,6 @@ class HabitController extends Controller
             ->get();
 
         $newHabits = [];
-        // 🔥 FIX 1: Konversi Object Carbon jadi String SQL
         $now = Carbon::now()->toDateTimeString(); 
 
         foreach ($oldHabits as $old) {
@@ -205,7 +204,6 @@ class HabitController extends Controller
             'habits.*.monthly_target' => 'required|integer|min:1|max:31',
         ]);
 
-        // 🔥 FIX 2: Konversi Object Carbon jadi String SQL
         $now = now()->toDateTimeString(); 
         $habitsData = [];
 
@@ -234,19 +232,48 @@ class HabitController extends Controller
     }
 
     public function reorder(Request $request)
-{
-    $request->validate([
-        'habits' => 'required|array',
-        'habits.*.id' => 'required|exists:habits,id',
-        'habits.*.position' => 'required|integer',
-    ]);
+    {
+        $request->validate([
+            'habits' => 'required|array',
+            'habits.*.id' => 'required|exists:habits,id',
+            'habits.*.position' => 'required|integer',
+        ]);
 
-    foreach ($request->habits as $habitData) {
-        Habit::where('id', $habitData['id'])
-             ->where('user_id', Auth::id())
-             ->update(['position' => $habitData['position']]);
+        foreach ($request->habits as $habitData) {
+            Habit::where('id', $habitData['id'])
+                ->where('user_id', Auth::id())
+                ->update(['position' => $habitData['position']]);
+        }
+
+        return response()->json(['message' => 'Urutan disimpan']);
     }
 
-    return response()->json(['message' => 'Urutan disimpan']);
-}
+    // 🔥 TAMBAHKAN FUNGSI INI UNTUK BATCH LOG 🔥
+    public function batchLog(Request $request)
+    {
+        $request->validate([
+            'logs' => 'required|array',
+            'logs.*.habit_id' => 'required|exists:habits,id',
+            'logs.*.date' => 'required|date',
+            'logs.*.status' => 'required|string'
+        ]);
+
+        foreach ($request->logs as $log) {
+            $habit = Habit::findOrFail($log['habit_id']);
+            $this->authorize('log', $habit);
+
+            if ($log['status'] === 'uncheck') {
+                HabitLog::where('habit_id', $log['habit_id'])
+                    ->where('date', $log['date'])
+                    ->delete();
+            } else {
+                HabitLog::updateOrCreate(
+                    ['habit_id' => $log['habit_id'], 'date' => $log['date']],
+                    ['status' => $log['status']]
+                );
+            }
+        }
+
+        return response()->json(['message' => 'Batch logs updated!']);
+    }
 }
