@@ -6,13 +6,11 @@ import { trans } from 'laravel-vue-i18n';
 
 export function useCalendarForm() {
     
-    // --- TRANSLASI HELPER ---
     const t = (key, fallback) => {
         const result = trans(key);
         return result !== key ? result : fallback;
     };
 
-    // --- TOAST ALERT ---
     const fireToast = (icon, message) => {
         Swal.fire({
             toast: true, position: 'top-end', showConfirmButton: false, timer: 2000, timerProgressBar: true,
@@ -26,7 +24,6 @@ export function useCalendarForm() {
         });
     };
 
-    // --- STATE & FORM ---
     const isEventModalOpen = ref(false);
     
     const eventForm = useForm({
@@ -42,7 +39,7 @@ export function useCalendarForm() {
         end_time: ''
     });
 
-    // --- LOGIC CRUD ---
+  // --- LOGIC CRUD ---
     const openEventModal = (dateStr = null, eventToEdit = null) => {
         eventForm.reset();
         eventForm.clearErrors();
@@ -53,18 +50,23 @@ export function useCalendarForm() {
             eventForm.description = eventToEdit.description || '';
             eventForm.type = eventToEdit.type || 'event';
             eventForm.color = eventToEdit.color || '#4f46e5';
-            eventForm.start_date = eventToEdit.start_date;
+            
+            // 🔥 FIX: Gunakan dateStr (parameter pertama) jika ada, jika tidak baru ambil dari eventToEdit
+            eventForm.start_date = dateStr || eventToEdit.start_date || dayjs().format('YYYY-MM-DD');
+            
             eventForm.end_date = eventToEdit.end_date || '';
             eventForm.is_all_day = eventToEdit.is_all_day;
             eventForm.start_time = eventToEdit.start_time || '';
             eventForm.end_time = eventToEdit.end_time || '';
         } else {
+            // Jika tambah baru, otomatis isi start_date dengan tanggal kotak yang diklik
             eventForm.start_date = dateStr || dayjs().format('YYYY-MM-DD');
         }
+        
         isEventModalOpen.value = true;
     };
 
-    // 🔥 TAMBAHKAN PARAMETER CALLBACK DI SINI
+    // 🔥 TERAPKAN CALLBACK OPTIMISTIC UNTUK SUBMIT
     const submitEvent = (callbacks = {}) => {
         if (!eventForm.title) return fireToast('warning', t('warn_empty_title', 'Judul harus diisi!'));
 
@@ -72,34 +74,33 @@ export function useCalendarForm() {
         const url = isEditing ? route('calendar.events.update', eventForm.id) : route('calendar.events.store');
         const method = isEditing ? 'put' : 'post';
 
-        // 1. Buat Data Palsu (Optimistic Data)
+        // 1. Buat Fake Data
         const tempId = eventForm.id || `temp_${Date.now()}`;
         const optimisticData = { ...eventForm.data(), id: tempId };
 
-        // 2. Langsung tutup modal agar terasa "Instan" 0ms
+        // 2. Tutup Modal Secara Instan
         isEventModalOpen.value = false;
 
-        // 3. Tembak UI Update di Index.vue
+        // 3. Update Kalender di Layar Secara Instan
         if (callbacks.onOptimistic) callbacks.onOptimistic(optimisticData, isEditing);
 
         eventForm[method](url, {
             preserveScroll: true,
             preserveState: true,
-            progress: false, // Matikan loading Inertia
+            progress: false, // Hilangkan loading bar Inertia
             onSuccess: () => {
                 fireToast('success', t('success_saved', 'Acara Berhasil Disimpan!'));
                 eventForm.reset();
             },
             onError: (err) => {
-                // Kembalikan ke keadaan semula jika gagal
                 isEventModalOpen.value = true;
-                fireToast('error', Object.values(err)[0] || 'Terjadi kesalahan!');
+                fireToast('error', Object.values(err)[0]);
                 if (callbacks.onError) callbacks.onError(tempId, isEditing);
             }
         });
     };
 
-    // 🔥 TAMBAHKAN PARAMETER CALLBACK DI SINI
+    // 🔥 TERAPKAN CALLBACK OPTIMISTIC UNTUK DELETE
     const deleteEvent = (id, callbacks = {}) => {
         Swal.fire({
             title: t('confirm_delete_title', 'Hapus Acara?'),
@@ -118,19 +119,18 @@ export function useCalendarForm() {
             buttonsStyling: false,
         }).then((res) => {
             if (res.isConfirmed) {
-                // 1. Eksekusi Optimistic: Hilangkan dari kalender detik itu juga
+                // Hapus data dari kalender secara instan (sebelum balasan server)
                 if (callbacks.onOptimistic) callbacks.onOptimistic(id);
 
                 router.delete(route('calendar.events.destroy', id), {
                     preserveScroll: true, 
                     preserveState: true, 
-                    progress: false,
+                    progress: false, // Hilangkan loading bar Inertia
                     onSuccess: () => {
                         fireToast('success', t('success_deleted', 'Berhasil Dihapus!'));
                     },
                     onError: () => {
-                        // Undo jika server gagal
-                        if(callbacks.onError) callbacks.onError(id);
+                        if (callbacks.onError) callbacks.onError(id);
                     }
                 });
             }

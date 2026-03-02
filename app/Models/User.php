@@ -63,45 +63,72 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * 🔥 AVATAR LOGIC (RESILIENT MODE)
-     * Menggunakan $this->attributes untuk menghindari MissingAttributeException di SQLite CI.
+     * Menggunakan $this->attributes untuk menghindari MissingAttributeException.
      */
     protected function avatarUrl(): Attribute
-{
-    return Attribute::make(
-        get: function () {
-            $path = $this->attributes['avatar_path'] ?? null;
-            if ($path) {
-                // Gunakan asset() agar domain (http://domain.com) ikut terbawa
-                return asset(Storage::url($path)); 
+    {
+        return Attribute::make(
+            get: function () {
+                $path = $this->attributes['avatar_path'] ?? null;
+                if ($path) {
+                    return asset(Storage::url($path)); 
+                }
+                return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF';
             }
-            return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF';
-        }
-    );
-}
+        );
+    }
 
     /**
-     * Relationships
+     * ==========================================
+     * RELATIONSHIPS
+     * ==========================================
      */
+
     public function periods(): HasMany
     {
         return $this->hasMany(Period::class);
     }
 
-    // --- RELASI FINANCE (INI YANG TADI MISSING) ---
-
     /**
-     * User memiliki banyak transaksi keuangan.
+     * Relasi Keuangan (Transactions & Budgets)
      */
     public function financeTransactions(): HasMany
     {
         return $this->hasMany(FinanceTransaction::class);
     }
 
-    /**
-     * User memiliki banyak rencana anggaran (budget).
-     */
     public function financeBudgets(): HasMany
     {
         return $this->hasMany(FinanceBudget::class);
+    }
+
+    /**
+     * 🔥 RELASI KUNCI UNTUK STRESS TEST
+     * Dibutuhkan agar $request->user()->financeCategories() tidak error.
+     */
+    public function financeCategories(): HasMany
+    {
+        return $this->hasMany(FinanceCategory::class);
+    }
+
+    /**
+     * Relasi Jurnal
+     */
+    public function journals(): HasMany
+    {
+        return $this->hasMany(Journal::class);
+    }
+
+    /**
+     * Relasi Habit & Planner (Lengkap untuk masa depan)
+     */
+    public function habits(): HasMany
+    {
+        return $this->hasMany(Habit::class);
+    }
+
+    public function plannerTasks(): HasMany
+    {
+        return $this->hasMany(PlannerTask::class);
     }
 }

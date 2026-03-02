@@ -13,29 +13,28 @@ import CalendarDayDetail from './CalendarDayDetail.vue';
 
 const props = defineProps({
     currentMonth: String, 
-    data: [Object, Array] // Biasanya data berisi array list event dari backend
+    data: [Object, Array] // Menerima data Event dari Laravel
 });
 
 defineOptions({ layout: AuthenticatedLayout });
 
 // ==========================================
-// 🔥 MAGIC OPTIMISTIC UI: Buat Local State 
+// 🔥 MEMORI OPTIMISTIC UI (STATE LOKAL)
 // ==========================================
-// Deep clone data bawaan dari Laravel
-const localData = ref(Array.isArray(props.data) ? [...props.data] : JSON.parse(JSON.stringify(props.data)));
+// Clone data dari server menjadi milik kita sendiri
+const localData = ref(Array.isArray(props.data) ? [...props.data] : JSON.parse(JSON.stringify(props.data || {})));
 
-// Pantau jika ada pembaruan sukses yang datang dari server (Background sync)
+// Selalu sinkronkan memori kita secara diam-diam jika server merespon success
 watch(() => props.data, (newVal) => {
-    localData.value = Array.isArray(newVal) ? [...newVal] : JSON.parse(JSON.stringify(newVal));
+    localData.value = Array.isArray(newVal) ? [...newVal] : JSON.parse(JSON.stringify(newVal || {}));
 }, { deep: true });
 
-// Bungkus props menggunakan 'reactive' agar composable useCalendar membaca localData (bukan props)
+// Jadikan Props palsu agar useCalendar hanya membaca punya lokal
 const calendarProps = reactive({
     ...props,
     get data() { return localData.value; }
 });
 
-// Tarik logic dari Composable dengan mem-passing calendarProps (Local State)
 const {
     selectedDate, isEventModalOpen, isDetailModalOpen, eventForm,
     openEventModal, submitEvent, deleteEvent, openDayDetail, calendarDays
@@ -43,15 +42,15 @@ const {
 
 
 // ==========================================
-// 🔥 TRIGGER OPTIMISTIC SUBMIT / DELETE
+// 🔥 EKSEKUSI TRIGGER INSTAN KE LAYAR
 // ==========================================
 const triggerSubmitEvent = () => {
     submitEvent({
         onOptimistic: (newData, isEditing) => {
-            // Asumsi localData berupa Array. Jika objek (misal: paginasi/data wrap), ubah ke localData.value.data
-            const targetArray = Array.isArray(localData.value) ? localData.value : localData.value.data;
+            // Cek apakah data dari laravel bentuknya array atau terbungkus object
+            const targetArray = Array.isArray(localData.value) ? localData.value : (localData.value.events || localData.value);
 
-            if (targetArray) {
+            if (targetArray && Array.isArray(targetArray)) {
                 if (isEditing) {
                     const idx = targetArray.findIndex(e => e.id === newData.id);
                     if (idx !== -1) Object.assign(targetArray[idx], newData);
@@ -64,13 +63,14 @@ const triggerSubmitEvent = () => {
 };
 
 const triggerDeleteEvent = (id) => {
-    isDetailModalOpen.value = false; // Tutup day detail instan
+    isDetailModalOpen.value = false; // Tutup detail instan
+    
     deleteEvent(id, {
         onOptimistic: (targetId) => {
             if (Array.isArray(localData.value)) {
                 localData.value = localData.value.filter(e => e.id !== targetId);
-            } else if (localData.value.data) {
-                localData.value.data = localData.value.data.filter(e => e.id !== targetId);
+            } else if (localData.value.events) {
+                localData.value.events = localData.value.events.filter(e => e.id !== targetId);
             }
         }
     });
@@ -108,7 +108,7 @@ const changeMonth = (newMonthPayload) => {
             :show="isEventModalOpen"
             :form="eventForm"
             @close="isEventModalOpen = false"
-            @submit="triggerSubmitEvent" 
+            @submit="triggerSubmitEvent"
         />
 
         <CalendarDayDetail 
@@ -117,7 +117,7 @@ const changeMonth = (newMonthPayload) => {
             :calendarDays="calendarDays"
             @close="isDetailModalOpen = false"
             @edit-event="openEventModal"
-            @delete-event="triggerDeleteEvent" 
+            @delete-event="triggerDeleteEvent"
         />
 
     </div>
