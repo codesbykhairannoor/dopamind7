@@ -8,7 +8,6 @@ use App\Http\Requests\UploadJournalImageRequest;
 use App\Http\Resources\JournalResource;
 use App\Services\JournalService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class JournalController extends Controller
@@ -46,7 +45,7 @@ class JournalController extends Controller
             'date'    => now()->timezone($user->timezone ?? 'Asia/Jakarta')->format('Y-m-d'),
         ]));
 
-        if ($request->wantsJson()) {
+        if ($request->wantsJson() || $request->ajax()) {
             return response()->json([
                 'message' => 'Journal created',
                 'data' => (new JournalResource($journal))->resolve()
@@ -61,7 +60,6 @@ class JournalController extends Controller
         $journal = Journal::ofUser(Auth::id())->findOrFail($id);
         $input = $request->validated();
 
-        // Fitur Pembersih Otomatis
         if ($this->journalService->isEmpty($journal, $input)) {
             $this->journalService->deleteImage($journal->image_path);
             $journal->delete();
@@ -90,7 +88,7 @@ class JournalController extends Controller
     public function uploadImage(UploadJournalImageRequest $request)
     {
         $user = Auth::user();
-        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+        $disk = config('filesystems.default');
 
         $journal = $request->id 
             ? Journal::ofUser($user->id)->findOrFail($request->id) 
@@ -99,16 +97,17 @@ class JournalController extends Controller
                 'date' => now()->timezone($user->timezone ?? 'Asia/Jakarta')->format('Y-m-d')
             ]);
 
-        // Hapus image lama
         $this->journalService->deleteImage($journal->image_path);
         
         $path = $request->file('image')->store('journals', $disk);
         $journal->update(['image_path' => $path]);
 
-        if ($request->wantsJson()) {
+        if ($request->wantsJson() || $request->ajax()) {
+            // 🔥 FIX: Ambil URL langsung dari Resource, jadi tidak akan ada logika URL yang berbeda
+            $resourceData = (new JournalResource($journal))->resolve();
             return response()->json([
                 'success' => true,
-                'url' => asset(Storage::disk($disk)->url($path)),
+                'url' => $resourceData['image_url'],
                 'journal_id' => $journal->id
             ]);
         }

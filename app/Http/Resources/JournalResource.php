@@ -10,6 +10,20 @@ class JournalResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
+        // 🔥 FIX FATAL: Deteksi dinamis apakah pakai Local Storage atau Cloud Storage
+        $imageUrl = null;
+        if ($this->image_path) {
+            if (str_starts_with($this->image_path, 'http')) {
+                $imageUrl = $this->image_path;
+            } else {
+                $disk = config('filesystems.default');
+                // Jika lokal, pakai asset('storage/'). Jika production, pakai Storage::url()
+                $imageUrl = ($disk === 'local') 
+                    ? asset('storage/' . $this->image_path) 
+                    : Storage::disk($disk)->url($this->image_path);
+            }
+        }
+
         return [
             'id'         => $this->id,
             'title'      => $this->title,
@@ -17,7 +31,7 @@ class JournalResource extends JsonResource
             'mood'       => $this->mood,
             'date'       => $this->date,
             'is_pinned'  => $this->is_pinned,
-            'image_url'  => $this->image_path ? asset('storage/' . $this->image_path) : null,
+            'image_url'  => $imageUrl, // 🔥 Sekarang ini 100% akurat di semua env!
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
         ];
     }
