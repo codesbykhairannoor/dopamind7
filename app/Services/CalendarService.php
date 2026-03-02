@@ -58,7 +58,6 @@ class CalendarService
                     'completed_tasks' => (int) $item->completed_tasks,
                 ]
             ]);
-
         // 6. Ambil Habit
         $habits = HabitLog::selectRaw('date, COUNT(*) as completed_habits')
             ->whereIn('habit_id', fn ($query) => $query->select('id')->from('habits')->where('user_id', $userId))
