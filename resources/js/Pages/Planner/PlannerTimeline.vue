@@ -9,7 +9,7 @@ const props = defineProps({
 });
 
 // --- KONFIGURASI ---
-const VIEW_LIMIT = 14; 
+const VIEW_LIMIT = 15; 
 const HOUR_HEIGHT = 80; 
 const TIME_COL_WIDTH = 80; 
 const VISUAL_GAP = 2; 

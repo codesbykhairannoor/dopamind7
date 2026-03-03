@@ -1,29 +1,29 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref, onUnmounted } from 'vue';
+import { trans } from 'laravel-vue-i18n'; // Pastikan i18n ter-import jika pakai helper lokal
 
 const props = defineProps({
     stats: { type: Object, default: () => ({ percent: 0, completed: 0, total: 0 }) }, 
     localNotes: String, 
     localMeals: { type: Object, default: () => ({ breakfast: '', lunch: '', dinner: '' }) },
-    // 🔥 Data dari Database
     localWater: { type: Number, default: 0 },
     localTaskBox: { type: Array, default: () => [] }
 });
 
 const emit = defineEmits(['update:localNotes', 'update:localMeals', 'update:localWater', 'update:localTaskBox']);
 
-/* ==========================================
-   LOGIC: DATABASE BACKED STATE (via Emit)
-========================================== */
-
-// Helper: Kloning array agar tidak memutasi props secara langsung (Aturan Vue)
-const cloneTasks = () => props.localTaskBox ? props.localTaskBox.map(t => ({ ...t })) : [];
-
-const updateTaskBox = (newTasks) => {
-    emit('update:localTaskBox', newTasks);
+// Helper penerjemah lokal
+const t = (key, fallback) => {
+    const result = trans(key);
+    return result !== key ? result : fallback;
 };
 
-// --- Fungsi Manipulasi Task Inbox ---
+/* ==========================================
+   LOGIC: TASK INBOX
+========================================== */
+const cloneTasks = () => props.localTaskBox ? props.localTaskBox.map(t => ({ ...t })) : [];
+const updateTaskBox = (newTasks) => emit('update:localTaskBox', newTasks);
+
 const addNewTask = () => {
     const tasks = cloneTasks();
     tasks.unshift({ id: Date.now(), title: '', is_completed: false, type: 2 });
@@ -78,60 +78,89 @@ const getTaskIcon = (type) => {
 };
 
 /* ==========================================
-   LOGIC: REAL-TIME PROGRESS
+   🔥 LOGIC: POMODORO TIMER 
 ========================================== */
-const combinedStats = computed(() => {
-    const dbCompleted = props.stats?.completed || 0;
-    const dbTotal = props.stats?.total || 0;
-    const manualCompleted = (props.localTaskBox || []).filter(t => t.is_completed).length;
-    const manualTotal = (props.localTaskBox || []).length;
-    const total = dbTotal + manualTotal;
-    const completed = dbCompleted + manualCompleted;
-    return { 
-        percent: total > 0 ? Math.round((completed / total) * 100) : 0, 
-        completed, 
-        total 
-    };
+const pomodoroTime = ref(25 * 60); 
+const isTimerRunning = ref(false);
+let timerInterval = null;
+
+const formattedTimer = computed(() => {
+    const minutes = Math.floor(pomodoroTime.value / 60);
+    const seconds = pomodoroTime.value % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 });
 
-const categoryDistribution = computed(() => {
-    const tasks = props.localTaskBox || [];
-    return [
-        { count: tasks.filter(t => t.type === 1).length, color: 'bg-rose-400' },
-        { count: tasks.filter(t => t.type === 2).length, color: 'bg-indigo-400' },
-        { count: tasks.filter(t => t.type === 3).length, color: 'bg-emerald-400' },
-    ];
-});
+const toggleTimer = () => {
+    if (isTimerRunning.value) {
+        clearInterval(timerInterval);
+    } else {
+        timerInterval = setInterval(() => {
+            if (pomodoroTime.value > 0) pomodoroTime.value--;
+            else {
+                clearInterval(timerInterval);
+                isTimerRunning.value = false;
+                alert(t('sidebar_pomodoro_alert', "Waktu fokus selesai! Waktunya istirahat sebentar."));
+                pomodoroTime.value = 25 * 60; 
+            }
+        }, 1000);
+    }
+    isTimerRunning.value = !isTimerRunning.value;
+};
+
+const resetTimer = () => {
+    clearInterval(timerInterval);
+    isTimerRunning.value = false;
+    pomodoroTime.value = 25 * 60;
+};
+
+onUnmounted(() => clearInterval(timerInterval));
 </script>
 
 <template>
     <div class="flex flex-col gap-6 pb-10 select-none">
         
-        <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-200 relative overflow-hidden group">
-            <div class="absolute -right-4 -top-4 w-24 h-24 bg-indigo-50/50 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
-            <div class="flex justify-between items-start mb-6 relative z-10">
-                <div>
-                    <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">{{ $t('sidebar_daily_focus') }}</h3>
-                    <div class="flex items-baseline gap-1">
-                        <span class="text-5xl font-black text-slate-800 tracking-tighter">{{ combinedStats.percent }}<span class="text-xl text-slate-300">%</span></span>
+        <div class="bg-white p-6 md:p-8 rounded-[2.5rem] shadow-sm border border-slate-200 relative overflow-hidden group">
+            <div class="absolute -right-24 -top-24 w-64 h-64 border-[40px] border-slate-50 rounded-full pointer-events-none group-hover:scale-105 transition-transform duration-1000"></div>
+            
+            <div class="relative z-10 flex flex-col">
+                <div class="w-full flex justify-between items-start mb-6">
+                    <div>
+                        <h3 class="font-black text-slate-800 text-sm tracking-tight flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full" :class="isTimerRunning ? 'bg-indigo-500 animate-pulse' : 'bg-slate-300'"></span>
+                            {{ $t('sidebar_pomodoro_title', 'Focus Session') }}
+                        </h3>
+                    </div>
+                    <button @click="resetTimer" :title="$t('sidebar_pomodoro_reset')" class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                    </button>
+                </div>
+
+                <div class="flex justify-center items-center py-4">
+                    <div class="text-6xl md:text-7xl font-black text-slate-800 tracking-tighter tabular-nums" style="font-variant-numeric: tabular-nums;">
+                        {{ formattedTimer }}
                     </div>
                 </div>
-                <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-indigo-600 text-white shadow-lg shadow-indigo-100 transition-transform active:scale-95">
-                    <span class="text-2xl" :class="{'animate-bounce': combinedStats.percent === 100}">
-                        {{ combinedStats.percent === 100 ? '🏆' : '🚀' }}
-                    </span>
+
+                <div class="mt-6 flex justify-center">
+                    <button @click="toggleTimer" 
+                        class="w-full py-4 rounded-2xl font-black tracking-widest uppercase transition-all duration-300 active:scale-95 flex items-center justify-center gap-2"
+                        :class="isTimerRunning 
+                            ? 'bg-slate-100 text-slate-600 hover:bg-slate-200' 
+                            : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg shadow-indigo-200'">
+                        
+                        <span v-if="isTimerRunning" class="flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                            {{ $t('sidebar_pomodoro_pause', 'Jeda') }}
+                        </span>
+                        <span v-else class="flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+                            {{ $t('sidebar_pomodoro_start', 'Mulai Fokus') }}
+                        </span>
+                    </button>
                 </div>
             </div>
-            <div class="flex h-2 w-full bg-slate-100 rounded-full overflow-hidden mb-4 p-0.5 border border-slate-50">
-                <div v-for="(stat, idx) in categoryDistribution" :key="idx" 
-                    :style="{ width: (stat.count / ((localTaskBox || []).length || 1) * 100) + '%' }"
-                    :class="[stat.color, 'transition-all duration-1000 h-full first:rounded-l-full last:rounded-r-full']">
-                </div>
-            </div>
-            <div class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-slate-400">
-                <span>{{ combinedStats.completed }} / {{ combinedStats.total }} {{ $t('sidebar_done_suffix') }}</span>
-                <span class="text-indigo-600">Active</span>
-            </div>
+            
+           
         </div>
 
         <div class="bg-white p-6 rounded-[2.5rem] shadow-sm border border-slate-200">
