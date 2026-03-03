@@ -82,7 +82,7 @@ class PlannerController extends Controller
         return back();
     }
 
-    public function batchStore(StoreBatchTaskRequest $request)
+   public function batchStore(StoreBatchTaskRequest $request)
     {
         $timezone = Auth::user()->timezone ?? 'Asia/Jakarta';
         $date = $request->input('date', now()->timezone($timezone)->format('Y-m-d'));

@@ -92,5 +92,10 @@
     "success_copy_habit": "Successfully copied from last month!",
     "error_copy_habit": "Failed to copy habits.",
     "success_delete_habit": "Habit deleted successfully!",
-    "error_delete_habit": "Failed to delete habit."
+    "error_delete_habit": "Failed to delete habit.",
+
+    "greet_morning": "Good Morning",
+    "greet_afternoon": "Good Afternoon",
+    "greet_evening": "Good Evening",
+    "greet_night": "Good Night"
 }

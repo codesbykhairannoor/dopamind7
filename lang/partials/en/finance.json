@@ -98,5 +98,25 @@
 
     "warn_empty_category_name": "Name Empty",
     "warn_empty_category_name_text": "Please provide a name for this category.",
-    "warn_empty_category": "Please select a category!"
+    "warn_empty_category": "Please select a category!",
+
+  "invest_new": "New Asset Allocation",
+  "asset_name": "Asset Name",
+  "asset_name_placeholder": "E.g., AAPL Stock / Mutual Fund",
+  "capital_invest": "Investment Capital",
+  "invest_expense_warn": "Will be recorded as an Expense this month.",
+  "confirm_pay": "Confirm & Pay",
+  "invest_validation": "Asset Name and Capital must be filled correctly!",
+  "withdraw_asset": "Withdraw Asset?",
+  "initial_capital": "Initial Capital",
+  "return_text": "Return",
+  "total_withdraw": "Total Withdrawal",
+  "withdraw_notice": "Total withdrawal will be added to the main balance.",
+  "yes_withdraw": "Yes, Withdraw Now",
+  "investment_lab": "Investment Lab",
+  "total_pl": "(P/L)",
+  "growth": "Growth",
+  "est_total": "Est. Total",
+  "quit": "QUIT",
+  "lab_empty": "Lab is Empty"
 }

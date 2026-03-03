@@ -111,8 +111,8 @@ export function usePlannerTasks(props) {
             router.patch(route('planner.update', form.id), payload, {
                 preserveScroll: true,
                 preserveState: true,
-                progress: false, // ✅ Matikan loading bar atas
-                only: ['tasks', 'errors'], // ✅ Jangan load ulang halaman penuh
+                progress: false, 
+                only: ['tasks', 'errors'], 
                 onFinish: () => form.reset()
             });
         } else {
@@ -122,8 +122,8 @@ export function usePlannerTasks(props) {
             router.post(route('planner.store'), payload, {
                 preserveScroll: true,
                 preserveState: true,
-                progress: false, // ✅ Matikan loading bar atas
-                only: ['tasks', 'errors'], // ✅ The Magic Speed!
+                progress: false, 
+                only: ['tasks', 'errors'], 
                 onError: () => {
                     localTasks.value = localTasks.value.filter(t => t.id !== tempId);
                     fireError(t('err_save_failed', 'Gagal menyimpan ke server!'));
@@ -134,15 +134,31 @@ export function usePlannerTasks(props) {
     };
 
     const deleteTask = (id) => {
+        // 🔥 SABUK PENGAMAN ANTI-ZIGGY CRASH 🔥
+        // Jika ID kosong/undefined, gagalkan!
+        if (!id) {
+            console.error("ID tidak valid atau undefined");
+            return fireError(t('err_id_not_found', 'Error: ID Task tidak valid.'));
+        }
+
+        // Jika user menghapus task yang baru saja dibuat (masih ID temp), hapus dari memori saja.
+        if (String(id).startsWith('temp_')) {
+            localTasks.value = localTasks.value.filter(t => t.id !== id);
+            isModalOpen.value = false;
+            return fireSuccess(t('success_deleted', 'Dihapus!'));
+        }
+
+        // Hapus Instan dari UI
         localTasks.value = localTasks.value.filter(t => t.id !== id);
         isModalOpen.value = false;
         
         fireSuccess(t('success_deleted', 'Dihapus!'));
 
+        // Eksekusi Server
         router.delete(route('planner.destroy', id), {
             preserveScroll: true,
             preserveState: true,
-            progress: false, // ✅ Kilat!
+            progress: false,
             only: ['tasks', 'errors'],
             onError: () => {
                 fireError(t('err_delete_failed', 'Gagal menghapus data!'));
@@ -156,7 +172,7 @@ export function usePlannerTasks(props) {
             preserveScroll: true, 
             preserveState: true,
             progress: false, 
-            only: ['tasks', 'errors'] // ✅ Checklist Instan!
+            only: ['tasks', 'errors'] 
         });
     };
 

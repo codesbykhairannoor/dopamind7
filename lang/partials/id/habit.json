@@ -93,5 +93,10 @@
     "success_copy_habit": "Berhasil menyalin dari bulan lalu!",
     "error_copy_habit": "Gagal menyalin habit.",
     "success_delete_habit": "Habit berhasil dihapus!",
-    "error_delete_habit": "Gagal menghapus habit."
+    "error_delete_habit": "Gagal menghapus habit.",
+
+        "greet_morning": "Selamat Pagi",
+    "greet_afternoon": "Selamat Siang",
+    "greet_evening": "Selamat Sore",
+    "greet_night": "Selamat Malam"
 }

@@ -26,17 +26,18 @@ const { currentDate, formattedDate, changeDate, changeDay } = usePlannerCalendar
 
 // Logic Single (Kirim props ke usePlanner)
 const {
+    localTasks, // 🔥 FIX 1: Keluarkan localTasks dari sini
     scheduledTasks, timeSlots, scheduledStats,
-    form, isModalOpen, isEditing,
+    form, isModalOpen, isEditing, conflictError, // pastikan conflictError juga diekstrak
     openModal, submitTask, deleteTask, resetBoard, toggleComplete,
-    onDragStart, onDrop, getTypeColor, localNotes, localMeals, conflictError, localWater, localTaskBox
+    onDragStart, onDrop, getTypeColor, localNotes, localMeals, localWater, localTaskBox
 } = usePlanner(props);
 
-// Logic Batch (Kirim ref currentDate agar save massal masuk ke tanggal yang benar)
+// Logic Batch (Kirim ref currentDate dan localTasks agar Optimistic UI jalan!)
 const {
     isBatchModalOpen, batchForm, openBatchModal,
     addBatchRow, removeBatchRow, submitBatch
-} = usePlannerBatch(currentDate);
+} = usePlannerBatch(currentDate, localTasks); // 🔥 FIX 2: Masukkan localTasks sebagai parameter kedua!
 
 const switchToBatch = () => { isModalOpen.value = false; openBatchModal(); };
 const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };

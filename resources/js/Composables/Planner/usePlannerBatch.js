@@ -2,7 +2,7 @@ import { ref } from 'vue';
 import { useForm, usePage } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 
-export function usePlannerBatch(currentDateRef) {
+export function usePlannerBatch(currentDateRef, localTasksRef = null) {
     const isBatchModalOpen = ref(false);
     const globalConflictError = ref(null); 
 
@@ -24,9 +24,7 @@ export function usePlannerBatch(currentDateRef) {
 
     const closeBatchModal = () => {
         isBatchModalOpen.value = false;
-        batchForm.reset();
-        batchForm.clearErrors();
-        globalConflictError.value = null;
+        // JANGAN di-reset di sini agar form tetap terkirim
     };
 
     const addBatchRow = () => {
@@ -131,21 +129,47 @@ export function usePlannerBatch(currentDateRef) {
         
         batchForm.date = currentDateRef.value; 
 
+        // 🔥 OPTIMISTIC UI: Render seketika ke layar sebelum nunggu server (ID pakai temp)
+        const tempTasks = batchForm.tasks.map((t, index) => ({
+            ...t,
+            id: 'temp_batch_' + Date.now() + '_' + index,
+            is_completed: false,
+            date: currentDateRef.value
+        }));
+
+        if (localTasksRef) {
+            localTasksRef.value.push(...tempTasks);
+        }
+
+        // Tutup Modalnya segera agar terasa instan
+        isBatchModalOpen.value = false;
+
+        Swal.fire({
+            toast: true, position: 'top-end', showConfirmButton: false, timer: 2000, timerProgressBar: true,
+            background: '#4f46e5', iconColor: '#ffffff', icon: 'success',
+            title: `<span style="color: white; font-weight: 900; font-size: 14px;">Batch Saved Successfully!</span>`,
+            customClass: { popup: '!rounded-full' }
+        });
+
+        // 🔥 INERTIA POST: Biarkan Inertia yang ngurus request.
         batchForm.post(route('planner.batchStore'), {
             preserveScroll: true,
             preserveState: true,
-            progress: false, // ✅ Matikan loading default
-            only: ['tasks', 'errors'], // ✅ Tarik data Planner (tasks) saja!
+            progress: false, // Matikan loading bar di atas
+            only: ['tasks', 'errors'], // Tarik balasan daftar tasks yang asli dari server
             onSuccess: () => {
-                closeBatchModal();
-                Swal.fire({
-                    toast: true, position: 'top-end', showConfirmButton: false, timer: 2000, timerProgressBar: true,
-                    background: '#4f46e5', iconColor: '#ffffff', icon: 'success',
-                    title: `<span style="color: white; font-weight: 900; font-size: 14px;">Batch Saved Successfully!</span>`,
-                    customClass: { popup: '!rounded-full' }
-                });
+                // Berhasil? Barulah form kita reset dan bersihkan
+                batchForm.reset();
+                batchForm.clearErrors();
+                globalConflictError.value = null;
             },
             onError: (errors) => {
+                // Gagal? Tarik mundur Optimistic UI-nya dan buka kembali modalnya
+                if (localTasksRef) {
+                    const tempIds = tempTasks.map(t => t.id);
+                    localTasksRef.value = localTasksRef.value.filter(t => !tempIds.includes(t.id));
+                }
+                isBatchModalOpen.value = true;
                 console.error("Batch Error", errors);
             }
         });

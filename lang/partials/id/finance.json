@@ -116,6 +116,26 @@
     "insight_target_diff": "dari target harian",
     "insight_cold_money_label": "Uang Dingin (Net)",
     "insight_milestone_label": "Progress Milestone",
-    "insight_cold_money_hint": "*Gunakan amunisi ini pas chart saham lu udah mantul dari support bro!"
+    "insight_cold_money_hint": "*Gunakan amunisi ini pas chart saham lu udah mantul dari support bro!",
+
+  "invest_new": "Alokasi Aset Baru",
+  "asset_name": "Nama Aset",
+  "asset_name_placeholder": "Contoh: Saham BBCA / Reksadana",
+  "capital_invest": "Modal Investasi",
+  "invest_expense_warn": "Akan tercatat sebagai Pengeluaran bulan ini.",
+  "confirm_pay": "Konfirmasi & Bayar",
+  "invest_validation": "Nama dan Modal Investasi wajib diisi dengan benar!",
+  "withdraw_asset": "Cairkan Aset?",
+  "initial_capital": "Modal Awal",
+  "return_text": "Return",
+  "total_withdraw": "Total Cair",
+  "withdraw_notice": "Total Cair akan ditambahkan ke saldo utama.",
+  "yes_withdraw": "Ya, Cairkan Sekarang",
+  "investment_lab": "Investment Lab",
+  "total_pl": "(P/L)",
+  "growth": "Growth",
+  "est_total": "Est. Total",
+  "quit": "QUIT",
+  "lab_empty": "Lab Masih Kosong"
 
 }
