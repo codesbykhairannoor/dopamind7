@@ -428,18 +428,31 @@ const dash_greet_morning$1 = "Good Morning";
 const dash_greet_afternoon$1 = "Good Afternoon";
 const dash_greet_evening$1 = "Good Evening";
 const dash_greet_night$1 = "Good Night";
-const dash_welcome_sub$1 = "Ready to make 1% progress today? Manage your habits, schedule, and finances all in one place.";
-const dash_habit_desc$1 = "Track your daily habits and build long-term consistency.";
-const dash_planner_desc$1 = "Organize your daily tasks to stay focused and productive.";
-const dash_finance_desc$1 = "Record expenses and income to maintain your financial health.";
-const dash_open_module$1 = "Open Module";
-const dash_status_label$1 = "Account Status";
-const today_is$1 = "Today";
-const greet_morning$1 = "Good Morning";
-const greet_noon$1 = "Good Afternoon";
-const greet_afternoon$1 = "Good Afternoon";
-const greet_night$1 = "Good Evening";
-const greet_subtitle$1 = "Focus on today. Tomorrow is another day.";
+const dash_hero_subtitle$1 = "Make today a masterpiece. Here is the synergy summary of your routines, tasks, and finances today.";
+const dash_synergy_today$1 = "Today's Synergy";
+const dash_habit_title$1 = "Habits";
+const dash_habit_desc$1 = "Build consistent routines. Every checklist matters.";
+const dash_progress$1 = "Progress";
+const dash_completed$1 = "Completed";
+const dash_planner_title$1 = "Agenda";
+const dash_from$1 = "out of";
+const dash_tasks_done$1 = "tasks done";
+const dash_upcoming$1 = "Upcoming";
+const dash_all_tasks_done$1 = "All tasks for today are done!";
+const dash_finance_title$1 = "Finance";
+const dash_finance_desc$1 = "Today's cash flow";
+const dash_expense$1 = "Expense";
+const dash_income$1 = "Income";
+const dash_journal_title$1 = "Daily Journal";
+const dash_journal_written$1 = "You've recorded today's moment. Recorded mood:";
+const dash_journal_continue$1 = "Continue writing";
+const dash_journal_prompt$1 = '"How are you feeling today? What is one thing you are grateful for? Take 5 minutes to pour it out."';
+const dash_journal_start$1 = "Start Writing Journal";
+const dash_calendar_title$1 = "Calendar";
+const dash_calendar_desc$1 = "Active events today";
+const dash_today_only$1 = "Today Only";
+const dash_ongoing$1 = "Ongoing Event";
+const dash_no_events$1 = "No external schedule today. Free time for you!";
 const habit_meta_title$1 = "Habit Tracker - OneForMind";
 const habit_meta_desc$1 = "Track your daily habits, build solid routines, and become the best version of yourself with OneForMind's Habit Tracker.";
 const habit_meta_og_title$1 = "Habit Tracker - OneForMind";
@@ -794,6 +807,25 @@ const per_day$1 = "/ day";
 const most_wasteful$1 = "Highest Expense";
 const busiest_day$1 = "Busiest Day";
 const transactions_count$1 = "Transactions";
+const invest_new$1 = "New Asset Allocation";
+const asset_name$1 = "Asset Name";
+const asset_name_placeholder$1 = "E.g., AAPL Stock / Mutual Fund";
+const capital_invest$1 = "Investment Capital";
+const invest_expense_warn$1 = "Will be recorded as an Expense this month.";
+const confirm_pay$1 = "Confirm & Pay";
+const invest_validation$1 = "Asset Name and Capital must be filled correctly!";
+const withdraw_asset$1 = "Withdraw Asset?";
+const initial_capital$1 = "Initial Capital";
+const return_text$1 = "Return";
+const total_withdraw$1 = "Total Withdrawal";
+const withdraw_notice$1 = "Total withdrawal will be added to the main balance.";
+const yes_withdraw$1 = "Yes, Withdraw Now";
+const investment_lab$1 = "Investment Lab";
+const total_pl$1 = "(P/L)";
+const growth$1 = "Growth";
+const est_total$1 = "Est. Total";
+const quit$1 = "QUIT";
+const lab_empty$1 = "Lab is Empty";
 const nav_home$2 = "Home";
 const nav_about$2 = "About Us";
 const nav_login$2 = "Log In";
@@ -960,6 +992,10 @@ const btn_add_habit_row$1 = "Add Habit Row";
 const total_input$1 = "Total Input:";
 const btn_save_batch$1 = "Save Batch";
 const success_delete_habit$1 = "Habit deleted successfully!";
+const greet_morning$1 = "Good Morning";
+const greet_afternoon$1 = "Good Afternoon";
+const greet_evening$1 = "Good Evening";
+const greet_night$1 = "Good Night";
 const hero_badge$2 = "✨ v1.0: The Anti-Burnout System";
 const hero_title_1$2 = "One System";
 const hero_title_2$2 = "For a Clear Mind.";
@@ -1041,6 +1077,33 @@ const faq_q2$2 = "Is it really free?";
 const faq_a2$2 = "Yes. The Habit & Finance Tracker features you see now are FREE. We will release Premium features later, but the core foundation will remain free.";
 const faq_q3$2 = "Can I use it on my phone?";
 const faq_a3$2 = "Definitely! This website is fully responsive. If you open it in mobile Chrome/Safari, it feels just like a native app.";
+const job_page_title$1 = "Job Tracker";
+const job_page_subtitle$1 = "Track all your job applications in one place";
+const job_add_row$1 = "Add Row";
+const job_search$1 = "Search position or company...";
+const job_col_company$1 = "Company";
+const job_col_title$1 = "Job Title";
+const job_col_location$1 = "Location";
+const job_col_applied$1 = "Date Applied";
+const job_col_status$1 = "Status";
+const job_col_salary$1 = "Salary (Optional)";
+const job_ph_company$1 = "Enter company name...";
+const job_ph_title$1 = "e.g., Frontend Dev";
+const job_ph_location$1 = "Remote / US";
+const job_empty_table$1 = 'No data available. Click "+ Add Row" to start typing.';
+const job_status_wishlist$1 = "Wishlist";
+const job_status_applied$1 = "Applied";
+const job_status_interview$1 = "Interview";
+const job_status_offer$1 = "Offer Received";
+const job_status_rejected$1 = "Rejected";
+const job_status_accepted$1 = "Accepted";
+const job_tips$1 = "Tip: Click a cell to edit. Data saves automatically when you move to another cell (Press Tab/Enter).";
+const job_confirm_delete_simple$1 = "Are you sure you want to delete this row?";
+const job_error_save$1 = "Failed to save! Check your connection.";
+const job_saved$1 = "Row Saved!";
+const job_updated$1 = "Saved!";
+const job_deleted$1 = "Deleted!";
+const job_status_all$1 = "All";
 const journal_title$1 = "My Journal";
 const journal_subtitle$1 = "Keep track of your thoughts and feelings every day.";
 const journal_tasks$1 = "Tasks";
@@ -1139,6 +1202,14 @@ const total_suffix$1 = "tasks";
 const sidebar_persistent$1 = "Auto Persistence";
 const sidebar_water_title$1 = "HYDRATION";
 const default_activity_name$1 = "this activity";
+const sidebar_pomodoro_title$1 = "Focus Session";
+const sidebar_pomodoro_start$1 = "Start Focus";
+const sidebar_pomodoro_pause$1 = "Pause";
+const sidebar_pomodoro_reset$1 = "Reset Timer";
+const sidebar_pomodoro_alert$1 = "Focus time is up! Take a short break.";
+const sidebar_pomodoro_target$1 = "Today's Target";
+const sidebar_pomodoro_done$1 = "Completed";
+const sidebar_pomodoro_tasks$1 = "Tasks";
 const pricing_meta_title$1 = "Pricing | Choose Your Growth Path";
 const pricing_meta_desc$1 = "Simple and transparent pricing for OneForMind. Choose the plan that fits your productivity needs.";
 const pricing_meta_og_title$1 = "OneForMind Pricing — Invest in Yourself";
@@ -1940,23 +2011,35 @@ const en = {
   habitap_cta_desc: habitap_cta_desc$1,
   habitap_cta_btn: habitap_cta_btn$1,
   habitap_cta_sub: habitap_cta_sub$1,
-  "____ SECTION_4 ____": "=== DASHBOARD GENERAL ===",
   dash_greet_morning: dash_greet_morning$1,
   dash_greet_afternoon: dash_greet_afternoon$1,
   dash_greet_evening: dash_greet_evening$1,
   dash_greet_night: dash_greet_night$1,
-  dash_welcome_sub: dash_welcome_sub$1,
+  dash_hero_subtitle: dash_hero_subtitle$1,
+  dash_synergy_today: dash_synergy_today$1,
+  dash_habit_title: dash_habit_title$1,
   dash_habit_desc: dash_habit_desc$1,
-  dash_planner_desc: dash_planner_desc$1,
+  dash_progress: dash_progress$1,
+  dash_completed: dash_completed$1,
+  dash_planner_title: dash_planner_title$1,
+  dash_from: dash_from$1,
+  dash_tasks_done: dash_tasks_done$1,
+  dash_upcoming: dash_upcoming$1,
+  dash_all_tasks_done: dash_all_tasks_done$1,
+  dash_finance_title: dash_finance_title$1,
   dash_finance_desc: dash_finance_desc$1,
-  dash_open_module: dash_open_module$1,
-  dash_status_label: dash_status_label$1,
-  today_is: today_is$1,
-  greet_morning: greet_morning$1,
-  greet_noon: greet_noon$1,
-  greet_afternoon: greet_afternoon$1,
-  greet_night: greet_night$1,
-  greet_subtitle: greet_subtitle$1,
+  dash_expense: dash_expense$1,
+  dash_income: dash_income$1,
+  dash_journal_title: dash_journal_title$1,
+  dash_journal_written: dash_journal_written$1,
+  dash_journal_continue: dash_journal_continue$1,
+  dash_journal_prompt: dash_journal_prompt$1,
+  dash_journal_start: dash_journal_start$1,
+  dash_calendar_title: dash_calendar_title$1,
+  dash_calendar_desc: dash_calendar_desc$1,
+  dash_today_only: dash_today_only$1,
+  dash_ongoing: dash_ongoing$1,
+  dash_no_events: dash_no_events$1,
   "____ SECTION_1 ____HABIT": "=== HABIT ===",
   habit_meta_title: habit_meta_title$1,
   habit_meta_desc: habit_meta_desc$1,
@@ -2315,6 +2398,25 @@ const en = {
   most_wasteful: most_wasteful$1,
   busiest_day: busiest_day$1,
   transactions_count: transactions_count$1,
+  invest_new: invest_new$1,
+  asset_name: asset_name$1,
+  asset_name_placeholder: asset_name_placeholder$1,
+  capital_invest: capital_invest$1,
+  invest_expense_warn: invest_expense_warn$1,
+  confirm_pay: confirm_pay$1,
+  invest_validation: invest_validation$1,
+  withdraw_asset: withdraw_asset$1,
+  initial_capital: initial_capital$1,
+  return_text: return_text$1,
+  total_withdraw: total_withdraw$1,
+  withdraw_notice: withdraw_notice$1,
+  yes_withdraw: yes_withdraw$1,
+  investment_lab: investment_lab$1,
+  total_pl: total_pl$1,
+  growth: growth$1,
+  est_total: est_total$1,
+  quit: quit$1,
+  lab_empty: lab_empty$1,
   "____ SECTION_1 ____": "=== NAVIGATION & GLOBAL ===",
   nav_home: nav_home$2,
   nav_about: nav_about$2,
@@ -2483,6 +2585,10 @@ const en = {
   total_input: total_input$1,
   btn_save_batch: btn_save_batch$1,
   success_delete_habit: success_delete_habit$1,
+  greet_morning: greet_morning$1,
+  greet_afternoon: greet_afternoon$1,
+  greet_evening: greet_evening$1,
+  greet_night: greet_night$1,
   "____ SECTION_2 ____": "=== PRE-LOGIN (LANDING PAGE) ===",
   hero_badge: hero_badge$2,
   hero_title_1: hero_title_1$2,
@@ -2565,6 +2671,33 @@ const en = {
   faq_a2: faq_a2$2,
   faq_q3: faq_q3$2,
   faq_a3: faq_a3$2,
+  job_page_title: job_page_title$1,
+  job_page_subtitle: job_page_subtitle$1,
+  job_add_row: job_add_row$1,
+  job_search: job_search$1,
+  job_col_company: job_col_company$1,
+  job_col_title: job_col_title$1,
+  job_col_location: job_col_location$1,
+  job_col_applied: job_col_applied$1,
+  job_col_status: job_col_status$1,
+  job_col_salary: job_col_salary$1,
+  job_ph_company: job_ph_company$1,
+  job_ph_title: job_ph_title$1,
+  job_ph_location: job_ph_location$1,
+  job_empty_table: job_empty_table$1,
+  job_status_wishlist: job_status_wishlist$1,
+  job_status_applied: job_status_applied$1,
+  job_status_interview: job_status_interview$1,
+  job_status_offer: job_status_offer$1,
+  job_status_rejected: job_status_rejected$1,
+  job_status_accepted: job_status_accepted$1,
+  job_tips: job_tips$1,
+  job_confirm_delete_simple: job_confirm_delete_simple$1,
+  job_error_save: job_error_save$1,
+  job_saved: job_saved$1,
+  job_updated: job_updated$1,
+  job_deleted: job_deleted$1,
+  job_status_all: job_status_all$1,
   journal_title: journal_title$1,
   journal_subtitle: journal_subtitle$1,
   journal_tasks: journal_tasks$1,
@@ -2664,6 +2797,14 @@ const en = {
   sidebar_persistent: sidebar_persistent$1,
   sidebar_water_title: sidebar_water_title$1,
   default_activity_name: default_activity_name$1,
+  sidebar_pomodoro_title: sidebar_pomodoro_title$1,
+  sidebar_pomodoro_start: sidebar_pomodoro_start$1,
+  sidebar_pomodoro_pause: sidebar_pomodoro_pause$1,
+  sidebar_pomodoro_reset: sidebar_pomodoro_reset$1,
+  sidebar_pomodoro_alert: sidebar_pomodoro_alert$1,
+  sidebar_pomodoro_target: sidebar_pomodoro_target$1,
+  sidebar_pomodoro_done: sidebar_pomodoro_done$1,
+  sidebar_pomodoro_tasks: sidebar_pomodoro_tasks$1,
   pricing_meta_title: pricing_meta_title$1,
   pricing_meta_desc: pricing_meta_desc$1,
   pricing_meta_og_title: pricing_meta_og_title$1,
@@ -3056,6 +3197,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   adjust_photo_title: adjust_photo_title$1,
   amount: amount$1,
   amount_placeholder: amount_placeholder$1,
+  asset_name: asset_name$1,
+  asset_name_placeholder: asset_name_placeholder$1,
   auth_back_login: auth_back_login$2,
   auth_btn_confirm: auth_btn_confirm$2,
   auth_btn_google_in: auth_btn_google_in$2,
@@ -3317,6 +3460,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   calendar_title: calendar_title$1,
   calendar_today: calendar_today$1,
   cancel: cancel$1,
+  capital_invest: capital_invest$1,
   cat_life: cat_life$1,
   cat_other: cat_other$1,
   cat_urgent: cat_urgent$1,
@@ -3337,6 +3481,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   confirm_delete_text: confirm_delete_text$1,
   confirm_delete_title: confirm_delete_title$1,
   confirm_new_password: confirm_new_password$1,
+  confirm_pay: confirm_pay$1,
   create_budget_first: create_budget_first$1,
   cta_about_btn: cta_about_btn$2,
   cta_about_desc: cta_about_desc$2,
@@ -3351,16 +3496,35 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   daily_detail: daily_detail$1,
   daily_history: daily_history$1,
   daily_net: daily_net$1,
+  dash_all_tasks_done: dash_all_tasks_done$1,
+  dash_calendar_desc: dash_calendar_desc$1,
+  dash_calendar_title: dash_calendar_title$1,
+  dash_completed: dash_completed$1,
+  dash_expense: dash_expense$1,
   dash_finance_desc: dash_finance_desc$1,
+  dash_finance_title: dash_finance_title$1,
+  dash_from: dash_from$1,
   dash_greet_afternoon: dash_greet_afternoon$1,
   dash_greet_evening: dash_greet_evening$1,
   dash_greet_morning: dash_greet_morning$1,
   dash_greet_night: dash_greet_night$1,
   dash_habit_desc: dash_habit_desc$1,
-  dash_open_module: dash_open_module$1,
-  dash_planner_desc: dash_planner_desc$1,
-  dash_status_label: dash_status_label$1,
-  dash_welcome_sub: dash_welcome_sub$1,
+  dash_habit_title: dash_habit_title$1,
+  dash_hero_subtitle: dash_hero_subtitle$1,
+  dash_income: dash_income$1,
+  dash_journal_continue: dash_journal_continue$1,
+  dash_journal_prompt: dash_journal_prompt$1,
+  dash_journal_start: dash_journal_start$1,
+  dash_journal_title: dash_journal_title$1,
+  dash_journal_written: dash_journal_written$1,
+  dash_no_events: dash_no_events$1,
+  dash_ongoing: dash_ongoing$1,
+  dash_planner_title: dash_planner_title$1,
+  dash_progress: dash_progress$1,
+  dash_synergy_today: dash_synergy_today$1,
+  dash_tasks_done: dash_tasks_done$1,
+  dash_today_only: dash_today_only$1,
+  dash_upcoming: dash_upcoming$1,
   date: date$1,
   date_filter: date_filter$1,
   date_format: date_format$1,
@@ -3418,6 +3582,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   error_server: error_server$1,
   error_title: error_title$1,
   error_update_habit: error_update_habit$1,
+  est_total: est_total$1,
   expense: expense$1,
   faq_a1: faq_a1$2,
   faq_a2: faq_a2$2,
@@ -3534,10 +3699,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   full_name: full_name$1,
   fund_source: fund_source$1,
   greet_afternoon: greet_afternoon$1,
+  greet_evening: greet_evening$1,
   greet_morning: greet_morning$1,
   greet_night: greet_night$1,
-  greet_noon: greet_noon$1,
-  greet_subtitle: greet_subtitle$1,
+  growth: growth$1,
   growth_bento_1_desc: growth_bento_1_desc$1,
   growth_bento_1_title: growth_bento_1_title$1,
   growth_bento_2_desc: growth_bento_2_desc$1,
@@ -3794,6 +3959,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   hint_tap_done: hint_tap_done$1,
   icon_tooltip: icon_tooltip$1,
   income: income$1,
+  initial_capital: initial_capital$1,
   insight_cold_money_hint: insight_cold_money_hint$1,
   insight_cold_money_label: insight_cold_money_label$1,
   insight_day_suffix: insight_day_suffix$1,
@@ -3803,6 +3969,37 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   insight_status_fast: insight_status_fast$1,
   insight_status_safe: insight_status_safe$1,
   insight_target_diff: insight_target_diff$1,
+  invest_expense_warn: invest_expense_warn$1,
+  invest_new: invest_new$1,
+  invest_validation: invest_validation$1,
+  investment_lab: investment_lab$1,
+  job_add_row: job_add_row$1,
+  job_col_applied: job_col_applied$1,
+  job_col_company: job_col_company$1,
+  job_col_location: job_col_location$1,
+  job_col_salary: job_col_salary$1,
+  job_col_status: job_col_status$1,
+  job_col_title: job_col_title$1,
+  job_confirm_delete_simple: job_confirm_delete_simple$1,
+  job_deleted: job_deleted$1,
+  job_empty_table: job_empty_table$1,
+  job_error_save: job_error_save$1,
+  job_page_subtitle: job_page_subtitle$1,
+  job_page_title: job_page_title$1,
+  job_ph_company: job_ph_company$1,
+  job_ph_location: job_ph_location$1,
+  job_ph_title: job_ph_title$1,
+  job_saved: job_saved$1,
+  job_search: job_search$1,
+  job_status_accepted: job_status_accepted$1,
+  job_status_all: job_status_all$1,
+  job_status_applied: job_status_applied$1,
+  job_status_interview: job_status_interview$1,
+  job_status_offer: job_status_offer$1,
+  job_status_rejected: job_status_rejected$1,
+  job_status_wishlist: job_status_wishlist$1,
+  job_tips: job_tips$1,
+  job_updated: job_updated$1,
   journal_add: journal_add$1,
   journal_add_photo: journal_add_photo$1,
   journal_bento_1_desc: journal_bento_1_desc$1,
@@ -3869,6 +4066,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   journal_title_placeholder: journal_title_placeholder$1,
   journal_untitled: journal_untitled$1,
   journal_write_placeholder: journal_write_placeholder$1,
+  lab_empty: lab_empty$1,
   label_activity: label_activity$1,
   label_break: label_break$1,
   label_checkins: label_checkins$1,
@@ -4324,6 +4522,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   profile_info_desc: profile_info_desc$1,
   profile_info_title: profile_info_title$1,
   profile_settings: profile_settings$1,
+  quit: quit$1,
   record_transaction: record_transaction$1,
   reset_btn: reset_btn$2,
   reset_desc: reset_desc$2,
@@ -4333,6 +4532,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   reset_page_title: reset_page_title$2,
   reset_placeholder_pass: reset_placeholder_pass$2,
   reset_title: reset_title$2,
+  return_text: return_text$1,
   save: save$1,
   save_changes: save_changes$1,
   save_photo: save_photo$1,
@@ -4366,6 +4566,14 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   sidebar_notes_placeholder: sidebar_notes_placeholder$1,
   sidebar_notes_title: sidebar_notes_title$1,
   sidebar_persistent: sidebar_persistent$1,
+  sidebar_pomodoro_alert: sidebar_pomodoro_alert$1,
+  sidebar_pomodoro_done: sidebar_pomodoro_done$1,
+  sidebar_pomodoro_pause: sidebar_pomodoro_pause$1,
+  sidebar_pomodoro_reset: sidebar_pomodoro_reset$1,
+  sidebar_pomodoro_start: sidebar_pomodoro_start$1,
+  sidebar_pomodoro_target: sidebar_pomodoro_target$1,
+  sidebar_pomodoro_tasks: sidebar_pomodoro_tasks$1,
+  sidebar_pomodoro_title: sidebar_pomodoro_title$1,
   sidebar_target_daily: sidebar_target_daily$1,
   sidebar_tasks_done: sidebar_tasks_done$1,
   sidebar_tasks_unit: sidebar_tasks_unit$1,
@@ -4517,7 +4725,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_title_2: terms_title_2$1,
   timeline_now: timeline_now$1,
   timeline_title: timeline_title$1,
-  today_is: today_is$1,
   tos_data_p: tos_data_p$1,
   tos_data_title: tos_data_title$1,
   tos_intro: tos_intro$1,
@@ -4530,7 +4737,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   tos_title: tos_title$1,
   total_input: total_input$1,
   total_label: total_label$1,
+  total_pl: total_pl$1,
   total_suffix: total_suffix$1,
+  total_withdraw: total_withdraw$1,
   transaction: transaction$1,
   transaction_count: transaction_count$1,
   transactions_count: transactions_count$1,
@@ -4557,7 +4766,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   warn_empty_title: warn_empty_title$1,
   warn_empty_title_text: warn_empty_title_text$1,
   warn_target_min: warn_target_min$1,
+  withdraw_asset: withdraw_asset$1,
+  withdraw_notice: withdraw_notice$1,
   yes_delete: yes_delete$1,
+  yes_withdraw: yes_withdraw$1,
   your_password: your_password$1
 }, Symbol.toStringTag, { value: "Module" }));
 const auth_login_title$1 = "Welcome Back.";
@@ -4994,18 +5206,31 @@ const dash_greet_morning = "Selamat Pagi";
 const dash_greet_afternoon = "Selamat Siang";
 const dash_greet_evening = "Selamat Sore";
 const dash_greet_night = "Selamat Malam";
-const dash_welcome_sub = "Siap membuat progres 1% lebih baik hari ini? Kelola habit, jadwal, dan keuanganmu di satu tempat.";
-const dash_habit_desc = "Pantau kebiasaan harianmu dan bangun konsistensi jangka panjang.";
-const dash_planner_desc = "Susun tugas harianmu agar tetap fokus dan produktif setiap saat.";
-const dash_finance_desc = "Catat pengeluaran dan pemasukan untuk menjaga kesehatan finansialmu.";
-const dash_open_module = "Buka Modul";
-const dash_status_label = "Status Akun";
-const today_is = "Hari Ini";
-const greet_morning = "Selamat Pagi";
-const greet_noon = "Selamat Siang";
-const greet_afternoon = "Selamat Sore";
-const greet_night = "Selamat Malam";
-const greet_subtitle = "Fokus satu hari aja. Besok urusan besok.";
+const dash_hero_subtitle = "Jadikan hari ini mahakarya. Berikut adalah rangkuman sinergi rutinitas, tugas, dan keuanganmu hari ini.";
+const dash_synergy_today = "Sinergi Hari Ini";
+const dash_habit_title = "Kebiasaan";
+const dash_habit_desc = "Bangun rutinitas yang konsisten. Setiap checklist sangat berarti.";
+const dash_progress = "Progres";
+const dash_completed = "Selesai";
+const dash_planner_title = "Agenda";
+const dash_from = "dari";
+const dash_tasks_done = "tugas kelar";
+const dash_upcoming = "Mendatang";
+const dash_all_tasks_done = "Semua tugas hari ini sudah beres!";
+const dash_finance_title = "Keuangan";
+const dash_finance_desc = "Arus kas hari ini";
+const dash_expense = "Pengeluaran";
+const dash_income = "Pemasukan";
+const dash_journal_title = "Jurnal Harian";
+const dash_journal_written = "Kamu sudah merekam momen hari ini. Mood yang tercatat:";
+const dash_journal_continue = "Lanjutkan menulis";
+const dash_journal_prompt = '"Bagaimana kabarmu hari ini? Apa satu hal yang kamu syukuri? Luangkan 5 menit untuk menuangkannya."';
+const dash_journal_start = "Mulai Menulis Jurnal";
+const dash_calendar_title = "Kalender";
+const dash_calendar_desc = "Event aktif hari ini";
+const dash_today_only = "Hari Ini Saja";
+const dash_ongoing = "Event Berjalan";
+const dash_no_events = "Tidak ada jadwal eksternal hari ini. Waktu luang untukmu!";
 const habit_meta_title = "Habit Tracker - OneForMind";
 const habit_meta_desc = "Lacak kebiasaan harianmu, bangun rutinitas solid, dan jadilah versi terbaik dirimu dengan fitur Habit Tracker dari OneForMind.";
 const habit_meta_og_title = "Habit Tracker - OneForMind";
@@ -5360,6 +5585,25 @@ const insight_target_diff = "dari target harian";
 const insight_cold_money_label = "Uang Dingin (Net)";
 const insight_milestone_label = "Progress Milestone";
 const insight_cold_money_hint = "*Gunakan amunisi ini pas chart saham lu udah mantul dari support bro!";
+const invest_new = "Alokasi Aset Baru";
+const asset_name = "Nama Aset";
+const asset_name_placeholder = "Contoh: Saham BBCA / Reksadana";
+const capital_invest = "Modal Investasi";
+const invest_expense_warn = "Akan tercatat sebagai Pengeluaran bulan ini.";
+const confirm_pay = "Konfirmasi & Bayar";
+const invest_validation = "Nama dan Modal Investasi wajib diisi dengan benar!";
+const withdraw_asset = "Cairkan Aset?";
+const initial_capital = "Modal Awal";
+const return_text = "Return";
+const total_withdraw = "Total Cair";
+const withdraw_notice = "Total Cair akan ditambahkan ke saldo utama.";
+const yes_withdraw = "Ya, Cairkan Sekarang";
+const investment_lab = "Investment Lab";
+const total_pl = "(P/L)";
+const growth = "Growth";
+const est_total = "Est. Total";
+const quit = "QUIT";
+const lab_empty = "Lab Masih Kosong";
 const nav_home$1 = "Beranda";
 const nav_about$1 = "Tentang Kami";
 const nav_login$1 = "Masuk";
@@ -5486,6 +5730,10 @@ const btn_add_habit_row = "Tambah Baris Habit";
 const total_input = "Total Input:";
 const btn_save_batch = "Simpan Batch";
 const success_delete_habit = "Habit berhasil dihapus!";
+const greet_morning = "Selamat Pagi";
+const greet_afternoon = "Selamat Siang";
+const greet_evening = "Selamat Sore";
+const greet_night = "Selamat Malam";
 const hero_badge$1 = "✨ v1.0: Sistem Anti-Burnout";
 const hero_title_1$1 = "Satu Sistem.";
 const seo_meta_desc_1 = "Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.";
@@ -5569,6 +5817,33 @@ const faq_q2$1 = "Ini beneran gratis?";
 const faq_a2$1 = "Yes. Fitur Habit & Finance Tracker yang kamu lihat sekarang itu GRATIS. Nanti kami rilis fitur Premium, tapi versi dasarnya tetap gratis.";
 const faq_q3$1 = "Bisa dipake di HP gak?";
 const faq_a3$1 = "Bisa banget! Website ini responsif. Kalau kamu buka di Chrome/Safari HP, tampilannya bakal berasa kayak aplikasi native.";
+const job_page_title = "Pelacak Kerja";
+const job_page_subtitle = "Pantau semua lamaran kerjamu di satu tempat";
+const job_add_row = "Tambah Baris";
+const job_search = "Cari posisi atau perusahaan...";
+const job_col_company = "Perusahaan";
+const job_col_title = "Pekerjaan";
+const job_col_location = "Lokasi";
+const job_col_applied = "Tgl Melamar";
+const job_col_status = "Status";
+const job_col_salary = "Gaji (Opsional)";
+const job_ph_company = "Ketik nama perusahaan...";
+const job_ph_title = "Cth: Frontend Dev";
+const job_ph_location = "Remote / ID";
+const job_empty_table = 'Data kosong. Klik "+ Tambah Baris" untuk memulai ngetik.';
+const job_status_wishlist = "Wishlist";
+const job_status_applied = "Dilamar";
+const job_status_interview = "Interview";
+const job_status_offer = "Dapat Offering";
+const job_status_rejected = "Ditolak";
+const job_status_accepted = "Diterima";
+const job_tips = "Tips: Klik sel pada tabel untuk mengedit. Data otomatis tersimpan (senyap) saat Anda berpindah sel (tekan Tab/Enter).";
+const job_confirm_delete_simple = "Yakin ingin menghapus baris ini?";
+const job_error_save = "Gagal menyimpan! Cek koneksi.";
+const job_saved = "Baris Tersimpan!";
+const job_updated = "Tersimpan!";
+const job_deleted = "Terhapus!";
+const job_status_all = "Semua";
 const journal_title = "Jurnal Saya";
 const journal_subtitle = "Rekam jejak pikiran dan perasaanmu setiap hari.";
 const journal_tasks = "Tugas";
@@ -5664,6 +5939,14 @@ const prio_urgent = "🔥 Mendesak";
 const prio_work = "⚡ Kerja";
 const total_label = "Total:";
 const total_suffix = "task";
+const sidebar_pomodoro_title = "Fokus & Konsentrasi";
+const sidebar_pomodoro_start = "Mulai Sesi";
+const sidebar_pomodoro_pause = "Jeda";
+const sidebar_pomodoro_reset = "Reset Timer";
+const sidebar_pomodoro_alert = "Waktu fokus selesai! Waktunya istirahat sebentar.";
+const sidebar_pomodoro_target = "Target Hari Ini";
+const sidebar_pomodoro_done = "Telah Selesai";
+const sidebar_pomodoro_tasks = "Tugas";
 const sidebar_persistent = "Tersimpan Otomatis";
 const sidebar_water_title = "HIDRASI";
 const default_activity_name = "aktivitas ini";
@@ -6504,18 +6787,31 @@ const id = {
   dash_greet_afternoon,
   dash_greet_evening,
   dash_greet_night,
-  dash_welcome_sub,
+  dash_hero_subtitle,
+  dash_synergy_today,
+  dash_habit_title,
   dash_habit_desc,
-  dash_planner_desc,
+  dash_progress,
+  dash_completed,
+  dash_planner_title,
+  dash_from,
+  dash_tasks_done,
+  dash_upcoming,
+  dash_all_tasks_done,
+  dash_finance_title,
   dash_finance_desc,
-  dash_open_module,
-  dash_status_label,
-  today_is,
-  greet_morning,
-  greet_noon,
-  greet_afternoon,
-  greet_night,
-  greet_subtitle,
+  dash_expense,
+  dash_income,
+  dash_journal_title,
+  dash_journal_written,
+  dash_journal_continue,
+  dash_journal_prompt,
+  dash_journal_start,
+  dash_calendar_title,
+  dash_calendar_desc,
+  dash_today_only,
+  dash_ongoing,
+  dash_no_events,
   "____ SECTION_1 ____HABIT": "=== HABIT ===",
   habit_meta_title,
   habit_meta_desc,
@@ -6874,6 +7170,25 @@ const id = {
   insight_cold_money_label,
   insight_milestone_label,
   insight_cold_money_hint,
+  invest_new,
+  asset_name,
+  asset_name_placeholder,
+  capital_invest,
+  invest_expense_warn,
+  confirm_pay,
+  invest_validation,
+  withdraw_asset,
+  initial_capital,
+  return_text,
+  total_withdraw,
+  withdraw_notice,
+  yes_withdraw,
+  investment_lab,
+  total_pl,
+  growth,
+  est_total,
+  quit,
+  lab_empty,
   "____ SECTION_1 ____": "=== NAVIGASI & GLOBAL ===",
   nav_home: nav_home$1,
   nav_about: nav_about$1,
@@ -7003,6 +7318,10 @@ const id = {
   total_input,
   btn_save_batch,
   success_delete_habit,
+  greet_morning,
+  greet_afternoon,
+  greet_evening,
+  greet_night,
   "____ SECTION_2 ____": "=== TAMPILAN SEBELUM LOGIN (LANDING PAGE) ===",
   hero_badge: hero_badge$1,
   hero_title_1: hero_title_1$1,
@@ -7087,6 +7406,33 @@ const id = {
   faq_a2: faq_a2$1,
   faq_q3: faq_q3$1,
   faq_a3: faq_a3$1,
+  job_page_title,
+  job_page_subtitle,
+  job_add_row,
+  job_search,
+  job_col_company,
+  job_col_title,
+  job_col_location,
+  job_col_applied,
+  job_col_status,
+  job_col_salary,
+  job_ph_company,
+  job_ph_title,
+  job_ph_location,
+  job_empty_table,
+  job_status_wishlist,
+  job_status_applied,
+  job_status_interview,
+  job_status_offer,
+  job_status_rejected,
+  job_status_accepted,
+  job_tips,
+  job_confirm_delete_simple,
+  job_error_save,
+  job_saved,
+  job_updated,
+  job_deleted,
+  job_status_all,
   journal_title,
   journal_subtitle,
   journal_tasks,
@@ -7183,6 +7529,14 @@ const id = {
   prio_work,
   total_label,
   total_suffix,
+  sidebar_pomodoro_title,
+  sidebar_pomodoro_start,
+  sidebar_pomodoro_pause,
+  sidebar_pomodoro_reset,
+  sidebar_pomodoro_alert,
+  sidebar_pomodoro_target,
+  sidebar_pomodoro_done,
+  sidebar_pomodoro_tasks,
   sidebar_persistent,
   sidebar_water_title,
   default_activity_name,
@@ -7602,6 +7956,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   adjust_photo_title,
   amount,
   amount_placeholder,
+  asset_name,
+  asset_name_placeholder,
   auth_back_login: auth_back_login$1,
   auth_btn_confirm: auth_btn_confirm$1,
   auth_btn_google_in: auth_btn_google_in$1,
@@ -7863,6 +8219,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   calendar_title,
   calendar_today,
   cancel,
+  capital_invest,
   cat_life,
   cat_other,
   cat_urgent,
@@ -7883,6 +8240,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   confirm_delete_text,
   confirm_delete_title,
   confirm_new_password,
+  confirm_pay,
   create_budget_first,
   cta_about_btn: cta_about_btn$1,
   cta_about_desc: cta_about_desc$1,
@@ -7897,16 +8255,35 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   daily_detail,
   daily_history,
   daily_net,
+  dash_all_tasks_done,
+  dash_calendar_desc,
+  dash_calendar_title,
+  dash_completed,
+  dash_expense,
   dash_finance_desc,
+  dash_finance_title,
+  dash_from,
   dash_greet_afternoon,
   dash_greet_evening,
   dash_greet_morning,
   dash_greet_night,
   dash_habit_desc,
-  dash_open_module,
-  dash_planner_desc,
-  dash_status_label,
-  dash_welcome_sub,
+  dash_habit_title,
+  dash_hero_subtitle,
+  dash_income,
+  dash_journal_continue,
+  dash_journal_prompt,
+  dash_journal_start,
+  dash_journal_title,
+  dash_journal_written,
+  dash_no_events,
+  dash_ongoing,
+  dash_planner_title,
+  dash_progress,
+  dash_synergy_today,
+  dash_tasks_done,
+  dash_today_only,
+  dash_upcoming,
   date,
   date_filter,
   date_format,
@@ -7964,6 +8341,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   error_server,
   error_title,
   error_update_habit,
+  est_total,
   expense,
   faq_a1: faq_a1$1,
   faq_a2: faq_a2$1,
@@ -8080,10 +8458,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   full_name,
   fund_source,
   greet_afternoon,
+  greet_evening,
   greet_morning,
   greet_night,
-  greet_noon,
-  greet_subtitle,
+  growth,
   growth_bento_1_desc,
   growth_bento_1_title,
   growth_bento_2_desc,
@@ -8340,6 +8718,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   hint_tap_done,
   icon_tooltip,
   income,
+  initial_capital,
   insight_cold_money_hint,
   insight_cold_money_label,
   insight_day_suffix,
@@ -8349,6 +8728,37 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   insight_status_fast,
   insight_status_safe,
   insight_target_diff,
+  invest_expense_warn,
+  invest_new,
+  invest_validation,
+  investment_lab,
+  job_add_row,
+  job_col_applied,
+  job_col_company,
+  job_col_location,
+  job_col_salary,
+  job_col_status,
+  job_col_title,
+  job_confirm_delete_simple,
+  job_deleted,
+  job_empty_table,
+  job_error_save,
+  job_page_subtitle,
+  job_page_title,
+  job_ph_company,
+  job_ph_location,
+  job_ph_title,
+  job_saved,
+  job_search,
+  job_status_accepted,
+  job_status_all,
+  job_status_applied,
+  job_status_interview,
+  job_status_offer,
+  job_status_rejected,
+  job_status_wishlist,
+  job_tips,
+  job_updated,
   journal_add,
   journal_add_photo,
   journal_bento_1_desc,
@@ -8415,6 +8825,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   journal_title_placeholder,
   journal_untitled,
   journal_write_placeholder,
+  lab_empty,
   label_activity,
   label_break,
   label_checkins,
@@ -8871,6 +9282,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   profile_info_desc,
   profile_info_title,
   profile_settings,
+  quit,
   record_transaction,
   reset_btn: reset_btn$1,
   reset_desc: reset_desc$1,
@@ -8880,6 +9292,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   reset_page_title: reset_page_title$1,
   reset_placeholder_pass: reset_placeholder_pass$1,
   reset_title: reset_title$1,
+  return_text,
   save,
   save_changes,
   save_photo,
@@ -8913,6 +9326,14 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   sidebar_notes_placeholder,
   sidebar_notes_title,
   sidebar_persistent,
+  sidebar_pomodoro_alert,
+  sidebar_pomodoro_done,
+  sidebar_pomodoro_pause,
+  sidebar_pomodoro_reset,
+  sidebar_pomodoro_start,
+  sidebar_pomodoro_target,
+  sidebar_pomodoro_tasks,
+  sidebar_pomodoro_title,
   sidebar_target_daily,
   sidebar_tasks_done,
   sidebar_tasks_unit,
@@ -9064,7 +9485,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_title_2,
   timeline_now,
   timeline_title,
-  today_is,
   tos_data_p,
   tos_data_title,
   tos_intro,
@@ -9077,7 +9497,9 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   tos_title,
   total_input,
   total_label,
+  total_pl,
   total_suffix,
+  total_withdraw,
   transaction,
   transaction_count,
   transactions_count,
@@ -9099,7 +9521,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   warn_empty_title,
   warn_empty_title_text,
   warn_target_min,
+  withdraw_asset,
+  withdraw_notice,
   yes_delete,
+  yes_withdraw,
   your_password
 }, Symbol.toStringTag, { value: "Module" }));
 const nav_home = "主页";
@@ -9847,7 +10272,7 @@ const _ = { install(t3, e2) {
   const o2 = (t4, o3, n2, r2 = e2) => D(t4, o3, n2, r2);
   parseInt(t3.version) > 2 ? (t3.config.globalProperties.route = o2, t3.provide("route", o2)) : t3.mixin({ methods: { route: o2 } });
 } };
-const Ziggy$1 = { "url": "https://oneformind.com", "port": null, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.habits.reorder": { "uri": "habits/habits/reorder", "methods": ["POST"] }, "habits.habits.batch-log": { "uri": "habits/habits/batch-log", "methods": ["POST"] }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
+const Ziggy$1 = { "url": "https://oneformind.com", "port": null, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
 if (typeof window !== "undefined" && typeof window.Ziggy !== "undefined") {
   Object.assign(Ziggy$1.routes, window.Ziggy.routes);
 }
@@ -9857,7 +10282,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-CJldlvhE.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DrVdUGuS.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-ZYQuAaCQ.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-BqpB5WR2.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-tULvLE5Y.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-DA1G_I5b.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail--CWuKTDv.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-CC5eA3DW.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-CjN-XgbL.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B08mY9LL.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-C3kpMJds.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-hSuH6j7-.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-BRGtV6D2.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BtEbKAKN.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-CgJYjGfu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-DTOzfZFR.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DYpCHnR4.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-Ck63nC4N.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BBmpTujj.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-St-Mq15S.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-CqXR-MsE.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-C54UGTwz.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-B3eM8kQu.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-6N5jkQF3.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-CxHFx2qe.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-A1XgUMbm.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DZDmHnoM.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-gae4LQv0.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-D7De_7e0.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Bh1meCfg.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-DHq23cP5.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-8wYQDbGV.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-CQzh4Ndj.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BaZRxYjy.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-CodetIH_.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-BmLqdyGB.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B-ARzD5D.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BIOwNdRk.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CyZ79pfe.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CDIK_4qp.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-Ce2pKczP.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-CKj6FvIl.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-_82GAeR_.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CyrrCqd5.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-BcezI0yx.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-qZ6znVNy.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-COksxG66.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-DJ6Cicf1.js") })),
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-CJldlvhE.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DrVdUGuS.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-ZYQuAaCQ.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-BqpB5WR2.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-tULvLE5Y.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-DA1G_I5b.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail--CWuKTDv.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-CC5eA3DW.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-CjN-XgbL.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B08mY9LL.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-C3kpMJds.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BhL3e_5W.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-BfXW_QWO.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BtEbKAKN.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-CgJYjGfu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-DTOzfZFR.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DYpCHnR4.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-Ck63nC4N.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BBmpTujj.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-St-Mq15S.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-CqXR-MsE.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D_069xZS.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-Dry4iwQc.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-C-nHXCNH.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-CxHFx2qe.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-A1XgUMbm.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DZDmHnoM.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-7FRjVTHM.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-D7De_7e0.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Bh1meCfg.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-DHq23cP5.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-DcVL_Ib6.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-DJP8X7Q3.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-Dwgp0-b9.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-XE_mcy9P.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-BIHrp-JG.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CDR3O1eE.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-iTWD-Z4C.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-DX9CeWIH.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-CodetIH_.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-BebP2OSg.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DMirBeUC.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BIOwNdRk.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CyZ79pfe.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CDIK_4qp.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-CHhYQ5YX.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-BEo8d7yL.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-VNl0pWg9.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CyrrCqd5.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-BcezI0yx.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-qZ6znVNy.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-CqhRSKd-.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-DJ6Cicf1.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";
