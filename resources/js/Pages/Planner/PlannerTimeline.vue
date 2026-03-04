@@ -107,9 +107,12 @@ const getTaskStyle = (task) => {
 
     const relEnd = relStart + duration;
 
-    // 2. Hide JIKA task benar-benar selesai sebelum planner mulai ATAU baru mulai setelah planner habis
-    if (relEnd <= 0) return { display: 'none' }; 
-    if (relStart >= VIEW_LIMIT * 60) return { display: 'none' }; 
+    // 2. Hide JIKA task benar-benar selesai sebelum planner mulai
+    // TAPI jangan hide jika task masih overlap dengan view window
+    if (relEnd <= 0) return { display: 'none' };
+    // 🔥 FIX: Jangan hide task yang mulai sebelum batas akhir view
+    // Task yang mulai di jam 19:00 dengan VIEW_LIMIT 15 jam (batas 21:00) harus tetap terlihat
+    if (relStart >= VIEW_LIMIT * 60 && relEnd > VIEW_LIMIT * 60) return { display: 'none' }; 
 
     // 3. CLAMPING: Potong visual task biar cuma nampilin porsi jam yang masuk di layar
     // Jika task mulai dari jam 3 dan layar dari jam 6, renderStart otomatis di-set ke 0 (paling atas)

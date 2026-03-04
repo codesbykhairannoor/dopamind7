@@ -11,6 +11,13 @@ const emit = defineEmits(['delete']);
 
 const formatDate = (date) => dayjs(date).locale('id').format('dddd, DD MMM YYYY');
 
+const stripHtml = (html) => {
+    if (!html) return '';
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+};
+
 const handleDelete = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -49,8 +56,8 @@ const handleDelete = (event) => {
                 {{ journal.title || $t('journal_untitled', 'Cerita Hari Ini') }}
             </h3>
             
-            <p class="text-sm font-medium text-slate-500 line-clamp-4 flex-1 leading-relaxed" 
-               v-html="journal.content ? journal.content.replace(/<[^>]*>?/gm, '') : $t('journal_no_content', 'Tidak ada teks...')">
+            <p class="text-sm font-medium text-slate-500 line-clamp-4 flex-1 leading-relaxed">
+                {{ journal.content ? stripHtml(journal.content) : $t('journal_no_content', 'Tidak ada teks...') }}
             </p>
         </div>
     </Link>

@@ -341,6 +341,16 @@ Route::middleware(['module:calendar'])->prefix('calendar')->name('calendar.')->g
     Route::delete('/events/{id}', [CalendarController::class, 'destroyEvent'])->name('events.destroy');
 });
 
+    // Job Tracker Routes
+    Route::middleware(['module:job'])->prefix('jobs')->name('jobs.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\JobController::class, 'index'])->name('index');
+        Route::post('/', [\App\Http\Controllers\JobController::class, 'store'])->name('store');
+        Route::patch('/{job}', [\App\Http\Controllers\JobController::class, 'update'])->name('update');
+        Route::delete('/{job}', [\App\Http\Controllers\JobController::class, 'destroy'])->name('destroy');
+        Route::post('/bulk-update-status', [\App\Http\Controllers\JobController::class, 'bulkUpdateStatus'])->name('bulk-update-status');
+        Route::post('/bulk-delete', [\App\Http\Controllers\JobController::class, 'bulkDelete'])->name('bulk-delete');
+    });
+
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 

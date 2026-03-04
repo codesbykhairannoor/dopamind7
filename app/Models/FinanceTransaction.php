@@ -10,9 +10,14 @@ class FinanceTransaction extends Model
 {
     use HasFactory;
 
-    // 🔥 FIX: Ijinkan semua kolom diisi massal KECUALI 'id'
-    // Ini solusi biar gak perlu nulis $fillable panjang lebar dan menghindari error 'id' null.
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'user_id',
+        'date',
+        'type',
+        'category',
+        'amount',
+        'description',
+    ];
 
     /**
      * Casting tipe data otomatis.

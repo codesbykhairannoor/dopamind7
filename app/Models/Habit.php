@@ -9,7 +9,15 @@ class Habit extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'user_id',
+        'title',
+        'description',
+        'period',
+        'position',
+        'color',
+        'icon',
+    ];
 
     public function logs()
     {

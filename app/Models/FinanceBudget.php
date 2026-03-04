@@ -10,8 +10,12 @@ class FinanceBudget extends Model
 {
     use HasFactory;
 
-    // 🔥 FIX: Guarded ID saja
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'user_id',
+        'category',
+        'limit_amount',
+        'month',
+    ];
 
     protected $casts = [
         'limit_amount' => 'decimal:2',

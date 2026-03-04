@@ -57,9 +57,9 @@ if (class_exists(TelescopeApplicationServiceProvider::class)) {
         protected function gate(): void
         {
             Gate::define('viewTelescope', function ($user) {
-                return in_array($user->email, [
-                    'erstaunenn@gmail.com', // Masukin email lu di sini biar bisa akses
-                ]);
+                $admins = env('TELESCOPE_ADMINS', '');
+                $adminEmails = array_filter(array_map('trim', explode(',', $admins)));
+                return in_array($user->email, $adminEmails);
             });
         }
     }

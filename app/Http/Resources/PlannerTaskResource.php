@@ -11,6 +11,7 @@ class PlannerTaskResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'date' => $this->date ? $this->date->format('Y-m-d') : null, // 🔥 FIX: Tambahkan field date
             'title' => (string) $this->title,
             'start_time' => $this->start_time ? substr($this->start_time, 0, 5) : null, // Format HH:mm
             'end_time' => $this->end_time ? substr($this->end_time, 0, 5) : null,

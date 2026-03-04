@@ -52,15 +52,16 @@ const handleFullReset = () => {
 <template>
     <Head title="Daily Planner" />
 
-        <PlannerHeader 
+    <div>
+        <PlannerHeader
             :currentDate="currentDate"
             :formattedDate="formattedDate"
             :tasks="tasks"
             @change-date="changeDate"
             @change-day="changeDay"
-            :openModal="() => openModal(null, null, 'full')" 
+            :openModal="() => openModal(null, null, 'full')"
             :resetBoard="handleFullReset"
-            :stats="scheduledStats" 
+            :stats="scheduledStats"
         />
 
         <div class="w-full min-h-screen bg-slate-50/50 px-4 sm:px-6 lg:px-8 py-8">
@@ -92,20 +93,21 @@ const handleFullReset = () => {
             </div>
         </div>
 
-        <PlannerModal 
-            :show="isModalOpen" :form="form" :isEditing="isEditing" :conflictError="conflictError" 
+        <PlannerModal
+            :show="isModalOpen" :form="form" :isEditing="isEditing" :conflictError="conflictError"
             :close="() => isModalOpen = false" :submit="submitTask" :remove="deleteTask"
-            @switch-to-batch="switchToBatch" 
+            @switch-to-batch="switchToBatch"
         />
 
-        <PlannerBatchModal 
-            :show="isBatchModalOpen" 
-            :form="batchForm" 
-            :conflictError="conflictError"  
-            :close="() => isBatchModalOpen = false" 
-            :submit="submitBatch" 
-            :addRow="addBatchRow" 
+        <PlannerBatchModal
+            :show="isBatchModalOpen"
+            :form="batchForm"
+            :conflictError="conflictError"
+            :close="() => isBatchModalOpen = false"
+            :submit="submitBatch"
+            :addRow="addBatchRow"
             :removeRow="removeBatchRow"
             :switchToSingle="switchToSingle"
         />
+    </div>
 </template>

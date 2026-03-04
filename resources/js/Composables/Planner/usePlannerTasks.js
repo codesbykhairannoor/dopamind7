@@ -180,10 +180,17 @@ export function usePlannerTasks(props) {
         localTasks.value = [...newTasks];
     }, { deep: true });
 
-    const scheduledTasks = computed(() => 
-        localTasks.value.filter(t => t.start_time).sort((a, b) => a.start_time.localeCompare(b.start_time))
+    // 🔥 FIX: Gunakan computed untuk currentDate agar reactive
+    const currentDateRef = computed(() => props.currentDate);
+
+    const scheduledTasks = computed(() =>
+        localTasks.value
+            .filter(t => t.start_time && t.date === currentDateRef.value) // 🔥 FIX: Filter by date
+            .sort((a, b) => a.start_time.localeCompare(b.start_time))
     );
-    const inboxTasks = computed(() => localTasks.value.filter(t => !t.start_time));
+    const inboxTasks = computed(() =>
+        localTasks.value.filter(t => !t.start_time && t.date === currentDateRef.value) // 🔥 FIX: Filter by date
+    );
 
     const calculateStats = (tasks) => {
         const total = tasks.length;

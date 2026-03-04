@@ -69,16 +69,9 @@ class SocialController extends Controller
 
         } catch (\Exception $e) {
             // Log error ke storage/logs biar lo bisa cek di terminal Railway
-            Log::error('ERROR GOOGLE LOGIN: ' . $e->getMessage());
-
-            // Tampilkan error mentah di layar buat debug (hapus kalau sudah fix)
-            if (config('app.debug')) {
-                dd([
-                    'message' => 'Gagal Login Google',
-                    'error' => $e->getMessage(),
-                    'trace' => $e->getTraceAsString()
-                ]);
-            }
+            Log::error('ERROR GOOGLE LOGIN: ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString()
+            ]);
 
             return redirect()->route('login')->with('error', 'Login Google Gagal, silakan coba lagi.');
         }
