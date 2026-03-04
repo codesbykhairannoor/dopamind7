@@ -48,18 +48,23 @@ export function useJobs(props) {
             is_saving: false
         });
     };
-
-    // 🔥 LOGIC AUTO SAVE DENGAN SILENT INERTIA + OPTIMISTIC UI
-    const autoSaveRow = (job) => {
+const autoSaveRow = async (job) => {
         if (!job.title || !job.company) return;
+        
+        // PENCEGAHAN ERROR POSTGRESQL: Jangan kirim PATCH kalau ID belum berupa angka asli dari DB!
+        if (!job.is_new && String(job.id).startsWith('temp_')) {
+            console.log('Menunggu ID asli dari server...');
+            return; 
+        }
+
         if (job.is_saving) return; 
         
         job.is_saving = true;
 
-        // 1. OPTIMISTIC UI (Ubah Angka Langsung di Frontend 0ms)
         if (!job.is_new && job._original_status !== job.status) {
             localStats.value[job._original_status] = Math.max(0, (localStats.value[job._original_status] || 1) - 1);
             localStats.value[job.status] = (localStats.value[job.status] || 0) + 1;
+            job._original_status = job.status;
         }
 
         const payload = {
@@ -71,53 +76,40 @@ export function useJobs(props) {
             salary: job.salary || null,
         };
 
-        // 2. BACKGROUND SILENT REQUEST PAKAI INERTIA (Gak Kena 419)
-        if (job.is_new) {
-            router.post(route('jobs.store'), payload, {
-                preserveScroll: true,
-                preserveState: true,
-                replace: true, // Jangan nambah history browser
-                onSuccess: (page) => {
-                    // Update ID dengan ID asli dari server hasil kembalian Inertia
-                    // Karena lu ngembaliin page (back()->with('success')), data baru itu akan masuk lewat watch props.jobs
-                    job.is_new = false;
-                    job._original_status = job.status;
-                    
-                    // Nambah stat setelah beneran sukses
-                    localStats.value.total = (localStats.value.total || 0) + 1;
-                    localStats.value[job.status] = (localStats.value[job.status] || 0) + 1;
-                    job.is_saving = false;
-                },
-                onError: () => {
-                    fireError(t('job_error_save', 'Gagal menyimpan! Cek koneksi.'));
-                    job.is_saving = false;
-                }
-            });
-        } else {
-            router.patch(route('jobs.update', job.id), payload, {
-                preserveScroll: true,
-                preserveState: true,
-                replace: true,
-                onSuccess: () => {
-                    job._original_status = job.status;
-                    job.is_saving = false;
-                },
-                onError: () => {
-                    fireError(t('job_error_save', 'Gagal menyimpan update!'));
-                    // Rollback kalau gagal
-                    if (job._original_status !== job.status) {
-                        localStats.value[job.status] = Math.max(0, (localStats.value[job.status] || 1) - 1);
-                        job.status = job._original_status; 
-                        localStats.value[job.status] = (localStats.value[job.status] || 0) + 1;
-                    }
-                    job.is_saving = false;
-                }
-            });
+        try {
+            if (job.is_new) {
+                const response = await axios.post(route('jobs.store'), payload, {
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                job.id = response.data.data ? response.data.data.id : response.data.id;
+                job.is_new = false;
+                job._original_status = job.status;
+                
+                localStats.value.total = (localStats.value.total || 0) + 1;
+                localStats.value[job.status] = (localStats.value[job.status] || 0) + 1;
+            } else {
+                await axios.patch(route('jobs.update', job.id), payload, {
+                    headers: { 'Accept': 'application/json' }
+                });
+            }
+        } catch (error) {
+            console.error(error);
+            fireError(t('job_error_save', 'Gagal menyimpan! Cek koneksi.'));
+            
+            if (!job.is_new && job._original_status !== job.status) {
+                 localStats.value[job.status] = Math.max(0, (localStats.value[job.status] || 1) - 1);
+                 job.status = job._original_status; 
+                 localStats.value[job.status] = (localStats.value[job.status] || 0) + 1;
+            }
+        } finally {
+            job.is_saving = false;
         }
     };
 
-    const deleteJob = (id, isNew = false) => {
-        if (isNew) {
+    const deleteJob = async (id, isNew = false) => {
+        // PENCEGAHAN ERROR POSTGRESQL SAAT HAPUS BARIS
+        if (isNew || String(id).startsWith('temp_')) {
             localJobs.value = localJobs.value.filter(j => j.id !== id);
             return;
         }
@@ -125,22 +117,19 @@ export function useJobs(props) {
         if (confirm(t('job_confirm_delete_simple', 'Hapus baris ini?'))) {
             const jobToDelete = localJobs.value.find(j => j.id === id);
             
-            // Optimistic Delete UI Dulu
             if (jobToDelete) {
                 localStats.value.total = Math.max(0, (localStats.value.total || 1) - 1);
                 localStats.value[jobToDelete.status] = Math.max(0, (localStats.value[jobToDelete.status] || 1) - 1);
             }
             localJobs.value = localJobs.value.filter(j => j.id !== id);
 
-            // Silent Delete pakai Inertia
-            router.delete(route('jobs.destroy', id), {
-                preserveScroll: true,
-                preserveState: true,
-                replace: true,
-                onError: () => {
-                    fireError(t('job_error_save', 'Gagal menghapus dari server!'));
-                }
-            });
+            try {
+                await axios.delete(route('jobs.destroy', id), {
+                    headers: { 'Accept': 'application/json' }
+                });
+            } catch(e) {
+                fireError(t('job_error_save', 'Gagal menghapus dari server!'));
+            }
         }
     };
 
