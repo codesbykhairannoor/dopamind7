@@ -17,7 +17,6 @@ class CalendarService
      */
     public function getMonthlyDashboardData(int $userId, string $monthQuery, string $timezone): array
     {
-        // 1. Tentukan rentang waktu dengan aman
         try {
             $activeDate = Carbon::parse($monthQuery . '-01')->timezone($timezone);
         } catch (\Exception $e) {
@@ -27,20 +26,20 @@ class CalendarService
         $startDate = $activeDate->copy()->startOfMonth()->format('Y-m-d');
         $endDate = $activeDate->copy()->endOfMonth()->format('Y-m-d');
 
-        // 2. Ambil Events (Aman)
+        // 2. Ambil Events
         $events = CalendarEvent::ofUser($userId)
             ->overlappingMonth($startDate, $endDate)
             ->orderBy('start_date', 'asc')
             ->get();
 
-        // 3. Ambil Jurnal (Ambil kolom yang penting aja biar gak berat)
+        // 3. Ambil Jurnal
         $journals = Journal::where('user_id', $userId)
             ->whereBetween('date', [$startDate, $endDate])
-            ->select('id', 'date', 'title', 'mood') // Jangan ambil 'content' yang panjang!
+            ->select('id', 'date', 'title', 'mood')
             ->get()
             ->mapWithKeys(fn ($item) => [Carbon::parse($item->date)->format('Y-m-d') => $item]);
 
-        // 4. Ambil Keuangan (Di-grouping dari database langsung)
+        // 4. Ambil Keuangan
         $finances = FinanceTransaction::where('user_id', $userId)
             ->whereBetween('date', [$startDate, $endDate])
             ->where('type', 'expense')
@@ -48,18 +47,16 @@ class CalendarService
             ->groupBy('date')
             ->pluck('total_expense', 'date'); 
 
-        // 5. Ambil Planner (BARIS 55 ERROR ADA DI SINI) 
-        // FIX: Kita hindari penggunaan get() yang narik semua row, langsung count di database!
+        // 5. Ambil Planner (FIXED FOR POSTGRESQL)
         $planners = PlannerTask::where('user_id', $userId)
             ->whereBetween('date', [$startDate, $endDate])
             ->select(
                 'date',
                 DB::raw('COUNT(id) as total_tasks'),
-                // Kompatibilitas untuk MySQL dan PostgreSQL
-                DB::raw("SUM(CASE WHEN is_completed = 1 OR is_completed = 'true' THEN 1 ELSE 0 END) as completed_tasks")
+                DB::raw('SUM(CASE WHEN is_completed = true THEN 1 ELSE 0 END) as completed_tasks')
             )
             ->groupBy('date')
-            ->get() // Get di sini aman karena datanya udah jadi rekap (sedikit)
+            ->get()
             ->mapWithKeys(fn ($item) => [
                 Carbon::parse($item->date)->format('Y-m-d') => [
                     'total_tasks' => (int) $item->total_tasks,
@@ -67,7 +64,7 @@ class CalendarService
                 ]
             ]);
 
-        // 6. Ambil Habit (Pakai JOIN agar 10x lebih cepat daripada Closure Subquery)
+        // 6. Ambil Habit (Optimized with JOIN)
         $habits = HabitLog::join('habits', 'habit_logs.habit_id', '=', 'habits.id')
             ->where('habits.user_id', $userId)
             ->whereBetween('habit_logs.date', [$startDate, $endDate])
