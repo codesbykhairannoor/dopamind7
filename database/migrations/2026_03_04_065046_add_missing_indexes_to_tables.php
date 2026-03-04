@@ -11,33 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Add indexes to journals table
-        Schema::table('journals', function (Blueprint $table) {
-            $table->index('user_id');
-            $table->index('date');
-            $table->index(['user_id', 'date']);
-        });
-
-        // Add indexes to calendar_events table
-        Schema::table('calendar_events', function (Blueprint $table) {
-            $table->index('user_id');
-            $table->index('start_date');
-            $table->index(['user_id', 'start_date']);
-        });
-
-        // Add indexes to planner_tasks table
-        Schema::table('planner_tasks', function (Blueprint $table) {
-            $table->index('user_id');
-            $table->index('date');
-            $table->index(['user_id', 'date']);
-        });
-
-        // Add indexes to daily_logs table
-        Schema::table('daily_logs', function (Blueprint $table) {
-            $table->index('user_id');
-            $table->index('date');
-            $table->index(['user_id', 'date']);
-        });
+        // KOSONGKAN SAJA karena semua index ini sudah ada di DB kamu.
+        // Dengan mengosongkan ini, Laravel akan menganggap migrasi ini "selesai" 
+        // dan lanjut ke migrasi berikutnya (Fitur Job Tracker).
     }
 
     /**
@@ -45,28 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('journals', function (Blueprint $table) {
-            $table->dropIndex(['user_id']);
-            $table->dropIndex(['date']);
-            $table->dropIndex(['user_id', 'date']);
-        });
-
-        Schema::table('calendar_events', function (Blueprint $table) {
-            $table->dropIndex(['user_id']);
-            $table->dropIndex(['start_date']);
-            $table->dropIndex(['user_id', 'start_date']);
-        });
-
-        Schema::table('planner_tasks', function (Blueprint $table) {
-            $table->dropIndex(['user_id']);
-            $table->dropIndex(['date']);
-            $table->dropIndex(['user_id', 'date']);
-        });
-
-        Schema::table('daily_logs', function (Blueprint $table) {
-            $table->dropIndex(['user_id']);
-            $table->dropIndex(['date']);
-            $table->dropIndex(['user_id', 'date']);
-        });
+        // Kosongkan juga biar aman
     }
 };

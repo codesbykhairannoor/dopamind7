@@ -112,7 +112,7 @@ watch(() => page.url, () => {
                     :title="isSidebarCollapsed ? 'Finance' : ''"
                 >
                     <span class="text-xl shrink-0">💸</span>
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Finance</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Finance Plan</span>
                     <div v-if="route().current('finance.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
@@ -125,7 +125,7 @@ watch(() => page.url, () => {
                     :title="isSidebarCollapsed ? 'Journal' : ''"
                 >
                     <span class="text-xl shrink-0">📓</span>
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Journal</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Digital Journal</span>
                     <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
@@ -138,7 +138,7 @@ watch(() => page.url, () => {
                     :title="isSidebarCollapsed ? 'Calendar' : ''"
                 >
                     <span class="text-xl shrink-0">📅</span>
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Calendar</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Calendar View</span>
                     <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
@@ -151,7 +151,7 @@ watch(() => page.url, () => {
                     :title="isSidebarCollapsed ? $t('job_tracker') : ''"
                 >
                     <span class="text-xl shrink-0">💼</span>
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('job_tracker', 'Job Tracker') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Job Tracker</span>
                     <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
             </nav>
@@ -244,19 +244,19 @@ watch(() => page.url, () => {
                             </Link>
 
                             <Link v-if="showModule('finance')" :href="route('finance.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <span class="text-xl">💸</span> Finance
+                                <span class="text-xl">💸</span> Finance Plan
                             </Link>
 
                             <Link v-if="showModule('journal')" :href="route('journal.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <span class="text-xl">📓</span> Journal
+                                <span class="text-xl">📓</span> Digital Journal
                             </Link>
 
                             <Link v-if="showModule('calendar')" :href="route('calendar.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <span class="text-xl">📅</span> Calendar
+                                <span class="text-xl">📅</span> Calendar View
                             </Link>
 
                             <Link v-if="showModule('job')" :href="route('jobs.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-    <span class="text-xl">💼</span> {{ $t('job_tracker', 'Job Tracker') }}
+    <span class="text-xl">💼</span> Job Tracker
 </Link>
                         </div>
 
