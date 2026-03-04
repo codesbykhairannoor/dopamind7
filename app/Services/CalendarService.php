@@ -8,6 +8,7 @@ use App\Models\FinanceTransaction;
 use App\Models\PlannerTask;
 use App\Models\HabitLog;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB; // Tambahkan ini
 
 class CalendarService
 {
@@ -16,7 +17,7 @@ class CalendarService
      */
     public function getMonthlyDashboardData(int $userId, string $monthQuery, string $timezone): array
     {
-        // 1. Tentukan rentang waktu dengan aman (Try-Catch untuk perlindungan ekstra)
+        // 1. Tentukan rentang waktu dengan aman
         try {
             $activeDate = Carbon::parse($monthQuery . '-01')->timezone($timezone);
         } catch (\Exception $e) {
@@ -26,7 +27,7 @@ class CalendarService
         $startDate = $activeDate->copy()->startOfMonth()->format('Y-m-d');
         $endDate = $activeDate->copy()->endOfMonth()->format('Y-m-d');
 
-        // 2. Ambil Events (menggunakan Model Scope)
+        // 2. Ambil Events
         $events = CalendarEvent::ofUser($userId)
             ->overlappingMonth($startDate, $endDate)
             ->orderBy('start_date', 'asc')
@@ -46,10 +47,10 @@ class CalendarService
             ->groupBy('date')
             ->pluck('total_expense', 'date'); 
 
-        // 5. Ambil Planner
+        // 5. Ambil Planner (Mengamankan query boolean lintas DB)
         $planners = PlannerTask::where('user_id', $userId)
             ->whereBetween('date', [$startDate, $endDate])
-            ->selectRaw("date, COUNT(*) as total_tasks, SUM(CASE WHEN is_completed = true THEN 1 ELSE 0 END) as completed_tasks")
+            ->selectRaw("date, COUNT(*) as total_tasks, SUM(CASE WHEN is_completed = 1 OR is_completed = 'true' THEN 1 ELSE 0 END) as completed_tasks")
             ->groupBy('date')
             ->get()
             ->mapWithKeys(fn ($item) => [
@@ -58,13 +59,15 @@ class CalendarService
                     'completed_tasks' => (int) $item->completed_tasks,
                 ]
             ]);
-        // 6. Ambil Habit
-        $habits = HabitLog::selectRaw('date, COUNT(*) as completed_habits')
-            ->whereIn('habit_id', fn ($query) => $query->select('id')->from('habits')->where('user_id', $userId))
-            ->whereBetween('date', [$startDate, $endDate])
-            ->where('status', 'completed')
-            ->groupBy('date')
-            ->pluck('completed_habits', 'date')
+
+        // 6. 🔥 FIX PERFORMA: Ambil Habit menggunakan JOIN (Jauh lebih ringan & mencegah Timeout)
+        $habits = HabitLog::join('habits', 'habit_logs.habit_id', '=', 'habits.id')
+            ->where('habits.user_id', $userId)
+            ->whereBetween('habit_logs.date', [$startDate, $endDate])
+            ->where('habit_logs.status', 'completed')
+            ->selectRaw('habit_logs.date, COUNT(habit_logs.id) as completed_habits')
+            ->groupBy('habit_logs.date')
+            ->pluck('completed_habits', 'habit_logs.date')
             ->toArray();
 
         return [
