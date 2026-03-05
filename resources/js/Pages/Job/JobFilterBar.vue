@@ -5,8 +5,11 @@ import { router } from '@inertiajs/vue3';
 const props = defineProps({
     filters:      { type: Object, default: () => ({}) },
     uniqueTitles: { type: Array,  default: () => [] },
+    localJobs:    { type: Array,  default: () => [] },
     totalCount:   { type: Number, default: 0 },
 });
+
+const inputRef = ref(null);
 
 // --- Local State ---
 const search       = ref(props.filters.search || '');
@@ -14,11 +17,17 @@ const activeStatus = ref(props.filters.status || 'all');
 const activeDays   = ref(props.filters.days   || null);
 const showDropdown = ref(false);
 
-// Smart autocomplete: filter titles based on current search
+// Smart autocomplete: merge server titles + locally added job titles
+const allUniqueTitles = computed(() => {
+    const localTitles = props.localJobs.map(j => j.title).filter(Boolean);
+    return [...new Set([...props.uniqueTitles, ...localTitles])].sort();
+});
+
+// Filter suggestions based on current search query
 const suggestions = computed(() => {
     if (!search.value || search.value.length < 1) return [];
     const q = search.value.toLowerCase();
-    return props.uniqueTitles.filter(t => t.toLowerCase().includes(q)).slice(0, 8);
+    return allUniqueTitles.value.filter(t => t.toLowerCase().includes(q)).slice(0, 8);
 });
 
 // Status pills — colors match JobStatusDropdown exactly
@@ -53,6 +62,7 @@ const activeFiltersCount = computed(() => {
 // --- Actions ---
 const applyFilters = () => {
     showDropdown.value = false;
+    inputRef.value?.blur(); // prevent @focus from re-opening dropdown after navigation
     const params = {};
     if (search.value)                 params.search = search.value;
     if (activeStatus.value !== 'all') params.status = activeStatus.value;
@@ -90,9 +100,9 @@ watch(search, (val) => {
 </script>
 
 <template>
-    <div class="mb-5 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="mb-5 bg-white rounded-2xl border border-slate-200 shadow-sm">
         <!-- Top Bar: Search + Date filter -->
-        <div class="p-4 border-b border-slate-100 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+        <div class="p-4 border-b border-slate-100 flex flex-col sm:flex-row gap-3 items-start sm:items-center overflow-visible">
             
             <!-- Smart Search -->
             <div class="relative flex-1 min-w-0">
@@ -101,8 +111,9 @@ watch(search, (val) => {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                     </svg>
                     <input
+                        ref="inputRef"
                         v-model="search"
-                        @keyup.enter="applyFilters"
+                    @keyup.enter="showDropdown = false; applyFilters()"
                         @focus="showDropdown = suggestions.length > 0"
                         @blur="setTimeout(() => showDropdown = false, 200)"
                         type="text"

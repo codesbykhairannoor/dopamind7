@@ -75,6 +75,7 @@ const todayDate = computed(() => {
             <JobFilterBar
                 :filters="filters"
                 :unique-titles="uniqueTitles || []"
+                :local-jobs="localJobs"
                 :total-count="pagination?.total || localJobs.length"
             />
 
