@@ -40,7 +40,7 @@ const closeDatePicker = () => {
                             <div class="relative">
                                 <button 
                                     @click="showDatePicker = !showDatePicker" 
-                                    class="text-slate-600 hover:text-indigo-600 font-bold text-xs md:text-sm capitalize transition-colors flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-slate-50"
+                                    class="text-slate-600 hover:text-indigo-600 font-bold text-sm capitalize transition-colors flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-slate-50"
                                     :class="{'bg-indigo-50 text-indigo-700': showDatePicker}"
                                 >
                                     {{ formattedDate }} 

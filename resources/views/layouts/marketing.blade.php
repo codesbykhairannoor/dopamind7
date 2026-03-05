@@ -16,11 +16,32 @@
         ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
         : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
     }}">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="productivity app, habit tracker, finance tracker, daily planner, journal, app produktivitas, pelacak kebiasaan">
 
     <title>@yield('title') | OneForMind</title>
 
+    <meta property="og:site_name" content="OneForMind">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="OneForMind | Productivity OS">
-    <meta property="og:image" content="{{ asset('favicon.svg') }}">
+    <meta property="og:description" content="{{ app()->getLocale() === 'id' 
+        ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
+        : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
+    }}">
+    <meta property="og:image" content="{{ asset('og-image.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    {{-- Twitter / X Cards --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@OneForMind">
+    <meta name="twitter:title" content="OneForMind | Productivity OS">
+    <meta name="twitter:description" content="{{ app()->getLocale() === 'id' 
+        ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
+        : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
+    }}">
+    <meta name="twitter:image" content="{{ asset('og-image.png') }}">
     
     @yield('meta')
 

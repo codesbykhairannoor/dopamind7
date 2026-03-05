@@ -55,7 +55,7 @@ const changeYear = (offset) => {
                     </div>
                     <div>
                         <h2 class="text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('calendar_title', 'Master Calendar') }}</h2>
-                        <p class="mt-0.5 text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $t('calendar_subtitle', 'Your bird-eye view') }}</p>
+                        <p class="mt-0.5 text-sm font-medium capitalize text-slate-500">{{ displayMonth }}</p>
                     </div>
                 </div>
 

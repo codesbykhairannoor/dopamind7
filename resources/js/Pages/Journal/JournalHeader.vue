@@ -30,7 +30,7 @@ const todayDisplay = computed(() => {
                 </div>
                 <div>
                     <h2 class="text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('journal_title', 'My Journal') }}</h2>
-                    <p class="mt-0.5 text-xs font-medium capitalize text-slate-500">{{ todayDisplay }}</p>
+                    <p class="mt-0.5 text-sm font-medium capitalize text-slate-500">{{ todayDisplay }}</p>
                 </div>
             </div>
 

@@ -8,7 +8,10 @@ import localeData from 'dayjs/plugin/localeData';
 dayjs.extend(localeData);
 
 export function useHabitDates(props) {
-    const todayDate = dayjs().locale('id').format('dddd, D MMMM YYYY');
+    const todayDate = computed(() => {
+        const activeLang = usePage().props.locale || 'id';
+        return dayjs().locale(activeLang).format('dddd, D MMMM YYYY');
+    });
 
     const monthDates = computed(() => {
         const activeLang = usePage().props.locale || 'id';
@@ -37,8 +40,8 @@ export function useHabitDates(props) {
         // Cek apakah payload dari tombol manual ('next'/'prev') atau dari Input Bulan ('YYYY-MM')
         if (payload === 'next' || payload === 'prev') {
             const current = props.monthQuery ? dayjs(props.monthQuery) : dayjs();
-            newMonth = payload === 'next' 
-                ? current.add(1, 'month').format('YYYY-MM') 
+            newMonth = payload === 'next'
+                ? current.add(1, 'month').format('YYYY-MM')
                 : current.subtract(1, 'month').format('YYYY-MM');
         } else {
             // Ini yang ditrigger oleh input type="month"

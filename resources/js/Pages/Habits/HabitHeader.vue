@@ -52,22 +52,14 @@ const changeYear = (offset) => {
         
         <div class="flex items-center w-full gap-4 md:w-auto">
           <div class="flex items-center justify-center text-2xl text-white shadow-lg w-12 h-12 bg-indigo-600 rounded-xl shadow-indigo-200 shrink-0">
-            ✨
+            🌱
           </div>
 
           <div>
-            <div class="flex items-center gap-2 mb-0.5">
-              <span class="relative flex w-2 h-2">
-                <span class="absolute inline-flex w-full h-full opacity-75 animate-ping rounded-full bg-indigo-400"></span>
-                <span class="relative inline-flex w-2 h-2 rounded-full bg-indigo-500"></span>
-              </span>
-              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                {{ todayDate }}
-              </span>
-            </div>
-            <h1 class="text-xl font-black leading-none tracking-tight md:text-2xl text-slate-800">
-              Habit Tracker
+            <h1 class="text-xl font-black leading-tight tracking-tight md:text-2xl text-slate-800">
+              {{ $t('habit_page_title', 'Habit Tracker') }}
             </h1>
+            <p class="mt-0.5 text-sm font-medium capitalize text-slate-500">{{ todayDate }}</p>
           </div>
         </div>
 

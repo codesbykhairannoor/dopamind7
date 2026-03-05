@@ -21,23 +21,28 @@ class JobController extends Controller
     {
         $search = $request->input('search');
         $status = $request->input('status', 'all');
-        $perPage = $request->input('per_page', 15);
+        $days = $request->input('days') ? (int)$request->input('days') : null;
+        $perPage = $request->input('per_page', 50);
 
         $jobs = $this->jobService->getJobsWithFilters(
             Auth::id(),
             $search,
             $status,
+            $days,
             $perPage
         );
 
         $stats = $this->jobService->getJobStats(Auth::id());
+        $uniqueTitles = $this->jobService->getUniqueTitles(Auth::id());
 
         return Inertia::render('Job/Index', [
             'jobs' => JobResource::collection($jobs)->resolve(),
             'stats' => $stats,
+            'uniqueTitles' => $uniqueTitles,
             'filters' => [
                 'search' => $search,
                 'status' => $status,
+                'days' => $days,
             ],
             'pagination' => [
                 'current_page' => $jobs->currentPage(),

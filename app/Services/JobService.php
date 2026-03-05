@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class JobService
 {
-    public function getJobsWithFilters(int $userId, ?string $search = null, ?string $status = null, int $perPage = 15)
+    public function getJobsWithFilters(int $userId, ?string $search = null, ?string $status = null, ?int $days = null, int $perPage = 15)
     {
         $query = Job::ofUser($userId)
             ->orderBy('created_at', 'desc');
@@ -20,7 +20,22 @@ class JobService
             $query->byStatus($status);
         }
 
+        if ($days && $days > 0) {
+            $query->where('applied_date', '>=', now()->subDays($days)->toDateString());
+        }
+
         return $query->paginate($perPage);
+    }
+
+    public function getUniqueTitles(int $userId): array
+    {
+        return Job::ofUser($userId)
+            ->whereNotNull('title')
+            ->where('title', '!=', '')
+            ->distinct()
+            ->orderBy('title')
+            ->pluck('title')
+            ->toArray();
     }
 
     public function getJobStats(int $userId): array

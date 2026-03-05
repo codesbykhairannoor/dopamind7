@@ -10,7 +10,7 @@
     <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:image" content="{{ asset('favicon.svg') }}">
+    <meta property="og:image" content="{{ asset('og-image.png') }}">
 
     <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
     <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
