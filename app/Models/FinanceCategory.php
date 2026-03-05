@@ -12,13 +12,14 @@ class FinanceCategory extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'slug',
         'type',
         'icon',
         'color',
     ];
 
-    public function scopeOfUser($query, $userId) {
+    public function scopeOfUser($query, $userId)
+    {
         return $query->where('user_id', $userId);
     }
 }
-
