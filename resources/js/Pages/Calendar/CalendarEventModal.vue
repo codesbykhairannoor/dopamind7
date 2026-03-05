@@ -1,5 +1,8 @@
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
+import FinanceDatePicker from '../Finance/FinanceDatePicker.vue';
+import dayjs from 'dayjs';
+import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 
 const props = defineProps({
     show: Boolean,
@@ -7,6 +10,17 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['close', 'submit']);
+
+const { appLocale } = useFinanceFormat();
+
+const showStartDatePicker = ref(false);
+const showEndDatePicker = ref(false);
+
+const dateDisplay = (dateString, fallback = 'Pilih Tanggal') => {
+    if (!dateString) return fallback;
+    const loc = appLocale.value ? appLocale.value.split('-')[0] : 'id';
+    return dayjs(dateString).locale(loc).format('DD MMM YYYY');
+};
 
 const colorOptions = [
     { value: '#4f46e5', label: 'color_indigo' }, 
@@ -50,14 +64,45 @@ const colorOptions = [
                             <input v-model="form.title" type="text" class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-800 font-bold focus:ring-2 focus:ring-indigo-500 transition-all placeholder:text-slate-300" :placeholder="$t('ph_event_title', 'Cth: Rapat BEM')" required autofocus>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="relative">
                                 <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('label_start_date', 'Mulai') }}</label>
-                                <input v-model="form.start_date" type="date" class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-700 font-bold focus:ring-2 focus:ring-indigo-500 transition-all cursor-pointer">
+                                <button type="button" @click="showStartDatePicker = !showStartDatePicker" class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-700 font-bold hover:border-indigo-300 transition-all flex items-center justify-between">
+                                    <span class="truncate">{{ dateDisplay(form.start_date, $t('select_date', 'Pilih Tanggal')) }}</span>
+                                    <span class="text-slate-400">📅</span>
+                                </button>
+                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
+                                    <div v-if="showStartDatePicker" class="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:top-full sm:left-0 sm:mt-2 sm:origin-top-left sm:block sm:inset-auto">
+                                        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm sm:hidden" @click="showStartDatePicker = false"></div>
+                                        <FinanceDatePicker 
+                                            :show="true" 
+                                            :modelValue="form.start_date"
+                                            @update:modelValue="(val) => form.start_date = val"
+                                            @close="showStartDatePicker = false"
+                                            class="relative z-10"
+                                        />
+                                    </div>
+                                </transition>
                             </div>
-                            <div>
+                            <div class="relative">
                                 <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('label_end_date', 'Selesai (Opsional)') }}</label>
-                                <input v-model="form.end_date" type="date" class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-700 font-bold focus:ring-2 focus:ring-indigo-500 transition-all cursor-pointer">
+                                <button type="button" @click="showEndDatePicker = !showEndDatePicker" class="w-full bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 text-slate-700 font-bold hover:border-indigo-300 transition-all flex items-center justify-between">
+                                    <span class="truncate">{{ form.end_date ? dateDisplay(form.end_date) : $t('optional', 'Opsional') }}</span>
+                                    <span v-if="form.end_date" @click.stop="form.end_date = ''" class="text-rose-400 hover:text-rose-600 transition-colors z-10 p-1">✕</span>
+                                    <span v-else class="text-slate-400">📅</span>
+                                </button>
+                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
+                                    <div v-if="showEndDatePicker" class="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:top-full sm:right-0 sm:mt-2 sm:origin-top-right sm:block sm:inset-auto">
+                                        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm sm:hidden" @click="showEndDatePicker = false"></div>
+                                        <FinanceDatePicker 
+                                            :show="true" 
+                                            :modelValue="form.end_date"
+                                            @update:modelValue="(val) => form.end_date = val"
+                                            @close="showEndDatePicker = false"
+                                            class="relative z-10"
+                                        />
+                                    </div>
+                                </transition>
                             </div>
                         </div>
 
