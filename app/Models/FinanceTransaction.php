@@ -13,10 +13,11 @@ class FinanceTransaction extends Model
     protected $fillable = [
         'user_id',
         'date',
+        'title',
         'type',
         'category',
         'amount',
-        'description',
+        'notes',
     ];
 
     /**
@@ -32,13 +33,12 @@ class FinanceTransaction extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function scopeOfUser($query, $userId) {
-    return $query->where('user_id', $userId);
-}
-
-public function scopeInMonth($query, $start, $end) {
-    return $query->whereBetween('date', [$start, $end])
-                 ->orderBy('date', 'desc')
-                 ->orderBy('created_at', 'desc');
-}
+    public function scopeOfUser($query, $userId)
+    {
+        return $query->where('user_id', $userId);    }
+    public function scopeInMonth($query, $start, $end)
+    {
+        return $query->whereBetween('date', [$start, $end])
+            ->orderBy('date', 'desc')
+            ->orderBy('created_at', 'desc');    }
 }
