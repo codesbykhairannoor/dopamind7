@@ -90,7 +90,7 @@ const overallScore = computed(() => {
                 </div>
             </Link>
 
-            <Link :href="route('planner.index')" class="col-span-1 md:col-span-6 lg:col-span-5 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between">
+            <Link :href="route('planner.index')" prefetch class="col-span-1 md:col-span-6 lg:col-span-5 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between">
                 <div>
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex items-center gap-4">
@@ -121,7 +121,7 @@ const overallScore = computed(() => {
                 </div>
             </Link>
 
-            <Link :href="route('finance.index')" class="col-span-1 md:col-span-12 lg:col-span-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-[2rem] p-8 text-white shadow-lg shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between">
+            <Link :href="route('finance.index')" prefetch class="col-span-1 md:col-span-12 lg:col-span-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-[2rem] p-8 text-white shadow-lg shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between">
                 <div class="absolute -right-6 -bottom-6 opacity-10 text-9xl group-hover:scale-110 transition-transform duration-700">💸</div>
                 <div class="relative z-10">
                     <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl mb-6 border border-white/20 group-hover:scale-110 transition-transform">💳</div>
@@ -140,7 +140,7 @@ const overallScore = computed(() => {
                 </div>
             </Link>
 
-            <Link :href="synergy.journal.is_written ? route('journal.write', synergy.journal.id) : route('journal.index')" class="col-span-1 md:col-span-7 lg:col-span-7 bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group overflow-hidden relative">
+            <Link :href="synergy.journal.is_written ? route('journal.write', synergy.journal.id) : route('journal.index')" prefetch class="col-span-1 md:col-span-7 lg:col-span-7 bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group overflow-hidden relative">
                 <div class="absolute inset-y-0 right-0 w-2/3 bg-gradient-to-l from-indigo-50/80 to-white/0 pointer-events-none"></div>
                 <div class="absolute right-0 bottom-0 p-8 opacity-20 text-8xl translate-x-4 translate-y-4 group-hover:rotate-12 transition-transform duration-700">📖</div>
 
@@ -171,7 +171,7 @@ const overallScore = computed(() => {
                 </div>
             </Link>
 
-            <Link :href="route('calendar.index')" class="col-span-1 md:col-span-5 lg:col-span-5 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between">
+            <Link :href="route('calendar.index')" prefetch class="col-span-1 md:col-span-5 lg:col-span-5 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between">
                 <div>
                     <div class="flex justify-between items-center mb-8">
                         <div class="flex items-center gap-4">

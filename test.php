@@ -1,0 +1,1 @@
+﻿try { require 'vendor/autoload.php'; \ = require_once 'bootstrap/app.php'; \ = \->make(Illuminate\Contracts\Console\Kernel::class); \->bootstrap(); Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]); } catch (\Exception \) { echo \->getMessage(); }

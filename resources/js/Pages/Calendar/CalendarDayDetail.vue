@@ -24,9 +24,7 @@ const dailyFinance = computed(() => rawData.value.finances?.[props.date] || 0);
 const dailyHabitCount = computed(() => rawData.value.habits?.[props.date] || 0);
 const dailyPlanner = computed(() => {
     if (!rawData.value.planners) return null;
-    if (rawData.value.planners[props.date]) return rawData.value.planners[props.date];
-    const fuzzyKey = Object.keys(rawData.value.planners).find(key => String(key).startsWith(props.date));
-    return fuzzyKey ? rawData.value.planners[fuzzyKey] : null;
+    return rawData.value.planners[props.date] || null;
 });
 
 const displayDate = computed(() => {

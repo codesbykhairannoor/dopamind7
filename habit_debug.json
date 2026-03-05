@@ -1,0 +1,470 @@
+{
+    "habits": [
+        {
+            "id": 1,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Bikin Threads",
+            "icon": "\ud83d\udd25",
+            "color": "#64748b",
+            "monthly_target": 31,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:47.000000Z",
+            "status": "active",
+            "position": 0
+        },
+        {
+            "id": 2,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Upload Konten Tiktok Slide",
+            "icon": "\ud83c\udfb5",
+            "color": "#8b5cf6",
+            "monthly_target": 15,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:51.000000Z",
+            "status": "active",
+            "position": 9
+        },
+        {
+            "id": 3,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Baca Qur'an, Dzikir, Bersukur, Sedekah",
+            "icon": "\ud83e\udd32",
+            "color": "#d946ef",
+            "monthly_target": 31,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:48.000000Z",
+            "status": "active",
+            "position": 1
+        },
+        {
+            "id": 4,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Belajar Bahasa Inggris",
+            "icon": "\ud83d\udcda",
+            "color": "#6366f1",
+            "monthly_target": 31,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:48.000000Z",
+            "status": "active",
+            "position": 2
+        },
+        {
+            "id": 5,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Website",
+            "icon": "\ud83d\udcbb",
+            "color": "#3b82f6",
+            "monthly_target": 20,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:50.000000Z",
+            "status": "active",
+            "position": 7
+        },
+        {
+            "id": 6,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Desain",
+            "icon": "\ud83c\udfa8",
+            "color": "#06b6d4",
+            "monthly_target": 20,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:51.000000Z",
+            "status": "active",
+            "position": 8
+        },
+        {
+            "id": 7,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Connect Linkedin",
+            "icon": "\ud83e\uddd8\u200d\u2642\ufe0f",
+            "color": "#10b981",
+            "monthly_target": 31,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:49.000000Z",
+            "status": "active",
+            "position": 3
+        },
+        {
+            "id": 8,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Update Finance",
+            "icon": "\ud83d\udcb0",
+            "color": "#f59e0b",
+            "monthly_target": 31,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:49.000000Z",
+            "status": "active",
+            "position": 4
+        },
+        {
+            "id": 9,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Selesaikan Puzzle \/ Sudoku",
+            "icon": "\u26a1",
+            "color": "#f97316",
+            "monthly_target": 31,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:49.000000Z",
+            "status": "active",
+            "position": 5
+        },
+        {
+            "id": 10,
+            "user_id": 1,
+            "period": "2026-03",
+            "name": "Screening Saham\/Crypto",
+            "icon": "\ud83e\udd66",
+            "color": "#ef4444",
+            "monthly_target": 31,
+            "is_archived": false,
+            "created_at": "2026-03-01T14:11:48.000000Z",
+            "updated_at": "2026-03-03T08:52:50.000000Z",
+            "status": "active",
+            "position": 6
+        }
+    ],
+    "logs": [
+        {
+            "id": 1,
+            "habit_id": 8,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:12:07.000000Z",
+            "updated_at": "2026-03-01T14:12:07.000000Z"
+        },
+        {
+            "id": 2,
+            "habit_id": 1,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:12:10.000000Z",
+            "updated_at": "2026-03-01T14:12:10.000000Z"
+        },
+        {
+            "id": 3,
+            "habit_id": 4,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:12:13.000000Z",
+            "updated_at": "2026-03-01T14:12:13.000000Z"
+        },
+        {
+            "id": 4,
+            "habit_id": 5,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:12:20.000000Z",
+            "updated_at": "2026-03-01T14:12:20.000000Z"
+        },
+        {
+            "id": 5,
+            "habit_id": 7,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:12:23.000000Z",
+            "updated_at": "2026-03-01T14:12:23.000000Z"
+        },
+        {
+            "id": 6,
+            "habit_id": 9,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:12:26.000000Z",
+            "updated_at": "2026-03-01T14:12:26.000000Z"
+        },
+        {
+            "id": 8,
+            "habit_id": 6,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:12:32.000000Z",
+            "updated_at": "2026-03-01T14:12:32.000000Z"
+        },
+        {
+            "id": 9,
+            "habit_id": 3,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:12:36.000000Z",
+            "updated_at": "2026-03-01T14:12:36.000000Z"
+        },
+        {
+            "id": 10,
+            "habit_id": 2,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:12:39.000000Z",
+            "updated_at": "2026-03-01T14:12:39.000000Z"
+        },
+        {
+            "id": 11,
+            "habit_id": 10,
+            "date": "2026-03-01",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-01T14:13:22.000000Z",
+            "updated_at": "2026-03-01T14:13:22.000000Z"
+        },
+        {
+            "id": 12,
+            "habit_id": 10,
+            "date": "2026-03-02",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-02T12:10:22.000000Z",
+            "updated_at": "2026-03-02T12:10:22.000000Z"
+        },
+        {
+            "id": 13,
+            "habit_id": 9,
+            "date": "2026-03-02",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-02T12:10:25.000000Z",
+            "updated_at": "2026-03-02T12:10:25.000000Z"
+        },
+        {
+            "id": 16,
+            "habit_id": 8,
+            "date": "2026-03-02",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-02T12:10:37.000000Z",
+            "updated_at": "2026-03-02T12:10:37.000000Z"
+        },
+        {
+            "id": 17,
+            "habit_id": 1,
+            "date": "2026-03-02",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-02T13:52:53.000000Z",
+            "updated_at": "2026-03-02T13:52:53.000000Z"
+        },
+        {
+            "id": 20,
+            "habit_id": 7,
+            "date": "2026-03-02",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-02T13:53:08.000000Z",
+            "updated_at": "2026-03-02T13:53:08.000000Z"
+        },
+        {
+            "id": 22,
+            "habit_id": 5,
+            "date": "2026-03-02",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-02T13:53:13.000000Z",
+            "updated_at": "2026-03-02T13:53:13.000000Z"
+        },
+        {
+            "id": 18,
+            "habit_id": 2,
+            "date": "2026-03-02",
+            "status": "skipped",
+            "notes": null,
+            "created_at": "2026-03-02T13:52:55.000000Z",
+            "updated_at": "2026-03-02T13:53:16.000000Z"
+        },
+        {
+            "id": 24,
+            "habit_id": 3,
+            "date": "2026-03-02",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-02T13:54:43.000000Z",
+            "updated_at": "2026-03-02T13:54:43.000000Z"
+        },
+        {
+            "id": 25,
+            "habit_id": 4,
+            "date": "2026-03-02",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-02T13:54:48.000000Z",
+            "updated_at": "2026-03-02T13:54:48.000000Z"
+        },
+        {
+            "id": 28,
+            "habit_id": 6,
+            "date": "2026-03-02",
+            "status": "skipped",
+            "notes": null,
+            "created_at": "2026-03-02T13:55:05.000000Z",
+            "updated_at": "2026-03-02T13:55:08.000000Z"
+        },
+        {
+            "id": 29,
+            "habit_id": 1,
+            "date": "2026-03-03",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-03T13:17:37.000000Z",
+            "updated_at": "2026-03-03T13:17:37.000000Z"
+        },
+        {
+            "id": 30,
+            "habit_id": 3,
+            "date": "2026-03-03",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-03T13:17:43.000000Z",
+            "updated_at": "2026-03-03T13:17:43.000000Z"
+        },
+        {
+            "id": 32,
+            "habit_id": 7,
+            "date": "2026-03-03",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-03T13:17:51.000000Z",
+            "updated_at": "2026-03-03T13:17:51.000000Z"
+        },
+        {
+            "id": 33,
+            "habit_id": 8,
+            "date": "2026-03-03",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-03T13:17:55.000000Z",
+            "updated_at": "2026-03-03T13:17:55.000000Z"
+        },
+        {
+            "id": 34,
+            "habit_id": 10,
+            "date": "2026-03-03",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-03T13:18:00.000000Z",
+            "updated_at": "2026-03-03T13:18:00.000000Z"
+        },
+        {
+            "id": 35,
+            "habit_id": 9,
+            "date": "2026-03-03",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-03T13:18:05.000000Z",
+            "updated_at": "2026-03-03T13:18:05.000000Z"
+        },
+        {
+            "id": 36,
+            "habit_id": 5,
+            "date": "2026-03-03",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-03T13:18:10.000000Z",
+            "updated_at": "2026-03-03T13:18:10.000000Z"
+        },
+        {
+            "id": 38,
+            "habit_id": 2,
+            "date": "2026-03-03",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-03T13:18:23.000000Z",
+            "updated_at": "2026-03-03T13:18:23.000000Z"
+        },
+        {
+            "id": 39,
+            "habit_id": 1,
+            "date": "2026-03-04",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-04T14:05:57.000000Z",
+            "updated_at": "2026-03-04T14:05:57.000000Z"
+        },
+        {
+            "id": 40,
+            "habit_id": 3,
+            "date": "2026-03-04",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-04T14:05:58.000000Z",
+            "updated_at": "2026-03-04T14:05:58.000000Z"
+        },
+        {
+            "id": 42,
+            "habit_id": 7,
+            "date": "2026-03-04",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-04T14:05:59.000000Z",
+            "updated_at": "2026-03-04T14:05:59.000000Z"
+        },
+        {
+            "id": 43,
+            "habit_id": 8,
+            "date": "2026-03-04",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-04T14:05:59.000000Z",
+            "updated_at": "2026-03-04T14:05:59.000000Z"
+        },
+        {
+            "id": 44,
+            "habit_id": 5,
+            "date": "2026-03-04",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-04T14:05:59.000000Z",
+            "updated_at": "2026-03-04T14:05:59.000000Z"
+        },
+        {
+            "id": 46,
+            "habit_id": 2,
+            "date": "2026-03-04",
+            "status": "skipped",
+            "notes": null,
+            "created_at": "2026-03-04T14:06:00.000000Z",
+            "updated_at": "2026-03-04T14:06:03.000000Z"
+        },
+        {
+            "id": 47,
+            "habit_id": 10,
+            "date": "2026-03-04",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-04T14:06:08.000000Z",
+            "updated_at": "2026-03-04T14:06:08.000000Z"
+        },
+        {
+            "id": 48,
+            "habit_id": 9,
+            "date": "2026-03-04",
+            "status": "completed",
+            "notes": null,
+            "created_at": "2026-03-04T14:06:12.000000Z",
+            "updated_at": "2026-03-04T14:06:12.000000Z"
+        }
+    ]
+}

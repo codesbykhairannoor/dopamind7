@@ -64,7 +64,7 @@ watch(() => page.url, () => {
             </div>
 
             <nav class="flex-1 px-4 space-y-2 overflow-y-auto py-6 custom-scrollbar" :class="isSidebarCollapsed ? 'px-4' : 'px-6'">
-                <Link :href="route('dashboard')"
+                <Link :href="route('dashboard')" prefetch
                     class="flex items-center rounded-2xl transition-all duration-300 group relative"
                     :class="[
                         route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -77,7 +77,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('dashboard') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('habit')" :href="route('habits.index')"
+                <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch
                     class="flex items-center rounded-2xl transition-all duration-300 group relative"
                     :class="[
                         route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -90,7 +90,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('habits.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('planner')" :href="route('planner.index')"
+                <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch
                     class="flex items-center rounded-2xl transition-all duration-300 group relative"
                     :class="[
                         route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -103,7 +103,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('planner.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('finance')" :href="route('finance.index')"
+                <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch
                     class="flex items-center rounded-2xl transition-all duration-300 group relative"
                     :class="[
                         route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -116,7 +116,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('finance.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('journal')" :href="route('journal.index')"
+                <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch
                     class="flex items-center rounded-2xl transition-all duration-300 group relative"
                     :class="[
                         route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -129,7 +129,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                 <Link v-if="showModule('calendar')" :href="route('calendar.index')"
+                 <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch
                     class="flex items-center rounded-2xl transition-all duration-300 group relative"
                     :class="[
                         route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -142,7 +142,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('job')" :href="route('jobs.index')"
+                <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch
                     class="flex items-center rounded-2xl transition-all duration-300 group relative"
                     :class="[
                         route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -231,37 +231,37 @@ watch(() => page.url, () => {
                         </Link>
 
                         <div class="bg-white rounded-[2rem] p-3 shadow-sm border border-slate-100 flex flex-col gap-1">
-                            <Link :href="route('dashboard')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                            <Link :href="route('dashboard')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
                                 <span class="text-xl">🏠</span> {{ $t('nav_dashboard', 'Dashboard') }}
                             </Link>
 
-                            <Link v-if="showModule('habit')" :href="route('habits.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                            <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
                                 <span class="text-xl">🌱</span> {{ $t('habit_page_title', 'Habit Tracker') }}
                             </Link>
 
-                            <Link v-if="showModule('planner')" :href="route('planner.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                            <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
                                 <span class="text-xl">📋</span> Daily Planner
                             </Link>
 
-                            <Link v-if="showModule('finance')" :href="route('finance.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                            <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
                                 <span class="text-xl">💸</span> Finance Plan
                             </Link>
 
-                            <Link v-if="showModule('journal')" :href="route('journal.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                            <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
                                 <span class="text-xl">📓</span> Digital Journal
                             </Link>
 
-                            <Link v-if="showModule('calendar')" :href="route('calendar.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                            <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
                                 <span class="text-xl">📅</span> Calendar View
                             </Link>
 
-                            <Link v-if="showModule('job')" :href="route('jobs.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-    <span class="text-xl">💼</span> Job Tracker
-</Link>
+                            <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                                <span class="text-xl">💼</span> Job Tracker
+                            </Link>
                         </div>
 
                         <div class="bg-white rounded-[2rem] p-3 shadow-sm border border-slate-100 flex flex-col gap-1">
-                            <Link :href="route('settings.index')" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('settings.*') ? 'bg-slate-100 text-slate-800' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                            <Link :href="route('settings.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('settings.*') ? 'bg-slate-100 text-slate-800' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
                                 <span class="text-xl">⚙️</span> {{ $t('nav_settings', 'Pengaturan') }}
                             </Link>
                             

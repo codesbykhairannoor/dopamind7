@@ -1,0 +1,14 @@
+{
+    "dashboard_todayStr": "2026-03-05",
+    "dashboard_habits": {
+        "total": 10,
+        "completed": 0,
+        "percent": 0
+    },
+    "calendar_habits_array": {
+        "2026-03-01": 10,
+        "2026-03-02": 8,
+        "2026-03-03": 8,
+        "2026-03-04": 7
+    }
+}

@@ -25,16 +25,22 @@ class JobService
 
     public function getJobStats(int $userId): array
     {
-        $jobs = Job::ofUser($userId)->get();
+        $statsRaw = Job::ofUser($userId)
+            ->select('status', DB::raw('count(*) as count'))
+            ->groupBy('status')
+            ->pluck('count', 'status')
+            ->toArray();
+
+        $total = array_sum($statsRaw);
 
         return [
-            'total' => $jobs->count(),
-            'wishlist' => $jobs->where('status', 'wishlist')->count(),
-            'applied' => $jobs->where('status', 'applied')->count(),
-            'interview' => $jobs->where('status', 'interview')->count(),
-            'offer' => $jobs->where('status', 'offer')->count(),
-            'rejected' => $jobs->where('status', 'rejected')->count(),
-            'accepted' => $jobs->where('status', 'accepted')->count(),
+            'total' => $total,
+            'wishlist' => $statsRaw['wishlist'] ?? 0,
+            'applied' => $statsRaw['applied'] ?? 0,
+            'interview' => $statsRaw['interview'] ?? 0,
+            'offer' => $statsRaw['offer'] ?? 0,
+            'rejected' => $statsRaw['rejected'] ?? 0,
+            'accepted' => $statsRaw['accepted'] ?? 0,
         ];
     }
 

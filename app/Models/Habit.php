@@ -11,12 +11,13 @@ class Habit extends Model
 
     protected $fillable = [
         'user_id',
-        'title',
-        'description',
+        'name',
         'period',
+        'monthly_target',
         'position',
         'color',
         'icon',
+        'is_archived',
     ];
 
     public function logs()
@@ -44,7 +45,7 @@ class Habit extends Model
     public function scopeWithLogStats($query, $startOfMonth, $endOfMonth)
     {
         return $query
-            ->with(['logs' => fn ($q) => $q->whereBetween('date', [$startOfMonth, $endOfMonth])])
-            ->withCount(['logs as completed_count' => fn ($q) => $q->where('status', 'completed')]);
+            ->with(['logs' => fn($q) => $q->whereBetween('date', [$startOfMonth, $endOfMonth])])
+            ->withCount(['logs as completed_count' => fn($q) => $q->where('status', 'completed')]);
     }
 }

@@ -66,10 +66,7 @@ const changeYear = (offset) => {
               </span>
             </div>
             <h1 class="text-xl font-black leading-none tracking-tight md:text-2xl text-slate-800">
-              {{ $t(greetingKey) }}, 
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-                {{ user.name.split(' ')[0] }}
-              </span>!
+              Habit Tracker
             </h1>
           </div>
         </div>
