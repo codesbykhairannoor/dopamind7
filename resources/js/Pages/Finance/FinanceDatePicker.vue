@@ -111,8 +111,9 @@ const isToday = (day) => {
 </script>
 
 <template>
-    <div v-if="show" class="w-full sm:w-[320px]">
-        <div class="fixed inset-0 z-40" @click="emit('close')"></div>
+    <div v-if="show" class="w-[300px] sm:w-[320px] max-w-[95vw]">
+        <!-- Hanya untuk desktop agar popup bisa ditutup saat klik di luar -->
+        <div class="fixed inset-0 z-40 hidden sm:block" @click="emit('close')"></div>
 
         <div class="relative z-50 bg-white rounded-3xl shadow-xl border border-slate-100 p-5 animate-in fade-in zoom-in-95 duration-200">
             
