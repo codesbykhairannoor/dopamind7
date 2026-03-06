@@ -53,5 +53,11 @@
     "goal_duration": "Duration",
     "goal_time_progress": "Time Elapsed",
     "goal_start_date": "Start Date",
-    "goal_end_date": "End Date"
+    "goal_end_date": "End Date",
+    "goal_stats_urgent": "Most Urgent",
+    "goal_no_deadlines": "No upcoming deadlines",
+    "goal_stats_upcoming": "This Week",
+    "goal_deadlines_label": "Deadlines",
+    "goal_target_label": "Target",
+    "goal_id_label": "Goal ID"
 }

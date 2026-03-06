@@ -22,19 +22,18 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-   public function boot(): void
+    public function boot(): void
     {
         /**
          * Mencegah lazy loading, silent assignment, dan akses atribut yang tidak ada.
          */
-        Model::shouldBeStrict(! $this->app->environment('production'));
+        Model::shouldBeStrict(!$this->app->environment('production'));
 
         /**
-         * Paksa HTTPS HANYA jika bukan di lokal.
-         * Jadi di production (OneForMind.com) tetap dipaksa HTTPS,
-         * tapi di komputermu (127.0.0.1) tetap bisa pakai HTTP biasa.
+         * Paksa HTTPS HANYA jika bukan di lokal dan bukan di localhost.
          */
-        if (! $this->app->environment('local')) {
+        $isLocalHost = in_array(request()->getHost(), ['127.0.0.1', 'localhost']);
+        if (!$this->app->environment('local') && !$isLocalHost) {
             URL::forceScheme('https');
         }
     }

@@ -48,10 +48,16 @@
     "goal_stats_pulse": "Project Pulse",
     "goal_stats_overall": "Rata-rata Kemajuan",
     "goal_days_left": "Sisa {days} hari",
-    "goal_overdue": "Terlamat",
+    "goal_overdue": "Terlambat",
     "goal_ending_today": "Berakhir Hari Ini",
     "goal_duration": "Durasi",
     "goal_time_progress": "Waktu Berjalan",
     "goal_start_date": "Tanggal Mulai",
-    "goal_end_date": "Tanggal Selesai"
+    "goal_end_date": "Tanggal Selesai",
+    "goal_stats_urgent": "Paling Mendesak",
+    "goal_no_deadlines": "Tidak ada deadline terdekat",
+    "goal_stats_upcoming": "Minggu Ini",
+    "goal_deadlines_label": "Tenggat Waktu",
+    "goal_target_label": "Sasaran",
+    "goal_id_label": "ID Target"
 }

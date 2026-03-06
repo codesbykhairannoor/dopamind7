@@ -21,15 +21,21 @@ class SecurityHeaders
         $viteUrl = "http://127.0.0.1:5173 http://localhost:5173 ws://127.0.0.1:5173 ws://localhost:5173";
 
         // 2. CSP (Content Security Policy)
-        if (app()->environment('local', 'development', 'testing')) {
+        $isLocal = app()->environment('local', 'development', 'testing') ||
+            config('app.debug') ||
+            in_array($request->getHost(), ['127.0.0.1', 'localhost', '127.0.0.1:8000', 'localhost:8000']);
+
+        if ($isLocal) {
             // LOKAL: Sangat longgar agar Vite, Hot Reload (HMR), dan Debugbar lancar
+            // Mengizinkan 'unsafe-eval' dan 'unsafe-inline' untuk development tools
             $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $viteUrl; " .
-                   "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: data: blob: $viteUrl; " .
-                   "style-src 'self' 'unsafe-inline' https: http: $viteUrl; " .
-                   "img-src 'self' data: https: http: blob:; " .
-                   "font-src 'self' data: https: http:; " .
-                   "connect-src 'self' https: http: ws: wss: $viteUrl;";
-        } else {
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: data: blob: $viteUrl; " .
+                "style-src 'self' 'unsafe-inline' https: http: $viteUrl; " .
+                "img-src 'self' data: https: http: blob:; " .
+                "font-src 'self' data: https: http:; " .
+                "connect-src 'self' https: http: ws: wss: $viteUrl;";
+        }
+        else {
             // KETAT DI PRODUCTION (Tapi mengizinkan GTM & Analytics)
             $csp = "default-src 'self'; ";
             $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com; ";

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import MilestoneItem from './MilestoneItem.vue';
+import GoalDatePicker from './GoalDatePicker.vue';
 
 const props = defineProps({
     goal: Object,
@@ -19,6 +20,9 @@ const editTitle = ref(props.goal.title);
 const editCategory = ref(props.goal.category);
 const editStartDate = ref(props.goal.start_date);
 const editEndDate = ref(props.goal.end_date);
+
+const showStartDatePicker = ref(false);
+const showEndDatePicker = ref(false);
 
 const frequencyTypes = [
     { value: 'daily', label: 'goal_type_daily', icon: '📅' },
@@ -84,10 +88,23 @@ const saveHeader = () => {
         ]"
     >
         <!-- Deadline Overlays -->
-        <div v-if="deadlineBadge" class="absolute top-6 right-6 z-10">
+        <div v-if="deadlineBadge" class="absolute top-6 right-16 z-10 transition-all duration-500 group-hover/card:translate-x--4">
             <div :class="['px-4 py-1.5 rounded-full text-[0.65rem] font-black uppercase tracking-widest shadow-lg transition-all duration-500', deadlineBadge.class]">
                 {{ $t(deadlineBadge.text, deadlineBadge.params) }}
             </div>
+        </div>
+
+        <!-- Quick Delete Button (Top Right) -->
+        <div class="absolute top-6 right-6 z-20 transition-all duration-300 sm:opacity-0 sm:scale-90 group-hover/card:opacity-100 group-hover/card:scale-100">
+            <button 
+                @click.stop="onDelete(goal.id, goal.is_new)"
+                class="w-10 h-10 flex items-center justify-center bg-white/90 backdrop-blur-md text-slate-400 hover:text-rose-500 rounded-2xl shadow-xl border border-slate-100 hover:border-rose-100 transition-all active:scale-90"
+                :title="$t('btn_delete')"
+            >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+            </button>
         </div>
 
         <!-- Card Header & Progress -->
@@ -134,13 +151,33 @@ const saveHeader = () => {
                         :placeholder="$t('goal_ph_category', 'Kategori...')"
                     />
                     <div class="grid grid-cols-2 gap-4 pt-2 border-t border-slate-200">
-                        <div class="space-y-1">
+                        <div class="space-y-1 relative">
                             <label class="text-[0.6rem] font-black text-slate-400 uppercase tracking-widest">{{ $t('goal_start_date') }}</label>
-                            <input type="date" v-model="editStartDate" class="w-full bg-white border-2 border-slate-100 rounded-xl px-3 py-2 text-xs font-bold text-slate-600 focus:border-indigo-400 focus:ring-0 transition-all" />
+                            <button 
+                                @click="showStartDatePicker = !showStartDatePicker"
+                                class="w-full bg-white border-2 border-slate-100 rounded-xl px-3 py-2 text-xs font-bold text-slate-600 text-left hover:border-indigo-400 transition-all"
+                            >
+                                {{ editStartDate || '-' }}
+                            </button>
+                            <GoalDatePicker 
+                                :show="showStartDatePicker" 
+                                v-model="editStartDate" 
+                                @close="showStartDatePicker = false" 
+                            />
                         </div>
-                        <div class="space-y-1">
+                        <div class="space-y-1 relative">
                             <label class="text-[0.6rem] font-black text-slate-400 uppercase tracking-widest">{{ $t('goal_end_date') }}</label>
-                            <input type="date" v-model="editEndDate" class="w-full bg-white border-2 border-slate-100 rounded-xl px-3 py-2 text-xs font-bold text-slate-600 focus:border-indigo-400 focus:ring-0 transition-all" />
+                            <button 
+                                @click="showEndDatePicker = !showEndDatePicker"
+                                class="w-full bg-white border-2 border-slate-100 rounded-xl px-3 py-2 text-xs font-bold text-slate-600 text-left hover:border-indigo-400 transition-all"
+                            >
+                                {{ editEndDate || '-' }}
+                            </button>
+                            <GoalDatePicker 
+                                :show="showEndDatePicker" 
+                                v-model="editEndDate" 
+                                @close="showEndDatePicker = false" 
+                            />
                         </div>
                     </div>
                     <button @click="saveHeader" class="w-full py-2 bg-indigo-600 text-white rounded-xl text-xs font-black uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200">
@@ -155,7 +192,7 @@ const saveHeader = () => {
                         <span class="text-[0.65rem] font-black text-slate-400 uppercase tracking-[0.15em] px-3 py-1 bg-slate-50 border border-slate-100 rounded-full">{{ goal.category || $t('common.no_category', 'NO CATEGORY') }}</span>
                         <span class="w-1.5 h-1.5 rounded-full bg-slate-200"></span>
                         <span class="text-[0.65rem] font-black text-indigo-500 bg-indigo-50 px-3 py-1 rounded-full uppercase tracking-[0.15em] border border-indigo-100/50">{{ $t(currentType.label) }}</span>
-                        <span v-if="goal.target_value > 0" class="text-[0.65rem] font-black text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-[0.15em] border border-emerald-100/50">Target: {{ goal.target_value }}</span>
+                        <span v-if="goal.target_value > 0" class="text-[0.65rem] font-black text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-[0.15em] border border-emerald-100/50">{{ $t('goal_target_label') }}: {{ goal.target_value }}</span>
                     </div>
                 </div>
             </div>
@@ -260,14 +297,7 @@ const saveHeader = () => {
                 </div>
             </div>
             
-            <button 
-                @click="onDelete(goal.id, goal.is_new)"
-                class="w-10 h-10 flex items-center justify-center text-slate-300 hover:text-rose-500 hover:bg-rose-50 rounded-2xl transition-all active:scale-90"
-            >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
-            </button>
+            <div class="text-[0.6rem] font-black text-slate-200 uppercase tracking-[0.2em]">{{ $t('goal_id_label') }}: {{ goal.id }}</div>
         </div>
     </div>
 </template>
