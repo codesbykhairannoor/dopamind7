@@ -9,6 +9,7 @@ import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const props = defineProps({
     goals: Array,
@@ -48,8 +49,8 @@ const todayDate = computed(() => {
                 <div class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
                     <div class="flex items-center gap-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 flex items-center justify-center text-2xl text-white bg-indigo-600 rounded-2xl shadow-lg shadow-indigo-100 shrink-0">
-                                🎯
+                            <div class="w-12 h-12 flex items-center justify-center text-white bg-indigo-600 rounded-2xl shadow-lg shadow-indigo-100 shrink-0">
+                                <OneForMindIcon name="goal" size="28" />
                             </div>
                             <div>
                                 <h1 class="text-xl font-black leading-tight tracking-tight text-slate-800 flex items-center gap-2">
@@ -64,7 +65,7 @@ const todayDate = computed(() => {
                         
                         <button @click="addEmptyRow"
                             class="ml-auto bg-indigo-600 text-white font-bold py-3 px-8 rounded-[1.5rem] shadow-xl shadow-indigo-100 hover:bg-indigo-700 hover:shadow-indigo-200 active:scale-[0.98] transition-all flex items-center gap-2 shrink-0">
-                            <span class="text-xl leading-none">+</span> {{ $t('goal_add_row') }}
+                            <OneForMindIcon name="plus" size="18" stroke-width="3" /> {{ $t('goal_add_row') }}
                         </button>
                     </div>
                 </div>
@@ -82,10 +83,10 @@ const todayDate = computed(() => {
                         </div>
                         <div class="flex items-center gap-3 pr-2">
                             <button @click="bulkDelete" class="px-8 py-3 bg-rose-500 hover:bg-rose-400 active:scale-95 text-white rounded-full font-black text-xs uppercase tracking-widest flex items-center gap-2 transition-all shadow-lg shadow-rose-500/20">
-                                <span>🗑️</span> {{ $t('goal_bulk_delete') }}
+                                <OneForMindIcon name="trash" size="16" /> {{ $t('goal_bulk_delete') }}
                             </button>
                             <button @click="selectAll" class="p-3 text-slate-400 hover:text-white transition-colors" title="Batal Pilih Semua">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                <OneForMindIcon name="x" size="24" stroke-width="2.5" />
                             </button>
                         </div>
                     </div>
@@ -106,7 +107,7 @@ const todayDate = computed(() => {
                 
                 <div class="mt-12 flex items-center justify-start">
                     <p class="text-[0.7rem] text-slate-400 font-black uppercase tracking-[0.2em] flex items-center gap-3 bg-white px-8 py-4 rounded-full border-2 border-slate-50 shadow-sm shadow-slate-200/50">
-                        <span class="text-indigo-500 text-xl">✨</span> {{ $t('goal_tips', 'SET TARGET LU & SELESAIKAN LANGKAH DEMI LANGKAH.') }}
+                        <OneForMindIcon name="goal" size="20" class="text-indigo-500" /> {{ $t('goal_tips', 'SET TARGET LU & SELESAIKAN LANGKAH DEMI LANGKAH.') }}
                     </p>
                 </div>
             </div>

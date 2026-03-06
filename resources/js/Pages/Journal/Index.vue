@@ -1,5 +1,6 @@
 <script setup>
 import { Head, router } from '@inertiajs/vue3';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Swal from 'sweetalert2';
 
@@ -71,7 +72,9 @@ const deleteJournal = (id) => {
             </div>
 
             <div v-if="journals.length === 0" class="text-center py-20 bg-white rounded-[2.5rem] border border-dashed border-slate-200 max-w-4xl mx-auto">
-                <div class="mb-4 text-5xl opacity-50">🌱</div>
+                <div class="mb-4 text-indigo-200 flex items-center justify-center">
+                    <OneForMindIcon name="journal" size="64" stroke-width="1.5" />
+                </div>
                 <h3 class="mb-2 text-xl font-black text-slate-700">{{ $t('journal_empty_title', 'Belum ada cerita.') }}</h3>
                 <p class="font-medium text-slate-400">{{ $t('journal_empty_subtitle', 'Mulai tulis jurnal pertamamu hari ini!') }}</p>
             </div>

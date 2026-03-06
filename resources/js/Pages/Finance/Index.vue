@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, reactive } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { Head, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 
@@ -283,7 +284,9 @@ const switchToSingle = () => {
                         </div>
 
                         <div v-if="localTransactions.length === 0" class="text-center py-12 bg-white rounded-3xl border border-dashed border-slate-200">
-                            <div class="text-3xl mb-2">📒</div>
+                            <div class="mb-4 text-slate-300 flex items-center justify-center">
+                                <OneForMindIcon name="finance" size="48" stroke-width="1.5" />
+                            </div>
                             <p class="text-slate-400 text-sm font-medium">{{ $t('no_transaction') }}</p>
                         </div>
 

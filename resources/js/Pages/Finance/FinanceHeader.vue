@@ -3,6 +3,7 @@ import { ref, computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 import dayjs from 'dayjs';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 
@@ -72,8 +73,9 @@ const changeYear = (offset) => {
       
       <div class="flex items-center justify-between w-full md:w-auto">
         <div class="flex items-center gap-3 md:gap-4">
-            <div class="flex items-center justify-center text-xl md:text-2xl text-white shadow-lg w-10 h-10 md:w-12 md:h-12 bg-indigo-600 rounded-xl shadow-indigo-200 shrink-0">
-            💸
+            <div class="flex items-center justify-center text-white shadow-lg w-10 h-10 md:w-12 md:h-12 bg-indigo-600 rounded-xl shadow-indigo-200 shrink-0">
+                <OneForMindIcon name="finance" size="24" stroke-width="2.5" class="md:hidden" />
+                <OneForMindIcon name="finance" size="30" stroke-width="2" class="hidden md:block" />
             </div>
             <div>
             <h2 class="text-lg md:text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('finance_plan') }}</h2>
@@ -94,13 +96,7 @@ const changeYear = (offset) => {
                 <span class="md:hidden">{{ shortMonthDisplay }}</span>
                 <span class="hidden md:inline">{{ currentMonth }}</span>
             </span>
-            <svg 
-              class="w-3 h-3 text-slate-400 group-hover:text-indigo-500 transition-transform shrink-0" 
-              :class="{'rotate-180': isDateDropdownOpen}" 
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
-            </svg>
+            <OneForMindIcon name="chevron-down" size="12" stroke-width="3" class="text-slate-400 group-hover:text-indigo-500 transition-transform shrink-0" :class="{'rotate-180': isDateDropdownOpen}" />
           </button>
 
           <Transition name="slide-fade">
@@ -110,9 +106,13 @@ const changeYear = (offset) => {
               <div class="fixed inset-0 z-[-1]" @click="isDateDropdownOpen = false"></div>
               
               <div class="relative z-10 flex items-center justify-between px-1 mb-3">
-                <button @click.stop="changeYear(-1)" class="p-1 rounded-lg hover:bg-slate-100 text-slate-400">❮</button>
+                <button @click.stop="changeYear(-1)" class="p-1 px-2 rounded-lg hover:bg-slate-100 text-slate-400">
+                    <OneForMindIcon name="chevron-left" size="14" stroke-width="3" />
+                </button>
                 <span class="font-black text-slate-800">{{ activeYear }}</span>
-                <button @click.stop="changeYear(1)" class="p-1 rounded-lg hover:bg-slate-100 text-slate-400">❯</button>
+                <button @click.stop="changeYear(1)" class="p-1 px-2 rounded-lg hover:bg-slate-100 text-slate-400">
+                    <OneForMindIcon name="chevron-right" size="14" stroke-width="3" />
+                </button>
               </div>
 
               <div class="relative z-10 grid grid-cols-3 gap-1.5">
@@ -160,9 +160,9 @@ const changeYear = (offset) => {
 
         <button 
           @click="onAddClick" 
-          class="flex items-center justify-center flex-1 h-11 px-3 md:px-6 transition shadow-lg bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-indigo-100 gap-1.5 active:scale-95 whitespace-nowrap min-w-0"
+          class="flex items-center justify-center flex-1 h-11 px-3 md:px-6 transition shadow-lg bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-indigo-100 gap-2 active:scale-95 whitespace-nowrap min-w-0"
         >
-          <span class="text-base font-bold text-white leading-none">+</span>
+          <OneForMindIcon name="plus" size="16" stroke-width="3" class="text-white" />
           <span class="text-[10px] md:text-xs font-black text-white tracking-tight uppercase truncate">{{ $t('btn_transaction') }}</span>
         </button>
 

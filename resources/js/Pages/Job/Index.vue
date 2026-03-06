@@ -10,6 +10,7 @@ import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const props = defineProps({
     jobs:         Array,
@@ -44,8 +45,8 @@ const todayDate = computed(() => {
                 <div class="flex items-center gap-4">
                     <!-- Left: Icon + Title + Date -->
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 flex items-center justify-center text-2xl text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-200 shrink-0">
-                            💼
+                        <div class="w-12 h-12 flex items-center justify-center text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-200 shrink-0">
+                            <OneForMindIcon name="job" size="28" />
                         </div>
                         <div>
                             <h1 class="text-xl font-black leading-tight tracking-tight text-slate-800 flex items-center gap-2">
@@ -61,7 +62,7 @@ const todayDate = computed(() => {
                     <!-- Right: Add Button -->
                     <button @click="addEmptyRow"
                         class="ml-auto bg-indigo-600 text-white font-bold py-2.5 px-6 rounded-xl shadow-md shadow-indigo-200 hover:bg-indigo-700 active:scale-[0.98] transition-all flex items-center gap-2 shrink-0">
-                        <span class="text-xl leading-none mb-0.5">+</span> {{ $t('job_add_row', 'Tambah Baris') }}
+                        <OneForMindIcon name="plus" size="18" stroke-width="3" /> {{ $t('job_add_row', 'Tambah Baris') }}
                     </button>
                 </div>
             </div>
@@ -95,14 +96,14 @@ const todayDate = computed(() => {
                     </div>
                     <div class="flex items-center gap-2 sm:gap-4">
                         <button @click="bulkDuplicate" class="px-3 sm:px-4 py-2 bg-white/10 hover:bg-white/20 active:scale-95 rounded-xl font-bold text-sm flex items-center gap-2 transition-all">
-                            <span>📋</span> <span class="hidden sm:inline">{{ $t('job_bulk_copy', 'Duplikat') }}</span>
+                            <OneForMindIcon name="planner" size="16" /> <span class="hidden sm:inline">{{ $t('job_bulk_copy', 'Duplikat') }}</span>
                         </button>
                         <button @click="bulkDelete" class="px-3 sm:px-4 py-2 bg-rose-500 hover:bg-rose-400 active:scale-95 text-white shadow-md shadow-rose-500/30 rounded-xl font-bold text-sm flex items-center gap-2 transition-all">
-                            <span>🗑️</span> <span class="hidden sm:inline">{{ $t('job_bulk_delete', 'Hapus Sekaligus') }}</span>
+                            <OneForMindIcon name="trash" size="16" /> <span class="hidden sm:inline">{{ $t('job_bulk_delete', 'Hapus Sekaligus') }}</span>
                         </button>
                         <div class="w-px h-6 bg-white/20 mx-1"></div>
                         <button @click="selectAll" class="p-2 text-indigo-200 hover:text-white transition-colors" title="Batal Pilih Semua">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                            <OneForMindIcon name="x" size="20" stroke-width="2.5" />
                         </button>
                     </div>
                 </div>

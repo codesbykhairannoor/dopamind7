@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import PlannerDatePicker from './PlannerDatePicker.vue'; 
 
 const props = defineProps({
@@ -27,8 +28,8 @@ const closeDatePicker = () => {
             <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4">
                 
                 <div class="flex items-center gap-4 w-full md:w-auto">
-                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-2xl text-white shadow-lg shadow-indigo-200 shrink-0">
-                        📅
+                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-200 shrink-0">
+                        <OneForMindIcon name="planner" size="28" />
                     </div>
                     
                     <div>
@@ -44,7 +45,7 @@ const closeDatePicker = () => {
                                     :class="{'bg-indigo-50 text-indigo-700': showDatePicker}"
                                 >
                                     {{ formattedDate }} 
-                                    <span class="text-[8px] text-slate-400 transition-transform duration-300" :class="{'rotate-180': showDatePicker}">▼</span>
+                                    <OneForMindIcon name="chevron-down" size="10" stroke-width="3" class="text-slate-400 transition-transform duration-300" :class="{'rotate-180': showDatePicker}" />
                                 </button>
 
                                 <transition
@@ -100,7 +101,7 @@ const closeDatePicker = () => {
                         @click="openModal()" 
                         class="flex-1 md:flex-none px-6 py-3.5 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 flex items-center justify-center gap-2 text-xs uppercase tracking-widest active:scale-95"
                     >
-                        <span class="text-lg leading-none">+</span> {{ $t('btn_add_task', 'Tambah') }}
+                        <OneForMindIcon name="plus" size="16" stroke-width="3" /> {{ $t('btn_add_task', 'Tambah') }}
                     </button>
                     
                     <button 
@@ -108,7 +109,7 @@ const closeDatePicker = () => {
                         class="w-12 h-[46px] md:h-auto flex items-center justify-center bg-rose-50 text-rose-500 rounded-2xl font-black hover:bg-rose-100 transition border border-rose-100 active:scale-95 shadow-sm shrink-0"
                         :title="$t('btn_reset_tooltip', 'Reset Board')"
                     >
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                        <OneForMindIcon name="refresh" size="18" stroke-width="2.5" />
                     </button>
                 </div>
 

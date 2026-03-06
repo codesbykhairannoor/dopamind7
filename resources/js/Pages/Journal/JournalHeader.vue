@@ -1,5 +1,6 @@
 <script setup>
 import { Link, usePage } from '@inertiajs/vue3';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
@@ -25,8 +26,8 @@ const todayDisplay = computed(() => {
         <div class="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
             
             <div class="flex items-center w-full gap-4 md:w-auto">
-                <div class="flex items-center justify-center text-2xl text-white shadow-lg w-12 h-12 bg-indigo-600 rounded-xl shadow-indigo-200 shrink-0">
-                    📓
+                <div class="flex items-center justify-center text-white shadow-lg w-12 h-12 bg-indigo-600 rounded-xl shadow-indigo-200 shrink-0">
+                    <OneForMindIcon name="journal" size="28" />
                 </div>
                 <div>
                     <h2 class="text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('journal_title', 'My Journal') }}</h2>
@@ -52,7 +53,7 @@ const todayDisplay = computed(() => {
                 </div>
 
                 <Link :href="route('journal.write')" class="flex items-center justify-center flex-1 h-12 px-6 text-sm font-black text-white transition shadow-lg md:flex-none bg-indigo-600 rounded-2xl hover:bg-indigo-700 shadow-indigo-100 gap-2 active:scale-95 whitespace-nowrap">
-                    <span class="text-xl">+</span>
+                    <OneForMindIcon name="plus" size="18" stroke-width="3" />
                     <span class="tracking-tight md:inline">{{ $t('journal_add', 'Tambah Jurnal') }}</span>
                 </Link>
 

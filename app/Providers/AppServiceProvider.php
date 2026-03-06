@@ -30,9 +30,35 @@ class AppServiceProvider extends ServiceProvider
         Model::shouldBeStrict(!$this->app->environment('production'));
 
         /**
+         * 🛡️ BODYGUARD LOKAL (Bulletproof Local Mode)
+         * Jika diakses lewat 127.0.0.1 atau localhost, paksa aplikasi pakai config lokal
+         * terlepas dari file .env mana yang dimuat (menghindari salah redirect ke production).
+         */
+        $host = request()->getHost();
+        $isLocalHost = in_array($host, ['127.0.0.1', 'localhost']);
+
+        if ($isLocalHost) {
+            // Paksa APP_URL agar tidak lari ke production (oneformind.com)
+            $port = request()->getPort();
+            $localUrl = "http://{$host}" . ($port && $port != 80 ? ":{$port}" : "");
+            config(['app.url' => $localUrl]);
+
+            // Matikan Secure Cookie biar bisa login lewat HTTP biasa
+            config(['session.secure' => false]);
+
+            // Paksa Socialite Redirect ke Lokal Callback
+            config(['services.google.redirect' => "{$localUrl}/auth/google/callback"]);
+
+            // Opsional: Matikan Asset URL jika ada
+            config(['app.asset_url' => null]);
+
+            // Paksa APP_ENV agar tidak dianggap production
+            config(['app.env' => 'local']);
+        }
+
+        /**
          * Paksa HTTPS HANYA jika bukan di lokal dan bukan di localhost.
          */
-        $isLocalHost = in_array(request()->getHost(), ['127.0.0.1', 'localhost']);
         if (!$this->app->environment('local') && !$isLocalHost) {
             URL::forceScheme('https');
         }

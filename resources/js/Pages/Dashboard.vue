@@ -2,6 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, usePage, Link } from '@inertiajs/vue3';
 import { computed } from 'vue';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const user = usePage().props.auth.user;
 const props = defineProps({
@@ -68,10 +69,14 @@ const overallScore = computed(() => {
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
             
             <Link :href="route('habits.index')" class="col-span-1 md:col-span-6 lg:col-span-4 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 text-8xl -mt-6 -mr-6 grayscale group-hover:grayscale-0">🌱</div>
+                <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 text-8xl -mt-6 -mr-6 grayscale group-hover:grayscale-0">
+                    <OneForMindIcon name="habit" size="120" stroke-width="1.5" />
+                </div>
                 <div class="relative z-10">
                     <div class="flex justify-between items-start mb-6">
-                        <div class="w-14 h-14 bg-indigo-50 text-indigo-500 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-12 transition-transform duration-300 border border-indigo-100">🌱</div>
+                        <div class="w-14 h-14 bg-indigo-50 text-indigo-500 rounded-2xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300 border border-indigo-100">
+                            <OneForMindIcon name="habit" size="32" />
+                        </div>
                         <div class="bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-black tracking-wider shadow-inner">{{ synergy.habits.completed }} / {{ synergy.habits.total }}</div>
                     </div>
                     <h3 class="text-2xl font-black text-slate-800 mb-2">{{ $t('dash_habit_title') }}</h3>
@@ -94,7 +99,9 @@ const overallScore = computed(() => {
                 <div>
                     <div class="flex justify-between items-center mb-6">
                         <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 bg-slate-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl group-hover:-rotate-12 transition-transform duration-300 border border-slate-200">📅</div>
+                            <div class="w-14 h-14 bg-slate-50 text-indigo-600 rounded-2xl flex items-center justify-center group-hover:-rotate-12 transition-transform duration-300 border border-slate-200">
+                                <OneForMindIcon name="planner" size="32" />
+                            </div>
                             <div>
                                 <h3 class="text-2xl font-black text-slate-800">{{ $t('dash_planner_title') }}</h3>
                                 <p class="text-slate-500 text-sm font-medium mt-1">{{ synergy.planner.completed }} {{ $t('dash_from') }} {{ synergy.planner.total }} {{ $t('dash_tasks_done') }}</p>
@@ -122,9 +129,13 @@ const overallScore = computed(() => {
             </Link>
 
             <Link :href="route('finance.index')" prefetch class="col-span-1 md:col-span-12 lg:col-span-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-[2rem] p-8 text-white shadow-lg shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between">
-                <div class="absolute -right-6 -bottom-6 opacity-10 text-9xl group-hover:scale-110 transition-transform duration-700">💸</div>
+                <div class="absolute -right-6 -bottom-6 opacity-10 group-hover:scale-110 transition-transform duration-700">
+                    <OneForMindIcon name="finance" size="160" stroke-width="1.5" />
+                </div>
                 <div class="relative z-10">
-                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-2xl mb-6 border border-white/20 group-hover:scale-110 transition-transform">💳</div>
+                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-white/20 group-hover:scale-110 transition-transform">
+                        <OneForMindIcon name="finance" size="28" />
+                    </div>
                     <h3 class="text-xl font-black mb-1">{{ $t('dash_finance_title') }}</h3>
                     <p class="text-indigo-100 text-sm font-medium opacity-90">{{ $t('dash_finance_desc') }}</p>
                 </div>
@@ -142,11 +153,15 @@ const overallScore = computed(() => {
 
             <Link :href="synergy.journal.is_written ? route('journal.write', synergy.journal.id) : route('journal.index')" prefetch class="col-span-1 md:col-span-7 lg:col-span-7 bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group overflow-hidden relative">
                 <div class="absolute inset-y-0 right-0 w-2/3 bg-gradient-to-l from-indigo-50/80 to-white/0 pointer-events-none"></div>
-                <div class="absolute right-0 bottom-0 p-8 opacity-20 text-8xl translate-x-4 translate-y-4 group-hover:rotate-12 transition-transform duration-700">📖</div>
+                <div class="absolute right-0 bottom-0 p-8 opacity-20 translate-x-4 translate-y-4 group-hover:rotate-12 transition-transform duration-700">
+                    <OneForMindIcon name="journal" size="120" stroke-width="1.5" />
+                </div>
 
                 <div class="p-8 md:p-10 flex flex-col justify-between h-full relative z-10">
                     <div>
-                        <div class="w-14 h-14 bg-white text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:-rotate-6 transition-transform duration-300 border border-slate-100 shadow-sm">✍️</div>
+                        <div class="w-14 h-14 bg-white text-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:-rotate-6 transition-transform duration-300 border border-slate-100 shadow-sm">
+                            <OneForMindIcon name="journal" size="32" />
+                        </div>
                         <h3 class="text-3xl font-black text-slate-800 mb-3">{{ $t('dash_journal_title') }}</h3>
                     </div>
                     
@@ -175,7 +190,9 @@ const overallScore = computed(() => {
                 <div>
                     <div class="flex justify-between items-center mb-8">
                         <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300 border border-indigo-100">📆</div>
+                            <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-indigo-100">
+                                <OneForMindIcon name="calendar" size="32" />
+                            </div>
                             <div>
                                 <h3 class="text-2xl font-black text-slate-800">{{ $t('dash_calendar_title') }}</h3>
                                 <p class="text-slate-500 text-sm font-medium mt-1">{{ $t('dash_calendar_desc') }}</p>

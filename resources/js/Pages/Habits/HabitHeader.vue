@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import dayjs from 'dayjs';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const props = defineProps({
   user: Object,
@@ -51,8 +52,8 @@ const changeYear = (offset) => {
       <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
         
         <div class="flex items-center w-full gap-4 md:w-auto">
-          <div class="flex items-center justify-center text-2xl text-white shadow-lg w-12 h-12 bg-indigo-600 rounded-xl shadow-indigo-200 shrink-0">
-            🌱
+          <div class="flex items-center justify-center text-white shadow-lg w-12 h-12 bg-indigo-600 rounded-xl shadow-indigo-200 shrink-0">
+            <OneForMindIcon name="habit" size="28" />
           </div>
 
           <div>
@@ -74,10 +75,8 @@ const changeYear = (offset) => {
                 <span class="text-[9px] text-slate-400 uppercase tracking-tighter mb-0.5">{{ $t('label_period') }}</span>
                 <span class="text-xs uppercase tracking-wide">{{ currentMonth }}</span>
               </div>
-              <div class="p-1 bg-white border shadow-sm rounded-lg border-slate-100">
-                <svg class="w-3 h-3 text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 9l-7 7-7-7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
+              <div class="p-1 bg-white border shadow-sm rounded-lg border-slate-100 flex items-center justify-center">
+                <OneForMindIcon name="chevron-down" size="12" stroke-width="3" class="text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" />
               </div>
             </button>
 
@@ -88,11 +87,11 @@ const changeYear = (offset) => {
                 <div class="relative z-10">
                   <div class="flex items-center justify-between px-2 mb-4">
                     <button @click.stop="changeYear(-1)" class="p-2 transition rounded-xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600">
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-width="3"></path></svg>
+                      <OneForMindIcon name="chevron-left" size="16" stroke-width="3" />
                     </button>
                     <span class="text-lg font-black tracking-tighter text-slate-800">{{ activeYear }}</span>
                     <button @click.stop="changeYear(1)" class="p-2 transition rounded-xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600">
-                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="3"></path></svg>
+                      <OneForMindIcon name="chevron-right" size="16" stroke-width="3" />
                     </button>
                   </div>
                   
@@ -134,8 +133,8 @@ const changeYear = (offset) => {
             @click="openCreateModal" 
             class="h-[46px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-200 transition-all duration-300"
           >
-            <div class="bg-white/20 rounded-lg p-0.5">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-width="3" stroke-linecap="round"></path></svg>
+            <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
+              <OneForMindIcon name="plus" size="16" stroke-width="3" />
             </div>
             <span class="hidden md:inline uppercase text-xs tracking-widest">{{ $t('btn_add_habit') }}</span>
           </button>
@@ -162,8 +161,8 @@ const changeYear = (offset) => {
               </span>
             </div>
           </div>
-          <button @click="showHint = false" class="p-1 hover:bg-indigo-100 rounded-lg text-indigo-400 transition">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2.5"></path></svg>
+          <button @click="showHint = false" class="p-1 hover:bg-indigo-100 rounded-lg text-indigo-400 transition flex items-center justify-center">
+            <OneForMindIcon name="x" size="14" stroke-width="3" />
           </button>
         </div>
       </Transition>

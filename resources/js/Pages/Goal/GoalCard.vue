@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import MilestoneItem from './MilestoneItem.vue';
 import GoalDatePicker from './GoalDatePicker.vue';
 
@@ -25,12 +26,12 @@ const showStartDatePicker = ref(false);
 const showEndDatePicker = ref(false);
 
 const frequencyTypes = [
-    { value: 'daily', label: 'goal_type_daily', icon: '📅' },
-    { value: 'weekly', label: 'goal_type_weekly', icon: '📊' },
-    { value: 'specific_days', label: 'goal_type_specific_days', icon: '📌' },
-    { value: 'custom_period', label: 'goal_type_custom_period', icon: '⏳' },
-    { value: 'monthly', label: 'goal_type_monthly', icon: '🏢' },
-    { value: 'yearly', label: 'goal_type_yearly', icon: '🏆' },
+    { value: 'daily', label: 'goal_type_daily', icon: 'planner' },
+    { value: 'weekly', label: 'goal_type_weekly', icon: 'finance' },
+    { value: 'specific_days', label: 'goal_type_specific_days', icon: 'calendar' },
+    { value: 'custom_period', label: 'goal_type_custom_period', icon: 'goal' },
+    { value: 'monthly', label: 'goal_type_monthly', icon: 'job' },
+    { value: 'yearly', label: 'goal_type_yearly', icon: 'goal' },
 ];
 
 const statuses = [
@@ -101,9 +102,7 @@ const saveHeader = () => {
                 class="w-10 h-10 flex items-center justify-center bg-white/90 backdrop-blur-md text-slate-400 hover:text-rose-500 rounded-2xl shadow-xl border border-slate-100 hover:border-rose-100 transition-all active:scale-90"
                 :title="$t('btn_delete')"
             >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
+                <OneForMindIcon name="trash" size="18" stroke-width="2.5" />
             </button>
         </div>
 
@@ -119,8 +118,8 @@ const saveHeader = () => {
                             @change="onToggleSelection(goal.id)"
                             class="absolute -top-2 -left-2 rounded-lg border-slate-200 text-indigo-600 focus:ring-indigo-500 w-6 h-6 cursor-pointer transition-all z-20 shadow-md"
                         />
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-50 to-white flex items-center justify-center text-3xl shadow-inner border border-indigo-50/50">
-                            {{ currentType.icon }}
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-50 to-white flex items-center justify-center text-indigo-500 shadow-inner border border-indigo-50/50">
+                            <OneForMindIcon :name="currentType.icon" size="28" />
                         </div>
                     </div>
                     <div>
@@ -203,7 +202,7 @@ const saveHeader = () => {
                 <div class="space-y-2">
                     <div class="flex justify-between items-end">
                         <div class="flex items-center gap-2">
-                            <span class="text-xl">🏆</span>
+                            <OneForMindIcon name="goal" size="14" stroke-width="3" class="text-indigo-500" />
                             <span class="text-[0.7rem] font-black text-slate-500 uppercase tracking-[0.2em]">{{ $t('goal_progress', 'Progress') }}</span>
                         </div>
                         <span class="text-2xl font-black text-indigo-600 tabular-nums">{{ goal.progress }}<span class="text-[0.8rem] ml-1 opacity-50">%</span></span>
@@ -223,7 +222,7 @@ const saveHeader = () => {
                 <div v-if="goal.end_date" class="space-y-2 opacity-80 scale-95 origin-left">
                     <div class="flex justify-between items-end">
                         <div class="flex items-center gap-2">
-                            <span class="text-lg">⏳</span>
+                            <OneForMindIcon name="calendar" size="14" stroke-width="3" class="text-slate-400" />
                             <span class="text-[0.6rem] font-black text-slate-400 uppercase tracking-[0.2em]">{{ $t('goal_time_progress') }}</span>
                         </div>
                         <span class="text-sm font-black text-slate-500 tabular-nums">{{ goal.time_progress }}%</span>
@@ -268,7 +267,7 @@ const saveHeader = () => {
                 class="w-full py-4 px-4 border-2 border-dashed border-slate-200 rounded-[1.5rem] text-slate-400 text-[0.7rem] font-black uppercase tracking-widest hover:border-indigo-400 hover:text-indigo-600 transition-all flex items-center justify-center gap-3 hover:bg-white hover:shadow-xl hover:shadow-indigo-50 active:scale-95"
             >
                 <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-50 transition-colors">
-                    <span class="text-lg leading-none">+</span>
+                    <OneForMindIcon name="plus" size="12" stroke-width="4" />
                 </div>
                 {{ $t('milestone_add', 'Tambah Langkah') }}
             </button>
