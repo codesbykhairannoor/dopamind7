@@ -63,6 +63,14 @@ class GoalService
             return $g->milestones->where('completed', true)->count() / $mCount;
         })->first();
 
+        $urgentGoal = $activeGoals->whereNotNull('end_date')
+            ->sortBy('end_date')
+            ->first();
+
+        $upcomingDeadlines = $activeGoals->whereNotNull('end_date')
+            ->filter(fn($g) => $g->end_date->isFuture() && $g->end_date->diffInDays(now()) <= 7)
+            ->count();
+
         return [
             'total' => $total,
             'active' => $statsRaw['active'] ?? 0,
@@ -73,6 +81,8 @@ class GoalService
             'milestones_total' => $milestonesTotal,
             'milestones_completed' => $milestonesCompleted,
             'top_goal_title' => $topGoal ? $topGoal->title : null,
+            'urgent_goal_title' => $urgentGoal ? $urgentGoal->title : null,
+            'upcoming_deadlines_count' => $upcomingDeadlines,
         ];
     }
 

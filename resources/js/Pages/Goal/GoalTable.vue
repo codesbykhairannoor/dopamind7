@@ -70,6 +70,8 @@ const statuses = [
                         <th class="border-r border-slate-200 px-6 py-4 font-black text-slate-600 min-w-[150px] uppercase tracking-wider text-[0.7rem]">{{ $t('goal_col_target') }}</th>
                         <th class="border-r border-slate-200 px-6 py-4 font-black text-slate-600 min-w-[150px] uppercase tracking-wider text-[0.7rem]">{{ $t('goal_col_current') }}</th>
                         <th class="border-r border-slate-200 px-6 py-4 font-black text-slate-600 min-w-[150px] uppercase tracking-wider text-[0.7rem]">{{ $t('goal_col_status') }}</th>
+                        <th class="border-r border-slate-200 px-6 py-4 font-black text-slate-600 min-w-[150px] uppercase tracking-wider text-[0.7rem]">{{ $t('goal_start_date') }}</th>
+                        <th class="border-r border-slate-200 px-6 py-4 font-black text-slate-600 min-w-[150px] uppercase tracking-wider text-[0.7rem]">{{ $t('goal_end_date') }}</th>
                         <th class="px-4 py-4 text-center font-black text-slate-400 w-14">🗑️</th>
                     </tr>
                 </thead>
@@ -131,6 +133,16 @@ const statuses = [
                                     {{ $t(status.label) }}
                                 </option>
                             </select>
+                        </td>
+
+                        <td class="border-r border-slate-100 p-0 relative">
+                            <input v-model="goal.start_date" type="date" @blur="emit('autoSave', goal)"
+                                class="w-full h-full min-h-[64px] px-6 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-medium text-slate-600 transition-all" />
+                        </td>
+
+                        <td class="border-r border-slate-100 p-0 relative">
+                            <input v-model="goal.end_date" type="date" @blur="emit('autoSave', goal)"
+                                class="w-full h-full min-h-[64px] px-6 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-medium text-slate-600 transition-all" />
                         </td>
 
                         <td class="p-0 text-center align-middle">

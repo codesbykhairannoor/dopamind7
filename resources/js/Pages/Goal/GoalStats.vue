@@ -7,7 +7,7 @@ defineProps({
 <template>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
         <!-- MASTER PROGRESS -->
-        <div class="md:col-span-2 bg-slate-900 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-2xl shadow-slate-200 group">
+        <div class="md:col-span-2 bg-indigo-600 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-2xl shadow-slate-200 group">
             <div class="relative z-10 flex flex-col h-full justify-between">
                 <div>
                     <p class="text-[0.7rem] font-black text-slate-400 uppercase tracking-[0.2em] mb-2">{{ $t('goal_stats_master_progress', 'Master Progress') }}</p>
@@ -63,6 +63,25 @@ defineProps({
                     {{ stats.active }} {{ $t('goal_status_active', 'Active Projects') }}
                 </p>
             </div>
+        </div>
+
+        <!-- URGENT / DEADLINES -->
+        <div class="bg-gradient-to-br from-rose-500 to-rose-600 p-8 rounded-[2.5rem] shadow-xl shadow-rose-100 flex flex-col justify-between group relative overflow-hidden">
+            <div class="relative z-10">
+                <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-2xl mb-4 text-white">⏰</div>
+                <p class="text-[0.65rem] font-black text-rose-100 uppercase tracking-[0.2em] mb-1">Most Urgent</p>
+                <h3 class="text-lg font-black text-white line-clamp-2 leading-tight">
+                    {{ stats.urgent_goal_title || 'No upcoming deadlines' }}
+                </h3>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/10 relative z-10">
+                <span class="text-[0.6rem] font-black text-rose-100 uppercase tracking-widest flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                    {{ stats.upcoming_deadlines_count }} Deadlines this week
+                </span>
+            </div>
+            <!-- Decorative circle -->
+            <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:bg-white/20 transition-all duration-700"></div>
         </div>
     </div>
 </template>

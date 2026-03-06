@@ -46,5 +46,12 @@
     "goal_stats_top_momentum": "Top Momentum",
     "goal_stats_focus": "Focus Project",
     "goal_stats_pulse": "Project Pulse",
-    "goal_stats_overall": "Overall Progress"
+    "goal_stats_overall": "Overall Progress",
+    "goal_days_left": "{days} days left",
+    "goal_overdue": "Overdue",
+    "goal_ending_today": "Ending Today",
+    "goal_duration": "Duration",
+    "goal_time_progress": "Time Elapsed",
+    "goal_start_date": "Start Date",
+    "goal_end_date": "End Date"
 }

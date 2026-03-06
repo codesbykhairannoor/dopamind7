@@ -46,5 +46,12 @@
     "goal_stats_top_momentum": "Top Momentum",
     "goal_stats_focus": "Focus Project",
     "goal_stats_pulse": "Project Pulse",
-    "goal_stats_overall": "Rata-rata Kemajuan"
+    "goal_stats_overall": "Rata-rata Kemajuan",
+    "goal_days_left": "Sisa {days} hari",
+    "goal_overdue": "Terlamat",
+    "goal_ending_today": "Berakhir Hari Ini",
+    "goal_duration": "Durasi",
+    "goal_time_progress": "Waktu Berjalan",
+    "goal_start_date": "Tanggal Mulai",
+    "goal_end_date": "Tanggal Selesai"
 }
