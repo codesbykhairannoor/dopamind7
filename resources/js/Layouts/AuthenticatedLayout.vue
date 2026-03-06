@@ -154,6 +154,19 @@ watch(() => page.url, () => {
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Job Tracker</span>
                     <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
                 </Link>
+
+                <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch
+                    class="flex items-center rounded-2xl transition-all duration-300 group relative"
+                    :class="[
+                        route().current('goals.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                    ]"
+                    :title="isSidebarCollapsed ? $t('goal_page_title') : ''"
+                >
+                    <span class="text-xl shrink-0">🎯</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Goal Tracker</span>
+                    <div v-if="route().current('goals.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
+                </Link>
             </nav>
 
             <div class="p-4 border-t border-slate-100 bg-slate-50/50 space-y-2" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
@@ -257,6 +270,10 @@ watch(() => page.url, () => {
 
                             <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
                                 <span class="text-xl">💼</span> Job Tracker
+                            </Link>
+
+                            <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('goals.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
+                                <span class="text-xl">🎯</span> Goal Tracker
                             </Link>
                         </div>
 

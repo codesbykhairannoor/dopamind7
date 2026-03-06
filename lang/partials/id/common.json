@@ -90,5 +90,7 @@
     "placeholder_activity": "Contoh: Coding Study...",
     "placeholder_notes": "Detail tambahan...",
     "select_hour": "Pilih Jam",
-    "date_format": "dddd, MMMM D, YYYY"
+    "date_format": "dddd, MMMM D, YYYY",
+    "no_category": "Tanpa Kategori",
+    "no_date": "Tanpa Tanggal"
 }

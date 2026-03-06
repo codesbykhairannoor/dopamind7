@@ -13,14 +13,15 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        \App\Models\Habit::class => \App\Policies\HabitPolicy::class,
-        \App\Models\Journal::class => \App\Policies\JournalPolicy::class,
-        \App\Models\CalendarEvent::class => \App\Policies\CalendarEventPolicy::class,
-        \App\Models\PlannerTask::class => \App\Policies\PlannerTaskPolicy::class,
-        \App\Models\FinanceTransaction::class => \App\Policies\FinanceTransactionPolicy::class,
-        \App\Models\FinanceBudget::class => \App\Policies\FinanceBudgetPolicy::class,
-        \App\Models\FinanceCategory::class => \App\Policies\FinanceCategoryPolicy::class,
-        \App\Models\Job::class => \App\Policies\JobPolicy::class,
+        \App\Models\Habit::class => \App\Policies\HabitPolicy::class ,
+        \App\Models\Journal::class => \App\Policies\JournalPolicy::class ,
+        \App\Models\CalendarEvent::class => \App\Policies\CalendarEventPolicy::class ,
+        \App\Models\PlannerTask::class => \App\Policies\PlannerTaskPolicy::class ,
+        \App\Models\FinanceTransaction::class => \App\Policies\FinanceTransactionPolicy::class ,
+        \App\Models\FinanceBudget::class => \App\Policies\FinanceBudgetPolicy::class ,
+        \App\Models\FinanceCategory::class => \App\Policies\FinanceCategoryPolicy::class ,
+        \App\Models\Job::class => \App\Policies\JobPolicy::class ,
+        \App\Models\Goal::class => \App\Policies\GoalPolicy::class ,
     ];
 
     /**
@@ -28,6 +29,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+    //
     }
 }

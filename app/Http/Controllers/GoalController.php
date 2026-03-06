@@ -1,0 +1,186 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreGoalRequest;
+use App\Http\Requests\UpdateGoalRequest;
+use App\Http\Resources\GoalResource;
+use App\Models\Goal;
+use App\Models\GoalMilestone;
+use App\Services\GoalService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+
+class GoalController extends Controller
+{
+    public function __construct(private GoalService $goalService)
+    {
+    }
+
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $status = $request->input('status', 'all');
+        $type = $request->input('type', 'all');
+        $perPage = $request->input('per_page', 50);
+
+        $goals = $this->goalService->getGoalsWithFilters(
+            Auth::id(),
+            $search,
+            $status,
+            $type,
+            $perPage
+        );
+
+        $stats = $this->goalService->getGoalStats(Auth::id());
+
+        return Inertia::render('Goal/Index', [
+            'goals' => GoalResource::collection($goals)->resolve(),
+            'stats' => $stats,
+            'filters' => [
+                'search' => $search,
+                'status' => $status,
+                'type' => $type,
+            ],
+            'pagination' => [
+                'current_page' => $goals->currentPage(),
+                'last_page' => $goals->lastPage(),
+                'per_page' => $goals->perPage(),
+                'total' => $goals->total(),
+            ],
+        ]);
+    }
+
+    public function store(StoreGoalRequest $request)
+    {
+        $goal = $this->goalService->createGoal(Auth::id(), $request->validated());
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Goal created successfully',
+                'data' => new GoalResource($goal)
+            ], 201);
+        }
+
+        return back()->with('success', 'Goal created successfully');
+    }
+
+    public function update(UpdateGoalRequest $request, Goal $goal)
+    {
+        $this->authorize('update', $goal);
+
+        $goal = $this->goalService->updateGoal($goal, $request->validated());
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'message' => 'Goal updated successfully',
+                'data' => new GoalResource($goal)
+            ]);
+        }
+
+        return back()->with('success', 'Goal updated successfully');
+    }
+
+    public function destroy(Goal $goal)
+    {
+        $this->authorize('delete', $goal);
+
+        $this->goalService->deleteGoal($goal);
+
+        if (request()->wantsJson()) {
+            return response()->json(['message' => 'Goal deleted successfully']);
+        }
+
+        return back()->with('success', 'Goal deleted successfully');
+    }
+
+    public function bulkUpdateStatus(Request $request)
+    {
+        $request->validate([
+            'goal_ids' => ['required', 'array'],
+            'goal_ids.*' => ['required', 'integer', 'exists:goals,id'],
+            'status' => ['required', 'in:active,completed,paused,cancelled'],
+        ]);
+
+        $count = $this->goalService->bulkUpdateStatus(
+            Auth::id(),
+            $request->input('goal_ids'),
+            $request->input('status')
+        );
+
+        return back()->with('success', "{$count} goals updated successfully");
+    }
+
+    public function bulkDelete(Request $request)
+    {
+        $request->validate([
+            'goal_ids' => ['required', 'array'],
+            'goal_ids.*' => ['required', 'integer', 'exists:goals,id'],
+        ]);
+
+        $count = $this->goalService->bulkDelete(
+            Auth::id(),
+            $request->input('goal_ids')
+        );
+
+        return back()->with('success', "{$count} goals deleted successfully");
+    }
+
+    public function storeMilestone(Request $request, Goal $goal)
+    {
+        $this->authorize('update', $goal);
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'order' => ['nullable', 'integer'],
+        ]);
+
+        $milestone = $this->goalService->addMilestone($goal, $request->all());
+
+        return response()->json([
+            'message' => 'Milestone added successfully',
+            'data' => $milestone
+        ]);
+    }
+
+    public function updateMilestone(Request $request, Goal $goal, GoalMilestone $milestone)
+    {
+        $this->authorize('update', $goal);
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'order' => ['nullable', 'integer'],
+        ]);
+
+        $milestone = $this->goalService->updateMilestone($milestone, $request->all());
+
+        return response()->json([
+            'message' => 'Milestone updated successfully',
+            'data' => $milestone
+        ]);
+    }
+
+    public function toggleMilestone(Goal $goal, GoalMilestone $milestone)
+    {
+        $this->authorize('update', $goal);
+
+        $milestone = $this->goalService->toggleMilestone($milestone);
+
+        return response()->json([
+            'message' => 'Milestone toggled successfully',
+            'data' => $milestone
+        ]);
+    }
+
+    public function destroyMilestone(Goal $goal, GoalMilestone $milestone)
+    {
+        $this->authorize('update', $goal);
+
+        $this->goalService->deleteMilestone($milestone);
+
+        return response()->json([
+            'message' => 'Milestone deleted successfully'
+        ]);
+    }
+}

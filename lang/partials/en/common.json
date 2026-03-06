@@ -91,7 +91,7 @@
     "placeholder_activity": "Example: Coding Study...",
     "placeholder_notes": "Additional details...",
     "select_hour": "Select Hour",
-    "date_format": "dddd, MMMM D, YYYY"
-
-    
+    "date_format": "dddd, MMMM D, YYYY",
+    "no_category": "No Category",
+    "no_date": "No Date"
 }

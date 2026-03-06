@@ -23,9 +23,9 @@ Route::get('/lang/{locale}', function (Request $request, $locale) {
     if (in_array($locale, ['id', 'en'])) {
         Session::put('locale', $locale);
         Session::save(); // Mastiin session kesimpen detik ini juga
-        
+
         // Simpan di cookie buat backup halaman Blade murni
-        cookie()->queue('selected_locale', $locale, 60 * 24 * 30); 
+        cookie()->queue('selected_locale', $locale, 60 * 24 * 30);
         App::setLocale($locale);
     }
 
@@ -46,7 +46,8 @@ Route::get('/', function () {
     if (auth()->check()) {
         return redirect()->route('dashboard');
     }
-    return view('welcome'); 
+    return view('welcome');
+
 })->name('home');
 
 
@@ -56,7 +57,7 @@ Route::post('/waitlist', function (Request $request) {
         'email' => 'required|email|unique:waitlists,email'
     ]);
 
- Waitlist::create($validated);
+    Waitlist::create($validated);
     return redirect()->back()->with('success', 'You have been added to the waitlist!');
 })->name('waitlist.store')->middleware('throttle:waitlist'); // 👈 Tambahan di sini
 
@@ -129,13 +130,13 @@ Route::get('/sitemap.xml', function () {
     // Halaman pendukung SEO (vs competitor) & Legal
     $others = [
         // Compare Pages (Penting buat SEO "Alternative to...")
-        '/compare/paper', 
-        '/compare/sheets', 
-        '/compare/management-tools', 
+        '/compare/paper',
+        '/compare/sheets',
+        '/compare/management-tools',
         '/compare/habit-apps',
-        
+
         // Legal Pages
-        '/company/privacy', 
+        '/company/privacy',
         '/company/terms'
     ];
 
@@ -149,8 +150,8 @@ Route::get('/sitemap.xml', function () {
 
     // 6. Render ke View Blade XML
     return response()->view('seo.sitemap', [
-        'pages' => $pages,
-        'date' => now()->toAtomString()
+    'pages' => $pages,
+    'date' => now()->toAtomString()
     ])->header('Content-Type', 'text/xml');
 
 })->name('sitemap');
@@ -254,8 +255,8 @@ Route::get('compare/habit-apps', function () {
 
 
 // --- GROUP 2: SOCIAL LOGIN ---
-Route::get('/auth/google', [SocialController::class, 'redirect'])->name('google.login');
-Route::get('/auth/google/callback', [SocialController::class, 'callback']);
+Route::get('/auth/google', [SocialController::class , 'redirect'])->name('google.login');
+Route::get('/auth/google/callback', [SocialController::class , 'callback']);
 
 
 // --- GROUP 3: AUTHENTICATED APP ---
@@ -264,101 +265,125 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::middleware(['module:planner'])->prefix('planner')->name('planner.')->group(function () {
-        Route::get('/', [PlannerController::class, 'index'])->name('index');
-        Route::post('/', [PlannerController::class, 'store'])->name('store');
-        Route::patch('/{plannerTask}', [PlannerController::class, 'update'])->name('update');
-        Route::delete('/{plannerTask}', [PlannerController::class, 'destroy'])->name('destroy');
-        Route::patch('/{plannerTask}/toggle', [PlannerController::class, 'toggle'])->name('toggle');
-        Route::post('/log', [PlannerController::class, 'updateLog'])->name('updateLog');
-        Route::post('/reset', [PlannerController::class, 'resetBoard'])->name('reset');
-        Route::post('/batch', [PlannerController::class, 'batchStore'])->name('batchStore');
+            Route::get('/', [PlannerController::class , 'index'])->name('index');
+            Route::post('/', [PlannerController::class , 'store'])->name('store');
+            Route::patch('/{plannerTask}', [PlannerController::class , 'update'])->name('update');
+            Route::delete('/{plannerTask}', [PlannerController::class , 'destroy'])->name('destroy');
+            Route::patch('/{plannerTask}/toggle', [PlannerController::class , 'toggle'])->name('toggle');
+            Route::post('/log', [PlannerController::class , 'updateLog'])->name('updateLog');
+            Route::post('/reset', [PlannerController::class , 'resetBoard'])->name('reset');
+            Route::post('/batch', [PlannerController::class , 'batchStore'])->name('batchStore');
+        }
+        );
+
+        Route::middleware(['module:habit'])->prefix('habits')->name('habits.')->group(function () {
+            Route::get('/', [HabitController::class , 'index'])->name('index');
+            Route::post('/', [HabitController::class , 'store'])->name('store');
+
+            Route::post('/batch', [HabitController::class , 'batchStore'])->name('batchStore');
+            Route::post('/copy', [HabitController::class , 'copyFromPrevious'])->name('copy');
+            Route::post('/mood', [HabitController::class , 'updateMood'])->name('mood');
+
+            // 🔥 PERBAIKAN DI SINI: hapus '/habits' dan 'habits.' karena sudah ada di grup atas
+            Route::post('/reorder', [HabitController::class , 'reorder'])->name('reorder');
+            Route::post('/batch-log', [HabitController::class , 'batchLog'])->name('batch-log');
+
+            // Ini harus di bawah supaya tidak bentrok (Laravel membaca /reorder dulu baru /{habit})
+            Route::patch('/{habit}', [HabitController::class , 'update'])->name('update');
+            Route::delete('/{habit}', [HabitController::class , 'destroy'])->name('destroy');
+            Route::post('/{habit}/log', [HabitController::class , 'storeLog'])->name('log');
+        }
+        );
+
+        Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->group(function () {
+            Route::get('/', [FinanceController::class , 'index'])->name('index');
+            Route::post('/income-target', [FinanceController::class , 'updateIncomeTarget'])->name('income-target.update');
+
+            // Transaksi Singel
+            Route::post('/transaction', [FinanceController::class , 'storeTransaction'])->name('transaction.store');
+            Route::patch('/transaction/{financeTransaction}', [FinanceController::class , 'updateTransaction'])->name('transaction.update');
+            Route::delete('/transaction/{financeTransaction}', [FinanceController::class , 'destroyTransaction'])->name('transaction.destroy');
+
+            // 🔥 FIX BATCH ENTRY: Hilangkan kata 'finance' di URL dan Name
+            Route::post('/transactions-batch', [FinanceController::class , 'batchStoreTransaction'])->name('transaction.batchStore');
+
+            Route::get('/category/check/{category}', [FinanceController::class , 'checkCategoryUsage'])->name('category.check');
+            Route::post('/category/rename', [FinanceController::class , 'renameCategory'])->name('category.rename');
+
+            Route::post('/budget', [FinanceController::class , 'storeBudget'])->name('budget.store');
+            Route::put('/budget/{financeBudget}', [FinanceController::class , 'updateBudget'])->name('budget.update');
+            Route::delete('/budget/{financeBudget}', [FinanceController::class , 'destroyBudget'])->name('budget.destroy');
+
+            Route::post('/categories', [FinanceController::class , 'storeCategory'])->name('categories.store');
+            Route::put('/categories/{category}', [FinanceController::class , 'updateCategory'])->name('categories.update');
+            Route::delete('/categories/{category}', [FinanceController::class , 'destroyCategory'])->name('categories.destroy');
+        }
+        );
+
+        // --- MODULE: JOURNAL ---
+        Route::middleware(['module:journal'])->prefix('journal')->name('journal.')->group(function () {
+            Route::get('/', [JournalController::class , 'index'])->name('index');
+            Route::get('/write/{id?}', [JournalController::class , 'write'])->name('write');
+
+            // Sistem CRUD
+            Route::post('/', [JournalController::class , 'store'])->name('store');
+            Route::patch('/{id}', [JournalController::class , 'update'])->name('update');
+            Route::delete('/{id}', [JournalController::class , 'destroy'])->name('destroy');
+
+            // Image Upload
+            Route::post('/image', [JournalController::class , 'uploadImage'])->name('uploadImage');
+            Route::delete('/image/{id}', [JournalController::class , 'deleteImage'])->name('deleteImage');
+        }
+        );
+
+        // --- MODULE: CALENDAR ---
+        Route::middleware(['module:calendar'])->prefix('calendar')->name('calendar.')->group(function () {
+            Route::get('/', [CalendarController::class , 'index'])->name('index');
+
+            // CRUD untuk Event
+            Route::post('/events', [CalendarController::class , 'storeEvent'])->name('events.store');
+            Route::put('/events/{id}', [CalendarController::class , 'updateEvent'])->name('events.update');
+            Route::delete('/events/{id}', [CalendarController::class , 'destroyEvent'])->name('events.destroy');
+        }
+        );
+
+        // Job Tracker Routes
+        Route::middleware(['module:job'])->prefix('jobs')->name('jobs.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\JobController::class , 'index'])->name('index');
+            Route::post('/', [\App\Http\Controllers\JobController::class , 'store'])->name('store');
+            Route::patch('/{job}', [\App\Http\Controllers\JobController::class , 'update'])->name('update');
+            Route::delete('/{job}', [\App\Http\Controllers\JobController::class , 'destroy'])->name('destroy');
+            Route::post('/bulk-update-status', [\App\Http\Controllers\JobController::class , 'bulkUpdateStatus'])->name('bulk-update-status');
+            Route::post('/bulk-delete', [\App\Http\Controllers\JobController::class , 'bulkDelete'])->name('bulk-delete');
+        }
+        );
+
+        // Goal Tracker Routes
+        Route::middleware(['module:goal'])->prefix('goals')->name('goals.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\GoalController::class , 'index'])->name('index');
+            Route::post('/', [\App\Http\Controllers\GoalController::class , 'store'])->name('store');
+            Route::patch('/{goal}', [\App\Http\Controllers\GoalController::class , 'update'])->name('update');
+            Route::delete('/{goal}', [\App\Http\Controllers\GoalController::class , 'destroy'])->name('destroy');
+            Route::post('/bulk-update-status', [\App\Http\Controllers\GoalController::class , 'bulkUpdateStatus'])->name('bulk-update-status');
+            Route::post('/bulk-delete', [\App\Http\Controllers\GoalController::class , 'bulkDelete'])->name('bulk-delete');
+
+            // Milestones
+            Route::post('/{goal}/milestones', [\App\Http\Controllers\GoalController::class , 'storeMilestone'])->name('milestones.store');
+            Route::patch('/{goal}/milestones/{milestone}', [\App\Http\Controllers\GoalController::class , 'updateMilestone'])->name('milestones.update');
+            Route::post('/{goal}/milestones/{milestone}/toggle', [\App\Http\Controllers\GoalController::class , 'toggleMilestone'])->name('milestones.toggle');
+            Route::delete('/{goal}/milestones/{milestone}', [\App\Http\Controllers\GoalController::class , 'destroyMilestone'])->name('milestones.destroy');
+        }
+        );
+
+        Route::get('/settings', [SettingsController::class , 'index'])->name('settings.index');
+        Route::post('/settings', [SettingsController::class , 'update'])->name('settings.update');
+
+        Route::prefix('profile')->name('profile.')->group(function () {
+            Route::get('/', [ProfileController::class , 'edit'])->name('edit');
+            Route::patch('/', [ProfileController::class , 'update'])->name('update');
+            Route::delete('/', [ProfileController::class , 'destroy'])->name('destroy');
+        }
+        );
     });
 
-   Route::middleware(['module:habit'])->prefix('habits')->name('habits.')->group(function () {
-    Route::get('/', [HabitController::class, 'index'])->name('index');
-    Route::post('/', [HabitController::class, 'store'])->name('store');
-    
-    Route::post('/batch', [HabitController::class, 'batchStore'])->name('batchStore');
-    Route::post('/copy', [HabitController::class, 'copyFromPrevious'])->name('copy');
-    Route::post('/mood', [HabitController::class, 'updateMood'])->name('mood');
-    
-    // 🔥 PERBAIKAN DI SINI: hapus '/habits' dan 'habits.' karena sudah ada di grup atas
-    Route::post('/reorder', [HabitController::class, 'reorder'])->name('reorder');
-    Route::post('/batch-log', [HabitController::class, 'batchLog'])->name('batch-log');
-
-    // Ini harus di bawah supaya tidak bentrok (Laravel membaca /reorder dulu baru /{habit})
-    Route::patch('/{habit}', [HabitController::class, 'update'])->name('update');
-    Route::delete('/{habit}', [HabitController::class, 'destroy'])->name('destroy');
-    Route::post('/{habit}/log', [HabitController::class, 'storeLog'])->name('log');
-});
-
-    Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->group(function () {
-    Route::get('/', [FinanceController::class, 'index'])->name('index');
-    Route::post('/income-target', [FinanceController::class, 'updateIncomeTarget'])->name('income-target.update');
-    
-    // Transaksi Singel
-    Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
-    Route::patch('/transaction/{financeTransaction}', [FinanceController::class, 'updateTransaction'])->name('transaction.update');
-    Route::delete('/transaction/{financeTransaction}', [FinanceController::class, 'destroyTransaction'])->name('transaction.destroy');
-    
-    // 🔥 FIX BATCH ENTRY: Hilangkan kata 'finance' di URL dan Name
-    Route::post('/transactions-batch', [FinanceController::class, 'batchStoreTransaction'])->name('transaction.batchStore');  
-
-    Route::get('/category/check/{category}', [FinanceController::class, 'checkCategoryUsage'])->name('category.check');
-    Route::post('/category/rename', [FinanceController::class, 'renameCategory'])->name('category.rename');
-    
-    Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
-    Route::put('/budget/{financeBudget}', [FinanceController::class, 'updateBudget'])->name('budget.update');
-    Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy');
-    
-    Route::post('/categories', [FinanceController::class, 'storeCategory'])->name('categories.store');
-    Route::put('/categories/{category}', [FinanceController::class, 'updateCategory'])->name('categories.update');
-    Route::delete('/categories/{category}', [FinanceController::class, 'destroyCategory'])->name('categories.destroy');
-});
-// --- MODULE: JOURNAL ---
-Route::middleware(['module:journal'])->prefix('journal')->name('journal.')->group(function () {
-    Route::get('/', [JournalController::class, 'index'])->name('index');
-    Route::get('/write/{id?}', [JournalController::class, 'write'])->name('write');
-    
-    // Sistem CRUD
-    Route::post('/', [JournalController::class, 'store'])->name('store');
-    Route::patch('/{id}', [JournalController::class, 'update'])->name('update');
-    Route::delete('/{id}', [JournalController::class, 'destroy'])->name('destroy');
-    
-    // Image Upload
-    Route::post('/image', [JournalController::class, 'uploadImage'])->name('uploadImage');
-    Route::delete('/image/{id}', [JournalController::class, 'deleteImage'])->name('deleteImage');
-});
-
-
-// --- MODULE: CALENDAR ---
-Route::middleware(['module:calendar'])->prefix('calendar')->name('calendar.')->group(function () {
-    Route::get('/', [CalendarController::class, 'index'])->name('index');
-    
-    // CRUD untuk Event
-    Route::post('/events', [CalendarController::class, 'storeEvent'])->name('events.store');
-    Route::put('/events/{id}', [CalendarController::class, 'updateEvent'])->name('events.update');
-    Route::delete('/events/{id}', [CalendarController::class, 'destroyEvent'])->name('events.destroy');
-});
-
-    // Job Tracker Routes
-    Route::middleware(['module:job'])->prefix('jobs')->name('jobs.')->group(function () {
-        Route::get('/', [\App\Http\Controllers\JobController::class, 'index'])->name('index');
-        Route::post('/', [\App\Http\Controllers\JobController::class, 'store'])->name('store');
-        Route::patch('/{job}', [\App\Http\Controllers\JobController::class, 'update'])->name('update');
-        Route::delete('/{job}', [\App\Http\Controllers\JobController::class, 'destroy'])->name('destroy');
-        Route::post('/bulk-update-status', [\App\Http\Controllers\JobController::class, 'bulkUpdateStatus'])->name('bulk-update-status');
-        Route::post('/bulk-delete', [\App\Http\Controllers\JobController::class, 'bulkDelete'])->name('bulk-delete');
-    });
-
-    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
-    Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
-
-    Route::prefix('profile')->name('profile.')->group(function () {
-        Route::get('/', [ProfileController::class, 'edit'])->name('edit');
-        Route::patch('/', [ProfileController::class, 'update'])->name('update');
-        Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
-    });
-});
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
