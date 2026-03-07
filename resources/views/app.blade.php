@@ -12,6 +12,9 @@
         <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Satu aplikasi produktivitas untuk segalanya. Kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' : 'The only productivity app you need. Manage finances, habits, and daily plans in one unified, minimalist dashboard.' }}" inertia>
         <meta property="og:image" content="{{ asset('favicon.svg') }}" inertia>
 
+        <meta http-equiv="x-dns-prefetch-control" content="on">
+        <link rel="dns-prefetch" href="https://fonts.bunny.net">
+
         <link rel="icon" type="image/x-icon" href="/favicon.svg?v=2">
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.svg?v=2">
 

@@ -22,7 +22,7 @@ createInertiaApp({
         ),
 
     // 🔥 MAGIC FIX 1: Hapus kata 'async' dari setup. Kita buat jalannya synchronous.
-    setup({ el, App, props, plugin }) { 
+    setup({ el, App, props, plugin }) {
         const activeLang = props.initialPage.props.locale || 'id';
 
         const vueApp = createApp({
@@ -63,19 +63,23 @@ NProgress.configure({
     trickleSpeed: 200,  // Setiap 0.2 detik bar bakal nambah dikit secara otomatis
 });
 
+let timeout = null;
+
 router.on('start', (event) => {
     if (event.detail.visit.method.toLowerCase() === 'get') {
-        NProgress.start();
+        timeout = setTimeout(() => {
+            NProgress.start();
+        }, 150); // Delay 150ms. Kalau halaman selesai kurang dari ini, bar gak bakal muncul.
     }
 });
 
-// Gunakan 'finish' untuk stop
 router.on('finish', (event) => {
+    clearTimeout(timeout);
     NProgress.done();
 });
 
-// Opsional: Kalau ada error, matiin bar-nya juga
 router.on('error', () => {
+    clearTimeout(timeout);
     NProgress.done();
 });
 
