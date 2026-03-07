@@ -85,5 +85,13 @@
     "goal_ph_end": "Atur Deadline",
     "img_upload_success": "Gambar berhasil diunggah!",
     "goal_success_save": "Berhasil disimpan!",
-    "milestone_success_save": "Langkah berhasil disimpan!"
+    "milestone_success_save": "Langkah berhasil disimpan!",
+    "warn_empty_title": "Judul Wajib Diisi!",
+    "warn_empty_title_text": "Masa impian nggak ada namanya? Kasih judul dong!",
+    "btn_ok": "Siap!",
+    "btn_cancel": "Batal",
+    "btn_yes_delete": "Ya, Hapus!",
+    "goal_delete_confirm": "Hapus impian ini?",
+    "no_category": "Tanpa Kategori",
+    "no_date": "Tanpa Tanggal"
 }

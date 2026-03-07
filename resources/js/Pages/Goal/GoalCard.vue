@@ -69,9 +69,6 @@ const t = (key, fallback) => {
             <!-- Absolute Floaters -->
             <div class="absolute top-4 left-4 flex gap-2">
                 <div :class="[priorityConfig[goal.priority], 'w-2 h-2 rounded-full shadow-lg pulse-priority']"></div>
-                <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[9px] font-black uppercase tracking-widest">
-                    {{ goal.category || t('common_no_category', 'Goal') }}
-                </span>
             </div>
 
             <div class="absolute top-4 right-4 flex gap-2">
@@ -127,7 +124,7 @@ const t = (key, fallback) => {
                             <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">{{ t('common_deadline', 'Target') }}</span>
                             <span class="text-xs font-black text-slate-600 flex items-center gap-1.5">
                                 <Calendar :size="12" class="text-slate-400" />
-                                {{ goal.end_date || 'No Limit' }}
+                                {{ goal.end_date || t('no_date', 'No Deadline') }}
                             </span>
                         </div>
                     </div>

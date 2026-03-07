@@ -3,11 +3,18 @@ import { ref } from 'vue';
 import GoalDatePicker from './GoalDatePicker.vue';
 import { Check, Trash2, Calendar, Target, Edit3, Clock } from 'lucide-vue-next';
 
+import { trans } from 'laravel-vue-i18n';
+
 const props = defineProps({
     milestone: Object
 });
 
 const emit = defineEmits(['save', 'toggle', 'delete']);
+
+const t = (key, fallback) => {
+    const res = trans(key);
+    return res !== key ? res : fallback;
+};
 
 const isEditing = ref(false);
 const editTitle = ref(props.milestone.title);
@@ -55,7 +62,7 @@ const handleKeydown = (e) => {
                     v-model="editTitle"
                     @keydown="handleKeydown"
                     autofocus
-                    :placeholder="$t('milestone_placeholder', 'Nama langkah...')"
+                    :placeholder="t('milestone_placeholder', 'Nama langkah...')"
                     class="w-full bg-transparent border-none focus:ring-0 p-0 text-sm font-bold text-slate-700 placeholder:text-slate-300"
                 />
                 <div class="flex items-center gap-3">
@@ -65,7 +72,7 @@ const handleKeydown = (e) => {
                             class="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-xl bg-white border border-slate-100 text-slate-400 hover:text-indigo-600 transition-all flex items-center gap-2"
                         >
                             <Calendar :size="10" />
-                            {{ editTargetDate || $t('milestone_target_date', 'Set Date') }}
+                            {{ editTargetDate || t('milestone_target_date', 'Set Date') }}
                         </button>
                         <GoalDatePicker 
                             :show="showDatePicker" 
@@ -74,7 +81,7 @@ const handleKeydown = (e) => {
                         />
                     </div>
                     <button @click="handleSave" class="text-[9px] font-black uppercase tracking-widest text-indigo-600 hover:tracking-[0.15em] transition-all">
-                        {{ $t('btn_save', 'Save') }}
+                        {{ t('btn_save', 'Save') }}
                     </button>
                 </div>
             </div>
@@ -83,7 +90,7 @@ const handleKeydown = (e) => {
                     class="block text-sm font-bold transition-all duration-300 truncate"
                     :class="milestone.completed ? 'text-slate-300 line-through' : 'text-slate-700 group-hover/text:text-indigo-600'"
                 >
-                    {{ milestone.title || $t('milestone_edit_placeholder', 'Untitled Step') }}
+                    {{ milestone.title || t('milestone_edit_placeholder', 'Untitled Step') }}
                 </span>
                 <span v-if="milestone.target_date" class="text-[9px] font-black text-slate-300 uppercase tracking-widest flex items-center gap-1.5 mt-1">
                     <Clock :size="10" />

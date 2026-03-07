@@ -18,7 +18,6 @@ const emit = defineEmits(['close', 'save']);
 
 const form = ref({
     title: '',
-    category: '',
     type: 'daily',
     status: 'active',
     priority: 'important',
@@ -50,8 +49,29 @@ const handleClose = () => {
 };
 
 const handleSave = () => {
-    if (!form.value.title) return;
+    if (!form.value.title || form.value.title.trim() === '') {
+        Swal.fire({
+            ...swalTheme,
+            title: t('warn_empty_title', 'Judul Wajib Diisi!'),
+            text: t('warn_empty_title_text', 'Masa impian nggak ada namanya? Kasih judul dong!'),
+            icon: 'warning',
+            confirmButtonText: t('btn_ok', 'Siap!'),
+        });
+        return;
+    }
     emit('save', form.value);
+};
+
+const swalTheme = {
+    customClass: {
+        popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
+        title: 'text-2xl font-black text-slate-800 mb-2 font-sans',
+        confirmButton: 'bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-2xl shadow-xl active:scale-95 transition-all outline-none mx-2 tracking-wide',
+        cancelButton: 'bg-slate-50 text-slate-400 font-bold py-3.5 px-8 rounded-2xl hover:bg-slate-100 active:scale-95 transition-all outline-none mx-2 tracking-wide',
+        actions: 'mt-6 gap-3',
+    },
+    buttonsStyling: false,
+    focusConfirm: false
 };
 
 const triggerFileInput = () => {
@@ -142,33 +162,13 @@ const t = (key, fallback) => {
                 <div class="p-8 overflow-y-auto custom-scrollbar space-y-8">
                     
                     <!-- Main Info -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_title', 'Goal Title') }}</label>
-                            <div class="relative">
-                                <input v-model="form.title" type="text" 
-                                       class="w-full bg-slate-50 border-none rounded-2xl px-5 py-4 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 placeholder:text-slate-300 transition-all"
-                                       :placeholder="t('goal_placeholder_title', 'Nama impianmu...')" />
-                                <Target :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none" />
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_category', 'Category') }}</label>
-                            <div class="relative">
-                                <select v-model="form.category" 
-                                        class="w-full bg-slate-50 border-none rounded-2xl px-5 py-4 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 transition-all appearance-none cursor-pointer pr-12">
-                                    <option value="">{{ t('no_category', 'Uncategorized') }}</option>
-                                    <option value="Personal">Personal</option>
-                                    <option value="Career">Career</option>
-                                    <option value="Health">Health</option>
-                                    <option value="Finance">Finance</option>
-                                    <option value="Growth">Growth</option>
-                                </select>
-                                <div class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                                </div>
-                            </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_title', 'Goal Title') }}</label>
+                        <div class="relative">
+                            <input v-model="form.title" type="text" 
+                                    class="w-full bg-slate-50 border-none rounded-2xl px-5 py-5 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 placeholder:text-slate-300 transition-all text-lg"
+                                    :placeholder="t('goal_placeholder_title', 'Nama impianmu...')" />
+                            <Target :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none" />
                         </div>
                     </div>
 
@@ -216,7 +216,6 @@ const t = (key, fallback) => {
                                 :show="showStartPicker" 
                                 v-model="form.start_date" 
                                 @close="showStartPicker = false" 
-                                class="!left-0 !right-auto bottom-full mb-2"
                             />
                         </div>
 
@@ -233,7 +232,6 @@ const t = (key, fallback) => {
                                 :show="showEndPicker" 
                                 v-model="form.end_date" 
                                 @close="showEndPicker = false" 
-                                class="!left-0 !right-auto bottom-full mb-2 sm:!left-auto sm:!right-0"
                             />
                         </div>
                     </div>

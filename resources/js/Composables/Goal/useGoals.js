@@ -46,13 +46,35 @@ export function useGoals(props) {
         return result !== key ? result : fallback;
     };
 
-    const fireToast = (message, icon = 'error', color = '#e11d48') => {
+    const fireToast = (icon, message) => {
         Swal.fire({
-            toast: true, position: 'top-end', showConfirmButton: false,
-            timer: 3000, background: color, iconColor: '#ffffff', icon: icon,
-            title: `<span style="color: white; font-weight: 700; font-size: 14px;">${message}</span>`,
-            customClass: { popup: '!rounded-xl !shadow-lg !m-4' }
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            background: '#4f46e5',
+            iconColor: '#ffffff',
+            icon: icon,
+            title: `<span style="color: white; font-weight: 900; font-size: 14px; line-height: 1.2;">${message}</span>`,
+            customClass: {
+                container: '!fixed !top-5 !right-5 !p-0 !z-[100000] !items-start !justify-end',
+                popup: '!flex !items-center !gap-3 !py-3 !px-6 !rounded-full !shadow-2xl !border-none !m-0 !w-auto !min-w-[280px]',
+                timerProgressBar: '!bg-white/40 !h-1 !rounded-b-full'
+            }
         });
+    };
+
+    const swalTheme = {
+        customClass: {
+            popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
+            title: 'text-2xl font-black text-slate-800 mb-2 font-sans',
+            confirmButton: 'bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-2xl shadow-xl active:scale-95 transition-all outline-none mx-2 tracking-wide',
+            cancelButton: 'bg-slate-50 text-slate-400 font-bold py-3.5 px-8 rounded-2xl hover:bg-slate-100 active:scale-95 transition-all outline-none mx-2 tracking-wide',
+            actions: 'mt-6 gap-3',
+        },
+        buttonsStyling: false,
+        focusConfirm: false
     };
 
     const openCreateModal = () => {
@@ -89,6 +111,10 @@ export function useGoals(props) {
     };
 
     const saveGoal = async (goalData) => {
+        if (!goalData.title || goalData.title.trim() === '') {
+            return fireToast('warning', t('warn_empty_title', 'Title is required!'));
+        }
+
         // Find existing local goal or create new one for optimistic update
         let goal;
         if (goalData.is_new) {
@@ -119,11 +145,11 @@ export function useGoals(props) {
                     };
                 }
                 closeModal();
-                fireToast(t('goal_success_save', 'Berhasil disimpan!'), 'success', '#4f46e5');
+                fireToast('success', t('goal_success_save', 'Berhasil disimpan!'));
             }
         } catch (error) {
             console.error(error);
-            fireToast(t('goal_error_save', 'Gagal menyimpan!'), 'error');
+            fireToast('error', t('goal_error_save', 'Gagal menyimpan!'));
             if (goal) goal.is_saving = false;
         }
     };
@@ -139,7 +165,7 @@ export function useGoals(props) {
             });
             return response.data;
         } catch (error) {
-            fireToast(t('img_upload_error', 'Gagal upload gambar!'), 'error');
+            fireToast('error', t('img_upload_error', 'Gagal upload gambar!'));
             throw error;
         }
     };
@@ -151,19 +177,12 @@ export function useGoals(props) {
         }
 
         const result = await Swal.fire({
-            title: t('common.confirm_delete_title', 'Hapus Goal?'),
-            text: t('common.confirm_delete_text', 'Aksi ini tidak bisa dibatalkan.'),
+            ...swalTheme,
+            title: t('goal_delete_confirm', 'Hapus Goal?'),
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#4f46e5',
-            cancelButtonColor: '#f1f5f9',
-            confirmButtonText: t('common.yes_delete', 'Ya, Hapus'),
-            cancelButtonText: t('common.cancel', 'Batal'),
-            customClass: {
-                confirmButton: '!rounded-xl !px-6 !py-3 !font-black !uppercase !tracking-widest !text-[10px]',
-                cancelButton: '!rounded-xl !px-6 !py-3 !font-black !uppercase !tracking-widest !text-[10px] !text-slate-400',
-                popup: '!rounded-[2rem] !p-8'
-            }
+            confirmButtonText: t('btn_yes_delete', 'Ya, Hapus'),
+            cancelButtonText: t('btn_cancel', 'Batal'),
         });
 
         if (!result.isConfirmed) return;
@@ -171,9 +190,9 @@ export function useGoals(props) {
         try {
             await axios.delete(route('goals.destroy', id));
             localGoals.value = localGoals.value.filter(g => g.id !== id);
-            fireToast(t('goal_success_delete', 'Goal dihapus!'), 'success', '#4f46e5');
+            fireToast('success', t('goal_success_delete', 'Goal dihapus!'));
         } catch (e) {
-            fireToast(t('goal_error_delete', 'Gagal menghapus!'), 'error');
+            fireToast('error', t('goal_error_delete', 'Gagal menghapus!'));
         }
     };
 
@@ -185,7 +204,7 @@ export function useGoals(props) {
                 _method: 'PATCH'
             });
         } catch (error) {
-            fireToast(t('goal_error_save', 'Gagal menyimpan!'), 'error');
+            fireToast('error', t('goal_error_save', 'Gagal menyimpan!'));
         } finally {
             goal.is_saving = false;
         }
@@ -224,9 +243,9 @@ export function useGoals(props) {
                     target_date: milestone.target_date
                 });
             }
-            fireToast(t('milestone_success_save', 'Langkah disimpan!'), 'success', '#4f46e5');
+            fireToast('success', t('milestone_success_save', 'Langkah disimpan!'));
         } catch (error) {
-            fireToast(t('milestone_error_save', 'Gagal menyimpan langkah!'));
+            fireToast('error', t('milestone_error_save', 'Gagal menyimpan langkah!'));
         } finally {
             milestone.is_saving = false;
         }
@@ -242,7 +261,7 @@ export function useGoals(props) {
         } catch (error) {
             milestone.completed = !milestone.completed;
             goal.progress = originalProgress;
-            fireToast(t('milestone_error_toggle', 'Gagal update status!'));
+            fireToast('error', t('milestone_error_toggle', 'Gagal update status!'));
         }
     };
 
@@ -258,7 +277,7 @@ export function useGoals(props) {
             try {
                 await axios.delete(route('goals.milestones.destroy', [goal.id, milestoneId]));
             } catch (error) {
-                fireToast(t('milestone_error_delete', 'Gagal menghapus langkah!'));
+                fireToast('error', t('milestone_error_delete', 'Gagal menghapus langkah!'));
             }
         }
     };

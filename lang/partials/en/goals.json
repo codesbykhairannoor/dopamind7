@@ -85,5 +85,13 @@
     "goal_ph_end": "Set Deadline",
     "img_upload_success": "Image successfully uploaded!",
     "goal_success_save": "Saved successfully!",
-    "milestone_success_save": "Step saved successfully!"
+    "milestone_success_save": "Step saved successfully!",
+    "warn_empty_title": "Title Required!",
+    "warn_empty_title_text": "Dreams need names! Please enter a title.",
+    "btn_ok": "OK!",
+    "btn_cancel": "Cancel",
+    "btn_yes_delete": "Yes, Delete!",
+    "goal_delete_confirm": "Delete this vision?",
+    "no_category": "Uncategorized",
+    "no_date": "No Deadline"
 }

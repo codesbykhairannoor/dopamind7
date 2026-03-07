@@ -67,64 +67,57 @@ const isToday = (day) => {
 </script>
 
 <template>
-    <div v-if="show" class="absolute z-[100] mt-2 left-0 sm:left-auto sm:right-0">
+    <div v-if="show" class="fixed inset-0 sm:absolute sm:inset-auto z-[100] flex items-center justify-center sm:block">
         <!-- Backdrop to close -->
-        <div class="fixed inset-0 z-40 bg-transparent" @click="emit('close')"></div>
+        <div class="fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none" @click="emit('close')"></div>
 
-        <div class="relative z-50 bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-6 w-[320px] animate-in fade-in zoom-in-95 duration-200">
+        <div class="relative z-50 bg-white rounded-[2.5rem] shadow-2xl border border-slate-100 p-8 w-[340px] animate-in fade-in zoom-in-95 duration-200">
             
             <!-- Header -->
-            <div class="flex items-center justify-between mb-6">
-                <button @click.prevent="prevMonth" class="p-2.5 rounded-2xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600 transition-all active:scale-90">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <div class="flex items-center justify-between mb-8">
+                <button @click.prevent="prevMonth" class="p-3 rounded-2xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600 transition-all active:scale-90 border border-transparent hover:border-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
                 </button>
                 <div class="text-center">
-                    <h4 class="font-black text-slate-800 capitalize tracking-tight">{{ formattedHeader }}</h4>
-                    <div class="w-8 h-1 bg-indigo-500 rounded-full mx-auto mt-1 opacity-20"></div>
+                    <h4 class="font-black text-slate-800 capitalize tracking-tight text-lg">{{ formattedHeader }}</h4>
+                    <div class="w-10 h-1.5 bg-indigo-500 rounded-full mx-auto mt-1 opacity-20"></div>
                 </div>
-                <button @click.prevent="nextMonth" class="p-2.5 rounded-2xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600 transition-all active:scale-90">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                <button @click.prevent="nextMonth" class="p-3 rounded-2xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600 transition-all active:scale-90 border border-transparent hover:border-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
             </div>
 
             <!-- Weekdays -->
-            <div class="grid grid-cols-7 mb-4 text-center">
-                <span v-for="dayName in weekDays" :key="dayName" class="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">
-                    {{ dayName }}
+            <div class="grid grid-cols-7 mb-6 text-center">
+                <span v-for="dayName in weekDays" :key="dayName" class="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                    {{ dayName.slice(0, 3) }}
                 </span>
             </div>
 
             <!-- Days Grid -->
-            <div class="grid grid-cols-7 gap-2">
+            <div class="grid grid-cols-7 gap-3">
                 <div v-for="n in startDayOfWeek" :key="'blank-'+n"></div>
-
                 <button 
-                    v-for="day in daysInMonth" 
-                    :key="day"
-                    @click.prevent="selectDate(day)"
-                    class="h-9 w-9 rounded-xl flex items-center justify-center transition-all relative group"
-                    :class="[
-                        isSelected(day) 
-                            ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30 font-black scale-105' 
-                            : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600 font-bold',
-                        isToday(day) && !isSelected(day) ? 'bg-indigo-50/80 text-indigo-700' : ''
-                    ]"
+                  v-for="day in daysInMonth" 
+                  :key="day" 
+                  @click.prevent="selectDate(day)"
+                  class="h-10 w-10 flex items-center justify-center rounded-2xl text-[13px] font-bold transition-all relative group"
+                  :class="[
+                    isSelected(day) 
+                        ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 scale-110 z-10' 
+                        : 'text-slate-600 hover:bg-indigo-50 hover:text-indigo-600',
+                    isToday(day) && !isSelected(day) ? 'text-indigo-600' : ''
+                  ]"
                 >
-                    <span class="text-sm font-bold">{{ day }}</span>
-                    
+                    {{ day }}
                     <span v-if="isToday(day)" 
-                          class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full"
+                          class="absolute bottom-1 w-1 h-1 rounded-full bg-current"
                           :class="isSelected(day) ? 'bg-white' : 'bg-indigo-500'"></span>
-
-                    <span v-if="isToday(day) && !isSelected(day)" class="absolute -top-0.5 -right-0.5 flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-                    </span>
                 </button>
             </div>
-            
+
             <!-- Quick Links / Footer -->
-            <div class="mt-6 pt-5 border-t border-slate-50 flex items-center justify-between">
+            <div class="mt-8 pt-6 border-t border-slate-50 flex items-center justify-between">
                 <button @click="currentMonth = dayjs()" class="text-[10px] font-black uppercase tracking-widest text-indigo-600 hover:bg-indigo-50 px-3 py-1.5 rounded-lg transition-all">
                     {{ $t('datepicker_today', 'Hari Ini') }}
                 </button>
