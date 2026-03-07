@@ -367,6 +367,10 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::post('/bulk-update-status', [\App\Http\Controllers\GoalController::class , 'bulkUpdateStatus'])->name('bulk-update-status');
             Route::post('/bulk-delete', [\App\Http\Controllers\GoalController::class , 'bulkDelete'])->name('bulk-delete');
 
+            // Image
+            Route::post('/image', [\App\Http\Controllers\GoalController::class , 'uploadCoverImage'])->name('uploadImage');
+            Route::delete('/image/{id}', [\App\Http\Controllers\GoalController::class , 'deleteCoverImage'])->name('deleteImage');
+
             // Milestones
             Route::post('/{goal}/milestones', [\App\Http\Controllers\GoalController::class , 'storeMilestone'])->name('milestones.store');
             Route::patch('/{goal}/milestones/{milestone}', [\App\Http\Controllers\GoalController::class , 'updateMilestone'])->name('milestones.update');

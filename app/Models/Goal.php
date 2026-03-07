@@ -15,6 +15,8 @@ class Goal extends Model
     protected $fillable = [
         'user_id',
         'title',
+        'cover_image_url',
+        'cover_image_path',
         'category',
         'type',
         'target_value',
@@ -23,6 +25,8 @@ class Goal extends Model
         'end_date',
         'specific_days',
         'status',
+        'priority',
+        'reward',
     ];
 
     protected $casts = [

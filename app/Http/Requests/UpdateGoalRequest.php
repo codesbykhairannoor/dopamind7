@@ -23,6 +23,7 @@ class UpdateGoalRequest extends FormRequest
     {
         return [
             'title' => ['nullable', 'string', 'max:255'],
+            'cover_image_url' => ['nullable', 'string', 'max:2048'],
             'category' => ['nullable', 'string', 'max:100'],
             'type' => ['nullable', 'in:daily,weekly,specific_days,custom_period,monthly,yearly'],
             'target_value' => ['nullable', 'numeric', 'min:0'],
@@ -31,6 +32,8 @@ class UpdateGoalRequest extends FormRequest
             'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
             'specific_days' => ['nullable', 'array'],
             'status' => ['nullable', 'in:active,completed,paused,cancelled'],
+            'priority' => ['nullable', 'in:vital,important,optional'],
+            'reward' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

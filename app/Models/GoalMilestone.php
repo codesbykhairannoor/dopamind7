@@ -9,11 +9,12 @@ class GoalMilestone extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['goal_id', 'title', 'completed', 'order'];
+    protected $fillable = ['goal_id', 'title', 'completed', 'order', 'target_date'];
 
     protected $casts = [
         'completed' => 'boolean',
         'order' => 'integer',
+        'target_date' => 'date',
     ];
 
     public function goal()

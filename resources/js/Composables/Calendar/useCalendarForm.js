@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 
 export function useCalendarForm() {
-    
+
     const t = (key, fallback) => {
         const result = trans(key);
         return result !== key ? result : fallback;
@@ -25,7 +25,7 @@ export function useCalendarForm() {
     };
 
     const isEventModalOpen = ref(false);
-    
+
     const eventForm = useForm({
         id: null,
         title: '',
@@ -39,21 +39,21 @@ export function useCalendarForm() {
         end_time: ''
     });
 
-  // --- LOGIC CRUD ---
+    // --- LOGIC CRUD ---
     const openEventModal = (dateStr = null, eventToEdit = null) => {
         eventForm.reset();
         eventForm.clearErrors();
-        
+
         if (eventToEdit) {
             eventForm.id = eventToEdit.id;
             eventForm.title = eventToEdit.title;
             eventForm.description = eventToEdit.description || '';
             eventForm.type = eventToEdit.type || 'event';
             eventForm.color = eventToEdit.color || '#4f46e5';
-            
+
             // 🔥 FIX: Gunakan dateStr (parameter pertama) jika ada, jika tidak baru ambil dari eventToEdit
             eventForm.start_date = dateStr || eventToEdit.start_date || dayjs().format('YYYY-MM-DD');
-            
+
             eventForm.end_date = eventToEdit.end_date || '';
             eventForm.is_all_day = eventToEdit.is_all_day;
             eventForm.start_time = eventToEdit.start_time || '';
@@ -62,7 +62,7 @@ export function useCalendarForm() {
             // Jika tambah baru, otomatis isi start_date dengan tanggal kotak yang diklik
             eventForm.start_date = dateStr || dayjs().format('YYYY-MM-DD');
         }
-        
+
         isEventModalOpen.value = true;
     };
 
@@ -71,6 +71,11 @@ export function useCalendarForm() {
         if (!eventForm.title) return fireToast('warning', t('warn_empty_title', 'Judul harus diisi!'));
 
         const isEditing = !!eventForm.id;
+
+        if (isEditing && String(eventForm.id).startsWith('temp_')) {
+            return fireToast('warning', t('warn_wait_sync', 'Harap tunggu hingga acara tersimpan.'));
+        }
+
         const url = isEditing ? route('calendar.events.update', eventForm.id) : route('calendar.events.store');
         const method = isEditing ? 'put' : 'post';
 
@@ -102,6 +107,10 @@ export function useCalendarForm() {
 
     // 🔥 TERAPKAN CALLBACK OPTIMISTIC UNTUK DELETE
     const deleteEvent = (id, callbacks = {}) => {
+        if (String(id).startsWith('temp_')) {
+            return fireToast('warning', t('warn_wait_sync', 'Harap tunggu hingga acara tersimpan.'));
+        }
+
         Swal.fire({
             title: t('confirm_delete_title', 'Hapus Acara?'),
             text: t('confirm_delete_text', 'Data ini akan dihapus permanen.'),
@@ -123,8 +132,8 @@ export function useCalendarForm() {
                 if (callbacks.onOptimistic) callbacks.onOptimistic(id);
 
                 router.delete(route('calendar.events.destroy', id), {
-                    preserveScroll: true, 
-                    preserveState: true, 
+                    preserveScroll: true,
+                    preserveState: true,
                     progress: false, // Hilangkan loading bar Inertia
                     onSuccess: () => {
                         fireToast('success', t('success_deleted', 'Berhasil Dihapus!'));

@@ -1,28 +1,40 @@
-import { ref, watch } from 'vue';
+import { ref, watch, nextTick } from 'vue';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 import axios from 'axios';
 
 export function useGoals(props) {
-    const localGoals = ref(props.goals.map(g => ({
-        ...g,
-        _key: g.id || `new_${Math.random().toString(36).substr(2, 9)}`,
-        milestones: Array.isArray(g.milestones) ? g.milestones : [],
-        is_saving: false
-    })));
-
-    const selectedGoals = ref([]);
+    const localGoals = ref([]);
     const localStats = ref(props.stats ? { ...props.stats } : { total: 0, active: 0, completed: 0, paused: 0, cancelled: 0 });
 
-    watch(() => props.goals, (newGoals) => {
-        const unsavedGoals = localGoals.value.filter(g => g.is_new);
-        const incomingGoals = (newGoals || []).map(g => ({
+    // Modal State
+    const isModalOpen = ref(false);
+    const editingGoal = ref(null);
+
+    const initGoals = (goals) => {
+        return (goals || []).map(g => ({
             ...g,
+            _key: g.id || `temp_${Math.random().toString(36).substr(2, 9)}`,
             milestones: Array.isArray(g.milestones) ? g.milestones : [],
-            _key: g.id || `new_${Math.random().toString(36).substr(2, 9)}`,
             is_saving: false
         }));
-        localGoals.value = [...unsavedGoals, ...incomingGoals];
+    };
+
+    localGoals.value = initGoals(props.goals);
+
+    // 🔥 FIX: Improved Sync Logic
+    watch(() => props.goals, (newGoals) => {
+        const incoming = initGoals(newGoals);
+
+        // Match incoming goals with existing ones to maintain local state if necessary
+        // But primarily trust the incoming props as the source of truth for PERSISTED goals
+        localGoals.value = incoming.map(ing => {
+            const existing = localGoals.value.find(lg => lg.id === ing.id);
+            if (existing && existing.is_saving) {
+                return { ...ing, is_saving: true }; // Keep saving state
+            }
+            return ing;
+        });
     }, { deep: true });
 
     watch(() => props.stats, (newStats) => {
@@ -43,156 +55,176 @@ export function useGoals(props) {
         });
     };
 
-    const addEmptyRow = () => {
-        localGoals.value.unshift({
+    const openCreateModal = () => {
+        editingGoal.value = {
             id: null,
             _key: `new_${Math.random().toString(36).substr(2, 9)}`,
             title: '',
             category: '',
             type: 'daily',
             status: 'active',
+            priority: 'important',
+            reward: '',
+            cover_image_url: '',
+            cover_image_path: '',
             progress: 0,
             target_value: 0,
             current_value: 0,
             start_date: new Date().toISOString().split('T')[0],
+            end_date: null,
             is_new: true,
-            is_saving: false,
             milestones: []
+        };
+        isModalOpen.value = true;
+    };
+
+    const openEditModal = (goal) => {
+        editingGoal.value = JSON.parse(JSON.stringify(goal)); // Deep clone
+        isModalOpen.value = true;
+    };
+
+    const closeModal = () => {
+        isModalOpen.value = false;
+        editingGoal.value = null;
+    };
+
+    const saveGoal = async (goalData) => {
+        // Find existing local goal or create new one for optimistic update
+        let goal;
+        if (goalData.is_new) {
+            goal = { ...goalData, is_saving: true };
+            localGoals.value.unshift(goal);
+        } else {
+            goal = localGoals.value.find(g => g.id === goalData.id);
+            if (goal) {
+                Object.assign(goal, goalData, { is_saving: true });
+            }
+        }
+
+        try {
+            const url = goalData.is_new ? route('goals.store') : route('goals.update', goalData.id);
+            const response = await axios.post(url, {
+                ...goalData,
+                _method: goalData.is_new ? 'POST' : 'PATCH'
+            });
+
+            if (response.data.data) {
+                const savedGoal = response.data.data;
+                const index = localGoals.value.findIndex(g => g._key === goalData._key);
+                if (index !== -1) {
+                    localGoals.value[index] = {
+                        ...savedGoal,
+                        _key: savedGoal.id,
+                        is_saving: false
+                    };
+                }
+                closeModal();
+                fireToast(t('goal_success_save', 'Berhasil disimpan!'), 'success', '#4f46e5');
+            }
+        } catch (error) {
+            console.error(error);
+            fireToast(t('goal_error_save', 'Gagal menyimpan!'), 'error');
+            if (goal) goal.is_saving = false;
+        }
+    };
+
+    const uploadCoverImage = async (goalId, file) => {
+        const formData = new FormData();
+        formData.append('image', file);
+        if (goalId) formData.append('id', goalId);
+
+        try {
+            const response = await axios.post(route('goals.uploadImage'), formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+            return response.data;
+        } catch (error) {
+            fireToast(t('img_upload_error', 'Gagal upload gambar!'), 'error');
+            throw error;
+        }
+    };
+
+    const deleteGoal = async (id, isNew = false) => {
+        if (isNew) {
+            localGoals.value = localGoals.value.filter(g => g.id !== id);
+            return;
+        }
+
+        const result = await Swal.fire({
+            title: t('common.confirm_delete_title', 'Hapus Goal?'),
+            text: t('common.confirm_delete_text', 'Aksi ini tidak bisa dibatalkan.'),
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#4f46e5',
+            cancelButtonColor: '#f1f5f9',
+            confirmButtonText: t('common.yes_delete', 'Ya, Hapus'),
+            cancelButtonText: t('common.cancel', 'Batal'),
+            customClass: {
+                confirmButton: '!rounded-xl !px-6 !py-3 !font-black !uppercase !tracking-widest !text-[10px]',
+                cancelButton: '!rounded-xl !px-6 !py-3 !font-black !uppercase !tracking-widest !text-[10px] !text-slate-400',
+                popup: '!rounded-[2rem] !p-8'
+            }
         });
+
+        if (!result.isConfirmed) return;
+
+        try {
+            await axios.delete(route('goals.destroy', id));
+            localGoals.value = localGoals.value.filter(g => g.id !== id);
+            fireToast(t('goal_success_delete', 'Goal dihapus!'), 'success', '#4f46e5');
+        } catch (e) {
+            fireToast(t('goal_error_delete', 'Gagal menghapus!'), 'error');
+        }
     };
 
     const autoSaveRow = async (goal) => {
-        if (!goal.title && goal.is_new) return;
-
         goal.is_saving = true;
         try {
-            const url = goal.is_new ? route('goals.store') : route('goals.update', goal.id);
-            const response = await axios.post(url, {
+            await axios.patch(route('goals.update', goal.id), {
                 ...goal,
-                _method: goal.is_new ? 'POST' : 'PATCH'
+                _method: 'PATCH'
             });
-
-            if (goal.is_new && response.data.data) {
-                const savedGoal = response.data.data;
-                goal.id = savedGoal.id;
-                goal.is_new = false;
-                // Merge milestones but keep local ones if they haven't been saved yet
-                if (savedGoal.milestones) {
-                    goal.milestones = savedGoal.milestones;
-                }
-            }
-
-            // Re-fetch stats in background if possible, or just update local
-            // For now, let Inertia handle it or just rely on the fact that store was successful
         } catch (error) {
-            console.error(error);
             fireToast(t('goal_error_save', 'Gagal menyimpan!'), 'error');
         } finally {
             goal.is_saving = false;
         }
     };
 
-    const deleteGoal = async (id, isNew = false) => {
-        if (isNew || String(id).startsWith('temp_')) {
-            localGoals.value = localGoals.value.filter(g => g.id !== id);
-            return;
-        }
-
-        const goalToDelete = localGoals.value.find(g => g.id === id);
-        if (goalToDelete) {
-            localStats.value.total = Math.max(0, (localStats.value.total || 1) - 1);
-            localStats.value[goalToDelete.status] = Math.max(0, (localStats.value[goalToDelete.status] || 1) - 1);
-        }
-
-        localGoals.value = localGoals.value.filter(g => g.id !== id);
-
-        try {
-            await axios.delete(route('goals.destroy', id), {
-                headers: { 'Accept': 'application/json' }
-            });
-        } catch (e) {
-            fireToast(t('goal_error_delete', 'Gagal menghapus!'), 'error');
-        }
-    };
-
-    const toggleSelection = (goalId) => {
-        const selIndex = selectedGoals.value.indexOf(goalId);
-        selIndex > -1 ? selectedGoals.value.splice(selIndex, 1) : selectedGoals.value.push(goalId);
-    };
-
-    const selectAll = () => {
-        selectedGoals.value.length === localGoals.value.length
-            ? selectedGoals.value = []
-            : selectedGoals.value = localGoals.value.map(g => g.id);
-    };
-
-    const bulkDelete = async () => {
-        if (selectedGoals.value.length === 0) return;
-        if (!confirm(t('goal_bulk_delete_confirm', `Hapus ${selectedGoals.value.length} target sekaligus?`).replace('{count}', selectedGoals.value.length))) return;
-
-        const idsToDelete = [...selectedGoals.value];
-        const validIds = idsToDelete.filter(id => !String(id).startsWith('temp_'));
-
-        idsToDelete.forEach(id => {
-            const goal = localGoals.value.find(g => g.id === id);
-            if (goal) {
-                localStats.value.total = Math.max(0, (localStats.value.total || 1) - 1);
-                localStats.value[goal.status] = Math.max(0, (localStats.value[goal.status] || 1) - 1);
-            }
-        });
-        localGoals.value = localGoals.value.filter(g => !idsToDelete.includes(g.id));
-        selectedGoals.value = [];
-
-        if (validIds.length > 0) {
-            try {
-                await axios.post(route('goals.bulk-delete'), { goal_ids: validIds }, {
-                    headers: { 'Accept': 'application/json' }
-                });
-                fireToast(t('goal_bulk_delete_success', 'Berhasil dihapus!'), 'success', '#10b981');
-            } catch (e) {
-                fireToast(t('goal_error_bulk_delete', 'Gagal menghapus masal!'));
-            }
-        }
-    };
-
     const addMilestone = async (goal) => {
-        const tempId = 'temp_milestone_' + Date.now();
-        const goalId = goal.id;
-
-        // Optimistic UI
-        if (!Array.isArray(goal.milestones)) {
-            goal.milestones = [];
-        }
+        const tempId = 'temp_' + Date.now();
+        if (!Array.isArray(goal.milestones)) goal.milestones = [];
 
         goal.milestones.push({
             id: tempId,
             title: '',
             completed: false,
+            target_date: null,
             is_new: true,
             is_saving: false
         });
-
         recalculateProgress(goal);
     };
 
     const saveMilestone = async (goal, milestone) => {
         if (!milestone.title) return;
-        if (milestone.is_saving) return;
-
         milestone.is_saving = true;
 
         try {
             if (milestone.is_new) {
                 const response = await axios.post(route('goals.milestones.store', goal.id), {
-                    title: milestone.title
+                    title: milestone.title,
+                    target_date: milestone.target_date
                 });
                 milestone.id = response.data.data.id;
                 milestone.is_new = false;
             } else {
                 await axios.patch(route('goals.milestones.update', [goal.id, milestone.id]), {
-                    title: milestone.title
+                    title: milestone.title,
+                    target_date: milestone.target_date
                 });
             }
+            fireToast(t('milestone_success_save', 'Langkah disimpan!'), 'success', '#4f46e5');
         } catch (error) {
             fireToast(t('milestone_error_save', 'Gagal menyimpan langkah!'));
         } finally {
@@ -201,16 +233,6 @@ export function useGoals(props) {
     };
 
     const toggleMilestone = async (goal, milestone) => {
-        // We need a real ID to toggle on server
-        if (String(milestone.id).startsWith('temp_')) {
-            // If it's still temp, we only toggle locally for now
-            // But usually, it should be saved by blur before this.
-            milestone.completed = !milestone.completed;
-            recalculateProgress(goal);
-            return;
-        }
-
-        // Optimistic UI
         milestone.completed = !milestone.completed;
         const originalProgress = goal.progress;
         recalculateProgress(goal);
@@ -225,7 +247,6 @@ export function useGoals(props) {
     };
 
     const deleteMilestone = async (goal, milestoneId) => {
-        if (!Array.isArray(goal.milestones)) return;
         const index = goal.milestones.findIndex(m => m.id === milestoneId);
         if (index === -1) return;
 
@@ -238,34 +259,33 @@ export function useGoals(props) {
                 await axios.delete(route('goals.milestones.destroy', [goal.id, milestoneId]));
             } catch (error) {
                 fireToast(t('milestone_error_delete', 'Gagal menghapus langkah!'));
-                // Note: In a real app we might want to revert the UI here
             }
         }
     };
 
     const recalculateProgress = (goal) => {
-        if (!Array.isArray(goal.milestones) || goal.milestones.length === 0) {
+        const total = goal.milestones?.length || 0;
+        if (total === 0) {
             goal.progress = 0;
             return;
         }
-        const total = goal.milestones.length;
-        const completed = goal.milestones.filter(m => m && m.completed).length;
+        const completed = goal.milestones.filter(m => m.completed).length;
         goal.progress = Math.round((completed / total) * 100);
 
-        // Auto-update status if 100% (optional, but requested "Feel the Progress")
         if (goal.progress === 100 && goal.status !== 'completed') {
             const oldStatus = goal.status;
             goal.status = 'completed';
-            localStats.value[oldStatus]--;
+            if (localStats.value[oldStatus]) localStats.value[oldStatus]--;
             localStats.value['completed']++;
-            autoSaveRow(goal); // Sync to server
+            autoSaveRow(goal);
         }
     };
 
     return {
-        localGoals, selectedGoals, localStats,
-        addEmptyRow, autoSaveRow, deleteGoal,
-        toggleSelection, selectAll, bulkDelete,
+        localGoals, localStats,
+        isModalOpen, editingGoal,
+        openCreateModal, openEditModal, closeModal, saveGoal,
+        uploadCoverImage, deleteGoal, autoSaveRow,
         addMilestone, saveMilestone, toggleMilestone, deleteMilestone
     };
 }

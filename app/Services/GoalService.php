@@ -141,6 +141,7 @@ class GoalService
             'title' => $data['title'],
             'order' => $data['order'] ?? $order,
             'completed' => false,
+            'target_date' => $data['target_date'] ?? null,
         ]);
     }
 

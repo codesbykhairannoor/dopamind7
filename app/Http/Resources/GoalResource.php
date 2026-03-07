@@ -64,6 +64,9 @@ class GoalResource extends JsonResource
             'duration_label' => $durationLabel,
             'specific_days' => $this->specific_days,
             'status' => $this->status,
+            'priority' => $this->priority,
+            'reward' => $this->reward,
+            'cover_image_url' => $this->cover_image_url,
             'progress' => $progress,
             'milestones' => GoalMilestoneResource::collection($this->relationLoaded('milestones') ? $this->milestones : []),
         ];

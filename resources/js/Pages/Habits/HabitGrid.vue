@@ -131,7 +131,7 @@ const handleDragEnd = () => {
                                             }"
                                             :style="getStatus(habit, day.dateString) === 'completed' && !(isCellSelected && isCellSelected(habit.id, day.dateString)) ? { backgroundColor: habit.color } : {}"
                                         >
-                                            <OneForMindIcon v-if="getStatus(habit, day.dateString) === 'completed'" name="goal" size="14" stroke-width="4" class="text-white animate-in zoom-in duration-300" />
+                                            <OneForMindIcon v-if="getStatus(habit, day.dateString) === 'completed'" name="check" size="14" stroke-width="4" class="text-white animate-in zoom-in duration-300" />
                                             <span v-if="getStatus(habit, day.dateString) === 'skipped'" class="text-[10px] md:text-xs font-bold animate-in fade-in duration-300">-</span>
                                         </button>
                                     </div>

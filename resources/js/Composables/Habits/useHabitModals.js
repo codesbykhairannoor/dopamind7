@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 
 export function useHabitModals(props, localHabits) {
-    
+
     // --- HELPER TRANSLASI ---
     const t = (key, fallback) => {
         const result = trans(key);
@@ -28,7 +28,7 @@ export function useHabitModals(props, localHabits) {
         Swal.fire({
             toast: true, position: 'top-end', showConfirmButton: false, timer: 3500,
             background: icon === 'error' ? '#ef4444' : '#4f46e5',
-            color: '#fff', iconColor: '#fff', icon: icon, 
+            color: '#fff', iconColor: '#fff', icon: icon,
             title: `<span style="font-weight: 800; font-size: 14px;">${message}</span>`
         });
     };
@@ -36,10 +36,10 @@ export function useHabitModals(props, localHabits) {
     // --- STATE SINGLE MODE ---
     const showCreateModal = ref(false);
     const isEditing = ref(false);
-    
+
     const form = useForm({
-        id: null, name: '', icon: '⚡', color: '#6366f1', monthly_target: 20, 
-        period: props.monthQuery 
+        id: null, name: '', icon: '⚡', color: '#6366f1', monthly_target: 20,
+        period: props.monthQuery
     });
 
     // --- STATE BATCH MODE 🔥 ---
@@ -109,11 +109,11 @@ export function useHabitModals(props, localHabits) {
         const rawHabits = JSON.parse(JSON.stringify(batchForm.habits));
 
         const newHabits = rawHabits.map((h, i) => ({
-             ...h,
-             id: 'temp_batch_' + Date.now() + '_' + i,
-             period: props.monthQuery,
-             logs: [],
-             completed_count: 0
+            ...h,
+            id: 'temp_batch_' + Date.now() + '_' + i,
+            period: props.monthQuery,
+            logs: [],
+            completed_count: 0
         }));
 
         localHabits.value.unshift(...newHabits);
@@ -121,26 +121,31 @@ export function useHabitModals(props, localHabits) {
         fireToast('success', t('success_batch_saved', 'Berhasil menyimpan banyak habit!'));
 
         router.post(route('habits.batchStore'), {
-             period: props.monthQuery,
-             habits: rawHabits
+            period: props.monthQuery,
+            habits: rawHabits
         }, {
-             preserveScroll: true,
-             preserveState: true,
-             progress: false, // 🔥 Matikan loading bar biar kerasa instan
-             onError: (errors) => {
-                 const firstErrorMsg = Object.values(errors)[0] || t('error_server', 'Terjadi kesalahan di server.');
-                 fireToast('error', `Gagal: ${firstErrorMsg}`);
+            preserveScroll: true,
+            preserveState: true,
+            progress: false, // 🔥 Matikan loading bar biar kerasa instan
+            onError: (errors) => {
+                const firstErrorMsg = Object.values(errors)[0] || t('error_server', 'Terjadi kesalahan di server.');
+                fireToast('error', `Gagal: ${firstErrorMsg}`);
 
-                 localHabits.value = localHabits.value.filter(h => !newHabits.find(n => n.id === h.id));
-                 
-                 showBatchModal.value = true;
-                 batchForm.habits = rawHabits;
-             }
+                localHabits.value = localHabits.value.filter(h => !newHabits.find(n => n.id === h.id));
+
+                showBatchModal.value = true;
+                batchForm.habits = rawHabits;
+            }
         });
     };
 
     // --- MODAL ACTIONS (SINGLE) ---
     const editHabit = (habit) => {
+        if (String(habit.id).startsWith('temp_')) {
+            fireToast('warning', t('warn_wait_sync', 'Harap tunggu hingga habit tersimpan.'));
+            return;
+        }
+
         isEditing.value = true;
         form.clearErrors();
         showCreateModal.value = true;
@@ -163,7 +168,7 @@ export function useHabitModals(props, localHabits) {
         showCreateModal.value = false;
         showCopyModal.value = false;
         showDeleteModal.value = false;
-        
+
         setTimeout(() => {
             isEditing.value = false;
             form.reset();
@@ -179,7 +184,7 @@ export function useHabitModals(props, localHabits) {
         if (isEditing.value) {
             const index = localHabits.value.findIndex(h => h.id === form.id);
             if (index !== -1) Object.assign(localHabits.value[index], payload);
-            
+
             const targetId = form.id;
             closeModal();
             fireToast('success', t('success_habit_updated', 'Habit berhasil diperbarui!'));
@@ -192,9 +197,9 @@ export function useHabitModals(props, localHabits) {
                 }
             });
         } else {
-            const tempId = 'temp_' + Date.now(); 
+            const tempId = 'temp_' + Date.now();
             localHabits.value.unshift({ ...payload, id: tempId, logs: [], completed_count: 0 });
-            
+
             closeModal();
             fireToast('success', t('success_habit_created', 'Habit berhasil dibuat!'));
 
@@ -203,7 +208,7 @@ export function useHabitModals(props, localHabits) {
                 onError: (err) => {
                     localHabits.value = localHabits.value.filter(h => h.id !== tempId);
                     fireToast('error', Object.values(err)[0] || t('error_save_habit', 'Gagal menyimpan habit.'));
-                    openCreateModal(); 
+                    openCreateModal();
                 }
             });
         }
@@ -213,12 +218,12 @@ export function useHabitModals(props, localHabits) {
     const showCopyModal = ref(false);
     const openCopyModal = () => { showCopyModal.value = true; };
     const executeCopy = () => {
-        showCopyModal.value = false; 
+        showCopyModal.value = false;
         fireToast('success', t('success_copy_habit', 'Berhasil menyalin dari bulan lalu!'));
 
         router.post(route('habits.copy'), {
             current_period: props.monthQuery, prev_period: props.prevMonthQuery
-        }, { 
+        }, {
             preserveScroll: true, progress: false,
             onError: (err) => fireToast('error', Object.values(err)[0] || t('error_copy_habit', 'Gagal menyalin habit.'))
         });
@@ -242,6 +247,8 @@ export function useHabitModals(props, localHabits) {
         habitToDelete.value = null;
         fireToast('success', t('success_delete_habit', 'Habit berhasil dihapus!'));
 
+        if (String(id).startsWith('temp_')) return; // 🔥 FIX BLOCK SERVER REQ
+
         router.delete(route('habits.destroy', id), {
             preserveScroll: true, preserveState: true, progress: false,
             onError: () => fireToast('error', t('error_delete_habit', 'Gagal menghapus habit.'))
@@ -249,9 +256,9 @@ export function useHabitModals(props, localHabits) {
     };
 
     const deleteFromEdit = () => {
-        showCreateModal.value = false; 
+        showCreateModal.value = false;
         const habitData = localHabits.value.find(h => h.id === form.id);
-        setTimeout(() => { if(habitData) confirmDelete(habitData); }, 200);
+        setTimeout(() => { if (habitData) confirmDelete(habitData); }, 200);
     };
 
     return {

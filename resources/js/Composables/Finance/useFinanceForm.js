@@ -2,7 +2,7 @@ import { useForm, router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
-import { trans } from 'laravel-vue-i18n'; 
+import { trans } from 'laravel-vue-i18n';
 
 export function useFinanceForm() {
     const { cleanAmount } = useFinanceFormat();
@@ -21,7 +21,7 @@ export function useFinanceForm() {
             showConfirmButton: false,
             timer: 2000,
             timerProgressBar: true,
-            background: '#4f46e5', 
+            background: '#4f46e5',
             iconColor: '#ffffff',
             icon: icon,
             title: `<span style="color: white; font-weight: 900; font-size: 14px; line-height: 1.2;">${message}</span>`,
@@ -42,7 +42,7 @@ export function useFinanceForm() {
             cancelButton: 'bg-slate-50 text-slate-400 font-bold py-3.5 px-8 rounded-2xl hover:bg-slate-100 active:scale-95 transition-all outline-none mx-2 tracking-wide',
             actions: 'mt-6 gap-3',
         },
-        buttonsStyling: false, 
+        buttonsStyling: false,
         focusConfirm: false
     };
 
@@ -64,7 +64,7 @@ export function useFinanceForm() {
     // ==========================================
     // 4. LOGIC DATA (CRUD - SILENT & INSTANT!)
     // ==========================================
-    
+
     // --- TRANSAKSI ---
     const transactionForm = useForm({
         id: null, title: '', amount: '', type: 'expense', category: '', date: dayjs().format('YYYY-MM-DD'), notes: ''
@@ -87,6 +87,11 @@ export function useFinanceForm() {
 
         const payload = { ...transactionForm.data() };
         const isEditing = !!payload.id;
+
+        if (isEditing && String(payload.id).startsWith('temp_')) {
+            return fireToast('warning', t('warn_wait_sync', 'Please wait for data to sync first.'));
+        }
+
         const tempId = isEditing ? payload.id : 'temp_' + Date.now();
         const url = isEditing ? route('finance.transaction.update', payload.id) : route('finance.transaction.store');
         const method = isEditing ? 'patch' : 'post';
@@ -116,6 +121,10 @@ export function useFinanceForm() {
     };
 
     const deleteTransaction = (id, { onOptimistic, onSuccess, onError }) => {
+        if (String(id).startsWith('temp_')) {
+            return fireToast('warning', t('warn_wait_sync', 'Please wait for data to sync first.'));
+        }
+
         confirmDelete('delete_trx_title', 'Delete Transaction?').then((res) => {
             if (res.isConfirmed) {
                 // 🔥 OPTIMISTIC UPDATE: Hapus Instan 0ms!
@@ -153,6 +162,11 @@ export function useFinanceForm() {
 
         const payload = { ...budgetForm.data() };
         const isEditing = !!payload.id;
+
+        if (isEditing && String(payload.id).startsWith('temp_')) {
+            return fireToast('warning', t('warn_wait_sync', 'Please wait for data to sync first.'));
+        }
+
         const tempId = isEditing ? payload.id : 'temp_' + Date.now();
         const url = isEditing ? route('finance.budget.update', payload.id) : route('finance.budget.store');
         const method = isEditing ? 'put' : 'post';
@@ -166,8 +180,8 @@ export function useFinanceForm() {
         fireToast('success', t('success_saved', 'Budget updated!'));
 
         budgetForm.transform((data) => ({ ...data, limit_amount: cleanAmount(data.limit_amount) }))[method](url, {
-            preserveScroll: true, 
-            preserveState: true, 
+            preserveScroll: true,
+            preserveState: true,
             progress: false, // ✅ INI YANG BENER
             onSuccess: () => {
                 budgetForm.reset();
@@ -181,6 +195,10 @@ export function useFinanceForm() {
     };
 
     const deleteBudget = (id, { onOptimistic, onSuccess, onError }) => {
+        if (String(id).startsWith('temp_')) {
+            return fireToast('warning', t('warn_wait_sync', 'Please wait for data to sync first.'));
+        }
+
         confirmDelete('delete_budget_title', 'Delete Budget?').then((res) => {
             if (res.isConfirmed) {
                 // 🔥 OPTIMISTIC UPDATE
@@ -190,8 +208,8 @@ export function useFinanceForm() {
                 fireToast('success', t('success_deleted', 'Budget removed!'));
 
                 router.delete(route('finance.budget.destroy', id), {
-                    preserveScroll: true, 
-                    preserveState: true, 
+                    preserveScroll: true,
+                    preserveState: true,
                     progress: false, // ✅ INI YANG BENER
                     onSuccess: () => {
                         if (onSuccess) onSuccess();
@@ -207,10 +225,10 @@ export function useFinanceForm() {
 
     // --- KATEGORI (Optimistic) ---
     const categoryForm = useForm({ id: null, name: '', icon: '💰', type: 'income', slug: '' });
-    
-    const setEditCategory = (cat) => { 
+
+    const setEditCategory = (cat) => {
         categoryForm.id = cat.id;
-        categoryForm.name = cat.name; 
+        categoryForm.name = cat.name;
         categoryForm.icon = cat.icon;
         categoryForm.type = cat.type;
         categoryForm.slug = cat.slug;
@@ -218,9 +236,14 @@ export function useFinanceForm() {
 
     const submitCategory = ({ onOptimistic, onSuccess, onError }) => {
         if (!categoryForm.name) return fireToast('warning', t('warn_empty_category_name', 'Name required!'));
-        
+
         const payload = { ...categoryForm.data() };
         const isEditing = !!payload.id;
+
+        if (isEditing && String(payload.id).startsWith('temp_')) {
+            return fireToast('warning', t('warn_wait_sync', 'Please wait for data to sync first.'));
+        }
+
         const tempId = isEditing ? payload.id : 'temp_' + Date.now();
         const url = isEditing ? route('finance.categories.update', payload.id) : route('finance.categories.store');
         const method = isEditing ? 'put' : 'post';
@@ -236,12 +259,12 @@ export function useFinanceForm() {
         fireToast('success', t('success_saved', 'Category saved!'));
 
         categoryForm[method](url, {
-            preserveScroll: true, 
-            preserveState: true, 
-            progress: false, 
-            onSuccess: () => { 
-                categoryForm.reset(); 
-                if (onSuccess) onSuccess(); 
+            preserveScroll: true,
+            preserveState: true,
+            progress: false,
+            onSuccess: () => {
+                categoryForm.reset();
+                if (onSuccess) onSuccess();
             },
             onError: (err) => {
                 if (onError) onError(tempId, isEditing);
@@ -251,19 +274,23 @@ export function useFinanceForm() {
     };
 
     const deleteCategory = (cat, { onOptimistic, onSuccess, onError }) => {
+        if (String(cat.id).startsWith('temp_')) {
+            return fireToast('warning', t('warn_wait_sync', 'Please wait for data to sync first.'));
+        }
+
         confirmDelete('confirm_delete_title', 'Are you sure?').then((res) => {
             if (res.isConfirmed) {
                 // 🔥 OPTIMISTIC UPDATE INSTAN
                 if (onOptimistic) onOptimistic(cat.id);
-                
+
                 fireToast('success', t('success_deleted', 'Deleted!'));
 
                 router.delete(route('finance.categories.destroy', cat.id), {
-                    preserveScroll: true, 
-                    preserveState: true, 
-                    progress: false, 
-                    onSuccess: () => { 
-                        if (onSuccess) onSuccess(); 
+                    preserveScroll: true,
+                    preserveState: true,
+                    progress: false,
+                    onSuccess: () => {
+                        if (onSuccess) onSuccess();
                     },
                     onError: () => {
                         if (onError) onError(cat.id);
@@ -275,16 +302,16 @@ export function useFinanceForm() {
     };
 
     const updateIncomeTarget = (month, amount) => {
-        router.post(route('finance.income-target.update'), { month, amount }, { 
-            preserveScroll: true, 
-            preserveState: true, 
+        router.post(route('finance.income-target.update'), { month, amount }, {
+            preserveScroll: true,
+            preserveState: true,
             progress: false // ✅ INI YANG BENER
         });
     };
 
     return {
         transactionForm, setEditTransaction, submitTransaction, deleteTransaction,
-        budgetForm, submitBudget, deleteBudget, 
+        budgetForm, submitBudget, deleteBudget,
         categoryForm, setEditCategory, submitCategory, deleteCategory,
         updateIncomeTarget, t
     };

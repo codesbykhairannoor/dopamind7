@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export function useHabitCore(props) {
     const user = usePage().props.auth.user;
-    
+
     // State Data (Optimistic UI)
     const localHabits = ref(JSON.parse(JSON.stringify(props.habits.data)));
 
@@ -26,7 +26,7 @@ export function useHabitCore(props) {
         if (localHabits.value.length === 0) return 0;
         const todayStr = dayjs().format('YYYY-MM-DD');
         let completed = 0;
-        
+
         localHabits.value.forEach(h => {
             if (h.logs && h.logs[todayStr] === 'completed') {
                 completed++;
@@ -54,20 +54,20 @@ export function useHabitCore(props) {
 
     // --- SPREADSHEET-LIKE DRAG & SELECT LOGIC 🔥 ---
     const isDragging = ref(false);
-    const selectedCells = ref(new Set()); 
+    const selectedCells = ref(new Set());
 
     const getCellId = (habitId, dateString) => `${habitId}|${dateString}`;
 
     // 1. Mouse ditekan (Mulai Blok)
     const handleMouseDown = (e, habitId, dateString) => {
-        if (dayjs(dateString).isAfter(dayjs(), 'day')) return; 
+        if (dayjs(dateString).isAfter(dayjs(), 'day')) return;
         isDragging.value = true;
-        
+
         const isMulti = e && (e.ctrlKey || e.shiftKey);
         if (!isMulti) {
             selectedCells.value.clear();
         }
-        
+
         selectedCells.value.add(getCellId(habitId, dateString));
     };
 
@@ -104,6 +104,12 @@ export function useHabitCore(props) {
     const toggleStatus = async (habitId, dateString, forceStatus = null) => {
         if (dayjs(dateString).isAfter(dayjs(), 'day')) return;
 
+        // 🔥 FIX: Mencegah request 'temp_' id ke backend (invalid bigint)
+        if (String(habitId).startsWith('temp_')) {
+            console.warn("Please wait for habit to be saved before logging.");
+            return;
+        }
+
         const habitIndex = localHabits.value.findIndex(h => h.id === habitId);
         if (habitIndex === -1) return;
         const habit = localHabits.value[habitIndex];
@@ -138,29 +144,42 @@ export function useHabitCore(props) {
         }
     };
 
-   const toggleSelectedCells = async () => {
+    const toggleSelectedCells = async () => {
         if (selectedCells.value.size === 0) return;
 
         let isAllCompleted = true;
-        let logsPayload = []; 
+        let logsPayload = [];
+        let validHabitsCount = 0; // 🔥 TRACK VALID HABITS
 
         selectedCells.value.forEach(cellId => {
             const [hIdStr, dStr] = cellId.split('|');
+            if (String(hIdStr).startsWith('temp_')) return; // SKIP OPTIMISTIC
+
             const hId = parseInt(hIdStr);
             const habit = localHabits.value.find(h => h.id === hId);
-            if (habit && habit.logs[dStr] !== 'completed') isAllCompleted = false;
+            if (habit) {
+                validHabitsCount++;
+                if (habit.logs[dStr] !== 'completed') isAllCompleted = false;
+            }
         });
+
+        if (validHabitsCount === 0) {
+            selectedCells.value.clear();
+            return;
+        }
 
         const targetStatus = isAllCompleted ? 'uncheck' : 'completed';
 
         selectedCells.value.forEach(cellId => {
             const [hIdStr, dStr] = cellId.split('|');
+            if (String(hIdStr).startsWith('temp_')) return; // SKIP OPTIMISTIC
+
             const hId = parseInt(hIdStr);
             const habit = localHabits.value.find(h => h.id === hId);
-            
+
             if (habit) {
                 // Update UI Instan
-                if (targetStatus === 'uncheck') { delete habit.logs[dStr]; } 
+                if (targetStatus === 'uncheck') { delete habit.logs[dStr]; }
                 else { habit.logs[dStr] = targetStatus; }
 
                 // Masukkan ke payload
@@ -230,7 +249,7 @@ export function useHabitCore(props) {
             el.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'nearest' });
 
             if (e.shiftKey) {
-                 selectedCells.value.add(getCellId(habitId, dateString));
+                selectedCells.value.add(getCellId(habitId, dateString));
             } else {
                 selectedCells.value.clear();
             }
@@ -265,10 +284,14 @@ export function useHabitCore(props) {
     const saveHabitOrder = async (newHabitsList) => {
         localHabits.value = newHabitsList;
 
-        const orderedHabits = newHabitsList.map((habit, index) => ({
-            id: habit.id,
-            position: index
-        }));
+        const orderedHabits = newHabitsList
+            .filter(habit => !String(habit.id).startsWith('temp_')) // 🔥 FIX FILTER
+            .map((habit, index) => ({
+                id: habit.id,
+                position: index
+            }));
+
+        if (orderedHabits.length === 0) return; // FIX PREVENT EMPTY REQUEST
 
         try {
             await axios.post(route('habits.reorder'), { habits: orderedHabits });

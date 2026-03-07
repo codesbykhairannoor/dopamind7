@@ -3,8 +3,6 @@ import GoalCard from './GoalCard.vue';
 
 const props = defineProps({
     goals: Array,
-    selectedGoals: Array,
-    onToggleSelection: Function,
     onAutoSave: Function,
     onDelete: Function,
     onAddMilestone: Function,
@@ -20,8 +18,6 @@ const props = defineProps({
             v-for="goal in goals" 
             :key="goal._key"
             :goal="goal"
-            :selected="selectedGoals.includes(goal.id)"
-            :onToggleSelection="onToggleSelection"
             :onAutoSave="onAutoSave"
             :onDelete="onDelete"
             :onAddMilestone="onAddMilestone"

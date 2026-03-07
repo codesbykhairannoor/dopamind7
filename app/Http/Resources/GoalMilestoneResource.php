@@ -16,6 +16,7 @@ class GoalMilestoneResource extends JsonResource
             'title' => $this->title,
             'completed' => $this->completed,
             'order' => $this->order,
+            'target_date' => $this->target_date ? $this->target_date->format('Y-m-d') : null,
         ];
     }
 }

@@ -1,4 +1,4 @@
-import { ref, computed, watch } from 'vue'; 
+import { ref, computed, watch } from 'vue';
 import { router, useForm } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
@@ -11,12 +11,12 @@ export function usePlannerTasks(props) {
     const activeModalType = ref('full');
 
     const form = useForm({
-        id: null, 
-        date: props.currentDate, 
-        title: '', 
-        start_time: null, 
-        end_time: null, 
-        type: 1, 
+        id: null,
+        date: props.currentDate,
+        title: '',
+        start_time: null,
+        end_time: null,
+        type: 1,
         notes: ''
     });
 
@@ -36,7 +36,7 @@ export function usePlannerTasks(props) {
             showConfirmButton: false,
             timer: 2000,
             timerProgressBar: true,
-            background: bgColor, 
+            background: bgColor,
             iconColor: '#ffffff',
             icon: icon,
             title: `<span style="color: white; font-weight: 900; font-size: 14px;">${message}</span>`,
@@ -62,7 +62,7 @@ export function usePlannerTasks(props) {
         if (!form.start_time || !form.end_time) return;
         const newStart = timeToMin(form.start_time);
         let newEnd = timeToMin(form.end_time);
-        if (newEnd < newStart) newEnd += 1440; 
+        if (newEnd < newStart) newEnd += 1440;
 
         const duration = newEnd - newStart;
         if (duration < 15) {
@@ -92,7 +92,7 @@ export function usePlannerTasks(props) {
 
         if (activeModalType.value === 'full') {
             if (!form.start_time || !form.end_time) return fireWarning(t('warn_empty_time', 'Tentukan jam mulai & selesai!'));
-            checkTimeValidity(); 
+            checkTimeValidity();
             if (conflictError.value) return;
         } else {
             form.start_time = null;
@@ -102,17 +102,21 @@ export function usePlannerTasks(props) {
         const payload = { ...form.data() };
         isModalOpen.value = false;
 
-        fireSuccess(t('success_saved', 'Tersimpan!')); 
+        fireSuccess(t('success_saved', 'Tersimpan!'));
 
         if (isEditing.value) {
+            if (String(form.id).startsWith('temp_')) {
+                return fireWarning(t('warn_wait_sync', 'Harap tunggu hingga data tersimpan.'));
+            }
+
             const index = localTasks.value.findIndex(t => t.id === form.id);
             if (index !== -1) localTasks.value[index] = { ...localTasks.value[index], ...payload };
-            
+
             router.patch(route('planner.update', form.id), payload, {
                 preserveScroll: true,
                 preserveState: true,
-                progress: false, 
-                only: ['tasks', 'errors'], 
+                progress: false,
+                only: ['tasks', 'errors'],
                 onFinish: () => form.reset()
             });
         } else {
@@ -122,8 +126,8 @@ export function usePlannerTasks(props) {
             router.post(route('planner.store'), payload, {
                 preserveScroll: true,
                 preserveState: true,
-                progress: false, 
-                only: ['tasks', 'errors'], 
+                progress: false,
+                only: ['tasks', 'errors'],
                 onError: () => {
                     localTasks.value = localTasks.value.filter(t => t.id !== tempId);
                     fireError(t('err_save_failed', 'Gagal menyimpan ke server!'));
@@ -151,7 +155,7 @@ export function usePlannerTasks(props) {
         // Hapus Instan dari UI
         localTasks.value = localTasks.value.filter(t => t.id !== id);
         isModalOpen.value = false;
-        
+
         fireSuccess(t('success_deleted', 'Dihapus!'));
 
         // Eksekusi Server
@@ -167,12 +171,16 @@ export function usePlannerTasks(props) {
     };
 
     const toggleComplete = (task) => {
+        if (String(task.id).startsWith('temp_')) {
+            return fireWarning(t('warn_wait_sync', 'Harap tunggu hingga data tersimpan.'));
+        }
+
         task.is_completed = !task.is_completed;
-        router.patch(route('planner.toggle', { plannerTask: task.id }), {}, { 
-            preserveScroll: true, 
+        router.patch(route('planner.toggle', { plannerTask: task.id }), {}, {
+            preserveScroll: true,
             preserveState: true,
-            progress: false, 
-            only: ['tasks', 'errors'] 
+            progress: false,
+            only: ['tasks', 'errors']
         });
     };
 
@@ -204,13 +212,13 @@ export function usePlannerTasks(props) {
     const openModal = (task = null, timeSlot = null, type = 'full') => {
         form.reset();
         form.clearErrors();
-        conflictError.value = null; 
+        conflictError.value = null;
         activeModalType.value = type;
-        
+
         if (task) {
             isEditing.value = true;
             form.id = task.id;
-            form.date = task.date || props.currentDate; 
+            form.date = task.date || props.currentDate;
             form.title = task.title;
             form.start_time = task.start_time;
             form.end_time = task.end_time;
@@ -219,19 +227,19 @@ export function usePlannerTasks(props) {
         } else {
             isEditing.value = false;
             form.id = null;
-            form.date = props.currentDate; 
-            
+            form.date = props.currentDate;
+
             if (timeSlot) {
                 form.start_time = timeSlot;
                 const [h, m] = timeSlot.split(':').map(Number);
-                form.end_time = `${(h+1).toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}`;
+                form.end_time = `${(h + 1).toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
             }
         }
         isModalOpen.value = true;
     };
 
     return {
-        localTasks, scheduledTasks, inboxTasks, 
+        localTasks, scheduledTasks, inboxTasks,
         scheduledStats, inboxStats,
         form, isModalOpen, isEditing, activeModalType, conflictError,
         openModal, submitTask, deleteTask, toggleComplete

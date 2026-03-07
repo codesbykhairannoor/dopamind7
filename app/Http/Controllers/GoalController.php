@@ -173,14 +173,58 @@ class GoalController extends Controller
         ]);
     }
 
-    public function destroyMilestone(Goal $goal, GoalMilestone $milestone)
+    public function destroyMilestone(int $goalId, int $milestoneId)
     {
-        $this->authorize('update', $goal);
-
+        $milestone = GoalMilestone::findOrFail($milestoneId);
         $this->goalService->deleteMilestone($milestone);
 
         return response()->json([
             'message' => 'Milestone deleted successfully'
         ]);
+    }
+
+    public function uploadCoverImage(Request $request)
+    {
+        $request->validate([
+            'id' => 'nullable|exists:goals,id',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+        ]);
+
+        $user = Auth::user();
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+
+        $goal = $request->id
+            ?Goal::ofUser($user->id)->findOrFail($request->id)
+            : new Goal(['user_id' => $user->id]);
+
+        // Delete old image if exists
+        if (!empty($goal->cover_image_path)) {
+            \Illuminate\Support\Facades\Storage::disk($disk)->delete($goal->cover_image_path);
+        }
+
+        $path = $request->file('image')->store('goals', $disk);
+
+        if ($goal->exists) {
+            $goal->update(['cover_image_path' => $path]);
+        }
+
+        return response()->json([
+            'success' => true,
+            'path' => $path,
+            'url' => asset(\Illuminate\Support\Facades\Storage::disk($disk)->url($path)),
+            'id' => $goal->id
+        ]);
+    }
+
+    public function deleteCoverImage($id)
+    {
+        $goal = Goal::ofUser(Auth::id())->findOrFail($id);
+        if (!empty($goal->cover_image_path)) {
+            $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+            \Illuminate\Support\Facades\Storage::disk($disk)->delete($goal->cover_image_path);
+            $goal->update(['cover_image_path' => null]);
+        }
+
+        return response()->json(['success' => true]);
     }
 }
