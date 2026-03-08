@@ -1,8 +1,11 @@
 <script setup>
-import { ref, watch } from 'vue';
-import { useForm } from '@inertiajs/vue3';
-import { X, Upload, Image as ImageIcon, Target, Calendar, Award, Zap, CheckCircle2 } from 'lucide-vue-next';
+import { ref, watch, computed } from 'vue';
+import { usePage } from '@inertiajs/vue3';
+import { X, Upload, Target, Calendar, Award, Zap, CheckCircle2 } from 'lucide-vue-next';
 import { trans } from 'laravel-vue-i18n';
+import dayjs from 'dayjs';
+import 'dayjs/locale/id';
+import 'dayjs/locale/en';
 import GoalDatePicker from './GoalDatePicker.vue';
 import Swal from 'sweetalert2';
 
@@ -15,7 +18,9 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['close', 'save']);
+const page = usePage();
 
+// State Form
 const form = ref({
     title: '',
     type: 'daily',
@@ -24,18 +29,26 @@ const form = ref({
     reward: '',
     target_value: 0,
     current_value: 0,
-    start_date: new Date().toISOString().split('T')[0],
+    start_date: dayjs().format('YYYY-MM-DD'),
     end_date: null,
     cover_image_url: '',
     cover_image_path: '',
     milestones: []
 });
 
+// UI State
 const imagePreview = ref(null);
 const isUploading = ref(false);
 const fileInput = ref(null);
 const showStartPicker = ref(false);
 const showEndPicker = ref(false);
+
+// Formatting untuk tampilan tombol tanggal
+const dateDisplay = (date) => {
+    if (!date) return t('goal_ph_date', 'Pilih Tanggal');
+    const loc = page.props.locale || 'id';
+    return dayjs(date).locale(loc).format('DD MMM YYYY');
+};
 
 watch(() => props.goal, (newGoal) => {
     if (newGoal) {
@@ -44,12 +57,11 @@ watch(() => props.goal, (newGoal) => {
     }
 }, { immediate: true });
 
-const handleClose = () => {
-    emit('close');
-};
+// --- Methods ---
+const handleClose = () => emit('close');
 
 const handleSave = () => {
-    if (!form.value.title || form.value.title.trim() === '') {
+    if (!form.value.title?.trim()) {
         Swal.fire({
             ...swalTheme,
             title: t('warn_empty_title', 'Judul Wajib Diisi!'),
@@ -62,29 +74,11 @@ const handleSave = () => {
     emit('save', form.value);
 };
 
-const swalTheme = {
-    customClass: {
-        popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
-        title: 'text-2xl font-black text-slate-800 mb-2 font-sans',
-        confirmButton: 'bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-2xl shadow-xl active:scale-95 transition-all outline-none mx-2 tracking-wide',
-        cancelButton: 'bg-slate-50 text-slate-400 font-bold py-3.5 px-8 rounded-2xl hover:bg-slate-100 active:scale-95 transition-all outline-none mx-2 tracking-wide',
-        actions: 'mt-6 gap-3',
-    },
-    buttonsStyling: false,
-    focusConfirm: false
-};
-
-const triggerFileInput = () => {
-    fileInput.value.click();
-};
+const triggerFileInput = () => fileInput.value.click();
 
 const onFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    await uploadImage(file);
-};
-
-const uploadImage = async (file) => {
     isUploading.value = true;
     try {
         const result = await props.onUploadImage(form.value.id, file);
@@ -100,11 +94,20 @@ const uploadImage = async (file) => {
                 customClass: { popup: '!rounded-xl !shadow-lg !m-4' }
             });
         }
-    } catch (err) {
-        console.error(err);
-    } finally {
-        isUploading.value = false;
+    } catch (err) { 
+        console.error(err); 
+    } finally { 
+        isUploading.value = false; 
     }
+};
+
+const swalTheme = {
+    customClass: {
+        popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
+        title: 'text-2xl font-black text-slate-800 mb-2 font-sans',
+        confirmButton: 'bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-2xl shadow-xl active:scale-95 transition-all outline-none mx-2 tracking-wide',
+    },
+    buttonsStyling: false
 };
 
 const t = (key, fallback) => {
@@ -116,74 +119,65 @@ const t = (key, fallback) => {
 <template>
     <Teleport to="body">
         <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <!-- Backdrop -->
             <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity" @click="handleClose"></div>
 
-            <!-- Modal Content -->
             <div class="relative w-full max-w-2xl bg-white rounded-[2.5rem] shadow-2xl overflow-visible animate-in fade-in zoom-in duration-300 flex flex-col max-h-[90vh]">
                 
-                <!-- Header with Vision Board Preview -->
-                <div class="relative h-48 bg-slate-100 shrink-0 group rounded-t-[2.5rem] overflow-hidden">
-                    <div v-if="imagePreview" class="absolute inset-0">
+                <div class="relative h-44 bg-slate-100 shrink-0 group rounded-t-[2.5rem] overflow-hidden">
+                    <div v-if="imagePreview" class="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
                         <img :src="imagePreview" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                     </div>
-                    <div v-else class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-                        <div class="text-white/20 scale-150">
-                            <Target :size="120" stroke-width="1.5" />
-                        </div>
+                    <div v-else class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-indigo-500 to-purple-600 flex items-center justify-center text-white/10">
+                        <Target :size="100" stroke-width="1" class="animate-pulse" />
                     </div>
 
-                    <div class="absolute inset-x-8 bottom-6 flex justify-between items-end">
-                        <div class="flex-grow">
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] font-black uppercase tracking-widest mb-2">
-                                 {{ goal?.is_new ? t('goal_new', 'New Vision') : t('goal_edit', 'Edit Vision') }}
+                    <div class="absolute inset-x-6 bottom-5 flex justify-between items-end">
+                        <div class="flex-grow min-w-0">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] font-black uppercase tracking-widest mb-1.5">
+                                 {{ goal?.id ? t('goal_edit', 'Update Vision') : t('goal_new', 'Create New Vision') }}
                             </span>
-                            <h2 class="text-3xl font-black text-white drop-shadow-lg truncate pr-4">
+                            <h2 class="text-2xl font-black text-white drop-shadow-md truncate pr-4">
                                 {{ form.title || t('goal_placeholder_title', 'What is your dream?') }}
                             </h2>
                         </div>
                         
-                        <button @click="triggerFileInput" 
-                                class="shrink-0 w-12 h-12 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl flex items-center justify-center text-white hover:bg-white/40 transition-all hover:scale-110 active:scale-95 group/btn">
-                            <Upload v-if="!isUploading" :size="20" />
-                            <div v-else class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        <button @click="triggerFileInput" type="button"
+                                class="shrink-0 w-11 h-11 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center text-white hover:bg-white/30 transition-all hover:scale-110 active:scale-95 shadow-xl">
+                            <Upload v-if="!isUploading" :size="18" />
+                            <div v-else class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                         </button>
                         <input type="file" ref="fileInput" class="hidden" accept="image/*" @change="onFileChange" />
                     </div>
 
-                    <!-- Close Button -->
-                    <button @click="handleClose" class="absolute top-6 right-6 w-10 h-10 bg-black/20 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all">
-                        <X :size="20" />
+                    <button @click="handleClose" class="absolute top-5 right-5 w-9 h-9 bg-black/20 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all z-10">
+                        <X :size="18" />
                     </button>
                 </div>
 
-                <!-- Body -->
-                <div class="p-8 overflow-y-auto custom-scrollbar space-y-8">
+                <div class="p-6 md:p-8 overflow-y-auto custom-scrollbar space-y-6">
                     
-                    <!-- Main Info -->
                     <div class="space-y-2">
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_title', 'Goal Title') }}</label>
-                        <div class="relative">
+                        <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_title', 'Goal Title') }}</label>
+                        <div class="relative group">
                             <input v-model="form.title" type="text" 
-                                    class="w-full bg-slate-50 border-none rounded-2xl px-5 py-5 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 placeholder:text-slate-300 transition-all text-lg"
-                                    :placeholder="t('goal_placeholder_title', 'Nama impianmu...')" />
-                            <Target :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none" />
+                                    class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-5 py-5 text-slate-700 font-bold focus:bg-white focus:border-indigo-500/20 focus:ring-4 focus:ring-indigo-500/5 placeholder:text-slate-300 transition-all text-lg shadow-sm"
+                                    :placeholder="t('goal_placeholder_title', 'Tuliskan impianmu disini...')" />
+                            <Target :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-indigo-500 transition-colors pointer-events-none" />
                         </div>
                     </div>
 
-                    <!-- Priority & Reward -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_priority', 'Priority') }}</label>
-                            <div class="flex gap-2">
+                            <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_priority', 'Priority') }}</label>
+                            <div class="flex gap-2 p-1.5 bg-slate-100 rounded-2xl">
                                 <button v-for="p in ['vital', 'important', 'optional']" :key="p"
                                         @click="form.priority = p"
                                         :class="[
-                                            'flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border-2',
+                                            'flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all',
                                             form.priority === p 
-                                                ? (p === 'vital' ? 'bg-rose-50 border-rose-200 text-rose-600' : p === 'important' ? 'bg-indigo-50 border-indigo-200 text-indigo-600' : 'bg-slate-50 border-slate-200 text-slate-600')
-                                                : 'bg-white border-slate-100 text-slate-400 hover:border-slate-200'
+                                                ? 'bg-white text-indigo-600 shadow-md' 
+                                                : 'text-slate-400 hover:text-slate-600'
                                         ]">
                                     {{ t(`priority_${p}`, p) }}
                                 </button>
@@ -191,62 +185,76 @@ const t = (key, fallback) => {
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_reward', 'Self Reward') }}</label>
-                            <div class="relative">
+                            <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_reward', 'Self Reward') }}</label>
+                            <div class="relative group">
                                 <input v-model="form.reward" type="text" 
-                                       class="w-full bg-slate-50 border-none rounded-2xl px-5 py-4 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 placeholder:text-slate-300 transition-all"
-                                       :placeholder="t('goal_placeholder_reward', 'Treat yourself!')" />
+                                       class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-5 py-4 text-slate-700 font-bold focus:bg-white focus:border-amber-500/20 focus:ring-4 focus:ring-amber-500/5 transition-all"
+                                       :placeholder="t('goal_placeholder_reward', 'Rayakan saat tercapai!')" />
                                 <Award :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-amber-400 pointer-events-none" />
                             </div>
                         </div>
                     </div>
 
-                    <!-- Dates with Custom Picker -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2 relative">
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_start', 'Start Date') }}</label>
+                            <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_start', 'Start Date') }}</label>
                             <div class="relative">
-                                <button @click="showStartPicker = !showStartPicker"
-                                        class="w-full bg-slate-50 text-left border-none rounded-2xl px-5 py-4 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 transition-all">
-                                    {{ form.start_date || t('goal_ph_start', 'Set Start Date') }}
+                                <button type="button" @click="showStartPicker = !showStartPicker; showEndPicker = false"
+                                        class="w-full bg-slate-50 border-2 border-transparent hover:border-indigo-100 rounded-2xl px-5 py-4 text-slate-700 font-bold text-left transition-all flex justify-between items-center group">
+                                    <span>{{ dateDisplay(form.start_date) }}</span>
+                                    <Calendar :size="18" class="text-slate-300 group-hover:text-indigo-500" />
                                 </button>
-                                <Calendar :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none" />
+                                
+                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
+                                    <div v-if="showStartPicker" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:bottom-full sm:right-0 sm:mb-2 sm:origin-bottom-right sm:block sm:inset-auto">
+                                        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm sm:hidden" @click="showStartPicker = false"></div>
+                                        <GoalDatePicker 
+                                            :show="true" 
+                                            :modelValue="form.start_date" 
+                                            @update:modelValue="(val) => { form.start_date = val; showStartPicker = false }" 
+                                            @close="showStartPicker = false"
+                                            class="relative z-10"
+                                        />
+                                    </div>
+                                </transition>
                             </div>
-                            <GoalDatePicker 
-                                :show="showStartPicker" 
-                                v-model="form.start_date" 
-                                @close="showStartPicker = false" 
-                            />
                         </div>
 
                         <div class="space-y-2 relative">
-                            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_end', 'Target Deadline') }}</label>
+                            <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_end', 'Target Deadline') }}</label>
                             <div class="relative">
-                                <button @click="showEndPicker = !showEndPicker"
-                                        class="w-full bg-slate-50 text-left border-none rounded-2xl px-5 py-4 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 transition-all">
-                                    {{ form.end_date || t('goal_ph_end', 'Set Deadline') }}
+                                <button type="button" @click="showEndPicker = !showEndPicker; showStartPicker = false"
+                                        class="w-full bg-slate-50 border-2 border-transparent hover:border-rose-100 rounded-2xl px-5 py-4 text-slate-700 font-bold text-left transition-all flex justify-between items-center group">
+                                    <span :class="!form.end_date ? 'text-slate-300' : ''">{{ dateDisplay(form.end_date) }}</span>
+                                    <Zap :size="18" :class="form.end_date ? 'text-rose-500' : 'text-slate-300 group-hover:text-rose-400'" />
                                 </button>
-                                <Zap :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 pointer-events-none" />
+                                
+                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
+                                    <div v-if="showEndPicker" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:bottom-full sm:right-0 sm:mb-2 sm:origin-bottom-right sm:block sm:inset-auto">
+                                        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm sm:hidden" @click="showEndPicker = false"></div>
+                                        <GoalDatePicker 
+                                            :show="true" 
+                                            :modelValue="form.end_date" 
+                                            @update:modelValue="(val) => { form.end_date = val; showEndPicker = false }" 
+                                            @close="showEndPicker = false"
+                                            class="relative z-10"
+                                        />
+                                    </div>
+                                </transition>
                             </div>
-                            <GoalDatePicker 
-                                :show="showEndPicker" 
-                                v-model="form.end_date" 
-                                @close="showEndPicker = false" 
-                            />
                         </div>
                     </div>
 
                 </div>
 
-                <!-- Footer -->
-                <div class="p-8 bg-slate-50 rounded-b-[2.5rem] shrink-0 flex items-center justify-between">
-                    <button @click="handleClose" class="text-sm font-black text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors">
+                <div class="p-6 bg-slate-50/80 backdrop-blur-sm rounded-b-[2.5rem] shrink-0 flex items-center justify-between border-t border-slate-100">
+                    <button @click="handleClose" class="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-rose-500 transition-colors px-4 py-2">
                         {{ t('btn_cancel', 'Cancel') }}
                     </button>
                     <button @click="handleSave" 
-                            class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-lg shadow-indigo-600/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-                        <CheckCircle2 :size="18" />
-                        {{ goal?.is_new ? t('goal_btn_create', 'Manifest Goal') : t('goal_btn_save', 'Update Vision') }}
+                            class="bg-indigo-600 text-white px-8 py-3.5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-lg shadow-indigo-600/20 hover:bg-indigo-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+                        <CheckCircle2 :size="16" />
+                        {{ goal?.id ? t('goal_btn_save', 'Update Vision') : t('goal_btn_create', 'Manifest Goal') }}
                     </button>
                 </div>
             </div>
@@ -255,22 +263,14 @@ const t = (key, fallback) => {
 </template>
 
 <style scoped>
-.custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #e2e8f0;
-    border-radius: 10px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #cbd5e1;
-}
+.custom-scrollbar::-webkit-scrollbar { width: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
 
+.animate-in { animation: animate-in 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 @keyframes animate-in {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
 }
 </style>

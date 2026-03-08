@@ -78,8 +78,8 @@ const changeYear = (offset) => {
                 <OneForMindIcon name="finance" size="30" stroke-width="2" class="hidden md:block" />
             </div>
             <div>
-            <h2 class="text-lg md:text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('finance_plan') }}</h2>
-            <p class="mt-0.5 text-[10px] md:text-xs font-medium capitalize text-slate-500">{{ todayDisplay }}</p>
+            <h2 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800">{{ $t('finance_plan') }}</h2>
+            <p class="mt-0.5 text-sm font-medium capitalize text-slate-500">{{ todayDisplay }}</p>
             </div>
         </div>
       </div>
@@ -92,7 +92,7 @@ const changeYear = (offset) => {
             class="flex items-center justify-center w-[90px] md:w-auto md:px-4 h-11 transition border bg-slate-50 border-slate-200 rounded-xl gap-1.5 hover:bg-white hover:border-indigo-300 shadow-sm group"
             :class="{'bg-indigo-50 border-indigo-200': isDateDropdownOpen}"
           >
-            <span class="text-[9px] md:text-[10px] font-black text-slate-600 uppercase tracking-widest whitespace-nowrap">
+            <span class="text-[11px] font-black text-slate-600 uppercase tracking-widest whitespace-nowrap">
                 <span class="md:hidden">{{ shortMonthDisplay }}</span>
                 <span class="hidden md:inline">{{ currentMonth }}</span>
             </span>
@@ -120,7 +120,7 @@ const changeYear = (offset) => {
                   v-for="(m, i) in months" 
                   :key="m.name" 
                   @click="selectMonth(i)" 
-                  class="text-[9px] sm:text-[10px] font-bold py-2.5 rounded-lg transition-all uppercase tracking-wider" 
+                  class="text-[11px] font-bold py-2.5 rounded-lg transition-all uppercase tracking-wider" 
                   :class="(activeMonthNum === i) ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-500 hover:bg-indigo-50'"
                 >
                   {{ $t(m.name).slice(0,3) }}
@@ -163,7 +163,7 @@ const changeYear = (offset) => {
           class="flex items-center justify-center flex-1 h-11 px-3 md:px-6 transition shadow-lg bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-indigo-100 gap-2 active:scale-95 whitespace-nowrap min-w-0"
         >
           <OneForMindIcon name="plus" size="16" stroke-width="3" class="text-white" />
-          <span class="text-[10px] md:text-xs font-black text-white tracking-tight uppercase truncate">{{ $t('btn_transaction') }}</span>
+          <span class="text-[11px] font-black text-white tracking-tight uppercase truncate">{{ $t('btn_transaction') }}</span>
         </button>
 
       </div>

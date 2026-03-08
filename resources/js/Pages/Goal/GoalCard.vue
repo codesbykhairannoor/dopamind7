@@ -54,62 +54,62 @@ const t = (key, fallback) => {
 </script>
 
 <template>
-    <div class="group h-full bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1 transition-all duration-500 flex flex-col overflow-hidden">
+    <div class="group h-full bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1 transition-all duration-500 flex flex-col">
         
         <!-- Top Vision Board Banner -->
-        <div class="relative h-32 shrink-0 overflow-hidden bg-slate-100">
+        <div class="relative h-28 shrink-0 overflow-hidden bg-slate-100 rounded-t-[2.5rem]">
             <template v-if="goal.cover_image_url">
                 <img :src="goal.cover_image_url" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
             </template>
             <div v-else class="w-full h-full bg-gradient-to-br from-indigo-100 to-indigo-50 flex items-center justify-center">
-                <Target :size="48" class="text-indigo-200" stroke-width="1.5" />
+                <Target :size="40" class="text-indigo-200" stroke-width="1.5" />
             </div>
 
             <!-- Absolute Floaters -->
-            <div class="absolute top-4 left-4 flex gap-2">
+            <div class="absolute top-3.5 left-4 flex gap-2">
                 <div :class="[priorityConfig[goal.priority], 'w-2 h-2 rounded-full shadow-lg pulse-priority']"></div>
             </div>
 
-            <div class="absolute top-4 right-4 flex gap-2">
-                <button @click="emit('edit')" class="w-8 h-8 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition-all sm:opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100">
-                    <Edit2 :size="14" />
+            <div class="absolute top-3.5 right-4 flex gap-1.5">
+                <button @click="emit('edit')" class="w-7 h-7 rounded-lg bg-white/20 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition-all sm:opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100">
+                    <Edit2 :size="12" />
                 </button>
                 <div class="relative">
-                    <button @click="dropdownOpen = !dropdownOpen" class="w-8 h-8 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center hover:bg-white/40 transition-all sm:opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-75">
-                        <MoreHorizontal :size="14" />
+                    <button @click="dropdownOpen = !dropdownOpen" class="w-7 h-7 rounded-lg bg-white/20 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/40 transition-all sm:opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-75">
+                        <MoreHorizontal :size="12" />
                     </button>
                     <!-- Small Dropdown -->
-                    <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-20 animate-in fade-in slide-in-from-top-2 duration-200">
-                        <button @click="emit('delete')" class="w-full flex items-center gap-3 px-4 py-3 text-rose-500 hover:bg-rose-50 rounded-xl transition-colors text-xs font-black uppercase tracking-wider">
-                            <Trash2 :size="16" /> {{ t('goal_btn_delete', 'Hapus Vision') }}
+                    <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-44 bg-white rounded-2xl shadow-xl border border-slate-100 p-1.5 z-20 animate-in fade-in slide-in-from-top-2 duration-200">
+                        <button @click="emit('delete')" class="w-full flex items-center gap-2.5 px-3 py-2 text-rose-500 hover:bg-rose-50 rounded-xl transition-colors text-[9px] font-black uppercase tracking-wider">
+                            <Trash2 :size="14" /> {{ t('goal_btn_delete', 'Hapus Vision') }}
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div v-if="goal.reward" class="absolute bottom-4 left-4 right-4">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-500/90 backdrop-blur-md text-white text-[10px] font-black shadow-lg">
-                    <Award :size="14" /> {{ goal.reward }}
+            <div v-if="goal.reward" class="absolute bottom-3.5 left-4 right-4">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/90 backdrop-blur-md text-white text-[9px] font-black shadow-lg">
+                    <Award :size="12" /> {{ goal.reward }}
                 </div>
             </div>
         </div>
 
         <!-- Content Body -->
-        <div class="p-6 flex flex-col flex-1">
-            <h3 class="text-xl font-black text-slate-800 line-clamp-2 leading-tight mb-4">{{ goal.title }}</h3>
+        <div class="p-5 flex flex-col flex-1">
+            <h3 class="text-lg font-black text-slate-800 line-clamp-2 leading-tight mb-3.5">{{ goal.title }}</h3>
 
-            <div class="space-y-4 flex-1">
+            <div class="space-y-3.5 flex-1">
                 <!-- Progress Stats -->
                 <div>
-                    <div class="flex justify-between items-end mb-2.5">
-                        <div class="flex items-center gap-2">
-                            <TrendingUp :size="16" class="text-indigo-500" />
-                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ t('common_progress', 'Momentum') }}</span>
+                    <div class="flex justify-between items-end mb-2">
+                        <div class="flex items-center gap-1.5">
+                            <TrendingUp :size="14" class="text-indigo-500" />
+                            <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">{{ t('common_progress', 'Momentum') }}</span>
                         </div>
-                        <span class="text-lg font-black text-indigo-600">{{ progress }}%</span>
+                        <span class="text-base font-black text-indigo-600">{{ progress }}%</span>
                     </div>
-                    <div class="h-3 w-full bg-slate-100 rounded-full overflow-hidden relative border border-slate-200/50 shadow-inner">
+                    <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden relative border border-slate-200/50 shadow-inner">
                         <div class="h-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 transition-all duration-1000 ease-out relative"
                              :style="{ width: `${progress}%` }">
                             <div class="absolute inset-0 bg-white/20 w-full animate-shimmer"></div>
@@ -118,34 +118,34 @@ const t = (key, fallback) => {
                 </div>
 
                 <!-- Footer Info -->
-                <div class="flex items-center justify-between pt-2">
+                <div class="flex items-center justify-between pt-1">
                     <div class="flex items-center gap-4">
                         <div class="flex flex-col">
-                            <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">{{ t('common_deadline', 'Target') }}</span>
-                            <span class="text-xs font-black text-slate-600 flex items-center gap-1.5">
-                                <Calendar :size="12" class="text-slate-400" />
+                            <span class="text-[8px] font-black text-slate-300 uppercase tracking-widest">{{ t('common_deadline', 'Target') }}</span>
+                            <span class="text-[11px] font-black text-slate-600 flex items-center gap-1.5">
+                                <Calendar :size="11" class="text-slate-400" />
                                 {{ goal.end_date || t('no_date', 'No Deadline') }}
                             </span>
                         </div>
                     </div>
-                    <div :class="[statusConfig[goal.status]?.bg, 'px-4 py-1.5 rounded-full flex items-center gap-2 border border-current opacity-70']">
-                        <component :is="statusConfig[goal.status]?.icon" :size="12" />
-                        <span class="text-[9px] font-black uppercase tracking-wider">{{ t(statusConfig[goal.status]?.label, goal.status) }}</span>
+                    <div :class="[statusConfig[goal.status]?.bg, 'px-3 py-1 rounded-full flex items-center gap-1.5 border border-current opacity-70']">
+                        <component :is="statusConfig[goal.status]?.icon" :size="10" />
+                        <span class="text-[8px] font-black uppercase tracking-wider">{{ t(statusConfig[goal.status]?.label, goal.status) }}</span>
                     </div>
                 </div>
 
                 <!-- Milestones Section Toggle -->
-                <div class="pt-4 border-t border-slate-50">
+                <div class="pt-3.5 border-t border-slate-50">
                     <button @click="showMilestones = !showMilestones" class="w-full flex items-center justify-between text-slate-400 hover:text-indigo-500 transition-colors group/milestone">
-                        <div class="flex items-center gap-2">
-                            <ListFilter :size="16" />
-                            <span class="text-[10px] font-black uppercase tracking-[0.2em]">{{ t('goal_milestones_title', 'Mastery Steps') }}</span>
+                        <div class="flex items-center gap-1.5">
+                            <ListFilter :size="14" />
+                            <span class="text-[9px] font-black uppercase tracking-[0.2em]">{{ t('goal_milestones_title', 'Mastery Steps') }}</span>
                         </div>
-                        <ChevronUp v-if="showMilestones" :size="16" />
-                        <ChevronDown v-else :size="16" />
+                        <ChevronUp v-if="showMilestones" :size="14" />
+                        <ChevronDown v-else :size="14" />
                     </button>
 
-                    <div v-show="showMilestones" class="mt-4 space-y-2.5">
+                    <div v-show="showMilestones" class="mt-3 space-y-2">
                         <MilestoneItem 
                             v-for="m in goal.milestones" 
                             :key="m.id" 
@@ -156,9 +156,9 @@ const t = (key, fallback) => {
                         />
                         
                         <button @click="emit('add-milestone')" 
-                                class="w-full py-3 rounded-2xl border-2 border-dashed border-slate-100 text-slate-300 hover:border-indigo-100 hover:text-indigo-400 hover:bg-indigo-50/20 transition-all flex items-center justify-center gap-2 group/add">
-                            <Plus :size="16" class="group-hover/add:rotate-90 transition-transform" />
-                            <span class="text-[10px] font-black uppercase tracking-widest">{{ t('goal_btn_add_milestone', 'Add Step') }}</span>
+                                class="w-full py-2.5 rounded-xl border-2 border-dashed border-slate-100 text-slate-300 hover:border-indigo-100 hover:text-indigo-400 hover:bg-indigo-50/10 transition-all flex items-center justify-center gap-1.5 group/add">
+                            <Plus :size="14" class="group-hover/add:rotate-90 transition-transform" />
+                            <span class="text-[9px] font-black uppercase tracking-widest">{{ t('goal_btn_add_milestone', 'Add Step') }}</span>
                         </button>
                     </div>
                 </div>

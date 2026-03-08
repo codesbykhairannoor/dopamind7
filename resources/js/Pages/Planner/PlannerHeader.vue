@@ -33,7 +33,7 @@ const closeDatePicker = () => {
                     </div>
                     
                     <div>
-                        <h2 class="text-xl font-black text-slate-800 tracking-tight leading-tight">
+                        <h2 class="text-xl md:text-2xl font-black text-slate-800 tracking-tight leading-tight">
                             {{ $t('header_title', 'Daily Planner') }}
                         </h2>
                         
@@ -74,7 +74,7 @@ const closeDatePicker = () => {
                 </div>
 
                 <div class="flex-1 w-full md:px-12 max-w-4xl order-3 md:order-none mt-2 md:mt-0"> 
-                    <div class="flex justify-between text-[10px] font-black text-slate-400 mb-1.5 uppercase tracking-widest">
+                    <div class="flex justify-between text-[11px] font-black text-slate-400 mb-1.5 uppercase tracking-widest">
                         <span>{{ $t('header_progress', 'Progress') }}</span>
                         <span class="text-indigo-600">{{ stats.percent }}%</span>
                     </div>
@@ -84,7 +84,7 @@ const closeDatePicker = () => {
                             :style="{ width: `${stats.percent}%` }"
                         ></div>
                     </div>
-                    <div class="flex gap-4 mt-2 text-[10px] font-bold text-slate-500 uppercase tracking-tight">
+                    <div class="flex gap-4 mt-2 text-[11px] font-bold text-slate-500 uppercase tracking-tight">
                         <span class="flex items-center gap-1">
                             <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                             {{ stats.completed }} {{ $t('header_completed', 'Selesai') }}

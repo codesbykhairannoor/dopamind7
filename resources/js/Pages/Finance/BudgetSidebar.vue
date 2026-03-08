@@ -44,8 +44,8 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
     <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm h-fit flex flex-col gap-6">
         
         <div class="flex p-1 bg-slate-50 rounded-xl border border-slate-100">
-            <button @click="activeTab = 'expense'" class="flex-1 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'expense' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">{{ $t('expense') }}</button>
-            <button @click="activeTab = 'income'" class="flex-1 py-2 text-[10px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'income' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">{{ $t('income') }}</button>
+            <button @click="activeTab = 'expense'" class="flex-1 py-2 text-[11px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'expense' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">{{ $t('expense') }}</button>
+            <button @click="activeTab = 'income'" class="flex-1 py-2 text-[11px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'income' ? 'bg-white text-emerald-600 shadow-sm' : 'text-slate-400 hover:text-slate-600'">{{ $t('income') }}</button>
         </div>
 
         <div v-if="activeTab === 'expense'" class="space-y-6">
@@ -64,11 +64,11 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
                 
                 <div class="p-4 rounded-xl border border-indigo-100 bg-indigo-50/30 flex justify-between items-center shadow-inner">
                     <div class="flex flex-col">
-                        <span class="text-[10px] uppercase font-bold text-indigo-400 tracking-wider">Total Budget</span>
+                        <span class="text-[11px] uppercase font-bold text-indigo-400 tracking-wider">Total Budget</span>
                         <span class="text-sm font-black text-slate-700 mt-0.5">{{ formatMoney(totalBudget) }}</span>
                     </div>
                     <div class="text-right flex flex-col">
-                        <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Terpakai</span>
+                        <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Terpakai</span>
                         <span class="text-sm font-black mt-0.5" :class="totalBudgetExpense > totalBudget ? 'text-rose-500' : 'text-indigo-600'">
                             {{ formatMoney(totalBudgetExpense) }}
                         </span>

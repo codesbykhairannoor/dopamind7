@@ -84,6 +84,7 @@
     "goal_label_end": "Tenggat Waktu",
     "goal_ph_end": "Atur Deadline",
     "img_upload_success": "Gambar berhasil diunggah!",
+    "img_upload_error": "Gagal mengunggah gambar!",
     "goal_success_save": "Berhasil disimpan!",
     "milestone_success_save": "Langkah berhasil disimpan!",
     "warn_empty_title": "Judul Wajib Diisi!",
@@ -93,5 +94,14 @@
     "btn_yes_delete": "Ya, Hapus!",
     "goal_delete_confirm": "Hapus impian ini?",
     "no_category": "Tanpa Kategori",
-    "no_date": "Tanpa Tanggal"
+    "no_date": "Tanpa Tanggal",
+    "goal_btn_delete": "Hapus Vision",
+    "goal_milestones_title": "Mastery Steps",
+    "goal_btn_add_milestone": "Tambah Langkah",
+    "datepicker_today": "Hari Ini",
+    "common_progress": "Momentum",
+    "common_deadline": "Target",
+    "goal_btn_create": "Wujudkan Impian",
+    "goal_btn_save": "Update Vision",
+    "goal_btn_add": "Tambah Target"
 }

@@ -137,7 +137,7 @@ watch(search, (val) => {
                     leave-to-class="opacity-0 scale-95"
                 >
                     <div v-if="showDropdown && suggestions.length > 0" class="absolute top-full left-0 right-0 mt-1.5 bg-white border border-slate-200 rounded-xl shadow-xl z-50 overflow-hidden">
-                        <div class="px-3 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 border-b border-slate-100">
+                        <div class="px-3 py-2 text-[11px] font-black uppercase tracking-widest text-slate-400 border-b border-slate-100">
                             ✨ {{ $t('job_filter_autocomplete_label', 'Posisi yang kamu lamar') }}
                         </div>
                         <button

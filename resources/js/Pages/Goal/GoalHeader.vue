@@ -28,8 +28,8 @@ const todayDisplay = computed(() => {
                 <OneForMindIcon name="goal" size="30" stroke-width="2" class="hidden md:block" />
             </div>
             <div>
-            <h2 class="text-lg md:text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('goal_page_title', 'Goal Tracker') }}</h2>
-            <p class="mt-0.5 text-[10px] md:text-xs font-medium capitalize text-slate-500">{{ todayDisplay }}</p>
+            <h2 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800">{{ $t('goal_page_title', 'Goal Tracker') }}</h2>
+            <p class="mt-0.5 text-sm font-medium capitalize text-slate-500">{{ todayDisplay }}</p>
             </div>
         </div>
       </div>
@@ -40,7 +40,7 @@ const todayDisplay = computed(() => {
           class="flex items-center justify-center flex-1 h-11 px-3 md:px-6 transition shadow-lg bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-indigo-100 gap-2 active:scale-95 whitespace-nowrap min-w-0"
         >
           <OneForMindIcon name="plus" size="16" stroke-width="3" class="text-white" />
-          <span class="text-[10px] md:text-xs font-black text-white tracking-tight uppercase truncate">{{ $t('goal_btn_add', 'Set New Goal') }}</span>
+          <span class="text-[11px] font-black text-white tracking-tight uppercase truncate">{{ $t('goal_btn_add', 'Set New Goal') }}</span>
         </button>
       </div>
     </div>

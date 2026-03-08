@@ -30,7 +30,7 @@ const todayDisplay = computed(() => {
                     <OneForMindIcon name="journal" size="28" />
                 </div>
                 <div>
-                    <h2 class="text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('journal_title', 'My Journal') }}</h2>
+                    <h2 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800">{{ $t('journal_title', 'My Journal') }}</h2>
                     <p class="mt-0.5 text-sm font-medium capitalize text-slate-500">{{ todayDisplay }}</p>
                 </div>
             </div>
@@ -39,15 +39,15 @@ const todayDisplay = computed(() => {
                 
                 <div class="hidden lg:flex items-center gap-5 px-5 border-x border-slate-200 h-10">
                     <div class="flex flex-col justify-center">
-                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">{{ $t('journal_tasks', 'Tugas') }}</span>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">{{ $t('journal_tasks', 'Tugas') }}</span>
                         <span class="text-sm font-black text-slate-700 leading-none">{{ synergy.tasks_completed }}/{{ synergy.tasks_total }}</span>
                     </div>
                     <div class="flex flex-col justify-center">
-                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">{{ $t('journal_habit', 'Habit') }}</span>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">{{ $t('journal_habit', 'Habit') }}</span>
                         <span class="text-sm font-black text-slate-700 leading-none">{{ synergy.habits_completed }}</span>
                     </div>
                     <div class="flex flex-col justify-center">
-                        <span class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">{{ $t('journal_expense', 'Keluar') }}</span>
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">{{ $t('journal_expense', 'Keluar') }}</span>
                         <span class="text-sm font-black text-slate-700 leading-none font-mono">{{ formatMoney(synergy.expense_total) }}</span>
                     </div>
                 </div>

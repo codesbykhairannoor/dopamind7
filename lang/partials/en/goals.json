@@ -84,6 +84,7 @@
     "goal_label_end": "Target Deadline",
     "goal_ph_end": "Set Deadline",
     "img_upload_success": "Image successfully uploaded!",
+    "img_upload_error": "Failed to upload image!",
     "goal_success_save": "Saved successfully!",
     "milestone_success_save": "Step saved successfully!",
     "warn_empty_title": "Title Required!",
@@ -93,5 +94,14 @@
     "btn_yes_delete": "Yes, Delete!",
     "goal_delete_confirm": "Delete this vision?",
     "no_category": "Uncategorized",
-    "no_date": "No Deadline"
+    "no_date": "No Deadline",
+    "goal_btn_delete": "Delete Vision",
+    "goal_milestones_title": "Mastery Steps",
+    "goal_btn_add_milestone": "Add Step",
+    "datepicker_today": "Today",
+    "common_progress": "Momentum",
+    "common_deadline": "Target",
+    "goal_btn_create": "Manifest Goal",
+    "goal_btn_save": "Update Vision",
+    "goal_btn_add": "Add Goal"
 }

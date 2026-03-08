@@ -55,7 +55,7 @@ const changeYear = (offset) => {
                         <OneForMindIcon name="calendar" size="28" />
                     </div>
                     <div>
-                        <h2 class="text-xl font-black leading-tight tracking-tight text-slate-800">{{ $t('calendar_title', 'Master Calendar') }}</h2>
+                        <h2 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800">{{ $t('calendar_title', 'Master Calendar') }}</h2>
                         <p class="mt-0.5 text-sm font-medium capitalize text-slate-500">{{ displayMonth }}</p>
                     </div>
                 </div>

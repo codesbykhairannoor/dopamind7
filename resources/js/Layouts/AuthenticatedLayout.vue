@@ -192,7 +192,7 @@ watch(() => page.url, () => {
                         
                         <div v-if="!isSidebarCollapsed" class="flex-1 min-w-0 overflow-hidden">
                             <p class="text-xs font-black text-slate-800 truncate">{{ user?.name || 'User' }}</p>
-                            <p class="text-[10px] font-bold text-slate-400 truncate">{{ $t('edit_profile', 'Edit Profil') }}</p>
+                            <p class="text-[11px] font-bold text-slate-400 truncate">{{ $t('edit_profile', 'Edit Profil') }}</p>
                         </div>
                     </Link>
 
@@ -235,7 +235,7 @@ watch(() => page.url, () => {
                             </div>
                             <div class="flex-1 min-w-0">
                                 <p class="text-base font-black text-slate-800 truncate leading-tight mb-1">{{ user?.name || 'User' }}</p>
-                                <p class="text-[10px] font-bold uppercase tracking-widest text-indigo-500">{{ $t('edit_profile', 'Edit Profil') }}</p>
+                                <p class="text-[11px] font-bold uppercase tracking-widest text-indigo-500">{{ $t('edit_profile', 'Edit Profil') }}</p>
                             </div>
                             <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400">
                                 <OneForMindIcon name="chevron-right" size="14" stroke-width="3" />

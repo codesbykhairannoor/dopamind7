@@ -49,7 +49,7 @@ const todayDate = computed(() => {
                             <OneForMindIcon name="job" size="28" />
                         </div>
                         <div>
-                            <h1 class="text-xl font-black leading-tight tracking-tight text-slate-800 flex items-center gap-2">
+                            <h1 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800 flex items-center gap-2">
                                 {{ $t('job_page_title', 'Job Tracker') }}
                                 <span v-if="pagination?.total" class="text-sm font-bold text-slate-400 bg-slate-100 px-2.5 py-0.5 rounded-full">
                                     {{ pagination.total }}

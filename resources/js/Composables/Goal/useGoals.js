@@ -196,18 +196,24 @@ export function useGoals(props) {
         }
     };
 
-    const autoSaveRow = async (goal) => {
+    const timers = {};
+    const autoSaveRow = (goal) => {
+        if (timers[goal.id]) clearTimeout(timers[goal.id]);
+
         goal.is_saving = true;
-        try {
-            await axios.patch(route('goals.update', goal.id), {
-                ...goal,
-                _method: 'PATCH'
-            });
-        } catch (error) {
-            fireToast('error', t('goal_error_save', 'Gagal menyimpan!'));
-        } finally {
-            goal.is_saving = false;
-        }
+        timers[goal.id] = setTimeout(async () => {
+            try {
+                await axios.patch(route('goals.update', goal.id), {
+                    ...goal,
+                    _method: 'PATCH'
+                });
+            } catch (error) {
+                fireToast('error', t('goal_error_save', 'Gagal menyimpan!'));
+            } finally {
+                goal.is_saving = false;
+                delete timers[goal.id];
+            }
+        }, 1000);
     };
 
     const addMilestone = async (goal) => {
@@ -228,23 +234,29 @@ export function useGoals(props) {
     const saveMilestone = async (goal, milestone) => {
         if (!milestone.title) return;
         milestone.is_saving = true;
+        console.log(`[Persistence Audit] Saving milestone: ${milestone.title} for goal ${goal.id}`);
 
         try {
-            if (milestone.is_new) {
+            if (milestone.is_new || String(milestone.id).startsWith('temp_')) {
                 const response = await axios.post(route('goals.milestones.store', goal.id), {
                     title: milestone.title,
                     target_date: milestone.target_date
                 });
-                milestone.id = response.data.data.id;
-                milestone.is_new = false;
+                if (response.data.data) {
+                    milestone.id = response.data.data.id;
+                    milestone.is_new = false;
+                    console.log(`[Persistence Audit] Milestone created successfully with ID: ${milestone.id}`);
+                }
             } else {
                 await axios.patch(route('goals.milestones.update', [goal.id, milestone.id]), {
                     title: milestone.title,
                     target_date: milestone.target_date
                 });
+                console.log(`[Persistence Audit] Milestone updated successfully: ${milestone.id}`);
             }
             fireToast('success', t('milestone_success_save', 'Langkah disimpan!'));
         } catch (error) {
+            console.error('[Persistence Audit] Error saving milestone:', error);
             fireToast('error', t('milestone_error_save', 'Gagal menyimpan langkah!'));
         } finally {
             milestone.is_saving = false;
@@ -252,14 +264,32 @@ export function useGoals(props) {
     };
 
     const toggleMilestone = async (goal, milestone) => {
-        milestone.completed = !milestone.completed;
+        // If it's a temp milestone but has a title, save it first so we can toggle it on the server
+        if (String(milestone.id).startsWith('temp_')) {
+            if (milestone.title?.trim()) {
+                console.log('[Persistence Audit] Temp milestone has title, saving before toggle...');
+                await saveMilestone(goal, milestone);
+            } else {
+                console.warn('[Persistence Audit] Cannot toggle temp milestone without title.');
+                return;
+            }
+        }
+
+        // Optimistic Update
+        const originalStatus = milestone.completed;
         const originalProgress = goal.progress;
+
+        milestone.completed = !milestone.completed;
+        console.log(`[Persistence Audit] Toggling milestone ${milestone.id} to ${milestone.completed}`);
         recalculateProgress(goal);
 
         try {
             await axios.post(route('goals.milestones.toggle', [goal.id, milestone.id]));
+            console.log(`[Persistence Audit] Toggle persisted for ${milestone.id}`);
         } catch (error) {
-            milestone.completed = !milestone.completed;
+            console.error('[Persistence Audit] Error toggling milestone:', error);
+            // Rollback
+            milestone.completed = originalStatus;
             goal.progress = originalProgress;
             fireToast('error', t('milestone_error_toggle', 'Gagal update status!'));
         }
