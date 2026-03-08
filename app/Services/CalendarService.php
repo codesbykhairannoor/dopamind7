@@ -19,7 +19,8 @@ class CalendarService
     {
         try {
             $activeDate = Carbon::parse($monthQuery . '-01')->timezone($timezone);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             $activeDate = now()->timezone($timezone);
         }
 
@@ -37,7 +38,7 @@ class CalendarService
             ->whereBetween('date', [$startDate, $endDate])
             ->select('id', 'date', 'title', 'mood')
             ->get()
-            ->mapWithKeys(fn ($item) => [Carbon::parse($item->date)->format('Y-m-d') => $item]);
+            ->mapWithKeys(fn($item) => [Carbon::parse($item->date)->format('Y-m-d') => $item]);
 
         // 4. Ambil Keuangan
         $finances = FinanceTransaction::where('user_id', $userId)
@@ -45,24 +46,24 @@ class CalendarService
             ->where('type', 'expense')
             ->selectRaw('date, SUM(amount) as total_expense')
             ->groupBy('date')
-            ->pluck('total_expense', 'date'); 
+            ->pluck('total_expense', 'date');
 
         // 5. Ambil Planner (FIXED FOR POSTGRESQL)
         $planners = PlannerTask::where('user_id', $userId)
             ->whereBetween('date', [$startDate, $endDate])
             ->select(
-                'date',
-                DB::raw('COUNT(id) as total_tasks'),
-                DB::raw('SUM(CASE WHEN is_completed = true THEN 1 ELSE 0 END) as completed_tasks')
-            )
+            'date',
+            DB::raw('COUNT(id) as total_tasks'),
+            DB::raw('SUM(CASE WHEN is_completed = true THEN 1 ELSE 0 END) as completed_tasks')
+        )
             ->groupBy('date')
             ->get()
-            ->mapWithKeys(fn ($item) => [
-                Carbon::parse($item->date)->format('Y-m-d') => [
-                    'total_tasks' => (int) $item->total_tasks,
-                    'completed_tasks' => (int) $item->completed_tasks,
-                ]
-            ]);
+            ->mapWithKeys(fn($item) => [
+        Carbon::parse($item->date)->format('Y-m-d') => [
+        'total_tasks' => (int)$item->total_tasks,
+        'completed_tasks' => (int)$item->completed_tasks,
+        ]
+        ]);
 
         // 6. Ambil Habit (Optimized with JOIN)
         $habits = HabitLog::join('habits', 'habit_logs.habit_id', '=', 'habits.id')
@@ -74,13 +75,26 @@ class CalendarService
             ->pluck('completed_habits', 'habit_logs.date')
             ->toArray();
 
+        // 7. Ambil Goal Milestones
+        $milestones = \App\Models\GoalMilestone::join('goals', 'goal_milestones.goal_id', '=', 'goals.id')
+            ->where('goals.user_id', $userId)
+            ->whereBetween('goal_milestones.target_date', [$startDate, $endDate])
+            ->select('goal_milestones.*', 'goals.title as goal_title', 'goals.color as goal_color')
+            ->get()
+            ->map(function ($m) {
+            $m->is_completed = (bool)$m->completed;
+            return $m;
+        })
+            ->groupBy(fn($m) => Carbon::parse($m->target_date)->format('Y-m-d'));
+
         return [
             'currentMonth' => $activeDate->format('Y-m'),
-            'events'       => $events,
-            'journals'     => $journals,
-            'finances'     => $finances,
-            'planners'     => $planners,
-            'habits'       => $habits,
+            'events' => $events,
+            'journals' => $journals,
+            'finances' => $finances,
+            'planners' => $planners,
+            'habits' => $habits,
+            'milestones' => $milestones,
         ];
     }
 }

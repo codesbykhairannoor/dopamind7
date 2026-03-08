@@ -73,10 +73,10 @@ class GoalService
 
         return [
             'total' => $total,
-            'active' => $statsRaw['active'] ?? 0,
-            'completed' => $statsRaw['completed'] ?? 0,
-            'paused' => $statsRaw['paused'] ?? 0,
-            'cancelled' => $statsRaw['cancelled'] ?? 0,
+            'active' => $statsRaw->get('active', 0),
+            'completed' => $statsRaw->get('completed', 0),
+            'paused' => $statsRaw->get('paused', 0),
+            'cancelled' => $statsRaw->get('cancelled', 0),
             'avg_progress' => (int)$avgProgress,
             'milestones_total' => $milestonesTotal,
             'milestones_completed' => $milestonesCompleted,
@@ -143,15 +143,31 @@ class GoalService
         $order = $goal->milestones()->max('order') + 1;
         return $goal->milestones()->create([
             'title' => $data['title'],
-            'order' => $data['order'] ?? $order,
-            'completed' => false,
+            'order' => $data['position'] ?? $data['order'] ?? $order,
+            'completed' => $data['is_completed'] ?? $data['completed'] ?? false,
             'target_date' => $data['target_date'] ?? null,
         ]);
     }
 
     public function updateMilestone(GoalMilestone $milestone, array $data): GoalMilestone
     {
-        $milestone->update($data);
+        $updateData = [];
+        if (isset($data['title']))
+            $updateData['title'] = $data['title'];
+        if (isset($data['order']))
+            $updateData['order'] = $data['order'];
+        if (isset($data['position']))
+            $updateData['order'] = $data['position'];
+        if (isset($data['target_date']))
+            $updateData['target_date'] = $data['target_date'];
+
+        // Handle field parity
+        if (isset($data['is_completed']))
+            $updateData['completed'] = $data['is_completed'];
+        elseif (isset($data['completed']))
+            $updateData['completed'] = $data['completed'];
+
+        $milestone->update($updateData);
         return $milestone;
     }
 

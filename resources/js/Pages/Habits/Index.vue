@@ -62,23 +62,22 @@ const {
                 :openCreateModal="openCreateModal"
             />
 
-           <HabitGrid 
-    :localHabits="localHabits"
-    :monthDates="monthDates"
-    :hasPrevHabits="hasPrevHabits"
-    :toggleStatus="toggleStatus"
-    :handleGridNav="handleGridNav"
-    :getStatus="getStatus"
-    :editHabit="editHabit"
-    :confirmDelete="confirmDelete"
-    :openCreateModal="openCreateModal"
-    :openCopyModal="openCopyModal"
-    
-    :handleMouseDown="handleMouseDown"
-    :handleMouseEnter="handleMouseEnter"
-    :isCellSelected="isCellSelected"
-  :saveHabitOrder="saveHabitOrder"
-/>
+            <HabitGrid 
+                :localHabits="localHabits"
+                :monthDates="monthDates"
+                :hasPrevHabits="hasPrevHabits"
+                :toggleStatus="toggleStatus"
+                :handleGridNav="handleGridNav"
+                :getStatus="getStatus"
+                :editHabit="editHabit"
+                :confirmDelete="confirmDelete"
+                :openCreateModal="openCreateModal"
+                :openCopyModal="openCopyModal"
+                :handleMouseDown="handleMouseDown"
+                :handleMouseEnter="handleMouseEnter"
+                :isCellSelected="isCellSelected"
+                :saveHabitOrder="saveHabitOrder"
+            />
 
             <HabitStats 
                 :localHabits="localHabits"

@@ -1,70 +1,175 @@
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 import axios from 'axios';
+import { usePage } from '@inertiajs/vue3';
 
 export function useGoals(props) {
     const localGoals = ref([]);
-    const localStats = ref(props.stats ? { ...props.stats } : { total: 0, active: 0, completed: 0, paused: 0, cancelled: 0 });
-    const isModalOpen = ref(false);
-    const editingGoal = ref(null);
+    const page = usePage();
 
-    const initGoals = (goals) => {
-        return (goals || []).map(g => ({
-            ...g,
-            _key: g.id || `temp_${Math.random().toString(36).substr(2, 9)}`,
-            milestones: Array.isArray(g.milestones) ? g.milestones : [],
+    // 1. Data Initialization & Normalization
+    const normalizeMilestones = (ms) => {
+        if (!ms) return [];
+        const raw = (ms.data || ms || []);
+        return (Array.isArray(raw) ? raw : []).map(m => ({
+            ...m,
+            is_completed: !!(m.is_completed || m.completed),
+            completed: !!(m.is_completed || m.completed),
             is_saving: false
         }));
     };
 
-    localGoals.value = initGoals(props.goals);
+    const normalizeGoal = (g) => ({
+        ...g,
+        _key: g.id || `temp_${Math.random().toString(36).substr(2, 9)}`,
+        milestones: normalizeMilestones(g.milestones),
+        progress: g.progress || 0,
+        is_saving: false,
+        is_auto_saving: false
+    });
 
+    localGoals.value = (props.goals || []).map(normalizeGoal);
+
+    // 2. Reactivity & State Syncing
     watch(() => props.goals, (newGoals) => {
-        const incoming = initGoals(newGoals);
-        localGoals.value = incoming.map(ing => {
-            const existing = localGoals.value.find(lg => lg.id === ing.id);
-            if (existing && existing.is_saving) return { ...ing, is_saving: true };
-            return ing;
+        // Sync incoming props but preserve local "saving" states
+        const normalized = (newGoals || []).map(normalizeGoal);
+        localGoals.value = normalized.map(incoming => {
+            const existing = localGoals.value.find(lg => lg.id === incoming.id);
+            if (existing && (existing.is_auto_saving || existing.milestones.some(m => m.is_saving))) {
+                return existing;
+            }
+            return incoming;
         });
     }, { deep: true });
 
-    watch(() => props.stats, (newStats) => {
-        if (newStats) localStats.value = { ...newStats };
-    }, { deep: true });
+    // 3. Derived Stats (Single Source of Truth)
+    const localStats = computed(() => {
+        const goals = localGoals.value;
+        const total = goals.length;
+        const active = goals.filter(g => g.status === 'active');
+        const completed = goals.filter(g => g.status === 'completed').length;
 
-    const t = (key, fallback) => {
-        const result = trans(key);
-        return result !== key ? result : fallback;
-    };
-
-    const fireToast = (icon, message) => {
-        Swal.fire({
-            toast: true, position: 'top-end', showConfirmButton: false, timer: 2000,
-            background: '#4f46e5', iconColor: '#ffffff', icon: icon,
-            title: `<span style="color: white; font-weight: 900; font-size: 14px;">${message}</span>`,
-            customClass: { popup: '!rounded-full !shadow-2xl !m-4' }
+        let mTotal = 0, mComp = 0, totalP = 0;
+        goals.forEach(g => {
+            const ms = g.milestones || [];
+            const c = ms.filter(m => m.is_completed || m.completed).length;
+            mTotal += ms.length;
+            mComp += c;
+            if (ms.length > 0) totalP += (c / ms.length) * 100;
         });
+
+        const avgProgress = active.length > 0 ? Math.round(totalP / active.length) : 0;
+
+        return {
+            total,
+            active: active.length,
+            completed,
+            paused: goals.filter(g => g.status === 'paused').length,
+            cancelled: goals.filter(g => g.status === 'cancelled').length,
+            avg_progress: Math.min(100, avgProgress),
+            milestones_total: mTotal,
+            milestones_completed: mComp,
+            top_goal_title: active.sort((a, b) => (b.progress || 0) - (a.progress || 0))[0]?.title || null,
+            upcoming_deadlines_count: props.stats?.upcoming_deadlines_count || 0
+        };
+    });
+
+    // 4. Persistence Managers (Auto-Save)
+    const saveTimeouts = new Map();
+
+    const silentSaveMilestone = async (goal, milestone) => {
+        const isNew = String(milestone.id).startsWith('temp_');
+        milestone.is_saving = true;
+
+        try {
+            const url = isNew
+                ? route('goals.milestones.store', goal.id)
+                : route('goals.milestones.update', [goal.id, milestone.id]);
+
+            const response = await axios.post(url, {
+                ...milestone,
+                _method: isNew ? 'POST' : 'PATCH'
+            });
+
+            if (response.data.data) {
+                Object.assign(milestone, normalizeMilestones([response.data.data])[0], { is_saving: false });
+                recalculateProgress(goal);
+            }
+        } catch (error) {
+            console.error('[Persistence Error] Milestone save failed:', error);
+            milestone.is_saving = false;
+        }
     };
 
-    const swalTheme = {
-        customClass: {
-            popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
-            title: 'text-2xl font-black text-slate-800 mb-2 font-sans',
-            confirmButton: 'bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-2xl shadow-xl active:scale-95 transition-all outline-none mx-2 tracking-wide',
-            cancelButton: 'bg-slate-50 text-slate-400 font-bold py-3.5 px-8 rounded-2xl hover:bg-slate-100 active:scale-95 transition-all outline-none mx-2 tracking-wide',
-            actions: 'mt-6 gap-3',
-        },
-        buttonsStyling: false, focusConfirm: false
+    const debouncedSaveMilestone = (goal, milestone) => {
+        const key = `ms_${milestone.id}`;
+        if (saveTimeouts.has(key)) clearTimeout(saveTimeouts.get(key));
+
+        saveTimeouts.set(key, setTimeout(() => {
+            silentSaveMilestone(goal, milestone);
+            saveTimeouts.delete(key);
+        }, 800));
     };
+
+    const recalculateProgress = (goal) => {
+        const ms = goal.milestones || [];
+        if (ms.length === 0) return;
+        const comp = ms.filter(m => m.is_completed || m.completed).length;
+        goal.progress = Math.round((comp / ms.length) * 100);
+    };
+
+    // 5. Public Actions
+    const toggleMilestone = async (goal, milestone) => {
+        // Instant Optimistic Update
+        milestone.is_completed = !milestone.is_completed;
+        milestone.completed = milestone.is_completed;
+        recalculateProgress(goal);
+
+        try {
+            const res = await axios.post(route('goals.milestones.toggle', [goal.id, milestone.id]));
+            if (res.data.data) {
+                Object.assign(milestone, normalizeMilestones([res.data.data])[0]);
+                recalculateProgress(goal);
+            }
+        } catch (e) {
+            // Rollback
+            milestone.is_completed = !milestone.is_completed;
+            milestone.completed = milestone.is_completed;
+            recalculateProgress(goal);
+            fireToast('error', 'Gagal update status!');
+        }
+    };
+
+    const saveMilestone = (goal, milestoneData) => {
+        const m = goal.milestones.find(ms => ms.id === milestoneData.id);
+        if (!m) return;
+        Object.assign(m, milestoneData);
+        recalculateProgress(goal);
+        debouncedSaveMilestone(goal, m);
+    };
+
+    const addMilestone = (goal) => {
+        const m = { id: `temp_${Date.now()}`, title: '', is_completed: false, order: goal.milestones.length, is_saving: false };
+        goal.milestones.push(m);
+        recalculateProgress(goal);
+    };
+
+    const deleteMilestone = async (goal, mId) => {
+        goal.milestones = goal.milestones.filter(m => m.id !== mId);
+        recalculateProgress(goal);
+        if (!String(mId).startsWith('temp_')) {
+            try { await axios.delete(route('goals.milestones.destroy', [goal.id, mId])); } catch (e) { }
+        }
+    };
+
+    // Modal & Goal Management
+    const isModalOpen = ref(false);
+    const editingGoal = ref(null);
 
     const openCreateModal = () => {
-        editingGoal.value = {
-            id: null, _key: `new_${Math.random().toString(36).substr(2, 9)}`, title: '',
-            category: '', type: 'daily', status: 'active', priority: 'important', reward: '',
-            cover_image_url: '', cover_image_path: '', progress: 0, target_value: 0, current_value: 0,
-            start_date: new Date().toISOString().split('T')[0], end_date: null, is_new: true, milestones: []
-        };
+        editingGoal.value = normalizeGoal({ id: null, title: '', type: 'daily', status: 'active', priority: 'important', milestones: [] });
         isModalOpen.value = true;
     };
 
@@ -73,41 +178,24 @@ export function useGoals(props) {
         isModalOpen.value = true;
     };
 
-    const closeModal = () => {
-        isModalOpen.value = false;
-        editingGoal.value = null;
-    };
+    const closeModal = () => { isModalOpen.value = false; editingGoal.value = null; };
 
-    const saveGoal = async (goalData) => {
-        if (!goalData.title || goalData.title.trim() === '') {
-            return fireToast('warning', t('warn_empty_title', 'Title is required!'));
-        }
-
-        let goal = localGoals.value.find(g => g.id === goalData.id);
-        if (goalData.is_new) {
-            goal = { ...goalData, is_saving: true };
-            localGoals.value.unshift(goal);
-        } else if (goal) {
-            Object.assign(goal, goalData, { is_saving: true });
-        }
-
+    const saveGoal = async (data) => {
         try {
-            const url = goalData.is_new ? route('goals.store') : route('goals.update', goalData.id);
-            const response = await axios.post(url, { ...goalData, _method: goalData.is_new ? 'POST' : 'PATCH' });
-
-            if (response.data.data) {
-                const savedGoal = response.data.data;
-                const index = localGoals.value.findIndex(g => g._key === goalData._key);
-                if (index !== -1) {
-                    localGoals.value[index] = { ...savedGoal, _key: savedGoal.id, is_saving: false };
+            const url = data.id ? route('goals.update', data.id) : route('goals.store');
+            const res = await axios.post(url, { ...data, _method: data.id ? 'PATCH' : 'POST' });
+            if (res.data.data) {
+                const refreshed = normalizeGoal(res.data.data);
+                if (data.id) {
+                    const idx = localGoals.value.findIndex(g => g.id === data.id);
+                    if (idx !== -1) localGoals.value[idx] = refreshed;
+                } else {
+                    localGoals.value.unshift(refreshed);
                 }
                 closeModal();
-                fireToast('success', t('goal_success_save', 'Berhasil disimpan!'));
+                fireToast('success', 'Goal berhasil dimanifestasi!');
             }
-        } catch (error) {
-            fireToast('error', t('goal_error_save', 'Gagal menyimpan!'));
-            if (goal) goal.is_saving = false;
-        }
+        } catch (e) { fireToast('error', 'Gagal menyimpan!'); }
     };
 
     const uploadCoverImage = async (goalId, file) => {
@@ -118,102 +206,28 @@ export function useGoals(props) {
             const response = await axios.post(route('goals.uploadImage'), formData, { headers: { 'Content-Type': 'multipart/form-data' } });
             return response.data;
         } catch (error) {
-            fireToast('error', t('img_upload_error', 'Gagal upload gambar!'));
+            fireToast('error', 'Gagal upload gambar!');
             throw error;
         }
     };
 
-    const deleteGoal = async (id, isNew = false) => {
-        if (isNew) return localGoals.value = localGoals.value.filter(g => g.id !== id);
-        const result = await Swal.fire({ ...swalTheme, title: t('goal_delete_confirm', 'Hapus Goal?'), icon: 'warning', showCancelButton: true, confirmButtonText: t('btn_yes_delete', 'Ya, Hapus'), cancelButtonText: t('btn_cancel', 'Batal') });
-        if (!result.isConfirmed) return;
+    const deleteGoal = async (id) => {
+        const res = await Swal.fire({ title: 'Hapus Goal?', icon: 'warning', showCancelButton: true, confirmButtonText: 'Ya, Hapus' });
+        if (!res.isConfirmed) return;
         try {
             await axios.delete(route('goals.destroy', id));
             localGoals.value = localGoals.value.filter(g => g.id !== id);
-            fireToast('success', t('goal_success_delete', 'Goal dihapus!'));
-        } catch (e) { fireToast('error', t('goal_error_delete', 'Gagal menghapus!')); }
+            fireToast('success', 'Goal dihapus!');
+        } catch (e) { fireToast('error', 'Gagal menghapus!'); }
     };
 
-    const addMilestone = async (goal) => {
-        const tempId = 'temp_' + Date.now();
-        if (!Array.isArray(goal.milestones)) goal.milestones = [];
-        goal.milestones.push({ id: tempId, title: '', completed: false, target_date: null, is_new: true, is_saving: false });
-        recalculateProgress(goal);
-    };
-
-    // 🔥 FIX: Save Milestone - Cari Referensi yang Benar & Swap ID
-    const saveMilestone = async (goal, milestoneData) => {
-        if (!milestoneData.title) return;
-        const actualMilestone = goal.milestones.find(m => m.id === milestoneData.id);
-        if (!actualMilestone) return;
-
-        actualMilestone.title = milestoneData.title;
-        actualMilestone.target_date = milestoneData.target_date;
-        actualMilestone.is_saving = true;
-
-        try {
-            if (actualMilestone.is_new || String(actualMilestone.id).startsWith('temp_')) {
-                const response = await axios.post(route('goals.milestones.store', goal.id), {
-                    title: actualMilestone.title,
-                    target_date: actualMilestone.target_date
-                });
-                if (response.data.data) {
-                    actualMilestone.id = response.data.data.id; // SWAP KE REAL ID DARI DATABASE
-                    actualMilestone.is_new = false;
-                }
-            } else {
-                await axios.patch(route('goals.milestones.update', [goal.id, actualMilestone.id]), {
-                    title: actualMilestone.title,
-                    target_date: actualMilestone.target_date
-                });
-            }
-        } catch (error) {
-            fireToast('error', t('milestone_error_save', 'Gagal menyimpan langkah!'));
-        } finally {
-            actualMilestone.is_saving = false;
-        }
-    };
-
-    const toggleMilestone = async (goal, milestone) => {
-        if (String(milestone.id).startsWith('temp_') && !milestone.title) return; // Abaikan kalau kosong
-
-        milestone.completed = !milestone.completed;
-        recalculateProgress(goal);
-
-        try {
-            // Tunggu save kelar baru di-toggle ke DB kalau dia milestone baru
-            if (String(milestone.id).startsWith('temp_')) await saveMilestone(goal, milestone);
-            await axios.post(route('goals.milestones.toggle', [goal.id, milestone.id]));
-        } catch (error) {
-            milestone.completed = !milestone.completed; // Rollback
-            recalculateProgress(goal);
-            fireToast('error', t('milestone_error_toggle', 'Gagal update status!'));
-        }
-    };
-
-    const deleteMilestone = async (goal, milestoneId) => {
-        const index = goal.milestones.findIndex(m => m.id === milestoneId);
-        if (index === -1) return;
-        const milestone = goal.milestones[index];
-        goal.milestones.splice(index, 1);
-        recalculateProgress(goal);
-
-        if (!String(milestoneId).startsWith('temp_')) {
-            try { await axios.delete(route('goals.milestones.destroy', [goal.id, milestoneId])); }
-            catch (error) { fireToast('error', t('milestone_error_delete', 'Gagal menghapus!')); }
-        }
-    };
-
-    const recalculateProgress = (goal) => {
-        const total = goal.milestones?.length || 0;
-        if (total === 0) { goal.progress = 0; return; }
-        const completed = goal.milestones.filter(m => m.completed).length;
-        goal.progress = Math.round((completed / total) * 100);
+    const fireToast = (icon, title) => {
+        Swal.fire({ toast: true, position: 'top-end', showConfirmButton: false, timer: 2000, icon, title });
     };
 
     return {
         localGoals, localStats, isModalOpen, editingGoal,
-        openCreateModal, openEditModal, closeModal, saveGoal,
-        uploadCoverImage, deleteGoal, addMilestone, saveMilestone, toggleMilestone, deleteMilestone
+        openCreateModal, openEditModal, closeModal, saveGoal, deleteGoal,
+        uploadCoverImage, addMilestone, saveMilestone, toggleMilestone, deleteMilestone
     };
 }

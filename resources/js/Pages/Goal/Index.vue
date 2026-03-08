@@ -54,12 +54,12 @@ const todayDate = computed(() => {
                 <div v-for="goal in localGoals" :key="goal._key">
                     <GoalCard
                         :goal="goal"
-                        @edit="openEditModal(goal)"
-                        @delete="deleteGoal(goal.id)"
-                        @add-milestone="addMilestone(goal)"
-                        @save-milestone="(m) => saveMilestone(goal, m)"
-                        @toggle-milestone="(m) => toggleMilestone(goal, m)"
-                        @delete-milestone="(mId) => deleteMilestone(goal, mId)"
+                        :onEdit="openEditModal"
+                        :onDelete="deleteGoal"
+                        :onAddMilestone="addMilestone"
+                        :onSaveMilestone="saveMilestone"
+                        :onToggleMilestone="toggleMilestone"
+                        :onDeleteMilestone="deleteMilestone"
                     />
                 </div>
             </div>

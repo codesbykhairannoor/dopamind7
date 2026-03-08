@@ -100,6 +100,7 @@ const changeMonth = (newMonthPayload) => {
         <div class="w-full px-4 py-6 sm:px-6 lg:px-8 max-w-full mx-auto">
             <CalendarGrid 
                 :calendarDays="calendarDays"
+                :selectedDate="selectedDate"
                 @open-detail="openDayDetail"
             />
         </div>

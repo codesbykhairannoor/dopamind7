@@ -25,6 +25,7 @@ const page = usePage();
 // State Form
 const form = ref({
     title: '',
+    color: '#6366f1',
     type: 'daily',
     status: 'active',
     priority: 'important',
@@ -197,6 +198,22 @@ const t = (key, fallback) => {
                         </div>
                     </div>
 
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_color', 'Goal Color Theme') }}</label>
+                        <div class="flex flex-wrap gap-3 p-4 bg-slate-50 rounded-[2rem] border border-slate-100/50 shadow-inner">
+                            <button v-for="c in ['#6366f1', '#10b981', '#f59e0b', '#f43f5e', '#8b5cf6', '#0ea5e9', '#0f172a']" :key="c"
+                                    @click="form.color = c"
+                                    type="button"
+                                    class="w-10 h-10 rounded-2xl transition-all group relative flex items-center justify-center overflow-hidden hover:scale-110 active:scale-90"
+                                    :style="{ backgroundColor: c }"
+                                    :class="form.color === c ? 'ring-4 ring-offset-4 ring-indigo-500/20 shadow-xl' : 'opacity-60 hover:opacity-100'">
+                                <div v-if="form.color === c" class="text-white drop-shadow-md">
+                                    <CheckCircle2 :size="20" />
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-50">
                         <div class="space-y-2 relative">
                             <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_start', 'Start Date') }}</label>
@@ -265,7 +282,7 @@ const t = (key, fallback) => {
                                 form.milestones.push({
                                     id: null,
                                     title: 'Untitled Step',
-                                    completed: false,
+                                    is_completed: false,
                                     target_date: null,
                                     is_editing: true
                                 });

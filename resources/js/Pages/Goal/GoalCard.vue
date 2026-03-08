@@ -1,166 +1,158 @@
 <script setup>
+import { computed, watch } from 'vue';
 import { 
-    MoreHorizontal, Trash2, Calendar, Target, Award, 
-    ChevronDown, ChevronUp, Plus, Edit2, Zap, AlertTriangle, 
-    CheckCircle2, Clock, TrendingUp, ListFilter
+    Target, Calendar, Award, Trash2, Edit3, 
+    MoreVertical, ChevronRight, Zap, CheckCircle2 
 } from 'lucide-vue-next';
-import { ref, computed, watch } from 'vue';
-import { trans } from 'laravel-vue-i18n';
 import MilestoneItem from './MilestoneItem.vue';
+import { usePage } from '@inertiajs/vue3';
+import dayjs from 'dayjs';
 import confetti from 'canvas-confetti';
 
 const props = defineProps({
-    goal: Object
+    goal: Object,
+    onEdit: Function,
+    onDelete: Function,
+    onToggleMilestone: Function,
+    onAddMilestone: Function,
+    onSaveMilestone: Function,
+    onDeleteMilestone: Function
 });
 
-const emit = defineEmits([
-    'edit', 'delete', 'add-milestone', 'save-milestone', 'toggle-milestone', 'delete-milestone'
-]);
+const page = usePage();
 
-const showMilestones = ref(true);
-const dropdownOpen = ref(false);
+// Progress calculation is now reactive from milestones
+const progress = computed(() => {
+    const ms = props.goal.milestones || [];
+    if (ms.length === 0) return 0;
+    const comp = ms.filter(m => m.is_completed || m.completed).length;
+    return Math.round((comp / ms.length) * 100);
+});
 
-const progress = computed(() => props.goal.progress || 0);
-
-// Celebration Logic
-watch(() => props.goal.progress, (newVal, oldVal) => {
+// Celebration logic
+watch(progress, (newVal, oldVal) => {
     if (newVal === 100 && oldVal < 100) {
         confetti({
             particleCount: 150,
             spread: 70,
             origin: { y: 0.6 },
-            colors: ['#4f46e5', '#818cf8', '#6366f1']
+            colors: [props.goal.color || '#6366f1', '#ffffff', '#ffd700']
         });
     }
 });
 
-const statusConfig = {
-    active: { icon: Zap, class: 'bg-emerald-500', bg: 'bg-emerald-50 text-emerald-600', label: 'goal_status_active' },
-    completed: { icon: CheckCircle2, class: 'bg-indigo-600', bg: 'bg-indigo-50 text-indigo-600', label: 'goal_status_completed' },
-    paused: { icon: Clock, class: 'bg-amber-500', bg: 'bg-amber-50 text-amber-600', label: 'goal_status_paused' },
-    cancelled: { icon: AlertTriangle, class: 'bg-slate-400', bg: 'bg-slate-50 text-slate-500', label: 'goal_status_cancelled' }
+const dateDisplay = (date) => {
+    if (!date) return null;
+    return dayjs(date).locale(page.props.locale || 'id').format('DD MMM');
 };
 
-const priorityConfig = {
-    vital: 'bg-rose-500',
-    important: 'bg-indigo-500',
-    optional: 'bg-slate-400'
-};
-
-const t = (key, fallback) => {
-    const res = trans(key);
-    return res !== key ? res : fallback;
-};
+const priorityLabel = computed(() => {
+    const p = props.goal.priority || 'important';
+    return {
+        vital: { text: 'Vital', class: 'bg-rose-50 text-rose-600 border-rose-100' },
+        important: { text: 'Important', class: 'bg-indigo-50 text-indigo-600 border-indigo-100' },
+        optional: { text: 'Optional', class: 'bg-slate-50 text-slate-400 border-slate-100' }
+    }[p];
+});
 </script>
 
 <template>
-    <div class="group h-full bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1 transition-all duration-500 flex flex-col">
+    <div class="group bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 flex flex-col overflow-hidden h-full">
         
-        <!-- Top Vision Board Banner -->
-        <div class="relative h-28 shrink-0 overflow-hidden bg-slate-100 rounded-t-[2.5rem]">
+        <!-- Vision Banner / Header -->
+        <div class="relative h-44 shrink-0 overflow-hidden bg-slate-50">
             <template v-if="goal.cover_image_url">
-                <img :src="goal.cover_image_url" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                <img :src="goal.cover_image_url" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
             </template>
-            <div v-else class="w-full h-full bg-gradient-to-br from-indigo-100 to-indigo-50 flex items-center justify-center">
-                <Target :size="40" class="text-indigo-200" stroke-width="1.5" />
+            <div v-else class="w-full h-full flex items-center justify-center opacity-10 group-hover:scale-110 transition-transform duration-700">
+                <Target :size="100" />
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-indigo-50/30"></div>
             </div>
 
-            <!-- Absolute Floaters -->
-            <div class="absolute top-3.5 left-4 flex gap-2">
-                <div :class="[priorityConfig[goal.priority], 'w-2 h-2 rounded-full shadow-lg pulse-priority']"></div>
+            <!-- Header Content Overlay -->
+            <div class="absolute inset-x-5 bottom-4 flex flex-col">
+                <div class="flex items-center gap-2 mb-1.5">
+                    <span :class="['px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest border border-white/20 backdrop-blur-md transition-colors', goal.cover_image_url ? 'bg-white/10 text-white' : priorityLabel.class]">
+                        {{ priorityLabel.text }}
+                    </span>
+                    <span v-if="goal.end_date" class="px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest bg-black/20 text-white border border-white/10 backdrop-blur-md flex items-center gap-1">
+                        <Calendar :size="8" />
+                        {{ dateDisplay(goal.end_date) }}
+                    </span>
+                </div>
+                <h3 class="text-xl font-black truncate drop-shadow-sm" :class="goal.cover_image_url ? 'text-white' : 'text-slate-800'">
+                    {{ goal.title }}
+                </h3>
             </div>
 
-            <div class="absolute top-3.5 right-4 flex gap-1.5">
-                <button @click="emit('edit')" class="w-7 h-7 rounded-lg bg-white/20 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-indigo-600 hover:border-indigo-600 transition-all sm:opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100">
-                    <Edit2 :size="12" />
+            <!-- Quick Actions Overlay -->
+            <div class="absolute top-4 right-4 flex gap-2">
+                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white hover:text-indigo-600 transition-all shadow-xl opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-75">
+                    <Edit3 :size="14" />
                 </button>
-                <div class="relative">
-                    <button @click="dropdownOpen = !dropdownOpen" class="w-7 h-7 rounded-lg bg-white/20 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white/40 transition-all sm:opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-75">
-                        <MoreHorizontal :size="12" />
-                    </button>
-                    <!-- Small Dropdown -->
-                    <div v-if="dropdownOpen" class="absolute right-0 mt-2 w-44 bg-white rounded-2xl shadow-xl border border-slate-100 p-1.5 z-20 animate-in fade-in slide-in-from-top-2 duration-200">
-                        <button @click="emit('delete')" class="w-full flex items-center gap-2.5 px-3 py-2 text-rose-500 hover:bg-rose-50 rounded-xl transition-colors text-[9px] font-black uppercase tracking-wider">
-                            <Trash2 :size="14" /> {{ t('goal_btn_delete', 'Hapus Vision') }}
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div v-if="goal.reward" class="absolute bottom-3.5 left-4 right-4">
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/90 backdrop-blur-md text-white text-[9px] font-black shadow-lg">
-                    <Award :size="12" /> {{ goal.reward }}
-                </div>
+                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-150">
+                    <Trash2 :size="14" />
+                </button>
             </div>
         </div>
 
-        <!-- Content Body -->
-        <div class="p-5 flex flex-col flex-1">
-            <h3 class="text-lg font-black text-slate-800 line-clamp-2 leading-tight mb-3.5">{{ goal.title }}</h3>
-
-            <div class="space-y-3.5 flex-1">
-                <!-- Progress Stats -->
-                <div>
-                    <div class="flex justify-between items-end mb-2">
-                        <div class="flex items-center gap-1.5">
-                            <TrendingUp :size="14" class="text-indigo-500" />
-                            <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">{{ t('common_progress', 'Momentum') }}</span>
-                        </div>
-                        <span class="text-base font-black text-indigo-600">{{ progress }}%</span>
-                    </div>
-                    <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden relative border border-slate-200/50 shadow-inner">
-                        <div class="h-full bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 transition-all duration-1000 ease-out relative"
-                             :style="{ width: `${progress}%` }">
-                            <div class="absolute inset-0 bg-white/20 w-full animate-shimmer"></div>
-                        </div>
-                    </div>
+        <!-- Progress Body -->
+        <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex flex-col">
+                    <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest mb-0.5">Manifestation</span>
+                    <span class="text-xs font-black text-slate-800 tabular-nums">{{ progress }}% Completed</span>
                 </div>
-
-                <!-- Footer Info -->
-                <div class="flex items-center justify-between pt-1">
-                    <div class="flex items-center gap-4">
-                        <div class="flex flex-col">
-                            <span class="text-[8px] font-black text-slate-300 uppercase tracking-widest">{{ t('common_deadline', 'Target') }}</span>
-                            <span class="text-[11px] font-black text-slate-600 flex items-center gap-1.5">
-                                <Calendar :size="11" class="text-slate-400" />
-                                {{ goal.end_date || t('no_date', 'No Deadline') }}
-                            </span>
-                        </div>
-                    </div>
-                    <div :class="[statusConfig[goal.status]?.bg, 'px-3 py-1 rounded-full flex items-center gap-1.5 border border-current opacity-70']">
-                        <component :is="statusConfig[goal.status]?.icon" :size="10" />
-                        <span class="text-[8px] font-black uppercase tracking-wider">{{ t(statusConfig[goal.status]?.label, goal.status) }}</span>
-                    </div>
+                <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
+                    <Zap :size="14" :class="progress === 100 ? 'text-amber-400 animate-pulse' : 'text-slate-300'" />
                 </div>
+            </div>
 
-                <!-- Milestones Section Toggle -->
-                <div class="pt-3.5 border-t border-slate-50">
-                    <button @click="showMilestones = !showMilestones" class="w-full flex items-center justify-between text-slate-400 hover:text-indigo-500 transition-colors group/milestone">
-                        <div class="flex items-center gap-1.5">
-                            <ListFilter :size="14" />
-                            <span class="text-[9px] font-black uppercase tracking-[0.2em]">{{ t('goal_milestones_title', 'Mastery Steps') }}</span>
-                        </div>
-                        <ChevronUp v-if="showMilestones" :size="14" />
-                        <ChevronDown v-else :size="14" />
+            <!-- Progress Bar -->
+            <div class="h-1.5 w-full bg-slate-100 rounded-full mb-6 overflow-hidden p-0.5">
+                <div 
+                    class="h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(99,102,241,0.2)]"
+                    :style="{ width: progress + '%', backgroundColor: goal.color || '#6366f1' }"
+                ></div>
+            </div>
+
+            <!-- Milestones Section -->
+            <div class="flex-1">
+                <div class="flex items-center justify-between mb-3 px-1">
+                    <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">Mastery Steps</h4>
+                    <button @click="onAddMilestone(goal)" class="text-[9px] font-black text-indigo-500 hover:text-indigo-700 uppercase tracking-widest transition-colors">
+                        + New Step
                     </button>
+                </div>
 
-                    <div v-show="showMilestones" class="mt-3 space-y-2">
-                        <MilestoneItem 
-                            v-for="m in goal.milestones" 
-                            :key="m.id" 
-                            :milestone="m"
-                            @save="(data) => emit('save-milestone', { ...m, ...data })"
-                            @toggle="emit('toggle-milestone', m)"
-                            @delete="emit('delete-milestone', m.id)"
-                        />
-                        
-                        <button @click="emit('add-milestone')" 
-                                class="w-full py-2.5 rounded-xl border-2 border-dashed border-slate-100 text-slate-300 hover:border-indigo-100 hover:text-indigo-400 hover:bg-indigo-50/10 transition-all flex items-center justify-center gap-1.5 group/add">
-                            <Plus :size="14" class="group-hover/add:rotate-90 transition-transform" />
-                            <span class="text-[9px] font-black uppercase tracking-widest">{{ t('goal_btn_add_milestone', 'Add Step') }}</span>
-                        </button>
+                <div class="space-y-1.5 custom-milestone-list max-h-[220px] overflow-y-auto pr-1">
+                    <MilestoneItem 
+                        v-for="m in goal.milestones" 
+                        :key="m._key || m.id" 
+                        :milestone="m"
+                        @toggle="onToggleMilestone(goal, m)"
+                        @save="(data) => onSaveMilestone(goal, data)"
+                        @delete="onDeleteMilestone(goal, m.id)"
+                    />
+                    
+                    <div v-if="!goal.milestones?.length" class="py-10 text-center border-2 border-dashed border-slate-50 rounded-[2rem] flex flex-col items-center">
+                        <div class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center mb-3">
+                            <ChevronRight :size="16" class="text-slate-300" />
+                        </div>
+                        <p class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">No active steps</p>
                     </div>
+                </div>
+            </div>
+
+            <!-- Footer: Reward -->
+            <div v-if="goal.reward" class="mt-6 pt-4 border-t border-slate-50 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-amber-50 flex items-center justify-center shrink-0 border border-amber-100/50">
+                    <Award :size="14" class="text-amber-500" />
+                </div>
+                <div class="flex flex-col min-w-0">
+                    <span class="text-[8px] font-black text-amber-500/80 uppercase tracking-widest">Victory Reward</span>
+                    <p class="text-[11px] font-bold text-slate-600 truncate italic">"{{ goal.reward }}"</p>
                 </div>
             </div>
         </div>
@@ -185,14 +177,8 @@ const t = (key, fallback) => {
     50% { opacity: .7; transform: scale(1.2); }
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #e2e8f0;
-    border-radius: 10px;
-}
+.custom-milestone-list::-webkit-scrollbar { width: 4px; }
+.custom-milestone-list::-webkit-scrollbar-track { background: transparent; }
+.custom-milestone-list::-webkit-scrollbar-thumb { background: #f1f5f9; border-radius: 10px; }
+.custom-milestone-list::-webkit-scrollbar-thumb:hover { background: #e2e8f0; }
 </style>

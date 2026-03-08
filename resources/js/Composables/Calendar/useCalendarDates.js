@@ -20,11 +20,11 @@ export function useCalendarDates(props) {
         const startOfMonth = dayjs(yearMonth).startOf('month');
         const endOfMonth = dayjs(yearMonth).endOf('month');
         const daysInMonth = startOfMonth.daysInMonth();
-        
+
         // Perbaikan index hari (Minggu = 0 di dayjs, tapi kita ingin Senin = 1)
         const firstDay = startOfMonth.day();
-        const startDayOfWeek = firstDay === 0 ? 6 : firstDay - 1; 
-        
+        const startDayOfWeek = firstDay === 0 ? 6 : firstDay - 1;
+
         let days = [];
 
         // 🚀 SURPRISE ME: PRE-COMPUTE EVENTS (O(N) MAPPING)
@@ -35,7 +35,7 @@ export function useCalendarDates(props) {
             props.data.events.forEach(ev => {
                 const start = dayjs(ev.start_date);
                 const end = ev.end_date ? dayjs(ev.end_date) : start;
-                
+
                 // Masukkan event ke setiap tanggal yang dilewatinya
                 let curr = start;
                 while (curr.isSameOrBefore(end, 'day')) {
@@ -55,14 +55,15 @@ export function useCalendarDates(props) {
         // 2. ISI TANGGAL
         for (let i = 1; i <= daysInMonth; i++) {
             const currentDateStr = startOfMonth.date(i).format('YYYY-MM-DD');
-            
+
             // Ambil dari Kamus Event (SUPER CEPAT)
             const dailyEvents = eventsMap[currentDateStr] || [];
-            
+
             // Ambil data metric lainnya
             const dailyJournal = props.data?.journals?.[currentDateStr] || null;
             const dailyFinance = props.data?.finances?.[currentDateStr] || 0;
             const dailyHabitCount = props.data?.habits?.[currentDateStr] || 0;
+            const dailyMilestones = props.data?.milestones?.[currentDateStr] || [];
 
             // PLANNER FALLBACK (Anti-Bug)
             let dailyPlanner = null;
@@ -75,9 +76,9 @@ export function useCalendarDates(props) {
                 }
             }
 
-            const plannerData = dailyPlanner ? { 
-                done: Number(dailyPlanner.completed_tasks || 0), 
-                total: Number(dailyPlanner.total_tasks || 0) 
+            const plannerData = dailyPlanner ? {
+                done: Number(dailyPlanner.completed_tasks || 0),
+                total: Number(dailyPlanner.total_tasks || 0)
             } : null;
 
             days.push({
@@ -89,7 +90,8 @@ export function useCalendarDates(props) {
                 hasJournal: !!dailyJournal,
                 expense: dailyFinance,
                 planner: plannerData,
-                habitDone: Number(dailyHabitCount) 
+                habitDone: Number(dailyHabitCount),
+                milestones: dailyMilestones
             });
         }
 

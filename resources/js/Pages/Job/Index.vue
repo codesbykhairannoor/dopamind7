@@ -40,29 +40,30 @@ const todayDate = computed(() => {
 
     <div class="min-h-screen bg-[#f8fafc] pb-24">
         <!-- STICKY HEADER: Title + Add Button only -->
-        <div class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-            <div class="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
-                <div class="flex items-center gap-4">
+        <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+            <div class="w-full px-4 sm:px-6 lg:px-8 py-3.5 sm:py-5">
+                <div class="flex items-center justify-between gap-4">
                     <!-- Left: Icon + Title + Date -->
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 flex items-center justify-center text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-200 shrink-0">
-                            <OneForMindIcon name="job" size="28" />
+                    <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-100 shrink-0">
+                            <OneForMindIcon name="job" size="24" :stroke-width="3" />
                         </div>
-                        <div>
-                            <h1 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800 flex items-center gap-2">
-                                {{ $t('job_page_title', 'Job Tracker') }}
-                                <span v-if="pagination?.total" class="text-sm font-bold text-slate-400 bg-slate-100 px-2.5 py-0.5 rounded-full">
+                        <div class="min-w-0">
+                            <h1 class="text-lg sm:text-2xl font-black leading-tight tracking-tight text-slate-800 flex items-center gap-1.5 sm:gap-2">
+                                <span class="truncate">{{ $t('job_page_title', 'Job Tracker') }}</span>
+                                <span v-if="pagination?.total" class="text-[10px] sm:text-sm font-black text-indigo-600 bg-indigo-50 px-2 sm:px-2.5 py-0.5 rounded-full shrink-0">
                                     {{ pagination.total }}
                                 </span>
                             </h1>
-                            <p class="mt-0.5 text-sm font-medium capitalize text-slate-500">{{ todayDate }}</p>
+                            <p class="mt-0.5 text-[10px] sm:text-sm font-black uppercase tracking-widest text-slate-400 truncate">{{ todayDate }}</p>
                         </div>
                     </div>
                     
                     <!-- Right: Add Button -->
                     <button @click="addEmptyRow"
-                        class="ml-auto bg-indigo-600 text-white font-bold py-2.5 px-6 rounded-xl shadow-md shadow-indigo-200 hover:bg-indigo-700 active:scale-[0.98] transition-all flex items-center gap-2 shrink-0">
-                        <OneForMindIcon name="plus" size="18" stroke-width="3" /> {{ $t('job_add_row', 'Tambah Baris') }}
+                        class="bg-indigo-600 text-white font-black py-2.5 px-4 sm:px-6 rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 active:scale-95 transition-all flex items-center gap-2 shrink-0">
+                        <OneForMindIcon name="plus" size="18" stroke-width="4" />
+                        <span class="hidden sm:inline">{{ $t('job_add_row', 'Tambah Baris') }}</span>
                     </button>
                 </div>
             </div>

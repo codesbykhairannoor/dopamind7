@@ -26,6 +26,7 @@ const dailyPlanner = computed(() => {
     if (!rawData.value.planners) return null;
     return rawData.value.planners[props.date] || null;
 });
+const dailyMilestones = computed(() => rawData.value.milestones?.[props.date] || []);
 
 const displayDate = computed(() => {
     const locale = page.props.locale || 'id';
@@ -135,6 +136,30 @@ const plannerProgress = computed(() => {
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                                    <Link :href="route('goals.index')" class="col-span-2 bg-orange-500 rounded-3xl p-5 text-white relative overflow-hidden group shadow-lg shadow-orange-200 hover:-translate-y-1 transition-transform">
+                                        <div class="absolute -right-4 -top-4 text-7xl opacity-20 group-hover:rotate-12 transition-transform">🎯</div>
+                                        <div class="relative z-10">
+                                            <div class="flex justify-between items-center mb-4">
+                                                <span class="text-[10px] font-black uppercase tracking-widest bg-white/20 px-2 py-1 rounded-lg backdrop-blur-sm">{{ $t('calendar_goals', 'Goals & Milestones') }}</span>
+                                                <svg class="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                            </div>
+                                            <div v-if="dailyMilestones.length > 0">
+                                                <div class="space-y-2">
+                                                    <div v-for="ms in dailyMilestones" :key="ms.id" class="bg-white/10 backdrop-blur-md px-3 py-2 rounded-xl flex items-center justify-between">
+                                                        <div class="min-w-0">
+                                                            <p class="text-[9px] font-black uppercase tracking-widest text-orange-100">{{ ms.goal_title }}</p>
+                                                            <p class="text-xs font-bold text-white truncate">{{ ms.title }}</p>
+                                                        </div>
+                                                        <span v-if="ms.completed" class="text-[10px] font-black bg-white/20 px-1.5 py-0.5 rounded ml-2 shrink-0">DONE</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div v-else class="py-2">
+                                                <p class="text-sm font-bold text-orange-100">{{ $t('calendar_empty_goals', 'Tidak ada milestone yang jatuh tempo.') }}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+
                                     <Link :href="route('planner.index', { date: props.date })" class="col-span-2 bg-blue-500 rounded-3xl p-5 text-white relative overflow-hidden group shadow-lg shadow-blue-200 hover:-translate-y-1 transition-transform">
                                         <div class="absolute -right-4 -top-4 text-7xl opacity-20 group-hover:rotate-12 transition-transform">✅</div>
                                         <div class="relative z-10">

@@ -68,7 +68,9 @@ class GoalResource extends JsonResource
             'reward' => $this->reward,
             'cover_image_url' => $this->cover_image_url,
             'progress' => $progress,
-            'milestones' => GoalMilestoneResource::collection($this->relationLoaded('milestones') ? $this->milestones : []),
+            'milestones' => $this->relationLoaded('milestones')
+            ?GoalMilestoneResource::collection($this->milestones)->resolve()
+            : [],
         ];
     }
 }

@@ -15,6 +15,7 @@ class Goal extends Model
     protected $fillable = [
         'user_id',
         'title',
+        'color',
         'cover_image_url',
         'cover_image_path',
         'category',
@@ -82,7 +83,7 @@ class Goal extends Model
             $milestoneData = [
                 'title' => $m['title'],
                 'order' => $index,
-                'completed' => $m['completed'] ?? false,
+                'completed' => $m['is_completed'] ?? $m['completed'] ?? false,
                 'target_date' => $m['target_date'] ?? null,
             ];
 

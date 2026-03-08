@@ -54,7 +54,11 @@ class GoalController extends Controller
 
     public function store(StoreGoalRequest $request)
     {
-        $goal = $this->goalService->createGoal(Auth::id(), $request->validated());
+        // Paksakan data milestones masuk dari form request!
+        $data = $request->validated();
+        $data['milestones'] = $request->input('milestones', []);
+
+        $goal = $this->goalService->createGoal(Auth::id(), $data);
 
         if ($request->wantsJson()) {
             return response()->json([
@@ -70,7 +74,11 @@ class GoalController extends Controller
     {
         $this->authorize('update', $goal);
 
-        $goal = $this->goalService->updateGoal($goal, $request->validated());
+        // Paksakan data milestones masuk dari form request!
+        $data = $request->validated();
+        $data['milestones'] = $request->input('milestones', []);
+
+        $goal = $this->goalService->updateGoal($goal, $data);
 
         if ($request->wantsJson()) {
             return response()->json([
@@ -133,14 +141,21 @@ class GoalController extends Controller
 
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'order' => ['nullable', 'integer'],
+            'position' => ['nullable', 'integer'], // Ganti order jadi position, biar sinkron sama Vue
+            'is_completed' => ['nullable', 'boolean'], // TAMBAHAN PENTING
         ]);
 
-        $milestone = $this->goalService->addMilestone($goal, $request->all());
+        $data = $request->all();
+        // Fallback untuk antisipasi perbedaan nama field
+        if ($request->has('completed')) {
+            $data['is_completed'] = $request->completed;
+        }
+
+        $milestone = $this->goalService->addMilestone($goal, $data);
 
         return response()->json([
             'message' => 'Milestone added successfully',
-            'data' => $milestone
+            'data' => new \App\Http\Resources\GoalMilestoneResource($milestone) // Kirim via resource!
         ]);
     }
 
@@ -151,13 +166,20 @@ class GoalController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'order' => ['nullable', 'integer'],
+            'target_date' => ['nullable', 'date'],
+            'is_completed' => ['nullable', 'boolean'],
         ]);
 
-        $milestone = $this->goalService->updateMilestone($milestone, $request->all());
+        $data = $request->all();
+        if ($request->has('completed')) {
+            $data['is_completed'] = $request->completed;
+        }
+
+        $milestone = $this->goalService->updateMilestone($milestone, $data);
 
         return response()->json([
             'message' => 'Milestone updated successfully',
-            'data' => $milestone
+            'data' => new \App\Http\Resources\GoalMilestoneResource($milestone) // Kirim via resource!
         ]);
     }
 
@@ -169,7 +191,7 @@ class GoalController extends Controller
 
         return response()->json([
             'message' => 'Milestone toggled successfully',
-            'data' => $milestone
+            'data' => new \App\Http\Resources\GoalMilestoneResource($milestone)
         ]);
     }
 
