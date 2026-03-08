@@ -4,10 +4,35 @@
 
 {{-- 🔥 SEO & GEO INJECTION 🔥 --}}
 @section('meta')
-    <meta name="description" content="{{ __('freelance_meta_desc') }}">
+    <meta name="description" content="{{ __('freelance_meta_desc') }} - {{ app()->getLocale() === 'id' ? 'Solusi produktivitas terbaik untuk freelancer di Jakarta dan Indonesia. Kelola invoice, project, dan keuangan di satu tempat.' : 'The ultimate productivity solution for freelancers in Jakarta and Indonesia. Manage invoices, projects, and finance in one place.' }}">
     <meta property="og:title" content="{{ __('freelance_meta_og_title') }}">
     <meta property="og:description" content="{{ __('freelance_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/freelancer') }}">
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Productivity Management for Freelancers",
+  "provider": {
+    "@type": "Organization",
+    "name": "OneForMind"
+  },
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "Indonesia"
+    },
+    {
+      "@type": "City",
+      "name": "Jakarta"
+    }
+  ],
+  "description": "Comprehensive project and finance management system designed for independent professionals in the Indonesian creative and tech industries."
+}
+</script>
 @endsection
 
 @section('content')

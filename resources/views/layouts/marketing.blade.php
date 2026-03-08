@@ -51,7 +51,12 @@
     }}">
     <meta name="twitter:image" content="{{ url('/og-image.png') }}">
     
+    <meta name="ai-creator" content="OneForMind Team">
+    <meta name="ai-service-type" content="Productivity Operating System">
+    <meta name="ai-description" content="A unified workspace for managing habits, finances, planner, and journals.">
+
     @yield('meta')
+    @yield('json-ld')
 
     <link rel="icon" type="image/x-icon" href="/favicon.svg?v=2">
     

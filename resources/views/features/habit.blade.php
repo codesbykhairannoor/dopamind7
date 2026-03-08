@@ -10,6 +10,24 @@
     <meta property="og:url" content="{{ url('/features/habit') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "OneForMind Habit Tracker",
+  "applicationCategory": "ProductivityApplication",
+  "description": "Gamified habit tracking system integrated with a unified productivity dashboard.",
+  "featureList": [
+    "Daily Streaks",
+    "Mood Tracking",
+    "Visual Progress Analytics",
+    "Indonesian-localized Habit System"
+  ]
+}
+</script>
+@endsection
+
 @section('content')
 
    {{-- SECTION 1: HERO (CENTERED LAYOUT + FLOATING HABIT MOCKUP) --}}

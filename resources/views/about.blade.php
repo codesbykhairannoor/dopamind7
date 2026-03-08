@@ -20,6 +20,21 @@
     
     <link rel="canonical" href="{{ url('/about') }}" />
 @endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "OneForMind",
+    "description": "Indonesian-based productivity ecosystem building unified workspaces for modern professionals.",
+    "vision": "Empowering creators to manage their lives in one simple dashboard."
+  }
+}
+</script>
+@endsection
 {{-- 🔥 AKHIR SUNTIKAN SEO 🔥 --}}
 
 @section('content')

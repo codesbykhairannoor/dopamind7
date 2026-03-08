@@ -10,6 +10,24 @@
     <meta property="og:url" content="{{ url('/features/finance') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "OneForMind Finance Tracker",
+  "applicationCategory": "FinanceApplication",
+  "description": "Integrated personal finance management system for tracking income, expenses, and savings goals within an Indonesian context.",
+  "featureList": [
+    "Expense Categorization",
+    "Income Target Setting",
+    "Savings Goal Visualizer",
+    "Rupiah Currency Support"
+  ]
+}
+</script>
+@endsection
+
 @section('content')
 
     {{-- SECTION 1: HERO (CENTERED LAYOUT + FLOATING DASHBOARD) --}}

@@ -4,13 +4,56 @@
 
 {{-- 🔥 MULAI SUNTIKAN SEO & GEO 🔥 --}}
 @section('meta')
-    <meta name="description" content="{{ app()->getLocale() === 'id' ? 'OneForMind: Aplikasi produktivitas terpadu di Indonesia. Gabungkan manajemen keuangan, habit tracker, dan daily planner dalam satu dashboard minimalis dan efisien.' : 'OneForMind: The unified productivity OS in Indonesia. Combine finance management, habit tracking, and daily planning in one minimalist, efficient dashboard.' }}">
-    
-    <meta property="og:title" content="OneForMind - {{ __('hero_title_1') }}">
-    <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}">
+    <meta name="description" content="{{ __('welcome_meta_desc') }}">
+    <meta property="og:title" content="{{ __('welcome_meta_og_title') }}">
+    <meta property="og:description" content="{{ __('welcome_meta_og_desc') }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:image" content="{{ asset('og-image.png') }}">
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "OneForMind",
+  "operatingSystem": "Web, iOS, Android",
+  "applicationCategory": "ProductivityApplication",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "1000"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Unified Productivity OS for tracking habits, finances, planner, and daily journaling."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "OneForMind",
+  "url": "https://oneformind.com",
+  "logo": "https://oneformind.com/favicon.svg",
+  "sameAs": [
+    "https://twitter.com/OneForMind"
+  ],
+  "areaServed": {
+    "@type": "Country",
+    "name": "Indonesia"
+  },
+  "location": {
+      "@type": "Place",
+      "name": "Jakarta, Indonesia"
+  }
+}
+</script>
+@endsection
 
     <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
     <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />

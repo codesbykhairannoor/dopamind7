@@ -10,6 +10,34 @@
     <meta property="og:url" content="{{ url('/resources/guide') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use OneForMind to Maximize Productivity",
+  "description": "Step-by-step guide to mastering your daily workflow using the OneForMind unified OS.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Set Up Your Habit Tracker",
+      "text": "Identify your daily goals and add them to the habit module for consistency."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Sync Your Finances",
+      "text": "Connect your income and expenses to visualize your cash flow and savings."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Plan Your Day",
+      "text": "Use the integrated calendar and planner to allocate time for what matters most."
+    }
+  ]
+}
+</script>
+@endsection
+
 @section('content')
 
     {{-- SECTION 1: HERO (REFINED TO STORIES STYLE) --}}

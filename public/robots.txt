@@ -1,10 +1,20 @@
 User-agent: *
 Allow: /
-Allow: /about
-Allow: /finance
-Allow: /habits
-Allow: /planner
 Disallow: /build/
 Disallow: /vendor/
+
+# AI Bot Permissions
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Omgilibot
+Allow: /
+User-agent: Omgili
+Allow: /
 
 Sitemap: https://oneformind.com/sitemap.xml
