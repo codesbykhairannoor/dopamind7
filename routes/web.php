@@ -204,16 +204,15 @@ Route::get('/solutions/personalgrowth', function () {
 // RESOURCES
 // ==========================================
 
-Route::get('resources/guide', function () {
+Route::get('/resources/guide', function () {
     return view('resources.guide');
 })->name('resources.guide');
 
-
-Route::get('resources/blog', function () {
+Route::get('/resources/blog', function () {
     return view('resources.blog');
 })->name('resources.blog');
 
-Route::get('resources/stories', function () {
+Route::get('/resources/stories', function () {
     return view('resources.stories');
 })->name('resources.stories');
 
@@ -224,11 +223,11 @@ Route::get('resources/stories', function () {
 // ==========================================
 
 
-Route::get('company/privacy', function () {
+Route::get('/company/privacy', function () {
     return view('company.privacy');
 })->name('company.privacy');
 
-Route::get('company/terms', function () {
+Route::get('/company/terms', function () {
     return view('company.terms');
 })->name('company.terms');
 
@@ -237,19 +236,19 @@ Route::get('company/terms', function () {
 // ==========================================
 
 
-Route::get('compare/paper', function () {
+Route::get('/compare/paper', function () {
     return view('compare.paper');
 })->name('compare.paper');
 
-Route::get('compare/sheets', function () {
+Route::get('/compare/sheets', function () {
     return view('compare.sheets');
 })->name('compare.sheets');
 
-Route::get('compare/management-tools', function () {
+Route::get('/compare/management-tools', function () {
     return view('compare.management-tools');
 })->name('compare.management-tools');
 
-Route::get('compare/habit-apps', function () {
+Route::get('/compare/habit-apps', function () {
     return view('compare.habit-apps');
 })->name('compare.habit-apps');
 

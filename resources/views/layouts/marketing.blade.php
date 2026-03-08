@@ -60,8 +60,7 @@
     <link rel="dns-prefetch" href="https://fonts.bunny.net">
     <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" />
 
     {{-- Font Loading --}}
     <noscript>
@@ -89,39 +88,29 @@
         {
           "source": "list",
           "urls": [
-            /* --- CORE --- */
             "/login", 
             "/register", 
             "/about", 
             "/pricing",
-
-            /* --- FEATURES --- */
             "/features/habit",
             "/features/finance",
             "/features/planner",
             "/features/journal",
             "/features/calendar",
-
-            /* --- SOLUTIONS --- */
             "/solutions/student",
             "/solutions/freelancer",
             "/solutions/personalgrowth",
-
-            /* --- RESOURCES --- */
             "/resources/guide",
             "/resources/blog",
             "/resources/stories",
-
-            /* --- COMPANY --- */
             "/company/privacy",
             "/company/terms",
-
-            /* --- COMPARE --- */
             "/compare/paper",
             "/compare/sheets",
             "/compare/management-tools",
             "/compare/habit-apps"
-          ]
+          ],
+          "eagerness": "moderate"
         }
       ]
     }
