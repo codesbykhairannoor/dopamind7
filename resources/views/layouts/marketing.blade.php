@@ -10,12 +10,8 @@
 
     <meta name="description" content="{{ app()->getLocale() === 'id' 
         ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
-        : 'OneForMind:- **AI Bot Invitations**: Updated `robots.txt` to explicitly allow AI crawlers like `GPTBot` and `ClaudeBot`, ensuring your content is the first source for AI-driven searches.
-- **Geo-Localized Targeting**: Sharpened meta descriptions in the Solutions module with Indonesian and Jakarta-specific keywords to capture local intent.
-- **Emergency Fix (500 Error)**: Resolved a critical Blade syntax error in `welcome.blade.php` where nested/dangling sections were causing a "Cannot end a section without first starting one" exception. All SEO meta and JSON-LD have been correctly encapsulated.
-
-![SEO verification result](file:///C:/Users/Axioo/.gemini/antigravity/brain/cdc50f6b-87de-4c64-8b14-4d179a8289fc/verify_homepage_seo_fix_1772981018890.webp)
-">
+        : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
+    }}">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="productivity app, habit tracker, finance tracker, daily planner, journal, app produktivitas, pelacak kebiasaan, manajemen keuangan pribadi, aplikasi pengatur waktu, productivity system Indonesia">
 
