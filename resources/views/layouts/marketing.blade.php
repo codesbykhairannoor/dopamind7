@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="view-transition" content="same-origin">
     
-    {{-- 🔥 1. SMART REDIRECT (Trik ClickUp): Cek cookie, langsung lempar ke dashboard --}}
-    <script>
-        if (document.cookie.includes('oneformind_session')) {
-            window.location.replace('/dashboard');
-        }
-    </script>
+    {{-- 🔥 1. SMART REDIRECT --}}
+    <script>if(document.cookie.includes('oneformind_session')){window.location.replace('/dashboard');}</script>
 
     <meta name="description" content="{{ app()->getLocale() === 'id' 
         ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
@@ -195,7 +191,7 @@
         activeAccordion: null,
         scrolled: false 
     }" 
-    @scroll.window="scrolled = (window.pageYOffset > 20)"
+    @scroll.window.passive="scrolled = (window.scrollY > 20)"
     class="relative">
         
         {{-- NAVBAR --}}
@@ -300,8 +296,8 @@
                 {{-- RIGHT ACTIONS --}}
                 <div class="hidden lg:flex items-center gap-4">
                     <div class="flex items-center bg-slate-100 rounded-full p-1 border border-slate-200 mr-2">
-                        <a href="{{ route('lang.switch', 'id') }}" class="px-3 py-1 rounded-full text-[10px] font-black transition-all {{ app()->getLocale() === 'id' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500' }}">ID</a>
-                        <a href="{{ route('lang.switch', 'en') }}" class="px-3 py-1 rounded-full text-[10px] font-black transition-all {{ app()->getLocale() === 'en' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500' }}">EN</a>
+                        <a href="{{ route('lang.switch', 'id') }}" class="px-3 py-1 rounded-full text-[10px] font-black transition-all {{ app()->getLocale() === 'id' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-600' }}">ID</a>
+                        <a href="{{ route('lang.switch', 'en') }}" class="px-3 py-1 rounded-full text-[10px] font-black transition-all {{ app()->getLocale() === 'en' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-600' }}">EN</a>
                     </div>
 
                    @auth
@@ -385,7 +381,7 @@
 
                 <div class="pt-8 space-y-6">
                     <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                        <span class="text-sm font-bold text-slate-500">Language</span>
+                        <span class="text-sm font-bold text-slate-600">Language</span>
                         <div class="flex gap-2">
                             <a href="{{ route('lang.switch', 'id') }}" class="px-3 py-1 rounded-lg text-xs font-black {{ app()->getLocale() === 'id' ? 'bg-indigo-600 text-white shadow-md' : 'bg-white text-slate-400' }}">ID</a>
                             <a href="{{ route('lang.switch', 'en') }}" class="px-3 py-1 rounded-lg text-xs font-black {{ app()->getLocale() === 'en' ? 'bg-indigo-600 text-white shadow-md' : 'bg-white text-slate-400' }}">EN</a>
@@ -417,14 +413,14 @@
                             <img src="/favicon.svg?v=2" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
                         </a>
-                        <p class="text-sm text-slate-500 leading-relaxed">
+                        <p class="text-sm text-slate-600 leading-relaxed">
                             The unified productivity system designed to bring clarity to your life, habits, and finances.
                         </p>
                     </div>
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-500">
+                        <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
                             <li><a href="{{ route('features.finance') }}" class="hover:text-indigo-600 transition">Finance Tracker</a></li>
                             <li><a href="{{ route('features.planner') }}" class="hover:text-indigo-600 transition">Daily Planner</a></li>
@@ -434,7 +430,7 @@
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-500">
+                        <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">vs Paper Planner</a></li>
                             <li><a href="{{ route('compare.sheets') }}" class="hover:text-indigo-600 transition">vs Spreadsheets</a></li>
                             <li><a href="{{ route('compare.management-tools') }}" class="hover:text-indigo-600 transition">vs Task Tools</a></li>
@@ -444,7 +440,7 @@
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-500">
+                        <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">About Us</a></li>
                             <li><a href="{{ route('company.privacy') }}" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
                             <li><a href="{{ route('company.terms') }}" class="hover:text-indigo-600 transition">Terms of Service</a></li>

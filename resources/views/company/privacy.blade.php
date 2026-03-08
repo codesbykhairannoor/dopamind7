@@ -52,15 +52,15 @@
                 {{-- Mini Dashboard Stats --}}
                 <div class="grid grid-cols-3 gap-4 border-t border-slate-800 pt-8">
                     <div>
-                        <p class="text-xs text-slate-500 font-mono uppercase mb-1">Encryption</p>
+                        <p class="text-xs text-slate-600 font-mono uppercase mb-1">Encryption</p>
                         <p class="text-white font-bold">AES-256</p>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-500 font-mono uppercase mb-1">Data Owner</p>
+                        <p class="text-xs text-slate-600 font-mono uppercase mb-1">Data Owner</p>
                         <p class="text-white font-bold">You</p>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-500 font-mono uppercase mb-1">Tracking</p>
+                        <p class="text-xs text-slate-600 font-mono uppercase mb-1">Tracking</p>
                         <p class="text-rose-400 font-bold">0% Ads</p>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                             <div class="h-2 w-full bg-slate-800 rounded overflow-hidden">
                                 <div class="h-full bg-indigo-500 w-[80%] animate-pulse"></div>
                             </div>
-                            <div class="flex justify-between text-[10px] text-slate-500 font-mono">
+                            <div class="flex justify-between text-[10px] text-slate-600 font-mono">
                                 <span>Habit Data</span>
                                 <span>Encrypted</span>
                             </div>
@@ -96,7 +96,7 @@
                             <div class="h-2 w-full bg-slate-800 rounded overflow-hidden">
                                 <div class="h-full bg-purple-500 w-[60%] animate-pulse delay-75"></div>
                             </div>
-                            <div class="flex justify-between text-[10px] text-slate-500 font-mono">
+                            <div class="flex justify-between text-[10px] text-slate-600 font-mono">
                                 <span>Finance Logs</span>
                                 <span>Private</span>
                             </div>

@@ -104,7 +104,7 @@
         <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[150px] opacity-20 -mr-40 -mt-40"></div>
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <h2 class="text-3xl md:text-4xl font-black mb-16 text-center text-white animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
-                {{ __('planner_prob_title_1') }} <span class="text-slate-500 line-through">{{ __('planner_prob_title_strike') }}</span> <span class="text-indigo-400">{{ __('planner_prob_title_2') }}</span>
+                {{ __('planner_prob_title_1') }} <span class="text-slate-600 line-through">{{ __('planner_prob_title_strike') }}</span> <span class="text-indigo-400">{{ __('planner_prob_title_2') }}</span>
             </h2>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-slate-800/50 backdrop-blur p-8 rounded-[2rem] border border-slate-700 hover:border-indigo-500 transition duration-300">

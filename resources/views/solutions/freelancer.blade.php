@@ -313,7 +313,7 @@
                 <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-lg hover:bg-indigo-500 transition transform hover:scale-105 shadow-xl shadow-indigo-900/50">
                     {{ __('freelance_cta_btn') }}
                 </a>
-                <p class="mt-8 text-sm text-slate-500 font-bold uppercase tracking-widest">{{ __('freelance_cta_note') }}</p>
+                <p class="mt-8 text-sm text-slate-600 font-bold uppercase tracking-widest">{{ __('freelance_cta_note') }}</p>
             </div>
         </div>
     </section>

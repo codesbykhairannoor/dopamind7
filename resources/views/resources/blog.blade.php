@@ -123,7 +123,7 @@
                         <h3 class="text-2xl md:text-3xl font-black text-slate-900 mb-4 group-hover:text-indigo-600 transition leading-snug">
                             {{ __('blog_grid_1_title') }}
                         </h3>
-                        <p class="text-slate-500 mb-6 line-clamp-2 font-medium">
+                        <p class="text-slate-600 mb-6 line-clamp-2 font-medium">
                             {{ __('blog_grid_1_desc') }}
                         </p>
                         <p class="text-xs font-bold text-slate-400">{{ __('blog_grid_1_date') }} • 5 min read</p>
@@ -140,7 +140,7 @@
                         <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition leading-snug">
                             {{ __('blog_grid_2_title') }}
                         </h3>
-                        <p class="text-sm text-slate-500 flex-1 mb-6 line-clamp-2 font-medium">{{ __('blog_grid_2_desc') }}</p>
+                        <p class="text-sm text-slate-600 flex-1 mb-6 line-clamp-2 font-medium">{{ __('blog_grid_2_desc') }}</p>
                         <p class="text-xs font-bold text-slate-400">{{ __('blog_grid_2_date') }} • 4 min read</p>
                     </div>
                 </a>
@@ -155,7 +155,7 @@
                         <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition leading-snug">
                             {{ __('blog_grid_3_title') }}
                         </h3>
-                        <p class="text-sm text-slate-500 flex-1 mb-6 line-clamp-2 font-medium">{{ __('blog_grid_3_desc') }}</p>
+                        <p class="text-sm text-slate-600 flex-1 mb-6 line-clamp-2 font-medium">{{ __('blog_grid_3_desc') }}</p>
                         <p class="text-xs font-bold text-slate-400">{{ __('blog_grid_3_date') }} • 6 min read</p>
                     </div>
                 </a>
@@ -170,7 +170,7 @@
                         <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition leading-snug">
                             {{ __('blog_grid_4_title') }}
                         </h3>
-                        <p class="text-sm text-slate-500 flex-1 mb-6 line-clamp-2 font-medium">{{ __('blog_grid_4_desc') }}</p>
+                        <p class="text-sm text-slate-600 flex-1 mb-6 line-clamp-2 font-medium">{{ __('blog_grid_4_desc') }}</p>
                         <p class="text-xs font-bold text-slate-400">{{ __('blog_grid_4_date') }} • 10 min read</p>
                     </div>
                 </a>
@@ -186,7 +186,7 @@
                         <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition leading-snug">
                             {{ __('blog_grid_5_title') }}
                         </h3>
-                        <p class="text-sm text-slate-500 flex-1 mb-6 line-clamp-2 font-medium">{{ __('blog_grid_5_desc') }}</p>
+                        <p class="text-sm text-slate-600 flex-1 mb-6 line-clamp-2 font-medium">{{ __('blog_grid_5_desc') }}</p>
                         <p class="text-xs font-bold text-slate-400">{{ __('blog_grid_5_date') }} • 2 min read</p>
                     </div>
                 </a>
@@ -228,7 +228,7 @@
                         {{ __('blog_news_btn') }}
                     </button>
                 </form>
-                <p class="text-slate-500 text-xs mt-4 font-medium">
+                <p class="text-slate-600 text-xs mt-4 font-medium">
                     {{ __('blog_news_note') }}
                 </p>
             </div>

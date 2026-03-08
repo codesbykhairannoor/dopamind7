@@ -7,7 +7,7 @@
     <div>
         <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">{{ $title }}</h4>
         @if($desc)
-            <p class="text-[11px] text-slate-500 font-medium leading-tight line-clamp-1">{{ $desc }}</p>
+            <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">{{ $desc }}</p>
         @endif
     </div>
 </a>

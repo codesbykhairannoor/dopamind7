@@ -104,7 +104,7 @@
                     <h3 class="text-lg font-black text-indigo-400 uppercase mb-4 tracking-widest">{{ __('pricing_life_name') }}</h3>
                     <div class="flex items-baseline gap-1 mb-6">
                         <span class="text-4xl font-black">$199</span>
-                        <span class="text-slate-500 font-bold">/{{ __('pricing_once') }}</span>
+                        <span class="text-slate-600 font-bold">/{{ __('pricing_once') }}</span>
                     </div>
                     <p class="text-slate-400 text-sm mb-8 leading-relaxed">{{ __('pricing_life_desc') }}</p>
                     <ul class="space-y-4 mb-10 flex-grow text-slate-300">

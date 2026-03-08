@@ -25,7 +25,7 @@
                 {{ __('terms_title_1') }} <span class="text-indigo-600 decoration-4 underline decoration-indigo-200">{{ __('terms_title_2') }}</span>
             </h1>
             
-            <p class="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
                 {{ __('terms_subtitle') }}
             </p>
 
@@ -45,7 +45,7 @@
             <aside class="hidden lg:block w-1/4 shrink-0 relative">
                 <div class="sticky top-28 bg-slate-50 p-6 rounded-2xl border border-slate-100">
                     <h3 class="font-black text-slate-900 mb-4 uppercase tracking-widest text-xs">{{ __('terms_nav_title') }}</h3>
-                    <nav class="space-y-1 font-medium text-sm text-slate-500" x-data="{ active: 'intro' }">
+                    <nav class="space-y-1 font-medium text-sm text-slate-600" x-data="{ active: 'intro' }">
                         <a href="#intro" class="block px-4 py-2 rounded-lg transition hover:bg-white hover:text-indigo-600 hover:shadow-sm" :class="active === 'intro' ? 'bg-white text-indigo-600 shadow-sm font-bold' : ''" @click="active = 'intro'">1. Introduction</a>
                         <a href="#eligibility" class="block px-4 py-2 rounded-lg transition hover:bg-white hover:text-indigo-600 hover:shadow-sm" :class="active === 'eligibility' ? 'bg-white text-indigo-600 shadow-sm font-bold' : ''" @click="active = 'eligibility'">2. Eligibility</a>
                         <a href="#rules" class="block px-4 py-2 rounded-lg transition hover:bg-white hover:text-indigo-600 hover:shadow-sm" :class="active === 'rules' ? 'bg-white text-indigo-600 shadow-sm font-bold' : ''" @click="active = 'rules'">3. Code of Conduct</a>
