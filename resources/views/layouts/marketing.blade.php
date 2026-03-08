@@ -17,7 +17,19 @@
         : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
     }}">
     <meta name="robots" content="index, follow">
-    <meta name="keywords" content="productivity app, habit tracker, finance tracker, daily planner, journal, app produktivitas, pelacak kebiasaan">
+    <meta name="keywords" content="productivity app, habit tracker, finance tracker, daily planner, journal, app produktivitas, pelacak kebiasaan, manajemen keuangan pribadi, aplikasi pengatur waktu, productivity system Indonesia">
+
+    {{-- Geo-SEO & Location Tags --}}
+    <meta name="geo.region" content="ID-JK" />
+    <meta name="geo.placename" content="Jakarta" />
+    <meta name="geo.position" content="-6.2088;106.8456" />
+    <meta name="ICBM" content="-6.2088, 106.8456" />
+
+    {{-- Mobile Optimization --}}
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="OneForMind">
 
     <title>@yield('title') | OneForMind</title>
 
@@ -41,7 +53,7 @@
         ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
         : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
     }}">
-    <meta name="twitter:image" content="{{ asset('og-image.png') }}">
+    <meta name="twitter:image" content="{{ url('/og-image.png') }}">
     
     @yield('meta')
 
@@ -65,7 +77,10 @@
     
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+    <style>
+        /* NProgress Inline to kill render blocking */
+        #nprogress{pointer-events:none}#nprogress .bar{background:#4f46e5;position:fixed;z-index:1031;top:0;left:0;width:100%;height:3px}#nprogress .peg{display:block;position:absolute;right:0;width:100px;height:100%;box-shadow:0 0 10px #4f46e5,0 0 5px #4f46e5;opacity:1;-webkit-transform:rotate(3deg) translate(0,-4px);-ms-transform:rotate(3deg) translate(0,-4px);transform:rotate(3deg) translate(0,-4px)}#nprogress .spinner{display:block;position:fixed;z-index:1031;top:15px;right:15px}#nprogress .spinner-icon{width:18px;height:18px;box-sizing:border-box;border:2px solid transparent;border-top-color:#4f46e5;border-left-color:#4f46e5;border-radius:50%;-webkit-animation:nprogress-spinner 400ms linear infinite;animation:nprogress-spinner 400ms linear infinite}.nprogress-custom-parent{overflow:hidden;position:relative}.nprogress-custom-parent #nprogress .bar,.nprogress-custom-parent #nprogress .spinner{position:absolute}@-webkit-keyframes nprogress-spinner{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(360deg)}}@keyframes nprogress-spinner{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+    </style>
     
     {{-- Vite otomatis handle preload CSS yang benar, JANGAN hardcode link CSS di sini --}}
     @vite(['resources/css/app.css'])
@@ -142,14 +157,32 @@
         .allow-smooth { scroll-behavior: smooth; }
     </style>
     @if(env('VITE_GA_MEASUREMENT_ID'))
-        <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('VITE_GA_MEASUREMENT_ID') }}"></script>
         <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+            // 🔥 GTM SLAYER: Load only after first user interaction or 3.5s delay
+            window.addEventListener('load', () => {
+                const loadGTM = () => {
+                    if (window.gtmLoaded) return;
+                    window.gtmLoaded = true;
+                    
+                    const script = document.createElement('script');
+                    script.src = "https://www.googletagmanager.com/gtag/js?id={{ env('VITE_GA_MEASUREMENT_ID') }}";
+                    script.async = true;
+                    document.head.appendChild(script);
 
-            window.GA_MEASUREMENT_ID = '{{ env('VITE_GA_MEASUREMENT_ID') }}';
-            gtag('config', window.GA_MEASUREMENT_ID);
+                    script.onload = () => {
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        window.GA_MEASUREMENT_ID = '{{ env('VITE_GA_MEASUREMENT_ID') }}';
+                        gtag('config', window.GA_MEASUREMENT_ID);
+                        console.log('⚡ GTM Loaded (Efficiency Mode)');
+                    };
+                };
+
+                const interactionEvents = ['mouseover', 'keydown', 'touchmove', 'touchstart', 'scroll'];
+                interactionEvents.forEach(event => window.addEventListener(event, loadGTM, { once: true, passive: true }));
+                setTimeout(loadGTM, 3500); // Fail-safe
+            });
         </script>
     @endif
 </head>

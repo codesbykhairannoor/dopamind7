@@ -6,7 +6,7 @@
 
 {{-- 🔥 MULAI SUNTIKAN SEO & GEO (ABOUT PAGE) 🔥 --}}
 @section('meta')
-    <meta name="description" content="{{ app()->getLocale() === 'id' ? 'Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.' : 'Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.' }}">
+    <meta name="description" content="{{ app()->getLocale() === 'id' ? 'Visi OneForMind: Membangun ekosistem produktivitas terpadu bagi kreator dan profesional di Indonesia untuk melacak habit, keuangan, dan goals.' : 'OneForMind Vision: Building a unified productivity ecosystem for creators and professionals in Indonesia to track habits, finance, and goals.' }}">
     
     <meta property="og:title" content="{{ app()->getLocale() === 'id' ? 'Tentang OneForMind - Visi & Misi' : 'About OneForMind - The Vision' }}">
     <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.' : 'Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.' }}">

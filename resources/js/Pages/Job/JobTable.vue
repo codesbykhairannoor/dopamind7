@@ -82,10 +82,10 @@ const handlePointerUp = (e) => {
         <!-- ==================== MOBILE LAYOUT (<sm) ==================== -->
         <div class="sm:hidden space-y-4">
             <div v-for="(job, index) in jobs" :key="job._key"
-                class="group relative overflow-hidden transition-all duration-300 active:scale-[0.99]"
+                class="group relative transition-all duration-300 active:scale-[0.99] z-10 hover:z-20 focus-within:z-30"
             >
                 <!-- Glass Background -->
-                <div class="absolute inset-0 bg-white/40 backdrop-blur-md rounded-[2rem] -z-10 border border-white/60"></div>
+                <div class="absolute inset-0 bg-white/40 backdrop-blur-md rounded-[2.5rem] -z-10 border border-white/60"></div>
                 
                 <div 
                     class="bg-white/70 backdrop-blur-md rounded-[2rem] border border-slate-200/60 p-5 shadow-sm transition-all duration-300"

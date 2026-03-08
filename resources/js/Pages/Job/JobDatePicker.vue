@@ -54,7 +54,10 @@ const isToday = (day) => dayjs().format('YYYY-MM-DD') === currentMonth.value.dat
         </span>
 
         <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 -translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-150 ease-in" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-2">
-            <div v-if="isOpen" class="absolute top-full left-0 mt-2 w-[280px] bg-white rounded-3xl shadow-xl border border-slate-100 p-5 z-50" @click.stop>
+            <div v-if="isOpen" class="fixed sm:absolute top-1/2 sm:top-full left-1/2 sm:left-0 -translate-x-1/2 sm:translate-x-0 -translate-y-1/2 sm:translate-y-0 mt-0 sm:mt-2 w-[280px] bg-white rounded-3xl shadow-2xl border border-slate-100 p-5 z-[100]" @click.stop>
+                <!-- Backdrop for mobile modal feel -->
+                <div class="sm:hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm -z-10" @click="isOpen = false"></div>
+                
                 <div class="flex items-center justify-between mb-4">
                     <button @click="currentMonth = currentMonth.subtract(1, 'month')" class="p-2 rounded-xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600 transition">◀</button>
                     <h4 class="font-bold text-slate-700 capitalize text-sm">{{ formattedHeader }}</h4>

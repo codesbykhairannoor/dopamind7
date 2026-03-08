@@ -4,7 +4,7 @@
 
 {{-- 🔥 MULAI SUNTIKAN SEO & GEO 🔥 --}}
 @section('meta')
-    <meta name="description" content="{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}">
+    <meta name="description" content="{{ app()->getLocale() === 'id' ? 'OneForMind: Aplikasi produktivitas terpadu di Indonesia. Gabungkan manajemen keuangan, habit tracker, dan daily planner dalam satu dashboard minimalis dan efisien.' : 'OneForMind: The unified productivity OS in Indonesia. Combine finance management, habit tracking, and daily planning in one minimalist, efficient dashboard.' }}">
     
     <meta property="og:title" content="OneForMind - {{ __('hero_title_1') }}">
     <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}">
@@ -15,29 +15,52 @@
     <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
     <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
     <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
-    <link rel="preload" as="style" href="{{ asset('build/assets/app-EImXTUY8.css') }}">
     
     <link rel="canonical" href="{{ url('/') }}" />
     
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "OneForMind",
-      "operatingSystem": "WebBrowser",
-      "applicationCategory": "ProductivityApplication",
-      "description": "{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}",
-      "url": "{{ url('/') }}",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "IDR",
-        "availability": "https://schema.org/InStock"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "OneForMind Core Team"
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "{{ url('/') }}/#organization",
+          "name": "OneForMind",
+          "url": "{{ url('/') }}",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ asset('favicon.svg') }}",
+            "width": "512",
+            "height": "512"
+          },
+          "sameAs": [
+            "https://twitter.com/OneForMind"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "{{ url('/') }}/#website",
+          "url": "{{ url('/') }}",
+          "name": "OneForMind",
+          "publisher": { "@id": "{{ url('/') }}/#organization" },
+          "inLanguage": "{{ app()->getLocale() }}"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "OneForMind",
+          "operatingSystem": "WebBrowser",
+          "applicationCategory": "ProductivityApplication",
+          "description": "{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}",
+          "url": "{{ url('/') }}",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "IDR",
+            "availability": "https://schema.org/InStock"
+          },
+          "author": { "@id": "{{ url('/') }}/#organization" }
+        }
+      ]
     }
     </script>
 @endsection
