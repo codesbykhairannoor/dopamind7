@@ -34,6 +34,11 @@ class StoreGoalRequest extends FormRequest
             'status' => ['nullable', 'in:active,completed,paused,cancelled'],
             'priority' => ['nullable', 'in:vital,important,optional'],
             'reward' => ['nullable', 'string', 'max:255'],
+            'milestones' => ['nullable', 'array'],
+            'milestones.*.id' => ['nullable'],
+            'milestones.*.title' => ['required_with:milestones', 'string', 'max:255'],
+            'milestones.*.completed' => ['nullable', 'boolean'],
+            'milestones.*.target_date' => ['nullable', 'date'],
         ];
     }
 

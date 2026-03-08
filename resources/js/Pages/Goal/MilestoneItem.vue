@@ -18,9 +18,9 @@ const t = (key, fallback) => {
     return res !== key ? res : fallback;
 };
 
-const isEditing = ref(false);
-const editTitle = ref(props.milestone.title);
-const editTargetDate = ref(props.milestone.target_date);
+const isEditing = ref(props.milestone.is_new || false);
+const editTitle = ref(props.milestone.title || '');
+const editTargetDate = ref(props.milestone.target_date || null);
 const showDatePicker = ref(false);
 
 const startEdit = () => {
@@ -30,17 +30,29 @@ const startEdit = () => {
 };
 
 const handleSave = () => {
-    if (editTitle.value.trim() !== props.milestone.title || editTargetDate.value !== props.milestone.target_date) {
-        emit('save', { title: editTitle.value, target_date: editTargetDate.value });
+    // Hanya save kalau ada judul yang diisi
+    if (editTitle.value.trim() !== '') {
+        // Cek apakah ada perubahan
+        if (editTitle.value.trim() !== props.milestone.title || editTargetDate.value !== props.milestone.target_date) {
+            emit('save', { 
+                ...props.milestone, 
+                title: editTitle.value.trim(), 
+                target_date: editTargetDate.value 
+            });
+        }
+        isEditing.value = false;
     }
-    isEditing.value = false;
+};
+
+const handleDatePick = (val) => {
+    editTargetDate.value = val;
+    showDatePicker.value = false;
+    handleSave(); // Auto-save saat tanggal dipilih
 };
 
 const handleKeydown = (e) => {
-    if (e.key === 'Enter' && !showDatePicker.value) handleSave();
-    if (e.key === 'Escape') {
-        isEditing.value = false;
-    }
+    if (e.key === 'Enter') handleSave(); // Auto-save saat tekan Enter
+    if (e.key === 'Escape') isEditing.value = false;
 };
 
 const dateDisplay = computed(() => {
@@ -52,7 +64,6 @@ const dateDisplay = computed(() => {
 
 <template>
     <div class="flex items-center group gap-3 py-2 px-3 bg-slate-50/50 hover:bg-white rounded-xl transition-all duration-300 border border-transparent hover:border-slate-100 hover:shadow-md hover:shadow-indigo-500/5 relative">
-        <!-- Checkbox -->
         <button 
             @click="emit('toggle')"
             class="flex-shrink-0 w-5 h-5 rounded-md border-2 flex items-center justify-center transition-all duration-300"
@@ -63,12 +74,12 @@ const dateDisplay = computed(() => {
             <Check v-if="milestone.completed" :size="12" stroke-width="4" />
         </button>
 
-        <!-- Title & Date -->
         <div class="flex-grow min-w-0">
-            <div v-if="isEditing || milestone.is_new" class="flex flex-col">
+            <div v-if="isEditing" class="flex flex-col">
                 <input 
                     v-model="editTitle"
                     @keydown="handleKeydown"
+                    @blur="handleSave"
                     autofocus
                     :placeholder="t('milestone_placeholder', 'Nama langkah...')"
                     class="w-full bg-transparent border-none focus:ring-0 p-0 text-sm font-bold text-slate-700 placeholder:text-slate-300"
@@ -76,29 +87,24 @@ const dateDisplay = computed(() => {
                 <div class="flex items-center gap-2.5 mt-1">
                     <div class="relative">
                         <button type="button"
-                            @click.stop="showDatePicker = !showDatePicker"
+                            @mousedown.prevent="showDatePicker = !showDatePicker"
                             class="text-[8px] font-black uppercase tracking-widest px-2 py-1 rounded-lg bg-white border border-slate-100 text-slate-400 hover:text-indigo-600 transition-all flex items-center gap-1.5"
                         >
                             <Calendar :size="9" />
                             {{ dateDisplay }}
                         </button>
                         
-                        <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
-                            <div v-if="showDatePicker" class="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:bottom-full sm:left-0 sm:mb-2 sm:origin-bottom-left sm:block sm:inset-auto">
-                                <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm sm:hidden" @click="showDatePicker = false"></div>
+                        <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
+                            <div v-if="showDatePicker" class="absolute top-full left-0 mt-2 z-[9999]">
                                 <GoalDatePicker 
                                     :show="true" 
                                     :modelValue="editTargetDate" 
-                                    @update:modelValue="(val) => { editTargetDate = val; showDatePicker = false }"
+                                    @update:modelValue="handleDatePick"
                                     @close="showDatePicker = false"
-                                    class="relative z-10"
                                 />
                             </div>
                         </transition>
                     </div>
-                    <button @click="handleSave" class="text-[8px] font-black uppercase tracking-widest text-indigo-600 hover:tracking-[0.1em] transition-all">
-                        {{ t('btn_save', 'Save') }}
-                    </button>
                 </div>
             </div>
             <div v-else @click="startEdit" class="cursor-pointer group/text relative py-0.5">
@@ -110,17 +116,15 @@ const dateDisplay = computed(() => {
                 </span>
                 <span v-if="milestone.target_date" class="text-[8px] font-black text-slate-300 uppercase tracking-widest flex items-center gap-1 mt-0.5">
                     <Clock :size="8" />
-                    {{ milestone.target_date }}
+                    {{ dayjs(milestone.target_date).locale($page.props.locale || 'id').format('DD MMM YYYY') }}
                 </span>
                 
-                <!-- Hover Edit Indicator -->
                 <div class="absolute -right-1 top-1/2 -translate-y-1/2 opacity-0 group-hover/text:opacity-100 transition-opacity">
                     <Edit3 :size="10" class="text-indigo-400" />
                 </div>
             </div>
         </div>
 
-        <!-- Delete Button -->
         <button 
             @click="emit('delete')"
             class="opacity-0 group-hover:opacity-100 p-1.5 text-slate-300 hover:text-rose-500 transition-all rounded-lg hover:bg-rose-50"

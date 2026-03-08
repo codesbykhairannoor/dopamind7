@@ -16,7 +16,9 @@ const form = useForm({
             planner: props.userSettings?.modules?.planner ?? true,
             finance: props.userSettings?.modules?.finance ?? true, 
             journal: props.userSettings?.modules?.journal ?? true, 
-            calendar: props.userSettings?.modules?.calendar ?? true, 
+            calendar: props.userSettings?.modules?.calendar ?? true,
+            job: props.userSettings?.modules?.job ?? true,
+            goal: props.userSettings?.modules?.goal ?? true,
         }
     }
 });
@@ -88,85 +90,119 @@ const switchLang = (lang) => {
                     </div>
                 </div>
                 
-                <form class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     
-                    <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.5rem] border border-slate-100 hover:border-indigo-200 transition-colors">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">🌱</div>
+                    <!-- Habit Tracker -->
+                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">🌱</div>
                             <div>
-                                <h4 class="font-black text-slate-700 text-sm sm:text-base">{{ $t('habit_page_title', 'Habit Tracker') }}</h4>
-                                <p class="text-[11px] font-medium text-slate-500">{{ $t('module_habit_desc', 'Pantau kebiasaan harianmu') }}</p>
+                                <h4 class="font-black text-slate-700 text-sm">{{ $t('habit_page_title', 'Habit Tracker') }}</h4>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{{ $t('module_habit_short', 'Daily Habits') }}</p>
                             </div>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" v-model="form.settings.modules.habit" class="sr-only peer" @change="saveSettings">
-                            <div class="w-12 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
+                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
                         </label>
                     </div>
 
-                    <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.5rem] border border-slate-100 hover:border-indigo-200 transition-colors">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">📋</div>
+                    <!-- Daily Planner -->
+                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📋</div>
                             <div>
-                                <h4 class="font-black text-slate-700 text-sm sm:text-base">Daily Planner</h4>
-                                <p class="text-[11px] font-medium text-slate-500">{{ $t('module_planner_desc', 'Jadwal & Agenda Harian') }}</p>
+                                <h4 class="font-black text-slate-700 text-sm">Daily Planner</h4>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Agenda & Focus</p>
                             </div>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" v-model="form.settings.modules.planner" class="sr-only peer" @change="saveSettings">
-                            <div class="w-12 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
+                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
                         </label>
                     </div>
 
-                    <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.5rem] border border-slate-100 hover:border-indigo-200 transition-colors">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">💸</div>
+                    <!-- Finance Management -->
+                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">💸</div>
                             <div>
-                                <h4 class="font-black text-slate-700 text-sm sm:text-base">Finance Management</h4>
-                                <p class="text-[11px] font-medium text-slate-500">{{ $t('module_finance_desc', 'Atur budget & pengeluaran') }}</p>
+                                <h4 class="font-black text-slate-700 text-sm">Finance Plan</h4>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Money & Budget</p>
                             </div>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" v-model="form.settings.modules.finance" class="sr-only peer" @change="saveSettings">
-                            <div class="w-12 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
+                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
                         </label>
                     </div>
 
-                     <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.5rem] border border-slate-100 hover:border-indigo-200 transition-colors">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">📓</div>
+                    <!-- Digital Journal -->
+                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📓</div>
                             <div>
-                                <h4 class="font-black text-slate-700 text-sm sm:text-base">Journal</h4>
-                                <p class="text-[11px] font-medium text-slate-500">{{ $t('module_journal_desc', 'Catat kegiatan harian') }}</p>
+                                <h4 class="font-black text-slate-700 text-sm">Digital Journal</h4>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Writing & Thoughts</p>
                             </div>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" v-model="form.settings.modules.journal" class="sr-only peer" @change="saveSettings">
-                            <div class="w-12 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
+                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
                         </label>
                     </div>
 
-                     <div class="flex items-center justify-between p-5 bg-slate-50 rounded-[1.5rem] border border-slate-100 hover:border-indigo-200 transition-colors">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm">📅</div>
+                    <!-- Calendar View -->
+                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📅</div>
                             <div>
-                                <h4 class="font-black text-slate-700 text-sm sm:text-base">Calendar</h4>
-                                <p class="text-[11px] font-medium text-slate-500">Jadwal Kalender Global</p>
+                                <h4 class="font-black text-slate-700 text-sm">Calendar View</h4>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Global Schedule</p>
                             </div>
                         </div>
                         <label class="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" v-model="form.settings.modules.calendar" class="sr-only peer" @change="saveSettings">
-                            <div class="w-12 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
+                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
                         </label>
                     </div>
 
-                    <transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 -translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
-                        <div v-if="form.recentlySuccessful" class="text-center bg-emerald-50 text-emerald-600 px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest border border-emerald-100 mt-6 shadow-sm">
-                            ✨ {{ $t('settings_saved', 'Pengaturan tersimpan otomatis!') }}
+                    <!-- Job Tracker -->
+                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">💼</div>
+                            <div>
+                                <h4 class="font-black text-slate-700 text-sm">Job Tracker</h4>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Career & Apps</p>
+                            </div>
                         </div>
-                    </transition>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" v-model="form.settings.modules.job" class="sr-only peer" @change="saveSettings">
+                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
+                        </label>
+                    </div>
 
-                </form>
+                    <!-- Goal Tracker -->
+                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">🎯</div>
+                            <div>
+                                <h4 class="font-black text-slate-700 text-sm">Goal Tracker</h4>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Vision & Success</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" v-model="form.settings.modules.goal" class="sr-only peer" @change="saveSettings">
+                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
+                        </label>
+                    </div>
+                </div>
+
+                <transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 -translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
+                    <div v-if="form.recentlySuccessful" class="text-center bg-emerald-50 text-emerald-600 px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest border border-emerald-100 mt-6 shadow-sm">
+                        ✨ {{ $t('settings_saved', 'Pengaturan tersimpan otomatis!') }}
+                    </div>
+                </transition>
             </div>
         </div>
     </AuthenticatedLayout>

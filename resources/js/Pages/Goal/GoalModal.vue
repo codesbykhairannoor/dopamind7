@@ -7,6 +7,8 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 import GoalDatePicker from './GoalDatePicker.vue';
+import MilestoneItem from './MilestoneItem.vue';
+import { Plus } from 'lucide-vue-next';
 import Swal from 'sweetalert2';
 
 const props = defineProps({
@@ -52,7 +54,7 @@ const dateDisplay = (date) => {
 
 watch(() => props.goal, (newGoal) => {
     if (newGoal) {
-        form.value = { ...JSON.parse(JSON.stringify(newGoal)) };
+        form.value = JSON.parse(JSON.stringify(newGoal));
         imagePreview.value = newGoal.cover_image_url || null;
     }
 }, { immediate: true });
@@ -121,7 +123,7 @@ const t = (key, fallback) => {
         <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
             <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity" @click="handleClose"></div>
 
-            <div class="relative w-full max-w-2xl bg-white rounded-[2.5rem] shadow-2xl overflow-visible animate-in fade-in zoom-in duration-300 flex flex-col max-h-[90vh]">
+            <div class="relative w-full max-w-2xl bg-white rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col max-h-[90vh]">
                 
                 <div class="relative h-44 bg-slate-100 shrink-0 group rounded-t-[2.5rem] overflow-hidden">
                     <div v-if="imagePreview" class="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
@@ -155,7 +157,7 @@ const t = (key, fallback) => {
                     </button>
                 </div>
 
-                <div class="p-6 md:p-8 overflow-y-auto custom-scrollbar space-y-6">
+                <div class="p-6 md:p-8 overflow-y-auto custom-scrollbar space-y-6 pb-40">
                     
                     <div class="space-y-2">
                         <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_title', 'Goal Title') }}</label>
@@ -195,7 +197,7 @@ const t = (key, fallback) => {
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-50">
                         <div class="space-y-2 relative">
                             <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_start', 'Start Date') }}</label>
                             <div class="relative">
@@ -205,17 +207,15 @@ const t = (key, fallback) => {
                                     <Calendar :size="18" class="text-slate-300 group-hover:text-indigo-500" />
                                 </button>
                                 
-                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
-                                    <div v-if="showStartPicker" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:bottom-full sm:right-0 sm:mb-2 sm:origin-bottom-right sm:block sm:inset-auto">
-                                        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm sm:hidden" @click="showStartPicker = false"></div>
-                                        <GoalDatePicker 
-                                            :show="true" 
-                                            :modelValue="form.start_date" 
-                                            @update:modelValue="(val) => { form.start_date = val; showStartPicker = false }" 
-                                            @close="showStartPicker = false"
-                                            class="relative z-10"
-                                        />
-                                    </div>
+                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
+                                    <GoalDatePicker 
+                                        v-if="showStartPicker"
+                                        :show="true" 
+                                        :teleport="true"
+                                        :modelValue="form.start_date" 
+                                        @update:modelValue="(val) => { form.start_date = val; showStartPicker = false }" 
+                                        @close="showStartPicker = false"
+                                    />
                                 </transition>
                             </div>
                         </div>
@@ -229,25 +229,57 @@ const t = (key, fallback) => {
                                     <Zap :size="18" :class="form.end_date ? 'text-rose-500' : 'text-slate-300 group-hover:text-rose-400'" />
                                 </button>
                                 
-                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
-                                    <div v-if="showEndPicker" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:bottom-full sm:right-0 sm:mb-2 sm:origin-bottom-right sm:block sm:inset-auto">
-                                        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm sm:hidden" @click="showEndPicker = false"></div>
-                                        <GoalDatePicker 
-                                            :show="true" 
-                                            :modelValue="form.end_date" 
-                                            @update:modelValue="(val) => { form.end_date = val; showEndPicker = false }" 
-                                            @close="showEndPicker = false"
-                                            class="relative z-10"
-                                        />
-                                    </div>
+                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
+                                    <GoalDatePicker 
+                                        v-if="showEndPicker"
+                                        :show="true" 
+                                        :teleport="true"
+                                        :modelValue="form.end_date" 
+                                        @update:modelValue="(val) => { form.end_date = val; showEndPicker = false }" 
+                                        @close="showEndPicker = false"
+                                    />
                                 </transition>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Milestones Section in Modal -->
+                    <div class="space-y-4 pt-4 border-t border-slate-100">
+                        <div class="flex items-center justify-between px-1">
+                            <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest">{{ t('goal_milestones_title', 'Mastery Steps') }}</label>
+                            <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded-lg">{{ form.milestones?.length || 0 }} Steps</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <MilestoneItem 
+                                v-for="(m, idx) in form.milestones" 
+                                :key="m.id || idx" 
+                                :milestone="m"
+                                @save="(data) => Object.assign(m, data)"
+                                @toggle="m.completed = !m.completed"
+                                @delete="form.milestones.splice(idx, 1)"
+                            />
+                            
+                            <button type="button" @click="() => {
+                                if (!form.milestones) form.milestones = [];
+                                form.milestones.push({
+                                    id: null,
+                                    title: 'Untitled Step',
+                                    completed: false,
+                                    target_date: null,
+                                    is_editing: true
+                                });
+                            }" 
+                                class="w-full py-4 rounded-2xl border-2 border-dashed border-slate-100 text-slate-400 hover:border-indigo-100 hover:text-indigo-500 hover:bg-slate-50 transition-all flex items-center justify-center gap-2 group/add">
+                                <Plus :size="16" class="group-hover/add:rotate-90 transition-transform" />
+                                <span class="text-[11px] font-black uppercase tracking-widest">{{ t('goal_btn_add_milestone', 'Add Step') }}</span>
+                            </button>
                         </div>
                     </div>
 
                 </div>
 
-                <div class="p-6 bg-slate-50/80 backdrop-blur-sm rounded-b-[2.5rem] shrink-0 flex items-center justify-between border-t border-slate-100">
+                <div class="p-6 bg-slate-50/80 backdrop-blur-sm shrink-0 flex items-center justify-between border-t border-slate-100 relative z-50">
                     <button @click="handleClose" class="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-rose-500 transition-colors px-4 py-2">
                         {{ t('btn_cancel', 'Cancel') }}
                     </button>

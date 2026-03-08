@@ -3,13 +3,52 @@ import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { computed } from 'vue';
 
 const props = defineProps({
-    stats: Object
+    stats: Object,
+    goals: { type: Array, default: () => [] }
+});
+
+// Compute live stats from localGoals for real-time reactivity
+const liveStats = computed(() => {
+    const goals = props.goals || [];
+    const total = goals.length;
+    const active = goals.filter(g => g.status === 'active').length;
+    const completed = goals.filter(g => g.status === 'completed').length;
+    const paused = goals.filter(g => g.status === 'paused').length;
+
+    let milestonesTotal = 0, milestonesCompleted = 0, totalProgress = 0;
+    const activeGoals = goals.filter(g => g.status === 'active');
+
+    goals.forEach(g => {
+        const ms = g.milestones || [];
+        const mComp = ms.filter(m => m.completed).length;
+        milestonesTotal += ms.length;
+        milestonesCompleted += mComp;
+        if (ms.length > 0) totalProgress += (mComp / ms.length) * 100;
+    });
+
+    const avgProgress = activeGoals.length > 0 ? Math.min(100, Math.round(totalProgress / activeGoals.length)) : 0;
+
+    // Top goal: highest completion rate among active
+    const topGoal = activeGoals.sort((a, b) => {
+        const aP = (a.milestones || []).length ? (a.milestones || []).filter(m => m.completed).length / (a.milestones || []).length : 0;
+        const bP = (b.milestones || []).length ? (b.milestones || []).filter(m => m.completed).length / (b.milestones || []).length : 0;
+        return bP - aP;
+    })[0];
+
+    return {
+        total, active, completed, paused,
+        avg_progress: avgProgress,
+        milestones_total: milestonesTotal,
+        milestones_completed: milestonesCompleted,
+        top_goal_title: topGoal?.title || props.stats?.top_goal_title || null,
+        upcoming_deadlines_count: props.stats?.upcoming_deadlines_count || 0,
+    };
 });
 
 const statsData = computed(() => [
     {
         label: 'goal_stats_focus',
-        value: props.stats.top_goal_title || 'goal_empty_title',
+        value: liveStats.value.top_goal_title || 'goal_empty_title',
         icon: 'target',
         color: 'text-indigo-600',
         bg: 'bg-indigo-50',
@@ -17,7 +56,7 @@ const statsData = computed(() => [
     },
     {
         label: 'goal_stats_urgent',
-        value: props.stats.upcoming_deadlines_count,
+        value: liveStats.value.upcoming_deadlines_count,
         subValue: 'goal_deadlines_label',
         icon: 'calendar',
         color: 'text-rose-600',
@@ -25,8 +64,8 @@ const statsData = computed(() => [
     },
     {
         label: 'goal_stats_pulse',
-        value: `${props.stats.milestones_completed} / ${props.stats.milestones_total}`,
-        icon: 'finance', // Using finance icon for pulse/stats look
+        value: `${liveStats.value.milestones_completed} / ${liveStats.value.milestones_total}`,
+        icon: 'finance',
         color: 'text-emerald-600',
         bg: 'bg-emerald-50'
     }
@@ -40,18 +79,18 @@ const statsData = computed(() => [
             <div class="relative z-10">
                 <p class="text-[9px] font-black text-indigo-200 uppercase tracking-widest mb-0.5">{{ $t('goal_stats_master_progress') }}</p>
                 <div class="flex items-baseline gap-1.5">
-                    <h3 class="text-3xl font-black tabular-nums">{{ stats.avg_progress }}<span class="text-base text-indigo-300/50">%</span></h3>
+                    <h3 class="text-3xl font-black tabular-nums">{{ liveStats.avg_progress }}<span class="text-base text-indigo-300/50">%</span></h3>
                 </div>
             </div>
             
             <div class="relative z-10">
                 <div class="flex justify-between text-[9px] font-bold text-indigo-200 mb-1 uppercase tracking-wider">
-                    <span>{{ stats.avg_progress }}%</span>
+                    <span>{{ liveStats.avg_progress }}%</span>
                 </div>
                 <div class="h-1.5 bg-black/10 rounded-full overflow-hidden p-0.5 border border-white/10">
                     <div 
                         class="h-full rounded-full bg-white transition-all duration-1000 ease-out shadow-[0_0_8px_rgba(255,255,255,0.5)]"
-                        :style="{ width: stats.avg_progress + '%' }"
+                        :style="{ width: liveStats.avg_progress + '%' }"
                     ></div>
                 </div>
             </div>

@@ -2,7 +2,6 @@
 import { Head, usePage } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useGoals } from '@/Composables/Goal/useGoals';
-import GoalGrid from './GoalGrid.vue';
 import GoalStats from './GoalStats.vue';
 import GoalCard from './GoalCard.vue';
 import GoalModal from './GoalModal.vue';
@@ -11,7 +10,6 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 import { computed } from 'vue';
-import { Target, Plus } from 'lucide-vue-next';
 
 const props = defineProps({
     goals: Array,
@@ -49,7 +47,7 @@ const todayDate = computed(() => {
 
         <div class="w-full lg:max-w-[96%] mx-auto p-4 md:p-6 lg:p-8 space-y-8 pb-24">
             <!-- Global Stats Section -->
-            <GoalStats :stats="localStats" />
+            <GoalStats :stats="localStats" :goals="localGoals" />
 
             <!-- Goals Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">

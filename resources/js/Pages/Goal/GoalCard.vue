@@ -150,7 +150,7 @@ const t = (key, fallback) => {
                             v-for="m in goal.milestones" 
                             :key="m.id" 
                             :milestone="m"
-                            @save="(data) => emit('save-milestone', data)"
+                            @save="(data) => emit('save-milestone', { ...m, ...data })"
                             @toggle="emit('toggle-milestone', m)"
                             @delete="emit('delete-milestone', m.id)"
                         />

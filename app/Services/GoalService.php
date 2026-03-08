@@ -97,13 +97,7 @@ class GoalService
                 ...$data
             ]);
 
-            foreach ($milestones as $index => $milestone) {
-                $goal->milestones()->create([
-                    'title' => $milestone['title'],
-                    'order' => $index,
-                    'completed' => $milestone['completed'] ?? false,
-                ]);
-            }
+            $goal->syncMilestones($milestones);
 
             return $goal->load('milestones');
         });
@@ -111,8 +105,18 @@ class GoalService
 
     public function updateGoal(Goal $goal, array $data): Goal
     {
-        $goal->update($data);
-        return $goal->load('milestones');
+        return DB::transaction(function () use ($goal, $data) {
+            $milestones = $data['milestones'] ?? null;
+            unset($data['milestones']);
+
+            $goal->update($data);
+
+            if ($milestones !== null) {
+                $goal->syncMilestones($milestones);
+            }
+
+            return $goal->load('milestones');
+        });
     }
 
     public function deleteGoal(Goal $goal): bool

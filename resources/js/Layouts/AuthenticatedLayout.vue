@@ -44,160 +44,159 @@ watch(() => page.url, () => {
         
         <aside 
             class="bg-white border-r border-slate-100 hidden md:flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] flex-shrink-0 transition-all duration-300 ease-in-out relative"
-            :class="isSidebarCollapsed ? 'w-24' : 'w-72'"
+            :class="isSidebarCollapsed ? 'w-20' : 'w-64'"
         >
             <button @click="toggleSidebar" class="absolute -right-3 top-8 w-6 h-6 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:scale-110 shadow-sm transition-all z-30">
                 <OneForMindIcon :name="!isSidebarCollapsed ? 'chevron-left' : 'chevron-right'" size="14" stroke-width="3" />
             </button>
             
-            <div class="h-24 flex items-center px-6" :class="isSidebarCollapsed ? 'justify-center' : 'justify-start px-8'">
-                <Link :href="route('dashboard')" prefetch class="group flex items-center gap-3">
-                    <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200 shrink-0">
-                        <img src="/favicon.svg?v=2" alt="Logo" class="w-6 h-6 brightness-0 invert" />
+            <div class="h-20 flex items-center px-6 shrink-0" :class="isSidebarCollapsed ? 'justify-center' : 'justify-start px-8'">
+                <Link :href="route('dashboard')" prefetch class="group flex items-center gap-2.5">
+                    <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-100 shrink-0">
+                        <img src="/favicon.svg?v=2" alt="Logo" class="w-5 h-5 brightness-0 invert" />
                     </div>
                     <Transition name="fade">
-                        <span v-if="!isSidebarCollapsed" class="text-xl font-black tracking-tighter text-slate-900 whitespace-nowrap">
+                        <span v-if="!isSidebarCollapsed" class="text-lg font-black tracking-tighter text-slate-900 whitespace-nowrap">
                             OneForMind<span class="text-indigo-600">.</span>
                         </span>
                     </Transition>
                 </Link>
             </div>
 
-            <nav class="flex-1 px-4 space-y-2 overflow-y-auto py-6 custom-scrollbar" :class="isSidebarCollapsed ? 'px-4' : 'px-6'">
+            <nav class="flex-1 px-3 space-y-1 overflow-y-auto py-4 custom-scrollbar" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
                 <Link :href="route('dashboard')" prefetch="mount" cacheFor="1m"
-                    class="flex items-center rounded-2xl transition-all duration-300 group relative"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
-                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_dashboard') : ''"
                 >
-                    <OneForMindIcon name="dashboard" size="20" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('nav_dashboard', 'Dashboard') }}</span>
-                    <div v-if="route().current('dashboard') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
+                    <OneForMindIcon name="dashboard" size="18" class="shrink-0" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_dashboard', 'Dashboard') }}</span>
+                    <div v-if="route().current('dashboard') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="mount" cacheFor="1m"
-                    class="flex items-center rounded-2xl transition-all duration-300 group relative"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
-                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? $t('habit_page_title') : ''"
                 >
-                    <OneForMindIcon name="habit" size="20" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('habit_page_title', 'Habit Tracker') }}</span>
-                    <div v-if="route().current('habits.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
+                    <OneForMindIcon name="habit" size="18" class="shrink-0" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('habit_page_title', 'Habit Tracker') }}</span>
+                    <div v-if="route().current('habits.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="mount" cacheFor="1m"
-                    class="flex items-center rounded-2xl transition-all duration-300 group relative"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
-                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? 'Daily Planner' : ''"
                 >
-                    <OneForMindIcon name="planner" size="20" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Daily Planner</span>
-                    <div v-if="route().current('planner.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
+                    <OneForMindIcon name="planner" size="18" class="shrink-0" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Daily Planner</span>
+                    <div v-if="route().current('planner.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="mount" cacheFor="1m"
-                    class="flex items-center rounded-2xl transition-all duration-300 group relative"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
-                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? 'Finance' : ''"
                 >
-                    <OneForMindIcon name="finance" size="20" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Finance Plan</span>
-                    <div v-if="route().current('finance.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
+                    <OneForMindIcon name="finance" size="18" class="shrink-0" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Finance Plan</span>
+                    <div v-if="route().current('finance.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="mount" cacheFor="1m"
-                    class="flex items-center rounded-2xl transition-all duration-300 group relative"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
-                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? 'Journal' : ''"
                 >
-                    <OneForMindIcon name="journal" size="20" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Digital Journal</span>
-                    <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
+                    <OneForMindIcon name="journal" size="18" class="shrink-0" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Digital Journal</span>
+                    <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                 <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="mount" cacheFor="1m"
-                    class="flex items-center rounded-2xl transition-all duration-300 group relative"
+                <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="mount" cacheFor="1m"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
-                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? 'Calendar' : ''"
                 >
-                    <OneForMindIcon name="calendar" size="20" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Calendar View</span>
-                    <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
+                    <OneForMindIcon name="calendar" size="18" class="shrink-0" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Calendar View</span>
+                    <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch="mount" cacheFor="1m"
-                    class="flex items-center rounded-2xl transition-all duration-300 group relative"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
-                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? $t('job_tracker') : ''"
                 >
-                    <OneForMindIcon name="job" size="20" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Job Tracker</span>
-                    <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
+                    <OneForMindIcon name="job" size="18" class="shrink-0" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Job Tracker</span>
+                    <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch="mount" cacheFor="1m"
-                    class="flex items-center rounded-2xl transition-all duration-300 group relative"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('goals.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
-                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3.5 gap-4'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? $t('goal_page_title') : ''"
                 >
-                    <OneForMindIcon name="goal" size="20" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">Goal Tracker</span>
-                    <div v-if="route().current('goals.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-indigo-600 rounded-r-full"></div>
+                    <OneForMindIcon name="goal" size="18" class="shrink-0" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Goal Tracker</span>
+                    <div v-if="route().current('goals.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
             </nav>
 
-            <div class="p-4 border-t border-slate-100 bg-slate-50/50 space-y-2" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
-                
+            <div class="px-3 py-3 border-t border-slate-100 bg-slate-50/30 space-y-1 shrink-0">
                 <Link :href="route('settings.index')" prefetch
-                    class="flex items-center rounded-2xl transition-all duration-300 group"
+                    class="flex items-center rounded-xl transition-all duration-300 group"
                     :class="[
                         route().current('settings.*') ? 'bg-white shadow-sm border border-slate-200 text-indigo-600 font-bold' : 'border border-transparent text-slate-500 hover:bg-white hover:border-slate-200 hover:shadow-sm hover:text-slate-800',
-                        isSidebarCollapsed ? 'p-3 justify-center' : 'px-4 py-3 gap-3'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2 gap-2.5'
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_settings', 'Pengaturan') : ''"
                 >
-                    <OneForMindIcon name="settings" size="20" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap">{{ $t('nav_settings', 'Pengaturan') }}</span>
+                    <OneForMindIcon name="settings" size="18" class="shrink-0" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-xs font-bold">{{ $t('nav_settings', 'Pengaturan') }}</span>
                 </Link>
 
-                <div class="flex items-center justify-between group" :class="isSidebarCollapsed ? 'flex-col gap-2' : 'p-2'">
-                    <Link :href="route('profile.edit')" prefetch class="flex items-center gap-3 hover:opacity-80 transition min-w-0" :title="isSidebarCollapsed ? $t('edit_profile', 'Edit Profil') : ''">
-                        <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-10 h-10 rounded-full object-cover shadow-sm border-2 border-white shrink-0" />
-                        <div v-else class="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-md shrink-0">
+                <div class="flex items-center justify-between group" :class="isSidebarCollapsed ? 'flex-col gap-2' : 'px-2 py-1'">
+                    <Link :href="route('profile.edit')" prefetch class="flex items-center gap-2.5 hover:opacity-80 transition min-w-0" :title="isSidebarCollapsed ? $t('edit_profile', 'Edit Profil') : ''">
+                        <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-8 h-8 rounded-full object-cover shadow-sm border border-white shrink-0" />
+                        <div v-else class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] shadow-md shrink-0">
                             {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
                         </div>
                         
                         <div v-if="!isSidebarCollapsed" class="flex-1 min-w-0 overflow-hidden">
-                            <p class="text-xs font-black text-slate-800 truncate">{{ user?.name || 'User' }}</p>
-                            <p class="text-[11px] font-bold text-slate-400 truncate">{{ $t('edit_profile', 'Edit Profil') }}</p>
+                            <p class="text-[10px] font-black text-slate-800 truncate">{{ user?.name || 'User' }}</p>
+                            <p class="text-[9px] font-bold text-slate-400 truncate">{{ $t('edit_profile', 'Edit Profil') }}</p>
                         </div>
                     </Link>
 
-                    <button @click="showLogoutModal = true" type="button" class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:bg-rose-50 hover:text-rose-500 transition-colors shrink-0" :title="$t('nav_logout', 'Keluar')">
-                        <OneForMindIcon name="logout" size="18" stroke-width="2.5" />
+                    <button @click="showLogoutModal = true" type="button" class="w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:bg-rose-50 hover:text-rose-500 transition-colors shrink-0" :title="$t('nav_logout', 'Keluar')">
+                        <OneForMindIcon name="logout" size="16" stroke-width="2.5" />
                     </button>
                 </div>
             </div>

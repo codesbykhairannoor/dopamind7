@@ -66,4 +66,32 @@ class Goal extends Model
     {
         return $this->hasMany(GoalMilestone::class)->orderBy('order');
     }
+
+    /**
+     * Sync milestones for this goal.
+     * 
+     * @param array $milestones
+     * @return void
+     */
+    public function syncMilestones(array $milestones): void
+    {
+        $existingIds = collect($milestones)->pluck('id')->filter()->toArray();
+        $this->milestones()->whereNotIn('id', $existingIds)->delete();
+
+        foreach ($milestones as $index => $m) {
+            $milestoneData = [
+                'title' => $m['title'],
+                'order' => $index,
+                'completed' => $m['completed'] ?? false,
+                'target_date' => $m['target_date'] ?? null,
+            ];
+
+            if (!empty($m['id']) && !str_starts_with($m['id'], 'temp_')) {
+                $this->milestones()->where('id', $m['id'])->update($milestoneData);
+            }
+            else {
+                $this->milestones()->create($milestoneData);
+            }
+        }
+    }
 }
