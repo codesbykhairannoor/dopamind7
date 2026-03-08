@@ -10,6 +10,12 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
     <meta property="og:image" content="{{ asset('og-image.png') }}">
+
+    <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
+    <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
+    
+    <link rel="canonical" href="{{ url('/') }}" />
 @endsection
 
 @section('json-ld')
@@ -53,59 +59,51 @@
   }
 }
 </script>
-@endsection
-
-    <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
-    <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
-    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
-    
-    <link rel="canonical" href="{{ url('/') }}" />
-    
-    <script type="application/ld+json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "{{ url('/') }}/#organization",
-          "name": "OneForMind",
-          "url": "{{ url('/') }}",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "{{ asset('favicon.svg') }}",
-            "width": "512",
-            "height": "512"
-          },
-          "sameAs": [
-            "https://twitter.com/OneForMind"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "@id": "{{ url('/') }}/#website",
-          "url": "{{ url('/') }}",
-          "name": "OneForMind",
-          "publisher": { "@id": "{{ url('/') }}/#organization" },
-          "inLanguage": "{{ app()->getLocale() }}"
-        },
-        {
-          "@type": "SoftwareApplication",
-          "name": "OneForMind",
-          "operatingSystem": "WebBrowser",
-          "applicationCategory": "ProductivityApplication",
-          "description": "{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}",
-          "url": "{{ url('/') }}",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "IDR",
-            "availability": "https://schema.org/InStock"
-          },
-          "author": { "@id": "{{ url('/') }}/#organization" }
-        }
+      "@type": "Organization",
+      "@id": "{{ url('/') }}/#organization",
+      "name": "OneForMind",
+      "url": "{{ url('/') }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ asset('favicon.svg') }}",
+        "width": "512",
+        "height": "512"
+      },
+      "sameAs": [
+        "https://twitter.com/OneForMind"
       ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ url('/') }}/#website",
+      "url": "{{ url('/') }}",
+      "name": "OneForMind",
+      "publisher": { "@id": "{{ url('/') }}/#organization" },
+      "inLanguage": "{{ app()->getLocale() }}"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "OneForMind",
+      "operatingSystem": "WebBrowser",
+      "applicationCategory": "ProductivityApplication",
+      "description": "{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}",
+      "url": "{{ url('/') }}",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "IDR",
+        "availability": "https://schema.org/InStock"
+      },
+      "author": { "@id": "{{ url('/') }}/#organization" }
     }
-    </script>
+  ]
+}
+</script>
 @endsection
 
 @section('content')
