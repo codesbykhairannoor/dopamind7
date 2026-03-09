@@ -253,6 +253,18 @@ Route::get('/resources/stories', function () {
     return view('resources.stories');
 })->name('resources.stories');
 
+Route::get('/resources/help', function () {
+    return view('resources.help');
+})->name('resources.help');
+
+Route::get('/resources/community', function () {
+    return view('resources.community');
+})->name('resources.community');
+
+Route::get('/resources/changelog', function () {
+    return view('resources.changelog');
+})->name('resources.changelog');
+
 
 
 // ==========================================

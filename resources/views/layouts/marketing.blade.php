@@ -302,13 +302,26 @@
                         <div x-show="activeMenu === 'resources'" 
                              x-transition 
                              x-cloak 
-                             class="absolute top-full left-0 w-[280px] pt-4 z-50 text-left">
+                             class="absolute top-full -left-20 w-[600px] pt-4 z-50 text-left">
                             
-                            {{-- Kartu Visual --}}
-                            <div class="p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem]">
-                                <x-nav-item href="{{ route('resources.guide') }}" icon="📖" title="{{ __('nav_guide_title') }}" desc="{{ __('nav_guide_desc') }}" />
-                                <x-nav-item href="{{ route('resources.blog') }}" icon="✍️" title="{{ __('nav_blog_title') }}" desc="{{ __('nav_blog_desc') }}" />
-                                <x-nav-item href="{{ route('resources.stories') }}" icon="✨" title="{{ __('nav_stories_title') }}" desc="{{ __('nav_stories_desc') }}" />
+                            {{-- Kartu Visual (Split in 2 Categories) --}}
+                            <div class="p-8 bg-white border border-slate-100 shadow-2xl rounded-[2.5rem] grid grid-cols-2 gap-8">
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">{{ __('nav_resources_knowledge') }}</p>
+                                    <div class="space-y-1">
+                                        <x-nav-item href="{{ route('resources.guide') }}" icon="📖" title="{{ __('nav_guide_title') }}" desc="{{ __('nav_guide_desc') }}" />
+                                        <x-nav-item href="{{ route('resources.help') }}" icon="🙋‍♂️" title="{{ __('nav_help_title') }}" desc="{{ __('nav_help_desc') }}" />
+                                        <x-nav-item href="{{ route('resources.changelog') }}" icon="🚀" title="{{ __('nav_changelog_title') }}" desc="{{ __('nav_changelog_desc') }}" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">{{ __('nav_resources_social') }}</p>
+                                    <div class="space-y-1">
+                                        <x-nav-item href="{{ route('resources.community') }}" icon="🌍" title="{{ __('comm_nav_title') }}" desc="{{ __('comm_meta_desc') }}" />
+                                        <x-nav-item href="{{ route('resources.blog') }}" icon="✍️" title="{{ __('nav_blog_title') }}" desc="{{ __('nav_blog_desc') }}" />
+                                        <x-nav-item href="{{ route('resources.stories') }}" icon="✨" title="{{ __('nav_stories_title') }}" desc="{{ __('nav_stories_desc') }}" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -417,10 +430,23 @@
                             <svg :class="activeAccordion === 'resources' ? 'rotate-180' : ''" class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div x-show="activeAccordion === 'resources'" x-collapse>
-                            <div class="grid grid-cols-1 gap-1 pb-4 text-left">
-                                <x-nav-item-mobile href="{{ route('resources.guide') }}" icon="📖" title="{{ __('nav_guide_title') }}" />
-                                <x-nav-item-mobile href="{{ route('resources.blog') }}" icon="✍️" title="{{ __('nav_blog_title') }}" />
-                                <x-nav-item-mobile href="{{ route('resources.stories') }}" icon="✨" title="{{ __('nav_stories_title') }}" />
+                             <div class="pb-6 space-y-6">
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_resources_knowledge') }}</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <x-nav-item-mobile href="{{ route('resources.guide') }}" icon="📖" title="{{ __('nav_guide_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('resources.help') }}" icon="🙋‍♂️" title="{{ __('nav_help_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('resources.changelog') }}" icon="🚀" title="{{ __('nav_changelog_title') }}" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_resources_social') }}</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <x-nav-item-mobile href="{{ route('resources.community') }}" icon="🌍" title="{{ __('comm_nav_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('resources.blog') }}" icon="✍️" title="{{ __('nav_blog_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('resources.stories') }}" icon="✨" title="{{ __('nav_stories_title') }}" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
