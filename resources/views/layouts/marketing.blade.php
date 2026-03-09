@@ -242,7 +242,7 @@
                         </div>
                     </div>
 
-                    {{-- DROPDOWN: SOLUTIONS --}}
+                  {{-- DROPDOWN: SOLUTIONS --}}
                     <div class="relative group" @mouseenter="activeMenu = 'solutions'" @mouseleave="activeMenu = null">
                         <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
                             {{ __('nav_solutions') }}
@@ -251,28 +251,51 @@
                         
                         {{-- Wrapper Jembatan --}}
                         <div x-show="activeMenu === 'solutions'" 
-                             x-transition 
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 translate-y-2"
+                             x-transition:enter-end="opacity-100 translate-y-0"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 translate-y-0"
+                             x-transition:leave-end="opacity-0 translate-y-2"
                              x-cloak 
-                             class="absolute top-full left-0 w-[560px] pt-4 z-50">
+                             class="absolute top-full -left-32 w-[860px] pt-4 z-50">
                             
-                            {{-- Kartu Visual (Split Categories) --}}
-                            <div class="p-6 bg-white border border-slate-100 shadow-2xl rounded-[2rem] grid grid-cols-2 gap-8 text-left">
+                            {{-- Kartu Visual (3 Columns Layout) --}}
+                            <div class="p-8 bg-white border border-slate-100 shadow-2xl rounded-[2.5rem] grid grid-cols-3 gap-6 text-left">
+                                
+                                {{-- Kolom 1: By Role --}}
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 px-3">{{ __('nav_by_role') }}</p>
-                                    <div class="space-y-1">
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">BY ROLE</p>
+                                    <div class="space-y-1.5">
                                         <x-nav-item href="{{ route('solutions.student') }}" icon="🎓" title="For Students" desc="Manage studies and life." />
                                         <x-nav-item href="{{ route('solutions.freelancer') }}" icon="💻" title="For Freelancers" desc="Track projects and income." />
                                         <x-nav-item href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal Growth" desc="Unlock your best self." />
                                     </div>
                                 </div>
+                                
+                                {{-- Kolom 2: By Use Case --}}
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 px-3">{{ __('nav_by_use_case') }}</p>
-                                    <div class="space-y-1">
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">BY USE CASE</p>
+                                    <div class="space-y-1.5">
                                         <x-nav-item href="{{ route('solutions.finance') }}" icon="💰" title="Financial Mastery" desc="Stop leaks, build wealth." />
                                         <x-nav-item href="{{ route('solutions.career') }}" icon="💼" title="Career Accelerator" desc="Land your dream offer." />
                                         <x-nav-item href="{{ route('solutions.mental') }}" icon="🧘" title="Mental Clarity" desc="Find peace and focus." />
                                     </div>
                                 </div>
+
+                                {{-- Kolom 3: By Methodology --}}
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-5 px-3 flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+                                        BY METHODOLOGY
+                                    </p>
+                                    <div class="space-y-1.5">
+                                        <x-nav-item href="{{ route('solutions.atomic') }}" icon="🌱" title="The Atomic System" desc="1% better every day." />
+                                        <x-nav-item href="{{ route('solutions.deepwork') }}" icon="⚡" title="Deep Work" desc="Master your focus time." />
+                                        <x-nav-item href="{{ route('solutions.secondbrain') }}" icon="🧠" title="Second Brain" desc="Offload your thoughts." />
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

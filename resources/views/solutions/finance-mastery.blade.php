@@ -77,22 +77,121 @@
         </div>
     </header>
 
-    {{-- SECTION 2: PROBLEMS --}}
-    <section class="py-24 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('solve_finance_prob_title') }}</h2>
+    {{-- SECTION 2: THE PROBLEM (THE FINANCIAL ANXIETY TRAP) --}}
+    <section class="py-32 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">{{ __('solve_finance_prob_title') }}</h2>
+                <p class="text-xl text-gray-500">{{ __('solve_finance_prob_desc') }}</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="p-10 bg-gray-50 rounded-[2.5rem] border border-gray-100">
-                    <h3 class="text-xl font-bold mb-4 text-indigo-600">{{ __('solve_finance_feat_1_title') }}</h3>
-                    <p class="text-gray-500 leading-relaxed">{{ __('solve_finance_feat_1_desc') }}</p>
+
+            <div class="flex flex-col md:flex-row gap-8">
+                {{-- Left: The Stress --}}
+                <div class="flex-1 bg-rose-50/50 p-10 rounded-[3rem] border border-rose-100">
+                    <div class="text-5xl mb-6">📉</div>
+                    <h3 class="text-2xl font-bold text-rose-900 mb-4">{{ __('solve_finance_prob_1_title') }}</h3>
+                    <ul class="space-y-4 text-rose-800/70">
+                        <li class="flex items-center gap-3"><span class="text-rose-500">✕</span> {{ __('solve_finance_prob_1_point_1') }}</li>
+                        <li class="flex items-center gap-3"><span class="text-rose-500">✕</span> {{ __('solve_finance_prob_1_point_2') }}</li>
+                        <li class="flex items-center gap-3"><span class="text-rose-500">✕</span> {{ __('solve_finance_prob_1_point_3') }}</li>
+                    </ul>
                 </div>
-                <div class="p-10 bg-indigo-600 rounded-[2.5rem] text-white shadow-xl shadow-indigo-100">
-                    <h3 class="text-xl font-bold mb-4">{{ __('solve_finance_feat_2_title') }}</h3>
-                    <p class="text-indigo-100 leading-relaxed">{{ __('solve_finance_feat_2_desc') }}</p>
+                
+                {{-- Right: The Boring Way --}}
+                <div class="flex-1 bg-gray-50 p-10 rounded-[3rem] border border-gray-200">
+                    <div class="text-5xl mb-6">📊</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ __('solve_finance_prob_2_title') }}</h3>
+                    <ul class="space-y-4 text-gray-500">
+                        <li class="flex items-center gap-3"><span class="text-gray-400">✕</span> {{ __('solve_finance_prob_2_point_1') }}</li>
+                        <li class="flex items-center gap-3"><span class="text-gray-400">✕</span> {{ __('solve_finance_prob_2_point_2') }}</li>
+                        <li class="flex items-center gap-3"><span class="text-gray-400">✕</span> {{ __('solve_finance_prob_2_point_3') }}</li>
+                    </ul>
                 </div>
             </div>
+        </div>
+    </section>
+
+    {{-- SECTION 3: THE SOLUTION (THE WEALTH ENGINE) --}}
+    <section class="py-32 bg-slate-900 text-white relative overflow-hidden">
+        {{-- Elegant subtle glow --}}
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                {{-- Left: The Engine Visual --}}
+                <div class="relative w-full aspect-square max-h-[500px]">
+                    <div class="absolute inset-0 border border-slate-700 rounded-full flex items-center justify-center animate-[spin_60s_linear_infinite]">
+                        <div class="w-4 h-4 bg-indigo-500 rounded-full absolute -top-2"></div>
+                    </div>
+                    <div class="absolute inset-8 border border-slate-600 rounded-full flex items-center justify-center animate-[spin_40s_linear_infinite_reverse]">
+                        <div class="w-3 h-3 bg-purple-400 rounded-full absolute -bottom-1.5"></div>
+                    </div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center z-10">
+                        <div class="bg-indigo-500/20 p-6 rounded-full border border-indigo-500/30 mb-4 backdrop-blur-md">
+                            <span class="text-5xl">🏦</span>
+                        </div>
+                        <h4 class="text-2xl font-black tracking-widest uppercase text-indigo-400">OFM Ledger</h4>
+                        <p class="text-slate-400 text-sm mt-2">Zero-Friction Finance</p>
+                    </div>
+                </div>
+
+                {{-- Right: Features --}}
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        {{ __('solve_finance_sol_title') }}
+                    </h2>
+                    <div class="space-y-8">
+                        <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                            <h4 class="text-xl font-bold text-indigo-400 mb-2">{{ __('solve_finance_sol_feat_1_title') }}</h4>
+                            <p class="text-slate-400">{{ __('solve_finance_sol_feat_1_desc') }}</p>
+                        </div>
+                        <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                            <h4 class="text-xl font-bold text-purple-400 mb-2">{{ __('solve_finance_sol_feat_2_title') }}</h4>
+                            <p class="text-slate-400">{{ __('solve_finance_sol_feat_2_desc') }}</p>
+                        </div>
+                        <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700">
+                            <h4 class="text-xl font-bold text-blue-400 mb-2">{{ __('solve_finance_sol_feat_3_title') }}</h4>
+                            <p class="text-slate-400">{{ __('solve_finance_sol_feat_3_desc') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 4: THE SYNERGY (HABITS MEET FINANCE) --}}
+    <section class="py-32 bg-indigo-50/50 border-t border-indigo-100">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-black text-indigo-950 mb-6">{{ __('solve_finance_syn_title') }}</h2>
+            <p class="text-xl text-indigo-800/70 max-w-2xl mx-auto mb-16">{{ __('solve_finance_syn_desc') }}</p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-indigo-100 w-full md:w-1/3">
+                    <div class="text-4xl mb-4">☕</div>
+                    <p class="font-bold text-gray-900">Habit Logged</p>
+                    <p class="text-sm text-gray-500">"Make Coffee at Home"</p>
+                </div>
+                <div class="text-indigo-500 text-4xl font-black">→</div>
+                <div class="bg-indigo-600 text-white p-8 rounded-3xl shadow-xl w-full md:w-1/3 transform scale-105">
+                    <div class="text-4xl mb-4">💰</div>
+                    <p class="font-bold text-indigo-100">Auto Allocation</p>
+                    <p class="text-2xl font-black mt-1">+ Rp 35.000 to Savings</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 5: CTA --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
+            <div class="text-6xl mb-8 animate-bounce">📈</div>
+            <h2 class="text-5xl md:text-7xl font-black mb-8 text-gray-900 tracking-tight">{{ __('solve_finance_cta_title') }}</h2>
+            <p class="text-gray-500 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
+                {{ __('solve_finance_cta_desc') }}
+            </p>
+            <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition-colors duration-300 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
+                {{ __('solve_finance_cta_btn') }}
+            </a>
         </div>
     </section>
 

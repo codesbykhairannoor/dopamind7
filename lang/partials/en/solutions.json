@@ -128,5 +128,266 @@
     "growth_cta_title": "Today is Day One.",
     "growth_cta_desc": "Your future is shaped by what you do today, not tomorrow. Take that first step right now.",
     "growth_cta_btn": "Start Your Growth Journey",
-    "growth_cta_note": "100% free to start taking small steps."
+    "growth_cta_note": "100% free to start taking small steps.",
+
+
+    "solve_career_meta_title": "Career Accelerator - OneForMind",
+    "solve_career_meta_desc": "Transform your job hunt from a chaotic mess into a structured pipeline. Track applications, ace interviews, and land your dream job.",
+    "solve_career_meta_og_title": "Take Control of Your Career with OneForMind",
+    "solve_career_meta_og_desc": "Stop sending resumes into the void. Build a systematic career growth pipeline.",
+    "solve_career_hero_badge": "Career Accelerator",
+    "solve_career_hero_title_1": "Turn Job Hunting into a",
+    "solve_career_hero_title_2": "Predictable Pipeline.",
+    "solve_career_hero_desc": "Stop tracking applications on messy spreadsheets. Organize your job search, prepare for interviews, and grow your career systematically.",
+    "solve_career_hero_cta": "Start Your Journey",
+    "solve_career_mockup_header": "Application Funnel",
+    
+    "solve_career_prob_title": "The Resume Black Hole",
+    "solve_career_prob_desc": "Why searching for a job feels so exhausting right now.",
+    "solve_career_prob_1_title": "Applying into the Void",
+    "solve_career_prob_1_desc": "Sending 100 resumes a day and losing track of who you applied to, when, and for what role.",
+    "solve_career_prob_2_title": "Spreadsheet Chaos",
+    "solve_career_prob_2_desc": "Trying to manage application statuses in clunky Excel files that you eventually stop updating.",
+    "solve_career_prob_3_title": "Ghosting Anxiety",
+    "solve_career_prob_3_desc": "Forgetting to follow up after interviews because you don't have a reliable reminder system.",
+    
+    "solve_career_sol_title": "Build a System That Gets You Hired.",
+    "solve_career_sol_desc": "OneForMind turns the chaotic job hunt into a structured, visual pipeline so you always know your next move.",
+    "solve_career_sol_step_1_title": "Log Every Application",
+    "solve_career_sol_step_1_desc": "Instantly record company name, role, salary expectations, and date applied.",
+    "solve_career_sol_step_2_title": "Move Through Stages",
+    "solve_career_sol_step_2_desc": "Drag and drop from 'Applied' to 'Interview' to 'Offer'. Visual progress keeps you motivated.",
+    "solve_career_sol_step_3_title": "Prepare & Conquer",
+    "solve_career_sol_step_3_desc": "Use the integrated Journal to script answers and the Planner to schedule interview times.",
+    
+    "solve_career_feat_title": "Your Career Arsenal",
+    "solve_career_feat_desc": "Everything you need to level up professionally.",
+    "solve_career_feat_1_title": "The Job Tracker",
+    "solve_career_feat_1_desc": "A dedicated CRM for your career. Sort by status, track salaries, and never miss a follow-up deadline again.",
+    "solve_career_feat_2_title": "Skill Milestones",
+    "solve_career_feat_2_desc": "Set goals to learn new skills (e.g., 'Master Python') and track them step-by-step alongside your job hunt.",
+    "solve_career_feat_3_title": "Mental Clarity",
+    "solve_career_feat_3_desc": "Job hunting is tough. Use our daily mood tracker and journal to manage burnout and stay resilient during rejections.",
+    
+    "solve_career_cta_title": "Ready to land the offer?",
+    "solve_career_cta_desc": "Join professionals who are building their career pipeline systematically.",
+    "solve_career_cta_btn": "Build My Pipeline",
+
+    "solve_finance_meta_title": "Finance Mastery - OneForMind",
+    "solve_finance_meta_desc": "Gain total control over your money. Track expenses, set budgets, and build wealth systematically.",
+    "solve_finance_meta_og_title": "Master Your Finances with OneForMind",
+    "solve_finance_meta_og_desc": "No more financial anxiety. Track your wealth and build a secure future.",
+    "solve_finance_hero_badge": "Wealth System",
+    "solve_finance_hero_title_1": "Total Control Over",
+    "solve_finance_hero_title_2": "Your Financial Future.",
+    "solve_finance_hero_desc": "Say goodbye to financial anxiety. Track income, monitor expenses, and align your spending with your life goals in one beautiful dashboard.",
+    "solve_finance_hero_cta": "Master Your Money",
+    
+    "solve_finance_prob_title": "The Financial Anxiety Trap",
+    "solve_finance_prob_desc": "Managing money shouldn't feel like a punishment.",
+    "solve_finance_prob_1_title": "The Leaky Bucket",
+    "solve_finance_prob_1_desc": "Wondering where your money went at the end of the month.",
+    "solve_finance_prob_1_point_1": "Impulse spending taking over",
+    "solve_finance_prob_1_point_2": "Zero visibility on subscriptions",
+    "solve_finance_prob_1_point_3": "End-of-month panic",
+    "solve_finance_prob_2_title": "The Boring Spreadsheets",
+    "solve_finance_prob_2_desc": "Traditional budgeting apps feel like accounting software.",
+    "solve_finance_prob_2_point_1": "Too complex to use daily",
+    "solve_finance_prob_2_point_2": "Disconnected from your actual life goals",
+    "solve_finance_prob_2_point_3": "Guilt-trips you for spending",
+    
+    "solve_finance_sol_title": "The Zero-Friction Wealth Engine",
+    "solve_finance_sol_feat_1_title": "Lightning Fast Entry",
+    "solve_finance_sol_feat_1_desc": "Log a transaction in seconds. No endless loading screens, no complex accounting jargon. Just amount, category, done.",
+    "solve_finance_sol_feat_2_title": "Visual Budgets",
+    "solve_finance_sol_feat_2_desc": "Set limits for categories and watch the progress bar. Know exactly how much 'fun money' you have left without guilt.",
+    "solve_finance_sol_feat_3_title": "Income Targets",
+    "solve_finance_sol_feat_3_desc": "Not just tracking expenses. Set monthly income goals and watch your wealth grow as a freelancer or creator.",
+    
+    "solve_finance_syn_title": "Micro-Habits to Macro-Wealth",
+    "solve_finance_syn_desc": "Because the best financial strategy is changing your daily behavior.",
+    
+    "solve_finance_cta_title": "Stop wondering where your money went.",
+    "solve_finance_cta_desc": "Start directing it towards the life you actually want to live.",
+    "solve_finance_cta_btn": "Start Tracking Today",
+
+    
+    "solve_mental_meta_title": "Mental Clarity & Journaling - OneForMind",
+    "solve_mental_meta_desc": "Clear the brain fog. Use our integrated journaling and mood tracking tools to find peace and focus in a noisy world.",
+    "solve_mental_meta_og_title": "Find Your Mental Sanctuary with OneForMind",
+    "solve_mental_meta_og_desc": "Empty your mind, track your emotions, and build a resilient mindset.",
+    
+    "solve_mental_hero_badge": "Mental Sanctuary",
+    "solve_mental_hero_title_1": "Clear the Brain Fog.",
+    "solve_mental_hero_title_2": "Reclaim Your Focus.",
+    "solve_mental_hero_desc": "Your brain is for generating ideas, not holding them. Dump your anxious thoughts into a secure, beautiful digital journal and get your clarity back.",
+    "solve_mental_hero_cta": "Start Journaling",
+    
+    "solve_mental_prob_title": "The Overwhelm Epidemic",
+    "solve_mental_prob_desc": "Modern life demands constant attention. Without a system to process it, your mind becomes a chaotic storage room.",
+    "solve_mental_prob_1_title": "The Mental Loop",
+    "solve_mental_prob_1_desc": "Replaying the same anxieties and unfinished tasks in your head because you haven't written them down.",
+    "solve_mental_prob_2_title": "Dopamine Exhaustion",
+    "solve_mental_prob_2_desc": "Scrolling endlessly to numb the stress, which only makes the brain fog thicker and harder to break.",
+    
+    "solve_mental_sol_title": "Your Digital Safe Space",
+    "solve_mental_sol_desc": "OneForMind isn't just a productivity tool; it's a private sanctuary where you can organize your inner world before tackling the outer one.",
+    "solve_mental_sol_step_1_title": "Brain Dump",
+    "solve_mental_sol_step_1_desc": "Open the Zen Journal and write whatever is on your mind. No formatting, no pressure. Just release.",
+    "solve_mental_sol_step_2_title": "Track Your Emotional State",
+    "solve_mental_sol_step_2_desc": "Log your mood daily to spot patterns. Do you always feel anxious on Tuesdays? Now you can prepare for it.",
+    "solve_mental_sol_step_3_title": "Transition to Action",
+    "solve_mental_sol_step_3_desc": "Once the mind is clear, move to the Planner and schedule only what truly matters for the day.",
+    
+    "solve_mental_feat_title": "Tools for Inner Peace",
+    "solve_mental_feat_1_title": "The Distraction-Free Journal",
+    "solve_mental_feat_1_desc": "A clean, beautiful writing interface designed to mimic the feeling of a physical diary. Add images, set your mood, and write without judgment.",
+    "solve_mental_feat_2_title": "Mood Correlation Analytics",
+    "solve_mental_feat_2_desc": "See how your habits affect your mood. Discover if going to the gym actually makes you happier over a 30-day period.",
+    
+    "solve_mental_cta_title": "Take a deep breath.",
+    "solve_mental_cta_desc": "Your mind deserves a break. Start organizing your thoughts today.",
+    "solve_mental_cta_btn": "Enter the Sanctuary",
+
+    
+    "atomic_meta_title": "The Atomic System - OneForMind",
+    "atomic_meta_desc": "Build systems, not just goals. Transform 1% daily improvements into massive lifetime results.",
+    "atomic_meta_og_title": "Master Your Habits with The Atomic System",
+    "atomic_meta_og_desc": "Stop relying on motivation. Build a productivity system that runs on autopilot.",
+    
+    "atomic_hero_badge": "Atomic System",
+    "atomic_hero_title_1": "Don't Change Your Goals.",
+    "atomic_hero_title_2": "Change Your System.",
+    "atomic_hero_desc": "Success is the product of daily habits, not once-in-a-lifetime transformations. Build a system that makes being 1% better every day inevitable.",
+    "atomic_hero_cta": "Build Your System",
+    
+    "atomic_prob_title": "The Trap of Big Goals",
+    "atomic_prob_desc": "Why New Year's Resolutions fail by February.",
+    "atomic_prob_1_title": "Motivation Fades",
+    "atomic_prob_1_desc": "Relying on sheer willpower is exhausting. When you're tired, goals don't matter.",
+    "atomic_prob_2_title": "Winner & Loser Paradox",
+    "atomic_prob_2_desc": "Both winners and losers have the same goals. The difference is the system they use.",
+    
+    "atomic_sol_title": "The Power of 1%",
+    "atomic_sol_desc": "How OneForMind helps you compound your daily efforts.",
+    "atomic_step_1_title": "Make It Obvious",
+    "atomic_step_1_desc": "Track your habits visually. Don't break the chain. The grid is your new identity.",
+    "atomic_step_2_title": "Make It Easy",
+    "atomic_step_2_desc": "Break massive goals into micro-milestones. Start so small you can't fail.",
+    "atomic_step_3_title": "Make It Satisfying",
+    "atomic_step_3_desc": "Watch your financial ledger grow as a direct result of the habits you kept today.",
+    
+    "atomic_cta_title": "Start your 1% improvement today.",
+    "atomic_cta_btn": "Start Tracking",
+
+     "atomic_mockup_title": "The Compounding Effect",
+    "atomic_mockup_desc": "If you get 1% better each day for one year, you'll end up 37 times better by the time you're done.",
+    "atomic_cta_desc": "Join thousands of users who have stopped setting impossible goals and started building unbreakable systems.",
+
+    "atomic_feat_title": "The Habit Arsenal",
+    "atomic_feat_1_title": "Visual Heatmap",
+    "atomic_feat_1_desc": "See your consistency mapped out in a beautiful GitHub-style grid. A quick glance is all you need to know if you're on track.",
+    "atomic_feat_2_title": "Micro-Milestones",
+    "atomic_feat_2_desc": "Turn overwhelming 1-year goals into tiny actionable steps that you can tick off daily without feeling intimidated.",
+    "atomic_cta_note": "No credit card required. Free forever for individuals.",
+
+    
+
+    "deepwork_meta_title": "Deep Work Protocol - OneForMind",
+    "deepwork_meta_desc": "Eliminate distractions. Use timeboxing and Pomodoro sprints to do the best work of your life.",
+    "deepwork_meta_og_title": "Reclaim Your Focus with Deep Work",
+    "deepwork_meta_og_desc": "Master your time or it will master you.",
+    
+    "deepwork_hero_badge": "Deep Work Protocol",
+    "deepwork_hero_title_1": "Focus is the New",
+    "deepwork_hero_title_2": "Superpower.",
+    "deepwork_hero_desc": "Eliminate context switching. Block your time, mute the noise, and execute high-value tasks with relentless focus using our integrated tools.",
+    "deepwork_hero_cta": "Enter Deep Work",
+    
+    "deepwork_prob_title": "The Shallow Work Epidemic",
+    "deepwork_prob_desc": "We are confusing busyness with actual productivity.",
+    "deepwork_prob_1_title": "Context Switching",
+    "deepwork_prob_1_desc": "Jumping between emails, chats, and work destroys your cognitive capacity.",
+    "deepwork_prob_2_title": "Reactive Living",
+    "deepwork_prob_2_desc": "Letting other people's emergencies dictate your daily schedule.",
+    "deepwork_prob_3_title": "False Progress",
+    "deepwork_prob_3_desc": "Checking off 20 tiny tasks but ignoring the one project that actually matters.",
+    
+    "deepwork_sol_title": "The Architecture of Focus",
+    "deepwork_sol_1_title": "Visual Timeboxing",
+    "deepwork_sol_1_desc": "Give every hour a specific job. If it's not on the timeline, it doesn't happen.",
+    "deepwork_sol_2_title": "Integrated Sprints",
+    "deepwork_sol_2_desc": "Use the built-in Pomodoro timer to lock into 25 minutes of unbroken concentration.",
+
+    
+    "deepwork_mockup_title": "Daily Focus Timeline",
+    "deepwork_mockup_desc": "Unbroken concentration in progress.",
+    "deepwork_sol_3_title": "Persistent Inbox",
+    "deepwork_sol_3_desc": "When random ideas distract you during a focus session, dump them instantly into the sidebar Inbox and get back to work.",
+    
+    "deepwork_cta_desc": "Stop letting distractions steal your potential. Build your schedule, lock in, and execute.",
+    "deepwork_cta_note": "Free forever for individuals.",
+    
+    "deepwork_cta_title": "Ready to do the best work of your life?",
+    "deepwork_cta_btn": "Build My Schedule",
+
+    "deepwork_feat_title": "The Focus Arsenal",
+    "deepwork_feat_1_title": "Native Pomodoro Timer",
+    "deepwork_feat_1_desc": "Ditch the external browser extensions. Our built-in timer sits right next to your tasks, ensuring you never break your flow state.",
+    "deepwork_feat_2_title": "Persistent Idea Inbox",
+    "deepwork_feat_2_desc": "When a brilliant (or distracting) idea hits you mid-sprint, dump it into the sidebar Inbox instantly and return to your deep work.",
+
+    "brain_meta_title": "Second Brain - OneForMind",
+    "brain_meta_desc": "Offload your cognitive burden. Dump your thoughts, tasks, and anxieties into a trusted digital system.",
+    "brain_meta_og_title": "Create Your Second Brain",
+    "brain_meta_og_desc": "Your mind is for creating ideas, not holding them.",
+    
+    "brain_hero_badge": "Cognitive Offloading",
+    "brain_hero_title_1": "Your Brain is for Ideas,",
+    "brain_hero_title_2": "Not for Storing Them.",
+    "brain_hero_desc": "Stop trying to remember everything. Dump your tasks, thoughts, and anxieties into a digital system you can trust so you can finally relax.",
+    "brain_hero_cta": "Free Your Mind",
+    
+    "brain_prob_title": "The Overwhelm Epidemic",
+    "brain_prob_desc": "Why you feel tired before you even start working.",
+    "brain_prob_core": "Keeping too many open loops in your head causes anxiety, brain fog, and decision fatigue. You need an external hard drive for your life.",
+    
+    "brain_sol_title": "The C.O.E Framework",
+    "brain_step_1": "Throw every random task, thought, or anxiety into the Inbox or Journal the moment it appears.",
+    "brain_step_2": "Filter them into your Planner Timeline, Job Tracker, or Financial Ledgers.",
+    "brain_step_3": "Execute with a clear mind, knowing everything else is safely stored.",
+    
+    "brain_cta_title": "Offload your cognitive burden.",
+    "brain_cta_btn": "Create Your Second Brain",
+
+    
+    "brain_mockup_1": "Quick Inbox",
+    "brain_mockup_2": "OneForMind Hub",
+    "brain_mockup_3": "Clear Execution",
+    
+    "brain_prob_1_title": "Endless Open Loops",
+    "brain_prob_1_desc": "Unfinished tasks pinging in your head all day, draining your energy and causing background anxiety.",
+    "brain_prob_2_title": "Information Fragmentation",
+    "brain_prob_2_desc": "Notes in your phone, tasks in your notebook, events in your calendar. Nothing is connected, everything is lost.",
+    "brain_prob_3_title": "Decision Fatigue",
+    "brain_prob_3_desc": "Wasting peak mental energy every morning just trying to figure out what you're supposed to be doing.",
+    
+    "brain_sol_desc": "How OneForMind acts as your digital external hard drive.",
+    "brain_step_1_title": "1. Capture",
+    "brain_step_1_desc": "Throw every random task, thought, or anxiety into the Inbox or Journal the exact moment it appears.",
+    "brain_step_2_title": "2. Organize",
+    "brain_step_2_desc": "Filter them into your Planner Timeline, Job Tracker, or Financial Ledgers when you actually have the time to process them.",
+    "brain_step_3_title": "3. Execute",
+    "brain_step_3_desc": "Work with a clear mind, knowing everything else is safely stored and will be surfaced exactly when needed.",
+    
+    "brain_feat_title": "Your Digital Safe Space",
+    "brain_feat_1_title": "Persistent Inbox",
+    "brain_feat_1_desc": "A sidebar always ready to catch your fleeting thoughts before they disappear. Accessible from anywhere in the app.",
+    "brain_feat_2_title": "Zen Journal",
+    "brain_feat_2_desc": "A private sanctuary to dump emotional baggage, untangle your overthinking, and track your daily mental state.",
+    
+    "brain_cta_desc": "Let the system do the remembering. You just do the thinking.",
+    "brain_cta_note": "Free forever for individuals."
+    
+   
 }

@@ -219,6 +219,17 @@ Route::get('/solutions/mental-clarity', function () {
     return view('solutions.mental-clarity');
 })->name('solutions.mental');
 
+Route::get('/solutions/atomic-system', function () {
+    return view('solutions.atomic-system');
+})->name('solutions.atomic');
+
+Route::get('/solutions/deep-work', function () {
+    return view('solutions.deep-work');
+})->name('solutions.deepwork');
+
+Route::get('/solutions/second-brain', function () {
+    return view('solutions.second-brain');
+})->name('solutions.secondbrain');
 
 // ==========================================
 // RESOURCES
