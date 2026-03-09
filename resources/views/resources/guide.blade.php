@@ -40,7 +40,7 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (REFINED TO
+    
     <header class="pt-32 pb-32 px-6 relative overflow-hidden bg-white border-b border-gray-100">
         {{-- Subtle Background: Grid & Glow --}}
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] [background-size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10"></div>
