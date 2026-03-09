@@ -8,10 +8,7 @@
     {{-- 🔥 1. SMART REDIRECT --}}
     <script>if(document.cookie.includes('oneformind_session')){window.location.replace('/dashboard');}</script>
 
-    <meta name="description" content="{{ app()->getLocale() === 'id' 
-        ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
-        : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
-    }}">
+    <meta name="description" content="{{ __('marketing_meta_desc') }}">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="productivity app, habit tracker, finance tracker, daily planner, journal, app produktivitas, pelacak kebiasaan, manajemen keuangan pribadi, aplikasi pengatur waktu, productivity system Indonesia">
 
@@ -33,10 +30,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="OneForMind | Productivity OS">
-    <meta property="og:description" content="{{ app()->getLocale() === 'id' 
-        ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
-        : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
-    }}">
+    <meta property="og:description" content="{{ __('marketing_meta_desc') }}">
     <meta property="og:image" content="{{ asset('og-image.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -45,10 +39,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@OneForMind">
     <meta name="twitter:title" content="OneForMind | Productivity OS">
-    <meta name="twitter:description" content="{{ app()->getLocale() === 'id' 
-        ? 'OneForMind: Satu aplikasi produktivitas terpadu untuk kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' 
-        : 'OneForMind: The unified productivity OS to manage finances, habits, and daily plans in one minimalist dashboard.' 
-    }}">
+    <meta name="twitter:description" content="{{ __('marketing_meta_desc') }}">
     <meta name="twitter:image" content="{{ url('/og-image.png') }}">
     
     <meta name="ai-creator" content="OneForMind Team">
@@ -230,13 +221,13 @@
                             {{-- Kartu Visual --}}
                             <div class="bg-white border border-slate-100 shadow-2xl rounded-[2rem] overflow-hidden p-4">
                                 <div class="grid grid-cols-2 gap-2 text-left">
-                                    <x-nav-item href="{{ route('features.habit') }}" icon="🌱" title="Habit Tracker" desc="Build consistency every day." />
-                                    <x-nav-item href="{{ route('features.finance') }}" icon="💰" title="Finance" desc="Master your cash flow." />
-                                    <x-nav-item href="{{ route('features.planner') }}" icon="🎯" title="Planner" desc="Organize your daily tasks." />
-                                    <x-nav-item href="{{ route('features.journal') }}" icon="📔" title="Journal" desc="Clear your mental clutter." />
-                                    <x-nav-item href="{{ route('features.calendar') }}" icon="📅" title="Calendar" desc="Visual time management." />
-                                    <x-nav-item href="{{ route('features.goal') }}" icon="🎯" title="Goal Tracker" desc="Break down big dreams." />
-                                    <x-nav-item href="{{ route('features.job') }}" icon="💼" title="Job Tracker" desc="Secure your next offer." />
+                                    <x-nav-item href="{{ route('features.habit') }}" icon="🌱" title="{{ __('nav_habit_title') }}" desc="{{ __('nav_habit_desc') }}" />
+                                    <x-nav-item href="{{ route('features.finance') }}" icon="💰" title="{{ __('nav_finance_title') }}" desc="{{ __('nav_finance_desc') }}" />
+                                    <x-nav-item href="{{ route('features.planner') }}" icon="🎯" title="{{ __('nav_planner_title') }}" desc="{{ __('nav_planner_desc') }}" />
+                                    <x-nav-item href="{{ route('features.journal') }}" icon="📔" title="{{ __('nav_journal_title') }}" desc="{{ __('nav_journal_desc') }}" />
+                                    <x-nav-item href="{{ route('features.calendar') }}" icon="📅" title="{{ __('nav_calendar_title') }}" desc="{{ __('nav_calendar_desc') }}" />
+                                    <x-nav-item href="{{ route('features.goal') }}" icon="🎯" title="{{ __('nav_goal_title') }}" desc="{{ __('nav_goal_desc') }}" />
+                                    <x-nav-item href="{{ route('features.job') }}" icon="💼" title="{{ __('nav_job_title') }}" desc="{{ __('nav_job_desc') }}" />
                                 </div>
                             </div>
                         </div>
@@ -265,21 +256,21 @@
                                 
                                 {{-- Kolom 1: By Role --}}
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">BY ROLE</p>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">{{ __('nav_by_role') }}</p>
                                     <div class="space-y-1.5">
-                                        <x-nav-item href="{{ route('solutions.student') }}" icon="🎓" title="For Students" desc="Manage studies and life." />
-                                        <x-nav-item href="{{ route('solutions.freelancer') }}" icon="💻" title="For Freelancers" desc="Track projects and income." />
-                                        <x-nav-item href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal Growth" desc="Unlock your best self." />
+                                        <x-nav-item href="{{ route('solutions.student') }}" icon="🎓" title="{{ __('nav_student_title') }}" desc="{{ __('nav_student_desc') }}" />
+                                        <x-nav-item href="{{ route('solutions.freelancer') }}" icon="💻" title="{{ __('nav_freelancer_title') }}" desc="{{ __('nav_freelancer_desc') }}" />
+                                        <x-nav-item href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="{{ __('nav_personalgrowth_title') }}" desc="{{ __('nav_personalgrowth_desc') }}" />
                                     </div>
                                 </div>
                                 
                                 {{-- Kolom 2: By Use Case --}}
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">BY USE CASE</p>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">{{ __('nav_by_use_case') }}</p>
                                     <div class="space-y-1.5">
-                                        <x-nav-item href="{{ route('solutions.finance') }}" icon="💰" title="Financial Mastery" desc="Stop leaks, build wealth." />
-                                        <x-nav-item href="{{ route('solutions.career') }}" icon="💼" title="Career Accelerator" desc="Land your dream offer." />
-                                        <x-nav-item href="{{ route('solutions.mental') }}" icon="🧘" title="Mental Clarity" desc="Find peace and focus." />
+                                        <x-nav-item href="{{ route('solutions.finance') }}" icon="💰" title="{{ __('nav_finance_title') }}" desc="{{ __('nav_finance_desc') }}" />
+                                        <x-nav-item href="{{ route('solutions.career') }}" icon="💼" title="{{ __('nav_career_title') }}" desc="{{ __('nav_career_desc') }}" />
+                                        <x-nav-item href="{{ route('solutions.mental') }}" icon="🧘" title="{{ __('nav_mental_title') }}" desc="{{ __('nav_mental_desc') }}" />
                                     </div>
                                 </div>
 
@@ -287,12 +278,12 @@
                                 <div>
                                     <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-5 px-3 flex items-center gap-2">
                                         <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
-                                        BY METHODOLOGY
+                                        {{ __('nav_by_methodology') }}
                                     </p>
                                     <div class="space-y-1.5">
-                                        <x-nav-item href="{{ route('solutions.atomic') }}" icon="🌱" title="The Atomic System" desc="1% better every day." />
-                                        <x-nav-item href="{{ route('solutions.deepwork') }}" icon="⚡" title="Deep Work" desc="Master your focus time." />
-                                        <x-nav-item href="{{ route('solutions.secondbrain') }}" icon="🧠" title="Second Brain" desc="Offload your thoughts." />
+                                        <x-nav-item href="{{ route('solutions.atomic') }}" icon="🌱" title="{{ __('nav_atomic_title') }}" desc="{{ __('nav_atomic_desc') }}" />
+                                        <x-nav-item href="{{ route('solutions.deepwork') }}" icon="⚡" title="{{ __('nav_deepwork_title') }}" desc="{{ __('nav_deepwork_desc') }}" />
+                                        <x-nav-item href="{{ route('solutions.secondbrain') }}" icon="🧠" title="{{ __('nav_secondbrain_title') }}" desc="{{ __('nav_secondbrain_desc') }}" />
                                     </div>
                                 </div>
                                 
@@ -315,9 +306,9 @@
                             
                             {{-- Kartu Visual --}}
                             <div class="p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem]">
-                                <x-nav-item href="{{ route('resources.guide') }}" icon="📖" title="User Guide" desc="Learn the system." />
-                                <x-nav-item href="{{ route('resources.blog') }}" icon="✍️" title="Blog" desc="Tips and stories." />
-                                <x-nav-item href="{{ route('resources.stories') }}" icon="✨" title="User Stories" desc="Success community." />
+                                <x-nav-item href="{{ route('resources.guide') }}" icon="📖" title="{{ __('nav_guide_title') }}" desc="{{ __('nav_guide_desc') }}" />
+                                <x-nav-item href="{{ route('resources.blog') }}" icon="✍️" title="{{ __('nav_blog_title') }}" desc="{{ __('nav_blog_desc') }}" />
+                                <x-nav-item href="{{ route('resources.stories') }}" icon="✨" title="{{ __('nav_stories_title') }}" desc="{{ __('nav_stories_desc') }}" />
                             </div>
                         </div>
                     </div>
@@ -371,13 +362,13 @@
                         </button>
                         <div x-show="activeAccordion === 'features'" x-collapse>
                             <div class="grid grid-cols-1 gap-1 pb-4">
-                                <x-nav-item-mobile href="{{ route('features.habit') }}" icon="🌱" title="Habit Tracker" />
-                                <x-nav-item-mobile href="{{ route('features.finance') }}" icon="💰" title="Finance Tracker" />
-                                <x-nav-item-mobile href="{{ route('features.planner') }}" icon="🎯" title="Daily Planner" />
-                                <x-nav-item-mobile href="{{ route('features.journal') }}" icon="📔" title="Mindful Journal" />
-                                <x-nav-item-mobile href="{{ route('features.calendar') }}" icon="📅" title="Calendar" />
-                                <x-nav-item-mobile href="{{ route('features.goal') }}" icon="🎯" title="Goal Tracker" />
-                                <x-nav-item-mobile href="{{ route('features.job') }}" icon="💼" title="Job Tracker" />
+                                <x-nav-item-mobile href="{{ route('features.habit') }}" icon="🌱" title="{{ __('nav_habit_title') }}" />
+                                <x-nav-item-mobile href="{{ route('features.finance') }}" icon="💰" title="{{ __('nav_finance_title') }}" />
+                                <x-nav-item-mobile href="{{ route('features.planner') }}" icon="🎯" title="{{ __('nav_planner_title') }}" />
+                                <x-nav-item-mobile href="{{ route('features.journal') }}" icon="📔" title="{{ __('nav_journal_title') }}" />
+                                <x-nav-item-mobile href="{{ route('features.calendar') }}" icon="📅" title="{{ __('nav_calendar_title') }}" />
+                                <x-nav-item-mobile href="{{ route('features.goal') }}" icon="🎯" title="{{ __('nav_goal_title') }}" />
+                                <x-nav-item-mobile href="{{ route('features.job') }}" icon="💼" title="{{ __('nav_job_title') }}" />
                             </div>
                         </div>
                     </div>
@@ -389,21 +380,30 @@
                             <svg :class="activeAccordion === 'solutions' ? 'rotate-180' : ''" class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div x-show="activeAccordion === 'solutions'" x-collapse>
-                            <div class="pb-6 space-y-6">
+                             <div class="pb-6 space-y-6">
                                 <div>
                                     <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_by_role') }}</p>
                                     <div class="grid grid-cols-1 gap-1">
-                                        <x-nav-item-mobile href="{{ route('solutions.student') }}" icon="🎓" title="For Students" />
-                                        <x-nav-item-mobile href="{{ route('solutions.freelancer') }}" icon="💻" title="For Freelancers" />
-                                        <x-nav-item-mobile href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal Growth" />
+                                        <x-nav-item-mobile href="{{ route('solutions.student') }}" icon="🎓" title="{{ __('nav_student_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('solutions.freelancer') }}" icon="💻" title="{{ __('nav_freelancer_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="{{ __('nav_personalgrowth_title') }}" />
                                     </div>
                                 </div>
                                 <div>
                                     <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_by_use_case') }}</p>
                                     <div class="grid grid-cols-1 gap-1">
-                                        <x-nav-item-mobile href="{{ route('solutions.finance') }}" icon="💰" title="Financial Mastery" />
-                                        <x-nav-item-mobile href="{{ route('solutions.career') }}" icon="💼" title="Career Accelerator" />
-                                        <x-nav-item-mobile href="{{ route('solutions.mental') }}" icon="🧘" title="Mental Clarity" />
+                                        <x-nav-item-mobile href="{{ route('solutions.finance') }}" icon="💰" title="{{ __('nav_finance_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('solutions.career') }}" icon="💼" title="{{ __('nav_career_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('solutions.mental') }}" icon="🧘" title="{{ __('nav_mental_title') }}" />
+                                    </div>
+                                </div>
+                                {{-- ADDING MISSING BY METHODOLOGY SECTION IN MOBILE --}}
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-3">{{ __('nav_by_methodology') }}</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <x-nav-item-mobile href="{{ route('solutions.atomic') }}" icon="🌱" title="{{ __('nav_atomic_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('solutions.deepwork') }}" icon="⚡" title="{{ __('nav_deepwork_title') }}" />
+                                        <x-nav-item-mobile href="{{ route('solutions.secondbrain') }}" icon="🧠" title="{{ __('nav_secondbrain_title') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -418,9 +418,9 @@
                         </button>
                         <div x-show="activeAccordion === 'resources'" x-collapse>
                             <div class="grid grid-cols-1 gap-1 pb-4 text-left">
-                                <x-nav-item-mobile href="{{ route('resources.guide') }}" icon="📖" title="User Guide" />
-                                <x-nav-item-mobile href="{{ route('resources.blog') }}" icon="✍️" title="Blog" />
-                                <x-nav-item-mobile href="{{ route('resources.stories') }}" icon="✨" title="User Stories" />
+                                <x-nav-item-mobile href="{{ route('resources.guide') }}" icon="📖" title="{{ __('nav_guide_title') }}" />
+                                <x-nav-item-mobile href="{{ route('resources.blog') }}" icon="✍️" title="{{ __('nav_blog_title') }}" />
+                                <x-nav-item-mobile href="{{ route('resources.stories') }}" icon="✨" title="{{ __('nav_stories_title') }}" />
                             </div>
                         </div>
                     </div>
@@ -439,11 +439,11 @@
                     
                    @guest
     <div class="grid grid-cols-1 gap-3">
-        <a hx-boost="false" href="{{ route('login') }}" class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">Log in</a>
-        <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">Get Started free</a>
+        <a hx-boost="false" href="{{ route('login') }}" class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">{{ __('nav_login') }}</a>
+        <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">{{ __('nav_register') }}</a>
     </div>
 @else
-    <a hx-boost="false" href="{{ route('dashboard') }}" class="block w-full py-4 text-center font-black text-white bg-slate-900 rounded-2xl">Go to Dashboard</a>
+    <a hx-boost="false" href="{{ route('dashboard') }}" class="block w-full py-4 text-center font-black text-white bg-slate-900 rounded-2xl">{{ __('nav_dashboard') }}</a>
 @endguest
                 </div>
             </div>
@@ -467,39 +467,39 @@
                         </p>
                     </div>
 
-                    <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h3>
+                     <div>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">{{ __('footer_product_title') }}</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
-                            <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
-                            <li><a href="{{ route('features.finance') }}" class="hover:text-indigo-600 transition">Finance Tracker</a></li>
-                            <li><a href="{{ route('features.planner') }}" class="hover:text-indigo-600 transition">Daily Planner</a></li>
-                            <li><a href="{{ route('features.goal') }}" class="hover:text-indigo-600 transition">Goal Tracker</a></li>
-                            <li><a href="{{ route('features.job') }}" class="hover:text-indigo-600 transition">Job Tracker</a></li>
-                            <li><a href="{{ route('pricing') }}" class="hover:text-indigo-600 transition">Pricing</a></li>
+                            <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">{{ __('nav_habit_title') }}</a></li>
+                            <li><a href="{{ route('features.finance') }}" class="hover:text-indigo-600 transition">{{ __('nav_finance_title') }}</a></li>
+                            <li><a href="{{ route('features.planner') }}" class="hover:text-indigo-600 transition">{{ __('nav_planner_title') }}</a></li>
+                            <li><a href="{{ route('features.goal') }}" class="hover:text-indigo-600 transition">{{ __('nav_goal_title') }}</a></li>
+                            <li><a href="{{ route('features.job') }}" class="hover:text-indigo-600 transition">{{ __('nav_job_title') }}</a></li>
+                            <li><a href="{{ route('pricing') }}" class="hover:text-indigo-600 transition">{{ __('nav_pricing') }}</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h3>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">{{ __('nav_compare') }}</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
-                            <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">vs Paper Planner</a></li>
-                            <li><a href="{{ route('compare.sheets') }}" class="hover:text-indigo-600 transition">vs Spreadsheets</a></li>
-                            <li><a href="{{ route('compare.management-tools') }}" class="hover:text-indigo-600 transition">vs Task Tools</a></li>
-                            <li><a href="{{ route('compare.habit-apps') }}" class="hover:text-indigo-600 transition">vs Habit Apps</a></li>
+                            <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">{{ __('compare_paper') }}</a></li>
+                            <li><a href="{{ route('compare.sheets') }}" class="hover:text-indigo-600 transition">{{ __('compare_sheets') }}</a></li>
+                            <li><a href="{{ route('compare.management-tools') }}" class="hover:text-indigo-600 transition">{{ __('compare_tools') }}</a></li>
+                            <li><a href="{{ route('compare.habit-apps') }}" class="hover:text-indigo-600 transition">{{ __('compare_apps') }}</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h3>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">{{ __('footer_company_title') }}</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
-                            <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">About Us</a></li>
-                            <li><a href="{{ route('company.privacy') }}" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
-                            <li><a href="{{ route('company.terms') }}" class="hover:text-indigo-600 transition">Terms of Service</a></li>
+                            <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">{{ __('footer_about') }}</a></li>
+                            <li><a href="{{ route('company.privacy') }}" class="hover:text-indigo-600 transition">{{ __('footer_privacy') }}</a></li>
+                            <li><a href="{{ route('company.terms') }}" class="hover:text-indigo-600 transition">{{ __('footer_tos') }}</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</h3>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">{{ __('footer_connect_title') }}</h3>
                         <div class="flex gap-4">
                             <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">𝕏</a>
                             <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">📸</a>
@@ -509,8 +509,8 @@
 
                 {{-- 🔥 FIX CONTRAST: Ganti slate-400 jadi slate-600 --}}
                 <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-600">
-                    <p>&copy; {{ date('Y') }} OneForMind. All rights reserved.</p>
-                    <p>Made with ✨ by Dopamind7 Team</p>
+                    <p>&copy; {{ date('Y') }} OneForMind. {{ __('footer_rights') }}</p>
+                    <p>{{ __('footer_made_with') }}</p>
                 </div>
             </div>
         </footer>

@@ -320,7 +320,7 @@
 
                 <div class="w-full md:w-1/2 text-center md:text-left relative z-10">
                     <span class="inline-block bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">
-                        Coming Soon
+                        {{ __('eco_coming_soon') }}
                     </span>
                     <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
                         {{ __('waitlist_title') }}

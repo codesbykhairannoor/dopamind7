@@ -15,31 +15,27 @@ class HandleLocalization
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // 1. Cek Session
+        $locale = config('app.locale');
+
+        // 1. Cek Session (Tertinggi)
         if (Session::has('locale')) {
-            App::setLocale(Session::get('locale'));
-        } 
-        // 2. Cek Cookie
+            $locale = Session::get('locale');
+        }
+        // 2. Cek Cookie (Persistence antar sesi browser)
         elseif ($cookieLocale = $request->cookie('selected_locale')) {
             if (in_array($cookieLocale, ['id', 'en'])) {
-                App::setLocale($cookieLocale);
-                Session::put('locale', $cookieLocale);
+                $locale = $cookieLocale;
+                Session::put('locale', $locale);
             }
-        } 
-        // 3. Fallback
-        else {
-            App::setLocale(config('app.locale'));
         }
+
+        App::setLocale($locale);
 
         $response = $next($request);
 
-        /**
-         * FIX: Cek apakah response mendukung method cookie.
-         * Jika ada error di Controller, $response mungkin bukan objek 
-         * yang bisa ditempeli cookie, jadi kita harus aman di sini.
-         */
-        if (Session::has('locale') && method_exists($response, 'cookie')) {
-            return $response->cookie('selected_locale', Session::get('locale'), 60 * 24 * 30);
+        // Pastikan cookie selalu sinkron dengan locale yang aktif
+        if (method_exists($response, 'cookie')) {
+            $response->cookie('selected_locale', $locale, 60 * 24 * 30);
         }
 
         return $response;

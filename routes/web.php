@@ -21,23 +21,29 @@ use Illuminate\Http\Request;
 // --- UTILITY: SWITCH LANGUAGE ---
 Route::get('/lang/{locale}', function (Request $request, $locale) {
     if (in_array($locale, ['id', 'en'])) {
+        // 1. Simpan di Session
         Session::put('locale', $locale);
-        Session::save(); // Mastiin session kesimpen detik ini juga
+        Session::save();
 
-        // Simpan di cookie buat backup halaman Blade murni
-        cookie()->queue('selected_locale', $locale, 60 * 24 * 30);
+        // 2. Set Locale Aplikasi Saat Ini
         App::setLocale($locale);
+
+        // 3. Siapkan Cookie (30 Hari)
+        $cookie = cookie('selected_locale', $locale, 60 * 24 * 30);
+
+        $referer = $request->headers->get('referer') ?? url('/');
+
+        // JURUS PAMUNGKAS: Kalau dari Inertia, harus pake Inertia::location 
+        // biar state SPA bener-bener ke-reset.
+        if ($request->hasHeader('X-Inertia')) {
+            return Inertia::location($referer);
+        }
+
+        // Redirect dengan melampirkan cookie agar Blade langsung dapet
+        return redirect()->to($referer)->withCookie($cookie);
     }
 
-    $referer = $request->headers->get('referer') ?? url('/');
-
-    // JURUS PAMUNGKAS: Kalau dari Inertia, harus pake Inertia::location 
-    // biar state SPA bener-bener ke-reset.
-    if ($request->hasHeader('X-Inertia')) {
-        return Inertia::location($referer);
-    }
-
-    return redirect()->to($referer);
+    return redirect()->back();
 })->middleware('web')->name('lang.switch');
 
 
