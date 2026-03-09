@@ -46,7 +46,7 @@
                 {{-- Column 1: To Do --}}
                 <div class="w-1/3 min-w-[300px] bg-gray-200/50 rounded-2xl p-4 flex flex-col gap-4">
                     <div class="flex justify-between items-center font-bold text-gray-700 px-2">
-                        <span>To Do</span>
+                        <span>{{ __('planner_mockup_col_1') }}</span>
                         <span class="bg-gray-300 px-2 py-0.5 rounded-md text-xs">1</span>
                     </div>
                     {{-- Task 3 (Pending) --}}
@@ -62,7 +62,7 @@
                 {{-- Column 2: In Progress --}}
                 <div class="w-1/3 min-w-[300px] bg-indigo-100/50 rounded-2xl p-4 flex flex-col gap-4 border border-indigo-100">
                     <div class="flex justify-between items-center font-bold text-indigo-900 px-2">
-                        <span class="flex items-center gap-2">🔥 In Progress</span>
+                        <span class="flex items-center gap-2">🔥 {{ __('planner_mockup_col_2') }}</span>
                         <span class="bg-indigo-200 px-2 py-0.5 rounded-md text-xs text-indigo-800">1</span>
                     </div>
                     {{-- Task 2 (Active) --}}
@@ -82,7 +82,7 @@
                 {{-- Column 3: Done --}}
                 <div class="w-1/3 min-w-[300px] bg-green-50/80 rounded-2xl p-4 flex flex-col gap-4 opacity-70">
                     <div class="flex justify-between items-center font-bold text-green-800 px-2">
-                        <span>Done</span>
+                        <span>{{ __('planner_mockup_col_3') }}</span>
                         <span class="bg-green-200 px-2 py-0.5 rounded-md text-xs">1</span>
                     </div>
                     {{-- Task 1 (Done) --}}
@@ -99,134 +99,79 @@
         </div>
     </header>
 
-    {{-- SECTION 2: PROBLEM AWARENESS (DARK MODE STRIP) --}}
-    <section class="py-24 bg-slate-900 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[150px] opacity-20 -mr-40 -mt-40"></div>
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <h2 class="text-3xl md:text-4xl font-black mb-16 text-center text-white animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
-                {{ __('planner_prob_title_1') }} <span class="text-slate-600 line-through">{{ __('planner_prob_title_strike') }}</span> <span class="text-indigo-400">{{ __('planner_prob_title_2') }}</span>
-            </h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-slate-800/50 backdrop-blur p-8 rounded-[2rem] border border-slate-700 hover:border-indigo-500 transition duration-300">
-                    <div class="text-4xl mb-6 bg-slate-700 w-16 h-16 rounded-2xl flex items-center justify-center">🤯</div>
-                    <h3 class="text-xl font-bold mb-3 text-white">{{ __('planner_prob_1_title') }}</h3>
-                    <p class="text-slate-400 leading-relaxed">{{ __('planner_prob_1_desc') }}</p>
-                </div>
-                <div class="bg-slate-800/50 backdrop-blur p-8 rounded-[2rem] border border-slate-700 hover:border-indigo-500 transition duration-300">
-                    <div class="text-4xl mb-6 bg-slate-700 w-16 h-16 rounded-2xl flex items-center justify-center">⏳</div>
-                    <h3 class="text-xl font-bold mb-3 text-white">{{ __('planner_prob_2_title') }}</h3>
-                    <p class="text-slate-400 leading-relaxed">{{ __('planner_prob_2_desc') }}</p>
-                </div>
-                <div class="bg-slate-800/50 backdrop-blur p-8 rounded-[2rem] border border-slate-700 hover:border-indigo-500 transition duration-300">
-                    <div class="text-4xl mb-6 bg-slate-700 w-16 h-16 rounded-2xl flex items-center justify-center">🤷‍♂️</div>
-                    <h3 class="text-xl font-bold mb-3 text-white">{{ __('planner_prob_3_title') }}</h3>
-                    <p class="text-slate-400 leading-relaxed">{{ __('planner_prob_3_desc') }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- SECTION 3 & 4: FEATURES (STICKY SCROLL LAYOUT) --}}
-    <section id="how-it-works" class="py-32 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-12 gap-16 items-start">
-                
-                {{-- Sticky Left Column --}}
-                <div class="lg:col-span-5 lg:sticky lg:top-32 animate-in fade-in slide-in-from-left-8 duration-700 fill-mode-both">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs mb-6 uppercase tracking-wider">
-                        Workspace Superpower
-                    </div>
-                    <h2 class="text-4xl md:text-6xl font-black mb-6 text-gray-900 leading-tight">{{ __('planner_mechanism_1_title') }}</h2>
-                    <p class="text-gray-500 text-lg leading-relaxed mb-8">
-                        {{ __('planner_mechanism_1_desc') }}
-                    </p>
-                </div>
-
-                {{-- Scrolling Right Column --}}
-                <div class="lg:col-span-7 space-y-12">
-                    
-                    {{-- Feature 1 Card --}}
-                    <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-xl shadow-indigo-100/40 border border-gray-100 group">
-                        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center text-3xl mb-8 transform group-hover:scale-110 transition duration-300">🗂️</div>
-                        <h3 class="text-3xl font-black mb-4 text-gray-900">{{ __('planner_feature_1_title') }}</h3>
-                        <p class="text-gray-500 text-lg leading-relaxed mb-8">
-                            {{ __('planner_feature_1_desc') }}
-                        </p>
-                        <div class="space-y-4 font-bold text-gray-700 bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                            <div class="flex items-center gap-4"><span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm">1</span> {{ __('planner_feature_1_point_1') }}</div>
-                            <div class="w-px h-6 bg-gray-300 ml-3"></div>
-                            <div class="flex items-center gap-4"><span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm">2</span> {{ __('planner_feature_1_point_2') }}</div>
-                        </div>
-                    </div>
-
-                    {{-- Feature 2 Card --}}
-                    <div class="bg-white rounded-[3rem] p-8 md:p-12 shadow-xl shadow-amber-100/40 border border-gray-100 group">
-                        <div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-3xl flex items-center justify-center text-3xl mb-8 transform group-hover:rotate-12 transition duration-300">🎯</div>
-                        <h3 class="text-3xl font-black mb-4 text-gray-900">{{ __('planner_feature_2_title') }}</h3>
-                        <p class="text-gray-500 text-lg leading-relaxed mb-8">
-                            {{ __('planner_feature_2_desc') }}
-                        </p>
-                        <div class="space-y-4 font-bold text-gray-700 bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
-                            <div class="flex items-center gap-4"><span class="w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-sm">✓</span> {{ __('planner_feature_2_point_1') }}</div>
-                            <div class="flex items-center gap-4"><span class="w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-sm">✓</span> {{ __('planner_feature_2_point_2') }}</div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- SECTION 5: BENTO BOX GRID (2x2 SYMMETRICAL) --}}
-    <section class="py-32 bg-white">
+    {{-- NEW SECTION 2: THE DAILY TIMELINE --}}
+    <section class="py-24 bg-white relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">{{ __('planner_bento_title') }}</h2>
-                <p class="text-gray-500 text-xl max-w-2xl mx-auto">{{ __('planner_bento_desc') }}</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                {{-- Bento 1 --}}
-                <div class="bg-indigo-50 rounded-[2.5rem] p-10 hover:-translate-y-2 transition duration-500 group border border-indigo-100">
-                    <div class="flex gap-6 items-start">
-                        <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-3xl shrink-0 shadow-sm group-hover:scale-110 transition">🔁</div>
-                        <div>
-                            <h3 class="text-2xl font-black mb-3 text-indigo-950">{{ __('planner_bento_1_title') }}</h3>
-                            <p class="text-indigo-800/70 leading-relaxed">{{ __('planner_bento_1_desc') }}</p>
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-6">
+                        {{ __('planner_timeline_badge') }}
+                    </div>
+                    <h2 class="text-5xl font-black text-gray-900 mb-8 leading-tight">
+                        {{ __('planner_timeline_title') }}
+                    </h2>
+                    <p class="text-gray-600 text-xl mb-10 leading-relaxed max-w-xl">
+                        {{ __('planner_timeline_desc') }}
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-indigo-100/50 transition duration-500">
+                            <span class="text-xs font-black text-indigo-600 uppercase mb-2 block tracking-widest">{{ __('planner_timeline_stat_1_label') }}</span>
+                            <span class="text-3xl font-black text-slate-900">4 Hours</span>
+                            <p class="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-tighter">{{ __('planner_timeline_stat_footer') }}</p>
+                        </div>
+                        <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-purple-100/50 transition duration-500">
+                            <span class="text-xs font-black text-purple-600 uppercase mb-2 block tracking-widest">{{ __('planner_timeline_stat_2_label') }}</span>
+                            <span class="text-3xl font-black text-slate-900">2 Hours</span>
+                            <p class="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-tighter">{{ __('planner_timeline_stat_footer') }}</p>
                         </div>
                     </div>
                 </div>
-                
-                {{-- Bento 2 --}}
-                <div class="bg-slate-900 text-white rounded-[2.5rem] p-10 shadow-2xl hover:-translate-y-2 transition duration-500 group relative overflow-hidden">
-                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-indigo-600 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition"></div>
-                    <div class="flex gap-6 items-start relative z-10">
-                        <div class="w-16 h-16 bg-slate-800 border border-slate-700 rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:rotate-12 transition">🍅</div>
-                        <div>
-                            <h3 class="text-2xl font-black mb-3">{{ __('planner_bento_2_title') }}</h3>
-                            <p class="text-slate-400 leading-relaxed">{{ __('planner_bento_2_desc') }}</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="flex-1 w-full animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
+                    <div class="bg-gray-50 rounded-[4rem] p-10 md:p-16 border border-gray-100 shadow-inner relative overflow-hidden group">
+                        {{-- Schedule Visual --}}
+                        <div class="space-y-8 relative">
+                            {{-- Vertical Line --}}
+                            <div class="absolute left-[13px] top-4 bottom-4 w-1 bg-gray-200 rounded-full group-hover:bg-indigo-100 transition duration-700"></div>
 
-                {{-- Bento 3 --}}
-                <div class="bg-white rounded-[2.5rem] p-10 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-500 group">
-                    <div class="flex gap-6 items-start">
-                        <div class="w-16 h-16 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition">🔗</div>
-                        <div>
-                            <h3 class="text-2xl font-black mb-3 text-gray-900">{{ __('planner_bento_3_title') }}</h3>
-                            <p class="text-gray-500 leading-relaxed">{{ __('planner_bento_3_desc') }}</p>
-                        </div>
-                    </div>
-                </div>
+                            {{-- Time Block 1 --}}
+                            <div class="flex gap-8 items-start relative z-10 transition duration-500 transform hover:-translate-y-1">
+                                <div class="w-8 h-8 rounded-full bg-indigo-600 border-4 border-white shadow-[0_0_15px_rgba(79,70,229,0.3)] shrink-0 mt-2 animate-pulse"></div>
+                                <div class="flex-1 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 group-hover:shadow-xl transition duration-500 relative overflow-hidden">
+                                     <div class="absolute right-0 top-0 w-1.5 h-full bg-indigo-600"></div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="text-[11px] font-black text-indigo-600 uppercase tracking-[0.2em]">08:00 - 10:00</span>
+                                        <span class="text-[10px] font-black bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full uppercase">{{ __('planner_timeline_card_1_badge') }}</span>
+                                    </div>
+                                    <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('planner_timeline_card_1_title') }}</h4>
+                                    <p class="text-sm text-gray-500 leading-relaxed">{{ __('planner_timeline_card_1_desc') }}</p>
+                                </div>
+                            </div>
 
-                {{-- Bento 4 --}}
-                <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-[2.5rem] p-10 hover:-translate-y-2 transition duration-500 group border border-indigo-200">
-                    <div class="flex gap-6 items-start">
-                        <div class="w-16 h-16 bg-white/50 backdrop-blur rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:rotate-[-12deg] transition">🖱️</div>
-                        <div>
-                            <h3 class="text-2xl font-black mb-3 text-indigo-950">{{ __('planner_bento_4_title') }}</h3>
-                            <p class="text-indigo-800/80 leading-relaxed">{{ __('planner_bento_4_desc') }}</p>
+                            {{-- Time Block 2 --}}
+                            <div class="flex gap-8 items-start relative z-10 opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition duration-500 transform hover:-translate-y-1">
+                                <div class="w-8 h-8 rounded-full bg-gray-300 border-4 border-white shadow-sm shrink-0 mt-2"></div>
+                                <div class="flex-1 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">10:30 - 12:00</span>
+                                    </div>
+                                    <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('planner_timeline_card_2_title') }}</h4>
+                                    <p class="text-sm text-gray-500 leading-relaxed">{{ __('planner_timeline_card_2_desc') }}</p>
+                                </div>
+                            </div>
+
+                             {{-- Time Block 3 --}}
+                             <div class="flex gap-8 items-start relative z-10 transition duration-500 transform hover:-translate-y-1">
+                                <div class="w-8 h-8 rounded-full bg-purple-600 border-4 border-white shadow-[0_0_15px_rgba(147,51,234,0.3)] shrink-0 mt-2"></div>
+                                <div class="flex-1 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 relative overflow-hidden">
+                                    <div class="absolute right-0 top-0 w-1.5 h-full bg-purple-500"></div>
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="text-[11px] font-black text-purple-600 uppercase tracking-[0.2em]">13:00 - 14:00</span>
+                                        <span class="text-[10px] font-black bg-purple-50 text-purple-700 px-3 py-1 rounded-full uppercase">{{ __('planner_timeline_card_3_badge') }}</span>
+                                    </div>
+                                    <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('planner_timeline_card_3_title') }}</h4>
+                                    <p class="text-sm text-gray-500 leading-relaxed">{{ __('planner_timeline_card_3_desc') }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -234,18 +179,57 @@
         </div>
     </section>
 
-    {{-- SECTION 6: QUOTE OVERLAPPING CARD --}}
-    <section class="py-24 bg-gray-50 relative">
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <div class="bg-white rounded-[3rem] p-12 md:p-16 shadow-2xl shadow-indigo-100/50 text-center relative overflow-hidden border border-gray-100">
-                <div class="absolute -left-10 -top-10 text-9xl text-indigo-50 font-serif leading-none">"</div>
-                <div class="relative z-10">
-                    <h2 class="text-2xl md:text-4xl font-black text-gray-900 leading-tight mb-8">
-                        {{ __('planner_quote_text') }}
-                    </h2>
-                    <div class="w-16 h-1 bg-indigo-600 mx-auto mb-6 rounded-full"></div>
-                    <p class="text-indigo-600 font-bold tracking-widest uppercase text-sm">{{ __('planner_quote_author') }}</p>
+    {{-- NEW SECTION 3: MORNING TO NIGHT FLOW --}}
+    <section class="py-32 bg-slate-950 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.05]"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-24 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                <span class="text-indigo-400 font-bold uppercase tracking-[0.4em] text-xs mb-6 block">{{ __('planner_flow_badge') }}</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-8">{{ __('planner_flow_title') }}</h2>
+                <p class="text-indigo-100 text-xl opacity-80 leading-relaxed">{{ __('planner_flow_desc') }}</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-start">
+                {{-- Morning --}}
+                <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 hover:bg-white/10 transition duration-500 group relative overflow-hidden">
+                    <div class="absolute -top-10 -left-10 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
+                    <div class="w-20 h-20 bg-amber-500/10 text-amber-400 rounded-[2rem] flex items-center justify-center text-4xl mb-10 group-hover:rotate-6 transition">☀️</div>
+                    <h3 class="text-3xl font-black mb-6">{{ __('planner_flow_col_1_title') }}</h3>
+                    <p class="text-white/60 mb-10 text-lg leading-relaxed">{{ __('planner_flow_col_1_desc') }}</p>
+                    <div class="bg-emerald-500/20 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-emerald-500/30 text-emerald-300 inline-block animate-pulse">{{ __('planner_flow_col_1_status') }}</div>
                 </div>
+
+                {{-- Afternoon --}}
+                <div class="bg-indigo-600/10 backdrop-blur-2xl border-2 border-indigo-500/30 rounded-[3rem] p-12 hover:bg-indigo-600/20 transition duration-500 group relative md:-mt-8 shadow-2xl">
+                    <div class="absolute inset-0 bg-indigo-500/5 -z-10 animate-pulse"></div>
+                    <div class="w-20 h-20 bg-indigo-500/20 text-indigo-400 rounded-[2rem] flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition">⚡</div>
+                    <h3 class="text-3xl font-black mb-6">{{ __('planner_flow_col_2_title') }}</h3>
+                    <p class="text-indigo-100 opacity-80 mb-10 text-lg leading-relaxed">{{ __('planner_flow_col_2_desc') }}</p>
+                    <div class="bg-indigo-400/30 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-indigo-400/40 text-indigo-200 inline-block">{{ __('planner_flow_col_2_status') }}</div>
+                </div>
+
+                {{-- Night --}}
+                <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 hover:bg-white/10 transition duration-500 group relative overflow-hidden">
+                    <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
+                    <div class="w-20 h-20 bg-purple-500/10 text-purple-400 rounded-[2rem] flex items-center justify-center text-4xl mb-10 group-hover:-rotate-6 transition">🌙</div>
+                    <h3 class="text-3xl font-black mb-6">{{ __('planner_flow_col_3_title') }}</h3>
+                    <p class="text-white/60 mb-10 text-lg leading-relaxed">{{ __('planner_flow_col_3_desc') }}</p>
+                    <div class="bg-purple-500/20 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-purple-500/30 text-purple-300 inline-block">{{ __('planner_flow_col_3_status') }}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
+            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+                {{ __('planner_quote_text') }}
+            </h2>
+            <div class="flex flex-col items-center">
+                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
+                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('planner_quote_author') }}</p>
             </div>
         </div>
     </section>

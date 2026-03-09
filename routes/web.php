@@ -95,7 +95,7 @@ Route::get('/sitemap.xml', function () {
 
     // 2. FEATURES (Prefix: /features/...)
     // Ini halaman "jualan" utama lu
-    $features = ['habit', 'finance', 'planner', 'journal', 'calendar'];
+    $features = ['habit', 'finance', 'planner', 'journal', 'calendar', 'goal', 'job'];
     foreach ($features as $feature) {
         $pages[] = [
             'url' => url("/features/{$feature}"), // Fix: Tambah prefix /features/
@@ -181,6 +181,14 @@ Route::get('/features/calendar', function () {
     return view('features.calendar');
 })->name('features.calendar');
 
+Route::get('/features/goal', function () {
+    return view('features.goal');
+})->name('features.goal');
+
+Route::get('/features/job', function () {
+    return view('features.job');
+})->name('features.job');
+
 
 // ==========================================
 // SOLUTIONS
@@ -198,6 +206,18 @@ Route::get('/solutions/freelancer', function () {
 Route::get('/solutions/personalgrowth', function () {
     return view('solutions.personalgrowth');
 })->name('solutions.personalgrowth');
+
+Route::get('/solutions/finance-mastery', function () {
+    return view('solutions.finance-mastery');
+})->name('solutions.finance');
+
+Route::get('/solutions/career-accelerator', function () {
+    return view('solutions.career-accelerator');
+})->name('solutions.career');
+
+Route::get('/solutions/mental-clarity', function () {
+    return view('solutions.mental-clarity');
+})->name('solutions.mental');
 
 
 // ==========================================

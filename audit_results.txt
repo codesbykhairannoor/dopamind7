@@ -1,0 +1,58 @@
+Total used keys: 350
+
+--- MISSING IN EN.JSON ---
+  finance_flow_desc (NOT FOUND ANYWHERE): 
+  finance_flow_title (NOT FOUND ANYWHERE): 
+  finance_wallet_desc (NOT FOUND ANYWHERE): 
+  finance_wallet_title (NOT FOUND ANYWHERE): 
+
+--- MISSING IN ID.JSON ---
+  finance_flow_desc (NOT FOUND ANYWHERE): 
+  finance_flow_title (NOT FOUND ANYWHERE): 
+  finance_wallet_desc (NOT FOUND ANYWHERE): 
+  finance_wallet_title (NOT FOUND ANYWHERE): 
+
+--- LIKELY UNTRANSLATED IN ID.JSON (STILL ENGLISH) ---
+  calendar_hero_badge: Smart Calendar
+  calendar_layered_card_event_1_time: 10:00 - 12:00
+  calendar_layered_card_event_2_time: 14:00 - 15:30
+  calendar_meta_og_title: Smart Calendar - OneForMind
+  calendar_meta_title: Smart Calendar - OneForMind
+  calendar_mockup_event_1: Weekly Team Sync
+  calendar_mockup_location_1: Google Meet
+  calendar_mockup_location_2: Zoom Video
+  calendar_pulse_item_1_timer: 04:12
+  finance_hero_badge: Finance Manager
+  finance_meta_og_title: Finance Manager - OneForMind
+  finance_meta_title: Finance Manager - OneForMind
+  finance_quote_author: — Warren Buffett
+  finance_wallet_1_desc: BCA - **** 8829
+  finance_wallet_2_desc: Visa Gold
+  goal_hero_badge: Goal Tracker
+  goal_level_moonshot: Level 10: Moonshot
+  goal_meta_og_title: Goal Tracker - OneForMind
+  goal_meta_title: Goal Tracker - OneForMind
+  goal_milestone_number: Milestone #4
+  goal_mockup_milestone_label: Milestone #3
+  goal_moonshot_label: The Moonshot
+  habit_hero_desc: Anda tidak naik ke tingkat tujuan Anda, Anda jatuh ke tingkat sistem Anda. Habit Tracker kami mengubah disiplin menjadi permainan yang benar-benar ingin Anda menangkan.
+  habit_level_1_title: Level 01
+  habit_level_2_title: Level 02
+  habit_meta_desc: Lacak kebiasaan harianmu, bangun rutinitas solid, dan jadilah versi terbaik dirimu dengan fitur Habit Tracker dari OneForMind.
+  habit_meta_og_title: Habit Tracker - OneForMind
+  habit_meta_title: Habit Tracker - OneForMind
+  job_hero_badge: Job Tracker
+  job_matrix_cell_1: Fortune 500
+  job_matrix_cell_highlight: Optimal
+  job_meta_og_title: Job Tracker - OneForMind
+  job_mockup_task_1: Google - Senior Dev
+  job_mockup_task_2: Stripe - Product Designer
+  job_mockup_task_3: Airbnb - Fullstack Engineer
+  job_quote_author: — Chris Grosser
+  journal_meta_og_title: Digital Journal - OneForMind
+  journal_meta_title: Digital Journal - OneForMind
+  planner_hero_badge: Daily Planner
+  planner_meta_og_title: Daily Planner - OneForMind
+  planner_meta_title: Daily Planner - OneForMind
+  planner_quote_author: — Stephen R. Covey
+  planner_timeline_stat_1_label: Deep Work

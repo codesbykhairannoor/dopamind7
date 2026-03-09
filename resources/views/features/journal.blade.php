@@ -90,174 +90,107 @@
         </div>
     </header>
 
-    {{-- SECTION 2: PROBLEM AWARENESS (OVERLAPPING MESSY CARDS) --}}
-    <section class="py-32 bg-gray-50 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-            
-            <div class="animate-in slide-in-from-left-12 fade-in duration-700 fill-mode-both">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900 leading-tight">
-                    {{ __('journal_prob_title_1') }} <br>
-                    <span class="text-gray-300 line-through decoration-indigo-500 decoration-4">{{ __('journal_prob_title_strike') }}</span> <br>
-                    <span class="text-indigo-600">{{ __('journal_prob_title_2') }}</span>
-                </h2>
-                <p class="text-xl text-gray-500 leading-relaxed mb-8 max-w-md">
-                    {{ __('journal_prob_main_desc') }}
-                </p>
+    {{-- NEW SECTION 2: EDITORIAL REFLECTION (SERIF & CLEAN) --}}
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] mb-10">
+                {{ __('journal_editorial_badge') }}
             </div>
-
-            {{-- Overlapping Cards Illusion --}}
-            <div class="relative h-[450px] w-full animate-in slide-in-from-right-12 fade-in duration-700 delay-200 fill-mode-both">
-                {{-- Card 1 (Back) --}}
-                <div class="absolute top-0 right-0 w-3/4 bg-white p-6 rounded-3xl shadow-lg border border-gray-100 transform rotate-6 opacity-60 transition hover:rotate-0 hover:z-30 hover:opacity-100 duration-500">
-                    <div class="text-3xl mb-3">🤯</div>
-                    <h3 class="font-bold text-gray-900 mb-2">{{ __('journal_prob_1_title') }}</h3>
-                    <p class="text-sm text-gray-500">{{ __('journal_prob_1_desc') }}</p>
-                </div>
-                
-                {{-- Card 2 (Middle) --}}
-                <div class="absolute top-16 left-0 w-3/4 bg-indigo-50 p-6 rounded-3xl shadow-xl border border-indigo-100 transform -rotate-3 z-10 transition hover:-rotate-0 hover:z-30 duration-500">
-                    <div class="text-3xl mb-3">🌪️</div>
-                    <h3 class="font-bold text-indigo-900 mb-2">{{ __('journal_prob_2_title') }}</h3>
-                    <p class="text-sm text-indigo-700/70">{{ __('journal_prob_2_desc') }}</p>
-                </div>
-
-                {{-- Card 3 (Front) --}}
-                <div class="absolute bottom-10 right-10 w-3/4 bg-slate-900 text-white p-6 rounded-3xl shadow-2xl border border-slate-700 transform rotate-2 z-20 hover:scale-105 transition duration-500">
-                    <div class="text-3xl mb-3">📉</div>
-                    <h3 class="font-bold text-white mb-2">{{ __('journal_prob_3_title') }}</h3>
-                    <p class="text-sm text-slate-400">{{ __('journal_prob_3_desc') }}</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    {{-- SECTION 3: FOCUS MODE SHOWCASE (DARK ZEN MODE) --}}
-    <section id="how-it-works" class="py-32 bg-slate-950 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
-        
-        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 text-indigo-300 font-bold text-xs mb-8 uppercase tracking-wider border border-slate-700">
-                ✨ Zen Mode
-            </div>
-            <h2 class="text-4xl md:text-5xl font-black mb-6 text-white">{{ __('journal_feature_1_title') }}</h2>
-            <p class="text-slate-400 text-lg md:text-xl leading-relaxed mb-16 max-w-2xl mx-auto">
-                {{ __('journal_feature_1_desc') }}
+            <h2 class="text-5xl md:text-7xl font-serif italic text-gray-900 mb-10 leading-[1.1] tracking-tight">
+                {{ __('journal_editorial_title') }}
+            </h2>
+            <p class="text-gray-500 text-xl font-medium leading-relaxed mb-16 max-w-2xl mx-auto">
+                {{ __('journal_editorial_desc') }}
             </p>
-
-            {{-- Minimalist Editor Visual --}}
-            <div class="bg-slate-900 border border-slate-800 rounded-t-3xl p-8 md:p-16 text-left shadow-2xl relative group">
-                <div class="absolute top-4 left-4 flex gap-2 opacity-30 group-hover:opacity-100 transition">
-                    <div class="w-3 h-3 rounded-full bg-rose-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-amber-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
-                </div>
-                
-                <h3 class="text-3xl font-serif text-slate-200 mt-6 mb-6">"{{ __('journal_feature_1_point_1') }}"</h3>
-                <div class="w-12 h-1 bg-indigo-500 rounded-full mb-8"></div>
-                <p class="text-slate-400 font-serif text-lg leading-loose">
-                    {{ __('journal_feature_1_point_2') }}
-                </p>
-                <div class="w-0.5 h-6 bg-indigo-500 animate-pulse mt-2"></div> {{-- Caret --}}
-            </div>
-        </div>
-    </section>
-
-    {{-- SECTION 4: MOOD & INSIGHTS (ZIG-ZAG) --}}
-    <section class="py-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div class="animate-in slide-in-from-left-12 fade-in duration-700 fill-mode-both">
-                <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center text-3xl mb-8 border border-indigo-100 transform rotate-3">📊</div>
-                <h2 class="text-4xl font-black mb-6 text-gray-900">{{ __('journal_feature_2_title') }}</h2>
-                <p class="text-gray-500 text-lg leading-relaxed mb-8">
-                    {{ __('journal_feature_2_desc') }}
-                </p>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100 font-bold text-gray-700 flex flex-col gap-2">
-                        <span class="text-2xl">😊</span> {{ __('journal_feature_2_point_1') }}
-                    </div>
-                    <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100 font-bold text-gray-700 flex flex-col gap-2">
-                        <span class="text-2xl">📈</span> {{ __('journal_feature_2_point_2') }}
-                    </div>
-                </div>
-            </div>
             
-            <div class="relative h-[400px] bg-gradient-to-br from-indigo-50 to-purple-50 rounded-[3rem] p-8 flex items-center justify-center overflow-hidden border border-indigo-100 animate-in slide-in-from-right-12 fade-in duration-700 fill-mode-both">
-                {{-- Mockup Mood Graph --}}
-                <div class="w-full bg-white p-6 rounded-2xl shadow-xl relative z-10 transform rotate-2 hover:rotate-0 transition duration-500">
-                    <h4 class="font-bold text-gray-900 mb-6 flex justify-between">
-                        Weekly Mood <span class="text-indigo-600">Great! ✨</span>
-                    </h4>
-                    <div class="flex items-end justify-between h-32 gap-2">
-                        <div class="w-full bg-indigo-100 rounded-t-lg relative group"><div class="absolute bottom-0 w-full bg-indigo-500 rounded-t-lg h-3/4 group-hover:opacity-80 transition"></div></div>
-                        <div class="w-full bg-indigo-100 rounded-t-lg relative group"><div class="absolute bottom-0 w-full bg-indigo-500 rounded-t-lg h-2/4 group-hover:opacity-80 transition"></div></div>
-                        <div class="w-full bg-indigo-100 rounded-t-lg relative group"><div class="absolute bottom-0 w-full bg-purple-500 rounded-t-lg h-full group-hover:opacity-80 transition"></div></div>
-                        <div class="w-full bg-indigo-100 rounded-t-lg relative group"><div class="absolute bottom-0 w-full bg-indigo-500 rounded-t-lg h-4/5 group-hover:opacity-80 transition"></div></div>
-                        <div class="w-full bg-indigo-100 rounded-t-lg relative group"><div class="absolute bottom-0 w-full bg-purple-500 rounded-t-lg h-[90%] group-hover:opacity-80 transition"></div></div>
+            {{-- Visual: Premium Paper Mockup --}}
+            <div class="relative max-w-2xl mx-auto group">
+                <div class="absolute -inset-8 bg-gradient-to-b from-gray-50 to-transparent rounded-[4rem] -z-10 opacity-50 group-hover:opacity-100 transition duration-700"></div>
+                <div class="bg-white p-12 md:p-24 rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.05)] border border-gray-100 text-left relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50/50 rounded-bl-[4rem]"></div>
+                    <div class="font-serif text-2xl md:text-4xl text-gray-800 leading-[1.6] space-y-10 relative z-10">
+                        <p class="border-b border-gray-100 pb-6">{{ __('journal_editorial_card_p1') }}</p>
+                        <p class="border-b border-gray-100 pb-6 text-gray-300">{{ __('journal_editorial_card_p2') }}</p>
+                        <div class="w-1.5 h-10 bg-indigo-600 animate-pulse inline-block align-middle ml-1 rounded-full"></div>
                     </div>
-                    <div class="flex justify-between mt-3 text-xs text-gray-400 font-bold">
-                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span>
+                </div>
+                {{-- Decorative element: Fountain pen nib --}}
+                <div class="absolute -bottom-8 -right-8 w-24 h-24 bg-slate-900 rounded-[2rem] flex items-center justify-center text-4xl shadow-2xl transform rotate-12 group-hover:rotate-0 transition duration-500 border-4 border-white">🖋️</div>
+            </div>
+        </div>
+    </section>
+
+    {{-- NEW SECTION 3: THE MOOD NEBULA --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        {{-- Nebula Backgrounds --}}
+        <div class="absolute top-0 right-0 w-[1000px] h-[1000px] bg-purple-200/40 rounded-full blur-[150px] -mr-96 -mt-96 animate-pulse"></div>
+        <div class="absolute bottom-0 left-0 w-[1000px] h-[1000px] bg-indigo-200/40 rounded-full blur-[150px] -ml-96 -mb-96 animate-pulse duration-[5000ms]"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-24 items-center">
+                <div class="flex-1 order-2 lg:order-1">
+                    <div class="relative animate-in zoom-in-95 duration-1000">
+                        {{-- Circular Gradient Visual --}}
+                        <div class="w-full aspect-square max-w-lg mx-auto bg-white/80 backdrop-blur-xl rounded-full shadow-[0_50px_100px_rgba(0,0,0,0.1)] p-12 flex items-center justify-center relative group border border-white">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 via-purple-500/10 to-pink-500/20 rounded-full animate-spin-slow group-hover:opacity-100 transition duration-1000"></div>
+                            <div class="relative z-10 text-center">
+                                <span class="text-8xl mb-6 block group-hover:scale-125 transition duration-700 drop-shadow-2xl">✨</span>
+                                <h4 class="text-4xl font-black text-gray-900 mb-2">{{ __('journal_nebula_harmony') }}</h4>
+                                <p class="text-gray-400 font-black uppercase tracking-[0.3em] text-xs">{{ __('journal_nebula_sentiment') }}</p>
+                            </div>
+                            
+                            {{-- Orbits --}}
+                            <div class="absolute inset-6 border border-indigo-100/50 rounded-full"></div>
+                            <div class="absolute inset-16 border border-purple-100/50 rounded-full"></div>
+                            
+                            {{-- Floating Mood Dots --}}
+                            <div class="absolute top-1/4 right-10 w-6 h-6 bg-indigo-500 rounded-full shadow-[0_0_30px_rgba(79,70,229,0.6)] animate-bounce border-4 border-white"></div>
+                            <div class="absolute bottom-1/4 left-10 w-6 h-6 bg-purple-500 rounded-full shadow-[0_0_30px_rgba(168,85,247,0.6)] animate-bounce delay-150 border-4 border-white"></div>
+                             <div class="absolute top-1/2 left-6 w-5 h-5 bg-pink-500 rounded-full shadow-[0_0_30px_rgba(236,72,153,0.6)] animate-pulse border-4 border-white"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 order-1 lg:order-2 animate-in fade-in slide-in-from-right-8 duration-700">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-sm">
+                        {{ __('journal_nebula_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-10 leading-tight">
+                        {{ __('journal_nebula_title') }}
+                    </h2>
+                    <p class="text-gray-600 text-xl mb-12 leading-relaxed">
+                        {{ __('journal_nebula_desc') }}
+                    </p>
+                    <div class="grid gap-8">
+                        <div class="flex items-start gap-8 p-8 rounded-[2.5rem] bg-white hover:shadow-2xl transition duration-500 group border border-gray-100">
+                            <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:rotate-12 transition">🔮</div>
+                            <div>
+                                <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('journal_nebula_feature_1_title') }}</h4>
+                                <p class="text-gray-500 font-medium">{{ __('journal_nebula_feature_1_desc') }}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-8 p-8 rounded-[2.5rem] bg-white hover:shadow-2xl transition duration-500 group border border-gray-100">
+                            <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition">🌈</div>
+                            <div>
+                                <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('journal_nebula_feature_2_title') }}</h4>
+                                <p class="text-gray-500 font-medium">{{ __('journal_nebula_feature_2_desc') }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 5: BENTO BOX (ASYMMETRICAL LAYOUT) --}}
-    <section class="py-32 bg-gray-50 border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">{{ __('journal_bento_title') }}</h2>
-                <p class="text-gray-500 text-xl max-w-2xl mx-auto">{{ __('journal_bento_desc') }}</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 auto-rows-min">
-                {{-- Bento 1: Vertical Tall Box (Left) --}}
-                <div class="md:col-span-1 md:row-span-2 bg-indigo-950 text-white rounded-[2.5rem] p-10 shadow-xl relative overflow-hidden group hover:-translate-y-2 transition duration-500 flex flex-col justify-between h-full min-h-[400px]">
-                    <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-indigo-600 rounded-full blur-[80px] opacity-40 group-hover:scale-150 transition duration-700"></div>
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl mb-8 border border-white/20 group-hover:rotate-12 transition">🔒</div>
-                        <h3 class="text-3xl font-black mb-4">{{ __('journal_bento_1_title') }}</h3>
-                        <p class="text-indigo-200 leading-relaxed">{{ __('journal_bento_1_desc') }}</p>
-                    </div>
-                </div>
-                
-                {{-- Bento 2: Horizontal Flat Box (Top Right) --}}
-                <div class="md:col-span-2 bg-white rounded-[2.5rem] p-8 md:p-10 border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-500 flex flex-col sm:flex-row gap-8 items-center group">
-                    <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center text-4xl shrink-0 group-hover:scale-110 transition">📸</div>
-                    <div>
-                        <h3 class="text-2xl font-black mb-3 text-gray-900">{{ __('journal_bento_2_title') }}</h3>
-                        <p class="text-gray-500 leading-relaxed">{{ __('journal_bento_2_desc') }}</p>
-                    </div>
-                </div>
-
-                {{-- Bento 3: Horizontal Flat Box (Bottom Right) --}}
-                <div class="md:col-span-2 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-[2.5rem] p-8 md:p-10 border border-indigo-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-500 flex flex-col sm:flex-row gap-8 items-center group">
-                    <div class="w-20 h-20 bg-white text-indigo-600 rounded-full flex items-center justify-center text-4xl shrink-0 shadow-sm group-hover:rotate-[-12deg] transition">🔗</div>
-                    <div>
-                        <h3 class="text-2xl font-black mb-3 text-indigo-950">{{ __('journal_bento_3_title') }}</h3>
-                        <p class="text-indigo-800/80 leading-relaxed">{{ __('journal_bento_3_desc') }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- SECTION 6: QUOTE (BOOK/DIARY STYLE) --}}
-    <section class="py-32 bg-white relative">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-block mb-8 relative">
-                <span class="absolute -top-6 -left-8 text-7xl text-indigo-100 font-serif">"</span>
-                <span class="absolute -bottom-10 -right-8 text-7xl text-indigo-100 font-serif rotate-180">"</span>
-                <h2 class="text-3xl md:text-5xl font-serif italic text-gray-800 leading-relaxed relative z-10 px-8">
-                    {{ __('journal_quote_text') }}
-                </h2>
-            </div>
-            <div class="mt-8 flex items-center justify-center gap-4">
-                <div class="w-12 h-1 bg-indigo-600 rounded-full"></div>
-                <p class="font-bold tracking-widest uppercase text-sm text-gray-500">{{ __('journal_quote_author') }}</p>
-                <div class="w-12 h-1 bg-indigo-600 rounded-full"></div>
+    {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
+            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+                {{ __('journal_quote_text') }}
+            </h2>
+            <div class="flex flex-col items-center">
+                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
+                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('journal_quote_author') }}</p>
             </div>
         </div>
     </section>

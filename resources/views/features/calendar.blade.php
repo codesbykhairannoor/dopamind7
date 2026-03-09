@@ -148,183 +148,160 @@
         </div>
     </header>
 
-    {{-- SECTION 2: PROBLEM AWARENESS (TIMELINE CARDS) --}}
-    <section class="py-32 bg-gray-50 border-b border-gray-100 overflow-hidden">
+    {{-- NEW SECTION 2: LAYERED TIME (3D STACK) --}}
+    <section class="py-24 bg-white relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-5xl font-black mb-16 text-center text-gray-900 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
-                {{ __('calendar_prob_title_1') }} <span class="text-gray-300 line-through decoration-rose-500 decoration-4">{{ __('calendar_prob_title_strike') }}</span> {{ __('calendar_prob_title_2') }}
-            </h2>
-
-            <div class="grid md:grid-cols-3 gap-8 relative">
-                {{-- Decorative Timeline Line behind cards (Desktop only) --}}
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 border-t-2 border-dashed border-gray-300 rounded-full"></div>
-
-                <div class="bg-white p-8 rounded-[2rem] border-2 border-transparent hover:border-indigo-100 shadow-sm hover:shadow-xl transition duration-300 animate-in slide-in-from-bottom-8 fade-in delay-100 fill-mode-both group">
-                    <div class="w-14 h-14 bg-rose-50 text-rose-500 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm transform group-hover:-rotate-12 transition">⏱️</div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">{{ __('calendar_prob_1_title') }}</h3>
-                    <p class="text-gray-500 leading-relaxed">{{ __('calendar_prob_1_desc') }}</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-[2rem] border-2 border-transparent hover:border-indigo-100 shadow-sm hover:shadow-xl transition duration-300 animate-in slide-in-from-bottom-8 fade-in delay-200 fill-mode-both group">
-                    <div class="w-14 h-14 bg-amber-50 text-amber-500 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm transform group-hover:scale-110 transition">🤯</div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">{{ __('calendar_prob_2_title') }}</h3>
-                    <p class="text-gray-500 leading-relaxed">{{ __('calendar_prob_2_desc') }}</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-[2rem] border-2 border-transparent hover:border-indigo-100 shadow-sm hover:shadow-xl transition duration-300 animate-in slide-in-from-bottom-8 fade-in delay-300 fill-mode-both group">
-                    <div class="w-14 h-14 bg-gray-100 text-gray-500 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm transform group-hover:rotate-12 transition">👥</div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900">{{ __('calendar_prob_3_title') }}</h3>
-                    <p class="text-gray-500 leading-relaxed">{{ __('calendar_prob_3_desc') }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- SECTION 3 & 4: FEATURES (ZIG-ZAG WITH TIME-BLOCKING VISUALS) --}}
-    <section id="how-it-works" class="py-32 bg-white">
-        <div class="max-w-6xl mx-auto px-6 space-y-32">
-            
-            {{-- Feature 1: Universal Sync --}}
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="animate-in fade-in slide-in-from-left-12 duration-700 fill-mode-both">
-                    <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center text-3xl mb-8 border border-indigo-100">🔄</div>
-                    <h2 class="text-4xl font-black mb-6 text-gray-900">{{ __('calendar_feature_1_title') }}</h2>
-                    <p class="text-gray-500 text-lg leading-relaxed mb-8">
-                        {{ __('calendar_feature_1_desc') }}
+            <div class="flex flex-col lg:flex-row gap-24 items-center">
+                <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-100">
+                        {{ __('calendar_layered_badge') }}
+                    </div>
+                    <h2 class="text-5xl md:text-7xl font-black text-gray-900 mb-10 leading-[1.1] tracking-tight">
+                        {{ __('calendar_layered_title') }}
+                    </h2>
+                    <p class="text-gray-500 text-xl mb-12 leading-relaxed font-medium">
+                        {{ __('calendar_layered_desc') }}
                     </p>
-                    <div class="flex gap-4">
-                        <span class="px-4 py-2 bg-gray-50 rounded-xl font-bold text-gray-700 border border-gray-100 flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-blue-500"></span> Google
-                        </span>
-                        <span class="px-4 py-2 bg-gray-50 rounded-xl font-bold text-gray-700 border border-gray-100 flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-sky-500"></span> Outlook
-                        </span>
-                        <span class="px-4 py-2 bg-gray-50 rounded-xl font-bold text-gray-700 border border-gray-100 flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-gray-800"></span> Apple
-                        </span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition duration-500 group relative overflow-hidden">
+                            <div class="absolute right-0 top-0 w-2 h-full bg-blue-500 opacity-0 group-hover:opacity-100 transition"></div>
+                            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">💼</div>
+                            <h4 class="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{{ __('calendar_layered_feature_1_title') }}</h4>
+                            <p class="text-sm text-gray-500 leading-relaxed">{{ __('calendar_layered_feature_1_desc') }}</p>
+                        </div>
+                         <div class="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition duration-500 group relative overflow-hidden">
+                            <div class="absolute right-0 top-0 w-2 h-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition"></div>
+                            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">🌿</div>
+                            <h4 class="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{{ __('calendar_layered_feature_2_title') }}</h4>
+                            <p class="text-sm text-gray-500 leading-relaxed">{{ __('calendar_layered_feature_2_desc') }}</p>
+                        </div>
                     </div>
                 </div>
-                <div class="relative h-[400px] bg-slate-900 rounded-[3rem] p-8 flex items-center justify-center overflow-hidden border border-slate-800 animate-in fade-in slide-in-from-right-12 duration-700 fill-mode-both">
-                    <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
-                    
-                    {{-- Floating Integration Badges --}}
-                    <div class="relative w-full h-full flex items-center justify-center">
-                        <div class="w-24 h-24 bg-indigo-600 rounded-3xl shadow-2xl flex items-center justify-center text-4xl text-white z-20 border-4 border-slate-900 absolute">OFM</div>
-                        
-                        <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-2xl absolute -mt-40 -ml-40 animate-pulse duration-[4000ms]">📅</div>
-                        <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-2xl absolute mt-40 ml-40 animate-pulse duration-[3500ms]">📧</div>
-                        <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-2xl absolute mt-20 -ml-48 animate-pulse duration-[4500ms]">🍏</div>
-                        
-                        {{-- Dashed connecting lines SVG --}}
-                        <svg class="absolute inset-0 w-full h-full z-10" pointer-events="none">
-                            <line x1="50%" y1="50%" x2="25%" y2="25%" stroke="#6366f1" stroke-width="2" stroke-dasharray="6 6" class="animate-[dash_3s_linear_infinite]"/>
-                            <line x1="50%" y1="50%" x2="75%" y2="75%" stroke="#6366f1" stroke-width="2" stroke-dasharray="6 6" class="animate-[dash_3s_linear_infinite]"/>
-                            <line x1="50%" y1="50%" x2="20%" y2="60%" stroke="#6366f1" stroke-width="2" stroke-dasharray="6 6" class="animate-[dash_3s_linear_infinite]"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Feature 2: Time Blocking --}}
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1 relative h-[450px] bg-indigo-50 rounded-[3rem] p-8 flex items-center justify-center overflow-hidden border border-indigo-100 animate-in fade-in slide-in-from-left-12 duration-700 fill-mode-both">
-                    {{-- Time Block Visual --}}
-                    <div class="w-full bg-white rounded-2xl shadow-lg p-4 relative z-10 transform -rotate-2 hover:rotate-0 transition duration-500">
-                        <div class="space-y-2 relative">
-                            <div class="absolute left-10 top-0 bottom-0 w-px bg-gray-100"></div>
-                            
-                            <div class="flex gap-4 items-start">
-                                <span class="text-xs font-bold text-gray-400 w-8 pt-2">08:00</span>
-                                <div class="h-16 flex-1 bg-amber-100 border border-amber-200 rounded-xl p-3">
-                                    <p class="text-xs font-bold text-amber-900">Deep Work: Coding</p>
+                <div class="flex-1 w-full perspective-3000">
+                    {{-- Layered Visual --}}
+                    <div class="relative h-[550px] flex items-center justify-center group/visual">
+                        {{-- Social Layer (Bottom) --}}
+                        <div class="absolute w-full max-w-sm aspect-[4/3] bg-purple-500/10 backdrop-blur-sm border border-purple-500/20 rounded-[3rem] transform -rotate-[15deg] translate-y-24 translate-x-24 group-hover/visual:translate-y-32 group-hover/visual:translate-x-32 transition duration-1000">
+                             <div class="p-10 opacity-30">
+                                <div class="w-1/2 h-6 bg-purple-500/30 rounded-full mb-6"></div>
+                                <div class="w-full h-32 bg-purple-500/20 rounded-[2rem]"></div>
+                             </div>
+                        </div>
+                        {{-- Personal Layer (Middle) --}}
+                        <div class="absolute w-full max-w-sm aspect-[4/3] bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 rounded-[3rem] transform -rotate-[8deg] translate-y-12 translate-x-12 z-10 group-hover/visual:translate-y-16 group-hover/visual:translate-x-16 transition duration-1000 delay-75">
+                            <div class="p-10 opacity-60">
+                                <div class="w-1/3 h-6 bg-emerald-500/30 rounded-full mb-6"></div>
+                                <div class="w-2/3 h-6 bg-emerald-500/10 rounded-full mb-10"></div>
+                                <div class="flex gap-6">
+                                    <div class="w-16 h-16 bg-emerald-500/30 rounded-2xl"></div>
+                                    <div class="w-16 h-16 bg-emerald-500/30 rounded-2xl"></div>
                                 </div>
                             </div>
-                            <div class="flex gap-4 items-start">
-                                <span class="text-xs font-bold text-gray-400 w-8 pt-2">10:00</span>
-                                <div class="h-12 flex-1 bg-blue-100 border border-blue-200 rounded-xl p-3">
-                                    <p class="text-xs font-bold text-blue-900">Team Sync</p>
-                                </div>
+                        </div>
+                        {{-- Work Layer (Top) --}}
+                        <div class="absolute w-full max-w-sm aspect-[4/3] bg-white rounded-[3rem] shadow-[0_50px_100px_rgba(0,0,0,0.12)] border border-gray-100 z-20 p-12 transform hover:scale-105 transition duration-700 shadow-indigo-100/50">
+                            <div class="flex justify-between items-center mb-12">
+                                <h4 class="font-black text-gray-900 text-2xl tracking-tighter uppercase">{{ __('calendar_layered_card_title') }}</h4>
+                                <div class="w-14 h-14 bg-indigo-600 rounded-[1.5rem] flex items-center justify-center text-white shadow-2xl shadow-indigo-300 transform -rotate-12">💼</div>
                             </div>
-                            <div class="flex gap-4 items-start">
-                                <span class="text-xs font-bold text-gray-400 w-8 pt-2">11:00</span>
-                                <div class="h-24 flex-1 bg-emerald-100 border border-emerald-200 rounded-xl p-3">
-                                    <p class="text-xs font-bold text-emerald-900">Project Review</p>
+                            <div class="space-y-8">
+                                <div class="h-20 bg-blue-50/50 border-l-[6px] border-blue-500 p-6 rounded-r-2xl relative overflow-hidden">
+                                     <div class="absolute right-4 top-4 w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
+                                    <div class="mb-2">
+                                         <span class="text-[11px] font-black text-blue-600 uppercase tracking-widest">{{ __('calendar_layered_card_event_1_time') }}</span>
+                                    </div>
+                                    <p class="text-lg font-black text-blue-900 leading-none tracking-tight">{{ __('calendar_layered_card_event_1_title') }}</p>
+                                </div>
+                                <div class="h-20 bg-indigo-50/50 border-l-[6px] border-indigo-500 p-6 rounded-r-2xl opacity-40">
+                                    <p class="text-[11px] font-black text-indigo-400 uppercase mb-2 tracking-widest">{{ __('calendar_layered_card_event_2_time') }}</p>
+                                    <p class="text-lg font-black text-indigo-900 leading-none tracking-tight">{{ __('calendar_layered_card_event_2_title') }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2 animate-in fade-in slide-in-from-right-12 duration-700 fill-mode-both">
-                    <div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-3xl flex items-center justify-center text-3xl mb-8 border border-amber-100">⏳</div>
-                    <h2 class="text-4xl font-black mb-6 text-gray-900">{{ __('calendar_feature_2_title') }}</h2>
-                    <p class="text-gray-500 text-lg leading-relaxed mb-8">
-                        {{ __('calendar_feature_2_desc') }}
-                    </p>
-                    <ul class="space-y-4 font-bold text-gray-700">
-                        <li class="flex items-center gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100"><span class="w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-sm">✓</span> {{ __('calendar_feature_2_point_1') }}</li>
-                        <li class="flex items-center gap-4 bg-gray-50 p-4 rounded-xl border border-gray-100"><span class="w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-sm">✓</span> {{ __('calendar_feature_2_point_2') }}</li>
-                    </ul>
-                </div>
             </div>
-
         </div>
     </section>
 
-    {{-- SECTION 5: BENTO BOX GRID --}}
-    <section class="py-32 bg-gray-50 border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">{{ __('calendar_bento_title') }}</h2>
-                <p class="text-gray-500 text-xl max-w-2xl mx-auto">{{ __('calendar_bento_desc') }}</p>
+    {{-- NEW SECTION 3: DEADLINE PULSE (DARK MODE URGENCY) --}}
+    <section class="py-32 bg-slate-950 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:50px_50px] opacity-[0.05]"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-24 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                <span class="text-rose-500 font-black uppercase tracking-[0.5em] text-xs mb-6 block">{{ __('calendar_pulse_badge') }}</span>
+                <h2 class="text-4xl md:text-7xl font-black mb-10 tracking-tight">{{ __('calendar_pulse_title') }}</h2>
+                <p class="text-indigo-100 text-xl opacity-80 leading-relaxed font-medium">{{ __('calendar_pulse_desc') }}</p>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-6 auto-rows-[220px]">
-                {{-- Box 1: Wide --}}
-                <div class="md:col-span-2 bg-indigo-900 text-white rounded-[2.5rem] p-8 shadow-xl relative overflow-hidden group hover:-translate-y-1 transition duration-500">
-                    <div class="absolute right-0 top-0 w-48 h-48 bg-indigo-500 rounded-bl-[150px] opacity-40 group-hover:scale-110 transition duration-500"></div>
-                    <div class="text-3xl mb-4 relative z-10">🌍</div>
-                    <h3 class="text-2xl font-black mb-2 relative z-10">{{ __('calendar_bento_1_title') }}</h3>
-                    <p class="text-indigo-200 text-sm relative z-10 max-w-xs">{{ __('calendar_bento_1_desc') }}</p>
-                </div>
-                
-                {{-- Box 2: Square --}}
-                <div class="md:col-span-1 bg-white rounded-[2.5rem] p-8 border border-gray-200 shadow-sm hover:shadow-lg transition group">
-                    <div class="text-3xl mb-4">🎨</div>
-                    <h3 class="text-xl font-black mb-2 text-gray-900">{{ __('calendar_bento_2_title') }}</h3>
-                    <p class="text-gray-500 text-sm">{{ __('calendar_bento_2_desc') }}</p>
-                </div>
-
-                {{-- Box 3: Square --}}
-                <div class="md:col-span-1 bg-white rounded-[2.5rem] p-8 border border-gray-200 shadow-sm hover:shadow-lg transition group">
-                    <div class="text-3xl mb-4">🔔</div>
-                    <h3 class="text-xl font-black mb-2 text-gray-900">{{ __('calendar_bento_3_title') }}</h3>
-                    <p class="text-gray-500 text-sm">{{ __('calendar_bento_3_desc') }}</p>
-                </div>
-
-                {{-- Box 4: Full Wide --}}
-                <div class="md:col-span-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-[2.5rem] p-8 md:p-10 border border-blue-100 shadow-sm hover:shadow-lg transition flex flex-col sm:flex-row items-center justify-between gap-8 group">
-                    <div class="flex items-center gap-6">
-                        <div class="w-16 h-16 bg-white text-indigo-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm group-hover:rotate-12 transition">👥</div>
-                        <div>
-                            <h3 class="text-2xl font-black mb-2 text-indigo-950">{{ __('calendar_bento_4_title') }}</h3>
-                            <p class="text-indigo-800/70 text-sm max-w-lg">{{ __('calendar_bento_4_desc') }}</p>
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                 {{-- Pulse List --}}
+                 <div class="space-y-8">
+                    {{-- Item 1: CRITICAL --}}
+                    <div class="bg-white/5 backdrop-blur-2xl border-2 border-rose-500/40 rounded-[2.5rem] p-10 flex items-center justify-between group hover:bg-rose-500/10 transition duration-500 hover:shadow-[0_0_50px_rgba(244,63,94,0.15)] relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-rose-500/5 to-transparent"></div>
+                        <div class="flex items-center gap-8 relative z-10">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-rose-500 rounded-full animate-ping opacity-30"></div>
+                                <div class="w-20 h-20 bg-rose-500 text-white rounded-[2rem] flex items-center justify-center text-4xl font-black relative z-10 shadow-2xl shadow-rose-500/40 transform group-hover:rotate-12 transition group-hover:scale-110">!</div>
+                            </div>
+                            <div>
+                                <h4 class="text-3xl font-black text-white mb-2">{{ __('calendar_pulse_item_1_title') }}</h4>
+                                <p class="text-rose-400 font-black uppercase tracking-[0.2em] text-[11px] bg-rose-500/10 inline-block px-3 py-1 rounded-full border border-rose-500/20">{{ __('calendar_pulse_item_1_status') }}</p>
+                            </div>
+                        </div>
+                        <div class="text-right hidden sm:block relative z-10">
+                            <p class="text-4xl font-black text-white tabular-nums">{{ __('calendar_pulse_item_1_timer') }}</p>
+                            <p class="text-[10px] text-white/40 uppercase font-black tracking-widest mt-1">{{ __('calendar_pulse_item_1_sub') }}</p>
                         </div>
                     </div>
-                    <div class="bg-indigo-600 text-white text-xs font-bold px-4 py-2 rounded-full whitespace-nowrap">
-                        One-Click Share
+
+                    {{-- Item 2: NORMAL --}}
+                    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 flex items-center justify-between group hover:bg-indigo-600/10 transition duration-500 border-l-4 border-l-indigo-500">
+                        <div class="flex items-center gap-8 opacity-60 group-hover:opacity-100 transition">
+                            <div class="w-20 h-20 bg-slate-800 text-slate-400 rounded-[2rem] flex items-center justify-center text-4xl font-black group-hover:bg-indigo-600 group-hover:text-white transition duration-700">?</div>
+                            <div>
+                                <h4 class="text-3xl font-black text-white mb-2 tracking-tight">{{ __('calendar_pulse_item_2_title') }}</h4>
+                                <p class="text-indigo-400 font-black tracking-[0.2em] text-[11px] uppercase">{{ __('calendar_pulse_item_2_status') }}</p>
+                            </div>
+                        </div>
+                        <div class="hidden sm:block text-right">
+                             <span class="text-white/20 text-4xl">⚓</span>
+                        </div>
                     </div>
-                </div>
+                 </div>
+
+                 {{-- Pulse Radar (Visual) --}}
+                 <div class="relative hidden lg:flex items-center justify-center p-12">
+                    <div class="w-full aspect-square max-md border-2 border-indigo-500/20 rounded-full flex items-center justify-center relative shadow-[0_0_100px_rgba(79,70,229,0.1)]">
+                        <div class="absolute inset-0 bg-indigo-500/[0.02] rounded-full animate-pulse"></div>
+                        <div class="w-3/4 h-3/4 border border-indigo-500/20 rounded-full flex items-center justify-center">
+                            <div class="w-1/2 h-1/2 border-2 border-rose-500/30 rounded-full animate-ping duration-1000"></div>
+                        </div>
+                        
+                        {{-- Radar Sweep --}}
+                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 via-transparent to-transparent rounded-full animate-spin-slow opacity-40"></div>
+                        
+                        {{-- Blips --}}
+                        <div class="absolute top-[15%] right-[25%] w-6 h-6 bg-rose-500 rounded-full shadow-[0_0_40px_rgba(244,63,94,1)] animate-pulse border-4 border-slate-950"></div>
+                        <div class="absolute bottom-[30%] left-[20%] w-4 h-4 bg-indigo-400 rounded-full shadow-[0_0_20px_rgba(129,140,248,0.8)] border-2 border-slate-950"></div>
+                    </div>
+                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 6: QUOTE --}}
-    <section class="py-24 bg-white relative">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-2xl md:text-4xl font-black text-gray-900 leading-tight mb-8">
-                "{{ __('calendar_quote_text') }}"
+    {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
+            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+                {{ __('calendar_quote_text') }}
             </h2>
-            <p class="text-indigo-600 font-bold tracking-widest uppercase text-sm">{{ __('calendar_quote_author') }}</p>
+            <div class="flex flex-col items-center">
+                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
+                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('calendar_quote_author') }}</p>
+            </div>
         </div>
     </section>
 

@@ -102,6 +102,8 @@
             "/features/planner",
             "/features/journal",
             "/features/calendar",
+            "/features/goal",
+            "/features/job",
             "/solutions/student",
             "/solutions/freelancer",
             "/solutions/personalgrowth",
@@ -233,6 +235,8 @@
                                     <x-nav-item href="{{ route('features.planner') }}" icon="🎯" title="Planner" desc="Organize your daily tasks." />
                                     <x-nav-item href="{{ route('features.journal') }}" icon="📔" title="Journal" desc="Clear your mental clutter." />
                                     <x-nav-item href="{{ route('features.calendar') }}" icon="📅" title="Calendar" desc="Visual time management." />
+                                    <x-nav-item href="{{ route('features.goal') }}" icon="🎯" title="Goal Tracker" desc="Break down big dreams." />
+                                    <x-nav-item href="{{ route('features.job') }}" icon="💼" title="Job Tracker" desc="Secure your next offer." />
                                 </div>
                             </div>
                         </div>
@@ -249,13 +253,26 @@
                         <div x-show="activeMenu === 'solutions'" 
                              x-transition 
                              x-cloak 
-                             class="absolute top-full left-0 w-[280px] pt-4 z-50">
+                             class="absolute top-full left-0 w-[560px] pt-4 z-50">
                             
-                            {{-- Kartu Visual --}}
-                            <div class="p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem]">
-                                <x-nav-item href="{{ route('solutions.student') }}" icon="🎓" title="For Students" desc="Manage studies and life." />
-                                <x-nav-item href="{{ route('solutions.freelancer') }}" icon="💻" title="For Freelancers" desc="Track projects and income." />
-                                <x-nav-item href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal Growth" desc="Unlock your best self." />
+                            {{-- Kartu Visual (Split Categories) --}}
+                            <div class="p-6 bg-white border border-slate-100 shadow-2xl rounded-[2rem] grid grid-cols-2 gap-8 text-left">
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 px-3">{{ __('nav_by_role') }}</p>
+                                    <div class="space-y-1">
+                                        <x-nav-item href="{{ route('solutions.student') }}" icon="🎓" title="For Students" desc="Manage studies and life." />
+                                        <x-nav-item href="{{ route('solutions.freelancer') }}" icon="💻" title="For Freelancers" desc="Track projects and income." />
+                                        <x-nav-item href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal Growth" desc="Unlock your best self." />
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 px-3">{{ __('nav_by_use_case') }}</p>
+                                    <div class="space-y-1">
+                                        <x-nav-item href="{{ route('solutions.finance') }}" icon="💰" title="Financial Mastery" desc="Stop leaks, build wealth." />
+                                        <x-nav-item href="{{ route('solutions.career') }}" icon="💼" title="Career Accelerator" desc="Land your dream offer." />
+                                        <x-nav-item href="{{ route('solutions.mental') }}" icon="🧘" title="Mental Clarity" desc="Find peace and focus." />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -336,6 +353,8 @@
                                 <x-nav-item-mobile href="{{ route('features.planner') }}" icon="🎯" title="Daily Planner" />
                                 <x-nav-item-mobile href="{{ route('features.journal') }}" icon="📔" title="Mindful Journal" />
                                 <x-nav-item-mobile href="{{ route('features.calendar') }}" icon="📅" title="Calendar" />
+                                <x-nav-item-mobile href="{{ route('features.goal') }}" icon="🎯" title="Goal Tracker" />
+                                <x-nav-item-mobile href="{{ route('features.job') }}" icon="💼" title="Job Tracker" />
                             </div>
                         </div>
                     </div>
@@ -347,10 +366,23 @@
                             <svg :class="activeAccordion === 'solutions' ? 'rotate-180' : ''" class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div x-show="activeAccordion === 'solutions'" x-collapse>
-                            <div class="grid grid-cols-1 gap-1 pb-4 text-left">
-                                <x-nav-item-mobile href="{{ route('solutions.student') }}" icon="🎓" title="For Students" />
-                                <x-nav-item-mobile href="{{ route('solutions.freelancer') }}" icon="💻" title="For Freelancers" />
-                                <x-nav-item-mobile href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal Growth" />
+                            <div class="pb-6 space-y-6">
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_by_role') }}</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <x-nav-item-mobile href="{{ route('solutions.student') }}" icon="🎓" title="For Students" />
+                                        <x-nav-item-mobile href="{{ route('solutions.freelancer') }}" icon="💻" title="For Freelancers" />
+                                        <x-nav-item-mobile href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal Growth" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_by_use_case') }}</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <x-nav-item-mobile href="{{ route('solutions.finance') }}" icon="💰" title="Financial Mastery" />
+                                        <x-nav-item-mobile href="{{ route('solutions.career') }}" icon="💼" title="Career Accelerator" />
+                                        <x-nav-item-mobile href="{{ route('solutions.mental') }}" icon="🧘" title="Mental Clarity" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -418,6 +450,8 @@
                             <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
                             <li><a href="{{ route('features.finance') }}" class="hover:text-indigo-600 transition">Finance Tracker</a></li>
                             <li><a href="{{ route('features.planner') }}" class="hover:text-indigo-600 transition">Daily Planner</a></li>
+                            <li><a href="{{ route('features.goal') }}" class="hover:text-indigo-600 transition">Goal Tracker</a></li>
+                            <li><a href="{{ route('features.job') }}" class="hover:text-indigo-600 transition">Job Tracker</a></li>
                             <li><a href="{{ route('pricing') }}" class="hover:text-indigo-600 transition">Pricing</a></li>
                         </ul>
                     </div>
