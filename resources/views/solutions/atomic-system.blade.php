@@ -20,7 +20,7 @@
             
             {{-- Icon / Gambar Dulu --}}
             <div class="flex justify-center mb-8">
-                <div class="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-[2rem] shadow-2xl shadow-indigo-200 flex items-center justify-center text-4xl transform rotate-3 hover:rotate-0 transition duration-300">
+                <div class="w-24 h-24 bg-white/80 backdrop-blur-xl border border-indigo-100 rounded-[2rem] shadow-xl shadow-indigo-100 flex items-center justify-center text-4xl transform -rotate-3 hover:rotate-0 transition duration-300">
                     🌱
                 </div>
             </div>
