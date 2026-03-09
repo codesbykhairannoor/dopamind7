@@ -44,7 +44,7 @@
                             12k+
                         </div>
                     </div>
-                    <p class="text-xs font-black text-slate-500 uppercase tracking-widest opacity-50">Global Users Connected</p>
+                    <p class="text-xs font-black text-slate-500 uppercase tracking-widest opacity-50">{{ __('comm_hero_social') }}</p>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                         <h2 class="text-5xl font-black mb-6 tracking-tight">{{ __('comm_discord_title') }}</h2>
                         <p class="text-indigo-100 text-xl mb-12 leading-relaxed opacity-80">{{ __('comm_discord_desc') }}</p>
                         <a href="#" class="inline-flex items-center gap-4 bg-white text-indigo-600 px-12 py-6 rounded-[2rem] font-black text-xl hover:shadow-2xl transition transform active:scale-95 shadow-lg shadow-indigo-900/20">
-                            Join Discord <span>→</span>
+                            {{ __('comm_btn_discord') }} <span>→</span>
                         </a>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     <h2 class="text-5xl font-black text-slate-900 mb-6 tracking-tight">{{ __('comm_tg_title') }}</h2>
                     <p class="text-slate-500 text-xl mb-12 leading-relaxed opacity-70">{{ __('comm_tg_desc') }}</p>
                     <a href="#" class="inline-flex items-center gap-4 bg-slate-900 text-white px-12 py-6 rounded-[2rem] font-black text-xl hover:bg-slate-800 transition transform active:scale-95 shadow-xl shadow-slate-200">
-                        Join Telegram <span>→</span>
+                        {{ __('comm_btn_tg') }} <span>→</span>
                     </a>
                 </div>
 
@@ -121,12 +121,12 @@
                     @foreach([1, 2] as $e)
                     <div class="p-10 rounded-[3rem] border-2 border-slate-50 bg-white hover:border-indigo-100 hover:shadow-2xl hover:shadow-indigo-50 transition-all duration-500 group">
                         <div class="flex items-center justify-between mb-8">
-                            <span class="px-5 py-2 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-widest border border-indigo-100">Live Webinar</span>
-                            <span class="text-sm font-bold text-slate-300">March 2026</span>
+                            <span class="px-5 py-2 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-widest border border-indigo-100">{{ __('comm_event_badge') }}</span>
+                            <span class="text-sm font-bold text-slate-300">{{ __('comm_event_date') }}</span>
                         </div>
                         <h4 class="text-3xl font-black text-slate-900 mb-8 group-hover:text-indigo-600 transition">{{ __("comm_event_{$e}") }}</h4>
                         <a href="#" class="inline-flex items-center gap-3 text-lg font-black text-slate-900 group-hover:gap-6 transition-all duration-300">
-                            Secure Your Spot <span>→</span>
+                            {{ __('comm_event_cta') }} <span>→</span>
                         </a>
                     </div>
                     @endforeach
@@ -141,11 +141,11 @@
                                 <span class="text-4xl">👑</span>
                             </div>
                             <div>
-                                <h3 class="text-2xl font-black">Member Spotlight</h3>
-                                <p class="text-indigo-300 font-bold text-sm">Coming Next Month</p>
+                                <h3 class="text-2xl font-black">{{ __('comm_spotlight_title') }}</h3>
+                                <p class="text-indigo-300 font-bold text-sm">{{ __('comm_spotlight_sub') }}</p>
                             </div>
                         </div>
-                        <p class="text-indigo-100/60 text-lg leading-relaxed mb-6 font-medium">Highlighting the most inspiring Mind-System setup from our community. Will it be you?</p>
+                        <p class="text-indigo-100/60 text-lg leading-relaxed mb-6 font-medium">{{ __('comm_spotlight_desc') }}</p>
                         <div class="h-2 w-full bg-white/5 rounded-full">
                             <div class="w-1/3 h-full bg-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.8)]"></div>
                         </div>
