@@ -37,7 +37,7 @@
                 
                 <div class="flex flex-col sm:flex-row gap-4">
                     {{-- BUTTON TETAP INDIGO SESUAI BRANDING --}}
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
+                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
                         {{ __('plan_hero_cta') }} →
                     </a>
                     <p class="py-4 text-sm text-gray-400 font-bold self-center">{{ __('plan_hero_note') }}</p>
@@ -310,7 +310,7 @@
                 {{ __('plan_cta_desc') }}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="{{ route('register') }}" class="w-full sm:w-auto bg-white text-blue-950 px-12 py-5 rounded-full font-black text-xl hover:bg-blue-50 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(255,255,255,0.1)]">
+                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-white text-blue-950 px-12 py-5 rounded-full font-black text-xl hover:bg-blue-50 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(255,255,255,0.1)]">
                     {{ __('plan_cta_btn') }}
                 </a>
                 <a href="{{ route('features.planner') }}" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-white/10 transition">

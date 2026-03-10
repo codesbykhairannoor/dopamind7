@@ -33,7 +33,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
+                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
                         {{ __('calendar_hero_cta_1') }}
                     </a>
                     <a href="#how-it-works" class="bg-white text-gray-700 border-2 border-gray-200 px-10 py-4 rounded-full font-bold text-lg hover:border-indigo-200 hover:bg-indigo-50 transition">
@@ -318,7 +318,7 @@
             <p class="text-indigo-200 text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
                 {{ __('calendar_cta_desc') }}
             </p>
-            <a href="{{ route('register') }}" class="inline-block bg-white text-slate-900 px-12 py-5 rounded-full font-black text-lg hover:bg-indigo-50 hover:scale-105 transition transform shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-slate-900 px-12 py-5 rounded-full font-black text-lg hover:bg-indigo-50 hover:scale-105 transition transform shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                 {{ __('calendar_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-slate-400 font-medium">{{ __('calendar_cta_note') }}</p>

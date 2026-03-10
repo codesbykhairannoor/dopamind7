@@ -313,7 +313,7 @@
             <p class="text-xl text-gray-500 mb-10 leading-relaxed font-medium">
                 {{ __('privacy_cta_desc') }}
             </p>
-            <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
                 {{ __('privacy_cta_btn') }}
             </a>
         </div>

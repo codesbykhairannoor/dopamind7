@@ -222,7 +222,7 @@
             <h2 class="text-5xl md:text-6xl font-black mb-8 text-indigo-950 tracking-tight">{{ __('cta_about_title') }}</h2>
             <p class="text-2xl text-indigo-700/70 mb-14 font-medium max-w-2xl mx-auto">{{ __('cta_about_desc') }}</p>
             <div class="flex justify-center flex-col sm:flex-row gap-5">
-                <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-14 py-6 rounded-[2.5rem] font-black text-xl hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition transform hover:-translate-y-2 active:scale-95">
+                <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-14 py-6 rounded-[2.5rem] font-black text-xl hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition transform hover:-translate-y-2 active:scale-95">
                     {{ __('cta_about_btn') }}
                 </a>
             </div>

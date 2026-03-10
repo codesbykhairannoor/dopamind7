@@ -33,7 +33,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl transition transform hover:-translate-y-1 text-center">
+                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl transition transform hover:-translate-y-1 text-center">
                         {{ __('solve_finance_hero_cta') }}
                     </a>
                 </div>
@@ -189,7 +189,7 @@
             <p class="text-gray-500 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('solve_finance_cta_desc') }}
             </p>
-            <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition-colors duration-300 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition-colors duration-300 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
                 {{ __('solve_finance_cta_btn') }}
             </a>
         </div>

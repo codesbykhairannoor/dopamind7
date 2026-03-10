@@ -63,7 +63,7 @@
                             <span class="text-emerald-500 text-lg">✓</span> {{ __('pricing_feat_finance_basic') }}
                         </li>
                     </ul>
-                    <a href="{{ route('register') }}" class="w-full py-4 rounded-2xl bg-gray-50 text-gray-900 font-bold text-center hover:bg-gray-100 transition border border-gray-200">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-2xl bg-gray-50 text-gray-900 font-bold text-center hover:bg-gray-100 transition border border-gray-200">
                         {{ __('pricing_free_btn') }}
                     </a>
                 </div>
@@ -94,7 +94,7 @@
                             {{ __('pricing_feat_custom_themes') }}
                         </li>
                     </ul>
-                    <a href="{{ route('register') }}" class="w-full py-5 rounded-2xl bg-indigo-600 text-white font-black text-lg text-center hover:bg-indigo-700 shadow-xl shadow-indigo-200 transition transform active:scale-95">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-5 rounded-2xl bg-indigo-600 text-white font-black text-lg text-center hover:bg-indigo-700 shadow-xl shadow-indigo-200 transition transform active:scale-95">
                         {{ __('pricing_pro_btn') }}
                     </a>
                 </div>
@@ -115,7 +115,7 @@
                             <span class="text-indigo-400 text-lg">★</span> {{ __('pricing_feat_priority_support') }}
                         </li>
                     </ul>
-                    <a href="{{ route('register') }}" class="w-full py-4 rounded-2xl bg-white text-gray-900 font-bold text-center hover:bg-gray-100 transition">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-2xl bg-white text-gray-900 font-bold text-center hover:bg-gray-100 transition">
                         {{ __('pricing_life_btn') }}
                     </a>
                 </div>
@@ -223,7 +223,7 @@
                 <div class="relative z-10">
                     <h2 class="text-4xl md:text-5xl font-black mb-6">{{ __('pricing_bottom_cta_title') }}</h2>
                     <p class="text-indigo-100 text-lg mb-10 max-w-2xl mx-auto">{{ __('pricing_bottom_cta_desc') }}</p>
-                    <a href="{{ route('register') }}" class="inline-block bg-white text-indigo-600 px-12 py-5 rounded-2xl font-black text-xl hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl">
+                    <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-indigo-600 px-12 py-5 rounded-2xl font-black text-xl hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl">
                         {{ __('pricing_bottom_cta_btn') }}
                     </a>
                 </div>

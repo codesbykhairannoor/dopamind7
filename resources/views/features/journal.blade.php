@@ -33,7 +33,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
+                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
                         {{ __('journal_hero_cta_1') }}
                     </a>
                     <a href="#how-it-works" class="bg-white text-gray-700 border-2 border-gray-200 px-10 py-4 rounded-full font-bold text-lg hover:border-indigo-200 hover:bg-indigo-50 transition">
@@ -208,7 +208,7 @@
             <p class="text-gray-500 text-xl mb-10">
                 {{ __('journal_cta_desc') }}
             </p>
-            <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
                 {{ __('journal_cta_btn') }}
             </a>
             <p class="mt-6 text-sm text-gray-400 font-medium">{{ __('journal_cta_note') }}</p>

@@ -190,7 +190,7 @@
             <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative">
                 
                 {{-- LOGO --}}
-                <a href="{{ route('home') }}" class="group flex items-center gap-2.5 z-[110]">
+                <a href="{{ route('home') }}" hx-boost="false" class="group flex items-center gap-2.5 z-[110]">
                     <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
                         <img src="/favicon.svg?v=2" alt="Logo" class="w-6 h-6 brightness-0 invert" />
                     </div>
@@ -496,13 +496,13 @@
                      <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
-                            <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
-                            <li><a href="{{ route('features.finance') }}" class="hover:text-indigo-600 transition">Finance OS</a></li>
-                            <li><a href="{{ route('features.planner') }}" class="hover:text-indigo-600 transition">Daily Planner</a></li>
-                            <li><a href="{{ route('features.journal') }}" class="hover:text-indigo-600 transition">Digital Journal</a></li>
-                            <li><a href="{{ route('features.calendar') }}" class="hover:text-indigo-600 transition">Smart Calendar</a></li>
-                            <li><a href="{{ route('features.goal') }}" class="hover:text-indigo-600 transition">Goal Tracker</a></li>
-                            <li><a href="{{ route('features.job') }}" class="hover:text-indigo-600 transition">Job Tracker</a></li>
+                            <li><a href="{{ route('features.habit') }}" hx-boost="false" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
+                            <li><a href="{{ route('features.finance') }}" hx-boost="false" class="hover:text-indigo-600 transition">Finance OS</a></li>
+                            <li><a href="{{ route('features.planner') }}" hx-boost="false" class="hover:text-indigo-600 transition">Daily Planner</a></li>
+                            <li><a href="{{ route('features.journal') }}" hx-boost="false" class="hover:text-indigo-600 transition">Digital Journal</a></li>
+                            <li><a href="{{ route('features.calendar') }}" hx-boost="false" class="hover:text-indigo-600 transition">Smart Calendar</a></li>
+                            <li><a href="{{ route('features.goal') }}" hx-boost="false" class="hover:text-indigo-600 transition">Goal Tracker</a></li>
+                            <li><a href="{{ route('features.job') }}" hx-boost="false" class="hover:text-indigo-600 transition">Job Tracker</a></li>
                         </ul>
                     </div>
 
@@ -510,35 +510,35 @@
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
-                            <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">Vs. Paper Planner</a></li>
-                            <li><a href="{{ route('compare.sheets') }}" class="hover:text-indigo-600 transition">Vs. Excel/Sheets</a></li>
-                            <li><a href="{{ route('compare.finance-apps') }}" class="hover:text-indigo-600 transition">Vs. Finance Apps</a></li>
-                            <li><a href="{{ route('compare.planner-apps') }}" class="hover:text-indigo-600 transition">Vs. Planner Apps</a></li>
-                            <li><a href="{{ route('compare.five-apps') }}" class="hover:text-indigo-600 transition">Vs. 5 Separate Apps</a></li>
-                            <li><a href="{{ route('compare.management-tools') }}" class="hover:text-indigo-600 transition">Vs. General Tools</a></li>
-                            <li><a href="{{ route('compare.habit-apps') }}" class="hover:text-indigo-600 transition">Vs. Habit Apps</a></li>
+                            <li><a href="{{ route('compare.paper') }}" hx-boost="false" class="hover:text-indigo-600 transition">Vs. Paper Planner</a></li>
+                            <li><a href="{{ route('compare.sheets') }}" hx-boost="false" class="hover:text-indigo-600 transition">Vs. Excel/Sheets</a></li>
+                            <li><a href="{{ route('compare.finance-apps') }}" hx-boost="false" class="hover:text-indigo-600 transition">Vs. Finance Apps</a></li>
+                            <li><a href="{{ route('compare.planner-apps') }}" hx-boost="false" class="hover:text-indigo-600 transition">Vs. Planner Apps</a></li>
+                            <li><a href="{{ route('compare.five-apps') }}" hx-boost="false" class="hover:text-indigo-600 transition">Vs. 5 Separate Apps</a></li>
+                            <li><a href="{{ route('compare.management-tools') }}" hx-boost="false" class="hover:text-indigo-600 transition">Vs. General Tools</a></li>
+                            <li><a href="{{ route('compare.habit-apps') }}" hx-boost="false" class="hover:text-indigo-600 transition">Vs. Habit Apps</a></li>
                         </ul>
                     </div>
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Resources</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
-                            <li><a href="{{ route('resources.help') }}" class="hover:text-indigo-600 transition">Help Center</a></li>
-                            <li><a href="{{ route('resources.blog') }}" class="hover:text-indigo-600 transition">Blog</a></li>
-                            <li><a href="{{ route('resources.changelog') }}" class="hover:text-indigo-600 transition">Changelog</a></li>
-                            <li><a href="{{ route('resources.community') }}" class="hover:text-indigo-600 transition">Community</a></li>
-                            <li><a href="{{ route('resources.guide') }}" class="hover:text-indigo-600 transition">User Guide</a></li>
+                            <li><a href="{{ route('resources.help') }}" hx-boost="false" class="hover:text-indigo-600 transition">Help Center</a></li>
+                            <li><a href="{{ route('resources.blog') }}" hx-boost="false" class="hover:text-indigo-600 transition">Blog</a></li>
+                            <li><a href="{{ route('resources.changelog') }}" hx-boost="false" class="hover:text-indigo-600 transition">Changelog</a></li>
+                            <li><a href="{{ route('resources.community') }}" hx-boost="false" class="hover:text-indigo-600 transition">Community</a></li>
+                            <li><a href="{{ route('resources.guide') }}" hx-boost="false" class="hover:text-indigo-600 transition">User Guide</a></li>
                         </ul>
                     </div>
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
-                            <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">About Us</a></li>
-                            <li><a href="{{ route('company.privacy') }}" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
-                            <li><a href="{{ route('company.terms') }}" class="hover:text-indigo-600 transition">Terms of Service</a></li>
-                            <li><a href="{{ route('company.security') }}" class="hover:text-indigo-600 transition">Security</a></li>
-                            <li><a href="{{ route('company.status') }}" class="hover:text-indigo-600 transition">System Status</a></li>
+                            <li><a href="{{ route('about') }}" hx-boost="false" class="hover:text-indigo-600 transition">{{ __('About Us') }}</a></li>
+                            <li><a href="{{ route('company.privacy') }}" hx-boost="false" class="hover:text-indigo-600 transition">{{ __('Privacy Policy') }}</a></li>
+                            <li><a href="{{ route('company.terms') }}" hx-boost="false" class="hover:text-indigo-600 transition">{{ __('Terms of Service') }}</a></li>
+                            <li><a href="{{ route('company.security') }}" hx-boost="false" class="hover:text-indigo-600 transition">{{ __('Security') }}</a></li>
+                            <li><a href="{{ route('company.status') }}" hx-boost="false" class="hover:text-indigo-600 transition">{{ __('System Status') }}</a></li>
                         </ul>
                     </div>
 

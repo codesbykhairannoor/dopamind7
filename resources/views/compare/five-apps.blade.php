@@ -36,7 +36,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
+                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
                         {{ __('five_hero_cta') }} →
                     </a>
                     <p class="py-4 text-sm text-gray-400 font-bold self-center">{{ __('five_hero_note') }}</p>
@@ -277,7 +277,7 @@
             <p class="text-slate-400 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('five_cta_desc') }}
             </p>
-            <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
                 {{ __('five_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-slate-500 font-bold uppercase tracking-[0.3em] font-mono">{{ __('five_cta_sub') }}</p>

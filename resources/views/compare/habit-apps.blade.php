@@ -36,7 +36,7 @@
                 
                 <div class="flex flex-col sm:flex-row gap-4">
                     {{-- BUTTON TETAP INDIGO SESUAI REQUEST --}}
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
+                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
                         {{ __('habitap_hero_cta') }} →
                     </a>
                     <p class="py-4 text-sm text-gray-400 font-bold self-center">{{ __('habitap_hero_note') }}</p>
@@ -312,7 +312,7 @@
             <p class="text-indigo-900/60 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('habitap_cta_desc') }}
             </p>
-            <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_60px_rgba(79,70,229,0.5)]">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_60px_rgba(79,70,229,0.5)]">
                 {{ __('habitap_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-indigo-400 font-bold uppercase tracking-widest">{{ __('habitap_cta_sub') }}</p>

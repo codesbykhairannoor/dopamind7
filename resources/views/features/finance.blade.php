@@ -51,7 +51,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
+                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
                         {{ __('finance_hero_cta_1') }}
                     </a>
                     <a href="#how-it-works" class="bg-white text-gray-700 border-2 border-gray-200 px-10 py-4 rounded-full font-bold text-lg hover:border-indigo-200 hover:bg-indigo-50 transition">
@@ -327,7 +327,7 @@
                     {{ __('finance_cta_desc') }}
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 items-center">
-                    <a href="{{ route('register') }}" class="w-full sm:w-auto bg-white text-indigo-900 px-12 py-5 rounded-full font-black text-lg hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl shadow-indigo-900/50">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-white text-indigo-900 px-12 py-5 rounded-full font-black text-lg hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl shadow-indigo-900/50">
                         {{ __('finance_cta_btn') }}
                     </a>
                 </div>

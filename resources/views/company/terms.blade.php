@@ -144,7 +144,7 @@
                             <p class="text-slate-400 mb-8 max-w-lg mx-auto">{{ __('terms_cta_desc') }}</p>
                             
                             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                                <a href="{{ route('register') }}" class="px-8 py-3 bg-indigo-500 hover:bg-indigo-400 text-white rounded-xl font-bold transition shadow-lg shadow-indigo-500/30 flex items-center justify-center gap-2">
+                                <a hx-boost="false" href="{{ route('register') }}" class="px-8 py-3 bg-indigo-500 hover:bg-indigo-400 text-white rounded-xl font-bold transition shadow-lg shadow-indigo-500/30 flex items-center justify-center gap-2">
                                     <span>✍️</span> {{ __('terms_cta_btn_agree') }}
                                 </a>
                                 <a href="{{ route('home') }}" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-bold transition flex items-center justify-center">

@@ -44,7 +44,7 @@
             
             {{-- CTA --}}
             <div class="flex justify-center gap-4 mb-24">
-                <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.4)] transition transform hover:-translate-y-1">
+                <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.4)] transition transform hover:-translate-y-1">
                     {{ __('atomic_hero_cta') }}
                 </a>
             </div>
@@ -142,7 +142,7 @@
         <div class="max-w-4xl mx-auto">
             <h2 class="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tight">{{ __('atomic_cta_title') }}</h2>
             <p class="text-xl text-gray-500 mb-12 max-w-2xl mx-auto">{{ __('atomic_cta_desc') }}</p>
-            <a href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-800 shadow-2xl transition transform hover:-translate-y-1">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-800 shadow-2xl transition transform hover:-translate-y-1">
                 {{ __('atomic_cta_btn') }}
             </a>
         </div>

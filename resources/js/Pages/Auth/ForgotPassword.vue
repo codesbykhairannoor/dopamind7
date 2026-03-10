@@ -1,9 +1,6 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Head, useForm, Link } from '@inertiajs/vue3';
+import InputError from '@/Components/InputError.vue';
 
 defineProps({
     status: { type: String },
@@ -19,45 +16,68 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Reset Password" />
+    <Head title="Reset Password" />
 
-        <div class="min-h-[80vh] flex items-center justify-center px-4 py-12 relative overflow-hidden">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-red-50/70 rounded-full blur-[100px] -z-10"></div>
+    <div class="relative min-h-screen flex flex-col items-center justify-center bg-white selection:bg-indigo-100 selection:text-indigo-700 p-6 overflow-hidden">
+        
+        <div class="absolute top-0 w-full h-96 bg-gradient-to-r from-indigo-50/50 via-purple-50/50 to-blue-50/50 blur-3xl -z-10 pointer-events-none"></div>
 
-            <div class="w-full max-w-[450px] bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl border border-gray-100 relative z-10 text-center">
-                
-                <div class="w-16 h-16 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">
-                    🔐
-                </div>
-
-                <h2 class="text-2xl font-black text-indigo-950 mb-2">{{ $t('auth_reset_title') }}</h2>
-                <p class="text-gray-500 text-sm mb-8 leading-relaxed">
-                   {{ $t('auth_reset_desc') }}
-                </p>
-
-                <div v-if="status" class="mb-6 font-medium text-sm text-green-700 bg-green-50 p-4 rounded-xl border border-green-100">
-                    {{ status }}
-                </div>
-
-                <form @submit.prevent="submit" class="text-left space-y-5">
-                    <div>
-                        <InputLabel for="email" :value="$t('auth_label_email')" class="font-bold text-gray-700 ml-1 mb-1" />
-                        <TextInput id="email" type="email" class="mt-1 block w-full rounded-xl bg-gray-50 border-gray-200 focus:border-indigo-500 py-3" v-model="form.email" required autofocus :placeholder="$t('auth_placeholder_email')" />
-                        <InputError class="mt-2" :message="form.errors.email" />
-                    </div>
-
-                    <button class="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl shadow-lg hover:bg-indigo-700 transition transform hover:-translate-y-0.5 disabled:opacity-75" :disabled="form.processing">
-                        {{ $t('auth_btn_reset') }}
-                    </button>
-                    
-                    <div class="text-center mt-6">
-                        <Link :href="route('login')" class="text-sm text-gray-500 font-bold hover:text-gray-900">
-                           {{ $t('auth_back_login') }}
-                        </Link>
-                    </div>
-                </form>
+        <div class="w-full max-w-[420px] flex flex-col relative z-10">
+            <div class="flex justify-center mb-8">
+                <a :href="route('home')" class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200 transition-transform duration-500 hover:rotate-[360deg]">
+                    <img src="/favicon.svg?v=2" alt="OneForMind Logo" class="h-8 w-8 brightness-0 invert" />
+                </a>
             </div>
+
+            <div class="text-center mb-8">
+                <h1 class="text-2xl font-black text-slate-900 mb-2 tracking-tight">
+                    {{ $t('auth_reset_title', 'Reset password') }}
+                </h1>
+                <p class="text-sm font-medium text-slate-500 leading-relaxed px-4">
+                    {{ $t('auth_reset_desc', "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link.") }}
+                </p>
+            </div>
+
+            <div v-if="status" class="mb-6 font-bold text-sm text-indigo-600 bg-indigo-50 p-4 rounded-xl border border-indigo-100/50 flex items-center justify-center gap-3 text-center">
+                <span class="text-lg">📧</span> {{ status }}
+            </div>
+
+            <form @submit.prevent="submit" class="space-y-4">
+                <div>
+                    <input
+                        id="email"
+                        type="email"
+                        v-model="form.email"
+                        :placeholder="$t('auth_placeholder_email')"
+                        class="w-full px-4 py-3 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-4 transition-all outline-none"
+                        :class="form.errors.email ? 'border-red-400 focus:ring-red-100 focus:border-red-500' : 'focus:border-indigo-500 focus:ring-indigo-500/10'"
+                        required
+                        autofocus
+                    />
+                    <InputError class="mt-1.5 ml-1" :message="form.errors.email" />
+                </div>
+
+                <button
+                    type="submit"
+                    :disabled="form.processing"
+                    class="w-full mt-4 bg-indigo-600 text-white font-black py-3 rounded-xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition transform hover:-translate-y-0.5 active:scale-95 disabled:opacity-75 flex items-center justify-center gap-2"
+                >
+                    <span>{{ $t('auth_btn_reset', 'Send Recovery Link') }}</span>
+                    <svg v-if="!form.processing" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </button>
+
+                <div class="text-center mt-6">
+                    <Link :href="route('login')" class="text-sm font-bold text-slate-500 hover:text-indigo-600 transition inline-flex items-center justify-center gap-1.5 group">
+                        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        {{ $t('auth_back_login', 'Back to sign in') }}
+                    </Link>
+                </div>
+            </form>
+            
+            <div class="mt-10 text-center font-medium">
+                 <a :href="route('resources.help')" class="text-[11px] text-slate-500 hover:text-indigo-600 transition-colors">{{ $t('auth_footer_help') }}</a>
+            </div>
+            
         </div>
-    </GuestLayout>
+    </div>
 </template>

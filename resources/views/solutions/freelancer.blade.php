@@ -62,7 +62,7 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4">
-                <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
+                <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
                     {{ __('freelance_hero_cta_1') }}
                 </a>
             </div>
@@ -335,7 +335,7 @@
                 <p class="text-slate-400 text-xl md:text-2xl mb-12 font-medium leading-relaxed max-w-2xl mx-auto">
                     {{ __('freelance_cta_desc') }}
                 </p>
-                <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-lg hover:bg-indigo-500 transition transform hover:scale-105 shadow-xl shadow-indigo-900/50">
+                <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-lg hover:bg-indigo-500 transition transform hover:scale-105 shadow-xl shadow-indigo-900/50">
                     {{ __('freelance_cta_btn') }}
                 </a>
                 <p class="mt-8 text-sm text-slate-600 font-bold uppercase tracking-widest">{{ __('freelance_cta_note') }}</p>

@@ -49,6 +49,7 @@ const switchLang = (lang) => {
 
                 <div class="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
                     
+                    <!-- DROPDOWN: FEATURES -->
                     <div class="relative group" @mouseenter="activeMenu = 'features'" @mouseleave="activeMenu = null">
                         <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all flex items-center gap-1 group-hover:text-indigo-600">
                             {{ $t('nav_features', 'Features') }}
@@ -72,19 +73,27 @@ const switchLang = (lang) => {
                                         </a>
                                         <a :href="route('features.finance')" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                             <span class="text-xl group-hover/item:scale-110 transition-transform">💰</span>
-                                            <div><h4 class="font-bold text-slate-900 text-sm">Finance</h4><p class="text-[11px] font-medium text-slate-500">Master your cash flow.</p></div>
+                                            <div><h4 class="font-bold text-slate-900 text-sm">Finance OS</h4><p class="text-[11px] font-medium text-slate-500">Master your money flow.</p></div>
                                         </a>
                                         <a :href="route('features.planner')" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                             <span class="text-xl group-hover/item:scale-110 transition-transform">🎯</span>
-                                            <div><h4 class="font-bold text-slate-900 text-sm">Planner</h4><p class="text-[11px] font-medium text-slate-500">Organize your daily tasks.</p></div>
+                                            <div><h4 class="font-bold text-slate-900 text-sm">Daily Planner</h4><p class="text-[11px] font-medium text-slate-500">Focus on what matters.</p></div>
                                         </a>
                                         <a :href="route('features.journal')" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                             <span class="text-xl group-hover/item:scale-110 transition-transform">📔</span>
-                                            <div><h4 class="font-bold text-slate-900 text-sm">Journal</h4><p class="text-[11px] font-medium text-slate-500">Clear your mental clutter.</p></div>
+                                            <div><h4 class="font-bold text-slate-900 text-sm">Journal</h4><p class="text-[11px] font-medium text-slate-500">Capture your thoughts.</p></div>
                                         </a>
                                         <a :href="route('features.calendar')" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                             <span class="text-xl group-hover/item:scale-110 transition-transform">📅</span>
-                                            <div><h4 class="font-bold text-slate-900 text-sm">Calendar</h4><p class="text-[11px] font-medium text-slate-500">Visual time management.</p></div>
+                                            <div><h4 class="font-bold text-slate-900 text-sm">Calendar</h4><p class="text-[11px] font-medium text-slate-500">Sync your schedules.</p></div>
+                                        </a>
+                                        <a :href="route('features.goal')" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                            <span class="text-xl group-hover/item:scale-110 transition-transform">🎯</span>
+                                            <div><h4 class="font-bold text-slate-900 text-sm">Goal Tracker</h4><p class="text-[11px] font-medium text-slate-500">Track your milestones.</p></div>
+                                        </a>
+                                        <a :href="route('features.job')" class="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                            <span class="text-xl group-hover/item:scale-110 transition-transform">💼</span>
+                                            <div><h4 class="font-bold text-slate-900 text-sm">Job Tracker</h4><p class="text-[11px] font-medium text-slate-500">Manage career growth.</p></div>
                                         </a>
                                     </div>
                                 </div>
@@ -92,6 +101,7 @@ const switchLang = (lang) => {
                         </Transition>
                     </div>
 
+                    <!-- DROPDOWN: SOLUTIONS -->
                     <div class="relative group" @mouseenter="activeMenu = 'solutions'" @mouseleave="activeMenu = null">
                         <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
                             {{ $t('nav_solutions', 'Solutions') }}
@@ -106,25 +116,71 @@ const switchLang = (lang) => {
                             leave-from-class="opacity-100 translate-y-0"
                             leave-to-class="opacity-0 translate-y-2"
                         >
-                            <div v-show="activeMenu === 'solutions'" class="absolute top-full left-0 w-[280px] pt-4 z-50">
-                                <div class="p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem] flex flex-col gap-1 text-left">
-                                    <a :href="route('solutions.student')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
-                                        <span class="text-lg group-hover/item:scale-110 transition-transform">🎓</span>
-                                        <div><h4 class="font-bold text-slate-900 text-sm">For Students</h4></div>
-                                    </a>
-                                    <a :href="route('solutions.freelancer')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
-                                        <span class="text-lg group-hover/item:scale-110 transition-transform">💻</span>
-                                        <div><h4 class="font-bold text-slate-900 text-sm">For Freelancers</h4></div>
-                                    </a>
-                                    <a :href="route('solutions.personalgrowth')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
-                                        <span class="text-lg group-hover/item:scale-110 transition-transform">🚀</span>
-                                        <div><h4 class="font-bold text-slate-900 text-sm">Personal Growth</h4></div>
-                                    </a>
+                            <div v-show="activeMenu === 'solutions'" class="absolute top-full -left-32 w-[860px] pt-4 z-50">
+                                <div class="p-8 bg-white border border-slate-100 shadow-2xl rounded-[2.5rem] grid grid-cols-3 gap-6 text-left">
+                                    <!-- Column 1: By Role -->
+                                    <div>
+                                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">By Role</p>
+                                        <div class="space-y-1.5">
+                                            <a :href="route('solutions.student')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">🎓</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Students</h4><p class="text-[10px] font-medium text-slate-500">Optimize your learning.</p></div>
+                                            </a>
+                                            <a :href="route('solutions.freelancer')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">💻</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Freelancers</h4><p class="text-[10px] font-medium text-slate-500">Scale your workflow.</p></div>
+                                            </a>
+                                            <a :href="route('solutions.personalgrowth')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">🚀</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Personal Growth</h4><p class="text-[10px] font-medium text-slate-500">Master your self-system.</p></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Column 2: By Use Case -->
+                                    <div>
+                                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">By Use Case</p>
+                                        <div class="space-y-1.5">
+                                            <a :href="route('solutions.finance')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">💰</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Financial Clarity</h4><p class="text-[10px] font-medium text-slate-500">Manage assets & cashflow.</p></div>
+                                            </a>
+                                            <a :href="route('solutions.career')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">💼</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Career Tracker</h4><p class="text-[10px] font-medium text-slate-500">Focus on professional growth.</p></div>
+                                            </a>
+                                            <a :href="route('solutions.mental')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">🧘</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Mental Health</h4><p class="text-[10px] font-medium text-slate-500">Journaling & mindfulness.</p></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Column 3: By Methodology -->
+                                    <div>
+                                        <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-5 px-3 flex items-center gap-2">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+                                            By Methodology
+                                        </p>
+                                        <div class="space-y-1.5">
+                                            <a :href="route('solutions.atomic')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">🌱</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Atomic Habits</h4><p class="text-[10px] font-medium text-slate-500">Small steps, big results.</p></div>
+                                            </a>
+                                            <a :href="route('solutions.deepwork')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">⚡</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Deep Work</h4><p class="text-[10px] font-medium text-slate-500">Uninterrupted focus.</p></div>
+                                            </a>
+                                            <a :href="route('solutions.secondbrain')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">🧠</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Second Brain</h4><p class="text-[10px] font-medium text-slate-500">Digital knowledge map.</p></div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </Transition>
                     </div>
 
+                    <!-- DROPDOWN: RESOURCES -->
                     <div class="relative group" @mouseenter="activeMenu = 'resources'" @mouseleave="activeMenu = null">
                         <button class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
                             {{ $t('nav_resources', 'Resources') }}
@@ -139,20 +195,42 @@ const switchLang = (lang) => {
                             leave-from-class="opacity-100 translate-y-0"
                             leave-to-class="opacity-0 translate-y-2"
                         >
-                            <div v-show="activeMenu === 'resources'" class="absolute top-full left-0 w-[280px] pt-4 z-50 text-left">
-                                <div class="p-3 bg-white border border-slate-100 shadow-2xl rounded-[1.5rem] flex flex-col gap-1">
-                                    <a :href="route('resources.guide')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
-                                        <span class="text-lg group-hover/item:scale-110 transition-transform">📖</span>
-                                        <div><h4 class="font-bold text-slate-900 text-sm">User Guide</h4></div>
-                                    </a>
-                                    <a :href="route('resources.blog')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
-                                        <span class="text-lg group-hover/item:scale-110 transition-transform">✍️</span>
-                                        <div><h4 class="font-bold text-slate-900 text-sm">Blog</h4></div>
-                                    </a>
-                                    <a :href="route('resources.stories')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
-                                        <span class="text-lg group-hover/item:scale-110 transition-transform">✨</span>
-                                        <div><h4 class="font-bold text-slate-900 text-sm">User Stories</h4></div>
-                                    </a>
+                            <div v-show="activeMenu === 'resources'" class="absolute top-full -left-20 w-[600px] pt-4 z-50 text-left">
+                                <div class="p-8 bg-white border border-slate-100 shadow-2xl rounded-[2.5rem] grid grid-cols-2 gap-8">
+                                    <div>
+                                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">Knowledge & Help</p>
+                                        <div class="space-y-1">
+                                            <a :href="route('resources.guide')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">📖</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">User Guide</h4><p class="text-[10px] font-medium text-slate-500">Master the OS.</p></div>
+                                            </a>
+                                            <a :href="route('resources.help')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">🙋‍♂️</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Help Center</h4><p class="text-[10px] font-medium text-slate-500">Find solutions.</p></div>
+                                            </a>
+                                            <a :href="route('resources.changelog')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">🚀</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">What's New</h4><p class="text-[10px] font-medium text-slate-500">Track app updates.</p></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">Social & Community</p>
+                                        <div class="space-y-1">
+                                            <a :href="route('resources.community')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">🌍</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Community</h4><p class="text-[10px] font-medium text-slate-500">Connect with users.</p></div>
+                                            </a>
+                                            <a :href="route('resources.blog')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">✍️</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Blog</h4><p class="text-[10px] font-medium text-slate-500">Productivity insights.</p></div>
+                                            </a>
+                                            <a :href="route('resources.stories')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
+                                                <span class="text-lg group-hover/item:scale-110 transition-transform">✨</span>
+                                                <div><h4 class="font-bold text-slate-900 text-sm">Success Stories</h4><p class="text-[10px] font-medium text-slate-500">User transformations.</p></div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </Transition>
@@ -207,10 +285,12 @@ const switchLang = (lang) => {
                             </button>
                             <div v-show="activeAccordion === 'features'" class="grid grid-cols-1 gap-1 pb-4">
                                 <a :href="route('features.habit')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🌱 Habit Tracker</a>
-                                <a :href="route('features.finance')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💰 Finance Tracker</a>
+                                <a :href="route('features.finance')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💰 Finance OS</a>
                                 <a :href="route('features.planner')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🎯 Daily Planner</a>
                                 <a :href="route('features.journal')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">📔 Mindful Journal</a>
                                 <a :href="route('features.calendar')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">📅 Calendar</a>
+                                <a :href="route('features.goal')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🎯 Goal Tracker</a>
+                                <a :href="route('features.job')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💼 Job Tracker</a>
                             </div>
                         </div>
 
@@ -219,10 +299,31 @@ const switchLang = (lang) => {
                                 <span>{{ $t('nav_solutions', 'Solutions') }}</span>
                                 <svg :class="activeAccordion === 'solutions' ? 'rotate-180' : ''" class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
-                            <div v-show="activeAccordion === 'solutions'" class="grid grid-cols-1 gap-1 pb-4 text-left">
-                                <a :href="route('solutions.student')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🎓 For Students</a>
-                                <a :href="route('solutions.freelancer')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💻 For Freelancers</a>
-                                <a :href="route('solutions.personalgrowth')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🚀 Personal Growth</a>
+                            <div v-show="activeAccordion === 'solutions'" class="pb-6 space-y-6">
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 px-3">By Role</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <a :href="route('solutions.student')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🎓 Students</a>
+                                        <a :href="route('solutions.freelancer')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💻 Freelancers</a>
+                                        <a :href="route('solutions.personalgrowth')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🚀 Personal Growth</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 px-3">By Use Case</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <a :href="route('solutions.finance')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💰 Financial Clarity</a>
+                                        <a :href="route('solutions.career')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💼 Career Tracker</a>
+                                        <a :href="route('solutions.mental')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🧘 Mental Health</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-3 px-3">By Methodology</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <a :href="route('solutions.atomic')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🌱 Atomic Habits</a>
+                                        <a :href="route('solutions.deepwork')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">⚡ Deep Work</a>
+                                        <a :href="route('solutions.secondbrain')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🧠 Second Brain</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -231,10 +332,23 @@ const switchLang = (lang) => {
                                 <span>{{ $t('nav_resources', 'Resources') }}</span>
                                 <svg :class="activeAccordion === 'resources' ? 'rotate-180' : ''" class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
-                            <div v-show="activeAccordion === 'resources'" class="grid grid-cols-1 gap-1 pb-4 text-left">
-                                <a :href="route('resources.guide')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">📖 User Guide</a>
-                                <a :href="route('resources.blog')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">✍️ Blog</a>
-                                <a :href="route('resources.stories')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">✨ User Stories</a>
+                            <div v-show="activeAccordion === 'resources'" class="pb-6 space-y-6">
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 px-3">Knowledge & Help</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <a :href="route('resources.guide')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">📖 User Guide</a>
+                                        <a :href="route('resources.help')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🙋‍♂️ Help Center</a>
+                                        <a :href="route('resources.changelog')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🚀 What's New</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 px-3">Social & Community</p>
+                                    <div class="grid grid-cols-1 gap-1">
+                                        <a :href="route('resources.community')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🌍 Community</a>
+                                        <a :href="route('resources.blog')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">✍️ Blog</a>
+                                        <a :href="route('resources.stories')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">✨ Success Stories</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -268,43 +382,62 @@ const switchLang = (lang) => {
 
         <footer class="bg-slate-50 border-t border-slate-100 pt-20 pb-10 mt-auto">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16 text-left">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 mb-16 text-left">
                     <div class="col-span-2 md:col-span-1">
                         <a :href="route('home')" class="flex items-center gap-2 mb-6">
                             <img src="/favicon.svg?v=2" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
                         </a>
-                        <p class="text-sm text-slate-500 leading-relaxed">
-                            The unified productivity system designed to bring clarity to your life, habits, and finances.
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            {{ $t('footer_desc', 'The unified productivity system designed to bring clarity to your life, habits, and finances.') }}
                         </p>
                     </div>
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-500">
+                        <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('features.habit')" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
-                            <li><a :href="route('features.finance')" class="hover:text-indigo-600 transition">Finance Tracker</a></li>
+                            <li><a :href="route('features.finance')" class="hover:text-indigo-600 transition">Finance OS</a></li>
                             <li><a :href="route('features.planner')" class="hover:text-indigo-600 transition">Daily Planner</a></li>
-                            <li><a :href="route('pricing')" class="hover:text-indigo-600 transition">Pricing</a></li>
+                            <li><a :href="route('features.journal')" class="hover:text-indigo-600 transition">Digital Journal</a></li>
+                            <li><a :href="route('features.calendar')" class="hover:text-indigo-600 transition">Smart Calendar</a></li>
+                            <li><a :href="route('features.goal')" class="hover:text-indigo-600 transition">Goal Tracker</a></li>
+                            <li><a :href="route('features.job')" class="hover:text-indigo-600 transition">Job Tracker</a></li>
                         </ul>
                     </div>
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-500">
-                            <li><a :href="route('compare.paper')" class="hover:text-indigo-600 transition">vs Paper Planner</a></li>
-                            <li><a :href="route('compare.sheets')" class="hover:text-indigo-600 transition">vs Spreadsheets</a></li>
-                            <li><a :href="route('compare.management-tools')" class="hover:text-indigo-600 transition">vs Task Tools</a></li>
-                            <li><a :href="route('compare.habit-apps')" class="hover:text-indigo-600 transition">vs Habit Apps</a></li>
+                        <ul class="space-y-4 text-sm font-bold text-slate-600">
+                            <li><a :href="route('compare.paper')" class="hover:text-indigo-600 transition">Vs. Paper Planner</a></li>
+                            <li><a :href="route('compare.sheets')" class="hover:text-indigo-600 transition">Vs. Excel/Sheets</a></li>
+                            <li><a :href="route('compare.finance-apps')" class="hover:text-indigo-600 transition">Vs. Finance Apps</a></li>
+                            <li><a :href="route('compare.planner-apps')" class="hover:text-indigo-600 transition">Vs. Planner Apps</a></li>
+                            <li><a :href="route('compare.five-apps')" class="hover:text-indigo-600 transition">Vs. 5 Separate Apps</a></li>
+                            <li><a :href="route('compare.management-tools')" class="hover:text-indigo-600 transition">Vs. General Tools</a></li>
+                            <li><a :href="route('compare.habit-apps')" class="hover:text-indigo-600 transition">Vs. Habit Apps</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Resources</h3>
+                        <ul class="space-y-4 text-sm font-bold text-slate-600">
+                            <li><a :href="route('resources.help')" class="hover:text-indigo-600 transition">Help Center</a></li>
+                            <li><a :href="route('resources.blog')" class="hover:text-indigo-600 transition">Blog</a></li>
+                            <li><a :href="route('resources.changelog')" class="hover:text-indigo-600 transition">Changelog</a></li>
+                            <li><a :href="route('resources.community')" class="hover:text-indigo-600 transition">Community</a></li>
+                            <li><a :href="route('resources.guide')" class="hover:text-indigo-600 transition">User Guide</a></li>
                         </ul>
                     </div>
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-500">
+                        <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('about')" class="hover:text-indigo-600 transition">About Us</a></li>
                             <li><a :href="route('company.privacy')" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
                             <li><a :href="route('company.terms')" class="hover:text-indigo-600 transition">Terms of Service</a></li>
+                            <li><a :href="route('company.security')" class="hover:text-indigo-600 transition">Security</a></li>
+                            <li><a :href="route('company.status')" class="hover:text-indigo-600 transition">System Status</a></li>
                         </ul>
                     </div>
 
@@ -319,7 +452,7 @@ const switchLang = (lang) => {
 
                 <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-600">
                     <p>&copy; {{ new Date().getFullYear() }} OneForMind. All rights reserved.</p>
-                    <p>Made with ✨ by Dopamind7 Team</p>
+                    <p>Made with ❤️ for better focus.</p>
                 </div>
             </div>
         </footer>

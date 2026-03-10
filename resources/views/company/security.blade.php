@@ -292,7 +292,7 @@
                 {{ __('sec_cta_desc') }}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="{{ route('register') }}" class="w-full sm:w-auto px-12 py-5 bg-indigo-600 text-white rounded-full font-black text-lg hover:bg-indigo-700 shadow-2xl shadow-indigo-200 transition transform hover:-translate-y-1">
+                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto px-12 py-5 bg-indigo-600 text-white rounded-full font-black text-lg hover:bg-indigo-700 shadow-2xl shadow-indigo-200 transition transform hover:-translate-y-1">
                     {{ __('sec_cta_btn') }}
                 </a>
                 <a href="{{ route('about') }}" class="w-full sm:w-auto px-12 py-5 bg-white text-slate-900 rounded-full font-black text-lg border border-slate-200 hover:bg-slate-50 transition">

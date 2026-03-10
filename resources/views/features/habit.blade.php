@@ -51,7 +51,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
+                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
                         {{ __('habit_hero_cta_1') }}
                     </a>
                     <a href="#how-it-works" class="bg-white text-gray-700 border-2 border-gray-200 px-10 py-4 rounded-full font-bold text-lg hover:border-indigo-200 hover:bg-indigo-50 transition">
@@ -308,7 +308,7 @@
                 <p class="text-indigo-200 text-lg mb-10 max-w-2xl mx-auto">
                     {{ __('habit_cta_desc') }}
                 </p>
-                <a href="{{ route('register') }}" class="inline-block bg-white text-indigo-900 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-indigo-50 hover:scale-105 transition transform shadow-xl">
+                <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-indigo-900 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-indigo-50 hover:scale-105 transition transform shadow-xl">
                     {{ __('habit_cta_btn') }}
                 </a>
                 <p class="mt-6 text-sm text-indigo-300">{{ __('habit_cta_note') }}</p>

@@ -8,9 +8,6 @@
   "node_modules/laravel-vite-plugin/inertia-helpers/index.js": [
     "/build/assets/vendor-core-koWuargk.js"
   ],
-  "resources/js/Components/Checkbox.vue": [
-    "/build/assets/Login-BqpB5WR2.js"
-  ],
   "resources/js/Components/DangerButton.vue": [
     "/build/assets/DeleteUserForm-CyrrCqd5.js"
   ],
@@ -117,28 +114,28 @@
     "/build/assets/AuthenticatedLayout-DydoYLP7.css"
   ],
   "resources/js/Layouts/GuestLayout.vue": [
-    "/build/assets/GuestLayout-BW7DNuDy.js"
+    "/build/assets/GuestLayout-BODzt-EU.js"
   ],
   "resources/js/Pages/About.vue": [
-    "/build/assets/About-CJldlvhE.js"
+    "/build/assets/About-BeeIMWCQ.js"
   ],
   "resources/js/Pages/Auth/ConfirmPassword.vue": [
-    "/build/assets/ConfirmPassword-DrVdUGuS.js"
+    "/build/assets/ConfirmPassword-D_pG9UXY.js"
   ],
   "resources/js/Pages/Auth/ForgotPassword.vue": [
-    "/build/assets/ForgotPassword-ZYQuAaCQ.js"
+    "/build/assets/ForgotPassword-D5fmSLMc.js"
   ],
   "resources/js/Pages/Auth/Login.vue": [
-    "/build/assets/Login-BqpB5WR2.js"
+    "/build/assets/Login-CnDomTtS.js"
   ],
   "resources/js/Pages/Auth/Register.vue": [
-    "/build/assets/Register-tULvLE5Y.js"
+    "/build/assets/Register-kOoSNCCu.js"
   ],
   "resources/js/Pages/Auth/ResetPassword.vue": [
-    "/build/assets/ResetPassword-DA1G_I5b.js"
+    "/build/assets/ResetPassword-DZyeay4I.js"
   ],
   "resources/js/Pages/Auth/VerifyEmail.vue": [
-    "/build/assets/VerifyEmail--CWuKTDv.js"
+    "/build/assets/VerifyEmail-ohfR3gGx.js"
   ],
   "resources/js/Pages/Calendar/CalendarDayDetail.vue": [
     "/build/assets/CalendarDayDetail-D6ljv090.js"
@@ -419,7 +416,7 @@
     "/build/assets/Index-C29D7-Ea.js"
   ],
   "resources/js/Pages/Welcome.vue": [
-    "/build/assets/Welcome-DJ6Cicf1.js"
+    "/build/assets/Welcome-C3I9t_9R.js"
   ],
   "resources/js/ssr.js": [],
   "resources/js/ziggy.js": [],

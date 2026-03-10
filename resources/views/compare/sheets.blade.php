@@ -35,7 +35,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
+                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 text-center">
                         {{ __('blank_hero_cta') }} →
                     </a>
                     <p class="py-4 text-sm text-gray-400 font-bold self-center">{{ __('blank_hero_note') }}</p>
@@ -377,7 +377,7 @@
                 {!! __('blank_cta_title') !!}
             </h2>
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
-                <a href="{{ route('register') }}" class="group relative px-12 py-6 bg-gray-900 text-white rounded-full font-bold text-xl overflow-hidden shadow-2xl hover:shadow-gray-400/50 transition-all">
+                <a hx-boost="false" href="{{ route('register') }}" class="group relative px-12 py-6 bg-gray-900 text-white rounded-full font-bold text-xl overflow-hidden shadow-2xl hover:shadow-gray-400/50 transition-all">
                     <div class="absolute inset-0 w-full h-full bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
                     <span class="relative z-10">{{ __('blank_cta_btn') }}</span>
                 </a>
