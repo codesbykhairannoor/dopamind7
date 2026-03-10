@@ -11,8 +11,7 @@
 
 @section('content')
 
-    {{-- SECTION 1: LUXURY LIGHT HERO --}}
-    <header class="pt-48 pb-32 px-6 relative bg-white">
+        <header class="pt-48 pb-32 px-6 relative bg-white">
         {{-- Elegant Minimalist Background --}}
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] [background-size:64px_64px] -z-10"></div>
         
