@@ -149,7 +149,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-B7q06iDg.css",
+    "file": "assets/app-rbFACWF1.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -1186,7 +1186,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-RfUy-FYm.js",
+    "file": "assets/app-CyPsy4uQ.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -1263,7 +1263,7 @@
       "resources/js/Pages/Welcome.vue"
     ],
     "css": [
-      "assets/app-B7q06iDg.css"
+      "assets/app-rbFACWF1.css"
     ]
   }
 }

@@ -246,8 +246,22 @@ Route::get('/resources/guide', function () {
 })->name('resources.guide');
 
 Route::get('/resources/blog', function () {
-    return view('resources.blog');
+    $posts = \App\Models\BlogPost::where('status', 'published')
+        ->where('published_at', '<=', now())
+        ->orderBy('published_at', 'desc')
+        ->paginate(12);
+
+    return view('resources.blog', compact('posts'));
 })->name('resources.blog');
+
+Route::get('/resources/blog/{slug}', function ($slug) {
+    $post = \App\Models\BlogPost::where('slug', $slug)
+        ->where('status', 'published')
+        ->where('published_at', '<=', now())
+        ->firstOrFail();
+
+    return view('resources.post', compact('post'));
+})->name('resources.blog.show');
 
 Route::get('/resources/stories', function () {
     return view('resources.stories');
