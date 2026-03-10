@@ -280,6 +280,14 @@ Route::get('/company/terms', function () {
     return view('company.terms');
 })->name('company.terms');
 
+Route::get('/company/security', function () {
+    return view('company.security');
+})->name('company.security');
+
+Route::get('/company/status', function () {
+    return view('company.status');
+})->name('company.status');
+
 // ==========================================
 // COMPARE
 // ==========================================
@@ -300,6 +308,18 @@ Route::get('/compare/management-tools', function () {
 Route::get('/compare/habit-apps', function () {
     return view('compare.habit-apps');
 })->name('compare.habit-apps');
+
+Route::get('/compare/finance-apps', function () {
+    return view('compare.finance-apps');
+})->name('compare.finance-apps');
+
+Route::get('/compare/planner-apps', function () {
+    return view('compare.planner-apps');
+})->name('compare.planner-apps');
+
+Route::get('/compare/five-apps', function () {
+    return view('compare.five-apps');
+})->name('compare.five-apps');
 
 
 // --- GROUP 2: SOCIAL LOGIN ---
