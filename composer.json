@@ -10,6 +10,8 @@
     "require": {
         "php": "^8.2",
         "cloudinary-labs/cloudinary-laravel": "^2.2",
+        "ext-intl": "*",
+        "ext-zip": "*",
         "filament/filament": "3.2",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.8",
