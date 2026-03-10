@@ -2,403 +2,433 @@
 
 @section('title', 'OneForMind | ' . (app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'All in One Productivity OS'))
 
-{{-- 🔥 MULAI SUNTIKAN SEO & GEO 🔥 --}}
 @section('meta')
     <meta name="description" content="{{ __('welcome_meta_desc') }}">
     <meta property="og:title" content="{{ __('welcome_meta_og_title') }}">
     <meta property="og:description" content="{{ __('welcome_meta_og_desc') }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:image" content="{{ asset('og-image.png') }}">
-
+    
     <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
     <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
     <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
-    
     <link rel="canonical" href="{{ url('/') }}" />
 @endsection
 
-@section('json-ld')
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "OneForMind",
-  "operatingSystem": "Web, iOS, Android",
-  "applicationCategory": "ProductivityApplication",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "1000"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "description": "Unified Productivity OS for tracking habits, finances, planner, and daily journaling."
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "OneForMind",
-  "url": "https://oneformind.com",
-  "logo": "https://oneformind.com/favicon.svg",
-  "sameAs": [
-    "https://twitter.com/OneForMind"
-  ],
-  "areaServed": {
-    "@type": "Country",
-    "name": "Indonesia"
-  },
-  "location": {
-      "@type": "Place",
-      "name": "Jakarta, Indonesia"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "{{ url('/') }}/#organization",
-      "name": "OneForMind",
-      "url": "{{ url('/') }}",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "{{ asset('favicon.svg') }}",
-        "width": "512",
-        "height": "512"
-      },
-      "sameAs": [
-        "https://twitter.com/OneForMind"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "{{ url('/') }}/#website",
-      "url": "{{ url('/') }}",
-      "name": "OneForMind",
-      "publisher": { "@id": "{{ url('/') }}/#organization" },
-      "inLanguage": "{{ app()->getLocale() }}"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "OneForMind",
-      "operatingSystem": "WebBrowser",
-      "applicationCategory": "ProductivityApplication",
-      "description": "{{ app()->getLocale() === 'id' ? 'Oneformind adalah pelacak produktivitas all-in-one yang menggabungkan manajemen keuangan, pelacak kebiasaan (habit), dan perencanaan harian secara efisien.' : 'Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.' }}",
-      "url": "{{ url('/') }}",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "IDR",
-        "availability": "https://schema.org/InStock"
-      },
-      "author": { "@id": "{{ url('/') }}/#organization" }
-    }
-  ]
-}
-</script>
-@endsection
-
 @section('content')
-    <header class="pt-32 pb-24 px-6 text-center relative overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-indigo-50/80 to-white rounded-full blur-[100px] -z-10 animate-pulse duration-[5000ms]"></div>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 1: HERO - THE UNIFIED ORB --}}
+    {{-- ================================================================= --}}
+    <header class="pt-32 pb-40 px-6 text-center relative overflow-hidden bg-white">
+        {{-- Deep Indigo Gradient Background --}}
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-gradient-to-b from-indigo-50/50 via-white to-white rounded-full blur-[120px] -z-10"></div>
         
-        <div class="max-w-5xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-indigo-100 shadow-sm text-indigo-600 font-bold text-xs mb-8 uppercase tracking-wider">
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 shadow-sm text-indigo-700 font-black text-[10px] mb-10 uppercase tracking-[0.2em] animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
+                </span>
                 {{ __('hero_badge') }}
             </div>
             
-            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[1.05] tracking-tight text-gray-900">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-10 leading-[0.95] tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                 {{ __('hero_title_1') }}<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800">
                     {{ __('hero_title_2') }}
                 </span>
             </h1>
             
-            <p class="text-xl md:text-2xl text-gray-500 mb-12 leading-relaxed max-w-3xl mx-auto font-light animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
+            <p class="text-lg md:text-xl text-slate-500 mb-14 leading-relaxed max-w-3xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
                 {{ __('hero_desc') }}
             </p>
             
-            <div class="animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
+            <div class="flex flex-col sm:flex-row justify-center gap-5 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
                 @guest
-                    <div class="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-indigo-700 hover:shadow-xl hover:shadow-indigo-200 transition transform hover:-translate-y-1">
-                            {{ __('hero_cta_primary') }}
-                        </a>
-                        <a href="{{ route('about') }}" class="bg-white text-gray-700 border border-gray-200 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-50 transition">
-                            {{ __('hero_cta_secondary') }}
-                        </a>
-                    </div>
+                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 active:scale-95 group">
+                        {{ __('hero_cta_primary') }}
+                        <span class="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
+                    </a>
+                    <a href="{{ route('about') }}" class="bg-white text-slate-700 border border-slate-200 px-12 py-6 rounded-3xl font-black text-xl hover:bg-slate-50 hover:border-slate-300 transition transform hover:-translate-y-1 active:scale-95">
+                        {{ __('hero_cta_secondary') }}
+                    </a>
                 @endguest
 
                 @auth
-                    <div>
-                        <a href="{{ route('dashboard') }}" class="inline-block bg-indigo-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-xl transition">
-                            {{ __('nav_dashboard') }} →
-                        </a>
-                    </div>
+                    <a href="{{ route('dashboard') }}" class="bg-indigo-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:shadow-2xl transition transform hover:-translate-y-1 active:scale-95">
+                        {{ __('nav_dashboard') }} →
+                    </a>
                 @endauth
             </div>
         </div>
     </header>
 
-    <section class="py-24 bg-gray-50 border-y border-gray-200">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
-                <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-4 text-sm">{{ __('eco_badge') }}</h2>
-                <h3 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">{{ __('eco_title') }}</h3>
-                <p class="text-xl text-gray-500">{{ __('eco_desc') }}</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="col-span-1 sm:col-span-2 bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 relative overflow-hidden group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-50 rounded-full blur-2xl -mr-8 -mt-8 group-hover:bg-green-100 transition"></div>
-                    <div class="relative z-10">
-                        <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center text-3xl mb-6">🌱</div>
-                        <h4 class="text-xl font-bold mb-2 text-gray-900">{{ __('eco_habit_title') }}</h4>
-                        <p class="text-gray-500 text-sm leading-relaxed">{{ __('eco_habit_desc') }}</p>
+    {{-- ================================================================= --}}
+    {{-- SECTION 2: THE FRICTION TAX --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-slate-900 relative overflow-hidden">
+        {{-- Animated Mesh Background --}}
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,#4f46e5_0,transparent_50%)]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 font-black text-[10px] mb-8 uppercase tracking-widest border border-indigo-500/20">
+                        {{ __('fric_badge') }}
                     </div>
-                </div>
-
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
-                    <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6">💸</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">{{ __('eco_finance_title') }}</h4>
-                    <p class="text-gray-500 text-sm">{{ __('eco_finance_desc') }}</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
-                    <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6">📝</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">{{ __('eco_daily_title') }}</h4>
-                    <p class="text-gray-500 text-sm">{{ __('eco_daily_desc') }}</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-400 fill-mode-both">
-                    <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-3xl mb-6">🎯</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">{{ __('eco_goal_title') }}</h4>
-                    <p class="text-gray-500 text-sm">{{ __('eco_goal_desc') }}</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition duration-300 group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500 fill-mode-both">
-                    <div class="w-14 h-14 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center text-3xl mb-6">📔</div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-900">{{ __('eco_journal_title') }}</h4>
-                    <p class="text-gray-500 text-sm">{{ __('eco_journal_desc') }}</p>
-                </div>
-
-                <div class="col-span-1 sm:col-span-2 bg-indigo-950 text-white p-8 rounded-[2rem] shadow-xl hover:shadow-2xl hover:-translate-y-1 transition duration-300 relative overflow-hidden animate-in fade-in slide-in-from-bottom-8 duration-700 delay-600 fill-mode-both">
-                    <div class="absolute bottom-0 right-0 w-64 h-64 bg-indigo-600 rounded-full blur-[80px] opacity-40"></div>
-                    <div class="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center">
-                        <div class="flex-1">
-                            <div class="flex gap-4 mb-4">
-                                <span class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl">💼</span>
-                                <span class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl">🎨</span>
-                            </div>
-                            <h4 class="text-xl font-bold mb-2">{{ __('eco_job_title') }}</h4>
-                            <p class="text-white/90 text-sm">{{ __('eco_job_desc') }}</p>
-                        </div>
-                        <div class="bg-indigo-800 px-4 py-2 rounded-lg text-xs font-bold text-white">
-                            {{ __('eco_coming_soon') }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-white overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6 space-y-32">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="animate-in slide-in-from-left-12 fade-in duration-700 delay-100 fill-mode-both">
-                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-2xl mb-6">📉</div>
-                    <h2 class="text-4xl font-black mb-6 text-gray-900">{{ __('prob_1_title') }}</h2>
-                    <p class="text-gray-500 text-lg leading-relaxed mb-6">{{ __('prob_1_desc') }}</p>
-                    <ul class="space-y-3 text-gray-600 font-medium">
-                        <li class="flex items-center gap-3"><span class="text-red-500">✕</span> {{ __('prob_1_point_1') }}</li>
-                        <li class="flex items-center gap-3"><span class="text-red-500">✕</span> {{ __('prob_1_point_2') }}</li>
-                    </ul>
-                </div>
-                <div class="relative h-[400px] bg-gray-50 rounded-[3rem] border border-gray-100 p-8 flex items-center justify-center overflow-hidden animate-in slide-in-from-right-12 fade-in duration-700 delay-200 fill-mode-both">
-                    <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
-                    <div class="bg-white p-4 rounded-xl shadow-lg border border-red-100 absolute top-20 left-10 transform -rotate-6 w-48 animate-pulse">
-                        <div class="h-2 bg-red-200 w-1/2 rounded mb-2"></div>
-                        <div class="text-xs text-red-500 font-bold">⚠️ Overdue 12 days</div>
-                    </div>
-                    <div class="bg-white p-4 rounded-xl shadow-lg border border-gray-100 absolute bottom-20 right-10 transform rotate-3 w-56">
-                        <div class="h-2 bg-gray-200 w-3/4 rounded mb-2"></div>
-                        <div class="text-xs text-gray-500">Task from 2024...</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1 relative h-[400px] bg-indigo-900 rounded-[3rem] p-8 flex items-center justify-center overflow-hidden animate-in slide-in-from-left-12 fade-in duration-700 delay-100 fill-mode-both">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500 rounded-full blur-[80px] opacity-40"></div>
-                    <div class="grid grid-cols-2 gap-4 w-64">
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center"><div class="text-2xl mb-2">💰</div><div class="text-xs text-white/90">Excel</div></div>
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center"><div class="text-2xl mb-2">✅</div><div class="text-xs text-white/90">Todo</div></div>
-                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 text-center col-span-2"><div class="text-2xl mb-2">🤯</div><div class="text-xs text-white/90">Chaos</div></div>
-                    </div>
-                </div>
-                <div class="order-1 md:order-2 animate-in slide-in-from-right-12 fade-in duration-700 delay-200 fill-mode-both">
-                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl mb-6">🧩</div>
-                    <h2 class="text-4xl font-black mb-6 text-gray-900">{{ __('prob_2_title') }}</h2>
-                    <p class="text-gray-500 text-lg leading-relaxed mb-6">{{ __('prob_2_desc') }}</p>
-                    <p class="text-indigo-600 font-bold text-lg">{{ __('prob_2_solution') }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 bg-gray-50 border-y border-gray-200">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
-                <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-4 text-sm">{{ __('sol_badge') }}</h2>
-                <h3 class="text-4xl font-black mb-6 text-gray-900">{{ __('sol_title') }}</h3>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
-                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-3xl flex items-center justify-center text-3xl mb-8">🌱</div>
-                    <h4 class="text-2xl font-bold mb-4 text-gray-900">{{ __('sol_card_1_title') }}</h4>
-                    <p class="text-gray-500 leading-relaxed">{{ __('sol_card_1_desc') }}</p>
-                </div>
-
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-3xl flex items-center justify-center text-3xl mb-8">💸</div>
-                    <h4 class="text-2xl font-bold mb-4 text-gray-900">{{ __('sol_card_2_title') }}</h4>
-                    <p class="text-gray-500 leading-relaxed">{{ __('sol_card_2_desc') }}</p>
-                </div>
-
-                <div class="bg-indigo-600 p-10 rounded-[2.5rem] shadow-2xl shadow-indigo-200 text-white relative overflow-hidden group animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
-                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition"></div>
-                    <div class="w-16 h-16 bg-white/20 rounded-3xl flex items-center justify-center text-3xl mb-8">🔄</div>
-                    <h4 class="text-2xl font-bold mb-4">{{ __('sol_card_3_title') }}</h4>
-                    <p class="text-indigo-100 leading-relaxed">{{ __('sol_card_3_desc') }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   
-
-    <section class="py-24 bg-gray-50 border-t border-gray-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="relative bg-white rounded-[3rem] p-8 md:p-16 shadow-xl shadow-indigo-100 border border-indigo-50 overflow-hidden flex flex-col md:flex-row items-center gap-12">
-                
-                <div class="absolute -right-20 -top-20 w-80 h-80 bg-indigo-50 rounded-full blur-3xl opacity-60"></div>
-                
-                <div class="w-full md:w-1/2 relative flex justify-center">
-                    <div class="relative w-64 h-[500px] bg-slate-900 rounded-[2.5rem] border-[8px] border-slate-800 shadow-2xl overflow-hidden transform md:-rotate-6 hover:rotate-0 transition-transform duration-500">
-                        <div class="absolute top-0 w-full h-6 bg-slate-800 flex justify-center items-center">
-                            <div class="w-16 h-4 bg-slate-900 rounded-full"></div>
-                        </div>
-                        <div class="p-4 mt-8 space-y-4">
-                            <div class="h-32 bg-indigo-600/20 rounded-2xl animate-pulse"></div>
-                            <div class="space-y-2">
-                                <div class="h-4 w-3/4 bg-slate-700 rounded-full"></div>
-                                <div class="h-4 w-1/2 bg-slate-700 rounded-full"></div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2 mt-8">
-                                <div class="h-20 bg-emerald-500/20 rounded-xl"></div>
-                                <div class="h-20 bg-blue-500/20 rounded-xl"></div>
-                            </div>
-                        </div>
-                        <div class="absolute bottom-8 w-full px-6">
-                            <div class="h-12 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/50 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-widest">OneForMind App</div>
-                        </div>
-                    </div>
-                    <div class="absolute top-10 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-indigo-50 animate-bounce">
-                        <span class="text-2xl">📱</span>
-                    </div>
-                </div>
-
-                <div class="w-full md:w-1/2 text-center md:text-left relative z-10">
-                    <span class="inline-block bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">
-                        {{ __('eco_coming_soon') }}
-                    </span>
-                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
-                        {{ __('waitlist_title') }}
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+                        {{ __('fric_title') }}
                     </h2>
-                    <p class="text-gray-500 text-lg mb-10 leading-relaxed">
-                        {{ __('waitlist_desc') }}
+                    <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">
+                        {{ __('fric_desc') }}
                     </p>
 
-                    <form action="{{ route('waitlist.store') }}" method="POST" class="flex flex-col sm:flex-row gap-3">
-                        @csrf
-                        <div class="flex-1">
-                            <input 
-                                name="email"
-                                type="email" 
-                                value="{{ old('email') }}"
-                                placeholder="{{ __('waitlist_input_placeholder') }}"
-                                class="w-full px-6 py-4 rounded-2xl border @error('email') border-red-500 bg-red-50 @else border-gray-200 bg-gray-50 @enderror focus:ring-2 focus:ring-indigo-500 outline-none font-medium transition-all"
-                                required
-                            />
-                            @error('email')
-                                <div class="text-red-500 text-xs mt-1 ml-2 font-bold text-left">{{ $message }}</div>
-                            @enderror
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        @php
+                            $fragmented = [
+                                ['icon' => '📅', 'name' => 'fric_app_1'],
+                                ['icon' => '🌱', 'name' => 'fric_app_2'],
+                                ['icon' => '💰', 'name' => 'fric_app_3'],
+                                ['icon' => '📔', 'name' => 'fric_app_4'],
+                                ['icon' => '🎯', 'name' => 'fric_app_5']
+                            ];
+                        @endphp
+                        @foreach($fragmented as $app)
+                            <div class="p-6 bg-slate-800/50 rounded-[2rem] border border-slate-700/50 backdrop-blur-sm group hover:bg-slate-800 transition">
+                                <div class="text-3xl mb-4 group-hover:scale-110 transition">{{ $app['icon'] }}</div>
+                                <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">{{ __($app['name']) }}</div>
+                            </div>
+                        @endforeach
+                        <div class="p-6 bg-red-500/10 rounded-[2rem] border border-red-500/20 flex flex-col justify-center items-center text-center">
+                            <div class="text-red-400 font-black text-xs uppercase tracking-widest">Chaos</div>
+                            <div class="text-[10px] font-bold text-red-500/50">Fragmented Data</div>
                         </div>
-                        
-                        <button type="submit" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform active:scale-95">
-                            {{ __('waitlist_btn') }}
-                        </button>
-                    </form>
+                    </div>
+                </div>
 
-                    @if(session('success'))
-                        <div class="mt-4 p-4 bg-green-50 border border-green-100 text-green-700 rounded-2xl font-bold text-sm animate-in fade-in slide-in-from-bottom-2">
-                            ✅ {{ session('success') }}
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-indigo-600 rounded-[3.5rem] blur-[60px] opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    <div class="relative bg-slate-800 p-12 rounded-[3.5rem] border border-slate-700 shadow-2xl">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-24 h-24 bg-indigo-600 text-white rounded-[2rem] flex items-center justify-center text-5xl mb-8 shadow-2xl shadow-indigo-500/50 animate-pulse">
+                                🌌
+                            </div>
+                            <h3 class="text-3xl font-black text-white mb-6 uppercase tracking-wider">{{ __('fric_solution_title') }}</h3>
+                            <p class="text-slate-400 text-lg font-medium leading-relaxed">
+                                {{ __('fric_solution_desc') }}
+                            </p>
                         </div>
-                    @endif
-
-                    <p class="mt-4 text-xs text-gray-500 font-medium">
-                        {{ __('waitlist_note') }}
-                    </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-     <section class="py-24 bg-white">
-        <div class="max-w-3xl mx-auto px-6" x-data="{ activeFaq: null }">
-            <h2 class="text-3xl font-black text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">{{ __('faq_title') }}</h2>
-            
-            <div class="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
-                @foreach([1, 2, 3] as $faq)
-                    <div class="border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300" :class="activeFaq === {{ $faq }} ? 'bg-gray-50 shadow-md' : 'bg-white'">
-                        <button @click="activeFaq = activeFaq === {{ $faq }} ? null : {{ $faq }}" class="flex justify-between items-center w-full p-6 text-left font-bold text-gray-900 hover:text-indigo-600 transition">
-                            <span>{{ __("faq_q{$faq}") }}</span>
-                            <span class="text-indigo-600 transition-transform" :class="activeFaq === {{ $faq }} ? 'rotate-180' : ''">▼</span>
-                        </button>
-                        <div x-show="activeFaq === {{ $faq }}" x-collapse x-cloak class="px-6 pb-6 text-gray-500 leading-relaxed">
-                            {{ __("faq_a{$faq}") }}
-                        </div>
+    {{-- ================================================================= --}}
+    {{-- SECTION 3: THE 5 PILLARS --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-white scroll-mt-20" id="features">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-24">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-500 font-black text-[10px] mb-6 uppercase tracking-widest border border-slate-200">
+                    {{ __('pill_badge') }}
+                </div>
+                <h2 class="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-tight">
+                    {{ __('pill_title') }}
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {{-- CARD 1: FINANCE --}}
+                <div class="group bg-indigo-50 p-10 rounded-[3rem] border border-indigo-100/50 hover:bg-indigo-600 hover:shadow-2xl hover:shadow-indigo-200 transition duration-500 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition">💰</div>
+                    <h3 class="text-2xl font-black text-indigo-900 mb-4 group-hover:text-white">{{ __('pill_1_title') }}</h3>
+                    <p class="text-indigo-700/70 font-bold leading-relaxed group-hover:text-indigo-50">{{ __('pill_1_desc') }}</p>
+                </div>
+
+                {{-- CARD 2: HABITS --}}
+                <div class="group bg-emerald-50 p-10 rounded-[3rem] border border-emerald-100/50 hover:bg-emerald-600 hover:shadow-2xl hover:shadow-emerald-200 transition duration-500 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition">🌱</div>
+                    <h3 class="text-2xl font-black text-emerald-900 mb-4 group-hover:text-white">{{ __('pill_2_title') }}</h3>
+                    <p class="text-emerald-700/70 font-bold leading-relaxed group-hover:text-emerald-50">{{ __('pill_2_desc') }}</p>
+                </div>
+
+                {{-- CARD 3: PLANNER --}}
+                <div class="group bg-slate-900 p-10 rounded-[3rem] border border-slate-800 hover:bg-slate-800 hover:shadow-2xl hover:shadow-slate-400 transition duration-500 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-slate-800 rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition group-hover:bg-slate-700">📅</div>
+                    <h3 class="text-2xl font-black text-white mb-4">{{ __('pill_3_title') }}</h3>
+                    <p class="text-slate-400 font-bold leading-relaxed group-hover:text-slate-300">{{ __('pill_3_desc') }}</p>
+                </div>
+
+                {{-- CARD 4: JOURNAL --}}
+                <div class="group bg-purple-50 p-10 rounded-[3rem] border border-purple-100/50 hover:bg-purple-600 hover:shadow-2xl hover:shadow-purple-200 transition duration-500 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition">📔</div>
+                    <h3 class="text-2xl font-black text-purple-900 mb-4 group-hover:text-white">{{ __('pill_4_title') }}</h3>
+                    <p class="text-purple-700/70 font-bold leading-relaxed group-hover:text-purple-50">{{ __('pill_4_desc') }}</p>
+                </div>
+
+                {{-- CARD 5: GOALS --}}
+                <div class="group bg-amber-50 p-10 rounded-[3rem] border border-amber-100/50 hover:bg-amber-600 hover:shadow-2xl hover:shadow-amber-200 transition duration-500 transform hover:-translate-y-2 lg:col-span-2 lg:flex lg:items-center lg:gap-12">
+                   <div class="lg:shrink-0 lg:mb-0 mb-10">
+                        <div class="w-20 h-20 bg-white rounded-3xl shadow-xl flex items-center justify-center text-5xl group-hover:scale-110 transition">🎯</div>
+                   </div>
+                   <div>
+                        <h3 class="text-2xl lg:text-3xl font-black text-amber-900 mb-4 group-hover:text-white">{{ __('pill_5_title') }}</h3>
+                        <p class="text-amber-700/70 font-bold leading-relaxed group-hover:text-amber-50 text-lg">{{ __('pill_5_desc') }}</p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 4: INTERACTION ENGINE (The Synergy) --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-black text-[10px] mb-6 uppercase tracking-widest border border-indigo-200">
+                    {{ __('flow_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
+                    {{ __('flow_title') }}
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-4 relative">
+                {{-- Simple Connecting Lines (Visual Only) --}}
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-indigo-100 -translate-y-1/2 -z-10"></div>
+                
+                @php
+                    $steps = [
+                        ['icon' => '🎯', 'title' => 'flow_step_1_title', 'desc' => 'flow_step_1_desc'],
+                        ['icon' => '⚙️', 'title' => 'flow_step_2_title', 'desc' => 'flow_step_2_desc'],
+                        ['icon' => '🌱', 'title' => 'flow_step_3_title', 'desc' => 'flow_step_3_desc'],
+                        ['icon' => '📔', 'title' => 'flow_step_4_title', 'desc' => 'flow_step_4_desc']
+                    ];
+                @endphp
+
+                @foreach($steps as $index => $step)
+                <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-4">
+                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-black mb-6 text-xl shadow-lg shadow-indigo-200">
+                        {{ $index + 1 }}
                     </div>
+                    <div class="text-4xl mb-6">{{ $step['icon'] }}</div>
+                    <h4 class="text-xl font-black text-slate-900 mb-4 uppercase tracking-wider">{{ __($step['title']) }}</h4>
+                    <p class="text-slate-500 font-bold text-sm leading-relaxed">{{ __($step['desc']) }}</p>
+                </div>
                 @endforeach
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 text-center">
-        <div class="max-w-5xl mx-auto bg-indigo-950 rounded-[3rem] p-12 md:p-24 text-white relative overflow-hidden shadow-2xl animate-in zoom-in-95 fade-in duration-1000 delay-200 fill-mode-both">
-            <div class="absolute top-0 left-0 w-64 h-64 bg-indigo-600 rounded-full mix-blend-screen filter blur-[80px] opacity-30 animate-pulse duration-[4000ms]"></div>
-            <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-600 rounded-full mix-blend-screen filter blur-[80px] opacity-30 animate-pulse duration-[4000ms]"></div>
+    {{-- ================================================================= --}}
+    {{-- SECTION 5: PREMIUM PREVIEW (MOCKUP) --}}
+    {{-- ================================================================= --}}
+    <section class="py-40 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div class="relative order-2 lg:order-1">
+                    {{-- DEEP GRADIENT ORB --}}
+                    <div class="absolute -inset-20 bg-gradient-to-tr from-indigo-200 to-purple-200 rounded-full blur-[100px] opacity-40"></div>
+                    
+                    <div class="relative bg-slate-900 rounded-[3rem] p-1 shadow-[0_50px_100px_-20px_rgba(79,70,229,0.3)] border-[12px] border-slate-800 overflow-hidden transform lg:-rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[16/10]">
+                        <div class="absolute top-0 w-full h-8 bg-slate-800 flex items-center px-4 gap-2">
+                           <div class="flex gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-amber-500/50"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                           </div>
+                        </div>
+                        {{-- MOCK CONTENT --}}
+                        <div class="p-8 mt-8 grid grid-cols-12 gap-4 h-full">
+                            <div class="col-span-3 space-y-4">
+                                <div class="h-12 bg-slate-800 rounded-xl animate-pulse"></div>
+                                <div class="h-12 bg-slate-800/40 rounded-xl"></div>
+                                <div class="h-12 bg-slate-800/40 rounded-xl"></div>
+                            </div>
+                            <div class="col-span-9 space-y-4">
+                                <div class="h-32 bg-indigo-600 rounded-3xl p-6 flex items-end">
+                                    <div class="h-8 w-1/3 bg-white/20 rounded-full"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="h-40 bg-slate-800 rounded-3xl p-6">
+                                        <div class="flex gap-2 mb-4">
+                                            <div class="w-4 h-4 bg-emerald-500 rounded-full"></div>
+                                            <div class="w-4 h-4 bg-emerald-500/20 rounded-full"></div>
+                                        </div>
+                                        <div class="h-4 w-1/2 bg-slate-700 rounded-full"></div>
+                                    </div>
+                                    <div class="h-40 bg-slate-800 rounded-3xl p-6">
+                                         <div class="text-xl font-black text-indigo-400">Rp 12,5jt</div>
+                                         <div class="h-2 w-full bg-slate-700 rounded-full mt-4 overflow-hidden">
+                                            <div class="h-full bg-indigo-500 w-3/4"></div>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="relative z-10">
-                <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">{{ __('cta_final_title') }}</h2>
-                <p class="text-indigo-100 text-xl mb-12 max-w-2xl mx-auto">
-                    {{ __('cta_final_desc') }}
-                </p>
-                <a href="{{ route('register') }}" class="inline-block bg-white text-indigo-950 px-12 py-5 rounded-2xl font-bold text-xl hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl">
-                    {{ __('cta_final_btn') }}
-                </a>
-                <p class="mt-8 text-sm text-white/80 font-bold">{{ __('cta_final_sub') }}</p>
+                <div class="order-1 lg:order-2">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-indigo-100">
+                        {{ __('vsn_badge') }}
+                    </div>
+                    <h2 class="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-tight">
+                        {{ __('vsn_title') }}
+                    </h2>
+                    <p class="text-slate-500 text-xl font-medium leading-relaxed mb-12">
+                        {{ __('vsn_desc') }}
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl">🖱️</div>
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl">⌨️</div>
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl">📱</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 6: THE SWITCH (COMPARISON LINKS) --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-indigo-200">
+                {{ __('mig_badge') }}
+            </div>
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-16 leading-tight">
+                {{ __('mig_title') }}
+            </h2>
+
+            <div class="grid sm:grid-cols-3 gap-6">
+                <a href="{{ route('compare.paper') }}" class="group bg-white p-10 rounded-[3rem] border border-slate-200 hover:border-indigo-600 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📄</div>
+                    <div class="text-xl font-black text-slate-900 mb-2">{{ __('mig_card_1') }}</div>
+                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">View →</div>
+                </a>
+                <a href="{{ route('compare.sheets') }}" class="group bg-white p-10 rounded-[3rem] border border-slate-200 hover:border-indigo-600 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📊</div>
+                    <div class="text-xl font-black text-slate-900 mb-2">{{ __('mig_card_2') }}</div>
+                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">View →</div>
+                </a>
+                <a href="{{ route('compare.five-apps') }}" class="group bg-slate-900 p-10 rounded-[3rem] border border-white/10 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="text-4xl mb-6">🌌</div>
+                    <div class="text-xl font-black text-white mb-2">{{ __('mig_card_3') }}</div>
+                    <div class="text-indigo-400 font-bold opacity-50 group-hover:opacity-100 transition">View All →</div>
+                </a>
+            </div>
+
+            <p class="mt-16 text-slate-400 font-black uppercase tracking-[0.3em] text-[10px]">
+                {{ __('mig_cta') }}
+            </p>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 7: WAITLIST --}}
+    {{-- ================================================================= --}}
+    <section class="py-40 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="relative bg-slate-900 rounded-[4rem] p-12 md:p-24 shadow-2xl overflow-hidden group">
+                <div class="absolute -right-20 -top-20 w-96 h-96 bg-indigo-600 rounded-full blur-[100px] opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                
+                <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-black text-[10px] mb-8 uppercase tracking-widest border border-white/10">
+                            {{ __('eco_coming_soon') }}
+                        </div>
+                        <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+                            {{ __('waitlist_title') }}
+                        </h2>
+                        <p class="text-slate-400 text-xl font-medium leading-relaxed mb-0">
+                            {{ __('waitlist_desc') }}
+                        </p>
+                    </div>
+
+                    <div class="bg-white/5 backdrop-blur-xl p-8 rounded-[2.5rem] border border-white/10 shadow-2xl">
+                         <form action="{{ route('waitlist.store') }}" method="POST" class="space-y-4">
+                            @csrf
+                            <input 
+                                name="email"
+                                type="email" 
+                                value="{{ old('email') }}"
+                                placeholder="{{ __('waitlist_input_placeholder') }}"
+                                class="w-full px-8 py-5 rounded-2xl bg-white/10 border border-white/10 text-white placeholder-slate-500 focus:ring-2 focus:ring-indigo-500 outline-none font-bold transition-all"
+                                required
+                            />
+                            <button type="submit" class="w-full bg-white text-slate-900 px-8 py-5 rounded-2xl font-black text-lg hover:bg-indigo-50 shadow-xl transition transform active:scale-95">
+                                {{ __('waitlist_btn') }}
+                            </button>
+                        </form>
+                        
+                        @if(session('success'))
+                            <div class="mt-4 p-4 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-2xl font-bold text-sm text-center">
+                                ✅ {{ session('success') }}
+                            </div>
+                        @endif
+
+                        <p class="mt-6 text-[10px] text-slate-500 font-black text-center uppercase tracking-widest">
+                            {{ __('waitlist_note') }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 8: FAQ --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-16 text-center tracking-tight">{{ __('faq_title') }}</h2>
+            
+            <div class="grid gap-4" x-data="{ active: null }">
+                @foreach([1, 2, 3] as $i)
+                <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="active === {{ $i }} ? 'ring-2 ring-indigo-500' : ''">
+                    <button @click="active = active === {{ $i }} ? null : {{ $i }}" class="flex justify-between items-center w-full p-8 text-left group">
+                        <span class="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition">{{ __("faq_q$i") }}</span>
+                        <span class="text-2xl text-slate-400 transition-transform" :class="active === {{ $i }} ? 'rotate-180' : ''">▼</span>
+                    </button>
+                    <div x-show="active === {{ $i }}" x-collapse x-cloak>
+                        <div class="px-8 pb-8 text-slate-500 font-bold text-lg leading-relaxed">
+                            {{ __("faq_a$i") }}
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 9: FINAL CTA --}}
+    {{-- ================================================================= --}}
+    <section class="py-40 px-6 text-center relative overflow-hidden bg-white">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-5xl md:text-[6rem] font-black mb-10 leading-[0.9] tracking-tight text-slate-900">
+                {{ __('cta_final_title') }}
+            </h2>
+            <p class="text-slate-500 text-xl md:text-2xl mb-14 max-w-2xl mx-auto font-medium">
+                {{ __('cta_final_desc') }}
+            </p>
+            
+            <div class="flex flex-col items-center gap-6">
+                <a href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-16 py-8 rounded-[2.5rem] font-black text-2xl hover:bg-indigo-700 shadow-2xl shadow-indigo-200 transition transform hover:-translate-y-2 active:scale-95">
+                    {{ __('cta_final_btn') }}
+                </a>
+                <div class="flex items-center gap-3 text-sm font-black text-slate-400 uppercase tracking-widest">
+                    {{ __('cta_final_sub') }}
+                </div>
+            </div>
+        </div>
+
+        {{-- Huge Gradient Background --}}
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1500px] h-[600px] bg-gradient-to-t from-indigo-50/50 via-white to-white rounded-full blur-[120px] -z-10"></div>
+    </section>
+
 @endsection
