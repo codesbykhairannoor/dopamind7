@@ -63,8 +63,6 @@
     "auth_reset_desc": "Relax, don't panic. Enter your email below, and we'll send you a link to reset your password.",
     "auth_btn_reset": "Send Reset Link",
     "auth_back_login": "← Back to Login",
-    "footer_privacy": "Privacy Policy",
-    "footer_terms": "Terms of Service",
     "reset_page_title": "Reset Password",
     "reset_title": "New Password",
     "reset_desc": "Please create a secure new password.",
@@ -78,6 +76,9 @@
     "waitlist_input_placeholder": "Enter your primary email...",
     "waitlist_btn": "Join Waitlist",
     "waitlist_note": "No spam. Just technical milestones and early access.",
+    "footer_privacy": "Privacy",
+    "footer_terms": "Terms",
+    "auth_footer_help": "Help",
     "calendar_more": "more",
     "journal_filled": "Journal written",
     "calendar_tasks": "Tasks",
@@ -2533,10 +2534,5 @@
     "stat_metrics_uptime": "Annual Uptime",
     "stat_cta_title": "Stay Informed",
     "stat_cta_desc": "Follow our technical updates for detailed incident reports.",
-    "stat_cta_btn": "Go to Community Hub",
-    "auth_footer_terms": "Terms of Service",
-    "auth_footer_privacy": "Privacy Policy",
-    "auth_footer_help": "Need help?",
-    "auth_footer_agreement": "By continuing, you agree to our",
-    "auth_footer_and": "and"
+    "stat_cta_btn": "Go to Community Hub"
 }

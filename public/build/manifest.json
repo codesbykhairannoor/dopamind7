@@ -149,7 +149,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-BB6EjoeA.css",
+    "file": "assets/app-B7q06iDg.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -183,7 +183,7 @@
     ]
   },
   "resources/js/Pages/Auth/ForgotPassword.vue": {
-    "file": "assets/ForgotPassword-D-zhArLN.js",
+    "file": "assets/ForgotPassword-DvIm-YJh.js",
     "name": "ForgotPassword",
     "src": "resources/js/Pages/Auth/ForgotPassword.vue",
     "isDynamicEntry": true,
@@ -196,7 +196,7 @@
     ]
   },
   "resources/js/Pages/Auth/Login.vue": {
-    "file": "assets/Login-c0OVNFFF.js",
+    "file": "assets/Login-By-yu5-l.js",
     "name": "Login",
     "src": "resources/js/Pages/Auth/Login.vue",
     "isDynamicEntry": true,
@@ -209,7 +209,7 @@
     ]
   },
   "resources/js/Pages/Auth/Register.vue": {
-    "file": "assets/Register-Duz5ZZ4N.js",
+    "file": "assets/Register-CwhRixjD.js",
     "name": "Register",
     "src": "resources/js/Pages/Auth/Register.vue",
     "isDynamicEntry": true,
@@ -1186,7 +1186,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-Bxj0ZJOi.js",
+    "file": "assets/app-RfUy-FYm.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -1263,7 +1263,7 @@
       "resources/js/Pages/Welcome.vue"
     ],
     "css": [
-      "assets/app-BB6EjoeA.css"
+      "assets/app-B7q06iDg.css"
     ]
   }
 }

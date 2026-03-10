@@ -51,5 +51,13 @@
     "delete_account_confirm_desc": "Tindakan ini tidak dapat dibatalkan. Masukkan sandi Anda untuk mengonfirmasi.",
     "your_password": "Sandi Anda",
     "enter_password_placeholder": "Masukkan sandi...",
-    "password_title": "Password Anda"
+    "password_title": "Password Anda",
+    "waitlist_title": "OneForMind di Genggamanmu.",
+    "waitlist_desc": "Kami sedang membangun aplikasi mobile untuk membantu kamu tetap produktif di mana saja. Jadilah yang pertama mengetahui saat kami rilis di App Store & Play Store.",
+    "waitlist_input_placeholder": "Masukkan alamat email kamu...",
+    "waitlist_btn": "Dapatkan Akses Lebih Awal",
+    "waitlist_note": "Tenang, kami tidak akan mengirim spam. Hanya kabar saat aplikasi diluncurkan.",
+    "footer_privacy": "Privasi",
+    "footer_terms": "Ketentuan",
+    "auth_footer_help": "Bantuan"
 }

@@ -1,5 +1,5 @@
 {
-     "____ SECTION_3 ____": "=== AUTHENTICATION (LOGIN & REGISTER) ===",
+    "____ SECTION_3 ____": "=== AUTHENTICATION (LOGIN & REGISTER) ===",
     "auth_login_title": "Welcome Back.",
     "auth_login_subtitle": "Continue your life's progress.",
     "auth_register_title": "Start Fresh.",
@@ -42,5 +42,8 @@
     "waitlist_desc": "We're building a mobile app to help you stay productive anywhere. Be the first to know when we launch on the App Store & Play Store.",
     "waitlist_input_placeholder": "Enter your email address...",
     "waitlist_btn": "Get Early Access",
-    "waitlist_note": "Don't worry, we won't spam you. Just launch news."
+    "waitlist_note": "Don't worry, we won't spam you. Just launch news.",
+    "footer_privacy": "Privacy",
+    "footer_terms": "Terms",
+    "auth_footer_help": "Help"
 }
