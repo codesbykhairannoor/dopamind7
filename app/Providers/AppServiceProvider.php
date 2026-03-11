@@ -34,10 +34,11 @@ class AppServiceProvider extends ServiceProvider
          * Jika diakses lewat 127.0.0.1 atau localhost, paksa aplikasi pakai config lokal
          * terlepas dari file .env mana yang dimuat (menghindari salah redirect ke production).
          */
-        $host = request()->getHost();
-        $isLocalHost = in_array($host, ['127.0.0.1', 'localhost']) || app()->environment('local');
+        $isLocalEnv = $this->app->environment('local');
+        $host = !app()->runningInConsole() ? request()->getHost() : 'localhost';
+        $isLocalHost = in_array($host, ['127.0.0.1', 'localhost']);
 
-        if ($isLocalHost) {
+        if ($isLocalEnv || $isLocalHost) {
             \Illuminate\Support\Facades\Log::info("Bodyguard Lokal Aktif: Host {$host}");
             // Paksa APP_URL agar tidak lari ke production (oneformind.com)
             $port = request()->getPort();
