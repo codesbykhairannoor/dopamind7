@@ -6,12 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration 
 {
+    public $withinTransaction = false;
+
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        if (!Schema::hasTable('blog_categories')) {
             Schema::create('blog_categories', function (Blueprint $table) {
                 $table->id();
                 $table->string('name');
@@ -20,7 +21,6 @@ return new class extends Migration
                 $table->string('color')->default('indigo');
                 $table->timestamps();
             });
-        }
     }
 
     /**

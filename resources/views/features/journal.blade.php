@@ -261,7 +261,7 @@
                                 <div class="w-12 h-12 rounded-full border-4 border-slate-900 bg-slate-800 flex items-center justify-center text-xl shadow-lg">✨</div>
                             @endfor
                         </div>
-                        <p class="text-slate-400 font-bold uppercase tracking-widest text-xs">Join thousands reflecting daily with AI-powered clarity.</p>
+                        <p class="text-slate-400 font-bold uppercase tracking-widest text-xs">{{ __('journal_analytics_banner_text') }}</p>
                     </div>
                     <div class="pr-4 group-hover:translate-x-2 transition duration-500">
                         <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white">

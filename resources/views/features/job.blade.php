@@ -82,7 +82,7 @@
                     <div class="space-y-4">
                         {{-- Job 1 --}}
                         <div class="flex items-center gap-4 p-4 hover:bg-indigo-50 rounded-2xl transition border border-gray-100 hover:border-indigo-100 cursor-pointer bg-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl font-bold">G</div>
+                            <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl font-bold">{{ __('job_mockup_grade_1') }}</div>
                             <div class="flex-1 text-left">
                                 <p class="font-bold text-gray-900">{{ __('job_mockup_task_1') }}</p>
                                 <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">{{ __('job_mockup_time_1') }}</p>
@@ -94,7 +94,7 @@
                         
                         {{-- Job 2 --}}
                         <div class="flex items-center gap-4 p-4 hover:bg-indigo-50 rounded-2xl transition border border-gray-100 hover:border-indigo-100 cursor-pointer bg-gray-50/50">
-                            <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl font-bold">S</div>
+                            <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl font-bold">{{ __('job_mockup_grade_2') }}</div>
                             <div class="flex-1 text-left">
                                 <p class="font-bold text-gray-900">{{ __('job_mockup_task_2') }}</p>
                                 <p class="text-xs font-bold text-indigo-600 uppercase tracking-wider">{{ __('job_mockup_time_2') }}</p>
@@ -106,7 +106,7 @@
 
                         {{-- Job 3 (Highlight) --}}
                         <div class="flex items-center gap-4 p-4 bg-white rounded-2xl transition border-2 border-green-200 hover:border-green-400 cursor-pointer shadow-sm transform scale-[1.02]">
-                            <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl font-bold">A</div>
+                            <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl font-bold">{{ __('job_mockup_grade_3') }}</div>
                             <div class="flex-1 text-left">
                                 <p class="font-bold text-green-900">{{ __('job_mockup_task_3') }}</p>
                                 <p class="text-xs font-bold text-green-600 uppercase tracking-wider">{{ __('job_mockup_time_3') }}</p>
@@ -152,14 +152,14 @@
                                 <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl group-hover:rotate-6 transition">📩</div>
                                 <span class="font-black text-gray-900 uppercase tracking-tighter">{{ __('job_funnel_label_1') }}</span>
                             </div>
-                            <span class="text-2xl font-black text-indigo-600">42</span>
+                            <span class="text-2xl font-black text-indigo-600">{{ __('job_funnel_stat_1') }}</span>
                         </div>
                         <div class="flex items-center justify-between p-6 rounded-3xl bg-slate-50 border border-slate-100 group hover:bg-white hover:shadow-2xl transition duration-500">
                             <div class="flex items-center gap-6">
                                 <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl group-hover:rotate-6 transition">🤝</div>
                                 <span class="font-black text-gray-900 uppercase tracking-tighter">{{ __('job_funnel_label_2') }}</span>
                             </div>
-                            <span class="text-2xl font-black text-purple-600">8</span>
+                            <span class="text-2xl font-black text-purple-600">{{ __('job_funnel_stat_2') }}</span>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                                          <h4 class="text-xs font-black uppercase tracking-widest opacity-70 mb-2">{{ __('job_funnel_stage_1_label') }}</h4>
                                          <p class="text-2xl font-black tracking-tight">{{ __('job_funnel_stage_1_title') }}</p>
                                      </div>
-                                     <span class="text-5xl font-black opacity-30 italic">24</span>
+                                     <span class="text-5xl font-black opacity-30 italic">{{ __('job_funnel_stage_1_stat') }}</span>
                                  </div>
                              </div>
                              {{-- Interview Stage --}}
@@ -187,7 +187,7 @@
                                          <h4 class="text-xs font-black uppercase tracking-widest opacity-70 mb-2">{{ __('job_funnel_stage_2_label') }}</h4>
                                          <p class="text-2xl font-black tracking-tight">{{ __('job_funnel_stage_2_title') }}</p>
                                      </div>
-                                     <span class="text-5xl font-black opacity-30 italic">6</span>
+                                     <span class="text-5xl font-black opacity-30 italic">{{ __('job_funnel_stage_2_stat') }}</span>
                                  </div>
                              </div>
                              {{-- Final Stage --}}
@@ -198,7 +198,7 @@
                                          <h4 class="text-xs font-black uppercase tracking-widest opacity-70 mb-2">{{ __('job_funnel_stage_3_label') }}</h4>
                                          <p class="text-2xl font-black tracking-tight">{{ __('job_funnel_stage_3_title') }}</p>
                                      </div>
-                                     <span class="text-5xl font-black opacity-30 italic">2</span>
+                                     <span class="text-5xl font-black opacity-30 italic">{{ __('job_funnel_stage_3_stat') }}</span>
                                  </div>
                              </div>
                          </div>
@@ -304,15 +304,15 @@
                         <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition duration-700"></div>
                         
                         <div class="flex justify-between items-center mb-10">
-                            <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-500">Negotiation Radar</h3>
-                            <div class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-lg text-[10px] font-black animate-pulse">LIVE DATA</div>
+                            <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-500">{{ __('job_radar_title') }}</h3>
+                            <div class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-lg text-[10px] font-black animate-pulse">{{ __('job_radar_live') }}</div>
                         </div>
 
                         <div class="space-y-6">
                             @foreach([
-                                ['role' => 'Senior Developer', 'prev' => '85M', 'curr' => '115M', 'gain' => '+35%', 'color' => 'cyan'],
-                                ['role' => 'Product Manager', 'prev' => '70M', 'curr' => '95M', 'gain' => '+35%', 'color' => 'indigo'],
-                                ['role' => 'Data Scientist', 'prev' => '90M', 'curr' => '130M', 'gain' => '+44%', 'color' => 'purple']
+                                ['role' => __('job_radar_role_1'), 'prev' => __('job_radar_prev_1'), 'curr' => __('job_radar_curr_1'), 'gain' => __('job_radar_gain_1'), 'color' => 'cyan'],
+                                ['role' => __('job_radar_role_2'), 'prev' => __('job_radar_prev_2'), 'curr' => __('job_radar_curr_2'), 'gain' => __('job_radar_gain_2'), 'color' => 'indigo'],
+                                ['role' => __('job_radar_role_3'), 'prev' => __('job_radar_prev_3'), 'curr' => __('job_radar_curr_3'), 'gain' => __('job_radar_gain_3'), 'color' => 'purple']
                             ] as $item)
                                 <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700/50 hover:border-slate-500/50 transition duration-500">
                                     <div class="flex justify-between items-center mb-4">
