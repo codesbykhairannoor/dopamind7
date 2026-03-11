@@ -54,6 +54,9 @@ class AppServiceProvider extends ServiceProvider
 
             // Paksa APP_ENV agar tidak dianggap production
             config(['app.env' => 'local']);
+
+            // Paksa DB_CONNECTION ke mysql agar tidak nyangkut ke production (Supabase)
+            config(['database.default' => 'mysql']);
         }
 
         /**
