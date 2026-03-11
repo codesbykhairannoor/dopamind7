@@ -34,6 +34,14 @@ const confirmLogout = () => {
     router.post(route('logout'));
 };
 
+// --- LOCALE / BAHASA ---
+const currentLocale = computed(() => page.props.locale);
+
+const switchLang = (lang) => {
+    if (lang === currentLocale.value) return;
+    router.get(route('lang.switch', { locale: lang }));
+};
+
 watch(() => page.url, () => {
     showingNavigationDropdown.value = false;
 });
@@ -170,6 +178,28 @@ watch(() => page.url, () => {
             </nav>
 
             <div class="px-3 py-3 border-t border-slate-100 bg-slate-50/30 space-y-1 shrink-0">
+                <div 
+                    class="flex items-center p-1 bg-slate-100/50 rounded-xl mb-4 border border-slate-200/50 shadow-inner"
+                    :class="isSidebarCollapsed ? 'flex-col gap-1 w-10 mx-auto' : 'mx-1 gap-1'"
+                >
+                    <button 
+                        @click="switchLang('id')" 
+                        class="flex-1 py-1.5 rounded-lg text-[10px] font-black transition-all duration-300"
+                        :class="currentLocale === 'id' ? 'bg-white text-indigo-600 shadow-md ring-1 ring-slate-200/50' : 'text-slate-400 hover:text-slate-600'"
+                        :title="isSidebarCollapsed ? 'Bahasa Indonesia' : ''"
+                    >
+                        ID
+                    </button>
+                    <button 
+                        @click="switchLang('en')" 
+                        class="flex-1 py-1.5 rounded-lg text-[10px] font-black transition-all duration-300"
+                        :class="currentLocale === 'en' ? 'bg-white text-indigo-600 shadow-md ring-1 ring-slate-200/50' : 'text-slate-400 hover:text-slate-600'"
+                        :title="isSidebarCollapsed ? 'English' : ''"
+                    >
+                        EN
+                    </button>
+                </div>
+
                 <Link :href="route('settings.index')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group"
                     :class="[
@@ -276,6 +306,17 @@ watch(() => page.url, () => {
                         </div>
 
                         <div class="bg-white rounded-[2rem] p-3 shadow-sm border border-slate-100 flex flex-col gap-1">
+                            <div class="flex items-center justify-between px-6 py-5 border-b border-slate-50 mb-1">
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-0.5">Locale</span>
+                                    <span class="text-sm font-black text-slate-800">Language</span>
+                                </div>
+                                <div class="flex gap-1 p-1 bg-slate-100/80 rounded-2xl border border-slate-200/50 shadow-inner">
+                                    <button @click="switchLang('id')" :class="currentLocale === 'id' ? 'bg-white text-indigo-600 shadow-lg ring-1 ring-slate-100' : 'text-slate-400 hover:text-slate-600'" class="px-5 py-2 rounded-xl text-xs font-black transition-all duration-300">ID</button>
+                                    <button @click="switchLang('en')" :class="currentLocale === 'en' ? 'bg-white text-indigo-600 shadow-lg ring-1 ring-slate-100' : 'text-slate-400 hover:text-slate-600'" class="px-5 py-2 rounded-xl text-xs font-black transition-all duration-300">EN</button>
+                                </div>
+                            </div>
+
                             <Link :href="route('settings.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('settings.*') ? 'bg-slate-100 text-slate-800' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
                                 <OneForMindIcon name="settings" size="20" /> {{ $t('nav_settings', 'Pengaturan') }}
                             </Link>

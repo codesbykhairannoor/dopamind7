@@ -342,29 +342,68 @@
                 </div>
 
                 {{-- RIGHT ACTIONS --}}
-                <div class="hidden lg:flex items-center gap-3">
-                    <a href="{{ route('lang.switch', app()->getLocale() === 'en' ? 'id' : 'en') }}" class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[10px] font-black text-slate-600 hover:bg-white hover:text-indigo-600 transition-all mr-2 shadow-sm">
-                        {{ strtoupper(app()->getLocale() === 'en' ? 'ID' : 'EN') }}
-                    </a>
+                <div class="flex items-center gap-3">
+                    {{-- Premium Language Dropdown --}}
+                    <div class="relative" x-data="{ langOpen: false }" @click.away="langOpen = false">
+                        <button 
+                            @click="langOpen = !langOpen"
+                            class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-100 hover:bg-white hover:border-indigo-100 transition-all shadow-sm group"
+                        >
+                            <span class="text-[11px] font-black text-slate-600 group-hover:text-indigo-600 uppercase tracking-tighter">
+                                {{ app()->getLocale() }}
+                            </span>
+                            <svg class="w-3 h-3 text-slate-400 group-hover:text-indigo-500 transition-transform" :class="langOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
 
-                   @auth
-    <a hx-boost="false" href="{{ route('dashboard') }}" class="px-5 py-2 bg-slate-900 text-white rounded-full text-[13px] font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
-@else
-    <a hx-boost="false" href="{{ route('login') }}" class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">Log In</a>
-    <a hx-boost="false" href="{{ route('register') }}" class="px-5 py-2 bg-indigo-600 text-white rounded-full text-[13px] font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
-        Get Started
-    </a>
-@endauth
-                </div>
-
-                {{-- MOBILE HAMBURGER BUTTON --}}
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 text-slate-900 relative z-[110] focus:outline-none" aria-label="Open Navigation">
-                    <div class="w-6 flex flex-col items-end gap-1.5">
-                        <span :class="mobileMenuOpen ? 'rotate-45 translate-y-2 w-6' : 'w-6'" class="h-0.5 bg-current transition-all duration-300"></span>
-                        <span :class="mobileMenuOpen ? 'opacity-0' : 'w-4'" class="h-0.5 bg-current transition-all duration-300"></span>
-                        <span :class="mobileMenuOpen ? '-rotate-45 -translate-y-2 w-6' : 'w-5'" class="h-0.5 bg-current transition-all duration-300"></span>
+                        <div 
+                            x-show="langOpen"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 translate-y-2"
+                            x-cloak
+                            class="absolute top-full right-0 mt-3 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl overflow-hidden z-50 p-2"
+                        >
+                            <a 
+                                href="{{ route('lang.switch', 'id') }}" 
+                                class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all {{ app()->getLocale() === 'id' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600' }}"
+                            >
+                                <span>Bahasa Indonesia</span>
+                                @if(app()->getLocale() === 'id') <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> @endif
+                            </a>
+                            <a 
+                                href="{{ route('lang.switch', 'en') }}" 
+                                class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all {{ app()->getLocale() === 'en' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600' }}"
+                            >
+                                <span>English</span>
+                                @if(app()->getLocale() === 'en') <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> @endif
+                            </a>
+                        </div>
                     </div>
-                </button>
+
+                    {{-- Login/Register (Desktop) --}}
+                    <div class="hidden lg:flex items-center gap-3">
+                        @auth
+                            <a hx-boost="false" href="{{ route('dashboard') }}" class="px-5 py-2 bg-slate-900 text-white rounded-full text-[13px] font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
+                        @else
+                            <a hx-boost="false" href="{{ route('login') }}" class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">Log In</a>
+                            <a hx-boost="false" href="{{ route('register') }}" class="px-5 py-2 bg-indigo-600 text-white rounded-full text-[13px] font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
+                                Get Started
+                            </a>
+                        @endauth
+                    </div>
+
+                    {{-- MOBILE HAMBURGER BUTTON --}}
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-2 text-slate-900 relative z-[110] focus:outline-none" aria-label="Open Navigation">
+                        <div class="w-6 flex flex-col items-end gap-1.5">
+                            <span :class="mobileMenuOpen ? 'rotate-45 translate-y-2 w-6' : 'w-6'" class="h-0.5 bg-current transition-all duration-300"></span>
+                            <span :class="mobileMenuOpen ? 'opacity-0' : 'w-4'" class="h-0.5 bg-current transition-all duration-300"></span>
+                            <span :class="mobileMenuOpen ? '-rotate-45 -translate-y-2 w-6' : 'w-5'" class="h-0.5 bg-current transition-all duration-300"></span>
+                        </div>
+                    </button>
+                </div>
             </div>
 
             {{-- MOBILE MENU OVERLAY (Isi sama dengan kodemu, aman) --}}
