@@ -35,23 +35,34 @@
         </nav>
 
         <header class="mb-12">
-            <h1 class="text-4xl md:text-6xl font-black text-gray-900 leading-tight mb-8">
+            @if($post->category)
+                <div class="mb-6">
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider bg-indigo-50 text-indigo-600 border border-indigo-100/50">
+                        {{ $post->category->name }}
+                    </span>
+                </div>
+            @endif
+
+            <h1 class="text-4xl md:text-7xl font-black text-gray-900 leading-[1.1] mb-8 tracking-tight">
                 {{ $post->title }}
             </h1>
 
-            <div class="flex items-center gap-6">
-                <div class="flex items-center gap-3 bg-gray-50 px-4 py-2 rounded-2xl border border-gray-100">
+            <div class="flex flex-wrap items-center gap-6">
+                <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-2xl border border-slate-200/60 shadow-sm">
                     <img src="https://ui-avatars.com/api/?name=K+N&background=4f46e5&color=fff" alt="Author" class="w-8 h-8 rounded-full border border-white shadow-sm">
                     <div class="text-left">
-                        <p class="font-black text-gray-900 text-xs leading-none">Khairan N.</p>
-                        <p class="text-[10px] text-indigo-600 font-bold uppercase tracking-tighter">Founder</p>
+                        <p class="font-black text-gray-900 text-[11px] leading-none">Khairan N.</p>
+                        <p class="text-[9px] text-indigo-600 font-bold uppercase tracking-wider mt-1">Founder</p>
                     </div>
                 </div>
-                <div class="text-xs font-bold text-gray-400 uppercase tracking-widest">
-                    {{ $post->published_at?->format('F d, Y') ?? $post->created_at->format('F d, Y') }}
+                <div class="flex items-center gap-4 text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">
+                    <span>{{ $post->published_at?->format('F d, Y') ?? $post->created_at->format('F d, Y') }}</span>
                     @if($post->location_name)
-                        <span class="mx-2">•</span>
-                        <span class="text-indigo-600">📍 {{ $post->location_name }}</span>
+                        <span class="w-1 h-1 rounded-full bg-slate-200"></span>
+                        <span class="text-indigo-600 flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            {{ $post->location_name }}
+                        </span>
                     @endif
                 </div>
             </div>
