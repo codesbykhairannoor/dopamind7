@@ -141,12 +141,12 @@
                     </p>
                     <div class="flex items-center gap-6">
                         <div class="flex flex-col">
-                            <span class="text-3xl font-black text-emerald-600">365</span>
+                            <span class="text-3xl font-black text-emerald-600">{{ __('habit_mockup_days') }}</span>
                             <span class="text-xs font-bold text-gray-400 uppercase">{{ __('habit_heatmap_label_1') }}</span>
                         </div>
                         <div class="w-px h-10 bg-gray-100"></div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-black text-indigo-600">98%</span>
+                            <span class="text-3xl font-black text-indigo-600">{{ __('habit_mockup_percent') }}</span>
                             <span class="text-xs font-bold text-gray-400 uppercase">{{ __('habit_heatmap_label_2') }}</span>
                         </div>
                     </div>
@@ -209,8 +209,8 @@
                         <div class="flex-1 md:pl-16 animate-in slide-in-from-right-12 duration-700">
                              <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition duration-500">
                                 <div class="w-10 h-10 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center mb-6">🔧</div>
-                                <span class="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-2 block">The Action</span>
-                                <p class="text-white text-lg">Setting up digital cues and environmental nudges to eliminate friction.</p>
+                                <span class="text-xs font-bold text-indigo-300 uppercase tracking-widest mb-2 block">{{ __('habit_bento_action_label') }}</span>
+                                <p class="text-white text-lg">{{ __('habit_bento_action_desc') }}</p>
                              </div>
                         </div>
                     </div>

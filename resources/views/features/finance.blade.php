@@ -132,7 +132,7 @@
                                 <p class="text-sm font-bold text-gray-900">{{ __('finance_wallet_1_title') }}</p>
                                 <p class="text-xs text-gray-500">{{ __('finance_wallet_1_desc') }}</p>
                             </div>
-                            <span class="font-black text-gray-900">Rp 25.000.000</span>
+                            <span class="font-black text-gray-900">{{ __('finance_mockup_balance_value') }}</span>
                         </div>
                         <div class="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100 transform hover:scale-[1.02] transition cursor-default">
                             <span class="text-2xl">💳</span>
@@ -151,11 +151,11 @@
                         {{-- Card 1 --}}
                         <div class="absolute top-10 right-0 w-full max-w-[340px] h-56 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-[2.5rem] p-8 text-white shadow-[0_20px_50px_rgba(79,70,229,0.3)] transform rotate-6 hover:rotate-3 transition duration-500 hidden md:block">
                             <div class="flex justify-between items-start mb-12">
-                                <span class="text-xl font-black tracking-widest uppercase italic">OneForMind</span>
+                                <span class="text-xl font-black tracking-widest uppercase italic">{{ __('finance_brand') }}</span>
                                 <span class="text-3xl">🏦</span>
                             </div>
                             <div class="mb-2 text-[10px] opacity-60 font-black tracking-widest uppercase">{{ __('finance_wallet_card_label') }}</div>
-                            <div class="text-3xl font-black">Rp 128.450k</div>
+                            <div class="text-3xl font-black">{{ __('finance_mockup_income') }}</div>
                         </div>
                         {{-- Card 2 (Glass) --}}
                         <div class="relative md:absolute bottom-10 left-0 w-full max-w-[380px] h-60 bg-white/40 backdrop-blur-2xl rounded-[2.5rem] p-10 border border-white shadow-2xl transform -rotate-2 hover:rotate-0 transition duration-500 z-10 flex flex-col justify-between">
@@ -172,11 +172,11 @@
                             <div class="flex items-end justify-between text-gray-900">
                                 <div>
                                     <div class="text-[11px] font-black uppercase tracking-widest opacity-30 mb-1">{{ __('finance_wallet_glass_spending_label') }}</div>
-                                    <div class="text-3xl font-black tracking-tighter">Rp 12.000k</div>
+                                    <div class="text-3xl font-black tracking-tighter">{{ __('finance_mockup_expense') }}</div>
                                 </div>
                                 <div class="text-right">
                                      <div class="text-[11px] font-black uppercase tracking-widest opacity-30 mb-1">{{ __('finance_wallet_glass_safe_label') }}</div>
-                                     <div class="text-lg font-black text-emerald-600">Rp 5.200k</div>
+                                     <div class="text-lg font-black text-emerald-600">{{ __('finance_mockup_saving') }}</div>
                                 </div>
                             </div>
                         </div>
@@ -242,7 +242,7 @@
                             <div class="flex justify-between items-end">
                                 <span class="font-black text-2xl">{{ __('finance_flow_expense_title_1') }}</span>
                                 <div class="text-right">
-                                    <span class="text-xs font-bold bg-rose-500/20 text-rose-400 px-2 py-1 rounded-lg block mb-1">45%</span>
+                                    <span class="text-xs font-bold bg-rose-500/20 text-rose-400 px-2 py-1 rounded-lg block mb-1">{{ __('finance_flow_percentage_1') }}</span>
                                     <span class="text-[10px] opacity-40 uppercase font-bold">{{ __('finance_flow_allocation_label') }}</span>
                                 </div>
                             </div>
@@ -252,7 +252,7 @@
                             <div class="flex justify-between items-end">
                                 <span class="font-black text-2xl">{{ __('finance_flow_expense_title_2') }}</span>
                                 <div class="text-right">
-                                    <span class="text-xs font-bold bg-amber-500/20 text-amber-400 px-2 py-1 rounded-lg block mb-1">20%</span>
+                                    <span class="text-xs font-bold bg-amber-500/20 text-amber-400 px-2 py-1 rounded-lg block mb-1">{{ __('finance_flow_percentage_2') }}</span>
                                     <span class="text-[10px] opacity-40 uppercase font-bold">{{ __('finance_flow_allocation_label') }}</span>
                                 </div>
                             </div>
@@ -349,7 +349,7 @@
                         <span class="text-amber-500 text-4xl mb-6 block">🏖️</span>
                         <h4 class="text-gray-400 font-black uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_freedom_title') }}</h4>
                         <p class="text-4xl font-black text-gray-900 tabular-nums">{{ __('finance_stat_freedom_val') }}</p>
-                        <p class="mt-4 text-gray-400 text-xs font-medium">Estimated FIRE Date</p>
+                        <p class="mt-4 text-gray-400 text-xs font-medium">{{ __('finance_fire_date_label') }}</p>
                     </div>
                 </div>
             </div>
@@ -358,17 +358,17 @@
             <div class="bg-white p-12 rounded-[3.5rem] shadow-2xl border border-gray-100 relative overflow-hidden animate-in zoom-in-95 duration-700">
                 <div class="flex justify-between items-end mb-12">
                     <div class="text-left">
-                        <h3 class="text-2xl font-black text-gray-900 mb-2">Compound Growth Engine</h3>
-                        <p class="text-gray-500 text-sm font-medium">Visualization of asset accumulation over time</p>
+                        <h3 class="text-2xl font-black text-gray-900 mb-2">{{ __('finance_compound_title') }}</h3>
+                        <p class="text-gray-500 text-sm font-medium">{{ __('finance_compound_desc') }}</p>
                     </div>
                     <div class="flex gap-4">
                         <div class="flex items-center gap-2">
                             <span class="w-3 h-3 bg-indigo-600 rounded-full"></span>
-                            <span class="text-[10px] font-black uppercase text-gray-400">Projected</span>
+                            <span class="text-[10px] font-black uppercase text-gray-400">{{ __('finance_compound_legend_1') }}</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="w-3 h-3 bg-gray-200 rounded-full"></span>
-                            <span class="text-[10px] font-black uppercase text-gray-400">Baseline</span>
+                            <span class="text-[10px] font-black uppercase text-gray-400">{{ __('finance_compound_legend_2') }}</span>
                         </div>
                     </div>
                 </div>
@@ -397,7 +397,7 @@
             <div class="flex flex-col items-center">
                 <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
                 <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('finance_quote_author') }}</p>
-                <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mt-2">Legendary Investor</p>
+                <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mt-2">{{ __('finance_quote_legend') }}</p>
             </div>
         </div>
     </section>

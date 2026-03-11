@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold text-gray-400 mb-2">
-                            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                            <span>{{ __('calendar_days_s') }}</span><span>{{ __('calendar_days_s') }}</span><span>{{ __('calendar_days_t') }}</span><span>{{ __('calendar_days_w') }}</span><span>{{ __('calendar_days_t') }}</span><span>{{ __('calendar_days_f') }}</span><span>{{ __('calendar_days_s') }}</span>
                         </div>
                         <div class="grid grid-cols-7 gap-1 text-center text-sm font-medium text-gray-700">
                             {{-- Skeleton Dates --}}

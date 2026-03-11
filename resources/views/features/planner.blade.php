@@ -129,12 +129,12 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-indigo-100/50 transition duration-500">
                             <span class="text-xs font-black text-indigo-600 uppercase mb-2 block tracking-widest">{{ __('planner_timeline_stat_1_label') }}</span>
-                            <span class="text-3xl font-black text-slate-900">4 Hours</span>
+                            <span class="text-3xl font-black text-slate-900">{{ __('planner_timeline_stat_1_value') }}</span>
                             <p class="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-tighter">{{ __('planner_timeline_stat_footer') }}</p>
                         </div>
                         <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-purple-100/50 transition duration-500">
                             <span class="text-xs font-black text-purple-600 uppercase mb-2 block tracking-widest">{{ __('planner_timeline_stat_2_label') }}</span>
-                            <span class="text-3xl font-black text-slate-900">2 Hours</span>
+                            <span class="text-3xl font-black text-slate-900">{{ __('planner_timeline_stat_2_value') }}</span>
                             <p class="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-tighter">{{ __('planner_timeline_stat_footer') }}</p>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                                 <div class="flex-1 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 group-hover:shadow-xl transition duration-500 relative overflow-hidden">
                                      <div class="absolute right-0 top-0 w-1.5 h-full bg-indigo-600"></div>
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="text-[11px] font-black text-indigo-600 uppercase tracking-[0.2em]">08:00 - 10:00</span>
+                                        <span class="text-[11px] font-black text-indigo-600 uppercase tracking-[0.2em]">{{ __('planner_timeline_time_1') }}</span>
                                         <span class="text-[10px] font-black bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full uppercase">{{ __('planner_timeline_card_1_badge') }}</span>
                                     </div>
                                     <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('planner_timeline_card_1_title') }}</h4>
@@ -165,7 +165,7 @@
                                 <div class="w-8 h-8 rounded-full bg-gray-300 border-4 border-white shadow-sm shrink-0 mt-2"></div>
                                 <div class="flex-1 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">10:30 - 12:00</span>
+                                        <span class="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">{{ __('planner_timeline_time_2') }}</span>
                                     </div>
                                     <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('planner_timeline_card_2_title') }}</h4>
                                     <p class="text-sm text-gray-500 leading-relaxed">{{ __('planner_timeline_card_2_desc') }}</p>
@@ -178,7 +178,7 @@
                                 <div class="flex-1 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 relative overflow-hidden">
                                     <div class="absolute right-0 top-0 w-1.5 h-full bg-purple-500"></div>
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="text-[11px] font-black text-purple-600 uppercase tracking-[0.2em]">13:00 - 14:00</span>
+                                        <span class="text-[11px] font-black text-purple-600 uppercase tracking-[0.2em]">{{ __('planner_timeline_time_3') }}</span>
                                         <span class="text-[10px] font-black bg-purple-50 text-purple-700 px-3 py-1 rounded-full uppercase">{{ __('planner_timeline_card_3_badge') }}</span>
                                     </div>
                                     <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('planner_timeline_card_3_title') }}</h4>
@@ -251,10 +251,10 @@
             <div class="grid md:grid-cols-2 gap-8 relative">
                 {{-- Axis Labels --}}
                 <div class="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-90 hidden md:block">
-                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">Importance</span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">{{ __('planner_matrix_axis_y') }}</span>
                 </div>
                 <div class="absolute top-[-3rem] left-1/2 -translate-x-1/2 hidden md:block">
-                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">Urgency</span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">{{ __('planner_matrix_axis_x') }}</span>
                 </div>
 
                 {{-- Q1: Urgent & Important --}}
