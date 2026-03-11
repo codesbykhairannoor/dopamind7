@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class BlogPost extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'blog_category_id',
         'title',
         'slug',
         'content',
@@ -30,4 +32,9 @@ class BlogPost extends Model
         'latitude' => 'decimal:8',
         'longitude' => 'decimal:8',
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(BlogCategory::class , 'blog_category_id');
+    }
 }

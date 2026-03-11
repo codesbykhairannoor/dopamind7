@@ -79,31 +79,57 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @forelse($remainingPosts as $post)
-                    <a href="{{ route('resources.blog.show', $post->slug) }}" class="group bg-white rounded-[2rem] border border-slate-100 overflow-hidden hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-indigo-100 transition duration-300 flex flex-col">
-                        <div class="h-48 bg-slate-100 relative overflow-hidden">
+                    <article class="group relative flex flex-col bg-white rounded-3xl border border-slate-200/60 overflow-hidden hover:shadow-[0_20px_50px_rgba(79,70,229,0.08)] hover:-translate-y-1 transition-all duration-500">
+                        <a href="{{ route('resources.blog.show', $post->slug) }}" class="block aspect-[16/10] overflow-hidden relative">
                             @if($post->featured_image)
-                                <img src="{{ asset('storage/' . $post->featured_image) }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="{{ $post->title }}">
+                                <img src="{{ asset('storage/' . $post->featured_image) }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="{{ $post->title }}">
                             @else
                                 <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center text-5xl">📄</div>
                             @endif
-                        </div>
+                            
+                            {{-- Category Badge --}}
+                            @if($post->category)
+                                <div class="absolute top-4 left-4 z-10">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white/90 backdrop-blur-md shadow-sm border border-slate-100/50 text-{{ $post->category->color }}-600">
+                                        {{ $post->category->name }}
+                                    </span>
+                                </div>
+                            @endif
+                        </a>
+
                         <div class="p-8 flex-1 flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition leading-snug">
-                                {{ $post->title }}
-                            </h3>
-                            <p class="text-sm text-slate-600 flex-1 mb-6 line-clamp-2 font-medium">
-                                {{ $post->excerpt ?? Str::limit(strip_tags($post->content), 100) }}
-                            </p>
-                            <div class="flex items-center justify-between mt-auto">
-                                <p class="text-xs font-bold text-slate-400">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.1em]">
                                     {{ $post->published_at?->format('M d, Y') ?? $post->created_at->format('M d, Y') }}
-                                </p>
-                                @if($post->location_name)
-                                    <span class="text-[10px] bg-indigo-50 text-indigo-600 px-2 py-1 rounded-md font-bold uppercase">📍 {{ $post->location_name }}</span>
-                                @endif
+                                </span>
+                                <span class="w-1 h-1 rounded-full bg-slate-200"></span>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.1em]">
+                                    {{ round(str_word_count(strip_tags($post->content)) / 200) }} min read
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-black text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors duration-300 leading-tight">
+                                <a href="{{ route('resources.blog.show', $post->slug) }}">
+                                    {{ $post->title }}
+                                </a>
+                            </h3>
+
+                            <p class="text-slate-600 text-sm font-medium mb-8 line-clamp-2">
+                                {{ $post->excerpt ?? Str::limit(strip_tags($post->content), 120) }}
+                            </p>
+
+                            <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center text-xs">✨</div>
+                                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Team OneForMind</span>
+                                </div>
+                                <a href="{{ route('resources.blog.show', $post->slug) }}" class="text-indigo-600 hover:text-indigo-700 font-bold text-xs flex items-center gap-2 group/btn">
+                                    Read Post 
+                                    <svg class="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                                </a>
                             </div>
                         </div>
-                    </a>
+                    </article>
                 @empty
                     @if(!$featuredPost)
                     <div class="col-span-full py-20 text-center">
