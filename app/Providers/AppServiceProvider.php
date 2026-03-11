@@ -38,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         $isLocalHost = in_array($host, ['127.0.0.1', 'localhost']);
 
         if ($isLocalHost) {
+            \Illuminate\Support\Facades\Log::info("Bodyguard Lokal Aktif: Host {$host}");
             // Paksa APP_URL agar tidak lari ke production (oneformind.com)
             $port = request()->getPort();
             $localUrl = "http://{$host}" . ($port && $port != 80 ? ":{$port}" : "");

@@ -4,16 +4,14 @@ namespace App\Filament\Resources\BlogPostResource\Pages;
 
 use App\Filament\Resources\BlogPostResource;
 use Filament\Actions;
-use Filament\Resources\Pages\ManageRecords;
+use Filament\Resources\Pages\CreateRecord;
 
-class ManageBlogPosts extends ManageRecords
+class CreateBlogPost extends CreateRecord
 {
     protected static string $resource = BlogPostResource::class;
 
-    protected function getHeaderActions(): array
+    protected function getRedirectUrl(): string
     {
-        return [
-            Actions\CreateAction::make(),
-        ];
+        return $this->getResource()::getUrl('index');
     }
 }
