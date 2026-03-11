@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
          * terlepas dari file .env mana yang dimuat (menghindari salah redirect ke production).
          */
         $host = request()->getHost();
-        $isLocalHost = in_array($host, ['127.0.0.1', 'localhost']);
+        $isLocalHost = in_array($host, ['127.0.0.1', 'localhost']) || app()->environment('local');
 
         if ($isLocalHost) {
             \Illuminate\Support\Facades\Log::info("Bodyguard Lokal Aktif: Host {$host}");
