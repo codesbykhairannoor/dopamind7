@@ -33,15 +33,18 @@ class AppServiceProvider extends ServiceProvider
          * 🛡️ BODYGUARD LOKAL (Bulletproof Local Mode)
          * Jika diakses lewat 127.0.0.1 atau localhost, paksa aplikasi pakai config lokal
          * terlepas dari file .env mana yang dimuat (menghindari salah redirect ke production).
+         * 
+         * CRITICAL: Hanya aktif jika APP_ENV BUKAN 'production'.
          */
+        $isProduction = $this->app->environment('production');
         $isLocalEnv = $this->app->environment('local');
         $host = !app()->runningInConsole() ? request()->getHost() : 'localhost';
         $isLocalHost = in_array($host, ['127.0.0.1', 'localhost']);
 
-        if ($isLocalEnv || $isLocalHost) {
+        if (!$isProduction && ($isLocalEnv || $isLocalHost)) {
             \Illuminate\Support\Facades\Log::info("Bodyguard Lokal Aktif: Host {$host}");
             // Paksa APP_URL agar tidak lari ke production (oneformind.com)
-            $port = request()->getPort();
+            $port = !app()->runningInConsole() ? request()->getPort() : null;
             $localUrl = "http://{$host}" . ($port && $port != 80 ? ":{$port}" : "");
             config(['app.url' => $localUrl]);
 
@@ -54,11 +57,15 @@ class AppServiceProvider extends ServiceProvider
             // Opsional: Matikan Asset URL jika ada
             config(['app.asset_url' => null]);
 
-            // Paksa APP_ENV agar tidak dianggap production
+            // Paksa APP_ENV agar tidak dianggap production jika sedang main di localhost
             config(['app.env' => 'local']);
 
-            // Paksa DB_CONNECTION ke mysql agar tidak nyangkut ke production (Supabase)
-            config(['database.default' => 'mysql']);
+            // Paksa DB_CONNECTION ke mysql HANYA jika driver tersedia (opsional, tapi aman)
+            // Di sini kita biarkan user pakai DB asli jika mereka mau, tapi Bodyguard default ke mysql
+            // jika memang itu workflow mereka.
+            if (env('DB_CONNECTION') === 'mysql' || !$isProduction) {
+                config(['database.default' => env('DB_CONNECTION', 'mysql')]);
+            }
         }
 
         /**
