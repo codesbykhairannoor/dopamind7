@@ -8,6 +8,7 @@
     <meta property="og:title" content="{{ __('habit_meta_og_title') }}">
     <meta property="og:description" content="{{ __('habit_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/features/habit') }}">
+    <link rel="canonical" href="{{ url('/features/habit') }}" />
 @endsection
 
 @section('json-ld')
@@ -15,14 +16,14 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "OneForMind Habit Tracker",
+  "name": "{{ __('schema_habit_name') }}",
   "applicationCategory": "ProductivityApplication",
-  "description": "Gamified habit tracking system integrated with a unified productivity dashboard.",
+  "description": "{{ __('schema_habit_description') }}",
   "featureList": [
-    "Daily Streaks",
-    "Mood Tracking",
-    "Visual Progress Analytics",
-    "Indonesian-localized Habit System"
+    "{{ __('schema_habit_feature_1') }}",
+    "{{ __('schema_habit_feature_2') }}",
+    "{{ __('schema_habit_feature_3') }}",
+    "{{ __('schema_habit_feature_4') }}"
   ]
 }
 </script>
@@ -282,6 +283,63 @@
                     </div>
                 </div>
              </div>
+        </div>
+    </section>
+
+    {{-- NEW SECTION 3.5: IDENTITY BRIDGE (STACKED CARDS) --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-orange-200">
+                        {{ __('habit_identity_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                        {{ __('habit_identity_title') }}
+                    </h2>
+                    <p class="text-gray-600 text-xl leading-relaxed font-medium mb-12">
+                        {{ __('habit_identity_desc') }}
+                    </p>
+                    
+                    <div class="grid gap-6">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex gap-6 items-center group hover:bg-orange-600 transition duration-500 hover:shadow-xl hover:scale-105">
+                            <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 group-hover:text-white transition">🏠</div>
+                            <div>
+                                <h4 class="font-black text-gray-900 group-hover:text-white transition">{{ __('habit_card_1_title') }}</h4>
+                                <p class="text-gray-500 text-sm font-medium group-hover:text-orange-100 transition">{{ __('habit_card_1_desc') }}</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex gap-6 items-center group hover:bg-orange-600 transition duration-500 hover:shadow-xl hover:scale-105">
+                            <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 group-hover:text-white transition">⏱️</div>
+                            <div>
+                                <h4 class="font-black text-gray-900 group-hover:text-white transition">{{ __('habit_card_2_title') }}</h4>
+                                <p class="text-gray-500 text-sm font-medium group-hover:text-orange-100 transition">{{ __('habit_card_2_desc') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 relative h-[500px]">
+                    {{-- Floating Stack Visual --}}
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        {{-- Card 3 (Bottom) --}}
+                        <div class="absolute w-[80%] h-64 bg-white rounded-[3rem] shadow-2xl border border-gray-100 transform rotate-[-6deg] translate-y-20 opacity-40 blur-sm"></div>
+                        {{-- Card 2 (Middle) --}}
+                        <div class="absolute w-[85%] h-64 bg-white rounded-[3rem] shadow-2xl border border-gray-100 transform rotate-[-3deg] translate-y-10 opacity-70"></div>
+                        {{-- Card 1 (Top) --}}
+                        <div class="absolute w-[90%] h-64 bg-white rounded-[3.5rem] shadow-[0_30px_60px_rgba(249,115,22,0.15)] border border-orange-100 flex flex-col items-center justify-center p-12 text-center group hover:-translate-y-4 transition duration-700">
+                            <div class="w-20 h-20 bg-orange-500 rounded-3xl flex items-center justify-center text-4xl text-white mb-6 shadow-xl shadow-orange-200 group-hover:rotate-12 transition duration-500">
+                                ⭐
+                            </div>
+                            <h3 class="text-2xl font-black text-gray-900 mb-2">{{ __('habit_card_3_title') }}</h3>
+                            <p class="text-gray-500 font-medium leading-relaxed">{{ __('habit_card_3_desc') }}</p>
+                            {{-- Sparkle Decorations --}}
+                            <div class="absolute top-8 right-8 text-orange-400 animate-pulse">✨</div>
+                            <div class="absolute bottom-8 left-8 text-orange-400 animate-pulse delay-700">✨</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

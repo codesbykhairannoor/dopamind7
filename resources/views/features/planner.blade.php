@@ -8,6 +8,19 @@
     <meta property="og:title" content="{{ __('planner_meta_og_title') }}">
     <meta property="og:description" content="{{ __('planner_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/features/planner') }}">
+    <link rel="canonical" href="{{ url('/features/planner') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ __('schema_planner_name') }}",
+  "applicationCategory": "ProductivityApplication",
+  "description": "{{ __('schema_planner_description') }}"
+}
+</script>
 @endsection
 
 @section('content')
@@ -215,6 +228,73 @@
                     <h3 class="text-3xl font-black mb-6">{{ __('planner_flow_col_3_title') }}</h3>
                     <p class="text-white/60 mb-10 text-lg leading-relaxed">{{ __('planner_flow_col_3_desc') }}</p>
                     <div class="bg-purple-500/20 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-purple-500/30 text-purple-300 inline-block">{{ __('planner_flow_col_3_status') }}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- NEW SECTION 3.5: EISENHOWER MATRIX (2x2 GRID) --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-200">
+                    {{ __('planner_matrix_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                    {{ __('planner_matrix_title') }}
+                </h2>
+                <p class="text-gray-600 text-xl leading-relaxed font-medium">
+                    {{ __('planner_matrix_desc') }}
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 relative">
+                {{-- Axis Labels --}}
+                <div class="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-90 hidden md:block">
+                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">Importance</span>
+                </div>
+                <div class="absolute top-[-3rem] left-1/2 -translate-x-1/2 hidden md:block">
+                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">Urgency</span>
+                </div>
+
+                {{-- Q1: Urgent & Important --}}
+                <div class="bg-white p-10 rounded-[3rem] shadow-xl border-l-8 border-rose-500 hover:shadow-2xl transition duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-rose-50 rounded-bl-[3rem] group-hover:scale-110 transition duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:rotate-12 transition">🔥</div>
+                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('planner_matrix_q1_title') }}</h3>
+                        <p class="text-gray-500 font-medium leading-relaxed">{{ __('planner_matrix_q1_desc') }}</p>
+                    </div>
+                </div>
+
+                {{-- Q2: Not Urgent & Important --}}
+                <div class="bg-white p-10 rounded-[3rem] shadow-xl border-l-8 border-emerald-500 hover:shadow-2xl transition duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-bl-[3rem] group-hover:scale-110 transition duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:rotate-12 transition">💎</div>
+                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('planner_matrix_q2_title') }}</h3>
+                        <p class="text-gray-500 font-medium leading-relaxed">{{ __('planner_matrix_q2_desc') }}</p>
+                    </div>
+                </div>
+
+                {{-- Q3: Urgent & Not Important --}}
+                <div class="bg-white p-10 rounded-[3rem] shadow-xl border-l-8 border-amber-500 hover:shadow-2xl transition duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-[3rem] group-hover:scale-110 transition duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:rotate-12 transition">⚡</div>
+                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('planner_matrix_q3_title') }}</h3>
+                        <p class="text-gray-500 font-medium leading-relaxed">{{ __('planner_matrix_q3_desc') }}</p>
+                    </div>
+                </div>
+
+                {{-- Q4: Not Urgent & Not Important --}}
+                <div class="bg-white p-10 rounded-[3rem] shadow-xl border-l-8 border-slate-300 hover:shadow-2xl transition duration-500 group relative overflow-hidden opacity-80 hover:opacity-100">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-slate-50 rounded-bl-[3rem] group-hover:scale-110 transition duration-700"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-slate-100 text-slate-500 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:rotate-12 transition">🧹</div>
+                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('planner_matrix_q4_title') }}</h3>
+                        <p class="text-gray-500 font-medium leading-relaxed">{{ __('planner_matrix_q4_desc') }}</p>
+                    </div>
                 </div>
             </div>
         </div>

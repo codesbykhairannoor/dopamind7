@@ -8,6 +8,7 @@
     <meta property="og:title" content="{{ __('goal_meta_og_title') }}">
     <meta property="og:description" content="{{ __('goal_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/features/goal') }}">
+    <link rel="canonical" href="{{ url('/features/goal') }}" />
 @endsection
 
 @section('json-ld')
@@ -15,9 +16,9 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "OneForMind Goal Tracker",
+  "name": "{{ __('schema_goal_name') }}",
   "applicationCategory": "ProductivityApplication",
-  "description": "Professional goal tracking system with vision boards and milestone management.",
+  "description": "{{ __('schema_goal_description') }}",
   "featureList": [
     "Vision Board Cover Images",
     "Milestone Breakdown",
@@ -255,6 +256,71 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- NEW SECTION 3.5: MILESTONE DECOMPOSITION (ZIG-ZAG PATH) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        {{-- Decorative SVG Path Background --}}
+        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+            <svg class="w-full h-full" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                <path d="M0,100 L1000,300 L0,500 L1000,700 L0,900" fill="none" stroke="currentColor" stroke-width="40" />
+            </svg>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-24 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-blue-200">
+                    {{ __('goal_steps_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                    {{ __('goal_steps_title') }}
+                </h2>
+                <p class="text-gray-600 text-xl leading-relaxed font-medium">
+                    {{ __('goal_steps_desc') }}
+                </p>
+            </div>
+
+            <div class="relative">
+                {{-- Vertical Line Connector --}}
+                <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600 via-indigo-600 to-transparent -translate-x-1/2 hidden md:block"></div>
+
+                {{-- Step 1 --}}
+                <div class="flex flex-col md:flex-row items-center gap-12 mb-32 group">
+                    <div class="flex-1 text-center md:text-right order-2 md:order-1 animate-in fade-in slide-in-from-left-8 duration-700">
+                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('goal_step_1_title') }}</h3>
+                        <p class="text-gray-500 font-medium text-lg leading-relaxed">{{ __('goal_step_1_desc') }}</p>
+                    </div>
+                    <div class="relative z-10 flex-shrink-0 order-1 md:order-2">
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl font-black text-blue-600 border-4 border-blue-50 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition duration-500">1</div>
+                    </div>
+                    <div class="flex-1 order-3 hidden md:block"></div>
+                </div>
+
+                {{-- Step 2 --}}
+                <div class="flex flex-col md:flex-row items-center gap-12 mb-32 group">
+                    <div class="flex-1 order-1 hidden md:block"></div>
+                    <div class="relative z-10 flex-shrink-0 order-2">
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl font-black text-indigo-600 border-4 border-indigo-50 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition duration-500">2</div>
+                    </div>
+                    <div class="flex-1 text-center md:text-left order-3 animate-in fade-in slide-in-from-right-8 duration-700">
+                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('goal_step_2_title') }}</h3>
+                        <p class="text-gray-500 font-medium text-lg leading-relaxed">{{ __('goal_step_2_desc') }}</p>
+                    </div>
+                </div>
+
+                {{-- Step 3 --}}
+                <div class="flex flex-col md:flex-row items-center gap-12 group">
+                    <div class="flex-1 text-center md:text-right order-2 md:order-1 animate-in fade-in slide-in-from-left-8 duration-700">
+                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('goal_step_3_title') }}</h3>
+                        <p class="text-gray-500 font-medium text-lg leading-relaxed">{{ __('goal_step_3_desc') }}</p>
+                    </div>
+                    <div class="relative z-10 flex-shrink-0 order-1 md:order-2">
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl font-black text-purple-600 border-4 border-purple-50 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition duration-500">3</div>
+                    </div>
+                    <div class="flex-1 order-3 hidden md:block text-4xl pt-4">🚀</div>
                 </div>
             </div>
         </div>

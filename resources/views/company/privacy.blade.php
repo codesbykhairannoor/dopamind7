@@ -7,6 +7,18 @@
     <meta property="og:title" content="{{ __('privacy_meta_og_title') }}">
     <meta property="og:description" content="{{ __('privacy_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/company/privacy') }}">
+    <link rel="canonical" href="{{ url('/company/privacy') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ __('schema_privacy_name') }}",
+  "description": "{{ __('schema_privacy_description') }}"
+}
+</script>
 @endsection
 
 @section('content')

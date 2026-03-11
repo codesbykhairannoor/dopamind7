@@ -8,6 +8,19 @@
     <meta property="og:title" content="{{ __('calendar_meta_og_title') }}">
     <meta property="og:description" content="{{ __('calendar_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/features/calendar') }}">
+    <link rel="canonical" href="{{ url('/features/calendar') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ __('schema_calendar_name') }}",
+  "applicationCategory": "ProductivityApplication",
+  "description": "{{ __('schema_calendar_description') }}"
+}
+</script>
 @endsection
 
 @section('content')
@@ -289,6 +302,99 @@
                  </div>
             </div>
         </div>
+    </section>
+
+    {{-- NEW SECTION 3.5: ECOSYSTEM SYNC (NETWORK GRAPH VISUAL) --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-200">
+                        {{ __('calendar_sync_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                        {{ __('calendar_sync_title') }}
+                    </h2>
+                    <p class="text-gray-600 text-xl mb-12 leading-relaxed font-medium">
+                        {{ __('calendar_sync_desc') }}
+                    </p>
+                    
+                    <div class="space-y-8">
+                        {{-- Node Item 1 --}}
+                        <div class="flex gap-6 group">
+                            <div class="w-12 h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center text-xl shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">💰</div>
+                            <div>
+                                <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-1">{{ __('calendar_node_finance_title') }}</h4>
+                                <p class="text-gray-500 text-sm font-medium">{{ __('calendar_node_finance_desc') }}</p>
+                            </div>
+                        </div>
+                        {{-- Node Item 2 --}}
+                        <div class="flex gap-6 group">
+                            <div class="w-12 h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center text-xl shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500">💼</div>
+                            <div>
+                                <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-1">{{ __('calendar_node_job_title') }}</h4>
+                                <p class="text-gray-500 text-sm font-medium">{{ __('calendar_node_job_desc') }}</p>
+                            </div>
+                        </div>
+                        {{-- Node Item 3 --}}
+                        <div class="flex gap-6 group">
+                            <div class="w-12 h-12 bg-white rounded-2xl shadow-lg flex items-center justify-center text-xl shrink-0 group-hover:bg-purple-600 group-hover:text-white transition-all duration-500">📔</div>
+                            <div>
+                                <h4 class="font-black text-gray-900 uppercase tracking-tighter mb-1">{{ __('calendar_node_journal_title') }}</h4>
+                                <p class="text-gray-500 text-sm font-medium">{{ __('calendar_node_journal_desc') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex-1 w-full relative h-[500px] flex items-center justify-center">
+                    {{-- Central Calendar Node --}}
+                    <div class="relative z-20 w-32 h-32 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center text-4xl shadow-[0_0_60px_rgba(79,70,229,0.4)] animate-pulse border-4 border-white transform hover:scale-110 transition duration-500 cursor-pointer">
+                        🗓️
+                    </div>
+                    
+                    {{-- Orbiting Nodes --}}
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        {{-- Connection Lines (SVG) --}}
+                        <svg class="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 500 500">
+                            <line x1="250" y1="250" x2="100" y2="150" stroke="#4f46e5" stroke-width="2" stroke-dasharray="8 8" class="animate-[dash_20s_linear_infinite]" />
+                            <line x1="250" y1="250" x2="400" y2="100" stroke="#4f46e5" stroke-width="2" stroke-dasharray="8 8" class="animate-[dash_20s_linear_infinite]" />
+                            <line x1="250" y1="250" x2="400" y2="400" stroke="#4f46e5" stroke-width="2" stroke-dasharray="8 8" class="animate-[dash_20s_linear_infinite]" />
+                            <line x1="250" y1="250" x2="100" y2="400" stroke="#4f46e5" stroke-width="2" stroke-dasharray="8 8" class="animate-[dash_20s_linear_infinite]" />
+                        </svg>
+                        
+                        {{-- Node: Finance --}}
+                        <div class="absolute top-[15%] left-[20%] w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl border border-emerald-50 transform hover:-translate-y-2 transition duration-500 group cursor-pointer shadow-emerald-100/50">
+                            <div class="absolute -inset-2 bg-emerald-400/10 rounded-[2rem] -z-10 animate-ping opacity-20"></div>
+                            💰
+                        </div>
+                        
+                        {{-- Node: Job --}}
+                        <div class="absolute top-[10%] right-[15%] w-24 h-24 bg-white rounded-[2rem] shadow-xl flex items-center justify-center text-4xl border border-indigo-50 transform hover:scale-105 transition duration-500 group cursor-pointer shadow-indigo-100/50">
+                            <div class="absolute -inset-2 bg-indigo-400/10 rounded-[2.5rem] -z-10 animate-pulse"></div>
+                            💼
+                        </div>
+                        
+                        {{-- Node: Journal --}}
+                        <div class="absolute bottom-[10%] right-[15%] w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl border border-purple-50 transform hover:rotate-12 transition duration-500 group cursor-pointer shadow-purple-100/50">
+                            <div class="absolute -inset-1 bg-purple-400/10 rounded-[2rem] -z-10"></div>
+                            📔
+                        </div>
+                        
+                        {{-- Node: Habits --}}
+                        <div class="absolute bottom-[15%] left-[20%] w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl border border-amber-50 transform hover:-rotate-12 transition duration-500 group cursor-pointer shadow-amber-100/50">
+                            🌱
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <style>
+            @keyframes dash {
+                to { stroke-dashoffset: -100; }
+            }
+        </style>
     </section>
 
     {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}

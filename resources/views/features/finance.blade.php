@@ -8,6 +8,7 @@
     <meta property="og:title" content="{{ __('finance_meta_og_title') }}">
     <meta property="og:description" content="{{ __('finance_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/features/finance') }}">
+    <link rel="canonical" href="{{ url('/features/finance') }}" />
 @endsection
 
 @section('json-ld')
@@ -15,9 +16,9 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "OneForMind Finance Tracker",
+  "name": "{{ __('schema_finance_name') }}",
   "applicationCategory": "FinanceApplication",
-  "description": "Integrated personal finance management system for tracking income, expenses, and savings goals within an Indonesian context.",
+  "description": "{{ __('schema_finance_description') }}",
   "featureList": [
     "Expense Categorization",
     "Income Target Setting",
@@ -296,6 +297,91 @@
                     <div class="text-3xl mb-6 bg-indigo-800/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto border border-indigo-700/50">🤝</div>
                     <h4 class="text-white font-bold text-xl mb-3">{{ __('finance_privacy_point_3_title') }}</h4>
                     <p class="text-indigo-300">{{ __('finance_privacy_point_3_desc') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- NEW SECTION 5.7: WEALTH TRAJECTORY (STATISTICAL GRID) --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-emerald-200">
+                    {{ __('finance_trajectory_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                    {{ __('finance_trajectory_title') }}
+                </h2>
+                <p class="text-gray-600 text-xl leading-relaxed font-medium">
+                    {{ __('finance_trajectory_desc') }}
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                {{-- Trajectory Card 1 --}}
+                <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 hover:shadow-2xl transition duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-bl-[4rem] group-hover:scale-110 transition duration-700"></div>
+                    <div class="relative z-10">
+                        <span class="text-emerald-500 text-4xl mb-6 block">📈</span>
+                        <h4 class="text-gray-400 font-black uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_projection_title') }}</h4>
+                        <p class="text-4xl font-black text-gray-900 tabular-nums">{{ __('finance_stat_projection_val') }}</p>
+                        <div class="mt-6 w-full h-1 bg-emerald-100 rounded-full">
+                            <div class="w-2/3 h-full bg-emerald-500 rounded-full animate-in slide-in-from-left duration-1000"></div>
+                        </div>
+                    </div>
+                </div>
+                {{-- Trajectory Card 2 --}}
+                <div class="bg-slate-900 p-10 rounded-[3rem] shadow-2xl border border-slate-800 transform md:-translate-y-4 group relative overflow-hidden">
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl"></div>
+                    <div class="relative z-10 text-white">
+                        <span class="text-indigo-400 text-4xl mb-6 block">🎯</span>
+                        <h4 class="text-indigo-300/40 font-black uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_savings_title') }}</h4>
+                        <p class="text-4xl font-black text-white tabular-nums">{{ __('finance_stat_savings_val') }}</p>
+                        <div class="mt-8 flex items-center gap-2 bg-indigo-500/20 px-4 py-2 rounded-xl border border-indigo-500/30 text-indigo-300 text-[10px] font-black uppercase tracking-widest animate-pulse">
+                            On Track to Achieve
+                        </div>
+                    </div>
+                </div>
+                {{-- Trajectory Card 3 --}}
+                <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 hover:shadow-2xl transition duration-500 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-[4rem] group-hover:scale-110 transition duration-700"></div>
+                    <div class="relative z-10">
+                        <span class="text-amber-500 text-4xl mb-6 block">🏖️</span>
+                        <h4 class="text-gray-400 font-black uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_freedom_title') }}</h4>
+                        <p class="text-4xl font-black text-gray-900 tabular-nums">{{ __('finance_stat_freedom_val') }}</p>
+                        <p class="mt-4 text-gray-400 text-xs font-medium">Estimated FIRE Date</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Growth Visualization Line --}}
+            <div class="bg-white p-12 rounded-[3.5rem] shadow-2xl border border-gray-100 relative overflow-hidden animate-in zoom-in-95 duration-700">
+                <div class="flex justify-between items-end mb-12">
+                    <div class="text-left">
+                        <h3 class="text-2xl font-black text-gray-900 mb-2">Compound Growth Engine</h3>
+                        <p class="text-gray-500 text-sm font-medium">Visualization of asset accumulation over time</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-indigo-600 rounded-full"></span>
+                            <span class="text-[10px] font-black uppercase text-gray-400">Projected</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-gray-200 rounded-full"></span>
+                            <span class="text-[10px] font-black uppercase text-gray-400">Baseline</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative h-48 w-full flex items-end gap-[2%]">
+                    @for($i=0; $i<20; $i++)
+                        <div class="flex-1 bg-indigo-50 rounded-t-lg relative group transition-all duration-500 hover:bg-indigo-100" style="height: {{ 20 + ($i * 4) }}%">
+                            <div class="absolute bottom-0 left-0 w-full bg-indigo-600 rounded-t-lg transition-all duration-1000 delay-{{ $i * 50 }}" style="height: {{ 10 + ($i * 3.5) }}%"></div>
+                            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 px-3 py-1 bg-gray-900 text-white text-[10px] rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap z-20 pointer-events-none">
+                                Year {{ 2024 + $i }}: Rp {{ 10 + ($i * 15) }}M
+                            </div>
+                        </div>
+                    @endfor
                 </div>
             </div>
         </div>

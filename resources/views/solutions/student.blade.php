@@ -4,10 +4,11 @@
 
 {{-- 🔥 SEO & GEO INJECTION 🔥 --}}
 @section('meta')
-    <meta name="description" content="{{ __('student_meta_desc') }} - {{ app()->getLocale() === 'id' ? 'Satu platform untuk mahasiswa di Indonesia kelola tugas, jadwal kuliah, dan budgeting harian.' : 'A unified productivity platform for students in Indonesia to manage tasks, schedules, and daily budgeting.' }}">
+    <meta name="description" content="{{ __('student_meta_desc') }} - {{ app()->getLocale() === 'id' ? __('schema_solution_student_description_id') : __('schema_solution_student_description_en') }}">
     <meta property="og:title" content="{{ __('student_meta_og_title') }}">
     <meta property="og:description" content="{{ __('student_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/student') }}">
+    <link rel="canonical" href="{{ url('/solutions/student') }}" />
 @endsection
 
 @section('json-ld')
@@ -15,11 +16,11 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Productivity Solution for Students in Indonesia",
-  "description": "Tailored productivity system for university students in Jakarta and across Indonesia, featuring task management and budget tracking.",
+  "name": "{{ __('schema_student_name') }}",
+  "description": "{{ __('schema_student_description') }}",
   "audience": {
     "@type": "Audience",
-    "audienceType": "Students"
+    "audienceType": "{{ __('schema_solution_student_audience') }}"
   }
 }
 </script>

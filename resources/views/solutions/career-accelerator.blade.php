@@ -7,12 +7,26 @@
     <meta property="og:title" content="{{ __('solve_career_meta_og_title') }}">
     <meta property="og:description" content="{{ __('solve_career_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/career-accelerator') }}">
+    <link rel="canonical" href="{{ url('/solutions/career-accelerator') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ __('schema_solution_career_name') }}",
+  "description": "{{ __('schema_solution_career_description') }}"
+}
+</script>
 @endsection
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Tetap dipertahankan sesuai request) --}}
-    <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-indigo-50/30 relative border-b border-gray-100">
+    {{-- ================================================================= --}}
+    {{-- SECTION 1: HERO (Dipertahankan sesuai instruksi) --}}
+    {{-- ================================================================= --}}
+    <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 relative border-b border-slate-100">
         <div class="mt-20 absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(79,70,229,0.03)_1px,transparent_1px)] [background-size:40px_40px] -z-10"></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
@@ -21,14 +35,14 @@
                     💼 {{ __('solve_career_hero_badge') }}
                 </div>
                 
-                <h1 class="text-5xl md:text-6xl xl:text-7xl font-black mb-6 leading-[1.05] text-gray-900 tracking-tight">
+                <h1 class="text-5xl md:text-6xl xl:text-7xl font-black mb-6 leading-[1.05] text-slate-900 tracking-tight">
                     {{ __('solve_career_hero_title_1') }}
                     <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                         {{ __('solve_career_hero_title_2') }}
                     </span>
                 </h1>
                 
-                <p class="text-xl text-gray-500 mb-10 leading-relaxed font-medium max-w-2xl">
+                <p class="text-xl text-slate-500 mb-10 leading-relaxed font-medium max-w-2xl">
                     {{ __('solve_career_hero_desc') }}
                 </p>
                 
@@ -44,7 +58,7 @@
                 <div class="relative bg-white rounded-[2.5rem] shadow-2xl border border-white flex flex-col h-[500px] overflow-hidden transform transition hover:scale-[1.01] duration-500 p-8">
                     <div class="space-y-6">
                         <div class="flex items-center justify-between mb-4">
-                            <h4 class="font-black text-gray-900 text-sm">{{ __('solve_career_mockup_header') }}</h4>
+                            <h4 class="font-black text-slate-900 text-sm">{{ __('solve_career_mockup_header') }}</h4>
                             <span class="bg-indigo-100 text-indigo-600 text-[10px] font-bold px-2 py-1 rounded-full">Live Tracking</span>
                         </div>
                         
@@ -61,10 +75,10 @@
                                     <span class="text-[10px] font-bold text-emerald-600">Offer Received 🎉</span>
                                 </div>
                             </div>
-                            <div class="p-4 bg-gray-50 border-l-4 border-gray-300 rounded-r-2xl">
+                            <div class="p-4 bg-slate-50 border-l-4 border-slate-300 rounded-r-2xl">
                                 <div class="flex justify-between items-center">
-                                    <p class="font-bold text-gray-900 text-xs">Airbnb - Designer</p>
-                                    <span class="text-[10px] font-bold text-gray-400">Applied</span>
+                                    <p class="font-bold text-slate-900 text-xs">Airbnb - Designer</p>
+                                    <span class="text-[10px] font-bold text-slate-400">Applied</span>
                                 </div>
                             </div>
                         </div>
@@ -84,157 +98,162 @@
         </div>
     </header>
 
-    {{-- SECTION 2: THE PROBLEM (THE RESUME BLACK HOLE) --}}
+    {{-- ================================================================= --}}
+    {{-- SECTION 2: NEW LAYOUT -> ZIG-ZAG CARDS (THE PROBLEM) --}}
+    {{-- ================================================================= --}}
     <section class="py-32 bg-slate-900 text-white relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-900/50 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[150px] pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">{{ __('solve_career_prob_title') }}</h2>
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-24">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">{{ __('solve_career_prob_title') }}</h2>
                 <p class="text-xl text-slate-400">{{ __('solve_career_prob_desc') }}</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                {{-- Issue 1 --}}
-                <div class="bg-slate-800/50 backdrop-blur-xl p-8 rounded-[2rem] border border-slate-700 hover:border-rose-500/50 transition-colors duration-300">
-                    <div class="text-4xl mb-6">🕳️</div>
-                    <h3 class="text-xl font-bold mb-3 text-white">{{ __('solve_career_prob_1_title') }}</h3>
-                    <p class="text-slate-400 leading-relaxed">{{ __('solve_career_prob_1_desc') }}</p>
+            <div class="space-y-12 md:space-y-0">
+                {{-- Problem 1 (Left Aligned) --}}
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                    <div class="w-full md:w-1/2 bg-white/5 backdrop-blur-xl p-10 rounded-[3rem] border border-white/10 shadow-2xl hover:bg-white/10 transition duration-300">
+                        <div class="w-16 h-16 bg-rose-500/20 text-rose-400 rounded-2xl flex items-center justify-center text-3xl mb-8">🕳️</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">{{ __('solve_career_prob_1_title') }}</h3>
+                        <p class="text-slate-400 text-lg leading-relaxed">{{ __('solve_career_prob_1_desc') }}</p>
+                    </div>
+                    <div class="hidden md:block w-full md:w-1/2"></div>
                 </div>
-                {{-- Issue 2 --}}
-                <div class="bg-slate-800/50 backdrop-blur-xl p-8 rounded-[2rem] border border-slate-700 hover:border-amber-500/50 transition-colors duration-300">
-                    <div class="text-4xl mb-6">📊</div>
-                    <h3 class="text-xl font-bold mb-3 text-white">{{ __('solve_career_prob_2_title') }}</h3>
-                    <p class="text-slate-400 leading-relaxed">{{ __('solve_career_prob_2_desc') }}</p>
+
+                {{-- Problem 2 (Right Aligned) --}}
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 md:-mt-16 relative z-10">
+                    <div class="w-full md:w-1/2 bg-indigo-600/20 backdrop-blur-xl p-10 rounded-[3rem] border border-indigo-500/30 shadow-2xl hover:bg-indigo-600/30 transition duration-300">
+                        <div class="w-16 h-16 bg-indigo-500/30 text-indigo-300 rounded-2xl flex items-center justify-center text-3xl mb-8">📊</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">{{ __('solve_career_prob_2_title') }}</h3>
+                        <p class="text-indigo-200 text-lg leading-relaxed">{{ __('solve_career_prob_2_desc') }}</p>
+                    </div>
+                    <div class="hidden md:block w-full md:w-1/2"></div>
                 </div>
-                {{-- Issue 3 --}}
-                <div class="bg-slate-800/50 backdrop-blur-xl p-8 rounded-[2rem] border border-slate-700 hover:border-indigo-500/50 transition-colors duration-300">
-                    <div class="text-4xl mb-6">👻</div>
-                    <h3 class="text-xl font-bold mb-3 text-white">{{ __('solve_career_prob_3_title') }}</h3>
-                    <p class="text-slate-400 leading-relaxed">{{ __('solve_career_prob_3_desc') }}</p>
+
+                {{-- Problem 3 (Left Aligned) --}}
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16 md:-mt-16 relative z-20">
+                    <div class="w-full md:w-1/2 bg-white/5 backdrop-blur-xl p-10 rounded-[3rem] border border-white/10 shadow-2xl hover:bg-white/10 transition duration-300">
+                        <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-3xl mb-8">👻</div>
+                        <h3 class="text-2xl font-bold mb-4 text-white">{{ __('solve_career_prob_3_title') }}</h3>
+                        <p class="text-slate-400 text-lg leading-relaxed">{{ __('solve_career_prob_3_desc') }}</p>
+                    </div>
+                    <div class="hidden md:block w-full md:w-1/2"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 3: THE SOLUTION (THE PIPELINE FRAMEWORK) --}}
-    <section class="py-32 bg-white">
+    {{-- ================================================================= --}}
+    {{-- SECTION 3: NEW LAYOUT -> HORIZONTAL TIMELINE TRACKER (THE SOLUTION) --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                {{-- Left: Text --}}
-                <div>
-                    <div class="inline-flex items-center justify-center w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl text-2xl mb-6 shadow-sm border border-indigo-100">⚙️</div>
-                    <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 leading-tight">
-                        {{ __('solve_career_sol_title') }}
-                    </h2>
-                    <p class="text-gray-500 text-lg leading-relaxed mb-8">
-                        {{ __('solve_career_sol_desc') }}
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">1</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-2">{{ __('solve_career_sol_step_1_title') }}</h4>
-                                <p class="text-gray-500">{{ __('solve_career_sol_step_1_desc') }}</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">2</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-2">{{ __('solve_career_sol_step_2_title') }}</h4>
-                                <p class="text-gray-500">{{ __('solve_career_sol_step_2_desc') }}</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold">3</div>
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-900 mb-2">{{ __('solve_career_sol_step_3_title') }}</h4>
-                                <p class="text-gray-500">{{ __('solve_career_sol_step_3_desc') }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center mb-24 max-w-3xl mx-auto">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-50 text-indigo-600 rounded-3xl text-3xl mb-8 shadow-sm border border-indigo-100">⚙️</div>
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight">
+                    {{ __('solve_career_sol_title') }}
+                </h2>
+                <p class="text-slate-500 text-xl leading-relaxed">
+                    {{ __('solve_career_sol_desc') }}
+                </p>
+            </div>
 
-                {{-- Right: Visual Kanban --}}
-                <div class="relative bg-gray-50 p-8 rounded-[3rem] border border-gray-100 shadow-inner h-[600px] flex flex-col gap-4 overflow-hidden">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-emerald-200/50 to-transparent rounded-full blur-3xl"></div>
+            {{-- Horizontal Tracker --}}
+            <div class="relative max-w-5xl mx-auto">
+                {{-- Connecting Line --}}
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-2 bg-slate-100 rounded-full transform -translate-y-1/2 -z-10"></div>
+                <div class="hidden md:block absolute top-1/2 left-0 w-2/3 h-2 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transform -translate-y-1/2 -z-10"></div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    {{-- Step 1 --}}
+                    <div class="bg-white border-2 border-indigo-500 rounded-[2.5rem] p-8 text-center shadow-xl transform md:-translate-y-4 hover:-translate-y-6 transition duration-300 relative">
+                        <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-indigo-600 text-white font-black rounded-full flex items-center justify-center border-4 border-white">1</div>
+                        <h4 class="text-xl font-black text-slate-900 mb-3 mt-4">{{ __('solve_career_sol_step_1_title') }}</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">{{ __('solve_career_sol_step_1_desc') }}</p>
+                    </div>
                     
-                    {{-- Fake Kanban Columns --}}
-                    <div class="flex gap-4 h-full relative z-10 overflow-hidden">
-                        {{-- Col 1 --}}
-                        <div class="w-1/2 flex flex-col gap-4">
-                            <h5 class="text-xs font-bold text-gray-400 uppercase tracking-widest">Wishlist</h5>
-                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 opacity-60">
-                                <div class="w-1/2 h-2 bg-gray-200 rounded mb-2"></div>
-                                <div class="w-3/4 h-2 bg-gray-100 rounded"></div>
-                            </div>
-                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 opacity-60">
-                                <div class="w-2/3 h-2 bg-gray-200 rounded mb-2"></div>
-                                <div class="w-1/2 h-2 bg-gray-100 rounded"></div>
-                            </div>
-                        </div>
-                        {{-- Col 2 --}}
-                        <div class="w-1/2 flex flex-col gap-4 transform translate-y-12">
-                            <h5 class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Interview</h5>
-                            <div class="bg-indigo-600 p-5 rounded-2xl shadow-xl border border-indigo-500 transform hover:scale-105 transition duration-300">
-                                <span class="bg-indigo-500 text-white text-[10px] px-2 py-1 rounded mb-3 inline-block">Final Round</span>
-                                <h6 class="text-white font-bold mb-1">Product Designer</h6>
-                                <p class="text-indigo-200 text-xs mb-4">TechCorp Inc.</p>
-                                <div class="flex justify-between items-center border-t border-indigo-500/50 pt-3">
-                                    <span class="text-indigo-100 text-xs font-medium">Tomorrow, 10 AM</span>
-                                    <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-xs">👨‍💼</div>
-                                </div>
-                            </div>
-                        </div>
+                    {{-- Step 2 --}}
+                    <div class="bg-indigo-50 border-2 border-indigo-200 rounded-[2.5rem] p-8 text-center shadow-md transform hover:-translate-y-2 transition duration-300 relative">
+                        <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-indigo-400 text-white font-black rounded-full flex items-center justify-center border-4 border-white">2</div>
+                        <h4 class="text-xl font-black text-slate-900 mb-3 mt-4">{{ __('solve_career_sol_step_2_title') }}</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed">{{ __('solve_career_sol_step_2_desc') }}</p>
+                    </div>
+
+                    {{-- Step 3 --}}
+                    <div class="bg-slate-50 border-2 border-slate-100 rounded-[2.5rem] p-8 text-center shadow-sm transform hover:-translate-y-2 transition duration-300 relative">
+                        <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 bg-slate-300 text-slate-700 font-black rounded-full flex items-center justify-center border-4 border-white">3</div>
+                        <h4 class="text-xl font-black text-slate-900 mb-3 mt-4">{{ __('solve_career_sol_step_3_title') }}</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">{{ __('solve_career_sol_step_3_desc') }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 4: THE ARSENAL (FEATURES BENTO) --}}
-    <section class="py-32 bg-indigo-50/30 border-t border-indigo-50">
+    {{-- ================================================================= --}}
+    {{-- SECTION 4: NEW LAYOUT -> SYMMETRICAL 4-GRID (THE ARSENAL) --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-slate-50 border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('solve_career_feat_title') }}</h2>
-                <p class="text-xl text-gray-500">{{ __('solve_career_feat_desc') }}</p>
+                <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('solve_career_feat_title') }}</h2>
+                <p class="text-xl text-slate-500">{{ __('solve_career_feat_desc') }}</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {{-- Feat 1 --}}
-                <div class="lg:col-span-2 bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-md hover:shadow-xl transition-shadow">
-                    <div class="text-4xl mb-6">📑</div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3">{{ __('solve_career_feat_1_title') }}</h3>
-                    <p class="text-gray-500 leading-relaxed">{{ __('solve_career_feat_1_desc') }}</p>
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all text-center flex flex-col items-center">
+                    <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mb-6">📑</div>
+                    <h3 class="text-lg font-black text-slate-900 mb-3">{{ __('solve_career_feat_1_title') }}</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">{{ __('solve_career_feat_1_desc') }}</p>
                 </div>
+                
                 {{-- Feat 2 --}}
-                <div class="lg:col-span-2 bg-gradient-to-br from-indigo-900 to-slate-900 p-10 rounded-[2.5rem] text-white shadow-xl">
-                    <div class="text-4xl mb-6">🧠</div>
-                    <h3 class="text-2xl font-bold text-white mb-3">{{ __('solve_career_feat_2_title') }}</h3>
-                    <p class="text-indigo-200 leading-relaxed">{{ __('solve_career_feat_2_desc') }}</p>
+                <div class="bg-slate-900 p-10 rounded-[2.5rem] border border-slate-800 shadow-xl text-center flex flex-col items-center transform md:-translate-y-4">
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🧠</div>
+                    <h3 class="text-lg font-black text-white mb-3">{{ __('solve_career_feat_2_title') }}</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">{{ __('solve_career_feat_2_desc') }}</p>
                 </div>
+
                 {{-- Feat 3 --}}
-                <div class="lg:col-span-4 bg-indigo-100/50 p-10 rounded-[2.5rem] border border-indigo-100 text-center">
-                    <h3 class="text-2xl font-bold text-indigo-950 mb-3">{{ __('solve_career_feat_3_title') }}</h3>
-                    <p class="text-indigo-800/70 max-w-2xl mx-auto">{{ __('solve_career_feat_3_desc') }}</p>
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all text-center flex flex-col items-center">
+                    <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mb-6">🎯</div>
+                    <h3 class="text-lg font-black text-slate-900 mb-3">{{ __('solve_career_feat_3_title') }}</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">{{ __('solve_career_feat_3_desc') }}</p>
+                </div>
+
+                {{-- Feat 4 (New Bonus Feature for Symmetry) --}}
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all text-center flex flex-col items-center">
+                    <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mb-6">📈</div>
+                    <h3 class="text-lg font-black text-slate-900 mb-3">Outcome Tracking</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Map your interview conversion rates and optimize your approach automatically.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 5: CTA --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    {{-- ================================================================= --}}
+    {{-- SECTION 5: NEW LAYOUT -> DRAMATIC DARK CTA --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-indigo-950 relative overflow-hidden">
+        {{-- Intense Glowing Orb --}}
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/40 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f46e5_1px,transparent_1px),linear-gradient(to_bottom,#4f46e5_1px,transparent_1px)] bg-[size:64px_64px] opacity-10"></div>
+
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
-            <div class="text-6xl mb-8 animate-bounce">🚀</div>
-            <h2 class="text-5xl md:text-7xl font-black mb-8 text-gray-900 tracking-tight">{{ __('solve_career_cta_title') }}</h2>
-            <p class="text-gray-500 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
+            <div class="inline-flex items-center justify-center w-24 h-24 bg-white/10 backdrop-blur-md rounded-full text-5xl mb-10 border border-white/20 shadow-[0_0_50px_rgba(79,70,229,0.5)]">🚀</div>
+            <h2 class="text-5xl md:text-7xl font-black mb-8 text-white tracking-tight leading-tight">
+                {{ __('solve_career_cta_title') }}
+            </h2>
+            <p class="text-indigo-200 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
                 {{ __('solve_career_cta_desc') }}
             </p>
-            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-gray-900 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-600 transition-colors duration-300 shadow-2xl hover:shadow-indigo-500/50">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-indigo-950 px-14 py-5 rounded-full font-black text-xl hover:bg-indigo-50 hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_rgba(255,255,255,0.2)]">
                 {{ __('solve_career_cta_btn') }}
             </a>
+            <p class="mt-10 text-xs text-indigo-400 font-bold uppercase tracking-[0.2em]">Start accelerating today</p>
         </div>
     </section>
 

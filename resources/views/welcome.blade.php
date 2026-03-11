@@ -1,17 +1,13 @@
 @extends('layouts.marketing')
 
-@section('title', 'OneForMind | ' . (app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'All in One Productivity OS'))
+@section('title', __('welcome_meta_title'))
 
 @section('meta')
     <meta name="description" content="{{ __('welcome_meta_desc') }}">
     <meta property="og:title" content="{{ __('welcome_meta_og_title') }}">
     <meta property="og:description" content="{{ __('welcome_meta_og_desc') }}">
-    <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
     
-    <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
-    <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
-    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
     <link rel="canonical" href="{{ url('/') }}" />
 @endsection
 

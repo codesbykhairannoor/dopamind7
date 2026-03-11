@@ -3,17 +3,26 @@
 @section('title', (app()->getLocale() === 'id' ? 'Tentang Kami | Satu Aplikasi Pelacak Produktivitas' : 'About Us | All in One Productivity OS'))
 
 @section('meta')
-    <meta name="description" content="{{ app()->getLocale() === 'id' ? 'Misi OneForMind: Membangun sistem operasi hidup terpadu untuk para profesional dan visioner.' : 'OneForMind Mission: Building the unified life operating system for high performers and visionaries.' }}">
-    
-    <meta property="og:title" content="{{ app()->getLocale() === 'id' ? 'Tentang OneForMind - Visi & Misi' : 'About OneForMind - The Vision' }}">
-    <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Temukan kolektif di balik OneForMind. Kami membangun sistem operasi hidup terpadu untuk masa depan produktivitas.' : 'Discover the collective behind OneForMind. We are building the unified life OS for the future of productivity.' }}">
-    <meta property="og:type" content="website"> 
+    <meta name="description" content="{{ __('about_meta_desc') }}">
+    <meta property="og:title" content="{{ __('about_meta_og_title') }}">
+    <meta property="og:description" content="{{ __('about_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/about') }}">
-
-    <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
-    <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
-    <link rel="alternate" hreflang="x-default" href="{{ url('/about') }}" />
     <link rel="canonical" href="{{ url('/about') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "{{ __('schema_about_name') }}",
+  "description": "{{ __('schema_about_description') }}",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "OneForMind"
+  }
+}
+</script>
 @endsection
 
 @section('json-ld')

@@ -15,6 +15,8 @@
         <meta property="og:image" content="{{ asset('storage/' . $post->featured_image) }}">
     @endif
     
+    <link rel="canonical" href="{{ url()->current() }}" />
+
     @if($post->location_name)
         <meta name="geo.placename" content="{{ $post->location_name }}">
         @if($post->latitude && $post->longitude)
@@ -22,6 +24,23 @@
             <meta name="ICBM" content="{{ $post->latitude }}, {{ $post->longitude }}">
         @endif
     @endif
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ $post->title }}",
+  "description": "{{ $post->meta_description ?? $post->excerpt }}",
+  "datePublished": "{{ $post->published_at ? $post->published_at->toIso8601String() : $post->created_at->toIso8601String() }}",
+  "author": {
+    "@type": "Person",
+    "name": "Khairan N."
+  },
+  "url": "{{ url()->current() }}"
+}
+</script>
 @endsection
 
 @section('content')

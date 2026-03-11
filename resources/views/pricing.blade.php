@@ -3,9 +3,22 @@
 @section('title', __('pricing_meta_title'))
 
 @section('meta')
-    <meta name="description" content="{{ app()->getLocale() === 'id' ? 'Harga OneForMind: Investasi produktivitas terbaik di Indonesia. Pilih paket yang sesuai untuk kelola habit dan keuangan Anda.' : 'OneForMind Pricing: The best productivity investment in Indonesia. Choose the plan that fits your habits and finance tracking needs.' }}">
+    <meta name="description" content="{{ __('pricing_meta_desc') }}">
     <meta property="og:title" content="{{ __('pricing_meta_og_title') }}">
+    <meta property="og:description" content="{{ __('pricing_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/pricing') }}">
+    <link rel="canonical" href="{{ url('/pricing') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ __('schema_pricing_name') }}",
+  "description": "{{ __('schema_pricing_description') }}"
+}
+</script>
 @endsection
 
 @section('content')

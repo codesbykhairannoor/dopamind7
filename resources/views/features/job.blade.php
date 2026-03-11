@@ -8,6 +8,7 @@
     <meta property="og:title" content="{{ __('job_meta_og_title') }}">
     <meta property="og:description" content="{{ __('job_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/features/job') }}">
+    <link rel="canonical" href="{{ url('/features/job') }}" />
 @endsection
 
 @section('json-ld')
@@ -15,9 +16,9 @@
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "OneForMind Job Tracker",
+  "name": "{{ __('schema_job_name') }}",
   "applicationCategory": "ProductivityApplication",
-  "description": "Professional job application tracker and CRM for career management.",
+  "description": "{{ __('schema_job_description') }}",
   "featureList": [
     "Application Pipeline Management",
     "Interview Scheduling",
@@ -261,6 +262,84 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    {{-- NEW SECTION 3.5: MARKET VALUE (SPLIT CONTENT) --}}
+    <section class="py-32 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-cyan-500/20">
+                        {{ __('job_value_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                        {{ __('job_value_title') }}
+                    </h2>
+                    <p class="text-slate-400 text-xl leading-relaxed font-medium mb-12">
+                        {{ __('job_value_desc') }}
+                    </p>
+                    
+                    <div class="space-y-12">
+                        <div class="flex gap-8 group">
+                            <div class="w-16 h-16 rounded-2xl bg-slate-800 flex items-center justify-center text-3xl group-hover:bg-cyan-500 transition duration-500">📈</div>
+                            <div>
+                                <h4 class="text-xl font-black mb-2 uppercase tracking-tight group-hover:text-cyan-400 transition">{{ __('job_insight_1_title') }}</h4>
+                                <p class="text-slate-500 font-medium leading-relaxed">{{ __('job_insight_1_desc') }}</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-8 group">
+                            <div class="w-16 h-16 rounded-2xl bg-slate-800 flex items-center justify-center text-3xl group-hover:bg-indigo-500 transition duration-500">🏗️</div>
+                            <div>
+                                <h4 class="text-xl font-black mb-2 uppercase tracking-tight group-hover:text-indigo-400 transition">{{ __('job_insight_2_title') }}</h4>
+                                <p class="text-slate-500 font-medium leading-relaxed">{{ __('job_insight_2_desc') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 w-full bg-slate-800/50 rounded-[3rem] p-1 border border-slate-700 shadow-2xl animate-in zoom-in-95 duration-1000">
+                    <div class="bg-slate-900 rounded-[2.8rem] p-10 overflow-hidden relative group">
+                        <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition duration-700"></div>
+                        
+                        <div class="flex justify-between items-center mb-10">
+                            <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-500">Negotiation Radar</h3>
+                            <div class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-lg text-[10px] font-black animate-pulse">LIVE DATA</div>
+                        </div>
+
+                        <div class="space-y-6">
+                            @foreach([
+                                ['role' => 'Senior Developer', 'prev' => '85M', 'curr' => '115M', 'gain' => '+35%', 'color' => 'cyan'],
+                                ['role' => 'Product Manager', 'prev' => '70M', 'curr' => '95M', 'gain' => '+35%', 'color' => 'indigo'],
+                                ['role' => 'Data Scientist', 'prev' => '90M', 'curr' => '130M', 'gain' => '+44%', 'color' => 'purple']
+                            ] as $item)
+                                <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700/50 hover:border-slate-500/50 transition duration-500">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <span class="font-bold text-slate-300">{{ $item['role'] }}</span>
+                                        <span class="text-{{ $item['color'] }}-400 font-black text-xs">{{ $item['gain'] }}</span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <span class="text-slate-500 text-xs line-through">Rp {{ $item['prev'] }}</span>
+                                        <div class="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
+                                            <div class="w-full h-full bg-{{ $item['color'] }}-500 animate-[grow_2s_ease-out_infinite]"></div>
+                                        </div>
+                                        <span class="text-white font-black">Rp {{ $item['curr'] }}</span>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            @keyframes grow {
+                0% { transform: translateX(-100%); }
+                100% { transform: translateX(100%); }
+            }
+        </style>
     </section>
 
     {{-- SECTION 4: THE SUCCESS QUOTE --}}

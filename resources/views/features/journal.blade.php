@@ -8,6 +8,19 @@
     <meta property="og:title" content="{{ __('journal_meta_og_title') }}">
     <meta property="og:description" content="{{ __('journal_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/features/journal') }}">
+    <link rel="canonical" href="{{ url('/features/journal') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ __('schema_journal_name') }}",
+  "applicationCategory": "ProductivityApplication",
+  "description": "{{ __('schema_journal_description') }}"
+}
+</script>
 @endsection
 
 @section('content')
@@ -174,6 +187,85 @@
                                 <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('journal_nebula_feature_2_title') }}</h4>
                                 <p class="text-gray-500 font-medium">{{ __('journal_nebula_feature_2_desc') }}</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- NEW SECTION 3.5: SENTIMENT ANALYTICS (BENTO MOSAIC) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-purple-200">
+                    {{ __('journal_analytics_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                    {{ __('journal_analytics_title') }}
+                </h2>
+                <p class="text-gray-600 text-xl leading-relaxed font-medium">
+                    {{ __('journal_analytics_desc') }}
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+                {{-- Bento 1: Large Feature --}}
+                <div class="md:col-span-2 md:row-span-2 bg-slate-50 rounded-[3rem] p-12 border border-slate-100 relative overflow-hidden group hover:shadow-2xl transition duration-700">
+                    <div class="absolute -top-12 -right-12 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl group-hover:bg-purple-500/10 transition duration-700"></div>
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl mb-8 group-hover:rotate-12 transition">🌈</div>
+                            <h3 class="text-3xl font-black text-gray-900 mb-4">{{ __('journal_analytics_bento_1_title') }}</h3>
+                            <p class="text-gray-500 text-lg font-medium leading-relaxed max-w-md">{{ __('journal_analytics_bento_1_desc') }}</p>
+                        </div>
+                        
+                        {{-- Visual Mood Cluster Representantion --}}
+                        <div class="flex items-end gap-2 h-24">
+                            @foreach([40, 70, 45, 90, 60, 80, 55, 100, 40, 75] as $height)
+                                <div class="flex-1 bg-purple-200 rounded-full transition-all duration-1000 delay-{{ $loop->index * 100 }}" style="height: {{ $height }}%"></div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Bento 2 --}}
+                <div class="bg-purple-600 rounded-[3rem] p-10 text-white relative overflow-hidden group hover:shadow-2xl transition duration-500">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/20 to-transparent"></div>
+                    <div class="relative z-10 flex flex-col justify-between h-full">
+                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition">🧘</div>
+                        <div>
+                            <h3 class="text-xl font-black mb-2">{{ __('journal_analytics_bento_2_title') }}</h3>
+                            <p class="text-purple-100 text-xs font-medium leading-relaxed">{{ __('journal_analytics_bento_2_desc') }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Bento 3 --}}
+                <div class="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-xl relative overflow-hidden group hover:shadow-2xl transition duration-500">
+                    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-slate-50 rounded-full group-hover:scale-150 transition duration-1000"></div>
+                    <div class="relative z-10 flex flex-col justify-between h-full">
+                        <div class="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:-rotate-12 transition">🧠</div>
+                        <div>
+                            <h3 class="text-xl font-black text-gray-900 mb-2">{{ __('journal_analytics_bento_3_title') }}</h3>
+                            <p class="text-gray-500 text-xs font-medium leading-relaxed">{{ __('journal_analytics_bento_3_desc') }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Bento 4: Horizontal Banner --}}
+                <div class="md:col-span-3 bg-slate-900 rounded-[3rem] p-8 border border-slate-800 flex items-center justify-between group overflow-hidden">
+                    <div class="flex items-center gap-8 pl-4">
+                        <div class="flex -space-x-4">
+                            @for($i=0; $i<4; $i++)
+                                <div class="w-12 h-12 rounded-full border-4 border-slate-900 bg-slate-800 flex items-center justify-center text-xl shadow-lg">✨</div>
+                            @endfor
+                        </div>
+                        <p class="text-slate-400 font-bold uppercase tracking-widest text-xs">Join thousands reflecting daily with AI-powered clarity.</p>
+                    </div>
+                    <div class="pr-4 group-hover:translate-x-2 transition duration-500">
+                        <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </div>
                     </div>
                 </div>

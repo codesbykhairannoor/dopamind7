@@ -4,10 +4,11 @@
 
 {{-- 🔥 SEO & GEO INJECTION 🔥 --}}
 @section('meta')
-    <meta name="description" content="{{ __('freelance_meta_desc') }} - {{ app()->getLocale() === 'id' ? 'Solusi produktivitas terbaik untuk freelancer di Jakarta dan Indonesia. Kelola invoice, project, dan keuangan di satu tempat.' : 'The ultimate productivity solution for freelancers in Jakarta and Indonesia. Manage invoices, projects, and finance in one place.' }}">
+    <meta name="description" content="{{ __('freelance_meta_desc') }} - {{ app()->getLocale() === 'id' ? __('schema_solution_freelancer_description_id') : __('schema_solution_freelancer_description_en') }}">
     <meta property="og:title" content="{{ __('freelance_meta_og_title') }}">
     <meta property="og:description" content="{{ __('freelance_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/freelancer') }}">
+    <link rel="canonical" href="{{ url('/solutions/freelancer') }}" />
 @endsection
 
 @section('json-ld')

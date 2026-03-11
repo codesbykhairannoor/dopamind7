@@ -7,6 +7,18 @@
     <meta property="og:title" content="{{ __('atomic_meta_og_title') }}">
     <meta property="og:description" content="{{ __('atomic_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/atomic-system') }}">
+    <link rel="canonical" href="{{ url('/solutions/atomic-system') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ __('schema_solution_atomic_name') }}",
+  "description": "{{ __('schema_solution_atomic_description') }}"
+}
+</script>
 @endsection
 
 @section('content')

@@ -7,6 +7,18 @@
     <meta property="og:title" content="{{ __('solve_mental_meta_og_title') }}">
     <meta property="og:description" content="{{ __('solve_mental_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/mental-clarity') }}">
+    <link rel="canonical" href="{{ url('/solutions/mental-clarity') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "OneForMind Mental Clarity Solution",
+  "description": "System for reducing mental clutter and achieving extreme focus."
+}
+</script>
 @endsection
 
 @section('content')

@@ -7,6 +7,18 @@
     <meta property="og:title" content="{{ __('solve_finance_meta_og_title') }}">
     <meta property="og:description" content="{{ __('solve_finance_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/finance-mastery') }}">
+    <link rel="canonical" href="{{ url('/solutions/finance-mastery') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ __('schema_solution_finance_mastery_name') }}",
+  "description": "{{ __('schema_solution_finance_mastery_description') }}"
+}
+</script>
 @endsection
 
 @section('content')

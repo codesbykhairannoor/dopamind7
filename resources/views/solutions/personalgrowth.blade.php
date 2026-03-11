@@ -8,6 +8,18 @@
     <meta property="og:title" content="{{ __('growth_meta_og_title') }}">
     <meta property="og:description" content="{{ __('growth_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/personal-growth') }}">
+    <link rel="canonical" href="{{ url('/solutions/personal-growth') }}" />
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ __('schema_solution_growth_name') }}",
+  "description": "{{ __('schema_solution_growth_description') }}"
+}
+</script>
 @endsection
 
 @section('content')
