@@ -27,30 +27,33 @@ class DatabaseSeeder extends Seeder
         echo "✅ User dibuat: admin@OneForMind.com\n";
 
         // 2. Bikin Periode (Januari 2026)
-        $period = Period::create([
+        $period = Period::firstOrCreate([
             'user_id' => $user->id,
             'month' => 1,
             'year' => 2026,
+        ], [
             'is_active' => true,
         ]);
 
         echo "✅ Periode Januari 2026 dibuat\n";
 
         // 3. Bikin Tracker: Habit "Lari Pagi"
-        $habitTracker = Tracker::create([
+        $habitTracker = Tracker::firstOrCreate([
             'period_id' => $period->id,
             'type' => 'habit',
             'name' => 'Lari Pagi',
+        ], [
             'icon' => '🏃',
             'target_value' => 15, // Target 15x sebulan
             'unit' => 'kali',
         ]);
 
         // 4. Bikin Tracker: Finance "Jajan Kopi"
-        $financeTracker = Tracker::create([
+        $financeTracker = Tracker::firstOrCreate([
             'period_id' => $period->id,
             'type' => 'expense',
             'name' => 'Jajan Kopi',
+        ], [
             'icon' => '☕',
             'target_value' => 500000, // Budget 500rb
             'unit' => 'IDR',
