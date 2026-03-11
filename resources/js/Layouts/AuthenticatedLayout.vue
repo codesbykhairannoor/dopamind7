@@ -64,7 +64,7 @@ watch(() => page.url, () => {
             </div>
 
             <nav class="flex-1 px-3 space-y-1 overflow-y-auto py-4 custom-scrollbar" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
-                <Link :href="route('dashboard')" prefetch="mount" cacheFor="1m"
+                <Link :href="route('dashboard')" prefetch="hover"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -77,7 +77,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('dashboard') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="mount" cacheFor="1m"
+                <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="hover"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -90,7 +90,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('habits.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="mount" cacheFor="1m"
+                <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="hover"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -103,7 +103,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('planner.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="mount" cacheFor="1m"
+                <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="hover"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -116,7 +116,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('finance.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="mount" cacheFor="1m"
+                <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="hover"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -129,7 +129,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="mount" cacheFor="1m"
+                <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="hover"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -142,7 +142,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch="mount" cacheFor="1m"
+                <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch="hover"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -155,7 +155,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch="mount" cacheFor="1m"
+                <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch="hover"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('goals.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',

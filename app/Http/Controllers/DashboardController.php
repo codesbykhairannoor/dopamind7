@@ -9,7 +9,9 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    public function __construct(private DashboardService $dashboardService) {}
+    public function __construct(private DashboardService $dashboardService)
+    {
+    }
 
     public function __invoke(Request $request)
     {
@@ -19,9 +21,9 @@ class DashboardController extends Controller
         $synergy = $this->dashboardService->getTodaySynergy($user->id, $timezone);
 
         return Inertia::render('Dashboard', [
-            'synergy' => $synergy,
-            'stats'   => [
-                'is_premium' => (bool) ($user->is_premium ?? false),
+            'synergy' => Inertia::lazy(fn() => $this->dashboardService->getTodaySynergy($user->id, $timezone)),
+            'stats' => [
+                'is_premium' => (bool)($user->is_premium ?? false),
             ],
         ]);
     }
