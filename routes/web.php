@@ -247,21 +247,28 @@ Route::get('/resources/guide', function () {
 
 Route::get('/resources/blog', function () {
     $posts = \App\Models\BlogPost::where('status', 'published')
-        ->where('published_at', '<=', now())
-        ->orderBy('published_at', 'desc')
-        ->paginate(12);
+        ->where(function ($query) {
+            $query->whereNull('published_at')
+                ->orWhere('published_at', '<=', now());
+        }
+        )
+            ->orderBy('published_at', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
 
-    return view('resources.blog', compact('posts'));
-})->name('resources.blog');
+        return view('resources.blog', compact('posts'));    })->name('resources.blog');
 
 Route::get('/resources/blog/{slug}', function ($slug) {
     $post = \App\Models\BlogPost::where('slug', $slug)
         ->where('status', 'published')
-        ->where('published_at', '<=', now())
-        ->firstOrFail();
+        ->where(function ($query) {
+            $query->whereNull('published_at')
+                ->orWhere('published_at', '<=', now());
+        }
+        )
+            ->firstOrFail();
 
-    return view('resources.post', compact('post'));
-})->name('resources.blog.show');
+        return view('resources.post', compact('post'));    })->name('resources.blog.show');
 
 Route::get('/resources/stories', function () {
     return view('resources.stories');
