@@ -1526,6 +1526,7 @@
     "greet_night": "Good Night",
     "welcome_meta_desc": "OneForMind is the unified productivity system that combines habits, finances, tasks, journal, and goals into one single intelligent OS.",
     "welcome_meta_og_title": "OneForMind | The Unified Life OS",
+    "welcome_meta_title": "OneForMind | All-in-One Life OS",
     "welcome_meta_og_desc": "Stop the app-switching fatigue. Manage your whole life in one dashboard.",
     "hero_badge": "✨ v1.0: Unified Life OS",
     "hero_title_1": "One System.",
@@ -2534,10 +2535,5 @@
     "stat_metrics_uptime": "Annual Uptime",
     "stat_cta_title": "Stay Informed",
     "stat_cta_desc": "Follow our technical updates for detailed incident reports.",
-    "stat_cta_btn": "Go to Community Hub",
-    "fric_chaos": "Chaos",
-    "fric_fragmented_data": "Fragmented Data",
-    "mig_view": "View →",
-    "mig_view_all": "View All →",
-    "eco_coming_soon": "Coming Soon"
+    "stat_cta_btn": "Go to Community Hub"
 }
