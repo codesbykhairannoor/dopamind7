@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blog_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->text('description')->nullable();
-            $table->string('color')->default('indigo');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('blog_categories')) {
+            Schema::create('blog_categories', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('slug')->unique();
+                $table->text('description')->nullable();
+                $table->string('color')->default('indigo');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
