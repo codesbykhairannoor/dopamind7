@@ -2531,5 +2531,10 @@
     "stat_metrics_uptime": "Uptime Tahunan",
     "stat_cta_title": "Tetap Terinformasi",
     "stat_cta_desc": "Ikuti pembaruan teknis kami untuk laporan insiden yang mendalam.",
-    "stat_cta_btn": "Ke Hub Komunitas"
+    "stat_cta_btn": "Ke Hub Komunitas",
+    "fric_chaos": "Kekacauan",
+    "fric_fragmented_data": "Data Terpecah",
+    "mig_view": "Lihat →",
+    "mig_view_all": "Lihat Semua →",
+    "eco_coming_soon": "Segera Hadir"
 }

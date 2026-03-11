@@ -61,7 +61,7 @@
     <link rel="dns-prefetch" href="https://fonts.bunny.net">
     <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" />
+    <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
 
     {{-- Font Loading --}}
     <noscript>
@@ -497,14 +497,14 @@
                             <img src="/favicon.svg?v=2" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
                         </a>
-                        <p class="text-sm text-slate-600 leading-relaxed">
+                        <p class="text-sm text-slate-700 leading-relaxed">
                             The unified productivity system designed to bring clarity to your life, habits, and finances.
                         </p>
                     </div>
 
                      <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-600">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
                             <li><a href="{{ route('features.finance') }}" class="hover:text-indigo-600 transition">Finance OS</a></li>
                             <li><a href="{{ route('features.planner') }}" class="hover:text-indigo-600 transition">Daily Planner</a></li>
@@ -518,7 +518,7 @@
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-600">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">Vs. Paper Planner</a></li>
                             <li><a href="{{ route('compare.sheets') }}" class="hover:text-indigo-600 transition">Vs. Excel/Sheets</a></li>
                             <li><a href="{{ route('compare.finance-apps') }}" class="hover:text-indigo-600 transition">Vs. Finance Apps</a></li>
@@ -531,7 +531,7 @@
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Resources</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-600">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('resources.help') }}" class="hover:text-indigo-600 transition">Help Center</a></li>
                             <li><a href="{{ route('resources.blog') }}" class="hover:text-indigo-600 transition">Blog</a></li>
                             <li><a href="{{ route('resources.changelog') }}" class="hover:text-indigo-600 transition">Changelog</a></li>
@@ -542,7 +542,7 @@
 
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h3>
-                        <ul class="space-y-4 text-sm font-bold text-slate-600">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">{{ __('About Us') }}</a></li>
                             <li><a href="{{ route('company.privacy') }}" class="hover:text-indigo-600 transition">{{ __('Privacy Policy') }}</a></li>
                             <li><a href="{{ route('company.terms') }}" class="hover:text-indigo-600 transition">{{ __('Terms of Service') }}</a></li>
@@ -561,8 +561,8 @@
                     </div>
                 </div>
 
-                {{-- 🔥 FIX CONTRAST: Ganti slate-400 jadi slate-600 --}}
-                <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-600">
+                {{-- 🔥 FIX CONTRAST: Ganti slate-600 jadi slate-700 --}}
+                <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-700">
                     <p>&copy; {{ date('Y') }} OneForMind. All rights reserved.</p>
                     <p>Made with ❤️ for better focus.</p>
                 </div>

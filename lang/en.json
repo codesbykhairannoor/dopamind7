@@ -2534,5 +2534,10 @@
     "stat_metrics_uptime": "Annual Uptime",
     "stat_cta_title": "Stay Informed",
     "stat_cta_desc": "Follow our technical updates for detailed incident reports.",
-    "stat_cta_btn": "Go to Community Hub"
+    "stat_cta_btn": "Go to Community Hub",
+    "fric_chaos": "Chaos",
+    "fric_fragmented_data": "Fragmented Data",
+    "mig_view": "View →",
+    "mig_view_all": "View All →",
+    "eco_coming_soon": "Coming Soon"
 }

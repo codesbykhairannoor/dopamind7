@@ -97,8 +97,8 @@
                             </div>
                         @endforeach
                         <div class="p-6 bg-red-500/10 rounded-[2rem] border border-red-500/20 flex flex-col justify-center items-center text-center">
-                            <div class="text-red-400 font-black text-xs uppercase tracking-widest">Chaos</div>
-                            <div class="text-[10px] font-bold text-red-500/50">Fragmented Data</div>
+                            <div class="text-red-400 font-black text-xs uppercase tracking-widest">{{ __('fric_chaos') }}</div>
+                            <div class="text-[10px] font-bold text-red-500/50">{{ __('fric_fragmented_data') }}</div>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
     <section class="py-32 bg-white scroll-mt-20" id="features">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-24">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-500 font-black text-[10px] mb-6 uppercase tracking-widest border border-slate-200">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 font-black text-[10px] mb-6 uppercase tracking-widest border border-slate-200">
                     {{ __('pill_badge') }}
                 </div>
                 <h2 class="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-tight">
@@ -211,8 +211,8 @@
                         {{ $index + 1 }}
                     </div>
                     <div class="text-4xl mb-6">{{ $step['icon'] }}</div>
-                    <h4 class="text-xl font-black text-slate-900 mb-4 uppercase tracking-wider">{{ __($step['title']) }}</h4>
-                    <p class="text-slate-500 font-bold text-sm leading-relaxed">{{ __($step['desc']) }}</p>
+                    <h3 class="text-xl font-black text-slate-900 mb-4 uppercase tracking-wider">{{ __($step['title']) }}</h3>
+                    <p class="text-slate-700 font-bold text-sm leading-relaxed">{{ __($step['desc']) }}</p>
                 </div>
                 @endforeach
             </div>
@@ -304,21 +304,21 @@
                 <a href="{{ route('compare.paper') }}" class="group bg-white p-10 rounded-[3rem] border border-slate-200 hover:border-indigo-600 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                     <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📄</div>
                     <div class="text-xl font-black text-slate-900 mb-2">{{ __('mig_card_1') }}</div>
-                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">View →</div>
+                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">{{ __('mig_view') }}</div>
                 </a>
                 <a href="{{ route('compare.sheets') }}" class="group bg-white p-10 rounded-[3rem] border border-slate-200 hover:border-indigo-600 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                     <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📊</div>
                     <div class="text-xl font-black text-slate-900 mb-2">{{ __('mig_card_2') }}</div>
-                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">View →</div>
+                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">{{ __('mig_view') }}</div>
                 </a>
                 <a href="{{ route('compare.five-apps') }}" class="group bg-slate-900 p-10 rounded-[3rem] border border-white/10 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 transform hover:-translate-y-2">
                     <div class="text-4xl mb-6">🌌</div>
                     <div class="text-xl font-black text-white mb-2">{{ __('mig_card_3') }}</div>
-                    <div class="text-indigo-400 font-bold opacity-50 group-hover:opacity-100 transition">View All →</div>
+                    <div class="text-indigo-400 font-bold opacity-50 group-hover:opacity-100 transition">{{ __('mig_view_all') }}</div>
                 </a>
             </div>
 
-            <p class="mt-16 text-slate-400 font-black uppercase tracking-[0.3em] text-[10px]">
+            <p class="mt-16 text-slate-600 font-black uppercase tracking-[0.3em] text-[10px]">
                 {{ __('mig_cta') }}
             </p>
         </div>
