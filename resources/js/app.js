@@ -40,7 +40,8 @@ createInertiaApp({
                 // sehingga tidak ada delay/loading yang bikin teks berubah jadi key.
                 resolve: lang => {
                     const langs = import.meta.glob('../../lang/*.json', { eager: true });
-                    return langs[`../../lang/${lang}.json`].default;
+                    const langPath = `../../lang/${lang}.json`;
+                    return langs[langPath] ? langs[langPath].default : {};
                 },
             });
 

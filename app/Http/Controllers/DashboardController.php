@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $synergy = $this->dashboardService->getTodaySynergy($user->id, $timezone);
 
         return Inertia::render('Dashboard', [
-            'synergy' => Inertia::lazy(fn() => $this->dashboardService->getTodaySynergy($user->id, $timezone)),
+            'synergy' => $this->dashboardService->getTodaySynergy($user->id, $timezone),
             'stats' => [
                 'is_premium' => (bool)($user->is_premium ?? false),
             ],
