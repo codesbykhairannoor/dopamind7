@@ -9,7 +9,7 @@
     <script>if(document.cookie.includes('oneformind_session')){window.location.replace('/dashboard');}</script>
 
     <meta name="description" content="{{ __('meta_global_description') }}">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="keywords" content="{{ __('meta_global_keywords') }}">
 
     {{-- Geo-SEO & Location Tags --}}

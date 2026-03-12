@@ -2,8 +2,16 @@ User-agent: *
 Allow: /
 Disallow: /build/
 Disallow: /vendor/
-
-# AI Bot Permissions
+Disallow: /dashboard
+Disallow: /habits
+Disallow: /finance
+Disallow: /planner
+Disallow: /journal
+Disallow: /calendar
+Disallow: /goals
+Disallow: /jobs
+Disallow: /profile
+Disallow: /settings
 User-agent: GPTBot
 Allow: /
 User-agent: ChatGPT-User
