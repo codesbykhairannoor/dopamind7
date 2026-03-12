@@ -4,13 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="view-transition" content="same-origin">
+    <link rel="canonical" href="{{ url()->current() }}">
     
     {{-- 🔥 1. SMART REDIRECT --}}
     <script>if(document.cookie.includes('oneformind_session')){window.location.replace('/dashboard');}</script>
 
+    @if(!View::hasSection('meta'))
     <meta name="description" content="{{ __('meta_global_description') }}">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="keywords" content="{{ __('meta_global_keywords') }}">
+    @endif
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
     {{-- Geo-SEO & Location Tags --}}
     <meta name="geo.region" content="ID-JK" />
@@ -35,7 +38,9 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title')">
+    @if(!View::hasSection('meta'))
     <meta property="og:description" content="{{ __('meta_global_description') }}">
+    @endif
     <meta property="og:image" content="{{ asset('og-image.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -44,7 +49,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@OneForMind">
     <meta name="twitter:title" content="@yield('title')">
+    @if(!View::hasSection('meta'))
     <meta name="twitter:description" content="{{ __('meta_global_description') }}">
+    @endif
     <meta name="twitter:image" content="{{ url('/og-image.png') }}">
     
     <meta name="ai-creator" content="{{ __('meta_ai_creator') }}">

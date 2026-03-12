@@ -9,37 +9,6 @@
     <meta property="og:url" content="{{ url('/compare/finance-apps') }}">
 @endsection
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('finapp_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
-                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-@endsection
-
 @section('json-ld')
 <script type="application/ld+json">
 [{
@@ -111,6 +80,7 @@
 @endsection
 
 @section('content')
+
 
     {{-- ================================================================= --}}
     {{-- SECTION 1: HERO (THE MINDFUL WEALTH BUILDING) --}}
@@ -455,5 +425,34 @@
             100% { transform: translateX(400%); }
         }
     </style>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('finapp_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
+                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+            </div>
+        </div>
+    </section>
 
 @endsection

@@ -8,38 +8,6 @@
     <meta property="og:description" content="{{ __('plan_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/compare/planner-apps') }}">
 @endsection
-
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('plan_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
-                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/calendar') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('calendar_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('calendar_meta_title') }}</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-@endsection
-
 @section('json-ld')
 <script type="application/ld+json">
 [{
@@ -111,6 +79,7 @@
 @endsection
 
 @section('content')
+
 
     {{-- ================================================================= --}}
     {{-- SECTION 1: HERO (Tetap sama strukturnya, ganti tema Indigo) --}}
@@ -334,9 +303,53 @@
             </div>
 
             {{-- Us vs Them Layout --}}
-            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+            <div class="grid md:grid-cols-2 gap-8 items-start">
                 
                 {{-- Them (Traditional Apps) --}}
+                <div class="p-8 rounded-3xl border border-slate-100 bg-slate-50 opacity-70">
+                    <h3 class="font-bold text-slate-400 uppercase tracking-widest mb-6">{{ __('plan_table_head_2') }}</h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>{{ __('plan_table_row_1_title') }}</span>
+                            <span class="text-sm font-mono bg-slate-200 px-2 py-1 rounded">{{ __('plan_table_row_1_col_1') }}</span>
+                        </li>
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>{{ __('plan_table_row_2_title') }}</span>
+                            <span class="text-sm font-mono bg-slate-200 px-2 py-1 rounded">{{ __('plan_table_row_2_col_1') }}</span>
+                        </li>
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>{{ __('plan_table_row_3_title') }}</span>
+                            <span class="text-sm font-mono bg-slate-200 px-2 py-1 rounded">{{ __('plan_table_row_3_col_1') }}</span>
+                        </li>
+                        <li class="flex items-center justify-between text-slate-500">
+                            <span>{{ __('plan_table_row_4_title') }}</span>
+                            <span class="text-sm font-mono bg-slate-200 px-2 py-1 rounded">{{ __('plan_table_row_4_col_1') }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                {{-- Right: OFM (Highlighted) --}}
+                <div class="p-8 rounded-3xl border-2 border-indigo-100 bg-white shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl">WINNER</div>
+                    <h3 class="font-black text-indigo-900 uppercase tracking-widest mb-6">OneForMind</h3>
+                    <ul class="space-y-6">
+                         <li class="flex items-center justify-between">
+                            <span class="font-bold text-slate-900">{{ __('plan_table_row_1_title') }}</span>
+                            <span class="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg">{{ __('plan_table_row_1_col_2') }}</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="font-bold text-slate-900">{{ __('plan_table_row_2_title') }}</span>
+                            <span class="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg">{{ __('plan_table_row_2_col_2') }}</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="font-bold text-slate-900">{{ __('plan_table_row_3_title') }}</span>
+                            <span class="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg">{{ __('plan_table_row_3_col_2') }}</span>
+                        </li>
+                         {{-- Extra Winner Row --}}
+                         <li class="flex items-center justify-between pt-4 border-t border-slate-100">
+                            <span class="font-bold text-slate-900">{{ __('plan_table_row_4_title') }}</span>
+                            <span class="text-sm font-black text-white bg-indigo-600 px-3 py-1 rounded-lg shadow-lg shadow-indigo-200">{{ __('plan_table_row_4_col_2') }}</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -396,6 +409,35 @@
                 </a>
             </div>
             <p class="mt-8 text-xs text-indigo-400 font-bold uppercase tracking-[0.3em]">{{ __('plan_cta_sub') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('plan_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
+                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/calendar') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('calendar_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('calendar_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 
