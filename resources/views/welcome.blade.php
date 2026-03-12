@@ -88,7 +88,6 @@
             
             <p class="text-lg md:text-xl text-slate-500 mb-14 leading-relaxed max-w-3xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
                 {{ __('hero_desc') }}
-                <span class="block mt-4 text-slate-400 text-lg">{{ __('hero_desc_expanded') }}</span>
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center gap-5 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
