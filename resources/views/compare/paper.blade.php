@@ -347,6 +347,24 @@
         </div>
     </section>
 
+     {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('notes_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('notes_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('notes_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">Extended Mind Thesis</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Cognitive Load Theory</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Distributed Cognition</span>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 5: SUNRISE CTA (SAME AS REFERENCE) --}}
     <section class="pt-32 pb-40 px-6 bg-white relative overflow-hidden border-t border-gray-100">
         {{-- Sunrise Effect Base --}}
@@ -367,33 +385,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-gray-50 border-y border-gray-100">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('notes_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('notes_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('notes_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">Extended Mind Thesis</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Cognitive Load Theory</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Distributed Cognition</span>
-            </div>
-        </div>
-    </section>
-
-    {{-- SECTION: HOW IT WORKS (EXTRA CONTEXT) --}}
-    <section class="py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-8">{{ __('notes_how_it_works_title') }}</h2>
-            <div class="prose prose-lg text-gray-600 leading-relaxed">
-                <p>{{ __('notes_how_it_works_desc') }}</p>
-            </div>
-        </div>
-    </section>
 
     {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
     <section class="py-24 bg-white border-t border-gray-100">

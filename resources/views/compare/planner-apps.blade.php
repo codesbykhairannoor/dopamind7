@@ -374,15 +374,6 @@
         </div>
     </section>
 
-    {{-- SECTION: HOW IT WORKS (EXTRA CONTEXT) --}}
-    <section class="py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-8">{{ __('plan_how_it_works_title') }}</h2>
-            <div class="prose prose-lg text-gray-600 leading-relaxed">
-                <p>{{ __('plan_how_it_works_desc') }}</p>
-            </div>
-        </div>
-    </section>
 
     {{-- ================================================================= --}}
     {{-- SECTION 6: CTA (Slightly adjusted background pattern) --}}
