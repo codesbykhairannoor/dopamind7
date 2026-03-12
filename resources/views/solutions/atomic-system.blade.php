@@ -259,7 +259,6 @@
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-800 shadow-2xl transition transform hover:-translate-y-1">
                 {{ __('atomic_cta_btn') }}
             </a>
-            <p class="mt-8 text-sm font-bold text-gray-400 uppercase tracking-widest">{{ __('atomic_cta_note') }}</p>
         </div>
     </section>
 

@@ -299,7 +299,6 @@
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-indigo-950 px-14 py-5 rounded-full font-black text-xl hover:bg-indigo-50 hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_rgba(255,255,255,0.2)]">
                 {{ __('solve_career_cta_btn') }}
             </a>
-            <p class="mt-10 text-xs text-indigo-400 font-bold uppercase tracking-[0.2em]">{{ __('solve_career_cta_note') }}</p>
         </div>
     </section>
 

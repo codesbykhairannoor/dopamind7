@@ -304,7 +304,6 @@
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-800 transition-colors duration-300 shadow-2xl">
                 {{ __('solve_mental_cta_btn') }}
             </a>
-            <p class="mt-8 text-sm text-gray-400 font-bold uppercase tracking-widest">{{ __('solve_mental_cta_note') }}</p>
         </div>
     </section>
 

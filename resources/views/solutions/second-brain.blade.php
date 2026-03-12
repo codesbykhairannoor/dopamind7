@@ -424,7 +424,6 @@
                         </a>
                     </div>
                     
-                    <p class="mt-8 text-xs font-bold text-indigo-400 uppercase tracking-widest">{{ __('brain_cta_note') }}</p>
                 </div>
             </div>
         </div>

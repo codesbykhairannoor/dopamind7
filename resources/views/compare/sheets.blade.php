@@ -435,27 +435,6 @@
         </div>
     </section>
 
-    {{-- ================================================================= --}}
-    {{-- SECTION 6: CTA (MINIMALIST & BIG TYPOGRAPHY) --}}
-    {{-- ================================================================= --}}
-    <section class="py-32 px-6 bg-white relative overflow-hidden">
-        {{-- Background Gradient Mesh --}}
-        <div class="absolute inset-0 bg-gradient-to-r from-indigo-50 via-white to-purple-50 opacity-50"></div>
-        
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <h2 class="text-6xl md:text-8xl font-black mb-8 text-gray-900 tracking-tighter">
-                {!! __('blank_cta_title') !!}
-            </h2>
-            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
-                <a hx-boost="false" href="{{ route('register') }}" class="group relative px-12 py-6 bg-gray-900 text-white rounded-full font-bold text-xl overflow-hidden shadow-2xl hover:shadow-gray-400/50 transition-all">
-                    <div class="absolute inset-0 w-full h-full bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
-                    <span class="relative z-10">{{ __('blank_cta_btn') }}</span>
-                </a>
-            </div>
-            <p class="mt-8 text-gray-400 font-medium">{{ __('blank_cta_sub') }}</p>
-        </div>
-    </section>
-
     {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
     <section class="py-24 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6 text-center">
@@ -483,6 +462,49 @@
             </div>
         </div>
     </section>
+
+    {{-- SECTION: STRUCTURED EXECUTION --}}
+    <section class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-in fade-in slide-in-from-left-8 duration-700">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                        {{ __('structured_execution_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                        {{ __('structured_execution_title') }}
+                    </h2>
+                    <p class="text-slate-600 text-xl leading-relaxed mb-10">
+                        {{ __('structured_execution_desc') }}
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        @foreach(['point_1', 'point_2', 'point_3'] as $point)
+                        <li class="flex items-center gap-3 text-slate-700 font-bold">
+                            <div class="w-6 h-6 rounded-full bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-xs">
+                                ✓
+                            </div>
+                            {{ __("structured_execution_{$point}") }}
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-10 rounded-[40px] shadow-2xl border border-slate-100 relative group transition-transform duration-500 hover:-translate-y-2 animate-in fade-in slide-in-from-right-8 duration-700">
+                    <div class="absolute -top-6 -right-6 w-24 h-24 bg-indigo-600 text-white flex items-center justify-center rounded-3xl text-3xl shadow-xl transform rotate-12 group-hover:rotate-0 transition-transform">
+                        🚀
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-6">
+                        {{ __('customization_trap_title') }}
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed italic">
+                        "{!! __('customization_trap_desc') !!}"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
     <section class="py-32 px-6 bg-white border-t border-gray-100">
         <div class="max-w-6xl mx-auto px-6">
@@ -509,6 +531,27 @@
                     <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
                 </a>
             </div>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 6: CTA (MINIMALIST & BIG TYPOGRAPHY) --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 px-6 bg-white relative overflow-hidden">
+        {{-- Background Gradient Mesh --}}
+        <div class="absolute inset-0 bg-gradient-to-r from-indigo-50 via-white to-purple-50 opacity-50"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <h2 class="text-6xl md:text-8xl font-black mb-8 text-gray-900 tracking-tighter">
+                {!! __('blank_cta_title') !!}
+            </h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
+                <a hx-boost="false" href="{{ route('register') }}" class="group relative px-12 py-6 bg-gray-900 text-white rounded-full font-bold text-xl overflow-hidden shadow-2xl hover:shadow-gray-400/50 transition-all">
+                    <div class="absolute inset-0 w-full h-full bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
+                    <span class="relative z-10">{{ __('blank_cta_btn') }}</span>
+                </a>
+            </div>
+            <p class="mt-8 text-gray-400 font-medium">{{ __('blank_cta_sub') }}</p>
         </div>
     </section>
 

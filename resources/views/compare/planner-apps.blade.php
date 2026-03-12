@@ -384,31 +384,45 @@
         </div>
     </section>
 
-    {{-- ================================================================= --}}
-    {{-- SECTION 6: CTA (Slightly adjusted background pattern) --}}
-    {{-- ================================================================= --}}
-    <section class="pt-32 pb-40 px-6 bg-slate-950 relative overflow-hidden">
-        {{-- Wavy / Radial Background --}}
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-950 to-slate-950 -z-10"></div>
-        <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-indigo-600/20 to-transparent -z-10"></div>
-        
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-md rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl">🚀</div>
-            <h2 class="text-5xl md:text-7xl font-black mb-8 text-white tracking-tight leading-tight">
-                {!! __('plan_cta_title') !!}
-            </h2>
-            <p class="text-indigo-200 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
-                {{ __('plan_cta_desc') }}
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-indigo-500 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-400 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
-                    {{ __('plan_cta_btn') }}
-                </a>
-                <a href="{{ route('features.planner') }}" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-white/10 transition">
-                    Explore Planner OS
-                </a>
+    {{-- SECTION: STRUCTURED EXECUTION --}}
+    <section class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="animate-in fade-in slide-in-from-left-8 duration-700">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                        {{ __('structured_execution_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                        {{ __('structured_execution_title') }}
+                    </h2>
+                    <p class="text-slate-600 text-xl leading-relaxed mb-10">
+                        {{ __('structured_execution_desc') }}
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        @foreach(['point_1', 'point_2', 'point_3'] as $point)
+                        <li class="flex items-center gap-3 text-slate-700 font-bold">
+                            <div class="w-6 h-6 rounded-full bg-indigo-500/10 text-indigo-600 flex items-center justify-center text-xs">
+                                ✓
+                            </div>
+                            {{ __("structured_execution_{$point}") }}
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-10 rounded-[40px] shadow-2xl border border-slate-100 relative group transition-transform duration-500 hover:-translate-y-2 animate-in fade-in slide-in-from-right-8 duration-700">
+                    <div class="absolute -top-6 -right-6 w-24 h-24 bg-indigo-600 text-white flex items-center justify-center rounded-3xl text-3xl shadow-xl transform rotate-12 group-hover:rotate-0 transition-transform">
+                        🚀
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-6">
+                        {{ __('customization_trap_title') }}
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed italic">
+                        "{!! __('customization_trap_desc') !!}"
+                    </p>
+                </div>
             </div>
-            <p class="mt-8 text-xs text-indigo-400 font-bold uppercase tracking-[0.3em]">{{ __('plan_cta_sub') }}</p>
         </div>
     </section>
 
@@ -438,6 +452,34 @@
                     <p class="text-xs text-gray-500 mt-2">{{ __('calendar_meta_title') }}</p>
                 </a>
             </div>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 6: CTA (Slightly adjusted background pattern) --}}
+    {{-- ================================================================= --}}
+    <section class="pt-32 pb-40 px-6 bg-slate-950 relative overflow-hidden">
+        {{-- Wavy / Radial Background --}}
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-950 to-slate-950 -z-10"></div>
+        <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-indigo-600/20 to-transparent -z-10"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-md rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl">🚀</div>
+            <h2 class="text-5xl md:text-7xl font-black mb-8 text-white tracking-tight leading-tight">
+                {!! __('plan_cta_title') !!}
+            </h2>
+            <p class="text-indigo-200 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
+                {{ __('plan_cta_desc') }}
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-indigo-500 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-400 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
+                    {{ __('plan_cta_btn') }}
+                </a>
+                <a href="{{ route('features.planner') }}" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-white/10 transition">
+                    Explore Planner OS
+                </a>
+            </div>
+            <p class="mt-8 text-xs text-indigo-400 font-bold uppercase tracking-[0.3em]">{{ __('plan_cta_sub') }}</p>
         </div>
     </section>
 

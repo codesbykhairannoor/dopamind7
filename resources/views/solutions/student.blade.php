@@ -390,7 +390,6 @@
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-indigo-900 px-12 py-5 rounded-2xl font-black text-lg hover:bg-indigo-50 transition transform hover:scale-105 shadow-2xl">
                 {{ __('student_cta_btn') }}
             </a>
-            <p class="mt-8 text-sm text-indigo-200 font-bold uppercase tracking-widest">{{ __('student_cta_note') }}</p>
         </div>
     </section>
 

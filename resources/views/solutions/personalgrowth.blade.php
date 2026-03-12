@@ -291,7 +291,6 @@
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_60px_rgba(79,70,229,0.5)]">
                 {{ __('growth_cta_btn') }}
             </a>
-            <p class="mt-8 text-sm text-indigo-400 font-bold uppercase tracking-widest">{{ __('growth_cta_note') }}</p>
         </div>
     </section>
 

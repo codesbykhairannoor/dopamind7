@@ -357,7 +357,6 @@
                 </a>
             </div>
             
-            <p class="mt-10 text-sm font-bold text-gray-400 uppercase tracking-widest">{{ __('deepwork_cta_note') }}</p>
         </div>
     </section>
 
