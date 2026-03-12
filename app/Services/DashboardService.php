@@ -7,6 +7,7 @@ use App\Models\Journal;
 use App\Models\FinanceTransaction;
 use App\Models\PlannerTask;
 use App\Models\Habit;
+use App\Models\HabitLog; // 🔥 Wajib import HabitLog
 use Carbon\Carbon;
 
 class DashboardService
@@ -17,33 +18,62 @@ class DashboardService
         $todayStr = $now->format('Y-m-d');
         $currentMonth = $now->format('Y-m');
 
-        // 1. Data Habit Hari Ini
-        $habits = Habit::where('user_id', $userId)
-            ->where('period', $currentMonth)
-            ->with(['logs' => fn($q) => $q->where('date', $todayStr)])
-            ->get();
+        // ==========================================
+        // 1. DATA HABIT HARI INI (TEKNIK CALENDAR SERVICE)
+        // ==========================================
         
-        $totalHabits = $habits->count();
-        $completedHabits = $habits->filter(fn($h) => $h->logs->where('status', 'completed')->isNotEmpty())->count();
+        // Hitung total target habit bulan ini
+        $totalHabits = Habit::where('user_id', $userId)
+            ->where('period', $currentMonth)
+            ->count();
 
-        // 2. Data Planner Hari Ini
-        $tasks = PlannerTask::where('user_id', $userId)->where('date', $todayStr)->orderBy('start_time')->get();
+        // Hitung yang SELESAI HARI INI pakai teknik JOIN persis seperti CalendarService!
+        $completedHabits = HabitLog::join('habits', 'habit_logs.habit_id', '=', 'habits.id')
+            ->where('habits.user_id', $userId)
+            ->where('habits.period', $currentMonth) // Filter ke habit bulan ini saja
+            ->where('habit_logs.date', $todayStr)   // Tanggal hari ini
+            ->where('habit_logs.status', 'completed')
+            ->count('habit_logs.id');
+
+        // ==========================================
+        // 2. DATA PLANNER HARI INI
+        // ==========================================
+        $tasks = PlannerTask::where('user_id', $userId)
+            ->where('date', $todayStr)
+            ->orderBy('start_time')
+            ->get();
+            
         $totalTasks = $tasks->count();
-        $completedTasks = $tasks->where('is_completed', true)->count();
-        $upcomingTasks = $tasks->where('is_completed', false)->take(3)->values(); // Ambil 3 tugas belum selesai
+        
+        // Memaksa boolean agar aman di PostgreSQL/MySQL
+        $completedTasks = $tasks->filter(function($t) {
+            return filter_var($t->is_completed, FILTER_VALIDATE_BOOLEAN);
+        })->count();
+        
+        $upcomingTasks = $tasks->filter(function($t) {
+            return !filter_var($t->is_completed, FILTER_VALIDATE_BOOLEAN);
+        })->take(3)->values();
 
-        // 3. Data Finance Hari Ini
+        // ==========================================
+        // 3. DATA FINANCE HARI INI
+        // ==========================================
         $finances = FinanceTransaction::where('user_id', $userId)->where('date', $todayStr)->get();
         $todayExpense = $finances->where('type', 'expense')->sum('amount');
         $todayIncome = $finances->where('type', 'income')->sum('amount');
 
-        // 4. Data Journal Hari Ini
+        // ==========================================
+        // 4. DATA JOURNAL HARI INI
+        // ==========================================
         $journal = Journal::where('user_id', $userId)->where('date', $todayStr)->first();
 
-        // 5. Event Kalender Hari Ini
+        // ==========================================
+        // 5. EVENT KALENDER HARI INI
+        // ==========================================
         $events = CalendarEvent::where('user_id', $userId)
             ->where('start_date', '<=', $todayStr)
-            ->where(fn($q) => $q->where('end_date', '>=', $todayStr)->orWhereNull('end_date'))
+            ->where(function($q) use ($todayStr) {
+                $q->where('end_date', '>=', $todayStr)->orWhereNull('end_date');
+            })
             ->get();
 
         return [
@@ -68,7 +98,7 @@ class DashboardService
                 'mood'       => $journal ? $journal->mood : null,
                 'id'         => $journal ? $journal->id : null,
             ],
-            'events' => $events->take(2), // Tampilkan maks 2 event terdekat
+            'events' => $events->take(2),
         ];
     }
 }

@@ -20,14 +20,15 @@ class SecurityHeaders
         // URL Vite untuk Lokal
         $viteUrl = "http://127.0.0.1:5173 http://localhost:5173 ws://127.0.0.1:5173 ws://localhost:5173";
 
-        // 2. CSP (Content Security Policy)
-        $isLocal = app()->environment('local', 'development', 'testing') ||
-            config('app.debug') ||
-            in_array($request->getHost(), ['127.0.0.1', 'localhost', '127.0.0.1:8000', 'localhost:8000']);
+        // 2. Deteksi Environment yang akurat
+        // getHost() hanya mengembalikan IP/Domain (tanpa port)
+        $host = $request->getHost();
+        $isLocal = app()->isLocal() || 
+                   config('app.debug') === true || 
+                   in_array($host, ['127.0.0.1', 'localhost']);
 
         if ($isLocal) {
-            // LOKAL: Sangat longgar agar Vite, Hot Reload (HMR), dan Debugbar lancar
-            // Mengizinkan 'unsafe-eval' dan 'unsafe-inline' untuk development tools
+            // LOKAL: Longgar agar Vite HMR lancar
             $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $viteUrl; " .
                 "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: data: blob: $viteUrl; " .
                 "style-src 'self' 'unsafe-inline' https: http: $viteUrl; " .
@@ -36,17 +37,16 @@ class SecurityHeaders
                 "connect-src 'self' https: http: ws: wss: $viteUrl;";
         }
         else {
-            // KETAT DI PRODUCTION (Tapi mengizinkan GTM & Analytics)
+            // PRODUCTION: Ketat
             $csp = "default-src 'self'; ";
             $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com; ";
             $csp .= "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://cdnjs.cloudflare.com; ";
             $csp .= "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com; ";
-            $csp .= "font-src 'self' data: https://fonts.bunny.net; ";
+            $csp .= "font-src 'self' data: https: http: https://fonts.bunny.net; ";
             $csp .= "connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; ";
             $csp .= "upgrade-insecure-requests;";
         }
 
-        // Membersihkan karakter baris baru
         $cleanCsp = str_replace(["\r", "\n"], '', $csp);
         $response->headers->set('Content-Security-Policy', $cleanCsp);
 

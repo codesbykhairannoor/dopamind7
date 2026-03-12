@@ -28,7 +28,7 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "{{ $post->title }}",
@@ -39,7 +39,26 @@
     "name": "Khairan N."
   },
   "url": "{{ url()->current() }}"
-}
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Blog",
+    "item": "{{ route('resources.blog') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ $post->title }}",
+    "item": "{{ url()->current() }}"
+  }]
+}]
 </script>
 @endsection
 

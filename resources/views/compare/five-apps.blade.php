@@ -8,6 +8,106 @@
     <meta property="og:description" content="{{ __('five_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/compare/five-apps') }}">
 @endsection
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('five_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
+                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ __('five_badge') }}",
+    "item": "{{ url('/compare/five-apps') }}"
+  }]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "OneForMind",
+  "applicationCategory": "ProductivityApplication, LifestyleApplication",
+  "operatingSystem": "Web, Windows, macOS, Linux",
+  "description": "{{ __('five_meta_desc') }}",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Unified Habits, Finance, & Tasks",
+    "Context-First Life OS",
+    "Vision-Led Goal Tracking",
+    "Mindful Digital Journaling"
+  ]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ __('five_faq_q1') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('five_faq_a1') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('five_faq_q2') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('five_faq_a2') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('five_faq_q3') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('five_faq_a3') }}"
+      }
+    }
+  ]
+}
+]
+</script>
+@endsection
 
 @section('content')
 
@@ -56,7 +156,7 @@
                 </div>
 
                 {{-- Element 2: The Unified Orb (Front) --}}
-                <div class="relative bg-white/90 backdrop-blur-2xl p-10 rounded-[3rem] shadow-2xl border border-white w-80 z-20 overflow-hidden transform hover:scale-105 transition duration-500">
+                <div class="relative bg-white/90 backdrop-blur-2xl p-10 rounded-[3rem] shadow-2xl border border-white w-80 z-20 overflow-hidden transform hover:scale-105 transition duration-500" role="img" aria-label="OneForMind Unified Orb: A centralized dashboard representation showing a 100% synchronized status across habits, goals, money, and tasks.">
                     <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5"></div>
                     
                     <div class="relative z-10 text-center">
@@ -279,6 +379,24 @@
                     </div>
                     @endforeach
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('five_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('five_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('five_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">Neural Synergy</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Unified Info Architecture</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Flow State Maintenance</span>
             </div>
         </div>
     </section>

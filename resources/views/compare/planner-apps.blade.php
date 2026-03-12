@@ -9,6 +9,107 @@
     <meta property="og:url" content="{{ url('/compare/planner-apps') }}">
 @endsection
 
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('plan_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
+                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/calendar') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('calendar_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('calendar_meta_title') }}</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+@endsection
+
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ __('plan_badge') }}",
+    "item": "{{ url('/compare/planner-apps') }}"
+  }]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "OneForMind",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Web, Windows, macOS, Linux",
+  "description": "{{ __('plan_meta_desc') }}",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Vision-Led Milestone Planning",
+    "Context-First Task Management",
+    "Daily Energy Flow Alignment",
+    "Unified Integrated Life OS"
+  ]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ __('plan_faq_q1') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('plan_faq_a1') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('plan_faq_q2') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('plan_faq_a2') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('plan_faq_q3') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('plan_faq_a3') }}"
+      }
+    }
+  ]
+}
+]
+</script>
+@endsection
+
 @section('content')
 
     {{-- ================================================================= --}}
@@ -58,7 +159,7 @@
                 </div>
 
                 {{-- Element 2: The OFM Planner Card --}}
-                <div class="relative bg-white p-8 rounded-[2.5rem] shadow-2xl border border-slate-100 w-80 z-20 transform hover:scale-105 transition duration-500">
+                <div class="relative bg-white p-8 rounded-[2.5rem] shadow-2xl border border-slate-100 w-80 z-20 transform hover:scale-105 transition duration-500" role="img" aria-label="OneForMind Planner UI: Featuring a 'Design Product Page' task linked to 'Launch Startup' goal, showing focus time and high energy alignment.">
                     <div class="flex justify-between items-center mb-6">
                         <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl">⚡</div>
                         <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-full">{{ __('plan_mockup_status') }}</span>
@@ -236,45 +337,36 @@
             <div class="grid md:grid-cols-2 gap-8 items-stretch">
                 
                 {{-- Them (Traditional Apps) --}}
-                <div class="bg-slate-50 border border-slate-200 rounded-[3rem] p-10 md:p-12 relative overflow-hidden flex flex-col h-full">
-                    <h3 class="text-2xl font-black text-slate-900 mb-8 pb-6 border-b border-slate-200">{{ __('plan_table_head_2') }}</h3>
-                    <ul class="space-y-6 flex-grow">
-                        @foreach([1, 2, 3, 4] as $i)
-                        <li class="flex items-start gap-4">
-                            <span class="mt-1 w-6 h-6 shrink-0 bg-slate-200 text-slate-500 rounded-full flex items-center justify-center text-xs font-bold">✕</span>
-                            <div>
-                                <span class="block font-bold text-slate-700 mb-1">{{ __("plan_table_row_{$i}_title") }}</span>
-                                <span class="text-sm text-slate-500">{{ __("plan_table_row_{$i}_col_1") }}</span>
-                            </div>
-                        </li>
-                        @endforeach
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                {{-- Us (OneForMind) --}}
-                <div class="bg-indigo-600 border border-indigo-500 rounded-[3rem] p-10 md:p-12 relative overflow-hidden shadow-2xl shadow-indigo-200 flex flex-col h-full transform md:-translate-y-4">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl"></div>
-                    
-                    <h3 class="text-2xl font-black text-white mb-8 pb-6 border-b border-indigo-500 relative z-10 flex items-center gap-3">
-                        <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                            <img src="/favicon.svg?v=2" class="w-5 h-5" alt="OFM">
-                        </div>
-                        OneForMind
-                    </h3>
-                    <ul class="space-y-6 flex-grow relative z-10">
-                        @foreach([1, 2, 3, 4] as $i)
-                        <li class="flex items-start gap-4">
-                            <span class="mt-1 w-6 h-6 shrink-0 bg-white text-indigo-600 rounded-full flex items-center justify-center text-xs font-bold shadow-sm">✓</span>
-                            <div>
-                                <span class="block font-bold text-white mb-1">{{ __("plan_table_row_{$i}_title") }}</span>
-                                <span class="text-sm text-indigo-100">{{ __("plan_table_row_{$i}_col_2") }}</span>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('plan_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('plan_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('plan_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">Zeigarnik Effect Mastery</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Cognitive Off-loading</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Flow State Alignment</span>
+            </div>
+        </div>
+    </section>
 
+    {{-- SECTION: HOW IT WORKS (EXTRA CONTEXT) --}}
+    <section class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-8">{{ __('plan_how_it_works_title') }}</h2>
+            <div class="prose prose-lg text-gray-600 leading-relaxed">
+                <p>{{ __('plan_how_it_works_desc') }}</p>
             </div>
         </div>
     </section>

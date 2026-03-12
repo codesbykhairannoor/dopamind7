@@ -13,13 +13,60 @@
 
 @section('json-ld')
 <script type="application/ld+json">
+[
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "{{ __('schema_calendar_name') }}",
   "applicationCategory": "ProductivityApplication",
   "description": "{{ __('schema_calendar_description') }}"
+},
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ __('calendar_hero_badge') }}",
+    "item": "{{ url('/features/calendar') }}"
+  }]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ __('calendar_faq_q1') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('calendar_faq_a1') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('calendar_faq_q2') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('calendar_faq_a2') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('calendar_faq_q3') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('calendar_faq_a3') }}"
+      }
+    }
+  ]
 }
+]
 </script>
 @endsection
 
@@ -56,9 +103,10 @@
             </div>
 
             {{-- Floating Mockup Centered (Calendar View) --}}
-            <div class="relative w-full max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both">
-                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-[2.5rem] blur opacity-20"></div>
-                <div class="relative bg-white/95 backdrop-blur-xl rounded-[2.5rem] shadow-2xl border border-white p-6 md:p-8 transform transition hover:scale-[1.02] duration-500 flex flex-col md:flex-row gap-8">
+            <div class="max-w-6xl mx-auto relative animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both" role="img" aria-label="Smart Calendar Dashboard Preview: Showing a unified view of Google Calendar events, deep work sessions, and personal availability in a clean monthly and daily agenda format.">
+            <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-20 h-full w-full pointer-events-none"></div>
+            
+            <div class="bg-white/80 backdrop-blur-xl rounded-t-[3rem] border-x border-t border-gray-100 p-6 md:p-12 shadow-2xl flex flex-col md:flex-row gap-12 overflow-hidden h-[500px]">
                     
                     {{-- Left Side: Mini Calendar --}}
                     <div class="w-full md:w-1/3 bg-gray-50 rounded-2xl p-6 border border-gray-100">
@@ -411,7 +459,25 @@
         </div>
     </section>
 
-    {{-- SECTION 7: BOTTOM CTA (CALENDAR GRID FADE) --}}
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('calendar_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('calendar_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('calendar_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">Cognitive Load Theory</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Circadian Rhythm</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Time Blocking</span>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 6: THE LAYERED CALENDAR (VISUAL) --}}
     <section class="pt-32 pb-40 bg-slate-900 px-6 relative overflow-hidden">
         {{-- Background Grid Illusion --}}
         <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)] opacity-30"></div>
@@ -428,6 +494,35 @@
                 {{ __('calendar_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-slate-400 font-medium">{{ __('calendar_cta_note') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('calendar_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
+                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/job') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💼</span>
+                    <h4 class="font-bold text-gray-900">{{ __('job_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('job_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 

@@ -12,12 +12,62 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "{{ __('schema_solution_deepwork_name') }}",
   "description": "{{ __('schema_solution_deepwork_description') }}"
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
+    "item": "{{ url('/') }}#solutions"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Deep Work",
+    "item": "{{ url('/solutions/deep-work') }}"
+  }]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ __('deepwork_faq_q1') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('deepwork_faq_a1') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('deepwork_faq_q2') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('deepwork_faq_a2') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('deepwork_faq_q3') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('deepwork_faq_a3') }}"
+      }
+    }
+  ]
 }
+]
 </script>
 @endsection
 
@@ -59,11 +109,11 @@
                 </a>
             </div>
 
-            {{-- Visual Bawah (Lebar & Interactive Vibe - LIGHT THEME) --}}
-            <div class="relative w-full max-w-4xl mx-auto rounded-[2.5rem] bg-white p-3 shadow-2xl border border-gray-100 text-left transform perspective-1000 rotate-x-6 hover:rotate-x-0 transition-transform duration-700">
+            {{-- Visual Bawah (Focus Dashboard) --}}
+            <div class="relative w-full max-w-4xl mx-auto rounded-[2.5rem] bg-white p-3 shadow-2xl border border-gray-100 transform perspective-1000 rotate-x-6 hover:rotate-x-0 transition-transform duration-700" role="img" aria-label="Daily Focus Timeline Preview: Showing active Pomodoro sessions, time-blocked deep work intervals, and a distraction-free environment for peak cognitive performance.">
                 <div class="absolute inset-0 bg-indigo-500 rounded-[2.5rem] blur-2xl opacity-10 -z-10"></div>
                 
-                <div class="bg-slate-50 rounded-[2rem] p-8 md:p-12 border border-gray-100 overflow-hidden relative flex flex-col md:flex-row gap-10 items-center">
+                <div class="bg-slate-950 rounded-[2rem] p-8 md:p-12 border border-slate-800 overflow-hidden relative flex flex-col md:flex-row gap-10 items-center">
                     
                     <div class="flex-1 w-full space-y-6 z-10">
                         <div class="flex justify-between items-center border-b border-gray-200 pb-4">
@@ -183,7 +233,25 @@
         </div>
     </section>
 
-    {{-- SECTION 4: THE FOCUS ARSENAL (TAMBAHAN SECTION BIAR PANJANG) --}}
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-slate-900 border-y border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 text-center text-white">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500 text-white text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('deepwork_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black mb-6">{{ __('deepwork_science_title') }}</h2>
+            <p class="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('deepwork_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">Attention Restoration</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Myelin Growth</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Zeigarnik Effect</span>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 4: THE FOCUS ARSENAL --}}
     <section class="py-32 bg-white">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-20">
@@ -208,6 +276,72 @@
         </div>
     </section>
 
+    {{-- SECTION: FLOW STATE METRICS (UNIQUE A) --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative order-2 md:order-1">
+                <div class="bg-indigo-600 rounded-[2.5rem] p-8 md:p-12 shadow-2xl transform -rotate-2 hover:rotate-0 transition duration-500">
+                    <div class="flex items-end gap-2 mb-8 border-b border-indigo-500/30 pb-6">
+                        <div class="text-5xl font-black text-white">4.5</div>
+                        <div class="text-indigo-200 font-bold mb-1">hrs/day</div>
+                    </div>
+                    <div class="grid grid-cols-7 gap-2">
+                        @foreach(range(1, 28) as $i)
+                            <div class="h-8 rounded-md {{ $i % 4 === 0 ? 'bg-indigo-400' : 'bg-indigo-300/30' }}"></div>
+                        @endforeach
+                    </div>
+                    <p class="mt-6 text-indigo-100 text-sm font-medium">Weekly Deep Work Distribution</p>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('deepwork_extra_1_title') }}</h2>
+                <p class="text-xl text-gray-500 leading-relaxed">
+                    {{ __('deepwork_extra_1_desc') }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: ENVIRONMENTAL DESIGN (UNIQUE B) --}}
+    <section class="py-32 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-12 opacity-10 text-9xl">🌿</div>
+                <div class="relative z-10 max-w-2xl">
+                    <h2 class="text-4xl font-black mb-6">{{ __('deepwork_extra_2_title') }}</h2>
+                    <p class="text-xl text-slate-400 leading-relaxed mb-8">
+                        {{ __('deepwork_extra_2_desc') }}
+                    </p>
+                    <ul class="space-y-4 text-indigo-300 font-medium">
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-xs">✓</span>
+                            Digital Minimalist Workspace
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-xs">✓</span>
+                            Focus Trigger Rituals
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: VISUAL FAQ --}}
+    <section class="py-32 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('deepwork_faq_title') }}</h2>
+            <div class="space-y-6">
+                @foreach([1, 2, 3] as $i)
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __("deepwork_faq_q$i") }}</h3>
+                    <p class="text-gray-500 leading-relaxed">{{ __("deepwork_faq_a$i") }}</p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 5: CTA (RAPI, LEGA, PUNCHY) --}}
     <section class="pt-24 pb-40 bg-slate-50 text-center px-6 relative overflow-hidden border-t border-gray-200">
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-indigo-100/50 to-transparent rounded-t-full -z-10"></div>
@@ -224,6 +358,35 @@
             </div>
             
             <p class="mt-10 text-sm font-bold text-gray-400 uppercase tracking-widest">{{ __('deepwork_cta_note') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('deepwork_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
+                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 @endsection

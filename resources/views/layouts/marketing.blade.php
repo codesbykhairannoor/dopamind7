@@ -48,6 +48,36 @@
     <meta name="twitter:image" content="{{ url('/og-image.png') }}">
     
     <meta name="ai-creator" content="{{ __('meta_ai_creator') }}">
+
+    {{-- JSON-LD Structured Data --}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OneForMind",
+      "url": "{{ url('/') }}",
+      "logo": "{{ asset('favicon.svg') }}",
+      "sameAs": [
+        "https://x.com/OneForMind",
+        "https://instagram.com/oneformind",
+        "https://facebook.com/oneformind"
+      ],
+      "description": "{{ __('meta_global_description') }}"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "OneForMind",
+      "url": "{{ url('/') }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ url('/') }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
     <meta name="ai-service-type" content="{{ __('meta_ai_service_type') }}">
     <meta name="ai-description" content="{{ __('meta_global_description') }}">
 
@@ -177,6 +207,34 @@
                 setTimeout(loadGTM, 3500); // Fail-safe
             });
         </script>
+    @endif
+
+    @if(env('FACEBOOK_PIXEL_ID'))
+        <script>
+            window.addEventListener('load', () => {
+                const loadPixel = () => {
+                    if (window.pixelLoaded) return;
+                    window.pixelLoaded = true;
+
+                    !function(f,b,e,v,n,t,s)
+                    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;
+                    t.src=v;s=b.getElementsByTagName(e)[0];
+                    s.parentNode.insertBefore(t,s)}(window, document,'script',
+                    'https://connect.facebook.net/en_US/fbevents.js');
+                    fbq('init', '{{ env('FACEBOOK_PIXEL_ID') }}');
+                    fbq('track', 'PageView');
+                    console.log('⚡ FB Pixel Loaded (Efficiency Mode)');
+                };
+
+                const interactionEvents = ['mouseover', 'keydown', 'touchmove', 'touchstart', 'scroll'];
+                interactionEvents.forEach(event => window.addEventListener(event, loadPixel, { once: true, passive: true }));
+                setTimeout(loadPixel, 4000);
+            });
+        </script>
+        <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ env('FACEBOOK_PIXEL_ID') }}&ev=PageView&noscript=1"/></noscript>
     @endif
 </head>
 {{-- HTMX Boost + Smooth Scroll --}}
@@ -594,8 +652,15 @@
                     <div>
                         <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</h3>
                         <div class="flex gap-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">𝕏</a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">📸</a>
+                            <a href="https://x.com/OneForMind" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm" aria-label="Follow us on X">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.482 3.239h-2.19L17.607 20.65z"/></svg>
+                            </a>
+                            <a href="https://instagram.com/oneformind" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm" aria-label="Follow us on Instagram">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            </a>
+                            <a href="https://facebook.com/oneformind" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm" aria-label="Follow us on Facebook">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            </a>
                         </div>
                     </div>
                 </div>

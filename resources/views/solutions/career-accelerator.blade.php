@@ -12,12 +12,31 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "{{ __('schema_solution_career_name') }}",
   "description": "{{ __('schema_solution_career_description') }}"
-}
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
+    "item": "{{ url('/') }}#solutions"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Career Accelerator",
+    "item": "{{ url('/solutions/career-accelerator') }}"
+  }]
+}]
 </script>
 @endsection
 
@@ -98,9 +117,7 @@
         </div>
     </header>
 
-    {{-- ================================================================= --}}
     {{-- SECTION 2: NEW LAYOUT -> ZIG-ZAG CARDS (THE PROBLEM) --}}
-    {{-- ================================================================= --}}
     <section class="py-32 bg-slate-900 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[150px] pointer-events-none"></div>
@@ -112,35 +129,45 @@
             </div>
 
             <div class="space-y-12 md:space-y-0">
-                {{-- Problem 1 (Left Aligned) --}}
                 <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
                     <div class="w-full md:w-1/2 bg-white/5 backdrop-blur-xl p-10 rounded-[3rem] border border-white/10 shadow-2xl hover:bg-white/10 transition duration-300">
                         <div class="w-16 h-16 bg-rose-500/20 text-rose-400 rounded-2xl flex items-center justify-center text-3xl mb-8">🕳️</div>
                         <h3 class="text-2xl font-bold mb-4 text-white">{{ __('solve_career_prob_1_title') }}</h3>
                         <p class="text-slate-400 text-lg leading-relaxed">{{ __('solve_career_prob_1_desc') }}</p>
                     </div>
-                    <div class="hidden md:block w-full md:w-1/2"></div>
                 </div>
-
-                {{-- Problem 2 (Right Aligned) --}}
                 <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16 md:-mt-16 relative z-10">
                     <div class="w-full md:w-1/2 bg-indigo-600/20 backdrop-blur-xl p-10 rounded-[3rem] border border-indigo-500/30 shadow-2xl hover:bg-indigo-600/30 transition duration-300">
                         <div class="w-16 h-16 bg-indigo-500/30 text-indigo-300 rounded-2xl flex items-center justify-center text-3xl mb-8">📊</div>
                         <h3 class="text-2xl font-bold mb-4 text-white">{{ __('solve_career_prob_2_title') }}</h3>
                         <p class="text-indigo-200 text-lg leading-relaxed">{{ __('solve_career_prob_2_desc') }}</p>
                     </div>
-                    <div class="hidden md:block w-full md:w-1/2"></div>
                 </div>
-
-                {{-- Problem 3 (Left Aligned) --}}
                 <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16 md:-mt-16 relative z-20">
                     <div class="w-full md:w-1/2 bg-white/5 backdrop-blur-xl p-10 rounded-[3rem] border border-white/10 shadow-2xl hover:bg-white/10 transition duration-300">
                         <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-3xl mb-8">👻</div>
                         <h3 class="text-2xl font-bold mb-4 text-white">{{ __('solve_career_prob_3_title') }}</h3>
                         <p class="text-slate-400 text-lg leading-relaxed">{{ __('solve_career_prob_3_desc') }}</p>
                     </div>
-                    <div class="hidden md:block w-full md:w-1/2"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('solve_career_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">{{ __('solve_career_science_title') }}</h2>
+            <p class="text-slate-500 text-lg leading-relaxed italic max-w-2xl mx-auto">
+                {{ __('solve_career_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
+                <span class="text-xs font-black uppercase tracking-tighter">Sales Funnel Logic</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Follow-up Persistence</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Conversion Metrics</span>
             </div>
         </div>
     </section>
@@ -192,50 +219,69 @@
         </div>
     </section>
 
-    {{-- ================================================================= --}}
-    {{-- SECTION 4: NEW LAYOUT -> SYMMETRICAL 4-GRID (THE ARSENAL) --}}
-    {{-- ================================================================= --}}
-    <section class="py-32 bg-slate-50 border-y border-slate-200">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('solve_career_feat_title') }}</h2>
-                <p class="text-xl text-slate-500">{{ __('solve_career_feat_desc') }}</p>
+    {{-- SECTION: INTERVIEW PREP (UNIQUE A) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="bg-indigo-950 rounded-[3rem] p-8 md:p-12 shadow-2xl relative order-2 md:order-1">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-500/20 via-transparent to-transparent opacity-50"></div>
+                <div class="space-y-4 relative z-10">
+                    @foreach(['Company Mission', 'My Value Prop', 'Questions to Ask'] as $item)
+                        <div class="p-4 bg-white/10 rounded-2xl border border-white/10 flex items-center gap-3">
+                            <span class="text-indigo-400">⚡</span>
+                            <span class="text-white font-bold">{{ $item }}</span>
+                        </div>
+                    @endforeach
+                </div>
             </div>
+            <div class="order-1 md:order-2">
+                <h2 class="text-4xl font-black text-slate-900 mb-6">{{ __('solve_career_extra_1_title') }}</h2>
+                <p class="text-xl text-slate-500 leading-relaxed">
+                    {{ __('solve_career_extra_1_desc') }}
+                </p>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {{-- Feat 1 --}}
-                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all text-center flex flex-col items-center">
-                    <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mb-6">📑</div>
-                    <h3 class="text-lg font-black text-slate-900 mb-3">{{ __('solve_career_feat_1_title') }}</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">{{ __('solve_career_feat_1_desc') }}</p>
-                </div>
-                
-                {{-- Feat 2 --}}
-                <div class="bg-slate-900 p-10 rounded-[2.5rem] border border-slate-800 shadow-xl text-center flex flex-col items-center transform md:-translate-y-4">
-                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-6">🧠</div>
-                    <h3 class="text-lg font-black text-white mb-3">{{ __('solve_career_feat_2_title') }}</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">{{ __('solve_career_feat_2_desc') }}</p>
-                </div>
-
-                {{-- Feat 3 --}}
-                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all text-center flex flex-col items-center">
-                    <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mb-6">🎯</div>
-                    <h3 class="text-lg font-black text-slate-900 mb-3">{{ __('solve_career_feat_3_title') }}</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">{{ __('solve_career_feat_3_desc') }}</p>
-                </div>
-
-                {{-- Feat 4 (New Bonus Feature for Symmetry) --}}
-                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all text-center flex flex-col items-center">
-                    <div class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-3xl mb-6">📈</div>
-                    <h3 class="text-lg font-black text-slate-900 mb-3">Outcome Tracking</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Map your interview conversion rates and optimize your approach automatically.</p>
+    {{-- SECTION: MARKET VALUE (UNIQUE B) --}}
+    <section class="py-32 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black text-slate-900 mb-8">{{ __('solve_career_extra_2_title') }}</h2>
+            <p class="text-xl text-slate-500 leading-relaxed mb-12">
+                {{ __('solve_career_extra_2_desc') }}
+            </p>
+            <div class="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm inline-block">
+                <div class="flex items-center gap-8 justify-center">
+                    <div class="text-left">
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Initial Offer</p>
+                        <p class="text-2xl font-black text-slate-900">$85k</p>
+                    </div>
+                    <div class="text-2xl text-slate-300">→</div>
+                    <div class="text-left">
+                        <p class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Negotiated</p>
+                        <p class="text-2xl font-black text-indigo-600">$105k</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    {{-- SECTION: VISUAL FAQ --}}
+    <section class="py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center text-slate-900 mb-16">{{ __('solve_career_faq_title') }}</h2>
+            <div class="space-y-6">
+                @foreach([1, 2, 3] as $i)
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">{{ __("solve_career_faq_q$i") }}</h3>
+                    <p class="text-slate-500 leading-relaxed">{{ __("solve_career_faq_a$i") }}</p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     {{-- ================================================================= --}}
-    {{-- SECTION 5: NEW LAYOUT -> DRAMATIC DARK CTA --}}
+    {{-- SECTION 5: DRAMATIC DARK CTA --}}
     {{-- ================================================================= --}}
     <section class="py-32 bg-indigo-950 relative overflow-hidden">
         {{-- Intense Glowing Orb --}}
@@ -253,7 +299,36 @@
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-indigo-950 px-14 py-5 rounded-full font-black text-xl hover:bg-indigo-50 hover:scale-105 transition-all duration-300 shadow-[0_20px_40px_rgba(255,255,255,0.2)]">
                 {{ __('solve_career_cta_btn') }}
             </a>
-            <p class="mt-10 text-xs text-indigo-400 font-bold uppercase tracking-[0.2em]">Start accelerating today</p>
+            <p class="mt-10 text-xs text-indigo-400 font-bold uppercase tracking-[0.2em]">{{ __('solve_career_cta_note') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('solve_career_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
+                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 

@@ -13,13 +13,60 @@
 
 @section('json-ld')
 <script type="application/ld+json">
+[
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "{{ __('schema_journal_name') }}",
   "applicationCategory": "ProductivityApplication",
   "description": "{{ __('schema_journal_description') }}"
+},
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ __('journal_hero_badge') }}",
+    "item": "{{ url('/features/journal') }}"
+  }]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ __('journal_faq_q1') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('journal_faq_a1') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('journal_faq_q2') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('journal_faq_a2') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('journal_faq_q3') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('journal_faq_a3') }}"
+      }
+    }
+  ]
 }
+]
 </script>
 @endsection
 
@@ -56,9 +103,9 @@
             </div>
 
             {{-- Floating Mockup Centered (Clean Editor Vibe) --}}
-            <div class="relative w-full max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both text-left">
-                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-200 to-purple-200 rounded-[2.5rem] blur opacity-40"></div>
-                <div class="relative bg-white/95 backdrop-blur-2xl rounded-[2.5rem] shadow-2xl border border-white overflow-hidden transform transition hover:scale-[1.02] duration-500">
+            <div class="max-w-4xl mx-auto relative animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both" role="img" aria-label="Digital Journal Editor Preview: Showing a distraction-free writing space with auto-saving, date tracking, and mood integration.">
+            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-[3rem] blur-2xl"></div>
+            <div class="relative bg-white/80 backdrop-blur-2xl rounded-[3rem] border border-white shadow-2xl p-8 md:p-16 text-left transform transition hover:scale-[1.01] duration-500">
                     
                     {{-- Cover Image area --}}
                     <div class="h-24 bg-gradient-to-r from-indigo-400 via-purple-400 to-fuchsia-400 w-full opacity-80"></div>
@@ -134,45 +181,89 @@
     </section>
 
     {{-- NEW SECTION 3: THE MOOD NEBULA --}}
-    <section class="py-32 bg-slate-50 relative overflow-hidden">
+    <section class="py-32 bg-slate-950 text-white relative overflow-hidden">
         {{-- Nebula Backgrounds --}}
         <div class="absolute top-0 right-0 w-[1000px] h-[1000px] bg-purple-200/40 rounded-full blur-[150px] -mr-96 -mt-96 animate-pulse"></div>
-        <div class="absolute bottom-0 left-0 w-[1000px] h-[1000px] bg-indigo-200/40 rounded-full blur-[150px] -ml-96 -mb-96 animate-pulse duration-[5000ms]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10" role="img" aria-label="Mood Nebula Insight Preview: A data visualization mapping emotions and habits to identify patterns in mental well-being and productivity.">
+             <div class="flex flex-col lg:flex-row gap-20 items-center">
+             <div class="flex-1 order-2 lg:order-1">
+    <div class="relative animate-in zoom-in-95 duration-1000">
 
-        <div class="max-w-6xl mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row gap-24 items-center">
-                <div class="flex-1 order-2 lg:order-1">
-                    <div class="relative animate-in zoom-in-95 duration-1000">
-                        {{-- Circular Gradient Visual --}}
-                        <div class="w-full aspect-square max-w-lg mx-auto bg-white/80 backdrop-blur-xl rounded-full shadow-[0_50px_100px_rgba(0,0,0,0.1)] p-12 flex items-center justify-center relative group border border-white">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 via-purple-500/10 to-pink-500/20 rounded-full animate-spin-slow group-hover:opacity-100 transition duration-1000"></div>
-                            <div class="relative z-10 text-center">
-                                <span class="text-8xl mb-6 block group-hover:scale-125 transition duration-700 drop-shadow-2xl">✨</span>
-                                <h4 class="text-4xl font-black text-gray-900 mb-2">{{ __('journal_nebula_harmony') }}</h4>
-                                <p class="text-gray-400 font-black uppercase tracking-[0.3em] text-xs">{{ __('journal_nebula_sentiment') }}</p>
-                            </div>
-                            
-                            {{-- Orbits --}}
-                            <div class="absolute inset-6 border border-indigo-100/50 rounded-full"></div>
-                            <div class="absolute inset-16 border border-purple-100/50 rounded-full"></div>
-                            
-                            {{-- Floating Mood Dots --}}
-                            <div class="absolute top-1/4 right-10 w-6 h-6 bg-indigo-500 rounded-full shadow-[0_0_30px_rgba(79,70,229,0.6)] animate-bounce border-4 border-white"></div>
-                            <div class="absolute bottom-1/4 left-10 w-6 h-6 bg-purple-500 rounded-full shadow-[0_0_30px_rgba(168,85,247,0.6)] animate-bounce delay-150 border-4 border-white"></div>
-                             <div class="absolute top-1/2 left-6 w-5 h-5 bg-pink-500 rounded-full shadow-[0_0_30px_rgba(236,72,153,0.6)] animate-pulse border-4 border-white"></div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Outer Glow -->
+        <div class="absolute inset-0 blur-3xl bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-full"></div>
+
+        <!-- Main Circle -->
+        <div class="relative w-full aspect-square max-w-lg mx-auto 
+            bg-white/70 backdrop-blur-2xl 
+            rounded-full p-12 
+            flex items-center justify-center 
+            border border-white/40
+            shadow-[0_40px_120px_rgba(0,0,0,0.15)]
+            group">
+
+            <!-- Rotating Gradient -->
+            <div class="absolute inset-0 rounded-full 
+                bg-gradient-to-tr from-indigo-500/20 via-purple-500/10 to-pink-500/20 
+                opacity-70 group-hover:opacity-100
+                transition duration-700 animate-spin-slow">
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 text-center">
+                <span class="text-8xl mb-6 block 
+                    group-hover:scale-125 
+                    transition duration-700 
+                    drop-shadow-2xl">
+                    ✨
+                </span>
+
+                <h4 class="text-3xl font-semibold text-gray-800 mb-2">
+                    {{ __('journal_nebula_harmony') }}
+                </h4>
+
+                <p class="text-gray-500 uppercase tracking-[0.35em] text-xs">
+                    {{ __('journal_nebula_sentiment') }}
+                </p>
+            </div>
+
+            <!-- Orbit Rings -->
+            <div class="absolute inset-6 border border-white/40 rounded-full"></div>
+            <div class="absolute inset-16 border border-white/30 rounded-full"></div>
+
+            <!-- Floating Dots -->
+            <div class="absolute top-1/4 right-10 w-5 h-5 
+                bg-indigo-500 rounded-full 
+                shadow-[0_0_30px_rgba(99,102,241,0.8)]
+                animate-bounce border-4 border-white">
+            </div>
+
+            <div class="absolute bottom-1/4 left-10 w-5 h-5 
+                bg-purple-500 rounded-full 
+                shadow-[0_0_30px_rgba(168,85,247,0.8)]
+                animate-bounce delay-150 border-4 border-white">
+            </div>
+
+            <div class="absolute top-1/2 left-6 w-4 h-4 
+                bg-pink-500 rounded-full 
+                shadow-[0_0_30px_rgba(236,72,153,0.8)]
+                animate-pulse border-4 border-white">
+            </div>
+
+        </div>
+    </div>
+</div>
                 <div class="flex-1 order-1 lg:order-2 animate-in fade-in slide-in-from-right-8 duration-700">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 text-xs font-bold uppercase tracking-widest mb-8 shadow-sm">
                         {{ __('journal_nebula_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-10 leading-tight">
-                        {{ __('journal_nebula_title') }}
-                    </h2>
-                    <p class="text-gray-600 text-xl mb-12 leading-relaxed">
-                        {{ __('journal_nebula_desc') }}
-                    </p>
+                   <h2 class="text-4xl md:text-6xl font-bold text-white mb-10 leading-tight">
+    {{ __('journal_nebula_title') }}
+</h2>
+
+<p class="text-white/80 text-xl md:text-2xl mb-12 leading-relaxed max-w-2xl">
+    {{ __('journal_nebula_desc') }}
+</p>
                     <div class="grid gap-8">
                         <div class="flex items-start gap-8 p-8 rounded-[2.5rem] bg-white hover:shadow-2xl transition duration-500 group border border-gray-100">
                             <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl shrink-0 group-hover:rotate-12 transition">🔮</div>
@@ -273,6 +364,24 @@
         </div>
     </section>
 
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-purple-50/50 border-y border-purple-100/30">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('journal_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('journal_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('journal_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">Affect Labeling</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Reflective Practice</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Emotional Regulation</span>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}
     <section class="py-32 bg-white relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
@@ -304,6 +413,35 @@
                 {{ __('journal_cta_btn') }}
             </a>
             <p class="mt-6 text-sm text-gray-400 font-medium">{{ __('journal_cta_note') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('journal_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
+                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 

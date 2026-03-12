@@ -13,7 +13,7 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "Productivity Management for Freelancers",
@@ -21,18 +21,34 @@
     "@type": "Organization",
     "name": "OneForMind"
   },
-  "areaServed": [
-    {
-      "@type": "Country",
-      "name": "Indonesia"
-    },
-    {
-      "@type": "City",
-      "name": "Jakarta"
-    }
-  ],
+  "areaServed": [{
+    "@type": "Country",
+    "name": "Indonesia"
+  },{
+    "@type": "City",
+    "name": "Jakarta"
+  }],
   "description": "Comprehensive project and finance management system designed for independent professionals in the Indonesian creative and tech industries."
-}
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
+    "item": "{{ url('/') }}#solutions"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ app()->getLocale() === 'id' ? 'Pekerja Lepas' : 'Freelancer' }}",
+    "item": "{{ url('/solutions/freelancer') }}"
+  }]
+}]
 </script>
 @endsection
 
@@ -157,29 +173,21 @@
                 <p class="text-xl text-gray-500">{{ __('freelance_prob_desc') }}</p>
             </div>
 
-            {{-- Horizontal Pipeline Design --}}
             <div class="relative max-w-5xl mx-auto">
-                {{-- Connecting Line (Desktop) --}}
                 <div class="hidden md:block absolute top-1/2 left-10 right-10 h-1 bg-gray-100 -z-10 rounded-full border-b-2 border-dashed border-gray-200"></div>
-
                 <div class="grid md:grid-cols-3 gap-8">
-                    {{-- Node 1 --}}
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-200 transition duration-300 relative group">
                         <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl font-black text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-indigo-600 group-hover:text-white transition">1</div>
                         <div class="text-4xl mb-4 mt-2 text-center">🤯</div>
                         <h3 class="text-lg font-bold mb-3 text-center text-gray-900">{{ __('freelance_prob_1_title') }}</h3>
                         <p class="text-gray-500 text-sm text-center">{{ __('freelance_prob_1_desc') }}</p>
                     </div>
-                    
-                    {{-- Node 2 --}}
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-rose-200 transition duration-300 relative group delay-100">
                         <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl font-black text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-rose-500 group-hover:text-white transition">2</div>
                         <div class="text-4xl mb-4 mt-2 text-center">💸</div>
                         <h3 class="text-lg font-bold mb-3 text-center text-gray-900">{{ __('freelance_prob_2_title') }}</h3>
                         <p class="text-gray-500 text-sm text-center">{{ __('freelance_prob_2_desc') }}</p>
                     </div>
-
-                    {{-- Node 3 --}}
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-amber-200 transition duration-300 relative group delay-200">
                         <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl font-black text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-amber-500 group-hover:text-white transition">3</div>
                         <div class="text-4xl mb-4 mt-2 text-center">🥱</div>
@@ -187,6 +195,24 @@
                         <p class="text-gray-500 text-sm text-center">{{ __('freelance_prob_3_desc') }}</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('freelance_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('freelance_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('freelance_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
+                <span class="text-xs font-black uppercase tracking-tighter">Throughput Accounting</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Parkinson's Law</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Leveraged Output</span>
             </div>
         </div>
     </section>
@@ -290,7 +316,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {{-- Tall Left --}}
                 <div class="lg:col-span-1 lg:row-span-2 bg-slate-900 text-white rounded-[2rem] p-8 shadow-xl hover:-translate-y-1 transition flex flex-col justify-between min-h-[300px]">
                     <div class="text-3xl mb-4">🗂️</div>
                     <div>
@@ -298,22 +323,16 @@
                         <p class="text-slate-400 text-sm">{{ __('freelance_bento_1_desc') }}</p>
                     </div>
                 </div>
-                
-                {{-- Top Right 1 --}}
                 <div class="bg-indigo-50 rounded-[2rem] p-8 border border-indigo-100 shadow-sm hover:shadow-lg transition">
                     <div class="text-3xl mb-4">⏱️</div>
                     <h3 class="text-xl font-bold mb-2 text-indigo-950">{{ __('freelance_bento_2_title') }}</h3>
                     <p class="text-indigo-800/70 text-sm">{{ __('freelance_bento_2_desc') }}</p>
                 </div>
-                
-                {{-- Top Right 2 --}}
                 <div class="bg-emerald-50 rounded-[2rem] p-8 border border-emerald-100 shadow-sm hover:shadow-lg transition">
                     <div class="text-3xl mb-4">🧾</div>
                     <h3 class="text-xl font-bold mb-2 text-emerald-950">{{ __('freelance_bento_3_title') }}</h3>
                     <p class="text-emerald-800/70 text-sm">{{ __('freelance_bento_3_desc') }}</p>
                 </div>
-
-                {{-- Bottom Wide --}}
                 <div class="lg:col-span-2 bg-white rounded-[2rem] p-8 border border-gray-200 shadow-sm hover:shadow-lg transition flex flex-col sm:flex-row items-center gap-6">
                     <div class="w-16 h-16 bg-gray-100 text-gray-600 rounded-2xl flex items-center justify-center text-3xl shrink-0">🤝</div>
                     <div>
@@ -325,10 +344,78 @@
         </div>
     </section>
 
+    {{-- SECTION: CLIENT LIFECYCLE (UNIQUE A) --}}
+    <section class="py-32 bg-slate-950 text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative order-2 md:order-1">
+                <div class="bg-slate-900 rounded-[3rem] p-10 border border-slate-800 shadow-2xl">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
+                            <span class="text-xs font-black text-indigo-400 uppercase tracking-widest">Leads</span>
+                            <span class="text-xl font-black">12</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-white/10 rounded-2xl border border-white/10 scale-105 shadow-xl shadow-indigo-500/10">
+                            <span class="text-xs font-black text-indigo-300 uppercase tracking-widest">Ongoing</span>
+                            <span class="text-xl font-black">4</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 opacity-50">
+                            <span class="text-xs font-black text-emerald-400 uppercase tracking-widest">Completed</span>
+                            <span class="text-xl font-black">148</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <h2 class="text-4xl font-black mb-6 leading-tight">{{ __('freelance_extra_1_title') }}</h2>
+                <p class="text-xl text-slate-400 leading-relaxed italic">
+                    {{ __('freelance_extra_1_desc') }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: SUSTAINABLE INCOME (UNIQUE B) --}}
+    <section class="py-32 bg-white relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black text-gray-900 mb-8">{{ __('freelance_extra_2_title') }}</h2>
+            <p class="text-xl text-gray-500 leading-relaxed mb-12">
+                {{ __('freelance_extra_2_desc') }}
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                    <div class="text-3xl mb-2">🏖️</div>
+                    <div class="text-xs font-black text-slate-400 uppercase">Paid Leave</div>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                    <div class="text-3xl mb-2">🛡️</div>
+                    <div class="text-xs font-black text-slate-400 uppercase">Health Fund</div>
+                </div>
+                <div class="p-6 bg-indigo-600 rounded-3xl border border-indigo-500 text-white md:col-span-1 col-span-2">
+                    <div class="text-3xl mb-2">💎</div>
+                    <div class="text-xs font-black text-indigo-100 uppercase">Scaling Kit</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: VISUAL FAQ --}}
+    <section class="py-32 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('freelance_faq_title') }}</h2>
+            <div class="space-y-6">
+                @foreach([1, 2, 3] as $i)
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __("freelance_faq_q$i") }}</h3>
+                    <p class="text-gray-500 leading-relaxed">{{ __("freelance_faq_a$i") }}</p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 6: INVOICE-STYLE CTA --}}
     <section class="py-24 px-6 bg-gray-50 relative overflow-hidden">
         <div class="max-w-4xl mx-auto relative z-10">
-            {{-- Professional Ticket/Invoice Shape Container --}}
             <div class="bg-slate-900 rounded-3xl md:rounded-[3rem] p-12 md:p-20 text-center relative shadow-2xl overflow-hidden border border-slate-700 border-t-8 border-t-indigo-500">
                 <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500 rounded-full blur-[80px] opacity-30"></div>
                 
@@ -340,6 +427,35 @@
                     {{ __('freelance_cta_btn') }}
                 </a>
                 <p class="mt-8 text-sm text-slate-600 font-bold uppercase tracking-widest">{{ __('freelance_cta_note') }}</p>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('freelance_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
+                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                </a>
             </div>
         </div>
     </section>

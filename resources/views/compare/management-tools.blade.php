@@ -8,6 +8,76 @@
     <meta property="og:description" content="{{ __('pm_meta_og_desc') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ __('pm_badge') }}",
+    "item": "{{ url('/compare/management-tools') }}"
+  }]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "OneForMind",
+  "applicationCategory": "ProductivityApplication, BusinessApplication",
+  "operatingSystem": "Web, Windows, macOS, Linux",
+  "description": "{{ __('pm_meta_desc') }}",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Personal-First Project Management",
+    "Unified Habits & Finance",
+    "Distraction-Free Focus Mode",
+    "Context-Driven Task Ecosystem"
+  ]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ __('pm_faq_q1') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('pm_faq_a1') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('pm_faq_q2') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('pm_faq_a2') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('pm_faq_q3') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('pm_faq_a3') }}"
+      }
+    }
+  ]
+}
+]
+</script>
+@endsection
+
 @section('content')
 
     {{-- ================================================================= --}}
@@ -63,7 +133,7 @@
                 </div>
 
                 {{-- Element 2: The OFM Focus Card (Front) --}}
-                <div class="relative bg-white p-8 rounded-[2.5rem] shadow-2xl border border-gray-100 w-80 z-20 transform hover:scale-105 transition duration-500">
+                <div class="relative bg-white p-8 rounded-[2.5rem] shadow-2xl border border-gray-100 w-80 z-20 transform hover:scale-105 transition duration-500" role="img" aria-label="OneForMind Focus Card: Contrasting a chaotic, overdue corporate ticket with a clean, focused task from the OneForMind personal ecosystem.">
                     <div class="flex justify-between items-center mb-6">
                         {{-- Ganti Icon jadi Target/Focus --}}
                         <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl">🎯</div>
@@ -349,6 +419,34 @@
     </section>
 
     {{-- ================================================================= --}}
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('pm_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('pm_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('pm_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">Cognitive Sovereignty</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Dunbar's Number</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Administrative Friction Elimination</span>
+            </div>
+        </div>
+    </section>
+    
+    {{-- SECTION: HOW IT WORKS (EXTRA CONTEXT) --}}
+    <section class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-8">{{ __('pm_how_it_works_title') }}</h2>
+            <div class="prose prose-lg text-gray-600 leading-relaxed">
+                <p>{{ __('pm_how_it_works_desc') }}</p>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 5: CTA (MINIMAL) --}}
     {{-- ================================================================= --}}
     <section class="pt-32 pb-40 px-6 bg-white relative overflow-hidden border-t border-gray-100">
@@ -363,6 +461,35 @@
                 {{ __('pm_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-indigo-400 font-bold uppercase tracking-widest">{{ __('pm_cta_sub') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('pm_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
+                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 

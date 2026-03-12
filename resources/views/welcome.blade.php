@@ -9,6 +9,56 @@
     <meta property="og:url" content="{{ url('/') }}">
     
     <link rel="canonical" href="{{ url('/') }}" />
+
+    {{-- SEO: FAQ SCHEMA --}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "{{ __('faq_q1') }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ __('faq_a1') }}"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "{{ __('faq_q2') }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ __('faq_a2') }}"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "{{ __('faq_q3') }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ __('faq_a3') }}"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "{{ __('faq_q4') }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ __('faq_a4') }}"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "{{ __('faq_q5') }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ __('faq_a5') }}"
+          }
+        }
+      ]
+    }
+    </script>
 @endsection
 
 @section('content')
@@ -38,6 +88,7 @@
             
             <p class="text-lg md:text-xl text-slate-500 mb-14 leading-relaxed max-w-3xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
                 {{ __('hero_desc') }}
+                <span class="block mt-4 text-slate-400 text-lg">{{ __('hero_desc_expanded') }}</span>
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center gap-5 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
@@ -229,7 +280,7 @@
                     {{-- DEEP GRADIENT ORB --}}
                     <div class="absolute -inset-20 bg-gradient-to-tr from-indigo-200 to-purple-200 rounded-full blur-[100px] opacity-40"></div>
                     
-                    <div class="relative bg-slate-900 rounded-[3rem] p-1 shadow-[0_50px_100px_-20px_rgba(79,70,229,0.3)] border-[12px] border-slate-800 overflow-hidden transform lg:-rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[16/10]">
+                    <div class="relative bg-slate-900 rounded-[3rem] p-1 shadow-[0_50px_100px_-20px_rgba(79,70,229,0.3)] border-[12px] border-slate-800 overflow-hidden transform lg:-rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[16/10]" role="img" aria-label="OneForMind Dashboard Preview: A unified interface showing habit tracking heatmap, finance budgeting progress, and a clean task management layout.">
                         <div class="absolute top-0 w-full h-8 bg-slate-800 flex items-center px-4 gap-2">
                            <div class="flex gap-1.5">
                                 <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
@@ -384,7 +435,7 @@
             <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-16 text-center tracking-tight">{{ __('faq_title') }}</h2>
             
             <div class="grid gap-4" x-data="{ active: null }">
-                @foreach([1, 2, 3] as $i)
+                @foreach([1, 2, 3, 4, 5] as $i)
                 <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="active === {{ $i }} ? 'ring-2 ring-indigo-500' : ''">
                     <button @click="active = active === {{ $i }} ? null : {{ $i }}" class="flex justify-between items-center w-full p-8 text-left group">
                         <span class="text-xl font-black text-slate-900 group-hover:text-indigo-600 transition">{{ __("faq_q$i") }}</span>

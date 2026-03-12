@@ -12,12 +12,31 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "{{ __('schema_solution_finance_mastery_name') }}",
   "description": "{{ __('schema_solution_finance_mastery_description') }}"
-}
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
+    "item": "{{ url('/') }}#solutions"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Finance Mastery",
+    "item": "{{ url('/solutions/finance-mastery') }}"
+  }]
+}]
 </script>
 @endsection
 
@@ -98,7 +117,6 @@
             </div>
 
             <div class="flex flex-col md:flex-row gap-8">
-                {{-- Left: The Stress --}}
                 <div class="flex-1 bg-rose-50/50 p-10 rounded-[3rem] border border-rose-100">
                     <div class="text-5xl mb-6">📉</div>
                     <h3 class="text-2xl font-bold text-rose-900 mb-4">{{ __('solve_finance_prob_1_title') }}</h3>
@@ -108,8 +126,6 @@
                         <li class="flex items-center gap-3"><span class="text-rose-500">✕</span> {{ __('solve_finance_prob_1_point_3') }}</li>
                     </ul>
                 </div>
-                
-                {{-- Right: The Boring Way --}}
                 <div class="flex-1 bg-gray-50 p-10 rounded-[3rem] border border-gray-200">
                     <div class="text-5xl mb-6">📊</div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ __('solve_finance_prob_2_title') }}</h3>
@@ -119,6 +135,24 @@
                         <li class="flex items-center gap-3"><span class="text-gray-400">✕</span> {{ __('solve_finance_prob_2_point_3') }}</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('solve_finance_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('solve_finance_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed italic max-w-2xl mx-auto">
+                {{ __('solve_finance_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
+                <span class="text-xs font-black uppercase tracking-tighter">Compounding Velocity</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Asset Allocation</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Risk Mitigation</span>
             </div>
         </div>
     </section>
@@ -193,6 +227,56 @@
         </div>
     </section>
 
+    {{-- SECTION: PORTFOLIO REBALANCING (UNIQUE A) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="bg-slate-900 rounded-[3rem] p-10 border border-slate-800 shadow-2xl relative">
+                <div class="flex justify-center gap-4">
+                    <div class="w-12 h-32 bg-indigo-500 rounded-t-full"></div>
+                    <div class="w-12 h-48 bg-purple-500 rounded-t-full"></div>
+                    <div class="w-12 h-24 bg-sky-500 rounded-t-full"></div>
+                    <div class="w-12 h-40 bg-emerald-500 rounded-t-full"></div>
+                </div>
+                <div class="mt-8 text-center text-[10px] font-black text-slate-500 uppercase tracking-widest">Target Distribution</div>
+            </div>
+            <div>
+                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('solve_finance_extra_1_title') }}</h2>
+                <p class="text-xl text-gray-500 leading-relaxed">
+                    {{ __('solve_finance_extra_1_desc') }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: FREEDOM RUNWAY (UNIQUE B) --}}
+    <section class="py-32 bg-slate-950 text-white relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-8">{{ __('solve_finance_extra_2_title') }}</h2>
+            <p class="text-xl text-slate-400 leading-relaxed mb-12 italic">
+                {{ __('solve_finance_extra_2_desc') }}
+            </p>
+            <div class="inline-block p-8 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-md">
+                <div class="text-6xl font-black text-indigo-400 mb-2">18</div>
+                <div class="text-xs font-black uppercase tracking-widest text-slate-500">Months of Runway</div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: VISUAL FAQ --}}
+    <section class="py-32 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('solve_finance_faq_title') }}</h2>
+            <div class="space-y-6">
+                @foreach([1, 2, 3] as $i)
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __("solve_finance_faq_q$i") }}</h3>
+                    <p class="text-gray-500 leading-relaxed">{{ __("solve_finance_faq_a$i") }}</p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 5: CTA --}}
     <section class="py-32 bg-white relative overflow-hidden">
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
@@ -204,6 +288,36 @@
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition-colors duration-300 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
                 {{ __('solve_finance_cta_btn') }}
             </a>
+            <p class="mt-8 text-sm text-gray-400 font-bold uppercase tracking-widest">{{ __('solve_finance_cta_note') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('solve_finance_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
+                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 

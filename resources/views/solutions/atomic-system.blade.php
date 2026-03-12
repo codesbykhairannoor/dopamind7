@@ -12,12 +12,62 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "{{ __('schema_solution_atomic_name') }}",
   "description": "{{ __('schema_solution_atomic_description') }}"
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
+    "item": "{{ url('/') }}#solutions"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Atomic System",
+    "item": "{{ url('/solutions/atomic-system') }}"
+  }]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ __('atomic_faq_q1') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('atomic_faq_a1') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('atomic_faq_q2') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('atomic_faq_a2') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('atomic_faq_q3') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('atomic_faq_a3') }}"
+      }
+    }
+  ]
 }
+]
 </script>
 @endsection
 
@@ -62,7 +112,7 @@
             </div>
 
             {{-- Visual Bawah (Lebar & Interactive Vibe) --}}
-            <div class="relative w-full max-w-4xl mx-auto rounded-[2.5rem] bg-white p-3 shadow-2xl border border-gray-100 transform perspective-1000 rotate-x-6 hover:rotate-x-0 transition-transform duration-700">
+            <div class="relative w-full max-w-4xl mx-auto rounded-[2.5rem] bg-white p-3 shadow-2xl border border-gray-100 transform perspective-1000 rotate-x-6 hover:rotate-x-0 transition-transform duration-700" role="img" aria-label="The Compounding Effect Visualization: A bar chart showing how 1% daily improvements lead to 37x better results over one year, representing the core philosophy of the Atomic System.">
                 <div class="absolute inset-0 bg-indigo-500 rounded-[2.5rem] blur-2xl opacity-10 -z-10"></div>
                 <div class="bg-slate-50 rounded-[2rem] p-8 md:p-12 border border-gray-100 overflow-hidden relative text-left flex flex-col md:flex-row gap-8 items-center">
                     
@@ -115,34 +165,86 @@
         </div>
     </section>
 
-    {{-- SECTION 3: THE FRAMEWORK (DARK INDIGO MODE) --}}
-    <section class="py-32 bg-slate-900 text-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-6xl font-black mb-6">{{ __('atomic_sol_title') }}</h2>
-                <p class="text-indigo-200 text-xl max-w-2xl mx-auto">{{ __('atomic_sol_desc') }}</p>
+    {{-- SECTION: HABIT HEATMAPS (UNIQUE A) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <div class="bg-indigo-50 rounded-[3rem] p-8 md:p-12 border border-indigo-100 shadow-xl">
+                    <div class="grid grid-cols-7 gap-2 mb-6">
+                        @foreach(range(1, 35) as $i)
+                            <div class="aspect-square rounded-md {{ $i % 3 === 0 ? 'bg-indigo-600' : ($i % 5 === 0 ? 'bg-indigo-200' : 'bg-indigo-400') }}"></div>
+                        @endforeach
+                    </div>
+                    <div class="flex items-center justify-between text-xs font-bold text-indigo-400 uppercase tracking-widest">
+                        <span>Less Focus</span>
+                        <div class="flex gap-1">
+                            <div class="w-3 h-3 bg-indigo-100 rounded"></div>
+                            <div class="w-3 h-3 bg-indigo-300 rounded"></div>
+                            <div class="w-3 h-3 bg-indigo-600 rounded"></div>
+                        </div>
+                        <span>Peak Flow</span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-slate-800/50 backdrop-blur-xl p-10 rounded-[2.5rem] border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
-                    <span class="text-indigo-400 font-black text-5xl mb-6 block opacity-50">01</span>
-                    <h4 class="text-2xl font-bold text-white mb-4">{{ __('atomic_step_1_title') }}</h4>
-                    <p class="text-slate-400 leading-relaxed">{{ __('atomic_step_1_desc') }}</p>
+            <div>
+                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('atomic_extra_1_title') }}</h2>
+                <p class="text-xl text-gray-500 leading-relaxed">
+                    {{ __('atomic_extra_1_desc') }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: COMPOUNDING FACTORY (UNIQUE B) --}}
+    <section class="py-32 bg-slate-900 text-white overflow-hidden relative">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="bg-gradient-to-br from-indigo-600/20 to-purple-600/20 rounded-[3rem] p-12 md:p-20 border border-white/10 backdrop-blur-sm">
+                <h2 class="text-4xl font-black mb-8 text-center">{{ __('atomic_extra_2_title') }}</h2>
+                <p class="text-xl text-indigo-200 text-center leading-relaxed mb-12 max-w-3xl mx-auto">
+                    {{ __('atomic_extra_2_desc') }}
+                </p>
+                <div class="flex justify-center gap-12 items-end h-32">
+                    <div class="w-12 bg-indigo-500/30 rounded-t-xl h-4"></div>
+                    <div class="w-12 bg-indigo-500/50 rounded-t-xl h-8"></div>
+                    <div class="w-12 bg-indigo-500/70 rounded-t-xl h-16"></div>
+                    <div class="w-12 bg-indigo-600 rounded-t-xl h-32 relative">
+                        <div class="absolute -top-10 left-1/2 -translate-x-1/2 text-2xl animate-bounce">🔥</div>
+                    </div>
                 </div>
-                <div class="bg-slate-800/50 backdrop-blur-xl p-10 rounded-[2.5rem] border border-slate-700 hover:-translate-y-2 transition-transform duration-300 delay-100">
-                    <span class="text-indigo-400 font-black text-5xl mb-6 block opacity-50">02</span>
-                    <h4 class="text-2xl font-bold text-white mb-4">{{ __('atomic_step_2_title') }}</h4>
-                    <p class="text-slate-400 leading-relaxed">{{ __('atomic_step_2_desc') }}</p>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: VISUAL FAQ --}}
+    <section class="py-32 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('atomic_faq_title') }}</h2>
+            <div class="space-y-6">
+                @foreach([1, 2, 3] as $i)
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __("atomic_faq_q$i") }}</h3>
+                    <p class="text-gray-500 leading-relaxed">{{ __("atomic_faq_a$i") }}</p>
                 </div>
-                <div class="bg-indigo-600 p-10 rounded-[2.5rem] shadow-2xl hover:-translate-y-2 transition-transform duration-300 delay-200 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-6 opacity-20 text-8xl">💎</div>
-                    <span class="text-indigo-300 font-black text-5xl mb-6 block">03</span>
-                    <h4 class="text-2xl font-bold text-white mb-4">{{ __('atomic_step_3_title') }}</h4>
-                    <p class="text-indigo-100 leading-relaxed">{{ __('atomic_step_3_desc') }}</p>
-                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('atomic_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('atomic_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('atomic_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">Behavioral Economics</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Activation Energy</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Identity-Based Habits</span>
             </div>
         </div>
     </section>
@@ -157,6 +259,36 @@
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-800 shadow-2xl transition transform hover:-translate-y-1">
                 {{ __('atomic_cta_btn') }}
             </a>
+            <p class="mt-8 text-sm font-bold text-gray-400 uppercase tracking-widest">{{ __('atomic_cta_note') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('atomic_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
+                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 @endsection

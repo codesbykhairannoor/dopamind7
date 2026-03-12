@@ -13,6 +13,7 @@
 
 @section('json-ld')
 <script type="application/ld+json">
+[
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -25,7 +26,53 @@
     "Real-time Progress Tracking",
     "Priority & Reward System"
   ]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ __('goal_hero_badge') }}",
+    "item": "{{ url('/features/goal') }}"
+  }]
+},
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ __('goal_faq_q1') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('goal_faq_a1') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('goal_faq_q2') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('goal_faq_a2') }}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ __('goal_faq_q3') }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ __('goal_faq_a3') }}"
+      }
+    }
+  ]
 }
+]
 </script>
 @endsection
 
@@ -62,9 +109,10 @@
             </div>
 
             {{-- Floating Mockup Centered --}}
-            <div class="relative w-full max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both">
-                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-[2.5rem] blur opacity-20"></div>
-                <div class="relative bg-white/90 backdrop-blur-xl rounded-[2.5rem] shadow-2xl border border-white p-8 md:p-10 transform transition hover:scale-[1.02] duration-500">
+            <div class="max-w-4xl mx-auto relative animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both" role="img" aria-label="Goal Tracking Dashboard Preview: Showing yearly targets, high-performance momentum indicators, and actionable milestones for launching projects and reaching revenue targets.">
+            <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-20 h-full w-full pointer-events-none"></div>
+            
+            <div class="bg-white/80 backdrop-blur-xl rounded-t-[3rem] border-x border-t border-gray-200 p-8 md:p-12 shadow-2xl flex flex-col md:flex-row gap-8 overflow-hidden h-auto min-h-[400px]">
                     
                     <div class="flex justify-between items-center mb-8 border-b border-gray-100 pb-6">
                         <div class="text-left">
@@ -126,9 +174,50 @@
     </header>
     
     {{-- NEW SECTION 2: VERTICAL ASCENT (STRATEGY HIERARCHY) --}}
-    <section class="py-24 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col lg:flex-row gap-24 items-center">
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="flex-1 w-full animate-in fade-in slide-in-from-left-8 duration-700" role="img" aria-label="Strategic Growth Journey Visualization: A vertical path showing the transition from moonshot theories to actionable milestones.">
+                    <div class="relative pt-12">
+                        {{-- Vertical Path Visual --}}
+                        <div class="relative py-20 pl-24">
+                            {{-- The Line --}}
+                            <div class="absolute left-16 top-0 bottom-0 w-2 bg-gradient-to-b from-amber-500 via-indigo-500 to-indigo-100 rounded-full"></div>
+                            
+                            {{-- Moonshot (Top) --}}
+                            <div class="relative mb-24 animate-in fade-in slide-in-from-top-8 duration-700">
+                                <div class="absolute -left-16 top-0 w-12 h-12 bg-white rounded-full border-4 border-amber-500 shadow-xl z-10 flex items-center justify-center text-lg">🔥</div>
+                                <div class="bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-2xl relative group hover:scale-105 transition duration-500">
+                                    <div class="absolute -inset-2 bg-gradient-to-r from-amber-500 to-transparent rounded-[3rem] -z-10 opacity-20 blur-xl group-hover:opacity-40"></div>
+                                    <h4 class="text-amber-500 font-black uppercase tracking-widest text-xs mb-4">{{ __('goal_level_moonshot') }}</h4>
+                                    <p class="text-2xl font-black italic tracking-tight">{{ __('goal_moonshot_example') }}</p>
+                                </div>
+                            </div>
+
+                            {{-- Milestone (Middle) --}}
+                            <div class="relative mb-24 ml-12 animate-in fade-in slide-in-from-left-8 duration-700 delay-150">
+                                <div class="absolute -left-28 top-4 w-16 h-[2px] bg-indigo-500"></div>
+                                <div class="absolute -left-32 top-2 w-8 h-8 bg-white rounded-full border-4 border-indigo-500 shadow-lg z-10 flex items-center justify-center text-xs">⭐</div>
+                                <div class="bg-white border-2 border-indigo-100 p-8 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition duration-500">
+                                    <h4 class="text-indigo-600 font-black uppercase tracking-widest text-xs mb-4">{{ __('goal_milestone_number') }}</h4>
+                                    <p class="text-xl font-black text-gray-900 tracking-tight">{{ __('goal_milestone_example') }}</p>
+                                    <div class="mt-6 w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                                        <div class="w-3/4 h-full bg-indigo-500 rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Task (Bottom) --}}
+                            <div class="relative ml-24 animate-in fade-in slide-in-from-left-8 duration-700 delay-300">
+                                <div class="absolute -left-40 top-4 w-32 h-[2px] bg-indigo-200"></div>
+                                <div class="absolute -left-44 top-2 w-8 h-8 bg-white rounded-full border-4 border-indigo-200 shadow-lg z-10 flex items-center justify-center text-xs">📝</div>
+                                <div class="bg-gray-50 border border-gray-100 p-6 rounded-3xl opacity-60 text-left">
+                                    <p class="font-bold text-gray-600">{{ __('goal_task_example') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 text-amber-700 text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-amber-100">
                         {{ __('goal_ascent_badge') }}
@@ -153,45 +242,6 @@
                                 <h4 class="font-black text-gray-900 uppercase tracking-tighter">{{ __('goal_milestones_label') }}</h4>
                                 <p class="text-xs text-gray-500 leading-relaxed">{{ __('goal_milestones_desc') }}</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex-1 w-full relative">
-                    {{-- Vertical Path Visual --}}
-                    <div class="relative py-20 pl-24">
-                        {{-- The Line --}}
-                        <div class="absolute left-16 top-0 bottom-0 w-2 bg-gradient-to-b from-amber-500 via-indigo-500 to-indigo-100 rounded-full"></div>
-                        
-                        {{-- Moonshot (Top) --}}
-                        <div class="relative mb-24 animate-in fade-in slide-in-from-top-8 duration-700">
-                            <div class="absolute -left-16 top-0 w-12 h-12 bg-white rounded-full border-4 border-amber-500 shadow-xl z-10 flex items-center justify-center text-lg">🔥</div>
-                            <div class="bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-2xl relative group hover:scale-105 transition duration-500">
-                                <div class="absolute -inset-2 bg-gradient-to-r from-amber-500 to-transparent rounded-[3rem] -z-10 opacity-20 blur-xl group-hover:opacity-40"></div>
-                                <h4 class="text-amber-500 font-black uppercase tracking-widest text-xs mb-4">{{ __('goal_level_moonshot') }}</h4>
-                                <p class="text-2xl font-black italic tracking-tight">{{ __('goal_moonshot_example') }}</p>
-                            </div>
-                        </div>
-
-                        {{-- Milestone (Middle) --}}
-                        <div class="relative mb-24 ml-12 animate-in fade-in slide-in-from-left-8 duration-700 delay-150">
-                             <div class="absolute -left-28 top-4 w-16 h-[2px] bg-indigo-500"></div>
-                             <div class="absolute -left-32 top-2 w-8 h-8 bg-white rounded-full border-4 border-indigo-500 shadow-lg z-10 flex items-center justify-center text-xs">⭐</div>
-                             <div class="bg-white border-2 border-indigo-100 p-8 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition duration-500">
-                                <h4 class="text-indigo-600 font-black uppercase tracking-widest text-xs mb-4">{{ __('goal_milestone_number') }}</h4>
-                                <p class="text-xl font-black text-gray-900 tracking-tight">{{ __('goal_milestone_example') }}</p>
-                                <div class="mt-6 w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                     <div class="w-3/4 h-full bg-indigo-500 rounded-full"></div>
-                                </div>
-                             </div>
-                        </div>
-
-                         {{-- Task (Bottom) --}}
-                         <div class="relative ml-24 animate-in fade-in slide-in-from-left-8 duration-700 delay-300">
-                             <div class="absolute -left-40 top-4 w-32 h-[2px] bg-indigo-200"></div>
-                             <div class="absolute -left-44 top-2 w-8 h-8 bg-white rounded-full border-4 border-indigo-200 shadow-lg z-10 flex items-center justify-center text-xs">📝</div>
-                             <div class="bg-gray-50 border border-gray-100 p-6 rounded-3xl opacity-60 text-left">
-                                <p class="font-bold text-gray-600">{{ __('goal_task_example') }}</p>
-                             </div>
                         </div>
                     </div>
                 </div>
@@ -326,6 +376,24 @@
         </div>
     </section>
 
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-rose-50/50 border-y border-rose-100/30">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('goal_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('goal_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('goal_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">OKR Framework</span>
+                <span class="text-sm font-black uppercase tracking-tighter">SMART Goals</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Identity Shift</span>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 4: THE SUCCESS QUOTE --}}
     <section class="py-32 bg-white relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
@@ -354,6 +422,35 @@
                     {{ __('goal_cta_btn') }}
                 </a>
                 <p class="mt-6 text-sm text-indigo-300">{{ __('goal_cta_note') }}</p>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('goal_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
+                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                </a>
             </div>
         </div>
     </section>

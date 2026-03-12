@@ -12,12 +12,31 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "OneForMind Mental Clarity Solution",
   "description": "System for reducing mental clutter and achieving extreme focus."
-}
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
+    "item": "{{ url('/') }}#solutions"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Mental Clarity",
+    "item": "{{ url('/solutions/mental-clarity') }}"
+  }]
+}]
 </script>
 @endsection
 
@@ -112,6 +131,24 @@
         </div>
     </section>
 
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('solve_mental_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('solve_mental_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed italic max-w-2xl mx-auto">
+                {{ __('solve_mental_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
+                <span class="text-xs font-black uppercase tracking-tighter">Neuroplasticity</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Metacognition</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Entropy Reduction</span>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 3: THE SOLUTION (THE SANCTUARY / ZEN CARDS) --}}
     <section class="py-32 bg-slate-900 text-white relative">
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-900 to-slate-900"></div>
@@ -199,6 +236,61 @@
         </div>
     </section>
 
+    {{-- SECTION: COGNITIVE LOAD (UNIQUE A) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative order-2 md:order-1">
+                <div class="bg-indigo-50 rounded-[3rem] p-10 border border-indigo-100 shadow-xl overflow-hidden relative">
+                    <div class="flex justify-between items-end h-32 gap-4">
+                        <div class="flex-1 bg-indigo-200 rounded-t-xl h-24"></div>
+                        <div class="flex-1 bg-indigo-400 rounded-t-xl h-32"></div>
+                        <div class="flex-1 bg-indigo-600 rounded-t-xl h-16 relative">
+                            <div class="absolute -top-10 left-1/2 -translate-x-1/2 text-2xl">⚡</div>
+                        </div>
+                        <div class="flex-1 bg-indigo-300 rounded-t-xl h-28"></div>
+                    </div>
+                    <div class="mt-6 text-center text-[10px] font-black text-indigo-400 uppercase tracking-widest">Real-time Mental Resource Meter</div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('solve_mental_extra_1_title') }}</h2>
+                <p class="text-xl text-gray-500 leading-relaxed">
+                    {{ __('solve_mental_extra_1_desc') }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: JOURNALING LOOPS (UNIQUE B) --}}
+    <section class="py-32 bg-slate-900 text-white relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-8">{{ __('solve_mental_extra_2_title') }}</h2>
+            <p class="text-xl text-indigo-200 leading-relaxed mb-12 italic">
+                {{ __('solve_mental_extra_2_desc') }}
+            </p>
+            <div class="flex justify-center flex-wrap gap-4">
+                <div class="px-6 py-3 bg-white/10 rounded-full border border-white/20">Reflection</div>
+                <div class="px-6 py-3 bg-white/10 rounded-full border border-white/20">Correction</div>
+                <div class="px-6 py-3 bg-indigo-600 rounded-full border border-indigo-500 font-bold shadow-xl shadow-indigo-500/20">Calibration</div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: VISUAL FAQ --}}
+    <section class="py-32 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('solve_mental_faq_title') }}</h2>
+            <div class="space-y-6">
+                @foreach([1, 2, 3] as $i)
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __("solve_mental_faq_q$i") }}</h3>
+                    <p class="text-gray-500 leading-relaxed">{{ __("solve_mental_faq_a$i") }}</p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 5: CTA --}}
     <section class="py-32 bg-white relative overflow-hidden">
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-purple-100 to-transparent rounded-full blur-3xl opacity-50 -z-10"></div>
@@ -212,6 +304,36 @@
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-800 transition-colors duration-300 shadow-2xl">
                 {{ __('solve_mental_cta_btn') }}
             </a>
+            <p class="mt-8 text-sm text-gray-400 font-bold uppercase tracking-widest">{{ __('solve_mental_cta_note') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('solve_mental_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
+                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 

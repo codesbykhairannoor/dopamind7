@@ -13,7 +13,7 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "{{ __('schema_student_name') }}",
@@ -22,7 +22,26 @@
     "@type": "Audience",
     "audienceType": "{{ __('schema_solution_student_audience') }}"
   }
-}
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
+    "item": "{{ url('/') }}#solutions"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "{{ app()->getLocale() === 'id' ? 'Pelajar' : 'Student' }}",
+    "item": "{{ url('/solutions/student') }}"
+  }]
+}]
 </script>
 @endsection
 
@@ -180,6 +199,24 @@
         </div>
     </section>
 
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('student_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('student_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+                {{ __('student_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+                <span class="text-sm font-black uppercase tracking-tighter">Spaced Repetition</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Active Recall</span>
+                <span class="text-sm font-black uppercase tracking-tighter">Time Blocking</span>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 3: SOLUTION HIGHLIGHT 1 (ACADEMIC & PROJECTS) --}}
     <section class="py-24 bg-gray-50 border-y border-gray-100">
         <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
@@ -268,6 +305,78 @@
         </div>
     </section>
 
+    {{-- SECTION: STUDY WORKFLOW (UNIQUE A) --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="bg-slate-900 rounded-[3rem] p-8 md:p-12 shadow-2xl relative">
+                <div class="absolute top-0 right-0 p-8 opacity-10 text-8xl">📝</div>
+                <div class="space-y-6 relative z-10">
+                    <div class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl border border-white/10">
+                        <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center font-bold">1</div>
+                        <div class="text-white font-bold">Capture Lecture</div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl border border-white/10 ml-8">
+                        <div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center font-bold">2</div>
+                        <div class="text-white font-bold">Review & Interleave</div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl border border-white/10 ml-16 text-emerald-400">
+                        <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center font-bold text-white">3</div>
+                        <div class="font-bold">Master Topic</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('student_extra_1_title') }}</h2>
+                <p class="text-xl text-gray-500 leading-relaxed">
+                    {{ __('student_extra_1_desc') }}
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: GRADES VS SLEEP (UNIQUE B) --}}
+    <section class="py-32 bg-indigo-50 border-y border-indigo-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black text-indigo-950 mb-8">{{ __('student_extra_2_title') }}</h2>
+            <p class="text-xl text-indigo-800/70 leading-relaxed mb-12">
+                {{ __('student_extra_2_desc') }}
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white p-6 rounded-3xl shadow-sm">
+                    <div class="text-2xl mb-2">😴</div>
+                    <div class="text-xs font-black text-indigo-400 uppercase">Sleep</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm">
+                    <div class="text-2xl mb-2">📚</div>
+                    <div class="text-xs font-black text-indigo-400 uppercase">Grades</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm">
+                    <div class="text-2xl mb-2">🍔</div>
+                    <div class="text-xs font-black text-indigo-400 uppercase">Health</div>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-sm border-2 border-indigo-500">
+                    <div class="text-2xl mb-2">💎</div>
+                    <div class="text-xs font-black text-indigo-600 uppercase">Balance</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: VISUAL FAQ --}}
+    <section class="py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('student_faq_title') }}</h2>
+            <div class="space-y-6">
+                @foreach([1, 2, 3] as $i)
+                <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __("student_faq_q$i") }}</h3>
+                    <p class="text-gray-500 leading-relaxed">{{ __("student_faq_a$i") }}</p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 6: STUDENT CTA --}}
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="absolute inset-0 bg-indigo-600 -z-20"></div>
@@ -282,6 +391,35 @@
                 {{ __('student_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-indigo-200 font-bold uppercase tracking-widest">{{ __('student_cta_note') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('student_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
+                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 

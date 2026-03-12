@@ -1,0 +1,23 @@
+# OneForMind - Unified Life OS
+
+OneForMind is the unified productivity system that combines habits, finances, tasks, journal, and goals into one single intelligent OS.
+
+## Core Pillars
+- **Habit Tracker**: Build atomic habits with consistency grids and streak logic.
+- **Finance Manager**: Manual, mindful money management designed for awareness. No bank sync required.
+- **Daily Planner**: A context-aware task manager that integrates with your habits and goals.
+- **Digital Journal**: A secure space for daily reflection, sentiment analysis, and mood tracking.
+- **Goal Tracker**: A vision-board style system to break down big dreams into small, measurable actions.
+
+## Identity & Values
+- **Privacy First**: Your life data is yours alone. We do not sell data or sync with banking credentials.
+- **Sovereign Productivity**: The antidote to the fragmented "5-app stack" that drains mental energy.
+- **Intentional Design**: Every pixel is crafted for focus, clarity, and a premium "Life OS" experience.
+
+## Sitemap & Navigation
+- [Home](https://oneformind.com/)
+- [About Us](https://oneformind.com/about)
+- [Features - Habit](https://oneformind.com/features/habit)
+- [Features - Finance](https://oneformind.com/features/finance)
+- [Solutions](https://oneformind.com/solutions/atomic-system)
+- [Pricing](https://oneformind.com/pricing)

@@ -11,6 +11,32 @@
     <meta property="og:url" content="{{ url('/resources/blog') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "OneForMind Blog",
+  "description": "{{ __('blog_meta_desc') }}",
+  "url": "{{ url('/resources/blog') }}"
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Insights",
+    "item": "{{ url('/resources/blog') }}"
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
 
     @php

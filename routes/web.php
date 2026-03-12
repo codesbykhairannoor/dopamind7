@@ -112,7 +112,11 @@ Route::get('/sitemap.xml', function () {
 
     // 3. SOLUTIONS (Prefix: /solutions/...)
     // Target audience spesifik
-    $solutions = ['student', 'freelancer', 'personalgrowth'];
+    $solutions = [
+        'student', 'freelancer', 'personalgrowth',
+        'finance-mastery', 'career-accelerator', 'mental-clarity',
+        'atomic-system', 'deep-work', 'second-brain'
+    ];
     foreach ($solutions as $solution) {
         $pages[] = [
             'url' => url("/solutions/{$solution}"),
@@ -140,6 +144,9 @@ Route::get('/sitemap.xml', function () {
         '/compare/sheets',
         '/compare/management-tools',
         '/compare/habit-apps',
+        '/compare/finance-apps',
+        '/compare/planner-apps',
+        '/compare/five-apps',
 
         // Legal Pages
         '/company/privacy',

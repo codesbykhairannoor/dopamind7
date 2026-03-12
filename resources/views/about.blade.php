@@ -12,31 +12,32 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "AboutPage",
   "name": "{{ __('schema_about_name') }}",
   "description": "{{ __('schema_about_description') }}",
   "mainEntity": {
     "@type": "Organization",
-    "name": "OneForMind"
-  }
-}
-</script>
-@endsection
-
-@section('json-ld')
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "mainEntity": {
-    "@type": "Organization",
     "name": "OneForMind",
     "description": "Building the unified life operating system for modern high performers.",
     "vision": "Empowering humanity to manage life in one frictionless system."
   }
-}
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ app()->getLocale() === 'id' ? 'Tentang' : 'About' }}",
+    "item": "{{ url('/about') }}"
+  }]
+}]
 </script>
 @endsection
 

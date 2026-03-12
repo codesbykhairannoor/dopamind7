@@ -16,7 +16,7 @@ class HabitSeeder extends Seeder
         // ==========================================
         // 🔥 EMAIL SPESIFIK KAMU 🔥
         // ==========================================
-        $targetEmail = 'khairking6@gmail.com';
+        $targetEmail = 'khairking67@gmail.com';
 
         // 1. Cari User / Buat User
         $user = User::firstOrCreate(

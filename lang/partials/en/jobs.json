@@ -36,5 +36,15 @@
     "job_filter_30_days": "Last 30 Days",
     "job_filter_90_days": "Last 3 Months",
     "job_filter_results": "results",
-    "job_filter_clear": "Clear Filters"
+    "job_filter_clear": "Clear Filters",
+    "job_mockup_title": "Career Pipeline 💼",
+    "job_mockup_streak": "Active: 12 Jobs",
+    "job_mockup_task_1": "Google - Senior Dev",
+    "job_mockup_time_1": "Interview Stage",
+    "job_mockup_task_2": "Meta - Product Manager",
+    "job_mockup_time_2": "Applied",
+    "job_mockup_task_3": "Apple - UX Designer",
+    "job_mockup_time_3": "Wishlist",
+    "job_mockup_alert_1": "New Interview Scheduled!",
+    "job_mockup_alert_2": "Application Deadline Approaching"
 }

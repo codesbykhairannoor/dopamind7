@@ -36,5 +36,15 @@
     "job_filter_30_days": "30 Hari Lalu",
     "job_filter_90_days": "3 Bulan Lalu",
     "job_filter_results": "hasil",
-    "job_filter_clear": "Hapus Filter"
+    "job_filter_clear": "Hapus Filter",
+    "job_mockup_title": "Pipeline Karir 💼",
+    "job_mockup_streak": "Aktif: 12 Lamaran",
+    "job_mockup_task_1": "Google - Senior Dev",
+    "job_mockup_time_1": "Interview Stage",
+    "job_mockup_task_2": "Meta - Product Manager",
+    "job_mockup_time_2": "Dilamar",
+    "job_mockup_task_3": "Apple - UX Designer",
+    "job_mockup_time_3": "Wishlist",
+    "job_mockup_alert_1": "New Interview Scheduled!",
+    "job_mockup_alert_2": "Application Deadline Approaching"
 }

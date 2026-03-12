@@ -13,12 +13,31 @@
 
 @section('json-ld')
 <script type="application/ld+json">
-{
+[{
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "{{ __('schema_solution_growth_name') }}",
   "description": "{{ __('schema_solution_growth_description') }}"
-}
+},{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "{{ app()->getLocale() === 'id' ? 'Solusi' : 'Solutions' }}",
+    "item": "{{ url('/') }}#solutions"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Personal Growth",
+    "item": "{{ url('/solutions/personal-growth') }}"
+  }]
+}]
 </script>
 @endsection
 
@@ -105,65 +124,25 @@
         </div>
     </header>
 
-   {{-- SECTION 2: SURPRISE LAYOUT - SPLIT CONTRAST (THE RUT vs THE GROWTH) --}}
-<section class="flex flex-col md:flex-row w-full overflow-hidden min-h-[600px]">
-    {{-- Dark Side: The Rut (Sekarang Indigo Gelap) --}}
-    <div class="w-full md:w-1/2 bg-indigo-600 p-12 md:p-24 lg:p-32 relative group flex items-center">
-        {{-- Overlay Tekstur agar tidak flat --}}
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/50 to-transparent"></div>
-        
-        <div class="relative z-10 w-full animate-in slide-in-from-left-8 fade-in duration-1000 fill-mode-both" data-aos="fade-right">
-            <div class="text-6xl mb-10 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:-rotate-12">
-                🌫️
-            </div>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-8 leading-tight tracking-tighter">
-                {{ __('growth_prob_title_dark') }}
-            </h2>
-            <p class="text-white text-lg md:text-xl leading-relaxed mb-10 max-w-md">
-                {{ __('growth_prob_desc_dark') }}
-            </p>
-            <ul class="space-y-5 text-indigo-300/80 font-medium">
-                <li class="flex items-start gap-4 transition-transform duration-300 group-hover:translate-x-2">
-                    <span class="flex-shrink-0 w-6 h-6 rounded-full border border-rose-500/50 text-rose-500 flex items-center justify-center text-xs mt-1">✕</span>
-                    <span class="text-white">{{ __('growth_prob_point_1') }}</span>
-                </li>
-                <li class="flex items-start gap-4 transition-transform duration-300 group-hover:translate-x-2 delay-75">
-                    <span class="flex-shrink-0 w-6 h-6 rounded-full border border-rose-500/50 text-rose-500 flex items-center justify-center text-xs mt-1">✕</span>
-                    <span class="text-white">{{ __('growth_prob_point_2') }}</span>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    {{-- Light Side: The Growth (Indigo Terang) --}}
-    <div class="w-full md:w-1/2 bg-indigo-50 p-12 md:p-24 lg:p-32 relative group flex items-center">
-        {{-- Pola Dot halus --}}
-        <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:32px_32px] opacity-10"></div>
-        
-        <div class="relative z-10 w-full animate-in slide-in-from-right-8 fade-in duration-1000 fill-mode-both delay-300">
-            <div class="text-6xl mb-10 transform group-hover:scale-125 group-hover:rotate-12 transition duration-500 inline-block">
-                ✨
-            </div>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-indigo-950 mb-8 leading-tight tracking-tighter">
-                {{ __('growth_prob_title_light') }}
-            </h2>
-            <p class="text-indigo-800/80 text-lg md:text-xl leading-relaxed mb-10 max-w-md">
-                {{ __('growth_prob_desc_light') }}
-            </p>
-            <ul class="space-y-5 text-indigo-950 font-bold">
-                <li class="flex items-start gap-4 transition-transform duration-300 group-hover:translate-x-2">
-                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-200 flex items-center justify-center text-sm mt-1">✓</span>
-                    <span class="pt-1">{{ __('growth_prob_point_3') }}</span>
-                </li>
-                <li class="flex items-start gap-4 transition-transform duration-300 group-hover:translate-x-2 delay-75">
-                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-indigo-600 text-white shadow-lg shadow-indigo-200 flex items-center justify-center text-sm mt-1">✓</span>
-                    <span class="pt-1">{{ __('growth_prob_point_4') }}</span>
-                </li>
-            </ul>
-        </div>
-    </div>
 </section>
+
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
+    <section class="py-24 bg-slate-50 border-y border-slate-100 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                🧬 {{ __('growth_science_badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('growth_science_title') }}</h2>
+            <p class="text-gray-600 text-lg leading-relaxed italic max-w-2xl mx-auto">
+                {{ __('growth_science_desc') }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
+                <span class="text-xs font-black uppercase tracking-tighter">Antifragility</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Identity Shift</span>
+                <span class="text-xs font-black uppercase tracking-tighter">Compound Interest</span>
+            </div>
+        </div>
+    </section>
 
     {{-- SECTION 3: SURPRISE LAYOUT - STACKED CARD DECK --}}
     <section id="how-it-works" class="py-32 bg-white overflow-hidden border-b border-gray-100">
@@ -236,76 +215,76 @@
         </div>
     </section>
 
-    {{-- SECTION 5: ORBITAL MASONRY BENTO --}}
-    <section class="py-32 bg-gray-50 border-t border-gray-100">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4">{{ __('growth_bento_title') }}</h2>
-                <p class="text-gray-500 text-xl">{{ __('growth_bento_desc') }}</p>
+    {{-- SECTION: HABIT CASCADE (UNIQUE A) --}}
+    <section class="py-32 bg-slate-950 text-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative order-2 md:order-1">
+                <div class="bg-indigo-900 border border-white/5 rounded-[3rem] p-10 shadow-2xl">
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-xl">🌱</div>
+                            <div class="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="w-1/3 h-full bg-indigo-400"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 opacity-60">
+                            <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-xl">🌿</div>
+                            <div class="flex-1 h-2 bg-white/10 rounded-full"></div>
+                        </div>
+                        <div class="flex items-center gap-4 opacity-30">
+                            <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-xl">🌳</div>
+                            <div class="flex-1 h-2 bg-white/10 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {{-- Left Column (2 Small Boxes) --}}
-                <div class="flex flex-col gap-6">
-                    <div class="bg-white p-8 rounded-[2.5rem] border border-gray-200 shadow-sm hover:shadow-lg transition flex-1 flex flex-col justify-center">
-                        <div class="text-4xl mb-4">🎧</div>
-                        <h3 class="text-xl font-bold mb-2 text-gray-900">{{ __('growth_bento_1_title') }}</h3>
-                        <p class="text-gray-500 text-sm">{{ __('growth_bento_1_desc') }}</p>
-                    </div>
-                    <div class="bg-indigo-50 p-8 rounded-[2.5rem] border border-indigo-100 shadow-sm hover:shadow-lg transition flex-1 flex flex-col justify-center">
-                        <div class="text-4xl mb-4">🌙</div>
-                        <h3 class="text-xl font-bold mb-2 text-indigo-900">{{ __('growth_bento_2_title') }}</h3>
-                        <p class="text-indigo-700/70 text-sm">{{ __('growth_bento_2_desc') }}</p>
-                    </div>
-                </div>
-
-              {{-- Box dengan warna Indigo 600 (Sama persis dengan Button) --}}
-<div class="bg-indigo-600 text-white p-10 rounded-[3rem] shadow-2xl flex flex-col justify-between relative overflow-hidden h-[400px] md:h-auto group">
-    
-    {{-- Cahaya dekorasi yang lebih terang agar tidak flat --}}
-    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-indigo-400 rounded-full blur-[80px] opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-    
-    <div class="relative z-10">
-        {{-- Box Icon: Putih transparan agar kontras dengan Indigo 600 --}}
-        <div class="w-16 h-16 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl mb-8 border border-white/30 shadow-lg">
-            🧩
+            <div class="order-1 md:order-2">
+                <h2 class="text-4xl font-black mb-6">{{ __('growth_extra_1_title') }}</h2>
+                <p class="text-xl text-indigo-200 leading-relaxed italic">
+                    {{ __('growth_extra_1_desc') }}
+                </p>
+            </div>
         </div>
-        
-        <h3 class="text-3xl font-black mb-4 tracking-tight text-white">
-            {{ __('growth_bento_3_title') }}
-        </h3>
-        
-        {{-- Teks deskripsi pakai Putih dengan opacity agar tetap elegan --}}
-        <p class="text-indigo-50 text-lg leading-relaxed font-medium">
-            {{ __('growth_bento_3_desc') }}
-        </p>
-    </div>
-</div>
+    </section>
 
-                {{-- Right Column (2 Small Boxes) --}}
-                <div class="flex flex-col gap-6">
-                    <div class="bg-white p-8 rounded-[2.5rem] border border-gray-200 shadow-sm hover:shadow-lg transition flex-1 flex flex-col justify-center">
-                        <div class="text-4xl mb-4">📊</div>
-                        <h3 class="text-xl font-bold mb-2 text-gray-900">{{ __('growth_bento_4_title') }}</h3>
-                        <p class="text-gray-500 text-sm">{{ __('growth_bento_4_desc') }}</p>
-                    </div>
-                    <div class="bg-gradient-to-br from-indigo-100 to-purple-100 p-8 rounded-[2.5rem] border border-indigo-200 shadow-sm hover:shadow-lg transition flex-1 flex flex-col justify-center">
-                        <div class="text-4xl mb-4">💡</div>
-                        <h3 class="text-xl font-bold mb-2 text-indigo-900">{{ __('growth_bento_5_title') }}</h3>
-                        <p class="text-indigo-800/70 text-sm">{{ __('growth_bento_5_desc') }}</p>
-                    </div>
+    {{-- SECTION: GROWTH TRAJECTORY (UNIQUE B) --}}
+    <section class="py-32 bg-white relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black text-gray-900 mb-8">{{ __('growth_extra_2_title') }}</h2>
+            <p class="text-xl text-gray-500 leading-relaxed mb-12">
+                {{ __('growth_extra_2_desc') }}
+            </p>
+            <div class="inline-flex items-center gap-4 p-8 bg-indigo-50 rounded-3xl border border-indigo-100">
+                <div class="text-5xl font-black text-indigo-600">37.8x</div>
+                <div class="text-left">
+                    <p class="text-[10px] font-black uppercase text-indigo-400">Better in 1 Year</p>
+                    <p class="text-xs text-gray-500">The Power of 1% Improvement</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: VISUAL FAQ --}}
+    <section class="py-32 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('growth_faq_title') }}</h2>
+            <div class="space-y-6">
+                @foreach([1, 2, 3] as $i)
+                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __("growth_faq_q$i") }}</h3>
+                    <p class="text-gray-500 leading-relaxed">{{ __("growth_faq_a$i") }}</p>
+                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
     {{-- SECTION 6: SURPRISE LAYOUT - SUNRISE CTA --}}
     <section class="pt-32 pb-40 px-6 bg-white relative overflow-hidden">
-        {{-- Sunrise Effect Base --}}
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-gradient-to-t from-indigo-100 via-purple-50 to-white rounded-t-full -z-10"></div>
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-t from-indigo-200 to-transparent rounded-t-full blur-2xl -z-10"></div>
         
-        <div class="max-w-4xl mx-auto text-center relative z-10">
+        <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
             <h2 class="text-5xl md:text-7xl font-black mb-8 text-indigo-950 tracking-tight leading-tight">{{ __('growth_cta_title') }}</h2>
             <p class="text-indigo-900/60 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('growth_cta_desc') }}
@@ -314,6 +293,35 @@
                 {{ __('growth_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-indigo-400 font-bold uppercase tracking-widest">{{ __('growth_cta_note') }}</p>
+        </div>
+    </section>
+
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('growth_hero_badge')]) }}</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
+                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
+                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
+                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                </a>
+                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
+                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
+                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                </a>
+            </div>
         </div>
     </section>
 
