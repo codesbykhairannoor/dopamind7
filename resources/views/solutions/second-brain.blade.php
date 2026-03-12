@@ -68,8 +68,10 @@
 
 @section('content')
 
+    {{-- ================================================================= --}}
     {{-- SECTION 1: HERO (CENTERED GLASSMORPHISM - PURE INDIGO VIBE) --}}
-    <header class="pt-32 pb-32 px-6 overflow-hidden bg-gradient-to-b from-indigo-50/80 via-white to-white relative border-b border-gray-100">
+    {{-- ================================================================= --}}
+    <header class="pt-32 pb-32 px-6 overflow-hidden bg-gradient-to-b from-indigo-50/80 via-white to-white relative border-b border-slate-100">
         <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:40px_40px] opacity-[0.03] -z-10"></div>
         <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-400/20 rounded-full blur-[120px] opacity-60 animate-pulse -z-10"></div>
         <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-300/20 rounded-full blur-[100px] opacity-50 animate-pulse delay-1000 -z-10"></div>
@@ -89,14 +91,14 @@
             </div>
             
             {{-- Teks Utama --}}
-            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-gray-900 tracking-tight">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-slate-900 tracking-tight">
                 {{ __('brain_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('brain_hero_title_2') }}
                 </span>
             </h1>
             
-            <p class="text-xl md:text-2xl text-gray-500 mb-12 leading-relaxed font-medium max-w-3xl mx-auto">
+            <p class="text-xl md:text-2xl text-slate-500 mb-12 leading-relaxed font-medium max-w-3xl mx-auto">
                 {{ __('brain_hero_desc') }}
             </p>
             
@@ -145,172 +147,207 @@
         </div>
     </header>
 
-    {{-- SECTION 2: THE PROBLEM (THE OVERWHELM EPIDEMIC) --}}
-    <section class="py-32 bg-slate-50 relative">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">{{ __('brain_prob_title') }}</h2>
-                <p class="text-xl text-gray-500 max-w-2xl mx-auto">{{ __('brain_prob_desc') }}</p>
-            </div>
+    {{-- ================================================================= --}}
+    {{-- SECTION 2: NEW LAYOUT -> STACKED CHAOS (THE PROBLEM) --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🌪️</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __('brain_prob_1_title') }}</h3>
-                    <p class="text-gray-500 leading-relaxed">{{ __('brain_prob_1_desc') }}</p>
+            {{-- Left: Text --}}
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight">{{ __('brain_prob_title') }}</h2>
+                <p class="text-xl text-slate-500 leading-relaxed mb-10">{{ __('brain_prob_desc') }}</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-lg shrink-0 mt-1">🌪️</div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">{{ __('brain_prob_1_title') }}</h3>
+                            <p class="text-sm text-slate-500">{{ __('brain_prob_1_desc') }}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-lg shrink-0 mt-1">🧩</div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">{{ __('brain_prob_2_title') }}</h3>
+                            <p class="text-sm text-slate-500">{{ __('brain_prob_2_desc') }}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-lg shrink-0 mt-1">🔋</div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">{{ __('brain_prob_3_title') }}</h3>
+                            <p class="text-sm text-slate-500">{{ __('brain_prob_3_desc') }}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🧩</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __('brain_prob_2_title') }}</h3>
-                    <p class="text-gray-500 leading-relaxed">{{ __('brain_prob_2_desc') }}</p>
+            </div>
+
+            {{-- Right: Visual Chaos (Stacked Papers) --}}
+            <div class="relative h-[500px] flex items-center justify-center perspective-1000">
+                <div class="absolute w-72 h-48 bg-white rounded-3xl shadow-xl border border-slate-200 transform -rotate-12 translate-x-10 translate-y-10 opacity-70 p-6 flex flex-col justify-between">
+                    <div class="w-full h-3 bg-slate-100 rounded"></div>
+                    <div class="w-3/4 h-3 bg-slate-100 rounded"></div>
+                    <div class="w-1/2 h-3 bg-slate-100 rounded"></div>
                 </div>
-                <div class="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-3xl mb-6">🔋</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __('brain_prob_3_title') }}</h3>
-                    <p class="text-gray-500 leading-relaxed">{{ __('brain_prob_3_desc') }}</p>
+                <div class="absolute w-72 h-48 bg-slate-100 rounded-3xl shadow-xl border border-slate-200 transform rotate-12 -translate-x-10 -translate-y-10 opacity-80 p-6">
+                    <div class="w-12 h-12 bg-slate-200 rounded-full mb-4"></div>
+                    <div class="w-full h-2 bg-slate-200 rounded mb-2"></div>
+                    <div class="w-full h-2 bg-slate-200 rounded"></div>
+                </div>
+                <div class="absolute w-80 h-56 bg-white rounded-3xl shadow-2xl border border-slate-100 transform z-10 p-8 flex flex-col justify-center items-center">
+                    <div class="text-5xl mb-4 animate-bounce">🤯</div>
+                    <div class="font-black text-rose-500 tracking-widest uppercase text-sm">Mental Overload</div>
+                    <div class="text-xs text-slate-400 mt-2">Too much info, nowhere to put it.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 3: THE C.O.E FRAMEWORK (DARK INDIGO) --}}
+    {{-- ================================================================= --}}
+    {{-- SECTION 3: NEW LAYOUT -> VERTICAL PROCESS (THE C.O.E FRAMEWORK) --}}
+    {{-- ================================================================= --}}
     <section class="py-32 bg-slate-900 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-600/20 rounded-full blur-[100px] pointer-events-none -z-10"></div>
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
             <div class="text-center mb-24">
                 <h2 class="text-4xl md:text-6xl font-black mb-6">{{ __('brain_sol_title') }}</h2>
-                <p class="text-indigo-300 text-xl max-w-2xl mx-auto">{{ __('brain_sol_desc') }}</p>
+                <p class="text-indigo-300 text-xl">{{ __('brain_sol_desc') }}</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-slate-800/50 backdrop-blur-md p-10 rounded-[2.5rem] border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
-                    <div class="text-4xl mb-6 opacity-80">🎣</div>
-                    <h3 class="text-2xl font-bold text-indigo-400 mb-4">{{ __('brain_step_1_title') }}</h3>
-                    <p class="text-slate-400 leading-relaxed">{{ __('brain_step_1_desc') }}</p>
+            {{-- Vertical Process --}}
+            <div class="relative space-y-12 before:absolute before:inset-0 before:ml-12 md:before:ml-1/2 md:before:-translate-x-px md:before:w-0.5 before:bg-indigo-800 before:-z-10">
+                
+                {{-- Step 1 --}}
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-24 h-24 rounded-full border-8 border-slate-900 bg-indigo-600 text-3xl shadow-xl shrink-0 z-10 transform group-hover:scale-110 transition duration-300 md:order-1 md:absolute md:left-1/2 md:-translate-x-1/2">🎣</div>
+                    <div class="w-[calc(100%-7rem)] md:w-[calc(50%-4rem)] bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl border border-slate-700 shadow-xl group-hover:border-indigo-500/50 transition duration-300">
+                        <h3 class="text-2xl font-bold text-indigo-400 mb-3">{{ __('brain_step_1_title') }}</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">{{ __('brain_step_1_desc') }}</p>
+                    </div>
                 </div>
-                <div class="bg-slate-800/50 backdrop-blur-md p-10 rounded-[2.5rem] border border-slate-700 hover:-translate-y-2 transition-transform duration-300 delay-100">
-                    <div class="text-4xl mb-6 opacity-80">🗄️</div>
-                    <h3 class="text-2xl font-bold text-blue-400 mb-4">{{ __('brain_step_2_title') }}</h3>
-                    <p class="text-slate-400 leading-relaxed">{{ __('brain_step_2_desc') }}</p>
+
+                {{-- Step 2 --}}
+                <div class="relative flex items-center justify-between md:justify-normal md:even:flex-row group">
+                    <div class="flex items-center justify-center w-24 h-24 rounded-full border-8 border-slate-900 bg-blue-600 text-3xl shadow-xl shrink-0 z-10 transform group-hover:scale-110 transition duration-300 md:order-1 md:absolute md:left-1/2 md:-translate-x-1/2">🗄️</div>
+                    <div class="w-[calc(100%-7rem)] md:w-[calc(50%-4rem)] bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl border border-slate-700 shadow-xl group-hover:border-blue-500/50 transition duration-300 md:ml-auto">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-3">{{ __('brain_step_2_title') }}</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">{{ __('brain_step_2_desc') }}</p>
+                    </div>
                 </div>
-                <div class="bg-indigo-600 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden hover:-translate-y-2 transition-transform duration-300 delay-200">
-                    <div class="absolute top-0 right-0 p-6 opacity-20 text-8xl">🚀</div>
-                    <div class="text-4xl mb-6">✨</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">{{ __('brain_step_3_title') }}</h3>
-                    <p class="text-indigo-100 leading-relaxed relative z-10">{{ __('brain_step_3_desc') }}</p>
+
+                {{-- Step 3 --}}
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div class="flex items-center justify-center w-24 h-24 rounded-full border-8 border-slate-900 bg-emerald-500 text-3xl shadow-xl shrink-0 z-10 transform group-hover:scale-110 transition duration-300 md:order-1 md:absolute md:left-1/2 md:-translate-x-1/2">✨</div>
+                    <div class="w-[calc(100%-7rem)] md:w-[calc(50%-4rem)] bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl border border-slate-700 shadow-xl group-hover:border-emerald-500/50 transition duration-300">
+                        <h3 class="text-2xl font-bold text-emerald-400 mb-3">{{ __('brain_step_3_title') }}</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">{{ __('brain_step_3_desc') }}</p>
+                    </div>
                 </div>
             </div>
-            {{-- Visual Bawah (Bento Hub) --}}
-            <div class="relative w-full max-w-4xl mx-auto mt-20 rounded-[2.5rem] bg-white p-3 shadow-2xl border border-gray-100 transform perspective-1000 rotate-x-6 hover:rotate-x-0 transition-transform duration-700" role="img" aria-label="OneForMind Hub Visualization: Showing how disparate thoughts and tasks are captured in the Quick Inbox and intelligently filtered into the Life OS architecture.">
-                <div class="absolute inset-0 bg-indigo-500 rounded-[2.5rem] blur-2xl opacity-10 -z-10"></div>
-                <div class="bg-gray-900 rounded-[2rem] p-8 md:p-12 border border-slate-800 overflow-hidden relative text-left">
-                    <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
-                    
-                    <div class="flex items-center gap-4 mb-8 relative z-10">
-                        <div class="w-12 h-12 bg-indigo-500/30 rounded-xl flex items-center justify-center text-2xl">🧠</div>
+
+            {{-- Visual Bawah (Bento Hub - Sedikit dirapikan) --}}
+            <div class="relative w-full max-w-4xl mx-auto mt-32 rounded-[3rem] bg-slate-950 p-3 shadow-2xl border border-slate-800">
+                <div class="absolute inset-0 bg-indigo-500 rounded-[3rem] blur-3xl opacity-20 -z-10"></div>
+                <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 overflow-hidden relative text-left">
+                    <div class="flex items-center gap-4 mb-10 relative z-10">
+                        <div class="w-14 h-14 bg-indigo-500/20 rounded-2xl flex items-center justify-center text-3xl">🧠</div>
                         <h3 class="text-3xl font-black text-white">{{ __('brain_hub_title') }}</h3>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6 relative z-10">
                         {{-- Quick Inbox --}}
-                        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-lg">
+                        <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-lg">
                             <div class="flex items-center gap-3 mb-4">
-                                <div class="w-10 h-10 bg-indigo-400/20 rounded-lg flex items-center justify-center text-xl">⚡</div>
-                                <h4 class="font-bold text-indigo-200">{{ __('brain_hub_inbox_title') }}</h4>
+                                <div class="w-12 h-12 bg-indigo-400/20 rounded-xl flex items-center justify-center text-2xl">⚡</div>
+                                <h4 class="font-bold text-indigo-200 text-lg">{{ __('brain_hub_inbox_title') }}</h4>
                             </div>
                             <p class="text-slate-400 text-sm">{{ __('brain_hub_inbox_desc') }}</p>
-                            <div class="mt-4 flex flex-col gap-2">
-                                <div class="h-2 bg-slate-700 rounded-full w-full"></div>
-                                <div class="h-2 bg-slate-700 rounded-full w-3/4"></div>
-                            </div>
                         </div>
 
                         {{-- Life OS --}}
-                        <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-lg">
+                        <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-lg">
                             <div class="flex items-center gap-3 mb-4">
-                                <div class="w-10 h-10 bg-blue-400/20 rounded-lg flex items-center justify-center text-xl">🏡</div>
-                                <h4 class="font-bold text-blue-200">{{ __('brain_hub_os_title') }}</h4>
+                                <div class="w-12 h-12 bg-blue-400/20 rounded-xl flex items-center justify-center text-2xl">🏡</div>
+                                <h4 class="font-bold text-blue-200 text-lg">{{ __('brain_hub_os_title') }}</h4>
                             </div>
                             <p class="text-slate-400 text-sm">{{ __('brain_hub_os_desc') }}</p>
-                            <div class="mt-4 grid grid-cols-3 gap-2">
-                                <div class="h-2 bg-slate-700 rounded-full"></div>
-                                <div class="h-2 bg-slate-700 rounded-full"></div>
-                                <div class="h-2 bg-slate-700 rounded-full"></div>
-                            </div>
                         </div>
                     </div>
-                    
-                    {{-- Flow Arrow --}}
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center text-3xl shadow-xl border border-indigo-500 animate-pulse" style="animation-duration: 2s;">
-                        ➡️
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 4: THE TOOLKIT --}}
-    <section class="py-32 bg-white border-b border-gray-100">
+    {{-- ================================================================= --}}
+    {{-- SECTION 4: NEW LAYOUT -> ASYMMETRICAL GRID (THE TOOLKIT) --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-white border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('brain_feat_title') }}</h2>
+            <div class="text-center mb-20 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('brain_feat_title') }}</h2>
+                <p class="text-xl text-slate-500">Essential components for your digital mind.</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="flex gap-6 items-start p-8 rounded-[2.5rem] bg-indigo-50 border border-indigo-100 shadow-sm">
-                    <div class="w-14 h-14 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-lg">📥</div>
+            
+            <div class="grid md:grid-cols-12 gap-6">
+                {{-- Feature 1: Main Focus (Wide) --}}
+                <div class="md:col-span-8 flex flex-col justify-between p-10 md:p-12 rounded-[3rem] bg-indigo-50 border border-indigo-100 shadow-sm hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg mb-8">📥</div>
                     <div>
-                        <h4 class="text-xl font-bold text-indigo-950 mb-2">{{ __('brain_feat_1_title') }}</h4>
-                        <p class="text-indigo-800/70 leading-relaxed">{{ __('brain_feat_1_desc') }}</p>
+                        <h4 class="text-2xl font-black text-indigo-950 mb-3">{{ __('brain_feat_1_title') }}</h4>
+                        <p class="text-indigo-800/80 leading-relaxed text-lg max-w-xl">{{ __('brain_feat_1_desc') }}</p>
                     </div>
                 </div>
-                <div class="flex gap-6 items-start p-8 rounded-[2.5rem] bg-slate-50 border border-slate-200 shadow-sm">
-                    <div class="w-14 h-14 bg-slate-800 text-white rounded-2xl flex items-center justify-center text-2xl shrink-0 shadow-lg">📓</div>
+                
+                {{-- Feature 2: Secondary (Tall) --}}
+                <div class="md:col-span-4 flex flex-col justify-between p-10 md:p-12 rounded-[3rem] bg-slate-900 text-white shadow-xl hover:shadow-2xl transition transform md:-translate-y-4">
+                    <div class="w-16 h-16 bg-white/10 text-white rounded-2xl flex items-center justify-center text-3xl shadow-lg mb-8">📓</div>
                     <div>
-                        <h4 class="text-xl font-bold text-gray-900 mb-2">{{ __('brain_feat_2_title') }}</h4>
-                        <p class="text-gray-500 leading-relaxed">{{ __('brain_feat_2_desc') }}</p>
+                        <h4 class="text-2xl font-black mb-3">{{ __('brain_feat_2_title') }}</h4>
+                        <p class="text-slate-400 leading-relaxed">{{ __('brain_feat_2_desc') }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION: INFO HIERARCHY (UNIQUE A) --}}
+    {{-- SECTION: INFO HIERARCHY (Dipertahankan, sudah sangat bagus secara visual) --}}
     <section class="py-32 bg-slate-50 relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="order-2 md:order-1">
-                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('brain_extra_1_title') }}</h2>
-                <p class="text-xl text-gray-500 leading-relaxed mb-8">
+                <h2 class="text-4xl font-black text-slate-900 mb-6">{{ __('brain_extra_1_title') }}</h2>
+                <p class="text-xl text-slate-500 leading-relaxed mb-10">
                     {{ __('brain_extra_1_desc') }}
                 </p>
                 <div class="space-y-4">
-                    <div class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                        <span class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-bold">1</span>
-                        <span class="font-bold text-gray-700">Actionable Now</span>
+                    <div class="flex items-center gap-5 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
+                        <span class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-black text-lg">1</span>
+                        <span class="font-bold text-slate-700 text-lg">Actionable Now</span>
                     </div>
-                    <div class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-gray-100 shadow-sm ml-8">
-                        <span class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center font-bold">2</span>
-                        <span class="font-bold text-gray-700">Reference Material</span>
+                    <div class="flex items-center gap-5 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm ml-8">
+                        <span class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center font-black text-lg">2</span>
+                        <span class="font-bold text-slate-700 text-lg">Reference Material</span>
                     </div>
-                    <div class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-gray-100 shadow-sm ml-16">
-                        <span class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">3</span>
-                        <span class="font-bold text-gray-700">Archive & Legacy</span>
+                    <div class="flex items-center gap-5 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm ml-16">
+                        <span class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-black text-lg">3</span>
+                        <span class="font-bold text-slate-700 text-lg">Archive & Legacy</span>
                     </div>
                 </div>
             </div>
             <div class="relative order-1 md:order-2">
-                <div class="w-full aspect-square bg-gradient-to-br from-indigo-500 to-purple-600 rounded-[3rem] p-12 flex items-center justify-center shadow-2xl">
+                <div class="w-full aspect-square bg-gradient-to-br from-indigo-500 to-purple-600 rounded-[3rem] md:rounded-[4rem] p-12 flex items-center justify-center shadow-2xl">
                     <div class="text-center">
-                        <div class="text-8xl mb-4 animate-bounce">📁</div>
-                        <div class="text-white font-black text-2xl">Zero Fragmentation</div>
+                        <div class="text-8xl mb-6 animate-bounce">📁</div>
+                        <div class="text-white font-black text-3xl">Zero Fragmentation</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION: CREATIVE OUTPUT (UNIQUE B) --}}
+    {{-- SECTION: CREATIVE OUTPUT --}}
     <section class="py-32 bg-white">
         <div class="max-w-5xl mx-auto px-6">
             <div class="bg-indigo-900 rounded-[3rem] p-12 md:p-20 text-white text-center relative overflow-hidden">
@@ -320,9 +357,9 @@
                     {{ __('brain_extra_2_desc') }}
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 relative z-10">
-                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">Notes to Project</span>
-                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">Thoughts to Actions</span>
-                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">Data to Wisdom</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">Notes → Project</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">Thoughts → Actions</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">Data → Wisdom</span>
                 </div>
             </div>
         </div>
@@ -331,12 +368,12 @@
     {{-- SECTION: VISUAL FAQ --}}
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('brain_faq_title') }}</h2>
+            <h2 class="text-4xl font-black text-center text-slate-900 mb-16">{{ __('brain_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
-                <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __("brain_faq_q$i") }}</h3>
-                    <p class="text-gray-500 leading-relaxed">{{ __("brain_faq_a$i") }}</p>
+                <div class="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">{{ __("brain_faq_q$i") }}</h3>
+                    <p class="text-slate-600 leading-relaxed">{{ __("brain_faq_a$i") }}</p>
                 </div>
                 @endforeach
             </div>
@@ -344,16 +381,16 @@
     </section>
 
     {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-slate-50 border-y border-slate-100">
+    <section class="py-24 bg-white border-b border-slate-100">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-[10px] font-black uppercase tracking-widest mb-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-[10px] font-black uppercase tracking-widest mb-8">
                 🧬 {{ __('brain_science_badge') }}
             </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('brain_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
+            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">{{ __('brain_science_title') }}</h2>
+            <p class="text-slate-500 text-xl leading-relaxed max-w-2xl mx-auto italic">
                 {{ __('brain_science_desc') }}
             </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
+            <div class="mt-12 flex flex-wrap justify-center gap-8 opacity-40 grayscale hover:grayscale-0 transition duration-500">
                 <span class="text-sm font-black uppercase tracking-tighter">Cognitive Offloading</span>
                 <span class="text-sm font-black uppercase tracking-tighter">Extended Mind Thesis</span>
                 <span class="text-sm font-black uppercase tracking-tighter">Zettelkasten Method</span>
@@ -362,15 +399,14 @@
     </section>
 
     {{-- SECTION 5: CTA (DESAIN LUAS & ELEGAN) --}}
-    <section class="py-32 bg-white relative">
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-indigo-100 via-white to-white -z-10"></div>
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-indigo-100 via-transparent to-transparent -z-10"></div>
         
         <div class="max-w-5xl mx-auto px-6 relative z-10">
-            {{-- Big Padded Card --}}
-            <div class="bg-indigo-950 rounded-[3rem] md:rounded-[4rem] p-12 md:p-20 text-center shadow-2xl relative overflow-hidden">
-                {{-- Decorative background in CTA --}}
+            <div class="bg-indigo-950 rounded-[3rem] md:rounded-[4rem] p-12 md:p-24 text-center shadow-2xl relative overflow-hidden">
                 <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
                 <div class="absolute -top-32 -right-32 w-64 h-64 bg-indigo-500 rounded-full blur-[80px] opacity-50"></div>
+                <div class="absolute -bottom-32 -left-32 w-64 h-64 bg-purple-500 rounded-full blur-[80px] opacity-30"></div>
                 
                 <div class="relative z-10">
                     <div class="text-6xl mb-8">🕊️</div>
@@ -382,7 +418,7 @@
                     </p>
                     
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a hx-boost="false" href="{{ route('register') }}" class="inline-flex items-center justify-center gap-3 bg-white text-indigo-950 px-10 py-5 rounded-2xl font-black text-xl hover:bg-indigo-50 shadow-[0_10px_25px_rgba(255,255,255,0.2)] transition transform hover:-translate-y-1 w-full sm:w-auto">
+                        <a hx-boost="false" href="{{ route('register') }}" class="inline-flex items-center justify-center gap-3 bg-white text-indigo-950 px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-50 shadow-[0_10px_25px_rgba(255,255,255,0.2)] transition transform hover:-translate-y-1 w-full sm:w-auto">
                             {{ __('brain_cta_btn') }}
                             <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>
@@ -395,29 +431,29 @@
     </section>
 
     {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
+    <section class="py-24 bg-white border-t border-slate-100">
         <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('brain_hero_badge')]) }}</h2>
+            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('brain_hero_badge')]) }}</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+                <a href="{{ url('/features/habit') }}" class="group p-6 md:p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-emerald-100 transition duration-500">
+                    <span class="text-3xl mb-4 block group-hover:scale-110 transition transform origin-left">🌱</span>
+                    <h4 class="font-bold text-slate-900">{{ __('habit_hero_badge') }}</h4>
+                    <p class="text-xs text-slate-500 mt-2 line-clamp-2">{{ __('habit_meta_title') }}</p>
                 </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+                <a href="{{ url('/features/planner') }}" class="group p-6 md:p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-blue-100 transition duration-500">
+                    <span class="text-3xl mb-4 block group-hover:scale-110 transition transform origin-left">📅</span>
+                    <h4 class="font-bold text-slate-900">{{ __('planner_hero_badge') }}</h4>
+                    <p class="text-xs text-slate-500 mt-2 line-clamp-2">{{ __('planner_meta_title') }}</p>
                 </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+                <a href="{{ url('/features/finance') }}" class="group p-6 md:p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-emerald-100 transition duration-500">
+                    <span class="text-3xl mb-4 block group-hover:scale-110 transition transform origin-left">💰</span>
+                    <h4 class="font-bold text-slate-900">{{ __('finance_hero_badge') }}</h4>
+                    <p class="text-xs text-slate-500 mt-2 line-clamp-2">{{ __('finance_meta_title') }}</p>
                 </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+                <a href="{{ url('/features/journal') }}" class="group p-6 md:p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-indigo-100 transition duration-500">
+                    <span class="text-3xl mb-4 block group-hover:scale-110 transition transform origin-left">📔</span>
+                    <h4 class="font-bold text-slate-900">{{ __('journal_hero_badge') }}</h4>
+                    <p class="text-xs text-slate-500 mt-2 line-clamp-2">{{ __('journal_meta_title') }}</p>
                 </a>
             </div>
         </div>
