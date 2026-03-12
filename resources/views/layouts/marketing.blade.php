@@ -27,7 +27,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="OneForMind">
-
+    <meta name="apple-touch-icon" content="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
     <title>@yield('title', 'OneForMind')</title>
 
     <meta property="og:site_name" content="OneForMind">
@@ -611,7 +612,7 @@
                     </div>
 
                      <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h3>
+                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
                             <li><a href="{{ route('features.finance') }}" class="hover:text-indigo-600 transition">Finance OS</a></li>
@@ -625,7 +626,7 @@
 
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h3>
+                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">Vs. Paper Planner</a></li>
                             <li><a href="{{ route('compare.sheets') }}" class="hover:text-indigo-600 transition">Vs. Excel/Sheets</a></li>
@@ -638,7 +639,7 @@
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Resources</h3>
+                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Resources</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('resources.help') }}" class="hover:text-indigo-600 transition">Help Center</a></li>
                             <li><a href="{{ route('resources.blog') }}" class="hover:text-indigo-600 transition">Blog</a></li>
@@ -649,7 +650,7 @@
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h3>
+                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">{{ __('About Us') }}</a></li>
                             <li><a href="{{ route('company.privacy') }}" class="hover:text-indigo-600 transition">{{ __('Privacy Policy') }}</a></li>
@@ -661,7 +662,7 @@
 
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</h3>
+                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</p>
                         <div class="flex gap-4">
                             <a href="https://x.com/OneForMind" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm" aria-label="Follow us on X">
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.482 3.239h-2.19L17.607 20.65z"/></svg>

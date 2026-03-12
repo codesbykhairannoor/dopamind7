@@ -354,12 +354,12 @@
                 <a href="{{ route('compare.paper') }}" class="group bg-white p-10 rounded-[3rem] border border-slate-200 hover:border-indigo-600 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                     <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📄</div>
                     <div class="text-xl font-black text-slate-900 mb-2">{{ __('mig_card_1') }}</div>
-                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">{{ __('mig_view') }}</div>
+                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">{{ __('mig_view_card_1') }}</div>
                 </a>
                 <a href="{{ route('compare.sheets') }}" class="group bg-white p-10 rounded-[3rem] border border-slate-200 hover:border-indigo-600 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                     <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📊</div>
                     <div class="text-xl font-black text-slate-900 mb-2">{{ __('mig_card_2') }}</div>
-                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">{{ __('mig_view') }}</div>
+                    <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">{{ __('mig_view_card_2') }}</div>
                 </a>
                 <a href="{{ route('compare.five-apps') }}" class="group bg-slate-900 p-10 rounded-[3rem] border border-white/10 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 transform hover:-translate-y-2">
                     <div class="text-4xl mb-6">🌌</div>
