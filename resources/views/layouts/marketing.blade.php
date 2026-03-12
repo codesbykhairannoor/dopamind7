@@ -4,12 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="view-transition" content="same-origin">
-    <link rel="canonical" href="{{ url()->current() }}">
-    
-    {{-- 🔥 1. SMART REDIRECT --}}
-    <script>if(document.cookie.includes('oneformind_session')){window.location.replace('/dashboard');}</script>
-
     @if(!View::hasSection('meta'))
+    <link rel="canonical" href="{{ url()->current() }}">
     <meta name="description" content="{{ __('meta_global_description') }}">
     <meta name="keywords" content="{{ __('meta_global_keywords') }}">
     @endif
@@ -21,10 +17,10 @@
     <meta name="geo.position" content="-6.2088;106.8456" />
     <meta name="ICBM" content="-6.2088, 106.8456" />
 
-    {{-- Language Alternates --}}
-    <link rel="alternate" hreflang="id" href="{{ url('/lang/id') }}" />
-    <link rel="alternate" hreflang="en" href="{{ url('/lang/en') }}" />
-    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
+    {{-- Language Alternates - Using query params to avoid 302 redirects in hreflang --}}
+    <link rel="alternate" hreflang="id" href="{{ url()->current() }}{{ str_contains(url()->current(), '?') ? '&' : '?' }}hl=id" />
+    <link rel="alternate" hreflang="en" href="{{ url()->current() }}{{ str_contains(url()->current(), '?') ? '&' : '?' }}hl=en" />
+    <link rel="alternate" hreflang="x-default" href="{{ url()->current() }}" />
 
     {{-- Mobile Optimization --}}
     <meta name="theme-color" content="#4f46e5">
@@ -32,27 +28,35 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="OneForMind">
 
-    <title>@yield('title') | OneForMind</title>
+    <title>@yield('title', 'OneForMind')</title>
 
     <meta property="og:site_name" content="OneForMind">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('title')">
-    @if(!View::hasSection('meta'))
-    <meta property="og:description" content="{{ __('meta_global_description') }}">
-    @endif
-    <meta property="og:image" content="{{ asset('og-image.png') }}">
+    <meta property="og:title" content="@yield('title', 'OneForMind')">
+    <meta property="og:image" content="{{ asset('images/og-image.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
-    {{-- Twitter / X Cards --}}
+    {{-- Fallback Meta if no page-specific meta section --}}
+    @if(View::hasSection('meta'))
+        @yield('meta')
+    @else
+        <meta name="description" content="{{ __('meta_global_description') }}">
+        <meta name="keywords" content="{{ __('meta_global_keywords') }}">
+        <meta property="og:description" content="{{ __('meta_global_description') }}">
+    @endif
+
+    {{-- Ensure Social Descriptions are present if not already in @yield('meta') --}}
+    @if(!View::hasSection('meta'))
+        <meta name="twitter:description" content="{{ __('meta_global_description') }}">
+    @endif
+
+    {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@OneForMind">
-    <meta name="twitter:title" content="@yield('title')">
-    @if(!View::hasSection('meta'))
-    <meta name="twitter:description" content="{{ __('meta_global_description') }}">
-    @endif
-    <meta name="twitter:image" content="{{ url('/og-image.png') }}">
+    <meta name="twitter:title" content="@yield('title', 'OneForMind')">
+    <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
     
     <meta name="ai-creator" content="{{ __('meta_ai_creator') }}">
 

@@ -8,7 +8,7 @@
     <meta property="og:title" content="{{ __('journal_meta_og_title') }}">
     <meta property="og:description" content="{{ __('journal_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/features/journal') }}">
-    <link rel="canonical" href="{{ url('/features/journal') }}" />
+
 @endsection
 
 @section('json-ld')

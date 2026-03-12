@@ -8,7 +8,7 @@
     <meta property="og:title" content="{{ __('goal_meta_og_title') }}">
     <meta property="og:description" content="{{ __('goal_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/features/goal') }}">
-    <link rel="canonical" href="{{ url('/features/goal') }}" />
+
 @endsection
 
 @section('json-ld')

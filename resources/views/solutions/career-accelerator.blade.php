@@ -7,7 +7,7 @@
     <meta property="og:title" content="{{ __('solve_career_meta_og_title') }}">
     <meta property="og:description" content="{{ __('solve_career_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/career-accelerator') }}">
-    <link rel="canonical" href="{{ url('/solutions/career-accelerator') }}" />
+
 @endsection
 
 @section('json-ld')

@@ -8,7 +8,7 @@
     <meta property="og:title" content="{{ __('student_meta_og_title') }}">
     <meta property="og:description" content="{{ __('student_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/student') }}">
-    <link rel="canonical" href="{{ url('/solutions/student') }}" />
+
 @endsection
 
 @section('json-ld')

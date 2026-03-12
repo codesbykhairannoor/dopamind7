@@ -15,7 +15,7 @@
         <meta property="og:image" content="{{ asset('storage/' . $post->featured_image) }}">
     @endif
     
-    <link rel="canonical" href="{{ url()->current() }}" />
+
 
     @if($post->location_name)
         <meta name="geo.placename" content="{{ $post->location_name }}">

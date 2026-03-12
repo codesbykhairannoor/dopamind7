@@ -7,7 +7,7 @@
     <meta property="og:title" content="{{ __('deepwork_meta_og_title') }}">
     <meta property="og:description" content="{{ __('deepwork_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/solutions/deep-work') }}">
-    <link rel="canonical" href="{{ url('/solutions/deep-work') }}" />
+
 @endsection
 
 @section('json-ld')

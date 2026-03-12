@@ -9,7 +9,11 @@
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
-    # 🔥 2. ENFORCE HTTPS (Optional if handled by Cloudflare/Load Balancer, but good practice)
+    # 🔥 1b. REDIRECT INDEX.PHP TO ROOT
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+    RewriteRule ^index\.php$ / [R=301,L]
+
+    # 🔥 2. ENFORCE HTTPS
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 

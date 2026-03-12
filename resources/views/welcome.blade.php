@@ -8,7 +8,7 @@
     <meta property="og:description" content="{{ __('welcome_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/') }}">
     
-    <link rel="canonical" href="{{ url('/') }}" />
+
 
     {{-- SEO: FAQ SCHEMA --}}
     <script type="application/ld+json">

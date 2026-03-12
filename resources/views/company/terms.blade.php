@@ -7,7 +7,7 @@
     <meta property="og:title" content="{{ __('terms_meta_og_title') }}">
     <meta property="og:description" content="{{ __('terms_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/company/terms') }}">
-    <link rel="canonical" href="{{ url('/company/terms') }}" />
+
 @endsection
 
 @section('json-ld')

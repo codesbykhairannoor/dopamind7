@@ -7,7 +7,7 @@
     <meta property="og:title" content="{{ __('privacy_meta_og_title') }}">
     <meta property="og:description" content="{{ __('privacy_meta_og_desc') }}">
     <meta property="og:url" content="{{ url('/company/privacy') }}">
-    <link rel="canonical" href="{{ url('/company/privacy') }}" />
+
 @endsection
 
 @section('json-ld')
