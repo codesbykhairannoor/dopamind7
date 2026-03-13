@@ -132,70 +132,74 @@
     </section>
 
 
-    {{-- SECTION 3: THE SOLUTION (THE SANCTUARY / ZEN CARDS) --}}
-    <section class="py-32 bg-slate-900 text-white relative">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-900 to-slate-900"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12">
-                {{-- Text Content --}}
-                <div class="lg:col-span-5 flex flex-col justify-center">
-                    <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
-                        {{ __('solve_mental_sol_title') }}
-                    </h2>
-                    <p class="text-indigo-200 text-lg leading-relaxed mb-8">
-                        {{ __('solve_mental_sol_desc') }}
-                    </p>
-                    <ul class="space-y-6">
-                        <li class="flex items-start gap-4">
-                            <span class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">1</span>
-                            <div>
-                                <h4 class="font-bold text-white">{{ __('solve_mental_sol_step_1_title') }}</h4>
-                                <p class="text-sm text-slate-400 mt-1">{{ __('solve_mental_sol_step_1_desc') }}</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">2</span>
-                            <div>
-                                <h4 class="font-bold text-white">{{ __('solve_mental_sol_step_2_title') }}</h4>
-                                <p class="text-sm text-slate-400 mt-1">{{ __('solve_mental_sol_step_2_desc') }}</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">3</span>
-                            <div>
-                                <h4 class="font-bold text-white">{{ __('solve_mental_sol_step_3_title') }}</h4>
-                                <p class="text-sm text-slate-400 mt-1">{{ __('solve_mental_sol_step_3_desc') }}</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+   {{-- SECTION 3: THE SOLUTION --}}
+<section class="py-16 md:py-32 bg-slate-900 text-white relative overflow-hidden">
+    {{-- Gradient Background --}}
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-900 to-slate-900"></div>
+    
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            {{-- Text Content --}}
+            <div class="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1">
+                <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
+                    {{ __('solve_mental_sol_title') }}
+                </h2>
+                <p class="text-indigo-200 text-base md:text-lg leading-relaxed mb-8">
+                    {{ __('solve_mental_sol_desc') }}
+                </p>
+                
+                <ul class="space-y-4 md:space-y-6">
+                    <li class="flex items-start gap-4">
+                        <span class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 border border-indigo-500/20 text-sm font-bold">1</span>
+                        <div>
+                            <h4 class="font-bold text-white text-base">{{ __('solve_mental_sol_step_1_title') }}</h4>
+                            <p class="text-xs md:text-sm text-slate-400 mt-1">{{ __('solve_mental_sol_step_1_desc') }}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/20 text-sm font-bold">2</span>
+                        <div>
+                            <h4 class="font-bold text-white text-base">{{ __('solve_mental_sol_step_2_title') }}</h4>
+                            <p class="text-xs md:text-sm text-slate-400 mt-1">{{ __('solve_mental_sol_step_2_desc') }}</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/20 text-sm font-bold">3</span>
+                        <div>
+                            <h4 class="font-bold text-white text-base">{{ __('solve_mental_sol_step_3_title') }}</h4>
+                            <p class="text-xs md:text-sm text-slate-400 mt-1">{{ __('solve_mental_sol_step_3_desc') }}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-                {{-- Visual Content (Glassmorphism Cards) --}}
-                <div class="lg:col-span-7 relative h-[600px] perspective-1000 flex items-center justify-center">
-                    {{-- Back Card (Blurry) --}}
-                    <div class="absolute w-80 h-96 bg-white/5 backdrop-blur-sm rounded-[3rem] border border-white/10 transform -rotate-6 translate-x-12 translate-y-8 p-8 flex flex-col justify-end">
-                        <div class="w-full h-2 bg-white/10 rounded-full mb-3"></div>
-                        <div class="w-2/3 h-2 bg-white/10 rounded-full"></div>
+            {{-- Visual Content (Glassmorphism Cards) --}}
+            <div class="lg:col-span-7 relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center order-1 lg:order-2 scale-90 md:scale-100">
+                {{-- Back Card --}}
+                <div class="absolute w-64 h-80 md:w-80 md:h-96 bg-white/5 backdrop-blur-sm rounded-[2.5rem] md:rounded-[3rem] border border-white/10 transform -rotate-6 translate-x-8 md:translate-x-12 translate-y-6 p-8 flex flex-col justify-end">
+                    <div class="w-full h-2 bg-white/10 rounded-full mb-3"></div>
+                    <div class="w-2/3 h-2 bg-white/10 rounded-full"></div>
+                </div>
+                
+                {{-- Front Card (Journal Entry) --}}
+                <div class="absolute w-72 md:w-96 h-auto bg-white/10 backdrop-blur-xl rounded-[2.5rem] md:rounded-[3rem] border border-white/20 shadow-2xl p-6 md:p-8 transform rotate-3 hover:rotate-0 transition duration-500 z-10">
+                    <div class="flex justify-between items-start mb-6 md:mb-8">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-xl md:rounded-2xl flex items-center justify-center text-xl md:text-2xl">🖋️</div>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-indigo-200 border border-white/10">Daily Dump</span>
                     </div>
-                    
-                    {{-- Front Card (Journal Entry) --}}
-                    <div class="absolute w-80 md:w-96 h-auto bg-white/10 backdrop-blur-xl rounded-[3rem] border border-white/20 shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition duration-500 z-10">
-                        <div class="flex justify-between items-start mb-8">
-                            <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-2xl">🖋️</div>
-                            <span class="px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-indigo-200">Daily Dump</span>
-                        </div>
-                        <p class="font-serif text-xl italic text-white/90 leading-relaxed mb-6">
-                            "Feeling overwhelmed by the sheer amount of tasks today. Writing this down to let it out. I will focus on just ONE thing right now."
-                        </p>
-                        <div class="flex gap-2">
-                            <span class="px-3 py-1 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold">Relieved</span>
-                        </div>
+                    <p class="font-serif text-lg md:text-xl italic text-white/90 leading-relaxed mb-6">
+                        "Feeling overwhelmed by the sheer amount of tasks today. Writing this down to let it out. I will focus on just ONE thing right now."
+                    </p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[10px] md:text-xs font-bold">Relieved</span>
                     </div>
                 </div>
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     {{-- SECTION 4: THE TOOLKIT (BENTO GRID) --}}
     <section class="py-32 bg-indigo-50/50">

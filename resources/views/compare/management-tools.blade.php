@@ -499,57 +499,63 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) - EXECUTION HUB GRID STYLE --}}
-    <section class="py-32 bg-white border-t border-gray-100 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
-                {{ __('unified_ecosystem_title', ['feature' => __('pm_badge')]) }}
-            </h2>
+   {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) - EXECUTION HUB GRID STYLE --}}
+<section class="py-16 md:py-32 bg-white border-t border-gray-100 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <h2 class="text-2xl md:text-5xl font-black text-gray-900 mb-12 md:mb-20 text-center tracking-tight">
+            {{ __('unified_ecosystem_title', ['feature' => __('pm_badge')]) }}
+        </h2>
+        
+        {{-- Grid: auto-rows-auto di mobile, auto-rows-[300px] di desktop --}}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 md:auto-rows-[300px]">
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
-                {{-- Node 1: Planner (Wide) --}}
-                <a href="{{ url('/features/planner') }}" class="md:col-span-2 group relative overflow-hidden bg-slate-50 rounded-[3rem] p-12 flex flex-col justify-end transition duration-500 hover:bg-white hover:shadow-2xl hover:shadow-indigo-100 border border-slate-100">
-                    <div class="absolute top-0 right-0 p-12 opacity-10 group-hover:scale-110 transition duration-700 group-hover:opacity-20">
-                        <span class="text-[120px]">📅</span>
-                    </div>
-                    <div class="relative z-10">
-                        <h4 class="text-3xl font-black text-gray-900 mb-2">{{ __('ecosystem_planner_title') }}</h4>
-                        <p class="text-indigo-600 font-bold text-sm tracking-wide uppercase">{{ __('planner_meta_title') }}</p>
-                    </div>
-                </a>
+            {{-- Node 1: Planner (Wide) --}}
+            <a href="{{ url('/features/planner') }}" class="md:col-span-2 group relative overflow-hidden bg-slate-50 rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 flex flex-col justify-end min-h-[250px] md:min-h-0 transition duration-500 hover:bg-white hover:shadow-2xl hover:shadow-indigo-100 border border-slate-100">
+                {{-- Background Emoji - Diperkecil di mobile --}}
+                <div class="absolute top-0 right-0 p-6 md:p-12 opacity-10 group-hover:scale-110 transition duration-700 group-hover:opacity-20">
+                    <span class="text-[80px] md:text-[120px]">📅</span>
+                </div>
+                <div class="relative z-10">
+                    <h4 class="text-2xl md:text-3xl font-black text-gray-900 mb-2">{{ __('ecosystem_planner_title') }}</h4>
+                    <p class="text-indigo-600 font-bold text-xs md:text-sm tracking-wide uppercase">{{ __('planner_meta_title') }}</p>
+                </div>
+            </a>
 
-                {{-- Node 2: Job Tracker --}}
-                <a href="{{ url('/features/job') }}" class="group relative overflow-hidden bg-blue-600 rounded-[3rem] p-10 text-white flex flex-col justify-between transition duration-500 hover:shadow-2xl hover:shadow-blue-200">
-                    <div class="text-4xl group-hover:scale-110 transition">💼</div>
-                    <div>
-                        <h4 class="text-xl font-black mb-2">{{ __('ecosystem_job_title') }}</h4>
-                        <p class="text-blue-100 text-xs leading-relaxed">{{ __('job_meta_title') }}</p>
-                    </div>
-                </a>
+            {{-- Node 2: Job Tracker --}}
+            <a href="{{ url('/features/job') }}" class="group relative overflow-hidden bg-blue-600 rounded-[2rem] md:rounded-[3rem] p-8 md:p-10 text-white flex flex-col justify-between min-h-[200px] md:min-h-0 transition duration-500 hover:shadow-2xl hover:shadow-blue-200">
+                <div class="text-3xl md:text-4xl group-hover:scale-110 transition">💼</div>
+                <div>
+                    <h4 class="text-lg md:text-xl font-black mb-2">{{ __('ecosystem_job_title') }}</h4>
+                    <p class="text-blue-100 text-xs leading-relaxed">{{ __('job_meta_title') }}</p>
+                </div>
+            </a>
 
-                {{-- Node 3: Goal --}}
-                <a href="{{ url('/features/goal') }}" class="group relative overflow-hidden bg-white border-2 border-slate-100 rounded-[3rem] p-10 flex flex-col justify-between transition duration-500 hover:border-rose-200 hover:shadow-xl">
-                    <div class="text-4xl group-hover:scale-110 transition">🎯</div>
-                    <div>
-                        <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('ecosystem_goal_title') }}</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed">{{ __('goal_meta_title') }}</p>
-                    </div>
-                </a>
+            {{-- Node 3: Goal --}}
+            <a href="{{ url('/features/goal') }}" class="group relative overflow-hidden bg-white border-2 border-slate-100 rounded-[2rem] md:rounded-[3rem] p-8 md:p-10 flex flex-col justify-between min-h-[200px] md:min-h-0 transition duration-500 hover:border-rose-200 hover:shadow-xl">
+                <div class="text-3xl md:text-4xl group-hover:scale-110 transition">🎯</div>
+                <div>
+                    <h4 class="text-lg md:text-xl font-black text-gray-900 mb-2">{{ __('ecosystem_goal_title') }}</h4>
+                    <p class="text-gray-500 text-xs leading-relaxed">{{ __('goal_meta_title') }}</p>
+                </div>
+            </a>
 
-                {{-- Node 4: Second Brain (Wide) --}}
-                <a href="{{ url('/solutions/second-brain') }}" class="md:col-span-2 group relative overflow-hidden bg-slate-900 rounded-[3rem] p-12 flex flex-col md:flex-row items-center gap-10 transition duration-500 hover:shadow-2xl">
-                    <div class="w-24 h-24 bg-white/10 rounded-[2rem] flex items-center justify-center text-4xl group-hover:rotate-6 transition shrink-0">📝</div>
-                    <div>
-                        <h4 class="text-3xl font-black text-white mb-2">{{ __('ecosystem_notes_title') }}</h4>
-                        <p class="text-slate-400 text-lg">{{ __('notes_meta_title') }}</p>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="mt-20 flex justify-center gap-4 opacity-30 font-black text-[10px] uppercase tracking-[0.5em]">
-                System • Structure • Sovereignty
-            </div>
+            {{-- Node 4: Second Brain (Wide) --}}
+            <a href="{{ url('/solutions/second-brain') }}" class="md:col-span-2 group relative overflow-hidden bg-slate-900 rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 transition duration-500 hover:shadow-2xl">
+                <div class="w-16 h-16 md:w-24 md:h-24 bg-white/10 rounded-2xl md:rounded-[2rem] flex items-center justify-center text-3xl md:text-4xl group-hover:rotate-6 transition shrink-0">📝</div>
+                <div>
+                    <h4 class="text-2xl md:text-3xl font-black text-white mb-2">{{ __('ecosystem_notes_title') }}</h4>
+                    <p class="text-slate-400 text-sm md:text-lg">{{ __('notes_meta_title') }}</p>
+                </div>
+            </a>
         </div>
-    </section>
-
+        
+        <div class="mt-16 md:mt-20 flex flex-wrap justify-center gap-y-2 gap-x-4 opacity-30 font-black text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] text-center">
+            <span>System</span>
+            <span>•</span>
+            <span>Structure</span>
+            <span>•</span>
+            <span>Sovereignty</span>
+        </div>
+    </div>
+</section>
 @endsection

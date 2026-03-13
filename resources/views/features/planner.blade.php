@@ -433,57 +433,71 @@
         </div>
     </section>
 
-    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - TIME VORTEX STYLE --}}
-    <section class="py-32 bg-slate-950 relative overflow-hidden">
-        {{-- Animated Vortex Background --}}
-        <div class="absolute inset-0 pointer-events-none opacity-20">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border-2 border-indigo-500/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border-2 border-purple-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border-2 border-emerald-500/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
+   {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
+<section class="py-20 md:py-32 bg-slate-950 relative overflow-hidden">
+    {{-- Refined Background Vortex --}}
+    <div class="absolute inset-0 pointer-events-none opacity-30">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[800px] md:h-[800px] border border-indigo-500/10 rounded-full animate-[spin_30s_linear_infinite]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[600px] md:h-[600px] border border-purple-500/10 rounded-full animate-[spin_20s_linear_infinite_reverse]"></div>
+    </div>
+    
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-16 md:mb-24 text-center tracking-tight">
+            {{ __('unified_ecosystem_title', ['feature' => __('planner_hero_badge')]) }}
+        </h2>
+        
+        {{-- Layout Grid yang Beradaptasi --}}
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-center">
+            
+            {{-- Card 1: Calendar (Top Left on Mobile) --}}
+            <a href="{{ url('/features/calendar') }}" class="group relative aspect-square lg:h-72 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] md:rounded-[3.5rem] p-6 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-all duration-500 hover:-translate-y-2">
+                <span class="text-4xl md:text-5xl mb-4 group-hover:scale-110 transition duration-500">📅</span>
+                <h4 class="text-white font-black text-sm md:text-lg">{{ __('ecosystem_calendar_title') }}</h4>
+                <p class="hidden md:block text-indigo-400 text-[10px] font-black uppercase tracking-widest mt-2">Foundation</p>
+            </a>
+
+            {{-- Card 2: Habit (The Core - Spans 2 cols on Mobile) --}}
+            <a href="{{ url('/features/habit') }}" class="col-span-2 order-first lg:order-none group relative aspect-[2/1] lg:aspect-square lg:h-80 bg-indigo-600 rounded-[2.5rem] md:rounded-full p-8 flex flex-col items-center justify-center text-center shadow-2xl shadow-indigo-500/20 hover:scale-105 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-700 to-purple-500 rounded-[2.5rem] md:rounded-full -z-10"></div>
+                <span class="text-5xl md:text-6xl mb-4 group-hover:bounce-subtle">🌱</span>
+                <h4 class="text-white font-black text-xl md:text-2xl">{{ __('ecosystem_habit_title') }}</h4>
+                <p class="text-indigo-100 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mt-2">Automation Layer</p>
+            </a>
+
+            {{-- Card 3: Notes (Top Right on Mobile) --}}
+            <a href="{{ url('/solutions/second-brain') }}" class="group relative aspect-square lg:h-72 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] md:rounded-[3.5rem] p-6 flex flex-col items-center justify-center text-center hover:bg-white/10 transition-all duration-500 hover:-translate-y-2">
+                <span class="text-4xl md:text-5xl mb-4 group-hover:rotate-12 transition duration-500">📝</span>
+                <h4 class="text-white font-black text-sm md:text-lg">{{ __('ecosystem_notes_title') }}</h4>
+                <p class="hidden md:block text-amber-400 text-[10px] font-black uppercase tracking-widest mt-2">Knowledge</p>
+            </a>
+
+            {{-- Card 4: Goal (Bottom Center/Right) --}}
+            <a href="{{ url('/features/goal') }}" class="col-span-2 lg:col-span-1 group relative h-24 lg:h-40 bg-white/5 backdrop-blur-md border border-white/10 rounded-[2rem] lg:rounded-[2.5rem] flex lg:flex-col items-center justify-center gap-4 lg:gap-0 text-center hover:bg-rose-600/20 hover:border-rose-500/50 transition-all duration-500">
+                <span class="text-3xl lg:text-3xl lg:mb-2">🎯</span>
+                <h4 class="text-white font-black text-sm lg:text-xs">{{ __('ecosystem_goal_title') }}</h4>
+            </a>
+            
         </div>
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h2 class="text-3xl md:text-5xl font-black text-white mb-20 text-center tracking-tight">
-                {{ __('unified_ecosystem_title', ['feature' => __('planner_hero_badge')]) }}
-            </h2>
-            
-            <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-0">
-                {{-- Card 1: Calendar --}}
-                <a href="{{ url('/features/calendar') }}" class="w-full lg:w-72 h-72 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-8 flex flex-col items-center justify-center text-center group hover:bg-white/10 transition duration-500 lg:-mr-8 z-10">
-                    <span class="text-5xl mb-6 group-hover:scale-125 group-hover:rotate-12 transition">📅</span>
-                    <h4 class="text-white font-black text-lg mb-2">{{ __('ecosystem_calendar_title') }}</h4>
-                    <p class="text-indigo-400 text-[10px] font-black uppercase tracking-widest">Foundation</p>
-                </a>
-
-                {{-- Card 2: Habit --}}
-                <a href="{{ url('/features/habit') }}" class="w-full lg:w-80 h-80 bg-indigo-600 rounded-full p-10 flex flex-col items-center justify-center text-center group hover:scale-110 hover:shadow-2xl hover:shadow-indigo-500/50 transition duration-500 z-20 shadow-2xl">
-                    <span class="text-6xl mb-6 group-hover:animate-bounce transition">🌱</span>
-                    <h4 class="text-white font-black text-xl mb-4">{{ __('ecosystem_habit_title') }}</h4>
-                    <p class="text-indigo-100 text-xs font-bold uppercase tracking-widest">Automation Layer</p>
-                </a>
-
-                {{-- Card 3: Notes --}}
-                <a href="{{ url('/solutions/second-brain') }}" class="w-full lg:w-72 h-72 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-8 flex flex-col items-center justify-center text-center group hover:bg-white/10 transition duration-500 lg:-ml-8 z-10">
-                    <span class="text-5xl mb-6 group-hover:scale-125 group-hover:-rotate-12 transition">📝</span>
-                    <h4 class="text-white font-black text-lg mb-2">{{ __('ecosystem_notes_title') }}</h4>
-                    <p class="text-amber-400 text-[10px] font-black uppercase tracking-widest">Knowledge Base</p>
-                </a>
-
-                {{-- Card 4: Goal (Floating outside) --}}
-                <div class="lg:absolute lg:top-0 lg:right-20">
-                    <a href="{{ url('/features/goal') }}" class="block w-40 h-40 bg-white/5 backdrop-blur-md border border-white/10 rounded-[2.5rem] flex flex-col items-center justify-center text-center group hover:bg-rose-600 transition duration-500">
-                        <span class="text-3xl mb-2 group-hover:scale-110 transition">🎯</span>
-                        <h4 class="text-white font-black text-xs">{{ __('ecosystem_goal_title') }}</h4>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="mt-20 text-center">
-                <span class="px-6 py-2 bg-white/5 rounded-full text-indigo-300 text-[10px] font-black uppercase tracking-[0.4em] border border-white/5">
+        <div class="mt-16 text-center">
+            <div class="inline-flex items-center gap-3 px-6 py-2 bg-white/5 rounded-full border border-white/5">
+                <span class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
+                <span class="text-indigo-300 text-[10px] font-black uppercase tracking-[0.3em]">
                     Syncing Across Time & Space
                 </span>
             </div>
         </div>
-    </section>
+    </div>
+
+    <style>
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .group:hover .group-hover\:bounce-subtle {
+            animation: bounce-subtle 0.6s ease-in-out infinite;
+        }
+    </style>
+</section>
 
 @endsection
