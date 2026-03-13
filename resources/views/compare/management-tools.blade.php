@@ -418,21 +418,65 @@
         </div>
     </section>
 
-    {{-- ================================================================= --}}
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-gray-50 border-y border-gray-100">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('pm_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('pm_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('pm_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">Cognitive Sovereignty</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Dunbar's Number</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Administrative Friction Elimination</span>
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) - STRUCTURE LAB STYLE --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        {{-- Architecture Lines Background --}}
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent"></div>
+        <div class="absolute inset-y-0 left-1/4 w-px bg-indigo-100/50"></div>
+        <div class="absolute inset-y-0 left-2/4 w-px bg-indigo-100/50"></div>
+        <div class="absolute inset-y-0 left-3/4 w-px bg-indigo-100/50"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="bg-white border-b-8 border-indigo-600 rounded-[3rem] p-8 md:p-20 shadow-2xl relative overflow-hidden group">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-[0.4em] mb-12 rounded-full border border-blue-200">
+                            🧬 {{ __('pm_science_badge') }}
+                        </div>
+
+                        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
+                            {{ __('pm_science_title') }}
+                        </h2>
+
+                        <div class="relative py-12 px-12 bg-indigo-50/50 rounded-2xl mb-12 border border-indigo-100 group-hover:bg-indigo-50 transition duration-500">
+                             <span class="absolute -top-4 -left-4 text-4xl">📐</span>
+                            <p class="text-gray-700 text-xl font-medium leading-relaxed italic">
+                                "{{ __('pm_science_desc') }}"
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 text-sm font-bold text-gray-500">
+                                <div class="w-2 h-2 rounded-full bg-indigo-600"></div>
+                                Cognitive Sovereignty Mastery
+                            </div>
+                            <div class="flex items-center gap-4 text-sm font-bold text-gray-500">
+                                <div class="w-2 h-2 rounded-full bg-indigo-400"></div>
+                                Administrative Friction Elimination
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative order-1 lg:order-2">
+                        <div class="bg-slate-900 aspect-square rounded-[3rem] p-10 flex flex-col justify-between text-white shadow-2xl transform lg:rotate-3 group-hover:rotate-0 transition duration-700">
+                            <div class="flex justify-between items-start">
+                                <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl">🏛️</div>
+                                <div class="text-right">
+                                    <p class="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Efficiency_Index</p>
+                                    <p class="text-3xl font-black">9.8/10</p>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="h-2 bg-white/10 rounded-full w-full"></div>
+                                <div class="h-2 bg-white/10 rounded-full w-3/4"></div>
+                                <div class="h-2 bg-indigo-500 rounded-full w-1/2"></div>
+                            </div>
+
+                            <p class="text-[10px] text-slate-500 font-mono">system.status == "optimal"</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -455,31 +499,55 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('pm_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) - EXECUTION HUB GRID STYLE --}}
+    <section class="py-32 bg-white border-t border-gray-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('pm_badge')]) }}
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+                {{-- Node 1: Planner (Wide) --}}
+                <a href="{{ url('/features/planner') }}" class="md:col-span-2 group relative overflow-hidden bg-slate-50 rounded-[3rem] p-12 flex flex-col justify-end transition duration-500 hover:bg-white hover:shadow-2xl hover:shadow-indigo-100 border border-slate-100">
+                    <div class="absolute top-0 right-0 p-12 opacity-10 group-hover:scale-110 transition duration-700 group-hover:opacity-20">
+                        <span class="text-[120px]">📅</span>
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="text-3xl font-black text-gray-900 mb-2">{{ __('ecosystem_planner_title') }}</h4>
+                        <p class="text-indigo-600 font-bold text-sm tracking-wide uppercase">{{ __('planner_meta_title') }}</p>
+                    </div>
                 </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+
+                {{-- Node 2: Job Tracker --}}
+                <a href="{{ url('/features/job') }}" class="group relative overflow-hidden bg-blue-600 rounded-[3rem] p-10 text-white flex flex-col justify-between transition duration-500 hover:shadow-2xl hover:shadow-blue-200">
+                    <div class="text-4xl group-hover:scale-110 transition">💼</div>
+                    <div>
+                        <h4 class="text-xl font-black mb-2">{{ __('ecosystem_job_title') }}</h4>
+                        <p class="text-blue-100 text-xs leading-relaxed">{{ __('job_meta_title') }}</p>
+                    </div>
                 </a>
-                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
-                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+
+                {{-- Node 3: Goal --}}
+                <a href="{{ url('/features/goal') }}" class="group relative overflow-hidden bg-white border-2 border-slate-100 rounded-[3rem] p-10 flex flex-col justify-between transition duration-500 hover:border-rose-200 hover:shadow-xl">
+                    <div class="text-4xl group-hover:scale-110 transition">🎯</div>
+                    <div>
+                        <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('ecosystem_goal_title') }}</h4>
+                        <p class="text-gray-500 text-xs leading-relaxed">{{ __('goal_meta_title') }}</p>
+                    </div>
                 </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+
+                {{-- Node 4: Second Brain (Wide) --}}
+                <a href="{{ url('/solutions/second-brain') }}" class="md:col-span-2 group relative overflow-hidden bg-slate-900 rounded-[3rem] p-12 flex flex-col md:flex-row items-center gap-10 transition duration-500 hover:shadow-2xl">
+                    <div class="w-24 h-24 bg-white/10 rounded-[2rem] flex items-center justify-center text-4xl group-hover:rotate-6 transition shrink-0">📝</div>
+                    <div>
+                        <h4 class="text-3xl font-black text-white mb-2">{{ __('ecosystem_notes_title') }}</h4>
+                        <p class="text-slate-400 text-lg">{{ __('notes_meta_title') }}</p>
+                    </div>
                 </a>
+            </div>
+            
+            <div class="mt-20 flex justify-center gap-4 opacity-30 font-black text-[10px] uppercase tracking-[0.5em]">
+                System • Structure • Sovereignty
             </div>
         </div>
     </section>

@@ -435,20 +435,60 @@
         </div>
     </section>
 
-     {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-gray-50 border-y border-gray-100">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('blank_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('blank_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('blank_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">Decision Fatigue Defense</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Structured Execution</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Willpower Preservation</span>
+    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) - EFFICIENCY LAB STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        {{-- Board Background --}}
+        <div class="absolute inset-0 bg-slate-50 opacity-50"></div>
+        <div class="absolute top-1/4 left-0 w-full h-px bg-slate-200/50"></div>
+        <div class="absolute top-2/4 left-0 w-full h-px bg-slate-200/50"></div>
+        <div class="absolute top-3/4 left-0 w-full h-px bg-slate-200/50"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="bg-white border-2 border-slate-200 rounded-[3rem] p-8 md:p-20 shadow-xl relative overflow-hidden group">
+                {{-- Whiteboard Markers --}}
+                <div class="absolute top-8 right-8 flex gap-2">
+                    <div class="w-2 h-12 bg-emerald-500 rounded-full opacity-20"></div>
+                    <div class="w-2 h-10 bg-indigo-500 rounded-full opacity-20"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.4em] mb-12 rounded-full border border-emerald-200">
+                            🧬 {{ __('blank_science_badge') }}
+                        </div>
+
+                        <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tighter">
+                            {{ __('blank_science_title') }}
+                        </h2>
+
+                        <div class="relative py-12 px-12 bg-slate-50 rounded-3xl mb-12 border border-slate-100 group-hover:rotate-1 transition duration-500">
+                             <span class="absolute -top-4 -right-4 text-4xl">🧪</span>
+                            <p class="text-gray-600 text-xl font-light leading-relaxed">
+                                "{{ __('blank_science_desc') }}"
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-6">
+                            <span class="px-4 py-2 bg-white border border-slate-100 rounded-full text-xs font-bold text-slate-400">Decision_Fatigue_Defense == true</span>
+                            <span class="px-4 py-2 bg-white border border-slate-100 rounded-full text-xs font-bold text-slate-400">Willpower_Preservation_Index.max()</span>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        {{-- Formula Visual --}}
+                        <div class="bg-white aspect-video rounded-3xl p-8 border border-slate-200 shadow-lg relative flex flex-col justify-center items-center text-center overflow-hidden">
+                            <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+                            <h3 class="text-5xl font-black text-emerald-600 mb-4 tracking-tighter relative z-10">∆E = S - F</h3>
+                            <p class="text-slate-400 text-xs font-mono relative z-10">Systemic_Efficiency = Structure - Friction</p>
+                            
+                            <div class="mt-8 flex gap-4 relative z-10">
+                                <div class="w-20 h-1 bg-emerald-500 rounded-full animate-pulse"></div>
+                                <div class="w-12 h-1 bg-slate-200 rounded-full"></div>
+                                <div class="w-16 h-1 bg-slate-200 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -478,33 +518,66 @@
    
 
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-32 px-6 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('blank_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) - DATA FLOW PIPELINE STYLE --}}
+    <section class="py-40 bg-white border-t border-gray-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-32 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('blank_badge')]) }}
+            </h2>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12 relative">
+                {{-- Connecting Pipe --}}
+                <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 hidden md:block"></div>
+                <div class="absolute top-1/2 left-0 h-1 bg-emerald-500/20 w-1/3 -translate-y-1/2 hidden md:block animate-[flow_3s_linear_infinite]"></div>
+
+                {{-- Link 1: Habit --}}
+                <a href="{{ url('/features/habit') }}" class="group relative z-10 bg-white p-8 rounded-full border-2 border-slate-100 shadow-xl hover:border-emerald-500 hover:scale-110 transition duration-500">
+                    <div class="text-5xl group-hover:rotate-12 transition">🌱</div>
+                    <div class="absolute -bottom-16 left-1/2 -translate-x-1/2 whitespace-nowrap text-center opacity-0 group-hover:opacity-100 transition duration-500">
+                        <h4 class="font-black text-gray-900 text-sm">{{ __('ecosystem_habit_title') }}</h4>
+                        <p class="text-[8px] text-gray-400 font-bold uppercase tracking-widest">{{ __('habit_meta_title') }}</p>
+                    </div>
                 </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+
+                {{-- Link 2: Planner --}}
+                <a href="{{ url('/features/planner') }}" class="group relative z-10 bg-white p-8 rounded-full border-2 border-slate-100 shadow-xl hover:border-indigo-500 hover:scale-110 transition duration-500">
+                    <div class="text-5xl group-hover:rotate-12 transition">📅</div>
+                    <div class="absolute -bottom-16 left-1/2 -translate-x-1/2 whitespace-nowrap text-center opacity-0 group-hover:opacity-100 transition duration-500">
+                        <h4 class="font-black text-gray-900 text-sm">{{ __('ecosystem_planner_title') }}</h4>
+                        <p class="text-[8px] text-gray-400 font-bold uppercase tracking-widest">{{ __('planner_meta_title') }}</p>
+                    </div>
                 </a>
-                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
-                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+
+                {{-- Link 3: Goal --}}
+                <a href="{{ url('/features/goal') }}" class="group relative z-10 bg-white p-8 rounded-full border-2 border-slate-100 shadow-xl hover:border-rose-500 hover:scale-110 transition duration-500">
+                    <div class="text-5xl group-hover:rotate-12 transition">🎯</div>
+                    <div class="absolute -bottom-16 left-1/2 -translate-x-1/2 whitespace-nowrap text-center opacity-0 group-hover:opacity-100 transition duration-500">
+                        <h4 class="font-black text-gray-900 text-sm">{{ __('ecosystem_goal_title') }}</h4>
+                        <p class="text-[8px] text-gray-400 font-bold uppercase tracking-widest">{{ __('goal_meta_title') }}</p>
+                    </div>
                 </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+
+                {{-- Link 4: Finance --}}
+                <a href="{{ url('/features/finance') }}" class="group relative z-10 bg-white p-8 rounded-full border-2 border-slate-100 shadow-xl hover:border-emerald-500 hover:scale-110 transition duration-500">
+                    <div class="text-5xl group-hover:rotate-12 transition">💰</div>
+                    <div class="absolute -bottom-16 left-1/2 -translate-x-1/2 whitespace-nowrap text-center opacity-0 group-hover:opacity-100 transition duration-500">
+                        <h4 class="font-black text-gray-900 text-sm">{{ __('ecosystem_finance_title') }}</h4>
+                        <p class="text-[8px] text-gray-400 font-bold uppercase tracking-widest">{{ __('finance_meta_title') }}</p>
+                    </div>
                 </a>
             </div>
+            
+            <div class="mt-40 text-center opacity-10 font-mono text-xs tracking-[1em] uppercase">
+                Streamlining_Success_In_Progress...
+            </div>
         </div>
+
+        <style>
+            @keyframes flow {
+                0% { transform: translate(-100%, -50%); }
+                100% { transform: translate(300%, -50%); }
+            }
+        </style>
     </section>
 
 @endsection
