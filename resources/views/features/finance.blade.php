@@ -233,23 +233,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-emerald-50/50 border-y border-emerald-100/30">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('finance_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('finance_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('finance_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">Mindful Spending</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Kakeibo Method</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Zero-Based Budgeting</span>
-            </div>
-        </div>
-    </section>
 
     {{-- NEW SECTION 3: SPENDING FLOW --}}
     <section class="py-32 bg-slate-950 text-white relative overflow-hidden">
@@ -467,7 +450,90 @@
         </div>
     </section>
 
-    {{-- SECTION 7: BOTTOM CTA (PILL SHAPE / FULL WIDTH) --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - GLASSMORPHIC LAYOUT --}}
+    <section class="py-32 bg-indigo-50/30 relative overflow-hidden">
+        {{-- Background Decoration --}}
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/money.png')] opacity-[0.03] grayscale"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px]"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="bg-white/60 backdrop-blur-3xl rounded-[4rem] border border-white p-12 md:p-20 shadow-2xl flex flex-col lg:flex-row items-center gap-16">
+                
+                <div class="flex-1 text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-8">
+                        🧬 {{ __('finance_science_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                        {{ __('finance_science_title') }}
+                    </h2>
+                    <p class="text-gray-600 text-xl leading-relaxed mb-10 italic font-medium opacity-80">
+                        {{ __('finance_science_desc') }}
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest">Mindful Spending</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
+                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest">Kakeibo Method</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-purple-500"></div>
+                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest">Zero-Based Budgeting</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest">Trust & Accuracy</span>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Dashboard Visual Side --}}
+                <div class="flex-1 w-full max-w-md bg-indigo-900 rounded-[3rem] p-8 text-white shadow-2xl relative group overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-800 to-indigo-600 opacity-50 group-hover:scale-110 transition duration-700"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-center mb-10">
+                            <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-xl">🛡️</div>
+                            <span class="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-300">verified system</span>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xs font-bold text-indigo-200">Probability of Success</span>
+                                    <span class="text-xs font-black text-emerald-400">+98.2%</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="w-[98%] h-full bg-emerald-500"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-center">
+                                    <span class="text-[10px] font-black text-indigo-300 uppercase block mb-1">Dopamine Score</span>
+                                    <span class="text-xl font-black">Optimal</span>
+                                </div>
+                                <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-center">
+                                    <span class="text-[10px] font-black text-indigo-300 uppercase block mb-1">Error Rate</span>
+                                    <span class="text-xl font-black">0.02%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 flex items-center justify-center gap-3">
+                            <div class="p-2 bg-indigo-500/20 rounded-lg"><span class="text-xs font-black">Daniel Kahneman</span></div>
+                            <div class="p-2 bg-indigo-500/20 rounded-lg"><span class="text-xs font-black">Kakeibo Philosophy</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section class="py-24 bg-white px-6">
         <div class="max-w-6xl mx-auto bg-gradient-to-br from-indigo-900 to-indigo-950 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl border border-indigo-800">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-pulse duration-[6000ms]"></div>
@@ -487,30 +553,56 @@
         </div>
     </section>
 
-    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('finance_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - ABUNDANCE GRID STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        {{-- Floating Currency Symbols Background --}}
+        <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]">
+            <div class="absolute top-10 left-10 text-9xl font-black">$</div>
+            <div class="absolute bottom-20 right-20 text-9xl font-black">Rp</div>
+            <div class="absolute top-1/2 left-1/4 text-9xl font-black">€</div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('finance_hero_badge')]) }}
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                {{-- Link 1: Goal (Primary) --}}
+                <a href="{{ url('/features/goal') }}" class="md:col-span-12 lg:col-span-6 group bg-indigo-900 rounded-[3rem] p-12 text-white flex flex-col md:flex-row items-center gap-12 hover:shadow-2xl hover:shadow-indigo-200 transition duration-500 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-bl-[8rem] group-hover:scale-110 transition duration-700"></div>
+                    <div class="w-24 h-24 bg-white/10 rounded-[2rem] flex items-center justify-center text-5xl group-hover:rotate-12 transition">🎯</div>
+                    <div class="relative z-10 flex-1">
+                        <h4 class="text-3xl font-black mb-4">{{ __('ecosystem_goal_title') }}</h4>
+                        <p class="text-indigo-200 text-lg opacity-80 leading-relaxed">{{ __('goal_meta_title') }}</p>
+                    </div>
                 </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+
+                {{-- Link 2: Planner --}}
+                <a href="{{ url('/features/planner') }}" class="md:col-span-6 lg:col-span-3 group bg-emerald-50 rounded-[3rem] p-10 border border-emerald-100 flex flex-col items-center text-center hover:bg-emerald-600 hover:text-white transition duration-500">
+                    <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-[1.5rem] flex items-center justify-center text-4xl mb-8 group-hover:bg-white/20 group-hover:text-white group-hover:rotate-6 transition">📅</div>
+                    <h4 class="text-xl font-black mb-4">{{ __('ecosystem_planner_title') }}</h4>
+                    <p class="text-emerald-700/60 group-hover:text-white/80 text-sm font-bold uppercase tracking-widest">{{ __('planner_meta_title') }}</p>
                 </a>
-                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
-                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+
+                {{-- Link 3: Journal --}}
+                <a href="{{ url('/features/journal') }}" class="md:col-span-6 lg:col-span-3 group bg-slate-900 rounded-[3rem] p-10 text-white flex flex-col items-center text-center hover:shadow-2xl transition duration-500 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-transparent"></div>
+                    <div class="w-20 h-20 bg-white/10 rounded-[1.5rem] flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition relative z-10">📔</div>
+                    <h4 class="text-xl font-black mb-4 relative z-10">{{ __('ecosystem_journal_title') }}</h4>
+                    <p class="text-slate-400 text-sm font-bold uppercase tracking-widest relative z-10">Reflection Layer</p>
                 </a>
-                <a href="{{ url('/features/calendar') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">⏰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('calendar_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('calendar_meta_title') }}</p>
+
+                {{-- Link 4: Notes --}}
+                <a href="{{ url('/solutions/second-brain') }}" class="md:col-span-12 group bg-amber-50 rounded-[3rem] p-12 border border-amber-100 flex flex-col md:flex-row items-center justify-between gap-8 hover:border-amber-400 transition duration-500">
+                    <div class="flex items-center gap-8 flex-1">
+                        <div class="w-20 h-20 bg-amber-100 text-amber-600 rounded-[1.5rem] flex items-center justify-center text-4xl group-hover:rotate-12 transition">📝</div>
+                        <div>
+                            <h4 class="text-2xl font-black text-gray-900 mb-2">{{ __('ecosystem_notes_title') }}</h4>
+                            <p class="text-gray-500 font-medium">{{ __('notes_meta_title') }}</p>
+                        </div>
+                    </div>
+                    <div class="px-8 py-4 bg-gray-900 text-white rounded-2xl font-black text-lg group-hover:bg-amber-600 transition">Integrated 🔗</div>
                 </a>
             </div>
         </div>

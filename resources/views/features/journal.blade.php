@@ -364,23 +364,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-purple-50/50 border-y border-purple-100/30">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('journal_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('journal_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('journal_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">Affect Labeling</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Reflective Practice</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Emotional Regulation</span>
-            </div>
-        </div>
-    </section>
 
     {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}
     <section class="py-32 bg-white relative overflow-hidden">
@@ -396,7 +379,54 @@
         </div>
     </section>
 
-    {{-- SECTION 7: BOTTOM CTA (CLEAN MINIMALIST CIRCLE FOCUS) --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - ZEN MINIMALIST REFLECTION STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+            
+            {{-- Floating Seal of Quality --}}
+            <div class="relative mb-20">
+                <div class="absolute inset-0 bg-indigo-50 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+                <div class="relative w-24 h-24 mx-auto bg-white border border-indigo-100 rounded-full flex items-center justify-center text-3xl shadow-xl transform hover:rotate-12 transition duration-700 group">
+                    ✨
+                    <div class="absolute inset-0 border-2 border-dashed border-indigo-200 rounded-full animate-spin-slow group-hover:animate-spin"></div>
+                </div>
+            </div>
+
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 text-slate-400 text-[10px] font-black uppercase tracking-[0.3em] mb-10">
+                🧬 {{ __('journal_science_badge') }}
+            </div>
+            
+            <h2 class="text-4xl md:text-5xl font-serif italic text-gray-900 mb-12 leading-tight">
+                {{ __('journal_science_title') }}
+            </h2>
+
+            <div class="relative py-12 px-8 md:px-20 border-y border-gray-100">
+                {{-- Quote Marks --}}
+                <div class="absolute top-0 left-0 text-8xl text-indigo-50 font-serif leading-none -translate-x-1/2 -translate-y-1/2">“</div>
+                <div class="absolute bottom-0 right-0 text-8xl text-indigo-50 font-serif leading-none translate-x-1/2 translate-y-1/2">”</div>
+                
+                <p class="text-gray-600 text-2xl md:text-3xl font-serif italic leading-[1.6] opacity-80 decoration-indigo-100 underline-offset-8">
+                    {{ __('journal_science_desc') }}
+                </p>
+            </div>
+
+            <div class="mt-16 flex flex-wrap justify-center gap-12">
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-indigo-300 mb-2">Technique</span>
+                    <span class="text-sm font-bold text-gray-400 italic">Affect Labeling</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-indigo-300 mb-2">Foundation</span>
+                    <span class="text-sm font-bold text-gray-400 italic">Reflective Practice</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-indigo-300 mb-2">Outcome</span>
+                    <span class="text-sm font-bold text-gray-400 italic">Emotional Regulation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-gray-50 px-6 relative overflow-hidden">
         {{-- Expanding Circle Background --}}
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-100 rounded-full opacity-50 pointer-events-none"></div>
@@ -416,31 +446,62 @@
         </div>
     </section>
 
-    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('journal_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
-                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
-                </a>
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - ETERNAL STREAM STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        {{-- Fluid Wave Background --}}
+        <div class="absolute inset-0 pointer-events-none opacity-[0.03]">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 50 Q 25 40 50 50 T 100 50 V 100 H 0 Z" fill="indigo" />
+            </svg>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-serif italic text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('journal_hero_badge')]) }}
+            </h2>
+            
+            <div class="space-y-12">
+                {{-- Link 1: Finance (Floating Right) --}}
+                <div class="flex justify-end">
+                    <a href="{{ url('/features/finance') }}" class="group w-full md:w-2/3 bg-white p-8 rounded-[3rem] border border-gray-100 flex items-center gap-8 hover:shadow-2xl hover:-translate-x-4 transition duration-500">
+                        <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center text-4xl group-hover:rotate-12 transition shrink-0">💰</div>
+                        <div>
+                            <h4 class="text-2xl font-black text-gray-900 mb-1 group-hover:text-emerald-600 transition">{{ __('ecosystem_finance_title') }}</h4>
+                            <p class="text-gray-500 font-serif italic">{{ __('finance_meta_title') }}</p>
+                        </div>
+                    </a>
+                </div>
+
+                {{-- Link 2: Habit (Floating Left) --}}
+                <div class="flex justify-start">
+                    <a href="{{ url('/features/habit') }}" class="group w-full md:w-2/3 bg-slate-900 p-8 rounded-[3rem] text-white flex items-center gap-8 hover:shadow-2xl hover:translate-x-4 transition duration-500">
+                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center text-4xl group-hover:scale-110 transition shrink-0">🌱</div>
+                        <div>
+                            <h4 class="text-2xl font-black text-white mb-1">{{ __('ecosystem_habit_title') }}</h4>
+                            <p class="text-slate-400 font-serif italic">{{ __('habit_meta_title') }}</p>
+                        </div>
+                    </a>
+                </div>
+
+                {{-- Link 3: Planner (Floating Right) --}}
+                <div class="flex justify-end">
+                    <a href="{{ url('/features/planner') }}" class="group w-full md:w-2/3 bg-indigo-50 p-8 rounded-[3rem] border border-indigo-100 flex items-center gap-8 hover:shadow-2xl hover:-translate-x-4 transition duration-500">
+                        <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-4xl group-hover:-rotate-12 transition shrink-0">📅</div>
+                        <div>
+                            <h4 class="text-2xl font-black text-indigo-900 mb-1 group-hover:text-indigo-600 transition">{{ __('ecosystem_planner_title') }}</h4>
+                            <p class="text-indigo-400 font-serif italic">{{ __('planner_meta_title') }}</p>
+                        </div>
+                    </a>
+                </div>
+
+                {{-- Link 4: Notes (The Anchor) --}}
+                <div class="max-w-2xl mx-auto pt-12">
+                    <a href="{{ url('/solutions/second-brain') }}" class="group block text-center p-12 bg-white rounded-[4rem] border-2 border-dashed border-gray-200 hover:border-amber-400 transition duration-500">
+                        <span class="text-6xl mb-6 block group-hover:scale-110 transition">📝</span>
+                        <h4 class="text-3xl font-black text-gray-900 mb-4">{{ __('ecosystem_notes_title') }}</h4>
+                        <p class="text-gray-500 font-serif italic text-lg">{{ __('notes_meta_title') }}</p>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

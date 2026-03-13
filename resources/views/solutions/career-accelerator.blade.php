@@ -154,23 +154,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30 text-center">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('solve_career_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">{{ __('solve_career_science_title') }}</h2>
-            <p class="text-slate-500 text-lg leading-relaxed italic max-w-2xl mx-auto">
-                {{ __('solve_career_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
-                <span class="text-xs font-black uppercase tracking-tighter">Sales Funnel Logic</span>
-                <span class="text-xs font-black uppercase tracking-tighter">Follow-up Persistence</span>
-                <span class="text-xs font-black uppercase tracking-tighter">Conversion Metrics</span>
-            </div>
-        </div>
-    </section>
 
     {{-- ================================================================= --}}
     {{-- SECTION 3: NEW LAYOUT -> HORIZONTAL TIMELINE TRACKER (THE SOLUTION) --}}
@@ -265,7 +248,65 @@
         </div>
     </section>
 
-    {{-- SECTION: VISUAL FAQ --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - HIGH-PERFORMANCE DASHBOARD STYLE --}}
+    <section class="py-32 bg-slate-900 relative overflow-hidden">
+        {{-- Radar Grid Background --}}
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#4f46e5_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="bg-indigo-950/50 backdrop-blur-2xl border border-indigo-500/20 rounded-[3rem] p-10 md:p-20 shadow-2xl relative overflow-hidden group">
+                
+                {{-- Glowing Data Stream side --}}
+                <div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-indigo-500/10 to-transparent"></div>
+
+                <div class="flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="flex-1">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-300 text-[10px] font-black uppercase tracking-[0.3em] mb-10 border border-indigo-500/30 rounded-lg">
+                            🧬 {{ __('solve_career_science_badge') }}
+                        </div>
+
+                        <h2 class="text-4xl md:text-5xl font-black text-white mb-10 leading-tight">
+                            {{ __('solve_career_science_title') }}
+                        </h2>
+
+                        <div class="relative py-8 px-10 bg-black/40 border-l-4 border-indigo-500 rounded-r-2xl mb-12">
+                            <p class="text-indigo-100/80 text-xl md:text-2xl font-medium leading-relaxed italic">
+                                "{{ __('solve_career_science_desc') }}"
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition">
+                                <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Module_01</span>
+                                <span class="font-bold text-white text-sm">Sales Funnel Logic</span>
+                            </div>
+                            <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition">
+                                <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">Module_02</span>
+                                <span class="font-bold text-white text-sm">Follow-up Persistence</span>
+                            </div>
+                            <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition">
+                                <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">Module_03</span>
+                                <span class="font-bold text-white text-sm">Conversion Metrics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Data Visualization Placeholder/Graphic --}}
+                    <div class="flex-shrink-0 w-64 h-64 relative hidden lg:block">
+                        <div class="absolute inset-0 border-2 border-indigo-500/30 rounded-full animate-ping opacity-20"></div>
+                        <div class="relative w-full h-full bg-indigo-600/20 border-2 border-indigo-500/50 rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.3)] transform group-hover:rotate-12 transition duration-700">
+                             <div class="absolute inset-4 border border-indigo-400/30 rounded-full animate-spin-slow"></div>
+                             <div class="text-5xl">📈</div>
+                             {{-- Floating Data Points --}}
+                             <div class="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-xl shadow-xl flex items-center justify-center text-indigo-600 font-black text-xs border border-indigo-100 animate-bounce cursor-pointer">ROI+</div>
+                             <div class="absolute bottom-0 -left-6 bg-emerald-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter shadow-lg">Optimized</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-white">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-black text-center text-slate-900 mb-16">{{ __('solve_career_faq_title') }}</h2>
@@ -302,31 +343,66 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('solve_career_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
-                </a>
+    {{-- NEW SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - PROGRESS LADDER STYLE --}}
+    <section class="py-32 bg-white border-t border-gray-100 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('solve_career_hero_badge')]) }}
+            </h2>
+            
+            <div class="max-w-4xl mx-auto relative">
+                {{-- Vertical Line for Ladder --}}
+                <div class="absolute left-1/2 top-0 w-px h-full bg-indigo-100 -translate-x-1/2 hidden md:block"></div>
+
+                <div class="space-y-12">
+                    {{-- Level 1: Job Tracker (Left) --}}
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                        <div class="flex-1 md:text-right order-2 md:order-1">
+                            <h4 class="text-2xl font-black text-gray-900 mb-2">{{ __('ecosystem_job_title') }}</h4>
+                            <p class="text-gray-500 font-medium">{{ __('job_meta_title') }}</p>
+                        </div>
+                        <a href="{{ url('/features/job') }}" class="w-24 h-24 bg-blue-600 rounded-3xl flex items-center justify-center text-4xl shadow-xl shadow-blue-200 hover:scale-110 transition duration-500 order-1 md:order-2 z-10">
+                            💼
+                        </a>
+                        <div class="flex-1 order-3 hidden md:block"></div>
+                    </div>
+
+                    {{-- Level 2: Planner (Right) --}}
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                        <div class="flex-1 hidden md:block"></div>
+                        <a href="{{ url('/features/planner') }}" class="w-24 h-24 bg-purple-600 rounded-3xl flex items-center justify-center text-4xl shadow-xl shadow-purple-200 hover:scale-110 transition duration-500 z-10">
+                            📅
+                        </a>
+                        <div class="flex-1 md:text-left">
+                            <h4 class="text-2xl font-black text-gray-900 mb-2">{{ __('ecosystem_planner_title') }}</h4>
+                            <p class="text-gray-500 font-medium">{{ __('planner_meta_title') }}</p>
+                        </div>
+                    </div>
+
+                    {{-- Level 3: Notes (Left) --}}
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                        <div class="flex-1 md:text-right order-2 md:order-1">
+                            <h4 class="text-2xl font-black text-gray-900 mb-2">{{ __('ecosystem_notes_title') }}</h4>
+                            <p class="text-gray-500 font-medium">{{ __('notes_meta_title') }}</p>
+                        </div>
+                        <a href="{{ url('/solutions/second-brain') }}" class="w-24 h-24 bg-amber-600 rounded-3xl flex items-center justify-center text-4xl shadow-xl shadow-amber-200 hover:scale-110 transition duration-500 order-1 md:order-2 z-10">
+                            📝
+                        </a>
+                        <div class="flex-1 order-3 hidden md:block"></div>
+                    </div>
+
+                    {{-- Level 4: Finance (Right) --}}
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                        <div class="flex-1 hidden md:block"></div>
+                        <a href="{{ url('/features/finance') }}" class="w-24 h-24 bg-emerald-600 rounded-3xl flex items-center justify-center text-4xl shadow-xl shadow-emerald-200 hover:scale-110 transition duration-500 z-10">
+                            💰
+                        </a>
+                        <div class="flex-1 md:text-left">
+                            <h4 class="text-2xl font-black text-gray-900 mb-2">{{ __('ecosystem_finance_title') }}</h4>
+                            <p class="text-gray-500 font-medium">{{ __('finance_meta_title') }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

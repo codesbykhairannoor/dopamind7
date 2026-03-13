@@ -376,25 +376,61 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-rose-50/50 border-y border-rose-100/30">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('goal_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('goal_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('goal_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">OKR Framework</span>
-                <span class="text-sm font-black uppercase tracking-tighter">SMART Goals</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Identity Shift</span>
+
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - ACHIEVEMENT PEAK STYLE --}}
+    <section class="py-32 bg-rose-50/20 relative overflow-hidden">
+        {{-- Custom Peak Background SVG --}}
+        <div class="absolute inset-0 z-0">
+             <svg class="w-full h-full text-rose-100/30" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+                 <path d="M0,1000 L300,400 L500,700 L800,200 L1000,1000 Z" fill="currentColor" />
+             </svg>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="bg-white/80 backdrop-blur-2xl rounded-[4rem] border border-white p-12 md:p-24 text-center shadow-2xl relative overflow-hidden">
+                <div class="absolute -top-12 -left-12 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl"></div>
+
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100 text-rose-700 text-xs font-black uppercase tracking-[0.2em] mb-10 shadow-sm border border-rose-200">
+                    🏆 {{ __('goal_science_badge') }}
+                </div>
+                
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-10 leading-tight tracking-tight">
+                    {{ __('goal_science_title') }}
+                </h2>
+                
+                <p class="text-gray-600 text-2xl leading-relaxed mb-16 italic font-medium max-w-3xl mx-auto">
+                    {{ __('goal_science_desc') }}
+                </p>
+                
+                {{-- Framework Icon Tags --}}
+                <div class="flex flex-wrap justify-center gap-6">
+                    <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-rose-50 group hover:bg-rose-600 transition duration-500">
+                        <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 transition">🎯</div>
+                        <div class="text-left">
+                            <span class="text-[10px] font-black text-rose-600 uppercase tracking-widest block group-hover:text-rose-100 transition">Method 01</span>
+                            <span class="font-black text-gray-900 group-hover:text-white transition">OKR Framework</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-indigo-50 group hover:bg-indigo-600 transition duration-500">
+                        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 transition">🧠</div>
+                        <div class="text-left">
+                            <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest block group-hover:text-indigo-100 transition">Method 02</span>
+                            <span class="font-black text-gray-900 group-hover:text-white transition">SMART Goals</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-purple-50 group hover:bg-purple-600 transition duration-500">
+                        <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 transition">🧬</div>
+                        <div class="text-left">
+                            <span class="text-[10px] font-black text-purple-600 uppercase tracking-widest block group-hover:text-purple-100 transition">Method 03</span>
+                            <span class="font-black text-gray-900 group-hover:text-white transition">Identity Shift</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 4: THE SUCCESS QUOTE --}}
     <section class="py-32 bg-white relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
@@ -426,31 +462,73 @@
         </div>
     </section>
 
-    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('goal_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
-                </a>
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - ASCENSION PATH STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        {{-- Geometric Ascension Background --}}
+        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-indigo-50/50 to-transparent"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.02] pointer-events-none">
+            <svg class="w-full h-full" viewBox="0 0 100 100">
+                <defs>
+                    <pattern id="grid-ascent" width="10" height="10" patternUnits="userSpaceOnUse">
+                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-ascent)" />
+            </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('goal_hero_badge')]) }}
+            </h2>
+            
+            <div class="relative flex flex-col items-center">
+                {{-- The Path SVG --}}
+                <svg class="absolute hidden lg:block top-0 left-1/2 -translate-x-1/2 w-full h-full text-indigo-100 -z-10" preserveAspectRatio="none" viewBox="0 0 1000 800">
+                    <path d="M 500 0 C 400 200, 600 400, 500 800" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="12 12" />
+                </svg>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-32 gap-y-16 w-full max-w-5xl">
+                    {{-- Step 1: Habit (Foundation) --}}
+                    <div class="lg:text-right">
+                        <a href="{{ url('/features/habit') }}" class="group inline-flex flex-col lg:items-end text-right">
+                            <div class="w-20 h-20 bg-indigo-600 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition duration-500">🌱</div>
+                            <h4 class="text-2xl font-black text-gray-900 mb-2">{{ __('ecosystem_habit_title') }}</h4>
+                            <p class="text-gray-500 font-medium max-w-xs">{{ __('habit_meta_title') }}</p>
+                        </a>
+                    </div>
+                    
+                    {{-- Step 2: Planner (Execution) --}}
+                    <div class="lg:mt-32">
+                        <a href="{{ url('/features/planner') }}" class="group inline-flex flex-col lg:items-start text-left">
+                            <div class="w-20 h-20 bg-purple-600 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-xl group-hover:scale-110 group-hover:-rotate-6 transition duration-500">📅</div>
+                            <h4 class="text-2xl font-black text-gray-900 mb-2">{{ __('ecosystem_planner_title') }}</h4>
+                            <p class="text-gray-500 font-medium max-w-xs">{{ __('planner_meta_title') }}</p>
+                        </a>
+                    </div>
+
+                    {{-- Step 3: Journal (Reflection) --}}
+                    <div class="lg:text-right lg:-mt-16">
+                        <a href="{{ url('/features/journal') }}" class="group inline-flex flex-col lg:items-end text-right">
+                            <div class="w-20 h-20 bg-amber-600 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-xl group-hover:scale-110 group-hover:rotate-6 transition duration-500">📔</div>
+                            <h4 class="text-2xl font-black text-gray-900 mb-2">{{ __('ecosystem_journal_title') }}</h4>
+                            <p class="text-gray-500 font-medium max-w-xs">{{ __('journal_meta_title') }}</p>
+                        </a>
+                    </div>
+
+                    {{-- Step 4: Notes (Knowledge) --}}
+                    <div class="lg:mt-16">
+                        <a href="{{ url('/solutions/second-brain') }}" class="group inline-flex flex-col lg:items-start text-left">
+                            <div class="w-20 h-20 bg-slate-900 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-xl group-hover:scale-110 group-hover:-rotate-6 transition duration-500">📝</div>
+                            <h4 class="text-2xl font-black text-gray-900 mb-2">{{ __('ecosystem_notes_title') }}</h4>
+                            <p class="text-gray-500 font-medium max-w-xs">{{ __('notes_meta_title') }}</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-32 py-4 px-10 bg-indigo-600 text-white rounded-full font-black text-sm uppercase tracking-[0.4em] shadow-2xl animate-pulse">
+                    The Peak of Clarity 🏔️
+                </div>
             </div>
         </div>
     </section>

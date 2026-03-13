@@ -139,23 +139,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30 text-center">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('solve_finance_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('solve_finance_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed italic max-w-2xl mx-auto">
-                {{ __('solve_finance_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
-                <span class="text-xs font-black uppercase tracking-tighter">Compounding Velocity</span>
-                <span class="text-xs font-black uppercase tracking-tighter">Asset Allocation</span>
-                <span class="text-xs font-black uppercase tracking-tighter">Risk Mitigation</span>
-            </div>
-        </div>
-    </section>
 
     {{-- SECTION 3: THE SOLUTION (THE WEALTH ENGINE) --}}
     <section class="py-32 bg-slate-900 text-white relative overflow-hidden">
@@ -262,7 +245,66 @@
         </div>
     </section>
 
-    {{-- SECTION: VISUAL FAQ --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - WEALTH ARCHITECTURE STYLE --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        {{-- Architecture Lines --}}
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(71,85,105,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(71,85,105,0.03)_1px,transparent_1px)] [background-size:60px_60px] opacity-40"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="bg-white border-y-4 border-slate-900 rounded-[3rem] p-10 md:p-20 shadow-2xl relative overflow-hidden group">
+                
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.3em] mb-10">
+                            🧬 {{ __('solve_finance_science_badge') }}
+                        </div>
+
+                        <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-10 leading-[1.1]">
+                            {{ __('solve_finance_science_title') }}
+                        </h2>
+
+                        <div class="relative py-10 px-10 bg-slate-50 border border-slate-200 rounded-3xl mb-12">
+                            <p class="text-slate-700 text-xl md:text-2xl font-serif italic leading-relaxed">
+                                "{{ __('solve_finance_science_desc') }}"
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 border-b border-slate-100 hover:bg-slate-50 transition uppercase tracking-tighter font-black text-xs text-slate-500">
+                                <span>Core Principle 01</span>
+                                <span class="text-slate-900">Compounding Velocity</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 border-b border-slate-100 hover:bg-slate-50 transition uppercase tracking-tighter font-black text-xs text-slate-500">
+                                <span>Core Principle 02</span>
+                                <span class="text-slate-900">Asset Allocation</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 border-b border-slate-100 hover:bg-slate-50 transition uppercase tracking-tighter font-black text-xs text-slate-500">
+                                <span>Core Principle 03</span>
+                                <span class="text-slate-900">Risk Mitigation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative hidden lg:block">
+                        {{-- Structural Blueprint Illustration --}}
+                        <div class="relative w-full aspect-[4/5] bg-slate-100 rounded-3xl p-12 overflow-hidden border border-slate-200">
+                             {{-- Isometric Pillars --}}
+                             <div class="absolute bottom-0 left-12 w-16 h-[60%] bg-slate-900 transform -skew-x-12 opacity-90 transition-all duration-700 group-hover:h-[65%]"></div>
+                             <div class="absolute bottom-0 left-32 w-16 h-[40%] bg-indigo-600 transform -skew-x-12 opacity-90 transition-all duration-700 group-hover:h-[45%]"></div>
+                             <div class="absolute bottom-0 left-52 w-16 h-[80%] bg-slate-900 transform -skew-x-12 opacity-90 transition-all duration-700 group-hover:h-[85%]"></div>
+                             
+                             <div class="absolute top-12 right-12 text-6xl opacity-20">📐</div>
+                             <div class="absolute bottom-12 right-12 text-right">
+                                <p class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Financial_Foundation_Secure</p>
+                                <p class="text-2xl font-black text-slate-900">Level: Master</p>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('solve_finance_faq_title') }}</h2>
@@ -291,33 +333,66 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('solve_finance_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - FINANCIAL LATTICE STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        {{-- Geometric Lattice Pattern --}}
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 0 L100 100 M100 0 L0 100" stroke="#4f46e5" stroke-width="0.5" />
+                <circle cx="50" cy="50" r="40" stroke="#4f46e5" fill="none" stroke-width="0.2" />
+            </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('solve_finance_hero_badge')]) }}
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-0 border-collapse">
+                {{-- Cell 1: Finance --}}
+                <a href="{{ url('/features/finance') }}" class="group relative p-12 aspect-square flex flex-col items-center justify-center border border-gray-100 hover:bg-slate-50 transition duration-500 overflow-hidden">
+                    <div class="absolute inset-0 bg-emerald-600 opacity-0 group-hover:opacity-5 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">💰</div>
+                    <h4 class="text-lg font-black text-gray-900 mb-1">{{ __('ecosystem_finance_title') }}</h4>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest text-center">{{ __('finance_meta_title') }}</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-emerald-600 translate-y-full group-hover:translate-y-0 transition duration-500"></div>
                 </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+
+                {{-- Cell 2: Second Brain --}}
+                <a href="{{ url('/solutions/second-brain') }}" class="group relative p-12 aspect-square flex flex-col items-center justify-center border border-gray-100 border-l-0 hover:bg-slate-50 transition duration-500 overflow-hidden">
+                    <div class="absolute inset-0 bg-amber-600 opacity-0 group-hover:opacity-5 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">📝</div>
+                    <h4 class="text-lg font-black text-gray-900 mb-1">{{ __('ecosystem_notes_title') }}</h4>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest text-center">{{ __('notes_meta_title') }}</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-amber-600 translate-y-full group-hover:translate-y-0 transition duration-500"></div>
                 </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+
+                {{-- Cell 3: Goal --}}
+                <a href="{{ url('/features/goal') }}" class="group relative p-12 aspect-square flex flex-col items-center justify-center border border-gray-100 border-l-0 hover:bg-slate-50 transition duration-500 overflow-hidden">
+                    <div class="absolute inset-0 bg-rose-600 opacity-0 group-hover:opacity-5 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">🎯</div>
+                    <h4 class="text-lg font-black text-gray-900 mb-1">{{ __('ecosystem_goal_title') }}</h4>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest text-center">{{ __('goal_meta_title') }}</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-rose-600 translate-y-full group-hover:translate-y-0 transition duration-500"></div>
                 </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+
+                {{-- Cell 4: Planner --}}
+                <a href="{{ url('/features/planner') }}" class="group relative p-12 aspect-square flex flex-col items-center justify-center border border-gray-100 border-l-0 hover:bg-slate-50 transition duration-500 overflow-hidden">
+                    <div class="absolute inset-0 bg-purple-600 opacity-0 group-hover:opacity-5 transition duration-500"></div>
+                    <div class="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">📅</div>
+                    <h4 class="text-lg font-black text-gray-900 mb-1">{{ __('ecosystem_planner_title') }}</h4>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest text-center">{{ __('planner_meta_title') }}</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-purple-600 translate-y-full group-hover:translate-y-0 transition duration-500"></div>
                 </a>
+            </div>
+
+            <div class="mt-24 flex justify-center gap-12 text-[10px] font-black text-gray-300 uppercase tracking-[0.5em]">
+                <span>Analysis</span>
+                <span>•</span>
+                <span>Protection</span>
+                <span>•</span>
+                <span>Growth</span>
             </div>
         </div>
     </section>
-
 @endsection

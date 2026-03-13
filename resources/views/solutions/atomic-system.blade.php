@@ -216,7 +216,73 @@
         </div>
     </section>
 
-    {{-- SECTION: VISUAL FAQ --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - CHEMICAL REACTION STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        {{-- Floating Atoms Decoration --}}
+        <div class="absolute top-20 left-10 w-4 h-4 bg-indigo-200 rounded-full animate-bounce"></div>
+        <div class="absolute bottom-20 right-10 w-6 h-6 bg-purple-200 rounded-full animate-bounce delay-700"></div>
+        <div class="absolute top-1/2 right-20 w-3 h-3 bg-emerald-200 rounded-full animate-bounce delay-1000"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="bg-slate-950 rounded-[4rem] p-10 md:p-20 shadow-2xl relative overflow-hidden">
+                {{-- Glow Effect --}}
+                <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-600 rounded-full blur-[100px] opacity-20"></div>
+
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-indigo-300 text-[10px] font-black uppercase tracking-[0.3em] mb-10 rounded-full border border-white/10">
+                            🧬 {{ __('atomic_science_badge') }}
+                        </div>
+
+                        <h2 class="text-4xl md:text-6xl font-black text-white mb-10 leading-tight">
+                            {{ __('atomic_science_title') }}
+                        </h2>
+
+                        <div class="relative py-12 px-10 bg-white/5 backdrop-blur-md rounded-[3rem] mb-12 border border-white/10">
+                            <p class="text-indigo-100 text-xl md:text-2xl font-serif italic leading-relaxed">
+                                "{{ __('atomic_science_desc') }}"
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4">
+                            <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition">
+                                <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Reagent_01</span>
+                                <h4 class="font-bold text-slate-300">Behavioral Economics</h4>
+                            </div>
+                            <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/5 hover:border-purple-500/50 transition">
+                                <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">Reagent_02</span>
+                                <h4 class="font-bold text-slate-300">Activation Energy</h4>
+                            </div>
+                            <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/5 hover:border-emerald-500/50 transition">
+                                <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">Reagent_03</span>
+                                <h4 class="font-bold text-slate-300">Identity-Based Habits</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative hidden lg:block">
+                        {{-- Atomic Reaction Visualization --}}
+                        <div class="relative w-full aspect-square flex items-center justify-center">
+                            {{-- Nucleus --}}
+                            <div class="w-32 h-32 bg-indigo-600 rounded-full flex items-center justify-center text-5xl shadow-[0_0_60px_rgba(79,70,229,0.5)] z-20 animate-pulse">⚛️</div>
+                            
+                            {{-- Orbitals --}}
+                            <div class="absolute inset-0 border-2 border-white/5 rounded-full animate-[spin_10s_linear_infinite]">
+                                <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-indigo-400 rounded-full shadow-lg"></div>
+                            </div>
+                            <div class="absolute inset-12 border-2 border-white/10 rounded-full animate-[spin_15s_linear_infinite_reverse]">
+                                <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-5 h-5 bg-purple-400 rounded-full shadow-lg"></div>
+                            </div>
+                            <div class="absolute inset-24 border-2 border-white/5 rounded-full animate-[spin_8s_linear_infinite]">
+                                <div class="absolute top-1/2 -left-3 -translate-y-1/2 w-4 h-4 bg-emerald-400 rounded-full shadow-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('atomic_faq_title') }}</h2>
@@ -231,23 +297,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('atomic_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('atomic_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('atomic_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">Behavioral Economics</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Activation Energy</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Identity-Based Habits</span>
-            </div>
-        </div>
-    </section>
 
     {{-- SECTION 4: CTA --}}
     <section class="py-40 bg-white text-center px-6 relative overflow-hidden">
@@ -262,31 +311,63 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('atomic_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - ATOMIC CLUSTER STYLE --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        {{-- Floating Atoms --}}
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-indigo-200 rounded-full animate-ping"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-3 h-3 bg-purple-200 rounded-full animate-ping delay-500"></div>
+            <div class="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-emerald-200 rounded-full animate-ping delay-1000"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('atomic_hero_badge')]) }}
+            </h2>
+            
+            <div class="relative flex flex-wrap justify-center gap-12 lg:gap-24">
+                {{-- Cluster Connector Lines (Desktop Only) --}}
+                <svg class="absolute hidden lg:block inset-0 w-full h-full text-indigo-100 -z-10" viewBox="0 0 1000 400">
+                    <path d="M 250 200 L 750 200 M 500 100 L 500 300" stroke="currentColor" stroke-width="2" stroke-dasharray="8 8" />
+                </svg>
+
+                {{-- Atom 1: Habit --}}
+                <a href="{{ url('/features/habit') }}" class="group relative w-64 h-64 bg-white rounded-full shadow-xl border border-indigo-50 flex flex-col items-center justify-center p-8 hover:scale-110 hover:shadow-2xl transition duration-500">
+                    <div class="absolute inset-0 border-2 border-dashed border-indigo-100 rounded-full group-hover:rotate-180 transition duration-[2000ms]"></div>
+                    <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-lg group-hover:rotate-12 transition">🌱</div>
+                    <h4 class="text-lg font-black text-gray-900 mb-1">{{ __('ecosystem_habit_title') }}</h4>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest text-center">{{ __('habit_meta_title') }}</p>
                 </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+
+                {{-- Atom 2: Second Brain (Notes) --}}
+                <a href="{{ url('/solutions/second-brain') }}" class="group relative w-64 h-64 bg-white rounded-full shadow-xl border border-amber-50 flex flex-col items-center justify-center p-8 hover:scale-110 hover:shadow-2xl transition duration-500 md:mt-12">
+                    <div class="absolute inset-0 border-2 border-dashed border-amber-100 rounded-full group-hover:rotate-180 transition duration-[2000ms]"></div>
+                    <div class="w-16 h-16 bg-amber-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-lg group-hover:-rotate-12 transition">📝</div>
+                    <h4 class="text-lg font-black text-gray-900 mb-1">{{ __('ecosystem_notes_title') }}</h4>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest text-center">{{ __('notes_meta_title') }}</p>
                 </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+
+                {{-- Atom 3: Planner --}}
+                <a href="{{ url('/features/planner') }}" class="group relative w-64 h-64 bg-white rounded-full shadow-xl border border-purple-50 flex flex-col items-center justify-center p-8 hover:scale-110 hover:shadow-2xl transition duration-500">
+                    <div class="absolute inset-0 border-2 border-dashed border-purple-100 rounded-full group-hover:rotate-180 transition duration-[2000ms]"></div>
+                    <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-lg group-hover:rotate-12 transition">📅</div>
+                    <h4 class="text-lg font-black text-gray-900 mb-1">{{ __('ecosystem_planner_title') }}</h4>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest text-center">{{ __('planner_meta_title') }}</p>
                 </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+
+                {{-- Atom 4: Goal --}}
+                <a href="{{ url('/features/goal') }}" class="group relative w-64 h-64 bg-white rounded-full shadow-xl border border-rose-50 flex flex-col items-center justify-center p-8 hover:scale-110 hover:shadow-2xl transition duration-500 md:mt-12">
+                    <div class="absolute inset-0 border-2 border-dashed border-rose-100 rounded-full group-hover:rotate-180 transition duration-[2000ms]"></div>
+                    <div class="w-16 h-16 bg-rose-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-lg group-hover:-rotate-12 transition">🎯</div>
+                    <h4 class="text-lg font-black text-gray-900 mb-1">{{ __('ecosystem_goal_title') }}</h4>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest text-center">{{ __('goal_meta_title') }}</p>
                 </a>
+            </div>
+
+            <div class="mt-24 text-center">
+                <div class="inline-flex items-center gap-4 bg-indigo-600 text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-[0.4em] shadow-xl animate-pulse">
+                    Molecular Stability Confirmed ⚛️
+                </div>
             </div>
         </div>
     </section>

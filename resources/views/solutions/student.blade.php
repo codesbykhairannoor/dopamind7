@@ -199,23 +199,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('student_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('student_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('student_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">Spaced Repetition</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Active Recall</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Time Blocking</span>
-            </div>
-        </div>
-    </section>
 
     {{-- SECTION 3: SOLUTION HIGHLIGHT 1 (ACADEMIC & PROJECTS) --}}
     <section class="py-24 bg-gray-50 border-y border-gray-100">
@@ -362,7 +345,70 @@
         </div>
     </section>
 
-    {{-- SECTION: VISUAL FAQ --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - CLASSROOM BLUEPRINT STYLE --}}
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        {{-- Architect Grid --}}
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(79,70,229,0.05)_2px,transparent_2px),linear-gradient(90deg,rgba(79,70,229,0.05)_2px,transparent_2px)] [background-size:100px_100px] opacity-30"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="bg-white border-2 border-indigo-100 rounded-[3rem] p-8 md:p-20 shadow-2xl relative overflow-hidden group">
+                {{-- Blueprint Measurements --}}
+                <div class="absolute top-0 left-0 w-full h-8 border-b border-indigo-50 flex items-center px-6">
+                    <div class="text-[8px] font-mono text-indigo-300 uppercase tracking-widest">Dimension_A: 1280px x 800px</div>
+                </div>
+                <div class="absolute top-0 right-0 h-full w-8 border-l border-indigo-50 flex flex-col items-center py-6">
+                    <div class="text-[8px] font-mono text-indigo-300 uppercase tracking-widest vertical-text rotate-180">Scale: 1:1</div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-lg shadow-indigo-200">
+                            🧬 {{ __('student_science_badge') }}
+                        </div>
+                        
+                        <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                            {{ __('student_science_title') }}
+                        </h2>
+                        
+                        <div class="relative py-10 px-8 bg-indigo-50/50 rounded-2xl border-l-4 border-indigo-500 mb-10">
+                            <p class="text-gray-700 text-xl md:text-2xl leading-relaxed italic font-medium">
+                                "{{ __('student_science_desc') }}"
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4">
+                            <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-full border border-gray-100 shadow-sm hover:border-indigo-200 transition">
+                                <span class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
+                                <span class="text-sm font-bold text-gray-600">Spaced Repetition</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-full border border-gray-100 shadow-sm hover:border-indigo-200 transition">
+                                <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+                                <span class="text-sm font-bold text-gray-600">Active Recall</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-full border border-gray-100 shadow-sm hover:border-indigo-200 transition">
+                                <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                                <span class="text-sm font-bold text-gray-600">Time Blocking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative hidden lg:block">
+                        {{-- Study Schematic Illustration --}}
+                        <div class="relative w-full aspect-square bg-indigo-50/30 rounded-full border-2 border-dashed border-indigo-100 p-12 animate-spin-slow">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-48 h-48 bg-white border border-indigo-100 rounded-[2rem] shadow-xl flex items-center justify-center text-5xl transform rotate-12 group-hover:rotate-0 transition duration-700">📚</div>
+                            </div>
+                            {{-- Orbital Bubbles --}}
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-6 w-16 h-16 bg-white border border-indigo-100 rounded-2xl shadow-lg flex items-center justify-center text-2xl animate-bounce">🧠</div>
+                            <div class="absolute bottom-1/4 -right-4 w-14 h-14 bg-white border border-indigo-100 rounded-2xl shadow-lg flex items-center justify-center text-xl">⏳</div>
+                            <div class="absolute bottom-1/4 -left-4 w-12 h-12 bg-white border border-indigo-100 rounded-2xl shadow-lg flex items-center justify-center text-lg">📁</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-white">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('student_faq_title') }}</h2>
@@ -393,31 +439,55 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('student_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
-                </a>
+    {{-- NEW SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - TABBED FOLDER STYLE --}}
+    <section class="py-32 bg-indigo-50/30 border-t border-gray-100 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('student_hero_badge')]) }}
+            </h2>
+            
+            <div class="bg-white rounded-[3rem] shadow-2xl border border-indigo-100 overflow-hidden">
+                {{-- Folder Tabs --}}
+                <div class="flex flex-wrap border-b border-indigo-50 bg-indigo-50/50">
+                    <div class="px-8 py-4 bg-white border-r border-indigo-100 font-black text-indigo-600 uppercase tracking-widest text-xs flex items-center gap-3">
+                        <span class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
+                        Active Module
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-indigo-50">
+                    {{-- Tab 1: Planner --}}
+                    <a href="{{ url('/features/planner') }}" class="group p-10 hover:bg-slate-50 transition duration-500 block">
+                        <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:rotate-12 transition">📅</div>
+                        <h4 class="text-xl font-black text-gray-900 mb-2 group-hover:text-purple-600 transition">{{ __('ecosystem_planner_title') }}</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">{{ __('planner_meta_title') }}</p>
+                        <span class="text-xs font-black text-purple-400 uppercase tracking-[0.2em] group-hover:translate-x-2 transition inline-block">Learn more →</span>
+                    </a>
+
+                    {{-- Tab 2: Notes --}}
+                    <a href="{{ url('/solutions/second-brain') }}" class="group p-10 hover:bg-slate-50 transition duration-500 block">
+                        <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:rotate-12 transition">📝</div>
+                        <h4 class="text-xl font-black text-gray-900 mb-2 group-hover:text-amber-600 transition">{{ __('ecosystem_notes_title') }}</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">{{ __('notes_meta_title') }}</p>
+                        <span class="text-xs font-black text-amber-400 uppercase tracking-[0.2em] group-hover:translate-x-2 transition inline-block">Learn more →</span>
+                    </a>
+
+                    {{-- Tab 3: Habit --}}
+                    <a href="{{ url('/features/habit') }}" class="group p-10 hover:bg-slate-50 transition duration-500 block">
+                        <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:rotate-12 transition">🌱</div>
+                        <h4 class="text-xl font-black text-gray-900 mb-2 group-hover:text-indigo-600 transition">{{ __('ecosystem_habit_title') }}</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">{{ __('habit_meta_title') }}</p>
+                        <span class="text-xs font-black text-indigo-400 uppercase tracking-[0.2em] group-hover:translate-x-2 transition inline-block">Learn more →</span>
+                    </a>
+
+                    {{-- Tab 4: Goal --}}
+                    <a href="{{ url('/features/goal') }}" class="group p-10 hover:bg-slate-50 transition duration-500 block">
+                        <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:rotate-12 transition">🎯</div>
+                        <h4 class="text-xl font-black text-gray-900 mb-2 group-hover:text-rose-600 transition">{{ __('ecosystem_goal_title') }}</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">{{ __('goal_meta_title') }}</p>
+                        <span class="text-xs font-black text-rose-400 uppercase tracking-[0.2em] group-hover:translate-x-2 transition inline-block">Learn more →</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>

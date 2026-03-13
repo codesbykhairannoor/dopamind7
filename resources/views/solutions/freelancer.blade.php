@@ -199,23 +199,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-slate-50 border-y border-slate-100">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('freelance_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('freelance_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('freelance_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
-                <span class="text-xs font-black uppercase tracking-tighter">Throughput Accounting</span>
-                <span class="text-xs font-black uppercase tracking-tighter">Parkinson's Law</span>
-                <span class="text-xs font-black uppercase tracking-tighter">Leveraged Output</span>
-            </div>
-        </div>
-    </section>
 
     {{-- SECTION 3: COMMAND CENTER (DARK MODE HIGHLIGHT) --}}
     <section class="py-24 bg-slate-950 border-y border-slate-900 relative overflow-hidden">
@@ -398,7 +381,67 @@
         </div>
     </section>
 
-    {{-- SECTION: VISUAL FAQ --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - PORTFOLIO PIPELINE STYLE --}}
+    <section class="py-32 bg-slate-900 relative overflow-hidden">
+        {{-- Pipeline Background --}}
+        <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] [background-size:100px_100px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-[3rem] p-10 md:p-20 shadow-2xl relative overflow-hidden group">
+                
+                <div class="flex flex-col lg:flex-row gap-20 items-center">
+                    <div class="flex-1">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-10 shadow-lg">
+                            🧬 {{ __('freelance_science_badge') }}
+                        </div>
+
+                        <h2 class="text-4xl md:text-6xl font-black text-white mb-10 leading-tight">
+                            {{ __('freelance_science_title') }}
+                        </h2>
+
+                        <div class="relative py-10 px-10 bg-indigo-950/50 border-r-8 border-indigo-500 rounded-l-3xl mb-12">
+                            <p class="text-indigo-100 text-xl md:text-2xl font-medium leading-relaxed italic">
+                                "{{ __('freelance_science_desc') }}"
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4">
+                            <div class="flex items-center gap-3 bg-white/5 px-6 py-4 rounded-xl border border-white/5 hover:bg-white/10 transition">
+                                <div class="w-2 h-2 rounded-full bg-indigo-400 shadow-[0_0_10px_rgba(129,140,248,0.5)]"></div>
+                                <span class="text-sm font-bold text-slate-300">Throughput Accounting</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white/5 px-6 py-4 rounded-xl border border-white/5 hover:bg-white/10 transition">
+                                <div class="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(192,132,252,0.5)]"></div>
+                                <span class="text-sm font-bold text-slate-300">Parkinson's Law</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white/5 px-6 py-4 rounded-xl border border-white/5 hover:bg-white/10 transition">
+                                <div class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div>
+                                <span class="text-sm font-bold text-slate-300">Leveraged Output</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-shrink-0 relative hidden lg:block">
+                        {{-- Pipeline Visualization --}}
+                        <div class="w-72 h-96 relative">
+                            {{-- Pipeline Tube --}}
+                            <div class="absolute left-1/2 -translate-x-1/2 w-4 h-full bg-slate-700/50 rounded-full"></div>
+                            {{-- Flowing Bubbles --}}
+                            <div class="absolute left-1/2 -translate-x-1/2 top-4 w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-xl shadow-lg animate-bounce">📦</div>
+                            <div class="absolute left-1/2 -translate-x-1/2 top-1/3 w-12 h-12 bg-purple-600 rounded-2xl flex items-center justify-center text-xl shadow-lg animate-bounce delay-1000">📁</div>
+                            <div class="absolute left-1/2 -translate-x-1/2 bottom-1/4 w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center text-2xl shadow-xl animate-bounce delay-500">💰</div>
+                            
+                            {{-- Connector Lines --}}
+                            <div class="absolute top-10 right-0 w-12 h-px bg-slate-600"></div>
+                            <div class="absolute top-1/3 left-0 w-12 h-px bg-slate-600"></div>
+                            <div class="absolute bottom-1/4 right-0 w-12 h-px bg-slate-600"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('freelance_faq_title') }}</h2>
@@ -430,32 +473,70 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('freelance_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+    {{-- NEW SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - MASONRY DECK STYLE --}}
+    <section class="py-32 bg-gray-50 border-t border-gray-100 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('freelance_hero_badge')]) }}
+            </h2>
+            
+    {{-- NEW SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - MASONRY DECK STYLE --}}
+    <section class="py-32 bg-gray-50 border-t border-gray-100 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('freelance_hero_badge')]) }}
+            </h2>
+            
+            <div class="columns-1 md:columns-2 gap-8 space-y-8">
+                {{-- Card 1: Finance --}}
+                <a href="{{ url('/features/finance') }}" class="break-inside-avoid block group bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-12 transition">💰</div>
+                        <h4 class="text-2xl font-black text-gray-900 group-hover:text-emerald-600 transition">{{ __('ecosystem_finance_title') }}</h4>
+                    </div>
+                    <p class="text-gray-500 leading-relaxed mb-8">{{ __('finance_meta_title') }}</p>
+                    <div class="flex items-center gap-2 text-emerald-600 font-black text-sm uppercase tracking-widest">
+                        Manage Wealth <span class="group-hover:translate-x-2 transition">→</span>
+                    </div>
                 </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+
+                {{-- Card 2: Planner (Tall) --}}
+                <a href="{{ url('/features/planner') }}" class="break-inside-avoid block group bg-indigo-600 p-10 rounded-[2.5rem] text-white shadow-xl hover:shadow-indigo-200 transition duration-500 transform hover:-translate-y-2">
+                    <div class="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center text-4xl mb-8 group-hover:scale-110 transition">📅</div>
+                    <h4 class="text-3xl font-black mb-4 group-hover:text-indigo-200 transition">{{ __('ecosystem_planner_title') }}</h4>
+                    <p class="text-indigo-100 leading-relaxed mb-12 text-lg">{{ __('planner_meta_title') }}</p>
+                    <div class="p-6 bg-white/10 rounded-2xl border border-white/10">
+                        <p class="text-xs font-black uppercase tracking-widest text-indigo-200 mb-2">Key Integration</p>
+                        <p class="font-bold text-sm">Synchronize client milestones with your daily focus blocks.</p>
+                    </div>
                 </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+
+                {{-- Card 3: Notes --}}
+                <a href="{{ url('/solutions/second-brain') }}" class="break-inside-avoid block group bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-12 transition">📝</div>
+                        <h4 class="text-2xl font-black text-gray-900 group-hover:text-amber-600 transition">{{ __('ecosystem_notes_title') }}</h4>
+                    </div>
+                    <p class="text-gray-500 leading-relaxed mb-8">{{ __('notes_meta_title') }}</p>
+                    <div class="flex items-center gap-2 text-amber-600 font-black text-sm uppercase tracking-widest">
+                        Capture Ideas <span class="group-hover:translate-x-2 transition">→</span>
+                    </div>
                 </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+
+                {{-- Card 4: Job Tracker --}}
+                <a href="{{ url('/features/job') }}" class="break-inside-avoid block group bg-slate-900 p-10 rounded-[2.5rem] text-white shadow-xl hover:shadow-slate-300 transition duration-500 transform hover:-translate-y-2">
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="w-16 h-16 bg-white/10 text-white rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-12 transition">💼</div>
+                        <h4 class="text-2xl font-black group-hover:text-indigo-400 transition">{{ __('ecosystem_job_title') }}</h4>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-8">{{ __('job_meta_title') }}</p>
+                    <div class="flex items-center gap-2 text-indigo-400 font-black text-sm uppercase tracking-widest">
+                        Pipeline Review <span class="group-hover:translate-x-2 transition">→</span>
+                    </div>
                 </a>
             </div>
+        </div>
+    </section>
         </div>
     </section>
 

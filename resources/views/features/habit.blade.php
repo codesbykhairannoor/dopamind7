@@ -227,23 +227,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('habit_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('habit_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('habit_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">James Clear</span>
-                <span class="text-sm font-black uppercase tracking-tighter">BJ Fogg</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Charles Duhigg</span>
-            </div>
-        </div>
-    </section>
 
     {{-- NEW SECTION 3: STREAK MOMENTUM TIMELINE --}}
     <section class="py-32 bg-slate-950 text-white relative overflow-hidden">
@@ -349,62 +332,70 @@
         </div>
     </section>
 
-    {{-- NEW SECTION 3.5: IDENTITY BRIDGE (STACKED CARDS) --}}
-    <section class="py-32 bg-slate-50 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col lg:flex-row gap-20 items-center">
-                <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-orange-200">
-                        {{ __('habit_identity_badge') }}
-                    </div>
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
-                        {{ __('habit_identity_title') }}
-                    </h2>
-                    <p class="text-gray-600 text-xl leading-relaxed font-medium mb-12">
-                        {{ __('habit_identity_desc') }}
-                    </p>
-                    
-                    <div class="grid gap-6">
-                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex gap-6 items-center group hover:bg-orange-600 transition duration-500 hover:shadow-xl hover:scale-105">
-                            <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 group-hover:text-white transition">🏠</div>
-                            <div>
-                                <h4 class="font-black text-gray-900 group-hover:text-white transition">{{ __('habit_card_1_title') }}</h4>
-                                <p class="text-gray-500 text-sm font-medium group-hover:text-orange-100 transition">{{ __('habit_card_1_desc') }}</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex gap-6 items-center group hover:bg-orange-600 transition duration-500 hover:shadow-xl hover:scale-105">
-                            <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 group-hover:text-white transition">⏱️</div>
-                            <div>
-                                <h4 class="font-black text-gray-900 group-hover:text-white transition">{{ __('habit_card_2_title') }}</h4>
-                                <p class="text-gray-500 text-sm font-medium group-hover:text-orange-100 transition">{{ __('habit_card_2_desc') }}</p>
-                            </div>
-                        </div>
-                    </div>
+  {{-- NEW SECTION 3.5: IDENTITY BRIDGE (STACKED CARDS) --}}
+<section class="py-20 lg:py-32 bg-slate-50 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+            
+            {{-- Left Side: Copywriting --}}
+            <div class="flex-1 text-center lg:text-left animate-in fade-in slide-in-from-left-8 duration-700">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[10px] font-black uppercase tracking-[0.2em] mb-6 lg:mb-8 shadow-sm border border-orange-200">
+                    {{ __('habit_identity_badge') }}
                 </div>
-
-                <div class="flex-1 relative h-[500px]">
-                    {{-- Floating Stack Visual --}}
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        {{-- Card 3 (Bottom) --}}
-                        <div class="absolute w-[80%] h-64 bg-white rounded-[3rem] shadow-2xl border border-gray-100 transform rotate-[-6deg] translate-y-20 opacity-40 blur-sm"></div>
-                        {{-- Card 2 (Middle) --}}
-                        <div class="absolute w-[85%] h-64 bg-white rounded-[3rem] shadow-2xl border border-gray-100 transform rotate-[-3deg] translate-y-10 opacity-70"></div>
-                        {{-- Card 1 (Top) --}}
-                        <div class="absolute w-[90%] h-64 bg-white rounded-[3.5rem] shadow-[0_30px_60px_rgba(249,115,22,0.15)] border border-orange-100 flex flex-col items-center justify-center p-12 text-center group hover:-translate-y-4 transition duration-700">
-                            <div class="w-20 h-20 bg-orange-500 rounded-3xl flex items-center justify-center text-4xl text-white mb-6 shadow-xl shadow-orange-200 group-hover:rotate-12 transition duration-500">
-                                ⭐
-                            </div>
-                            <h3 class="text-2xl font-black text-gray-900 mb-2">{{ __('habit_card_3_title') }}</h3>
-                            <p class="text-gray-500 font-medium leading-relaxed">{{ __('habit_card_3_desc') }}</p>
-                            {{-- Sparkle Decorations --}}
-                            <div class="absolute top-8 right-8 text-orange-400 animate-pulse">✨</div>
-                            <div class="absolute bottom-8 left-8 text-orange-400 animate-pulse delay-700">✨</div>
+                <h2 class="text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 lg:mb-8 leading-tight tracking-tight">
+                    {{ __('habit_identity_title') }}
+                </h2>
+                <p class="text-gray-600 text-lg lg:text-xl leading-relaxed font-medium mb-10 lg:mb-12">
+                    {{ __('habit_identity_desc') }}
+                </p>
+                
+                {{-- Side Cards List --}}
+                <div class="grid gap-4 lg:gap-6 text-left">
+                    <div class="bg-white p-5 lg:p-6 rounded-2xl shadow-sm border border-gray-100 flex gap-4 lg:gap-6 items-center group hover:bg-orange-600 transition duration-500 hover:shadow-xl hover:scale-[1.02] lg:hover:scale-105">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex-shrink-0 flex items-center justify-center text-xl group-hover:bg-white/20 group-hover:text-white transition">🏠</div>
+                        <div>
+                            <h4 class="font-black text-gray-900 group-hover:text-white transition text-sm lg:text-base">{{ __('habit_card_1_title') }}</h4>
+                            <p class="text-gray-500 text-xs lg:text-sm font-medium group-hover:text-orange-100 transition">{{ __('habit_card_1_desc') }}</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-5 lg:p-6 rounded-2xl shadow-sm border border-gray-100 flex gap-4 lg:gap-6 items-center group hover:bg-orange-600 transition duration-500 hover:shadow-xl hover:scale-[1.02] lg:hover:scale-105">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex-shrink-0 flex items-center justify-center text-xl group-hover:bg-white/20 group-hover:text-white transition">⏱️</div>
+                        <div>
+                            <h4 class="font-black text-gray-900 group-hover:text-white transition text-sm lg:text-base">{{ __('habit_card_2_title') }}</h4>
+                            <p class="text-gray-500 text-xs lg:text-sm font-medium group-hover:text-orange-100 transition">{{ __('habit_card_2_desc') }}</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {{-- Right Side: Visual Stack --}}
+            <div class="flex-1 relative w-full h-[350px] lg:h-[500px] mt-10 lg:mt-0">
+                <div class="absolute inset-0 flex items-center justify-center">
+                    
+                    {{-- Card 3 (Bottom) --}}
+                    <div class="absolute w-[85%] lg:w-[80%] h-56 lg:h-64 bg-white rounded-[2.5rem] lg:rounded-[3rem] shadow-2xl border border-gray-100 transform rotate-[-4deg] lg:rotate-[-6deg] translate-y-12 lg:translate-y-20 opacity-40 blur-[2px] lg:blur-sm"></div>
+                    
+                    {{-- Card 2 (Middle) --}}
+                    <div class="absolute w-[90%] lg:w-[85%] h-56 lg:h-64 bg-white rounded-[2.5rem] lg:rounded-[3rem] shadow-2xl border border-gray-100 transform rotate-[-2deg] lg:rotate-[-3deg] translate-y-6 lg:translate-y-10 opacity-70"></div>
+                    
+                    {{-- Card 1 (Top) --}}
+                    <div class="absolute w-full lg:w-[90%] h-56 lg:h-64 bg-white rounded-[2.5rem] lg:rounded-[3.5rem] shadow-[0_20px_50px_rgba(249,115,22,0.12)] lg:shadow-[0_30px_60px_rgba(249,115,22,0.15)] border border-orange-100 flex flex-col items-center justify-center p-8 lg:p-12 text-center group hover:-translate-y-2 lg:hover:-translate-y-4 transition duration-700 z-10">
+                        <div class="w-16 h-16 lg:w-20 lg:h-20 bg-orange-500 rounded-2xl lg:rounded-3xl flex items-center justify-center text-3xl lg:text-4xl text-white mb-4 lg:mb-6 shadow-xl shadow-orange-200 group-hover:rotate-12 transition duration-500">
+                            ⭐
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-black text-gray-900 mb-2">{{ __('habit_card_3_title') }}</h3>
+                        <p class="text-gray-500 text-sm lg:text-base font-medium leading-relaxed">{{ __('habit_card_3_desc') }}</p>
+                        
+                        {{-- Sparkle Decorations --}}
+                        <div class="absolute top-6 right-6 lg:top-8 lg:right-8 text-orange-400 animate-pulse text-lg">✨</div>
+                        <div class="absolute bottom-6 left-6 lg:bottom-8 lg:left-8 text-orange-400 animate-pulse delay-700 text-lg">✨</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-700">
@@ -419,7 +410,48 @@
         </div>
     </section>
 
-    {{-- SECTION 7: BOTTOM CTA --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - ATOMIC PROGRESS STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col items-center">
+                {{-- Atomic Connector Visualization --}}
+                <div class="flex items-center justify-center mb-16 relative">
+                    <div class="w-24 h-24 rounded-full bg-indigo-600/10 flex items-center justify-center animate-pulse">
+                        <div class="w-16 h-16 rounded-full bg-indigo-600/20 flex items-center justify-center">
+                            <div class="w-8 h-8 rounded-full bg-indigo-600 shadow-[0_0_20px_rgba(79,70,229,0.6)]"></div>
+                        </div>
+                    </div>
+                    {{-- Floating Atoms --}}
+                    <div class="absolute -top-6 -left-12 w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 animate-bounce duration-[3000ms]"></div>
+                    <div class="absolute -bottom-8 -right-10 w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 animate-bounce duration-[4000ms]"></div>
+                </div>
+
+                <div class="max-w-4xl w-full bg-white border-l-8 border-indigo-500 shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] p-12 md:p-20 rounded-r-[3rem] relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-bl-[10rem] -z-10 opacity-50"></div>
+                    
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-8">
+                        🧬 {{ __('habit_science_badge') }}
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
+                        {{ __('habit_science_title') }}
+                    </h2>
+                    
+                    <p class="text-gray-600 text-xl leading-relaxed mb-12 italic font-medium opacity-80 border-b border-gray-100 pb-12">
+                        {{ __('habit_science_desc') }}
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center gap-4">
+                        <span class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] w-full mb-2">Verified Methods:</span>
+                        <div class="px-6 py-3 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 font-black text-xs shadow-sm hover:scale-110 transition">James Clear</div>
+                        <div class="px-6 py-3 rounded-full bg-purple-50 border border-purple-100 text-purple-700 font-black text-xs shadow-sm hover:scale-110 transition">BJ Fogg</div>
+                        <div class="px-6 py-3 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 font-black text-xs shadow-sm hover:scale-110 transition">Charles Duhigg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-24 px-6 text-center">
         <div class="max-w-5xl mx-auto bg-indigo-900 rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-pulse duration-[5000ms]"></div>
@@ -437,32 +469,64 @@
         </div>
     </section>
 
-    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('habit_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - IDENTITY CHAIN STYLE --}}
+    <section class="py-32 bg-slate-900 relative overflow-hidden">
+        {{-- Animated Background Particles --}}
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-2 h-2 bg-indigo-500 rounded-full animate-ping"></div>
+            <div class="absolute bottom-20 right-20 w-3 h-3 bg-purple-500 rounded-full animate-ping delay-700"></div>
+            <div class="absolute top-1/2 left-1/4 w-1 h-1 bg-emerald-500 rounded-full animate-ping delay-300"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('habit_hero_badge')]) }}
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                {{-- Link 1: Journal --}}
+                <a href="{{ url('/features/journal') }}" class="group relative p-1 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-[2.5rem] hover:from-indigo-500/40 hover:to-purple-500/40 transition duration-500">
+                    <div class="bg-slate-800 p-8 rounded-[2.4rem] h-full flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">📔</div>
+                        <h4 class="font-black text-white text-lg mb-2">{{ __('ecosystem_journal_title') }}</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed uppercase tracking-widest font-bold">Reflection Hub</p>
+                    </div>
+                    <div class="absolute -right-4 top-1/2 -translate-y-1/2 hidden md:block text-slate-700 text-2xl font-black">──</div>
                 </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
+
+                {{-- Link 2: Planner --}}
+                <a href="{{ url('/features/planner') }}" class="group relative p-1 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-[2.5rem] hover:from-purple-500/40 hover:to-pink-500/40 transition duration-500">
+                    <div class="bg-slate-800 p-8 rounded-[2.4rem] h-full flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-purple-500/10 text-purple-400 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">📅</div>
+                        <h4 class="font-black text-white text-lg mb-2">{{ __('ecosystem_planner_title') }}</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed uppercase tracking-widest font-bold">Execution Layer</p>
+                    </div>
+                    <div class="absolute -right-4 top-1/2 -translate-y-1/2 hidden md:block text-slate-700 text-2xl font-black">──</div>
                 </a>
-                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
-                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+
+                {{-- Link 3: Goal --}}
+                <a href="{{ url('/features/goal') }}" class="group relative p-1 bg-gradient-to-br from-pink-500/20 to-orange-500/20 rounded-[2.5rem] hover:from-pink-500/40 hover:to-orange-500/40 transition duration-500">
+                    <div class="bg-slate-800 p-8 rounded-[2.4rem] h-full flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">🎯</div>
+                        <h4 class="font-black text-white text-lg mb-2">{{ __('ecosystem_goal_title') }}</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed uppercase tracking-widest font-bold">Vision Target</p>
+                    </div>
+                    <div class="absolute -right-4 top-1/2 -translate-y-1/2 hidden md:block text-slate-700 text-2xl font-black">──</div>
                 </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
+
+                {{-- Link 4: Notes --}}
+                <a href="{{ url('/solutions/second-brain') }}" class="group relative p-1 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-[2.5rem] hover:from-orange-500/40 hover:to-yellow-500/40 transition duration-500">
+                    <div class="bg-slate-800 p-8 rounded-[2.4rem] h-full flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-orange-500/10 text-orange-400 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">📝</div>
+                        <h4 class="font-black text-white text-lg mb-2">{{ __('ecosystem_notes_title') }}</h4>
+                        <p class="text-slate-400 text-xs leading-relaxed uppercase tracking-widest font-bold">Knowledge Base</p>
+                    </div>
                 </a>
             </div>
+            
+            <p class="text-center mt-16 text-slate-500 font-bold uppercase tracking-[0.3em] text-[10px]">
+                {{ __('ecosystem_synergy_footer') }}
+            </p>
         </div>
     </section>
 

@@ -365,7 +365,77 @@
         </div>
     </section>
 
-    {{-- SECTION: VISUAL FAQ --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - SYNAPTIC NETWORK STYLE --}}
+    <section class="py-40 bg-slate-900 relative overflow-hidden">
+        {{-- Synaptic Net Background --}}
+        <div class="absolute inset-0 z-0">
+            <svg class="w-full h-full opacity-10" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="nodeGradient" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stop-color="#4f46e5" />
+                        <stop offset="100%" stop-color="transparent" />
+                    </radialGradient>
+                </defs>
+                <circle cx="200" cy="200" r="150" fill="url(#nodeGradient)" class="animate-pulse" />
+                <circle cx="800" cy="300" r="100" fill="url(#nodeGradient)" class="animate-pulse delay-700" />
+                <circle cx="500" cy="800" r="120" fill="url(#nodeGradient)" class="animate-pulse delay-1000" />
+                <path d="M200 200 L800 300 M800 300 L500 800 M500 800 L200 200" stroke="#4f46e5" stroke-width="1" stroke-dasharray="10 10" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[10px] font-black uppercase tracking-[0.3em] mb-10 rounded-lg">
+                        🧬 {{ __('brain_science_badge') }}
+                    </div>
+
+                    <h2 class="text-4xl md:text-7xl font-black text-white mb-10 leading-[1.1]">
+                        {{ __('brain_science_title') }}
+                    </h2>
+
+                    <div class="relative py-12 px-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] mb-12 shadow-2xl">
+                        <div class="absolute -top-6 -left-6 w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-indigo-500/20">"</div>
+                        <p class="text-indigo-100 text-xl md:text-3xl font-serif italic leading-relaxed">
+                            {{ __('brain_science_desc') }}
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-6">
+                        <div class="px-6 py-4 bg-slate-800 rounded-2xl border border-slate-700 hover:border-indigo-500 transition cursor-help group">
+                            <p class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1 group-hover:text-white">Active_Link_01</p>
+                            <h4 class="font-bold text-slate-200">Cognitive Offloading</h4>
+                        </div>
+                        <div class="px-6 py-4 bg-slate-800 rounded-2xl border border-slate-700 hover:border-purple-500 transition cursor-help group">
+                            <p class="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1 group-hover:text-white">Active_Link_02</p>
+                            <h4 class="font-bold text-slate-200">Extended Mind Thesis</h4>
+                        </div>
+                        <div class="px-6 py-4 bg-slate-800 rounded-2xl border border-slate-700 hover:border-emerald-500 transition cursor-help group">
+                            <p class="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1 group-hover:text-white">Active_Link_03</p>
+                            <h4 class="font-bold text-slate-200">Zettelkasten Method</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative hidden lg:block">
+                    {{-- Synaptic Core Visual --}}
+                    <div class="w-full aspect-square bg-indigo-600 rounded-[4rem] p-1 flex items-center justify-center shadow-[0_0_100px_rgba(79,70,229,0.3)] relative group overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 via-indigo-600 to-indigo-400 group-hover:scale-110 transition duration-1000"></div>
+                        <div class="relative z-10 text-center">
+                            <div class="text-[120px] mb-4 drop-shadow-2xl animate-pulse">🧠</div>
+                            <div class="bg-black/20 backdrop-blur-md px-6 py-2 rounded-full border border-white/10 inline-block font-black text-xs uppercase tracking-widest">
+                                Synaptic_Sync_Active
+                            </div>
+                        </div>
+                        {{-- Circular Data Rings --}}
+                        <div class="absolute inset-4 border border-white/5 rounded-full animate-spin-slow"></div>
+                        <div class="absolute inset-12 border border-white/5 rounded-full animate-spin-reverse-slow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-black text-center text-slate-900 mb-16">{{ __('brain_faq_title') }}</h2>
@@ -380,23 +450,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-white border-b border-slate-100">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 text-[10px] font-black uppercase tracking-widest mb-8">
-                🧬 {{ __('brain_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">{{ __('brain_science_title') }}</h2>
-            <p class="text-slate-500 text-xl leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('brain_science_desc') }}
-            </p>
-            <div class="mt-12 flex flex-wrap justify-center gap-8 opacity-40 grayscale hover:grayscale-0 transition duration-500">
-                <span class="text-sm font-black uppercase tracking-tighter">Cognitive Offloading</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Extended Mind Thesis</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Zettelkasten Method</span>
-            </div>
-        </div>
-    </section>
 
     {{-- SECTION 5: CTA (DESAIN LUAS & ELEGAN) --}}
     <section class="py-32 bg-slate-50 relative overflow-hidden">
@@ -429,30 +482,80 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-slate-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('brain_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 md:p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-emerald-100 transition duration-500">
-                    <span class="text-3xl mb-4 block group-hover:scale-110 transition transform origin-left">🌱</span>
-                    <h4 class="font-bold text-slate-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-slate-500 mt-2 line-clamp-2">{{ __('habit_meta_title') }}</p>
+    {{-- NEW SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - SYSTEM HIERARCHY STYLE --}}
+    <section class="py-32 bg-slate-900 border-t border-slate-800 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-24 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('brain_hero_badge')]) }}
+            </h2>
+            
+            <div class="space-y-4">
+                {{-- Level 1: Calendar (Foundation) --}}
+                <a href="{{ url('/features/calendar') }}" class="group block bg-slate-800 border border-slate-700 p-8 rounded-[3rem] hover:border-indigo-500 transition duration-500 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition">
+                        <span class="text-8xl">01</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center text-3xl">📅</div>
+                            <div>
+                                <h4 class="text-2xl font-black text-white group-hover:text-indigo-400 transition">{{ __('ecosystem_calendar_title') }}</h4>
+                                <p class="text-slate-400 text-sm">{{ __('calendar_meta_title') }}</p>
+                            </div>
+                        </div>
+                        <div class="text-indigo-400 font-black text-sm uppercase tracking-[0.2em]">Context Layer</div>
+                    </div>
                 </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 md:p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-blue-100 transition duration-500">
-                    <span class="text-3xl mb-4 block group-hover:scale-110 transition transform origin-left">📅</span>
-                    <h4 class="font-bold text-slate-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-slate-500 mt-2 line-clamp-2">{{ __('planner_meta_title') }}</p>
+
+                {{-- Level 2: Planner --}}
+                <a href="{{ url('/features/planner') }}" class="group block bg-slate-800 border border-slate-700 p-8 rounded-[3rem] hover:border-purple-500 transition duration-500 relative overflow-hidden ml-4 md:ml-12">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition">
+                        <span class="text-8xl">02</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center text-3xl">📅</div>
+                            <div>
+                                <h4 class="text-2xl font-black text-white group-hover:text-purple-400 transition">{{ __('ecosystem_planner_title') }}</h4>
+                                <p class="text-slate-400 text-sm">{{ __('planner_meta_title') }}</p>
+                            </div>
+                        </div>
+                        <div class="text-purple-400 font-black text-sm uppercase tracking-[0.2em]">Structure Layer</div>
+                    </div>
                 </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 md:p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-emerald-100 transition duration-500">
-                    <span class="text-3xl mb-4 block group-hover:scale-110 transition transform origin-left">💰</span>
-                    <h4 class="font-bold text-slate-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-slate-500 mt-2 line-clamp-2">{{ __('finance_meta_title') }}</p>
+
+                {{-- Level 3: Journal --}}
+                <a href="{{ url('/features/journal') }}" class="group block bg-slate-800 border border-slate-700 p-8 rounded-[3rem] hover:border-amber-500 transition duration-500 relative overflow-hidden ml-8 md:ml-24">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition">
+                        <span class="text-8xl">03</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-amber-500/20 text-amber-400 rounded-2xl flex items-center justify-center text-3xl">📔</div>
+                            <div>
+                                <h4 class="text-2xl font-black text-white group-hover:text-amber-400 transition">{{ __('ecosystem_journal_title') }}</h4>
+                                <p class="text-slate-400 text-sm">{{ __('journal_meta_title') }}</p>
+                            </div>
+                        </div>
+                        <div class="text-amber-400 font-black text-sm uppercase tracking-[0.2em]">Reflection Layer</div>
+                    </div>
                 </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 md:p-8 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-indigo-100 transition duration-500">
-                    <span class="text-3xl mb-4 block group-hover:scale-110 transition transform origin-left">📔</span>
-                    <h4 class="font-bold text-slate-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-slate-500 mt-2 line-clamp-2">{{ __('journal_meta_title') }}</p>
+
+                {{-- Level 4: Habit --}}
+                <a href="{{ url('/features/habit') }}" class="group block bg-slate-800 border border-slate-700 p-8 rounded-[3rem] hover:border-emerald-500 transition duration-500 relative overflow-hidden ml-12 md:ml-36">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition">
+                        <span class="text-88l">04</span>
+                    </div>
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-3xl">🌱</div>
+                            <div>
+                                <h4 class="text-2xl font-black text-white group-hover:text-emerald-400 transition">{{ __('ecosystem_habit_title') }}</h4>
+                                <p class="text-slate-400 text-sm">{{ __('habit_meta_title') }}</p>
+                            </div>
+                        </div>
+                        <div class="text-emerald-400 font-black text-sm uppercase tracking-[0.2em]">Automation Layer</div>
+                    </div>
                 </a>
             </div>
         </div>

@@ -131,23 +131,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-indigo-50/50 border-y border-indigo-100/30 text-center">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('solve_mental_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('solve_mental_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed italic max-w-2xl mx-auto">
-                {{ __('solve_mental_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-40 grayscale">
-                <span class="text-xs font-black uppercase tracking-tighter">Neuroplasticity</span>
-                <span class="text-xs font-black uppercase tracking-tighter">Metacognition</span>
-                <span class="text-xs font-black uppercase tracking-tighter">Entropy Reduction</span>
-            </div>
-        </div>
-    </section>
 
     {{-- SECTION 3: THE SOLUTION (THE SANCTUARY / ZEN CARDS) --}}
     <section class="py-32 bg-slate-900 text-white relative">
@@ -276,7 +259,67 @@
         </div>
     </section>
 
-    {{-- SECTION: VISUAL FAQ --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - MIND MAP REFLECTION STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        {{-- Organic Mind Map Lines --}}
+        <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+            <svg class="w-full h-full" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M400 400C450 300 550 250 650 300" stroke="currentColor" stroke-width="2" stroke-dasharray="8 8" />
+                <path d="M400 400C350 300 250 250 150 300" stroke="currentColor" stroke-width="2" stroke-dasharray="8 8" />
+                <path d="M400 400C450 500 550 550 650 500" stroke="currentColor" stroke-width="2" stroke-dasharray="8 8" />
+                <path d="M400 400C350 500 250 550 150 500" stroke="currentColor" stroke-width="2" stroke-dasharray="8 8" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6 rounded-full">
+                    🧬 {{ __('solve_mental_science_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 max-w-4xl mx-auto leading-tight">
+                    {{ __('solve_mental_science_title') }}
+                </h2>
+                <div class="w-24 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-12 items-center">
+                {{-- Left: Nodes --}}
+                <div class="space-y-8">
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-right transform hover:-translate-x-2 transition">
+                        <span class="block text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Process_01</span>
+                        <h4 class="font-bold text-gray-900">Neuroplasticity</h4>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-right transform hover:-translate-x-2 transition">
+                        <span class="block text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1">Process_02</span>
+                        <h4 class="font-bold text-gray-900">Metacognition</h4>
+                    </div>
+                </div>
+
+                {{-- Center: The Core Thought --}}
+                <div class="relative py-16 px-12 bg-indigo-600 rounded-[4rem] text-white shadow-[0_40px_80px_rgba(79,70,229,0.2)] text-center scale-110 z-20 overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-700 to-indigo-500 opacity-0 group-hover:opacity-100 transition duration-700"></div>
+                    <p class="relative z-10 text-2xl font-serif italic leading-relaxed">
+                        "{{ __('solve_mental_science_desc') }}"
+                    </p>
+                    {{-- Pulsing Glow --}}
+                    <div class="absolute -inset-2 bg-white/10 rounded-[4.5rem] animate-pulse"></div>
+                </div>
+
+                {{-- Right: Nodes --}}
+                <div class="space-y-8">
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transform hover:translate-x-2 transition">
+                        <span class="block text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1">Process_03</span>
+                        <h4 class="font-bold text-gray-900">Entropy Reduction</h4>
+                    </div>
+                    <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transform hover:translate-x-2 transition">
+                        <span class="block text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">Process_04</span>
+                        <h4 class="font-bold text-gray-900">Cognitive Load Balance</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('solve_mental_faq_title') }}</h2>
@@ -307,31 +350,73 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('solve_mental_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
-                </a>
+    {{-- NEW SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - FLOATING NODES STYLE --}}
+    <section class="py-32 bg-white border-t border-gray-100 relative overflow-hidden">
+        {{-- Soft radial gradients for atmosphere --}}
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(79,70,229,0.02),transparent_70%)]"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-24 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('solve_mental_hero_badge')]) }}
+            </h2>
+            
+            <div class="relative h-[600px] md:h-[500px]">
+                {{-- Node 1: Habit (Top Left) --}}
+                <div class="absolute top-0 left-0 md:left-10 animate-float">
+                    <a href="{{ url('/features/habit') }}" class="block p-8 bg-white border border-indigo-50 shadow-xl rounded-[2.5rem] hover:border-indigo-200 transition duration-500 hover:scale-105 group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-12 transition">🌱</div>
+                            <div>
+                                <h4 class="font-black text-gray-900 group-hover:text-indigo-600 transition">{{ __('ecosystem_habit_title') }}</h4>
+                                <p class="text-gray-400 text-[10px] uppercase tracking-widest">Automation</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                {{-- Node 2: Planner (Top Right) --}}
+                <div class="absolute top-20 right-0 md:right-10 animate-float-delayed">
+                    <a href="{{ url('/features/planner') }}" class="block p-8 bg-white border border-purple-50 shadow-xl rounded-[2.5rem] hover:border-purple-200 transition duration-500 hover:scale-105 group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-12 transition">📅</div>
+                            <div>
+                                <h4 class="font-black text-gray-900 group-hover:text-purple-600 transition">{{ __('ecosystem_planner_title') }}</h4>
+                                <p class="text-gray-400 text-[10px] uppercase tracking-widest">Structure</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                {{-- Node 3: Notes (Bottom Left) --}}
+                <div class="absolute bottom-10 left-10 md:left-40 animate-float-slow">
+                    <a href="{{ url('/solutions/second-brain') }}" class="block p-8 bg-white border border-amber-50 shadow-xl rounded-[2.5rem] hover:border-amber-200 transition duration-500 hover:scale-105 group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-12 transition">📝</div>
+                            <div>
+                                <h4 class="font-black text-gray-900 group-hover:text-amber-600 transition">{{ __('ecosystem_notes_title') }}</h4>
+                                <p class="text-gray-400 text-[10px] uppercase tracking-widest">Capture</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                {{-- Node 4: Journal (Bottom Right) --}}
+                <div class="absolute bottom-0 right-10 md:right-40 animate-float">
+                    <a href="{{ url('/features/journal') }}" class="block p-8 bg-white border border-rose-50 shadow-xl rounded-[2.5rem] hover:border-rose-200 transition duration-500 hover:scale-105 group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-3xl group-hover:rotate-12 transition">📔</div>
+                            <div>
+                                <h4 class="font-black text-gray-900 group-hover:text-rose-600 transition">{{ __('ecosystem_journal_title') }}</h4>
+                                <p class="text-gray-400 text-[10px] uppercase tracking-widest">Reflection</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                {{-- Central Connection Point --}}
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-indigo-200 rounded-full hidden md:block">
+                    <div class="absolute inset-0 bg-indigo-400 rounded-full animate-ping opacity-25"></div>
+                </div>
             </div>
         </div>
     </section>

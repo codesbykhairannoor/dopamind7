@@ -233,23 +233,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-slate-900 border-y border-slate-800">
-        <div class="max-w-4xl mx-auto px-6 text-center text-white">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500 text-white text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('deepwork_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black mb-6">{{ __('deepwork_science_title') }}</h2>
-            <p class="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('deepwork_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">Attention Restoration</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Myelin Growth</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Zeigarnik Effect</span>
-            </div>
-        </div>
-    </section>
 
     {{-- SECTION 4: THE FOCUS ARSENAL --}}
     <section class="py-32 bg-white">
@@ -327,7 +310,59 @@
         </div>
     </section>
 
-    {{-- SECTION: VISUAL FAQ --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - FLOW STATE ISOLATION STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        {{-- Ripple Effect --}}
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-50 rounded-full border border-indigo-100/50 animate-pulse-slow"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white rounded-full border border-indigo-100/30"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="flex-1 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 rounded-full">
+                        🧬 {{ __('deepwork_science_badge') }}
+                    </div>
+                    
+                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
+                        {{ __('deepwork_science_title') }}
+                    </h2>
+                    
+                    <div class="relative py-10 px-10 bg-indigo-50/80 backdrop-blur-sm border-l-8 border-indigo-600 rounded-r-[2rem] mb-12 shadow-sm">
+                        <p class="text-gray-900 text-xl md:text-2xl font-semibold leading-relaxed italic">
+                            "{{ __('deepwork_science_desc') }}"
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                        <div class="group px-6 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
+                            <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Concept_Alpha</span>
+                            <span class="font-bold text-gray-700">Attention Restoration</span>
+                        </div>
+                        <div class="group px-6 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
+                            <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">Concept_Beta</span>
+                            <span class="font-bold text-gray-700">Myelin Growth</span>
+                        </div>
+                        <div class="group px-6 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
+                            <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">Concept_Gamma</span>
+                            <span class="font-bold text-gray-700">Zeigarnik Effect</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 relative hidden lg:block">
+                     {{-- Focus Sphere --}}
+                     <div class="w-80 h-80 bg-indigo-600 rounded-full flex items-center justify-center p-1 shadow-2xl shadow-indigo-200 relative group overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900 to-indigo-500 rounded-full group-hover:scale-110 transition duration-1000"></div>
+                        <div class="relative z-10 text-8xl transform group-hover:scale-125 transition duration-700">🧘</div>
+                        {{-- Orbital Shield --}}
+                        <div class="absolute inset-2 border-2 border-white/20 rounded-full animate-spin-slow"></div>
+                        <div class="absolute inset-4 border border-white/10 rounded-full animate-spin-reverse-slow"></div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto px-6">
             <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('deepwork_faq_title') }}</h2>
@@ -360,31 +395,74 @@
         </div>
     </section>
 
-    {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('deepwork_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/planner') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('planner_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('planner_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
-                </a>
-                <a href="{{ url('/features/journal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📔</span>
-                    <h4 class="font-bold text-gray-900">{{ __('journal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('journal_meta_title') }}</p>
-                </a>
+    {{-- NEW SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - CORE CIRCLE STYLE --}}
+    <section class="py-32 bg-white border-t border-gray-100 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-24 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('deepwork_hero_badge')]) }}
+            </h2>
+            
+            <div class="relative w-full aspect-square max-w-2xl mx-auto flex items-center justify-center">
+                {{-- Central Hub --}}
+                <div class="relative z-20 w-32 h-32 md:w-48 md:h-48 bg-indigo-600 rounded-full flex items-center justify-center text-4xl md:text-6xl shadow-2xl shadow-indigo-200 border-8 border-white group">
+                    ⚡
+                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-white/30 animate-spin-slow"></div>
+                </div>
+
+    {{-- NEW SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - CORE CIRCLE STYLE --}}
+    <section class="py-32 bg-white border-t border-gray-100 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-24 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('deepwork_hero_badge')]) }}
+            </h2>
+            
+            <div class="relative w-full aspect-square max-w-2xl mx-auto flex items-center justify-center">
+                {{-- Central Hub --}}
+                <div class="relative z-20 w-32 h-32 md:w-48 md:h-48 bg-indigo-600 rounded-full flex items-center justify-center text-4xl md:text-6xl shadow-2xl shadow-indigo-200 border-8 border-white group">
+                    ⚡
+                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-white/30 animate-spin-slow"></div>
+                </div>
+
+                {{-- Orbiting Satellite 1: Planner --}}
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-8 md:-translate-y-12 group transition-all duration-700 hover:scale-110">
+                    <a href="{{ url('/features/planner') }}" class="block p-4 md:p-8 bg-white border border-purple-50 shadow-xl rounded-[2rem] text-center hover:border-purple-200">
+                        <span class="text-3xl md:text-5xl mb-4 block">📅</span>
+                        <h4 class="font-black text-gray-900 text-sm md:text-lg mb-1">{{ __('ecosystem_planner_title') }}</h4>
+                        <p class="text-gray-500 text-[10px] hidden md:block">{{ __('planner_meta_title') }}</p>
+                    </a>
+                </div>
+
+                {{-- Orbiting Satellite 2: Notes --}}
+                <div class="absolute bottom-1/4 -right-8 md:-right-16 group transition-all duration-700 hover:scale-110">
+                    <a href="{{ url('/solutions/second-brain') }}" class="block p-4 md:p-8 bg-white border border-amber-50 shadow-xl rounded-[2rem] text-center hover:border-amber-200">
+                        <span class="text-3xl md:text-5xl mb-4 block">📝</span>
+                        <h4 class="font-black text-gray-900 text-sm md:text-lg mb-1">{{ __('ecosystem_notes_title') }}</h4>
+                        <p class="text-gray-500 text-[10px] hidden md:block">{{ __('notes_meta_title') }}</p>
+                    </a>
+                </div>
+
+                {{-- Orbiting Satellite 3: Journal --}}
+                <div class="absolute bottom-1/4 -left-8 md:-left-16 group transition-all duration-700 hover:scale-110">
+                    <a href="{{ url('/features/journal') }}" class="block p-4 md:p-8 bg-white border border-rose-50 shadow-xl rounded-[2rem] text-center hover:border-rose-200">
+                        <span class="text-3xl md:text-5xl mb-4 block">📔</span>
+                        <h4 class="font-black text-gray-900 text-sm md:text-lg mb-1">{{ __('ecosystem_journal_title') }}</h4>
+                        <p class="text-gray-500 text-[10px] hidden md:block">{{ __('journal_meta_title') }}</p>
+                    </a>
+                </div>
+
+                {{-- Orbiting Satellite 4: Habit --}}
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-8 md:translate-y-12 group transition-all duration-700 hover:scale-110">
+                    <a href="{{ url('/features/habit') }}" class="block p-4 md:p-8 bg-white border border-indigo-50 shadow-xl rounded-[2rem] text-center hover:border-indigo-200">
+                        <span class="text-3xl md:text-5xl mb-4 block">🌱</span>
+                        <h4 class="font-black text-gray-900 text-sm md:text-lg mb-1">{{ __('ecosystem_habit_title') }}</h4>
+                        <p class="text-gray-500 text-[10px] hidden md:block">{{ __('habit_meta_title') }}</p>
+                    </a>
+                </div>
+
+                {{-- SVG Connection Ring --}}
+                <svg class="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 500 500">
+                    <circle cx="250" cy="250" r="180" fill="none" stroke="#4f46e5" stroke-width="2" stroke-dasharray="10 10" class="animate-spin-slow" />
+                </svg>
             </div>
         </div>
     </section>

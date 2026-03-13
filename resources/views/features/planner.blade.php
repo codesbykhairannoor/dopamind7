@@ -239,23 +239,6 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) --}}
-    <section class="py-24 bg-indigo-50/30 border-y border-indigo-100/20">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
-                🧬 {{ __('planner_science_badge') }}
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">{{ __('planner_science_title') }}</h2>
-            <p class="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto italic">
-                {{ __('planner_science_desc') }}
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-8 opacity-50 grayscale">
-                <span class="text-sm font-black uppercase tracking-tighter">Deep Work</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Time Blocking</span>
-                <span class="text-sm font-black uppercase tracking-tighter">Eisenhower Matrix</span>
-            </div>
-        </div>
-    </section>
 
     {{-- NEW SECTION 3: MORNING TO NIGHT FLOW --}}
     <section class="py-32 bg-slate-950 text-white relative overflow-hidden">
@@ -379,7 +362,58 @@
         </div>
     </section>
 
-    {{-- SECTION 7: BOTTOM CTA (FLOATING ISLAND CTA) --}}
+    {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - CLEAN EDITORIAL STYLE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#e0e7ff_1px,transparent_1px)] [background-size:20px:20px] opacity-40"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                
+                {{-- Left Header Block --}}
+                <div class="lg:col-span-4 lg:sticky lg:top-32">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                        🧬 {{ __('planner_science_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
+                        {{ __('planner_science_title') }}
+                    </h2>
+                    <div class="w-20 h-1 bg-indigo-600 rounded-full mb-8"></div>
+                </div>
+
+                {{-- Right Content Grid --}}
+                <div class="lg:col-span-8 grid md:grid-cols-2 gap-8">
+                    <div class="md:col-span-2 bg-white border border-indigo-100 p-12 rounded-[2.5rem] shadow-xl shadow-indigo-50/50">
+                        <p class="text-gray-600 text-2xl leading-relaxed italic font-serif">
+                             {{ __('planner_science_desc') }}
+                        </p>
+                    </div>
+
+                    {{-- Source Cards --}}
+                    <div class="bg-indigo-50/50 border border-indigo-100 p-8 rounded-3xl hover:bg-white hover:shadow-xl transition duration-500">
+                        <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-4 block">Proven Framework</span>
+                        <h4 class="text-xl font-black text-gray-900 mb-2">Deep Work</h4>
+                        <p class="text-sm text-gray-500 font-medium">Cal Newport's method for distraction-free peak performance and high-quality output.</p>
+                    </div>
+                    <div class="bg-indigo-50/50 border border-indigo-100 p-8 rounded-3xl hover:bg-white hover:shadow-xl transition duration-500">
+                        <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-4 block">Execution Engine</span>
+                        <h4 class="text-xl font-black text-gray-900 mb-2">Time Blocking</h4>
+                        <p class="text-sm text-gray-500 font-medium">Converting intentions into dedicated time slots for maximum systemic execution.</p>
+                    </div>
+
+                    {{-- Verified Footer --}}
+                    <div class="md:col-span-2 flex items-center gap-4 bg-slate-900 text-white p-6 rounded-2xl">
+                         <div class="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-xl">✓</div>
+                         <div class="text-left">
+                             <span class="text-[10px] font-black uppercase tracking-widest text-indigo-300 block">Status: Verified</span>
+                             <span class="text-sm font-medium opacity-80 italic">Scientific methods integrated with OneForMind Structured Execution loops.</span>
+                         </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section class="pb-32 bg-gray-50 px-6">
         <div class="max-w-6xl mx-auto bg-indigo-600 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-[0_20px_50px_rgba(79,70,229,0.3)] hover:-translate-y-2 transition duration-500">
             <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
@@ -399,31 +433,55 @@
         </div>
     </section>
 
-    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) --}}
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('unified_ecosystem_title', ['feature' => __('planner_hero_badge')]) }}</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="{{ url('/features/habit') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🌱</span>
-                    <h4 class="font-bold text-gray-900">{{ __('habit_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('habit_meta_title') }}</p>
+    {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - TIME VORTEX STYLE --}}
+    <section class="py-32 bg-slate-950 relative overflow-hidden">
+        {{-- Animated Vortex Background --}}
+        <div class="absolute inset-0 pointer-events-none opacity-20">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border-2 border-indigo-500/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border-2 border-purple-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border-2 border-emerald-500/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-20 text-center tracking-tight">
+                {{ __('unified_ecosystem_title', ['feature' => __('planner_hero_badge')]) }}
+            </h2>
+            
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-0">
+                {{-- Card 1: Calendar --}}
+                <a href="{{ url('/features/calendar') }}" class="w-full lg:w-72 h-72 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-8 flex flex-col items-center justify-center text-center group hover:bg-white/10 transition duration-500 lg:-mr-8 z-10">
+                    <span class="text-5xl mb-6 group-hover:scale-125 group-hover:rotate-12 transition">📅</span>
+                    <h4 class="text-white font-black text-lg mb-2">{{ __('ecosystem_calendar_title') }}</h4>
+                    <p class="text-indigo-400 text-[10px] font-black uppercase tracking-widest">Foundation</p>
                 </a>
-                <a href="{{ url('/features/finance') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">💰</span>
-                    <h4 class="font-bold text-gray-900">{{ __('finance_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('finance_meta_title') }}</p>
+
+                {{-- Card 2: Habit --}}
+                <a href="{{ url('/features/habit') }}" class="w-full lg:w-80 h-80 bg-indigo-600 rounded-full p-10 flex flex-col items-center justify-center text-center group hover:scale-110 hover:shadow-2xl hover:shadow-indigo-500/50 transition duration-500 z-20 shadow-2xl">
+                    <span class="text-6xl mb-6 group-hover:animate-bounce transition">🌱</span>
+                    <h4 class="text-white font-black text-xl mb-4">{{ __('ecosystem_habit_title') }}</h4>
+                    <p class="text-indigo-100 text-xs font-bold uppercase tracking-widest">Automation Layer</p>
                 </a>
-                <a href="{{ url('/features/goal') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">🎯</span>
-                    <h4 class="font-bold text-gray-900">{{ __('goal_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('goal_meta_title') }}</p>
+
+                {{-- Card 3: Notes --}}
+                <a href="{{ url('/solutions/second-brain') }}" class="w-full lg:w-72 h-72 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-8 flex flex-col items-center justify-center text-center group hover:bg-white/10 transition duration-500 lg:-ml-8 z-10">
+                    <span class="text-5xl mb-6 group-hover:scale-125 group-hover:-rotate-12 transition">📝</span>
+                    <h4 class="text-white font-black text-lg mb-2">{{ __('ecosystem_notes_title') }}</h4>
+                    <p class="text-amber-400 text-[10px] font-black uppercase tracking-widest">Knowledge Base</p>
                 </a>
-                <a href="{{ url('/features/calendar') }}" class="group p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition duration-500">
-                    <span class="text-2xl mb-4 block group-hover:scale-110 transition">📅</span>
-                    <h4 class="font-bold text-gray-900">{{ __('calendar_hero_badge') }}</h4>
-                    <p class="text-xs text-gray-500 mt-2">{{ __('calendar_meta_title') }}</p>
-                </a>
+
+                {{-- Card 4: Goal (Floating outside) --}}
+                <div class="lg:absolute lg:top-0 lg:right-20">
+                    <a href="{{ url('/features/goal') }}" class="block w-40 h-40 bg-white/5 backdrop-blur-md border border-white/10 rounded-[2.5rem] flex flex-col items-center justify-center text-center group hover:bg-rose-600 transition duration-500">
+                        <span class="text-3xl mb-2 group-hover:scale-110 transition">🎯</span>
+                        <h4 class="text-white font-black text-xs">{{ __('ecosystem_goal_title') }}</h4>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-20 text-center">
+                <span class="px-6 py-2 bg-white/5 rounded-full text-indigo-300 text-[10px] font-black uppercase tracking-[0.4em] border border-white/5">
+                    Syncing Across Time & Space
+                </span>
             </div>
         </div>
     </section>
