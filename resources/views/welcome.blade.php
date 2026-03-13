@@ -227,6 +227,87 @@
             </div>
         </div>
     </section>
+    
+    {{-- ================================================================= --}}
+    {{-- SECTION 3.1: SCIENTIFIC FOUNDATION (E-E-A-T) - REDESIGNED --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-slate-950 relative overflow-hidden">
+        {{-- High-tech Background --}}
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_800px_at_50%_-100px,#3b82f620,transparent)]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="lg:w-1/2">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-emerald-500/20">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        {{ __('home_science_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
+                        {{ __('home_science_title') }}
+                    </h2>
+                    <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">
+                        {{ __('home_science_desc') }}
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-emerald-500/50 transition duration-500 group">
+                            <div class="text-emerald-400 font-black text-xs uppercase tracking-widest mb-2 flex justify-between">
+                                Cognitive Load
+                                <span class="group-hover:translate-x-1 transition">→</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 w-[85%] group-hover:w-[15%] transition-all duration-1000"></div>
+                            </div>
+                            <p class="mt-4 text-slate-500 text-xs font-bold leading-relaxed">Reduced by 70% in OneForMind.</p>
+                        </div>
+                        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-indigo-500/50 transition duration-500 group">
+                            <div class="text-indigo-400 font-black text-xs uppercase tracking-widest mb-2 flex justify-between">
+                                Flow Velocity
+                                <span class="group-hover:translate-x-1 transition">→</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-indigo-500 w-[20%] group-hover:w-[95%] transition-all duration-1000"></div>
+                            </div>
+                            <p class="mt-4 text-slate-500 text-xs font-bold leading-relaxed">Optimized for rapid task transitions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 relative">
+                    {{-- Lab Visual --}}
+                    <div class="relative bg-slate-900/50 border border-white/10 p-2 rounded-[3rem] shadow-2xl backdrop-blur-xl">
+                        <div class="grid grid-cols-3 gap-2 overflow-hidden rounded-[2.5rem]">
+                            <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-500">
+                                <div class="text-3xl mb-4 group-hover:rotate-12 transition">🌀</div>
+                                <span class="text-white font-black uppercase text-[10px] tracking-widest">Flow State</span>
+                                <div class="mt-2 text-[8px] text-slate-500 font-black tracking-tighter uppercase">M. Csikszentmihalyi</div>
+                            </div>
+                            <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center border-x border-white/5 transform hover:scale-105 transition duration-500">
+                                <div class="text-3xl mb-4">⚛️</div>
+                                <span class="text-white font-black uppercase text-[10px] tracking-widest">Atomic Habits</span>
+                                <div class="mt-2 text-[8px] text-slate-500 font-black tracking-tighter uppercase">James Clear</div>
+                            </div>
+                            <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-500">
+                                <div class="text-3xl mb-4">🧠</div>
+                                <span class="text-white font-black uppercase text-[10px] tracking-widest">Second Brain</span>
+                                <div class="mt-2 text-[8px] text-slate-500 font-black tracking-tighter uppercase">Tiago Forte</div>
+                            </div>
+                        </div>
+                        
+                        {{-- Decorative Schematics --}}
+                        <div class="absolute -top-10 -right-10 w-32 h-32 border-t-2 border-r-2 border-white/20 rounded-tr-[3rem]"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 border-b-2 border-l-2 border-white/20 rounded-bl-[3rem]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     {{-- ================================================================= --}}
     {{-- SECTION 4: INTERACTION ENGINE (The Synergy) --}}
@@ -265,6 +346,69 @@
                     <p class="text-slate-700 font-bold text-sm leading-relaxed">{{ __($step['desc']) }}</p>
                 </div>
                 @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 4.1: DEEP SYNERGY ARCHITECTURE --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-indigo-100">
+                        🔗 {{ __('home_synergy_badge') }}
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
+                        {{ __('home_synergy_title') }}
+                    </h2>
+                    <p class="text-slate-500 text-xl font-medium leading-relaxed mb-12">
+                        {{ __('home_synergy_desc') }}
+                    </p>
+
+                    <div class="space-y-6">
+                        @php
+                            $synergies = [
+                                ['icon' => '🌱', 'title' => 'home_synergy_step1_title', 'desc' => 'home_synergy_step1_desc'],
+                                ['icon' => '💰', 'title' => 'home_synergy_step2_title', 'desc' => 'home_synergy_step2_desc'],
+                                ['icon' => '📅', 'title' => 'home_synergy_step3_title', 'desc' => 'home_synergy_step3_desc']
+                            ];
+                        @endphp
+
+                        @foreach($synergies as $synergy)
+                        <div class="flex gap-6 p-6 rounded-[2rem] hover:bg-slate-50 transition border border-transparent hover:border-slate-100 group">
+                            <div class="w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition">
+                                {{ $synergy['icon'] }}
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-black text-slate-900 mb-2 uppercase tracking-wide">{{ __($synergy['title']) }}</h3>
+                                <p class="text-slate-500 font-bold text-sm leading-relaxed">{{ __($synergy['desc']) }}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="relative">
+                    {{-- Visual Representation: The Synergy Loop --}}
+                    <div class="aspect-square relative flex items-center justify-center">
+                        {{-- Rotating Rings --}}
+                        <div class="absolute inset-0 border-2 border-dashed border-indigo-100 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                        <div class="absolute inset-12 border-2 border-dashed border-purple-100 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                        
+                        <div class="relative w-48 h-48 bg-slate-900 rounded-[3rem] shadow-2xl flex items-center justify-center z-10 overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-700 opacity-90"></div>
+                            <div class="relative z-10 text-6xl group-hover:scale-125 transition duration-500">🌌</div>
+                        </div>
+
+                        {{-- Floating Nodes --}}
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-8 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl animate-bounce">🌱</div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-8 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl animate-bounce delay-700">💰</div>
+                        <div class="absolute left-0 top-1/2 -translate-x-8 -translate-y-1/2 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl animate-pulse">📅</div>
+                        <div class="absolute right-0 top-1/2 translate-x-8 -translate-y-1/2 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl animate-pulse delay-500">📔</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -371,6 +515,59 @@
             <p class="mt-16 text-slate-600 font-black uppercase tracking-[0.3em] text-[10px]">
                 {{ __('mig_cta') }}
             </p>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 6.1: LIFE PATH NAVIGATOR (Internal Linking) --}}
+    {{-- ================================================================= --}}
+    <section class="py-32 bg-slate-900 relative overflow-hidden">
+        {{-- Background Accents --}}
+        <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 blur-[100px] rounded-full"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 blur-[100px] rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/80 text-[10px] font-black uppercase tracking-widest mb-6 border border-white/10">
+                    🚀 {{ __('home_solutions_badge') }}
+                </div>
+                <h2 class="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">{{ __('home_solutions_title') }}</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
+                    {{ __('home_solutions_desc') }}
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                @php
+                    $paths = [
+                        ['name' => 'Student', 'route' => 'solutions.student', 'icon' => '🎓', 'color' => 'from-blue-500/20 to-indigo-500/20'],
+                        ['name' => 'Career Accelerator', 'route' => 'solutions.career', 'icon' => '💼', 'color' => 'from-emerald-500/20 to-teal-500/20'],
+                        ['name' => 'Personal Growth', 'route' => 'solutions.personalgrowth', 'icon' => '🌱', 'color' => 'from-purple-500/20 to-pink-500/20'],
+                        ['name' => 'Finance Mastery', 'route' => 'solutions.finance', 'icon' => '💰', 'color' => 'from-amber-500/20 to-orange-500/20'],
+                        ['name' => 'Atomic System', 'route' => 'solutions.atomic', 'icon' => '⚛️', 'color' => 'from-lime-500/20 to-green-500/20'],
+                        ['name' => 'Mental Clarity', 'route' => 'solutions.mental', 'icon' => '🧠', 'color' => 'from-slate-500/20 to-gray-500/20'],
+                        ['name' => 'Deep Work', 'route' => 'solutions.deepwork', 'icon' => '⚡', 'color' => 'from-cyan-500/20 to-blue-500/20'],
+                        ['name' => 'Freelancer', 'route' => 'solutions.freelancer', 'icon' => '🚀', 'color' => 'from-rose-500/20 to-red-500/20'],
+                        ['name' => 'Second Brain', 'route' => 'solutions.secondbrain', 'icon' => '💎', 'color' => 'from-indigo-500/20 to-purple-500/20'],
+                    ];
+                @endphp
+
+                @foreach($paths as $path)
+                <a href="{{ route($path['route']) }}" class="group block p-1 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br {{ $path['color'] }} p-6 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-125 transition duration-500">
+                            {{ $path['icon'] }}
+                        </div>
+                        <h3 class="text-white font-black uppercase tracking-widest text-xs">
+                            {{ $path['name'] }}
+                        </h3>
+                        <div class="mt-4 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-black uppercase tracking-tighter">
+                            Explore Path <span class="group-hover:translate-x-1 transition">→</span>
+                        </div>
+                    </div>
+                </a>
+                @endforeach
+            </div>
         </div>
     </section>
 

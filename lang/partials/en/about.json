@@ -31,5 +31,21 @@
     "cta_about_title": "Join the Movement",
     "cta_about_desc": "Stop managing apps. Start managing your life. Experience the clarity of a unified system today.",
     "cta_about_btn": "Start Your Journey",
-    "cta_about_sub": "Free core features. Professional-grade design."
+    "cta_about_sub": "Free core features. Professional-grade design.",
+    "about_philosophy_badge": "CORE PHILOSOPHY",
+    "about_philosophy_title": "The 3 Laws of Frictionless Living",
+    "about_philosophy_law1_title": "Unification over Fragmentation",
+    "about_philosophy_law1_desc": "Complexity is the enemy of execution. We unify your tools to preserve your mental energy.",
+    "about_philosophy_law2_title": "Mindfulness over Automation",
+    "about_philosophy_law2_desc": "We build tools that make you more aware, not more robotic. Growth requires intention.",
+    "about_philosophy_law3_title": "Privacy as a Standard",
+    "about_philosophy_law3_desc": "Your digital life is sacred. We build for the individual, not for the data brokers.",
+    "about_roadmap_badge": "THE FUTURE",
+    "about_roadmap_title": "The Evolution of OneForMind",
+    "about_roadmap_v1_title": "Phase 1: Foundation",
+    "about_roadmap_v1_desc": "Unifying the 5 core pillars of life management in one web app.",
+    "about_roadmap_v2_title": "Phase 2: Mobility",
+    "about_roadmap_v2_desc": "Native iOS/Android apps with deep system integration and offline focus.",
+    "about_roadmap_v3_title": "Phase 3: Intelligence",
+    "about_roadmap_v3_desc": "Privacy-first predictive insights to help you optimize your life synergy autonomously."
 }
