@@ -49,7 +49,7 @@
         {{-- Background Accents --}}
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-indigo-50/50 rounded-full blur-[100px] -z-10 animate-pulse"></div>
 
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-black text-[10px] mb-10 uppercase tracking-[0.2em] animate-in fade-in slide-in-from-bottom-4 duration-700 border border-indigo-100">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-black text-[10px] mb-10 tracking-[0.2em] animate-in fade-in slide-in-from-bottom-4 duration-700 border border-indigo-100">
             {{ __('about_badge') }}
         </div>
         
@@ -92,12 +92,12 @@
                         <div class="group">
                             <div class="text-5xl mb-4 group-hover:-rotate-12 transition duration-500">🧠</div>
                             <div class="h-px w-full bg-slate-200 mb-4 group-hover:bg-indigo-600 transition"></div>
-                            <div class="font-black text-slate-900 text-xs uppercase tracking-widest">{{ __('story_1_card_1') }}</div>
+                            <div class="font-black text-slate-900 text-xs">{{ __('story_1_card_1') }}</div>
                         </div>
                         <div class="group">
                             <div class="text-5xl mb-4 group-hover:rotate-12 transition duration-500">📡</div>
                             <div class="h-px w-full bg-slate-200 mb-4 group-hover:bg-indigo-600 transition"></div>
-                            <div class="font-black text-slate-900 text-xs uppercase tracking-widest">{{ __('story_1_card_2') }}</div>
+                            <div class="font-black text-slate-900 text-xs">{{ __('story_1_card_2') }}</div>
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                         </div>
                         {{-- Schematic Overlay --}}
                         <div class="absolute bottom-10 left-10 p-8 border border-white/10 rounded-3xl backdrop-blur-md bg-white/5">
-                            <div class="text-[10px] text-white/40 font-black uppercase tracking-[0.4em] mb-2">System Status</div>
+                            <div class="text-[10px] text-white/40 font-black tracking-[0.4em] mb-2">System Status</div>
                             <div class="flex gap-1">
                                 @foreach(range(1,5) as $i)
                                     <div class="w-1 h-4 bg-indigo-500 rounded-full animate-bounce" style="animation-delay: {{ $i * 0.1 }}s"></div>
@@ -136,13 +136,13 @@
                         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-400 via-indigo-600 to-indigo-900 opacity-80"></div>
                         <div class="absolute inset-0 flex items-center justify-center text-9xl">🌱</div>
                         {{-- Floating Tags --}}
-                        <div class="absolute top-10 right-10 bg-white px-4 py-2 rounded-full shadow-xl font-black text-[10px] text-indigo-600 uppercase tracking-widest">Growth</div>
-                        <div class="absolute bottom-20 left-10 bg-white px-4 py-2 rounded-full shadow-xl font-black text-[10px] text-indigo-600 uppercase tracking-widest">Clarity</div>
+                        <div class="absolute top-10 right-10 bg-white px-4 py-2 rounded-full shadow-xl font-black text-[10px] text-indigo-600 tracking-widest">Growth</div>
+                        <div class="absolute bottom-20 left-10 bg-white px-4 py-2 rounded-full shadow-xl font-black text-[10px] text-indigo-600 tracking-widest">Clarity</div>
                     </div>
                 </div>
 
                 <div class="order-1 lg:order-2 space-y-10">
-                    <div class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black uppercase tracking-[0.3em]">The Transition</div>
+                    <div class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black tracking-[0.3em]">The Transition</div>
                     <h2 class="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter">{{ __('story_2_title') }}</h2>
                     <p class="text-slate-600 text-xl leading-relaxed font-medium">{{ __('story_2_p1') }}</p>
                     <div class="p-12 bg-indigo-600 rounded-[4rem] text-white shadow-2xl relative group overflow-hidden">
@@ -167,7 +167,7 @@
 
         <div class="max-w-7xl mx-auto px-10 relative z-10">
             <div class="text-center mb-32">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-black text-[10px] mb-8 uppercase tracking-[0.4em] border border-white/20">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-black text-[10px] mb-8 tracking-[0.4em] border border-white/20">
                     {{ __('manifesto_badge') }}
                 </div>
                 <h2 class="text-5xl md:text-8xl font-black text-white leading-[0.85] tracking-tighter">
@@ -188,7 +188,7 @@
                     <div class="w-20 h-20 bg-white text-indigo-600 rounded-3xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 group-hover:rotate-12 transition-all shadow-[0_0_30px_rgba(255,255,255,0.3)]">
                         {{ $pillar['icon'] }}
                     </div>
-                    <h3 class="text-3xl font-black text-white mb-6 tracking-tight uppercase">{{ __($pillar['title']) }}</h3>
+                    <h3 class="text-3xl font-black text-white mb-6 tracking-tight">{{ __($pillar['title']) }}</h3>
                     <p class="text-indigo-100/70 font-bold leading-relaxed text-lg">{{ __($pillar['desc']) }}</p>
                 </div>
                 @endforeach
@@ -203,10 +203,10 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col lg:flex-row gap-20 items-end mb-32">
                 <div class="lg:w-2/3">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black tracking-[0.3em] mb-6">
                         📚 {{ __('about_philosophy_badge') }}
                     </div>
-                    <h2 class="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter uppercase">{{ __('about_philosophy_title') }}</h2>
+                    <h2 class="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter">{{ __('about_philosophy_title') }}</h2>
                 </div>
                 <div class="lg:w-1/3 pb-4">
                     <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
@@ -230,7 +230,7 @@
                         {{ $law['id'] }}
                     </div>
                     <div class="space-y-6 pt-4">
-                        <h3 class="text-4xl font-black text-slate-900 uppercase tracking-tight">{{ __($law['title']) }}</h3>
+                        <h3 class="text-4xl font-black text-slate-900 tracking-tight">{{ __($law['title']) }}</h3>
                         <p class="text-slate-500 font-bold text-xl leading-relaxed max-w-3xl">{{ __($law['desc']) }}</p>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h2 class="text-4xl md:text-6xl font-black mb-32 text-center text-white tracking-tighter uppercase italic">{{ __('team_title') }}</h2>
+            <h2 class="text-4xl md:text-6xl font-black mb-32 text-center text-white tracking-tighter italic">{{ __('team_title') }}</h2>
             
             <div class="grid md:grid-cols-2 gap-12">
                 {{-- THE BUILDER --}}
@@ -264,7 +264,7 @@
                             <div>
                                 <h3 class="text-4xl font-black text-white mb-2">{{ __('dev_name') }}</h3>
                                 <div class="inline-block px-4 py-2 bg-indigo-500/20 border border-indigo-500/30 rounded-full">
-                                    <span class="text-[10px] font-black tracking-[0.4em] text-indigo-400 uppercase">
+                                    <span class="text-[10px] font-black tracking-[0.4em] text-indigo-400">
                                         {{ __('dev_role') }}
                                     </span>
                                 </div>
@@ -288,7 +288,7 @@
                             <div>
                                 <h3 class="text-4xl font-black text-white mb-2">{{ __('user_name') }}</h3>
                                 <div class="inline-block px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full">
-                                    <span class="text-[10px] font-black tracking-[0.4em] text-purple-400 uppercase">
+                                    <span class="text-[10px] font-black tracking-[0.4em] text-purple-400">
                                         {{ __('user_role') }}
                                     </span>
                                 </div>
@@ -303,7 +303,7 @@
 
             <div class="mt-32 text-center">
                 <a href="https://twitter.com/OneForMind" class="inline-flex items-center gap-4 text-white hover:text-indigo-400 transition-all duration-500 group">
-                    <span class="text-[10px] font-black uppercase tracking-[0.5em]">{{ __('team_connect') }}</span>
+                    <span class="text-[10px] font-black tracking-[0.5em]">{{ __('team_connect') }}</span>
                     <span class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-indigo-600 transition">𝕏</span>
                 </a>
             </div>
@@ -316,10 +316,10 @@
     <section class="py-40 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-40">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-[0.4em] mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black tracking-[0.4em] mb-8">
                     🗺️ {{ __('about_roadmap_badge') }}
                 </div>
-                <h2 class="text-5xl md:text-8xl font-black text-slate-900 leading-[0.85] tracking-tighter uppercase">{{ __('about_roadmap_title') }}</h2>
+                <h2 class="text-5xl md:text-8xl font-black text-slate-900 leading-[0.85] tracking-tighter">{{ __('about_roadmap_title') }}</h2>
             </div>
 
             <div class="relative max-w-5xl mx-auto">
@@ -344,7 +344,7 @@
                             <div class="relative group">
                                 <div class="text-indigo-600 font-black text-7xl mb-6 opacity-20 group-hover:opacity-100 transition duration-700">{{ $item['phase'] }}</div>
                                 <div class="text-4xl mb-6">{{ $item['icon'] }}</div>
-                                <h3 class="text-4xl font-black text-slate-900 mb-6 tracking-tight uppercase leading-none">{{ __($item['title']) }}</h3>
+                                <h3 class="text-4xl font-black text-slate-900 mb-6 tracking-tight leading-none">{{ __($item['title']) }}</h3>
                                 <p class="text-slate-500 font-bold leading-relaxed text-xl">{{ __($item['desc']) }}</p>
                             </div>
                         </div>
