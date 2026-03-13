@@ -1,4 +1,7 @@
 {
+    "about_meta_desc": "Pelajari OneForMind, Life OS terpadu. Kami membangun sistem pelacak kebiasaan, perencana, dan keuangan untuk performa tinggi.",
+    "about_meta_og_title": "Tentang OneForMind | Visi Produktivitas Terpadu",
+    "about_meta_og_desc": "Merancang Life OS terbaik untuk eksekusi penuh kesadaran. Temukan filosofi penyatuan dan hidup tanpa gesekan kami.",
     "about_badge": "MISI KAMI",
     "about_title_1": "Menyatukan Pengalaman",
     "about_title_2": "Hidup Manusia.",
@@ -1807,7 +1810,7 @@
     "greet_afternoon": "Selamat Siang",
     "greet_evening": "Selamat Sore",
     "greet_night": "Selamat Malam",
-    "welcome_meta_desc": "OneForMind adalah ekosistem produktivitas terpadu terbaik. Kelola habit tracker, daily planner, manajer keuangan, dan tujuan Anda dalam satu Life OS cerdas untuk eksekusi penuh kesadaran.",
+    "welcome_meta_desc": "OneForMind adalah Life OS terpadu. Kelola habit tracker, daily planner, dan manajer keuangan dalam satu ekosistem produktivitas.",
     "welcome_meta_og_title": "OneForMind | Unified Habit Tracker, Planner & Finance OS",
     "welcome_meta_og_desc": "Hentikan kelelahan berganti aplikasi. Kelola habit tracker, manajer keuangan, dan daily planner Anda dalam satu dasbor.",
     "hero_badge": "✨ v1.0: Unified Life OS",

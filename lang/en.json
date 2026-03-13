@@ -1,4 +1,7 @@
 {
+    "about_meta_desc": "Learn about OneForMind, the unified Life OS. We build at the intersection of habit tracking, planning, and finance for high performers.",
+    "about_meta_og_title": "About OneForMind | The Vision for Unified Productivity",
+    "about_meta_og_desc": "Crafting the ultimate Life OS for mindful execution. Discover our philosophy of unification and frictionless living.",
     "about_badge": "THE MISSION",
     "about_title_1": "Unifying the",
     "about_title_2": "Human Experience.",
@@ -1833,7 +1836,7 @@
     "greet_afternoon": "Good Afternoon",
     "greet_evening": "Good Evening",
     "greet_night": "Good Night",
-    "welcome_meta_desc": "OneForMind is the ultimate unified productivity ecosystem. Manage your habit tracker, daily planner, finance manager, and goals in one intelligent Life OS designed for mindful execution.",
+    "welcome_meta_desc": "OneForMind is the ultimate unified Life OS. Manage your habit tracker, daily planner, and finance manager in one mindful ecosystem.",
     "welcome_meta_og_title": "OneForMind | Unified Habit Tracker, Planner & Finance OS",
     "welcome_meta_title": "OneForMind | Unified Habit Tracker, Planner & Finance OS",
     "welcome_meta_og_desc": "Stop the app-switching fatigue. Manage your habit tracker, finance manager, and daily planner in one dashboard.",

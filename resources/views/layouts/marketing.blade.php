@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="view-transition" content="same-origin">
-    @if(!View::hasSection('meta'))
     <link rel="canonical" href="{{ url()->current() }}">
+    @if(!View::hasSection('meta'))
     <meta name="description" content="{{ __('meta_global_description') }}">
     <meta name="keywords" content="{{ __('meta_global_keywords') }}">
     @endif

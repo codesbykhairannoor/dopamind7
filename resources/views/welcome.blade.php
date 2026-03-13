@@ -80,9 +80,9 @@
             </div>
             
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-10 leading-[0.95] tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                {{ __('hero_title_1') }}<br>
+                Unified Habit Tracker,<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800">
-                    {{ __('hero_title_2') }}
+                    Planner & Finance OS
                 </span>
             </h1>
             
@@ -181,7 +181,7 @@
                     {{ __('pill_badge') }}
                 </div>
                 <h2 class="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-tight">
-                    {{ __('pill_title') }}
+                    Unified Habit Tracker, Planner & Finance Manager.
                 </h2>
             </div>
 
@@ -319,7 +319,7 @@
                     {{ __('flow_badge') }}
                 </div>
                 <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
-                    {{ __('flow_title') }}
+                    Synchronized Habit & Finance Flow.
                 </h2>
             </div>
 
