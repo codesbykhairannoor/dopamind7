@@ -121,9 +121,21 @@
                             {{ __('pricing_feat_custom_themes') }}
                         </li>
                     </ul>
-                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-5 rounded-2xl bg-indigo-600 text-white font-black text-lg text-center hover:bg-indigo-700 shadow-xl shadow-indigo-200 transition transform active:scale-95">
-                        {{ __('pricing_pro_btn') }}
-                    </a>
+                    @auth
+                        @if(auth()->user()->is_premium)
+                            <button class="w-full py-5 rounded-2xl bg-emerald-100 text-emerald-700 font-black text-lg text-center cursor-default">
+                                {{ __('pricing_already_pro') ?? 'You are Pro' }}
+                            </button>
+                        @else
+                            <button id="pay-pro-button" class="w-full py-5 rounded-2xl bg-indigo-600 text-white font-black text-lg text-center hover:bg-indigo-700 shadow-xl shadow-indigo-200 transition transform active:scale-95">
+                                {{ __('pricing_pro_btn') }}
+                            </button>
+                        @endif
+                    @else
+                        <a hx-boost="false" href="{{ route('register') }}" class="w-full py-5 rounded-2xl bg-indigo-600 text-white font-black text-lg text-center hover:bg-indigo-700 shadow-xl shadow-indigo-200 transition transform active:scale-95">
+                            {{ __('pricing_pro_btn') }}
+                        </a>
+                    @endauth
                 </div>
 
                 {{-- Tier 3: Lifetime --}}
@@ -258,4 +270,40 @@
         </div>
     </section>
 
+@push('scripts')
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+<script>
+    document.getElementById('pay-pro-button')?.addEventListener('click', function() {
+        fetch("{{ route('payment.checkout') }}", {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.snap_token) {
+                window.snap.pay(data.snap_token, {
+                    onSuccess: function(result) {
+                        window.location.reload();
+                    },
+                    onPending: function(result) {
+                        alert('Payment pending. Check again later.');
+                    },
+                    onError: function(result) {
+                        alert('Payment failed.');
+                    }
+                });
+            } else {
+                alert('Checkout error: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+@endpush
 @endsection

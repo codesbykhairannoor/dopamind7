@@ -26,6 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at',
         'settings',
         'avatar_path',
+        'is_premium',
+        'premium_until',
     ];
 
     /**
@@ -51,6 +53,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'settings' => 'array',
+        'is_premium' => 'boolean',
+        'premium_until' => 'datetime',
     ];
 
     /**

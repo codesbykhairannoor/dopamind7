@@ -486,6 +486,11 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::delete('/', [ProfileController::class , 'destroy'])->name('destroy');
         }
         );
+
+        // Midtrans Payments
+        Route::post('/payment/checkout', [\App\Http\Controllers\PaymentController::class, 'checkout'])->name('payment.checkout');
     });
+
+Route::post('/payment/webhook', [\App\Http\Controllers\PaymentController::class, 'webhook'])->name('payment.webhook');
 
 require __DIR__ . '/auth.php';

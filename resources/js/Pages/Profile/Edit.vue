@@ -15,8 +15,13 @@ defineProps({
     },
     hasPassword: {
         type: Boolean,
+    },
+    midtrans_client_key: {
+        type: String,
     }
 });
+
+import PremiumSubscriptionForm from './Partials/PremiumSubscriptionForm.vue';
 </script>
 
 <template>
@@ -59,6 +64,10 @@ defineProps({
                             Login via Google Aktif
                         </div>
                     </section>
+                </div>
+
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <PremiumSubscriptionForm :midtrans-client-key="midtrans_client_key" />
                 </div>
 
                 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
