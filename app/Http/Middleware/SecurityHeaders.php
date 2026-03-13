@@ -20,7 +20,7 @@ class SecurityHeaders
 
         // URL Vite untuk Lokal
         $viteUrl = "http://127.0.0.1:5173 http://localhost:5173 ws://127.0.0.1:5173 ws://localhost:5173";
-        $midtransUrls = "https://app.sandbox.midtrans.com https://app.midtrans.com https://snap-assets.al-pc-id-b.cdn.gtflabs.io https://api.sandbox.midtrans.com https://pay.google.com https://gwk.gopayapi.com";
+        $midtransUrls = "https://*.midtrans.com https://snap-assets.al-pc-id-b.cdn.gtflabs.io https://pay.google.com https://gwk.gopayapi.com";
 
         // 2. Deteksi Environment yang akurat
         $host = $request->getHost();
@@ -30,22 +30,22 @@ class SecurityHeaders
 
         if ($isLocal) {
             // LOKAL: Longgar agar Vite HMR lancar
-            $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $viteUrl; " .
-                "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http: data: blob: $viteUrl $midtransUrls; " .
-                "style-src 'self' 'unsafe-inline' https: http: $viteUrl; " .
-                "img-src 'self' data: https: http: blob:; " .
-                "font-src 'self' data: https: http:; " .
-                "frame-src 'self' $midtransUrls; " .
-                "connect-src 'self' https: http: ws: wss: $viteUrl $midtransUrls;";
+            $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $viteUrl $midtransUrls; " .
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: $viteUrl $midtransUrls; " .
+                "style-src 'self' 'unsafe-inline' $viteUrl; " .
+                "img-src 'self' data: blob: *; " .
+                "font-src 'self' data:; " .
+                "frame-src *; " .
+                "connect-src 'self' ws: wss: $viteUrl $midtransUrls;";
         }
         else {
-            // PRODUCTION: Ketat
-            $csp = "default-src 'self'; ";
+            // PRODUCTION: Ketat tapi tetap izinkan Midtrans
+            $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $midtransUrls; ";
             $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com $midtransUrls; ";
             $csp .= "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://cdnjs.cloudflare.com; ";
             $csp .= "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com; ";
-            $csp .= "font-src 'self' data: https: http: https://fonts.bunny.net; ";
-            $csp .= "frame-src 'self' $midtransUrls; ";
+            $csp .= "font-src 'self' data: https://fonts.bunny.net; ";
+            $csp .= "frame-src *; ";
             $csp .= "connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com $midtransUrls; ";
             $csp .= "upgrade-insecure-requests;";
         }

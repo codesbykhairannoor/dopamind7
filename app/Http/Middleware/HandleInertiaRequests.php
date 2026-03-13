@@ -35,6 +35,8 @@ class HandleInertiaRequests extends Middleware
                     'settings' => $request->user()->settings,
                     'timezone' => $request->user()->timezone ?? config('app.timezone'),
                     'avatar_url' => $request->user()->avatar_url,
+                    'is_premium' => $request->user()->is_premium,
+                    'premium_until' => $request->user()->premium_until,
                 ] : null,
             ],
 
@@ -56,6 +58,8 @@ class HandleInertiaRequests extends Middleware
             'locale' => function () {
                 return app()->getLocale();
             },
+            'csrf_token' => csrf_token(),
+            'midtrans_is_production' => config('midtrans.is_production'),
         ]);
     }
 }

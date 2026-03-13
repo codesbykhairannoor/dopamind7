@@ -9,38 +9,44 @@ const props = defineProps({
 const user = usePage().props.auth.user;
 
 const checkout = () => {
-    fetch(route('payment.checkout'), {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': usePage().props.csrf_token,
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.snap_token) {
-            window.snap.pay(data.snap_token, {
-                onSuccess: function(result) {
-                    window.location.reload();
-                },
-                onPending: function(result) {
-                    alert('Payment pending.');
-                },
-                onError: function(result) {
-                    alert('Payment failed.');
-                }
-            });
-        } else {
-            alert('Checkout error: ' + (data.error || 'Unknown error'));
-        }
+    import('axios').then(axios => {
+        axios.default.post(route('payment.checkout'), {}, {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            const data = response.data;
+            if (data.snap_token) {
+                window.snap.pay(data.snap_token, {
+                    onSuccess: function(result) {
+                        window.location.reload();
+                    },
+                    onPending: function(result) {
+                        alert('Payment pending.');
+                    },
+                    onError: function(result) {
+                        alert('Payment failed.');
+                    }
+                });
+            } else {
+                alert('Checkout error: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            alert('Checkout error: ' + (error.response?.data?.error || error.message || 'Unknown error'));
+        });
     });
 };
 
 onMounted(() => {
     if (!window.snap) {
+        const isProduction = usePage().props.midtrans_is_production;
         const script = document.createElement('script');
-        script.src = 'https://app.sandbox.midtrans.com/snap/snap.js';
+        script.src = isProduction 
+            ? 'https://app.midtrans.com/snap/snap.js' 
+            : 'https://app.sandbox.midtrans.com/snap/snap.js';
         script.setAttribute('data-client-key', props.midtransClientKey);
         document.head.appendChild(script);
     }
