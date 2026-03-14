@@ -76,7 +76,7 @@ const checkout = () => {
                     </div>
                     <div class="text-left md:text-right">
                         <span class="text-xs font-bold text-slate-400">{{ $t('billing_label_only', 'Hanya') }}</span>
-                        <div class="text-3xl font-black text-indigo-600">Rp 10.000 <span class="text-sm text-slate-400">{{ $t('billing_label_forever', '/ selamanya') }}</span></div>
+                        <div class="text-3xl font-black text-indigo-600">{{ $t('billing_price_amount', 'Rp 10.000') }} <span class="text-sm text-slate-400">{{ $t('billing_label_forever', '/ selamanya') }}</span></div>
                     </div>
                 </div>
 
