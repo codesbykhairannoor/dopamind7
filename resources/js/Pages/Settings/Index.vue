@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
 
 // Tab Components
@@ -22,20 +22,13 @@ const props = defineProps({
 const activeTab = ref('general');
 
 const tabs = [
-    { id: 'general', name: usePage().props.auth.user ? usePage().props.auth.user.name : 'Umum', icon: '🌐', desc: 'Bahasa & Lokasi', tName: 'settings_tab_general', tDesc: 'settings_tab_general_desc' },
+    { id: 'general', name: 'Umum', icon: '🌐', desc: 'Bahasa & Lokasi', tName: 'settings_tab_general', tDesc: 'settings_tab_general_desc' },
     { id: 'profile', name: 'Profil Saya', icon: '👤', desc: 'Info Akun & Foto', tName: 'settings_tab_profile', tDesc: 'settings_tab_profile_desc' },
     { id: 'appearance', name: 'Tampilan', icon: '🧩', desc: 'Aktivasi Modul', tName: 'settings_tab_appearance', tDesc: 'settings_tab_appearance_desc' },
     { id: 'security', name: 'Keamanan', icon: '🔒', desc: 'Password & Privasi', tName: 'settings_tab_security', tDesc: 'settings_tab_security_desc' },
     { id: 'billing', name: 'Langganan', icon: '💎', desc: 'Upgrade Premium', tName: 'settings_tab_billing', tDesc: 'settings_tab_billing_desc' },
     { id: 'legal', name: 'Legal', icon: '📄', desc: 'Syarat & Ketentuan', tName: 'settings_tab_legal', tDesc: 'settings_tab_legal_desc' },
 ];
-
-// Fix for tab names to use translation
-tabs.forEach(tab => {
-    if (tab.id !== 'general' || !usePage().props.auth.user) {
-        tab.name = usePage().props.auth.user ? '' : tab.name; // Reset if needed, but better to just use $t in template
-    }
-});
 
 const currentTabComponent = computed(() => {
     switch (activeTab.value) {
