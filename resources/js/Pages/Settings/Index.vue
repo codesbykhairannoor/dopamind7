@@ -1,208 +1,108 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, useForm, usePage, router } from '@inertiajs/vue3';
-import { computed } from 'vue';
+import { Head } from '@inertiajs/vue3';
+import { ref, computed } from 'vue';
 
-const props = defineProps({ userSettings: Object });
-const page = usePage();
+// Tab Components
+import GeneralTab from './Partials/GeneralTab.vue';
+import ProfileTab from './Partials/ProfileTab.vue';
+import AppearanceTab from './Partials/AppearanceTab.vue';
+import SecurityTab from './Partials/SecurityTab.vue';
+import BillingTab from './Partials/BillingTab.vue';
+import LegalTab from './Partials/LegalTab.vue';
 
-// Dapatkan bahasa saat ini dari global props
-const currentLang = computed(() => page.props.locale || 'id');
-
-const form = useForm({
-    settings: {
-        modules: {
-            habit: props.userSettings?.modules?.habit ?? true, 
-            planner: props.userSettings?.modules?.planner ?? true,
-            finance: props.userSettings?.modules?.finance ?? true, 
-            journal: props.userSettings?.modules?.journal ?? true, 
-            calendar: props.userSettings?.modules?.calendar ?? true,
-            job: props.userSettings?.modules?.job ?? true,
-            goal: props.userSettings?.modules?.goal ?? true,
-        }
-    }
+const props = defineProps({
+    userSettings: Object,
+    mustVerifyEmail: Boolean,
+    status: String,
+    hasPassword: Boolean,
+    midtrans_client_key: String
 });
 
-const saveSettings = () => {
-    form.post(route('settings.update'), { 
-        preserveScroll: true,
-    });
-};
+const activeTab = ref('general');
 
-// Fungsi Ganti Bahasa Pindah ke Sini
-const switchLang = (lang) => {
-    if (currentLang.value === lang) return;
-    router.get(route('lang.switch', lang), {}, {
-        preserveState: false,
-        preserveScroll: false,
-        replace: true
-    });
-};
+const tabs = [
+    { id: 'general', name: 'Umum', icon: '🌐', desc: 'Bahasa & Lokasi' },
+    { id: 'profile', name: 'Profil Saya', icon: '👤', desc: 'Info Akun & Foto' },
+    { id: 'appearance', name: 'Tampilan', icon: '🧩', desc: 'Aktivasi Modul' },
+    { id: 'security', name: 'Keamanan', icon: '🔒', desc: 'Password & Privasi' },
+    { id: 'billing', name: 'Langganan', icon: '💎', desc: 'Upgrade Premium' },
+    { id: 'legal', name: 'Legal', icon: '📄', desc: 'Syarat & Ketentuan' },
+];
+
+const currentTabComponent = computed(() => {
+    switch (activeTab.value) {
+        case 'general': return GeneralTab;
+        case 'profile': return ProfileTab;
+        case 'appearance': return AppearanceTab;
+        case 'security': return SecurityTab;
+        case 'billing': return BillingTab;
+        case 'legal': return LegalTab;
+        default: return GeneralTab;
+    }
+});
 </script>
 
 <template>
     <Head :title="$t('settings_title', 'Pengaturan')" />
 
     <AuthenticatedLayout>
-        <div class="max-w-3xl mx-auto py-12 px-4 sm:px-6 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            
-            <div>
-                <h1 class="text-3xl font-black text-slate-800 tracking-tight">{{ $t('settings_title', 'Pengaturan') }}</h1>
-                <p class="text-sm font-medium text-slate-500 mt-1">{{ $t('settings_desc', 'Sesuaikan pengalaman aplikasi Oneformind Anda.') }}</p>
+        <div class="max-w-6xl mx-auto py-12 px-4 sm:px-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <!-- Header -->
+            <div class="mb-10 text-center md:text-left">
+                <h1 class="text-4xl font-black text-slate-800 tracking-tighter italic">Pusat Kendali Akun</h1>
+                <p class="text-sm font-bold text-slate-400 mt-2 italic">Atur segalanya tentang pengalaman produktivitas Anda di sini.</p>
             </div>
 
-            <div class="bg-white rounded-[2.5rem] p-6 sm:p-8 shadow-sm border border-slate-100">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl">🌐</div>
-                    <div>
-                        <h2 class="text-lg font-black text-slate-800 leading-tight">{{ $t('settings_language_title', 'Bahasa Aplikasi') }}</h2>
-                        <p class="text-xs font-bold text-slate-400">{{ $t('settings_language_desc', 'Pilih bahasa antarmuka aplikasi.') }}</p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4">
-                    <button @click="switchLang('id')" class="relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all duration-300"
-                        :class="currentLang === 'id' ? 'border-indigo-600 bg-indigo-50/50 shadow-md' : 'border-slate-100 bg-white hover:border-indigo-200 hover:bg-slate-50'">
-                        <span class="text-4xl mb-2 drop-shadow-sm">🇮🇩</span>
-                        <span class="font-black text-sm" :class="currentLang === 'id' ? 'text-indigo-800' : 'text-slate-600'">Indonesia</span>
-                        <div v-if="currentLang === 'id'" class="absolute top-3 right-3 text-indigo-600">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                    </button>
-                    
-                    <button @click="switchLang('en')" class="relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all duration-300"
-                        :class="currentLang === 'en' ? 'border-indigo-600 bg-indigo-50/50 shadow-md' : 'border-slate-100 bg-white hover:border-indigo-200 hover:bg-slate-50'">
-                        <span class="text-4xl mb-2 drop-shadow-sm">🇬🇧</span>
-                        <span class="font-black text-sm" :class="currentLang === 'en' ? 'text-indigo-800' : 'text-slate-600'">English</span>
-                        <div v-if="currentLang === 'en'" class="absolute top-3 right-3 text-indigo-600">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-[2.5rem] p-6 sm:p-8 shadow-sm border border-slate-100">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl">🧩</div>
-                    <div>
-                        <h2 class="text-lg font-black text-slate-800 leading-tight">{{ $t('settings_modules_title', 'Modul Aplikasi') }}</h2>
-                        <p class="text-xs font-bold text-slate-400">{{ $t('settings_modules_desc', 'Aktifkan atau nonaktifkan fitur yang ingin kamu gunakan.') }}</p>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    
-                    <!-- Habit Tracker -->
-                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">🌱</div>
-                            <div>
-                                <h4 class="font-black text-slate-700 text-sm">{{ $t('habit_page_title', 'Habit Tracker') }}</h4>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{{ $t('module_habit_short', 'Daily Habits') }}</p>
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Sidebar Navigation -->
+                <aside class="w-full lg:w-72 shrink-0">
+                    <nav class="space-y-1.5 p-2 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm sticky top-8">
+                        <button 
+                            v-for="tab in tabs" 
+                            :key="tab.id"
+                            @click="activeTab = tab.id"
+                            class="w-full flex items-center gap-4 p-4 rounded-[2rem] transition-all duration-300 group"
+                            :class="activeTab === tab.id 
+                                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100' 
+                                : 'text-slate-600 hover:bg-slate-50'"
+                        >
+                            <span class="text-xl transition-transform group-hover:scale-110">{{ tab.icon }}</span>
+                            <div class="text-left">
+                                <h4 class="text-sm font-black leading-none" :class="activeTab === tab.id ? 'text-white' : 'text-slate-800'">{{ tab.name }}</h4>
+                                <p class="text-[10px] font-bold mt-1 opacity-70 italic" :class="activeTab === tab.id ? 'text-indigo-100' : 'text-slate-400'">{{ tab.desc }}</p>
                             </div>
-                        </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" v-model="form.settings.modules.habit" class="sr-only peer" @change="saveSettings">
-                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
-                        </label>
-                    </div>
-
-                    <!-- Daily Planner -->
-                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📋</div>
-                            <div>
-                                <h4 class="font-black text-slate-700 text-sm">Daily Planner</h4>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Agenda & Focus</p>
+                            
+                            <div v-if="activeTab === tab.id" class="ml-auto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
                             </div>
-                        </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" v-model="form.settings.modules.planner" class="sr-only peer" @change="saveSettings">
-                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
-                        </label>
-                    </div>
+                        </button>
+                    </nav>
+                </aside>
 
-                    <!-- Finance Management -->
-                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">💸</div>
-                            <div>
-                                <h4 class="font-black text-slate-700 text-sm">Finance Plan</h4>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Money & Budget</p>
-                            </div>
-                        </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" v-model="form.settings.modules.finance" class="sr-only peer" @change="saveSettings">
-                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
-                        </label>
+                <!-- Content Area -->
+                <main class="flex-grow bg-white rounded-[2.5rem] p-8 sm:p-10 border border-slate-100 shadow-sm min-h-[500px]">
+                    <div class="max-w-2xl">
+                        <transition 
+                            mode="out-in"
+                            enter-active-class="transition duration-300 ease-out"
+                            enter-from-class="opacity-0 translate-x-4"
+                            enter-to-class="opacity-100 translate-x-0"
+                            leave-active-class="transition duration-200 ease-in"
+                            leave-from-class="opacity-100 translate-x-0"
+                            leave-to-class="opacity-0 -translate-x-4"
+                        >
+                            <component 
+                                :is="currentTabComponent" 
+                                :userSettings="userSettings"
+                                :mustVerifyEmail="mustVerifyEmail"
+                                :status="status"
+                                :hasPassword="hasPassword"
+                                :midtransClientKey="midtrans_client_key"
+                            />
+                        </transition>
                     </div>
-
-                    <!-- Digital Journal -->
-                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📓</div>
-                            <div>
-                                <h4 class="font-black text-slate-700 text-sm">Digital Journal</h4>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Writing & Thoughts</p>
-                            </div>
-                        </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" v-model="form.settings.modules.journal" class="sr-only peer" @change="saveSettings">
-                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
-                        </label>
-                    </div>
-
-                    <!-- Calendar View -->
-                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📅</div>
-                            <div>
-                                <h4 class="font-black text-slate-700 text-sm">Calendar View</h4>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Global Schedule</p>
-                            </div>
-                        </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" v-model="form.settings.modules.calendar" class="sr-only peer" @change="saveSettings">
-                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
-                        </label>
-                    </div>
-
-                    <!-- Job Tracker -->
-                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">💼</div>
-                            <div>
-                                <h4 class="font-black text-slate-700 text-sm">Job Tracker</h4>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Career & Apps</p>
-                            </div>
-                        </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" v-model="form.settings.modules.job" class="sr-only peer" @change="saveSettings">
-                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
-                        </label>
-                    </div>
-
-                    <!-- Goal Tracker -->
-                    <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-2xl border border-slate-100 hover:border-indigo-100 transition-all group">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">🎯</div>
-                            <div>
-                                <h4 class="font-black text-slate-700 text-sm">Goal Tracker</h4>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">Vision & Success</p>
-                            </div>
-                        </div>
-                        <label class="relative inline-flex items-center cursor-pointer">
-                            <input type="checkbox" v-model="form.settings.modules.goal" class="sr-only peer" @change="saveSettings">
-                            <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-500 shadow-inner"></div>
-                        </label>
-                    </div>
-                </div>
-
-                <transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 -translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
-                    <div v-if="form.recentlySuccessful" class="text-center bg-emerald-50 text-emerald-600 px-4 py-3 rounded-xl text-xs font-black uppercase tracking-widest border border-emerald-100 mt-6 shadow-sm">
-                        ✨ {{ $t('settings_saved', 'Pengaturan tersimpan otomatis!') }}
-                    </div>
-                </transition>
+                </main>
             </div>
         </div>
     </AuthenticatedLayout>

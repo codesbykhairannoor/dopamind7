@@ -8,11 +8,14 @@ use Inertia\Inertia;
 
 class SettingsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         return Inertia::render('Settings/Index', [
-            // Kirim settingan user saat ini
-            'userSettings' => Auth::user()->settings,
+            'mustVerifyEmail' => $request->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail,
+            'status' => session('status'),
+            'hasPassword' => !is_null($request->user()->password),
+            'midtrans_client_key' => config('midtrans.client_key'),
+            'userSettings' => $request->user()->settings,
         ]);
     }
 

@@ -213,7 +213,7 @@ watch(() => page.url, () => {
                 </Link>
 
                 <div class="flex items-center justify-between group" :class="isSidebarCollapsed ? 'flex-col gap-2' : 'px-2 py-1'">
-                    <Link :href="route('profile.edit')" prefetch class="flex items-center gap-2.5 hover:opacity-80 transition min-w-0" :title="isSidebarCollapsed ? $t('edit_profile', 'Edit Profil') : ''">
+                    <div class="flex items-center gap-2.5 min-w-0" :title="isSidebarCollapsed ? user?.name : ''">
                         <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-8 h-8 rounded-full object-cover shadow-sm border border-white shrink-0" />
                         <div v-else class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] shadow-md shrink-0">
                             {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
@@ -221,9 +221,9 @@ watch(() => page.url, () => {
                         
                         <div v-if="!isSidebarCollapsed" class="flex-1 min-w-0 overflow-hidden">
                             <p class="text-[10px] font-black text-slate-800 truncate">{{ user?.name || 'User' }}</p>
-                            <p class="text-[9px] font-bold text-slate-400 truncate">{{ $t('edit_profile', 'Edit Profil') }}</p>
+                            <p class="text-[9px] font-bold text-slate-400 truncate uppercase tracking-widest">Active Account</p>
                         </div>
-                    </Link>
+                    </div>
 
                     <button @click="showLogoutModal = true" type="button" class="w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:bg-rose-50 hover:text-rose-500 transition-colors shrink-0" :title="$t('nav_logout', 'Keluar')">
                         <OneForMindIcon name="logout" size="16" stroke-width="2.5" />
@@ -257,19 +257,16 @@ watch(() => page.url, () => {
                 <div v-show="showingNavigationDropdown" class="md:hidden fixed inset-0 top-16 z-40 bg-slate-50/95 backdrop-blur-2xl overflow-y-auto custom-scrollbar">
                     <div class="p-6 space-y-6 pb-32">
                         
-                        <Link :href="route('profile.edit')" prefetch @click="showingNavigationDropdown = false" class="flex items-center gap-4 p-5 bg-white rounded-[2rem] shadow-sm border border-slate-100 active:scale-[0.98] transition-transform">
+                        <div class="flex items-center gap-4 p-5 bg-white rounded-[2rem] shadow-sm border border-slate-100">
                             <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-14 h-14 rounded-full object-cover shadow-sm border-2 border-white shrink-0" />
                             <div v-else class="w-14 h-14 rounded-full bg-indigo-600 text-white flex items-center justify-center font-black text-xl shadow-md shrink-0">
                                 {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
                             </div>
                             <div class="flex-1 min-w-0">
                                 <p class="text-base font-black text-slate-800 truncate leading-tight mb-1">{{ user?.name || 'User' }}</p>
-                                <p class="text-[11px] font-bold uppercase tracking-widest text-indigo-500">{{ $t('edit_profile', 'Edit Profil') }}</p>
+                                <p class="text-[11px] font-bold uppercase tracking-widest text-indigo-500">Member</p>
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400">
-                                <OneForMindIcon name="chevron-right" size="14" stroke-width="3" />
-                            </div>
-                        </Link>
+                        </div>
 
                         <div class="bg-white rounded-[2rem] p-3 shadow-sm border border-slate-100 flex flex-col gap-1">
                             <Link :href="route('dashboard')" prefetch="mount" cacheFor="1m" class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">

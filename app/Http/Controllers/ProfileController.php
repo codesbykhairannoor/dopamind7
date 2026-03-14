@@ -14,14 +14,9 @@ use Inertia\Response;
 
 class ProfileController extends Controller
 {
-    public function edit(Request $request): Response
+    public function edit(Request $request): RedirectResponse
     {
-        return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
-            'hasPassword' => !is_null($request->user()->password),
-            'midtrans_client_key' => config('midtrans.client_key'),
-        ]);
+        return redirect()->route('settings.index');
     }
 
     public function update(ProfileUpdateRequest $request): RedirectResponse

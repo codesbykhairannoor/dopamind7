@@ -98,4 +98,19 @@ class PaymentController extends Controller
             ]);
         }
     }
+
+    public function finish(Request $request)
+    {
+        return redirect()->route('profile.edit')->with('success', 'Pembayaran berhasil dikonfirmasi! Akun Anda kini Premium.');
+    }
+
+    public function unfinish(Request $request)
+    {
+        return redirect()->route('profile.edit')->with('message', 'Pembayaran belum diselesaikan. Silakan cek kembali nanti.');
+    }
+
+    public function error(Request $request)
+    {
+        return redirect()->route('profile.edit')->with('error', 'Terjadi kesalahan pada proses pembayaran. Silakan coba lagi.');
+    }
 }
