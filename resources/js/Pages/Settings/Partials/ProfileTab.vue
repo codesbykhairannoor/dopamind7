@@ -51,30 +51,30 @@ const updateProfile = () => {
                     </div>
                 </div>
                 <div class="flex-grow space-y-1 text-center sm:text-left">
-                    <h4 class="font-black text-slate-700 text-sm">Foto Profil</h4>
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">JPG, PNG atau WEBP Max 2MB</p>
-                    <button type="button" class="mt-2 text-xs font-black text-indigo-600 hover:text-indigo-700 text-left">Hapus Foto</button>
+                    <h4 class="font-black text-slate-700 text-sm">{{ $t('profile_avatar_title', 'Foto Profil') }}</h4>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $t('profile_avatar_format', 'JPG, PNG atau WEBP Max 2MB') }}</p>
+                    <button type="button" class="mt-2 text-xs font-black text-indigo-600 hover:text-indigo-700 text-left">{{ $t('profile_avatar_remove', 'Hapus Foto') }}</button>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Name -->
                 <div class="space-y-1.5">
-                    <label class="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">Nama Lengkap</label>
-                    <input type="text" v-model="form.name" class="w-full px-5 py-4 rounded-2xl border-slate-100 bg-slate-50/30 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all" placeholder="Masukkan nama...">
+                    <label class="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">{{ $t('profile_label_name', 'Nama Lengkap') }}</label>
+                    <input type="text" v-model="form.name" class="w-full px-5 py-4 rounded-2xl border-slate-100 bg-slate-50/30 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all" :placeholder="$t('profile_placeholder_name', 'Masukkan nama...')">
                 </div>
 
                 <!-- Email -->
                 <div class="space-y-1.5">
-                    <label class="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">Email</label>
-                    <input type="email" v-model="form.email" class="w-full px-5 py-4 rounded-2xl border-slate-100 bg-slate-50/30 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all" placeholder="name@example.com">
+                    <label class="text-xs font-black text-slate-500 uppercase tracking-widest ml-1">{{ $t('profile_label_email', 'Email') }}</label>
+                    <input type="email" v-model="form.email" class="w-full px-5 py-4 rounded-2xl border-slate-100 bg-slate-50/30 text-slate-700 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all" :placeholder="$t('profile_placeholder_email', 'name@example.com')">
                 </div>
             </div>
 
             <div class="flex justify-end pt-2">
                 <button type="submit" :disabled="form.processing" 
                     class="bg-indigo-600 hover:bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-sm transition-all active:scale-95 shadow-lg shadow-indigo-200 disabled:opacity-50">
-                    {{ form.processing ? 'Menyimpan...' : 'Simpan Perubahan' }}
+                    {{ form.processing ? $t('status_saving', 'Menyimpan...') : $t('profile_btn_save', 'Simpan Perubahan') }}
                 </button>
             </div>
         </form>

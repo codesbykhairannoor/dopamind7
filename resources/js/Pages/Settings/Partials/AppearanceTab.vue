@@ -47,7 +47,7 @@ const saveSettings = () => {
                     </div>
                     <div>
                         <h4 class="font-black text-slate-700 text-sm capitalize">{{ key }}</h4>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $t('module_enabled', 'Status Aktif') }}</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $t('module_status_active', 'Status Aktif') }}</p>
                     </div>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">

@@ -132,4 +132,19 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(PlannerTask::class);
     }
+
+    public function calendarEvents(): HasMany
+    {
+        return $this->hasMany(CalendarEvent::class);
+    }
+
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class);
+    }
+
+    public function goals(): HasMany
+    {
+        return $this->hasMany(Goal::class);
+    }
 }
