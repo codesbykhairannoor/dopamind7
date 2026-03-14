@@ -1,5 +1,5 @@
 {
-     "pricing_meta_title": "Harga | Pilih Jalur Perkembangan Anda",
+    "pricing_meta_title": "Harga | Pilih Jalur Perkembangan Anda",
     "pricing_meta_desc": "Harga sederhana dan transparan untuk OneForMind. Pilih paket yang sesuai dengan kebutuhan produktivitas Anda.",
     "pricing_meta_og_title": "Harga OneForMind — Investasi pada Diri Sendiri",
     "pricing_badge": "Pilihan Paket",
@@ -9,27 +9,43 @@
     "pricing_monthly": "Bulanan",
     "pricing_yearly": "Tahunan",
     "pricing_save_amount": "Hemat 25%",
+    
     "pricing_free_name": "Explorer",
     "pricing_forever": "selamanya",
     "pricing_free_desc": "Cocok untuk pemula yang ingin mulai melacak habit dan keuangan dasar.",
     "pricing_feat_habits_limit": "Hingga 5 Habit Aktif",
     "pricing_feat_finance_basic": "Pelacak Keuangan Dasar",
     "pricing_free_btn": "Mulai Gratis",
+    
     "pricing_pro_name": "Architect",
     "pricing_pro_badge": "Paling Populer",
     "pricing_month": "bln",
     "pricing_billed_annually": "Ditagih tahunan",
     "pricing_pro_desc": "Untuk pengguna tingkat lanjut yang ingin wawasan mendalam dan alat tanpa batas.",
     "pricing_feat_unlimited_habits": "Pelacakan Habit Tanpa Batas",
-    "pricing_feat_ai_insights": "Wawasan Keuangan AI",
-    "pricing_feat_custom_themes": "Tema UI Kustom",
-    "pricing_pro_btn": "Mulai Sekarang",
+    "pricing_feat_habit_insights": "Analitik Habit Tingkat Lanjut",
+    "pricing_feat_finance_tax": "Unduh Laporan Pajak",
+    "pricing_feat_dark_mode": "Dukungan Mode Gelap Penuh",
+    "pricing_pro_btn": "Ambil Pro",
+
+    "pricing_ai_name": "Quantum",
+    "pricing_ai_badge": "Bertenaga AI",
+    "pricing_ai_desc": "Masa depan produktivitas. Integrasikan AI ke dalam alur kerja harian Anda.",
+    "pricing_feat_ai_chat": "Ngobrol dengan AI Assistant",
+    "pricing_feat_ai_status": "Segera Hadir",
+    "pricing_feat_automated_insights": "Wawasan Hidup Otomatis",
+    "pricing_ai_btn": "Pilih Quantum",
+    
     "pricing_life_name": "Mind Master",
     "pricing_once": "sekali",
     "pricing_life_desc": "Investasi terbaik. Bayar sekali, miliki seluruh sistem selamanya.",
     "pricing_feat_lifetime_access": "Akses Fitur Seumur Hidup",
+    "pricing_feat_calendar_unlocked": "Calendar Terbuka Selamanya",
+    "pricing_feat_goals_unlocked": "Goal Tracker Terbuka Selamanya",
+    "pricing_feat_jobs_unlocked": "Job Tracker Terbuka Selamanya",
     "pricing_feat_priority_support": "Dukungan Prioritas Discord",
     "pricing_life_btn": "Beli Lifetime",
+    
     "pricing_compare_title": "Bandingkan Fitur",
     "pricing_compare_subtitle": "Lihat detail apa saja yang Anda dapatkan di setiap paket.",
     "pricing_feat_label": "Nama Fitur",
@@ -47,4 +63,4 @@
     "pricing_bottom_cta_title": "Siap membangun hidup lebih baik?",
     "pricing_bottom_cta_desc": "Bergabunglah dengan ratusan pengguna OneForMind untuk tetap fokus, teratur, dan produktif.",
     "pricing_bottom_cta_btn": "Buat Akun Sekarang"
-}
+}

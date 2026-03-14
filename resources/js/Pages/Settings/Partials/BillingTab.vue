@@ -82,12 +82,14 @@ const checkout = () => {
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                     <div v-for="feature in [
-                        { key: 'billing_feature_goals', label: 'Goal Tracker tanpa batas' }, 
-                        { key: 'billing_feature_jobs', label: 'Job Tracker Advanced' }, 
-                        { key: 'billing_feature_analytics', label: 'Data Analytics & Statistik' }, 
-                        { key: 'billing_feature_cloud', label: 'Cloud Sync Otomatis' }, 
-                        { key: 'billing_feature_support', label: 'Support Prioritas' },
-                        { key: 'billing_feature_ads', label: 'Tanpa Iklan / Sponsor' }
+                        { key: 'billing_feature_habit_pro', label: 'Pro Habit Analytics' }, 
+                        { key: 'billing_feature_finance_tax', label: 'Finance Tax Reports' }, 
+                        { key: 'billing_feature_dark_mode', label: 'Full Dark Mode' }, 
+                        { key: 'billing_feature_ai_chat', label: 'AI Chat Integration' }, 
+                        { key: 'billing_feature_calendar', label: 'Calendar (Lifetime Only)' },
+                        { key: 'billing_feature_goals', label: 'Goal Tracker (Lifetime Only)' },
+                        { key: 'billing_feature_jobs', label: 'Job Tracker (Lifetime Only)' },
+                        { key: 'billing_feature_ai_soon', label: 'More AI Coming Soon!' }
                     ]" :key="feature.key" class="flex items-center gap-3">
                         <div class="w-6 h-6 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm">
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
@@ -97,7 +99,7 @@ const checkout = () => {
                 </div>
 
                 <button @click="checkout" class="w-full bg-indigo-600 hover:bg-slate-900 text-white py-5 rounded-3xl font-black text-sm tracking-tight transition-all active:scale-95 shadow-xl shadow-indigo-100 flex items-center justify-center gap-3">
-                    🚀 {{ $t('billing_btn_upgrade', 'Upgrade Sekarang') }}
+                    🚀 {{ $t('billing_btn_upgrade', 'View All Plans') }}
                 </button>
             </div>
         </div>
