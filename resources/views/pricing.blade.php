@@ -98,21 +98,20 @@
                 {{-- Tier 2: Pro --}}
                 <div class="bg-white p-8 rounded-[2.5rem] border border-indigo-100 shadow-xl shadow-indigo-50/50 flex flex-col text-left group hover:-translate-y-2 transition duration-500 h-full relative border-t-8 border-t-indigo-500">
                     <h3 class="text-xs font-black text-indigo-600 uppercase mb-4 tracking-widest">{{ __('pricing_pro_name') }}</h3>
-                    <div class="flex items-baseline gap-1 mb-2">
-                        <span class="text-4xl font-black text-gray-900" x-text="annual ? '$9' : '$12'">$9</span>
-                        <span class="text-gray-400 font-bold text-xs">/{{ __('pricing_month') }}</span>
+                    <div class="mb-6">
+                        <div class="text-2xl font-black text-gray-900 leading-tight">{{ __('pricing_pro_initial') }}</div>
+                        <div class="text-indigo-600 font-black text-sm italic">{{ __('pricing_pro_recurring') }}</div>
                     </div>
-                    <p class="text-indigo-600/60 text-[10px] font-black mb-6" x-show="annual">{{ __('pricing_billed_annually') }}</p>
                     <p class="text-gray-500 text-xs mb-8 leading-relaxed">{{ __('pricing_pro_desc') }}</p>
                     <ul class="space-y-4 mb-10 flex-grow">
                         <li class="flex items-center gap-3 text-xs font-bold text-gray-800">
+                            <span class="text-emerald-500">✓</span> {{ __('pricing_feat_unlock_all') }}
+                        </li>
+                        <li class="flex items-center gap-3 text-xs font-bold text-gray-800">
+                            <span class="text-emerald-500">✓</span> {{ __('pricing_feat_month_trial') }}
+                        </li>
+                        <li class="flex items-center gap-3 text-xs font-bold text-gray-800">
                             <span class="text-indigo-500">✓</span> {{ __('pricing_feat_habit_insights') }}
-                        </li>
-                        <li class="flex items-center gap-3 text-xs font-bold text-gray-800">
-                            <span class="text-indigo-500">✓</span> {{ __('pricing_feat_finance_tax') }}
-                        </li>
-                        <li class="flex items-center gap-3 text-xs font-bold text-gray-800">
-                            <span class="text-indigo-500">✓</span> {{ __('pricing_feat_dark_mode') }}
                         </li>
                     </ul>
                     <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-2xl bg-indigo-600 text-white font-bold text-xs text-center hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition">

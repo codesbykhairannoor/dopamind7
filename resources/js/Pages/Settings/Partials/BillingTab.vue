@@ -70,25 +70,25 @@ const checkout = () => {
                     <div>
                         <div class="flex items-center gap-2 mb-2">
                             <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-widest">{{ $t('billing_plan_onetime', 'Sekali Bayar') }}</span>
-                            <h4 class="text-2xl font-black text-slate-800 tracking-tight italic">{{ $t('billing_plan_name', 'Premium Oneformind') }}</h4>
+                            <h4 class="text-2xl font-black text-slate-800 tracking-tight italic">{{ $t('billing_plan_name', 'Buka Ekosistem Pro') }}</h4>
                         </div>
-                        <p class="text-sm font-bold text-slate-400">{{ $t('billing_plan_desc', 'Upgrade ke level produktivitas baru dengan fitur eksklusif.') }}</p>
+                        <p class="text-sm font-bold text-slate-400">{{ $t('billing_plan_desc', 'Biaya sekali makan untuk buka semua tab, termasuk trial 1 bulan.') }}</p>
                     </div>
                     <div class="text-left md:text-right">
-                        <span class="text-xs font-bold text-slate-400">{{ $t('billing_label_only', 'Hanya') }}</span>
-                        <div class="text-3xl font-black text-indigo-600">{{ $t('billing_price_amount', 'Rp 10.000') }} <span class="text-sm text-slate-400">{{ $t('billing_label_forever', '/ selamanya') }}</span></div>
+                        <span class="text-xs font-bold text-slate-400">{{ $t('billing_label_only', 'Buka hanya') }}</span>
+                        <div class="text-3xl font-black text-indigo-600">{{ $t('billing_price_amount', 'Rp 25.000') }}</div>
+                        <div class="text-[10px] font-black text-indigo-400 italic">{{ $t('pricing_pro_recurring', 'Lalu Rp 15.000/bln') }}</div>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                     <div v-for="feature in [
+                        { key: 'pricing_feat_unlock_all', label: 'Buka Semua Tab' },
+                        { key: 'pricing_feat_month_trial', label: 'Trial 1 Bulan' },
                         { key: 'billing_feature_habit_pro', label: 'Pro Habit Analytics' }, 
                         { key: 'billing_feature_finance_tax', label: 'Finance Tax Reports' }, 
                         { key: 'billing_feature_dark_mode', label: 'Full Dark Mode' }, 
                         { key: 'billing_feature_ai_chat', label: 'AI Chat Integration' }, 
-                        { key: 'billing_feature_calendar', label: 'Calendar (Lifetime Only)' },
-                        { key: 'billing_feature_goals', label: 'Goal Tracker (Lifetime Only)' },
-                        { key: 'billing_feature_jobs', label: 'Job Tracker (Lifetime Only)' },
                         { key: 'billing_feature_ai_soon', label: 'More AI Coming Soon!' }
                     ]" :key="feature.key" class="flex items-center gap-3">
                         <div class="w-6 h-6 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm">
@@ -99,7 +99,7 @@ const checkout = () => {
                 </div>
 
                 <button @click="checkout" class="w-full bg-indigo-600 hover:bg-slate-900 text-white py-5 rounded-3xl font-black text-sm tracking-tight transition-all active:scale-95 shadow-xl shadow-indigo-100 flex items-center justify-center gap-3">
-                    🚀 {{ $t('billing_btn_upgrade', 'View All Plans') }}
+                    🚀 {{ $t('billing_btn_upgrade', 'Buka Semua Modul Sekarang') }}
                 </button>
             </div>
         </div>
