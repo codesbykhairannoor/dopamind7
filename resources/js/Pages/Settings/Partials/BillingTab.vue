@@ -4,9 +4,9 @@ import { usePage } from '@inertiajs/vue3';
 const props = defineProps({ midtransClientKey: String });
 const user = usePage().props.auth.user;
 
-const checkout = () => {
+const checkout = (plan) => {
     import('axios').then(axios => {
-        axios.default.post(route('payment.checkout'), {}, {
+        axios.default.post(route('payment.checkout'), { plan }, {
             headers: {
                 'Accept': 'application/json'
             }
@@ -31,7 +31,7 @@ const checkout = () => {
     <div class="space-y-8">
         <div>
             <h3 class="text-lg font-black text-slate-800 tracking-tight">{{ $t('billing_title', 'Langganan & Billing') }}</h3>
-            <p class="text-xs font-bold text-slate-400 mt-1">{{ $t('billing_desc', 'Kelola paket langganan dan fitur premium Anda.') }}</p>
+            <p class="text-xs font-bold text-slate-400 mt-1">{{ $t('billing_desc', 'Pilih paket yang sesuai untuk membuka lebih banyak fitur produktivitas.') }}</p>
         </div>
 
         <div v-if="user.is_premium" class="bg-indigo-600 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-xl shadow-indigo-200">
@@ -54,43 +54,54 @@ const checkout = () => {
             <div class="absolute -left-12 -top-12 w-48 h-48 bg-indigo-400 rounded-full blur-3xl opacity-30"></div>
         </div>
 
-        <div v-else class="grid grid-cols-1 gap-6">
-            <div class="bg-white rounded-[2.5rem] border-2 border-indigo-100 p-8 shadow-sm hover:shadow-md transition-all">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-widest">{{ $t('billing_plan_onetime', 'Sekali Bayar') }}</span>
-                            <h4 class="text-2xl font-black text-slate-800 tracking-tight italic">{{ $t('billing_plan_name', 'Buka Ekosistem Pro') }}</h4>
-                        </div>
-                        <p class="text-sm font-bold text-slate-400">{{ $t('billing_plan_desc', 'Biaya sekali makan untuk buka semua tab, termasuk trial 1 bulan.') }}</p>
-                    </div>
-                    <div class="text-left md:text-right">
-                        <span class="text-xs font-bold text-slate-400">{{ $t('billing_label_only', 'Buka hanya') }}</span>
-                        <div class="text-3xl font-black text-indigo-600">{{ $t('billing_price_amount', 'Rp 25.000') }}</div>
-                        <div class="text-[10px] font-black text-indigo-400 italic">{{ $t('pricing_pro_recurring', 'Lalu Rp 15.000/bln') }}</div>
-                    </div>
-                </div>
+        <div v-else class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+            <!-- Free -->
+            <div class="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-sm flex flex-col h-full">
+                <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">{{ $t('pricing_free_name', 'Explorer') }}</h4>
+                <div class="text-2xl font-black text-slate-900 mb-4">Rp 0</div>
+                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 font-bold">
+                    <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> 5 Habits Max</li>
+                    <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Basic Finance</li>
+                </ul>
+                <button disabled class="w-full py-3 rounded-xl bg-slate-100 text-slate-400 font-bold text-xs">{{ $t('billing_current_plan', 'Paket Saat Ini') }}</button>
+            </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div v-for="feature in [
-                        { key: 'pricing_feat_unlock_all', label: 'Buka Semua Tab' },
-                        { key: 'pricing_feat_month_trial', label: 'Trial 1 Bulan' },
-                        { key: 'billing_feature_habit_pro', label: 'Pro Habit Analytics' }, 
-                        { key: 'billing_feature_finance_tax', label: 'Finance Tax Reports' }, 
-                        { key: 'billing_feature_dark_mode', label: 'Full Dark Mode' }, 
-                        { key: 'billing_feature_ai_chat', label: 'AI Chat Integration' }, 
-                        { key: 'billing_feature_ai_soon', label: 'More AI Coming Soon!' }
-                    ]" :key="feature.key" class="flex items-center gap-3">
-                        <div class="w-6 h-6 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-sm">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
-                        <span class="text-xs font-bold text-slate-600 italic">{{ $t(feature.key, feature.label) }}</span>
-                    </div>
-                </div>
+            <!-- Architect (Pro) -->
+            <div class="bg-white p-6 rounded-[2rem] border-2 border-indigo-100 shadow-lg shadow-indigo-50/50 flex flex-col h-full relative">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">Populer</div>
+                <h4 class="text-xs font-black text-indigo-600 uppercase tracking-widest mb-2">{{ $t('pricing_pro_name', 'Architect') }}</h4>
+                <div class="text-2xl font-black text-slate-900 leading-none">Rp 25.000</div>
+                <div class="text-[10px] text-indigo-500 font-black italic mb-4">Lalu Rp 15rb/bln</div>
+                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 font-bold">
+                    <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Buka Semua Modul</li>
+                    <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Trial 1 Bulan</li>
+                    <li class="flex items-center gap-2"><span class="text-indigo-500">✓</span> Pro Analytics</li>
+                </ul>
+                <button @click="checkout('architect')" class="w-full py-3 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition font-bold text-xs shadow-md shadow-indigo-200">Beli Sekarang</button>
+            </div>
 
-                <button @click="checkout" class="w-full bg-indigo-600 hover:bg-slate-900 text-white py-5 rounded-3xl font-black text-sm tracking-tight transition-all active:scale-95 shadow-xl shadow-indigo-100 flex items-center justify-center gap-3">
-                    🚀 {{ $t('billing_btn_upgrade', 'Buka Semua Modul Sekarang') }}
-                </button>
+            <!-- Quantum (AI) -->
+            <div class="bg-indigo-50 p-6 rounded-[2rem] border border-indigo-200 shadow-sm flex flex-col h-full relative">
+                <h4 class="text-xs font-black text-indigo-700 uppercase tracking-widest mb-2">{{ $t('pricing_ai_name', 'Quantum') }}</h4>
+                <div class="text-2xl font-black text-slate-900 leading-none">Rp 49.000</div>
+                <div class="text-[10px] text-indigo-500 font-black italic mb-4">/bulan</div>
+                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-700 font-bold">
+                    <li class="flex items-center gap-2"><span class="text-indigo-600">🤖</span> AI Chat Assistant</li>
+                    <li class="flex items-center gap-2"><span class="text-indigo-600">✓</span> Automated Insights</li>
+                </ul>
+                <button @click="checkout('quantum')" class="w-full py-3 rounded-xl bg-slate-900 text-white hover:bg-black transition font-bold text-xs shadow-md">Beli Sekarang</button>
+            </div>
+
+            <!-- Lifetime -->
+            <div class="bg-slate-900 p-6 rounded-[2rem] shadow-xl flex flex-col h-full text-white">
+                <h4 class="text-xs font-black text-indigo-400 uppercase tracking-widest mb-2">{{ $t('pricing_life_name', 'Mind Master') }}</h4>
+                <div class="text-2xl font-black mb-4">Rp 249.000</div>
+                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-300 font-bold">
+                    <li class="flex items-center gap-2"><span class="text-indigo-400">★</span> Buka Semua Selamanya</li>
+                    <li class="flex items-center gap-2"><span class="text-indigo-400">★</span> Bebas Biaya Bulanan</li>
+                    <li class="flex items-center gap-2"><span class="text-indigo-400">★</span> Priority Support</li>
+                </ul>
+                <button @click="checkout('lifetime')" class="w-full py-3 rounded-xl bg-white text-slate-900 hover:bg-slate-100 transition font-black text-xs">Beli Lifetime</button>
             </div>
         </div>
     </div>

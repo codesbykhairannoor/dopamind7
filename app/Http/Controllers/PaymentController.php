@@ -17,9 +17,21 @@ class PaymentController extends Controller
         $apiKey = config('duitku.api_key');
         $env = config('duitku.env');
 
-        $paymentAmount = 25000; // Harga premium unlock Rp 25.000
-        $merchantOrderId = 'PREMIUM-' . $user->id . '-' . time();
-        $productDetails = 'OneForMind Pro Ecosystem Unlock';
+        $plan = $request->input('plan', 'architect');
+
+        $paymentAmount = 25000;
+        $productDetails = 'OneForMind Architect (Pro) Unlock';
+
+        if ($plan === 'quantum') {
+            $paymentAmount = 49000;
+            $productDetails = 'OneForMind Quantum (AI) - 1 Bulan';
+        }
+        elseif ($plan === 'lifetime') {
+            $paymentAmount = 249000;
+            $productDetails = 'OneForMind Mind Master (Lifetime)';
+        }
+
+        $merchantOrderId = strtoupper($plan) . '-' . $user->id . '-' . time();
         $email = $user->email;
         $customerVaName = $user->name;
         $phoneNumber = '08123456789'; // Optional but recommended
@@ -100,11 +112,22 @@ class PaymentController extends Controller
 
             if ($resultCode === '00') {
                 $parts = explode('-', $merchantOrderId);
+                $planType = $parts[0] ?? 'ARCHITECT';
                 $userId = $parts[1] ?? null;
 
                 if ($userId) {
                     $user = User::find($userId);
-                    $this->activatePremium($user);
+                    if ($user) {
+                        $duration = 1;
+                        if ($planType === 'LIFETIME') {
+                            $duration = 1200; // 100 years
+                        }
+
+                        $user->update([
+                            'is_premium' => true,
+                            'premium_until' => now()->addMonths($duration),
+                        ]);
+                    }
                 }
             }
 
@@ -116,15 +139,7 @@ class PaymentController extends Controller
         }
     }
 
-    protected function activatePremium($user)
-    {
-        if ($user) {
-            $user->update([
-                'is_premium' => true,
-                'premium_until' => now()->addMonth(), // 1 Month trial unlock
-            ]);
-        }
-    }
+    // removed old activatePremium helper
 
     public function finish(Request $request)
     {

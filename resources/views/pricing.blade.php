@@ -78,7 +78,7 @@
                 <div class="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 flex flex-col text-left group hover:-translate-y-2 transition duration-500 h-full">
                     <h3 class="text-xs font-black text-gray-400 uppercase mb-4 tracking-widest">{{ __('pricing_free_name') }}</h3>
                     <div class="flex items-baseline gap-1 mb-6">
-                        <span class="text-3xl font-black text-gray-900">$0</span>
+                        <span class="text-3xl font-black text-gray-900">Rp 0</span>
                         <span class="text-gray-400 font-bold text-xs">/{{ __('pricing_forever') }}</span>
                     </div>
                     <p class="text-gray-500 text-xs mb-8 leading-relaxed">{{ __('pricing_free_desc') }}</p>
@@ -126,7 +126,7 @@
                     </div>
                     <h3 class="text-xs font-black text-indigo-600 uppercase mb-4 tracking-widest">{{ __('pricing_ai_name') }}</h3>
                     <div class="flex items-baseline gap-1 mb-2">
-                        <span class="text-5xl font-black text-gray-900" x-text="annual ? '$19' : '$24'">$19</span>
+                        <span class="text-3xl font-black text-gray-900" x-text="annual ? 'Rp 39rb' : 'Rp 49rb'">Rp 39rb</span>
                         <span class="text-gray-400 font-bold text-xs">/{{ __('pricing_month') }}</span>
                     </div>
                     <p class="text-indigo-600/60 text-[10px] font-black mb-6" x-show="annual">{{ __('pricing_billed_annually') }}</p>
@@ -152,7 +152,7 @@
                 <div class="bg-slate-900 p-8 rounded-[2.5rem] shadow-xl flex flex-col text-left group hover:-translate-y-2 transition duration-500 text-white h-full">
                     <h3 class="text-xs font-black text-indigo-400 uppercase mb-4 tracking-widest">{{ __('pricing_life_name') }}</h3>
                     <div class="flex items-baseline gap-1 mb-6">
-                        <span class="text-3xl font-black">$199</span>
+                        <span class="text-3xl font-black">Rp 249rb</span>
                         <span class="text-slate-600 font-bold text-xs">/{{ __('pricing_once') }}</span>
                     </div>
                     <p class="text-slate-400 text-xs mb-8 leading-relaxed">{{ __('pricing_life_desc') }}</p>
