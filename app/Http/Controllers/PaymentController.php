@@ -39,21 +39,22 @@ class PaymentController extends Controller
         $callbackUrl = url('/callback');
         $returnUrl = url('/payment/finish');
 
-        $signature = md5($merchantCode . $paymentAmount . $merchantOrderId . $apiKey);
+        $timestamp = round(microtime(true) * 1000);
+        $signature = hash('sha256', $merchantCode . $timestamp . $apiKey);
 
         $itemDetails = [
             [
                 'name' => $productDetails,
-                'price' => $paymentAmount,
+                'price' => (int)$paymentAmount,
                 'quantity' => 1
             ]
         ];
 
         $params = [
             'merchantCode' => $merchantCode,
-            'paymentAmount' => $paymentAmount,
+            'paymentAmount' => (int)$paymentAmount,
             'paymentMethod' => '', // Blank to show all payment methods
-            'merchantOrderId' => $merchantOrderId,
+            'merchantOrderId' => (string)$merchantOrderId,
             'productDetails' => $productDetails,
             'additionalParam' => '',
             'merchantUserInfo' => (string)$user->id,
@@ -63,7 +64,6 @@ class PaymentController extends Controller
             'itemDetails' => $itemDetails,
             'callbackUrl' => $callbackUrl,
             'returnUrl' => $returnUrl,
-            'signature' => $signature,
             'expiryPeriod' => 60 // In minutes
         ];
 
@@ -72,7 +72,12 @@ class PaymentController extends Controller
             : 'https://api-sandbox.duitku.com/api/merchant/createInvoice';
 
         try {
-            $response = Http::post($url, $params);
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'x-duitku-signature' => $signature,
+                'x-duitku-timestamp' => $timestamp,
+                'x-duitku-merchantcode' => $merchantCode
+            ])->post($url, $params);
             $body = $response->body();
             $data = json_decode($body, true);
 
