@@ -13,18 +13,8 @@ const checkout = () => {
         })
         .then(response => {
             const data = response.data;
-            if (data.snap_token) {
-                window.snap.pay(data.snap_token, {
-                    onSuccess: function(result) {
-                        window.location.reload();
-                    },
-                    onPending: function(result) {
-                        alert('Payment pending.');
-                    },
-                    onError: function(result) {
-                        alert('Payment failed.');
-                    }
-                });
+            if (data.paymentUrl) {
+                window.location.href = data.paymentUrl;
             } else {
                 alert('Checkout error: ' + (data.error || 'Unknown error'));
             }

@@ -487,13 +487,13 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
         }
         );
 
-        // Midtrans Payments
-        Route::post('/payment/checkout', [\App\Http\Controllers\PaymentController::class, 'checkout'])->name('payment.checkout');
-        Route::get('/payment/finish', [\App\Http\Controllers\PaymentController::class, 'finish'])->name('payment.finish');
-        Route::get('/payment/unfinish', [\App\Http\Controllers\PaymentController::class, 'unfinish'])->name('payment.unfinish');
-        Route::get('/payment/error', [\App\Http\Controllers\PaymentController::class, 'error'])->name('payment.error');
+        // Duitku Payments
+        Route::post('/payment/checkout', [\App\Http\Controllers\PaymentController::class , 'checkout'])->name('payment.checkout');
+        Route::get('/payment/finish', [\App\Http\Controllers\PaymentController::class , 'finish'])->name('payment.finish');
+        Route::get('/payment/unfinish', [\App\Http\Controllers\PaymentController::class , 'unfinish'])->name('payment.unfinish');
+        Route::get('/payment/error', [\App\Http\Controllers\PaymentController::class , 'error'])->name('payment.error');
     });
 
-Route::post('/payment/webhook', [\App\Http\Controllers\PaymentController::class, 'webhook'])->name('payment.webhook');
+Route::post('/callback', [\App\Http\Controllers\PaymentController::class , 'callback'])->name('payment.callback');
 
 require __DIR__ . '/auth.php';

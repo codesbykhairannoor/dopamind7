@@ -606,9 +606,14 @@
                             <img src="/favicon.svg?v=2" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
                         </a>
-                        <p class="text-sm text-slate-700 leading-relaxed">
+                        <p class="text-sm text-slate-700 leading-relaxed mb-6">
                             The unified productivity system designed to bring clarity to your life, habits, and finances.
                         </p>
+                        <div class="text-xs text-slate-600 space-y-2 mt-4">
+                            <p><strong>Email:</strong> mykhairannn@gmail.com</p>
+                            <p><strong>Phone:</strong> +62 812-XXXX-XXXX</p>
+                            <p><strong>Address:</strong> Jakarta, Indonesia</p>
+                        </div>
                     </div>
 
                      <div>
