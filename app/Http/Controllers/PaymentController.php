@@ -73,21 +73,22 @@ class PaymentController extends Controller
 
         try {
             $response = Http::post($url, $params);
-            $data = $response->json();
+            $body = $response->body();
+            $data = json_decode($body, true);
 
-            if (isset($data['paymentUrl'])) {
+            if (is_array($data) && isset($data['paymentUrl'])) {
                 return response()->json(['paymentUrl' => $data['paymentUrl']]);
             }
             else {
-                $errorMsg = isset($data['statusMessage']) ? $data['statusMessage'] : 'Unknown Error';
-                $raw = json_encode($data);
-                Log::error('Duitku API Error Response: ' . $raw);
-                return response()->json(['error' => "Duitku API Failed: {$errorMsg} | Raw: {$raw}"], 400);
+                Log::error('Duitku API Raw Body: ' . $body);
+                return response()->json([
+                    'error' => "Duitku returned " . $response->status() . ": " . substr($body, 0, 500)
+                ], 400);
             }
         }
         catch (\Exception $e) {
             Log::error('Duitku Checkout Exception: ' . $e->getMessage());
-            return response()->json(['error' => $e->getMessage()], 500);
+            return response()->json(['error' => 'Exception: ' . $e->getMessage()], 500);
         }
     }
 
