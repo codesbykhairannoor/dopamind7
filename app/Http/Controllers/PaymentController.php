@@ -79,8 +79,10 @@ class PaymentController extends Controller
                 return response()->json(['paymentUrl' => $data['paymentUrl']]);
             }
             else {
-                Log::error('Duitku API Error Response: ', $data ?? []);
-                return response()->json(['error' => $data['statusMessage'] ?? 'Failed to contact Duitku server'], 400);
+                $errorMsg = isset($data['statusMessage']) ? $data['statusMessage'] : 'Unknown Error';
+                $raw = json_encode($data);
+                Log::error('Duitku API Error Response: ' . $raw);
+                return response()->json(['error' => "Duitku API Failed: {$errorMsg} | Raw: {$raw}"], 400);
             }
         }
         catch (\Exception $e) {
