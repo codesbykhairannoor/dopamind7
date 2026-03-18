@@ -68,8 +68,8 @@ class PaymentController extends Controller
         ];
 
         $url = $env === 'production'
-            ? 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'
-            : 'https://sandbox.duitku.com/webapi/api/merchant/v2/inquiry';
+            ? 'https://passport.duitku.com/webapi/api/merchant/createInvoice'
+            : 'https://api-sandbox.duitku.com/api/merchant/createInvoice';
 
         try {
             $response = Http::post($url, $params);
