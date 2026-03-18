@@ -29,6 +29,14 @@ class PaymentController extends Controller
 
         $signature = md5($merchantCode . $paymentAmount . $merchantOrderId . $apiKey);
 
+        $itemDetails = [
+            [
+                'name' => $productDetails,
+                'price' => $paymentAmount,
+                'quantity' => 1
+            ]
+        ];
+
         $params = [
             'merchantCode' => $merchantCode,
             'paymentAmount' => $paymentAmount,
@@ -40,6 +48,7 @@ class PaymentController extends Controller
             'customerVaName' => $customerVaName,
             'email' => $email,
             'phoneNumber' => $phoneNumber,
+            'itemDetails' => $itemDetails,
             'callbackUrl' => $callbackUrl,
             'returnUrl' => $returnUrl,
             'signature' => $signature,
@@ -58,10 +67,12 @@ class PaymentController extends Controller
                 return response()->json(['paymentUrl' => $data['paymentUrl']]);
             }
             else {
+                Log::error('Duitku API Error Response: ', $data ?? []);
                 return response()->json(['error' => $data['statusMessage'] ?? 'Failed to contact Duitku server'], 400);
             }
         }
         catch (\Exception $e) {
+            Log::error('Duitku Checkout Exception: ' . $e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
