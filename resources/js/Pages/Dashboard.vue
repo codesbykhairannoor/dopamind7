@@ -7,6 +7,7 @@ import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 const user = usePage().props.auth.user;
 const props = defineProps({
     synergy: Object,
+    trend: Array,
     stats: Object,
 });
 
@@ -58,9 +59,18 @@ const overallScore = computed(() => {
                         <path class="text-white/10" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                         <path class="text-indigo-400 transition-all duration-1000 ease-out drop-shadow-[0_0_10px_rgba(129,140,248,0.8)]" stroke-dasharray="100, 100" :stroke-dashoffset="100 - overallScore" stroke-linecap="round" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                     </svg>
-                    <div class="text-center">
+                    <div class="text-center relative">
                         <span class="block text-4xl md:text-5xl font-black text-white drop-shadow-md">{{ overallScore }}<span class="text-xl text-indigo-300">%</span></span>
                         <span class="block text-[10px] uppercase tracking-widest text-indigo-200 font-bold mt-1">{{ $t('dash_synergy_today') }}</span>
+                        
+                        <!-- Mini Trend Sparkline -->
+                        <div v-if="props.trend && props.trend.length > 0" class="mt-4 flex items-end justify-center gap-1 h-8 px-2 py-1 bg-white/10 rounded-lg">
+                            <div v-for="(t, i) in props.trend" :key="i" 
+                                class="w-1.5 bg-indigo-300/60 rounded-full transition-all duration-500 hover:bg-white hover:scale-y-125"
+                                :style="{ height: Math.max(20, t.score) + '%' }"
+                                :title="`${t.day}: ${t.score}%`"
+                            ></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,10 +85,13 @@ const overallScore = computed(() => {
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 overflow-hidden">
             
             <template v-if="synergy">
-                <Link :href="route('habits.index')" class="col-span-1 md:col-span-6 lg:col-span-4 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between relative overflow-hidden">
+                <Link :href="route('habits.index')" 
+                    class="col-span-1 md:col-span-6 lg:col-span-4 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-700 group flex flex-col justify-between relative overflow-hidden animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
+                    style="animation-delay: 100ms"
+                >
                     <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 text-8xl -mt-6 -mr-6 grayscale group-hover:grayscale-0">
                         <OneForMindIcon name="habit" size="120" stroke-width="1.5" />
                     </div>
@@ -105,7 +118,10 @@ const overallScore = computed(() => {
                     </div>
                 </Link>
 
-                <Link :href="route('planner.index')" prefetch="hover" class="col-span-1 md:col-span-6 lg:col-span-5 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between">
+                <Link :href="route('planner.index')" prefetch="hover" 
+                    class="col-span-1 md:col-span-6 lg:col-span-5 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-700 group flex flex-col justify-between animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
+                    style="animation-delay: 200ms"
+                >
                     <div>
                         <div class="flex justify-between items-center mb-6">
                             <div class="flex items-center gap-4">
@@ -138,7 +154,10 @@ const overallScore = computed(() => {
                     </div>
                 </Link>
 
-                <Link :href="route('finance.index')" prefetch="hover" class="col-span-1 md:col-span-12 lg:col-span-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-[2rem] p-8 text-white shadow-lg shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between">
+                <Link :href="route('finance.index')" prefetch="hover" 
+                    class="col-span-1 md:col-span-12 lg:col-span-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-[2rem] p-8 text-white shadow-lg shadow-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/40 hover:-translate-y-2 transition-all duration-700 group relative overflow-hidden flex flex-col justify-between animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
+                    style="animation-delay: 300ms"
+                >
                     <div class="absolute -right-6 -bottom-6 opacity-10 group-hover:scale-110 transition-transform duration-700">
                         <OneForMindIcon name="finance" size="160" stroke-width="1.5" />
                     </div>
@@ -161,7 +180,10 @@ const overallScore = computed(() => {
                     </div>
                 </Link>
 
-                <Link :href="synergy.journal.is_written ? route('journal.write', synergy.journal.id) : route('journal.index')" prefetch="hover" class="col-span-1 md:col-span-7 lg:col-span-7 bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group overflow-hidden relative">
+                <Link :href="synergy.journal.is_written ? route('journal.write', synergy.journal.id) : route('journal.index')" prefetch="hover" 
+                    class="col-span-1 md:col-span-7 lg:col-span-7 bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-700 group overflow-hidden relative animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
+                    style="animation-delay: 400ms"
+                >
                     <div class="absolute inset-y-0 right-0 w-2/3 bg-gradient-to-l from-indigo-50/80 to-white/0 pointer-events-none"></div>
                     <div class="absolute right-0 bottom-0 p-8 opacity-20 translate-x-4 translate-y-4 group-hover:rotate-12 transition-transform duration-700">
                         <OneForMindIcon name="journal" size="120" stroke-width="1.5" />
@@ -196,7 +218,10 @@ const overallScore = computed(() => {
                     </div>
                 </Link>
 
-                <Link :href="route('calendar.index')" prefetch="hover" class="col-span-1 md:col-span-5 lg:col-span-5 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between">
+                <Link :href="route('calendar.index')" prefetch="hover" 
+                    class="col-span-1 md:col-span-5 lg:col-span-5 bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 transition-all duration-700 group flex flex-col justify-between animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
+                    style="animation-delay: 500ms"
+                >
                     <div>
                         <div class="flex justify-between items-center mb-8">
                             <div class="flex items-center gap-4">

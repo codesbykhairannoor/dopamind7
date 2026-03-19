@@ -65,15 +65,15 @@
     "https://oneformind.com/build/assets/Index-CHjhPm7U.js"
   ],
   "resources/js/Composables/Habits/useHabitCore.js": [
-    "https://oneformind.com/build/assets/Index-CQ-99bfl.js",
+    "https://oneformind.com/build/assets/Index-DBqrcQq2.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Habits/useHabitDates.js": [
-    "https://oneformind.com/build/assets/Index-CQ-99bfl.js",
+    "https://oneformind.com/build/assets/Index-DBqrcQq2.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Habits/useHabitModals.js": [
-    "https://oneformind.com/build/assets/Index-CQ-99bfl.js",
+    "https://oneformind.com/build/assets/Index-DBqrcQq2.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Job/useJobUI.js": [
@@ -102,7 +102,7 @@
     "https://oneformind.com/build/assets/Index-CcCGlNiS.js"
   ],
   "resources/js/Composables/useHabits.js": [
-    "https://oneformind.com/build/assets/Index-CQ-99bfl.js",
+    "https://oneformind.com/build/assets/Index-DBqrcQq2.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Layouts/AuthenticatedLayout.vue": [
@@ -163,12 +163,12 @@
     "https://oneformind.com/build/assets/Index-Bqgia1SL.js"
   ],
   "resources/js/Pages/Dashboard.vue": [
-    "https://oneformind.com/build/assets/Dashboard-MNgeGcxg.js",
-    "https://oneformind.com/build/assets/Dashboard-Rfe3XC2D.css"
+    "https://oneformind.com/build/assets/Dashboard-CL0Ruowz.js",
+    "https://oneformind.com/build/assets/Dashboard-DkIr84lS.css"
   ],
-  "resources/js/Pages/Dashboard.vue?vue&type=style&index=0&scoped=16b3dda2&lang.css": [
-    "https://oneformind.com/build/assets/Dashboard-MNgeGcxg.js",
-    "https://oneformind.com/build/assets/Dashboard-Rfe3XC2D.css"
+  "resources/js/Pages/Dashboard.vue?vue&type=style&index=0&scoped=148041ce&lang.css": [
+    "https://oneformind.com/build/assets/Dashboard-CL0Ruowz.js",
+    "https://oneformind.com/build/assets/Dashboard-DkIr84lS.css"
   ],
   "resources/js/Pages/Error.vue": [
     "https://oneformind.com/build/assets/Error-CR45xnbP.js"
@@ -295,12 +295,12 @@
     "https://oneformind.com/build/assets/HabitBatchModal-Dq724syN.css"
   ],
   "resources/js/Pages/Habits/HabitGrid.vue": [
-    "https://oneformind.com/build/assets/HabitGrid-DMonkg7B.js",
-    "https://oneformind.com/build/assets/HabitGrid-DyLETmBs.css"
+    "https://oneformind.com/build/assets/HabitGrid-CuA2_ksb.js",
+    "https://oneformind.com/build/assets/HabitGrid-D9_tr7if.css"
   ],
-  "resources/js/Pages/Habits/HabitGrid.vue?vue&type=style&index=0&scoped=df9c7223&lang.css": [
-    "https://oneformind.com/build/assets/HabitGrid-DMonkg7B.js",
-    "https://oneformind.com/build/assets/HabitGrid-DyLETmBs.css"
+  "resources/js/Pages/Habits/HabitGrid.vue?vue&type=style&index=0&scoped=bc2247ff&lang.css": [
+    "https://oneformind.com/build/assets/HabitGrid-CuA2_ksb.js",
+    "https://oneformind.com/build/assets/HabitGrid-D9_tr7if.css"
   ],
   "resources/js/Pages/Habits/HabitHeader.vue": [
     "https://oneformind.com/build/assets/HabitHeader-B98ONIjc.js",
@@ -322,11 +322,11 @@
     "https://oneformind.com/build/assets/HabitStats-u0iDd-0_.css"
   ],
   "resources/js/Pages/Habits/Index.vue": [
-    "https://oneformind.com/build/assets/Index-CQ-99bfl.js",
+    "https://oneformind.com/build/assets/Index-DBqrcQq2.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Pages/Habits/Index.vue?vue&type=style&index=0&lang.css": [
-    "https://oneformind.com/build/assets/Index-CQ-99bfl.js",
+    "https://oneformind.com/build/assets/Index-DBqrcQq2.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Pages/Job/Index.vue": [

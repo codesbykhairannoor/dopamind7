@@ -2,6 +2,7 @@ import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
 import { usePage, router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 import axios from 'axios';
+import confetti from 'canvas-confetti';
 
 export function useHabitCore(props) {
     const user = usePage().props.auth.user;
@@ -48,9 +49,56 @@ export function useHabitCore(props) {
         return Math.round(totalPercent / localHabits.value.length);
     });
 
+    const calculateStreak = (habit) => {
+        let streak = 0;
+        let checkDate = dayjs();
+        const logs = habit.logs || {};
+
+        // Jika hari ini belum selesai, cek mulai kemarin
+        const todayStr = checkDate.format('YYYY-MM-DD');
+        if (logs[todayStr] !== 'completed') {
+            checkDate = checkDate.subtract(1, 'day');
+        }
+
+        while (true) {
+            const dateStr = checkDate.format('YYYY-MM-DD');
+            if (logs[dateStr] === 'completed') {
+                streak++;
+                checkDate = checkDate.subtract(1, 'day');
+            } else if (logs[dateStr] === 'skipped') {
+                // Skip tidak memutus streak, tapi tidak menambah hitungan
+                checkDate = checkDate.subtract(1, 'day');
+            } else {
+                // Kosong atau Uncheck memutus streak
+                break;
+            }
+
+            // Limit prevent infinite loop (hanya cek data yang ada di logs)
+            if (streak > 31) break;
+        }
+        return streak;
+    };
+
     const getStatus = (habit, dateString) => {
         return habit.logs && habit.logs[dateString] ? habit.logs[dateString] : 'empty';
     };
+
+    // Initialize streaks
+    localHabits.value.forEach(h => {
+        h.streak = calculateStreak(h);
+    });
+
+    // --- CONFETTI CELEBRATION 🎊 ---
+    watch(todayProgress, (newVal, oldVal) => {
+        if (newVal === 100 && oldVal < 100) {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#4f46e5', '#818cf8', '#ffffff', '#10b981']
+            });
+        }
+    });
 
     // --- SPREADSHEET-LIKE DRAG & SELECT LOGIC 🔥 ---
     const isDragging = ref(false);
@@ -130,12 +178,18 @@ export function useHabitCore(props) {
             habit.logs[dateString] = newStatus;
         }
 
-        // Recalculate
+        // Recalculate stats & streak
         const newCompletedCount = Object.values(habit.logs).filter(status => status === 'completed').length;
         habit.progress_count = newCompletedCount;
         habit.progress_percent = habit.monthly_target > 0
             ? Math.min(100, Math.round((newCompletedCount / habit.monthly_target) * 100))
             : 0;
+        habit.streak = calculateStreak(habit);
+
+        // Haptic Feedback for Premium Feel 📱
+        if (newStatus === 'completed' && window.navigator.vibrate) {
+            window.navigator.vibrate(10);
+        }
 
         try {
             await axios.post(route('habits.log', habitId), { date: dateString, status: newStatus });

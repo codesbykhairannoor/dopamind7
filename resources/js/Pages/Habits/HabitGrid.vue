@@ -271,7 +271,12 @@ onMounted(() => {
                                         {{ habit.icon }}
                                     </div>
                                     <div class="min-w-0 flex-1">
-                                        <h4 class="font-bold text-slate-700 truncate text-sm">{{ habit.name }}</h4>
+                                        <h4 class="font-bold text-slate-700 truncate text-sm flex items-center gap-1.5">
+                                            {{ habit.name }}
+                                            <span v-if="habit.streak > 1" class="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-orange-50 text-orange-600 rounded-lg text-[10px] font-black animate-pulse shadow-sm border border-orange-100/50">
+                                                {{ habit.streak }} <span class="text-xs">🔥</span>
+                                            </span>
+                                        </h4>
                                         <div class="flex items-center gap-1 text-[10px] font-medium text-slate-400 mb-1.5 mt-0.5">
                                             <span>🎯 Target: {{ habit.monthly_target }}</span>
                                         </div>
