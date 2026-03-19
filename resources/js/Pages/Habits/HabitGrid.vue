@@ -184,45 +184,37 @@ onMounted(() => {
 
                             <!-- Mobile Quick Actions -->
                             <div class="flex flex-col gap-2 shrink-0">
-                                <!-- Main Toggle (Complete) -->
+                                <!-- Main Toggle (Complete & Skip via Long-press) -->
                                 <button 
                                     @click="handleMobileClick(habit, selectedDate)"
                                     @touchstart="handleTouchStart(habit, selectedDate)"
                                     @touchend="handleTouchEnd"
                                     @touchcancel="handleTouchEnd"
                                     :disabled="selectedDay?.isFuture"
-                                    class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 active:scale-90 relative"
+                                    class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 active:scale-90 relative"
                                     :class="{
                                         'shadow-lg text-white': getStatus(habit, selectedDate) === 'completed',
-                                        'bg-slate-50 text-slate-300 border border-slate-100': getStatus(habit, selectedDate) !== 'completed',
+                                        'bg-slate-100 text-slate-400 border-2 border-dashed border-slate-200': getStatus(habit, selectedDate) === 'skipped',
+                                        'bg-slate-50 text-slate-300 border border-slate-100': getStatus(habit, selectedDate) === 'empty',
                                         'opacity-30 cursor-not-allowed': selectedDay?.isFuture
                                     }"
                                     :style="getStatus(habit, selectedDate) === 'completed' ? { backgroundColor: habit.color, boxShadow: `0 4px 12px -2px ${habit.color}60` } : {}"
                                 >
-                                    <OneForMindIcon v-if="getStatus(habit, selectedDate) === 'completed'" name="check" size="18" stroke-width="4" />
-                                    <OneForMindIcon v-else name="check" size="18" stroke-width="3" />
+                                    <OneForMindIcon v-if="getStatus(habit, selectedDate) === 'completed'" name="check" size="20" stroke-width="4" />
+                                    <span v-else-if="getStatus(habit, selectedDate) === 'skipped'" class="text-xl font-black">—</span>
+                                    <OneForMindIcon v-else name="check" size="20" stroke-width="3" />
                                     
                                     <!-- Ripple effect on long press placeholder or completion -->
-                                    <div v-if="getStatus(habit, selectedDate) === 'completed'" class="absolute inset-0 rounded-xl animate-ping bg-current opacity-10 pointer-events-none"></div>
+                                    <div v-if="getStatus(habit, selectedDate) === 'completed'" class="absolute inset-0 rounded-2xl animate-ping bg-current opacity-10 pointer-events-none"></div>
                                 </button>
 
-                                <!-- Secondary Actions: Skip & Edit -->
-                                <div class="flex gap-2">
-                                    <button 
-                                        @click="toggleStatus(habit.id, selectedDate, 'skipped')" 
-                                        :disabled="selectedDay?.isFuture"
-                                        class="w-10 h-10 rounded-xl transition-all duration-300 active:scale-95 flex items-center justify-center"
-                                        :class="getStatus(habit, selectedDate) === 'skipped' ? 'bg-slate-200 text-slate-600' : 'bg-slate-50 text-slate-300 hover:text-slate-500'"
-                                    >
-                                        <OneForMindIcon name="clock" size="14" stroke-width="3" />
-                                    </button>
-                                    <button 
-                                        @click="editHabit(habit)" 
-                                        class="w-10 h-10 rounded-xl bg-slate-50 text-slate-300 hover:text-indigo-600 transition-all duration-300 active:scale-95 flex items-center justify-center"
-                                    >
-                                        <OneForMindIcon name="planner" size="14" stroke-width="3" />
-                                    </button>
-                                </div>
+                                <!-- Secondary Action: Edit -->
+                                <button 
+                                    @click="editHabit(habit)" 
+                                    class="w-12 h-12 rounded-2xl bg-slate-50 text-slate-300 hover:text-indigo-600 transition-all duration-300 active:scale-95 flex items-center justify-center border border-slate-100"
+                                >
+                                    <OneForMindIcon name="planner" size="18" stroke-width="3" />
+                                </button>
                             </div>
                         </div>
                     </div>
