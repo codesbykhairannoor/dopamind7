@@ -106,10 +106,10 @@ onMounted(() => {
     <div class="w-full md:max-w-[95%] mx-auto md:px-2 pt-2 md:pt-8 pb-20">
 
         <!-- ==================== MOBILE LAYOUT (<md) ==================== -->
-        <div v-if="localHabits.length > 0" class="md:hidden overflow-x-hidden">
+        <div v-if="localHabits.length > 0" class="md:hidden">
             
             <!-- Mobile Sticky Header for Day Selector -->
-            <div class="sticky top-16 z-40 bg-slate-50/90 backdrop-blur-md pt-2 pb-4 px-4 mb-2 border-b border-slate-100/80">
+            <div class="sticky top-16 z-40 bg-slate-50/90 backdrop-blur-md pt-2 pb-4 px-4 mb-6 border-b border-slate-100/80">
                 <div ref="dayStripRef" class="flex gap-2.5 overflow-x-auto no-scrollbar scroll-smooth">
                     <button 
                         v-for="day in monthDates" 
