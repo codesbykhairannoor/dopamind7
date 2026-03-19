@@ -287,10 +287,10 @@ const switchToSingle = () => {
                 <div class="flex flex-col items-center gap-4">
                     <span class="text-5xl animate-bounce">💸</span>
                     <p class="text-sm font-bold text-slate-400 px-8">
-                        {{ $t('finance_empty_state', 'Belum ada transaksi. Catat pengeluaran atau pemasukanmu hari ini!') }}
+                        {{ $t('no_transaction', 'Belum ada transaksi di bulan ini') }}
                     </p>
-                    <button @click="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }" class="mt-2 bg-rose-500 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-rose-100 hover:bg-rose-600 active:scale-95 transition-all outline-none">
-                        + {{ $t('finance_add_transaction', 'Tambah Transaksi') }}
+                    <button @click="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all outline-none">
+                        + {{ $t('record_transaction', 'Catat Transaksi') }}
                     </button>
                 </div>
             </div>

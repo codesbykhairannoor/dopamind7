@@ -21,6 +21,10 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" inertia>
         <meta name="apple-mobile-web-app-title" content="OneForMind" inertia>
         <link rel="apple-touch-icon" href="/favicon.png">
+        
+        {{-- PWA Splash Screens (iOS) --}}
+        <link rel="apple-touch-startup-image" href="/favicon.png" inertia>
+        
         <link rel="manifest" href="/build/manifest.webmanifest">
 
         <meta property="og:title" content="{{ config('app.name', 'OneForMind') }} — {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'The Unified Productivity OS' }}" inertia>

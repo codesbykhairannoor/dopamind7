@@ -185,10 +185,10 @@ onMounted(() => {
         <div v-else class="md:hidden py-16 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm flex flex-col items-center gap-4">
             <span class="text-5xl animate-bounce">🌱</span>
             <p class="text-xs font-bold text-slate-400 px-10">
-                {{ $t('habit_empty_state', 'Belum ada habit yang direncanakan. Tambahkan habit baru untuk memulai perjalananmu!') }}
+                {{ $t('habit_empty', 'Belum ada habit aktif. Tambah satu yuk!') }}
             </p>
-            <button @click="openCreateModal" class="mt-2 bg-emerald-500 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-emerald-100 hover:bg-emerald-600 active:scale-95 transition-all outline-none">
-                + {{ $t('habit_add_new', 'Tambah Habit') }}
+            <button @click="openCreateModal" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all outline-none">
+                + {{ $t('habit_btn_add', 'Tambah Habit') }}
             </button>
         </div>
 
@@ -308,10 +308,10 @@ onMounted(() => {
                 <div class="flex flex-col items-center gap-4">
                     <span class="text-5xl animate-bounce">🌱</span>
                     <p class="text-sm font-bold text-slate-400 px-8">
-                        {{ $t('habit_empty_state', 'Belum ada habit yang direncanakan. Tambahkan habit baru untuk memulai perjalananmu!') }}
+                        {{ $t('habit_empty', 'Belum ada habit aktif. Tambah satu yuk!') }}
                     </p>
-                    <button @click="openCreateModal" class="mt-2 bg-emerald-500 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-emerald-100 hover:bg-emerald-600 active:scale-95 transition-all outline-none">
-                        + {{ $t('habit_add_new', 'Tambah Habit') }}
+                    <button @click="openCreateModal" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all outline-none">
+                        + {{ $t('habit_btn_add', 'Tambah Habit') }}
                     </button>
                 </div>
                 <div v-if="hasPrevHabits" class="mt-8 flex justify-center">
