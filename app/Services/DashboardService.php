@@ -10,26 +10,26 @@ class DashboardService
         $todayStr = $now->format('Y-m-d');
         $currentMonth = $now->format('Y-m');
 
-        $totalHabits = \App\Models\Habit::where('user_id', $userId)->where('period', $currentMonth)->count();
+        $totalHabits = \App\Models\Habit::where('user_id', '=', $userId)->where('period', '=', $currentMonth)->count();
         $completedHabits = \App\Models\HabitLog::join('habits', 'habit_logs.habit_id', '=', 'habits.id')
-            ->where('habits.user_id', $userId)
-            ->where('habits.period', $currentMonth) 
-            ->where('habit_logs.date', $todayStr)   
-            ->where('habit_logs.status', 'completed')
+            ->where('habits.user_id', '=', $userId)
+            ->where('habits.period', '=', $currentMonth) 
+            ->where('habit_logs.date', '=', $todayStr)   
+            ->where('habit_logs.status', '=', 'completed')
             ->count('habit_logs.id');
 
-        $tasks = \App\Models\PlannerTask::where('user_id', $userId)->where('date', $todayStr)->orderBy('start_time')->get();
+        $tasks = \App\Models\PlannerTask::where('user_id', '=', $userId)->where('date', '=', $todayStr)->orderBy('start_time', 'asc')->get();
         $totalTasks = $tasks->count();
         $completedTasks = $tasks->filter(fn($t) => filter_var($t->is_completed, \FILTER_VALIDATE_BOOLEAN))->count();
         $upcomingTasks = $tasks->filter(fn($t) => !filter_var($t->is_completed, \FILTER_VALIDATE_BOOLEAN))->take(3)->values();
 
-        $finances = \App\Models\FinanceTransaction::where('user_id', $userId)->where('date', $todayStr)->get();
+        $finances = \App\Models\FinanceTransaction::where('user_id', '=', $userId)->where('date', '=', $todayStr)->get();
         $todayExpense = $finances->where('type', 'expense')->sum('amount');
         $todayIncome = $finances->where('type', 'income')->sum('amount');
 
-        $journal = \App\Models\Journal::where('user_id', $userId)->where('date', $todayStr)->first();
+        $journal = \App\Models\Journal::where('user_id', '=', $userId)->where('date', '=', $todayStr)->first();
 
-        $events = \App\Models\CalendarEvent::where('user_id', $userId)
+        $events = \App\Models\CalendarEvent::where('user_id', '=', $userId)
             ->where('start_date', '<=', $todayStr)
             ->where(function($q) use ($todayStr) {
                 $q->where('end_date', '>=', $todayStr)->orWhereNull('end_date');
@@ -69,16 +69,16 @@ class DashboardService
             $dateStr = $date->format('Y-m-d');
             $month = $date->format('Y-m');
 
-            $totalHabits = \App\Models\Habit::where('user_id', $userId)->where('period', $month)->count();
+            $totalHabits = \App\Models\Habit::where('user_id', '=', $userId)->where('period', '=', $month)->count();
             $completedHabits = \App\Models\HabitLog::join('habits', 'habit_logs.habit_id', '=', 'habits.id')
-                ->where('habits.user_id', $userId)
-                ->where('habits.period', $month)
-                ->where('habit_logs.date', $dateStr)
-                ->where('habit_logs.status', 'completed')
+                ->where('habits.user_id', '=', $userId)
+                ->where('habits.period', '=', $month)
+                ->where('habit_logs.date', '=', $dateStr)
+                ->where('habit_logs.status', '=', 'completed')
                 ->count();
             $habitScore = $totalHabits > 0 ? ($completedHabits / $totalHabits) * 100 : 0;
 
-            $tasks = \App\Models\PlannerTask::where('user_id', $userId)->where('date', $dateStr)->get();
+            $tasks = \App\Models\PlannerTask::where('user_id', '=', $userId)->where('date', '=', $dateStr)->get();
             $totalTasks = $tasks->count();
             $completedTasks = $tasks->filter(fn($t) => filter_var($t->is_completed, \FILTER_VALIDATE_BOOLEAN))->count();
             $plannerScore = $totalTasks > 0 ? ($completedTasks / $totalTasks) * 100 : 0;

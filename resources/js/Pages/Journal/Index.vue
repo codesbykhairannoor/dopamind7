@@ -55,6 +55,9 @@ const deleteJournal = (id) => {
         }
     });
 };
+const createEntry = () => {
+    router.get(route('journal.write'));
+};
 </script>
 
 <template>
@@ -73,13 +76,13 @@ const deleteJournal = (id) => {
                 <h3 class="text-xl font-black text-slate-800">{{ $t('journal_history', 'Story History') }}</h3>
             </div>
 
-            <div v-if="localEntries.length === 0" class="py-20 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm mt-4">
+            <div v-if="journals.length === 0" class="py-20 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm mt-4">
                 <div class="flex flex-col items-center gap-4">
                     <span class="text-5xl animate-bounce">📓</span>
                     <p class="text-sm font-bold text-slate-400 px-8">
                         {{ $t('journal_empty_state', 'Belum ada entri jurnal. Mulai tuliskan pikiranmu hari ini!') }}
                     </p>
-                    <button @click="() => createEntry()" class="mt-2 bg-purple-500 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-purple-100 hover:bg-purple-600 active:scale-95 transition-all outline-none">
+                    <button @click="createEntry" class="mt-2 bg-purple-500 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-purple-100 hover:bg-purple-600 active:scale-95 transition-all outline-none">
                         + {{ $t('journal_create_btn', 'Buat Entri Baru') }}
                     </button>
                 </div>
