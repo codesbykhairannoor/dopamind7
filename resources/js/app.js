@@ -58,24 +58,19 @@ createInertiaApp({
 
 NProgress.configure({
     showSpinner: false,
-    speed: 500,         // Kecepatan animasi pas bar nambah (ms)
-    minimum: 0.3,       // Langsung mulai di 30% biar kerasa "ngebut"
-    trickle: true,      // WAJIB: Bar bakal jalan terus meskipun server belum respon
-    trickleSpeed: 200,  // Setiap 0.2 detik bar bakal nambah dikit secara otomatis
+    speed: 300,         // Kecepatan animasi lebih agresif (300ms)
+    minimum: 0.5,       // Langsung mulai di 50% biar kerasa instan
+    trickle: true,
+    trickleSpeed: 150,  // Interval penambahan bar lebih rapat
 });
-
-let timeout = null;
 
 router.on('start', (event) => {
     if (event.detail.visit.method.toLowerCase() === 'get') {
-        timeout = setTimeout(() => {
-            NProgress.start();
-        }, 150); // Delay 150ms. Kalau halaman selesai kurang dari ini, bar gak bakal muncul.
+        NProgress.start(); // Langsung mulai 0ms
     }
 });
 
 router.on('finish', (event) => {
-    clearTimeout(timeout);
     NProgress.done();
 });
 
