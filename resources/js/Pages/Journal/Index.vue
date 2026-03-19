@@ -2,7 +2,6 @@
 import { Head, router } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { useJournal } from '@/Composables/Journal/useJournal';
 import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
 
