@@ -1,5 +1,9 @@
 import './bootstrap';
 import '../css/app.css';
+import { registerSW } from 'virtual:pwa-register';
+
+// PWA Service Worker Registration
+registerSW({ immediate: true });
 
 import { createApp, h } from 'vue';
 import { createInertiaApp, router } from '@inertiajs/vue3';

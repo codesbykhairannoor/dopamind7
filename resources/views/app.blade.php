@@ -20,6 +20,8 @@
         <meta name="apple-mobile-web-app-capable" content="yes" inertia>
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" inertia>
         <meta name="apple-mobile-web-app-title" content="OneForMind" inertia>
+        <link rel="apple-touch-icon" href="/favicon.png">
+        <link rel="manifest" href="/build/manifest.webmanifest">
 
         <meta property="og:title" content="{{ config('app.name', 'OneForMind') }} — {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'The Unified Productivity OS' }}" inertia>
         <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Satu aplikasi produktivitas untuk segalanya. Kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' : 'The only productivity app you need. Manage finances, habits, and daily plans in one unified, minimalist dashboard.' }}" inertia>

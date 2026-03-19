@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
+import { VitePWA } from 'vite-plugin-pwa';
 import fs from 'fs';
 import path from 'path';
 
@@ -10,7 +11,7 @@ import path from 'path';
 function mergeTranslations() {
     const mergeFiles = () => {
         const langs = ['id', 'en']; // Daftar bahasa
-        
+
         langs.forEach(lang => {
             // Gunakan process.cwd() agar aman di environment ES Modules
             const partialsDir = path.resolve(process.cwd(), `lang/partials/${lang}`);
@@ -48,7 +49,7 @@ function mergeTranslations() {
             if (file.includes('lang/partials') || file.includes('lang\\partials')) {
                 mergeFiles();
                 // Paksa browser nge-refresh biar text barunya langsung muncul di layar
-                server.ws.send({ type: 'full-reload' }); 
+                server.ws.send({ type: 'full-reload' });
             }
         }
     };
@@ -65,8 +66,8 @@ export default defineConfig({
     },
     plugins: [
         laravel({
-           input: [
-                'resources/css/app.css', 
+            input: [
+                'resources/css/app.css',
                 'resources/js/app.js'
             ],
             ssr: 'resources/js/ssr.js',
@@ -79,6 +80,43 @@ export default defineConfig({
                     includeAbsolute: false,
                 },
             },
+        }),
+        VitePWA({
+            registerType: 'autoUpdate',
+            injectRegister: 'auto',
+            workbox: {
+                globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
+                cleanupOutdatedCaches: true,
+            },
+            manifest: {
+                name: 'OneForMind',
+                short_name: 'OneForMind',
+                description: 'Master Your Mind, Elevate Your Life.',
+                theme_color: '#4f46e5',
+                background_color: '#ffffff',
+                display: 'standalone',
+                orientation: 'portrait',
+                scope: '/',
+                start_url: '/dashboard',
+                icons: [
+                    {
+                        src: '/favicon.png',
+                        sizes: '192x192',
+                        type: 'image/png'
+                    },
+                    {
+                        src: '/favicon.png',
+                        sizes: '512x512',
+                        type: 'image/png'
+                    },
+                    {
+                        src: '/favicon.png',
+                        sizes: '512x512',
+                        type: 'image/png',
+                        purpose: 'any maskable'
+                    }
+                ]
+            }
         }),
         mergeTranslations(), // 🔥 PANGGIL MESIN TRANSLATION DI SINI
     ],
