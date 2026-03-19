@@ -11,7 +11,7 @@ import localeData from "dayjs/plugin/localeData.js";
 import Swal from "sweetalert2";
 import { trans } from "laravel-vue-i18n";
 import HabitHeader from "./HabitHeader-B98ONIjc.js";
-import HabitGrid from "./HabitGrid-Dq6_QMsD.js";
+import HabitGrid from "./HabitGrid-BURnETWH.js";
 import HabitStats from "./HabitStats-DHq23cP5.js";
 import _sfc_main$1 from "./HabitModals-Bh1meCfg.js";
 import "./OneForMindIcon-BLGVXpxK.js";

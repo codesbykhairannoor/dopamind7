@@ -107,8 +107,77 @@ onMounted(() => {
     <div class="w-full md:max-w-[95%] mx-auto md:px-2 pt-2 md:pt-8 pb-20">
 
         <!-- ==================== MOBILE LAYOUT (<md) ==================== -->
-        <div v-if="localHabits.length > 0" class="md:hidden">
+        <div v-if="localHabits.length > 0" class="md:hidden space-y-6">
+            <!-- Day Selector (Scrolling Strip) -->
+            <div class="relative">
+                <div ref="dayStripRef" class="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth px-4 py-2">
+                    <button 
+                        v-for="day in monthDates" 
+                        :key="day.dateString"
+                        @click="selectDay(day.dateString)"
+                        class="flex-shrink-0 w-12 py-3 rounded-2xl flex flex-col items-center gap-1 transition-all duration-300"
+                        :class="[
+                            selectedDate === day.dateString 
+                                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100 scale-110 day-active' 
+                                : 'bg-white text-slate-400 border border-slate-100'
+                        ]"
+                    >
+                        <span class="text-[10px] font-bold uppercase tracking-tighter opacity-80">{{ day.dayName }}</span>
+                        <span class="text-sm font-black">{{ day.dayNumber }}</span>
+                    </button>
+                </div>
+            </div>
 
+            <!-- Habits List for Selected Day -->
+            <div class="space-y-3 px-4">
+                <div v-for="habit in localHabits" :key="habit.id" 
+                    class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex items-center gap-4 transition-all active:scale-[0.98]"
+                    @touchstart="handleTouchStart(habit, selectedDate)"
+                    @touchend="handleTouchEnd"
+                >
+                    <!-- Icon -->
+                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shrink-0" 
+                        :style="{ backgroundColor: habit.color + '15', color: habit.color }">
+                        {{ habit.icon }}
+                    </div>
+
+                    <!-- Name & Progress -->
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-bold text-slate-700 truncate">{{ habit.name }}</h4>
+                        <div class="flex items-center gap-2 mt-1">
+                            <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full rounded-full transition-all duration-500" 
+                                    :style="{ width: habit.progress_percent + '%', backgroundColor: habit.color }">
+                                </div>
+                            </div>
+                            <span class="text-[10px] font-black text-slate-400">{{ Math.round(habit.progress_percent) }}%</span>
+                        </div>
+                    </div>
+
+                    <!-- Toggle Button -->
+                    <button 
+                        @click="handleMobileClick(habit, selectedDate)"
+                        class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300"
+                        :class="[
+                            getStatus(habit, selectedDate) === 'completed'
+                                ? 'shadow-lg text-white'
+                                : getStatus(habit, selectedDate) === 'skipped'
+                                    ? 'bg-slate-100 text-slate-400'
+                                    : 'bg-slate-50 border border-slate-100 text-slate-300'
+                        ]"
+                        :style="getStatus(habit, selectedDate) === 'completed' ? { backgroundColor: habit.color, boxShadow: `0 8px 16px ${habit.color}30` } : {}"
+                    >
+                        <OneForMindIcon v-if="getStatus(habit, selectedDate) === 'completed'" name="check" size="20" stroke-width="4" />
+                        <span v-else-if="getStatus(habit, selectedDate) === 'skipped'" class="text-xl font-black">-</span>
+                        <OneForMindIcon v-else name="plus" size="20" stroke-width="3" />
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hint -->
+            <p class="text-[10px] text-center text-slate-400 font-medium px-10 leading-relaxed">
+                💡 {{ $t('habit_mobile_hint', 'Tekan sekali untuk SELESAI, tahan (hold) untuk SKIP keesokan harinya.') }}
+            </p>
         </div>
 
         <!-- Empty State Mobile -->

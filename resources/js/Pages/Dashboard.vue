@@ -41,14 +41,14 @@ const overallScore = computed(() => {
             <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-white/5 rounded-full blur-[80px]"></div>
             
             <div class="relative z-10 w-full md:w-2/3">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6 text-sm font-bold text-indigo-100 tracking-wide">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6 text-[10px] md:text-sm font-bold text-indigo-100 tracking-wide uppercase">
                     <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
                     {{ synergy.date_formatted }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black tracking-tight mb-4 bg-gradient-to-r from-white to-white bg-clip-text text-transparent drop-shadow-sm">
+                <h2 class="text-3xl md:text-6xl font-black tracking-tight mb-4 bg-gradient-to-r from-white to-white bg-clip-text text-transparent drop-shadow-sm leading-tight">
                     {{ $t(greetingKey) }}, <br class="hidden md:block" /> {{ user.name }}! 👋
                 </h2>
-                <p class="text-white text-lg md:text-xl font-medium max-w-2xl leading-relaxed">
+                <p class="text-white/90 text-sm md:text-xl font-medium max-w-2xl leading-relaxed">
                     {{ $t('dash_hero_subtitle') }}
                 </p>
             </div>
@@ -77,11 +77,12 @@ const overallScore = computed(() => {
         </div>
 
         <!-- Skeleton Header -->
-        <div v-else class="h-64 md:h-80 bg-slate-200 rounded-[2.5rem] animate-pulse flex items-center px-12">
-            <div class="space-y-4 w-2/3">
-                <div class="h-8 w-48 bg-slate-300 rounded-full"></div>
-                <div class="h-16 w-full bg-slate-300 rounded-2xl"></div>
-                <div class="h-8 w-3/4 bg-slate-300 rounded-xl"></div>
+        <div v-else class="h-64 md:h-80 bg-white border border-slate-100 rounded-[2.5rem] flex items-center px-8 md:px-12 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50 animate-[shimmer_2s_infinite]"></div>
+            <div class="space-y-4 w-full md:w-2/3 relative z-10">
+                <div class="h-6 w-32 bg-slate-200 rounded-full"></div>
+                <div class="h-12 w-full md:w-3/4 bg-slate-200 rounded-2xl"></div>
+                <div class="h-6 w-2/3 bg-slate-200 rounded-xl"></div>
             </div>
         </div>
 
