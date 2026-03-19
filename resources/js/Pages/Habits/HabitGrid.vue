@@ -36,6 +36,37 @@ const todayStr = dayjs().format('YYYY-MM-DD');
 const selectedDate = ref(todayStr);
 const dayStripRef = ref(null);
 
+// Long Press Logic for Mobile
+let longPressTimer = null;
+const isLongPressed = ref(false);
+
+const handleTouchStart = (habit, date) => {
+    isLongPressed.value = false;
+    longPressTimer = setTimeout(() => {
+        isLongPressed.value = true;
+        if (props.toggleStatus) props.toggleStatus(habit.id, date, 'skipped');
+        // Vibrate if available
+        if (window.navigator && window.navigator.vibrate) {
+            window.navigator.vibrate(50);
+        }
+    }, 600); // 600ms hold for skip
+};
+
+const handleTouchEnd = () => {
+    if (longPressTimer) {
+        clearTimeout(longPressTimer);
+        longPressTimer = null;
+    }
+};
+
+const handleMobileClick = (habit, date) => {
+    // Only toggle if it wasn't a long press
+    if (!isLongPressed.value) {
+        if (props.toggleStatus) props.toggleStatus(habit.id, date);
+    }
+    isLongPressed.value = false;
+};
+
 // Find today in monthDates
 const todayInMonth = computed(() => props.monthDates.find(d => d.dateString === todayStr));
 
@@ -75,10 +106,10 @@ onMounted(() => {
     <div class="w-full md:max-w-[95%] mx-auto md:px-2 pt-2 md:pt-8 pb-20">
 
         <!-- ==================== MOBILE LAYOUT (<md) ==================== -->
-        <div v-if="localHabits.length > 0" class="md:hidden">
+        <div v-if="localHabits.length > 0" class="md:hidden overflow-x-hidden">
             
             <!-- Mobile Sticky Header for Day Selector -->
-            <div class="sticky top-[72px] z-40 bg-slate-50/80 backdrop-blur-md pt-2 pb-4 px-4 -mx-4 mb-2 border-b border-slate-100/50">
+            <div class="sticky top-[72px] z-40 bg-slate-50/90 backdrop-blur-md pt-2 pb-4 px-4 mb-2 border-b border-slate-100/80">
                 <div ref="dayStripRef" class="flex gap-2.5 overflow-x-auto no-scrollbar scroll-smooth">
                     <button 
                         v-for="day in monthDates" 
@@ -115,22 +146,22 @@ onMounted(() => {
                     :key="habit.id"
                     class="group relative"
                 >
-                    <!-- Glass Background -->
-                    <div class="absolute inset-0 bg-white/40 backdrop-blur-sm rounded-[2rem] -z-10 border border-white/60"></div>
-                    
                     <div 
-                        class="bg-white/70 backdrop-blur-md rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden transition-all duration-500"
+                        class="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden transition-all duration-300"
                         :class="{ 
                             'opacity-60 grayscale-[0.5]': selectedDay?.isFuture,
-                            'border-indigo-100 shadow-indigo-100/20': getStatus(habit, selectedDate) === 'completed'
+                            'border-indigo-100 shadow-indigo-100/10 bg-indigo-50/30': getStatus(habit, selectedDate) === 'completed'
                         }"
                     >
                         <div class="flex items-center gap-4 p-5">
                             <!-- Toggle Button (Large, Tap-able) -->
                             <button 
-                                @click="toggleStatus(habit.id, selectedDate)"
+                                @click="handleMobileClick(habit, selectedDate)"
+                                @touchstart="handleTouchStart(habit, selectedDate)"
+                                @touchend="handleTouchEnd"
+                                @touchcancel="handleTouchEnd"
                                 :disabled="selectedDay?.isFuture"
-                                class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-500 active:scale-90 relative group/btn"
+                                class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 active:scale-90 relative group/btn"
                                 :class="{
                                     'shadow-xl text-white scale-105': getStatus(habit, selectedDate) === 'completed',
                                     'bg-slate-100 text-slate-400 border-2 border-dashed border-slate-200': getStatus(habit, selectedDate) === 'skipped',

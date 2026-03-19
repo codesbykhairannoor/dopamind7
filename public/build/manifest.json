@@ -150,7 +150,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-sz_IiIBv.css",
+    "file": "assets/app-BHCjHkqt.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -723,7 +723,7 @@
     ]
   },
   "resources/js/Pages/Habits/HabitGrid.vue": {
-    "file": "assets/HabitGrid-bbxo4emk.js",
+    "file": "assets/HabitGrid-Cs_ntVh6.js",
     "name": "HabitGrid",
     "src": "resources/js/Pages/Habits/HabitGrid.vue",
     "isDynamicEntry": true,
@@ -736,7 +736,7 @@
       "_vendor-utils-t_1q_c9U.js"
     ],
     "css": [
-      "assets/HabitGrid-Dpqaf2-i.css"
+      "assets/HabitGrid-aMoba-96.css"
     ]
   },
   "resources/js/Pages/Habits/HabitHeader.vue": {
@@ -790,7 +790,7 @@
     ]
   },
   "resources/js/Pages/Habits/Index.vue": {
-    "file": "assets/Index-BAjaKd4U.js",
+    "file": "assets/Index-Wu9Rg7A5.js",
     "name": "Index",
     "src": "resources/js/Pages/Habits/Index.vue",
     "isDynamicEntry": true,
@@ -1083,7 +1083,7 @@
     ]
   },
   "resources/js/Pages/Profile/Edit.vue": {
-    "file": "assets/Edit-BcM_rVxs.js",
+    "file": "assets/Edit-C3FN9tmw.js",
     "name": "Edit",
     "src": "resources/js/Pages/Profile/Edit.vue",
     "isDynamicEntry": true,
@@ -1127,7 +1127,7 @@
     ]
   },
   "resources/js/Pages/Profile/Partials/PremiumSubscriptionForm.vue": {
-    "file": "assets/PremiumSubscriptionForm-Cub7hbJW.js",
+    "file": "assets/PremiumSubscriptionForm-pBNW-oBl.js",
     "name": "PremiumSubscriptionForm",
     "src": "resources/js/Pages/Profile/Partials/PremiumSubscriptionForm.vue",
     "isDynamicEntry": true,
@@ -1177,7 +1177,7 @@
     ]
   },
   "resources/js/Pages/Settings/Index.vue": {
-    "file": "assets/Index-CwlYP5rq.js",
+    "file": "assets/Index-CwJfdBWS.js",
     "name": "Index",
     "src": "resources/js/Pages/Settings/Index.vue",
     "isDynamicEntry": true,
@@ -1211,7 +1211,7 @@
     ]
   },
   "resources/js/Pages/Settings/Partials/BillingTab.vue": {
-    "file": "assets/BillingTab-Da8kQGII.js",
+    "file": "assets/BillingTab-DF8gq2wm.js",
     "name": "BillingTab",
     "src": "resources/js/Pages/Settings/Partials/BillingTab.vue",
     "isDynamicEntry": true,
@@ -1289,7 +1289,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-Dy6O8xy2.js",
+    "file": "assets/app-CXHUnKwT.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -1373,7 +1373,7 @@
       "resources/js/Pages/Welcome.vue"
     ],
     "css": [
-      "assets/app-sz_IiIBv.css"
+      "assets/app-BHCjHkqt.css"
     ]
   }
 }
