@@ -2,6 +2,7 @@
 import { Head, router } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import EmptyState from '@/Components/EmptyState.vue';
 import Swal from 'sweetalert2';
 
 import JournalHeader from './JournalHeader.vue';
@@ -71,12 +72,14 @@ const deleteJournal = (id) => {
                 <h3 class="text-xl font-black text-slate-800">{{ $t('journal_history', 'Story History') }}</h3>
             </div>
 
-            <div v-if="journals.length === 0" class="text-center py-20 bg-white rounded-[2.5rem] border border-dashed border-slate-200 max-w-4xl mx-auto">
-                <div class="mb-4 text-indigo-200 flex items-center justify-center">
-                    <OneForMindIcon name="journal" size="64" stroke-width="1.5" />
-                </div>
-                <h3 class="mb-2 text-xl font-black text-slate-700">{{ $t('journal_empty_title', 'Belum ada cerita.') }}</h3>
-                <p class="font-medium text-slate-400">{{ $t('journal_empty_subtitle', 'Mulai tulis jurnal pertamamu hari ini!') }}</p>
+            <div v-if="journals.length === 0" class="max-w-4xl mx-auto py-10">
+                <EmptyState 
+                    title="Abadikan Momen Berhargamu" 
+                    description="Belum ada catatan jurnal untuk periode ini. Mulailah menulis untuk menjaga kesehatan mental dan produktivitasmu!" 
+                    image="journal"
+                    actionLabel="Tulis Jurnal Hari Ini"
+                    @click="router.visit(route('journal.create'))"
+                />
             </div>
 
             <div v-else class="grid items-start grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">

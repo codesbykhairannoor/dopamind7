@@ -2,6 +2,7 @@
 import { ref, watch, reactive } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+import EmptyState from '@/Components/EmptyState.vue';
 import { Head, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 
@@ -283,11 +284,14 @@ const switchToSingle = () => {
                             </div>
                         </div>
 
-                        <div v-if="localTransactions.length === 0" class="text-center py-12 bg-white rounded-3xl border border-dashed border-slate-200">
-                            <div class="mb-4 text-slate-300 flex items-center justify-center">
-                                <OneForMindIcon name="finance" size="48" stroke-width="1.5" />
-                            </div>
-                            <p class="text-slate-400 text-sm font-medium">{{ $t('no_transaction') }}</p>
+                        <div v-if="localTransactions.length === 0" class="py-10">
+                            <EmptyState 
+                                title="Kelola Keuanganmu" 
+                                description="Belum ada transaksi di periode ini. Yuk mulai catat pengeluaran dan pemasukanmu agar finansialmu lebih sehat!" 
+                                image="finance"
+                                actionLabel="Tambah Transaksi"
+                                @click="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
+                            />
                         </div>
 
                         <div v-else class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden divide-y divide-slate-50">

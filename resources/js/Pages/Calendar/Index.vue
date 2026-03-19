@@ -102,6 +102,7 @@ const changeMonth = (newMonthPayload) => {
                 :calendarDays="calendarDays"
                 :selectedDate="selectedDate"
                 @open-detail="openDayDetail"
+                @open-event-modal="() => openEventModal()"
             />
         </div>
 
