@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Services;
+
 class DashboardService
 {
     public function getTodaySynergy(int $userId, string $timezone): array
@@ -58,7 +60,7 @@ class DashboardService
             'events' => $events->take(2),
         ];
     }
-{
+
     public function getWeeklyTrend(int $userId, string $timezone): array
     {
         $trend = [];
