@@ -109,7 +109,7 @@ onMounted(() => {
         <div v-if="localHabits.length > 0" class="md:hidden overflow-x-hidden">
             
             <!-- Mobile Sticky Header for Day Selector -->
-            <div class="sticky top-[72px] z-40 bg-slate-50/90 backdrop-blur-md pt-2 pb-4 px-4 mb-2 border-b border-slate-100/80">
+            <div class="sticky top-16 z-40 bg-slate-50/90 backdrop-blur-md pt-2 pb-4 px-4 mb-2 border-b border-slate-100/80">
                 <div ref="dayStripRef" class="flex gap-2.5 overflow-x-auto no-scrollbar scroll-smooth">
                     <button 
                         v-for="day in monthDates" 
@@ -127,7 +127,7 @@ onMounted(() => {
                         ]"
                     >
                         <span class="text-[8px] font-black uppercase tracking-widest" 
-                              :class="day.dateString === selectedDate ? 'text-indigo-200' : 'text-slate-400'">
+                               :class="day.dateString === selectedDate ? 'text-indigo-200' : 'text-slate-400'">
                             {{ day.dayName }}
                         </span>
                         <span class="text-base font-black mt-0.5 tracking-tighter">{{ day.dayNumber }}</span>
@@ -140,7 +140,7 @@ onMounted(() => {
             </div>
 
             <!-- Habit Cards - Premium Cards -->
-            <div class="space-y-4 px-4">
+            <div class="space-y-4 px-4 pb-12">
                 <div 
                     v-for="habit in localHabits" 
                     :key="habit.id"
@@ -154,29 +154,14 @@ onMounted(() => {
                         }"
                     >
                         <div class="flex items-center gap-4 p-5">
-                            <!-- Toggle Button (Large, Tap-able) -->
-                            <button 
-                                @click="handleMobileClick(habit, selectedDate)"
-                                @touchstart="handleTouchStart(habit, selectedDate)"
-                                @touchend="handleTouchEnd"
-                                @touchcancel="handleTouchEnd"
-                                :disabled="selectedDay?.isFuture"
-                                class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 active:scale-90 relative group/btn"
-                                :class="{
-                                    'shadow-xl text-white scale-105': getStatus(habit, selectedDate) === 'completed',
-                                    'bg-slate-100 text-slate-400 border-2 border-dashed border-slate-200': getStatus(habit, selectedDate) === 'skipped',
-                                    'bg-white border-2 border-slate-100 text-slate-300 hover:border-indigo-200': getStatus(habit, selectedDate) === 'empty' && !selectedDay?.isFuture,
-                                    'bg-slate-50 border border-slate-100 text-slate-200 cursor-not-allowed': selectedDay?.isFuture,
-                                }"
-                                :style="getStatus(habit, selectedDate) === 'completed' ? { backgroundColor: habit.color, boxShadow: `0 8px 16px -4px ${habit.color}40` } : {}"
+                            <!-- Left Side: Display Icon (Static but clickable for edit) -->
+                            <div 
+                                @click="editHabit(habit)"
+                                class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 bg-slate-50 border border-slate-100/50"
+                                :style="{ color: habit.color }"
                             >
-                                <OneForMindIcon v-if="getStatus(habit, selectedDate) === 'completed'" name="check" size="24" stroke-width="4" class="animate-in zoom-in duration-300" />
-                                <span v-else-if="getStatus(habit, selectedDate) === 'skipped'" class="text-xl font-black">—</span>
-                                <span v-else class="text-2xl transition-transform group-active/btn:scale-125">{{ habit.icon }}</span>
-                                
-                                <!-- Ripple Effect on Completed -->
-                                <div v-if="getStatus(habit, selectedDate) === 'completed'" class="absolute inset-0 rounded-2xl animate-ping bg-current opacity-10 pointer-events-none"></div>
-                            </button>
+                                <span class="text-2xl">{{ habit.icon }}</span>
+                            </div>
 
                             <!-- Info -->
                             <div class="flex-1 min-w-0" @click="editHabit(habit)">
@@ -188,7 +173,7 @@ onMounted(() => {
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">
-                                            {{ habit.progress_count }} / {{ habit.monthly_target }} {{ $t('label_target') }}
+                                            {{ habit.progress_count }} / {{ habit.monthly_target }}
                                         </span>
                                         <span class="text-[9px] font-black text-slate-700 uppercase tracking-widest leading-none" :style="{ color: habit.color }">
                                             {{ Math.round(habit.progress_percent) }}%
@@ -199,20 +184,45 @@ onMounted(() => {
 
                             <!-- Mobile Quick Actions -->
                             <div class="flex flex-col gap-2 shrink-0">
+                                <!-- Main Toggle (Complete) -->
                                 <button 
-                                    @click="toggleStatus(habit.id, selectedDate, 'skipped')" 
+                                    @click="handleMobileClick(habit, selectedDate)"
+                                    @touchstart="handleTouchStart(habit, selectedDate)"
+                                    @touchend="handleTouchEnd"
+                                    @touchcancel="handleTouchEnd"
                                     :disabled="selectedDay?.isFuture"
-                                    class="p-2.5 rounded-xl transition-all duration-300 active:scale-95"
-                                    :class="getStatus(habit, selectedDate) === 'skipped' ? 'bg-slate-200 text-slate-600' : 'bg-slate-50 text-slate-300 hover:text-slate-500'"
+                                    class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 active:scale-90 relative"
+                                    :class="{
+                                        'shadow-lg text-white': getStatus(habit, selectedDate) === 'completed',
+                                        'bg-slate-50 text-slate-300 border border-slate-100': getStatus(habit, selectedDate) !== 'completed',
+                                        'opacity-30 cursor-not-allowed': selectedDay?.isFuture
+                                    }"
+                                    :style="getStatus(habit, selectedDate) === 'completed' ? { backgroundColor: habit.color, boxShadow: `0 4px 12px -2px ${habit.color}60` } : {}"
                                 >
-                                    <OneForMindIcon name="clock" size="14" stroke-width="3" />
+                                    <OneForMindIcon v-if="getStatus(habit, selectedDate) === 'completed'" name="check" size="18" stroke-width="4" />
+                                    <OneForMindIcon v-else name="check" size="18" stroke-width="3" />
+                                    
+                                    <!-- Ripple effect on long press placeholder or completion -->
+                                    <div v-if="getStatus(habit, selectedDate) === 'completed'" class="absolute inset-0 rounded-xl animate-ping bg-current opacity-10 pointer-events-none"></div>
                                 </button>
-                                <button 
-                                    @click="editHabit(habit)" 
-                                    class="p-2.5 rounded-xl bg-slate-50 text-slate-300 hover:text-indigo-600 transition-all duration-300 active:scale-95"
-                                >
-                                    <OneForMindIcon name="planner" size="14" stroke-width="3" />
-                                </button>
+
+                                <!-- Secondary Actions: Skip & Edit -->
+                                <div class="flex gap-2">
+                                    <button 
+                                        @click="toggleStatus(habit.id, selectedDate, 'skipped')" 
+                                        :disabled="selectedDay?.isFuture"
+                                        class="w-10 h-10 rounded-xl transition-all duration-300 active:scale-95 flex items-center justify-center"
+                                        :class="getStatus(habit, selectedDate) === 'skipped' ? 'bg-slate-200 text-slate-600' : 'bg-slate-50 text-slate-300 hover:text-slate-500'"
+                                    >
+                                        <OneForMindIcon name="clock" size="14" stroke-width="3" />
+                                    </button>
+                                    <button 
+                                        @click="editHabit(habit)" 
+                                        class="w-10 h-10 rounded-xl bg-slate-50 text-slate-300 hover:text-indigo-600 transition-all duration-300 active:scale-95 flex items-center justify-center"
+                                    >
+                                        <OneForMindIcon name="planner" size="14" stroke-width="3" />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
