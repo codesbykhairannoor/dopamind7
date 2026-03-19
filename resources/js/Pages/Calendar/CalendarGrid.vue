@@ -1,7 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { usePage } from '@inertiajs/vue3';
-import EmptyState from '@/Components/EmptyState.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -202,14 +201,9 @@ const getStatusColor = (color) => {
                     </div>
 
                     <!-- Empty Agenda -->
-                    <div v-if="!hasAnyMetric(selectedDay)" class="py-10">
-                        <EmptyState 
-                            title="Hari yang Tenang" 
-                            description="Belum ada aktivitas atau event yang tercatat untuk hari ini. Waktunya merencanakan sesuatu yang luar biasa!" 
-                            image="calendar"
-                            actionLabel="Tambah Event"
-                            @click="() => emit('open-event-modal')"
-                        />
+                    <div v-if="!hasAnyMetric(selectedDay)" class="py-12 text-center bg-white rounded-3xl border border-slate-100">
+                        <span class="text-3xl mb-2 block">🎐</span>
+                        <p class="text-xs font-bold text-slate-400 italic">No activity for this day.</p>
                     </div>
                 </div>
             </div>

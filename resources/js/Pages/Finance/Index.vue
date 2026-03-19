@@ -2,7 +2,6 @@
 import { ref, watch, reactive } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
-import EmptyState from '@/Components/EmptyState.vue';
 import { Head, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 
@@ -284,15 +283,17 @@ const switchToSingle = () => {
                             </div>
                         </div>
 
-                        <div v-if="localTransactions.length === 0" class="py-10">
-                            <EmptyState 
-                                title="Kelola Keuanganmu" 
-                                description="Belum ada transaksi di periode ini. Yuk mulai catat pengeluaran dan pemasukanmu agar finansialmu lebih sehat!" 
-                                image="finance"
-                                actionLabel="Tambah Transaksi"
-                                @click="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
-                            />
-                        </div>
+                        <div v-if="localTransactions.length === 0" class="py-20 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm mt-4">
+                <div class="flex flex-col items-center gap-4">
+                    <span class="text-5xl animate-bounce">💸</span>
+                    <p class="text-sm font-bold text-slate-400 px-8">
+                        {{ $t('finance_empty_state', 'Belum ada transaksi. Catat pengeluaran atau pemasukanmu hari ini!') }}
+                    </p>
+                    <button @click="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }" class="mt-2 bg-rose-500 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-rose-100 hover:bg-rose-600 active:scale-95 transition-all outline-none">
+                        + {{ $t('finance_add_transaction', 'Tambah Transaksi') }}
+                    </button>
+                </div>
+            </div>
 
                         <div v-else class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden divide-y divide-slate-50">
                             <div v-for="day in visibleStats" :key="day.date" @click="openDetail(day)" class="group p-4 flex items-center justify-between hover:bg-indigo-50/50 transition-colors cursor-pointer">

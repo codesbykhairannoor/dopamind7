@@ -112,14 +112,15 @@ onMounted(() => {
         </div>
 
         <!-- Empty State Mobile -->
-        <div v-else class="md:hidden flex flex-col items-center">
-            <EmptyState 
-                title="Mulai Habit Pertamamu" 
-                description="Habit tracker yang konsisten adalah kunci perubahan besar. Yuk tambahkan habit pertamamu!" 
-                image="habits"
-                actionLabel="Tambah Habit"
-                @click="openCreateModal"
-            />
+        <!-- Empty State Mobile (Job Tracker Style) -->
+        <div v-else class="md:hidden py-16 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm flex flex-col items-center gap-4">
+            <span class="text-5xl animate-bounce">🌱</span>
+            <p class="text-xs font-bold text-slate-400 px-10">
+                {{ $t('habit_empty_state', 'Belum ada habit yang direncanakan. Tambahkan habit baru untuk memulai perjalananmu!') }}
+            </p>
+            <button @click="openCreateModal" class="mt-2 bg-emerald-500 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-emerald-100 hover:bg-emerald-600 active:scale-95 transition-all outline-none">
+                + {{ $t('habit_add_new', 'Tambah Habit') }}
+            </button>
         </div>
 
         <!-- ==================== DESKTOP LAYOUT (≥md) ==================== -->
@@ -233,14 +234,17 @@ onMounted(() => {
 
         <!-- DESKTOP EMPTY STATE (≥md) -->
         <div v-if="localHabits.length === 0" class="hidden md:flex justify-center w-full px-4">
-            <div class="w-full max-w-4xl bg-white rounded-[2.5rem] border border-slate-100 shadow-sm p-12 mt-6">
-                <EmptyState 
-                    title="Belum ada Habit di bulan ini" 
-                    description="Sepertinya kamu belum merencanakan kebiasaan baik untuk bulan ini. Mulai sekarang dan jadilah versi terbaikmu!" 
-                    image="habits"
-                    actionLabel="Tambah Habit Baru"
-                    @click="openCreateModal"
-                />
+            <!-- Simple Empty State (Job Tracker Style) -->
+            <div class="py-20 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm mt-4 w-full max-w-4xl">
+                <div class="flex flex-col items-center gap-4">
+                    <span class="text-5xl animate-bounce">🌱</span>
+                    <p class="text-sm font-bold text-slate-400 px-8">
+                        {{ $t('habit_empty_state', 'Belum ada habit yang direncanakan. Tambahkan habit baru untuk memulai perjalananmu!') }}
+                    </p>
+                    <button @click="openCreateModal" class="mt-2 bg-emerald-500 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-emerald-100 hover:bg-emerald-600 active:scale-95 transition-all outline-none">
+                        + {{ $t('habit_add_new', 'Tambah Habit') }}
+                    </button>
+                </div>
                 <div v-if="hasPrevHabits" class="mt-8 flex justify-center">
                     <button @click="openCopyModal" class="px-6 py-3 rounded-xl font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 transition">📂 {{ $t('habit_salin_btn') }}</button>
                 </div>

@@ -70,17 +70,7 @@ const handleFullReset = () => {
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
                 
                 <div class="lg:col-span-3 order-1 lg:order-2 w-full">
-                    <div v-if="localTasks.length === 0" class="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm p-12">
-                        <EmptyState 
-                            title="Rencanakan Harimu" 
-                            description="Belum ada tugas yang dijadwalkan untuk hari ini. Yuk susun jadwalmu agar lebih produktif!" 
-                            image="planner"
-                            actionLabel="Tambah Tugas"
-                            @click="() => openModal(null, null, 'full')"
-                        />
-                    </div>
                     <PlannerTimeline 
-                        v-else
                         :timeSlots="timeSlots"
                         :scheduledTasks="scheduledTasks"
                         :onDrop="onDrop"

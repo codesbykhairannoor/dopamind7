@@ -2,7 +2,8 @@
 import { Head, router } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import EmptyState from '@/Components/EmptyState.vue';
+import { useJournal } from '@/Composables/Journal/useJournal';
+import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
 
 import JournalHeader from './JournalHeader.vue';
@@ -72,14 +73,16 @@ const deleteJournal = (id) => {
                 <h3 class="text-xl font-black text-slate-800">{{ $t('journal_history', 'Story History') }}</h3>
             </div>
 
-            <div v-if="journals.length === 0" class="max-w-4xl mx-auto py-10">
-                <EmptyState 
-                    title="Abadikan Momen Berhargamu" 
-                    description="Belum ada catatan jurnal untuk periode ini. Mulailah menulis untuk menjaga kesehatan mental dan produktivitasmu!" 
-                    image="journal"
-                    actionLabel="Tulis Jurnal Hari Ini"
-                    @click="router.visit(route('journal.create'))"
-                />
+            <div v-if="localEntries.length === 0" class="py-20 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm mt-4">
+                <div class="flex flex-col items-center gap-4">
+                    <span class="text-5xl animate-bounce">📓</span>
+                    <p class="text-sm font-bold text-slate-400 px-8">
+                        {{ $t('journal_empty_state', 'Belum ada entri jurnal. Mulai tuliskan pikiranmu hari ini!') }}
+                    </p>
+                    <button @click="() => createEntry()" class="mt-2 bg-purple-500 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-purple-100 hover:bg-purple-600 active:scale-95 transition-all outline-none">
+                        + {{ $t('journal_create_btn', 'Buat Entri Baru') }}
+                    </button>
+                </div>
             </div>
 
             <div v-else class="grid items-start grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
