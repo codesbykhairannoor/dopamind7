@@ -8,7 +8,6 @@ const page = usePage();
 const user = computed(() => page.props.auth.user);
 
 // --- STATE NAVIGASI MOBILE & MODAL ---
-const showingNavigationDropdown = ref(false);
 const showLogoutModal = ref(false);
 
 // 🔥 STATE SIDEBAR DESKTOP COLLAPSE
@@ -72,8 +71,8 @@ watch(() => page.url, () => {
             </div>
 
             <nav class="flex-1 px-3 space-y-1 overflow-y-auto py-4 custom-scrollbar" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
-                <Link :href="route('dashboard')" prefetch="hover"
-                    class="flex items-center rounded-xl transition-all duration-300 group relative"
+                <Link :href="route('dashboard')" prefetch="mousedown"
+                    class="flex-items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
@@ -85,7 +84,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('dashboard') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="hover"
+                <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -98,7 +97,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('habits.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch
+                <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -111,7 +110,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('planner.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch
+                <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -124,7 +123,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('finance.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch
+                <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -137,7 +136,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch
+                <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -150,7 +149,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch
+                <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -163,7 +162,7 @@ watch(() => page.url, () => {
                     <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch
+                <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('goals.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
@@ -232,102 +231,55 @@ watch(() => page.url, () => {
             </div>
         </aside>
 
-        <main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50 custom-scrollbar">
+        <main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50 custom-scrollbar pb-32 md:pb-0">
             
-            <div class="md:hidden bg-white/90 backdrop-blur-xl h-16 flex items-center justify-between px-6 border-b border-slate-100 sticky top-0 z-50 shadow-sm">
-                <Link :href="route('dashboard')" prefetch class="group flex items-center gap-3">
-                    <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center shadow-md shrink-0">
-                        <img src="/favicon.svg?v=2" alt="Logo" class="w-6 h-6 brightness-0 invert" />
-                    </div>
-                    <span class="text-lg font-black tracking-tighter text-slate-900">OneForMind<span class="text-indigo-600">.</span></span>
-                </Link>
-                <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-slate-500 hover:text-indigo-600 transition p-2 rounded-lg hover:bg-slate-50 focus:outline-none">
-                    <OneForMindIcon :name="!showingNavigationDropdown ? 'menu' : 'x'" size="24" stroke-width="2.5" />
-                </button>
-            </div>
+            <!-- Mobile Top Bar Removed for cleaner look -->
 
-            <Transition 
-                enter-active-class="transition duration-300 ease-out" 
-                enter-from-class="opacity-0 translate-y-[-20px]" 
-                enter-to-class="opacity-100 translate-y-0" 
-                leave-active-class="transition duration-200 ease-in" 
-                leave-from-class="opacity-100 translate-y-0" 
-                leave-to-class="opacity-0 translate-y-[-20px]"
-            >
-                <div v-show="showingNavigationDropdown" class="md:hidden fixed inset-0 top-16 z-40 bg-slate-50/95 backdrop-blur-2xl overflow-y-auto custom-scrollbar">
-                    <div class="p-6 space-y-6 pb-32">
-                        
-                        <div class="flex items-center gap-4 p-5 bg-white rounded-[2rem] shadow-sm border border-slate-100">
-                            <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-14 h-14 rounded-full object-cover shadow-sm border-2 border-white shrink-0" />
-                            <div v-else class="w-14 h-14 rounded-full bg-indigo-600 text-white flex items-center justify-center font-black text-xl shadow-md shrink-0">
-                                {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <p class="text-base font-black text-slate-800 truncate leading-tight mb-1">{{ user?.name || 'User' }}</p>
-                                <p class="text-[11px] font-bold uppercase tracking-widest text-indigo-500">Member</p>
-                            </div>
-                        </div>
 
-                        <div class="bg-white rounded-[2rem] p-3 shadow-sm border border-slate-100 flex flex-col gap-1">
-                            <Link :href="route('dashboard')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('dashboard') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <OneForMindIcon name="dashboard" size="20" /> {{ $t('nav_dashboard', 'Dashboard') }}
-                            </Link>
+            <!-- NEW MOBILE BOTTOM NAVIGATION BAR -->
+            <div class="md:hidden fixed bottom-6 left-6 right-6 z-[60]">
+                <div class="bg-white/80 backdrop-blur-2xl border border-slate-200 shadow-xl rounded-[2rem] px-2 py-2 flex items-center justify-between">
+                    <!-- Dashboard -->
+                    <Link :href="route('dashboard')" prefetch="mousedown" 
+                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
+                          :class="route().current('dashboard') ? 'text-indigo-600' : 'text-slate-400'">
+                        <OneForMindIcon name="dashboard" :size="20" stroke-width="2.5" />
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_dashboard', 'Dash') }}</span>
+                    </Link>
+                    
+                    <!-- Habits -->
+                    <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="mousedown" 
+                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
+                          :class="route().current('habits.*') ? 'text-indigo-600' : 'text-slate-400'">
+                        <OneForMindIcon name="habit" :size="20" stroke-width="2.5" />
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">Habits</span>
+                    </Link>
 
-                            <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('habits.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <OneForMindIcon name="habit" size="20" /> {{ $t('habit_page_title', 'Habit Tracker') }}
-                            </Link>
+                    <!-- Finance -->
+                    <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="mousedown" 
+                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
+                          :class="route().current('finance.*') ? 'text-indigo-600' : 'text-slate-400'">
+                        <OneForMindIcon name="finance" :size="20" stroke-width="2.5" />
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">Finance</span>
+                    </Link>
 
-                            <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('planner.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <OneForMindIcon name="planner" size="20" /> Daily Planner
-                            </Link>
+                    <!-- More -->
+                    <Link :href="route('more.index')" prefetch="mousedown" 
+                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
+                          :class="route().current('more.index') ? 'text-indigo-600' : 'text-slate-400'">
+                        <OneForMindIcon name="menu" :size="20" stroke-width="2.5" />
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">More</span>
+                    </Link>
 
-                            <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('finance.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <OneForMindIcon name="finance" size="20" /> Finance Plan
-                            </Link>
-
-                            <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('journal.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <OneForMindIcon name="journal" size="20" /> Digital Journal
-                            </Link>
-
-                            <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <OneForMindIcon name="calendar" size="20" /> Calendar View
-                            </Link>
-
-                            <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <OneForMindIcon name="job" size="20" /> Job Tracker
-                            </Link>
-
-                            <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('goals.*') ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <OneForMindIcon name="goal" size="20" /> Goal Tracker
-                            </Link>
-                        </div>
-
-                        <div class="bg-white rounded-[2rem] p-3 shadow-sm border border-slate-100 flex flex-col gap-1">
-                            <div class="flex items-center justify-between px-6 py-5 border-b border-slate-50 mb-1">
-                                <div class="flex flex-col">
-                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-0.5">Locale</span>
-                                    <span class="text-sm font-black text-slate-800">Language</span>
-                                </div>
-                                <div class="flex gap-1 p-1 bg-slate-100/80 rounded-2xl border border-slate-200/50 shadow-inner">
-                                    <button @click="switchLang('id')" :class="currentLocale === 'id' ? 'bg-white text-indigo-600 shadow-lg ring-1 ring-slate-100' : 'text-slate-400 hover:text-slate-600'" class="px-5 py-2 rounded-xl text-xs font-black transition-all duration-300">ID</button>
-                                    <button @click="switchLang('en')" :class="currentLocale === 'en' ? 'bg-white text-indigo-600 shadow-lg ring-1 ring-slate-100' : 'text-slate-400 hover:text-slate-600'" class="px-5 py-2 rounded-xl text-xs font-black transition-all duration-300">EN</button>
-                                </div>
-                            </div>
-
-                            <Link :href="route('settings.index')" prefetch class="px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center gap-4 text-base" :class="route().current('settings.*') ? 'bg-slate-100 text-slate-800' : 'text-slate-600 hover:bg-slate-50 active:bg-slate-100'" @click="showingNavigationDropdown = false">
-                                <OneForMindIcon name="settings" size="20" /> {{ $t('nav_settings', 'Pengaturan') }}
-                            </Link>
-                            
-                            <div class="h-px w-full bg-slate-100 my-1"></div>
-
-                            <button @click="showLogoutModal = true; showingNavigationDropdown = false" type="button" class="w-full px-5 py-4 rounded-[1.5rem] font-bold transition-all flex items-center justify-center gap-3 text-base text-rose-500 bg-rose-50 hover:bg-rose-100 active:scale-[0.98]">
-                                <OneForMindIcon name="logout" size="20" /> {{ $t('nav_logout', 'Keluar') }}
-                            </button>
-                        </div>
-
-                    </div>
+                    <!-- Settings -->
+                    <Link :href="route('settings.index')" prefetch="mousedown" 
+                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
+                          :class="route().current('settings.*') ? 'text-indigo-600' : 'text-slate-400'">
+                        <OneForMindIcon name="settings" :size="20" stroke-width="2.5" />
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">Settings</span>
+                    </Link>
                 </div>
-            </Transition>
+            </div>
 
             <div class="w-full relative z-0">
                 <slot />

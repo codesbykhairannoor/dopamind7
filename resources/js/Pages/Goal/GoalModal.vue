@@ -16,7 +16,9 @@ const props = defineProps({
     goal: Object,
     onClose: Function,
     onSave: Function,
-    onUploadImage: Function
+    onUploadImage: Function,
+    processing: Boolean,
+    errors: { type: Object, default: () => ({}) }
 });
 
 const emit = defineEmits(['close', 'save']);
@@ -165,9 +167,11 @@ const t = (key, fallback) => {
                         <div class="relative group">
                             <input v-model="form.title" type="text" 
                                     class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-5 py-5 text-slate-700 font-bold focus:bg-white focus:border-indigo-500/20 focus:ring-4 focus:ring-indigo-500/5 placeholder:text-slate-300 transition-all text-lg shadow-sm"
+                                    :class="{'!border-rose-300 !bg-rose-50 !text-rose-600': errors.title}"
                                     :placeholder="t('goal_placeholder_title', 'Tuliskan impianmu disini...')" />
                             <Target :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-indigo-500 transition-colors pointer-events-none" />
                         </div>
+                        <p v-if="errors.title" class="text-[10px] font-bold text-rose-500 ml-1">{{ errors.title[0] }}</p>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -192,9 +196,11 @@ const t = (key, fallback) => {
                             <div class="relative group">
                                 <input v-model="form.reward" type="text" 
                                        class="w-full bg-slate-50 border-2 border-transparent rounded-2xl px-5 py-4 text-slate-700 font-bold focus:bg-white focus:border-amber-500/20 focus:ring-4 focus:ring-amber-500/5 transition-all"
+                                       :class="{'!border-rose-300 !bg-rose-50 !text-rose-600': errors.reward}"
                                        :placeholder="t('goal_placeholder_reward', 'Rayakan saat tercapai!')" />
                                 <Award :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-amber-400 pointer-events-none" />
                             </div>
+                            <p v-if="errors.reward" class="text-[10px] font-bold text-rose-500 ml-1">{{ errors.reward[0] }}</p>
                         </div>
                     </div>
 
@@ -219,10 +225,12 @@ const t = (key, fallback) => {
                             <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_start', 'Start Date') }}</label>
                             <div class="relative">
                                 <button type="button" @click="showStartPicker = !showStartPicker; showEndPicker = false"
-                                        class="w-full bg-slate-50 border-2 border-transparent hover:border-indigo-100 rounded-2xl px-5 py-4 text-slate-700 font-bold text-left transition-all flex justify-between items-center group">
+                                        class="w-full bg-slate-50 border-2 border-transparent hover:border-indigo-100 rounded-2xl px-5 py-4 text-slate-700 font-bold text-left transition-all flex justify-between items-center group"
+                                        :class="{'!border-rose-300 !bg-rose-50': errors.start_date}">
                                     <span>{{ dateDisplay(form.start_date) }}</span>
                                     <Calendar :size="18" class="text-slate-300 group-hover:text-indigo-500" />
                                 </button>
+                                <p v-if="errors.start_date" class="text-[10px] font-bold text-rose-500 ml-1 mt-1">{{ errors.start_date[0] }}</p>
                                 
                                 <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
                                     <GoalDatePicker 
@@ -241,10 +249,12 @@ const t = (key, fallback) => {
                             <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest ml-1">{{ t('goal_label_end', 'Target Deadline') }}</label>
                             <div class="relative">
                                 <button type="button" @click="showEndPicker = !showEndPicker; showStartPicker = false"
-                                        class="w-full bg-slate-50 border-2 border-transparent hover:border-rose-100 rounded-2xl px-5 py-4 text-slate-700 font-bold text-left transition-all flex justify-between items-center group">
+                                        class="w-full bg-slate-50 border-2 border-transparent hover:border-rose-100 rounded-2xl px-5 py-4 text-slate-700 font-bold text-left transition-all flex justify-between items-center group"
+                                        :class="{'!border-rose-300 !bg-rose-50': errors.end_date}">
                                     <span :class="!form.end_date ? 'text-slate-300' : ''">{{ dateDisplay(form.end_date) }}</span>
                                     <Zap :size="18" :class="form.end_date ? 'text-rose-500' : 'text-slate-300 group-hover:text-rose-400'" />
                                 </button>
+                                <p v-if="errors.end_date" class="text-[10px] font-bold text-rose-500 ml-1 mt-1">{{ errors.end_date[0] }}</p>
                                 
                                 <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
                                     <GoalDatePicker 
@@ -300,7 +310,7 @@ const t = (key, fallback) => {
                     <button @click="handleClose" class="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-rose-500 transition-colors px-4 py-2">
                         {{ t('btn_cancel', 'Cancel') }}
                     </button>
-                    <button @click="handleSave" 
+                    <button @click="handleSave"
                             class="bg-indigo-600 text-white px-8 py-3.5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-lg shadow-indigo-600/20 hover:bg-indigo-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
                         <CheckCircle2 :size="16" />
                         {{ goal?.id ? t('goal_btn_save', 'Update Vision') : t('goal_btn_create', 'Manifest Goal') }}

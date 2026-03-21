@@ -104,8 +104,11 @@ const priorityLabel = computed(() => {
                     <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest mb-0.5">Manifestation</span>
                     <span class="text-xs font-black text-slate-800 tabular-nums">{{ progress }}% Completed</span>
                 </div>
-                <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
+                <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center relative">
                     <Zap :size="14" :class="progress === 100 ? 'text-amber-400 animate-pulse' : 'text-slate-300'" />
+                    <div v-if="goal.is_saving" class="absolute -top-1 -right-1 w-3 h-3 bg-indigo-500 rounded-full border-2 border-white flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 border border-white border-t-transparent rounded-full animate-spin"></div>
+                    </div>
                 </div>
             </div>
 

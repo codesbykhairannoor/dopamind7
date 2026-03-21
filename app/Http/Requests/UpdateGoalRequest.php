@@ -25,6 +25,7 @@ class UpdateGoalRequest extends FormRequest
             'title' => ['nullable', 'string', 'max:255'],
             'cover_image_url' => ['nullable', 'string', 'max:2048'],
             'category' => ['nullable', 'string', 'max:100'],
+            'color' => ['nullable', 'string', 'max:7'],
             'type' => ['nullable', 'in:daily,weekly,specific_days,custom_period,monthly,yearly'],
             'target_value' => ['nullable', 'numeric', 'min:0'],
             'current_value' => ['nullable', 'numeric', 'min:0'],

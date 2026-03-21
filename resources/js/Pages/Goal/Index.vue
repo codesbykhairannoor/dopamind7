@@ -27,7 +27,7 @@ defineOptions({ layout: AuthenticatedLayout });
 
 const {
     localGoals, localStats,
-    isModalOpen, editingGoal,
+    isModalOpen, editingGoal, isSaving, errors,
     openCreateModal, openEditModal, closeModal, saveGoal,
     uploadCoverImage, deleteGoal,
     addMilestone, saveMilestone, toggleMilestone, deleteMilestone
@@ -68,6 +68,8 @@ const todayDate = computed(() => {
             <GoalModal
                 :show="isModalOpen"
                 :goal="editingGoal"
+                :processing="isSaving"
+                :errors="errors"
                 @close="closeModal"
                 @save="saveGoal"
                 :onUploadImage="uploadCoverImage"

@@ -31,44 +31,49 @@ class GoalService
 
     public function getGoalStats(int $userId): array
     {
-        $goals = Goal::ofUser($userId)->with(['milestones'])->get();
+        $baseQuery = Goal::ofUser($userId);
+        
+        // 1. Basic Status Counts (Efficient single query)
+        $statsRaw = $baseQuery->clone()
+            ->select('status', DB::raw('count(*) as count'))
+            ->groupBy('status')
+            ->pluck('count', 'status');
 
-        $statsRaw = $goals->groupBy('status')->map->count();
-        $total = $goals->count();
+        $total = $statsRaw->sum();
+        
+        // 2. Milestone Aggregates ( menggunakan subqueries / withCount agar hemat memory)
+        $milestoneStats = DB::table('goal_milestones')
+            ->join('goals', 'goal_milestones.goal_id', '=', 'goals.id')
+            ->where('goals.user_id', $userId)
+            ->select(
+                DB::raw('count(*) as total'),
+                DB::raw('sum(case when completed = 1 then 1 else 0 end) as completed')
+            )->first();
 
-        $milestonesTotal = 0;
-        $milestonesCompleted = 0;
-        $totalProgress = 0;
-        $activeGoals = $goals->where('status', 'active');
+        // 3. Progress Calculation (Dihitung di DB lebih cepat)
+        // Kita ambil rata-rata progress dari goal yang aktif
+        $avgProgress = DB::table('goals')
+            ->where('user_id', $userId)
+            ->where('status', 'active')
+            ->leftJoin(DB::raw('(SELECT goal_id, count(*) as total, sum(case when completed = 1 then 1 else 0 end) as comp FROM goal_milestones GROUP BY goal_id) as ms'), 'goals.id', '=', 'ms.goal_id')
+            ->select(DB::raw('AVG(CASE WHEN ms.total > 0 THEN (ms.comp * 100.0 / ms.total) ELSE 0 END) as avg_p'))
+            ->value('avg_p') ?? 0;
 
-        foreach ($goals as $goal) {
-            $mCount = $goal->milestones->count();
-            $mComp = $goal->milestones->where('completed', true)->count();
-            $milestonesTotal += $mCount;
-            $milestonesCompleted += $mComp;
-
-            if ($mCount > 0) {
-                $totalProgress += ($mComp / $mCount) * 100;
-            }
-        }
-
-        $avgProgress = $activeGoals->count() > 0 ? round($totalProgress / $activeGoals->count(), 0) : 0;
-        if ($avgProgress > 100)
-            $avgProgress = 100;
-
-        $topGoal = $activeGoals->sortByDesc(function ($g) {
-            $mCount = $g->milestones->count();
-            if ($mCount === 0)
-                return 0;
-            return $g->milestones->where('completed', true)->count() / $mCount;
-        })->first();
-
-        $urgentGoal = $activeGoals->whereNotNull('end_date')
-            ->sortBy('end_date')
+        // 4. Specific Goals (Top & Urgent) - Tetap ambil model tapi limited
+        $topGoal = Goal::ofUser($userId)->byStatus('active')
+            ->withCount(['milestones as total_ms', 'milestones as completed_ms' => fn($q) => $q->where('completed', true)])
+            ->get()
+            ->sortByDesc(fn($g) => $g->total_ms > 0 ? $g->completed_ms / $g->total_ms : 0)
             ->first();
 
-        $upcomingDeadlines = $activeGoals->whereNotNull('end_date')
-            ->filter(fn($g) => $g->end_date->isFuture() && $g->end_date->diffInDays(now()) <= 7)
+        $urgentGoal = $baseQuery->clone()->byStatus('active')
+            ->whereNotNull('end_date')
+            ->orderBy('end_date', 'asc')
+            ->first();
+
+        $upcomingDeadlines = $baseQuery->clone()->byStatus('active')
+            ->whereNotNull('end_date')
+            ->whereBetween('end_date', [now(), now()->addDays(7)])
             ->count();
 
         return [
@@ -77,9 +82,9 @@ class GoalService
             'completed' => $statsRaw->get('completed', 0),
             'paused' => $statsRaw->get('paused', 0),
             'cancelled' => $statsRaw->get('cancelled', 0),
-            'avg_progress' => (int)$avgProgress,
-            'milestones_total' => $milestonesTotal,
-            'milestones_completed' => $milestonesCompleted,
+            'avg_progress' => (int) round($avgProgress),
+            'milestones_total' => (int) ($milestoneStats->total ?? 0),
+            'milestones_completed' => (int) ($milestoneStats->completed ?? 0),
             'top_goal_title' => $topGoal ? $topGoal->title : null,
             'urgent_goal_title' => $urgentGoal ? $urgentGoal->title : null,
             'upcoming_deadlines_count' => $upcomingDeadlines,

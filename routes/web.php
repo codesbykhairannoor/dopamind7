@@ -480,6 +480,10 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
         Route::get('/settings', [SettingsController::class , 'index'])->name('settings.index');
         Route::post('/settings', [SettingsController::class , 'update'])->name('settings.update');
 
+        Route::get('/more', function () {
+            return Inertia::render('More/Index');
+        })->name('more.index');
+
         Route::prefix('profile')->name('profile.')->group(function () {
             Route::get('/', [ProfileController::class , 'edit'])->name('edit');
             Route::patch('/', [ProfileController::class , 'update'])->name('update');

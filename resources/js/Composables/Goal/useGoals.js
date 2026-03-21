@@ -167,6 +167,8 @@ export function useGoals(props) {
     // Modal & Goal Management
     const isModalOpen = ref(false);
     const editingGoal = ref(null);
+    const isSaving = ref(false);
+    const errors = ref({});
 
     const openCreateModal = () => {
         editingGoal.value = normalizeGoal({ id: null, title: '', type: 'daily', status: 'active', priority: 'important', milestones: [] });
@@ -178,24 +180,63 @@ export function useGoals(props) {
         isModalOpen.value = true;
     };
 
-    const closeModal = () => { isModalOpen.value = false; editingGoal.value = null; };
+    const closeModal = () => { 
+        isModalOpen.value = false; 
+        editingGoal.value = null; 
+        errors.value = {};
+    };
 
     const saveGoal = async (data) => {
+        const isEditing = !!data.id;
+        const tempId = data.id || `temp_${Date.now()}`;
+        const optimisticData = { ...normalizeGoal(data), id: tempId, is_saving: true };
+        
+        // --- STEP 1: OPTIMISTIC UPDATE ---
+        const originalGoals = [...localGoals.value];
+        if (isEditing) {
+            const idx = localGoals.value.findIndex(g => g.id === data.id);
+            if (idx !== -1) localGoals.value[idx] = optimisticData;
+        } else {
+            localGoals.value.unshift(optimisticData);
+        }
+        
+        // Close modal immediately for "Instant" feel
+        closeModal();
+        fireToast('success', isEditing ? 'Vision Updated!' : 'Goal Manifested!');
+
+        // --- STEP 2: BACKGROUND SYNC ---
         try {
-            const url = data.id ? route('goals.update', data.id) : route('goals.store');
-            const res = await axios.post(url, { ...data, _method: data.id ? 'PATCH' : 'POST' });
+            const url = isEditing ? route('goals.update', data.id) : route('goals.store');
+            const res = await axios.post(url, 
+                { ...data, _method: isEditing ? 'PATCH' : 'POST' },
+                { headers: { 'Accept': 'application/json' } }
+            );
+
             if (res.data.data) {
                 const refreshed = normalizeGoal(res.data.data);
-                if (data.id) {
-                    const idx = localGoals.value.findIndex(g => g.id === data.id);
-                    if (idx !== -1) localGoals.value[idx] = refreshed;
-                } else {
-                    localGoals.value.unshift(refreshed);
+                const idx = localGoals.value.findIndex(g => g.id === tempId);
+                if (idx !== -1) {
+                    localGoals.value[idx] = refreshed;
                 }
-                closeModal();
-                fireToast('success', 'Goal berhasil dimanifestasi!');
             }
-        } catch (e) { fireToast('error', 'Gagal menyimpan!'); }
+        } catch (e) { 
+            console.error('[Vision Error] Sync failed:', e.response?.data || e.message);
+            
+            // --- STEP 3: ROLLBACK ON ERROR ---
+            localGoals.value = originalGoals;
+            
+            // Re-open modal so user doesn't lose data
+            editingGoal.value = data;
+            isModalOpen.value = true;
+            
+            if (e.response?.status === 422) {
+                errors.value = e.response.data.errors || {};
+            }
+            const msg = e.response?.data?.message || 'Gagal sinkronisasi ke server!';
+            fireToast('error', msg); 
+        } finally {
+            optimisticData.is_saving = false;
+        }
     };
 
     const uploadCoverImage = async (goalId, file) => {
@@ -226,7 +267,7 @@ export function useGoals(props) {
     };
 
     return {
-        localGoals, localStats, isModalOpen, editingGoal,
+        localGoals, localStats, isModalOpen, editingGoal, isSaving, errors,
         openCreateModal, openEditModal, closeModal, saveGoal, deleteGoal,
         uploadCoverImage, addMilestone, saveMilestone, toggleMilestone, deleteMilestone
     };

@@ -27,39 +27,51 @@ class FinanceService
         $endOfMonth = $carbonDate->copy()->endOfMonth()->format('Y-m-d');
         $monthKey = $carbonDate->format('Y-m');
 
+        // 1. Ambil Kategori (Cached atau limited)
         $categories = FinanceCategory::ofUser($userId)->get();
 
-        $transactions = FinanceTransaction::ofUser($userId)
-            ->inMonth($startOfMonth, $endOfMonth)
+        // 2. Transaksi - Aggregation di DB
+        $transactionStats = FinanceTransaction::ofUser($userId)
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->select('type', 'category', DB::raw('SUM(amount) as total'))
+            ->groupBy('type', 'category')
             ->get();
 
-        $incomeTransactions = $transactions->where('type', 'income');
-        $expenseTransactions = $transactions->where('type', 'expense');
+        $totalIncome = $transactionStats->where('type', 'income')->sum('total');
+        $totalExpense = $transactionStats->where('type', 'expense')->sum('total');
+        
+        $expenseStats = $transactionStats->where('type', 'expense')->pluck('total', 'category');
+        $incomeStats = $transactionStats->where('type', 'income')->pluck('total', 'category');
 
-        $totalIncome = $incomeTransactions->sum('amount');
-        $totalExpense = $expenseTransactions->sum('amount');
+        // 3. Ambil List Transaksi (Tetap dibutuhkan untuk list, tapi sudah difilter)
+        $transactions = FinanceTransaction::ofUser($userId)
+            ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->orderBy('date', 'desc')
+            ->get();
 
-        $expenseStats = $expenseTransactions->groupBy('category')->map(fn($g) => $g->sum('amount'));
-        $incomeStats = $incomeTransactions->groupBy('category')->map(fn($g) => $g->sum('amount'));
-
-        $budgets = FinanceBudget::ofUser($userId)->forMonth($monthKey)->get()
+        // 4. Budget dengan spent Ter-kalkulasi
+        $budgets = FinanceBudget::ofUser($userId)
+            ->where('month', $monthKey)
+            ->get()
             ->map(function ($budget) use ($expenseStats) {
-                $budget->spent = $expenseStats[$budget->category] ?? 0;
+                $budget->spent = (float) ($expenseStats[$budget->category] ?? 0);
                 return $budget;
             });
 
-        $log = DailyLog::where('user_id', $userId)->whereDate('date', $startOfMonth)->first();
-        $incomeTarget = $log ? (float) $log->income_target : 0;
+        // 5. Target Income
+        $incomeTarget = DailyLog::where('user_id', $userId)
+            ->whereDate('date', $startOfMonth)
+            ->value('income_target') ?? 0;
         
         return [
             'transactions' => $transactions,
             'budgets'      => $budgets,
             'categories'   => $categories,
             'stats'        => [
-                'total_income'        => $totalIncome,
-                'total_expense'       => $totalExpense,
-                'income_target'       => $incomeTarget,
-                'balance'             => ($incomeTarget + $totalIncome) - $totalExpense,
+                'total_income'        => (float) $totalIncome,
+                'total_expense'       => (float) $totalExpense,
+                'income_target'       => (float) $incomeTarget,
+                'balance'             => (float) (($incomeTarget + $totalIncome) - $totalExpense),
                 'expense_by_category' => $expenseStats,
                 'income_by_category'  => $incomeStats,
             ],

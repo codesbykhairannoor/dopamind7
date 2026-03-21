@@ -17,7 +17,8 @@ class FinanceTransactionResource extends JsonResource
             'category' => (string) $this->category,
             'date' => $this->date->format('Y-m-d'), // Format tanggal standar ISO
             'notes' => (string) $this->notes,
-            'created_at_human' => $this->created_at->diffForHumans(), // Bonus buat UI
+            // 'created_at_human' dihapus karena lambat di PHP saat loop besar. 
+            // Better handle di Frontend jika benar-benar butuh.
         ];
     }
 }
