@@ -47,7 +47,7 @@ class GoalService
             ->where('goals.user_id', $userId)
             ->select(
                 DB::raw('count(*) as total'),
-                DB::raw('sum(case when completed = 1 then 1 else 0 end) as completed')
+                DB::raw('sum(case when completed = true then 1 else 0 end) as completed')
             )->first();
 
         // 3. Progress Calculation (Dihitung di DB lebih cepat)
@@ -55,7 +55,7 @@ class GoalService
         $avgProgress = DB::table('goals')
             ->where('user_id', $userId)
             ->where('status', 'active')
-            ->leftJoin(DB::raw('(SELECT goal_id, count(*) as total, sum(case when completed = 1 then 1 else 0 end) as comp FROM goal_milestones GROUP BY goal_id) as ms'), 'goals.id', '=', 'ms.goal_id')
+            ->leftJoin(DB::raw('(SELECT goal_id, count(*) as total, sum(case when completed = true then 1 else 0 end) as comp FROM goal_milestones GROUP BY goal_id) as ms'), 'goals.id', '=', 'ms.goal_id')
             ->select(DB::raw('AVG(CASE WHEN ms.total > 0 THEN (ms.comp * 100.0 / ms.total) ELSE 0 END) as avg_p'))
             ->value('avg_p') ?? 0;
 
