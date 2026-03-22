@@ -8,6 +8,12 @@ import MilestoneItem from './MilestoneItem.vue';
 import { usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 import confetti from 'canvas-confetti';
+import { trans } from 'laravel-vue-i18n';
+
+const t = (key, fallback) => {
+    const res = trans(key);
+    return res !== key ? res : fallback;
+};
 
 const props = defineProps({
     goal: Object,
@@ -101,8 +107,8 @@ const priorityLabel = computed(() => {
         <div class="p-6 flex flex-col flex-1">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex flex-col">
-                    <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest mb-0.5">Manifestation</span>
-                    <span class="text-xs font-black text-slate-800 tabular-nums">{{ progress }}% Completed</span>
+                    <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest mb-0.5">{{ t('goal_manifestation', 'Manifestation') }}</span>
+                    <span class="text-xs font-black text-slate-800 tabular-nums">{{ trans('goal_completed_pct', { count: progress }) }}</span>
                 </div>
                 <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center relative">
                     <Zap :size="14" :class="progress === 100 ? 'text-amber-400 animate-pulse' : 'text-slate-300'" />
@@ -123,9 +129,9 @@ const priorityLabel = computed(() => {
             <!-- Milestones Section -->
             <div class="flex-1">
                 <div class="flex items-center justify-between mb-3 px-1">
-                    <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">Mastery Steps</h4>
+                    <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">{{ t('goal_mastery_steps', 'Mastery Steps') }}</h4>
                     <button @click="onAddMilestone(goal)" class="text-[9px] font-black text-indigo-500 hover:text-indigo-700 uppercase tracking-widest transition-colors">
-                        + New Step
+                        {{ t('goal_new_step', '+ New Step') }}
                     </button>
                 </div>
 
@@ -143,7 +149,7 @@ const priorityLabel = computed(() => {
                         <div class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center mb-3">
                             <ChevronRight :size="16" class="text-slate-300" />
                         </div>
-                        <p class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">No active steps</p>
+                        <p class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{{ t('goal_no_steps', 'No active steps') }}</p>
                     </div>
                 </div>
             </div>
@@ -154,7 +160,7 @@ const priorityLabel = computed(() => {
                     <Award :size="14" class="text-amber-500" />
                 </div>
                 <div class="flex flex-col min-w-0">
-                    <span class="text-[8px] font-black text-amber-500/80 uppercase tracking-widest">Victory Reward</span>
+                    <span class="text-[8px] font-black text-amber-500/80 uppercase tracking-widest">{{ t('goal_victory_reward', 'Victory Reward') }}</span>
                     <p class="text-[11px] font-bold text-slate-600 truncate italic">"{{ goal.reward }}"</p>
                 </div>
             </div>

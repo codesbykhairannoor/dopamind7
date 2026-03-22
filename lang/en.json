@@ -1701,7 +1701,7 @@
     "goal_success_save": "Saved successfully!",
     "milestone_success_save": "Step saved successfully!",
     "btn_ok": "OK!",
-    "goal_delete_confirm": "Delete this vision?",
+    "goal_delete_confirm": "Yes, Delete",
     "goal_btn_delete": "Delete Vision",
     "goal_milestones_title": "Mastery Steps",
     "goal_btn_add_milestone": "Add Step",
@@ -3133,7 +3133,6 @@
     "more_promo_title": "Stay Sharp",
     "more_promo_desc": "Use Planner every morning for maximum results.",
     "settings_lang_label": "Language",
-    "goal_btn_add_milestone": "Add Step",
     "goal_manifestation": "Manifestation",
     "goal_mastery_steps": "Mastery Steps",
     "goal_new_step": "+ New Step",
@@ -3141,7 +3140,6 @@
     "goal_victory_reward": "Victory Reward",
     "goal_untitled_step": "Untitled Step",
     "goal_delete_title": "Delete Goal?",
-    "goal_delete_confirm": "Yes, Delete",
     "goal_delete_success": "Goal deleted!",
     "goal_delete_error": "Failed to delete!",
     "goal_update_error": "Failed to update status!",
@@ -3150,5 +3148,6 @@
     "goal_manifested": "Goal Manifested!",
     "goal_updated": "Vision Updated!",
     "goal_steps_count": "{count} Steps",
-    "goal_ph_date": "Select Date"
+    "goal_ph_date": "Select Date",
+    "goal_completed_pct": "{count}% Completed"
 }

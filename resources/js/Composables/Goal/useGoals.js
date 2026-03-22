@@ -232,7 +232,7 @@ export function useGoals(props) {
             if (e.response?.status === 422) {
                 errors.value = e.response.data.errors || {};
             }
-            const msg = e.response?.data?.message || 'Gagal sinkronisasi ke server!';
+            const msg = e.response?.data?.message || trans('goal_sync_error');
             fireToast('error', msg); 
         } finally {
             optimisticData.is_saving = false;
@@ -247,23 +247,54 @@ export function useGoals(props) {
             const response = await axios.post(route('goals.uploadImage'), formData, { headers: { 'Content-Type': 'multipart/form-data' } });
             return response.data;
         } catch (error) {
-            fireToast('error', 'Gagal upload gambar!');
+            fireToast('error', trans('goal_upload_error'));
             throw error;
         }
     };
 
     const deleteGoal = async (id) => {
-        const res = await Swal.fire({ title: 'Hapus Goal?', icon: 'warning', showCancelButton: true, confirmButtonText: 'Ya, Hapus' });
+        const res = await Swal.fire({ 
+            title: trans('goal_delete_title'), 
+            icon: 'warning', 
+            showCancelButton: true, 
+            confirmButtonText: trans('goal_delete_confirm'),
+            cancelButtonText: trans('btn_cancel'),
+            customClass: {
+                popup: 'rounded-[2.5rem] p-8 border border-slate-100 shadow-2xl',
+                title: 'text-2xl font-black text-slate-800 mb-2 font-sans',
+                confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl shadow-xl active:scale-95 transition-all outline-none mx-2 tracking-wide',
+                cancelButton: 'bg-slate-100 text-slate-400 font-bold py-3.5 px-8 rounded-2xl transition-all outline-none mx-2 tracking-wide',
+            },
+            buttonsStyling: false
+        });
+
         if (!res.isConfirmed) return;
+
+        // --- STEP 1: OPTIMISTIC UPDATE ---
+        const originalGoals = [...localGoals.value];
+        localGoals.value = localGoals.value.filter(g => g.id !== id);
+        fireToast('success', trans('goal_delete_success'));
+
+        // --- STEP 2: BACKGROUND SYNC ---
         try {
             await axios.delete(route('goals.destroy', id));
-            localGoals.value = localGoals.value.filter(g => g.id !== id);
-            fireToast('success', 'Goal dihapus!');
-        } catch (e) { fireToast('error', 'Gagal menghapus!'); }
+        } catch (e) { 
+            // --- STEP 3: ROLLBACK ---
+            localGoals.value = originalGoals;
+            fireToast('error', trans('goal_delete_error')); 
+        }
     };
 
     const fireToast = (icon, title) => {
-        Swal.fire({ toast: true, position: 'top-end', showConfirmButton: false, timer: 2000, icon, title });
+        Swal.fire({ 
+            toast: true, position: 'top-end', showConfirmButton: false, timer: 2000, 
+            icon, title,
+            background: icon === 'success' ? '#4f46e5' : '#ffffff',
+            iconColor: icon === 'success' ? '#ffffff' : undefined,
+            titleText: title,
+            html: icon === 'success' ? `<span style="color: white; font-weight: 700; font-size: 14px;">${title}</span>` : undefined,
+            customClass: { popup: '!rounded-xl !shadow-lg !m-4' }
+        });
     };
 
     return {

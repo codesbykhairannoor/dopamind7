@@ -1723,7 +1723,7 @@
     "goal_success_save": "Berhasil disimpan!",
     "milestone_success_save": "Langkah berhasil disimpan!",
     "btn_ok": "Siap!",
-    "goal_delete_confirm": "Hapus impian ini?",
+    "goal_delete_confirm": "Ya, Hapus",
     "goal_btn_delete": "Hapus Vision",
     "goal_milestones_title": "Mastery Steps",
     "goal_btn_add_milestone": "Tambah Langkah",
@@ -3130,7 +3130,6 @@
     "more_promo_title": "Tetap Tajam",
     "more_promo_desc": "Gunakan Planner setiap pagi untuk hasil maksimal.",
     "settings_lang_label": "Bahasa",
-    "goal_btn_add_milestone": "Tambah Langkah",
     "goal_manifestation": "Manifestasi",
     "goal_mastery_steps": "Langkah Penguasaan",
     "goal_new_step": "+ Langkah Baru",
@@ -3138,7 +3137,6 @@
     "goal_victory_reward": "Hadiah Kemenangan",
     "goal_untitled_step": "Langkah Tanpa Judul",
     "goal_delete_title": "Hapus Goal?",
-    "goal_delete_confirm": "Ya, Hapus",
     "goal_delete_success": "Goal dihapus!",
     "goal_delete_error": "Gagal menghapus!",
     "goal_update_error": "Gagal update status!",
@@ -3147,5 +3145,6 @@
     "goal_manifested": "Goal Berhasil Dibuat!",
     "goal_updated": "Visi Diperbarui!",
     "goal_steps_count": "{count} Langkah",
-    "goal_ph_date": "Pilih Tanggal"
+    "goal_ph_date": "Pilih Tanggal",
+    "goal_completed_pct": "{count}% Selesai"
 }

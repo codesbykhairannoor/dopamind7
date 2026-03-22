@@ -274,7 +274,9 @@ const t = (key, fallback) => {
                     <div class="space-y-4 pt-4 border-t border-slate-100">
                         <div class="flex items-center justify-between px-1">
                             <label class="text-[11px] font-black text-slate-400 uppercase tracking-widest">{{ t('goal_milestones_title', 'Mastery Steps') }}</label>
-                            <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded-lg">{{ form.milestones?.length || 0 }} Steps</span>
+                            <span class="text-[10px] font-bold text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded-lg">
+                                {{ trans('goal_steps_count', { count: form.milestones?.length || 0 }) }}
+                            </span>
                         </div>
 
                         <div class="space-y-3">
@@ -291,7 +293,7 @@ const t = (key, fallback) => {
                                 if (!form.milestones) form.milestones = [];
                                 form.milestones.push({
                                     id: null,
-                                    title: 'Untitled Step',
+                                    title: t('goal_untitled_step', 'Untitled Step'),
                                     is_completed: false,
                                     target_date: null,
                                     is_editing: true
