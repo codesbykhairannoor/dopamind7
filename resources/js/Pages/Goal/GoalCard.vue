@@ -55,25 +55,25 @@ const dateDisplay = (date) => {
 const priorityLabel = computed(() => {
     const p = props.goal.priority || 'important';
     return {
-        vital: { text: 'Vital', class: 'bg-rose-50 text-rose-600 border-rose-100' },
-        important: { text: 'Important', class: 'bg-indigo-50 text-indigo-600 border-indigo-100' },
-        optional: { text: 'Optional', class: 'bg-slate-50 text-slate-400 border-slate-100' }
+        vital: { text: 'Vital', class: 'bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-100 dark:border-rose-500/20' },
+        important: { text: 'Important', class: 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-100 dark:border-indigo-500/20' },
+        optional: { text: 'Optional', class: 'bg-slate-50 dark:bg-slate-800/50 text-slate-400 dark:text-slate-500 border-slate-100 dark:border-slate-700' }
     }[p];
 });
 </script>
 
 <template>
-    <div class="group bg-white rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 flex flex-col overflow-hidden h-full">
+    <div class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/5 transition-all duration-500 flex flex-col overflow-hidden h-full">
         
         <!-- Vision Banner / Header -->
-        <div class="relative h-44 shrink-0 overflow-hidden bg-slate-50">
+        <div class="relative h-44 shrink-0 overflow-hidden bg-slate-50 dark:bg-slate-950">
             <template v-if="goal.cover_image_url">
                 <img :src="goal.cover_image_url" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
             </template>
             <div v-else class="w-full h-full flex items-center justify-center opacity-10 group-hover:scale-110 transition-transform duration-700">
-                <Target :size="100" />
-                <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-indigo-50/30"></div>
+                <Target :size="100" class="dark:text-indigo-400" />
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-100 dark:from-slate-800 to-indigo-50/30 dark:to-indigo-500/5"></div>
             </div>
 
             <!-- Header Content Overlay -->
@@ -87,17 +87,17 @@ const priorityLabel = computed(() => {
                         {{ dateDisplay(goal.end_date) }}
                     </span>
                 </div>
-                <h3 class="text-xl font-black truncate drop-shadow-sm" :class="goal.cover_image_url ? 'text-white' : 'text-slate-800'">
+                <h3 class="text-xl font-black truncate drop-shadow-sm transition-colors duration-500" :class="goal.cover_image_url ? 'text-white' : 'text-slate-800 dark:text-white'">
                     {{ goal.title }}
                 </h3>
             </div>
 
             <!-- Quick Actions Overlay -->
             <div class="absolute top-4 right-4 flex gap-2">
-                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white hover:text-indigo-600 transition-all shadow-xl opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-75">
+                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white transition-all shadow-xl opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-75">
                     <Edit3 :size="14" />
                 </button>
-                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-150">
+                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-150">
                     <Trash2 :size="14" />
                 </button>
             </div>
@@ -107,19 +107,19 @@ const priorityLabel = computed(() => {
         <div class="p-6 flex flex-col flex-1">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex flex-col">
-                    <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest mb-0.5">{{ t('goal_manifestation', 'Manifestation') }}</span>
-                    <span class="text-xs font-black text-slate-800 tabular-nums">{{ trans('goal_completed_pct', { count: progress }) }}</span>
+                    <span class="text-[9px] font-black text-slate-300 dark:text-slate-600 uppercase tracking-widest mb-0.5">{{ t('goal_manifestation', 'Manifestation') }}</span>
+                    <span class="text-xs font-black text-slate-800 dark:text-white tabular-nums">{{ trans('goal_completed_pct', { count: progress }) }}</span>
                 </div>
-                <div class="p-2 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center relative">
-                    <Zap :size="14" :class="progress === 100 ? 'text-amber-400 animate-pulse' : 'text-slate-300'" />
-                    <div v-if="goal.is_saving" class="absolute -top-1 -right-1 w-3 h-3 bg-indigo-500 rounded-full border-2 border-white flex items-center justify-center">
-                        <div class="w-1.5 h-1.5 border border-white border-t-transparent rounded-full animate-spin"></div>
+                <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex items-center justify-center relative">
+                    <Zap :size="14" :class="progress === 100 ? 'text-amber-400 animate-pulse' : 'text-slate-300 dark:text-slate-600'" />
+                    <div v-if="goal.is_saving" class="absolute -top-1 -right-1 w-3 h-3 bg-indigo-500 rounded-full border-2 border-white dark:border-slate-900 flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 border border-white dark:border-slate-200 border-t-transparent rounded-full animate-spin"></div>
                     </div>
                 </div>
             </div>
 
             <!-- Progress Bar -->
-            <div class="h-1.5 w-full bg-slate-100 rounded-full mb-6 overflow-hidden p-0.5">
+            <div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full mb-6 overflow-hidden p-0.5">
                 <div 
                     class="h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(99,102,241,0.2)]"
                     :style="{ width: progress + '%', backgroundColor: goal.color || '#6366f1' }"
@@ -129,8 +129,8 @@ const priorityLabel = computed(() => {
             <!-- Milestones Section -->
             <div class="flex-1">
                 <div class="flex items-center justify-between mb-3 px-1">
-                    <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.1em]">{{ t('goal_mastery_steps', 'Mastery Steps') }}</h4>
-                    <button @click="onAddMilestone(goal)" class="text-[9px] font-black text-indigo-500 hover:text-indigo-700 uppercase tracking-widest transition-colors">
+                    <h4 class="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.1em]">{{ t('goal_mastery_steps', 'Mastery Steps') }}</h4>
+                    <button @click="onAddMilestone(goal)" class="text-[9px] font-black text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 uppercase tracking-widest transition-colors">
                         {{ t('goal_new_step', '+ New Step') }}
                     </button>
                 </div>
@@ -145,23 +145,23 @@ const priorityLabel = computed(() => {
                         @delete="onDeleteMilestone(goal, m.id)"
                     />
                     
-                    <div v-if="!goal.milestones?.length" class="py-10 text-center border-2 border-dashed border-slate-50 rounded-[2rem] flex flex-col items-center">
-                        <div class="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center mb-3">
-                            <ChevronRight :size="16" class="text-slate-300" />
+                    <div v-if="!goal.milestones?.length" class="py-10 text-center border-2 border-dashed border-slate-50 dark:border-slate-800 rounded-[2rem] flex flex-col items-center">
+                        <div class="w-10 h-10 bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center mb-3">
+                            <ChevronRight :size="16" class="text-slate-300 dark:text-slate-600" />
                         </div>
-                        <p class="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{{ t('goal_no_steps', 'No active steps') }}</p>
+                        <p class="text-[10px] font-bold text-slate-300 dark:text-slate-600 uppercase tracking-widest">{{ t('goal_no_steps', 'No active steps') }}</p>
                     </div>
                 </div>
             </div>
 
             <!-- Footer: Reward -->
-            <div v-if="goal.reward" class="mt-6 pt-4 border-t border-slate-50 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-xl bg-amber-50 flex items-center justify-center shrink-0 border border-amber-100/50">
-                    <Award :size="14" class="text-amber-500" />
+            <div v-if="goal.reward" class="mt-6 pt-4 border-t border-slate-50 dark:border-slate-800 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center shrink-0 border border-amber-100/50 dark:border-amber-500/20">
+                    <Award :size="14" class="text-amber-500 dark:text-amber-400" />
                 </div>
                 <div class="flex flex-col min-w-0">
-                    <span class="text-[8px] font-black text-amber-500/80 uppercase tracking-widest">{{ t('goal_victory_reward', 'Victory Reward') }}</span>
-                    <p class="text-[11px] font-bold text-slate-600 truncate italic">"{{ goal.reward }}"</p>
+                    <span class="text-[8px] font-black text-amber-500/80 dark:text-amber-400 uppercase tracking-widest">{{ t('goal_victory_reward', 'Victory Reward') }}</span>
+                    <p class="text-[11px] font-bold text-slate-600 dark:text-slate-400 truncate italic">"{{ goal.reward }}"</p>
                 </div>
             </div>
         </div>
@@ -189,5 +189,7 @@ const priorityLabel = computed(() => {
 .custom-milestone-list::-webkit-scrollbar { width: 4px; }
 .custom-milestone-list::-webkit-scrollbar-track { background: transparent; }
 .custom-milestone-list::-webkit-scrollbar-thumb { background: #f1f5f9; border-radius: 10px; }
+.dark .custom-milestone-list::-webkit-scrollbar-thumb { background: #1e293b; }
 .custom-milestone-list::-webkit-scrollbar-thumb:hover { background: #e2e8f0; }
+.dark .custom-milestone-list::-webkit-scrollbar-thumb:hover { background: #334155; }
 </style>

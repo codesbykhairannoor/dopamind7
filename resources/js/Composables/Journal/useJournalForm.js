@@ -3,8 +3,10 @@ import { useForm, router } from '@inertiajs/vue3';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
+import { useGating } from '@/Composables/useGating';
 
 export function useJournalForm(journal, date) {
+    const { canUse, isExplorer } = useGating();
     const isSaving = ref(false);
     const isCreating = ref(false); 
     const currentImageUrl = ref(journal?.image_url || null); 
@@ -111,6 +113,11 @@ export function useJournalForm(journal, date) {
     };
 
     const handleImageUpload = async (event) => {
+        if (!canUse('planner_recurring')) { // Image attachments are L2+
+            fireToast('error', t('warn_premium_feature_image', 'Fitur Lampiran Foto tersedia di paket Architect!'));
+            return;
+        }
+
         const file = event.target.files[0];
         if (!file) return;
 

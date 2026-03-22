@@ -40,7 +40,7 @@ const todayDate = computed(() => {
 </script>
 
 <template>
-    <div class="goal-tracker-page min-h-screen bg-slate-50/50">
+    <div class="goal-tracker-page min-h-screen bg-slate-50/50 dark:bg-slate-950/50">
         <Head :title="$t('goal_page_title', 'Goal Tracker')" />
 
         <GoalHeader :onAddClick="openCreateModal" />

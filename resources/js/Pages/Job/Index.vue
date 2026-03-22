@@ -10,7 +10,8 @@ import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 import { computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
-import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+import { useGating } from '@/Composables/useGating';
+const { isExplorer, isArchitect, isQuantum, canUse } = useGating();
 
 const props = defineProps({
     jobs:         Array,
@@ -38,9 +39,9 @@ const todayDate = computed(() => {
 <template>
     <Head :title="$t('job_page_title', 'Job Tracker')" />
 
-    <div class="min-h-screen bg-[#f8fafc] pb-24">
+    <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors duration-500">
         <!-- STICKY HEADER: Title + Add Button only -->
-        <div class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 shadow-sm transition-colors duration-500">
             <div class="w-full px-4 sm:px-6 lg:px-8 py-3.5 sm:py-5">
                 <div class="flex items-center justify-between gap-4">
                     <!-- Left: Icon + Title + Date -->
@@ -49,19 +50,32 @@ const todayDate = computed(() => {
                             <OneForMindIcon name="job" size="24" :stroke-width="3" />
                         </div>
                         <div class="min-w-0">
-                            <h1 class="text-lg sm:text-2xl font-black leading-tight tracking-tight text-slate-800 flex items-center gap-1.5 sm:gap-2">
+                            <h1 class="text-lg sm:text-2xl font-black leading-tight tracking-tight text-slate-800 dark:text-white flex items-center gap-1.5 sm:gap-2 transition-colors duration-500">
                                 <span class="truncate">{{ $t('job_page_title', 'Job Tracker') }}</span>
-                                <span v-if="pagination?.total" class="text-[10px] sm:text-sm font-black text-indigo-600 bg-indigo-50 px-2 sm:px-2.5 py-0.5 rounded-full shrink-0">
+                                <span v-if="pagination?.total" class="text-[10px] sm:text-sm font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-2 sm:px-2.5 py-0.5 rounded-full shrink-0 transition-colors duration-500">
                                     {{ pagination.total }}
                                 </span>
                             </h1>
-                            <p class="mt-0.5 text-[10px] sm:text-sm font-black uppercase tracking-widest text-slate-400 truncate">{{ todayDate }}</p>
+                            <p class="mt-0.5 text-[10px] sm:text-sm font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 truncate transition-colors duration-500">{{ todayDate }}</p>
                         </div>
+                    </div>
+                    
+                    <!-- AI Resume Tailor Placeholder (Quantum) -->
+                    <div class="hidden xl:flex items-center gap-3 px-4 py-2 bg-slate-50 dark:bg-slate-800 border-x border-slate-200 dark:border-slate-800 transition-colors">
+                        <div class="flex flex-col items-end">
+                            <span class="text-[9px] font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest">{{ $t('quantum_feature', 'Quantum AI') }}</span>
+                            <span class="text-xs font-bold text-slate-400 dark:text-slate-500">{{ $t('job_ai_tailor', 'Resume Tailor') }}</span>
+                        </div>
+                        <button :disabled="!canUse('finance_ai_audit')" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm opacity-50 grayscale cursor-not-allowed">
+                            <span v-if="!canUse('finance_ai_audit')">🔒</span>
+                            <span v-else>🤖</span>
+                        </button>
                     </div>
                     
                     <!-- Right: Add Button -->
                     <button @click="addEmptyRow"
-                        class="bg-indigo-600 text-white font-black py-2.5 px-4 sm:px-6 rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 active:scale-95 transition-all flex items-center gap-2 shrink-0">
+                        class="bg-indigo-600 text-white font-black py-2.5 px-4 sm:px-6 rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 active:scale-95 transition-all flex items-center gap-2 shrink-0 relative overflow-hidden">
+                        <span v-if="isExplorer" class="mr-1">🔒</span>
                         <OneForMindIcon name="plus" size="18" stroke-width="4" />
                         <span class="hidden sm:inline">{{ $t('job_add_row', 'Tambah Baris') }}</span>
                     </button>
@@ -121,8 +135,8 @@ const todayDate = computed(() => {
             />
             
             <div class="mt-5 flex items-center justify-start">
-                <p class="text-xs sm:text-sm text-slate-500 font-medium flex items-center gap-2 bg-indigo-50/50 px-4 py-2.5 rounded-xl border border-indigo-100 shadow-sm">
-                    <span class="text-indigo-500 text-base">💡</span> {{ $t('job_tips', 'Tips: Klik sel pada tabel untuk mengedit. Data otomatis tersimpan saat berpindah sel.') }}
+                <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium flex items-center gap-2 bg-indigo-50/50 dark:bg-indigo-500/10 px-4 py-2.5 rounded-xl border border-indigo-100 dark:border-indigo-900/30 shadow-sm transition-all duration-500">
+                    <span class="text-indigo-500 dark:text-indigo-400 text-base">💡</span> {{ $t('job_tips', 'Tips: Klik sel pada tabel untuk mengedit. Data otomatis tersimpan saat berpindah sel.') }}
                 </p>
             </div>
         </div>

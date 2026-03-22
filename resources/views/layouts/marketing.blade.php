@@ -185,11 +185,6 @@
         
         /* Re-enable smooth scroll secara terbatas agar tidak ganggu HTMX */
         .allow-smooth { scroll-behavior: smooth; }
-
-        /* 🔥 HTMX Transition & Smoothness */
-        .htmx-swapping { opacity: 0; transition: opacity 250ms ease-out; }
-        .htmx-added { opacity: 0; }
-        .htmx-settling { opacity: 1; transition: opacity 350ms ease-in; }
     </style>
     @if(env('VITE_GA_MEASUREMENT_ID'))
         <script>
@@ -249,8 +244,8 @@
         <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ env('FACEBOOK_PIXEL_ID') }}&ev=PageView&noscript=1"/></noscript>
     @endif
 </head>
-{{-- HTMX Boost + Smooth Scroll --}}
-<body hx-boost="true" hx-swap="innerHTML transition:true" class="bg-white text-slate-900 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700 flex flex-col min-h-screen">
+{{-- HTMX Boost (Instant Swap) --}}
+<body hx-boost="true" hx-swap="innerHTML" class="bg-white text-slate-900 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700 flex flex-col min-h-screen">
 
     <div x-data="{ 
         mobileMenuOpen: false, 
@@ -406,7 +401,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('pricing') }}" class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition">
+                    <a href="{{ route('pricing.index') }}" class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition">
                         Pricing
                     </a>
                 </div>
@@ -569,7 +564,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('pricing') }}" class="block py-5 text-xl font-black text-slate-900 border-b border-slate-50">Pricing</a>
+                    <a href="{{ route('pricing.index') }}" class="block py-5 text-xl font-black text-slate-900 border-b border-slate-50">Pricing</a>
                 </div>
 
                 <div class="pt-8 space-y-6">

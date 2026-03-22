@@ -52,16 +52,16 @@ const handleDeleteAction = (id) => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="lg">
-        <div class="bg-white rounded-2xl overflow-hidden shadow-xl" v-if="dayData">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-xl dark:shadow-none border border-transparent dark:border-slate-800 transition-all duration-500" v-if="dayData">
             
-            <div class="bg-indigo-600 px-6 py-5 relative overflow-hidden text-white">
+            <div class="bg-indigo-600 dark:bg-indigo-700 px-6 py-5 relative overflow-hidden text-white transition-colors duration-500">
                 <div class="absolute -right-6 -top-6 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
                 <div class="relative z-10 flex justify-between items-start">
                     <div>
                         <span class="text-indigo-200 text-[10px] font-bold uppercase tracking-widest">{{ $t('daily_detail') }}</span>
                         <h3 class="text-xl font-black mt-0.5 capitalize">{{ formattedDate }}</h3>
                     </div>
-                    <button @click="close" class="bg-white/10 hover:bg-white/20 p-1.5 rounded-lg transition">✕</button>
+                    <button @click="close" class="bg-white/10 dark:bg-black/20 hover:bg-white/20 p-1.5 rounded-lg transition-all duration-300">✕</button>
                 </div>
                 
                 <div class="flex gap-3 mt-4">
@@ -76,30 +76,30 @@ const handleDeleteAction = (id) => {
                 </div>
             </div>
 
-            <div class="p-0 bg-slate-50 max-h-[60vh] overflow-y-auto custom-scrollbar">
-                <div class="divide-y divide-slate-100">
-                    <div v-for="trx in dayData.transactions" :key="trx.id" class="bg-white p-4 flex items-center gap-3 hover:bg-slate-50 transition group">
+            <div class="p-0 bg-slate-50 dark:bg-slate-950 max-h-[60vh] overflow-y-auto custom-scrollbar transition-colors duration-500">
+                <div class="divide-y divide-slate-100 dark:divide-slate-800/50">
+                    <div v-for="trx in dayData.transactions" :key="trx.id" class="bg-white dark:bg-slate-900 p-4 flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-indigo-500/5 transition group transition-colors duration-500">
                         
-                        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 transition-colors" :class="getCategoryDetails(trx.category, categories).bg || 'bg-slate-100'">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 transition-all duration-500" :class="getCategoryDetails(trx.category, categories).bg || 'bg-slate-100 dark:bg-slate-800'">
                             {{ getCategoryDetails(trx.category, categories).icon }}
                         </div>
                         
                         <div class="flex-1 min-w-0">
-                            <p class="font-bold text-slate-700 text-sm truncate">{{ trx.title }}</p>
-                            <span class="text-[10px] text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded capitalize">
+                            <p class="font-bold text-slate-700 dark:text-slate-200 text-sm truncate transition-colors duration-500">{{ trx.title }}</p>
+                            <span class="text-[10px] text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded capitalize transition-colors duration-500">
                                 {{ getCategoryDetails(trx.category, categories).name }}
                             </span>
                         </div>
                         
                         <div class="text-right">
-                            <p class="font-bold text-sm font-mono mb-1" :class="trx.type === 'income' ? 'text-emerald-600' : 'text-slate-800'">
+                            <p class="font-bold text-sm font-mono mb-1 transition-colors duration-500" :class="trx.type === 'income' ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-800 dark:text-white'">
                                 {{ trx.type === 'income' ? '+' : '-' }} {{ formatMoney(trx.amount) }}
                             </p>
                             <div class="flex gap-3 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button @click="handleEditAction(trx)" class="text-[10px] font-bold text-indigo-500 hover:underline">
+                                <button @click="handleEditAction(trx)" class="text-[10px] font-bold text-indigo-500 dark:text-indigo-400 hover:underline">
                                     {{ $t('edit') }}
                                 </button>
-                                <button @click="handleDeleteAction(trx.id)" class="text-[10px] font-bold text-rose-400 hover:text-rose-600">
+                                <button @click="handleDeleteAction(trx.id)" class="text-[10px] font-bold text-rose-400 dark:text-rose-500 hover:text-rose-600 dark:hover:text-rose-400">
                                     {{ $t('delete') }}
                                 </button>
                             </div>
@@ -115,4 +115,5 @@ const handleDeleteAction = (id) => {
 .custom-scrollbar::-webkit-scrollbar { width: 4px; }
 .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+.dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; }
 </style>

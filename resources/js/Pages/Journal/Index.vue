@@ -62,7 +62,7 @@ const createEntry = () => {
 <template>
     <Head :title="$t('journal_title', 'Journal Dashboard')" />
 
-    <div class="w-full min-h-screen bg-slate-50/50 pb-12">
+    <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950 pb-12 transition-colors duration-500">
         
         <JournalHeader 
             :todayDate="todayDate" 
@@ -72,17 +72,17 @@ const createEntry = () => {
         <div class="w-full px-4 py-8 sm:px-6 lg:px-8 md:py-12">
             
             <div class="flex items-center justify-between mb-8">
-                <h3 class="text-xl font-black text-slate-800">{{ $t('journal_history', 'Story History') }}</h3>
+                <h3 class="text-xl font-black text-slate-800 dark:text-white transition-colors duration-500">{{ $t('journal_history', 'Story History') }}</h3>
             </div>
 
-            <div v-if="journals.length === 0" class="py-20 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm mt-4">
+            <div v-if="journals.length === 0" class="py-20 text-center bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm dark:shadow-none mt-4 transition-all duration-500">
                 <div class="flex flex-col items-center gap-4">
                     <span class="text-5xl animate-bounce">📓</span>
-                    <h4 class="text-lg font-black text-slate-800">{{ $t('journal_empty_title', 'Belum ada cerita.') }}</h4>
-                    <p class="text-sm font-bold text-slate-400 px-8">
+                    <h4 class="text-lg font-black text-slate-800 dark:text-slate-100 transition-colors duration-500">{{ $t('journal_empty_title', 'Belum ada cerita.') }}</h4>
+                    <p class="text-sm font-bold text-slate-400 dark:text-slate-500 px-8 transition-colors duration-500">
                         {{ $t('journal_empty_subtitle', 'Mulai tulis jurnal pertamamu hari ini!') }}
                     </p>
-                    <button @click="createEntry" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all outline-none">
+                    <button @click="createEntry" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 active:scale-95 transition-all outline-none">
                         + {{ $t('journal_add', 'Tambah Jurnal') }}
                     </button>
                 </div>

@@ -115,16 +115,16 @@ const isToday = (day) => {
         <!-- Hanya untuk desktop agar popup bisa ditutup saat klik di luar -->
         <div class="fixed inset-0 z-40 hidden sm:block" @click="emit('close')"></div>
 
-        <div class="relative z-50 bg-white rounded-3xl shadow-xl border border-slate-100 p-5 animate-in fade-in zoom-in-95 duration-200">
+        <div class="relative z-50 bg-white dark:bg-slate-900 rounded-3xl shadow-xl dark:shadow-none border border-slate-100 dark:border-slate-800 p-5 animate-in fade-in zoom-in-95 duration-200 transition-colors duration-500">
             
             <div class="flex items-center justify-between mb-4">
-                <button @click.prevent="prevMonth" class="p-2 rounded-xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600 transition">◀</button>
-                <h4 class="font-bold text-slate-700 capitalize">{{ formattedHeader }}</h4>
-                <button @click.prevent="nextMonth" class="p-2 rounded-xl hover:bg-slate-50 text-slate-400 hover:text-indigo-600 transition">▶</button>
+                <button @click.prevent="prevMonth" class="p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-400 dark:text-slate-600 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">◀</button>
+                <h4 class="font-bold text-slate-700 dark:text-white capitalize transition-colors duration-500">{{ formattedHeader }}</h4>
+                <button @click.prevent="nextMonth" class="p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-400 dark:text-slate-600 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-300">▶</button>
             </div>
 
             <div class="grid grid-cols-7 mb-2 text-center">
-                <span v-for="dayName in weekDays" :key="dayName" class="text-[10px] font-bold text-slate-400 uppercase">
+                <span v-for="dayName in weekDays" :key="dayName" class="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase transition-colors duration-500">
                     {{ dayName }}
                 </span>
             </div>
@@ -136,12 +136,12 @@ const isToday = (day) => {
                     v-for="day in daysInMonth" 
                     :key="day"
                     @click.prevent="selectDate(day)"
-                    class="h-9 w-9 rounded-xl flex flex-col items-center justify-center transition-all relative group"
+                    class="h-9 w-9 rounded-xl flex flex-col items-center justify-center transition-all relative group transition-all duration-300"
                     :class="[
                         isSelected(day) 
-                            ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200' 
-                            : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600',
-                        isToday(day) && !isSelected(day) ? 'ring-1 ring-indigo-200 bg-indigo-50/50' : ''
+                            ? 'bg-indigo-600 text-white shadow-lg dark:shadow-none shadow-indigo-200 dark:shadow-indigo-900/40' 
+                            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-indigo-600 dark:hover:text-indigo-400',
+                        isToday(day) && !isSelected(day) ? 'ring-1 ring-indigo-200 dark:ring-indigo-500/30 bg-indigo-50/50 dark:bg-indigo-500/10' : ''
                     ]"
                     :title="getDayStats(day) ? `${formatMoney(getDayStats(day).net)} (${getDayStats(day).count} Trx)` : 'Tidak ada transaksi'"
                 >

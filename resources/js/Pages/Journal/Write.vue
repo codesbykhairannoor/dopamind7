@@ -16,6 +16,8 @@ const props = defineProps({
 
 // 🔥 Panggil currentImageUrl dari composable, HAPUS localImagePreview
 const { form, isSaving, currentImageUrl, handleImageUpload, removeImage, silentSave } = useJournalForm(props.journal, props.date);
+import { useGating } from '@/Composables/useGating';
+const { canUse, isExplorer } = useGating();
 
 const fileInputRef = ref(null);
 
@@ -97,7 +99,11 @@ const triggerFileInput = () => fileInputRef.value.click();
                         </button>
                     </div>
 
-                    <button v-else @click="triggerFileInput" class="w-full py-8 border-2 border-dashed border-slate-200 rounded-[2rem] flex flex-col items-center justify-center text-slate-400 hover:bg-indigo-50 hover:border-indigo-200 hover:text-indigo-600 transition-all cursor-pointer">
+                    <button v-else @click="triggerFileInput" class="w-full py-8 border-2 border-dashed border-slate-200 rounded-[2rem] flex flex-col items-center justify-center text-slate-400 hover:bg-indigo-50 hover:border-indigo-200 hover:text-indigo-600 transition-all cursor-pointer relative overflow-hidden group">
+                        <div v-if="isExplorer" class="absolute inset-0 bg-slate-50/50 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center">
+                            <span class="text-xl mb-1">🔒</span>
+                            <span class="text-[8px] font-black text-indigo-600 uppercase tracking-[0.2em]">{{ $t('premium_badge', 'Architect Feature') }}</span>
+                        </div>
                         <span class="text-2xl mb-2">📸</span>
                         <span class="text-[9px] font-black uppercase tracking-widest">{{ $t('journal_add_photo', 'Sisipkan Foto Jurnal') }}</span>
                     </button>

@@ -3,8 +3,10 @@ import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 import axios from 'axios';
 import { usePage } from '@inertiajs/vue3';
+import { useGating } from '@/Composables/useGating';
 
 export function useGoals(props) {
+    const { canUse, isExplorer } = useGating();
     const localGoals = ref([]);
     const page = usePage();
 
@@ -188,6 +190,13 @@ export function useGoals(props) {
 
     const saveGoal = async (data) => {
         const isEditing = !!data.id;
+        
+        // --- GATING: 1 GOAL LIMIT FOR EXPLORER ---
+        if (!isEditing && isExplorer.value && localGoals.value.length >= 1) {
+            fireToast('error', 'Explorer limit: 1 Goal. Upgrade to Architect for unlimited goals!');
+            return;
+        }
+
         const tempId = data.id || `temp_${Date.now()}`;
         const optimisticData = { ...normalizeGoal(data), id: tempId, is_saving: true };
         
@@ -240,6 +249,10 @@ export function useGoals(props) {
     };
 
     const uploadCoverImage = async (goalId, file) => {
+        if (isExplorer.value) {
+            fireToast('error', 'Goal Covers are available for Architect and above!');
+            throw new Error('Premium feature');
+        }
         const formData = new FormData();
         formData.append('image', file);
         if (goalId) formData.append('id', goalId);

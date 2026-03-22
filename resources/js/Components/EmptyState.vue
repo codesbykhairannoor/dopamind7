@@ -21,17 +21,17 @@ defineProps({
             />
         </div>
         
-        <h3 class="text-2xl md:text-3xl font-black text-slate-800 mb-3 tracking-tight">
+        <h3 class="text-2xl md:text-3xl font-black text-slate-800 dark:text-white mb-3 tracking-tight transition-colors duration-500">
             {{ title }}
         </h3>
-        <p class="text-slate-500 font-medium max-w-sm leading-relaxed mb-8">
+        <p class="text-slate-500 dark:text-slate-400 font-medium max-w-sm leading-relaxed mb-8 transition-colors duration-500">
             {{ description }}
         </p>
         
         <Link 
             v-if="actionRoute" 
             :href="actionRoute"
-            class="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-2xl shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/40 hover:-translate-y-1 transition-all active:scale-95"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-2xl shadow-lg shadow-indigo-600/20 dark:shadow-none hover:shadow-indigo-600/40 hover:-translate-y-1 transition-all active:scale-95"
         >
             {{ actionLabel }}
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path></svg>

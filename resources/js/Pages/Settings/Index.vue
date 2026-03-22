@@ -61,30 +61,30 @@ const confirmLogout = () => {
     <Head :title="$t('settings_title', 'Account Settings')" />
 
     <AuthenticatedLayout>
-        <div class="max-w-6xl mx-auto py-12 px-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-40">
+        <div class="max-w-6xl mx-auto py-12 px-6 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-40 transition-all duration-500">
             <!-- Header Section -->
             <div class="mb-12 text-center md:text-left">
-                <h1 class="text-4xl font-black text-slate-900 tracking-tight">{{ $t('settings_header', 'Account Settings') }}</h1>
-                <p class="text-slate-400 font-bold uppercase tracking-[0.2em] text-[10px] mt-2">{{ $t('settings_subheader', 'Customize your productivity experience') }}</p>
+                <h1 class="text-4xl font-black text-slate-900 dark:text-white tracking-tight transition-colors duration-500">{{ $t('settings_header', 'Account Settings') }}</h1>
+                <p class="text-slate-400 dark:text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] mt-2 transition-colors duration-500">{{ $t('settings_subheader', 'Customize your productivity experience') }}</p>
             </div>
 
             <!-- Profile Overview Card -->
-            <div class="bg-white rounded-[2.5rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col md:flex-row items-center gap-8 mb-10 relative overflow-hidden group">
+            <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-indigo-500/5 border border-slate-100 dark:border-slate-800 flex flex-col md:flex-row items-center gap-8 mb-10 relative overflow-hidden group transition-all duration-500">
                 <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full translate-x-1/2 -translate-y-1/2"></div>
                 
                 <div class="relative shrink-0">
-                    <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-24 h-24 rounded-full object-cover shadow-2xl border-4 border-white" />
-                    <div v-else class="w-24 h-24 rounded-full bg-indigo-600 text-white flex items-center justify-center font-black text-4xl shadow-2xl border-4 border-white">
+                    <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-24 h-24 rounded-full object-cover shadow-2xl border-4 border-white dark:border-slate-800" />
+                    <div v-else class="w-24 h-24 rounded-full bg-indigo-600 dark:bg-indigo-500 text-white flex items-center justify-center font-black text-4xl shadow-2xl border-4 border-white dark:border-slate-800">
                         {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
                     </div>
                 </div>
                 
                 <div class="flex-1 text-center md:text-left min-w-0">
-                    <h2 class="text-3xl font-black text-slate-800 truncate leading-tight">{{ user?.name || 'User' }}</h2>
-                    <p class="text-slate-400 font-bold mt-1">{{ user?.email }}</p>
+                    <h2 class="text-3xl font-black text-slate-800 dark:text-slate-100 truncate leading-tight transition-colors duration-500">{{ user?.name || 'User' }}</h2>
+                    <p class="text-slate-400 dark:text-slate-500 font-bold mt-1 transition-colors duration-500">{{ user?.email }}</p>
                     <div class="flex flex-wrap justify-center md:justify-start gap-2 mt-4">
-                        <span class="px-4 py-1.5 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black uppercase tracking-wider">Platinum User</span>
-                        <span class="px-4 py-1.5 bg-slate-50 text-slate-500 rounded-full text-[10px] font-black uppercase tracking-wider">ID: #{{ user?.id }}</span>
+                        <span class="px-4 py-1.5 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full text-[10px] font-black uppercase tracking-wider transition-colors duration-500">Platinum User</span>
+                        <span class="px-4 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 rounded-full text-[10px] font-black uppercase tracking-wider transition-colors duration-500">ID: #{{ user?.id }}</span>
                     </div>
                 </div>
             </div>
@@ -94,37 +94,37 @@ const confirmLogout = () => {
                 <aside class="w-full lg:w-80 shrink-0">
                     <div class="space-y-6 pt-2">
                         <!-- Navigation Menu -->
-                        <nav class="space-y-1.5 p-3 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm relative z-10">
+                        <nav class="space-y-1.5 p-3 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm relative z-10 transition-all duration-500">
                             <button 
                                 v-for="tab in tabs" 
                                 :key="tab.id"
                                 @click="activeTab = tab.id"
-                                class="w-full flex items-center gap-4 p-4 rounded-[1.8rem] transition-all duration-300 group"
+                                class="w-full flex items-center gap-4 p-4 rounded-[1.8rem] transition-all duration-300 group text-left"
                                 :class="activeTab === tab.id 
-                                    ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-100' 
-                                    : 'text-slate-600 hover:bg-slate-50'"
+                                    ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-100 dark:shadow-indigo-900/40 border border-indigo-500' 
+                                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200'"
                             >
                                 <span class="text-2xl transition-transform group-hover:scale-110">{{ tab.icon }}</span>
                                 <div class="text-left">
-                                    <h4 class="text-sm font-black leading-none" :class="activeTab === tab.id ? 'text-white' : 'text-slate-800'">{{ $t(tab.tName, tab.name) }}</h4>
+                                    <h4 class="text-sm font-black leading-none" :class="activeTab === tab.id ? 'text-white' : 'text-slate-800 dark:text-slate-200'">{{ $t(tab.tName, tab.name) }}</h4>
                                     <p class="text-[10px] font-bold mt-1 opacity-70" :class="activeTab === tab.id ? 'text-indigo-100' : 'text-slate-400'">{{ $t(tab.tDesc, tab.desc) }}</p>
                                 </div>
                             </button>
                         </nav>
 
                         <!-- System Controls Page (Language & Logout) -->
-                        <div class="bg-white rounded-[2.2rem] p-4 shadow-sm border border-slate-100 space-y-3">
+                        <div class="bg-white dark:bg-slate-900 rounded-[2.2rem] p-4 shadow-sm border border-slate-100 dark:border-slate-800 space-y-3 transition-all duration-500">
                             <!-- Language Switcher -->
-                            <div class="flex items-center justify-between p-4 bg-slate-50/50 rounded-[1.5rem] border border-slate-100/50">
-                                <span class="font-black text-slate-800 text-xs uppercase tracking-widest">{{ $t('settings_lang_label', 'Language') }}</span>
-                                <div class="flex gap-1 p-1 bg-white rounded-xl border border-slate-200/50 shadow-inner">
-                                    <button @click="switchLang('id')" :class="currentLocale === 'id' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400'" class="px-4 py-1.5 rounded-lg text-[9px] font-black transition-all">ID</button>
-                                    <button @click="switchLang('en')" :class="currentLocale === 'en' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400'" class="px-4 py-1.5 rounded-lg text-[9px] font-black transition-all">EN</button>
+                            <div class="flex items-center justify-between p-4 bg-slate-50/50 dark:bg-slate-800/50 rounded-[1.5rem] border border-slate-100/50 dark:border-slate-700/50 transition-colors duration-500">
+                                <span class="font-black text-slate-800 dark:text-slate-200 text-xs uppercase tracking-widest transition-colors duration-500">{{ $t('settings_lang_label', 'Language') }}</span>
+                                <div class="flex gap-1 p-1 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/50 dark:border-slate-700/50 shadow-inner transition-colors duration-500">
+                                    <button @click="switchLang('id')" :class="currentLocale === 'id' ? 'bg-indigo-600 text-white shadow-lg dark:shadow-none' : 'text-slate-400 dark:text-slate-500'" class="px-4 py-1.5 rounded-lg text-[9px] font-black transition-all">ID</button>
+                                    <button @click="switchLang('en')" :class="currentLocale === 'en' ? 'bg-indigo-600 text-white shadow-lg dark:shadow-none' : 'text-slate-400 dark:text-slate-500'" class="px-4 py-1.5 rounded-lg text-[9px] font-black transition-all">EN</button>
                                 </div>
                             </div>
                             
                             <!-- Logout Button -->
-                            <button @click="confirmLogout" class="w-full bg-rose-50 text-rose-500 font-black py-4 rounded-[1.5rem] border border-rose-100 flex items-center justify-center gap-3 active:scale-[0.98] transition-all hover:bg-rose-100/50">
+                            <button @click="confirmLogout" class="w-full bg-rose-50 dark:bg-rose-500/10 text-rose-500 dark:text-rose-400 font-black py-4 rounded-[1.5rem] border border-rose-100 dark:border-rose-500/20 flex items-center justify-center gap-3 active:scale-[0.98] transition-all hover:bg-rose-100/50 dark:hover:bg-rose-500/20">
                                 <OneForMindIcon name="logout" size="18" stroke-width="2.5" />
                                 <span class="text-[10px] uppercase tracking-[0.2em] font-black">Sign Out</span>
                             </button>
@@ -133,7 +133,7 @@ const confirmLogout = () => {
                 </aside>
 
                 <!-- Content Area -->
-                <main class="flex-grow bg-white rounded-[2.5rem] p-8 sm:p-10 border border-slate-100 shadow-sm min-h-[600px]">
+                <main class="flex-grow bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 sm:p-10 border border-slate-100 dark:border-slate-800 shadow-sm min-h-[600px] transition-all duration-500">
                     <div class="max-w-3xl">
                         <transition 
                             mode="out-in"

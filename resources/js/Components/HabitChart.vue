@@ -2,8 +2,11 @@
 import { computed } from 'vue';
 import { Bar } from 'vue-chartjs';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import { useAppearance } from '@/Composables/useAppearance';
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
+
+const { isDark } = useAppearance();
 
 // 👇 PERBAIKAN DISINI: Kasih Default Value '[]' biar gak undefined
 const props = defineProps({
@@ -48,15 +51,44 @@ const chartData = computed(() => {
     };
 });
 
-const chartOptions = {
+const chartOptions = computed(() => ({
     responsive: true,
     maintainAspectRatio: false,
-    plugins: { legend: { display: false } },
+    plugins: { 
+        legend: { display: false },
+        tooltip: {
+            backgroundColor: isDark.value ? '#1e293b' : '#ffffff',
+            titleColor: isDark.value ? '#f8fafc' : '#1e293b',
+            bodyColor: isDark.value ? '#cbd5e1' : '#475569',
+            borderColor: isDark.value ? '#334155' : '#e2e8f0',
+            borderWidth: 1,
+            padding: 12,
+            cornerRadius: 12,
+            displayColors: false
+        }
+    },
     scales: {
-        y: { beginAtZero: true, ticks: { stepSize: 1 } },
-        x: { grid: { display: false } }
+        y: { 
+            beginAtZero: true, 
+            ticks: { 
+                stepSize: 1,
+                color: isDark.value ? '#94a3b8' : '#64748b',
+                font: { weight: 'bold' }
+            },
+            grid: {
+                color: isDark.value ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)',
+                drawBorder: false
+            }
+        },
+        x: { 
+            grid: { display: false },
+            ticks: {
+                color: isDark.value ? '#94a3b8' : '#64748b',
+                font: { weight: 'bold' }
+            }
+        }
     }
-};
+}));
 </script>
 
 <template>

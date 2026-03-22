@@ -37,6 +37,7 @@ class HandleInertiaRequests extends Middleware
                     'avatar_url' => $request->user()->avatar_url,
                     'is_premium' => $request->user()->is_premium,
                     'premium_until' => $request->user()->premium_until,
+                    'tier'       => $request->user()->settings['tier'] ?? ($request->user()->is_premium ? 2 : 1),
                 ] : null,
             ],
 

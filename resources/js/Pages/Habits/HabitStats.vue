@@ -137,13 +137,13 @@ const perfectDaysCount = computed(() => {
     
     <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 px-4 md:px-0 md:max-w-[95%] mx-auto">
 
-      <div class="md:col-span-5 bg-white rounded-[2.5rem] p-6 shadow-sm border border-slate-100 relative overflow-hidden">
+      <div class="md:col-span-5 bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 shadow-sm border border-slate-100 dark:border-slate-800 relative overflow-hidden">
         <div class="relative z-10">
           <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-1">
             {{ $t('label_consistency', 'Konsistensi Bulan Ini') }}
           </span>
           <div class="flex items-end gap-1">
-            <span class="text-4xl font-black text-slate-800">{{ overallPercentage }}</span>
+            <span class="text-4xl font-black text-slate-800 dark:text-slate-100">{{ overallPercentage }}</span>
             <span class="text-sm font-bold text-indigo-500 mb-1.5">%</span>
           </div>
         </div>
@@ -152,7 +152,7 @@ const perfectDaysCount = computed(() => {
         </div>
       </div>
 
-      <div class="md:col-span-3 bg-indigo-600 rounded-[2.5rem] p-6 text-white shadow-xl shadow-indigo-100 flex flex-col justify-between group overflow-hidden relative">
+      <div class="md:col-span-3 bg-indigo-600 rounded-[2.5rem] p-6 text-white shadow-xl shadow-indigo-100 dark:shadow-none flex flex-col justify-between group overflow-hidden relative">
         <div class="absolute -right-6 -top-6 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
         
         <div v-if="topHabit" class="relative z-10">
@@ -176,9 +176,9 @@ const perfectDaysCount = computed(() => {
       <div class="md:col-span-4 relative">
         <button
           @click="showMoodDropdownLocal = !showMoodDropdownLocal"
-          class="w-full h-full bg-white rounded-[2.5rem] p-6 border border-slate-100 shadow-sm flex items-center gap-5 text-left transition hover:border-indigo-200 hover:shadow-md"
+          class="w-full h-full bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-5 text-left transition hover:border-indigo-200 dark:hover:border-indigo-500/50 hover:shadow-md dark:hover:shadow-none"
         >
-          <div class="w-16 h-16 rounded-3xl flex items-center justify-center text-3xl shadow-inner shrink-0" :class="currentMoodData.color">
+          <div class="w-16 h-16 rounded-3xl flex items-center justify-center text-3xl shadow-inner shrink-0" :class="[isDark ? 'bg-slate-800 shadow-slate-950/50' : currentMoodData.color]">
             {{ currentMoodData.icon }}
           </div>
 
@@ -186,59 +186,59 @@ const perfectDaysCount = computed(() => {
             <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-1">
               {{ $t('label_mood_status', 'Mood Bulan Ini') }}
             </span>
-            <div class="text-xl font-black truncate uppercase text-slate-800">
+            <div class="text-xl font-black truncate uppercase text-slate-800 dark:text-slate-100">
               {{ $t(currentMoodData.label_key) }}
             </div>
           </div>
         </button>
 
         <Transition name="pop">
-          <div v-if="showMoodDropdownLocal" class="absolute bottom-full mb-4 left-0 w-full bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-3 z-30 grid grid-cols-2 gap-2">
+          <div v-if="showMoodDropdownLocal" class="absolute bottom-full mb-4 left-0 w-full bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 p-3 z-30 grid grid-cols-2 gap-2">
             <button
               v-for="m in moodOptions"
               :key="m.code"
-              @click="selectMood(m.code); showMoodDropdownLocal = false"
-              class="flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-50 transition"
-              :class="savedMood === m.code ? 'bg-indigo-50 border border-indigo-100' : 'border border-transparent'"
+               @click="selectMood(m.code); showMoodDropdownLocal = false"
+              class="flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition"
+              :class="savedMood === m.code ? 'bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/30' : 'border border-transparent'"
             >
               <span class="text-xl">{{ m.icon }}</span>
-              <span class="font-bold text-[10px] uppercase truncate">{{ $t(m.label_key).split(' ')[0] }}</span>
+              <span class="font-bold text-[10px] uppercase truncate text-slate-600 dark:text-slate-300">{{ $t(m.label_key).split(' ')[0] }}</span>
             </button>
           </div>
         </Transition>
       </div>
 
-      <div class="md:col-span-4 bg-orange-50 border border-orange-100 rounded-[2.5rem] p-6 flex items-center gap-5 shadow-sm transform hover:-translate-y-1 transition duration-300">
-        <div class="w-14 h-14 bg-white rounded-[1.5rem] flex items-center justify-center text-3xl shadow-sm text-orange-500 shrink-0">
+      <div class="md:col-span-4 bg-orange-50 dark:bg-orange-500/10 border border-orange-100 dark:border-orange-500/20 rounded-[2.5rem] p-6 flex items-center gap-5 shadow-sm transform hover:-translate-y-1 transition duration-300">
+        <div class="w-14 h-14 bg-white dark:bg-slate-900 rounded-[1.5rem] flex items-center justify-center text-3xl shadow-sm text-orange-500 shrink-0">
           🔥
         </div>
         <div>
           <div class="text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1">{{ $t('label_current_streak', 'Aktif Beruntun') }}</div>
-          <div class="text-2xl font-black text-orange-600 leading-none">
+          <div class="text-2xl font-black text-orange-600 dark:text-orange-400 leading-none">
             {{ currentStreak }} <span class="text-sm font-bold opacity-70">{{ $t('label_days', 'Hari') }}</span>
           </div>
         </div>
       </div>
 
-      <div class="md:col-span-4 bg-emerald-50 border border-emerald-100 rounded-[2.5rem] p-6 flex items-center gap-5 shadow-sm transform hover:-translate-y-1 transition duration-300">
-        <div class="w-14 h-14 bg-white rounded-[1.5rem] flex items-center justify-center text-3xl shadow-sm text-emerald-500 shrink-0">
+      <div class="md:col-span-4 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-100 dark:border-emerald-500/20 rounded-[2.5rem] p-6 flex items-center gap-5 shadow-sm transform hover:-translate-y-1 transition duration-300">
+        <div class="w-14 h-14 bg-white dark:bg-slate-900 rounded-[1.5rem] flex items-center justify-center text-3xl shadow-sm text-emerald-500 shrink-0">
           🌟
         </div>
         <div>
           <div class="text-[10px] font-black uppercase tracking-widest text-emerald-500 mb-1">{{ $t('label_perfect_days', 'Hari Sempurna') }}</div>
-          <div class="text-2xl font-black text-emerald-600 leading-none">
+          <div class="text-2xl font-black text-emerald-600 dark:text-emerald-400 leading-none">
             {{ perfectDaysCount }} <span class="text-sm font-bold opacity-70">{{ $t('label_days', 'Hari') }}</span>
           </div>
         </div>
       </div>
 
-      <div class="md:col-span-4 bg-blue-50 border border-blue-100 rounded-[2.5rem] p-6 flex items-center gap-5 shadow-sm transform hover:-translate-y-1 transition duration-300">
-        <div class="w-14 h-14 bg-white rounded-[1.5rem] flex items-center justify-center text-3xl shadow-sm text-blue-500 shrink-0">
+      <div class="md:col-span-4 bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 rounded-[2.5rem] p-6 flex items-center gap-5 shadow-sm transform hover:-translate-y-1 transition duration-300">
+        <div class="w-14 h-14 bg-white dark:bg-slate-900 rounded-[1.5rem] flex items-center justify-center text-3xl shadow-sm text-blue-500 shrink-0">
           📝
         </div>
         <div>
           <div class="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-1">{{ $t('label_total_checkins', 'Total Eksekusi') }}</div>
-          <div class="text-2xl font-black text-blue-600 leading-none">
+          <div class="text-2xl font-black text-blue-600 dark:text-blue-400 leading-none">
             {{ totalCompletions }} <span class="text-sm font-bold opacity-70">{{ $t('label_times', 'Kali') }}</span>
           </div>
         </div>

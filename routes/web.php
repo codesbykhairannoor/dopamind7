@@ -73,7 +73,12 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/pricing', function () {
-    return view('pricing');
+    return auth()->check() ? Inertia::render('Pricing') : view('pricing');
+})->name('pricing.index');
+
+// Alias name 'pricing' for backward compatibility
+Route::get('/pricing-alias', function () {
+    return redirect()->route('pricing.index');
 })->name('pricing');
 // ==========================================
 // 🔥 SEO: DYNAMIC SITEMAP GENERATOR
@@ -479,6 +484,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
 
         Route::get('/settings', [SettingsController::class , 'index'])->name('settings.index');
         Route::post('/settings', [SettingsController::class , 'update'])->name('settings.update');
+
 
         Route::get('/more', function () {
             return Inertia::render('More/Index');

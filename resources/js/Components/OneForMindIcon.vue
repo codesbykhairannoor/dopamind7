@@ -58,6 +58,11 @@ const icons = {
         <rect x="2" y="7" width="20" height="14" rx="2" />
         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
     `,
+    'premium': `
+        <path d="M12 2 2 7l10 15 10-15-10-5Z" />
+        <path d="m2 7 10 5 10-5" />
+        <path d="M12 22V12" />
+    `,
    'goal': `
         <circle cx="12" cy="12" r="9" />
         <circle cx="12" cy="12" r="5" />
@@ -124,6 +129,10 @@ const icons = {
     `,
     'check': `
         <polyline points="20 6 9 17 4 12" />
+    `,
+    'shield-check': `
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <path d="m9 12 2 2 4-4" />
     `
 };
 

@@ -1,9 +1,11 @@
 import { ref, watch } from 'vue';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
-import { router } from '@inertiajs/vue3'; // 👈 KITA KEMBALI PAKAI ROUTER INERTIA
+import { router } from '@inertiajs/vue3';
+import { useGating } from '@/Composables/useGating';
 
 export function useJobs(props) {
+    const { canUse, isExplorer } = useGating();
     const localJobs = ref(props.jobs ? props.jobs.map(j => ({ ...j, _key: 'db_' + j.id, _original_status: j.status })) : []);
     const selectedJobs = ref([]);
 
@@ -34,6 +36,10 @@ export function useJobs(props) {
     };
 
     const addEmptyRow = () => {
+        if (isExplorer.value && localJobs.value.length >= 1) {
+            fireError('Explorer limit: 1 Job Tracked. Upgrade to Architect for unlimited tracking!');
+            return;
+        }
         localJobs.value.unshift({
             id: 'temp_' + Date.now(),
             _key: 'temp_key_' + Date.now(),

@@ -16,6 +16,9 @@ class DashboardController extends Controller
     public function __invoke(Request $request)
     {
         $user = Auth::user();
+        if (!$user) {
+            return redirect()->route('login');
+        }
         $timezone = $user->timezone ?? 'Asia/Jakarta';
 
         $synergy = $this->dashboardService->getTodaySynergy($user->id, $timezone);

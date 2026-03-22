@@ -60,36 +60,65 @@ export function useFinanceChart(props) {
         };
     });
 
-    // --- CONFIG STATIC ---
-    const chartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { 
-                position: 'top', 
-                align: 'end', 
-                labels: { usePointStyle: true, boxWidth: 8 } 
-            },
-            tooltip: { 
-                mode: 'index', 
-                intersect: false,
-                callbacks: {
-                    // FORMAT UANG DINAMIS ($ / Rp)
-                    label: (context) => ` ${context.dataset.label}: ${formatMoney(context.raw)}`
+    // --- CONFIG DINAMIS (DARK MODE SUPPORT) ---
+    const chartOptions = computed(() => {
+        const isDark = document.documentElement.classList.contains('dark');
+        
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { 
+                    position: 'top', 
+                    align: 'end', 
+                    labels: { 
+                        usePointStyle: true, 
+                        boxWidth: 8,
+                        color: isDark ? '#94a3b8' : '#64748b',
+                        font: { weight: 'bold', size: 10 }
+                    } 
+                },
+                tooltip: { 
+                    mode: 'index', 
+                    intersect: false,
+                    backgroundColor: isDark ? '#1e293b' : '#ffffff',
+                    titleColor: isDark ? '#f8fafc' : '#1e293b',
+                    bodyColor: isDark ? '#cbd5e1' : '#475569',
+                    borderColor: isDark ? '#334155' : '#e2e8f0',
+                    borderWidth: 1,
+                    padding: 12,
+                    boxPadding: 6,
+                    usePointStyle: true,
+                    callbacks: {
+                        label: (context) => ` ${context.dataset.label}: ${formatMoney(context.raw)}`
+                    }
                 }
-            }
-        },
-        scales: {
-            y: { 
-                beginAtZero: true, 
-                grid: { color: '#f1f5f9', borderDash: [5, 5] },
-                // Format angka sumbu Y (misal 10k, 20k)
-                ticks: { callback: (val) => (val / 1000) + 'k' } 
             },
-            x: { grid: { display: false } }
-        },
-        interaction: { mode: 'nearest', axis: 'x', intersect: false }
-    };
+            scales: {
+                y: { 
+                    beginAtZero: true, 
+                    grid: { 
+                        color: isDark ? 'rgba(51, 65, 85, 0.5)' : '#f1f5f9', 
+                        borderDash: [5, 5],
+                        drawBorder: false
+                    },
+                    ticks: { 
+                        callback: (val) => (val / 1000) + 'k',
+                        color: isDark ? '#64748b' : '#94a3b8',
+                        font: { size: 10, weight: 'bold' }
+                    } 
+                },
+                x: { 
+                    grid: { display: false },
+                    ticks: {
+                        color: isDark ? '#64748b' : '#94a3b8',
+                        font: { size: 10, weight: 'bold' }
+                    }
+                }
+            },
+            interaction: { mode: 'nearest', axis: 'x', intersect: false }
+        };
+    });
 
     return { chartData, chartOptions };
 }

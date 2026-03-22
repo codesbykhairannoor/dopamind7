@@ -4,6 +4,9 @@ import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import EmptyState from '@/Components/EmptyState.vue';
 import draggable from 'vuedraggable';
 import dayjs from 'dayjs';
+import { useAppearance } from '@/Composables/useAppearance';
+
+const { isDark } = useAppearance();
 
 const props = defineProps({
     localHabits: Array,
@@ -118,8 +121,8 @@ onMounted(() => {
                         class="flex-shrink-0 w-12 py-3 rounded-2xl flex flex-col items-center gap-1 transition-all duration-300"
                         :class="[
                             selectedDate === day.dateString 
-                                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100 scale-110 day-active' 
-                                : 'bg-white text-slate-400 border border-slate-100'
+                                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100 dark:shadow-none scale-110 day-active' 
+                                : 'bg-white dark:bg-slate-800 text-slate-400 dark:text-slate-500 border border-slate-100 dark:border-slate-700'
                         ]"
                     >
                         <span class="text-[10px] font-bold uppercase tracking-tighter opacity-80">{{ day.dayName }}</span>
@@ -131,7 +134,7 @@ onMounted(() => {
             <!-- Habits List for Selected Day -->
             <div class="space-y-3 px-4">
                 <div v-for="habit in localHabits" :key="habit.id" 
-                    class="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm flex items-center gap-4 transition-all active:scale-[0.98]"
+                    class="bg-white dark:bg-slate-900 p-4 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-4 transition-all active:scale-[0.98]"
                     @touchstart="handleTouchStart(habit, selectedDate)"
                     @touchend="handleTouchEnd"
                 >
@@ -145,12 +148,12 @@ onMounted(() => {
                     <div class="flex-1 min-w-0">
                         <h4 class="font-bold text-slate-700 truncate">{{ habit.name }}</h4>
                         <div class="flex items-center gap-2 mt-1">
-                            <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="flex-1 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                                 <div class="h-full rounded-full transition-all duration-500" 
                                     :style="{ width: habit.progress_percent + '%', backgroundColor: habit.color }">
                                 </div>
                             </div>
-                            <span class="text-[10px] font-black text-slate-400">{{ Math.round(habit.progress_percent) }}%</span>
+                            <span class="text-[10px] font-black text-slate-400 dark:text-slate-500">{{ Math.round(habit.progress_percent) }}%</span>
                         </div>
                     </div>
 
@@ -162,10 +165,10 @@ onMounted(() => {
                             getStatus(habit, selectedDate) === 'completed'
                                 ? 'shadow-lg text-white'
                                 : getStatus(habit, selectedDate) === 'skipped'
-                                    ? 'bg-slate-100 text-slate-400'
-                                    : 'bg-slate-50 border border-slate-100 text-slate-300'
+                                    ? 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500'
+                                    : 'bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 text-slate-300 dark:text-slate-600'
                         ]"
-                        :style="getStatus(habit, selectedDate) === 'completed' ? { backgroundColor: habit.color, boxShadow: `0 8px 16px ${habit.color}30` } : {}"
+                        :style="getStatus(habit, selectedDate) === 'completed' ? { backgroundColor: habit.color, boxShadow: (getStatus(habit, selectedDate) === 'completed' && !isDark) ? `0 8px 16px ${habit.color}30` : 'none' } : {}"
                     >
                         <OneForMindIcon v-if="getStatus(habit, selectedDate) === 'completed'" name="check" size="20" stroke-width="4" />
                         <span v-else-if="getStatus(habit, selectedDate) === 'skipped'" class="text-xl font-black">-</span>
@@ -182,32 +185,32 @@ onMounted(() => {
 
         <!-- Empty State Mobile -->
         <!-- Empty State Mobile (Job Tracker Style) -->
-        <div v-else class="md:hidden py-16 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm flex flex-col items-center gap-4">
+        <div v-else class="md:hidden py-16 text-center bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm flex flex-col items-center gap-4">
             <span class="text-5xl animate-bounce">🌱</span>
-            <p class="text-xs font-bold text-slate-400 px-10">
+            <p class="text-xs font-bold text-slate-400 dark:text-slate-500 px-10">
                 {{ $t('habit_empty', 'Belum ada habit aktif. Tambah satu yuk!') }}
             </p>
-            <button @click="openCreateModal" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all outline-none">
+            <button @click="openCreateModal" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 active:scale-95 transition-all outline-none">
                 + {{ $t('habit_btn_add', 'Tambah Habit') }}
             </button>
         </div>
 
         <!-- ==================== DESKTOP LAYOUT (≥md) ==================== -->
-        <div v-if="localHabits.length > 0" class="hidden md:block bg-white md:rounded-[2.5rem] shadow-sm md:shadow-[0_2px_20px_rgba(0,0,0,0.04)] border border-slate-100 overflow-hidden relative">
+        <div v-if="localHabits.length > 0" class="hidden md:block bg-white dark:bg-slate-900 md:rounded-[2.5rem] shadow-sm md:shadow-[0_2px_20px_rgba(0,0,0,0.04)] dark:shadow-none border border-slate-100 dark:border-slate-800 overflow-hidden relative">
             <div class="overflow-x-auto custom-scrollbar relative select-none">
 
-                    <div class="sticky top-0 z-30 bg-white border-b border-slate-100 flex shadow-sm">
-                        <div class="sticky left-0 z-40 bg-white w-72 border-r border-slate-100 p-4 flex items-center font-bold text-slate-400 text-xs uppercase tracking-wider">
+                    <div class="sticky top-0 z-30 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 flex shadow-sm">
+                        <div class="sticky left-0 z-40 bg-white dark:bg-slate-900 w-72 border-r border-slate-100 dark:border-slate-800 p-4 flex items-center font-bold text-slate-400 dark:text-slate-500 text-xs uppercase tracking-wider">
                             <div class="w-8 shrink-0"></div> 
                             <span class="truncate"> {{ $t('habit_name') }}</span>
                         </div>
                         <div class="flex items-center px-4 py-3 gap-1.5">
                             <div v-for="day in monthDates" :key="day.dateString" class="w-8 flex flex-col items-center gap-1">
                                 <span class="text-[10px] font-bold text-slate-400 capitalize">{{ day.dayName }}</span>
-                                <span class="text-xs font-black text-slate-600" :class="day.isToday ? 'text-indigo-600 bg-indigo-50 px-1.5 rounded' : ''">{{ day.dayNumber }}</span>
+                                <span class="text-xs font-black text-slate-600 dark:text-slate-300" :class="day.isToday ? 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10 px-1.5 rounded' : ''">{{ day.dayNumber }}</span>
                             </div>
                         </div>
-                        <div class="flex sticky right-0 z-40 bg-white w-32 p-4 border-l border-slate-100 items-center justify-end font-bold text-slate-400 text-xs uppercase tracking-wider shadow-[-10px_0_20px_rgba(255,255,255,0.8)]">
+                        <div class="flex sticky right-0 z-40 bg-white dark:bg-slate-900 w-32 p-4 border-l border-slate-100 dark:border-slate-800 items-center justify-end font-bold text-slate-400 dark:text-slate-500 text-xs uppercase tracking-wider shadow-[-10px_0_20px_rgba(255,255,255,0.8)] dark:shadow-[-10px_0_20px_rgba(15,23,42,0.8)]">
                             {{ $t('habit_table_total') }}
                         </div>
                     </div>
@@ -219,37 +222,37 @@ onMounted(() => {
                         handle=".drag-handle"
                         animation="250"
                         ghost-class="opacity-40"
-                        class="divide-y divide-slate-50"
+                        class="divide-y divide-slate-50 dark:divide-slate-800"
                     >
                         <template #item="{ element: habit, index: hIndex }">
-                            <div class="flex transition-colors duration-200 group relative bg-white hover:bg-slate-50/50">
+                            <div class="flex transition-colors duration-200 group relative bg-white dark:bg-slate-900 hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
 
-                                <div class="sticky left-0 z-20 w-72 bg-inherit border-r border-slate-100 p-4 flex items-center gap-3 flex-shrink-0">
-                                    <div class="drag-handle cursor-grab active:cursor-grabbing text-slate-300 hover:text-indigo-500 opacity-30 group-hover:opacity-100 transition-opacity p-1 -ml-2 shrink-0">
+                                <div class="sticky left-0 z-20 w-72 bg-inherit border-r border-slate-100 dark:border-slate-800 p-4 flex items-center gap-3 flex-shrink-0">
+                                    <div class="drag-handle cursor-grab active:cursor-grabbing text-slate-300 dark:text-slate-700 hover:text-indigo-500 opacity-30 group-hover:opacity-100 transition-opacity p-1 -ml-2 shrink-0">
                                         <OneForMindIcon name="menu" size="20" />
                                     </div>
-                                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-slate-50 border border-slate-100 shrink-0" :style="{ color: habit.color }">
+                                    <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 shrink-0" :style="{ color: habit.color }">
                                         {{ habit.icon }}
                                     </div>
                                     <div class="min-w-0 flex-1">
-                                        <h4 class="font-bold text-slate-700 truncate text-sm flex items-center gap-1.5">
+                                        <h4 class="font-bold text-slate-700 dark:text-slate-200 truncate text-sm flex items-center gap-1.5">
                                             {{ habit.name }}
-                                            <span v-if="habit.streak > 1" class="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-orange-50 text-orange-600 rounded-lg text-[10px] font-black animate-pulse shadow-sm border border-orange-100/50">
+                                            <span v-if="habit.streak > 1" class="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-black animate-pulse shadow-sm border border-orange-100/50 dark:border-orange-500/20">
                                                 {{ habit.streak }} <span class="text-xs">🔥</span>
                                             </span>
                                         </h4>
-                                        <div class="flex items-center gap-1 text-[10px] font-medium text-slate-400 mb-1.5 mt-0.5">
+                                        <div class="flex items-center gap-1 text-[10px] font-medium text-slate-400 dark:text-slate-500 mb-1.5 mt-0.5">
                                             <span>🎯 Target: {{ habit.monthly_target }}</span>
                                         </div>
                                         <div class="flex items-center gap-2">
-                                            <div class="h-1.5 w-16 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-1.5 w-16 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                                                 <div class="h-full rounded-full transition-all duration-300" :style="{ width: habit.progress_percent + '%', backgroundColor: habit.color }"></div>
                                             </div>
-                                            <div class="hidden md:flex opacity-0 group-hover:opacity-100 transition items-center gap-1 bg-white/80 backdrop-blur-sm px-1 rounded-md absolute right-2 top-1/2 -translate-y-1/2 shadow-sm border border-slate-100 z-50">
-                                                <button @click="editHabit(habit)" class="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition" title="Edit">
+                                            <div class="hidden md:flex opacity-0 group-hover:opacity-100 transition items-center gap-1 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm px-1 rounded-md absolute right-2 top-1/2 -translate-y-1/2 shadow-sm border border-slate-100 dark:border-slate-700 z-50">
+                                                <button @click="editHabit(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 rounded-md transition" title="Edit">
                                                     <OneForMindIcon name="planner" size="14" stroke-width="2.5" />
                                                 </button>
-                                                <button @click="confirmDelete(habit)" class="p-1.5 text-slate-400 hover:text-rose-500 hover:bg-rose-50 rounded-md transition" title="Hapus">
+                                                <button @click="confirmDelete(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-md transition" title="Hapus">
                                                     <OneForMindIcon name="trash" size="14" stroke-width="2.5" />
                                                 </button>
                                             </div>
@@ -259,38 +262,38 @@ onMounted(() => {
 
                                 <div class="flex items-center px-4 py-3 gap-1.5 pointer-events-auto">
                                     <div v-for="(day, dIndex) in monthDates" :key="day.dateString" class="w-8 flex justify-center">
-                                        <button 
-                                            :id="`cell-${hIndex}-${dIndex}`"
-                                            @click="toggleStatus(habit.id, day.dateString)" 
-                                            @contextmenu.prevent="toggleStatus(habit.id, day.dateString, 'skipped')"
-                                            @keydown="handleGridNav($event, hIndex, dIndex, habit.id, day.dateString)"
-                                            @mousedown="handleMouseDown && handleMouseDown($event, habit.id, day.dateString)"
-                                            @mouseenter="handleMouseEnter && handleMouseEnter(habit.id, day.dateString)"
-                                            :disabled="day.isFuture"
-                                            tabindex="0"
-                                            class="scroll-mt-32 w-8 h-8 rounded-lg flex items-center justify-center relative outline-none transition-all duration-200 hover:scale-110 hover:z-20 active:scale-75 focus:ring-4 focus:ring-indigo-400 focus:z-30 focus:shadow-lg" 
-                                            :class="{
-                                                'ring-4 ring-indigo-400 scale-110 z-20 shadow-lg !bg-indigo-50 !border-indigo-400': isCellSelected && isCellSelected(habit.id, day.dateString),
-                                                'shadow-md text-white border-transparent z-10': getStatus(habit, day.dateString) === 'completed' && !(isCellSelected && isCellSelected(habit.id, day.dateString)),
-                                                'bg-slate-100 text-slate-400 border-slate-200': getStatus(habit, day.dateString) === 'skipped' && !(isCellSelected && isCellSelected(habit.id, day.dateString)),
-                                                'bg-white border border-slate-200 hover:border-indigo-400': getStatus(habit, day.dateString) === 'empty' && !day.isFuture && !(isCellSelected && isCellSelected(habit.id, day.dateString)),
-                                                'bg-slate-50 border-slate-50 opacity-30 cursor-not-allowed': day.isFuture,
-                                                'ring-2 ring-indigo-600 ring-offset-2': day.isToday && getStatus(habit, day.dateString) !== 'completed' && !(isCellSelected && isCellSelected(habit.id, day.dateString))
-                                            }"
-                                            :style="getStatus(habit, day.dateString) === 'completed' && !(isCellSelected && isCellSelected(habit.id, day.dateString)) ? { backgroundColor: habit.color } : {}"
-                                        >
+                                            <button 
+                                                :id="`cell-${hIndex}-${dIndex}`"
+                                                @click="toggleStatus(habit.id, day.dateString)" 
+                                                @contextmenu.prevent="toggleStatus(habit.id, day.dateString, 'skipped')"
+                                                @keydown="handleGridNav($event, hIndex, dIndex, habit.id, day.dateString)"
+                                                @mousedown="handleMouseDown && handleMouseDown($event, habit.id, day.dateString)"
+                                                @mouseenter="handleMouseEnter && handleMouseEnter(habit.id, day.dateString)"
+                                                :disabled="day.isFuture"
+                                                tabindex="0"
+                                                class="scroll-mt-32 w-8 h-8 rounded-lg flex items-center justify-center relative outline-none transition-all duration-200 hover:scale-110 hover:z-20 active:scale-75 focus:ring-4 focus:ring-indigo-400 focus:z-30 focus:shadow-lg" 
+                                                :class="{
+                                                    'ring-4 ring-indigo-400 scale-110 z-20 shadow-lg !bg-indigo-50 dark:!bg-indigo-500/10 !border-indigo-400': isCellSelected && isCellSelected(habit.id, day.dateString),
+                                                    'shadow-md text-white border-transparent z-10': getStatus(habit, day.dateString) === 'completed' && !(isCellSelected && isCellSelected(habit.id, day.dateString)),
+                                                    'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 border-slate-200 dark:border-slate-700': getStatus(habit, day.dateString) === 'skipped' && !(isCellSelected && isCellSelected(habit.id, day.dateString)),
+                                                    'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-400': getStatus(habit, day.dateString) === 'empty' && !day.isFuture && !(isCellSelected && isCellSelected(habit.id, day.dateString)),
+                                                    'bg-slate-50 dark:bg-slate-950 border-slate-50 dark:border-slate-900 opacity-30 cursor-not-allowed': day.isFuture,
+                                                    'ring-2 ring-indigo-600 ring-offset-2': day.isToday && getStatus(habit, day.dateString) !== 'completed' && !(isCellSelected && isCellSelected(habit.id, day.dateString))
+                                                }"
+                                                :style="getStatus(habit, day.dateString) === 'completed' && !(isCellSelected && isCellSelected(habit.id, day.dateString)) ? { backgroundColor: habit.color, boxShadow: (getStatus(habit, day.dateString) === 'completed' && !isDark) ? `0 4px 12px ${habit.color}30` : 'none' } : {}"
+                                            >
                                             <OneForMindIcon v-if="getStatus(habit, day.dateString) === 'completed'" name="check" size="14" stroke-width="4" class="text-white animate-in zoom-in duration-300" />
                                             <span v-if="getStatus(habit, day.dateString) === 'skipped'" class="text-xs font-bold animate-in fade-in duration-300">-</span>
                                         </button>
                                     </div>
                                 </div>
 
-                                <div class="flex sticky right-0 z-20 w-32 bg-inherit border-l border-slate-100 p-4 flex-col justify-center shadow-[-10px_0_20px_rgba(255,255,255,0.8)]">
+                                <div class="flex sticky right-0 z-20 w-32 bg-inherit border-l border-slate-100 dark:border-slate-800 p-4 flex-col justify-center shadow-[-10px_0_20px_rgba(255,255,255,0.8)] dark:shadow-[-10px_0_20px_rgba(15,23,42,0.8)]">
                                     <div class="flex justify-between items-end mb-1">
-                                        <span class="text-lg font-black text-slate-700">{{ habit.progress_count }}</span>
-                                        <span class="text-[10px] font-bold text-slate-400 mb-1">{{ Math.round(habit.progress_percent) }}%</span>
+                                        <span class="text-lg font-black text-slate-700 dark:text-slate-200">{{ habit.progress_count }}</span>
+                                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-1">{{ Math.round(habit.progress_percent) }}%</span>
                                     </div>
-                                    <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                                    <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
                                         <div class="h-full rounded-full transition-all duration-500" :style="{ width: habit.progress_percent + '%', backgroundColor: habit.color }"></div>
                                     </div>
                                 </div>
@@ -304,13 +307,13 @@ onMounted(() => {
         <!-- DESKTOP EMPTY STATE (≥md) -->
         <div v-if="localHabits.length === 0" class="hidden md:flex justify-center w-full px-4">
             <!-- Simple Empty State (Job Tracker Style) -->
-            <div class="py-20 text-center bg-white rounded-[2rem] border border-slate-200/60 shadow-sm mt-4 w-full max-w-4xl">
+            <div class="py-20 text-center bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm mt-4 w-full max-w-4xl">
                 <div class="flex flex-col items-center gap-4">
                     <span class="text-5xl animate-bounce">🌱</span>
-                    <p class="text-sm font-bold text-slate-400 px-8">
+                    <p class="text-sm font-bold text-slate-400 dark:text-slate-500 px-8">
                         {{ $t('habit_empty', 'Belum ada habit aktif. Tambah satu yuk!') }}
                     </p>
-                    <button @click="openCreateModal" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all outline-none">
+                    <button @click="openCreateModal" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 active:scale-95 transition-all outline-none">
                         + {{ $t('habit_btn_add', 'Tambah Habit') }}
                     </button>
                 </div>
@@ -337,8 +340,9 @@ onMounted(() => {
 }
 
 .custom-scrollbar::-webkit-scrollbar { height: 6px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: #f8fafc; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+.dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

@@ -236,7 +236,7 @@ const switchLang = (lang) => {
                         </Transition>
                     </div>
 
-                    <a :href="route('pricing')" class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition">
+                    <a :href="route('pricing.index')" class="px-4 py-2 rounded-full text-sm font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition">
                         {{ $t('nav_pricing', 'Pricing') }}
                     </a>
                 </div>
@@ -352,7 +352,7 @@ const switchLang = (lang) => {
                             </div>
                         </div>
 
-                        <a :href="route('pricing')" class="block py-5 text-xl font-black text-slate-900 border-b border-slate-50">{{ $t('nav_pricing', 'Pricing') }}</a>
+                        <a :href="route('pricing.index')" class="block py-5 text-xl font-black text-slate-900 border-b border-slate-50">{{ $t('nav_pricing', 'Pricing') }}</a>
                     </div>
 
                     <div class="pt-8 space-y-6">

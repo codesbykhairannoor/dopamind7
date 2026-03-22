@@ -11,6 +11,9 @@
 @endsection
 
 @section('json-ld')
+<style>
+    [x-cloak] { display: none !important; }
+</style>
 <script type="application/ld+json">
 [{
   "@context": "https://schema.org",
@@ -74,147 +77,380 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
                 
-                {{-- Tier 1: Free --}}
+                {{-- Tier 1: Explorer --}}
                 <div class="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 flex flex-col text-left group hover:-translate-y-2 transition duration-500 h-full">
-                    <h3 class="text-xs font-black text-gray-400 uppercase mb-4 tracking-widest">{{ __('pricing_free_name') }}</h3>
+                    <h3 class="text-[10px] font-black text-gray-400 uppercase mb-4 tracking-widest">{{ __('pricing_l1_name') }}</h3>
                     <div class="flex items-baseline gap-1 mb-6">
                         <span class="text-3xl font-black text-gray-900">Rp 0</span>
-                        <span class="text-gray-400 font-bold text-xs">/{{ __('pricing_forever') }}</span>
+                        <span class="font-bold text-xs text-gray-400">/{{ __('pricing_forever') }}</span>
                     </div>
-                    <p class="text-gray-500 text-xs mb-8 leading-relaxed">{{ __('pricing_free_desc') }}</p>
-                    <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-center gap-3 text-xs font-bold text-gray-600">
-                            <span class="text-emerald-500 text-lg">✓</span> {{ __('pricing_feat_habits_limit') }}
+                    <p class="text-gray-500 text-[11px] mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l1_desc') }}</p>
+                    <ul class="space-y-3 mb-10 flex-grow">
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-black">✓</span>
+                            <span class="text-[11px] font-bold text-gray-600">{{ __('pricing_feat_l1_habits') }}</span>
                         </li>
-                        <li class="flex items-center gap-3 text-xs font-bold text-gray-600">
-                            <span class="text-emerald-500 text-lg">✓</span> {{ __('pricing_feat_finance_basic') }}
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-black">✓</span>
+                            <span class="text-[11px] font-bold text-gray-600">{{ __('pricing_feat_l1_finance') }}</span>
                         </li>
                     </ul>
-                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-2xl bg-gray-50 text-gray-900 font-bold text-xs text-center hover:bg-gray-100 transition border border-gray-200">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-3xl bg-gray-50 text-gray-900 font-black text-xs text-center hover:bg-gray-100 transition border border-gray-200">
                         {{ __('pricing_free_btn') }}
                     </a>
                 </div>
 
-                {{-- Tier 2: Pro --}}
-                <div class="bg-white p-8 rounded-[2.5rem] border border-indigo-100 shadow-xl shadow-indigo-50/50 flex flex-col text-left group hover:-translate-y-2 transition duration-500 h-full relative border-t-8 border-t-indigo-500">
-                    <h3 class="text-xs font-black text-indigo-600 uppercase mb-4 tracking-widest">{{ __('pricing_pro_name') }}</h3>
-                    <div class="mb-6">
-                        <div class="text-2xl font-black text-gray-900 leading-tight">{{ __('pricing_pro_initial') }}</div>
-                        <div class="text-indigo-600 font-black text-sm italic">{{ __('pricing_pro_recurring') }}</div>
+                {{-- Tier 2: Architect --}}
+                <div class="bg-white p-8 rounded-[2.5rem] border border-indigo-100 shadow-xl shadow-indigo-50/50 flex flex-col text-left group hover:-translate-y-2 transition duration-500 h-full relative border-t-8 border-t-indigo-600">
+                    <h3 class="text-[10px] font-black text-indigo-600 uppercase mb-4 tracking-widest">{{ __('pricing_l2_name') }}</h3>
+                    <div class="mb-4">
+                        <div class="text-2xl font-black text-gray-900 leading-tight" x-text="annual ? 'Rp 59rb' : 'Rp 89rb'">Rp 59rb</div>
+                        <div class="text-gray-400 font-bold text-[10px]">/{{ __('pricing_month') }}</div>
                     </div>
-                    <p class="text-gray-500 text-xs mb-8 leading-relaxed">{{ __('pricing_pro_desc') }}</p>
-                    <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-center gap-3 text-xs font-bold text-gray-800">
-                            <span class="text-emerald-500">✓</span> {{ __('pricing_feat_unlock_all') }}
+                    <div class="mb-6">
+                        <p class="text-[10px] font-black text-indigo-600 uppercase tracking-tight">{{ __('pricing_l2_initial') }}</p>
+                        <p class="text-[9px] font-bold italic text-gray-400">{{ __('pricing_l2_recurring') }}</p>
+                    </div>
+                    <p class="text-gray-500 text-[11px] mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l2_desc') }}</p>
+                    <ul class="space-y-3 mb-10 flex-grow">
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-black">✓</span>
+                            <span class="text-[11px] font-bold text-gray-800">{{ __('pricing_feat_l2_habits') }}</span>
                         </li>
-                        <li class="flex items-center gap-3 text-xs font-bold text-gray-800">
-                            <span class="text-emerald-500">✓</span> {{ __('pricing_feat_month_trial') }}
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-500 font-black">✓</span>
+                            <span class="text-[11px] font-bold text-gray-800">{{ __('pricing_feat_l2_finance') }}</span>
                         </li>
-                        <li class="flex items-center gap-3 text-xs font-bold text-gray-800">
-                            <span class="text-indigo-500">✓</span> {{ __('pricing_feat_habit_insights') }}
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-black">★</span>
+                            <span class="text-[11px] font-bold text-gray-800">{{ __('pricing_feat_month_trial') }}</span>
                         </li>
                     </ul>
-                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-2xl bg-indigo-600 text-white font-bold text-xs text-center hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-3xl bg-indigo-600 text-white font-black text-xs text-center hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition">
                         {{ __('pricing_pro_btn') }}
                     </a>
                 </div>
 
-                {{-- Tier 3: AI Pro (Quantum) --}}
+                {{-- Tier 3: Quantum --}}
                 <div class="bg-white p-8 rounded-[3rem] border-4 border-indigo-600 shadow-2xl shadow-indigo-100 flex flex-col text-left relative transform lg:-translate-y-4 z-20 h-full">
-                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-6 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest whitespace-nowrap">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-6 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest whitespace-nowrap shadow-lg">
                         {{ __('pricing_ai_badge') }}
                     </div>
-                    <h3 class="text-xs font-black text-indigo-600 uppercase mb-4 tracking-widest">{{ __('pricing_ai_name') }}</h3>
-                    <div class="flex items-baseline gap-1 mb-2">
-                        <span class="text-3xl font-black text-gray-900" x-text="annual ? 'Rp 39rb' : 'Rp 49rb'">Rp 39rb</span>
-                        <span class="text-gray-400 font-bold text-xs">/{{ __('pricing_month') }}</span>
+                    <h3 class="text-[10px] font-black text-indigo-600 uppercase mb-4 tracking-widest">{{ __('pricing_l3_name') }}</h3>
+                    <div class="mb-4">
+                        <div class="text-2xl font-black text-gray-900 leading-tight" x-text="annual ? 'Rp 99rb' : 'Rp 129rb'">Rp 99rb</div>
+                        <div class="text-gray-400 font-bold text-[10px]">/{{ __('pricing_month') }}</div>
                     </div>
-                    <p class="text-indigo-600/60 text-[10px] font-black mb-6" x-show="annual">{{ __('pricing_billed_annually') }}</p>
-                    <p class="text-gray-500 text-xs mb-8 leading-relaxed">{{ __('pricing_ai_desc') }}</p>
-                    <ul class="space-y-4 mb-10 flex-grow">
-                        <li class="flex items-center gap-3 text-xs font-black text-indigo-600 italic">
-                            <span class="w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-[10px] shrink-0">🤖</span>
-                            {{ __('pricing_feat_ai_chat') }}
+                    <div class="mb-6">
+                        <p class="text-[10px] font-black text-indigo-600 uppercase tracking-tight">{{ __('pricing_l3_initial') }}</p>
+                        <p class="text-[9px] font-bold italic text-gray-400">{{ __('pricing_l3_recurring') }}</p>
+                    </div>
+                    <p class="text-gray-500 text-[11px] mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l3_desc') }}</p>
+                    <ul class="space-y-3 mb-10 flex-grow">
+                        <li class="flex items-start gap-3 text-indigo-600 font-black">
+                            <span class="w-5 h-5 bg-indigo-50 rounded-full flex items-center justify-center text-[10px]">🤖</span>
+                            <span class="text-[11px]">{{ __('pricing_feat_l3_ai_coach') }}</span>
                         </li>
-                        <li class="flex items-center gap-3 text-xs font-bold text-gray-800">
-                            <span class="text-indigo-500">✓</span> {{ __('pricing_feat_automated_insights') }}
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-black">✓</span>
+                            <span class="text-[11px] font-bold text-gray-800">{{ __('pricing_feat_l3_wealth') }}</span>
                         </li>
-                        <li class="flex items-center gap-3 text-xs font-bold text-gray-800 opacity-50">
-                            <span class="text-indigo-500">★</span> {{ __('pricing_feat_ai_status') }}
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-black">✓</span>
+                            <span class="text-[11px] font-bold text-indigo-600">{{ __('pricing_feat_l3_insights') }}</span>
                         </li>
                     </ul>
-                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-5 rounded-2xl bg-slate-900 text-white font-black text-sm text-center hover:bg-black shadow-xl shadow-gray-200 transition transform active:scale-95">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-5 rounded-3xl bg-slate-900 text-white font-black text-xs text-center hover:bg-black shadow-xl transition transform active:scale-95">
                         {{ __('pricing_ai_btn') }}
                     </a>
                 </div>
 
-                {{-- Tier 4: Lifetime --}}
-                <div class="bg-slate-900 p-8 rounded-[2.5rem] shadow-xl flex flex-col text-left group hover:-translate-y-2 transition duration-500 text-white h-full">
-                    <h3 class="text-xs font-black text-indigo-400 uppercase mb-4 tracking-widest">{{ __('pricing_life_name') }}</h3>
-                    <div class="flex items-baseline gap-1 mb-6">
-                        <span class="text-3xl font-black">Rp 249rb</span>
-                        <span class="text-slate-600 font-bold text-xs">/{{ __('pricing_once') }}</span>
+                {{-- Tier 4: Legendary --}}
+                <div class="bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl flex flex-col text-left group hover:-translate-y-2 transition duration-500 text-white h-full relative border border-white/5">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-amber-500 text-white text-[8px] font-black uppercase tracking-widest shadow-lg">
+                        {{ __('pricing_l4_badge') }}
                     </div>
-                    <p class="text-slate-400 text-xs mb-8 leading-relaxed">{{ __('pricing_life_desc') }}</p>
-                    <ul class="space-y-4 mb-10 flex-grow text-slate-300">
-                        <li class="flex items-center gap-3 text-xs font-bold text-indigo-300">
-                            <span class="text-indigo-400 text-lg">★</span> {{ __('pricing_feat_calendar_unlocked') }}
+                    <h3 class="text-[10px] font-black text-indigo-400 uppercase mb-4 tracking-widest">{{ __('pricing_l4_name') }}</h3>
+                    <div class="mb-4">
+                        <div class="text-2xl font-black text-white leading-tight" x-text="annual ? 'Rp 159rb' : 'Rp 199rb'">Rp 159rb</div>
+                        <div class="text-slate-500 font-bold text-[10px]">/{{ __('pricing_month') }}</div>
+                    </div>
+                    <div class="mb-6">
+                        <p class="text-[10px] font-black text-amber-500 uppercase tracking-tight">{{ __('pricing_l4_initial') }}</p>
+                        <p class="text-[9px] font-bold italic text-slate-600">{{ __('pricing_l4_recurring') }}</p>
+                    </div>
+                    <p class="text-slate-400 text-[11px] mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l4_desc') }}</p>
+                    <ul class="space-y-3 mb-10 flex-grow text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <span class="text-amber-500 font-black">★</span>
+                            <span class="text-[11px] font-bold">{{ __('pricing_feat_l4_triggers') }}</span>
                         </li>
-                        <li class="flex items-center gap-3 text-xs font-bold text-indigo-300">
-                            <span class="text-indigo-400 text-lg">★</span> {{ __('pricing_feat_goals_unlocked') }}
+                        <li class="flex items-start gap-3">
+                            <span class="text-amber-500 font-black">★</span>
+                            <span class="text-[11px] font-bold">{{ __('pricing_feat_l4_war_room') }}</span>
                         </li>
-                        <li class="flex items-center gap-3 text-xs font-bold text-indigo-300">
-                            <span class="text-indigo-400 text-lg">★</span> {{ __('pricing_feat_jobs_unlocked') }}
-                        </li>
-                        <li class="flex items-center gap-3 text-xs font-bold">
-                            <span class="text-indigo-400 text-lg">✓</span> {{ __('pricing_feat_priority_support') }}
+                        <li class="flex items-start gap-3 border-t border-white/10 pt-3">
+                            <span class="text-emerald-400 font-black">✓</span>
+                            <span class="text-[11px] font-bold">{{ __('pricing_feat_l4_vip') }}</span>
                         </li>
                     </ul>
-                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-2xl bg-white text-gray-900 font-bold text-xs text-center hover:bg-gray-100 transition shadow-lg shadow-white/10">
-                        {{ __('pricing_life_btn') }}
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-3xl bg-white text-slate-900 font-black text-xs text-center hover:bg-slate-50 transition shadow-lg">
+                        {{ __('pricing_l4_btn') }}
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 3: COMPARISON TABLE (NEW) --}}
-    <section class="py-24 bg-slate-50 border-y border-slate-100">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-black text-gray-900 mb-4">{{ __('pricing_compare_title') }}</h2>
-                <p class="text-gray-500">{{ __('pricing_compare_subtitle') }}</p>
+    {{-- SECTION 3: COMPARISON TABLE --}}
+    <section class="py-32 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('pricing_compare_title') }}</h2>
+                <p class="text-gray-500 font-medium">{{ __('pricing_compare_subtitle') }}</p>
             </div>
             
-            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-                <table class="w-full text-left border-collapse">
+            <div class="overflow-x-auto rounded-[2.5rem] border border-slate-200 bg-white shadow-2xl">
+                <table class="w-full text-left border-collapse min-w-[800px]">
                     <thead>
-                        <tr class="bg-slate-50/50">
-                            <th class="px-6 py-4 text-sm font-black text-gray-400 uppercase">{{ __('pricing_feat_label') }}</th>
-                            <th class="px-6 py-4 text-sm font-black text-gray-900 text-center">Free</th>
-                            <th class="px-6 py-4 text-sm font-black text-indigo-600 text-center">Architect</th>
+                        <tr class="bg-slate-50">
+                            <th class="px-8 py-6 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">{{ __('pricing_feat_label') }}</th>
+                            <th class="px-8 py-6 text-center border-b border-slate-100"><span class="text-xs font-black text-slate-900 uppercase">Explorer</span></th>
+                            <th class="px-8 py-6 text-center border-b border-slate-100"><span class="text-xs font-black text-indigo-600 uppercase">Architect</span></th>
+                            <th class="px-8 py-6 text-center border-b border-slate-100"><span class="text-xs font-black text-indigo-600 uppercase">Quantum</span></th>
+                            <th class="px-8 py-6 text-center border-b border-slate-100"><span class="text-xs font-black text-amber-500 uppercase">Legendary</span></th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-100">
-                        <tr>
-                            <td class="px-6 py-4 text-sm font-bold text-gray-700">Daily Habits</td>
-                            <td class="px-6 py-4 text-center text-sm text-gray-500">5 Max</td>
-                            <td class="px-6 py-4 text-center text-sm font-black text-emerald-500">Unlimited</td>
+                    <tbody class="divide-y divide-slate-50">
+                        {{-- Habit Module --}}
+                        <tr class="bg-indigo-50/30">
+                            <td colspan="5" class="px-8 py-3 text-[10px] font-black text-indigo-600 uppercase tracking-tighter italic">
+                                🧠 {{ __('group_habits') }}
+                            </td>
                         </tr>
                         <tr>
-                            <td class="px-6 py-4 text-sm font-bold text-gray-700">Financial Insights</td>
-                            <td class="px-6 py-4 text-center text-sm text-gray-500">Basic</td>
-                            <td class="px-6 py-4 text-center text-sm font-black text-emerald-500">Advanced AI</td>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_habit_limit') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-bold text-slate-500">{{ __('feat_habit_limit_val_l1') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-emerald-500">{{ __('feat_habit_limit_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-emerald-500">{{ __('feat_habit_limit_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-emerald-500">{{ __('feat_habit_limit_val_l2') }}</td>
                         </tr>
                         <tr>
-                            <td class="px-6 py-4 text-sm font-bold text-gray-700">Cloud Sync</td>
-                            <td class="px-6 py-4 text-center text-sm font-black text-emerald-500">✓</td>
-                            <td class="px-6 py-4 text-center text-sm font-black text-emerald-500">✓</td>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_detailed_analytics') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-bold text-slate-500">{{ __('feat_val_basic') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-emerald-500">{{ __('feat_val_advanced') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-indigo-600">{{ __('feat_val_predictive') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-indigo-600">{{ __('feat_val_predictive') }}</td>
                         </tr>
                         <tr>
-                            <td class="px-6 py-4 text-sm font-bold text-gray-700">Priority Support</td>
-                            <td class="px-6 py-4 text-center text-sm text-gray-500">—</td>
-                            <td class="px-6 py-4 text-center text-sm font-black text-emerald-500">✓</td>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_detailed_analytics') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-bold text-slate-500">{{ __('feat_val_basic') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-emerald-500">{{ __('feat_val_advanced') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-indigo-600">{{ __('feat_val_predictive') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-indigo-600">{{ __('feat_val_predictive') }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_habit_freeze') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_ai_stacking') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+
+                        {{-- Finance Module --}}
+                        <tr class="bg-emerald-50/30">
+                            <td colspan="5" class="px-8 py-3 text-[10px] font-black text-emerald-600 uppercase tracking-tighter italic">
+                                💰 {{ __('group_finance') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_budgeting') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_receipt_scanning') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_net_worth') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_ai_audit') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+
+                        {{-- Planning & Focus --}}
+                        <tr class="bg-amber-50/30">
+                            <td colspan="5" class="px-8 py-3 text-[10px] font-black text-amber-600 uppercase tracking-tighter italic">
+                                ⚡ {{ __('group_planner') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_planner_view') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-bold text-slate-500">{{ __('feat_planner_view_val_l1') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-slate-900">{{ __('feat_planner_view_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-slate-900">{{ __('feat_planner_view_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-slate-900">{{ __('feat_planner_view_val_l2') }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_recurring_tasks') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_kanban_board') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_focus_timer') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_energy_scheduling') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+
+                        {{-- Journaling --}}
+                        <tr class="bg-indigo-50/30">
+                            <td colspan="5" class="px-8 py-3 text-[10px] font-black text-indigo-600 uppercase tracking-tighter italic">
+                                ✍️ {{ __('group_journal') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_journal_type') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-bold text-slate-500">{{ __('feat_journal_type_val_l1') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-emerald-500">{{ __('feat_journal_type_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-emerald-500">{{ __('feat_journal_type_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-emerald-500">{{ __('feat_journal_type_val_l2') }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_sentiment_ai') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_journal_lock') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+
+                        {{-- Goals & Jobs --}}
+                        <tr class="bg-indigo-50/10">
+                            <td colspan="5" class="px-8 py-3 text-[10px] font-black text-indigo-600 uppercase tracking-tighter italic">
+                                🎯 {{ __('group_goals') }} & {{ __('group_jobs') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_goal_limit') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-bold text-slate-500">{{ __('feat_goal_limit_val_l1') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-slate-900">{{ __('feat_goal_limit_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-slate-900">{{ __('feat_goal_limit_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-slate-900">{{ __('feat_goal_limit_val_l2') }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_job_limit') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-bold text-slate-500">{{ __('feat_job_limit_val_l1') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-slate-900">{{ __('feat_job_limit_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-slate-900">{{ __('feat_job_limit_val_l2') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-slate-900">{{ __('feat_job_limit_val_l2') }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_resume_ai') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_vision_board') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+
+                        {{-- Calendar --}}
+                        <tr class="bg-slate-100/50">
+                            <td colspan="5" class="px-8 py-3 text-[10px] font-black text-slate-600 uppercase tracking-tighter italic">
+                                📅 {{ __('group_calendar') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_calendar_timeline') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_ai_scheduling') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+
+                        {{-- AI & Support --}}
+                        <tr class="bg-slate-100/50">
+                            <td colspan="5" class="px-8 py-3 text-[10px] font-black text-slate-600 uppercase tracking-tighter italic">
+                                🛡️ {{ __('group_support') }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_support_priority') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-bold text-slate-400">{{ __('support_standard') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-bold text-slate-400">{{ __('support_standard') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-indigo-600">{{ __('support_priority') }}</td>
+                            <td class="px-8 py-5 text-center text-[11px] font-black text-amber-500">{{ __('support_vip') }}</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_early_beta') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                        </tr>
+                        <tr>
+                            <td class="px-8 py-5 text-xs font-bold text-slate-700">{{ __('feat_data_export') }}</td>
+                            <td class="px-8 py-5 text-center text-slate-300">—</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
                         </tr>
                     </tbody>
                 </table>
@@ -222,65 +458,145 @@
         </div>
     </section>
 
-    {{-- SECTION 4: TRUST & GUARANTEES (NEW) --}}
+    {{-- SECTION 4: ELITE EXPERIENCE --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="relative overflow-hidden rounded-[4rem] bg-slate-900 border border-slate-800 p-8 md:p-20 group">
+                <!-- Background decorative elements -->
+                <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 blur-[100px] -translate-y-1/2 translate-x-1/2 rounded-full group-hover:bg-indigo-500/20 transition-all duration-700"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/5 blur-[100px] translate-y-1/2 -translate-x-1/2 rounded-full"></div>
+                
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 text-[10px] font-black uppercase tracking-widest mb-6">
+                            LEADERSHIP & PERFORMANCE
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-black text-white leading-tight mb-8">
+                            {{ __('quantum_feature') }} <br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">{{ __('pricing_elite_title') }}</span>
+                        </h2>
+                        <div class="space-y-6">
+                            @for ($i = 1; $i <= 3; $i++)
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-xl shadow-inner">
+                                    {{ $i === 1 ? '🧠' : ($i === 2 ? '⚡' : '🌈') }}
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-black text-sm mb-1">
+                                        {{ __('pricing_elite_feat' . $i . '_title') }}
+                                    </h4>
+                                    <p class="text-slate-400 text-xs leading-relaxed font-bold">
+                                        {{ __('pricing_elite_feat' . $i . '_desc') }}
+                                    </p>
+                                </div>
+                            </div>
+                            @endfor
+                        </div>
+                    </div>
+                    
+                    <div class="relative group/card">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-amber-500/20 blur-3xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-700"></div>
+                        <div class="relative aspect-square rounded-[3rem] bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 p-8 shadow-2xl overflow-hidden shadow-indigo-500/10">
+                            <div class="absolute top-0 right-0 p-8 transform rotate-12 group-hover/card:rotate-0 transition-transform duration-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400/10">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    <path d="m9 12 2 2 4-4" />
+                                </svg>
+                            </div>
+                            <div class="h-full flex flex-col justify-end">
+                                <div class="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
+                                    <div class="flex items-center gap-4 mb-4">
+                                        <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-black shadow-[0_0_15px_rgba(245,158,11,0.4)]">Q</div>
+                                        <div>
+                                            <p class="text-white font-black text-xs">{{ __('pricing_elite_card_title') }}</p>
+                                            <p class="text-[10px] text-slate-500 font-bold uppercase">{{ __('pricing_elite_card_status') }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+                                        <div class="h-full w-2/3 bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)] animate-pulse"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 5: TRUST & GUARANTEES --}}
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">🔒</div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-slate-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition duration-500 shadow-sm border border-slate-100">🔒</div>
                 <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('pricing_trust_1_title') }}</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">{{ __('pricing_trust_1_desc') }}</p>
+                <p class="text-gray-500 text-sm leading-relaxed font-bold px-4">{{ __('pricing_trust_1_desc') }}</p>
             </div>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">⚡</div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-slate-50 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition duration-500 shadow-sm border border-slate-100">⚡</div>
                 <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('pricing_trust_2_title') }}</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">{{ __('pricing_trust_2_desc') }}</p>
+                <p class="text-gray-500 text-sm leading-relaxed font-bold px-4">{{ __('pricing_trust_2_desc') }}</p>
             </div>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">🛠️</div>
+            <div class="text-center group">
+                <div class="w-16 h-16 bg-slate-50 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition duration-500 shadow-sm border border-slate-100">🛠️</div>
                 <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('pricing_trust_3_title') }}</h4>
-                <p class="text-gray-500 text-sm leading-relaxed">{{ __('pricing_trust_3_desc') }}</p>
+                <p class="text-gray-500 text-sm leading-relaxed font-bold px-4">{{ __('pricing_trust_3_desc') }}</p>
             </div>
         </div>
     </section>
 
-    {{-- SECTION 5: FAQ --}}
-    <section class="py-24 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-12 text-center">{{ __('pricing_faq_title') }}</h2>
-            <div class="grid gap-4" x-data="{ active: null }">
-                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                    <button @click="active !== 1 ? active = 1 : active = null" class="w-full px-8 py-6 text-left flex justify-between items-center font-bold text-gray-900 group">
-                        <span>{{ __('pricing_faq_1_q') }}</span>
-                        <span class="text-indigo-600 transform transition-transform duration-300" :class="active === 1 ? 'rotate-180' : ''">↓</span>
+    {{-- SECTION 6: FAQ --}}
+    <section class="py-32 bg-slate-50">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-gray-900 mb-4">{{ __('faq_title') }}</h2>
+                <p class="text-gray-500 font-bold uppercase text-[10px] tracking-widest">{{ __('pricing_faq_subtitle') }}</p>
+            </div>
+            
+            <div class="space-y-4" x-data="{ active: null }">
+                @for ($i = 1; $i <= 4; $i++)
+                <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition duration-300">
+                    <button @click="active !== {{ $i }} ? active = {{ $i }} : active = null" 
+                            class="w-full px-8 py-6 text-left flex justify-between items-center group">
+                        <span class="font-black text-slate-800 group-hover:text-indigo-600 transition tracking-tight">{{ __("faq_{$i}_q") }}</span>
+                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-all duration-300 transform"
+                             :class="active === {{ $i }} ? 'rotate-180 bg-indigo-600 text-white' : ''">
+                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
                     </button>
-                    <div x-show="active === 1" x-collapse>
-                        <div class="px-8 pb-6 text-gray-500 leading-relaxed">{{ __('pricing_faq_1_a') }}</div>
+                    <div x-show="active === {{ $i }}" x-collapse x-cloak>
+                        <div class="px-8 pb-8 text-slate-500 text-sm leading-relaxed font-bold border-t border-slate-50 pt-6">
+                            {{ __("faq_{$i}_a") }}
+                        </div>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-                    <button @click="active !== 2 ? active = 2 : active = null" class="w-full px-8 py-6 text-left flex justify-between items-center font-bold text-gray-900 group">
-                        <span>{{ __('pricing_faq_2_q') }}</span>
-                        <span class="text-indigo-600 transform transition-transform duration-300" :class="active === 2 ? 'rotate-180' : ''">↓</span>
-                    </button>
-                    <div x-show="active === 2" x-collapse>
-                        <div class="px-8 pb-6 text-gray-500 leading-relaxed">{{ __('pricing_faq_2_a') }}</div>
-                    </div>
-                </div>
+                @endfor
             </div>
         </div>
     </section>
 
-    {{-- SECTION 6: BOTTOM CTA (NEW) --}}
-    <section class="py-24 bg-white">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="bg-indigo-600 rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+    {{-- SECTION 7: BOTTOM CTA --}}
+    <section class="py-32 bg-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="bg-indigo-600 rounded-[4rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-[0_40px_80px_-20px_rgba(79,70,229,0.4)]">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48 blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-indigo-400/20 rounded-full -ml-48 -mb-48 blur-3xl"></div>
+                
                 <div class="relative z-10">
-                    <h2 class="text-4xl md:text-5xl font-black mb-6">{{ __('pricing_bottom_cta_title') }}</h2>
-                    <p class="text-indigo-100 text-lg mb-10 max-w-2xl mx-auto">{{ __('pricing_bottom_cta_desc') }}</p>
-                    <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-indigo-600 px-12 py-5 rounded-2xl font-black text-xl hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl">
-                        {{ __('pricing_bottom_cta_btn') }}
-                    </a>
+                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter">
+                        {{ __('pricing_bottom_cta_title') }}
+                    </h2>
+                    <p class="text-indigo-100 text-lg mb-12 max-w-2xl mx-auto font-bold opacity-80 leading-relaxed">
+                        {{ __('pricing_bottom_cta_desc') }}
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto px-12 py-5 rounded-2xl bg-white text-indigo-600 font-black text-xl hover:bg-slate-50 transition transform hover:scale-105 shadow-2xl active:scale-95">
+                            {{ __('pricing_bottom_cta_btn') }}
+                        </a>
+                        <p class="text-[10px] font-black uppercase tracking-widest text-indigo-200">
+                             FREE 30-DAY ARCHITECT TRIAL INCLUDED
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

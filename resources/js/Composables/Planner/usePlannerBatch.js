@@ -1,8 +1,10 @@
 import { ref } from 'vue';
 import { useForm, usePage } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
+import { useGating } from '@/Composables/useGating';
 
 export function usePlannerBatch(currentDateRef, localTasksRef = null) {
+    const { canUse } = useGating();
     const isBatchModalOpen = ref(false);
     const globalConflictError = ref(null); 
 
@@ -14,6 +16,19 @@ export function usePlannerBatch(currentDateRef, localTasksRef = null) {
     });
 
     const openBatchModal = () => {
+        if (!canUse('planner_recurring')) {
+            Swal.fire({
+                title: 'Architect Feature',
+                text: 'Batch planning is available for Architect and above. Focus on your day with structured efficiency!',
+                icon: 'info',
+                confirmButtonText: 'View Plans',
+                customClass: {
+                    popup: 'rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800',
+                    confirmButton: 'bg-indigo-600 text-white font-black py-3 px-8 rounded-xl'
+                }
+            });
+            return;
+        }
         batchForm.reset();
         batchForm.date = currentDateRef.value; 
         batchForm.tasks = [{ title: '', start_time: '08:00', end_time: '09:00', type: 1, notes: '' }];

@@ -36,10 +36,10 @@ class SecurityHeaders
         if ($isLocal) {
             // LOKAL: Longgar agar Vite HMR lancar + Izinkan font & analytics umum
             $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $viteUrl $midtransUrls $googleUrls; " .
-                "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: $viteUrl $midtransUrls $googleUrls; " .
-                "style-src 'self' 'unsafe-inline' https://fonts.bunny.net $viteUrl; " .
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page $viteUrl $midtransUrls $googleUrls; " .
+                "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://fonts.googleapis.com https://cdnjs.cloudflare.com $viteUrl; " .
                 "img-src 'self' data: blob: *; " .
-                "font-src 'self' data: https://fonts.bunny.net; " .
+                "font-src 'self' data: https://fonts.bunny.net https://fonts.gstatic.com https://fonts.googleapis.com; " .
                 "frame-src *; " .
                 "connect-src 'self' ws: wss: $viteUrl $midtransUrls $googleUrls;";
         }
@@ -47,9 +47,9 @@ class SecurityHeaders
             // PRODUCTION: Ketat tapi tetap izinkan Midtrans
             $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $midtransUrls; ";
             $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com $midtransUrls; ";
-            $csp .= "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://cdnjs.cloudflare.com; ";
+            $csp .= "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://fonts.googleapis.com https://cdnjs.cloudflare.com; ";
             $csp .= "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com; ";
-            $csp .= "font-src 'self' data: https://fonts.bunny.net; ";
+            $csp .= "font-src 'self' data: https://fonts.bunny.net https://fonts.gstatic.com https://fonts.googleapis.com; ";
             $csp .= "frame-src *; ";
             $csp .= "connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com $midtransUrls; ";
             $csp .= "upgrade-insecure-requests;";

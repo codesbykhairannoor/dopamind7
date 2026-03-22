@@ -1,10 +1,10 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
-import forms from '@tailwindcss/typography'; // Tambahan plugin untuk styling konten teks panjang seperti artikel, deskripsi, dll.
+import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    // darkMode: 'class', // Opsional: Biar aman kalau nanti mau main Dark Mode
+    darkMode: 'class',
 
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
@@ -40,6 +40,7 @@ export default {
     // BAGIAN PENTING: Plugins digabung jadi SATU array di sini
     plugins: [
         forms,
+        typography,
         require("tailwindcss-animate"), 
     ],
 };

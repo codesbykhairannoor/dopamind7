@@ -65,7 +65,7 @@ const handleFullReset = () => {
             :stats="scheduledStats"
         />
 
-        <div class="w-full min-h-screen bg-slate-50/50 px-4 sm:px-6 lg:px-8 py-8">
+        <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-500">
             
             <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
                 

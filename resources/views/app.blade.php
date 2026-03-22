@@ -35,10 +35,21 @@
         <link rel="dns-prefetch" href="https://fonts.bunny.net">
 
         <link rel="icon" type="image/x-icon" href="/favicon.svg?v=2">
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.svg?v=2">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 
-        <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
-        <link rel="preload" as="style" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" />
+        <!-- 🔥 ANTI-FLICKER DARK MODE SCRIPT -->
+        <script>
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark')
+            } else {
+                document.documentElement.classList.remove('dark')
+            }
+        </script>
+
+        <!-- Scripts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" media="print" onload="this.media='all'" />
 
         <style>

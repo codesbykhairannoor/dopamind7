@@ -30,11 +30,11 @@ const checkout = (plan) => {
 <template>
     <div class="space-y-8">
         <div>
-            <h3 class="text-lg font-black text-slate-800 tracking-tight">{{ $t('billing_title', 'Langganan & Billing') }}</h3>
-            <p class="text-xs font-bold text-slate-400 mt-1">{{ $t('billing_desc', 'Pilih paket yang sesuai untuk membuka lebih banyak fitur produktivitas.') }}</p>
+            <h3 class="text-lg font-black text-slate-800 dark:text-white tracking-tight transition-colors duration-500">{{ $t('billing_title', 'Langganan & Billing') }}</h3>
+            <p class="text-xs font-bold text-slate-400 dark:text-slate-500 mt-1 transition-colors duration-500">{{ $t('billing_desc', 'Pilih paket yang sesuai untuk membuka lebih banyak fitur produktivitas.') }}</p>
         </div>
 
-        <div v-if="user.is_premium" class="bg-indigo-600 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-xl shadow-indigo-200">
+        <div v-if="user.is_premium" class="bg-indigo-600 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-xl dark:shadow-none shadow-indigo-200">
             <div class="relative z-10">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl">✨</div>
@@ -56,44 +56,44 @@ const checkout = (plan) => {
 
         <div v-else class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
             <!-- Free -->
-            <div class="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-sm flex flex-col h-full">
-                <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">{{ $t('pricing_free_name', 'Explorer') }}</h4>
-                <div class="text-2xl font-black text-slate-900 mb-4">Rp 0</div>
-                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 font-bold">
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none flex flex-col h-full transition-all duration-500">
+                <h4 class="text-xs font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 transition-colors duration-500">{{ $t('pricing_free_name', 'Explorer') }}</h4>
+                <div class="text-2xl font-black text-slate-900 dark:text-white mb-4 transition-colors duration-500">Rp 0</div>
+                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 dark:text-slate-400 font-bold transition-colors duration-500">
                     <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> 5 Habits Max</li>
                     <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Basic Finance</li>
                 </ul>
-                <button disabled class="w-full py-3 rounded-xl bg-slate-100 text-slate-400 font-bold text-xs">{{ $t('billing_current_plan', 'Paket Saat Ini') }}</button>
+                <button disabled class="w-full py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 font-bold text-xs transition-colors duration-500">{{ $t('billing_current_plan', 'Paket Saat Ini') }}</button>
             </div>
 
             <!-- Architect (Pro) -->
-            <div class="bg-white p-6 rounded-[2rem] border-2 border-indigo-100 shadow-lg shadow-indigo-50/50 flex flex-col h-full relative">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-100 text-indigo-600 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">Populer</div>
-                <h4 class="text-xs font-black text-indigo-600 uppercase tracking-widest mb-2">{{ $t('pricing_pro_name', 'Architect') }}</h4>
-                <div class="text-2xl font-black text-slate-900 leading-none">Rp 25.000</div>
-                <div class="text-[10px] text-indigo-500 font-black italic mb-4">Lalu Rp 15rb/bln</div>
-                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 font-bold">
+            <div class="bg-white dark:bg-slate-900 p-6 rounded-[2rem] border-2 border-indigo-100 dark:border-indigo-500/30 shadow-lg dark:shadow-none shadow-indigo-50/50 dark:shadow-indigo-900/10 flex flex-col h-full relative transition-all duration-500">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-100 dark:bg-indigo-600 text-indigo-600 dark:text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-sm dark:shadow-none">Populer</div>
+                <h4 class="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2 transition-colors duration-500">{{ $t('pricing_pro_name', 'Architect') }}</h4>
+                <div class="text-2xl font-black text-slate-900 dark:text-white leading-none transition-colors duration-500">Rp 25.000</div>
+                <div class="text-[10px] text-indigo-500 dark:text-indigo-400 font-black italic mb-4 transition-colors duration-500">Lalu Rp 15rb/bln</div>
+                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 dark:text-slate-400 font-bold transition-colors duration-500">
                     <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Buka Semua Modul</li>
                     <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Trial 1 Bulan</li>
                     <li class="flex items-center gap-2"><span class="text-indigo-500">✓</span> Pro Analytics</li>
                 </ul>
-                <button @click="checkout('architect')" class="w-full py-3 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition font-bold text-xs shadow-md shadow-indigo-200">Beli Sekarang</button>
+                <button @click="checkout('architect')" class="w-full py-3 rounded-xl bg-indigo-600 dark:bg-indigo-500 text-white hover:bg-indigo-700 dark:hover:bg-indigo-600 transition font-bold text-xs shadow-md dark:shadow-none shadow-indigo-200 dark:shadow-indigo-900/20">Beli Sekarang</button>
             </div>
 
             <!-- Quantum (AI) -->
-            <div class="bg-indigo-50 p-6 rounded-[2rem] border border-indigo-200 shadow-sm flex flex-col h-full relative">
-                <h4 class="text-xs font-black text-indigo-700 uppercase tracking-widest mb-2">{{ $t('pricing_ai_name', 'Quantum') }}</h4>
-                <div class="text-2xl font-black text-slate-900 leading-none">Rp 49.000</div>
-                <div class="text-[10px] text-indigo-500 font-black italic mb-4">/bulan</div>
-                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-700 font-bold">
-                    <li class="flex items-center gap-2"><span class="text-indigo-600">🤖</span> AI Chat Assistant</li>
-                    <li class="flex items-center gap-2"><span class="text-indigo-600">✓</span> Automated Insights</li>
+            <div class="bg-indigo-50 dark:bg-slate-800 p-6 rounded-[2rem] border border-indigo-200 dark:border-slate-700 shadow-sm dark:shadow-none flex flex-col h-full relative transition-all duration-500">
+                <h4 class="text-xs font-black text-indigo-700 dark:text-indigo-400 uppercase tracking-widest mb-2 transition-colors duration-500">{{ $t('pricing_ai_name', 'Quantum') }}</h4>
+                <div class="text-2xl font-black text-slate-900 dark:text-white leading-none transition-colors duration-500">Rp 49.000</div>
+                <div class="text-[10px] text-indigo-500 dark:text-indigo-400 font-black italic mb-4 transition-colors duration-500">/bulan</div>
+                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-700 dark:text-slate-300 font-bold transition-colors duration-500">
+                    <li class="flex items-center gap-2"><span class="text-indigo-600 dark:text-indigo-400">🤖</span> AI Chat Assistant</li>
+                    <li class="flex items-center gap-2"><span class="text-indigo-600 dark:text-indigo-400">✓</span> Automated Insights</li>
                 </ul>
-                <button @click="checkout('quantum')" class="w-full py-3 rounded-xl bg-slate-900 text-white hover:bg-black transition font-bold text-xs shadow-md">Beli Sekarang</button>
+                <button @click="checkout('quantum')" class="w-full py-3 rounded-xl bg-slate-900 dark:bg-indigo-600 text-white hover:bg-black dark:hover:bg-indigo-700 transition font-bold text-xs shadow-md dark:shadow-none">Beli Sekarang</button>
             </div>
 
             <!-- Lifetime -->
-            <div class="bg-slate-900 p-6 rounded-[2rem] shadow-xl flex flex-col h-full text-white">
+            <div class="bg-slate-900 p-6 rounded-[2rem] shadow-xl dark:shadow-none flex flex-col h-full text-white">
                 <h4 class="text-xs font-black text-indigo-400 uppercase tracking-widest mb-2">{{ $t('pricing_life_name', 'Mind Master') }}</h4>
                 <div class="text-2xl font-black mb-4">Rp 249.000</div>
                 <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-300 font-bold">

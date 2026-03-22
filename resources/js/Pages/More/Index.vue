@@ -14,14 +14,14 @@ const showModule = (moduleName) => {
 
 <template>
     <AuthenticatedLayout>
-        <div class="min-h-screen bg-[#F8FAFC] pb-40 animate-in fade-in duration-700 px-6">
+        <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-40 animate-in fade-in duration-700 px-6 transition-colors duration-500">
             <!-- Launchpad Header -->
             <div class="pt-16 pb-12">
-                <h1 class="text-4xl font-black text-slate-900 tracking-tight mb-2">
-                    {{ $t('more_launcher_title', 'App Launcher') }}
+                <h1 class="text-4xl font-black text-slate-900 dark:text-white tracking-tight mb-2 transition-colors duration-500">
+                    {{ $t('more_launcher_title') }}
                 </h1>
-                <p class="text-slate-400 font-bold uppercase tracking-[0.2em] text-[10px]">
-                    {{ $t('more_launcher_subtitle', 'Pilih alat produktivitas Anda') }}
+                <p class="text-slate-400 dark:text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] transition-colors duration-500">
+                    {{ $t('more_launcher_subtitle') }}
                 </p>
             </div>
 
@@ -29,71 +29,84 @@ const showModule = (moduleName) => {
             <div class="grid grid-cols-2 gap-4">
                 <!-- Daily Planner -->
                 <Link v-if="showModule('planner')" :href="route('planner.index')" 
-                        class="bg-white p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col gap-4 active:scale-95 transition-all group">
-                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                    <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center group-hover:bg-indigo-600 dark:group-hover:bg-indigo-500 transition-all duration-300">
                         <OneForMindIcon name="planner" size="24" stroke-width="2.5" />
                     </div>
                     <div>
-                        <span class="block font-black text-slate-800 text-base leading-none mb-1">{{ $t('nav_planner', 'Planner') }}</span>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{{ $t('more_desc_planner', 'Kelola Jadwal') }}</span>
+                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_planner') }}</span>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">{{ $t('nav_desc_planner') }}</span>
                     </div>
                 </Link>
 
                 <!-- Digital Journal -->
                 <Link v-if="showModule('journal')" :href="route('journal.index')" 
-                        class="bg-white p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col gap-4 active:scale-95 transition-all group">
-                    <div class="w-12 h-12 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-all duration-300">
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                    <div class="w-12 h-12 bg-teal-50 dark:bg-teal-500/10 text-teal-600 dark:text-teal-400 rounded-2xl flex items-center justify-center group-hover:bg-teal-600 dark:group-hover:bg-teal-500 transition-all duration-300">
                         <OneForMindIcon name="journal" size="24" stroke-width="2.5" />
                     </div>
                     <div>
-                        <span class="block font-black text-slate-800 text-base leading-none mb-1">{{ $t('nav_journal', 'Journal') }}</span>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{{ $t('more_desc_journal', 'Refleksi Diri') }}</span>
+                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_journal') }}</span>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">{{ $t('nav_desc_journal') }}</span>
                     </div>
                 </Link>
 
                 <!-- Calendar -->
                 <Link v-if="showModule('calendar')" :href="route('calendar.index')" 
-                        class="bg-white p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col gap-4 active:scale-95 transition-all group">
-                    <div class="w-12 h-12 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center group-hover:bg-rose-600 group-hover:text-white transition-all duration-300">
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                    <div class="w-12 h-12 bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-2xl flex items-center justify-center group-hover:bg-rose-600 dark:group-hover:bg-rose-500 transition-all duration-300">
                         <OneForMindIcon name="calendar" size="24" stroke-width="2.5" />
                     </div>
                     <div>
-                        <span class="block font-black text-slate-800 text-base leading-none mb-1">{{ $t('nav_calendar', 'Calendar') }}</span>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{{ $t('more_desc_calendar', 'Blokir Waktu') }}</span>
+                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_calendar') }}</span>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">{{ $t('nav_desc_calendar') }}</span>
                     </div>
                 </Link>
 
                 <!-- Job Tracker -->
                 <Link v-if="showModule('job')" :href="route('jobs.index')" 
-                        class="bg-white p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col gap-4 active:scale-95 transition-all group">
-                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                    <div class="w-12 h-12 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 dark:group-hover:bg-blue-500 transition-all duration-300">
                         <OneForMindIcon name="job" size="24" stroke-width="2.5" />
                     </div>
                     <div>
-                        <span class="block font-black text-slate-800 text-base leading-none mb-1">{{ $t('nav_jobs', 'Jobs') }}</span>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{{ $t('more_desc_jobs', 'Pantau Karir') }}</span>
+                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_jobs') }}</span>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">{{ $t('nav_desc_jobs') }}</span>
                     </div>
                 </Link>
 
                 <!-- Goal Tracker -->
                 <Link v-if="showModule('goal')" :href="route('goals.index')" 
-                        class="bg-white p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 flex flex-col gap-4 active:scale-95 transition-all group lg:col-span-1 col-span-2">
-                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group lg:col-span-1 col-span-2">
+                    <div class="w-12 h-12 bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center group-hover:bg-amber-600 dark:group-hover:bg-amber-500 transition-all duration-300">
                         <OneForMindIcon name="goal" size="24" stroke-width="2.5" />
                     </div>
                     <div>
-                        <span class="block font-black text-slate-800 text-base leading-none mb-1">{{ $t('nav_goals', 'Goals') }}</span>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tight">{{ $t('more_desc_goals', 'Capai Impian') }}</span>
+                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_goals') }}</span>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">{{ $t('nav_desc_goals') }}</span>
                     </div>
                 </Link>
             </div>
 
-            <!-- Promotion / Tip Placeholder -->
-            <div class="mt-12 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-[2.5rem] p-8 text-white shadow-xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full translate-x-1/4 -translate-y-1/4"></div>
-                <h4 class="text-xl font-black mb-2">{{ $t('more_promo_title', 'Stay Sharp') }}</h4>
-                <p class="text-indigo-100 text-sm font-bold opacity-80 leading-relaxed">{{ $t('more_promo_desc', 'Gunakan Planner setiap pagi untuk hasil maksimal.') }}</p>
-            </div>
+            <!-- Premium Upgrade CTA -->
+            <Link :href="route('pricing.index')" class="mt-12 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-[2.5rem] p-8 text-white shadow-xl dark:shadow-none relative overflow-hidden group active:scale-[0.98] transition-all duration-300 block">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl group-hover:bg-white/20 transition-all duration-500"></div>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-white text-[9px] font-black mb-4 uppercase tracking-[0.2em] backdrop-blur-md border border-white/10">
+                            {{ $t('more_upgrade_badge', 'PREMIUM UPGRADE') }}
+                        </div>
+                        <h4 class="text-2xl font-black mb-2 tracking-tight">{{ $t('more_upgrade_title', 'Elevate to Elite Performance') }}</h4>
+                        <p class="text-indigo-100 text-sm font-bold opacity-90 leading-relaxed max-w-md">
+                            {{ $t('more_upgrade_desc', 'Unlock AI-powered life insights, advanced wealth tracking, and seamless external integrations.') }}
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 bg-white text-indigo-700 px-6 py-4 rounded-2xl font-black text-sm shadow-xl group-hover:shadow-indigo-500/50 transition-all duration-300">
+                        {{ $t('more_upgrade_btn', 'Upgrade Now') }}
+                        <OneForMindIcon name="arrow-right" size="18" stroke-width="3" />
+                    </div>
+                </div>
+            </Link>
         </div>
     </AuthenticatedLayout>
 </template>

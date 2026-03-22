@@ -89,7 +89,7 @@ const changeMonth = (newMonthPayload) => {
 <template>
     <Head :title="$t('calendar_title', 'Master Calendar')" />
 
-    <div class="w-full min-h-screen bg-slate-50/50 pb-12 relative overflow-x-hidden">
+    <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950 pb-12 relative overflow-x-hidden transition-colors duration-500">
         
         <CalendarHeader 
             :currentMonth="currentMonth"

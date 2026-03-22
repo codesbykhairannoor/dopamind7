@@ -22,18 +22,18 @@ const closeDatePicker = () => {
 </script>
 
 <template>
-    <div class="relative z-[60] bg-white/80 backdrop-blur-xl border-b border-slate-200 transition-all md:sticky md:top-0">
+    <div class="relative z-[60] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 transition-all md:sticky md:top-0">
         <div class="px-4 sm:px-6 lg:px-8 py-4">
             
             <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4">
                 
                 <div class="flex items-center gap-4 w-full md:w-auto">
-                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-200 shrink-0">
+                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-200 dark:shadow-none shrink-0">
                         <OneForMindIcon name="planner" size="28" />
                     </div>
                     
                     <div>
-                        <h2 class="text-xl md:text-2xl font-black text-slate-800 tracking-tight leading-tight">
+                        <h2 class="text-xl md:text-2xl font-black text-slate-800 dark:text-white tracking-tight leading-tight transition-colors duration-500">
                             {{ $t('header_title', 'Daily Planner') }}
                         </h2>
                         
@@ -41,11 +41,11 @@ const closeDatePicker = () => {
                             <div class="relative">
                                 <button 
                                     @click="showDatePicker = !showDatePicker" 
-                                    class="text-slate-600 hover:text-indigo-600 font-bold text-sm capitalize transition-colors flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-slate-50"
-                                    :class="{'bg-indigo-50 text-indigo-700': showDatePicker}"
+                                    class="text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-bold text-sm capitalize transition-colors flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800"
+                                    :class="{'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400': showDatePicker}"
                                 >
                                     {{ formattedDate }} 
-                                    <OneForMindIcon name="chevron-down" size="10" stroke-width="3" class="text-slate-400 transition-transform duration-300" :class="{'rotate-180': showDatePicker}" />
+                                    <OneForMindIcon name="chevron-down" size="10" stroke-width="3" class="text-slate-400 dark:text-slate-600 transition-transform duration-300" :class="{'rotate-180': showDatePicker}" />
                                 </button>
 
                                 <transition
@@ -74,17 +74,17 @@ const closeDatePicker = () => {
                 </div>
 
                 <div class="flex-1 w-full md:px-12 max-w-4xl order-3 md:order-none mt-2 md:mt-0"> 
-                    <div class="flex justify-between text-[11px] font-black text-slate-400 mb-1.5 uppercase tracking-widest">
+                    <div class="flex justify-between text-[11px] font-black text-slate-400 dark:text-slate-500 mb-1.5 uppercase tracking-widest transition-colors duration-500">
                         <span>{{ $t('header_progress', 'Progress') }}</span>
-                        <span class="text-indigo-600">{{ stats.percent }}%</span>
+                        <span class="text-indigo-600 dark:text-indigo-400">{{ stats.percent }}%</span>
                     </div>
-                    <div class="h-2.5 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-50 shadow-inner">
+                    <div class="h-2.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden border border-slate-50 dark:border-slate-700 shadow-inner transition-colors duration-500">
                         <div 
                             class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-1000 ease-out"
                             :style="{ width: `${stats.percent}%` }"
                         ></div>
                     </div>
-                    <div class="flex gap-4 mt-2 text-[11px] font-bold text-slate-500 uppercase tracking-tight">
+                    <div class="flex gap-4 mt-2 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-tight transition-colors duration-500">
                         <span class="flex items-center gap-1">
                             <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                             {{ stats.completed }} {{ $t('header_completed', 'Selesai') }}
@@ -99,14 +99,14 @@ const closeDatePicker = () => {
                 <div class="flex gap-3 w-full md:w-auto order-2 md:order-none shrink-0">
                     <button 
                         @click="openModal()" 
-                        class="flex-1 md:flex-none px-6 py-3.5 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 flex items-center justify-center gap-2 text-xs uppercase tracking-widest active:scale-95"
+                        class="flex-1 md:flex-none px-6 py-3.5 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2 text-xs uppercase tracking-widest active:scale-95"
                     >
                         <OneForMindIcon name="plus" size="16" stroke-width="3" /> {{ $t('btn_add_task', 'Tambah') }}
                     </button>
                     
                     <button 
                         @click="resetBoard" 
-                        class="w-12 h-[46px] md:h-auto flex items-center justify-center bg-rose-50 text-rose-500 rounded-2xl font-black hover:bg-rose-100 transition border border-rose-100 active:scale-95 shadow-sm shrink-0"
+                        class="w-12 h-[46px] md:h-auto flex items-center justify-center bg-rose-50 dark:bg-rose-500/10 text-rose-500 dark:text-rose-400 rounded-2xl font-black hover:bg-rose-100 dark:hover:bg-rose-500/20 transition border border-rose-100 dark:border-rose-500/20 active:scale-95 shadow-sm dark:shadow-none shrink-0"
                         :title="$t('btn_reset_tooltip', 'Reset Board')"
                     >
                         <OneForMindIcon name="refresh" size="18" stroke-width="2.5" />

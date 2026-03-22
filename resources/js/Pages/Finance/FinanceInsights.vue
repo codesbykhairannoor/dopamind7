@@ -37,22 +37,22 @@ const portfolioSummary = computed(() => {
 // 1. TAMBAH ASET (EXPENSE)
 const handleAddAsset = () => {
     Swal.fire({
-        title: `<span class="text-xl font-black text-slate-800">${trans('invest_new')}</span>`,
+        title: `<span class="text-xl font-black text-slate-800 dark:text-white">${trans('invest_new')}</span>`,
         html: `
             <div class="flex flex-col gap-4 text-left">
                 <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1.5">${trans('asset_name')}</label>
-                    <input id="swal-name" type="text" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-800 focus:ring-2 focus:ring-indigo-500 outline-none transition-all placeholder:text-slate-300" placeholder="${trans('asset_name_placeholder')}">
+                    <label class="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest block mb-1.5">${trans('asset_name')}</label>
+                    <input id="swal-name" type="text" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-bold text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600" placeholder="${trans('asset_name_placeholder')}">
                 </div>
                 <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1.5">${trans('capital_invest')}</label>
+                    <label class="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest block mb-1.5">${trans('capital_invest')}</label>
                     <div class="relative">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-black text-slate-400">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-sm font-black text-slate-400 dark:text-slate-600">
                             ${['USD', 'GBP', 'EUR'].includes(activeCurrency.value) ? activeCurrency.value : 'Rp'}
                         </span>
-                        <input id="swal-capital" type="text" inputmode="numeric" class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-12 pr-4 py-3 text-base font-black text-slate-800 focus:ring-2 focus:ring-indigo-500 outline-none transition-all placeholder:text-slate-300 placeholder:font-medium" placeholder="0">
+                        <input id="swal-capital" type="text" inputmode="numeric" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl pl-12 pr-4 py-3 text-base font-black text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition-all placeholder:text-slate-300 dark:placeholder:text-slate-600 placeholder:font-medium" placeholder="0">
                     </div>
-                    <p class="text-[10px] text-rose-500 mt-1.5 font-bold italic flex items-center gap-1">
+                    <p class="text-[10px] text-rose-500 dark:text-rose-400/80 mt-1.5 font-bold italic flex items-center gap-1">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         ${trans('invest_expense_warn')}
                     </p>
@@ -63,9 +63,9 @@ const handleAddAsset = () => {
         confirmButtonText: trans('confirm_pay'),
         cancelButtonText: trans('cancel'),
         customClass: {
-            popup: '!rounded-[2rem] !p-8 !border !border-slate-100 !shadow-2xl',
-            confirmButton: '!bg-indigo-600 !text-white !font-bold !py-3.5 !px-6 !rounded-xl !shadow-lg !shadow-indigo-200 !text-xs !uppercase !tracking-widest !w-full sm:!w-auto',
-            cancelButton: '!bg-slate-100 !text-slate-500 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto',
+            popup: '!rounded-[2rem] !p-8 !border !border-slate-100 dark:!border-slate-800 !shadow-2xl dark:!shadow-none dark:!bg-slate-900 transition-colors duration-500',
+            confirmButton: '!bg-indigo-600 !text-white !font-bold !py-3.5 !px-6 !rounded-xl !shadow-lg dark:!shadow-none shadow-indigo-200 dark:!shadow-indigo-900/20 !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
+            cancelButton: '!bg-slate-100 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-400 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
             actions: '!mt-8 flex flex-col-reverse sm:flex-row !gap-3'
         },
         backdrop: `rgba(15, 23, 42, 0.6) backdrop-blur-sm`, 
@@ -125,26 +125,26 @@ const handleQuit = (asset) => {
     const profit = finalValue - asset.capital;
 
     Swal.fire({
-        title: `<span class="text-xl font-black text-slate-800">${trans('withdraw_asset')}</span>`,
+        title: `<span class="text-xl font-black text-slate-800 dark:text-white">${trans('withdraw_asset')}</span>`,
         html: `
-            <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 mb-4 mt-2 text-left">
+            <div class="bg-slate-50 dark:bg-slate-800 rounded-2xl p-4 border border-slate-100 dark:border-slate-700 mb-4 mt-2 text-left transition-colors duration-500">
                 <div class="flex justify-between items-center mb-2">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">${trans('initial_capital')}</span>
-                    <span class="text-sm font-black text-slate-700">${formatMoney(asset.capital)}</span>
+                    <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">${trans('initial_capital')}</span>
+                    <span class="text-sm font-black text-slate-700 dark:text-slate-200 transition-colors duration-500">${formatMoney(asset.capital)}</span>
                 </div>
                 <div class="flex justify-between items-center mb-3">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">${trans('return_text')} (${asset.percent}%)</span>
-                    <span class="text-xs font-black ${asset.percent >= 0 ? 'text-emerald-500' : 'text-rose-500'} bg-white px-2 py-1 rounded-md border border-slate-100 shadow-sm">
+                    <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">${trans('return_text')} (${asset.percent}%)</span>
+                    <span class="text-xs font-black ${asset.percent >= 0 ? 'text-emerald-500 dark:text-emerald-400' : 'text-rose-500 dark:text-rose-400'} bg-white dark:bg-slate-900 px-2 py-1 rounded-md border border-slate-100 dark:border-slate-700 shadow-sm transition-colors duration-500">
                         ${asset.percent >= 0 ? '+' : ''}${formatMoney(profit)}
                     </span>
                 </div>
-                <div class="border-t border-dashed border-slate-200 my-2"></div>
+                <div class="border-t border-dashed border-slate-200 dark:border-slate-700 my-2"></div>
                 <div class="flex justify-between items-end">
-                    <span class="text-[10px] font-black text-slate-800 uppercase tracking-widest">${trans('total_withdraw')}</span>
-                    <span class="text-lg font-black text-indigo-600">${formatMoney(finalValue)}</span>
+                    <span class="text-[10px] font-black text-slate-800 dark:text-white uppercase tracking-widest transition-colors duration-500">${trans('total_withdraw')}</span>
+                    <span class="text-lg font-black text-indigo-600 dark:text-indigo-400 transition-colors duration-500">${formatMoney(finalValue)}</span>
                 </div>
             </div>
-            <p class="text-[10px] font-bold text-slate-400 text-left">${trans('withdraw_notice')}</p>
+            <p class="text-[10px] font-bold text-slate-400 dark:text-slate-600 text-left transition-colors duration-500">${trans('withdraw_notice')}</p>
         `,
         icon: 'success',
         iconColor: '#4f46e5',
@@ -152,9 +152,9 @@ const handleQuit = (asset) => {
         confirmButtonText: trans('yes_withdraw'),
         cancelButtonText: trans('cancel'),
         customClass: {
-            popup: '!rounded-[2rem] !p-8 !border !border-slate-100 !shadow-2xl',
-            confirmButton: '!bg-indigo-600 !text-white !font-bold !py-3.5 !px-6 !rounded-xl !shadow-lg !shadow-indigo-200 !text-xs !uppercase !tracking-widest !w-full sm:!w-auto',
-            cancelButton: '!bg-slate-100 !text-slate-500 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto',
+            popup: '!rounded-[2rem] !p-8 !border !border-slate-100 dark:!border-slate-800 !shadow-2xl dark:!shadow-none dark:!bg-slate-900 transition-colors duration-500',
+            confirmButton: '!bg-indigo-600 !text-white !font-bold !py-3.5 !px-6 !rounded-xl !shadow-lg dark:!shadow-none shadow-indigo-200 dark:!shadow-indigo-900/20 !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
+            cancelButton: '!bg-slate-100 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-400 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
             actions: '!mt-6 flex flex-col-reverse sm:flex-row !gap-3'
         },
         backdrop: `rgba(15, 23, 42, 0.6) backdrop-blur-sm`
@@ -182,8 +182,8 @@ const handleQuit = (asset) => {
 
 <template>
     <div class="mt-6 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <div class="bg-indigo-900 rounded-[2rem] p-1 shadow-2xl shadow-indigo-200/50 relative overflow-hidden group">
-            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-indigo-900"></div>
+        <div class="bg-indigo-900 dark:bg-slate-950 rounded-[2rem] p-1 shadow-2xl dark:shadow-none shadow-indigo-200/50 dark:shadow-indigo-900/20 relative overflow-hidden group transition-all duration-500">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-indigo-900 dark:from-indigo-900 dark:to-slate-950 transition-all duration-500"></div>
             <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-1000"></div>
 
             <div class="relative z-10 p-5">
@@ -207,7 +207,7 @@ const handleQuit = (asset) => {
                 </div>
 
                 <div v-if="assets.length > 0" class="space-y-2 max-h-[350px] overflow-y-auto custom-scrollbar pr-1">
-                    <div v-for="asset in assets" :key="asset.id" class="bg-indigo-950/50 border border-indigo-500/30 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group/card hover:bg-indigo-800/80 transition-all">
+                    <div v-for="asset in assets" :key="asset.id" class="bg-indigo-950/50 dark:bg-black/20 border border-indigo-500/30 dark:border-white/5 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 group/card hover:bg-indigo-800/80 dark:hover:bg-white/5 transition-all transition-colors duration-500">
                         
                         <div class="flex flex-col gap-2 flex-1 min-w-0">
                             <div class="flex items-center gap-2">
@@ -255,7 +255,9 @@ const handleQuit = (asset) => {
 .custom-scrollbar::-webkit-scrollbar { width: 3px; }
 .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 10px; }
+.dark .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.05); }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.15); }
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -264,5 +266,10 @@ input[type=number]::-webkit-outer-spin-button {
 }
 input[type=number] {
   -moz-appearance: textfield;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 </style>

@@ -2,6 +2,8 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { Link, usePage, router } from '@inertiajs/vue3'; 
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+import ThemeToggle from '@/Components/ThemeToggle.vue';
+import { useAppearance } from '@/Composables/useAppearance';
 
 // --- DATA USER & HALAMAN ---
 const page = usePage();
@@ -9,11 +11,21 @@ const user = computed(() => page.props.auth.user);
 
 // --- STATE NAVIGASI MOBILE & MODAL ---
 const showLogoutModal = ref(false);
+const showingNavigationDropdown = ref(false);
 
 // 🔥 STATE SIDEBAR DESKTOP COLLAPSE
 const isSidebarCollapsed = ref(false);
 
+const { initTheme } = useAppearance();
+
 onMounted(() => {
+    // 🛡️ SAFETY GUARD: If somehow user is null in an authenticated layout, force redirect to login.
+    if (!user.value) {
+        window.location.href = route('login');
+        return;
+    }
+
+    initTheme();
     const savedState = localStorage.getItem('sidebar_collapsed');
     if (savedState !== null) {
         isSidebarCollapsed.value = savedState === 'true';
@@ -47,23 +59,23 @@ watch(() => page.url, () => {
 </script>
 
 <template>
-    <div class="flex h-screen bg-slate-50 font-sans overflow-hidden selection:bg-indigo-500 selection:text-white relative">
+    <div class="flex h-screen bg-slate-50 dark:bg-slate-950 font-sans overflow-hidden selection:bg-indigo-500 selection:text-white relative transition-colors duration-500">
         
         <aside 
-            class="bg-white border-r border-slate-100 hidden md:flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] flex-shrink-0 transition-all duration-300 ease-in-out relative"
+            class="bg-white dark:bg-slate-900 border-r border-slate-100 dark:border-slate-800 hidden md:flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] dark:shadow-none flex-shrink-0 transition-all duration-300 ease-in-out relative"
             :class="isSidebarCollapsed ? 'w-20' : 'w-64'"
         >
-            <button @click="toggleSidebar" class="absolute -right-3 top-8 w-6 h-6 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:scale-110 shadow-sm transition-all z-30">
+            <button @click="toggleSidebar" class="absolute -right-3 top-8 w-6 h-6 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:scale-110 shadow-sm dark:shadow-none transition-all z-30">
                 <OneForMindIcon :name="!isSidebarCollapsed ? 'chevron-left' : 'chevron-right'" size="14" stroke-width="3" />
             </button>
             
             <div class="h-20 flex items-center px-6 shrink-0" :class="isSidebarCollapsed ? 'justify-center' : 'justify-start px-8'">
                 <Link :href="route('dashboard')" prefetch class="group flex items-center gap-2.5">
-                    <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-100 shrink-0">
+                    <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-100 dark:shadow-none shrink-0">
                         <img src="/favicon.svg?v=2" alt="Logo" class="w-5 h-5 brightness-0 invert" />
                     </div>
                     <Transition name="fade">
-                        <span v-if="!isSidebarCollapsed" class="text-lg font-black tracking-tighter text-slate-900 whitespace-nowrap">
+                        <span v-if="!isSidebarCollapsed" class="text-lg font-black tracking-tighter text-slate-900 dark:text-white whitespace-nowrap">
                             OneForMind<span class="text-indigo-600">.</span>
                         </span>
                     </Transition>
@@ -72,119 +84,123 @@ watch(() => page.url, () => {
 
             <nav class="flex-1 px-3 space-y-1 overflow-y-auto py-4 custom-scrollbar" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
                 <Link :href="route('dashboard')" prefetch="mousedown"
-                    class="flex-items-center rounded-xl transition-all duration-300 group relative"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
-                        route().current('dashboard') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        route().current('dashboard') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm dark:shadow-none font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
-                    :title="isSidebarCollapsed ? $t('nav_dashboard') : ''"
+                    :title="isSidebarCollapsed ? $t('nav_item_dashboard') : ''"
                 >
                     <OneForMindIcon name="dashboard" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_dashboard', 'Dashboard') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_dashboard') }}</span>
                     <div v-if="route().current('dashboard') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
-                        route().current('habits.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        route().current('habits.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
-                    :title="isSidebarCollapsed ? $t('habit_page_title') : ''"
+                    :title="isSidebarCollapsed ? $t('nav_item_habit') : ''"
                 >
                     <OneForMindIcon name="habit" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('habit_page_title', 'Habit Tracker') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_habit') }}</span>
                     <div v-if="route().current('habits.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
-                        route().current('planner.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        route().current('planner.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
-                    :title="isSidebarCollapsed ? 'Daily Planner' : ''"
+                    :title="isSidebarCollapsed ? $t('nav_item_planner') : ''"
                 >
                     <OneForMindIcon name="planner" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Daily Planner</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_planner') }}</span>
                     <div v-if="route().current('planner.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
-                        route().current('finance.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        route().current('finance.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
-                    :title="isSidebarCollapsed ? 'Finance' : ''"
+                    :title="isSidebarCollapsed ? $t('nav_item_finance') : ''"
                 >
                     <OneForMindIcon name="finance" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Finance Plan</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_finance') }}</span>
                     <div v-if="route().current('finance.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
-                        route().current('journal.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        route().current('journal.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
-                    :title="isSidebarCollapsed ? 'Journal' : ''"
+                    :title="isSidebarCollapsed ? $t('nav_item_journal') : ''"
                 >
                     <OneForMindIcon name="journal" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Digital Journal</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_journal') }}</span>
                     <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
-                        route().current('calendar.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        route().current('calendar.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
-                    :title="isSidebarCollapsed ? 'Calendar' : ''"
+                    :title="isSidebarCollapsed ? $t('nav_item_calendar') : ''"
                 >
                     <OneForMindIcon name="calendar" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Calendar View</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_calendar') }}</span>
                     <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
-                        route().current('jobs.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        route().current('jobs.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
-                    :title="isSidebarCollapsed ? $t('job_tracker') : ''"
+                    :title="isSidebarCollapsed ? $t('nav_item_jobs') : ''"
                 >
                     <OneForMindIcon name="job" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Job Tracker</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_jobs') }}</span>
                     <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
                 <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch="mousedown"
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
-                        route().current('goals.*') ? 'bg-indigo-50 text-indigo-700 shadow-sm font-bold' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 font-medium',
+                        route().current('goals.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
                     ]"
-                    :title="isSidebarCollapsed ? $t('goal_page_title') : ''"
+                    :title="isSidebarCollapsed ? $t('nav_item_goals') : ''"
                 >
                     <OneForMindIcon name="goal" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">Goal Tracker</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_goals') }}</span>
                     <div v-if="route().current('goals.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
             </nav>
+            
+            <div class="px-4 py-3 shrink-0">
+                <ThemeToggle :collapsed="isSidebarCollapsed" />
+            </div>
 
-            <div class="px-3 py-3 border-t border-slate-100 bg-slate-50/30 space-y-1 shrink-0">
+            <div class="px-3 py-3 border-t border-slate-100 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-900/50 space-y-1 shrink-0">
                 <div 
-                    class="flex items-center p-1 bg-slate-100/50 rounded-xl mb-4 border border-slate-200/50 shadow-inner"
+                    class="flex items-center p-1 bg-slate-100/50 dark:bg-slate-800/50 rounded-xl mb-4 border border-slate-200/50 dark:border-slate-700/50 shadow-inner"
                     :class="isSidebarCollapsed ? 'flex-col gap-1 w-10 mx-auto' : 'mx-1 gap-1'"
                 >
                     <button 
                         @click="switchLang('id')" 
                         class="flex-1 py-1.5 rounded-lg text-[10px] font-black transition-all duration-300"
-                        :class="currentLocale === 'id' ? 'bg-white text-indigo-600 shadow-md ring-1 ring-slate-200/50' : 'text-slate-400 hover:text-slate-600'"
+                        :class="currentLocale === 'id' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-md dark:shadow-none ring-1 ring-slate-200/50' : 'text-slate-400 hover:text-slate-600'"
                         :title="isSidebarCollapsed ? 'Bahasa Indonesia' : ''"
                     >
                         ID
@@ -192,34 +208,46 @@ watch(() => page.url, () => {
                     <button 
                         @click="switchLang('en')" 
                         class="flex-1 py-1.5 rounded-lg text-[10px] font-black transition-all duration-300"
-                        :class="currentLocale === 'en' ? 'bg-white text-indigo-600 shadow-md ring-1 ring-slate-200/50' : 'text-slate-400 hover:text-slate-600'"
+                        :class="currentLocale === 'en' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-md dark:shadow-none ring-1 ring-slate-200/50' : 'text-slate-400 hover:text-slate-600'"
                         :title="isSidebarCollapsed ? 'English' : ''"
                     >
                         EN
                     </button>
                 </div>
 
+                <Link :href="route('pricing.index')" prefetch
+                    class="flex items-center rounded-xl transition-all duration-300 group mb-2"
+                    :class="[
+                        route().current('pricing.index') ? 'bg-indigo-600 dark:bg-indigo-500 text-white shadow-lg shadow-indigo-200 dark:shadow-none font-black' : 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 font-bold border border-indigo-100 dark:border-indigo-500/20',
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2 gap-2.5'
+                    ]"
+                    :title="isSidebarCollapsed ? $t('nav_item_premium', 'Elite Upgrade') : ''"
+                >
+                    <OneForMindIcon name="premium" size="18" class="shrink-0" :class="route().current('pricing.index') ? 'text-white' : 'text-indigo-600 dark:text-indigo-400'" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-xs font-black uppercase tracking-widest">{{ $t('nav_item_premium', 'Go Elite') }}</span>
+                </Link>
+
                 <Link :href="route('settings.index')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group"
                     :class="[
-                        route().current('settings.*') ? 'bg-white shadow-sm border border-slate-200 text-indigo-600 font-bold' : 'border border-transparent text-slate-500 hover:bg-white hover:border-slate-200 hover:shadow-sm hover:text-slate-800',
+                        route().current('settings.*') ? 'bg-white dark:bg-slate-800 shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-700 text-indigo-600 dark:text-indigo-400 font-bold' : 'border border-transparent text-slate-500 hover:bg-white dark:hover:bg-slate-800 hover:border-slate-200 dark:hover:border-slate-700 hover:shadow-sm dark:hover:shadow-none hover:text-slate-800 dark:hover:text-slate-100',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2 gap-2.5'
                     ]"
-                    :title="isSidebarCollapsed ? $t('nav_settings', 'Pengaturan') : ''"
+                    :title="isSidebarCollapsed ? $t('nav_item_settings') : ''"
                 >
                     <OneForMindIcon name="settings" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-xs font-bold">{{ $t('nav_settings', 'Pengaturan') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-xs font-bold">{{ $t('nav_item_settings') }}</span>
                 </Link>
 
                 <div class="flex items-center justify-between group" :class="isSidebarCollapsed ? 'flex-col gap-2' : 'px-2 py-1'">
                     <div class="flex items-center gap-2.5 min-w-0" :title="isSidebarCollapsed ? user?.name : ''">
-                        <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-8 h-8 rounded-full object-cover shadow-sm border border-white shrink-0" />
-                        <div v-else class="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] shadow-md shrink-0">
+                        <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-8 h-8 rounded-full object-cover shadow-sm dark:shadow-none border border-white shrink-0" />
+                        <div v-else class="w-8 h-8 rounded-full bg-indigo-600 dark:bg-indigo-500 text-white flex items-center justify-center font-bold text-[10px] shadow-md dark:shadow-none shrink-0">
                             {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
                         </div>
                         
                         <div v-if="!isSidebarCollapsed" class="flex-1 min-w-0 overflow-hidden">
-                            <p class="text-[10px] font-black text-slate-800 truncate">{{ user?.name || 'User' }}</p>
+                            <p class="text-[10px] font-black text-slate-800 dark:text-slate-200 truncate">{{ user?.name || 'User' }}</p>
                             <p class="text-[9px] font-bold text-slate-400 truncate uppercase tracking-widest">Active Account</p>
                         </div>
                     </div>
@@ -231,20 +259,20 @@ watch(() => page.url, () => {
             </div>
         </aside>
 
-        <main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50 custom-scrollbar pb-32 md:pb-0">
+        <main class="flex-1 overflow-y-auto relative w-full bg-slate-50/50 dark:bg-slate-950 custom-scrollbar pb-32 md:pb-0 transition-colors duration-500">
             
             <!-- Mobile Top Bar Removed for cleaner look -->
 
 
             <!-- NEW MOBILE BOTTOM NAVIGATION BAR -->
             <div class="md:hidden fixed bottom-6 left-6 right-6 z-[60]">
-                <div class="bg-white/80 backdrop-blur-2xl border border-slate-200 shadow-xl rounded-[2rem] px-2 py-2 flex items-center justify-between">
+                <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-none rounded-[2rem] px-2 py-2 flex items-center justify-between transition-colors duration-500">
                     <!-- Dashboard -->
                     <Link :href="route('dashboard')" prefetch="mousedown" 
                           class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
                           :class="route().current('dashboard') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="dashboard" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_dashboard', 'Dash') }}</span>
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_dashboard') }}</span>
                     </Link>
                     
                     <!-- Habits -->
@@ -252,7 +280,7 @@ watch(() => page.url, () => {
                           class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
                           :class="route().current('habits.*') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="habit" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">Habits</span>
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_habit') }}</span>
                     </Link>
 
                     <!-- Finance -->
@@ -260,7 +288,7 @@ watch(() => page.url, () => {
                           class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
                           :class="route().current('finance.*') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="finance" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">Finance</span>
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_finance') }}</span>
                     </Link>
 
                     <!-- More -->
@@ -268,7 +296,7 @@ watch(() => page.url, () => {
                           class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
                           :class="route().current('more.index') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="menu" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">More</span>
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_more') }}</span>
                     </Link>
 
                     <!-- Settings -->
@@ -276,7 +304,7 @@ watch(() => page.url, () => {
                           class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
                           :class="route().current('settings.*') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="settings" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">Settings</span>
+                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_settings') }}</span>
                     </Link>
                 </div>
             </div>
@@ -288,18 +316,18 @@ watch(() => page.url, () => {
 
         <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
             <div v-if="showLogoutModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-                <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="showLogoutModal = false"></div>
-                <div class="relative bg-white w-full max-w-sm rounded-[2.5rem] shadow-2xl border border-slate-100 overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
+                <div class="absolute inset-0 bg-slate-900/40 dark:bg-slate-950/60 backdrop-blur-sm" @click="showLogoutModal = false"></div>
+                <div class="relative bg-white dark:bg-slate-900 w-full max-w-sm rounded-[2.5rem] shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
                     <div class="p-8 text-center">
-                        <div class="w-20 h-20 bg-rose-50 text-rose-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
+                        <div class="w-20 h-20 bg-rose-50 dark:bg-rose-500/10 text-rose-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
                             <OneForMindIcon name="logout" size="40" stroke-width="2.5" />
                         </div>
-                        <h3 class="text-2xl font-black text-slate-800 tracking-tight mb-2">{{ $t('modal_logout_title', 'Keluar Akun?') }}</h3>
-                        <p class="text-slate-500 text-sm font-medium leading-relaxed">{{ $t('modal_logout_subtitle', 'Sesi Anda akan diakhiri.') }}</p>
+                        <h3 class="text-2xl font-black text-slate-800 dark:text-white tracking-tight mb-2">{{ $t('modal_logout_title', 'Keluar Akun?') }}</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">{{ $t('modal_logout_subtitle', 'Sesi Anda akan diakhiri.') }}</p>
                     </div>
-                    <div class="p-6 bg-slate-50/80 border-t border-slate-100 flex flex-col gap-3">
-                        <button @click="confirmLogout" class="w-full bg-rose-500 text-white font-black py-4 rounded-2xl shadow-lg shadow-rose-200 hover:bg-rose-600 active:scale-[0.98] transition-all">{{ $t('modal_logout_confirm', 'Ya, Keluar') }}</button>
-                        <button @click="showLogoutModal = false" class="w-full bg-white text-slate-500 font-bold py-4 rounded-2xl border border-slate-200 hover:bg-slate-100 active:scale-[0.98] transition-all">{{ $t('modal_logout_cancel', 'Batal') }}</button>
+                    <div class="p-6 bg-slate-50/80 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-3">
+                        <button @click="confirmLogout" class="w-full bg-rose-500 text-white font-black py-4 rounded-2xl shadow-lg shadow-rose-200 dark:shadow-none hover:bg-rose-600 active:scale-[0.98] transition-all">{{ $t('modal_logout_confirm', 'Ya, Keluar') }}</button>
+                        <button @click="showLogoutModal = false" class="w-full bg-white dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-bold py-4 rounded-2xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-[0.98] transition-all">{{ $t('modal_logout_cancel', 'Batal') }}</button>
                     </div>
                 </div>
             </div>
