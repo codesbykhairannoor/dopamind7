@@ -1,0 +1,1 @@
+import{G as s,M as u,s as a}from"./vendor-vue-SD5pKcP-.js";function i(t){const e=a(null),n=o=>{e.value&&!e.value.contains(o.target)&&t()};return s(()=>{document.addEventListener("mousedown",n)}),u(()=>{document.removeEventListener("mousedown",n)}),e}export{i as u};
