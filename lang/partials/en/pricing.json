@@ -65,5 +65,16 @@
     "pricing_faq_2_a": "Yes, we offer a 14-day full refund policy for our Pro and Elite plans if you're not satisfied.",
     "pricing_bottom_cta_title": "Ready to build a better life?",
     "pricing_bottom_cta_desc": "Join hundreds of users who use OneForMind to stay focused, organized, and productive.",
-    "pricing_bottom_cta_btn": "Create Your Account"
+    "pricing_bottom_cta_btn": "Create Your Account",
+    "feat_focus_timer": "Built-in Focus Timer",
+    "feat_multi_currency": "Multi-Currency Setup",
+    "feat_data_export": "Data Export (PDF/CSV)",
+    "group_calendar": "Calendar & Time",
+    "feat_habit_freeze": "Habit Freeze (Streak Save)",
+    "feat_shared_wallet": "Shared Wallets",
+    "feat_kanban_board": "Kanban Board View",
+    "feat_vision_board": "Visual Vision Board",
+    "feat_journal_lock": "Journal Privacy Lock",
+    "feat_calendar_timeline": "Timeline / Gantt View",
+    "feat_ai_scheduling": "AI Auto-Scheduling"
 }
