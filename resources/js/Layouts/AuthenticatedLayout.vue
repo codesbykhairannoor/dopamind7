@@ -241,14 +241,14 @@ watch(() => page.url, () => {
 
                 <div class="flex items-center justify-between group" :class="isSidebarCollapsed ? 'flex-col gap-2' : 'px-2 py-1'">
                     <div class="flex items-center gap-2.5 min-w-0" :title="isSidebarCollapsed ? user?.name : ''">
-                        <img v-if="user?.avatar_url" :src="user.avatar_url" alt="Avatar" class="w-8 h-8 rounded-full object-cover shadow-sm dark:shadow-none border border-white shrink-0" />
+                        <img v-if="user?.avatar_url" :src="user.avatar_url" :alt="$t('nav_avatar', 'Avatar')" class="w-8 h-8 rounded-full object-cover shadow-sm dark:shadow-none border border-white shrink-0" />
                         <div v-else class="w-8 h-8 rounded-full bg-indigo-600 dark:bg-indigo-500 text-white flex items-center justify-center font-bold text-[10px] shadow-md dark:shadow-none shrink-0">
                             {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
                         </div>
                         
                         <div v-if="!isSidebarCollapsed" class="flex-1 min-w-0 overflow-hidden">
                             <p class="text-[10px] font-black text-slate-800 dark:text-slate-200 truncate">{{ user?.name || 'User' }}</p>
-                            <p class="text-[9px] font-bold text-slate-400 truncate uppercase tracking-widest">Active Account</p>
+                            <p class="text-[9px] font-bold text-slate-400 truncate uppercase tracking-widest">{{ $t('nav_active_account', 'Active Account') }}</p>
                         </div>
                     </div>
 

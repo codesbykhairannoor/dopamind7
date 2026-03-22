@@ -35,9 +35,9 @@ class HandleInertiaRequests extends Middleware
                     'settings' => $request->user()->settings,
                     'timezone' => $request->user()->timezone ?? config('app.timezone'),
                     'avatar_url' => $request->user()->avatar_url,
-                    'is_premium' => $request->user()->is_premium,
-                    'premium_until' => $request->user()->premium_until,
-                    'tier'       => $request->user()->settings['tier'] ?? ($request->user()->is_premium ? 2 : 1),
+                    'is_premium' => true, // Temporarily unlocked for everyone globally.
+                    'premium_until' => now()->addYears(10), // Give arbitrarily long time
+                    'tier'       => 2, // Force Architect Tier (2) or higher
                 ] : null,
             ],
 
