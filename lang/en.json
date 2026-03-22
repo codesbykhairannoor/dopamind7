@@ -1631,6 +1631,7 @@
     "goal_tips": "Tips: Click a cell to edit. Data saves automatically when you switch cells.",
     "goal_col_title": "Goal Title",
     "goal_col_category": "Category",
+    "goal_completed_pct": "Completed %",
     "goal_col_type": "Frequency",
     "goal_col_target": "Target",
     "goal_col_current": "Progress",

@@ -11,6 +11,7 @@
     "goal_tips": "Tips: Klik sel pada tabel untuk mengedit. Data otomatis tersimpan saat berpindah sel.",
     "goal_col_title": "Nama Target",
     "goal_col_category": "Kategori",
+    "goal_completed_pct": "Completed %",
     "goal_col_type": "Frekuensi",
     "goal_col_target": "Target",
     "goal_col_current": "Progress",
