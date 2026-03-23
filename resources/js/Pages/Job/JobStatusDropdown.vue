@@ -40,11 +40,11 @@ const selectStatus = (val) => {
         </span>
 
         <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 -translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-150 ease-in" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-2">
-            <div v-if="isOpen" class="fixed sm:absolute top-1/2 sm:top-full left-1/2 sm:left-3 -translate-x-1/2 sm:translate-x-0 -translate-y-1/2 sm:translate-y-0 mt-0 sm:mt-2 w-64 sm:w-48 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 z-[100]">
+            <div v-if="isOpen" class="fixed sm:absolute top-1/2 sm:top-full left-1/2 sm:left-3 -translate-x-1/2 sm:translate-x-0 -translate-y-1/2 sm:translate-y-0 mt-0 sm:mt-2 w-64 sm:w-48 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 p-2 z-[100]">
                 <div class="sm:hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm -z-10" @click.stop="isOpen = false"></div>
                 <div v-for="opt in statusOptions" :key="opt.value" @click.stop="selectStatus(opt.value)"
-                    class="px-3 py-2.5 rounded-xl text-sm font-bold cursor-pointer hover:bg-slate-50 transition-colors flex items-center gap-3"
-                    :class="modelValue === opt.value ? 'bg-slate-50 text-indigo-600' : 'text-slate-600'">
+                    class="px-3 py-2.5 rounded-xl text-sm font-bold cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-3"
+                    :class="modelValue === opt.value ? 'bg-slate-50 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-400'">
                     <span class="w-3 h-3 rounded-full flex-shrink-0" :style="{ backgroundColor: opt.hex }"></span>
                     <span class="truncate">{{ $t(opt.label, opt.value) }}</span>
                 </div>

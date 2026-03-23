@@ -31,62 +31,65 @@ class GoalService
 
     public function getGoalStats(int $userId): array
     {
-        $baseQuery = Goal::ofUser($userId);
-        
-        // 1. Basic Status Counts (Efficient single query)
-        $statsRaw = $baseQuery->clone()
+        // 1. Unified Status Counts & Total (Efficient single query)
+        $statsRaw = Goal::ofUser($userId)
             ->select('status', DB::raw('count(*) as count'))
             ->groupBy('status')
             ->pluck('count', 'status');
 
         $total = $statsRaw->sum();
         
-        // 2. Milestone Aggregates ( menggunakan subqueries / withCount agar hemat memory)
+        // 2. Optimized Milestone Aggregations (Single query for all milestone-related stats)
+        // We calculate both the total/completed counts AND the average progress in one go
         $milestoneStats = DB::table('goal_milestones')
             ->join('goals', 'goal_milestones.goal_id', '=', 'goals.id')
             ->where('goals.user_id', $userId)
+            ->where('goals.status', 'active')
             ->select(
                 DB::raw('count(*) as total'),
-                DB::raw('sum(case when completed = true then 1 else 0 end) as completed')
+                DB::raw('sum(case when completed = true then 1 else 0 end) as completed'),
+                DB::raw('AVG(case when 1=1 then (SELECT count(*) from goal_milestones m2 where m2.goal_id = goals.id AND m2.completed = true) * 100.0 / NULLIF((SELECT count(*) from goal_milestones m3 where m3.goal_id = goals.id), 0) else 0 end) as avg_p')
             )->first();
-
-        // 3. Progress Calculation (Dihitung di DB lebih cepat)
-        // Kita ambil rata-rata progress dari goal yang aktif
-        $avgProgress = DB::table('goals')
-            ->where('user_id', $userId)
-            ->where('status', 'active')
-            ->leftJoin(DB::raw('(SELECT goal_id, count(*) as total, sum(case when completed = true then 1 else 0 end) as comp FROM goal_milestones GROUP BY goal_id) as ms'), 'goals.id', '=', 'ms.goal_id')
-            ->select(DB::raw('AVG(CASE WHEN ms.total > 0 THEN (ms.comp * 100.0 / ms.total) ELSE 0 END) as avg_p'))
-            ->value('avg_p') ?? 0;
-
-        // 4. Specific Goals (Top & Urgent) - Tetap ambil model tapi limited
+            
+        // 3. Specific Goals (Top & Urgent) - Use eager loading wisely
         $topGoal = Goal::ofUser($userId)->byStatus('active')
             ->withCount(['milestones as total_ms', 'milestones as completed_ms' => fn($q) => $q->where('completed', true)])
             ->get()
             ->sortByDesc(fn($g) => $g->total_ms > 0 ? $g->completed_ms / $g->total_ms : 0)
             ->first();
 
-        $urgentGoal = $baseQuery->clone()->byStatus('active')
+        $topGoalProgress = ($topGoal && $topGoal->total_ms > 0) 
+            ? (int) round(($topGoal->completed_ms / $topGoal->total_ms) * 100) 
+            : 0;
+
+        $urgentGoal = Goal::ofUser($userId)->byStatus('active')
             ->whereNotNull('end_date')
             ->orderBy('end_date', 'asc')
             ->first();
 
-        $upcomingDeadlines = $baseQuery->clone()->byStatus('active')
+        // Upcoming deadlines (Efficient count)
+        $upcomingDeadlines = Goal::ofUser($userId)->byStatus('active')
             ->whereNotNull('end_date')
             ->whereBetween('end_date', [now(), now()->addDays(7)])
             ->count();
 
+        $urgentDaysLeft = ($urgentGoal && $urgentGoal->end_date) 
+            ? (int) now()->diffInDays($urgentGoal->end_date, false) 
+            : null;
+
         return [
-            'total' => $total,
-            'active' => $statsRaw->get('active', 0),
-            'completed' => $statsRaw->get('completed', 0),
-            'paused' => $statsRaw->get('paused', 0),
-            'cancelled' => $statsRaw->get('cancelled', 0),
-            'avg_progress' => (int) round($avgProgress),
+            'total' => (int) $total,
+            'active' => (int) $statsRaw->get('active', 0),
+            'completed' => (int) $statsRaw->get('completed', 0),
+            'paused' => (int) $statsRaw->get('paused', 0),
+            'cancelled' => (int) $statsRaw->get('cancelled', 0),
+            'avg_progress' => (int) round($milestoneStats->avg_p ?? 0),
             'milestones_total' => (int) ($milestoneStats->total ?? 0),
             'milestones_completed' => (int) ($milestoneStats->completed ?? 0),
             'top_goal_title' => $topGoal ? $topGoal->title : null,
+            'top_goal_progress' => $topGoalProgress,
             'urgent_goal_title' => $urgentGoal ? $urgentGoal->title : null,
+            'urgent_goal_days_left' => $urgentDaysLeft,
             'upcoming_deadlines_count' => $upcomingDeadlines,
         ];
     }

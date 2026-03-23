@@ -114,14 +114,7 @@ const handleCheckbox = () => {
                 :class="(milestone.is_completed || milestone.completed) ? 'text-slate-400 dark:text-slate-500 line-through font-medium' : 'text-slate-700 dark:text-slate-200 font-black'"
             />
             
-            <div class="flex items-center gap-2 mt-0.5">
-                <button @click="showDatePicker = !showDatePicker" class="flex items-center gap-1.5 px-1.5 py-0.5 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group/date">
-                    <Calendar :size="10" :class="(milestone.is_completed || milestone.completed) ? 'text-slate-300 dark:text-slate-600' : 'text-slate-400 dark:text-slate-500 group-hover/date:text-indigo-500 dark:group-hover/date:text-indigo-400'" />
-                    <span class="text-[9px] font-black uppercase tracking-widest" :class="(milestone.is_completed || milestone.completed) ? 'text-slate-300 dark:text-slate-600' : 'text-slate-400 dark:text-slate-500 group-hover/date:text-slate-600 dark:group-hover/date:text-slate-300'">
-                        {{ dateDisplay }}
-                    </span>
-                </button>
-            </div>
+            <!-- Removed Date Picker per User Request -->
         </div>
 
         <button 
@@ -130,18 +123,6 @@ const handleCheckbox = () => {
         >
             <Trash2 :size="14" />
         </button>
-
-        <!-- Date Picker Popover -->
-        <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100">
-            <div v-if="showDatePicker" class="absolute left-10 top-full mt-2 z-50 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 p-2 animate-in fade-in zoom-in duration-200">
-                <GoalDatePicker 
-                    :show="true" 
-                    :modelValue="editTargetDate" 
-                    @update:modelValue="handleDatePick" 
-                    @close="showDatePicker = false"
-                />
-            </div>
-        </transition>
 
         <div v-if="milestone.is_saving" class="absolute right-3 bottom-1">
             <div class="w-2 h-2 border-2 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>

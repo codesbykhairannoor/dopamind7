@@ -17,11 +17,17 @@ class JournalController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $journals = Journal::ofUser($user->id)->latest()->get();
+        $journals = Journal::ofUser($user->id)->latest()->paginate(20);
         $synergy = $this->journalService->getSynergyStats($user->id, $user->timezone ?? 'Asia/Jakarta');
 
         return Inertia::render('Journal/Index', array_merge([
             'journals' => JournalResource::collection($journals)->resolve(),
+            'pagination' => [
+                'current_page' => $journals->currentPage(),
+                'last_page' => $journals->lastPage(),
+                'per_page' => $journals->perPage(),
+                'total' => $journals->total(),
+            ],
         ], $synergy));
     }
 

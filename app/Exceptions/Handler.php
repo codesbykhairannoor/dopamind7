@@ -17,7 +17,11 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
-            //
+            \Illuminate\Support\Facades\Log::error('Exception Captured in Handler:', [
+                'message' => $e->getMessage(),
+                'class' => get_class($e),
+                'trace' => $e->getTraceAsString()
+            ]);
         });
 
         // 🔥 TAMBAHKAN LOGIC INI DISINI

@@ -39,9 +39,6 @@
     "milestone_edit_placeholder": "Click to edit...",
     "milestone_error_save": "Failed to save step!",
     "milestone_error_delete": "Failed to delete step!",
-    "goal_error_delete": "Failed to delete goal!",
-    "goal_error_bulk_delete": "Failed to delete multiple goals!",
-    "goal_success_delete": "Goal successfully deleted!",
     "milestone_error_toggle": "Failed to update step status!",
     "goal_stats_master_progress": "Master Progress",
     "goal_stats_top_momentum": "Top Momentum",
@@ -104,5 +101,26 @@
     "common_deadline": "Target",
     "goal_btn_create": "Manifest Goal",
     "goal_btn_save": "Update Vision",
-    "goal_btn_add": "Add Goal"
+    "goal_btn_add": "Add Goal",
+    "btn_goal_error": "Goal Error",
+    "goal_upload_error": "Failed to upload image!",
+    "goal_success_update": "Vision Updated!",
+    "goal_success_create": "Goal Manifested!",
+    "goal_success_delete": "Goal successfully deleted!",
+    "goal_error_delete": "Failed to delete goal!",
+    "goal_error_sync": "Sync failed! Check connection.",
+    "goal_error_update_status": "Failed to update status!",
+    "goal_delete_title": "Delete Vision?",
+    "goal_limit_explorer": "Explorer limit: 1 Goal. Upgrade to Architect for unlimited goals!",
+    "goal_cover_premium": "Goal Covers are available for Architect and above!",
+    "goal_error_file_large": "File too large",
+    "goal_steps_count": "{count} Steps",
+    "goal_stats_momentum": "Vision Momentum",
+    "goal_stats_north_star": "The North Star",
+    "goal_stats_runway": "Time Runway",
+    "goal_stats_mastery": "Mastery Depth",
+    "goal_stats_calm": "Strategic Calm",
+    "goal_stats_day_left": "{days} Days Left"
 }
+
+

@@ -23,6 +23,19 @@
     "nav_active_account": "Active Account",
     "theme_dark": "Dark Mode",
     "theme_light": "Light Mode",
+    
+    "more_launcher_title": "Launcher",
+    "more_launcher_subtitle": "Explore all productivity modules",
+    "nav_desc_planner": "Daily Planning",
+    "nav_desc_journal": "Personal Journal",
+    "nav_desc_calendar": "Schedule Management",
+    "nav_desc_jobs": "Career Tracking",
+    "nav_desc_goals": "Life Milestones",
+    "more_upgrade_badge": "Upgrade",
+    "more_upgrade_title": "Unlock Full Potential",
+    "more_upgrade_desc": "Get access to premium features",
+    "more_upgrade_btn": "View Pricing",
+    
 "seo_meta_desc_1": "Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.",
     "footer_rights": "© 2026 Oneformind. All rights reserved.",
 

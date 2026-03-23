@@ -162,8 +162,8 @@ watch(search, (val) => {
                     @click="setDays(d.key)"
                     :class="[
                         'px-3 py-1.5 rounded-lg text-xs font-bold transition-all border',
-                        activeDays === d.key
-                            ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm shadow-indigo-200 dark:shadow-indigo-900/20'
+                    activeDays === d.key
+                            ? 'bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-100 dark:shadow-none'
                             : 'bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400'
                     ]"
                 >
@@ -171,7 +171,7 @@ watch(search, (val) => {
                 </button>
             </div>
         </div>
-
+ 
         <!-- Status filter pills row -->
         <div class="px-4 py-3 flex flex-wrap items-center gap-2">
             <span class="text-xs font-bold text-slate-400 mr-1">{{ $t('job_filter_status_label', 'Status:') }}</span>
@@ -182,7 +182,7 @@ watch(search, (val) => {
                 :class="[
                     'px-3 py-1.5 rounded-lg text-xs font-bold transition-all border flex items-center gap-1.5',
                     activeStatus === pill.key
-                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm shadow-indigo-200 scale-105'
+                        ? 'bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-100 dark:shadow-none scale-105'
                         : pill.color + ' border'
                 ]"
             >

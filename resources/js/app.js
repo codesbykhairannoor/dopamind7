@@ -6,11 +6,12 @@ import { registerSW } from 'virtual:pwa-register';
 registerSW({ immediate: true });
 
 import { createApp, h } from 'vue';
-import { createInertiaApp, router } from '@inertiajs/vue3';
+import { createInertiaApp, router, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import { i18nVue, trans } from 'laravel-vue-i18n';
 import NProgress from 'nprogress';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 window.trans = trans;
 
@@ -25,7 +26,6 @@ createInertiaApp({
             import.meta.glob('./Pages/**/*.vue')
         ),
 
-    // 🔥 MAGIC FIX 1: Hapus kata 'async' dari setup. Kita buat jalannya synchronous.
     setup({ el, App, props, plugin }) {
         const activeLang = props.initialPage.props.locale || 'id';
 
@@ -36,12 +36,11 @@ createInertiaApp({
         vueApp
             .use(plugin)
             .use(ZiggyVue, window.Ziggy)
+            .component('Link', Link)
+            .component('OneForMindIcon', OneForMindIcon)
             .use(i18nVue, {
                 lang: activeLang,
-                fallbackLang: 'id', // Opsional tapi bagus: jaga-jaga kalau bahasa hilang
-                // 🔥 MAGIC FIX 2: Tambahkan { eager: true } pada import.meta.glob
-                // Ini memaksa Vite untuk memasukkan JSON langsung ke dalam bundle JS,
-                // sehingga tidak ada delay/loading yang bikin teks berubah jadi key.
+                fallbackLang: 'id',
                 resolve: lang => {
                     const langs = import.meta.glob('../../lang/*.json', { eager: true });
                     const langPath = `../../lang/${lang}.json`;
@@ -62,10 +61,10 @@ createInertiaApp({
 
 NProgress.configure({
     showSpinner: false,
-    speed: 300,         // Kecepatan animasi lebih agresif (300ms)
-    minimum: 0.5,       // Langsung mulai di 50% biar kerasa instan
+    speed: 250,         // Even faster animation
+    minimum: 0.6,       // Start at 60% for "instant" feel
     trickle: true,
-    trickleSpeed: 150,  // Interval penambahan bar lebih rapat
+    trickleSpeed: 100,  // Faster trickle
 });
 
 router.on('start', (event) => {

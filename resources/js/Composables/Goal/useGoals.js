@@ -74,6 +74,9 @@ export function useGoals(props) {
             milestones_total: mTotal,
             milestones_completed: mComp,
             top_goal_title: active.sort((a, b) => (b.progress || 0) - (a.progress || 0))[0]?.title || null,
+            top_goal_progress: active.length > 0 ? active[0].progress : 0,
+            urgent_goal_title: props.stats?.urgent_goal_title || null,
+            urgent_goal_days_left: props.stats?.urgent_goal_days_left ?? null,
             upcoming_deadlines_count: props.stats?.upcoming_deadlines_count || 0
         };
     });
@@ -140,7 +143,7 @@ export function useGoals(props) {
             milestone.is_completed = !milestone.is_completed;
             milestone.completed = milestone.is_completed;
             recalculateProgress(goal);
-            fireToast('error', 'Gagal update status!');
+            fireToast('error', trans('goal_error_update_status'));
         }
     };
 
@@ -193,7 +196,7 @@ export function useGoals(props) {
         
         // --- GATING: 1 GOAL LIMIT FOR EXPLORER ---
         if (!isEditing && isExplorer.value && localGoals.value.length >= 1) {
-            fireToast('error', 'Explorer limit: 1 Goal. Upgrade to Architect for unlimited goals!');
+            fireToast('error', trans('goal_limit_explorer'));
             return;
         }
 
@@ -211,7 +214,7 @@ export function useGoals(props) {
         
         // Close modal immediately for "Instant" feel
         closeModal();
-        fireToast('success', isEditing ? 'Vision Updated!' : 'Goal Manifested!');
+        fireToast('success', isEditing ? trans('goal_success_update') : trans('goal_success_create'));
 
         // --- STEP 2: BACKGROUND SYNC ---
         try {
@@ -241,7 +244,7 @@ export function useGoals(props) {
             if (e.response?.status === 422) {
                 errors.value = e.response.data.errors || {};
             }
-            const msg = e.response?.data?.message || trans('goal_sync_error');
+            const msg = e.response?.data?.message || trans('goal_error_sync');
             fireToast('error', msg); 
         } finally {
             optimisticData.is_saving = false;
@@ -250,17 +253,33 @@ export function useGoals(props) {
 
     const uploadCoverImage = async (goalId, file) => {
         if (isExplorer.value) {
-            fireToast('error', 'Goal Covers are available for Architect and above!');
+            fireToast('error', trans('goal_cover_premium'));
             throw new Error('Premium feature');
         }
+
+        // 🛡️ FRONTEND SIZE GUARD: Prevent 422 tracking if file is clearly too large
+        const MAX_SIZE = 2 * 1024 * 1024; // 2MB based on php.ini default
+        if (file.size > MAX_SIZE) {
+            const msg = `${trans('goal_error_file_large')} (${(file.size / (1024 * 1024)).toFixed(1)}MB). Max 2MB.`;
+            fireToast('error', msg);
+            throw new Error(msg);
+        }
+
         const formData = new FormData();
         formData.append('image', file);
-        if (goalId) formData.append('id', goalId);
+        // Only append ID if it's a real database ID (not null or temp_*)
+        if (goalId && !String(goalId).startsWith('temp_')) {
+            formData.append('id', goalId);
+        }
         try {
             const response = await axios.post(route('goals.uploadImage'), formData, { headers: { 'Content-Type': 'multipart/form-data' } });
             return response.data;
         } catch (error) {
-            fireToast('error', trans('goal_upload_error'));
+            if (error.response && error.response.status === 422 && error.response.data.errors?.image) {
+                fireToast('error', error.response.data.errors.image[0]);
+            } else {
+                fireToast('error', trans('goal_upload_error'));
+            }
             throw error;
         }
     };
@@ -286,7 +305,7 @@ export function useGoals(props) {
         // --- STEP 1: OPTIMISTIC UPDATE ---
         const originalGoals = [...localGoals.value];
         localGoals.value = localGoals.value.filter(g => g.id !== id);
-        fireToast('success', trans('goal_delete_success'));
+        fireToast('success', trans('goal_success_delete'));
 
         // --- STEP 2: BACKGROUND SYNC ---
         try {
@@ -294,18 +313,18 @@ export function useGoals(props) {
         } catch (e) { 
             // --- STEP 3: ROLLBACK ---
             localGoals.value = originalGoals;
-            fireToast('error', trans('goal_delete_error')); 
+            fireToast('error', trans('goal_error_delete')); 
         }
     };
 
     const fireToast = (icon, title) => {
         Swal.fire({ 
             toast: true, position: 'top-end', showConfirmButton: false, timer: 2000, 
-            icon, title,
+            icon, 
+            titleText: title, 
             background: icon === 'success' ? '#4f46e5' : '#ffffff',
+            color: icon === 'success' ? '#ffffff' : '#334155', // Force white text for success alerts
             iconColor: icon === 'success' ? '#ffffff' : undefined,
-            titleText: title,
-            html: icon === 'success' ? `<span style="color: white; font-weight: 700; font-size: 14px;">${title}</span>` : undefined,
             customClass: { popup: '!rounded-xl !shadow-lg !m-4' }
         });
     };

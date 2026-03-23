@@ -686,7 +686,7 @@
     ]
   },
   "resources/js/Pages/Goal/Index.vue": {
-    "file": "assets/Index-CIoR6H22.js",
+    "file": "assets/Index-DdrNWOlm.js",
     "name": "Index",
     "src": "resources/js/Pages/Goal/Index.vue",
     "isDynamicEntry": true,
@@ -1153,7 +1153,7 @@
     ]
   },
   "resources/js/Pages/Profile/Edit.vue": {
-    "file": "assets/Edit-DG259-er.js",
+    "file": "assets/Edit-BD1pDDm7.js",
     "name": "Edit",
     "src": "resources/js/Pages/Profile/Edit.vue",
     "isDynamicEntry": true,
@@ -1198,7 +1198,7 @@
     ]
   },
   "resources/js/Pages/Profile/Partials/PremiumSubscriptionForm.vue": {
-    "file": "assets/PremiumSubscriptionForm-AkyJQOWq.js",
+    "file": "assets/PremiumSubscriptionForm-ig-HUb24.js",
     "name": "PremiumSubscriptionForm",
     "src": "resources/js/Pages/Profile/Partials/PremiumSubscriptionForm.vue",
     "isDynamicEntry": true,
@@ -1248,7 +1248,7 @@
     ]
   },
   "resources/js/Pages/Settings/Index.vue": {
-    "file": "assets/Index-CGtp3Fvq.js",
+    "file": "assets/Index-DytGwe9E.js",
     "name": "Index",
     "src": "resources/js/Pages/Settings/Index.vue",
     "isDynamicEntry": true,
@@ -1287,7 +1287,7 @@
     ]
   },
   "resources/js/Pages/Settings/Partials/BillingTab.vue": {
-    "file": "assets/BillingTab-Bg5ththU.js",
+    "file": "assets/BillingTab-h03N76P-.js",
     "name": "BillingTab",
     "src": "resources/js/Pages/Settings/Partials/BillingTab.vue",
     "isDynamicEntry": true,
@@ -1365,7 +1365,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-zBGIOslJ.js",
+    "file": "assets/app-C5nxBM8o.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

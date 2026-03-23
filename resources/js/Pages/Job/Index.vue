@@ -46,7 +46,7 @@ const todayDate = computed(() => {
                 <div class="flex items-center justify-between gap-4">
                     <!-- Left: Icon + Title + Date -->
                     <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-100 shrink-0">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-100 dark:shadow-none shrink-0 group-hover:scale-110 transition-transform duration-500">
                             <OneForMindIcon name="job" size="24" :stroke-width="3" />
                         </div>
                         <div class="min-w-0">
@@ -60,24 +60,14 @@ const todayDate = computed(() => {
                         </div>
                     </div>
                     
-                    <!-- AI Resume Tailor Placeholder (Quantum) -->
-                    <div class="hidden xl:flex items-center gap-3 px-4 py-2 bg-slate-50 dark:bg-slate-800 border-x border-slate-200 dark:border-slate-800 transition-colors">
-                        <div class="flex flex-col items-end">
-                            <span class="text-[9px] font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest">{{ $t('quantum_feature', 'Quantum AI') }}</span>
-                            <span class="text-xs font-bold text-slate-400 dark:text-slate-500">{{ $t('job_ai_tailor', 'Resume Tailor') }}</span>
-                        </div>
-                        <button :disabled="!canUse('finance_ai_audit')" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-800 flex items-center justify-center shadow-sm opacity-50 grayscale cursor-not-allowed">
-                            <span v-if="!canUse('finance_ai_audit')">🔒</span>
-                            <span v-else>🤖</span>
-                        </button>
-                    </div>
                     
                     <!-- Right: Add Button -->
                     <button @click="addEmptyRow"
-                        class="bg-indigo-600 text-white font-black py-2.5 px-4 sm:px-6 rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 active:scale-95 transition-all flex items-center gap-2 shrink-0 relative overflow-hidden">
-                        <span v-if="isExplorer" class="mr-1">🔒</span>
-                        <OneForMindIcon name="plus" size="18" stroke-width="4" />
-                        <span class="hidden sm:inline">{{ $t('job_add_row', 'Tambah Baris') }}</span>
+                        class="bg-indigo-600 text-white font-black py-2.5 px-4 sm:px-6 rounded-xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 shrink-0 relative overflow-hidden group">
+                        <div class="bg-white/20 rounded-lg p-0.5 group-hover:rotate-90 transition-transform duration-500">
+                            <OneForMindIcon name="plus" size="18" stroke-width="4" />
+                        </div>
+                        <span class="hidden sm:inline uppercase text-xs tracking-widest">{{ $t('job_add_row', 'Tambah Baris') }}</span>
                     </button>
                 </div>
             </div>

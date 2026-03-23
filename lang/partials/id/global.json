@@ -23,6 +23,18 @@
     "theme_dark": "Mode Gelap",
     "theme_light": "Mode Terang",
 
+    "more_launcher_title": "Peluncur",
+    "more_launcher_subtitle": "Jelajahi semua modul produktivitas",
+    "nav_desc_planner": "Perencanaan Harian",
+    "nav_desc_journal": "Jurnal Pribadi",
+    "nav_desc_calendar": "Manajemen Jadwal",
+    "nav_desc_jobs": "Karir & Pekerjaan",
+    "nav_desc_goals": "Tujuan Hidup",
+    "more_upgrade_badge": "Tingkatkan",
+    "more_upgrade_title": "Buka Potensi Penuh",
+    "more_upgrade_desc": "Dapatkan akses ke fitur premium",
+    "more_upgrade_btn": "Lihat Harga",
+
       "nav_features": "Features",
     "nav_solutions": "Solutions",
     "nav_resources": "Resources",

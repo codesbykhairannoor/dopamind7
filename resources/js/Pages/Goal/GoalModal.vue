@@ -91,13 +91,7 @@ const onFileChange = async (e) => {
             form.value.cover_image_url = result.url;
             form.value.cover_image_path = result.path;
             imagePreview.value = result.url;
-            
-            Swal.fire({
-                toast: true, position: 'top-end', showConfirmButton: false, timer: 3000,
-                background: '#4f46e5', iconColor: '#ffffff', icon: 'success',
-                title: `<span style="color: white; font-weight: 700; font-size: 14px;">${t('img_upload_success', 'Gambar berhasil diunggah!')}</span>`,
-                customClass: { popup: '!rounded-xl !shadow-lg !m-4' }
-            });
+            // Removed redundant Swal.fire to prevent double alerts
         }
     } catch (err) { 
         console.error(err); 

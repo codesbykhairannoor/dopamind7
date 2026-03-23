@@ -58,6 +58,14 @@ const icons = {
         <rect x="2" y="7" width="20" height="14" rx="2" />
         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
     `,
+    'jobs': `
+        <rect x="2" y="7" width="20" height="14" rx="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    `,
+    'briefcase': `
+        <rect x="2" y="7" width="20" height="14" rx="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    `,
     'premium': `
         <path d="M12 2 2 7l10 15 10-15-10-5Z" />
         <path d="m2 7 10 5 10-5" />

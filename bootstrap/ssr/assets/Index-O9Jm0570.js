@@ -218,6 +218,7 @@ function useGoals(props) {
     }
   };
   const uploadCoverImage = async (goalId, file) => {
+    var _a;
     if (isExplorer.value) {
       fireToast("error", "Goal Covers are available for Architect and above!");
       throw new Error("Premium feature");
@@ -229,7 +230,11 @@ function useGoals(props) {
       const response = await axios.post(route("goals.uploadImage"), formData, { headers: { "Content-Type": "multipart/form-data" } });
       return response.data;
     } catch (error) {
-      fireToast("error", trans("goal_upload_error"));
+      if (error.response && error.response.status === 422 && ((_a = error.response.data.errors) == null ? void 0 : _a.image)) {
+        fireToast("error", error.response.data.errors.image[0]);
+      } else {
+        fireToast("error", trans("img_upload_error") || "Upload failed");
+      }
       throw error;
     }
   };

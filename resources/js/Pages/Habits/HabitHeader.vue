@@ -46,21 +46,21 @@ const changeYear = (offset) => {
 </script>
 
 <template>
-  <div class="relative md:sticky md:top-0 z-50 transition-all bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800">
+  <div class="relative md:sticky md:top-0 z-50 transition-all bg-white dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
     <div class="max-w-full px-4 py-4 mx-auto sm:px-6 lg:px-8">
       
       <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
         
         <div class="flex items-center w-full gap-4 md:w-auto">
-          <div class="flex items-center justify-center text-white shadow-lg w-12 h-12 bg-indigo-600 rounded-xl shadow-indigo-200 dark:shadow-none shrink-0">
+          <div class="flex items-center justify-center text-white shadow-lg w-12 h-12 bg-indigo-600 rounded-xl shadow-indigo-200 dark:shadow-indigo-900/20 shrink-0">
             <OneForMindIcon name="habit" size="28" />
           </div>
 
           <div>
-            <h1 class="text-xl font-black leading-tight tracking-tight md:text-2xl text-slate-800 dark:text-slate-100">
+            <h1 class="text-xl font-black leading-tight tracking-tight md:text-2xl text-slate-800 dark:text-white transition-colors duration-500">
               {{ $t('habit_page_title', 'Habit Tracker') }}
             </h1>
-            <p class="mt-0.5 text-sm font-medium capitalize text-slate-500 dark:text-slate-400">{{ todayDate }}</p>
+            <p class="mt-0.5 text-sm font-medium capitalize text-slate-500 dark:text-slate-400 transition-colors duration-500">{{ todayDate }}</p>
           </div>
         </div>
 
@@ -131,7 +131,7 @@ const changeYear = (offset) => {
 
           <button 
             @click="openCreateModal" 
-            class="h-[46px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-200 dark:shadow-none transition-all duration-300"
+            class="h-[46px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-100 dark:shadow-indigo-900/40 transition-all duration-300 whitespace-nowrap"
           >
             <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
               <OneForMindIcon name="plus" size="16" stroke-width="3" />

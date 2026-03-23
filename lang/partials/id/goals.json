@@ -39,9 +39,6 @@
     "milestone_edit_placeholder": "Klik untuk mengedit...",
     "milestone_error_save": "Gagal menyimpan langkah!",
     "milestone_error_delete": "Gagal menghapus langkah!",
-    "goal_error_delete": "Gagal menghapus target!",
-    "goal_error_bulk_delete": "Gagal menghapus beberapa target!",
-    "goal_success_delete": "Target berhasil dihapus!",
     "milestone_error_toggle": "Gagal update status langkah!",
     "goal_stats_master_progress": "Master Progress",
     "goal_stats_top_momentum": "Top Momentum",
@@ -104,5 +101,26 @@
     "common_deadline": "Target",
     "goal_btn_create": "Wujudkan Impian",
     "goal_btn_save": "Update Vision",
-    "goal_btn_add": "Tambah Target"
+    "goal_btn_add": "Tambah Target",
+    "btn_goal_error": "Terjadi Kesalahan",
+    "goal_upload_error": "Gagal mengunggah gambar!",
+    "goal_success_update": "Visi Diperbarui!",
+    "goal_success_create": "Impian Terwujud!",
+    "goal_success_delete": "Target berhasil dihapus!",
+    "goal_error_delete": "Gagal menghapus target!",
+    "goal_error_sync": "Gagal sinkronisasi! Cek koneksi.",
+    "goal_error_update_status": "Gagal memperbarui status!",
+    "goal_delete_title": "Hapus Impian?",
+    "goal_limit_explorer": "Limit Explorer: 1 Target. Upgrade ke Architect untuk target tanpa batas!",
+    "goal_cover_premium": "Sampul Target tersedia untuk Architect ke atas!",
+    "goal_error_file_large": "File terlalu besar",
+    "goal_steps_count": "{count} Langkah",
+    "goal_stats_momentum": "Momentum Visi",
+    "goal_stats_north_star": "Visi Utama",
+    "goal_stats_runway": "Sisa Waktu",
+    "goal_stats_mastery": "Kedalaman Mastery",
+    "goal_stats_calm": "Ketenangan Strategis",
+    "goal_stats_day_left": "{days} Hari"
 }
+
+

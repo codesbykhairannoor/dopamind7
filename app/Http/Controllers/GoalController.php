@@ -207,10 +207,16 @@ class GoalController extends Controller
 
     public function uploadCoverImage(Request $request)
     {
-        $request->validate([
+        $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
             'id' => 'nullable|exists:goals,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
+
+        if ($validator->fails()) {
+            \Illuminate\Support\Facades\Log::error('Goal image upload validation failed:', $validator->errors()->toArray());
+            \Illuminate\Support\Facades\Log::error('Request data:', $request->all());
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
 
         $user = Auth::user();
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');

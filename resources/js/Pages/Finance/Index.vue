@@ -329,20 +329,11 @@ const switchToSingle = () => {
                         <ArchiveModal :show="isArchiveOpen" :dayData="selectedDayData" :categories="categories" :close="() => isArchiveOpen = false" :onDelete="triggerDeleteTransaction" :onEdit="handleEdit" />
                     </div>
 
-                   <DailyTrendChart v-if="localTransactions.length && canUse('finance_charts')" :transactions="localTransactions" :currentDate="filters.date" @day-click="openDetail" />
-                   
-                   <!-- Locked Chart Placeholder for Explorer -->
-                   <div v-else-if="isExplorer && localTransactions.length" class="bg-white dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-200 dark:border-slate-800 text-center space-y-4">
-                        <div class="w-16 h-16 bg-indigo-50 dark:bg-indigo-500/10 rounded-2xl flex items-center justify-center mx-auto text-3xl">📊</div>
-                        <h4 class="font-bold text-slate-800 dark:text-white uppercase tracking-widest text-[10px]">{{ $t('premium_feature') }}</h4>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium px-4">{{ $t('upgrade_for_charts', 'Upgrade ke Architect untuk melihat grafik tren pengeluaran Anda.') }}</p>
-                        <Link :href="route('pricing.index')" class="inline-block bg-indigo-600 text-white text-[10px] font-black px-4 py-2 rounded-lg shadow-lg shadow-indigo-100 dark:shadow-none uppercase tracking-widest hover:bg-indigo-700 transition-all">{{ $t('upgrade_now') }}</Link>
-                   </div>
+                   <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" @day-click="openDetail" />
                 </div>
-
+ 
                 <div class="lg:col-span-2 w-full md:sticky md:top-24 h-fit space-y-6"> 
                     <BudgetSidebar 
-                        v-if="canUse('finance_budgeting')"
                         :budgets="localBudgets" 
                         :categories="localCategories" 
                         :expenseStats="localStats.expense_by_category"
@@ -354,44 +345,13 @@ const switchToSingle = () => {
                         @edit-category="handleEditCategory"
                         @delete-category="triggerDeleteCategory"
                     />
-
-                    <!-- Locked Budget Sidebar for Explorer -->
-                    <div v-else class="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-[2.5rem] p-8 text-white shadow-xl shadow-indigo-200 dark:shadow-none relative overflow-hidden">
-                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
-                        <div class="relative z-10">
-                            <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 text-2xl">🎯</div>
-                            <h3 class="text-xl font-black mb-2 tracking-tight">Master Your Budget</h3>
-                            <p class="text-sm font-medium text-indigo-100/80 mb-6 leading-relaxed">Set limits for every category and take control of your financial destiny.</p>
-                            <Link :href="route('pricing.index')" class="flex items-center justify-center w-full bg-white text-indigo-600 font-black py-4 rounded-2xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all text-xs uppercase tracking-widest">
-                                {{ $t('btn_unlock_architect', 'Unlock Architect') }}
-                            </Link>
-                        </div>
-                    </div>
-
+ 
                     <FinanceInsights 
-                        v-if="canUse('finance_ai_audit')"
                         :expense-stats="localStats.expense_by_category" 
                         :income-stats="localStats.income_by_category" 
                         :budgets="localBudgets" 
                         @update-stats="handleOptimisticInvestment"
                     />
-                    
-                    <!-- Locked AI Insights for Non-Quantum -->
-                    <div v-else-if="tier < 3" class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none overflow-hidden relative group">
-                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <OneForMindIcon name="premium" size="100" />
-                        </div>
-                        <div class="relative z-10">
-                            <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 dark:bg-amber-500/10 border border-amber-100 dark:border-amber-500/20 rounded-full mb-4">
-                                <span class="text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest">Quantum Feature</span>
-                            </div>
-                            <h4 class="text-lg font-black text-slate-800 dark:text-white mb-2 leading-tight">AI Financial Pulse</h4>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 font-bold mb-6 leading-relaxed">Get predictive insights and automated audit of your spending patterns.</p>
-                            <Link :href="route('pricing.index')" class="text-xs font-black text-indigo-600 dark:text-indigo-400 hover:translate-x-1 transition-transform inline-flex items-center gap-2">
-                                Learn More about Quantum <OneForMindIcon name="chevron-right" size="12" stroke-width="3" />
-                            </Link>
-                        </div>
-                    </div>
                 </div>
             </div>
 
