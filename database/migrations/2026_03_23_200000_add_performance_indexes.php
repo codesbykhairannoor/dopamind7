@@ -18,13 +18,7 @@ return new class extends Migration
             }
         });
 
-        // 2. Habit Logs Optimization
-        Schema::table('habit_logs', function (Blueprint $table) {
-            $table->index(['habit_id', 'date']);
-            $table->index('status');
-        });
-
-        // 3. Goal Urgency Optimization
+        // 2. Goal Urgency Optimization
         Schema::table('goals', function (Blueprint $table) {
             $table->index(['user_id', 'status', 'end_date']);
         });
@@ -37,11 +31,6 @@ return new class extends Migration
     {
         Schema::table('goal_milestones', function (Blueprint $table) {
             $table->dropIndex(['goal_id', 'completed']);
-        });
-
-        Schema::table('habit_logs', function (Blueprint $table) {
-            $table->dropIndex(['habit_id', 'date']);
-            $table->dropIndex(['status']);
         });
 
         Schema::table('goals', function (Blueprint $table) {
