@@ -3,7 +3,7 @@ php = true
 node = true
 
 [phases.setup]
-nixPkgs = ['php82', 'php82Packages.intl', 'php82Packages.zip', 'nodejs_20', 'npm']
+nixPkgs = ['php83', 'php83Packages.intl', 'php83Packages.zip', 'nodejs_20', 'npm']
 
 [phases.build]
 cmds = ['composer install --no-dev --optimize-autoloader', 'npm ci', 'npm run build']
