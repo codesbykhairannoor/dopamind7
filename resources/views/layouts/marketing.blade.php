@@ -123,39 +123,37 @@
     {{-- Vite otomatis handle preload CSS yang benar, JANGAN hardcode link CSS di sini --}}
     @vite(['resources/css/app.css'])
 
-    {{-- 🔥 3. SPECULATION RULES: Prerender halaman penting (0ms load) --}}
-   {{-- 🔥 3. SPECULATION RULES: Prerender SEMUA halaman publik (Teleportasi Mode) --}}
+    {{-- 🔥 3. SPECULATION RULES: Prefetch + Prerender SEMUA halaman publik --}}
     <script type="speculationrules">
     {
+      "prefetch": [
+        {
+          "source": "document",
+          "where": {
+            "and": [
+              { "href_matches": "/*" },
+              { "not": { "href_matches": "/dashboard*" } },
+              { "not": { "href_matches": "/api/*" } },
+              { "not": { "selector_matches": "[hx-boost='false']" } }
+            ]
+          },
+          "eagerness": "moderate"
+        }
+      ],
       "prerender": [
         {
-          "source": "list",
-          "urls": [
-            "/login", 
-            "/register", 
-            "/about", 
-            "/pricing",
-            "/features/habit",
-            "/features/finance",
-            "/features/planner",
-            "/features/journal",
-            "/features/calendar",
-            "/features/goal",
-            "/features/job",
-            "/solutions/student",
-            "/solutions/freelancer",
-            "/solutions/personalgrowth",
-            "/resources/guide",
-            "/resources/blog",
-            "/resources/stories",
-            "/company/privacy",
-            "/company/terms",
-            "/compare/paper",
-            "/compare/sheets",
-            "/compare/management-tools",
-            "/compare/habit-apps"
-          ],
-          "eagerness": "eager"
+          "source": "document",
+          "where": {
+            "and": [
+              { "href_matches": "/*" },
+              { "not": { "href_matches": "/dashboard*" } },
+              { "not": { "href_matches": "/api/*" } },
+              { "not": { "href_matches": "/login" } },
+              { "not": { "href_matches": "/register" } },
+              { "not": { "selector_matches": "[hx-boost='false']" } }
+            ]
+          },
+          "eagerness": "moderate"
         }
       ]
     }
@@ -185,6 +183,25 @@
         
         /* Re-enable smooth scroll secara terbatas agar tidak ganggu HTMX */
         .allow-smooth { scroll-behavior: smooth; }
+
+        /* 🔥 View Transition API: Smooth cross-page morphing */
+        @view-transition {
+            navigation: auto;
+        }
+        ::view-transition-old(root) {
+            animation: fade-out 120ms ease-out;
+        }
+        ::view-transition-new(root) {
+            animation: fade-in 120ms ease-in;
+        }
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
     @if(env('VITE_GA_MEASUREMENT_ID'))
         <script>
@@ -691,65 +708,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
     <script src="//instant.page/5.2.0" type="module"></script>
 
-    {{-- 4. 🔥 SCRIPT "JEMBATAN" (Blade rasa Vue) --}}
+    {{-- 4. 🔥 TURBO NAVIGATION ENGINE --}}
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. Inisialisasi NProgress untuk Halaman Blade
+        // 1. NProgress: Faster config
         NProgress.configure({ 
             showSpinner: false, 
-            speed: 400,
-            minimum: 0.3,
+            speed: 200,
+            minimum: 0.2,
             trickle: true,
-            trickleSpeed: 200
+            trickleSpeed: 50
         });
 
-        // 2. Integrasi NProgress dengan HTMX
-        // Ketika HTMX mulai mengambil halaman baru
+        // 2. HTMX Integration
         document.body.addEventListener('htmx:configRequest', (event) => {
             NProgress.start();
         });
 
-        // FIX SLIDING MOBILE: Matikan scroll halus TEPAT SEBELUM konten ditukar
         document.body.addEventListener('htmx:beforeSwap', (event) => {
-            document.documentElement.style.scrollBehavior = 'auto'; // Matikan animasi
-            
-            // JIKA BUKAN REQUEST KE TAB ATAU MODAL (Ganti halaman penuh)
+            document.documentElement.style.scrollBehavior = 'auto';
             if (event.detail.target === document.body || event.detail.target.tagName === 'MAIN') {
-                 window.scrollTo(0, 0); // "Teleportasi" instan ke atas
+                 window.scrollTo(0, 0);
             }
         });
 
-        // Ketika konten baru sudah selesai dimuat oleh HTMX
-       // Ketika konten baru sudah selesai dimuat oleh HTMX
         document.body.addEventListener('htmx:afterSwap', (event) => {
             NProgress.done();
-            
-            // Nyalakan kembali scroll halus
             setTimeout(() => {
                 document.documentElement.style.scrollBehavior = ''; 
             }, 50);
 
-            // ✅ 2. TAMBAHAN TRACKING GOOGLE ANALYTICS SAAT PINDAH HALAMAN VIA HTMX ✅
             if (typeof gtag !== 'undefined' && window.GA_MEASUREMENT_ID) {
                 gtag('config', window.GA_MEASUREMENT_ID, {
                     page_path: window.location.pathname,
                     page_title: document.title
                 });
             }
-            // ===================================================================
         });
 
-        // Tangani error atau interupsi
         document.body.addEventListener('htmx:onLoadError', () => NProgress.done());
         document.body.addEventListener('htmx:historyRestore', () => {
-            NProgress.remove(); // Bersihkan bar saat tombol back ditekan
+            NProgress.remove();
             document.documentElement.style.scrollBehavior = '';
         });
 
-        // 3. Fallback: Navigasi keluar dari sistem HTMX (misal klik "Dashboard" ke Inertia)
+        // 3. Fallback NProgress for non-HTMX links
         document.addEventListener('click', (event) => {
             let link = event.target.closest('a');
-            
             if (link && 
                 link.href && 
                 !link.hasAttribute('hx-boost') && 
@@ -758,7 +763,57 @@
                 link.target !== '_blank'
             ) {
                 NProgress.start();
-                document.documentElement.style.scrollBehavior = 'auto'; // Matikan scroll halus
+                document.documentElement.style.scrollBehavior = 'auto';
+            }
+        });
+
+        // 4. 🔥 AGGRESSIVE PREFETCH ENGINE: Prefetch on hover (65ms threshold)
+        const prefetchedUrls = new Set();
+        const prefetchLink = (url) => {
+            if (prefetchedUrls.has(url)) return;
+            if (!url.startsWith(window.location.origin)) return;
+            if (url.includes('/dashboard') || url.includes('/api/')) return;
+            prefetchedUrls.add(url);
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = url;
+            link.as = 'document';
+            document.head.appendChild(link);
+        };
+
+        let hoverTimer = null;
+        document.addEventListener('pointerenter', (e) => {
+            const link = e.target.closest('a');
+            if (!link || !link.href) return;
+            if (link.target === '_blank' || link.hasAttribute('hx-boost')) return;
+            hoverTimer = setTimeout(() => prefetchLink(link.href), 65);
+        }, { capture: true, passive: true });
+
+        document.addEventListener('pointerleave', (e) => {
+            if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
+        }, { capture: true, passive: true });
+
+        // Also prefetch on touchstart for mobile
+        document.addEventListener('touchstart', (e) => {
+            const link = e.target.closest('a');
+            if (link && link.href) prefetchLink(link.href);
+        }, { capture: true, passive: true });
+
+        // 5. 🔥 PRELOAD VISIBLE LINKS: Intersection Observer
+        const linkObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const link = entry.target;
+                    if (link.href) prefetchLink(link.href);
+                    linkObserver.unobserve(link);
+                }
+            });
+        }, { rootMargin: '200px' });
+
+        // Observe all internal links in viewport
+        document.querySelectorAll('a[href^="/"], a[href^="' + window.location.origin + '"]').forEach(link => {
+            if (!link.target && link.target !== '_blank' && !link.hasAttribute('hx-boost')) {
+                linkObserver.observe(link);
             }
         });
     });
