@@ -151,7 +151,7 @@
     </header>
 
     {{-- NEW SECTION 2: EDITORIAL REFLECTION (SERIF & CLEAN) --}}
-    <section class="py-24 bg-white relative overflow-hidden">
+    <section class="py-24 bg-white bg-pattern-dots relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in fade-in slide-in-from-bottom-8 duration-700">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] mb-10">
                 {{ __('journal_editorial_badge') }}
@@ -286,7 +286,7 @@
     </section>
 
     {{-- NEW SECTION 3.5: SENTIMENT ANALYTICS (BENTO MOSAIC) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-purple-200">
@@ -366,7 +366,7 @@
 
 
     {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
             <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
@@ -380,7 +380,7 @@
     </section>
 
     {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - ZEN MINIMALIST REFLECTION STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
             
             {{-- Floating Seal of Quality --}}
@@ -447,7 +447,7 @@
     </section>
 
     {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - ETERNAL STREAM STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Fluid Wave Background --}}
         <div class="absolute inset-0 pointer-events-none opacity-[0.03]">
             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">

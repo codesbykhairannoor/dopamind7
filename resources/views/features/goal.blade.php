@@ -174,7 +174,7 @@
     </header>
     
     {{-- NEW SECTION 2: VERTICAL ASCENT (STRATEGY HIERARCHY) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col lg:flex-row gap-20 items-center">
                 <div class="flex-1 w-full animate-in fade-in slide-in-from-left-8 duration-700" role="img" aria-label="Strategic Growth Journey Visualization: A vertical path showing the transition from moonshot theories to actionable milestones.">
@@ -312,7 +312,7 @@
     </section>
 
     {{-- NEW SECTION 3.5: MILESTONE DECOMPOSITION (ZIG-ZAG PATH) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Decorative SVG Path Background --}}
         <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
             <svg class="w-full h-full" viewBox="0 0 1000 1000" preserveAspectRatio="none">
@@ -431,7 +431,7 @@
         </div>
     </section>
 
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
             <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
@@ -463,7 +463,7 @@
     </section>
 
     {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - ASCENSION PATH STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Geometric Ascension Background --}}
         <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-indigo-50/50 to-transparent"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.02] pointer-events-none">

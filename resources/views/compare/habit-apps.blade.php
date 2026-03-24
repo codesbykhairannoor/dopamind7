@@ -390,7 +390,7 @@
     </section>
 
     {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) - HABIT LAB STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Biological Background Pattern --}}
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">

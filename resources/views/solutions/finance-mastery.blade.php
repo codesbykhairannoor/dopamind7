@@ -211,7 +211,7 @@
     </section>
 
     {{-- SECTION: PORTFOLIO REBALANCING (UNIQUE A) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="bg-slate-900 rounded-[3rem] p-10 border border-slate-800 shadow-2xl relative">
                 <div class="flex justify-center gap-4">
@@ -320,7 +320,7 @@
     </section>
 
     {{-- SECTION 5: CTA --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
             <div class="text-6xl mb-8 animate-bounce">📈</div>
             <h2 class="text-5xl md:text-7xl font-black mb-8 text-gray-900 tracking-tight">{{ __('solve_finance_cta_title') }}</h2>
@@ -334,7 +334,7 @@
     </section>
 
     {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - FINANCIAL LATTICE STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Geometric Lattice Pattern --}}
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none">
             <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">

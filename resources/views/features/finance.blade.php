@@ -159,7 +159,7 @@
     </header>
 
     {{-- NEW SECTION 2: GLASSMORFISM WALLETS --}}
-    <section class="py-24 bg-white relative overflow-hidden">
+    <section class="py-24 bg-white bg-pattern-dots relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col lg:flex-row gap-20 items-center">
                 <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
@@ -436,7 +436,7 @@
     </section>
 
     {{-- SECTION 6: THE SUCCESS QUOTE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
             <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
@@ -534,7 +534,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-white px-6">
+    <section class="py-24 bg-white bg-pattern-cross px-6">
         <div class="max-w-6xl mx-auto bg-gradient-to-br from-indigo-900 to-indigo-950 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl border border-indigo-800">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-pulse duration-[6000ms]"></div>
             
@@ -554,7 +554,7 @@
     </section>
 
     {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - ABUNDANCE GRID STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Floating Currency Symbols Background --}}
         <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]">
             <div class="absolute top-10 left-10 text-9xl font-black">$</div>

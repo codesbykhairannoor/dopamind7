@@ -436,7 +436,7 @@
     </section>
 
     {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) - EFFICIENCY LAB STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Board Background --}}
         <div class="absolute inset-0 bg-slate-50 opacity-50"></div>
         <div class="absolute top-1/4 left-0 w-full h-px bg-slate-200/50"></div>

@@ -172,7 +172,7 @@
 
 
     {{-- SECTION 2: THE "STUDENT STRUGGLE" AWARENESS --}}
-    <section class="py-24 bg-white relative overflow-hidden">
+    <section class="py-24 bg-white bg-pattern-dots relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('student_prob_title') }}</h2>
@@ -289,7 +289,7 @@
     </section>
 
     {{-- SECTION: STUDY WORKFLOW (UNIQUE A) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="bg-slate-900 rounded-[3rem] p-8 md:p-12 shadow-2xl relative">
                 <div class="absolute top-0 right-0 p-8 opacity-10 text-8xl">📝</div>

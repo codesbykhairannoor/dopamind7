@@ -166,7 +166,7 @@
 </header>
 
     {{-- SECTION 2: THE "FREELANCE ROLLERCOASTER" (HORIZONTAL PATHWAY) --}}
-    <section class="py-24 bg-white relative overflow-hidden">
+    <section class="py-24 bg-white bg-pattern-dots relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('freelance_prob_title') }}</h2>

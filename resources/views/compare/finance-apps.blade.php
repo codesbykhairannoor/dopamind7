@@ -468,7 +468,7 @@
     </style>
 
     {{-- SECTION: INTERNAL LINKING (UNIFIED ECOSYSTEM) - FINANCIAL VAULT BENTO STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-20 text-center tracking-tight">
                 {{ __('unified_ecosystem_title', ['feature' => __('finapp_badge')]) }}

@@ -160,7 +160,7 @@
     </section>
 
     {{-- SECTION 3: METRICS OF IMPACT (CLEAN MINIMALIST) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
                 <div class="space-y-2">

@@ -171,7 +171,7 @@
     </header>
     
     {{-- NEW SECTION 2: THE CONSISTENCY GRID --}}
-    <section class="py-24 bg-white relative overflow-hidden">
+    <section class="py-24 bg-white bg-pattern-dots relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row gap-16 items-center">
                 <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
@@ -282,7 +282,7 @@
     </section>
 
     {{-- NEW SECTION 4: MOOD CORRELATION --}}
-    <section class="py-24 bg-white relative overflow-hidden">
+    <section class="py-24 bg-white bg-pattern-dots relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
              <div class="relative animate-in zoom-in-95 duration-700">
                 <div class="absolute -inset-4 bg-indigo-50 rounded-[4rem] -z-10 animate-pulse duration-[5000ms]"></div>
@@ -411,7 +411,7 @@
     </section>
 
     {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - ATOMIC PROGRESS STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="flex flex-col items-center">
                 {{-- Atomic Connector Visualization --}}

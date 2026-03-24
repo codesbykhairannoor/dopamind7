@@ -203,7 +203,7 @@
     </section>
 
     {{-- SECTION: INTERVIEW PREP (UNIQUE A) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="bg-indigo-950 rounded-[3rem] p-8 md:p-12 shadow-2xl relative order-2 md:order-1">
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-500/20 via-transparent to-transparent opacity-50"></div>

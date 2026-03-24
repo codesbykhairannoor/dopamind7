@@ -180,7 +180,7 @@
     </header>
     
     {{-- NEW SECTION 2: OPPORTUNITY FUNNEL (PIPELINE VISUAL) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6" role="img" aria-label="Career Momentum and Funnel Visualization: A vertical pipeline showing the conversion from initial discovery to successful job placement.">
             <div class="flex flex-col lg:flex-row gap-24 items-center">
                 <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
@@ -391,7 +391,7 @@
 
 
     {{-- SECTION 4: THE SUCCESS QUOTE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
             <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
@@ -479,7 +479,7 @@
     </section>
 
     {{-- SECTION 8: INTERNAL LINKING (UNIFIED ECOSYSTEM) - OPPORTUNITY MATRIX STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Matrix Background Grid --}}
         <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-slate-50 to-transparent"></div>
         

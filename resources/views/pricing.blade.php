@@ -459,7 +459,7 @@
     </section>
 
     {{-- SECTION 4: ELITE EXPERIENCE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="relative overflow-hidden rounded-[4rem] bg-slate-900 border border-slate-800 p-8 md:p-20 group">
                 <!-- Background decorative elements -->
@@ -576,7 +576,7 @@
     </section>
 
     {{-- SECTION 7: BOTTOM CTA --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-5xl mx-auto px-6 relative z-10">
             <div class="bg-indigo-600 rounded-[4rem] p-12 md:p-24 text-center text-white relative overflow-hidden shadow-[0_40px_80px_-20px_rgba(79,70,229,0.4)]">
                 <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48 blur-3xl animate-pulse"></div>

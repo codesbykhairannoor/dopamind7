@@ -109,7 +109,7 @@
     </header>
 
     {{-- SECTION 2: THE PROBLEM (THE BRAIN FOG) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">{{ __('solve_mental_prob_title') }}</h2>
             <p class="text-xl text-gray-500 mb-16 leading-relaxed">
@@ -224,7 +224,7 @@
     </section>
 
     {{-- SECTION: COGNITIVE LOAD (UNIQUE A) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="relative order-2 md:order-1">
                 <div class="bg-indigo-50 rounded-[3rem] p-10 border border-indigo-100 shadow-xl overflow-hidden relative">
@@ -264,7 +264,7 @@
     </section>
 
     {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - MIND MAP REFLECTION STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Organic Mind Map Lines --}}
         <div class="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
             <svg class="w-full h-full" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -339,7 +339,7 @@
     </section>
 
     {{-- SECTION 5: CTA --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-purple-100 to-transparent rounded-full blur-3xl opacity-50 -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">

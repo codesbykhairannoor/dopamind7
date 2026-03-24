@@ -166,7 +166,7 @@
     </section>
 
     {{-- SECTION: HABIT HEATMAPS (UNIQUE A) --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="relative">
                 <div class="bg-indigo-50 rounded-[3rem] p-8 md:p-12 border border-indigo-100 shadow-xl">
@@ -217,7 +217,7 @@
     </section>
 
     {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - CHEMICAL REACTION STYLE --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Floating Atoms Decoration --}}
         <div class="absolute top-20 left-10 w-4 h-4 bg-indigo-200 rounded-full animate-bounce"></div>
         <div class="absolute bottom-20 right-10 w-6 h-6 bg-purple-200 rounded-full animate-bounce delay-700"></div>

@@ -36,3 +36,77 @@
 #nprogress .spinner {
     display: none; 
 }
+
+/* ================================================================= */
+/* 🎨 PREMIUM BACKGROUND PATTERNS (Pure CSS, Zero Load Cost)         */
+/* ================================================================= */
+
+/* 1. Dot Grid — Clean, modern notebook feel */
+.bg-pattern-dots {
+    background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/* 2. Fine Line Grid — Engineering paper feel */
+.bg-pattern-grid {
+    background-image: 
+        linear-gradient(#f1f5f9 1px, transparent 1px),
+        linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* 3. Cross Dot — Subtle intersection markers */
+.bg-pattern-cross {
+    background-image: 
+        radial-gradient(circle, #cbd5e1 0.8px, transparent 0.8px),
+        radial-gradient(circle, #cbd5e1 0.8px, transparent 0.8px);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+}
+
+/* 4. Diagonal Lines — Premium fabric texture */
+.bg-pattern-diagonal {
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 8px,
+        #f1f5f9 8px,
+        #f1f5f9 9px
+    );
+}
+
+/* 5. Gradient Mesh Orb — Colored ambient glow */
+.bg-pattern-mesh-indigo {
+    background-image: 
+        radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99, 102, 241, 0.04), transparent),
+        radial-gradient(ellipse 60% 60% at 80% 20%, rgba(139, 92, 246, 0.04), transparent),
+        radial-gradient(ellipse 50% 80% at 50% 90%, rgba(79, 70, 229, 0.03), transparent);
+}
+
+/* 6. Gradient Mesh Orb — Warm variant */
+.bg-pattern-mesh-warm {
+    background-image: 
+        radial-gradient(ellipse 70% 50% at 30% 30%, rgba(251, 191, 36, 0.04), transparent),
+        radial-gradient(ellipse 60% 60% at 70% 70%, rgba(249, 115, 22, 0.03), transparent),
+        radial-gradient(ellipse 80% 40% at 50% 50%, rgba(236, 72, 153, 0.02), transparent);
+}
+
+/* 7. Noise Grain — Paper-like premium texture (CSS only) */
+.bg-pattern-noise {
+    position: relative;
+}
+.bg-pattern-noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.3;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    pointer-events: none;
+    z-index: 0;
+}
+.bg-pattern-noise > * {
+    position: relative;
+    z-index: 1;
+}

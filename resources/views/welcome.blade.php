@@ -66,7 +66,7 @@
     {{-- ================================================================= --}}
     {{-- SECTION 1: HERO - THE UNIFIED ORB --}}
     {{-- ================================================================= --}}
-    <header class="pt-32 pb-40 px-6 text-center relative overflow-hidden bg-white">
+    <header class="pt-32 pb-40 px-6 text-center relative overflow-hidden bg-white bg-pattern-dots">
         {{-- Deep Indigo Gradient Background --}}
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-gradient-to-b from-indigo-50/50 via-white to-white rounded-full blur-[120px] -z-10"></div>
         
@@ -174,7 +174,7 @@
     {{-- ================================================================= --}}
     {{-- SECTION 3: THE 5 PILLARS --}}
     {{-- ================================================================= --}}
-    <section class="py-32 bg-white scroll-mt-20" id="features">
+    <section class="py-32 bg-white bg-pattern-grid scroll-mt-20" id="features">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-24">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 font-black text-[10px] mb-6 tracking-widest border border-slate-200">
@@ -353,7 +353,7 @@
     {{-- ================================================================= --}}
     {{-- SECTION 4.1: DEEP SYNERGY ARCHITECTURE --}}
     {{-- ================================================================= --}}
-    <section class="py-32 bg-white relative overflow-hidden">
+    <section class="py-32 bg-white bg-pattern-dots bg-pattern-mesh-indigo relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-24 items-center">
                 <div>
@@ -416,7 +416,7 @@
     {{-- ================================================================= --}}
     {{-- SECTION 5: PREMIUM PREVIEW (MOCKUP) --}}
     {{-- ================================================================= --}}
-    <section class="py-40 bg-white relative overflow-hidden">
+    <section class="py-40 bg-white bg-pattern-diagonal relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-24 items-center">
                 <div class="relative order-2 lg:order-1">
@@ -574,7 +574,7 @@
     {{-- ================================================================= --}}
     {{-- SECTION 7: WAITLIST --}}
     {{-- ================================================================= --}}
-    <section class="py-40 bg-white">
+    <section class="py-40 bg-white bg-pattern-cross">
         <div class="max-w-5xl mx-auto px-6">
             <div class="relative bg-slate-900 rounded-[4rem] p-12 md:p-24 shadow-2xl overflow-hidden group">
                 <div class="absolute -right-20 -top-20 w-96 h-96 bg-indigo-600 rounded-full blur-[100px] opacity-20 group-hover:opacity-40 transition duration-1000"></div>
@@ -651,7 +651,7 @@
     {{-- ================================================================= --}}
     {{-- SECTION 9: FINAL CTA --}}
     {{-- ================================================================= --}}
-    <section class="py-40 px-6 text-center relative overflow-hidden bg-white">
+    <section class="py-40 px-6 text-center relative overflow-hidden bg-white bg-pattern-mesh-indigo">
         <div class="max-w-5xl mx-auto">
             <h2 class="text-5xl md:text-[6rem] font-black mb-10 leading-[0.9] tracking-tight text-slate-900">
                 {{ __('cta_final_title') }}
