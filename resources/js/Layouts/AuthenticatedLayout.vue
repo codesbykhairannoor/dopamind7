@@ -16,7 +16,7 @@ const showingNavigationDropdown = ref(false);
 // 🔥 STATE SIDEBAR DESKTOP COLLAPSE
 const isSidebarCollapsed = ref(false);
 
-const { initTheme } = useAppearance();
+const { initTheme, isDark } = useAppearance();
 
 onMounted(() => {
     // 🛡️ SAFETY GUARD: If somehow user is null in an authenticated layout, force redirect to login.
@@ -80,12 +80,6 @@ watch(() => page.url, () => {
                         </span>
                     </Transition>
                 </Link>
-
-                <div v-if="!isSidebarCollapsed" class="ml-auto">
-                    <Link :href="route('coach.index')" prefetch class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 hover:scale-110 hover:bg-indigo-100 transition-all border border-indigo-100/50 dark:border-indigo-500/20 shadow-sm" title="AI Coach">
-                        <OneForMindIcon name="sparkles" size="16" stroke-width="2.5" />
-                    </Link>
-                </div>
             </div>
 
             <nav class="flex-1 px-3 space-y-1 overflow-y-auto py-4 custom-scrollbar" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
@@ -341,6 +335,33 @@ watch(() => page.url, () => {
             </div>
         </Transition>
 
+        <!-- FLOATING AI COACH BUTTON (DESKTOP ONLY) -->
+        <Link 
+            v-if="!route().current('coach.*')"
+            :href="route('coach.index')" 
+            prefetch
+            class="hidden md:block fixed bottom-10 right-10 z-[100] group"
+        >
+            <div class="relative">
+                <!-- Outer Glow -->
+                <div class="absolute inset-0 bg-indigo-500 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity rounded-full"></div>
+                
+                <!-- Main Button -->
+                <div class="relative w-16 h-16 bg-slate-900 dark:bg-indigo-600 rounded-[1.8rem] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 active:scale-95 ring-4 ring-white dark:ring-slate-950 group-hover:ring-indigo-50 dark:group-hover:ring-indigo-500/20 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <OneForMindIcon name="sparkles" size="28" stroke-width="2" class="text-white group-hover:rotate-[20deg] transition-transform duration-500 relative z-10" />
+                    
+                    <!-- Notification Dot -->
+                    <span class="absolute top-4 right-4 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-slate-900 rounded-full animate-pulse z-20"></span>
+                </div>
+                
+                <!-- Hover Label -->
+                <div class="absolute right-full mr-5 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.2em] px-5 py-3 rounded-2xl whitespace-nowrap opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none shadow-2xl border border-white/10 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    NEURAL OS ONLINE
+                </div>
+            </div>
+        </Link>
     </div>
 </template>
 

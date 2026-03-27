@@ -13,6 +13,9 @@ import {
   PointElement,
   Filler
 } from 'chart.js'
+import { useAppearance } from '@/Composables/useAppearance'
+
+const { isDark } = useAppearance()
 
 ChartJS.register(
   Title,
