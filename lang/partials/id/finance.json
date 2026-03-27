@@ -136,6 +136,9 @@
   "growth": "Growth",
   "est_total": "Est. Total",
   "quit": "QUIT",
-  "lab_empty": "Lab Masih Kosong"
-
+  "lab_empty": "Lab Masih Kosong",
+  "see_all": "Lihat Semua",
+  "see_less": "Sembunyikan",
+  "view_full_archive": "Arsip Lengkap",
+  "export": "Ekspor"
 }

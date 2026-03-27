@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { usePage } from '@inertiajs/vue3';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+import { router, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import 'dayjs/locale/id';
@@ -19,6 +19,7 @@ const page = usePage();
 const { activeCurrency, supportedCurrencies, setCurrency, appLocale } = useFinanceFormat();
 const isDateDropdownOpen = ref(false);
 const isCurrencyDropdownOpen = ref(false);
+const isExportDropdownOpen = ref(false);
 
 const months = [
   { name: 'month_jan' }, { name: 'month_feb' }, { name: 'month_mar' },
@@ -63,6 +64,43 @@ const changeYear = (offset) => {
   const newYear = activeYear.value + offset;
   const month = String(activeMonthNum.value + 1).padStart(2, '0');
   props.onChangeDate(`${newYear}-${month}`);
+};
+
+const handleCurrencySelect = (code) => {
+    const target = supportedCurrencies.find(c => c.code === code);
+    if (target) {
+        setCurrency(code);
+        // Persist ke DB
+        router.post(route('finance.settings.currency'), {
+            currency: target.code,
+            currency_symbol: target.code === 'IDR' ? 'Rp' : (target.code === 'USD' ? '$' : (target.code === 'GBP' ? '£' : '€'))
+        }, { preserveScroll: true });
+    }
+    isCurrencyDropdownOpen.value = false;
+};
+
+const exportExcel = async () => {
+    try {
+        const response = await fetch(route('finance.export.excel', { month: props.currentMonthKey }));
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `OneForMind_Finance_${props.currentMonthKey}.xls`);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error('Download failed', error);
+        // Fallback
+        window.location.href = route('finance.export.excel', { month: props.currentMonthKey });
+    }
+};
+
+const exportTax = () => {
+    // Membuka tab baru untuk print report (PDF generator natural browser)
+    window.open(route('finance.export.tax', { month: props.currentMonthKey }), '_blank');
 };
 
 </script>
@@ -146,12 +184,56 @@ const changeYear = (offset) => {
                 <button 
                   v-for="c in supportedCurrencies" 
                   :key="c.code" 
-                  @click="setCurrency(c.code); isCurrencyDropdownOpen = false" 
+                  @click="handleCurrencySelect(c.code)" 
                   class="w-full flex items-center gap-3 px-3 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-colors duration-300" 
                   :class="activeCurrency === c.code ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400' : 'text-slate-600 dark:text-slate-300'"
                 >
                   <span class="text-lg">{{ c.icon }}</span>
                   <span class="text-[11px] font-bold">{{ c.code }}</span>
+                </button>
+              </div>
+            </div>
+          </Transition>
+        </div>
+
+        <!-- Export Actions -->
+        <div class="relative shrink-0 transition-colors duration-500">
+          <button 
+            @click="isExportDropdownOpen = !isExportDropdownOpen; isCurrencyDropdownOpen = false; isDateDropdownOpen = false" 
+            class="flex items-center justify-center h-11 px-3 transition border bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl gap-2 hover:bg-white dark:hover:bg-slate-700 shadow-sm dark:shadow-none group transition-colors duration-300"
+            :class="{'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-200 dark:border-indigo-500/20': isExportDropdownOpen}"
+          >
+            <OneForMindIcon name="download" size="14" stroke-width="3" class="text-slate-400 group-hover:text-indigo-500" />
+            <span class="text-[9px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest hidden lg:inline">{{ $t('export') }}</span>
+          </button>
+
+          <Transition name="slide-fade">
+            <div v-if="isExportDropdownOpen" class="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-slate-800 rounded-2xl shadow-xl dark:shadow-none border border-slate-100 dark:border-slate-700 p-1.5 z-[100] origin-top-right transition-colors duration-500">
+              <div class="fixed inset-0 z-[-1]" @click="isExportDropdownOpen = false"></div>
+              <div class="relative z-10 space-y-0.5">
+                <button 
+                  @click="exportExcel(); isExportDropdownOpen = false" 
+                  class="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all group/item"
+                >
+                  <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover/item:scale-110 transition-transform">
+                    <OneForMindIcon name="file-text" size="14" stroke-width="2.5" />
+                  </div>
+                  <div class="text-left">
+                    <p class="text-[11px] font-bold text-slate-700 dark:text-slate-200">Export Excel</p>
+                    <p class="text-[9px] text-slate-400 font-medium">Buka di Excel / Sheets</p>
+                  </div>
+                </button>
+                <button 
+                  @click="exportTax(); isExportDropdownOpen = false" 
+                  class="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all group/item"
+                >
+                  <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:scale-110 transition-transform">
+                    <OneForMindIcon name="file-text" size="14" stroke-width="2.5" />
+                  </div>
+                  <div class="text-left">
+                    <p class="text-[11px] font-bold text-slate-700 dark:text-slate-200">Laporan Pajak</p>
+                    <p class="text-[9px] text-slate-400 font-medium font-mono">Format Fiscal PDF</p>
+                  </div>
                 </button>
               </div>
             </div>

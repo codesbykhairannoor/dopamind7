@@ -420,6 +420,11 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::post('/categories', [FinanceController::class , 'storeCategory'])->name('categories.store');
             Route::put('/categories/{category}', [FinanceController::class , 'updateCategory'])->name('categories.update');
             Route::delete('/categories/{category}', [FinanceController::class , 'destroyCategory'])->name('categories.destroy');
+
+            // Exports & Settings
+            Route::get('/export/excel', [FinanceController::class, 'exportExcel'])->name('export.excel');
+            Route::get('/export/tax', [FinanceController::class, 'exportTax'])->name('export.tax');
+            Route::post('/settings/currency', [FinanceController::class, 'updateCurrency'])->name('settings.currency');
         }
         );
 

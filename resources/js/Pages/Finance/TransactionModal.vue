@@ -62,7 +62,7 @@ const onInput = (e) => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="md">
-        <div class="bg-slate-50 dark:bg-slate-950 flex flex-col max-h-[85vh] relative overflow-hidden transition-all duration-500 border border-slate-200 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem]">
+        <div class="bg-slate-50 dark:bg-slate-950 flex flex-col max-h-[85vh] relative overflow-visible transition-all duration-500 border border-slate-200 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem]">
             
             <div class="px-6 md:px-8 py-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 z-20 shrink-0 transition-colors duration-500">
                 <div class="flex items-center gap-4 transition-colors duration-500">

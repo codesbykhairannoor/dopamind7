@@ -158,4 +158,96 @@ class FinanceController extends Controller
 
         return back();
     }
+
+    public function exportExcel(Request $request)
+    {
+        $user = Auth::user();
+        $month = $request->query('month', now()->format('Y-m'));
+        
+        $transactions = FinanceTransaction::ofUser($user->id)
+            ->where('date', 'like', $month . '%')
+            ->orderBy('date', 'asc')
+            ->get();
+
+        $filename = "OneForMind_Finance_{$month}.xls";
+
+        $html = "
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>
+        <head>
+            <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+            <style>
+                .header { background-color: #4f46e5; color: white; font-weight: bold; }
+                .income { color: #059669; }
+                .expense { color: #dc2626; }
+                td { border: 0.5pt solid #e2e8f0; padding: 5px; }
+            </style>
+        </head>
+        <body>
+            <table>
+                <tr>
+                    <td colspan='6' style='font-size: 16pt; font-weight: bold;'>Finance Report - " . $month . "</td>
+                </tr>
+                <tr>
+                    <td colspan='6' style='color: #64748b;'>Generated for: " . $user->name . " (" . $user->email . ")</td>
+                </tr>
+                <tr></tr>
+                <tr class='header'>
+                    <td>Date</td>
+                    <td>Title</td>
+                    <td>Type</td>
+                    <td>Category</td>
+                    <td>Amount</td>
+                    <td>Notes</td>
+                </tr>";
+
+        foreach ($transactions as $trx) {
+            $typeClass = $trx->type === 'income' ? 'income' : 'expense';
+            $html .= "
+                <tr>
+                    <td>{$trx->date}</td>
+                    <td>{$trx->title}</td>
+                    <td class='{$typeClass}'>" . ucfirst($trx->type) . "</td>
+                    <td>" . strtoupper($trx->category) . "</td>
+                    <td style='text-align: right;'>" . number_format($trx->amount, 2) . "</td>
+                    <td>{$trx->notes}</td>
+                </tr>";
+        }
+
+        $html .= "
+            </table>
+        </body>
+        </html>";
+
+        return response($html)
+            ->header('Content-Type', 'application/vnd.ms-excel')
+            ->header('Content-Disposition', "attachment; filename={$filename}")
+            ->header('Pragma', 'no-cache')
+            ->header('Expires', '0');
+    }
+
+    public function exportTax(Request $request)
+    {
+        $user = Auth::user();
+        $month = $request->query('month', now()->format('Y-m'));
+        $data = $this->financeService->getDashboardData($user->id, $month . '-01', $user->timezone ?? 'Asia/Jakarta');
+
+        return view('finance.tax_report', [
+            'user' => $user,
+            'month' => $month,
+            'transactions' => $data['transactions'],
+            'stats' => $data['stats'],
+            'categories' => $data['categories']
+        ]);
+    }
+
+    public function updateCurrency(Request $request)
+    {
+        $validated = $request->validate([
+            'currency' => 'required|string|max:10',
+            'currency_symbol' => 'required|string|max:10'
+        ]);
+
+        Auth::user()->update($validated);
+        return back()->with('success', 'Currency updated.');
+    }
 }

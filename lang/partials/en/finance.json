@@ -118,5 +118,9 @@
   "growth": "Growth",
   "est_total": "Est. Total",
   "quit": "QUIT",
-  "lab_empty": "Lab is Empty"
+  "lab_empty": "Lab is Empty",
+  "see_all": "See All",
+  "see_less": "Show Less",
+  "view_full_archive": "Full Archive",
+  "export": "Export"
 }

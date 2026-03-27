@@ -11,11 +11,26 @@ const activeCurrency = ref(isBrowser ? (localStorage.getItem('finance_currency')
 const currencyLocale = ref(isBrowser ? (localStorage.getItem('finance_locale') || 'id-ID') : 'id-ID');
 
 export function useFinanceFormat() {
+    const page = usePage();
+    const user = computed(() => page?.props?.auth?.user);
     
-    // 🔥 FIX UTAMA: Gunakan usePage() untuk mendeteksi bahasa aplikasi secara Reaktif
+    // 🔥 SYNC DENGAN DATABASE (User Settings)
+    if (user.value?.currency && isBrowser && activeCurrency.value !== user.value.currency) {
+        const target = [
+            { code: 'IDR', locale: 'id-ID' },
+            { code: 'USD', locale: 'en-US' },
+            { code: 'GBP', locale: 'en-GB' },
+            { code: 'EUR', locale: 'de-DE' },
+            { code: 'JPY', locale: 'ja-JP' },
+        ].find(c => c.code === user.value.currency);
+        
+        if (target) {
+            activeCurrency.value = target.code;
+            currencyLocale.value = target.locale;
+        }
+    }
+
     const appLocale = computed(() => {
-        const page = usePage();
-        // Cek props locale dari Inertia, atau fallback ke library, atau default 'id'
         return page?.props?.locale || getActiveLanguage() || 'id';
     });
 

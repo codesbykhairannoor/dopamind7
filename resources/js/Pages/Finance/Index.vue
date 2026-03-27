@@ -14,6 +14,7 @@ import BudgetModal from './BudgetModal.vue';
 import CategoryModal from './CategoryModal.vue'; 
 import DailyTrendChart from './DailyTrendChart.vue'; 
 import ArchiveModal from './ArchiveModal.vue'; 
+import FullArchiveModal from './FullArchiveModal.vue';
 import FinanceDatePicker from './FinanceDatePicker.vue';
 import FinanceBatchModal from './FinanceBatchModal.vue';
 import FinanceInsights from './FinanceInsights.vue'; 
@@ -66,6 +67,7 @@ const showTransactionModal = ref(false);
 const showBudgetModal = ref(false); 
 const showCategoryModal = ref(false);
 const showFilterPicker = ref(false);
+const showFullHistoryModal = ref(false);
 
 const filterDateRef = ref(props.filters.date || dayjs().format('YYYY-MM-DD'));
 
@@ -74,7 +76,7 @@ const {
     openBatchModal, closeBatchModal, addBatchRow, removeBatchRow, submitBatch: executeBatch
 } = useFinanceBatch(filterDateRef);
 
-const { visibleStats, filterDate, isArchiveOpen, selectedDayData, openDetail } = useFinanceHistory(historyProps);
+const { visibleStats, allStats, filterDate, isArchiveOpen, selectedDayData, openDetail } = useFinanceHistory(historyProps);
 const { formatMoney } = useFinanceFormat();
 
 // --- Handlers Modal ---
@@ -265,23 +267,39 @@ const switchToSingle = () => {
                                 <h3 class="text-lg font-bold text-slate-800 dark:text-white transition-colors duration-500">{{ $t('daily_history') }}</h3>
                                 <span v-if="!filterDate" class="text-[10px] font-bold text-slate-400 dark:text-slate-600 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-lg">{{ $t('last_5') }}</span>
                                 <span v-else class="text-[10px] font-bold text-indigo-500 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-2 py-1 rounded-lg">{{ $t('search_result') }}</span>
-                                                        <div class="relative shrink-0 transition-colors duration-500">
-          <button 
-            @click="showFilterPicker = !showFilterPicker" 
-            class="pl-3 pr-8 py-2 text-xs font-bold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm dark:shadow-none hover:border-indigo-300 dark:hover:border-indigo-500/40 hover:ring-2 hover:ring-indigo-500/10 transition-all flex items-center gap-2 min-w-[150px] relative transition-colors duration-500" :class="filterDate ? 'text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/30' : 'text-slate-500 dark:text-slate-400'">
+                            </div>
+
+                            <button 
+                                v-if="!filterDate"
+                                @click="showFullHistoryModal = true"
+                                class="text-[10px] font-black text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 sm:ml-auto flex items-center gap-1.5 transition-all active:scale-95 group"
+                            >
+                                <span class="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/20 transition-colors">
+                                    <OneForMindIcon name="calendar-history" size="14" stroke-width="2.5" />
+                                </span>
+                                {{ $t('view_full_archive', 'Arsip Lengkap') }}
+                            </button>
+
+                            <div class="flex items-center gap-2">
+                                <div class="relative">
+                                    <button 
+                                        @click="showFilterPicker = !showFilterPicker" 
+                                        class="pl-3 pr-8 py-2 text-xs font-bold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm dark:shadow-none hover:border-indigo-300 dark:hover:border-indigo-500/40 hover:ring-2 hover:ring-indigo-500/10 transition-all flex items-center gap-2 min-w-[150px] relative transition-colors duration-500" :class="filterDate ? 'text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/30' : 'text-slate-500 dark:text-slate-400'">
                                         <span class="text-base">📅</span>
-                                      <span>{{ filterDate ? dayjs(filterDate).locale($page.props.locale).format('DD MMM YYYY') : $t('date_filter') }}</span>
+                                        <span>{{ filterDate ? dayjs(filterDate).locale($page.props.locale).format('DD MMM YYYY') : $t('date_filter') }}</span>
                                         <span class="absolute right-3 text-slate-400 dark:text-slate-600 text-[10px]">{{ showFilterPicker ? '▲' : '▼' }}</span>
                                     </button>
-                                    <button v-if="filterDate" @click.stop="filterDate = ''" class="text-slate-300 dark:text-slate-600 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 p-1.5 rounded-lg transition-all border border-transparent hover:border-rose-100 dark:hover:border-rose-500/20" title="Hapus Filter">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
-                                    </button>
+                                    
+                                    <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-2">
+                                        <div v-if="showFilterPicker" class="absolute right-0 top-full mt-2 z-50 origin-top-right">
+                                            <FinanceDatePicker :show="showFilterPicker" :modelValue="filterDate" :transactions="localTransactions" @update:modelValue="(val) => filterDate = val" @close="showFilterPicker = false"/>
+                                        </div>
+                                    </transition>
                                 </div>
-                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-2">
-                                    <div v-if="showFilterPicker" class="absolute right-0 top-full mt-2 z-50 origin-top-right">
-                                        <FinanceDatePicker :show="showFilterPicker" :modelValue="filterDate" :transactions="localTransactions" @update:modelValue="(val) => filterDate = val" @close="showFilterPicker = false"/>
-                                    </div>
-                                </transition>
+
+                                <button v-if="filterDate" @click.stop="filterDate = ''" class="text-slate-300 dark:text-slate-600 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 p-1.5 rounded-lg transition-all border border-transparent hover:border-rose-100 dark:hover:border-rose-500/20" title="Hapus Filter">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                                </button>
                             </div>
                         </div>
 
@@ -321,12 +339,21 @@ const switchToSingle = () => {
                                     </span>
                                 </div>
                             </div>
-                            <div v-if="!filterDate && visibleStats.length === 5" class="bg-slate-50/50 dark:bg-slate-800/50 p-2.5 text-center border-t border-slate-100 dark:border-slate-800 transition-colors duration-500">
+                            <div v-if="!filterDate && allStats.length > 5" class="bg-slate-50/50 dark:bg-slate-800/50 p-2.5 text-center border-t border-slate-100 dark:border-slate-800 transition-colors duration-500">
                                 <p class="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest">{{ $t('old_data_hint') }}</p>
                             </div>
                         </div>
 
                         <ArchiveModal :show="isArchiveOpen" :dayData="selectedDayData" :categories="categories" :close="() => isArchiveOpen = false" :onDelete="triggerDeleteTransaction" :onEdit="handleEdit" />
+                        
+                        <FullArchiveModal 
+                            :show="showFullHistoryModal" 
+                            :allStats="allStats" 
+                            :categories="categories" 
+                            :close="() => showFullHistoryModal = false" 
+                            :onDelete="triggerDeleteTransaction" 
+                            :onEdit="handleEdit" 
+                        />
                     </div>
 
                    <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" @day-click="openDetail" />

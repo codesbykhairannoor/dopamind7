@@ -29,10 +29,10 @@ export const useGating = () => {
             // FINANCE
             case 'finance_budgeting':
             case 'finance_charts':
-                return tier.value >= 2;
+            case 'finance_csv_import':
+                return true;
             case 'finance_ai_audit':
             case 'finance_predictive_burn':
-            case 'finance_csv_import':
                 return tier.value >= 3;
             case 'finance_net_worth':
             case 'finance_investment_sim':
