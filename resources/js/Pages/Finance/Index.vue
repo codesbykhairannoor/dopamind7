@@ -37,10 +37,10 @@ const page = usePage();
 defineOptions({ layout: AuthenticatedLayout });
 
 // 🔥 MAGIC OPTIMISTIC UI: Buat State Lokal
-const localTransactions = ref([...props.transactions]);
-const localBudgets = ref([...props.budgets]);
-const localCategories = ref([...props.categories]);
-const localStats = ref(JSON.parse(JSON.stringify(props.stats))); 
+const localTransactions = ref([...(props.transactions || [])]);
+const localBudgets = ref([...(props.budgets || [])]);
+const localCategories = ref([...(props.categories || [])]);
+const localStats = ref(JSON.parse(JSON.stringify(props.stats || {}))); 
 
 watch(() => props.transactions, (newVal) => localTransactions.value = [...newVal], { deep: true });
 watch(() => props.budgets, (newVal) => localBudgets.value = [...newVal], { deep: true });

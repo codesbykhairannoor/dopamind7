@@ -424,6 +424,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             // Exports & Settings
             Route::get('/export/excel', [FinanceController::class, 'exportExcel'])->name('export.excel');
             Route::get('/export/tax', [FinanceController::class, 'exportTax'])->name('export.tax');
+            Route::post('/export/audit', [FinanceController::class, 'runAudit'])->name('export.audit');
             Route::post('/settings/currency', [FinanceController::class, 'updateCurrency'])->name('settings.currency');
         }
         );
@@ -507,6 +508,12 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
         Route::get('/payment/finish', [\App\Http\Controllers\PaymentController::class , 'finish'])->name('payment.finish');
         Route::get('/payment/unfinish', [\App\Http\Controllers\PaymentController::class , 'unfinish'])->name('payment.unfinish');
         Route::get('/payment/error', [\App\Http\Controllers\PaymentController::class , 'error'])->name('payment.error');
+
+        // AI Coach
+        Route::prefix('coach')->name('coach.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\AiCoachController::class, 'index'])->name('index');
+            Route::post('/chat', [\App\Http\Controllers\AiCoachController::class, 'chat'])->name('chat');
+        });
     });
 
 Route::post('/callback', [\App\Http\Controllers\PaymentController::class , 'callback'])->name('payment.callback');

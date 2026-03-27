@@ -32,6 +32,8 @@ class JournalResource extends JsonResource
             'date'       => $this->date,
             'is_pinned'  => $this->is_pinned,
             'image_url'  => $imageUrl, // 🔥 Sekarang ini 100% akurat di semua env!
+            'ai_sentiment' => $this->ai_sentiment,
+            'mood_score'   => $this->mood_score,
             'created_at' => $this->created_at->format('Y-m-d H:i:s'),
         ];
     }

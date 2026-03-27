@@ -11,6 +11,7 @@ use App\Models\FinanceBudget;
 use App\Models\FinanceCategory;
 use App\Models\FinanceTransaction;
 use App\Models\DailyLog;
+use App\Services\GeminiService;
 use App\Services\FinanceService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,10 +21,10 @@ use Inertia\Response;
 
 class FinanceController extends Controller
 {
-    public function __construct(private FinanceService $financeService)
-    {
-        // Service injected otomatis
-    }
+    public function __construct(
+        private FinanceService $financeService,
+        private GeminiService $geminiService
+    ) {}
 
     public function index(FinanceDateRequest $request): Response
     {
@@ -39,7 +40,8 @@ class FinanceController extends Controller
             'budgets'      => FinanceBudgetResource::collection($data['budgets'])->resolve(),
             'categories'   => $data['categories'],
             'stats'        => $data['stats'],
-            'filters'      => $data['filters']
+            'filters'      => $data['filters'],
+            'aiAudit'      => session('ai_audit'),
         ]);
     }
 
@@ -249,5 +251,24 @@ class FinanceController extends Controller
 
         Auth::user()->update($validated);
         return back()->with('success', 'Currency updated.');
+    }
+
+    public function runAudit(Request $request)
+    {
+        $user = Auth::user();
+        $month = $request->input('month', now()->format('Y-m'));
+        
+        $stats = $this->financeService->getDashboardData($user->id, $month, $user->timezone ?? 'Asia/Jakarta')['stats'];
+        
+        $data = [
+            'user_name' => $user->name,
+            'total_income' => $stats['total_income'],
+            'total_expense' => $stats['total_expense'],
+            'categories' => $stats['expense_by_category']
+        ];
+
+        $audit = $this->geminiService->auditFinance($data, $month);
+        
+        return back()->with('ai_audit', $audit);
     }
 }

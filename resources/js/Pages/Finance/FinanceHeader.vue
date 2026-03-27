@@ -11,7 +11,8 @@ const props = defineProps({
   currentMonth: String,
   currentMonthKey: String,
   onChangeDate: Function,
-  onAddClick: Function
+  onAddClick: Function,
+  aiAudit: String
 });
 
 // State & Composables
@@ -20,6 +21,7 @@ const { activeCurrency, supportedCurrencies, setCurrency, appLocale } = useFinan
 const isDateDropdownOpen = ref(false);
 const isCurrencyDropdownOpen = ref(false);
 const isExportDropdownOpen = ref(false);
+const isAiAuditLoading = ref(false);
 
 const months = [
   { name: 'month_jan' }, { name: 'month_feb' }, { name: 'month_mar' },
@@ -98,9 +100,15 @@ const exportExcel = async () => {
     }
 };
 
-const exportTax = () => {
-    // Membuka tab baru untuk print report (PDF generator natural browser)
-    window.open(route('finance.export.tax', { month: props.currentMonthKey }), '_blank');
+const runAiAudit = () => {
+    isAiAuditLoading.value = true;
+    router.post(route('finance.export.audit'), {
+        month: props.currentMonthKey
+    }, {
+        onFinish: () => {
+            isAiAuditLoading.value = false;
+        }
+    });
 };
 
 </script>
@@ -235,6 +243,20 @@ const exportTax = () => {
                     <p class="text-[9px] text-slate-400 font-medium font-mono">Format Fiscal PDF</p>
                   </div>
                 </button>
+                <div class="h-px bg-slate-100 dark:bg-slate-700 mx-3 my-1"></div>
+                <button 
+                  @click="runAiAudit(); isExportDropdownOpen = false" 
+                  :disabled="isAiAuditLoading"
+                  class="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all group/item disabled:opacity-50"
+                >
+                  <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:scale-110 transition-transform">
+                    <OneForMindIcon :name="isAiAuditLoading ? 'refresh' : 'sparkles'" size="14" stroke-width="2.5" />
+                  </div>
+                  <div class="text-left">
+                    <p class="text-[11px] font-bold text-slate-700 dark:text-slate-200">AI Financial Audit</p>
+                    <p class="text-[9px] text-slate-400 font-medium">Auto-review dari asisten AI</p>
+                  </div>
+                </button>
               </div>
             </div>
           </Transition>
@@ -249,6 +271,32 @@ const exportTax = () => {
         </button>
 
       </div>
+    </div>
+  </div>
+
+  <!-- AI Audit Highlight -->
+  <div v-if="aiAudit" class="px-4 mt-6 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="relative overflow-hidden rounded-[2.5rem] bg-slate-900 dark:bg-indigo-600 p-8 text-white shadow-2xl shadow-indigo-100 dark:shadow-none animate-in fade-in slide-in-from-top-6 duration-700 border border-white/10">
+        <div class="absolute top-0 right-0 p-8 opacity-10">
+            <OneForMindIcon name="sparkles" size="120" />
+        </div>
+        <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center text-indigo-400 dark:text-white">
+                    <OneForMindIcon name="sparkles" size="20" />
+                </div>
+                <div>
+                    <h3 class="text-xl font-black tracking-tight leading-none text-white">Automated AI Fiscal Audit</h3>
+                    <p class="text-[10px] uppercase font-black tracking-widest text-indigo-100 opacity-60 mt-1.5 font-mono tracking-tighter">Powered by Google Gemini 1.5 • Beta Experience</p>
+                </div>
+                <button @click="$page.clearAiAudit = true" class="ml-auto w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
+                    <OneForMindIcon name="close" size="14" />
+                </button>
+            </div>
+            <div class="max-w-none">
+                <div v-html="aiAudit.replace(/\n/g, '<br>')" class="text-[13px] font-bold leading-relaxed opacity-90 text-slate-200 dark:text-white"></div>
+            </div>
+        </div>
     </div>
   </div>
 </template>

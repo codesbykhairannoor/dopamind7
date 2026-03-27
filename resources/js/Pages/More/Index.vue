@@ -27,6 +27,18 @@ const showModule = (moduleName) => {
 
             <!-- Productivity Tools Grid -->
             <div class="grid grid-cols-2 gap-4">
+                <!-- Dashboard -->
+                <Link :href="route('dashboard')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                    <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-2xl flex items-center justify-center group-hover:bg-slate-200 transition-all duration-300">
+                        <OneForMindIcon name="dashboard" size="24" stroke-width="2.5" />
+                    </div>
+                    <div>
+                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_dashboard') }}</span>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">Core Center</span>
+                    </div>
+                </Link>
+
                 <!-- Daily Planner -->
                 <Link v-if="showModule('planner')" :href="route('planner.index')" 
                         class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
@@ -36,6 +48,18 @@ const showModule = (moduleName) => {
                     <div>
                         <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_planner') }}</span>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">{{ $t('nav_desc_planner') }}</span>
+                    </div>
+                </Link>
+
+                <!-- Finance -->
+                <Link v-if="showModule('finance')" :href="route('finance.index')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                    <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center group-hover:bg-emerald-600 dark:group-hover:bg-emerald-500 transition-all duration-300">
+                        <OneForMindIcon name="finance" size="24" stroke-width="2.5" />
+                    </div>
+                    <div>
+                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_finance') }}</span>
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">Wealth Tracking</span>
                     </div>
                 </Link>
 
@@ -63,6 +87,18 @@ const showModule = (moduleName) => {
                     </div>
                 </Link>
 
+                <!-- AI Coach -->
+                <Link :href="route('coach.index')" 
+                        class="bg-slate-900 dark:bg-indigo-600 p-6 rounded-[2.2rem] shadow-xl shadow-indigo-200 dark:shadow-none border border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                    <div class="w-12 h-12 bg-white/20 text-white rounded-2xl flex items-center justify-center group-hover:bg-white transition-all duration-300 group-hover:text-indigo-600">
+                        <OneForMindIcon name="sparkles" size="24" stroke-width="2.5" />
+                    </div>
+                    <div>
+                        <span class="block font-black text-white text-base leading-none mb-1 transition-colors duration-500">Neural OS</span>
+                        <span class="text-[10px] font-bold text-white/60 uppercase tracking-tight transition-colors duration-500">AI Life Coach</span>
+                    </div>
+                </Link>
+
                 <!-- Job Tracker -->
                 <Link v-if="showModule('job')" :href="route('jobs.index')" 
                         class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
@@ -77,13 +113,27 @@ const showModule = (moduleName) => {
 
                 <!-- Goal Tracker -->
                 <Link v-if="showModule('goal')" :href="route('goals.index')" 
-                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group lg:col-span-1 col-span-2">
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
                     <div class="w-12 h-12 bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center group-hover:bg-amber-600 dark:group-hover:bg-amber-500 transition-all duration-300">
                         <OneForMindIcon name="goal" size="24" stroke-width="2.5" />
                     </div>
                     <div>
                         <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_goals') }}</span>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">{{ $t('nav_desc_goals') }}</span>
+                    </div>
+                </Link>
+
+                <!-- Settings -->
+                <Link :href="route('settings.index')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group col-span-2">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-50 dark:bg-slate-800 text-slate-500 rounded-2xl flex items-center justify-center group-hover:bg-slate-200 transition-all duration-300">
+                            <OneForMindIcon name="settings" size="24" stroke-width="2.5" />
+                        </div>
+                        <div>
+                            <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">System Settings</span>
+                            <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-tight transition-colors duration-500">Preferences & Profile</span>
+                        </div>
                     </div>
                 </Link>
             </div>

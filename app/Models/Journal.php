@@ -11,7 +11,7 @@ class Journal extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'date', 'title', 'content', 'mood', 'image_path', 'is_pinned'];
+    protected $fillable = ['user_id', 'date', 'title', 'content', 'mood', 'image_path', 'is_pinned', 'ai_sentiment', 'mood_score'];
 
     // 🔥 JANGAN gunakan $appends jika Anda menggunakan Resource. 
     // Lebih aman biarkan Resource yang menangani URL gambarnya.

@@ -80,6 +80,12 @@ watch(() => page.url, () => {
                         </span>
                     </Transition>
                 </Link>
+
+                <div v-if="!isSidebarCollapsed" class="ml-auto">
+                    <Link :href="route('coach.index')" prefetch class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 hover:scale-110 hover:bg-indigo-100 transition-all border border-indigo-100/50 dark:border-indigo-500/20 shadow-sm" title="AI Coach">
+                        <OneForMindIcon name="sparkles" size="16" stroke-width="2.5" />
+                    </Link>
+                </div>
             </div>
 
             <nav class="flex-1 px-3 space-y-1 overflow-y-auto py-4 custom-scrollbar" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
@@ -264,47 +270,49 @@ watch(() => page.url, () => {
             <!-- Mobile Top Bar Removed for cleaner look -->
 
 
-            <!-- NEW MOBILE BOTTOM NAVIGATION BAR -->
-            <div class="md:hidden fixed bottom-6 left-6 right-6 z-[60]">
-                <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-none rounded-[2rem] px-2 py-2 flex items-center justify-between transition-colors duration-500">
+            <!-- REFINED MOBILE BOTTOM NAVIGATION BAR -->
+            <div class="md:hidden fixed bottom-0 left-0 right-0 z-[60] bg-white/95 dark:bg-slate-900/95 backdrop-blur-3xl border-t border-slate-100 dark:border-slate-800 safe-area-pb transition-colors duration-500 shadow-[0_-8px_30px_rgba(0,0,0,0.06)]">
+                <div class="flex items-center justify-around h-20 px-2 pt-1 pb-2">
                     <!-- Dashboard -->
                     <Link :href="route('dashboard')" prefetch
-                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
+                          class="flex flex-col items-center justify-center gap-1 transition-all flex-1"
                           :class="route().current('dashboard') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="dashboard" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_dashboard') }}</span>
+                        <span class="text-[9px] font-black uppercase tracking-tighter">{{ $t('nav_item_dashboard') }}</span>
                     </Link>
                     
                     <!-- Habits -->
                     <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch 
-                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
+                          class="flex flex-col items-center justify-center gap-1 transition-all flex-1"
                           :class="route().current('habits.*') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="habit" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_habit') }}</span>
+                        <span class="text-[9px] font-black uppercase tracking-tighter">{{ $t('nav_item_habit') }}</span>
                     </Link>
 
-                    <!-- Planner -->
-                    <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch 
-                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
-                          :class="route().current('planner.*') ? 'text-indigo-600' : 'text-slate-400'">
-                        <OneForMindIcon name="planner" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_planner') }}</span>
+                    <!-- AI COACH (CENTER - PROTRUDING) -->
+                    <Link :href="route('coach.index')" prefetch 
+                          class="relative -top-5 flex-1 flex flex-col items-center">
+                        <div class="w-[4.25rem] h-[4.25rem] bg-slate-900 dark:bg-indigo-600 rounded-[1.75rem] flex items-center justify-center shadow-2xl shadow-indigo-300 dark:shadow-none transition-all active:scale-90 border-[6px] border-white dark:border-slate-900 overflow-hidden group">
+                           <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                           <OneForMindIcon name="sparkles" size="26" class="text-white relative z-10" />
+                        </div>
+                        <span class="mt-1 text-[9px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400">OS AI</span>
                     </Link>
 
-                    <!-- More -->
+                    <!-- More Launcher -->
                     <Link :href="route('more.index')" prefetch 
-                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
+                          class="flex flex-col items-center justify-center gap-1 transition-all flex-1"
                           :class="route().current('more.index') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="menu" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_more') }}</span>
+                        <span class="text-[9px] font-black uppercase tracking-tighter">{{ $t('nav_item_more') }}</span>
                     </Link>
 
                     <!-- Settings -->
                     <Link :href="route('settings.index')" prefetch 
-                          class="flex-1 flex flex-col items-center justify-center gap-1 transition-all py-2"
+                          class="flex flex-col items-center justify-center gap-1 transition-all flex-1"
                           :class="route().current('settings.*') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="settings" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.05em]">{{ $t('nav_item_settings') }}</span>
+                        <span class="text-[9px] font-black uppercase tracking-tighter">{{ $t('nav_item_settings') }}</span>
                     </Link>
                 </div>
             </div>

@@ -7,12 +7,16 @@ use App\Http\Requests\StoreJournalRequest;
 use App\Http\Requests\UploadJournalImageRequest;
 use App\Http\Resources\JournalResource;
 use App\Services\JournalService;
+use App\Services\GeminiService;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class JournalController extends Controller
 {
-    public function __construct(private JournalService $journalService) {}
+    public function __construct(
+        private JournalService $journalService,
+        private GeminiService $geminiService
+    ) {}
 
     public function index()
     {
@@ -46,7 +50,19 @@ class JournalController extends Controller
     public function store(StoreJournalRequest $request)
     {
         $user = Auth::user();
-        $journal = Journal::create(array_merge($request->validated(), [
+        $input = $request->validated();
+        
+        // AI Sentiment Analysis
+        if (strlen($input['content']) > 10) {
+            $analysis = $this->geminiService->analyzeSentiment($input['content']);
+            if ($analysis) {
+                $parts = explode('|', $analysis);
+                $input['ai_sentiment'] = $parts[0] ?? null;
+                $input['mood_score'] = (int) filter_var($parts[1] ?? 5, FILTER_SANITIZE_NUMBER_INT);
+            }
+        }
+
+        $journal = Journal::create(array_merge($input, [
             'user_id' => $user->id,
             'date'    => now()->timezone($user->timezone ?? 'Asia/Jakarta')->format('Y-m-d'),
         ]));
@@ -73,6 +89,16 @@ class JournalController extends Controller
             return $request->wantsJson() 
                 ? response()->json(['message' => 'Deleted', 'deleted' => true])
                 : redirect()->route('journal.index');
+        }
+
+        // AI Sentiment Analysis update
+        if (strlen($input['content']) > 10) {
+            $analysis = $this->geminiService->analyzeSentiment($input['content']);
+            if ($analysis) {
+                $parts = explode('|', $analysis);
+                $input['ai_sentiment'] = $parts[0] ?? null;
+                $input['mood_score'] = (int) filter_var($parts[1] ?? 5, FILTER_SANITIZE_NUMBER_INT);
+            }
         }
 
         $journal->update($input);

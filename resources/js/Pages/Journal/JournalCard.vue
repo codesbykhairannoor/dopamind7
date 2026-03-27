@@ -59,6 +59,18 @@ const handleDelete = (event) => {
             <p class="text-sm font-medium text-slate-500 dark:text-slate-400 line-clamp-4 flex-1 leading-relaxed transition-colors duration-500">
                 {{ journal.content ? stripHtml(journal.content) : $t('journal_no_content', 'Tidak ada teks...') }}
             </p>
+
+            <!-- AI Sentiment Badge -->
+            <div v-if="journal.ai_sentiment" class="mt-6 p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/20 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/20 transition-all duration-500">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+                    <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">AI Sentiment Analysis</span>
+                    <span class="ml-auto text-[10px] font-black text-indigo-500">{{ journal.mood_score }}/10</span>
+                </div>
+                <p class="text-[10px] font-bold text-slate-600 dark:text-slate-300 leading-tight italic line-clamp-2">
+                    "{{ journal.ai_sentiment }}"
+                </p>
+            </div>
         </div>
     </Link>
 </template>
