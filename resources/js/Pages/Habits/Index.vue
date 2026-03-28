@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useHabits } from '@/Composables/useHabits';
@@ -8,6 +9,7 @@ import HabitHeader from './HabitHeader.vue';
 import HabitGrid from './HabitGrid.vue';
 import HabitStats from './HabitStats.vue';
 import HabitModals from './HabitModals.vue';
+import NeuralHabitInsight from './NeuralHabitInsight.vue';
 
 // PERSISTENT LAYOUT
 defineOptions({
@@ -22,6 +24,8 @@ const props = defineProps({
     prevMonthQuery: String,
     savedMood: String
 });
+
+const neuralOs = ref(null);
 
 // 🔥 FIX UTAMA: Ekstrak SEMUA state dan action Batch dari useHabits
 const {
@@ -38,11 +42,29 @@ const {
     showDeleteModal, habitToDelete, confirmDelete, executeDelete, deleteFromEdit,
     showCopyModal, openCopyModal, executeCopy,
     
-    // 🔥 Modal Batch Habit (INI YANG KEMARIN KELUPAAN DIAMBIL)
+    // 🔥 Modal Batch Habit
     showBatchModal, batchForm, openBatchModal, closeBatchModal, 
     addBatchRow, removeBatchRow, submitBatchHabit, switchToBatch, switchToSingle, handleMouseDown, handleMouseEnter, isCellSelected, 
     saveHabitOrder
 } = useHabits(props);
+
+// Intercept Mood Selection for AI
+const handleMoodSelect = async (mood) => {
+    selectMood(mood);
+    if (neuralOs.value) {
+        neuralOs.value.getMoodAdvisory(mood);
+    }
+};
+
+// Intercept Toggle for Audit
+const handleToggleProxy = async (habitId, date, forceStatus) => {
+    toggleStatus(habitId, date, forceStatus);
+    
+    // If user marks as skipped or it was a streak break
+    if (forceStatus === 'skipped' && neuralOs.value) {
+        neuralOs.value.runAudit(habitId);
+    }
+};
 
 </script>
 
@@ -66,7 +88,7 @@ const {
                 :localHabits="localHabits"
                 :monthDates="monthDates"
                 :hasPrevHabits="hasPrevHabits"
-                :toggleStatus="toggleStatus"
+                :toggleStatus="handleToggleProxy"
                 :handleGridNav="handleGridNav"
                 :getStatus="getStatus"
                 :editHabit="editHabit"
@@ -79,6 +101,9 @@ const {
                 :saveHabitOrder="saveHabitOrder"
             />
 
+            <!-- NEW AI SECTION (Moved to bottom of grid) -->
+            <NeuralHabitInsight ref="neuralOs" :currentMood="savedMood" />
+
             <HabitStats 
                 :localHabits="localHabits"
                 :overallPercentage="overallPercentage"
@@ -86,7 +111,7 @@ const {
                 :currentMoodData="currentMoodData"
                 :moodOptions="moodOptions"
                 :savedMood="props.savedMood"
-                :selectMood="selectMood"
+                :selectMood="handleMoodSelect"
             />
 
             <HabitModals 

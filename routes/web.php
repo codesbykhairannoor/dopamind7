@@ -513,6 +513,14 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
         Route::prefix('coach')->name('coach.')->group(function () {
             Route::get('/', [\App\Http\Controllers\AiCoachController::class, 'index'])->name('index');
             Route::post('/chat', [\App\Http\Controllers\AiCoachController::class, 'chat'])->name('chat');
+            
+            // AI Habits (Ideas 2, 4, 7)
+            Route::post('/habit-stack', [\App\Http\Controllers\AiHabitController::class, 'suggestStack'])->name('habit.stack');
+            Route::post('/habit-mood', [\App\Http\Controllers\AiHabitController::class, 'adaptToMood'])->name('habit.mood');
+            Route::post('/habit-audit', [\App\Http\Controllers\AiHabitController::class, 'auditFriction'])->name('habit.audit');
+            
+            // Debugging
+            Route::get('/debug-gemini', [\App\Http\Controllers\AiDebugController::class, 'testGemini']);
         });
     });
 

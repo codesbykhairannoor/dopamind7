@@ -51,7 +51,7 @@ const sendMessage = async () => {
 };
 
 const startNewChat = () => {
-    router.get(route('coach.index'));
+    router.get(route('coach.index', { new: 1 }));
 };
 
 const switchSession = (sid) => {
@@ -73,7 +73,7 @@ defineOptions({ layout: AuthenticatedLayout });
 <template>
     <Head title="AI Life Coach - Intelligence OS" />
 
-    <div class="flex h-[calc(100vh-64px)] overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
+    <div class="flex h-screen overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500 relative z-[60]">
         
         <!-- SIDEBAR - ChatGPT Style -->
         <aside 
@@ -154,7 +154,7 @@ defineOptions({ layout: AuthenticatedLayout });
 
             <!-- Messages Container -->
             <div ref="scrollContainer" class="flex-1 overflow-y-auto px-4 md:px-0 py-8 scroll-smooth custom-scrollbar bg-slate-50/20 dark:bg-slate-950">
-                <div class="max-w-3xl mx-auto space-y-10 pb-20">
+                <div class="max-w-3xl mx-auto space-y-10 pb-40"> <!-- Increased PB for input area -->
                     
                     <div v-for="(msg, index) in messages" :key="index" 
                         class="flex group animate-in slide-in-from-bottom-5 duration-500"
@@ -198,7 +198,7 @@ defineOptions({ layout: AuthenticatedLayout });
             </div>
 
             <!-- Enhanced Input Bar -->
-            <div class="absolute bottom-8 left-0 right-0 px-4 md:px-8">
+            <div class="absolute bottom-10 left-0 right-0 px-4 md:px-8 bg-gradient-to-t from-white dark:from-slate-950 via-white/80 dark:via-slate-950/80 to-transparent pt-10">
                 <div class="max-w-3xl mx-auto">
                     <div class="relative group">
                         <div class="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur opacity-10 dark:opacity-20 group-focus-within:opacity-40 transition duration-500"></div>
@@ -207,7 +207,7 @@ defineOptions({ layout: AuthenticatedLayout });
                                 v-model="newMessage"
                                 @keyup.enter="sendMessage"
                                 type="text" 
-                                placeholder="Apa rencanamu besok?" 
+                                :placeholder="'Apa rencanamu besok, ' + userName + '?'" 
                                 class="flex-1 bg-transparent border-none py-4 text-sm font-bold text-slate-800 dark:text-white placeholder-slate-400 focus:ring-0 outline-none"
                             />
                             <button 

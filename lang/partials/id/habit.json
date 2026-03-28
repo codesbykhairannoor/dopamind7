@@ -98,5 +98,15 @@
         "greet_morning": "Selamat Pagi",
     "greet_afternoon": "Selamat Siang",
     "greet_evening": "Selamat Sore",
-    "greet_night": "Selamat Malam"
+    "greet_night": "Selamat Malam",
+
+    "habit_btn_alchemy": "Habit Alchemy Insight",
+    "habit_neural_title": "NEURAL INSIGHT",
+    "habit_neural_protocol": "Habit Alchemy Protocol",
+    "habit_mod_title": "Mood Adaptation",
+    "habit_audit_title": "FRICTION AUDIT",
+    "habit_audit_solution": "NEURAL SOLUTION",
+    "habit_analyzing": "Menganalisa rutinitas...",
+    "habit_audit_running": "Menjalankan Friction Audit...",
+    "habit_btn_audit_close": "Selesai Audit"
 }

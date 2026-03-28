@@ -97,5 +97,15 @@
     "greet_morning": "Good Morning",
     "greet_afternoon": "Good Afternoon",
     "greet_evening": "Good Evening",
-    "greet_night": "Good Night"
+    "greet_night": "Good Night",
+
+    "habit_btn_alchemy": "Habit Alchemy Insight",
+    "habit_neural_title": "NEURAL INSIGHT",
+    "habit_neural_protocol": "Habit Alchemy Protocol",
+    "habit_mod_title": "Mood Adaptation",
+    "habit_audit_title": "FRICTION AUDIT",
+    "habit_audit_solution": "NEURAL SOLUTION",
+    "habit_analyzing": "Analyzing routines...",
+    "habit_audit_running": "Running Friction Audit...",
+    "habit_btn_audit_close": "Complete Audit"
 }

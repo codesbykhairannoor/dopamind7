@@ -38,7 +38,8 @@ class AiCoachController extends Controller
             ->values();
 
         // If no session specified, take latest or start new
-        if (!$currentSessionId && $sessions->isNotEmpty()) {
+        // If no session specified and no 'new' flag, redirect to latest
+        if (!$currentSessionId && !$request->has('new') && $sessions->isNotEmpty()) {
             return redirect()->route('coach.index', ['session' => $sessions->first()['id']]);
         }
 
@@ -114,7 +115,23 @@ class AiCoachController extends Controller
             'content' => $lastMessage['content']
         ]);
 
-        $response = $this->geminiService->chat($allMessages);
+        \Illuminate\Support\Facades\Log::info("AI_COACH_CHAT_REQUEST: " . $lastMessage['content']);
+
+        // --- CONTEXT INJECTION (The Secret Sauce) ---
+        $habits = Habit::ofUser($user->id)->get()->map(fn($h) => "{$h->name} ({$h->period})");
+        $tasks = PlannerTask::ofUser($user->id)->forDate(now()->format('Y-m-d'))->get()->map(fn($t) => $t->name . ($t->is_completed ? " [SELESAI]" : " [BELUM]"));
+        $income = FinanceTransaction::where('user_id', $user->id)->where('type', 'income')->whereMonth('date', now()->month)->sum('amount');
+        $expense = FinanceTransaction::where('user_id', $user->id)->where('type', 'expense')->whereMonth('date', now()->month)->sum('amount');
+
+        $systemContext = "Anda adalah OneForMind Neural OS Life Coach. Anda memiliki akses ke data user:
+        Nama: {$user->name}
+        Daftar Habits: " . $habits->implode(', ') . "
+        Tugas Hari Ini: " . $tasks->implode(', ') . "
+        Keuangan Bulan Ini: Masukan Rp" . number_format($income) . ", Pengeluaran Rp" . number_format($expense) . ".
+        
+        Gunakan data ini jika user bertanya tentang progres, habit, atau tugas mereka. Tetaplah ramah, tegas, dan memotivasi dalam bahasa Indonesia.";
+
+        $response = $this->geminiService->chat($allMessages, $systemContext);
 
         if ($response) {
             // Save Assistant Response
@@ -124,10 +141,12 @@ class AiCoachController extends Controller
                 'role' => 'assistant',
                 'content' => $response
             ]);
+        } else {
+             \Illuminate\Support\Facades\Log::error("AI_COACH_CHAT_FAILED for session: " . $request->session_id);
         }
 
         return response()->json([
-            'content' => $response ?? "Maaf, sepertinya asisten sedang beristirahat. Coba lagi nanti ya."
+            'content' => $response ?? "Maaf, sepertinya asisten sedang beristirahat. Pastikan API_KEY valid [Model: gemini-2.5-flash]."
         ]);
     }
 }

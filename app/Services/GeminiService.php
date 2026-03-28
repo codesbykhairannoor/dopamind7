@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Log;
 class GeminiService
 {
     protected ?string $apiKey;
-    protected string $model = 'gemini-pro';
+    protected string $model = 'gemini-2.5-flash';
 
     public function __construct()
     {
-        $this->apiKey = config('services.gemini.key') ?? env('GEMINI_API_KEY');
+        $this->apiKey = config('services.gemini.key') ?: env('GEMINI_API_KEY');
     }
 
     /**
@@ -39,6 +39,12 @@ class GeminiService
                     'topK' => 40,
                     'topP' => 0.95,
                     'maxOutputTokens' => 2048,
+                ],
+                'safetySettings' => [
+                    ['category' => 'HARM_CATEGORY_HATE_SPEECH', 'threshold' => 'BLOCK_NONE'],
+                    ['category' => 'HARM_CATEGORY_SEXUALLY_EXPLICIT', 'threshold' => 'BLOCK_NONE'],
+                    ['category' => 'HARM_CATEGORY_HARASSMENT', 'threshold' => 'BLOCK_NONE'],
+                    ['category' => 'HARM_CATEGORY_DANGEROUS_CONTENT', 'threshold' => 'BLOCK_NONE'],
                 ]
             ]);
 
@@ -46,9 +52,11 @@ class GeminiService
                 $candidates = $response->json('candidates');
                 if (!empty($candidates)) {
                     return $candidates[0]['content']['parts'][0]['text'] ?? null;
+                } else {
+                    Log::warning('GEMINI_EMPTY_CANDIDATES: Response was successful but candidates list is empty. Body: ' . $response->body());
                 }
             } else {
-                Log::error('Gemini API Error: ' . $response->body());
+                Log::error('GEMINI_API_ERROR: ' . $response->status() . ' | ' . $response->body());
             }
 
         } catch (\Exception $e) {
@@ -122,22 +130,58 @@ class GeminiService
     }
 
     /**
-     * Generic Chat Interaction
+     * Generic Chat Interaction with System Context
      */
-    public function chat(array $messages): ?string
+    public function chat(array $messages, ?string $systemContext = null): ?string
     {
-        // Proper formatting for Gemini conversation
-        $historyLine = "";
+        // Formatting for Gemini - needs 'user' and 'model' roles
+        $contents = [];
         foreach ($messages as $msg) {
-            $role = $msg['role'] === 'user' ? 'User' : 'Coach';
-            $historyLine .= "{$role}: {$msg['content']}\n";
+            $contents[] = [
+                'role' => ($msg['role'] === 'user') ? 'user' : 'model',
+                'parts' => [
+                    ['text' => $msg['content']]
+                ]
+            ];
         }
 
-        $prompt = "You are OneForMind AI Life Coach. Continue the conversation honestly and helpfully.
-        Conversation History:
-        {$historyLine}
-        Coach:";
+        $payload = [
+            'contents' => $contents,
+            'generationConfig' => [
+                'temperature' => 0.7,
+            ],
+            'safetySettings' => [
+                ['category' => 'HARM_CATEGORY_HATE_SPEECH', 'threshold' => 'BLOCK_NONE'],
+                ['category' => 'HARM_CATEGORY_SEXUALLY_EXPLICIT', 'threshold' => 'BLOCK_NONE'],
+                ['category' => 'HARM_CATEGORY_HARASSMENT', 'threshold' => 'BLOCK_NONE'],
+                ['category' => 'HARM_CATEGORY_DANGEROUS_CONTENT', 'threshold' => 'BLOCK_NONE'],
+            ]
+        ];
 
-        return $this->generate($prompt);
+        if ($systemContext) {
+            $payload['system_instruction'] = [
+                'parts' => [
+                    ['text' => $systemContext]
+                ]
+            ];
+        }
+
+        try {
+            $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", $payload);
+
+            if ($response->successful()) {
+                $candidates = $response->json('candidates');
+                if (!empty($candidates)) {
+                    return $candidates[0]['content']['parts'][0]['text'] ?? null;
+                }
+                Log::warning('GEMINI_CHAT_EMPTY: ' . $response->body());
+            } else {
+                Log::error('GEMINI_CHAT_ERROR: ' . $response->status() . ' | ' . $response->body());
+            }
+        } catch (\Exception $e) {
+            Log::error('Gemini Chat Exception: ' . $e->getMessage());
+        }
+
+        return null;
     }
 }
