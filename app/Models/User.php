@@ -28,6 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'avatar_path',
         'is_premium',
         'premium_until',
+        'resume_text',
+        'resume_filename',
     ];
 
     /**

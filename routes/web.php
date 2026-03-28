@@ -464,6 +464,8 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::delete('/{job}', [\App\Http\Controllers\JobController::class , 'destroy'])->name('destroy');
             Route::post('/bulk-update-status', [\App\Http\Controllers\JobController::class , 'bulkUpdateStatus'])->name('bulk-update-status');
             Route::post('/bulk-delete', [\App\Http\Controllers\JobController::class , 'bulkDelete'])->name('bulk-delete');
+            Route::post('/ai-scan', [\App\Http\Controllers\JobController::class, 'scanResume'])->name('ai-scan');
+            Route::post('/master-cv', [\App\Http\Controllers\JobController::class, 'uploadMasterCv'])->name('master-cv');
         }
         );
 

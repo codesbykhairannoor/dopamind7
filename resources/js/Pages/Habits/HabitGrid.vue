@@ -135,11 +135,13 @@ onMounted(() => {
             <div class="space-y-3 px-4">
                 <div v-for="habit in localHabits" :key="habit.id" 
                     class="bg-white dark:bg-slate-900 p-4 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-4 transition-all active:scale-[0.98]"
+                    :class="{ 'opacity-60 grayscale-[0.4] scale-[0.97]': habit.is_stagnant }"
                     @touchstart="handleTouchStart(habit, selectedDate)"
                     @touchend="handleTouchEnd"
                 >
                     <!-- Icon -->
-                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shrink-0" 
+                    <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shrink-0 transition-transform" 
+                        :class="{ 'rotate-12': habit.is_stagnant }"
                         :style="{ backgroundColor: habit.color + '15', color: habit.color }">
                         {{ habit.icon }}
                     </div>
@@ -147,11 +149,15 @@ onMounted(() => {
                     <!-- Name & Progress -->
                     <div class="flex-1 min-w-0">
                         <div class="flex items-center justify-between gap-2">
-                            <h4 class="font-bold text-slate-700 truncate text-sm">{{ habit.name }}</h4>
+                            <h4 class="font-bold truncate text-sm flex items-center gap-1.5"
+                                :class="habit.is_stagnant ? 'text-slate-400 dark:text-slate-500' : 'text-slate-700 dark:text-white'">
+                                {{ habit.name }}
+                                <span v-if="habit.is_stagnant" class="text-[8px] font-black bg-rose-50 text-rose-500 px-1 rounded-md uppercase">Dormant</span>
+                            </h4>
                             <!-- Mobile Delete/Edit Mini Menu -->
-                            <div class="flex items-center gap-1 opacity-40">
-                                <button @click.stop="confirmDelete(habit)" class="p-1 text-rose-500">
-                                    <OneForMindIcon name="trash" size="12" />
+                            <div class="flex items-center gap-1 opacity-100">
+                                <button @click.stop="confirmDelete(habit)" class="p-2 text-slate-300 dark:text-slate-600 hover:text-rose-500 bg-slate-50 dark:bg-slate-800/50 rounded-lg">
+                                    <OneForMindIcon name="trash" size="14" />
                                 </button>
                             </div>
                         </div>
@@ -168,16 +174,18 @@ onMounted(() => {
                     <!-- Toggle Button -->
                     <button 
                         @click="handleMobileClick(habit, selectedDate)"
-                        class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300"
+                        class="w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 relative overflow-hidden"
                         :class="[
                             getStatus(habit, selectedDate) === 'completed'
                                 ? 'shadow-lg text-white'
                                 : getStatus(habit, selectedDate) === 'skipped'
                                     ? 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500'
-                                    : 'bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 text-slate-300 dark:text-slate-600'
+                                    : 'bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 text-slate-300 dark:text-slate-600',
+                            habit.is_stagnant && getStatus(habit, selectedDate) === 'empty' ? 'shake-infinite' : ''
                         ]"
                         :style="getStatus(habit, selectedDate) === 'completed' ? { backgroundColor: habit.color, boxShadow: (getStatus(habit, selectedDate) === 'completed' && !isDark) ? `0 8px 16px ${habit.color}30` : 'none' } : {}"
                     >
+                        <div v-if="habit.is_stagnant && getStatus(habit, selectedDate) === 'empty'" class="absolute -top-1 -right-1 w-3 h-3 bg-rose-500 rounded-full border-2 border-white dark:border-slate-900"></div>
                         <OneForMindIcon v-if="getStatus(habit, selectedDate) === 'completed'" name="check" size="20" stroke-width="4" />
                         <span v-else-if="getStatus(habit, selectedDate) === 'skipped'" class="text-xl font-black">-</span>
                         <OneForMindIcon v-else name="plus" size="20" stroke-width="3" />
@@ -242,12 +250,24 @@ onMounted(() => {
                                     <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800 shrink-0" :style="{ color: habit.color }">
                                         {{ habit.icon }}
                                     </div>
+
+                                    <!-- Action Bubble (Desktop) -->
+                                    <div class="flex items-center gap-1 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md px-1.5 py-1 rounded-full absolute right-2 top-2 shadow-xl border border-slate-200/50 dark:border-slate-700 z-50 transition-all opacity-0 scale-90 translate-x-1 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0">
+                                        <button @click="editHabit(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 rounded-full transition" title="Edit">
+                                            <OneForMindIcon name="planner" size="14" stroke-width="2.5" />
+                                        </button>
+                                        <button @click="confirmDelete(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-full transition" title="Hapus">
+                                            <OneForMindIcon name="trash" size="14" stroke-width="2.5" />
+                                        </button>
+                                    </div>
                                     <div class="min-w-0 flex-1">
-                                        <h4 class="font-bold text-slate-700 dark:text-slate-200 truncate text-sm flex items-center gap-1.5">
+                                        <h4 class="font-bold truncate text-sm flex items-center gap-1.5"
+                                            :class="habit.is_stagnant ? 'text-slate-400 line-through decoration-rose-500/30' : 'text-slate-700 dark:text-slate-200'">
                                             {{ habit.name }}
                                             <span v-if="habit.streak > 1" class="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-black animate-pulse shadow-sm border border-orange-100/50 dark:border-orange-500/20">
                                                 {{ habit.streak }} <span class="text-xs">🔥</span>
                                             </span>
+                                            <span v-if="habit.is_stagnant" class="text-[8px] font-black bg-rose-50 text-rose-500 px-1.5 py-0.5 rounded-md uppercase tracking-tighter">Dormant</span>
                                         </h4>
                                         <div class="flex items-center gap-1 text-[10px] font-medium text-slate-400 dark:text-slate-500 mb-1.5 mt-0.5">
                                             <span>🎯 Target: {{ habit.monthly_target }}</span>
@@ -255,14 +275,6 @@ onMounted(() => {
                                         <div class="flex items-center gap-2">
                                             <div class="h-1.5 w-16 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                                                 <div class="h-full rounded-full transition-all duration-300" :style="{ width: habit.progress_percent + '%', backgroundColor: habit.color }"></div>
-                                            </div>
-                                            <div class="flex items-center gap-1 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-1.5 py-1 rounded-full absolute -right-2 top-0 shadow-lg border border-slate-200/50 dark:border-slate-700 z-50 transition-all opacity-0 group-hover:opacity-100 group-hover:-translate-y-1">
-                                                <button @click="editHabit(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 rounded-full transition" title="Edit">
-                                                    <OneForMindIcon name="planner" size="14" stroke-width="2.5" />
-                                                </button>
-                                                <button @click="confirmDelete(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-full transition" title="Hapus">
-                                                    <OneForMindIcon name="trash" size="14" stroke-width="2.5" />
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -361,5 +373,16 @@ button { -webkit-tap-highlight-color: transparent; }
   .sticky {
     position: sticky;
   }
+}
+
+.shake-infinite {
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
 }
 </style>

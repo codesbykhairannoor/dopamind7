@@ -137,11 +137,29 @@ class GeminiService
         // Formatting for Gemini - needs 'user' and 'model' roles
         $contents = [];
         foreach ($messages as $msg) {
+            $parts = [];
+            
+            // Handle Text
+            if (!empty($msg['content'])) {
+                $parts[] = ['text' => $msg['content']];
+            }
+
+            // Handle Multimodal (Image)
+            if (!empty($msg['image'])) {
+                // Expecting base64 string like "data:image/jpeg;base64,..."
+                if (preg_match('/data:(image\/[a-z]+);base64,(.*)/i', $msg['image'], $matches)) {
+                    $parts[] = [
+                        'inline_data' => [
+                            'mime_type' => $matches[1],
+                            'data' => $matches[2]
+                        ]
+                    ];
+                }
+            }
+
             $contents[] = [
-                'role' => ($msg['role'] === 'user') ? 'user' : 'model',
-                'parts' => [
-                    ['text' => $msg['content']]
-                ]
+                'role' => (isset($msg['role']) && $msg['role'] === 'user') ? 'user' : 'model',
+                'parts' => $parts
             ];
         }
 
@@ -184,4 +202,108 @@ class GeminiService
 
         return null;
     }
+    
+    public function analyzeResume(string $resumeBase64, string $jobDescription): ?string
+    {
+        return $this->analyzeResumeProgress($resumeBase64, $jobDescription);
+    }
+
+    /**
+     * Extract structured text from a Resume PDF/Image using Gemini
+     */
+    public function extractResumeText($base64Data)
+    {
+        // Extract mime type and data
+        $mimeType = 'application/pdf'; // Default to PDF as requested
+        $data = $base64Data;
+
+        if (str_contains($base64Data, ';base64,')) {
+            $parts = explode(';base64,', $base64Data);
+            $mimeType = str_replace('data:', '', $parts[0]);
+            $data = $parts[1];
+        }
+
+        try {
+            $response = Http::timeout(180)->withHeaders([
+                'Content-Type' => 'application/json',
+            ])->post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
+                'contents' => [
+                    [
+                        'parts' => [
+                            ['text' => "Extract ALL information from this resume precisely. Return a clean, master text version of the resume including skills, experience, and contact info. No extra commentary."],
+                            [
+                                'inline_data' => [
+                                    'mime_type' => $mimeType,
+                                    'data' => $data
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                'generationConfig' => [
+                    'temperature' => 0.1, // Low temp for extraction
+                ]
+            ]);
+
+            if ($response->successful()) {
+                return $response->json()['candidates'][0]['content']['parts'][0]['text'] ?? '';
+            }
+
+            Log::error('Gemini Resume Extraction Failed: ' . $response->body());
+            return null;
+        } catch (\Exception $e) {
+            Log::error('Gemini Resume Extraction Exception: ' . $e->getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Analyze a Resume (Text-based) against a Job Description
+     */
+    public function analyzeResumeProgress($resumeText, $jobDescription)
+    {
+        try {
+            $response = Http::withHeaders([
+                'Content-Type' => 'application/json',
+            ])->post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
+                'contents' => [
+                    [
+                        'parts' => [
+                            [
+                                'text' => "Analyze ONLY THE MATCH PROBABILITY of this resume AGAINST the job description.
+                            
+                            RESUME TEXT:
+                            $resumeText
+                            
+                            JOB DESCRIPTION:
+                            $jobDescription
+                            
+                            TASK:
+                            1. Calculate Match Percentage (0-100%).
+                            2. Give a 1-sentence executive summary (Indonesian).
+                            
+                            OUTPUT FORMAT (MARKDOWN):
+                            # [PERCENTAGE]% MATCH
+                            **Ringkasan Neural:** [Summary...]
+                            "
+                            ]
+                        ]
+                    ]
+                ],
+                'generationConfig' => [
+                    'temperature' => 0.4,
+                ]
+            ]);
+
+            if ($response->successful()) {
+                return $response->json()['candidates'][0]['content']['parts'][0]['text'] ?? '';
+            }
+
+            return "Error analyzing scan.";
+        } catch (\Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
+
+    // End of Service
 }

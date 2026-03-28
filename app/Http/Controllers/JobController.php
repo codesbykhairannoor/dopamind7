@@ -127,4 +127,57 @@ class JobController extends Controller
 
         return back()->with('success', "{$count} jobs deleted successfully");
     }
+
+    public function uploadMasterCv(Request $request, \App\Services\GeminiService $gemini)
+    {
+        try {
+            $request->validate([
+                'resume' => 'required|string', // Base64
+                'filename' => 'required|string',
+            ]);
+
+            $extractedText = $gemini->extractResumeText($request->input('resume'));
+
+            if (!$extractedText) {
+                return response()->json([
+                    'message' => 'Gagal membaca isi CV. Pastikan file PDF/Gambar jelas dan tidak korup.'
+                ], 422);
+            }
+
+            $user = Auth::user();
+            $user->resume_text = $extractedText;
+            $user->resume_filename = $request->input('filename');
+            $user->save();
+
+            return response()->json([
+                'message' => 'Master CV berhasil disimpan.',
+                'filename' => $user->resume_filename
+            ]);
+        } catch (\Exception $e) {
+            \Log::error('UploadMasterCv Error: ' . $e->getMessage());
+            return response()->json([
+                'message' => 'Server Error: ' . $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function scanResume(Request $request, \App\Services\GeminiService $gemini)
+    {
+        $request->validate([
+            'job_description' => 'required|string',
+        ]);
+
+        $user = Auth::user();
+        if (!$user->resume_text) {
+            return response()->json(['message' => 'Harap upload Master CV terlebih dahulu.'], 422);
+        }
+
+        $result = $gemini->analyzeResumeProgress($user->resume_text, $request->input('job_description'));
+
+        if (!$result) {
+            return response()->json(['message' => 'Gagal menganalisis CV.'], 500);
+        }
+
+        return response()->json(['analysis' => $result]);
+    }
 }

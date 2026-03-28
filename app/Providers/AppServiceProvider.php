@@ -59,13 +59,6 @@ class AppServiceProvider extends ServiceProvider
 
             // Paksa APP_ENV agar tidak dianggap production jika sedang main di localhost
             config(['app.env' => 'local']);
-
-            // Paksa DB_CONNECTION ke mysql HANYA jika driver tersedia (opsional, tapi aman)
-            // Di sini kita biarkan user pakai DB asli jika mereka mau, tapi Bodyguard default ke mysql
-            // jika memang itu workflow mereka.
-            if (env('DB_CONNECTION') === 'mysql' || !$isProduction) {
-                config(['database.default' => env('DB_CONNECTION', 'mysql')]);
-            }
         }
 
         /**

@@ -3,8 +3,8 @@ import { ref } from 'vue';
 import JobDatePicker from './JobDatePicker.vue';
 import JobStatusDropdown from './JobStatusDropdown.vue';
 
-const props = defineProps({ jobs: Array, selectedJobs: Array });
-const emit = defineEmits(['toggleSelection', 'selectAll', 'autoSave', 'delete', 'shiftSelect']);
+const props = defineProps({ jobs: Array });
+const emit = defineEmits(['autoSave', 'delete', 'scan']);
 
 const tableRef = ref(null);
 
@@ -35,46 +35,6 @@ const handleKeyDown = (e, rowIndex, colIndex) => {
     }
 };
 
-const handleCheckboxClick = (e, jobId, index) => {
-    if (e.shiftKey) {
-        emit('shiftSelect', index, jobId);
-    } else {
-        emit('toggleSelection', jobId, index);
-    }
-};
-
-// --- MULTI-SELECT GESTURES (TOUCH & RIGHT-CLICK) ---
-let touchTimer = null;
-
-const handleRightClick = (e, jobId, index) => {
-    emit('toggleSelection', jobId, index);
-    
-    // Provide slight visual feedback that row was selected via right click
-    const targetRow = e.currentTarget;
-    targetRow.classList.add('bg-indigo-100/70', 'transition-none');
-    setTimeout(() => {
-        targetRow.classList.remove('bg-indigo-100/70', 'transition-none');
-    }, 150);
-};
-
-const handlePointerDown = (e, jobId, index) => {
-    // Only detect long press for touch devices to avoid interfering with mouse text selection
-    if (e.pointerType !== 'touch') return;
-    
-    clearTimeout(touchTimer);
-    touchTimer = setTimeout(() => {
-        emit('toggleSelection', jobId, index);
-        // Haptic feedback if supported on mobile
-        if (window.navigator && window.navigator.vibrate) {
-            window.navigator.vibrate(50);
-        }
-    }, 500); // 500ms long press threshold
-};
-
-const handlePointerUp = (e) => {
-    if (e.pointerType !== 'touch') return;
-    clearTimeout(touchTimer);
-};
 </script>
 
 <template>
@@ -89,16 +49,8 @@ const handlePointerUp = (e) => {
                 
                 <div 
                     class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md rounded-[2rem] border border-slate-200/60 dark:border-slate-800 p-5 shadow-sm transition-all duration-300"
-                    :class="{'ring-2 ring-indigo-500 bg-white/90 dark:bg-slate-800/90': selectedJobs.includes(job.id)}"
                 >
                     <div class="flex items-start gap-4">
-                        <!-- Multi-select checkbox -->
-                        <div class="flex items-center h-10 shrink-0">
-                            <input type="checkbox" :checked="selectedJobs.includes(job.id)"
-                                @click="handleCheckboxClick($event, job.id, index)" 
-                                class="rounded-lg border-slate-300 text-indigo-600 focus:ring-indigo-500 w-5 h-5 transition-transform active:scale-125" />
-                        </div>
-
                         <div class="flex-1 min-w-0 space-y-4">
                             <!-- Main Info: Company & Title -->
                             <div class="space-y-1">
@@ -115,7 +67,7 @@ const handlePointerUp = (e) => {
                             <div class="h-px bg-slate-100 dark:bg-slate-800 -mx-4 transition-colors duration-500"></div>
 
                             <!-- Details Grid -->
-                            <div class="grid grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 gap-4">
                                 <!-- Location -->
                                 <div class="space-y-1">
                                     <label class="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 flex items-center gap-1 transition-colors duration-500">
@@ -125,16 +77,6 @@ const handlePointerUp = (e) => {
                                         @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
                                         class="w-full p-0 bg-transparent border-none outline-none focus:ring-0 font-bold text-xs text-slate-700 dark:text-slate-300 placeholder-slate-300 dark:placeholder-slate-700 transition-colors duration-500"
                                         :placeholder="$t('job_ph_location', 'Remote / ID')" />
-                                </div>
-                                <!-- Salary -->
-                                <div class="space-y-1">
-                                    <label class="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 flex items-center gap-1 transition-colors duration-500">
-                                        💰 {{ $t('job_col_salary', 'Gaji') }}
-                                    </label>
-                                    <input v-model="job.salary" type="number" 
-                                        @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
-                                        class="w-full p-0 bg-transparent border-none outline-none focus:ring-0 font-bold text-xs font-mono text-slate-700 dark:text-slate-300 placeholder-slate-300 dark:placeholder-slate-700 transition-colors duration-500"
-                                        placeholder="0" />
                                 </div>
                             </div>
 
@@ -147,6 +89,13 @@ const handlePointerUp = (e) => {
                                     <JobDatePicker v-model="job.applied_date" @save="emit('autoSave', job)" />
                                 </div>
                             </div>
+                            
+                            <!-- AI SCAN BUTTON (Mobile) -->
+                            <button @click="emit('scan', job)"
+                                class="w-full py-3 bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 rounded-2xl font-black text-[10px] uppercase tracking-widest flex items-center justify-center gap-2 transition-all">
+                                <OneForMindIcon name="sparkles" size="14" stroke-width="3" />
+                                AI Resume Match Scan
+                            </button>
                         </div>
 
                         <!-- Delete Button -->
@@ -175,36 +124,19 @@ const handlePointerUp = (e) => {
                 <table class="w-full text-sm border-collapse whitespace-nowrap text-left relative select-none sm:select-text">
                     <thead class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-20 shadow-sm transition-colors duration-500">
                         <tr>
-                            <th class="border-r border-slate-200 dark:border-slate-700 px-4 py-3.5 w-12 text-center relative group">
-                                <input type="checkbox" :checked="selectedJobs.length === jobs.length && jobs.length > 0"
-                                    @change="emit('selectAll')" class="rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-indigo-600 focus:ring-indigo-500 cursor-pointer w-4 h-4 peer" />
-                                <div class="absolute inset-0 bg-indigo-500/10 opacity-0 peer-checked:opacity-100 peer-hover:opacity-50 transition-opacity pointer-events-none"></div>
-                            </th>
                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[220px]">{{ $t('job_col_company', 'Perusahaan') }} <span class="text-rose-500">*</span></th>
                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[220px]">{{ $t('job_col_title', 'Pekerjaan') }} <span class="text-rose-500">*</span></th>
                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[180px]">{{ $t('job_col_location', 'Lokasi') }}</th>
                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[160px]">{{ $t('job_col_applied', 'Tgl Melamar') }}</th>
-                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[160px]">{{ $t('job_col_status', 'Status') }}</th>
-                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[180px]">{{ $t('job_col_salary', 'Gaji (Opsional)') }}</th>
+                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[160px]">{{ $t('job_col_status', 'Status') }}</th>
+                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-indigo-600 dark:text-indigo-400 min-w-[100px] text-center">Neural</th>
                             <th class="px-4 py-3.5 text-center font-extrabold text-slate-400 dark:text-slate-500 w-14">🗑️</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(job, index) in jobs" :key="job._key" 
-                            @contextmenu.prevent="handleRightClick($event, job.id, index)"
-                            @pointerdown="handlePointerDown($event, job.id, index)"
-                            @pointerup="handlePointerUp"
-                            @pointerleave="handlePointerUp"
-                            @pointercancel="handlePointerUp"
                             class="border-b border-slate-100 dark:border-slate-800 hover:bg-indigo-50/10 dark:hover:bg-indigo-500/5 focus-within:bg-indigo-50/30 dark:focus-within:bg-indigo-500/10 transition-colors group relative"
-                            :class="{'bg-indigo-50/50 dark:bg-indigo-500/10 hover:bg-indigo-50/70 dark:hover:bg-indigo-500/20': selectedJobs.includes(job.id)}">
-                            
-                            <td class="border-r border-slate-100 dark:border-slate-800 px-4 py-0 text-center align-middle bg-slate-50/40 dark:bg-slate-800/20 group-focus-within:bg-transparent"
-                                :class="{'!bg-indigo-100/50 dark:!bg-indigo-500/20': selectedJobs.includes(job.id)}">
-                                <input type="checkbox" :checked="selectedJobs.includes(job.id)"
-                                    @click="handleCheckboxClick($event, job.id, index)" class="rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-indigo-600 focus:ring-indigo-500 cursor-pointer w-4 h-4" />
-                            </td>
-
+                        >
                             <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative">
                                 <input v-model="job.company" type="text" @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
                                     @keydown="handleKeyDown($event, index, 0)" :data-nav-row="index" data-nav-col="0"
@@ -234,11 +166,12 @@ const handlePointerUp = (e) => {
                                 <JobStatusDropdown v-model="job.status" @save="emit('autoSave', job)" />
                             </td>
 
-                            <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative">
-                                <input v-model="job.salary" type="number" @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
-                                    @keydown="handleKeyDown($event, index, 3)" :data-nav-row="index" data-nav-col="3"
-                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-mono font-medium text-slate-600 placeholder-slate-300 transition-all"
-                                    placeholder="0" />
+
+                            <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative text-center align-middle">
+                                <button @click="emit('scan', job)"
+                                    class="w-full h-full min-h-[56px] flex items-center justify-center text-indigo-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-all">
+                                    <OneForMindIcon name="sparkles" size="18" stroke-width="2.5" />
+                                </button>
                             </td>
 
                             <td class="p-0 text-center align-middle">
@@ -250,7 +183,7 @@ const handlePointerUp = (e) => {
                         </tr>
                         
                         <tr v-if="jobs.length === 0">
-                            <td colspan="8" class="px-4 py-20 text-center text-slate-400 dark:text-slate-500 bg-slate-50/30 dark:bg-slate-800/20 font-medium transition-colors duration-500">
+                            <td colspan="7" class="px-4 py-20 text-center text-slate-400 dark:text-slate-500 bg-slate-50/30 dark:bg-slate-800/20 font-medium transition-colors duration-500">
                                 <div class="flex flex-col items-center gap-3">
                                     <span class="text-4xl text-slate-300 dark:text-slate-700 animate-bounce mt-2">📥</span>
                                     {{ $t('job_empty_table', 'Belum ada data. Tambahkan baris baru di pojok kanan atas.') }}

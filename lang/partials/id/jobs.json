@@ -45,6 +45,16 @@
     "job_mockup_time_2": "Dilamar",
     "job_mockup_task_3": "Apple - UX Designer",
     "job_mockup_time_3": "Wishlist",
-    "job_mockup_alert_1": "New Interview Scheduled!",
-    "job_mockup_alert_2": "Application Deadline Approaching"
+    "job_mockup_alert_1": "Jadwal Interview Baru!",
+    "job_mockup_alert_2": "Batas Waktu Lamaran Mendekat",
+    "job_master_cv_setup": "Setup Master CV",
+    "job_master_cv_ready": "CV Siap",
+    "job_master_cv_needs_setup": "Atur Master CV",
+    "job_master_cv_upload_label": "Upload PDF atau Gambar (Maks 15MB)",
+    "job_master_cv_ready_to_sync": "Siap Sinkronisasi Intelijen",
+    "job_master_cv_save": "Simpan & Ekstrak CV",
+    "job_master_cv_extracting": "Mengekstrak Intelijen Teks...",
+    "job_master_cv_error_save": "Gagal menyimpan CV. Coba lagi.",
+    "job_master_cv_success": "Master CV berhasil disimpan.",
+    "job_master_cv_storage_tip": "Storage Optimization: File PDF berukuran besar (MB) akan dikompresi oleh AI menjadi data teks murni (KB) untuk efisiensi database & kecepatan analisis."
 }

@@ -35,6 +35,8 @@ class HandleInertiaRequests extends Middleware
                     'settings' => $request->user()->settings,
                     'timezone' => $request->user()->timezone ?? config('app.timezone'),
                     'avatar_url' => $request->user()->avatar_url,
+                    'resume_text' => $request->user()->resume_text,
+                    'resume_filename' => $request->user()->resume_filename,
                     'is_premium' => true, // Temporarily unlocked for everyone globally.
                     'premium_until' => now()->addYears(10), // Give arbitrarily long time
                     'tier'       => 2, // Force Architect Tier (2) or higher

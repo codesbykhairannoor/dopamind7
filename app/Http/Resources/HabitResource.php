@@ -49,6 +49,20 @@ class HabitResource extends JsonResource
                 });
             }, (object)[]),
 
+            // 🔥 STAGNANCY DETECTION 🔥
+            'is_stagnant' => $this->whenLoaded('logs', function() {
+                // If habit is newly created (last 3 days), it's not stagnant yet
+                if ($this->created_at->diffInDays(now()) < 4) return false;
+                
+                // If it has logs in the last 7 days, it's NOT stagnant
+                $hasRecentLogs = $this->logs->contains(function($log) {
+                    $date = is_string($log->date) ? \Carbon\Carbon::parse($log->date) : $log->date;
+                    return $date->isAfter(now()->subDays(8)) && $log->status->value === 'completed';
+                });
+
+                return !$hasRecentLogs;
+            }, false),
+
             'created_at' => $this->created_at?->toIso8601String(),
             'updated_at' => $this->updated_at?->toIso8601String(),
         ];
