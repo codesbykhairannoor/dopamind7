@@ -518,6 +518,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::post('/habit-stack', [\App\Http\Controllers\AiHabitController::class, 'suggestStack'])->name('habit.stack');
             Route::post('/habit-mood', [\App\Http\Controllers\AiHabitController::class, 'adaptToMood'])->name('habit.mood');
             Route::post('/habit-audit', [\App\Http\Controllers\AiHabitController::class, 'auditFriction'])->name('habit.audit');
+            Route::post('/habit-stagnation', [\App\Http\Controllers\AiHabitController::class, 'auditStagnation'])->name('habit.stagnation');
             
             // Debugging
             Route::get('/debug-gemini', [\App\Http\Controllers\AiDebugController::class, 'testGemini']);

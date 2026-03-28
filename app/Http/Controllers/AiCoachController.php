@@ -119,7 +119,7 @@ class AiCoachController extends Controller
 
         // --- CONTEXT INJECTION (The Secret Sauce) ---
         $habits = Habit::ofUser($user->id)->get()->map(fn($h) => "{$h->name} ({$h->period})");
-        $tasks = PlannerTask::ofUser($user->id)->forDate(now()->format('Y-m-d'))->get()->map(fn($t) => $t->name . ($t->is_completed ? " [SELESAI]" : " [BELUM]"));
+        $tasks = PlannerTask::ofUser($user->id)->forDate(now()->format('Y-m-d'))->get()->map(fn($t) => $t->title . ($t->is_completed ? " [SELESAI]" : " [BELUM]"));
         $income = FinanceTransaction::where('user_id', $user->id)->where('type', 'income')->whereMonth('date', now()->month)->sum('amount');
         $expense = FinanceTransaction::where('user_id', $user->id)->where('type', 'expense')->whereMonth('date', now()->month)->sum('amount');
 

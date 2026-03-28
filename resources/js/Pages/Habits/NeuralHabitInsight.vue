@@ -13,6 +13,22 @@ const stackData = ref(null);
 const moodAdvisory = ref(null);
 const auditData = ref(null);
 const showAudit = ref(false);
+const stagnantData = ref(null);
+
+const checkStagnation = async () => {
+    try {
+        const res = await axios.post(route('coach.habit.stagnation'));
+        if (res.data.action) {
+            stagnantData.value = res.data;
+        }
+    } catch (e) {
+        console.error(e);
+    }
+};
+
+onMounted(() => {
+    checkStagnation();
+});
 
 const getHabitStack = async () => {
     isAnalyzing.value = true;
@@ -60,6 +76,30 @@ defineExpose({ runAudit, getMoodAdvisory });
 <template>
     <div class="max-w-[95%] mx-auto space-y-4 px-2">
         
+        <!-- STAGNANT HABIT ALERT (DORMANT WARNING) -->
+        <Transition name="fade-slide">
+            <div v-if="stagnantData" class="bg-gradient-to-r from-rose-500 to-orange-600 rounded-3xl p-5 shadow-xl shadow-rose-100 dark:shadow-none mb-6 relative overflow-hidden group">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="flex items-start gap-4 relative">
+                    <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white shrink-0 shadow-inner">
+                        <OneForMindIcon name="sparkles" size="24" class="animate-pulse" />
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.2em] text-white/80 mb-1">{{ stagnantData.title }}</h4>
+                        <p class="text-sm font-black text-white leading-tight mb-2">"{{ stagnantData.message }}"</p>
+                        <div class="bg-black/20 rounded-xl p-3 border border-white/10">
+                            <p class="text-[10px] font-bold text-white/90 leading-relaxed italic">
+                                <span class="text-orange-300 font-black">AI RECOVERY STEP:</span> {{ stagnantData.action }}
+                            </p>
+                        </div>
+                    </div>
+                    <button @click="stagnantData = null" class="text-white/40 hover:text-white transition-colors">
+                        <OneForMindIcon name="x" size="14" />
+                    </button>
+                </div>
+            </div>
+        </Transition>
+
         <!-- HABIT ALCHEMY (STACKING) TRIGGER -->
         <div v-if="!showStack" class="flex justify-center py-4">
             <button @click="getHabitStack" class="group flex items-center gap-3 px-6 py-3 bg-slate-900 dark:bg-indigo-600 text-white rounded-2xl shadow-xl hover:scale-105 transition-all active:scale-95 border border-white/10">

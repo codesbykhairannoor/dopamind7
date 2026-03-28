@@ -24,14 +24,16 @@ class AiHabitController extends Controller
         $habits = Habit::ofUser($user->id)->where('is_archived', false)->latest()->take(5)->get();
         $tasks = PlannerTask::where('user_id', $user->id)->whereDate('date', now())->take(10)->get();
 
-        $prompt = "You are OneForMind Neural OS. User wants a 'Habit Stack' (Habit Stacking strategy).
-        Current Habits: {$habits->pluck('name')->implode(', ')}.
-        Current Tasks for Today: {$tasks->pluck('title')->implode(', ')}.
+        $prompt = "You are OneForMind Neural OS. User wants a 'Habit Stack' recommendation.
+        ONLY USE the data below. If data is empty, give a generic but high-quality dopamine-fasting stack.
         
-        Suggest 1 powerful Habit Stack using the formula: 'After [Anchor Habit/Task], I will [New/Current Habit]'. 
-        Explain WHY this stack is effective based on behavioral science.
-        Keep it concise, premium, and inspiring. Use Indonesian language.
-        Return in JSON format: { \"stack\": \"...\", \"reason\": \"...\" }";
+        Current Habits: " . ($habits->isEmpty() ? 'NONE' : $habits->pluck('name')->implode(', ')) . "
+        Current Tasks for Today: " . ($tasks->isEmpty() ? 'NONE' : $tasks->pluck('title')->implode(', ')) . "
+        
+        Suggest 1 powerful Habit Stack using the formula: 'After [Existing Anchor], I will [Target Action]'. 
+        The anchor MUST be something the user already DOES (from habits or tasks).
+        
+        Return in JSON format: { \"stack\": \"...\", \"reason\": \"...\" } in Indonesian language.";
 
         $response = $this->gemini->generate($prompt);
         return response()->json($this->parseJson($response));
@@ -75,6 +77,37 @@ class AiHabitController extends Controller
         Then provide 1 immediate solution to reduce friction for tomorrow.
         Use Indonesian language.
         Return in JSON format: { \"audit_question\": \"...\", \"solution\": \"...\" }";
+
+        $response = $this->gemini->generate($prompt);
+        return response()->json($this->parseJson($response));
+    }
+
+    /**
+     * NEW: Stagnant Habit Warning
+     * Detects habits with 0 logs in last 7 days.
+     */
+    public function auditStagnation(Request $request)
+    {
+        $user = Auth::user();
+        $stagnantHabits = Habit::ofUser($user->id)
+            ->where('is_archived', false)
+            ->withCount(['logs' => function($q) {
+                $q->where('date', '>=', now()->subDays(7));
+            }])
+            ->having('logs_count', '=', 0)
+            ->get();
+
+        if ($stagnantHabits->isEmpty()) {
+            return response()->json(['message' => 'Luar biasa! Tidak ada habit yang terbengkalai 7 hari terakhir. Pertahankan momentummu!']);
+        }
+
+        $prompt = "You are OneForMind Neural OS. DETECTING DORMANT HABITS.
+        Stagnant Habits (0 logs in 7 days): " . $stagnantHabits->pluck('name')->implode(', ') . ".
+        
+        Provide 1 'Wakeup Call' insight. Be sharp, a bit tough but still a life coach. 
+        Explain the 'Cost of Inaction' and suggest 1 micro-step to restart today.
+        Use Indonesian language.
+        Return JSON: { \"title\": \"Dormant Alert!\", \"message\": \"...\", \"action\": \"...\" }";
 
         $response = $this->gemini->generate($prompt);
         return response()->json($this->parseJson($response));

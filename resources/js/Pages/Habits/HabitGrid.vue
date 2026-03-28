@@ -146,7 +146,15 @@ onMounted(() => {
 
                     <!-- Name & Progress -->
                     <div class="flex-1 min-w-0">
-                        <h4 class="font-bold text-slate-700 truncate">{{ habit.name }}</h4>
+                        <div class="flex items-center justify-between gap-2">
+                            <h4 class="font-bold text-slate-700 truncate text-sm">{{ habit.name }}</h4>
+                            <!-- Mobile Delete/Edit Mini Menu -->
+                            <div class="flex items-center gap-1 opacity-40">
+                                <button @click.stop="confirmDelete(habit)" class="p-1 text-rose-500">
+                                    <OneForMindIcon name="trash" size="12" />
+                                </button>
+                            </div>
+                        </div>
                         <div class="flex items-center gap-2 mt-1">
                             <div class="flex-1 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                                 <div class="h-full rounded-full transition-all duration-500" 
@@ -248,11 +256,11 @@ onMounted(() => {
                                             <div class="h-1.5 w-16 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                                                 <div class="h-full rounded-full transition-all duration-300" :style="{ width: habit.progress_percent + '%', backgroundColor: habit.color }"></div>
                                             </div>
-                                            <div class="hidden md:flex opacity-0 group-hover:opacity-100 transition items-center gap-1 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm px-1 rounded-md absolute right-2 top-1/2 -translate-y-1/2 shadow-sm border border-slate-100 dark:border-slate-700 z-50">
-                                                <button @click="editHabit(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 rounded-md transition" title="Edit">
+                                            <div class="flex items-center gap-1 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-1.5 py-1 rounded-full absolute -right-2 top-0 shadow-lg border border-slate-200/50 dark:border-slate-700 z-50 transition-all opacity-0 group-hover:opacity-100 group-hover:-translate-y-1">
+                                                <button @click="editHabit(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 rounded-full transition" title="Edit">
                                                     <OneForMindIcon name="planner" size="14" stroke-width="2.5" />
                                                 </button>
-                                                <button @click="confirmDelete(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-md transition" title="Hapus">
+                                                <button @click="confirmDelete(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-full transition" title="Hapus">
                                                     <OneForMindIcon name="trash" size="14" stroke-width="2.5" />
                                                 </button>
                                             </div>
