@@ -46,6 +46,16 @@ class DashboardService
                 $q->where('end_date', '>=', $todayStr)->orWhereNull('end_date');
             })->take(2)->get();
 
+        // 5. Goals & Jobs (New Integration)
+        $goalsCount = \App\Models\Goal::where('user_id', $userId)->where('status', 'active')->count();
+        $topGoal = \App\Models\Goal::where('user_id', $userId)->where('status', 'active')
+            ->withCount(['milestones as completed_milestones' => fn($q) => $q->where('completed', true)])
+            ->withCount('milestones as total_milestones')
+            ->first();
+
+        $activeJobsCount = \App\Models\Job::where('user_id', $userId)->whereIn('status', ['applied', 'interviewing'])->count();
+        $upcomingInterviews = \App\Models\Job::where('user_id', $userId)->where('status', 'interviewing')->take(2)->get();
+
         return [
             'date_formatted' => $now->translatedFormat('l, d F Y'),
             'habits' => [
@@ -67,6 +77,17 @@ class DashboardService
                 'is_written' => (bool) $journal,
                 'mood'       => $journal ? $journal->mood : null,
                 'id'         => $journal ? $journal->id : null,
+            ],
+            'goals' => [
+                'active' => $goalsCount,
+                'top_goal' => $topGoal ? [
+                    'title' => $topGoal->title,
+                    'percent' => $topGoal->total_milestones > 0 ? round(($topGoal->completed_milestones / $topGoal->total_milestones) * 100) : 0,
+                ] : null,
+            ],
+            'jobs' => [
+                'active' => $activeJobsCount,
+                'interviews' => $upcomingInterviews->count(),
             ],
             'events' => $events,
         ];

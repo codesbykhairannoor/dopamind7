@@ -21,19 +21,39 @@ class AiHabitController extends Controller
     public function suggestStack(Request $request)
     {
         $user = Auth::user();
-        $habits = Habit::ofUser($user->id)->where('is_archived', false)->latest()->take(5)->get();
+        $habits = Habit::ofUser($user->id)->where('is_archived', false)->ordered()->get();
         $tasks = PlannerTask::where('user_id', $user->id)->whereDate('date', now())->take(10)->get();
 
-        $prompt = "You are OneForMind Neural OS. User wants a 'Habit Stack' recommendation.
-        ONLY USE the data below. If data is empty, give a generic but high-quality dopamine-fasting stack.
+        // Count performance in last 14 days
+        $startDate = now()->subDays(14)->toDateString();
+        $habitStats = [];
+        foreach ($habits as $h) {
+            $comp = $h->logs()->whereBetween('date', [$startDate, now()->toDateString()])->where('status', 'completed')->count();
+            $missed = $h->logs()->whereBetween('date', [$startDate, now()->toDateString()])->where('status', 'missed')->count();
+            $empty = 14 - $h->logs()->whereBetween('date', [$startDate, now()->toDateString()])->count();
+            $habitStats[] = "- {$h->name}: {$comp} Done, {$missed} Missed, {$empty} Empty/Gaps";
+        }
+
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
+        $prompt = "You are OneForMind Neural OS. Analyze the user's habit performance and suggest a 'Habit Stack'.
         
-        Current Habits: " . ($habits->isEmpty() ? 'NONE' : $habits->pluck('name')->implode(', ')) . "
-        Current Tasks for Today: " . ($tasks->isEmpty() ? 'NONE' : $tasks->pluck('title')->implode(', ')) . "
+        USER DATA (Last 14 Days):
+        " . implode("\n", $habitStats) . "
         
-        Suggest 1 powerful Habit Stack using the formula: 'After [Existing Anchor], I will [Target Action]'. 
-        The anchor MUST be something the user already DOES (from habits or tasks).
+        TASKS TODAY:
+        " . ($tasks->isEmpty() ? 'NONE' : $tasks->pluck('title')->implode(', ')) . "
         
-        Return in JSON format: { \"stack\": \"...\", \"reason\": \"...\" } in Indonesian language.";
+        GOAL:
+        1. Identify the 'Problem' (why there are many empty/missed gaps like 'bolong-bolong').
+        2. Provide 1 'Atomic Suggestion' for the problem.
+        3. Suggest 1 'Habit Stack' using: 'After [Existing Anchor], I will [Target Action]'.
+        
+        TONE: Premium, empathetic but firm life coach.
+        LANGUAGE: MUST USE $langName language.
+        OUTPUT: JSON format { \"stack\": \"...\", \"reason\": \"...\" }
+        The 'reason' field MUST include the analysis of the gaps/bolong-bolong and the specific advice.";
 
         $response = $this->gemini->generate($prompt);
         return response()->json($this->parseJson($response));
@@ -49,13 +69,17 @@ class AiHabitController extends Controller
         $user = Auth::user();
         $habits = Habit::ofUser($user->id)->where('is_archived', false)->get();
 
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
         $prompt = "User is feeling '{$request->mood}' today. 
         Current Habits: {$habits->pluck('name')->implode(', ')}.
         
         As OneForMind Neural OS, suggest how to adapt these habits for today only. 
         If mood is low, suggest 'Atomic' (smaller) versions. 
         If mood is high, suggest 'Elite' (extra mile) versions.
-        Keep it coaching-style, empathetic, and premium. Use Indonesian language.
+        Keep it coaching-style, empathetic, and premium.
+        LANGUAGE: MUST USE $langName language.
         Return in JSON format: { \"message\": \"...\", \"suggestions\": [ { \"habit\": \"...\", \"adjustment\": \"...\" } ] }";
 
         $response = $this->gemini->generate($prompt);
@@ -71,11 +95,14 @@ class AiHabitController extends Controller
         $request->validate(['habit_id' => 'required|exists:habits,id']);
         $habit = Habit::findOrFail($request->habit_id);
         
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
         $prompt = "User missed their habit: '{$habit->name}'. 
         As OneForMind Neural OS, perform a 'Friction Audit'. 
         Ask 1-2 sharp questions to identify if it was a Time, Energy, or Priority issue.
         Then provide 1 immediate solution to reduce friction for tomorrow.
-        Use Indonesian language.
+        LANGUAGE: MUST USE $langName language.
         Return in JSON format: { \"audit_question\": \"...\", \"solution\": \"...\" }";
 
         $response = $this->gemini->generate($prompt);
@@ -97,8 +124,14 @@ class AiHabitController extends Controller
             ->having('logs_count', '=', 0)
             ->get();
 
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
         if ($stagnantHabits->isEmpty()) {
-            return response()->json(['message' => 'Luar biasa! Tidak ada habit yang terbengkalai 7 hari terakhir. Pertahankan momentummu!']);
+            $msg = ($locale === 'id') 
+                ? 'Luar biasa! Tidak ada habit yang terbengkalai 7 hari terakhir. Pertahankan momentummu!'
+                : 'Excellent! No stagnant habits in the last 7 days. Keep up the momentum!';
+            return response()->json(['message' => $msg]);
         }
 
         $prompt = "You are OneForMind Neural OS. DETECTING DORMANT HABITS.
@@ -106,7 +139,7 @@ class AiHabitController extends Controller
         
         Provide 1 'Wakeup Call' insight. Be sharp, a bit tough but still a life coach. 
         Explain the 'Cost of Inaction' and suggest 1 micro-step to restart today.
-        Use Indonesian language.
+        LANGUAGE: MUST USE $langName language.
         Return JSON: { \"title\": \"Dormant Alert!\", \"message\": \"...\", \"action\": \"...\" }";
 
         $response = $this->gemini->generate($prompt);

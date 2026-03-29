@@ -10,6 +10,7 @@ import CalendarHeader from './CalendarHeader.vue';
 import CalendarGrid from './CalendarGrid.vue';
 import CalendarEventModal from './CalendarEventModal.vue';
 import CalendarDayDetail from './CalendarDayDetail.vue';
+import NeuralBridge from '@/Components/NeuralBridge.vue';
 
 const props = defineProps({
     currentMonth: String, 
@@ -97,7 +98,8 @@ const changeMonth = (newMonthPayload) => {
             @add-event="() => openEventModal()"
         />
 
-        <div class="w-full px-4 py-6 sm:px-6 lg:px-8 max-w-full mx-auto">
+        <div class="w-full px-4 py-6 sm:px-6 lg:px-8 max-w-full mx-auto space-y-6">
+            <NeuralBridge module="Calendar" />
             <CalendarGrid 
                 :calendarDays="calendarDays"
                 :selectedDate="selectedDate"

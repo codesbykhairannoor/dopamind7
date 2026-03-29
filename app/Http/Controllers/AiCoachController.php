@@ -7,6 +7,7 @@ use App\Models\FinanceTransaction;
 use App\Models\PlannerTask;
 use App\Models\AiChat;
 use App\Services\GeminiService;
+use App\Services\NeuralSynergyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -14,7 +15,10 @@ use Inertia\Inertia;
 
 class AiCoachController extends Controller
 {
-    public function __construct(private GeminiService $geminiService) {}
+    public function __construct(
+        private GeminiService $geminiService,
+        private NeuralSynergyService $neuralSynergy
+    ) {}
 
     public function index(Request $request)
     {
@@ -146,7 +150,14 @@ class AiCoachController extends Controller
         }
 
         return response()->json([
-            'content' => $response ?? "Maaf, sepertinya asisten sedang beristirahat. Pastikan API_KEY valid [Model: gemini-2.5-flash]."
+            'content' => $response ?? "Maaf, sepertinya asisten sedang beristirahat sejenak karena terlalu banyak permintaan. Silakan tunggu 1 menit dan coba lagi."
         ]);
+    }
+
+    public function synergy(Request $request)
+    {
+        $request->validate(['module' => 'required|string']);
+        $synergy = $this->neuralSynergy->getModuleSynergy(Auth::id(), $request->module);
+        return response()->json($synergy);
     }
 }

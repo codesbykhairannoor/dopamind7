@@ -12,6 +12,7 @@ import PlannerSidebar from './PlannerSidebar.vue';
 import PlannerTimeline from './PlannerTimeline.vue';
 import PlannerModal from './PlannerModal.vue';
 import PlannerBatchModal from './PlannerBatchModal.vue';
+import NeuralBridge from '@/Components/NeuralBridge.vue';
 
 // 🔥 TERIMA currentDate DARI CONTROLLER
 const props = defineProps({ 
@@ -82,9 +83,10 @@ const handleFullReset = () => {
                 </div>
 
                 <div class="lg:col-span-2 order-2 lg:order-1 w-full space-y-6 md:sticky md:top-24">
-                   <PlannerSidebar 
-    :stats="scheduledStats"
-    v-model:localNotes="localNotes"
+                    <NeuralBridge module="Planner" />
+                    <PlannerSidebar 
+                        :stats="scheduledStats"
+                        v-model:localNotes="localNotes"
     v-model:localMeals="localMeals"
     v-model:localWater="localWater"
     v-model:localTaskBox="localTaskBox"

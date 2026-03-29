@@ -10,6 +10,7 @@ import HabitGrid from './HabitGrid.vue';
 import HabitStats from './HabitStats.vue';
 import HabitModals from './HabitModals.vue';
 import NeuralHabitInsight from './NeuralHabitInsight.vue';
+import NeuralBridge from '@/Components/NeuralBridge.vue';
 
 // PERSISTENT LAYOUT
 defineOptions({
@@ -100,6 +101,10 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 :isCellSelected="isCellSelected"
                 :saveHabitOrder="saveHabitOrder"
             />
+
+            <div class="px-4 md:px-8">
+                <NeuralBridge module="Habits" />
+            </div>
 
             <!-- NEW AI SECTION (Moved to bottom of grid) -->
             <NeuralHabitInsight ref="neuralOs" :currentMood="savedMood" />

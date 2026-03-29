@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 
 import JournalHeader from './JournalHeader.vue';
 import JournalCard from './JournalCard.vue';
+import NeuralBridge from '@/Components/NeuralBridge.vue';
 
 const props = defineProps({
     journals: Array,
@@ -69,9 +70,10 @@ const createEntry = () => {
             :synergy="synergy" 
         />
 
-        <div class="w-full px-4 py-8 sm:px-6 lg:px-8 md:py-12">
+        <div class="w-full px-4 py-8 sm:px-6 lg:px-8 md:py-12 space-y-8">
+            <NeuralBridge module="Journal" />
             
-            <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center justify-between">
                 <h3 class="text-xl font-black text-slate-800 dark:text-white transition-colors duration-500">{{ $t('journal_history', 'Story History') }}</h3>
             </div>
 

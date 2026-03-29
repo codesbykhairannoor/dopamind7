@@ -515,6 +515,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
         Route::prefix('coach')->name('coach.')->group(function () {
             Route::get('/', [\App\Http\Controllers\AiCoachController::class, 'index'])->name('index');
             Route::post('/chat', [\App\Http\Controllers\AiCoachController::class, 'chat'])->name('chat');
+            Route::post('/synergy', [\App\Http\Controllers\AiCoachController::class, 'synergy'])->name('synergy');
             
             // AI Habits (Ideas 2, 4, 7)
             Route::post('/habit-stack', [\App\Http\Controllers\AiHabitController::class, 'suggestStack'])->name('habit.stack');

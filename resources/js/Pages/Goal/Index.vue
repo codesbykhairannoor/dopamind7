@@ -6,6 +6,7 @@ import GoalStats from './GoalStats.vue';
 import GoalCard from './GoalCard.vue';
 import GoalModal from './GoalModal.vue';
 import GoalHeader from './GoalHeader.vue';
+import NeuralBridge from '@/Components/NeuralBridge.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -46,6 +47,8 @@ const todayDate = computed(() => {
         <GoalHeader :onAddClick="openCreateModal" />
 
         <div class="w-full lg:max-w-[96%] mx-auto p-4 md:p-6 lg:p-8 space-y-8 pb-24">
+            <NeuralBridge module="Goal" />
+
             <!-- Global Stats Section -->
             <GoalStats :stats="localStats" :goals="localGoals" />
 

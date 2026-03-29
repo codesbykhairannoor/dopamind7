@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 class GeminiService
 {
     protected ?string $apiKey;
-    protected string $model = 'gemini-2.5-flash';
+    protected string $model = 'gemini-1.5-flash';
 
     public function __construct()
     {
@@ -26,7 +26,7 @@ class GeminiService
         }
 
         try {
-            $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
+            $response = Http::post("https://generativelanguage.googleapis.com/v1/models/{$this->model}:generateContent?key={$this->apiKey}", [
                 'contents' => [
                     [
                         'parts' => [
@@ -71,13 +71,17 @@ class GeminiService
      */
     public function auditFinance(array $data, string $month): ?string
     {
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
         $prompt = "As a professional financial auditor and life coach, analyze the following transactions for the month of $month.
         User Name: {$data['user_name']}
         Income Total: {$data['total_income']}
         Expense Total: {$data['total_expense']}
         Categories Summary: " . json_encode($data['categories']) . "
         
-        Provide a concise, motivating financial audit (max 3-4 paragraphs) in Indonesian language. 
+        Provide a concise, motivating financial audit (max 3-4 paragraphs). 
+        LANGUAGE: MUST USE $langName language.
         Identify spending leaks, suggest areas for improvement, and end with a positive reinforcement. 
         Format your response in professional markdown with bold highlights.";
 
@@ -89,10 +93,15 @@ class GeminiService
      */
     public function analyzeSentiment(string $journalContent): ?string
     {
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
         $prompt = "Analyze the emotional sentiment and psychological state of this journal entry.
         Content: \"$journalContent\"
         
-        Provide a short 2-sentence emotional analysis in Indonesian language, followed by a mood score from 1 to 10.
+        Provide a short 2-sentence emotional analysis.
+        LANGUAGE: MUST USE $langName language.
+        Followed by a mood score from 1 to 10.
         Output format: [Sentiment Analysis] | [Score: X/10]";
 
         return $this->generate($prompt);
@@ -103,11 +112,15 @@ class GeminiService
      */
     public function getCoachSuggestions(array $context): ?string
     {
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
         $prompt = "You are OneForMind AI Life Coach. Based on current habits and task completion:
         " . json_encode($context) . "
         
         Provide 3 actionable tips for tomorrow to increase productivity and mental well-being.
-        Keep it concise, in Indonesian, and extremely encouraging.";
+        LANGUAGE: MUST USE $langName language.
+        Keep it concise and extremely encouraging.";
 
         return $this->generate($prompt);
     }
@@ -116,13 +129,16 @@ class GeminiService
      */
     public function generateOpeningRemark(array $context): ?string
     {
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
         $prompt = "You are OneForMind AI Life Coach. Proactively start a conversation with the user based on their data:
         Context: " . json_encode($context) . "
         
         Rules:
         1. Be specific (Misal: Sebutkan habit 'Olahraga' yang sudah 3 hari bolong).
         2. Sound human, caring, but firm (coach style).
-        3. Use Indonesian language.
+        3. LANGUAGE: MUST USE $langName language.
         4. If they are doing great, praise them. If they are failing, ask 'why' gently.
         5. Keep it to 1-2 punchy sentences.";
 
@@ -185,7 +201,7 @@ class GeminiService
         }
 
         try {
-            $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", $payload);
+            $response = Http::post("https://generativelanguage.googleapis.com/v1/models/{$this->model}:generateContent?key={$this->apiKey}", $payload);
 
             if ($response->successful()) {
                 $candidates = $response->json('candidates');
@@ -226,7 +242,7 @@ class GeminiService
         try {
             $response = Http::timeout(180)->withHeaders([
                 'Content-Type' => 'application/json',
-            ])->post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
+            ])->post("https://generativelanguage.googleapis.com/v1/models/{$this->model}:generateContent?key={$this->apiKey}", [
                 'contents' => [
                     [
                         'parts' => [
@@ -265,7 +281,7 @@ class GeminiService
         try {
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
-            ])->post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
+            ])->post("https://generativelanguage.googleapis.com/v1/models/{$this->model}:generateContent?key={$this->apiKey}", [
                 'contents' => [
                     [
                         'parts' => [
@@ -280,7 +296,8 @@ class GeminiService
                             
                             TASK:
                             1. Calculate Match Percentage (0-100%).
-                            2. Give a 1-sentence executive summary (Indonesian).
+                            2. Give a 1-sentence executive summary.
+                            LANGUAGE: MUST USE " . ((app()->getLocale() === 'id') ? 'Indonesian' : 'English') . " language.
                             
                             OUTPUT FORMAT (MARKDOWN):
                             # [PERCENTAGE]% MATCH

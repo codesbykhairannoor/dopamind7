@@ -7,6 +7,7 @@ import JobStats from './JobStats.vue';
 import JobFilterBar from './JobFilterBar.vue';
 import ResumeAiModal from './ResumeAiModal.vue';
 import MasterCvModal from './MasterCvModal.vue';
+import NeuralBridge from '@/Components/NeuralBridge.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -103,7 +104,8 @@ const onMasterSaved = () => {
             </div>
         </div>
 
-        <div class="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div class="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+            <NeuralBridge module="Job" />
             
             <JobStats v-if="localStats" :stats="localStats" />
 

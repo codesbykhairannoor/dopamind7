@@ -9,6 +9,7 @@ const props = defineProps({
     synergy: Object,
     trend: Array,
     stats: Object,
+    globalInsight: Object,
 });
 
 defineOptions({ layout: AuthenticatedLayout });
@@ -27,265 +28,240 @@ const formatRupiah = (number) => {
 
 // Hitung overall score hari ini (rata-rata dari habit dan planner)
 const overallScore = computed(() => {
-    return Math.round((props.synergy.habits.percent + props.synergy.planner.percent) / 2);
+    if (!props.synergy) return 0;
+    let scores = [props.synergy.habits.percent, props.synergy.planner.percent];
+    if (props.synergy.goals.top_goal) scores.push(props.synergy.goals.top_goal.percent);
+    scores.push(props.synergy.journal.is_written ? 100 : 0);
+    
+    return Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
 });
 </script>
 
 <template>
     <Head :title="$t('nav_dashboard')" />
 
-    <div class="w-full lg:max-w-[96%] mx-auto p-4 md:p-6 lg:p-8 space-y-6 lg:space-y-8 pb-24">
+    <div class="w-full lg:max-w-[96%] mx-auto p-4 md:p-8 space-y-8 lg:space-y-12 pb-32">
         
-        <div v-if="synergy" class="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-indigo-600 to-indigo-700 dark:from-indigo-700 dark:via-indigo-800 dark:to-slate-950 rounded-[2.5rem] p-8 md:p-12 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border border-indigo-700/50 dark:border-indigo-500/20 group transition-all duration-500">
-            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-indigo-500/30 dark:bg-indigo-400/10 rounded-full blur-[100px] group-hover:bg-indigo-400/40 transition-colors duration-1000"></div>
-            <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-white/5 dark:bg-indigo-500/5 rounded-full blur-[80px]"></div>
-            
-            <div class="relative z-10 w-full md:w-2/3">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6 text-[10px] md:text-sm font-bold text-indigo-100 tracking-wide uppercase">
-                    <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
-                    {{ synergy.date_formatted }}
-                </div>
-                <h2 class="text-3xl md:text-6xl font-black tracking-tight mb-4 bg-gradient-to-r from-white to-white bg-clip-text text-transparent drop-shadow-sm leading-tight">
-                    {{ $t(greetingKey) }}, <br class="hidden md:block" /> {{ user.name }}! 👋
-                </h2>
-                <p class="text-white/90 text-sm md:text-xl font-medium max-w-2xl leading-relaxed">
-                    {{ $t('dash_hero_subtitle') }}
-                </p>
-            </div>
-            
-            <div class="relative z-10 w-full md:w-auto flex justify-start md:justify-end">
-                <div class="relative flex items-center justify-center w-40 h-40 md:w-48 md:h-48 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl dark:shadow-none rotate-3 group-hover:rotate-0 transition-transform duration-500">
-                    <svg class="absolute inset-0 w-full h-full -rotate-90 p-4" viewBox="0 0 36 36">
-                        <path class="text-white/10" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        <path class="text-indigo-400 transition-all duration-1000 ease-out drop-shadow-[0_0_10px_rgba(129,140,248,0.8)]" stroke-dasharray="100, 100" :stroke-dashoffset="100 - overallScore" stroke-linecap="round" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    </svg>
-                    <div class="text-center relative">
-                        <span class="block text-4xl md:text-5xl font-black text-white drop-shadow-md">{{ overallScore }}<span class="text-xl text-indigo-300">%</span></span>
-                        <span class="block text-[10px] uppercase tracking-widest text-indigo-200 font-bold mt-1">{{ $t('dash_synergy_today') }}</span>
+        <!-- 🔥 REFINED BENTO HERO -->
+        <header v-if="synergy" class="relative group">
+            <div class="relative overflow-hidden bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-14 border border-slate-100 dark:border-slate-800 shadow-xl dark:shadow-none transition-all duration-500">
+                <div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500/5 rounded-full blur-[100px]"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-10">
+                    <div class="flex-1 space-y-5 text-center md:text-left">
+                        <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">{{ synergy.date_formatted }}</span>
+                        </div>
                         
-                        <!-- Mini Trend Sparkline -->
-                        <div v-if="props.trend && props.trend.length > 0" class="mt-4 flex items-end justify-center gap-1 h-8 px-2 py-1 bg-white/10 rounded-lg">
-                            <div v-for="(t, i) in props.trend" :key="i" 
-                                class="w-1.5 bg-indigo-300/60 rounded-full transition-all duration-500 hover:bg-white hover:scale-y-125"
-                                :style="{ height: Math.max(20, t.score) + '%' }"
-                                :title="`${t.day}: ${t.score}%`"
-                            ></div>
+                        <h1 class="text-4xl md:text-6xl font-black tracking-tighter text-slate-900 dark:text-white leading-[1.1]">
+                            {{ $t(greetingKey) }},<br />
+                            <span class="text-indigo-600 dark:text-indigo-400">{{ user.name }}</span>
+                        </h1>
+                    </div>
+
+                    <!-- Synergy Score -->
+                    <div class="relative w-48 h-48 md:w-56 md:h-56 flex items-center justify-center">
+                        <svg class="absolute w-full h-full -rotate-90" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="4" class="text-slate-50 dark:text-slate-800" />
+                            <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" 
+                                :stroke-dasharray="276" :stroke-dashoffset="276 - (276 * overallScore / 100)"
+                                class="text-indigo-600 dark:text-indigo-500 transition-all duration-[1500ms] shadow-indigo-500 drop-shadow-md" />
+                        </svg>
+                        <div class="text-center">
+                            <span class="block text-5xl md:text-6xl font-black text-slate-900 dark:text-white tabular-nums">{{ overallScore }}%</span>
+                            <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">{{ $t('dash_synergy_today') }}</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <!-- Skeleton Header -->
-        <div v-else class="h-64 md:h-80 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2.5rem] flex items-center px-8 md:px-12 relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-slate-50 dark:from-slate-800 via-slate-100 dark:via-slate-700 to-slate-50 dark:to-slate-800 animate-[shimmer_2s_infinite]"></div>
-            <div class="space-y-4 w-full md:w-2/3 relative z-10">
-                <div class="h-6 w-32 bg-slate-200 rounded-full"></div>
-                <div class="h-12 w-full md:w-3/4 bg-slate-200 rounded-2xl"></div>
-                <div class="h-6 w-2/3 bg-slate-200 rounded-xl"></div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8 overflow-hidden">
+        <!-- 🍱 BENTO MODULE GRID -->
+        <div v-if="synergy" class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-10">
             
-            <template v-if="synergy">
-                <Link :href="route('habits.index')" 
-                    class="col-span-1 md:col-span-6 lg:col-span-4 bg-white dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/5 hover:-translate-y-2 transition-all duration-700 group flex flex-col justify-between relative overflow-hidden animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
-                    style="animation-delay: 100ms"
-                >
-                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity duration-500 text-8xl -mt-6 -mr-6 grayscale group-hover:grayscale-0">
-                        <OneForMindIcon name="habit" size="120" stroke-width="1.5" />
-                    </div>
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-500 rounded-2xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300 border border-indigo-100 dark:border-indigo-500/20">
-                                <OneForMindIcon name="habit" size="32" />
-                            </div>
-                            <div class="bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 px-4 py-1.5 rounded-full text-xs font-black tracking-wider shadow-inner dark:shadow-none">{{ synergy.habits.completed }} / {{ synergy.habits.total }}</div>
+            <!-- HABITS -->
+            <Link :href="route('habits.index')" 
+                class="col-span-1 md:col-span-6 lg:col-span-4 bg-white dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between overflow-hidden relative"
+            >
+                <div class="relative z-10 space-y-6">
+                    <div class="flex justify-between items-start">
+                        <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 rounded-2xl flex items-center justify-center border border-indigo-100 dark:border-indigo-500/20 group-hover:scale-110 transition-transform">
+                            <OneForMindIcon name="habit" size="28" stroke-width="3" />
                         </div>
-                        <h3 class="text-2xl font-black text-slate-800 dark:text-slate-100 mb-2">{{ $t('dash_habit_title') }}</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">{{ $t('dash_habit_desc') }}</p>
-                    </div>
-                    <div class="relative z-10 mt-8">
-                        <div class="flex justify-between text-xs font-bold mb-3">
-                            <span class="text-slate-400 dark:text-slate-500 uppercase tracking-wider">{{ $t('dash_progress') }}</span>
-                            <span class="text-indigo-600 dark:text-indigo-400">{{ synergy.habits.percent }}%</span>
-                        </div>
-                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-3 rounded-full overflow-hidden shadow-inner dark:shadow-none transition-colors duration-500">
-                            <div class="bg-indigo-500 h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden" :style="`width: ${synergy.habits.percent}%`">
-                                <div class="absolute inset-0 bg-white/20 w-full animate-[shimmer_2s_infinite]"></div>
-                            </div>
-                        </div>
-                    </div>
-                </Link>
-
-                <Link :href="route('planner.index')" prefetch="hover" 
-                    class="col-span-1 md:col-span-6 lg:col-span-5 bg-white dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/5 hover:-translate-y-2 transition-all duration-700 group flex flex-col justify-between animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
-                    style="animation-delay: 200ms"
-                >
-                    <div>
-                        <div class="flex justify-between items-center mb-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 bg-slate-50 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center group-hover:-rotate-12 transition-transform duration-300 border border-slate-200 dark:border-slate-700">
-                                    <OneForMindIcon name="planner" size="32" />
-                                </div>
-                                <div>
-                                    <h3 class="text-2xl font-black text-slate-800 dark:text-slate-100">{{ $t('dash_planner_title') }}</h3>
-                                    <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mt-1">{{ synergy.planner.completed }} {{ $t('dash_from') }} {{ synergy.planner.total }} {{ $t('dash_tasks_done') }}</p>
-                                </div>
-                            </div>
-                            <div class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-500/10 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                            </div>
-                        </div>
+                        <div class="bg-indigo-50 dark:bg-slate-800 text-indigo-700 dark:text-indigo-400 px-4 py-1.5 rounded-xl text-xs font-black tracking-widest uppercase">{{ synergy.habits.completed }} / {{ synergy.habits.total }}</div>
                     </div>
                     
-                    <div class="bg-slate-50/80 dark:bg-slate-950/50 rounded-[1.5rem] p-5 mt-2 border border-slate-100/50 dark:border-slate-800 transition-colors duration-500">
-                        <p class="text-xs font-black text-indigo-400 uppercase tracking-widest mb-4">{{ $t('dash_upcoming') }}</p>
+                    <h3 class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">{{ $t('dash_habit_title') }}</h3>
+
+                    <!-- Neural Insight (Subtle Card) -->
+                    <div v-if="globalInsight?.categories?.habits" class="bg-indigo-50/50 dark:bg-indigo-500/5 border border-indigo-100/50 dark:border-indigo-500/10 p-5 rounded-2xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <OneForMindIcon name="sparkles" size="14" class="text-indigo-500" />
+                            <span class="text-[9px] font-black uppercase tracking-widest text-indigo-400">Neural Sync</span>
+                        </div>
+                        <p class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-snug">{{ globalInsight.categories.habits }}</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 space-y-3">
+                    <div class="w-full bg-slate-50 dark:bg-slate-800 h-3 rounded-full overflow-hidden">
+                        <div class="bg-indigo-600 h-full rounded-full transition-all duration-1000" :style="`width: ${synergy.habits.percent}%`"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-400">
+                        <span>{{ $t('dash_progress') }}</span>
+                        <span class="text-indigo-600">{{ synergy.habits.percent }}%</span>
+                    </div>
+                </div>
+            </Link>
+
+            <!-- PLANNER -->
+            <Link :href="route('planner.index')"
+                class="col-span-1 md:col-span-12 lg:col-span-8 bg-white dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between overflow-hidden relative"
+            >
+                <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-5">
+                            <div class="w-14 h-14 bg-slate-50 dark:bg-slate-800 text-indigo-600 rounded-2xl flex items-center justify-center border border-slate-200 dark:border-slate-700 shadow-sm">
+                                <OneForMindIcon name="planner" size="28" stroke-width="3" />
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">{{ $t('dash_planner_title') }}</h3>
+                                <p class="text-sm font-bold text-slate-400">{{ synergy.planner.completed }} / {{ synergy.planner.total }} {{ $t('dash_tasks_done') }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Neural Insight (Subtle) -->
+                        <div v-if="globalInsight?.categories?.planner" class="bg-emerald-50/50 dark:bg-emerald-500/5 border border-emerald-100/50 dark:border-emerald-500/10 p-5 rounded-2xl">
+                             <div class="flex items-center gap-2 mb-2">
+                                <OneForMindIcon name="sparkles" size="14" class="text-emerald-500" />
+                                <span class="text-[9px] font-black uppercase tracking-widest text-emerald-500/70">Efficiency Boost</span>
+                            </div>
+                            <p class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-snug">{{ globalInsight.categories.planner }}</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 dark:bg-slate-950/50 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 h-full">
+                        <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">{{ $t('dash_upcoming') }}</h4>
                         <div v-if="synergy.planner.upcoming.length > 0" class="space-y-3">
-                            <div v-for="(task, index) in synergy.planner.upcoming" :key="task.id" class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-none group-hover:border-indigo-100 dark:group-hover:border-indigo-500/30 transition-colors duration-500" :style="`transition-delay: ${index * 75}ms`">
-                                <span class="text-xs font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-2.5 py-1.5 rounded-lg shrink-0 border border-indigo-100/50 dark:border-indigo-500/20">{{ task.start_time || '--:--' }}</span>
-                                <span class="text-sm font-bold text-slate-700 dark:text-slate-300 truncate">{{ task.title }}</span>
+                            <div v-for="task in synergy.planner.upcoming" :key="task.id" class="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-transparent hover:border-indigo-100 transition-all truncate text-left">
+                                <span class="text-xs font-black text-indigo-600 tabular-nums">{{ task.start_time || '--:--' }}</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300 truncate">{{ task.title }}</span>
                             </div>
                         </div>
-                        <div v-else class="flex flex-col items-center justify-center py-6 text-center">
-                            <div class="text-4xl mb-3 drop-shadow-sm">✨</div>
-                            <p class="text-slate-500 font-bold text-sm">{{ $t('dash_all_tasks_done') }}</p>
+                        <div v-else class="text-center py-6 text-slate-400 text-xs font-bold">
+                            {{ $t('dash_all_tasks_done') }}
                         </div>
                     </div>
-                </Link>
+                </div>
+            </Link>
 
-                <Link :href="route('finance.index')" prefetch="hover" 
-                    class="col-span-1 md:col-span-12 lg:col-span-3 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-[2rem] p-8 text-white shadow-lg shadow-indigo-500/30 dark:shadow-none hover:shadow-2xl hover:shadow-indigo-500/40 hover:-translate-y-2 transition-all duration-700 group relative overflow-hidden flex flex-col justify-between animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
-                    style="animation-delay: 300ms"
-                >
-                    <div class="absolute -right-6 -bottom-6 opacity-10 group-hover:scale-110 transition-transform duration-700">
-                        <OneForMindIcon name="finance" size="160" stroke-width="1.5" />
+            <!-- FINANCE -->
+            <Link :href="route('finance.index')" 
+                class="col-span-1 md:col-span-12 lg:col-span-5 bg-indigo-600 rounded-[2.5rem] p-10 text-white shadow-xl hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between"
+            >
+                <div class="absolute -right-6 -bottom-6 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+                    <OneForMindIcon name="finance" size="240" />
+                </div>
+                <div class="relative z-10 flex flex-col gap-6 text-left">
+                    <div class="w-14 h-14 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/20">
+                        <OneForMindIcon name="finance" size="28" stroke-width="3" />
                     </div>
-                    <div class="relative z-10">
-                        <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 border border-white/20 group-hover:scale-110 transition-transform">
-                            <OneForMindIcon name="finance" size="28" />
-                        </div>
-                        <h3 class="text-xl font-black mb-1">{{ $t('dash_finance_title') }}</h3>
-                        <p class="text-indigo-100 text-sm font-medium opacity-90">{{ $t('dash_finance_desc') }}</p>
-                    </div>
-                    <div class="relative z-10 mt-8 space-y-4">
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10 shadow-inner">
-                            <p class="text-[10px] font-bold text-indigo-200 uppercase tracking-widest mb-1">{{ $t('dash_expense') }}</p>
-                            <h4 class="text-2xl font-black text-white truncate">{{ formatRupiah(synergy.finance.expense) }}</h4>
-                        </div>
-                        <div v-if="synergy.finance.income > 0" class="bg-black/20 backdrop-blur-sm rounded-xl p-3 border border-white/5 flex items-center justify-between">
-                            <span class="text-[10px] font-bold text-indigo-200 uppercase tracking-widest">{{ $t('dash_income') }}</span>
-                            <span class="text-sm font-black text-emerald-400 drop-shadow-sm">+ {{ formatRupiah(synergy.finance.income) }}</span>
-                        </div>
-                    </div>
-                </Link>
-
-                <Link :href="synergy.journal.is_written ? route('journal.write', synergy.journal.id) : route('journal.index')" prefetch="hover" 
-                    class="col-span-1 md:col-span-7 lg:col-span-7 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/5 hover:-translate-y-2 transition-all duration-700 group overflow-hidden relative animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
-                    style="animation-delay: 400ms"
-                >
-                    <div class="absolute inset-y-0 right-0 w-2/3 bg-gradient-to-l from-indigo-50/80 dark:from-indigo-500/5 to-white/0 dark:to-slate-900/0 pointer-events-none"></div>
-                    <div class="absolute right-0 bottom-0 p-8 opacity-20 translate-x-4 translate-y-4 group-hover:rotate-12 transition-transform duration-700">
-                        <OneForMindIcon name="journal" size="120" stroke-width="1.5" />
-                    </div>
-
-                    <div class="p-8 md:p-10 flex flex-col justify-between h-full relative z-10">
-                        <div>
-                            <div class="w-14 h-14 bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center mb-6 group-hover:-rotate-6 transition-transform duration-300 border border-slate-100 dark:border-slate-700 shadow-sm dark:shadow-none">
-                                <OneForMindIcon name="journal" size="32" />
-                            </div>
-                            <h3 class="text-3xl font-black text-slate-800 dark:text-slate-100 mb-3">{{ $t('dash_journal_title') }}</h3>
-                        </div>
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-black tracking-tighter">{{ $t('dash_finance_title') }}</h3>
                         
-                        <div class="mt-4">
-                            <div v-if="synergy.journal.is_written" class="bg-indigo-50/50 dark:bg-indigo-500/10 border border-indigo-100/50 dark:border-indigo-500/20 p-6 rounded-2xl backdrop-blur-sm">
-                                <p class="text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
-                                    {{ $t('dash_journal_written') }} <span class="text-2xl ml-2 align-middle drop-shadow-sm">{{ synergy.journal.mood === 'happy' ? '😄' : '✨' }}</span>
-                                </p>
-                                <div class="mt-4 inline-flex items-center text-sm font-black text-indigo-600 dark:text-indigo-400 tracking-wide uppercase">
-                                    {{ $t('dash_journal_continue') }} <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                                </div>
-                            </div>
-                            <div v-else class="bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 p-6 rounded-2xl group-hover:bg-indigo-50/50 dark:group-hover:bg-indigo-500/10 group-hover:border-indigo-100/50 dark:group-hover:border-indigo-500/20 transition-colors">
-                                <p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed italic">
-                                    {{ $t('dash_journal_prompt') }}
-                                </p>
-                                <div class="mt-4 inline-flex items-center text-sm font-black text-indigo-600 dark:text-indigo-400 tracking-wide uppercase">
-                                    {{ $t('dash_journal_start') }} <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                                </div>
-                            </div>
+                        <div v-if="globalInsight?.categories?.finance" class="bg-black/20 p-5 rounded-2xl border border-white/10">
+                            <p class="text-sm font-bold leading-snug italic">{{ globalInsight.categories.finance }}</p>
                         </div>
                     </div>
-                </Link>
+                </div>
+                <div class="relative z-10 mt-10 grid grid-cols-2 gap-4">
+                    <div class="bg-white/10 rounded-2xl p-6 border border-white/5">
+                        <p class="text-[9px] font-bold text-indigo-200 uppercase tracking-widest mb-1">{{ $t('dash_expense') }}</p>
+                        <h4 class="text-2xl font-black truncate">{{ formatRupiah(synergy.finance.expense) }}</h4>
+                    </div>
+                    <div class="bg-white/10 rounded-2xl p-6 border border-white/5">
+                        <p class="text-[9px] font-bold text-indigo-200 uppercase tracking-widest mb-1">{{ $t('dash_income') }}</p>
+                        <h4 class="text-2xl font-black text-emerald-300 tabular-nums lining-nums">+{{ formatRupiah(synergy.finance.income) }}</h4>
+                    </div>
+                </div>
+            </Link>
 
-                <Link :href="route('calendar.index')" prefetch="hover" 
-                    class="col-span-1 md:col-span-5 lg:col-span-5 bg-white dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/5 hover:-translate-y-2 transition-all duration-700 group flex flex-col justify-between animate-in slide-in-from-bottom-8 fade-in fill-mode-both"
-                    style="animation-delay: 500ms"
-                >
-                    <div>
-                        <div class="flex justify-between items-center mb-8">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-indigo-100 dark:border-indigo-500/20">
-                                    <OneForMindIcon name="calendar" size="32" />
-                                </div>
-                                <div>
-                                    <h3 class="text-2xl font-black text-slate-800 dark:text-slate-100">{{ $t('dash_calendar_title') }}</h3>
-                                    <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mt-1">{{ $t('dash_calendar_desc') }}</p>
-                                </div>
-                            </div>
+            <!-- JOURNAL -->
+            <Link :href="synergy.journal.is_written ? route('journal.write', synergy.journal.id) : route('journal.index')" 
+                class="col-span-1 md:col-span-7 lg:col-span-4 bg-white dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800 shadow-lg hover:-translate-y-2 transition-all duration-500 group overflow-hidden relative"
+            >
+                <div class="p-4 flex flex-col justify-between h-full relative z-10 space-y-8 text-left">
+                    <div class="space-y-6">
+                        <div class="w-14 h-14 bg-slate-50 dark:bg-slate-800 text-indigo-600 rounded-2xl flex items-center justify-center border border-slate-100 dark:border-slate-700">
+                            <OneForMindIcon name="journal" size="28" stroke-width="3" />
                         </div>
+                        <h3 class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">{{ $t('dash_journal_title') }}</h3>
                     </div>
                     
-                    <div class="bg-slate-50/80 dark:bg-slate-950/50 rounded-[1.5rem] p-5 border border-slate-100/50 dark:border-slate-800 h-full transition-colors duration-500">
-                        <div v-if="synergy.events.length > 0" class="space-y-4">
-                            <div v-for="(evt, i) in synergy.events" :key="evt.id" class="flex gap-4 items-start bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-slate-100 dark:border-slate-800 shadow-[0_2px_10px_rgba(0,0,0,0.02)] dark:shadow-none group-hover:border-indigo-100 dark:group-hover:border-indigo-500/30 transition-colors duration-500" :style="`transition-delay: ${i * 100}ms`">
-                                <div class="w-3 h-3 rounded-full bg-indigo-500 mt-1.5 shrink-0 shadow-[0_0_10px_rgba(99,102,241,0.6)] animate-pulse"></div>
-                                <div>
-                                    <p class="text-sm font-black text-slate-700 dark:text-slate-300 leading-snug">{{ evt.title }}</p>
-                                    <p class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest mt-1">{{ evt.start_date === evt.end_date ? $t('dash_today_only') : $t('dash_ongoing') }}</p>
-                                </div>
-                            </div>
+                    <div class="flex-1 flex flex-col justify-end">
+                        <div v-if="synergy.journal.is_written" class="bg-emerald-500 text-white p-6 rounded-2xl shadow-lg">
+                            <p class="font-bold text-lg leading-snug">{{ $t('dash_journal_written') }} ✨</p>
                         </div>
-                        <div v-else class="h-full flex flex-col items-center justify-center py-6 text-center">
-                            <div class="text-4xl mb-3 opacity-50 grayscale drop-shadow-sm group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500">🏖️</div>
-                            <p class="text-slate-500 dark:text-slate-400 font-bold text-sm">{{ $t('dash_no_events') }}</p>
+                        <div v-else class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-100">
+                             <p class="font-bold text-lg italic text-slate-500">{{ $t('dash_journal_prompt') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </Link>
+
+            <!-- CAREER & GOALS -->
+            <div class="col-span-1 md:col-span-5 lg:col-span-3 space-y-6">
+                <Link :href="route('jobs.index')" class="block bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-100 dark:border-slate-800 shadow-lg hover:bg-slate-50 transition-all text-left">
+                     <div class="flex items-center gap-4 mb-6">
+                        <div class="w-10 h-10 bg-indigo-50 dark:bg-slate-800 text-indigo-600 rounded-xl flex items-center justify-center">
+                            <OneForMindIcon name="job" size="20" stroke-width="3" />
+                        </div>
+                        <h3 class="text-xl font-black text-slate-900 dark:text-white">Career</h3>
+                    </div>
+                    <div class="flex gap-4 text-center">
+                        <div class="flex-1 p-4 bg-slate-50 dark:bg-black rounded-2xl">
+                             <p class="text-[9px] font-black text-slate-400 uppercase mb-1">Active</p>
+                             <p class="text-2xl font-black text-slate-900 dark:text-white">{{ synergy.jobs.active }}</p>
+                        </div>
+                        <div class="flex-1 p-4 bg-indigo-600 rounded-2xl text-white">
+                             <p class="text-[9px] font-black text-indigo-200 uppercase mb-1">Interview</p>
+                             <p class="text-2xl font-black">{{ synergy.jobs.interviews }}</p>
                         </div>
                     </div>
                 </Link>
-            </template>
 
-            <!-- Grid Skeletons -->
-            <template v-else>
-                <div v-for="i in 5" :key="i" 
-                    :class="[
-                        'bg-white dark:bg-slate-900 rounded-[2rem] animate-pulse p-8 border border-slate-100 dark:border-slate-800 shadow-sm',
-                        i === 1 ? 'col-span-1 md:col-span-6 lg:col-span-4 h-80' : 
-                        i === 2 ? 'col-span-1 md:col-span-6 lg:col-span-5 h-80' :
-                        i === 3 ? 'col-span-1 md:col-span-12 lg:col-span-3 h-80' :
-                        i === 4 ? 'col-span-1 md:col-span-7 lg:col-span-7 h-80' :
-                        'col-span-1 md:col-span-5 lg:col-span-5 h-80'
-                    ]"
-                >
-                    <div class="w-14 h-14 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-6"></div>
-                    <div class="h-8 w-1/2 bg-slate-100 dark:bg-slate-800 rounded-lg mb-4"></div>
-                    <div class="h-20 w-full bg-slate-100 dark:bg-slate-800 rounded-xl"></div>
-                </div>
-            </template>
+                <Link :href="route('goals.index')" class="block bg-slate-900 dark:bg-black rounded-3xl p-8 text-white shadow-xl hover:-translate-x-2 transition-all">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-black">Goals</h3>
+                        <span class="text-[9px] font-black bg-emerald-500 px-3 py-1 rounded-full">{{ synergy.goals.active }} Active</span>
+                    </div>
+                    <div v-if="synergy.goals.top_goal">
+                        <p class="text-xs font-bold text-slate-400 mb-2 truncate">{{ synergy.goals.top_goal.title }}</p>
+                        <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                             <div class="bg-emerald-400 h-full" :style="`width: ${synergy.goals.top_goal.percent}%`"></div>
+                        </div>
+                    </div>
+                </Link>
+            </div>
 
         </div>
+
+        <!-- Skeleton -->
+        <div v-else class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
+            <div v-for="i in 3" :key="i" class="bg-white dark:bg-slate-900 rounded-[2rem] animate-pulse p-10 h-80 col-span-12 lg:col-span-4">
+                <div class="w-14 h-14 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-8"></div>
+                <div class="h-10 w-3/4 bg-slate-100 dark:bg-slate-800 rounded-xl mb-6"></div>
+                <div class="h-24 w-full bg-slate-50 dark:bg-slate-800/50 rounded-2xl"></div>
+            </div>
+        </div>
+
     </div>
 </template>
 
 <style scoped>
-/* Shimmer Effect for Progress Bar */
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-/* Transisi halus untuk Progress Bar SVG Radar */
-path {
+/* Path transition */
+path, circle {
     transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 </style>

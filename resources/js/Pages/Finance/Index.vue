@@ -18,6 +18,7 @@ import FullArchiveModal from './FullArchiveModal.vue';
 import FinanceDatePicker from './FinanceDatePicker.vue';
 import FinanceBatchModal from './FinanceBatchModal.vue';
 import FinanceInsights from './FinanceInsights.vue'; 
+import NeuralBridge from '@/Components/NeuralBridge.vue';
 
 // Composables
 import { useFinanceBatch } from '@/Composables/Finance/useFinanceBatch';
@@ -372,6 +373,8 @@ const switchToSingle = () => {
                         @edit-category="handleEditCategory"
                         @delete-category="triggerDeleteCategory"
                     />
+
+                    <NeuralBridge module="Finance" />
  
                     <FinanceInsights 
                         :expense-stats="localStats.expense_by_category" 
