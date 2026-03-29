@@ -1,0 +1,48 @@
+{
+    "neural_meta_title": "Neural OS AI - OneForMind Productivity",
+    "neural_meta_desc": "The intelligence behind your growth. Powered by Gemini, the Neural OS analyzes your habits, finances, and goals to provide personalized insights and audits.",
+    "neural_hero_badge": "Next-Gen Intelligence",
+    "neural_hero_title_1": "The Neural OS.",
+    "neural_hero_title_2": "The Intelligence Behind Your Growth.",
+    "neural_hero_desc": "Beyond just a tracker. OneForMind's Neural OS uses advanced AI to analyze your behavioral patterns, identifying friction points and suggesting high-impact adjustments in real-time.",
+    "neural_hero_cta_1": "Activate Neural OS",
+    "neural_hero_cta_2": "How it Works",
+
+    "neural_mockup_source": "Neural OS Analysis Output:",
+    "neural_mockup_insight_1": "Peak Cognitive Load detected at 2 PM.",
+    "neural_mockup_insight_2": "Suggesting: Move 'Journaling' to 8 PM for higher completion rate.",
+    "neural_mockup_confidence": "Confidence: 94%",
+
+    "neural_audit_badge": "Friction Audit",
+    "neural_audit_title": "Identify what's holding you back.",
+    "neural_audit_desc": "Most habits fail due to invisible friction. Our AI audits your logs to find exactly where and why you stall, providing tactical solutions to break through stagnation.",
+    "neural_audit_step1_title": "Pattern Recognition",
+    "neural_audit_step1_desc": "Neural OS identifies subtle drops in consistency before they become permanent failures.",
+    "neural_audit_step2_title": "Environmental Audit",
+    "neural_audit_step2_desc": "Cross-reference your environment and mood to see how they impact your execution.",
+
+    "neural_synergy_badge": "Deep Synergy",
+    "neural_synergy_title": "Connecting the Pillars.",
+    "neural_synergy_desc": "Your finances impact your stress, and your stress impacts your habits. Neural OS connects these data points to show you the 'Big Picture' of your personal evolution.",
+    "neural_synergy_fin_title": "Financial Influence",
+    "neural_synergy_fin_desc": "Understand how your spending habits correlate with your focus and daily energy levels.",
+    "neural_synergy_hab_title": "Habit Momentum",
+    "neural_synergy_hab_desc": "See how building small wins in habits translates into better financial discipline and clarity.",
+
+    "neural_coach_badge": "AI Growth Coach",
+    "neural_coach_title": "Your 24/7 Strategic Partner.",
+    "neural_coach_desc": "Chat with an intelligence that knows your goals even better than you do. The AI Coach provides context-aware guidance based on your real performance data.",
+    "neural_coach_feat1": "Personalized Habit Stacking suggestions.",
+    "neural_coach_feat2": "Real-time energy management advice.",
+    "neural_coach_feat3": "Tactical planning for over-booked days.",
+
+    "neural_privacy_badge": "Privacy First",
+    "neural_privacy_title": "Your data is yours. Period.",
+    "neural_privacy_desc": "Neural OS is built with 'Zero-Trust' principles. Your personal data is used to provide insights to you, and only you. We never sell your data or use it to train global models.",
+    "neural_privacy_stat": "Encryption: AES-256",
+
+    "neural_cta_title": "Step into the Future of Focus.",
+    "neural_cta_desc": "Join thousands of users who are using Neural OS to eliminate chaos and build intentional lives.",
+    "neural_cta_btn": "Start Your Evolution",
+    "neural_cta_note": "Free 14-day trial for new users."
+}

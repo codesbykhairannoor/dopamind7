@@ -397,18 +397,7 @@
     </div>
 </section>
 
-    <section class="py-32 bg-gray-50 border-y border-gray-100">
-        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-700">
-            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
-                {{ __('habit_quote_text') }}
-            </h2>
-            <div class="flex flex-col items-center">
-                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('habit_quote_author') }}</p>
-            </div>
-        </div>
-    </section>
+    {{-- Removed quotes from here to move it down --}}
 
     {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - ATOMIC PROGRESS STYLE --}}
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
@@ -448,6 +437,59 @@
                         <div class="px-6 py-3 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 font-black text-xs shadow-sm hover:scale-110 transition">Charles Duhigg</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- NEURAL PROMO: HABIT AUDIT --}}
+    <section class="py-32 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-1/2 text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-indigo-500/20">
+                    🧠 {{ __('habit_ai_promo_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                    {{ __('habit_ai_promo_title') }}
+                </h2>
+                <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
+                    {{ __('habit_ai_promo_desc') }}
+                </p>
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 transition transform hover:-translate-y-1">
+                    {{ __('habit_ai_promo_btn') }} <span>→</span>
+                </a>
+            </div>
+            <div class="lg:w-1/2 relative w-full">
+                <div class="bg-slate-800 p-8 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden group">
+                    <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-600/20 rounded-full blur-3xl group-hover:bg-indigo-600/30 transition duration-700"></div>
+                    <div class="relative space-y-4">
+                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+                             <div class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]"></div>
+                             <p class="text-xs font-bold text-slate-300">Friction Audit Complete: Morning Workout</p>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+                             <div class="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_10px_#f59e0b]"></div>
+                             <p class="text-xs font-bold text-slate-300">Detected: 14% drop in consistency when mood is 'Tired'</p>
+                        </div>
+                        <div class="p-6 bg-indigo-600/10 rounded-2xl border border-indigo-500/20">
+                             <p class="text-indigo-400 font-black text-[10px] uppercase mb-2">Neural Solution</p>
+                             <p class="text-sm font-bold text-white leading-relaxed">Try Habit Stacking with 'Coffee' to reduce initial friction.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-700">
+            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+                {{ __('habit_quote_text') }}
+            </h2>
+            <div class="flex flex-col items-center">
+                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
+                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('habit_quote_author') }}</p>
             </div>
         </div>
     </section>

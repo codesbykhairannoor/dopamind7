@@ -391,18 +391,7 @@
 
 
     {{-- SECTION 4: THE SUCCESS QUOTE --}}
-    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
-            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
-                {{ __('job_quote_text') }}
-            </h2>
-            <div class="flex flex-col items-center">
-                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('job_quote_author') }}</p>
-            </div>
-        </div>
-    </section>
+    {{-- Moved quotes down --}}
 
     {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - TERMINAL COMMAND STYLE --}}
     <section class="py-32 bg-slate-900 relative overflow-hidden">
@@ -457,6 +446,54 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- NEURAL PROMO: JOB MATCHING --}}
+    <section class="py-32 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-emerald-500/5 to-transparent"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row-reverse items-center gap-16 text-left">
+            <div class="lg:w-1/2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-emerald-500/20">
+                    🎯 {{ __('job_ai_promo_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                    {{ __('job_ai_promo_title') }}
+                </h2>
+                <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
+                    {{ __('job_ai_promo_desc') }}
+                </p>
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-emerald-700 transition transform hover:-translate-y-1">
+                    {{ __('job_ai_promo_btn') }} <span>→</span>
+                </a>
+            </div>
+            <div class="lg:w-1/2 relative w-full">
+                <div class="bg-slate-800 p-8 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden group">
+                     <div class="flex items-center justify-center mb-8">
+                        <div class="w-32 h-32 rounded-full border-8 border-emerald-500/20 flex items-center justify-center relative">
+                            <div class="absolute inset-0 border-8 border-emerald-500 rounded-full border-t-transparent animate-spin-slow"></div>
+                            <span class="text-2xl font-black text-white">96%</span>
+                        </div>
+                     </div>
+                     <div class="space-y-4">
+                        <div class="px-4 py-2 bg-white/5 rounded-lg border border-white/5 text-[10px] font-bold text-slate-400">Keyword Match: Structured Execution</div>
+                        <div class="px-4 py-2 bg-white/5 rounded-lg border border-white/5 text-[10px] font-bold text-slate-400">Skill Alignment: High</div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
+            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+                {{ __('job_quote_text') }}
+            </h2>
+            <div class="flex flex-col items-center">
+                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
+                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('job_quote_author') }}</p>
             </div>
         </div>
     </section>

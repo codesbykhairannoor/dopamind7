@@ -366,18 +366,7 @@
 
 
     {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}
-    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
-            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
-                {{ __('journal_quote_text') }}
-            </h2>
-            <div class="flex flex-col items-center">
-                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('journal_quote_author') }}</p>
-            </div>
-        </div>
-    </section>
+    {{-- Moved quotes down --}}
 
     {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - ZEN MINIMALIST REFLECTION STYLE --}}
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
@@ -423,6 +412,53 @@
                     <span class="text-[10px] font-black uppercase tracking-widest text-indigo-300 mb-2">Outcome</span>
                     <span class="text-sm font-bold text-gray-400 italic">Emotional Regulation</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- NEURAL PROMO: JOURNAL REFLECTION --}}
+    <section class="py-32 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+        <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-purple-500/5 to-transparent"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row-reverse items-center gap-16 text-left">
+            <div class="lg:w-1/2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-purple-500/20">
+                    📖 {{ __('journal_ai_promo_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                    {{ __('journal_ai_promo_title') }}
+                </h2>
+                <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
+                    {{ __('journal_ai_promo_desc') }}
+                </p>
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-purple-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-purple-700 transition transform hover:-translate-y-1">
+                    {{ __('journal_ai_promo_btn') }} <span>→</span>
+                </a>
+            </div>
+            <div class="lg:w-1/2 relative w-full">
+                <div class="bg-slate-800 p-8 rounded-[3rem] border border-white/5 shadow-2xl text-center group">
+                    <div class="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-6">Sentiment Mirror v1.0</div>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs font-bold text-purple-300">Resilient (+14%)</span>
+                        <span class="px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-bold text-blue-300">Focused</span>
+                        <span class="px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-xs font-bold text-indigo-300">Growth Mindset</span>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-white/5 text-slate-400 text-sm italic">
+                         "You tend to solve complex problems better after journaling for 10 minutes."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
+            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+                {{ __('journal_quote_text') }}
+            </h2>
+            <div class="flex flex-col items-center">
+                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
+                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('journal_quote_author') }}</p>
             </div>
         </div>
     </section>

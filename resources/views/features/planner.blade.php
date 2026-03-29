@@ -349,18 +349,7 @@
     </section>
 
     {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}
-    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
-            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
-                {{ __('planner_quote_text') }}
-            </h2>
-            <div class="flex flex-col items-center">
-                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('planner_quote_author') }}</p>
-            </div>
-        </div>
-    </section>
+    {{-- Moved quotes down --}}
 
     {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - CLEAN EDITORIAL STYLE --}}
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
@@ -410,6 +399,60 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    {{-- NEURAL PROMO: PLANNER OPTIMIZATION --}}
+    <section class="py-32 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-pattern-grid opacity-10"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16 text-left">
+            <div class="lg:w-1/2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-indigo-500/20">
+                    ⚡ {{ __('planner_ai_promo_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                    {{ __('planner_ai_promo_title') }}
+                </h2>
+                <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
+                    {{ __('planner_ai_promo_desc') }}
+                </p>
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 transition transform hover:-translate-y-1">
+                    {{ __('planner_ai_promo_btn') }} <span>→</span>
+                </a>
+            </div>
+            <div class="lg:w-1/2 relative w-full">
+                <div class="bg-slate-800 p-8 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden group">
+                     <div class="space-y-4">
+                        <div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-indigo-500 w-[60%] animate-pulse"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-[10px] font-black text-slate-500 tracking-widest uppercase">
+                            <span>COGNITIVE LOAD: HIGH</span>
+                            <span class="text-indigo-400">OPTIMIZING...</span>
+                        </div>
+                        <div class="p-6 bg-white/5 rounded-2xl border border-white/5 flex gap-4 items-center">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-xl">🧘</div>
+                            <div class="text-left">
+                                <p class="text-white font-bold text-sm leading-none mb-1">Low-Impact Task Detected</p>
+                                <p class="text-slate-400 text-xs">Moving 'Reply Emails' to 4 PM.</p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
+            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+                {{ __('planner_quote_text') }}
+            </h2>
+            <div class="flex flex-col items-center">
+                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
+                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('planner_quote_author') }}</p>
             </div>
         </div>
     </section>

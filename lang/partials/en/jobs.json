@@ -56,5 +56,9 @@
     "job_master_cv_extracting": "Extracting Text Intelligence...",
     "job_master_cv_error_save": "Failed to save CV. Try again.",
     "job_master_cv_success": "Master CV saved successfully.",
-    "job_master_cv_storage_tip": "Storage Optimization: Large PDF files (MB) will be compressed by AI into pure text data (KB) for database efficiency & analysis speed."
+    "job_master_cv_storage_tip": "Storage Optimization: Large PDF files (MB) will be compressed by AI into pure text data (KB) for database efficiency & analysis speed.",
+    "job_ai_promo_badge": "AI Career Assistant",
+    "job_ai_promo_title": "Automated Market Alignment",
+    "job_ai_promo_desc": "Optimize your candidacy with AI-driven keyword analysis and market value benchmarking. Neural OS ensures your profile stays competitive in any economic climate.",
+    "job_ai_promo_btn": "Leverage Career AI"
 }

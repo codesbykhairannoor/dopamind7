@@ -140,5 +140,9 @@
   "see_all": "Lihat Semua",
   "see_less": "Sembunyikan",
   "view_full_archive": "Arsip Lengkap",
-  "export": "Ekspor"
+  "export": "Ekspor",
+  "finance_ai_promo_badge": "Kecerdasan Kekayaan",
+  "finance_ai_promo_title": "Analisis Burn Rate Prediktif",
+  "finance_ai_promo_desc": "Neural OS melacak velositas pengeluaran Anda dan memprediksi saldo akhir bulan Anda, membantu Anda menghindari gesekan finansial sebelum itu terjadi.",
+  "finance_ai_promo_btn": "Lindungi Kekayaan Anda"
 }

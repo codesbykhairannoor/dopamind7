@@ -207,6 +207,10 @@ Route::get('/features/job', function () {
     return view('features.job');
 })->name('features.job');
 
+Route::get('/features/neural-os', function () {
+    return view('features.neural-os');
+})->name('features.neural-os');
+
 
 // ==========================================
 // SOLUTIONS
@@ -322,6 +326,10 @@ Route::get('/company/security', function () {
 Route::get('/company/status', function () {
     return view('company.status');
 })->name('company.status');
+
+Route::get('/company/press-kit', function () {
+    return view('company.press-kit');
+})->name('company.press-kit');
 
 // ==========================================
 // COMPARE

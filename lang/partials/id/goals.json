@@ -120,7 +120,11 @@
     "goal_stats_runway": "Sisa Waktu",
     "goal_stats_mastery": "Kedalaman Mastery",
     "goal_stats_calm": "Ketenangan Strategis",
-    "goal_stats_day_left": "{days} Hari"
+    "goal_stats_day_left": "{days} Hari",
+    "goal_ai_promo_badge": "Peramalan Kesuksesan",
+    "goal_ai_promo_title": "Prediksi Pencapaian Anda",
+    "goal_ai_promo_desc": "Neural OS menghitung velositas Anda dan memprediksi kapan tepatnya Anda akan mencapai milestone Anda, memungkinkan Anda menyesuaikan strategi sebelum tenggat waktu mendekat.",
+    "goal_ai_promo_btn": "Ramal Progres"
 }
 
 

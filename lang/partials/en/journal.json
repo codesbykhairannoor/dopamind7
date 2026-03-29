@@ -26,5 +26,9 @@
     "journal_mood_label": "Today's Mood:",
     "journal_add_photo": "Insert Journal Photo",
     "journal_write_placeholder": "Start writing your story...",
-    "journal_title_placeholder": "Give your day a title..."
+    "journal_title_placeholder": "Give your day a title...",
+    "journal_ai_promo_badge": "Sentiment Intelligence",
+    "journal_ai_promo_title": "Mirror Your Inner Growth",
+    "journal_ai_promo_desc": "Beyond just words—Neural OS decodes the sentiment and hidden patterns in your daily entries, giving you a scientific perspective on your mental well-being.",
+    "journal_ai_promo_btn": "Activate AI Reflection"
 }

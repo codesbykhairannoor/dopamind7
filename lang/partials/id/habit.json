@@ -108,5 +108,9 @@
     "habit_audit_solution": "NEURAL SOLUTION",
     "habit_analyzing": "Menganalisa rutinitas...",
     "habit_audit_running": "Menjalankan Friction Audit...",
-    "habit_btn_audit_close": "Selesai Audit"
+    "habit_btn_audit_close": "Selesai Audit",
+    "habit_ai_promo_badge": "Neural Intelligence",
+    "habit_ai_promo_title": "Identifikasi Hambatan dengan Neural Audit",
+    "habit_ai_promo_desc": "Kebanyakan habit gagal karena hambatan tak terlihat. Neural OS mengaudit performa Anda untuk menemukan titik macet dan menyarankan 'Habit Alchemy' untuk memperbaikinya.",
+    "habit_ai_promo_btn": "Coba Neural Habit Audit"
 }

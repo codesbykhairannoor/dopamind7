@@ -26,5 +26,9 @@
     "journal_title_placeholder": "Beri judul harimu...",
     "status_deleted": "Berhasil Dihapus!",
     "status_image_saved": "Gambar Tersimpan!",
-    "status_image_deleted": "Gambar Dihapus!"
+    "status_image_deleted": "Gambar Dihapus!",
+    "journal_ai_promo_badge": "Kecerdasan Sentimen",
+    "journal_ai_promo_title": "Cerminkan Pertumbuhan Batin Anda",
+    "journal_ai_promo_desc": "Lebih dari sekadar kata-kata—Neural OS menguraikan sentimen dan pola tersembunyi dalam catatan harian Anda, memberikan perspektif ilmiah tentang kesejahteraan mental Anda.",
+    "journal_ai_promo_btn": "Aktifkan Refleksi AI"
 }

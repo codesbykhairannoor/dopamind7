@@ -63,5 +63,9 @@
   "label_period": "Periode",
   "calendar_goals": "Target & Milestone",
   "calendar_empty_goals": "Tidak ada milestone yang jatuh tempo.",
-  "calendar_no_activities": "Tidak ada aktivitas hari ini."
+  "calendar_no_activities": "Tidak ada aktivitas hari ini.",
+  "calendar_ai_promo_badge": "Optimasi Temporal",
+  "calendar_ai_promo_title": "Sinkronisasi dengan Jam Biologis Anda",
+  "calendar_ai_promo_desc": "Biarkan Neural OS menemukan 'Prime Time' Anda. Ini secara otomatis menyinkronkan sesi kerja mendalam Anda dengan jendela produktivitas tertinggi Anda sepanjang minggu.",
+  "calendar_ai_promo_btn": "Kuasai Waktu Anda"
 }

@@ -107,5 +107,9 @@
     "habit_audit_solution": "NEURAL SOLUTION",
     "habit_analyzing": "Analyzing routines...",
     "habit_audit_running": "Running Friction Audit...",
-    "habit_btn_audit_close": "Complete Audit"
+    "habit_btn_audit_close": "Complete Audit",
+    "habit_ai_promo_badge": "Neural Intelligence",
+    "habit_ai_promo_title": "Identify Friction with Neural Audit",
+    "habit_ai_promo_desc": "Most habits fail due to invisible friction. Neural OS audits your performance to find exactly where you stall and suggests 'Habit Alchemy' to fix it.",
+    "habit_ai_promo_btn": "Try Neural Habit Audit"
 }

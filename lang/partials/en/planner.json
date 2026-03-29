@@ -118,9 +118,9 @@
     "err_schedule_conflict": "Schedule conflict!",
     "warn_empty_time": "Set start & end time!",
     "err_save_failed": "Failed to save to server!",
-    "err_delete_failed": "Failed to delete data!"
-
-   
-
- 
+    "err_delete_failed": "Failed to delete data!",
+    "planner_ai_promo_badge": "Neural OS Integration",
+    "planner_ai_promo_title": "AI-Powered Execution Loops",
+    "planner_ai_promo_desc": "Neural OS analyzes your cognitive load in real-time and dynamically reschedules low-impact tasks to ensure you always have peak energy for high-priority work.",
+    "planner_ai_promo_btn": "Explore Neural OS"
 }

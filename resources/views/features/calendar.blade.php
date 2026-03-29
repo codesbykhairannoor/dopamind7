@@ -446,18 +446,7 @@
     </section>
 
     {{-- SECTION 4: THE PHILOSOPHY (QUOTE) --}}
-    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
-            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
-                {{ __('calendar_quote_text') }}
-            </h2>
-            <div class="flex flex-col items-center">
-                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('calendar_quote_author') }}</p>
-            </div>
-        </div>
-    </section>
+    {{-- Moved quotes down --}}
 
 
     {{-- NEW SECTION: SCIENTIFIC PILLAR (E-E-A-T) - 3D ORBITAL TIME STYLE --}}
@@ -510,6 +499,54 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    {{-- NEURAL PROMO: CALENDAR FLOW --}}
+    <section class="py-32 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16 text-left">
+            <div class="lg:w-1/2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-blue-500/20">
+                    📅 {{ __('calendar_ai_promo_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                    {{ __('calendar_ai_promo_title') }}
+                </h2>
+                <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
+                    {{ __('calendar_ai_promo_desc') }}
+                </p>
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-blue-700 transition transform hover:-translate-y-1">
+                    {{ __('calendar_ai_promo_btn') }} <span>→</span>
+                </a>
+            </div>
+            <div class="lg:w-1/2 relative w-full">
+                <div class="bg-slate-800 p-8 rounded-[3rem] border border-white/5 shadow-2xl relative">
+                     <div class="grid grid-cols-7 gap-2">
+                        @for($i=0;$i<7;$i++)
+                            <div class="h-32 bg-white/5 rounded-lg overflow-hidden relative">
+                                @if($i == 2 || $i == 4)
+                                    <div class="absolute inset-x-1 top-4 bottom-12 bg-blue-600/30 border-x border-blue-500/50 flex flex-col items-center justify-center">
+                                         <span class="text-[8px] font-black text-blue-300 opacity-60">PRIME TIME</span>
+                                    </div>
+                                @endif
+                            </div>
+                        @endfor
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
+            <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+                {{ __('calendar_quote_text') }}
+            </h2>
+            <div class="flex flex-col items-center">
+                <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
+                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('calendar_quote_author') }}</p>
             </div>
         </div>
     </section>

@@ -122,5 +122,9 @@
   "see_all": "See All",
   "see_less": "Show Less",
   "view_full_archive": "Full Archive",
-  "export": "Export"
+  "export": "Export",
+  "finance_ai_promo_badge": "Wealth Intelligence",
+  "finance_ai_promo_title": "Predictive Burn Rate Analysis",
+  "finance_ai_promo_desc": "Neural OS tracks your spending velocity and predicts your month-end balance, helping you avoid financial friction before it happens.",
+  "finance_ai_promo_btn": "Protect Your Wealth"
 }

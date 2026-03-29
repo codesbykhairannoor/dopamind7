@@ -431,6 +431,42 @@
         </div>
     </section>
 
+    {{-- Moved quotes down --}}
+
+    {{-- NEURAL PROMO: GOAL FORECASTING --}}
+    <section class="py-32 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
+        <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16 text-left">
+            <div class="lg:w-1/2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-indigo-500/20">
+                    📈 {{ __('goal_ai_promo_badge') }}
+                </div>
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                    {{ __('goal_ai_promo_title') }}
+                </h2>
+                <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
+                    {{ __('goal_ai_promo_desc') }}
+                </p>
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 transition transform hover:-translate-y-1">
+                    {{ __('goal_ai_promo_btn') }} <span>→</span>
+                </a>
+            </div>
+            <div class="lg:w-1/2 relative w-full">
+                <div class="bg-slate-800 p-8 rounded-[3rem] border border-white/5 shadow-2xl relative overflow-hidden group">
+                     <div class="flex items-end gap-1 h-32 mb-6">
+                        @foreach([30, 45, 40, 60, 55, 80, 75, 95] as $h)
+                            <div class="flex-1 bg-indigo-500/20 rounded-t-lg group-hover:bg-indigo-500/40 transition-all duration-1000 delay-{{ $loop->index * 100 }}" style="height: {{ $h }}%"></div>
+                        @endforeach
+                     </div>
+                     <div class="p-4 bg-indigo-600/10 rounded-xl border border-indigo-500/20 text-center">
+                        <p class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Predicted Completion</p>
+                        <p class="text-white font-bold">Oct 14, 2024</p>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>

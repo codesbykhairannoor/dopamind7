@@ -106,5 +106,9 @@
     "label_start": "MULAI",
     "btn_add_timeline": "TAMBAH",
     "label_now": "SEKARANG",
-    "select_hour": "Pilih Jam"
+    "select_hour": "Pilih Jam",
+    "planner_ai_promo_badge": "Integrasi Neural OS",
+    "planner_ai_promo_title": "Loop Eksekusi Berbasis AI",
+    "planner_ai_promo_desc": "Neural OS menganalisa beban kognitif Anda secara real-time dan secara dinamis menjadwalkan ulang tugas berdampak rendah untuk memastikan Anda selalu memiliki energi puncak untuk pekerjaan prioritas tinggi.",
+    "planner_ai_promo_btn": "Jelajahi Neural OS"
 }

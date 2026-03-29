@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 class GeminiService
 {
     protected ?string $apiKey;
-    protected string $model = 'gemini-1.5-flash';
+    protected string $model = 'gemini-2.5-flash';
 
     public function __construct()
     {
@@ -26,7 +26,7 @@ class GeminiService
         }
 
         try {
-            $response = Http::post("https://generativelanguage.googleapis.com/v1/models/{$this->model}:generateContent?key={$this->apiKey}", [
+            $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
                 'contents' => [
                     [
                         'parts' => [
@@ -201,7 +201,7 @@ class GeminiService
         }
 
         try {
-            $response = Http::post("https://generativelanguage.googleapis.com/v1/models/{$this->model}:generateContent?key={$this->apiKey}", $payload);
+            $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", $payload);
 
             if ($response->successful()) {
                 $candidates = $response->json('candidates');
@@ -242,7 +242,7 @@ class GeminiService
         try {
             $response = Http::timeout(180)->withHeaders([
                 'Content-Type' => 'application/json',
-            ])->post("https://generativelanguage.googleapis.com/v1/models/{$this->model}:generateContent?key={$this->apiKey}", [
+            ])->post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
                 'contents' => [
                     [
                         'parts' => [
@@ -281,7 +281,7 @@ class GeminiService
         try {
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
-            ])->post("https://generativelanguage.googleapis.com/v1/models/{$this->model}:generateContent?key={$this->apiKey}", [
+            ])->post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
                 'contents' => [
                     [
                         'parts' => [

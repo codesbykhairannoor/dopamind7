@@ -63,5 +63,9 @@
   "label_period": "Period",
   "calendar_goals": "Goals & Milestones",
   "calendar_empty_goals": "No milestones due for this day.",
-  "calendar_no_activities": "No activities for today."
+  "calendar_no_activities": "No activities for today.",
+  "calendar_ai_promo_badge": "Temporal Optimization",
+  "calendar_ai_promo_title": "Sync with Your Biological Clock",
+  "calendar_ai_promo_desc": "Let Neural OS find your 'Prime Time.' It automatically synchronizes your deep work sessions with your highest productivity windows throughout the week.",
+  "calendar_ai_promo_btn": "Master Your Time"
 }

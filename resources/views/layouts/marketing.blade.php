@@ -320,6 +320,7 @@
                                     <x-nav-item href="{{ route('features.calendar') }}" icon="📅" title="Calendar" desc="Sync your schedules." />
                                     <x-nav-item href="{{ route('features.goal') }}" icon="🎯" title="Goal Tracker" desc="Track your milestones." />
                                     <x-nav-item href="{{ route('features.job') }}" icon="💼" title="Job Tracker" desc="Manage career growth." />
+                                    <x-nav-item href="{{ route('features.neural-os') }}" icon="🧠" title="Neural OS AI" desc="Powered by Gemini Brain." />
                                 </div>
                             </div>
                         </div>
@@ -512,6 +513,7 @@
                                 <x-nav-item-mobile href="{{ route('features.calendar') }}" icon="📅" title="Calendar" />
                                 <x-nav-item-mobile href="{{ route('features.goal') }}" icon="🎯" title="Goal Tracker" />
                                 <x-nav-item-mobile href="{{ route('features.job') }}" icon="💼" title="Job Tracker" />
+                                <x-nav-item-mobile href="{{ route('features.neural-os') }}" icon="🧠" title="Neural OS AI" />
                             </div>
                         </div>
                     </div>
@@ -638,6 +640,7 @@
                             <li><a href="{{ route('features.calendar') }}" class="hover:text-indigo-600 transition">Smart Calendar</a></li>
                             <li><a href="{{ route('features.goal') }}" class="hover:text-indigo-600 transition">Goal Tracker</a></li>
                             <li><a href="{{ route('features.job') }}" class="hover:text-indigo-600 transition">Job Tracker</a></li>
+                            <li><a href="{{ route('features.neural-os') }}" class="hover:text-indigo-600 transition text-indigo-600 font-black">Neural OS AI</a></li>
                         </ul>
                     </div>
 
@@ -662,6 +665,7 @@
                             <li><a href="{{ route('resources.blog') }}" class="hover:text-indigo-600 transition">Blog</a></li>
                             <li><a href="{{ route('resources.changelog') }}" class="hover:text-indigo-600 transition">Changelog</a></li>
                             <li><a href="{{ route('resources.community') }}" class="hover:text-indigo-600 transition">Community</a></li>
+                            <li><a href="{{ route('resources.stories') }}" class="hover:text-indigo-600 transition">Success Stories</a></li>
                             <li><a href="{{ route('resources.guide') }}" class="hover:text-indigo-600 transition">User Guide</a></li>
                         </ul>
                     </div>
@@ -674,6 +678,7 @@
                             <li><a href="{{ route('company.terms') }}" class="hover:text-indigo-600 transition">{{ __('Terms of Service') }}</a></li>
                             <li><a href="{{ route('company.security') }}" class="hover:text-indigo-600 transition">{{ __('Security') }}</a></li>
                             <li><a href="{{ route('company.status') }}" class="hover:text-indigo-600 transition">{{ __('System Status') }}</a></li>
+                            <li><a href="{{ route('company.press-kit') }}" class="hover:text-indigo-600 transition">{{ __('Press Kit') }}</a></li>
                         </ul>
                     </div>
 

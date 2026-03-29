@@ -120,7 +120,11 @@
     "goal_stats_runway": "Time Runway",
     "goal_stats_mastery": "Mastery Depth",
     "goal_stats_calm": "Strategic Calm",
-    "goal_stats_day_left": "{days} Days Left"
+    "goal_stats_day_left": "{days} Days Left",
+    "goal_ai_promo_badge": "Success Forecasting",
+    "goal_ai_promo_title": "Predict Your Achievement",
+    "goal_ai_promo_desc": "Neural OS calculates your velocity and predicts exactly when you'll reach your milestones, allowing you to adjust your strategy before a deadline even approaches.",
+    "goal_ai_promo_btn": "Forecast Progress"
 }
 
 

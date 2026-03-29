@@ -56,5 +56,9 @@
     "job_master_cv_extracting": "Mengekstrak Intelijen Teks...",
     "job_master_cv_error_save": "Gagal menyimpan CV. Coba lagi.",
     "job_master_cv_success": "Master CV berhasil disimpan.",
-    "job_master_cv_storage_tip": "Storage Optimization: File PDF berukuran besar (MB) akan dikompresi oleh AI menjadi data teks murni (KB) untuk efisiensi database & kecepatan analisis."
+    "job_master_cv_storage_tip": "Storage Optimization: File PDF berukuran besar (MB) akan dikompresi oleh AI menjadi data teks murni (KB) untuk efisiensi database & kecepatan analisis.",
+    "job_ai_promo_badge": "Asisten Karir AI",
+    "job_ai_promo_title": "Penyelarasan Pasar Otomatis",
+    "job_ai_promo_desc": "Optimalkan kandidasi Anda dengan analisis kata kunci berbasis AI dan tolok ukur nilai pasar. Neural OS memastikan profil Anda tetap kompetitif di iklim ekonomi apa pun.",
+    "job_ai_promo_btn": "Manfaatkan Karir AI"
 }
