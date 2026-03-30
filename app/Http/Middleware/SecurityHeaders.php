@@ -49,10 +49,11 @@ class SecurityHeaders
         else {
             // PRODUCTION: Ketat tapi tetap izinkan Midtrans
             $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $midtransUrls $externalSources; ";
-            $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com $midtransUrls $externalSources; ";
+            $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com $midtransUrls $externalSources; ";
             $csp .= "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://fonts.googleapis.com https://cdnjs.cloudflare.com $externalSources; ";
             $csp .= "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com; ";
             $csp .= "font-src 'self' data: https://fonts.bunny.net https://fonts.gstatic.com https://fonts.googleapis.com; ";
+            $csp .= "worker-src 'self' blob:; ";
             $csp .= "frame-src *; ";
             $csp .= "connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com $midtransUrls $externalSources; ";
             $csp .= "upgrade-insecure-requests;";

@@ -61,10 +61,10 @@ const handleMoodSelect = async (mood) => {
 const handleToggleProxy = async (habitId, date, forceStatus) => {
     toggleStatus(habitId, date, forceStatus);
     
-    // If user marks as skipped or it was a streak break
-    if (forceStatus === 'skipped' && neuralOs.value) {
-        neuralOs.value.runAudit(habitId);
-    }
+    // Disable Neural Audit popup on right-click (skipped) per user request
+    // if (forceStatus === 'skipped' && neuralOs.value) {
+    //     neuralOs.value.runAudit(habitId);
+    // }
 };
 
 </script>

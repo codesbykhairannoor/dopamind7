@@ -2,6 +2,7 @@ import { ref, watch } from 'vue';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 import { router } from '@inertiajs/vue3';
+import axios from 'axios';
 import { useGating } from '@/Composables/useGating';
 
 export function useJobs(props) {
