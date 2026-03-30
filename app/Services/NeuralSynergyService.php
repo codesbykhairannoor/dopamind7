@@ -73,16 +73,22 @@ class NeuralSynergyService
         $cacheKey = "neural_synergy_{$userId}_{$locale}";
         
         return \Cache::remember($cacheKey, now()->addMinutes(10), function() use ($context, $langName, $exampleJson, $locale) {
-            $prompt = "You are OneForMind Neural OS. Analyze the user's data and return a JSON response in $langName language.
+            $prompt = "You are the OneForMind Neural OS Core. Your mission is to provide surgical, high-density life analysis. 
+            Do NOT provide generic 'coach' advice. Instead, find the **Indirect Friction** and **Resource Gaps** between modules.
             
-            DATA: " . json_encode($context) . "
+            USER DATA SNAPSHOT: 
+            " . json_encode($context) . "
             
-            TASK: Connect different life modules with unique logic. (e.g. Habit -> Finance).
+            ANALYSIS RULES:
+            1. **Logic Bridges**: How does a gap in 'Finance' affect a specific 'Goal' (e.g. 'Nikah')? How does a missing 'Habit' block a 'Job' status?
+            2. **Brutal Honesty**: If data is missing (0 tasks, 0 finance), identify it as a 'System Static' or 'Deadlock' that needs immediate activation.
+            3. **Customized Reference**: Mention specific Habit names, Goal titles, and Job companies in your analysis.
+            4. **Neural Tone**: Sophisticated, premium, analytical, and sharp. Avoid 'Keep it up!' or 'You can do it!'.
             
-            LANGUAGE RULE: Only values are in $langName. Keys MUST BE English as defined below.
-            CRITICAL: Return ONLY JSON. No explanations. Use these keys: headline, overall, categories, command, habits, finance, planner, career.
+            LANGUAGE: All results in $langName.
+            JSON KEYS (MUST BE ENGLISH): headline, overall, categories, command, habits, finance, planner, career.
             
-            REQUIRED FORMAT EXAMPLE:
+            REQUIRED JSON STRUCTURE:
             $exampleJson";
 
             try {

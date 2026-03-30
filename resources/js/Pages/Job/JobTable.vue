@@ -56,7 +56,7 @@ const handleKeyDown = (e, rowIndex, colIndex) => {
                             <div class="space-y-1">
                                 <input v-model="job.company" type="text" 
                                     @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
-                                    class="w-full p-0 bg-transparent border-none outline-none focus:ring-0 font-black text-lg text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-colors duration-500"
+                                    class="w-full p-0 bg-transparent border-none outline-none focus:ring-0 font-bold text-sm text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-colors duration-500"
                                     :placeholder="$t('job_ph_company', 'Perusahaan')" />
                                 <input v-model="job.title" type="text" 
                                     @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
@@ -75,7 +75,7 @@ const handleKeyDown = (e, rowIndex, colIndex) => {
                                     </label>
                                     <input v-model="job.location" type="text" 
                                         @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
-                                        class="w-full p-0 bg-transparent border-none outline-none focus:ring-0 font-bold text-xs text-slate-700 dark:text-slate-300 placeholder-slate-300 dark:placeholder-slate-700 transition-colors duration-500"
+                                        class="w-full p-0 bg-transparent border-none outline-none focus:ring-0 font-bold text-sm text-slate-700 dark:text-slate-300 placeholder-slate-300 dark:placeholder-slate-700 transition-colors duration-500"
                                         :placeholder="$t('job_ph_location', 'Remote / ID')" />
                                 </div>
                             </div>
@@ -140,21 +140,21 @@ const handleKeyDown = (e, rowIndex, colIndex) => {
                             <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative">
                                 <input v-model="job.company" type="text" @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
                                     @keydown="handleKeyDown($event, index, 0)" :data-nav-row="index" data-nav-col="0"
-                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-bold text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans"
+                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-bold text-sm text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans"
                                     :placeholder="$t('job_ph_company', 'Ketik perusahaan...')" />
                             </td>
 
                             <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative">
                                 <input v-model="job.title" type="text" @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
                                     @keydown="handleKeyDown($event, index, 1)" :data-nav-row="index" data-nav-col="1"
-                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-bold text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans"
+                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-bold text-sm text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans"
                                     :placeholder="$t('job_ph_title', 'Cth: Frontend Dev')" />
                             </td>
 
                             <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative">
                                 <input v-model="job.location" type="text" @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
                                     @keydown="handleKeyDown($event, index, 2)" :data-nav-row="index" data-nav-col="2"
-                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-medium text-slate-600 dark:text-slate-400 placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans"
+                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-medium text-sm text-slate-600 dark:text-slate-400 placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans"
                                     :placeholder="$t('job_ph_location', 'Remote / ID')" />
                             </td>
 

@@ -34,7 +34,7 @@ const selectStatus = (val) => {
 
 <template>
     <div class="relative w-full h-full flex items-center px-3 cursor-pointer group" ref="containerRef" @click="isOpen = !isOpen">
-        <span class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all border group-hover:shadow-sm"
+        <span class="px-3 py-1.5 rounded-lg text-sm font-bold transition-all border group-hover:shadow-sm"
             :class="getStatusOption(modelValue).colorClass">
             {{ $t(getStatusOption(modelValue).label, modelValue) }}
         </span>

@@ -48,7 +48,7 @@ const isToday = (day) => dayjs().format('YYYY-MM-DD') === currentMonth.value.dat
 
 <template>
     <div class="relative w-full h-full flex items-center px-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors" ref="containerRef" @click="isOpen = !isOpen">
-        <span class="text-slate-600 dark:text-slate-300 font-bold text-xs flex items-center gap-2">
+        <span class="text-slate-600 dark:text-slate-300 font-bold text-sm flex items-center gap-2">
             <OneForMindIcon name="calendar" size="14" class="text-slate-400 dark:text-slate-500" />
             {{ displayDate }}
         </span>
