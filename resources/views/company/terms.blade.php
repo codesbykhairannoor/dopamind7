@@ -46,7 +46,7 @@
                         <span class="w-1 h-3 bg-rose-600 rounded-full"></span>
                         {{ __('terms_nav_title') }}
                     </h3>
-                    <nav class="space-y-1 font-bold text-[13px] text-slate-500" x-data="{ active: 'intro' }">
+                    <nav class="space-y-1 font-bold text-[15px] text-slate-500" x-data="{ active: 'intro' }">
                         <a href="#intro" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'intro' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'intro'">{{ __('terms_nav_1') }}</a>
                         <a href="#eligibility" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'eligibility' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'eligibility'">{{ __('terms_nav_2') }}</a>
                         <a href="#rules" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'rules' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'rules'">{{ __('terms_nav_3') }}</a>

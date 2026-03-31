@@ -50,7 +50,7 @@
                         <span class="w-1 h-3 bg-rose-500 rounded-full"></span>
                         {{ __('refund_nav_title') }}
                     </h3>
-                    <nav class="space-y-1 font-bold text-[13px] text-slate-500" x-data="{ active: 'guarantee' }">
+                    <nav class="space-y-1 font-bold text-[15px] text-slate-500" x-data="{ active: 'guarantee' }">
                         <a href="#guarantee" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'guarantee' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'guarantee'">{{ __('refund_nav_1') }}</a>
                         <a href="#process" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'process' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'process'">{{ __('refund_nav_2') }}</a>
                         <a href="#cancellation" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'cancellation' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'cancellation'">{{ __('refund_nav_3') }}</a>

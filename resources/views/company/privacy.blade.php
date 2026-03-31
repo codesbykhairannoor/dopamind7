@@ -121,7 +121,7 @@
                         <span class="w-1 h-3 bg-indigo-600 rounded-full"></span>
                         {{ __('privacy_toc_title') }}
                     </h3>
-                    <nav class="space-y-1 font-bold text-[13px] text-slate-500" x-data="{ active: 'tldr' }">
+                    <nav class="space-y-1 font-bold text-[15px] text-slate-500" x-data="{ active: 'tldr' }">
                         <a href="#tldr" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'tldr' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'tldr'">{{ __('privacy_nav_1') }}</a>
                         <a href="#collection" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'collection' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'collection'">{{ __('privacy_nav_2') }}</a>
                         <a href="#usage" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'usage' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'usage'">{{ __('privacy_nav_3') }}</a>
@@ -221,7 +221,7 @@
                             <a href="mailto:{{ __('privacy_contact_email') }}" class="text-indigo-600 font-black text-2xl tracking-tighter hover:underline">{{ __('privacy_contact_email') }}</a>
                         </div>
                         <div class="px-6 py-3 bg-white rounded-2xl border border-slate-200 text-xs font-black text-slate-500 uppercase tracking-widest">
-                            Response Time: ~24-48h
+                            {{ __('privacy_contact_sla') }}
                         </div>
                     </div>
                 </div>
