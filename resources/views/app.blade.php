@@ -34,7 +34,8 @@
         <meta http-equiv="x-dns-prefetch-control" content="on">
         <link rel="dns-prefetch" href="https://fonts.bunny.net">
 
-        <link rel="icon" type="image/x-icon" href="/favicon.svg?v=2">
+        <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon.png') }}">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

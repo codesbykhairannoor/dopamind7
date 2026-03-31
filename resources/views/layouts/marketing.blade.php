@@ -28,7 +28,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="OneForMind">
     <meta name="apple-touch-icon" content="{{ asset('favicon.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon.png') }}">
     @php
         $pageTitle = View::hasSection('title') ? trim(View::yieldContent('title')) : null;
         if ($pageTitle && !stripos($pageTitle, 'Oneformind') && !stripos($pageTitle, 'OneForMind')) {
@@ -106,7 +108,7 @@
     @yield('meta')
     @yield('json-ld')
 
-    <link rel="icon" type="image/x-icon" href="/favicon.svg?v=2">
+
     
     {{-- 🔥 2. DNS PREFETCH: Buka jalur tol lebih awal --}}
     <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
@@ -294,9 +296,9 @@
                 {{-- LOGO --}}
                 <a href="{{ route('home') }}" hx-boost="false" class="group flex items-center gap-2 z-[110]">
                     <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
-                        <img src="/favicon.svg?v=2" alt="Logo" class="w-5 h-5 brightness-0 invert" />
+                        <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-5 h-5 brightness-0 invert" />
                     </div>
-                    <span class="text-lg font-black tracking-tighter text-slate-900">OneForMind<span class="text-indigo-600">.</span></span>
+                    <span class="text-lg font-black tracking-tighter text-slate-900">OneForMind</span>
                 </a>
 
                 {{-- DESKTOP MENU --}}
@@ -627,16 +629,15 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 mb-16 text-left">
                     <div class="col-span-2 md:col-span-1">
                         <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6">
-                            <img src="/favicon.svg?v=2" alt="Logo" class="w-7 h-7" />
+                            <img src="/favicon.svg" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
                         </a>
                         <p class="text-sm text-slate-700 leading-relaxed mb-6">
                             The unified productivity system designed to bring clarity to your life, habits, and finances.
                         </p>
-                        <div class="text-xs text-slate-600 space-y-2 mt-4">
-                            <p><strong>Email:</strong> mykhairannn@gmail.com</p>
-                            <p><strong>Phone:</strong> +62 812-XXXX-XXXX</p>
-                            <p><strong>Address:</strong> Jakarta, Indonesia</p>
+                        <div class="text-xs text-slate-600 space-y-2 mt-4 font-bold">
+                            <p><strong>Email:</strong> oneformindapp@gmail.com</p>
+                            <p><strong>Status:</strong> HQ Jakarta, ID</p>
                         </div>
                     </div>
 
@@ -683,12 +684,12 @@
                     <div>
                         <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
-                            <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">{{ __('About Us') }}</a></li>
                             <li><a href="{{ route('company.privacy') }}" class="hover:text-indigo-600 transition">{{ __('Privacy Policy') }}</a></li>
                             <li><a href="{{ route('company.terms') }}" class="hover:text-indigo-600 transition">{{ __('Terms of Service') }}</a></li>
+                            <li><a href="{{ route('company.refund') }}" class="hover:text-indigo-600 transition">{{ __('Refund Policy') }}</a></li>
                             <li><a href="{{ route('company.security') }}" class="hover:text-indigo-600 transition">{{ __('Security') }}</a></li>
+                            <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">{{ __('About Us') }}</a></li>
                             <li><a href="{{ route('company.status') }}" class="hover:text-indigo-600 transition">{{ __('System Status') }}</a></li>
-                            <li><a href="{{ route('company.press-kit') }}" class="hover:text-indigo-600 transition">{{ __('Press Kit') }}</a></li>
                         </ul>
                     </div>
 

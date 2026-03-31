@@ -72,11 +72,11 @@ watch(() => page.url, () => {
             <div class="h-20 flex items-center px-6 shrink-0" :class="isSidebarCollapsed ? 'justify-center' : 'justify-start px-8'">
                 <Link :href="route('dashboard')" prefetch class="group flex items-center gap-2.5">
                     <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-100 dark:shadow-none shrink-0">
-                        <img src="/favicon.svg?v=2" alt="Logo" class="w-5 h-5 brightness-0 invert" />
+                        <img src="/favicon.svg" alt="Logo" class="w-5 h-5 brightness-0 invert" />
                     </div>
                     <Transition name="fade">
                         <span v-if="!isSidebarCollapsed" class="text-lg font-black tracking-tighter text-slate-900 dark:text-white whitespace-nowrap">
-                            OneForMind<span class="text-indigo-600">.</span>
+                            OneForMind
                         </span>
                     </Transition>
                 </Link>

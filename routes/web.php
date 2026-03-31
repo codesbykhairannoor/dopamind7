@@ -319,6 +319,10 @@ Route::get('/company/terms', function () {
     return view('company.terms');
 })->name('company.terms');
 
+Route::get('/company/refund', function () {
+    return view('company.refund');
+})->name('company.refund');
+
 Route::get('/company/security', function () {
     return view('company.security');
 })->name('company.security');

@@ -42,9 +42,9 @@ const switchLang = (lang) => {
                 
                 <a :href="route('home')" class="group flex items-center gap-2.5 z-[110]">
                     <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
-                        <img src="/favicon.svg?v=2" alt="Logo" class="w-6 h-6 brightness-0 invert" />
+                        <img src="/favicon.svg" alt="Logo" class="w-6 h-6 brightness-0 invert" />
                     </div>
-                    <span class="text-xl font-black tracking-tighter text-slate-900">OneForMind<span class="text-indigo-600">.</span></span>
+                    <span class="text-xl font-black tracking-tighter text-slate-900">OneForMind</span>
                 </a>
 
                 <div class="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
@@ -436,6 +436,7 @@ const switchLang = (lang) => {
                             <li><a :href="route('about')" class="hover:text-indigo-600 transition">About Us</a></li>
                             <li><a :href="route('company.privacy')" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
                             <li><a :href="route('company.terms')" class="hover:text-indigo-600 transition">Terms of Service</a></li>
+                            <li><a :href="route('company.refund')" class="hover:text-indigo-600 transition">Refund Policy</a></li>
                             <li><a :href="route('company.security')" class="hover:text-indigo-600 transition">Security</a></li>
                             <li><a :href="route('company.status')" class="hover:text-indigo-600 transition">System Status</a></li>
                         </ul>
