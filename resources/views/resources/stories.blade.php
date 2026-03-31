@@ -188,20 +188,20 @@
     <section class="py-32 bg-indigo-600 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <h2 class="text-5xl font-black mb-4">{{ __('resources.sto_numbers_title') }}</h2>
-            <p class="text-xl text-indigo-200 mb-20">{{ __('resources.sto_numbers_desc') }}</p>
+            <h2 class="text-5xl font-black mb-4">{{ __('sto_numbers_title') }}</h2>
+            <p class="text-xl text-indigo-200 mb-20">{{ __('sto_numbers_desc') }}</p>
             <div class="grid md:grid-cols-3 gap-12">
                 <div>
                     <div class="text-7xl font-black mb-4 shadow-sm text-white">2M+</div>
-                    <div class="text-xl font-bold text-indigo-200 uppercase tracking-widest">{{ __('resources.sto_num1') }}</div>
+                    <div class="text-xl font-bold text-indigo-200 uppercase tracking-widest">{{ __('sto_num1') }}</div>
                 </div>
                 <div>
                     <div class="text-7xl font-black mb-4 shadow-sm text-white">315%</div>
-                    <div class="text-xl font-bold text-indigo-200 uppercase tracking-widest">{{ __('resources.sto_num2') }}</div>
+                    <div class="text-xl font-bold text-indigo-200 uppercase tracking-widest">{{ __('sto_num2') }}</div>
                 </div>
                 <div>
                     <div class="text-7xl font-black mb-4 shadow-sm text-white">99%</div>
-                    <div class="text-xl font-bold text-indigo-200 uppercase tracking-widest">{{ __('resources.sto_num3') }}</div>
+                    <div class="text-xl font-bold text-indigo-200 uppercase tracking-widest">{{ __('sto_num3') }}</div>
                 </div>
             </div>
         </div>
@@ -210,19 +210,19 @@
     {{-- SECTION: FEATURED INTERVIEWS --}}
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('resources.sto_interviews_title') }}</h2>
-            <p class="text-xl text-slate-500 mb-16">{{ __('resources.sto_interviews_desc') }}</p>
+            <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('sto_interviews_title') }}</h2>
+            <p class="text-xl text-slate-500 mb-16">{{ __('sto_interviews_desc') }}</p>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="h-80 rounded-[3rem] bg-slate-900 overflow-hidden relative group">
                     <img src="https://i.pravatar.cc/400?u=sarah" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700"/>
                     <div class="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-slate-900 to-transparent">
-                        <h3 class="text-2xl font-black text-white">{{ __('resources.sto_int1') }}</h3>
+                        <h3 class="text-2xl font-black text-white">{{ __('sto_int1') }}</h3>
                     </div>
                 </div>
                 <div class="h-80 rounded-[3rem] bg-indigo-900 overflow-hidden relative group">
                     <img src="https://i.pravatar.cc/400?u=budi" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700"/>
                     <div class="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-indigo-900 to-transparent">
-                        <h3 class="text-2xl font-black text-white">{{ __('resources.sto_int2') }}</h3>
+                        <h3 class="text-2xl font-black text-white">{{ __('sto_int2') }}</h3>
                     </div>
                 </div>
             </div>
@@ -232,8 +232,8 @@
     {{-- SECTION: HALL OF FAME --}}
     <section class="py-32 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-5xl font-black text-slate-900 mb-6">{{ __('resources.sto_hof_title') }}</h2>
-            <p class="text-xl text-slate-500 mb-16">{{ __('resources.sto_hof_desc') }}</p>
+            <h2 class="text-5xl font-black text-slate-900 mb-6">{{ __('sto_hof_title') }}</h2>
+            <p class="text-xl text-slate-500 mb-16">{{ __('sto_hof_desc') }}</p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="h-40 bg-white rounded-3xl border border-slate-100 shadow-sm flex items-center justify-center p-4"><span class="font-black text-lg text-slate-300">Winner 1</span></div>
                 <div class="h-40 bg-white rounded-3xl border border-slate-100 shadow-sm flex items-center justify-center p-4"><span class="font-black text-lg text-slate-300">Winner 2</span></div>

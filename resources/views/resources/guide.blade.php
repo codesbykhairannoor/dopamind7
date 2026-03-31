@@ -190,16 +190,16 @@
     {{-- SECTION: PLAYBOOKS --}}
     <section class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-5xl font-black text-slate-900 mb-4">{{ __('resources.gui_playbooks_title') }}</h2>
-            <p class="text-xl text-slate-500 mb-16">{{ __('resources.gui_playbooks_desc') }}</p>
+            <h2 class="text-5xl font-black text-slate-900 mb-4">{{ __('gui_playbooks_title') }}</h2>
+            <p class="text-xl text-slate-500 mb-16">{{ __('gui_playbooks_desc') }}</p>
             <div class="flex gap-8 overflow-x-auto pb-8 snap-x">
                 <div class="min-w-[300px] md:min-w-[400px] bg-slate-900 text-white p-12 rounded-[3rem] snap-start hover:scale-[1.02] transition-transform">
                     <div class="w-16 h-16 bg-white/20 rounded-2xl mb-8"></div>
-                    <h3 class="text-3xl font-black mb-4">{{ __('resources.gui_pb1') }}</h3>
+                    <h3 class="text-3xl font-black mb-4">{{ __('gui_pb1') }}</h3>
                 </div>
                 <div class="min-w-[300px] md:min-w-[400px] bg-indigo-600 text-white p-12 rounded-[3rem] snap-start hover:scale-[1.02] transition-transform">
                     <div class="w-16 h-16 bg-white/20 rounded-2xl mb-8"></div>
-                    <h3 class="text-3xl font-black mb-4">{{ __('resources.gui_pb2') }}</h3>
+                    <h3 class="text-3xl font-black mb-4">{{ __('gui_pb2') }}</h3>
                 </div>
             </div>
         </div>
@@ -209,8 +209,8 @@
     <section class="py-24 bg-slate-50 border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('resources.gui_video_title') }}</h2>
-                <p class="text-xl text-slate-500">{{ __('resources.gui_video_desc') }}</p>
+                <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('gui_video_title') }}</h2>
+                <p class="text-xl text-slate-500">{{ __('gui_video_desc') }}</p>
             </div>
             <div class="w-full h-96 bg-black rounded-[3rem] overflow-hidden relative shadow-2xl flex items-center justify-center group cursor-pointer">
                 <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-md group-hover:scale-125 transition-transform">
@@ -223,13 +223,13 @@
     {{-- SECTION: CERTIFICATION --}}
     <section class="py-32 bg-white">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black mb-16">{{ __('resources.gui_cert_title') }}</h2>
+            <h2 class="text-4xl font-black mb-16">{{ __('gui_cert_title') }}</h2>
             <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-xl font-bold">
-                <div class="bg-indigo-50 text-indigo-600 px-8 py-4 rounded-full">{{ __('resources.gui_step1') }}</div>
+                <div class="bg-indigo-50 text-indigo-600 px-8 py-4 rounded-full">{{ __('gui_step1') }}</div>
                 <div class="hidden md:block">➔</div>
-                <div class="bg-indigo-50 text-indigo-600 px-8 py-4 rounded-full">{{ __('resources.gui_step2') }}</div>
+                <div class="bg-indigo-50 text-indigo-600 px-8 py-4 rounded-full">{{ __('gui_step2') }}</div>
                 <div class="hidden md:block">➔</div>
-                <div class="bg-indigo-50 text-indigo-600 px-8 py-4 rounded-full">{{ __('resources.gui_step3') }}</div>
+                <div class="bg-indigo-50 text-indigo-600 px-8 py-4 rounded-full">{{ __('gui_step3') }}</div>
             </div>
         </div>
     </section>
