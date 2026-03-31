@@ -2638,6 +2638,65 @@ const help_cta_desc$1 = "Our support team is obsessed with your success. Drop us
 const help_cta_btn$1 = "Talk to a Human";
 const help_cta_community$1 = "Ask the Community";
 const help_cta_note$1 = "Response time: Typically under 24h";
+const chg_roadmap_title$1 = "Future Roadmap";
+const chg_roadmap_desc$1 = "Sneak peek into what's coming next to our ecosystem.";
+const chg_roadmap_1$1 = "Neural Integration";
+const chg_roadmap_1_d$1 = "Direct connection to brain waves for productivity.";
+const chg_roadmap_2$1 = "AI Personal Assistant";
+const chg_roadmap_2_d$1 = "Automate your entire schedule with 1 click.";
+const chg_roadmap_3$1 = "God-level Gamification";
+const chg_roadmap_3_d$1 = "More massive level and reward systems.";
+const chg_feedback_title$1 = "Community Voices";
+const chg_feedback_desc$1 = "How our updates are changing your workflow.";
+const chg_fd1$1 = '"The 2.0 update completely changed how I work!"';
+const chg_fd2$1 = '"The app speed is incredible now."';
+const chg_beta_title$1 = "Exclusive Beta Access";
+const chg_beta_desc$1 = "Be the first to try out our secret features.";
+const com_mentors_title$1 = "Meet the Mentors";
+const com_mentors_desc$1 = "Learn directly from those who have proven this method.";
+const com_mentor1$1 = "Mental Strategy Expert";
+const com_mentor2$1 = "Productivity Architect";
+const com_mentor3$1 = "Financial Master";
+const com_global_title$1 = "Global Network";
+const com_global_desc$1 = "Spread across 50+ countries worldwide.";
+const com_stat1$1 = "Active Members";
+const com_stat2$1 = "Countries";
+const com_stat3$1 = "Collaborations";
+const com_value_title$1 = "Why the Network Matters?";
+const com_value_desc$1 = "Not just a chat group, it's a life accelerator.";
+const gui_playbooks_title$1 = "Featured Playbooks";
+const gui_playbooks_desc$1 = "Exhaustive guides to mastering every aspect of the system.";
+const gui_pb1$1 = "Zero to Hero: Focus";
+const gui_pb2$1 = "Financial Zen";
+const gui_video_title$1 = "Video Masterclasses";
+const gui_video_desc$1 = "See how the methods are applied in real-time.";
+const gui_vid_btn$1 = "Watch Now";
+const gui_cert_title$1 = "Certification Path";
+const gui_cert_desc$1 = "Get recognized for your expertise in system management.";
+const gui_step1$1 = "Understand Basics";
+const gui_step2$1 = "Implementation";
+const gui_step3$1 = "Evaluation";
+const hlp_tuts_title$1 = "Short Video Tutorials";
+const hlp_tuts_desc$1 = "Learn specific features in less than 2 minutes.";
+const hlp_cheat_title$1 = "Cheatsheets";
+const hlp_cheat_desc$1 = "Shortcuts to maximum productivity.";
+const hlp_ch1$1 = "Keyboard Shortcuts System";
+const hlp_ch2$1 = "Morning Rituals Guide";
+const hlp_sla_title$1 = "System Status & Reliability";
+const hlp_sla_desc$1 = "We monitor our servers 24/7 to ensure you are always connected.";
+const hlp_sla1$1 = "Uptime";
+const hlp_sla2$1 = "Average Response Time";
+const sto_numbers_title$1 = "Impact by Numbers";
+const sto_numbers_desc$1 = "Not just words, these are the success metrics of our users.";
+const sto_num1$1 = "Hours Saved";
+const sto_num2$1 = "Focus Increase";
+const sto_num3$1 = "Targets Reached";
+const sto_interviews_title$1 = "Featured Interviews";
+const sto_interviews_desc$1 = "Diving into the minds of the revolutionaries.";
+const sto_int1$1 = "How Sarah Doubled Her Income";
+const sto_int2$1 = "Budi's Secret to Beating Burnout";
+const sto_hof_title$1 = "Hall of Fame";
+const sto_hof_desc$1 = "Awards for outstanding community achievements.";
 const settings_title$1 = "Settings";
 const settings_header$1 = "Account Control Center";
 const settings_subheader$1 = "Manage everything about your productivity experience here.";
@@ -5917,6 +5976,65 @@ const en = {
   help_cta_btn: help_cta_btn$1,
   help_cta_community: help_cta_community$1,
   help_cta_note: help_cta_note$1,
+  chg_roadmap_title: chg_roadmap_title$1,
+  chg_roadmap_desc: chg_roadmap_desc$1,
+  chg_roadmap_1: chg_roadmap_1$1,
+  chg_roadmap_1_d: chg_roadmap_1_d$1,
+  chg_roadmap_2: chg_roadmap_2$1,
+  chg_roadmap_2_d: chg_roadmap_2_d$1,
+  chg_roadmap_3: chg_roadmap_3$1,
+  chg_roadmap_3_d: chg_roadmap_3_d$1,
+  chg_feedback_title: chg_feedback_title$1,
+  chg_feedback_desc: chg_feedback_desc$1,
+  chg_fd1: chg_fd1$1,
+  chg_fd2: chg_fd2$1,
+  chg_beta_title: chg_beta_title$1,
+  chg_beta_desc: chg_beta_desc$1,
+  com_mentors_title: com_mentors_title$1,
+  com_mentors_desc: com_mentors_desc$1,
+  com_mentor1: com_mentor1$1,
+  com_mentor2: com_mentor2$1,
+  com_mentor3: com_mentor3$1,
+  com_global_title: com_global_title$1,
+  com_global_desc: com_global_desc$1,
+  com_stat1: com_stat1$1,
+  com_stat2: com_stat2$1,
+  com_stat3: com_stat3$1,
+  com_value_title: com_value_title$1,
+  com_value_desc: com_value_desc$1,
+  gui_playbooks_title: gui_playbooks_title$1,
+  gui_playbooks_desc: gui_playbooks_desc$1,
+  gui_pb1: gui_pb1$1,
+  gui_pb2: gui_pb2$1,
+  gui_video_title: gui_video_title$1,
+  gui_video_desc: gui_video_desc$1,
+  gui_vid_btn: gui_vid_btn$1,
+  gui_cert_title: gui_cert_title$1,
+  gui_cert_desc: gui_cert_desc$1,
+  gui_step1: gui_step1$1,
+  gui_step2: gui_step2$1,
+  gui_step3: gui_step3$1,
+  hlp_tuts_title: hlp_tuts_title$1,
+  hlp_tuts_desc: hlp_tuts_desc$1,
+  hlp_cheat_title: hlp_cheat_title$1,
+  hlp_cheat_desc: hlp_cheat_desc$1,
+  hlp_ch1: hlp_ch1$1,
+  hlp_ch2: hlp_ch2$1,
+  hlp_sla_title: hlp_sla_title$1,
+  hlp_sla_desc: hlp_sla_desc$1,
+  hlp_sla1: hlp_sla1$1,
+  hlp_sla2: hlp_sla2$1,
+  sto_numbers_title: sto_numbers_title$1,
+  sto_numbers_desc: sto_numbers_desc$1,
+  sto_num1: sto_num1$1,
+  sto_num2: sto_num2$1,
+  sto_num3: sto_num3$1,
+  sto_interviews_title: sto_interviews_title$1,
+  sto_interviews_desc: sto_interviews_desc$1,
+  sto_int1: sto_int1$1,
+  sto_int2: sto_int2$1,
+  sto_hof_title: sto_hof_title$1,
+  sto_hof_desc: sto_hof_desc$1,
   settings_title: settings_title$1,
   settings_header: settings_header$1,
   settings_subheader: settings_subheader$1,
@@ -7054,6 +7172,20 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   category: category$1,
   category_name: category_name$1,
   change_photo: change_photo$1,
+  chg_beta_desc: chg_beta_desc$1,
+  chg_beta_title: chg_beta_title$1,
+  chg_fd1: chg_fd1$1,
+  chg_fd2: chg_fd2$1,
+  chg_feedback_desc: chg_feedback_desc$1,
+  chg_feedback_title: chg_feedback_title$1,
+  chg_roadmap_1: chg_roadmap_1$1,
+  chg_roadmap_1_d: chg_roadmap_1_d$1,
+  chg_roadmap_2: chg_roadmap_2$1,
+  chg_roadmap_2_d: chg_roadmap_2_d$1,
+  chg_roadmap_3: chg_roadmap_3$1,
+  chg_roadmap_3_d: chg_roadmap_3_d$1,
+  chg_roadmap_desc: chg_roadmap_desc$1,
+  chg_roadmap_title: chg_roadmap_title$1,
   cl_cta_btn: cl_cta_btn$1,
   cl_cta_desc: cl_cta_desc$1,
   cl_cta_note: cl_cta_note$1,
@@ -7120,6 +7252,18 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   color_purple: color_purple$1,
   color_rose: color_rose$1,
   color_sky: color_sky$1,
+  com_global_desc: com_global_desc$1,
+  com_global_title: com_global_title$1,
+  com_mentor1: com_mentor1$1,
+  com_mentor2: com_mentor2$1,
+  com_mentor3: com_mentor3$1,
+  com_mentors_desc: com_mentors_desc$1,
+  com_mentors_title: com_mentors_title$1,
+  com_stat1: com_stat1$1,
+  com_stat2: com_stat2$1,
+  com_stat3: com_stat3$1,
+  com_value_desc: com_value_desc$1,
+  com_value_title: com_value_title$1,
   comm_btn_discord: comm_btn_discord$1,
   comm_btn_tg: comm_btn_tg$1,
   comm_cta_btn: comm_cta_btn$1,
@@ -7935,6 +8079,18 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   growth_zen_quote: growth_zen_quote$1,
   growth_zen_subtext: growth_zen_subtext$1,
   growth_zen_title: growth_zen_title$1,
+  gui_cert_desc: gui_cert_desc$1,
+  gui_cert_title: gui_cert_title$1,
+  gui_pb1: gui_pb1$1,
+  gui_pb2: gui_pb2$1,
+  gui_playbooks_desc: gui_playbooks_desc$1,
+  gui_playbooks_title: gui_playbooks_title$1,
+  gui_step1: gui_step1$1,
+  gui_step2: gui_step2$1,
+  gui_step3: gui_step3$1,
+  gui_vid_btn: gui_vid_btn$1,
+  gui_video_desc: gui_video_desc$1,
+  gui_video_title: gui_video_title$1,
   guide_art_1_desc: guide_art_1_desc$1,
   guide_art_1_title: guide_art_1_title$1,
   guide_art_2_desc: guide_art_2_desc$1,
@@ -8267,6 +8423,16 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   hint_click_skip: hint_click_skip$1,
   hint_hold_skip: hint_hold_skip$1,
   hint_tap_done: hint_tap_done$1,
+  hlp_ch1: hlp_ch1$1,
+  hlp_ch2: hlp_ch2$1,
+  hlp_cheat_desc: hlp_cheat_desc$1,
+  hlp_cheat_title: hlp_cheat_title$1,
+  hlp_sla1: hlp_sla1$1,
+  hlp_sla2: hlp_sla2$1,
+  hlp_sla_desc: hlp_sla_desc$1,
+  hlp_sla_title: hlp_sla_title$1,
+  hlp_tuts_desc: hlp_tuts_desc$1,
+  hlp_tuts_title: hlp_tuts_title$1,
   home_science_badge: home_science_badge$1,
   home_science_desc: home_science_desc$1,
   home_science_title: home_science_title$1,
@@ -9619,6 +9785,17 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   status_image_saved: status_image_saved$1,
   status_saved: status_saved$1,
   status_saving: status_saving$1,
+  sto_hof_desc: sto_hof_desc$1,
+  sto_hof_title: sto_hof_title$1,
+  sto_int1: sto_int1$1,
+  sto_int2: sto_int2$1,
+  sto_interviews_desc: sto_interviews_desc$1,
+  sto_interviews_title: sto_interviews_title$1,
+  sto_num1: sto_num1$1,
+  sto_num2: sto_num2$1,
+  sto_num3: sto_num3$1,
+  sto_numbers_desc: sto_numbers_desc$1,
+  sto_numbers_title: sto_numbers_title$1,
   stories_cta_btn: stories_cta_btn$1,
   stories_cta_desc: stories_cta_desc$1,
   stories_cta_note: stories_cta_note$1,
@@ -12477,6 +12654,65 @@ const help_cta_desc = "Tim pendukung kami sangat peduli dengan kesuksesan Anda. 
 const help_cta_btn = "Bicara dengan Manusia";
 const help_cta_community = "Tanya Komunitas";
 const help_cta_note = "Waktu respon: Biasanya di bawah 24 jam";
+const chg_roadmap_title = "Peta Jalan Masa Depan";
+const chg_roadmap_desc = "Intip apa yang akan segera hadir di ekosistem kami.";
+const chg_roadmap_1 = "Integrasi Neural";
+const chg_roadmap_1_d = "Koneksi langsung ke gelombang otak untuk produktivitas.";
+const chg_roadmap_2 = "AI Asisten Pribadi";
+const chg_roadmap_2_d = "Otomatisasi seluruh jadwal Anda dengan 1 klik.";
+const chg_roadmap_3 = "Gamifikasi Tingkat Dewa";
+const chg_roadmap_3_d = "Sistem level dan reward yang lebih masif.";
+const chg_feedback_title = "Suara Komunitas";
+const chg_feedback_desc = "Bagaimana pembaruan kami mengubah cara kerja Anda.";
+const chg_fd1 = '"Update 2.0 benar-benar mengubah cara saya bekerja!"';
+const chg_fd2 = '"Kecepatan aplikasinya sekarang luar biasa."';
+const chg_beta_title = "Akses Beta Eksklusif";
+const chg_beta_desc = "Jadilah yang pertama mencoba fitur rahasia kami.";
+const com_mentors_title = "Temui Para Mentor";
+const com_mentors_desc = "Belajar langsung dari mereka yang telah membuktikan metode ini.";
+const com_mentor1 = "Pakar Strategi Mental";
+const com_mentor2 = "Arsitek Produktivitas";
+const com_mentor3 = "Master Finansial";
+const com_global_title = "Jejaring Global";
+const com_global_desc = "Tersebar di lebih dari 50+ negara di seluruh dunia.";
+const com_stat1 = "Anggota Aktif";
+const com_stat2 = "Negara";
+const com_stat3 = "Kolaborasi";
+const com_value_title = "Kenapa Jaringan Ini Berguna?";
+const com_value_desc = "Bukan sekadar grup chat, ini adalah akselerator kehidupan Anda.";
+const gui_playbooks_title = "Playbook Unggulan";
+const gui_playbooks_desc = "Panduan tuntas untuk menguasai setiap aspek sistem.";
+const gui_pb1 = "Zero to Hero: Focus";
+const gui_pb2 = "Financial Zen";
+const gui_video_title = "Masterclass Video";
+const gui_video_desc = "Lihat bagaimana metode ini diterapkan secara real-time.";
+const gui_vid_btn = "Tonton Sekarang";
+const gui_cert_title = "Jalur Sertifikasi";
+const gui_cert_desc = "Dapatkan pengakuan atas keahlian Anda dalam manajemen sistem.";
+const gui_step1 = "Pahami Dasar";
+const gui_step2 = "Implementasi";
+const gui_step3 = "Evaluasi";
+const hlp_tuts_title = "Video Tutorial Pendek";
+const hlp_tuts_desc = "Pelajari fitur spesifik dalam waktu kurang dari 2 menit.";
+const hlp_cheat_title = "Lembar Sontekan (Cheatsheet)";
+const hlp_cheat_desc = "Jalan pintas ke produktivitas maksimal.";
+const hlp_ch1 = "Sistem Shortcut Keyboard";
+const hlp_ch2 = "Panduan Ritual Pagi";
+const hlp_sla_title = "Status Sistem & Keandalan";
+const hlp_sla_desc = "Kami memonitor server kami 24/7 untuk memastikan Anda selalu terhubung.";
+const hlp_sla1 = "Uptime";
+const hlp_sla2 = "Waktu Respon Rata-rata";
+const sto_numbers_title = "Dampak Secara Angka";
+const sto_numbers_desc = "Bukan sekadar kata, ini adalah metrik kesuksesan para pengguna.";
+const sto_num1 = "Jam Diselamatkan";
+const sto_num2 = "Peningkatan Fokus";
+const sto_num3 = "Persentase Target Tercapai";
+const sto_interviews_title = "Wawancara Terpilih";
+const sto_interviews_desc = "Menyelami pola pikir mereka yang revolusioner.";
+const sto_int1 = "Bagaimana Sarah Menggandakan Pendapatannya";
+const sto_int2 = "Rahasia Budi Bebas dari Burnout";
+const sto_hof_title = "Hall of Fame";
+const sto_hof_desc = "Penghargaan untuk pencapaian luar biasa komunitas.";
 const settings_title = "Pengaturan";
 const settings_header = "Pusat Kendali Akun";
 const settings_subheader = "Atur segalanya tentang pengalaman produktivitas Anda di sini.";
@@ -15753,6 +15989,65 @@ const id = {
   help_cta_btn,
   help_cta_community,
   help_cta_note,
+  chg_roadmap_title,
+  chg_roadmap_desc,
+  chg_roadmap_1,
+  chg_roadmap_1_d,
+  chg_roadmap_2,
+  chg_roadmap_2_d,
+  chg_roadmap_3,
+  chg_roadmap_3_d,
+  chg_feedback_title,
+  chg_feedback_desc,
+  chg_fd1,
+  chg_fd2,
+  chg_beta_title,
+  chg_beta_desc,
+  com_mentors_title,
+  com_mentors_desc,
+  com_mentor1,
+  com_mentor2,
+  com_mentor3,
+  com_global_title,
+  com_global_desc,
+  com_stat1,
+  com_stat2,
+  com_stat3,
+  com_value_title,
+  com_value_desc,
+  gui_playbooks_title,
+  gui_playbooks_desc,
+  gui_pb1,
+  gui_pb2,
+  gui_video_title,
+  gui_video_desc,
+  gui_vid_btn,
+  gui_cert_title,
+  gui_cert_desc,
+  gui_step1,
+  gui_step2,
+  gui_step3,
+  hlp_tuts_title,
+  hlp_tuts_desc,
+  hlp_cheat_title,
+  hlp_cheat_desc,
+  hlp_ch1,
+  hlp_ch2,
+  hlp_sla_title,
+  hlp_sla_desc,
+  hlp_sla1,
+  hlp_sla2,
+  sto_numbers_title,
+  sto_numbers_desc,
+  sto_num1,
+  sto_num2,
+  sto_num3,
+  sto_interviews_title,
+  sto_interviews_desc,
+  sto_int1,
+  sto_int2,
+  sto_hof_title,
+  sto_hof_desc,
   settings_title,
   settings_header,
   settings_subheader,
@@ -16864,6 +17159,20 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   category,
   category_name,
   change_photo,
+  chg_beta_desc,
+  chg_beta_title,
+  chg_fd1,
+  chg_fd2,
+  chg_feedback_desc,
+  chg_feedback_title,
+  chg_roadmap_1,
+  chg_roadmap_1_d,
+  chg_roadmap_2,
+  chg_roadmap_2_d,
+  chg_roadmap_3,
+  chg_roadmap_3_d,
+  chg_roadmap_desc,
+  chg_roadmap_title,
   cl_cta_btn,
   cl_cta_desc,
   cl_cta_note,
@@ -16930,6 +17239,18 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   color_purple,
   color_rose,
   color_sky,
+  com_global_desc,
+  com_global_title,
+  com_mentor1,
+  com_mentor2,
+  com_mentor3,
+  com_mentors_desc,
+  com_mentors_title,
+  com_stat1,
+  com_stat2,
+  com_stat3,
+  com_value_desc,
+  com_value_title,
   comm_btn_discord,
   comm_btn_tg,
   comm_cta_btn,
@@ -17744,6 +18065,18 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   growth_zen_quote,
   growth_zen_subtext,
   growth_zen_title,
+  gui_cert_desc,
+  gui_cert_title,
+  gui_pb1,
+  gui_pb2,
+  gui_playbooks_desc,
+  gui_playbooks_title,
+  gui_step1,
+  gui_step2,
+  gui_step3,
+  gui_vid_btn,
+  gui_video_desc,
+  gui_video_title,
   guide_art_1_desc,
   guide_art_1_title,
   guide_art_2_desc,
@@ -18076,6 +18409,16 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   hint_click_skip,
   hint_hold_skip,
   hint_tap_done,
+  hlp_ch1,
+  hlp_ch2,
+  hlp_cheat_desc,
+  hlp_cheat_title,
+  hlp_sla1,
+  hlp_sla2,
+  hlp_sla_desc,
+  hlp_sla_title,
+  hlp_tuts_desc,
+  hlp_tuts_title,
   home_science_badge,
   home_science_desc,
   home_science_title,
@@ -19428,6 +19771,17 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   status_image_saved,
   status_saved,
   status_saving,
+  sto_hof_desc,
+  sto_hof_title,
+  sto_int1,
+  sto_int2,
+  sto_interviews_desc,
+  sto_interviews_title,
+  sto_num1,
+  sto_num2,
+  sto_num3,
+  sto_numbers_desc,
+  sto_numbers_title,
   stories_cta_btn,
   stories_cta_desc,
   stories_cta_note,
@@ -20384,7 +20738,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-BegIeqB2.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-FZZovxTq.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8U1WL5T.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D0T6EAwD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-BGYxobxY.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-MmcUhcQl.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DPAJERa5.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-CXcAMK8M.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DuHE4V1H.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-BYZdwH4r.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-CcLIRbjQ.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-BeZZOPSn.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-ByGi8WDy.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BOi7pgHJ.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-BOF3bTFz.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-J9mT6APi.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-CnHzdVBP.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-BI8g_9CP.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-li2W0Iu3.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-DhyuceG_.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-2RUWzSH4.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-CC483EWp.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-TVGZ79pz.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-iUOmUL6O.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DL8PAX9p.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-D2Nnzx6M.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-dTNJkdwo.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-ClAO6eXb.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DhWhkYdq.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DFwOBF_z.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-Cf8wwurd.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-XdKsebau.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Tyj_ZcKU.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-DFRbaZqC.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-CxNzVmuN.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-429jHhnI.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-Cnw3QvAB.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-s1cSc01R.js") })),
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-BegIeqB2.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BuULt2Jz.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8U1WL5T.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D0T6EAwD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-BGYxobxY.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CFkBm1KS.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-Cq_RXniA.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-RNdHa0Iw.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DubKo15c.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-k7vdARMo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BPTT3rET.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-BeZZOPSn.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-ByGi8WDy.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BMQv__8P.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-BOF3bTFz.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-svQP9x_9.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-COlr5NIu.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-BI8g_9CP.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cuj9T6zJ.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BZCWCF9r.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-DgrilUUI.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DPqDOjj3.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-aKPQB3RS.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-x8msOOrn.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BCj31SBC.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-Av7nz_Zx.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Cf-RpfhO.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-BZ1vLMxv.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DB-E5o_9.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Tyj_ZcKU.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BYH72XKH.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-Cr63Yttn.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-BL75UHvn.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-CNVFIa7x.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-s1cSc01R.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

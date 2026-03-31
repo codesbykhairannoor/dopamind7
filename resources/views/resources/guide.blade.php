@@ -233,7 +233,9 @@
             </div>
         </div>
     </section>
-    \n\n    {{-- SECTION 5: SUPPORT --}}
+    
+
+    {{-- SECTION 5: SUPPORT --}}
     <section class="py-24 px-6 bg-white">
         <div class="max-w-6xl mx-auto bg-slate-900 rounded-[4rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl">
             <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500 rounded-full blur-[150px] opacity-20 -mr-20 -mt-20"></div>

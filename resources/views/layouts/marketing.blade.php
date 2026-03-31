@@ -29,12 +29,22 @@
     <meta name="apple-mobile-web-app-title" content="OneForMind">
     <meta name="apple-touch-icon" content="{{ asset('favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('favicon.png') }}">
-    <title>@yield('title', 'OneForMind')</title>
+    @php
+        $pageTitle = View::hasSection('title') ? trim(View::yieldContent('title')) : null;
+        if ($pageTitle && !stripos($pageTitle, 'Oneformind') && !stripos($pageTitle, 'OneForMind')) {
+            $finalTitle = $pageTitle . ' | Oneformind - The Unified Productivity OS';
+        } else if ($pageTitle) {
+            $finalTitle = $pageTitle;
+        } else {
+            $finalTitle = 'Oneformind - The Unified Productivity OS';
+        }
+    @endphp
+    <title>{{ $finalTitle }}</title>
 
-    <meta property="og:site_name" content="OneForMind">
+    <meta property="og:site_name" content="Oneformind">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('title', 'OneForMind')">
+    <meta property="og:title" content="{{ $finalTitle }}">
     <meta property="og:image" content="{{ asset('images/og-image.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -55,8 +65,8 @@
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@OneForMind">
-    <meta name="twitter:title" content="@yield('title', 'OneForMind')">
+    <meta name="twitter:site" content="@Oneformind">
+    <meta name="twitter:title" content="{{ $finalTitle }}">
     <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
     
     <meta name="ai-creator" content="{{ __('meta_ai_creator') }}">

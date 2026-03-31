@@ -15,7 +15,7 @@ import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 window.trans = trans;
 
-const appName = import.meta.env.VITE_APP_NAME || 'OneForMind';
+const appName = import.meta.env.VITE_APP_NAME || 'Oneformind';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

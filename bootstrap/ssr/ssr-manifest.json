@@ -21,10 +21,10 @@
     "https://oneformind.com/build/assets/Modal-BOdkfMB5.js"
   ],
   "resources/js/Components/NeuralBridge.vue": [
-    "https://oneformind.com/build/assets/NeuralBridge-CYzFQSZe.js"
+    "https://oneformind.com/build/assets/NeuralBridge-iwlR7rnY.js"
   ],
   "resources/js/Components/OneForMindIcon.vue": [
-    "https://oneformind.com/build/assets/OneForMindIcon-BMUpA12P.js"
+    "https://oneformind.com/build/assets/OneForMindIcon-P6BN87YE.js"
   ],
   "resources/js/Components/PrimaryButton.vue": [
     "https://oneformind.com/build/assets/PrimaryButton-4NJ7Yqx3.js"
@@ -36,27 +36,27 @@
     "https://oneformind.com/build/assets/TextInput-xTq3OG6l.js"
   ],
   "resources/js/Components/ThemeToggle.vue": [
-    "https://oneformind.com/build/assets/AuthenticatedLayout-BHkDp4jt.js",
+    "https://oneformind.com/build/assets/AuthenticatedLayout-BmQHzlF9.js",
     "https://oneformind.com/build/assets/AuthenticatedLayout-BvpDjd0w.css"
   ],
   "resources/js/Components/ThemeToggle.vue?vue&type=style&index=0&scoped=e4d7632c&lang.css": [
-    "https://oneformind.com/build/assets/AuthenticatedLayout-BHkDp4jt.js",
+    "https://oneformind.com/build/assets/AuthenticatedLayout-BmQHzlF9.js",
     "https://oneformind.com/build/assets/AuthenticatedLayout-BvpDjd0w.css"
   ],
   "resources/js/Composables/Calendar/useCalendar.js": [
-    "https://oneformind.com/build/assets/Index-DPAJERa5.js"
+    "https://oneformind.com/build/assets/Index-Cq_RXniA.js"
   ],
   "resources/js/Composables/Calendar/useCalendarDates.js": [
-    "https://oneformind.com/build/assets/Index-DPAJERa5.js"
+    "https://oneformind.com/build/assets/Index-Cq_RXniA.js"
   ],
   "resources/js/Composables/Calendar/useCalendarForm.js": [
-    "https://oneformind.com/build/assets/Index-DPAJERa5.js"
+    "https://oneformind.com/build/assets/Index-Cq_RXniA.js"
   ],
   "resources/js/Composables/Finance/useFinanceBatch.js": [
-    "https://oneformind.com/build/assets/Index-CcLIRbjQ.js"
+    "https://oneformind.com/build/assets/Index-BPTT3rET.js"
   ],
   "resources/js/Composables/Finance/useFinanceCalendar.js": [
-    "https://oneformind.com/build/assets/Index-CcLIRbjQ.js"
+    "https://oneformind.com/build/assets/Index-BPTT3rET.js"
   ],
   "resources/js/Composables/Finance/useFinanceChart.js": [
     "https://oneformind.com/build/assets/DailyTrendChart-BsQnYF-L.js",
@@ -73,44 +73,44 @@
     "https://oneformind.com/build/assets/useFinanceHistory-6kktt4HE.js"
   ],
   "resources/js/Composables/Goal/useGoals.js": [
-    "https://oneformind.com/build/assets/Index-CnHzdVBP.js"
+    "https://oneformind.com/build/assets/Index-COlr5NIu.js"
   ],
   "resources/js/Composables/Habits/useHabitCore.js": [
-    "https://oneformind.com/build/assets/Index-2RUWzSH4.js",
+    "https://oneformind.com/build/assets/Index-DgrilUUI.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Habits/useHabitDates.js": [
-    "https://oneformind.com/build/assets/Index-2RUWzSH4.js",
+    "https://oneformind.com/build/assets/Index-DgrilUUI.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Habits/useHabitModals.js": [
-    "https://oneformind.com/build/assets/Index-2RUWzSH4.js",
+    "https://oneformind.com/build/assets/Index-DgrilUUI.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Job/useJobUI.js": [
     "https://oneformind.com/build/assets/useJobUI-ByDCvN_C.js"
   ],
   "resources/js/Composables/Job/useJobs.js": [
-    "https://oneformind.com/build/assets/Index-TVGZ79pz.js"
+    "https://oneformind.com/build/assets/Index-aKPQB3RS.js"
   ],
   "resources/js/Composables/Journal/useJournalForm.js": [
     "https://oneformind.com/build/assets/Write-DG6jHivD.js",
     "https://oneformind.com/build/assets/Write-vYTzsadH.css"
   ],
   "resources/js/Composables/Planner/usePlanner.js": [
-    "https://oneformind.com/build/assets/Index-XdKsebau.js"
+    "https://oneformind.com/build/assets/Index-DB-E5o_9.js"
   ],
   "resources/js/Composables/Planner/usePlannerBatch.js": [
-    "https://oneformind.com/build/assets/Index-XdKsebau.js"
+    "https://oneformind.com/build/assets/Index-DB-E5o_9.js"
   ],
   "resources/js/Composables/Planner/usePlannerCalendar.js": [
-    "https://oneformind.com/build/assets/Index-XdKsebau.js"
+    "https://oneformind.com/build/assets/Index-DB-E5o_9.js"
   ],
   "resources/js/Composables/Planner/usePlannerDrag.js": [
-    "https://oneformind.com/build/assets/Index-XdKsebau.js"
+    "https://oneformind.com/build/assets/Index-DB-E5o_9.js"
   ],
   "resources/js/Composables/Planner/usePlannerTasks.js": [
-    "https://oneformind.com/build/assets/Index-XdKsebau.js"
+    "https://oneformind.com/build/assets/Index-DB-E5o_9.js"
   ],
   "resources/js/Composables/useAppearance.js": [
     "https://oneformind.com/build/assets/useAppearance-rDoGVD4_.js"
@@ -119,15 +119,15 @@
     "https://oneformind.com/build/assets/useGating-ch70vxdD.js"
   ],
   "resources/js/Composables/useHabits.js": [
-    "https://oneformind.com/build/assets/Index-2RUWzSH4.js",
+    "https://oneformind.com/build/assets/Index-DgrilUUI.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Layouts/AuthenticatedLayout.vue": [
-    "https://oneformind.com/build/assets/AuthenticatedLayout-BHkDp4jt.js",
+    "https://oneformind.com/build/assets/AuthenticatedLayout-BmQHzlF9.js",
     "https://oneformind.com/build/assets/AuthenticatedLayout-BvpDjd0w.css"
   ],
   "resources/js/Layouts/AuthenticatedLayout.vue?vue&type=style&index=0&scoped=274b7e92&lang.css": [
-    "https://oneformind.com/build/assets/AuthenticatedLayout-BHkDp4jt.js",
+    "https://oneformind.com/build/assets/AuthenticatedLayout-BmQHzlF9.js",
     "https://oneformind.com/build/assets/AuthenticatedLayout-BvpDjd0w.css"
   ],
   "resources/js/Layouts/GuestLayout.vue": [
@@ -137,11 +137,11 @@
     "https://oneformind.com/build/assets/About-BegIeqB2.js"
   ],
   "resources/js/Pages/AiCoach/Index.vue": [
-    "https://oneformind.com/build/assets/Index-FZZovxTq.js",
+    "https://oneformind.com/build/assets/Index-BuULt2Jz.js",
     "https://oneformind.com/build/assets/Index-COT7kVfe.css"
   ],
   "resources/js/Pages/AiCoach/Index.vue?vue&type=style&index=0&scoped=bb7d8984&lang.css": [
-    "https://oneformind.com/build/assets/Index-FZZovxTq.js",
+    "https://oneformind.com/build/assets/Index-BuULt2Jz.js",
     "https://oneformind.com/build/assets/Index-COT7kVfe.css"
   ],
   "resources/js/Pages/Auth/ConfirmPassword.vue": [
@@ -177,22 +177,22 @@
     "https://oneformind.com/build/assets/CalendarGrid-CCGwPgeC.css"
   ],
   "resources/js/Pages/Calendar/CalendarHeader.vue": [
-    "https://oneformind.com/build/assets/CalendarHeader-MmcUhcQl.js",
+    "https://oneformind.com/build/assets/CalendarHeader-CFkBm1KS.js",
     "https://oneformind.com/build/assets/CalendarHeader-DQLKEIYN.css"
   ],
   "resources/js/Pages/Calendar/CalendarHeader.vue?vue&type=style&index=0&scoped=ea5623b8&lang.css": [
-    "https://oneformind.com/build/assets/CalendarHeader-MmcUhcQl.js",
+    "https://oneformind.com/build/assets/CalendarHeader-CFkBm1KS.js",
     "https://oneformind.com/build/assets/CalendarHeader-DQLKEIYN.css"
   ],
   "resources/js/Pages/Calendar/Index.vue": [
-    "https://oneformind.com/build/assets/Index-DPAJERa5.js"
+    "https://oneformind.com/build/assets/Index-Cq_RXniA.js"
   ],
   "resources/js/Pages/Dashboard.vue": [
-    "https://oneformind.com/build/assets/Dashboard-CXcAMK8M.js",
+    "https://oneformind.com/build/assets/Dashboard-RNdHa0Iw.js",
     "https://oneformind.com/build/assets/Dashboard-DGZO0mo9.css"
   ],
   "resources/js/Pages/Dashboard.vue?vue&type=style&index=0&scoped=25a55769&lang.css": [
-    "https://oneformind.com/build/assets/Dashboard-CXcAMK8M.js",
+    "https://oneformind.com/build/assets/Dashboard-RNdHa0Iw.js",
     "https://oneformind.com/build/assets/Dashboard-DGZO0mo9.css"
   ],
   "resources/js/Pages/Error.vue": [
@@ -235,12 +235,12 @@
     "https://oneformind.com/build/assets/FinanceDatePicker-CxOhCf2w.js"
   ],
   "resources/js/Pages/Finance/FinanceHeader.vue": [
-    "https://oneformind.com/build/assets/FinanceHeader-DuHE4V1H.js",
-    "https://oneformind.com/build/assets/FinanceHeader-Bk2BXmKN.css"
+    "https://oneformind.com/build/assets/FinanceHeader-DubKo15c.js",
+    "https://oneformind.com/build/assets/FinanceHeader-DBL4TOEQ.css"
   ],
-  "resources/js/Pages/Finance/FinanceHeader.vue?vue&type=style&index=0&scoped=8e4d423f&lang.css": [
-    "https://oneformind.com/build/assets/FinanceHeader-DuHE4V1H.js",
-    "https://oneformind.com/build/assets/FinanceHeader-Bk2BXmKN.css"
+  "resources/js/Pages/Finance/FinanceHeader.vue?vue&type=style&index=0&scoped=6dc9c994&lang.css": [
+    "https://oneformind.com/build/assets/FinanceHeader-DubKo15c.js",
+    "https://oneformind.com/build/assets/FinanceHeader-DBL4TOEQ.css"
   ],
   "resources/js/Pages/Finance/FinanceInsights.vue": [
     "https://oneformind.com/build/assets/FinanceInsights-B1E8q9T1.js",
@@ -254,15 +254,15 @@
     "https://oneformind.com/build/assets/FinanceStats-C2gRuJuR.js"
   ],
   "resources/js/Pages/Finance/FullArchiveModal.vue": [
-    "https://oneformind.com/build/assets/FullArchiveModal-BYZdwH4r.js",
+    "https://oneformind.com/build/assets/FullArchiveModal-k7vdARMo.js",
     "https://oneformind.com/build/assets/FullArchiveModal-DZPZrnJ-.css"
   ],
   "resources/js/Pages/Finance/FullArchiveModal.vue?vue&type=style&index=0&scoped=b6675d41&lang.css": [
-    "https://oneformind.com/build/assets/FullArchiveModal-BYZdwH4r.js",
+    "https://oneformind.com/build/assets/FullArchiveModal-k7vdARMo.js",
     "https://oneformind.com/build/assets/FullArchiveModal-DZPZrnJ-.css"
   ],
   "resources/js/Pages/Finance/Index.vue": [
-    "https://oneformind.com/build/assets/Index-CcLIRbjQ.js"
+    "https://oneformind.com/build/assets/Index-BPTT3rET.js"
   ],
   "resources/js/Pages/Finance/TransactionList.vue": [
     "https://oneformind.com/build/assets/TransactionList-D_Im-MTJ.js"
@@ -290,7 +290,7 @@
     "https://oneformind.com/build/assets/GoalGrid-ByGi8WDy.js"
   ],
   "resources/js/Pages/Goal/GoalHeader.vue": [
-    "https://oneformind.com/build/assets/GoalHeader-BOi7pgHJ.js"
+    "https://oneformind.com/build/assets/GoalHeader-BMQv__8P.js"
   ],
   "resources/js/Pages/Goal/GoalModal.vue": [
     "https://oneformind.com/build/assets/GoalModal-BOF3bTFz.js",
@@ -301,15 +301,15 @@
     "https://oneformind.com/build/assets/GoalModal-CwQrDpK1.css"
   ],
   "resources/js/Pages/Goal/GoalStats.vue": [
-    "https://oneformind.com/build/assets/GoalStats-J9mT6APi.js",
+    "https://oneformind.com/build/assets/GoalStats-svQP9x_9.js",
     "https://oneformind.com/build/assets/GoalStats-Cfb0Z6JQ.css"
   ],
   "resources/js/Pages/Goal/GoalStats.vue?vue&type=style&index=0&scoped=ee6a72f3&lang.css": [
-    "https://oneformind.com/build/assets/GoalStats-J9mT6APi.js",
+    "https://oneformind.com/build/assets/GoalStats-svQP9x_9.js",
     "https://oneformind.com/build/assets/GoalStats-Cfb0Z6JQ.css"
   ],
   "resources/js/Pages/Goal/Index.vue": [
-    "https://oneformind.com/build/assets/Index-CnHzdVBP.js"
+    "https://oneformind.com/build/assets/Index-COlr5NIu.js"
   ],
   "resources/js/Pages/Goal/MilestoneItem.vue": [
     "https://oneformind.com/build/assets/MilestoneItem-BI8g_9CP.js",
@@ -328,19 +328,19 @@
     "https://oneformind.com/build/assets/HabitBatchModal-Dz42wtP2.css"
   ],
   "resources/js/Pages/Habits/HabitGrid.vue": [
-    "https://oneformind.com/build/assets/HabitGrid-li2W0Iu3.js",
-    "https://oneformind.com/build/assets/HabitGrid-BZUaIgZm.css"
+    "https://oneformind.com/build/assets/HabitGrid-Cuj9T6zJ.js",
+    "https://oneformind.com/build/assets/HabitGrid-osVG6BRn.css"
   ],
-  "resources/js/Pages/Habits/HabitGrid.vue?vue&type=style&index=0&scoped=7e5f0d78&lang.css": [
-    "https://oneformind.com/build/assets/HabitGrid-li2W0Iu3.js",
-    "https://oneformind.com/build/assets/HabitGrid-BZUaIgZm.css"
+  "resources/js/Pages/Habits/HabitGrid.vue?vue&type=style&index=0&scoped=0201bc14&lang.css": [
+    "https://oneformind.com/build/assets/HabitGrid-Cuj9T6zJ.js",
+    "https://oneformind.com/build/assets/HabitGrid-osVG6BRn.css"
   ],
   "resources/js/Pages/Habits/HabitHeader.vue": [
-    "https://oneformind.com/build/assets/HabitHeader-DhyuceG_.js",
+    "https://oneformind.com/build/assets/HabitHeader-BZCWCF9r.js",
     "https://oneformind.com/build/assets/HabitHeader-CDNsrXps.css"
   ],
   "resources/js/Pages/Habits/HabitHeader.vue?vue&type=style&index=0&scoped=dda7809c&lang.css": [
-    "https://oneformind.com/build/assets/HabitHeader-DhyuceG_.js",
+    "https://oneformind.com/build/assets/HabitHeader-BZCWCF9r.js",
     "https://oneformind.com/build/assets/HabitHeader-CDNsrXps.css"
   ],
   "resources/js/Pages/Habits/HabitModals.vue": [
@@ -355,26 +355,26 @@
     "https://oneformind.com/build/assets/HabitStats-DFxcFT7G.css"
   ],
   "resources/js/Pages/Habits/Index.vue": [
-    "https://oneformind.com/build/assets/Index-2RUWzSH4.js",
+    "https://oneformind.com/build/assets/Index-DgrilUUI.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Pages/Habits/Index.vue?vue&type=style&index=0&lang.css": [
-    "https://oneformind.com/build/assets/Index-2RUWzSH4.js",
+    "https://oneformind.com/build/assets/Index-DgrilUUI.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Pages/Habits/NeuralHabitInsight.vue": [
-    "https://oneformind.com/build/assets/NeuralHabitInsight-CC483EWp.js",
+    "https://oneformind.com/build/assets/NeuralHabitInsight-DPqDOjj3.js",
     "https://oneformind.com/build/assets/NeuralHabitInsight-yC0TMcd-.css"
   ],
   "resources/js/Pages/Habits/NeuralHabitInsight.vue?vue&type=style&index=0&scoped=701ee9b0&lang.css": [
-    "https://oneformind.com/build/assets/NeuralHabitInsight-CC483EWp.js",
+    "https://oneformind.com/build/assets/NeuralHabitInsight-DPqDOjj3.js",
     "https://oneformind.com/build/assets/NeuralHabitInsight-yC0TMcd-.css"
   ],
   "resources/js/Pages/Job/Index.vue": [
-    "https://oneformind.com/build/assets/Index-TVGZ79pz.js"
+    "https://oneformind.com/build/assets/Index-aKPQB3RS.js"
   ],
   "resources/js/Pages/Job/JobDatePicker.vue": [
-    "https://oneformind.com/build/assets/JobDatePicker-iUOmUL6O.js"
+    "https://oneformind.com/build/assets/JobDatePicker-CBKaXF-H.js"
   ],
   "resources/js/Pages/Job/JobFilterBar.vue": [
     "https://oneformind.com/build/assets/JobFilterBar-Bzn_Jmcz.js"
@@ -383,35 +383,35 @@
     "https://oneformind.com/build/assets/JobStats-BpSSUFiH.js"
   ],
   "resources/js/Pages/Job/JobStatusDropdown.vue": [
-    "https://oneformind.com/build/assets/JobStatusDropdown-DL8PAX9p.js"
+    "https://oneformind.com/build/assets/JobStatusDropdown-CWqBlaKO.js"
   ],
   "resources/js/Pages/Job/JobTable.vue": [
-    "https://oneformind.com/build/assets/JobTable-D2Nnzx6M.js",
-    "https://oneformind.com/build/assets/JobTable-CY-oCnwj.css"
+    "https://oneformind.com/build/assets/JobTable-B6_Jsbzz.js",
+    "https://oneformind.com/build/assets/JobTable-DV7WQcoi.css"
   ],
-  "resources/js/Pages/Job/JobTable.vue?vue&type=style&index=0&scoped=0f537865&lang.css": [
-    "https://oneformind.com/build/assets/JobTable-D2Nnzx6M.js",
-    "https://oneformind.com/build/assets/JobTable-CY-oCnwj.css"
+  "resources/js/Pages/Job/JobTable.vue?vue&type=style&index=0&scoped=9d2e49de&lang.css": [
+    "https://oneformind.com/build/assets/JobTable-B6_Jsbzz.js",
+    "https://oneformind.com/build/assets/JobTable-DV7WQcoi.css"
   ],
   "resources/js/Pages/Job/MasterCvModal.vue": [
-    "https://oneformind.com/build/assets/MasterCvModal-dTNJkdwo.js"
+    "https://oneformind.com/build/assets/MasterCvModal-x8msOOrn.js"
   ],
   "resources/js/Pages/Job/ResumeAiModal.vue": [
-    "https://oneformind.com/build/assets/ResumeAiModal-ClAO6eXb.js",
+    "https://oneformind.com/build/assets/ResumeAiModal-BCj31SBC.js",
     "https://oneformind.com/build/assets/ResumeAiModal-Bdl2hVkh.css"
   ],
   "resources/js/Pages/Job/ResumeAiModal.vue?vue&type=style&index=0&scoped=19f11c4a&lang.css": [
-    "https://oneformind.com/build/assets/ResumeAiModal-ClAO6eXb.js",
+    "https://oneformind.com/build/assets/ResumeAiModal-BCj31SBC.js",
     "https://oneformind.com/build/assets/ResumeAiModal-Bdl2hVkh.css"
   ],
   "resources/js/Pages/Journal/Index.vue": [
-    "https://oneformind.com/build/assets/Index-DhWhkYdq.js"
+    "https://oneformind.com/build/assets/Index-Av7nz_Zx.js"
   ],
   "resources/js/Pages/Journal/JournalCard.vue": [
     "https://oneformind.com/build/assets/JournalCard-C96aLkqP.js"
   ],
   "resources/js/Pages/Journal/JournalHeader.vue": [
-    "https://oneformind.com/build/assets/JournalHeader-DFwOBF_z.js"
+    "https://oneformind.com/build/assets/JournalHeader-Cf-RpfhO.js"
   ],
   "resources/js/Pages/Journal/Write.vue": [
     "https://oneformind.com/build/assets/Write-DG6jHivD.js",
@@ -422,15 +422,15 @@
     "https://oneformind.com/build/assets/Write-vYTzsadH.css"
   ],
   "resources/js/Pages/More/Index.vue": [
-    "https://oneformind.com/build/assets/Index-Cf8wwurd.js",
+    "https://oneformind.com/build/assets/Index-BZ1vLMxv.js",
     "https://oneformind.com/build/assets/Index-BR2T845c.css"
   ],
   "resources/js/Pages/More/Index.vue?vue&type=style&index=0&scoped=959b3761&lang.css": [
-    "https://oneformind.com/build/assets/Index-Cf8wwurd.js",
+    "https://oneformind.com/build/assets/Index-BZ1vLMxv.js",
     "https://oneformind.com/build/assets/Index-BR2T845c.css"
   ],
   "resources/js/Pages/Planner/Index.vue": [
-    "https://oneformind.com/build/assets/Index-XdKsebau.js"
+    "https://oneformind.com/build/assets/Index-DB-E5o_9.js"
   ],
   "resources/js/Pages/Planner/PlannerBatchModal.vue": [
     "https://oneformind.com/build/assets/PlannerBatchModal-Tyj_ZcKU.js",
@@ -444,7 +444,7 @@
     "https://oneformind.com/build/assets/PlannerDatePicker-C0E2B7JI.js"
   ],
   "resources/js/Pages/Planner/PlannerHeader.vue": [
-    "https://oneformind.com/build/assets/PlannerHeader-DFRbaZqC.js"
+    "https://oneformind.com/build/assets/PlannerHeader-BYH72XKH.js"
   ],
   "resources/js/Pages/Planner/PlannerModal.vue": [
     "https://oneformind.com/build/assets/PlannerModal-D_VFpSmt.js"
@@ -461,15 +461,15 @@
     "https://oneformind.com/build/assets/PlannerTimeline-BgYScDu8.css"
   ],
   "resources/js/Pages/Pricing.vue": [
-    "https://oneformind.com/build/assets/Pricing-CxNzVmuN.js",
+    "https://oneformind.com/build/assets/Pricing-Cr63Yttn.js",
     "https://oneformind.com/build/assets/Pricing-AYCPRzUw.css"
   ],
   "resources/js/Pages/Pricing.vue?vue&type=style&index=0&scoped=cf11d68e&lang.css": [
-    "https://oneformind.com/build/assets/Pricing-CxNzVmuN.js",
+    "https://oneformind.com/build/assets/Pricing-Cr63Yttn.js",
     "https://oneformind.com/build/assets/Pricing-AYCPRzUw.css"
   ],
   "resources/js/Pages/Profile/Edit.vue": [
-    "https://oneformind.com/build/assets/Edit-429jHhnI.js"
+    "https://oneformind.com/build/assets/Edit-BL75UHvn.js"
   ],
   "resources/js/Pages/Profile/Partials/DeleteUserForm.vue": [
     "https://oneformind.com/build/assets/DeleteUserForm-CuG_azPI.js"
@@ -484,11 +484,11 @@
     "https://oneformind.com/build/assets/UpdateProfileInformationForm-CvCckIe3.js"
   ],
   "resources/js/Pages/Settings/Index.vue": [
-    "https://oneformind.com/build/assets/Index-Cnw3QvAB.js",
+    "https://oneformind.com/build/assets/Index-CNVFIa7x.js",
     "https://oneformind.com/build/assets/Index-Cj7bGFvC.css"
   ],
   "resources/js/Pages/Settings/Index.vue?vue&type=style&index=0&scoped=fcdd8925&lang.css": [
-    "https://oneformind.com/build/assets/Index-Cnw3QvAB.js",
+    "https://oneformind.com/build/assets/Index-CNVFIa7x.js",
     "https://oneformind.com/build/assets/Index-Cj7bGFvC.css"
   ],
   "resources/js/Pages/Settings/Partials/AppearanceTab.vue": [

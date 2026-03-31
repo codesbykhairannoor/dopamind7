@@ -207,7 +207,9 @@
             <p class="text-2xl text-slate-500 font-medium italic">{{ __('com_value_desc') }}</p>
         </div>
     </section>
-    \n\n    {{-- SECTION 4: FINAL SOCIAL PROOF --}}
+    
+
+    {{-- SECTION 4: FINAL SOCIAL PROOF --}}
     <section class="py-32 bg-slate-50">
         <div class="max-w-4xl mx-auto text-center px-6">
             <h2 class="text-4xl font-black text-slate-900 mb-12 tracking-tight">{{ __('comm_cta_title') }}</h2>

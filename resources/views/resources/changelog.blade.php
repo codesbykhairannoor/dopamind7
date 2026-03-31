@@ -294,7 +294,9 @@
             <button class="bg-white text-indigo-900 px-8 py-4 rounded-full font-black text-xl hover:scale-105 transition-transform shadow-2xl">Join Beta</button>
         </div>
     </section>
-    \n\n    {{-- SECTION 5: CTA (DESAIN LEGA & TIDAK MEPET) --}}
+    
+
+    {{-- SECTION 5: CTA (DESAIN LEGA & TIDAK MEPET) --}}
     <section class="py-32 px-6 bg-slate-50 relative overflow-hidden border-t border-gray-200">
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-indigo-100/50 to-transparent rounded-t-full -z-10"></div>
         

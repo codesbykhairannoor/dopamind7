@@ -7,7 +7,7 @@
         
         <meta name="description" content="{{ app()->getLocale() === 'id' ? 'Satu aplikasi produktivitas untuk segalanya. Kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' : 'The only productivity app you need. Manage finances, habits, and daily plans in one unified, minimalist dashboard.' }}" inertia>
 
-        <title inertia>{{ config('app.name', 'OneForMind') }} - {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'All-in-One Productivity OS' }}</title>
+        <title inertia>Oneformind - {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'All-in-One Productivity OS' }}</title>
 
         {{-- Geo-SEO & Location Tags --}}
         <meta name="geo.region" content="ID-JK" inertia />
@@ -19,7 +19,7 @@
         <meta name="theme-color" content="#4f46e5" inertia>
         <meta name="apple-mobile-web-app-capable" content="yes" inertia>
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" inertia>
-        <meta name="apple-mobile-web-app-title" content="OneForMind" inertia>
+        <meta name="apple-mobile-web-app-title" content="Oneformind" inertia>
         <link rel="apple-touch-icon" href="/favicon.png">
         
         {{-- PWA Splash Screens (iOS) --}}
@@ -27,7 +27,7 @@
         
         <link rel="manifest" href="/build/manifest.webmanifest">
 
-        <meta property="og:title" content="{{ config('app.name', 'OneForMind') }} — {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'The Unified Productivity OS' }}" inertia>
+        <meta property="og:title" content="Oneformind — {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'The Unified Productivity OS' }}" inertia>
         <meta property="og:description" content="{{ app()->getLocale() === 'id' ? 'Satu aplikasi produktivitas untuk segalanya. Kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' : 'The only productivity app you need. Manage finances, habits, and daily plans in one unified, minimalist dashboard.' }}" inertia>
         <meta property="og:image" content="{{ url('/favicon.svg') }}" inertia>
 

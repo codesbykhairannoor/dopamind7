@@ -242,7 +242,9 @@
             </div>
         </div>
     </section>
-    \n\n    {{-- SECTION 4: SHARE YOUR STORY CTA (MODERN NEOMORPHISM) --}}
+    
+
+    {{-- SECTION 4: SHARE YOUR STORY CTA (MODERN NEOMORPHISM) --}}
     <section class="py-24 px-6 bg-gray-50">
         <div class="max-w-6xl mx-auto bg-indigo-600 rounded-[4rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl border border-indigo-500">
             {{-- Abstract Shapes --}}
