@@ -2286,16 +2286,23 @@ const feat_journal_lock$1 = "Journal Privacy Lock";
 const feat_calendar_timeline$1 = "Timeline / Gantt View";
 const feat_ai_scheduling$1 = "AI Auto-Scheduling";
 const privacy_meta_title$1 = "Trust Center & Privacy Policy";
-const privacy_meta_desc$1 = "Learn how OneForMind protects your data, privacy, and ensures your security.";
+const privacy_meta_desc$1 = "Learn how OneForMind protects your data and ensures your security.";
 const privacy_meta_og_title$1 = "Trust Center — OneForMind";
-const privacy_meta_og_desc$1 = "We believe your habits and finances are your own business. Read our privacy policy.";
+const privacy_meta_og_desc$1 = "Your habits, your data, our protection.";
 const privacy_badge$1 = "Trust & Privacy Center";
 const privacy_title_1$1 = "Your Data.";
 const privacy_title_2$1 = "Your Rules.";
 const privacy_subtitle$1 = "We build tools to help you take control of your life, not to exploit your personal information. Transparency is our default.";
-const privacy_last_updated$1 = "Last Updated: Feb 18, 2026";
+const privacy_last_updated$1 = "Last Updated: Mar 31, 2026";
 const privacy_status$1 = "Active Version";
 const privacy_toc_title$1 = "Contents";
+const privacy_nav_1$1 = "01. TL;DR Summary";
+const privacy_nav_2$1 = "02. Information Collection";
+const privacy_nav_3$1 = "03. Data Usage";
+const privacy_nav_4$1 = "04. Security Protocols";
+const privacy_nav_5$1 = "05. Third Parties";
+const privacy_nav_6$1 = "06. Privacy Rights";
+const privacy_nav_7$1 = "07. Contact Us";
 const privacy_download_pdf$1 = "Download as PDF";
 const privacy_tldr_title$1 = "The TL;DR Version";
 const privacy_tldr_1_title$1 = "No Selling Data";
@@ -2306,137 +2313,172 @@ const privacy_tldr_3_title$1 = "Bank-Grade Security";
 const privacy_tldr_3_desc$1 = "Your financial records and habits are encrypted in transit and at rest.";
 const privacy_tldr_4_title$1 = "Minimal Tracking";
 const privacy_tldr_4_desc$1 = "We only use essential cookies to keep you logged in and functional analytics.";
-const privacy_doc_intro$1 = 'This Privacy Policy describes how OneForMind ("we", "us", or "our") collects, uses, and shares your personal information when you use our web application, tools, and services.';
+const privacy_doc_intro$1 = "This Privacy Policy describes how OneForMind collects and uses your personal information.";
 const privacy_h2_collection$1 = "2. Information We Collect";
-const privacy_p_collection$1 = "We believe in data minimization. We only collect what is strictly necessary to make the app work for you.";
-const privacy_li_collection_1_title$1 = "Account Information";
-const privacy_li_collection_1_desc$1 = "Name, email address, and authentication credentials (if not using Google OAuth).";
-const privacy_li_collection_2_title$1 = "User-Generated Content";
-const privacy_li_collection_2_desc$1 = "Habit logs, financial entries, journal notes, and planner tasks.";
-const privacy_li_collection_2_strong$1 = "This data is strictly private to your account.";
-const privacy_li_collection_3_title$1 = "Device & Usage Data";
-const privacy_li_collection_3_desc$1 = "Basic analytics such as IP address, browser type, and operating system to help us debug errors.";
-const privacy_h2_usage$1 = "3. How We Use Your Data";
-const privacy_p_usage$1 = "Your data is used exclusively to provide and improve the OneForMind experience. Specifically, we use it to:";
-const privacy_li_usage_1$1 = "Provide you with the core functionalities (habit tracking, financial insights, task management).";
-const privacy_li_usage_2$1 = "Send you important account notifications (e.g., password resets).";
-const privacy_li_usage_3$1 = "Analyze anonymous, aggregated usage patterns to improve our UI/UX.";
-const privacy_finance_note_title$1 = "Important Note on Finances";
-const privacy_finance_note_desc$1 = "We are not a bank. We do not connect directly to your bank accounts. All financial data is manually inputted by you and is used solely to generate personal insights.";
-const privacy_h2_security$1 = "4. Data Security";
-const privacy_p_security$1 = "We implement standard industry practices to protect your data. Our databases are secured, and we enforce HTTPS/SSL for all communications. Passwords are securely hashed using modern cryptographic algorithms.";
-const privacy_h2_cookies$1 = "5. Cookies and Tracking";
-const privacy_p_cookies$1 = 'OneForMind uses "cookies" to remember your session and preferences (like Dark mode). We do not use intrusive third-party advertising trackers on our dashboard.';
-const privacy_h2_rights$1 = "6. Your Rights";
-const privacy_p_rights$1 = "Depending on your location, you have the right to:";
-const privacy_li_rights_1$1 = "Access the personal information we hold about you.";
-const privacy_li_rights_2$1 = "Request the correction of inaccurate data.";
-const privacy_li_rights_3$1 = "Request the permanent deletion of your account and all associated data.";
-const privacy_h2_contact$1 = "7. Contact Us";
-const privacy_p_contact$1 = "If you have any questions or data deletion requests, please reach out to us:";
+const privacy_p_collection$1 = "We believe in data minimization. We only collect what is strictly necessary.";
+const privacy_li_collection_1_title$1 = "Account Details";
+const privacy_li_collection_1_desc$1 = "Name, email, and authentication credentials.";
+const privacy_li_collection_2_title$1 = "User Content";
+const privacy_li_collection_2_desc$1 = "Habits, finances, journals, and planner tasks.";
+const privacy_li_collection_3_title$1 = "Device Data";
+const privacy_li_collection_3_desc$1 = "IP address and browser type for bug diagnosis.";
+const privacy_h2_usage$1 = "3. Data Usage";
+const privacy_p_usage$1 = "Your data is used to provide the core experience.";
+const privacy_li_usage_1$1 = "Core functionalities maintenance.";
+const privacy_li_usage_2$1 = "Important system notifications.";
+const privacy_li_usage_3$1 = "Anonymous usage analytics for UI/UX improvements.";
+const privacy_h2_security$1 = "4. Security Infrastructure";
+const privacy_p_security$1 = "We enforce HTTPS/SSL and modern hashing for passswords.";
+const privacy_h2_thirdparty$1 = "6. Third Parties";
+const privacy_p_thirdparty$1 = "We share data only with essential operators like Payment Gateways and Google OAuth.";
+const privacy_h2_rights$1 = "7. Your Rights";
+const privacy_p_rights$1 = "Subject to jurisdiction, you may access or delete your data.";
+const privacy_h2_contact$1 = "8. Contact Us";
+const privacy_p_contact$1 = "Questions? Reach out to our team.";
 const privacy_contact_role$1 = "Data Protection Officer";
-const privacy_contact_email$1 = "privacy@oneformind.com";
-const privacy_contact_sla$1 = "We typically respond within 24-48 business hours.";
-const privacy_export_title$1 = "Data Portability";
-const privacy_export_desc$1 = "We don't hold your data hostage. You can download a complete backup of your habits, finances, and journals anytime.";
-const privacy_export_point_1$1 = "Export to raw JSON format";
-const privacy_export_point_2$1 = "Instant generation, no waiting required";
-const privacy_export_code_comment$1 = "Your data is strictly yours.";
-const privacy_faq_title$1 = "Frequently Asked Questions";
-const privacy_faq_1_q$1 = "Can your team read my private journal entries?";
-const privacy_faq_1_a$1 = "No. We have strict internal access controls. Unless you explicitly share an error log with our support team, your user-generated content remains entirely private.";
-const privacy_faq_2_q$1 = "Do you sell my data to advertisers?";
-const privacy_faq_2_a$1 = "Absolutely not. Our business model is based on providing a great productivity tool, not acting as a data broker.";
+const privacy_contact_email$1 = "oneformindapp@gmail.com";
+const privacy_contact_sla$1 = "Typical response: 24 business hours.";
+const privacy_faq_title$1 = "Privacy FAQs";
+const privacy_faq_1_q$1 = "Can your team read my journals?";
+const privacy_faq_1_a$1 = "No. Strict internal controls ensure your content remains private.";
+const privacy_faq_2_q$1 = "Do you sell my data?";
+const privacy_faq_2_a$1 = "Absolutely not. Our business is productivity tools, not data brokerage.";
 const privacy_faq_3_q$1 = "How do I delete my account?";
-const privacy_faq_3_a$1 = "You can delete your account permanently directly from your Profile Settings inside the dashboard. This action will wipe all your data from our servers.";
+const privacy_faq_3_a$1 = "Use the Profile Settings to wipe all data from our servers instantly.";
 const privacy_cta_title$1 = "Ready to take control?";
-const privacy_cta_desc$1 = "Join thousands of users who trust OneForMind for their daily productivity.";
+const privacy_cta_desc$1 = "Join thousands who trust us with their daily routines.";
 const privacy_cta_btn$1 = "Start Your Journey";
-const terms_meta_title$1 = "Terms of Service - The Rulebook";
-const terms_meta_desc$1 = "Read the rules regarding the use of OneForMind. Clear, transparent, and fair terms of service.";
-const terms_meta_og_title$1 = "OneForMind Terms of Service";
-const terms_meta_og_desc$1 = "The agreement between you and OneForMind.";
-const terms_badge$1 = "Legal Blueprint";
+const terms_meta_title$1 = "Binding Terms of Service - OneForMind OS";
+const terms_meta_desc$1 = "Comprehensive legal contract for OneForMind users. Maximum protection for the provider.";
+const terms_meta_og_title$1 = "OneForMind Terms & Conditions";
+const terms_meta_og_desc$1 = "Legally binding agreement for all users.";
+const terms_badge$1 = "Legally Binding Contract";
 const terms_title_1$1 = "Rules of";
 const terms_title_2$1 = "Engagement";
-const terms_subtitle$1 = "By using OneForMind, you agree to these terms. Think of this as the handshake before we start building your productivity system together.";
-const terms_effective_date$1 = "Effective: Feb 18, 2026";
-const terms_nav_title$1 = "Table of Contents";
-const terms_intro_text$1 = "Welcome to OneForMind. These Terms of Service ('Terms') govern your access to and use of our services.";
-const terms_intro_sub$1 = "Please read them carefully. By accessing or using our Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.";
-const terms_h2_eligibility$1 = "2. Eligibility";
-const terms_p_eligibility$1 = "Our services are not for everyone. To maintain a safe and legal environment, you must meet the following criteria:";
-const terms_eligibility_1$1 = "Must be at least 13 years old";
-const terms_eligibility_2$1 = "Not a robot (Human users only)";
-const terms_h2_rules$1 = "3. Code of Conduct";
-const terms_p_rules$1 = "We encourage productivity, not chaos. When using OneForMind, you agree to play by the rules.";
-const terms_rules_do_title$1 = "You Should";
-const terms_rules_do_1$1 = "Use the app to track your own habits and finances.";
-const terms_rules_do_2$1 = "Keep your password secure.";
-const terms_rules_do_3$1 = "Export your data regularly for backups.";
-const terms_rules_dont_title$1 = "You Must Not";
-const terms_rules_dont_1$1 = "Attempt to hack or reverse engineer the API.";
-const terms_rules_dont_2$1 = "Use the service for illegal activities.";
-const terms_rules_dont_3$1 = "Share your account with multiple people.";
-const terms_h2_payment$1 = "4. Payments & Subscriptions";
-const terms_p_payment$1 = "Some features of OneForMind are billed on a subscription basis ('Subscription(s)'). You will be billed in advance on a recurring and periodic basis.";
-const terms_li_payment_1_desc$1 = "We may offer a Free Trial for a limited period. You may be required to enter your billing information to sign up.";
-const terms_li_payment_2_title$1 = "Refunds & Cancellations";
-const terms_li_payment_2_desc$1 = "We offer a 14-day money-back guarantee for initial purchases of our Pro and Lifetime plans. You can cancel your subscription at any time via your account settings.";
-const terms_h2_termination$1 = "5. Termination";
-const terms_p_termination$1 = "We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.";
-const terms_h2_liability$1 = "6. Limitation of Liability";
-const terms_legal_caps$1 = "IN NO EVENT SHALL ONEFORMIND, NOR ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES, BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES.";
-const terms_cta_title$1 = "Ready to get started?";
-const terms_cta_desc$1 = "By clicking 'I Agree & Register', you acknowledge that you have read and understood these terms.";
-const terms_cta_btn_agree$1 = "I Agree & Register";
-const terms_cta_btn_decline$1 = "I Decline";
-const terms_cta_note$1 = "Clicking 'I Decline' will return you to the home page.";
-const sec_meta_title$1 = "Security Overview - Data Protection Foundation";
-const sec_meta_desc$1 = "How OneForMind secures your habits, finances, and personal journals with professional-grade encryption.";
-const sec_meta_og_title$1 = "Security & Trust - OneForMind";
-const sec_meta_og_desc$1 = "Explore our security architecture and data protection protocols.";
-const sec_badge$1 = "Security Infrastructure";
+const terms_subtitle$1 = "By accessing OneForMind, you explicitly agree to these terms. This document is a binding contract between you and the service provider.";
+const terms_effective_date$1 = "Updated: Mar 31, 2026";
+const terms_nav_title$1 = "Legal Framework";
+const terms_nav_1$1 = "1. Introduction";
+const terms_nav_2$1 = "2. Eligibility";
+const terms_nav_3$1 = "3. Rules of Conduct";
+const terms_nav_4$1 = "4. Payment";
+const terms_nav_5$1 = "5. Intellectual Property";
+const terms_nav_6$1 = "6. Termination";
+const terms_nav_7$1 = "7. Disputes";
+const terms_nav_8$1 = "8. Liability";
+const terms_intro_text$1 = "Welcome to OneForMind. These Terms of Service ('Terms') form the legal basis of our relationship.";
+const terms_intro_sub$1 = "Please read carefully. By using our service, you agree to be bound by every clause. Disagreement with any part leads to immediate revocation of your right to use the Service.";
+const terms_h2_eligibility$1 = "2. Eligibility & Risks";
+const terms_p_eligibility$1 = "Service is provided 'as-is'. You must be:";
+const terms_eligibility_1$1 = "At least 13 years old (accepting full liability)";
+const terms_eligibility_2$1 = "Using the app for lawful purposes only";
+const terms_h2_rules$1 = "3. Code of Conduct & Prohibitions";
+const terms_p_rules$1 = "We reserve the right to terminate accounts without prior notice for any perceived violation.";
+const terms_rules_do_title$1 = "Your Covenants";
+const terms_rules_do_1$1 = "Maintain strict credential security.";
+const terms_rules_do_2$1 = "Accept full responsibility for all data entered.";
+const terms_rules_do_3$1 = "Acknowledge that productivity results are personal.";
+const terms_rules_dont_title$1 = "Strict Prohibitions";
+const terms_rules_dont_1$1 = "Attempting reverse engineering or security probing.";
+const terms_rules_dont_2$1 = "Abusing AI features or mass automation.";
+const terms_rules_dont_3$1 = "Filing legal claims before mandatory internal mediation.";
+const terms_h2_payment$1 = "4. Billing & Strict No-Refund Policy";
+const terms_p_payment$1 = "OneForMind premium features are instant digital content and are non-refundable.";
+const terms_li_payment_1_title$1 = "Automatic Renewals";
+const terms_li_payment_1_desc$1 = "Subscriptions renew automatically. Failure to cancel before the billing date is solely the user's responsibility and does not grant refund rights.";
+const terms_li_payment_2_title$1 = "Strict No-Refund Guarantee";
+const terms_li_payment_2_desc$1 = "We provide explicit 14-day Free Access (Trial). By purchasing, you waive all rights to a refund under any circumstances.";
+const terms_h2_intellectual$1 = "5. Intellectual Property Rights";
+const terms_p_intellectual$1 = "All code, UI/UX designs, and operational concepts are our exclusive property. Unauthorized use will be prosecuted.";
+const terms_h2_termination$1 = "6. Account Termination";
+const terms_p_termination$1 = "We reserve the right to suspend or terminate your access to the Service at any time, without prior notice or liability, if you breach these Terms or at our sole discretion to protect system integrity.";
+const terms_h2_dispute$1 = "7. Governing Law & Dispute Resolution";
+const terms_p_dispute$1 = "All disputes shall be settled via binding internal mediation or arbitration in Indonesian jurisdiction. You waive the right to Class Action lawsuits.";
+const terms_h2_liability$1 = "8. Total Limitation of Liability";
+const terms_legal_caps$1 = "THIS SERVICE IS PROVIDED 'AS-IS' WITHOUT WARRANTY OF ANY KIND. WE ARE NOT LIABLE FOR FINANCIAL LOSS, PLAN FAILURES, OR DATA ISSUES. OUR TOTAL LIABILITY IS LIMITED TO YOUR LAST SUBSCRIPTION FEE.";
+const terms_cta_title$1 = "Accept & Commit?";
+const terms_cta_desc$1 = "By clicking below, you acknowledge full acceptance of this binding legal contract.";
+const terms_cta_btn_agree$1 = "I Accept All Terms";
+const terms_cta_btn_decline$1 = "Revoke My Access";
+const terms_cta_note$1 = "This agreement is binding from account creation.";
+const sec_meta_title$1 = "Security & Trust Overview";
+const sec_meta_desc$1 = "Bank-grade encryption and architectural security protocols.";
+const sec_meta_og_title$1 = "Fortified Productivity - OneForMind";
+const sec_meta_og_desc$1 = "Your mind deserves a safe space.";
+const sec_badge$1 = "Security Protocol";
 const sec_title_1$1 = "Fortified.";
 const sec_title_2$1 = "By Design.";
-const sec_subtitle$1 = "Security isn't a feature; it's the bedrock of everything we build. We protect your most sensitive data with bank-grade protocols and transparency.";
-const sec_stat_1_label$1 = "Encryption";
+const sec_subtitle$1 = "Security is our bedrock. We protect your most sensitive data with layered architecture and professional protocols.";
+const sec_stat_1_label$1 = "Standard";
 const sec_stat_1_val$1 = "AES-256";
-const sec_stat_2_label$1 = "Infrastructure";
-const sec_stat_2_val$1 = "Cloudflare";
-const sec_stat_3_label$1 = "Uptime";
+const sec_stat_2_label$1 = "Network";
+const sec_stat_2_val$1 = "TLS 1.3";
+const sec_stat_3_label$1 = "Availability";
 const sec_stat_3_val$1 = "99.9%";
 const sec_toc_title$1 = "Security Layers";
-const sec_toc_1$1 = "1. Technical Infrastructure";
-const sec_toc_2$1 = "2. Data Encryption";
-const sec_toc_3$1 = "3. Application Security";
-const sec_toc_4$1 = "4. Privacy & Compliance";
-const sec_toc_5$1 = "5. Shared Responsibility";
-const sec_h2_infrastructure$1 = "Technical Infrastructure";
-const sec_p_infrastructure$1 = "Our infrastructure is built on world-class platforms designed for high availability and maximum resilience against external threats.";
-const sec_li_infra_1_title$1 = "Modern Cloud Stack";
-const sec_li_infra_1_desc$1 = "All data is hosted in Tier-4 data centers with 24/7 physical security and redundant power systems.";
+const sec_toc_1$1 = "Cloud Infrastructure";
+const sec_toc_2$1 = "Database Encryption";
+const sec_toc_3$1 = "App Integrity";
+const sec_toc_4$1 = "User Sovereignty";
+const sec_toc_5$1 = "Review Cycle";
+const sec_h2_infrastructure$1 = "Technical Stack";
+const sec_p_infrastructure$1 = "Hosted in world-class data centers with maximum uptime and physical security.";
+const sec_li_infra_1_title$1 = "Resilient Hosting";
+const sec_li_infra_1_desc$1 = "SOC2-compliant data centers with 24/7 monitoring.";
 const sec_li_infra_2_title$1 = "Edge Protection";
-const sec_li_infra_2_desc$1 = "We use advanced firewalls and DDoS protection to prevent unauthorized access at the network level.";
-const sec_li_infra_3_title$1 = "Regular Backups";
-const sec_li_infra_3_desc$1 = "Encrypted backups are performed daily and tested regularly to ensure zero data loss scenarios.";
+const sec_li_infra_2_desc$1 = "Advanced firewalls and DDoS protection protocols.";
+const sec_li_infra_3_title$1 = "Automated Backups";
+const sec_li_infra_3_desc$1 = "Daily encrypted snapshots for zero-loss scenarios.";
 const sec_h2_encryption$1 = "Data Encryption";
-const sec_p_encryption$1 = "We treat every byte of your data—from your daily habits to your financial records—as strictly confidential.";
-const sec_li_enc_1_title$1 = "Encryption in Transit";
-const sec_li_enc_1_desc$1 = "All communication between your device and our servers is secured using TLS 1.3 encryption.";
-const sec_li_enc_2_title$1 = "Encryption at Rest";
-const sec_li_enc_2_desc$1 = "Sensitive fields in our database, such as journal entries and finance details, are encrypted using AES-256.";
-const sec_h2_application$1 = "Application Security";
-const sec_p_application$1 = "Security is baked into our development lifecycle, from the first line of code to final deployment.";
-const sec_li_app_1_title$1 = "Secure Authentication";
-const sec_li_app_1_desc$1 = "We enforce hashed passwords and offer secure Google OAuth integration to keep your account safe.";
-const sec_li_app_2_title$1 = "Session Management";
-const sec_li_app_2_desc$1 = "Active sessions are monitored and automatically expired to prevent unauthorized access from borrowed devices.";
-const sec_h2_sovereignty$1 = "Data Sovereignty";
-const sec_p_sovereignty$1 = "You are the sole owner of your data. We do not have 'backdoors', and we do not sell your data to any third party under any circumstances.";
-const sec_cta_title$1 = "Your mind deserves a safe space.";
-const sec_cta_desc$1 = "Start building your productivity system with the peace of mind that your data is protected by the best standards.";
+const sec_p_encryption$1 = "Sensitive entries like journals and finances are encrypted using AES-256.";
+const sec_li_enc_1_title$1 = "TLS Encryption";
+const sec_li_enc_1_desc$1 = "All data in transit is shielded.";
+const sec_li_enc_2_title$1 = "Secure Hashing";
+const sec_li_enc_2_desc$1 = "Passwords remain unreadable even by staff.";
+const sec_h2_application$1 = "App Security";
+const sec_p_application$1 = "Built with frameworks that prevent SQL Injection and XSS attacks.";
+const sec_li_app_1_title$1 = "OAuth 2.0 Integration";
+const sec_li_app_1_desc$1 = "Secure Google authentication.";
+const sec_li_app_2_title$1 = "CSRF Shields";
+const sec_li_app_2_desc$1 = "Token-based protection for every sensitive action.";
+const sec_h2_sovereignty$1 = "User Sovereignty";
+const sec_p_sovereignty$1 = "We do not sell data. We do not have 'backdoors' to view your private notes.";
+const sec_cta_title$1 = "Secure Your Progress Today.";
+const sec_cta_desc$1 = "Focuse on growth, we handle the shield.";
 const sec_cta_btn$1 = "Create Secure Account";
+const refund_meta_title$1 = "Cancellation & Strict No-Refund Policy - OneForMind";
+const refund_meta_desc$1 = "Transparent rules regarding our strictly final digital sales.";
+const refund_meta_og_title$1 = "No Refund Policy — OneForMind";
+const refund_meta_og_desc$1 = "Final payment policy for OneForMind users.";
+const refund_badge$1 = "Final Payment Protocol";
+const refund_title_1$1 = "No-Refund";
+const refund_title_2$1 = "Policy";
+const refund_subtitle$1 = "Since we provide an explicit 14-day Free Trial, all payments processed after the trial are final and non-refundable.";
+const refund_effective_date$1 = "Updated: Mar 31, 2026";
+const refund_nav_title$1 = "Payment Rules";
+const refund_nav_1$1 = "1. No-Refund Policy";
+const refund_nav_2$1 = "2. Cancellation";
+const refund_nav_3$1 = "3. Third Parties";
+const refund_nav_4$1 = "4. Exclusions";
+const refund_intro_text$1 = "We prioritize transparency. You have 14 days of full access to determine if the product fits your needs before making a purchase.";
+const refund_h2_guarantee$1 = "1. Strict No-Refund Policy";
+const refund_p_guarantee$1 = "As a digital content provider, all purchases of Pro or Lifetime plans are final. We assume you used the Free Trial to verify the product's suitability.";
+const refund_li_guarantee_1$1 = "No refunds for 'accidental' registrations.";
+const refund_li_guarantee_2$1 = "The trial period replaces the need for a refund policy.";
+const refund_h2_process$1 = "2. Cancellation Responsibilities";
+const refund_p_process$1 = "Users are solely responsible for canceling their subscriptions to avoid future charges.";
+const refund_li_process_1$1 = "Access 'Billing' in Profile Settings.";
+const refund_li_process_2$1 = "Click 'Cancel Subscription'.";
+const refund_li_process_3$1 = "Confirm return to the Free status.";
+const refund_h2_cancellation$1 = "3. Third-Party Transactions";
+const refund_p_cancellation$1 = "We cannot override refund policies of external payment processors or app stores.";
+const refund_li_cancellation_1$1 = "Negligence in canceling is not grounds for a refund.";
+const refund_li_cancellation_2$1 = "Manual account deletion doesn't trigger a refund of the remaining balance.";
+const refund_h2_exclusion$1 = "4. Contingency Compensation";
+const refund_p_exclusion$1 = "In the event of total system failure (>7 days), we may, at our sole discretion, offer duration extensions. No cash refunds.";
+const refund_cta_title$1 = "Understand the Stakes?";
+const refund_cta_desc$1 = "By subscribing, you waive all rights to a refund claim.";
+const refund_cta_btn$1 = "Technical Support Only";
 const blog_meta_title$1 = "Blog & Articles - OneForMind";
 const blog_meta_desc$1 = "Read the latest insights on productivity, personal growth, and feature updates from the OneForMind team.";
 const blog_meta_og_title$1 = "OneForMind Blog";
@@ -5634,6 +5676,13 @@ const en = {
   privacy_last_updated: privacy_last_updated$1,
   privacy_status: privacy_status$1,
   privacy_toc_title: privacy_toc_title$1,
+  privacy_nav_1: privacy_nav_1$1,
+  privacy_nav_2: privacy_nav_2$1,
+  privacy_nav_3: privacy_nav_3$1,
+  privacy_nav_4: privacy_nav_4$1,
+  privacy_nav_5: privacy_nav_5$1,
+  privacy_nav_6: privacy_nav_6$1,
+  privacy_nav_7: privacy_nav_7$1,
   privacy_download_pdf: privacy_download_pdf$1,
   privacy_tldr_title: privacy_tldr_title$1,
   privacy_tldr_1_title: privacy_tldr_1_title$1,
@@ -5651,7 +5700,6 @@ const en = {
   privacy_li_collection_1_desc: privacy_li_collection_1_desc$1,
   privacy_li_collection_2_title: privacy_li_collection_2_title$1,
   privacy_li_collection_2_desc: privacy_li_collection_2_desc$1,
-  privacy_li_collection_2_strong: privacy_li_collection_2_strong$1,
   privacy_li_collection_3_title: privacy_li_collection_3_title$1,
   privacy_li_collection_3_desc: privacy_li_collection_3_desc$1,
   privacy_h2_usage: privacy_h2_usage$1,
@@ -5659,27 +5707,17 @@ const en = {
   privacy_li_usage_1: privacy_li_usage_1$1,
   privacy_li_usage_2: privacy_li_usage_2$1,
   privacy_li_usage_3: privacy_li_usage_3$1,
-  privacy_finance_note_title: privacy_finance_note_title$1,
-  privacy_finance_note_desc: privacy_finance_note_desc$1,
   privacy_h2_security: privacy_h2_security$1,
   privacy_p_security: privacy_p_security$1,
-  privacy_h2_cookies: privacy_h2_cookies$1,
-  privacy_p_cookies: privacy_p_cookies$1,
+  privacy_h2_thirdparty: privacy_h2_thirdparty$1,
+  privacy_p_thirdparty: privacy_p_thirdparty$1,
   privacy_h2_rights: privacy_h2_rights$1,
   privacy_p_rights: privacy_p_rights$1,
-  privacy_li_rights_1: privacy_li_rights_1$1,
-  privacy_li_rights_2: privacy_li_rights_2$1,
-  privacy_li_rights_3: privacy_li_rights_3$1,
   privacy_h2_contact: privacy_h2_contact$1,
   privacy_p_contact: privacy_p_contact$1,
   privacy_contact_role: privacy_contact_role$1,
   privacy_contact_email: privacy_contact_email$1,
   privacy_contact_sla: privacy_contact_sla$1,
-  privacy_export_title: privacy_export_title$1,
-  privacy_export_desc: privacy_export_desc$1,
-  privacy_export_point_1: privacy_export_point_1$1,
-  privacy_export_point_2: privacy_export_point_2$1,
-  privacy_export_code_comment: privacy_export_code_comment$1,
   privacy_faq_title: privacy_faq_title$1,
   privacy_faq_1_q: privacy_faq_1_q$1,
   privacy_faq_1_a: privacy_faq_1_a$1,
@@ -5700,6 +5738,14 @@ const en = {
   terms_subtitle: terms_subtitle$1,
   terms_effective_date: terms_effective_date$1,
   terms_nav_title: terms_nav_title$1,
+  terms_nav_1: terms_nav_1$1,
+  terms_nav_2: terms_nav_2$1,
+  terms_nav_3: terms_nav_3$1,
+  terms_nav_4: terms_nav_4$1,
+  terms_nav_5: terms_nav_5$1,
+  terms_nav_6: terms_nav_6$1,
+  terms_nav_7: terms_nav_7$1,
+  terms_nav_8: terms_nav_8$1,
   terms_intro_text: terms_intro_text$1,
   terms_intro_sub: terms_intro_sub$1,
   terms_h2_eligibility: terms_h2_eligibility$1,
@@ -5718,11 +5764,16 @@ const en = {
   terms_rules_dont_3: terms_rules_dont_3$1,
   terms_h2_payment: terms_h2_payment$1,
   terms_p_payment: terms_p_payment$1,
+  terms_li_payment_1_title: terms_li_payment_1_title$1,
   terms_li_payment_1_desc: terms_li_payment_1_desc$1,
   terms_li_payment_2_title: terms_li_payment_2_title$1,
   terms_li_payment_2_desc: terms_li_payment_2_desc$1,
+  terms_h2_intellectual: terms_h2_intellectual$1,
+  terms_p_intellectual: terms_p_intellectual$1,
   terms_h2_termination: terms_h2_termination$1,
   terms_p_termination: terms_p_termination$1,
+  terms_h2_dispute: terms_h2_dispute$1,
+  terms_p_dispute: terms_p_dispute$1,
   terms_h2_liability: terms_h2_liability$1,
   terms_legal_caps: terms_legal_caps$1,
   terms_cta_title: terms_cta_title$1,
@@ -5775,6 +5826,39 @@ const en = {
   sec_cta_title: sec_cta_title$1,
   sec_cta_desc: sec_cta_desc$1,
   sec_cta_btn: sec_cta_btn$1,
+  refund_meta_title: refund_meta_title$1,
+  refund_meta_desc: refund_meta_desc$1,
+  refund_meta_og_title: refund_meta_og_title$1,
+  refund_meta_og_desc: refund_meta_og_desc$1,
+  refund_badge: refund_badge$1,
+  refund_title_1: refund_title_1$1,
+  refund_title_2: refund_title_2$1,
+  refund_subtitle: refund_subtitle$1,
+  refund_effective_date: refund_effective_date$1,
+  refund_nav_title: refund_nav_title$1,
+  refund_nav_1: refund_nav_1$1,
+  refund_nav_2: refund_nav_2$1,
+  refund_nav_3: refund_nav_3$1,
+  refund_nav_4: refund_nav_4$1,
+  refund_intro_text: refund_intro_text$1,
+  refund_h2_guarantee: refund_h2_guarantee$1,
+  refund_p_guarantee: refund_p_guarantee$1,
+  refund_li_guarantee_1: refund_li_guarantee_1$1,
+  refund_li_guarantee_2: refund_li_guarantee_2$1,
+  refund_h2_process: refund_h2_process$1,
+  refund_p_process: refund_p_process$1,
+  refund_li_process_1: refund_li_process_1$1,
+  refund_li_process_2: refund_li_process_2$1,
+  refund_li_process_3: refund_li_process_3$1,
+  refund_h2_cancellation: refund_h2_cancellation$1,
+  refund_p_cancellation: refund_p_cancellation$1,
+  refund_li_cancellation_1: refund_li_cancellation_1$1,
+  refund_li_cancellation_2: refund_li_cancellation_2$1,
+  refund_h2_exclusion: refund_h2_exclusion$1,
+  refund_p_exclusion: refund_p_exclusion$1,
+  refund_cta_title: refund_cta_title$1,
+  refund_cta_desc: refund_cta_desc$1,
+  refund_cta_btn: refund_cta_btn$1,
   blog_meta_title: blog_meta_title$1,
   blog_meta_desc: blog_meta_desc$1,
   blog_meta_og_title: blog_meta_og_title$1,
@@ -9397,11 +9481,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_cta_title: privacy_cta_title$1,
   privacy_doc_intro: privacy_doc_intro$1,
   privacy_download_pdf: privacy_download_pdf$1,
-  privacy_export_code_comment: privacy_export_code_comment$1,
-  privacy_export_desc: privacy_export_desc$1,
-  privacy_export_point_1: privacy_export_point_1$1,
-  privacy_export_point_2: privacy_export_point_2$1,
-  privacy_export_title: privacy_export_title$1,
   privacy_faq_1_a: privacy_faq_1_a$1,
   privacy_faq_1_q: privacy_faq_1_q$1,
   privacy_faq_2_a: privacy_faq_2_a$1,
@@ -9409,13 +9488,11 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_faq_3_a: privacy_faq_3_a$1,
   privacy_faq_3_q: privacy_faq_3_q$1,
   privacy_faq_title: privacy_faq_title$1,
-  privacy_finance_note_desc: privacy_finance_note_desc$1,
-  privacy_finance_note_title: privacy_finance_note_title$1,
   privacy_h2_collection: privacy_h2_collection$1,
   privacy_h2_contact: privacy_h2_contact$1,
-  privacy_h2_cookies: privacy_h2_cookies$1,
   privacy_h2_rights: privacy_h2_rights$1,
   privacy_h2_security: privacy_h2_security$1,
+  privacy_h2_thirdparty: privacy_h2_thirdparty$1,
   privacy_h2_usage: privacy_h2_usage$1,
   privacy_info_p: privacy_info_p$1,
   privacy_info_title: privacy_info_title$1,
@@ -9423,13 +9500,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_li_collection_1_desc: privacy_li_collection_1_desc$1,
   privacy_li_collection_1_title: privacy_li_collection_1_title$1,
   privacy_li_collection_2_desc: privacy_li_collection_2_desc$1,
-  privacy_li_collection_2_strong: privacy_li_collection_2_strong$1,
   privacy_li_collection_2_title: privacy_li_collection_2_title$1,
   privacy_li_collection_3_desc: privacy_li_collection_3_desc$1,
   privacy_li_collection_3_title: privacy_li_collection_3_title$1,
-  privacy_li_rights_1: privacy_li_rights_1$1,
-  privacy_li_rights_2: privacy_li_rights_2$1,
-  privacy_li_rights_3: privacy_li_rights_3$1,
   privacy_li_usage_1: privacy_li_usage_1$1,
   privacy_li_usage_2: privacy_li_usage_2$1,
   privacy_li_usage_3: privacy_li_usage_3$1,
@@ -9437,12 +9510,19 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_meta_og_desc: privacy_meta_og_desc$1,
   privacy_meta_og_title: privacy_meta_og_title$1,
   privacy_meta_title: privacy_meta_title$1,
+  privacy_nav_1: privacy_nav_1$1,
+  privacy_nav_2: privacy_nav_2$1,
+  privacy_nav_3: privacy_nav_3$1,
+  privacy_nav_4: privacy_nav_4$1,
+  privacy_nav_5: privacy_nav_5$1,
+  privacy_nav_6: privacy_nav_6$1,
+  privacy_nav_7: privacy_nav_7$1,
   privacy_p1: privacy_p1$1,
   privacy_p_collection: privacy_p_collection$1,
   privacy_p_contact: privacy_p_contact$1,
-  privacy_p_cookies: privacy_p_cookies$1,
   privacy_p_rights: privacy_p_rights$1,
   privacy_p_security: privacy_p_security$1,
+  privacy_p_thirdparty: privacy_p_thirdparty$1,
   privacy_p_usage: privacy_p_usage$1,
   privacy_status: privacy_status$1,
   privacy_subtitle: privacy_subtitle$1,
@@ -9472,6 +9552,39 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   profile_settings: profile_settings$1,
   quit: quit$1,
   record_transaction: record_transaction$1,
+  refund_badge: refund_badge$1,
+  refund_cta_btn: refund_cta_btn$1,
+  refund_cta_desc: refund_cta_desc$1,
+  refund_cta_title: refund_cta_title$1,
+  refund_effective_date: refund_effective_date$1,
+  refund_h2_cancellation: refund_h2_cancellation$1,
+  refund_h2_exclusion: refund_h2_exclusion$1,
+  refund_h2_guarantee: refund_h2_guarantee$1,
+  refund_h2_process: refund_h2_process$1,
+  refund_intro_text: refund_intro_text$1,
+  refund_li_cancellation_1: refund_li_cancellation_1$1,
+  refund_li_cancellation_2: refund_li_cancellation_2$1,
+  refund_li_guarantee_1: refund_li_guarantee_1$1,
+  refund_li_guarantee_2: refund_li_guarantee_2$1,
+  refund_li_process_1: refund_li_process_1$1,
+  refund_li_process_2: refund_li_process_2$1,
+  refund_li_process_3: refund_li_process_3$1,
+  refund_meta_desc: refund_meta_desc$1,
+  refund_meta_og_desc: refund_meta_og_desc$1,
+  refund_meta_og_title: refund_meta_og_title$1,
+  refund_meta_title: refund_meta_title$1,
+  refund_nav_1: refund_nav_1$1,
+  refund_nav_2: refund_nav_2$1,
+  refund_nav_3: refund_nav_3$1,
+  refund_nav_4: refund_nav_4$1,
+  refund_nav_title: refund_nav_title$1,
+  refund_p_cancellation: refund_p_cancellation$1,
+  refund_p_exclusion: refund_p_exclusion$1,
+  refund_p_guarantee: refund_p_guarantee$1,
+  refund_p_process: refund_p_process$1,
+  refund_subtitle: refund_subtitle$1,
+  refund_title_1: refund_title_1$1,
+  refund_title_2: refund_title_2$1,
   reset_btn: reset_btn$2,
   reset_desc: reset_desc$2,
   reset_label_confirm: reset_label_confirm$2,
@@ -9905,7 +10018,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_effective_date: terms_effective_date$1,
   terms_eligibility_1: terms_eligibility_1$1,
   terms_eligibility_2: terms_eligibility_2$1,
+  terms_h2_dispute: terms_h2_dispute$1,
   terms_h2_eligibility: terms_h2_eligibility$1,
+  terms_h2_intellectual: terms_h2_intellectual$1,
   terms_h2_liability: terms_h2_liability$1,
   terms_h2_payment: terms_h2_payment$1,
   terms_h2_rules: terms_h2_rules$1,
@@ -9914,14 +10029,25 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_intro_text: terms_intro_text$1,
   terms_legal_caps: terms_legal_caps$1,
   terms_li_payment_1_desc: terms_li_payment_1_desc$1,
+  terms_li_payment_1_title: terms_li_payment_1_title$1,
   terms_li_payment_2_desc: terms_li_payment_2_desc$1,
   terms_li_payment_2_title: terms_li_payment_2_title$1,
   terms_meta_desc: terms_meta_desc$1,
   terms_meta_og_desc: terms_meta_og_desc$1,
   terms_meta_og_title: terms_meta_og_title$1,
   terms_meta_title: terms_meta_title$1,
+  terms_nav_1: terms_nav_1$1,
+  terms_nav_2: terms_nav_2$1,
+  terms_nav_3: terms_nav_3$1,
+  terms_nav_4: terms_nav_4$1,
+  terms_nav_5: terms_nav_5$1,
+  terms_nav_6: terms_nav_6$1,
+  terms_nav_7: terms_nav_7$1,
+  terms_nav_8: terms_nav_8$1,
   terms_nav_title: terms_nav_title$1,
+  terms_p_dispute: terms_p_dispute$1,
   terms_p_eligibility: terms_p_eligibility$1,
+  terms_p_intellectual: terms_p_intellectual$1,
   terms_p_payment: terms_p_payment$1,
   terms_p_rules: terms_p_rules$1,
   terms_p_termination: terms_p_termination$1,
@@ -12261,9 +12387,16 @@ const privacy_badge = "Pusat Privasi & Keamanan";
 const privacy_title_1 = "Data Anda.";
 const privacy_title_2 = "Aturan Anda.";
 const privacy_subtitle = "Kami membuat alat untuk membantu Anda mengontrol hidup, bukan untuk mengeksploitasi data pribadi Anda. Transparansi adalah standar kami.";
-const privacy_last_updated = "Terakhir Diperbarui: 18 Feb 2026";
+const privacy_last_updated = "Terakhir Diperbarui: 31 Mar 2026";
 const privacy_status = "Versi Aktif";
 const privacy_toc_title = "Daftar Isi";
+const privacy_nav_1 = "01. Ringkasan TL;DR";
+const privacy_nav_2 = "02. Pengumpulan Informasi";
+const privacy_nav_3 = "03. Penggunaan Data";
+const privacy_nav_4 = "04. Protokol Keamanan";
+const privacy_nav_5 = "05. Pihak Ketiga";
+const privacy_nav_6 = "06. Hak Privasi";
+const privacy_nav_7 = "07. Hubungi Kami";
 const privacy_download_pdf = "Unduh PDF";
 const privacy_tldr_title = "Ringkasan Singkat (TL;DR)";
 const privacy_tldr_1_title = "Tidak Menjual Data";
@@ -12281,7 +12414,6 @@ const privacy_li_collection_1_title = "Informasi Akun";
 const privacy_li_collection_1_desc = "Nama, email, dan kredensial login (jika tidak menggunakan Google OAuth).";
 const privacy_li_collection_2_title = "Konten Pengguna";
 const privacy_li_collection_2_desc = "Log kebiasaan, catatan keuangan, jurnal, dan tugas planner.";
-const privacy_li_collection_2_strong = "Data ini sepenuhnya privat di akun Anda.";
 const privacy_li_collection_3_title = "Data Perangkat & Penggunaan";
 const privacy_li_collection_3_desc = "Analitik dasar seperti alamat IP dan jenis browser untuk membantu kami memperbaiki bug.";
 const privacy_h2_usage = "3. Bagaimana Kami Menggunakan Data";
@@ -12289,12 +12421,10 @@ const privacy_p_usage = "Data Anda digunakan eksklusif untuk memberikan pengalam
 const privacy_li_usage_1 = "Menyediakan fungsi utama (habit tracker, insight keuangan, planner).";
 const privacy_li_usage_2 = "Mengirimkan notifikasi penting (mis. reset password).";
 const privacy_li_usage_3 = "Menganalisis pola penggunaan secara anonim untuk meningkatkan UI/UX.";
-const privacy_finance_note_title = "Catatan Penting Soal Keuangan";
-const privacy_finance_note_desc = "Kami bukan bank. Kami tidak terhubung langsung dengan rekening bank Anda. Semua data dimasukkan secara manual oleh Anda untuk keperluan wawasan pribadi.";
 const privacy_h2_security = "4. Keamanan Data";
 const privacy_p_security = "Kami menerapkan standar industri ketat. Database dilindungi, dan kami mewajibkan HTTPS/SSL. Password di-hash dengan algoritma kriptografi modern.";
-const privacy_h2_cookies = "5. Cookies dan Pelacakan";
-const privacy_p_cookies = 'OneForMind menggunakan "cookies" untuk menyimpan sesi login dan preferensi Anda (seperti Dark mode). Kami tidak memakai tracker iklan pihak ketiga di dalam dashboard.';
+const privacy_h2_thirdparty = "5. Pihak Ketiga & Integrasi";
+const privacy_p_thirdparty = "Kami berbagi data hanya dengan penyedia layanan yang membantu kami beroperasi, seperti Payment Gateway (Midtrans/Stripe) untuk memproses pembayaran dan Google (untuk OAuth).";
 const privacy_h2_rights = "6. Hak-Hak Anda";
 const privacy_p_rights = "Bergantung pada lokasi Anda, Anda berhak untuk:";
 const privacy_li_rights_1 = "Mengakses data personal yang kami simpan.";
@@ -12303,13 +12433,8 @@ const privacy_li_rights_3 = "Meminta penghapusan permanen akun dan seluruh datan
 const privacy_h2_contact = "7. Hubungi Kami";
 const privacy_p_contact = "Punya pertanyaan atau ingin mengajukan penghapusan data? Silakan hubungi kami:";
 const privacy_contact_role = "Tim Pelindungan Data";
-const privacy_contact_email = "privacy@oneformind.com";
-const privacy_contact_sla = "Kami biasanya membalas dalam 24-48 jam kerja.";
-const privacy_export_title = "Portabilitas Data";
-const privacy_export_desc = "Kami tidak menyandera data Anda. Anda bisa mengunduh backup lengkap dari kebiasaan, keuangan, dan jurnal kapan pun.";
-const privacy_export_point_1 = "Ekspor ke format JSON raw";
-const privacy_export_point_2 = "Pembuatan instan, tidak perlu menunggu";
-const privacy_export_code_comment = "Data Anda mutlak milik Anda.";
+const privacy_contact_email = "oneformindapp@gmail.com";
+const privacy_contact_sla = "Kami biasanya membalas dalam 24 jam kerja.";
 const privacy_faq_title = "Pertanyaan yang Sering Diajukan";
 const privacy_faq_1_q = "Bisa tim Oneformind baca jurnal privat saya?";
 const privacy_faq_1_a = "Tidak. Kami punya kontrol akses internal yang ketat. Kecuali Anda dengan sengaja mengirimkan log error ke tim support, jurnal Anda sepenuhnya privat.";
@@ -12320,91 +12445,137 @@ const privacy_faq_3_a = "Anda bisa menghapus akun permanen dari menu Pengaturan 
 const privacy_cta_title = "Siap ambil kendali?";
 const privacy_cta_desc = "Bergabunglah dengan ribuan orang yang mempercayakan rutinitas produktifnya pada OneForMind.";
 const privacy_cta_btn = "Mulai Perjalanan Anda";
-const terms_meta_title = "Ketentuan Layanan - Aturan Main";
-const terms_meta_desc = "Baca aturan mengenai penggunaan OneForMind. Ketentuan layanan yang jelas, transparan, dan adil.";
+const terms_meta_title = "Ketentuan Layanan - OneForMind OS";
+const terms_meta_desc = "Kontrak legal penggunaan OneForMind. Perlindungan hukum maksimal bagi penyedia layanan.";
 const terms_meta_og_title = "Ketentuan Layanan OneForMind";
-const terms_meta_og_desc = "Perjanjian antara Anda dan OneForMind.";
-const terms_badge = "Dokumen Legal";
-const terms_title_1 = "Aturan";
-const terms_title_2 = "Penggunaan";
-const terms_subtitle = "Dengan menggunakan OneForMind, Anda menyetujui ketentuan ini. Anggap ini sebagai jabat tangan sebelum kita mulai membangun sistem produktivitas Anda.";
-const terms_effective_date = "Efektif: 18 Feb 2026";
-const terms_nav_title = "Daftar Isi";
-const terms_intro_text = "Selamat datang di OneForMind. Ketentuan Layanan ini ('Ketentuan') mengatur akses dan penggunaan layanan kami oleh Anda.";
-const terms_intro_sub = "Mohon baca dengan saksama. Dengan mengakses layanan kami, Anda setuju untuk terikat oleh Ketentuan ini. Jika Anda tidak setuju, Anda tidak diperkenankan menggunakan Layanan.";
-const terms_h2_eligibility = "2. Syarat Pengguna";
-const terms_p_eligibility = "Layanan kami bukan untuk semua orang. Demi keamanan, Anda harus memenuhi kriteria berikut:";
-const terms_eligibility_1 = "Berusia minimal 13 tahun";
-const terms_eligibility_2 = "Bukan robot (Hanya manusia asli)";
-const terms_h2_rules = "3. Kode Etik";
-const terms_p_rules = "Kami mendukung produktivitas, bukan kekacauan. Saat menggunakan OneForMind, Anda setuju untuk mematuhi aturan.";
-const terms_rules_do_title = "Anda Harus";
-const terms_rules_do_1 = "Menggunakan aplikasi untuk melacak data pribadi.";
-const terms_rules_do_2 = "Menjaga kerahasiaan password Anda.";
-const terms_rules_do_3 = "Melakukan ekspor data rutin untuk cadangan.";
-const terms_rules_dont_title = "Anda Dilarang";
-const terms_rules_dont_1 = "Mencoba meretas atau reverse engineer API kami.";
-const terms_rules_dont_2 = "Menggunakan layanan untuk aktivitas ilegal.";
-const terms_rules_dont_3 = "Berbagi akun dengan banyak orang (sharing account).";
-const terms_h2_payment = "4. Pembayaran & Langganan";
-const terms_p_payment = "Beberapa fitur OneForMind ditagih berdasarkan langganan. Anda akan ditagih di muka secara berulang dan berkala.";
-const terms_li_payment_1_desc = "Kami mungkin menawarkan Uji Coba Gratis untuk periode terbatas. Anda mungkin diminta memasukkan informasi penagihan untuk mendaftar.";
-const terms_li_payment_2_title = "Pengembalian Dana & Pembatalan";
-const terms_li_payment_2_desc = "Kami menawarkan jaminan uang kembali 14 hari untuk pembelian pertama paket Pro dan Lifetime. Anda dapat membatalkan langganan kapan saja melalui pengaturan akun.";
-const terms_h2_termination = "5. Penghentian Akun";
-const terms_p_termination = "Kami dapat menghentikan atau menangguhkan akun Anda segera, tanpa pemberitahuan sebelumnya, jika Anda melanggar Ketentuan ini.";
-const terms_h2_liability = "6. Batasan Tanggung Jawab";
-const terms_legal_caps = "DALAM KEADAAN APA PUN ONEFORMIND, DIREKTUR, KARYAWAN, ATAU MITRANYA TIDAK BERTANGGUNG JAWAB ATAS KERUGIAN TIDAK LANGSUNG, INSIDENTAL, ATAU HUKUMAN AKIBAT PENGGUNAAN LAYANAN.";
-const terms_cta_title = "Siap memulai?";
-const terms_cta_desc = "Dengan mengklik 'Saya Setuju & Daftar', Anda mengakui bahwa Anda telah membaca dan memahami ketentuan ini.";
-const terms_cta_btn_agree = "Saya Setuju & Daftar";
-const terms_cta_btn_decline = "Saya Menolak";
-const terms_cta_note = "Mengklik 'Saya Menolak' akan mengembalikan Anda ke halaman utama.";
-const sec_meta_title = "Ikhtisar Keamanan - Fondasi Perlindungan Data";
-const sec_meta_desc = "Bagaimana OneForMind mengamankan kebiasaan, keuangan, dan jurnal pribadi Anda dengan enkripsi tingkat profesional.";
-const sec_meta_og_title = "Keamanan & Kepercayaan - OneForMind";
-const sec_meta_og_desc = "Jelajahi arsitektur keamanan dan protokol perlindungan data kami.";
-const sec_badge = "Infrastruktur Keamanan";
-const sec_title_1 = "Terbentengi.";
-const sec_title_2 = "Secara Desain.";
-const sec_subtitle = "Keamanan bukanlah fitur; ini adalah landasan dari semua yang kami bangun. Kami melindungi data Anda yang paling sensitif dengan protokol setingkat bank dan transparansi.";
-const sec_stat_1_label = "Enkripsi";
-const sec_stat_1_val = "AES-256";
-const sec_stat_2_label = "Infrastruktur";
-const sec_stat_2_val = "Cloudflare";
-const sec_stat_3_label = "Uptime";
-const sec_stat_3_val = "99,9%";
-const sec_toc_title = "Lapisan Keamanan";
-const sec_toc_1 = "1. Infrastruktur Teknis";
-const sec_toc_2 = "2. Enkripsi Data";
-const sec_toc_3 = "3. Keamanan Aplikasi";
-const sec_toc_4 = "4. Privasi & Kepatuhan";
-const sec_toc_5 = "5. Tanggung Jawab Bersama";
-const sec_h2_infrastructure = "Infrastruktur Teknis";
-const sec_p_infrastructure = "Infrastruktur kami dibangun di atas platform kelas dunia yang dirancang untuk ketersediaan tinggi dan ketahanan maksimum terhadap ancaman eksternal.";
-const sec_li_infra_1_title = "Stack Cloud Modern";
-const sec_li_infra_1_desc = "Semua data dihosting di pusat data Tier-4 dengan keamanan fisik 24/7 dan sistem daya cadangan.";
-const sec_li_infra_2_title = "Perlindungan Edge";
-const sec_li_infra_2_desc = "Kami menggunakan firewall canggih dan perlindungan DDoS untuk mencegah akses tidak sah di tingkat jaringan.";
-const sec_li_infra_3_title = "Cadangan Rutin";
-const sec_li_infra_3_desc = "Cadangan terenkripsi dilakukan setiap hari dan diuji secara rutin untuk memastikan skenario nol kehilangan data.";
-const sec_h2_encryption = "Enkripsi Data";
-const sec_p_encryption = "Kami memperlakukan setiap byte data Anda—dari kebiasaan harian hingga catatan keuangan—sebagai rahasia yang sangat ketat.";
-const sec_li_enc_1_title = "Enkripsi Saat Transit";
-const sec_li_enc_1_desc = "Semua komunikasi antara perangkat Anda dan server kami diamankan menggunakan enkripsi TLS 1.3.";
-const sec_li_enc_2_title = "Enkripsi Saat Istirahat";
-const sec_li_enc_2_desc = "Kolom sensitif dalam database kami, seperti entri jurnal dan detail keuangan, dienkripsi menggunakan AES-256.";
-const sec_h2_application = "Infrastruktur Keamanan Aplikasi";
-const sec_p_application = "Keamanan dipanggang dalam siklus pengembangan kami, dari baris kode pertama hingga penyebaran akhir.";
-const sec_li_app_1_title = "Autentikasi Aman";
-const sec_li_app_1_desc = "Kami memberlakukan kata sandi yang di-hash dan menawarkan integrasi Google OAuth yang aman untuk menjaga keamanan akun Anda.";
-const sec_li_app_2_title = "Manajemen Sesi";
-const sec_li_app_2_desc = "Sesi aktif dipantau dan secara otomatis kedaluwarsa untuk mencegah akses tidak sah dari perangkat yang dipinjam.";
-const sec_h2_sovereignty = "Kedaulatan Data";
-const sec_p_sovereignty = "Anda adalah pemilik tunggal dari data Anda. Kami tidak memiliki 'pintu belakang', dan kami tidak menjual data Anda kepada pihak ketiga mana pun dalam keadaan apa pun.";
-const sec_cta_title = "Pikiran Anda layak mendapatkan ruang yang aman.";
-const sec_cta_desc = "Mulai bangun sistem produktivitas Anda dengan ketenangan pikiran bahwa data Anda dilindungi oleh standar terbaik.";
-const sec_cta_btn = "Buat Akun Aman";
+const terms_meta_og_desc = "Perjanjian legal penggunaan platform OneForMind.";
+const terms_badge = "Kontrak Digital Binding";
+const terms_title_1 = "Ketentuan";
+const terms_title_2 = "Layanan";
+const terms_subtitle = "Dengan menggunakan OneForMind, Anda secara sadar menyetujui seluruh ketentuan ini tanpa kecuali. Ini adalah kontrak mengikat antara Anda dan pihak OneForMind.";
+const terms_effective_date = "Terakhir Diperbarui: 31 Mar 2026";
+const terms_nav_title = "Navigasi Hukum";
+const terms_nav_1 = "1. Pendahuluan";
+const terms_nav_2 = "2. Kriteria";
+const terms_nav_3 = "3. Aturan Main";
+const terms_nav_4 = "4. Pembayaran";
+const terms_nav_5 = "5. Hak Kekayaan";
+const terms_nav_6 = "6. Pengakhiran";
+const terms_nav_7 = "7. Sengketa";
+const terms_nav_8 = "8. Kewajiban";
+const terms_intro_text = "Selamat datang di OneForMind. Ketentuan Layanan ini ('Ketentuan') adalah fondasi hukum operasional kami.";
+const terms_intro_sub = "Mohon baca dengan saksama. Dengan mengakses layanan kami, Anda setuju untuk terikat secara hukum. Jika Anda tidak setuju pada satu poin pun, Anda dilarang keras menggunakan Layanan.";
+const terms_h2_eligibility = "2. Kriteria Pengguna";
+const terms_p_eligibility = "Layanan ini disediakan 'apa adanya'. Anda harus memenuhi syarat hukum berikut:";
+const terms_eligibility_1 = "Usia 13+ (dengan tanggung jawab penuh pada diri sendiri)";
+const terms_eligibility_2 = "Menggunakan akun untuk tujuan legal";
+const terms_h2_rules = "3. Standar Penggunaan & Larangan";
+const terms_p_rules = "Kami berhak menghapus akun Anda sewaktu-waktu tanpa pemberitahuan jika ditemukan indikasi pelanggaran.";
+const terms_rules_do_title = "Komitmen Pengguna";
+const terms_rules_do_1 = "Menjaga keamanan kredensial akun.";
+const terms_rules_do_2 = "Bertanggung jawab atas setiap data yang dimasukkan.";
+const terms_rules_do_3 = "Menyetujui bahwa hasil produktivitas adalah tanggung jawab personal.";
+const terms_rules_dont_title = "Larangan Keras";
+const terms_rules_dont_1 = "Melakukan reverse engineering atau probing keamanan.";
+const terms_rules_dont_2 = "Menyalahgunakan fitur AI atau sistem otomasi.";
+const terms_rules_dont_3 = "Mengajukan komplain hukum sebelum melakukan mediasi internal.";
+const terms_h2_payment = "4. Penagihan & Kebijakan Strict No-Refund";
+const terms_p_payment = "OneForMind menyediakan fitur premium sebagai produk digital instan yang tidak dapat dikembalikan.";
+const terms_li_payment_1_title = "Siklus Pembayaran";
+const terms_li_payment_1_desc = "Langganan diperbarui secara otomatis. Kegagalan membatalkan sebelum tanggal tagihan adalah murni kelalaian pengguna dan tidak memberikan hak refund.";
+const terms_li_payment_2_title = "Tanpa Pengembalian Dana";
+const terms_li_payment_2_desc = "Kami memberikan akses uji coba (Trial) secara gratis. Setelah Anda melakukan pembayaran, Anda melepaskan hak untuk meminta refund dalam bentuk apa pun.";
+const terms_h2_intellectual = "5. Kepemilikan Intelektual";
+const terms_p_intellectual = "Segala bentuk kode, desain, UI/UX, dan konsep operasional OneForMind adalah milik eksklusif pemilik. Penggunaan tanpa izin akan diproses secara hukum.";
+const terms_h2_termination = "6. Pengakhiran Akun";
+const terms_p_termination = "Kami berhak menangguhkan atau menghentikan akses Anda ke Layanan kapan saja, tanpa pemberitahuan atau kewajiban, jika Anda melanggar Ketentuan ini atau atas diskresi kami untuk melindungi integritas sistem.";
+const terms_h2_dispute = "7. Penyelesaian Sengketa & Hukum";
+const terms_p_dispute = "Seluruh sengketa akan diselesaikan melalui musyawarah mufakat atau mediasi di wilayah hukum Indonesia. Anda melepaskan hak untuk melakukan tuntutan hukum Class Action.";
+const terms_h2_liability = "8. Pelepasan Tanggung Jawab Total (Disclaimer)";
+const terms_legal_caps = "LAYANAN INI DISEDIAKAN 'AS-IS' TANPA JAMINAN HASIL. KAMI TIDAK BERTANGGUNG JAWAB ATAS KEHILANGAN FINANSIAL, GAGALNYA RENCANA HIDUP, ATAU KERUSAKAN DATA. KERUGIAN MAKSIMAL YANG BISA KAMI GANTI HANYALAH SEBESAR BIAYA LANGGANAN TERAKHIR ANDA.";
+const terms_cta_title = "Setuju & Lanjutkan?";
+const terms_cta_desc = "Dengan menekan tombol di bawah, Anda menyatakan paham dan tunduk pada seluruh kontrak hukum di atas.";
+const terms_cta_btn_agree = "Saya Setuju Semuanya";
+const terms_cta_btn_decline = "Batalkan Akses";
+const terms_cta_note = "Kesepakatan ini mengikat secara hukum sejak akun dibuat.";
+const sec_meta_title = "Keamanan & Infrastruktur - OneForMind";
+const sec_meta_desc = "Pelajari bagaimana kami mengamankan data Anda dengan standar enkripsi militer dan arsitektur cloud modern.";
+const sec_meta_og_title = "Secure by Design - OneForMind";
+const sec_meta_og_desc = "Benteng digital untuk habit dan finansial Anda.";
+const sec_badge = "Sertifikasi Internal";
+const sec_title_1 = "Keamanan.";
+const sec_title_2 = "Tanpa Kompromi.";
+const sec_subtitle = "Kami menganggap data Anda seolah-olah data kami sendiri. OneForMind dibangun dengan arsitektur berlapis untuk mencegah kebocoran informasi.";
+const sec_stat_1_label = "Standar";
+const sec_stat_1_val = "AES-256-GCM";
+const sec_stat_2_label = "Jaringan";
+const sec_stat_2_val = "TLS 1.3 High";
+const sec_stat_3_label = "Availability";
+const sec_stat_3_val = "99.98%";
+const sec_toc_title = "Protokol Keamanan";
+const sec_toc_1 = "Infrastruktur Cloud";
+const sec_toc_2 = "Enkripsi Database";
+const sec_toc_3 = "Keamanan Aplikasi";
+const sec_toc_4 = "Privasi User";
+const sec_toc_5 = "Audit & Review";
+const sec_h2_infrastructure = "Infrastruktur Terpercaya";
+const sec_p_infrastructure = "Kami menggunakan server cloud yang terletak di zona aman dengan redundansi tinggi untuk memastikan data Anda selalu tersedia kapan pun dibutuhkan.";
+const sec_li_infra_1_title = "Pusat Data Global";
+const sec_li_infra_1_desc = "Hosting pada data center dengan standar SOC2 untuk keamanan fisik dan digital yang maksimal.";
+const sec_li_infra_2_title = "Firewall Berlapis";
+const sec_li_infra_2_desc = "Setiap request dipantau oleh WAF (Web Application Firewall) untuk mendeteksi serangan sebelum mencapai data Anda.";
+const sec_li_infra_3_title = "Mirroring Data";
+const sec_li_infra_3_desc = "Data Anda disalin ke beberapa zona untuk mencegah kehilangan jika terjadi bencana alam di satu lokasi.";
+const sec_h2_encryption = "Enkripsi Ujung-ke-Ujung";
+const sec_p_encryption = "Data sensitif Anda tidak pernah disimpan dalam bentuk teks biasa. Semuanya diacak oleh algoritma yang hanya bisa dibuka dengan kunci autentikasi Anda.";
+const sec_li_enc_1_title = "HTTPS Selamanya";
+const sec_li_enc_1_desc = "HSTS diaktifkan untuk memastikan tidak ada data yang terkirim melalui jalur yang tidak aman.";
+const sec_li_enc_2_title = "Bcrypt Hashing";
+const sec_li_enc_2_desc = "Password Anda tidak bisa dibaca oleh siapa pun, bahkan oleh pengembang OneForMind sekalipun.";
+const sec_h2_application = "Integritas Aplikasi";
+const sec_p_application = "Kami menggunakan teknologi terbaru untuk mencegah celah keamanan umum seperti SQL Injection dan XSS.";
+const sec_li_app_1_title = "OAuth 2.0";
+const sec_li_app_1_desc = "Gunakan Google Login untuk keamanan tambahan tanpa perlu menghapal password baru.";
+const sec_li_app_2_title = "Proteksi CSRF";
+const sec_li_app_2_desc = "Setiap aksi sensitif dilindungi oleh token unik untuk memastikan itu benar-benar Anda yang melakukannya.";
+const sec_h2_sovereignty = "Kedaulatan Informasi";
+const sec_p_sovereignty = "Kami percaya pada 'Privacy by Default'. Kami tidak memiliki akses 'admin' untuk mengintip isi jurnal atau catatan keuangan pribadi Anda.";
+const sec_cta_title = "Mulai Membangun di Ruang Aman.";
+const sec_cta_desc = "Sistem kami siap melindungi progres hidup Anda. Fokus saja pada pertumbuhan, biar kami yang urus keamanannya.";
+const sec_cta_btn = "Daftar Akun Aman";
+const refund_meta_title = "Kebijakan Pembatalan & No-Refund - OneForMind";
+const refund_meta_desc = "Informasi transparan mengenai kebijakan tanpa pengembalian dana kami sebagai produk digital instan.";
+const refund_meta_og_title = "No Refund Policy — OneForMind";
+const refund_meta_og_desc = "Kebijakan pembayaran final untuk pengguna OneForMind.";
+const refund_badge = "Kebijakan Final Pembayaran";
+const refund_title_1 = "Kebijakan";
+const refund_title_2 = "Tanpa Refund";
+const refund_subtitle = "Karena kami menyediakan akses Free Trial selama 14 hari, seluruh transaksi setelah masa uji coba bersifat final dan mengikat.";
+const refund_effective_date = "Terakhir Diperbarui: 31 Mar 2026";
+const refund_nav_title = "Daftar Aturan";
+const refund_nav_1 = "1. Kebijakan No-Refund";
+const refund_nav_2 = "2. Pembatalan";
+const refund_nav_3 = "3. Pihak Ketiga";
+const refund_nav_4 = "4. Pengecualian";
+const refund_intro_text = "Di OneForMind, kami mengutamakan transparansi. Anda memiliki kesempatan penuh untuk mencoba layanan kami secara gratis sebelum mengeluarkan biaya apa pun.";
+const refund_h2_guarantee = "1. Kebijakan Tanpa Pengembalian (Strict No-Refund)";
+const refund_p_guarantee = "Sebagai layanan Produk Digital, seluruh pembayaran yang telah masuk ke sistem kami tidak dapat dikembalikan dengan alasan apa pun. Kami mengasumsikan Anda telah mencoba fitur kami selama masa 14 hari Trial.";
+const refund_li_guarantee_1 = "Bukan untuk pembelian yang tidak sengaja (Accidental purchase).";
+const refund_li_guarantee_2 = "Masa Trial disediakan eksplisit sebagai ganti dari kebijakan refund.";
+const refund_h2_process = "2. Pembatalan Perpanjangan";
+const refund_p_process = "Anda bertanggung jawab atas pembatalan langganan Anda sendiri untuk mencegah tagihan di masa mendatang.";
+const refund_li_process_1 = "Klik 'Billing' di Pengaturan Akun.";
+const refund_li_process_2 = "Tekan 'Cancel Subscription'.";
+const refund_li_process_3 = "Konfirmasi akun kembali ke status Gratis.";
+const refund_h2_cancellation = "3. Transaksi Melalui Pihak Ketiga";
+const refund_p_cancellation = "Kami tidak memiliki akses langsung untuk mengembalikan dana yang diproses melalui gateway eksternal tanpa melanggar kebijakan kepatuhan mereka.";
+const refund_li_cancellation_1 = "Kelalaian user dalam membatalkan langganan bukan tanggung jawab kami.";
+const refund_li_cancellation_2 = "Akun yang dihapus secara manual tidak mendapatkan pengembalian sisa saldo langganan.";
+const refund_h2_exclusion = "4. Kasus Khusus (Force Majeure)";
+const refund_p_exclusion = "Dalam kondisi kegagalan sistem total di sisi server kami yang melebihi 7 hari kerja berturut-turut, kami mungkin (atas diskresi kami) memberikan kompensasi berupa perpanjangan masa aktif (bukan uang tunai).";
+const refund_cta_title = "Paham Aturan Main Kami?";
+const refund_cta_desc = "Dengan melakukan pembayaran Pro, Anda secara hukum telah melepaskan hak tuntutan refund Anda.";
+const refund_cta_btn = "Kontak Support (Hanya Teknis)";
 const guide_meta_title = "Panduan & Pusat Bantuan - OneForMind";
 const guide_meta_desc = "Semua yang Anda butuhkan untuk menguasai alur kerja dan pola pikir.";
 const guide_meta_og_title = "Pusat Pengetahuan OneForMind";
@@ -15599,6 +15770,13 @@ const id = {
   privacy_last_updated,
   privacy_status,
   privacy_toc_title,
+  privacy_nav_1,
+  privacy_nav_2,
+  privacy_nav_3,
+  privacy_nav_4,
+  privacy_nav_5,
+  privacy_nav_6,
+  privacy_nav_7,
   privacy_download_pdf,
   privacy_tldr_title,
   privacy_tldr_1_title,
@@ -15616,7 +15794,6 @@ const id = {
   privacy_li_collection_1_desc,
   privacy_li_collection_2_title,
   privacy_li_collection_2_desc,
-  privacy_li_collection_2_strong,
   privacy_li_collection_3_title,
   privacy_li_collection_3_desc,
   privacy_h2_usage,
@@ -15624,12 +15801,10 @@ const id = {
   privacy_li_usage_1,
   privacy_li_usage_2,
   privacy_li_usage_3,
-  privacy_finance_note_title,
-  privacy_finance_note_desc,
   privacy_h2_security,
   privacy_p_security,
-  privacy_h2_cookies,
-  privacy_p_cookies,
+  privacy_h2_thirdparty,
+  privacy_p_thirdparty,
   privacy_h2_rights,
   privacy_p_rights,
   privacy_li_rights_1,
@@ -15640,11 +15815,6 @@ const id = {
   privacy_contact_role,
   privacy_contact_email,
   privacy_contact_sla,
-  privacy_export_title,
-  privacy_export_desc,
-  privacy_export_point_1,
-  privacy_export_point_2,
-  privacy_export_code_comment,
   privacy_faq_title,
   privacy_faq_1_q,
   privacy_faq_1_a,
@@ -15665,6 +15835,14 @@ const id = {
   terms_subtitle,
   terms_effective_date,
   terms_nav_title,
+  terms_nav_1,
+  terms_nav_2,
+  terms_nav_3,
+  terms_nav_4,
+  terms_nav_5,
+  terms_nav_6,
+  terms_nav_7,
+  terms_nav_8,
   terms_intro_text,
   terms_intro_sub,
   terms_h2_eligibility,
@@ -15683,11 +15861,16 @@ const id = {
   terms_rules_dont_3,
   terms_h2_payment,
   terms_p_payment,
+  terms_li_payment_1_title,
   terms_li_payment_1_desc,
   terms_li_payment_2_title,
   terms_li_payment_2_desc,
+  terms_h2_intellectual,
+  terms_p_intellectual,
   terms_h2_termination,
   terms_p_termination,
+  terms_h2_dispute,
+  terms_p_dispute,
   terms_h2_liability,
   terms_legal_caps,
   terms_cta_title,
@@ -15740,6 +15923,39 @@ const id = {
   sec_cta_title,
   sec_cta_desc,
   sec_cta_btn,
+  refund_meta_title,
+  refund_meta_desc,
+  refund_meta_og_title,
+  refund_meta_og_desc,
+  refund_badge,
+  refund_title_1,
+  refund_title_2,
+  refund_subtitle,
+  refund_effective_date,
+  refund_nav_title,
+  refund_nav_1,
+  refund_nav_2,
+  refund_nav_3,
+  refund_nav_4,
+  refund_intro_text,
+  refund_h2_guarantee,
+  refund_p_guarantee,
+  refund_li_guarantee_1,
+  refund_li_guarantee_2,
+  refund_h2_process,
+  refund_p_process,
+  refund_li_process_1,
+  refund_li_process_2,
+  refund_li_process_3,
+  refund_h2_cancellation,
+  refund_p_cancellation,
+  refund_li_cancellation_1,
+  refund_li_cancellation_2,
+  refund_h2_exclusion,
+  refund_p_exclusion,
+  refund_cta_title,
+  refund_cta_desc,
+  refund_cta_btn,
   guide_meta_title,
   guide_meta_desc,
   guide_meta_og_title,
@@ -19384,11 +19600,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_cta_title,
   privacy_doc_intro,
   privacy_download_pdf,
-  privacy_export_code_comment,
-  privacy_export_desc,
-  privacy_export_point_1,
-  privacy_export_point_2,
-  privacy_export_title,
   privacy_faq_1_a,
   privacy_faq_1_q,
   privacy_faq_2_a,
@@ -19396,13 +19607,11 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_faq_3_a,
   privacy_faq_3_q,
   privacy_faq_title,
-  privacy_finance_note_desc,
-  privacy_finance_note_title,
   privacy_h2_collection,
   privacy_h2_contact,
-  privacy_h2_cookies,
   privacy_h2_rights,
   privacy_h2_security,
+  privacy_h2_thirdparty,
   privacy_h2_usage,
   privacy_info_p,
   privacy_info_title,
@@ -19410,7 +19619,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_li_collection_1_desc,
   privacy_li_collection_1_title,
   privacy_li_collection_2_desc,
-  privacy_li_collection_2_strong,
   privacy_li_collection_2_title,
   privacy_li_collection_3_desc,
   privacy_li_collection_3_title,
@@ -19424,12 +19632,19 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_meta_og_desc,
   privacy_meta_og_title,
   privacy_meta_title,
+  privacy_nav_1,
+  privacy_nav_2,
+  privacy_nav_3,
+  privacy_nav_4,
+  privacy_nav_5,
+  privacy_nav_6,
+  privacy_nav_7,
   privacy_p1,
   privacy_p_collection,
   privacy_p_contact,
-  privacy_p_cookies,
   privacy_p_rights,
   privacy_p_security,
+  privacy_p_thirdparty,
   privacy_p_usage,
   privacy_status,
   privacy_subtitle,
@@ -19459,6 +19674,39 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   profile_settings,
   quit,
   record_transaction,
+  refund_badge,
+  refund_cta_btn,
+  refund_cta_desc,
+  refund_cta_title,
+  refund_effective_date,
+  refund_h2_cancellation,
+  refund_h2_exclusion,
+  refund_h2_guarantee,
+  refund_h2_process,
+  refund_intro_text,
+  refund_li_cancellation_1,
+  refund_li_cancellation_2,
+  refund_li_guarantee_1,
+  refund_li_guarantee_2,
+  refund_li_process_1,
+  refund_li_process_2,
+  refund_li_process_3,
+  refund_meta_desc,
+  refund_meta_og_desc,
+  refund_meta_og_title,
+  refund_meta_title,
+  refund_nav_1,
+  refund_nav_2,
+  refund_nav_3,
+  refund_nav_4,
+  refund_nav_title,
+  refund_p_cancellation,
+  refund_p_exclusion,
+  refund_p_guarantee,
+  refund_p_process,
+  refund_subtitle,
+  refund_title_1,
+  refund_title_2,
   reset_btn: reset_btn$1,
   reset_desc: reset_desc$1,
   reset_label_confirm: reset_label_confirm$1,
@@ -19891,7 +20139,9 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_effective_date,
   terms_eligibility_1,
   terms_eligibility_2,
+  terms_h2_dispute,
   terms_h2_eligibility,
+  terms_h2_intellectual,
   terms_h2_liability,
   terms_h2_payment,
   terms_h2_rules,
@@ -19900,14 +20150,25 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_intro_text,
   terms_legal_caps,
   terms_li_payment_1_desc,
+  terms_li_payment_1_title,
   terms_li_payment_2_desc,
   terms_li_payment_2_title,
   terms_meta_desc,
   terms_meta_og_desc,
   terms_meta_og_title,
   terms_meta_title,
+  terms_nav_1,
+  terms_nav_2,
+  terms_nav_3,
+  terms_nav_4,
+  terms_nav_5,
+  terms_nav_6,
+  terms_nav_7,
+  terms_nav_8,
   terms_nav_title,
+  terms_p_dispute,
   terms_p_eligibility,
+  terms_p_intellectual,
   terms_p_payment,
   terms_p_rules,
   terms_p_termination,
@@ -20728,7 +20989,7 @@ const _ = { install(t3, e2) {
   const o2 = (t4, o3, n2, r2 = e2) => D(t4, o3, n2, r2);
   parseInt(t3.version) > 2 ? (t3.config.globalProperties.route = o2, t3.provide("route", o2)) : t3.mixin({ methods: { route: o2 } });
 } };
-const Ziggy$1 = { "url": "https://oneformind.com", "port": null, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
+const Ziggy$1 = { "url": "https://oneformind.com", "port": null, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
 if (typeof window !== "undefined" && typeof window.Ziggy !== "undefined") {
   Object.assign(Ziggy$1.routes, window.Ziggy.routes);
 }
@@ -20738,7 +20999,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-BegIeqB2.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BuULt2Jz.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8U1WL5T.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D0T6EAwD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-BGYxobxY.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CFkBm1KS.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-Cq_RXniA.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-RNdHa0Iw.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DubKo15c.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-k7vdARMo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BPTT3rET.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-BeZZOPSn.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-ByGi8WDy.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BMQv__8P.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-BOF3bTFz.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-svQP9x_9.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-COlr5NIu.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-BI8g_9CP.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cuj9T6zJ.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BZCWCF9r.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-DgrilUUI.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DPqDOjj3.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-aKPQB3RS.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-x8msOOrn.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BCj31SBC.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-Av7nz_Zx.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Cf-RpfhO.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-BZ1vLMxv.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DB-E5o_9.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Tyj_ZcKU.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BYH72XKH.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-Cr63Yttn.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-BL75UHvn.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-CNVFIa7x.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-s1cSc01R.js") })),
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-BJ5MgKe8.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-CpKKbf5m.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D-snYFKm.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D6l7Z_pa.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-a9aLJQy7.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CFkBm1KS.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BE-Xxmll.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DnYRrgKR.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DubKo15c.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-k7vdARMo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-DzeSTMxZ.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-BeZZOPSn.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-ByGi8WDy.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BMQv__8P.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-BOF3bTFz.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-svQP9x_9.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-D8NXKrsR.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-BI8g_9CP.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cuj9T6zJ.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BZCWCF9r.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-RNmAdmmc.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DPqDOjj3.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-w1z6s5Vr.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-x8msOOrn.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BCj31SBC.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DePQBMaS.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Cf-RpfhO.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-B7zGkZ2Q.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B968pYvd.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Tyj_ZcKU.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BYH72XKH.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-AaezvXZn.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-1sGNRf3j.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-DxCGolWx.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-D0A1YVNh.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

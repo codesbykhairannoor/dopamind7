@@ -1,0 +1,1 @@
+import{l as u,K as s,r}from"./vendor-vue-KnOLsFMP.js";function d(t){const e=r(null),n=o=>{e.value&&!e.value.contains(o.target)&&t()};return u(()=>{document.addEventListener("mousedown",n)}),s(()=>{document.removeEventListener("mousedown",n)}),e}export{d as u};
