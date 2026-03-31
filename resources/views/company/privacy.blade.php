@@ -122,13 +122,13 @@
                         {{ __('privacy_toc_title') }}
                     </h3>
                     <nav class="space-y-1 font-bold text-[13px] text-slate-500" x-data="{ active: 'tldr' }">
-                        <a href="#tldr" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'tldr' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'tldr'">01. Ringkasan TL;DR</a>
-                        <a href="#collection" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'collection' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'collection'">02. Pengumpulan Informasi</a>
-                        <a href="#usage" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'usage' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'usage'">03. Penggunaan Data</a>
-                        <a href="#security" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'security' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'security'">04. Protokol Keamanan</a>
-                        <a href="#thirdparty" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'thirdparty' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'thirdparty'">05. Pihak Ketiga</a>
-                        <a href="#rights" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'rights' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'rights'">06. Hak Privasi</a>
-                        <a href="#contact" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'contact' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'contact'">07. Hubungi Kami</a>
+                        <a href="#tldr" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'tldr' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'tldr'">{{ __('privacy_nav_1') }}</a>
+                        <a href="#collection" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'collection' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'collection'">{{ __('privacy_nav_2') }}</a>
+                        <a href="#usage" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'usage' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'usage'">{{ __('privacy_nav_3') }}</a>
+                        <a href="#security" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'security' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'security'">{{ __('privacy_nav_4') }}</a>
+                        <a href="#thirdparty" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'thirdparty' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'thirdparty'">{{ __('privacy_nav_5') }}</a>
+                        <a href="#rights" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'rights' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'rights'">{{ __('privacy_nav_6') }}</a>
+                        <a href="#contact" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'contact' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'contact'">{{ __('privacy_nav_7') }}</a>
                     </nav>
 
                     <div class="mt-12 pt-8 border-t border-slate-100">

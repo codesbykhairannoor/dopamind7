@@ -51,10 +51,10 @@
                         {{ __('refund_nav_title') }}
                     </h3>
                     <nav class="space-y-1 font-bold text-[13px] text-slate-500" x-data="{ active: 'guarantee' }">
-                        <a href="#guarantee" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'guarantee' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'guarantee'">1. Kebijakan No-Refund</a>
-                        <a href="#process" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'process' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'process'">2. Pembatalan</a>
-                        <a href="#cancellation" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'cancellation' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'cancellation'">3. Pihak Ketiga</a>
-                        <a href="#exclusion" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'exclusion' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'exclusion'">4. Pengecualian</a>
+                        <a href="#guarantee" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'guarantee' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'guarantee'">{{ __('refund_nav_1') }}</a>
+                        <a href="#process" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'process' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'process'">{{ __('refund_nav_2') }}</a>
+                        <a href="#cancellation" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'cancellation' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'cancellation'">{{ __('refund_nav_3') }}</a>
+                        <a href="#exclusion" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'exclusion' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'exclusion'">{{ __('refund_nav_4') }}</a>
                     </nav>
                 </div>
             </aside>

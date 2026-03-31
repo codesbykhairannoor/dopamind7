@@ -47,14 +47,14 @@
                         {{ __('terms_nav_title') }}
                     </h3>
                     <nav class="space-y-1 font-bold text-[13px] text-slate-500" x-data="{ active: 'intro' }">
-                        <a href="#intro" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'intro' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'intro'">1. Pendahuluan</a>
-                        <a href="#eligibility" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'eligibility' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'eligibility'">2. Kriteria</a>
-                        <a href="#rules" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'rules' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'rules'">3. Aturan Main</a>
-                        <a href="#payment" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'payment' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'payment'">4. Pembayaran</a>
-                        <a href="#intellectual" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'intellectual' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'intellectual'">5. Hak Kekayaan</a>
-                        <a href="#termination" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'termination' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'termination'">6. Pengakhiran</a>
-                        <a href="#dispute" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'dispute' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'dispute'">7. Sengketa</a>
-                        <a href="#liability" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'liability' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'liability'">8. Kewajiban</a>
+                        <a href="#intro" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'intro' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'intro'">{{ __('terms_nav_1') }}</a>
+                        <a href="#eligibility" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'eligibility' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'eligibility'">{{ __('terms_nav_2') }}</a>
+                        <a href="#rules" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'rules' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'rules'">{{ __('terms_nav_3') }}</a>
+                        <a href="#payment" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'payment' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'payment'">{{ __('terms_nav_4') }}</a>
+                        <a href="#intellectual" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'intellectual' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'intellectual'">{{ __('terms_nav_5') }}</a>
+                        <a href="#termination" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'termination' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'termination'">{{ __('terms_nav_6') }}</a>
+                        <a href="#dispute" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'dispute' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'dispute'">{{ __('terms_nav_7') }}</a>
+                        <a href="#liability" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'liability' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'liability'">{{ __('terms_nav_8') }}</a>
                     </nav>
                 </div>
             </aside>
