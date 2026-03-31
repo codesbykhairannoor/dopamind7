@@ -165,7 +165,54 @@
         </div>
     </section>
 
-    {{-- SECTION 5: CONTACT CTA (DESAIN BARU - LUAS & ELEGAN) --}}
+    
+    {{-- SECTION: VIDEO TUTORIALS --}}
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-slate-900 mb-4 text-center">{{ __('resources.hlp_tuts_title') }}</h2>
+            <p class="text-xl text-slate-500 mb-16 text-center">{{ __('resources.hlp_tuts_desc') }}</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="h-48 bg-slate-200 rounded-3xl flex items-center justify-center hover:bg-slate-300 transition-colors cursor-pointer">▶</div>
+                <div class="h-48 bg-slate-200 rounded-3xl flex items-center justify-center hover:bg-slate-300 transition-colors cursor-pointer">▶</div>
+                <div class="h-48 bg-slate-200 rounded-3xl flex items-center justify-center hover:bg-slate-300 transition-colors cursor-pointer">▶</div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: CHEATSHEETS --}}
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('resources.hlp_cheat_title') }}</h2>
+            <p class="text-xl text-slate-500 mb-16">{{ __('resources.hlp_cheat_desc') }}</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-10 border-2 border-dashed border-indigo-200 rounded-[2rem] bg-indigo-50/30 hover:bg-indigo-50 transition">
+                    <h3 class="text-2xl font-bold text-indigo-900 mb-2">{{ __('resources.hlp_ch1') }}</h3>
+                </div>
+                <div class="p-10 border-2 border-dashed border-emerald-200 rounded-[2rem] bg-emerald-50/30 hover:bg-emerald-50 transition">
+                    <h3 class="text-2xl font-bold text-emerald-900 mb-2">{{ __('resources.hlp_ch2') }}</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: SYSTEM STATUS --}}
+    <section class="py-24 bg-slate-900 text-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-4">{{ __('resources.hlp_sla_title') }}</h2>
+            <p class="text-xl text-slate-400 mb-16">{{ __('resources.hlp_sla_desc') }}</p>
+            <div class="flex flex-col md:flex-row justify-center gap-16 gap-y-8">
+                <div>
+                    <h4 class="text-6xl font-black text-emerald-400 mb-2">99.9%</h4>
+                    <p class="text-lg">{{ __('resources.hlp_sla1') }}</p>
+                </div>
+                <div>
+                    <h4 class="text-6xl font-black text-indigo-400 mb-2">< 50ms</h4>
+                    <p class="text-lg">{{ __('resources.hlp_sla2') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    \n\n    {{-- SECTION 5: CONTACT CTA (DESAIN BARU - LUAS & ELEGAN) --}}
     <section class="py-32 px-6 bg-slate-50 relative overflow-hidden border-t border-gray-200">
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-indigo-100 via-white to-white -z-10"></div>
         

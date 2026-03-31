@@ -155,7 +155,59 @@
         </div>
     </section>
 
-    {{-- SECTION 4: FINAL SOCIAL PROOF --}}
+    
+    {{-- SECTION: MENTORS --}}
+    <section class="py-24 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('resources.com_mentors_title') }}</h2>
+            <p class="text-xl text-slate-500 mb-16">{{ __('resources.com_mentors_desc') }}</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 border border-slate-100 rounded-[2rem] shadow-lg hover:-translate-y-2 transition-transform bg-slate-50">
+                    <div class="w-20 h-20 rounded-full bg-indigo-100 mb-6 flex items-center justify-center text-2xl">🧠</div>
+                    <h3 class="font-bold text-2xl mb-2">{{ __('resources.com_mentor1') }}</h3>
+                </div>
+                <div class="p-8 border border-slate-100 rounded-[2rem] shadow-lg hover:-translate-y-2 transition-transform bg-slate-50">
+                    <div class="w-20 h-20 rounded-full bg-emerald-100 mb-6 flex items-center justify-center text-2xl">⚡</div>
+                    <h3 class="font-bold text-2xl mb-2">{{ __('resources.com_mentor2') }}</h3>
+                </div>
+                <div class="p-8 border border-slate-100 rounded-[2rem] shadow-lg hover:-translate-y-2 transition-transform bg-slate-50">
+                    <div class="w-20 h-20 rounded-full bg-amber-100 mb-6 flex items-center justify-center text-2xl">💰</div>
+                    <h3 class="font-bold text-2xl mb-2">{{ __('resources.com_mentor3') }}</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: GLOBAL NETWORK --}}
+    <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            <h2 class="text-5xl font-black mb-6 z-10 text-center">{{ __('resources.com_global_title') }}</h2>
+            <p class="text-xl text-slate-400 mb-16 z-10 text-center">{{ __('resources.com_global_desc') }}</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 w-full text-center z-10">
+                <div>
+                    <h4 class="text-7xl font-black text-indigo-400 mb-2">10k+</h4>
+                    <p class="text-xl font-medium">{{ __('resources.com_stat1') }}</p>
+                </div>
+                <div>
+                    <h4 class="text-7xl font-black text-emerald-400 mb-2">50+</h4>
+                    <p class="text-xl font-medium">{{ __('resources.com_stat2') }}</p>
+                </div>
+                <div>
+                    <h4 class="text-7xl font-black text-amber-400 mb-2">1M+</h4>
+                    <p class="text-xl font-medium">{{ __('resources.com_stat3') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: VALUE --}}
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black text-slate-900 mb-6">{{ __('resources.com_value_title') }}</h2>
+            <p class="text-2xl text-slate-500 font-medium italic">{{ __('resources.com_value_desc') }}</p>
+        </div>
+    </section>
+    \n\n    {{-- SECTION 4: FINAL SOCIAL PROOF --}}
     <section class="py-32 bg-slate-50">
         <div class="max-w-4xl mx-auto text-center px-6">
             <h2 class="text-4xl font-black text-slate-900 mb-12 tracking-tight">{{ __('comm_cta_title') }}</h2>

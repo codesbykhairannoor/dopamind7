@@ -242,7 +242,59 @@
         </div>
     </section>
 
-    {{-- SECTION 5: CTA (DESAIN LEGA & TIDAK MEPET) --}}
+    
+    {{-- SECTION: ROADMAP --}}
+    <section class="py-24 bg-slate-900 border-y border-slate-800 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-black mb-4">{{ __('resources.chg_roadmap_title') }}</h2>
+            <p class="text-xl text-slate-400 mb-16">{{ __('resources.chg_roadmap_desc') }}</p>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1 p-8 rounded-3xl bg-slate-800 border-l-4 border-indigo-500 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-2">{{ __('resources.chg_roadmap_1') }}</h3>
+                    <p class="text-slate-400">{{ __('resources.chg_roadmap_1_d') }}</p>
+                </div>
+                <div class="flex-1 p-8 rounded-3xl bg-slate-800 border-l-4 border-rose-500 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-2">{{ __('resources.chg_roadmap_2') }}</h3>
+                    <p class="text-slate-400">{{ __('resources.chg_roadmap_2_d') }}</p>
+                </div>
+                <div class="flex-1 p-8 rounded-3xl bg-slate-800 border-l-4 border-emerald-500 shadow-xl">
+                    <h3 class="text-2xl font-bold mb-2">{{ __('resources.chg_roadmap_3') }}</h3>
+                    <p class="text-slate-400">{{ __('resources.chg_roadmap_3_d') }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: FEEDBACK --}}
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('resources.chg_feedback_title') }}</h2>
+                <p class="text-xl text-slate-500">{{ __('resources.chg_feedback_desc') }}</p>
+            </div>
+            <div class="columns-1 md:columns-2 gap-8 space-y-8">
+                <div class="break-inside-avoid p-10 bg-indigo-50 rounded-3xl">
+                    <p class="text-xl italic font-bold text-slate-700 mb-4">{{ __('resources.chg_fd1') }}</p>
+                    <span class="text-sm font-black text-indigo-600">@usera</span>
+                </div>
+                <div class="break-inside-avoid p-10 bg-rose-50 rounded-3xl">
+                    <p class="text-xl italic font-bold text-slate-700 mb-4">{{ __('resources.chg_fd2') }}</p>
+                    <span class="text-sm font-black text-rose-600">@userb</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION: BETA ACCESS --}}
+    <section class="py-32 bg-indigo-600 text-white text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-5xl font-black mb-6">{{ __('resources.chg_beta_title') }}</h2>
+            <p class="text-xl mb-10 text-indigo-100">{{ __('resources.chg_beta_desc') }}</p>
+            <button class="bg-white text-indigo-900 px-8 py-4 rounded-full font-black text-xl hover:scale-105 transition-transform shadow-2xl">Join Beta</button>
+        </div>
+    </section>
+    \n\n    {{-- SECTION 5: CTA (DESAIN LEGA & TIDAK MEPET) --}}
     <section class="py-32 px-6 bg-slate-50 relative overflow-hidden border-t border-gray-200">
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-indigo-100/50 to-transparent rounded-t-full -z-10"></div>
         
