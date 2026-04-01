@@ -449,6 +449,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             // Image Upload
             Route::post('/image', [JournalController::class , 'uploadImage'])->name('uploadImage');
             Route::delete('/image/{id}', [JournalController::class , 'deleteImage'])->name('deleteImage');
+            Route::post('/analyze', [JournalController::class , 'analyze'])->name('analyze');
         }
         );
 

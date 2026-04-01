@@ -74,13 +74,16 @@ class AiCoachController extends Controller
         // If even with session ID it's empty, or no session ID at all
         if (empty($messages) || !$currentSessionId) {
             $newSid = $currentSessionId ?? (string) Str::uuid();
-            $opener = $this->geminiService->generateOpeningRemark($context);
+            
+            // [AI OPENER REMOVED for On-Demand]
+            // We use a static welcome to save Gemini tokens.
+            $opener = "Halo {$user->name}, apa kabar hari ini? Saya siap membantu menganalisis progres hidupmu. Apa yang ingin kita bahas?";
             
             AiChat::create([
                 'user_id' => $user->id,
                 'session_id' => $newSid,
                 'role' => 'assistant',
-                'content' => $opener ?? "Halo {$user->name}, apa kabar hari ini? Mari kita bahas progres hidupmu."
+                'content' => $opener
             ]);
 
             if (!$currentSessionId) {

@@ -8,6 +8,7 @@ use App\Http\Requests\UploadJournalImageRequest;
 use App\Http\Resources\JournalResource;
 use App\Services\JournalService;
 use App\Services\GeminiService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -52,15 +53,8 @@ class JournalController extends Controller
         $user = Auth::user();
         $input = $request->validated();
         
-        // AI Sentiment Analysis
-        if (strlen($input['content']) > 10) {
-            $analysis = $this->geminiService->analyzeSentiment($input['content']);
-            if ($analysis) {
-                $parts = explode('|', $analysis);
-                $input['ai_sentiment'] = $parts[0] ?? null;
-                $input['mood_score'] = (int) filter_var($parts[1] ?? 5, FILTER_SANITIZE_NUMBER_INT);
-            }
-        }
+        // [AI Sentiment Analysis REMOVED for On-Demand]
+        // Kami pindahkan ke tombol khusus agar penggunaan token hemat.
 
         $journal = Journal::create(array_merge($input, [
             'user_id' => $user->id,
@@ -91,15 +85,7 @@ class JournalController extends Controller
                 : redirect()->route('journal.index');
         }
 
-        // AI Sentiment Analysis update
-        if (strlen($input['content']) > 10) {
-            $analysis = $this->geminiService->analyzeSentiment($input['content']);
-            if ($analysis) {
-                $parts = explode('|', $analysis);
-                $input['ai_sentiment'] = $parts[0] ?? null;
-                $input['mood_score'] = (int) filter_var($parts[1] ?? 5, FILTER_SANITIZE_NUMBER_INT);
-            }
-        }
+        // [AI Sentiment Analysis REMOVED for On-Demand]
 
         $journal->update($input);
 
@@ -156,5 +142,40 @@ class JournalController extends Controller
         return request()->wantsJson() 
             ? response()->json(['success' => true]) 
             : back();
+    }
+
+    /**
+     * ON-DEMAND AI ANALYSIS
+     */
+    public function analyze(Request $request)
+    {
+        $request->validate(['id' => 'required|exists:journals,id']);
+        
+        $journal = Journal::ofUser(Auth::id())->findOrFail($request->id);
+        
+        if (strlen($journal->content) < 10) {
+            return response()->json(['success' => false, 'message' => 'Tulisan terlalu pendek (min 10 karakter).']);
+        }
+
+        $analysis = $this->geminiService->analyzeSentiment($journal->content);
+
+        if ($analysis) {
+            $parts = explode('|', $analysis);
+            $ai_sentiment = trim($parts[0] ?? '');
+            $mood_score = (int) filter_var($parts[1] ?? 5, FILTER_SANITIZE_NUMBER_INT);
+
+            $journal->update([
+                'ai_sentiment' => $ai_sentiment,
+                'mood_score' => $mood_score
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'sentiment' => $ai_sentiment,
+                'score' => $mood_score
+            ]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Gagal menganalisis konten.']);
     }
 }
