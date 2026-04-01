@@ -846,32 +846,32 @@
         x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100"
         x-cloak
-        class="fixed inset-0 z-[999] bg-slate-950 flex flex-col items-center justify-center overflow-hidden"
+        class="fixed inset-0 z-[999] bg-white flex flex-col items-center justify-center overflow-hidden"
     >
         {{-- Futuristic Grid Background --}}
-        <div class="absolute inset-0 bg-pattern-grid opacity-10"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-indigo-600/10 via-transparent to-transparent"></div>
+        <div class="absolute inset-0 bg-pattern-grid opacity-[0.03]"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-indigo-50/50 via-transparent to-transparent"></div>
         
         <div class="relative z-10 flex flex-col items-center">
             {{-- Glowing Brain/Logo --}}
             <div class="relative mb-12">
-                <div class="absolute inset-0 bg-indigo-500 rounded-full blur-[60px] opacity-20 animate-pulse"></div>
-                <div class="w-24 h-24 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.3)] animate-bounce duration-[2000ms]">
+                <div class="absolute inset-0 bg-indigo-500 rounded-full blur-[60px] opacity-10 animate-pulse"></div>
+                <div class="w-24 h-24 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.2)] animate-bounce duration-[2000ms]">
                     <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-12 h-12 brightness-0 invert" />
                 </div>
             </div>
 
             <div class="text-center">
-                <h2 class="text-white text-2xl font-black tracking-widest uppercase mb-4 animate-pulse">
+                <h2 class="text-slate-900 text-2xl font-black tracking-widest uppercase mb-4 animate-pulse">
                     Initializing Neural Interface
                 </h2>
                 
-                <div class="w-64 h-1 bg-white/10 rounded-full overflow-hidden mb-8">
+                <div class="w-64 h-1 bg-slate-100 rounded-full overflow-hidden mb-8">
                     <div class="h-full bg-indigo-500 w-1/3 animate-[loading_2s_infinite_ease-in-out]"></div>
                 </div>
 
                 <div class="space-y-2">
-                    <p class="text-indigo-400 font-mono text-[10px] uppercase tracking-[0.3em] opacity-80" x-data="{ text: 'Syncing cognitive maps...', index: 0 }" x-init="setInterval(() => { index = (index + 1) % 3; text = ['Syncing cognitive maps...', 'Analyzing behavioral patterns...', 'Calibrating growth metrics...'][index] }, 800)" x-text="text"></p>
+                    <p class="text-indigo-600 font-mono text-[10px] font-black uppercase tracking-[0.3em] opacity-80" x-data="{ text: 'Syncing cognitive maps...', index: 0 }" x-init="setInterval(() => { index = (index + 1) % 3; text = ['Syncing cognitive maps...', 'Analyzing behavioral patterns...', 'Calibrating growth metrics...'][index] }, 800)" x-text="text"></p>
                 </div>
             </div>
         </div>

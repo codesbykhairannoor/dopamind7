@@ -114,15 +114,17 @@
         {{-- PREMIUM LOADER (Booting Effect) --}}
         <div 
             id="neuro-loader"
-            class="fixed inset-0 z-[9999] bg-slate-950 flex flex-col items-center justify-center transition-opacity duration-700"
+            class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center transition-opacity duration-700"
         >
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4f46e520_0,transparent_50%)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4f46e510_0,transparent_50%)]"></div>
+            <div class="absolute inset-0 bg-pattern-grid opacity-[0.03]"></div>
+            
             <div class="relative z-10 flex flex-col items-center text-center">
-                <div class="w-20 h-20 bg-indigo-600 rounded-[2rem] flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.4)] animate-bounce mb-8">
+                <div class="w-20 h-20 bg-indigo-600 rounded-[2rem] flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.2)] animate-bounce mb-8">
                     <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-10 h-10 brightness-0 invert" />
                 </div>
-                <h2 class="text-white text-xl font-black tracking-[0.2em] uppercase mb-4 animate-pulse">Initializing System</h2>
-                <div class="w-48 h-0.5 bg-white/10 rounded-full overflow-hidden">
+                <h2 class="text-slate-900 text-xl font-black tracking-[0.2em] uppercase mb-4 animate-pulse">Initializing System</h2>
+                <div class="w-48 h-0.5 bg-slate-100 rounded-full overflow-hidden">
                     <div class="h-full bg-indigo-500 w-1/2 animate-[loading_1.5s_infinite_ease-in-out]"></div>
                 </div>
             </div>
