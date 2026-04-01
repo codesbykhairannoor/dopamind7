@@ -96,15 +96,25 @@ class NeuralSynergyService
                 $parsed = $this->parseJson($response);
                 
                 if (!$parsed) {
-                    \Log::warning("NeuralSynergy RE-TRY ($locale)");
-                    $response = $this->gemini->generate("PLEASE RETURN THIS EXACT JSON STRUCTURE IN $langName BUT WITH REAL VALUES BASED ON THE PREVIOUS CONTEXT: $exampleJson");
-                    $parsed = $this->parseJson($response);
+                    throw new \Exception("NeuralSynergy output was invalid or empty.");
                 }
                 
                 return $parsed;
             } catch (\Exception $e) {
                 \Log::error("NeuralSynergy Error ($locale): " . $e->getMessage());
-                return null;
+                
+                // RETURN STABLE FALLBACK INSTEAD OF NULL
+                return [
+                    'headline' => $locale === 'id' ? 'Sistem Sedang Sinkronisasi' : 'Neural Re-Calibration',
+                    'overall' => $locale === 'id' ? 'Data sedang dianalisis dalam mode background. Sistem OneForMind sedang menyusun pola perkembangan Anda.' : 'System is analyzing your data in background mode. OneForMind is preparing your growth trajectory maps.',
+                    'categories' => [
+                        'habits' => $locale === 'id' ? 'Menganalisis rutinitas...' : 'Analyzing routines...',
+                        'finance' => $locale === 'id' ? 'Menghitung variabel ekonomi...' : 'Calculating economic variables...',
+                        'planner' => $locale === 'id' ? 'Pemetaan tugas prioritas...' : 'Mapping priority focus...',
+                        'career' => $locale === 'id' ? 'Audit kesempatan karir...' : 'Career opportunity audit...'
+                    ],
+                    'command' => $locale === 'id' ? 'Tetap produktif dan tunggu sistem sinkron.' : 'Stay productive while we sync your neural maps.'
+                ];
             }
         });
     }

@@ -67,7 +67,7 @@
                              <svg class="w-24 h-24 text-emerald-400 drop-shadow-[0_0_20px_rgba(52,211,153,0.6)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                              </svg>
-                             <div class="mt-4 font-mono text-[8px] text-emerald-500 tracking-[0.3em] font-black uppercase opacity-60">System_Locked</div>
+                             <div class="mt-4 font-mono text-[8px] text-emerald-500 tracking-[0.3em] font-black uppercase opacity-60">{{ __('sec_locked_label') }}</div>
                          </div>
                      </div>
                  </div>
@@ -89,7 +89,7 @@
                                 <span class="w-1 h-3 bg-emerald-500 rounded-full"></span>
                                 {{ __('sec_toc_title') }}
                             </h3>
-                            <nav class="space-y-2 font-bold text-[13px] text-slate-500" x-data="{ active: 'infra' }">
+                            <nav class="space-y-2 font-bold text-base text-slate-500" x-data="{ active: 'infra' }">
                                 <a href="#infra" class="block px-4 py-3 rounded-xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'infra' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'infra'">
                                     01. {{ __('sec_toc_1') }}
                                 </a>
@@ -108,10 +108,10 @@
                         {{-- Alert Box --}}
                         <div class="bg-slate-900 p-8 rounded-[2.5rem] text-white shadow-2xl relative overflow-hidden group">
                             <div class="absolute -right-4 -top-4 w-20 h-20 bg-emerald-500/20 rounded-full blur-xl group-hover:scale-150 transition duration-500"></div>
-                            <h4 class="font-black text-sm mb-2 relative z-10">Laporan Bug?</h4>
-                            <p class="text-[10px] text-slate-400 mb-6 leading-relaxed relative z-10">Punya temuan celah keamanan? Laporkan ke tim kami dan bantu kami menjaga ekosistem tetap aman.</p>
+                            <h4 class="font-black text-sm mb-2 relative z-10">{{ __('sec_alert_title') }}</h4>
+                            <p class="text-[10px] text-slate-400 mb-6 leading-relaxed relative z-10">{{ __('sec_alert_desc') }}</p>
                             <a href="mailto:oneformindapp@gmail.com" class="inline-flex items-center gap-2 text-[10px] font-black text-emerald-400 hover:gap-4 transition-all">
-                                KIRIM LAPORAN <span>→</span>
+                                {{ __('sec_alert_btn') }} <span>→</span>
                             </a>
                         </div>
                     </div>

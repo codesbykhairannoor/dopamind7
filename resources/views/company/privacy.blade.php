@@ -58,20 +58,20 @@
                 {{-- Status Hub --}}
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 p-6 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm">
                     <div>
-                        <p class="text-[9px] text-slate-500 font-black uppercase mb-1">Protection</p>
-                        <p class="text-white font-bold text-sm tracking-widest">AES-256</p>
+                        <p class="text-[9px] text-slate-500 font-black uppercase mb-1">{{ __('privacy_status_protection') }}</p>
+                        <p class="text-white font-bold text-sm tracking-widest">{{ __('privacy_status_protection_val') }}</p>
                     </div>
                     <div>
-                        <p class="text-[9px] text-slate-500 font-black uppercase mb-1">Access</p>
-                        <p class="text-emerald-400 font-bold text-sm">Privat</p>
+                        <p class="text-[9px] text-slate-500 font-black uppercase mb-1">{{ __('privacy_status_access') }}</p>
+                        <p class="text-emerald-400 font-bold text-sm">{{ __('privacy_status_access_val') }}</p>
                     </div>
                     <div>
-                        <p class="text-[9px] text-slate-500 font-black uppercase mb-1">Tracking</p>
-                        <p class="text-white font-bold text-sm">0% Ads</p>
+                        <p class="text-[9px] text-slate-500 font-black uppercase mb-1">{{ __('privacy_status_tracking') }}</p>
+                        <p class="text-white font-bold text-sm">{{ __('privacy_status_tracking_val') }}</p>
                     </div>
                     <div class="col-span-1">
-                        <p class="text-[9px] text-slate-500 font-black uppercase mb-1">Protocol</p>
-                        <p class="text-slate-300 font-bold text-[10px]">GDPR Ready</p>
+                        <p class="text-[9px] text-slate-500 font-black uppercase mb-1">{{ __('privacy_status_protocol') }}</p>
+                        <p class="text-slate-300 font-bold text-[10px]">{{ __('privacy_status_protocol_val') }}</p>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                                  <div class="bg-white/10 p-3 rounded-2xl border border-white/20">
                                      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                                  </div>
-                                 <div class="text-[8px] font-mono text-white/50 tracking-widest uppercase">Encryption_Active</div>
+                                 <div class="text-[8px] font-mono text-white/50 tracking-widest uppercase">{{ __('privacy_locked_label') }}</div>
                              </div>
                              
                              <div class="space-y-4">
@@ -99,8 +99,8 @@
                                      <div class="h-full bg-indigo-300 w-[60%] transform origin-left animate-[grow_2.5s_ease-out_delay-300]"></div>
                                  </div>
                                  <div class="pt-6">
-                                     <p class="text-white font-black text-xl leading-tight">Secure Protocol</p>
-                                     <p class="text-indigo-200 text-[10px] mt-2 opacity-70">Zero-knowledge infrastructure protection.</p>
+                                     <p class="text-white font-black text-xl leading-tight">{{ __('privacy_locked_title') }}</p>
+                                     <p class="text-indigo-200 text-[10px] mt-2 opacity-70">{{ __('privacy_locked_desc') }}</p>
                                  </div>
                              </div>
                          </div>
@@ -121,7 +121,7 @@
                         <span class="w-1 h-3 bg-indigo-600 rounded-full"></span>
                         {{ __('privacy_toc_title') }}
                     </h3>
-                    <nav class="space-y-1 font-bold text-[15px] text-slate-500" x-data="{ active: 'tldr' }">
+                    <nav class="space-y-1 font-bold text-base text-slate-500" x-data="{ active: 'tldr' }">
                         <a href="#tldr" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'tldr' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'tldr'">{{ __('privacy_nav_1') }}</a>
                         <a href="#collection" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'collection' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'collection'">{{ __('privacy_nav_2') }}</a>
                         <a href="#usage" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'usage' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'usage'">{{ __('privacy_nav_3') }}</a>

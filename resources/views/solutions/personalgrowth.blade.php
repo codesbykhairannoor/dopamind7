@@ -33,7 +33,7 @@
   },{
     "@type": "ListItem",
     "position": 3,
-    "name": "Personal Growth",
+    "name": "{{ __('growth_breadcrumb') }}",
     "item": "{{ url('/solutions/personal-growth') }}"
   }]
 }]
@@ -98,15 +98,15 @@
                     </svg>
                     <span class="text-4xl mb-1">📖</span>
                     <h3 class="font-black text-2xl text-gray-900">75%</h3>
-                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Reading Goal</p>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">{{ __('growth_mockup_goal_label') }}</p>
                 </div>
 
                 {{-- Floating Habit Orb 1 --}}
                 <div class="absolute top-10 right-0 bg-white p-4 rounded-3xl shadow-xl border border-indigo-50 flex items-center gap-4 z-30 animate-bounce duration-[4000ms]">
                     <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg shadow-inner">✓</div>
                     <div>
-                        <p class="font-bold text-gray-900 text-sm">Morning Run</p>
-                        <p class="text-[10px] text-gray-500 font-medium">5 km completed</p>
+                        <p class="font-bold text-gray-900 text-sm">{{ __('growth_mockup_habit_title') }}</p>
+                        <p class="text-[10px] text-gray-500 font-medium">{{ __('growth_mockup_habit_desc') }}</p>
                     </div>
                 </div>
 
@@ -114,9 +114,9 @@
                 <div class="absolute bottom-10 left-0 bg-slate-900 text-white p-4 rounded-3xl shadow-xl border border-slate-700 flex flex-col gap-2 z-30 transform -rotate-6 hover:rotate-0 transition duration-300">
                     <div class="flex items-center gap-2">
                         <span class="text-lg">🧠</span>
-                        <p class="font-bold text-sm">Daily Reflection</p>
+                        <p class="font-bold text-sm">{{ __('growth_mockup_reflection_title') }}</p>
                     </div>
-                    <p class="text-xs text-slate-400 font-serif italic max-w-[150px]">"Today I learned to let go of what I can't control..."</p>
+                    <p class="text-xs text-slate-400 font-serif italic max-w-[150px]">"{{ __('growth_mockup_reflection_desc') }}"</p>
                 </div>
 
             </div>
@@ -136,8 +136,8 @@
                 {{-- Card 1 (Top) --}}
                 <div class="absolute w-72 h-80 bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 flex flex-col items-center justify-center text-center transform group-hover:-translate-y-4 transition duration-500 z-10">
                     <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner">🏆</div>
-                    <h4 class="font-black text-xl text-gray-900 mb-2">30-Day Streak!</h4>
-                    <p class="text-sm text-gray-500 mb-6">Konsistensi membentuk identitas baru.</p>
+                    <h4 class="font-black text-xl text-gray-900 mb-2">{{ __('growth_mockup_streak_title') }}</h4>
+                    <p class="text-sm text-gray-500 mb-6">{{ __('growth_mockup_streak_desc') }}</p>
                     <div class="w-full bg-gray-100 rounded-full h-2">
                         <div class="bg-indigo-600 h-2 rounded-full w-full"></div>
                     </div>
@@ -237,8 +237,8 @@
             <div class="inline-flex items-center gap-4 p-8 bg-indigo-50 rounded-3xl border border-indigo-100">
                 <div class="text-5xl font-black text-indigo-600">37.8x</div>
                 <div class="text-left">
-                    <p class="text-[10px] font-black uppercase text-indigo-400">Better in 1 Year</p>
-                    <p class="text-xs text-gray-500">The Power of 1% Improvement</p>
+                    <p class="text-[10px] font-black uppercase text-indigo-400">{{ __('growth_extra_2_stat_label') }}</p>
+                    <p class="text-xs text-gray-500">{{ __('growth_extra_2_stat_sub') }}</p>
                 </div>
             </div>
         </div>
@@ -288,15 +288,15 @@
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                         <div class="text-center">
                             <span class="block text-2xl mb-2">🛡️</span>
-                            <h4 class="font-black text-[10px] uppercase text-indigo-400 tracking-widest">Antifragility</h4>
+                            <h4 class="font-black text-[10px] uppercase text-indigo-400 tracking-widest">{{ __('growth_science_point_1') }}</h4>
                         </div>
                         <div class="text-center">
                             <span class="block text-2xl mb-2">👤</span>
-                            <h4 class="font-black text-[10px] uppercase text-purple-400 tracking-widest">Identity Shift</h4>
+                            <h4 class="font-black text-[10px] uppercase text-purple-400 tracking-widest">{{ __('growth_science_point_2') }}</h4>
                         </div>
                         <div class="text-center">
                             <span class="block text-2xl mb-2">📈</span>
-                            <h4 class="font-black text-[10px] uppercase text-emerald-400 tracking-widest">Compound Interest</h4>
+                            <h4 class="font-black text-[10px] uppercase text-emerald-400 tracking-widest">{{ __('growth_science_point_3') }}</h4>
                         </div>
                     </div>
                 </div>

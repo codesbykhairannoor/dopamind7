@@ -280,8 +280,10 @@
         mobileMenuOpen: false, 
         activeMenu: null,
         activeAccordion: null,
-        scrolled: false 
+        scrolled: false,
+        isInterfacing: false
     }" 
+    @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard') || $event.detail.pathInfo.requestPath.includes('login') || $event.detail.pathInfo.requestPath.includes('register')) isInterfacing = true"
     @scroll.window.passive="scrolled = (window.scrollY > 20)"
     class="relative">
         
@@ -481,10 +483,10 @@
                     {{-- Login/Register (Desktop) --}}
                     <div class="hidden lg:flex items-center gap-3">
                         @auth
-                            <a hx-boost="false" href="{{ route('dashboard') }}" class="px-5 py-2 bg-slate-900 text-white rounded-full text-[13px] font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
+                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('dashboard') }}" class="px-5 py-2 bg-slate-900 text-white rounded-full text-[13px] font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
                         @else
-                            <a hx-boost="false" href="{{ route('login') }}" class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">Log In</a>
-                            <a hx-boost="false" href="{{ route('register') }}" class="px-5 py-2 bg-indigo-600 text-white rounded-full text-[13px] font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
+                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('login') }}" class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">Log In</a>
+                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('register') }}" class="px-5 py-2 bg-indigo-600 text-white rounded-full text-[13px] font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
                                 Get Started
                             </a>
                         @endauth
@@ -609,11 +611,11 @@
                     
                    @guest
     <div class="grid grid-cols-1 gap-3">
-        <a hx-boost="false" href="{{ route('login') }}" class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">Log In</a>
-        <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">Get Started</a>
+        <a @click="isInterfacing = true" hx-boost="false" href="{{ route('login') }}" class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">Log In</a>
+        <a @click="isInterfacing = true" hx-boost="false" href="{{ route('register') }}" class="w-full py-4 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">Get Started</a>
     </div>
 @else
-    <a hx-boost="false" href="{{ route('dashboard') }}" class="block w-full py-4 text-center font-black text-white bg-slate-900 rounded-2xl">Dashboard</a>
+    <a @click="isInterfacing = true" hx-boost="false" href="{{ route('dashboard') }}" class="block w-full py-4 text-center font-black text-white bg-slate-900 rounded-2xl">Dashboard</a>
 @endguest
                 </div>
             </div>
@@ -687,6 +689,7 @@
                             <li><a href="{{ route('company.privacy') }}" class="hover:text-indigo-600 transition">{{ __('Privacy Policy') }}</a></li>
                             <li><a href="{{ route('company.terms') }}" class="hover:text-indigo-600 transition">{{ __('Terms of Service') }}</a></li>
                             <li><a href="{{ route('company.refund') }}" class="hover:text-indigo-600 transition">{{ __('Refund Policy') }}</a></li>
+                            <li><a href="{{ route('company.contact') }}" class="hover:text-indigo-600 transition">{{ __('Contact Us') }}</a></li>
                             <li><a href="{{ route('company.security') }}" class="hover:text-indigo-600 transition">{{ __('Security') }}</a></li>
                             <li><a href="{{ route('about') }}" class="hover:text-indigo-600 transition">{{ __('About Us') }}</a></li>
                             <li><a href="{{ route('company.status') }}" class="hover:text-indigo-600 transition">{{ __('System Status') }}</a></li>
@@ -834,5 +837,52 @@
         });
     });
     </script>
+    <!-- Cookie Banner -->
+    <x-cookie-banner />
+    {{-- PREMIUM LOADER OVERLAY (Neural OS Booting) --}}
+    <div 
+        x-show="isInterfacing" 
+        x-transition:enter="transition ease-out duration-500"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-cloak
+        class="fixed inset-0 z-[999] bg-slate-950 flex flex-col items-center justify-center overflow-hidden"
+    >
+        {{-- Futuristic Grid Background --}}
+        <div class="absolute inset-0 bg-pattern-grid opacity-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-indigo-600/10 via-transparent to-transparent"></div>
+        
+        <div class="relative z-10 flex flex-col items-center">
+            {{-- Glowing Brain/Logo --}}
+            <div class="relative mb-12">
+                <div class="absolute inset-0 bg-indigo-500 rounded-full blur-[60px] opacity-20 animate-pulse"></div>
+                <div class="w-24 h-24 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.3)] animate-bounce duration-[2000ms]">
+                    <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-12 h-12 brightness-0 invert" />
+                </div>
+            </div>
+
+            <div class="text-center">
+                <h2 class="text-white text-2xl font-black tracking-widest uppercase mb-4 animate-pulse">
+                    Initializing Neural Interface
+                </h2>
+                
+                <div class="w-64 h-1 bg-white/10 rounded-full overflow-hidden mb-8">
+                    <div class="h-full bg-indigo-500 w-1/3 animate-[loading_2s_infinite_ease-in-out]"></div>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="text-indigo-400 font-mono text-[10px] uppercase tracking-[0.3em] opacity-80" x-data="{ text: 'Syncing cognitive maps...', index: 0 }" x-init="setInterval(() => { index = (index + 1) % 3; text = ['Syncing cognitive maps...', 'Analyzing behavioral patterns...', 'Calibrating growth metrics...'][index] }, 800)" x-text="text"></p>
+                </div>
+            </div>
+        </div>
+        
+        <style>
+            @keyframes loading {
+                0% { transform: translateX(-100%); }
+                100% { transform: translateX(300%); }
+            }
+        </style>
+    </div>
+
 </body>
 </html>

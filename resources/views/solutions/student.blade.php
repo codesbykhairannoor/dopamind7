@@ -105,7 +105,7 @@
                         <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
                     </div>
                     <div class="text-[10px] font-black text-gray-400 uppercase tracking-widest">
-                        Student OS
+                        {{ __('student_mockup_title') }}
                     </div>
                     <div class="w-10"></div>
                 </div>
@@ -119,8 +119,8 @@
                         {{-- Budget Widget --}}
                         <div class="bg-indigo-950 rounded-[1.5rem] p-5 shadow-md border border-indigo-900 transition duration-300">
                             <div class="flex justify-between items-center mb-3">
-                                <p class="text-indigo-300 text-[10px] font-bold uppercase tracking-wider">Sisa Saldo</p>
-                                <span class="bg-indigo-900 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-md">Aman</span>
+                                <p class="text-indigo-300 text-[10px] font-bold uppercase tracking-wider">{{ __('student_mockup_budget_label') }}</p>
+                                <span class="bg-indigo-900 text-emerald-400 text-[10px] font-bold px-2 py-0.5 rounded-md">{{ __('student_mockup_budget_status') }}</span>
                             </div>
                             <h3 class="font-black text-2xl text-white">Rp 150.000</h3>
                         </div>
@@ -128,11 +128,11 @@
                         {{-- Task Widget --}}
                         <div class="bg-white rounded-[1.5rem] p-5 shadow-sm border border-rose-100 flex flex-col justify-between">
                             <div class="flex justify-between items-start mb-3">
-                                <span class="bg-rose-100 text-rose-700 text-[10px] font-black uppercase px-3 py-1 rounded-full">Tugas Akhir</span>
+                                <span class="bg-rose-100 text-rose-700 text-[10px] font-black uppercase px-3 py-1 rounded-full">{{ __('student_mockup_task_badge') }}</span>
                                 <span class="text-rose-500 text-sm animate-pulse">⚠️</span>
                             </div>
                             <div>
-                                <h4 class="font-black text-gray-900 text-sm mb-1">Web Dicoding x DBS</h4>
+                                <h4 class="font-black text-gray-900 text-sm mb-1">{{ __('student_mockup_task_title') }}</h4>
                                 <div class="w-full bg-gray-100 rounded-full h-1.5 mt-2">
                                     <div class="bg-indigo-600 h-1.5 rounded-full w-[85%]"></div>
                                 </div>
@@ -144,21 +144,21 @@
                     {{-- Bottom Row: Schedule --}}
                     <div class="bg-white rounded-[1.5rem] p-5 shadow-sm border border-gray-100">
                         <div class="flex justify-between items-center mb-4 pb-2 border-b border-gray-50">
-                            <h4 class="font-black text-gray-900 text-xs">Agenda Hari Ini</h4>
+                            <h4 class="font-black text-gray-900 text-xs">{{ __('student_mockup_schedule_label') }}</h4>
                         </div>
                         
                         <div class="space-y-3">
                             <div class="flex gap-3 items-center">
                                 <p class="text-[10px] font-bold text-gray-400 w-8">10:00</p>
                                 <div class="flex-1 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg p-2">
-                                    <p class="text-xs font-bold text-indigo-900">Studi Independen</p>
+                                    <p class="text-xs font-bold text-indigo-900">{{ __('student_mockup_schedule_item_1') }}</p>
                                 </div>
                             </div>
                             
                             <div class="flex gap-3 items-center">
                                 <p class="text-[10px] font-bold text-gray-400 w-8">14:00</p>
                                 <div class="flex-1 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg p-2">
-                                    <p class="text-xs font-bold text-amber-900">Rapat Proposal</p>
+                                    <p class="text-xs font-bold text-amber-900">{{ __('student_mockup_schedule_item_2') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -243,12 +243,12 @@
                 <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 space-y-4">
                     <div class="flex justify-between items-center font-bold">
                         <span class="text-gray-700">{{ __('student_feat_2_point_1') }}</span>
-                        <span class="text-emerald-500">Auto-Track</span>
+                        <span class="text-emerald-500">{{ __('student_feat_2_badge_1') }}</span>
                     </div>
                     <div class="w-full h-px bg-gray-200"></div>
                     <div class="flex justify-between items-center font-bold">
                         <span class="text-gray-700">{{ __('student_feat_2_point_2') }}</span>
-                        <span class="text-emerald-500">Goal Savings</span>
+                        <span class="text-emerald-500">{{ __('student_feat_2_badge_2') }}</span>
                     </div>
                 </div>
             </div>
@@ -296,15 +296,15 @@
                 <div class="space-y-6 relative z-10">
                     <div class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl border border-white/10">
                         <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center font-bold">1</div>
-                        <div class="text-white font-bold">Capture Lecture</div>
+                        <div class="text-white font-bold">{{ __('student_extra_1_step_1') }}</div>
                     </div>
                     <div class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl border border-white/10 ml-8">
                         <div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center font-bold">2</div>
-                        <div class="text-white font-bold">Review & Interleave</div>
+                        <div class="text-white font-bold">{{ __('student_extra_1_step_2') }}</div>
                     </div>
                     <div class="flex items-center gap-4 bg-white/10 p-4 rounded-2xl border border-white/10 ml-16 text-emerald-400">
                         <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center font-bold text-white">3</div>
-                        <div class="font-bold">Master Topic</div>
+                        <div class="font-bold">{{ __('student_extra_1_step_3') }}</div>
                     </div>
                 </div>
             </div>
@@ -327,19 +327,19 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="bg-white p-6 rounded-3xl shadow-sm">
                     <div class="text-2xl mb-2">😴</div>
-                    <div class="text-xs font-black text-indigo-400 uppercase">Sleep</div>
+                    <div class="text-xs font-black text-indigo-400 uppercase">{{ __('student_extra_2_item_1') }}</div>
                 </div>
                 <div class="bg-white p-6 rounded-3xl shadow-sm">
                     <div class="text-2xl mb-2">📚</div>
-                    <div class="text-xs font-black text-indigo-400 uppercase">Grades</div>
+                    <div class="text-xs font-black text-indigo-400 uppercase">{{ __('student_extra_2_item_2') }}</div>
                 </div>
                 <div class="bg-white p-6 rounded-3xl shadow-sm">
                     <div class="text-2xl mb-2">🍔</div>
-                    <div class="text-xs font-black text-indigo-400 uppercase">Health</div>
+                    <div class="text-xs font-black text-indigo-400 uppercase">{{ __('student_extra_2_item_3') }}</div>
                 </div>
                 <div class="bg-white p-6 rounded-3xl shadow-sm border-2 border-indigo-500">
                     <div class="text-2xl mb-2">💎</div>
-                    <div class="text-xs font-black text-indigo-600 uppercase">Balance</div>
+                    <div class="text-xs font-black text-indigo-600 uppercase">{{ __('student_extra_2_item_4') }}</div>
                 </div>
             </div>
         </div>
@@ -379,15 +379,15 @@
                         <div class="flex flex-wrap gap-4">
                             <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-full border border-gray-100 shadow-sm hover:border-indigo-200 transition">
                                 <span class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
-                                <span class="text-sm font-bold text-gray-600">Spaced Repetition</span>
+                                <span class="text-sm font-bold text-gray-600">{{ __('student_science_topic_1') }}</span>
                             </div>
                             <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-full border border-gray-100 shadow-sm hover:border-indigo-200 transition">
                                 <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
-                                <span class="text-sm font-bold text-gray-600">Active Recall</span>
+                                <span class="text-sm font-bold text-gray-600">{{ __('student_science_topic_2') }}</span>
                             </div>
                             <div class="flex items-center gap-3 bg-white px-5 py-3 rounded-full border border-gray-100 shadow-sm hover:border-indigo-200 transition">
                                 <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                                <span class="text-sm font-bold text-gray-600">Time Blocking</span>
+                                <span class="text-sm font-bold text-gray-600">{{ __('student_science_topic_3') }}</span>
                             </div>
                         </div>
                     </div>

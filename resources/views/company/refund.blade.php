@@ -50,7 +50,7 @@
                         <span class="w-1 h-3 bg-rose-500 rounded-full"></span>
                         {{ __('refund_nav_title') }}
                     </h3>
-                    <nav class="space-y-1 font-bold text-[15px] text-slate-500" x-data="{ active: 'guarantee' }">
+                    <nav class="space-y-1 font-bold text-base text-slate-500" x-data="{ active: 'guarantee' }">
                         <a href="#guarantee" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'guarantee' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'guarantee'">{{ __('refund_nav_1') }}</a>
                         <a href="#process" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'process' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'process'">{{ __('refund_nav_2') }}</a>
                         <a href="#cancellation" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-rose-600" :class="active === 'cancellation' ? 'bg-rose-50 text-rose-600' : ''" @click="active = 'cancellation'">{{ __('refund_nav_3') }}</a>
@@ -66,9 +66,9 @@
                         <div class="absolute inset-0 bg-gradient-to-r from-rose-600/20 to-transparent"></div>
                         <div class="text-6xl group-hover:rotate-12 transition">🛡️</div>
                         <div class="relative z-10">
-                            <h4 class="text-2xl font-black mb-2 tracking-tight">Perlindungan Merchant</h4>
+                            <h4 class="text-2xl font-black mb-2 tracking-tight">{{ __('refund_merchant_protection_title') }}</h4>
                             <p class="text-slate-400 font-bold leading-relaxed mb-0">
-                                Transaksi Anda dilindungi oleh aturan hukum transaksional digital yang menyatakan bahwa produk instan yang sudah dibuka/digunakan tidak dapat dikembalikan.
+                                {{ __('refund_merchant_protection_desc') }}
                             </p>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                     <p>{{ __('refund_p_process') }}</p>
                     <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 not-prose mb-12 shadow-inner">
                         <div class="space-y-6">
-                            <p class="font-bold text-slate-900 m-0">Langkah Mandiri (User Responsibility):</p>
+                            <p class="font-bold text-slate-900 m-0">{{ __('refund_user_responsibility_title') }}</p>
                             <div class="flex items-center gap-6">
                                 <span class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center font-black text-rose-500 border border-slate-200 shadow-sm">01</span>
                                 <p class="m-0 text-slate-800 font-bold">{{ __('refund_li_process_1') }}</p>
@@ -120,7 +120,7 @@
                              {{ __('refund_cta_desc') }}
                          </p>
                          <div class="px-10 py-4 bg-white/5 border border-white/10 rounded-full font-black text-indigo-300 w-fit mx-auto backdrop-blur-md">
-                            Kontak: oneformindapp@gmail.com
+                            {{ __('refund_contact_label') }}
                          </div>
                      </div>
                 </div>

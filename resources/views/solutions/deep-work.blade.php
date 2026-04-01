@@ -125,7 +125,7 @@
                                 <div class="w-12 text-xs text-gray-400 font-mono">09:00</div>
                                 <div class="flex-1 bg-white rounded-xl p-4 border border-gray-200 opacity-60 flex items-center gap-3">
                                     <div class="w-4 h-4 rounded border-2 border-gray-300"></div>
-                                    <span class="text-gray-400 line-through text-sm">Clear Email Inbox</span>
+                                    <span class="text-gray-400 line-through text-sm">{{ __('deepwork_mockup_task_1') }}</span>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4">
@@ -133,7 +133,7 @@
                                 <div class="flex-1 bg-indigo-50/80 rounded-xl p-4 border border-indigo-200 flex items-center justify-between shadow-sm transform scale-[1.02]">
                                     <div class="flex items-center gap-3">
                                         <div class="w-4 h-4 rounded bg-indigo-600 animate-pulse"></div>
-                                        <span class="text-indigo-950 font-bold text-sm">Deep Work: Architecture</span>
+                                            <span class="text-indigo-950 font-bold text-sm">{{ __('deepwork_mockup_task_2') }}</span>
                                     </div>
                                     <span class="font-mono text-indigo-600 text-sm font-bold">25:00</span>
                                 </div>
@@ -142,7 +142,7 @@
                                 <div class="w-12 text-xs text-gray-400 font-mono">12:00</div>
                                 <div class="flex-1 bg-white rounded-xl p-4 border border-gray-200 flex items-center gap-3 border-dashed">
                                     <div class="w-4 h-4 rounded border-2 border-gray-300 border-dashed"></div>
-                                    <span class="text-gray-500 text-sm">Lunch Break</span>
+                                    <span class="text-gray-500 text-sm">{{ __('deepwork_mockup_task_3') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -226,8 +226,8 @@
                 
                 <div class="relative z-10">
                     <div class="text-9xl mb-8 transform group-hover:scale-110 transition duration-500">🔒</div>
-                    <h3 class="text-4xl font-black text-white tracking-tight mb-2">Lock In.</h3>
-                    <p class="text-indigo-300 text-lg font-medium">Zero Distractions. 100% Output.</p>
+                    <h3 class="text-4xl font-black text-white tracking-tight mb-2">{{ __('deepwork_science_viz_lock') }}</h3>
+                    <p class="text-indigo-300 text-lg font-medium">{{ __('deepwork_science_viz_sub') }}</p>
                 </div>
             </div>
         </div>
@@ -266,14 +266,14 @@
                 <div class="bg-indigo-600 rounded-[2.5rem] p-8 md:p-12 shadow-2xl transform -rotate-2 hover:rotate-0 transition duration-500">
                     <div class="flex items-end gap-2 mb-8 border-b border-indigo-500/30 pb-6">
                         <div class="text-5xl font-black text-white">4.5</div>
-                        <div class="text-indigo-200 font-bold mb-1">hrs/day</div>
+                        <div class="text-indigo-200 font-bold mb-1">{{ __('deepwork_extra_1_sub') }}</div>
                     </div>
                     <div class="grid grid-cols-7 gap-2">
                         @foreach(range(1, 28) as $i)
                             <div class="h-8 rounded-md {{ $i % 4 === 0 ? 'bg-indigo-400' : 'bg-indigo-300/30' }}"></div>
                         @endforeach
                     </div>
-                    <p class="mt-6 text-indigo-100 text-sm font-medium">Weekly Deep Work Distribution</p>
+                    <p class="mt-6 text-indigo-100 text-sm font-medium">{{ __('deepwork_extra_1_label') }}</p>
                 </div>
             </div>
             <div class="order-1 md:order-2">
@@ -298,11 +298,11 @@
                     <ul class="space-y-4 text-indigo-300 font-medium">
                         <li class="flex items-center gap-3">
                             <span class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-xs">✓</span>
-                            Digital Minimalist Workspace
+                            {{ __('deepwork_extra_2_item_1') }}
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-xs">✓</span>
-                            Focus Trigger Rituals
+                            {{ __('deepwork_extra_2_item_2') }}
                         </li>
                     </ul>
                 </div>
@@ -335,16 +335,16 @@
 
                     <div class="flex flex-wrap justify-center lg:justify-start gap-4">
                         <div class="group px-6 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
-                            <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Concept_Alpha</span>
-                            <span class="font-bold text-gray-700">Attention Restoration</span>
+                            <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">{{ __('deepwork_science_concept_1') }}</span>
+                            <span class="font-bold text-gray-700">{{ __('deepwork_science_topic_1') }}</span>
                         </div>
                         <div class="group px-6 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
-                            <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">Concept_Beta</span>
-                            <span class="font-bold text-gray-700">Myelin Growth</span>
+                            <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">{{ __('deepwork_science_concept_2') }}</span>
+                            <span class="font-bold text-gray-700">{{ __('deepwork_science_topic_2') }}</span>
                         </div>
                         <div class="group px-6 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
-                            <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">Concept_Gamma</span>
-                            <span class="font-bold text-gray-700">Zeigarnik Effect</span>
+                            <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">{{ __('deepwork_science_concept_3') }}</span>
+                            <span class="font-bold text-gray-700">{{ __('deepwork_science_topic_3') }}</span>
                         </div>
                     </div>
                 </div>

@@ -37,7 +37,7 @@
     "more_upgrade_desc": "Get access to premium features",
     "more_upgrade_btn": "View Pricing",
     
-"seo_meta_desc_1": "Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.",
+    "seo_meta_desc_1": "Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.",
     "footer_rights": "© 2026 Oneformind. All rights reserved.",
 
     "nav_features": "Features",
@@ -51,7 +51,7 @@
     "modal_logout_confirm": "Yes, Logout",
     "modal_logout_cancel": "Cancel",
 
-"seo_about_desc": "Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.",
+    "seo_about_desc": "Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.",
 
     "footer_legal": "Privacy & Terms",
     "legal_title": "Legal Information",
@@ -72,30 +72,30 @@
     "tos_security_p": "Users are strictly prohibited from attempting to breach system security, conducting SQL injections, scraping data, or disrupting the platform's infrastructure.",
     "tos_termination_title": "4. Account Termination",
     "tos_termination_p": "We reserve the right to suspend or terminate accounts immediately, without prior notice, if a user is found violating these terms or abusing system resources.",
-    "legal_close": "Close & Understand"
-
-
-    
-    
-
-
-    
-    
-    
-
-
-
-
-
-
-
-
-   
-
-
-    
-
-       
-
-  
+    "legal_close": "Close & Understand",
+    "cookie_title": "🍪 Care for a Cookie?",
+    "cookie_desc": "We use cookies to ensure you get the best and most secure experience on our system.",
+    "cookie_btn_accept": "Accept All",
+    "cookie_btn_settings": "Settings",
+    "cookie_btn_essential": "Essential Only",
+    "contact_title": "Contact Us",
+    "contact_subtitle": "Have questions or need help? Our team is ready to support your productivity journey.",
+    "contact_form_name": "Full Name",
+    "contact_form_email": "Email Address",
+    "contact_form_subject": "Subject",
+    "contact_form_message": "Your Message",
+    "contact_btn_send": "Send Message Now",
+    "contact_success_title": "Message Sent!",
+    "contact_success_desc": "Thank you! We will get back to you within 24-48 hours.",
+    "contact_info_title": "Contact Information",
+    "contact_info_hq": "OneForMind Headquarters",
+    "contact_info_jakarta": "Jakarta, Indonesia",
+    "contact_info_support": "Technical Support",
+    "contact_info_billing": "Billing & Licensing",
+    "contact_info_chat": "Live Chat",
+    "contact_info_chat_status": "Quick Support",
+    "contact_faq_title": "Have technical questions?",
+    "contact_faq_desc": "Check our help documentation for instant answers about features and licensing.",
+    "contact_faq_btn": "Open Help Center",
+    "contact_form_message_placeholder": "How can we help you?"
 }

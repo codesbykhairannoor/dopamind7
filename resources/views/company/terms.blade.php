@@ -46,7 +46,7 @@
                         <span class="w-1 h-3 bg-rose-600 rounded-full"></span>
                         {{ __('terms_nav_title') }}
                     </h3>
-                    <nav class="space-y-1 font-bold text-[15px] text-slate-500" x-data="{ active: 'intro' }">
+                    <nav class="space-y-1 font-bold text-base text-slate-500" x-data="{ active: 'intro' }">
                         <a href="#intro" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'intro' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'intro'">{{ __('terms_nav_1') }}</a>
                         <a href="#eligibility" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'eligibility' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'eligibility'">{{ __('terms_nav_2') }}</a>
                         <a href="#rules" class="block px-4 py-3 rounded-2xl transition hover:bg-slate-50 hover:text-indigo-600" :class="active === 'rules' ? 'bg-indigo-50 text-indigo-600' : ''" @click="active = 'rules'">{{ __('terms_nav_3') }}</a>
@@ -65,10 +65,10 @@
                     {{-- LOUD NOTICE --}}
                     <div class="mb-16 p-8 bg-rose-50 border-2 border-rose-200 rounded-[2.5rem] not-prose">
                         <h4 class="text-rose-900 font-black text-xl mb-4 flex items-center gap-3">
-                            <span>⚠️</span> PEMBERITAHUAN PENTING: NO-REFUND
+                            <span>⚠️</span> {{ __('terms_notice_title') }}
                         </h4>
                         <p class="text-rose-800 font-bold leading-relaxed m-0">
-                            OneForMind memberikan masa uji coba (Trial) selama 14 hari bagi semua pengguna baru guna mengevaluasi layanan. Setelah Anda melakukan deposit atau pembayaran langganan, Anda melepaskan hak untuk meminta refund dalam bentuk apa pun. Semua transaksi bersifat FINAL.
+                            {{ __('terms_notice_desc') }}
                         </p>
                     </div>
 

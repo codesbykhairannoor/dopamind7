@@ -121,7 +121,7 @@
                         <p class="text-gray-500 font-medium">{{ __('atomic_mockup_desc') }}</p>
                         <div class="inline-flex items-center gap-2 mt-2 px-3 py-1.5 bg-white rounded-lg shadow-sm border border-gray-200">
                             <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-                            <span class="text-xs font-bold text-gray-700">Day 14 Streak</span>
+                            <span class="text-xs font-bold text-gray-700">{{ __('atomic_mockup_streak') }}</span>
                         </div>
                     </div>
 
@@ -133,7 +133,7 @@
                             </div>
                         @endfor
                         <div class="absolute -right-4 -top-6 bg-white px-4 py-2 rounded-xl shadow-xl font-bold text-indigo-600 text-sm border border-indigo-50 flex items-center gap-2 transform rotate-3">
-                            🚀 +37x Returns
+                            {{ __('atomic_mockup_returns') }}
                         </div>
                     </div>
 
@@ -176,13 +176,13 @@
                         @endforeach
                     </div>
                     <div class="flex items-center justify-between text-xs font-bold text-indigo-400 uppercase tracking-widest">
-                        <span>Less Focus</span>
+                        <span>{{ __('atomic_heatmap_less') }}</span>
                         <div class="flex gap-1">
                             <div class="w-3 h-3 bg-indigo-100 rounded"></div>
                             <div class="w-3 h-3 bg-indigo-300 rounded"></div>
                             <div class="w-3 h-3 bg-indigo-600 rounded"></div>
                         </div>
-                        <span>Peak Flow</span>
+                        <span>{{ __('atomic_heatmap_peak') }}</span>
                     </div>
                 </div>
             </div>
@@ -246,16 +246,16 @@
 
                         <div class="flex flex-wrap gap-4">
                             <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition">
-                                <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Reagent_01</span>
-                                <h4 class="font-bold text-slate-300">Behavioral Economics</h4>
+                                <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">{{ __('atomic_science_reagent_1') }}</span>
+                                <h4 class="font-bold text-slate-300">{{ __('atomic_science_topic_1') }}</h4>
                             </div>
                             <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/5 hover:border-purple-500/50 transition">
-                                <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">Reagent_02</span>
-                                <h4 class="font-bold text-slate-300">Activation Energy</h4>
+                                <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">{{ __('atomic_science_reagent_2') }}</span>
+                                <h4 class="font-bold text-slate-300">{{ __('atomic_science_topic_2') }}</h4>
                             </div>
                             <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/5 hover:border-emerald-500/50 transition">
-                                <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">Reagent_03</span>
-                                <h4 class="font-bold text-slate-300">Identity-Based Habits</h4>
+                                <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">{{ __('atomic_science_reagent_3') }}</span>
+                                <h4 class="font-bold text-slate-300">{{ __('atomic_science_topic_3') }}</h4>
                             </div>
                         </div>
                     </div>

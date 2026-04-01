@@ -28,7 +28,7 @@
   },{
     "@type": "ListItem",
     "position": 3,
-    "name": "Second Brain",
+    "name": "{{ __('brain_breadcrumb') }}",
     "item": "{{ url('/solutions/second-brain') }}"
   }]
 },
@@ -137,7 +137,7 @@
                         <div class="w-8 h-8 rounded-lg bg-blue-500/30 flex items-center justify-center text-sm">📓</div>
                         <span class="font-bold text-indigo-100 text-sm">{{ __('brain_mockup_3') }}</span>
                     </div>
-                    <p class="text-[10px] text-slate-300 font-serif italic max-w-[120px]">"Clear mind, full focus on the task..."</p>
+                    <p class="text-[10px] text-slate-300 font-serif italic max-w-[120px]">"{{ __('brain_mockup_3_quote') }}"</p>
                 </div>
                 
                 {{-- Connecting SVG Lines --}}
@@ -197,8 +197,8 @@
                 </div>
                 <div class="absolute w-80 h-56 bg-white rounded-3xl shadow-2xl border border-slate-100 transform z-10 p-8 flex flex-col justify-center items-center">
                     <div class="text-5xl mb-4 animate-bounce">🤯</div>
-                    <div class="font-black text-rose-500 tracking-widest uppercase text-sm">Mental Overload</div>
-                    <div class="text-xs text-slate-400 mt-2">Too much info, nowhere to put it.</div>
+                    <div class="font-black text-rose-500 tracking-widest uppercase text-sm">{{ __('brain_prob_viz_badge') }}</div>
+                    <div class="text-xs text-slate-400 mt-2">{{ __('brain_prob_viz_sub') }}</div>
                 </div>
             </div>
         </div>
@@ -288,7 +288,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-20 max-w-3xl mx-auto">
                 <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('brain_feat_title') }}</h2>
-                <p class="text-xl text-slate-500">Essential components for your digital mind.</p>
+                <p class="text-xl text-slate-500">{{ __('brain_feat_sub') }}</p>
             </div>
             
             <div class="grid md:grid-cols-12 gap-6">
@@ -324,15 +324,15 @@
                 <div class="space-y-4">
                     <div class="flex items-center gap-5 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm">
                         <span class="w-12 h-12 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center font-black text-lg">1</span>
-                        <span class="font-bold text-slate-700 text-lg">Actionable Now</span>
+                        <span class="font-bold text-slate-700 text-lg">{{ __('brain_extra_1_item_1') }}</span>
                     </div>
                     <div class="flex items-center gap-5 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm ml-8">
                         <span class="w-12 h-12 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center font-black text-lg">2</span>
-                        <span class="font-bold text-slate-700 text-lg">Reference Material</span>
+                        <span class="font-bold text-slate-700 text-lg">{{ __('brain_extra_1_item_2') }}</span>
                     </div>
                     <div class="flex items-center gap-5 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm ml-16">
                         <span class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-black text-lg">3</span>
-                        <span class="font-bold text-slate-700 text-lg">Archive & Legacy</span>
+                        <span class="font-bold text-slate-700 text-lg">{{ __('brain_extra_1_item_3') }}</span>
                     </div>
                 </div>
             </div>
@@ -340,7 +340,7 @@
                 <div class="w-full aspect-square bg-gradient-to-br from-indigo-500 to-purple-600 rounded-[3rem] md:rounded-[4rem] p-12 flex items-center justify-center shadow-2xl">
                     <div class="text-center">
                         <div class="text-8xl mb-6 animate-bounce">📁</div>
-                        <div class="text-white font-black text-3xl">Zero Fragmentation</div>
+                        <div class="text-white font-black text-3xl">{{ __('brain_extra_1_viz_title') }}</div>
                     </div>
                 </div>
             </div>
@@ -357,9 +357,9 @@
                     {{ __('brain_extra_2_desc') }}
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 relative z-10">
-                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">Notes → Project</span>
-                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">Thoughts → Actions</span>
-                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">Data → Wisdom</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">{{ __('brain_extra_2_item_1') }}</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">{{ __('brain_extra_2_item_2') }}</span>
+                    <span class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-sm font-bold">{{ __('brain_extra_2_item_3') }}</span>
                 </div>
             </div>
         </div>
@@ -404,15 +404,15 @@
                     <div class="flex flex-wrap gap-6">
                         <div class="px-6 py-4 bg-slate-800 rounded-2xl border border-slate-700 hover:border-indigo-500 transition cursor-help group">
                             <p class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1 group-hover:text-white">Active_Link_01</p>
-                            <h4 class="font-bold text-slate-200">Cognitive Offloading</h4>
+                            <h4 class="font-bold text-slate-200">{{ __('brain_science_topic_1') }}</h4>
                         </div>
                         <div class="px-6 py-4 bg-slate-800 rounded-2xl border border-slate-700 hover:border-purple-500 transition cursor-help group">
                             <p class="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1 group-hover:text-white">Active_Link_02</p>
-                            <h4 class="font-bold text-slate-200">Extended Mind Thesis</h4>
+                            <h4 class="font-bold text-slate-200">{{ __('brain_science_topic_2') }}</h4>
                         </div>
                         <div class="px-6 py-4 bg-slate-800 rounded-2xl border border-slate-700 hover:border-emerald-500 transition cursor-help group">
                             <p class="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1 group-hover:text-white">Active_Link_03</p>
-                            <h4 class="font-bold text-slate-200">Zettelkasten Method</h4>
+                            <h4 class="font-bold text-slate-200">{{ __('brain_science_topic_3') }}</h4>
                         </div>
                     </div>
                 </div>
@@ -424,7 +424,7 @@
                         <div class="relative z-10 text-center">
                             <div class="text-[120px] mb-4 drop-shadow-2xl animate-pulse">🧠</div>
                             <div class="bg-black/20 backdrop-blur-md px-6 py-2 rounded-full border border-white/10 inline-block font-black text-xs uppercase tracking-widest">
-                                Synaptic_Sync_Active
+                                {{ __('brain_science_viz_badge') }}
                             </div>
                         </div>
                         {{-- Circular Data Rings --}}

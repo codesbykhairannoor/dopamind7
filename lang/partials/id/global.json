@@ -129,6 +129,30 @@
     
     "password_security_title": "Keamanan Sandi",
     "password_security_desc": "Pastikan akun Anda menggunakan kata sandi acak yang panjang agar tetap aman.",
-    "current_password": "Sandi Saat Ini"
-
+    "current_password": "Sandi Saat Ini",
+    "cookie_title": "🍪 Icip Cookie?",
+    "cookie_desc": "Kami menggunakan cookie untuk memastikan Anda mendapatkan pengalaman terbaik dan aman di sistem kami.",
+    "cookie_btn_accept": "Terima Semua",
+    "cookie_btn_settings": "Pengaturan",
+    "cookie_btn_essential": "Hanya Esensial",
+    "contact_title": "Hubungi Kami",
+    "contact_subtitle": "Ada pertanyaan atau butuh bantuan? Tim kami siap mendampingi perjalanan produktivitas Anda.",
+    "contact_form_name": "Nama Lengkap",
+    "contact_form_email": "Alamat Email",
+    "contact_form_subject": "Subjek",
+    "contact_form_message": "Pesan Anda",
+    "contact_btn_send": "Kirim Pesan Sekarang",
+    "contact_success_title": "Pesan Terkirim!",
+    "contact_success_desc": "Terima kasih! Kami akan segera menghubungi Anda dalam waktu 24-48 jam.",
+    "contact_info_title": "Informasi Kontak",
+    "contact_info_hq": "Kantor Pusat OneForMind",
+    "contact_info_jakarta": "Jakarta, Indonesia",
+    "contact_info_support": "Dukungan Teknis",
+    "contact_info_billing": "Pembayaran & Lisensi",
+    "contact_info_chat": "Live Chat",
+    "contact_info_chat_status": "Dukungan Cepat",
+    "contact_faq_title": "Punya pertanyaan teknis?",
+    "contact_faq_desc": "Cek dokumentasi bantuan kami untuk jawaban instan mengenai fitur dan lisensi.",
+    "contact_faq_btn": "Buka Pusat Bantuan",
+    "contact_form_message_placeholder": "Bagaimana kami bisa membantu Anda?"
 }

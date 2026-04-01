@@ -107,12 +107,12 @@
                         <img class="w-full h-full rounded-full border-2 border-white object-cover" src="https://ui-avatars.com/api/?name=U+M&background=fff&color=4f46e5" alt="User">
                     </div>
                     <span class="bg-emerald-100 text-emerald-600 text-[10px] font-black uppercase px-3 py-1 rounded-full flex items-center gap-1">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Available
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> {{ __('freelance_mockup_available') }}
                     </span>
                 </div>
                 <div>
-                    <h3 class="font-black text-xl text-gray-900 mb-1">Fullstack Dev</h3>
-                    <p class="text-xs font-medium text-gray-500 mb-4">Top Rated Plus • 100% Job Success</p>
+                    <h3 class="font-black text-xl text-gray-900 mb-1">{{ __('freelance_mockup_role') }}</h3>
+                    <p class="text-xs font-medium text-gray-500 mb-4">{{ __('freelance_mockup_rating') }}</p>
                     
                     <div class="flex gap-2 mb-4">
                         <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] rounded-md font-bold">Laravel</span>
@@ -123,7 +123,7 @@
                     <div class="w-full bg-gray-100 rounded-full h-1.5">
                         <div class="bg-gradient-to-r from-indigo-500 to-sky-400 h-1.5 rounded-full w-[92%]"></div>
                     </div>
-                    <p class="text-[10px] text-right font-bold text-gray-400 mt-1">Profile Completion</p>
+                    <p class="text-[10px] text-right font-bold text-gray-400 mt-1">{{ __('freelance_mockup_completion') }}</p>
                 </div>
             </div>
 
@@ -132,11 +132,11 @@
                 <div class="flex items-center gap-3 mb-2">
                     <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm">💰</div>
                     <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Payment Cleared</p>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{{ __('freelance_mockup_payment_badge') }}</p>
                         <p class="text-sm font-black text-white">$ 1,250.00</p>
                     </div>
                 </div>
-                <p class="text-[10px] text-slate-400 italic">From: Startup Agency NY</p>
+                <p class="text-[10px] text-slate-400 italic">{{ __('freelance_mockup_payment_from') }}</p>
             </div>
 
             {{-- 3. Floating Item Bottom Left: Client Message --}}
@@ -145,11 +145,11 @@
                     <div class="w-8 h-8 rounded-full bg-indigo-100 flex-shrink-0 flex items-center justify-center text-sm">👋</div>
                     <div>
                         <div class="flex justify-between items-center mb-1">
-                            <p class="text-xs font-black text-gray-900">Sarah (Client)</p>
-                            <p class="text-[9px] font-bold text-gray-400">Just now</p>
+                            <p class="text-xs font-black text-gray-900">{{ __('freelance_mockup_msg_name') }}</p>
+                            <p class="text-[9px] font-bold text-gray-400">{{ __('freelance_mockup_msg_time') }}</p>
                         </div>
                         <p class="text-[11px] font-medium text-gray-600 leading-tight">
-                            "The new UI looks absolutely stunning! Can we deploy this tonight?"
+                            "{{ __('freelance_mockup_msg_text') }}"
                         </p>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
             {{-- Decorative Element: Project Milestone --}}
             <div class="absolute bottom-4 right-10 z-10 bg-white/80 backdrop-blur rounded-full px-4 py-2 shadow-sm border border-slate-100 flex items-center gap-2">
                 <span class="text-sky-500">🎯</span>
-                <p class="text-[10px] font-black text-slate-700 uppercase tracking-wide">Milestone 2 Hit</p>
+                <p class="text-[10px] font-black text-slate-700 uppercase tracking-wide">{{ __('freelance_mockup_milestone') }}</p>
             </div>
 
         </div>
@@ -210,22 +210,22 @@
                 {{-- Mockup Kanban / Projects Dark Mode --}}
                 <div class="space-y-4">
                     <div class="flex justify-between items-center mb-2">
-                        <h4 class="text-slate-300 font-bold">Active Projects</h4>
-                        <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded border border-emerald-500/30">On Track</span>
+                        <h4 class="text-slate-300 font-bold">{{ __('freelance_mockup_active_title') }}</h4>
+                        <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded border border-emerald-500/30">{{ __('freelance_mockup_active_status') }}</span>
                     </div>
                     
                     <div class="bg-slate-800/80 backdrop-blur p-4 rounded-2xl border border-slate-700 flex justify-between items-center transform transition hover:translate-x-2 cursor-pointer">
                         <div>
-                            <p class="text-white font-bold text-sm">Company A - Landing Page</p>
-                            <p class="text-slate-400 text-xs">Vue.js Integration</p>
+                            <p class="text-white font-bold text-sm">{{ __('freelance_mockup_project_1_title') }}</p>
+                            <p class="text-slate-400 text-xs">{{ __('freelance_mockup_project_1_sub') }}</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border-2 border-indigo-500 flex items-center justify-center text-xs text-indigo-400 font-bold">75%</div>
                     </div>
                     
                     <div class="bg-slate-800/80 backdrop-blur p-4 rounded-2xl border border-slate-700 flex justify-between items-center transform transition hover:translate-x-2 cursor-pointer">
                         <div>
-                            <p class="text-white font-bold text-sm">Agency B - SEO Optimization</p>
-                            <p class="text-slate-400 text-xs">Content Audit</p>
+                            <p class="text-white font-bold text-sm">{{ __('freelance_mockup_project_2_title') }}</p>
+                            <p class="text-slate-400 text-xs">{{ __('freelance_mockup_project_2_sub') }}</p>
                         </div>
                         <div class="w-8 h-8 rounded-full border-2 border-amber-500 flex items-center justify-center text-xs text-amber-400 font-bold">30%</div>
                     </div>
@@ -273,15 +273,15 @@
                 {{-- Mockup Receipt / Invoice --}}
                 <div class="bg-gray-50 w-64 p-6 rounded-t-xl rounded-b-sm border border-dashed border-gray-300 relative shadow-inner">
                     <div class="text-center mb-4 border-b border-dashed border-gray-300 pb-4">
-                        <h4 class="font-black text-gray-900 text-xl tracking-widest">INVOICE</h4>
-                        <p class="text-[10px] text-gray-500 mt-1">Status: Paid 🎉</p>
+                        <h4 class="font-black text-gray-900 text-xl tracking-widest">{{ __('freelance_mockup_invoice_title') }}</h4>
+                        <p class="text-[10px] text-gray-500 mt-1">{{ __('freelance_mockup_invoice_status') }}</p>
                     </div>
                     <div class="space-y-2 text-xs font-medium text-gray-600 mb-4 border-b border-dashed border-gray-300 pb-4">
-                        <div class="flex justify-between"><span>Web Design</span><span>$500</span></div>
-                        <div class="flex justify-between"><span>SEO Setup</span><span>$200</span></div>
+                        <div class="flex justify-between"><span>{{ __('freelance_mockup_invoice_item_1') }}</span><span>$500</span></div>
+                        <div class="flex justify-between"><span>{{ __('freelance_mockup_invoice_item_2') }}</span><span>$200</span></div>
                     </div>
                     <div class="flex justify-between font-black text-emerald-600 text-lg">
-                        <span>TOTAL</span><span>$700</span>
+                        <span>{{ __('freelance_mockup_invoice_total') }}</span><span>$700</span>
                     </div>
                     {{-- Zig-zag bottom edge illusion --}}
                     <div class="absolute -bottom-2 left-0 w-full h-2 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cGF0aCBkPSJNMCA4IEw0IDAgTDggOCBaIiBmaWxsPSIjRjlGQUZCIiAvPgo8L3N2Zz4=')] bg-repeat-x"></div>
@@ -367,15 +367,15 @@
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
                     <div class="text-3xl mb-2">🏖️</div>
-                    <div class="text-xs font-black text-slate-400 uppercase">Paid Leave</div>
+                    <div class="text-xs font-black text-slate-400 uppercase">{{ __('freelance_extra_2_item_1') }}</div>
                 </div>
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
                     <div class="text-3xl mb-2">🛡️</div>
-                    <div class="text-xs font-black text-slate-400 uppercase">Health Fund</div>
+                    <div class="text-xs font-black text-slate-400 uppercase">{{ __('freelance_extra_2_item_2') }}</div>
                 </div>
                 <div class="p-6 bg-indigo-600 rounded-3xl border border-indigo-500 text-white md:col-span-1 col-span-2">
                     <div class="text-3xl mb-2">💎</div>
-                    <div class="text-xs font-black text-indigo-100 uppercase">Scaling Kit</div>
+                    <div class="text-xs font-black text-indigo-100 uppercase">{{ __('freelance_extra_2_item_3') }}</div>
                 </div>
             </div>
         </div>
@@ -408,15 +408,15 @@
                         <div class="flex flex-wrap gap-4">
                             <div class="flex items-center gap-3 bg-white/5 px-6 py-4 rounded-xl border border-white/5 hover:bg-white/10 transition">
                                 <div class="w-2 h-2 rounded-full bg-indigo-400 shadow-[0_0_10px_rgba(129,140,248,0.5)]"></div>
-                                <span class="text-sm font-bold text-slate-300">Throughput Accounting</span>
+                                <span class="text-sm font-bold text-slate-300">{{ __('freelance_science_topic_1') }}</span>
                             </div>
                             <div class="flex items-center gap-3 bg-white/5 px-6 py-4 rounded-xl border border-white/5 hover:bg-white/10 transition">
                                 <div class="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(192,132,252,0.5)]"></div>
-                                <span class="text-sm font-bold text-slate-300">Parkinson's Law</span>
+                                <span class="text-sm font-bold text-slate-300">{{ __('freelance_science_topic_2') }}</span>
                             </div>
                             <div class="flex items-center gap-3 bg-white/5 px-6 py-4 rounded-xl border border-white/5 hover:bg-white/10 transition">
                                 <div class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.5)]"></div>
-                                <span class="text-sm font-bold text-slate-300">Leveraged Output</span>
+                                <span class="text-sm font-bold text-slate-300">{{ __('freelance_science_topic_3') }}</span>
                             </div>
                         </div>
                     </div>

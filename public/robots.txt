@@ -1,28 +1,42 @@
+# OneForMind Premium Robots.txt
+# 🚀 High-End Productivity OS
+
 User-agent: *
 Allow: /
+# Block Core App & Dashboard (Security & Index Cleanliness)
+Disallow: /dashboard*
+Disallow: /planner*
+Disallow: /habits*
+Disallow: /finance*
+Disallow: /journal*
+Disallow: /calendar*
+Disallow: /goals*
+Disallow: /jobs*
+Disallow: /profile*
+Disallow: /settings*
+Disallow: /auth/
+Disallow: /login
+Disallow: /register
+Disallow: /api/
 Disallow: /build/
 Disallow: /vendor/
-Disallow: /dashboard
-Disallow: /habits
-Disallow: /finance
-Disallow: /planner
-Disallow: /journal
-Disallow: /calendar
-Disallow: /goals
-Disallow: /jobs
-Disallow: /profile
-Disallow: /settings
-User-agent: GPTBot
-Allow: /
-User-agent: ChatGPT-User
-Allow: /
-User-agent: Google-Extended
-Allow: /
-User-agent: ClaudeBot
-Allow: /
-User-agent: Omgilibot
-Allow: /
-User-agent: Omgili
-Allow: /
+Disallow: /callback
 
+# AI Crawler Policy (Friendly toward knowledge but protect data)
+User-agent: GPTBot
+Allow: /resources/
+Allow: /solutions/
+Disallow: /
+
+User-agent: ChatGPT-User
+Allow: /resources/
+Allow: /solutions/
+Disallow: /
+
+User-agent: Google-Extended
+Allow: /resources/
+Allow: /solutions/
+Disallow: /
+
+# Sitemap
 Sitemap: https://oneformind.com/sitemap.xml

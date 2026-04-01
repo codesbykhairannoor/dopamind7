@@ -9,14 +9,12 @@
     "pricing_monthly": "Bulanan",
     "pricing_yearly": "Tahunan",
     "pricing_save_amount": "Hemat 40% dengan Tahunan",
-    
     "pricing_free_name": "Explorer",
     "pricing_forever": "selamanya",
     "pricing_free_desc": "Cocok untuk pemula yang ingin mulai melacak habit dan keuangan dasar.",
     "pricing_feat_habits_limit": "Hingga 5 Habit Aktif",
     "pricing_feat_finance_basic": "Pelacak Keuangan Dasar",
     "pricing_free_btn": "Mulai Gratis",
-    
     "pricing_pro_name": "Architect",
     "pricing_pro_badge": "Terbaik untuk Awal",
     "pricing_month": "bln",
@@ -30,7 +28,6 @@
     "pricing_pro_initial": "Buka Pertama: Rp 89.000",
     "pricing_pro_recurring": "Lalu Rp 69.000/bln",
     "pricing_pro_btn": "Buka Semua Sekarang",
-
     "pricing_ai_initial": "Buka Pertama: Rp 199.000",
     "pricing_ai_recurring": "Lalu Rp 129.000/bln",
     "pricing_ai_desc": "Masa depan produktivitas. Integrasikan AI ke dalam alur kerja harian Anda.",
@@ -38,7 +35,6 @@
     "pricing_feat_ai_status": "Segera Hadir",
     "pricing_feat_automated_insights": "Wawasan Hidup Otomatis",
     "pricing_ai_btn": "Pilih Quantum",
-    
     "pricing_life_name": "Mind Master",
     "pricing_once": "sekali",
     "pricing_life_desc": "Investasi terbaik. Bayar sekali, hindari biaya unlock dan biaya langganan selamanya.",
@@ -48,7 +44,6 @@
     "pricing_feat_jobs_unlocked": "Job Tracker Terbuka Selamanya",
     "pricing_feat_priority_support": "Dukungan Prioritas Discord",
     "pricing_life_btn": "Beli Lifetime",
-    
     "pricing_compare_title": "Bandingkan Fitur",
     "pricing_compare_subtitle": "Lihat detail apa saja yang Anda dapatkan di setiap paket.",
     "pricing_feat_label": "Nama Fitur",
@@ -77,4 +72,4 @@
     "feat_journal_lock": "Kunci Privasi Jurnal",
     "feat_calendar_timeline": "Tampilan Timeline / Gantt",
     "feat_ai_scheduling": "Penjadwalan Otomatis AI"
-}
+}

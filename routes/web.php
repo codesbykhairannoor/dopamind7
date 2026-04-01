@@ -10,6 +10,7 @@ use App\Http\Controllers\CalendarController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
@@ -49,11 +50,7 @@ Route::get('/lang/{locale}', function (Request $request, $locale) {
 
 // --- GROUP 1: PUBLIC PAGES (Guest) ---
 Route::get('/', function () {
-    if (auth()->check()) {
-        return redirect()->route('dashboard');
-    }
     return view('welcome');
-
 })->name('home');
 
 
@@ -132,16 +129,16 @@ Route::get('/sitemap.xml', function () {
 
     // 4. RESOURCES (Prefix: /resources/...)
     // Konten edukasi
-    $resources = ['guide', 'blog', 'stories'];
+    $resources = ['guide', 'blog', 'stories', 'changelog', 'community', 'help'];
     foreach ($resources as $resource) {
         $pages[] = [
             'url' => url("/resources/{$resource}"),
-            'priority' => '0.7', // Sedikit lebih rendah dari fitur
+            'priority' => '0.7',
             'freq' => 'weekly'
         ];
     }
 
-    // 5. COMPARE & COMPANY (Campuran)
+    // 5. COMPARE & COMPANY & ABOUT
     // Halaman pendukung SEO (vs competitor) & Legal
     $others = [
         // Compare Pages (Penting buat SEO "Alternative to...")
@@ -153,9 +150,15 @@ Route::get('/sitemap.xml', function () {
         '/compare/planner-apps',
         '/compare/five-apps',
 
-        // Legal Pages
+        // Legal & Company Pages
         '/company/privacy',
-        '/company/terms'
+        '/company/terms',
+        '/company/refund',
+        '/company/security',
+        '/company/contact',
+        '/company/status',
+        '/company/press-kit',
+        '/about'
     ];
 
     foreach ($others as $uri) {
@@ -311,21 +314,13 @@ Route::get('/resources/changelog', function () {
 // ==========================================
 
 
-Route::get('/company/privacy', function () {
-    return view('company.privacy');
-})->name('company.privacy');
+Route::get('/company/contact', [CompanyController::class, 'contact'])->name('company.contact');
+Route::post('/company/contact', [CompanyController::class, 'sendContact'])->name('contact.send');
 
-Route::get('/company/terms', function () {
-    return view('company.terms');
-})->name('company.terms');
-
-Route::get('/company/refund', function () {
-    return view('company.refund');
-})->name('company.refund');
-
-Route::get('/company/security', function () {
-    return view('company.security');
-})->name('company.security');
+Route::get('/company/privacy', [CompanyController::class, 'privacy'])->name('company.privacy');
+Route::get('/company/terms', [CompanyController::class, 'terms'])->name('company.terms');
+Route::get('/company/refund', [CompanyController::class, 'refund'])->name('company.refund');
+Route::get('/company/security', [CompanyController::class, 'security'])->name('company.security');
 
 Route::get('/company/status', function () {
     return view('company.status');

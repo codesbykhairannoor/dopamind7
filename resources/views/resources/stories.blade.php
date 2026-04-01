@@ -234,11 +234,23 @@
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-5xl font-black text-slate-900 mb-6">{{ __('sto_hof_title') }}</h2>
             <p class="text-xl text-slate-500 mb-16">{{ __('sto_hof_desc') }}</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="h-40 bg-white rounded-3xl border border-slate-100 shadow-sm flex items-center justify-center p-4"><span class="font-black text-lg text-slate-300">Winner 1</span></div>
-                <div class="h-40 bg-white rounded-3xl border border-slate-100 shadow-sm flex items-center justify-center p-4"><span class="font-black text-lg text-slate-300">Winner 2</span></div>
-                <div class="h-40 bg-white rounded-3xl border border-slate-100 shadow-sm flex items-center justify-center p-4"><span class="font-black text-lg text-slate-300">Winner 3</span></div>
-                <div class="h-40 bg-white rounded-3xl border border-slate-100 shadow-sm flex items-center justify-center p-4"><span class="font-black text-lg text-slate-300">Winner 4</span></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                @foreach(range(1, 4) as $i)
+                <div class="bg-white p-10 rounded-[3rem] border border-slate-200 shadow-sm hover:shadow-2xl hover:translate-y-[-8px] transition-all duration-500 group relative overflow-hidden text-left">
+                    {{-- Decorative Number --}}
+                    <div class="absolute -top-4 -right-4 text-8xl font-black text-slate-50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">0{{ $i }}</div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl mb-8 shadow-xl shadow-indigo-100 group-hover:rotate-12 transition-transform">
+                            @if($i==1) 💰 @elseif($i==2) 👑 @elseif($i==3) 🏗️ @else 🧘 @endif
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900 mb-2">{{ __("sto_hof_{$i}_name") }}</h3>
+                        <p class="text-sm font-black text-indigo-600 uppercase tracking-widest mb-6">{{ __("sto_hof_{$i}_title") }}</p>
+                        <p class="text-slate-500 font-bold leading-relaxed">{{ __("sto_hof_{$i}_desc") }}</p>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </section>

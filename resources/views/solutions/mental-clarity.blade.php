@@ -15,8 +15,8 @@
 [{
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "OneForMind Mental Clarity Solution",
-  "description": "System for reducing mental clutter and achieving extreme focus."
+  "name": "{{ __('schema_solution_mental_clarity_name') }}",
+  "description": "{{ __('schema_solution_mental_clarity_description') }}"
 },{
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -33,7 +33,7 @@
   },{
     "@type": "ListItem",
     "position": 3,
-    "name": "Mental Clarity",
+    "name": "{{ __('mental_breadcrumb') }}",
     "item": "{{ url('/solutions/mental-clarity') }}"
   }]
 }]
@@ -75,30 +75,30 @@
                 <div class="relative bg-white rounded-[2.5rem] shadow-2xl border border-white flex flex-col h-[500px] overflow-hidden transform transition hover:scale-[1.01] duration-500 p-8">
                     <div class="flex-grow flex flex-col justify-center">
                         <div class="text-center mb-8">
-                            <h4 class="font-serif italic text-2xl text-gray-800 mb-2">"Find stillness in the movement."</h4>
-                            <p class="text-xs uppercase tracking-widest text-gray-400">Zen Journal Entry #42</p>
+                            <h4 class="font-serif italic text-2xl text-gray-800 mb-2">"{{ __('mental_mockup_quote') }}"</h4>
+                            <p class="text-xs uppercase tracking-widest text-gray-400">{{ __('mental_mockup_source') }}</p>
                         </div>
                         
                         <div class="space-y-4">
                             <div class="flex items-center gap-4 p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
                                 <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-xl">🧘</div>
                                 <div>
-                                    <p class="text-xs font-bold text-indigo-950">Meditation</p>
-                                    <p class="text-[10px] text-indigo-600">Daily Streak: 12 Days</p>
+                                    <p class="text-xs font-bold text-indigo-950">{{ __('mental_mockup_task_1_title') }}</p>
+                                    <p class="text-[10px] text-indigo-600">{{ __('mental_mockup_task_1_sub') }}</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl border border-purple-100">
                                 <div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center text-xl">📔</div>
                                 <div>
-                                    <p class="text-xs font-bold text-purple-950">Gratitude Journal</p>
-                                    <p class="text-[10px] text-purple-600">Morning routine complete</p>
+                                    <p class="text-xs font-bold text-purple-950">{{ __('mental_mockup_task_2_title') }}</p>
+                                    <p class="text-[10px] text-purple-600">{{ __('mental_mockup_task_2_sub') }}</p>
                                 </div>
                             </div>
                             <div class="flex items-center gap-4 p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
                                 <div class="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-xl">✨</div>
                                 <div>
-                                    <p class="text-xs font-bold text-emerald-950">Current Mood</p>
-                                    <p class="text-[10px] text-emerald-600">Feeling: Calibrated</p>
+                                    <p class="text-xs font-bold text-emerald-950">{{ __('mental_mockup_task_3_title') }}</p>
+                                    <p class="text-[10px] text-emerald-600">{{ __('mental_mockup_task_3_sub') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -186,13 +186,13 @@
                 <div class="absolute w-72 md:w-96 h-auto bg-white/10 backdrop-blur-xl rounded-[2.5rem] md:rounded-[3rem] border border-white/20 shadow-2xl p-6 md:p-8 transform rotate-3 hover:rotate-0 transition duration-500 z-10">
                     <div class="flex justify-between items-start mb-6 md:mb-8">
                         <div class="w-10 h-10 md:w-12 md:h-12 bg-white/20 rounded-xl md:rounded-2xl flex items-center justify-center text-xl md:text-2xl">🖋️</div>
-                        <span class="px-3 py-1 bg-white/10 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-indigo-200 border border-white/10">Daily Dump</span>
+                        <span class="px-3 py-1 bg-white/10 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-indigo-200 border border-white/10">{{ __('mental_mockup_journal_badge') }}</span>
                     </div>
                     <p class="font-serif text-lg md:text-xl italic text-white/90 leading-relaxed mb-6">
-                        "Feeling overwhelmed by the sheer amount of tasks today. Writing this down to let it out. I will focus on just ONE thing right now."
+                        "{{ __('mental_mockup_journal_text') }}"
                     </p>
                     <div class="flex gap-2">
-                        <span class="px-3 py-1 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[10px] md:text-xs font-bold">Relieved</span>
+                        <span class="px-3 py-1 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-[10px] md:text-xs font-bold">{{ __('mental_mockup_journal_status') }}</span>
                     </div>
                 </div>
             </div>
@@ -236,7 +236,7 @@
                         </div>
                         <div class="flex-1 bg-indigo-300 rounded-t-xl h-28"></div>
                     </div>
-                    <div class="mt-6 text-center text-[10px] font-black text-indigo-400 uppercase tracking-widest">Real-time Mental Resource Meter</div>
+                    <div class="mt-6 text-center text-[10px] font-black text-indigo-400 uppercase tracking-widest">{{ __('mental_extra_1_label') }}</div>
                 </div>
             </div>
             <div class="order-1 md:order-2">
@@ -256,9 +256,9 @@
                 {{ __('solve_mental_extra_2_desc') }}
             </p>
             <div class="flex justify-center flex-wrap gap-4">
-                <div class="px-6 py-3 bg-white/10 rounded-full border border-white/20">Reflection</div>
-                <div class="px-6 py-3 bg-white/10 rounded-full border border-white/20">Correction</div>
-                <div class="px-6 py-3 bg-indigo-600 rounded-full border border-indigo-500 font-bold shadow-xl shadow-indigo-500/20">Calibration</div>
+                <div class="px-6 py-3 bg-white/10 rounded-full border border-white/20">{{ __('mental_extra_2_item_1') }}</div>
+                <div class="px-6 py-3 bg-white/10 rounded-full border border-white/20">{{ __('mental_extra_2_item_2') }}</div>
+                <div class="px-6 py-3 bg-indigo-600 rounded-full border border-indigo-500 font-bold shadow-xl shadow-indigo-500/20">{{ __('mental_extra_2_item_3') }}</div>
             </div>
         </div>
     </section>
@@ -291,11 +291,11 @@
                 <div class="space-y-8">
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-right transform hover:-translate-x-2 transition">
                         <span class="block text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Process_01</span>
-                        <h4 class="font-bold text-gray-900">Neuroplasticity</h4>
+                        <h4 class="font-bold text-gray-900">{{ __('mental_science_process_1_title') }}</h4>
                     </div>
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-right transform hover:-translate-x-2 transition">
                         <span class="block text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1">Process_02</span>
-                        <h4 class="font-bold text-gray-900">Metacognition</h4>
+                        <h4 class="font-bold text-gray-900">{{ __('mental_science_process_2_title') }}</h4>
                     </div>
                 </div>
 
@@ -313,11 +313,11 @@
                 <div class="space-y-8">
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transform hover:translate-x-2 transition">
                         <span class="block text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1">Process_03</span>
-                        <h4 class="font-bold text-gray-900">Entropy Reduction</h4>
+                        <h4 class="font-bold text-gray-900">{{ __('mental_science_process_3_title') }}</h4>
                     </div>
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transform hover:translate-x-2 transition">
                         <span class="block text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">Process_04</span>
-                        <h4 class="font-bold text-gray-900">Cognitive Load Balance</h4>
+                        <h4 class="font-bold text-gray-900">{{ __('mental_science_process_4_title') }}</h4>
                     </div>
                 </div>
             </div>

@@ -94,21 +94,21 @@
                     {{-- Contextual Explanation --}}
                     <div class="lg:w-2/5 p-12 flex flex-col justify-center text-left">
                         <h2 class="text-4xl font-black text-white mb-8 leading-tight">
-                            Powered by<br>
+                            {{ __('neural_gemini_powered') }}<br>
                             <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Gemini Pro API</span>
                         </h2>
                         <ul class="space-y-6">
                             <li class="flex items-start gap-4">
                                 <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
-                                <p class="text-slate-400 font-medium">Real-time behavior analysis across all features.</p>
+                                <p class="text-slate-400 font-medium">{{ __('neural_gemini_feat1') }}</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
-                                <p class="text-slate-400 font-medium">Privacy-focused data processing with local-first logic.</p>
+                                <p class="text-slate-400 font-medium">{{ __('neural_gemini_feat2') }}</p>
                             </li>
                             <li class="flex items-start gap-4">
                                 <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">✓</div>
-                                <p class="text-slate-400 font-medium">Seamless integration with Habits, Jobs, and Goals.</p>
+                                <p class="text-slate-400 font-medium">{{ __('neural_gemini_feat3') }}</p>
                             </li>
                         </ul>
                     </div>
@@ -217,21 +217,21 @@
                     <div class="bg-slate-50 border border-slate-200 rounded-[3rem] p-8 shadow-inner overflow-hidden max-w-md mx-auto">
                         <div class="space-y-6">
                             <div class="flex flex-col items-start">
-                                <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-3 mb-1">OneForMind Coach</span>
+                                <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-3 mb-1">{{ __('neural_coach_sender') }}</span>
                                 <div class="bg-indigo-600 text-white p-4 rounded-2xl rounded-tl-none text-sm font-medium shadow-lg shadow-indigo-100 leading-relaxed">
-                                    "I noticed you're 20% more likely to execute habits when your morning mood is 'Excited'. Want me to move your high-energy tasks there?"
+                                    "{{ __('neural_coach_msg1') }}"
                                 </div>
                             </div>
                             <div class="flex flex-col items-end">
-                                <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mr-3 mb-1">You</span>
+                                <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest mr-3 mb-1">{{ __('neural_coach_user') }}</span>
                                 <div class="bg-white border border-slate-200 text-slate-700 p-4 rounded-2xl rounded-tr-none text-sm font-bold shadow-sm">
-                                    "Yes, please optimize my schedule."
+                                    "{{ __('neural_coach_msg2') }}"
                                 </div>
                             </div>
                             <div class="flex flex-col items-start translate-x-2">
-                                <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-3 mb-1">OneForMind Coach</span>
+                                <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-3 mb-1">{{ __('neural_coach_sender') }}</span>
                                 <div class="bg-emerald-600 text-white p-4 rounded-2xl rounded-tl-none text-sm font-medium shadow-lg shadow-emerald-100 leading-relaxed animate-pulse">
-                                    "Done! Your Planner has been updated for maximum flow."
+                                    "{{ __('neural_coach_msg3') }}"
                                 </div>
                             </div>
                         </div>

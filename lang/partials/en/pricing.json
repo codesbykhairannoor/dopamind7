@@ -9,14 +9,12 @@
     "pricing_monthly": "Monthly",
     "pricing_yearly": "Yearly",
     "pricing_save_amount": "Save 40% with Yearly",
-    
     "pricing_free_name": "Explorer",
     "pricing_forever": "forever",
     "pricing_free_desc": "Perfect for beginners who want to start tracking habits and basic finances.",
     "pricing_feat_habits_limit": "Up to 5 Active Habits",
     "pricing_feat_finance_basic": "Basic Expense Tracking",
     "pricing_free_btn": "Start for Free",
-    
     "pricing_pro_name": "Architect",
     "pricing_pro_badge": "Best for Starters",
     "pricing_month": "mo",
@@ -30,7 +28,6 @@
     "pricing_pro_initial": "Initial Unlock: Rp 89,000",
     "pricing_pro_recurring": "Then Rp 69,000/mo",
     "pricing_pro_btn": "Unlock All Now",
-
     "pricing_ai_initial": "Initial Unlock: Rp 199,000",
     "pricing_ai_recurring": "Then Rp 129,000/mo",
     "pricing_ai_desc": "The future of productivity. Integrate AI into your daily workflow.",
@@ -38,7 +35,6 @@
     "pricing_feat_ai_status": "Coming Soon",
     "pricing_feat_automated_insights": "Automated Life Insights",
     "pricing_ai_btn": "Go Quantum",
-    
     "pricing_life_name": "Mind Master",
     "pricing_once": "once",
     "pricing_life_desc": "The ultimate investment. Pay once, skip the unlock fee and recurring costs forever.",
@@ -48,7 +44,6 @@
     "pricing_feat_jobs_unlocked": "Job Tracker Unlocked Forever",
     "pricing_feat_priority_support": "Priority Discord Support",
     "pricing_life_btn": "Buy Lifetime",
-    
     "pricing_compare_title": "Compare Features",
     "pricing_compare_subtitle": "See exactly what you get in each plan.",
     "pricing_feat_label": "Feature Name",
@@ -77,4 +72,4 @@
     "feat_journal_lock": "Journal Privacy Lock",
     "feat_calendar_timeline": "Timeline / Gantt View",
     "feat_ai_scheduling": "AI Auto-Scheduling"
-}
+}

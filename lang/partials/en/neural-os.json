@@ -44,5 +44,15 @@
     "neural_cta_title": "Step into the Future of Focus.",
     "neural_cta_desc": "Join thousands of users who are using Neural OS to eliminate chaos and build intentional lives.",
     "neural_cta_btn": "Start Your Evolution",
-    "neural_cta_note": "Free 14-day trial for new users."
+    "neural_cta_note": "Free 14-day trial for new users.",
+
+    "neural_gemini_powered": "Powered by",
+    "neural_gemini_feat1": "Real-time behavior analysis across all features.",
+    "neural_gemini_feat2": "Privacy-focused data processing with local-first logic.",
+    "neural_gemini_feat3": "Seamless integration with Habits, Jobs, and Goals.",
+    "neural_coach_sender": "OneForMind Coach",
+    "neural_coach_user": "You",
+    "neural_coach_msg1": "I noticed you're 20% more likely to execute habits when your morning mood is 'Excited'. Want me to move your high-energy tasks there?",
+    "neural_coach_msg2": "Yes, please optimize my schedule.",
+    "neural_coach_msg3": "Done! Your Planner has been updated for maximum flow."
 }

@@ -10,6 +10,12 @@
 @endsection
 
 @section('content')
+<div x-data="{ 
+    search: '',
+    matches(text) {
+        return !this.search || text.toLowerCase().includes(this.search.toLowerCase());
+    }
+}">
 
     {{-- SECTION 1: LUXURY LIGHT HERO (CENTERED) --}}
     <header class="pt-48 pb-32 px-6 relative bg-white overflow-hidden border-b border-gray-100">
@@ -52,7 +58,7 @@
                         <div class="pl-6 pr-2 text-slate-300">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
-                        <input type="text" placeholder="{{ __('help_search_placeholder') }}" class="w-full py-5 px-3 text-lg text-slate-900 bg-transparent border-none outline-none focus:ring-0 placeholder-slate-300 font-bold">
+                        <input type="text" x-model="search" placeholder="{{ __('help_search_placeholder') }}" class="w-full py-5 px-3 text-lg text-slate-900 bg-transparent border-none outline-none focus:ring-0 placeholder-slate-300 font-bold">
                         <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-5 rounded-[1.8rem] font-black text-sm transition shadow-xl shadow-indigo-200 active:scale-95 ml-2">
                             Search
                         </button>
@@ -64,7 +70,7 @@
     </header>
 
     {{-- SECTION 2: ICONIC CATEGORIES --}}
-    <section class="py-24 bg-white border-t border-slate-50">
+    <section class="py-24 bg-white border-t border-slate-50" x-show="!search">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach([
@@ -98,7 +104,7 @@
                     <h2 class="text-4xl font-black text-slate-900 mb-12 tracking-tight">{{ __('help_popular_title') }}</h2>
                     <div class="grid gap-4">
                         @foreach([1, 2, 3, 4, 5, 6] as $p)
-                        <a href="#" class="p-6 rounded-3xl bg-white border border-slate-200 hover:border-indigo-400 hover:translate-x-2 transition duration-300 flex items-center justify-between group">
+                        <a href="#" class="p-6 rounded-3xl bg-white border border-slate-200 hover:border-indigo-400 hover:translate-x-2 transition duration-300 flex items-center justify-between group" x-show="matches($el.innerText)">
                             <div class="flex items-center gap-5">
                                 <span class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-xs font-black text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition">0{{ $p }}</span>
                                 <span class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition">{{ __("help_popular_q{$p}") }}</span>
@@ -112,9 +118,9 @@
                 {{-- FAQ ACCORDION --}}
                 <div>
                     <h2 class="text-4xl font-black text-slate-900 mb-12 tracking-tight">{{ __('help_faq_title') }}</h2>
-                    <div class="space-y-4" x-data="{ active: 1 }">
+                    <div class="space-y-4" x-data="{ active: null }">
                         @foreach([1, 2, 3] as $i)
-                        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm"
+                        <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" x-show="matches($el.innerText)"
                              :class="active === {{ $i }} ? 'ring-2 ring-indigo-500' : ''">
                             <button @click="active = active === {{ $i }} ? null : {{ $i }}" 
                                     class="w-full px-8 py-8 flex items-center justify-between text-left">
@@ -138,7 +144,7 @@
     </section>
 
     {{-- SECTION 4: PRODUCT SUPPORT (TAMBAHAN BIAR PANJANG) --}}
-    <section class="py-32 bg-white">
+    <section class="py-32 bg-white" x-show="!search">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
                 <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('help_support_title') }}</h2>
@@ -167,7 +173,7 @@
 
     
     {{-- SECTION: VIDEO TUTORIALS --}}
-    <section class="py-24 bg-slate-50">
+    <section class="py-24 bg-slate-50" x-show="!search">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-black text-slate-900 mb-4 text-center">{{ __('hlp_tuts_title') }}</h2>
             <p class="text-xl text-slate-500 mb-16 text-center">{{ __('hlp_tuts_desc') }}</p>
@@ -180,7 +186,7 @@
     </section>
 
     {{-- SECTION: CHEATSHEETS --}}
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-white" x-show="!search">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('hlp_cheat_title') }}</h2>
             <p class="text-xl text-slate-500 mb-16">{{ __('hlp_cheat_desc') }}</p>
@@ -196,7 +202,7 @@
     </section>
 
     {{-- SECTION: SYSTEM STATUS --}}
-    <section class="py-24 bg-slate-900 text-white">
+    <section class="py-24 bg-slate-900 text-white" x-show="!search">
         <div class="max-w-5xl mx-auto px-6 text-center">
             <h2 class="text-4xl font-black mb-4">{{ __('hlp_sla_title') }}</h2>
             <p class="text-xl text-slate-400 mb-16">{{ __('hlp_sla_desc') }}</p>

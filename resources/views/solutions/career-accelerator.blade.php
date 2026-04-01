@@ -78,26 +78,26 @@
                     <div class="space-y-6">
                         <div class="flex items-center justify-between mb-4">
                             <h4 class="font-black text-slate-900 text-sm">{{ __('solve_career_mockup_header') }}</h4>
-                            <span class="bg-indigo-100 text-indigo-600 text-[10px] font-bold px-2 py-1 rounded-full">Live Tracking</span>
+                            <span class="bg-indigo-100 text-indigo-600 text-[10px] font-bold px-2 py-1 rounded-full">{{ __('career_mockup_live') }}</span>
                         </div>
                         
                         <div class="space-y-3">
                             <div class="p-4 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-2xl">
                                 <div class="flex justify-between items-center">
                                     <p class="font-bold text-indigo-950 text-xs">Google - Senior UX</p>
-                                    <span class="text-[10px] font-bold text-indigo-600">Interviewing</span>
+                                    <span class="text-[10px] font-bold text-indigo-600">{{ __('career_status_interviewing') }}</span>
                                 </div>
                             </div>
                             <div class="p-4 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-2xl">
                                 <div class="flex justify-between items-center">
                                     <p class="font-bold text-emerald-950 text-xs">Stripe - Product Lead</p>
-                                    <span class="text-[10px] font-bold text-emerald-600">Offer Received 🎉</span>
+                                    <span class="text-[10px] font-bold text-emerald-600">{{ __('career_status_offer') }}</span>
                                 </div>
                             </div>
                             <div class="p-4 bg-slate-50 border-l-4 border-slate-300 rounded-r-2xl">
                                 <div class="flex justify-between items-center">
                                     <p class="font-bold text-slate-900 text-xs">Airbnb - Designer</p>
-                                    <span class="text-[10px] font-bold text-slate-400">Applied</span>
+                                    <span class="text-[10px] font-bold text-slate-400">{{ __('career_status_applied') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -106,8 +106,8 @@
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-xl">🎯</div>
                                 <div>
-                                    <p class="text-[10px] font-bold text-indigo-300 uppercase">Growth Plan</p>
-                                    <p class="text-xs font-bold">Learn Advanced Framer</p>
+                                    <p class="text-[10px] font-bold text-indigo-300 uppercase">{{ __('career_mockup_plan_badge') }}</p>
+                                    <p class="text-xs font-bold">{{ __('career_mockup_plan_title') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -208,7 +208,7 @@
             <div class="bg-indigo-950 rounded-[3rem] p-8 md:p-12 shadow-2xl relative order-2 md:order-1">
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-500/20 via-transparent to-transparent opacity-50"></div>
                 <div class="space-y-4 relative z-10">
-                    @foreach(['Company Mission', 'My Value Prop', 'Questions to Ask'] as $item)
+                    @foreach([__('career_extra_1_item_1'), __('career_extra_1_item_2'), __('career_extra_1_item_3')] as $item)
                         <div class="p-4 bg-white/10 rounded-2xl border border-white/10 flex items-center gap-3">
                             <span class="text-indigo-400">⚡</span>
                             <span class="text-white font-bold">{{ $item }}</span>
@@ -235,12 +235,12 @@
             <div class="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm inline-block">
                 <div class="flex items-center gap-8 justify-center">
                     <div class="text-left">
-                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Initial Offer</p>
+                        <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ __('career_negotiation_initial') }}</p>
                         <p class="text-2xl font-black text-slate-900">$85k</p>
                     </div>
                     <div class="text-2xl text-slate-300">→</div>
                     <div class="text-left">
-                        <p class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Negotiated</p>
+                        <p class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">{{ __('career_negotiation_final') }}</p>
                         <p class="text-2xl font-black text-indigo-600">$105k</p>
                     </div>
                 </div>
@@ -277,16 +277,16 @@
 
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                             <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition">
-                                <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Module_01</span>
-                                <span class="font-bold text-white text-sm">Sales Funnel Logic</span>
+                                <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">{{ __('career_science_module_1') }}</span>
+                                <span class="font-bold text-white text-sm">{{ __('career_science_topic_1') }}</span>
                             </div>
                             <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition">
-                                <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">Module_02</span>
-                                <span class="font-bold text-white text-sm">Follow-up Persistence</span>
+                                <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">{{ __('career_science_module_2') }}</span>
+                                <span class="font-bold text-white text-sm">{{ __('career_science_topic_2') }}</span>
                             </div>
                             <div class="p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition">
-                                <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">Module_03</span>
-                                <span class="font-bold text-white text-sm">Conversion Metrics</span>
+                                <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">{{ __('career_science_module_3') }}</span>
+                                <span class="font-bold text-white text-sm">{{ __('career_science_topic_3') }}</span>
                             </div>
                         </div>
                     </div>
@@ -298,8 +298,8 @@
                              <div class="absolute inset-4 border border-indigo-400/30 rounded-full animate-spin-slow"></div>
                              <div class="text-5xl">📈</div>
                              {{-- Floating Data Points --}}
-                             <div class="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-xl shadow-xl flex items-center justify-center text-indigo-600 font-black text-xs border border-indigo-100 animate-bounce cursor-pointer">ROI+</div>
-                             <div class="absolute bottom-0 -left-6 bg-emerald-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter shadow-lg">Optimized</div>
+                             <div class="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-xl shadow-xl flex items-center justify-center text-indigo-600 font-black text-xs border border-indigo-100 animate-bounce cursor-pointer">{{ __('career_science_viz_roi') }}</div>
+                             <div class="absolute bottom-0 -left-6 bg-emerald-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter shadow-lg">{{ __('career_science_viz_status') }}</div>
                         </div>
                     </div>
                 </div>
