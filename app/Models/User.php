@@ -30,6 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'premium_until',
         'resume_text',
         'resume_filename',
+        'cookie_consent',
     ];
 
     /**
@@ -75,21 +76,21 @@ class User extends Authenticatable implements MustVerifyEmail
         return Attribute::make(
             get: function () {
                 $path = $this->attributes['avatar_path'] ?? null;
-                
+
                 if ($path) {
                     // Cek jika ini adalah URL utuh (Google Auth/Cloudinary raw string)
                     if (str_starts_with($path, 'http')) {
                         return $path;
                     }
-                    
+
                     // Ambil config default filesystem ('public' di local, 'cloudinary' di prod)
                     $disk = config('filesystems.default');
-                    
+
                     // Gunakan Storage::disk()->url() agar Cloudinary mengembalikan URL https yang benar
-                    return Storage::disk($disk)->url($path); 
+                    return Storage::disk($disk)->url($path);
                 }
-                
-                return 'https://ui-avatars.com/api/?name='.urlencode($this->name).'&color=7F9CF5&background=EBF4FF';
+
+                return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4FF';
             }
         );
     }

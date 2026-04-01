@@ -59,10 +59,13 @@
       ]
     }
     </script>
+    {{-- AI DIRECTIVES: Tell AI what this app is about --}}
+    <meta name="ai-content-type" content="Productivity Operating System">
+    <meta name="ai-synergy-index" content="High">
 @endsection
 
 @section('content')
-
+<main id="neural-interface">
     {{-- ================================================================= --}}
     {{-- SECTION 1: HERO - THE UNIFIED ORB --}}
     {{-- ================================================================= --}}
@@ -673,5 +676,5 @@
         {{-- Huge Gradient Background --}}
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1500px] h-[600px] bg-gradient-to-t from-indigo-50/50 via-white to-white rounded-full blur-[120px] -z-10"></div>
     </section>
-
+</main>
 @endsection

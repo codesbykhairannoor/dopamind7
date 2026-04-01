@@ -62,7 +62,14 @@ Route::post('/waitlist', function (Request $request) {
 
     Waitlist::create($validated);
     return redirect()->back()->with('success', 'You have been added to the waitlist!');
-})->name('waitlist.store')->middleware('throttle:waitlist'); // 👈 Tambahan di sini
+})->name('waitlist.store')->middleware('throttle:waitlist');
+
+Route::post('/settings/cookie-consent', function (Request $request) {
+    if (auth()->check()) {
+        auth()->user()->update(['cookie_consent' => $request->consent]);
+    }
+    return response()->json(['status' => 'success']);
+})->name('settings.cookie-consent');
 
 
 Route::get('/about', function () {
@@ -115,9 +122,15 @@ Route::get('/sitemap.xml', function () {
     // 3. SOLUTIONS (Prefix: /solutions/...)
     // Target audience spesifik
     $solutions = [
-        'student', 'freelancer', 'personalgrowth',
-        'finance-mastery', 'career-accelerator', 'mental-clarity',
-        'atomic-system', 'deep-work', 'second-brain'
+        'student',
+        'freelancer',
+        'personalgrowth',
+        'finance-mastery',
+        'career-accelerator',
+        'mental-clarity',
+        'atomic-system',
+        'deep-work',
+        'second-brain'
     ];
     foreach ($solutions as $solution) {
         $pages[] = [
@@ -171,8 +184,8 @@ Route::get('/sitemap.xml', function () {
 
     // 6. Render ke View Blade XML
     return response()->view('seo.sitemap', [
-    'pages' => $pages,
-    'date' => now()->toAtomString()
+        'pages' => $pages,
+        'date' => now()->toAtomString()
     ])->header('Content-Type', 'text/xml');
 
 })->name('sitemap');
@@ -266,30 +279,32 @@ Route::get('/resources/guide', function () {
 
 Route::get('/resources/blog', function () {
     $posts = \App\Models\BlogPost::with('category')->where('status', 'published')
-        ->where(function ($query) {
-            $query->whereNull('published_at')
-                ->orWhere('published_at', '<=', now());
-        }
+        ->where(
+            function ($query) {
+                $query->whereNull('published_at')
+                    ->orWhere('published_at', '<=', now());
+            }
         )
-            ->orderBy('published_at', 'desc')
-            ->orderBy('created_at', 'desc')
-            ->paginate(12);
+        ->orderBy('published_at', 'desc')
+        ->orderBy('created_at', 'desc')
+        ->paginate(12);
 
-        return view('resources.blog', compact('posts'));
-    })->name('resources.blog');
+    return view('resources.blog', compact('posts'));
+})->name('resources.blog');
 
 Route::get('/resources/blog/{slug}', function ($slug) {
     $post = \App\Models\BlogPost::with('category')->where('slug', $slug)
         ->where('status', 'published')
-        ->where(function ($query) {
-            $query->whereNull('published_at')
-                ->orWhere('published_at', '<=', now());
-        }
+        ->where(
+            function ($query) {
+                $query->whereNull('published_at')
+                    ->orWhere('published_at', '<=', now());
+            }
         )
-            ->firstOrFail();
+        ->firstOrFail();
 
-        return view('resources.post', compact('post'));
-    })->name('resources.blog.show');
+    return view('resources.post', compact('post'));
+})->name('resources.blog.show');
 
 Route::get('/resources/stories', function () {
     return view('resources.stories');
@@ -306,6 +321,10 @@ Route::get('/resources/community', function () {
 Route::get('/resources/changelog', function () {
     return view('resources.changelog');
 })->name('resources.changelog');
+
+Route::get('/resources/neural-os-transparency', function () {
+    return view('resources.ai-trust');
+})->name('resources.ai-trust');
 
 
 
@@ -365,8 +384,8 @@ Route::get('/compare/five-apps', function () {
 
 
 // --- GROUP 2: SOCIAL LOGIN ---
-Route::get('/auth/google', [SocialController::class , 'redirect'])->name('google.login');
-Route::get('/auth/google/callback', [SocialController::class , 'callback']);
+Route::get('/auth/google', [SocialController::class, 'redirect'])->name('google.login');
+Route::get('/auth/google/callback', [SocialController::class, 'callback']);
 
 
 // --- GROUP 3: AUTHENTICATED APP ---
@@ -374,59 +393,62 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
 
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
-    Route::middleware(['module:planner'])->prefix('planner')->name('planner.')->group(function () {
-            Route::get('/', [PlannerController::class , 'index'])->name('index');
-            Route::post('/', [PlannerController::class , 'store'])->name('store');
-            Route::patch('/{plannerTask}', [PlannerController::class , 'update'])->name('update');
-            Route::delete('/{plannerTask}', [PlannerController::class , 'destroy'])->name('destroy');
-            Route::patch('/{plannerTask}/toggle', [PlannerController::class , 'toggle'])->name('toggle');
-            Route::post('/log', [PlannerController::class , 'updateLog'])->name('updateLog');
-            Route::post('/reset', [PlannerController::class , 'resetBoard'])->name('reset');
-            Route::post('/batch', [PlannerController::class , 'batchStore'])->name('batchStore');
+    Route::middleware(['module:planner'])->prefix('planner')->name('planner.')->group(
+        function () {
+            Route::get('/', [PlannerController::class, 'index'])->name('index');
+            Route::post('/', [PlannerController::class, 'store'])->name('store');
+            Route::patch('/{plannerTask}', [PlannerController::class, 'update'])->name('update');
+            Route::delete('/{plannerTask}', [PlannerController::class, 'destroy'])->name('destroy');
+            Route::patch('/{plannerTask}/toggle', [PlannerController::class, 'toggle'])->name('toggle');
+            Route::post('/log', [PlannerController::class, 'updateLog'])->name('updateLog');
+            Route::post('/reset', [PlannerController::class, 'resetBoard'])->name('reset');
+            Route::post('/batch', [PlannerController::class, 'batchStore'])->name('batchStore');
         }
-        );
+    );
 
-        Route::middleware(['module:habit'])->prefix('habits')->name('habits.')->group(function () {
-            Route::get('/', [HabitController::class , 'index'])->name('index');
-            Route::post('/', [HabitController::class , 'store'])->name('store');
+    Route::middleware(['module:habit'])->prefix('habits')->name('habits.')->group(
+        function () {
+            Route::get('/', [HabitController::class, 'index'])->name('index');
+            Route::post('/', [HabitController::class, 'store'])->name('store');
 
-            Route::post('/batch', [HabitController::class , 'batchStore'])->name('batchStore');
-            Route::post('/copy', [HabitController::class , 'copyFromPrevious'])->name('copy');
-            Route::post('/mood', [HabitController::class , 'updateMood'])->name('mood');
+            Route::post('/batch', [HabitController::class, 'batchStore'])->name('batchStore');
+            Route::post('/copy', [HabitController::class, 'copyFromPrevious'])->name('copy');
+            Route::post('/mood', [HabitController::class, 'updateMood'])->name('mood');
 
             // 🔥 PERBAIKAN DI SINI: hapus '/habits' dan 'habits.' karena sudah ada di grup atas
-            Route::post('/reorder', [HabitController::class , 'reorder'])->name('reorder');
-            Route::post('/batch-log', [HabitController::class , 'batchLog'])->name('batch-log');
+            Route::post('/reorder', [HabitController::class, 'reorder'])->name('reorder');
+            Route::post('/batch-log', [HabitController::class, 'batchLog'])->name('batch-log');
 
             // Ini harus di bawah supaya tidak bentrok (Laravel membaca /reorder dulu baru /{habit})
-            Route::patch('/{habit}', [HabitController::class , 'update'])->name('update');
-            Route::delete('/{habit}', [HabitController::class , 'destroy'])->name('destroy');
-            Route::post('/{habit}/log', [HabitController::class , 'storeLog'])->name('log');
+            Route::patch('/{habit}', [HabitController::class, 'update'])->name('update');
+            Route::delete('/{habit}', [HabitController::class, 'destroy'])->name('destroy');
+            Route::post('/{habit}/log', [HabitController::class, 'storeLog'])->name('log');
         }
-        );
+    );
 
-        Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->group(function () {
-            Route::get('/', [FinanceController::class , 'index'])->name('index');
-            Route::post('/income-target', [FinanceController::class , 'updateIncomeTarget'])->name('income-target.update');
+    Route::middleware(['module:finance'])->prefix('finance')->name('finance.')->group(
+        function () {
+            Route::get('/', [FinanceController::class, 'index'])->name('index');
+            Route::post('/income-target', [FinanceController::class, 'updateIncomeTarget'])->name('income-target.update');
 
             // Transaksi Singel
-            Route::post('/transaction', [FinanceController::class , 'storeTransaction'])->name('transaction.store');
-            Route::patch('/transaction/{financeTransaction}', [FinanceController::class , 'updateTransaction'])->name('transaction.update');
-            Route::delete('/transaction/{financeTransaction}', [FinanceController::class , 'destroyTransaction'])->name('transaction.destroy');
+            Route::post('/transaction', [FinanceController::class, 'storeTransaction'])->name('transaction.store');
+            Route::patch('/transaction/{financeTransaction}', [FinanceController::class, 'updateTransaction'])->name('transaction.update');
+            Route::delete('/transaction/{financeTransaction}', [FinanceController::class, 'destroyTransaction'])->name('transaction.destroy');
 
             // 🔥 FIX BATCH ENTRY: Hilangkan kata 'finance' di URL dan Name
-            Route::post('/transactions-batch', [FinanceController::class , 'batchStoreTransaction'])->name('transaction.batchStore');
+            Route::post('/transactions-batch', [FinanceController::class, 'batchStoreTransaction'])->name('transaction.batchStore');
 
-            Route::get('/category/check/{category}', [FinanceController::class , 'checkCategoryUsage'])->name('category.check');
-            Route::post('/category/rename', [FinanceController::class , 'renameCategory'])->name('category.rename');
+            Route::get('/category/check/{category}', [FinanceController::class, 'checkCategoryUsage'])->name('category.check');
+            Route::post('/category/rename', [FinanceController::class, 'renameCategory'])->name('category.rename');
 
-            Route::post('/budget', [FinanceController::class , 'storeBudget'])->name('budget.store');
-            Route::put('/budget/{financeBudget}', [FinanceController::class , 'updateBudget'])->name('budget.update');
-            Route::delete('/budget/{financeBudget}', [FinanceController::class , 'destroyBudget'])->name('budget.destroy');
+            Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
+            Route::put('/budget/{financeBudget}', [FinanceController::class, 'updateBudget'])->name('budget.update');
+            Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy');
 
-            Route::post('/categories', [FinanceController::class , 'storeCategory'])->name('categories.store');
-            Route::put('/categories/{category}', [FinanceController::class , 'updateCategory'])->name('categories.update');
-            Route::delete('/categories/{category}', [FinanceController::class , 'destroyCategory'])->name('categories.destroy');
+            Route::post('/categories', [FinanceController::class, 'storeCategory'])->name('categories.store');
+            Route::put('/categories/{category}', [FinanceController::class, 'updateCategory'])->name('categories.update');
+            Route::delete('/categories/{category}', [FinanceController::class, 'destroyCategory'])->name('categories.destroy');
 
             // Exports & Settings
             Route::get('/export/excel', [FinanceController::class, 'exportExcel'])->name('export.excel');
@@ -434,108 +456,113 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::post('/export/audit', [FinanceController::class, 'runAudit'])->name('export.audit');
             Route::post('/settings/currency', [FinanceController::class, 'updateCurrency'])->name('settings.currency');
         }
-        );
+    );
 
-        // --- MODULE: JOURNAL ---
-        Route::middleware(['module:journal'])->prefix('journal')->name('journal.')->group(function () {
-            Route::get('/', [JournalController::class , 'index'])->name('index');
-            Route::get('/write/{id?}', [JournalController::class , 'write'])->name('write');
+    // --- MODULE: JOURNAL ---
+    Route::middleware(['module:journal'])->prefix('journal')->name('journal.')->group(
+        function () {
+            Route::get('/', [JournalController::class, 'index'])->name('index');
+            Route::get('/write/{id?}', [JournalController::class, 'write'])->name('write');
 
             // Sistem CRUD
-            Route::post('/', [JournalController::class , 'store'])->name('store');
-            Route::patch('/{id}', [JournalController::class , 'update'])->name('update');
-            Route::delete('/{id}', [JournalController::class , 'destroy'])->name('destroy');
+            Route::post('/', [JournalController::class, 'store'])->name('store');
+            Route::patch('/{id}', [JournalController::class, 'update'])->name('update');
+            Route::delete('/{id}', [JournalController::class, 'destroy'])->name('destroy');
 
             // Image Upload
-            Route::post('/image', [JournalController::class , 'uploadImage'])->name('uploadImage');
-            Route::delete('/image/{id}', [JournalController::class , 'deleteImage'])->name('deleteImage');
-            Route::post('/analyze', [JournalController::class , 'analyze'])->name('analyze');
+            Route::post('/image', [JournalController::class, 'uploadImage'])->name('uploadImage');
+            Route::delete('/image/{id}', [JournalController::class, 'deleteImage'])->name('deleteImage');
+            Route::post('/analyze', [JournalController::class, 'analyze'])->name('analyze');
         }
-        );
+    );
 
-        // --- MODULE: CALENDAR ---
-        Route::middleware(['module:calendar'])->prefix('calendar')->name('calendar.')->group(function () {
-            Route::get('/', [CalendarController::class , 'index'])->name('index');
+    // --- MODULE: CALENDAR ---
+    Route::middleware(['module:calendar'])->prefix('calendar')->name('calendar.')->group(
+        function () {
+            Route::get('/', [CalendarController::class, 'index'])->name('index');
 
             // CRUD untuk Event
-            Route::post('/events', [CalendarController::class , 'storeEvent'])->name('events.store');
-            Route::put('/events/{id}', [CalendarController::class , 'updateEvent'])->name('events.update');
-            Route::delete('/events/{id}', [CalendarController::class , 'destroyEvent'])->name('events.destroy');
+            Route::post('/events', [CalendarController::class, 'storeEvent'])->name('events.store');
+            Route::put('/events/{id}', [CalendarController::class, 'updateEvent'])->name('events.update');
+            Route::delete('/events/{id}', [CalendarController::class, 'destroyEvent'])->name('events.destroy');
         }
-        );
+    );
 
-        // Job Tracker Routes
-        Route::middleware(['module:job'])->prefix('jobs')->name('jobs.')->group(function () {
-            Route::get('/', [\App\Http\Controllers\JobController::class , 'index'])->name('index');
-            Route::post('/', [\App\Http\Controllers\JobController::class , 'store'])->name('store');
-            Route::patch('/{job}', [\App\Http\Controllers\JobController::class , 'update'])->name('update');
-            Route::delete('/{job}', [\App\Http\Controllers\JobController::class , 'destroy'])->name('destroy');
-            Route::post('/bulk-update-status', [\App\Http\Controllers\JobController::class , 'bulkUpdateStatus'])->name('bulk-update-status');
-            Route::post('/bulk-delete', [\App\Http\Controllers\JobController::class , 'bulkDelete'])->name('bulk-delete');
+    // Job Tracker Routes
+    Route::middleware(['module:job'])->prefix('jobs')->name('jobs.')->group(
+        function () {
+            Route::get('/', [\App\Http\Controllers\JobController::class, 'index'])->name('index');
+            Route::post('/', [\App\Http\Controllers\JobController::class, 'store'])->name('store');
+            Route::patch('/{job}', [\App\Http\Controllers\JobController::class, 'update'])->name('update');
+            Route::delete('/{job}', [\App\Http\Controllers\JobController::class, 'destroy'])->name('destroy');
+            Route::post('/bulk-update-status', [\App\Http\Controllers\JobController::class, 'bulkUpdateStatus'])->name('bulk-update-status');
+            Route::post('/bulk-delete', [\App\Http\Controllers\JobController::class, 'bulkDelete'])->name('bulk-delete');
             Route::post('/ai-scan', [\App\Http\Controllers\JobController::class, 'scanResume'])->name('ai-scan');
             Route::post('/master-cv', [\App\Http\Controllers\JobController::class, 'uploadMasterCv'])->name('master-cv');
         }
-        );
+    );
 
-        // Goal Tracker Routes
-        Route::middleware(['module:goal'])->prefix('goals')->name('goals.')->group(function () {
-            Route::get('/', [\App\Http\Controllers\GoalController::class , 'index'])->name('index');
-            Route::post('/', [\App\Http\Controllers\GoalController::class , 'store'])->name('store');
-            Route::patch('/{goal}', [\App\Http\Controllers\GoalController::class , 'update'])->name('update');
-            Route::delete('/{goal}', [\App\Http\Controllers\GoalController::class , 'destroy'])->name('destroy');
-            Route::post('/bulk-update-status', [\App\Http\Controllers\GoalController::class , 'bulkUpdateStatus'])->name('bulk-update-status');
-            Route::post('/bulk-delete', [\App\Http\Controllers\GoalController::class , 'bulkDelete'])->name('bulk-delete');
+    // Goal Tracker Routes
+    Route::middleware(['module:goal'])->prefix('goals')->name('goals.')->group(
+        function () {
+            Route::get('/', [\App\Http\Controllers\GoalController::class, 'index'])->name('index');
+            Route::post('/', [\App\Http\Controllers\GoalController::class, 'store'])->name('store');
+            Route::patch('/{goal}', [\App\Http\Controllers\GoalController::class, 'update'])->name('update');
+            Route::delete('/{goal}', [\App\Http\Controllers\GoalController::class, 'destroy'])->name('destroy');
+            Route::post('/bulk-update-status', [\App\Http\Controllers\GoalController::class, 'bulkUpdateStatus'])->name('bulk-update-status');
+            Route::post('/bulk-delete', [\App\Http\Controllers\GoalController::class, 'bulkDelete'])->name('bulk-delete');
 
             // Image
-            Route::post('/image', [\App\Http\Controllers\GoalController::class , 'uploadCoverImage'])->name('uploadImage');
-            Route::delete('/image/{id}', [\App\Http\Controllers\GoalController::class , 'deleteCoverImage'])->name('deleteImage');
+            Route::post('/image', [\App\Http\Controllers\GoalController::class, 'uploadCoverImage'])->name('uploadImage');
+            Route::delete('/image/{id}', [\App\Http\Controllers\GoalController::class, 'deleteCoverImage'])->name('deleteImage');
 
             // Milestones
-            Route::post('/{goal}/milestones', [\App\Http\Controllers\GoalController::class , 'storeMilestone'])->name('milestones.store');
-            Route::patch('/{goal}/milestones/{milestone}', [\App\Http\Controllers\GoalController::class , 'updateMilestone'])->name('milestones.update');
-            Route::post('/{goal}/milestones/{milestone}/toggle', [\App\Http\Controllers\GoalController::class , 'toggleMilestone'])->name('milestones.toggle');
-            Route::delete('/{goal}/milestones/{milestone}', [\App\Http\Controllers\GoalController::class , 'destroyMilestone'])->name('milestones.destroy');
+            Route::post('/{goal}/milestones', [\App\Http\Controllers\GoalController::class, 'storeMilestone'])->name('milestones.store');
+            Route::patch('/{goal}/milestones/{milestone}', [\App\Http\Controllers\GoalController::class, 'updateMilestone'])->name('milestones.update');
+            Route::post('/{goal}/milestones/{milestone}/toggle', [\App\Http\Controllers\GoalController::class, 'toggleMilestone'])->name('milestones.toggle');
+            Route::delete('/{goal}/milestones/{milestone}', [\App\Http\Controllers\GoalController::class, 'destroyMilestone'])->name('milestones.destroy');
         }
-        );
+    );
 
-        Route::get('/settings', [SettingsController::class , 'index'])->name('settings.index');
-        Route::post('/settings', [SettingsController::class , 'update'])->name('settings.update');
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/settings', [SettingsController::class, 'update'])->name('settings.update');
 
 
-        Route::get('/more', function () {
-            return Inertia::render('More/Index');
-        })->name('more.index');
+    Route::get('/more', function () {
+        return Inertia::render('More/Index');
+    })->name('more.index');
 
-        Route::prefix('profile')->name('profile.')->group(function () {
-            Route::get('/', [ProfileController::class , 'edit'])->name('edit');
-            Route::patch('/', [ProfileController::class , 'update'])->name('update');
-            Route::delete('/', [ProfileController::class , 'destroy'])->name('destroy');
+    Route::prefix('profile')->name('profile.')->group(
+        function () {
+            Route::get('/', [ProfileController::class, 'edit'])->name('edit');
+            Route::patch('/', [ProfileController::class, 'update'])->name('update');
+            Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
         }
-        );
+    );
 
-        // Duitku Payments
-        Route::post('/payment/checkout', [\App\Http\Controllers\PaymentController::class , 'checkout'])->name('payment.checkout');
-        Route::get('/payment/finish', [\App\Http\Controllers\PaymentController::class , 'finish'])->name('payment.finish');
-        Route::get('/payment/unfinish', [\App\Http\Controllers\PaymentController::class , 'unfinish'])->name('payment.unfinish');
-        Route::get('/payment/error', [\App\Http\Controllers\PaymentController::class , 'error'])->name('payment.error');
+    // Duitku Payments
+    Route::post('/payment/checkout', [\App\Http\Controllers\PaymentController::class, 'checkout'])->name('payment.checkout');
+    Route::get('/payment/finish', [\App\Http\Controllers\PaymentController::class, 'finish'])->name('payment.finish');
+    Route::get('/payment/unfinish', [\App\Http\Controllers\PaymentController::class, 'unfinish'])->name('payment.unfinish');
+    Route::get('/payment/error', [\App\Http\Controllers\PaymentController::class, 'error'])->name('payment.error');
 
-        // AI Coach
-        Route::prefix('coach')->name('coach.')->group(function () {
-            Route::get('/', [\App\Http\Controllers\AiCoachController::class, 'index'])->name('index');
-            Route::post('/chat', [\App\Http\Controllers\AiCoachController::class, 'chat'])->name('chat');
-            Route::post('/synergy', [\App\Http\Controllers\AiCoachController::class, 'synergy'])->name('synergy');
-            
-            // AI Habits (Ideas 2, 4, 7)
-            Route::post('/habit-stack', [\App\Http\Controllers\AiHabitController::class, 'suggestStack'])->name('habit.stack');
-            Route::post('/habit-mood', [\App\Http\Controllers\AiHabitController::class, 'adaptToMood'])->name('habit.mood');
-            Route::post('/habit-audit', [\App\Http\Controllers\AiHabitController::class, 'auditFriction'])->name('habit.audit');
-            Route::post('/habit-stagnation', [\App\Http\Controllers\AiHabitController::class, 'auditStagnation'])->name('habit.stagnation');
-            
-            // Debugging
-            Route::get('/debug-gemini', [\App\Http\Controllers\AiDebugController::class, 'testGemini']);
-        });
+    // AI Coach
+    Route::prefix('coach')->name('coach.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\AiCoachController::class, 'index'])->name('index');
+        Route::post('/chat', [\App\Http\Controllers\AiCoachController::class, 'chat'])->name('chat');
+        Route::post('/synergy', [\App\Http\Controllers\AiCoachController::class, 'synergy'])->name('synergy');
+
+        // AI Habits (Ideas 2, 4, 7)
+        Route::post('/habit-stack', [\App\Http\Controllers\AiHabitController::class, 'suggestStack'])->name('habit.stack');
+        Route::post('/habit-mood', [\App\Http\Controllers\AiHabitController::class, 'adaptToMood'])->name('habit.mood');
+        Route::post('/habit-audit', [\App\Http\Controllers\AiHabitController::class, 'auditFriction'])->name('habit.audit');
+        Route::post('/habit-stagnation', [\App\Http\Controllers\AiHabitController::class, 'auditStagnation'])->name('habit.stagnation');
+
+        // Debugging
+        Route::get('/debug-gemini', [\App\Http\Controllers\AiDebugController::class, 'testGemini']);
     });
+});
 
-Route::post('/callback', [\App\Http\Controllers\PaymentController::class , 'callback'])->name('payment.callback');
+Route::post('/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])->name('payment.callback');
 
 require __DIR__ . '/auth.php';
