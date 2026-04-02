@@ -246,6 +246,7 @@ const select_hour$1 = "Select Hour";
 const date_format$1 = "dddd, MMMM D, YYYY";
 const no_category$1 = "Uncategorized";
 const no_date$1 = "No Deadline";
+const name = "Name";
 const notes_meta_title$1 = "OneForMind vs Paper Planners — The Digital Evolution of Focus";
 const notes_meta_desc$1 = "Standard notebooks are passive. OneForMind is an active life system. See why digital focus beats paper hoarding.";
 const notes_meta_og_title$1 = "Your Notes App is Where Ideas Go to Die.";
@@ -1638,6 +1639,31 @@ const tos_security_p$1 = "Users are strictly prohibited from attempting to breac
 const tos_termination_title$1 = "4. Account Termination";
 const tos_termination_p$1 = "We reserve the right to suspend or terminate accounts immediately, without prior notice, if a user is found violating these terms or abusing system resources.";
 const legal_close$1 = "Close & Understand";
+const cookie_title$1 = "🍪 Care for a Cookie?";
+const cookie_desc$1 = "We use cookies to ensure you get the best and most secure experience on our system.";
+const cookie_btn_accept$1 = "Accept All";
+const cookie_btn_settings$1 = "Settings";
+const cookie_btn_essential$1 = "Essential Only";
+const contact_title$1 = "Contact Us";
+const contact_subtitle$1 = "Have questions or need help? Our team is ready to support your productivity journey.";
+const contact_form_name$1 = "Full Name";
+const contact_form_email$1 = "Email Address";
+const contact_form_subject$1 = "Subject";
+const contact_form_message$1 = "Your Message";
+const contact_btn_send$1 = "Send Message Now";
+const contact_success_title$1 = "Message Sent!";
+const contact_success_desc$1 = "Thank you! We will get back to you within 24-48 hours.";
+const contact_info_title$1 = "Contact Information";
+const contact_info_hq$1 = "OneForMind Headquarters";
+const contact_info_jakarta$1 = "Jakarta, Indonesia";
+const contact_info_support$1 = "Technical Support";
+const contact_info_billing$1 = "Billing & Licensing";
+const contact_info_chat$1 = "Live Chat";
+const contact_info_chat_status$1 = "Quick Support";
+const contact_faq_title$1 = "Have technical questions?";
+const contact_faq_desc$1 = "Check our help documentation for instant answers about features and licensing.";
+const contact_faq_btn$1 = "Open Help Center";
+const contact_form_message_placeholder$1 = "How can we help you?";
 const goal_page_title$1 = "Goal Tracker";
 const goal_add_row$1 = "Add Goal";
 const goal_bulk_selected$1 = "Goals Selected";
@@ -1990,6 +2016,36 @@ const home_synergy_step3_desc$1 = "Blocking time for what matters ensures your h
 const home_solutions_badge$1 = "EXPLORE SOLUTIONS";
 const home_solutions_title$1 = "Tailored for Your Journey";
 const home_solutions_desc$1 = "Whether you're a student, a freelancer, or a high-performance athlete, OneForMind has a configuration for you.";
+const eco_badge$2 = "SYNERGY ECOSYSTEM";
+const eco_title$2 = "Everything Speaks to Everything.";
+const eco_desc$2 = "Productivity isn't just a list. It's an ecosystem where your habits fuel your goals, and your spending validates your progress.";
+const eco_habit_title$2 = "Atomic Habits";
+const eco_habit_desc$2 = "Small daily actions that compound into massive life results. Integrated with your daily schedule.";
+const eco_finance_title$2 = "Mindful Finance";
+const eco_finance_desc$2 = "Track every cent manually to regain awareness of your energy flow.";
+const eco_daily_title$2 = "Daily Planner";
+const eco_daily_desc$2 = "A clean space to execute the single most important task of the day.";
+const eco_goal_title$2 = "Life Vision";
+const eco_goal_desc$2 = "High-level goal tracking that breaks down into actionable steps.";
+const eco_journal_title$2 = "Digital Clarity";
+const eco_journal_desc$2 = "A private space to pour out your thoughts and analyze your mood trends.";
+const eco_job_title$2 = "Neural Job Hunter";
+const eco_job_desc$2 = "Manage your career transmissions and optimize your professional trajectory (Beta).";
+const sol_badge$2 = "THE SOLUTION";
+const sol_title$2 = "Stop Managing. Start Existing.";
+const sol_card_1_title$2 = "Financial Awareness";
+const sol_card_1_desc$2 = "Eliminate impulsive spending by creating a mindful connection with your wealth.";
+const sol_card_2_title$2 = "Routine Optimization";
+const sol_card_2_desc$2 = "Build identity-based habits that stick, supported by the First-Priority planning method.";
+const sol_card_3_title$2 = "Seamless Flow";
+const sol_card_3_desc$2 = "Experience a unified life OS where every module talks to the other, creating natural synergy.";
+const prob_1_title$2 = "The App Fatigue is Real.";
+const prob_1_desc$2 = "Managing 5 different apps for habits, finance, and tasks is a job in itself. It scatters your focus.";
+const prob_1_point_1$2 = "Inconsistent data across platforms";
+const prob_1_point_2$2 = "Context switching kills your flow";
+const prob_2_title$2 = "Disconnected Data.";
+const prob_2_desc$2 = "Your habits don't know about your budget. Your budget doesn't know about your goals.";
+const prob_2_solution$2 = "OneForMind connects it all.";
 const job_page_title$1 = "Job Tracker";
 const job_page_subtitle$1 = "Track all your job applications in one place";
 const job_add_row$1 = "Add Row";
@@ -2105,6 +2161,15 @@ const neural_cta_title$1 = "Step into the Future of Focus.";
 const neural_cta_desc$1 = "Join thousands of users who are using Neural OS to eliminate chaos and build intentional lives.";
 const neural_cta_btn$1 = "Start Your Evolution";
 const neural_cta_note$1 = "Free 14-day trial for new users.";
+const neural_gemini_powered$1 = "Powered by";
+const neural_gemini_feat1$1 = "Real-time behavior analysis across all features.";
+const neural_gemini_feat2$1 = "Privacy-focused data processing with local-first logic.";
+const neural_gemini_feat3$1 = "Seamless integration with Habits, Jobs, and Goals.";
+const neural_coach_sender$1 = "OneForMind Coach";
+const neural_coach_user$1 = "You";
+const neural_coach_msg1$1 = "I noticed you're 20% more likely to execute habits when your morning mood is 'Excited'. Want me to move your high-energy tasks there?";
+const neural_coach_msg2$1 = "Yes, please optimize my schedule.";
+const neural_coach_msg3$1 = "Done! Your Planner has been updated for maximum flow.";
 const planner_title$1 = "Daily Timeline";
 const planner_time_fmt$1 = "AM/PM";
 const planner_click_hint$1 = "Click to add schedule";
@@ -2285,6 +2350,80 @@ const feat_vision_board$1 = "Visual Vision Board";
 const feat_journal_lock$1 = "Journal Privacy Lock";
 const feat_calendar_timeline$1 = "Timeline / Gantt View";
 const feat_ai_scheduling$1 = "AI Auto-Scheduling";
+const feat_energy_scheduling = "Energy Performance Plan";
+const feat_support_priority = "Support Priority Level";
+const compare_title$1 = "Compare Plan Logic";
+const compare_feature$1 = "System Feature";
+const compare_explorer$1 = "Free";
+const compare_architect$1 = "Pro";
+const compare_quantum$1 = "AI Elite";
+const compare_legendary$1 = "Life";
+const group_habits$1 = "HABITS & ROUTINES";
+const group_finance$1 = "FINANCE & WEALTH";
+const group_planner$1 = "PLANNER & EXECUTION";
+const group_journal$1 = "JOURNAL & ANALYTICS";
+const group_goals$1 = "GOALS & VISIONS";
+const group_jobs$1 = "CAREER & JOBS";
+const group_support$1 = "SUPPORT";
+const feat_habit_limit$1 = "Active Habit Limit";
+const feat_habit_limit_val_l1$1 = "Max 5 Habits";
+const feat_habit_limit_val_l2$1 = "Unlimited";
+const feat_detailed_analytics$1 = "Detailed Analytics";
+const feat_val_basic$1 = "Basic";
+const feat_val_advanced$1 = "Advanced";
+const feat_val_predictive$1 = "Predictive AI";
+const feat_ai_stacking$1 = "AI Habit Stacking";
+const feat_finance_entry$1 = "Manual Entry";
+const feat_budgeting$1 = "Budget Management";
+const feat_receipt_scanning$1 = "Receipt Scanning";
+const feat_net_worth$1 = "Net Worth Tracker";
+const feat_ai_audit$1 = "AI Financial Audit";
+const feat_planner_view$1 = "Planner View";
+const feat_planner_view_val_l1$1 = "Standard List";
+const feat_planner_view_val_l2$1 = "Priority Matrix";
+const feat_recurring_tasks$1 = "Recurring Tasks";
+const feat_journal_type$1 = "Journal Type";
+const feat_journal_type_val_l1$1 = "Standard Text";
+const feat_journal_type_val_l2$1 = "Rich Media + Voice";
+const feat_sentiment_ai$1 = "Sentiment AI";
+const feat_goal_limit$1 = "Active Goal Limit";
+const feat_goal_limit_val_l1$1 = "Max 3 Goals";
+const feat_goal_limit_val_l2$1 = "Unlimited";
+const feat_job_limit$1 = "Job Applications";
+const feat_job_limit_val_l1$1 = "Max 10 / mo";
+const feat_job_limit_val_l2$1 = "Unlimited";
+const feat_resume_ai$1 = "AI Resume Builder";
+const feat_early_beta$1 = "Early Beta Features";
+const support_standard$1 = "Standard";
+const support_priority$1 = "Priority";
+const support_vip$1 = "VIP Concierge";
+const quantum_feature$1 = "ADVANCED NEURAL AI";
+const pricing_elite_title$1 = "Quantum Intelligence";
+const pricing_elite_feat1_title$1 = "Predictive Routine Tuning";
+const pricing_elite_feat1_desc$1 = "Our AI analyzes your energy dips and suggests the best time for deep work.";
+const pricing_elite_feat2_title$1 = "Wealth Projection";
+const pricing_elite_feat2_desc$1 = "Forecast your financial future based on current spending trajectory.";
+const pricing_elite_feat3_title$1 = "Biometric Sync";
+const pricing_elite_feat3_desc$1 = "Connect your focus scores with your physical metadata.";
+const pricing_elite_card_title$1 = "Quantum Access";
+const pricing_elite_card_status$1 = "System Online";
+const pricing_l1_name$1 = "Explorer (Free)";
+const pricing_l1_desc$1 = "Perfect for beginners who want to start their mindful journey.";
+const pricing_l2_name$1 = "Architect (Pro)";
+const pricing_l2_desc$1 = "Unlock the full power of the unified life ecosystem.";
+const pricing_l3_name$1 = "Quantum (AI)";
+const pricing_l3_desc$1 = "Integrated AI to supercharge your execution and insights.";
+const pricing_l4_name$1 = "Legendary (Life)";
+const pricing_l4_desc$1 = "The ultimate investment. Pay once, skip all future fees.";
+const pricing_l1_initial$1 = "Free Forever";
+const pricing_l2_initial$1 = "Pro Lifetime Unlock";
+const pricing_l2_recurring$1 = "Recurring maintenance fee";
+const pricing_l3_initial$1 = "AI Neural License";
+const pricing_l3_recurring$1 = "AI Maintenance Fee";
+const pricing_l4_initial$1 = "Lifetime Founder Access";
+const pricing_l4_recurring$1 = "Zero Fees Forever";
+const pricing_ai_badge$1 = "Best for AI Seekers";
+const pricing_l4_badge$1 = "Founder Edition";
 const privacy_meta_title$1 = "Trust Center & Privacy Policy";
 const privacy_meta_desc$1 = "Learn how OneForMind protects your data and ensures your security.";
 const privacy_meta_og_title$1 = "Trust Center — OneForMind";
@@ -2304,6 +2443,17 @@ const privacy_nav_5$1 = "05. Third Parties";
 const privacy_nav_6$1 = "06. Privacy Rights";
 const privacy_nav_7$1 = "07. Contact Us";
 const privacy_download_pdf$1 = "Download as PDF";
+const privacy_status_protection$1 = "Protection";
+const privacy_status_access$1 = "Access";
+const privacy_status_tracking$1 = "Tracking";
+const privacy_status_protocol$1 = "Protocol";
+const privacy_status_protection_val$1 = "AES-256";
+const privacy_status_access_val$1 = "Private";
+const privacy_status_tracking_val$1 = "0% Ads";
+const privacy_status_protocol_val$1 = "GDPR Ready";
+const privacy_locked_label$1 = "Encryption_Active";
+const privacy_locked_title$1 = "Secure Protocol";
+const privacy_locked_desc$1 = "Zero-knowledge infrastructure protection.";
 const privacy_tldr_title$1 = "The TL;DR Version";
 const privacy_tldr_1_title$1 = "No Selling Data";
 const privacy_tldr_1_desc$1 = "We never sell your personal information or financial data to third parties.";
@@ -2319,7 +2469,8 @@ const privacy_p_collection$1 = "We believe in data minimization. We only collect
 const privacy_li_collection_1_title$1 = "Account Details";
 const privacy_li_collection_1_desc$1 = "Name, email, and authentication credentials.";
 const privacy_li_collection_2_title$1 = "User Content";
-const privacy_li_collection_2_desc$1 = "Habits, finances, journals, and planner tasks.";
+const privacy_li_collection_2_strong$1 = "Habits, finances, journals, and planner tasks.";
+const privacy_li_collection_2_desc$1 = "All your productivity progress is stored securely.";
 const privacy_li_collection_3_title$1 = "Device Data";
 const privacy_li_collection_3_desc$1 = "IP address and browser type for bug diagnosis.";
 const privacy_h2_usage$1 = "3. Data Usage";
@@ -2327,17 +2478,26 @@ const privacy_p_usage$1 = "Your data is used to provide the core experience.";
 const privacy_li_usage_1$1 = "Core functionalities maintenance.";
 const privacy_li_usage_2$1 = "Important system notifications.";
 const privacy_li_usage_3$1 = "Anonymous usage analytics for UI/UX improvements.";
+const privacy_finance_note_title$1 = "Special Financial Security";
+const privacy_finance_note_desc$1 = "Your financial data is processed with additional AES-256 encryption. We never store credit card numbers directly; all are processed via official payment gateway partners.";
 const privacy_h2_security$1 = "4. Security Infrastructure";
-const privacy_p_security$1 = "We enforce HTTPS/SSL and modern hashing for passswords.";
-const privacy_h2_thirdparty$1 = "6. Third Parties";
+const privacy_p_security$1 = "We enforce HTTPS/SSL and modern hashing for passwords.";
+const privacy_h2_thirdparty$1 = "5. Third Parties";
 const privacy_p_thirdparty$1 = "We share data only with essential operators like Payment Gateways and Google OAuth.";
-const privacy_h2_rights$1 = "7. Your Rights";
+const privacy_h2_rights$1 = "6. Your Rights";
 const privacy_p_rights$1 = "Subject to jurisdiction, you may access or delete your data.";
-const privacy_h2_contact$1 = "8. Contact Us";
+const privacy_li_rights_1$1 = "Access personal data we hold.";
+const privacy_li_rights_2$1 = "Request correction of inaccurate data.";
+const privacy_li_rights_3$1 = "Request permanent deletion of account and all data.";
+const privacy_export_title$1 = "Data Portability (Export)";
+const privacy_export_desc$1 = "You have the full right to take your data with you if you choose to leave OneForMind.";
+const privacy_export_point_1$1 = "Export financial transactions to CSV/Excel formats.";
+const privacy_export_point_2$1 = "Export habit logs and journals to PDF or JSON formats.";
+const privacy_h2_contact$1 = "7. Contact Us";
 const privacy_p_contact$1 = "Questions? Reach out to our team.";
 const privacy_contact_role$1 = "Data Protection Officer";
 const privacy_contact_email$1 = "oneformindapp@gmail.com";
-const privacy_contact_sla$1 = "Typical response: 24 business hours.";
+const privacy_contact_sla$1 = "Typical response: 24-48 hours.";
 const privacy_faq_title$1 = "Privacy FAQs";
 const privacy_faq_1_q$1 = "Can your team read my journals?";
 const privacy_faq_1_a$1 = "No. Strict internal controls ensure your content remains private.";
@@ -2366,6 +2526,8 @@ const terms_nav_5$1 = "5. Intellectual Property";
 const terms_nav_6$1 = "6. Termination";
 const terms_nav_7$1 = "7. Disputes";
 const terms_nav_8$1 = "8. Liability";
+const terms_notice_title$1 = "IMPORTANT NOTICE: NO-REFUND";
+const terms_notice_desc$1 = "OneForMind provides a 14-day Free Trial for all new users to evaluate the service. Once you have made a deposit or subscription payment, you waive the right to request a refund in any form. All transactions are FINAL.";
 const terms_intro_text$1 = "Welcome to OneForMind. These Terms of Service ('Terms') form the legal basis of our relationship.";
 const terms_intro_sub$1 = "Please read carefully. By using our service, you agree to be bound by every clause. Disagreement with any part leads to immediate revocation of your right to use the Service.";
 const terms_h2_eligibility$1 = "2. Eligibility & Risks";
@@ -2421,6 +2583,10 @@ const sec_toc_2$1 = "Database Encryption";
 const sec_toc_3$1 = "App Integrity";
 const sec_toc_4$1 = "User Sovereignty";
 const sec_toc_5$1 = "Review Cycle";
+const sec_alert_title$1 = "Report a Bug?";
+const sec_alert_desc$1 = "Found a security flaw? Report it to our team and help us keep the ecosystem safe.";
+const sec_alert_btn$1 = "SEND REPORT";
+const sec_locked_label$1 = "System_Locked";
 const sec_h2_infrastructure$1 = "Technical Stack";
 const sec_p_infrastructure$1 = "Hosted in world-class data centers with maximum uptime and physical security.";
 const sec_li_infra_1_title$1 = "Resilient Hosting";
@@ -2444,7 +2610,7 @@ const sec_li_app_2_desc$1 = "Token-based protection for every sensitive action."
 const sec_h2_sovereignty$1 = "User Sovereignty";
 const sec_p_sovereignty$1 = "We do not sell data. We do not have 'backdoors' to view your private notes.";
 const sec_cta_title$1 = "Secure Your Progress Today.";
-const sec_cta_desc$1 = "Focuse on growth, we handle the shield.";
+const sec_cta_desc$1 = "Focus on growth, we handle the shield.";
 const sec_cta_btn$1 = "Create Secure Account";
 const refund_meta_title$1 = "Cancellation & Strict No-Refund Policy - OneForMind";
 const refund_meta_desc$1 = "Transparent rules regarding our strictly final digital sales.";
@@ -2479,6 +2645,10 @@ const refund_p_exclusion$1 = "In the event of total system failure (>7 days), we
 const refund_cta_title$1 = "Understand the Stakes?";
 const refund_cta_desc$1 = "By subscribing, you waive all rights to a refund claim.";
 const refund_cta_btn$1 = "Technical Support Only";
+const refund_merchant_protection_title$1 = "Merchant Protection";
+const refund_merchant_protection_desc$1 = "Your transaction is protected by digital transactional legal standards stating that digital products, once accessed/used, are non-refundable.";
+const refund_user_responsibility_title$1 = "User Responsibility Steps:";
+const refund_contact_label$1 = "Contact: oneformindapp@gmail.com";
 const blog_meta_title$1 = "Blog & Articles - OneForMind";
 const blog_meta_desc$1 = "Read the latest insights on productivity, personal growth, and feature updates from the OneForMind team.";
 const blog_meta_og_title$1 = "OneForMind Blog";
@@ -2738,7 +2908,19 @@ const sto_interviews_desc$1 = "Diving into the minds of the revolutionaries.";
 const sto_int1$1 = "How Sarah Doubled Her Income";
 const sto_int2$1 = "Budi's Secret to Beating Burnout";
 const sto_hof_title$1 = "Hall of Fame";
-const sto_hof_desc$1 = "Awards for outstanding community achievements.";
+const sto_hof_desc$1 = "Celebrating exceptional achievements within our global community.";
+const sto_hof_1_name$1 = "Adrian Pratama";
+const sto_hof_1_title$1 = "Top Financial Manager";
+const sto_hof_1_desc$1 = "Managed over $1M in personal assets using the OFM Finance System.";
+const sto_hof_2_name$1 = "Siti Aminah";
+const sto_hof_2_title$1 = "Consistency Queen";
+const sto_hof_2_desc$1 = "Maintained a 1,000+ days habit streak in 'Self Improvement' and growth.";
+const sto_hof_3_name$1 = "Syaiful Anwar";
+const sto_hof_3_title$1 = "Productivity Master";
+const sto_hof_3_desc$1 = "Designed 50+ custom dashboards and workflows shared with the community.";
+const sto_hof_4_name$1 = "Lia Wijaya";
+const sto_hof_4_title$1 = "Zen Master";
+const sto_hof_4_desc$1 = "Most active user in the Mindfulness Journal & Mental Health ecosystem.";
 const settings_title$1 = "Settings";
 const settings_header$1 = "Account Control Center";
 const settings_subheader$1 = "Manage everything about your productivity experience here.";
@@ -2845,193 +3027,6 @@ const photo_adjust_instruction$1 = "Select a photo, then you can adjust the imag
 const adjust_photo_title$1 = "Adjust Photo";
 const pan_instruction$1 = "Use Mouse/Tap to Pan";
 const save_photo$1 = "Save Photo";
-const student_meta_title$1 = "Solutions for Students - OneForMind";
-const student_meta_desc$1 = "Manage assignments, class schedules, and student finances in one place. Stop feeling overwhelmed and start mastering your college life.";
-const student_meta_og_title$1 = "OneForMind for Students";
-const student_meta_og_desc$1 = "The all-in-one productivity operating system for ambitious students.";
-const student_hero_badge$1 = "For Students";
-const student_hero_title_1$1 = "Grades Secured,";
-const student_hero_title_2$1 = "Sanity Intact.";
-const student_hero_desc$1 = "From final projects and organization meetings to managing tight monthly dorm budgets. OneForMind helps unify all that chaos into one neat screen.";
-const student_hero_cta_1$1 = "Organize Your Life";
-const student_hero_social_proof$1 = "Join hundreds of other students.";
-const student_prob_title$1 = "Student Struggles 101";
-const student_prob_desc$1 = "We know exactly what keeps you overthinking every night.";
-const student_prob_1_title$1 = "Piling Assignments";
-const student_prob_1_desc$1 = "Deadlines from 5 different courses arrive in the same week. You don't know where to start.";
-const student_prob_2_title$1 = "Broke by Month-End";
-const student_prob_2_desc$1 = "Your allowance or freelance money vanishes into thin air before the 20th.";
-const student_prob_3_title$1 = "Clashing Schedules";
-const student_prob_3_desc$1 = "Committee meetings always collide with group project times or your much-needed rest.";
-const student_feat_1_visual_badge$1 = "Project Manager";
-const student_feat_1_title$1 = "Track All College & Portfolio Projects";
-const student_feat_1_desc$1 = "From working on final assignments to building a personal portfolio. Break massive tasks into logical small steps to avoid procrastination.";
-const student_feat_1_point_1$1 = "Kanban boards for progress tracking.";
-const student_feat_1_point_2$1 = "Sub-tasks to divide teamwork clearly.";
-const student_feat_2_title$1 = "Survive on a Student Budget";
-const student_feat_2_desc$1 = "Monitor your remaining monthly balance in real-time. Know exactly your daily food allowance so you don't have to keep leeching off cafe WiFi.";
-const student_feat_2_point_1$1 = "Daily Spending Limits";
-const student_feat_2_point_2$1 = "Savings for New Tech Setup";
-const student_bento_title$1 = "Student Survival Kit";
-const student_bento_desc$1 = "Supplementary features to survive the fierce campus life.";
-const student_bento_1_title$1 = "Overthinking Journal";
-const student_bento_1_desc$1 = "Pour out your revision stress or rants into a secure, private journal.";
-const student_bento_2_title$1 = "All-Nighter Mode";
-const student_bento_2_desc$1 = "Eye-friendly dark mode for doing assignments until 3 AM.";
-const student_bento_3_title$1 = "Cloud Sync";
-const student_bento_3_desc$1 = "Safely access via phone in class, or laptop at the library.";
-const student_cta_title$1 = "Don't Just Survive, Be an Achiever.";
-const student_cta_desc$1 = "A good system separates students who merely pass from those who truly shine on campus.";
-const student_cta_btn$1 = "Sign Up for Free Now";
-const student_cta_note$1 = "Basic features are free, forever.";
-const student_faq_title$1 = "Student Solutions FAQ";
-const student_faq_q1$1 = "Can I manage multiple semesters?";
-const student_faq_a1$1 = "Yes, OneForMind allows you to archive old semesters and keep your currently active courses in focus. Your past notes and finances remain searchable whenever you need them.";
-const student_faq_q2$1 = "How does the budget tracker help with allowance?";
-const student_faq_a2$1 = "You can set a recurring 'Income' for your monthly allowance and create categories for food, transport, and leisure. The system will alert you if you're spending too fast early in the month.";
-const student_faq_q3$1 = "Is there a way to track group projects?";
-const student_faq_a3$1 = "While OneForMind is primarily personal, you can use Kanban boards to organize your own contributions and deadlines for any group project to ensure you never miss a submission.";
-const student_science_badge$1 = "ACADEMIC EXCELLENCE";
-const student_science_title$1 = "The Science of Learning";
-const student_science_desc$1 = "Built on Spaced Repetition and Cognitive Resource Management, OneForMind helps students transition from passive consumption to active production without the burnout.";
-const student_extra_1_title$1 = "The Ultimate Study Workflow";
-const student_extra_1_desc$1 = "Seamlessly move from capturing lecture notes in the Journal, to scheduling revision sessions in the Planner, and tracking your prep progress in the Project board.";
-const student_extra_2_title$1 = "Grades vs. Sleep Balance";
-const student_extra_2_desc$1 = "Productivity isn't about working more; it's about working smarter. Use our mood tracker to ensure your academic ambitions aren't sacrificing your mental health.";
-const freelance_meta_title$1 = "Solutions for Freelancers & Remote Workers - OneForMind";
-const freelance_meta_desc$1 = "The all-in-one workspace for freelancers. Manage multiple clients, track invoices, and hit deadlines without the stress.";
-const freelance_meta_og_title$1 = "OneForMind for Freelancers";
-const freelance_meta_og_desc$1 = "Level up your professionalism with a streamlined system.";
-const freelance_hero_badge$1 = "For Freelancers";
-const freelance_hero_title_1$1 = "Work Freely,";
-const freelance_hero_title_2$1 = "Not Chaotically.";
-const freelance_hero_desc$1 = "Manage multiple clients, track unpaid invoices, and conquer deadlines across different time zones. All from one professional dashboard.";
-const freelance_hero_cta_1$1 = "Start Working Like a Pro";
-const freelance_hero_social_proof$1 = "Trusted by remote workers and digital agencies.";
-const freelance_prob_title$1 = "The Freelance Rollercoaster";
-const freelance_prob_desc$1 = "The inevitable phases when you don't have a solid system in place.";
-const freelance_prob_1_title$1 = "Overwhelmed";
-const freelance_prob_1_desc$1 = "Revisions piling up from 3 different clients at once. You have no idea where to start.";
-const freelance_prob_2_title$1 = "Unpaid Invoices";
-const freelance_prob_2_desc$1 = "The work was done last month, but the money isn't in because you forgot to follow up.";
-const freelance_prob_3_title$1 = "Severe Burnout";
-const freelance_prob_3_desc$1 = "Working 24/7 with no clear boundaries because your bedroom is your office.";
-const freelance_feat_1_title$1 = "Your Project Command Center";
-const freelance_feat_1_desc$1 = "Track every revision, set daily targets, and monitor client progress without opening dozens of headache-inducing tabs.";
-const freelance_feat_1_point_1$1 = "Multi-Client Kanban Boards";
-const freelance_feat_1_point_2$1 = "Real-Time Progress Tracking";
-const freelance_feat_2_title$1 = "Track Finances & Invoices";
-const freelance_feat_2_desc$1 = "Don't let your hard work go unpaid. The system helps you track which projects are settled and which invoices are still pending.";
-const freelance_feat_2_point_1$1 = "Income Tracked";
-const freelance_feat_2_point_2$1 = "Automated Reminders";
-const freelance_bento_title$1 = "The Freelancer's Arsenal";
-const freelance_bento_desc$1 = "Features that make you look like a top-tier agency.";
-const freelance_bento_1_title$1 = "Client Management";
-const freelance_bento_1_desc$1 = "Store client briefs, assets, and revision histories neatly.";
-const freelance_bento_2_title$1 = "Time Tracker";
-const freelance_bento_2_desc$1 = "Track how many hours you spend per project for hourly rate billing.";
-const freelance_bento_3_title$1 = "Tax Recaps";
-const freelance_bento_3_desc$1 = "Ready-to-use income data to simplify your annual tax reporting.";
-const freelance_bento_4_title$1 = "Client Portal (Soon)";
-const freelance_bento_4_desc$1 = "Share a custom link so clients can view your work progress without constantly asking for updates via chat.";
-const freelance_cta_title$1 = "Ready to Scale Your Freelance Biz?";
-const freelance_cta_desc$1 = "Clients love working with organized freelancers, and you deserve to be paid well for it.";
-const freelance_cta_btn$1 = "Upgrade Your Workspace";
-const freelance_cta_note$1 = "Take control of your business today.";
-const freelance_faq_title$1 = "Freelance Mastery FAQ";
-const freelance_faq_q1$1 = "Can I track different currencies?";
-const freelance_faq_a1$1 = "Yes, you can log income in various currencies. This is perfect for international freelancers working with clients across different economic zones.";
-const freelance_faq_q2$1 = "How do I manage long-term projects?";
-const freelance_faq_a2$1 = "Break long-term contracts into monthly milestones using our Project boards. This helps keep the momentum and ensures you have regular deliverables for invoicing.";
-const freelance_faq_q3$1 = "Is my client data secure?";
-const freelance_faq_a3$1 = "Absolutely. OneForMind uses industry-standard encryption to ensure that your business strategy, client briefs, and financial records remain private and accessible only by you.";
-const freelance_science_badge$1 = "BUSINESS AGILITY";
-const freelance_science_title$1 = "The Solo-Agency Framework";
-const freelance_science_desc$1 = "Leveraging the 'Deep Work' and 'GTD' (Getting Things Done) methodologies, we help freelancers operate with the efficiency of a full agency without the overhead.";
-const freelance_extra_1_title$1 = "Full Client Lifecycle Tracking";
-const freelance_extra_1_desc$1 = "Manage the entire journey from initial lead to final payment. Keep notes on client preferences and feedback to provide a premium service every time.";
-const freelance_extra_2_title$1 = "Sustainable Income Scaling";
-const freelance_extra_2_desc$1 = "Don't just work for today. Use the financial forecasts to plan your next months, save for equipment upgrades, and scale your freelance business with confidence.";
-const growth_meta_title$1 = "Personal Growth & Self-Improvement - OneForMind";
-const growth_meta_desc$1 = "Build good habits, clear your mind with journaling, and achieve the best version of yourself every day.";
-const growth_meta_og_title$1 = "OneForMind for Personal Growth";
-const growth_meta_og_desc$1 = "A system to build new identities and unstoppable habits.";
-const growth_hero_badge$1 = "🌱 For Personal Growth";
-const growth_hero_title_1$1 = "Stop Planning,";
-const growth_hero_title_2$1 = "Start Executing.";
-const growth_hero_desc$1 = "A comprehensive system to track your habits, reflect on your thoughts, and build the best version of yourself every single day. Little by little, step by step.";
-const growth_hero_cta_1$1 = "Start Your Transformation";
-const growth_hero_social_proof$1 = "Trusted by thousands of dream chasers.";
-const growth_prob_title_dark$1 = "The Vicious Rut";
-const growth_prob_desc_dark$1 = "A noisy mind, recurring bad habits, and motivation spikes that only last for two days before vanishing.";
-const growth_prob_point_1$1 = "Endless scrolling and cheap dopamine.";
-const growth_prob_point_2$1 = "Starting many things, finishing none.";
-const growth_prob_title_light$1 = "The Growth Loop";
-const growth_prob_desc_light$1 = "Mental clarity, automated systems, and a new identity built upon small but consistent daily habits.";
-const growth_prob_point_3$1 = "Laser-sharp, distraction-free focus.";
-const growth_prob_point_4$1 = "Compounding 1% daily growth.";
-const growth_feat_1_title$1 = "Forge a New Identity Through Habits";
-const growth_feat_1_desc$1 = "Every time you complete a habit, you cast a vote for the type of person you wish to become. Build your winning streak and never break the chain.";
-const growth_feat_1_point_1$1 = "Precision Habit Tracking";
-const growth_feat_1_point_2$1 = "Milestones & Consistency Rewards";
-const growth_feat_2_title$1 = "A Quiet Space For Your Mind";
-const growth_feat_2_desc$1 = "Step away from the digital noise. Enter 'Zen Mode' and start untangling the knots in your head through daily reflective journaling without noisy UI distractions.";
-const growth_feat_2_quote_title$1 = "Sometimes, the best productivity hack is a pause to understand yourself.";
-const growth_feat_2_quote_body$1 = "Writing down how you feel helps you master what you will do next.";
-const growth_bento_title$1 = "Your Growth Ecosystem";
-const growth_bento_desc$1 = "Supporting tools to hack your maximum potential.";
-const growth_bento_1_title$1 = "Audio Focus";
-const growth_bento_1_desc$1 = "Lofi and nature sound integrations to enter your flow state (Soon).";
-const growth_bento_2_title$1 = "Dark Mode";
-const growth_bento_2_desc$1 = "A soothing dark theme for deep late-night reflections.";
-const growth_bento_3_title$1 = "Long-Term Resolutions";
-const growth_bento_3_desc$1 = "Break down your massive yearly goals into actionable daily steps. When vision meets routine, nothing is impossible.";
-const growth_bento_4_title$1 = "Mood Analytics";
-const growth_bento_4_desc$1 = "Understand your emotional cycles and their impact on your output.";
-const growth_bento_5_title$1 = "Daily Inspirations";
-const growth_bento_5_desc$1 = "Stoic quotes and philosophy on your dashboard to spark your drive.";
-const growth_cta_title$1 = "Today is Day One.";
-const growth_cta_desc$1 = "Your future is shaped by what you do today, not tomorrow. Take that first step right now.";
-const growth_cta_btn$1 = "Start Your Growth Journey";
-const growth_hero_cta$1 = "Start Your Transformation";
-const growth_hero_social$1 = "Trusted by thousands of dream chasers.";
-const growth_card_reading_goal$1 = "Reading Goal";
-const growth_card_run_title$1 = "Morning Run";
-const growth_card_run_desc$1 = "5 km completed";
-const growth_card_reflect_title$1 = "Daily Reflection";
-const growth_card_reflect_desc$1 = "Today I learned to let go of what I can't control...";
-const growth_science_badge$1 = "🧬 The Science of Growth";
-const growth_science_title$1 = "Built on Proven Frameworks";
-const growth_science_desc$1 = "We don't just track numbers; we apply behavioral psychology to ensure your changes actually stick for the long run.";
-const growth_science_tag_1$1 = "Antifragility";
-const growth_science_tag_2$1 = "Identity Shift";
-const growth_science_tag_3$1 = "Compound Interest";
-const growth_habit_streak$1 = "30-Day Streak!";
-const growth_habit_streak_desc$1 = "Consistency shapes your new identity.";
-const growth_habit_title$1 = "Forge a New Identity Through Habits";
-const growth_habit_desc$1 = "Every time you complete a habit, you cast a vote for the type of person you wish to become. Build your winning streak and never break the chain.";
-const growth_habit_feat_1$1 = "📈 Precision Habit Tracking";
-const growth_habit_feat_2$1 = "🎖️ Milestones & Consistency Rewards";
-const growth_zen_title$1 = "A Quiet Space For Your Mind";
-const growth_zen_desc$1 = "Step away from the digital noise. Enter 'Zen Mode' and start untangling the knots in your head through daily reflective journaling without noisy UI distractions.";
-const growth_zen_entry$1 = "Zen Entry";
-const growth_zen_quote$1 = "Sometimes, the best productivity hack is a pause to understand yourself.";
-const growth_zen_subtext$1 = "Writing down how you feel helps you master what you will do next.";
-const growth_extra_1_title$1 = "Visual Evolution";
-const growth_extra_1_desc$1 = "Watch your progress grow from a small seed into a flourishing tree as you stay consistent with your goals.";
-const growth_extra_2_title$1 = "The 1% Principle";
-const growth_extra_2_desc$1 = "Small changes lead to massive results over time.";
-const growth_faq_title$1 = "Frequently Asked Questions";
-const growth_faq_q1$1 = "How does the habit tracking system work?";
-const growth_faq_a1$1 = "It uses the 'Atomic Habits' methodology, focusing on small wins and identity-based habits.";
-const growth_faq_q2$1 = "Is my journal data private?";
-const growth_faq_a2$1 = "Absolutely. Your reflections are for your eyes only, stored securely with privacy-first principles.";
-const growth_faq_q3$1 = "Can I sync across devices?";
-const growth_faq_a3$1 = "Yes, your growth journey stays with you wherever you go, syncing seamlessly across all devices.";
-const growth_footer_title$1 = "Today is Day One.";
-const growth_footer_desc$1 = "Your future is shaped by what you do today, not tomorrow. Take that first step right now.";
-const growth_footer_cta$1 = "Start Your Growth Journey";
-const growth_cta_note$1 = "100% free to start taking small steps.";
 const solve_career_meta_title$1 = "Career Accelerator - OneForMind";
 const solve_career_meta_desc$1 = "Transform your job hunt from a chaotic mess into a structured pipeline. Track applications, ace interviews, and land your dream job.";
 const solve_career_meta_og_title$1 = "Take Control of Your Career with OneForMind";
@@ -3094,252 +3089,537 @@ const solve_finance_hero_desc$1 = "Say goodbye to financial anxiety. Track incom
 const solve_finance_hero_cta$1 = "Master Your Money";
 const solve_finance_prob_title$1 = "The Financial Anxiety Trap";
 const solve_finance_prob_desc$1 = "Managing money shouldn't feel like a punishment.";
-const solve_finance_prob_1_title$1 = "The Leaky Bucket";
-const solve_finance_prob_1_desc$1 = "Wondering where your money went at the end of the month.";
-const solve_finance_prob_1_point_1$1 = "Impulse spending taking over";
-const solve_finance_prob_1_point_2$1 = "Zero visibility on subscriptions";
-const solve_finance_prob_1_point_3$1 = "End-of-month panic";
-const solve_finance_prob_2_title$1 = "The Boring Spreadsheets";
-const solve_finance_prob_2_desc$1 = "Traditional budgeting apps feel like accounting software.";
-const solve_finance_prob_2_point_1$1 = "Too complex to use daily";
-const solve_finance_prob_2_point_2$1 = "Disconnected from your actual life goals";
-const solve_finance_prob_2_point_3$1 = "Guilt-trips you for spending";
-const solve_finance_sol_title$1 = "The Zero-Friction Wealth Engine";
-const solve_finance_sol_feat_1_title$1 = "Lightning Fast Entry";
-const solve_finance_sol_feat_1_desc$1 = "Log a transaction in seconds. No endless loading screens, no complex accounting jargon. Just amount, category, done.";
-const solve_finance_sol_feat_2_title$1 = "Visual Budgets";
-const solve_finance_sol_feat_2_desc$1 = "Set limits for categories and watch the progress bar. Know exactly how much 'fun money' you have left without guilt.";
-const solve_finance_sol_feat_3_title$1 = "Income Targets";
-const solve_finance_sol_feat_3_desc$1 = "Not just tracking expenses. Set monthly income goals and watch your wealth grow as a freelancer or creator.";
-const solve_finance_syn_title$1 = "Micro-Habits to Macro-Wealth";
-const solve_finance_syn_desc$1 = "Because the best financial strategy is changing your daily behavior.";
-const solve_finance_cta_title$1 = "Stop wondering where your money went.";
-const solve_finance_cta_desc$1 = "Start directing it towards the life you actually want to live.";
-const solve_finance_cta_btn$1 = "Start Tracking Today";
+const solve_finance_prob_1_title$1 = "Subtle Leaks";
+const solve_finance_prob_1_desc$1 = "Forgotten subscriptions and small costs that, when totaled, derail your future plans.";
+const solve_finance_prob_2_title$1 = "No Emergency Buffer";
+const solve_finance_prob_2_desc$1 = "Living paycheck to paycheck without protection when emergencies suddenly arise.";
+const solve_finance_prob_3_title$1 = "Wealth Ignorance";
+const solve_finance_prob_3_desc$1 = "Not knowing your current total net worth because data is scattered everywhere.";
+const solve_finance_sol_title$1 = "Your Money, Under Your Command.";
+const solve_finance_sol_desc$1 = "OneForMind gives you full visibility. Not just recording, but planning your freedom.";
+const solve_finance_sol_step_1_title$1 = "Instant Input";
+const solve_finance_sol_step_1_desc$1 = "Log every expense in seconds. Speed is the key to consistency.";
+const solve_finance_sol_step_2_title$1 = "Flexible Budgeting";
+const solve_finance_sol_step_2_desc$1 = "Set limits for specific categories and let the system warn you before it's too late.";
+const solve_finance_sol_step_3_title$1 = "Wealth Projections";
+const solve_finance_sol_step_3_desc$1 = "Watch your savings and investments grow over time with motivating visualizations.";
+const solve_finance_feat_title$1 = "Strong Financial Foundation";
+const solve_finance_feat_desc$1 = "Features designed to build long-term stability.";
+const solve_finance_feat_1_title$1 = "Expense Tracker";
+const solve_finance_feat_1_desc$1 = "Automatic and manual categorization to understand where every bit of your money goes each month.";
+const solve_finance_feat_2_title$1 = "Budget Center";
+const solve_finance_feat_2_desc$1 = "Create a monthly spending plan and compare it with reality in real-time.";
+const solve_finance_feat_3_title$1 = "Net Worth Tracker";
+const solve_finance_feat_3_desc$1 = "See the big picture. Connect your assets and liabilities to know your true financial value.";
+const solve_finance_cta_title$1 = "Ready for Financial Freedom?";
+const solve_finance_cta_desc$1 = "Start building your wealth foundation now with the most intuitive system.";
+const solve_finance_cta_btn$1 = "Start Managing My Money";
 const solve_finance_faq_title$1 = "Finance Mastery FAQ";
-const solve_finance_faq_q1$1 = "Is this better than a spreadsheet?";
-const solve_finance_faq_a1$1 = "Yes, because it's always in your pocket. Quick entries, visual progress bars, and automatic recaps save you hours of manual data entry every week.";
-const solve_finance_faq_q2$1 = "Can I track multiple accounts?";
-const solve_finance_faq_a2$1 = "You can use categories and notes to segment your spending and income sources, giving you a comprehensive view of your total financial health.";
-const solve_finance_faq_q3$1 = "Does it connect to my bank?";
-const solve_finance_faq_a3$1 = "We prioritize privacy and manual mindfulness. OneForMind does not connect to your bank, encouraging you to be aware of every dollar that moves through your system.";
-const solve_finance_science_badge$1 = "FINANCIAL BEHAVIOR";
-const solve_finance_science_title$1 = "Mastery Over Money";
-const solve_finance_science_desc$1 = "Inspired by the 'Kakeibo Method' and 'Mindful Spending' principles. Our system focuses on the emotional relationship with money, not just the math.";
-const solve_finance_extra_1_title$1 = "The Psychology of Spending";
-const solve_finance_extra_1_desc$1 = "Identify emotional triggers that lead to impulse buys. By logging context with your transactions, you can build a more mindful spending identity.";
-const solve_finance_extra_2_title$1 = "Long-Term Wealth Compass";
-const solve_finance_extra_2_desc$1 = "Visualize where your current saving habits will lead you in 5 years. Use data to adjust your lifestyle now for the freedom you want later.";
-const solve_mental_meta_title$1 = "Mental Clarity & Journaling - OneForMind";
-const solve_mental_meta_desc$1 = "Clear the brain fog. Use our integrated journaling and mood tracking tools to find peace and focus in a noisy world.";
-const solve_mental_meta_og_title$1 = "Find Your Mental Sanctuary with OneForMind";
-const solve_mental_meta_og_desc$1 = "Empty your mind, track your emotions, and build a resilient mindset.";
-const solve_mental_hero_badge$1 = "Mental Sanctuary";
-const solve_mental_hero_title_1$1 = "Clear the Brain Fog.";
-const solve_mental_hero_title_2$1 = "Reclaim Your Focus.";
-const solve_mental_hero_desc$1 = "Your brain is for generating ideas, not holding them. Dump your anxious thoughts into a secure, beautiful digital journal and get your clarity back.";
-const solve_mental_hero_cta$1 = "Start Journaling";
-const solve_mental_prob_title$1 = "The Overwhelm Epidemic";
-const solve_mental_prob_desc$1 = "Modern life demands constant attention. Without a system to process it, your mind becomes a chaotic storage room.";
-const solve_mental_prob_1_title$1 = "The Mental Loop";
-const solve_mental_prob_1_desc$1 = "Replaying the same anxieties and unfinished tasks in your head because you haven't written them down.";
-const solve_mental_prob_2_title$1 = "Dopamine Exhaustion";
-const solve_mental_prob_2_desc$1 = "Scrolling endlessly to numb the stress, which only makes the brain fog thicker and harder to break.";
-const solve_mental_sol_title$1 = "Your Digital Safe Space";
-const solve_mental_sol_desc$1 = "OneForMind isn't just a productivity tool; it's a private sanctuary where you can organize your inner world before tackling the outer one.";
-const solve_mental_sol_step_1_title$1 = "Brain Dump";
-const solve_mental_sol_step_1_desc$1 = "Open the Zen Journal and write whatever is on your mind. No formatting, no pressure. Just release.";
-const solve_mental_sol_step_2_title$1 = "Track Your Emotional State";
-const solve_mental_sol_step_2_desc$1 = "Log your mood daily to spot patterns. Do you always feel anxious on Tuesdays? Now you can prepare for it.";
-const solve_mental_sol_step_3_title$1 = "Transition to Action";
-const solve_mental_sol_step_3_desc$1 = "Once the mind is clear, move to the Planner and schedule only what truly matters for the day.";
-const solve_mental_feat_title$1 = "Tools for Inner Peace";
-const solve_mental_feat_1_title$1 = "The Distraction-Free Journal";
-const solve_mental_feat_1_desc$1 = "A clean, beautiful writing interface designed to mimic the feeling of a physical diary. Add images, set your mood, and write without judgment.";
-const solve_mental_feat_2_title$1 = "Mood Correlation Analytics";
-const solve_mental_feat_2_desc$1 = "See how your habits affect your mood. Discover if going to the gym actually makes you happier over a 30-day period.";
-const solve_mental_cta_title$1 = "Take a deep breath.";
-const solve_mental_cta_desc$1 = "Your mind deserves a break. Start organizing your thoughts today.";
-const solve_mental_cta_btn$1 = "Enter the Sanctuary";
-const solve_mental_faq_title$1 = "Mental Sanctuary FAQ";
-const solve_mental_faq_q1$1 = "Is my journal really private?";
-const solve_mental_faq_a1$1 = "Yes. We treat your reflections with the highest level of privacy. Your data is encrypted and accessible only to you. We believe journaling should be a safe, unjudged space.";
+const solve_finance_faq_q1$1 = "Do I need to connect my bank?";
+const solve_finance_faq_a1$1 = "For maximum privacy and security, OneForMind currently focuses on fast manual input or CSV uploads, ensuring there is no direct access to your bank accounts.";
+const solve_finance_faq_q2$1 = "Can I track multiple currencies?";
+const solve_finance_faq_a2$1 = "Yes, our system supports multi-currency to help you manage global assets in one place.";
+const solve_finance_faq_q3$1 = "Is my financial data truly secure?";
+const solve_finance_faq_a3$1 = "Your data is fully encrypted. We use the same security standards as modern banking apps to protect your sensitive financial information.";
+const solve_finance_science_badge$1 = "WEALTH ARCHITECTURE";
+const solve_finance_science_title$1 = "Conscious Allocation Methodology";
+const solve_finance_science_desc$1 = "We use 'Pay Yourself First' and 'Zero-Based Budgeting' principles. Our system ensures every dollar has a job, reducing impulse buys and increasing savings.";
+const solve_finance_extra_1_title$1 = "Cash Flow Visualization";
+const solve_finance_extra_1_desc$1 = "Understand your financial ebbs and flows with easy-to-read charts. Identify seasonal trends and adjust your lifestyle before cash flow turns negative.";
+const solve_finance_extra_2_title$1 = "Smart Savings Targets";
+const solve_finance_extra_2_desc$1 = "Want to buy a house or go on vacation? Set specific goals and let OneForMind calculate how much to set aside each month to achieve them on time.";
+const solve_mental_meta_title$1 = "Mental Clarity - OneForMind";
+const solve_mental_meta_desc$1 = "Reduce anxiety and enhance focus. Use a reflective journaling system for a calmer, sharper mind.";
+const solve_mental_meta_og_title$1 = "Clear Your Mind with OneForMind";
+const solve_mental_meta_og_desc$1 = "A quiet space in the digital noise. Find peace through structured reflection.";
+const schema_solution_mental_clarity_name$1 = "OneForMind Mental Clarity Solution";
+const schema_solution_mental_clarity_description$1 = "A system for managing mental health through reflective journaling and thought management techniques.";
+const mental_breadcrumb$1 = "Mental Clarity";
+const solve_mental_hero_badge$1 = "Mental Health";
+const solve_mental_hero_title_1$1 = "Silence the Noise";
+const solve_mental_hero_title_2$1 = "Inside Your Head.";
+const solve_mental_hero_desc$1 = "Reduce cognitive load and tackle overthinking. OneForMind provides a safe space to dump your thoughts, process emotions, and find your focus again.";
+const solve_mental_hero_cta$1 = "Clear My Mind";
+const mental_mockup_quote$1 = "A calm mind is the most powerful weapon in any storm.";
+const mental_mockup_source$1 = "Modern Stoicism";
+const mental_mockup_task_1_title$1 = "Reflective Meditation";
+const mental_mockup_task_1_sub$1 = "10 Minutes Done";
+const mental_mockup_task_2_title$1 = "Brain Dump Journaling";
+const mental_mockup_task_2_sub$1 = "3 Pages Written";
+const mental_mockup_task_3_title$1 = "Zen Focus";
+const mental_mockup_task_3_sub$1 = "Deep work without distraction";
+const solve_mental_prob_title$1 = "The Epidemic of a Noisy Mind";
+const solve_mental_prob_desc$1 = "Today's world is designed to steal your attention and make you feel anxious.";
+const solve_mental_prob_1_title$1 = "Cognitive Overload";
+const solve_mental_prob_1_desc$1 = "Too much incoming information makes your brain 'hang' and makes even simple decisions difficult.";
+const solve_mental_prob_2_title$1 = "Distraction Addiction";
+const solve_mental_prob_2_desc$1 = "The constant urge to check notifications kills your ability to think deeply and reflectively.";
+const solve_mental_sol_title$1 = "Operating System For Your Soul.";
+const solve_mental_sol_desc$1 = "We aren't just a notes app. We are a place to dissect thoughts, understand emotional patterns, and build mental resilience.";
+const solve_mental_sol_step_1_title$1 = "Regular Brain Dumps";
+const solve_mental_sol_step_1_desc$1 = "Dump all the chaos in your head into the system in seconds to immediately feel lighter.";
+const solve_mental_sol_step_2_title$1 = "Process & Reflect";
+const solve_mental_sol_step_2_desc$1 = "Use our guiding prompts to dig into the root causes of your anxiety or happiness today.";
+const solve_mental_sol_step_3_title$1 = "Find the Patterns";
+const solve_mental_sol_step_3_desc$1 = "View your mood and journal stats over the long term to understand what truly triggers your stress.";
+const mental_mockup_journal_badge$1 = "ZEN ENTRY";
+const mental_mockup_journal_text$1 = "Today I realized that my anxiety stems from others' expectations that I don't need to meet...";
+const mental_mockup_journal_status$1 = "Relieved";
+const solve_mental_feat_title$1 = "Your Mental Shield";
+const solve_mental_feat_1_title$1 = "Reflection Journal";
+const solve_mental_feat_1_desc$1 = "A distraction-free writing space to express yourself freely, equipped with cognitive therapy-based prompts.";
+const solve_mental_feat_2_title$1 = "Mood Tracker";
+const solve_mental_feat_2_desc$1 = "Visualize your emotional journey. Understand the relationship between daily activities and your level of mental peace.";
+const mental_extra_1_label$1 = "COGNITIVE LOAD";
+const solve_mental_extra_1_title$1 = "Silence the Noise";
+const solve_mental_extra_1_desc$1 = "Our system is designed to minimize mental burden. With a clean interface and logical flow, you can focus on what's inside, not the screen.";
+const solve_mental_extra_2_title$1 = "Reflection Loops";
+const solve_mental_extra_2_desc$1 = "Turn random thoughts into actionable wisdom.";
+const mental_extra_2_item_1$1 = "Self-Awareness";
+const mental_extra_2_item_2$1 = "Emotional Control";
+const mental_extra_2_item_3$1 = "Resilience";
+const solve_mental_science_badge$1 = "APPLIED PSYCHOLOGY";
+const solve_mental_science_title$1 = "Neuroplasticity & Reflection";
+const solve_mental_science_desc$1 = "Based on Cognitive Behavioral Therapy (CBT) principles, structured journaling helps reprogram negative thought patterns and build new neural pathways for calmness.";
+const mental_science_process_1_title$1 = "Emotional Release";
+const mental_science_process_2_title$1 = "Cognitive Restructuring";
+const mental_science_process_3_title$1 = "Mindfulness Awareness";
+const mental_science_process_4_title$1 = "Neurochemical Stability";
+const solve_mental_faq_title$1 = "Mental Clarity FAQ";
+const solve_mental_faq_q1$1 = "Can this replace therapy?";
+const solve_mental_faq_a1$1 = "No. OneForMind is a support tool for daily mental health maintenance. If you're experiencing serious hardship, we highly recommend consulting a medical professional.";
 const solve_mental_faq_q2$1 = "How often should I journal?";
-const solve_mental_faq_a2$1 = "Even 2 minutes a day can clear significant brain fog. OneForMind makes it easy with quick mood logs and a distraction-free writing environment.";
-const solve_mental_faq_q3$1 = "What is the mood-habit link?";
-const solve_mental_faq_a3$1 = "Our system helps you see correlations. For example, you might notice your mood significantly improves on days you complete your 'Morning Walk' habit.";
-const solve_mental_science_badge$1 = "MENTAL RESILIENCE";
-const solve_mental_science_title$1 = "The Art of Introspection";
-const solve_mental_science_desc$1 = "Grounded in Cognitive Behavioral Therapy (CBT) and Positive Psychology, our tools help you audit your thoughts and build a more resilient mindset.";
-const solve_mental_extra_1_title$1 = "Cognitive Load Reduction";
-const solve_mental_extra_1_desc$1 = "Your working memory is limited. By dumping everything into the Sanctuary, you reduce background anxiety and reclaim your ability to think deeply.";
-const solve_mental_extra_2_title$1 = "Sleep & Mood Synchrony";
-const solve_mental_extra_2_desc$1 = "Track how your sleep quality affects your daily output and emotional state. Build a lifestyle that supports your biological needs for peak performance.";
-const atomic_meta_title$1 = "The Atomic System - OneForMind";
-const atomic_meta_desc$1 = "Build systems, not just goals. Transform 1% daily improvements into massive lifetime results.";
-const atomic_meta_og_title$1 = "Master Your Habits with The Atomic System";
-const atomic_meta_og_desc$1 = "Stop relying on motivation. Build a productivity system that runs on autopilot.";
-const atomic_hero_badge$1 = "Atomic System";
-const atomic_hero_title_1$1 = "Don't Change Your Goals.";
-const atomic_hero_title_2$1 = "Change Your System.";
-const atomic_hero_desc$1 = "Success is the product of daily habits, not once-in-a-lifetime transformations. Build a system that makes being 1% better every day inevitable.";
-const atomic_hero_cta$1 = "Build Your System";
-const atomic_prob_title$1 = "The Trap of Big Goals";
-const atomic_prob_desc$1 = "Why New Year's Resolutions fail by February.";
-const atomic_prob_1_title$1 = "Motivation Fades";
-const atomic_prob_1_desc$1 = "Relying on sheer willpower is exhausting. When you're tired, goals don't matter.";
-const atomic_prob_2_title$1 = "Winner & Loser Paradox";
-const atomic_prob_2_desc$1 = "Both winners and losers have the same goals. The difference is the system they use.";
-const atomic_sol_title$1 = "The Power of 1%";
-const atomic_sol_desc$1 = "How OneForMind helps you compound your daily efforts.";
-const atomic_step_1_title$1 = "Make It Obvious";
-const atomic_step_1_desc$1 = "Track your habits visually. Don't break the chain. The grid is your new identity.";
-const atomic_step_2_title$1 = "Make It Easy";
-const atomic_step_2_desc$1 = "Break massive goals into micro-milestones. Start so small you can't fail.";
-const atomic_step_3_title$1 = "Make It Satisfying";
-const atomic_step_3_desc$1 = "Watch your financial ledger grow as a direct result of the habits you kept today.";
-const atomic_cta_title$1 = "Start your 1% improvement today.";
-const atomic_cta_btn$1 = "Start Tracking";
-const atomic_mockup_title$1 = "The Compounding Effect";
-const atomic_mockup_desc$1 = "If you get 1% better each day for one year, you'll end up 37 times better by the time you're done.";
-const atomic_faq_title$1 = "The Atomic System FAQ";
-const atomic_faq_q1$1 = "Why is it called an 'Atomic System'?";
-const atomic_faq_a1$1 = "Inspired by James Clear's work, an 'Atomic System' focuses on tiny, microscopic changes that are easy to start but have massive compounding effects over time. We believe that systems, not just motivation, determine your success.";
-const atomic_faq_q2$1 = "How does it help with identity shift?";
-const atomic_faq_a2$1 = "Every time you log a habit in OneForMind, you're casting a vote for the person you want to become. Our system reinforces this new identity through visual heatmaps and streaks, making the change permanent rather than temporary.";
-const atomic_faq_q3$1 = "Can I use this for complex goals?";
-const atomic_faq_a3$1 = "Absolutely. The power of the Atomic System is in its ability to deconstruct complex, intimidating goals into tiny, actionable steps that you can manage without feeling overwhelmed.";
-const atomic_science_badge$1 = "BEHAVIORAL DESIGN";
-const atomic_science_title$1 = "The Physics of Progress";
-const atomic_science_desc$1 = "The Atomic System is built on the foundations of Behavioral Economics and Identity-Based Habits. It's designed to minimize the 'Activation Energy' required to start a new behavior.";
-const atomic_cta_desc$1 = "Join thousands of users who have stopped setting impossible goals and started building unbreakable systems.";
-const atomic_feat_title$1 = "The Habit Arsenal";
-const atomic_feat_1_title$1 = "Visual Heatmap";
-const atomic_feat_1_desc$1 = "See your consistency mapped out in a beautiful GitHub-style grid. A quick glance is all you need to know if you're on track.";
-const atomic_feat_2_title$1 = "Micro-Milestones";
-const atomic_feat_2_desc$1 = "Turn overwhelming 1-year goals into tiny actionable steps that you can tick off daily without feeling intimidated.";
-const atomic_cta_note = "No credit card required. Free forever for individuals.";
-const atomic_extra_1_title$1 = "Systemic Habit Heatmaps";
-const atomic_extra_1_desc$1 = "Go beyond basic streaks. See your entire habit landscape and identify which systems are thriving and which need manual intervention.";
-const atomic_extra_2_title$1 = "The Compounding Factory";
-const atomic_extra_2_desc$1 = "Visualize how small daily wins add up to massive quarterly shifts. OneForMind quantifies your progress so you never feel like you're standing still.";
-const deepwork_meta_title$1 = "Deep Work Protocol - OneForMind";
-const deepwork_meta_desc$1 = "Eliminate distractions. Use timeboxing and Pomodoro sprints to do the best work of your life.";
-const deepwork_meta_og_title$1 = "Reclaim Your Focus with Deep Work";
-const deepwork_meta_og_desc$1 = "Master your time or it will master you.";
-const deepwork_hero_badge$1 = "Deep Work Protocol";
-const deepwork_hero_title_1$1 = "Focus is the New";
-const deepwork_hero_title_2$1 = "Superpower.";
-const deepwork_hero_desc$1 = "Eliminate context switching. Block your time, mute the noise, and execute high-value tasks with relentless focus using our integrated tools.";
-const deepwork_hero_cta$1 = "Enter Deep Work";
-const deepwork_prob_title$1 = "The Shallow Work Epidemic";
-const deepwork_prob_desc$1 = "We are confusing busyness with actual productivity.";
-const deepwork_prob_1_title$1 = "Context Switching";
-const deepwork_prob_1_desc$1 = "Jumping between emails, chats, and work destroys your cognitive capacity.";
-const deepwork_prob_2_title$1 = "Reactive Living";
-const deepwork_prob_2_desc$1 = "Letting other people's emergencies dictate your daily schedule.";
-const deepwork_prob_3_title$1 = "False Progress";
-const deepwork_prob_3_desc$1 = "Checking off 20 tiny tasks but ignoring the one project that actually matters.";
-const deepwork_sol_title$1 = "The Architecture of Focus";
-const deepwork_sol_1_title$1 = "Visual Timeboxing";
-const deepwork_sol_1_desc$1 = "Give every hour a specific job. If it's not on the timeline, it doesn't happen.";
-const deepwork_sol_2_title$1 = "Integrated Sprints";
-const deepwork_sol_2_desc$1 = "Use the built-in Pomodoro timer to lock into 25 minutes of unbroken concentration.";
-const deepwork_mockup_title$1 = "Daily Focus Timeline";
-const deepwork_mockup_desc$1 = "Unbroken concentration in progress.";
-const deepwork_sol_3_title$1 = "Persistent Inbox";
-const deepwork_sol_3_desc$1 = "When random ideas distract you during a focus session, dump them instantly into the sidebar Inbox and get back to work.";
-const deepwork_cta_note$1 = "Free forever for individuals.";
-const deepwork_faq_title$1 = "Deep Work FAQ";
-const deepwork_faq_q1$1 = "What defines 'Deep Work'?";
-const deepwork_faq_a1$1 = "Deep Work is the ability to focus without distraction on a cognitively demanding task. It's a skill that allows you to quickly master complicated information and produce better results in less time. OneForMind provides the ideal environment for this practice.";
-const deepwork_faq_q2$1 = "How does the Pomodoro timer help?";
-const deepwork_faq_a2$1 = "Our integrated Pomodoro timer uses time-pressure to help you avoid the 'Zeigarnik Effect'—the tendency to remember uncompleted tasks more than completed ones. It keeps you locked into the session until its natural conclusion.";
-const deepwork_faq_q3$1 = "Can I block specific times for deep work?";
-const deepwork_faq_a3$1 = "Yes. Our visual timeboxing system allows you to pre-commit to deep work sessions, making it less likely that you'll succumb to distractions or reactive shallow work.";
-const deepwork_science_badge$1 = "COGNITIVE SUPREMACY";
-const deepwork_science_title$1 = "The Neurobiology of Focus";
-const deepwork_science_desc$1 = "OneForMind is designed around the 'Attention Restoration Theory' and 'Myelin Growth' principles, ensuring that your focus sessions actually improve your long-term cognitive skills.";
-const deepwork_cta_desc$1 = "Stop letting distractions steal your potential. Build your schedule, lock in, and execute.";
-const deepwork_cta_title$1 = "Ready to do the best work of your life?";
-const deepwork_cta_btn$1 = "Build My Schedule";
-const deepwork_feat_title$1 = "The Focus Arsenal";
-const deepwork_feat_1_title$1 = "Native Pomodoro Timer";
-const deepwork_feat_1_desc$1 = "Ditch the external browser extensions. Our built-in timer sits right next to your tasks, ensuring you never break your flow state.";
-const deepwork_feat_2_title$1 = "Persistent Idea Inbox";
-const deepwork_feat_2_desc$1 = "When a brilliant (or distracting) idea hits you mid-sprint, dump it into the sidebar Inbox instantly and return to your deep work.";
-const deepwork_extra_1_title$1 = "Flow State Metrics";
-const deepwork_extra_1_desc$1 = "Track your deep work hours and Pomodoro sessions. Data-driven focus helps you identify your peak performance windows during the day.";
-const deepwork_extra_2_title$1 = "Environmental Design";
-const deepwork_extra_2_desc$1 = "Productivity is a product of your environment. Use our protocol to prep your workspace and digital tools for maximum cognitive output.";
+const solve_mental_faq_a2$1 = "Even 5 minutes a day can make a massive difference. Consistency is key, not the length of the writing.";
+const solve_mental_faq_q3$1 = "Are there prompts provided?";
+const solve_mental_faq_a3$1 = "Yes, we provide various prompt templates for morning, evening, and for handling specific moments of stress.";
+const solve_mental_cta_title$1 = "Take a Deep Breath.";
+const solve_mental_cta_desc$1 = "External disorder begins from internal disorder. Start clearing your mind today.";
+const solve_mental_cta_btn$1 = "Start Living Calmer";
+const growth_meta_title$1 = "Personal Growth & Productivity - OneForMind";
+const growth_meta_desc$1 = "Build good habits, clear your mind with journaling, and achieve the best version of yourself every day.";
+const growth_meta_og_title$1 = "OneForMind for Personal Growth";
+const growth_meta_og_desc$1 = "A system to build new identities and unstoppable habits.";
+const schema_solution_growth_name$1 = "OneForMind Personal Growth Solution";
+const schema_solution_growth_description$1 = "A system for building atomic habits and achieving sustained personal growth.";
+const growth_breadcrumb$1 = "Personal Growth";
+const growth_hero_badge$1 = "Personal Growth";
+const growth_hero_title_1$1 = "Stop Planning,";
+const growth_hero_title_2$1 = "Start Executing.";
+const growth_hero_desc$1 = "A comprehensive system to track your habits, reflect on your thoughts, and build the best version of yourself every single day. Little by little, step by step.";
+const growth_hero_cta_1$1 = "Start Your Transformation";
+const growth_hero_social_proof$1 = "Join thousands of dream chasers.";
+const growth_mockup_goal_label$1 = "Reading Goal";
+const growth_mockup_habit_title$1 = "Morning Run";
+const growth_mockup_habit_desc$1 = "5 km done";
+const growth_mockup_reflection_title$1 = "Daily Reflection";
+const growth_mockup_reflection_desc$1 = "Today I learned to let go of what I can't control...";
+const growth_mockup_streak_title$1 = "30-Day Streak!";
+const growth_mockup_streak_desc$1 = "Consistency shapes your new identity.";
+const growth_habit_streak$1 = "30-Day Streak!";
+const growth_habit_streak_desc$1 = "Consistency shapes your new identity.";
+const growth_feat_1_title$1 = "Forge a New Identity Through Habits";
+const growth_feat_1_desc$1 = "Every time you complete a habit, you cast a vote for the type of person you wish to become. Build your winning streak and never break the chain.";
+const growth_feat_1_point_1$1 = "Precision Habit Tracking";
+const growth_feat_1_point_2$1 = "Milestones & Consistency Rewards";
+const growth_feat_2_title$1 = "A Quiet Space For Your Mind";
+const growth_feat_2_desc$1 = "Step away from the digital noise. Enter 'Zen Mode' and start untangling the knots in your head through daily reflective journaling without noisy UI distractions.";
+const growth_feat_2_quote_title$1 = "Sometimes, the best productivity hack is a pause to understand yourself.";
+const growth_feat_2_quote_body$1 = "Writing down how you feel helps you master what you will do next.";
+const growth_extra_1_title$1 = "Visual Evolution";
+const growth_extra_1_desc$1 = "Watch your progress grow from a small seed into a flourishing tree as you stay consistent with your goals.";
+const growth_extra_2_title$1 = "The 1% Principle";
+const growth_extra_2_desc$1 = "Small changes lead to massive results over time.";
+const growth_extra_2_stat_label$1 = "ANNUAL PROGRESS";
+const growth_extra_2_stat_sub$1 = "The Power of 1% Improvement";
+const growth_science_badge$1 = "ACADEMIC EXCELLENCE";
+const growth_science_title$1 = "The Science Behind Learning";
+const growth_science_desc$1 = "Built on the principles of Spaced Repetition and Cognitive Resource Management.";
+const growth_science_point_1$1 = "Antifragility";
+const growth_science_point_2$1 = "Identity Shift";
+const growth_science_point_3$1 = "Compound Growth";
+const growth_faq_title$1 = "Frequently Asked Questions";
+const growth_faq_q1$1 = "How does the habit tracking system work?";
+const growth_faq_a1$1 = "It uses the 'Atomic Habits' methodology, focusing on small wins and identity-based habits.";
+const growth_faq_q2$1 = "Is my journal data private?";
+const growth_faq_a2$1 = "Absolutely. Your reflections are for your eyes only, stored securely with privacy-first principles.";
+const growth_faq_q3$1 = "Can I sync across devices?";
+const growth_faq_a3$1 = "Yes, your growth journey stays with you wherever you go, syncing seamlessly across all devices.";
+const growth_cta_title$1 = "Today is Day One.";
+const growth_cta_desc$1 = "Your future is shaped by what you do today, not tomorrow. Take that first step right now.";
+const growth_cta_btn$1 = "Start Your Growth Journey";
+const growth_cta_note$1 = "100% free to start taking small steps.";
+const growth_science_viz_aura$1 = "Life_Sync";
 const brain_meta_title$1 = "Second Brain - OneForMind";
-const brain_meta_desc$1 = "Offload your cognitive burden. Dump your thoughts, tasks, and anxieties into a trusted digital system.";
-const brain_meta_og_title$1 = "Create Your Second Brain";
-const brain_meta_og_desc$1 = "Your mind is for creating ideas, not holding them.";
-const brain_hero_badge$1 = "Cognitive Offloading";
-const brain_hero_title_1$1 = "Your Brain is for Ideas,";
-const brain_hero_title_2$1 = "Not for Storing Them.";
-const brain_hero_desc$1 = "Stop trying to remember everything. Dump your tasks, thoughts, and anxieties into a digital system you can trust so you can finally relax.";
-const brain_hero_cta$1 = "Free Your Mind";
-const brain_prob_title$1 = "The Overwhelm Epidemic";
-const brain_prob_desc$1 = "Why you feel tired before you even start working.";
-const brain_prob_core$1 = "Keeping too many open loops in your head causes anxiety, brain fog, and decision fatigue. You need an external hard drive for your life.";
-const brain_sol_title$1 = "The C.O.E Framework";
-const brain_step_1$1 = "Throw every random task, thought, or anxiety into the Inbox or Journal the moment it appears.";
-const brain_step_2$1 = "Filter them into your Planner Timeline, Job Tracker, or Financial Ledgers.";
-const brain_step_3$1 = "Execute with a clear mind, knowing everything else is safely stored.";
-const brain_cta_title$1 = "Offload your cognitive burden.";
-const brain_cta_btn$1 = "Create Your Second Brain";
-const brain_mockup_1$1 = "Quick Inbox";
-const brain_mockup_2$1 = "OneForMind Hub";
-const brain_mockup_3$1 = "Clear Execution";
-const brain_prob_1_title$1 = "Endless Open Loops";
-const brain_prob_1_desc$1 = "Unfinished tasks pinging in your head all day, draining your energy and causing background anxiety.";
-const brain_prob_2_title$1 = "Information Fragmentation";
-const brain_prob_2_desc$1 = "Notes in your phone, tasks in your notebook, events in your calendar. Nothing is connected, everything is lost.";
-const brain_prob_3_title$1 = "Decision Fatigue";
-const brain_prob_3_desc$1 = "Wasting peak mental energy every morning just trying to figure out what you're supposed to be doing.";
-const brain_sol_desc$1 = "How OneForMind acts as your digital external hard drive.";
-const brain_step_1_title$1 = "1. Capture";
-const brain_step_1_desc$1 = "Throw every random task, thought, or anxiety into the Inbox or Journal the exact moment it appears.";
-const brain_step_2_title$1 = "2. Organize";
-const brain_step_2_desc$1 = "Filter them into your Planner Timeline, Job Tracker, or Financial Ledgers when you actually have the time to process them.";
-const brain_step_3_title$1 = "3. Execute";
-const brain_step_3_desc$1 = "Work with a clear mind, knowing everything else is safely stored and will be surfaced exactly when needed.";
-const brain_cta_note$1 = "Free forever for individuals.";
-const brain_faq_title$1 = "Second Brain FAQ";
-const brain_faq_q1$1 = "What is a 'Second Brain'?";
-const brain_faq_a1$1 = "A Second Brain is an external digital system designed to store and organize the information you encounter daily. By offloading these 'open loops' to OneForMind, you free up your biological brain for creating and thinking, rather than just remembering.";
-const brain_faq_q2$1 = "How does the C.O.E framework work?";
-const brain_faq_a2$1 = "C.O.E stands for Capture, Organize, and Execute. It's our simplified version of the P.A.R.A. method. You capture everything instantly, organize it only when necessary, and focus your energy on execution.";
-const brain_faq_q3$1 = "Is this only for work tasks?";
-const brain_faq_a3$1 = "No. A true Second Brain manages your entire life—from personal goals and financial tracking to emotional reflections and hobby projects. OneForMind is built to be your unified Life OS.";
-const brain_science_badge$1 = "COGNITIVE OFFLOADING";
-const brain_science_title$1 = "The Science of External Memory";
-const brain_science_desc$1 = "OneForMind implements the 'Extended Mind' thesis and 'Cognitive Offloading' principles to reduce the biological cost of information management.";
-const brain_cta_desc$1 = "Let the system do the remembering. You just do the thinking.";
-const brain_extra_1_title$1 = "Dynamic Information Hierarchy";
-const brain_hub_title$1 = "OneForMind Central Hub";
+const brain_meta_desc$1 = "Build a personal knowledge library. Never forget your brilliant ideas again.";
+const brain_meta_og_title$1 = "OneForMind Knowledge Library";
+const brain_meta_og_desc$1 = "A system to capture, organize, and execute your ideas.";
+const brain_breadcrumb$1 = "Second Brain";
+const brain_hero_badge$1 = "External Memory System";
+const brain_hero_title_1$1 = "Not Just Notes,";
+const brain_hero_title_2$1 = "It's Your Memory.";
+const brain_hero_desc$1 = "The human brain is designed to give birth to ideas, not store them. Build a support system that keeps all your knowledge accessible when you need it.";
+const brain_hero_cta$1 = "Build My Second Brain";
+const brain_mockup_1$1 = "Flash Capture";
+const brain_mockup_2$1 = "Auto Organize";
+const brain_mockup_3$1 = "Idea Execution";
+const brain_mockup_3_quote$1 = "Ideas aren't for holding, they're for developing.";
+const brain_prob_title$1 = "Information Overload";
+const brain_prob_desc$1 = "We live in an era where information is abundant but wisdom is rare.";
+const brain_prob_1_title$1 = "Brilliant Ideas Gone";
+const brain_prob_1_desc$1 = "Ideas that pop up along the way disappear simply because there's no instant holding pen.";
+const brain_prob_2_title$1 = "Scattered Data";
+const brain_prob_2_desc$1 = "Gallery screenshots, WhatsApp links, and paper notes—all separate and hard to find.";
+const brain_prob_3_title$1 = "Mental Fatigue";
+const brain_prob_3_desc$1 = "Trying to remember everything drains the energy you should be using to create.";
+const brain_prob_viz_badge$1 = "NOISE";
+const brain_prob_viz_sub$1 = "Your messy old system.";
+const brain_sol_title$1 = "One Place For Everything.";
+const brain_sol_desc$1 = "The C.O.E system (Capture, Organize, Execute) helps you turn thousands of pieces of info into real results.";
+const brain_step_1_title$1 = "Capture";
+const brain_step_1_desc$1 = "Stream all inspiration into your inbox in seconds. Frictionless.";
+const brain_step_2_title$1 = "Organize";
+const brain_step_2_desc$1 = "Connect your notes. See patterns you never knew existed.";
+const brain_step_3_title$1 = "Execute";
+const brain_step_3_desc$1 = "Turn knowledge into projects. Finish what you start.";
+const brain_hub_title$1 = "Knowledge Control Center";
 const brain_hub_inbox_title$1 = "Quick Inbox";
-const brain_hub_inbox_desc$1 = "A temporary high-speed space to capture fleeting thoughts, links, and tasks instantly before they vanish from your mind.";
-const brain_hub_os_title$1 = "Life OS Architecture";
-const brain_hub_os_desc$1 = "Your permanent digital home where raw information is intelligently filtered into habits, finances, and long-term goals.";
-const brain_feat_title$1 = "The Neural Toolkit";
-const brain_feat_1_title$1 = "Frictionless Capture";
-const brain_feat_1_desc$1 = "Save anything from anywhere. OneForMind acts as a shock absorber for information overload, allowing you to stay in the creative flow.";
-const brain_feat_2_title$1 = "Deep Context Archiving";
-const brain_feat_2_desc$1 = "Move beyond static notes. Connect every piece of data to specific life sectors, execution dates, and your primary vision.";
-const brain_extra_1_desc$1 = "Organize info not just by category, but by actionable urgency. Your Second Brain knows what you need to see now and what can wait for later.";
-const brain_extra_2_title$1 = "The Creative Output Engine";
-const brain_extra_2_desc$1 = "Stop just collecting information. OneForMind turns your notes and thoughts into a library of building blocks for your projects and creative work.";
-const ecosystem_habit_title$1 = "Habit Loops";
-const ecosystem_finance_title$1 = "Wealth Ledger";
-const ecosystem_planner_title$1 = "Action Timeline";
-const ecosystem_goal_title$1 = "Vision Board";
-const ecosystem_journal_title$1 = "Zen Archive";
-const ecosystem_job_title$1 = "Career Pipeline";
-const ecosystem_notes_title$1 = "Smart Notes";
-const ecosystem_calendar_title$1 = "Master Calendar";
+const brain_hub_inbox_desc$1 = "A temporary holding area before categorization.";
+const brain_hub_os_title$1 = "Life OS";
+const brain_hub_os_desc$1 = "The main structure for all areas of your life.";
+const brain_feat_title$1 = "Modern Thinking Tools";
+const brain_feat_sub$1 = "Features designed to expand your intellectual capacity.";
+const brain_feat_1_title$1 = "Smart Capture";
+const brain_feat_1_desc$1 = "Save anything from anywhere. OneForMind becomes an assistant that's always ready to note when you get inspired.";
+const brain_feat_2_title$1 = "Visual Network";
+const brain_feat_2_desc$1 = "See how one idea connects to another in an interactive knowledge graph.";
+const brain_extra_1_title$1 = "Information Hierarchy";
+const brain_extra_1_desc$1 = "Organize your data from the atomic level to the corporate level with a highly flexible structure.";
+const brain_extra_1_item_1$1 = "Smart Connections";
+const brain_extra_1_item_2$1 = "Flash Search";
+const brain_extra_1_item_3$1 = "Dynamic Filters";
+const brain_extra_1_viz_title$1 = "UNLIMITED CAPACITY";
+const brain_extra_2_title$1 = "Creative Output";
+const brain_extra_2_desc$1 = "Don't just read. Write, develop, and publish your ideas faster than ever before.";
+const brain_extra_2_item_1$1 = "Drafting";
+const brain_extra_2_item_2$1 = "Mindmap";
+const brain_extra_2_item_3$1 = "Publication";
+const brain_science_badge$1 = "COGNITIVE NEUROSCIENCE";
+const brain_science_title$1 = "Intellectual Extension";
+const brain_science_desc$1 = "Scientifically, reducing working memory load frees the brain for higher-level processing (creativity & problem solving).";
+const brain_science_topic_1$1 = "Zettelkasten Method";
+const brain_science_topic_2$1 = "P.A.R.A Principle";
+const brain_science_topic_3$1 = "Graph Theory";
+const brain_science_viz_badge$1 = "CORE_BRAIN";
+const brain_faq_title$1 = "Second Brain FAQ";
+const brain_faq_q1$1 = "How is this different from a normal notes app?";
+const brain_faq_a1$1 = "Normal apps just store text. OneForMind helps you build RELATIONSHIPS between ideas, creating a knowledge ecosystem that grows over time.";
+const brain_faq_q2$1 = "Is it hard to set up?";
+const brain_faq_a2$1 = "We provide a ready-to-use 'Life OS' template, so you can start right away without building a system from scratch.";
+const brain_faq_q3$1 = "Can I import my old data?";
+const brain_faq_a3$1 = "Yes, we support various import formats so your existing knowledge library can easily migrate to OneForMind.";
+const brain_cta_title$1 = "Free Up Space in Your Head.";
+const brain_cta_desc$1 = "Give your brain room to think, not just to store. Start building your external memory today.";
+const brain_cta_btn$1 = "Activate My Second Brain";
+const student_meta_title$1 = "Student Success System - OneForMind";
+const student_meta_desc$1 = "Master your course schedule, manage assignments, and organize student finances in one integrated system.";
+const student_meta_og_title$1 = "OneForMind for Students";
+const student_meta_og_desc$1 = "A survival kit system to achieve a high GPA and live an organized, stress-free life.";
+const schema_student_name$1 = "OneForMind Student Solution";
+const schema_student_description$1 = "An academic and life management platform for students and academics.";
+const schema_solution_student_audience$1 = "Students, Academics, Researchers";
+const student_hero_badge$1 = "Academic Companion";
+const student_hero_title_1$1 = "Master the Campus,";
+const student_hero_title_2$1 = "Control Your Life.";
+const student_hero_desc$1 = "One place for course schedules, piling assignments, and tight dorm budgets. Stop feeling overwhelmed, start being a systematic student.";
+const student_hero_cta_1$1 = "Start as a Smart Student";
+const student_hero_social_proof$1 = "Recommended by thousands of productive students.";
+const student_mockup_title$1 = "Student Dashboard";
+const student_mockup_budget_label$1 = "Remaining Budget This Week";
+const student_mockup_budget_status$1 = "Safe";
+const student_mockup_task_badge$1 = "URGENT";
+const student_mockup_task_title$1 = "Macroeconomics Assignment";
+const student_mockup_schedule_label$1 = "Today's Schedule";
+const student_mockup_schedule_item_1$1 = "Intro to AI Lecture";
+const student_mockup_schedule_item_2$1 = "Org Meeting";
+const student_prob_title$1 = "The Student Life Chaos";
+const student_prob_desc$1 = "Caught between deadlines, unexpected costs, and a lack of sleep.";
+const student_prob_1_title$1 = "Paralyzed by Deadlines";
+const student_prob_1_desc$1 = "Piling assignments make you not know where to start, ending with overnight cram sessions that ruin your health.";
+const student_prob_2_title$1 = "Month-End Financial Crisis";
+const student_prob_2_desc$1 = "Allowance vanishes without a trace by mid-month because there's no practical expense tracking system.";
+const student_prob_3_title$1 = "Mental Fatigue (Burnout)";
+const student_prob_3_desc$1 = "Trying to balance academics and organizations without a clear schedule makes you mentally exhausted quickly.";
+const student_feat_1_visual_badge$1 = "ACADEMIC CENTRAL";
+const student_feat_1_title$1 = "Assignment & Project Manager";
+const student_feat_1_desc$1 = "Break big tasks into small steps. Monitor progress for every course and ensure nothing is missed as deadlines approach.";
+const student_feat_1_point_1$1 = "Interactive Task Timeline";
+const student_feat_1_point_2$1 = "Material Repository Per Course";
+const student_feat_2_title$1 = "Student Survival Finance";
+const student_feat_2_desc$1 = "Special budgeting for student needs. Monitor food allowance, book costs, and semester vacation savings in one simple flow.";
+const student_feat_2_point_1$1 = "Weekly Budget Allocation";
+const student_feat_2_badge_1$1 = "Priority";
+const student_feat_2_point_2$1 = "Real-Time Balance";
+const student_feat_2_badge_2$1 = "Accurate";
+const student_bento_title$1 = "Student Survival Kit";
+const student_bento_desc$1 = "Fundamental tools for navigating the competitive world of education.";
+const student_bento_1_title$1 = "Lecture Notes";
+const student_bento_1_desc$1 = "Structured note formats to aid reviews during exam season.";
+const student_bento_2_title$1 = "Sleep Tracker";
+const student_bento_2_desc$1 = "Ensure your brain gets enough rest to process new information.";
+const student_bento_3_title$1 = "Job/Intern Tracker";
+const student_bento_3_desc$1 = "Prepare for your future career by tracking internships and portfolios.";
+const student_extra_1_title$1 = "Effective Study Flow";
+const student_extra_1_desc$1 = "Use our system to naturally implement Active Recall and Spaced Repetition into your study routine.";
+const student_extra_1_step_1$1 = "Concept Understanding";
+const student_extra_1_step_2$1 = "Self-Note Taking";
+const student_extra_1_step_3$1 = "Periodic Review";
+const student_extra_2_title$1 = "Life Balance";
+const student_extra_2_desc$1 = "Academics are important, but health and social relationships shouldn't be neglected.";
+const student_extra_2_item_1$1 = "Sleep";
+const student_extra_2_item_2$1 = "Study";
+const student_extra_2_item_3$1 = "Social";
+const student_extra_2_item_4$1 = "Hobby";
+const student_science_badge$1 = "MODERN PEDAGOGY";
+const student_science_title$1 = "The Science of Learning";
+const student_science_desc$1 = "Designed based on cognitive theory stating that good information organization is 50% of content mastery success.";
+const student_science_topic_1$1 = "Cornell Method";
+const student_science_topic_2$1 = "Spaced Repetition";
+const student_science_topic_3$1 = "Feynman Technique";
+const student_faq_title$1 = "Student Success FAQ";
+const student_faq_q1$1 = "Can I share my schedule with friends?";
+const student_faq_a1$1 = "Yes, our collaboration features allow you to share course schedules or group projects with fellow OneForMind users.";
+const student_faq_q2$1 = "Is it suitable for high schoolers?";
+const student_faq_a2$1 = "Highly suitable. While terms often refer to university, the system is flexible for all education levels.";
+const student_faq_q3$1 = "Can I track scholarships?";
+const student_faq_a3$1 = "Certainly. Use our Project Tracker to manage requirements, deadlines, and application progress.";
+const student_cta_title$1 = "A High GPA Isn't Magic.";
+const student_cta_desc$1 = "It's the result of a well-functioning system. Be the best-prepared student in your class today.";
+const student_cta_btn$1 = "Get My Survival Kit";
+const freelance_meta_title$1 = "Freelancer Business Dashboard - OneForMind";
+const freelance_meta_desc$1 = "Manage clients, projects, and freelance finances in one premium dashboard.";
+const freelance_meta_og_title$1 = "OneForMind for Solopreneurs & Freelancers";
+const freelance_meta_og_desc$1 = "A professional workspace for building a profitable freelance business.";
+const freelance_hero_badge$1 = "Solopreneur System";
+const freelance_hero_title_1$1 = "Turn Freelance into a";
+const freelance_hero_title_2$1 = "Serious Business.";
+const freelance_hero_desc$1 = "Stop chasing deadlines randomly. Manage client pipelines, track earnings, and keep your focus on the creative work you love in one unified ecosystem.";
+const freelance_hero_cta$1 = "Start My Freelance Business";
+const freelance_mockup_revenue$1 = "Monthly Target";
+const freelance_mockup_client$1 = "Active Clients";
+const freelance_mockup_project$1 = "Web Redesign";
+const freelance_mockup_project_sub$1 = "Finalization Stage";
+const freelance_prob_title$1 = "Chaos Behind Freedom";
+const freelance_prob_desc$1 = "Being your own boss is great, until administrative work gets in the way.";
+const freelance_prob_1_title$1 = "Unstable Cash Flow";
+const freelance_prob_1_desc$1 = "Confused about when payments come and how much you actually earn after tax and operational costs.";
+const freelance_prob_2_title$1 = "Scope Creep & Missed Deadlines";
+const freelance_prob_2_desc$1 = "Clients asking for constant revisions and you forget to charge extra because you lost track of communication.";
+const freelance_prob_3_title$1 = "Intellectual Loneliness";
+const freelance_prob_3_desc$1 = "Without a support system, you often feel overwhelmed managing everything alone without a clear strategic direction.";
+const freelance_sol_title$1 = "One Roof For Your Projects.";
+const freelance_sol_desc$1 = "We combine client CRM, project management, and financial tracking into one highly efficient workflow.";
+const freelance_sol_step_1_title$1 = "Client Management (CRM)";
+const freelance_sol_step_1_desc$1 = "Store all contacts, briefs, and client revision history in one tidy folder.";
+const freelance_sol_step_2_title$1 = "Visual Workflow";
+const freelance_sol_step_2_desc$1 = "See where every project currently stands. Is it in ideation, production, or billing?";
+const freelance_sol_step_3_title$1 = "Financial Reports";
+const freelance_sol_step_3_desc$1 = "See your net profit instantly. Prepare data for taxes without stress.";
+const freelance_feat_title$1 = "Elite Freelancer Arsenal";
+const freelance_feat_1_title$1 = "Financial Pulse";
+const freelance_feat_1_desc$1 = "Monitor unpaid invoices and your annual income targets. OneForMind tells you when to look for new clients and when to focus on execution.";
+const freelance_feat_2_title$1 = "Project Boards";
+const freelance_feat_2_desc$1 = "Elegant Kanban boards to move tasks from 'To-Do' to 'Done'. Feel the visual satisfaction of seeing your work complete.";
+const freelance_cta_title$1 = "Build Your Solo Empire.";
+const freelance_cta_desc$1 = "Freelancing isn't just about working; it's about building a system that works for you. Level up your professionalism today.";
+const freelance_cta_btn$1 = "Get Freelance Dashboard";
+const freelance_faq_title$1 = "Freelancer Dashboard FAQ";
+const freelance_faq_q1$1 = "Can I create invoices here?";
+const freelance_faq_a1$1 = "OneForMind currently focuses on internal tracking. You can log invoice statuses, but for physical document delivery, we suggest integration with your favorite invoice partner.";
+const freelance_faq_q2$1 = "Is it suitable for small teams?";
+const freelance_faq_a2$1 = "Highly suitable. While designed for solopreneurs, OneForMind supports basic collaboration perfect for freelancers working with assistants or other designers.";
+const freelance_faq_q3$1 = "Is my client data secure?";
+const freelance_faq_a3$1 = "Absolutely. OneForMind uses industry-standard encryption to ensure your business strategy, client briefs, and financial records remain private and accessible only by you.";
+const freelance_science_badge$1 = "BUSINESS AGILITY";
+const freelance_science_title$1 = "Solo-Agency Framework";
+const freelance_science_desc$1 = "Leveraging 'Deep Work' and 'GTD' methodologies, we help freelancers operate with the efficiency of a full agency without the overhead.";
+const freelance_extra_1_title$1 = "Client Lifecycle Tracking";
+const freelance_extra_1_desc$1 = "Manage the entire journey from initial lead to final payment. Keep notes on client preferences and feedback to provide premium service.";
+const freelance_extra_2_title$1 = "Sustainable Income Scaling";
+const freelance_extra_2_desc$1 = "Don't just work for today. Use financial forecasts to plan your next months and scale your business with confidence.";
+const mental_meta_title$1 = "Mental Clarity - OneForMind";
+const mental_meta_desc$1 = "Reduce anxiety and enhance focus. Use a reflective journaling system for a calmer, sharper mind.";
+const mental_meta_og_title$1 = "Clear Your Mind with OneForMind";
+const mental_meta_og_desc$1 = "A quiet space in the digital noise. Find peace through structured reflection.";
+const mental_hero_badge$1 = "Mental Health";
+const mental_hero_title_1$1 = "Silence the Noise";
+const mental_hero_title_2$1 = "Inside Your Head.";
+const mental_hero_desc$1 = "Reduce cognitive load and tackle overthinking. OneForMind provides a safe space to dump your thoughts, process emotions, and find your focus again.";
+const mental_hero_cta$1 = "Clear My Mind";
+const mental_prob_title$1 = "The Epidemic of a Noisy Mind";
+const mental_prob_desc$1 = "Today's world is designed to steal your attention and make you feel anxious.";
+const mental_prob_1_title$1 = "Cognitive Overload";
+const mental_prob_1_desc$1 = "Too much incoming information makes your brain 'hang' and makes even simple decisions difficult.";
+const mental_prob_2_title$1 = "Distraction Addiction";
+const mental_prob_2_desc$1 = "The constant urge to check notifications kills your ability to think deeply and reflectively.";
+const mental_sol_title$1 = "Operating System For Your Soul.";
+const mental_sol_desc$1 = "We aren't just a notes app. We are a place to dissect thoughts, understand emotional patterns, and build mental resilience.";
+const mental_sol_step_1_title$1 = "Regular Brain Dumps";
+const mental_sol_step_1_desc$1 = "Dump all the chaos in your head into the system in seconds to immediately feel lighter.";
+const mental_sol_step_2_title$1 = "Process & Reflect";
+const mental_sol_step_2_desc$1 = "Use our guiding prompts to dig into the root causes of your anxiety or happiness today.";
+const mental_sol_step_3_title$1 = "Find the Patterns";
+const mental_sol_step_3_desc$1 = "View your mood and journal stats over the long term to understand what truly triggers your stress.";
+const mental_feat_title$1 = "Your Mental Shield";
+const mental_feat_1_title$1 = "Reflection Journal";
+const mental_feat_1_desc$1 = "A distraction-free writing space to express yourself freely, equipped with cognitive therapy-based prompts.";
+const mental_feat_2_title$1 = "Mood Tracker";
+const mental_feat_2_desc$1 = "Visualize your emotional journey. Understand the relationship between daily activities and your level of mental peace.";
+const mental_extra_1_title$1 = "Silence the Noise";
+const mental_extra_1_desc$1 = "Our system is designed to minimize mental burden. With a clean interface and logical flow, you can focus on what's inside, not the screen.";
+const mental_extra_2_title$1 = "Reflection Loops";
+const mental_extra_2_desc$1 = "Turn random thoughts into actionable wisdom.";
+const mental_cta_title$1 = "Take a Deep Breath.";
+const mental_cta_desc$1 = "External disorder begins from internal disorder. Start clearing your mind today.";
+const mental_cta_btn$1 = "Start Living Calmer";
+const mental_faq_title$1 = "Mental Clarity FAQ";
+const mental_faq_q1$1 = "Can this replace therapy?";
+const mental_faq_a1$1 = "No. OneForMind is a support tool for daily mental health maintenance. If you're experiencing serious hardship, we highly recommend consulting a medical professional.";
+const mental_faq_q2$1 = "How often should I journal?";
+const mental_faq_a2$1 = "Even 5 minutes a day can make a massive difference. Consistency is key, not the length of the writing.";
+const mental_faq_q3$1 = "Are there prompts provided?";
+const mental_faq_a3$1 = "Yes, we provide various prompt templates for morning, evening, and for handling specific moments of stress.";
+const mental_science_badge$1 = "APPLIED PSYCHOLOGY";
+const mental_science_title$1 = "Neuroplasticity & Reflection";
+const mental_science_desc$1 = "Based on Cognitive Behavioral Therapy (CBT) principles, structured journaling helps reprogram negative thought patterns and build new neural pathways for calmness.";
+const mental_science_topic_1$1 = "Emotional Release";
+const mental_science_topic_2$1 = "Metacognition";
+const mental_science_topic_3$1 = "Entropy Reduction";
+const mental_science_topic_4$1 = "Cognitive Load Balancing";
+const brain_mockup_quote$1 = '"Clear mind, full focus on the task..."';
+const brain_mockup_chaos_label$1 = "Mental Overload";
+const brain_mockup_chaos_desc$1 = "Too much info, nowhere to put it.";
+const ecosystem_calendar_title$1 = "Just Like a Calendar,";
+const ecosystem_calendar_desc$1 = "But much smarter. Integrate it with your routine and let the system schedule what truly matters.";
+const ecosystem_growth_title$1 = "Habit Streak Visuals";
+const ecosystem_growth_desc$1 = "Don't just let your habits be numbers. See them as a long-term investment in yourself.";
+const ecosystem_brain_title$1 = "Capture Anywhere";
+const ecosystem_brain_desc$1 = "Use quick access widgets on any device to capture brilliant flashes of ideas before they're lost in the daily noise.";
+const ecosystem_career_title$1 = "Career Tracker";
+const ecosystem_career_desc$1 = "Transform your job search from spreadsheet chaos into a visual pipeline that pushes you forward.";
+const ecosystem_finance_title$1 = "Financial Flow";
+const ecosystem_finance_desc$1 = "Every cent has a job. Master your finances without the guilt.";
+const ecosystem_mental_title$1 = "Mood Analytics";
+const ecosystem_mental_desc$1 = "Understand the correlation between your daily routine and your mental state for sustained clarity.";
+const mental_science_viz_label$1 = "Mind_Map_Alpha";
+const atomic_meta_title$1 = "Atomic Habit System - OneForMind";
+const atomic_meta_desc$1 = "Master the art of building small routines that deliver big results. Based on the Atomic Habits principle.";
+const atomic_meta_og_title$1 = "OneForMind Atomic Habit Methodology";
+const atomic_meta_og_desc$1 = "Build your winning streak. Never break the chain.";
+const schema_solution_atomic_name$1 = "OneForMind Atomic Habit Solution";
+const schema_solution_atomic_description$1 = "A micro-habit tracking system for long-term identity change.";
+const atomic_breadcrumb$1 = "Atomic System";
+const solve_atomic_hero_badge$1 = "Routine Optimization";
+const solve_atomic_hero_title_1$1 = "Stop Guessing,";
+const solve_atomic_hero_title_2$1 = "Start Building.";
+const solve_atomic_hero_desc$1 = "Don't rely on motivation that comes and goes. Rely on a system that makes difficult habits easy, and good habits automatic.";
+const solve_atomic_hero_cta$1 = "Forge My Routine";
+const atomic_mockup_habit_title$1 = "Read 10 Pages";
+const atomic_mockup_habit_sub$1 = "Small Step Toward Knowledge";
+const atomic_mockup_identity_title$1 = "I Am a Reader";
+const atomic_mockup_identity_sub$1 = "Identity Change 85% Complete";
+const solve_atomic_prob_title$1 = "The Failure of New Year's Resolutions";
+const solve_atomic_prob_desc$1 = "Why 92% of people fail to maintain new habits after just one month.";
+const solve_atomic_prob_1_title$1 = "Too Big Too Soon";
+const solve_atomic_prob_1_desc$1 = "Trying to change everything at once will overwhelm your nervous system.";
+const solve_atomic_prob_2_title$1 = "Focus on Results, Not Process";
+const solve_atomic_prob_2_desc$1 = "Thinking only about 'losing 10kg' without loving the daily exercise process.";
+const solve_atomic_sol_title$1 = "The Power of 1% Improvement.";
+const solve_atomic_sol_desc$1 = "We build habits not for today, but for the person you want to be a year from now.";
+const solve_atomic_sol_step_1_title$1 = "Start Micro";
+const solve_atomic_sol_step_1_desc$1 = "Habits that take less than 2 minutes are easier to keep when days get tough.";
+const solve_atomic_sol_step_2_title$1 = "Habit Stacking";
+const solve_atomic_sol_step_2_desc$1 = "Connect new habits with ones you already have for easier brain adaptation.";
+const solve_atomic_sol_step_3_title$1 = "Instant Reward";
+const solve_atomic_sol_step_3_desc$1 = "Our points and milestone system stimulates positive dopamine to keep you going.";
+const solve_atomic_feat_title$1 = "Habit Toolkit";
+const solve_atomic_feat_1_title$1 = "Visual Habit Tracker";
+const solve_atomic_feat_1_desc$1 = "GitHub-style contribution graphs to see your daily consistency without gaps.";
+const solve_atomic_feat_2_title$1 = "Identity Shifter";
+const solve_atomic_feat_2_desc$1 = "Visualize how every small action reinforces the new identity you're building.";
+const atomic_extra_1_title$1 = "Winner's Streak";
+const atomic_extra_1_desc$1 = "Don't break the chain. Our addictive streak visualization ensures you stay on the right path.";
+const solve_atomic_extra_2_title$1 = "The Law of Attraction";
+const solve_atomic_extra_2_desc$1 = "Building an environment that makes good habits inevitable.";
+const solve_atomic_science_badge$1 = "BEHAVIORAL PSYCHOLOGY";
+const solve_atomic_science_title$1 = "The Science Behind Routine";
+const solve_mental_science_desc_alt$1 = "Drawing on the work of James Clear and B.J. Fogg, our system prioritizes cues, cravings, responses, and rewards.";
+const atomic_science_step_1_title$1 = "Clear Cues";
+const atomic_science_step_2_title$1 = "Max Attraction";
+const atomic_science_step_3_title$1 = "Execution Ease";
+const atomic_science_step_4_title$1 = "Instant Satisfaction";
+const solve_atomic_faq_title$1 = "Atomic Habit System FAQ";
+const solve_atomic_faq_q1$1 = "How is this different from a normal Habit Tracker?";
+const solve_atomic_faq_a1$1 = "OneForMind doesn't just tick boxes. We link each habit to a life AREA and IDENTITY, giving more meaning to every tick.";
+const solve_atomic_faq_q2$1 = "What if I miss a day?";
+const solve_atomic_faq_a2$1 = "Our philosophy: 'Never miss twice'. Errors are human, but our system will gently remind you to get back on track.";
+const solve_atomic_faq_a3$1 = "Yes, your data is safe. Focus on building yourself.";
+const solve_atomic_cta_title$1 = "Small is Powerful.";
+const solve_atomic_cta_desc$1 = "You are what you repeatedly do. Start one small step today.";
+const solve_atomic_cta_btn$1 = "Build My Micro Routine";
+const deep_meta_title$1 = "Deep Work & Max Focus - OneForMind";
+const deep_meta_desc$1 = "Crush distractions. Enter flow state and produce your best work with the focus management system.";
+const deep_meta_og_title$1 = "Master Your Focus with OneForMind";
+const deep_meta_og_desc$1 = "The ability to focus deeply is a superpower in the 21st century.";
+const schema_solution_deep_work_name$1 = "OneForMind Deep Work Solution";
+const schema_solution_deep_work_description$1 = "A platform for focus management and digital distraction elimination.";
+const deep_breadcrumb$1 = "Deep Work";
+const solve_deep_hero_badge$1 = "Focus Optimization";
+const solve_deep_hero_title_1$1 = "Deep Work in a";
+const solve_deep_hero_title_2$1 = "Noisy World.";
+const solve_deep_hero_desc$1 = "The ability to perform Deep Work is becoming increasingly rare. Shed distractions, schedule focus, and produce what actually matters.";
+const solve_deep_hero_cta$1 = "Enter Flow State";
+const deep_mockup_session_title$1 = "Deep Work Session";
+const deep_mockup_session_sub$1 = "Time Left: 45:00";
+const deep_mockup_focus_label$1 = "Today's Focus Score";
+const solve_deep_prob_title$1 = "The Death of Attention Capacity";
+const solve_deep_prob_desc$1 = "Why we feel so busy but produce nothing by the end of the day.";
+const solve_deep_prob_1_title$1 = "Constant Digital Distractions";
+const solve_deep_prob_1_desc$1 = "Social media notifications and emails fragment your attention every 10 minutes.";
+const solve_deep_prob_2_title$1 = "Shallow Busyness";
+const solve_deep_prob_2_desc$1 = "Trapped in shallow administrative tasks that don't move the needle of your career progression.";
+const solve_deep_sol_title$1 = "One Hour of Undistracted Focus.";
+const solve_deep_sol_desc$1 = "OneForMind helps you protect your most valuable time for your most meaningful tasks.";
+const solve_deep_sol_step_1_title$1 = "Time Blocking";
+const solve_deep_sol_step_1_desc$1 = "Dedicate specific time slots on your calendar to just one important task. No compromises.";
+const solve_deep_sol_step_2_title$1 = "Eliminate Distractions";
+const solve_deep_sol_step_2_desc$1 = "Use our Zen Mode to block all interface distractions during your focus sessions.";
+const solve_deep_sol_step_3_title$1 = "Focus Audit";
+const solve_deep_sol_step_3_desc$1 = "Review how much Deep Work time you achieved each week for performance improvement.";
+const solve_deep_feat_title$1 = "Focus Arsenal";
+const solve_deep_feat_1_title$1 = "Deep Timer & Zen Dashboard";
+const solve_deep_feat_1_desc$1 = "An interface that turns super minimalist when the timer is active, ensuring it's only you and your work.";
+const solve_deep_feat_2_title$1 = "Focus Scorecard";
+const solve_deep_feat_2_desc$1 = "Daily metrics to track focus quality, helping you find your most productive biological hours.";
+const deep_extra_1_title$1 = "Quantify Output";
+const deep_extra_1_desc$1 = "Don't just work long, work with quality. Monitor the relationship between deep work sessions and real project results.";
+const solve_deep_extra_2_title$1 = "Building Rituals";
+const solve_deep_extra_2_desc$1 = "Create environmental triggers that tell your brain it's time for maximum focus.";
+const solve_deep_science_badge$1 = "NEUROPSYCHOLOGY";
+const solve_deep_science_title$1 = "Attention Architecture";
+const solve_deep_science_desc$1 = "Referring to Cal Newport's concept, Deep Work is a cognitive ability that must be trained. Our system minimizes 'Attention Residue' to speed transition into Flow State.";
+const deep_science_factor_1_title$1 = "Focus Intensity";
+const deep_science_factor_2_title$1 = "Session Duration";
+const deep_science_factor_3_title$1 = "Environmental Isolation";
+const deep_science_factor_4_title$1 = "Cognitive Recovery";
+const solve_deep_faq_title$1 = "Deep Work FAQ";
+const solve_deep_faq_q1$1 = "Do I have to work 8 hours non-stop?";
+const solve_deep_faq_a1$1 = "Not at all. The human brain is typically only capable of a maximum of 4 hours of Deep Work a day. We help you optimize those golden hours.";
+const solve_deep_faq_q2$1 = "Can I use music?";
+const solve_deep_faq_a2$1 = "Highly recommended. Use the lofi or white noise available on our dashboard integration to deepen focus.";
+const solve_deep_faq_a3$1 = "Focus on quality, not just busyness.";
+const solve_deep_cta_title$1 = "Do What Matters.";
+const solve_deep_cta_desc$1 = "In a world full of distractions, the ability to focus is the greatest competitive advantage. Build it now.";
+const solve_deep_cta_btn$1 = "Enter My First Deep Session";
 const stat_meta_title$1 = "System Status — OneForMind";
 const stat_meta_desc$1 = "Real-time updates on the performance and reliability of OneForMind services.";
 const stat_hero_badge$1 = "Live Status";
@@ -3616,6 +3896,7 @@ const en = {
   date_format: date_format$1,
   no_category: no_category$1,
   no_date: no_date$1,
+  name,
   notes_meta_title: notes_meta_title$1,
   notes_meta_desc: notes_meta_desc$1,
   notes_meta_og_title: notes_meta_og_title$1,
@@ -5016,6 +5297,31 @@ const en = {
   tos_termination_title: tos_termination_title$1,
   tos_termination_p: tos_termination_p$1,
   legal_close: legal_close$1,
+  cookie_title: cookie_title$1,
+  cookie_desc: cookie_desc$1,
+  cookie_btn_accept: cookie_btn_accept$1,
+  cookie_btn_settings: cookie_btn_settings$1,
+  cookie_btn_essential: cookie_btn_essential$1,
+  contact_title: contact_title$1,
+  contact_subtitle: contact_subtitle$1,
+  contact_form_name: contact_form_name$1,
+  contact_form_email: contact_form_email$1,
+  contact_form_subject: contact_form_subject$1,
+  contact_form_message: contact_form_message$1,
+  contact_btn_send: contact_btn_send$1,
+  contact_success_title: contact_success_title$1,
+  contact_success_desc: contact_success_desc$1,
+  contact_info_title: contact_info_title$1,
+  contact_info_hq: contact_info_hq$1,
+  contact_info_jakarta: contact_info_jakarta$1,
+  contact_info_support: contact_info_support$1,
+  contact_info_billing: contact_info_billing$1,
+  contact_info_chat: contact_info_chat$1,
+  contact_info_chat_status: contact_info_chat_status$1,
+  contact_faq_title: contact_faq_title$1,
+  contact_faq_desc: contact_faq_desc$1,
+  contact_faq_btn: contact_faq_btn$1,
+  contact_form_message_placeholder: contact_form_message_placeholder$1,
   goal_page_title: goal_page_title$1,
   goal_add_row: goal_add_row$1,
   goal_bulk_selected: goal_bulk_selected$1,
@@ -5369,6 +5675,36 @@ const en = {
   home_solutions_badge: home_solutions_badge$1,
   home_solutions_title: home_solutions_title$1,
   home_solutions_desc: home_solutions_desc$1,
+  eco_badge: eco_badge$2,
+  eco_title: eco_title$2,
+  eco_desc: eco_desc$2,
+  eco_habit_title: eco_habit_title$2,
+  eco_habit_desc: eco_habit_desc$2,
+  eco_finance_title: eco_finance_title$2,
+  eco_finance_desc: eco_finance_desc$2,
+  eco_daily_title: eco_daily_title$2,
+  eco_daily_desc: eco_daily_desc$2,
+  eco_goal_title: eco_goal_title$2,
+  eco_goal_desc: eco_goal_desc$2,
+  eco_journal_title: eco_journal_title$2,
+  eco_journal_desc: eco_journal_desc$2,
+  eco_job_title: eco_job_title$2,
+  eco_job_desc: eco_job_desc$2,
+  sol_badge: sol_badge$2,
+  sol_title: sol_title$2,
+  sol_card_1_title: sol_card_1_title$2,
+  sol_card_1_desc: sol_card_1_desc$2,
+  sol_card_2_title: sol_card_2_title$2,
+  sol_card_2_desc: sol_card_2_desc$2,
+  sol_card_3_title: sol_card_3_title$2,
+  sol_card_3_desc: sol_card_3_desc$2,
+  prob_1_title: prob_1_title$2,
+  prob_1_desc: prob_1_desc$2,
+  prob_1_point_1: prob_1_point_1$2,
+  prob_1_point_2: prob_1_point_2$2,
+  prob_2_title: prob_2_title$2,
+  prob_2_desc: prob_2_desc$2,
+  prob_2_solution: prob_2_solution$2,
   job_page_title: job_page_title$1,
   job_page_subtitle: job_page_subtitle$1,
   job_add_row: job_add_row$1,
@@ -5484,6 +5820,15 @@ const en = {
   neural_cta_desc: neural_cta_desc$1,
   neural_cta_btn: neural_cta_btn$1,
   neural_cta_note: neural_cta_note$1,
+  neural_gemini_powered: neural_gemini_powered$1,
+  neural_gemini_feat1: neural_gemini_feat1$1,
+  neural_gemini_feat2: neural_gemini_feat2$1,
+  neural_gemini_feat3: neural_gemini_feat3$1,
+  neural_coach_sender: neural_coach_sender$1,
+  neural_coach_user: neural_coach_user$1,
+  neural_coach_msg1: neural_coach_msg1$1,
+  neural_coach_msg2: neural_coach_msg2$1,
+  neural_coach_msg3: neural_coach_msg3$1,
   "____ SECTION_6 ____": "=== DAILY PLANNER ===",
   planner_title: planner_title$1,
   planner_time_fmt: planner_time_fmt$1,
@@ -5665,6 +6010,80 @@ const en = {
   feat_journal_lock: feat_journal_lock$1,
   feat_calendar_timeline: feat_calendar_timeline$1,
   feat_ai_scheduling: feat_ai_scheduling$1,
+  feat_energy_scheduling,
+  feat_support_priority,
+  compare_title: compare_title$1,
+  compare_feature: compare_feature$1,
+  compare_explorer: compare_explorer$1,
+  compare_architect: compare_architect$1,
+  compare_quantum: compare_quantum$1,
+  compare_legendary: compare_legendary$1,
+  group_habits: group_habits$1,
+  group_finance: group_finance$1,
+  group_planner: group_planner$1,
+  group_journal: group_journal$1,
+  group_goals: group_goals$1,
+  group_jobs: group_jobs$1,
+  group_support: group_support$1,
+  feat_habit_limit: feat_habit_limit$1,
+  feat_habit_limit_val_l1: feat_habit_limit_val_l1$1,
+  feat_habit_limit_val_l2: feat_habit_limit_val_l2$1,
+  feat_detailed_analytics: feat_detailed_analytics$1,
+  feat_val_basic: feat_val_basic$1,
+  feat_val_advanced: feat_val_advanced$1,
+  feat_val_predictive: feat_val_predictive$1,
+  feat_ai_stacking: feat_ai_stacking$1,
+  feat_finance_entry: feat_finance_entry$1,
+  feat_budgeting: feat_budgeting$1,
+  feat_receipt_scanning: feat_receipt_scanning$1,
+  feat_net_worth: feat_net_worth$1,
+  feat_ai_audit: feat_ai_audit$1,
+  feat_planner_view: feat_planner_view$1,
+  feat_planner_view_val_l1: feat_planner_view_val_l1$1,
+  feat_planner_view_val_l2: feat_planner_view_val_l2$1,
+  feat_recurring_tasks: feat_recurring_tasks$1,
+  feat_journal_type: feat_journal_type$1,
+  feat_journal_type_val_l1: feat_journal_type_val_l1$1,
+  feat_journal_type_val_l2: feat_journal_type_val_l2$1,
+  feat_sentiment_ai: feat_sentiment_ai$1,
+  feat_goal_limit: feat_goal_limit$1,
+  feat_goal_limit_val_l1: feat_goal_limit_val_l1$1,
+  feat_goal_limit_val_l2: feat_goal_limit_val_l2$1,
+  feat_job_limit: feat_job_limit$1,
+  feat_job_limit_val_l1: feat_job_limit_val_l1$1,
+  feat_job_limit_val_l2: feat_job_limit_val_l2$1,
+  feat_resume_ai: feat_resume_ai$1,
+  feat_early_beta: feat_early_beta$1,
+  support_standard: support_standard$1,
+  support_priority: support_priority$1,
+  support_vip: support_vip$1,
+  quantum_feature: quantum_feature$1,
+  pricing_elite_title: pricing_elite_title$1,
+  pricing_elite_feat1_title: pricing_elite_feat1_title$1,
+  pricing_elite_feat1_desc: pricing_elite_feat1_desc$1,
+  pricing_elite_feat2_title: pricing_elite_feat2_title$1,
+  pricing_elite_feat2_desc: pricing_elite_feat2_desc$1,
+  pricing_elite_feat3_title: pricing_elite_feat3_title$1,
+  pricing_elite_feat3_desc: pricing_elite_feat3_desc$1,
+  pricing_elite_card_title: pricing_elite_card_title$1,
+  pricing_elite_card_status: pricing_elite_card_status$1,
+  pricing_l1_name: pricing_l1_name$1,
+  pricing_l1_desc: pricing_l1_desc$1,
+  pricing_l2_name: pricing_l2_name$1,
+  pricing_l2_desc: pricing_l2_desc$1,
+  pricing_l3_name: pricing_l3_name$1,
+  pricing_l3_desc: pricing_l3_desc$1,
+  pricing_l4_name: pricing_l4_name$1,
+  pricing_l4_desc: pricing_l4_desc$1,
+  pricing_l1_initial: pricing_l1_initial$1,
+  pricing_l2_initial: pricing_l2_initial$1,
+  pricing_l2_recurring: pricing_l2_recurring$1,
+  pricing_l3_initial: pricing_l3_initial$1,
+  pricing_l3_recurring: pricing_l3_recurring$1,
+  pricing_l4_initial: pricing_l4_initial$1,
+  pricing_l4_recurring: pricing_l4_recurring$1,
+  pricing_ai_badge: pricing_ai_badge$1,
+  pricing_l4_badge: pricing_l4_badge$1,
   privacy_meta_title: privacy_meta_title$1,
   privacy_meta_desc: privacy_meta_desc$1,
   privacy_meta_og_title: privacy_meta_og_title$1,
@@ -5684,6 +6103,17 @@ const en = {
   privacy_nav_6: privacy_nav_6$1,
   privacy_nav_7: privacy_nav_7$1,
   privacy_download_pdf: privacy_download_pdf$1,
+  privacy_status_protection: privacy_status_protection$1,
+  privacy_status_access: privacy_status_access$1,
+  privacy_status_tracking: privacy_status_tracking$1,
+  privacy_status_protocol: privacy_status_protocol$1,
+  privacy_status_protection_val: privacy_status_protection_val$1,
+  privacy_status_access_val: privacy_status_access_val$1,
+  privacy_status_tracking_val: privacy_status_tracking_val$1,
+  privacy_status_protocol_val: privacy_status_protocol_val$1,
+  privacy_locked_label: privacy_locked_label$1,
+  privacy_locked_title: privacy_locked_title$1,
+  privacy_locked_desc: privacy_locked_desc$1,
   privacy_tldr_title: privacy_tldr_title$1,
   privacy_tldr_1_title: privacy_tldr_1_title$1,
   privacy_tldr_1_desc: privacy_tldr_1_desc$1,
@@ -5699,6 +6129,7 @@ const en = {
   privacy_li_collection_1_title: privacy_li_collection_1_title$1,
   privacy_li_collection_1_desc: privacy_li_collection_1_desc$1,
   privacy_li_collection_2_title: privacy_li_collection_2_title$1,
+  privacy_li_collection_2_strong: privacy_li_collection_2_strong$1,
   privacy_li_collection_2_desc: privacy_li_collection_2_desc$1,
   privacy_li_collection_3_title: privacy_li_collection_3_title$1,
   privacy_li_collection_3_desc: privacy_li_collection_3_desc$1,
@@ -5707,12 +6138,21 @@ const en = {
   privacy_li_usage_1: privacy_li_usage_1$1,
   privacy_li_usage_2: privacy_li_usage_2$1,
   privacy_li_usage_3: privacy_li_usage_3$1,
+  privacy_finance_note_title: privacy_finance_note_title$1,
+  privacy_finance_note_desc: privacy_finance_note_desc$1,
   privacy_h2_security: privacy_h2_security$1,
   privacy_p_security: privacy_p_security$1,
   privacy_h2_thirdparty: privacy_h2_thirdparty$1,
   privacy_p_thirdparty: privacy_p_thirdparty$1,
   privacy_h2_rights: privacy_h2_rights$1,
   privacy_p_rights: privacy_p_rights$1,
+  privacy_li_rights_1: privacy_li_rights_1$1,
+  privacy_li_rights_2: privacy_li_rights_2$1,
+  privacy_li_rights_3: privacy_li_rights_3$1,
+  privacy_export_title: privacy_export_title$1,
+  privacy_export_desc: privacy_export_desc$1,
+  privacy_export_point_1: privacy_export_point_1$1,
+  privacy_export_point_2: privacy_export_point_2$1,
   privacy_h2_contact: privacy_h2_contact$1,
   privacy_p_contact: privacy_p_contact$1,
   privacy_contact_role: privacy_contact_role$1,
@@ -5746,6 +6186,8 @@ const en = {
   terms_nav_6: terms_nav_6$1,
   terms_nav_7: terms_nav_7$1,
   terms_nav_8: terms_nav_8$1,
+  terms_notice_title: terms_notice_title$1,
+  terms_notice_desc: terms_notice_desc$1,
   terms_intro_text: terms_intro_text$1,
   terms_intro_sub: terms_intro_sub$1,
   terms_h2_eligibility: terms_h2_eligibility$1,
@@ -5801,6 +6243,10 @@ const en = {
   sec_toc_3: sec_toc_3$1,
   sec_toc_4: sec_toc_4$1,
   sec_toc_5: sec_toc_5$1,
+  sec_alert_title: sec_alert_title$1,
+  sec_alert_desc: sec_alert_desc$1,
+  sec_alert_btn: sec_alert_btn$1,
+  sec_locked_label: sec_locked_label$1,
   sec_h2_infrastructure: sec_h2_infrastructure$1,
   sec_p_infrastructure: sec_p_infrastructure$1,
   sec_li_infra_1_title: sec_li_infra_1_title$1,
@@ -5859,6 +6305,10 @@ const en = {
   refund_cta_title: refund_cta_title$1,
   refund_cta_desc: refund_cta_desc$1,
   refund_cta_btn: refund_cta_btn$1,
+  refund_merchant_protection_title: refund_merchant_protection_title$1,
+  refund_merchant_protection_desc: refund_merchant_protection_desc$1,
+  refund_user_responsibility_title: refund_user_responsibility_title$1,
+  refund_contact_label: refund_contact_label$1,
   blog_meta_title: blog_meta_title$1,
   blog_meta_desc: blog_meta_desc$1,
   blog_meta_og_title: blog_meta_og_title$1,
@@ -6119,6 +6569,18 @@ const en = {
   sto_int2: sto_int2$1,
   sto_hof_title: sto_hof_title$1,
   sto_hof_desc: sto_hof_desc$1,
+  sto_hof_1_name: sto_hof_1_name$1,
+  sto_hof_1_title: sto_hof_1_title$1,
+  sto_hof_1_desc: sto_hof_1_desc$1,
+  sto_hof_2_name: sto_hof_2_name$1,
+  sto_hof_2_title: sto_hof_2_title$1,
+  sto_hof_2_desc: sto_hof_2_desc$1,
+  sto_hof_3_name: sto_hof_3_name$1,
+  sto_hof_3_title: sto_hof_3_title$1,
+  sto_hof_3_desc: sto_hof_3_desc$1,
+  sto_hof_4_name: sto_hof_4_name$1,
+  sto_hof_4_title: sto_hof_4_title$1,
+  sto_hof_4_desc: sto_hof_4_desc$1,
   settings_title: settings_title$1,
   settings_header: settings_header$1,
   settings_subheader: settings_subheader$1,
@@ -6225,193 +6687,6 @@ const en = {
   adjust_photo_title: adjust_photo_title$1,
   pan_instruction: pan_instruction$1,
   save_photo: save_photo$1,
-  student_meta_title: student_meta_title$1,
-  student_meta_desc: student_meta_desc$1,
-  student_meta_og_title: student_meta_og_title$1,
-  student_meta_og_desc: student_meta_og_desc$1,
-  student_hero_badge: student_hero_badge$1,
-  student_hero_title_1: student_hero_title_1$1,
-  student_hero_title_2: student_hero_title_2$1,
-  student_hero_desc: student_hero_desc$1,
-  student_hero_cta_1: student_hero_cta_1$1,
-  student_hero_social_proof: student_hero_social_proof$1,
-  student_prob_title: student_prob_title$1,
-  student_prob_desc: student_prob_desc$1,
-  student_prob_1_title: student_prob_1_title$1,
-  student_prob_1_desc: student_prob_1_desc$1,
-  student_prob_2_title: student_prob_2_title$1,
-  student_prob_2_desc: student_prob_2_desc$1,
-  student_prob_3_title: student_prob_3_title$1,
-  student_prob_3_desc: student_prob_3_desc$1,
-  student_feat_1_visual_badge: student_feat_1_visual_badge$1,
-  student_feat_1_title: student_feat_1_title$1,
-  student_feat_1_desc: student_feat_1_desc$1,
-  student_feat_1_point_1: student_feat_1_point_1$1,
-  student_feat_1_point_2: student_feat_1_point_2$1,
-  student_feat_2_title: student_feat_2_title$1,
-  student_feat_2_desc: student_feat_2_desc$1,
-  student_feat_2_point_1: student_feat_2_point_1$1,
-  student_feat_2_point_2: student_feat_2_point_2$1,
-  student_bento_title: student_bento_title$1,
-  student_bento_desc: student_bento_desc$1,
-  student_bento_1_title: student_bento_1_title$1,
-  student_bento_1_desc: student_bento_1_desc$1,
-  student_bento_2_title: student_bento_2_title$1,
-  student_bento_2_desc: student_bento_2_desc$1,
-  student_bento_3_title: student_bento_3_title$1,
-  student_bento_3_desc: student_bento_3_desc$1,
-  student_cta_title: student_cta_title$1,
-  student_cta_desc: student_cta_desc$1,
-  student_cta_btn: student_cta_btn$1,
-  student_cta_note: student_cta_note$1,
-  student_faq_title: student_faq_title$1,
-  student_faq_q1: student_faq_q1$1,
-  student_faq_a1: student_faq_a1$1,
-  student_faq_q2: student_faq_q2$1,
-  student_faq_a2: student_faq_a2$1,
-  student_faq_q3: student_faq_q3$1,
-  student_faq_a3: student_faq_a3$1,
-  student_science_badge: student_science_badge$1,
-  student_science_title: student_science_title$1,
-  student_science_desc: student_science_desc$1,
-  student_extra_1_title: student_extra_1_title$1,
-  student_extra_1_desc: student_extra_1_desc$1,
-  student_extra_2_title: student_extra_2_title$1,
-  student_extra_2_desc: student_extra_2_desc$1,
-  freelance_meta_title: freelance_meta_title$1,
-  freelance_meta_desc: freelance_meta_desc$1,
-  freelance_meta_og_title: freelance_meta_og_title$1,
-  freelance_meta_og_desc: freelance_meta_og_desc$1,
-  freelance_hero_badge: freelance_hero_badge$1,
-  freelance_hero_title_1: freelance_hero_title_1$1,
-  freelance_hero_title_2: freelance_hero_title_2$1,
-  freelance_hero_desc: freelance_hero_desc$1,
-  freelance_hero_cta_1: freelance_hero_cta_1$1,
-  freelance_hero_social_proof: freelance_hero_social_proof$1,
-  freelance_prob_title: freelance_prob_title$1,
-  freelance_prob_desc: freelance_prob_desc$1,
-  freelance_prob_1_title: freelance_prob_1_title$1,
-  freelance_prob_1_desc: freelance_prob_1_desc$1,
-  freelance_prob_2_title: freelance_prob_2_title$1,
-  freelance_prob_2_desc: freelance_prob_2_desc$1,
-  freelance_prob_3_title: freelance_prob_3_title$1,
-  freelance_prob_3_desc: freelance_prob_3_desc$1,
-  freelance_feat_1_title: freelance_feat_1_title$1,
-  freelance_feat_1_desc: freelance_feat_1_desc$1,
-  freelance_feat_1_point_1: freelance_feat_1_point_1$1,
-  freelance_feat_1_point_2: freelance_feat_1_point_2$1,
-  freelance_feat_2_title: freelance_feat_2_title$1,
-  freelance_feat_2_desc: freelance_feat_2_desc$1,
-  freelance_feat_2_point_1: freelance_feat_2_point_1$1,
-  freelance_feat_2_point_2: freelance_feat_2_point_2$1,
-  freelance_bento_title: freelance_bento_title$1,
-  freelance_bento_desc: freelance_bento_desc$1,
-  freelance_bento_1_title: freelance_bento_1_title$1,
-  freelance_bento_1_desc: freelance_bento_1_desc$1,
-  freelance_bento_2_title: freelance_bento_2_title$1,
-  freelance_bento_2_desc: freelance_bento_2_desc$1,
-  freelance_bento_3_title: freelance_bento_3_title$1,
-  freelance_bento_3_desc: freelance_bento_3_desc$1,
-  freelance_bento_4_title: freelance_bento_4_title$1,
-  freelance_bento_4_desc: freelance_bento_4_desc$1,
-  freelance_cta_title: freelance_cta_title$1,
-  freelance_cta_desc: freelance_cta_desc$1,
-  freelance_cta_btn: freelance_cta_btn$1,
-  freelance_cta_note: freelance_cta_note$1,
-  freelance_faq_title: freelance_faq_title$1,
-  freelance_faq_q1: freelance_faq_q1$1,
-  freelance_faq_a1: freelance_faq_a1$1,
-  freelance_faq_q2: freelance_faq_q2$1,
-  freelance_faq_a2: freelance_faq_a2$1,
-  freelance_faq_q3: freelance_faq_q3$1,
-  freelance_faq_a3: freelance_faq_a3$1,
-  freelance_science_badge: freelance_science_badge$1,
-  freelance_science_title: freelance_science_title$1,
-  freelance_science_desc: freelance_science_desc$1,
-  freelance_extra_1_title: freelance_extra_1_title$1,
-  freelance_extra_1_desc: freelance_extra_1_desc$1,
-  freelance_extra_2_title: freelance_extra_2_title$1,
-  freelance_extra_2_desc: freelance_extra_2_desc$1,
-  growth_meta_title: growth_meta_title$1,
-  growth_meta_desc: growth_meta_desc$1,
-  growth_meta_og_title: growth_meta_og_title$1,
-  growth_meta_og_desc: growth_meta_og_desc$1,
-  growth_hero_badge: growth_hero_badge$1,
-  growth_hero_title_1: growth_hero_title_1$1,
-  growth_hero_title_2: growth_hero_title_2$1,
-  growth_hero_desc: growth_hero_desc$1,
-  growth_hero_cta_1: growth_hero_cta_1$1,
-  growth_hero_social_proof: growth_hero_social_proof$1,
-  growth_prob_title_dark: growth_prob_title_dark$1,
-  growth_prob_desc_dark: growth_prob_desc_dark$1,
-  growth_prob_point_1: growth_prob_point_1$1,
-  growth_prob_point_2: growth_prob_point_2$1,
-  growth_prob_title_light: growth_prob_title_light$1,
-  growth_prob_desc_light: growth_prob_desc_light$1,
-  growth_prob_point_3: growth_prob_point_3$1,
-  growth_prob_point_4: growth_prob_point_4$1,
-  growth_feat_1_title: growth_feat_1_title$1,
-  growth_feat_1_desc: growth_feat_1_desc$1,
-  growth_feat_1_point_1: growth_feat_1_point_1$1,
-  growth_feat_1_point_2: growth_feat_1_point_2$1,
-  growth_feat_2_title: growth_feat_2_title$1,
-  growth_feat_2_desc: growth_feat_2_desc$1,
-  growth_feat_2_quote_title: growth_feat_2_quote_title$1,
-  growth_feat_2_quote_body: growth_feat_2_quote_body$1,
-  growth_bento_title: growth_bento_title$1,
-  growth_bento_desc: growth_bento_desc$1,
-  growth_bento_1_title: growth_bento_1_title$1,
-  growth_bento_1_desc: growth_bento_1_desc$1,
-  growth_bento_2_title: growth_bento_2_title$1,
-  growth_bento_2_desc: growth_bento_2_desc$1,
-  growth_bento_3_title: growth_bento_3_title$1,
-  growth_bento_3_desc: growth_bento_3_desc$1,
-  growth_bento_4_title: growth_bento_4_title$1,
-  growth_bento_4_desc: growth_bento_4_desc$1,
-  growth_bento_5_title: growth_bento_5_title$1,
-  growth_bento_5_desc: growth_bento_5_desc$1,
-  growth_cta_title: growth_cta_title$1,
-  growth_cta_desc: growth_cta_desc$1,
-  growth_cta_btn: growth_cta_btn$1,
-  growth_hero_cta: growth_hero_cta$1,
-  growth_hero_social: growth_hero_social$1,
-  growth_card_reading_goal: growth_card_reading_goal$1,
-  growth_card_run_title: growth_card_run_title$1,
-  growth_card_run_desc: growth_card_run_desc$1,
-  growth_card_reflect_title: growth_card_reflect_title$1,
-  growth_card_reflect_desc: growth_card_reflect_desc$1,
-  growth_science_badge: growth_science_badge$1,
-  growth_science_title: growth_science_title$1,
-  growth_science_desc: growth_science_desc$1,
-  growth_science_tag_1: growth_science_tag_1$1,
-  growth_science_tag_2: growth_science_tag_2$1,
-  growth_science_tag_3: growth_science_tag_3$1,
-  growth_habit_streak: growth_habit_streak$1,
-  growth_habit_streak_desc: growth_habit_streak_desc$1,
-  growth_habit_title: growth_habit_title$1,
-  growth_habit_desc: growth_habit_desc$1,
-  growth_habit_feat_1: growth_habit_feat_1$1,
-  growth_habit_feat_2: growth_habit_feat_2$1,
-  growth_zen_title: growth_zen_title$1,
-  growth_zen_desc: growth_zen_desc$1,
-  growth_zen_entry: growth_zen_entry$1,
-  growth_zen_quote: growth_zen_quote$1,
-  growth_zen_subtext: growth_zen_subtext$1,
-  growth_extra_1_title: growth_extra_1_title$1,
-  growth_extra_1_desc: growth_extra_1_desc$1,
-  growth_extra_2_title: growth_extra_2_title$1,
-  growth_extra_2_desc: growth_extra_2_desc$1,
-  growth_faq_title: growth_faq_title$1,
-  growth_faq_q1: growth_faq_q1$1,
-  growth_faq_a1: growth_faq_a1$1,
-  growth_faq_q2: growth_faq_q2$1,
-  growth_faq_a2: growth_faq_a2$1,
-  growth_faq_q3: growth_faq_q3$1,
-  growth_faq_a3: growth_faq_a3$1,
-  growth_footer_title: growth_footer_title$1,
-  growth_footer_desc: growth_footer_desc$1,
-  growth_footer_cta: growth_footer_cta$1,
-  growth_cta_note: growth_cta_note$1,
   solve_career_meta_title: solve_career_meta_title$1,
   solve_career_meta_desc: solve_career_meta_desc$1,
   solve_career_meta_og_title: solve_career_meta_og_title$1,
@@ -6476,23 +6751,26 @@ const en = {
   solve_finance_prob_desc: solve_finance_prob_desc$1,
   solve_finance_prob_1_title: solve_finance_prob_1_title$1,
   solve_finance_prob_1_desc: solve_finance_prob_1_desc$1,
-  solve_finance_prob_1_point_1: solve_finance_prob_1_point_1$1,
-  solve_finance_prob_1_point_2: solve_finance_prob_1_point_2$1,
-  solve_finance_prob_1_point_3: solve_finance_prob_1_point_3$1,
   solve_finance_prob_2_title: solve_finance_prob_2_title$1,
   solve_finance_prob_2_desc: solve_finance_prob_2_desc$1,
-  solve_finance_prob_2_point_1: solve_finance_prob_2_point_1$1,
-  solve_finance_prob_2_point_2: solve_finance_prob_2_point_2$1,
-  solve_finance_prob_2_point_3: solve_finance_prob_2_point_3$1,
+  solve_finance_prob_3_title: solve_finance_prob_3_title$1,
+  solve_finance_prob_3_desc: solve_finance_prob_3_desc$1,
   solve_finance_sol_title: solve_finance_sol_title$1,
-  solve_finance_sol_feat_1_title: solve_finance_sol_feat_1_title$1,
-  solve_finance_sol_feat_1_desc: solve_finance_sol_feat_1_desc$1,
-  solve_finance_sol_feat_2_title: solve_finance_sol_feat_2_title$1,
-  solve_finance_sol_feat_2_desc: solve_finance_sol_feat_2_desc$1,
-  solve_finance_sol_feat_3_title: solve_finance_sol_feat_3_title$1,
-  solve_finance_sol_feat_3_desc: solve_finance_sol_feat_3_desc$1,
-  solve_finance_syn_title: solve_finance_syn_title$1,
-  solve_finance_syn_desc: solve_finance_syn_desc$1,
+  solve_finance_sol_desc: solve_finance_sol_desc$1,
+  solve_finance_sol_step_1_title: solve_finance_sol_step_1_title$1,
+  solve_finance_sol_step_1_desc: solve_finance_sol_step_1_desc$1,
+  solve_finance_sol_step_2_title: solve_finance_sol_step_2_title$1,
+  solve_finance_sol_step_2_desc: solve_finance_sol_step_2_desc$1,
+  solve_finance_sol_step_3_title: solve_finance_sol_step_3_title$1,
+  solve_finance_sol_step_3_desc: solve_finance_sol_step_3_desc$1,
+  solve_finance_feat_title: solve_finance_feat_title$1,
+  solve_finance_feat_desc: solve_finance_feat_desc$1,
+  solve_finance_feat_1_title: solve_finance_feat_1_title$1,
+  solve_finance_feat_1_desc: solve_finance_feat_1_desc$1,
+  solve_finance_feat_2_title: solve_finance_feat_2_title$1,
+  solve_finance_feat_2_desc: solve_finance_feat_2_desc$1,
+  solve_finance_feat_3_title: solve_finance_feat_3_title$1,
+  solve_finance_feat_3_desc: solve_finance_feat_3_desc$1,
   solve_finance_cta_title: solve_finance_cta_title$1,
   solve_finance_cta_desc: solve_finance_cta_desc$1,
   solve_finance_cta_btn: solve_finance_cta_btn$1,
@@ -6514,11 +6792,22 @@ const en = {
   solve_mental_meta_desc: solve_mental_meta_desc$1,
   solve_mental_meta_og_title: solve_mental_meta_og_title$1,
   solve_mental_meta_og_desc: solve_mental_meta_og_desc$1,
+  schema_solution_mental_clarity_name: schema_solution_mental_clarity_name$1,
+  schema_solution_mental_clarity_description: schema_solution_mental_clarity_description$1,
+  mental_breadcrumb: mental_breadcrumb$1,
   solve_mental_hero_badge: solve_mental_hero_badge$1,
   solve_mental_hero_title_1: solve_mental_hero_title_1$1,
   solve_mental_hero_title_2: solve_mental_hero_title_2$1,
   solve_mental_hero_desc: solve_mental_hero_desc$1,
   solve_mental_hero_cta: solve_mental_hero_cta$1,
+  mental_mockup_quote: mental_mockup_quote$1,
+  mental_mockup_source: mental_mockup_source$1,
+  mental_mockup_task_1_title: mental_mockup_task_1_title$1,
+  mental_mockup_task_1_sub: mental_mockup_task_1_sub$1,
+  mental_mockup_task_2_title: mental_mockup_task_2_title$1,
+  mental_mockup_task_2_sub: mental_mockup_task_2_sub$1,
+  mental_mockup_task_3_title: mental_mockup_task_3_title$1,
+  mental_mockup_task_3_sub: mental_mockup_task_3_sub$1,
   solve_mental_prob_title: solve_mental_prob_title$1,
   solve_mental_prob_desc: solve_mental_prob_desc$1,
   solve_mental_prob_1_title: solve_mental_prob_1_title$1,
@@ -6533,14 +6822,29 @@ const en = {
   solve_mental_sol_step_2_desc: solve_mental_sol_step_2_desc$1,
   solve_mental_sol_step_3_title: solve_mental_sol_step_3_title$1,
   solve_mental_sol_step_3_desc: solve_mental_sol_step_3_desc$1,
+  mental_mockup_journal_badge: mental_mockup_journal_badge$1,
+  mental_mockup_journal_text: mental_mockup_journal_text$1,
+  mental_mockup_journal_status: mental_mockup_journal_status$1,
   solve_mental_feat_title: solve_mental_feat_title$1,
   solve_mental_feat_1_title: solve_mental_feat_1_title$1,
   solve_mental_feat_1_desc: solve_mental_feat_1_desc$1,
   solve_mental_feat_2_title: solve_mental_feat_2_title$1,
   solve_mental_feat_2_desc: solve_mental_feat_2_desc$1,
-  solve_mental_cta_title: solve_mental_cta_title$1,
-  solve_mental_cta_desc: solve_mental_cta_desc$1,
-  solve_mental_cta_btn: solve_mental_cta_btn$1,
+  mental_extra_1_label: mental_extra_1_label$1,
+  solve_mental_extra_1_title: solve_mental_extra_1_title$1,
+  solve_mental_extra_1_desc: solve_mental_extra_1_desc$1,
+  solve_mental_extra_2_title: solve_mental_extra_2_title$1,
+  solve_mental_extra_2_desc: solve_mental_extra_2_desc$1,
+  mental_extra_2_item_1: mental_extra_2_item_1$1,
+  mental_extra_2_item_2: mental_extra_2_item_2$1,
+  mental_extra_2_item_3: mental_extra_2_item_3$1,
+  solve_mental_science_badge: solve_mental_science_badge$1,
+  solve_mental_science_title: solve_mental_science_title$1,
+  solve_mental_science_desc: solve_mental_science_desc$1,
+  mental_science_process_1_title: mental_science_process_1_title$1,
+  mental_science_process_2_title: mental_science_process_2_title$1,
+  mental_science_process_3_title: mental_science_process_3_title$1,
+  mental_science_process_4_title: mental_science_process_4_title$1,
   solve_mental_faq_title: solve_mental_faq_title$1,
   solve_mental_faq_q1: solve_mental_faq_q1$1,
   solve_mental_faq_a1: solve_mental_faq_a1$1,
@@ -6548,137 +6852,88 @@ const en = {
   solve_mental_faq_a2: solve_mental_faq_a2$1,
   solve_mental_faq_q3: solve_mental_faq_q3$1,
   solve_mental_faq_a3: solve_mental_faq_a3$1,
-  solve_mental_science_badge: solve_mental_science_badge$1,
-  solve_mental_science_title: solve_mental_science_title$1,
-  solve_mental_science_desc: solve_mental_science_desc$1,
-  solve_mental_extra_1_title: solve_mental_extra_1_title$1,
-  solve_mental_extra_1_desc: solve_mental_extra_1_desc$1,
-  solve_mental_extra_2_title: solve_mental_extra_2_title$1,
-  solve_mental_extra_2_desc: solve_mental_extra_2_desc$1,
-  atomic_meta_title: atomic_meta_title$1,
-  atomic_meta_desc: atomic_meta_desc$1,
-  atomic_meta_og_title: atomic_meta_og_title$1,
-  atomic_meta_og_desc: atomic_meta_og_desc$1,
-  atomic_hero_badge: atomic_hero_badge$1,
-  atomic_hero_title_1: atomic_hero_title_1$1,
-  atomic_hero_title_2: atomic_hero_title_2$1,
-  atomic_hero_desc: atomic_hero_desc$1,
-  atomic_hero_cta: atomic_hero_cta$1,
-  atomic_prob_title: atomic_prob_title$1,
-  atomic_prob_desc: atomic_prob_desc$1,
-  atomic_prob_1_title: atomic_prob_1_title$1,
-  atomic_prob_1_desc: atomic_prob_1_desc$1,
-  atomic_prob_2_title: atomic_prob_2_title$1,
-  atomic_prob_2_desc: atomic_prob_2_desc$1,
-  atomic_sol_title: atomic_sol_title$1,
-  atomic_sol_desc: atomic_sol_desc$1,
-  atomic_step_1_title: atomic_step_1_title$1,
-  atomic_step_1_desc: atomic_step_1_desc$1,
-  atomic_step_2_title: atomic_step_2_title$1,
-  atomic_step_2_desc: atomic_step_2_desc$1,
-  atomic_step_3_title: atomic_step_3_title$1,
-  atomic_step_3_desc: atomic_step_3_desc$1,
-  atomic_cta_title: atomic_cta_title$1,
-  atomic_cta_btn: atomic_cta_btn$1,
-  atomic_mockup_title: atomic_mockup_title$1,
-  atomic_mockup_desc: atomic_mockup_desc$1,
-  atomic_faq_title: atomic_faq_title$1,
-  atomic_faq_q1: atomic_faq_q1$1,
-  atomic_faq_a1: atomic_faq_a1$1,
-  atomic_faq_q2: atomic_faq_q2$1,
-  atomic_faq_a2: atomic_faq_a2$1,
-  atomic_faq_q3: atomic_faq_q3$1,
-  atomic_faq_a3: atomic_faq_a3$1,
-  atomic_science_badge: atomic_science_badge$1,
-  atomic_science_title: atomic_science_title$1,
-  atomic_science_desc: atomic_science_desc$1,
-  atomic_cta_desc: atomic_cta_desc$1,
-  atomic_feat_title: atomic_feat_title$1,
-  atomic_feat_1_title: atomic_feat_1_title$1,
-  atomic_feat_1_desc: atomic_feat_1_desc$1,
-  atomic_feat_2_title: atomic_feat_2_title$1,
-  atomic_feat_2_desc: atomic_feat_2_desc$1,
-  atomic_cta_note,
-  atomic_extra_1_title: atomic_extra_1_title$1,
-  atomic_extra_1_desc: atomic_extra_1_desc$1,
-  atomic_extra_2_title: atomic_extra_2_title$1,
-  atomic_extra_2_desc: atomic_extra_2_desc$1,
-  deepwork_meta_title: deepwork_meta_title$1,
-  deepwork_meta_desc: deepwork_meta_desc$1,
-  deepwork_meta_og_title: deepwork_meta_og_title$1,
-  deepwork_meta_og_desc: deepwork_meta_og_desc$1,
-  deepwork_hero_badge: deepwork_hero_badge$1,
-  deepwork_hero_title_1: deepwork_hero_title_1$1,
-  deepwork_hero_title_2: deepwork_hero_title_2$1,
-  deepwork_hero_desc: deepwork_hero_desc$1,
-  deepwork_hero_cta: deepwork_hero_cta$1,
-  deepwork_prob_title: deepwork_prob_title$1,
-  deepwork_prob_desc: deepwork_prob_desc$1,
-  deepwork_prob_1_title: deepwork_prob_1_title$1,
-  deepwork_prob_1_desc: deepwork_prob_1_desc$1,
-  deepwork_prob_2_title: deepwork_prob_2_title$1,
-  deepwork_prob_2_desc: deepwork_prob_2_desc$1,
-  deepwork_prob_3_title: deepwork_prob_3_title$1,
-  deepwork_prob_3_desc: deepwork_prob_3_desc$1,
-  deepwork_sol_title: deepwork_sol_title$1,
-  deepwork_sol_1_title: deepwork_sol_1_title$1,
-  deepwork_sol_1_desc: deepwork_sol_1_desc$1,
-  deepwork_sol_2_title: deepwork_sol_2_title$1,
-  deepwork_sol_2_desc: deepwork_sol_2_desc$1,
-  deepwork_mockup_title: deepwork_mockup_title$1,
-  deepwork_mockup_desc: deepwork_mockup_desc$1,
-  deepwork_sol_3_title: deepwork_sol_3_title$1,
-  deepwork_sol_3_desc: deepwork_sol_3_desc$1,
-  deepwork_cta_note: deepwork_cta_note$1,
-  deepwork_faq_title: deepwork_faq_title$1,
-  deepwork_faq_q1: deepwork_faq_q1$1,
-  deepwork_faq_a1: deepwork_faq_a1$1,
-  deepwork_faq_q2: deepwork_faq_q2$1,
-  deepwork_faq_a2: deepwork_faq_a2$1,
-  deepwork_faq_q3: deepwork_faq_q3$1,
-  deepwork_faq_a3: deepwork_faq_a3$1,
-  deepwork_science_badge: deepwork_science_badge$1,
-  deepwork_science_title: deepwork_science_title$1,
-  deepwork_science_desc: deepwork_science_desc$1,
-  deepwork_cta_desc: deepwork_cta_desc$1,
-  deepwork_cta_title: deepwork_cta_title$1,
-  deepwork_cta_btn: deepwork_cta_btn$1,
-  deepwork_feat_title: deepwork_feat_title$1,
-  deepwork_feat_1_title: deepwork_feat_1_title$1,
-  deepwork_feat_1_desc: deepwork_feat_1_desc$1,
-  deepwork_feat_2_title: deepwork_feat_2_title$1,
-  deepwork_feat_2_desc: deepwork_feat_2_desc$1,
-  deepwork_extra_1_title: deepwork_extra_1_title$1,
-  deepwork_extra_1_desc: deepwork_extra_1_desc$1,
-  deepwork_extra_2_title: deepwork_extra_2_title$1,
-  deepwork_extra_2_desc: deepwork_extra_2_desc$1,
+  solve_mental_cta_title: solve_mental_cta_title$1,
+  solve_mental_cta_desc: solve_mental_cta_desc$1,
+  solve_mental_cta_btn: solve_mental_cta_btn$1,
+  growth_meta_title: growth_meta_title$1,
+  growth_meta_desc: growth_meta_desc$1,
+  growth_meta_og_title: growth_meta_og_title$1,
+  growth_meta_og_desc: growth_meta_og_desc$1,
+  schema_solution_growth_name: schema_solution_growth_name$1,
+  schema_solution_growth_description: schema_solution_growth_description$1,
+  growth_breadcrumb: growth_breadcrumb$1,
+  growth_hero_badge: growth_hero_badge$1,
+  growth_hero_title_1: growth_hero_title_1$1,
+  growth_hero_title_2: growth_hero_title_2$1,
+  growth_hero_desc: growth_hero_desc$1,
+  growth_hero_cta_1: growth_hero_cta_1$1,
+  growth_hero_social_proof: growth_hero_social_proof$1,
+  growth_mockup_goal_label: growth_mockup_goal_label$1,
+  growth_mockup_habit_title: growth_mockup_habit_title$1,
+  growth_mockup_habit_desc: growth_mockup_habit_desc$1,
+  growth_mockup_reflection_title: growth_mockup_reflection_title$1,
+  growth_mockup_reflection_desc: growth_mockup_reflection_desc$1,
+  growth_mockup_streak_title: growth_mockup_streak_title$1,
+  growth_mockup_streak_desc: growth_mockup_streak_desc$1,
+  growth_habit_streak: growth_habit_streak$1,
+  growth_habit_streak_desc: growth_habit_streak_desc$1,
+  growth_feat_1_title: growth_feat_1_title$1,
+  growth_feat_1_desc: growth_feat_1_desc$1,
+  growth_feat_1_point_1: growth_feat_1_point_1$1,
+  growth_feat_1_point_2: growth_feat_1_point_2$1,
+  growth_feat_2_title: growth_feat_2_title$1,
+  growth_feat_2_desc: growth_feat_2_desc$1,
+  growth_feat_2_quote_title: growth_feat_2_quote_title$1,
+  growth_feat_2_quote_body: growth_feat_2_quote_body$1,
+  growth_extra_1_title: growth_extra_1_title$1,
+  growth_extra_1_desc: growth_extra_1_desc$1,
+  growth_extra_2_title: growth_extra_2_title$1,
+  growth_extra_2_desc: growth_extra_2_desc$1,
+  growth_extra_2_stat_label: growth_extra_2_stat_label$1,
+  growth_extra_2_stat_sub: growth_extra_2_stat_sub$1,
+  growth_science_badge: growth_science_badge$1,
+  growth_science_title: growth_science_title$1,
+  growth_science_desc: growth_science_desc$1,
+  growth_science_point_1: growth_science_point_1$1,
+  growth_science_point_2: growth_science_point_2$1,
+  growth_science_point_3: growth_science_point_3$1,
+  growth_faq_title: growth_faq_title$1,
+  growth_faq_q1: growth_faq_q1$1,
+  growth_faq_a1: growth_faq_a1$1,
+  growth_faq_q2: growth_faq_q2$1,
+  growth_faq_a2: growth_faq_a2$1,
+  growth_faq_q3: growth_faq_q3$1,
+  growth_faq_a3: growth_faq_a3$1,
+  growth_cta_title: growth_cta_title$1,
+  growth_cta_desc: growth_cta_desc$1,
+  growth_cta_btn: growth_cta_btn$1,
+  growth_cta_note: growth_cta_note$1,
+  growth_science_viz_aura: growth_science_viz_aura$1,
   brain_meta_title: brain_meta_title$1,
   brain_meta_desc: brain_meta_desc$1,
   brain_meta_og_title: brain_meta_og_title$1,
   brain_meta_og_desc: brain_meta_og_desc$1,
+  brain_breadcrumb: brain_breadcrumb$1,
   brain_hero_badge: brain_hero_badge$1,
   brain_hero_title_1: brain_hero_title_1$1,
   brain_hero_title_2: brain_hero_title_2$1,
   brain_hero_desc: brain_hero_desc$1,
   brain_hero_cta: brain_hero_cta$1,
-  brain_prob_title: brain_prob_title$1,
-  brain_prob_desc: brain_prob_desc$1,
-  brain_prob_core: brain_prob_core$1,
-  brain_sol_title: brain_sol_title$1,
-  brain_step_1: brain_step_1$1,
-  brain_step_2: brain_step_2$1,
-  brain_step_3: brain_step_3$1,
-  brain_cta_title: brain_cta_title$1,
-  brain_cta_btn: brain_cta_btn$1,
   brain_mockup_1: brain_mockup_1$1,
   brain_mockup_2: brain_mockup_2$1,
   brain_mockup_3: brain_mockup_3$1,
+  brain_mockup_3_quote: brain_mockup_3_quote$1,
+  brain_prob_title: brain_prob_title$1,
+  brain_prob_desc: brain_prob_desc$1,
   brain_prob_1_title: brain_prob_1_title$1,
   brain_prob_1_desc: brain_prob_1_desc$1,
   brain_prob_2_title: brain_prob_2_title$1,
   brain_prob_2_desc: brain_prob_2_desc$1,
   brain_prob_3_title: brain_prob_3_title$1,
   brain_prob_3_desc: brain_prob_3_desc$1,
+  brain_prob_viz_badge: brain_prob_viz_badge$1,
+  brain_prob_viz_sub: brain_prob_viz_sub$1,
+  brain_sol_title: brain_sol_title$1,
   brain_sol_desc: brain_sol_desc$1,
   brain_step_1_title: brain_step_1_title$1,
   brain_step_1_desc: brain_step_1_desc$1,
@@ -6686,7 +6941,35 @@ const en = {
   brain_step_2_desc: brain_step_2_desc$1,
   brain_step_3_title: brain_step_3_title$1,
   brain_step_3_desc: brain_step_3_desc$1,
-  brain_cta_note: brain_cta_note$1,
+  brain_hub_title: brain_hub_title$1,
+  brain_hub_inbox_title: brain_hub_inbox_title$1,
+  brain_hub_inbox_desc: brain_hub_inbox_desc$1,
+  brain_hub_os_title: brain_hub_os_title$1,
+  brain_hub_os_desc: brain_hub_os_desc$1,
+  brain_feat_title: brain_feat_title$1,
+  brain_feat_sub: brain_feat_sub$1,
+  brain_feat_1_title: brain_feat_1_title$1,
+  brain_feat_1_desc: brain_feat_1_desc$1,
+  brain_feat_2_title: brain_feat_2_title$1,
+  brain_feat_2_desc: brain_feat_2_desc$1,
+  brain_extra_1_title: brain_extra_1_title$1,
+  brain_extra_1_desc: brain_extra_1_desc$1,
+  brain_extra_1_item_1: brain_extra_1_item_1$1,
+  brain_extra_1_item_2: brain_extra_1_item_2$1,
+  brain_extra_1_item_3: brain_extra_1_item_3$1,
+  brain_extra_1_viz_title: brain_extra_1_viz_title$1,
+  brain_extra_2_title: brain_extra_2_title$1,
+  brain_extra_2_desc: brain_extra_2_desc$1,
+  brain_extra_2_item_1: brain_extra_2_item_1$1,
+  brain_extra_2_item_2: brain_extra_2_item_2$1,
+  brain_extra_2_item_3: brain_extra_2_item_3$1,
+  brain_science_badge: brain_science_badge$1,
+  brain_science_title: brain_science_title$1,
+  brain_science_desc: brain_science_desc$1,
+  brain_science_topic_1: brain_science_topic_1$1,
+  brain_science_topic_2: brain_science_topic_2$1,
+  brain_science_topic_3: brain_science_topic_3$1,
+  brain_science_viz_badge: brain_science_viz_badge$1,
   brain_faq_title: brain_faq_title$1,
   brain_faq_q1: brain_faq_q1$1,
   brain_faq_a1: brain_faq_a1$1,
@@ -6694,32 +6977,309 @@ const en = {
   brain_faq_a2: brain_faq_a2$1,
   brain_faq_q3: brain_faq_q3$1,
   brain_faq_a3: brain_faq_a3$1,
-  brain_science_badge: brain_science_badge$1,
-  brain_science_title: brain_science_title$1,
-  brain_science_desc: brain_science_desc$1,
+  brain_cta_title: brain_cta_title$1,
   brain_cta_desc: brain_cta_desc$1,
-  brain_extra_1_title: brain_extra_1_title$1,
-  brain_hub_title: brain_hub_title$1,
-  brain_hub_inbox_title: brain_hub_inbox_title$1,
-  brain_hub_inbox_desc: brain_hub_inbox_desc$1,
-  brain_hub_os_title: brain_hub_os_title$1,
-  brain_hub_os_desc: brain_hub_os_desc$1,
-  brain_feat_title: brain_feat_title$1,
-  brain_feat_1_title: brain_feat_1_title$1,
-  brain_feat_1_desc: brain_feat_1_desc$1,
-  brain_feat_2_title: brain_feat_2_title$1,
-  brain_feat_2_desc: brain_feat_2_desc$1,
-  brain_extra_1_desc: brain_extra_1_desc$1,
-  brain_extra_2_title: brain_extra_2_title$1,
-  brain_extra_2_desc: brain_extra_2_desc$1,
-  ecosystem_habit_title: ecosystem_habit_title$1,
-  ecosystem_finance_title: ecosystem_finance_title$1,
-  ecosystem_planner_title: ecosystem_planner_title$1,
-  ecosystem_goal_title: ecosystem_goal_title$1,
-  ecosystem_journal_title: ecosystem_journal_title$1,
-  ecosystem_job_title: ecosystem_job_title$1,
-  ecosystem_notes_title: ecosystem_notes_title$1,
+  brain_cta_btn: brain_cta_btn$1,
+  student_meta_title: student_meta_title$1,
+  student_meta_desc: student_meta_desc$1,
+  student_meta_og_title: student_meta_og_title$1,
+  student_meta_og_desc: student_meta_og_desc$1,
+  schema_student_name: schema_student_name$1,
+  schema_student_description: schema_student_description$1,
+  schema_solution_student_audience: schema_solution_student_audience$1,
+  student_hero_badge: student_hero_badge$1,
+  student_hero_title_1: student_hero_title_1$1,
+  student_hero_title_2: student_hero_title_2$1,
+  student_hero_desc: student_hero_desc$1,
+  student_hero_cta_1: student_hero_cta_1$1,
+  student_hero_social_proof: student_hero_social_proof$1,
+  student_mockup_title: student_mockup_title$1,
+  student_mockup_budget_label: student_mockup_budget_label$1,
+  student_mockup_budget_status: student_mockup_budget_status$1,
+  student_mockup_task_badge: student_mockup_task_badge$1,
+  student_mockup_task_title: student_mockup_task_title$1,
+  student_mockup_schedule_label: student_mockup_schedule_label$1,
+  student_mockup_schedule_item_1: student_mockup_schedule_item_1$1,
+  student_mockup_schedule_item_2: student_mockup_schedule_item_2$1,
+  student_prob_title: student_prob_title$1,
+  student_prob_desc: student_prob_desc$1,
+  student_prob_1_title: student_prob_1_title$1,
+  student_prob_1_desc: student_prob_1_desc$1,
+  student_prob_2_title: student_prob_2_title$1,
+  student_prob_2_desc: student_prob_2_desc$1,
+  student_prob_3_title: student_prob_3_title$1,
+  student_prob_3_desc: student_prob_3_desc$1,
+  student_feat_1_visual_badge: student_feat_1_visual_badge$1,
+  student_feat_1_title: student_feat_1_title$1,
+  student_feat_1_desc: student_feat_1_desc$1,
+  student_feat_1_point_1: student_feat_1_point_1$1,
+  student_feat_1_point_2: student_feat_1_point_2$1,
+  student_feat_2_title: student_feat_2_title$1,
+  student_feat_2_desc: student_feat_2_desc$1,
+  student_feat_2_point_1: student_feat_2_point_1$1,
+  student_feat_2_badge_1: student_feat_2_badge_1$1,
+  student_feat_2_point_2: student_feat_2_point_2$1,
+  student_feat_2_badge_2: student_feat_2_badge_2$1,
+  student_bento_title: student_bento_title$1,
+  student_bento_desc: student_bento_desc$1,
+  student_bento_1_title: student_bento_1_title$1,
+  student_bento_1_desc: student_bento_1_desc$1,
+  student_bento_2_title: student_bento_2_title$1,
+  student_bento_2_desc: student_bento_2_desc$1,
+  student_bento_3_title: student_bento_3_title$1,
+  student_bento_3_desc: student_bento_3_desc$1,
+  student_extra_1_title: student_extra_1_title$1,
+  student_extra_1_desc: student_extra_1_desc$1,
+  student_extra_1_step_1: student_extra_1_step_1$1,
+  student_extra_1_step_2: student_extra_1_step_2$1,
+  student_extra_1_step_3: student_extra_1_step_3$1,
+  student_extra_2_title: student_extra_2_title$1,
+  student_extra_2_desc: student_extra_2_desc$1,
+  student_extra_2_item_1: student_extra_2_item_1$1,
+  student_extra_2_item_2: student_extra_2_item_2$1,
+  student_extra_2_item_3: student_extra_2_item_3$1,
+  student_extra_2_item_4: student_extra_2_item_4$1,
+  student_science_badge: student_science_badge$1,
+  student_science_title: student_science_title$1,
+  student_science_desc: student_science_desc$1,
+  student_science_topic_1: student_science_topic_1$1,
+  student_science_topic_2: student_science_topic_2$1,
+  student_science_topic_3: student_science_topic_3$1,
+  student_faq_title: student_faq_title$1,
+  student_faq_q1: student_faq_q1$1,
+  student_faq_a1: student_faq_a1$1,
+  student_faq_q2: student_faq_q2$1,
+  student_faq_a2: student_faq_a2$1,
+  student_faq_q3: student_faq_q3$1,
+  student_faq_a3: student_faq_a3$1,
+  student_cta_title: student_cta_title$1,
+  student_cta_desc: student_cta_desc$1,
+  student_cta_btn: student_cta_btn$1,
+  freelance_meta_title: freelance_meta_title$1,
+  freelance_meta_desc: freelance_meta_desc$1,
+  freelance_meta_og_title: freelance_meta_og_title$1,
+  freelance_meta_og_desc: freelance_meta_og_desc$1,
+  freelance_hero_badge: freelance_hero_badge$1,
+  freelance_hero_title_1: freelance_hero_title_1$1,
+  freelance_hero_title_2: freelance_hero_title_2$1,
+  freelance_hero_desc: freelance_hero_desc$1,
+  freelance_hero_cta: freelance_hero_cta$1,
+  freelance_mockup_revenue: freelance_mockup_revenue$1,
+  freelance_mockup_client: freelance_mockup_client$1,
+  freelance_mockup_project: freelance_mockup_project$1,
+  freelance_mockup_project_sub: freelance_mockup_project_sub$1,
+  freelance_prob_title: freelance_prob_title$1,
+  freelance_prob_desc: freelance_prob_desc$1,
+  freelance_prob_1_title: freelance_prob_1_title$1,
+  freelance_prob_1_desc: freelance_prob_1_desc$1,
+  freelance_prob_2_title: freelance_prob_2_title$1,
+  freelance_prob_2_desc: freelance_prob_2_desc$1,
+  freelance_prob_3_title: freelance_prob_3_title$1,
+  freelance_prob_3_desc: freelance_prob_3_desc$1,
+  freelance_sol_title: freelance_sol_title$1,
+  freelance_sol_desc: freelance_sol_desc$1,
+  freelance_sol_step_1_title: freelance_sol_step_1_title$1,
+  freelance_sol_step_1_desc: freelance_sol_step_1_desc$1,
+  freelance_sol_step_2_title: freelance_sol_step_2_title$1,
+  freelance_sol_step_2_desc: freelance_sol_step_2_desc$1,
+  freelance_sol_step_3_title: freelance_sol_step_3_title$1,
+  freelance_sol_step_3_desc: freelance_sol_step_3_desc$1,
+  freelance_feat_title: freelance_feat_title$1,
+  freelance_feat_1_title: freelance_feat_1_title$1,
+  freelance_feat_1_desc: freelance_feat_1_desc$1,
+  freelance_feat_2_title: freelance_feat_2_title$1,
+  freelance_feat_2_desc: freelance_feat_2_desc$1,
+  freelance_cta_title: freelance_cta_title$1,
+  freelance_cta_desc: freelance_cta_desc$1,
+  freelance_cta_btn: freelance_cta_btn$1,
+  freelance_faq_title: freelance_faq_title$1,
+  freelance_faq_q1: freelance_faq_q1$1,
+  freelance_faq_a1: freelance_faq_a1$1,
+  freelance_faq_q2: freelance_faq_q2$1,
+  freelance_faq_a2: freelance_faq_a2$1,
+  freelance_faq_q3: freelance_faq_q3$1,
+  freelance_faq_a3: freelance_faq_a3$1,
+  freelance_science_badge: freelance_science_badge$1,
+  freelance_science_title: freelance_science_title$1,
+  freelance_science_desc: freelance_science_desc$1,
+  freelance_extra_1_title: freelance_extra_1_title$1,
+  freelance_extra_1_desc: freelance_extra_1_desc$1,
+  freelance_extra_2_title: freelance_extra_2_title$1,
+  freelance_extra_2_desc: freelance_extra_2_desc$1,
+  mental_meta_title: mental_meta_title$1,
+  mental_meta_desc: mental_meta_desc$1,
+  mental_meta_og_title: mental_meta_og_title$1,
+  mental_meta_og_desc: mental_meta_og_desc$1,
+  mental_hero_badge: mental_hero_badge$1,
+  mental_hero_title_1: mental_hero_title_1$1,
+  mental_hero_title_2: mental_hero_title_2$1,
+  mental_hero_desc: mental_hero_desc$1,
+  mental_hero_cta: mental_hero_cta$1,
+  mental_prob_title: mental_prob_title$1,
+  mental_prob_desc: mental_prob_desc$1,
+  mental_prob_1_title: mental_prob_1_title$1,
+  mental_prob_1_desc: mental_prob_1_desc$1,
+  mental_prob_2_title: mental_prob_2_title$1,
+  mental_prob_2_desc: mental_prob_2_desc$1,
+  mental_sol_title: mental_sol_title$1,
+  mental_sol_desc: mental_sol_desc$1,
+  mental_sol_step_1_title: mental_sol_step_1_title$1,
+  mental_sol_step_1_desc: mental_sol_step_1_desc$1,
+  mental_sol_step_2_title: mental_sol_step_2_title$1,
+  mental_sol_step_2_desc: mental_sol_step_2_desc$1,
+  mental_sol_step_3_title: mental_sol_step_3_title$1,
+  mental_sol_step_3_desc: mental_sol_step_3_desc$1,
+  mental_feat_title: mental_feat_title$1,
+  mental_feat_1_title: mental_feat_1_title$1,
+  mental_feat_1_desc: mental_feat_1_desc$1,
+  mental_feat_2_title: mental_feat_2_title$1,
+  mental_feat_2_desc: mental_feat_2_desc$1,
+  mental_extra_1_title: mental_extra_1_title$1,
+  mental_extra_1_desc: mental_extra_1_desc$1,
+  mental_extra_2_title: mental_extra_2_title$1,
+  mental_extra_2_desc: mental_extra_2_desc$1,
+  mental_cta_title: mental_cta_title$1,
+  mental_cta_desc: mental_cta_desc$1,
+  mental_cta_btn: mental_cta_btn$1,
+  mental_faq_title: mental_faq_title$1,
+  mental_faq_q1: mental_faq_q1$1,
+  mental_faq_a1: mental_faq_a1$1,
+  mental_faq_q2: mental_faq_q2$1,
+  mental_faq_a2: mental_faq_a2$1,
+  mental_faq_q3: mental_faq_q3$1,
+  mental_faq_a3: mental_faq_a3$1,
+  mental_science_badge: mental_science_badge$1,
+  mental_science_title: mental_science_title$1,
+  mental_science_desc: mental_science_desc$1,
+  mental_science_topic_1: mental_science_topic_1$1,
+  mental_science_topic_2: mental_science_topic_2$1,
+  mental_science_topic_3: mental_science_topic_3$1,
+  mental_science_topic_4: mental_science_topic_4$1,
+  brain_mockup_quote: brain_mockup_quote$1,
+  brain_mockup_chaos_label: brain_mockup_chaos_label$1,
+  brain_mockup_chaos_desc: brain_mockup_chaos_desc$1,
   ecosystem_calendar_title: ecosystem_calendar_title$1,
+  ecosystem_calendar_desc: ecosystem_calendar_desc$1,
+  ecosystem_growth_title: ecosystem_growth_title$1,
+  ecosystem_growth_desc: ecosystem_growth_desc$1,
+  ecosystem_brain_title: ecosystem_brain_title$1,
+  ecosystem_brain_desc: ecosystem_brain_desc$1,
+  ecosystem_career_title: ecosystem_career_title$1,
+  ecosystem_career_desc: ecosystem_career_desc$1,
+  ecosystem_finance_title: ecosystem_finance_title$1,
+  ecosystem_finance_desc: ecosystem_finance_desc$1,
+  ecosystem_mental_title: ecosystem_mental_title$1,
+  ecosystem_mental_desc: ecosystem_mental_desc$1,
+  mental_science_viz_label: mental_science_viz_label$1,
+  atomic_meta_title: atomic_meta_title$1,
+  atomic_meta_desc: atomic_meta_desc$1,
+  atomic_meta_og_title: atomic_meta_og_title$1,
+  atomic_meta_og_desc: atomic_meta_og_desc$1,
+  schema_solution_atomic_name: schema_solution_atomic_name$1,
+  schema_solution_atomic_description: schema_solution_atomic_description$1,
+  atomic_breadcrumb: atomic_breadcrumb$1,
+  solve_atomic_hero_badge: solve_atomic_hero_badge$1,
+  solve_atomic_hero_title_1: solve_atomic_hero_title_1$1,
+  solve_atomic_hero_title_2: solve_atomic_hero_title_2$1,
+  solve_atomic_hero_desc: solve_atomic_hero_desc$1,
+  solve_atomic_hero_cta: solve_atomic_hero_cta$1,
+  atomic_mockup_habit_title: atomic_mockup_habit_title$1,
+  atomic_mockup_habit_sub: atomic_mockup_habit_sub$1,
+  atomic_mockup_identity_title: atomic_mockup_identity_title$1,
+  atomic_mockup_identity_sub: atomic_mockup_identity_sub$1,
+  solve_atomic_prob_title: solve_atomic_prob_title$1,
+  solve_atomic_prob_desc: solve_atomic_prob_desc$1,
+  solve_atomic_prob_1_title: solve_atomic_prob_1_title$1,
+  solve_atomic_prob_1_desc: solve_atomic_prob_1_desc$1,
+  solve_atomic_prob_2_title: solve_atomic_prob_2_title$1,
+  solve_atomic_prob_2_desc: solve_atomic_prob_2_desc$1,
+  solve_atomic_sol_title: solve_atomic_sol_title$1,
+  solve_atomic_sol_desc: solve_atomic_sol_desc$1,
+  solve_atomic_sol_step_1_title: solve_atomic_sol_step_1_title$1,
+  solve_atomic_sol_step_1_desc: solve_atomic_sol_step_1_desc$1,
+  solve_atomic_sol_step_2_title: solve_atomic_sol_step_2_title$1,
+  solve_atomic_sol_step_2_desc: solve_atomic_sol_step_2_desc$1,
+  solve_atomic_sol_step_3_title: solve_atomic_sol_step_3_title$1,
+  solve_atomic_sol_step_3_desc: solve_atomic_sol_step_3_desc$1,
+  solve_atomic_feat_title: solve_atomic_feat_title$1,
+  solve_atomic_feat_1_title: solve_atomic_feat_1_title$1,
+  solve_atomic_feat_1_desc: solve_atomic_feat_1_desc$1,
+  solve_atomic_feat_2_title: solve_atomic_feat_2_title$1,
+  solve_atomic_feat_2_desc: solve_atomic_feat_2_desc$1,
+  atomic_extra_1_title: atomic_extra_1_title$1,
+  atomic_extra_1_desc: atomic_extra_1_desc$1,
+  solve_atomic_extra_2_title: solve_atomic_extra_2_title$1,
+  solve_atomic_extra_2_desc: solve_atomic_extra_2_desc$1,
+  solve_atomic_science_badge: solve_atomic_science_badge$1,
+  solve_atomic_science_title: solve_atomic_science_title$1,
+  solve_mental_science_desc_alt: solve_mental_science_desc_alt$1,
+  atomic_science_step_1_title: atomic_science_step_1_title$1,
+  atomic_science_step_2_title: atomic_science_step_2_title$1,
+  atomic_science_step_3_title: atomic_science_step_3_title$1,
+  atomic_science_step_4_title: atomic_science_step_4_title$1,
+  solve_atomic_faq_title: solve_atomic_faq_title$1,
+  solve_atomic_faq_q1: solve_atomic_faq_q1$1,
+  solve_atomic_faq_a1: solve_atomic_faq_a1$1,
+  solve_atomic_faq_q2: solve_atomic_faq_q2$1,
+  solve_atomic_faq_a2: solve_atomic_faq_a2$1,
+  solve_atomic_faq_a3: solve_atomic_faq_a3$1,
+  solve_atomic_cta_title: solve_atomic_cta_title$1,
+  solve_atomic_cta_desc: solve_atomic_cta_desc$1,
+  solve_atomic_cta_btn: solve_atomic_cta_btn$1,
+  deep_meta_title: deep_meta_title$1,
+  deep_meta_desc: deep_meta_desc$1,
+  deep_meta_og_title: deep_meta_og_title$1,
+  deep_meta_og_desc: deep_meta_og_desc$1,
+  schema_solution_deep_work_name: schema_solution_deep_work_name$1,
+  schema_solution_deep_work_description: schema_solution_deep_work_description$1,
+  deep_breadcrumb: deep_breadcrumb$1,
+  solve_deep_hero_badge: solve_deep_hero_badge$1,
+  solve_deep_hero_title_1: solve_deep_hero_title_1$1,
+  solve_deep_hero_title_2: solve_deep_hero_title_2$1,
+  solve_deep_hero_desc: solve_deep_hero_desc$1,
+  solve_deep_hero_cta: solve_deep_hero_cta$1,
+  deep_mockup_session_title: deep_mockup_session_title$1,
+  deep_mockup_session_sub: deep_mockup_session_sub$1,
+  deep_mockup_focus_label: deep_mockup_focus_label$1,
+  solve_deep_prob_title: solve_deep_prob_title$1,
+  solve_deep_prob_desc: solve_deep_prob_desc$1,
+  solve_deep_prob_1_title: solve_deep_prob_1_title$1,
+  solve_deep_prob_1_desc: solve_deep_prob_1_desc$1,
+  solve_deep_prob_2_title: solve_deep_prob_2_title$1,
+  solve_deep_prob_2_desc: solve_deep_prob_2_desc$1,
+  solve_deep_sol_title: solve_deep_sol_title$1,
+  solve_deep_sol_desc: solve_deep_sol_desc$1,
+  solve_deep_sol_step_1_title: solve_deep_sol_step_1_title$1,
+  solve_deep_sol_step_1_desc: solve_deep_sol_step_1_desc$1,
+  solve_deep_sol_step_2_title: solve_deep_sol_step_2_title$1,
+  solve_deep_sol_step_2_desc: solve_deep_sol_step_2_desc$1,
+  solve_deep_sol_step_3_title: solve_deep_sol_step_3_title$1,
+  solve_deep_sol_step_3_desc: solve_deep_sol_step_3_desc$1,
+  solve_deep_feat_title: solve_deep_feat_title$1,
+  solve_deep_feat_1_title: solve_deep_feat_1_title$1,
+  solve_deep_feat_1_desc: solve_deep_feat_1_desc$1,
+  solve_deep_feat_2_title: solve_deep_feat_2_title$1,
+  solve_deep_feat_2_desc: solve_deep_feat_2_desc$1,
+  deep_extra_1_title: deep_extra_1_title$1,
+  deep_extra_1_desc: deep_extra_1_desc$1,
+  solve_deep_extra_2_title: solve_deep_extra_2_title$1,
+  solve_deep_extra_2_desc: solve_deep_extra_2_desc$1,
+  solve_deep_science_badge: solve_deep_science_badge$1,
+  solve_deep_science_title: solve_deep_science_title$1,
+  solve_deep_science_desc: solve_deep_science_desc$1,
+  deep_science_factor_1_title: deep_science_factor_1_title$1,
+  deep_science_factor_2_title: deep_science_factor_2_title$1,
+  deep_science_factor_3_title: deep_science_factor_3_title$1,
+  deep_science_factor_4_title: deep_science_factor_4_title$1,
+  solve_deep_faq_title: solve_deep_faq_title$1,
+  solve_deep_faq_q1: solve_deep_faq_q1$1,
+  solve_deep_faq_a1: solve_deep_faq_a1$1,
+  solve_deep_faq_q2: solve_deep_faq_q2$1,
+  solve_deep_faq_a2: solve_deep_faq_a2$1,
+  solve_deep_faq_a3: solve_deep_faq_a3$1,
+  solve_deep_cta_title: solve_deep_cta_title$1,
+  solve_deep_cta_desc: solve_deep_cta_desc$1,
+  solve_deep_cta_btn: solve_deep_cta_btn$1,
   stat_meta_title: stat_meta_title$1,
   stat_meta_desc: stat_meta_desc$1,
   stat_hero_badge: stat_hero_badge$1,
@@ -6788,54 +7348,21 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   amount_placeholder: amount_placeholder$1,
   asset_name: asset_name$1,
   asset_name_placeholder: asset_name_placeholder$1,
-  atomic_cta_btn: atomic_cta_btn$1,
-  atomic_cta_desc: atomic_cta_desc$1,
-  atomic_cta_note,
-  atomic_cta_title: atomic_cta_title$1,
+  atomic_breadcrumb: atomic_breadcrumb$1,
   atomic_extra_1_desc: atomic_extra_1_desc$1,
   atomic_extra_1_title: atomic_extra_1_title$1,
-  atomic_extra_2_desc: atomic_extra_2_desc$1,
-  atomic_extra_2_title: atomic_extra_2_title$1,
-  atomic_faq_a1: atomic_faq_a1$1,
-  atomic_faq_a2: atomic_faq_a2$1,
-  atomic_faq_a3: atomic_faq_a3$1,
-  atomic_faq_q1: atomic_faq_q1$1,
-  atomic_faq_q2: atomic_faq_q2$1,
-  atomic_faq_q3: atomic_faq_q3$1,
-  atomic_faq_title: atomic_faq_title$1,
-  atomic_feat_1_desc: atomic_feat_1_desc$1,
-  atomic_feat_1_title: atomic_feat_1_title$1,
-  atomic_feat_2_desc: atomic_feat_2_desc$1,
-  atomic_feat_2_title: atomic_feat_2_title$1,
-  atomic_feat_title: atomic_feat_title$1,
-  atomic_hero_badge: atomic_hero_badge$1,
-  atomic_hero_cta: atomic_hero_cta$1,
-  atomic_hero_desc: atomic_hero_desc$1,
-  atomic_hero_title_1: atomic_hero_title_1$1,
-  atomic_hero_title_2: atomic_hero_title_2$1,
   atomic_meta_desc: atomic_meta_desc$1,
   atomic_meta_og_desc: atomic_meta_og_desc$1,
   atomic_meta_og_title: atomic_meta_og_title$1,
   atomic_meta_title: atomic_meta_title$1,
-  atomic_mockup_desc: atomic_mockup_desc$1,
-  atomic_mockup_title: atomic_mockup_title$1,
-  atomic_prob_1_desc: atomic_prob_1_desc$1,
-  atomic_prob_1_title: atomic_prob_1_title$1,
-  atomic_prob_2_desc: atomic_prob_2_desc$1,
-  atomic_prob_2_title: atomic_prob_2_title$1,
-  atomic_prob_desc: atomic_prob_desc$1,
-  atomic_prob_title: atomic_prob_title$1,
-  atomic_science_badge: atomic_science_badge$1,
-  atomic_science_desc: atomic_science_desc$1,
-  atomic_science_title: atomic_science_title$1,
-  atomic_sol_desc: atomic_sol_desc$1,
-  atomic_sol_title: atomic_sol_title$1,
-  atomic_step_1_desc: atomic_step_1_desc$1,
-  atomic_step_1_title: atomic_step_1_title$1,
-  atomic_step_2_desc: atomic_step_2_desc$1,
-  atomic_step_2_title: atomic_step_2_title$1,
-  atomic_step_3_desc: atomic_step_3_desc$1,
-  atomic_step_3_title: atomic_step_3_title$1,
+  atomic_mockup_habit_sub: atomic_mockup_habit_sub$1,
+  atomic_mockup_habit_title: atomic_mockup_habit_title$1,
+  atomic_mockup_identity_sub: atomic_mockup_identity_sub$1,
+  atomic_mockup_identity_title: atomic_mockup_identity_title$1,
+  atomic_science_step_1_title: atomic_science_step_1_title$1,
+  atomic_science_step_2_title: atomic_science_step_2_title$1,
+  atomic_science_step_3_title: atomic_science_step_3_title$1,
+  atomic_science_step_4_title: atomic_science_step_4_title$1,
   auth_back_login: auth_back_login$2,
   auth_btn_confirm: auth_btn_confirm$2,
   auth_btn_google_in: auth_btn_google_in$2,
@@ -7004,13 +7531,20 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   blog_news_note: blog_news_note$1,
   blog_news_placeholder: blog_news_placeholder$1,
   blog_news_title: blog_news_title$1,
+  brain_breadcrumb: brain_breadcrumb$1,
   brain_cta_btn: brain_cta_btn$1,
   brain_cta_desc: brain_cta_desc$1,
-  brain_cta_note: brain_cta_note$1,
   brain_cta_title: brain_cta_title$1,
   brain_extra_1_desc: brain_extra_1_desc$1,
+  brain_extra_1_item_1: brain_extra_1_item_1$1,
+  brain_extra_1_item_2: brain_extra_1_item_2$1,
+  brain_extra_1_item_3: brain_extra_1_item_3$1,
   brain_extra_1_title: brain_extra_1_title$1,
+  brain_extra_1_viz_title: brain_extra_1_viz_title$1,
   brain_extra_2_desc: brain_extra_2_desc$1,
+  brain_extra_2_item_1: brain_extra_2_item_1$1,
+  brain_extra_2_item_2: brain_extra_2_item_2$1,
+  brain_extra_2_item_3: brain_extra_2_item_3$1,
   brain_extra_2_title: brain_extra_2_title$1,
   brain_faq_a1: brain_faq_a1$1,
   brain_faq_a2: brain_faq_a2$1,
@@ -7023,6 +7557,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   brain_feat_1_title: brain_feat_1_title$1,
   brain_feat_2_desc: brain_feat_2_desc$1,
   brain_feat_2_title: brain_feat_2_title$1,
+  brain_feat_sub: brain_feat_sub$1,
   brain_feat_title: brain_feat_title$1,
   brain_hero_badge: brain_hero_badge$1,
   brain_hero_cta: brain_hero_cta$1,
@@ -7041,27 +7576,33 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   brain_mockup_1: brain_mockup_1$1,
   brain_mockup_2: brain_mockup_2$1,
   brain_mockup_3: brain_mockup_3$1,
+  brain_mockup_3_quote: brain_mockup_3_quote$1,
+  brain_mockup_chaos_desc: brain_mockup_chaos_desc$1,
+  brain_mockup_chaos_label: brain_mockup_chaos_label$1,
+  brain_mockup_quote: brain_mockup_quote$1,
   brain_prob_1_desc: brain_prob_1_desc$1,
   brain_prob_1_title: brain_prob_1_title$1,
   brain_prob_2_desc: brain_prob_2_desc$1,
   brain_prob_2_title: brain_prob_2_title$1,
   brain_prob_3_desc: brain_prob_3_desc$1,
   brain_prob_3_title: brain_prob_3_title$1,
-  brain_prob_core: brain_prob_core$1,
   brain_prob_desc: brain_prob_desc$1,
   brain_prob_title: brain_prob_title$1,
+  brain_prob_viz_badge: brain_prob_viz_badge$1,
+  brain_prob_viz_sub: brain_prob_viz_sub$1,
   brain_science_badge: brain_science_badge$1,
   brain_science_desc: brain_science_desc$1,
   brain_science_title: brain_science_title$1,
+  brain_science_topic_1: brain_science_topic_1$1,
+  brain_science_topic_2: brain_science_topic_2$1,
+  brain_science_topic_3: brain_science_topic_3$1,
+  brain_science_viz_badge: brain_science_viz_badge$1,
   brain_sol_desc: brain_sol_desc$1,
   brain_sol_title: brain_sol_title$1,
-  brain_step_1: brain_step_1$1,
   brain_step_1_desc: brain_step_1_desc$1,
   brain_step_1_title: brain_step_1_title$1,
-  brain_step_2: brain_step_2$1,
   brain_step_2_desc: brain_step_2_desc$1,
   brain_step_2_title: brain_step_2_title$1,
-  brain_step_3: brain_step_3$1,
   brain_step_3_desc: brain_step_3_desc$1,
   brain_step_3_title: brain_step_3_title$1,
   btn_add: btn_add$1,
@@ -7391,10 +7932,41 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   comm_tg_title: comm_tg_title$1,
   common_deadline: common_deadline$1,
   common_progress: common_progress$1,
+  compare_architect: compare_architect$1,
+  compare_explorer: compare_explorer$1,
+  compare_feature: compare_feature$1,
+  compare_legendary: compare_legendary$1,
+  compare_quantum: compare_quantum$1,
+  compare_title: compare_title$1,
   confirm_delete_text: confirm_delete_text$1,
   confirm_delete_title: confirm_delete_title$1,
   confirm_new_password: confirm_new_password$1,
   confirm_pay: confirm_pay$1,
+  contact_btn_send: contact_btn_send$1,
+  contact_faq_btn: contact_faq_btn$1,
+  contact_faq_desc: contact_faq_desc$1,
+  contact_faq_title: contact_faq_title$1,
+  contact_form_email: contact_form_email$1,
+  contact_form_message: contact_form_message$1,
+  contact_form_message_placeholder: contact_form_message_placeholder$1,
+  contact_form_name: contact_form_name$1,
+  contact_form_subject: contact_form_subject$1,
+  contact_info_billing: contact_info_billing$1,
+  contact_info_chat: contact_info_chat$1,
+  contact_info_chat_status: contact_info_chat_status$1,
+  contact_info_hq: contact_info_hq$1,
+  contact_info_jakarta: contact_info_jakarta$1,
+  contact_info_support: contact_info_support$1,
+  contact_info_title: contact_info_title$1,
+  contact_subtitle: contact_subtitle$1,
+  contact_success_desc: contact_success_desc$1,
+  contact_success_title: contact_success_title$1,
+  contact_title: contact_title$1,
+  cookie_btn_accept: cookie_btn_accept$1,
+  cookie_btn_essential: cookie_btn_essential$1,
+  cookie_btn_settings: cookie_btn_settings$1,
+  cookie_desc: cookie_desc$1,
+  cookie_title: cookie_title$1,
   create_budget_first: create_budget_first$1,
   cta_about_btn: cta_about_btn$2,
   cta_about_desc: cta_about_desc$2,
@@ -7442,55 +8014,20 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   date_filter: date_filter$1,
   date_format: date_format$1,
   datepicker_today: datepicker_today$1,
-  deepwork_cta_btn: deepwork_cta_btn$1,
-  deepwork_cta_desc: deepwork_cta_desc$1,
-  deepwork_cta_note: deepwork_cta_note$1,
-  deepwork_cta_title: deepwork_cta_title$1,
-  deepwork_extra_1_desc: deepwork_extra_1_desc$1,
-  deepwork_extra_1_title: deepwork_extra_1_title$1,
-  deepwork_extra_2_desc: deepwork_extra_2_desc$1,
-  deepwork_extra_2_title: deepwork_extra_2_title$1,
-  deepwork_faq_a1: deepwork_faq_a1$1,
-  deepwork_faq_a2: deepwork_faq_a2$1,
-  deepwork_faq_a3: deepwork_faq_a3$1,
-  deepwork_faq_q1: deepwork_faq_q1$1,
-  deepwork_faq_q2: deepwork_faq_q2$1,
-  deepwork_faq_q3: deepwork_faq_q3$1,
-  deepwork_faq_title: deepwork_faq_title$1,
-  deepwork_feat_1_desc: deepwork_feat_1_desc$1,
-  deepwork_feat_1_title: deepwork_feat_1_title$1,
-  deepwork_feat_2_desc: deepwork_feat_2_desc$1,
-  deepwork_feat_2_title: deepwork_feat_2_title$1,
-  deepwork_feat_title: deepwork_feat_title$1,
-  deepwork_hero_badge: deepwork_hero_badge$1,
-  deepwork_hero_cta: deepwork_hero_cta$1,
-  deepwork_hero_desc: deepwork_hero_desc$1,
-  deepwork_hero_title_1: deepwork_hero_title_1$1,
-  deepwork_hero_title_2: deepwork_hero_title_2$1,
-  deepwork_meta_desc: deepwork_meta_desc$1,
-  deepwork_meta_og_desc: deepwork_meta_og_desc$1,
-  deepwork_meta_og_title: deepwork_meta_og_title$1,
-  deepwork_meta_title: deepwork_meta_title$1,
-  deepwork_mockup_desc: deepwork_mockup_desc$1,
-  deepwork_mockup_title: deepwork_mockup_title$1,
-  deepwork_prob_1_desc: deepwork_prob_1_desc$1,
-  deepwork_prob_1_title: deepwork_prob_1_title$1,
-  deepwork_prob_2_desc: deepwork_prob_2_desc$1,
-  deepwork_prob_2_title: deepwork_prob_2_title$1,
-  deepwork_prob_3_desc: deepwork_prob_3_desc$1,
-  deepwork_prob_3_title: deepwork_prob_3_title$1,
-  deepwork_prob_desc: deepwork_prob_desc$1,
-  deepwork_prob_title: deepwork_prob_title$1,
-  deepwork_science_badge: deepwork_science_badge$1,
-  deepwork_science_desc: deepwork_science_desc$1,
-  deepwork_science_title: deepwork_science_title$1,
-  deepwork_sol_1_desc: deepwork_sol_1_desc$1,
-  deepwork_sol_1_title: deepwork_sol_1_title$1,
-  deepwork_sol_2_desc: deepwork_sol_2_desc$1,
-  deepwork_sol_2_title: deepwork_sol_2_title$1,
-  deepwork_sol_3_desc: deepwork_sol_3_desc$1,
-  deepwork_sol_3_title: deepwork_sol_3_title$1,
-  deepwork_sol_title: deepwork_sol_title$1,
+  deep_breadcrumb: deep_breadcrumb$1,
+  deep_extra_1_desc: deep_extra_1_desc$1,
+  deep_extra_1_title: deep_extra_1_title$1,
+  deep_meta_desc: deep_meta_desc$1,
+  deep_meta_og_desc: deep_meta_og_desc$1,
+  deep_meta_og_title: deep_meta_og_title$1,
+  deep_meta_title: deep_meta_title$1,
+  deep_mockup_focus_label: deep_mockup_focus_label$1,
+  deep_mockup_session_sub: deep_mockup_session_sub$1,
+  deep_mockup_session_title: deep_mockup_session_title$1,
+  deep_science_factor_1_title: deep_science_factor_1_title$1,
+  deep_science_factor_2_title: deep_science_factor_2_title$1,
+  deep_science_factor_3_title: deep_science_factor_3_title$1,
+  deep_science_factor_4_title: deep_science_factor_4_title$1,
   default: en,
   default_activity_name: default_activity_name$1,
   delete_account_btn: delete_account_btn$1,
@@ -7511,15 +8048,34 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   dev_desc: dev_desc$2,
   dev_name: dev_name$2,
   dev_role: dev_role$2,
+  eco_badge: eco_badge$2,
   eco_coming_soon: eco_coming_soon$2,
+  eco_daily_desc: eco_daily_desc$2,
+  eco_daily_title: eco_daily_title$2,
+  eco_desc: eco_desc$2,
+  eco_finance_desc: eco_finance_desc$2,
+  eco_finance_title: eco_finance_title$2,
+  eco_goal_desc: eco_goal_desc$2,
+  eco_goal_title: eco_goal_title$2,
+  eco_habit_desc: eco_habit_desc$2,
+  eco_habit_title: eco_habit_title$2,
+  eco_job_desc: eco_job_desc$2,
+  eco_job_title: eco_job_title$2,
+  eco_journal_desc: eco_journal_desc$2,
+  eco_journal_title: eco_journal_title$2,
+  eco_title: eco_title$2,
+  ecosystem_brain_desc: ecosystem_brain_desc$1,
+  ecosystem_brain_title: ecosystem_brain_title$1,
+  ecosystem_calendar_desc: ecosystem_calendar_desc$1,
   ecosystem_calendar_title: ecosystem_calendar_title$1,
+  ecosystem_career_desc: ecosystem_career_desc$1,
+  ecosystem_career_title: ecosystem_career_title$1,
+  ecosystem_finance_desc: ecosystem_finance_desc$1,
   ecosystem_finance_title: ecosystem_finance_title$1,
-  ecosystem_goal_title: ecosystem_goal_title$1,
-  ecosystem_habit_title: ecosystem_habit_title$1,
-  ecosystem_job_title: ecosystem_job_title$1,
-  ecosystem_journal_title: ecosystem_journal_title$1,
-  ecosystem_notes_title: ecosystem_notes_title$1,
-  ecosystem_planner_title: ecosystem_planner_title$1,
+  ecosystem_growth_desc: ecosystem_growth_desc$1,
+  ecosystem_growth_title: ecosystem_growth_title$1,
+  ecosystem_mental_desc: ecosystem_mental_desc$1,
+  ecosystem_mental_title: ecosystem_mental_title$1,
   edit: edit$1,
   edit_budget: edit_budget$1,
   edit_profile: edit_profile$1,
@@ -7551,15 +8107,46 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   faq_q4: faq_q4$1,
   faq_q5: faq_q5$1,
   faq_title: faq_title$2,
+  feat_ai_audit: feat_ai_audit$1,
   feat_ai_scheduling: feat_ai_scheduling$1,
+  feat_ai_stacking: feat_ai_stacking$1,
+  feat_budgeting: feat_budgeting$1,
   feat_calendar_timeline: feat_calendar_timeline$1,
   feat_data_export: feat_data_export$1,
+  feat_detailed_analytics: feat_detailed_analytics$1,
+  feat_early_beta: feat_early_beta$1,
+  feat_energy_scheduling,
+  feat_finance_entry: feat_finance_entry$1,
   feat_focus_timer: feat_focus_timer$1,
+  feat_goal_limit: feat_goal_limit$1,
+  feat_goal_limit_val_l1: feat_goal_limit_val_l1$1,
+  feat_goal_limit_val_l2: feat_goal_limit_val_l2$1,
   feat_habit_freeze: feat_habit_freeze$1,
+  feat_habit_limit: feat_habit_limit$1,
+  feat_habit_limit_val_l1: feat_habit_limit_val_l1$1,
+  feat_habit_limit_val_l2: feat_habit_limit_val_l2$1,
+  feat_job_limit: feat_job_limit$1,
+  feat_job_limit_val_l1: feat_job_limit_val_l1$1,
+  feat_job_limit_val_l2: feat_job_limit_val_l2$1,
   feat_journal_lock: feat_journal_lock$1,
+  feat_journal_type: feat_journal_type$1,
+  feat_journal_type_val_l1: feat_journal_type_val_l1$1,
+  feat_journal_type_val_l2: feat_journal_type_val_l2$1,
   feat_kanban_board: feat_kanban_board$1,
   feat_multi_currency: feat_multi_currency$1,
+  feat_net_worth: feat_net_worth$1,
+  feat_planner_view: feat_planner_view$1,
+  feat_planner_view_val_l1: feat_planner_view_val_l1$1,
+  feat_planner_view_val_l2: feat_planner_view_val_l2$1,
+  feat_receipt_scanning: feat_receipt_scanning$1,
+  feat_recurring_tasks: feat_recurring_tasks$1,
+  feat_resume_ai: feat_resume_ai$1,
+  feat_sentiment_ai: feat_sentiment_ai$1,
   feat_shared_wallet: feat_shared_wallet$1,
+  feat_support_priority,
+  feat_val_advanced: feat_val_advanced$1,
+  feat_val_basic: feat_val_basic$1,
+  feat_val_predictive: feat_val_predictive$1,
   feat_vision_board: feat_vision_board$1,
   finance_ai_promo_badge: finance_ai_promo_badge$1,
   finance_ai_promo_btn: finance_ai_promo_btn$1,
@@ -7840,19 +8427,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   footer_privacy: footer_privacy$1,
   footer_rights: footer_rights$1,
   footer_terms: footer_terms$1,
-  freelance_bento_1_desc: freelance_bento_1_desc$1,
-  freelance_bento_1_title: freelance_bento_1_title$1,
-  freelance_bento_2_desc: freelance_bento_2_desc$1,
-  freelance_bento_2_title: freelance_bento_2_title$1,
-  freelance_bento_3_desc: freelance_bento_3_desc$1,
-  freelance_bento_3_title: freelance_bento_3_title$1,
-  freelance_bento_4_desc: freelance_bento_4_desc$1,
-  freelance_bento_4_title: freelance_bento_4_title$1,
-  freelance_bento_desc: freelance_bento_desc$1,
-  freelance_bento_title: freelance_bento_title$1,
   freelance_cta_btn: freelance_cta_btn$1,
   freelance_cta_desc: freelance_cta_desc$1,
-  freelance_cta_note: freelance_cta_note$1,
   freelance_cta_title: freelance_cta_title$1,
   freelance_extra_1_desc: freelance_extra_1_desc$1,
   freelance_extra_1_title: freelance_extra_1_title$1,
@@ -7866,23 +8442,23 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   freelance_faq_q3: freelance_faq_q3$1,
   freelance_faq_title: freelance_faq_title$1,
   freelance_feat_1_desc: freelance_feat_1_desc$1,
-  freelance_feat_1_point_1: freelance_feat_1_point_1$1,
-  freelance_feat_1_point_2: freelance_feat_1_point_2$1,
   freelance_feat_1_title: freelance_feat_1_title$1,
   freelance_feat_2_desc: freelance_feat_2_desc$1,
-  freelance_feat_2_point_1: freelance_feat_2_point_1$1,
-  freelance_feat_2_point_2: freelance_feat_2_point_2$1,
   freelance_feat_2_title: freelance_feat_2_title$1,
+  freelance_feat_title: freelance_feat_title$1,
   freelance_hero_badge: freelance_hero_badge$1,
-  freelance_hero_cta_1: freelance_hero_cta_1$1,
+  freelance_hero_cta: freelance_hero_cta$1,
   freelance_hero_desc: freelance_hero_desc$1,
-  freelance_hero_social_proof: freelance_hero_social_proof$1,
   freelance_hero_title_1: freelance_hero_title_1$1,
   freelance_hero_title_2: freelance_hero_title_2$1,
   freelance_meta_desc: freelance_meta_desc$1,
   freelance_meta_og_desc: freelance_meta_og_desc$1,
   freelance_meta_og_title: freelance_meta_og_title$1,
   freelance_meta_title: freelance_meta_title$1,
+  freelance_mockup_client: freelance_mockup_client$1,
+  freelance_mockup_project: freelance_mockup_project$1,
+  freelance_mockup_project_sub: freelance_mockup_project_sub$1,
+  freelance_mockup_revenue: freelance_mockup_revenue$1,
   freelance_prob_1_desc: freelance_prob_1_desc$1,
   freelance_prob_1_title: freelance_prob_1_title$1,
   freelance_prob_2_desc: freelance_prob_2_desc$1,
@@ -7894,6 +8470,14 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   freelance_science_badge: freelance_science_badge$1,
   freelance_science_desc: freelance_science_desc$1,
   freelance_science_title: freelance_science_title$1,
+  freelance_sol_desc: freelance_sol_desc$1,
+  freelance_sol_step_1_desc: freelance_sol_step_1_desc$1,
+  freelance_sol_step_1_title: freelance_sol_step_1_title$1,
+  freelance_sol_step_2_desc: freelance_sol_step_2_desc$1,
+  freelance_sol_step_2_title: freelance_sol_step_2_title$1,
+  freelance_sol_step_3_desc: freelance_sol_step_3_desc$1,
+  freelance_sol_step_3_title: freelance_sol_step_3_title$1,
+  freelance_sol_title: freelance_sol_title$1,
   fric_app_1: fric_app_1$1,
   fric_app_2: fric_app_2$1,
   fric_app_3: fric_app_3$1,
@@ -8082,24 +8666,15 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   greet_morning: greet_morning$1,
   greet_night: greet_night$1,
   group_calendar: group_calendar$1,
+  group_finance: group_finance$1,
+  group_goals: group_goals$1,
+  group_habits: group_habits$1,
+  group_jobs: group_jobs$1,
+  group_journal: group_journal$1,
+  group_planner: group_planner$1,
+  group_support: group_support$1,
   growth: growth$1,
-  growth_bento_1_desc: growth_bento_1_desc$1,
-  growth_bento_1_title: growth_bento_1_title$1,
-  growth_bento_2_desc: growth_bento_2_desc$1,
-  growth_bento_2_title: growth_bento_2_title$1,
-  growth_bento_3_desc: growth_bento_3_desc$1,
-  growth_bento_3_title: growth_bento_3_title$1,
-  growth_bento_4_desc: growth_bento_4_desc$1,
-  growth_bento_4_title: growth_bento_4_title$1,
-  growth_bento_5_desc: growth_bento_5_desc$1,
-  growth_bento_5_title: growth_bento_5_title$1,
-  growth_bento_desc: growth_bento_desc$1,
-  growth_bento_title: growth_bento_title$1,
-  growth_card_reading_goal: growth_card_reading_goal$1,
-  growth_card_reflect_desc: growth_card_reflect_desc$1,
-  growth_card_reflect_title: growth_card_reflect_title$1,
-  growth_card_run_desc: growth_card_run_desc$1,
-  growth_card_run_title: growth_card_run_title$1,
+  growth_breadcrumb: growth_breadcrumb$1,
   growth_cta_btn: growth_cta_btn$1,
   growth_cta_desc: growth_cta_desc$1,
   growth_cta_note: growth_cta_note$1,
@@ -8107,6 +8682,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   growth_extra_1_desc: growth_extra_1_desc$1,
   growth_extra_1_title: growth_extra_1_title$1,
   growth_extra_2_desc: growth_extra_2_desc$1,
+  growth_extra_2_stat_label: growth_extra_2_stat_label$1,
+  growth_extra_2_stat_sub: growth_extra_2_stat_sub$1,
   growth_extra_2_title: growth_extra_2_title$1,
   growth_faq_a1: growth_faq_a1$1,
   growth_faq_a2: growth_faq_a2$1,
@@ -8123,20 +8700,11 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   growth_feat_2_quote_body: growth_feat_2_quote_body$1,
   growth_feat_2_quote_title: growth_feat_2_quote_title$1,
   growth_feat_2_title: growth_feat_2_title$1,
-  growth_footer_cta: growth_footer_cta$1,
-  growth_footer_desc: growth_footer_desc$1,
-  growth_footer_title: growth_footer_title$1,
-  growth_habit_desc: growth_habit_desc$1,
-  growth_habit_feat_1: growth_habit_feat_1$1,
-  growth_habit_feat_2: growth_habit_feat_2$1,
   growth_habit_streak: growth_habit_streak$1,
   growth_habit_streak_desc: growth_habit_streak_desc$1,
-  growth_habit_title: growth_habit_title$1,
   growth_hero_badge: growth_hero_badge$1,
-  growth_hero_cta: growth_hero_cta$1,
   growth_hero_cta_1: growth_hero_cta_1$1,
   growth_hero_desc: growth_hero_desc$1,
-  growth_hero_social: growth_hero_social$1,
   growth_hero_social_proof: growth_hero_social_proof$1,
   growth_hero_title_1: growth_hero_title_1$1,
   growth_hero_title_2: growth_hero_title_2$1,
@@ -8144,25 +8712,20 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   growth_meta_og_desc: growth_meta_og_desc$1,
   growth_meta_og_title: growth_meta_og_title$1,
   growth_meta_title: growth_meta_title$1,
-  growth_prob_desc_dark: growth_prob_desc_dark$1,
-  growth_prob_desc_light: growth_prob_desc_light$1,
-  growth_prob_point_1: growth_prob_point_1$1,
-  growth_prob_point_2: growth_prob_point_2$1,
-  growth_prob_point_3: growth_prob_point_3$1,
-  growth_prob_point_4: growth_prob_point_4$1,
-  growth_prob_title_dark: growth_prob_title_dark$1,
-  growth_prob_title_light: growth_prob_title_light$1,
+  growth_mockup_goal_label: growth_mockup_goal_label$1,
+  growth_mockup_habit_desc: growth_mockup_habit_desc$1,
+  growth_mockup_habit_title: growth_mockup_habit_title$1,
+  growth_mockup_reflection_desc: growth_mockup_reflection_desc$1,
+  growth_mockup_reflection_title: growth_mockup_reflection_title$1,
+  growth_mockup_streak_desc: growth_mockup_streak_desc$1,
+  growth_mockup_streak_title: growth_mockup_streak_title$1,
   growth_science_badge: growth_science_badge$1,
   growth_science_desc: growth_science_desc$1,
-  growth_science_tag_1: growth_science_tag_1$1,
-  growth_science_tag_2: growth_science_tag_2$1,
-  growth_science_tag_3: growth_science_tag_3$1,
+  growth_science_point_1: growth_science_point_1$1,
+  growth_science_point_2: growth_science_point_2$1,
+  growth_science_point_3: growth_science_point_3$1,
   growth_science_title: growth_science_title$1,
-  growth_zen_desc: growth_zen_desc$1,
-  growth_zen_entry: growth_zen_entry$1,
-  growth_zen_quote: growth_zen_quote$1,
-  growth_zen_subtext: growth_zen_subtext$1,
-  growth_zen_title: growth_zen_title$1,
+  growth_science_viz_aura: growth_science_viz_aura$1,
   gui_cert_desc: gui_cert_desc$1,
   gui_cert_title: gui_cert_title$1,
   gui_pb1: gui_pb1$1,
@@ -8863,6 +9426,76 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   meal_breakfast: meal_breakfast$1,
   meal_dinner: meal_dinner$1,
   meal_lunch: meal_lunch$1,
+  mental_breadcrumb: mental_breadcrumb$1,
+  mental_cta_btn: mental_cta_btn$1,
+  mental_cta_desc: mental_cta_desc$1,
+  mental_cta_title: mental_cta_title$1,
+  mental_extra_1_desc: mental_extra_1_desc$1,
+  mental_extra_1_label: mental_extra_1_label$1,
+  mental_extra_1_title: mental_extra_1_title$1,
+  mental_extra_2_desc: mental_extra_2_desc$1,
+  mental_extra_2_item_1: mental_extra_2_item_1$1,
+  mental_extra_2_item_2: mental_extra_2_item_2$1,
+  mental_extra_2_item_3: mental_extra_2_item_3$1,
+  mental_extra_2_title: mental_extra_2_title$1,
+  mental_faq_a1: mental_faq_a1$1,
+  mental_faq_a2: mental_faq_a2$1,
+  mental_faq_a3: mental_faq_a3$1,
+  mental_faq_q1: mental_faq_q1$1,
+  mental_faq_q2: mental_faq_q2$1,
+  mental_faq_q3: mental_faq_q3$1,
+  mental_faq_title: mental_faq_title$1,
+  mental_feat_1_desc: mental_feat_1_desc$1,
+  mental_feat_1_title: mental_feat_1_title$1,
+  mental_feat_2_desc: mental_feat_2_desc$1,
+  mental_feat_2_title: mental_feat_2_title$1,
+  mental_feat_title: mental_feat_title$1,
+  mental_hero_badge: mental_hero_badge$1,
+  mental_hero_cta: mental_hero_cta$1,
+  mental_hero_desc: mental_hero_desc$1,
+  mental_hero_title_1: mental_hero_title_1$1,
+  mental_hero_title_2: mental_hero_title_2$1,
+  mental_meta_desc: mental_meta_desc$1,
+  mental_meta_og_desc: mental_meta_og_desc$1,
+  mental_meta_og_title: mental_meta_og_title$1,
+  mental_meta_title: mental_meta_title$1,
+  mental_mockup_journal_badge: mental_mockup_journal_badge$1,
+  mental_mockup_journal_status: mental_mockup_journal_status$1,
+  mental_mockup_journal_text: mental_mockup_journal_text$1,
+  mental_mockup_quote: mental_mockup_quote$1,
+  mental_mockup_source: mental_mockup_source$1,
+  mental_mockup_task_1_sub: mental_mockup_task_1_sub$1,
+  mental_mockup_task_1_title: mental_mockup_task_1_title$1,
+  mental_mockup_task_2_sub: mental_mockup_task_2_sub$1,
+  mental_mockup_task_2_title: mental_mockup_task_2_title$1,
+  mental_mockup_task_3_sub: mental_mockup_task_3_sub$1,
+  mental_mockup_task_3_title: mental_mockup_task_3_title$1,
+  mental_prob_1_desc: mental_prob_1_desc$1,
+  mental_prob_1_title: mental_prob_1_title$1,
+  mental_prob_2_desc: mental_prob_2_desc$1,
+  mental_prob_2_title: mental_prob_2_title$1,
+  mental_prob_desc: mental_prob_desc$1,
+  mental_prob_title: mental_prob_title$1,
+  mental_science_badge: mental_science_badge$1,
+  mental_science_desc: mental_science_desc$1,
+  mental_science_process_1_title: mental_science_process_1_title$1,
+  mental_science_process_2_title: mental_science_process_2_title$1,
+  mental_science_process_3_title: mental_science_process_3_title$1,
+  mental_science_process_4_title: mental_science_process_4_title$1,
+  mental_science_title: mental_science_title$1,
+  mental_science_topic_1: mental_science_topic_1$1,
+  mental_science_topic_2: mental_science_topic_2$1,
+  mental_science_topic_3: mental_science_topic_3$1,
+  mental_science_topic_4: mental_science_topic_4$1,
+  mental_science_viz_label: mental_science_viz_label$1,
+  mental_sol_desc: mental_sol_desc$1,
+  mental_sol_step_1_desc: mental_sol_step_1_desc$1,
+  mental_sol_step_1_title: mental_sol_step_1_title$1,
+  mental_sol_step_2_desc: mental_sol_step_2_desc$1,
+  mental_sol_step_2_title: mental_sol_step_2_title$1,
+  mental_sol_step_3_desc: mental_sol_step_3_desc$1,
+  mental_sol_step_3_title: mental_sol_step_3_title$1,
+  mental_sol_title: mental_sol_title$1,
   mig_badge: mig_badge$1,
   mig_card_1: mig_card_1$1,
   mig_card_2: mig_card_2$1,
@@ -8930,6 +9563,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   more_upgrade_desc: more_upgrade_desc$1,
   more_upgrade_title: more_upgrade_title$1,
   most_wasteful: most_wasteful$1,
+  name,
   nav_about: nav_about$2,
   nav_active_account: nav_active_account$1,
   nav_avatar: nav_avatar$1,
@@ -8972,11 +9606,20 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   neural_coach_feat1: neural_coach_feat1$1,
   neural_coach_feat2: neural_coach_feat2$1,
   neural_coach_feat3: neural_coach_feat3$1,
+  neural_coach_msg1: neural_coach_msg1$1,
+  neural_coach_msg2: neural_coach_msg2$1,
+  neural_coach_msg3: neural_coach_msg3$1,
+  neural_coach_sender: neural_coach_sender$1,
   neural_coach_title: neural_coach_title$1,
+  neural_coach_user: neural_coach_user$1,
   neural_cta_btn: neural_cta_btn$1,
   neural_cta_desc: neural_cta_desc$1,
   neural_cta_note: neural_cta_note$1,
   neural_cta_title: neural_cta_title$1,
+  neural_gemini_feat1: neural_gemini_feat1$1,
+  neural_gemini_feat2: neural_gemini_feat2$1,
+  neural_gemini_feat3: neural_gemini_feat3$1,
+  neural_gemini_powered: neural_gemini_powered$1,
   neural_hero_badge: neural_hero_badge$1,
   neural_hero_cta_1: neural_hero_cta_1$1,
   neural_hero_cta_2: neural_hero_cta_2$1,
@@ -9394,6 +10037,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   press_kit_mockups_title: press_kit_mockups_title$1,
   press_kit_subtitle: press_kit_subtitle$1,
   press_kit_title: press_kit_title$1,
+  pricing_ai_badge: pricing_ai_badge$1,
   pricing_ai_btn: pricing_ai_btn$1,
   pricing_ai_desc: pricing_ai_desc$1,
   pricing_ai_initial: pricing_ai_initial$1,
@@ -9405,6 +10049,15 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_bottom_cta_title: pricing_bottom_cta_title$1,
   pricing_compare_subtitle: pricing_compare_subtitle$1,
   pricing_compare_title: pricing_compare_title$1,
+  pricing_elite_card_status: pricing_elite_card_status$1,
+  pricing_elite_card_title: pricing_elite_card_title$1,
+  pricing_elite_feat1_desc: pricing_elite_feat1_desc$1,
+  pricing_elite_feat1_title: pricing_elite_feat1_title$1,
+  pricing_elite_feat2_desc: pricing_elite_feat2_desc$1,
+  pricing_elite_feat2_title: pricing_elite_feat2_title$1,
+  pricing_elite_feat3_desc: pricing_elite_feat3_desc$1,
+  pricing_elite_feat3_title: pricing_elite_feat3_title$1,
+  pricing_elite_title: pricing_elite_title$1,
   pricing_faq_1_a: pricing_faq_1_a$1,
   pricing_faq_1_q: pricing_faq_1_q$1,
   pricing_faq_2_a: pricing_faq_2_a$1,
@@ -9430,6 +10083,22 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_free_btn: pricing_free_btn$1,
   pricing_free_desc: pricing_free_desc$1,
   pricing_free_name: pricing_free_name$1,
+  pricing_l1_desc: pricing_l1_desc$1,
+  pricing_l1_initial: pricing_l1_initial$1,
+  pricing_l1_name: pricing_l1_name$1,
+  pricing_l2_desc: pricing_l2_desc$1,
+  pricing_l2_initial: pricing_l2_initial$1,
+  pricing_l2_name: pricing_l2_name$1,
+  pricing_l2_recurring: pricing_l2_recurring$1,
+  pricing_l3_desc: pricing_l3_desc$1,
+  pricing_l3_initial: pricing_l3_initial$1,
+  pricing_l3_name: pricing_l3_name$1,
+  pricing_l3_recurring: pricing_l3_recurring$1,
+  pricing_l4_badge: pricing_l4_badge$1,
+  pricing_l4_desc: pricing_l4_desc$1,
+  pricing_l4_initial: pricing_l4_initial$1,
+  pricing_l4_name: pricing_l4_name$1,
+  pricing_l4_recurring: pricing_l4_recurring$1,
   pricing_life_btn: pricing_life_btn$1,
   pricing_life_desc: pricing_life_desc$1,
   pricing_life_name: pricing_life_name$1,
@@ -9481,6 +10150,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_cta_title: privacy_cta_title$1,
   privacy_doc_intro: privacy_doc_intro$1,
   privacy_download_pdf: privacy_download_pdf$1,
+  privacy_export_desc: privacy_export_desc$1,
+  privacy_export_point_1: privacy_export_point_1$1,
+  privacy_export_point_2: privacy_export_point_2$1,
+  privacy_export_title: privacy_export_title$1,
   privacy_faq_1_a: privacy_faq_1_a$1,
   privacy_faq_1_q: privacy_faq_1_q$1,
   privacy_faq_2_a: privacy_faq_2_a$1,
@@ -9488,6 +10161,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_faq_3_a: privacy_faq_3_a$1,
   privacy_faq_3_q: privacy_faq_3_q$1,
   privacy_faq_title: privacy_faq_title$1,
+  privacy_finance_note_desc: privacy_finance_note_desc$1,
+  privacy_finance_note_title: privacy_finance_note_title$1,
   privacy_h2_collection: privacy_h2_collection$1,
   privacy_h2_contact: privacy_h2_contact$1,
   privacy_h2_rights: privacy_h2_rights$1,
@@ -9500,12 +10175,19 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_li_collection_1_desc: privacy_li_collection_1_desc$1,
   privacy_li_collection_1_title: privacy_li_collection_1_title$1,
   privacy_li_collection_2_desc: privacy_li_collection_2_desc$1,
+  privacy_li_collection_2_strong: privacy_li_collection_2_strong$1,
   privacy_li_collection_2_title: privacy_li_collection_2_title$1,
   privacy_li_collection_3_desc: privacy_li_collection_3_desc$1,
   privacy_li_collection_3_title: privacy_li_collection_3_title$1,
+  privacy_li_rights_1: privacy_li_rights_1$1,
+  privacy_li_rights_2: privacy_li_rights_2$1,
+  privacy_li_rights_3: privacy_li_rights_3$1,
   privacy_li_usage_1: privacy_li_usage_1$1,
   privacy_li_usage_2: privacy_li_usage_2$1,
   privacy_li_usage_3: privacy_li_usage_3$1,
+  privacy_locked_desc: privacy_locked_desc$1,
+  privacy_locked_label: privacy_locked_label$1,
+  privacy_locked_title: privacy_locked_title$1,
   privacy_meta_desc: privacy_meta_desc$1,
   privacy_meta_og_desc: privacy_meta_og_desc$1,
   privacy_meta_og_title: privacy_meta_og_title$1,
@@ -9525,6 +10207,14 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_p_thirdparty: privacy_p_thirdparty$1,
   privacy_p_usage: privacy_p_usage$1,
   privacy_status: privacy_status$1,
+  privacy_status_access: privacy_status_access$1,
+  privacy_status_access_val: privacy_status_access_val$1,
+  privacy_status_protection: privacy_status_protection$1,
+  privacy_status_protection_val: privacy_status_protection_val$1,
+  privacy_status_protocol: privacy_status_protocol$1,
+  privacy_status_protocol_val: privacy_status_protocol_val$1,
+  privacy_status_tracking: privacy_status_tracking$1,
+  privacy_status_tracking_val: privacy_status_tracking_val$1,
   privacy_subtitle: privacy_subtitle$1,
   privacy_title: privacy_title$1,
   privacy_title_1: privacy_title_1$1,
@@ -9539,6 +10229,13 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_tldr_4_title: privacy_tldr_4_title$1,
   privacy_tldr_title: privacy_tldr_title$1,
   privacy_toc_title: privacy_toc_title$1,
+  prob_1_desc: prob_1_desc$2,
+  prob_1_point_1: prob_1_point_1$2,
+  prob_1_point_2: prob_1_point_2$2,
+  prob_1_title: prob_1_title$2,
+  prob_2_desc: prob_2_desc$2,
+  prob_2_solution: prob_2_solution$2,
+  prob_2_title: prob_2_title$2,
   profile_avatar_format: profile_avatar_format$1,
   profile_avatar_remove: profile_avatar_remove$1,
   profile_avatar_title: profile_avatar_title$1,
@@ -9550,9 +10247,11 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   profile_placeholder_email: profile_placeholder_email$1,
   profile_placeholder_name: profile_placeholder_name$1,
   profile_settings: profile_settings$1,
+  quantum_feature: quantum_feature$1,
   quit: quit$1,
   record_transaction: record_transaction$1,
   refund_badge: refund_badge$1,
+  refund_contact_label: refund_contact_label$1,
   refund_cta_btn: refund_cta_btn$1,
   refund_cta_desc: refund_cta_desc$1,
   refund_cta_title: refund_cta_title$1,
@@ -9569,6 +10268,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   refund_li_process_1: refund_li_process_1$1,
   refund_li_process_2: refund_li_process_2$1,
   refund_li_process_3: refund_li_process_3$1,
+  refund_merchant_protection_desc: refund_merchant_protection_desc$1,
+  refund_merchant_protection_title: refund_merchant_protection_title$1,
   refund_meta_desc: refund_meta_desc$1,
   refund_meta_og_desc: refund_meta_og_desc$1,
   refund_meta_og_title: refund_meta_og_title$1,
@@ -9585,6 +10286,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   refund_subtitle: refund_subtitle$1,
   refund_title_1: refund_title_1$1,
   refund_title_2: refund_title_2$1,
+  refund_user_responsibility_title: refund_user_responsibility_title$1,
   reset_btn: reset_btn$2,
   reset_desc: reset_desc$2,
   reset_label_confirm: reset_label_confirm$2,
@@ -9600,7 +10302,21 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   save_photo: save_photo$1,
   saved: saved$1,
   saving: saving$1,
+  schema_solution_atomic_description: schema_solution_atomic_description$1,
+  schema_solution_atomic_name: schema_solution_atomic_name$1,
+  schema_solution_deep_work_description: schema_solution_deep_work_description$1,
+  schema_solution_deep_work_name: schema_solution_deep_work_name$1,
+  schema_solution_growth_description: schema_solution_growth_description$1,
+  schema_solution_growth_name: schema_solution_growth_name$1,
+  schema_solution_mental_clarity_description: schema_solution_mental_clarity_description$1,
+  schema_solution_mental_clarity_name: schema_solution_mental_clarity_name$1,
+  schema_solution_student_audience: schema_solution_student_audience$1,
+  schema_student_description: schema_student_description$1,
+  schema_student_name: schema_student_name$1,
   search_result: search_result$1,
+  sec_alert_btn: sec_alert_btn$1,
+  sec_alert_desc: sec_alert_desc$1,
+  sec_alert_title: sec_alert_title$1,
   sec_badge: sec_badge$1,
   sec_cta_btn: sec_cta_btn$1,
   sec_cta_desc: sec_cta_desc$1,
@@ -9623,6 +10339,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   sec_li_infra_2_title: sec_li_infra_2_title$1,
   sec_li_infra_3_desc: sec_li_infra_3_desc$1,
   sec_li_infra_3_title: sec_li_infra_3_title$1,
+  sec_locked_label: sec_locked_label$1,
   sec_meta_desc: sec_meta_desc$1,
   sec_meta_og_desc: sec_meta_og_desc$1,
   sec_meta_og_title: sec_meta_og_title$1,
@@ -9714,6 +10431,51 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   sidebar_tasks_done: sidebar_tasks_done$1,
   sidebar_tasks_unit: sidebar_tasks_unit$1,
   sidebar_water_title: sidebar_water_title$1,
+  sol_badge: sol_badge$2,
+  sol_card_1_desc: sol_card_1_desc$2,
+  sol_card_1_title: sol_card_1_title$2,
+  sol_card_2_desc: sol_card_2_desc$2,
+  sol_card_2_title: sol_card_2_title$2,
+  sol_card_3_desc: sol_card_3_desc$2,
+  sol_card_3_title: sol_card_3_title$2,
+  sol_title: sol_title$2,
+  solve_atomic_cta_btn: solve_atomic_cta_btn$1,
+  solve_atomic_cta_desc: solve_atomic_cta_desc$1,
+  solve_atomic_cta_title: solve_atomic_cta_title$1,
+  solve_atomic_extra_2_desc: solve_atomic_extra_2_desc$1,
+  solve_atomic_extra_2_title: solve_atomic_extra_2_title$1,
+  solve_atomic_faq_a1: solve_atomic_faq_a1$1,
+  solve_atomic_faq_a2: solve_atomic_faq_a2$1,
+  solve_atomic_faq_a3: solve_atomic_faq_a3$1,
+  solve_atomic_faq_q1: solve_atomic_faq_q1$1,
+  solve_atomic_faq_q2: solve_atomic_faq_q2$1,
+  solve_atomic_faq_title: solve_atomic_faq_title$1,
+  solve_atomic_feat_1_desc: solve_atomic_feat_1_desc$1,
+  solve_atomic_feat_1_title: solve_atomic_feat_1_title$1,
+  solve_atomic_feat_2_desc: solve_atomic_feat_2_desc$1,
+  solve_atomic_feat_2_title: solve_atomic_feat_2_title$1,
+  solve_atomic_feat_title: solve_atomic_feat_title$1,
+  solve_atomic_hero_badge: solve_atomic_hero_badge$1,
+  solve_atomic_hero_cta: solve_atomic_hero_cta$1,
+  solve_atomic_hero_desc: solve_atomic_hero_desc$1,
+  solve_atomic_hero_title_1: solve_atomic_hero_title_1$1,
+  solve_atomic_hero_title_2: solve_atomic_hero_title_2$1,
+  solve_atomic_prob_1_desc: solve_atomic_prob_1_desc$1,
+  solve_atomic_prob_1_title: solve_atomic_prob_1_title$1,
+  solve_atomic_prob_2_desc: solve_atomic_prob_2_desc$1,
+  solve_atomic_prob_2_title: solve_atomic_prob_2_title$1,
+  solve_atomic_prob_desc: solve_atomic_prob_desc$1,
+  solve_atomic_prob_title: solve_atomic_prob_title$1,
+  solve_atomic_science_badge: solve_atomic_science_badge$1,
+  solve_atomic_science_title: solve_atomic_science_title$1,
+  solve_atomic_sol_desc: solve_atomic_sol_desc$1,
+  solve_atomic_sol_step_1_desc: solve_atomic_sol_step_1_desc$1,
+  solve_atomic_sol_step_1_title: solve_atomic_sol_step_1_title$1,
+  solve_atomic_sol_step_2_desc: solve_atomic_sol_step_2_desc$1,
+  solve_atomic_sol_step_2_title: solve_atomic_sol_step_2_title$1,
+  solve_atomic_sol_step_3_desc: solve_atomic_sol_step_3_desc$1,
+  solve_atomic_sol_step_3_title: solve_atomic_sol_step_3_title$1,
+  solve_atomic_sol_title: solve_atomic_sol_title$1,
   solve_career_cta_btn: solve_career_cta_btn$1,
   solve_career_cta_desc: solve_career_cta_desc$1,
   solve_career_cta_title: solve_career_cta_title$1,
@@ -9765,6 +10527,44 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_career_sol_step_3_desc: solve_career_sol_step_3_desc$1,
   solve_career_sol_step_3_title: solve_career_sol_step_3_title$1,
   solve_career_sol_title: solve_career_sol_title$1,
+  solve_deep_cta_btn: solve_deep_cta_btn$1,
+  solve_deep_cta_desc: solve_deep_cta_desc$1,
+  solve_deep_cta_title: solve_deep_cta_title$1,
+  solve_deep_extra_2_desc: solve_deep_extra_2_desc$1,
+  solve_deep_extra_2_title: solve_deep_extra_2_title$1,
+  solve_deep_faq_a1: solve_deep_faq_a1$1,
+  solve_deep_faq_a2: solve_deep_faq_a2$1,
+  solve_deep_faq_a3: solve_deep_faq_a3$1,
+  solve_deep_faq_q1: solve_deep_faq_q1$1,
+  solve_deep_faq_q2: solve_deep_faq_q2$1,
+  solve_deep_faq_title: solve_deep_faq_title$1,
+  solve_deep_feat_1_desc: solve_deep_feat_1_desc$1,
+  solve_deep_feat_1_title: solve_deep_feat_1_title$1,
+  solve_deep_feat_2_desc: solve_deep_feat_2_desc$1,
+  solve_deep_feat_2_title: solve_deep_feat_2_title$1,
+  solve_deep_feat_title: solve_deep_feat_title$1,
+  solve_deep_hero_badge: solve_deep_hero_badge$1,
+  solve_deep_hero_cta: solve_deep_hero_cta$1,
+  solve_deep_hero_desc: solve_deep_hero_desc$1,
+  solve_deep_hero_title_1: solve_deep_hero_title_1$1,
+  solve_deep_hero_title_2: solve_deep_hero_title_2$1,
+  solve_deep_prob_1_desc: solve_deep_prob_1_desc$1,
+  solve_deep_prob_1_title: solve_deep_prob_1_title$1,
+  solve_deep_prob_2_desc: solve_deep_prob_2_desc$1,
+  solve_deep_prob_2_title: solve_deep_prob_2_title$1,
+  solve_deep_prob_desc: solve_deep_prob_desc$1,
+  solve_deep_prob_title: solve_deep_prob_title$1,
+  solve_deep_science_badge: solve_deep_science_badge$1,
+  solve_deep_science_desc: solve_deep_science_desc$1,
+  solve_deep_science_title: solve_deep_science_title$1,
+  solve_deep_sol_desc: solve_deep_sol_desc$1,
+  solve_deep_sol_step_1_desc: solve_deep_sol_step_1_desc$1,
+  solve_deep_sol_step_1_title: solve_deep_sol_step_1_title$1,
+  solve_deep_sol_step_2_desc: solve_deep_sol_step_2_desc$1,
+  solve_deep_sol_step_2_title: solve_deep_sol_step_2_title$1,
+  solve_deep_sol_step_3_desc: solve_deep_sol_step_3_desc$1,
+  solve_deep_sol_step_3_title: solve_deep_sol_step_3_title$1,
+  solve_deep_sol_title: solve_deep_sol_title$1,
   solve_finance_cta_btn: solve_finance_cta_btn$1,
   solve_finance_cta_desc: solve_finance_cta_desc$1,
   solve_finance_cta_title: solve_finance_cta_title$1,
@@ -9779,6 +10579,14 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_faq_q2: solve_finance_faq_q2$1,
   solve_finance_faq_q3: solve_finance_faq_q3$1,
   solve_finance_faq_title: solve_finance_faq_title$1,
+  solve_finance_feat_1_desc: solve_finance_feat_1_desc$1,
+  solve_finance_feat_1_title: solve_finance_feat_1_title$1,
+  solve_finance_feat_2_desc: solve_finance_feat_2_desc$1,
+  solve_finance_feat_2_title: solve_finance_feat_2_title$1,
+  solve_finance_feat_3_desc: solve_finance_feat_3_desc$1,
+  solve_finance_feat_3_title: solve_finance_feat_3_title$1,
+  solve_finance_feat_desc: solve_finance_feat_desc$1,
+  solve_finance_feat_title: solve_finance_feat_title$1,
   solve_finance_hero_badge: solve_finance_hero_badge$1,
   solve_finance_hero_cta: solve_finance_hero_cta$1,
   solve_finance_hero_desc: solve_finance_hero_desc$1,
@@ -9789,29 +10597,24 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_meta_og_title: solve_finance_meta_og_title$1,
   solve_finance_meta_title: solve_finance_meta_title$1,
   solve_finance_prob_1_desc: solve_finance_prob_1_desc$1,
-  solve_finance_prob_1_point_1: solve_finance_prob_1_point_1$1,
-  solve_finance_prob_1_point_2: solve_finance_prob_1_point_2$1,
-  solve_finance_prob_1_point_3: solve_finance_prob_1_point_3$1,
   solve_finance_prob_1_title: solve_finance_prob_1_title$1,
   solve_finance_prob_2_desc: solve_finance_prob_2_desc$1,
-  solve_finance_prob_2_point_1: solve_finance_prob_2_point_1$1,
-  solve_finance_prob_2_point_2: solve_finance_prob_2_point_2$1,
-  solve_finance_prob_2_point_3: solve_finance_prob_2_point_3$1,
   solve_finance_prob_2_title: solve_finance_prob_2_title$1,
+  solve_finance_prob_3_desc: solve_finance_prob_3_desc$1,
+  solve_finance_prob_3_title: solve_finance_prob_3_title$1,
   solve_finance_prob_desc: solve_finance_prob_desc$1,
   solve_finance_prob_title: solve_finance_prob_title$1,
   solve_finance_science_badge: solve_finance_science_badge$1,
   solve_finance_science_desc: solve_finance_science_desc$1,
   solve_finance_science_title: solve_finance_science_title$1,
-  solve_finance_sol_feat_1_desc: solve_finance_sol_feat_1_desc$1,
-  solve_finance_sol_feat_1_title: solve_finance_sol_feat_1_title$1,
-  solve_finance_sol_feat_2_desc: solve_finance_sol_feat_2_desc$1,
-  solve_finance_sol_feat_2_title: solve_finance_sol_feat_2_title$1,
-  solve_finance_sol_feat_3_desc: solve_finance_sol_feat_3_desc$1,
-  solve_finance_sol_feat_3_title: solve_finance_sol_feat_3_title$1,
+  solve_finance_sol_desc: solve_finance_sol_desc$1,
+  solve_finance_sol_step_1_desc: solve_finance_sol_step_1_desc$1,
+  solve_finance_sol_step_1_title: solve_finance_sol_step_1_title$1,
+  solve_finance_sol_step_2_desc: solve_finance_sol_step_2_desc$1,
+  solve_finance_sol_step_2_title: solve_finance_sol_step_2_title$1,
+  solve_finance_sol_step_3_desc: solve_finance_sol_step_3_desc$1,
+  solve_finance_sol_step_3_title: solve_finance_sol_step_3_title$1,
   solve_finance_sol_title: solve_finance_sol_title$1,
-  solve_finance_syn_desc: solve_finance_syn_desc$1,
-  solve_finance_syn_title: solve_finance_syn_title$1,
   solve_mental_cta_btn: solve_mental_cta_btn$1,
   solve_mental_cta_desc: solve_mental_cta_desc$1,
   solve_mental_cta_title: solve_mental_cta_title$1,
@@ -9848,6 +10651,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_mental_prob_title: solve_mental_prob_title$1,
   solve_mental_science_badge: solve_mental_science_badge$1,
   solve_mental_science_desc: solve_mental_science_desc$1,
+  solve_mental_science_desc_alt: solve_mental_science_desc_alt$1,
   solve_mental_science_title: solve_mental_science_title$1,
   solve_mental_sol_desc: solve_mental_sol_desc$1,
   solve_mental_sol_step_1_desc: solve_mental_sol_step_1_desc$1,
@@ -9898,6 +10702,18 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   status_image_saved: status_image_saved$1,
   status_saved: status_saved$1,
   status_saving: status_saving$1,
+  sto_hof_1_desc: sto_hof_1_desc$1,
+  sto_hof_1_name: sto_hof_1_name$1,
+  sto_hof_1_title: sto_hof_1_title$1,
+  sto_hof_2_desc: sto_hof_2_desc$1,
+  sto_hof_2_name: sto_hof_2_name$1,
+  sto_hof_2_title: sto_hof_2_title$1,
+  sto_hof_3_desc: sto_hof_3_desc$1,
+  sto_hof_3_name: sto_hof_3_name$1,
+  sto_hof_3_title: sto_hof_3_title$1,
+  sto_hof_4_desc: sto_hof_4_desc$1,
+  sto_hof_4_name: sto_hof_4_name$1,
+  sto_hof_4_title: sto_hof_4_title$1,
   sto_hof_desc: sto_hof_desc$1,
   sto_hof_title: sto_hof_title$1,
   sto_int1: sto_int1$1,
@@ -9952,11 +10768,17 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_bento_title: student_bento_title$1,
   student_cta_btn: student_cta_btn$1,
   student_cta_desc: student_cta_desc$1,
-  student_cta_note: student_cta_note$1,
   student_cta_title: student_cta_title$1,
   student_extra_1_desc: student_extra_1_desc$1,
+  student_extra_1_step_1: student_extra_1_step_1$1,
+  student_extra_1_step_2: student_extra_1_step_2$1,
+  student_extra_1_step_3: student_extra_1_step_3$1,
   student_extra_1_title: student_extra_1_title$1,
   student_extra_2_desc: student_extra_2_desc$1,
+  student_extra_2_item_1: student_extra_2_item_1$1,
+  student_extra_2_item_2: student_extra_2_item_2$1,
+  student_extra_2_item_3: student_extra_2_item_3$1,
+  student_extra_2_item_4: student_extra_2_item_4$1,
   student_extra_2_title: student_extra_2_title$1,
   student_faq_a1: student_faq_a1$1,
   student_faq_a2: student_faq_a2$1,
@@ -9970,6 +10792,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_feat_1_point_2: student_feat_1_point_2$1,
   student_feat_1_title: student_feat_1_title$1,
   student_feat_1_visual_badge: student_feat_1_visual_badge$1,
+  student_feat_2_badge_1: student_feat_2_badge_1$1,
+  student_feat_2_badge_2: student_feat_2_badge_2$1,
   student_feat_2_desc: student_feat_2_desc$1,
   student_feat_2_point_1: student_feat_2_point_1$1,
   student_feat_2_point_2: student_feat_2_point_2$1,
@@ -9984,6 +10808,14 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_meta_og_desc: student_meta_og_desc$1,
   student_meta_og_title: student_meta_og_title$1,
   student_meta_title: student_meta_title$1,
+  student_mockup_budget_label: student_mockup_budget_label$1,
+  student_mockup_budget_status: student_mockup_budget_status$1,
+  student_mockup_schedule_item_1: student_mockup_schedule_item_1$1,
+  student_mockup_schedule_item_2: student_mockup_schedule_item_2$1,
+  student_mockup_schedule_label: student_mockup_schedule_label$1,
+  student_mockup_task_badge: student_mockup_task_badge$1,
+  student_mockup_task_title: student_mockup_task_title$1,
+  student_mockup_title: student_mockup_title$1,
   student_prob_1_desc: student_prob_1_desc$1,
   student_prob_1_title: student_prob_1_title$1,
   student_prob_2_desc: student_prob_2_desc$1,
@@ -9995,6 +10827,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_science_badge: student_science_badge$1,
   student_science_desc: student_science_desc$1,
   student_science_title: student_science_title$1,
+  student_science_topic_1: student_science_topic_1$1,
+  student_science_topic_2: student_science_topic_2$1,
+  student_science_topic_3: student_science_topic_3$1,
   success_batch_saved: success_batch_saved$1,
   success_budget_saved: success_budget_saved$1,
   success_copy_habit: success_copy_habit$1,
@@ -10004,6 +10839,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   success_habit_updated: success_habit_updated$1,
   success_saved: success_saved$1,
   success_transaction_saved: success_transaction_saved$1,
+  support_priority: support_priority$1,
+  support_standard: support_standard$1,
+  support_vip: support_vip$1,
   target: target$1,
   target_days: target_days$1,
   task_notes: task_notes$1,
@@ -10045,6 +10883,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_nav_7: terms_nav_7$1,
   terms_nav_8: terms_nav_8$1,
   terms_nav_title: terms_nav_title$1,
+  terms_notice_desc: terms_notice_desc$1,
+  terms_notice_title: terms_notice_title$1,
   terms_p_dispute: terms_p_dispute$1,
   terms_p_eligibility: terms_p_eligibility$1,
   terms_p_intellectual: terms_p_intellectual$1,
@@ -11780,6 +12620,31 @@ const full_name = "Nama Lengkap";
 const email_address = "Alamat Email";
 const save_changes = "Simpan Perubahan";
 const saved = "Tersimpan";
+const cookie_title = "🍪 Icip Cookie?";
+const cookie_desc = "Kami menggunakan cookie untuk memastikan Anda mendapatkan pengalaman terbaik dan aman di sistem kami.";
+const cookie_btn_accept = "Terima Semua";
+const cookie_btn_settings = "Pengaturan";
+const cookie_btn_essential = "Hanya Esensial";
+const contact_title = "Hubungi Kami";
+const contact_subtitle = "Ada pertanyaan atau butuh bantuan? Tim kami siap mendampingi perjalanan produktivitas Anda.";
+const contact_form_name = "Nama Lengkap";
+const contact_form_email = "Alamat Email";
+const contact_form_subject = "Subjek";
+const contact_form_message = "Pesan Anda";
+const contact_btn_send = "Kirim Pesan Sekarang";
+const contact_success_title = "Pesan Terkirim!";
+const contact_success_desc = "Terima kasih! Kami akan segera menghubungi Anda dalam waktu 24-48 jam.";
+const contact_info_title = "Informasi Kontak";
+const contact_info_hq = "Kantor Pusat OneForMind";
+const contact_info_jakarta = "Jakarta, Indonesia";
+const contact_info_support = "Dukungan Teknis";
+const contact_info_billing = "Pembayaran & Lisensi";
+const contact_info_chat = "Live Chat";
+const contact_info_chat_status = "Dukungan Cepat";
+const contact_faq_title = "Punya pertanyaan teknis?";
+const contact_faq_desc = "Cek dokumentasi bantuan kami untuk jawaban instan mengenai fitur dan lisensi.";
+const contact_faq_btn = "Buka Pusat Bantuan";
+const contact_form_message_placeholder = "Bagaimana kami bisa membantu Anda?";
 const goal_page_title = "Goal Tracker";
 const goal_add_row = "Tambah Target";
 const goal_bulk_selected = "Target Terpilih";
@@ -12084,6 +12949,36 @@ const home_synergy_step3_desc = "Menyisihkan waktu untuk hal yang penting memast
 const home_solutions_badge = "JELAJAHI SOLUSI";
 const home_solutions_title = "Disesuaikan untuk Perjalanan Anda";
 const home_solutions_desc = "Apakah Anda seorang pelajar, pekerja lepas, atau atlet berkinerja tinggi, OneForMind memiliki konfigurasi untuk Anda.";
+const eco_badge$1 = "EKOSISTEM SINERGI";
+const eco_title$1 = "Semua Terhubung dengan Segalanya.";
+const eco_desc$1 = "Produktivitas bukan sekadar daftar. Ini adalah ekosistem di mana kebiasaan Anda mendorong tujuan Anda, dan pengeluaran Anda memvalidasi kemajuan Anda.";
+const eco_habit_title$1 = "Kebiasaan Atomik";
+const eco_habit_desc$1 = "Tindakan harian kecil yang berakumulasi menjadi hasil hidup yang masif. Terintegrasi dengan jadwal harian Anda.";
+const eco_finance_title$1 = "Keuangan Sadar";
+const eco_finance_desc$1 = "Pantau setiap sen secara manual untuk mendapatkan kembali kesadaran akan aliran energi Anda.";
+const eco_daily_title$1 = "Daily Planner";
+const eco_daily_desc$1 = "Ruang bersih untuk menjalankan tugas paling penting hari ini.";
+const eco_goal_title$1 = "Visi Hidup";
+const eco_goal_desc$1 = "Pelacakan tujuan tingkat tinggi yang dipecah menjadi langkah-langkah yang dapat ditindaklanjuti.";
+const eco_journal_title$1 = "Kejelasan Digital";
+const eco_journal_desc$1 = "Ruang pribadi untuk menuangkan pemikiran Anda dan menganalisis tren suasana hati Anda.";
+const eco_job_title$1 = "Neural Job Hunter";
+const eco_job_desc$1 = "Kelola transmisi karier Anda dan optimalkan lintasan profesional Anda (Beta).";
+const sol_badge$1 = "SOLUSINYA";
+const sol_title$1 = "Berhenti Mengelola. Mulai Menghidupi.";
+const sol_card_1_title$1 = "Kesadaran Finansial";
+const sol_card_1_desc$1 = "Hilangkan pengeluaran impulsif dengan menciptakan hubungan yang sadar dengan kekayaan Anda.";
+const sol_card_2_title$1 = "Optimasi Rutinitas";
+const sol_card_2_desc$1 = "Bangun kebiasaan berbasis identitas yang bertahan lama, didukung dengan metode perencanaan Prioritas-Pertama.";
+const sol_card_3_title$1 = "Aliran yang Mulus";
+const sol_card_3_desc$1 = "Rasakan Life OS terpadu di mana setiap modul saling terhubung, menciptakan sinergi alami.";
+const prob_1_title$1 = "Kelelahan Aplikasi Itu Nyata.";
+const prob_1_desc$1 = "Mengelola 5 aplikasi berbeda untuk kebiasaan, keuangan, dan tugas adalah pekerjaan tersendiri. Ini memecah fokus Anda.";
+const prob_1_point_1$1 = "Data tidak konsisten antar platform";
+const prob_1_point_2$1 = "Context switching membunuh alur kerja Anda";
+const prob_2_title$1 = "Data Terputus.";
+const prob_2_desc$1 = "Kebiasaan Anda tidak tahu tentang anggaran Anda. Anggaran Anda tidak tahu tentang tujuan Anda.";
+const prob_2_solution$1 = "OneForMind menghubungkan semuanya.";
 const job_page_title = "Pelacak Kerja";
 const job_page_subtitle = "Pantau semua lamaran kerjamu di satu tempat";
 const job_add_row = "Tambah Baris";
@@ -12199,6 +13094,15 @@ const neural_cta_title = "Melangkah ke Masa Depan Fokus.";
 const neural_cta_desc = "Bergabunglah dengan ribuan pengguna yang menggunakan Neural OS untuk menghilangkan kekacauan dan membangun hidup yang bermakna.";
 const neural_cta_btn = "Mulai Evolusi Anda";
 const neural_cta_note = "Uji coba gratis 14 hari untuk pengguna baru.";
+const neural_gemini_powered = "Ditenagai oleh";
+const neural_gemini_feat1 = "Analisis perilaku real-time di seluruh fitur.";
+const neural_gemini_feat2 = "Pemrosesan data fokus privasi dengan logika lokal.";
+const neural_gemini_feat3 = "Integrasi mulus dengan Kebiasaan, Pekerjaan, dan Tujuan.";
+const neural_coach_sender = "OneForMind Sahabat";
+const neural_coach_user = "Anda";
+const neural_coach_msg1 = "Saya perhatikan Anda 20% lebih mungkin menjalankan kebiasaan saat suasana hati pagi Anda 'Bersemangat'. Ingin saya memindahkan tugas energi tinggi Anda ke sana?";
+const neural_coach_msg2 = "Ya, tolong optimalkan jadwal saya.";
+const neural_coach_msg3 = "Selesai! Planner Anda telah diperbarui untuk alur kerja maksimal.";
 const planner_title = "Jadwal Harian";
 const planner_time_fmt = "WIB";
 const planner_click_hint = "Klik untuk tambah jadwal";
@@ -12379,6 +13283,78 @@ const feat_vision_board = "Vision Board Visual";
 const feat_journal_lock = "Kunci Privasi Jurnal";
 const feat_calendar_timeline = "Tampilan Timeline / Gantt";
 const feat_ai_scheduling = "Penjadwalan Otomatis AI";
+const compare_title = "Bandingkan Logika Paket";
+const compare_feature = "Fitur Sistem";
+const compare_explorer = "Gratis";
+const compare_architect = "Pro";
+const compare_quantum = "AI Elite";
+const compare_legendary = "Life";
+const group_habits = "KEBIASAAN & RUTINITAS";
+const group_finance = "KEUANGAN & KEKAYAAN";
+const group_planner = "PERENCANA & EKSEKUSI";
+const group_journal = "JURNAL & ANALITIK";
+const group_goals = "TUJUAN & VISI";
+const group_jobs = "KARIER & PEKERJAAN";
+const group_support = "DUKUNGAN";
+const feat_habit_limit = "Batasan Habit Aktif";
+const feat_habit_limit_val_l1 = "Maks 5 Habit";
+const feat_habit_limit_val_l2 = "Tanpa Batas";
+const feat_detailed_analytics = "Analitik Detail";
+const feat_val_basic = "Dasar";
+const feat_val_advanced = "Lanjutan";
+const feat_val_predictive = "AI Prediktif";
+const feat_ai_stacking = "AI Habit Stacking";
+const feat_finance_entry = "Entri Manual";
+const feat_budgeting = "Manajemen Anggaran";
+const feat_receipt_scanning = "Pindai Struk";
+const feat_net_worth = "Pelacak Kekayaan Bersih";
+const feat_ai_audit = "Audit Keuangan AI";
+const feat_planner_view = "Tampilan Perencana";
+const feat_planner_view_val_l1 = "Daftar Standar";
+const feat_planner_view_val_l2 = "Matriks Prioritas";
+const feat_recurring_tasks = "Tugas Berulang";
+const feat_journal_type = "Tipe Jurnal";
+const feat_journal_type_val_l1 = "Teks Standar";
+const feat_journal_type_val_l2 = "Rich Media + Suara";
+const feat_sentiment_ai = "AI Sentimen";
+const feat_goal_limit = "Batasan Tujuan Aktif";
+const feat_goal_limit_val_l1 = "Maks 3 Tujuan";
+const feat_goal_limit_val_l2 = "Tanpa Batas";
+const feat_job_limit = "Lamaran Pekerjaan";
+const feat_job_limit_val_l1 = "Maks 10 / bln";
+const feat_job_limit_val_l2 = "Tanpa Batas";
+const feat_resume_ai = "AI Builder Resume";
+const feat_early_beta = "Fitur Beta Awal";
+const support_standard = "Standar";
+const support_priority = "Prioritas";
+const support_vip = "VIP Concierge";
+const quantum_feature = "NEURAL AI LANJUTAN";
+const pricing_elite_title = "Kecerdasan Quantum";
+const pricing_elite_feat1_title = "Penyetelan Rutinitas Prediktif";
+const pricing_elite_feat1_desc = "AI kami menganalisis penurunan energi Anda dan menyarankan waktu terbaik untuk fokus.";
+const pricing_elite_feat2_title = "Proyeksi Kekayaan";
+const pricing_elite_feat2_desc = "Prakirakan masa depan keuangan Anda berdasarkan lintasan pengeluaran saat ini.";
+const pricing_elite_feat3_title = "Sinkronisasi Biometrik";
+const pricing_elite_feat3_desc = "Hubungkan skor fokus Anda dengan metadata fisik Anda.";
+const pricing_elite_card_title = "Akses Quantum";
+const pricing_elite_card_status = "Sistem Online";
+const pricing_l1_name = "Explorer (Gratis)";
+const pricing_l1_desc = "Cocok untuk pemula yang ingin memulai perjalanan penuh kesadaran mereka.";
+const pricing_l2_name = "Architect (Pro)";
+const pricing_l2_desc = "Buka kekuatan penuh ekosistem kehidupan terpadu.";
+const pricing_l3_name = "Quantum (AI)";
+const pricing_l3_desc = "AI terintegrasi untuk mempercepat eksekusi dan wawasan Anda.";
+const pricing_l4_name = "Legendary (Life)";
+const pricing_l4_desc = "Investasi utama. Bayar sekali, hindari semua biaya masa depan.";
+const pricing_l1_initial = "Gratis Selamanya";
+const pricing_l2_initial = "Buka Seumur Hidup Pro";
+const pricing_l2_recurring = "Biaya pemeliharaan berulang";
+const pricing_l3_initial = "Lisensi AI Neural";
+const pricing_l3_recurring = "Biaya Pemeliharaan AI";
+const pricing_l4_initial = "Akses Pendiri Seumur Hidup";
+const pricing_l4_recurring = "Nol Biaya Selamanya";
+const pricing_ai_badge = "Terbaik untuk Pencari AI";
+const pricing_l4_badge = "Edisi Pendiri";
 const privacy_meta_title = "Pusat Privasi & Kepercayaan";
 const privacy_meta_desc = "Pelajari bagaimana OneForMind melindungi data, privasi, dan memastikan keamanan Anda.";
 const privacy_meta_og_title = "Trust Center — OneForMind";
@@ -12398,6 +13374,17 @@ const privacy_nav_5 = "05. Pihak Ketiga";
 const privacy_nav_6 = "06. Hak Privasi";
 const privacy_nav_7 = "07. Hubungi Kami";
 const privacy_download_pdf = "Unduh PDF";
+const privacy_status_protection = "Perlindungan";
+const privacy_status_access = "Akses";
+const privacy_status_tracking = "Pelacakan";
+const privacy_status_protocol = "Protokol";
+const privacy_status_protection_val = "AES-256";
+const privacy_status_access_val = "Privat";
+const privacy_status_tracking_val = "0% Iklan";
+const privacy_status_protocol_val = "GDPR Ready";
+const privacy_locked_label = "Enkripsi_Aktif";
+const privacy_locked_title = "Protokol Aman";
+const privacy_locked_desc = "Perlindungan infrastruktur zero-knowledge.";
 const privacy_tldr_title = "Ringkasan Singkat (TL;DR)";
 const privacy_tldr_1_title = "Tidak Menjual Data";
 const privacy_tldr_1_desc = "Kami tidak pernah menjual informasi pribadi atau data keuangan Anda ke pihak ketiga.";
@@ -12413,7 +13400,8 @@ const privacy_p_collection = "Kami percaya pada prinsip minimalisasi data. Kami 
 const privacy_li_collection_1_title = "Informasi Akun";
 const privacy_li_collection_1_desc = "Nama, email, dan kredensial login (jika tidak menggunakan Google OAuth).";
 const privacy_li_collection_2_title = "Konten Pengguna";
-const privacy_li_collection_2_desc = "Log kebiasaan, catatan keuangan, jurnal, dan tugas planner.";
+const privacy_li_collection_2_strong = "Log kebiasaan, catatan keuangan, jurnal, dan tugas planner.";
+const privacy_li_collection_2_desc = "Seluruh progres produktivitas Anda disimpan secara aman.";
 const privacy_li_collection_3_title = "Data Perangkat & Penggunaan";
 const privacy_li_collection_3_desc = "Analitik dasar seperti alamat IP dan jenis browser untuk membantu kami memperbaiki bug.";
 const privacy_h2_usage = "3. Bagaimana Kami Menggunakan Data";
@@ -12421,6 +13409,8 @@ const privacy_p_usage = "Data Anda digunakan eksklusif untuk memberikan pengalam
 const privacy_li_usage_1 = "Menyediakan fungsi utama (habit tracker, insight keuangan, planner).";
 const privacy_li_usage_2 = "Mengirimkan notifikasi penting (mis. reset password).";
 const privacy_li_usage_3 = "Menganalisis pola penggunaan secara anonim untuk meningkatkan UI/UX.";
+const privacy_finance_note_title = "Keamanan Finansial Khusus";
+const privacy_finance_note_desc = "Data keuangan Anda diproses dengan enkripsi AES-256 tambahan. Kami tidak pernah menyimpan nomor kartu kredit secara langsung; semua diproses melalui partner payment gateway resmi.";
 const privacy_h2_security = "4. Keamanan Data";
 const privacy_p_security = "Kami menerapkan standar industri ketat. Database dilindungi, dan kami mewajibkan HTTPS/SSL. Password di-hash dengan algoritma kriptografi modern.";
 const privacy_h2_thirdparty = "5. Pihak Ketiga & Integrasi";
@@ -12430,11 +13420,15 @@ const privacy_p_rights = "Bergantung pada lokasi Anda, Anda berhak untuk:";
 const privacy_li_rights_1 = "Mengakses data personal yang kami simpan.";
 const privacy_li_rights_2 = "Meminta perbaikan data yang tidak akurat.";
 const privacy_li_rights_3 = "Meminta penghapusan permanen akun dan seluruh datanya.";
+const privacy_export_title = "Portabilitas Data (Ekspor)";
+const privacy_export_desc = "Anda memiliki hak penuh untuk membawa data Anda pergi jika Anda memutuskan untuk berhenti menggunakan OneForMind.";
+const privacy_export_point_1 = "Ekspor data transaksi keuangan ke format CSV/Excel.";
+const privacy_export_point_2 = "Ekspor log kebiasaan dan jurnal ke format PDF atau JSON.";
 const privacy_h2_contact = "7. Hubungi Kami";
 const privacy_p_contact = "Punya pertanyaan atau ingin mengajukan penghapusan data? Silakan hubungi kami:";
 const privacy_contact_role = "Tim Pelindungan Data";
 const privacy_contact_email = "oneformindapp@gmail.com";
-const privacy_contact_sla = "Kami biasanya membalas dalam 24 jam kerja.";
+const privacy_contact_sla = "Waktu Respons: ~24-48 jam";
 const privacy_faq_title = "Pertanyaan yang Sering Diajukan";
 const privacy_faq_1_q = "Bisa tim Oneformind baca jurnal privat saya?";
 const privacy_faq_1_a = "Tidak. Kami punya kontrol akses internal yang ketat. Kecuali Anda dengan sengaja mengirimkan log error ke tim support, jurnal Anda sepenuhnya privat.";
@@ -12463,6 +13457,8 @@ const terms_nav_5 = "5. Hak Kekayaan";
 const terms_nav_6 = "6. Pengakhiran";
 const terms_nav_7 = "7. Sengketa";
 const terms_nav_8 = "8. Kewajiban";
+const terms_notice_title = "PEMBERITAHUAN PENTING: NO-REFUND";
+const terms_notice_desc = "OneForMind memberikan masa uji coba (Trial) selama 14 hari bagi semua pengguna baru guna mengevaluasi layanan. Setelah Anda melakukan deposit atau pembayaran langganan, Anda melepaskan hak untuk meminta refund dalam bentuk apa pun. Semua transaksi bersifat FINAL.";
 const terms_intro_text = "Selamat datang di OneForMind. Ketentuan Layanan ini ('Ketentuan') adalah fondasi hukum operasional kami.";
 const terms_intro_sub = "Mohon baca dengan saksama. Dengan mengakses layanan kami, Anda setuju untuk terikat secara hukum. Jika Anda tidak setuju pada satu poin pun, Anda dilarang keras menggunakan Layanan.";
 const terms_h2_eligibility = "2. Kriteria Pengguna";
@@ -12518,6 +13514,10 @@ const sec_toc_2 = "Enkripsi Database";
 const sec_toc_3 = "Keamanan Aplikasi";
 const sec_toc_4 = "Privasi User";
 const sec_toc_5 = "Audit & Review";
+const sec_alert_title = "Laporan Bug?";
+const sec_alert_desc = "Punya temuan celah keamanan? Laporkan ke tim kami dan bantu kami menjaga ekosistem tetap aman.";
+const sec_alert_btn = "KIRIM LAPORAN";
+const sec_locked_label = "Sistem_Terkunci";
 const sec_h2_infrastructure = "Infrastruktur Terpercaya";
 const sec_p_infrastructure = "Kami menggunakan server cloud yang terletak di zona aman dengan redundansi tinggi untuk memastikan data Anda selalu tersedia kapan pun dibutuhkan.";
 const sec_li_infra_1_title = "Pusat Data Global";
@@ -12576,6 +13576,10 @@ const refund_p_exclusion = "Dalam kondisi kegagalan sistem total di sisi server 
 const refund_cta_title = "Paham Aturan Main Kami?";
 const refund_cta_desc = "Dengan melakukan pembayaran Pro, Anda secara hukum telah melepaskan hak tuntutan refund Anda.";
 const refund_cta_btn = "Kontak Support (Hanya Teknis)";
+const refund_merchant_protection_title = "Perlindungan Merchant";
+const refund_merchant_protection_desc = "Transaksi Anda dilindungi oleh aturan hukum transaksional digital yang menyatakan bahwa produk instan yang sudah dibuka/digunakan tidak dapat dikembalikan.";
+const refund_user_responsibility_title = "Langkah Mandiri (User Responsibility):";
+const refund_contact_label = "Kontak: oneformindapp@gmail.com";
 const guide_meta_title = "Panduan & Pusat Bantuan - OneForMind";
 const guide_meta_desc = "Semua yang Anda butuhkan untuk menguasai alur kerja dan pola pikir.";
 const guide_meta_og_title = "Pusat Pengetahuan OneForMind";
@@ -12883,7 +13887,19 @@ const sto_interviews_desc = "Menyelami pola pikir mereka yang revolusioner.";
 const sto_int1 = "Bagaimana Sarah Menggandakan Pendapatannya";
 const sto_int2 = "Rahasia Budi Bebas dari Burnout";
 const sto_hof_title = "Hall of Fame";
-const sto_hof_desc = "Penghargaan untuk pencapaian luar biasa komunitas.";
+const sto_hof_desc = "Merayakan pencapaian luar biasa dari komunitas global kami.";
+const sto_hof_1_name = "Adrian Pratama";
+const sto_hof_1_title = "Manajer Finansial Utama";
+const sto_hof_1_desc = "Mengelola lebih dari $1M aset pribadi menggunakan Sistem Finansial OneForMind.";
+const sto_hof_2_name = "Siti Aminah";
+const sto_hof_2_title = "Ratu Konsistensi";
+const sto_hof_2_desc = "Mempertahankan 1.000+ hari beruntun (streak) pada kebiasaan pengembangan diri.";
+const sto_hof_3_name = "Syaiful Anwar";
+const sto_hof_3_title = "Arsitek Produktivitas";
+const sto_hof_3_desc = "Merancang 50+ dashboard dan alur kerja kustom yang dibagikan ke komunitas.";
+const sto_hof_4_name = "Lia Wijaya";
+const sto_hof_4_title = "Master Zen";
+const sto_hof_4_desc = "Pengguna paling aktif di ekosistem Jurnal Mindfulness & Kesehatan Mental.";
 const settings_title = "Pengaturan";
 const settings_header = "Pusat Kendali Akun";
 const settings_subheader = "Atur segalanya tentang pengalaman produktivitas Anda di sini.";
@@ -12966,193 +13982,6 @@ const photo_adjust_instruction = "Pilih foto, lalu Anda dapat menyesuaikan posis
 const adjust_photo_title = "Sesuaikan Foto";
 const pan_instruction = "Gunakan Mouse/Sentuhan Untuk Menggeser";
 const save_photo = "Simpan Foto";
-const student_meta_title = "Solusi Mahasiswa - OneForMind";
-const student_meta_desc = "Atur tugas, jadwal kuliah, dan keuangan mahasiswa di satu tempat. Berhenti merasa kewalahan dan mulai kuasai masa kuliahmu.";
-const student_meta_og_title = "OneForMind untuk Mahasiswa";
-const student_meta_og_desc = "Sistem operasi produktivitas all-in-one untuk mahasiswa yang ambis.";
-const student_hero_badge = "Khusus Mahasiswa";
-const student_hero_title_1 = "IPK Aman,";
-const student_hero_title_2 = "Mental Tetap Waras.";
-const student_hero_desc = "Dari nugas akhir, rapat organisasi, sampai ngatur uang bulanan kos yang mepet. OneForMind bantu satukan semua kekacauan itu di dalam satu layar yang rapi.";
-const student_hero_cta_1 = "Mulai Atur Hidupmu";
-const student_hero_social_proof = "Bergabung dengan ratusan mahasiswa lainnya.";
-const student_prob_title = "Penyakit Mahasiswa 101";
-const student_prob_desc = "Kami tahu persis apa yang bikin kamu overthinking setiap malam.";
-const student_prob_1_title = "Tugas Numpuk";
-const student_prob_1_desc = "Deadline dari 5 matkul berbeda datang di minggu yang sama. Nggak tahu harus mulai dari mana.";
-const student_prob_2_title = "Akhir Bulan Melarat";
-const student_prob_2_desc = "Uang bulanan atau hasil freelance habis nggak jelas ke mana sebelum tanggal 20.";
-const student_prob_3_title = "Jadwal Bentrok";
-const student_prob_3_desc = "Rapat kepanitiaan selalu tabrakan sama jadwal nugas kelompok atau waktu istirahat.";
-const student_feat_1_visual_badge = "Project Manager";
-const student_feat_1_title = "Pantau Semua Proyek Kuliah & Portofolio";
-const student_feat_1_desc = "Dari ngerjain tugas akhir sampai bangun portofolio pribadi. Pecah tugas besar jadi langkah kecil yang masuk akal biar nggak prokrastinasi.";
-const student_feat_1_point_1 = "Kanban board untuk tracking progress.";
-const student_feat_1_point_2 = "Sub-tugas untuk bagi-bagi kerjaan tim.";
-const student_feat_2_title = "Survive dengan Budget Mahasiswa";
-const student_feat_2_desc = "Pantau sisa saldo bulananmu secara real-time. Tahu persis berapa jatah uang makan harian biar nggak perlu terus-terusan numpang WiFi di warkop.";
-const student_feat_2_point_1 = "Limit Pengeluaran Harian";
-const student_feat_2_point_2 = "Tabungan Beli Setup Baru";
-const student_bento_title = "Student Survival Kit";
-const student_bento_desc = "Fitur pelengkap untuk bertahan hidup di ganasnya kampus.";
-const student_bento_1_title = "Jurnal Overthinking";
-const student_bento_1_desc = "Tumpahkan stres revisian atau keluh kesah di jurnal privat yang aman.";
-const student_bento_2_title = "Mode Begadang";
-const student_bento_2_desc = "Dark mode yang nyaman di mata buat nugas sampai jam 3 pagi.";
-const student_bento_3_title = "Sinkronisasi Cloud";
-const student_bento_3_desc = "Aman diakses lewat HP pas di kelas, atau laptop pas di perpus.";
-const student_cta_title = "Jangan Cuma Bertahan, Jadilah Mahasiswa Ambis.";
-const student_cta_desc = "Sistem yang baik membedakan mahasiswa yang sekadar lulus dengan mereka yang bersinar di kampus.";
-const student_cta_btn = "Daftar Gratis Sekarang";
-const student_cta_note = "Akses fitur dasar gratis, selamanya.";
-const student_faq_title = "FAQ Solusi Mahasiswa";
-const student_faq_q1 = "Apakah saya bisa mengelola banyak semester?";
-const student_faq_a1 = "Ya, OneForMind memungkinkan Anda mengarsipkan semester lama dan tetap fokus pada mata kuliah yang aktif saat ini. Catatan dan keuangan masa lalu tetap dapat dicari kapan pun Anda butuhkan.";
-const student_faq_q2 = "Bagaimana pelacak anggaran membantu uang bulanan?";
-const student_faq_a2 = "Anda dapat mengatur 'Pemasukan' berulang untuk uang saku bulanan dan membuat kategori untuk makan, transportasi, dan hiburan. Sistem akan memperingatkan jika Anda berbelanja terlalu cepat di awal bulan.";
-const student_faq_q3 = "Apakah ada cara untuk melacak proyek kelompok?";
-const student_faq_a3 = "Meskipun OneForMind terutama untuk penggunaan pribadi, Anda dapat menggunakan papan Kanban untuk mengatur kontribusi dan tenggat waktu Anda sendiri dalam proyek kelompok apa pun untuk memastikan tidak ada tugas yang terlewat.";
-const student_science_badge = "KEUNGGULAN AKADEMIK";
-const student_science_title = "Sains di Balik Belajar";
-const student_science_desc = "Dibangun di atas prinsip Spaced Repetition dan Manajemen Sumber Daya Kognitif, OneForMind membantu mahasiswa beralih dari konsumsi pasif ke produksi aktif tanpa rasa lelah berlebih.";
-const student_extra_1_title = "Workflow Belajar Maksimal";
-const student_extra_1_desc = "Beralih mulus dari mencatat kuliah di Jurnal, menjadwalkan sesi revisi di Planner, hingga memantau progres persiapan di papan Proyek.";
-const student_extra_2_title = "Keseimbangan Nilai & Istirahat";
-const student_extra_2_desc = "Produktivitas bukan tentang bekerja lebih banyak, tapi lebih pintar. Gunakan pelacak mood untuk memastikan ambisi akademik tidak mengorbankan kesehatan mentalmu.";
-const freelance_meta_title = "Solusi Freelancer & Remote Worker - OneForMind";
-const freelance_meta_desc = "Sistem kerja all-in-one untuk freelancer. Kelola banyak klien, pantau invoice, dan atur deadline tanpa stres.";
-const freelance_meta_og_title = "OneForMind untuk Freelancer";
-const freelance_meta_og_desc = "Tingkatkan profesionalitas kerjamu dengan sistem yang rapi.";
-const freelance_hero_badge = "Khusus Freelancer";
-const freelance_hero_title_1 = "Kerja Bebas,";
-const freelance_hero_title_2 = "Bukan Berarti Kacau.";
-const freelance_hero_desc = "Atur banyak klien, pantau invoice yang belum dibayar, dan kelola deadline dari berbagai zona waktu. Semua dari satu dashboard profesional.";
-const freelance_hero_cta_1 = "Mulai Profesional Sekarang";
-const freelance_hero_social_proof = "Dipercaya oleh pekerja remote dan agensi digital.";
-const freelance_prob_title = "Rollercoaster Freelance";
-const freelance_prob_desc = "Fase yang selalu terjadi kalau kamu tidak punya sistem kerja yang solid.";
-const freelance_prob_1_title = "Kewalahan (Overwhelmed)";
-const freelance_prob_1_desc = "Revisi numpuk dari 3 klien berbeda secara bersamaan. Bingung harus mulai dari mana.";
-const freelance_prob_2_title = "Lupa Tagih Invoice";
-const freelance_prob_2_desc = "Kerjaan sudah beres bulan lalu, tapi uang belum cair karena lupa follow-up klien.";
-const freelance_prob_3_title = "Burnout Parah";
-const freelance_prob_3_desc = "Kerja 24/7 tanpa batas waktu istirahat yang jelas karena kamar tidur adalah kantormu.";
-const freelance_feat_1_title = "Command Center Proyekmu";
-const freelance_feat_1_desc = "Lacak setiap revisi, atur target harian, dan pantau progress tiap klien tanpa harus membuka puluhan tab yang bikin pusing.";
-const freelance_feat_1_point_1 = "Kanban Board Multi-Klien";
-const freelance_feat_1_point_2 = "Tracking Progress Real-Time";
-const freelance_feat_2_title = "Pantau Keuangan & Invoice";
-const freelance_feat_2_desc = "Jangan biarkan hasil keringatmu tertahan. Sistem akan bantu melacak mana proyek yang sudah lunas dan mana invoice yang masih gantung.";
-const freelance_feat_2_point_1 = "Pendapatan Terlacak";
-const freelance_feat_2_point_2 = "Pengingat Otomatis";
-const freelance_bento_title = "Gudang Senjata Freelancer";
-const freelance_bento_desc = "Fitur-fitur yang bikin kamu terlihat seperti agensi profesional.";
-const freelance_bento_1_title = "Manajemen Klien";
-const freelance_bento_1_desc = "Simpan brief, aset, dan riwayat revisi klien dengan sangat rapi.";
-const freelance_bento_2_title = "Time Tracker";
-const freelance_bento_2_desc = "Lacak berapa jam yang kamu habiskan per proyek untuk hitungan rate per-jam.";
-const freelance_bento_3_title = "Rekap Pajak";
-const freelance_bento_3_desc = "Data pemasukan siap pakai untuk mempermudah lapor pajak tahunan.";
-const freelance_bento_4_title = "Klien Portal (Segera)";
-const freelance_bento_4_desc = "Bagikan link khusus agar klien bisa melihat progress kerjamu tanpa perlu terus-terusan menanyakan update via chat.";
-const freelance_cta_title = "Siap Scale-Up Bisnis Freelance-mu?";
-const freelance_cta_desc = "Klien suka bekerja dengan freelancer yang terorganisir, dan kamu pantas dibayar mahal untuk itu.";
-const freelance_cta_btn = "Upgrade Sistem Kerjamu";
-const freelance_cta_note = "Ambil alih kendali bisnismu hari ini.";
-const freelance_faq_title = "FAQ Penguasaan Freelance";
-const freelance_faq_q1 = "Apakah saya bisa melacak berbagai mata uang?";
-const freelance_faq_a1 = "Ya, Anda dapat mencatat pemasukan dalam berbagai mata uang. Ini sangat cocok untuk freelancer internasional yang bekerja dengan klien dari berbagai zona ekonomi.";
-const freelance_faq_q2 = "Bagaimana cara mengelola proyek jangka panjang?";
-const freelance_faq_a2 = "Pecah kontrak jangka panjang menjadi milestone bulanan menggunakan papan Proyek kami. Ini membantu menjaga momentum dan memastikan Anda memiliki deliverables rutin untuk invoice.";
-const freelance_faq_q3 = "Apakah data klien saya aman?";
-const freelance_faq_a3 = "Tentu saja. OneForMind menggunakan enkripsi standar industri untuk memastikan strategi bisnis, brief klien, dan catatan keuangan Anda tetap privat dan hanya dapat diakses oleh Anda.";
-const freelance_science_badge = "AGILITAS BISNIS";
-const freelance_science_title = "Kerangka Kerja Solo-Agency";
-const freelance_science_desc = "Memanfaatkan metodologi 'Deep Work' dan 'GTD' (Getting Things Done), kami membantu freelancer beroperasi dengan efisiensi layaknya agensi penuh tanpa biaya overhead yang besar.";
-const freelance_extra_1_title = "Pelacakan Siklus Hidup Klien";
-const freelance_extra_1_desc = "Kelola seluruh perjalanan dari prospek awal hingga pembayaran akhir. Simpan catatan preferensi dan feedback klien untuk memberikan layanan premium setiap saat.";
-const freelance_extra_2_title = "Skala Pendapatan Berkelanjutan";
-const freelance_extra_2_desc = "Jangan hanya bekerja untuk hari ini. Gunakan proyeksi keuangan untuk merencanakan bulan-bulan berikutnya, menabung untuk peningkatan alat, dan mengembangkan bisnis freelance dengan percaya diri.";
-const growth_meta_title = "Pengembangan Diri & Produktivitas - OneForMind";
-const growth_meta_desc = "Bangun kebiasaan baik, jernihkan pikiran dengan jurnal, dan raih versi terbaik dirimu setiap hari.";
-const growth_meta_og_title = "OneForMind untuk Personal Growth";
-const growth_meta_og_desc = "Sistem untuk membangun identitas baru dan kebiasaan yang tak terhentikan.";
-const growth_hero_badge = "🌱 Untuk Pertumbuhan Pribadi";
-const growth_hero_title_1 = "Berhenti Berencana,";
-const growth_hero_title_2 = "Mulai Eksekusi.";
-const growth_hero_desc = "Sistem komprehensif untuk melacak kebiasaan, merefleksikan pikiran, dan membangun versi terbaik diri Anda setiap hari. Sedikit demi sedikit, langkah demi langkah.";
-const growth_hero_cta_1 = "Mulai Transformasimu";
-const growth_hero_social_proof = "Dipercaya oleh ribuan pengejar mimpi.";
-const growth_prob_title_dark = "Siklus Terjebak";
-const growth_prob_desc_dark = "Pikiran bising, kebiasaan buruk yang berulang, dan motivasi yang hanya bertahan dua hari lalu hilang begitu saja.";
-const growth_prob_point_1 = "Konsumsi dopamin instan dan prokrastinasi.";
-const growth_prob_point_2 = "Memulai banyak hal tapi tidak ada yang selesai.";
-const growth_prob_title_light = "Siklus Bertumbuh";
-const growth_hero_cta = "Mulai Transformasi Anda";
-const growth_hero_social = "Dipercaya oleh ribuan pemburu mimpi.";
-const growth_card_reading_goal = "Target Membaca";
-const growth_card_run_title = "Lari Pagi";
-const growth_card_run_desc = "5 km selesai";
-const growth_card_reflect_title = "Refleksi Harian";
-const growth_card_reflect_desc = "Hari ini aku belajar merelakan hal yang tidak bisa kukontrol...";
-const growth_science_badge = "🧬 Sains Pertumbuhan";
-const growth_science_title = "Dibangun dengan Kerangka Teruji";
-const growth_science_desc = "Kami tidak hanya melacak angka; kami menerapkan psikologi perilaku untuk memastikan perubahan Anda benar-benar bertahan lama.";
-const growth_science_tag_1 = "Antifragilitas";
-const growth_science_tag_2 = "Pergeseran Identitas";
-const growth_science_tag_3 = "Bunga Majemuk";
-const growth_habit_streak = "Streak 30 Hari!";
-const growth_habit_streak_desc = "Konsistensi membentuk identitas baru.";
-const growth_habit_title = "Tempa Identitas Baru Melalui Kebiasaan";
-const growth_habit_desc = "Setiap kali Anda menyelesaikan satu kebiasaan, Anda memberikan suara untuk tipe orang yang Anda inginkan. Bangun kemenangan beruntun Anda.";
-const growth_habit_feat_1 = "📈 Pelacakan Kebiasaan Presisi";
-const growth_habit_feat_2 = "🎖️ Pencapaian & Hadiah Konsistensi";
-const growth_zen_title = "Ruang Tenang untuk Pikiran Anda";
-const growth_zen_desc = "Menjauhlah dari kebisingan digital. Masuki 'Mode Zen' dan mulai urai benang kusut di kepala Anda melalui jurnal refleksi harian tanpa gangguan UI.";
-const growth_zen_entry = "Entri Zen";
-const growth_zen_quote = "Terkadang, hack produktivitas terbaik adalah berhenti sejenak untuk memahami diri sendiri.";
-const growth_zen_subtext = "Menuliskan perasaan membantu Anda menguasai apa yang akan Anda lakukan selanjutnya.";
-const growth_extra_1_title = "Evolusi Visual";
-const growth_extra_1_desc = "Lihat progres Anda tumbuh dari benih kecil menjadi pohon yang rimbun seiring konsistensi Anda pada tujuan.";
-const growth_extra_2_title = "Prinsip 1%";
-const growth_extra_2_desc = "Perubahan kecil membawa hasil masif seiring berjalannya waktu.";
-const growth_faq_title = "Pertanyaan Umum";
-const growth_faq_q1 = "Bagaimana sistem pelacakan kebiasaan bekerja?";
-const growth_faq_a1 = "Sistem ini menggunakan metodologi 'Atomic Habits', berfokus pada kemenangan kecil dan kebiasaan berbasis identitas.";
-const growth_faq_q2 = "Apakah data jurnal saya pribadi?";
-const growth_faq_a2 = "Tentu saja. Refleksi Anda hanya untuk Anda sendiri, disimpan dengan aman menggunakan prinsip privasi utama.";
-const growth_faq_q3 = "Bisakah saya sinkronisasi antar perangkat?";
-const growth_faq_a3 = "Ya, perjalanan pertumbuhan Anda tetap bersama Anda di mana pun Anda berada, tersinkronisasi di semua perangkat.";
-const growth_footer_title = "Hari ini adalah Hari Pertama.";
-const growth_footer_desc = "Masa depan Anda dibentuk oleh apa yang Anda lakukan hari ini, bukan besok. Ambil langkah pertama itu sekarang.";
-const growth_footer_cta = "Mulai Perjalanan Pertumbuhan Anda";
-const growth_prob_desc_light = "Kejernihan mental, sistem yang berjalan otomatis, dan identitas baru yang terbangun dari kebiasaan kecil namun konsisten.";
-const growth_prob_point_3 = "Fokus tajam tanpa distraksi.";
-const growth_prob_point_4 = "Pertumbuhan 1% lebih baik setiap hari.";
-const growth_feat_1_title = "Bangun Identitas Baru Melalui Kebiasaan";
-const growth_feat_1_desc = "Setiap kali kamu menyelesaikan kebiasaan, kamu sedang memberikan suara untuk tipe orang yang kamu inginkan. Bangun rantai kemenanganmu (streak) dan jangan pernah putuskan.";
-const growth_feat_1_point_1 = "Pelacakan Kebiasaan Presisi";
-const growth_feat_1_point_2 = "Milestone & Penghargaan Konsistensi";
-const growth_feat_2_title = "Ruang Hening Untuk Pikiranmu";
-const growth_feat_2_desc = "Jauhkan diri dari kebisingan digital. Masuki 'Zen Mode' dan mulai urai benang kusut di kepalamu melalui jurnal refleksi harian tanpa gangguan UI yang berisik.";
-const growth_feat_2_quote_title = "Terkadang, trik produktivitas terbaik adalah jeda sejenak untuk memahami diri sendiri.";
-const growth_feat_2_quote_body = "Menuliskan apa yang kamu rasakan akan membantumu menguasai apa yang akan kamu lakukan selanjutnya.";
-const growth_bento_title = "Ekosistem Pertumbuhan";
-const growth_bento_desc = "Tools pendukung untuk meretas potensi maksimalmu.";
-const growth_bento_1_title = "Fokus Audio";
-const growth_bento_1_desc = "Integrasi suara lofi dan alam untuk masuk ke state of flow (Segera).";
-const growth_bento_2_title = "Dark Mode";
-const growth_bento_2_desc = "Nuansa gelap yang menenangkan untuk refleksi mendalam di malam hari.";
-const growth_bento_3_title = "Resolusi Jangka Panjang";
-const growth_bento_3_desc = "Pecah tujuan besar tahunanmu menjadi aksi harian yang mudah dilakukan. Saat visi bertemu dengan rutinitas, tidak ada yang tidak mungkin.";
-const growth_bento_4_title = "Mood Analytics";
-const growth_bento_4_desc = "Pahami siklus emosimu dan pengaruhnya terhadap tingkat produktivitasmu.";
-const growth_bento_5_title = "Inspirasi Harian";
-const growth_bento_5_desc = "Kutipan stoikisme dan filosofi di dashboard untuk memantik semangat.";
-const growth_cta_title = "Hari Ini Adalah Hari Pertama.";
-const growth_cta_desc = "Masa depanmu dibentuk oleh apa yang kamu lakukan hari ini, bukan besok. Ambillah langkah pertama itu sekarang.";
-const growth_cta_btn = "Mulai Perjalanan Growth-mu";
-const growth_cta_note = "Gratis 100% untuk memulai langkah kecil.";
 const solve_career_meta_title = "Akselerator Karir - OneForMind";
 const solve_career_meta_desc = "Ubah proses pencarian kerjamu dari kekacauan menjadi pipeline terstruktur. Pantau lamaran dan dapatkan pekerjaan impian.";
 const solve_career_meta_og_title = "Ambil Kendali Karirmu dengan OneForMind";
@@ -13215,251 +14044,537 @@ const solve_finance_hero_desc = "Katakan selamat tinggal pada kecemasan finansia
 const solve_finance_hero_cta = "Kuasai Uang Anda";
 const solve_finance_prob_title = "Jebakan Kecemasan Finansial";
 const solve_finance_prob_desc = "Mengelola uang tidak seharusnya terasa seperti sebuah hukuman.";
-const solve_finance_prob_1_title = "Ember Bocor";
-const solve_finance_prob_1_desc = "Bertanya-tanya ke mana perginya uangmu di akhir bulan.";
-const solve_finance_prob_1_point_1 = "Belanja impulsif mendominasi";
-const solve_finance_prob_1_point_2 = "Nol visibilitas pada langganan (subscriptions)";
-const solve_finance_prob_1_point_3 = "Kepanikan di akhir bulan";
-const solve_finance_prob_2_title = "Spreadsheet yang Membosankan";
-const solve_finance_prob_2_desc = "Aplikasi anggaran tradisional terasa seperti software akuntansi.";
-const solve_finance_prob_2_point_1 = "Terlalu rumit untuk digunakan setiap hari";
-const solve_finance_prob_2_point_2 = "Terputus dari tujuan hidupmu yang sebenarnya";
-const solve_finance_prob_2_point_3 = "Membuatmu merasa bersalah karena berbelanja";
-const solve_finance_sol_title = "Mesin Kekayaan Tanpa Hambatan";
-const solve_finance_sol_feat_1_title = "Pencatatan Secepat Kilat";
-const solve_finance_sol_feat_1_desc = "Catat transaksi dalam hitungan detik. Tidak ada layar loading panjang, tidak ada istilah akuntansi rumit. Cukup nominal, kategori, selesai.";
-const solve_finance_sol_feat_2_title = "Anggaran Visual";
-const solve_finance_sol_feat_2_desc = "Tetapkan batas untuk kategori dan lihat progress bar-nya. Ketahui persis berapa sisa 'uang senang-senang' tanpa rasa bersalah.";
-const solve_finance_sol_feat_3_title = "Target Pemasukan";
-const solve_finance_sol_feat_3_desc = "Bukan sekadar melacak pengeluaran. Tetapkan target pemasukan bulanan dan saksikan kekayaanmu tumbuh sebagai freelancer atau kreator.";
-const solve_finance_syn_title = "Kebiasaan Mikro jadi Kekayaan Makro";
-const solve_finance_syn_desc = "Karena strategi keuangan terbaik adalah mengubah perilaku harianmu.";
-const solve_finance_cta_title = "Berhenti menebak ke mana uangmu pergi.";
-const solve_finance_cta_desc = "Mulai arahkan uangmu untuk kehidupan yang benar-benar ingin kamu jalani.";
-const solve_finance_cta_btn = "Mulai Melacak Hari Ini";
+const solve_finance_prob_1_title = "Kebocoran Halus";
+const solve_finance_prob_1_desc = "Langganan yang terlupakan dan biaya kecil yang jika ditotal merusak rencana masa depanmu.";
+const solve_finance_prob_2_title = "Tanpa Dana Darurat";
+const solve_finance_prob_2_desc = "Hidup dari gaji ke gaji tanpa perlindungan saat keadaan darurat tiba-tiba muncul.";
+const solve_finance_prob_3_title = "Ketidaktahuan Kekayaan";
+const solve_finance_prob_3_desc = "Tidak tahu berapa total kekayaan bersih (net worth) Anda saat ini karena data tersebar di mana-mana.";
+const solve_finance_sol_title = "Uang Anda, Dalam Perintah Anda.";
+const solve_finance_sol_desc = "OneForMind memberi Anda visibilitas penuh. Bukan hanya mencatat, tapi merencanakan kebebasan Anda.";
+const solve_finance_sol_step_1_title = "Input Instan";
+const solve_finance_sol_step_1_desc = "Catat setiap pengeluaran dalam hitungan detik. Kecepatan adalah kunci konsistensi.";
+const solve_finance_sol_step_2_title = "Anggaran Fleksibel";
+const solve_finance_sol_step_2_desc = "Tetapkan batas untuk kategori tertentu dan biarkan sistem memperingatkan Anda sebelum terlambat.";
+const solve_finance_sol_step_3_title = "Proyeksi Kekayaan";
+const solve_finance_sol_step_3_desc = "Lihat bagaimana tabungan dan investasi Anda tumbuh seiring waktu dengan visualisasi yang memotivasi.";
+const solve_finance_feat_title = "Dasar Keuangan Kuat";
+const solve_finance_feat_desc = "Fitur yang dirancang untuk membangun stabilitas jangka panjang.";
+const solve_finance_feat_1_title = "Pelacak Pengeluaran";
+const solve_finance_feat_1_desc = "Kategorisasi otomatis dan manual untuk memahami ke mana setiap rupiah Anda pergi setiap bulannya.";
+const solve_finance_feat_2_title = "Pusat Anggaran";
+const solve_finance_feat_2_desc = "Buat rencana belanja bulanan dan bandingkan dengan realita pengeluaran Anda secara real-time.";
+const solve_finance_feat_3_title = "Net Worth Tracker";
+const solve_finance_feat_3_desc = "Lihat gambaran besar. Hubungkan aset dan kewajiban Anda untuk mengetahui nilai finansial asli Anda.";
+const solve_finance_cta_title = "Siap untuk Merdeka Finansial?";
+const solve_finance_cta_desc = "Mulai bangun fondasi kekayaanmu sekarang dengan sistem yang paling intuitif.";
+const solve_finance_cta_btn = "Mulai Kelola Uang Saya";
 const solve_finance_faq_title = "FAQ Masteri Keuangan";
-const solve_finance_faq_q1 = "Apakah ini lebih baik daripada spreadsheet?";
-const solve_finance_faq_a1 = "Ya, karena selalu ada di saku Anda. Pencatatan cepat, progress bar visual, dan rekap otomatis menghemat waktu input manual Anda setiap minggu.";
-const solve_finance_faq_q2 = "Bisakah saya melacak banyak akun?";
-const solve_finance_faq_a2 = "Anda dapat menggunakan kategori dan catatan untuk membagi pengeluaran dan sumber pendapatan, memberikan pandangan komprehensif tentang kesehatan finansial total Anda.";
-const solve_finance_faq_q3 = "Apakah ini terhubung ke bank saya?";
-const solve_finance_faq_a3 = "Kami memprioritaskan privasi dan kesadaran manual. OneForMind tidak terhubung ke bank Anda, mendorong Anda untuk sadar akan setiap rupiah yang bergerak melalui sistem Anda.";
-const solve_finance_science_badge = "PERILAKU KEUANGAN";
-const solve_finance_science_title = "Penguasaan Atas Uang";
-const solve_finance_science_desc = "Terinspirasi oleh metode 'Kakeibo' dan prinsip 'Mindful Spending'. Sistem kami berfokus pada hubungan emosional dengan uang, bukan sekadar angka.";
-const solve_finance_extra_1_title = "Psikologi Berbelanja";
-const solve_finance_extra_1_desc = "Identifikasi pemicu emosional yang menyebabkan belanja impulsif. Dengan mencatat konteks transaksi, Anda dapat membangun identitas belanja yang lebih bijak.";
-const solve_finance_extra_2_title = "Kompas Kekayaan Jangka Panjang";
-const solve_finance_extra_2_desc = "Visualisasikan ke mana kebiasaan menabung Anda saat ini akan membawa Anda dalam 5 tahun. Gunakan data untuk menyesuaikan gaya hidup sekarang demi kebebasan yang Anda inginkan nanti.";
-const solve_mental_meta_title = "Kejernihan Mental & Jurnal - OneForMind";
-const solve_mental_meta_desc = "Hilangkan kekusutan pikiran. Gunakan jurnal dan pelacak mood kami untuk menemukan kedamaian dan fokus di dunia yang bising.";
-const solve_mental_meta_og_title = "Temukan Tempat Berlindung Mentalmu di OneForMind";
-const solve_mental_meta_og_desc = "Kosongkan pikiranmu, pantau emosimu, dan bangun mental yang tangguh.";
-const solve_mental_hero_badge = "Sanctuary Mental";
-const solve_mental_hero_title_1 = "Jernihkan Pikiran.";
-const solve_mental_hero_title_2 = "Rebut Kembali Fokusmu.";
-const solve_mental_hero_desc = "Otakmu diciptakan untuk menghasilkan ide, bukan menyimpannya. Tumpahkan kecemasanmu ke dalam jurnal digital yang aman dan estetik, lalu kembalikan fokusmu.";
-const solve_mental_hero_cta = "Mulai Menulis Jurnal";
-const solve_mental_prob_title = "Pandemi Overthinking";
-const solve_mental_prob_desc = "Kehidupan modern menuntut perhatian konstan. Tanpa sistem untuk memprosesnya, pikiranmu menjadi gudang penyimpanan yang kacau.";
-const solve_mental_prob_1_title = "Lingkaran Kecemasan";
-const solve_mental_prob_1_desc = "Memutar ulang kecemasan dan tugas yang belum selesai di kepalamu berulang kali karena kamu belum menuliskannya.";
-const solve_mental_prob_2_title = "Kelelahan Dopamin";
-const solve_mental_prob_2_desc = "Terus-menerus scrolling medsos untuk mengebaskan stres, yang mana hanya membuat pikiran makin kusut.";
-const solve_mental_sol_title = "Ruang Aman Digitalmu";
-const solve_mental_sol_desc = "OneForMind bukan sekadar alat produktivitas; ini adalah tempat perlindungan privat di mana kamu bisa merapikan dunia dalam dirimu sebelum menghadapi dunia luar.";
-const solve_mental_sol_step_1_title = "Brain Dump (Tumpahkan Beban)";
-const solve_mental_sol_step_1_desc = "Buka Zen Journal dan tulis apa saja yang ada di pikiranmu. Tanpa format, tanpa tekanan. Lepaskan saja.";
-const solve_mental_sol_step_2_title = "Pantau Kondisi Emosimu";
-const solve_mental_sol_step_2_desc = "Catat mood harianmu untuk melihat pola. Apakah kamu selalu cemas di hari Selasa? Sekarang kamu bisa mengantisipasinya.";
-const solve_mental_sol_step_3_title = "Transisi ke Aksi";
-const solve_mental_sol_step_3_desc = "Setelah pikiran jernih, pindah ke Planner dan jadwalkan HANYA hal-hal yang benar-benar penting hari ini.";
-const solve_mental_feat_title = "Alat untuk Kedamaian Batin";
-const solve_mental_feat_1_title = "Jurnal Bebas Distraksi";
-const solve_mental_feat_1_desc = "Antarmuka menulis yang bersih dan indah, dirancang menyerupai buku harian fisik. Tambahkan gambar, setel mood-mu, dan menulislah tanpa penghakiman.";
-const solve_mental_feat_2_title = "Analitik Korelasi Mood";
-const solve_mental_feat_2_desc = "Lihat bagaimana kebiasaanmu memengaruhi mood-mu. Cari tahu apakah olahraga benar-benar membuatmu lebih bahagia dalam periode 30 hari.";
-const solve_mental_cta_title = "Tarik napas dalam-dalam.";
-const solve_mental_cta_desc = "Pikiranmu berhak untuk istirahat. Mulai rapikan isi kepalamu hari ini.";
-const solve_mental_cta_btn = "Masuk ke Sanctuary";
-const solve_mental_faq_title = "FAQ Sanctuary Mental";
-const solve_mental_faq_q1 = "Apakah jurnal saya benar-benar privat?";
-const solve_mental_faq_a1 = "Ya. Kami memperlakukan refleksi Anda dengan tingkat privasi tertinggi. Data Anda dienkripsi dan hanya dapat diakses oleh Anda. Kami percaya menjurnal harus menjadi ruang yang aman.";
-const solve_mental_faq_q2 = "Seberapa sering saya harus menjurnal?";
-const solve_mental_faq_a2 = "Bahkan 2 menit sehari pun dapat menghilangkan kekusutan pikiran secara signifikan. OneForMind memudahkan dengan log mood cepat dan lingkungan menulis tanpa distraksi.";
-const solve_mental_faq_q3 = "Apa itu hubungan mood-kebiasaan?";
-const solve_mental_faq_a3 = "Sistem kami membantu Anda melihat korelasi. Misalnya, Anda mungkin menyadari mood meningkat signifikan pada hari di mana Anda menyelesaikan kebiasaan 'Jalan Pagi'.";
-const solve_mental_science_badge = "RESILIENSI MENTAL";
-const solve_mental_science_title = "Seni Introspeksi";
-const solve_mental_science_desc = "Berpijak pada Terapi Perilaku Kognitif (CBT) dan Psikologi Positif, alat kami membantu Anda mengaudit pikiran dan membangun pola pikir yang lebih tangguh.";
-const solve_mental_extra_1_title = "Reduksi Beban Kognitif";
-const solve_mental_extra_1_desc = "Memori kerja Anda terbatas. Dengan menumpahkan segalanya ke Sanctuary, Anda mengurangi kecemasan laten dan mendapatkan kembali kemampuan untuk berpikir mendalam.";
-const solve_mental_extra_2_title = "Sinkronisasi Tidur & Mood";
-const solve_mental_extra_2_desc = "Lacak bagaimana kualitas tidur memengaruhi output harian dan kondisi emosional Anda. Bangun gaya hidup yang mendukung kebutuhan biologis untuk performa puncak.";
-const atomic_meta_title = "Sistem Atomic - OneForMind";
-const atomic_meta_desc = "Bangun sistem, bukan hanya tujuan. Ubah perbaikan 1% harian menjadi hasil seumur hidup yang masif.";
-const atomic_meta_og_title = "Kuasai Kebiasaanmu dengan Sistem Atomic";
-const atomic_meta_og_desc = "Berhenti mengandalkan motivasi. Bangun sistem produktivitas yang berjalan otomatis.";
-const atomic_hero_badge = "Sistem Atomic";
-const atomic_hero_title_1 = "Jangan Ubah Tujuanmu.";
-const atomic_hero_title_2 = "Ubah Sistemmu.";
-const atomic_hero_desc = "Kesuksesan adalah produk dari kebiasaan harian, bukan transformasi sekali seumur hidup. Bangun sistem yang membuatmu 1% lebih baik setiap hari.";
-const atomic_hero_cta = "Bangun Sistemmu";
-const atomic_prob_title = "Jebakan Tujuan Besar";
-const atomic_prob_desc = "Alasan Resolusi Tahun Baru selalu gagal di bulan Februari.";
-const atomic_prob_1_title = "Motivasi Memudar";
-const atomic_prob_1_desc = "Mengandalkan tekad murni itu melelahkan. Saat kamu lelah, tujuan besar tidak lagi berarti.";
-const atomic_prob_2_title = "Paradoks Pemenang";
-const atomic_prob_2_desc = "Pemenang dan pecundang memiliki tujuan yang sama. Yang membedakan adalah sistem yang mereka gunakan.";
-const atomic_sol_title = "Kekuatan 1%";
-const atomic_sol_desc = "Bagaimana OneForMind membantumu melipatgandakan usaha harianmu.";
-const atomic_step_1_title = "Jadikan Terlihat";
-const atomic_step_1_desc = "Lacak kebiasaanmu secara visual. Jangan putus rantainya. Grid kalender adalah identitas barumu.";
-const atomic_step_2_title = "Jadikan Mudah";
-const atomic_step_2_desc = "Pecah tujuan besar menjadi milestone mikro. Mulai dari yang sangat kecil hingga mustahil untuk gagal.";
-const atomic_step_3_title = "Jadikan Memuaskan";
-const atomic_step_3_desc = "Lihat keuanganmu tumbuh sebagai hasil langsung dari menahan diri membeli kopi Rp50rb hari ini.";
-const atomic_feat_title = "Persenjataan Kebiasaan";
-const atomic_feat_1_title = "Heatmap Visual";
-const atomic_feat_1_desc = "Lihat konsistensimu dipetakan dalam grid indah ala GitHub. Cukup satu lirikan untuk tahu apakah kamu masih berada di jalur yang benar.";
-const atomic_feat_2_title = "Milestone Mikro";
-const atomic_feat_2_desc = "Ubah tujuan 1 tahun yang mengintimidasi menjadi langkah kecil harian yang bisa kamu centang tanpa merasa terbebani.";
-const atomic_mockup_title = "Sistem yang Membuatmu 1% Lebih Baik Setiap Hari.";
-const atomic_mockup_desc = "Jika kamu menjadi 1% lebih baik setiap hari selama setahun, kamu akan berakhir 37 kali lebih baik di akhir tahun.";
-const atomic_faq_title = "FAQ Sistem Atomik";
-const atomic_faq_q1 = "Mengapa disebut 'Sistem Atomik'?";
-const atomic_faq_a1 = "Terinspirasi dari karya James Clear, 'Sistem Atomik' berfokus pada perubahan kecil mikroskopis yang mudah dimulai tetapi memiliki efek penggandaan yang masif seiring waktu. Kami percaya bahwa sistem, bukan hanya motivasi, yang menentukan kesuksesan Anda.";
-const atomic_faq_q2 = "Bagaimana ini membantu peralihan identitas?";
-const atomic_faq_a2 = "Setiap kali Anda mencatat kebiasaan di OneForMind, Anda sedang memberikan suara untuk sosok yang Anda inginkan. Sistem kami memperkuat identitas baru ini melalui visual heatmap dan streak, membuat perubahan menjadi permanen.";
-const atomic_faq_q3 = "Bisakah saya menggunakan ini untuk tujuan yang kompleks?";
-const atomic_faq_a3 = "Tentu saja. Kekuatan Sistem Atomik terletak pada kemampuannya untuk mengurai tujuan yang kompleks dan mengintimidasi menjadi langkah-langkah kecil yang dapat ditindaklanjuti.";
-const atomic_science_badge = "DESAIN PERILAKU";
-const atomic_science_title = "Fisika Kemajuan";
-const atomic_science_desc = "Sistem Atomik dibangun di atas fondasi Ekonomi Perilaku dan Kebiasaan Berbasis Identitas. Sistem ini dirancang untuk meminimalkan 'Energi Aktivasi' yang diperlukan untuk memulai perilaku baru.";
-const atomic_cta_desc = "Bergabunglah dengan ribuan pengguna yang telah berhenti menetapkan tujuan yang mustahil dan mulai membangun sistem yang tak terhentikan.";
-const atomic_cta_title = "Mulai kemajuan 1%-mu hari ini.";
-const atomic_cta_btn = "Mulai Melacak";
-const atomic_extra_1_title = "Heatmap Kebiasaan Sistemik";
-const atomic_extra_1_desc = "Lebih dari sekadar streak biasa. Lihat seluruh lanskap kebiasaan Anda dan identifikasi sistem mana yang berkembang dan mana yang butuh perhatian lebih.";
-const atomic_extra_2_title = "Pabrik Efek Pengganda (Compounding)";
-const atomic_extra_2_desc = "Visualisasikan bagaimana kemenangan kecil harian menumpuk menjadi perubahan kuartalan yang masif. OneForMind mengukur progres Anda agar Anda tidak merasa jalan di tempat.";
-const deepwork_meta_title = "Protokol Deep Work - OneForMind";
-const deepwork_meta_desc = "Hancurkan distraksi. Gunakan timeboxing dan Pomodoro untuk melakukan pekerjaan terbaik dalam hidupmu.";
-const deepwork_meta_og_title = "Rebut Kembali Fokusmu dengan Deep Work";
-const deepwork_meta_og_desc = "Kuasai waktumu atau waktu akan menguasaimu.";
-const deepwork_hero_badge = "Protokol Deep Work";
-const deepwork_hero_title_1 = "Fokus Adalah Kekuatan";
-const deepwork_hero_title_2 = "Super Baru.";
-const deepwork_hero_desc = "Hentikan perpindahan konteks. Blokir waktumu, bungkam kebisingan, dan eksekusi tugas bernilai tinggi dengan fokus tanpa henti.";
-const deepwork_hero_cta = "Mulai Deep Work";
-const deepwork_prob_title = "Pandemi Pekerjaan Dangkal";
-const deepwork_prob_desc = "Kita sering bingung membedakan antara 'sibuk' dan 'produktif'.";
-const deepwork_prob_1_title = "Perpindahan Konteks";
-const deepwork_prob_1_desc = "Melompat antara email, chat, dan pekerjaan menghancurkan kapasitas kognitifmu.";
-const deepwork_prob_2_title = "Hidup Reaktif";
-const deepwork_prob_2_desc = "Membiarkan keadaan darurat orang lain mendikte jadwal harianmu.";
-const deepwork_prob_3_title = "Kemajuan Palsu";
-const deepwork_prob_3_desc = "Mencentang 20 tugas kecil tapi mengabaikan satu proyek besar yang sebenarnya penting.";
-const deepwork_sol_title = "Arsitektur Fokus";
-const deepwork_sol_1_title = "Timeboxing Visual";
-const deepwork_sol_1_desc = "Berikan pekerjaan spesifik untuk setiap jam. Jika tidak ada di jadwal, berarti tidak dikerjakan.";
-const deepwork_sol_2_title = "Sprint Terintegrasi";
-const deepwork_sol_2_desc = "Gunakan timer Pomodoro bawaan untuk mengunci 25 menit konsentrasi tanpa henti.";
-const deepwork_cta_title = "Siap melakukan pekerjaan terbaik dalam hidupmu?";
-const deepwork_cta_btn = "Bangun Jadwalku";
-const deepwork_mockup_title = "Timeline Fokus Harian";
-const deepwork_mockup_desc = "Konsentrasi penuh sedang berlangsung.";
-const deepwork_sol_3_title = "Inbox Antisipasi";
-const deepwork_sol_3_desc = "Saat ide acak mendistraksimu di tengah sesi fokus, tumpahkan langsung ke Inbox di sidebar dan segera kembali bekerja.";
-const deepwork_cta_note = "Gratis selamanya untuk individu.";
-const deepwork_faq_title = "FAQ Deep Work";
-const deepwork_faq_q1 = "Apa yang mendefinisikan 'Deep Work'?";
-const deepwork_faq_a1 = "Deep Work adalah kemampuan untuk fokus tanpa gangguan pada tugas yang menuntut kognitif secara intens. Ini adalah keterampilan yang memungkinkan Anda menguasai informasi rumit dengan cepat. OneForMind menyediakan lingkungan ideal untuk praktik ini.";
-const deepwork_faq_q2 = "Bagaimana pengatur waktu Pomodoro membantu?";
-const deepwork_faq_a2 = "Timer Pomodoro kami menggunakan tekanan waktu untuk membantu Anda menghindari 'Efek Zeigarnik'—kecenderungan untuk mengingat tugas yang belum selesai lebih dari yang sudah selesai. Ini membuat Anda tetap terkunci dalam sesi fokus.";
-const deepwork_faq_q3 = "Bisakah saya memblokir waktu khusus untuk fokus?";
-const deepwork_faq_a3 = "Ya. Sistem timeboxing visual kami memungkinkan Anda untuk berkomitmen pada sesi fokus secara mendalam, memperkecil kemungkinan Anda menyerah pada distraksi.";
-const deepwork_science_badge = "SUPREMASI KOGNITIF";
-const deepwork_science_title = "Neurobiologi Fokus";
-const deepwork_science_desc = "OneForMind dirancang di sekitar 'Teori Restorasi Perhatian' dan prinsip 'Pertumbuhan Myelin', memastikan sesi fokus Anda benar-benar meningkatkan keterampilan kognitif jangka panjang Anda.";
-const deepwork_cta_desc = "Berhenti membiarkan gangguan mencuri potensi Anda. Bangun jadwal, kunci fokus, dan eksekusi.";
-const deepwork_feat_title = "Persenjataan Fokus";
-const deepwork_feat_1_title = "Timer Pomodoro Bawaan";
-const deepwork_feat_1_desc = "Tinggalkan ekstensi browser pihak ketiga. Timer bawaan kami berada tepat di sebelah tugasmu, memastikan kamu tidak pernah merusak momentum.";
-const deepwork_feat_2_title = "Inbox Ide Persisten";
-const deepwork_feat_2_desc = "Saat ide brilian (atau distraksi) muncul di tengah sprint, buang langsung ke Inbox di sidebar dan segera kembali ke pekerjaan utamamu.";
-const deepwork_extra_1_title = "Metrik State of Flow";
-const deepwork_extra_1_desc = "Lacak jam kerja mendalam dan sesi Pomodoro Anda. Fokus berbasis data membantu Anda mengidentifikasi jendela performa puncak Anda sepanjang hari.";
-const deepwork_extra_2_title = "Desain Lingkungan Kognitif";
-const deepwork_extra_2_desc = "Produktivitas adalah produk dari lingkungan Anda. Gunakan protokol kami untuk menyiapkan ruang kerja dan alat digital demi output kognitif maksimal.";
+const solve_finance_faq_q1 = "Apakah saya perlu menghubungkan bank saya?";
+const solve_finance_faq_a1 = "Demi privasi dan keamanan maksimal, OneForMind saat ini fokus pada input manual yang cepat atau upload CSV, memastikan tidak ada akses langsung ke rekening bank Anda.";
+const solve_finance_faq_q2 = "Dapatkah saya melacak berbagai mata uang?";
+const solve_finance_faq_a2 = "Ya, sistem kami mendukung multi-currency untuk membantu Anda mengelola aset global di satu tempat.";
+const solve_finance_faq_q3 = "Apakah data keuangan saya benar-benar aman?";
+const solve_finance_faq_a3 = "Data Anda dienkripsi penuh. Kami menggunakan standar keamanan yang sama dengan aplikasi perbankan modern untuk melindungi informasi finansial sensitif Anda.";
+const solve_finance_science_badge = "ARSITEKTUR KEKAYAAN";
+const solve_finance_science_title = "Metodologi Alokasi Sadar";
+const solve_finance_science_desc = "Kami menggunakan prinsip 'Pay Yourself First' dan 'Zero-Based Budgeting'. Sistem kami dirancang untuk memastikan setiap rupiah memiliki tugas, mengurangi pembelian impulsif dan meningkatkan tabungan.";
+const solve_finance_extra_1_title = "Visualisasi Arus Kas";
+const solve_finance_extra_1_desc = "Pahami pasang surut keuangan Anda dengan grafik yang mudah dibaca. Identifikasi tren musiman dan sesuaikan gaya hidup Anda sebelum arus kas menjadi negatif.";
+const solve_finance_extra_2_title = "Target Tabungan Cerdas";
+const solve_finance_extra_2_desc = "Ingin beli rumah atau liburan? Tetapkan target spesifik dan biarkan OneForMind menghitung berapa banyak yang harus Anda sisihkan setiap bulan untuk mencapainya tepat waktu.";
+const solve_mental_meta_title = "Kejernihan Mental - OneForMind";
+const solve_mental_meta_desc = "Kurangi kecemasan dan tingkatkan fokus. Gunakan sistem jurnal reflektif untuk pikiran yang lebih tenang dan tajam.";
+const solve_mental_meta_og_title = "Jernihkan Pikiranmu dengan OneForMind";
+const solve_mental_meta_og_desc = "Ruang tenang di tengah kebisingan dunia digital. Temukan kedamaian melalui refleksi terstruktur.";
+const schema_solution_mental_clarity_name = "OneForMind Solusi Kejernihan Mental";
+const schema_solution_mental_clarity_description = "Sistem untuk mengelola kesehatan mental melalui jurnal reflektif dan teknik manajemen pikiran.";
+const mental_breadcrumb = "Kejernihan Mental";
+const solve_mental_hero_badge = "Kesehatan Mental";
+const solve_mental_hero_title_1 = "Heningkan Suara";
+const solve_mental_hero_title_2 = "Di Dalam Kepalamu.";
+const solve_mental_hero_desc = "Kurangi beban kognitif dan atasi overthinking. OneForMind menyediakan ruang aman untuk menuangkan pikiran, memproses emosi, dan menemukan fokus kembali.";
+const solve_mental_hero_cta = "Jernihkan Pikiran Saya";
+const mental_mockup_quote = "Pikiran yang tenang adalah senjata paling kuat dalam badai apa pun.";
+const mental_mockup_source = "Stoikisme Modern";
+const mental_mockup_task_1_title = "Meditasi Reflektif";
+const mental_mockup_task_1_sub = "10 Menit Selesai";
+const mental_mockup_task_2_title = "Journaling Brain Dump";
+const mental_mockup_task_2_sub = "3 Halaman Ditulis";
+const mental_mockup_task_3_title = "Fokus Zen";
+const mental_mockup_task_3_sub = "Deep work tanpa distraksi";
+const solve_mental_prob_title = "Epidemi Pikiran Berisik";
+const solve_mental_prob_desc = "Dunia saat ini dirancang untuk mencuri perhatian dan membuatmu merasa cemas.";
+const solve_mental_prob_1_title = "Beban Kognitif Berlebih";
+const solve_mental_prob_1_desc = "Terlalu banyak informasi yang masuk membuat otakmu 'hang' dan sulit membuat keputusan sederhana sekalipun.";
+const solve_mental_prob_2_title = "Kecanduan Distraksi";
+const solve_mental_prob_2_desc = "Dorongan konstan untuk mengecek notifikasi membunuh kemampuanmu untuk berpikir mendalam dan reflektif.";
+const solve_mental_sol_title = "Sistem Operasi Untuk Jiwamu.";
+const solve_mental_sol_desc = "Kami bukan hanya aplikasi catatan. Kami adalah tempat untuk membedah pikiran, memahami pola emosi, dan membangun ketangguhan mental.";
+const solve_mental_sol_step_1_title = "Brain Dump Teratur";
+const solve_mental_sol_step_1_desc = "Keluarkan semua kekacauan di kepala ke dalam sistem dalam hitungan detik untuk segera merasa lebih ringan.";
+const solve_mental_sol_step_2_title = "Proses & Refleksikan";
+const solve_mental_sol_step_2_desc = "Gunakan pertanyaan pemandu (prompt) kami untuk menggali akar penyebab kecemasan atau kebahagiaanmu hari ini.";
+const solve_mental_sol_step_3_title = "Temukan Pola";
+const solve_mental_sol_step_3_desc = "Lihat statistik mood dan jurnalmu dalam jangka waktu panjang untuk memahami apa yang benar-benar memicu stresmu.";
+const mental_mockup_journal_badge = "ENTRI ZEN";
+const mental_mockup_journal_text = "Hari ini aku menyadari bahwa kecemasanku berasal dari ekspektasi orang lain yang tidak perlu kupenuhi...";
+const mental_mockup_journal_status = "Lega";
+const solve_mental_feat_title = "Perisai Mental Anda";
+const solve_mental_feat_1_title = "Jurnal Refleksi";
+const solve_mental_feat_1_desc = "Ruang menulis tanpa gangguan untuk mengekspresikan diri secara bebas, dilengkapi dengan prompt berbasis terapi kognitif.";
+const solve_mental_feat_2_title = "Mood Tracker";
+const solve_mental_feat_2_desc = "Visualisasikan perjalanan emosionalmu. Pahami hubungan antara aktivitas harian dan tingkat kedamaian mentalmu.";
+const mental_extra_1_label = "BEBAN KOGNITIF";
+const solve_mental_extra_1_title = "Kurangi Kebisingan";
+const solve_mental_extra_1_desc = "Sistem kami dirancang untuk meminimalkan beban mental. Dengan antarmuka yang bersih dan alur yang logis, Anda bisa fokus pada apa yang ada di dalam, bukan di layar.";
+const solve_mental_extra_2_title = "Lingkaran Refleksi";
+const solve_mental_extra_2_desc = "Ubah pikiran acak menjadi kebijaksanaan yang bisa ditindaklanjuti.";
+const mental_extra_2_item_1 = "Kesadaran Diri";
+const mental_extra_2_item_2 = "Kontrol Emosi";
+const mental_extra_2_item_3 = "Ketangguhan";
+const solve_mental_science_badge = "PSIKOLOGI TERAPAN";
+const solve_mental_science_title = "Neuroplastisitas & Refleksi";
+const solve_mental_science_desc = "Berdasarkan prinsip Terapi Perilaku Kognitif (CBT), jurnal terstruktur membantu memprogram ulang pola pikir negatif dan membangun jalur saraf baru untuk ketenangan.";
+const mental_science_process_1_title = "Pelepasan Emosional";
+const mental_science_process_2_title = "Restrukturisasi Kognitif";
+const mental_science_process_3_title = "Kesadaran Penuh";
+const mental_science_process_4_title = "Stabilitas Neurokimia";
+const solve_mental_faq_title = "FAQ Kejernihan Mental";
+const solve_mental_faq_q1 = "Apakah ini bisa menggantikan terapi?";
+const solve_mental_faq_a1 = "Tidak. OneForMind adalah alat pendukung untuk menjaga kesehatan mental harian. Jika Anda mengalami kesulitan serius, kami sangat menyarankan untuk berkonsultasi dengan profesional medis.";
+const solve_mental_faq_q2 = "Seberapa sering saya harus menulis jurnal?";
+const solve_mental_faq_a2 = "Bahkan 5 menit sehari dapat membuat perbedaan besar. Kuncinya adalah konsistensi, bukan panjangnya tulisan.";
+const solve_mental_faq_q3 = "Apakah ada prompt yang disediakan?";
+const solve_mental_faq_a3 = "Ya, kami menyediakan berbagai template prompt untuk pagi hari, malam hari, dan untuk mengatasi momen stres spesifik.";
+const solve_mental_cta_title = "Ambil Nafas Dalam-Dalam.";
+const solve_mental_cta_desc = "Ketidakteraturan di luar dimulai dari ketidakteraturan di dalam. Mulai jernihkan pikiranmu hari ini.";
+const solve_mental_cta_btn = "Mulai Hidup Lebih Tenang";
+const growth_meta_title = "Pengembangan Diri & Produktivitas - OneForMind";
+const growth_meta_desc = "Bangun kebiasaan baik, jernihkan pikiran dengan jurnal, dan raih versi terbaik dirimu setiap hari.";
+const growth_meta_og_title = "OneForMind untuk Personal Growth";
+const growth_meta_og_desc = "Sistem untuk membangun identitas baru dan kebiasaan yang tak terhentikan.";
+const schema_solution_growth_name = "OneForMind Solusi Pengembangan Diri";
+const schema_solution_growth_description = "Sistem untuk membangun kebiasaan atomik dan mencapai pertumbuhan pribadi berkelanjutan.";
+const growth_breadcrumb = "Pengembangan Diri";
+const growth_hero_badge = "Pengembangan Diri";
+const growth_hero_title_1 = "Berhenti Merencanakan,";
+const growth_hero_title_2 = "Mulai Mengeksekusi.";
+const growth_hero_desc = "Sistem komprehensif untuk melacak kebiasaan, merenungkan pikiran, dan membangun versi terbaik dirimu setiap hari. Sedikit demi sedikit, langkah demi langkah.";
+const growth_hero_cta_1 = "Mulai Transformasimu";
+const growth_hero_social_proof = "Bergabung dengan ribuan pengejar mimpi.";
+const growth_mockup_goal_label = "Target Membaca";
+const growth_mockup_habit_title = "Lari Pagi";
+const growth_mockup_habit_desc = "5 km selesai";
+const growth_mockup_reflection_title = "Refleksi Harian";
+const growth_mockup_reflection_desc = "Hari ini aku belajar merelakan hal yang tidak bisa kukontrol...";
+const growth_mockup_streak_title = "Streak 30 Hari!";
+const growth_mockup_streak_desc = "Konsistensi membentuk identitas baru.";
+const growth_habit_streak = "Streak 30 Hari!";
+const growth_habit_streak_desc = "Konsistensi membentuk identitas baru.";
+const growth_feat_1_title = "Bangun Identitas Baru Melalui Kebiasaan";
+const growth_feat_1_desc = "Setiap kali kamu menyelesaikan kebiasaan, kamu sedang memberikan suara untuk tipe orang yang kamu inginkan. Bangun rantai kemenanganmu (streak) dan jangan pernah putuskan.";
+const growth_feat_1_point_1 = "Pelacakan Kebiasaan Presisi";
+const growth_feat_1_point_2 = "Milestone & Penghargaan Konsistensi";
+const growth_feat_2_title = "Ruang Hening Untuk Pikiranmu";
+const growth_feat_2_desc = "Jauhkan diri dari kebisingan digital. Masuki 'Zen Mode' dan mulai urai benang kusut di kepalamu melalui jurnal refleksi harian tanpa gangguan UI yang berisik.";
+const growth_feat_2_quote_title = "Terkadang, trik produktivitas terbaik adalah jeda sejenak untuk memahami diri sendiri.";
+const growth_feat_2_quote_body = "Menuliskan apa yang kamu rasakan akan membantumu menguasai apa yang akan kamu lakukan selanjutnya.";
+const growth_extra_1_title = "Evolusi Visual";
+const growth_extra_1_desc = "Lihat progres Anda tumbuh dari benih kecil menjadi pohon yang rimbun seiring konsistensi Anda pada tujuan.";
+const growth_extra_2_title = "Prinsip 1%";
+const growth_extra_2_desc = "Perubahan kecil membawa hasil masif seiring berjalannya waktu.";
+const growth_extra_2_stat_label = "PROGRES TAHUNAN";
+const growth_extra_2_stat_sub = "Kekuatan Perbaikan 1%";
+const growth_science_badge = "KEUNGGULAN AKADEMIK";
+const growth_science_title = "Sains di Balik Belajar";
+const growth_science_desc = "Dibangun di atas prinsip Spaced Repetition dan Manajemen Sumber Daya Kognitif.";
+const growth_science_point_1 = "Antifragilitas";
+const growth_science_point_2 = "Pergeseran Identitas";
+const growth_science_point_3 = "Bunga Majemuk";
+const growth_faq_title = "Pertanyaan Umum";
+const growth_faq_q1 = "Bagaimana sistem pelacakan kebiasaan bekerja?";
+const growth_faq_a1 = "Sistem ini menggunakan metodologi 'Atomic Habits', berfokus pada kemenangan kecil dan kebiasaan berbasis identitas.";
+const growth_faq_q2 = "Apakah data jurnal saya pribadi?";
+const growth_faq_a2 = "Tentu saja. Refleksi Anda hanya untuk Anda sendiri, disimpan dengan aman menggunakan prinsip privasi utama.";
+const growth_faq_q3 = "Bisakah saya sinkronisasi antar perangkat?";
+const growth_faq_a3 = "Ya, perjalanan pertumbuhan Anda tetap bersama Anda di mana pun Anda berada, tersinkronisasi di semua perangkat.";
+const growth_cta_title = "Hari Ini Adalah Hari Pertama.";
+const growth_cta_desc = "Masa depanmu dibentuk oleh apa yang kamu lakukan hari ini, bukan besok. Ambillah langkah pertama itu sekarang.";
+const growth_cta_btn = "Mulai Perjalanan Growth-mu";
+const growth_cta_note = "Gratis 100% untuk memulai langkah kecil.";
+const growth_science_viz_aura = "Sinkronisasi_Kehidupan";
 const brain_meta_title = "Second Brain - OneForMind";
-const brain_meta_desc = "Lepaskan beban kognitifmu. Tumpahkan pikiran, tugas, dan kecemasan ke dalam sistem digital terpercaya.";
-const brain_meta_og_title = "Buat Second Brain-mu Sendiri";
-const brain_meta_og_desc = "Otakmu untuk menciptakan ide, bukan menyimpannya.";
-const brain_hero_badge = "Beban Kognitif";
-const brain_hero_title_1 = "Otakmu Untuk Ide,";
-const brain_hero_title_2 = "Bukan Menyimpannya.";
-const brain_hero_desc = "Berhenti mencoba mengingat semuanya. Tumpahkan tugas, pikiran, dan kecemasanmu ke dalam sistem digital yang bisa kamu andalkan agar kamu bisa bersantai.";
-const brain_hero_cta = "Bebaskan Pikiranmu";
-const brain_prob_title = "Pandemi Overthinking";
-const brain_prob_desc = "Kenapa kamu merasa lelah bahkan sebelum mulai bekerja.";
-const brain_prob_core = "Menyimpan terlalu banyak 'tab terbuka' di kepalamu menyebabkan kecemasan, brain fog, dan kelelahan mengambil keputusan. Kamu butuh hard disk eksternal untuk hidupmu.";
-const brain_sol_title = "Kerangka Kerja T.O.E";
-const brain_step_1 = "TANGKAP: Lempar setiap tugas, ide, atau kecemasan acak ke Inbox atau Jurnal saat itu juga.";
-const brain_step_2 = "ORGANISASI: Filter data tersebut ke Planner, Job Tracker, atau Keuangan.";
-const brain_step_3 = "EKSEKUSI: Bekerja dengan pikiran jernih, karena tahu semuanya tersimpan aman.";
-const brain_cta_title = "Lepaskan beban kognitifmu.";
-const brain_cta_btn = "Buat Second Brain-mu";
-const brain_mockup_1 = "Inbox Cepat";
-const brain_mockup_2 = "Pusat OneForMind";
-const brain_mockup_3 = "Eksekusi Jernih";
-const brain_prob_1_title = "Open Loops Tanpa Henti";
-const brain_prob_1_desc = "Tugas yang belum selesai terus berputar di kepala sepanjang hari, menguras energimu dan menyebabkan kecemasan laten.";
-const brain_prob_2_title = "Fragmentasi Informasi";
-const brain_prob_2_desc = "Catatan di HP, tugas di buku, acara di kalender. Tidak ada yang terhubung, dan semuanya gampang hilang.";
-const brain_prob_3_title = "Kelelahan Keputusan";
-const brain_prob_3_desc = "Membuang energi mental terbaikmu setiap pagi hanya untuk mencari tahu apa yang seharusnya kamu kerjakan.";
-const brain_sol_desc = "Bagaimana OneForMind bertindak sebagai hard disk eksternal digitalmu.";
-const brain_step_1_title = "1. Tangkap (Capture)";
-const brain_step_1_desc = "Lempar setiap tugas, ide, atau kecemasan acak ke Inbox atau Jurnal tepat pada saat hal itu muncul di kepalamu.";
-const brain_step_2_title = "2. Organisasi (Organize)";
-const brain_step_2_desc = "Saring data tersebut ke Planner, Job Tracker, atau Keuangan saat kamu benar-benar punya waktu untuk memprosesnya.";
-const brain_step_3_title = "3. Eksekusi (Execute)";
-const brain_step_3_desc = "Bekerja dengan pikiran jernih, karena tahu semuanya tersimpan aman dan akan dimunculkan tepat saat dibutuhkan.";
-const brain_cta_desc = "Biarkan sistem yang mengingat. Kamu hanya perlu berpikir.";
-const brain_extra_1_title = "Hierarki Informasi Dinamis";
-const brain_extra_1_desc = "Atur informasi bukan hanya berdasarkan kategori, tapi desakan aksi. Otak Kedua Anda tahu apa yang perlu dilihat sekarang dan apa yang bisa menunggu.";
-const brain_extra_2_title = "Mesin Output Kreatif";
-const brain_extra_2_desc = "Berhenti sekadar mengumpulkan informasi. OneForMind mengubah catatan dan pikiran Anda menjadi perpustakaan blok pembangun untuk proyek dan karya kreatif Anda.";
-const ecosystem_habit_title = "Lingkaran Kebiasaan";
-const ecosystem_finance_title = "Buku Keuangan";
-const ecosystem_planner_title = "Timeline Aksi";
-const ecosystem_goal_title = "Papan Visi";
-const ecosystem_journal_title = "Arsip Tenang";
-const ecosystem_job_title = "Pipeline Karir";
-const ecosystem_notes_title = "Catatan Pintar";
-const ecosystem_calendar_title = "Kalender Master";
-const brain_faq_title = "FAQ Otak Kedua";
-const brain_hub_title = "Pusat Kendali OneForMind";
-const brain_hub_inbox_title = "Kotak Masuk Cepat";
-const brain_hub_inbox_desc = "Ruang sementara berkecepatan tinggi untuk menangkap ide, tautan, dan tugas secara instan sebelum mereka hilang dari ingatan Anda.";
-const brain_hub_os_title = "Arsitektur Life OS";
-const brain_hub_os_desc = "Rumah digital permanen Anda di mana informasi mentah disaring secara cerdas ke dalam kebiasaan, keuangan, dan target jangka panjang.";
-const brain_feat_title = "Alat Bantu Otak";
-const brain_feat_1_title = "Penangkapan Tanpa Hambatan";
-const brain_feat_1_desc = "Simpan apa pun dari mana pun. OneForMind menjadi peredam banjir informasi, memungkinkan Anda untuk tetap berada dalam alur kreatif.";
-const brain_feat_2_title = "Pengarsipan Konteks Mendalam";
-const brain_feat_2_desc = "Lebih dari sekadar catatan statis. Hubungkan setiap data ke sektor kehidupan tertentu, tanggal eksekusi, dan visi utama Anda.";
-const brain_faq_q1 = "Apa itu 'Otak Kedua' (Second Brain)?";
-const brain_faq_a1 = "Otak Kedua adalah sistem digital eksternal yang dirancang untuk menyimpan dan mengatur informasi harian. Dengan memindahkan beban memori ke OneForMind, Anda membebaskan otak biologis untuk berkreasi, bukan sekadar mengingat.";
-const brain_faq_q2 = "Bagaimana cara kerja kerangka kerja C.O.E?";
-const brain_faq_a2 = "C.O.E adalah singkatan dari Capture (Tangkap), Organize (Atur), dan Execute (Eksekusi). Ini adalah versi sederhana kami dari metode P.A.R.A. Anda menangkap segalanya secara instan, mengaturnya saat diperlukan, dan fokus pada eksekusi.";
-const brain_faq_q3 = "Apakah ini hanya untuk tugas pekerjaan?";
-const brain_faq_a3 = "Tidak. Otak Kedua sejati mengelola seluruh hidup Anda—dari tujuan pribadi dan keuangan hingga refleksi emosional. OneForMind dibangun untuk menjadi Life OS terpadu Anda.";
-const brain_science_badge = "PELEPASAN KOGNITIF";
-const brain_science_title = "Sains Memori Eksternal";
-const brain_science_desc = "OneForMind menerapkan tesis 'Extended Mind' dan prinsip 'Cognitive Offloading' untuk mengurangi biaya biologis dari manajemen informasi.";
-const brain_cta_note = "Gratis selamanya untuk individu.";
+const brain_meta_desc = "Bangun perpustakaan pengetahuan pribadi. Jangan pernah lupakan ide cemerlang Anda lagi.";
+const brain_meta_og_title = "Perpustakaan Pengetahuan OneForMind";
+const brain_meta_og_desc = "Sistem untuk menangkap, mengatur, dan mengeksekusi ide-ide Anda.";
+const brain_breadcrumb = "Second Brain";
+const brain_hero_badge = "Sistem Memori Eksternal";
+const brain_hero_title_1 = "Bukan Sekadar Catatan,";
+const brain_hero_title_2 = "Ini Adalah Memori Anda.";
+const brain_hero_desc = "Otak manusia dirancang untuk melahirkan ide, bukan menyimpannya. Bangun sistem pendukung yang menjaga semua pengetahuan Anda tetap terjangkau saat Anda membutuhkannya.";
+const brain_hero_cta = "Bangun Second Brain Beranda";
+const brain_mockup_1 = "Capture Kilat";
+const brain_mockup_2 = "Atur Otomatis";
+const brain_mockup_3 = "Eksekusi Ide";
+const brain_mockup_3_quote = "Ide bukan untuk disimpan, tapi untuk dikembangkan.";
+const brain_prob_title = "Kelebihan Beban Informasi";
+const brain_prob_desc = "Kita hidup di era di mana informasi melimpah tapi hikmah (wisdom) sangat langka.";
+const brain_prob_1_title = "Lupa Ide Cemerlang";
+const brain_prob_1_desc = "Ide yang muncul di tengah jalan hilang begitu saja karena tidak punya tempat penampungan yang instan.";
+const brain_prob_2_title = "Data Tercecer";
+const brain_prob_2_desc = "Tangkapan layar di galeri, link di WhatsApp, dan catatan di kertas—semuanya terpisah dan sulit dicari.";
+const brain_prob_3_title = "Kelelahan Mental";
+const brain_prob_3_desc = "Mencoba mengingat semuanya menghabiskan energi yang seharusnya kamu pakai untuk berkarya.";
+const brain_prob_viz_badge = "KEBISINGAN";
+const brain_prob_viz_sub = "Sistem lama Anda yang berantakan.";
+const brain_sol_title = "Satu Tempat Untuk Segalanya.";
+const brain_sol_desc = "Sistem C.O.E (Capture, Organize, Execute) membantu Anda mengubah ribuan informasi menjadi hasil yang nyata.";
+const brain_step_1_title = "Capture (Tangkap)";
+const brain_step_1_desc = "Alirkan semua inspirasi masuk ke inbox dalam hitungan detik. Tanpa gesekan.";
+const brain_step_2_title = "Organize (Atur)";
+const brain_step_2_desc = "Hubungkan antar catatan. Lihat pola yang tidak pernah Anda sadari sebelumnya.";
+const brain_step_3_title = "Execute (Lakukan)";
+const brain_step_3_desc = "Ubah pengetahuan menjadi proyek. Selesaikan apa yang Anda mulai.";
+const brain_hub_title = "Pusat Kendali Pengetahuan";
+const brain_hub_inbox_title = "Inbox Cepat";
+const brain_hub_inbox_desc = "Tempat penampungan sementara sebelum dikategorikan.";
+const brain_hub_os_title = "Life OS";
+const brain_hub_os_desc = "Struktur utama untuk seluruh area kehidupan Anda.";
+const brain_feat_title = "Peralatan Berpikir Modern";
+const brain_feat_sub = "Fitur yang dirancang untuk memperluas kapasitas intelektual Anda.";
+const brain_feat_1_title = "Smart Capture";
+const brain_feat_1_desc = "Simpan apa saja dari mana saja. OneForMind menjadi asisten yang selalu siap mencatat saat Anda mendapatkan inspirasi.";
+const brain_feat_2_title = "Visual Network";
+const brain_feat_2_desc = "Lihat bagaimana satu ide terhubung dengan ide lainnya dalam bentuk grafik pengetahuan (brain map) yang interaktif.";
+const brain_extra_1_title = "Hierarki Informasi";
+const brain_extra_1_desc = "Atur data Anda mulai dari level atom hingga level korporasi dengan struktur yang sangat fleksibel.";
+const brain_extra_1_item_1 = "Koneksi Cerdas";
+const brain_extra_1_item_2 = "Pencarian Kilat";
+const brain_extra_1_item_3 = "Filter Dinamis";
+const brain_extra_1_viz_title = "KAPASITAS TIDAK TERBATAS";
+const brain_extra_2_title = "Output Kreatif";
+const brain_extra_2_desc = "Jangan hanya membaca. Menulislah, kembangkan, dan publikasikan ide-ide Anda lebih cepat dari sebelumnya.";
+const brain_extra_2_item_1 = "Drafting";
+const brain_extra_2_item_2 = "Mindmap";
+const brain_extra_2_item_3 = "Publikasi";
+const brain_science_badge = "NEUROSAINS KOGNITIF";
+const brain_science_title = "Ekstensi Intelektual";
+const brain_science_desc = "Secara ilmiah, mengurangi beban memori kerja membebaskan otak untuk pemrosesan tingkat tinggi (kreativitas & pemecahan masalah).";
+const brain_science_topic_1 = "Metode Zettelkasten";
+const brain_science_topic_2 = "Prinsip P.A.R.A";
+const brain_science_topic_3 = "Graph Theory";
+const brain_science_viz_badge = "CORE_BRAIN";
+const brain_faq_title = "FAQ Second Brain";
+const brain_faq_q1 = "Apa perbedaannya dengan aplikasi catatan biasa?";
+const brain_faq_a1 = "Aplikasi biasa hanya menyimpan teks. OneForMind membantu Anda membangun RELASI antar ide, menciptakan ekosistem pengetahuan yang tumbuh seiring waktu.";
+const brain_faq_q2 = "Apakah sulit untuk diatur?";
+const brain_faq_a2 = "Kami menyediakan template 'Life OS' yang siap pakai, jadi Anda bisa langsung mulai tanpa harus membangun sistem dari nol.";
+const brain_faq_q3 = "Dapatkah saya mengimpor data lama saya?";
+const brain_faq_a3 = "Ya, kami mendukung berbagai format impor sehingga perpustakaan pengetahuan Anda yang ada dapat berpindah dengan mudah ke OneForMind.";
+const brain_cta_title = "Bebaskan Ruang di Kepalamu.";
+const brain_cta_desc = "Berikan otak Anda ruang untuk berpikir, bukan hanya untuk menyimpan. Mulai bangun memori eksternal Anda hari ini.";
+const brain_cta_btn = "Aktifkan Second Brain-ku";
+const student_meta_title = "Sistem Sukses Pelajar - OneForMind";
+const student_meta_desc = "Kuasai jadwal kuliah, kelola tugas, dan atur keuangan mahasiswa dalam satu sistem terintegrasi.";
+const student_meta_og_title = "OneForMind untuk Pelajar & Mahasiswa";
+const student_meta_og_desc = "Sistem survival kit untuk meraih IPK tinggi dan hidup teratur tanpa stres.";
+const schema_student_name = "OneForMind Solusi Pelajar";
+const schema_student_description = "Platform manajemen akademik dan kehidupan untuk siswa dan mahasiswa.";
+const schema_solution_student_audience = "Pelajar, Mahasiswa, Akademisi";
+const student_hero_badge = "Pendamping Akademik";
+const student_hero_title_1 = "Kuasai Kampus,";
+const student_hero_title_2 = "Kendalikan Hidupmu.";
+const student_hero_desc = "Satu tempat untuk jadwal kuliah, tugas yang menumpuk, dan budget kost-an yang terbatas. Berhenti merasa kewalahan, mulailah menjadi pelajar yang sistematis.";
+const student_hero_cta_1 = "Mulai Sebagai Pelajar Cerdas";
+const student_hero_social_proof = "Direkomendasikan oleh ribuan mahasiswa produktif.";
+const student_mockup_title = "Dashboard Mahasiswa";
+const student_mockup_budget_label = "Sisa Budget Minggu Ini";
+const student_mockup_budget_status = "Aman";
+const student_mockup_task_badge = "URGENT";
+const student_mockup_task_title = "Tugas Makroekonomi";
+const student_mockup_schedule_label = "Jadwal Hari Ini";
+const student_mockup_schedule_item_1 = "Kuliah Pengantar AI";
+const student_mockup_schedule_item_2 = "Rapat Organisasi";
+const student_prob_title = "Kekacauan Hidup Mahasiswa";
+const student_prob_desc = "Terjepit di antara tenggat waktu, pengeluaran tak terduga, dan kurang tidur.";
+const student_prob_1_title = "Lumpuh Karena Deadline";
+const student_prob_1_desc = "Tugas yang menumpuk membuatmu tidak tahu harus mulai dari mana, berakhir dengan SKS (Sistem Kebut Semalam) yang merusak kesehatan.";
+const student_prob_2_title = "Krisis Keuangan Akhir Bulan";
+const student_prob_2_desc = "Uang saku habis tanpa jejak di tengah bulan karena tidak ada sistem pelacakan pengeluaran yang praktis.";
+const student_prob_3_title = "Kelelahan Mental (Burnout)";
+const student_prob_3_desc = "Berusaha menyeimbangkan akademik dan organisasi tanpa jadwal yang jelas membuatmu cepat lelah secara mental.";
+const student_feat_1_visual_badge = "SENTRAL AKADEMIK";
+const student_feat_1_title = "Manajer Tugas & Proyek Kuliah";
+const student_feat_1_desc = "Pecah tugas besar menjadi langkah-langkah kecil. Pantau progres setiap mata kuliah dan pastikan tidak ada yang terlewatkan saat tenggat waktu mendekat.";
+const student_feat_1_point_1 = "Timeline Tugas Interaktif";
+const student_feat_1_point_2 = "Repositori Materi Per Mata Kuliah";
+const student_feat_2_title = "Survival Finance Mahasiswa";
+const student_feat_2_desc = "Anggaran khusus untuk kebutuhan mahasiswa. Pantau jatah makan, biaya buku, dan tabungan liburan semester dalam satu alur sederhana.";
+const student_feat_2_point_1 = "Alokasi Budget Mingguan";
+const student_feat_2_badge_1 = "Prioritas";
+const student_feat_2_point_2 = "Sisa Saldo Real-Time";
+const student_feat_2_badge_2 = "Akurat";
+const student_bento_title = "Survival Kit Mahasiswa";
+const student_bento_desc = "Alat penting untuk navigasi dunia pendidikan yang kompetitif.";
+const student_bento_1_title = "Catatan Kuliah";
+const student_bento_1_desc = "Format catatan terstruktur untuk mempermudah review saat ujian.";
+const student_bento_2_title = "Sleep Tracker";
+const student_bento_2_desc = "Pastikan otakmu cukup istirahat untuk memproses informasi baru.";
+const student_bento_3_title = "Job/Intern Tracker";
+const student_bento_3_desc = "Persiapkan karir masa depanmu dengan melacak magang dan portofolio.";
+const student_extra_1_title = "Alur Belajar Efektif";
+const student_extra_1_desc = "Gunakan sistem kami untuk mengimplementasikan Active Recall dan Spaced Repetition secara alami dalam rutinitas belajarmu.";
+const student_extra_1_step_1 = "Pemahaman Konsep";
+const student_extra_1_step_2 = "Pencatatan Mandiri";
+const student_extra_1_step_3 = "Review Berkala";
+const student_extra_2_title = "Keseimbangan Hidup";
+const student_extra_2_desc = "Akademik itu penting, tapi kesehatan dan hubungan sosial juga tidak boleh dikesampingkan.";
+const student_extra_2_item_1 = "Tidur";
+const student_extra_2_item_2 = "Belajar";
+const student_extra_2_item_3 = "Sosial";
+const student_extra_2_item_4 = "Hobi";
+const student_science_badge = "PEDAGOGI MODERN";
+const student_science_title = "Sains dari Pembelajaran";
+const student_science_desc = "Dirancang berdasarkan teori kognitif yang menyatakan bahwa organisasi informasi yang baik adalah 50% dari kesuksesan pemahaman materi.";
+const student_science_topic_1 = "Metode Cornell";
+const student_science_topic_2 = "Spaced Repetition";
+const student_science_topic_3 = "Feynman Technique";
+const student_faq_title = "FAQ Sistem Sukses Pelajar";
+const student_faq_q1 = "Bisakah saya berbagi jadwal dengan teman?";
+const student_faq_a1 = "Ya, fitur kolaborasi kami memungkinkan Anda berbagi jadwal kuliah atau proyek kelompok dengan teman sesama pengguna OneForMind.";
+const student_faq_q2 = "Apakah ini cocok untuk pelajar sekolah menengah?";
+const student_faq_a2 = "Sangat cocok. Meskipun istilah yang digunakan sering merujuk pada dunia perkuliahan, sistem ini fleksibel untuk semua jenjang pendidikan.";
+const student_faq_q3 = "Bisakah saya melacak beasiswa?";
+const student_faq_a3 = "Tentu. Gunakan Project Tracker kami untuk mengelola persyaratan, tenggat waktu, dan progres aplikasi beasiswa Anda.";
+const student_cta_title = "IPK Tinggi Bukan Keajaiban.";
+const student_cta_desc = "Itu adalah hasil dari sistem yang berjalan dengan baik. Jadilah mahasiswa yang paling siap di kelasmu hari ini.";
+const student_cta_btn = "Dapatkan Survival Kit Saya";
+const freelance_meta_title = "Das BOR Bisnis Freelancer - OneForMind";
+const freelance_meta_desc = "Kelola klien, proyek, dan keuangan freelance dalam satu dashboard premium.";
+const freelance_meta_og_title = "OneForMind untuk Solopreneur & Freelancer";
+const freelance_meta_og_desc = "Alas kerja profesional untuk membangun bisnis freelance yang menguntungkan.";
+const freelance_hero_badge = "Sistem Solopreneur";
+const freelance_hero_title_1 = "Ubah Kerja Lepas Jadi";
+const freelance_hero_title_2 = "Bisnis yang Serius.";
+const freelance_hero_desc = "Berhenti mengejar tenggat waktu secara acak. Kelola pipeline klien, pantau pendapatan, dan jaga fokus Anda pada pekerjaan kreatif yang Anda cintai dalam satu ekosistem terpadu.";
+const freelance_hero_cta = "Mulai Bisnis Freelance Saya";
+const freelance_mockup_revenue = "Target Bulanan";
+const freelance_mockup_client = "Klien Aktif";
+const freelance_mockup_project = "Web Redesign";
+const freelance_mockup_project_sub = "Tahap Finalisasi";
+const freelance_prob_title = "Kekacauan di Balik Kebebasan";
+const freelance_prob_desc = "Menjadi bos diri sendiri itu luar biasa, sampai urusan administrasi datang mengganggu.";
+const freelance_prob_1_title = "Arus Kas yang Tidak Stabil";
+const freelance_prob_1_desc = "Bingung kapan pembayaran masuk dan berapa banyak yang sebenarnya Anda hasilkan setelah dipotong pajak dan biaya operasional.";
+const freelance_prob_2_title = "Scope Creep & Lupa Deadline";
+const freelance_prob_2_desc = "Klien minta revisi terus-menerus dan Anda lupa menagih biaya tambahan karena kehilangan jejak komunikasi.";
+const freelance_prob_3_title = "Kesepian Intelektual";
+const freelance_prob_3_desc = "Tanpa sistem pendukung, Anda sering merasa kewalahan mengelola semuanya sendiri tanpa arah strategis yang jelas.";
+const freelance_sol_title = "Satu Atap Untuk Proyek Anda.";
+const freelance_sol_desc = "Kami menggabungkan CRM klien, manajemen proyek, dan pelacakan keuangan menjadi satu alur kerja yang sangat efisien.";
+const freelance_sol_step_1_title = "Manajemen Klien (CRM)";
+const freelance_sol_step_1_desc = "Simpan semua kontak, brief, dan histori revisi klien dalam satu folder yang rapi.";
+const freelance_sol_step_2_title = "Alur Kerja Visual";
+const freelance_sol_step_2_desc = "Lihat di mana posisi setiap proyek saat ini. Apakah masih di ideasi, produksi, atau penagihan?";
+const freelance_sol_step_3_title = "Laporan Keuangan";
+const freelance_sol_step_3_desc = "Lihat keuntungan bersih Anda secara instan. Siapkan data untuk pajak tanpa stres.";
+const freelance_feat_title = "Senjata Freelancer Elit";
+const freelance_feat_1_title = "Financial Pulse";
+const freelance_feat_1_desc = "Pantau invoice yang belum dibayar dan target pendapatan tahunan Anda. OneForMind memberitahu Anda kapan harus mencari klien baru dan kapan harus fokus eksekusi.";
+const freelance_feat_2_title = "Project Boards";
+const freelance_feat_2_desc = "Papan Kanban yang elegan untuk menggeser tugas dari 'To-Do' ke 'Done'. Rasakan kepuasan visual saat melihat pekerjaan Anda selesai.";
+const freelance_cta_title = "Bangun Imperium Solo-mu.";
+const freelance_cta_desc = "Freelancing bukan hanya tentang bekerja; ini tentang membangun sistem yang bekerja untuk Anda. Tingkatkan level profesionalisme Anda hari ini.";
+const freelance_cta_btn = "Dapatkan Dashboard Freelance";
+const freelance_faq_title = "FAQ Dasbor Freelancer";
+const freelance_faq_q1 = "Bisakah saya membuat invoice di sini?";
+const freelance_faq_a1 = "OneForMind saat ini fokus pada pelacakan internal. Anda dapat mencatat status invoice, namun untuk pengiriman dokumen fisik, kami menyarankan integrasi dengan partner invoice favorit Anda.";
+const freelance_faq_q2 = "Apakah cocok untuk tim kecil?";
+const freelance_faq_a2 = "Sangat cocok. Meskipun dirancang untuk solopreneur, OneForMind mendukung kolaborasi dasar yang sempurna untuk freelance yang bekerja dengan asisten atau desainer lain.";
+const freelance_faq_q3 = "Apakah data klien saya aman?";
+const freelance_faq_a3 = "Tentu saja. OneForMind menggunakan enkripsi standar industri untuk memastikan strategi bisnis, brief klien, dan catatan keuangan Anda tetap privat dan hanya dapat diakses oleh Anda.";
+const freelance_science_badge = "AGILITAS BISNIS";
+const freelance_science_title = "Kerangka Kerja Solo-Agency";
+const freelance_science_desc = "Memanfaatkan metodologi 'Deep Work' dan 'GTD' (Getting Things Done), kami membantu freelancer beroperasi dengan efisiensi layaknya agensi penuh tanpa biaya overhead yang besar.";
+const freelance_extra_1_title = "Pelacakan Siklus Hidup Klien";
+const freelance_extra_1_desc = "Kelola seluruh perjalanan dari prospek awal hingga pembayaran akhir. Simpan catatan preferensi dan feedback klien untuk memberikan layanan premium setiap saat.";
+const freelance_extra_2_title = "Skala Pendapatan Berkelanjutan";
+const freelance_extra_2_desc = "Don't just work for today. Gunakan proyeksi keuangan untuk merencanakan bulan-bulan berikutnya, menabung untuk peningkatan alat, dan mengembangkan bisnis freelance dengan percaya diri.";
+const mental_meta_title = "Kejernihan Mental - OneForMind";
+const mental_meta_desc = "Kurangi kecemasan dan tingkatkan fokus. Gunakan sistem jurnal reflektif untuk pikiran yang lebih tenang dan tajam.";
+const mental_meta_og_title = "Jernihkan Pikiranmu dengan OneForMind";
+const mental_meta_og_desc = "Ruang tenang di tengah kebisingan dunia digital. Temukan kedamaian melalui refleksi terstruktur.";
+const mental_hero_badge = "Kesehatan Mental";
+const mental_hero_title_1 = "Heningkan Suara";
+const mental_hero_title_2 = "Di Dalam Kepalamu.";
+const mental_hero_desc = "Kurangi beban kognitif dan atasi overthinking. OneForMind menyediakan ruang aman untuk menuangkan pikiran, memproses emosi, dan menemukan fokus kembali.";
+const mental_hero_cta = "Jernihkan Pikiran Saya";
+const mental_prob_title = "Epidemi Pikiran Berisik";
+const mental_prob_desc = "Dunia saat ini dirancang untuk mencuri perhatian dan membuatmu merasa cemas.";
+const mental_prob_1_title = "Beban Kognitif Berlebih";
+const mental_prob_1_desc = "Terlalu banyak informasi yang masuk membuat otakmu 'hang' dan sulit membuat keputusan sederhana sekalipun.";
+const mental_prob_2_title = "Kecanduan Distraksi";
+const mental_prob_2_desc = "Dorongan konstan untuk mengecek notifikasi membunuh kemampuanmu untuk berpikir mendalam dan reflektif.";
+const mental_sol_title = "Sistem Operasi Untuk Jiwamu.";
+const mental_sol_desc = "Kami bukan hanya aplikasi catatan. Kami adalah tempat untuk membedah pikiran, memahami pola emosi, dan membangun ketangguhan mental.";
+const mental_sol_step_1_title = "Brain Dump Teratur";
+const mental_sol_step_1_desc = "Keluarkan semua kekacauan di kepala ke dalam sistem dalam hitungan detik untuk segera merasa lebih ringan.";
+const mental_sol_step_2_title = "Proses & Refleksikan";
+const mental_sol_step_2_desc = "Gunakan pertanyaan pemandu (prompt) kami untuk menggali akar penyebab kecemasan atau kebahagiaanmu hari ini.";
+const mental_sol_step_3_title = "Temukan Pola";
+const mental_sol_step_3_desc = "Lihat statistik mood dan jurnalmu dalam jangka waktu panjang untuk memahami apa yang benar-benar memicu stresmu.";
+const mental_feat_title = "Perisai Mental Anda";
+const mental_feat_1_title = "Jurnal Refleksi";
+const mental_feat_1_desc = "Ruang menulis tanpa gangguan untuk mengekspresikan diri secara bebas, dilengkapi dengan prompt berbasis terapi kognitif.";
+const mental_feat_2_title = "Mood Tracker";
+const mental_feat_2_desc = "Visualisasikan perjalanan emosionalmu. Pahami hubungan antara aktivitas harian dan tingkat kedamaian mentalmu.";
+const mental_extra_1_title = "Kurangi Kebisingan";
+const mental_extra_1_desc = "Sistem kami dirancang untuk meminimalkan beban mental. Dengan antarmuka yang bersih dan alur yang logis, Anda bisa fokus pada apa yang ada di dalam, bukan di layar.";
+const mental_extra_2_title = "Lingkaran Refleksi";
+const mental_extra_2_desc = "Ubah pikiran acak menjadi kebijaksanaan yang bisa ditindaklanjuti.";
+const mental_cta_title = "Ambil Nafas Dalam-Dalam.";
+const mental_cta_desc = "Ketidakteraturan di luar dimulai dari ketidakteraturan di dalam. Mulai jernihkan pikiranmu hari ini.";
+const mental_cta_btn = "Mulai Hidup Lebih Tenang";
+const mental_faq_title = "FAQ Kejernihan Mental";
+const mental_faq_q1 = "Apakah ini bisa menggantikan terapi?";
+const mental_faq_a1 = "Tidak. OneForMind adalah alat pendukung untuk menjaga kesehatan mental harian. Jika Anda mengalami kesulitan serius, kami sangat menyarankan untuk berkonsultasi dengan profesional medis.";
+const mental_faq_q2 = "Seberapa sering saya harus menulis jurnal?";
+const mental_faq_a2 = "Bahkan 5 menit sehari dapat membuat perbedaan besar. Kuncinya adalah konsistensi, bukan panjangnya tulisan.";
+const mental_faq_q3 = "Apakah ada prompt yang disediakan?";
+const mental_faq_a3 = "Ya, kami menyediakan berbagai template prompt untuk pagi hari, malam hari, dan untuk mengatasi momen stres spesifik.";
+const mental_science_badge = "PSIKOLOGI TERAPAN";
+const mental_science_title = "Neuroplastisitas & Refleksi";
+const mental_science_desc = "Berdasarkan prinsip Terapi Perilaku Kognitif (CBT), jurnal terstruktur membantu memprogram ulang pola pikir negatif dan membangun jalur saraf baru untuk ketenangan.";
+const mental_science_topic_1 = "Pelepasan Emosional";
+const mental_science_topic_2 = "Metakognisi";
+const mental_science_topic_3 = "Pengurangan Entropi";
+const mental_science_topic_4 = "Keseimbangan Beban Kognitif";
+const brain_mockup_quote = '"Pikiran jernih, fokus penuh pada tugas..."';
+const brain_mockup_chaos_label = "Kelebihan Beban Mental";
+const brain_mockup_chaos_desc = "Terlalu banyak info, tidak ada tempat untuk menaruhnya.";
+const ecosystem_calendar_title = "Sama Seperti Kalender,";
+const ecosystem_calendar_desc = "Tapi jauh lebih cerdas. Integrasikan dengan rutinitas Anda dan biarkan sistem menjadwalkan apa yang benar-benar penting.";
+const ecosystem_growth_title = "Visual Kebiasaan Berantai";
+const ecosystem_growth_desc = "Jangan biarkan kebiasaan Anda hanya menjadi angka. Lihat mereka sebagai investasi jangka panjang dalam diri Anda sendiri.";
+const ecosystem_brain_title = "Capture Mana Saja";
+const ecosystem_brain_desc = "Gunakan widget akses cepat di perangkat apa pun untuk menangkap kilat ide cemerlang sebelum menghilang ditelan hiruk-pikuk hari.";
+const ecosystem_career_title = "Pelacak Karier";
+const ecosystem_career_desc = "Ubah lamaran kerja dari kekacauan di spreadsheet menjadi pipeline visual yang mendorong Anda untuk maju ke depan.";
+const ecosystem_finance_title = "Aliran Keuangan";
+const ecosystem_finance_desc = "Setiap sen memiliki tujuan. Masteri keuangan Anda tanpa rasa bersalah.";
+const ecosystem_mental_title = "Statistik Mood";
+const ecosystem_mental_desc = "Pahami korelasi antara rutinitas harian dan kondisi mental Anda untuk kejernihan yang berkelanjutan.";
+const mental_science_viz_label = "Mind_Map_Alpha";
+const atomic_meta_title = "Sistem Kebiasaan Atom - OneForMind";
+const atomic_meta_desc = "Kuasai seni membangun rutinitas kecil yang memberikan hasil besar. Berdasarkan prinsip Atomic Habits.";
+const atomic_meta_og_title = "Metodologi Kebiasaan Atom OneForMind";
+const atomic_meta_og_desc = "Bangun rantai kemenangan Anda. Jangan pernah putuskan.";
+const schema_solution_atomic_name = "OneForMind Solusi Kebiasaan Atom";
+const schema_solution_atomic_description = "Sistem pelacakan kebiasaan mikro untuk perubahan identitas jangka panjang.";
+const atomic_breadcrumb = "Atomic System";
+const solve_atomic_hero_badge = "Optimalisasi Rutinitas";
+const solve_atomic_hero_title_1 = "Berhenti Menebak,";
+const solve_atomic_hero_title_2 = "Mulai Membangun.";
+const solve_atomic_hero_desc = "Jangan mengandalkan motivasi yang datang dan pergi. Andalkan sistem yang membuat kebiasaan sulit menjadi mudah, dan kebiasaan baik menjadi otomatis.";
+const solve_atomic_hero_cta = "Tempa Rutinitas Saya";
+const atomic_mockup_habit_title = "Baca Buku 10 Halaman";
+const atomic_mockup_habit_sub = "Langkah Menuju Pengetahuan";
+const atomic_mockup_identity_title = "Saya Adalah Pembaca";
+const atomic_mockup_identity_sub = "Perubahan Identitas 85% Selesai";
+const solve_atomic_prob_title = "Kegagalan Resolusi Tahun Baru";
+const solve_atomic_prob_desc = "Kenapa 92% orang gagal mempertahankan kebiasaan baru mereka setelah satu bulan.";
+const solve_atomic_prob_1_title = "Terlalu Besar Dari Awal";
+const solve_atomic_prob_1_desc = "Mencoba mengubah segalanya sekaligus hanya akan membuat sistem saraf Anda kewalahan.";
+const solve_atomic_prob_2_title = "Fokus Pada Hasil, Bukan Proses";
+const solve_atomic_prob_2_desc = "Hanya memikirkan 'menurunkan 10kg' tanpa mencintai proses olahraga harian.";
+const solve_atomic_sol_title = "Kekuatan Perbaikan 1%.";
+const solve_atomic_sol_desc = "Kita membangun kebiasaan bukan untuk hari ini, tapi untuk orang yang Anda inginkan satu tahun ke depan.";
+const solve_atomic_sol_step_1_title = "Mulai Dari Mikro";
+const solve_atomic_sol_step_1_desc = "Kebiasaan yang butuh kurang dari 2 menit lebih mudah dipertahankan saat hari-hari terasa berat.";
+const solve_atomic_sol_step_2_title = "Tumpuk Kebiasaan";
+const solve_atomic_sol_step_2_desc = "Hubungkan kebiasaan baru dengan yang sudah Anda miliki agar otak lebih mudah beradaptasi.";
+const solve_atomic_sol_step_3_title = "Hadiah Instan";
+const solve_atomic_sol_step_3_desc = "Sistem poin dan milestone kami merangsang dopamin positif untuk terus melakukan kebaikan.";
+const solve_atomic_feat_title = "Toolkit Kebiasaan";
+const solve_atomic_feat_1_title = "Habit Tracker Visual";
+const solve_atomic_feat_1_desc = "Grafik kontribusi bergaya GitHub untuk melihat konsistensi harian Anda tanpa celah.";
+const solve_atomic_feat_2_title = "Identity Shifter";
+const solve_atomic_feat_2_desc = "Visualisasikan bagaimana setiap aksi kecil Anda memperkuat identitas baru yang sedang Anda bangun.";
+const atomic_extra_1_title = "Rantai Kemenangan";
+const atomic_extra_1_desc = "Jangan putuskan rantainya. Visualisasi streak kami yang adiktif memastikan Anda tetap di jalur yang benar.";
+const solve_atomic_extra_2_title = "Hukum Atraktif";
+const solve_atomic_extra_2_desc = "Membangun lingkungan yang membuat kebiasaan baik tidak terhindarkan.";
+const solve_atomic_science_badge = "PSIKOLOGI PERILAKU";
+const solve_atomic_science_title = "Sains di Balik Rutinitas";
+const solve_mental_science_desc_alt = "Mengacu pada karya James Clear dan B.J. Fogg, sistem kami memprioritaskan isyarat, dambaan, respons, dan hadiah.";
+const atomic_science_step_1_title = "Isyarat Jelas";
+const atomic_science_step_2_title = "Daya Tarik Maksimal";
+const atomic_science_step_3_title = "Kemudahan Eksekusi";
+const atomic_science_step_4_title = "Kepuasan Instan";
+const solve_atomic_faq_title = "FAQ Sistem Kebiasaan Atom";
+const solve_atomic_faq_q1 = "Apa perbedaannya dengan Habit Tracker biasa?";
+const solve_atomic_faq_a1 = "OneForMind tidak hanya mencentang kotak. Kami menautkan setiap kebiasaan ke AREA kehidupan dan IDENTITAS, memberikan makna lebih pada setiap centang.";
+const solve_atomic_faq_q2 = "Bagaimana jika saya melewatkan satu hari?";
+const solve_atomic_faq_a2 = "Filosofi kami: 'Jangan pernah absen dua kali'. Kesalahan adalah manusiawi, tapi sistem kami akan mengingatkan secara halus untuk segera kembali ke jalur.";
+const solve_atomic_faq_a3 = "Iya, data Anda aman. Fokuslah membangun diri.";
+const solve_atomic_cta_title = "Kecil Itu Kuat.";
+const solve_atomic_cta_desc = "Anda adalah apa yang Anda lakukan berulang kali. Mulai satu langkah kecil hari ini.";
+const solve_atomic_cta_btn = "Bangun Rutinitas Mikro Saya";
+const deep_meta_title = "Deep Work & Fokus Maksimal - OneForMind";
+const deep_meta_desc = "Hancurkan distraksi. Masuki flow state dan hasilkan karya terbaik Anda dengan sistem manajemen fokus.";
+const deep_meta_og_title = "Kuasai Fokus Anda dengan OneForMind";
+const deep_meta_og_desc = "Kemampuan untuk fokus mendalam adalah superpower di abad ke-21.";
+const schema_solution_deep_work_name = "OneForMind Solusi Deep Work";
+const schema_solution_deep_work_description = "Platform untuk pengelolaan fokus dan eliminasi distraksi digital.";
+const deep_breadcrumb = "Deep Work";
+const solve_deep_hero_badge = "Optimalisasi Fokus";
+const solve_deep_hero_title_1 = "Karya Mendalam di Tengah";
+const solve_deep_hero_title_2 = "Dunia yang Berisik.";
+const solve_deep_hero_desc = "Kemampuan untuk melakukan kerja mendalam (Deep Work) menjadi semakin langka. Singkirkan distraksi, jadwalkan fokus, dan hasilkan apa yang benar-benar bernilai.";
+const solve_deep_hero_cta = "Masuki Flow State";
+const deep_mockup_session_title = "Sesi Deep Work";
+const deep_mockup_session_sub = "Sisa Waktu: 45:00";
+const deep_mockup_focus_label = "Skor Fokus Hari Ini";
+const solve_deep_prob_title = "Kematian Kapasitas Fokus";
+const solve_deep_prob_desc = "Kenapa kita merasa sangat sibuk tapi tidak menghasilkan apa-apa di akhir hari.";
+const solve_deep_prob_1_title = "Distraksi Digital Konstan";
+const solve_deep_prob_1_desc = "Notifikasi media sosial dan email membuat perhatian Anda berfragmentasi setiap 10 menit.";
+const solve_deep_prob_2_title = "Kesibukan Semu";
+const solve_deep_prob_2_desc = "Terjebak dalam tugas-tugas administratif dangkal yang tidak menggerakkan jarum kemajuan karir Anda.";
+const solve_deep_sol_title = "Satu Jam Fokus Tak Terganggu.";
+const solve_deep_sol_desc = "OneForMind membantu Anda melindungi waktu yang paling berharga untuk tugas yang paling bermakna.";
+const solve_deep_sol_step_1_title = "Blok Waktu (Time Blocking)";
+const solve_deep_sol_step_1_desc = "Dedikasikan slot waktu khusus di kalender Anda hanya untuk satu tugas penting. Tanpa kompromi.";
+const solve_deep_sol_step_2_title = "Eliminasi Distraksi";
+const solve_deep_sol_step_2_desc = "Gunakan Zen Mode kami untuk memblokir seluruh gangguan antarmuka saat Anda sedang dalam sesi fokus.";
+const solve_deep_sol_step_3_title = "Audit Fokus";
+const solve_deep_sol_step_3_desc = "Tinjau berapa banyak waktu Deep Work yang berhasil Anda capai setiap minggunya untuk peningkatan kinerja.";
+const solve_deep_feat_title = "Arsenal Fokus";
+const solve_deep_feat_1_title = "Deep Timer & Zen Dashboard";
+const solve_deep_feat_1_desc = "Antarmuka yang berubah menjadi super minimalis saat timer aktif, memastikan hanya Anda dan pekerjaan Anda.";
+const solve_deep_feat_2_title = "Focus Scorecard";
+const solve_deep_feat_2_desc = "Metrik harian untuk melacak kualitas fokus Anda, membantu Anda menemukan jam biologis paling produktif.";
+const deep_extra_1_title = "Kuantifikasi Output";
+const deep_extra_1_desc = "Jangan hanya bekerja lama, bekerjalah dengan kualitas. Pantau hubungan antara sesi deep work dan hasil proyek nyata.";
+const solve_deep_extra_2_title = "Membangun Ritual";
+const solve_deep_extra_2_desc = "Ciptakan pemicu lingkungan yang memberi tahu otak Anda bahwa inilah saatnya untuk fokus maksimal.";
+const solve_deep_science_badge = "NEUROPSIKOLOGI";
+const solve_deep_science_title = "Arsitektur Atensi";
+const solve_deep_science_desc = "Merujuk pada konsep Cal Newport, Deep Work adalah kemampuan kognitif yang harus dilatih. Sistem kami meminimalkan 'Attention Residue' (sisa perhatian) untuk mempercepat transisi ke Flow State.";
+const deep_science_factor_1_title = "Intensitas Fokus";
+const deep_science_factor_2_title = "Durasi Sesi";
+const deep_science_factor_3_title = "Isolasi Lingkungan";
+const deep_science_factor_4_title = "Pemulihan Kognitif";
+const solve_deep_faq_title = "FAQ Deep Work";
+const solve_deep_faq_q1 = "Apakah saya harus bekerja 8 jam non-stop?";
+const solve_deep_faq_a1 = "Sama sekali tidak. Otak manusia biasanya hanya mampu melakukan Deep Work maksimal 4 jam dalam sehari. Kami membantu Anda mengoptimalkan jam-jam emas tersebut.";
+const solve_deep_faq_q2 = "Bisakah saya menggunakan musik?";
+const solve_deep_faq_a2 = "Sangat disarankan. Gunakan lofi atau white noise yang tersedia di integrasi dashboard kami untuk memperdalam fokus.";
+const solve_deep_faq_a3 = "Fokuslah pada kualitas, bukan hanya kesibukan.";
+const solve_deep_cta_title = "Lakukan Apa yang Berharga.";
+const solve_deep_cta_desc = "Di dunia yang penuh distraksi, kemampuan untuk fokus adalah keunggulan kompetitif terbesar. Bangun itu sekarang.";
+const solve_deep_cta_btn = "Masuki Sesi Mendalam Pertama Saya";
 const stat_meta_title = "Status Sistem — OneForMind";
 const stat_meta_desc = "Pembaruan waktu nyata tentang kinerja dan keandalan layanan OneForMind.";
 const stat_hero_badge = "Status Langsung";
@@ -15158,6 +16273,31 @@ const id = {
   email_address,
   save_changes,
   saved,
+  cookie_title,
+  cookie_desc,
+  cookie_btn_accept,
+  cookie_btn_settings,
+  cookie_btn_essential,
+  contact_title,
+  contact_subtitle,
+  contact_form_name,
+  contact_form_email,
+  contact_form_subject,
+  contact_form_message,
+  contact_btn_send,
+  contact_success_title,
+  contact_success_desc,
+  contact_info_title,
+  contact_info_hq,
+  contact_info_jakarta,
+  contact_info_support,
+  contact_info_billing,
+  contact_info_chat,
+  contact_info_chat_status,
+  contact_faq_title,
+  contact_faq_desc,
+  contact_faq_btn,
+  contact_form_message_placeholder,
   goal_page_title,
   goal_add_row,
   goal_bulk_selected,
@@ -15463,6 +16603,36 @@ const id = {
   home_solutions_badge,
   home_solutions_title,
   home_solutions_desc,
+  eco_badge: eco_badge$1,
+  eco_title: eco_title$1,
+  eco_desc: eco_desc$1,
+  eco_habit_title: eco_habit_title$1,
+  eco_habit_desc: eco_habit_desc$1,
+  eco_finance_title: eco_finance_title$1,
+  eco_finance_desc: eco_finance_desc$1,
+  eco_daily_title: eco_daily_title$1,
+  eco_daily_desc: eco_daily_desc$1,
+  eco_goal_title: eco_goal_title$1,
+  eco_goal_desc: eco_goal_desc$1,
+  eco_journal_title: eco_journal_title$1,
+  eco_journal_desc: eco_journal_desc$1,
+  eco_job_title: eco_job_title$1,
+  eco_job_desc: eco_job_desc$1,
+  sol_badge: sol_badge$1,
+  sol_title: sol_title$1,
+  sol_card_1_title: sol_card_1_title$1,
+  sol_card_1_desc: sol_card_1_desc$1,
+  sol_card_2_title: sol_card_2_title$1,
+  sol_card_2_desc: sol_card_2_desc$1,
+  sol_card_3_title: sol_card_3_title$1,
+  sol_card_3_desc: sol_card_3_desc$1,
+  prob_1_title: prob_1_title$1,
+  prob_1_desc: prob_1_desc$1,
+  prob_1_point_1: prob_1_point_1$1,
+  prob_1_point_2: prob_1_point_2$1,
+  prob_2_title: prob_2_title$1,
+  prob_2_desc: prob_2_desc$1,
+  prob_2_solution: prob_2_solution$1,
   job_page_title,
   job_page_subtitle,
   job_add_row,
@@ -15578,6 +16748,15 @@ const id = {
   neural_cta_desc,
   neural_cta_btn,
   neural_cta_note,
+  neural_gemini_powered,
+  neural_gemini_feat1,
+  neural_gemini_feat2,
+  neural_gemini_feat3,
+  neural_coach_sender,
+  neural_coach_user,
+  neural_coach_msg1,
+  neural_coach_msg2,
+  neural_coach_msg3,
   "____ SECTION_6 ____": "=== DAILY PLANNER ===",
   planner_title,
   planner_time_fmt,
@@ -15759,6 +16938,78 @@ const id = {
   feat_journal_lock,
   feat_calendar_timeline,
   feat_ai_scheduling,
+  compare_title,
+  compare_feature,
+  compare_explorer,
+  compare_architect,
+  compare_quantum,
+  compare_legendary,
+  group_habits,
+  group_finance,
+  group_planner,
+  group_journal,
+  group_goals,
+  group_jobs,
+  group_support,
+  feat_habit_limit,
+  feat_habit_limit_val_l1,
+  feat_habit_limit_val_l2,
+  feat_detailed_analytics,
+  feat_val_basic,
+  feat_val_advanced,
+  feat_val_predictive,
+  feat_ai_stacking,
+  feat_finance_entry,
+  feat_budgeting,
+  feat_receipt_scanning,
+  feat_net_worth,
+  feat_ai_audit,
+  feat_planner_view,
+  feat_planner_view_val_l1,
+  feat_planner_view_val_l2,
+  feat_recurring_tasks,
+  feat_journal_type,
+  feat_journal_type_val_l1,
+  feat_journal_type_val_l2,
+  feat_sentiment_ai,
+  feat_goal_limit,
+  feat_goal_limit_val_l1,
+  feat_goal_limit_val_l2,
+  feat_job_limit,
+  feat_job_limit_val_l1,
+  feat_job_limit_val_l2,
+  feat_resume_ai,
+  feat_early_beta,
+  support_standard,
+  support_priority,
+  support_vip,
+  quantum_feature,
+  pricing_elite_title,
+  pricing_elite_feat1_title,
+  pricing_elite_feat1_desc,
+  pricing_elite_feat2_title,
+  pricing_elite_feat2_desc,
+  pricing_elite_feat3_title,
+  pricing_elite_feat3_desc,
+  pricing_elite_card_title,
+  pricing_elite_card_status,
+  pricing_l1_name,
+  pricing_l1_desc,
+  pricing_l2_name,
+  pricing_l2_desc,
+  pricing_l3_name,
+  pricing_l3_desc,
+  pricing_l4_name,
+  pricing_l4_desc,
+  pricing_l1_initial,
+  pricing_l2_initial,
+  pricing_l2_recurring,
+  pricing_l3_initial,
+  pricing_l3_recurring,
+  pricing_l4_initial,
+  pricing_l4_recurring,
+  pricing_ai_badge,
+  pricing_l4_badge,
   privacy_meta_title,
   privacy_meta_desc,
   privacy_meta_og_title,
@@ -15778,6 +17029,17 @@ const id = {
   privacy_nav_6,
   privacy_nav_7,
   privacy_download_pdf,
+  privacy_status_protection,
+  privacy_status_access,
+  privacy_status_tracking,
+  privacy_status_protocol,
+  privacy_status_protection_val,
+  privacy_status_access_val,
+  privacy_status_tracking_val,
+  privacy_status_protocol_val,
+  privacy_locked_label,
+  privacy_locked_title,
+  privacy_locked_desc,
   privacy_tldr_title,
   privacy_tldr_1_title,
   privacy_tldr_1_desc,
@@ -15793,6 +17055,7 @@ const id = {
   privacy_li_collection_1_title,
   privacy_li_collection_1_desc,
   privacy_li_collection_2_title,
+  privacy_li_collection_2_strong,
   privacy_li_collection_2_desc,
   privacy_li_collection_3_title,
   privacy_li_collection_3_desc,
@@ -15801,6 +17064,8 @@ const id = {
   privacy_li_usage_1,
   privacy_li_usage_2,
   privacy_li_usage_3,
+  privacy_finance_note_title,
+  privacy_finance_note_desc,
   privacy_h2_security,
   privacy_p_security,
   privacy_h2_thirdparty,
@@ -15810,6 +17075,10 @@ const id = {
   privacy_li_rights_1,
   privacy_li_rights_2,
   privacy_li_rights_3,
+  privacy_export_title,
+  privacy_export_desc,
+  privacy_export_point_1,
+  privacy_export_point_2,
   privacy_h2_contact,
   privacy_p_contact,
   privacy_contact_role,
@@ -15843,6 +17112,8 @@ const id = {
   terms_nav_6,
   terms_nav_7,
   terms_nav_8,
+  terms_notice_title,
+  terms_notice_desc,
   terms_intro_text,
   terms_intro_sub,
   terms_h2_eligibility,
@@ -15898,6 +17169,10 @@ const id = {
   sec_toc_3,
   sec_toc_4,
   sec_toc_5,
+  sec_alert_title,
+  sec_alert_desc,
+  sec_alert_btn,
+  sec_locked_label,
   sec_h2_infrastructure,
   sec_p_infrastructure,
   sec_li_infra_1_title,
@@ -15956,6 +17231,10 @@ const id = {
   refund_cta_title,
   refund_cta_desc,
   refund_cta_btn,
+  refund_merchant_protection_title,
+  refund_merchant_protection_desc,
+  refund_user_responsibility_title,
+  refund_contact_label,
   guide_meta_title,
   guide_meta_desc,
   guide_meta_og_title,
@@ -16264,6 +17543,18 @@ const id = {
   sto_int2,
   sto_hof_title,
   sto_hof_desc,
+  sto_hof_1_name,
+  sto_hof_1_title,
+  sto_hof_1_desc,
+  sto_hof_2_name,
+  sto_hof_2_title,
+  sto_hof_2_desc,
+  sto_hof_3_name,
+  sto_hof_3_title,
+  sto_hof_3_desc,
+  sto_hof_4_name,
+  sto_hof_4_title,
+  sto_hof_4_desc,
   settings_title,
   settings_header,
   settings_subheader,
@@ -16346,193 +17637,6 @@ const id = {
   adjust_photo_title,
   pan_instruction,
   save_photo,
-  student_meta_title,
-  student_meta_desc,
-  student_meta_og_title,
-  student_meta_og_desc,
-  student_hero_badge,
-  student_hero_title_1,
-  student_hero_title_2,
-  student_hero_desc,
-  student_hero_cta_1,
-  student_hero_social_proof,
-  student_prob_title,
-  student_prob_desc,
-  student_prob_1_title,
-  student_prob_1_desc,
-  student_prob_2_title,
-  student_prob_2_desc,
-  student_prob_3_title,
-  student_prob_3_desc,
-  student_feat_1_visual_badge,
-  student_feat_1_title,
-  student_feat_1_desc,
-  student_feat_1_point_1,
-  student_feat_1_point_2,
-  student_feat_2_title,
-  student_feat_2_desc,
-  student_feat_2_point_1,
-  student_feat_2_point_2,
-  student_bento_title,
-  student_bento_desc,
-  student_bento_1_title,
-  student_bento_1_desc,
-  student_bento_2_title,
-  student_bento_2_desc,
-  student_bento_3_title,
-  student_bento_3_desc,
-  student_cta_title,
-  student_cta_desc,
-  student_cta_btn,
-  student_cta_note,
-  student_faq_title,
-  student_faq_q1,
-  student_faq_a1,
-  student_faq_q2,
-  student_faq_a2,
-  student_faq_q3,
-  student_faq_a3,
-  student_science_badge,
-  student_science_title,
-  student_science_desc,
-  student_extra_1_title,
-  student_extra_1_desc,
-  student_extra_2_title,
-  student_extra_2_desc,
-  freelance_meta_title,
-  freelance_meta_desc,
-  freelance_meta_og_title,
-  freelance_meta_og_desc,
-  freelance_hero_badge,
-  freelance_hero_title_1,
-  freelance_hero_title_2,
-  freelance_hero_desc,
-  freelance_hero_cta_1,
-  freelance_hero_social_proof,
-  freelance_prob_title,
-  freelance_prob_desc,
-  freelance_prob_1_title,
-  freelance_prob_1_desc,
-  freelance_prob_2_title,
-  freelance_prob_2_desc,
-  freelance_prob_3_title,
-  freelance_prob_3_desc,
-  freelance_feat_1_title,
-  freelance_feat_1_desc,
-  freelance_feat_1_point_1,
-  freelance_feat_1_point_2,
-  freelance_feat_2_title,
-  freelance_feat_2_desc,
-  freelance_feat_2_point_1,
-  freelance_feat_2_point_2,
-  freelance_bento_title,
-  freelance_bento_desc,
-  freelance_bento_1_title,
-  freelance_bento_1_desc,
-  freelance_bento_2_title,
-  freelance_bento_2_desc,
-  freelance_bento_3_title,
-  freelance_bento_3_desc,
-  freelance_bento_4_title,
-  freelance_bento_4_desc,
-  freelance_cta_title,
-  freelance_cta_desc,
-  freelance_cta_btn,
-  freelance_cta_note,
-  freelance_faq_title,
-  freelance_faq_q1,
-  freelance_faq_a1,
-  freelance_faq_q2,
-  freelance_faq_a2,
-  freelance_faq_q3,
-  freelance_faq_a3,
-  freelance_science_badge,
-  freelance_science_title,
-  freelance_science_desc,
-  freelance_extra_1_title,
-  freelance_extra_1_desc,
-  freelance_extra_2_title,
-  freelance_extra_2_desc,
-  growth_meta_title,
-  growth_meta_desc,
-  growth_meta_og_title,
-  growth_meta_og_desc,
-  growth_hero_badge,
-  growth_hero_title_1,
-  growth_hero_title_2,
-  growth_hero_desc,
-  growth_hero_cta_1,
-  growth_hero_social_proof,
-  growth_prob_title_dark,
-  growth_prob_desc_dark,
-  growth_prob_point_1,
-  growth_prob_point_2,
-  growth_prob_title_light,
-  growth_hero_cta,
-  growth_hero_social,
-  growth_card_reading_goal,
-  growth_card_run_title,
-  growth_card_run_desc,
-  growth_card_reflect_title,
-  growth_card_reflect_desc,
-  growth_science_badge,
-  growth_science_title,
-  growth_science_desc,
-  growth_science_tag_1,
-  growth_science_tag_2,
-  growth_science_tag_3,
-  growth_habit_streak,
-  growth_habit_streak_desc,
-  growth_habit_title,
-  growth_habit_desc,
-  growth_habit_feat_1,
-  growth_habit_feat_2,
-  growth_zen_title,
-  growth_zen_desc,
-  growth_zen_entry,
-  growth_zen_quote,
-  growth_zen_subtext,
-  growth_extra_1_title,
-  growth_extra_1_desc,
-  growth_extra_2_title,
-  growth_extra_2_desc,
-  growth_faq_title,
-  growth_faq_q1,
-  growth_faq_a1,
-  growth_faq_q2,
-  growth_faq_a2,
-  growth_faq_q3,
-  growth_faq_a3,
-  growth_footer_title,
-  growth_footer_desc,
-  growth_footer_cta,
-  growth_prob_desc_light,
-  growth_prob_point_3,
-  growth_prob_point_4,
-  growth_feat_1_title,
-  growth_feat_1_desc,
-  growth_feat_1_point_1,
-  growth_feat_1_point_2,
-  growth_feat_2_title,
-  growth_feat_2_desc,
-  growth_feat_2_quote_title,
-  growth_feat_2_quote_body,
-  growth_bento_title,
-  growth_bento_desc,
-  growth_bento_1_title,
-  growth_bento_1_desc,
-  growth_bento_2_title,
-  growth_bento_2_desc,
-  growth_bento_3_title,
-  growth_bento_3_desc,
-  growth_bento_4_title,
-  growth_bento_4_desc,
-  growth_bento_5_title,
-  growth_bento_5_desc,
-  growth_cta_title,
-  growth_cta_desc,
-  growth_cta_btn,
-  growth_cta_note,
   solve_career_meta_title,
   solve_career_meta_desc,
   solve_career_meta_og_title,
@@ -16597,23 +17701,26 @@ const id = {
   solve_finance_prob_desc,
   solve_finance_prob_1_title,
   solve_finance_prob_1_desc,
-  solve_finance_prob_1_point_1,
-  solve_finance_prob_1_point_2,
-  solve_finance_prob_1_point_3,
   solve_finance_prob_2_title,
   solve_finance_prob_2_desc,
-  solve_finance_prob_2_point_1,
-  solve_finance_prob_2_point_2,
-  solve_finance_prob_2_point_3,
+  solve_finance_prob_3_title,
+  solve_finance_prob_3_desc,
   solve_finance_sol_title,
-  solve_finance_sol_feat_1_title,
-  solve_finance_sol_feat_1_desc,
-  solve_finance_sol_feat_2_title,
-  solve_finance_sol_feat_2_desc,
-  solve_finance_sol_feat_3_title,
-  solve_finance_sol_feat_3_desc,
-  solve_finance_syn_title,
-  solve_finance_syn_desc,
+  solve_finance_sol_desc,
+  solve_finance_sol_step_1_title,
+  solve_finance_sol_step_1_desc,
+  solve_finance_sol_step_2_title,
+  solve_finance_sol_step_2_desc,
+  solve_finance_sol_step_3_title,
+  solve_finance_sol_step_3_desc,
+  solve_finance_feat_title,
+  solve_finance_feat_desc,
+  solve_finance_feat_1_title,
+  solve_finance_feat_1_desc,
+  solve_finance_feat_2_title,
+  solve_finance_feat_2_desc,
+  solve_finance_feat_3_title,
+  solve_finance_feat_3_desc,
   solve_finance_cta_title,
   solve_finance_cta_desc,
   solve_finance_cta_btn,
@@ -16635,11 +17742,22 @@ const id = {
   solve_mental_meta_desc,
   solve_mental_meta_og_title,
   solve_mental_meta_og_desc,
+  schema_solution_mental_clarity_name,
+  schema_solution_mental_clarity_description,
+  mental_breadcrumb,
   solve_mental_hero_badge,
   solve_mental_hero_title_1,
   solve_mental_hero_title_2,
   solve_mental_hero_desc,
   solve_mental_hero_cta,
+  mental_mockup_quote,
+  mental_mockup_source,
+  mental_mockup_task_1_title,
+  mental_mockup_task_1_sub,
+  mental_mockup_task_2_title,
+  mental_mockup_task_2_sub,
+  mental_mockup_task_3_title,
+  mental_mockup_task_3_sub,
   solve_mental_prob_title,
   solve_mental_prob_desc,
   solve_mental_prob_1_title,
@@ -16654,14 +17772,29 @@ const id = {
   solve_mental_sol_step_2_desc,
   solve_mental_sol_step_3_title,
   solve_mental_sol_step_3_desc,
+  mental_mockup_journal_badge,
+  mental_mockup_journal_text,
+  mental_mockup_journal_status,
   solve_mental_feat_title,
   solve_mental_feat_1_title,
   solve_mental_feat_1_desc,
   solve_mental_feat_2_title,
   solve_mental_feat_2_desc,
-  solve_mental_cta_title,
-  solve_mental_cta_desc,
-  solve_mental_cta_btn,
+  mental_extra_1_label,
+  solve_mental_extra_1_title,
+  solve_mental_extra_1_desc,
+  solve_mental_extra_2_title,
+  solve_mental_extra_2_desc,
+  mental_extra_2_item_1,
+  mental_extra_2_item_2,
+  mental_extra_2_item_3,
+  solve_mental_science_badge,
+  solve_mental_science_title,
+  solve_mental_science_desc,
+  mental_science_process_1_title,
+  mental_science_process_2_title,
+  mental_science_process_3_title,
+  mental_science_process_4_title,
   solve_mental_faq_title,
   solve_mental_faq_q1,
   solve_mental_faq_a1,
@@ -16669,136 +17802,88 @@ const id = {
   solve_mental_faq_a2,
   solve_mental_faq_q3,
   solve_mental_faq_a3,
-  solve_mental_science_badge,
-  solve_mental_science_title,
-  solve_mental_science_desc,
-  solve_mental_extra_1_title,
-  solve_mental_extra_1_desc,
-  solve_mental_extra_2_title,
-  solve_mental_extra_2_desc,
-  atomic_meta_title,
-  atomic_meta_desc,
-  atomic_meta_og_title,
-  atomic_meta_og_desc,
-  atomic_hero_badge,
-  atomic_hero_title_1,
-  atomic_hero_title_2,
-  atomic_hero_desc,
-  atomic_hero_cta,
-  atomic_prob_title,
-  atomic_prob_desc,
-  atomic_prob_1_title,
-  atomic_prob_1_desc,
-  atomic_prob_2_title,
-  atomic_prob_2_desc,
-  atomic_sol_title,
-  atomic_sol_desc,
-  atomic_step_1_title,
-  atomic_step_1_desc,
-  atomic_step_2_title,
-  atomic_step_2_desc,
-  atomic_step_3_title,
-  atomic_step_3_desc,
-  atomic_feat_title,
-  atomic_feat_1_title,
-  atomic_feat_1_desc,
-  atomic_feat_2_title,
-  atomic_feat_2_desc,
-  atomic_mockup_title,
-  atomic_mockup_desc,
-  atomic_faq_title,
-  atomic_faq_q1,
-  atomic_faq_a1,
-  atomic_faq_q2,
-  atomic_faq_a2,
-  atomic_faq_q3,
-  atomic_faq_a3,
-  atomic_science_badge,
-  atomic_science_title,
-  atomic_science_desc,
-  atomic_cta_desc,
-  atomic_cta_title,
-  atomic_cta_btn,
-  atomic_extra_1_title,
-  atomic_extra_1_desc,
-  atomic_extra_2_title,
-  atomic_extra_2_desc,
-  deepwork_meta_title,
-  deepwork_meta_desc,
-  deepwork_meta_og_title,
-  deepwork_meta_og_desc,
-  deepwork_hero_badge,
-  deepwork_hero_title_1,
-  deepwork_hero_title_2,
-  deepwork_hero_desc,
-  deepwork_hero_cta,
-  deepwork_prob_title,
-  deepwork_prob_desc,
-  deepwork_prob_1_title,
-  deepwork_prob_1_desc,
-  deepwork_prob_2_title,
-  deepwork_prob_2_desc,
-  deepwork_prob_3_title,
-  deepwork_prob_3_desc,
-  deepwork_sol_title,
-  deepwork_sol_1_title,
-  deepwork_sol_1_desc,
-  deepwork_sol_2_title,
-  deepwork_sol_2_desc,
-  deepwork_cta_title,
-  deepwork_cta_btn,
-  deepwork_mockup_title,
-  deepwork_mockup_desc,
-  deepwork_sol_3_title,
-  deepwork_sol_3_desc,
-  deepwork_cta_note,
-  deepwork_faq_title,
-  deepwork_faq_q1,
-  deepwork_faq_a1,
-  deepwork_faq_q2,
-  deepwork_faq_a2,
-  deepwork_faq_q3,
-  deepwork_faq_a3,
-  deepwork_science_badge,
-  deepwork_science_title,
-  deepwork_science_desc,
-  deepwork_cta_desc,
-  deepwork_feat_title,
-  deepwork_feat_1_title,
-  deepwork_feat_1_desc,
-  deepwork_feat_2_title,
-  deepwork_feat_2_desc,
-  deepwork_extra_1_title,
-  deepwork_extra_1_desc,
-  deepwork_extra_2_title,
-  deepwork_extra_2_desc,
+  solve_mental_cta_title,
+  solve_mental_cta_desc,
+  solve_mental_cta_btn,
+  growth_meta_title,
+  growth_meta_desc,
+  growth_meta_og_title,
+  growth_meta_og_desc,
+  schema_solution_growth_name,
+  schema_solution_growth_description,
+  growth_breadcrumb,
+  growth_hero_badge,
+  growth_hero_title_1,
+  growth_hero_title_2,
+  growth_hero_desc,
+  growth_hero_cta_1,
+  growth_hero_social_proof,
+  growth_mockup_goal_label,
+  growth_mockup_habit_title,
+  growth_mockup_habit_desc,
+  growth_mockup_reflection_title,
+  growth_mockup_reflection_desc,
+  growth_mockup_streak_title,
+  growth_mockup_streak_desc,
+  growth_habit_streak,
+  growth_habit_streak_desc,
+  growth_feat_1_title,
+  growth_feat_1_desc,
+  growth_feat_1_point_1,
+  growth_feat_1_point_2,
+  growth_feat_2_title,
+  growth_feat_2_desc,
+  growth_feat_2_quote_title,
+  growth_feat_2_quote_body,
+  growth_extra_1_title,
+  growth_extra_1_desc,
+  growth_extra_2_title,
+  growth_extra_2_desc,
+  growth_extra_2_stat_label,
+  growth_extra_2_stat_sub,
+  growth_science_badge,
+  growth_science_title,
+  growth_science_desc,
+  growth_science_point_1,
+  growth_science_point_2,
+  growth_science_point_3,
+  growth_faq_title,
+  growth_faq_q1,
+  growth_faq_a1,
+  growth_faq_q2,
+  growth_faq_a2,
+  growth_faq_q3,
+  growth_faq_a3,
+  growth_cta_title,
+  growth_cta_desc,
+  growth_cta_btn,
+  growth_cta_note,
+  growth_science_viz_aura,
   brain_meta_title,
   brain_meta_desc,
   brain_meta_og_title,
   brain_meta_og_desc,
+  brain_breadcrumb,
   brain_hero_badge,
   brain_hero_title_1,
   brain_hero_title_2,
   brain_hero_desc,
   brain_hero_cta,
-  brain_prob_title,
-  brain_prob_desc,
-  brain_prob_core,
-  brain_sol_title,
-  brain_step_1,
-  brain_step_2,
-  brain_step_3,
-  brain_cta_title,
-  brain_cta_btn,
   brain_mockup_1,
   brain_mockup_2,
   brain_mockup_3,
+  brain_mockup_3_quote,
+  brain_prob_title,
+  brain_prob_desc,
   brain_prob_1_title,
   brain_prob_1_desc,
   brain_prob_2_title,
   brain_prob_2_desc,
   brain_prob_3_title,
   brain_prob_3_desc,
+  brain_prob_viz_badge,
+  brain_prob_viz_sub,
+  brain_sol_title,
   brain_sol_desc,
   brain_step_1_title,
   brain_step_1_desc,
@@ -16806,40 +17891,345 @@ const id = {
   brain_step_2_desc,
   brain_step_3_title,
   brain_step_3_desc,
-  brain_cta_desc,
-  brain_extra_1_title,
-  brain_extra_1_desc,
-  brain_extra_2_title,
-  brain_extra_2_desc,
-  ecosystem_habit_title,
-  ecosystem_finance_title,
-  ecosystem_planner_title,
-  ecosystem_goal_title,
-  ecosystem_journal_title,
-  ecosystem_job_title,
-  ecosystem_notes_title,
-  ecosystem_calendar_title,
-  brain_faq_title,
   brain_hub_title,
   brain_hub_inbox_title,
   brain_hub_inbox_desc,
   brain_hub_os_title,
   brain_hub_os_desc,
   brain_feat_title,
+  brain_feat_sub,
   brain_feat_1_title,
   brain_feat_1_desc,
   brain_feat_2_title,
   brain_feat_2_desc,
+  brain_extra_1_title,
+  brain_extra_1_desc,
+  brain_extra_1_item_1,
+  brain_extra_1_item_2,
+  brain_extra_1_item_3,
+  brain_extra_1_viz_title,
+  brain_extra_2_title,
+  brain_extra_2_desc,
+  brain_extra_2_item_1,
+  brain_extra_2_item_2,
+  brain_extra_2_item_3,
+  brain_science_badge,
+  brain_science_title,
+  brain_science_desc,
+  brain_science_topic_1,
+  brain_science_topic_2,
+  brain_science_topic_3,
+  brain_science_viz_badge,
+  brain_faq_title,
   brain_faq_q1,
   brain_faq_a1,
   brain_faq_q2,
   brain_faq_a2,
   brain_faq_q3,
   brain_faq_a3,
-  brain_science_badge,
-  brain_science_title,
-  brain_science_desc,
-  brain_cta_note,
+  brain_cta_title,
+  brain_cta_desc,
+  brain_cta_btn,
+  student_meta_title,
+  student_meta_desc,
+  student_meta_og_title,
+  student_meta_og_desc,
+  schema_student_name,
+  schema_student_description,
+  schema_solution_student_audience,
+  student_hero_badge,
+  student_hero_title_1,
+  student_hero_title_2,
+  student_hero_desc,
+  student_hero_cta_1,
+  student_hero_social_proof,
+  student_mockup_title,
+  student_mockup_budget_label,
+  student_mockup_budget_status,
+  student_mockup_task_badge,
+  student_mockup_task_title,
+  student_mockup_schedule_label,
+  student_mockup_schedule_item_1,
+  student_mockup_schedule_item_2,
+  student_prob_title,
+  student_prob_desc,
+  student_prob_1_title,
+  student_prob_1_desc,
+  student_prob_2_title,
+  student_prob_2_desc,
+  student_prob_3_title,
+  student_prob_3_desc,
+  student_feat_1_visual_badge,
+  student_feat_1_title,
+  student_feat_1_desc,
+  student_feat_1_point_1,
+  student_feat_1_point_2,
+  student_feat_2_title,
+  student_feat_2_desc,
+  student_feat_2_point_1,
+  student_feat_2_badge_1,
+  student_feat_2_point_2,
+  student_feat_2_badge_2,
+  student_bento_title,
+  student_bento_desc,
+  student_bento_1_title,
+  student_bento_1_desc,
+  student_bento_2_title,
+  student_bento_2_desc,
+  student_bento_3_title,
+  student_bento_3_desc,
+  student_extra_1_title,
+  student_extra_1_desc,
+  student_extra_1_step_1,
+  student_extra_1_step_2,
+  student_extra_1_step_3,
+  student_extra_2_title,
+  student_extra_2_desc,
+  student_extra_2_item_1,
+  student_extra_2_item_2,
+  student_extra_2_item_3,
+  student_extra_2_item_4,
+  student_science_badge,
+  student_science_title,
+  student_science_desc,
+  student_science_topic_1,
+  student_science_topic_2,
+  student_science_topic_3,
+  student_faq_title,
+  student_faq_q1,
+  student_faq_a1,
+  student_faq_q2,
+  student_faq_a2,
+  student_faq_q3,
+  student_faq_a3,
+  student_cta_title,
+  student_cta_desc,
+  student_cta_btn,
+  freelance_meta_title,
+  freelance_meta_desc,
+  freelance_meta_og_title,
+  freelance_meta_og_desc,
+  freelance_hero_badge,
+  freelance_hero_title_1,
+  freelance_hero_title_2,
+  freelance_hero_desc,
+  freelance_hero_cta,
+  freelance_mockup_revenue,
+  freelance_mockup_client,
+  freelance_mockup_project,
+  freelance_mockup_project_sub,
+  freelance_prob_title,
+  freelance_prob_desc,
+  freelance_prob_1_title,
+  freelance_prob_1_desc,
+  freelance_prob_2_title,
+  freelance_prob_2_desc,
+  freelance_prob_3_title,
+  freelance_prob_3_desc,
+  freelance_sol_title,
+  freelance_sol_desc,
+  freelance_sol_step_1_title,
+  freelance_sol_step_1_desc,
+  freelance_sol_step_2_title,
+  freelance_sol_step_2_desc,
+  freelance_sol_step_3_title,
+  freelance_sol_step_3_desc,
+  freelance_feat_title,
+  freelance_feat_1_title,
+  freelance_feat_1_desc,
+  freelance_feat_2_title,
+  freelance_feat_2_desc,
+  freelance_cta_title,
+  freelance_cta_desc,
+  freelance_cta_btn,
+  freelance_faq_title,
+  freelance_faq_q1,
+  freelance_faq_a1,
+  freelance_faq_q2,
+  freelance_faq_a2,
+  freelance_faq_q3,
+  freelance_faq_a3,
+  freelance_science_badge,
+  freelance_science_title,
+  freelance_science_desc,
+  freelance_extra_1_title,
+  freelance_extra_1_desc,
+  freelance_extra_2_title,
+  freelance_extra_2_desc,
+  mental_meta_title,
+  mental_meta_desc,
+  mental_meta_og_title,
+  mental_meta_og_desc,
+  mental_hero_badge,
+  mental_hero_title_1,
+  mental_hero_title_2,
+  mental_hero_desc,
+  mental_hero_cta,
+  mental_prob_title,
+  mental_prob_desc,
+  mental_prob_1_title,
+  mental_prob_1_desc,
+  mental_prob_2_title,
+  mental_prob_2_desc,
+  mental_sol_title,
+  mental_sol_desc,
+  mental_sol_step_1_title,
+  mental_sol_step_1_desc,
+  mental_sol_step_2_title,
+  mental_sol_step_2_desc,
+  mental_sol_step_3_title,
+  mental_sol_step_3_desc,
+  mental_feat_title,
+  mental_feat_1_title,
+  mental_feat_1_desc,
+  mental_feat_2_title,
+  mental_feat_2_desc,
+  mental_extra_1_title,
+  mental_extra_1_desc,
+  mental_extra_2_title,
+  mental_extra_2_desc,
+  mental_cta_title,
+  mental_cta_desc,
+  mental_cta_btn,
+  mental_faq_title,
+  mental_faq_q1,
+  mental_faq_a1,
+  mental_faq_q2,
+  mental_faq_a2,
+  mental_faq_q3,
+  mental_faq_a3,
+  mental_science_badge,
+  mental_science_title,
+  mental_science_desc,
+  mental_science_topic_1,
+  mental_science_topic_2,
+  mental_science_topic_3,
+  mental_science_topic_4,
+  brain_mockup_quote,
+  brain_mockup_chaos_label,
+  brain_mockup_chaos_desc,
+  ecosystem_calendar_title,
+  ecosystem_calendar_desc,
+  ecosystem_growth_title,
+  ecosystem_growth_desc,
+  ecosystem_brain_title,
+  ecosystem_brain_desc,
+  ecosystem_career_title,
+  ecosystem_career_desc,
+  ecosystem_finance_title,
+  ecosystem_finance_desc,
+  ecosystem_mental_title,
+  ecosystem_mental_desc,
+  mental_science_viz_label,
+  atomic_meta_title,
+  atomic_meta_desc,
+  atomic_meta_og_title,
+  atomic_meta_og_desc,
+  schema_solution_atomic_name,
+  schema_solution_atomic_description,
+  atomic_breadcrumb,
+  solve_atomic_hero_badge,
+  solve_atomic_hero_title_1,
+  solve_atomic_hero_title_2,
+  solve_atomic_hero_desc,
+  solve_atomic_hero_cta,
+  atomic_mockup_habit_title,
+  atomic_mockup_habit_sub,
+  atomic_mockup_identity_title,
+  atomic_mockup_identity_sub,
+  solve_atomic_prob_title,
+  solve_atomic_prob_desc,
+  solve_atomic_prob_1_title,
+  solve_atomic_prob_1_desc,
+  solve_atomic_prob_2_title,
+  solve_atomic_prob_2_desc,
+  solve_atomic_sol_title,
+  solve_atomic_sol_desc,
+  solve_atomic_sol_step_1_title,
+  solve_atomic_sol_step_1_desc,
+  solve_atomic_sol_step_2_title,
+  solve_atomic_sol_step_2_desc,
+  solve_atomic_sol_step_3_title,
+  solve_atomic_sol_step_3_desc,
+  solve_atomic_feat_title,
+  solve_atomic_feat_1_title,
+  solve_atomic_feat_1_desc,
+  solve_atomic_feat_2_title,
+  solve_atomic_feat_2_desc,
+  atomic_extra_1_title,
+  atomic_extra_1_desc,
+  solve_atomic_extra_2_title,
+  solve_atomic_extra_2_desc,
+  solve_atomic_science_badge,
+  solve_atomic_science_title,
+  solve_mental_science_desc_alt,
+  atomic_science_step_1_title,
+  atomic_science_step_2_title,
+  atomic_science_step_3_title,
+  atomic_science_step_4_title,
+  solve_atomic_faq_title,
+  solve_atomic_faq_q1,
+  solve_atomic_faq_a1,
+  solve_atomic_faq_q2,
+  solve_atomic_faq_a2,
+  solve_atomic_faq_a3,
+  solve_atomic_cta_title,
+  solve_atomic_cta_desc,
+  solve_atomic_cta_btn,
+  deep_meta_title,
+  deep_meta_desc,
+  deep_meta_og_title,
+  deep_meta_og_desc,
+  schema_solution_deep_work_name,
+  schema_solution_deep_work_description,
+  deep_breadcrumb,
+  solve_deep_hero_badge,
+  solve_deep_hero_title_1,
+  solve_deep_hero_title_2,
+  solve_deep_hero_desc,
+  solve_deep_hero_cta,
+  deep_mockup_session_title,
+  deep_mockup_session_sub,
+  deep_mockup_focus_label,
+  solve_deep_prob_title,
+  solve_deep_prob_desc,
+  solve_deep_prob_1_title,
+  solve_deep_prob_1_desc,
+  solve_deep_prob_2_title,
+  solve_deep_prob_2_desc,
+  solve_deep_sol_title,
+  solve_deep_sol_desc,
+  solve_deep_sol_step_1_title,
+  solve_deep_sol_step_1_desc,
+  solve_deep_sol_step_2_title,
+  solve_deep_sol_step_2_desc,
+  solve_deep_sol_step_3_title,
+  solve_deep_sol_step_3_desc,
+  solve_deep_feat_title,
+  solve_deep_feat_1_title,
+  solve_deep_feat_1_desc,
+  solve_deep_feat_2_title,
+  solve_deep_feat_2_desc,
+  deep_extra_1_title,
+  deep_extra_1_desc,
+  solve_deep_extra_2_title,
+  solve_deep_extra_2_desc,
+  solve_deep_science_badge,
+  solve_deep_science_title,
+  solve_deep_science_desc,
+  deep_science_factor_1_title,
+  deep_science_factor_2_title,
+  deep_science_factor_3_title,
+  deep_science_factor_4_title,
+  solve_deep_faq_title,
+  solve_deep_faq_q1,
+  solve_deep_faq_a1,
+  solve_deep_faq_q2,
+  solve_deep_faq_a2,
+  solve_deep_faq_a3,
+  solve_deep_cta_title,
+  solve_deep_cta_desc,
+  solve_deep_cta_btn,
   stat_meta_title,
   stat_meta_desc,
   stat_hero_badge,
@@ -16908,53 +18298,21 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   amount_placeholder,
   asset_name,
   asset_name_placeholder,
-  atomic_cta_btn,
-  atomic_cta_desc,
-  atomic_cta_title,
+  atomic_breadcrumb,
   atomic_extra_1_desc,
   atomic_extra_1_title,
-  atomic_extra_2_desc,
-  atomic_extra_2_title,
-  atomic_faq_a1,
-  atomic_faq_a2,
-  atomic_faq_a3,
-  atomic_faq_q1,
-  atomic_faq_q2,
-  atomic_faq_q3,
-  atomic_faq_title,
-  atomic_feat_1_desc,
-  atomic_feat_1_title,
-  atomic_feat_2_desc,
-  atomic_feat_2_title,
-  atomic_feat_title,
-  atomic_hero_badge,
-  atomic_hero_cta,
-  atomic_hero_desc,
-  atomic_hero_title_1,
-  atomic_hero_title_2,
   atomic_meta_desc,
   atomic_meta_og_desc,
   atomic_meta_og_title,
   atomic_meta_title,
-  atomic_mockup_desc,
-  atomic_mockup_title,
-  atomic_prob_1_desc,
-  atomic_prob_1_title,
-  atomic_prob_2_desc,
-  atomic_prob_2_title,
-  atomic_prob_desc,
-  atomic_prob_title,
-  atomic_science_badge,
-  atomic_science_desc,
-  atomic_science_title,
-  atomic_sol_desc,
-  atomic_sol_title,
-  atomic_step_1_desc,
-  atomic_step_1_title,
-  atomic_step_2_desc,
-  atomic_step_2_title,
-  atomic_step_3_desc,
-  atomic_step_3_title,
+  atomic_mockup_habit_sub,
+  atomic_mockup_habit_title,
+  atomic_mockup_identity_sub,
+  atomic_mockup_identity_title,
+  atomic_science_step_1_title,
+  atomic_science_step_2_title,
+  atomic_science_step_3_title,
+  atomic_science_step_4_title,
   auth_back_login: auth_back_login$1,
   auth_btn_confirm: auth_btn_confirm$1,
   auth_btn_google_in: auth_btn_google_in$1,
@@ -17123,13 +18481,20 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   blog_news_note,
   blog_news_placeholder,
   blog_news_title,
+  brain_breadcrumb,
   brain_cta_btn,
   brain_cta_desc,
-  brain_cta_note,
   brain_cta_title,
   brain_extra_1_desc,
+  brain_extra_1_item_1,
+  brain_extra_1_item_2,
+  brain_extra_1_item_3,
   brain_extra_1_title,
+  brain_extra_1_viz_title,
   brain_extra_2_desc,
+  brain_extra_2_item_1,
+  brain_extra_2_item_2,
+  brain_extra_2_item_3,
   brain_extra_2_title,
   brain_faq_a1,
   brain_faq_a2,
@@ -17142,6 +18507,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   brain_feat_1_title,
   brain_feat_2_desc,
   brain_feat_2_title,
+  brain_feat_sub,
   brain_feat_title,
   brain_hero_badge,
   brain_hero_cta,
@@ -17160,27 +18526,33 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   brain_mockup_1,
   brain_mockup_2,
   brain_mockup_3,
+  brain_mockup_3_quote,
+  brain_mockup_chaos_desc,
+  brain_mockup_chaos_label,
+  brain_mockup_quote,
   brain_prob_1_desc,
   brain_prob_1_title,
   brain_prob_2_desc,
   brain_prob_2_title,
   brain_prob_3_desc,
   brain_prob_3_title,
-  brain_prob_core,
   brain_prob_desc,
   brain_prob_title,
+  brain_prob_viz_badge,
+  brain_prob_viz_sub,
   brain_science_badge,
   brain_science_desc,
   brain_science_title,
+  brain_science_topic_1,
+  brain_science_topic_2,
+  brain_science_topic_3,
+  brain_science_viz_badge,
   brain_sol_desc,
   brain_sol_title,
-  brain_step_1,
   brain_step_1_desc,
   brain_step_1_title,
-  brain_step_2,
   brain_step_2_desc,
   brain_step_2_title,
-  brain_step_3,
   brain_step_3_desc,
   brain_step_3_title,
   btn_add,
@@ -17510,10 +18882,41 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   comm_tg_title,
   common_deadline,
   common_progress,
+  compare_architect,
+  compare_explorer,
+  compare_feature,
+  compare_legendary,
+  compare_quantum,
+  compare_title,
   confirm_delete_text,
   confirm_delete_title,
   confirm_new_password,
   confirm_pay,
+  contact_btn_send,
+  contact_faq_btn,
+  contact_faq_desc,
+  contact_faq_title,
+  contact_form_email,
+  contact_form_message,
+  contact_form_message_placeholder,
+  contact_form_name,
+  contact_form_subject,
+  contact_info_billing,
+  contact_info_chat,
+  contact_info_chat_status,
+  contact_info_hq,
+  contact_info_jakarta,
+  contact_info_support,
+  contact_info_title,
+  contact_subtitle,
+  contact_success_desc,
+  contact_success_title,
+  contact_title,
+  cookie_btn_accept,
+  cookie_btn_essential,
+  cookie_btn_settings,
+  cookie_desc,
+  cookie_title,
   create_budget_first,
   cta_about_btn: cta_about_btn$1,
   cta_about_desc: cta_about_desc$1,
@@ -17561,55 +18964,20 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   date_filter,
   date_format,
   datepicker_today,
-  deepwork_cta_btn,
-  deepwork_cta_desc,
-  deepwork_cta_note,
-  deepwork_cta_title,
-  deepwork_extra_1_desc,
-  deepwork_extra_1_title,
-  deepwork_extra_2_desc,
-  deepwork_extra_2_title,
-  deepwork_faq_a1,
-  deepwork_faq_a2,
-  deepwork_faq_a3,
-  deepwork_faq_q1,
-  deepwork_faq_q2,
-  deepwork_faq_q3,
-  deepwork_faq_title,
-  deepwork_feat_1_desc,
-  deepwork_feat_1_title,
-  deepwork_feat_2_desc,
-  deepwork_feat_2_title,
-  deepwork_feat_title,
-  deepwork_hero_badge,
-  deepwork_hero_cta,
-  deepwork_hero_desc,
-  deepwork_hero_title_1,
-  deepwork_hero_title_2,
-  deepwork_meta_desc,
-  deepwork_meta_og_desc,
-  deepwork_meta_og_title,
-  deepwork_meta_title,
-  deepwork_mockup_desc,
-  deepwork_mockup_title,
-  deepwork_prob_1_desc,
-  deepwork_prob_1_title,
-  deepwork_prob_2_desc,
-  deepwork_prob_2_title,
-  deepwork_prob_3_desc,
-  deepwork_prob_3_title,
-  deepwork_prob_desc,
-  deepwork_prob_title,
-  deepwork_science_badge,
-  deepwork_science_desc,
-  deepwork_science_title,
-  deepwork_sol_1_desc,
-  deepwork_sol_1_title,
-  deepwork_sol_2_desc,
-  deepwork_sol_2_title,
-  deepwork_sol_3_desc,
-  deepwork_sol_3_title,
-  deepwork_sol_title,
+  deep_breadcrumb,
+  deep_extra_1_desc,
+  deep_extra_1_title,
+  deep_meta_desc,
+  deep_meta_og_desc,
+  deep_meta_og_title,
+  deep_meta_title,
+  deep_mockup_focus_label,
+  deep_mockup_session_sub,
+  deep_mockup_session_title,
+  deep_science_factor_1_title,
+  deep_science_factor_2_title,
+  deep_science_factor_3_title,
+  deep_science_factor_4_title,
   default: id,
   default_activity_name,
   delete_account_btn,
@@ -17630,15 +18998,34 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   dev_desc: dev_desc$1,
   dev_name: dev_name$1,
   dev_role: dev_role$1,
+  eco_badge: eco_badge$1,
   eco_coming_soon: eco_coming_soon$1,
+  eco_daily_desc: eco_daily_desc$1,
+  eco_daily_title: eco_daily_title$1,
+  eco_desc: eco_desc$1,
+  eco_finance_desc: eco_finance_desc$1,
+  eco_finance_title: eco_finance_title$1,
+  eco_goal_desc: eco_goal_desc$1,
+  eco_goal_title: eco_goal_title$1,
+  eco_habit_desc: eco_habit_desc$1,
+  eco_habit_title: eco_habit_title$1,
+  eco_job_desc: eco_job_desc$1,
+  eco_job_title: eco_job_title$1,
+  eco_journal_desc: eco_journal_desc$1,
+  eco_journal_title: eco_journal_title$1,
+  eco_title: eco_title$1,
+  ecosystem_brain_desc,
+  ecosystem_brain_title,
+  ecosystem_calendar_desc,
   ecosystem_calendar_title,
+  ecosystem_career_desc,
+  ecosystem_career_title,
+  ecosystem_finance_desc,
   ecosystem_finance_title,
-  ecosystem_goal_title,
-  ecosystem_habit_title,
-  ecosystem_job_title,
-  ecosystem_journal_title,
-  ecosystem_notes_title,
-  ecosystem_planner_title,
+  ecosystem_growth_desc,
+  ecosystem_growth_title,
+  ecosystem_mental_desc,
+  ecosystem_mental_title,
   edit,
   edit_budget,
   edit_profile,
@@ -17670,15 +19057,44 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   faq_q4,
   faq_q5,
   faq_title: faq_title$1,
+  feat_ai_audit,
   feat_ai_scheduling,
+  feat_ai_stacking,
+  feat_budgeting,
   feat_calendar_timeline,
   feat_data_export,
+  feat_detailed_analytics,
+  feat_early_beta,
+  feat_finance_entry,
   feat_focus_timer,
+  feat_goal_limit,
+  feat_goal_limit_val_l1,
+  feat_goal_limit_val_l2,
   feat_habit_freeze,
+  feat_habit_limit,
+  feat_habit_limit_val_l1,
+  feat_habit_limit_val_l2,
+  feat_job_limit,
+  feat_job_limit_val_l1,
+  feat_job_limit_val_l2,
   feat_journal_lock,
+  feat_journal_type,
+  feat_journal_type_val_l1,
+  feat_journal_type_val_l2,
   feat_kanban_board,
   feat_multi_currency,
+  feat_net_worth,
+  feat_planner_view,
+  feat_planner_view_val_l1,
+  feat_planner_view_val_l2,
+  feat_receipt_scanning,
+  feat_recurring_tasks,
+  feat_resume_ai,
+  feat_sentiment_ai,
   feat_shared_wallet,
+  feat_val_advanced,
+  feat_val_basic,
+  feat_val_predictive,
   feat_vision_board,
   finance_ai_promo_badge,
   finance_ai_promo_btn,
@@ -17958,19 +19374,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   footer_legal,
   footer_privacy,
   footer_terms,
-  freelance_bento_1_desc,
-  freelance_bento_1_title,
-  freelance_bento_2_desc,
-  freelance_bento_2_title,
-  freelance_bento_3_desc,
-  freelance_bento_3_title,
-  freelance_bento_4_desc,
-  freelance_bento_4_title,
-  freelance_bento_desc,
-  freelance_bento_title,
   freelance_cta_btn,
   freelance_cta_desc,
-  freelance_cta_note,
   freelance_cta_title,
   freelance_extra_1_desc,
   freelance_extra_1_title,
@@ -17984,23 +19389,23 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   freelance_faq_q3,
   freelance_faq_title,
   freelance_feat_1_desc,
-  freelance_feat_1_point_1,
-  freelance_feat_1_point_2,
   freelance_feat_1_title,
   freelance_feat_2_desc,
-  freelance_feat_2_point_1,
-  freelance_feat_2_point_2,
   freelance_feat_2_title,
+  freelance_feat_title,
   freelance_hero_badge,
-  freelance_hero_cta_1,
+  freelance_hero_cta,
   freelance_hero_desc,
-  freelance_hero_social_proof,
   freelance_hero_title_1,
   freelance_hero_title_2,
   freelance_meta_desc,
   freelance_meta_og_desc,
   freelance_meta_og_title,
   freelance_meta_title,
+  freelance_mockup_client,
+  freelance_mockup_project,
+  freelance_mockup_project_sub,
+  freelance_mockup_revenue,
   freelance_prob_1_desc,
   freelance_prob_1_title,
   freelance_prob_2_desc,
@@ -18012,6 +19417,14 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   freelance_science_badge,
   freelance_science_desc,
   freelance_science_title,
+  freelance_sol_desc,
+  freelance_sol_step_1_desc,
+  freelance_sol_step_1_title,
+  freelance_sol_step_2_desc,
+  freelance_sol_step_2_title,
+  freelance_sol_step_3_desc,
+  freelance_sol_step_3_title,
+  freelance_sol_title,
   fric_app_1,
   fric_app_2,
   fric_app_3,
@@ -18200,24 +19613,15 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   greet_morning,
   greet_night,
   group_calendar,
+  group_finance,
+  group_goals,
+  group_habits,
+  group_jobs,
+  group_journal,
+  group_planner,
+  group_support,
   growth,
-  growth_bento_1_desc,
-  growth_bento_1_title,
-  growth_bento_2_desc,
-  growth_bento_2_title,
-  growth_bento_3_desc,
-  growth_bento_3_title,
-  growth_bento_4_desc,
-  growth_bento_4_title,
-  growth_bento_5_desc,
-  growth_bento_5_title,
-  growth_bento_desc,
-  growth_bento_title,
-  growth_card_reading_goal,
-  growth_card_reflect_desc,
-  growth_card_reflect_title,
-  growth_card_run_desc,
-  growth_card_run_title,
+  growth_breadcrumb,
   growth_cta_btn,
   growth_cta_desc,
   growth_cta_note,
@@ -18225,6 +19629,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   growth_extra_1_desc,
   growth_extra_1_title,
   growth_extra_2_desc,
+  growth_extra_2_stat_label,
+  growth_extra_2_stat_sub,
   growth_extra_2_title,
   growth_faq_a1,
   growth_faq_a2,
@@ -18241,20 +19647,11 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   growth_feat_2_quote_body,
   growth_feat_2_quote_title,
   growth_feat_2_title,
-  growth_footer_cta,
-  growth_footer_desc,
-  growth_footer_title,
-  growth_habit_desc,
-  growth_habit_feat_1,
-  growth_habit_feat_2,
   growth_habit_streak,
   growth_habit_streak_desc,
-  growth_habit_title,
   growth_hero_badge,
-  growth_hero_cta,
   growth_hero_cta_1,
   growth_hero_desc,
-  growth_hero_social,
   growth_hero_social_proof,
   growth_hero_title_1,
   growth_hero_title_2,
@@ -18262,25 +19659,20 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   growth_meta_og_desc,
   growth_meta_og_title,
   growth_meta_title,
-  growth_prob_desc_dark,
-  growth_prob_desc_light,
-  growth_prob_point_1,
-  growth_prob_point_2,
-  growth_prob_point_3,
-  growth_prob_point_4,
-  growth_prob_title_dark,
-  growth_prob_title_light,
+  growth_mockup_goal_label,
+  growth_mockup_habit_desc,
+  growth_mockup_habit_title,
+  growth_mockup_reflection_desc,
+  growth_mockup_reflection_title,
+  growth_mockup_streak_desc,
+  growth_mockup_streak_title,
   growth_science_badge,
   growth_science_desc,
-  growth_science_tag_1,
-  growth_science_tag_2,
-  growth_science_tag_3,
+  growth_science_point_1,
+  growth_science_point_2,
+  growth_science_point_3,
   growth_science_title,
-  growth_zen_desc,
-  growth_zen_entry,
-  growth_zen_quote,
-  growth_zen_subtext,
-  growth_zen_title,
+  growth_science_viz_aura,
   gui_cert_desc,
   gui_cert_title,
   gui_pb1,
@@ -18981,6 +20373,76 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   meal_breakfast,
   meal_dinner,
   meal_lunch,
+  mental_breadcrumb,
+  mental_cta_btn,
+  mental_cta_desc,
+  mental_cta_title,
+  mental_extra_1_desc,
+  mental_extra_1_label,
+  mental_extra_1_title,
+  mental_extra_2_desc,
+  mental_extra_2_item_1,
+  mental_extra_2_item_2,
+  mental_extra_2_item_3,
+  mental_extra_2_title,
+  mental_faq_a1,
+  mental_faq_a2,
+  mental_faq_a3,
+  mental_faq_q1,
+  mental_faq_q2,
+  mental_faq_q3,
+  mental_faq_title,
+  mental_feat_1_desc,
+  mental_feat_1_title,
+  mental_feat_2_desc,
+  mental_feat_2_title,
+  mental_feat_title,
+  mental_hero_badge,
+  mental_hero_cta,
+  mental_hero_desc,
+  mental_hero_title_1,
+  mental_hero_title_2,
+  mental_meta_desc,
+  mental_meta_og_desc,
+  mental_meta_og_title,
+  mental_meta_title,
+  mental_mockup_journal_badge,
+  mental_mockup_journal_status,
+  mental_mockup_journal_text,
+  mental_mockup_quote,
+  mental_mockup_source,
+  mental_mockup_task_1_sub,
+  mental_mockup_task_1_title,
+  mental_mockup_task_2_sub,
+  mental_mockup_task_2_title,
+  mental_mockup_task_3_sub,
+  mental_mockup_task_3_title,
+  mental_prob_1_desc,
+  mental_prob_1_title,
+  mental_prob_2_desc,
+  mental_prob_2_title,
+  mental_prob_desc,
+  mental_prob_title,
+  mental_science_badge,
+  mental_science_desc,
+  mental_science_process_1_title,
+  mental_science_process_2_title,
+  mental_science_process_3_title,
+  mental_science_process_4_title,
+  mental_science_title,
+  mental_science_topic_1,
+  mental_science_topic_2,
+  mental_science_topic_3,
+  mental_science_topic_4,
+  mental_science_viz_label,
+  mental_sol_desc,
+  mental_sol_step_1_desc,
+  mental_sol_step_1_title,
+  mental_sol_step_2_desc,
+  mental_sol_step_2_title,
+  mental_sol_step_3_desc,
+  mental_sol_step_3_title,
+  mental_sol_title,
   mig_badge,
   mig_card_1,
   mig_card_2,
@@ -19090,11 +20552,20 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   neural_coach_feat1,
   neural_coach_feat2,
   neural_coach_feat3,
+  neural_coach_msg1,
+  neural_coach_msg2,
+  neural_coach_msg3,
+  neural_coach_sender,
   neural_coach_title,
+  neural_coach_user,
   neural_cta_btn,
   neural_cta_desc,
   neural_cta_note,
   neural_cta_title,
+  neural_gemini_feat1,
+  neural_gemini_feat2,
+  neural_gemini_feat3,
+  neural_gemini_powered,
   neural_hero_badge,
   neural_hero_cta_1,
   neural_hero_cta_2,
@@ -19513,6 +20984,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   press_kit_mockups_title,
   press_kit_subtitle,
   press_kit_title,
+  pricing_ai_badge,
   pricing_ai_btn,
   pricing_ai_desc,
   pricing_ai_initial,
@@ -19524,6 +20996,15 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_bottom_cta_title,
   pricing_compare_subtitle,
   pricing_compare_title,
+  pricing_elite_card_status,
+  pricing_elite_card_title,
+  pricing_elite_feat1_desc,
+  pricing_elite_feat1_title,
+  pricing_elite_feat2_desc,
+  pricing_elite_feat2_title,
+  pricing_elite_feat3_desc,
+  pricing_elite_feat3_title,
+  pricing_elite_title,
   pricing_faq_1_a,
   pricing_faq_1_q,
   pricing_faq_2_a,
@@ -19549,6 +21030,22 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_free_btn,
   pricing_free_desc,
   pricing_free_name,
+  pricing_l1_desc,
+  pricing_l1_initial,
+  pricing_l1_name,
+  pricing_l2_desc,
+  pricing_l2_initial,
+  pricing_l2_name,
+  pricing_l2_recurring,
+  pricing_l3_desc,
+  pricing_l3_initial,
+  pricing_l3_name,
+  pricing_l3_recurring,
+  pricing_l4_badge,
+  pricing_l4_desc,
+  pricing_l4_initial,
+  pricing_l4_name,
+  pricing_l4_recurring,
   pricing_life_btn,
   pricing_life_desc,
   pricing_life_name,
@@ -19600,6 +21097,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_cta_title,
   privacy_doc_intro,
   privacy_download_pdf,
+  privacy_export_desc,
+  privacy_export_point_1,
+  privacy_export_point_2,
+  privacy_export_title,
   privacy_faq_1_a,
   privacy_faq_1_q,
   privacy_faq_2_a,
@@ -19607,6 +21108,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_faq_3_a,
   privacy_faq_3_q,
   privacy_faq_title,
+  privacy_finance_note_desc,
+  privacy_finance_note_title,
   privacy_h2_collection,
   privacy_h2_contact,
   privacy_h2_rights,
@@ -19619,6 +21122,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_li_collection_1_desc,
   privacy_li_collection_1_title,
   privacy_li_collection_2_desc,
+  privacy_li_collection_2_strong,
   privacy_li_collection_2_title,
   privacy_li_collection_3_desc,
   privacy_li_collection_3_title,
@@ -19628,6 +21132,9 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_li_usage_1,
   privacy_li_usage_2,
   privacy_li_usage_3,
+  privacy_locked_desc,
+  privacy_locked_label,
+  privacy_locked_title,
   privacy_meta_desc,
   privacy_meta_og_desc,
   privacy_meta_og_title,
@@ -19647,6 +21154,14 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_p_thirdparty,
   privacy_p_usage,
   privacy_status,
+  privacy_status_access,
+  privacy_status_access_val,
+  privacy_status_protection,
+  privacy_status_protection_val,
+  privacy_status_protocol,
+  privacy_status_protocol_val,
+  privacy_status_tracking,
+  privacy_status_tracking_val,
   privacy_subtitle,
   privacy_title,
   privacy_title_1,
@@ -19661,6 +21176,13 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_tldr_4_title,
   privacy_tldr_title,
   privacy_toc_title,
+  prob_1_desc: prob_1_desc$1,
+  prob_1_point_1: prob_1_point_1$1,
+  prob_1_point_2: prob_1_point_2$1,
+  prob_1_title: prob_1_title$1,
+  prob_2_desc: prob_2_desc$1,
+  prob_2_solution: prob_2_solution$1,
+  prob_2_title: prob_2_title$1,
   profile_avatar_format,
   profile_avatar_remove,
   profile_avatar_title,
@@ -19672,9 +21194,11 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   profile_placeholder_email,
   profile_placeholder_name,
   profile_settings,
+  quantum_feature,
   quit,
   record_transaction,
   refund_badge,
+  refund_contact_label,
   refund_cta_btn,
   refund_cta_desc,
   refund_cta_title,
@@ -19691,6 +21215,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   refund_li_process_1,
   refund_li_process_2,
   refund_li_process_3,
+  refund_merchant_protection_desc,
+  refund_merchant_protection_title,
   refund_meta_desc,
   refund_meta_og_desc,
   refund_meta_og_title,
@@ -19707,6 +21233,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   refund_subtitle,
   refund_title_1,
   refund_title_2,
+  refund_user_responsibility_title,
   reset_btn: reset_btn$1,
   reset_desc: reset_desc$1,
   reset_label_confirm: reset_label_confirm$1,
@@ -19722,7 +21249,21 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   save_photo,
   saved,
   saving,
+  schema_solution_atomic_description,
+  schema_solution_atomic_name,
+  schema_solution_deep_work_description,
+  schema_solution_deep_work_name,
+  schema_solution_growth_description,
+  schema_solution_growth_name,
+  schema_solution_mental_clarity_description,
+  schema_solution_mental_clarity_name,
+  schema_solution_student_audience,
+  schema_student_description,
+  schema_student_name,
   search_result,
+  sec_alert_btn,
+  sec_alert_desc,
+  sec_alert_title,
   sec_badge,
   sec_cta_btn,
   sec_cta_desc,
@@ -19745,6 +21286,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   sec_li_infra_2_title,
   sec_li_infra_3_desc,
   sec_li_infra_3_title,
+  sec_locked_label,
   sec_meta_desc,
   sec_meta_og_desc,
   sec_meta_og_title,
@@ -19835,6 +21377,51 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   sidebar_tasks_done,
   sidebar_tasks_unit,
   sidebar_water_title,
+  sol_badge: sol_badge$1,
+  sol_card_1_desc: sol_card_1_desc$1,
+  sol_card_1_title: sol_card_1_title$1,
+  sol_card_2_desc: sol_card_2_desc$1,
+  sol_card_2_title: sol_card_2_title$1,
+  sol_card_3_desc: sol_card_3_desc$1,
+  sol_card_3_title: sol_card_3_title$1,
+  sol_title: sol_title$1,
+  solve_atomic_cta_btn,
+  solve_atomic_cta_desc,
+  solve_atomic_cta_title,
+  solve_atomic_extra_2_desc,
+  solve_atomic_extra_2_title,
+  solve_atomic_faq_a1,
+  solve_atomic_faq_a2,
+  solve_atomic_faq_a3,
+  solve_atomic_faq_q1,
+  solve_atomic_faq_q2,
+  solve_atomic_faq_title,
+  solve_atomic_feat_1_desc,
+  solve_atomic_feat_1_title,
+  solve_atomic_feat_2_desc,
+  solve_atomic_feat_2_title,
+  solve_atomic_feat_title,
+  solve_atomic_hero_badge,
+  solve_atomic_hero_cta,
+  solve_atomic_hero_desc,
+  solve_atomic_hero_title_1,
+  solve_atomic_hero_title_2,
+  solve_atomic_prob_1_desc,
+  solve_atomic_prob_1_title,
+  solve_atomic_prob_2_desc,
+  solve_atomic_prob_2_title,
+  solve_atomic_prob_desc,
+  solve_atomic_prob_title,
+  solve_atomic_science_badge,
+  solve_atomic_science_title,
+  solve_atomic_sol_desc,
+  solve_atomic_sol_step_1_desc,
+  solve_atomic_sol_step_1_title,
+  solve_atomic_sol_step_2_desc,
+  solve_atomic_sol_step_2_title,
+  solve_atomic_sol_step_3_desc,
+  solve_atomic_sol_step_3_title,
+  solve_atomic_sol_title,
   solve_career_cta_btn,
   solve_career_cta_desc,
   solve_career_cta_title,
@@ -19886,6 +21473,44 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_career_sol_step_3_desc,
   solve_career_sol_step_3_title,
   solve_career_sol_title,
+  solve_deep_cta_btn,
+  solve_deep_cta_desc,
+  solve_deep_cta_title,
+  solve_deep_extra_2_desc,
+  solve_deep_extra_2_title,
+  solve_deep_faq_a1,
+  solve_deep_faq_a2,
+  solve_deep_faq_a3,
+  solve_deep_faq_q1,
+  solve_deep_faq_q2,
+  solve_deep_faq_title,
+  solve_deep_feat_1_desc,
+  solve_deep_feat_1_title,
+  solve_deep_feat_2_desc,
+  solve_deep_feat_2_title,
+  solve_deep_feat_title,
+  solve_deep_hero_badge,
+  solve_deep_hero_cta,
+  solve_deep_hero_desc,
+  solve_deep_hero_title_1,
+  solve_deep_hero_title_2,
+  solve_deep_prob_1_desc,
+  solve_deep_prob_1_title,
+  solve_deep_prob_2_desc,
+  solve_deep_prob_2_title,
+  solve_deep_prob_desc,
+  solve_deep_prob_title,
+  solve_deep_science_badge,
+  solve_deep_science_desc,
+  solve_deep_science_title,
+  solve_deep_sol_desc,
+  solve_deep_sol_step_1_desc,
+  solve_deep_sol_step_1_title,
+  solve_deep_sol_step_2_desc,
+  solve_deep_sol_step_2_title,
+  solve_deep_sol_step_3_desc,
+  solve_deep_sol_step_3_title,
+  solve_deep_sol_title,
   solve_finance_cta_btn,
   solve_finance_cta_desc,
   solve_finance_cta_title,
@@ -19900,6 +21525,14 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_faq_q2,
   solve_finance_faq_q3,
   solve_finance_faq_title,
+  solve_finance_feat_1_desc,
+  solve_finance_feat_1_title,
+  solve_finance_feat_2_desc,
+  solve_finance_feat_2_title,
+  solve_finance_feat_3_desc,
+  solve_finance_feat_3_title,
+  solve_finance_feat_desc,
+  solve_finance_feat_title,
   solve_finance_hero_badge,
   solve_finance_hero_cta,
   solve_finance_hero_desc,
@@ -19910,29 +21543,24 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_meta_og_title,
   solve_finance_meta_title,
   solve_finance_prob_1_desc,
-  solve_finance_prob_1_point_1,
-  solve_finance_prob_1_point_2,
-  solve_finance_prob_1_point_3,
   solve_finance_prob_1_title,
   solve_finance_prob_2_desc,
-  solve_finance_prob_2_point_1,
-  solve_finance_prob_2_point_2,
-  solve_finance_prob_2_point_3,
   solve_finance_prob_2_title,
+  solve_finance_prob_3_desc,
+  solve_finance_prob_3_title,
   solve_finance_prob_desc,
   solve_finance_prob_title,
   solve_finance_science_badge,
   solve_finance_science_desc,
   solve_finance_science_title,
-  solve_finance_sol_feat_1_desc,
-  solve_finance_sol_feat_1_title,
-  solve_finance_sol_feat_2_desc,
-  solve_finance_sol_feat_2_title,
-  solve_finance_sol_feat_3_desc,
-  solve_finance_sol_feat_3_title,
+  solve_finance_sol_desc,
+  solve_finance_sol_step_1_desc,
+  solve_finance_sol_step_1_title,
+  solve_finance_sol_step_2_desc,
+  solve_finance_sol_step_2_title,
+  solve_finance_sol_step_3_desc,
+  solve_finance_sol_step_3_title,
   solve_finance_sol_title,
-  solve_finance_syn_desc,
-  solve_finance_syn_title,
   solve_mental_cta_btn,
   solve_mental_cta_desc,
   solve_mental_cta_title,
@@ -19969,6 +21597,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_mental_prob_title,
   solve_mental_science_badge,
   solve_mental_science_desc,
+  solve_mental_science_desc_alt,
   solve_mental_science_title,
   solve_mental_sol_desc,
   solve_mental_sol_step_1_desc,
@@ -20019,6 +21648,18 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   status_image_saved,
   status_saved,
   status_saving,
+  sto_hof_1_desc,
+  sto_hof_1_name,
+  sto_hof_1_title,
+  sto_hof_2_desc,
+  sto_hof_2_name,
+  sto_hof_2_title,
+  sto_hof_3_desc,
+  sto_hof_3_name,
+  sto_hof_3_title,
+  sto_hof_4_desc,
+  sto_hof_4_name,
+  sto_hof_4_title,
   sto_hof_desc,
   sto_hof_title,
   sto_int1,
@@ -20073,11 +21714,17 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_bento_title,
   student_cta_btn,
   student_cta_desc,
-  student_cta_note,
   student_cta_title,
   student_extra_1_desc,
+  student_extra_1_step_1,
+  student_extra_1_step_2,
+  student_extra_1_step_3,
   student_extra_1_title,
   student_extra_2_desc,
+  student_extra_2_item_1,
+  student_extra_2_item_2,
+  student_extra_2_item_3,
+  student_extra_2_item_4,
   student_extra_2_title,
   student_faq_a1,
   student_faq_a2,
@@ -20091,6 +21738,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_feat_1_point_2,
   student_feat_1_title,
   student_feat_1_visual_badge,
+  student_feat_2_badge_1,
+  student_feat_2_badge_2,
   student_feat_2_desc,
   student_feat_2_point_1,
   student_feat_2_point_2,
@@ -20105,6 +21754,14 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_meta_og_desc,
   student_meta_og_title,
   student_meta_title,
+  student_mockup_budget_label,
+  student_mockup_budget_status,
+  student_mockup_schedule_item_1,
+  student_mockup_schedule_item_2,
+  student_mockup_schedule_label,
+  student_mockup_task_badge,
+  student_mockup_task_title,
+  student_mockup_title,
   student_prob_1_desc,
   student_prob_1_title,
   student_prob_2_desc,
@@ -20116,6 +21773,9 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_science_badge,
   student_science_desc,
   student_science_title,
+  student_science_topic_1,
+  student_science_topic_2,
+  student_science_topic_3,
   success_batch_saved,
   success_budget_saved,
   success_copy_habit,
@@ -20125,6 +21785,9 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   success_habit_updated,
   success_saved,
   success_transaction_saved,
+  support_priority,
+  support_standard,
+  support_vip,
   target,
   target_days,
   task_notes,
@@ -20166,6 +21829,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_nav_7,
   terms_nav_8,
   terms_nav_title,
+  terms_notice_desc,
+  terms_notice_title,
   terms_p_dispute,
   terms_p_eligibility,
   terms_p_intellectual,
@@ -20989,7 +22654,7 @@ const _ = { install(t3, e2) {
   const o2 = (t4, o3, n2, r2 = e2) => D(t4, o3, n2, r2);
   parseInt(t3.version) > 2 ? (t3.config.globalProperties.route = o2, t3.provide("route", o2)) : t3.mixin({ methods: { route: o2 } });
 } };
-const Ziggy$1 = { "url": "https://oneformind.com", "port": null, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
+const Ziggy$1 = { "url": "https://oneformind.com", "port": null, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "settings.cookie-consent": { "uri": "settings/cookie-consent", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "resources.ai-trust": { "uri": "resources/neural-os-transparency", "methods": ["GET", "HEAD"] }, "company.contact": { "uri": "company/contact", "methods": ["GET", "HEAD"] }, "contact.send": { "uri": "company/contact", "methods": ["POST"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.analyze": { "uri": "journal/analyze", "methods": ["POST"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "admin.blog.index": { "uri": "admin/blog", "methods": ["GET", "HEAD"] }, "admin.blog.create": { "uri": "admin/blog/create", "methods": ["GET", "HEAD"] }, "admin.blog.store": { "uri": "admin/blog", "methods": ["POST"] }, "admin.blog.edit": { "uri": "admin/blog/{post}/edit", "methods": ["GET", "HEAD"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.update": { "uri": "admin/blog/{post}", "methods": ["PATCH"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.destroy": { "uri": "admin/blog/{post}", "methods": ["DELETE"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.users.index": { "uri": "admin/users", "methods": ["GET", "HEAD"] }, "admin.users.toggle-premium": { "uri": "admin/users/{user}/toggle-premium", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "admin.users.toggle-admin": { "uri": "admin/users/{user}/toggle-admin", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
 if (typeof window !== "undefined" && typeof window.Ziggy !== "undefined") {
   Object.assign(Ziggy$1.routes, window.Ziggy.routes);
 }
@@ -20999,7 +22664,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-BJ5MgKe8.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-CpKKbf5m.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D-snYFKm.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D6l7Z_pa.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-a9aLJQy7.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CFkBm1KS.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BE-Xxmll.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DnYRrgKR.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DubKo15c.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-k7vdARMo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-DzeSTMxZ.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-BeZZOPSn.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-ByGi8WDy.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BMQv__8P.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-BOF3bTFz.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-svQP9x_9.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-D8NXKrsR.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-BI8g_9CP.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cuj9T6zJ.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BZCWCF9r.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-RNmAdmmc.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DPqDOjj3.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-w1z6s5Vr.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-x8msOOrn.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BCj31SBC.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DePQBMaS.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Cf-RpfhO.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-B7zGkZ2Q.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B968pYvd.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Tyj_ZcKU.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BYH72XKH.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-AaezvXZn.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-1sGNRf3j.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-DxCGolWx.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-D0A1YVNh.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-BJ5MgKe8.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-1iHx9eMc.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-BaUr3KS2.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-DattYdWT.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-CpKKbf5m.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D-snYFKm.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D6l7Z_pa.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-a9aLJQy7.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CFkBm1KS.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BE-Xxmll.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DnYRrgKR.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DubKo15c.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-k7vdARMo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-DzeSTMxZ.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-BeZZOPSn.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-ByGi8WDy.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BMQv__8P.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-BOF3bTFz.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-svQP9x_9.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-D8NXKrsR.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-BI8g_9CP.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cuj9T6zJ.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BZCWCF9r.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-RNmAdmmc.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DPqDOjj3.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-w1z6s5Vr.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-x8msOOrn.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BCj31SBC.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DePQBMaS.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Cf-RpfhO.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-B7zGkZ2Q.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B968pYvd.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Tyj_ZcKU.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BYH72XKH.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-AaezvXZn.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-1sGNRf3j.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-DxCGolWx.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-D0A1YVNh.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

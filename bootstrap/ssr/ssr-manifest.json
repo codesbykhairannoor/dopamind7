@@ -122,6 +122,9 @@
     "https://oneformind.com/build/assets/Index-RNmAdmmc.js",
     "https://oneformind.com/build/assets/Index-CPCZwC2s.css"
   ],
+  "resources/js/Layouts/AdminLayout.vue": [
+    "https://oneformind.com/build/assets/AdminLayout-CKmlSQrm.js"
+  ],
   "resources/js/Layouts/AuthenticatedLayout.vue": [
     "https://oneformind.com/build/assets/AuthenticatedLayout-XnqvYLta.js",
     "https://oneformind.com/build/assets/AuthenticatedLayout-Kpe-nt6i.css"
@@ -135,6 +138,20 @@
   ],
   "resources/js/Pages/About.vue": [
     "https://oneformind.com/build/assets/About-BJ5MgKe8.js"
+  ],
+  "resources/js/Pages/Admin/Blog/Form.vue": [
+    "https://oneformind.com/build/assets/Form-1iHx9eMc.js",
+    "https://oneformind.com/build/assets/Form-CY-xfY0z.css"
+  ],
+  "resources/js/Pages/Admin/Blog/Form.vue?vue&type=style&index=0&scoped=17dccbea&lang.css": [
+    "https://oneformind.com/build/assets/Form-1iHx9eMc.js",
+    "https://oneformind.com/build/assets/Form-CY-xfY0z.css"
+  ],
+  "resources/js/Pages/Admin/Blog/Index.vue": [
+    "https://oneformind.com/build/assets/Index-BaUr3KS2.js"
+  ],
+  "resources/js/Pages/Admin/User/Index.vue": [
+    "https://oneformind.com/build/assets/Index-DattYdWT.js"
   ],
   "resources/js/Pages/AiCoach/Index.vue": [
     "https://oneformind.com/build/assets/Index-CpKKbf5m.js",

@@ -1,0 +1,1 @@
+import{l as u,M as s,A as a}from"./vendor-vue-0RP0kiWP.js";function i(t){const e=a(null),n=o=>{e.value&&!e.value.contains(o.target)&&t()};return u(()=>{document.addEventListener("mousedown",n)}),s(()=>{document.removeEventListener("mousedown",n)}),e}export{i as u};
