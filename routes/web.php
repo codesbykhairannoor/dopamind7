@@ -122,7 +122,7 @@ Route::get('/sitemap.xml', function () {
     }
 
     // 3. BLOG POSTS (Dinamis dari Database)
-    $posts = \App\Models\BlogPost::where('status', 'published')
+    $posts = \App\Models\BlogPost::where('is_published', true)
         ->where('published_at', '<=', now())
         ->get();
 
@@ -263,7 +263,7 @@ Route::get('/resources/guide', function () {
 })->name('resources.guide');
 
 Route::get('/resources/blog', function () {
-    $posts = \App\Models\BlogPost::with('category')->where('status', 'published')
+    $posts = \App\Models\BlogPost::with('category')->where('is_published', true)
         ->where(
             function ($query) {
                 $query->whereNull('published_at')
@@ -279,7 +279,7 @@ Route::get('/resources/blog', function () {
 
 Route::get('/resources/blog/{slug}', function ($slug) {
     $post = \App\Models\BlogPost::with('category')->where('slug', $slug)
-        ->where('status', 'published')
+        ->where('is_published', true)
         ->where(
             function ($query) {
                 $query->whereNull('published_at')

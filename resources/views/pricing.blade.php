@@ -126,9 +126,9 @@
                             <span class="text-[11px] font-bold text-gray-800">{{ __('pricing_feat_month_trial') }}</span>
                         </li>
                     </ul>
-                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-3xl bg-indigo-600 text-white font-black text-xs text-center hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition">
+                    <button hx-boost="false" data-plan="architect" class="checkout-trigger w-full py-4 rounded-3xl bg-indigo-600 text-white font-black text-xs text-center hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition">
                         {{ __('pricing_pro_btn') }}
-                    </a>
+                    </button>
                 </div>
 
                 {{-- Tier 3: Quantum --}}
@@ -160,9 +160,9 @@
                             <span class="text-[11px] font-bold text-indigo-600">{{ __('pricing_feat_l3_insights') }}</span>
                         </li>
                     </ul>
-                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-5 rounded-3xl bg-slate-900 text-white font-black text-xs text-center hover:bg-black shadow-xl transition transform active:scale-95">
+                    <button hx-boost="false" data-plan="quantum" class="checkout-trigger w-full py-5 rounded-3xl bg-slate-900 text-white font-black text-xs text-center hover:bg-black shadow-xl transition transform active:scale-95">
                         {{ __('pricing_ai_btn') }}
-                    </a>
+                    </button>
                 </div>
 
                 {{-- Tier 4: Legendary --}}
@@ -194,9 +194,9 @@
                             <span class="text-[11px] font-bold">{{ __('pricing_feat_l4_vip') }}</span>
                         </li>
                     </ul>
-                    <a hx-boost="false" href="{{ route('register') }}" class="w-full py-4 rounded-3xl bg-white text-slate-900 font-black text-xs text-center hover:bg-slate-50 transition shadow-lg">
+                    <button hx-boost="false" data-plan="lifetime" class="checkout-trigger w-full py-4 rounded-3xl bg-white text-slate-900 font-black text-xs text-center hover:bg-slate-50 transition shadow-lg">
                         {{ __('pricing_l4_btn') }}
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -603,37 +603,65 @@
     </section>
 
 @push('scripts')
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    document.getElementById('pay-pro-button')?.addEventListener('click', function() {
-        fetch("{{ route('payment.checkout') }}", {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.snap_token) {
-                window.snap.pay(data.snap_token, {
-                    onSuccess: function(result) {
-                        window.location.reload();
-                    },
-                    onPending: function(result) {
-                        alert('Payment pending. Check again later.');
-                    },
-                    onError: function(result) {
-                        alert('Payment failed.');
-                    }
+    function openCheckout(planId) {
+        @auth
+            Swal.fire({
+                title: '{{ app()->getLocale() === "id" ? "Menyiapkan Pembayaran..." : "Preparing Payment..." }}',
+                html: '{{ app()->getLocale() === "id" ? "Menghubungkan ke Duitku safe gateway" : "Connecting to Duitku safe gateway" }}',
+                allowOutsideClick: false,
+                color: '#1e293b',
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            fetch("{{ route('payment.checkout') }}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ plan: planId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.paymentUrl) {
+                    window.location.href = data.paymentUrl;
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Checkout Error',
+                        text: data.error || 'Terjadi kesalahan sistem. Silakan login ulang.',
+                        confirmButtonColor: '#4f46e5'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'System Error',
+                    text: 'Gagal menghubungi server.',
+                    confirmButtonColor: '#4f46e5'
                 });
-            } else {
-                alert('Checkout error: ' + (data.error || 'Unknown error'));
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
+            });
+        @else
+            window.location.href = "{{ route('register') }}?plan=" + planId;
+        @endauth
+    }
+
+    // Bind manually for Blade buttons
+    document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('.checkout-trigger');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const planId = btn.getAttribute('data-plan');
+                openCheckout(planId);
+            });
         });
     });
 </script>

@@ -2,7 +2,6 @@ import { createSSRApp, h as h$1 } from "vue";
 import { renderToString } from "@vue/server-renderer";
 import { createInertiaApp } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
-import { r as resolvePageComponent } from "./assets/vendor-core-koWuargk.js";
 import { i18nVue } from "laravel-vue-i18n";
 const about_meta_desc$1 = "Learn about OneForMind, the unified Life OS. We build at the intersection of habit tracking, planning, and finance for high performers.";
 const about_meta_og_title$1 = "About OneForMind | The Vision for Unified Productivity";
@@ -56,6 +55,52 @@ const about_roadmap_v2_title$1 = "Phase 2: Mobility";
 const about_roadmap_v2_desc$1 = "Native iOS/Android apps with deep system integration and offline focus.";
 const about_roadmap_v3_title$1 = "Phase 3: Intelligence";
 const about_roadmap_v3_desc$1 = "Privacy-first predictive insights to help you optimize your life synergy autonomously.";
+const atomic_meta_title$1 = "Atomic Habit System - OneForMind";
+const atomic_meta_desc$1 = "Master the art of building small routines that deliver big results. Based on the Atomic Habits principle.";
+const atomic_meta_og_title$1 = "OneForMind Atomic Habit Methodology";
+const atomic_meta_og_desc$1 = "Build your winning streak. Never break the chain.";
+const atomic_hero_badge$1 = "🌱 THE ATOMIC SYSTEM";
+const atomic_hero_title_1$1 = "Forget Goals.";
+const atomic_hero_title_2$1 = "Build Systems.";
+const atomic_hero_desc$1 = "Winners and losers have the same goals. The difference is their systems. OneForMind automates the Atomic Habits framework so you can focus on showing up.";
+const atomic_hero_cta$1 = "Start Your System Free";
+const atomic_mockup_title$1 = "The Compounding Effect";
+const atomic_mockup_desc$1 = "1% better every day for a year = 37x better.";
+const atomic_mockup_streak$1 = "Active Streak: 12 Days";
+const atomic_mockup_returns$1 = "3700% Progress";
+const atomic_prob_title$1 = "Why Habits Fail";
+const atomic_prob_desc$1 = "Most tracking apps focus on the wrong things. They are reactive, not proactive.";
+const atomic_prob_1_title$1 = "Focusing on Outcomes";
+const atomic_prob_1_desc$1 = "You focus on 'losing 10kg' instead of 'becoming the person who doesn't miss a workout'. Outcomes are temporary.";
+const atomic_prob_2_title$1 = "The Plateau of Latent Potential";
+const atomic_prob_2_desc$1 = "You quit because you don't see results in week 2. You haven't crossed the 'Valley of Disappointment' yet.";
+const atomic_heatmap_less$1 = "Less";
+const atomic_heatmap_peak$1 = "Peak";
+const atomic_extra_1_title$1 = "Winner's Streak";
+const atomic_extra_1_desc$1 = "Don't break the chain. Our addictive streak visualization ensures you stay on the right path.";
+const atomic_extra_2_title$1 = "The Compounding Factory";
+const atomic_extra_2_desc$1 = "Watch your small actions turn into massive life-shifts. Every habit you complete fuels your next goal.";
+const atomic_science_badge$1 = "SCIENTIFIC PILLAR";
+const atomic_science_title$1 = "Built on Behavioral Physics";
+const atomic_science_desc$1 = "You do not rise to the level of your goals. You fall to the level of your systems.";
+const atomic_science_reagent_1$1 = "REAGENT A";
+const atomic_science_topic_1$1 = "Identity Shift";
+const atomic_science_reagent_2$1 = "REAGENT B";
+const atomic_science_topic_2$1 = "Cue Design";
+const atomic_science_reagent_3$1 = "REAGENT C";
+const atomic_science_topic_3$1 = "Immediate Reward";
+const atomic_faq_title$1 = "System FAQ";
+const atomic_faq_q1$1 = "How is this different from a normal habit tracker?";
+const atomic_faq_a1$1 = "Normal trackers focus on streaks. We focus on identity. Our system suggests habits based on your Life Vision and provides 'Atomic Resilience' rules like Never Miss Twice.";
+const atomic_faq_q2$1 = "What is the 'Never Miss Twice' rule?";
+const atomic_faq_a2$1 = "Missing one day is a mistake. Missing two is the start of a new habit. Our system alerts you when you miss one day to ensure the streak of identity isn't broken.";
+const atomic_faq_q3$1 = "Can I sync habits with my calendar?";
+const atomic_faq_a3$1 = "Yes. Every habit you create can automatically block time in your Daily Planner, ensuring you have the space to execute.";
+const atomic_cta_title$1 = "Ready to build your system?";
+const atomic_cta_desc$1 = "Join 5,000+ high-performers who use OneForMind to automate their growth.";
+const atomic_cta_btn$1 = "Start Your System Now";
+const schema_solution_atomic_name$1 = "OneForMind Atomic Habit Solution";
+const schema_solution_atomic_description$1 = "A micro-habit tracking system for long-term identity change.";
 const auth_login_title$2 = "Welcome Back.";
 const auth_login_subtitle$2 = "Continue your life's progress.";
 const auth_register_title$2 = "Start Fresh.";
@@ -1338,7 +1383,7 @@ const planner_matrix_axis_x$1 = "Urgency";
 const journal_analytics_banner_text$1 = "Join thousands reflecting daily with AI-powered clarity.";
 const finance_mockup_balance_value$1 = "Rp 25.000.000";
 const finance_brand$1 = "OneForMind";
-const finance_mockup_income$1 = "Rp 128.450k";
+const finance_mockup_income$1 = "Total Income";
 const finance_mockup_expense$1 = "Rp 12.000k";
 const finance_mockup_saving$1 = "Rp 5.200k";
 const finance_fire_date_label$1 = "Estimated FIRE Date";
@@ -2121,6 +2166,265 @@ const journal_ai_promo_badge$1 = "Sentiment Intelligence";
 const journal_ai_promo_title$1 = "Mirror Your Inner Growth";
 const journal_ai_promo_desc$1 = "Beyond just words—Neural OS decodes the sentiment and hidden patterns in your daily entries, giving you a scientific perspective on your mental well-being.";
 const journal_ai_promo_btn$1 = "Activate AI Reflection";
+const Company$1 = "Company";
+const Compare$1 = "Compare";
+const Connect$1 = "Connect";
+const Dashboard$1 = "Dashboard";
+const Features$1 = "Features";
+const Logo$1 = "Logo";
+const OneForMind$1 = "OneForMind";
+const Pricing$1 = "Pricing";
+const Product$1 = "Product";
+const Resources$1 = "Resources";
+const Security$1 = "Security";
+const Solutions$1 = "Solutions";
+const calendar_mockup_focus = "Focus Session";
+const calendar_mockup_habit = "Morning Ritual";
+const career_extra_1_item_1$1 = "[EN] Career Extra 1 Item 1";
+const career_extra_1_item_2$1 = "[EN] Career Extra 1 Item 2";
+const career_extra_1_item_3$1 = "[EN] Career Extra 1 Item 3";
+const career_mockup_live$1 = "[EN] Career Mockup Live";
+const career_mockup_plan_badge$1 = "[EN] Career Mockup Plan Badge";
+const career_mockup_plan_title$1 = "[EN] Career Mockup Plan";
+const career_negotiation_final$1 = "[EN] Career Negotiation Final";
+const career_negotiation_initial$1 = "[EN] Career Negotiation Initial";
+const career_science_module_1$1 = "[EN] Career Science Module 1";
+const career_science_module_2$1 = "[EN] Career Science Module 2";
+const career_science_module_3$1 = "[EN] Career Science Module 3";
+const career_science_topic_1$1 = "[EN] Career Science Topic 1";
+const career_science_topic_2$1 = "[EN] Career Science Topic 2";
+const career_science_topic_3$1 = "[EN] Career Science Topic 3";
+const career_science_viz_roi$1 = "[EN] Career Science Viz Roi";
+const career_science_viz_status$1 = "[EN] Career Science Viz Status";
+const career_status_applied$1 = "Applied";
+const career_status_interviewing$1 = "Interviewing";
+const career_status_offer$1 = "[EN] Career Status Offer";
+const deepwork_cta_btn$1 = "[EN] Deepwork Cta Btn";
+const deepwork_cta_desc$1 = "[EN] Deepwork Cta";
+const deepwork_cta_title$1 = "[EN] Deepwork Cta";
+const deepwork_extra_1_desc$1 = "[EN] Deepwork Extra 1";
+const deepwork_extra_1_label$1 = "[EN] Deepwork Extra 1 Label";
+const deepwork_extra_1_sub$1 = "[EN] Deepwork Extra 1 Sub";
+const deepwork_extra_1_title$1 = "[EN] Deepwork Extra 1";
+const deepwork_extra_2_desc$1 = "[EN] Deepwork Extra 2";
+const deepwork_extra_2_item_1$1 = "[EN] Deepwork Extra 2 Item 1";
+const deepwork_extra_2_item_2$1 = "[EN] Deepwork Extra 2 Item 2";
+const deepwork_extra_2_title$1 = "[EN] Deepwork Extra 2";
+const deepwork_faq_a1$1 = "[EN] Deepwork Faq A1";
+const deepwork_faq_a2$1 = "[EN] Deepwork Faq A2";
+const deepwork_faq_a3$1 = "[EN] Deepwork Faq A3";
+const deepwork_faq_q1$1 = "[EN] Deepwork Faq Q1";
+const deepwork_faq_q2$1 = "[EN] Deepwork Faq Q2";
+const deepwork_faq_q3$1 = "[EN] Deepwork Faq Q3";
+const deepwork_faq_title$1 = "[EN] Deepwork Faq";
+const deepwork_feat_1_desc$1 = "[EN] Deepwork Feat 1";
+const deepwork_feat_1_title$1 = "[EN] Deepwork Feat 1";
+const deepwork_feat_2_desc$1 = "[EN] Deepwork Feat 2";
+const deepwork_feat_2_title$1 = "[EN] Deepwork Feat 2";
+const deepwork_feat_title$1 = "[EN] Deepwork Feat";
+const deepwork_hero_badge$1 = "[EN] Deepwork  Badge";
+const deepwork_hero_cta$1 = "[EN] Deepwork  Cta";
+const deepwork_hero_desc$1 = "[EN] Deepwork";
+const deepwork_hero_title_1$1 = "[EN] Deepwork    1";
+const deepwork_hero_title_2$1 = "[EN] Deepwork    2";
+const deepwork_meta_desc$1 = "[EN] Deepwork";
+const deepwork_meta_og_desc$1 = "[EN] Deepwork  Og";
+const deepwork_meta_og_title$1 = "[EN] Deepwork  Og";
+const deepwork_meta_title$1 = "[EN] Deepwork";
+const deepwork_mockup_desc$1 = "[EN] Deepwork Mockup";
+const deepwork_mockup_task_1$1 = "[EN] Deepwork Mockup Task 1";
+const deepwork_mockup_task_2$1 = "[EN] Deepwork Mockup Task 2";
+const deepwork_mockup_task_3$1 = "[EN] Deepwork Mockup Task 3";
+const deepwork_mockup_title$1 = "[EN] Deepwork Mockup";
+const deepwork_prob_1_desc$1 = "[EN] Deepwork Prob 1";
+const deepwork_prob_1_title$1 = "[EN] Deepwork Prob 1";
+const deepwork_prob_2_desc$1 = "[EN] Deepwork Prob 2";
+const deepwork_prob_2_title$1 = "[EN] Deepwork Prob 2";
+const deepwork_prob_3_desc$1 = "[EN] Deepwork Prob 3";
+const deepwork_prob_3_title$1 = "[EN] Deepwork Prob 3";
+const deepwork_prob_desc$1 = "[EN] Deepwork Prob";
+const deepwork_prob_title$1 = "[EN] Deepwork Prob";
+const deepwork_science_badge$1 = "[EN] Deepwork Science Badge";
+const deepwork_science_concept_1$1 = "[EN] Deepwork Science Concept 1";
+const deepwork_science_concept_2$1 = "[EN] Deepwork Science Concept 2";
+const deepwork_science_concept_3$1 = "[EN] Deepwork Science Concept 3";
+const deepwork_science_desc$1 = "[EN] Deepwork Science";
+const deepwork_science_title$1 = "[EN] Deepwork Science";
+const deepwork_science_topic_1$1 = "[EN] Deepwork Science Topic 1";
+const deepwork_science_topic_2$1 = "[EN] Deepwork Science Topic 2";
+const deepwork_science_topic_3$1 = "[EN] Deepwork Science Topic 3";
+const deepwork_science_viz_lock$1 = "[EN] Deepwork Science Viz Lock";
+const deepwork_science_viz_sub$1 = "[EN] Deepwork Science Viz Sub";
+const deepwork_sol_1_desc$1 = "[EN] Deepwork Sol 1";
+const deepwork_sol_1_title$1 = "[EN] Deepwork Sol 1";
+const deepwork_sol_2_desc$1 = "[EN] Deepwork Sol 2";
+const deepwork_sol_2_title$1 = "[EN] Deepwork Sol 2";
+const deepwork_sol_3_desc$1 = "[EN] Deepwork Sol 3";
+const deepwork_sol_3_title$1 = "[EN] Deepwork Sol 3";
+const deepwork_sol_title$1 = "[EN] Deepwork Sol";
+const finance_extra_1_label$1 = "Balance Flow";
+const finance_extra_2_label$1 = "MONTHS TO FREEDOM";
+const finance_mockup_assets$1 = "Personal Assets";
+const finance_mockup_expenses$1 = "Total Expenses";
+const finance_mockup_goal$1 = "Financia Goal Progress";
+const finance_mockup_growth$1 = "Wealth Velocity";
+const finance_science_principle_1_title$1 = "Mindful Saving";
+const finance_science_principle_2_title$1 = "Resource Allocation";
+const finance_science_principle_3_title$1 = "The Compounding Effect";
+const finance_science_viz_status_badge$1 = "SYSTEM STATUS";
+const finance_science_viz_status_title$1 = "Optimized Wealth";
+const finance_science_viz_sub$1 = "Neural Synergy Intelligence";
+const finance_science_viz_title$1 = "THE WEALTH ENGINE";
+const finance_synergy_alloc_amount$1 = "+$5.00";
+const finance_synergy_alloc_title$1 = "Saved to Wealth";
+const finance_synergy_habit_desc$1 = "Saved $5 on coffee.";
+const finance_synergy_habit_title$1 = "Coffee Habit";
+const freelance_bento_1_desc$1 = "[EN] Freelance Bento 1";
+const freelance_bento_1_title$1 = "[EN] Freelance Bento 1";
+const freelance_bento_2_desc$1 = "[EN] Freelance Bento 2";
+const freelance_bento_2_title$1 = "[EN] Freelance Bento 2";
+const freelance_bento_3_desc$1 = "[EN] Freelance Bento 3";
+const freelance_bento_3_title$1 = "[EN] Freelance Bento 3";
+const freelance_bento_4_desc$1 = "[EN] Freelance Bento 4";
+const freelance_bento_4_title$1 = "[EN] Freelance Bento 4";
+const freelance_bento_desc$1 = "[EN] Freelance Bento";
+const freelance_bento_title$1 = "[EN] Freelance Bento";
+const freelance_extra_2_item_1$1 = "[EN] Freelance Extra 2 Item 1";
+const freelance_extra_2_item_2$1 = "[EN] Freelance Extra 2 Item 2";
+const freelance_extra_2_item_3$1 = "[EN] Freelance Extra 2 Item 3";
+const freelance_feat_1_point_1$1 = "[EN] Freelance Feat 1 Point 1";
+const freelance_feat_1_point_2$1 = "[EN] Freelance Feat 1 Point 2";
+const freelance_feat_2_point_1$1 = "[EN] Freelance Feat 2 Point 1";
+const freelance_feat_2_point_2$1 = "[EN] Freelance Feat 2 Point 2";
+const freelance_hero_cta_1$1 = "[EN] Freelance  Cta 1";
+const freelance_hero_social_proof$1 = "[EN] Freelance  Social Proof";
+const freelance_mockup_active_status$1 = "[EN] Freelance Mockup Active Status";
+const freelance_mockup_active_title$1 = "[EN] Freelance Mockup Active";
+const freelance_mockup_available$1 = "[EN] Freelance Mockup Available";
+const freelance_mockup_completion$1 = "[EN] Freelance Mockup Completion";
+const freelance_mockup_invoice_item_1$1 = "[EN] Freelance Mockup Invoice Item 1";
+const freelance_mockup_invoice_item_2$1 = "[EN] Freelance Mockup Invoice Item 2";
+const freelance_mockup_invoice_status$1 = "[EN] Freelance Mockup Invoice Status";
+const freelance_mockup_invoice_title$1 = "[EN] Freelance Mockup Invoice";
+const freelance_mockup_invoice_total$1 = "[EN] Freelance Mockup Invoice Total";
+const freelance_mockup_milestone$1 = "[EN] Freelance Mockup Milestone";
+const freelance_mockup_msg_name$1 = "[EN] Freelance Mockup Msg Name";
+const freelance_mockup_msg_text$1 = "[EN] Freelance Mockup Msg Text";
+const freelance_mockup_msg_time$1 = "[EN] Freelance Mockup Msg Time";
+const freelance_mockup_payment_badge$1 = "[EN] Freelance Mockup Payment Badge";
+const freelance_mockup_payment_from$1 = "[EN] Freelance Mockup Payment From";
+const freelance_mockup_project_1_sub$1 = "[EN] Freelance Mockup Project 1 Sub";
+const freelance_mockup_project_1_title$1 = "[EN] Freelance Mockup Project 1";
+const freelance_mockup_project_2_sub$1 = "[EN] Freelance Mockup Project 2 Sub";
+const freelance_mockup_project_2_title$1 = "[EN] Freelance Mockup Project 2";
+const freelance_mockup_rating$1 = "[EN] Freelance Mockup Rating";
+const freelance_mockup_role$1 = "[EN] Freelance Mockup Role";
+const freelance_science_topic_1$1 = "[EN] Freelance Science Topic 1";
+const freelance_science_topic_2$1 = "[EN] Freelance Science Topic 2";
+const freelance_science_topic_3$1 = "[EN] Freelance Science Topic 3";
+const goal_steps_badge$1 = "[EN] Goal Steps Badge";
+const meta_ai_creator$1 = "[EN] Ai Creator";
+const meta_ai_service_type$1 = "[EN] Ai Service Type";
+const meta_global_description$1 = "[EN] Global  Ription";
+const meta_global_keywords$1 = "[EN] Global Keywords";
+const pricing_faq_subtitle$1 = "[EN] Pricing Faq Sub";
+const pricing_feat_l1_finance$1 = "[EN] Pricing Feat L1 Finance";
+const pricing_feat_l1_habits$1 = "[EN] Pricing Feat L1 Habits";
+const pricing_feat_l2_finance$1 = "[EN] Pricing Feat L2 Finance";
+const pricing_feat_l2_habits$1 = "[EN] Pricing Feat L2 Habits";
+const pricing_feat_l3_ai_coach$1 = "[EN] Pricing Feat L3 Ai Coach";
+const pricing_feat_l3_insights$1 = "[EN] Pricing Feat L3 Insights";
+const pricing_feat_l3_wealth$1 = "[EN] Pricing Feat L3 Wealth";
+const pricing_feat_l4_triggers$1 = "[EN] Pricing Feat L4 Triggers";
+const pricing_feat_l4_vip$1 = "[EN] Pricing Feat L4 Vip";
+const pricing_feat_l4_war_room$1 = "[EN] Pricing Feat L4 War Room";
+const pricing_l4_btn$1 = "[EN] Pricing L4 Btn";
+const pricing_meta_og_desc$1 = "[EN] Pricing  Og";
+const privacy_nav_4$1 = "04. Security Protocols";
+const schema_about_description$1 = "[EN] Schema About  Ription";
+const schema_about_name$1 = "[EN] Schema About Name";
+const schema_calendar_description$1 = "[EN] Schema Calendar  Ription";
+const schema_calendar_name$1 = "[EN] Schema Calendar Name";
+const schema_finance_description$1 = "[EN] Schema Finance  Ription";
+const schema_finance_name$1 = "[EN] Schema Finance Name";
+const schema_goal_description$1 = "[EN] Schema Goal  Ription";
+const schema_goal_name$1 = "[EN] Schema Goal Name";
+const schema_habit_description$1 = "[EN] Schema Habit  Ription";
+const schema_habit_feature_1$1 = "[EN] Schema Habit Feature 1";
+const schema_habit_feature_2$1 = "[EN] Schema Habit Feature 2";
+const schema_habit_feature_3$1 = "[EN] Schema Habit Feature 3";
+const schema_habit_feature_4$1 = "[EN] Schema Habit Feature 4";
+const schema_habit_name$1 = "[EN] Schema Habit Name";
+const schema_job_description$1 = "[EN] Schema Job  Ription";
+const schema_job_name$1 = "[EN] Schema Job Name";
+const schema_journal_description$1 = "[EN] Schema Journal  Ription";
+const schema_journal_name$1 = "[EN] Schema Journal Name";
+const schema_planner_description$1 = "[EN] Schema Planner  Ription";
+const schema_planner_name$1 = "[EN] Schema Planner Name";
+const schema_pricing_description$1 = "[EN] Schema Pricing  Ription";
+const schema_pricing_name$1 = "[EN] Schema Pricing Name";
+const schema_solution_career_description$1 = "[EN] Schema Solution Career  Ription";
+const schema_solution_career_name$1 = "[EN] Schema Solution Career Name";
+const schema_solution_deepwork_description$1 = "[EN] Schema Solution Deepwork  Ription";
+const schema_solution_deepwork_name$1 = "[EN] Schema Solution Deepwork Name";
+const schema_solution_finance_mastery_description$1 = "[EN] Schema Solution Finance Mastery  Ription";
+const schema_solution_finance_mastery_name$1 = "[EN] Schema Solution Finance Mastery Name";
+const schema_solution_freelancer_description_en$1 = "[EN] Schema Solution Freelancer  Ription En";
+const schema_solution_freelancer_description_id$1 = "[EN] Schema Solution Freelancer  Ription Id";
+const schema_solution_student_description_en$1 = "[EN] Schema Solution Student  Ription En";
+const schema_solution_student_description_id$1 = "[EN] Schema Solution Student  Ription Id";
+const solve_calendar_hero_cta = "Open My Calendar";
+const solve_calendar_hero_desc = "Stop reacting to notifications. Start blocking time for your life goals with our Deep Calendar integration.";
+const solve_calendar_hero_title_1 = "Master Your Time,";
+const solve_calendar_hero_title_2 = "Not Your List.";
+const solve_career_hero_cta$1 = "Start Your Journey";
+const solve_career_hero_desc$1 = "Stop tracking applications on messy spreadsheets. Organize your job search, prepare for interviews, and grow your career systematically.";
+const solve_career_hero_title_1$1 = "Turn Job Hunting into a";
+const solve_career_hero_title_2$1 = "Predictable Pipeline.";
+const solve_finance_cta_btn$1 = "Start Managing My Money";
+const solve_finance_cta_desc$1 = "Start building your wealth foundation now with the most intuitive system.";
+const solve_finance_cta_title$1 = "Ready for Financial Freedom?";
+const solve_finance_extra_1_desc$1 = "Understand your financial ebbs and flows with easy-to-read charts. Identify seasonal trends and adjust your lifestyle before cash flow turns negative.";
+const solve_finance_extra_1_title$1 = "Cash Flow Visualization";
+const solve_finance_extra_2_desc$1 = "Want to buy a house or go on vacation? Set specific goals and let OneForMind calculate how much to set aside each month to achieve them on time.";
+const solve_finance_extra_2_title$1 = "Smart Savings Targets";
+const solve_finance_faq_a1$1 = "For maximum privacy and security, OneForMind currently focuses on fast manual input or CSV uploads, ensuring there is no direct access to your bank accounts.";
+const solve_finance_faq_a2$1 = "Yes, our system supports multi-currency to help you manage global assets in one place.";
+const solve_finance_faq_a3$1 = "Your data is fully encrypted. We use the same security standards as modern banking apps to protect your sensitive financial information.";
+const solve_finance_faq_q1$1 = "Do I need to connect my bank?";
+const solve_finance_faq_q2$1 = "Can I track multiple currencies?";
+const solve_finance_faq_q3$1 = "Is my financial data truly secure?";
+const solve_finance_faq_title$1 = "Finance Mastery FAQ";
+const solve_finance_hero_badge$1 = "Wealth System";
+const solve_finance_hero_cta$1 = "Master Your Money";
+const solve_finance_hero_desc$1 = "Say goodbye to financial anxiety. Track income, monitor expenses, and align your spending with your life goals in one beautiful dashboard.";
+const solve_finance_hero_title_1$1 = "Total Control Over";
+const solve_finance_hero_title_2$1 = "Your Financial Future.";
+const solve_finance_meta_desc$1 = "Gain total control over your money. Track expenses, set budgets, and build wealth systematically.";
+const solve_finance_meta_og_title$1 = "Master Your Finances with OneForMind";
+const solve_finance_meta_title$1 = "Finance Mastery - OneForMind";
+const solve_finance_prob_1_point_1$1 = "Unconscious Spending";
+const solve_finance_prob_1_point_2$1 = "Subscription Fatigue";
+const solve_finance_prob_1_point_3$1 = "Cash Flow Friction";
+const solve_finance_prob_1_title$1 = "Subtle Leaks";
+const solve_finance_prob_2_point_1$1 = "Living Check-to-Check";
+const solve_finance_prob_2_point_2$1 = "Stagnant Savings";
+const solve_finance_prob_2_point_3$1 = "Month-End Anxiety";
+const solve_finance_prob_2_title$1 = "No Emergency Buffer";
+const solve_finance_prob_desc$1 = "Managing money shouldn't feel like a punishment.";
+const solve_finance_prob_title$1 = "The Financial Anxiety Trap";
+const solve_finance_science_badge$1 = "WEALTH ARCHITECTURE";
+const solve_finance_science_desc$1 = "We use 'Pay Yourself First' and 'Zero-Based Budgeting' principles. Our system ensures every dollar has a job, reducing impulse buys and increasing savings.";
+const solve_finance_science_title$1 = "Conscious Allocation Methodology";
+const solve_finance_sol_feat_1_desc$1 = "Track every cent with ease.";
+const solve_finance_sol_feat_1_title$1 = "Financial Clarity";
+const solve_finance_sol_feat_2_desc$1 = "Automated limits and alerts.";
+const solve_finance_sol_feat_2_title$1 = "Smart Budgeting";
+const solve_finance_sol_feat_3_desc$1 = "Project your future net worth.";
+const solve_finance_sol_feat_3_title$1 = "Wealth Roadmap";
+const solve_finance_sol_title$1 = "Your Money, Under Your Command.";
+const solve_finance_syn_desc$1 = "Connect habits to cash flow.";
+const solve_finance_syn_title$1 = "The Synergy Loop";
 const neural_meta_title$1 = "Neural OS AI - OneForMind Productivity";
 const neural_meta_desc$1 = "The intelligence behind your growth. Powered by Gemini, the Neural OS analyzes your habits, finances, and goals to provide personalized insights and audits.";
 const neural_hero_badge$1 = "Next-Gen Intelligence";
@@ -2438,7 +2742,6 @@ const privacy_toc_title$1 = "Contents";
 const privacy_nav_1$1 = "01. TL;DR Summary";
 const privacy_nav_2$1 = "02. Information Collection";
 const privacy_nav_3$1 = "03. Data Usage";
-const privacy_nav_4$1 = "04. Security Protocols";
 const privacy_nav_5$1 = "05. Third Parties";
 const privacy_nav_6$1 = "06. Privacy Rights";
 const privacy_nav_7$1 = "07. Contact Us";
@@ -3032,10 +3335,6 @@ const solve_career_meta_desc$1 = "Transform your job hunt from a chaotic mess in
 const solve_career_meta_og_title$1 = "Take Control of Your Career with OneForMind";
 const solve_career_meta_og_desc$1 = "Stop sending resumes into the void. Build a systematic career growth pipeline.";
 const solve_career_hero_badge$1 = "Career Accelerator";
-const solve_career_hero_title_1$1 = "Turn Job Hunting into a";
-const solve_career_hero_title_2$1 = "Predictable Pipeline.";
-const solve_career_hero_desc$1 = "Stop tracking applications on messy spreadsheets. Organize your job search, prepare for interviews, and grow your career systematically.";
-const solve_career_hero_cta$1 = "Start Your Journey";
 const solve_career_mockup_header$1 = "Application Funnel";
 const solve_career_prob_title$1 = "The Resume Black Hole";
 const solve_career_prob_desc$1 = "Why searching for a job feels so exhausting right now.";
@@ -3078,24 +3377,11 @@ const solve_career_extra_1_title$1 = "Interview Prep Pipeline";
 const solve_career_extra_1_desc$1 = "Don't walk in unprepared. Use our template to research company culture, prepare your own questions, and log post-interview reflections for continuous improvement.";
 const solve_career_extra_2_title$1 = "Market Value Tracking";
 const solve_career_extra_2_desc$1 = "Track salary offers and market rates for your roles. Knowledge is power during salary negotiations—OneForMind keeps your data organized and ready.";
-const solve_finance_meta_title$1 = "Finance Mastery - OneForMind";
-const solve_finance_meta_desc$1 = "Gain total control over your money. Track expenses, set budgets, and build wealth systematically.";
-const solve_finance_meta_og_title$1 = "Master Your Finances with OneForMind";
 const solve_finance_meta_og_desc$1 = "No more financial anxiety. Track your wealth and build a secure future.";
-const solve_finance_hero_badge$1 = "Wealth System";
-const solve_finance_hero_title_1$1 = "Total Control Over";
-const solve_finance_hero_title_2$1 = "Your Financial Future.";
-const solve_finance_hero_desc$1 = "Say goodbye to financial anxiety. Track income, monitor expenses, and align your spending with your life goals in one beautiful dashboard.";
-const solve_finance_hero_cta$1 = "Master Your Money";
-const solve_finance_prob_title$1 = "The Financial Anxiety Trap";
-const solve_finance_prob_desc$1 = "Managing money shouldn't feel like a punishment.";
-const solve_finance_prob_1_title$1 = "Subtle Leaks";
 const solve_finance_prob_1_desc$1 = "Forgotten subscriptions and small costs that, when totaled, derail your future plans.";
-const solve_finance_prob_2_title$1 = "No Emergency Buffer";
 const solve_finance_prob_2_desc$1 = "Living paycheck to paycheck without protection when emergencies suddenly arise.";
 const solve_finance_prob_3_title$1 = "Wealth Ignorance";
 const solve_finance_prob_3_desc$1 = "Not knowing your current total net worth because data is scattered everywhere.";
-const solve_finance_sol_title$1 = "Your Money, Under Your Command.";
 const solve_finance_sol_desc$1 = "OneForMind gives you full visibility. Not just recording, but planning your freedom.";
 const solve_finance_sol_step_1_title$1 = "Instant Input";
 const solve_finance_sol_step_1_desc$1 = "Log every expense in seconds. Speed is the key to consistency.";
@@ -3111,23 +3397,6 @@ const solve_finance_feat_2_title$1 = "Budget Center";
 const solve_finance_feat_2_desc$1 = "Create a monthly spending plan and compare it with reality in real-time.";
 const solve_finance_feat_3_title$1 = "Net Worth Tracker";
 const solve_finance_feat_3_desc$1 = "See the big picture. Connect your assets and liabilities to know your true financial value.";
-const solve_finance_cta_title$1 = "Ready for Financial Freedom?";
-const solve_finance_cta_desc$1 = "Start building your wealth foundation now with the most intuitive system.";
-const solve_finance_cta_btn$1 = "Start Managing My Money";
-const solve_finance_faq_title$1 = "Finance Mastery FAQ";
-const solve_finance_faq_q1$1 = "Do I need to connect my bank?";
-const solve_finance_faq_a1$1 = "For maximum privacy and security, OneForMind currently focuses on fast manual input or CSV uploads, ensuring there is no direct access to your bank accounts.";
-const solve_finance_faq_q2$1 = "Can I track multiple currencies?";
-const solve_finance_faq_a2$1 = "Yes, our system supports multi-currency to help you manage global assets in one place.";
-const solve_finance_faq_q3$1 = "Is my financial data truly secure?";
-const solve_finance_faq_a3$1 = "Your data is fully encrypted. We use the same security standards as modern banking apps to protect your sensitive financial information.";
-const solve_finance_science_badge$1 = "WEALTH ARCHITECTURE";
-const solve_finance_science_title$1 = "Conscious Allocation Methodology";
-const solve_finance_science_desc$1 = "We use 'Pay Yourself First' and 'Zero-Based Budgeting' principles. Our system ensures every dollar has a job, reducing impulse buys and increasing savings.";
-const solve_finance_extra_1_title$1 = "Cash Flow Visualization";
-const solve_finance_extra_1_desc$1 = "Understand your financial ebbs and flows with easy-to-read charts. Identify seasonal trends and adjust your lifestyle before cash flow turns negative.";
-const solve_finance_extra_2_title$1 = "Smart Savings Targets";
-const solve_finance_extra_2_desc$1 = "Want to buy a house or go on vacation? Set specific goals and let OneForMind calculate how much to set aside each month to achieve them on time.";
 const solve_mental_meta_title$1 = "Mental Clarity - OneForMind";
 const solve_mental_meta_desc$1 = "Reduce anxiety and enhance focus. Use a reflective journaling system for a calmer, sharper mind.";
 const solve_mental_meta_og_title$1 = "Clear Your Mind with OneForMind";
@@ -3511,12 +3780,6 @@ const ecosystem_finance_desc$1 = "Every cent has a job. Master your finances wit
 const ecosystem_mental_title$1 = "Mood Analytics";
 const ecosystem_mental_desc$1 = "Understand the correlation between your daily routine and your mental state for sustained clarity.";
 const mental_science_viz_label$1 = "Mind_Map_Alpha";
-const atomic_meta_title$1 = "Atomic Habit System - OneForMind";
-const atomic_meta_desc$1 = "Master the art of building small routines that deliver big results. Based on the Atomic Habits principle.";
-const atomic_meta_og_title$1 = "OneForMind Atomic Habit Methodology";
-const atomic_meta_og_desc$1 = "Build your winning streak. Never break the chain.";
-const schema_solution_atomic_name$1 = "OneForMind Atomic Habit Solution";
-const schema_solution_atomic_description$1 = "A micro-habit tracking system for long-term identity change.";
 const atomic_breadcrumb$1 = "Atomic System";
 const solve_atomic_hero_badge$1 = "Routine Optimization";
 const solve_atomic_hero_title_1$1 = "Stop Guessing,";
@@ -3546,8 +3809,6 @@ const solve_atomic_feat_1_title$1 = "Visual Habit Tracker";
 const solve_atomic_feat_1_desc$1 = "GitHub-style contribution graphs to see your daily consistency without gaps.";
 const solve_atomic_feat_2_title$1 = "Identity Shifter";
 const solve_atomic_feat_2_desc$1 = "Visualize how every small action reinforces the new identity you're building.";
-const atomic_extra_1_title$1 = "Winner's Streak";
-const atomic_extra_1_desc$1 = "Don't break the chain. Our addictive streak visualization ensures you stay on the right path.";
 const solve_atomic_extra_2_title$1 = "The Law of Attraction";
 const solve_atomic_extra_2_desc$1 = "Building an environment that makes good habits inevitable.";
 const solve_atomic_science_badge$1 = "BEHAVIORAL PSYCHOLOGY";
@@ -3704,6 +3965,52 @@ const en = {
   about_roadmap_v2_desc: about_roadmap_v2_desc$1,
   about_roadmap_v3_title: about_roadmap_v3_title$1,
   about_roadmap_v3_desc: about_roadmap_v3_desc$1,
+  atomic_meta_title: atomic_meta_title$1,
+  atomic_meta_desc: atomic_meta_desc$1,
+  atomic_meta_og_title: atomic_meta_og_title$1,
+  atomic_meta_og_desc: atomic_meta_og_desc$1,
+  atomic_hero_badge: atomic_hero_badge$1,
+  atomic_hero_title_1: atomic_hero_title_1$1,
+  atomic_hero_title_2: atomic_hero_title_2$1,
+  atomic_hero_desc: atomic_hero_desc$1,
+  atomic_hero_cta: atomic_hero_cta$1,
+  atomic_mockup_title: atomic_mockup_title$1,
+  atomic_mockup_desc: atomic_mockup_desc$1,
+  atomic_mockup_streak: atomic_mockup_streak$1,
+  atomic_mockup_returns: atomic_mockup_returns$1,
+  atomic_prob_title: atomic_prob_title$1,
+  atomic_prob_desc: atomic_prob_desc$1,
+  atomic_prob_1_title: atomic_prob_1_title$1,
+  atomic_prob_1_desc: atomic_prob_1_desc$1,
+  atomic_prob_2_title: atomic_prob_2_title$1,
+  atomic_prob_2_desc: atomic_prob_2_desc$1,
+  atomic_heatmap_less: atomic_heatmap_less$1,
+  atomic_heatmap_peak: atomic_heatmap_peak$1,
+  atomic_extra_1_title: atomic_extra_1_title$1,
+  atomic_extra_1_desc: atomic_extra_1_desc$1,
+  atomic_extra_2_title: atomic_extra_2_title$1,
+  atomic_extra_2_desc: atomic_extra_2_desc$1,
+  atomic_science_badge: atomic_science_badge$1,
+  atomic_science_title: atomic_science_title$1,
+  atomic_science_desc: atomic_science_desc$1,
+  atomic_science_reagent_1: atomic_science_reagent_1$1,
+  atomic_science_topic_1: atomic_science_topic_1$1,
+  atomic_science_reagent_2: atomic_science_reagent_2$1,
+  atomic_science_topic_2: atomic_science_topic_2$1,
+  atomic_science_reagent_3: atomic_science_reagent_3$1,
+  atomic_science_topic_3: atomic_science_topic_3$1,
+  atomic_faq_title: atomic_faq_title$1,
+  atomic_faq_q1: atomic_faq_q1$1,
+  atomic_faq_a1: atomic_faq_a1$1,
+  atomic_faq_q2: atomic_faq_q2$1,
+  atomic_faq_a2: atomic_faq_a2$1,
+  atomic_faq_q3: atomic_faq_q3$1,
+  atomic_faq_a3: atomic_faq_a3$1,
+  atomic_cta_title: atomic_cta_title$1,
+  atomic_cta_desc: atomic_cta_desc$1,
+  atomic_cta_btn: atomic_cta_btn$1,
+  schema_solution_atomic_name: schema_solution_atomic_name$1,
+  schema_solution_atomic_description: schema_solution_atomic_description$1,
   "____ SECTION_3 ____": "=== AUTHENTICATION (LOGIN & REGISTER) ===",
   auth_login_title: auth_login_title$2,
   auth_login_subtitle: auth_login_subtitle$2,
@@ -5780,6 +6087,271 @@ const en = {
   journal_ai_promo_title: journal_ai_promo_title$1,
   journal_ai_promo_desc: journal_ai_promo_desc$1,
   journal_ai_promo_btn: journal_ai_promo_btn$1,
+  "About Us": "About Us",
+  Company: Company$1,
+  Compare: Compare$1,
+  Connect: Connect$1,
+  "Contact Us": "Contact Us",
+  Dashboard: Dashboard$1,
+  Features: Features$1,
+  Logo: Logo$1,
+  OneForMind: OneForMind$1,
+  Pricing: Pricing$1,
+  "Privacy Policy": "Privacy Policy",
+  Product: Product$1,
+  "Refund Policy": "Refund Policy",
+  Resources: Resources$1,
+  Security: Security$1,
+  Solutions: Solutions$1,
+  "System Status": "System Status",
+  "Terms of Service": "Terms of Service",
+  calendar_mockup_focus,
+  calendar_mockup_habit,
+  career_extra_1_item_1: career_extra_1_item_1$1,
+  career_extra_1_item_2: career_extra_1_item_2$1,
+  career_extra_1_item_3: career_extra_1_item_3$1,
+  career_mockup_live: career_mockup_live$1,
+  career_mockup_plan_badge: career_mockup_plan_badge$1,
+  career_mockup_plan_title: career_mockup_plan_title$1,
+  career_negotiation_final: career_negotiation_final$1,
+  career_negotiation_initial: career_negotiation_initial$1,
+  career_science_module_1: career_science_module_1$1,
+  career_science_module_2: career_science_module_2$1,
+  career_science_module_3: career_science_module_3$1,
+  career_science_topic_1: career_science_topic_1$1,
+  career_science_topic_2: career_science_topic_2$1,
+  career_science_topic_3: career_science_topic_3$1,
+  career_science_viz_roi: career_science_viz_roi$1,
+  career_science_viz_status: career_science_viz_status$1,
+  career_status_applied: career_status_applied$1,
+  career_status_interviewing: career_status_interviewing$1,
+  career_status_offer: career_status_offer$1,
+  deepwork_cta_btn: deepwork_cta_btn$1,
+  deepwork_cta_desc: deepwork_cta_desc$1,
+  deepwork_cta_title: deepwork_cta_title$1,
+  deepwork_extra_1_desc: deepwork_extra_1_desc$1,
+  deepwork_extra_1_label: deepwork_extra_1_label$1,
+  deepwork_extra_1_sub: deepwork_extra_1_sub$1,
+  deepwork_extra_1_title: deepwork_extra_1_title$1,
+  deepwork_extra_2_desc: deepwork_extra_2_desc$1,
+  deepwork_extra_2_item_1: deepwork_extra_2_item_1$1,
+  deepwork_extra_2_item_2: deepwork_extra_2_item_2$1,
+  deepwork_extra_2_title: deepwork_extra_2_title$1,
+  deepwork_faq_a1: deepwork_faq_a1$1,
+  deepwork_faq_a2: deepwork_faq_a2$1,
+  deepwork_faq_a3: deepwork_faq_a3$1,
+  deepwork_faq_q1: deepwork_faq_q1$1,
+  deepwork_faq_q2: deepwork_faq_q2$1,
+  deepwork_faq_q3: deepwork_faq_q3$1,
+  deepwork_faq_title: deepwork_faq_title$1,
+  deepwork_feat_1_desc: deepwork_feat_1_desc$1,
+  deepwork_feat_1_title: deepwork_feat_1_title$1,
+  deepwork_feat_2_desc: deepwork_feat_2_desc$1,
+  deepwork_feat_2_title: deepwork_feat_2_title$1,
+  deepwork_feat_title: deepwork_feat_title$1,
+  deepwork_hero_badge: deepwork_hero_badge$1,
+  deepwork_hero_cta: deepwork_hero_cta$1,
+  deepwork_hero_desc: deepwork_hero_desc$1,
+  deepwork_hero_title_1: deepwork_hero_title_1$1,
+  deepwork_hero_title_2: deepwork_hero_title_2$1,
+  deepwork_meta_desc: deepwork_meta_desc$1,
+  deepwork_meta_og_desc: deepwork_meta_og_desc$1,
+  deepwork_meta_og_title: deepwork_meta_og_title$1,
+  deepwork_meta_title: deepwork_meta_title$1,
+  deepwork_mockup_desc: deepwork_mockup_desc$1,
+  deepwork_mockup_task_1: deepwork_mockup_task_1$1,
+  deepwork_mockup_task_2: deepwork_mockup_task_2$1,
+  deepwork_mockup_task_3: deepwork_mockup_task_3$1,
+  deepwork_mockup_title: deepwork_mockup_title$1,
+  deepwork_prob_1_desc: deepwork_prob_1_desc$1,
+  deepwork_prob_1_title: deepwork_prob_1_title$1,
+  deepwork_prob_2_desc: deepwork_prob_2_desc$1,
+  deepwork_prob_2_title: deepwork_prob_2_title$1,
+  deepwork_prob_3_desc: deepwork_prob_3_desc$1,
+  deepwork_prob_3_title: deepwork_prob_3_title$1,
+  deepwork_prob_desc: deepwork_prob_desc$1,
+  deepwork_prob_title: deepwork_prob_title$1,
+  deepwork_science_badge: deepwork_science_badge$1,
+  deepwork_science_concept_1: deepwork_science_concept_1$1,
+  deepwork_science_concept_2: deepwork_science_concept_2$1,
+  deepwork_science_concept_3: deepwork_science_concept_3$1,
+  deepwork_science_desc: deepwork_science_desc$1,
+  deepwork_science_title: deepwork_science_title$1,
+  deepwork_science_topic_1: deepwork_science_topic_1$1,
+  deepwork_science_topic_2: deepwork_science_topic_2$1,
+  deepwork_science_topic_3: deepwork_science_topic_3$1,
+  deepwork_science_viz_lock: deepwork_science_viz_lock$1,
+  deepwork_science_viz_sub: deepwork_science_viz_sub$1,
+  deepwork_sol_1_desc: deepwork_sol_1_desc$1,
+  deepwork_sol_1_title: deepwork_sol_1_title$1,
+  deepwork_sol_2_desc: deepwork_sol_2_desc$1,
+  deepwork_sol_2_title: deepwork_sol_2_title$1,
+  deepwork_sol_3_desc: deepwork_sol_3_desc$1,
+  deepwork_sol_3_title: deepwork_sol_3_title$1,
+  deepwork_sol_title: deepwork_sol_title$1,
+  finance_extra_1_label: finance_extra_1_label$1,
+  finance_extra_2_label: finance_extra_2_label$1,
+  finance_mockup_assets: finance_mockup_assets$1,
+  finance_mockup_expenses: finance_mockup_expenses$1,
+  finance_mockup_goal: finance_mockup_goal$1,
+  finance_mockup_growth: finance_mockup_growth$1,
+  finance_science_principle_1_title: finance_science_principle_1_title$1,
+  finance_science_principle_2_title: finance_science_principle_2_title$1,
+  finance_science_principle_3_title: finance_science_principle_3_title$1,
+  finance_science_viz_status_badge: finance_science_viz_status_badge$1,
+  finance_science_viz_status_title: finance_science_viz_status_title$1,
+  finance_science_viz_sub: finance_science_viz_sub$1,
+  finance_science_viz_title: finance_science_viz_title$1,
+  finance_synergy_alloc_amount: finance_synergy_alloc_amount$1,
+  finance_synergy_alloc_title: finance_synergy_alloc_title$1,
+  finance_synergy_habit_desc: finance_synergy_habit_desc$1,
+  finance_synergy_habit_title: finance_synergy_habit_title$1,
+  freelance_bento_1_desc: freelance_bento_1_desc$1,
+  freelance_bento_1_title: freelance_bento_1_title$1,
+  freelance_bento_2_desc: freelance_bento_2_desc$1,
+  freelance_bento_2_title: freelance_bento_2_title$1,
+  freelance_bento_3_desc: freelance_bento_3_desc$1,
+  freelance_bento_3_title: freelance_bento_3_title$1,
+  freelance_bento_4_desc: freelance_bento_4_desc$1,
+  freelance_bento_4_title: freelance_bento_4_title$1,
+  freelance_bento_desc: freelance_bento_desc$1,
+  freelance_bento_title: freelance_bento_title$1,
+  freelance_extra_2_item_1: freelance_extra_2_item_1$1,
+  freelance_extra_2_item_2: freelance_extra_2_item_2$1,
+  freelance_extra_2_item_3: freelance_extra_2_item_3$1,
+  freelance_feat_1_point_1: freelance_feat_1_point_1$1,
+  freelance_feat_1_point_2: freelance_feat_1_point_2$1,
+  freelance_feat_2_point_1: freelance_feat_2_point_1$1,
+  freelance_feat_2_point_2: freelance_feat_2_point_2$1,
+  freelance_hero_cta_1: freelance_hero_cta_1$1,
+  freelance_hero_social_proof: freelance_hero_social_proof$1,
+  freelance_mockup_active_status: freelance_mockup_active_status$1,
+  freelance_mockup_active_title: freelance_mockup_active_title$1,
+  freelance_mockup_available: freelance_mockup_available$1,
+  freelance_mockup_completion: freelance_mockup_completion$1,
+  freelance_mockup_invoice_item_1: freelance_mockup_invoice_item_1$1,
+  freelance_mockup_invoice_item_2: freelance_mockup_invoice_item_2$1,
+  freelance_mockup_invoice_status: freelance_mockup_invoice_status$1,
+  freelance_mockup_invoice_title: freelance_mockup_invoice_title$1,
+  freelance_mockup_invoice_total: freelance_mockup_invoice_total$1,
+  freelance_mockup_milestone: freelance_mockup_milestone$1,
+  freelance_mockup_msg_name: freelance_mockup_msg_name$1,
+  freelance_mockup_msg_text: freelance_mockup_msg_text$1,
+  freelance_mockup_msg_time: freelance_mockup_msg_time$1,
+  freelance_mockup_payment_badge: freelance_mockup_payment_badge$1,
+  freelance_mockup_payment_from: freelance_mockup_payment_from$1,
+  freelance_mockup_project_1_sub: freelance_mockup_project_1_sub$1,
+  freelance_mockup_project_1_title: freelance_mockup_project_1_title$1,
+  freelance_mockup_project_2_sub: freelance_mockup_project_2_sub$1,
+  freelance_mockup_project_2_title: freelance_mockup_project_2_title$1,
+  freelance_mockup_rating: freelance_mockup_rating$1,
+  freelance_mockup_role: freelance_mockup_role$1,
+  freelance_science_topic_1: freelance_science_topic_1$1,
+  freelance_science_topic_2: freelance_science_topic_2$1,
+  freelance_science_topic_3: freelance_science_topic_3$1,
+  goal_steps_badge: goal_steps_badge$1,
+  meta_ai_creator: meta_ai_creator$1,
+  meta_ai_service_type: meta_ai_service_type$1,
+  meta_global_description: meta_global_description$1,
+  meta_global_keywords: meta_global_keywords$1,
+  pricing_faq_subtitle: pricing_faq_subtitle$1,
+  pricing_feat_l1_finance: pricing_feat_l1_finance$1,
+  pricing_feat_l1_habits: pricing_feat_l1_habits$1,
+  pricing_feat_l2_finance: pricing_feat_l2_finance$1,
+  pricing_feat_l2_habits: pricing_feat_l2_habits$1,
+  pricing_feat_l3_ai_coach: pricing_feat_l3_ai_coach$1,
+  pricing_feat_l3_insights: pricing_feat_l3_insights$1,
+  pricing_feat_l3_wealth: pricing_feat_l3_wealth$1,
+  pricing_feat_l4_triggers: pricing_feat_l4_triggers$1,
+  pricing_feat_l4_vip: pricing_feat_l4_vip$1,
+  pricing_feat_l4_war_room: pricing_feat_l4_war_room$1,
+  pricing_l4_btn: pricing_l4_btn$1,
+  pricing_meta_og_desc: pricing_meta_og_desc$1,
+  privacy_nav_4: privacy_nav_4$1,
+  schema_about_description: schema_about_description$1,
+  schema_about_name: schema_about_name$1,
+  schema_calendar_description: schema_calendar_description$1,
+  schema_calendar_name: schema_calendar_name$1,
+  schema_finance_description: schema_finance_description$1,
+  schema_finance_name: schema_finance_name$1,
+  schema_goal_description: schema_goal_description$1,
+  schema_goal_name: schema_goal_name$1,
+  schema_habit_description: schema_habit_description$1,
+  schema_habit_feature_1: schema_habit_feature_1$1,
+  schema_habit_feature_2: schema_habit_feature_2$1,
+  schema_habit_feature_3: schema_habit_feature_3$1,
+  schema_habit_feature_4: schema_habit_feature_4$1,
+  schema_habit_name: schema_habit_name$1,
+  schema_job_description: schema_job_description$1,
+  schema_job_name: schema_job_name$1,
+  schema_journal_description: schema_journal_description$1,
+  schema_journal_name: schema_journal_name$1,
+  schema_planner_description: schema_planner_description$1,
+  schema_planner_name: schema_planner_name$1,
+  schema_pricing_description: schema_pricing_description$1,
+  schema_pricing_name: schema_pricing_name$1,
+  schema_solution_career_description: schema_solution_career_description$1,
+  schema_solution_career_name: schema_solution_career_name$1,
+  schema_solution_deepwork_description: schema_solution_deepwork_description$1,
+  schema_solution_deepwork_name: schema_solution_deepwork_name$1,
+  schema_solution_finance_mastery_description: schema_solution_finance_mastery_description$1,
+  schema_solution_finance_mastery_name: schema_solution_finance_mastery_name$1,
+  schema_solution_freelancer_description_en: schema_solution_freelancer_description_en$1,
+  schema_solution_freelancer_description_id: schema_solution_freelancer_description_id$1,
+  schema_solution_student_description_en: schema_solution_student_description_en$1,
+  schema_solution_student_description_id: schema_solution_student_description_id$1,
+  solve_calendar_hero_cta,
+  solve_calendar_hero_desc,
+  solve_calendar_hero_title_1,
+  solve_calendar_hero_title_2,
+  solve_career_hero_cta: solve_career_hero_cta$1,
+  solve_career_hero_desc: solve_career_hero_desc$1,
+  solve_career_hero_title_1: solve_career_hero_title_1$1,
+  solve_career_hero_title_2: solve_career_hero_title_2$1,
+  solve_finance_cta_btn: solve_finance_cta_btn$1,
+  solve_finance_cta_desc: solve_finance_cta_desc$1,
+  solve_finance_cta_title: solve_finance_cta_title$1,
+  solve_finance_extra_1_desc: solve_finance_extra_1_desc$1,
+  solve_finance_extra_1_title: solve_finance_extra_1_title$1,
+  solve_finance_extra_2_desc: solve_finance_extra_2_desc$1,
+  solve_finance_extra_2_title: solve_finance_extra_2_title$1,
+  solve_finance_faq_a1: solve_finance_faq_a1$1,
+  solve_finance_faq_a2: solve_finance_faq_a2$1,
+  solve_finance_faq_a3: solve_finance_faq_a3$1,
+  solve_finance_faq_q1: solve_finance_faq_q1$1,
+  solve_finance_faq_q2: solve_finance_faq_q2$1,
+  solve_finance_faq_q3: solve_finance_faq_q3$1,
+  solve_finance_faq_title: solve_finance_faq_title$1,
+  solve_finance_hero_badge: solve_finance_hero_badge$1,
+  solve_finance_hero_cta: solve_finance_hero_cta$1,
+  solve_finance_hero_desc: solve_finance_hero_desc$1,
+  solve_finance_hero_title_1: solve_finance_hero_title_1$1,
+  solve_finance_hero_title_2: solve_finance_hero_title_2$1,
+  solve_finance_meta_desc: solve_finance_meta_desc$1,
+  solve_finance_meta_og_title: solve_finance_meta_og_title$1,
+  solve_finance_meta_title: solve_finance_meta_title$1,
+  solve_finance_prob_1_point_1: solve_finance_prob_1_point_1$1,
+  solve_finance_prob_1_point_2: solve_finance_prob_1_point_2$1,
+  solve_finance_prob_1_point_3: solve_finance_prob_1_point_3$1,
+  solve_finance_prob_1_title: solve_finance_prob_1_title$1,
+  solve_finance_prob_2_point_1: solve_finance_prob_2_point_1$1,
+  solve_finance_prob_2_point_2: solve_finance_prob_2_point_2$1,
+  solve_finance_prob_2_point_3: solve_finance_prob_2_point_3$1,
+  solve_finance_prob_2_title: solve_finance_prob_2_title$1,
+  solve_finance_prob_desc: solve_finance_prob_desc$1,
+  solve_finance_prob_title: solve_finance_prob_title$1,
+  solve_finance_science_badge: solve_finance_science_badge$1,
+  solve_finance_science_desc: solve_finance_science_desc$1,
+  solve_finance_science_title: solve_finance_science_title$1,
+  solve_finance_sol_feat_1_desc: solve_finance_sol_feat_1_desc$1,
+  solve_finance_sol_feat_1_title: solve_finance_sol_feat_1_title$1,
+  solve_finance_sol_feat_2_desc: solve_finance_sol_feat_2_desc$1,
+  solve_finance_sol_feat_2_title: solve_finance_sol_feat_2_title$1,
+  solve_finance_sol_feat_3_desc: solve_finance_sol_feat_3_desc$1,
+  solve_finance_sol_feat_3_title: solve_finance_sol_feat_3_title$1,
+  solve_finance_sol_title: solve_finance_sol_title$1,
+  solve_finance_syn_desc: solve_finance_syn_desc$1,
+  solve_finance_syn_title: solve_finance_syn_title$1,
   neural_meta_title: neural_meta_title$1,
   neural_meta_desc: neural_meta_desc$1,
   neural_hero_badge: neural_hero_badge$1,
@@ -6098,7 +6670,6 @@ const en = {
   privacy_nav_1: privacy_nav_1$1,
   privacy_nav_2: privacy_nav_2$1,
   privacy_nav_3: privacy_nav_3$1,
-  privacy_nav_4: privacy_nav_4$1,
   privacy_nav_5: privacy_nav_5$1,
   privacy_nav_6: privacy_nav_6$1,
   privacy_nav_7: privacy_nav_7$1,
@@ -6692,10 +7263,6 @@ const en = {
   solve_career_meta_og_title: solve_career_meta_og_title$1,
   solve_career_meta_og_desc: solve_career_meta_og_desc$1,
   solve_career_hero_badge: solve_career_hero_badge$1,
-  solve_career_hero_title_1: solve_career_hero_title_1$1,
-  solve_career_hero_title_2: solve_career_hero_title_2$1,
-  solve_career_hero_desc: solve_career_hero_desc$1,
-  solve_career_hero_cta: solve_career_hero_cta$1,
   solve_career_mockup_header: solve_career_mockup_header$1,
   solve_career_prob_title: solve_career_prob_title$1,
   solve_career_prob_desc: solve_career_prob_desc$1,
@@ -6738,24 +7305,11 @@ const en = {
   solve_career_extra_1_desc: solve_career_extra_1_desc$1,
   solve_career_extra_2_title: solve_career_extra_2_title$1,
   solve_career_extra_2_desc: solve_career_extra_2_desc$1,
-  solve_finance_meta_title: solve_finance_meta_title$1,
-  solve_finance_meta_desc: solve_finance_meta_desc$1,
-  solve_finance_meta_og_title: solve_finance_meta_og_title$1,
   solve_finance_meta_og_desc: solve_finance_meta_og_desc$1,
-  solve_finance_hero_badge: solve_finance_hero_badge$1,
-  solve_finance_hero_title_1: solve_finance_hero_title_1$1,
-  solve_finance_hero_title_2: solve_finance_hero_title_2$1,
-  solve_finance_hero_desc: solve_finance_hero_desc$1,
-  solve_finance_hero_cta: solve_finance_hero_cta$1,
-  solve_finance_prob_title: solve_finance_prob_title$1,
-  solve_finance_prob_desc: solve_finance_prob_desc$1,
-  solve_finance_prob_1_title: solve_finance_prob_1_title$1,
   solve_finance_prob_1_desc: solve_finance_prob_1_desc$1,
-  solve_finance_prob_2_title: solve_finance_prob_2_title$1,
   solve_finance_prob_2_desc: solve_finance_prob_2_desc$1,
   solve_finance_prob_3_title: solve_finance_prob_3_title$1,
   solve_finance_prob_3_desc: solve_finance_prob_3_desc$1,
-  solve_finance_sol_title: solve_finance_sol_title$1,
   solve_finance_sol_desc: solve_finance_sol_desc$1,
   solve_finance_sol_step_1_title: solve_finance_sol_step_1_title$1,
   solve_finance_sol_step_1_desc: solve_finance_sol_step_1_desc$1,
@@ -6771,23 +7325,6 @@ const en = {
   solve_finance_feat_2_desc: solve_finance_feat_2_desc$1,
   solve_finance_feat_3_title: solve_finance_feat_3_title$1,
   solve_finance_feat_3_desc: solve_finance_feat_3_desc$1,
-  solve_finance_cta_title: solve_finance_cta_title$1,
-  solve_finance_cta_desc: solve_finance_cta_desc$1,
-  solve_finance_cta_btn: solve_finance_cta_btn$1,
-  solve_finance_faq_title: solve_finance_faq_title$1,
-  solve_finance_faq_q1: solve_finance_faq_q1$1,
-  solve_finance_faq_a1: solve_finance_faq_a1$1,
-  solve_finance_faq_q2: solve_finance_faq_q2$1,
-  solve_finance_faq_a2: solve_finance_faq_a2$1,
-  solve_finance_faq_q3: solve_finance_faq_q3$1,
-  solve_finance_faq_a3: solve_finance_faq_a3$1,
-  solve_finance_science_badge: solve_finance_science_badge$1,
-  solve_finance_science_title: solve_finance_science_title$1,
-  solve_finance_science_desc: solve_finance_science_desc$1,
-  solve_finance_extra_1_title: solve_finance_extra_1_title$1,
-  solve_finance_extra_1_desc: solve_finance_extra_1_desc$1,
-  solve_finance_extra_2_title: solve_finance_extra_2_title$1,
-  solve_finance_extra_2_desc: solve_finance_extra_2_desc$1,
   solve_mental_meta_title: solve_mental_meta_title$1,
   solve_mental_meta_desc: solve_mental_meta_desc$1,
   solve_mental_meta_og_title: solve_mental_meta_og_title$1,
@@ -7171,12 +7708,6 @@ const en = {
   ecosystem_mental_title: ecosystem_mental_title$1,
   ecosystem_mental_desc: ecosystem_mental_desc$1,
   mental_science_viz_label: mental_science_viz_label$1,
-  atomic_meta_title: atomic_meta_title$1,
-  atomic_meta_desc: atomic_meta_desc$1,
-  atomic_meta_og_title: atomic_meta_og_title$1,
-  atomic_meta_og_desc: atomic_meta_og_desc$1,
-  schema_solution_atomic_name: schema_solution_atomic_name$1,
-  schema_solution_atomic_description: schema_solution_atomic_description$1,
   atomic_breadcrumb: atomic_breadcrumb$1,
   solve_atomic_hero_badge: solve_atomic_hero_badge$1,
   solve_atomic_hero_title_1: solve_atomic_hero_title_1$1,
@@ -7206,8 +7737,6 @@ const en = {
   solve_atomic_feat_1_desc: solve_atomic_feat_1_desc$1,
   solve_atomic_feat_2_title: solve_atomic_feat_2_title$1,
   solve_atomic_feat_2_desc: solve_atomic_feat_2_desc$1,
-  atomic_extra_1_title: atomic_extra_1_title$1,
-  atomic_extra_1_desc: atomic_extra_1_desc$1,
   solve_atomic_extra_2_title: solve_atomic_extra_2_title$1,
   solve_atomic_extra_2_desc: solve_atomic_extra_2_desc$1,
   solve_atomic_science_badge: solve_atomic_science_badge$1,
@@ -7314,8 +7843,20 @@ const en = {
 };
 const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
+  Company: Company$1,
+  Compare: Compare$1,
+  Connect: Connect$1,
+  Dashboard: Dashboard$1,
   Distributed_Cognition_Active: Distributed_Cognition_Active$1,
   Extended_Mind_Thesis_Verified: Extended_Mind_Thesis_Verified$1,
+  Features: Features$1,
+  Logo: Logo$1,
+  OneForMind: OneForMind$1,
+  Pricing: Pricing$1,
+  Product: Product$1,
+  Resources: Resources$1,
+  Security: Security$1,
+  Solutions: Solutions$1,
   about_badge: about_badge$2,
   about_desc: about_desc$2,
   about_meta_desc: about_meta_desc$1,
@@ -7349,20 +7890,58 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   asset_name: asset_name$1,
   asset_name_placeholder: asset_name_placeholder$1,
   atomic_breadcrumb: atomic_breadcrumb$1,
+  atomic_cta_btn: atomic_cta_btn$1,
+  atomic_cta_desc: atomic_cta_desc$1,
+  atomic_cta_title: atomic_cta_title$1,
   atomic_extra_1_desc: atomic_extra_1_desc$1,
   atomic_extra_1_title: atomic_extra_1_title$1,
+  atomic_extra_2_desc: atomic_extra_2_desc$1,
+  atomic_extra_2_title: atomic_extra_2_title$1,
+  atomic_faq_a1: atomic_faq_a1$1,
+  atomic_faq_a2: atomic_faq_a2$1,
+  atomic_faq_a3: atomic_faq_a3$1,
+  atomic_faq_q1: atomic_faq_q1$1,
+  atomic_faq_q2: atomic_faq_q2$1,
+  atomic_faq_q3: atomic_faq_q3$1,
+  atomic_faq_title: atomic_faq_title$1,
+  atomic_heatmap_less: atomic_heatmap_less$1,
+  atomic_heatmap_peak: atomic_heatmap_peak$1,
+  atomic_hero_badge: atomic_hero_badge$1,
+  atomic_hero_cta: atomic_hero_cta$1,
+  atomic_hero_desc: atomic_hero_desc$1,
+  atomic_hero_title_1: atomic_hero_title_1$1,
+  atomic_hero_title_2: atomic_hero_title_2$1,
   atomic_meta_desc: atomic_meta_desc$1,
   atomic_meta_og_desc: atomic_meta_og_desc$1,
   atomic_meta_og_title: atomic_meta_og_title$1,
   atomic_meta_title: atomic_meta_title$1,
+  atomic_mockup_desc: atomic_mockup_desc$1,
   atomic_mockup_habit_sub: atomic_mockup_habit_sub$1,
   atomic_mockup_habit_title: atomic_mockup_habit_title$1,
   atomic_mockup_identity_sub: atomic_mockup_identity_sub$1,
   atomic_mockup_identity_title: atomic_mockup_identity_title$1,
+  atomic_mockup_returns: atomic_mockup_returns$1,
+  atomic_mockup_streak: atomic_mockup_streak$1,
+  atomic_mockup_title: atomic_mockup_title$1,
+  atomic_prob_1_desc: atomic_prob_1_desc$1,
+  atomic_prob_1_title: atomic_prob_1_title$1,
+  atomic_prob_2_desc: atomic_prob_2_desc$1,
+  atomic_prob_2_title: atomic_prob_2_title$1,
+  atomic_prob_desc: atomic_prob_desc$1,
+  atomic_prob_title: atomic_prob_title$1,
+  atomic_science_badge: atomic_science_badge$1,
+  atomic_science_desc: atomic_science_desc$1,
+  atomic_science_reagent_1: atomic_science_reagent_1$1,
+  atomic_science_reagent_2: atomic_science_reagent_2$1,
+  atomic_science_reagent_3: atomic_science_reagent_3$1,
   atomic_science_step_1_title: atomic_science_step_1_title$1,
   atomic_science_step_2_title: atomic_science_step_2_title$1,
   atomic_science_step_3_title: atomic_science_step_3_title$1,
   atomic_science_step_4_title: atomic_science_step_4_title$1,
+  atomic_science_title: atomic_science_title$1,
+  atomic_science_topic_1: atomic_science_topic_1$1,
+  atomic_science_topic_2: atomic_science_topic_2$1,
+  atomic_science_topic_3: atomic_science_topic_3$1,
   auth_back_login: auth_back_login$2,
   auth_btn_confirm: auth_btn_confirm$2,
   auth_btn_google_in: auth_btn_google_in$2,
@@ -7734,6 +8313,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   calendar_mockup_event_3: calendar_mockup_event_3$1,
   calendar_mockup_event_3_time: calendar_mockup_event_3_time$1,
   calendar_mockup_event_count: calendar_mockup_event_count$1,
+  calendar_mockup_focus,
+  calendar_mockup_habit,
   calendar_mockup_location_1: calendar_mockup_location_1$1,
   calendar_mockup_location_2: calendar_mockup_location_2$1,
   calendar_mockup_location_3: calendar_mockup_location_3$1,
@@ -7790,6 +8371,25 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   calendar_today: calendar_today$1,
   cancel: cancel$1,
   capital_invest: capital_invest$1,
+  career_extra_1_item_1: career_extra_1_item_1$1,
+  career_extra_1_item_2: career_extra_1_item_2$1,
+  career_extra_1_item_3: career_extra_1_item_3$1,
+  career_mockup_live: career_mockup_live$1,
+  career_mockup_plan_badge: career_mockup_plan_badge$1,
+  career_mockup_plan_title: career_mockup_plan_title$1,
+  career_negotiation_final: career_negotiation_final$1,
+  career_negotiation_initial: career_negotiation_initial$1,
+  career_science_module_1: career_science_module_1$1,
+  career_science_module_2: career_science_module_2$1,
+  career_science_module_3: career_science_module_3$1,
+  career_science_topic_1: career_science_topic_1$1,
+  career_science_topic_2: career_science_topic_2$1,
+  career_science_topic_3: career_science_topic_3$1,
+  career_science_viz_roi: career_science_viz_roi$1,
+  career_science_viz_status: career_science_viz_status$1,
+  career_status_applied: career_status_applied$1,
+  career_status_interviewing: career_status_interviewing$1,
+  career_status_offer: career_status_offer$1,
   cat_life: cat_life$1,
   cat_other: cat_other$1,
   cat_urgent: cat_urgent$1,
@@ -8028,6 +8628,69 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   deep_science_factor_2_title: deep_science_factor_2_title$1,
   deep_science_factor_3_title: deep_science_factor_3_title$1,
   deep_science_factor_4_title: deep_science_factor_4_title$1,
+  deepwork_cta_btn: deepwork_cta_btn$1,
+  deepwork_cta_desc: deepwork_cta_desc$1,
+  deepwork_cta_title: deepwork_cta_title$1,
+  deepwork_extra_1_desc: deepwork_extra_1_desc$1,
+  deepwork_extra_1_label: deepwork_extra_1_label$1,
+  deepwork_extra_1_sub: deepwork_extra_1_sub$1,
+  deepwork_extra_1_title: deepwork_extra_1_title$1,
+  deepwork_extra_2_desc: deepwork_extra_2_desc$1,
+  deepwork_extra_2_item_1: deepwork_extra_2_item_1$1,
+  deepwork_extra_2_item_2: deepwork_extra_2_item_2$1,
+  deepwork_extra_2_title: deepwork_extra_2_title$1,
+  deepwork_faq_a1: deepwork_faq_a1$1,
+  deepwork_faq_a2: deepwork_faq_a2$1,
+  deepwork_faq_a3: deepwork_faq_a3$1,
+  deepwork_faq_q1: deepwork_faq_q1$1,
+  deepwork_faq_q2: deepwork_faq_q2$1,
+  deepwork_faq_q3: deepwork_faq_q3$1,
+  deepwork_faq_title: deepwork_faq_title$1,
+  deepwork_feat_1_desc: deepwork_feat_1_desc$1,
+  deepwork_feat_1_title: deepwork_feat_1_title$1,
+  deepwork_feat_2_desc: deepwork_feat_2_desc$1,
+  deepwork_feat_2_title: deepwork_feat_2_title$1,
+  deepwork_feat_title: deepwork_feat_title$1,
+  deepwork_hero_badge: deepwork_hero_badge$1,
+  deepwork_hero_cta: deepwork_hero_cta$1,
+  deepwork_hero_desc: deepwork_hero_desc$1,
+  deepwork_hero_title_1: deepwork_hero_title_1$1,
+  deepwork_hero_title_2: deepwork_hero_title_2$1,
+  deepwork_meta_desc: deepwork_meta_desc$1,
+  deepwork_meta_og_desc: deepwork_meta_og_desc$1,
+  deepwork_meta_og_title: deepwork_meta_og_title$1,
+  deepwork_meta_title: deepwork_meta_title$1,
+  deepwork_mockup_desc: deepwork_mockup_desc$1,
+  deepwork_mockup_task_1: deepwork_mockup_task_1$1,
+  deepwork_mockup_task_2: deepwork_mockup_task_2$1,
+  deepwork_mockup_task_3: deepwork_mockup_task_3$1,
+  deepwork_mockup_title: deepwork_mockup_title$1,
+  deepwork_prob_1_desc: deepwork_prob_1_desc$1,
+  deepwork_prob_1_title: deepwork_prob_1_title$1,
+  deepwork_prob_2_desc: deepwork_prob_2_desc$1,
+  deepwork_prob_2_title: deepwork_prob_2_title$1,
+  deepwork_prob_3_desc: deepwork_prob_3_desc$1,
+  deepwork_prob_3_title: deepwork_prob_3_title$1,
+  deepwork_prob_desc: deepwork_prob_desc$1,
+  deepwork_prob_title: deepwork_prob_title$1,
+  deepwork_science_badge: deepwork_science_badge$1,
+  deepwork_science_concept_1: deepwork_science_concept_1$1,
+  deepwork_science_concept_2: deepwork_science_concept_2$1,
+  deepwork_science_concept_3: deepwork_science_concept_3$1,
+  deepwork_science_desc: deepwork_science_desc$1,
+  deepwork_science_title: deepwork_science_title$1,
+  deepwork_science_topic_1: deepwork_science_topic_1$1,
+  deepwork_science_topic_2: deepwork_science_topic_2$1,
+  deepwork_science_topic_3: deepwork_science_topic_3$1,
+  deepwork_science_viz_lock: deepwork_science_viz_lock$1,
+  deepwork_science_viz_sub: deepwork_science_viz_sub$1,
+  deepwork_sol_1_desc: deepwork_sol_1_desc$1,
+  deepwork_sol_1_title: deepwork_sol_1_title$1,
+  deepwork_sol_2_desc: deepwork_sol_2_desc$1,
+  deepwork_sol_2_title: deepwork_sol_2_title$1,
+  deepwork_sol_3_desc: deepwork_sol_3_desc$1,
+  deepwork_sol_3_title: deepwork_sol_3_title$1,
+  deepwork_sol_title: deepwork_sol_title$1,
   default: en,
   default_activity_name: default_activity_name$1,
   delete_account_btn: delete_account_btn$1,
@@ -8172,6 +8835,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   finance_cta_note: finance_cta_note$1,
   finance_cta_title: finance_cta_title$1,
   finance_currency_m: finance_currency_m$1,
+  finance_extra_1_label: finance_extra_1_label$1,
+  finance_extra_2_label: finance_extra_2_label$1,
   finance_faq_a1: finance_faq_a1$1,
   finance_faq_a2: finance_faq_a2$1,
   finance_faq_a3: finance_faq_a3$1,
@@ -8215,10 +8880,14 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   finance_meta_title: finance_meta_title$1,
   finance_mockup_alert_1: finance_mockup_alert_1$1,
   finance_mockup_alert_2: finance_mockup_alert_2$1,
+  finance_mockup_assets: finance_mockup_assets$1,
   finance_mockup_balance: finance_mockup_balance$1,
   finance_mockup_balance_label: finance_mockup_balance_label$1,
   finance_mockup_balance_value: finance_mockup_balance_value$1,
   finance_mockup_expense: finance_mockup_expense$1,
+  finance_mockup_expenses: finance_mockup_expenses$1,
+  finance_mockup_goal: finance_mockup_goal$1,
+  finance_mockup_growth: finance_mockup_growth$1,
   finance_mockup_income: finance_mockup_income$1,
   finance_mockup_saving: finance_mockup_saving$1,
   finance_mockup_task_1: finance_mockup_task_1$1,
@@ -8256,13 +8925,24 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   finance_schema_feat_4: finance_schema_feat_4$1,
   finance_science_badge: finance_science_badge$1,
   finance_science_desc: finance_science_desc$1,
+  finance_science_principle_1_title: finance_science_principle_1_title$1,
+  finance_science_principle_2_title: finance_science_principle_2_title$1,
+  finance_science_principle_3_title: finance_science_principle_3_title$1,
   finance_science_title: finance_science_title$1,
+  finance_science_viz_status_badge: finance_science_viz_status_badge$1,
+  finance_science_viz_status_title: finance_science_viz_status_title$1,
+  finance_science_viz_sub: finance_science_viz_sub$1,
+  finance_science_viz_title: finance_science_viz_title$1,
   finance_stat_freedom_title: finance_stat_freedom_title$1,
   finance_stat_freedom_val: finance_stat_freedom_val$1,
   finance_stat_projection_title: finance_stat_projection_title$1,
   finance_stat_projection_val: finance_stat_projection_val$1,
   finance_stat_savings_title: finance_stat_savings_title$1,
   finance_stat_savings_val: finance_stat_savings_val$1,
+  finance_synergy_alloc_amount: finance_synergy_alloc_amount$1,
+  finance_synergy_alloc_title: finance_synergy_alloc_title$1,
+  finance_synergy_habit_desc: finance_synergy_habit_desc$1,
+  finance_synergy_habit_title: finance_synergy_habit_title$1,
   finance_trajectory_badge: finance_trajectory_badge$1,
   finance_trajectory_desc: finance_trajectory_desc$1,
   finance_trajectory_status: finance_trajectory_status$1,
@@ -8427,12 +9107,25 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   footer_privacy: footer_privacy$1,
   footer_rights: footer_rights$1,
   footer_terms: footer_terms$1,
+  freelance_bento_1_desc: freelance_bento_1_desc$1,
+  freelance_bento_1_title: freelance_bento_1_title$1,
+  freelance_bento_2_desc: freelance_bento_2_desc$1,
+  freelance_bento_2_title: freelance_bento_2_title$1,
+  freelance_bento_3_desc: freelance_bento_3_desc$1,
+  freelance_bento_3_title: freelance_bento_3_title$1,
+  freelance_bento_4_desc: freelance_bento_4_desc$1,
+  freelance_bento_4_title: freelance_bento_4_title$1,
+  freelance_bento_desc: freelance_bento_desc$1,
+  freelance_bento_title: freelance_bento_title$1,
   freelance_cta_btn: freelance_cta_btn$1,
   freelance_cta_desc: freelance_cta_desc$1,
   freelance_cta_title: freelance_cta_title$1,
   freelance_extra_1_desc: freelance_extra_1_desc$1,
   freelance_extra_1_title: freelance_extra_1_title$1,
   freelance_extra_2_desc: freelance_extra_2_desc$1,
+  freelance_extra_2_item_1: freelance_extra_2_item_1$1,
+  freelance_extra_2_item_2: freelance_extra_2_item_2$1,
+  freelance_extra_2_item_3: freelance_extra_2_item_3$1,
   freelance_extra_2_title: freelance_extra_2_title$1,
   freelance_faq_a1: freelance_faq_a1$1,
   freelance_faq_a2: freelance_faq_a2$1,
@@ -8442,23 +9135,50 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   freelance_faq_q3: freelance_faq_q3$1,
   freelance_faq_title: freelance_faq_title$1,
   freelance_feat_1_desc: freelance_feat_1_desc$1,
+  freelance_feat_1_point_1: freelance_feat_1_point_1$1,
+  freelance_feat_1_point_2: freelance_feat_1_point_2$1,
   freelance_feat_1_title: freelance_feat_1_title$1,
   freelance_feat_2_desc: freelance_feat_2_desc$1,
+  freelance_feat_2_point_1: freelance_feat_2_point_1$1,
+  freelance_feat_2_point_2: freelance_feat_2_point_2$1,
   freelance_feat_2_title: freelance_feat_2_title$1,
   freelance_feat_title: freelance_feat_title$1,
   freelance_hero_badge: freelance_hero_badge$1,
   freelance_hero_cta: freelance_hero_cta$1,
+  freelance_hero_cta_1: freelance_hero_cta_1$1,
   freelance_hero_desc: freelance_hero_desc$1,
+  freelance_hero_social_proof: freelance_hero_social_proof$1,
   freelance_hero_title_1: freelance_hero_title_1$1,
   freelance_hero_title_2: freelance_hero_title_2$1,
   freelance_meta_desc: freelance_meta_desc$1,
   freelance_meta_og_desc: freelance_meta_og_desc$1,
   freelance_meta_og_title: freelance_meta_og_title$1,
   freelance_meta_title: freelance_meta_title$1,
+  freelance_mockup_active_status: freelance_mockup_active_status$1,
+  freelance_mockup_active_title: freelance_mockup_active_title$1,
+  freelance_mockup_available: freelance_mockup_available$1,
   freelance_mockup_client: freelance_mockup_client$1,
+  freelance_mockup_completion: freelance_mockup_completion$1,
+  freelance_mockup_invoice_item_1: freelance_mockup_invoice_item_1$1,
+  freelance_mockup_invoice_item_2: freelance_mockup_invoice_item_2$1,
+  freelance_mockup_invoice_status: freelance_mockup_invoice_status$1,
+  freelance_mockup_invoice_title: freelance_mockup_invoice_title$1,
+  freelance_mockup_invoice_total: freelance_mockup_invoice_total$1,
+  freelance_mockup_milestone: freelance_mockup_milestone$1,
+  freelance_mockup_msg_name: freelance_mockup_msg_name$1,
+  freelance_mockup_msg_text: freelance_mockup_msg_text$1,
+  freelance_mockup_msg_time: freelance_mockup_msg_time$1,
+  freelance_mockup_payment_badge: freelance_mockup_payment_badge$1,
+  freelance_mockup_payment_from: freelance_mockup_payment_from$1,
   freelance_mockup_project: freelance_mockup_project$1,
+  freelance_mockup_project_1_sub: freelance_mockup_project_1_sub$1,
+  freelance_mockup_project_1_title: freelance_mockup_project_1_title$1,
+  freelance_mockup_project_2_sub: freelance_mockup_project_2_sub$1,
+  freelance_mockup_project_2_title: freelance_mockup_project_2_title$1,
   freelance_mockup_project_sub: freelance_mockup_project_sub$1,
+  freelance_mockup_rating: freelance_mockup_rating$1,
   freelance_mockup_revenue: freelance_mockup_revenue$1,
+  freelance_mockup_role: freelance_mockup_role$1,
   freelance_prob_1_desc: freelance_prob_1_desc$1,
   freelance_prob_1_title: freelance_prob_1_title$1,
   freelance_prob_2_desc: freelance_prob_2_desc$1,
@@ -8470,6 +9190,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   freelance_science_badge: freelance_science_badge$1,
   freelance_science_desc: freelance_science_desc$1,
   freelance_science_title: freelance_science_title$1,
+  freelance_science_topic_1: freelance_science_topic_1$1,
+  freelance_science_topic_2: freelance_science_topic_2$1,
+  freelance_science_topic_3: freelance_science_topic_3$1,
   freelance_sol_desc: freelance_sol_desc$1,
   freelance_sol_step_1_desc: freelance_sol_step_1_desc$1,
   freelance_sol_step_1_title: freelance_sol_step_1_title$1,
@@ -8640,6 +9363,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_step_2_title: goal_step_2_title$1,
   goal_step_3_desc: goal_step_3_desc$1,
   goal_step_3_title: goal_step_3_title$1,
+  goal_steps_badge: goal_steps_badge$1,
   goal_steps_count: goal_steps_count$1,
   goal_steps_desc: goal_steps_desc$1,
   goal_steps_title: goal_steps_title$1,
@@ -9496,6 +10220,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   mental_sol_step_3_desc: mental_sol_step_3_desc$1,
   mental_sol_step_3_title: mental_sol_step_3_title$1,
   mental_sol_title: mental_sol_title$1,
+  meta_ai_creator: meta_ai_creator$1,
+  meta_ai_service_type: meta_ai_service_type$1,
+  meta_global_description: meta_global_description$1,
+  meta_global_keywords: meta_global_keywords$1,
   mig_badge: mig_badge$1,
   mig_card_1: mig_card_1$1,
   mig_card_2: mig_card_2$1,
@@ -10062,6 +10790,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_faq_1_q: pricing_faq_1_q$1,
   pricing_faq_2_a: pricing_faq_2_a$1,
   pricing_faq_2_q: pricing_faq_2_q$1,
+  pricing_faq_subtitle: pricing_faq_subtitle$1,
   pricing_faq_title: pricing_faq_title$1,
   pricing_feat_ai_chat: pricing_feat_ai_chat$1,
   pricing_feat_ai_status: pricing_feat_ai_status$1,
@@ -10074,6 +10803,16 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_feat_habit_insights: pricing_feat_habit_insights$1,
   pricing_feat_habits_limit: pricing_feat_habits_limit$1,
   pricing_feat_jobs_unlocked: pricing_feat_jobs_unlocked$1,
+  pricing_feat_l1_finance: pricing_feat_l1_finance$1,
+  pricing_feat_l1_habits: pricing_feat_l1_habits$1,
+  pricing_feat_l2_finance: pricing_feat_l2_finance$1,
+  pricing_feat_l2_habits: pricing_feat_l2_habits$1,
+  pricing_feat_l3_ai_coach: pricing_feat_l3_ai_coach$1,
+  pricing_feat_l3_insights: pricing_feat_l3_insights$1,
+  pricing_feat_l3_wealth: pricing_feat_l3_wealth$1,
+  pricing_feat_l4_triggers: pricing_feat_l4_triggers$1,
+  pricing_feat_l4_vip: pricing_feat_l4_vip$1,
+  pricing_feat_l4_war_room: pricing_feat_l4_war_room$1,
   pricing_feat_label: pricing_feat_label$1,
   pricing_feat_lifetime_access: pricing_feat_lifetime_access$1,
   pricing_feat_month_trial: pricing_feat_month_trial$1,
@@ -10095,6 +10834,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_l3_name: pricing_l3_name$1,
   pricing_l3_recurring: pricing_l3_recurring$1,
   pricing_l4_badge: pricing_l4_badge$1,
+  pricing_l4_btn: pricing_l4_btn$1,
   pricing_l4_desc: pricing_l4_desc$1,
   pricing_l4_initial: pricing_l4_initial$1,
   pricing_l4_name: pricing_l4_name$1,
@@ -10103,6 +10843,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_life_desc: pricing_life_desc$1,
   pricing_life_name: pricing_life_name$1,
   pricing_meta_desc: pricing_meta_desc$1,
+  pricing_meta_og_desc: pricing_meta_og_desc$1,
   pricing_meta_og_title: pricing_meta_og_title$1,
   pricing_meta_title: pricing_meta_title$1,
   pricing_month: pricing_month$1,
@@ -10302,15 +11043,47 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   save_photo: save_photo$1,
   saved: saved$1,
   saving: saving$1,
+  schema_about_description: schema_about_description$1,
+  schema_about_name: schema_about_name$1,
+  schema_calendar_description: schema_calendar_description$1,
+  schema_calendar_name: schema_calendar_name$1,
+  schema_finance_description: schema_finance_description$1,
+  schema_finance_name: schema_finance_name$1,
+  schema_goal_description: schema_goal_description$1,
+  schema_goal_name: schema_goal_name$1,
+  schema_habit_description: schema_habit_description$1,
+  schema_habit_feature_1: schema_habit_feature_1$1,
+  schema_habit_feature_2: schema_habit_feature_2$1,
+  schema_habit_feature_3: schema_habit_feature_3$1,
+  schema_habit_feature_4: schema_habit_feature_4$1,
+  schema_habit_name: schema_habit_name$1,
+  schema_job_description: schema_job_description$1,
+  schema_job_name: schema_job_name$1,
+  schema_journal_description: schema_journal_description$1,
+  schema_journal_name: schema_journal_name$1,
+  schema_planner_description: schema_planner_description$1,
+  schema_planner_name: schema_planner_name$1,
+  schema_pricing_description: schema_pricing_description$1,
+  schema_pricing_name: schema_pricing_name$1,
   schema_solution_atomic_description: schema_solution_atomic_description$1,
   schema_solution_atomic_name: schema_solution_atomic_name$1,
+  schema_solution_career_description: schema_solution_career_description$1,
+  schema_solution_career_name: schema_solution_career_name$1,
   schema_solution_deep_work_description: schema_solution_deep_work_description$1,
   schema_solution_deep_work_name: schema_solution_deep_work_name$1,
+  schema_solution_deepwork_description: schema_solution_deepwork_description$1,
+  schema_solution_deepwork_name: schema_solution_deepwork_name$1,
+  schema_solution_finance_mastery_description: schema_solution_finance_mastery_description$1,
+  schema_solution_finance_mastery_name: schema_solution_finance_mastery_name$1,
+  schema_solution_freelancer_description_en: schema_solution_freelancer_description_en$1,
+  schema_solution_freelancer_description_id: schema_solution_freelancer_description_id$1,
   schema_solution_growth_description: schema_solution_growth_description$1,
   schema_solution_growth_name: schema_solution_growth_name$1,
   schema_solution_mental_clarity_description: schema_solution_mental_clarity_description$1,
   schema_solution_mental_clarity_name: schema_solution_mental_clarity_name$1,
   schema_solution_student_audience: schema_solution_student_audience$1,
+  schema_solution_student_description_en: schema_solution_student_description_en$1,
+  schema_solution_student_description_id: schema_solution_student_description_id$1,
   schema_student_description: schema_student_description$1,
   schema_student_name: schema_student_name$1,
   search_result: search_result$1,
@@ -10476,6 +11249,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_atomic_sol_step_3_desc: solve_atomic_sol_step_3_desc$1,
   solve_atomic_sol_step_3_title: solve_atomic_sol_step_3_title$1,
   solve_atomic_sol_title: solve_atomic_sol_title$1,
+  solve_calendar_hero_cta,
+  solve_calendar_hero_desc,
+  solve_calendar_hero_title_1,
+  solve_calendar_hero_title_2,
   solve_career_cta_btn: solve_career_cta_btn$1,
   solve_career_cta_desc: solve_career_cta_desc$1,
   solve_career_cta_title: solve_career_cta_title$1,
@@ -10597,8 +11374,14 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_meta_og_title: solve_finance_meta_og_title$1,
   solve_finance_meta_title: solve_finance_meta_title$1,
   solve_finance_prob_1_desc: solve_finance_prob_1_desc$1,
+  solve_finance_prob_1_point_1: solve_finance_prob_1_point_1$1,
+  solve_finance_prob_1_point_2: solve_finance_prob_1_point_2$1,
+  solve_finance_prob_1_point_3: solve_finance_prob_1_point_3$1,
   solve_finance_prob_1_title: solve_finance_prob_1_title$1,
   solve_finance_prob_2_desc: solve_finance_prob_2_desc$1,
+  solve_finance_prob_2_point_1: solve_finance_prob_2_point_1$1,
+  solve_finance_prob_2_point_2: solve_finance_prob_2_point_2$1,
+  solve_finance_prob_2_point_3: solve_finance_prob_2_point_3$1,
   solve_finance_prob_2_title: solve_finance_prob_2_title$1,
   solve_finance_prob_3_desc: solve_finance_prob_3_desc$1,
   solve_finance_prob_3_title: solve_finance_prob_3_title$1,
@@ -10608,6 +11391,12 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_science_desc: solve_finance_science_desc$1,
   solve_finance_science_title: solve_finance_science_title$1,
   solve_finance_sol_desc: solve_finance_sol_desc$1,
+  solve_finance_sol_feat_1_desc: solve_finance_sol_feat_1_desc$1,
+  solve_finance_sol_feat_1_title: solve_finance_sol_feat_1_title$1,
+  solve_finance_sol_feat_2_desc: solve_finance_sol_feat_2_desc$1,
+  solve_finance_sol_feat_2_title: solve_finance_sol_feat_2_title$1,
+  solve_finance_sol_feat_3_desc: solve_finance_sol_feat_3_desc$1,
+  solve_finance_sol_feat_3_title: solve_finance_sol_feat_3_title$1,
   solve_finance_sol_step_1_desc: solve_finance_sol_step_1_desc$1,
   solve_finance_sol_step_1_title: solve_finance_sol_step_1_title$1,
   solve_finance_sol_step_2_desc: solve_finance_sol_step_2_desc$1,
@@ -10615,6 +11404,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_sol_step_3_desc: solve_finance_sol_step_3_desc$1,
   solve_finance_sol_step_3_title: solve_finance_sol_step_3_title$1,
   solve_finance_sol_title: solve_finance_sol_title$1,
+  solve_finance_syn_desc: solve_finance_syn_desc$1,
+  solve_finance_syn_title: solve_finance_syn_title$1,
   solve_mental_cta_btn: solve_mental_cta_btn$1,
   solve_mental_cta_desc: solve_mental_cta_desc$1,
   solve_mental_cta_title: solve_mental_cta_title$1,
@@ -11015,6 +11806,52 @@ const about_roadmap_v2_title = "Fase 2: Mobilitas";
 const about_roadmap_v2_desc = "Aplikasi native iOS/Android dengan integrasi sistem yang mendalam dan fokus offline.";
 const about_roadmap_v3_title = "Fase 3: Intelijen";
 const about_roadmap_v3_desc = "Wawasan prediktif yang mengutamakan privasi untuk membantu Anda mengoptimalkan sinergi hidup secara mandiri.";
+const atomic_meta_title = "Sistem Kebiasaan Atom - OneForMind";
+const atomic_meta_desc = "Kuasai seni membangun rutinitas kecil yang memberikan hasil besar. Berdasarkan prinsip Atomic Habits.";
+const atomic_meta_og_title = "Metodologi Kebiasaan Atom OneForMind";
+const atomic_meta_og_desc = "Bangun rantai kemenangan Anda. Jangan pernah putuskan.";
+const atomic_hero_badge = "🌱 SISTEM ATOMIC";
+const atomic_hero_title_1 = "Lupakan Tujuan.";
+const atomic_hero_title_2 = "Bangun Sistem.";
+const atomic_hero_desc = "Pemenang dan pecundang memiliki tujuan yang sama. Perbedaannya adalah sistem mereka. OneForMind mengotomatisasi kerangka kerja Atomic Habits agar Anda bisa fokus pada eksekusi.";
+const atomic_hero_cta = "Mulai Sistem Anda Gratis";
+const atomic_mockup_title = "Efek Compounding";
+const atomic_mockup_desc = "1% lebih baik setiap hari selama setahun = 37x lebih baik.";
+const atomic_mockup_streak = "Streak Aktif: 12 Hari";
+const atomic_mockup_returns = "Kemajuan 3700%";
+const atomic_prob_title = "Mengapa Kebiasaan Gagal";
+const atomic_prob_desc = "Sebagian besar aplikasi pelacak fokus pada hal yang salah. Mereka reaktif, bukan proaktif.";
+const atomic_prob_1_title = "Fokus pada Hasil (Outcome)";
+const atomic_prob_1_desc = "Anda fokus pada 'turun BB 10kg' alih-alih 'menjadi orang yang tidak pernah melewatkan olahraga'. Hasil itu sementara.";
+const atomic_prob_2_title = "Dataran Tinggi Potensi Laten";
+const atomic_prob_2_desc = "Anda berhenti karena tidak melihat hasil di minggu ke-2. Anda belum melewati 'Lembah Kekecewaan'.";
+const atomic_heatmap_less = "Sedikit";
+const atomic_heatmap_peak = "Puncak";
+const atomic_extra_1_title = "Rantai Kemenangan";
+const atomic_extra_1_desc = "Jangan putuskan rantainya. Visualisasi streak kami yang adiktif memastikan Anda tetap di jalur yang benar.";
+const atomic_extra_2_title = "Pabrik Compounding";
+const atomic_extra_2_desc = "Lihat tindakan kecil Anda berubah menjadi pergeseran hidup yang masif. Setiap kebiasaan yang Anda selesaikan memicu tujuan berikutnya.";
+const atomic_science_badge = "PILAR ILMIAH";
+const atomic_science_title = "Dibangun di Atas Fisika Perilaku";
+const atomic_science_desc = "Anda tidak naik ke tingkat tujuan Anda. Anda jatuh ke tingkat sistem Anda.";
+const atomic_science_reagent_1 = "REAKTAN A";
+const atomic_science_topic_1 = "Pergeseran Identitas";
+const atomic_science_reagent_2 = "REAKTAN B";
+const atomic_science_topic_2 = "Desain Isyarat (Cue)";
+const atomic_science_reagent_3 = "REAKTAN C";
+const atomic_science_topic_3 = "Hadiah Instan";
+const atomic_faq_title = "FAQ Sistem";
+const atomic_faq_q1 = "Apa perbedaannya dengan pelacak kebiasaan biasa?";
+const atomic_faq_a1 = "Pelacak biasa fokus pada streak. Kami fokus pada identitas. Sistem kami menyarankan kebiasaan berdasarkan Visi Hidup Anda dan menyediakan aturan 'Atomic Resilience' seperti Never Miss Twice.";
+const atomic_faq_q2 = "Apa itu aturan 'Jangan Lewat Dua Kali' (Never Miss Twice)?";
+const atomic_faq_a2 = "Melewatkan satu hari adalah kesalahan. Melewatkan dua kali adalah awal dari kebiasaan baru. Sistem kami memberi peringatan saat Anda melewatkan satu hari untuk memastikan identitas tidak rusak.";
+const atomic_faq_q3 = "Bisakah saya sinkronisasi habit ke kalender?";
+const atomic_faq_a3 = "Ya. Setiap habit yang Anda buat dapat secara otomatis memblokir waktu di Planner Harian Anda, memastikan Anda punya ruang untuk eksekusi.";
+const atomic_cta_title = "Siap membangun sistem Anda?";
+const atomic_cta_desc = "Bergabunglah dengan 5.000+ performa tinggi yang menggunakan OneForMind untuk mengotomatisasi pertumbuhan mereka.";
+const atomic_cta_btn = "Mulai Sistem Anda Sekarang";
+const schema_solution_atomic_name = "OneForMind Solusi Kebiasaan Atom";
+const schema_solution_atomic_description = "Sistem pelacakan kebiasaan mikro untuk perubahan identitas jangka panjang.";
 const auth_login_title$1 = "Welcome Back.";
 const auth_login_subtitle$1 = "Lanjutkan progress hidup kamu.";
 const auth_register_title$1 = "Mulai Fresh.";
@@ -12311,7 +13148,7 @@ const planner_matrix_axis_x = "Mendesak";
 const journal_analytics_banner_text = "Bergabunglah dengan ribuan orang yang berefleksi setiap hari dengan kejernihan berteknologi AI.";
 const finance_mockup_balance_value = "Rp 25.000.000";
 const finance_brand = "OneForMind";
-const finance_mockup_income = "Rp 128.450k";
+const finance_mockup_income = "Total Pendapatan";
 const finance_mockup_expense = "Rp 12.000k";
 const finance_mockup_saving = "Rp 5.200k";
 const finance_fire_date_label = "Estimasi Tanggal FIRE";
@@ -13054,6 +13891,254 @@ const journal_ai_promo_badge = "Kecerdasan Sentimen";
 const journal_ai_promo_title = "Cerminkan Pertumbuhan Batin Anda";
 const journal_ai_promo_desc = "Lebih dari sekadar kata-kata—Neural OS menguraikan sentimen dan pola tersembunyi dalam catatan harian Anda, memberikan perspektif ilmiah tentang kesejahteraan mental Anda.";
 const journal_ai_promo_btn = "Aktifkan Refleksi AI";
+const Company = "Perusahaan";
+const Compare = "Bandingkan";
+const Connect = "Hubungkan";
+const Dashboard = "Dashboard";
+const Features = "Fitur";
+const Logo = "Logo";
+const OneForMind = "OneForMind";
+const Pricing = "Harga";
+const Product = "Produk";
+const Resources = "Sumber Daya";
+const Security = "Keamanan";
+const Solutions = "Solusi";
+const career_extra_1_item_1 = "[ID] Career Extra 1 Item 1";
+const career_extra_1_item_2 = "[ID] Career Extra 1 Item 2";
+const career_extra_1_item_3 = "[ID] Career Extra 1 Item 3";
+const career_mockup_live = "[ID] Career Mockup Live";
+const career_mockup_plan_badge = "[ID] Badge Career Mockup Plan Badge";
+const career_mockup_plan_title = "[ID] Judul Career Mockup Plan";
+const career_negotiation_final = "[ID] Career Negotiation Final";
+const career_negotiation_initial = "[ID] Career Negotiation Initial";
+const career_science_module_1 = "[ID] Career Science Module 1";
+const career_science_module_2 = "[ID] Career Science Module 2";
+const career_science_module_3 = "[ID] Career Science Module 3";
+const career_science_topic_1 = "[ID] Career Science Topic 1";
+const career_science_topic_2 = "[ID] Career Science Topic 2";
+const career_science_topic_3 = "[ID] Career Science Topic 3";
+const career_science_viz_roi = "[ID] Career Science Viz Roi";
+const career_science_viz_status = "[ID] Career Science Viz Status";
+const career_status_applied = "[ID] Career Status Applied";
+const career_status_interviewing = "[ID] Career Status Interviewing";
+const career_status_offer = "[ID] Career Status Offer";
+const deepwork_cta_btn = "[ID] Tombol Deepwork Cta Btn";
+const deepwork_cta_desc = "[ID] Tombol Deepwork Cta";
+const deepwork_cta_title = "[ID] Tombol Deepwork Cta";
+const deepwork_extra_1_desc = "[ID] Deskripsi Deepwork Extra 1";
+const deepwork_extra_1_label = "[ID] Deepwork Extra 1 Label";
+const deepwork_extra_1_sub = "[ID] Deepwork Extra 1 Sub";
+const deepwork_extra_1_title = "[ID] Judul Deepwork Extra 1";
+const deepwork_extra_2_desc = "[ID] Deskripsi Deepwork Extra 2";
+const deepwork_extra_2_item_1 = "[ID] Deepwork Extra 2 Item 1";
+const deepwork_extra_2_item_2 = "[ID] Deepwork Extra 2 Item 2";
+const deepwork_extra_2_title = "[ID] Judul Deepwork Extra 2";
+const deepwork_faq_a1 = "[ID] Deepwork Faq A1";
+const deepwork_faq_a2 = "[ID] Deepwork Faq A2";
+const deepwork_faq_a3 = "[ID] Deepwork Faq A3";
+const deepwork_faq_q1 = "[ID] Deepwork Faq Q1";
+const deepwork_faq_q2 = "[ID] Deepwork Faq Q2";
+const deepwork_faq_q3 = "[ID] Deepwork Faq Q3";
+const deepwork_faq_title = "[ID] Judul Deepwork Faq";
+const deepwork_feat_1_desc = "[ID] Deskripsi Deepwork Feat 1";
+const deepwork_feat_1_title = "[ID] Judul Deepwork Feat 1";
+const deepwork_feat_2_desc = "[ID] Deskripsi Deepwork Feat 2";
+const deepwork_feat_2_title = "[ID] Judul Deepwork Feat 2";
+const deepwork_feat_title = "[ID] Judul Deepwork Feat";
+const deepwork_hero_badge = "[ID] Badge Deepwork  Badge";
+const deepwork_hero_cta = "[ID] Tombol Deepwork  Cta";
+const deepwork_hero_desc = "[ID] Deskripsi Deepwork";
+const deepwork_hero_title_1 = "[ID] Judul Deepwork    1";
+const deepwork_hero_title_2 = "[ID] Judul Deepwork    2";
+const deepwork_meta_desc = "[ID] Deskripsi Deepwork";
+const deepwork_meta_og_desc = "[ID] Deskripsi Deepwork  Og";
+const deepwork_meta_og_title = "[ID] Judul Deepwork  Og";
+const deepwork_meta_title = "[ID] Judul Deepwork";
+const deepwork_mockup_desc = "[ID] Deskripsi Deepwork Mockup";
+const deepwork_mockup_task_1 = "[ID] Deepwork Mockup Task 1";
+const deepwork_mockup_task_2 = "[ID] Deepwork Mockup Task 2";
+const deepwork_mockup_task_3 = "[ID] Deepwork Mockup Task 3";
+const deepwork_mockup_title = "[ID] Judul Deepwork Mockup";
+const deepwork_prob_1_desc = "[ID] Deskripsi Deepwork Prob 1";
+const deepwork_prob_1_title = "[ID] Judul Deepwork Prob 1";
+const deepwork_prob_2_desc = "[ID] Deskripsi Deepwork Prob 2";
+const deepwork_prob_2_title = "[ID] Judul Deepwork Prob 2";
+const deepwork_prob_3_desc = "[ID] Deskripsi Deepwork Prob 3";
+const deepwork_prob_3_title = "[ID] Judul Deepwork Prob 3";
+const deepwork_prob_desc = "[ID] Deskripsi Deepwork Prob";
+const deepwork_prob_title = "[ID] Judul Deepwork Prob";
+const deepwork_science_badge = "[ID] Badge Deepwork Science Badge";
+const deepwork_science_concept_1 = "[ID] Deepwork Science Concept 1";
+const deepwork_science_concept_2 = "[ID] Deepwork Science Concept 2";
+const deepwork_science_concept_3 = "[ID] Deepwork Science Concept 3";
+const deepwork_science_desc = "[ID] Deskripsi Deepwork Science";
+const deepwork_science_title = "[ID] Judul Deepwork Science";
+const deepwork_science_topic_1 = "[ID] Deepwork Science Topic 1";
+const deepwork_science_topic_2 = "[ID] Deepwork Science Topic 2";
+const deepwork_science_topic_3 = "[ID] Deepwork Science Topic 3";
+const deepwork_science_viz_lock = "[ID] Deepwork Science Viz Lock";
+const deepwork_science_viz_sub = "[ID] Deepwork Science Viz Sub";
+const deepwork_sol_1_desc = "[ID] Deskripsi Deepwork Sol 1";
+const deepwork_sol_1_title = "[ID] Judul Deepwork Sol 1";
+const deepwork_sol_2_desc = "[ID] Deskripsi Deepwork Sol 2";
+const deepwork_sol_2_title = "[ID] Judul Deepwork Sol 2";
+const deepwork_sol_3_desc = "[ID] Deskripsi Deepwork Sol 3";
+const deepwork_sol_3_title = "[ID] Judul Deepwork Sol 3";
+const deepwork_sol_title = "[ID] Judul Deepwork Sol";
+const finance_extra_1_label = "Aliran Saldo";
+const finance_extra_2_label = "BULAN MENUJU BEBAS";
+const finance_mockup_assets = "Aset Pribadi";
+const finance_mockup_expenses = "Total Pengeluaran";
+const finance_mockup_goal = "Progres Target";
+const finance_mockup_growth = "Kecepatan Kekayaan";
+const finance_science_principle_1_title = "Menabung Sadar";
+const finance_science_principle_2_title = "Alokasi Sumber Daya";
+const finance_science_principle_3_title = "Efek Compounding";
+const finance_science_viz_status_badge = "STATUS SISTEM";
+const finance_science_viz_status_title = "Kekayaan Optimal";
+const finance_science_viz_sub = "Kecerdasan Sinergi Neural";
+const finance_science_viz_title = "MESIN KEKAYAAN";
+const finance_synergy_alloc_amount = "+Rp 75.000";
+const finance_synergy_alloc_title = "Disimpan ke Aset";
+const finance_synergy_habit_desc = "Hemat Rp 75rb hari ini.";
+const finance_synergy_habit_title = "Kebiasaan Kopi";
+const freelance_bento_1_desc = "[ID] Deskripsi Freelance Bento 1";
+const freelance_bento_1_title = "[ID] Judul Freelance Bento 1";
+const freelance_bento_2_desc = "[ID] Deskripsi Freelance Bento 2";
+const freelance_bento_2_title = "[ID] Judul Freelance Bento 2";
+const freelance_bento_3_desc = "[ID] Deskripsi Freelance Bento 3";
+const freelance_bento_3_title = "[ID] Judul Freelance Bento 3";
+const freelance_bento_4_desc = "[ID] Deskripsi Freelance Bento 4";
+const freelance_bento_4_title = "[ID] Judul Freelance Bento 4";
+const freelance_bento_desc = "[ID] Deskripsi Freelance Bento";
+const freelance_bento_title = "[ID] Judul Freelance Bento";
+const freelance_extra_2_item_1 = "[ID] Freelance Extra 2 Item 1";
+const freelance_extra_2_item_2 = "[ID] Freelance Extra 2 Item 2";
+const freelance_extra_2_item_3 = "[ID] Freelance Extra 2 Item 3";
+const freelance_feat_1_point_1 = "[ID] Freelance Feat 1 Point 1";
+const freelance_feat_1_point_2 = "[ID] Freelance Feat 1 Point 2";
+const freelance_feat_2_point_1 = "[ID] Freelance Feat 2 Point 1";
+const freelance_feat_2_point_2 = "[ID] Freelance Feat 2 Point 2";
+const freelance_hero_cta_1 = "[ID] Tombol Freelance  Cta 1";
+const freelance_hero_social_proof = "[ID] Freelance  Social Proof";
+const freelance_mockup_active_status = "[ID] Freelance Mockup Active Status";
+const freelance_mockup_active_title = "[ID] Judul Freelance Mockup Active";
+const freelance_mockup_available = "[ID] Freelance Mockup Available";
+const freelance_mockup_completion = "[ID] Freelance Mockup Completion";
+const freelance_mockup_invoice_item_1 = "[ID] Freelance Mockup Invoice Item 1";
+const freelance_mockup_invoice_item_2 = "[ID] Freelance Mockup Invoice Item 2";
+const freelance_mockup_invoice_status = "[ID] Freelance Mockup Invoice Status";
+const freelance_mockup_invoice_title = "[ID] Judul Freelance Mockup Invoice";
+const freelance_mockup_invoice_total = "[ID] Freelance Mockup Invoice Total";
+const freelance_mockup_milestone = "[ID] Freelance Mockup Milestone";
+const freelance_mockup_msg_name = "[ID] Freelance Mockup Msg Name";
+const freelance_mockup_msg_text = "[ID] Freelance Mockup Msg Text";
+const freelance_mockup_msg_time = "[ID] Freelance Mockup Msg Time";
+const freelance_mockup_payment_badge = "[ID] Badge Freelance Mockup Payment Badge";
+const freelance_mockup_payment_from = "[ID] Freelance Mockup Payment From";
+const freelance_mockup_project_1_sub = "[ID] Freelance Mockup Project 1 Sub";
+const freelance_mockup_project_1_title = "[ID] Judul Freelance Mockup Project 1";
+const freelance_mockup_project_2_sub = "[ID] Freelance Mockup Project 2 Sub";
+const freelance_mockup_project_2_title = "[ID] Judul Freelance Mockup Project 2";
+const freelance_mockup_rating = "[ID] Freelance Mockup Rating";
+const freelance_mockup_role = "[ID] Freelance Mockup Role";
+const freelance_science_topic_1 = "[ID] Freelance Science Topic 1";
+const freelance_science_topic_2 = "[ID] Freelance Science Topic 2";
+const freelance_science_topic_3 = "[ID] Freelance Science Topic 3";
+const goal_steps_badge = "[ID] Badge Goal Steps Badge";
+const meta_ai_creator = "[ID] Ai Creator";
+const meta_ai_service_type = "[ID] Ai Service Type";
+const meta_global_description = "[ID] Deskripsi Global  Ription";
+const meta_global_keywords = "[ID] Global Keywords";
+const pricing_faq_subtitle = "[ID] Judul Pricing Faq Sub";
+const pricing_feat_l1_finance = "[ID] Pricing Feat L1 Finance";
+const pricing_feat_l1_habits = "[ID] Pricing Feat L1 Habits";
+const pricing_feat_l2_finance = "[ID] Pricing Feat L2 Finance";
+const pricing_feat_l2_habits = "[ID] Pricing Feat L2 Habits";
+const pricing_feat_l3_ai_coach = "[ID] Pricing Feat L3 Ai Coach";
+const pricing_feat_l3_insights = "[ID] Pricing Feat L3 Insights";
+const pricing_feat_l3_wealth = "[ID] Pricing Feat L3 Wealth";
+const pricing_feat_l4_triggers = "[ID] Pricing Feat L4 Triggers";
+const pricing_feat_l4_vip = "[ID] Pricing Feat L4 Vip";
+const pricing_feat_l4_war_room = "[ID] Pricing Feat L4 War Room";
+const pricing_l4_btn = "[ID] Pricing L4 Btn";
+const pricing_meta_og_desc = "[ID] Deskripsi Pricing  Og";
+const privacy_nav_4 = "04. Protokol Keamanan";
+const schema_about_description = "[ID] Deskripsi Schema About  Ription";
+const schema_about_name = "[ID] Schema About Name";
+const schema_calendar_description = "[ID] Deskripsi Schema Calendar  Ription";
+const schema_calendar_name = "[ID] Schema Calendar Name";
+const schema_finance_description = "[ID] Deskripsi Schema Finance  Ription";
+const schema_finance_name = "[ID] Schema Finance Name";
+const schema_goal_description = "[ID] Deskripsi Schema Goal  Ription";
+const schema_goal_name = "[ID] Schema Goal Name";
+const schema_habit_description = "[ID] Deskripsi Schema Habit  Ription";
+const schema_habit_feature_1 = "[ID] Schema Habit Feature 1";
+const schema_habit_feature_2 = "[ID] Schema Habit Feature 2";
+const schema_habit_feature_3 = "[ID] Schema Habit Feature 3";
+const schema_habit_feature_4 = "[ID] Schema Habit Feature 4";
+const schema_habit_name = "[ID] Schema Habit Name";
+const schema_job_description = "[ID] Deskripsi Schema Job  Ription";
+const schema_job_name = "[ID] Schema Job Name";
+const schema_journal_description = "[ID] Deskripsi Schema Journal  Ription";
+const schema_journal_name = "[ID] Schema Journal Name";
+const schema_planner_description = "[ID] Deskripsi Schema Planner  Ription";
+const schema_planner_name = "[ID] Schema Planner Name";
+const schema_pricing_description = "[ID] Deskripsi Schema Pricing  Ription";
+const schema_pricing_name = "[ID] Schema Pricing Name";
+const schema_solution_career_description = "[ID] Deskripsi Schema Solution Career  Ription";
+const schema_solution_career_name = "[ID] Schema Solution Career Name";
+const schema_solution_deepwork_description = "[ID] Deskripsi Schema Solution Deepwork  Ription";
+const schema_solution_deepwork_name = "[ID] Schema Solution Deepwork Name";
+const schema_solution_finance_mastery_description = "[ID] Deskripsi Schema Solution Finance Mastery  Ription";
+const schema_solution_finance_mastery_name = "[ID] Schema Solution Finance Mastery Name";
+const schema_solution_freelancer_description_en = "[ID] Deskripsi Schema Solution Freelancer  Ription En";
+const schema_solution_freelancer_description_id = "[ID] Deskripsi Schema Solution Freelancer  Ription Id";
+const schema_solution_student_description_en = "[ID] Deskripsi Schema Solution Student  Ription En";
+const schema_solution_student_description_id = "[ID] Deskripsi Schema Solution Student  Ription Id";
+const solve_finance_cta_btn = "Mulai Kelola Uang Saya";
+const solve_finance_cta_desc = "Mulai bangun fondasi kekayaanmu sekarang dengan sistem yang paling intuitif.";
+const solve_finance_cta_title = "Siap untuk Merdeka Finansial?";
+const solve_finance_extra_1_desc = "Pahami pasang surut keuangan Anda dengan grafik yang mudah dibaca. Identifikasi tren musiman dan sesuaikan gaya hidup Anda sebelum arus kas menjadi negatif.";
+const solve_finance_extra_1_title = "Visualisasi Arus Kas";
+const solve_finance_extra_2_desc = "Ingin beli rumah atau liburan? Tetapkan target spesifik dan biarkan OneForMind menghitung berapa banyak yang harus Anda sisihkan setiap bulan untuk mencapainya tepat waktu.";
+const solve_finance_extra_2_title = "Target Tabungan Cerdas";
+const solve_finance_faq_a1 = "Demi privasi dan keamanan maksimal, OneForMind saat ini fokus pada input manual yang cepat atau upload CSV, memastikan tidak ada akses langsung ke rekening bank Anda.";
+const solve_finance_faq_a2 = "Ya, sistem kami mendukung multi-currency untuk membantu Anda mengelola aset global di satu tempat.";
+const solve_finance_faq_a3 = "Data Anda dienkripsi penuh. Kami menggunakan standar keamanan yang sama dengan aplikasi perbankan modern untuk melindungi informasi finansial sensitif Anda.";
+const solve_finance_faq_q1 = "Apakah saya perlu menghubungkan bank saya?";
+const solve_finance_faq_q2 = "Dapatkah saya melacak berbagai mata uang?";
+const solve_finance_faq_q3 = "Apakah data keuangan saya benar-benar aman?";
+const solve_finance_faq_title = "FAQ Masteri Keuangan";
+const solve_finance_hero_badge = "Sistem Kekayaan";
+const solve_finance_hero_cta = "Kuasai Uang Anda";
+const solve_finance_hero_desc = "Katakan selamat tinggal pada kecemasan finansial. Pantau pemasukan, awasi pengeluaran, dan selaraskan belanjamu dengan tujuan hidup dalam satu dashboard cantik.";
+const solve_finance_hero_title_1 = "Kendali Total Atas";
+const solve_finance_hero_title_2 = "Masa Depan Finansialmu.";
+const solve_finance_meta_desc = "Dapatkan kendali total atas uangmu. Pantau pengeluaran, atur anggaran, dan bangun kekayaan secara sistematis.";
+const solve_finance_meta_title = "Masteri Keuangan - OneForMind";
+const solve_finance_prob_1_point_1 = "Pengeluaran Tak Disadari";
+const solve_finance_prob_1_point_2 = "Kelelahan Biaya Langganan";
+const solve_finance_prob_1_point_3 = "Hambatan Arus Kas";
+const solve_finance_prob_1_title = "Kebocoran Halus";
+const solve_finance_prob_2_point_1 = "Hidup Pas-pasan";
+const solve_finance_prob_2_point_2 = "Tabungan Stagnan";
+const solve_finance_prob_2_point_3 = "Kecemasan Akhir Bulan";
+const solve_finance_prob_2_title = "Tanpa Dana Darurat";
+const solve_finance_prob_desc = "Mengelola uang tidak seharusnya terasa seperti sebuah hukuman.";
+const solve_finance_prob_title = "Jebakan Kecemasan Finansial";
+const solve_finance_science_badge = "ARSITEKTUR KEKAYAAN";
+const solve_finance_science_desc = "Kami menggunakan prinsip 'Pay Yourself First' dan 'Zero-Based Budgeting'. Sistem kami dirancang untuk memastikan setiap rupiah memiliki tugas, mengurangi pembelian impulsif dan meningkatkan tabungan.";
+const solve_finance_science_title = "Metodologi Alokasi Sadar";
+const solve_finance_sol_feat_1_desc = "Lacak setiap perak dengan mudah.";
+const solve_finance_sol_feat_1_title = "Kejelasan Finansial";
+const solve_finance_sol_feat_2_desc = "Batas dan peringatan otomatis.";
+const solve_finance_sol_feat_2_title = "Budgeting Pintar";
+const solve_finance_sol_feat_3_desc = "Proyeksikan kekayaan bersih masa depan Anda.";
+const solve_finance_sol_feat_3_title = "Peta Jalan Kekayaan";
+const solve_finance_sol_title = "Uang Anda, Dalam Perintah Anda.";
+const solve_finance_syn_desc = "Hubungkan kebiasaan ke arus kas.";
+const solve_finance_syn_title = "Loop Sinergi";
 const neural_meta_title = "Neural OS AI - OneForMind Produktivitas";
 const neural_meta_desc = "Kecerdasan di balik pertumbuhan Anda. Didukung oleh Gemini, Neural OS menganalisis kebiasaan, keuangan, dan tujuan Anda untuk memberikan wawasan dan audit personal.";
 const neural_hero_badge = "Next-Gen Intelligence";
@@ -13369,7 +14454,6 @@ const privacy_toc_title = "Daftar Isi";
 const privacy_nav_1 = "01. Ringkasan TL;DR";
 const privacy_nav_2 = "02. Pengumpulan Informasi";
 const privacy_nav_3 = "03. Penggunaan Data";
-const privacy_nav_4 = "04. Protokol Keamanan";
 const privacy_nav_5 = "05. Pihak Ketiga";
 const privacy_nav_6 = "06. Hak Privasi";
 const privacy_nav_7 = "07. Hubungi Kami";
@@ -14033,24 +15117,12 @@ const solve_career_extra_1_title = "Pipeline Persiapan Interview";
 const solve_career_extra_1_desc = "Jangan datang tanpa persiapan. Gunakan template kami untuk meriset budaya perusahaan, siapkan pertanyaan Anda sendiri, dan catat refleksi pasca-interview untuk peningkatan berkelanjutan.";
 const solve_career_extra_2_title = "Pelacakan Nilai Pasar";
 const solve_career_extra_2_desc = "Pantau tawaran gaji dan rate pasar untuk peran Anda. Pengetahuan adalah kekuatan saat negosiasi gaji—OneForMind menjaga data Anda tetap teratur dan siap digunakan.";
-const solve_finance_meta_title = "Masteri Keuangan - OneForMind";
-const solve_finance_meta_desc = "Dapatkan kendali total atas uangmu. Pantau pengeluaran, atur anggaran, dan bangun kekayaan secara sistematis.";
 const solve_finance_meta_og_title = "Kuasai Keuanganmu dengan OneForMind";
 const solve_finance_meta_og_desc = "Tidak ada lagi kecemasan finansial. Pantau kekayaanmu dan bangun masa depan yang aman.";
-const solve_finance_hero_badge = "Sistem Kekayaan";
-const solve_finance_hero_title_1 = "Kendali Total Atas";
-const solve_finance_hero_title_2 = "Masa Depan Finansialmu.";
-const solve_finance_hero_desc = "Katakan selamat tinggal pada kecemasan finansial. Pantau pemasukan, awasi pengeluaran, dan selaraskan belanjamu dengan tujuan hidup dalam satu dashboard cantik.";
-const solve_finance_hero_cta = "Kuasai Uang Anda";
-const solve_finance_prob_title = "Jebakan Kecemasan Finansial";
-const solve_finance_prob_desc = "Mengelola uang tidak seharusnya terasa seperti sebuah hukuman.";
-const solve_finance_prob_1_title = "Kebocoran Halus";
 const solve_finance_prob_1_desc = "Langganan yang terlupakan dan biaya kecil yang jika ditotal merusak rencana masa depanmu.";
-const solve_finance_prob_2_title = "Tanpa Dana Darurat";
 const solve_finance_prob_2_desc = "Hidup dari gaji ke gaji tanpa perlindungan saat keadaan darurat tiba-tiba muncul.";
 const solve_finance_prob_3_title = "Ketidaktahuan Kekayaan";
 const solve_finance_prob_3_desc = "Tidak tahu berapa total kekayaan bersih (net worth) Anda saat ini karena data tersebar di mana-mana.";
-const solve_finance_sol_title = "Uang Anda, Dalam Perintah Anda.";
 const solve_finance_sol_desc = "OneForMind memberi Anda visibilitas penuh. Bukan hanya mencatat, tapi merencanakan kebebasan Anda.";
 const solve_finance_sol_step_1_title = "Input Instan";
 const solve_finance_sol_step_1_desc = "Catat setiap pengeluaran dalam hitungan detik. Kecepatan adalah kunci konsistensi.";
@@ -14066,23 +15138,6 @@ const solve_finance_feat_2_title = "Pusat Anggaran";
 const solve_finance_feat_2_desc = "Buat rencana belanja bulanan dan bandingkan dengan realita pengeluaran Anda secara real-time.";
 const solve_finance_feat_3_title = "Net Worth Tracker";
 const solve_finance_feat_3_desc = "Lihat gambaran besar. Hubungkan aset dan kewajiban Anda untuk mengetahui nilai finansial asli Anda.";
-const solve_finance_cta_title = "Siap untuk Merdeka Finansial?";
-const solve_finance_cta_desc = "Mulai bangun fondasi kekayaanmu sekarang dengan sistem yang paling intuitif.";
-const solve_finance_cta_btn = "Mulai Kelola Uang Saya";
-const solve_finance_faq_title = "FAQ Masteri Keuangan";
-const solve_finance_faq_q1 = "Apakah saya perlu menghubungkan bank saya?";
-const solve_finance_faq_a1 = "Demi privasi dan keamanan maksimal, OneForMind saat ini fokus pada input manual yang cepat atau upload CSV, memastikan tidak ada akses langsung ke rekening bank Anda.";
-const solve_finance_faq_q2 = "Dapatkah saya melacak berbagai mata uang?";
-const solve_finance_faq_a2 = "Ya, sistem kami mendukung multi-currency untuk membantu Anda mengelola aset global di satu tempat.";
-const solve_finance_faq_q3 = "Apakah data keuangan saya benar-benar aman?";
-const solve_finance_faq_a3 = "Data Anda dienkripsi penuh. Kami menggunakan standar keamanan yang sama dengan aplikasi perbankan modern untuk melindungi informasi finansial sensitif Anda.";
-const solve_finance_science_badge = "ARSITEKTUR KEKAYAAN";
-const solve_finance_science_title = "Metodologi Alokasi Sadar";
-const solve_finance_science_desc = "Kami menggunakan prinsip 'Pay Yourself First' dan 'Zero-Based Budgeting'. Sistem kami dirancang untuk memastikan setiap rupiah memiliki tugas, mengurangi pembelian impulsif dan meningkatkan tabungan.";
-const solve_finance_extra_1_title = "Visualisasi Arus Kas";
-const solve_finance_extra_1_desc = "Pahami pasang surut keuangan Anda dengan grafik yang mudah dibaca. Identifikasi tren musiman dan sesuaikan gaya hidup Anda sebelum arus kas menjadi negatif.";
-const solve_finance_extra_2_title = "Target Tabungan Cerdas";
-const solve_finance_extra_2_desc = "Ingin beli rumah atau liburan? Tetapkan target spesifik dan biarkan OneForMind menghitung berapa banyak yang harus Anda sisihkan setiap bulan untuk mencapainya tepat waktu.";
 const solve_mental_meta_title = "Kejernihan Mental - OneForMind";
 const solve_mental_meta_desc = "Kurangi kecemasan dan tingkatkan fokus. Gunakan sistem jurnal reflektif untuk pikiran yang lebih tenang dan tajam.";
 const solve_mental_meta_og_title = "Jernihkan Pikiranmu dengan OneForMind";
@@ -14466,12 +15521,6 @@ const ecosystem_finance_desc = "Setiap sen memiliki tujuan. Masteri keuangan And
 const ecosystem_mental_title = "Statistik Mood";
 const ecosystem_mental_desc = "Pahami korelasi antara rutinitas harian dan kondisi mental Anda untuk kejernihan yang berkelanjutan.";
 const mental_science_viz_label = "Mind_Map_Alpha";
-const atomic_meta_title = "Sistem Kebiasaan Atom - OneForMind";
-const atomic_meta_desc = "Kuasai seni membangun rutinitas kecil yang memberikan hasil besar. Berdasarkan prinsip Atomic Habits.";
-const atomic_meta_og_title = "Metodologi Kebiasaan Atom OneForMind";
-const atomic_meta_og_desc = "Bangun rantai kemenangan Anda. Jangan pernah putuskan.";
-const schema_solution_atomic_name = "OneForMind Solusi Kebiasaan Atom";
-const schema_solution_atomic_description = "Sistem pelacakan kebiasaan mikro untuk perubahan identitas jangka panjang.";
 const atomic_breadcrumb = "Atomic System";
 const solve_atomic_hero_badge = "Optimalisasi Rutinitas";
 const solve_atomic_hero_title_1 = "Berhenti Menebak,";
@@ -14501,8 +15550,6 @@ const solve_atomic_feat_1_title = "Habit Tracker Visual";
 const solve_atomic_feat_1_desc = "Grafik kontribusi bergaya GitHub untuk melihat konsistensi harian Anda tanpa celah.";
 const solve_atomic_feat_2_title = "Identity Shifter";
 const solve_atomic_feat_2_desc = "Visualisasikan bagaimana setiap aksi kecil Anda memperkuat identitas baru yang sedang Anda bangun.";
-const atomic_extra_1_title = "Rantai Kemenangan";
-const atomic_extra_1_desc = "Jangan putuskan rantainya. Visualisasi streak kami yang adiktif memastikan Anda tetap di jalur yang benar.";
 const solve_atomic_extra_2_title = "Hukum Atraktif";
 const solve_atomic_extra_2_desc = "Membangun lingkungan yang membuat kebiasaan baik tidak terhindarkan.";
 const solve_atomic_science_badge = "PSIKOLOGI PERILAKU";
@@ -14659,6 +15706,52 @@ const id = {
   about_roadmap_v2_desc,
   about_roadmap_v3_title,
   about_roadmap_v3_desc,
+  atomic_meta_title,
+  atomic_meta_desc,
+  atomic_meta_og_title,
+  atomic_meta_og_desc,
+  atomic_hero_badge,
+  atomic_hero_title_1,
+  atomic_hero_title_2,
+  atomic_hero_desc,
+  atomic_hero_cta,
+  atomic_mockup_title,
+  atomic_mockup_desc,
+  atomic_mockup_streak,
+  atomic_mockup_returns,
+  atomic_prob_title,
+  atomic_prob_desc,
+  atomic_prob_1_title,
+  atomic_prob_1_desc,
+  atomic_prob_2_title,
+  atomic_prob_2_desc,
+  atomic_heatmap_less,
+  atomic_heatmap_peak,
+  atomic_extra_1_title,
+  atomic_extra_1_desc,
+  atomic_extra_2_title,
+  atomic_extra_2_desc,
+  atomic_science_badge,
+  atomic_science_title,
+  atomic_science_desc,
+  atomic_science_reagent_1,
+  atomic_science_topic_1,
+  atomic_science_reagent_2,
+  atomic_science_topic_2,
+  atomic_science_reagent_3,
+  atomic_science_topic_3,
+  atomic_faq_title,
+  atomic_faq_q1,
+  atomic_faq_a1,
+  atomic_faq_q2,
+  atomic_faq_a2,
+  atomic_faq_q3,
+  atomic_faq_a3,
+  atomic_cta_title,
+  atomic_cta_desc,
+  atomic_cta_btn,
+  schema_solution_atomic_name,
+  schema_solution_atomic_description,
   auth_login_title: auth_login_title$1,
   auth_login_subtitle: auth_login_subtitle$1,
   auth_register_title: auth_register_title$1,
@@ -16708,6 +17801,260 @@ const id = {
   journal_ai_promo_title,
   journal_ai_promo_desc,
   journal_ai_promo_btn,
+  "About Us": "Tentang Kami",
+  Company,
+  Compare,
+  Connect,
+  "Contact Us": "Hubungi Kami",
+  Dashboard,
+  Features,
+  Logo,
+  OneForMind,
+  Pricing,
+  "Privacy Policy": "Kebijakan Privasi",
+  Product,
+  "Refund Policy": "Kebijakan Refund",
+  Resources,
+  Security,
+  Solutions,
+  "System Status": "Status Sistem",
+  "Terms of Service": "Syarat Layanan",
+  career_extra_1_item_1,
+  career_extra_1_item_2,
+  career_extra_1_item_3,
+  career_mockup_live,
+  career_mockup_plan_badge,
+  career_mockup_plan_title,
+  career_negotiation_final,
+  career_negotiation_initial,
+  career_science_module_1,
+  career_science_module_2,
+  career_science_module_3,
+  career_science_topic_1,
+  career_science_topic_2,
+  career_science_topic_3,
+  career_science_viz_roi,
+  career_science_viz_status,
+  career_status_applied,
+  career_status_interviewing,
+  career_status_offer,
+  deepwork_cta_btn,
+  deepwork_cta_desc,
+  deepwork_cta_title,
+  deepwork_extra_1_desc,
+  deepwork_extra_1_label,
+  deepwork_extra_1_sub,
+  deepwork_extra_1_title,
+  deepwork_extra_2_desc,
+  deepwork_extra_2_item_1,
+  deepwork_extra_2_item_2,
+  deepwork_extra_2_title,
+  deepwork_faq_a1,
+  deepwork_faq_a2,
+  deepwork_faq_a3,
+  deepwork_faq_q1,
+  deepwork_faq_q2,
+  deepwork_faq_q3,
+  deepwork_faq_title,
+  deepwork_feat_1_desc,
+  deepwork_feat_1_title,
+  deepwork_feat_2_desc,
+  deepwork_feat_2_title,
+  deepwork_feat_title,
+  deepwork_hero_badge,
+  deepwork_hero_cta,
+  deepwork_hero_desc,
+  deepwork_hero_title_1,
+  deepwork_hero_title_2,
+  deepwork_meta_desc,
+  deepwork_meta_og_desc,
+  deepwork_meta_og_title,
+  deepwork_meta_title,
+  deepwork_mockup_desc,
+  deepwork_mockup_task_1,
+  deepwork_mockup_task_2,
+  deepwork_mockup_task_3,
+  deepwork_mockup_title,
+  deepwork_prob_1_desc,
+  deepwork_prob_1_title,
+  deepwork_prob_2_desc,
+  deepwork_prob_2_title,
+  deepwork_prob_3_desc,
+  deepwork_prob_3_title,
+  deepwork_prob_desc,
+  deepwork_prob_title,
+  deepwork_science_badge,
+  deepwork_science_concept_1,
+  deepwork_science_concept_2,
+  deepwork_science_concept_3,
+  deepwork_science_desc,
+  deepwork_science_title,
+  deepwork_science_topic_1,
+  deepwork_science_topic_2,
+  deepwork_science_topic_3,
+  deepwork_science_viz_lock,
+  deepwork_science_viz_sub,
+  deepwork_sol_1_desc,
+  deepwork_sol_1_title,
+  deepwork_sol_2_desc,
+  deepwork_sol_2_title,
+  deepwork_sol_3_desc,
+  deepwork_sol_3_title,
+  deepwork_sol_title,
+  finance_extra_1_label,
+  finance_extra_2_label,
+  finance_mockup_assets,
+  finance_mockup_expenses,
+  finance_mockup_goal,
+  finance_mockup_growth,
+  finance_science_principle_1_title,
+  finance_science_principle_2_title,
+  finance_science_principle_3_title,
+  finance_science_viz_status_badge,
+  finance_science_viz_status_title,
+  finance_science_viz_sub,
+  finance_science_viz_title,
+  finance_synergy_alloc_amount,
+  finance_synergy_alloc_title,
+  finance_synergy_habit_desc,
+  finance_synergy_habit_title,
+  freelance_bento_1_desc,
+  freelance_bento_1_title,
+  freelance_bento_2_desc,
+  freelance_bento_2_title,
+  freelance_bento_3_desc,
+  freelance_bento_3_title,
+  freelance_bento_4_desc,
+  freelance_bento_4_title,
+  freelance_bento_desc,
+  freelance_bento_title,
+  freelance_extra_2_item_1,
+  freelance_extra_2_item_2,
+  freelance_extra_2_item_3,
+  freelance_feat_1_point_1,
+  freelance_feat_1_point_2,
+  freelance_feat_2_point_1,
+  freelance_feat_2_point_2,
+  freelance_hero_cta_1,
+  freelance_hero_social_proof,
+  freelance_mockup_active_status,
+  freelance_mockup_active_title,
+  freelance_mockup_available,
+  freelance_mockup_completion,
+  freelance_mockup_invoice_item_1,
+  freelance_mockup_invoice_item_2,
+  freelance_mockup_invoice_status,
+  freelance_mockup_invoice_title,
+  freelance_mockup_invoice_total,
+  freelance_mockup_milestone,
+  freelance_mockup_msg_name,
+  freelance_mockup_msg_text,
+  freelance_mockup_msg_time,
+  freelance_mockup_payment_badge,
+  freelance_mockup_payment_from,
+  freelance_mockup_project_1_sub,
+  freelance_mockup_project_1_title,
+  freelance_mockup_project_2_sub,
+  freelance_mockup_project_2_title,
+  freelance_mockup_rating,
+  freelance_mockup_role,
+  freelance_science_topic_1,
+  freelance_science_topic_2,
+  freelance_science_topic_3,
+  goal_steps_badge,
+  meta_ai_creator,
+  meta_ai_service_type,
+  meta_global_description,
+  meta_global_keywords,
+  pricing_faq_subtitle,
+  pricing_feat_l1_finance,
+  pricing_feat_l1_habits,
+  pricing_feat_l2_finance,
+  pricing_feat_l2_habits,
+  pricing_feat_l3_ai_coach,
+  pricing_feat_l3_insights,
+  pricing_feat_l3_wealth,
+  pricing_feat_l4_triggers,
+  pricing_feat_l4_vip,
+  pricing_feat_l4_war_room,
+  pricing_l4_btn,
+  pricing_meta_og_desc,
+  privacy_nav_4,
+  schema_about_description,
+  schema_about_name,
+  schema_calendar_description,
+  schema_calendar_name,
+  schema_finance_description,
+  schema_finance_name,
+  schema_goal_description,
+  schema_goal_name,
+  schema_habit_description,
+  schema_habit_feature_1,
+  schema_habit_feature_2,
+  schema_habit_feature_3,
+  schema_habit_feature_4,
+  schema_habit_name,
+  schema_job_description,
+  schema_job_name,
+  schema_journal_description,
+  schema_journal_name,
+  schema_planner_description,
+  schema_planner_name,
+  schema_pricing_description,
+  schema_pricing_name,
+  schema_solution_career_description,
+  schema_solution_career_name,
+  schema_solution_deepwork_description,
+  schema_solution_deepwork_name,
+  schema_solution_finance_mastery_description,
+  schema_solution_finance_mastery_name,
+  schema_solution_freelancer_description_en,
+  schema_solution_freelancer_description_id,
+  schema_solution_student_description_en,
+  schema_solution_student_description_id,
+  solve_finance_cta_btn,
+  solve_finance_cta_desc,
+  solve_finance_cta_title,
+  solve_finance_extra_1_desc,
+  solve_finance_extra_1_title,
+  solve_finance_extra_2_desc,
+  solve_finance_extra_2_title,
+  solve_finance_faq_a1,
+  solve_finance_faq_a2,
+  solve_finance_faq_a3,
+  solve_finance_faq_q1,
+  solve_finance_faq_q2,
+  solve_finance_faq_q3,
+  solve_finance_faq_title,
+  solve_finance_hero_badge,
+  solve_finance_hero_cta,
+  solve_finance_hero_desc,
+  solve_finance_hero_title_1,
+  solve_finance_hero_title_2,
+  solve_finance_meta_desc,
+  solve_finance_meta_title,
+  solve_finance_prob_1_point_1,
+  solve_finance_prob_1_point_2,
+  solve_finance_prob_1_point_3,
+  solve_finance_prob_1_title,
+  solve_finance_prob_2_point_1,
+  solve_finance_prob_2_point_2,
+  solve_finance_prob_2_point_3,
+  solve_finance_prob_2_title,
+  solve_finance_prob_desc,
+  solve_finance_prob_title,
+  solve_finance_science_badge,
+  solve_finance_science_desc,
+  solve_finance_science_title,
+  solve_finance_sol_feat_1_desc,
+  solve_finance_sol_feat_1_title,
+  solve_finance_sol_feat_2_desc,
+  solve_finance_sol_feat_2_title,
+  solve_finance_sol_feat_3_desc,
+  solve_finance_sol_feat_3_title,
+  solve_finance_sol_title,
+  solve_finance_syn_desc,
+  solve_finance_syn_title,
   neural_meta_title,
   neural_meta_desc,
   neural_hero_badge,
@@ -17024,7 +18371,6 @@ const id = {
   privacy_nav_1,
   privacy_nav_2,
   privacy_nav_3,
-  privacy_nav_4,
   privacy_nav_5,
   privacy_nav_6,
   privacy_nav_7,
@@ -17688,24 +19034,12 @@ const id = {
   solve_career_extra_1_desc,
   solve_career_extra_2_title,
   solve_career_extra_2_desc,
-  solve_finance_meta_title,
-  solve_finance_meta_desc,
   solve_finance_meta_og_title,
   solve_finance_meta_og_desc,
-  solve_finance_hero_badge,
-  solve_finance_hero_title_1,
-  solve_finance_hero_title_2,
-  solve_finance_hero_desc,
-  solve_finance_hero_cta,
-  solve_finance_prob_title,
-  solve_finance_prob_desc,
-  solve_finance_prob_1_title,
   solve_finance_prob_1_desc,
-  solve_finance_prob_2_title,
   solve_finance_prob_2_desc,
   solve_finance_prob_3_title,
   solve_finance_prob_3_desc,
-  solve_finance_sol_title,
   solve_finance_sol_desc,
   solve_finance_sol_step_1_title,
   solve_finance_sol_step_1_desc,
@@ -17721,23 +19055,6 @@ const id = {
   solve_finance_feat_2_desc,
   solve_finance_feat_3_title,
   solve_finance_feat_3_desc,
-  solve_finance_cta_title,
-  solve_finance_cta_desc,
-  solve_finance_cta_btn,
-  solve_finance_faq_title,
-  solve_finance_faq_q1,
-  solve_finance_faq_a1,
-  solve_finance_faq_q2,
-  solve_finance_faq_a2,
-  solve_finance_faq_q3,
-  solve_finance_faq_a3,
-  solve_finance_science_badge,
-  solve_finance_science_title,
-  solve_finance_science_desc,
-  solve_finance_extra_1_title,
-  solve_finance_extra_1_desc,
-  solve_finance_extra_2_title,
-  solve_finance_extra_2_desc,
   solve_mental_meta_title,
   solve_mental_meta_desc,
   solve_mental_meta_og_title,
@@ -18121,12 +19438,6 @@ const id = {
   ecosystem_mental_title,
   ecosystem_mental_desc,
   mental_science_viz_label,
-  atomic_meta_title,
-  atomic_meta_desc,
-  atomic_meta_og_title,
-  atomic_meta_og_desc,
-  schema_solution_atomic_name,
-  schema_solution_atomic_description,
   atomic_breadcrumb,
   solve_atomic_hero_badge,
   solve_atomic_hero_title_1,
@@ -18156,8 +19467,6 @@ const id = {
   solve_atomic_feat_1_desc,
   solve_atomic_feat_2_title,
   solve_atomic_feat_2_desc,
-  atomic_extra_1_title,
-  atomic_extra_1_desc,
   solve_atomic_extra_2_title,
   solve_atomic_extra_2_desc,
   solve_atomic_science_badge,
@@ -18264,8 +19573,20 @@ const id = {
 };
 const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
+  Company,
+  Compare,
+  Connect,
+  Dashboard,
   Distributed_Cognition_Active,
   Extended_Mind_Thesis_Verified,
+  Features,
+  Logo,
+  OneForMind,
+  Pricing,
+  Product,
+  Resources,
+  Security,
+  Solutions,
   about_badge: about_badge$1,
   about_desc: about_desc$1,
   about_meta_desc,
@@ -18299,20 +19620,58 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   asset_name,
   asset_name_placeholder,
   atomic_breadcrumb,
+  atomic_cta_btn,
+  atomic_cta_desc,
+  atomic_cta_title,
   atomic_extra_1_desc,
   atomic_extra_1_title,
+  atomic_extra_2_desc,
+  atomic_extra_2_title,
+  atomic_faq_a1,
+  atomic_faq_a2,
+  atomic_faq_a3,
+  atomic_faq_q1,
+  atomic_faq_q2,
+  atomic_faq_q3,
+  atomic_faq_title,
+  atomic_heatmap_less,
+  atomic_heatmap_peak,
+  atomic_hero_badge,
+  atomic_hero_cta,
+  atomic_hero_desc,
+  atomic_hero_title_1,
+  atomic_hero_title_2,
   atomic_meta_desc,
   atomic_meta_og_desc,
   atomic_meta_og_title,
   atomic_meta_title,
+  atomic_mockup_desc,
   atomic_mockup_habit_sub,
   atomic_mockup_habit_title,
   atomic_mockup_identity_sub,
   atomic_mockup_identity_title,
+  atomic_mockup_returns,
+  atomic_mockup_streak,
+  atomic_mockup_title,
+  atomic_prob_1_desc,
+  atomic_prob_1_title,
+  atomic_prob_2_desc,
+  atomic_prob_2_title,
+  atomic_prob_desc,
+  atomic_prob_title,
+  atomic_science_badge,
+  atomic_science_desc,
+  atomic_science_reagent_1,
+  atomic_science_reagent_2,
+  atomic_science_reagent_3,
   atomic_science_step_1_title,
   atomic_science_step_2_title,
   atomic_science_step_3_title,
   atomic_science_step_4_title,
+  atomic_science_title,
+  atomic_science_topic_1,
+  atomic_science_topic_2,
+  atomic_science_topic_3,
   auth_back_login: auth_back_login$1,
   auth_btn_confirm: auth_btn_confirm$1,
   auth_btn_google_in: auth_btn_google_in$1,
@@ -18740,6 +20099,25 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   calendar_today,
   cancel,
   capital_invest,
+  career_extra_1_item_1,
+  career_extra_1_item_2,
+  career_extra_1_item_3,
+  career_mockup_live,
+  career_mockup_plan_badge,
+  career_mockup_plan_title,
+  career_negotiation_final,
+  career_negotiation_initial,
+  career_science_module_1,
+  career_science_module_2,
+  career_science_module_3,
+  career_science_topic_1,
+  career_science_topic_2,
+  career_science_topic_3,
+  career_science_viz_roi,
+  career_science_viz_status,
+  career_status_applied,
+  career_status_interviewing,
+  career_status_offer,
   cat_life,
   cat_other,
   cat_urgent,
@@ -18978,6 +20356,69 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   deep_science_factor_2_title,
   deep_science_factor_3_title,
   deep_science_factor_4_title,
+  deepwork_cta_btn,
+  deepwork_cta_desc,
+  deepwork_cta_title,
+  deepwork_extra_1_desc,
+  deepwork_extra_1_label,
+  deepwork_extra_1_sub,
+  deepwork_extra_1_title,
+  deepwork_extra_2_desc,
+  deepwork_extra_2_item_1,
+  deepwork_extra_2_item_2,
+  deepwork_extra_2_title,
+  deepwork_faq_a1,
+  deepwork_faq_a2,
+  deepwork_faq_a3,
+  deepwork_faq_q1,
+  deepwork_faq_q2,
+  deepwork_faq_q3,
+  deepwork_faq_title,
+  deepwork_feat_1_desc,
+  deepwork_feat_1_title,
+  deepwork_feat_2_desc,
+  deepwork_feat_2_title,
+  deepwork_feat_title,
+  deepwork_hero_badge,
+  deepwork_hero_cta,
+  deepwork_hero_desc,
+  deepwork_hero_title_1,
+  deepwork_hero_title_2,
+  deepwork_meta_desc,
+  deepwork_meta_og_desc,
+  deepwork_meta_og_title,
+  deepwork_meta_title,
+  deepwork_mockup_desc,
+  deepwork_mockup_task_1,
+  deepwork_mockup_task_2,
+  deepwork_mockup_task_3,
+  deepwork_mockup_title,
+  deepwork_prob_1_desc,
+  deepwork_prob_1_title,
+  deepwork_prob_2_desc,
+  deepwork_prob_2_title,
+  deepwork_prob_3_desc,
+  deepwork_prob_3_title,
+  deepwork_prob_desc,
+  deepwork_prob_title,
+  deepwork_science_badge,
+  deepwork_science_concept_1,
+  deepwork_science_concept_2,
+  deepwork_science_concept_3,
+  deepwork_science_desc,
+  deepwork_science_title,
+  deepwork_science_topic_1,
+  deepwork_science_topic_2,
+  deepwork_science_topic_3,
+  deepwork_science_viz_lock,
+  deepwork_science_viz_sub,
+  deepwork_sol_1_desc,
+  deepwork_sol_1_title,
+  deepwork_sol_2_desc,
+  deepwork_sol_2_title,
+  deepwork_sol_3_desc,
+  deepwork_sol_3_title,
+  deepwork_sol_title,
   default: id,
   default_activity_name,
   delete_account_btn,
@@ -19120,6 +20561,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   finance_cta_note,
   finance_cta_title,
   finance_currency_m,
+  finance_extra_1_label,
+  finance_extra_2_label,
   finance_faq_a1,
   finance_faq_a2,
   finance_faq_a3,
@@ -19163,10 +20606,14 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   finance_meta_title,
   finance_mockup_alert_1,
   finance_mockup_alert_2,
+  finance_mockup_assets,
   finance_mockup_balance,
   finance_mockup_balance_label,
   finance_mockup_balance_value,
   finance_mockup_expense,
+  finance_mockup_expenses,
+  finance_mockup_goal,
+  finance_mockup_growth,
   finance_mockup_income,
   finance_mockup_saving,
   finance_mockup_task_1,
@@ -19204,13 +20651,24 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   finance_schema_feat_4,
   finance_science_badge,
   finance_science_desc,
+  finance_science_principle_1_title,
+  finance_science_principle_2_title,
+  finance_science_principle_3_title,
   finance_science_title,
+  finance_science_viz_status_badge,
+  finance_science_viz_status_title,
+  finance_science_viz_sub,
+  finance_science_viz_title,
   finance_stat_freedom_title,
   finance_stat_freedom_val,
   finance_stat_projection_title,
   finance_stat_projection_val,
   finance_stat_savings_title,
   finance_stat_savings_val,
+  finance_synergy_alloc_amount,
+  finance_synergy_alloc_title,
+  finance_synergy_habit_desc,
+  finance_synergy_habit_title,
   finance_trajectory_badge,
   finance_trajectory_desc,
   finance_trajectory_status,
@@ -19374,12 +20832,25 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   footer_legal,
   footer_privacy,
   footer_terms,
+  freelance_bento_1_desc,
+  freelance_bento_1_title,
+  freelance_bento_2_desc,
+  freelance_bento_2_title,
+  freelance_bento_3_desc,
+  freelance_bento_3_title,
+  freelance_bento_4_desc,
+  freelance_bento_4_title,
+  freelance_bento_desc,
+  freelance_bento_title,
   freelance_cta_btn,
   freelance_cta_desc,
   freelance_cta_title,
   freelance_extra_1_desc,
   freelance_extra_1_title,
   freelance_extra_2_desc,
+  freelance_extra_2_item_1,
+  freelance_extra_2_item_2,
+  freelance_extra_2_item_3,
   freelance_extra_2_title,
   freelance_faq_a1,
   freelance_faq_a2,
@@ -19389,23 +20860,50 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   freelance_faq_q3,
   freelance_faq_title,
   freelance_feat_1_desc,
+  freelance_feat_1_point_1,
+  freelance_feat_1_point_2,
   freelance_feat_1_title,
   freelance_feat_2_desc,
+  freelance_feat_2_point_1,
+  freelance_feat_2_point_2,
   freelance_feat_2_title,
   freelance_feat_title,
   freelance_hero_badge,
   freelance_hero_cta,
+  freelance_hero_cta_1,
   freelance_hero_desc,
+  freelance_hero_social_proof,
   freelance_hero_title_1,
   freelance_hero_title_2,
   freelance_meta_desc,
   freelance_meta_og_desc,
   freelance_meta_og_title,
   freelance_meta_title,
+  freelance_mockup_active_status,
+  freelance_mockup_active_title,
+  freelance_mockup_available,
   freelance_mockup_client,
+  freelance_mockup_completion,
+  freelance_mockup_invoice_item_1,
+  freelance_mockup_invoice_item_2,
+  freelance_mockup_invoice_status,
+  freelance_mockup_invoice_title,
+  freelance_mockup_invoice_total,
+  freelance_mockup_milestone,
+  freelance_mockup_msg_name,
+  freelance_mockup_msg_text,
+  freelance_mockup_msg_time,
+  freelance_mockup_payment_badge,
+  freelance_mockup_payment_from,
   freelance_mockup_project,
+  freelance_mockup_project_1_sub,
+  freelance_mockup_project_1_title,
+  freelance_mockup_project_2_sub,
+  freelance_mockup_project_2_title,
   freelance_mockup_project_sub,
+  freelance_mockup_rating,
   freelance_mockup_revenue,
+  freelance_mockup_role,
   freelance_prob_1_desc,
   freelance_prob_1_title,
   freelance_prob_2_desc,
@@ -19417,6 +20915,9 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   freelance_science_badge,
   freelance_science_desc,
   freelance_science_title,
+  freelance_science_topic_1,
+  freelance_science_topic_2,
+  freelance_science_topic_3,
   freelance_sol_desc,
   freelance_sol_step_1_desc,
   freelance_sol_step_1_title,
@@ -19587,6 +21088,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_step_2_title,
   goal_step_3_desc,
   goal_step_3_title,
+  goal_steps_badge,
   goal_steps_count,
   goal_steps_desc,
   goal_steps_title,
@@ -20443,6 +21945,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   mental_sol_step_3_desc,
   mental_sol_step_3_title,
   mental_sol_title,
+  meta_ai_creator,
+  meta_ai_service_type,
+  meta_global_description,
+  meta_global_keywords,
   mig_badge,
   mig_card_1,
   mig_card_2,
@@ -21009,6 +22515,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_faq_1_q,
   pricing_faq_2_a,
   pricing_faq_2_q,
+  pricing_faq_subtitle,
   pricing_faq_title,
   pricing_feat_ai_chat,
   pricing_feat_ai_status,
@@ -21021,6 +22528,16 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_feat_habit_insights,
   pricing_feat_habits_limit,
   pricing_feat_jobs_unlocked,
+  pricing_feat_l1_finance,
+  pricing_feat_l1_habits,
+  pricing_feat_l2_finance,
+  pricing_feat_l2_habits,
+  pricing_feat_l3_ai_coach,
+  pricing_feat_l3_insights,
+  pricing_feat_l3_wealth,
+  pricing_feat_l4_triggers,
+  pricing_feat_l4_vip,
+  pricing_feat_l4_war_room,
   pricing_feat_label,
   pricing_feat_lifetime_access,
   pricing_feat_month_trial,
@@ -21042,6 +22559,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_l3_name,
   pricing_l3_recurring,
   pricing_l4_badge,
+  pricing_l4_btn,
   pricing_l4_desc,
   pricing_l4_initial,
   pricing_l4_name,
@@ -21050,6 +22568,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_life_desc,
   pricing_life_name,
   pricing_meta_desc,
+  pricing_meta_og_desc,
   pricing_meta_og_title,
   pricing_meta_title,
   pricing_month,
@@ -21249,15 +22768,47 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   save_photo,
   saved,
   saving,
+  schema_about_description,
+  schema_about_name,
+  schema_calendar_description,
+  schema_calendar_name,
+  schema_finance_description,
+  schema_finance_name,
+  schema_goal_description,
+  schema_goal_name,
+  schema_habit_description,
+  schema_habit_feature_1,
+  schema_habit_feature_2,
+  schema_habit_feature_3,
+  schema_habit_feature_4,
+  schema_habit_name,
+  schema_job_description,
+  schema_job_name,
+  schema_journal_description,
+  schema_journal_name,
+  schema_planner_description,
+  schema_planner_name,
+  schema_pricing_description,
+  schema_pricing_name,
   schema_solution_atomic_description,
   schema_solution_atomic_name,
+  schema_solution_career_description,
+  schema_solution_career_name,
   schema_solution_deep_work_description,
   schema_solution_deep_work_name,
+  schema_solution_deepwork_description,
+  schema_solution_deepwork_name,
+  schema_solution_finance_mastery_description,
+  schema_solution_finance_mastery_name,
+  schema_solution_freelancer_description_en,
+  schema_solution_freelancer_description_id,
   schema_solution_growth_description,
   schema_solution_growth_name,
   schema_solution_mental_clarity_description,
   schema_solution_mental_clarity_name,
   schema_solution_student_audience,
+  schema_solution_student_description_en,
+  schema_solution_student_description_id,
   schema_student_description,
   schema_student_name,
   search_result,
@@ -21543,8 +23094,14 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_meta_og_title,
   solve_finance_meta_title,
   solve_finance_prob_1_desc,
+  solve_finance_prob_1_point_1,
+  solve_finance_prob_1_point_2,
+  solve_finance_prob_1_point_3,
   solve_finance_prob_1_title,
   solve_finance_prob_2_desc,
+  solve_finance_prob_2_point_1,
+  solve_finance_prob_2_point_2,
+  solve_finance_prob_2_point_3,
   solve_finance_prob_2_title,
   solve_finance_prob_3_desc,
   solve_finance_prob_3_title,
@@ -21554,6 +23111,12 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_science_desc,
   solve_finance_science_title,
   solve_finance_sol_desc,
+  solve_finance_sol_feat_1_desc,
+  solve_finance_sol_feat_1_title,
+  solve_finance_sol_feat_2_desc,
+  solve_finance_sol_feat_2_title,
+  solve_finance_sol_feat_3_desc,
+  solve_finance_sol_feat_3_title,
   solve_finance_sol_step_1_desc,
   solve_finance_sol_step_1_title,
   solve_finance_sol_step_2_desc,
@@ -21561,6 +23124,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_finance_sol_step_3_desc,
   solve_finance_sol_step_3_title,
   solve_finance_sol_title,
+  solve_finance_syn_desc,
+  solve_finance_syn_title,
   solve_mental_cta_btn,
   solve_mental_cta_desc,
   solve_mental_cta_title,
@@ -22290,6 +23855,16 @@ const __vite_glob_1_2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   user_name,
   user_role
 }, Symbol.toStringTag, { value: "Module" }));
+async function resolvePageComponent(path, pages) {
+  for (const p2 of Array.isArray(path) ? path : [path]) {
+    const page = pages[p2];
+    if (typeof page === "undefined") {
+      continue;
+    }
+    return typeof page === "function" ? page() : page;
+  }
+  throw new Error(`Page not found: ${path}`);
+}
 function t() {
   return t = Object.assign ? Object.assign.bind() : function(t3) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
@@ -22664,7 +24239,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-BJ5MgKe8.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-1iHx9eMc.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-BaUr3KS2.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-DattYdWT.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-CpKKbf5m.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D-snYFKm.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D6l7Z_pa.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-a9aLJQy7.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CFkBm1KS.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BE-Xxmll.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DnYRrgKR.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DubKo15c.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-k7vdARMo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-DzeSTMxZ.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-BeZZOPSn.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-ByGi8WDy.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BMQv__8P.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-BOF3bTFz.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-svQP9x_9.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-D8NXKrsR.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-BI8g_9CP.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cuj9T6zJ.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BZCWCF9r.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-RNmAdmmc.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DPqDOjj3.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-w1z6s5Vr.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-x8msOOrn.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BCj31SBC.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DePQBMaS.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Cf-RpfhO.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-B7zGkZ2Q.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B968pYvd.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Tyj_ZcKU.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BYH72XKH.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-AaezvXZn.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-1sGNRf3j.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-DxCGolWx.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-D0A1YVNh.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-BJ5MgKe8.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-1iHx9eMc.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-BaUr3KS2.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-DattYdWT.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-CpKKbf5m.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D-snYFKm.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D6l7Z_pa.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-a9aLJQy7.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CFkBm1KS.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BE-Xxmll.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DnYRrgKR.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DubKo15c.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-k7vdARMo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-DzeSTMxZ.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-BeZZOPSn.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-ByGi8WDy.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BMQv__8P.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-BOF3bTFz.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-svQP9x_9.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-D8NXKrsR.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-BI8g_9CP.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cuj9T6zJ.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BZCWCF9r.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-RNmAdmmc.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DPqDOjj3.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-w1z6s5Vr.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-x8msOOrn.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BCj31SBC.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DePQBMaS.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Cf-RpfhO.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-B7zGkZ2Q.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B968pYvd.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Tyj_ZcKU.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BYH72XKH.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-CrLra5Gt.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-1sGNRf3j.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-DxCGolWx.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-D0A1YVNh.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

@@ -67,7 +67,6 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.css',
                 'resources/js/app.js'
             ],
             ssr: 'resources/js/ssr.js',
@@ -116,29 +115,5 @@ export default defineConfig({
         }),
         mergeTranslations(), // 🔥 PANGGIL MESIN TRANSLATION DI SINI
     ],
-    build: {
-        // 🔥 STRATEGI: Pecah Vendor jadi Spesifik
-        rollupOptions: {
-            output: {
-                manualChunks(id) {
-                    if (id.includes('node_modules')) {
-                        // Pisahkan Vue & kawan-kawannya
-                        if (id.includes('@vue') || id.includes('vue')) {
-                            return 'vendor-vue';
-                        }
-                        // Pisahkan Inertia
-                        if (id.includes('@inertiajs')) {
-                            return 'vendor-inertia';
-                        }
-                        // Pisahkan library lain (Termasuk Chart.js & vue-chartjs yang baru lo pasang)
-                        if (id.includes('axios') || id.includes('lodash') || id.includes('sweetalert') || id.includes('chart.js')) {
-                            return 'vendor-utils';
-                        }
-                        // Sisanya masuk ke vendor-core
-                        return 'vendor-core';
-                    }
-                }
-            }
-        }
-    }
+    // 🔥 BUILD SETTINGS (Standard)
 });

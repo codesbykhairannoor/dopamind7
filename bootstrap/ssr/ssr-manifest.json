@@ -5,9 +5,7 @@
   "lang/en.json": [],
   "lang/id.json": [],
   "lang/zh.json": [],
-  "node_modules/laravel-vite-plugin/inertia-helpers/index.js": [
-    "https://oneformind.com/build/assets/vendor-core-koWuargk.js"
-  ],
+  "node_modules/laravel-vite-plugin/inertia-helpers/index.js": [],
   "resources/js/Components/DangerButton.vue": [
     "https://oneformind.com/build/assets/DeleteUserForm-CuG_azPI.js"
   ],
@@ -478,12 +476,12 @@
     "https://oneformind.com/build/assets/PlannerTimeline-BgYScDu8.css"
   ],
   "resources/js/Pages/Pricing.vue": [
-    "https://oneformind.com/build/assets/Pricing-AaezvXZn.js",
-    "https://oneformind.com/build/assets/Pricing-AYCPRzUw.css"
+    "https://oneformind.com/build/assets/Pricing-CrLra5Gt.js",
+    "https://oneformind.com/build/assets/Pricing-CMBOo-_7.css"
   ],
-  "resources/js/Pages/Pricing.vue?vue&type=style&index=0&scoped=cf11d68e&lang.css": [
-    "https://oneformind.com/build/assets/Pricing-AaezvXZn.js",
-    "https://oneformind.com/build/assets/Pricing-AYCPRzUw.css"
+  "resources/js/Pages/Pricing.vue?vue&type=style&index=0&scoped=f57c8a59&lang.css": [
+    "https://oneformind.com/build/assets/Pricing-CrLra5Gt.js",
+    "https://oneformind.com/build/assets/Pricing-CMBOo-_7.css"
   ],
   "resources/js/Pages/Profile/Edit.vue": [
     "https://oneformind.com/build/assets/Edit-1sGNRf3j.js"

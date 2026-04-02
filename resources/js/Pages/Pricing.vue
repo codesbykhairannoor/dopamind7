@@ -1,13 +1,16 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, router } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const isAnnual = ref(true);
 
 const plans = computed(() => [
     {
+        id: 'explorer',
         name: 'pricing_l1_name',
         price: '0',
         period: 'pricing_forever',
@@ -22,6 +25,7 @@ const plans = computed(() => [
         theme: 'slate'
     },
     {
+        id: 'architect',
         name: 'pricing_l2_name',
         price: isAnnual.value ? 'Rp 59k' : 'Rp 89k',
         initial: 'pricing_l2_initial',
@@ -38,6 +42,7 @@ const plans = computed(() => [
         theme: 'indigo'
     },
     {
+        id: 'quantum',
         name: 'pricing_l3_name',
         price: isAnnual.value ? 'Rp 99k' : 'Rp 129k',
         initial: 'pricing_l3_initial',
@@ -55,6 +60,7 @@ const plans = computed(() => [
         badge: 'pricing_ai_badge'
     },
     {
+        id: 'lifetime',
         name: 'pricing_l4_name',
         price: isAnnual.value ? 'Rp 159k' : 'Rp 199k',
         initial: 'pricing_l4_initial',
@@ -73,9 +79,37 @@ const plans = computed(() => [
     }
 ]);
 
-const checkout = (plan) => {
-    // Logic for payment integration will go here
-    console.log('Checkout for:', plan.name);
+const checkout = async (plan) => {
+    if (plan.id === 'explorer') return;
+
+    try {
+        Swal.fire({
+            title: 'Preparing Secure Checkout...',
+            html: 'Connecting to Duitku safe gateway',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
+        const response = await axios.post(route('payment.checkout'), {
+            plan: plan.id
+        });
+
+        if (response.data.paymentUrl) {
+            window.location.href = response.data.paymentUrl;
+        } else {
+            throw new Error('Failed to get payment URL');
+        }
+    } catch (error) {
+        console.error('Checkout error:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Payment Error',
+            text: error.response?.data?.error || 'Sedang terjadi gangguan pada server pembayaran. Mohon coba beberapa saat lagi.',
+            confirmButtonColor: '#4f46e5'
+        });
+    }
 };
 </script>
 
