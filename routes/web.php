@@ -85,107 +85,90 @@ Route::get('/pricing-alias', function () {
     return redirect()->route('pricing.index');
 })->name('pricing');
 // ==========================================
-// 🔥 SEO: DYNAMIC SITEMAP GENERATOR
-// ==========================================
 Route::get('/sitemap.xml', function () {
     $pages = [];
+    // 0. DATE FALLBACK
+    $defaultDate = now()->toAtomString();
 
     // 1. HALAMAN UTAMA (Priority: High)
-    // Halaman statis paling penting
     $statics = [
-        '/' => '1.0',
-        '/about' => '0.8',
-        '/pricing' => '0.9',
-        '/login' => '0.8',
-        '/register' => '0.8',
+        '/' => ['1.0', 'weekly'],
+        '/about' => ['0.8', 'monthly'],
+        '/pricing' => ['0.9', 'weekly'],
+        '/login' => ['0.8', 'monthly'],
+        '/register' => ['0.8', 'monthly'],
     ];
 
-    foreach ($statics as $uri => $priority) {
+    foreach ($statics as $uri => $meta) {
         $pages[] = [
             'url' => url($uri),
-            'priority' => $priority,
-            'freq' => 'weekly'
+            'priority' => $meta[0],
+            'freq' => $meta[1],
+            'lastmod' => $defaultDate
         ];
     }
 
-    // 2. FEATURES (Prefix: /features/...)
-    // Ini halaman "jualan" utama lu
+    // 2. FEATURES
     $features = ['habit', 'finance', 'planner', 'journal', 'calendar', 'goal', 'job'];
     foreach ($features as $feature) {
         $pages[] = [
-            'url' => url("/features/{$feature}"), // Fix: Tambah prefix /features/
+            'url' => url("/features/{$feature}"),
             'priority' => '0.9',
-            'freq' => 'weekly'
+            'freq' => 'weekly',
+            'lastmod' => $defaultDate
         ];
     }
 
-    // 3. SOLUTIONS (Prefix: /solutions/...)
-    // Target audience spesifik
-    $solutions = [
-        'student',
-        'freelancer',
-        'personalgrowth',
-        'finance-mastery',
-        'career-accelerator',
-        'mental-clarity',
-        'atomic-system',
-        'deep-work',
-        'second-brain'
-    ];
+    // 3. BLOG POSTS (Dinamis dari Database)
+    $posts = \App\Models\BlogPost::where('status', 'published')
+        ->where('published_at', '<=', now())
+        ->get();
+
+    foreach ($posts as $post) {
+        $pages[] = [
+            'url' => route('resources.blog.show', $post->slug),
+            'priority' => '0.8',
+            'freq' => 'monthly',
+            'lastmod' => ($post->updated_at ?? $post->created_at)->toAtomString()
+        ];
+    }
+
+    // 4. SOLUTIONS
+    $solutions = ['student', 'freelancer', 'personalgrowth', 'finance-mastery', 'career-accelerator', 'mental-clarity', 'atomic-system', 'deep-work', 'second-brain'];
     foreach ($solutions as $solution) {
         $pages[] = [
             'url' => url("/solutions/{$solution}"),
             'priority' => '0.8',
-            'freq' => 'monthly'
+            'freq' => 'monthly',
+            'lastmod' => $defaultDate
         ];
     }
 
-    // 4. RESOURCES (Prefix: /resources/...)
-    // Konten edukasi
-    $resources = ['guide', 'blog', 'stories', 'changelog', 'community', 'help'];
-    foreach ($resources as $resource) {
-        $pages[] = [
-            'url' => url("/resources/{$resource}"),
-            'priority' => '0.7',
-            'freq' => 'weekly'
-        ];
-    }
-
-    // 5. COMPARE & COMPANY & ABOUT
-    // Halaman pendukung SEO (vs competitor) & Legal
+    // 5. RESOURCES & OTHERS
     $others = [
-        // Compare Pages (Penting buat SEO "Alternative to...")
-        '/compare/paper',
-        '/compare/sheets',
-        '/compare/management-tools',
-        '/compare/habit-apps',
-        '/compare/finance-apps',
-        '/compare/planner-apps',
-        '/compare/five-apps',
-
-        // Legal & Company Pages
-        '/company/privacy',
-        '/company/terms',
-        '/company/refund',
-        '/company/security',
-        '/company/contact',
-        '/company/status',
-        '/company/press-kit',
-        '/about'
+        '/resources/guide' => '0.7',
+        '/resources/blog' => '0.7',
+        '/resources/stories' => '0.6',
+        '/resources/changelog' => '0.7',
+        '/company/privacy' => '0.5',
+        '/company/terms' => '0.5',
+        '/compare/paper' => '0.7',
+        '/compare/sheets' => '0.7',
+        '/compare/finance-apps' => '0.7',
     ];
 
-    foreach ($others as $uri) {
+    foreach ($others as $uri => $priority) {
         $pages[] = [
             'url' => url($uri),
-            'priority' => '0.6',
-            'freq' => 'monthly'
+            'priority' => $priority,
+            'freq' => 'monthly',
+            'lastmod' => $defaultDate
         ];
     }
 
-    // 6. Render ke View Blade XML
     return response()->view('seo.sitemap', [
         'pages' => $pages,
-        'date' => now()->toAtomString()
+        'date' => $defaultDate
     ])->header('Content-Type', 'text/xml');
 
 })->name('sitemap');

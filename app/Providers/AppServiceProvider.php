@@ -43,6 +43,14 @@ class AppServiceProvider extends ServiceProvider
 
         if (!$isProduction && ($isLocalEnv || $isLocalHost)) {
             \Illuminate\Support\Facades\Log::info("Bodyguard Lokal Aktif: Host {$host}");
+
+            /**
+             * ⚡ DEFENSIVE LOCAL PERFORMANCE
+             * Mencegah PHP Fatal Error: Maximum execution time exceeded saat development.
+             */
+            @ini_set('max_execution_time', '300');
+            @ini_set('memory_limit', '512M');
+
             // Paksa APP_URL agar tidak lari ke production (oneformind.com)
             $port = !app()->runningInConsole() ? request()->getPort() : null;
             $localUrl = "http://{$host}" . ($port && $port != 80 ? ":{$port}" : "");

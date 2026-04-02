@@ -55,30 +55,31 @@ createInertiaApp({
 });
 
 /**
- * 🔥 NPROGRESS
+ * 🔥 NPROGRESS PERFORMANCE CONFIG
  */
-
-
 NProgress.configure({
     showSpinner: false,
-    speed: 250,         // Even faster animation
-    minimum: 0.6,       // Start at 60% for "instant" feel
-    trickle: true,
-    trickleSpeed: 100,  // Faster trickle
+    speed: 300,         // Smooth transition
+    minimum: 0.3,       // Start at 30% for responsive feel
+    trickleSpeed: 150,  // Natural progress speed
+    easing: 'ease',
 });
 
-router.on('start', (event) => {
-    if (event.detail.visit.method.toLowerCase() === 'get') {
-        NProgress.start(); // Langsung mulai 0ms
-    }
+let nprogressTimeout = null;
+
+router.on('start', () => {
+    // Gunakan delay sangat kecil (50ms) untuk mencegah flicker pada page yang "kembali" (cache)
+    // tapi tetap terasa instan untuk loading beneran.
+    nprogressTimeout = setTimeout(() => NProgress.start(), 50);
 });
 
-router.on('finish', (event) => {
+router.on('finish', () => {
+    clearTimeout(nprogressTimeout);
     NProgress.done();
 });
 
 router.on('error', () => {
-    clearTimeout(timeout);
+    clearTimeout(nprogressTimeout);
     NProgress.done();
 });
 

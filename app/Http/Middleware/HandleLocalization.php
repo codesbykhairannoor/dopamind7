@@ -17,16 +17,23 @@ class HandleLocalization
     {
         $locale = config('app.locale');
 
-        // 1. Cek Session (Tertinggi)
+        // 1. Cek Session (Manual Toggle Terkini)
         if (Session::has('locale')) {
             $locale = Session::get('locale');
         }
-        // 2. Cek Cookie (Persistence antar sesi browser)
+        // 2. Cek Cookie (Persistence)
         elseif ($cookieLocale = $request->cookie('selected_locale')) {
             if (in_array($cookieLocale, ['id', 'en'])) {
                 $locale = $cookieLocale;
                 Session::put('locale', $locale);
             }
+        }
+        // 3. Fallback: Deteksi otomatis Browser (International SEO Friendly)
+        else {
+            $browserLocale = substr($request->getLanguages()[0] ?? 'en', 0, 2);
+            $locale = (in_array($browserLocale, ['id'])) ? 'id' : 'en'; // Default ke 'en' untuk global
+
+            Session::put('locale', $locale);
         }
 
         App::setLocale($locale);

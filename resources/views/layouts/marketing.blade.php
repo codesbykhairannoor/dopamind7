@@ -389,7 +389,7 @@
                         gtag('config', window.GA_MEASUREMENT_ID, {
                             'anonymize_ip': true,
                             'user_id': @auth'{{ hash('sha256', auth()->id()) }}' @elsenull @endauth
-                            });
+                                });
                         console.log('⚡ Google Tag Loaded (Consent Mode v2 Ready)');
                     };
                 };
@@ -411,7 +411,7 @@
                     !function (f, b, e, v, n, t, s) {
                         if (f.fbq) return; n = f.fbq = function () {
                             n.callMethod ?
-                            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
                         };
                         if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
                         n.queue = []; t = b.createElement(e); t.async = !0;
@@ -925,7 +925,7 @@
                             <li><a href="{{ route('features.job') }}" class="hover:text-indigo-600 transition">Job
                                     Tracker</a></li>
                             <li><a href="{{ route('features.neural-os') }}"
-                                    class="hover:text-indigo-600 transition text-indigo-600 font-black">Neural OS AI</a>
+                                    class="hover:text-indigo-600 transition">Neural OS AI</a>
                             </li>
                         </ul>
                     </div>
@@ -966,8 +966,8 @@
                                     class="hover:text-indigo-600 transition">Success Stories</a></li>
                             <li><a href="{{ route('resources.guide') }}" class="hover:text-indigo-600 transition">User
                                     Guide</a></li>
-                            <li><a href="{{ route('resources.ai-trust') }}"
-                                    class="text-indigo-600 font-black hover:underline transition">AI Transparency</a>
+                            <li><a href="{{ route('resources.ai-trust') }}" class="hover:text-indigo-600 transition">AI
+                                    Transparency</a>
                             </li>
                         </ul>
                     </div>
