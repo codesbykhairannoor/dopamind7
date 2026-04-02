@@ -2,8 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "php lang_sync.php && vite",
-        "build": "php lang_sync.php && php artisan ziggy:generate resources/js/ziggy.js && vite build && vite build --ssr"
+        "dev": "php lang_guardian.php || php lang_sync.php && vite",
+        "build": "php lang_guardian.php || php lang_sync.php && php artisan ziggy:generate resources/js/ziggy.js && vite build && vite build --ssr"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
