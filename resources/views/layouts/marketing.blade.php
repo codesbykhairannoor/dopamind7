@@ -469,7 +469,7 @@
                     <div class="relative group" @mouseenter="activeMenu = 'features'" @mouseleave="activeMenu = null">
                         <button
                             class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all flex items-center gap-1 group-hover:text-indigo-600">
-                            Features
+                            {{ __('Features') }}
                             <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
                                 :class="activeMenu === 'features' ? 'rotate-180' : ''" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -515,7 +515,7 @@
                     <div class="relative group" @mouseenter="activeMenu = 'solutions'" @mouseleave="activeMenu = null">
                         <button
                             class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
-                            Solutions
+                            {{ __('Solutions') }}
                             <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
                                 :class="activeMenu === 'solutions' ? 'rotate-180' : ''" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -592,7 +592,7 @@
                     <div class="relative group" @mouseenter="activeMenu = 'resources'" @mouseleave="activeMenu = null">
                         <button
                             class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
-                            Resources
+                            {{ __('Resources') }}
                             <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
                                 :class="activeMenu === 'resources' ? 'rotate-180' : ''" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -640,7 +640,7 @@
 
                     <a href="{{ route('pricing.index') }}"
                         class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition">
-                        Pricing
+                        {{ __('Pricing') }}
                     </a>
                 </div>
 

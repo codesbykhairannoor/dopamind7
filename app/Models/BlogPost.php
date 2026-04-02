@@ -11,17 +11,18 @@ class BlogPost extends Model
     use HasFactory;
 
     protected $fillable = [
-        'blog_category_id',
+        'user_id',
+        'category_id',
         'title',
         'slug',
         'content',
         'excerpt',
         'featured_image',
-        'status',
+        'is_published',
         'published_at',
         'meta_title',
         'meta_description',
-        'meta_keywords',
+        'geo_targeting',
         'location_name',
         'latitude',
         'longitude',
@@ -29,12 +30,19 @@ class BlogPost extends Model
 
     protected $casts = [
         'published_at' => 'datetime',
+        'is_published' => 'boolean',
+        'geo_targeting' => 'array',
         'latitude' => 'decimal:8',
         'longitude' => 'decimal:8',
     ];
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(BlogCategory::class , 'blog_category_id');
+        return $this->belongsTo(BlogCategory::class, 'category_id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }
