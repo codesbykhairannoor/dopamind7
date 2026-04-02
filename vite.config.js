@@ -10,31 +10,32 @@ import path from 'path';
 // ==========================================================
 function mergeTranslations() {
     const mergeFiles = () => {
-        const langs = ['id', 'en']; // Daftar bahasa
+        try {
+            const langs = ['id', 'en']; // Daftar bahasa
 
-        langs.forEach(lang => {
-            // Gunakan process.cwd() agar aman di environment ES Modules
-            const partialsDir = path.resolve(process.cwd(), `lang/partials/${lang}`);
-            const outputFile = path.resolve(process.cwd(), `lang/${lang}.json`);
+            langs.forEach(lang => {
+                const partialsDir = path.resolve(process.cwd(), `lang/partials/${lang}`);
+                const outputFile = path.resolve(process.cwd(), `lang/${lang}.json`);
 
-            if (fs.existsSync(partialsDir)) {
-                let mergedContent = {};
-                const files = fs.readdirSync(partialsDir).filter(f => f.endsWith('.json'));
+                if (fs.existsSync(partialsDir)) {
+                    let mergedContent = {};
+                    const files = fs.readdirSync(partialsDir).filter(f => f.endsWith('.json'));
 
-                files.forEach(file => {
-                    const content = fs.readFileSync(path.join(partialsDir, file), 'utf-8');
-                    try {
-                        // Gabungkan isi file kecil ke object besar
-                        mergedContent = { ...mergedContent, ...JSON.parse(content) };
-                    } catch (e) {
-                        console.error(`❌ Gagal membaca file terjemahan: ${file}. Cek apakah ada koma yang salah/kurang!`, e);
-                    }
-                });
+                    files.forEach(file => {
+                        const content = fs.readFileSync(path.join(partialsDir, file), 'utf-8');
+                        try {
+                            mergedContent = { ...mergedContent, ...JSON.parse(content) };
+                        } catch (e) {
+                            console.error(`❌ Gagal membaca file JSON: ${file}`, e);
+                        }
+                    });
 
-                // Tulis ulang (overwrite) ke file id.json / en.json utama
-                fs.writeFileSync(outputFile, JSON.stringify(mergedContent, null, 4));
-            }
-        });
+                    fs.writeFileSync(outputFile, JSON.stringify(mergedContent, null, 4));
+                }
+            });
+        } catch (error) {
+            console.error('❌ Plugin merge-translations gagal!', error);
+        }
     };
 
     return {

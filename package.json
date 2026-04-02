@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "php lang_sync.php && vite",
-        "build": "php lang_sync.php && php artisan ziggy:generate resources/js/ziggy.js && vite build && vite build --ssr"
+        "build": "(php lang_sync.php || echo 'Sync skipped') && (php artisan ziggy:generate resources/js/ziggy.js || echo 'Ziggy skipped') && vite build && vite build --ssr"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
