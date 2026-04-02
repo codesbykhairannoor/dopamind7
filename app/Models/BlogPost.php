@@ -36,6 +36,13 @@ class BlogPost extends Model
         'longitude' => 'decimal:8',
     ];
 
+    protected $appends = ['featured_image_url'];
+
+    public function getFeaturedImageUrlAttribute()
+    {
+        return $this->featured_image ? \Illuminate\Support\Facades\Storage::disk('public')->url($this->featured_image) : null;
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(BlogCategory::class, 'category_id');

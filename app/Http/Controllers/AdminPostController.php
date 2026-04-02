@@ -6,6 +6,7 @@ use App\Models\BlogPost;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class AdminPostController extends Controller
@@ -35,7 +36,13 @@ class AdminPostController extends Controller
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'geo_targeting' => 'nullable|array',
+            'featured_image' => 'nullable|image|max:2048', // 2MB Max
         ]);
+
+        if ($request->hasFile('featured_image')) {
+            $path = $request->file('featured_image')->store('blog', 'public');
+            $validated['featured_image'] = $path;
+        }
 
         $validated['user_id'] = auth()->id();
         $validated['slug'] = Str::slug($validated['title']);
@@ -73,7 +80,17 @@ class AdminPostController extends Controller
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
             'geo_targeting' => 'nullable|array',
+            'featured_image' => 'nullable|image|max:2048',
         ]);
+
+        if ($request->hasFile('featured_image')) {
+            // Hapus file lama jika ada
+            if ($post->featured_image) {
+                Storage::disk('public')->delete($post->featured_image);
+            }
+            $path = $request->file('featured_image')->store('blog', 'public');
+            $validated['featured_image'] = $path;
+        }
 
         $validated['slug'] = Str::slug($validated['title']);
 
@@ -92,6 +109,9 @@ class AdminPostController extends Controller
 
     public function destroy(BlogPost $post)
     {
+        if ($post->featured_image) {
+            Storage::disk('public')->delete($post->featured_image);
+        }
         $post->delete();
         return redirect()->route('admin.blog.index')->with('success', 'Post deleted successfully.');
     }

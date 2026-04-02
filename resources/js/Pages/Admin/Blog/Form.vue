@@ -17,15 +17,30 @@ const form = useForm({
     category_id: props.post?.category_id || (props.categories?.[0]?.id || ''),
     excerpt: props.post?.excerpt || '',
     is_published: props.post?.is_published || false,
+    featured_image: null,
     meta_title: props.post?.meta_title || '',
     meta_description: props.post?.meta_description || '',
 });
 
+const previewUrl = ref(props.post?.featured_image_url || null);
+
+const onFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        form.featured_image = file;
+        previewUrl.value = URL.createObjectURL(file);
+    }
+};
+
 const submit = () => {
     if (isEditing) {
-        form.patch(route('admin.blog.update', props.post.id));
+        form.post(route('admin.blog.update', props.post.id) + '?_method=PATCH', {
+            forceFormData: true
+        });
     } else {
-        form.post(route('admin.blog.store'));
+        form.post(route('admin.blog.store'), {
+            forceFormData: true
+        });
     }
 };
 
@@ -76,9 +91,30 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <!-- SIDEBAR SETTINGS COLUMN -->
+                <!-- SECONDARY MODULE: PARAMETERS -->
                 <div class="col-span-12 lg:col-span-4 space-y-6">
                     
+                    <!-- FEATURED IMAGE -->
+                    <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm p-8 space-y-6">
+                        <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 dark:border-slate-700/50 pb-4 italic">Featured Media</h4>
+                        
+                        <div class="relative group">
+                            <div class="aspect-video bg-slate-50 dark:bg-slate-900 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col items-center justify-center transition-all group-hover:border-indigo-500/30">
+                                <img v-if="previewUrl" :src="previewUrl" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div v-else class="flex flex-col items-center gap-3 text-slate-400">
+                                    <OneForMindIcon name="plus" size="32" class="opacity-20" />
+                                    <span class="text-[10px] font-bold uppercase tracking-widest italic">No Image Payload</span>
+                                </div>
+                                
+                                <div class="absolute inset-0 bg-indigo-600/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer" @click="$refs.fileInput.click()">
+                                    <span class="text-white text-[10px] font-black uppercase tracking-widest">Update Transmission Image</span>
+                                </div>
+                            </div>
+                            <input ref="fileInput" type="file" class="hidden" @change="onFileChange" accept="image/*" />
+                            <div v-if="form.errors.featured_image" class="text-rose-500 text-[10px] font-bold uppercase mt-2 italic text-center">{{ form.errors.featured_image }}</div>
+                        </div>
+                    </div>
+
                     <!-- Publishing Card -->
                     <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm p-8 space-y-6">
                          <h4 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100 dark:border-slate-700/50 pb-4 italic">Publish Parameters</h4>
