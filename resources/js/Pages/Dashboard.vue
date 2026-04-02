@@ -1,7 +1,8 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, usePage, Link } from '@inertiajs/vue3';
-import { computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import axios from 'axios';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const user = usePage().props.auth.user;
@@ -9,7 +10,24 @@ const props = defineProps({
     synergy: Object,
     trend: Array,
     stats: Object,
-    globalInsight: Object,
+});
+
+const globalInsight = ref(null);
+const loadingInsight = ref(true);
+
+const fetchInsight = async () => {
+    try {
+        const response = await axios.get(route('dashboard.insight'));
+        globalInsight.value = response.data;
+    } catch (error) {
+        console.error('Failed to fetch neural insight:', error);
+    } finally {
+        loadingInsight.value = false;
+    }
+};
+
+onMounted(() => {
+    fetchInsight();
 });
 
 defineOptions({ layout: AuthenticatedLayout });
@@ -95,12 +113,13 @@ const overallScore = computed(() => {
                     <h3 class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">{{ $t('dash_habit_title') }}</h3>
 
                     <!-- Neural Insight (Subtle Card) -->
-                    <div v-if="globalInsight?.categories?.habits" class="bg-indigo-50/50 dark:bg-indigo-500/5 border border-indigo-100/50 dark:border-indigo-500/10 p-5 rounded-2xl">
+                    <div v-if="loadingInsight || globalInsight?.categories?.habits" class="bg-indigo-50/50 dark:bg-indigo-500/5 border border-indigo-100/50 dark:border-indigo-500/10 p-5 rounded-2xl">
                         <div class="flex items-center gap-2 mb-2">
-                            <OneForMindIcon name="sparkles" size="14" class="text-indigo-500" />
+                            <OneForMindIcon name="sparkles" size="14" class="text-indigo-500" :class="{ 'animate-spin': loadingInsight }" />
                             <span class="text-[9px] font-black uppercase tracking-widest text-indigo-400">Neural Sync</span>
                         </div>
-                        <p class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-snug">{{ globalInsight.categories.habits }}</p>
+                        <p v-if="loadingInsight" class="text-xs font-bold text-slate-400 animate-pulse tracking-tight italic">Calibrating routines...</p>
+                        <p v-else class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-snug">{{ globalInsight?.categories?.habits }}</p>
                     </div>
                 </div>
 
@@ -132,12 +151,13 @@ const overallScore = computed(() => {
                         </div>
 
                         <!-- Neural Insight (Subtle) -->
-                        <div v-if="globalInsight?.categories?.planner" class="bg-emerald-50/50 dark:bg-emerald-500/5 border border-emerald-100/50 dark:border-emerald-500/10 p-5 rounded-2xl">
+                        <div v-if="loadingInsight || globalInsight?.categories?.planner" class="bg-emerald-50/50 dark:bg-emerald-500/5 border border-emerald-100/50 dark:border-emerald-500/10 p-5 rounded-2xl">
                              <div class="flex items-center gap-2 mb-2">
-                                <OneForMindIcon name="sparkles" size="14" class="text-emerald-500" />
+                                <OneForMindIcon name="sparkles" size="14" class="text-emerald-500" :class="{ 'animate-spin': loadingInsight }" />
                                 <span class="text-[9px] font-black uppercase tracking-widest text-emerald-500/70">Efficiency Boost</span>
                             </div>
-                            <p class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-snug">{{ globalInsight.categories.planner }}</p>
+                            <p v-if="loadingInsight" class="text-xs font-bold text-slate-400 animate-pulse tracking-tight italic">Analyzing task density...</p>
+                            <p v-else class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-snug">{{ globalInsight?.categories?.planner }}</p>
                         </div>
                     </div>
 
@@ -170,8 +190,9 @@ const overallScore = computed(() => {
                     <div class="space-y-4">
                         <h3 class="text-3xl font-black tracking-tighter">{{ $t('dash_finance_title') }}</h3>
                         
-                        <div v-if="globalInsight?.categories?.finance" class="bg-black/20 p-5 rounded-2xl border border-white/10">
-                            <p class="text-sm font-bold leading-snug italic">{{ globalInsight.categories.finance }}</p>
+                        <div v-if="loadingInsight || globalInsight?.categories?.finance" class="bg-black/20 p-5 rounded-2xl border border-white/10">
+                            <p v-if="loadingInsight" class="text-xs font-bold text-indigo-200 animate-pulse tracking-tight italic">Auditing variables...</p>
+                            <p v-else class="text-sm font-bold leading-snug italic">{{ globalInsight?.categories?.finance }}</p>
                         </div>
                     </div>
                 </div>

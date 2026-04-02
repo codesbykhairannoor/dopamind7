@@ -24,16 +24,19 @@ class DashboardController extends Controller
         }
         $timezone = $user->timezone ?? 'Asia/Jakarta';
 
-        $synergy = $this->dashboardService->getTodaySynergy($user->id, $timezone);
-        $globalInsight = $this->neuralSynergy->generateGlobalSynergy($user->id);
-
         return Inertia::render('Dashboard', [
-            'synergy' => $synergy,
-            'globalInsight' => $globalInsight,
+            'synergy' => $this->dashboardService->getTodaySynergy($user->id, $timezone),
             'trend' => $this->dashboardService->getWeeklyTrend($user->id, $timezone),
             'stats' => [
                 'is_premium' => (bool)($user->is_premium ?? false),
             ],
         ]);
+    }
+
+    public function getInsight()
+    {
+        $user = Auth::user();
+        $insight = $this->neuralSynergy->generateGlobalSynergy($user->id);
+        return response()->json($insight);
     }
 }

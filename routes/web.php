@@ -532,6 +532,8 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     Route::get('/payment/error', [\App\Http\Controllers\PaymentController::class, 'error'])->name('payment.error');
 
     // AI Coach
+    Route::get('/dashboard/insight', [\App\Http\Controllers\DashboardController::class, 'getInsight'])->name('dashboard.insight');
+    
     Route::prefix('coach')->name('coach.')->group(function () {
         Route::get('/', [\App\Http\Controllers\AiCoachController::class, 'index'])->name('index');
         Route::post('/chat', [\App\Http\Controllers\AiCoachController::class, 'chat'])->name('chat');
