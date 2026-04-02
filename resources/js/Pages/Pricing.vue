@@ -10,8 +10,8 @@ const isAnnual = ref(true);
 
 const plans = computed(() => [
     {
-        id: 'explorer',
         name: 'pricing_l1_name',
+        slug: 'explorer',
         price: '0',
         period: 'pricing_forever',
         desc: 'pricing_l1_desc',
@@ -25,8 +25,8 @@ const plans = computed(() => [
         theme: 'slate'
     },
     {
-        id: 'architect',
         name: 'pricing_l2_name',
+        slug: 'architect',
         price: isAnnual.value ? 'Rp 59k' : 'Rp 89k',
         initial: 'pricing_l2_initial',
         recurring: 'pricing_l2_recurring',
@@ -42,8 +42,8 @@ const plans = computed(() => [
         theme: 'indigo'
     },
     {
-        id: 'quantum',
         name: 'pricing_l3_name',
+        slug: 'quantum',
         price: isAnnual.value ? 'Rp 99k' : 'Rp 129k',
         initial: 'pricing_l3_initial',
         recurring: 'pricing_l3_recurring',
@@ -60,8 +60,8 @@ const plans = computed(() => [
         badge: 'pricing_ai_badge'
     },
     {
-        id: 'lifetime',
         name: 'pricing_l4_name',
+        slug: 'lifetime',
         price: isAnnual.value ? 'Rp 159k' : 'Rp 199k',
         initial: 'pricing_l4_initial',
         recurring: 'pricing_l4_recurring',
@@ -80,7 +80,7 @@ const plans = computed(() => [
 ]);
 
 const checkout = async (plan) => {
-    if (plan.id === 'explorer') return;
+    if (plan.slug === 'explorer') return;
 
     try {
         Swal.fire({
@@ -93,7 +93,7 @@ const checkout = async (plan) => {
         });
 
         const response = await axios.post(route('payment.checkout'), {
-            plan: plan.id
+            plan: plan.slug
         });
 
         if (response.data.paymentUrl) {
