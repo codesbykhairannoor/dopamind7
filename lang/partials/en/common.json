@@ -93,5 +93,6 @@
     "select_hour": "Select Hour",
     "date_format": "dddd, MMMM D, YYYY",
     "no_category": "No Category",
-    "no_date": "No Date"
+    "no_date": "No Date",
+    "name": "Name"
 }

@@ -31,6 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'resume_text',
         'resume_filename',
         'cookie_consent',
+        'timezone',
     ];
 
     /**

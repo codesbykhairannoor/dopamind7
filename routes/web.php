@@ -11,6 +11,8 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\AdminUserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
@@ -543,6 +545,26 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
 
         // Debugging
         Route::get('/debug-gemini', [\App\Http\Controllers\AiDebugController::class, 'testGemini']);
+    });
+
+    // --- ADMIN CENTRAL (Inertia Custom) ---
+    Route::middleware(['can:admin'])->prefix('admin')->name('admin.')->group(function () {
+        // Blog
+        Route::prefix('blog')->name('blog.')->group(function () {
+            Route::get('/', [AdminPostController::class, 'index'])->name('index');
+            Route::get('/create', [AdminPostController::class, 'create'])->name('create');
+            Route::post('/', [AdminPostController::class, 'store'])->name('store');
+            Route::get('/{post}/edit', [AdminPostController::class, 'edit'])->name('edit');
+            Route::patch('/{post}', [AdminPostController::class, 'update'])->name('update');
+            Route::delete('/{post}', [AdminPostController::class, 'destroy'])->name('destroy');
+        });
+
+        // Users
+        Route::prefix('users')->name('users.')->group(function () {
+            Route::get('/', [AdminUserController::class, 'index'])->name('index');
+            Route::post('/{user}/toggle-premium', [AdminUserController::class, 'togglePremium'])->name('toggle-premium');
+            Route::post('/{user}/toggle-admin', [AdminUserController::class, 'toggleAdmin'])->name('toggle-admin');
+        });
     });
 });
 
