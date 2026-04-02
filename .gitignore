@@ -21,5 +21,3 @@ resources/js/ziggy.js
 vite.config.js.timestamp-*
 .DS_Store
 Thumbs.db
-/public/build
-/bootstrap/ssr
