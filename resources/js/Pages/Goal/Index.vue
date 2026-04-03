@@ -10,6 +10,7 @@ import NeuralBridge from '@/Components/NeuralBridge.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
+import { Tag, Target } from 'lucide-vue-next';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -77,6 +78,16 @@ const todayDate = computed(() => {
                 @save="saveGoal"
                 :onUploadImage="uploadCoverImage"
             />
+
+            <!-- Mobile Sticky Floating Action Button (FAB) -->
+            <button 
+                @click="openCreateModal"
+                class="fixed bottom-24 right-6 w-16 h-16 bg-indigo-600 dark:bg-indigo-500 rounded-2xl flex items-center justify-center text-white shadow-[0_20px_50px_rgba(79,70,229,0.4)] dark:shadow-[0_20px_50px_rgba(79,70,229,0.2)] md:hidden z-[100] active:scale-90 transition-all duration-300 border border-white/20"
+            >
+                <Target :size="28" stroke-width="2.5" />
+                <span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full animate-ping"></span>
+                <span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full"></span>
+            </button>
         </div>
     </div>
 </template>

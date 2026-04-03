@@ -66,7 +66,7 @@ const priorityLabel = computed(() => {
     <div class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-indigo-500/5 transition-all duration-500 flex flex-col overflow-hidden h-full">
         
         <!-- Vision Banner / Header -->
-        <div class="relative h-44 shrink-0 overflow-hidden bg-slate-50 dark:bg-slate-950">
+        <div class="relative h-32 md:h-44 shrink-0 overflow-hidden bg-slate-50 dark:bg-slate-950">
             <template v-if="goal.cover_image_url">
                 <img :src="goal.cover_image_url" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
