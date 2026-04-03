@@ -1,7 +1,8 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+import Swal from 'sweetalert2';
 
 const props = defineProps({
     currentMood: String
@@ -16,19 +17,25 @@ const showAudit = ref(false);
 const stagnantData = ref(null);
 
 const checkStagnation = async () => {
+    isAnalyzing.value = true;
     try {
         const res = await axios.post(route('coach.habit.stagnation'));
         if (res.data.action) {
             stagnantData.value = res.data;
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Habit Health OK',
+                text: 'Belum ada habit yang stagnan atau dormant. Terus pertahankan!',
+                confirmButtonColor: '#4f46e5'
+            });
         }
     } catch (e) {
         console.error(e);
+    } finally {
+        isAnalyzing.value = false;
     }
 };
-
-onMounted(() => {
-    checkStagnation();
-});
 
 const getHabitStack = async () => {
     isAnalyzing.value = true;
@@ -101,13 +108,18 @@ defineExpose({ runAudit, getMoodAdvisory });
         </Transition>
 
         <!-- HABIT ALCHEMY (STACKING) TRIGGER -->
-        <div v-if="!showStack" class="flex justify-center py-4">
-            <button @click="getHabitStack" class="group flex items-center gap-3 px-6 py-3 bg-slate-900 dark:bg-indigo-600 text-white rounded-2xl shadow-xl hover:scale-105 transition-all active:scale-95 border border-white/10">
+        <div v-if="!showStack" class="flex flex-wrap justify-center gap-4 py-4">
+            <button @click="getHabitStack" :disabled="isAnalyzing" class="group flex items-center gap-3 px-6 py-3 bg-slate-900 dark:bg-indigo-600 text-white rounded-2xl shadow-xl hover:scale-105 transition-all active:scale-95 border border-white/10 disabled:opacity-50">
                 <div class="relative">
                     <OneForMindIcon name="sparkles" size="18" class="group-hover:rotate-12 transition-transform" />
                     <span class="absolute -top-1 -right-1 w-2 h-2 bg-emerald-500 rounded-full animate-ping"></span>
                 </div>
                 <span class="text-xs font-black uppercase tracking-widest">{{ $t('habit_btn_alchemy') }}</span>
+            </button>
+
+            <button @click="checkStagnation" :disabled="isAnalyzing" class="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-2xl shadow-lg hover:scale-105 transition-all active:scale-95 border border-slate-100 dark:border-slate-700 disabled:opacity-50">
+                <OneForMindIcon name="activity" size="18" class="text-rose-500" />
+                <span class="text-xs font-black uppercase tracking-widest">Audit Habit Health</span>
             </button>
         </div>
 

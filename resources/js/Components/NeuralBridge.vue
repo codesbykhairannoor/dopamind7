@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
@@ -11,7 +11,7 @@ const props = defineProps({
 });
 
 const synergy = ref(null);
-const loading = ref(true);
+const loading = ref(false);
 
 const fetchSynergy = async () => {
     loading.value = true;
@@ -24,15 +24,11 @@ const fetchSynergy = async () => {
         loading.value = false;
     }
 };
-
-onMounted(() => {
-    fetchSynergy();
-});
 </script>
 
 <template>
-    <div v-if="loading || synergy" class="group relative overflow-hidden bg-white/40 dark:bg-slate-900/40 backdrop-blur-md rounded-[2rem] border border-slate-200/50 dark:border-slate-800/50 p-6 transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/5">
-        <div class="absolute top-0 right-0 p-4 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity">
+    <div class="group relative overflow-hidden bg-white/40 dark:bg-slate-900/40 backdrop-blur-md rounded-[2rem] border border-slate-200/50 dark:border-slate-800/50 p-6 transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/5">
+        <div class="absolute top-0 right-0 p-4 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity pointer-events-none">
             <OneForMindIcon name="sparkles" size="80" />
         </div>
         
@@ -44,7 +40,7 @@ onMounted(() => {
             <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-1">
                     <span class="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Neural Bridge</span>
-                    <div class="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></div>
+                    <div v-if="synergy" class="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></div>
                 </div>
                 
                 <div v-if="loading" class="space-y-2 py-1">
@@ -52,9 +48,18 @@ onMounted(() => {
                     <div class="h-4 bg-slate-200 dark:bg-slate-800 rounded-md w-2/3 animate-pulse"></div>
                 </div>
                 
-                <p v-else-if="synergy" class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed italic">
-                    "{{ synergy.bridge }}"
-                </p>
+                <div v-else-if="synergy">
+                    <p class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed italic">
+                        "{{ synergy.bridge }}"
+                    </p>
+                </div>
+
+                <div v-else class="py-1">
+                    <button @click="fetchSynergy" class="text-xs font-black text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 uppercase tracking-widest flex items-center gap-2 transition-all active:scale-95">
+                        <span>Get Intelligence</span>
+                        <OneForMindIcon name="chevron-right" size="12" stroke-width="4" />
+                    </button>
+                </div>
             </div>
         </div>
     </div>

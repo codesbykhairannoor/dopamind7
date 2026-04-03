@@ -13,9 +13,12 @@ const props = defineProps({
 });
 
 const globalInsight = ref(null);
-const loadingInsight = ref(true);
+const loadingInsight = ref(false);
 
 const fetchInsight = async () => {
+    if (loadingInsight.value) return;
+    
+    loadingInsight.value = true;
     try {
         const response = await axios.get(route('dashboard.insight'));
         globalInsight.value = response.data;
@@ -25,10 +28,6 @@ const fetchInsight = async () => {
         loadingInsight.value = false;
     }
 };
-
-onMounted(() => {
-    fetchInsight();
-});
 
 defineOptions({ layout: AuthenticatedLayout });
 
@@ -79,17 +78,31 @@ const overallScore = computed(() => {
                     </div>
 
                     <!-- Synergy Score -->
-                    <div class="relative w-48 h-48 md:w-56 md:h-56 flex items-center justify-center">
-                        <svg class="absolute w-full h-full -rotate-90" viewBox="0 0 100 100">
-                            <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="4" class="text-slate-50 dark:text-slate-800" />
-                            <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" 
-                                :stroke-dasharray="276" :stroke-dashoffset="276 - (276 * overallScore / 100)"
-                                class="text-indigo-600 dark:text-indigo-500 transition-all duration-[1500ms] shadow-indigo-500 drop-shadow-md" />
-                        </svg>
-                        <div class="text-center">
-                            <span class="block text-5xl md:text-6xl font-black text-slate-900 dark:text-white tabular-nums">{{ overallScore }}%</span>
-                            <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">{{ $t('dash_synergy_today') }}</span>
+                    <div class="flex flex-col items-center gap-6">
+                        <div class="relative w-48 h-48 md:w-56 md:h-56 flex items-center justify-center">
+                            <svg class="absolute w-full h-full -rotate-90" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="4" class="text-slate-50 dark:text-slate-800" />
+                                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" 
+                                    :stroke-dasharray="276" :stroke-dashoffset="276 - (276 * overallScore / 100)"
+                                    class="text-indigo-600 dark:text-indigo-500 transition-all duration-[1500ms] shadow-indigo-500 drop-shadow-md" />
+                            </svg>
+                            <div class="text-center">
+                                <span class="block text-5xl md:text-6xl font-black text-slate-900 dark:text-white tabular-nums">{{ overallScore }}%</span>
+                                <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">{{ $t('dash_synergy_today') }}</span>
+                            </div>
                         </div>
+
+                        <button 
+                            v-if="!globalInsight && !loadingInsight" 
+                            @click="fetchInsight"
+                            class="group/btn relative px-6 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-lg hover:shadow-indigo-500/10 hover:border-indigo-500/30 transition-all active:scale-95 overflow-hidden"
+                        >
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
+                            <div class="flex items-center gap-3 relative z-10">
+                                <OneForMindIcon name="sparkles" size="16" class="text-indigo-600 dark:text-indigo-400" />
+                                <span class="text-[10px] font-black uppercase tracking-widest text-slate-700 dark:text-slate-300">Activate Neural Engine</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>

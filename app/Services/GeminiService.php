@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 class GeminiService
 {
     protected ?string $apiKey;
-    protected string $model = 'gemini-2.5-flash';
+    protected string $model = 'gemini-1.5-flash';
 
     public function __construct()
     {
@@ -56,6 +56,10 @@ class GeminiService
                     Log::warning('GEMINI_EMPTY_CANDIDATES: Response was successful but candidates list is empty. Body: ' . $response->body());
                 }
             } else {
+                if ($response->status() === 429) {
+                    Log::warning('GEMINI_QUOTA_EXCEEDED: Daily or RPM limit reached.');
+                    return 'Sistem AI sedang mencapai batas kuota (Rate Limit). Silakan coba lagi beberapa saat lagi atau besok.';
+                }
                 Log::error('GEMINI_API_ERROR: ' . $response->status() . ' | ' . $response->body());
             }
 
@@ -71,21 +75,26 @@ class GeminiService
      */
     public function auditFinance(array $data, string $month): ?string
     {
-        $locale = app()->getLocale();
-        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+        $userId = auth()->id();
+        $cacheKey = "finance_audit_{$userId}_{$month}";
 
-        $prompt = "As a professional financial auditor and life coach, analyze the following transactions for the month of $month.
-        User Name: {$data['user_name']}
-        Income Total: {$data['total_income']}
-        Expense Total: {$data['total_expense']}
-        Categories Summary: " . json_encode($data['categories']) . "
-        
-        Provide a concise, motivating financial audit (max 3-4 paragraphs). 
-        LANGUAGE: MUST USE $langName language.
-        Identify spending leaks, suggest areas for improvement, and end with a positive reinforcement. 
-        Format your response in professional markdown with bold highlights.";
+        return cache()->remember($cacheKey, now()->addHours(6), function() use ($data, $month) {
+            $locale = app()->getLocale();
+            $langName = ($locale === 'id') ? 'Indonesian' : 'English';
 
-        return $this->generate($prompt);
+            $prompt = "As a professional financial auditor and life coach, analyze the following transactions for the month of $month.
+            User Name: {$data['user_name']}
+            Income Total: {$data['total_income']}
+            Expense Total: {$data['total_expense']}
+            Categories Summary: " . json_encode($data['categories']) . "
+            
+            Provide a concise, motivating financial audit (max 3-4 paragraphs). 
+            LANGUAGE: MUST USE $langName language.
+            Identify spending leaks, suggest areas for improvement, and end with a positive reinforcement. 
+            Format your response in professional markdown with bold highlights.";
+
+            return $this->generate($prompt);
+        });
     }
 
     /**
@@ -93,18 +102,23 @@ class GeminiService
      */
     public function analyzeSentiment(string $journalContent): ?string
     {
-        $locale = app()->getLocale();
-        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+        $contentHash = md5($journalContent);
+        $cacheKey = "sentiment_analysis_{$contentHash}";
 
-        $prompt = "Analyze the emotional sentiment and psychological state of this journal entry.
-        Content: \"$journalContent\"
-        
-        Provide a short 2-sentence emotional analysis.
-        LANGUAGE: MUST USE $langName language.
-        Followed by a mood score from 1 to 10.
-        Output format: [Sentiment Analysis] | [Score: X/10]";
+        return cache()->remember($cacheKey, now()->addDays(7), function() use ($journalContent) {
+            $locale = app()->getLocale();
+            $langName = ($locale === 'id') ? 'Indonesian' : 'English';
 
-        return $this->generate($prompt);
+            $prompt = "Analyze the emotional sentiment and psychological state of this journal entry.
+            Content: \"$journalContent\"
+            
+            Provide a short 2-sentence emotional analysis.
+            LANGUAGE: MUST USE $langName language.
+            Followed by a mood score from 1 to 10.
+            Output format: [Sentiment Analysis] | [Score: X/10]";
+
+            return $this->generate($prompt);
+        });
     }
     
     /**
@@ -210,6 +224,9 @@ class GeminiService
                 }
                 Log::warning('GEMINI_CHAT_EMPTY: ' . $response->body());
             } else {
+                if ($response->status() === 429) {
+                    return 'Kuotanya habis nih (API Quota Exceeded). Coba lagi nanti ya!';
+                }
                 Log::error('GEMINI_CHAT_ERROR: ' . $response->status() . ' | ' . $response->body());
             }
         } catch (\Exception $e) {
