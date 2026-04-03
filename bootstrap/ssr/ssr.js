@@ -2199,69 +2199,69 @@ const career_science_viz_status$1 = "[EN] Career Science Viz Status";
 const career_status_applied$1 = "Applied";
 const career_status_interviewing$1 = "Interviewing";
 const career_status_offer$1 = "[EN] Career Status Offer";
-const deepwork_cta_btn$1 = "[EN] Deepwork Cta Btn";
-const deepwork_cta_desc$1 = "[EN] Deepwork Cta";
-const deepwork_cta_title$1 = "[EN] Deepwork Cta";
-const deepwork_extra_1_desc$1 = "[EN] Deepwork Extra 1";
-const deepwork_extra_1_label$1 = "[EN] Deepwork Extra 1 Label";
-const deepwork_extra_1_sub$1 = "[EN] Deepwork Extra 1 Sub";
-const deepwork_extra_1_title$1 = "[EN] Deepwork Extra 1";
-const deepwork_extra_2_desc$1 = "[EN] Deepwork Extra 2";
-const deepwork_extra_2_item_1$1 = "[EN] Deepwork Extra 2 Item 1";
-const deepwork_extra_2_item_2$1 = "[EN] Deepwork Extra 2 Item 2";
-const deepwork_extra_2_title$1 = "[EN] Deepwork Extra 2";
-const deepwork_faq_a1$1 = "[EN] Deepwork Faq A1";
+const deepwork_cta_btn$1 = "Start Focusing Now";
+const deepwork_cta_desc$1 = "Don't let the noise define your output. Start implementing elite-level focus routines today.";
+const deepwork_cta_title$1 = "Own Your Attention.";
+const deepwork_extra_1_desc$1 = "Visualize your consistency and track how long you stay in 'The Zone' each day.";
+const deepwork_extra_1_label$1 = "Monthly Attention Radar";
+const deepwork_extra_1_sub$1 = "hrs / day avg";
+const deepwork_extra_1_title$1 = "Flow State Metrics";
+const deepwork_extra_2_desc$1 = "OneForMind's UI adapts to minimize visual friction during focus sessions.";
+const deepwork_extra_2_item_1$1 = "Zero-Distraction Mode";
+const deepwork_extra_2_item_2$1 = "Smart Notifications";
+const deepwork_extra_2_title$1 = "Environmental Design";
+const deepwork_faq_a1$1 = "It's professional activities performed in a state of distraction-free concentration.";
 const deepwork_faq_a2$1 = "[EN] Deepwork Faq A2";
 const deepwork_faq_a3$1 = "[EN] Deepwork Faq A3";
-const deepwork_faq_q1$1 = "[EN] Deepwork Faq Q1";
+const deepwork_faq_q1$1 = "What is Deep Work?";
 const deepwork_faq_q2$1 = "[EN] Deepwork Faq Q2";
 const deepwork_faq_q3$1 = "[EN] Deepwork Faq Q3";
-const deepwork_faq_title$1 = "[EN] Deepwork Faq";
-const deepwork_feat_1_desc$1 = "[EN] Deepwork Feat 1";
-const deepwork_feat_1_title$1 = "[EN] Deepwork Feat 1";
-const deepwork_feat_2_desc$1 = "[EN] Deepwork Feat 2";
-const deepwork_feat_2_title$1 = "[EN] Deepwork Feat 2";
-const deepwork_feat_title$1 = "[EN] Deepwork Feat";
-const deepwork_hero_badge$1 = "[EN] Deepwork  Badge";
-const deepwork_hero_cta$1 = "[EN] Deepwork  Cta";
-const deepwork_hero_desc$1 = "[EN] Deepwork";
-const deepwork_hero_title_1$1 = "[EN] Deepwork    1";
-const deepwork_hero_title_2$1 = "[EN] Deepwork    2";
-const deepwork_meta_desc$1 = "[EN] Deepwork";
+const deepwork_faq_title$1 = "Focus System FAQ";
+const deepwork_feat_1_desc$1 = "Adaptive timers that match your natural energy cycles.";
+const deepwork_feat_1_title$1 = "Pomodoro Neural";
+const deepwork_feat_2_desc$1 = "Keep tasks isolated away from the noise of the main dashboard.";
+const deepwork_feat_2_title$1 = "Distraction Shield";
+const deepwork_feat_title$1 = "The Focus Arsenal";
+const deepwork_hero_badge$1 = "FOCUS SYSTEM";
+const deepwork_hero_cta$1 = "Open My Focus Dashboard";
+const deepwork_hero_desc$1 = "Stop reacting to notifications. Start producing elite-level work with a system designed for high cognitive performance.";
+const deepwork_hero_title_1$1 = "Master Your Attention.";
+const deepwork_hero_title_2$1 = "Own Your Impact.";
+const deepwork_meta_desc$1 = "Achieve peak cognitive performance. Implement the Deep Work framework with OneForMind's focus tools.";
 const deepwork_meta_og_desc$1 = "[EN] Deepwork  Og";
 const deepwork_meta_og_title$1 = "[EN] Deepwork  Og";
-const deepwork_meta_title$1 = "[EN] Deepwork";
-const deepwork_mockup_desc$1 = "[EN] Deepwork Mockup";
-const deepwork_mockup_task_1$1 = "[EN] Deepwork Mockup Task 1";
-const deepwork_mockup_task_2$1 = "[EN] Deepwork Mockup Task 2";
-const deepwork_mockup_task_3$1 = "[EN] Deepwork Mockup Task 3";
-const deepwork_mockup_title$1 = "[EN] Deepwork Mockup";
-const deepwork_prob_1_desc$1 = "[EN] Deepwork Prob 1";
-const deepwork_prob_1_title$1 = "[EN] Deepwork Prob 1";
-const deepwork_prob_2_desc$1 = "[EN] Deepwork Prob 2";
-const deepwork_prob_2_title$1 = "[EN] Deepwork Prob 2";
-const deepwork_prob_3_desc$1 = "[EN] Deepwork Prob 3";
-const deepwork_prob_3_title$1 = "[EN] Deepwork Prob 3";
-const deepwork_prob_desc$1 = "[EN] Deepwork Prob";
-const deepwork_prob_title$1 = "[EN] Deepwork Prob";
-const deepwork_science_badge$1 = "[EN] Deepwork Science Badge";
-const deepwork_science_concept_1$1 = "[EN] Deepwork Science Concept 1";
-const deepwork_science_concept_2$1 = "[EN] Deepwork Science Concept 2";
-const deepwork_science_concept_3$1 = "[EN] Deepwork Science Concept 3";
-const deepwork_science_desc$1 = "[EN] Deepwork Science";
-const deepwork_science_title$1 = "[EN] Deepwork Science";
-const deepwork_science_topic_1$1 = "[EN] Deepwork Science Topic 1";
-const deepwork_science_topic_2$1 = "[EN] Deepwork Science Topic 2";
-const deepwork_science_topic_3$1 = "[EN] Deepwork Science Topic 3";
-const deepwork_science_viz_lock$1 = "[EN] Deepwork Science Viz Lock";
-const deepwork_science_viz_sub$1 = "[EN] Deepwork Science Viz Sub";
-const deepwork_sol_1_desc$1 = "[EN] Deepwork Sol 1";
-const deepwork_sol_1_title$1 = "[EN] Deepwork Sol 1";
-const deepwork_sol_2_desc$1 = "[EN] Deepwork Sol 2";
-const deepwork_sol_2_title$1 = "[EN] Deepwork Sol 2";
-const deepwork_sol_3_desc$1 = "[EN] Deepwork Sol 3";
-const deepwork_sol_3_title$1 = "[EN] Deepwork Sol 3";
-const deepwork_sol_title$1 = "[EN] Deepwork Sol";
+const deepwork_meta_title$1 = "Deep Work System | Master Your Focus";
+const deepwork_mockup_desc$1 = "ELITE FOCUS STATE";
+const deepwork_mockup_task_1$1 = "Answer Emails (Shallow)";
+const deepwork_mockup_task_2$1 = "Architecture Design (Deep)";
+const deepwork_mockup_task_3$1 = "Code Review";
+const deepwork_mockup_title$1 = "FOCUS TIMELINE";
+const deepwork_prob_1_desc$1 = "Jumping between meetings and apps kills 40% of your productive capacity.";
+const deepwork_prob_1_title$1 = "Context Switching";
+const deepwork_prob_2_desc$1 = "The dopamine from emails prevents you from ever starting truly important work.";
+const deepwork_prob_2_title$1 = "Shallow Addiction";
+const deepwork_prob_3_desc$1 = "Without a scheduled 'Deep Work' block, your time is at the mercy of others.";
+const deepwork_prob_3_title$1 = "Lack of Sanctuary";
+const deepwork_prob_desc$1 = "In a world full of distractions, focus is a competitive advantage. Most people live in a state of 'Constant Partial Attention'.";
+const deepwork_prob_title$1 = "The War on Attention";
+const deepwork_science_badge$1 = "FLOW STATE ISOLATION";
+const deepwork_science_concept_1$1 = "Concept 1";
+const deepwork_science_concept_2$1 = "Concept 2";
+const deepwork_science_concept_3$1 = "Concept 3";
+const deepwork_science_desc$1 = "Multi-tasking is a myth. Peak performance requires high-intensity isolation.";
+const deepwork_science_title$1 = "Rooted in Cognitive Science";
+const deepwork_science_topic_1$1 = "Attention Residue";
+const deepwork_science_topic_2$1 = "Myelin Growth";
+const deepwork_science_topic_3$1 = "Prefrontal Shutdown";
+const deepwork_science_viz_lock$1 = "COGNITIVE LOCK";
+const deepwork_science_viz_sub$1 = "Neural Isolation Mode Active";
+const deepwork_sol_1_desc$1 = "Explicitly schedule focus sessions in your Daily Planner.";
+const deepwork_sol_1_title$1 = "Time Blocking";
+const deepwork_sol_2_desc$1 = "End your day with a clear mind and a plan for tomorrow.";
+const deepwork_sol_2_title$1 = "The Shutdown Ritual";
+const deepwork_sol_3_desc$1 = "Measure your cognitive output and improve your focus endurance.";
+const deepwork_sol_3_title$1 = "Focus Scoring";
+const deepwork_sol_title$1 = "The Architecture of Focus";
 const finance_extra_1_label$1 = "Balance Flow";
 const finance_extra_2_label$1 = "MONTHS TO FREEDOM";
 const finance_mockup_assets$1 = "Personal Assets";
@@ -2279,49 +2279,80 @@ const finance_synergy_alloc_amount$1 = "+$5.00";
 const finance_synergy_alloc_title$1 = "Saved to Wealth";
 const finance_synergy_habit_desc$1 = "Saved $5 on coffee.";
 const finance_synergy_habit_title$1 = "Coffee Habit";
-const freelance_bento_1_desc$1 = "[EN] Freelance Bento 1";
-const freelance_bento_1_title$1 = "[EN] Freelance Bento 1";
-const freelance_bento_2_desc$1 = "[EN] Freelance Bento 2";
-const freelance_bento_2_title$1 = "[EN] Freelance Bento 2";
-const freelance_bento_3_desc$1 = "[EN] Freelance Bento 3";
-const freelance_bento_3_title$1 = "[EN] Freelance Bento 3";
-const freelance_bento_4_desc$1 = "[EN] Freelance Bento 4";
-const freelance_bento_4_title$1 = "[EN] Freelance Bento 4";
-const freelance_bento_desc$1 = "[EN] Freelance Bento";
-const freelance_bento_title$1 = "[EN] Freelance Bento";
-const freelance_extra_2_item_1$1 = "[EN] Freelance Extra 2 Item 1";
-const freelance_extra_2_item_2$1 = "[EN] Freelance Extra 2 Item 2";
-const freelance_extra_2_item_3$1 = "[EN] Freelance Extra 2 Item 3";
-const freelance_feat_1_point_1$1 = "[EN] Freelance Feat 1 Point 1";
-const freelance_feat_1_point_2$1 = "[EN] Freelance Feat 1 Point 2";
-const freelance_feat_2_point_1$1 = "[EN] Freelance Feat 2 Point 1";
-const freelance_feat_2_point_2$1 = "[EN] Freelance Feat 2 Point 2";
-const freelance_hero_cta_1$1 = "[EN] Freelance  Cta 1";
-const freelance_hero_social_proof$1 = "[EN] Freelance  Social Proof";
-const freelance_mockup_active_status$1 = "[EN] Freelance Mockup Active Status";
-const freelance_mockup_active_title$1 = "[EN] Freelance Mockup Active";
-const freelance_mockup_available$1 = "[EN] Freelance Mockup Available";
-const freelance_mockup_completion$1 = "[EN] Freelance Mockup Completion";
-const freelance_mockup_invoice_item_1$1 = "[EN] Freelance Mockup Invoice Item 1";
-const freelance_mockup_invoice_item_2$1 = "[EN] Freelance Mockup Invoice Item 2";
-const freelance_mockup_invoice_status$1 = "[EN] Freelance Mockup Invoice Status";
-const freelance_mockup_invoice_title$1 = "[EN] Freelance Mockup Invoice";
-const freelance_mockup_invoice_total$1 = "[EN] Freelance Mockup Invoice Total";
-const freelance_mockup_milestone$1 = "[EN] Freelance Mockup Milestone";
-const freelance_mockup_msg_name$1 = "[EN] Freelance Mockup Msg Name";
-const freelance_mockup_msg_text$1 = "[EN] Freelance Mockup Msg Text";
-const freelance_mockup_msg_time$1 = "[EN] Freelance Mockup Msg Time";
-const freelance_mockup_payment_badge$1 = "[EN] Freelance Mockup Payment Badge";
-const freelance_mockup_payment_from$1 = "[EN] Freelance Mockup Payment From";
-const freelance_mockup_project_1_sub$1 = "[EN] Freelance Mockup Project 1 Sub";
-const freelance_mockup_project_1_title$1 = "[EN] Freelance Mockup Project 1";
-const freelance_mockup_project_2_sub$1 = "[EN] Freelance Mockup Project 2 Sub";
-const freelance_mockup_project_2_title$1 = "[EN] Freelance Mockup Project 2";
-const freelance_mockup_rating$1 = "[EN] Freelance Mockup Rating";
-const freelance_mockup_role$1 = "[EN] Freelance Mockup Role";
-const freelance_science_topic_1$1 = "[EN] Freelance Science Topic 1";
-const freelance_science_topic_2$1 = "[EN] Freelance Science Topic 2";
-const freelance_science_topic_3$1 = "[EN] Freelance Science Topic 3";
+const freelance_bento_1_desc$1 = "Store feedback and preferences for premium service.";
+const freelance_bento_1_title$1 = "Client CRM";
+const freelance_bento_2_desc$1 = "Protect your focus and charge what you're worth.";
+const freelance_bento_2_title$1 = "Time Blocking";
+const freelance_bento_3_desc$1 = "Never miss a deductible expense again.";
+const freelance_bento_3_title$1 = "Expense Guard";
+const freelance_bento_4_desc$1 = "Support for assistants and secondary designers.";
+const freelance_bento_4_title$1 = "Solo-Agency Collaboration";
+const freelance_bento_desc$1 = "Tools specifically built for the way independent professionals work.";
+const freelance_bento_title$1 = "The Solopreneur Arsenal";
+const freelance_cta_btn$1 = "Get Freelance Dashboard";
+const freelance_cta_desc$1 = "Freelancing isn't just about working; it's about building a system that works for you. Level up your professionalism today.";
+const freelance_cta_title$1 = "Build Your Solo Empire.";
+const freelance_extra_1_desc$1 = "Manage the entire journey from initial lead to final payment. Keep notes on client preferences and feedback to provide premium service.";
+const freelance_extra_1_title$1 = "Client Lifecycle Tracking";
+const freelance_extra_2_desc$1 = "Don't just work for today. Use financial forecasts to plan your next months and scale your business with confidence.";
+const freelance_extra_2_item_1$1 = "Vacation Fund";
+const freelance_extra_2_item_2$1 = "Tax Reserve";
+const freelance_extra_2_item_3$1 = "Upgrade Gear";
+const freelance_extra_2_title$1 = "Sustainable Income Scaling";
+const freelance_faq_a1$1 = "OneForMind currently focuses on internal tracking. You can log invoice statuses, but for physical document delivery, we suggest integration with your favorite invoice partner.";
+const freelance_faq_q1$1 = "Can I create invoices here?";
+const freelance_faq_title$1 = "Freelancer Dashboard FAQ";
+const freelance_feat_1_desc$1 = "Monitor unpaid invoices and your annual income targets. OneForMind tells you when to look for new clients and when to focus on execution.";
+const freelance_feat_1_point_1$1 = "Tax-ready expense tracking";
+const freelance_feat_1_point_2$1 = "Revenue projection vs reality";
+const freelance_feat_1_title$1 = "Financial Pulse";
+const freelance_feat_2_desc$1 = "Elegant Kanban boards to move tasks from 'To-Do' to 'Done'. Feel the visual satisfaction of seeing your work complete.";
+const freelance_feat_2_point_1$1 = "Time-tracked subtasks";
+const freelance_feat_2_point_2$1 = "Automated feedback loops";
+const freelance_feat_2_title$1 = "Project Boards";
+const freelance_hero_badge$1 = "Solopreneur System";
+const freelance_hero_cta_1$1 = "Get Freelance Dashboard";
+const freelance_hero_desc$1 = "Stop chasing deadlines randomly. Manage client pipelines, track earnings, and keep your focus on the creative work you love in one unified ecosystem.";
+const freelance_hero_social_proof$1 = "Trusted by 2,000+ Independent Professionals";
+const freelance_hero_title_1$1 = "Turn Freelance into a";
+const freelance_hero_title_2$1 = "Serious Business.";
+const freelance_meta_desc$1 = "Manage clients, projects, and freelance finances in one premium dashboard.";
+const freelance_meta_title$1 = "Freelancer Business Dashboard - OneForMind";
+const freelance_mockup_active_status$1 = "System Online";
+const freelance_mockup_active_title$1 = "Active Projects";
+const freelance_mockup_available$1 = "Available for Hire";
+const freelance_mockup_completion$1 = "92% Project Completion";
+const freelance_mockup_invoice_item_1$1 = "UI Design System";
+const freelance_mockup_invoice_item_2$1 = "React Integration";
+const freelance_mockup_invoice_status$1 = "PENDING PAYMENT";
+const freelance_mockup_invoice_title$1 = "INVOICE #2024";
+const freelance_mockup_invoice_total$1 = "TOTAL DUE";
+const freelance_mockup_milestone$1 = "PROJECT MILESTONE REACHED";
+const freelance_mockup_msg_name$1 = "Sarah Johnson";
+const freelance_mockup_msg_text$1 = "Hey! The new landing page looks amazing. Sending the final payment now.";
+const freelance_mockup_msg_time$1 = "2 mins ago";
+const freelance_mockup_payment_badge$1 = "PAYMENT RECEIVED";
+const freelance_mockup_payment_from$1 = "From: Acme Corp (Invoice #2401)";
+const freelance_mockup_project_1_sub$1 = "Frontend Development";
+const freelance_mockup_project_1_title$1 = "E-commerce Redesign";
+const freelance_mockup_project_2_sub$1 = "Identity & Guidelines";
+const freelance_mockup_project_2_title$1 = "Brand Strategy";
+const freelance_mockup_rating$1 = "5.0 ⭐ (124 reviews)";
+const freelance_mockup_role$1 = "Senior Full-stack Developer";
+const freelance_prob_1_desc$1 = "Confused about when payments come and how much you actually earn after tax and operational costs.";
+const freelance_prob_1_title$1 = "Unstable Cash Flow";
+const freelance_prob_2_desc$1 = "Clients asking for constant revisions and you forget to charge extra because you lost track of communication.";
+const freelance_prob_2_title$1 = "Scope Creep & Missed Deadlines";
+const freelance_prob_3_desc$1 = "Without a support system, you often feel overwhelmed managing everything alone without a clear strategic direction.";
+const freelance_prob_3_title$1 = "Intellectual Loneliness";
+const freelance_prob_desc$1 = "Being your own boss is great, until administrative work gets in the way.";
+const freelance_prob_title$1 = "Chaos Behind Freedom";
+const freelance_science_badge$1 = "BUSINESS AGILITY";
+const freelance_science_desc$1 = "Leveraging 'Deep Work' and 'GTD' methodologies, we help freelancers operate with the efficiency of a full agency without the overhead.";
+const freelance_science_title$1 = "Solo-Agency Framework";
+const freelance_science_topic_1$1 = "Pipeline Velocity";
+const freelance_science_topic_2$1 = "Value-Based Pricing";
+const freelance_science_topic_3$1 = "Retention Loyalty";
 const goal_steps_badge$1 = "[EN] Goal Steps Badge";
 const meta_ai_creator$1 = "[EN] Ai Creator";
 const meta_ai_service_type$1 = "[EN] Ai Service Type";
@@ -3664,27 +3695,13 @@ const student_faq_a3$1 = "Certainly. Use our Project Tracker to manage requireme
 const student_cta_title$1 = "A High GPA Isn't Magic.";
 const student_cta_desc$1 = "It's the result of a well-functioning system. Be the best-prepared student in your class today.";
 const student_cta_btn$1 = "Get My Survival Kit";
-const freelance_meta_title$1 = "Freelancer Business Dashboard - OneForMind";
-const freelance_meta_desc$1 = "Manage clients, projects, and freelance finances in one premium dashboard.";
 const freelance_meta_og_title$1 = "OneForMind for Solopreneurs & Freelancers";
 const freelance_meta_og_desc$1 = "A professional workspace for building a profitable freelance business.";
-const freelance_hero_badge$1 = "Solopreneur System";
-const freelance_hero_title_1$1 = "Turn Freelance into a";
-const freelance_hero_title_2$1 = "Serious Business.";
-const freelance_hero_desc$1 = "Stop chasing deadlines randomly. Manage client pipelines, track earnings, and keep your focus on the creative work you love in one unified ecosystem.";
 const freelance_hero_cta$1 = "Start My Freelance Business";
 const freelance_mockup_revenue$1 = "Monthly Target";
 const freelance_mockup_client$1 = "Active Clients";
 const freelance_mockup_project$1 = "Web Redesign";
 const freelance_mockup_project_sub$1 = "Finalization Stage";
-const freelance_prob_title$1 = "Chaos Behind Freedom";
-const freelance_prob_desc$1 = "Being your own boss is great, until administrative work gets in the way.";
-const freelance_prob_1_title$1 = "Unstable Cash Flow";
-const freelance_prob_1_desc$1 = "Confused about when payments come and how much you actually earn after tax and operational costs.";
-const freelance_prob_2_title$1 = "Scope Creep & Missed Deadlines";
-const freelance_prob_2_desc$1 = "Clients asking for constant revisions and you forget to charge extra because you lost track of communication.";
-const freelance_prob_3_title$1 = "Intellectual Loneliness";
-const freelance_prob_3_desc$1 = "Without a support system, you often feel overwhelmed managing everything alone without a clear strategic direction.";
 const freelance_sol_title$1 = "One Roof For Your Projects.";
 const freelance_sol_desc$1 = "We combine client CRM, project management, and financial tracking into one highly efficient workflow.";
 const freelance_sol_step_1_title$1 = "Client Management (CRM)";
@@ -3694,27 +3711,10 @@ const freelance_sol_step_2_desc$1 = "See where every project currently stands. I
 const freelance_sol_step_3_title$1 = "Financial Reports";
 const freelance_sol_step_3_desc$1 = "See your net profit instantly. Prepare data for taxes without stress.";
 const freelance_feat_title$1 = "Elite Freelancer Arsenal";
-const freelance_feat_1_title$1 = "Financial Pulse";
-const freelance_feat_1_desc$1 = "Monitor unpaid invoices and your annual income targets. OneForMind tells you when to look for new clients and when to focus on execution.";
-const freelance_feat_2_title$1 = "Project Boards";
-const freelance_feat_2_desc$1 = "Elegant Kanban boards to move tasks from 'To-Do' to 'Done'. Feel the visual satisfaction of seeing your work complete.";
-const freelance_cta_title$1 = "Build Your Solo Empire.";
-const freelance_cta_desc$1 = "Freelancing isn't just about working; it's about building a system that works for you. Level up your professionalism today.";
-const freelance_cta_btn$1 = "Get Freelance Dashboard";
-const freelance_faq_title$1 = "Freelancer Dashboard FAQ";
-const freelance_faq_q1$1 = "Can I create invoices here?";
-const freelance_faq_a1$1 = "OneForMind currently focuses on internal tracking. You can log invoice statuses, but for physical document delivery, we suggest integration with your favorite invoice partner.";
 const freelance_faq_q2$1 = "Is it suitable for small teams?";
 const freelance_faq_a2$1 = "Highly suitable. While designed for solopreneurs, OneForMind supports basic collaboration perfect for freelancers working with assistants or other designers.";
 const freelance_faq_q3$1 = "Is my client data secure?";
 const freelance_faq_a3$1 = "Absolutely. OneForMind uses industry-standard encryption to ensure your business strategy, client briefs, and financial records remain private and accessible only by you.";
-const freelance_science_badge$1 = "BUSINESS AGILITY";
-const freelance_science_title$1 = "Solo-Agency Framework";
-const freelance_science_desc$1 = "Leveraging 'Deep Work' and 'GTD' methodologies, we help freelancers operate with the efficiency of a full agency without the overhead.";
-const freelance_extra_1_title$1 = "Client Lifecycle Tracking";
-const freelance_extra_1_desc$1 = "Manage the entire journey from initial lead to final payment. Keep notes on client preferences and feedback to provide premium service.";
-const freelance_extra_2_title$1 = "Sustainable Income Scaling";
-const freelance_extra_2_desc$1 = "Don't just work for today. Use financial forecasts to plan your next months and scale your business with confidence.";
 const mental_meta_title$1 = "Mental Clarity - OneForMind";
 const mental_meta_desc$1 = "Reduce anxiety and enhance focus. Use a reflective journaling system for a calmer, sharper mind.";
 const mental_meta_og_title$1 = "Clear Your Mind with OneForMind";
@@ -6216,15 +6216,35 @@ const en = {
   freelance_bento_4_title: freelance_bento_4_title$1,
   freelance_bento_desc: freelance_bento_desc$1,
   freelance_bento_title: freelance_bento_title$1,
+  freelance_cta_btn: freelance_cta_btn$1,
+  freelance_cta_desc: freelance_cta_desc$1,
+  freelance_cta_title: freelance_cta_title$1,
+  freelance_extra_1_desc: freelance_extra_1_desc$1,
+  freelance_extra_1_title: freelance_extra_1_title$1,
+  freelance_extra_2_desc: freelance_extra_2_desc$1,
   freelance_extra_2_item_1: freelance_extra_2_item_1$1,
   freelance_extra_2_item_2: freelance_extra_2_item_2$1,
   freelance_extra_2_item_3: freelance_extra_2_item_3$1,
+  freelance_extra_2_title: freelance_extra_2_title$1,
+  freelance_faq_a1: freelance_faq_a1$1,
+  freelance_faq_q1: freelance_faq_q1$1,
+  freelance_faq_title: freelance_faq_title$1,
+  freelance_feat_1_desc: freelance_feat_1_desc$1,
   freelance_feat_1_point_1: freelance_feat_1_point_1$1,
   freelance_feat_1_point_2: freelance_feat_1_point_2$1,
+  freelance_feat_1_title: freelance_feat_1_title$1,
+  freelance_feat_2_desc: freelance_feat_2_desc$1,
   freelance_feat_2_point_1: freelance_feat_2_point_1$1,
   freelance_feat_2_point_2: freelance_feat_2_point_2$1,
+  freelance_feat_2_title: freelance_feat_2_title$1,
+  freelance_hero_badge: freelance_hero_badge$1,
   freelance_hero_cta_1: freelance_hero_cta_1$1,
+  freelance_hero_desc: freelance_hero_desc$1,
   freelance_hero_social_proof: freelance_hero_social_proof$1,
+  freelance_hero_title_1: freelance_hero_title_1$1,
+  freelance_hero_title_2: freelance_hero_title_2$1,
+  freelance_meta_desc: freelance_meta_desc$1,
+  freelance_meta_title: freelance_meta_title$1,
   freelance_mockup_active_status: freelance_mockup_active_status$1,
   freelance_mockup_active_title: freelance_mockup_active_title$1,
   freelance_mockup_available: freelance_mockup_available$1,
@@ -6246,6 +6266,17 @@ const en = {
   freelance_mockup_project_2_title: freelance_mockup_project_2_title$1,
   freelance_mockup_rating: freelance_mockup_rating$1,
   freelance_mockup_role: freelance_mockup_role$1,
+  freelance_prob_1_desc: freelance_prob_1_desc$1,
+  freelance_prob_1_title: freelance_prob_1_title$1,
+  freelance_prob_2_desc: freelance_prob_2_desc$1,
+  freelance_prob_2_title: freelance_prob_2_title$1,
+  freelance_prob_3_desc: freelance_prob_3_desc$1,
+  freelance_prob_3_title: freelance_prob_3_title$1,
+  freelance_prob_desc: freelance_prob_desc$1,
+  freelance_prob_title: freelance_prob_title$1,
+  freelance_science_badge: freelance_science_badge$1,
+  freelance_science_desc: freelance_science_desc$1,
+  freelance_science_title: freelance_science_title$1,
   freelance_science_topic_1: freelance_science_topic_1$1,
   freelance_science_topic_2: freelance_science_topic_2$1,
   freelance_science_topic_3: freelance_science_topic_3$1,
@@ -7592,27 +7623,13 @@ const en = {
   student_cta_title: student_cta_title$1,
   student_cta_desc: student_cta_desc$1,
   student_cta_btn: student_cta_btn$1,
-  freelance_meta_title: freelance_meta_title$1,
-  freelance_meta_desc: freelance_meta_desc$1,
   freelance_meta_og_title: freelance_meta_og_title$1,
   freelance_meta_og_desc: freelance_meta_og_desc$1,
-  freelance_hero_badge: freelance_hero_badge$1,
-  freelance_hero_title_1: freelance_hero_title_1$1,
-  freelance_hero_title_2: freelance_hero_title_2$1,
-  freelance_hero_desc: freelance_hero_desc$1,
   freelance_hero_cta: freelance_hero_cta$1,
   freelance_mockup_revenue: freelance_mockup_revenue$1,
   freelance_mockup_client: freelance_mockup_client$1,
   freelance_mockup_project: freelance_mockup_project$1,
   freelance_mockup_project_sub: freelance_mockup_project_sub$1,
-  freelance_prob_title: freelance_prob_title$1,
-  freelance_prob_desc: freelance_prob_desc$1,
-  freelance_prob_1_title: freelance_prob_1_title$1,
-  freelance_prob_1_desc: freelance_prob_1_desc$1,
-  freelance_prob_2_title: freelance_prob_2_title$1,
-  freelance_prob_2_desc: freelance_prob_2_desc$1,
-  freelance_prob_3_title: freelance_prob_3_title$1,
-  freelance_prob_3_desc: freelance_prob_3_desc$1,
   freelance_sol_title: freelance_sol_title$1,
   freelance_sol_desc: freelance_sol_desc$1,
   freelance_sol_step_1_title: freelance_sol_step_1_title$1,
@@ -7622,27 +7639,10 @@ const en = {
   freelance_sol_step_3_title: freelance_sol_step_3_title$1,
   freelance_sol_step_3_desc: freelance_sol_step_3_desc$1,
   freelance_feat_title: freelance_feat_title$1,
-  freelance_feat_1_title: freelance_feat_1_title$1,
-  freelance_feat_1_desc: freelance_feat_1_desc$1,
-  freelance_feat_2_title: freelance_feat_2_title$1,
-  freelance_feat_2_desc: freelance_feat_2_desc$1,
-  freelance_cta_title: freelance_cta_title$1,
-  freelance_cta_desc: freelance_cta_desc$1,
-  freelance_cta_btn: freelance_cta_btn$1,
-  freelance_faq_title: freelance_faq_title$1,
-  freelance_faq_q1: freelance_faq_q1$1,
-  freelance_faq_a1: freelance_faq_a1$1,
   freelance_faq_q2: freelance_faq_q2$1,
   freelance_faq_a2: freelance_faq_a2$1,
   freelance_faq_q3: freelance_faq_q3$1,
   freelance_faq_a3: freelance_faq_a3$1,
-  freelance_science_badge: freelance_science_badge$1,
-  freelance_science_title: freelance_science_title$1,
-  freelance_science_desc: freelance_science_desc$1,
-  freelance_extra_1_title: freelance_extra_1_title$1,
-  freelance_extra_1_desc: freelance_extra_1_desc$1,
-  freelance_extra_2_title: freelance_extra_2_title$1,
-  freelance_extra_2_desc: freelance_extra_2_desc$1,
   mental_meta_title: mental_meta_title$1,
   mental_meta_desc: mental_meta_desc$1,
   mental_meta_og_title: mental_meta_og_title$1,
@@ -13922,69 +13922,69 @@ const career_science_viz_status = "[ID] Career Science Viz Status";
 const career_status_applied = "[ID] Career Status Applied";
 const career_status_interviewing = "[ID] Career Status Interviewing";
 const career_status_offer = "[ID] Career Status Offer";
-const deepwork_cta_btn = "[ID] Tombol Deepwork Cta Btn";
-const deepwork_cta_desc = "[ID] Tombol Deepwork Cta";
-const deepwork_cta_title = "[ID] Tombol Deepwork Cta";
-const deepwork_extra_1_desc = "[ID] Deskripsi Deepwork Extra 1";
-const deepwork_extra_1_label = "[ID] Deepwork Extra 1 Label";
-const deepwork_extra_1_sub = "[ID] Deepwork Extra 1 Sub";
-const deepwork_extra_1_title = "[ID] Judul Deepwork Extra 1";
-const deepwork_extra_2_desc = "[ID] Deskripsi Deepwork Extra 2";
-const deepwork_extra_2_item_1 = "[ID] Deepwork Extra 2 Item 1";
-const deepwork_extra_2_item_2 = "[ID] Deepwork Extra 2 Item 2";
-const deepwork_extra_2_title = "[ID] Judul Deepwork Extra 2";
-const deepwork_faq_a1 = "[ID] Deepwork Faq A1";
+const deepwork_cta_btn = "Mulai Fokus Sekarang";
+const deepwork_cta_desc = "Jangan biarkan kebisingan mendefinisikan output Anda. Mulailah rutinitas fokus tingkat elit hari ini.";
+const deepwork_cta_title = "Miliki Atensi Anda.";
+const deepwork_extra_1_desc = "Visualisasikan konsistensi Anda dan lacak berapa lama Anda berada di 'The Zone' setiap hari.";
+const deepwork_extra_1_label = "Radar Atensi Bulanan";
+const deepwork_extra_1_sub = "jam / hari rata-rata";
+const deepwork_extra_1_title = "Metrik Flow State";
+const deepwork_extra_2_desc = "UI OneForMind beradaptasi untuk meminimalkan gesekan visual selama sesi fokus.";
+const deepwork_extra_2_item_1 = "Mode Nol-Distraksi";
+const deepwork_extra_2_item_2 = "Notifikasi Pintar";
+const deepwork_extra_2_title = "Desain Lingkungan";
+const deepwork_faq_a1 = "Kegiatan profesional yang dilakukan dalam kondisi konsentrasi bebas gangguan.";
 const deepwork_faq_a2 = "[ID] Deepwork Faq A2";
 const deepwork_faq_a3 = "[ID] Deepwork Faq A3";
-const deepwork_faq_q1 = "[ID] Deepwork Faq Q1";
+const deepwork_faq_q1 = "Apa itu Deep Work?";
 const deepwork_faq_q2 = "[ID] Deepwork Faq Q2";
 const deepwork_faq_q3 = "[ID] Deepwork Faq Q3";
-const deepwork_faq_title = "[ID] Judul Deepwork Faq";
-const deepwork_feat_1_desc = "[ID] Deskripsi Deepwork Feat 1";
-const deepwork_feat_1_title = "[ID] Judul Deepwork Feat 1";
-const deepwork_feat_2_desc = "[ID] Deskripsi Deepwork Feat 2";
-const deepwork_feat_2_title = "[ID] Judul Deepwork Feat 2";
-const deepwork_feat_title = "[ID] Judul Deepwork Feat";
-const deepwork_hero_badge = "[ID] Badge Deepwork  Badge";
-const deepwork_hero_cta = "[ID] Tombol Deepwork  Cta";
-const deepwork_hero_desc = "[ID] Deskripsi Deepwork";
-const deepwork_hero_title_1 = "[ID] Judul Deepwork    1";
-const deepwork_hero_title_2 = "[ID] Judul Deepwork    2";
-const deepwork_meta_desc = "[ID] Deskripsi Deepwork";
+const deepwork_faq_title = "FAQ Sistem Fokus";
+const deepwork_feat_1_desc = "Timer adaptif yang sesuai dengan siklus energi alami Anda.";
+const deepwork_feat_1_title = "Pomodoro Neural";
+const deepwork_feat_2_desc = "Jaga tugas tetap terisolasi dari kebisingan dashboard utama.";
+const deepwork_feat_2_title = "Perisai Gangguan";
+const deepwork_feat_title = "Arsenal Fokus";
+const deepwork_hero_badge = "SISTEM FOKUS";
+const deepwork_hero_cta = "Buka Dashboard Fokus Saya";
+const deepwork_hero_desc = "Berhenti bereaksi terhadap notifikasi. Mulailah menghasilkan karya tingkat elit dengan sistem yang dirancang untuk performa kognitif tinggi.";
+const deepwork_hero_title_1 = "Kuasai Perhatian Anda.";
+const deepwork_hero_title_2 = "Miliki Dampak Anda.";
+const deepwork_meta_desc = "Capai performa kognitif puncak. Implementasikan kerangka kerja Deep Work dengan alat fokus OneForMind.";
 const deepwork_meta_og_desc = "[ID] Deskripsi Deepwork  Og";
 const deepwork_meta_og_title = "[ID] Judul Deepwork  Og";
-const deepwork_meta_title = "[ID] Judul Deepwork";
-const deepwork_mockup_desc = "[ID] Deskripsi Deepwork Mockup";
-const deepwork_mockup_task_1 = "[ID] Deepwork Mockup Task 1";
-const deepwork_mockup_task_2 = "[ID] Deepwork Mockup Task 2";
-const deepwork_mockup_task_3 = "[ID] Deepwork Mockup Task 3";
-const deepwork_mockup_title = "[ID] Judul Deepwork Mockup";
-const deepwork_prob_1_desc = "[ID] Deskripsi Deepwork Prob 1";
-const deepwork_prob_1_title = "[ID] Judul Deepwork Prob 1";
-const deepwork_prob_2_desc = "[ID] Deskripsi Deepwork Prob 2";
-const deepwork_prob_2_title = "[ID] Judul Deepwork Prob 2";
-const deepwork_prob_3_desc = "[ID] Deskripsi Deepwork Prob 3";
-const deepwork_prob_3_title = "[ID] Judul Deepwork Prob 3";
-const deepwork_prob_desc = "[ID] Deskripsi Deepwork Prob";
-const deepwork_prob_title = "[ID] Judul Deepwork Prob";
-const deepwork_science_badge = "[ID] Badge Deepwork Science Badge";
-const deepwork_science_concept_1 = "[ID] Deepwork Science Concept 1";
-const deepwork_science_concept_2 = "[ID] Deepwork Science Concept 2";
-const deepwork_science_concept_3 = "[ID] Deepwork Science Concept 3";
-const deepwork_science_desc = "[ID] Deskripsi Deepwork Science";
-const deepwork_science_title = "[ID] Judul Deepwork Science";
-const deepwork_science_topic_1 = "[ID] Deepwork Science Topic 1";
-const deepwork_science_topic_2 = "[ID] Deepwork Science Topic 2";
-const deepwork_science_topic_3 = "[ID] Deepwork Science Topic 3";
-const deepwork_science_viz_lock = "[ID] Deepwork Science Viz Lock";
-const deepwork_science_viz_sub = "[ID] Deepwork Science Viz Sub";
-const deepwork_sol_1_desc = "[ID] Deskripsi Deepwork Sol 1";
-const deepwork_sol_1_title = "[ID] Judul Deepwork Sol 1";
-const deepwork_sol_2_desc = "[ID] Deskripsi Deepwork Sol 2";
-const deepwork_sol_2_title = "[ID] Judul Deepwork Sol 2";
-const deepwork_sol_3_desc = "[ID] Deskripsi Deepwork Sol 3";
-const deepwork_sol_3_title = "[ID] Judul Deepwork Sol 3";
-const deepwork_sol_title = "[ID] Judul Deepwork Sol";
+const deepwork_meta_title = "Sistem Deep Work | Kuasai Fokus Anda";
+const deepwork_mockup_desc = "KONDISI FOKUS ELIT";
+const deepwork_mockup_task_1 = "Balas Email (Shallow)";
+const deepwork_mockup_task_2 = "Desain Arsitektur (Deep)";
+const deepwork_mockup_task_3 = "Review Kode";
+const deepwork_mockup_title = "TIMELINE FOKUS";
+const deepwork_prob_1_desc = "Melompat di antara rapat dan aplikasi membunuh 40% dari kapasitas produktif Anda.";
+const deepwork_prob_1_title = "Context Switching";
+const deepwork_prob_2_desc = "Dopamin dari email mencegah Anda memulai pekerjaan yang benar-benar penting.";
+const deepwork_prob_2_title = "Kecanduan Hal Dangkal (Shallow)";
+const deepwork_prob_3_desc = "Tanpa blok 'Deep Work' yang terjadwal, waktu Anda berada di bawah belas kasihan orang lain.";
+const deepwork_prob_3_title = "Kurangnya Tempat Suci";
+const deepwork_prob_desc = "Di dunia yang penuh gangguan, fokus adalah keunggulan kompetitif. Kebanyakan orang hidup dalam kondisi 'Atensi Parsial Terus-menerus'.";
+const deepwork_prob_title = "Perang Melawan Atensi";
+const deepwork_science_badge = "ISOLASI FLOW STATE";
+const deepwork_science_concept_1 = "Konsep 1";
+const deepwork_science_concept_2 = "Konsep 2";
+const deepwork_science_concept_3 = "Konsep 3";
+const deepwork_science_desc = "Multi-tasking adalah mitos. Performa puncak membutuhkan isolasi intensitas tinggi.";
+const deepwork_science_title = "Berakar pada Sains Kognitif";
+const deepwork_science_topic_1 = "Residu Atensi";
+const deepwork_science_topic_2 = "Pertumbuhan Myelin";
+const deepwork_science_topic_3 = "Shutdown Prefrontal";
+const deepwork_science_viz_lock = "COGNITIVE LOCK";
+const deepwork_science_viz_sub = "Mode Isolasi Neural Aktif";
+const deepwork_sol_1_desc = "Jadwalkan sesi fokus secara eksplisit dalam Perencana Harian Anda.";
+const deepwork_sol_1_title = "Time Blocking";
+const deepwork_sol_2_desc = "Akhiri hari Anda dengan pikiran jernih dan rencana untuk besok.";
+const deepwork_sol_2_title = "Ritual Shutdown";
+const deepwork_sol_3_desc = "Ukur output kognitif Anda dan tingkatkan daya tahan fokus Anda.";
+const deepwork_sol_3_title = "Skoring Fokus";
+const deepwork_sol_title = "Arsitektur Fokus";
 const finance_extra_1_label = "Aliran Saldo";
 const finance_extra_2_label = "BULAN MENUJU BEBAS";
 const finance_mockup_assets = "Aset Pribadi";
@@ -14002,49 +14002,80 @@ const finance_synergy_alloc_amount = "+Rp 75.000";
 const finance_synergy_alloc_title = "Disimpan ke Aset";
 const finance_synergy_habit_desc = "Hemat Rp 75rb hari ini.";
 const finance_synergy_habit_title = "Kebiasaan Kopi";
-const freelance_bento_1_desc = "[ID] Deskripsi Freelance Bento 1";
-const freelance_bento_1_title = "[ID] Judul Freelance Bento 1";
-const freelance_bento_2_desc = "[ID] Deskripsi Freelance Bento 2";
-const freelance_bento_2_title = "[ID] Judul Freelance Bento 2";
-const freelance_bento_3_desc = "[ID] Deskripsi Freelance Bento 3";
-const freelance_bento_3_title = "[ID] Judul Freelance Bento 3";
-const freelance_bento_4_desc = "[ID] Deskripsi Freelance Bento 4";
-const freelance_bento_4_title = "[ID] Judul Freelance Bento 4";
-const freelance_bento_desc = "[ID] Deskripsi Freelance Bento";
-const freelance_bento_title = "[ID] Judul Freelance Bento";
-const freelance_extra_2_item_1 = "[ID] Freelance Extra 2 Item 1";
-const freelance_extra_2_item_2 = "[ID] Freelance Extra 2 Item 2";
-const freelance_extra_2_item_3 = "[ID] Freelance Extra 2 Item 3";
-const freelance_feat_1_point_1 = "[ID] Freelance Feat 1 Point 1";
-const freelance_feat_1_point_2 = "[ID] Freelance Feat 1 Point 2";
-const freelance_feat_2_point_1 = "[ID] Freelance Feat 2 Point 1";
-const freelance_feat_2_point_2 = "[ID] Freelance Feat 2 Point 2";
-const freelance_hero_cta_1 = "[ID] Tombol Freelance  Cta 1";
-const freelance_hero_social_proof = "[ID] Freelance  Social Proof";
-const freelance_mockup_active_status = "[ID] Freelance Mockup Active Status";
-const freelance_mockup_active_title = "[ID] Judul Freelance Mockup Active";
-const freelance_mockup_available = "[ID] Freelance Mockup Available";
-const freelance_mockup_completion = "[ID] Freelance Mockup Completion";
-const freelance_mockup_invoice_item_1 = "[ID] Freelance Mockup Invoice Item 1";
-const freelance_mockup_invoice_item_2 = "[ID] Freelance Mockup Invoice Item 2";
-const freelance_mockup_invoice_status = "[ID] Freelance Mockup Invoice Status";
-const freelance_mockup_invoice_title = "[ID] Judul Freelance Mockup Invoice";
-const freelance_mockup_invoice_total = "[ID] Freelance Mockup Invoice Total";
-const freelance_mockup_milestone = "[ID] Freelance Mockup Milestone";
-const freelance_mockup_msg_name = "[ID] Freelance Mockup Msg Name";
-const freelance_mockup_msg_text = "[ID] Freelance Mockup Msg Text";
-const freelance_mockup_msg_time = "[ID] Freelance Mockup Msg Time";
-const freelance_mockup_payment_badge = "[ID] Badge Freelance Mockup Payment Badge";
-const freelance_mockup_payment_from = "[ID] Freelance Mockup Payment From";
-const freelance_mockup_project_1_sub = "[ID] Freelance Mockup Project 1 Sub";
-const freelance_mockup_project_1_title = "[ID] Judul Freelance Mockup Project 1";
-const freelance_mockup_project_2_sub = "[ID] Freelance Mockup Project 2 Sub";
-const freelance_mockup_project_2_title = "[ID] Judul Freelance Mockup Project 2";
-const freelance_mockup_rating = "[ID] Freelance Mockup Rating";
-const freelance_mockup_role = "[ID] Freelance Mockup Role";
-const freelance_science_topic_1 = "[ID] Freelance Science Topic 1";
-const freelance_science_topic_2 = "[ID] Freelance Science Topic 2";
-const freelance_science_topic_3 = "[ID] Freelance Science Topic 3";
+const freelance_bento_1_desc = "Simpan feedback dan preferensi untuk layanan premium.";
+const freelance_bento_1_title = "CRM Klien";
+const freelance_bento_2_desc = "Lindungi fokus Anda dan tawarkan nilai yang setimpal.";
+const freelance_bento_2_title = "Time Blocking";
+const freelance_bento_3_desc = "Jangan pernah lewatkan biaya pengurang pajak lagi.";
+const freelance_bento_3_title = "Penjaga Biaya";
+const freelance_bento_4_desc = "Dukungan untuk asisten dan desainer sekunder.";
+const freelance_bento_4_title = "Kolaborasi Solo-Agency";
+const freelance_bento_desc = "Alat yang dibangun khusus untuk cara kerja profesional independen.";
+const freelance_bento_title = "Arsenal Solopreneur";
+const freelance_cta_btn = "Dapatkan Dashboard Freelance";
+const freelance_cta_desc = "Freelancing bukan hanya tentang bekerja; ini tentang membangun sistem yang bekerja untuk Anda. Tingkatkan level profesionalisme Anda hari ini.";
+const freelance_cta_title = "Bangun Imperium Solo-mu.";
+const freelance_extra_1_desc = "Kelola seluruh perjalanan dari prospek awal hingga pembayaran akhir. Simpan catatan preferensi dan feedback klien untuk memberikan layanan premium setiap saat.";
+const freelance_extra_1_title = "Pelacakan Siklus Hidup Klien";
+const freelance_extra_2_desc = "Don't just work for today. Gunakan proyeksi keuangan untuk merencanakan bulan-bulan berikutnya, menabung untuk peningkatan alat, dan mengembangkan bisnis freelance dengan percaya diri.";
+const freelance_extra_2_item_1 = "Dana Liburan";
+const freelance_extra_2_item_2 = "Cadangan Pajak";
+const freelance_extra_2_item_3 = "Upgrade Alat";
+const freelance_extra_2_title = "Skala Pendapatan Berkelanjutan";
+const freelance_faq_a1 = "OneForMind saat ini fokus pada pelacakan internal. Anda dapat mencatat status invoice, namun untuk pengiriman dokumen fisik, kami menyarankan integrasi dengan partner invoice favorit Anda.";
+const freelance_faq_q1 = "Bisakah saya membuat invoice di sini?";
+const freelance_faq_title = "FAQ Dasbor Freelancer";
+const freelance_feat_1_desc = "Pantau invoice yang belum dibayar dan target pendapatan tahunan Anda. OneForMind memberitahu Anda kapan harus mencari klien baru dan kapan harus fokus eksekusi.";
+const freelance_feat_1_point_1 = "Pelacakan biaya siap pajak";
+const freelance_feat_1_point_2 = "Proyeksi pendapatan vs realita";
+const freelance_feat_1_title = "Financial Pulse";
+const freelance_feat_2_desc = "Papan Kanban yang elegan untuk menggeser tugas dari 'To-Do' ke 'Done'. Rasakan kepuasan visual saat melihat pekerjaan Anda selesai.";
+const freelance_feat_2_point_1 = "Subtask terlacak waktu";
+const freelance_feat_2_point_2 = "Loop feedback otomatis";
+const freelance_feat_2_title = "Project Boards";
+const freelance_hero_badge = "Sistem Solopreneur";
+const freelance_hero_cta_1 = "Dapatkan Dashboard Freelance";
+const freelance_hero_desc = "Berhenti mengejar tenggat waktu secara acak. Kelola pipeline klien, pantau pendapatan, dan jaga fokus Anda pada pekerjaan kreatif yang Anda cintai dalam satu ekosistem terpadu.";
+const freelance_hero_social_proof = "Dipercaya oleh 2.000+ Profesional Independen";
+const freelance_hero_title_1 = "Ubah Kerja Lepas Jadi";
+const freelance_hero_title_2 = "Bisnis yang Serius.";
+const freelance_meta_desc = "Kelola klien, proyek, dan keuangan freelance dalam satu dashboard premium.";
+const freelance_meta_title = "Das BOR Bisnis Freelancer - OneForMind";
+const freelance_mockup_active_status = "Sistem Online";
+const freelance_mockup_active_title = "Proyek Aktif";
+const freelance_mockup_available = "Tersedia untuk Disewa";
+const freelance_mockup_completion = "92% Penyelesaian Proyek";
+const freelance_mockup_invoice_item_1 = "Sistem Desain UI";
+const freelance_mockup_invoice_item_2 = "Integrasi React";
+const freelance_mockup_invoice_status = "MENUNGGU PEMBAYARAN";
+const freelance_mockup_invoice_title = "INVOICE #2024";
+const freelance_mockup_invoice_total = "TOTAL TAGIHAN";
+const freelance_mockup_milestone = "MILESTONE PROYEK TERCAPAI";
+const freelance_mockup_msg_name = "Rina Sulastri";
+const freelance_mockup_msg_text = "Hey! Landing page barunya terlihat luar biasa. Mengirimkan pembayaran akhir sekarang.";
+const freelance_mockup_msg_time = "2 menit yang lalu";
+const freelance_mockup_payment_badge = "PEMBAYARAN DITERIMA";
+const freelance_mockup_payment_from = "Dari: Acme Corp (Invoice #2401)";
+const freelance_mockup_project_1_sub = "Pengembangan Frontend";
+const freelance_mockup_project_1_title = "Redesain E-commerce";
+const freelance_mockup_project_2_sub = "Identitas & Panduan";
+const freelance_mockup_project_2_title = "Strategi Brand";
+const freelance_mockup_rating = "5.0 ⭐ (124 ulasan)";
+const freelance_mockup_role = "Senior Full-stack Developer";
+const freelance_prob_1_desc = "Bingung kapan pembayaran masuk dan berapa banyak yang sebenarnya Anda hasilkan setelah dipotong pajak dan biaya operasional.";
+const freelance_prob_1_title = "Arus Kas yang Tidak Stabil";
+const freelance_prob_2_desc = "Klien minta revisi terus-menerus dan Anda lupa menagih biaya tambahan karena kehilangan jejak komunikasi.";
+const freelance_prob_2_title = "Scope Creep & Lupa Deadline";
+const freelance_prob_3_desc = "Tanpa sistem pendukung, Anda sering merasa kewalahan mengelola semuanya sendiri tanpa arah strategis yang jelas.";
+const freelance_prob_3_title = "Kesepian Intelektual";
+const freelance_prob_desc = "Menjadi bos diri sendiri itu luar biasa, sampai urusan administrasi datang mengganggu.";
+const freelance_prob_title = "Kekacauan di Balik Kebebasan";
+const freelance_science_badge = "AGILITAS BISNIS";
+const freelance_science_desc = "Memanfaatkan metodologi 'Deep Work' dan 'GTD' (Getting Things Done), kami membantu freelancer beroperasi dengan efisiensi layaknya agensi penuh tanpa biaya overhead yang besar.";
+const freelance_science_title = "Kerangka Kerja Solo-Agency";
+const freelance_science_topic_1 = "Kecepatan Pipeline";
+const freelance_science_topic_2 = "Pricing Berbasis Nilai";
+const freelance_science_topic_3 = "Loyalitas Retensi";
 const goal_steps_badge = "[ID] Badge Goal Steps Badge";
 const meta_ai_creator = "[ID] Ai Creator";
 const meta_ai_service_type = "[ID] Ai Service Type";
@@ -15405,27 +15436,13 @@ const student_faq_a3 = "Tentu. Gunakan Project Tracker kami untuk mengelola pers
 const student_cta_title = "IPK Tinggi Bukan Keajaiban.";
 const student_cta_desc = "Itu adalah hasil dari sistem yang berjalan dengan baik. Jadilah mahasiswa yang paling siap di kelasmu hari ini.";
 const student_cta_btn = "Dapatkan Survival Kit Saya";
-const freelance_meta_title = "Das BOR Bisnis Freelancer - OneForMind";
-const freelance_meta_desc = "Kelola klien, proyek, dan keuangan freelance dalam satu dashboard premium.";
 const freelance_meta_og_title = "OneForMind untuk Solopreneur & Freelancer";
 const freelance_meta_og_desc = "Alas kerja profesional untuk membangun bisnis freelance yang menguntungkan.";
-const freelance_hero_badge = "Sistem Solopreneur";
-const freelance_hero_title_1 = "Ubah Kerja Lepas Jadi";
-const freelance_hero_title_2 = "Bisnis yang Serius.";
-const freelance_hero_desc = "Berhenti mengejar tenggat waktu secara acak. Kelola pipeline klien, pantau pendapatan, dan jaga fokus Anda pada pekerjaan kreatif yang Anda cintai dalam satu ekosistem terpadu.";
 const freelance_hero_cta = "Mulai Bisnis Freelance Saya";
 const freelance_mockup_revenue = "Target Bulanan";
 const freelance_mockup_client = "Klien Aktif";
 const freelance_mockup_project = "Web Redesign";
 const freelance_mockup_project_sub = "Tahap Finalisasi";
-const freelance_prob_title = "Kekacauan di Balik Kebebasan";
-const freelance_prob_desc = "Menjadi bos diri sendiri itu luar biasa, sampai urusan administrasi datang mengganggu.";
-const freelance_prob_1_title = "Arus Kas yang Tidak Stabil";
-const freelance_prob_1_desc = "Bingung kapan pembayaran masuk dan berapa banyak yang sebenarnya Anda hasilkan setelah dipotong pajak dan biaya operasional.";
-const freelance_prob_2_title = "Scope Creep & Lupa Deadline";
-const freelance_prob_2_desc = "Klien minta revisi terus-menerus dan Anda lupa menagih biaya tambahan karena kehilangan jejak komunikasi.";
-const freelance_prob_3_title = "Kesepian Intelektual";
-const freelance_prob_3_desc = "Tanpa sistem pendukung, Anda sering merasa kewalahan mengelola semuanya sendiri tanpa arah strategis yang jelas.";
 const freelance_sol_title = "Satu Atap Untuk Proyek Anda.";
 const freelance_sol_desc = "Kami menggabungkan CRM klien, manajemen proyek, dan pelacakan keuangan menjadi satu alur kerja yang sangat efisien.";
 const freelance_sol_step_1_title = "Manajemen Klien (CRM)";
@@ -15435,27 +15452,10 @@ const freelance_sol_step_2_desc = "Lihat di mana posisi setiap proyek saat ini. 
 const freelance_sol_step_3_title = "Laporan Keuangan";
 const freelance_sol_step_3_desc = "Lihat keuntungan bersih Anda secara instan. Siapkan data untuk pajak tanpa stres.";
 const freelance_feat_title = "Senjata Freelancer Elit";
-const freelance_feat_1_title = "Financial Pulse";
-const freelance_feat_1_desc = "Pantau invoice yang belum dibayar dan target pendapatan tahunan Anda. OneForMind memberitahu Anda kapan harus mencari klien baru dan kapan harus fokus eksekusi.";
-const freelance_feat_2_title = "Project Boards";
-const freelance_feat_2_desc = "Papan Kanban yang elegan untuk menggeser tugas dari 'To-Do' ke 'Done'. Rasakan kepuasan visual saat melihat pekerjaan Anda selesai.";
-const freelance_cta_title = "Bangun Imperium Solo-mu.";
-const freelance_cta_desc = "Freelancing bukan hanya tentang bekerja; ini tentang membangun sistem yang bekerja untuk Anda. Tingkatkan level profesionalisme Anda hari ini.";
-const freelance_cta_btn = "Dapatkan Dashboard Freelance";
-const freelance_faq_title = "FAQ Dasbor Freelancer";
-const freelance_faq_q1 = "Bisakah saya membuat invoice di sini?";
-const freelance_faq_a1 = "OneForMind saat ini fokus pada pelacakan internal. Anda dapat mencatat status invoice, namun untuk pengiriman dokumen fisik, kami menyarankan integrasi dengan partner invoice favorit Anda.";
 const freelance_faq_q2 = "Apakah cocok untuk tim kecil?";
 const freelance_faq_a2 = "Sangat cocok. Meskipun dirancang untuk solopreneur, OneForMind mendukung kolaborasi dasar yang sempurna untuk freelance yang bekerja dengan asisten atau desainer lain.";
 const freelance_faq_q3 = "Apakah data klien saya aman?";
 const freelance_faq_a3 = "Tentu saja. OneForMind menggunakan enkripsi standar industri untuk memastikan strategi bisnis, brief klien, dan catatan keuangan Anda tetap privat dan hanya dapat diakses oleh Anda.";
-const freelance_science_badge = "AGILITAS BISNIS";
-const freelance_science_title = "Kerangka Kerja Solo-Agency";
-const freelance_science_desc = "Memanfaatkan metodologi 'Deep Work' dan 'GTD' (Getting Things Done), kami membantu freelancer beroperasi dengan efisiensi layaknya agensi penuh tanpa biaya overhead yang besar.";
-const freelance_extra_1_title = "Pelacakan Siklus Hidup Klien";
-const freelance_extra_1_desc = "Kelola seluruh perjalanan dari prospek awal hingga pembayaran akhir. Simpan catatan preferensi dan feedback klien untuk memberikan layanan premium setiap saat.";
-const freelance_extra_2_title = "Skala Pendapatan Berkelanjutan";
-const freelance_extra_2_desc = "Don't just work for today. Gunakan proyeksi keuangan untuk merencanakan bulan-bulan berikutnya, menabung untuk peningkatan alat, dan mengembangkan bisnis freelance dengan percaya diri.";
 const mental_meta_title = "Kejernihan Mental - OneForMind";
 const mental_meta_desc = "Kurangi kecemasan dan tingkatkan fokus. Gunakan sistem jurnal reflektif untuk pikiran yang lebih tenang dan tajam.";
 const mental_meta_og_title = "Jernihkan Pikiranmu dengan OneForMind";
@@ -17928,15 +17928,35 @@ const id = {
   freelance_bento_4_title,
   freelance_bento_desc,
   freelance_bento_title,
+  freelance_cta_btn,
+  freelance_cta_desc,
+  freelance_cta_title,
+  freelance_extra_1_desc,
+  freelance_extra_1_title,
+  freelance_extra_2_desc,
   freelance_extra_2_item_1,
   freelance_extra_2_item_2,
   freelance_extra_2_item_3,
+  freelance_extra_2_title,
+  freelance_faq_a1,
+  freelance_faq_q1,
+  freelance_faq_title,
+  freelance_feat_1_desc,
   freelance_feat_1_point_1,
   freelance_feat_1_point_2,
+  freelance_feat_1_title,
+  freelance_feat_2_desc,
   freelance_feat_2_point_1,
   freelance_feat_2_point_2,
+  freelance_feat_2_title,
+  freelance_hero_badge,
   freelance_hero_cta_1,
+  freelance_hero_desc,
   freelance_hero_social_proof,
+  freelance_hero_title_1,
+  freelance_hero_title_2,
+  freelance_meta_desc,
+  freelance_meta_title,
   freelance_mockup_active_status,
   freelance_mockup_active_title,
   freelance_mockup_available,
@@ -17958,6 +17978,17 @@ const id = {
   freelance_mockup_project_2_title,
   freelance_mockup_rating,
   freelance_mockup_role,
+  freelance_prob_1_desc,
+  freelance_prob_1_title,
+  freelance_prob_2_desc,
+  freelance_prob_2_title,
+  freelance_prob_3_desc,
+  freelance_prob_3_title,
+  freelance_prob_desc,
+  freelance_prob_title,
+  freelance_science_badge,
+  freelance_science_desc,
+  freelance_science_title,
   freelance_science_topic_1,
   freelance_science_topic_2,
   freelance_science_topic_3,
@@ -19322,27 +19353,13 @@ const id = {
   student_cta_title,
   student_cta_desc,
   student_cta_btn,
-  freelance_meta_title,
-  freelance_meta_desc,
   freelance_meta_og_title,
   freelance_meta_og_desc,
-  freelance_hero_badge,
-  freelance_hero_title_1,
-  freelance_hero_title_2,
-  freelance_hero_desc,
   freelance_hero_cta,
   freelance_mockup_revenue,
   freelance_mockup_client,
   freelance_mockup_project,
   freelance_mockup_project_sub,
-  freelance_prob_title,
-  freelance_prob_desc,
-  freelance_prob_1_title,
-  freelance_prob_1_desc,
-  freelance_prob_2_title,
-  freelance_prob_2_desc,
-  freelance_prob_3_title,
-  freelance_prob_3_desc,
   freelance_sol_title,
   freelance_sol_desc,
   freelance_sol_step_1_title,
@@ -19352,27 +19369,10 @@ const id = {
   freelance_sol_step_3_title,
   freelance_sol_step_3_desc,
   freelance_feat_title,
-  freelance_feat_1_title,
-  freelance_feat_1_desc,
-  freelance_feat_2_title,
-  freelance_feat_2_desc,
-  freelance_cta_title,
-  freelance_cta_desc,
-  freelance_cta_btn,
-  freelance_faq_title,
-  freelance_faq_q1,
-  freelance_faq_a1,
   freelance_faq_q2,
   freelance_faq_a2,
   freelance_faq_q3,
   freelance_faq_a3,
-  freelance_science_badge,
-  freelance_science_title,
-  freelance_science_desc,
-  freelance_extra_1_title,
-  freelance_extra_1_desc,
-  freelance_extra_2_title,
-  freelance_extra_2_desc,
   mental_meta_title,
   mental_meta_desc,
   mental_meta_og_title,
@@ -24239,7 +24239,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-BJ5MgKe8.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-GKsqY_J1.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-BaUr3KS2.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-DattYdWT.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-CpKKbf5m.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D-snYFKm.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D6l7Z_pa.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-a9aLJQy7.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CFkBm1KS.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BE-Xxmll.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DAFgf65J.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DubKo15c.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-k7vdARMo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-DzeSTMxZ.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-BeZZOPSn.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-ByGi8WDy.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BMQv__8P.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-BOF3bTFz.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-svQP9x_9.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-D8NXKrsR.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-BI8g_9CP.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cuj9T6zJ.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BZCWCF9r.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-RNmAdmmc.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DPqDOjj3.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-w1z6s5Vr.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-x8msOOrn.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BCj31SBC.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DePQBMaS.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Cf-RpfhO.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-B7zGkZ2Q.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B968pYvd.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Tyj_ZcKU.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BYH72XKH.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DIUwfPmF.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-1sGNRf3j.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-DxCGolWx.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-D0A1YVNh.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-iavmTFjQ.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-GKsqY_J1.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-BaUr3KS2.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-DattYdWT.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-CpKKbf5m.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D-snYFKm.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D6l7Z_pa.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-a9aLJQy7.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CFkBm1KS.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BE-Xxmll.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DAFgf65J.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-F2hIQHZZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DubKo15c.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-k7vdARMo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-DzeSTMxZ.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Bzflz8CZ.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-CIa63CB4.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-Cdm5cJV_.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BMQv__8P.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-DAR0XO5K.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-svQP9x_9.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BVnUQj-5.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-CaXs-UCA.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bt5z3zzm.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cuj9T6zJ.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BZCWCF9r.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C_2gSTsR.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-RNmAdmmc.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DPqDOjj3.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-w1z6s5Vr.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-x8msOOrn.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BCj31SBC.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DePQBMaS.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Cf-RpfhO.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DG6jHivD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-B7zGkZ2Q.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DylzF_du.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Dt3WybN4.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BYH72XKH.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D_VFpSmt.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DIUwfPmF.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-1sGNRf3j.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DSBJ2iSO.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-CvCckIe3.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-DxCGolWx.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DjOiFlgE.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-D0A1YVNh.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";
