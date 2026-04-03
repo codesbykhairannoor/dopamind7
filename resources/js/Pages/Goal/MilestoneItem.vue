@@ -16,10 +16,10 @@ const t = (key, fallback) => {
     return res !== key ? res : fallback;
 };
 
-const isEditing = ref(false);
-const isFocused = ref(false);
-const editTitle = ref(props.milestone.title || '');
-const editTargetDate = ref(props.milestone.target_date || null);
+const isEditingActive = ref(false);
+const isInputFocused = ref(false);
+const editTitle = ref(props.milestone?.title || '');
+const editTargetDate = ref(props.milestone?.target_date || null);
 const showDatePicker = ref(false);
 
 let saveTimeout = null;
@@ -37,14 +37,13 @@ const debouncedSave = () => {
 };
 
 const startEdit = () => {
-    isEditing.value = true;
-    editTitle.value = props.milestone.title;
-    editTargetDate.value = props.milestone.target_date;
+    isEditingActive.value = true;
+    editTitle.value = props.milestone?.title || '';
+    editTargetDate.value = props.milestone?.target_date || null;
 };
 
 const handleTitleInput = () => {
     // We no longer debounce save on every keystroke to prevent "jumping" UI
-    // The user's input will stay in local state until blur or enter.
 };
 
 const handleSave = () => {
@@ -55,29 +54,29 @@ const handleSave = () => {
             title: editTitle.value.trim(),
             target_date: editTargetDate.value
         });
-        isEditing.value = false;
+        isEditingActive.value = false;
     }
 };
 
 const handleDatePick = (val) => {
     editTargetDate.value = val;
     showDatePicker.value = false;
-    handleSave(); // Auto-save saat tanggal dipilih
+    handleSave(); 
 };
 
 const handleKeydown = (e) => {
     if (e.key === 'Enter') {
-        e.target.blur(); // Blur will trigger handleSave
+        e.target.blur(); 
     }
     if (e.key === 'Escape') {
-        isEditing.value = false;
-        isFocused.value = false;
-        editTitle.value = props.milestone.title; // Reset
+        isEditingActive.value = false;
+        isInputFocused.value = false;
+        editTitle.value = props.milestone?.title || ''; 
     }
 };
 
 const handleFocus = () => {
-    isFocused.value = true;
+    isInputFocused.value = true;
 };
 
 const dateDisplay = computed(() => {
@@ -86,15 +85,14 @@ const dateDisplay = computed(() => {
     return dayjs(editTargetDate.value).locale(loc).format('DD MMM YYYY');
 });
 
-watch(() => props.milestone.title, (newTitle) => {
-    // Only update if not focused to prevent overwriting user typing
-    if (!isFocused.value) {
-        editTitle.value = newTitle;
+watch(() => props.milestone?.title, (newTitle) => {
+    if (!isInputFocused.value) {
+        editTitle.value = newTitle || '';
     }
 });
 
-watch(() => props.milestone.target_date, (newDate) => {
-    editTargetDate.value = newDate;
+watch(() => props.milestone?.target_date, (newDate) => {
+    editTargetDate.value = newDate || null;
 });
 
 const handleCheckbox = () => {
@@ -121,7 +119,7 @@ const handleCheckbox = () => {
                 v-model="editTitle"
                 @input="handleTitleInput"
                 @keydown="handleKeydown"
-                @blur="() => { isFocused.value = false; handleSave(); }"
+                @blur="() => { isInputFocused.value = false; handleSave(); }"
                 @focus="handleFocus"
                 :placeholder="t('milestone_placeholder', 'Identify next step...')"
                 class="w-full bg-transparent border-none focus:ring-0 p-0 text-sm placeholder:text-slate-300 dark:placeholder:text-slate-600 transition-all font-bold"
