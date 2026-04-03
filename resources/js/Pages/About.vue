@@ -4,7 +4,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
 </script>
 
 <template>
-    <Head title="Manifesto & Filosofi" />
+    <Head title="Manifesto and Filosofi" />
     <GuestLayout>
         
         <div class="pt-32 pb-20 px-6 text-center max-w-4xl mx-auto overflow-hidden">

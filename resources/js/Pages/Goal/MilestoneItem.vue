@@ -16,7 +16,8 @@ const t = (key, fallback) => {
     return res !== key ? res : fallback;
 };
 
-const isEditing = ref(props.milestone.is_new || false);
+const isEditing = ref(false);
+const isFocused = ref(false);
 const editTitle = ref(props.milestone.title || '');
 const editTargetDate = ref(props.milestone.target_date || null);
 const showDatePicker = ref(false);
@@ -42,7 +43,8 @@ const startEdit = () => {
 };
 
 const handleTitleInput = () => {
-    debouncedSave();
+    // We no longer debounce save on every keystroke to prevent "jumping" UI
+    // The user's input will stay in local state until blur or enter.
 };
 
 const handleSave = () => {
@@ -67,7 +69,15 @@ const handleKeydown = (e) => {
     if (e.key === 'Enter') {
         e.target.blur(); // Blur will trigger handleSave
     }
-    if (e.key === 'Escape') isEditing.value = false;
+    if (e.key === 'Escape') {
+        isEditing.value = false;
+        isFocused.value = false;
+        editTitle.value = props.milestone.title; // Reset
+    }
+};
+
+const handleFocus = () => {
+    isFocused.value = true;
 };
 
 const dateDisplay = computed(() => {
@@ -77,7 +87,10 @@ const dateDisplay = computed(() => {
 });
 
 watch(() => props.milestone.title, (newTitle) => {
-    editTitle.value = newTitle;
+    // Only update if not focused to prevent overwriting user typing
+    if (!isFocused.value) {
+        editTitle.value = newTitle;
+    }
 });
 
 watch(() => props.milestone.target_date, (newDate) => {
@@ -108,9 +121,10 @@ const handleCheckbox = () => {
                 v-model="editTitle"
                 @input="handleTitleInput"
                 @keydown="handleKeydown"
-                @blur="handleSave"
+                @blur="() => { isFocused.value = false; handleSave(); }"
+                @focus="handleFocus"
                 :placeholder="t('milestone_placeholder', 'Identify next step...')"
-                class="w-full bg-transparent border-none focus:ring-0 p-0 text-sm placeholder:text-slate-300 dark:placeholder:text-slate-600 transition-all"
+                class="w-full bg-transparent border-none focus:ring-0 p-0 text-sm placeholder:text-slate-300 dark:placeholder:text-slate-600 transition-all font-bold"
                 :class="(milestone.is_completed || milestone.completed) ? 'text-slate-400 dark:text-slate-500 line-through font-medium' : 'text-slate-700 dark:text-slate-200 font-black'"
             />
             
