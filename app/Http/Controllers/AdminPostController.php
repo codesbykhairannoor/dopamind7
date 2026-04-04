@@ -13,8 +13,11 @@ class AdminPostController extends Controller
 {
     public function index()
     {
+        // Safety: Ensure we don't crash if a post is missing a user or category
+        $posts = BlogPost::with(['category', 'user'])->latest()->get();
+        
         return Inertia::render('Admin/Blog/Index', [
-            'posts' => BlogPost::with('category', 'user')->latest()->get()
+            'posts' => $posts
         ]);
     }
 

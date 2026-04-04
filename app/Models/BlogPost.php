@@ -45,11 +45,16 @@ class BlogPost extends Model
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(BlogCategory::class, 'category_id');
+        return $this->belongsTo(BlogCategory::class, 'category_id')->withDefault([
+            'name' => 'General',
+            'slug' => 'general'
+        ]);
     }
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault([
+            'name' => 'Admin'
+        ]);
     }
 }
