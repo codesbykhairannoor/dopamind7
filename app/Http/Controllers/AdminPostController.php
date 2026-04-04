@@ -44,10 +44,16 @@ class AdminPostController extends Controller
         ]);
 
         if ($request->hasFile('featured_image')) {
-            $upload = Cloudinary::upload($request->file('featured_image')->getRealPath(), [
-                'folder' => 'blog'
-            ]);
-            $validated['featured_image'] = $upload->getSecurePath();
+            try {
+                $upload = Cloudinary::upload($request->file('featured_image')->getRealPath(), [
+                    'folder' => 'blog'
+                ]);
+                $validated['featured_image'] = $upload->getSecurePath();
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error('Cloudinary Upload Failed: ' . $e->getMessage());
+                // Fallback to local if you want, or just proceed without image
+                $validated['featured_image'] = $request->file('featured_image')->store('blog', 'public');
+            }
         }
 
         $validated['user_id'] = auth()->id();
@@ -90,10 +96,15 @@ class AdminPostController extends Controller
         ]);
 
         if ($request->hasFile('featured_image')) {
-            $upload = Cloudinary::upload($request->file('featured_image')->getRealPath(), [
-                'folder' => 'blog'
-            ]);
-            $validated['featured_image'] = $upload->getSecurePath();
+            try {
+                $upload = Cloudinary::upload($request->file('featured_image')->getRealPath(), [
+                    'folder' => 'blog'
+                ]);
+                $validated['featured_image'] = $upload->getSecurePath();
+            } catch (\Exception $e) {
+                \Illuminate\Support\Facades\Log::error('Cloudinary Update Failed: ' . $e->getMessage());
+                $validated['featured_image'] = $request->file('featured_image')->store('blog', 'public');
+            }
         }
 
         $validated['slug'] = Str::slug($validated['title']);
