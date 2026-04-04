@@ -36,11 +36,31 @@ class BlogPost extends Model
         'longitude' => 'decimal:8',
     ];
 
-    protected $appends = ['featured_image_url'];
+    protected $appends = ['featured_image_url', 'html_content'];
 
     public function getFeaturedImageUrlAttribute()
     {
-        return $this->featured_image ? \Illuminate\Support\Facades\Storage::disk('public')->url($this->featured_image) : null;
+        if (!$this->featured_image) return null;
+        
+        if (str_starts_with($this->featured_image, 'http')) {
+            return $this->featured_image;
+        }
+
+        $disk = config('filesystems.default');
+        // Identical robust logic to JournalResource
+        return ($disk === 'local') 
+            ? asset('storage/' . $this->featured_image) 
+            : \Illuminate\Support\Facades\Storage::disk($disk)->url($this->featured_image);
+    }
+
+    public function getHtmlContentAttribute()
+    {
+        if (!$this->content) return '';
+        $converter = new \League\CommonMark\CommonMarkConverter([
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
+        ]);
+        return $converter->convert($this->content)->getContent();
     }
 
     public function category(): BelongsTo
