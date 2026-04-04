@@ -564,7 +564,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::get('/create', [AdminPostController::class, 'create'])->name('create');
             Route::post('/', [AdminPostController::class, 'store'])->name('store');
             Route::get('/{post}/edit', [AdminPostController::class, 'edit'])->name('edit');
-            Route::patch('/{post}', [AdminPostController::class, 'update'])->name('update');
+            Route::post('/{post}', [AdminPostController::class, 'update'])->name('update');
             Route::delete('/{post}', [AdminPostController::class, 'destroy'])->name('destroy');
         });
 
