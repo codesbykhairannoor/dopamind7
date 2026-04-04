@@ -24,6 +24,9 @@ class AuthenticatedSessionController extends Controller
 
     public function store(LoginRequest $request): RedirectResponse
     {
+        // 🔒 Stay Logged In: Force remember me to prevent accidental kick-outs
+        $request->merge(['remember' => true]);
+        
         $request->authenticate();
 
         $request->session()->regenerate();
