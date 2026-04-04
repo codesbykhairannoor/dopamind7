@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { Head, useForm, router } from '@inertiajs/vue3';
+import { Head, useForm, router, Link } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
@@ -34,8 +34,13 @@ const onFileChange = (e) => {
 
 const submit = () => {
     if (isEditing) {
-        form.post(route('admin.blog.update', props.post.id) + '?_method=PATCH', {
-            forceFormData: true
+        // 🔥 LEVEL-JOURNAL: Use POST + _method=PATCH for reliable image uploads
+        form.post(route('admin.blog.update', props.post.id), {
+            forceFormData: true,
+            _method: 'PATCH', // Manual spoofing is safer for file uploads in Inertia
+            onSuccess: () => {
+                // Optional: success notification
+            }
         });
     } else {
         form.post(route('admin.blog.store'), {
