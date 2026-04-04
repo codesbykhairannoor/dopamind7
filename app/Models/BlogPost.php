@@ -36,7 +36,7 @@ class BlogPost extends Model
         'longitude' => 'decimal:8',
     ];
 
-    protected $appends = ['featured_image_url', 'html_content'];
+    protected $appends = ['featured_image_url', 'html_content', 'html_title'];
 
     public function getFeaturedImageUrlAttribute()
     {
@@ -46,11 +46,19 @@ class BlogPost extends Model
             return $this->featured_image;
         }
 
-        $disk = config('filesystems.default');
-        // Identical robust logic to JournalResource
-        return ($disk === 'local') 
-            ? asset('storage/' . $this->featured_image) 
-            : \Illuminate\Support\Facades\Storage::disk($disk)->url($this->featured_image);
+        // 🔥 MIRRORING JOURNAL TRACKER LOGIC (100% RELIABLE)
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+        return asset(\Illuminate\Support\Facades\Storage::disk($disk)->url($this->featured_image));
+    }
+
+    public function getHtmlTitleAttribute()
+    {
+        if (!$this->title) return '';
+        $converter = new \League\CommonMark\CommonMarkConverter([
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
+        ]);
+        return str_replace(['<p>', '</p>'], '', $converter->convert($this->title)->getContent());
     }
 
     public function getHtmlContentAttribute()
