@@ -7,6 +7,7 @@ use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Inertia\Inertia;
 
 class AdminPostController extends Controller
@@ -43,8 +44,10 @@ class AdminPostController extends Controller
         ]);
 
         if ($request->hasFile('featured_image')) {
-            $path = $request->file('featured_image')->store('blog', 'public');
-            $validated['featured_image'] = $path;
+            $upload = Cloudinary::upload($request->file('featured_image')->getRealPath(), [
+                'folder' => 'blog'
+            ]);
+            $validated['featured_image'] = $upload->getSecurePath();
         }
 
         $validated['user_id'] = auth()->id();
@@ -87,12 +90,10 @@ class AdminPostController extends Controller
         ]);
 
         if ($request->hasFile('featured_image')) {
-            // Hapus file lama jika ada
-            if ($post->featured_image) {
-                Storage::disk('public')->delete($post->featured_image);
-            }
-            $path = $request->file('featured_image')->store('blog', 'public');
-            $validated['featured_image'] = $path;
+            $upload = Cloudinary::upload($request->file('featured_image')->getRealPath(), [
+                'folder' => 'blog'
+            ]);
+            $validated['featured_image'] = $upload->getSecurePath();
         }
 
         $validated['slug'] = Str::slug($validated['title']);

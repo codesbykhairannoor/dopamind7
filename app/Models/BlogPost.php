@@ -42,11 +42,12 @@ class BlogPost extends Model
     {
         if (!$this->featured_image) return null;
         
+        // 🔥 CLOUDINARY MODE: If starts with http, return it directly
         if (str_starts_with($this->featured_image, 'http')) {
             return $this->featured_image;
         }
 
-        // 🔥 MIRRORING JOURNAL TRACKER LOGIC (100% RELIABLE)
+        // Fallback for old local images
         $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
         return asset(\Illuminate\Support\Facades\Storage::disk($disk)->url($this->featured_image));
     }
