@@ -63,6 +63,7 @@ class HandleInertiaRequests extends Middleware
             },
             'csrf_token' => csrf_token(),
             'midtrans_is_production' => config('midtrans.is_production'),
+            'session_id' => $request->session()->getId(),
         ]);
     }
 }
