@@ -109,12 +109,20 @@ const triggerFileInput = () => fileInputRef.value.click();
                     </button>
                 </div>
 
-                <div v-if="editor" class="sticky top-20 z-40 bg-white/90 backdrop-blur p-2 rounded-xl border border-slate-200 shadow-sm flex gap-1 mb-6 w-fit">
-                    <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'bg-slate-200': editor.isActive('bold') }" class="w-8 h-8 rounded-lg font-black hover:bg-slate-100">B</button>
-                    <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'bg-slate-200': editor.isActive('italic') }" class="w-8 h-8 rounded-lg italic font-bold hover:bg-slate-100">I</button>
-                    <div class="w-px h-5 bg-slate-200 mx-1 self-center"></div>
-                    <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'bg-slate-200': editor.isActive('heading', { level: 2 }) }" class="px-2 h-8 rounded-lg font-black text-sm hover:bg-slate-100">H2</button>
-                    <button @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'bg-slate-200': editor.isActive('bulletList') }" class="w-8 h-8 rounded-lg font-bold hover:bg-slate-100">•</button>
+                <div v-if="editor" class="sticky top-20 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur p-2 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl flex gap-1 mb-10 w-fit transition-all duration-300">
+                    <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'bg-indigo-600 text-white shadow-lg shadow-indigo-100': editor.isActive('bold') }" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95">
+                        <OneForMindIcon name="bold" size="18" stroke-width="3" />
+                    </button>
+                    <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'bg-indigo-600 text-white shadow-lg shadow-indigo-100': editor.isActive('italic') }" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95">
+                        <OneForMindIcon name="italic" size="18" stroke-width="3" />
+                    </button>
+                    <div class="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 self-center"></div>
+                    <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'bg-indigo-600 text-white shadow-lg shadow-indigo-100': editor.isActive('heading', { level: 2 }) }" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95">
+                        <OneForMindIcon name="heading" size="18" stroke-width="3" />
+                    </button>
+                    <button @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'bg-indigo-600 text-white shadow-lg shadow-indigo-100': editor.isActive('bulletList') }" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95">
+                        <OneForMindIcon name="list" size="18" stroke-width="3" />
+                    </button>
                 </div>
 
                 <editor-content :editor="editor" />

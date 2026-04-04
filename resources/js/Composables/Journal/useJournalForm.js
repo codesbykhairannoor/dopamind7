@@ -225,8 +225,8 @@ export function useJournalForm(journal, date) {
 
     watch(() => [form.title, form.content, form.mood], (newVal, oldVal) => {
         if (oldVal[0] === undefined && !newVal[0]) return;
-        const oldText = oldVal[1] ? oldVal[1].replace(/<[^>]*>?/gm, '').trim() : '';
-        const newText = newVal[1] ? newVal[1].replace(/<[^>]*>?/gm, '').trim() : '';
+        const oldText = oldVal[1] ? oldVal[1].replace(/<[^>]*>?/gm, '') : '';
+        const newText = newVal[1] ? newVal[1].replace(/<[^>]*>?/gm, '') : '';
         if (oldVal[0] === newVal[0] && oldVal[2] === newVal[2] && oldText === newText) return;
         
         triggerAutoSave();
