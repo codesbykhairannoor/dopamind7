@@ -24,12 +24,15 @@ class AuthenticatedSessionController extends Controller
 
     public function store(LoginRequest $request): RedirectResponse
     {
-        // LoginRequest secara default sudah membawa state 'remember' ke Auth::attempt
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        // Menggunakan intended agar user tidak selalu dilempar ke root dashboard jika mereka punya link tujuan lain
+        // 🔥 Role-Based Redirect: Admin go to Power Room, Users go to Dashboard
+        if ($request->user()->is_admin) {
+            return redirect()->intended(route('admin.blog.index'));
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

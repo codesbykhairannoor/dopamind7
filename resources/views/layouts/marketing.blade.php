@@ -82,14 +82,21 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "OneForMind",
+      "alternateName": "Oneformind App",
       "url": "{{ url('/') }}",
-      "logo": "{{ asset('favicon.svg') }}",
+      "logo": "{{ asset('favicon.png') }}",
+      "image": "{{ asset('images/og-image.png') }}",
       "sameAs": [
         "https://x.com/OneForMind",
         "https://instagram.com/oneformind",
         "https://facebook.com/oneformind"
       ],
-      "description": "{{ __('meta_global_description') }}"
+      "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "oneformindapp@gmail.com",
+          "contactType": "customer service"
+      },
+      "description": "The unified productivity OS for finances, atomic habits, and daily planning."
     }
     </script>
     <script type="application/ld+json">
@@ -100,7 +107,7 @@
       "url": "{{ url('/') }}",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "{{ url('/') }}/search?q={search_term_string}",
+        "target": "{{ url('/') }}/resources/blog?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }

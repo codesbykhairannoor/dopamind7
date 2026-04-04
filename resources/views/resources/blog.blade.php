@@ -71,8 +71,8 @@
                     
                     <a href="{{ route('resources.blog.show', $featuredPost->slug) }}" class="block relative bg-white rounded-[3rem] overflow-hidden border border-white shadow-2xl transform transition duration-500 hover:scale-[1.01]">
                         <div class="h-[300px] md:h-[450px] relative overflow-hidden bg-indigo-900">
-                            @if($featuredPost->featured_image)
-                                <img src="{{ asset('storage/' . $featuredPost->featured_image) }}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700" alt="{{ $featuredPost->title }}">
+                            @if($featuredPost->featured_image_url)
+                                <img src="{{ $featuredPost->featured_image_url }}" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition duration-700" alt="{{ $featuredPost->title }}">
                             @else
                                 <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-700"></div>
                             @endif
@@ -107,16 +107,16 @@
                 @forelse($remainingPosts as $post)
                     <article class="group relative flex flex-col bg-white rounded-3xl border border-slate-200/60 overflow-hidden hover:shadow-[0_20px_50px_rgba(79,70,229,0.08)] hover:-translate-y-1 transition-all duration-500">
                         <a href="{{ route('resources.blog.show', $post->slug) }}" class="block aspect-[16/10] overflow-hidden relative">
-                            @if($post->featured_image)
-                                <img src="{{ asset('storage/' . $post->featured_image) }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="{{ $post->title }}">
+                            @if($post->featured_image_url)
+                                <img src="{{ $post->featured_image_url }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="{{ $post->title }}">
                             @else
-                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center text-5xl">📄</div>
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center text-5xl italic font-black text-indigo-200/30 tracking-tighter">OneForMind</div>
                             @endif
                             
                             {{-- Category Badge --}}
                             @if($post->category)
                                 <div class="absolute top-4 left-4 z-10">
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white/90 backdrop-blur-md shadow-sm border border-slate-100/50 text-{{ $post->category->color }}-600">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white/90 backdrop-blur-md shadow-sm border border-slate-100/50" style="color: {{ $post->category->color }}">
                                         {{ $post->category->name }}
                                     </span>
                                 </div>

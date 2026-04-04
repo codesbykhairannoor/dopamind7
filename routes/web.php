@@ -278,7 +278,7 @@ Route::get('/resources/blog', function () {
 })->name('resources.blog');
 
 Route::get('/resources/blog/{slug}', function ($slug) {
-    $post = \App\Models\BlogPost::with('category')->where('slug', $slug)
+    $post = \App\Models\BlogPost::with('category', 'user')->where('slug', $slug)
         ->where('is_published', true)
         ->where(
             function ($query) {
@@ -288,7 +288,14 @@ Route::get('/resources/blog/{slug}', function ($slug) {
         )
         ->firstOrFail();
 
-    return view('resources.post', compact('post'));
+    // Fetch RELATED POSTS (Same category, excluding current post)
+    $related = \App\Models\BlogPost::where('category_id', $post->category_id)
+        ->where('id', '!=', $post->id)
+        ->where('is_published', true)
+        ->limit(3)
+        ->get();
+
+    return view('resources.post', compact('post', 'related'));
 })->name('resources.blog.show');
 
 Route::get('/resources/stories', function () {

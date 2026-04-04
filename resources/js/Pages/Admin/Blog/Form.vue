@@ -48,6 +48,10 @@ onMounted(() => {
     if (!form.category_id && props.categories?.length) {
         form.category_id = props.categories[0].id;
     }
+    // Sync preview from database if editing
+    if (props.post?.featured_image_url) {
+        previewUrl.value = props.post.featured_image_url;
+    }
 });
 </script>
 

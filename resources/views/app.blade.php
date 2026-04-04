@@ -162,6 +162,59 @@
 
     @inertiaHead
 
+    {{-- 🧩 STRUCTURED DATA (Sitelinks & Organization) --}}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "OneForMind",
+      "url": "{{ url('/') }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ url('/') }}/resources/blog?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "{{ app()->getLocale() === 'id' ? 'Harga & Paket' : 'Pricing' }}",
+          "url": "{{ route('pricing.index') }}"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "{{ app()->getLocale() === 'id' ? 'Masuk' : 'Login' }}",
+          "url": "{{ route('login') }}"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "{{ app()->getLocale() === 'id' ? 'Daftar Sekarang' : 'Sign Up' }}",
+          "url": "{{ route('register') }}"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Blog & Resources",
+          "url": "{{ route('resources.blog') }}"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "Habit Tracker",
+          "url": "{{ route('features.habit') }}"
+        }
+      ]
+    }
+    </script>
+
     <style>
         /* Reset body top dari sisa-sisa Google Translate */
         body {
