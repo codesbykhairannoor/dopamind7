@@ -106,25 +106,39 @@ onMounted(() => {
 
             </div>
 
-            <!-- 📱 MOBILE VIEW -->
-            <div v-else class="space-y-8 pb-32">
-                 <NeuralBridge module="Planner" />
+            <!-- 📱 MOBILE VIEW: WIDE TIMELINE FOCUS -->
+            <div v-else class="space-y-12 pb-40 px-2">
+                 <NeuralBridge id="mobile-planner-neural" module="Planner" />
                  
-                 <!-- Mobile Timeline (Vertical Step-Indicator) -->
-                 <PlannerMobileTimeline 
-                    :scheduledTasks="scheduledTasks"
-                    :openModal="openModal"
-                    :toggleComplete="toggleComplete"
-                    :getTypeColor="getTypeColor"
-                 />
+                 <!-- Wide Timeline for Mobile (As requested for "luas" view) -->
+                 <div id="mobile-wide-timeline" class="w-full overflow-hidden">
+                    <div class="flex items-center justify-between px-2 mb-4">
+                        <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Flow Timeline</h3>
+                    </div>
+                    <PlannerTimeline 
+                        :timeSlots="timeSlots"
+                        :scheduledTasks="scheduledTasks"
+                        :onDrop="onDrop"
+                        :onDragStart="onDragStart"
+                        :openModal="openModal"
+                        :toggleComplete="toggleComplete" 
+                        :getTypeColor="getTypeColor"
+                    />
+                 </div>
 
-                 <PlannerSidebar 
+                 <!-- Daily Overview Sidebar at Bottom -->
+                 <div id="mobile-daily-overview" class="space-y-6 pt-8 border-t border-slate-100 dark:border-slate-800">
+                    <div class="px-2">
+                        <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Daily Overview</h3>
+                    </div>
+                    <PlannerSidebar 
                         :stats="scheduledStats"
                         v-model:localNotes="localNotes"
                         v-model:localMeals="localMeals"
                         v-model:localWater="localWater"
                         v-model:localTaskBox="localTaskBox"
-                 />
+                    />
+                 </div>
             </div>
 
         </div>
