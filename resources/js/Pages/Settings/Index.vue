@@ -65,7 +65,7 @@ const confirmLogout = () => {
             <!-- Header Section -->
             <div class="mb-12 text-center md:text-left">
                 <h1 class="text-4xl font-black text-slate-900 dark:text-white tracking-tight transition-colors duration-500">{{ $t('settings_header', 'Account Settings') }}</h1>
-                <p class="text-slate-400 dark:text-slate-500 font-bold uppercase tracking-[0.2em] text-[10px] mt-2 transition-colors duration-500">{{ $t('settings_subheader', 'Customize your productivity experience') }}</p>
+                <p class="text-slate-400 dark:text-slate-500 font-bold mt-2 transition-colors duration-500">{{ $t('settings_subheader', 'Customize your productivity experience') }}</p>
             </div>
 
             <!-- Profile Overview Card -->
@@ -83,8 +83,8 @@ const confirmLogout = () => {
                     <h2 class="text-3xl font-black text-slate-800 dark:text-slate-100 truncate leading-tight transition-colors duration-500">{{ user?.name || 'User' }}</h2>
                     <p class="text-slate-400 dark:text-slate-500 font-bold mt-1 transition-colors duration-500">{{ user?.email }}</p>
                     <div class="flex flex-wrap justify-center md:justify-start gap-2 mt-4">
-                        <span class="px-4 py-1.5 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full text-[10px] font-black uppercase tracking-wider transition-colors duration-500">Platinum User</span>
-                        <span class="px-4 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 rounded-full text-[10px] font-black uppercase tracking-wider transition-colors duration-500">ID: #{{ user?.id }}</span>
+                        <span class="px-4 py-1.5 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full text-[10px] font-black transition-colors duration-500">Platinum User</span>
+                        <span class="px-4 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 rounded-full text-[10px] font-black transition-colors duration-500">Member #{{ user?.id }}</span>
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@ const confirmLogout = () => {
                         <div class="bg-white dark:bg-slate-900 rounded-[2.2rem] p-4 shadow-sm border border-slate-100 dark:border-slate-800 space-y-3 transition-all duration-500">
                             <!-- Language Switcher -->
                             <div class="flex items-center justify-between p-4 bg-slate-50/50 dark:bg-slate-800/50 rounded-[1.5rem] border border-slate-100/50 dark:border-slate-700/50 transition-colors duration-500">
-                                <span class="font-black text-slate-800 dark:text-slate-200 text-xs uppercase tracking-widest transition-colors duration-500">{{ $t('settings_lang_label', 'Language') }}</span>
+                                <span class="font-black text-slate-800 dark:text-slate-200 text-xs transition-colors duration-500">{{ $t('settings_lang_label', 'Language') }}</span>
                                 <div class="flex gap-1 p-1 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/50 dark:border-slate-700/50 shadow-inner transition-colors duration-500">
                                     <button @click="switchLang('id')" :class="currentLocale === 'id' ? 'bg-indigo-600 text-white shadow-lg dark:shadow-none' : 'text-slate-400 dark:text-slate-500'" class="px-4 py-1.5 rounded-lg text-[9px] font-black transition-all">ID</button>
                                     <button @click="switchLang('en')" :class="currentLocale === 'en' ? 'bg-indigo-600 text-white shadow-lg dark:shadow-none' : 'text-slate-400 dark:text-slate-500'" class="px-4 py-1.5 rounded-lg text-[9px] font-black transition-all">EN</button>
@@ -126,7 +126,7 @@ const confirmLogout = () => {
                             <!-- Logout Button -->
                             <button @click="confirmLogout" class="w-full bg-rose-50 dark:bg-rose-500/10 text-rose-500 dark:text-rose-400 font-black py-4 rounded-[1.5rem] border border-rose-100 dark:border-rose-500/20 flex items-center justify-center gap-3 active:scale-[0.98] transition-all hover:bg-rose-100/50 dark:hover:bg-rose-500/20">
                                 <OneForMindIcon name="logout" size="18" stroke-width="2.5" />
-                                <span class="text-[10px] uppercase tracking-[0.2em] font-black">Sign Out</span>
+                                <span class="text-[10px] font-black">Sign Out</span>
                             </button>
                         </div>
                     </div>

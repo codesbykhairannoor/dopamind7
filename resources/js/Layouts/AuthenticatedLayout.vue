@@ -272,7 +272,7 @@ watch(() => page.url, () => {
                           class="flex flex-col items-center justify-center gap-1 transition-all flex-1"
                           :class="route().current('dashboard') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="dashboard" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-tighter">{{ $t('nav_item_dashboard') }}</span>
+                        <span class="text-[9px] font-black">{{ $t('nav_item_dashboard') }}</span>
                     </Link>
                     
                     <!-- Habits -->
@@ -280,7 +280,7 @@ watch(() => page.url, () => {
                           class="flex flex-col items-center justify-center gap-1 transition-all flex-1"
                           :class="route().current('habits.*') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="habit" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-tighter">{{ $t('nav_item_habit') }}</span>
+                        <span class="text-[9px] font-black">{{ $t('nav_item_habit') }}</span>
                     </Link>
 
                     <!-- AI COACH (CENTER - PROTRUDING) -->
@@ -290,7 +290,7 @@ watch(() => page.url, () => {
                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                            <OneForMindIcon name="sparkles" size="26" class="text-white relative z-10" />
                         </div>
-                        <span class="mt-1 text-[9px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400">OS AI</span>
+                        <span class="mt-1 text-[9px] font-black text-indigo-600 dark:text-indigo-400">OS AI</span>
                     </Link>
 
                     <!-- More Launcher -->
@@ -298,7 +298,7 @@ watch(() => page.url, () => {
                           class="flex flex-col items-center justify-center gap-1 transition-all flex-1"
                           :class="route().current('more.index') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="menu" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-tighter">{{ $t('nav_item_more') }}</span>
+                        <span class="text-[9px] font-black">{{ $t('nav_item_more') }}</span>
                     </Link>
 
                     <!-- Settings -->
@@ -306,7 +306,7 @@ watch(() => page.url, () => {
                           class="flex flex-col items-center justify-center gap-1 transition-all flex-1"
                           :class="route().current('settings.*') ? 'text-indigo-600' : 'text-slate-400'">
                         <OneForMindIcon name="settings" :size="20" stroke-width="2.5" />
-                        <span class="text-[9px] font-black uppercase tracking-tighter">{{ $t('nav_item_settings') }}</span>
+                        <span class="text-[9px] font-black">{{ $t('nav_item_settings') }}</span>
                     </Link>
                 </div>
             </div>
