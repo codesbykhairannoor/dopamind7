@@ -343,6 +343,19 @@
                 opacity: 1;
             }
         }
+
+        /* 📱 Global Mobile Button Scaling: Make them tight & premium */
+        @media (max-width: 768px) {
+            header a, section a, footer a, header button, section button {
+                padding-left: 1.25rem !important; /* px-5 */
+                padding-right: 1.25rem !important;
+                padding-top: 0.75rem !important; /* py-3 */
+                padding-bottom: 0.75rem !important;
+                font-size: 0.875rem !important; /* text-sm */
+            }
+            h1 { font-size: 2.25rem !important; line-height: 2.5rem !important; } /* text-4xl */
+            h2 { font-size: 1.875rem !important; line-height: 2.25rem !important; } /* text-3xl */
+        }
     </style>
     @if(env('VITE_GA_MEASUREMENT_ID'))
         <script>
@@ -701,6 +714,19 @@
                                 class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">Log In</a>
                             <a @click="isInterfacing = true" hx-boost="false" href="{{ route('register') }}"
                                 class="px-5 py-2 bg-indigo-600 text-white rounded-full text-[13px] font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
+                                Get Started
+                            </a>
+                        @endauth
+                    </div>
+
+                    {{-- MOBILE ACTIONS (Dashboard/Get Started) --}}
+                    <div class="flex lg:hidden items-center gap-2">
+                        @auth
+                            <a hx-boost="false" href="{{ route('dashboard') }}"
+                                class="px-4 py-1.5 bg-slate-900 text-white rounded-full text-[11px] font-bold shadow-sm">Dashboard</a>
+                        @else
+                            <a hx-boost="false" href="{{ route('register') }}"
+                                class="px-4 py-1.5 bg-indigo-600 text-white rounded-full text-[11px] font-bold shadow-sm shadow-indigo-100">
                                 Get Started
                             </a>
                         @endauth
