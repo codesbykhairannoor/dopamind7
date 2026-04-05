@@ -72,8 +72,8 @@ const changeYear = (offset) => {
               class="w-full flex items-center justify-between gap-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 hover:shadow-sm transition-all active:scale-95"
             >
               <div class="flex flex-col items-start leading-none">
-                <span class="text-[9px] text-slate-400 dark:text-slate-500 uppercase tracking-tighter mb-0.5">{{ $t('label_period') }}</span>
-                <span class="text-xs uppercase tracking-wide">{{ currentMonth }}</span>
+                <span class="text-[9px] text-slate-400 dark:text-slate-500 mb-0.5">{{ $t('label_period') }}</span>
+                <span class="text-xs">{{ currentMonth }}</span>
               </div>
               <div class="p-1 bg-white dark:bg-slate-800 border shadow-sm rounded-lg border-slate-100 dark:border-slate-700 flex items-center justify-center">
                 <OneForMindIcon name="chevron-down" size="12" stroke-width="3" class="text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" />
@@ -101,7 +101,7 @@ const changeYear = (offset) => {
                       :key="month" 
                       @click="selectMonth(index)"
                       :class="[
-                        'py-3 rounded-2xl text-[10px] font-black transition-all uppercase tracking-widest',
+                        'py-3 rounded-2xl text-[10px] font-black transition-all',
                         activeMonthNum === index 
                           ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none' 
                           : 'hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400'
@@ -117,7 +117,7 @@ const changeYear = (offset) => {
 
           <div class="hidden lg:flex items-center gap-3 px-4 border-x border-slate-100/80 dark:border-slate-800/80">
             <div class="text-right">
-              <p class="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-none mb-1">{{ $t('label_daily') }}</p>
+              <p class="text-[9px] font-black text-slate-400 dark:text-slate-500 leading-none mb-1">{{ $t('label_daily') }}</p>
               <p class="text-lg font-black text-slate-700 dark:text-slate-200 leading-none">{{ todayProgress }}%</p>
             </div>
             <div class="relative w-10 h-10">
@@ -136,7 +136,7 @@ const changeYear = (offset) => {
             <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
               <OneForMindIcon name="plus" size="16" stroke-width="3" />
             </div>
-            <span class="hidden md:inline uppercase text-xs tracking-widest">{{ $t('btn_add_habit') }}</span>
+            <span class="hidden md:inline text-xs">{{ $t('btn_add_habit') }}</span>
           </button>
         </div>
       </div>
@@ -145,7 +145,7 @@ const changeYear = (offset) => {
         <div v-if="showHint" class="flex items-center justify-between mt-4 p-2 bg-indigo-50/50 dark:bg-indigo-500/10 rounded-xl border border-indigo-100/50 dark:border-indigo-500/20">
           <div class="flex items-center gap-6 px-2 overflow-x-auto no-scrollbar">
             <div class="flex items-center gap-2 shrink-0">
-              <span class="flex items-center justify-center w-5 h-5 bg-indigo-600 text-white text-[8px] rounded-md font-bold shadow-sm md:hidden">TAP</span>
+              <span class="flex items-center justify-center w-5 h-5 bg-indigo-600 text-white text-[8px] rounded-md font-bold shadow-sm md:hidden px-1">Tap</span>
               <span class="hidden md:flex items-center justify-center w-5 h-5 bg-indigo-600 text-white text-[8px] rounded-md font-bold shadow-sm">L</span>
               <span class="text-[10px] font-bold text-indigo-900/60 dark:text-indigo-400 capitalize tracking-tight">
                 <span class="md:hidden">{{ $t('hint_tap_done') }}</span>
@@ -153,7 +153,7 @@ const changeYear = (offset) => {
               </span>
             </div>
             <div class="flex items-center gap-2 shrink-0 border-l border-indigo-200/50 dark:border-indigo-800 pl-6">
-              <span class="flex items-center justify-center w-5 h-5 bg-white dark:bg-slate-800 text-slate-400 dark:text-slate-500 text-[8px] rounded-md font-bold border border-slate-200 dark:border-slate-700 shadow-sm md:hidden">HOLD</span>
+              <span class="flex items-center justify-center px-1 bg-white dark:bg-slate-800 text-slate-400 dark:text-slate-500 text-[8px] rounded-md font-bold border border-slate-200 dark:border-slate-700 shadow-sm md:hidden">Hold</span>
               <span class="hidden md:flex items-center justify-center w-5 h-5 bg-white dark:bg-slate-800 text-slate-400 dark:text-slate-500 text-[8px] rounded-md font-bold border border-slate-200 dark:border-slate-700 shadow-sm">R</span>
               <span class="text-[10px] font-bold text-indigo-900/60 dark:text-indigo-400 capitalize tracking-tight">
                 <span class="md:hidden">{{ $t('hint_hold_skip') }}</span>

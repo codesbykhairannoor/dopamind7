@@ -40,7 +40,7 @@ const todayDisplay = computed(() => {
           class="flex items-center justify-center flex-1 h-11 px-3 md:px-6 transition shadow-lg bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-indigo-100 dark:shadow-indigo-900/40 gap-2 active:scale-95 whitespace-nowrap min-w-0"
         >
           <OneForMindIcon name="plus" size="16" stroke-width="3" class="text-white" />
-          <span class="text-[11px] font-black text-white tracking-tight uppercase truncate">{{ $t('goal_btn_add', 'Set New Goal') }}</span>
+          <span class="text-[11px] font-black text-white tracking-tight truncate">{{ $t('goal_btn_add', 'Set New Goal') }}</span>
         </button>
       </div>
     </div>

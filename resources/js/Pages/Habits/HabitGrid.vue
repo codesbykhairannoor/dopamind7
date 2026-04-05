@@ -149,10 +149,10 @@ onMounted(() => {
                     <!-- Name & Progress -->
                     <div class="flex-1 min-w-0">
                         <div class="flex items-center justify-between gap-2">
-                            <h4 class="font-bold truncate text-sm flex items-center gap-1.5"
-                                :class="habit.is_stagnant ? 'text-slate-400 dark:text-slate-500' : 'text-slate-700 dark:text-white'">
-                                {{ habit.name }}
-                                <span v-if="habit.is_stagnant" class="text-[8px] font-black bg-rose-50 text-rose-500 px-1 rounded-md uppercase">Dormant</span>
+                            <h4 class="font-bold text-sm flex items-center flex-wrap gap-1.5"
+                                :class="habit.is_stagnant ? 'text-slate-400 dark:text-slate-50' : 'text-slate-700 dark:text-white'">
+                                <span class="line-clamp-2 break-words leading-tight">{{ habit.name }}</span>
+                                <span v-if="habit.is_stagnant" class="text-[8px] font-black bg-rose-50 text-rose-500 px-1 rounded-md">Dormant</span>
                             </h4>
                             <!-- Mobile Delete/Edit Mini Menu -->
                             <div class="flex items-center gap-1 opacity-100">
@@ -216,7 +216,7 @@ onMounted(() => {
             <div class="overflow-x-auto custom-scrollbar relative select-none">
 
                     <div class="sticky top-0 z-30 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 flex shadow-sm">
-                        <div class="sticky left-0 z-40 bg-white dark:bg-slate-900 w-72 shrink-0 border-r border-slate-100 dark:border-slate-800 p-4 flex items-center font-bold text-slate-400 dark:text-slate-500 text-xs uppercase tracking-wider shadow-[10px_0_20px_rgba(0,0,0,0.02)] dark:shadow-[10px_0_20px_rgba(0,0,0,0.2)]">
+                        <div class="sticky left-0 z-40 bg-white dark:bg-slate-900 w-72 shrink-0 border-r border-slate-100 dark:border-slate-800 p-4 flex items-center font-bold text-slate-400 dark:text-slate-500 text-xs capitalize shadow-[10px_0_20px_rgba(0,0,0,0.02)] dark:shadow-[10px_0_20px_rgba(0,0,0,0.2)]">
                             <div class="w-8 shrink-0"></div> 
                             <span class="truncate"> {{ $t('habit_name') }}</span>
                         </div>
@@ -226,7 +226,7 @@ onMounted(() => {
                                 <span class="text-xs font-black text-slate-600 dark:text-slate-300" :class="day.isToday ? 'text-indigo-600 bg-indigo-50 dark:bg-indigo-500/10 px-1.5 rounded' : ''">{{ day.dayNumber }}</span>
                             </div>
                         </div>
-                        <div class="flex shrink-0 sticky right-0 z-40 bg-white dark:bg-slate-900 w-32 p-4 border-l border-slate-100 dark:border-slate-800 items-center justify-end font-bold text-slate-400 dark:text-slate-500 text-xs uppercase tracking-wider shadow-[-10px_0_20px_rgba(255,255,255,0.8)] dark:shadow-[-10px_0_20px_rgba(15,23,42,0.8)]">
+                        <div class="flex shrink-0 sticky right-0 z-40 bg-white dark:bg-slate-900 w-32 p-4 border-l border-slate-100 dark:border-slate-800 items-center justify-end font-bold text-slate-400 dark:text-slate-500 text-xs capitalize shadow-[-10px_0_20px_rgba(255,255,255,0.8)] dark:shadow-[-10px_0_20px_rgba(15,23,42,0.8)]">
                             {{ $t('habit_table_total') }}
                         </div>
                     </div>
@@ -267,7 +267,7 @@ onMounted(() => {
                                             <span v-if="habit.streak > 1" class="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-black animate-pulse shadow-sm border border-orange-100/50 dark:border-orange-500/20">
                                                 {{ habit.streak }} <span class="text-xs">🔥</span>
                                             </span>
-                                            <span v-if="habit.is_stagnant" class="text-[8px] font-black bg-rose-50 text-rose-500 px-1.5 py-0.5 rounded-md uppercase tracking-tighter">Dormant</span>
+                                            <span v-if="habit.is_stagnant" class="text-[8px] font-black bg-rose-50 text-rose-500 px-1.5 py-0.5 rounded-md">Dormant</span>
                                         </h4>
                                         <div class="flex items-center gap-1 text-[10px] font-medium text-slate-400 dark:text-slate-500 mb-1.5 mt-0.5">
                                             <span>🎯 Target: {{ habit.monthly_target }}</span>

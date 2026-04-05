@@ -39,15 +39,15 @@ const todayDisplay = computed(() => {
                 
                 <div class="hidden lg:flex items-center gap-5 px-5 border-x border-slate-200 dark:border-slate-800 h-10 transition-colors duration-500">
                     <div class="flex flex-col justify-center">
-                        <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-none mb-1 transition-colors duration-500">{{ $t('journal_tasks', 'Tugas') }}</span>
+                        <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 leading-none mb-1 transition-colors duration-500">{{ $t('journal_tasks', 'Tugas') }}</span>
                         <span class="text-sm font-black text-slate-700 dark:text-slate-300 leading-none transition-colors duration-500">{{ synergy.tasks_completed }}/{{ synergy.tasks_total }}</span>
                     </div>
                     <div class="flex flex-col justify-center">
-                        <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-none mb-1 transition-colors duration-500">{{ $t('journal_habit', 'Habit') }}</span>
+                        <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 leading-none mb-1 transition-colors duration-500">{{ $t('journal_habit', 'Habit') }}</span>
                         <span class="text-sm font-black text-slate-700 dark:text-slate-300 leading-none transition-colors duration-500">{{ synergy.habits_completed }}</span>
                     </div>
                     <div class="flex flex-col justify-center">
-                        <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-none mb-1 transition-colors duration-500">{{ $t('journal_expense', 'Keluar') }}</span>
+                        <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 leading-none mb-1 transition-colors duration-500">{{ $t('journal_expense', 'Keluar') }}</span>
                         <span class="text-sm font-black text-slate-700 dark:text-slate-300 leading-none font-mono transition-colors duration-500">{{ formatMoney(synergy.expense_total) }}</span>
                     </div>
                 </div>

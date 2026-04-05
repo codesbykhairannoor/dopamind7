@@ -74,7 +74,7 @@ const closeDatePicker = () => {
                 </div>
 
                 <div class="flex-1 w-full md:px-12 max-w-4xl order-3 md:order-none mt-2 md:mt-0"> 
-                    <div class="flex justify-between text-[11px] font-black text-slate-400 dark:text-slate-500 mb-1.5 uppercase tracking-widest transition-colors duration-500">
+                    <div class="flex justify-between text-[11px] font-black text-slate-400 dark:text-slate-500 mb-1.5 transition-colors duration-500">
                         <span>{{ $t('header_progress', 'Progress') }}</span>
                         <span class="text-indigo-600 dark:text-indigo-400">{{ stats.percent }}%</span>
                     </div>
@@ -84,7 +84,7 @@ const closeDatePicker = () => {
                             :style="{ width: `${stats.percent}%` }"
                         ></div>
                     </div>
-                    <div class="flex gap-4 mt-2 text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-tight transition-colors duration-500">
+                    <div class="flex gap-4 mt-2 text-[11px] font-bold text-slate-500 dark:text-slate-400 transition-colors duration-500">
                         <span class="flex items-center gap-1">
                             <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
                             {{ stats.completed }} {{ $t('header_completed', 'Selesai') }}
@@ -99,7 +99,7 @@ const closeDatePicker = () => {
                 <div class="flex gap-3 w-full md:w-auto order-2 md:order-none shrink-0">
                     <button 
                         @click="openModal()" 
-                        class="flex-1 md:flex-none px-6 py-3.5 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2 text-xs uppercase tracking-widest active:scale-95"
+                        class="flex-1 md:flex-none px-6 py-3.5 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 dark:shadow-none flex items-center justify-center gap-2 text-xs active:scale-95"
                     >
                         <OneForMindIcon name="plus" size="16" stroke-width="3" /> {{ $t('btn_add_task', 'Tambah') }}
                     </button>
