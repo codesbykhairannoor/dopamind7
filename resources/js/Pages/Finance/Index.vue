@@ -261,7 +261,7 @@ onMounted(() => {
         />
 
         <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950/50 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-500">
-            <div class="mb-8">
+            <div v-if="!isMobile" class="mb-8">
                 <FinanceStats 
                     :stats="localStats"
                     :onUpdateTarget="handleUpdateTarget"

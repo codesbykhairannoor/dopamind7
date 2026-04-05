@@ -60,6 +60,18 @@ const priorityLabel = computed(() => {
         optional: { text: 'Optional', class: 'bg-slate-50 dark:bg-slate-800/50 text-slate-400 dark:text-slate-500 border-slate-100 dark:border-slate-700' }
     }[p];
 });
+
+// Mesh Gradient Generator for Empty Covers
+const meshGradient = computed(() => {
+    const color = props.goal.color || '#6366f1';
+    return {
+        background: `radial-gradient(at 0% 0%, ${color}33 0px, transparent 50%),
+                    radial-gradient(at 100% 0%, ${color}66 0px, transparent 50%),
+                    radial-gradient(at 100% 100%, ${color}33 0px, transparent 50%),
+                    radial-gradient(at 0% 100%, ${color}1a 0px, transparent 50%),
+                    ${color}05`
+    };
+});
 </script>
 
 <template>
@@ -71,9 +83,11 @@ const priorityLabel = computed(() => {
                 <img :src="goal.cover_image_url" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
             </template>
-            <div v-else class="w-full h-full flex items-center justify-center opacity-10 group-hover:scale-110 transition-transform duration-700">
-                <Target :size="100" class="dark:text-indigo-400" />
-                <div class="absolute inset-0 bg-gradient-to-br from-slate-100 dark:from-slate-800 to-indigo-50/30 dark:to-indigo-500/5"></div>
+            <div v-else :style="meshGradient" class="w-full h-full flex items-center justify-center transition-transform duration-700 relative group-hover:scale-105">
+                <div class="absolute inset-0 backdrop-blur-[2px]"></div>
+                <div class="relative z-10 w-16 h-16 rounded-full bg-white/20 dark:bg-black/20 backdrop-blur-md border border-white/30 dark:border-white/10 flex items-center justify-center text-white shadow-xl">
+                    <Target :size="32" stroke-width="2.5" :style="{ color: goal.color }" />
+                </div>
             </div>
 
             <!-- Header Content Overlay -->

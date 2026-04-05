@@ -1,7 +1,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue';
 import { usePage } from '@inertiajs/vue3';
-import { X, Upload, Target, Calendar, Award, Zap, CheckCircle2 } from 'lucide-vue-next';
+import { X, Upload, Target, Calendar, Award, Zap, CheckCircle2, Heart, DollarSign, Briefcase, GraduationCap, Sparkles, Users, Plane, Palette, HelpCircle } from 'lucide-vue-next';
 import { trans } from 'laravel-vue-i18n';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
@@ -47,6 +47,26 @@ const isUploading = ref(false);
 const fileInput = ref(null);
 const showStartPicker = ref(false);
 const showEndPicker = ref(false);
+
+const archetypes = [
+    { id: 'fitness', icon: Heart, color: '#f43f5e', label: 'goal_type_fitness' },
+    { id: 'wealth', icon: DollarSign, color: '#10b981', label: 'goal_type_wealth' },
+    { id: 'career', icon: Briefcase, color: '#6366f1', label: 'goal_type_career' },
+    { id: 'learning', icon: GraduationCap, color: '#8b5cf6', label: 'goal_type_learning' },
+    { id: 'spiritual', icon: Sparkles, color: '#f59e0b', label: 'goal_type_spiritual' },
+    { id: 'social', icon: Users, color: '#0ea5e9', label: 'goal_type_social' },
+    { id: 'travel', icon: Plane, color: '#ec4899', label: 'goal_type_travel' },
+    { id: 'creative', icon: Palette, color: '#f97316', label: 'goal_type_creative' },
+    { id: 'other', icon: HelpCircle, color: '#64748b', label: 'Other' },
+];
+
+const selectedArchetype = ref(null);
+
+const selectArchetype = (arch) => {
+    selectedArchetype.value = arch.id;
+    form.value.color = arch.color;
+    // We can also store the icon if needed, but for now we use it for visual template
+};
 
 // Formatting untuk tampilan tombol tanggal
 const dateDisplay = (date) => {
@@ -167,6 +187,27 @@ const t = (key, fallback) => {
                             <Target :size="20" class="absolute right-5 top-1/2 -translate-y-1/2 text-slate-300 dark:text-slate-600 group-focus-within:text-indigo-500 transition-colors pointer-events-none" />
                         </div>
                         <p v-if="errors.title" class="text-[10px] font-bold text-rose-500 ml-1">{{ errors.title[0] }}</p>
+                    </div>
+
+                    <!-- Archetype Selection -->
+                    <div class="space-y-3">
+                        <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ t('goal_archetypes', 'Choose Template') }}</label>
+                        <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
+                            <button v-for="arch in archetypes" :key="arch.id"
+                                    @click="selectArchetype(arch)"
+                                    type="button"
+                                    class="flex flex-col items-center justify-center p-3 rounded-2xl border-2 transition-all duration-300 group"
+                                    :class="selectedArchetype === arch.id 
+                                        ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-500/10 shadow-lg shadow-indigo-500/10' 
+                                        : 'border-slate-50 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 hover:border-slate-200 dark:hover:border-slate-700'">
+                                <component :is="arch.icon" :size="20" 
+                                           :class="selectedArchetype === arch.id ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400'" />
+                                <span class="text-[8px] font-black uppercase text-center mt-2 leading-tight transition-colors"
+                                      :class="selectedArchetype === arch.id ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-600'">
+                                    {{ t(arch.label, arch.id) }}
+                                </span>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
