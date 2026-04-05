@@ -84,8 +84,8 @@ const saveSettings = () => {
                             <template v-else-if="key === 'goal'">🎯</template>
                         </div>
                         <div>
-                            <h4 class="font-black text-slate-700 dark:text-slate-200 text-sm capitalize transition-colors duration-500">{{ key }}</h4>
-                            <p class="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest transition-colors duration-500">{{ $t('module_status_active', 'Status Aktif') }}</p>
+                            <h4 class="font-black text-slate-700 dark:text-slate-200 text-sm capitalize transition-colors duration-500">{{ $t(key) }}</h4>
+                            <p class="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest transition-colors duration-500">{{ $t('module_status_active') }}</p>
                         </div>
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
