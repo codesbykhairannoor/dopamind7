@@ -13,6 +13,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\FinanceSavingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
@@ -447,6 +448,15 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::get('/export/tax', [FinanceController::class, 'exportTax'])->name('export.tax');
             Route::post('/export/audit', [FinanceController::class, 'runAudit'])->name('export.audit');
             Route::post('/settings/currency', [FinanceController::class, 'updateCurrency'])->name('settings.currency');
+
+            // Savings / Vault
+            Route::prefix('savings')->name('savings.')->group(function () {
+                Route::post('/', [\App\Http\Controllers\FinanceSavingController::class, 'store'])->name('store');
+                Route::patch('/{financeSaving}', [\App\Http\Controllers\FinanceSavingController::class, 'update'])->name('update');
+                Route::delete('/{financeSaving}', [\App\Http\Controllers\FinanceSavingController::class, 'destroy'])->name('destroy');
+                Route::post('/{financeSaving}/deposit', [\App\Http\Controllers\FinanceSavingController::class, 'deposit'])->name('deposit');
+                Route::post('/{financeSaving}/withdraw', [\App\Http\Controllers\FinanceSavingController::class, 'withdraw'])->name('withdraw');
+            });
         }
     );
 

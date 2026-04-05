@@ -18,7 +18,11 @@ import FullArchiveModal from './FullArchiveModal.vue';
 import FinanceDatePicker from './FinanceDatePicker.vue';
 import FinanceBatchModal from './FinanceBatchModal.vue';
 import FinanceInsights from './FinanceInsights.vue'; 
+import SavingCard from './SavingCard.vue';
+import SavingModal from './SavingModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import { router } from '@inertiajs/vue3';
+import { Plus, Wallet } from 'lucide-vue-next';
 
 // Composables
 import { useFinanceBatch } from '@/Composables/Finance/useFinanceBatch';
@@ -31,7 +35,7 @@ import { useGating } from '@/Composables/useGating';
 const { tier, canUse, isExplorer, isArchitect, isQuantum, isLegendary } = useGating();
 
 const props = defineProps({
-    transactions: Array, budgets: Array, stats: Object, filters: Object, categories: Array, 
+    transactions: Array, budgets: Array, stats: Object, filters: Object, categories: Array, savings: Array
 });
 
 const page = usePage();
@@ -41,12 +45,52 @@ defineOptions({ layout: AuthenticatedLayout });
 const localTransactions = ref([...(props.transactions || [])]);
 const localBudgets = ref([...(props.budgets || [])]);
 const localCategories = ref([...(props.categories || [])]);
+const localSavings = ref([...(props.savings || [])]);
 const localStats = ref(JSON.parse(JSON.stringify(props.stats || {}))); 
 
-watch(() => props.transactions, (newVal) => localTransactions.value = [...newVal], { deep: true });
-watch(() => props.budgets, (newVal) => localBudgets.value = [...newVal], { deep: true });
-watch(() => props.categories, (newVal) => localCategories.value = [...newVal], { deep: true });
-watch(() => props.stats, (newVal) => localStats.value = JSON.parse(JSON.stringify(newVal)), { deep: true });
+const isSavingModalOpen = ref(false);
+const editingSaving = ref(null);
+const isSavingVault = ref(false);
+
+const openSavingModal = (saving = null) => {
+    editingSaving.value = saving;
+    isSavingModalOpen.value = true;
+};
+
+const closeSavingModal = () => {
+    editingSaving.value = null;
+    isSavingModalOpen.value = false;
+};
+
+const submitSaving = (form) => {
+    isSavingVault.value = true;
+    const url = form.id ? route('finance.savings.update', form.id) : route('finance.savings.store');
+    const method = form.id ? 'patch' : 'post';
+
+    router[method](url, form, {
+        onSuccess: () => {
+            closeSavingModal();
+            isSavingVault.value = false;
+        },
+        onError: () => isSavingVault.value = false
+    });
+};
+
+const handleDeleteSaving = (id) => {
+    if (confirm('Are you sure? All money in this vault will be lost from tracking!')) {
+        router.delete(route('finance.savings.destroy', id));
+    }
+};
+
+const handleVaultAction = (saving, action = 'deposit') => {
+    const amount = prompt(`How much do you want to ${action}?`);
+    if (!amount || isNaN(amount) || amount <= 0) return;
+
+    router.post(route(`finance.savings.${action}`, saving.id), {
+        amount: Number(amount),
+        date: dayjs().format('YYYY-MM-DD')
+    });
+};
 
 const historyProps = reactive({
     ...props,
@@ -366,6 +410,44 @@ onMounted(() => {
                         />
                     </div>
 
+                    <!-- 🏦 THE VAULT (SAVINGS SECTION) - DESKTOP -->
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
+                                    <Wallet :size="20" />
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight">The Vault</h3>
+                                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mt-0.5">Your wealth manifestation</p>
+                                </div>
+                            </div>
+                            <button @click="openSavingModal()" class="flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all active:scale-95">
+                                <Plus :size="14" />
+                                Create Goal
+                            </button>
+                        </div>
+
+                        <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-12 text-center transition-colors">
+                             <div class="mb-4 text-4xl transform group-hover:scale-110 transition-transform duration-500">🏦</div>
+                             <h4 class="text-slate-400 font-black text-sm mb-4">You have no active saving goals yet.</h4>
+                             <button @click="openSavingModal()" class="text-[10px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900 px-6 py-2.5 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-all">
+                                Start Saving Now
+                             </button>
+                        </div>
+
+                        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <SavingCard 
+                                v-for="saving in localSavings" :key="saving.id"
+                                :saving="saving"
+                                :onDeposit="(s) => handleVaultAction(s, 'deposit')"
+                                :onWithdraw="(s) => handleVaultAction(s, 'withdraw')"
+                                :onEdit="openSavingModal"
+                                :onDelete="handleDeleteSaving"
+                            />
+                        </div>
+                    </div>
+
                    <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" @day-click="openDetail" />
                 </div>
  
@@ -502,5 +584,6 @@ onMounted(() => {
         <FinanceBatchModal :show="isBatchModalOpen" :form="batchForm" :categories="categories" :budgets="localBudgets" :conflictError="globalConflictError" :close="closeBatchModal" :submit="triggerSubmitBatch" :addRow="addBatchRow" :removeRow="removeBatchRow" :switchToSingle="switchToSingle" />
         <BudgetModal :show="showBudgetModal" :form="budgetForm" :categories="categories" :close="() => showBudgetModal = false" :submit="submitNewBudget" />
         <CategoryModal :show="showCategoryModal" :form="categoryForm" :close="() => showCategoryModal = false" :submit="submitNewCategory" />
+        <SavingModal :show="isSavingModalOpen" :saving="editingSaving" :processing="isSavingVault" @close="closeSavingModal" @save="submitSaving" />
     </div>
 </template>

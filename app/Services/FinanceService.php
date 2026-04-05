@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\FinanceBudget;
 use App\Models\FinanceCategory;
 use App\Models\FinanceTransaction;
+use App\Models\FinanceSaving;
 use App\Models\DailyLog;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -63,15 +64,21 @@ class FinanceService
             ->whereDate('date', $startOfMonth)
             ->value('income_target') ?? 0;
         
+        // 6. Savings
+        $savings = FinanceSaving::where('user_id', $userId)->get();
+        $totalSavings = $savings->sum('current_amount');
+        
         return [
             'transactions' => $transactions,
             'budgets'      => $budgets,
             'categories'   => $categories,
+            'savings'      => $savings,
             'stats'        => [
                 'total_income'        => (float) $totalIncome,
                 'total_expense'       => (float) $totalExpense,
+                'total_savings'       => (float) $totalSavings,
                 'income_target'       => (float) $incomeTarget,
-                'balance'             => (float) (($incomeTarget + $totalIncome) - $totalExpense),
+                'balance'             => (float) (($incomeTarget + $totalIncome) - $totalExpense - $totalSavings),
                 'expense_by_category' => $expenseStats,
                 'income_by_category'  => $incomeStats,
             ],
@@ -179,5 +186,46 @@ class FinanceService
         if (!empty($insertData)) {
             DB::transaction(fn () => FinanceTransaction::insert($insertData));
         }
+    }
+
+    public function depositToSaving(int $userId, int $savingId, float $amount, string $date, string $timezone): void
+    {
+        DB::transaction(function () use ($userId, $savingId, $amount, $date, $timezone) {
+            $saving = FinanceSaving::where('user_id', $userId)->findOrFail($savingId);
+            $saving->increment('current_amount', $amount);
+
+            FinanceTransaction::create([
+                'user_id' => $userId,
+                'date'    => $date,
+                'title'   => "Deposit to: {$saving->title}",
+                'type'    => 'expense', // Acts as expense to reduce available balance
+                'category' => 'saving',
+                'amount'  => $amount,
+                'notes'   => "Saving allocation for {$saving->title}"
+            ]);
+        });
+    }
+
+    public function withdrawFromSaving(int $userId, int $savingId, float $amount, string $date, string $timezone): void
+    {
+        DB::transaction(function () use ($userId, $savingId, $amount, $date, $timezone) {
+            $saving = FinanceSaving::where('user_id', $userId)->findOrFail($savingId);
+            
+            if ($saving->current_amount < $amount) {
+                throw new \Exception("Insufficient balance in {$saving->title}");
+            }
+
+            $saving->decrement('current_amount', $amount);
+
+            FinanceTransaction::create([
+                'user_id' => $userId,
+                'date'    => $date,
+                'title'   => "Withdraw from: {$saving->title}",
+                'type'    => 'income', // Acts as income to increase available balance
+                'category' => 'saving',
+                'amount'  => $amount,
+                'notes'   => "Withdrawal from {$saving->title}"
+            ]);
+        });
     }
 }
