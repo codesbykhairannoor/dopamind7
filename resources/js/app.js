@@ -67,9 +67,16 @@ NProgress.configure({
 
 let nprogressTimeout = null;
 
-router.on('start', () => {
-    // Gunakan delay sangat kecil (50ms) untuk mencegah flicker pada page yang "kembali" (cache)
-    // tapi tetap terasa instan untuk loading beneran.
+router.on('start', (event) => {
+    // 🤫 DISABLE NPROGRESS FOR SILENT (CRUD) ACTIONS
+    const url = event.detail.visit.url.toString();
+    const isCrud = ['POST', 'PATCH', 'PUT', 'DELETE'].includes(event.detail.visit.method);
+    const isFinance = url.includes('/finance') || url.includes('/savings');
+
+    if (isCrud && isFinance) {
+        return;
+    }
+
     nprogressTimeout = setTimeout(() => NProgress.start(), 50);
 });
 

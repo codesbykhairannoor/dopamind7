@@ -51,10 +51,10 @@
     "https://oneformind.com/build/assets/Index-BH4kKwOd.js"
   ],
   "resources/js/Composables/Finance/useFinanceBatch.js": [
-    "https://oneformind.com/build/assets/Index-CigNFVlQ.js"
+    "https://oneformind.com/build/assets/Index-DFJDlKGW.js"
   ],
   "resources/js/Composables/Finance/useFinanceCalendar.js": [
-    "https://oneformind.com/build/assets/Index-CigNFVlQ.js"
+    "https://oneformind.com/build/assets/Index-DFJDlKGW.js"
   ],
   "resources/js/Composables/Finance/useFinanceChart.js": [
     "https://oneformind.com/build/assets/DailyTrendChart-BsQnYF-L.js",
@@ -277,13 +277,13 @@
     "https://oneformind.com/build/assets/FullArchiveModal-DZPZrnJ-.css"
   ],
   "resources/js/Pages/Finance/Index.vue": [
-    "https://oneformind.com/build/assets/Index-CigNFVlQ.js"
+    "https://oneformind.com/build/assets/Index-DFJDlKGW.js"
   ],
   "resources/js/Pages/Finance/SavingCard.vue": [
-    "https://oneformind.com/build/assets/SavingCard-bP7CanOU.js"
+    "https://oneformind.com/build/assets/SavingCard-D8aG2lGh.js"
   ],
   "resources/js/Pages/Finance/SavingModal.vue": [
-    "https://oneformind.com/build/assets/SavingModal-obtmYFfA.js"
+    "https://oneformind.com/build/assets/SavingModal-CwO2UQTv.js"
   ],
   "resources/js/Pages/Finance/TransactionList.vue": [
     "https://oneformind.com/build/assets/TransactionList-D_Im-MTJ.js"

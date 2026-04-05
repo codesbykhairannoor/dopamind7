@@ -67,18 +67,42 @@ const submitSaving = (form) => {
     const url = form.id ? route('finance.savings.update', form.id) : route('finance.savings.store');
     const method = form.id ? 'patch' : 'post';
 
+    // 🚀 OPTIMISTIC UI
+    const optimisticData = { ...form, current_amount: form.current_amount || 0 };
+    const originalSavings = [...localSavings.value];
+    
+    if (!form.id) {
+        optimisticData.id = 'temp_' + Date.now();
+        localSavings.value.push(optimisticData);
+    } else {
+        const idx = localSavings.value.findIndex(s => s.id === form.id);
+        if (idx !== -1) localSavings.value[idx] = optimisticData;
+    }
+
     router[method](url, form, {
+        preserveScroll: true,
         onSuccess: () => {
             closeSavingModal();
             isSavingVault.value = false;
         },
-        onError: () => isSavingVault.value = false
+        onError: () => {
+            localSavings.value = originalSavings;
+            isSavingVault.value = false;
+        }
     });
 };
 
 const handleDeleteSaving = (id) => {
     if (confirm('Are you sure? All money in this vault will be lost from tracking!')) {
-        router.delete(route('finance.savings.destroy', id));
+        const originalSavings = [...localSavings.value];
+        localSavings.value = localSavings.value.filter(s => s.id !== id);
+        
+        router.delete(route('finance.savings.destroy', id), {
+            preserveScroll: true,
+            onError: () => {
+                localSavings.value = originalSavings;
+            }
+        });
     }
 };
 
@@ -86,9 +110,33 @@ const handleVaultAction = (saving, action = 'deposit') => {
     const amount = prompt(`How much do you want to ${action}?`);
     if (!amount || isNaN(amount) || amount <= 0) return;
 
+    const numAmount = Number(amount);
+    const originalSavings = JSON.parse(JSON.stringify(localSavings.value));
+    const originalStats = JSON.parse(JSON.stringify(localStats.value));
+    
+    // 🚀 OPTIMISTIC UPDATE
+    const idx = localSavings.value.findIndex(s => s.id === saving.id);
+    if (idx !== -1) {
+        if (action === 'deposit') {
+            localSavings.value[idx].current_amount = Number(localSavings.value[idx].current_amount) + numAmount;
+            localStats.value.balance -= numAmount;
+            localStats.value.total_savings += numAmount;
+        } else {
+            localSavings.value[idx].current_amount = Number(localSavings.value[idx].current_amount) - numAmount;
+            localStats.value.balance += numAmount;
+            localStats.value.total_savings -= numAmount;
+        }
+    }
+
     router.post(route(`finance.savings.${action}`, saving.id), {
-        amount: Number(amount),
+        amount: numAmount,
         date: dayjs().format('YYYY-MM-DD')
+    }, {
+        preserveScroll: true,
+        onError: () => {
+            localSavings.value = originalSavings;
+            localStats.value = originalStats;
+        }
     });
 };
 
@@ -430,8 +478,8 @@ onMounted(() => {
 
                         <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-12 text-center transition-colors">
                              <div class="mb-4 text-4xl transform group-hover:scale-110 transition-transform duration-500">🏦</div>
-                             <h4 class="text-slate-400 font-black text-sm mb-4">You have no active saving goals yet.</h4>
-                             <button @click="openSavingModal()" class="text-[10px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900 px-6 py-2.5 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-all">
+                             <h4 class="text-slate-400 font-bold text-sm mb-4">You have no active saving goals yet.</h4>
+                             <button @click="openSavingModal()" class="text-[10px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900 px-6 py-2.5 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-all">
                                 Start Saving Now
                              </button>
                         </div>

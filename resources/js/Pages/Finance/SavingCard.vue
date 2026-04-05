@@ -50,7 +50,7 @@ const remaining = computed(() => {
         <div class="p-6 flex flex-col flex-1">
             <div class="mb-4">
                 <h3 class="text-lg font-black text-slate-800 dark:text-white truncate mb-1">{{ saving.title }}</h3>
-                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">{{ progress }}% of {{ formatMoney(saving.target_amount) }}</p>
+                <p class="text-[10px] font-bold text-slate-400 tracking-wide">{{ progress }}% of {{ formatMoney(saving.target_amount) }}</p>
             </div>
 
             <!-- Progress Bar -->
@@ -63,11 +63,11 @@ const remaining = computed(() => {
 
             <div class="grid grid-cols-2 gap-4 mb-8">
                 <div class="flex flex-col">
-                    <span class="text-[8px] font-black text-slate-400 uppercase tracking-tighter">Current</span>
+                    <span class="text-[8px] font-bold text-slate-400 tracking-tighter">Current</span>
                     <span class="text-sm font-black text-slate-800 dark:text-white tabular-nums">{{ formatMoney(saving.current_amount) }}</span>
                 </div>
                 <div class="flex flex-col text-right">
-                    <span class="text-[8px] font-black text-slate-400 uppercase tracking-tighter">Left to reach</span>
+                    <span class="text-[8px] font-bold text-slate-400 tracking-tighter">Left to reach</span>
                     <span class="text-sm font-black text-rose-500 dark:text-rose-400 tabular-nums">{{ formatMoney(remaining) }}</span>
                 </div>
             </div>
@@ -76,14 +76,14 @@ const remaining = computed(() => {
             <div class="mt-auto grid grid-cols-2 gap-3">
                 <button 
                     @click="onDeposit(saving)"
-                    class="flex items-center justify-center gap-2 py-3 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition-all active:scale-95"
+                    class="flex items-center justify-center gap-2 py-3 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[10px] font-bold tracking-widest hover:bg-indigo-600 hover:text-white transition-all active:scale-95"
                 >
                     <ArrowDownCircle :size="14" />
                     Deposit
                 </button>
                 <button 
                     @click="onWithdraw(saving)"
-                    class="flex items-center justify-center gap-2 py-3 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-black uppercase tracking-widest hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:scale-95"
+                    class="flex items-center justify-center gap-2 py-3 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-bold tracking-widest hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:scale-95"
                 >
                     <ArrowUpCircle :size="14" />
                     Withdraw
