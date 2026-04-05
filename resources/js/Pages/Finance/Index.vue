@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, reactive } from 'vue';
+import { ref, watch, reactive, onMounted } from 'vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { Head, usePage } from '@inertiajs/vue3';
@@ -239,6 +239,14 @@ const switchToSingle = () => {
     closeBatchModal();
     setTimeout(() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal.value = true; }, 150);
 };
+
+const isMobile = ref(false);
+onMounted(() => {
+    isMobile.value = window.innerWidth < 1024;
+    window.addEventListener('resize', () => {
+        isMobile.value = window.innerWidth < 1024;
+    });
+});
 </script>
 
 <template>
@@ -260,7 +268,8 @@ const switchToSingle = () => {
                 />
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+            <!-- 🖥️ DESKTOP VIEW -->
+            <div v-if="!isMobile" class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
                 <div class="lg:col-span-3 space-y-8 w-full">
                     <div class="space-y-4">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -384,6 +393,66 @@ const switchToSingle = () => {
                     />
                 </div>
             </div>
+
+            <!-- 📱 MOBILE VIEW -->
+            <div v-else class="space-y-8 pb-32">
+                 <NeuralBridge module="Finance" />
+                 
+                 <!-- Mobile Wallet Card (Placeholder) -->
+                 <div class="bg-indigo-600 p-8 rounded-[2.5rem] shadow-xl text-white relative overflow-hidden">
+                     <div class="relative z-10">
+                        <p class="text-[10px] font-black uppercase tracking-widest opacity-60 mb-1">Total Balance</p>
+                        <h2 class="text-4xl font-black">{{ formatMoney(localStats.balance) }}</h2>
+                        
+                        <div class="mt-8 grid grid-cols-2 gap-4">
+                            <div class="bg-white/10 p-4 rounded-2xl border border-white/10">
+                                <p class="text-[9px] font-black uppercase opacity-60">Income</p>
+                                <p class="text-lg font-black">{{ formatMoney(localStats.total_income) }}</p>
+                            </div>
+                            <div class="bg-white/10 p-4 rounded-2xl border border-white/10">
+                                <p class="text-[9px] font-black uppercase opacity-60">Expense</p>
+                                <p class="text-lg font-black text-rose-300">{{ formatMoney(localStats.total_expense) }}</p>
+                            </div>
+                        </div>
+                     </div>
+                     <OneForMindIcon name="finance" size="200" class="absolute -right-16 -bottom-16 opacity-10" />
+                 </div>
+
+                 <!-- Simplified Mobile Transaction List -->
+                 <div class="space-y-4">
+                    <h3 class="text-base font-black px-2">{{ $t('daily_history') }}</h3>
+                    <div v-if="localTransactions.length === 0" class="p-10 text-center bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-100 dark:border-slate-800">
+                        <p class="text-xs font-black text-slate-400 animate-pulse">No transactions yet.</p>
+                    </div>
+                    <div v-else class="space-y-3">
+                        <div v-for="trx in localTransactions.slice(0, 10)" :key="trx.id" @click="handleEdit(trx)" class="bg-white dark:bg-slate-900 p-4 rounded-3xl border border-slate-50 dark:border-slate-800 flex items-center justify-between active:scale-[0.98] transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-xl">
+                                    {{ trx.category_icon || '💸' }}
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-black text-slate-800 dark:text-white leading-tight">{{ trx.title }}</h4>
+                                    <p class="text-[10px] font-bold text-slate-400 capitalize">{{ trx.type }} • {{ trx.category_name }}</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-sm font-black font-mono" :class="trx.type === 'income' ? 'text-emerald-500' : 'text-rose-500'">
+                                    {{ trx.type === 'income' ? '+' : '-' }}{{ formatMoney(trx.amount) }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+                 <FinanceInsights 
+                    :expense-stats="localStats.expense_by_category" 
+                    :income-stats="localStats.income_by_category" 
+                    :budgets="localBudgets" 
+                    @update-stats="handleOptimisticInvestment"
+                 />
+            </div>
+
+        </div>
 
             <TransactionModal :show="showTransactionModal" :form="transactionForm" :budgets="localBudgets" :categories="categories" :close="() => showTransactionModal = false" :submit="submitNewTransaction" @switch-to-batch="switchToBatch" />
             <FinanceBatchModal :show="isBatchModalOpen" :form="batchForm" :categories="categories" :budgets="localBudgets" :conflictError="globalConflictError" :close="closeBatchModal" :submit="triggerSubmitBatch" :addRow="addBatchRow" :removeRow="removeBatchRow" :switchToSingle="switchToSingle" />

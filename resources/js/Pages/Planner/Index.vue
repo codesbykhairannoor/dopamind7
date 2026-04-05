@@ -1,4 +1,5 @@
 <script setup>
+import { ref, onMounted } from 'vue';
 import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { usePlanner } from '@/Composables/Planner/usePlanner';
@@ -10,6 +11,7 @@ import EmptyState from '@/Components/EmptyState.vue';
 import PlannerHeader from './PlannerHeader.vue';
 import PlannerSidebar from './PlannerSidebar.vue';
 import PlannerTimeline from './PlannerTimeline.vue';
+import PlannerMobileTimeline from './PlannerMobileTimeline.vue';
 import PlannerModal from './PlannerModal.vue';
 import PlannerBatchModal from './PlannerBatchModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
@@ -49,6 +51,14 @@ const handleFullReset = () => {
     resetBoard(); 
     window.dispatchEvent(new Event('reset-local-storage'));
 };
+
+const isMobile = ref(false);
+onMounted(() => {
+    isMobile.value = window.innerWidth < 1024;
+    window.addEventListener('resize', () => {
+        isMobile.value = window.innerWidth < 1024;
+    });
+});
 </script>
 
 <template>
@@ -68,7 +78,8 @@ const handleFullReset = () => {
 
         <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-500">
             
-            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+            <!-- 🖥️ DESKTOP VIEW -->
+            <div v-if="!isMobile" class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
                 
                 <div class="lg:col-span-3 order-1 lg:order-2 w-full">
                     <PlannerTimeline 
@@ -87,13 +98,35 @@ const handleFullReset = () => {
                     <PlannerSidebar 
                         :stats="scheduledStats"
                         v-model:localNotes="localNotes"
-    v-model:localMeals="localMeals"
-    v-model:localWater="localWater"
-    v-model:localTaskBox="localTaskBox"
-/>
+                        v-model:localMeals="localMeals"
+                        v-model:localWater="localWater"
+                        v-model:localTaskBox="localTaskBox"
+                    />
                 </div>
 
             </div>
+
+            <!-- 📱 MOBILE VIEW -->
+            <div v-else class="space-y-8 pb-32">
+                 <NeuralBridge module="Planner" />
+                 
+                 <!-- Mobile Timeline (Vertical Step-Indicator) -->
+                 <PlannerMobileTimeline 
+                    :scheduledTasks="scheduledTasks"
+                    :openModal="openModal"
+                    :toggleComplete="toggleComplete"
+                    :getTypeColor="getTypeColor"
+                 />
+
+                 <PlannerSidebar 
+                        :stats="scheduledStats"
+                        v-model:localNotes="localNotes"
+                        v-model:localMeals="localMeals"
+                        v-model:localWater="localWater"
+                        v-model:localTaskBox="localTaskBox"
+                 />
+            </div>
+
         </div>
 
         <PlannerModal
