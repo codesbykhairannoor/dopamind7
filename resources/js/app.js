@@ -68,12 +68,16 @@ NProgress.configure({
 let nprogressTimeout = null;
 
 router.on('start', (event) => {
-    // 🤫 DISABLE NPROGRESS FOR SILENT (CRUD) ACTIONS
+    // 🤫 STRICTLY DISABLE NPROGRESS FOR SILENT (CRUD) ACTIONS
     const url = event.detail.visit.url.toString();
-    const isCrud = ['POST', 'PATCH', 'PUT', 'DELETE'].includes(event.detail.visit.method);
-    const isFinance = url.includes('/finance') || url.includes('/savings');
+    const method = event.detail.visit.method.toUpperCase();
+    const isCrud = ['POST', 'PATCH', 'PUT', 'DELETE'].includes(method);
+    
+    // Check if the URL belongs to finance or savings
+    const isFinanceOrSavings = url.includes('/finance') || url.includes('/savings');
 
-    if (isCrud && isFinance) {
+    // If it's a CRUD action on Finance/Savings, we stay silent
+    if (isCrud && isFinanceOrSavings) {
         return;
     }
 

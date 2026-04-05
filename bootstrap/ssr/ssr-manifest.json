@@ -51,10 +51,10 @@
     "https://oneformind.com/build/assets/Index-BH4kKwOd.js"
   ],
   "resources/js/Composables/Finance/useFinanceBatch.js": [
-    "https://oneformind.com/build/assets/Index-DFJDlKGW.js"
+    "https://oneformind.com/build/assets/Index-4uWCTwCE.js"
   ],
   "resources/js/Composables/Finance/useFinanceCalendar.js": [
-    "https://oneformind.com/build/assets/Index-DFJDlKGW.js"
+    "https://oneformind.com/build/assets/Index-4uWCTwCE.js"
   ],
   "resources/js/Composables/Finance/useFinanceChart.js": [
     "https://oneformind.com/build/assets/DailyTrendChart-BsQnYF-L.js",
@@ -277,7 +277,7 @@
     "https://oneformind.com/build/assets/FullArchiveModal-DZPZrnJ-.css"
   ],
   "resources/js/Pages/Finance/Index.vue": [
-    "https://oneformind.com/build/assets/Index-DFJDlKGW.js"
+    "https://oneformind.com/build/assets/Index-4uWCTwCE.js"
   ],
   "resources/js/Pages/Finance/SavingCard.vue": [
     "https://oneformind.com/build/assets/SavingCard-D8aG2lGh.js"

@@ -81,6 +81,7 @@ const submitSaving = (form) => {
 
     router[method](url, form, {
         preserveScroll: true,
+        preserveState: true,
         onSuccess: () => {
             closeSavingModal();
             isSavingVault.value = false;
@@ -99,6 +100,7 @@ const handleDeleteSaving = (id) => {
         
         router.delete(route('finance.savings.destroy', id), {
             preserveScroll: true,
+            preserveState: true,
             onError: () => {
                 localSavings.value = originalSavings;
             }
@@ -133,6 +135,7 @@ const handleVaultAction = (saving, action = 'deposit') => {
         date: dayjs().format('YYYY-MM-DD')
     }, {
         preserveScroll: true,
+        preserveState: true,
         onError: () => {
             localSavings.value = originalSavings;
             localStats.value = originalStats;

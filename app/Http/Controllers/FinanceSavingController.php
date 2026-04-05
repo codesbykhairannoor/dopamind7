@@ -9,6 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class FinanceSavingController extends Controller
 {
+    /**
+     * 🔥 FIX: Handle Optimistic IDs (temp_...) from Frontend
+     * Inertia might try to resolve the route binding before our success callback.
+     */
+    public function resolveRouteBinding($value, $field = null)
+    {
+        if (is_string($value) && str_starts_with($value, 'temp_')) {
+            return new FinanceSaving();
+        }
+
+        return parent::resolveRouteBinding($value, $field);
+    }
+
     public function __construct(private FinanceService $financeService) {}
 
     public function store(Request $request)
