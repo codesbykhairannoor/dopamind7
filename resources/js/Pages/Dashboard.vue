@@ -170,9 +170,9 @@ onMounted(() => {
         </template>
 
         <!-- 🖥️ DESKTOP REFINED BENTO -->
-        <template v-else>
+        <template v-else-if="synergy">
             <!-- Original Desktop Dashboard Content (Refined Typography) -->
-            <header v-if="synergy" class="relative group">
+            <header class="relative group">
                 <div class="relative overflow-hidden bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 md:p-14 border border-slate-100 dark:border-slate-800 shadow-xl dark:shadow-none transition-all duration-500">
                     <div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500/5 rounded-full blur-[100px]"></div>
                     
@@ -216,7 +216,7 @@ onMounted(() => {
             </header>
 
             <!-- Bento Grid (Desktop only) -->
-            <div v-if="synergy" class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
                 <!-- HABITS -->
                 <Link :href="route('habits.index')" 
                     class="col-span-1 md:col-span-6 lg:col-span-4 bg-white dark:bg-slate-900 rounded-[2rem] p-8 border border-slate-100 dark:border-slate-800 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-500 group flex flex-col justify-between overflow-hidden relative"
