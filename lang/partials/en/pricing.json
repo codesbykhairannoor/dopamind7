@@ -145,5 +145,21 @@
     "pricing_l4_initial": "Lifetime Founder Access",
     "pricing_l4_recurring": "Zero Fees Forever",
     "pricing_ai_badge": "Best for AI Seekers",
-    "pricing_l4_badge": "Founder Edition"
+    "pricing_l4_badge": "Founder Edition",
+    "pricing_feat_l1_habits": "Core Habit Tracking",
+    "pricing_feat_l1_finance": "Basic Expense Logs",
+    "pricing_feat_l2_habits": "Advanced Habit Ecosystem",
+    "pricing_feat_l2_finance": "Full Wealth Suite",
+    "pricing_feat_l3_ai_coach": "24/7 AI Neural Coach",
+    "pricing_feat_l3_wealth": "Smart Wealth Projections",
+    "pricing_feat_l3_insights": "Deep Life Analytics",
+    "pricing_feat_l4_triggers": "Custom Neural Triggers",
+    "pricing_feat_l4_war_room": "Priority War Room Access",
+    "pricing_feat_l4_vip": "VIP Concierge Support",
+    "pricing_faq_3_q": "Can I upgrade my plan later?",
+    "pricing_faq_3_a": "Yes, you can upgrade from Architect to Quantum or Legendary at any time. The system will automatically calculate the prorated difference.",
+    "pricing_faq_4_q": "Is my data private?",
+    "pricing_faq_4_a": "Absolutely. OneForMind uses industry-standard encryption. Your local data and AI interactions are strictly confidential and never sold.",
+    "pricing_l4_btn": "Go Legendary",
+    "pricing_faq_subtitle": "Answers to your burning questions"
 }

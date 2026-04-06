@@ -143,5 +143,21 @@
     "pricing_l4_initial": "Akses Pendiri Seumur Hidup",
     "pricing_l4_recurring": "Nol Biaya Selamanya",
     "pricing_ai_badge": "Terbaik untuk Pencari AI",
-    "pricing_l4_badge": "Edisi Pendiri"
+    "pricing_l4_badge": "Edisi Pendiri",
+    "pricing_feat_l1_habits": "Pelacakan Habit Inti",
+    "pricing_feat_l1_finance": "Log Keuangan Dasar",
+    "pricing_feat_l2_habits": "Ekosistem Habit Lanjutan",
+    "pricing_feat_l2_finance": "Paket Keuangan Lengkap",
+    "pricing_feat_l3_ai_coach": "Pelatih Neural AI 24/7",
+    "pricing_feat_l3_wealth": "Proyeksi Keuangan Cerdas",
+    "pricing_feat_l3_insights": "Analitik Hidup Mendalam",
+    "pricing_feat_l4_triggers": "Trigger Neural Kustom",
+    "pricing_feat_l4_war_room": "Akses Khusus War Room",
+    "pricing_feat_l4_vip": "Dukungan Konser VIP",
+    "pricing_faq_3_q": "Bisakah saya upgrade paket nanti?",
+    "pricing_faq_3_a": "Ya, Anda dapat upgrade dari Architect ke Quantum atau Legendary kapan saja. Sistem akan otomatis menghitung selisih biayanya.",
+    "pricing_faq_4_q": "Apakah data saya aman?",
+    "pricing_faq_4_a": "Tentu saja. OneForMind menggunakan enkripsi standar industri. Data lokal dan interaksi AI Anda bersifat rahasia dan tidak pernah dijual.",
+    "pricing_l4_btn": "Pilih Legendary",
+    "pricing_faq_subtitle": "Jawaban atas pertanyaan Anda"
 }

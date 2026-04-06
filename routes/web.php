@@ -80,7 +80,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/pricing', function () {
-    return auth()->check() ? Inertia::render('Pricing') : view('pricing');
+    return view('pricing');
 })->name('pricing.index');
 
 // Alias name 'pricing' for backward compatibility
