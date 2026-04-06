@@ -215,15 +215,15 @@ watch(() => page.url, () => {
                     </button>
                 </div>
 
-                <Link :href="route('pricing.index')" prefetch
+                <Link :href="route('billing')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group mb-2"
                     :class="[
-                        route().current('pricing.index') ? 'bg-indigo-600 dark:bg-indigo-500 text-white shadow-lg shadow-indigo-200 dark:shadow-none font-black' : 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 font-bold border border-indigo-100 dark:border-indigo-500/20',
+                        route().current('billing') ? 'bg-indigo-600 dark:bg-indigo-500 text-white shadow-lg shadow-indigo-200 dark:shadow-none font-black' : 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 font-bold border border-indigo-100 dark:border-indigo-500/20',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2 gap-2.5'
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_premium', 'Elite Upgrade') : ''"
                 >
-                    <OneForMindIcon name="premium" size="18" class="shrink-0" :class="route().current('pricing.index') ? 'text-white' : 'text-indigo-600 dark:text-indigo-400'" />
+                    <OneForMindIcon name="premium" size="18" class="shrink-0" :class="route().current('billing') ? 'text-white' : 'text-indigo-600 dark:text-indigo-400'" />
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-xs font-black uppercase tracking-widest">{{ $t('nav_item_premium', 'Go Elite') }}</span>
                 </Link>
 

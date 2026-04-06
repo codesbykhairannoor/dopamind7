@@ -83,6 +83,10 @@ Route::get('/pricing', function () {
     return view('pricing');
 })->name('pricing.index');
 
+Route::get('/billing', function () {
+    return Inertia::render('Pricing');
+})->middleware(['auth'])->name('billing');
+
 // Alias name 'pricing' for backward compatibility
 Route::get('/pricing-alias', function () {
     return redirect()->route('pricing.index');
@@ -98,6 +102,7 @@ Route::get('/sitemap.xml', function () {
         '/' => ['1.0', 'weekly'],
         '/about' => ['0.8', 'monthly'],
         '/pricing' => ['0.9', 'weekly'],
+        '/billing' => ['0.5', 'monthly'],
         '/login' => ['0.8', 'monthly'],
         '/register' => ['0.8', 'monthly'],
     ];
