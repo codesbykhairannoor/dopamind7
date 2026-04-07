@@ -44,12 +44,12 @@
             $finalTitle = 'Oneformind - The Unified Productivity OS';
         }
     @endphp
-    <title>{!! $finalTitle !!}</title>
+    <title>{{ $finalTitle }}</title>
 
     <meta property="og:site_name" content="Oneformind">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{!! $finalTitle !!}">
+    <meta property="og:title" content="{{ $finalTitle }}">
     <meta property="og:image" content="{{ asset('images/og-image.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -58,20 +58,20 @@
     @if(View::hasSection('meta'))
         @yield('meta')
     @else
-        <meta name="description" content="{!! __('meta_global_description') !!}">
-        <meta name="keywords" content="{!! __('meta_global_keywords') !!}">
-        <meta property="og:description" content="{!! __('meta_global_description') !!}">
+        <meta name="description" content="{{ __('meta_global_description') }}">
+        <meta name="keywords" content="{{ __('meta_global_keywords') }}">
+        <meta property="og:description" content="{{ __('meta_global_description') }}">
     @endif
 
     {{-- Ensure Social Descriptions are present if not already in @yield('meta') --}}
     @if(!View::hasSection('meta'))
-        <meta name="twitter:description" content="{!! __('meta_global_description') !!}">
+        <meta name="twitter:description" content="{{ __('meta_global_description') }}">
     @endif
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@Oneformind">
-    <meta name="twitter:title" content="{!! $finalTitle !!}">
+    <meta name="twitter:title" content="{{ $finalTitle }}">
     <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
     <meta name="ai-creator" content="{{ __('meta_ai_creator') }}">
