@@ -85,7 +85,7 @@ const showFilterPicker = ref(false);
             >
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center group-hover:bg-white dark:group-hover:bg-slate-700 transition-all shadow-sm">
-                        <span class="text-[10px] uppercase font-black text-slate-400 dark:text-slate-600 leading-none">{{ day.dateObj.format('MMM') }}</span>
+                        <span class="text-[10px] font-black text-slate-400 dark:text-slate-600 leading-none">{{ day.dateObj.format('MMM') }}</span>
                         <span class="text-xl font-black leading-none text-slate-700 dark:text-slate-200 mt-0.5 transition-colors duration-500">{{ day.dateObj.format('DD') }}</span>
                     </div>
                     
@@ -100,7 +100,7 @@ const showFilterPicker = ref(false);
 
                 <div class="flex items-center gap-6">
                     <div class="pl-4 border-l border-slate-100 dark:border-slate-800 text-right">
-                        <span class="block text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-wider">{{ $t('daily_net') }}</span>
+                        <span class="block text-[9px] font-black text-slate-400 dark:text-slate-600 tracking-wider">{{ $t('daily_net') }}</span>
                         <span class="text-sm font-black font-mono transition-colors duration-500" :class="(day.total_income - day.total_expense) >= 0 ? 'text-indigo-600 dark:text-indigo-400' : 'text-orange-500 dark:text-orange-400'">
                             {{ (day.total_income - day.total_expense) >= 0 ? '+' : '' }}{{ formatMoney(day.total_income - day.total_expense) }}
                         </span>
@@ -114,7 +114,7 @@ const showFilterPicker = ref(false);
             </div>
             
             <div v-if="!filterDate && visibleStats.length === 5" class="bg-slate-50/50 dark:bg-slate-800/50 p-2.5 text-center border-t border-slate-100 dark:border-slate-800 transition-colors duration-500">
-                <p class="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest">{{ $t('old_data_hint') }}</p>
+                <p class="text-[10px] font-black text-slate-400 dark:text-slate-600 tracking-widest">{{ $t('old_data_hint') }}</p>
             </div>
         </div>
 

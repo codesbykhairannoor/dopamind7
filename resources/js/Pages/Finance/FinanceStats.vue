@@ -52,7 +52,7 @@ const saveSalary = () => {
             <div class="relative z-10 flex flex-col h-full justify-between">
                 <div class="flex justify-between items-start">
                     <div>
-                        <p class="font-bold text-[10px] uppercase tracking-widest text-indigo-100/80 mb-2">{{ $t('available_balance', 'Available Balance') }}</p>
+                        <h4 class="text-[10px] font-black text-white/60 tracking-widest text-shadow-sm">{{ $t('available_balance', 'Available Balance') }}</h4>
                         <h3 class="text-4xl md:text-5xl font-black tracking-tight leading-none text-white drop-shadow-sm">
                             {{ formatMoney(stats?.balance || 0) }}
                         </h3>
@@ -78,10 +78,10 @@ const saveSalary = () => {
             
             <div class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2rem] px-6 py-5 shadow-sm dark:shadow-none hover:shadow-md transition-all relative overflow-hidden group flex items-center justify-between h-fit transition-colors duration-500">
                 <div class="flex-1 min-w-0"> 
-                    <p class="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-1.5 flex items-center gap-1 transition-colors duration-500">
+                    <h4 class="text-[9px] font-black text-slate-400 dark:text-slate-500 tracking-widest mb-1.5 flex items-center gap-1 transition-colors duration-500">
                         {{ $t('base_capital', 'Base Capital') }}
                         <span v-if="!isEditingSalary" class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-indigo-500 transition-colors"></span>
-                    </p>
+                    </h4>
                     
                     <div v-if="!isEditingSalary" class="flex items-center justify-between">
                         <h4 class="text-xl md:text-2xl font-black text-slate-800 dark:text-white truncate pr-2 transition-colors duration-500">
@@ -109,7 +109,7 @@ const saveSalary = () => {
             <div class="grid grid-cols-2 gap-4 h-full min-h-[160px]">
                 <div class="bg-emerald-50/40 dark:bg-emerald-500/5 border border-emerald-100/60 dark:border-emerald-500/20 rounded-[2rem] p-5 flex flex-col justify-center relative overflow-hidden group hover:bg-emerald-50 dark:hover:bg-emerald-500/10 shadow-sm dark:shadow-none transition-colors duration-500">
                     <div class="flex items-center justify-between mb-1">
-                        <p class="text-[9px] font-bold text-emerald-600/60 dark:text-emerald-400/60 uppercase tracking-widest transition-colors duration-500">{{ $t('income', 'Income') }}</p>
+                        <p class="text-[9px] font-black text-emerald-600/60 dark:text-emerald-400/60 tracking-widest transition-colors duration-500">{{ $t('income') }}</p>
                         <div class="w-5 h-5 bg-emerald-100 dark:bg-emerald-500/20 rounded-full flex items-center justify-center text-[10px] text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition duration-300">↓</div>
                     </div>
                     <h4 class="text-lg md:text-xl font-black text-emerald-700 dark:text-emerald-400 truncate transition-colors duration-500">
@@ -119,7 +119,7 @@ const saveSalary = () => {
 
                 <div class="bg-rose-50/40 dark:bg-rose-500/5 border border-rose-100/60 dark:border-rose-500/20 rounded-[2rem] p-5 flex flex-col justify-center relative overflow-hidden group hover:bg-rose-50 dark:hover:bg-rose-500/10 shadow-sm dark:shadow-none transition-colors duration-500">
                     <div class="flex items-center justify-between mb-1">
-                        <p class="text-[9px] font-bold text-rose-600/60 dark:text-rose-400/60 uppercase tracking-widest transition-colors duration-500">{{ $t('expense', 'Expense') }}</p>
+                        <p class="text-[9px] font-black text-rose-600/60 dark:text-rose-400/60 tracking-widest transition-colors duration-500">{{ $t('expense') }}</p>
                         <div class="w-5 h-5 bg-rose-100 dark:bg-rose-500/20 rounded-full flex items-center justify-center text-[10px] text-rose-600 dark:text-rose-400 group-hover:scale-110 transition duration-300">↑</div>
                     </div>
                     <h4 class="text-lg md:text-xl font-black text-rose-700 dark:text-rose-400 truncate transition-colors duration-500">

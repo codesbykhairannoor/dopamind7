@@ -76,7 +76,7 @@ const handleInstantSubmit = () => {
             
             <form @submit.prevent="handleInstantSubmit" class="space-y-5">
                 <div>
-                    <label class="block text-[10px] uppercase font-bold text-slate-400 dark:text-slate-600 tracking-widest mb-1.5 transition-colors duration-500">{{ $t('category_name') }}</label>
+                    <label class="block text-[10px] font-black text-slate-400 dark:text-slate-600 tracking-widest mb-1.5 transition-colors duration-500">{{ $t('category_name') }}</label>
                     <div class="flex gap-2">
                         <div class="relative">
                             <button type="button" @click="showIconGrid = !showIconGrid" class="w-12 h-12 flex items-center justify-center bg-slate-50 dark:bg-slate-800 rounded-xl text-2xl border border-slate-100 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all duration-300">
@@ -96,7 +96,7 @@ const handleInstantSubmit = () => {
                 </div>
 
                 <div>
-                    <label class="block text-[10px] uppercase font-bold text-slate-400 dark:text-slate-600 tracking-widest mb-1.5 transition-colors duration-500">{{ $t('budget_limit') }}</label>
+                    <label class="block text-[10px] font-black text-slate-400 dark:text-slate-600 tracking-widest mb-1.5 transition-colors duration-500">{{ $t('budget_limit') }}</label>
                     <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 font-bold transition-colors duration-500">{{ currencySymbol }}</span>
                         <input type="text" :value="formatDisplay(form.limit_amount)" @input="onInputAmount" placeholder="0" class="w-full pl-12 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-2 focus:ring-indigo-500 font-black text-lg text-slate-700 dark:text-white transition-all duration-500">

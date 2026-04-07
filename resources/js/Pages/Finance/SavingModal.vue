@@ -62,8 +62,8 @@ const handleSave = () => {
                 <!-- Quick Header -->
                 <div class="px-8 pt-8 flex items-center justify-between">
                     <div>
-                        <h2 class="text-2xl font-black text-slate-800 dark:text-white">{{ saving?.id ? 'Edit saving goal' : 'New saving goal' }}</h2>
-                        <p class="text-[10px] font-bold text-slate-400 mt-1">Configure your vault</p>
+                        <h2 class="text-2xl font-black text-slate-800 dark:text-white">{{ saving?.id ? $t('vault_edit_title') : $t('vault_new_title') }}</h2>
+                        <p class="text-[10px] font-bold text-slate-400 mt-1">{{ $t('vault_subtitle') }}</p>
                     </div>
                     <button @click="handleClose" class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-rose-500 transition-all active:scale-95">
                         <X :size="20" />
@@ -73,7 +73,7 @@ const handleSave = () => {
                 <div class="p-8 space-y-6 overflow-y-auto">
                     <!-- Title -->
                     <div class="space-y-2">
-                        <label class="text-[11px] font-bold text-slate-400 dark:text-slate-600">Goal name</label>
+                        <label class="text-[11px] font-bold text-slate-400 dark:text-slate-600">{{ $t('vault_label_name') }}</label>
                         <input v-model="form.title" type="text" 
                                 class="w-full bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent rounded-2xl px-5 py-4 text-slate-700 dark:text-white font-bold focus:bg-white dark:focus:bg-slate-800 focus:border-indigo-500/20 focus:ring-4 focus:ring-indigo-500/5 transition-all shadow-sm"
                                 placeholder="e.g. Dream Wedding, New Laptop..." />
@@ -81,14 +81,14 @@ const handleSave = () => {
 
                     <!-- Target Amount -->
                     <div class="space-y-2">
-                        <label class="text-[11px] font-bold text-slate-400 dark:text-slate-600">Target amount (IDR)</label>
+                        <label class="text-[11px] font-bold text-slate-400 dark:text-slate-600">{{ $t('vault_label_target') }} ({{ activeCurrency }})</label>
                         <input v-model="form.target_amount" type="number" 
                                 class="w-full bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent rounded-2xl px-5 py-4 text-slate-700 dark:text-white font-bold focus:bg-white dark:focus:bg-slate-800 focus:border-indigo-500/20 focus:ring-4 focus:ring-indigo-500/5 transition-all shadow-sm" />
                     </div>
 
                     <!-- Icon Picker -->
                     <div class="space-y-2">
-                        <label class="text-[11px] font-bold text-slate-400 dark:text-slate-600">Icon</label>
+                        <label class="text-[11px] font-bold text-slate-400 dark:text-slate-600">{{ $t('vault_label_icon') }}</label>
                         <div class="flex flex-wrap gap-2">
                             <button v-for="i in icons" :key="i"
                                     @click="form.icon = i"
@@ -101,7 +101,7 @@ const handleSave = () => {
 
                     <!-- Color Picker -->
                     <div class="space-y-2">
-                        <label class="text-[11px] font-bold text-slate-400 dark:text-slate-600">Color theme</label>
+                        <label class="text-[11px] font-bold text-slate-400 dark:text-slate-600">{{ $t('vault_label_color') }}</label>
                         <div class="flex flex-wrap gap-3">
                             <button v-for="c in colors" :key="c"
                                     @click="form.color = c"
@@ -117,12 +117,12 @@ const handleSave = () => {
                 <!-- Footer -->
                 <div class="p-8 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 transition-colors">
                     <button @click="handleClose" class="text-[10px] font-bold text-slate-400 dark:text-slate-600 px-4 py-2 hover:text-rose-500 transition-colors">
-                        Cancel
+                        {{ $t('btn_cancel') }}
                     </button>
                     <button @click="handleSave"
                             :disabled="processing"
                             class="bg-indigo-600 text-white px-8 py-3.5 rounded-2xl font-black text-[11px] shadow-lg shadow-indigo-600/20 hover:bg-indigo-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
-                        {{ processing ? 'Manifesting...' : (saving?.id ? 'Update vault' : 'Create vault') }}
+                        {{ processing ? $t('btn_processing') : (saving?.id ? $t('vault_btn_update') : $t('vault_btn_create')) }}
                     </button>
                 </div>
             </div>

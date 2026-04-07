@@ -62,9 +62,9 @@ const setAmount = (val) => {
                         </div>
                         <div>
                             <h2 class="text-xl font-black text-slate-800 dark:text-white">
-                                {{ type === 'deposit' ? 'Add Fuel' : 'Withdraw' }}
+                                {{ type === 'deposit' ? $t('vault_deposit_title') : $t('vault_withdraw_title') }}
                             </h2>
-                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                            <p class="text-[10px] font-black text-slate-400 tracking-widest">
                                 {{ saving?.title }}
                             </p>
                         </div>
@@ -78,13 +78,13 @@ const setAmount = (val) => {
                     <!-- Current Status -->
                     <div class="bg-slate-50 dark:bg-slate-800/50 rounded-3xl p-5 border border-slate-100 dark:border-slate-800 flex justify-between items-center transition-all">
                         <div>
-                            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter mb-1">Available in Vault</p>
+                            <p class="text-[9px] font-bold text-slate-400 tracking-tighter mb-1">{{ $t('vault_available_title') }}</p>
                             <p class="text-lg font-black text-slate-800 dark:text-white tabular-nums">
                                 {{ formatMoney(saving?.current_amount || 0) }}
                             </p>
                         </div>
                         <div class="text-right">
-                            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter mb-1">Target</p>
+                            <p class="text-[9px] font-bold text-slate-400 tracking-tighter mb-1">{{ $t('target') }}</p>
                             <p class="text-xs font-bold text-indigo-500 tabular-nums">
                                 {{ formatMoney(saving?.target_amount || 0) }}
                             </p>
@@ -94,8 +94,8 @@ const setAmount = (val) => {
                     <!-- Input Box -->
                     <div class="space-y-4">
                         <div class="relative group">
-                            <label class="absolute -top-2.5 left-5 bg-white dark:bg-slate-900 px-2 text-[10px] font-black text-indigo-500 uppercase tracking-widest z-10">
-                                {{ type === 'deposit' ? 'Deposit Amount' : 'Withdrawal Amount' }}
+                            <label class="absolute -top-2.5 left-5 bg-white dark:bg-slate-900 px-2 text-[10px] font-black text-indigo-500 tracking-widest z-10">
+                                {{ type === 'deposit' ? $t('vault_deposit_label') : $t('vault_withdraw_label') }}
                             </label>
                             <div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/80 border-2 border-transparent focus-within:border-indigo-500/20 focus-within:bg-white dark:focus-within:bg-slate-800 rounded-[1.5rem] px-5 py-4 transition-all shadow-inner">
                                 <span class="text-slate-400 font-black text-lg">Rp</span>
@@ -117,7 +117,7 @@ const setAmount = (val) => {
 
                     <!-- Date Input -->
                     <div class="space-y-1">
-                        <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Transaction Date</label>
+                        <label class="text-[10px] font-black text-slate-400 tracking-widest ml-1">{{ $t('vault_date_label') }}</label>
                         <input v-model="date" type="date" 
                                class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl px-5 py-3 text-sm font-bold text-slate-600 dark:text-slate-300 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer" />
                     </div>
@@ -132,11 +132,11 @@ const setAmount = (val) => {
                         <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                         <span class="relative flex items-center justify-center gap-3">
                             <component :is="type === 'deposit' ? ArrowDownCircle : ArrowUpCircle" :size="18" />
-                            {{ processing ? 'Processing...' : (type === 'deposit' ? 'Secure Funds' : 'Confirm Withdrawal') }}
+                            {{ processing ? $t('btn_processing') : (type === 'deposit' ? $t('vault_btn_deposit') : $t('vault_btn_withdraw')) }}
                         </span>
                     </button>
                     <p v-if="type === 'withdraw'" class="text-center text-[10px] font-bold text-slate-400 mt-4">
-                         Money will be moved back to your main wallet immediately.
+                         {{ $t('vault_withdraw_notice') }}
                     </p>
                 </div>
             </div>

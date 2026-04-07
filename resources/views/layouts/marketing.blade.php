@@ -479,7 +479,7 @@
                         class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
                         <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-5 h-5 brightness-0 invert" />
                     </div>
-                    <span class="text-lg font-black tracking-tighter text-slate-900">OneForMind</span>
+                    <span class="text-xl font-black tracking-tighter text-slate-900">OneForMind</span>
                 </a>
 
                 {{-- DESKTOP MENU --}}
@@ -723,10 +723,10 @@
                     <div class="flex lg:hidden items-center gap-2">
                         @auth
                             <a hx-boost="false" href="{{ route('dashboard') }}"
-                                class="px-4 py-1.5 bg-slate-900 text-white rounded-full text-[11px] font-bold shadow-sm">Dashboard</a>
+                                class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[13.5px] font-black shadow-lg">Dashboard</a>
                         @else
                             <a hx-boost="false" href="{{ route('register') }}"
-                                class="px-4 py-1.5 bg-indigo-600 text-white rounded-full text-[11px] font-bold shadow-sm shadow-indigo-100">
+                                class="px-5 py-2.5 bg-indigo-600 text-white rounded-full text-[13.5px] font-black shadow-lg shadow-indigo-200">
                                 Get Started
                             </a>
                         @endauth
@@ -906,12 +906,12 @@
                                 class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">Log
                                 In</a>
                             <a @click="isInterfacing = true" hx-boost="false" href="{{ route('register') }}"
-                                class="w-full py-4 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">Get
+                                class="w-full py-4.5 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">Get
                                 Started</a>
                         </div>
                     @else
                         <a @click="isInterfacing = true" hx-boost="false" href="{{ route('dashboard') }}"
-                            class="block w-full py-4 text-center font-black text-white bg-slate-900 rounded-2xl">Dashboard</a>
+                            class="block w-full py-4.5 text-center font-black text-white bg-slate-900 rounded-2xl">Dashboard</a>
                     @endguest
                 </div>
             </div>

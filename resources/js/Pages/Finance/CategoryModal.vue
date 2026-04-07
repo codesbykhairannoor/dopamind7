@@ -34,7 +34,7 @@ watch(() => props.show, (val) => {
                 
                 <form @submit.prevent="submit" class="space-y-5">
                     <div>
-                        <label class="block text-[10px] uppercase font-bold text-slate-400 dark:text-slate-600 tracking-widest mb-1.5 transition-colors duration-500">{{ $t('name') }}</label>
+                        <label class="block text-[10px] font-black text-slate-400 dark:text-slate-600 tracking-widest mb-1.5 transition-colors duration-500">{{ $t('name') }}</label>
                         <div class="flex gap-2">
                             <div class="relative">
                                 <button type="button" @click="showIconGrid = !showIconGrid" class="w-12 h-12 flex items-center justify-center bg-slate-50 dark:bg-slate-800 rounded-xl text-2xl border border-slate-100 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all active:scale-95 duration-300">

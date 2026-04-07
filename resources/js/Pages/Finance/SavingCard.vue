@@ -49,7 +49,7 @@ const remaining = computed(() => {
             <div class="mb-4">
                 <h3 class="text-lg font-black text-slate-800 dark:text-white truncate pr-2">{{ saving.title }}</h3>
                 <div class="flex items-center gap-2 mt-1">
-                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">{{ progress }}% Reached</p>
+                    <p class="text-[10px] font-black text-slate-400 tracking-widest">{{ progress }}% {{ $t('vault_progress_suffix') }}</p>
                     <div class="h-1 flex-1 bg-slate-100/50 dark:bg-slate-800/50 rounded-full overflow-hidden">
                         <div class="h-full rounded-full transition-all duration-1000 ease-out" 
                              :style="{ width: progress + '%', backgroundColor: saving.color || '#6366f1' }"></div>
@@ -59,11 +59,11 @@ const remaining = computed(() => {
 
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <div>
-                    <span class="text-[8px] font-black text-slate-400 uppercase tracking-tighter opacity-70">Current Balance</span>
+                    <span class="text-[8px] font-black text-slate-400 tracking-tighter opacity-70">{{ $t('vault_card_current') }}</span>
                     <p class="text-sm font-black text-slate-800 dark:text-white tabular-nums">{{ formatMoney(saving.current_amount) }}</p>
                 </div>
                 <div class="text-right">
-                    <span class="text-[8px] font-black text-slate-400 uppercase tracking-tighter opacity-70">Target Weight</span>
+                    <span class="text-[8px] font-black text-slate-400 tracking-tighter opacity-70">{{ $t('target') }}</span>
                     <p class="text-sm font-black text-slate-400 tabular-nums">{{ formatMoney(saving.target_amount) }}</p>
                 </div>
             </div>
@@ -75,7 +75,7 @@ const remaining = computed(() => {
                     class="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl bg-indigo-600 text-white text-[10px] font-black tracking-widest hover:bg-indigo-700 hover:scale-[1.02] shadow-lg shadow-indigo-600/20 transition-all active:scale-95"
                 >
                     <ArrowDownCircle :size="14" />
-                    {{ $t('deposit').toUpperCase() }}
+                    {{ $t('vault_btn_deposit_short') }}
                 </button>
                 <button 
                     @click="onWithdraw(saving)"
