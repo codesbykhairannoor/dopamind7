@@ -667,7 +667,7 @@
                 {{-- RIGHT ACTIONS --}}
                 <div class="flex items-center gap-3">
                     {{-- Premium Language Dropdown --}}
-                    <div class="relative" x-data="{ langOpen: false }" @click.away="langOpen = false">
+                    <div class="hidden lg:relative lg:block" x-data="{ langOpen: false }" @click.away="langOpen = false">
                         <button @click="langOpen = !langOpen"
                             class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-100 hover:bg-white hover:border-indigo-100 transition-all shadow-sm group">
                             <span

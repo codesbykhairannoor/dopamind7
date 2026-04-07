@@ -9,19 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class FinanceSavingController extends Controller
 {
-    /**
-     * 🔥 FIX: Handle Optimistic IDs (temp_...) from Frontend
-     * Inertia might try to resolve the route binding before our success callback.
-     */
-    public function resolveRouteBinding($value, $field = null)
-    {
-        if (is_string($value) && str_starts_with($value, 'temp_')) {
-            return new FinanceSaving();
-        }
-
-        return parent::resolveRouteBinding($value, $field);
-    }
-
     public function __construct(private FinanceService $financeService) {}
 
     public function store(Request $request)
@@ -57,11 +44,17 @@ class FinanceSavingController extends Controller
         return back()->with('success', 'Saving goal updated!');
     }
 
-    public function destroy(FinanceSaving $financeSaving)
+    public function destroy(Request $request, FinanceSaving $financeSaving)
     {
         if ($financeSaving->user_id !== Auth::id()) abort(403);
-        $financeSaving->delete();
-        return back();
+        
+        $this->financeService->destroySavingSafely(
+            Auth::id(),
+            $financeSaving->id,
+            $request->input('date', now()->format('Y-m-d'))
+        );
+
+        return back()->with('success', 'Vault closed and balance returned!');
     }
 
     public function deposit(Request $request, FinanceSaving $financeSaving)

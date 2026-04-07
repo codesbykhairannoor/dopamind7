@@ -1,7 +1,7 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, router } from '@inertiajs/vue3';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
@@ -80,7 +80,7 @@ const plans = computed(() => [
 ]);
 
 const checkout = async (plan) => {
-    if (plan.slug === 'explorer') return;
+    if (!plan || plan.slug === 'explorer') return;
 
     try {
         Swal.fire({
@@ -111,6 +111,17 @@ const checkout = async (plan) => {
         });
     }
 };
+
+onMounted(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const planSlug = urlParams.get('plan');
+    if (planSlug) {
+        const targetPlan = plans.value.find(p => p.slug === planSlug);
+        if (targetPlan) {
+            checkout(targetPlan);
+        }
+    }
+});
 </script>
 
 <template>

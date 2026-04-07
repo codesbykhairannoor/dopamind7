@@ -93,7 +93,7 @@
             </div>
             
             {{-- Teks Utama --}}
-            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-gray-900 tracking-tight">
+            <h1 class="text-6xl md:text-7xl font-black mb-6 leading-tight text-gray-900 tracking-tight">
                 {{ __('atomic_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('atomic_hero_title_2') }}
@@ -303,7 +303,7 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-indigo-50 to-white rounded-t-full -z-10"></div>
         
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tight">{{ __('atomic_cta_title') }}</h2>
+            <h2 class="text-6xl md:text-7xl font-black text-gray-900 mb-8 tracking-tight">{{ __('atomic_cta_title') }}</h2>
             <p class="text-xl text-gray-500 mb-12 max-w-2xl mx-auto">{{ __('atomic_cta_desc') }}</p>
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-800 shadow-2xl transition transform hover:-translate-y-1">
                 {{ __('atomic_cta_btn') }}

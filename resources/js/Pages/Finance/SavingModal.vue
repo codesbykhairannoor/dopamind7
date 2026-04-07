@@ -24,16 +24,32 @@ const form = ref({
 const colors = ['#6366f1', '#10b981', '#f59e0b', '#f43f5e', '#8b5cf6', '#0ea5e9', '#0f172a'];
 const icons = ['🏦', '💍', '🏠', '🚗', '🎓', '✈️', '💻', '👶', '🎁', '🏥', '🍱', '💼'];
 
+const resetForm = () => {
+    form.value = {
+        id: null,
+        title: '',
+        target_amount: '',
+        icon: '🏦',
+        color: '#6366f1'
+    };
+};
+
 watch(() => props.saving, (newVal) => {
-    if (newVal) {
+    if (newVal && newVal.id) {
         form.value = { ...newVal };
     } else {
-        form.value = { id: null, title: '', target_amount: 0, icon: '🏦', color: '#6366f1' };
+        resetForm();
     }
 }, { immediate: true });
 
-const handleClose = () => emit('close');
-const handleSave = () => emit('save', form.value);
+const handleClose = () => {
+    resetForm();
+    emit('close');
+};
+const handleSave = () => {
+    emit('save', form.value);
+    if (!props.saving?.id) resetForm();
+};
 </script>
 
 <template>

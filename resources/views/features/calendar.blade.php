@@ -83,7 +83,7 @@
                     <span class="text-lg">🗓️</span> {{ __('calendar_hero_badge') }}
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-6xl md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
                     {{ __('calendar_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('calendar_hero_title_2') }}</span>
                 </h1>
@@ -217,7 +217,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-100">
                         {{ __('calendar_layered_badge') }}
                     </div>
-                    <h2 class="text-5xl md:text-7xl font-black text-gray-900 mb-10 leading-[1.1] tracking-tight">
+                    <h2 class="text-6xl md:text-7xl font-black text-gray-900 mb-10 leading-[1.1] tracking-tight">
                         {{ __('calendar_layered_title') }}
                     </h2>
                     <p class="text-gray-500 text-xl mb-12 leading-relaxed font-medium">

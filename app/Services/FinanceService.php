@@ -78,7 +78,7 @@ class FinanceService
                 'total_expense'       => (float) $totalExpense,
                 'total_savings'       => (float) $totalSavings,
                 'income_target'       => (float) $incomeTarget,
-                'balance'             => (float) (($incomeTarget + $totalIncome) - $totalExpense - $totalSavings),
+                'balance'             => (float) (($incomeTarget + $totalIncome) - $totalExpense),
                 'expense_by_category' => $expenseStats,
                 'income_by_category'  => $incomeStats,
             ],
@@ -226,6 +226,28 @@ class FinanceService
                 'amount'  => $amount,
                 'notes'   => "Withdrawal from {$saving->title}"
             ]);
+        });
+    }
+
+    public function destroySavingSafely(int $userId, int $savingId, string $date): void
+    {
+        DB::transaction(function () use ($userId, $savingId, $date) {
+            $saving = FinanceSaving::where('user_id', $userId)->findOrFail($savingId);
+            $remainingAmount = (float) $saving->current_amount;
+
+            if ($remainingAmount > 0) {
+                FinanceTransaction::create([
+                    'user_id' => $userId,
+                    'date'    => $date,
+                    'title'   => "Closed Vault: {$saving->title} (Refund)",
+                    'type'    => 'income',
+                    'category' => 'saving',
+                    'amount'  => $remainingAmount,
+                    'notes'   => "Balance returned from closing the vault."
+                ]);
+            }
+
+            $saving->delete();
         });
     }
 }

@@ -61,7 +61,7 @@
                 🎓 {{ __('student_hero_badge') }}
             </div>
             
-            <h1 class="text-5xl md:text-6xl xl:text-7xl font-black mb-6 leading-[1.05] text-gray-900 tracking-tight">
+            <h1 class="text-6xl md:text-6xl xl:text-7xl font-black mb-6 leading-[1.05] text-gray-900 tracking-tight">
                 {{ __('student_hero_title_1') }}
                 <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('student_hero_title_2') }}
@@ -175,7 +175,7 @@
     <section class="py-24 bg-white bg-pattern-dots relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('student_prob_title') }}</h2>
+                <h2 class="text-5xl md:text-5xl font-black mb-6 text-gray-900">{{ __('student_prob_title') }}</h2>
                 <p class="text-xl text-gray-500">{{ __('student_prob_desc') }}</p>
             </div>
 
@@ -366,7 +366,7 @@
                             🧬 {{ __('student_science_badge') }}
                         </div>
                         
-                        <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                        <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
                             {{ __('student_science_title') }}
                         </h2>
                         
@@ -429,7 +429,7 @@
         <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-500 rounded-full mix-blend-screen filter blur-[150px] opacity-40 -z-10 animate-pulse duration-[6000ms]"></div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-4xl md:text-6xl font-black mb-8 text-white tracking-tight">{{ __('student_cta_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl font-black mb-8 text-white tracking-tight">{{ __('student_cta_title') }}</h2>
             <p class="text-indigo-100 text-xl md:text-2xl mb-12 font-medium leading-relaxed">
                 {{ __('student_cta_desc') }}
             </p>

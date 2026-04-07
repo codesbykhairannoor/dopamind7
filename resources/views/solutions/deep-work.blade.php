@@ -91,7 +91,7 @@
                 {{ __('deepwork_hero_badge') }}
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight tracking-tight text-gray-900">
+            <h1 class="text-6xl md:text-7xl font-black mb-6 leading-tight tracking-tight text-gray-900">
                 {{ __('deepwork_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('deepwork_hero_title_2') }}

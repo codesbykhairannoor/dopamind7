@@ -24,69 +24,64 @@ const remaining = computed(() => {
 </script>
 
 <template>
-    <div class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 overflow-hidden flex flex-col h-full">
-        <!-- Header: Visual & Title -->
-        <div class="relative h-32 shrink-0 overflow-hidden" :style="{ backgroundColor: (saving.color || '#6366f1') + '10' }">
-            <div class="absolute inset-0 opacity-20" :style="{ background: `radial-gradient(circle at top right, ${saving.color || '#6366f1'}, transparent)` }"></div>
-            
-            <div class="absolute inset-0 flex items-center justify-center">
-                <div class="w-16 h-16 rounded-2xl bg-white/50 dark:bg-black/20 backdrop-blur-md border border-white/50 dark:border-white/10 flex items-center justify-center text-3xl shadow-xl transform group-hover:scale-110 transition-transform duration-500">
-                    {{ saving.icon || '🏦' }}
-                </div>
+    <div class="group relative bg-[#ffffff05] dark:bg-slate-900/40 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 dark:border-slate-800/50 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-700 overflow-hidden flex flex-col h-full border-b-4" :style="{ borderBottomColor: (saving.color || '#6366f1') }">
+        <!-- Floating Glow -->
+        <div class="absolute -top-24 -right-24 w-48 h-48 rounded-full blur-[80px] opacity-10 transition-opacity duration-1000 group-hover:opacity-30" :style="{ backgroundColor: saving.color || '#6366f1' }"></div>
+        
+        <!-- Header: Icon & Quick Actions -->
+        <div class="p-6 pb-2 flex items-start justify-between relative z-10">
+            <div class="w-14 h-14 rounded-2xl bg-white/5 dark:bg-black/20 backdrop-blur-2xl border border-white/10 dark:border-white/5 flex items-center justify-center text-3xl shadow-xl transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-700">
+                {{ saving.icon || '🏦' }}
             </div>
-
-            <!-- Quick Actions -->
-            <div class="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button @click="onEdit(saving)" class="w-8 h-8 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm flex items-center justify-center text-slate-400 hover:text-indigo-600 transition-colors shadow-sm">
-                    <Edit3 :size="14" />
+            
+            <div class="flex gap-2">
+                <button @click="onEdit(saving)" class="w-9 h-9 rounded-full bg-white/10 dark:bg-slate-800/50 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-indigo-600 transition-all transform hover:scale-110 active:scale-95 shadow-sm">
+                    <Edit3 :size="15" />
                 </button>
-                <button @click="onDelete(saving.id)" class="w-8 h-8 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm flex items-center justify-center text-slate-400 hover:text-rose-500 transition-colors shadow-sm">
-                    <Trash2 :size="14" />
+                <button @click="onDelete(saving)" class="w-9 h-9 rounded-full bg-white/10 dark:bg-slate-800/50 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-rose-500 transition-all transform hover:scale-110 active:scale-95 shadow-sm">
+                    <Trash2 :size="15" />
                 </button>
             </div>
         </div>
 
         <!-- Body: Progress & Stats -->
-        <div class="p-6 flex flex-col flex-1">
+        <div class="p-6 pt-2 flex flex-col flex-1 relative z-10">
             <div class="mb-4">
-                <h3 class="text-lg font-black text-slate-800 dark:text-white truncate mb-1">{{ saving.title }}</h3>
-                <p class="text-[10px] font-bold text-slate-400 tracking-wide">{{ progress }}% of {{ formatMoney(saving.target_amount) }}</p>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full mb-6 overflow-hidden p-0.5">
-                <div 
-                    class="h-full rounded-full transition-all duration-1000 ease-out shadow-sm"
-                    :style="{ width: progress + '%', backgroundColor: saving.color || '#6366f1' }"
-                ></div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4 mb-8">
-                <div class="flex flex-col">
-                    <span class="text-[8px] font-bold text-slate-400 tracking-tighter">Current</span>
-                    <span class="text-sm font-black text-slate-800 dark:text-white tabular-nums">{{ formatMoney(saving.current_amount) }}</span>
+                <h3 class="text-lg font-black text-slate-800 dark:text-white truncate pr-2">{{ saving.title }}</h3>
+                <div class="flex items-center gap-2 mt-1">
+                    <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest">{{ progress }}% Reached</p>
+                    <div class="h-1 flex-1 bg-slate-100/50 dark:bg-slate-800/50 rounded-full overflow-hidden">
+                        <div class="h-full rounded-full transition-all duration-1000 ease-out" 
+                             :style="{ width: progress + '%', backgroundColor: saving.color || '#6366f1' }"></div>
+                    </div>
                 </div>
-                <div class="flex flex-col text-right">
-                    <span class="text-[8px] font-bold text-slate-400 tracking-tighter">Left to reach</span>
-                    <span class="text-sm font-black text-rose-500 dark:text-rose-400 tabular-nums">{{ formatMoney(remaining) }}</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div>
+                    <span class="text-[8px] font-black text-slate-400 uppercase tracking-tighter opacity-70">Current Balance</span>
+                    <p class="text-sm font-black text-slate-800 dark:text-white tabular-nums">{{ formatMoney(saving.current_amount) }}</p>
+                </div>
+                <div class="text-right">
+                    <span class="text-[8px] font-black text-slate-400 uppercase tracking-tighter opacity-70">Target Weight</span>
+                    <p class="text-sm font-black text-slate-400 tabular-nums">{{ formatMoney(saving.target_amount) }}</p>
                 </div>
             </div>
 
             <!-- Actions -->
-            <div class="mt-auto grid grid-cols-2 gap-3">
+            <div class="mt-auto flex items-center gap-2">
                 <button 
                     @click="onDeposit(saving)"
-                    class="flex items-center justify-center gap-2 py-3 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[10px] font-bold tracking-widest hover:bg-indigo-600 hover:text-white transition-all active:scale-95"
+                    class="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl bg-indigo-600 text-white text-[10px] font-black tracking-widest hover:bg-indigo-700 hover:scale-[1.02] shadow-lg shadow-indigo-600/20 transition-all active:scale-95"
                 >
                     <ArrowDownCircle :size="14" />
-                    Deposit
+                    {{ $t('deposit').toUpperCase() }}
                 </button>
                 <button 
                     @click="onWithdraw(saving)"
-                    class="flex items-center justify-center gap-2 py-3 rounded-2xl bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-[10px] font-bold tracking-widest hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:scale-95"
+                    class="w-[50px] flex items-center justify-center py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all active:scale-95 shadow-sm"
                 >
-                    <ArrowUpCircle :size="14" />
-                    Withdraw
+                    <ArrowUpCircle :size="18" />
                 </button>
             </div>
         </div>

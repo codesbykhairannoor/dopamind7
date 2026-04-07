@@ -323,7 +323,7 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
             <div class="text-6xl mb-8 animate-bounce">📈</div>
-            <h2 class="text-5xl md:text-7xl font-black mb-8 text-gray-900 tracking-tight">{{ __('solve_finance_cta_title') }}</h2>
+            <h2 class="text-6xl md:text-7xl font-black text-gray-900 mb-8 tracking-tight">{{ __('solve_finance_cta_title') }}</h2>
             <p class="text-gray-500 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('solve_finance_cta_desc') }}
             </p>

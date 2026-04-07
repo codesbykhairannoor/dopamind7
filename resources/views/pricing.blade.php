@@ -50,7 +50,7 @@
                 💎 {{ __('pricing_badge') }}
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-black text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
+            <h1 class="text-6xl md:text-7xl font-black text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
                 {{ __('pricing_title_1') }} <span class="text-indigo-600">{{ __('pricing_title_2') }}</span>
             </h1>
             
@@ -206,7 +206,7 @@
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('pricing_compare_title') }}</h2>
+                <h2 class="text-5xl font-black text-gray-900 mb-6">{{ __('pricing_compare_title') }}</h2>
                 <p class="text-gray-500 font-medium">{{ __('pricing_compare_subtitle') }}</p>
             </div>
             
@@ -607,47 +607,7 @@
 <script>
     function openCheckout(planId) {
         @auth
-            Swal.fire({
-                title: '{{ app()->getLocale() === "id" ? "Menyiapkan Pembayaran..." : "Preparing Payment..." }}',
-                html: '{{ app()->getLocale() === "id" ? "Menghubungkan ke Duitku safe gateway" : "Connecting to Duitku safe gateway" }}',
-                allowOutsideClick: false,
-                color: '#1e293b',
-                didOpen: () => {
-                    Swal.showLoading();
-                }
-            });
-
-            fetch("{{ route('payment.checkout') }}", {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ plan: planId })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.paymentUrl) {
-                    window.location.href = data.paymentUrl;
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Checkout Error',
-                        text: data.error || 'Terjadi kesalahan sistem. Silakan login ulang.',
-                        confirmButtonColor: '#4f46e5'
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'System Error',
-                    text: 'Gagal menghubungi server.',
-                    confirmButtonColor: '#4f46e5'
-                });
-            });
+            window.location.href = "{{ route('billing') }}?plan=" + planId;
         @else
             window.location.href = "{{ route('register') }}?plan=" + planId;
         @endauth

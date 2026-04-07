@@ -331,7 +331,7 @@
 
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
             <div class="inline-flex items-center justify-center w-24 h-24 bg-white/10 backdrop-blur-md rounded-full text-5xl mb-10 border border-white/20 shadow-[0_0_50px_rgba(79,70,229,0.5)]">🚀</div>
-            <h2 class="text-5xl md:text-7xl font-black mb-8 text-white tracking-tight leading-tight">
+            <h2 class="text-6xl md:text-7xl font-black mb-8 text-white tracking-tight leading-tight">
                 {{ __('solve_career_cta_title') }}
             </h2>
             <p class="text-indigo-200 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
