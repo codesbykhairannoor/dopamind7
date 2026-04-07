@@ -52,7 +52,7 @@
                     🧘 {{ __('solve_mental_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl xl:text-7xl font-black mb-6 leading-[1.05] text-gray-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] md:text-6xl xl:text-7xl mb-6 leading-[1.05] text-gray-900 tracking-tight font-black">
                     {{ __('solve_mental_hero_title_1') }}
                     <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                         {{ __('solve_mental_hero_title_2') }}
@@ -111,19 +111,19 @@
     {{-- SECTION 2: THE PROBLEM (THE BRAIN FOG) --}}
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">{{ __('solve_mental_prob_title') }}</h2>
+            <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('solve_mental_prob_title') }}</h2>
             <p class="text-xl text-gray-500 mb-16 leading-relaxed">
                 {{ __('solve_mental_prob_desc') }}
             </p>
 
             <div class="grid md:grid-cols-2 gap-6 text-left">
                 <div class="p-8 bg-gray-50 rounded-[2rem] border border-gray-100">
-                    <div class="text-3xl mb-4">🌪️</div>
+                    <div class="text-3xl mb-4 font-black">🌪️</div>
                     <h3 class="text-lg font-bold mb-2 text-gray-900">{{ __('solve_mental_prob_1_title') }}</h3>
                     <p class="text-gray-500 text-sm">{{ __('solve_mental_prob_1_desc') }}</p>
                 </div>
                 <div class="p-8 bg-gray-50 rounded-[2rem] border border-gray-100">
-                    <div class="text-3xl mb-4">📱</div>
+                    <div class="text-3xl mb-4 font-black">📱</div>
                     <h3 class="text-lg font-bold mb-2 text-gray-900">{{ __('solve_mental_prob_2_title') }}</h3>
                     <p class="text-gray-500 text-sm">{{ __('solve_mental_prob_2_desc') }}</p>
                 </div>
@@ -142,7 +142,7 @@
             
             {{-- Text Content --}}
             <div class="lg:col-span-5 flex flex-col justify-center order-2 lg:order-1">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
+                <h2 class="text-3xl md:text-5xl mb-6 leading-tight font-black">
                     {{ __('solve_mental_sol_title') }}
                 </h2>
                 <p class="text-indigo-200 text-base md:text-lg leading-relaxed mb-8">
@@ -205,17 +205,17 @@
     <section class="py-32 bg-indigo-50/50">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('solve_mental_feat_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('solve_mental_feat_title') }}</h2>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="p-12 bg-white rounded-[3rem] border border-indigo-100 shadow-sm group hover:-translate-y-2 transition duration-300">
-                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-6">📝</div>
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-6 font-black">📝</div>
                     <h3 class="text-2xl font-bold mb-4 text-gray-900">{{ __('solve_mental_feat_1_title') }}</h3>
                     <p class="text-gray-500 leading-relaxed text-lg">{{ __('solve_mental_feat_1_desc') }}</p>
                 </div>
                 <div class="p-12 bg-indigo-950 rounded-[3rem] text-white shadow-xl group hover:-translate-y-2 transition duration-300">
-                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-6">📉</div>
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-6 font-black">📉</div>
                     <h3 class="text-2xl font-bold mb-4 text-indigo-300">{{ __('solve_mental_feat_2_title') }}</h3>
                     <p class="text-indigo-100/70 leading-relaxed text-lg">{{ __('solve_mental_feat_2_desc') }}</p>
                 </div>
@@ -236,11 +236,11 @@
                         </div>
                         <div class="flex-1 bg-indigo-300 rounded-t-xl h-28"></div>
                     </div>
-                    <div class="mt-6 text-center text-[10px] font-black text-indigo-400 uppercase tracking-widest">{{ __('mental_extra_1_label') }}</div>
+                    <div class="mt-6 text-center text-[10px] text-indigo-400 uppercase tracking-widest">{{ __('mental_extra_1_label') }}</div>
                 </div>
             </div>
             <div class="order-1 md:order-2">
-                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('solve_mental_extra_1_title') }}</h2>
+                <h2 class="text-4xl text-gray-900 mb-6 font-black">{{ __('solve_mental_extra_1_title') }}</h2>
                 <p class="text-xl text-gray-500 leading-relaxed">
                     {{ __('solve_mental_extra_1_desc') }}
                 </p>
@@ -251,7 +251,7 @@
     {{-- SECTION: JOURNALING LOOPS (UNIQUE B) --}}
     <section class="py-32 bg-slate-900 text-white relative">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black mb-8">{{ __('solve_mental_extra_2_title') }}</h2>
+            <h2 class="text-4xl mb-8 font-black">{{ __('solve_mental_extra_2_title') }}</h2>
             <p class="text-xl text-indigo-200 leading-relaxed mb-12 italic">
                 {{ __('solve_mental_extra_2_desc') }}
             </p>
@@ -277,10 +277,10 @@
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-20">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6 rounded-full">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-widest mb-6 rounded-full">
                     🧬 {{ __('solve_mental_science_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 max-w-4xl mx-auto leading-tight">
+                <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 max-w-4xl mx-auto leading-tight font-black">
                     {{ __('solve_mental_science_title') }}
                 </h2>
                 <div class="w-24 h-1 bg-indigo-600 mx-auto rounded-full"></div>
@@ -290,11 +290,11 @@
                 {{-- Left: Nodes --}}
                 <div class="space-y-8">
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-right transform hover:-translate-x-2 transition">
-                        <span class="block text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Process_01</span>
+                        <span class="block text-[10px] text-indigo-400 uppercase tracking-widest mb-1">Process_01</span>
                         <h4 class="font-bold text-gray-900">{{ __('mental_science_process_1_title') }}</h4>
                     </div>
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 text-right transform hover:-translate-x-2 transition">
-                        <span class="block text-[10px] font-black text-purple-400 uppercase tracking-widest mb-1">Process_02</span>
+                        <span class="block text-[10px] text-purple-400 uppercase tracking-widest mb-1">Process_02</span>
                         <h4 class="font-bold text-gray-900">{{ __('mental_science_process_2_title') }}</h4>
                     </div>
                 </div>
@@ -312,11 +312,11 @@
                 {{-- Right: Nodes --}}
                 <div class="space-y-8">
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transform hover:translate-x-2 transition">
-                        <span class="block text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1">Process_03</span>
+                        <span class="block text-[10px] text-emerald-400 uppercase tracking-widest mb-1">Process_03</span>
                         <h4 class="font-bold text-gray-900">{{ __('mental_science_process_3_title') }}</h4>
                     </div>
                     <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 transform hover:translate-x-2 transition">
-                        <span class="block text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">Process_04</span>
+                        <span class="block text-[10px] text-amber-400 uppercase tracking-widest mb-1">Process_04</span>
                         <h4 class="font-bold text-gray-900">{{ __('mental_science_process_4_title') }}</h4>
                     </div>
                 </div>
@@ -326,7 +326,7 @@
 
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('solve_mental_faq_title') }}</h2>
+            <h2 class="text-4xl text-center text-gray-900 mb-16 font-black">{{ __('solve_mental_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -343,14 +343,16 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-purple-100 to-transparent rounded-full blur-3xl opacity-50 -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
-            <div class="text-6xl mb-8 animate-pulse duration-3000">🕊️</div>
-            <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-8 text-gray-900 tracking-tight">{{ __('solve_mental_cta_title') }}</h2>
+            <div class="text-6xl mb-8 animate-pulse duration-3000 font-black">🕊️</div>
+            <h2 class="text-[42px] leading-[1.1] md:text-7xl mb-8 text-gray-900 tracking-tight font-black">{{ __('solve_mental_cta_title') }}</h2>
             <p class="text-gray-500 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('solve_mental_cta_desc') }}
             </p>
-            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-800 transition-colors duration-300 shadow-2xl">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full text-xl hover:bg-indigo-800 transition-colors duration-300 shadow-2xl">
                 {{ __('solve_mental_cta_btn') }}
             </a>
         </div>
     </section>
 @endsection
+
+

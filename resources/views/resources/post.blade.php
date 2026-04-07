@@ -90,7 +90,7 @@
                 </span>
             @endif
 
-            <h1 class="text-4xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-12 tracking-tighter">
+            <h1 class="text-4xl md:text-7xl text-slate-900 leading-[1.1] mb-12 tracking-tighter font-black">
                 {{ $post->title }}
             </h1>
 
@@ -265,3 +265,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </style>
 
 @endsection
+

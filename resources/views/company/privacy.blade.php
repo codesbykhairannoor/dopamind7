@@ -44,7 +44,7 @@
                     {{ __('privacy_badge') }}
                 </div>
 
-                <h1 class="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-8">
+                <h1 class="text-6xl md:text-8xl text-white tracking-tighter leading-[0.9] mb-8 font-black">
                     {{ __('privacy_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-indigo-400">
                         {{ __('privacy_title_2') }}
@@ -146,7 +146,7 @@
             <main class="w-full lg:w-3/4">
                 
                 <div id="tldr" class="scroll-mt-32 mb-20">
-                    <h2 class="text-3xl font-black text-slate-900 mb-10 flex items-center gap-4">
+                    <h2 class="text-3xl text-slate-900 mb-10 flex items-center gap-4 font-black">
                         <span class="w-10 h-10 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-xl shadow-lg shadow-indigo-200">⚡</span>
                         {{ __('privacy_tldr_title') }}
                     </h2>
@@ -175,7 +175,7 @@
                         {{ __('privacy_doc_intro') }}
                     </p>
 
-                    <h2 id="collection" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('privacy_h2_collection') }}</h2>
+                    <h2 id="collection" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('privacy_h2_collection') }}</h2>
                     <p>{{ __('privacy_p_collection') }}</p>
                     <ul class="marker:text-indigo-600">
                         <li><strong>{{ __('privacy_li_collection_1_title') }}:</strong> {{ __('privacy_li_collection_1_desc') }}</li>
@@ -183,7 +183,7 @@
                         <li><strong>{{ __('privacy_li_collection_3_title') }}:</strong> {{ __('privacy_li_collection_3_desc') }}</li>
                     </ul>
 
-                    <h2 id="usage" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('privacy_h2_usage') }}</h2>
+                    <h2 id="usage" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('privacy_h2_usage') }}</h2>
                     <p>{{ __('privacy_p_usage') }}</p>
                     <ul>
                         <li>{{ __('privacy_li_usage_1') }}</li>
@@ -192,20 +192,20 @@
                     </ul>
 
                     <div class="my-10 p-8 bg-rose-50 rounded-3xl border border-rose-100 flex gap-6 items-start">
-                        <span class="text-3xl mt-1">🛡️</span>
+                        <span class="text-3xl mt-1 font-black">🛡️</span>
                         <div class="not-prose">
                             <h4 class="text-rose-900 font-black text-lg mb-2">{{ __('privacy_finance_note_title') }}</h4>
                             <p class="text-rose-800/80 text-sm leading-relaxed">{{ __('privacy_finance_note_desc') }}</p>
                         </div>
                     </div>
 
-                    <h2 id="security" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('privacy_h2_security') }}</h2>
+                    <h2 id="security" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('privacy_h2_security') }}</h2>
                     <p>{{ __('privacy_p_security') }}</p>
 
-                    <h2 id="thirdparty" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('privacy_h2_thirdparty')}}</h2>
+                    <h2 id="thirdparty" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('privacy_h2_thirdparty')}}</h2>
                     <p>{{ __('privacy_p_thirdparty') }}</p>
 
-                    <h2 id="rights" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('privacy_h2_rights') }}</h2>
+                    <h2 id="rights" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('privacy_h2_rights') }}</h2>
                     <p>{{ __('privacy_p_rights') }}</p>
                     <ul>
                         <li>{{ __('privacy_li_rights_1') }}</li>
@@ -213,7 +213,7 @@
                         <li>{{ __('privacy_li_rights_3') }}</li>
                     </ul>
 
-                    <h2 id="contact" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('privacy_h2_contact') }}</h2>
+                    <h2 id="contact" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('privacy_h2_contact') }}</h2>
                     <p>{{ __('privacy_p_contact') }}</p>
                     <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 not-prose flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-inner">
                         <div>
@@ -230,7 +230,7 @@
                 <div class="bg-slate-900 rounded-[3.5rem] p-10 md:p-16 text-white shadow-2xl relative overflow-hidden mb-20 group">
                     <div class="absolute -right-20 -top-20 w-80 h-80 bg-indigo-500/20 rounded-full blur-[100px] pointer-events-none group-hover:scale-110 transition duration-1000"></div>
                     <div class="relative z-10">
-                        <h3 class="text-4xl font-black mb-6">{{ __('privacy_export_title') }}</h3>
+                        <h3 class="text-4xl mb-6 font-black">{{ __('privacy_export_title') }}</h3>
                         <p class="text-indigo-100 text-xl leading-relaxed mb-10 opacity-70 max-w-2xl">
                             {{ __('privacy_export_desc') }}
                         </p>
@@ -247,7 +247,7 @@
 
                 {{-- FAQ --}}
                 <div class="mb-24">
-                    <h2 class="text-4xl font-black text-slate-900 mb-12 text-center tracking-tight">{{ __('privacy_faq_title') }}</h2>
+                    <h2 class="text-4xl text-slate-900 mb-12 text-center tracking-tight font-black">{{ __('privacy_faq_title') }}</h2>
                     <div class="max-w-3xl mx-auto space-y-4" x-data="{ selected: null }">
                         @foreach([1, 2, 3] as $i)
                         <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
@@ -275,7 +275,7 @@
     <section class="py-32 px-6 bg-white border-t border-slate-100 text-center relative overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-indigo-600/5 rounded-full blur-[120px] pointer-events-none"></div>
         <div class="max-w-4xl mx-auto relative z-10">
-            <h2 class="text-5xl md:text-7xl font-black mb-8 text-slate-900 tracking-tighter leading-none">{{ __('privacy_cta_title') }}</h2>
+            <h2 class="text-5xl md:text-7xl mb-8 text-slate-900 tracking-tighter leading-none font-black">{{ __('privacy_cta_title') }}</h2>
             <p class="text-2xl text-slate-500 mb-14 leading-relaxed max-w-2xl mx-auto">
                 {{ __('privacy_cta_desc') }}
             </p>
@@ -286,3 +286,4 @@
     </section>
 
 @endsection
+

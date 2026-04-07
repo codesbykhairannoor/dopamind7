@@ -81,7 +81,7 @@
         <div class="max-w-5xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
             {{-- Icon / Gambar --}}
             <div class="flex justify-center mb-8">
-                <div class="w-24 h-24 bg-white border border-indigo-100 rounded-3xl shadow-xl shadow-indigo-100 flex items-center justify-center text-4xl transform -rotate-3 hover:rotate-0 transition duration-300">
+                <div class="w-24 h-24 bg-white border border-indigo-100 rounded-3xl shadow-xl shadow-indigo-100 flex items-center justify-center text-4xl transform -rotate-3 hover:rotate-0 transition duration-300 font-black">
                     ⚡
                 </div>
             </div>
@@ -91,7 +91,7 @@
                 {{ __('deepwork_hero_badge') }}
             </div>
             
-            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-6 leading-tight tracking-tight text-gray-900">
+            <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-6 leading-tight tracking-tight text-gray-900 font-black">
                 {{ __('deepwork_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('deepwork_hero_title_2') }}
@@ -104,7 +104,7 @@
             
             {{-- CTA --}}
             <div class="flex justify-center gap-4 mb-24">
-                <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.4)] transition transform hover:-translate-y-1">
+                <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl text-lg hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.4)] transition transform hover:-translate-y-1">
                     {{ __('deepwork_hero_cta') }}
                 </a>
             </div>
@@ -149,7 +149,7 @@
                     </div>
 
                     <div class="w-full md:w-1/3 flex flex-col items-center justify-center border-t md:border-t-0 md:border-l border-gray-200 pt-8 md:pt-0 md:pl-8">
-                        <div class="text-6xl font-black text-gray-900 tracking-tighter tabular-nums font-mono drop-shadow-sm">
+                        <div class="text-6xl text-gray-900 tracking-tighter tabular-nums font-mono drop-shadow-sm font-black">
                             24<span class="text-indigo-500 animate-pulse">:</span>59
                         </div>
                         <p class="text-gray-400 text-xs mt-3 font-bold uppercase tracking-widest">{{ __('deepwork_mockup_desc') }}</p>
@@ -164,23 +164,23 @@
     <section class="py-32 bg-white relative">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">{{ __('deepwork_prob_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('deepwork_prob_title') }}</h2>
                 <p class="text-xl text-gray-500 max-w-3xl mx-auto">{{ __('deepwork_prob_desc') }}</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm text-3xl mb-6">📱</div>
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm text-3xl mb-6 font-black">📱</div>
                     <h4 class="text-xl font-bold text-gray-900 mb-3">{{ __('deepwork_prob_1_title') }}</h4>
                     <p class="text-gray-500 leading-relaxed">{{ __('deepwork_prob_1_desc') }}</p>
                 </div>
                 <div class="bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm text-3xl mb-6">🤹</div>
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm text-3xl mb-6 font-black">🤹</div>
                     <h4 class="text-xl font-bold text-gray-900 mb-3">{{ __('deepwork_prob_2_title') }}</h4>
                     <p class="text-gray-500 leading-relaxed">{{ __('deepwork_prob_2_desc') }}</p>
                 </div>
                 <div class="bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm text-3xl mb-6">🕰️</div>
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-sm text-3xl mb-6 font-black">🕰️</div>
                     <h4 class="text-xl font-bold text-gray-900 mb-3">{{ __('deepwork_prob_3_title') }}</h4>
                     <p class="text-gray-500 leading-relaxed">{{ __('deepwork_prob_3_desc') }}</p>
                 </div>
@@ -193,7 +193,7 @@
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="order-2 md:order-1">
                 <div class="inline-flex items-center justify-center w-14 h-14 bg-indigo-600 text-white rounded-2xl text-2xl mb-6 shadow-lg shadow-indigo-200">🏛️</div>
-                <h2 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-tight">{{ __('deepwork_sol_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl mb-8 text-gray-900 leading-tight font-black">{{ __('deepwork_sol_title') }}</h2>
                 <div class="space-y-8">
                     <div class="flex gap-4 items-start">
                         <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold shrink-0 mt-1">1</div>
@@ -226,7 +226,7 @@
                 
                 <div class="relative z-10">
                     <div class="text-9xl mb-8 transform group-hover:scale-110 transition duration-500">🔒</div>
-                    <h3 class="text-4xl font-black text-white tracking-tight mb-2">{{ __('deepwork_science_viz_lock') }}</h3>
+                    <h3 class="text-4xl text-white tracking-tight mb-2 font-black">{{ __('deepwork_science_viz_lock') }}</h3>
                     <p class="text-indigo-300 text-lg font-medium">{{ __('deepwork_science_viz_sub') }}</p>
                 </div>
             </div>
@@ -238,7 +238,7 @@
     <section class="py-32 bg-white">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('deepwork_feat_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('deepwork_feat_title') }}</h2>
             </div>
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="flex gap-6 items-start p-8 rounded-[2rem] bg-indigo-50 border border-indigo-100">
@@ -265,7 +265,7 @@
             <div class="relative order-2 md:order-1">
                 <div class="bg-indigo-600 rounded-[2.5rem] p-8 md:p-12 shadow-2xl transform -rotate-2 hover:rotate-0 transition duration-500">
                     <div class="flex items-end gap-2 mb-8 border-b border-indigo-500/30 pb-6">
-                        <div class="text-5xl font-black text-white">4.5</div>
+                        <div class="text-5xl text-white font-black">4.5</div>
                         <div class="text-indigo-200 font-bold mb-1">{{ __('deepwork_extra_1_sub') }}</div>
                     </div>
                     <div class="grid grid-cols-7 gap-2">
@@ -277,7 +277,7 @@
                 </div>
             </div>
             <div class="order-1 md:order-2">
-                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('deepwork_extra_1_title') }}</h2>
+                <h2 class="text-4xl text-gray-900 mb-6 font-black">{{ __('deepwork_extra_1_title') }}</h2>
                 <p class="text-xl text-gray-500 leading-relaxed">
                     {{ __('deepwork_extra_1_desc') }}
                 </p>
@@ -291,7 +291,7 @@
             <div class="bg-slate-900 rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden">
                 <div class="absolute top-0 right-0 p-12 opacity-10 text-9xl">🌿</div>
                 <div class="relative z-10 max-w-2xl">
-                    <h2 class="text-4xl font-black mb-6">{{ __('deepwork_extra_2_title') }}</h2>
+                    <h2 class="text-4xl mb-6 font-black">{{ __('deepwork_extra_2_title') }}</h2>
                     <p class="text-xl text-slate-400 leading-relaxed mb-8">
                         {{ __('deepwork_extra_2_desc') }}
                     </p>
@@ -319,11 +319,11 @@
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row gap-16 items-center">
                 <div class="flex-1 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 rounded-full">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-[0.2em] mb-8 rounded-full">
                         🧬 {{ __('deepwork_science_badge') }}
                     </div>
                     
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
+                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 leading-tight font-black">
                         {{ __('deepwork_science_title') }}
                     </h2>
                     
@@ -335,15 +335,15 @@
 
                     <div class="flex flex-wrap justify-center lg:justify-start gap-4">
                         <div class="group px-6 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
-                            <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">{{ __('deepwork_science_concept_1') }}</span>
+                            <span class="text-[10px] text-indigo-400 uppercase tracking-widest block mb-1">{{ __('deepwork_science_concept_1') }}</span>
                             <span class="font-bold text-gray-700">{{ __('deepwork_science_topic_1') }}</span>
                         </div>
                         <div class="group px-6 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
-                            <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">{{ __('deepwork_science_concept_2') }}</span>
+                            <span class="text-[10px] text-purple-400 uppercase tracking-widest block mb-1">{{ __('deepwork_science_concept_2') }}</span>
                             <span class="font-bold text-gray-700">{{ __('deepwork_science_topic_2') }}</span>
                         </div>
                         <div class="group px-6 py-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-200 transition">
-                            <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">{{ __('deepwork_science_concept_3') }}</span>
+                            <span class="text-[10px] text-emerald-400 uppercase tracking-widest block mb-1">{{ __('deepwork_science_concept_3') }}</span>
                             <span class="font-bold text-gray-700">{{ __('deepwork_science_topic_3') }}</span>
                         </div>
                     </div>
@@ -353,7 +353,7 @@
                      {{-- Focus Sphere --}}
                      <div class="w-80 h-80 bg-indigo-600 rounded-full flex items-center justify-center p-1 shadow-2xl shadow-indigo-200 relative group overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900 to-indigo-500 rounded-full group-hover:scale-110 transition duration-1000"></div>
-                        <div class="relative z-10 text-8xl transform group-hover:scale-125 transition duration-700">🧘</div>
+                        <div class="relative z-10 text-8xl transform group-hover:scale-125 transition duration-700 font-black">🧘</div>
                         {{-- Orbital Shield --}}
                         <div class="absolute inset-2 border-2 border-white/20 rounded-full animate-spin-slow"></div>
                         <div class="absolute inset-4 border border-white/10 rounded-full animate-spin-reverse-slow"></div>
@@ -365,7 +365,7 @@
 
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('deepwork_faq_title') }}</h2>
+            <h2 class="text-4xl text-center text-gray-900 mb-16 font-black">{{ __('deepwork_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -382,11 +382,11 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-indigo-100/50 to-transparent rounded-t-full -z-10"></div>
         
         <div class="max-w-3xl mx-auto mt-16">
-            <h2 class="text-[36px] leading-[1.1] font-black md:text-6xl font-black text-gray-900 mb-8 tracking-tight leading-tight">{{ __('deepwork_cta_title') }}</h2>
+            <h2 class="text-[36px] leading-[1.1] md:text-6xl text-gray-900 mb-8 tracking-tight leading-tight font-black">{{ __('deepwork_cta_title') }}</h2>
             <p class="text-xl text-gray-500 mb-12 leading-relaxed max-w-2xl mx-auto">{{ __('deepwork_cta_desc') }}</p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a hx-boost="false" href="{{ route('register') }}" class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.4)] transition transform hover:-translate-y-1 w-full sm:w-auto">
+                <a hx-boost="false" href="{{ route('register') }}" class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-10 py-5 rounded-2xl text-xl hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.4)] transition transform hover:-translate-y-1 w-full sm:w-auto">
                     {{ __('deepwork_cta_btn') }}
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
@@ -395,3 +395,5 @@
         </div>
     </section>
 @endsection
+
+

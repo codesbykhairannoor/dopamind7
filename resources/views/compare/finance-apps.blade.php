@@ -97,7 +97,7 @@
                     💰 {{ __('finapp_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] text-slate-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] md:text-6xl lg:text-7xl mb-6 leading-[1.1] text-slate-900 tracking-tight font-black">
                     {{ __('finapp_hero_title_1') }}<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-indigo-600">{{ __('finapp_hero_title_2') }}</span>
                 </h1>
@@ -161,7 +161,7 @@
     <section class="py-24 bg-slate-50 relative overflow-hidden border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('finapp_cycle_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl mb-6 text-slate-900 font-black">{{ __('finapp_cycle_title') }}</h2>
                 <p class="text-xl text-slate-500">{{ __('finapp_cycle_desc') }}</p>
             </div>
 
@@ -179,7 +179,7 @@
                 
                 {{-- Node 2 --}}
                 <div class="bg-rose-50 p-8 rounded-3xl border border-rose-100 shadow-inner w-full md:w-1/3 text-center relative z-10 transform md:scale-110">
-                    <div class="absolute -top-3 -right-3 bg-rose-500 text-white text-[10px] font-black px-2 py-1 rounded-full shadow-sm animate-pulse">DANGER</div>
+                    <div class="absolute -top-3 -right-3 bg-rose-500 text-white text-[10px] px-2 py-1 rounded-full shadow-sm animate-pulse">DANGER</div>
                     <div class="w-16 h-16 mx-auto bg-rose-100 border-4 border-white rounded-full flex items-center justify-center text-2xl shadow-md mb-4">🙈</div>
                     <h3 class="font-bold text-lg text-rose-900 mb-2">{{ __('finapp_cycle_2_title') }}</h3>
                     <p class="text-rose-700/80 text-sm">{{ __('finapp_cycle_2_desc') }}</p>
@@ -203,8 +203,8 @@
             
             {{-- Text Side --}}
             <div class="order-2 lg:order-1 animate-in slide-in-from-bottom-12 fade-in duration-1000">
-                <div class="w-14 h-14 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-rose-100">🛡️</div>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight">
+                <div class="w-14 h-14 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-rose-100 font-black">🛡️</div>
+                <h2 class="text-4xl md:text-5xl mb-6 text-slate-900 leading-tight font-black">
                     {{ __('finapp_prob_title_1') }} <span class="text-rose-500 decoration-rose-200 underline decoration-4 underline-offset-4">{{ __('finapp_prob_title_highlight') }}</span>.
                 </h2>
                 <p class="text-slate-500 text-xl leading-relaxed mb-8">
@@ -228,12 +228,12 @@
 
             {{-- Visual Side (CSS Donut Chart & Alerts) --}}
             <div class="order-1 lg:order-2 relative h-[500px] flex flex-col items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 animate-in slide-in-from-right-12 fade-in duration-1000 delay-200">
-                <h4 class="absolute top-8 text-xs font-black uppercase tracking-widest text-slate-400 text-center w-full">Your "Automated" Reality</h4>
+                <h4 class="absolute top-8 text-xs uppercase tracking-widest text-slate-400 text-center w-full">Your "Automated" Reality</h4>
                 
                 {{-- CSS Donut Chart representing scattered data --}}
                 <div class="relative w-48 h-48 rounded-full shadow-inner border-8 border-white mb-8" style="background: conic-gradient(#f43f5e 0% 30%, #e2e8f0 30% 100%);">
                     <div class="absolute inset-4 bg-slate-50 rounded-full flex items-center justify-center shadow-lg">
-                        <span class="text-3xl font-black text-rose-500">30%</span>
+                        <span class="text-3xl text-rose-500 font-black">30%</span>
                     </div>
                 </div>
                 <p class="text-sm font-bold text-slate-600 mb-8 text-center px-8">Only 30% of automated transactions are categorized correctly without your intervention.</p>
@@ -264,7 +264,7 @@
                 <div class="inline-block p-4 bg-emerald-500/20 text-emerald-400 rounded-full mb-6">
                     💎
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                <h2 class="text-4xl md:text-5xl mb-6 leading-tight font-black">
                     {{ __('finapp_sol_title_1') }} <span class="text-emerald-400">{{ __('finapp_sol_title_highlight') }}</span>.
                 </h2>
                 <p class="text-slate-400 text-xl">
@@ -277,7 +277,7 @@
                 
                 {{-- Big Card --}}
                 <div class="lg:col-span-7 bg-white/5 border border-white/10 p-10 md:p-12 rounded-[3rem] backdrop-blur-sm">
-                    <h3 class="text-3xl font-black mb-6">{{ __('finapp_sol_box_title') }}</h3>
+                    <h3 class="text-3xl mb-6 font-black">{{ __('finapp_sol_box_title') }}</h3>
                     <p class="text-slate-300 text-lg leading-relaxed mb-8">
                         {!! __('finapp_sol_box_desc') !!}
                     </p>
@@ -296,17 +296,17 @@
                 {{-- Stack of Small Cards --}}
                 <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
                     <div class="bg-emerald-500 p-8 rounded-[2.5rem] transform transition hover:translate-x-2">
-                        <div class="text-3xl mb-4">🧠</div>
+                        <div class="text-3xl mb-4 font-black">🧠</div>
                         <h4 class="font-black text-emerald-950 text-xl mb-2">Immediate Awareness</h4>
                         <p class="text-emerald-900/80 text-sm">Feel every dollar that leaves your pocket. Stop the leaks.</p>
                     </div>
                     <div class="bg-indigo-600 p-8 rounded-[2.5rem] transform transition hover:translate-x-2">
-                        <div class="text-3xl mb-4">🔒</div>
+                        <div class="text-3xl mb-4 font-black">🔒</div>
                         <h4 class="font-black text-white text-xl mb-2">Zero Bank Data Storage</h4>
                         <p class="text-indigo-200 text-sm">We don't want your bank credentials. Total security by design.</p>
                     </div>
                     <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-8 rounded-[2.5rem] transform transition hover:translate-x-2">
-                        <div class="text-3xl mb-4">⚡</div>
+                        <div class="text-3xl mb-4 font-black">⚡</div>
                         <h4 class="font-black text-white text-xl mb-2">Synchronized with Goals</h4>
                         <p class="text-slate-400 text-sm">Your finances tied directly to your life milestones.</p>
                     </div>
@@ -322,7 +322,7 @@
         <div class="max-w-4xl mx-auto px-6">
             
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6">{{ __('finapp_compare_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl text-slate-900 mb-6 font-black">{{ __('finapp_compare_title') }}</h2>
                 <p class="text-slate-500 text-xl">{{ __('finapp_compare_desc') }}</p>
             </div>
 
@@ -332,14 +332,14 @@
                 <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-10 shadow-sm relative overflow-hidden">
                     <div class="absolute left-0 top-0 h-full w-2 bg-emerald-500"></div>
                     
-                    <h3 class="text-2xl font-black text-slate-900 mb-8 pl-4">
+                    <h3 class="text-2xl text-slate-900 mb-8 pl-4">
                         {{ __("finapp_table_row_{$i}_title") }}
                     </h3>
                     
                     <div class="grid md:grid-cols-2 gap-8 pl-4">
                         {{-- Them --}}
                         <div>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-2">The Traditional Way</span>
+                            <span class="text-[10px] uppercase tracking-widest text-slate-400 block mb-2">The Traditional Way</span>
                             <p class="text-slate-500 font-medium italic">
                                 "{{ __("finapp_table_row_{$i}_col_1") }}"
                             </p>
@@ -347,7 +347,7 @@
                         
                         {{-- Us --}}
                         <div class="bg-emerald-50/50 p-6 rounded-2xl border border-emerald-100/50">
-                            <span class="text-[10px] font-black uppercase tracking-widest text-emerald-600 block mb-2 flex items-center gap-1">
+                            <span class="text-[10px] uppercase tracking-widest text-emerald-600 block mb-2 flex items-center gap-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> OneForMind
                             </span>
                             <p class="text-emerald-950 font-bold">
@@ -371,11 +371,11 @@
             <div class="bg-white border-2 border-slate-900 rounded-[3rem] p-8 md:p-16 shadow-2xl relative overflow-hidden group">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black alphabet tracking-[0.3em] mb-10 rounded-full">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] alphabet tracking-[0.3em] mb-10 rounded-full">
                             🧬 {{ __('finapp_science_badge') }}
                         </div>
 
-                        <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight">
+                        <h2 class="text-4xl md:text-5xl text-slate-900 mb-8 leading-tight font-black">
                             {{ __('finapp_science_title') }}
                         </h2>
 
@@ -392,15 +392,15 @@
 
                         <div class="grid grid-cols-3 gap-6">
                             <div class="text-center">
-                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Methodology</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-1">Methodology</p>
                                 <p class="text-sm font-bold text-slate-900">Kakeibo</p>
                             </div>
                             <div class="text-center">
-                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Economics</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-1">Economics</p>
                                 <p class="text-sm font-bold text-slate-900">Behavioral</p>
                             </div>
                             <div class="text-center">
-                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Focus</p>
+                                <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-1">Focus</p>
                                 <p class="text-sm font-bold text-slate-900">Mindfulness</p>
                             </div>
                         </div>
@@ -415,15 +415,15 @@
                                 <div class="pt-6 border-t border-slate-200">
                                     <div class="flex justify-between items-end">
                                         <div>
-                                            <p class="text-[10px] font-black text-slate-400 uppercase mb-1">Wealth_Integrity</p>
-                                            <p class="text-2xl font-black text-slate-900">99.9% Reliable</p>
+                                            <p class="text-[10px] text-slate-400 uppercase mb-1">Wealth_Integrity</p>
+                                            <p class="text-2xl text-slate-900">99.9% Reliable</p>
                                         </div>
-                                        <div class="text-4xl">📊</div>
+                                        <div class="text-4xl font-black">📊</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="absolute -top-6 -right-6 w-24 h-24 bg-indigo-600 rounded-full flex items-center justify-center text-white text-3xl shadow-xl transform group-hover:scale-110 transition">💎</div>
+                        <div class="absolute -top-6 -right-6 w-24 h-24 bg-indigo-600 rounded-full flex items-center justify-center text-white text-3xl shadow-xl transform group-hover:scale-110 transition font-black">💎</div>
                     </div>
                 </div>
             </div>
@@ -439,18 +439,18 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-600/20 rounded-full blur-[120px] -z-0"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/5 backdrop-blur-md rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl">⚡</div>
-            <h2 class="text-5xl md:text-7xl font-black mb-8 text-white tracking-tight leading-tight">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/5 backdrop-blur-md rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl font-black">⚡</div>
+            <h2 class="text-5xl md:text-7xl mb-8 text-white tracking-tight leading-tight font-black">
                 {!! __('finapp_cta_title') !!}
             </h2>
             <p class="text-slate-400 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
                 {{ __('finapp_cta_desc') }}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-emerald-500 text-slate-950 px-12 py-5 rounded-full font-black text-xl hover:bg-emerald-400 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(16,185,129,0.3)]">
+                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-emerald-500 text-slate-950 px-12 py-5 rounded-full text-xl hover:bg-emerald-400 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(16,185,129,0.3)]">
                     {{ __('finapp_cta_btn') }}
                 </a>
-                <a href="{{ route('features.finance') }}" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-white/10 transition">
+                <a href="{{ route('features.finance') }}" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full text-xl hover:bg-white/10 transition">
                     Explore Finance OS
                 </a>
             </div>
@@ -467,3 +467,5 @@
         }
     </style>
 @endsection
+
+

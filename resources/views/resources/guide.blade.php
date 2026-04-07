@@ -65,7 +65,7 @@
                 </div>
 
                 {{-- Headline: Matched with Stories --}}
-                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-5xl md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('guide_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('guide_hero_title_2') }}</span>
                 </h1>
@@ -106,13 +106,13 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-xs font-black text-indigo-400 mb-4 uppercase tracking-[0.3em]">{{ __('guide_modules_badge') }}</h2>
-                <h3 class="text-3xl md:text-5xl font-black text-gray-900">{{ __('guide_modules_title') }}</h3>
+                <h3 class="text-3xl md:text-5xl text-gray-900 font-black">{{ __('guide_modules_title') }}</h3>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach([1, 2, 3, 4] as $idx)
                 <a href="#" class="group block bg-white rounded-[2.5rem] p-10 border border-gray-100 hover:shadow-2xl transition duration-500">
-                    <div class="w-16 h-16 bg-gray-50 text-gray-900 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition duration-500 border border-gray-100">
+                    <div class="w-16 h-16 bg-gray-50 text-gray-900 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition duration-500 border border-gray-100 font-black">
                         {{ $idx == 1 ? '🌱' : ($idx == 2 ? '💰' : ($idx == 3 ? '🗓️' : '📔')) }}
                     </div>
                     <h3 class="text-2xl font-black text-gray-900 mb-3">{{ __("guide_mod_{$idx}_title") }}</h3>
@@ -130,14 +130,14 @@
     <section class="py-24 bg-white border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">{{ __('guide_start_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl text-gray-900 mb-6 font-black">{{ __('guide_start_title') }}</h2>
                 <p class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">{{ __('guide_start_desc') }}</p>
             </div>
 
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $step)
                 <div class="group relative bg-gray-50 rounded-[2rem] p-8 md:p-10 border border-gray-100 flex flex-col md:flex-row gap-8 items-center hover:bg-indigo-50 transition duration-500">
-                    <div class="w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl font-black text-indigo-600 shrink-0 border border-indigo-50">
+                    <div class="w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl text-indigo-600 shrink-0 border border-indigo-50 font-black">
                         {{ $step }}
                     </div>
                     <div class="text-center md:text-left">
@@ -155,7 +155,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-16">
                 <div class="text-center md:text-left">
-                    <h2 class="text-4xl font-black text-gray-900 mb-2">{{ __('guide_articles_title') }}</h2>
+                    <h2 class="text-4xl text-gray-900 mb-2 font-black">{{ __('guide_articles_title') }}</h2>
                     <p class="text-gray-500 font-medium">{{ __('guide_articles_desc') }}</p>
                 </div>
                 <a href="#" class="bg-white px-8 py-4 rounded-full border border-gray-200 text-indigo-600 font-black text-sm hover:shadow-xl transition shadow-sm uppercase tracking-widest">
@@ -166,7 +166,7 @@
             <div class="grid md:grid-cols-3 gap-10">
                 @foreach([1, 2, 3] as $art)
                 <a href="#" class="group bg-white rounded-[2.5rem] border border-gray-100 overflow-hidden hover:shadow-2xl transition duration-500 flex flex-col">
-                    <div class="h-56 bg-indigo-600 relative overflow-hidden flex items-center justify-center text-6xl">
+                    <div class="h-56 bg-indigo-600 relative overflow-hidden flex items-center justify-center text-6xl font-black">
                         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-600 opacity-90"></div>
                         <span class="relative z-10 transform group-hover:scale-125 transition duration-500">
                             {{ $art == 1 ? '🎯' : ($art == 2 ? '💸' : '⚡') }}
@@ -190,16 +190,16 @@
     {{-- SECTION: PLAYBOOKS --}}
     <section class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-5xl font-black text-slate-900 mb-4">{{ __('gui_playbooks_title') }}</h2>
+            <h2 class="text-5xl text-slate-900 mb-4 font-black">{{ __('gui_playbooks_title') }}</h2>
             <p class="text-xl text-slate-500 mb-16">{{ __('gui_playbooks_desc') }}</p>
             <div class="flex gap-8 overflow-x-auto pb-8 snap-x">
                 <div class="min-w-[300px] md:min-w-[400px] bg-slate-900 text-white p-12 rounded-[3rem] snap-start hover:scale-[1.02] transition-transform">
                     <div class="w-16 h-16 bg-white/20 rounded-2xl mb-8"></div>
-                    <h3 class="text-3xl font-black mb-4">{{ __('gui_pb1') }}</h3>
+                    <h3 class="text-3xl mb-4 font-black">{{ __('gui_pb1') }}</h3>
                 </div>
                 <div class="min-w-[300px] md:min-w-[400px] bg-indigo-600 text-white p-12 rounded-[3rem] snap-start hover:scale-[1.02] transition-transform">
                     <div class="w-16 h-16 bg-white/20 rounded-2xl mb-8"></div>
-                    <h3 class="text-3xl font-black mb-4">{{ __('gui_pb2') }}</h3>
+                    <h3 class="text-3xl mb-4 font-black">{{ __('gui_pb2') }}</h3>
                 </div>
             </div>
         </div>
@@ -209,7 +209,7 @@
     <section class="py-24 bg-slate-50 border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('gui_video_title') }}</h2>
+                <h2 class="text-4xl text-slate-900 mb-4 font-black">{{ __('gui_video_title') }}</h2>
                 <p class="text-xl text-slate-500">{{ __('gui_video_desc') }}</p>
             </div>
             <div class="w-full h-96 bg-black rounded-[3rem] overflow-hidden relative shadow-2xl flex items-center justify-center group cursor-pointer">
@@ -223,7 +223,7 @@
     {{-- SECTION: CERTIFICATION --}}
     <section class="py-32 bg-white">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black mb-16">{{ __('gui_cert_title') }}</h2>
+            <h2 class="text-4xl mb-16 font-black">{{ __('gui_cert_title') }}</h2>
             <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-xl font-bold">
                 <div class="bg-indigo-50 text-indigo-600 px-8 py-4 rounded-full">{{ __('gui_step1') }}</div>
                 <div class="hidden md:block">➔</div>
@@ -241,8 +241,8 @@
             <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500 rounded-full blur-[150px] opacity-20 -mr-20 -mt-20"></div>
             
             <div class="relative z-10">
-                <div class="w-20 h-20 bg-slate-800 rounded-3xl flex items-center justify-center text-4xl mx-auto mb-8 border border-slate-700">🙋‍♂️</div>
-                <h2 class="text-4xl md:text-7xl font-black mb-8 text-white tracking-tight leading-none">{{ __('guide_support_title') }}</h2>
+                <div class="w-20 h-20 bg-slate-800 rounded-3xl flex items-center justify-center text-4xl mx-auto mb-8 border border-slate-700 font-black">🙋‍♂️</div>
+                <h2 class="text-4xl md:text-7xl mb-8 text-white tracking-tight leading-none font-black">{{ __('guide_support_title') }}</h2>
                 <p class="text-indigo-100 text-xl md:text-2xl mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
                     {{ __('guide_support_desc') }}
                 </p>
@@ -259,3 +259,4 @@
     </section>
 
 @endsection
+

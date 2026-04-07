@@ -82,7 +82,7 @@
                 {{ __('hero_badge') }}
             </div>
             
-            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl lg:text-8xl font-black mb-10 leading-[0.95] tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <h1 class="text-[42px] leading-[1.1] md:text-7xl lg:text-8xl mb-10 tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000 font-black">
                 {{ __('hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800">
                     {{ __('hero_title_2') }}
@@ -126,7 +126,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 font-black text-[10px] mb-8 border border-indigo-500/20">
                         {{ __('fric_badge') }}
                     </div>
-                    <h2 class="text-[36px] leading-[1.1] font-black md:text-6xl font-black text-white mb-8 leading-tight">
+                    <h2 class="text-[36px] leading-[1.1] md:text-6xl text-white mb-8 font-black">
                         {{ __('fric_title') }}
                     </h2>
                     <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">
@@ -145,7 +145,7 @@
                         @endphp
                         @foreach($fragmented as $app)
                             <div class="p-6 bg-slate-800/50 rounded-[2rem] border border-slate-700/50 backdrop-blur-sm group hover:bg-slate-800 transition">
-                                <div class="text-3xl mb-4 group-hover:scale-110 transition">{{ $app['icon'] }}</div>
+                                <div class="text-3xl mb-4 group-hover:scale-110 transition font-black">{{ $app['icon'] }}</div>
                                 <div class="text-[10px] font-black text-slate-500 tracking-widest">{{ __($app['name']) }}</div>
                             </div>
                         @endforeach
@@ -160,10 +160,10 @@
                     <div class="absolute inset-0 bg-indigo-600 rounded-[3.5rem] blur-[60px] opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                     <div class="relative bg-slate-800 p-12 rounded-[3.5rem] border border-slate-700 shadow-2xl">
                         <div class="flex flex-col items-center text-center">
-                            <div class="w-24 h-24 bg-indigo-600 text-white rounded-[2rem] flex items-center justify-center text-5xl mb-8 shadow-2xl shadow-indigo-500/50 animate-pulse">
+                            <div class="w-24 h-24 bg-indigo-600 text-white rounded-[2rem] flex items-center justify-center text-5xl mb-8 shadow-2xl shadow-indigo-500/50 animate-pulse font-black">
                                 🌌
                             </div>
-                            <h3 class="text-3xl font-black text-white mb-6 uppercase tracking-wider">{{ __('fric_solution_title') }}</h3>
+                            <h3 class="text-3xl text-white mb-6 uppercase tracking-wider font-black">{{ __('fric_solution_title') }}</h3>
                             <p class="text-slate-400 text-lg font-medium leading-relaxed">
                                 {{ __('fric_solution_desc') }}
                             </p>
@@ -183,7 +183,7 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 font-black text-[10px] mb-6 tracking-widest border border-slate-200">
                     {{ __('pill_badge') }}
                 </div>
-                <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black text-slate-900 mb-8 leading-tight">
+                <h2 class="text-[42px] leading-[1.1] md:text-7xl text-slate-900 mb-8 font-black">
                     Unified Habit Tracker, Planner & Finance Manager.
                 </h2>
             </div>
@@ -191,28 +191,28 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {{-- CARD 1: FINANCE --}}
                 <div class="group bg-indigo-50 p-10 rounded-[3rem] border border-indigo-100/50 hover:bg-indigo-600 hover:shadow-2xl hover:shadow-indigo-200 transition duration-500 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition">💰</div>
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition font-black">💰</div>
                     <h3 class="text-2xl font-black text-indigo-900 mb-4 group-hover:text-white">{{ __('pill_1_title') }}</h3>
                     <p class="text-indigo-700/70 font-bold leading-relaxed group-hover:text-indigo-50">{{ __('pill_1_desc') }}</p>
                 </div>
 
                 {{-- CARD 2: HABITS --}}
                 <div class="group bg-emerald-50 p-10 rounded-[3rem] border border-emerald-100/50 hover:bg-emerald-600 hover:shadow-2xl hover:shadow-emerald-200 transition duration-500 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition">🌱</div>
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition font-black">🌱</div>
                     <h3 class="text-2xl font-black text-emerald-900 mb-4 group-hover:text-white">{{ __('pill_2_title') }}</h3>
                     <p class="text-emerald-700/70 font-bold leading-relaxed group-hover:text-emerald-50">{{ __('pill_2_desc') }}</p>
                 </div>
 
                 {{-- CARD 3: PLANNER --}}
                 <div class="group bg-slate-900 p-10 rounded-[3rem] border border-slate-800 hover:bg-slate-800 hover:shadow-2xl hover:shadow-slate-400 transition duration-500 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-slate-800 rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition group-hover:bg-slate-700">📅</div>
+                    <div class="w-16 h-16 bg-slate-800 rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition group-hover:bg-slate-700 font-black">📅</div>
                     <h3 class="text-2xl font-black text-white mb-4">{{ __('pill_3_title') }}</h3>
                     <p class="text-slate-400 font-bold leading-relaxed group-hover:text-slate-300">{{ __('pill_3_desc') }}</p>
                 </div>
 
                 {{-- CARD 4: JOURNAL --}}
                 <div class="group bg-purple-50 p-10 rounded-[3rem] border border-purple-100/50 hover:bg-purple-600 hover:shadow-2xl hover:shadow-purple-200 transition duration-500 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition">📔</div>
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition font-black">📔</div>
                     <h3 class="text-2xl font-black text-purple-900 mb-4 group-hover:text-white">{{ __('pill_4_title') }}</h3>
                     <p class="text-purple-700/70 font-bold leading-relaxed group-hover:text-purple-50">{{ __('pill_4_desc') }}</p>
                 </div>
@@ -220,10 +220,10 @@
                 {{-- CARD 5: GOALS --}}
                 <div class="group bg-amber-50 p-10 rounded-[3rem] border border-amber-100/50 hover:bg-amber-600 hover:shadow-2xl hover:shadow-amber-200 transition duration-500 transform hover:-translate-y-2 lg:col-span-2 lg:flex lg:items-center lg:gap-12">
                    <div class="lg:shrink-0 lg:mb-0 mb-10">
-                        <div class="w-20 h-20 bg-white rounded-3xl shadow-xl flex items-center justify-center text-5xl group-hover:scale-110 transition">🎯</div>
+                        <div class="w-20 h-20 bg-white rounded-3xl shadow-xl flex items-center justify-center text-5xl group-hover:scale-110 transition font-black">🎯</div>
                    </div>
                    <div>
-                        <h3 class="text-2xl lg:text-3xl font-black text-amber-900 mb-4 group-hover:text-white">{{ __('pill_5_title') }}</h3>
+                        <h3 class="text-2xl lg:text-3xl text-amber-900 mb-4 group-hover:text-white font-black">{{ __('pill_5_title') }}</h3>
                         <p class="text-amber-700/70 font-bold leading-relaxed group-hover:text-amber-50 text-lg">{{ __('pill_5_desc') }}</p>
                    </div>
                 </div>
@@ -251,7 +251,7 @@
                         </span>
                         {{ __('home_science_badge') }}
                     </div>
-                    <h2 class="text-[36px] leading-[1.1] font-black md:text-6xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
+                    <h2 class="text-[36px] leading-[1.1] md:text-6xl text-white mb-8 tracking-tighter font-black">
                         {{ __('home_science_title') }}
                     </h2>
                     <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">
@@ -287,17 +287,17 @@
                     <div class="relative bg-slate-900/50 border border-white/10 p-2 rounded-[3rem] shadow-2xl backdrop-blur-xl">
                         <div class="grid grid-cols-3 gap-2 overflow-hidden rounded-[2.5rem]">
                             <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-500">
-                                <div class="text-3xl mb-4 group-hover:rotate-12 transition">🌀</div>
+                                <div class="text-3xl mb-4 group-hover:rotate-12 transition font-black">🌀</div>
                                 <span class="text-white font-black text-[10px] tracking-widest">Flow State</span>
                                 <div class="mt-2 text-[8px] text-slate-500 font-black tracking-tighter uppercase">M. Csikszentmihalyi</div>
                             </div>
                             <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center border-x border-white/5 transform hover:scale-105 transition duration-500">
-                                <div class="text-3xl mb-4">⚛️</div>
+                                <div class="text-3xl mb-4 font-black">⚛️</div>
                                 <span class="text-white font-black text-[10px] tracking-widest">Atomic Habits</span>
                                 <div class="mt-2 text-[8px] text-slate-500 font-black tracking-tighter uppercase">James Clear</div>
                             </div>
                             <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-500">
-                                <div class="text-3xl mb-4">🧠</div>
+                                <div class="text-3xl mb-4 font-black">🧠</div>
                                 <span class="text-white font-black text-[10px] tracking-widest">Second Brain</span>
                                 <div class="mt-2 text-[8px] text-slate-500 font-black tracking-tighter uppercase">Tiago Forte</div>
                             </div>
@@ -321,7 +321,7 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-black text-[10px] mb-6 tracking-widest border border-indigo-200">
                     {{ __('flow_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
+                <h2 class="text-4xl md:text-6xl text-slate-900 mb-8 leading-tight font-black">
                     Synchronized Habit & Finance Flow.
                 </h2>
             </div>
@@ -344,7 +344,7 @@
                     <div class="w-12 h-12 bg-indigo-600 text-white rounded-full flex items-center justify-center font-black mb-6 text-xl shadow-lg shadow-indigo-200">
                         {{ $index + 1 }}
                     </div>
-                    <div class="text-4xl mb-6">{{ $step['icon'] }}</div>
+                    <div class="text-4xl mb-6 font-black">{{ $step['icon'] }}</div>
                     <h3 class="text-xl font-black text-slate-900 mb-4 tracking-wider">{{ __($step['title']) }}</h3>
                     <p class="text-slate-700 font-bold text-sm leading-relaxed">{{ __($step['desc']) }}</p>
                 </div>
@@ -363,7 +363,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-indigo-100">
                         🔗 {{ __('home_synergy_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 leading-tight">
+                    <h2 class="text-4xl md:text-6xl text-slate-900 mb-8 leading-tight font-black">
                         {{ __('home_synergy_title') }}
                     </h2>
                     <p class="text-slate-500 text-xl font-medium leading-relaxed mb-12">
@@ -381,7 +381,7 @@
 
                         @foreach($synergies as $synergy)
                         <div class="flex gap-6 p-6 rounded-[2rem] hover:bg-slate-50 transition border border-transparent hover:border-slate-100 group">
-                            <div class="w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition">
+                            <div class="w-14 h-14 bg-white rounded-2xl shadow-lg flex items-center justify-center text-3xl shrink-0 group-hover:scale-110 transition font-black">
                                 {{ $synergy['icon'] }}
                             </div>
                             <div>
@@ -402,7 +402,7 @@
                         
                         <div class="relative w-48 h-48 bg-slate-900 rounded-[3rem] shadow-2xl flex items-center justify-center z-10 overflow-hidden group">
                             <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-700 opacity-90"></div>
-                            <div class="relative z-10 text-6xl group-hover:scale-125 transition duration-500">🌌</div>
+                            <div class="relative z-10 text-6xl group-hover:scale-125 transition duration-500 font-black">🌌</div>
                         </div>
 
                         {{-- Floating Nodes --}}
@@ -469,7 +469,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-indigo-100">
                         {{ __('vsn_badge') }}
                     </div>
-                    <h2 class="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-tight">
+                    <h2 class="text-5xl md:text-7xl text-slate-900 mb-8 leading-tight font-black">
                         {{ __('vsn_title') }}
                     </h2>
                     <p class="text-slate-500 text-xl font-medium leading-relaxed mb-12">
@@ -493,23 +493,23 @@
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-black text-[10px] mb-8 tracking-widest border border-indigo-200">
                 {{ __('mig_badge') }}
             </div>
-            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-16 leading-tight">
+            <h2 class="text-4xl md:text-6xl text-slate-900 mb-16 leading-tight font-black">
                 {{ __('mig_title') }}
             </h2>
 
             <div class="grid sm:grid-cols-3 gap-6">
                 <a href="{{ route('compare.paper') }}" class="group bg-white p-10 rounded-[3rem] border border-slate-200 hover:border-indigo-600 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📄</div>
+                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition font-black">📄</div>
                     <div class="text-xl font-black text-slate-900 mb-2">{{ __('mig_card_1') }}</div>
                     <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">{{ __('mig_view_card_1') }}</div>
                 </a>
                 <a href="{{ route('compare.sheets') }}" class="group bg-white p-10 rounded-[3rem] border border-slate-200 hover:border-indigo-600 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📊</div>
+                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition font-black">📊</div>
                     <div class="text-xl font-black text-slate-900 mb-2">{{ __('mig_card_2') }}</div>
                     <div class="text-indigo-600 font-bold opacity-0 group-hover:opacity-100 transition">{{ __('mig_view_card_2') }}</div>
                 </a>
                 <a href="{{ route('compare.five-apps') }}" class="group bg-slate-900 p-10 rounded-[3rem] border border-white/10 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="text-4xl mb-6">🌌</div>
+                    <div class="text-4xl mb-6 font-black">🌌</div>
                     <div class="text-xl font-black text-white mb-2">{{ __('mig_card_3') }}</div>
                     <div class="text-indigo-400 font-bold opacity-50 group-hover:opacity-100 transition">{{ __('mig_view_all') }}</div>
                 </a>
@@ -534,7 +534,7 @@
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/80 text-[10px] font-black tracking-widest mb-6 border border-white/10">
                     🚀 {{ __('home_solutions_badge') }}
                 </div>
-                <h2 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">{{ __('home_solutions_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl text-white mb-6 tracking-tight font-black">{{ __('home_solutions_title') }}</h2>
                 <p class="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
                     {{ __('home_solutions_desc') }}
                 </p>
@@ -558,7 +558,7 @@
                 @foreach($paths as $path)
                 <a href="{{ route($path['route']) }}" class="group block p-1 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-500">
                     <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br {{ $path['color'] }} p-6 h-full flex flex-col items-center text-center">
-                        <div class="text-4xl mb-4 group-hover:scale-125 transition duration-500">
+                        <div class="text-4xl mb-4 group-hover:scale-125 transition duration-500 font-black">
                             {{ $path['icon'] }}
                         </div>
                         <h3 class="text-white font-black tracking-widest text-xs">
@@ -587,7 +587,7 @@
                         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-black text-[10px] mb-8 tracking-widest border border-white/10">
                             {{ __('eco_coming_soon') }}
                         </div>
-                        <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
+                        <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight font-black">
                             {{ __('waitlist_title') }}
                         </h2>
                         <p class="text-slate-400 text-xl font-medium leading-relaxed mb-0">
@@ -631,7 +631,7 @@
     {{-- ================================================================= --}}
     <section class="py-32 bg-slate-50">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-16 text-center tracking-tight">{{ __('faq_title') }}</h2>
+            <h2 class="text-4xl md:text-5xl text-slate-900 mb-16 text-center tracking-tight font-black">{{ __('faq_title') }}</h2>
             
             <div class="grid gap-4" x-data="{ active: null }">
                 @foreach([1, 2, 3, 4, 5] as $i)
@@ -656,7 +656,7 @@
     {{-- ================================================================= --}}
     <section class="py-40 px-6 text-center relative overflow-hidden bg-white bg-pattern-mesh-indigo">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-5xl md:text-[6rem] font-black mb-10 leading-[0.9] tracking-tight text-slate-900">
+            <h2 class="text-5xl md:text-[6rem] mb-10 leading-[0.9] tracking-tight text-slate-900 font-black">
                 {{ __('cta_final_title') }}
             </h2>
             <p class="text-slate-500 text-xl md:text-2xl mb-14 max-w-2xl mx-auto font-medium">
@@ -678,3 +678,4 @@
     </section>
 </main>
 @endsection
+

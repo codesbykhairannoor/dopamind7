@@ -26,7 +26,7 @@
                 {{ __('stat_hero_badge') }}
             </div>
             
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-10 text-slate-900 tracking-tight leading-tight">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl mb-10 text-slate-900 tracking-tight leading-tight font-black">
                 {{ __('stat_hero_title') }}
             </h1>
 
@@ -35,8 +35,8 @@
                 <div class="absolute inset-0 bg-gradient-to-tr from-emerald-600 to-emerald-400 opacity-0 group-hover:opacity-100 transition duration-1000"></div>
                 
                 <div class="relative z-10 flex flex-col items-center">
-                    <div class="text-[36px] leading-[1.1] font-black md:text-6xl mb-4 md:mb-6 group-hover:scale-110 transition duration-500 transform">✅</div>
-                    <h2 class="text-2xl md:text-4xl font-black uppercase tracking-widest text-center">{{ __('stat_hero_operational') }}</h2>
+                    <div class="text-[36px] leading-[1.1] md:text-6xl mb-4 md:mb-6 group-hover:scale-110 transition duration-500 transform font-black">✅</div>
+                    <h2 class="text-2xl md:text-4xl uppercase tracking-widest text-center font-black">{{ __('stat_hero_operational') }}</h2>
                     <p class="mt-3 text-emerald-100 font-bold text-xs md:text-sm opacity-90 text-center">{{ __('stat_hero_last_check') }}</p>
                 </div>
             </div>
@@ -54,23 +54,23 @@
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
                 {{-- Latency Metric --}}
                 <div class="p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-slate-50 border border-slate-100 text-center group flex flex-col justify-center items-center">
-                    <div class="text-2xl md:text-3xl mb-3 group-hover:animate-bounce">⚡</div>
-                    <div class="text-3xl md:text-4xl font-black text-slate-900 mb-1 tracking-tighter">142<span class="text-xl md:text-2xl text-slate-500">ms</span></div>
+                    <div class="text-2xl md:text-3xl mb-3 group-hover:animate-bounce font-black">⚡</div>
+                    <div class="text-3xl md:text-4xl text-slate-900 mb-1 tracking-tighter font-black">142<span class="text-xl md:text-2xl text-slate-500">ms</span></div>
                     <div class="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest mt-1">{{ __('stat_metrics_latency') }}</div>
                 </div>
                 
                 {{-- Success Metric --}}
                 <div class="p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-indigo-600 text-white text-center shadow-xl shadow-indigo-200 transform hover:-translate-y-1 transition duration-500 flex flex-col justify-center items-center relative overflow-hidden">
                     <div class="absolute -top-4 -right-4 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
-                    <div class="text-2xl md:text-3xl mb-3 relative z-10">💎</div>
-                    <div class="text-3xl md:text-4xl font-black mb-1 tracking-tighter relative z-10">100%</div>
+                    <div class="text-2xl md:text-3xl mb-3 relative z-10 font-black">💎</div>
+                    <div class="text-3xl md:text-4xl mb-1 tracking-tighter relative z-10 font-black">100%</div>
                     <div class="text-[10px] md:text-xs font-black text-indigo-200 uppercase tracking-widest mt-1 relative z-10">{{ __('stat_metrics_success') }}</div>
                 </div>
 
                 {{-- Annual Uptime Metric (Full width on mobile) --}}
                 <div class="col-span-2 md:col-span-1 p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-slate-50 border border-slate-100 text-center group flex flex-col justify-center items-center">
-                    <div class="text-2xl md:text-3xl mb-3 group-hover:rotate-12 transition transform origin-bottom">🛡️</div>
-                    <div class="text-3xl md:text-4xl font-black text-slate-900 mb-1 tracking-tighter">99.9%</div>
+                    <div class="text-2xl md:text-3xl mb-3 group-hover:rotate-12 transition transform origin-bottom font-black">🛡️</div>
+                    <div class="text-3xl md:text-4xl text-slate-900 mb-1 tracking-tighter font-black">99.9%</div>
                     <div class="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest mt-1">{{ __('stat_metrics_uptime') }}</div>
                 </div>
             </div>
@@ -114,7 +114,7 @@
     <section class="py-16 md:py-24 bg-slate-50">
         <div class="max-w-4xl mx-auto px-6">
             <div class="mb-10 md:mb-12 text-center md:text-left">
-                <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-3">{{ __('stat_service_title') }}</h2>
+                <h2 class="text-2xl md:text-3xl text-slate-900 mb-3 font-black">{{ __('stat_service_title') }}</h2>
                 <p class="text-slate-500 font-medium text-sm md:text-base">{{ __('stat_service_desc') }}</p>
             </div>
 
@@ -163,7 +163,7 @@
         <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-50 to-transparent pointer-events-none"></div>
         
         <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+            <h2 class="text-3xl md:text-5xl text-slate-900 mb-6 leading-tight font-black">
                 {{ __('stat_cta_title') }}
             </h2>
             <p class="text-slate-500 text-base md:text-lg mb-10 max-w-xl mx-auto font-medium">

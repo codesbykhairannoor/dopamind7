@@ -80,7 +80,7 @@
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs mb-6 uppercase tracking-wider border border-indigo-200">
                 <span class="text-lg">📅</span> {{ __('planner_hero_badge') }}
             </div>
-            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-6 leading-[1.1] text-gray-900 tracking-tight">
+            <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-6 leading-[1.1] text-gray-900 tracking-tight font-black">
                 {{ __('planner_hero_title_1') }} <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">{{ __('planner_hero_title_2') }}</span>
             </h1>
@@ -167,7 +167,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-6">
                         {{ __('planner_timeline_badge') }}
                     </div>
-                    <h2 class="text-5xl font-black text-gray-900 mb-8 leading-tight">
+                    <h2 class="text-5xl text-gray-900 mb-8 leading-tight font-black">
                         {{ __('planner_timeline_title') }}
                     </h2>
                     <p class="text-gray-600 text-xl mb-10 leading-relaxed max-w-xl">
@@ -175,13 +175,13 @@
                     </p>
                     <div class="grid grid-cols-2 gap-6">
                         <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-indigo-100/50 transition duration-500">
-                            <span class="text-xs font-black text-indigo-600 uppercase mb-2 block tracking-widest">{{ __('planner_timeline_stat_1_label') }}</span>
-                            <span class="text-3xl font-black text-slate-900">{{ __('planner_timeline_stat_1_value') }}</span>
+                            <span class="text-xs text-indigo-600 uppercase mb-2 block tracking-widest">{{ __('planner_timeline_stat_1_label') }}</span>
+                            <span class="text-3xl text-slate-900 font-black">{{ __('planner_timeline_stat_1_value') }}</span>
                             <p class="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-tighter">{{ __('planner_timeline_stat_footer') }}</p>
                         </div>
                         <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-purple-100/50 transition duration-500">
-                            <span class="text-xs font-black text-purple-600 uppercase mb-2 block tracking-widest">{{ __('planner_timeline_stat_2_label') }}</span>
-                            <span class="text-3xl font-black text-slate-900">{{ __('planner_timeline_stat_2_value') }}</span>
+                            <span class="text-xs text-purple-600 uppercase mb-2 block tracking-widest">{{ __('planner_timeline_stat_2_label') }}</span>
+                            <span class="text-3xl text-slate-900 font-black">{{ __('planner_timeline_stat_2_value') }}</span>
                             <p class="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-tighter">{{ __('planner_timeline_stat_footer') }}</p>
                         </div>
                     </div>
@@ -199,10 +199,10 @@
                                 <div class="flex-1 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 group-hover:shadow-xl transition duration-500 relative overflow-hidden">
                                      <div class="absolute right-0 top-0 w-1.5 h-full bg-indigo-600"></div>
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="text-[11px] font-black text-indigo-600 uppercase tracking-[0.2em]">{{ __('planner_timeline_time_1') }}</span>
-                                        <span class="text-[10px] font-black bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full uppercase">{{ __('planner_timeline_card_1_badge') }}</span>
+                                        <span class="text-[11px] text-indigo-600 uppercase tracking-[0.2em]">{{ __('planner_timeline_time_1') }}</span>
+                                        <span class="text-[10px] bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full uppercase">{{ __('planner_timeline_card_1_badge') }}</span>
                                     </div>
-                                    <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('planner_timeline_card_1_title') }}</h4>
+                                    <h4 class="text-xl text-gray-900 mb-2">{{ __('planner_timeline_card_1_title') }}</h4>
                                     <p class="text-sm text-gray-500 leading-relaxed">{{ __('planner_timeline_card_1_desc') }}</p>
                                 </div>
                             </div>
@@ -212,9 +212,9 @@
                                 <div class="w-8 h-8 rounded-full bg-gray-300 border-4 border-white shadow-sm shrink-0 mt-2"></div>
                                 <div class="flex-1 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">{{ __('planner_timeline_time_2') }}</span>
+                                        <span class="text-[11px] text-gray-400 uppercase tracking-[0.2em]">{{ __('planner_timeline_time_2') }}</span>
                                     </div>
-                                    <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('planner_timeline_card_2_title') }}</h4>
+                                    <h4 class="text-xl text-gray-900 mb-2">{{ __('planner_timeline_card_2_title') }}</h4>
                                     <p class="text-sm text-gray-500 leading-relaxed">{{ __('planner_timeline_card_2_desc') }}</p>
                                 </div>
                             </div>
@@ -225,10 +225,10 @@
                                 <div class="flex-1 bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100 relative overflow-hidden">
                                     <div class="absolute right-0 top-0 w-1.5 h-full bg-purple-500"></div>
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="text-[11px] font-black text-purple-600 uppercase tracking-[0.2em]">{{ __('planner_timeline_time_3') }}</span>
-                                        <span class="text-[10px] font-black bg-purple-50 text-purple-700 px-3 py-1 rounded-full uppercase">{{ __('planner_timeline_card_3_badge') }}</span>
+                                        <span class="text-[11px] text-purple-600 uppercase tracking-[0.2em]">{{ __('planner_timeline_time_3') }}</span>
+                                        <span class="text-[10px] bg-purple-50 text-purple-700 px-3 py-1 rounded-full uppercase">{{ __('planner_timeline_card_3_badge') }}</span>
                                     </div>
-                                    <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('planner_timeline_card_3_title') }}</h4>
+                                    <h4 class="text-xl text-gray-900 mb-2">{{ __('planner_timeline_card_3_title') }}</h4>
                                     <p class="text-sm text-gray-500 leading-relaxed">{{ __('planner_timeline_card_3_desc') }}</p>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-24 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <span class="text-indigo-400 font-bold uppercase tracking-[0.4em] text-xs mb-6 block">{{ __('planner_flow_badge') }}</span>
-                <h2 class="text-4xl md:text-6xl font-black mb-8">{{ __('planner_flow_title') }}</h2>
+                <h2 class="text-4xl md:text-6xl mb-8 font-black">{{ __('planner_flow_title') }}</h2>
                 <p class="text-indigo-100 text-xl opacity-80 leading-relaxed">{{ __('planner_flow_desc') }}</p>
             </div>
 
@@ -254,28 +254,28 @@
                 {{-- Morning --}}
                 <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 hover:bg-white/10 transition duration-500 group relative overflow-hidden">
                     <div class="absolute -top-10 -left-10 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
-                    <div class="w-20 h-20 bg-amber-500/10 text-amber-400 rounded-[2rem] flex items-center justify-center text-4xl mb-10 group-hover:rotate-6 transition">☀️</div>
-                    <h3 class="text-3xl font-black mb-6">{{ __('planner_flow_col_1_title') }}</h3>
+                    <div class="w-20 h-20 bg-amber-500/10 text-amber-400 rounded-[2rem] flex items-center justify-center text-4xl mb-10 group-hover:rotate-6 transition font-black">☀️</div>
+                    <h3 class="text-3xl mb-6 font-black">{{ __('planner_flow_col_1_title') }}</h3>
                     <p class="text-white/60 mb-10 text-lg leading-relaxed">{{ __('planner_flow_col_1_desc') }}</p>
-                    <div class="bg-emerald-500/20 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-emerald-500/30 text-emerald-300 inline-block animate-pulse">{{ __('planner_flow_col_1_status') }}</div>
+                    <div class="bg-emerald-500/20 px-4 py-2 rounded-xl text-[10px] uppercase tracking-widest border border-emerald-500/30 text-emerald-300 inline-block animate-pulse">{{ __('planner_flow_col_1_status') }}</div>
                 </div>
 
                 {{-- Afternoon --}}
                 <div class="bg-indigo-600/10 backdrop-blur-2xl border-2 border-indigo-500/30 rounded-[3rem] p-12 hover:bg-indigo-600/20 transition duration-500 group relative md:-mt-8 shadow-2xl">
                     <div class="absolute inset-0 bg-indigo-500/5 -z-10 animate-pulse"></div>
-                    <div class="w-20 h-20 bg-indigo-500/20 text-indigo-400 rounded-[2rem] flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition">⚡</div>
-                    <h3 class="text-3xl font-black mb-6">{{ __('planner_flow_col_2_title') }}</h3>
+                    <div class="w-20 h-20 bg-indigo-500/20 text-indigo-400 rounded-[2rem] flex items-center justify-center text-4xl mb-10 group-hover:scale-110 transition font-black">⚡</div>
+                    <h3 class="text-3xl mb-6 font-black">{{ __('planner_flow_col_2_title') }}</h3>
                     <p class="text-indigo-100 opacity-80 mb-10 text-lg leading-relaxed">{{ __('planner_flow_col_2_desc') }}</p>
-                    <div class="bg-indigo-400/30 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-indigo-400/40 text-indigo-200 inline-block">{{ __('planner_flow_col_2_status') }}</div>
+                    <div class="bg-indigo-400/30 px-4 py-2 rounded-xl text-[10px] uppercase tracking-widest border border-indigo-400/40 text-indigo-200 inline-block">{{ __('planner_flow_col_2_status') }}</div>
                 </div>
 
                 {{-- Night --}}
                 <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[3rem] p-12 hover:bg-white/10 transition duration-500 group relative overflow-hidden">
                     <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
-                    <div class="w-20 h-20 bg-purple-500/10 text-purple-400 rounded-[2rem] flex items-center justify-center text-4xl mb-10 group-hover:-rotate-6 transition">🌙</div>
-                    <h3 class="text-3xl font-black mb-6">{{ __('planner_flow_col_3_title') }}</h3>
+                    <div class="w-20 h-20 bg-purple-500/10 text-purple-400 rounded-[2rem] flex items-center justify-center text-4xl mb-10 group-hover:-rotate-6 transition font-black">🌙</div>
+                    <h3 class="text-3xl mb-6 font-black">{{ __('planner_flow_col_3_title') }}</h3>
                     <p class="text-white/60 mb-10 text-lg leading-relaxed">{{ __('planner_flow_col_3_desc') }}</p>
-                    <div class="bg-purple-500/20 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-purple-500/30 text-purple-300 inline-block">{{ __('planner_flow_col_3_status') }}</div>
+                    <div class="bg-purple-500/20 px-4 py-2 rounded-xl text-[10px] uppercase tracking-widest border border-purple-500/30 text-purple-300 inline-block">{{ __('planner_flow_col_3_status') }}</div>
                 </div>
             </div>
         </div>
@@ -285,10 +285,10 @@
     <section class="py-32 bg-slate-50 relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-200">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-200">
                     {{ __('planner_matrix_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
                     {{ __('planner_matrix_title') }}
                 </h2>
                 <p class="text-gray-600 text-xl leading-relaxed font-medium">
@@ -299,10 +299,10 @@
             <div class="grid md:grid-cols-2 gap-8 relative">
                 {{-- Axis Labels --}}
                 <div class="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-90 hidden md:block">
-                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">{{ __('planner_matrix_axis_y') }}</span>
+                    <span class="text-[10px] uppercase tracking-[0.5em] text-gray-300">{{ __('planner_matrix_axis_y') }}</span>
                 </div>
                 <div class="absolute top-[-3rem] left-1/2 -translate-x-1/2 hidden md:block">
-                    <span class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-300">{{ __('planner_matrix_axis_x') }}</span>
+                    <span class="text-[10px] uppercase tracking-[0.5em] text-gray-300">{{ __('planner_matrix_axis_x') }}</span>
                 </div>
 
                 {{-- Q1: Urgent & Important --}}
@@ -310,7 +310,7 @@
                     <div class="absolute top-0 right-0 w-24 h-24 bg-rose-50 rounded-bl-[3rem] group-hover:scale-110 transition duration-700"></div>
                     <div class="relative z-10">
                         <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:rotate-12 transition">🔥</div>
-                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('planner_matrix_q1_title') }}</h3>
+                        <h3 class="text-2xl text-gray-900 mb-4">{{ __('planner_matrix_q1_title') }}</h3>
                         <p class="text-gray-500 font-medium leading-relaxed">{{ __('planner_matrix_q1_desc') }}</p>
                     </div>
                 </div>
@@ -320,7 +320,7 @@
                     <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-50 rounded-bl-[3rem] group-hover:scale-110 transition duration-700"></div>
                     <div class="relative z-10">
                         <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:rotate-12 transition">💎</div>
-                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('planner_matrix_q2_title') }}</h3>
+                        <h3 class="text-2xl text-gray-900 mb-4">{{ __('planner_matrix_q2_title') }}</h3>
                         <p class="text-gray-500 font-medium leading-relaxed">{{ __('planner_matrix_q2_desc') }}</p>
                     </div>
                 </div>
@@ -330,7 +330,7 @@
                     <div class="absolute top-0 right-0 w-24 h-24 bg-amber-50 rounded-bl-[3rem] group-hover:scale-110 transition duration-700"></div>
                     <div class="relative z-10">
                         <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:rotate-12 transition">⚡</div>
-                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('planner_matrix_q3_title') }}</h3>
+                        <h3 class="text-2xl text-gray-900 mb-4">{{ __('planner_matrix_q3_title') }}</h3>
                         <p class="text-gray-500 font-medium leading-relaxed">{{ __('planner_matrix_q3_desc') }}</p>
                     </div>
                 </div>
@@ -340,7 +340,7 @@
                     <div class="absolute top-0 right-0 w-24 h-24 bg-slate-50 rounded-bl-[3rem] group-hover:scale-110 transition duration-700"></div>
                     <div class="relative z-10">
                         <div class="w-14 h-14 bg-slate-100 text-slate-500 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:rotate-12 transition">🧹</div>
-                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('planner_matrix_q4_title') }}</h3>
+                        <h3 class="text-2xl text-gray-900 mb-4">{{ __('planner_matrix_q4_title') }}</h3>
                         <p class="text-gray-500 font-medium leading-relaxed">{{ __('planner_matrix_q4_desc') }}</p>
                     </div>
                 </div>
@@ -360,10 +360,10 @@
                 
                 {{-- Left Header Block --}}
                 <div class="lg:col-span-4 lg:sticky lg:top-32">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-widest mb-6">
                         🧬 {{ __('planner_science_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
+                    <h2 class="text-4xl md:text-5xl text-gray-900 mb-8 leading-tight font-black">
                         {{ __('planner_science_title') }}
                     </h2>
                     <div class="w-20 h-1 bg-indigo-600 rounded-full mb-8"></div>
@@ -379,13 +379,13 @@
 
                     {{-- Source Cards --}}
                     <div class="bg-indigo-50/50 border border-indigo-100 p-8 rounded-3xl hover:bg-white hover:shadow-xl transition duration-500">
-                        <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-4 block">Proven Framework</span>
-                        <h4 class="text-xl font-black text-gray-900 mb-2">Deep Work</h4>
+                        <span class="text-[10px] text-indigo-600 uppercase tracking-widest mb-4 block">Proven Framework</span>
+                        <h4 class="text-xl text-gray-900 mb-2">Deep Work</h4>
                         <p class="text-sm text-gray-500 font-medium">Cal Newport's method for distraction-free peak performance and high-quality output.</p>
                     </div>
                     <div class="bg-indigo-50/50 border border-indigo-100 p-8 rounded-3xl hover:bg-white hover:shadow-xl transition duration-500">
-                        <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest mb-4 block">Execution Engine</span>
-                        <h4 class="text-xl font-black text-gray-900 mb-2">Time Blocking</h4>
+                        <span class="text-[10px] text-indigo-600 uppercase tracking-widest mb-4 block">Execution Engine</span>
+                        <h4 class="text-xl text-gray-900 mb-2">Time Blocking</h4>
                         <p class="text-sm text-gray-500 font-medium">Converting intentions into dedicated time slots for maximum systemic execution.</p>
                     </div>
 
@@ -393,7 +393,7 @@
                     <div class="md:col-span-2 flex items-center gap-4 bg-slate-900 text-white p-6 rounded-2xl">
                          <div class="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center text-xl">✓</div>
                          <div class="text-left">
-                             <span class="text-[10px] font-black uppercase tracking-widest text-indigo-300 block">Status: Verified</span>
+                             <span class="text-[10px] uppercase tracking-widest text-indigo-300 block">Status: Verified</span>
                              <span class="text-sm font-medium opacity-80 italic">Scientific methods integrated with OneForMind Structured Execution loops.</span>
                          </div>
                     </div>
@@ -408,16 +408,16 @@
         <div class="absolute inset-0 bg-pattern-grid opacity-10"></div>
         <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16 text-left">
             <div class="lg:w-1/2">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-indigo-500/20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] uppercase tracking-widest mb-8 border border-indigo-500/20">
                     ⚡ {{ __('planner_ai_promo_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                     {{ __('planner_ai_promo_title') }}
                 </h2>
                 <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
                     {{ __('planner_ai_promo_desc') }}
                 </p>
-                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 transition transform hover:-translate-y-1">
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl text-lg hover:bg-indigo-700 transition transform hover:-translate-y-1">
                     {{ __('planner_ai_promo_btn') }} <span>→</span>
                 </a>
             </div>
@@ -427,7 +427,7 @@
                         <div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
                             <div class="h-full bg-indigo-500 w-[60%] animate-pulse"></div>
                         </div>
-                        <div class="flex justify-between items-center text-[10px] font-black text-slate-500 tracking-widest uppercase">
+                        <div class="flex justify-between items-center text-[10px] text-slate-500 tracking-widest uppercase">
                             <span>COGNITIVE LOAD: HIGH</span>
                             <span class="text-indigo-400">OPTIMIZING...</span>
                         </div>
@@ -447,12 +447,12 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('planner_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">
                 <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('planner_quote_author') }}</p>
+                <p class="text-indigo-600 tracking-[0.5em] uppercase text-xs">{{ __('planner_quote_author') }}</p>
             </div>
         </div>
     </section>
@@ -464,11 +464,11 @@
             <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-500 rounded-full mix-blend-screen filter blur-[100px] opacity-50"></div>
             
             <div class="relative z-10">
-                <h2 class="text-4xl md:text-6xl font-black mb-8 text-white tracking-tight">{{ __('planner_cta_title') }}</h2>
+                <h2 class="text-4xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('planner_cta_title') }}</h2>
                 <p class="text-indigo-100 text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
                     {{ __('planner_cta_desc') }}
                 </p>
-                <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-indigo-900 px-12 py-5 rounded-full font-black text-lg hover:bg-indigo-50 hover:scale-110 transition transform shadow-xl">
+                <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-indigo-900 px-12 py-5 rounded-full text-lg hover:bg-indigo-50 hover:scale-110 transition transform shadow-xl">
                     {{ __('planner_cta_btn') }}
                 </a>
                 <p class="mt-6 text-sm text-indigo-200/80 font-medium">{{ __('planner_cta_note') }}</p>
@@ -476,3 +476,6 @@
         </div>
     </section>
 @endsection
+
+
+

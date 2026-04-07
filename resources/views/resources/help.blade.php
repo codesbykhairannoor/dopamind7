@@ -42,7 +42,7 @@
                     {{ __('help_status_all_ok') }}
                 </div>
 
-                <h1 class="text-6xl md:text-8xl font-black mb-10 leading-[1] text-slate-900 tracking-tighter">
+                <h1 class="text-6xl md:text-8xl mb-10 leading-[1] text-slate-900 tracking-tighter font-black">
                     {{ __('help_hero_title_1') }}<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-600">{{ __('help_hero_title_2') }}</span>
                 </h1>
@@ -101,7 +101,7 @@
                 
                 {{-- TOP ARTICLES --}}
                 <div>
-                    <h2 class="text-4xl font-black text-slate-900 mb-12 tracking-tight">{{ __('help_popular_title') }}</h2>
+                    <h2 class="text-4xl text-slate-900 mb-12 tracking-tight font-black">{{ __('help_popular_title') }}</h2>
                     <div class="grid gap-4">
                         @foreach([1, 2, 3, 4, 5, 6] as $p)
                         <a href="#" class="p-6 rounded-3xl bg-white border border-slate-200 hover:border-indigo-400 hover:translate-x-2 transition duration-300 flex items-center justify-between group" x-show="matches($el.innerText)">
@@ -117,7 +117,7 @@
 
                 {{-- FAQ ACCORDION --}}
                 <div>
-                    <h2 class="text-4xl font-black text-slate-900 mb-12 tracking-tight">{{ __('help_faq_title') }}</h2>
+                    <h2 class="text-4xl text-slate-900 mb-12 tracking-tight font-black">{{ __('help_faq_title') }}</h2>
                     <div class="space-y-4" x-data="{ active: null }">
                         @foreach([1, 2, 3] as $i)
                         <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" x-show="matches($el.innerText)"
@@ -147,23 +147,23 @@
     <section class="py-32 bg-white" x-show="!search">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('help_support_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('help_support_title') }}</h2>
                 <p class="text-xl text-gray-500">{{ __('help_support_desc') }}</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="p-10 rounded-[2.5rem] bg-indigo-50/50 border border-indigo-100 text-center group hover:bg-white hover:shadow-2xl transition duration-500">
-                    <div class="text-4xl mb-6 transform group-hover:scale-110 transition">🎥</div>
+                    <div class="text-4xl mb-6 transform group-hover:scale-110 transition font-black">🎥</div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __('help_support_1_title') }}</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">{{ __('help_support_1_desc') }}</p>
                 </div>
                 <div class="p-10 rounded-[2.5rem] bg-slate-50 border border-slate-200 text-center group hover:bg-white hover:shadow-2xl transition duration-500">
-                    <div class="text-4xl mb-6 transform group-hover:scale-110 transition">📖</div>
+                    <div class="text-4xl mb-6 transform group-hover:scale-110 transition font-black">📖</div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __('help_support_2_title') }}</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">{{ __('help_support_2_desc') }}</p>
                 </div>
                 <div class="p-10 rounded-[2.5rem] bg-indigo-50/50 border border-indigo-100 text-center group hover:bg-white hover:shadow-2xl transition duration-500">
-                    <div class="text-4xl mb-6 transform group-hover:scale-110 transition">🔧</div>
+                    <div class="text-4xl mb-6 transform group-hover:scale-110 transition font-black">🔧</div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __('help_support_3_title') }}</h3>
                     <p class="text-gray-500 text-sm leading-relaxed">{{ __('help_support_3_desc') }}</p>
                 </div>
@@ -175,7 +175,7 @@
     {{-- SECTION: VIDEO TUTORIALS --}}
     <section class="py-24 bg-slate-50" x-show="!search">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-slate-900 mb-4 text-center">{{ __('hlp_tuts_title') }}</h2>
+            <h2 class="text-4xl text-slate-900 mb-4 text-center font-black">{{ __('hlp_tuts_title') }}</h2>
             <p class="text-xl text-slate-500 mb-16 text-center">{{ __('hlp_tuts_desc') }}</p>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="h-48 bg-slate-200 rounded-3xl flex items-center justify-center hover:bg-slate-300 transition-colors cursor-pointer">▶</div>
@@ -188,7 +188,7 @@
     {{-- SECTION: CHEATSHEETS --}}
     <section class="py-24 bg-white" x-show="!search">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('hlp_cheat_title') }}</h2>
+            <h2 class="text-4xl text-slate-900 mb-4 font-black">{{ __('hlp_cheat_title') }}</h2>
             <p class="text-xl text-slate-500 mb-16">{{ __('hlp_cheat_desc') }}</p>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="p-10 border-2 border-dashed border-indigo-200 rounded-[2rem] bg-indigo-50/30 hover:bg-indigo-50 transition">
@@ -204,15 +204,15 @@
     {{-- SECTION: SYSTEM STATUS --}}
     <section class="py-24 bg-slate-900 text-white" x-show="!search">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black mb-4">{{ __('hlp_sla_title') }}</h2>
+            <h2 class="text-4xl mb-4 font-black">{{ __('hlp_sla_title') }}</h2>
             <p class="text-xl text-slate-400 mb-16">{{ __('hlp_sla_desc') }}</p>
             <div class="flex flex-col md:flex-row justify-center gap-16 gap-y-8">
                 <div>
-                    <h4 class="text-6xl font-black text-emerald-400 mb-2">99.9%</h4>
+                    <h4 class="text-6xl text-emerald-400 mb-2 font-black">99.9%</h4>
                     <p class="text-lg">{{ __('hlp_sla1') }}</p>
                 </div>
                 <div>
-                    <h4 class="text-6xl font-black text-indigo-400 mb-2">< 50ms</h4>
+                    <h4 class="text-6xl text-indigo-400 mb-2 font-black">< 50ms</h4>
                     <p class="text-lg">{{ __('hlp_sla2') }}</p>
                 </div>
             </div>
@@ -230,10 +230,10 @@
             <div class="absolute -top-32 -right-32 w-96 h-96 bg-indigo-500/20 rounded-full blur-[100px]"></div>
             
             <div class="relative z-10">
-                <div class="inline-flex items-center justify-center w-24 h-24 bg-white/10 backdrop-blur-md rounded-[2rem] text-4xl mb-10 border border-white/20 shadow-inner">
+                <div class="inline-flex items-center justify-center w-24 h-24 bg-white/10 backdrop-blur-md rounded-[2rem] text-4xl mb-10 border border-white/20 shadow-inner font-black">
                     🆘
                 </div>
-                <h2 class="text-4xl md:text-7xl font-black text-white mb-8 tracking-tight leading-tight">
+                <h2 class="text-4xl md:text-7xl text-white mb-8 tracking-tight leading-tight font-black">
                     {{ __('help_cta_title') }}
                 </h2>
                 <p class="text-lg md:text-2xl text-indigo-200 mb-16 max-w-2xl mx-auto leading-relaxed font-medium">

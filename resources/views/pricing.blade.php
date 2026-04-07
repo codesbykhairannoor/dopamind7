@@ -50,7 +50,7 @@
                 💎 {{ __('pricing_badge') }}
             </div>
             
-            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
+            <h1 class="text-[38px] leading-[1.05] md:text-7xl text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 font-black">
                 {{ __('pricing_title_1') }} <span class="text-indigo-600">{{ __('pricing_title_2') }}</span>
             </h1>
             
@@ -81,7 +81,7 @@
                 <div class="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 flex flex-col text-left group hover:-translate-y-2 transition duration-500 h-full">
                     <h3 class="text-[10px] font-black text-gray-400 uppercase mb-4 tracking-widest">{{ __('pricing_l1_name') }}</h3>
                     <div class="flex items-baseline gap-1 mb-6">
-                        <span class="text-3xl font-black text-gray-900">Rp 0</span>
+                        <span class="text-3xl text-gray-900 font-black">Rp 0</span>
                         <span class="font-bold text-xs text-gray-400">/{{ __('pricing_forever') }}</span>
                     </div>
                     <p class="text-gray-500 text-[11px] mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l1_desc') }}</p>
@@ -206,7 +206,7 @@
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-5xl font-black text-gray-900 mb-6">{{ __('pricing_compare_title') }}</h2>
+                <h2 class="text-5xl text-gray-900 mb-6 font-black">{{ __('pricing_compare_title') }}</h2>
                 <p class="text-gray-500 font-medium">{{ __('pricing_compare_subtitle') }}</p>
             </div>
             
@@ -471,7 +471,7 @@
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 text-[10px] font-black uppercase tracking-widest mb-6">
                             LEADERSHIP & PERFORMANCE
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-black text-white leading-tight mb-8">
+                        <h2 class="text-3xl md:text-5xl text-white leading-tight mb-8 font-black">
                             {{ __('quantum_feature') }} <br/>
                             <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">{{ __('pricing_elite_title') }}</span>
                         </h2>
@@ -528,17 +528,17 @@
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
             <div class="text-center group">
-                <div class="w-16 h-16 bg-slate-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition duration-500 shadow-sm border border-slate-100">🔒</div>
+                <div class="w-16 h-16 bg-slate-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition duration-500 shadow-sm border border-slate-100 font-black">🔒</div>
                 <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('pricing_trust_1_title') }}</h4>
                 <p class="text-gray-500 text-sm leading-relaxed font-bold px-4">{{ __('pricing_trust_1_desc') }}</p>
             </div>
             <div class="text-center group">
-                <div class="w-16 h-16 bg-slate-50 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition duration-500 shadow-sm border border-slate-100">⚡</div>
+                <div class="w-16 h-16 bg-slate-50 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition duration-500 shadow-sm border border-slate-100 font-black">⚡</div>
                 <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('pricing_trust_2_title') }}</h4>
                 <p class="text-gray-500 text-sm leading-relaxed font-bold px-4">{{ __('pricing_trust_2_desc') }}</p>
             </div>
             <div class="text-center group">
-                <div class="w-16 h-16 bg-slate-50 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition duration-500 shadow-sm border border-slate-100">🛠️</div>
+                <div class="w-16 h-16 bg-slate-50 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 transition duration-500 shadow-sm border border-slate-100 font-black">🛠️</div>
                 <h4 class="text-xl font-black text-gray-900 mb-2">{{ __('pricing_trust_3_title') }}</h4>
                 <p class="text-gray-500 text-sm leading-relaxed font-bold px-4">{{ __('pricing_trust_3_desc') }}</p>
             </div>
@@ -549,7 +549,7 @@
     <section class="py-32 bg-slate-50">
         <div class="max-w-3xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-black text-gray-900 mb-4">{{ __('faq_title') }}</h2>
+                <h2 class="text-4xl text-gray-900 mb-4 font-black">{{ __('faq_title') }}</h2>
                 <p class="text-gray-500 font-bold uppercase text-[10px] tracking-widest">{{ __('pricing_faq_subtitle') }}</p>
             </div>
             
@@ -583,7 +583,7 @@
                 <div class="absolute bottom-0 left-0 w-96 h-96 bg-indigo-400/20 rounded-full -ml-48 -mb-48 blur-3xl"></div>
                 
                 <div class="relative z-10">
-                    <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight tracking-tighter">
+                    <h2 class="text-4xl md:text-6xl mb-8 leading-tight tracking-tighter font-black">
                         {{ __('pricing_bottom_cta_title') }}
                     </h2>
                     <p class="text-indigo-100 text-lg mb-12 max-w-2xl mx-auto font-bold opacity-80 leading-relaxed">
@@ -627,3 +627,4 @@
 </script>
 @endpush
 @endsection
+

@@ -55,7 +55,7 @@
                     🌱 {{ __('growth_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl xl:text-7xl font-black mb-8 leading-[1.2] text-gray-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] md:text-6xl xl:text-7xl mb-8 leading-[1.2] text-gray-900 tracking-tight font-black">
     {{ __('growth_hero_title_1') }} 
     {{-- Tambahkan py-2 atau py-4 agar gradasi tidak kepotong --}}
     <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">
@@ -96,7 +96,7 @@
                         <circle cx="50" cy="50" r="46" stroke="#eef2ff" stroke-width="8" fill="none" />
                         <circle cx="50" cy="50" r="46" stroke="#4f46e5" stroke-width="8" fill="none" stroke-dasharray="289" stroke-dashoffset="72" class="animate-[dash_2s_ease-out_forwards]" />
                     </svg>
-                    <span class="text-4xl mb-1">📖</span>
+                    <span class="text-4xl mb-1 font-black">📖</span>
                     <h3 class="font-black text-2xl text-gray-900">75%</h3>
                     <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">{{ __('growth_mockup_goal_label') }}</p>
                 </div>
@@ -135,7 +135,7 @@
                 <div class="absolute w-72 h-80 bg-indigo-100 rounded-3xl transform translate-y-6 scale-95 opacity-80 group-hover:-translate-x-12 group-hover:-rotate-6 transition duration-500 border border-indigo-200"></div>
                 {{-- Card 1 (Top) --}}
                 <div class="absolute w-72 h-80 bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 flex flex-col items-center justify-center text-center transform group-hover:-translate-y-4 transition duration-500 z-10">
-                    <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner">🏆</div>
+                    <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner font-black">🏆</div>
                     <h4 class="font-black text-xl text-gray-900 mb-2">{{ __('growth_mockup_streak_title') }}</h4>
                     <p class="text-sm text-gray-500 mb-6">{{ __('growth_mockup_streak_desc') }}</p>
                     <div class="w-full bg-gray-100 rounded-full h-2">
@@ -146,7 +146,7 @@
 
             <div class="order-1 lg:order-2">
                 <div class="inline-flex items-center justify-center w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl text-2xl mb-6 shadow-sm border border-indigo-100">🔥</div>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">{{ __('growth_feat_1_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('growth_feat_1_title') }}</h2>
                 <p class="text-gray-500 text-lg leading-relaxed mb-8">
                     {{ __('growth_feat_1_desc') }}
                 </p>
@@ -171,7 +171,7 @@
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
 
         <div class="relative z-10 max-w-5xl w-full px-6 text-center">
-            <h2 class="text-4xl md:text-6xl font-black mb-8 text-white tracking-tight">{{ __('growth_feat_2_title') }}</h2>
+            <h2 class="text-4xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('growth_feat_2_title') }}</h2>
             <p class="text-indigo-200 text-xl leading-relaxed mb-16 max-w-2xl mx-auto">
                 {{ __('growth_feat_2_desc') }}
             </p>
@@ -180,10 +180,10 @@
             <div class="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[3rem] p-8 md:p-16 text-left shadow-2xl relative overflow-hidden group transform hover:scale-[1.01] transition duration-500">
                 <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-indigo-400 to-purple-400"></div>
                 <div class="flex justify-between items-start mb-8">
-                    <div class="text-5xl">🖋️</div>
+                    <div class="text-5xl font-black">🖋️</div>
                     <div class="bg-white/20 px-4 py-2 rounded-full text-indigo-100 font-bold text-sm tracking-widest uppercase backdrop-blur-sm">Zen Entry</div>
                 </div>
-                <h3 class="font-serif text-3xl md:text-4xl text-white mb-6">"{{ __('growth_feat_2_quote_title') }}"</h3>
+                <h3 class="font-serif text-3xl md:text-4xl text-white mb-6 font-black">"{{ __('growth_feat_2_quote_title') }}"</h3>
                 <p class="font-serif text-indigo-100/80 text-lg md:text-xl leading-relaxed italic mb-8">
                     {{ __('growth_feat_2_quote_body') }}
                 </p>
@@ -219,7 +219,7 @@
                 </div>
             </div>
             <div class="order-1 md:order-2">
-                <h2 class="text-4xl font-black mb-6">{{ __('growth_extra_1_title') }}</h2>
+                <h2 class="text-4xl mb-6 font-black">{{ __('growth_extra_1_title') }}</h2>
                 <p class="text-xl text-indigo-200 leading-relaxed italic">
                     {{ __('growth_extra_1_desc') }}
                 </p>
@@ -230,14 +230,14 @@
     {{-- SECTION: GROWTH TRAJECTORY (UNIQUE B) --}}
     <section class="py-32 bg-white relative">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black text-gray-900 mb-8">{{ __('growth_extra_2_title') }}</h2>
+            <h2 class="text-4xl text-gray-900 mb-8 font-black">{{ __('growth_extra_2_title') }}</h2>
             <p class="text-xl text-gray-500 leading-relaxed mb-12">
                 {{ __('growth_extra_2_desc') }}
             </p>
             <div class="inline-flex items-center gap-4 p-8 bg-indigo-50 rounded-3xl border border-indigo-100">
-                <div class="text-5xl font-black text-indigo-600">37.8x</div>
+                <div class="text-5xl text-indigo-600 font-black">37.8x</div>
                 <div class="text-left">
-                    <p class="text-[10px] font-black uppercase text-indigo-400">{{ __('growth_extra_2_stat_label') }}</p>
+                    <p class="text-[10px] uppercase text-indigo-400">{{ __('growth_extra_2_stat_label') }}</p>
                     <p class="text-xs text-gray-500">{{ __('growth_extra_2_stat_sub') }}</p>
                 </div>
             </div>
@@ -259,23 +259,23 @@
                         {{-- Inner Wheel --}}
                         <div class="absolute inset-10 bg-white rounded-full shadow-2xl border border-indigo-50 flex items-center justify-center relative z-10">
                             <div class="grid grid-cols-2 grid-rows-2 w-full h-full p-4 gap-4 transform group-hover:rotate-45 transition duration-1000">
-                                <div class="bg-indigo-50 rounded-tl-[100px] flex items-center justify-center text-4xl">🌱</div>
-                                <div class="bg-purple-50 rounded-tr-[100px] flex items-center justify-center text-4xl">🧘</div>
-                                <div class="bg-emerald-50 rounded-bl-[100px] flex items-center justify-center text-4xl">💪</div>
-                                <div class="bg-amber-50 rounded-br-[100px] flex items-center justify-center text-4xl">📚</div>
+                                <div class="bg-indigo-50 rounded-tl-[100px] flex items-center justify-center text-4xl font-black">🌱</div>
+                                <div class="bg-purple-50 rounded-tr-[100px] flex items-center justify-center text-4xl font-black">🧘</div>
+                                <div class="bg-emerald-50 rounded-bl-[100px] flex items-center justify-center text-4xl font-black">💪</div>
+                                <div class="bg-amber-50 rounded-br-[100px] flex items-center justify-center text-4xl font-black">📚</div>
                             </div>
                             {{-- Center Core --}}
-                            <div class="absolute w-24 h-24 bg-indigo-600 rounded-full flex items-center justify-center text-white text-3xl shadow-xl z-20 border-4 border-white">✨</div>
+                            <div class="absolute w-24 h-24 bg-indigo-600 rounded-full flex items-center justify-center text-white text-3xl shadow-xl z-20 border-4 border-white font-black">✨</div>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-10 rounded-full">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-widest mb-10 rounded-full">
                         🧬 {{ __('growth_science_badge') }}
                     </div>
 
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-10 leading-tight">
+                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-10 leading-tight font-black">
                         {{ __('growth_science_title') }}
                     </h2>
 
@@ -306,7 +306,7 @@
 
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('growth_faq_title') }}</h2>
+            <h2 class="text-4xl text-center text-gray-900 mb-16 font-black">{{ __('growth_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -324,13 +324,16 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-t from-indigo-200 to-transparent rounded-t-full blur-2xl -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
-            <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-8 text-indigo-950 tracking-tight leading-tight">{{ __('growth_cta_title') }}</h2>
+            <h2 class="text-[42px] leading-[1.1] md:text-7xl mb-8 text-indigo-950 tracking-tight leading-tight font-black">{{ __('growth_cta_title') }}</h2>
             <p class="text-indigo-900/60 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('growth_cta_desc') }}
             </p>
-            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_60px_rgba(79,70,229,0.5)]">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_60px_rgba(79,70,229,0.5)]">
                 {{ __('growth_cta_btn') }}
             </a>
         </div>
     </section>
 @endsection
+
+
+

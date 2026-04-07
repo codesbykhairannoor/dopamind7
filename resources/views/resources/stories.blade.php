@@ -25,7 +25,7 @@
             </div>
             
             {{-- Headline diturunkan ke 7xl agar lebih stabil --}}
-            <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+            <h1 class="text-5xl md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                 {{ __('stories_hero_title_1') }} <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('stories_hero_title_2') }}</span>
             </h1>
@@ -57,7 +57,7 @@
                 <div class="space-y-6 text-left">
                     <div class="relative">
                         {{-- Icon Kutipan Besar tapi Subtle --}}
-                        <span class="absolute -top-4 -left-2 text-6xl text-indigo-100 font-serif opacity-50">“</span>
+                        <span class="absolute -top-4 -left-2 text-6xl text-indigo-100 font-serif opacity-50 font-black">“</span>
                         <p class="text-xl md:text-2xl font-bold text-gray-800 leading-snug relative z-10 pl-6">
                             {{ __('stories_main_quote') }}
                         </p>
@@ -100,7 +100,7 @@
     <section class="py-24 bg-gray-50 border-y border-gray-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4">{{ __('stories_wall_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl text-gray-900 mb-4 font-black">{{ __('stories_wall_title') }}</h2>
                 <p class="text-gray-500 text-lg">{{ __('stories_wall_desc') }}</p>
             </div>
 
@@ -120,7 +120,7 @@
 
                 {{-- Card 2 (Inverted) --}}
                 <div class="break-inside-avoid bg-slate-900 p-8 rounded-3xl shadow-2xl text-white relative overflow-hidden group">
-                    <div class="absolute -right-4 -top-4 text-white/5 text-8xl font-black italic">“</div>
+                    <div class="absolute -right-4 -top-4 text-white/5 text-8xl italic font-black">“</div>
                     <div class="flex items-center gap-4 mb-6 relative z-10">
                         <div class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-black text-lg">AG</div>
                         <div>
@@ -164,19 +164,19 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
                 <div class="space-y-2">
-                    <h3 class="text-6xl font-black text-gray-900 tracking-tighter">10k<span class="text-indigo-600">+</span></h3>
+                    <h3 class="text-6xl text-gray-900 tracking-tighter font-black">10k<span class="text-indigo-600">+</span></h3>
                     <p class="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">{{ __('stories_stat_1') }}</p>
                 </div>
                 <div class="space-y-2">
-                    <h3 class="text-6xl font-black text-gray-900 tracking-tighter">500k</h3>
+                    <h3 class="text-6xl text-gray-900 tracking-tighter font-black">500k</h3>
                     <p class="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">{{ __('stories_stat_2') }}</p>
                 </div>
                 <div class="space-y-2">
-                    <h3 class="text-6xl font-black text-gray-900 tracking-tighter">98<span class="text-indigo-600">%</span></h3>
+                    <h3 class="text-6xl text-gray-900 tracking-tighter font-black">98<span class="text-indigo-600">%</span></h3>
                     <p class="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">{{ __('stories_stat_3') }}</p>
                 </div>
                 <div class="space-y-2">
-                    <h3 class="text-6xl font-black text-gray-900 tracking-tighter">4.9<span class="text-indigo-600">/5</span></h3>
+                    <h3 class="text-6xl text-gray-900 tracking-tighter font-black">4.9<span class="text-indigo-600">/5</span></h3>
                     <p class="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">{{ __('stories_stat_4') }}</p>
                 </div>
             </div>
@@ -188,19 +188,19 @@
     <section class="py-32 bg-indigo-600 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
-            <h2 class="text-5xl font-black mb-4">{{ __('sto_numbers_title') }}</h2>
+            <h2 class="text-5xl mb-4 font-black">{{ __('sto_numbers_title') }}</h2>
             <p class="text-xl text-indigo-200 mb-20">{{ __('sto_numbers_desc') }}</p>
             <div class="grid md:grid-cols-3 gap-12">
                 <div>
-                    <div class="text-7xl font-black mb-4 shadow-sm text-white">2M+</div>
+                    <div class="text-7xl mb-4 shadow-sm text-white font-black">2M+</div>
                     <div class="text-xl font-bold text-indigo-200 uppercase tracking-widest">{{ __('sto_num1') }}</div>
                 </div>
                 <div>
-                    <div class="text-7xl font-black mb-4 shadow-sm text-white">315%</div>
+                    <div class="text-7xl mb-4 shadow-sm text-white font-black">315%</div>
                     <div class="text-xl font-bold text-indigo-200 uppercase tracking-widest">{{ __('sto_num2') }}</div>
                 </div>
                 <div>
-                    <div class="text-7xl font-black mb-4 shadow-sm text-white">99%</div>
+                    <div class="text-7xl mb-4 shadow-sm text-white font-black">99%</div>
                     <div class="text-xl font-bold text-indigo-200 uppercase tracking-widest">{{ __('sto_num3') }}</div>
                 </div>
             </div>
@@ -210,7 +210,7 @@
     {{-- SECTION: FEATURED INTERVIEWS --}}
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('sto_interviews_title') }}</h2>
+            <h2 class="text-4xl text-slate-900 mb-4 font-black">{{ __('sto_interviews_title') }}</h2>
             <p class="text-xl text-slate-500 mb-16">{{ __('sto_interviews_desc') }}</p>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="h-80 rounded-[3rem] bg-slate-900 overflow-hidden relative group">
@@ -232,14 +232,14 @@
     {{-- SECTION: HALL OF FAME --}}
     <section class="py-32 bg-slate-50">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-5xl font-black text-slate-900 mb-6">{{ __('sto_hof_title') }}</h2>
+            <h2 class="text-5xl text-slate-900 mb-6 font-black">{{ __('sto_hof_title') }}</h2>
             <p class="text-xl text-slate-500 mb-16">{{ __('sto_hof_desc') }}</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach(range(1, 4) as $i)
                 <div class="bg-white p-10 rounded-[3rem] border border-slate-200 shadow-sm hover:shadow-2xl hover:translate-y-[-8px] transition-all duration-500 group relative overflow-hidden text-left">
                     {{-- Decorative Number --}}
-                    <div class="absolute -top-4 -right-4 text-8xl font-black text-slate-50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">0{{ $i }}</div>
+                    <div class="absolute -top-4 -right-4 text-8xl text-slate-50 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none font-black">0{{ $i }}</div>
                     
                     <div class="relative z-10">
                         <div class="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl mb-8 shadow-xl shadow-indigo-100 group-hover:rotate-12 transition-transform">
@@ -264,7 +264,7 @@
             <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500 rounded-full blur-[100px] opacity-50 animate-pulse delay-1000"></div>
 
             <div class="relative z-10">
-                <h2 class="text-4xl md:text-7xl font-black mb-8 text-white tracking-tight leading-none">
+                <h2 class="text-4xl md:text-7xl mb-8 text-white tracking-tight leading-none font-black">
                     {{ __('stories_cta_title') }}
                 </h2>
                 <p class="text-indigo-100 text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-medium">
@@ -282,3 +282,4 @@
     </section>
 
 @endsection
+

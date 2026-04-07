@@ -89,7 +89,7 @@
                     <span class="text-lg">🎯</span> {{ __('goal_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('goal_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('goal_hero_title_2') }}</span>
                 </h1>
@@ -160,7 +160,7 @@
                     {{-- Floating Element (Level Up Badge) --}}
                     <div class="absolute -right-8 -bottom-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce duration-[3000ms]">
                         <div class="flex items-center gap-3">
-                            <div class="text-3xl">🎉</div>
+                            <div class="text-3xl font-black">🎉</div>
                             <div class="text-left">
                                 <p class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">{{ __('goal_mockup_alert_1') }}</p>
                                 <p class="font-black text-indigo-900 text-sm">{{ __('goal_mockup_alert_2') }}</p>
@@ -189,8 +189,8 @@
                                 <div class="absolute -left-16 top-0 w-12 h-12 bg-white rounded-full border-4 border-amber-500 shadow-xl z-10 flex items-center justify-center text-lg">🔥</div>
                                 <div class="bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-2xl relative group hover:scale-105 transition duration-500">
                                     <div class="absolute -inset-2 bg-gradient-to-r from-amber-500 to-transparent rounded-[3rem] -z-10 opacity-20 blur-xl group-hover:opacity-40"></div>
-                                    <h4 class="text-amber-500 font-black uppercase tracking-widest text-xs mb-4">{{ __('goal_level_moonshot') }}</h4>
-                                    <p class="text-2xl font-black italic tracking-tight">{{ __('goal_moonshot_example') }}</p>
+                                    <h4 class="text-amber-500 uppercase tracking-widest text-xs mb-4">{{ __('goal_level_moonshot') }}</h4>
+                                    <p class="text-2xl italic tracking-tight">{{ __('goal_moonshot_example') }}</p>
                                 </div>
                             </div>
 
@@ -199,8 +199,8 @@
                                 <div class="absolute -left-28 top-4 w-16 h-[2px] bg-indigo-500"></div>
                                 <div class="absolute -left-32 top-2 w-8 h-8 bg-white rounded-full border-4 border-indigo-500 shadow-lg z-10 flex items-center justify-center text-xs">⭐</div>
                                 <div class="bg-white border-2 border-indigo-100 p-8 rounded-[2.5rem] shadow-xl hover:shadow-2xl transition duration-500">
-                                    <h4 class="text-indigo-600 font-black uppercase tracking-widest text-xs mb-4">{{ __('goal_milestone_number') }}</h4>
-                                    <p class="text-xl font-black text-gray-900 tracking-tight">{{ __('goal_milestone_example') }}</p>
+                                    <h4 class="text-indigo-600 uppercase tracking-widest text-xs mb-4">{{ __('goal_milestone_number') }}</h4>
+                                    <p class="text-xl text-gray-900 tracking-tight">{{ __('goal_milestone_example') }}</p>
                                     <div class="mt-6 w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                                         <div class="w-3/4 h-full bg-indigo-500 rounded-full"></div>
                                     </div>
@@ -219,10 +219,10 @@
                     </div>
                 </div>
                 <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 text-amber-700 text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-amber-100">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 text-amber-700 text-xs uppercase tracking-[0.2em] mb-8 shadow-sm border border-amber-100">
                         {{ __('goal_ascent_badge') }}
                     </div>
-                    <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black text-gray-900 mb-10 leading-[1.1] tracking-tight">
+                    <h2 class="text-[42px] leading-[1.1] md:text-7xl text-gray-900 mb-10 leading-[1.1] tracking-tight font-black">
                         {{ __('goal_ascent_title') }}
                     </h2>
                     <p class="text-gray-500 text-xl mb-12 leading-relaxed font-medium">
@@ -269,9 +269,9 @@
                         
                         {{-- Center Display --}}
                         <div class="relative z-10 text-center bg-white w-2/3 aspect-square rounded-full shadow-[0_40px_80px_rgba(79,70,229,0.15)] flex flex-col items-center justify-center border border-indigo-50 transform group-hover:scale-105 transition duration-700">
-                            <span class="text-sm font-black text-indigo-600 uppercase tracking-[0.3em] mb-4">{{ __('goal_momentum_velocity') }}</span>
-                            <span class="text-7xl md:text-8xl font-black text-gray-900 leading-none">84<span class="text-3xl text-indigo-300">%</span></span>
-                            <div class="mt-6 flex items-center gap-3 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full font-black text-xs uppercase tracking-widest">
+                            <span class="text-sm text-indigo-600 uppercase tracking-[0.3em] mb-4">{{ __('goal_momentum_velocity') }}</span>
+                            <span class="text-7xl md:text-8xl text-gray-900 leading-none font-black">84<span class="text-3xl text-indigo-300 font-black">%</span></span>
+                            <div class="mt-6 flex items-center gap-3 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-xs uppercase tracking-widest">
                                 <span class="animate-ping w-2 h-2 bg-emerald-500 rounded-full"></span> {{ __('goal_momentum_peak') }}
                             </div>
                         </div>
@@ -281,10 +281,10 @@
                     </div>
                 </div>
                 <div class="flex-1 order-1 lg:order-2 animate-in fade-in slide-in-from-right-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-900 text-white text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-2xl">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-900 text-white text-xs uppercase tracking-[0.2em] mb-8 shadow-2xl">
                         {{ __('goal_performance_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-10 leading-tight tracking-tight">
+                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-10 leading-tight tracking-tight font-black">
                         {{ __('goal_momentum_title') }}
                     </h2>
                     <p class="text-gray-600 text-xl mb-12 leading-relaxed">
@@ -292,16 +292,16 @@
                     </p>
                     <div class="grid gap-8">
                         <div class="bg-white p-8 rounded-[2.5rem] border border-gray-100 hover:shadow-2xl transition duration-500 flex gap-8 items-start group">
-                            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl shrink-0 flex items-center justify-center text-3xl group-hover:scale-110 transition">⚡</div>
+                            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl shrink-0 flex items-center justify-center text-3xl group-hover:scale-110 transition font-black">⚡</div>
                             <div class="text-left">
-                                <h4 class="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{{ __('goal_impl_speed_title') }}</h4>
+                                <h4 class="text-xl text-gray-900 mb-2 uppercase tracking-tighter">{{ __('goal_impl_speed_title') }}</h4>
                                 <p class="text-gray-500 font-medium leading-relaxed">{{ __('goal_impl_speed_desc') }}</p>
                             </div>
                         </div>
                         <div class="bg-white p-8 rounded-[2.5rem] border border-gray-100 hover:shadow-2xl transition duration-500 flex gap-8 items-start group">
-                            <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl shrink-0 flex items-center justify-center text-3xl group-hover:rotate-12 transition">🔥</div>
+                            <div class="w-16 h-16 bg-purple-50 text-purple-600 rounded-2xl shrink-0 flex items-center justify-center text-3xl group-hover:rotate-12 transition font-black">🔥</div>
                             <div class="text-left">
-                                <h4 class="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{{ __('goal_streak_title') }}</h4>
+                                <h4 class="text-xl text-gray-900 mb-2 uppercase tracking-tighter">{{ __('goal_streak_title') }}</h4>
                                 <p class="text-gray-500 font-medium leading-relaxed">{{ __('goal_streak_desc') }}</p>
                             </div>
                         </div>
@@ -322,10 +322,10 @@
 
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-24 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-blue-200">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] uppercase tracking-[0.2em] mb-8 shadow-sm border border-blue-200">
                     {{ __('goal_steps_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
                     {{ __('goal_steps_title') }}
                 </h2>
                 <p class="text-gray-600 text-xl leading-relaxed font-medium">
@@ -340,11 +340,11 @@
                 {{-- Step 1 --}}
                 <div class="flex flex-col md:flex-row items-center gap-12 mb-32 group">
                     <div class="flex-1 text-center md:text-right order-2 md:order-1 animate-in fade-in slide-in-from-left-8 duration-700">
-                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('goal_step_1_title') }}</h3>
+                        <h3 class="text-2xl text-gray-900 mb-4">{{ __('goal_step_1_title') }}</h3>
                         <p class="text-gray-500 font-medium text-lg leading-relaxed">{{ __('goal_step_1_desc') }}</p>
                     </div>
                     <div class="relative z-10 flex-shrink-0 order-1 md:order-2">
-                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl font-black text-blue-600 border-4 border-blue-50 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition duration-500">1</div>
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl text-blue-600 border-4 border-blue-50 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition duration-500">1</div>
                     </div>
                     <div class="flex-1 order-3 hidden md:block"></div>
                 </div>
@@ -353,10 +353,10 @@
                 <div class="flex flex-col md:flex-row items-center gap-12 mb-32 group">
                     <div class="flex-1 order-1 hidden md:block"></div>
                     <div class="relative z-10 flex-shrink-0 order-2">
-                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl font-black text-indigo-600 border-4 border-indigo-50 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition duration-500">2</div>
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl text-indigo-600 border-4 border-indigo-50 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition duration-500">2</div>
                     </div>
                     <div class="flex-1 text-center md:text-left order-3 animate-in fade-in slide-in-from-right-8 duration-700">
-                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('goal_step_2_title') }}</h3>
+                        <h3 class="text-2xl text-gray-900 mb-4">{{ __('goal_step_2_title') }}</h3>
                         <p class="text-gray-500 font-medium text-lg leading-relaxed">{{ __('goal_step_2_desc') }}</p>
                     </div>
                 </div>
@@ -364,13 +364,13 @@
                 {{-- Step 3 --}}
                 <div class="flex flex-col md:flex-row items-center gap-12 group">
                     <div class="flex-1 text-center md:text-right order-2 md:order-1 animate-in fade-in slide-in-from-left-8 duration-700">
-                        <h3 class="text-2xl font-black text-gray-900 mb-4">{{ __('goal_step_3_title') }}</h3>
+                        <h3 class="text-2xl text-gray-900 mb-4">{{ __('goal_step_3_title') }}</h3>
                         <p class="text-gray-500 font-medium text-lg leading-relaxed">{{ __('goal_step_3_desc') }}</p>
                     </div>
                     <div class="relative z-10 flex-shrink-0 order-1 md:order-2">
-                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl font-black text-purple-600 border-4 border-purple-50 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition duration-500">3</div>
+                        <div class="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl text-purple-600 border-4 border-purple-50 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition duration-500">3</div>
                     </div>
-                    <div class="flex-1 order-3 hidden md:block text-4xl pt-4">🚀</div>
+                    <div class="flex-1 order-3 hidden md:block text-4xl pt-4 font-black">🚀</div>
                 </div>
             </div>
         </div>
@@ -391,11 +391,11 @@
                 <div class="absolute -top-12 -left-12 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl"></div>
                 <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl"></div>
 
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100 text-rose-700 text-xs font-black uppercase tracking-[0.2em] mb-10 shadow-sm border border-rose-200">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-100 text-rose-700 text-xs uppercase tracking-[0.2em] mb-10 shadow-sm border border-rose-200">
                     🏆 {{ __('goal_science_badge') }}
                 </div>
                 
-                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-10 leading-tight tracking-tight">
+                <h2 class="text-4xl md:text-6xl text-gray-900 mb-10 leading-tight tracking-tight font-black">
                     {{ __('goal_science_title') }}
                 </h2>
                 
@@ -408,21 +408,21 @@
                     <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-rose-50 group hover:bg-rose-600 transition duration-500">
                         <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 transition">🎯</div>
                         <div class="text-left">
-                            <span class="text-[10px] font-black text-rose-600 uppercase tracking-widest block group-hover:text-rose-100 transition">Method 01</span>
+                            <span class="text-[10px] text-rose-600 uppercase tracking-widest block group-hover:text-rose-100 transition">Method 01</span>
                             <span class="font-black text-gray-900 group-hover:text-white transition">OKR Framework</span>
                         </div>
                     </div>
                     <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-indigo-50 group hover:bg-indigo-600 transition duration-500">
                         <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 transition">🧠</div>
                         <div class="text-left">
-                            <span class="text-[10px] font-black text-indigo-600 uppercase tracking-widest block group-hover:text-indigo-100 transition">Method 02</span>
+                            <span class="text-[10px] text-indigo-600 uppercase tracking-widest block group-hover:text-indigo-100 transition">Method 02</span>
                             <span class="font-black text-gray-900 group-hover:text-white transition">SMART Goals</span>
                         </div>
                     </div>
                     <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-purple-50 group hover:bg-purple-600 transition duration-500">
                         <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/20 transition">🧬</div>
                         <div class="text-left">
-                            <span class="text-[10px] font-black text-purple-600 uppercase tracking-widest block group-hover:text-purple-100 transition">Method 03</span>
+                            <span class="text-[10px] text-purple-600 uppercase tracking-widest block group-hover:text-purple-100 transition">Method 03</span>
                             <span class="font-black text-gray-900 group-hover:text-white transition">Identity Shift</span>
                         </div>
                     </div>
@@ -438,16 +438,16 @@
         <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
         <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16 text-left">
             <div class="lg:w-1/2">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-indigo-500/20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] uppercase tracking-widest mb-8 border border-indigo-500/20">
                     📈 {{ __('goal_ai_promo_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                     {{ __('goal_ai_promo_title') }}
                 </h2>
                 <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
                     {{ __('goal_ai_promo_desc') }}
                 </p>
-                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 transition transform hover:-translate-y-1">
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl text-lg hover:bg-indigo-700 transition transform hover:-translate-y-1">
                     {{ __('goal_ai_promo_btn') }} <span>→</span>
                 </a>
             </div>
@@ -459,7 +459,7 @@
                         @endforeach
                      </div>
                      <div class="p-4 bg-indigo-600/10 rounded-xl border border-indigo-500/20 text-center">
-                        <p class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Predicted Completion</p>
+                        <p class="text-[10px] text-indigo-400 uppercase tracking-widest mb-1">Predicted Completion</p>
                         <p class="text-white font-bold">Oct 14, 2024</p>
                      </div>
                 </div>
@@ -470,12 +470,12 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('goal_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">
                 <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('goal_quote_author') }}</p>
+                <p class="text-indigo-600 tracking-[0.5em] uppercase text-xs">{{ __('goal_quote_author') }}</p>
             </div>
         </div>
     </section>
@@ -486,7 +486,7 @@
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-pulse duration-[5000ms]"></div>
             
             <div class="relative z-10">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">{{ __('goal_cta_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl mb-6 font-black">{{ __('goal_cta_title') }}</h2>
                 <p class="text-indigo-200 text-lg mb-10 max-w-2xl mx-auto">
                     {{ __('goal_cta_desc') }}
                 </p>
@@ -498,3 +498,6 @@
         </div>
     </section>
 @endsection
+
+
+

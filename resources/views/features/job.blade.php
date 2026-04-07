@@ -89,7 +89,7 @@
                     <span class="text-lg">💼</span> {{ __('job_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('job_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('job_hero_title_2') }}</span>
                 </h1>
@@ -184,10 +184,10 @@
         <div class="max-w-6xl mx-auto px-6" role="img" aria-label="Career Momentum and Funnel Visualization: A vertical pipeline showing the conversion from initial discovery to successful job placement.">
             <div class="flex flex-col lg:flex-row gap-24 items-center">
                 <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-100">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-xs uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-100">
                         {{ __('job_funnel_badge') }}
                     </div>
-                    <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black text-gray-900 mb-10 leading-[1.1] tracking-tight">
+                    <h2 class="text-[42px] leading-[1.1] md:text-7xl text-gray-900 mb-10 leading-[1.1] tracking-tight font-black">
                         {{ __('job_funnel_title') }}
                     </h2>
                     <p class="text-gray-500 text-xl mb-12 leading-relaxed font-medium">
@@ -199,14 +199,14 @@
                                 <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl group-hover:rotate-6 transition">📩</div>
                                 <span class="font-black text-gray-900 uppercase tracking-tighter">{{ __('job_funnel_label_1') }}</span>
                             </div>
-                            <span class="text-2xl font-black text-indigo-600">{{ __('job_funnel_stat_1') }}</span>
+                            <span class="text-2xl text-indigo-600">{{ __('job_funnel_stat_1') }}</span>
                         </div>
                         <div class="flex items-center justify-between p-6 rounded-3xl bg-slate-50 border border-slate-100 group hover:bg-white hover:shadow-2xl transition duration-500">
                             <div class="flex items-center gap-6">
                                 <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl group-hover:rotate-6 transition">🤝</div>
                                 <span class="font-black text-gray-900 uppercase tracking-tighter">{{ __('job_funnel_label_2') }}</span>
                             </div>
-                            <span class="text-2xl font-black text-purple-600">{{ __('job_funnel_stat_2') }}</span>
+                            <span class="text-2xl text-purple-600">{{ __('job_funnel_stat_2') }}</span>
                         </div>
                     </div>
                 </div>
@@ -220,10 +220,10 @@
                                  <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                                  <div class="flex justify-between items-center text-white">
                                      <div class="text-left">
-                                         <h4 class="text-xs font-black uppercase tracking-widest opacity-70 mb-2">{{ __('job_funnel_stage_1_label') }}</h4>
-                                         <p class="text-2xl font-black tracking-tight">{{ __('job_funnel_stage_1_title') }}</p>
+                                         <h4 class="text-xs uppercase tracking-widest opacity-70 mb-2">{{ __('job_funnel_stage_1_label') }}</h4>
+                                         <p class="text-2xl tracking-tight">{{ __('job_funnel_stage_1_title') }}</p>
                                      </div>
-                                     <span class="text-5xl font-black opacity-30 italic">{{ __('job_funnel_stage_1_stat') }}</span>
+                                     <span class="text-5xl opacity-30 italic font-black">{{ __('job_funnel_stage_1_stat') }}</span>
                                  </div>
                              </div>
                              {{-- Interview Stage --}}
@@ -231,10 +231,10 @@
                                  <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                                  <div class="flex justify-between items-center text-white">
                                      <div class="text-left">
-                                         <h4 class="text-xs font-black uppercase tracking-widest opacity-70 mb-2">{{ __('job_funnel_stage_2_label') }}</h4>
-                                         <p class="text-2xl font-black tracking-tight">{{ __('job_funnel_stage_2_title') }}</p>
+                                         <h4 class="text-xs uppercase tracking-widest opacity-70 mb-2">{{ __('job_funnel_stage_2_label') }}</h4>
+                                         <p class="text-2xl tracking-tight">{{ __('job_funnel_stage_2_title') }}</p>
                                      </div>
-                                     <span class="text-5xl font-black opacity-30 italic">{{ __('job_funnel_stage_2_stat') }}</span>
+                                     <span class="text-5xl opacity-30 italic font-black">{{ __('job_funnel_stage_2_stat') }}</span>
                                  </div>
                              </div>
                              {{-- Final Stage --}}
@@ -242,10 +242,10 @@
                                  <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                                  <div class="flex justify-between items-center text-white">
                                      <div class="text-left">
-                                         <h4 class="text-xs font-black uppercase tracking-widest opacity-70 mb-2">{{ __('job_funnel_stage_3_label') }}</h4>
-                                         <p class="text-2xl font-black tracking-tight">{{ __('job_funnel_stage_3_title') }}</p>
+                                         <h4 class="text-xs uppercase tracking-widest opacity-70 mb-2">{{ __('job_funnel_stage_3_label') }}</h4>
+                                         <p class="text-2xl tracking-tight">{{ __('job_funnel_stage_3_title') }}</p>
                                      </div>
-                                     <span class="text-5xl font-black opacity-30 italic">{{ __('job_funnel_stage_3_stat') }}</span>
+                                     <span class="text-5xl opacity-30 italic font-black">{{ __('job_funnel_stage_3_stat') }}</span>
                                  </div>
                              </div>
                          </div>
@@ -262,36 +262,36 @@
                 <div class="flex-1 order-2 lg:order-1">
                     <div class="grid grid-cols-2 gap-6 relative">
                         {{-- Axis Labels --}}
-                        <div class="absolute -top-12 left-1/2 -translate-x-1/2 font-black text-xs uppercase tracking-[0.3em] text-gray-400">{{ __('job_matrix_axis_y_top') }}</div>
-                        <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 font-black text-xs uppercase tracking-[0.3em] text-gray-400">{{ __('job_matrix_axis_y_bottom') }}</div>
-                        <div class="absolute top-1/2 -left-12 -translate-y-1/2 font-black text-xs uppercase tracking-[0.3em] text-gray-400 transform -rotate-90">{{ __('job_matrix_axis_x_left') }}</div>
-                        <div class="absolute top-1/2 -right-12 -translate-y-1/2 font-black text-xs uppercase tracking-[0.3em] text-gray-400 transform rotate-90">{{ __('job_matrix_axis_x_right') }}</div>
+                        <div class="absolute -top-12 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.3em] text-gray-400">{{ __('job_matrix_axis_y_top') }}</div>
+                        <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.3em] text-gray-400">{{ __('job_matrix_axis_y_bottom') }}</div>
+                        <div class="absolute top-1/2 -left-12 -translate-y-1/2 text-xs uppercase tracking-[0.3em] text-gray-400 transform -rotate-90">{{ __('job_matrix_axis_x_left') }}</div>
+                        <div class="absolute top-1/2 -right-12 -translate-y-1/2 text-xs uppercase tracking-[0.3em] text-gray-400 transform rotate-90">{{ __('job_matrix_axis_x_right') }}</div>
                         
                         {{-- Matrix Cells --}}
                         <div class="aspect-square bg-white rounded-[2.5rem] border-2 border-dashed border-gray-100 p-8 flex flex-col items-center justify-center text-center group hover:border-indigo-200 transition">
-                            <span class="text-4xl mb-4 group-hover:scale-125 transition">🏢</span>
-                            <p class="text-xs font-black uppercase text-gray-400">{{ __('job_matrix_cell_1') }}</p>
+                            <span class="text-4xl mb-4 group-hover:scale-125 transition font-black">🏢</span>
+                            <p class="text-xs uppercase text-gray-400">{{ __('job_matrix_cell_1') }}</p>
                         </div>
                         <div class="aspect-square bg-indigo-600 rounded-[2.5rem] shadow-2xl p-8 flex flex-col items-center justify-center text-center transform scale-105 relative">
-                             <div class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">{{ __('job_matrix_cell_highlight') }}</div>
-                            <span class="text-4xl mb-4 text-white">🚀</span>
-                            <p class="text-xs font-black uppercase text-indigo-100">{{ __('job_matrix_cell_2') }}</p>
+                             <div class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[10px] px-3 py-1 rounded-full uppercase tracking-tighter">{{ __('job_matrix_cell_highlight') }}</div>
+                            <span class="text-4xl mb-4 text-white font-black">🚀</span>
+                            <p class="text-xs uppercase text-indigo-100">{{ __('job_matrix_cell_2') }}</p>
                         </div>
                         <div class="aspect-square bg-white rounded-[2.5rem] border-2 border-dashed border-gray-100 p-8 flex flex-col items-center justify-center text-center group hover:border-indigo-200 transition">
-                            <span class="text-4xl mb-4 group-hover:scale-125 transition">🏡</span>
-                             <p class="text-xs font-black uppercase text-gray-400">{{ __('job_matrix_cell_3') }}</p>
+                            <span class="text-4xl mb-4 group-hover:scale-125 transition font-black">🏡</span>
+                             <p class="text-xs uppercase text-gray-400">{{ __('job_matrix_cell_3') }}</p>
                         </div>
                         <div class="aspect-square bg-white rounded-[2.5rem] border-2 border-dashed border-gray-100 p-8 flex flex-col items-center justify-center text-center group hover:border-indigo-200 transition">
-                            <span class="text-4xl mb-4 group-hover:scale-125 transition">🧪</span>
-                             <p class="text-xs font-black uppercase text-gray-400">{{ __('job_matrix_cell_4') }}</p>
+                            <span class="text-4xl mb-4 group-hover:scale-125 transition font-black">🧪</span>
+                             <p class="text-xs uppercase text-gray-400">{{ __('job_matrix_cell_4') }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="flex-1 order-1 lg:order-2 animate-in fade-in slide-in-from-right-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-2xl">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white text-xs uppercase tracking-[0.2em] mb-8 shadow-2xl">
                         {{ __('job_matrix_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-10 leading-tight tracking-tight">
+                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-10 leading-tight tracking-tight font-black">
                         {{ __('job_matrix_title') }}
                     </h2>
                     <p class="text-gray-600 text-xl mb-12 leading-relaxed">
@@ -318,10 +318,10 @@
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row gap-20 items-center">
                 <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-cyan-500/20">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] uppercase tracking-[0.2em] mb-8 border border-cyan-500/20">
                         {{ __('job_value_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                    <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                         {{ __('job_value_title') }}
                     </h2>
                     <p class="text-slate-400 text-xl leading-relaxed font-medium mb-12">
@@ -330,16 +330,16 @@
                     
                     <div class="space-y-12">
                         <div class="flex gap-8 group">
-                            <div class="w-16 h-16 rounded-2xl bg-slate-800 flex items-center justify-center text-3xl group-hover:bg-cyan-500 transition duration-500">📈</div>
+                            <div class="w-16 h-16 rounded-2xl bg-slate-800 flex items-center justify-center text-3xl group-hover:bg-cyan-500 transition duration-500 font-black">📈</div>
                             <div>
-                                <h4 class="text-xl font-black mb-2 uppercase tracking-tight group-hover:text-cyan-400 transition">{{ __('job_insight_1_title') }}</h4>
+                                <h4 class="text-xl mb-2 uppercase tracking-tight group-hover:text-cyan-400 transition">{{ __('job_insight_1_title') }}</h4>
                                 <p class="text-slate-500 font-medium leading-relaxed">{{ __('job_insight_1_desc') }}</p>
                             </div>
                         </div>
                         <div class="flex gap-8 group">
-                            <div class="w-16 h-16 rounded-2xl bg-slate-800 flex items-center justify-center text-3xl group-hover:bg-indigo-500 transition duration-500">🏗️</div>
+                            <div class="w-16 h-16 rounded-2xl bg-slate-800 flex items-center justify-center text-3xl group-hover:bg-indigo-500 transition duration-500 font-black">🏗️</div>
                             <div>
-                                <h4 class="text-xl font-black mb-2 uppercase tracking-tight group-hover:text-indigo-400 transition">{{ __('job_insight_2_title') }}</h4>
+                                <h4 class="text-xl mb-2 uppercase tracking-tight group-hover:text-indigo-400 transition">{{ __('job_insight_2_title') }}</h4>
                                 <p class="text-slate-500 font-medium leading-relaxed">{{ __('job_insight_2_desc') }}</p>
                             </div>
                         </div>
@@ -351,8 +351,8 @@
                         <div class="absolute -top-24 -right-24 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition duration-700"></div>
                         
                         <div class="flex justify-between items-center mb-10">
-                            <h3 class="text-sm font-black uppercase tracking-[0.2em] text-slate-500">{{ __('job_radar_title') }}</h3>
-                            <div class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-lg text-[10px] font-black animate-pulse">{{ __('job_radar_live') }}</div>
+                            <h3 class="text-sm uppercase tracking-[0.2em] text-slate-500">{{ __('job_radar_title') }}</h3>
+                            <div class="px-3 py-1 bg-cyan-500/20 text-cyan-400 rounded-lg text-[10px] animate-pulse">{{ __('job_radar_live') }}</div>
                         </div>
 
                         <div class="space-y-6">
@@ -364,14 +364,14 @@
                                 <div class="p-6 bg-slate-800/50 rounded-2xl border border-slate-700/50 hover:border-slate-500/50 transition duration-500">
                                     <div class="flex justify-between items-center mb-4">
                                         <span class="font-bold text-slate-300">{{ $item['role'] }}</span>
-                                        <span class="text-{{ $item['color'] }}-400 font-black text-xs">{{ $item['gain'] }}</span>
+                                        <span class="text-{{ $item['color'] }}-400 text-xs">{{ $item['gain'] }}</span>
                                     </div>
                                     <div class="flex items-center gap-4">
                                         <span class="text-slate-500 text-xs line-through">Rp {{ $item['prev'] }}</span>
                                         <div class="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
                                             <div class="w-full h-full bg-{{ $item['color'] }}-500 animate-[grow_2s_ease-out_infinite]"></div>
                                         </div>
-                                        <span class="text-white font-black">Rp {{ $item['curr'] }}</span>
+                                        <span class="text-white">Rp {{ $item['curr'] }}</span>
                                     </div>
                                 </div>
                             @endforeach
@@ -408,16 +408,16 @@
                         <div class="w-3 h-3 rounded-full bg-amber-500"></div>
                         <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
                     </div>
-                    <div class="text-[10px] font-black text-white/30 uppercase tracking-[0.3em]">Scientific_Core_Module.exe</div>
+                    <div class="text-[10px] text-white/30 uppercase tracking-[0.3em]">Scientific_Core_Module.exe</div>
                     <div class="w-8"></div>
                 </div>
 
                 <div class="p-8 md:p-16">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-10 border border-indigo-500/30">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-400 text-[10px] uppercase tracking-widest mb-10 border border-indigo-500/30">
                         🧬 {{ __('job_science_badge') }}
                     </div>
 
-                    <h2 class="text-3xl md:text-5xl font-mono text-emerald-400 mb-10 leading-tight">
+                    <h2 class="text-3xl md:text-5xl font-mono text-emerald-400 mb-10 leading-tight font-black">
                         <span class="text-white opacity-50 mr-4">></span>{{ __('job_science_title') }}<span class="animate-pulse">_</span>
                     </h2>
 
@@ -455,16 +455,16 @@
         <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-emerald-500/5 to-transparent"></div>
         <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row-reverse items-center gap-16 text-left">
             <div class="lg:w-1/2">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-emerald-500/20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] uppercase tracking-widest mb-8 border border-emerald-500/20">
                     🎯 {{ __('job_ai_promo_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                     {{ __('job_ai_promo_title') }}
                 </h2>
                 <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
                     {{ __('job_ai_promo_desc') }}
                 </p>
-                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-emerald-700 transition transform hover:-translate-y-1">
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-2xl text-lg hover:bg-emerald-700 transition transform hover:-translate-y-1">
                     {{ __('job_ai_promo_btn') }} <span>→</span>
                 </a>
             </div>
@@ -473,7 +473,7 @@
                      <div class="flex items-center justify-center mb-8">
                         <div class="w-32 h-32 rounded-full border-8 border-emerald-500/20 flex items-center justify-center relative">
                             <div class="absolute inset-0 border-8 border-emerald-500 rounded-full border-t-transparent animate-spin-slow"></div>
-                            <span class="text-2xl font-black text-white">96%</span>
+                            <span class="text-2xl text-white">96%</span>
                         </div>
                      </div>
                      <div class="space-y-4">
@@ -488,12 +488,12 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('job_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">
                 <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('job_quote_author') }}</p>
+                <p class="text-indigo-600 tracking-[0.5em] uppercase text-xs">{{ __('job_quote_author') }}</p>
             </div>
         </div>
     </section>
@@ -503,7 +503,7 @@
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-pulse duration-[5000ms]"></div>
             
             <div class="relative z-10">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">{{ __('job_cta_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl mb-6 font-black">{{ __('job_cta_title') }}</h2>
                 <p class="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">
                     {{ __('job_cta_desc') }}
                 </p>
@@ -515,3 +515,6 @@
         </div>
     </section>
 @endsection
+
+
+

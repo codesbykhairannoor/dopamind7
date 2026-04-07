@@ -15,7 +15,7 @@
                 🚀 {{ __('press_kit_title') }}
             </div>
             
-            <h1 class="text-4xl md:text-6xl font-black mb-8 leading-[0.95] tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <h1 class="text-4xl md:text-6xl mb-8 leading-[0.95] tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000 font-black">
                 {{ __('press_kit_subtitle') }}
             </h1>
             
@@ -121,3 +121,4 @@
     </section>
 
 @endsection
+

@@ -59,7 +59,7 @@
                 </div>
 
                 {{-- Headline --}}
-                <h1 class="text-5xl md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-5xl md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('blog_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('blog_hero_title_2') }}</span>
                 </h1>
@@ -85,7 +85,7 @@
                                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.2em] mb-4 border border-white/20 w-fit">
                                     {{ __('blog_feat_label') }}
                                 </div>
-                                <h2 class="text-2xl md:text-4xl font-black text-white leading-tight max-w-2xl mb-4 group-hover:text-indigo-200 transition">
+                                <h2 class="text-2xl md:text-4xl text-white leading-tight max-w-2xl mb-4 group-hover:text-indigo-200 transition font-black">
                                     {{ $featuredPost->title }}
                                 </h2>
                                 <p class="text-white/80 font-medium text-sm md:text-base max-w-xl line-clamp-2">
@@ -110,7 +110,7 @@
                             @if($post->featured_image_url)
                                 <img src="{{ $post->featured_image_url }}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="{{ $post->title }}">
                             @else
-                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center text-5xl italic font-black text-indigo-200/30 tracking-tighter">OneForMind</div>
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 flex items-center justify-center text-5xl italic text-indigo-200/30 tracking-tighter font-black">OneForMind</div>
                             @endif
                             
                             {{-- Category Badge --}}
@@ -159,7 +159,7 @@
                 @empty
                     @if(!$featuredPost)
                     <div class="col-span-full py-20 text-center">
-                        <div class="text-6xl mb-6">🖋️</div>
+                        <div class="text-6xl mb-6 font-black">🖋️</div>
                         <h3 class="text-2xl font-black text-slate-900 mb-2">No posts yet</h3>
                         <p class="text-slate-500">Check back later for fresh productivity insights.</p>
                     </div>
@@ -185,7 +185,7 @@
                 <div class="inline-block bg-white text-indigo-600 font-bold text-xs px-4 py-2 rounded-full mb-6 uppercase tracking-widest border border-indigo-100 shadow-sm">
                     💌 {{ __('blog_news_badge') }}
                 </div>
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-4 leading-tight">
+                <h2 class="text-3xl md:text-5xl text-slate-900 mb-4 leading-tight font-black">
                     {{ __('blog_news_title') }}
                 </h2>
                 <p class="text-slate-600 text-lg font-medium">
@@ -208,3 +208,4 @@
     </section>
 
 @endsection
+

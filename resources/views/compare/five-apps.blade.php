@@ -96,7 +96,7 @@
                     🌌 {{ __('five_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] text-slate-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] md:text-6xl lg:text-7xl mb-6 leading-[1.1] text-slate-900 tracking-tight font-black">
                     {{ __('five_hero_title_1') }}<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('five_hero_title_2') }}</span>
                 </h1>
@@ -130,7 +130,7 @@
                     <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5"></div>
                     
                     <div class="relative z-10 text-center">
-                        <div class="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center text-4xl mx-auto mb-8 shadow-2xl shadow-indigo-200 ring-8 ring-indigo-50">
+                        <div class="w-24 h-24 bg-indigo-600 rounded-[2rem] flex items-center justify-center text-4xl mx-auto mb-8 shadow-2xl shadow-indigo-200 ring-8 ring-indigo-50 font-black">
                             <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 4H4v7h7V4zm0 9H4v7h7v-7zm9-9h-7v7h7V4zm0 9h-7v7h7v-7z"/></svg>
                         </div>
                         <h3 class="font-black text-2xl text-slate-900 mb-2">{{ __('five_mockup_title') }}</h3>
@@ -138,7 +138,7 @@
                         
                         <div class="flex items-center justify-center gap-2 bg-indigo-50 py-2 px-4 rounded-full inline-flex">
                             <span class="w-2 h-2 bg-indigo-500 rounded-full animate-ping"></span>
-                            <span class="text-xs font-black text-indigo-700 uppercase">{{ __('five_mockup_stat_1') }}</span>
+                            <span class="text-xs text-indigo-700 uppercase">{{ __('five_mockup_stat_1') }}</span>
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
         <div class="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-white">{{ __('five_cycle_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl mb-6 text-white font-black">{{ __('five_cycle_title') }}</h2>
                 <p class="text-xl text-slate-400">{{ __('five_cycle_desc') }}</p>
             </div>
 
@@ -162,7 +162,7 @@
                 
                 {{-- Card 1: Wide --}}
                 <div class="md:col-span-8 bg-slate-800/50 backdrop-blur-sm p-10 rounded-[2.5rem] border border-slate-700/50 hover:bg-slate-800 transition group">
-                    <div class="text-4xl mb-6 group-hover:scale-110 transition-transform origin-left">🏃‍♂️</div>
+                    <div class="text-4xl mb-6 group-hover:scale-110 transition-transform origin-left font-black">🏃‍♂️</div>
                     <h3 class="text-2xl font-bold mb-3 text-white">{{ __('five_cycle_1_title') }}</h3>
                     <p class="text-slate-400 leading-relaxed">{{ __('five_cycle_1_desc') }}</p>
                 </div>
@@ -171,14 +171,14 @@
                 <div class="md:col-span-4 bg-indigo-600 p-10 rounded-[2.5rem] border border-indigo-500 shadow-2xl shadow-indigo-900/50 relative overflow-hidden group">
                     <div class="absolute -top-4 -right-4 bg-rose-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-bounce z-10">SYNC FAILED</div>
                     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-indigo-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="text-4xl mb-6 relative z-10 group-hover:-translate-y-2 transition-transform">🧱</div>
+                    <div class="text-4xl mb-6 relative z-10 group-hover:-translate-y-2 transition-transform font-black">🧱</div>
                     <h3 class="text-2xl font-bold mb-3 text-white relative z-10">{{ __('five_cycle_2_title') }}</h3>
                     <p class="text-indigo-100 leading-relaxed relative z-10">{{ __('five_cycle_2_desc') }}</p>
                 </div>
 
                 {{-- Card 3: Full Width --}}
                 <div class="md:col-span-12 bg-slate-800/50 backdrop-blur-sm p-10 rounded-[2.5rem] border border-slate-700/50 flex flex-col md:flex-row items-center gap-8 hover:border-slate-600 transition group">
-                    <div class="text-6xl group-hover:rotate-12 transition-transform">😴</div>
+                    <div class="text-6xl group-hover:rotate-12 transition-transform font-black">😴</div>
                     <div>
                         <h3 class="text-2xl font-bold mb-3 text-white">{{ __('five_cycle_3_title') }}</h3>
                         <p class="text-slate-400 leading-relaxed max-w-3xl">{{ __('five_cycle_3_desc') }}</p>
@@ -196,8 +196,8 @@
         <div class="max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
             
             {{-- Top: Text --}}
-            <div class="w-16 h-16 bg-white text-rose-500 rounded-2xl flex items-center justify-center text-3xl mb-8 border border-slate-200 shadow-sm shadow-rose-100">💔</div>
-            <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight text-slate-900 max-w-4xl">
+            <div class="w-16 h-16 bg-white text-rose-500 rounded-2xl flex items-center justify-center text-3xl mb-8 border border-slate-200 shadow-sm shadow-rose-100 font-black">💔</div>
+            <h2 class="text-4xl md:text-6xl mb-6 leading-tight text-slate-900 max-w-4xl font-black">
                 {{ __('five_prob_title_1') }} <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-orange-500">{{ __('five_prob_title_highlight') }}</span>.
             </h2>
             <p class="text-slate-500 text-xl leading-relaxed mb-16 max-w-2xl">
@@ -208,7 +208,7 @@
             <div class="w-full bg-white p-12 rounded-[3rem] border border-slate-200 shadow-xl relative overflow-hidden">
                 <div class="absolute top-0 w-full h-2 bg-gradient-to-r from-rose-400 to-orange-400 left-0"></div>
                 
-                <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-8">The App Stack Graveyard</h4>
+                <h4 class="text-xs uppercase tracking-widest text-slate-400 mb-8">The App Stack Graveyard</h4>
                 
                 <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
                     @foreach(['Planner Premium' => '$9.99', 'Habit Gold' => '$4.99', 'Finance Pro' => '$12.99', 'Journal Plus' => '$5.99', 'Goal Elite' => '$15.99'] as $app => $price)
@@ -229,8 +229,8 @@
                         </ul>
                     </div>
                     <div class="text-right bg-rose-50 px-6 py-4 rounded-2xl border border-rose-100">
-                        <span class="block text-[10px] font-black text-rose-400 uppercase tracking-widest mb-1">TOTAL COST</span>
-                        <span class="font-black text-3xl text-rose-600">$49.95<span class="text-lg text-rose-400">/mo</span></span>
+                        <span class="block text-[10px] text-rose-400 uppercase tracking-widest mb-1">TOTAL COST</span>
+                        <span class="font-black text-3xl text-rose-600 font-black">$49.95<span class="text-lg text-rose-400">/mo</span></span>
                     </div>
                 </div>
             </div>
@@ -247,7 +247,7 @@
 
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-24 max-w-3xl mx-auto">
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight">
+                <h2 class="text-4xl md:text-5xl mb-6 text-slate-900 leading-tight font-black">
                     {{ __('five_sol_title_1') }} <span class="text-indigo-600">{{ __('five_sol_title_highlight') }}</span>.
                 </h2>
                 <p class="text-slate-500 text-xl">
@@ -260,7 +260,7 @@
                 {{-- Left: Text & Features --}}
                 <div class="space-y-12">
                     <div>
-                        <h3 class="text-3xl font-black mb-6 text-slate-900">{{ __('five_sol_box_title') }}</h3>
+                        <h3 class="text-3xl mb-6 text-slate-900 font-black">{{ __('five_sol_box_title') }}</h3>
                         <p class="text-slate-600 text-lg leading-relaxed">
                             {!! __('five_sol_box_desc') !!}
                         </p>
@@ -306,7 +306,7 @@
                         </div>
                         
                         <div class="mt-12 bg-white/5 border border-white/10 p-6 rounded-3xl w-full backdrop-blur-md text-center">
-                            <p class="text-xs font-black text-indigo-400 uppercase tracking-widest mb-2">System Status</p>
+                            <p class="text-xs text-indigo-400 uppercase tracking-widest mb-2">System Status</p>
                             <p class="text-white font-bold text-xl">100% Synchronized</p>
                         </div>
                     </div>
@@ -322,15 +322,15 @@
     <section class="py-32 bg-slate-50">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6">{{ __('five_compare_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl text-slate-900 mb-6 font-black">{{ __('five_compare_title') }}</h2>
                 <p class="text-slate-500 text-xl">{{ __('five_compare_desc') }}</p>
             </div>
 
             <div class="bg-white rounded-[3rem] border border-slate-200 shadow-xl overflow-hidden p-8 md:p-12">
                 <div class="grid grid-cols-12 gap-4 border-b border-slate-100 pb-6 mb-6">
                     <div class="col-span-6 md:col-span-8"></div>
-                    <div class="col-span-3 md:col-span-2 text-center font-black text-xs uppercase tracking-widest text-slate-400">{{ __('five_table_head_2') }}</div>
-                    <div class="col-span-3 md:col-span-2 text-center font-black text-xs uppercase tracking-widest text-indigo-600">OneForMind</div>
+                    <div class="col-span-3 md:col-span-2 text-center text-xs uppercase tracking-widest text-slate-400">{{ __('five_table_head_2') }}</div>
+                    <div class="col-span-3 md:col-span-2 text-center text-xs uppercase tracking-widest text-indigo-600">OneForMind</div>
                 </div>
 
                 <div class="space-y-6">
@@ -368,11 +368,11 @@
             <div class="bg-indigo-950/50 backdrop-blur-2xl border border-indigo-500/30 rounded-[4rem] p-8 md:p-24 relative overflow-hidden group">
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] mb-12 rounded-full border border-indigo-500/30">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-400 text-[10px] uppercase tracking-[0.4em] mb-12 rounded-full border border-indigo-500/30">
                             🧬 {{ __('five_science_badge') }}
                         </div>
 
-                        <h2 class="text-4xl md:text-6xl font-black mb-10 leading-[0.9] tracking-tighter">
+                        <h2 class="text-4xl md:text-6xl mb-10 leading-[0.9] tracking-tighter font-black">
                             {{ __('five_science_title') }}
                         </h2>
 
@@ -383,7 +383,7 @@
                             </p>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-6 text-[10px] font-black uppercase tracking-widest text-indigo-400/60">
+                        <div class="grid grid-cols-2 gap-6 text-[10px] uppercase tracking-widest text-indigo-400/60">
                             <div class="flex items-center gap-3">
                                 <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
                                 Neural_Synergy_Syncing
@@ -399,7 +399,7 @@
                         {{-- Pulsing Core Visual --}}
                         <div class="relative w-full max-w-[400px] aspect-square flex items-center justify-center">
                             <div class="absolute inset-0 bg-indigo-600 rounded-full blur-[100px] opacity-20 animate-pulse"></div>
-                            <div class="w-48 h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-6xl shadow-[0_0_80px_rgba(79,70,229,0.6)] z-20 relative group-hover:scale-110 transition duration-700">
+                            <div class="w-48 h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-6xl shadow-[0_0_80px_rgba(79,70,229,0.6)] z-20 relative group-hover:scale-110 transition duration-700 font-black">
                                 ⚛️
                             </div>
                             
@@ -420,14 +420,14 @@
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f46e5_1px,transparent_1px),linear-gradient(to_bottom,#4f46e5_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
         
         <div class="max-w-3xl mx-auto text-center relative z-10 bg-white/10 backdrop-blur-lg border border-white/20 p-12 md:p-20 rounded-[3rem] shadow-2xl">
-            <h2 class="text-4xl md:text-6xl font-black mb-6 text-white tracking-tight leading-tight">
+            <h2 class="text-4xl md:text-6xl mb-6 text-white tracking-tight leading-tight font-black">
                 {!! __('five_cta_title') !!}
             </h2>
             <p class="text-indigo-100 text-lg md:text-xl mb-10 font-medium leading-relaxed">
                 {{ __('five_cta_desc') }}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-white text-indigo-900 px-10 py-4 rounded-full font-black text-lg hover:bg-indigo-50 transition transform hover:-translate-y-1 shadow-xl">
+                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-white text-indigo-900 px-10 py-4 rounded-full text-lg hover:bg-indigo-50 transition transform hover:-translate-y-1 shadow-xl">
                     {{ __('five_cta_btn') }}
                 </a>
             </div>
@@ -448,3 +448,5 @@
         }
     </style>
 @endsection
+
+

@@ -20,7 +20,7 @@
             
             {{-- Icon / Gambar Dulu --}}
             <div class="flex justify-center mb-8">
-                <div class="w-24 h-24 bg-white border border-indigo-100 rounded-3xl shadow-xl shadow-indigo-100 flex items-center justify-center text-4xl transform -rotate-3 hover:rotate-0 transition duration-300">
+                <div class="w-24 h-24 bg-white border border-indigo-100 rounded-3xl shadow-xl shadow-indigo-100 flex items-center justify-center text-4xl transform -rotate-3 hover:rotate-0 transition duration-300 font-black">
                     ✨
                 </div>
             </div>
@@ -32,7 +32,7 @@
             </div>
             
             {{-- Teks Utama --}}
-            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-gray-900 tracking-tight">
+            <h1 class="text-5xl md:text-7xl mb-6 leading-tight text-gray-900 tracking-tight font-black">
                 {{ __('cl_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">
                     {{ __('cl_hero_title_2') }}
@@ -90,19 +90,19 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
                 <div>
-                    <div class="text-5xl font-black mb-2">{{ __('cl_stat_1_val') }}</div>
+                    <div class="text-5xl mb-2 font-black">{{ __('cl_stat_1_val') }}</div>
                     <p class="text-indigo-200 font-bold uppercase tracking-widest text-xs">{{ __('cl_stat_1_label') }}</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-black mb-2">{{ __('cl_stat_2_val') }}</div>
+                    <div class="text-5xl mb-2 font-black">{{ __('cl_stat_2_val') }}</div>
                     <p class="text-indigo-200 font-bold uppercase tracking-widest text-xs">{{ __('cl_stat_2_label') }}</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-black mb-2">{{ __('cl_stat_3_val') }}</div>
+                    <div class="text-5xl mb-2 font-black">{{ __('cl_stat_3_val') }}</div>
                     <p class="text-indigo-200 font-bold uppercase tracking-widest text-xs">{{ __('cl_stat_3_label') }}</p>
                 </div>
                 <div>
-                    <div class="text-5xl font-black mb-2">{{ __('cl_stat_4_val') }}</div>
+                    <div class="text-5xl mb-2 font-black">{{ __('cl_stat_4_val') }}</div>
                     <p class="text-indigo-200 font-bold uppercase tracking-widest text-xs">{{ __('cl_stat_4_label') }}</p>
                 </div>
             </div>
@@ -113,7 +113,7 @@
     <section id="timeline" class="py-32 bg-slate-50 relative">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">{{ __('cl_timeline_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('cl_timeline_title') }}</h2>
                 <p class="text-xl text-gray-500 max-w-2xl mx-auto">{{ __('cl_timeline_desc') }}</p>
             </div>
 
@@ -198,7 +198,7 @@
     <section class="py-32 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-4xl font-black mb-4 text-gray-900">{{ __('cl_roadmap_title') }}</h2>
+                <h2 class="text-4xl mb-4 text-gray-900 font-black">{{ __('cl_roadmap_title') }}</h2>
                 <p class="text-xl text-gray-500">{{ __('cl_roadmap_desc') }}</p>
             </div>
 
@@ -247,7 +247,7 @@
     <section class="py-24 bg-slate-900 border-y border-slate-800 text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-30"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h2 class="text-4xl md:text-5xl font-black mb-4">{{ __('chg_roadmap_title') }}</h2>
+            <h2 class="text-4xl md:text-5xl mb-4 font-black">{{ __('chg_roadmap_title') }}</h2>
             <p class="text-xl text-slate-400 mb-16">{{ __('chg_roadmap_desc') }}</p>
             <div class="flex flex-col md:flex-row gap-8">
                 <div class="flex-1 p-8 rounded-3xl bg-slate-800 border-l-4 border-indigo-500 shadow-xl">
@@ -270,7 +270,7 @@
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('chg_feedback_title') }}</h2>
+                <h2 class="text-4xl text-slate-900 mb-4 font-black">{{ __('chg_feedback_title') }}</h2>
                 <p class="text-xl text-slate-500">{{ __('chg_feedback_desc') }}</p>
             </div>
             <div class="columns-1 md:columns-2 gap-8 space-y-8">
@@ -289,7 +289,7 @@
     {{-- SECTION: BETA ACCESS --}}
     <section class="py-32 bg-indigo-600 text-white text-center">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-5xl font-black mb-6">{{ __('chg_beta_title') }}</h2>
+            <h2 class="text-5xl mb-6 font-black">{{ __('chg_beta_title') }}</h2>
             <p class="text-xl mb-10 text-indigo-100">{{ __('chg_beta_desc') }}</p>
             <button class="bg-white text-indigo-900 px-8 py-4 rounded-full font-black text-xl hover:scale-105 transition-transform shadow-2xl">Join Beta</button>
         </div>
@@ -306,10 +306,10 @@
             <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-blue-500/10 rounded-full blur-[80px]"></div>
 
             <div class="relative z-10">
-                <div class="inline-flex items-center justify-center w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full text-4xl mb-8 shadow-inner">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-indigo-50 text-indigo-600 rounded-full text-4xl mb-8 shadow-inner font-black">
                     💡
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">{{ __('cl_cta_title') }}</h2>
+                <h2 class="text-4xl md:text-6xl text-gray-900 mb-6 tracking-tight font-black">{{ __('cl_cta_title') }}</h2>
                 <p class="text-xl text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed">{{ __('cl_cta_desc') }}</p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-6">

@@ -18,7 +18,7 @@
                 🚨 {{ __('terms_badge') }}
             </div>
 
-            <h1 class="text-5xl md:text-8xl font-black text-white tracking-tighter leading-[0.85] mb-8">
+            <h1 class="text-5xl md:text-8xl text-white tracking-tighter leading-[0.85] mb-8 font-black">
                 {{ __('terms_title_1') }} <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-rose-400">
                     {{ __('terms_title_2') }}
@@ -78,33 +78,33 @@
                         </p>
                     </div>
 
-                    <h2 id="eligibility" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('terms_h2_eligibility') }}</h2>
+                    <h2 id="eligibility" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('terms_h2_eligibility') }}</h2>
                     <p>{{ __('terms_p_eligibility') }}</p>
                     <ul class="marker:text-indigo-600 font-bold">
                         <li>{{ __('terms_eligibility_1') }}</li>
                         <li>{{ __('terms_eligibility_2') }}</li>
                     </ul>
 
-                    <h2 id="rules" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('terms_h2_rules') }}</h2>
+                    <h2 id="rules" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('terms_h2_rules') }}</h2>
                     <p>{{ __('terms_p_rules') }}</p>
 
-                    <h2 id="payment" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('terms_h2_payment') }}</h2>
+                    <h2 id="payment" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('terms_h2_payment') }}</h2>
                     <p>{{ __('terms_p_payment') }}</p>
                     <ul class="font-bold">
                         <li>{{ __('terms_li_payment_1_title') }}: {{ __('terms_li_payment_1_desc') }}</li>
                         <li class="text-rose-600">{{ __('terms_li_payment_2_title') }}: {{ __('terms_li_payment_2_desc') }}</li>
                     </ul>
 
-                    <h2 id="intellectual" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('terms_h2_intellectual') }}</h2>
+                    <h2 id="intellectual" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('terms_h2_intellectual') }}</h2>
                     <p>{{ __('terms_p_intellectual') }}</p>
 
-                    <h2 id="termination" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('terms_h2_termination') }}</h2>
+                    <h2 id="termination" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('terms_h2_termination') }}</h2>
                     <p>{{ __('terms_p_termination') }}</p>
 
-                    <h2 id="dispute" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('terms_h2_dispute') }}</h2>
+                    <h2 id="dispute" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('terms_h2_dispute') }}</h2>
                     <p>{{ __('terms_p_dispute') }}</p>
 
-                    <h2 id="liability" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('terms_h2_liability') }}</h2>
+                    <h2 id="liability" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('terms_h2_liability') }}</h2>
                     <div class="p-8 bg-slate-900 rounded-3xl text-indigo-100 font-mono text-xs leading-relaxed border-l-[12px] border-rose-500 shadow-2xl">
                         {{ __('terms_legal_caps') }}
                     </div>
@@ -112,7 +112,7 @@
 
                 <div class="bg-indigo-600 rounded-[4rem] p-12 md:p-20 text-white shadow-2xl relative overflow-hidden group mb-12">
                      <div class="relative z-10 text-center">
-                         <h3 class="text-4xl font-black mb-6 tracking-tight">{{ __('terms_cta_title') }}</h3>
+                         <h3 class="text-4xl mb-6 tracking-tight font-black">{{ __('terms_cta_title') }}</h3>
                          <p class="text-indigo-100 text-xl mb-12 max-w-xl mx-auto opacity-80 font-bold">
                              {{ __('terms_cta_desc') }}
                          </p>
@@ -131,3 +131,4 @@
     </section>
 
 @endsection
+

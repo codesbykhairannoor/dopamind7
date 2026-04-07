@@ -89,7 +89,7 @@
                     <span class="text-lg">💰</span> {{ __('finance_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('finance_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('finance_hero_title_2') }}</span>
                 </h1>
@@ -166,7 +166,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-wider mb-6">
                         {{ __('finance_wallet_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+                    <h2 class="text-4xl md:text-5xl text-gray-900 mb-6 leading-tight font-black">
                         {{ __('finance_wallet_title') }}
                     </h2>
                     <p class="text-gray-600 text-lg mb-8 leading-relaxed">
@@ -198,17 +198,17 @@
                         {{-- Card 1 --}}
                         <div class="absolute top-10 right-0 w-full max-w-[340px] h-56 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-[2.5rem] p-8 text-white shadow-[0_20px_50px_rgba(79,70,229,0.3)] transform rotate-6 hover:rotate-3 transition duration-500 hidden md:block">
                             <div class="flex justify-between items-start mb-12">
-                                <span class="text-xl font-black tracking-widest uppercase italic">{{ __('finance_brand') }}</span>
-                                <span class="text-3xl">🏦</span>
+                                <span class="text-xl tracking-widest uppercase italic">{{ __('finance_brand') }}</span>
+                                <span class="text-3xl font-black">🏦</span>
                             </div>
-                            <div class="mb-2 text-[10px] opacity-60 font-black tracking-widest uppercase">{{ __('finance_wallet_card_label') }}</div>
+                            <div class="mb-2 text-[10px] opacity-60 tracking-widest uppercase">{{ __('finance_wallet_card_label') }}</div>
                             <div class="text-3xl font-black">{{ __('finance_mockup_income') }}</div>
                         </div>
                         {{-- Card 2 (Glass) --}}
                         <div class="relative md:absolute bottom-10 left-0 w-full max-w-[380px] h-60 bg-white/40 backdrop-blur-2xl rounded-[2.5rem] p-10 border border-white shadow-2xl transform -rotate-2 hover:rotate-0 transition duration-500 z-10 flex flex-col justify-between">
                             <div class="flex justify-between items-start text-gray-900">
                                 <div>
-                                    <span class="text-[10px] font-black tracking-widest uppercase opacity-40 block mb-1">{{ __('finance_wallet_glass_badge') }}</span>
+                                    <span class="text-[10px] tracking-widest uppercase opacity-40 block mb-1">{{ __('finance_wallet_glass_badge') }}</span>
                                     <h3 class="font-black text-lg leading-tight uppercase tracking-tight">{{ __('finance_wallet_glass_title') }}</h3>
                                 </div>
                                 <div class="w-12 h-8 bg-gray-900/10 rounded-lg flex items-center justify-center gap-0.5">
@@ -218,12 +218,12 @@
                             </div>
                             <div class="flex items-end justify-between text-gray-900">
                                 <div>
-                                    <div class="text-[11px] font-black uppercase tracking-widest opacity-30 mb-1">{{ __('finance_wallet_glass_spending_label') }}</div>
-                                    <div class="text-3xl font-black tracking-tighter">{{ __('finance_mockup_expense') }}</div>
+                                    <div class="text-[11px] uppercase tracking-widest opacity-30 mb-1">{{ __('finance_wallet_glass_spending_label') }}</div>
+                                    <div class="text-3xl tracking-tighter font-black">{{ __('finance_mockup_expense') }}</div>
                                 </div>
                                 <div class="text-right">
-                                     <div class="text-[11px] font-black uppercase tracking-widest opacity-30 mb-1">{{ __('finance_wallet_glass_safe_label') }}</div>
-                                     <div class="text-lg font-black text-emerald-600">{{ __('finance_mockup_saving') }}</div>
+                                     <div class="text-[11px] uppercase tracking-widest opacity-30 mb-1">{{ __('finance_wallet_glass_safe_label') }}</div>
+                                     <div class="text-lg text-emerald-600">{{ __('finance_mockup_saving') }}</div>
                                 </div>
                             </div>
                         </div>
@@ -240,7 +240,7 @@
          <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
              <div class="animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <span class="text-emerald-400 font-bold uppercase tracking-[0.3em] text-xs mb-4 block">{{ __('finance_flow_badge') }}</span>
-                <h2 class="text-4xl md:text-6xl font-black mb-8">{{ __('finance_flow_title') }}</h2>
+                <h2 class="text-4xl md:text-6xl mb-8 font-black">{{ __('finance_flow_title') }}</h2>
                 <p class="text-indigo-200 text-xl opacity-80 max-w-3xl mx-auto mb-24">{{ __('finance_flow_desc') }}</p>
              </div>
 
@@ -250,7 +250,7 @@
                     {{-- Income Source --}}
                     <div class="flex flex-col gap-6 animate-in slide-in-from-left-12 duration-1000 fill-mode-both">
                         <div class="bg-emerald-500/5 backdrop-blur-sm border border-emerald-500/20 p-8 rounded-[2rem] text-left group hover:bg-emerald-500/10 transition duration-500">
-                            <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-3 block opacity-60">{{ __('finance_flow_income_label_1') }}</span>
+                            <span class="text-[10px] text-emerald-400 uppercase tracking-widest mb-3 block opacity-60">{{ __('finance_flow_income_label_1') }}</span>
                             <div class="flex justify-between items-end">
                                 <span class="font-black text-2xl">{{ __('finance_flow_income_title_1') }}</span>
                                 <div class="text-right">
@@ -260,7 +260,7 @@
                             </div>
                         </div>
                         <div class="bg-indigo-500/5 backdrop-blur-sm border border-indigo-500/20 p-8 rounded-[2rem] text-left group hover:bg-indigo-500/10 transition duration-500">
-                            <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-3 block opacity-60">{{ __('finance_flow_income_label_2') }}</span>
+                            <span class="text-[10px] text-indigo-400 uppercase tracking-widest mb-3 block opacity-60">{{ __('finance_flow_income_label_2') }}</span>
                             <div class="flex justify-between items-end">
                                 <span class="font-black text-2xl">{{ __('finance_flow_income_title_2') }}</span>
                                 <div class="text-right">
@@ -278,7 +278,7 @@
                             <div class="w-64 h-64 bg-indigo-600/10 rounded-full animate-ping duration-[4000ms]"></div>
                             <div class="absolute w-48 h-48 border border-white/5 rounded-full animate-spin duration-[10000ms]"></div>
                         </div>
-                        <div class="w-40 h-40 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center text-5xl shadow-[0_0_80px_rgba(79,70,229,0.6)] z-10 transform rotate-12 animate-pulse">
+                        <div class="w-40 h-40 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center text-5xl shadow-[0_0_80px_rgba(79,70,229,0.6)] z-10 transform rotate-12 animate-pulse font-black">
                             💰
                         </div>
                     </div>
@@ -286,7 +286,7 @@
                     {{-- Expenses Destination --}}
                     <div class="flex flex-col gap-6 animate-in slide-in-from-right-12 duration-1000 fill-mode-both">
                          <div class="bg-rose-500/5 backdrop-blur-sm border border-rose-500/20 p-8 rounded-[2rem] text-left group hover:bg-rose-500/10 transition duration-500">
-                            <span class="text-[10px] font-black text-rose-400 uppercase tracking-widest mb-3 block opacity-60">{{ __('finance_flow_expense_label_1') }}</span>
+                            <span class="text-[10px] text-rose-400 uppercase tracking-widest mb-3 block opacity-60">{{ __('finance_flow_expense_label_1') }}</span>
                             <div class="flex justify-between items-end">
                                 <span class="font-black text-2xl">{{ __('finance_flow_expense_title_1') }}</span>
                                 <div class="text-right">
@@ -296,7 +296,7 @@
                             </div>
                         </div>
                         <div class="bg-amber-500/5 backdrop-blur-sm border border-amber-500/20 p-8 rounded-[2rem] text-left group hover:bg-amber-500/10 transition duration-500">
-                            <span class="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-3 block opacity-60">{{ __('finance_flow_expense_label_2') }}</span>
+                            <span class="text-[10px] text-amber-400 uppercase tracking-widest mb-3 block opacity-60">{{ __('finance_flow_expense_label_2') }}</span>
                             <div class="flex justify-between items-end">
                                 <span class="font-black text-2xl">{{ __('finance_flow_expense_title_2') }}</span>
                                 <div class="text-right">
@@ -325,24 +325,24 @@
             <div class="inline-flex items-center justify-center px-6 py-2 bg-indigo-900/50 backdrop-blur-md border border-indigo-700/50 text-indigo-300 rounded-full text-sm font-bold uppercase tracking-widest mb-8">
                 {{ __('finance_privacy_badge') }}
             </div>
-            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">{{ __('finance_privacy_title') }}</h2>
+            <h2 class="text-4xl md:text-5xl text-white mb-6 font-black">{{ __('finance_privacy_title') }}</h2>
             <p class="text-indigo-200 text-xl max-w-3xl mx-auto leading-relaxed mb-16 font-medium">
                 {{ __('finance_privacy_desc') }}
             </p>
             
             <div class="grid sm:grid-cols-3 gap-8">
                 <div class="bg-indigo-900/40 backdrop-blur-xl p-8 rounded-[2rem] border border-indigo-800/50 hover:bg-indigo-800/40 transition">
-                    <div class="text-3xl mb-6 bg-indigo-800/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto border border-indigo-700/50">🔒</div>
+                    <div class="text-3xl mb-6 bg-indigo-800/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto border border-indigo-700/50 font-black">🔒</div>
                     <h4 class="text-white font-bold text-xl mb-3">{{ __('finance_privacy_point_1_title') }}</h4>
                     <p class="text-indigo-300">{{ __('finance_privacy_point_1_desc') }}</p>
                 </div>
                 <div class="bg-indigo-900/40 backdrop-blur-xl p-8 rounded-[2rem] border border-indigo-800/50 hover:bg-indigo-800/40 transition">
-                    <div class="text-3xl mb-6 bg-indigo-800/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto border border-indigo-700/50">🚫</div>
+                    <div class="text-3xl mb-6 bg-indigo-800/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto border border-indigo-700/50 font-black">🚫</div>
                     <h4 class="text-white font-bold text-xl mb-3">{{ __('finance_privacy_point_2_title') }}</h4>
                     <p class="text-indigo-300">{{ __('finance_privacy_point_2_desc') }}</p>
                 </div>
                 <div class="bg-indigo-900/40 backdrop-blur-xl p-8 rounded-[2rem] border border-indigo-800/50 hover:bg-indigo-800/40 transition">
-                    <div class="text-3xl mb-6 bg-indigo-800/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto border border-indigo-700/50">🤝</div>
+                    <div class="text-3xl mb-6 bg-indigo-800/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto border border-indigo-700/50 font-black">🤝</div>
                     <h4 class="text-white font-bold text-xl mb-3">{{ __('finance_privacy_point_3_title') }}</h4>
                     <p class="text-indigo-300">{{ __('finance_privacy_point_3_desc') }}</p>
                 </div>
@@ -354,10 +354,10 @@
     <section class="py-32 bg-slate-50 relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-emerald-200">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] uppercase tracking-[0.2em] mb-8 shadow-sm border border-emerald-200">
                     {{ __('finance_trajectory_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
                     {{ __('finance_trajectory_title') }}
                 </h2>
                 <p class="text-gray-600 text-xl leading-relaxed font-medium">
@@ -370,9 +370,9 @@
                 <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 hover:shadow-2xl transition duration-500 group relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-bl-[4rem] group-hover:scale-110 transition duration-700"></div>
                     <div class="relative z-10">
-                        <span class="text-emerald-500 text-4xl mb-6 block">📈</span>
-                        <h4 class="text-gray-400 font-black uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_projection_title') }}</h4>
-                        <p class="text-4xl font-black text-gray-900 tabular-nums">{{ __('finance_stat_projection_val') }}</p>
+                        <span class="text-emerald-500 text-4xl mb-6 block font-black">📈</span>
+                        <h4 class="text-gray-400 uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_projection_title') }}</h4>
+                        <p class="text-4xl text-gray-900 tabular-nums font-black">{{ __('finance_stat_projection_val') }}</p>
                         <div class="mt-6 w-full h-1 bg-emerald-100 rounded-full">
                             <div class="w-2/3 h-full bg-emerald-500 rounded-full animate-in slide-in-from-left duration-1000"></div>
                         </div>
@@ -382,10 +382,10 @@
                 <div class="bg-slate-900 p-10 rounded-[3rem] shadow-2xl border border-slate-800 transform md:-translate-y-4 group relative overflow-hidden">
                     <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl"></div>
                     <div class="relative z-10 text-white">
-                        <span class="text-indigo-400 text-4xl mb-6 block">🎯</span>
-                        <h4 class="text-indigo-300/40 font-black uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_savings_title') }}</h4>
-                        <p class="text-4xl font-black text-white tabular-nums">{{ __('finance_stat_savings_val') }}</p>
-                        <div class="mt-8 flex items-center gap-2 bg-indigo-500/20 px-4 py-2 rounded-xl border border-indigo-500/30 text-indigo-300 text-[10px] font-black uppercase tracking-widest animate-pulse">
+                        <span class="text-indigo-400 text-4xl mb-6 block font-black">🎯</span>
+                        <h4 class="text-indigo-300/40 uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_savings_title') }}</h4>
+                        <p class="text-4xl text-white tabular-nums font-black">{{ __('finance_stat_savings_val') }}</p>
+                        <div class="mt-8 flex items-center gap-2 bg-indigo-500/20 px-4 py-2 rounded-xl border border-indigo-500/30 text-indigo-300 text-[10px] uppercase tracking-widest animate-pulse">
                             On Track to Achieve
                         </div>
                     </div>
@@ -394,9 +394,9 @@
                 <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-gray-100 hover:shadow-2xl transition duration-500 group relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-[4rem] group-hover:scale-110 transition duration-700"></div>
                     <div class="relative z-10">
-                        <span class="text-amber-500 text-4xl mb-6 block">🏖️</span>
-                        <h4 class="text-gray-400 font-black uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_freedom_title') }}</h4>
-                        <p class="text-4xl font-black text-gray-900 tabular-nums">{{ __('finance_stat_freedom_val') }}</p>
+                        <span class="text-amber-500 text-4xl mb-6 block font-black">🏖️</span>
+                        <h4 class="text-gray-400 uppercase tracking-widest text-[11px] mb-2">{{ __('finance_stat_freedom_title') }}</h4>
+                        <p class="text-4xl text-gray-900 tabular-nums font-black">{{ __('finance_stat_freedom_val') }}</p>
                         <p class="mt-4 text-gray-400 text-xs font-medium">{{ __('finance_fire_date_label') }}</p>
                     </div>
                 </div>
@@ -406,17 +406,17 @@
             <div class="bg-white p-12 rounded-[3.5rem] shadow-2xl border border-gray-100 relative overflow-hidden animate-in zoom-in-95 duration-700">
                 <div class="flex justify-between items-end mb-12">
                     <div class="text-left">
-                        <h3 class="text-2xl font-black text-gray-900 mb-2">{{ __('finance_compound_title') }}</h3>
+                        <h3 class="text-2xl text-gray-900 mb-2">{{ __('finance_compound_title') }}</h3>
                         <p class="text-gray-500 text-sm font-medium">{{ __('finance_compound_desc') }}</p>
                     </div>
                     <div class="flex gap-4">
                         <div class="flex items-center gap-2">
                             <span class="w-3 h-3 bg-indigo-600 rounded-full"></span>
-                            <span class="text-[10px] font-black uppercase text-gray-400">{{ __('finance_compound_legend_1') }}</span>
+                            <span class="text-[10px] uppercase text-gray-400">{{ __('finance_compound_legend_1') }}</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="w-3 h-3 bg-gray-200 rounded-full"></span>
-                            <span class="text-[10px] font-black uppercase text-gray-400">{{ __('finance_compound_legend_2') }}</span>
+                            <span class="text-[10px] uppercase text-gray-400">{{ __('finance_compound_legend_2') }}</span>
                         </div>
                     </div>
                 </div>
@@ -439,12 +439,12 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('finance_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">
                 <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('finance_quote_author') }}</p>
+                <p class="text-indigo-600 tracking-[0.5em] uppercase text-xs">{{ __('finance_quote_author') }}</p>
                 <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest mt-2">{{ __('finance_quote_legend') }}</p>
             </div>
         </div>
@@ -460,10 +460,10 @@
             <div class="bg-white/60 backdrop-blur-3xl rounded-[4rem] border border-white p-12 md:p-20 shadow-2xl flex flex-col lg:flex-row items-center gap-16">
                 
                 <div class="flex-1 text-left">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-widest mb-8">
                         🧬 {{ __('finance_science_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                    <h2 class="text-4xl md:text-5xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
                         {{ __('finance_science_title') }}
                     </h2>
                     <p class="text-gray-600 text-xl leading-relaxed mb-10 italic font-medium opacity-80">
@@ -473,19 +473,19 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div class="flex items-center gap-3">
                             <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest">Mindful Spending</span>
+                            <span class="text-xs text-gray-400 uppercase tracking-widest">Mindful Spending</span>
                         </div>
                         <div class="flex items-center gap-3">
                             <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
-                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest">Kakeibo Method</span>
+                            <span class="text-xs text-gray-400 uppercase tracking-widest">Kakeibo Method</span>
                         </div>
                         <div class="flex items-center gap-3">
                             <div class="w-2 h-2 rounded-full bg-purple-500"></div>
-                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest">Zero-Based Budgeting</span>
+                            <span class="text-xs text-gray-400 uppercase tracking-widest">Zero-Based Budgeting</span>
                         </div>
                         <div class="flex items-center gap-3">
                             <div class="w-2 h-2 rounded-full bg-blue-500"></div>
-                            <span class="text-xs font-black text-gray-400 uppercase tracking-widest">Trust & Accuracy</span>
+                            <span class="text-xs text-gray-400 uppercase tracking-widest">Trust & Accuracy</span>
                         </div>
                     </div>
                 </div>
@@ -497,14 +497,14 @@
                     <div class="relative z-10">
                         <div class="flex justify-between items-center mb-10">
                             <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-xl">🛡️</div>
-                            <span class="text-[10px] font-black uppercase tracking-[0.3em] text-indigo-300">verified system</span>
+                            <span class="text-[10px] uppercase tracking-[0.3em] text-indigo-300">verified system</span>
                         </div>
                         
                         <div class="space-y-6">
                             <div class="bg-white/5 rounded-2xl p-4 border border-white/10">
                                 <div class="flex justify-between items-center mb-3">
                                     <span class="text-xs font-bold text-indigo-200">Probability of Success</span>
-                                    <span class="text-xs font-black text-emerald-400">+98.2%</span>
+                                    <span class="text-xs text-emerald-400">+98.2%</span>
                                 </div>
                                 <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
                                     <div class="w-[98%] h-full bg-emerald-500"></div>
@@ -513,19 +513,19 @@
                             
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-center">
-                                    <span class="text-[10px] font-black text-indigo-300 uppercase block mb-1">Dopamine Score</span>
-                                    <span class="text-xl font-black">Optimal</span>
+                                    <span class="text-[10px] text-indigo-300 uppercase block mb-1">Dopamine Score</span>
+                                    <span class="text-xl">Optimal</span>
                                 </div>
                                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 text-center">
-                                    <span class="text-[10px] font-black text-indigo-300 uppercase block mb-1">Error Rate</span>
-                                    <span class="text-xl font-black">0.02%</span>
+                                    <span class="text-[10px] text-indigo-300 uppercase block mb-1">Error Rate</span>
+                                    <span class="text-xl">0.02%</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="mt-8 flex items-center justify-center gap-3">
-                            <div class="p-2 bg-indigo-500/20 rounded-lg"><span class="text-xs font-black">Daniel Kahneman</span></div>
-                            <div class="p-2 bg-indigo-500/20 rounded-lg"><span class="text-xs font-black">Kakeibo Philosophy</span></div>
+                            <div class="p-2 bg-indigo-500/20 rounded-lg"><span class="text-xs">Daniel Kahneman</span></div>
+                            <div class="p-2 bg-indigo-500/20 rounded-lg"><span class="text-xs">Kakeibo Philosophy</span></div>
                         </div>
                     </div>
                 </div>
@@ -539,12 +539,12 @@
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-pulse duration-[6000ms]"></div>
             
             <div class="relative z-10">
-                <h2 class="text-4xl md:text-6xl font-black mb-8 text-white tracking-tight">{{ __('finance_cta_title') }}</h2>
+                <h2 class="text-4xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('finance_cta_title') }}</h2>
                 <p class="text-indigo-200 text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-medium">
                     {{ __('finance_cta_desc') }}
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 items-center">
-                    <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-white text-indigo-900 px-12 py-5 rounded-full font-black text-lg hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl shadow-indigo-900/50">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-white text-indigo-900 px-12 py-5 rounded-full text-lg hover:bg-indigo-50 transition transform hover:scale-105 shadow-xl shadow-indigo-900/50">
                         {{ __('finance_cta_btn') }}
                     </a>
                 </div>
@@ -553,3 +553,6 @@
         </div>
     </section>
 @endsection
+
+
+

@@ -93,7 +93,7 @@
                     ⚠️ {{ __('notes_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] md:text-6xl lg:text-7xl mb-6 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('notes_hero_title_1') }}<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('notes_hero_title_2') }}</span>
                 </h1>
@@ -121,7 +121,7 @@
                         <div class="h-3 bg-yellow-200/50 rounded w-3/4"></div>
                         <div class="h-3 bg-yellow-200/50 rounded w-1/2"></div>
                     </div>
-                    <div class="absolute bottom-6 right-6 text-yellow-300 text-4xl">?</div>
+                    <div class="absolute bottom-6 right-6 text-yellow-300 text-4xl font-black">?</div>
                 </div>
 
                 {{-- Element 2: The OFM Card (Front & Center) --}}
@@ -153,7 +153,7 @@
     <section class="py-24 bg-white relative overflow-hidden border-b border-gray-100">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('notes_cycle_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('notes_cycle_title') }}</h2>
                 <p class="text-xl text-gray-500">{{ __('notes_cycle_desc') }}</p>
             </div>
 
@@ -165,24 +165,24 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     {{-- Node 1: The Spark --}}
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-200 transition duration-300 relative group">
-                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-xl font-black text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-indigo-600 group-hover:text-white transition shadow-sm">1</div>
-                        <div class="text-4xl mb-4 mt-2 text-center transform group-hover:scale-110 transition">💡</div>
+                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-xl text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-indigo-600 group-hover:text-white transition shadow-sm">1</div>
+                        <div class="text-4xl mb-4 mt-2 text-center transform group-hover:scale-110 transition font-black">💡</div>
                         <h3 class="text-lg font-bold mb-3 text-center text-gray-900">{{ __('notes_cycle_1_title') }}</h3>
                         <p class="text-gray-500 text-sm text-center leading-relaxed">{{ __('notes_cycle_1_desc') }}</p>
                     </div>
                     
                     {{-- Node 2: The Noise --}}
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-orange-200 transition duration-300 relative group delay-75">
-                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-xl font-black text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-orange-500 group-hover:text-white transition shadow-sm">2</div>
-                        <div class="text-4xl mb-4 mt-2 text-center transform group-hover:scale-110 transition">🧺</div>
+                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-xl text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-orange-500 group-hover:text-white transition shadow-sm">2</div>
+                        <div class="text-4xl mb-4 mt-2 text-center transform group-hover:scale-110 transition font-black">🧺</div>
                         <h3 class="text-lg font-bold mb-3 text-center text-gray-900">{{ __('notes_cycle_2_title') }}</h3>
                         <p class="text-gray-500 text-sm text-center leading-relaxed">{{ __('notes_cycle_2_desc') }}</p>
                     </div>
 
                     {{-- Node 3: The Void --}}
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-red-200 transition duration-300 relative group delay-150">
-                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-xl font-black text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-red-500 group-hover:text-white transition shadow-sm">3</div>
-                        <div class="text-4xl mb-4 mt-2 text-center transform group-hover:scale-110 transition">🕸️</div>
+                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-xl text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-red-500 group-hover:text-white transition shadow-sm">3</div>
+                        <div class="text-4xl mb-4 mt-2 text-center transform group-hover:scale-110 transition font-black">🕸️</div>
                         <h3 class="text-lg font-bold mb-3 text-center text-gray-900">{{ __('notes_cycle_3_title') }}</h3>
                         <p class="text-gray-500 text-sm text-center leading-relaxed">{{ __('notes_cycle_3_desc') }}</p>
                     </div>
@@ -198,8 +198,8 @@
             
             {{-- Text Side --}}
             <div class="order-2 lg:order-1 animate-in slide-in-from-bottom-12 fade-in duration-1000">
-                <div class="w-14 h-14 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-red-100">🛑</div>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 leading-tight">
+                <div class="w-14 h-14 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-red-100 font-black">🛑</div>
+                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 leading-tight font-black">
                     {{ __('notes_prob_title_1') }} <span class="text-red-500 decoration-red-200 underline decoration-4 underline-offset-4">{{ __('notes_prob_title_highlight') }}</span>.
                 </h2>
                 <p class="text-gray-500 text-xl leading-relaxed mb-8">
@@ -281,8 +281,8 @@
 
             {{-- Text Side --}}
             <div class="animate-in slide-in-from-bottom-12 fade-in duration-1000 delay-200">
-                <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-indigo-200">🔄</div>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 leading-tight">
+                <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-indigo-200 font-black">🔄</div>
+                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 leading-tight font-black">
                     {{ __('notes_sol_title_1') }} <span class="text-indigo-600">{{ __('notes_sol_title_highlight') }}</span>.
                 </h2>
                 <p class="text-gray-500 text-xl leading-relaxed mb-8">
@@ -303,7 +303,7 @@
     <section class="py-32 bg-white">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-6">{{ __('notes_compare_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl text-gray-900 mb-6 font-black">{{ __('notes_compare_title') }}</h2>
                 <p class="text-gray-500 text-xl">{{ __('notes_compare_desc') }}</p>
             </div>
 
@@ -311,9 +311,9 @@
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-gray-50/50 border-b border-gray-100">
-                            <th class="p-8 text-xs font-black text-gray-400 uppercase tracking-widest w-1/3">{{ __('notes_table_head_1') }}</th>
-                            <th class="p-8 text-lg font-black text-gray-400 w-1/3 text-center">{{ __('notes_table_head_2') }}</th>
-                            <th class="p-8 text-lg font-black text-indigo-600 w-1/3 text-center bg-indigo-50/30">OneForMind</th>
+                            <th class="p-8 text-xs text-gray-400 uppercase tracking-widest w-1/3">{{ __('notes_table_head_1') }}</th>
+                            <th class="p-8 text-lg text-gray-400 w-1/3 text-center">{{ __('notes_table_head_2') }}</th>
+                            <th class="p-8 text-lg text-indigo-600 w-1/3 text-center bg-indigo-50/30">OneForMind</th>
                         </tr>
                     </thead>
                     <tbody class="text-gray-600">
@@ -321,25 +321,25 @@
                         <tr class="border-b border-gray-50 hover:bg-gray-50/30 transition">
                             <td class="p-8 font-bold text-gray-900">{{ __('notes_table_row_1_title') }}</td>
                             <td class="p-8 text-center text-gray-400">{{ __('notes_table_row_1_col_1') }}</td>
-                            <td class="p-8 text-center text-indigo-900 font-black bg-indigo-50/30">{{ __('notes_table_row_1_col_2') }}</td>
+                            <td class="p-8 text-center text-indigo-900 bg-indigo-50/30">{{ __('notes_table_row_1_col_2') }}</td>
                         </tr>
                         {{-- Row 2 --}}
                         <tr class="border-b border-gray-50 hover:bg-gray-50/30 transition">
                             <td class="p-8 font-bold text-gray-900">{{ __('notes_table_row_2_title') }}</td>
                             <td class="p-8 text-center text-gray-400">{{ __('notes_table_row_2_col_1') }}</td>
-                            <td class="p-8 text-center text-indigo-900 font-black bg-indigo-50/30">{{ __('notes_table_row_2_col_2') }}</td>
+                            <td class="p-8 text-center text-indigo-900 bg-indigo-50/30">{{ __('notes_table_row_2_col_2') }}</td>
                         </tr>
                         {{-- Row 3 --}}
                         <tr class="border-b border-gray-50 hover:bg-gray-50/30 transition">
                             <td class="p-8 font-bold text-gray-900">{{ __('notes_table_row_3_title') }}</td>
                             <td class="p-8 text-center text-gray-400">{{ __('notes_table_row_3_col_1') }}</td>
-                            <td class="p-8 text-center text-indigo-900 font-black bg-indigo-50/30">{{ __('notes_table_row_3_col_2') }}</td>
+                            <td class="p-8 text-center text-indigo-900 bg-indigo-50/30">{{ __('notes_table_row_3_col_2') }}</td>
                         </tr>
                         {{-- Row 4 --}}
                         <tr class="hover:bg-gray-50/30 transition">
                             <td class="p-8 font-bold text-gray-900">{{ __('notes_table_row_4_title') }}</td>
                             <td class="p-8 text-center text-gray-400">{{ __('notes_table_row_4_col_1') }}</td>
-                            <td class="p-8 text-center text-indigo-600 font-black bg-indigo-50/30">{{ __('notes_table_row_4_col_2') }}</td>
+                            <td class="p-8 text-center text-indigo-600 bg-indigo-50/30">{{ __('notes_table_row_4_col_2') }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -364,16 +364,16 @@
 
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 text-amber-800 text-[10px] font-black uppercase tracking-[0.4em] mb-12 rounded-full border border-amber-200">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 text-amber-800 text-[10px] uppercase tracking-[0.4em] mb-12 rounded-full border border-amber-200">
                             🧬 {{ __('notes_science_badge') }}
                         </div>
 
-                        <h2 class="text-4xl md:text-5xl font-serif italic text-slate-900 mb-8 leading-tight">
+                        <h2 class="text-4xl md:text-5xl font-serif italic text-slate-900 mb-8 leading-tight font-black">
                             {{ __('notes_science_title') }}
                         </h2>
 
                         <div class="relative py-12 px-12 bg-[#FEFDFB] rounded-3xl mb-12 border border-[#F1EFE9] group-hover:-rotate-1 transition duration-500 shadow-inner">
-                             <span class="absolute -top-4 -left-4 text-4xl transform -rotate-12">✍️</span>
+                             <span class="absolute -top-4 -left-4 text-4xl transform -rotate-12 font-black">✍️</span>
                             <p class="text-slate-600 text-xl font-medium leading-relaxed font-serif">
                                 "{{ __('notes_science_desc') }}"
                             </p>
@@ -390,7 +390,7 @@
                         <div class="w-full max-w-[400px] aspect-square relative flex items-center justify-center grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition duration-1000">
                             <div class="absolute inset-0 border border-slate-200 rounded-full animate-[spin_20s_linear_infinite]"></div>
                             <div class="absolute inset-10 border border-slate-100 rounded-full border-dashed"></div>
-                            <div class="w-24 h-24 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-4xl shadow-sm z-10">🧠</div>
+                            <div class="w-24 h-24 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-4xl shadow-sm z-10 font-black">🧠</div>
                             
                             {{-- Annotation Lines --}}
                             <div class="absolute top-0 left-1/2 w-px h-10 bg-slate-300 -translate-x-1/2"></div>
@@ -409,13 +409,13 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-t from-indigo-200 to-transparent rounded-t-full blur-2xl -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-5xl md:text-7xl font-black mb-8 text-indigo-950 tracking-tight leading-tight">
+            <h2 class="text-5xl md:text-7xl mb-8 text-indigo-950 tracking-tight leading-tight font-black">
                 {!! __('notes_cta_title') !!}
             </h2>
             <p class="text-indigo-900/60 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('notes_cta_desc') }}
             </p>
-            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_60px_rgba(79,70,229,0.5)]">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_60px_rgba(79,70,229,0.5)]">
                 {{ __('notes_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-indigo-400 font-bold uppercase tracking-widest">{{ __('notes_cta_sub') }}</p>
@@ -425,3 +425,6 @@
 
 
 @endsection
+
+
+

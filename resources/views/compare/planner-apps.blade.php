@@ -96,7 +96,7 @@
                     🎯 {{ __('plan_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] text-slate-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] md:text-6xl lg:text-7xl mb-6 leading-[1.1] text-slate-900 tracking-tight font-black">
                     {{ __('plan_hero_title_1') }}<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('plan_hero_title_2') }}</span>
                 </h1>
@@ -159,7 +159,7 @@
     <section class="py-24 bg-slate-50 relative overflow-hidden border-b border-slate-100">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('plan_cycle_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl mb-6 text-slate-900 font-black">{{ __('plan_cycle_title') }}</h2>
                 <p class="text-xl text-slate-500">{{ __('plan_cycle_desc') }}</p>
             </div>
 
@@ -170,7 +170,7 @@
                 <div class="relative pl-8 md:pl-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
                     <div class="absolute -left-[30px] w-14 h-14 bg-white border-4 border-indigo-100 rounded-full flex items-center justify-center text-xl shadow-sm z-10">📝</div>
                     <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
-                        <h3 class="text-2xl font-black mb-3 text-slate-900">{{ __('plan_cycle_1_title') }}</h3>
+                        <h3 class="text-2xl mb-3 text-slate-900">{{ __('plan_cycle_1_title') }}</h3>
                         <p class="text-slate-500 leading-relaxed">{{ __('plan_cycle_1_desc') }}</p>
                     </div>
                 </div>
@@ -180,7 +180,7 @@
                     <div class="absolute -left-[30px] w-14 h-14 bg-white border-4 border-indigo-200 rounded-full flex items-center justify-center text-xl shadow-sm z-10">😫</div>
                     <div class="bg-indigo-600 p-8 rounded-3xl shadow-xl text-white transform md:scale-[1.02] relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
-                        <h3 class="text-2xl font-black mb-3">{{ __('plan_cycle_2_title') }}</h3>
+                        <h3 class="text-2xl mb-3">{{ __('plan_cycle_2_title') }}</h3>
                         <p class="text-indigo-100 leading-relaxed">{{ __('plan_cycle_2_desc') }}</p>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                 <div class="relative pl-8 md:pl-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
                     <div class="absolute -left-[30px] w-14 h-14 bg-white border-4 border-rose-100 rounded-full flex items-center justify-center text-xl shadow-sm z-10">🔄</div>
                     <div class="bg-white p-8 rounded-3xl border border-rose-100 shadow-sm hover:shadow-md transition">
-                        <h3 class="text-2xl font-black mb-3 text-slate-900">{{ __('plan_cycle_3_title') }}</h3>
+                        <h3 class="text-2xl mb-3 text-slate-900">{{ __('plan_cycle_3_title') }}</h3>
                         <p class="text-slate-500 leading-relaxed">{{ __('plan_cycle_3_desc') }}</p>
                     </div>
                 </div>
@@ -204,8 +204,8 @@
     <section class="py-32 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-indigo-100 mx-auto">🏁</div>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight">
+                <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-indigo-100 mx-auto font-black">🏁</div>
+                <h2 class="text-4xl md:text-5xl mb-6 text-slate-900 leading-tight font-black">
                     {{ __('plan_prob_title_1') }} <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-indigo-600">{{ __('plan_prob_title_highlight') }}</span>.
                 </h2>
                 <p class="text-slate-500 text-xl leading-relaxed">
@@ -218,20 +218,20 @@
                 <div class="md:col-span-2 bg-slate-50 border border-slate-100 p-10 rounded-[2.5rem] flex flex-col justify-center relative overflow-hidden group">
                     <div class="absolute right-0 bottom-0 opacity-10 text-[150px] group-hover:scale-110 transition-transform duration-700">⏳</div>
                     <span class="w-10 h-10 rounded-full bg-white text-rose-500 flex items-center justify-center text-lg mb-6 shadow-sm">✕</span>
-                    <h3 class="text-2xl font-black text-slate-900 mb-2">{{ __('plan_prob_point_1') }}</h3>
+                    <h3 class="text-2xl text-slate-900 mb-2">{{ __('plan_prob_point_1') }}</h3>
                     <p class="text-slate-500">Traditional planners force you to manually rewrite what you didn't finish.</p>
                 </div>
                 <div class="bg-rose-50 border border-rose-100 p-10 rounded-[2.5rem] flex flex-col justify-center">
                     <span class="w-10 h-10 rounded-full bg-white text-rose-500 flex items-center justify-center text-lg mb-6 shadow-sm">✕</span>
-                    <h3 class="text-xl font-black text-slate-900 mb-2">{{ __('plan_prob_point_2') }}</h3>
+                    <h3 class="text-xl text-slate-900 mb-2">{{ __('plan_prob_point_2') }}</h3>
                 </div>
                 <div class="bg-indigo-50 border border-indigo-100 p-10 rounded-[2.5rem] flex flex-col justify-center">
                     <span class="w-10 h-10 rounded-full bg-white text-rose-500 flex items-center justify-center text-lg mb-6 shadow-sm">✕</span>
-                    <h3 class="text-xl font-black text-slate-900 mb-2">{{ __('plan_prob_point_3') }}</h3>
+                    <h3 class="text-xl text-slate-900 mb-2">{{ __('plan_prob_point_3') }}</h3>
                 </div>
                 <div class="md:col-span-2 bg-slate-900 text-white border border-slate-800 p-10 rounded-[2.5rem] flex flex-col justify-center relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
-                    <h3 class="text-2xl font-black mb-4">The core issue: Separation.</h3>
+                    <h3 class="text-2xl mb-4">The core issue: Separation.</h3>
                     <p class="text-slate-400">Your tasks are disconnected from your habits, goals, and actual mental capacity. It's just a dumb list.</p>
                 </div>
             </div>
@@ -252,7 +252,7 @@
                         <div class="inline-block p-4 bg-indigo-100 text-indigo-700 rounded-2xl mb-6 shadow-inner">
                             🧠
                         </div>
-                        <h2 class="text-4xl md:text-5xl font-black mb-6 text-slate-900 leading-tight">
+                        <h2 class="text-4xl md:text-5xl mb-6 text-slate-900 leading-tight font-black">
                             {{ __('plan_sol_title_1') }} <span class="text-indigo-600">{{ __('plan_sol_title_highlight') }}</span>.
                         </h2>
                         <p class="text-slate-500 text-lg mb-8 leading-relaxed">
@@ -298,7 +298,7 @@
     <section class="py-32 bg-white">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6">{{ __('plan_compare_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl text-slate-900 mb-6 font-black">{{ __('plan_compare_title') }}</h2>
                 <p class="text-slate-500 text-xl">{{ __('plan_compare_desc') }}</p>
             </div>
 
@@ -348,7 +348,7 @@
                          {{-- Extra Winner Row --}}
                          <li class="flex items-center justify-between pt-4 border-t border-slate-100">
                             <span class="font-bold text-slate-900">{{ __('plan_table_row_4_title') }}</span>
-                            <span class="text-sm font-black text-white bg-indigo-600 px-3 py-1 rounded-lg shadow-lg shadow-indigo-200">{{ __('plan_table_row_4_col_2') }}</span>
+                            <span class="text-sm text-white bg-indigo-600 px-3 py-1 rounded-lg shadow-lg shadow-indigo-200">{{ __('plan_table_row_4_col_2') }}</span>
                         </li>
                     </ul>
                 </div>
@@ -370,11 +370,11 @@
 
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] mb-12 rounded-full border border-indigo-500/30">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-400 text-[10px] uppercase tracking-[0.4em] mb-12 rounded-full border border-indigo-500/30">
                             🧬 {{ __('plan_science_badge') }}
                         </div>
 
-                        <h2 class="text-4xl md:text-6xl font-black mb-10 leading-tight">
+                        <h2 class="text-4xl md:text-6xl mb-10 leading-tight font-black">
                             {{ __('plan_science_title') }}
                         </h2>
 
@@ -387,11 +387,11 @@
 
                         <div class="flex gap-12">
                             <div class="border-l-2 border-indigo-500/30 pl-6">
-                                <p class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Principle_A</p>
+                                <p class="text-[10px] text-indigo-400 uppercase tracking-widest mb-1">Principle_A</p>
                                 <p class="text-sm font-bold text-white">Zeigarnik</p>
                             </div>
                             <div class="border-l-2 border-indigo-500/30 pl-6">
-                                <p class="text-[10px] font-black text-indigo-400 uppercase tracking-widest mb-1">Principle_B</p>
+                                <p class="text-[10px] text-indigo-400 uppercase tracking-widest mb-1">Principle_B</p>
                                 <p class="text-sm font-bold text-white">Flow_State</p>
                             </div>
                         </div>
@@ -402,11 +402,11 @@
                         <div class="w-full max-w-[400px] aspect-square relative flex items-center justify-center">
                             <div class="absolute inset-0 border-2 border-dashed border-indigo-500/20 rounded-full animate-spin-slow"></div>
                             <div class="absolute inset-12 border-2 border-indigo-500/40 rounded-full"></div>
-                            <div class="w-24 h-24 bg-indigo-600 rounded-2xl flex items-center justify-center text-4xl shadow-[0_0_50px_rgba(79,70,229,0.5)] z-10 transform group-hover:rotate-12 transition duration-700">🚀</div>
+                            <div class="w-24 h-24 bg-indigo-600 rounded-2xl flex items-center justify-center text-4xl shadow-[0_0_50px_rgba(79,70,229,0.5)] z-10 transform group-hover:rotate-12 transition duration-700 font-black">🚀</div>
                             
                             {{-- Floating Markers --}}
-                            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 bg-indigo-500 text-white text-[10px] font-black px-2 py-1 rounded">VISION.EXE</div>
-                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-4 bg-white/10 text-white text-[10px] font-black px-2 py-1 rounded">EXECUTION.LOG</div>
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 bg-indigo-500 text-white text-[10px] px-2 py-1 rounded">VISION.EXE</div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-4 bg-white/10 text-white text-[10px] px-2 py-1 rounded">EXECUTION.LOG</div>
                         </div>
                     </div>
                 </div>
@@ -424,18 +424,18 @@
         <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-indigo-600/20 to-transparent -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-md rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl">🚀</div>
-            <h2 class="text-5xl md:text-7xl font-black mb-8 text-white tracking-tight leading-tight">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-md rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl font-black">🚀</div>
+            <h2 class="text-5xl md:text-7xl mb-8 text-white tracking-tight leading-tight font-black">
                 {!! __('plan_cta_title') !!}
             </h2>
             <p class="text-indigo-200 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
                 {{ __('plan_cta_desc') }}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-indigo-500 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-400 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
+                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-indigo-500 text-white px-12 py-5 rounded-full text-xl hover:bg-indigo-400 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)]">
                     {{ __('plan_cta_btn') }}
                 </a>
-                <a href="{{ route('features.planner') }}" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-white/10 transition">
+                <a href="{{ route('features.planner') }}" class="w-full sm:w-auto bg-white/5 border border-white/10 text-white px-12 py-5 rounded-full text-xl hover:bg-white/10 transition">
                     Explore Planner OS
                 </a>
             </div>
@@ -443,3 +443,5 @@
         </div>
     </section>
 @endsection
+
+

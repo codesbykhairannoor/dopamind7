@@ -53,7 +53,7 @@
             {{ __('about_badge') }}
         </div>
         
-        <h1 class="text-5xl md:text-8xl font-black mb-10 text-slate-900 leading-[0.95] tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-1000">
+        <h1 class="text-5xl md:text-8xl mb-10 text-slate-900 leading-[0.95] tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-1000 font-black">
             {{ __('about_title_1') }}<br>
             <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-900">
                 {{ __('about_title_2') }}
@@ -76,7 +76,7 @@
             <div class="grid lg:grid-cols-2 gap-32 items-center">
                 <div class="space-y-10">
                     <div class="h-1 w-20 bg-indigo-600"></div>
-                    <h2 class="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter">
+                    <h2 class="text-5xl md:text-7xl text-slate-900 leading-[0.9] tracking-tighter font-black">
                         {{ __('story_1_title') }}
                     </h2>
                     <div class="space-y-6">
@@ -90,12 +90,12 @@
                     
                     <div class="grid grid-cols-2 gap-6 pt-10">
                         <div class="group">
-                            <div class="text-5xl mb-4 group-hover:-rotate-12 transition duration-500">🧠</div>
+                            <div class="text-5xl mb-4 group-hover:-rotate-12 transition duration-500 font-black">🧠</div>
                             <div class="h-px w-full bg-slate-200 mb-4 group-hover:bg-indigo-600 transition"></div>
                             <div class="font-black text-slate-900 text-xs">{{ __('story_1_card_1') }}</div>
                         </div>
                         <div class="group">
-                            <div class="text-5xl mb-4 group-hover:rotate-12 transition duration-500">📡</div>
+                            <div class="text-5xl mb-4 group-hover:rotate-12 transition duration-500 font-black">📡</div>
                             <div class="h-px w-full bg-slate-200 mb-4 group-hover:bg-indigo-600 transition"></div>
                             <div class="font-black text-slate-900 text-xs">{{ __('story_1_card_2') }}</div>
                         </div>
@@ -106,7 +106,7 @@
                     <div class="aspect-square bg-slate-900 rounded-[5rem] overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-all duration-700 border-[12px] border-white">
                         <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-slate-900 to-indigo-950 opacity-60"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
-                             <div class="w-32 h-32 bg-indigo-600 text-white rounded-full flex items-center justify-center text-5xl animate-pulse shadow-[0_0_50px_rgba(79,70,229,0.5)]">
+                             <div class="w-32 h-32 bg-indigo-600 text-white rounded-full flex items-center justify-center text-5xl animate-pulse shadow-[0_0_50px_rgba(79,70,229,0.5)] font-black">
                                 🌌
                              </div>
                         </div>
@@ -143,7 +143,7 @@
 
                 <div class="order-1 lg:order-2 space-y-10">
                     <div class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black tracking-[0.3em]">The Transition</div>
-                    <h2 class="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter">{{ __('story_2_title') }}</h2>
+                    <h2 class="text-5xl md:text-7xl text-slate-900 leading-[0.9] tracking-tighter font-black">{{ __('story_2_title') }}</h2>
                     <p class="text-slate-600 text-xl leading-relaxed font-medium">{{ __('story_2_p1') }}</p>
                     <div class="p-12 bg-indigo-600 rounded-[4rem] text-white shadow-2xl relative group overflow-hidden">
                         {{-- Decorative --}}
@@ -170,7 +170,7 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-black text-[10px] mb-8 tracking-[0.4em] border border-white/20">
                     {{ __('manifesto_badge') }}
                 </div>
-                <h2 class="text-5xl md:text-8xl font-black text-white leading-[0.85] tracking-tighter">
+                <h2 class="text-5xl md:text-8xl text-white leading-[0.85] tracking-tighter font-black">
                     {{ __('manifesto_title') }}
                 </h2>
             </div>
@@ -185,10 +185,10 @@
                 @endphp
                 @foreach($manifesto as $pillar)
                 <div class="bg-white/5 backdrop-blur-3xl p-12 rounded-[4rem] border border-white/10 hover:border-white transition-all duration-500 group">
-                    <div class="w-20 h-20 bg-white text-indigo-600 rounded-3xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 group-hover:rotate-12 transition-all shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                    <div class="w-20 h-20 bg-white text-indigo-600 rounded-3xl flex items-center justify-center text-4xl mb-10 group-hover:scale-110 group-hover:rotate-12 transition-all shadow-[0_0_30px_rgba(255,255,255,0.3)] font-black">
                         {{ $pillar['icon'] }}
                     </div>
-                    <h3 class="text-3xl font-black text-white mb-6 tracking-tight">{{ __($pillar['title']) }}</h3>
+                    <h3 class="text-3xl text-white mb-6 tracking-tight font-black">{{ __($pillar['title']) }}</h3>
                     <p class="text-indigo-100/70 font-bold leading-relaxed text-lg">{{ __($pillar['desc']) }}</p>
                 </div>
                 @endforeach
@@ -206,7 +206,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black tracking-[0.3em] mb-6">
                         📚 {{ __('about_philosophy_badge') }}
                     </div>
-                    <h2 class="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter">{{ __('about_philosophy_title') }}</h2>
+                    <h2 class="text-5xl md:text-7xl text-slate-900 leading-[0.9] tracking-tighter font-black">{{ __('about_philosophy_title') }}</h2>
                 </div>
                 <div class="lg:w-1/3 pb-4">
                     <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
@@ -226,11 +226,11 @@
                 
                 @foreach($laws as $law)
                 <div class="group flex flex-col md:flex-row gap-16 items-start p-16 rounded-[5rem] border border-slate-100 bg-slate-50/30 hover:bg-white hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-700">
-                    <div class="text-8xl font-black text-indigo-100 group-hover:text-indigo-600 transition-colors duration-500 leading-none">
+                    <div class="text-8xl text-indigo-100 group-hover:text-indigo-600 transition-colors duration-500 leading-none font-black">
                         {{ $law['id'] }}
                     </div>
                     <div class="space-y-6 pt-4">
-                        <h3 class="text-4xl font-black text-slate-900 tracking-tight">{{ __($law['title']) }}</h3>
+                        <h3 class="text-4xl text-slate-900 tracking-tight font-black">{{ __($law['title']) }}</h3>
                         <p class="text-slate-500 font-bold text-xl leading-relaxed max-w-3xl">{{ __($law['desc']) }}</p>
                     </div>
                 </div>
@@ -249,7 +249,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h2 class="text-4xl md:text-6xl font-black mb-32 text-center text-white tracking-tighter italic">{{ __('team_title') }}</h2>
+            <h2 class="text-4xl md:text-6xl mb-32 text-center text-white tracking-tighter italic font-black">{{ __('team_title') }}</h2>
             
             <div class="grid md:grid-cols-2 gap-12">
                 {{-- THE BUILDER --}}
@@ -258,11 +258,11 @@
                     
                     <div class="relative z-10">
                         <div class="flex items-center gap-8 mb-12">
-                            <div class="w-24 h-24 bg-indigo-600 text-white rounded-[2.5rem] flex items-center justify-center text-5xl shadow-2xl shadow-indigo-500/50">
+                            <div class="w-24 h-24 bg-indigo-600 text-white rounded-[2.5rem] flex items-center justify-center text-5xl shadow-2xl shadow-indigo-500/50 font-black">
                                 🏗️
                             </div>
                             <div>
-                                <h3 class="text-4xl font-black text-white mb-2">{{ __('dev_name') }}</h3>
+                                <h3 class="text-4xl text-white mb-2 font-black">{{ __('dev_name') }}</h3>
                                 <div class="inline-block px-4 py-2 bg-indigo-500/20 border border-indigo-500/30 rounded-full">
                                     <span class="text-[10px] font-black tracking-[0.4em] text-indigo-400">
                                         {{ __('dev_role') }}
@@ -282,11 +282,11 @@
                     
                     <div class="relative z-10">
                         <div class="flex items-center gap-8 mb-12">
-                            <div class="w-24 h-24 bg-purple-600 text-white rounded-[2.5rem] flex items-center justify-center text-5xl shadow-2xl shadow-purple-500/50">
+                            <div class="w-24 h-24 bg-purple-600 text-white rounded-[2.5rem] flex items-center justify-center text-5xl shadow-2xl shadow-purple-500/50 font-black">
                                 🛰️
                             </div>
                             <div>
-                                <h3 class="text-4xl font-black text-white mb-2">{{ __('user_name') }}</h3>
+                                <h3 class="text-4xl text-white mb-2 font-black">{{ __('user_name') }}</h3>
                                 <div class="inline-block px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full">
                                     <span class="text-[10px] font-black tracking-[0.4em] text-purple-400">
                                         {{ __('user_role') }}
@@ -319,7 +319,7 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black tracking-[0.4em] mb-8">
                     🗺️ {{ __('about_roadmap_badge') }}
                 </div>
-                <h2 class="text-5xl md:text-8xl font-black text-slate-900 leading-[0.85] tracking-tighter">{{ __('about_roadmap_title') }}</h2>
+                <h2 class="text-5xl md:text-8xl text-slate-900 leading-[0.85] tracking-tighter font-black">{{ __('about_roadmap_title') }}</h2>
             </div>
 
             <div class="relative max-w-5xl mx-auto">
@@ -342,9 +342,9 @@
                         {{-- Content --}}
                         <div class="md:w-1/2 {{ $index % 2 != 0 ? 'md:text-right text-center' : 'md:text-left text-center' }}">
                             <div class="relative group">
-                                <div class="text-indigo-600 font-black text-7xl mb-6 opacity-20 group-hover:opacity-100 transition duration-700">{{ $item['phase'] }}</div>
-                                <div class="text-4xl mb-6">{{ $item['icon'] }}</div>
-                                <h3 class="text-4xl font-black text-slate-900 mb-6 tracking-tight leading-none">{{ __($item['title']) }}</h3>
+                                <div class="text-indigo-600 font-black text-7xl mb-6 opacity-20 group-hover:opacity-100 transition duration-700 font-black">{{ $item['phase'] }}</div>
+                                <div class="text-4xl mb-6 font-black">{{ $item['icon'] }}</div>
+                                <h3 class="text-4xl text-slate-900 mb-6 tracking-tight leading-none font-black">{{ __($item['title']) }}</h3>
                                 <p class="text-slate-500 font-bold leading-relaxed text-xl">{{ __($item['desc']) }}</p>
                             </div>
                         </div>
@@ -371,7 +371,7 @@
     {{-- ================================================================= --}}
     <section class="py-32 bg-indigo-50 border-t border-indigo-100 text-center relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 relative z-10 animate-in zoom-in-95 fade-in duration-1000">
-            <h2 class="text-[36px] leading-[1.1] font-black md:text-6xl font-black mb-8 text-indigo-950 tracking-tight">{{ __('cta_about_title') }}</h2>
+            <h2 class="text-[36px] leading-[1.05] md:text-6xl mb-8 text-indigo-950 tracking-tight font-black">{{ __('cta_about_title') }}</h2>
             <p class="text-2xl text-indigo-700/70 mb-14 font-medium max-w-2xl mx-auto">{{ __('cta_about_desc') }}</p>
             <div class="flex justify-center flex-col sm:flex-row gap-5">
                 <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-14 py-6 rounded-[2.5rem] font-black text-xl hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition transform hover:-translate-y-2 active:scale-95">
@@ -385,3 +385,4 @@
         <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-indigo-200 rounded-full blur-[100px] opacity-30"></div>
     </section>
 @endsection
+

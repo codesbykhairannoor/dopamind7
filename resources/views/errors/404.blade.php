@@ -16,13 +16,13 @@
                 </div>
                 <div class="absolute inset-0 flex items-center justify-center">
                     <div class="w-48 h-48 md:w-64 md:h-64 bg-slate-900 rounded-[3rem] shadow-3xl shadow-indigo-200/50 flex flex-col items-center justify-center rotate-6 hover:rotate-0 transition-transform duration-700 group cursor-default">
-                        <span class="text-6xl md:text-8xl group-hover:scale-110 transition">🔭</span>
+                        <span class="text-6xl md:text-8xl group-hover:scale-110 transition font-black">🔭</span>
                         <div class="mt-4 font-mono text-[10px] text-indigo-400 font-bold uppercase tracking-[0.3em]">SIGNAL_LOST</div>
                     </div>
                 </div>
             </div>
 
-            <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+            <h1 class="text-4xl md:text-5xl text-slate-900 mb-6 tracking-tight font-black">
                 Terlalu Jauh Masuk ke <br> 
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-rose-500">Ruang Kosong.</span>
             </h1>
@@ -50,3 +50,4 @@
         </div>
     </div>
 @endsection
+

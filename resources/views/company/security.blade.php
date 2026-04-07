@@ -25,7 +25,7 @@
                     {{ __('sec_badge') }}
                 </div>
 
-                <h1 class="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-8">
+                <h1 class="text-6xl md:text-8xl text-white tracking-tighter leading-[0.9] mb-8 font-black">
                     {{ __('sec_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-indigo-400">
                         {{ __('sec_title_2') }}
@@ -123,9 +123,9 @@
                     {{-- 1. INFRASTRUCTURE --}}
                     <div id="infra" class="scroll-mt-32 bg-white rounded-[4rem] p-10 md:p-16 border border-slate-200 shadow-sm overflow-hidden group">
                         <div class="flex flex-col md:flex-row gap-12 items-start">
-                            <div class="w-20 h-20 bg-slate-950 rounded-3xl flex items-center justify-center text-4xl shadow-2xl shadow-slate-200 shrink-0 group-hover:-rotate-6 transition duration-500">☁️</div>
+                            <div class="w-20 h-20 bg-slate-950 rounded-3xl flex items-center justify-center text-4xl shadow-2xl shadow-slate-200 shrink-0 group-hover:-rotate-6 transition duration-500 font-black">☁️</div>
                             <div>
-                                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 tracking-tighter">{{ __('sec_h2_infrastructure') }}</h2>
+                                <h2 class="text-4xl md:text-5xl text-slate-900 mb-8 tracking-tighter font-black">{{ __('sec_h2_infrastructure') }}</h2>
                                 <p class="text-xl text-slate-500 font-medium mb-12 leading-relaxed">{{ __('sec_p_infrastructure') }}</p>
                                 
                                 <div class="grid sm:grid-cols-3 gap-8">
@@ -151,9 +151,9 @@
                         <div class="absolute -right-20 -top-20 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none group-hover:scale-110 transition duration-1000"></div>
                         
                         <div class="relative z-10 flex flex-col md:flex-row gap-12 items-start">
-                             <div class="w-20 h-20 bg-white/5 backdrop-blur-2xl rounded-3xl flex items-center justify-center text-4xl border border-white/10 shrink-0 shadow-lg group-hover:rotate-6 transition duration-500">🔐</div>
+                             <div class="w-20 h-20 bg-white/5 backdrop-blur-2xl rounded-3xl flex items-center justify-center text-4xl border border-white/10 shrink-0 shadow-lg group-hover:rotate-6 transition duration-500 font-black">🔐</div>
                              <div>
-                                 <h2 class="text-4xl md:text-5xl font-black text-white mb-8 tracking-tighter">{{ __('sec_h2_encryption') }}</h2>
+                                 <h2 class="text-4xl md:text-5xl text-white mb-8 tracking-tighter font-black">{{ __('sec_h2_encryption') }}</h2>
                                  <p class="text-xl text-indigo-100 font-medium mb-12 leading-relaxed opacity-80 decoration-indigo-500 underline decoration-4 underline-offset-8">{{ __('sec_p_encryption') }}</p>
                                  
                                  <div class="grid sm:grid-cols-2 gap-10">
@@ -176,21 +176,21 @@
                     <div id="app" class="scroll-mt-32 bg-white rounded-[4rem] p-10 md:p-16 border border-slate-200 shadow-sm relative group overflow-hidden">
                         <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-indigo-600/5 rounded-full blur-3xl"></div>
                         <div class="flex flex-col md:flex-row gap-12 items-start">
-                             <div class="w-20 h-20 bg-indigo-600 rounded-3xl flex items-center justify-center text-4xl shadow-2xl shadow-indigo-100 shrink-0 group-hover:scale-110 transition duration-500 text-white">🛡️</div>
+                             <div class="w-20 h-20 bg-indigo-600 rounded-3xl flex items-center justify-center text-4xl shadow-2xl shadow-indigo-100 shrink-0 group-hover:scale-110 transition duration-500 text-white font-black">🛡️</div>
                              <div>
-                                 <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 tracking-tighter">{{ __('sec_h2_application') }}</h2>
+                                 <h2 class="text-4xl md:text-5xl text-slate-900 mb-8 tracking-tighter font-black">{{ __('sec_h2_application') }}</h2>
                                  <p class="text-xl text-slate-500 font-medium mb-12 leading-relaxed">{{ __('sec_p_application') }}</p>
 
                                  <div class="grid sm:grid-cols-2 gap-8">
                                      <div class="flex gap-5 p-6 bg-slate-50 rounded-3xl">
-                                         <span class="text-emerald-500 font-black text-3xl shrink-0 mt-1">✓</span>
+                                         <span class="text-emerald-500 font-black text-3xl shrink-0 mt-1 font-black">✓</span>
                                          <div>
                                              <h5 class="font-black text-slate-900 text-base mb-2">{{ __('sec_li_app_1_title') }}</h5>
                                              <p class="text-xs text-slate-500 leading-relaxed">{{ __('sec_li_app_1_desc') }}</p>
                                          </div>
                                      </div>
                                      <div class="flex gap-5 p-6 bg-slate-50 rounded-3xl">
-                                         <span class="text-emerald-500 font-black text-3xl shrink-0 mt-1">✓</span>
+                                         <span class="text-emerald-500 font-black text-3xl shrink-0 mt-1 font-black">✓</span>
                                          <div>
                                              <h5 class="font-black text-slate-900 text-base mb-2">{{ __('sec_li_app_2_title') }}</h5>
                                              <p class="text-xs text-slate-500 leading-relaxed">{{ __('sec_li_app_2_desc') }}</p>
@@ -207,7 +207,7 @@
                         <div class="flex flex-col md:flex-row gap-12 items-start">
                              <div class="w-20 h-20 bg-emerald-600 rounded-3xl flex items-center justify-center text-4xl shadow-2xl shadow-emerald-200 shrink-0 group-hover:rotate-12 transition duration-500 text-white font-black">👑</div>
                              <div>
-                                 <h2 class="text-4xl md:text-5xl font-black text-emerald-950 mb-8 tracking-tighter">{{ __('sec_h2_sovereignty') }}</h2>
+                                 <h2 class="text-4xl md:text-5xl text-emerald-950 mb-8 tracking-tighter font-black">{{ __('sec_h2_sovereignty') }}</h2>
                                  <p class="text-2xl text-emerald-900/80 font-black leading-relaxed italic border-l-8 border-emerald-300 pl-10">
                                      {{ __('sec_p_sovereignty') }}
                                  </p>
@@ -227,8 +227,8 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-indigo-600/5 rounded-full blur-[140px] pointer-events-none"></div>
         
         <div class="max-w-4xl mx-auto relative z-10">
-            <div class="inline-flex items-center justify-center w-24 h-24 bg-slate-900 text-white rounded-[2.5rem] text-4xl mb-12 shadow-2xl rotate-3">🛡️</div>
-            <h2 class="text-6xl md:text-8xl font-black mb-10 text-slate-950 tracking-tighter leading-[0.8]">{{ __('sec_cta_title') }}</h2>
+            <div class="inline-flex items-center justify-center w-24 h-24 bg-slate-900 text-white rounded-[2.5rem] text-4xl mb-12 shadow-2xl rotate-3 font-black">🛡️</div>
+            <h2 class="text-6xl md:text-8xl mb-10 text-slate-950 tracking-tighter leading-[0.8] font-black">{{ __('sec_cta_title') }}</h2>
             <p class="text-2xl text-slate-500 mb-16 leading-relaxed max-w-3xl mx-auto font-medium">
                 {{ __('sec_cta_desc') }}
             </p>
@@ -239,3 +239,4 @@
     </section>
 
 @endsection
+

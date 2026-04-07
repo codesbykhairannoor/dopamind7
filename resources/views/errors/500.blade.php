@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <h1 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tighter leading-[0.9]">
+            <h1 class="text-4xl md:text-6xl text-white mb-6 tracking-tighter leading-[0.9] font-black">
                 Whoops! <br> 
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-rose-400">Sistem Mengalami Hubung Singkat.</span>
             </h1>
@@ -62,3 +62,4 @@
         </div>
     </div>
 @endsection
+

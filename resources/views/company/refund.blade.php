@@ -20,7 +20,7 @@
                 🛑 {{ __('refund_badge') }}
             </div>
 
-            <h1 class="text-5xl md:text-8xl font-black text-white tracking-tighter leading-[0.85] mb-8">
+            <h1 class="text-5xl md:text-8xl text-white tracking-tighter leading-[0.85] mb-8 font-black">
                 {{ __('refund_title_1') }} <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-rose-300">
                     {{ __('refund_title_2') }}
@@ -64,7 +64,7 @@
                     
                     <div class="flex items-center gap-6 p-10 bg-slate-900 rounded-[3rem] text-white not-prose mb-16 shadow-2xl relative overflow-hidden group">
                         <div class="absolute inset-0 bg-gradient-to-r from-rose-600/20 to-transparent"></div>
-                        <div class="text-6xl group-hover:rotate-12 transition">🛡️</div>
+                        <div class="text-6xl group-hover:rotate-12 transition font-black">🛡️</div>
                         <div class="relative z-10">
                             <h4 class="text-2xl font-black mb-2 tracking-tight">{{ __('refund_merchant_protection_title') }}</h4>
                             <p class="text-slate-400 font-bold leading-relaxed mb-0">
@@ -73,14 +73,14 @@
                         </div>
                     </div>
 
-                    <h2 id="guarantee" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('refund_h2_guarantee') }}</h2>
+                    <h2 id="guarantee" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('refund_h2_guarantee') }}</h2>
                     <p class="font-bold text-slate-800">{{ __('refund_p_guarantee') }}</p>
                     <ul class="marker:text-rose-600 font-bold italic">
                         <li>{{ __('refund_li_guarantee_1') }}</li>
                         <li>{{ __('refund_li_guarantee_2') }}</li>
                     </ul>
 
-                    <h2 id="process" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('refund_h2_process') }}</h2>
+                    <h2 id="process" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('refund_h2_process') }}</h2>
                     <p>{{ __('refund_p_process') }}</p>
                     <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-slate-200 not-prose mb-12 shadow-inner">
                         <div class="space-y-6">
@@ -100,14 +100,14 @@
                         </div>
                     </div>
 
-                    <h2 id="cancellation" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('refund_h2_cancellation') }}</h2>
+                    <h2 id="cancellation" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('refund_h2_cancellation') }}</h2>
                     <p>{{ __('refund_p_cancellation') }}</p>
                     <ul class="font-bold">
                         <li>{{ __('refund_li_cancellation_1') }}</li>
                         <li>{{ __('refund_li_cancellation_2') }}</li>
                     </ul>
 
-                    <h2 id="exclusion" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8">{{ __('refund_h2_exclusion') }}</h2>
+                    <h2 id="exclusion" class="scroll-mt-32 font-black text-slate-900 text-4xl mb-8 font-black">{{ __('refund_h2_exclusion') }}</h2>
                     <div class="p-8 bg-rose-50 rounded-3xl border border-rose-100 text-rose-900 text-sm leading-relaxed font-black uppercase">
                         🚫 {{ __('refund_p_exclusion') }}
                     </div>
@@ -115,7 +115,7 @@
 
                 <div class="bg-slate-900 rounded-[4rem] p-12 md:p-20 text-white shadow-2xl relative overflow-hidden group mb-12">
                      <div class="relative z-10 text-center">
-                         <h3 class="text-4xl font-black mb-6 tracking-tight">{{ __('refund_cta_title') }}</h3>
+                         <h3 class="text-4xl mb-6 tracking-tight font-black">{{ __('refund_cta_title') }}</h3>
                          <p class="text-slate-400 text-xl mb-12 max-w-xl mx-auto opacity-80 font-bold">
                              {{ __('refund_cta_desc') }}
                          </p>
@@ -130,3 +130,4 @@
     </section>
 
 @endsection
+

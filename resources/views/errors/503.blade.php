@@ -11,13 +11,13 @@
         <div class="relative z-10 text-center max-w-3xl animate-in fade-in slide-in-from-top-12 duration-1000">
             {{-- BIG ICON --}}
             <div class="mb-12 relative flex justify-center items-center">
-                 <div class="w-24 h-24 bg-indigo-600 rounded-[2rem] shadow-2xl flex items-center justify-center text-4xl animate-bounce">🛠️</div>
+                 <div class="w-24 h-24 bg-indigo-600 rounded-[2rem] shadow-2xl flex items-center justify-center text-4xl animate-bounce font-black">🛠️</div>
                  <div class="absolute inset-0 flex items-center justify-center -z-10">
                     <div class="w-48 h-48 bg-indigo-200/50 rounded-full blur-3xl animate-pulse"></div>
                  </div>
             </div>
 
-            <h1 class="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[0.9]">
+            <h1 class="text-5xl md:text-7xl text-slate-900 mb-8 tracking-tighter leading-[0.9] font-black">
                 Sedang <br> 
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-indigo-500 to-rose-500 underline decoration-indigo-200 underline-offset-8">Upgrading Hidup Anda.</span>
             </h1>
@@ -55,3 +55,4 @@
         }
     </style>
 @endsection
+

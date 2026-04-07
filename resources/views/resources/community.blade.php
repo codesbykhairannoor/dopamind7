@@ -23,7 +23,7 @@
                     {{ __('comm_hero_badge') }}
                 </div>
 
-                <h1 class="text-6xl md:text-9xl font-black mb-12 leading-[0.95] text-slate-900 tracking-tighter">
+                <h1 class="text-6xl md:text-9xl mb-12 leading-[0.95] text-slate-900 tracking-tighter font-black">
                     {!! __('comm_hero_title') !!}
                 </h1>
 
@@ -59,9 +59,9 @@
                     <div class="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-[100px] -mr-32 -mt-32"></div>
                     <div class="relative z-10">
                         <div class="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center mb-10 border border-white/20 backdrop-blur-md group-hover:rotate-12 transition">
-                            <span class="text-4xl">💬</span>
+                            <span class="text-4xl font-black">💬</span>
                         </div>
-                        <h2 class="text-5xl font-black mb-6 tracking-tight">{{ __('comm_discord_title') }}</h2>
+                        <h2 class="text-5xl mb-6 tracking-tight font-black">{{ __('comm_discord_title') }}</h2>
                         <p class="text-indigo-100 text-xl mb-12 leading-relaxed opacity-80">{{ __('comm_discord_desc') }}</p>
                         <a href="#" class="inline-flex items-center gap-4 bg-white text-indigo-600 px-12 py-6 rounded-[2rem] font-black text-xl hover:shadow-2xl transition transform active:scale-95 shadow-lg shadow-indigo-900/20">
                             {{ __('comm_btn_discord') }} <span>→</span>
@@ -72,9 +72,9 @@
                 {{-- TELEGRAM LUXURY CARD --}}
                 <div class="group p-16 rounded-[4rem] bg-white border border-slate-100 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-2">
                     <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mb-10 border border-blue-100 group-hover:-rotate-12 transition">
-                        <span class="text-4xl">✈️</span>
+                        <span class="text-4xl font-black">✈️</span>
                     </div>
-                    <h2 class="text-5xl font-black text-slate-900 mb-6 tracking-tight">{{ __('comm_tg_title') }}</h2>
+                    <h2 class="text-5xl text-slate-900 mb-6 tracking-tight font-black">{{ __('comm_tg_title') }}</h2>
                     <p class="text-slate-500 text-xl mb-12 leading-relaxed opacity-70">{{ __('comm_tg_desc') }}</p>
                     <a href="#" class="inline-flex items-center gap-4 bg-slate-900 text-white px-12 py-6 rounded-[2rem] font-black text-xl hover:bg-slate-800 transition transform active:scale-95 shadow-xl shadow-slate-200">
                         {{ __('comm_btn_tg') }} <span>→</span>
@@ -92,7 +92,7 @@
             {{-- GUIDELINES --}}
             <div>
                 <div class="mb-16">
-                    <h2 class="text-5xl font-black text-slate-900 mb-6 tracking-tight">{{ __('comm_guidelines_title') }}</h2>
+                    <h2 class="text-5xl text-slate-900 mb-6 tracking-tight font-black">{{ __('comm_guidelines_title') }}</h2>
                     <div class="w-24 h-2 bg-indigo-600 rounded-full"></div>
                 </div>
                 <div class="space-y-8">
@@ -113,7 +113,7 @@
             {{-- EVENTS --}}
             <div>
                 <div class="mb-16">
-                    <h2 class="text-5xl font-black text-slate-900 mb-6 tracking-tight">{{ __('comm_events_title') }}</h2>
+                    <h2 class="text-5xl text-slate-900 mb-6 tracking-tight font-black">{{ __('comm_events_title') }}</h2>
                     <div class="w-24 h-2 bg-slate-900 rounded-full"></div>
                 </div>
                 <div class="space-y-6">
@@ -123,7 +123,7 @@
                             <span class="px-5 py-2 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black uppercase tracking-widest border border-indigo-100">{{ __('comm_event_badge') }}</span>
                             <span class="text-sm font-bold text-slate-300">{{ __('comm_event_date') }}</span>
                         </div>
-                        <h4 class="text-3xl font-black text-slate-900 mb-8 group-hover:text-indigo-600 transition">{{ __("comm_event_{$e}") }}</h4>
+                        <h4 class="text-3xl text-slate-900 mb-8 group-hover:text-indigo-600 transition font-black">{{ __("comm_event_{$e}") }}</h4>
                         <a href="#" class="inline-flex items-center gap-3 text-lg font-black text-slate-900 group-hover:gap-6 transition-all duration-300">
                             {{ __('comm_event_cta') }} <span>→</span>
                         </a>
@@ -137,7 +137,7 @@
                     <div class="relative z-10">
                         <div class="flex items-center gap-6 mb-8">
                             <div class="w-20 h-20 rounded-2xl bg-white/10 flex items-center justify-center border border-white/20">
-                                <span class="text-4xl">👑</span>
+                                <span class="text-4xl font-black">👑</span>
                             </div>
                             <div>
                                 <h3 class="text-2xl font-black">{{ __('comm_spotlight_title') }}</h3>
@@ -159,7 +159,7 @@
     {{-- SECTION: MENTORS --}}
     <section class="py-24 bg-white border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-slate-900 mb-4">{{ __('com_mentors_title') }}</h2>
+            <h2 class="text-4xl text-slate-900 mb-4 font-black">{{ __('com_mentors_title') }}</h2>
             <p class="text-xl text-slate-500 mb-16">{{ __('com_mentors_desc') }}</p>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="p-8 border border-slate-100 rounded-[2rem] shadow-lg hover:-translate-y-2 transition-transform bg-slate-50">
@@ -181,19 +181,19 @@
     {{-- SECTION: GLOBAL NETWORK --}}
     <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
-            <h2 class="text-5xl font-black mb-6 z-10 text-center">{{ __('com_global_title') }}</h2>
+            <h2 class="text-5xl mb-6 z-10 text-center font-black">{{ __('com_global_title') }}</h2>
             <p class="text-xl text-slate-400 mb-16 z-10 text-center">{{ __('com_global_desc') }}</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-16 w-full text-center z-10">
                 <div>
-                    <h4 class="text-7xl font-black text-indigo-400 mb-2">10k+</h4>
+                    <h4 class="text-7xl text-indigo-400 mb-2 font-black">10k+</h4>
                     <p class="text-xl font-medium">{{ __('com_stat1') }}</p>
                 </div>
                 <div>
-                    <h4 class="text-7xl font-black text-emerald-400 mb-2">50+</h4>
+                    <h4 class="text-7xl text-emerald-400 mb-2 font-black">50+</h4>
                     <p class="text-xl font-medium">{{ __('com_stat2') }}</p>
                 </div>
                 <div>
-                    <h4 class="text-7xl font-black text-amber-400 mb-2">1M+</h4>
+                    <h4 class="text-7xl text-amber-400 mb-2 font-black">1M+</h4>
                     <p class="text-xl font-medium">{{ __('com_stat3') }}</p>
                 </div>
             </div>
@@ -203,7 +203,7 @@
     {{-- SECTION: VALUE --}}
     <section class="py-24 bg-slate-50">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black text-slate-900 mb-6">{{ __('com_value_title') }}</h2>
+            <h2 class="text-4xl text-slate-900 mb-6 font-black">{{ __('com_value_title') }}</h2>
             <p class="text-2xl text-slate-500 font-medium italic">{{ __('com_value_desc') }}</p>
         </div>
     </section>
@@ -212,7 +212,7 @@
     {{-- SECTION 4: FINAL SOCIAL PROOF --}}
     <section class="py-32 bg-slate-50">
         <div class="max-w-4xl mx-auto text-center px-6">
-            <h2 class="text-4xl font-black text-slate-900 mb-12 tracking-tight">{{ __('comm_cta_title') }}</h2>
+            <h2 class="text-4xl text-slate-900 mb-12 tracking-tight font-black">{{ __('comm_cta_title') }}</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
                 <span class="text-2xl font-black italic tracking-tighter">Mindful.</span>
                 <span class="text-2xl font-black italic tracking-tighter">Productive.</span>
@@ -223,3 +223,4 @@
     </section>
 
 @endsection
+

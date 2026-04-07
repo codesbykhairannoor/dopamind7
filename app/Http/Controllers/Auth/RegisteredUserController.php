@@ -43,10 +43,17 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // Meta Pixel & CAPI Deduplication ID
+        $metaEventId = (string) \Illuminate\Support\Str::uuid();
+
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // Send Server-Side Event (CAPI)
+        $metaCapi = new \App\Services\MetaCapiService();
+        $metaCapi->sendCompleteRegistration(['email' => $user->email], $metaEventId);
+
+        return redirect(RouteServiceProvider::HOME)->with('meta_event_id', $metaEventId);
     }
 }

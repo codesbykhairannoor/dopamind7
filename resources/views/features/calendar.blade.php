@@ -83,7 +83,7 @@
                     <span class="text-lg">🗓️</span> {{ __('calendar_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('calendar_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('calendar_hero_title_2') }}</span>
                 </h1>
@@ -196,7 +196,7 @@
                     {{-- Floating Alert --}}
                     <div class="absolute -right-6 -bottom-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce duration-[3000ms]">
                         <div class="flex items-center gap-3">
-                            <div class="text-3xl">🔔</div>
+                            <div class="text-3xl font-black">🔔</div>
                             <div class="text-left">
                                 <p class="text-[10px] text-rose-500 font-bold uppercase tracking-wider">{{ __('calendar_mockup_alert_1') }}</p>
                                 <p class="font-black text-gray-900 text-sm">{{ __('calendar_mockup_alert_2') }}</p>
@@ -214,10 +214,10 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col lg:flex-row gap-24 items-center">
                 <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-100">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-xs uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-100">
                         {{ __('calendar_layered_badge') }}
                     </div>
-                    <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black text-gray-900 mb-10 leading-[1.1] tracking-tight">
+                    <h2 class="text-[42px] leading-[1.1] md:text-7xl text-gray-900 mb-10 leading-[1.1] tracking-tight font-black">
                         {{ __('calendar_layered_title') }}
                     </h2>
                     <p class="text-gray-500 text-xl mb-12 leading-relaxed font-medium">
@@ -226,14 +226,14 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition duration-500 group relative overflow-hidden">
                             <div class="absolute right-0 top-0 w-2 h-full bg-blue-500 opacity-0 group-hover:opacity-100 transition"></div>
-                            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">💼</div>
-                            <h4 class="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{{ __('calendar_layered_feature_1_title') }}</h4>
+                            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition font-black">💼</div>
+                            <h4 class="text-xl text-gray-900 mb-2 uppercase tracking-tighter">{{ __('calendar_layered_feature_1_title') }}</h4>
                             <p class="text-sm text-gray-500 leading-relaxed">{{ __('calendar_layered_feature_1_desc') }}</p>
                         </div>
                          <div class="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl transition duration-500 group relative overflow-hidden">
                             <div class="absolute right-0 top-0 w-2 h-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition"></div>
-                            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">🌿</div>
-                            <h4 class="text-xl font-black text-gray-900 mb-2 uppercase tracking-tighter">{{ __('calendar_layered_feature_2_title') }}</h4>
+                            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition font-black">🌿</div>
+                            <h4 class="text-xl text-gray-900 mb-2 uppercase tracking-tighter">{{ __('calendar_layered_feature_2_title') }}</h4>
                             <p class="text-sm text-gray-500 leading-relaxed">{{ __('calendar_layered_feature_2_desc') }}</p>
                         </div>
                     </div>
@@ -269,13 +269,13 @@
                                 <div class="h-20 bg-blue-50/50 border-l-[6px] border-blue-500 p-6 rounded-r-2xl relative overflow-hidden">
                                      <div class="absolute right-4 top-4 w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
                                     <div class="mb-2">
-                                         <span class="text-[11px] font-black text-blue-600 uppercase tracking-widest">{{ __('calendar_layered_card_event_1_time') }}</span>
+                                         <span class="text-[11px] text-blue-600 uppercase tracking-widest">{{ __('calendar_layered_card_event_1_time') }}</span>
                                     </div>
-                                    <p class="text-lg font-black text-blue-900 leading-none tracking-tight">{{ __('calendar_layered_card_event_1_title') }}</p>
+                                    <p class="text-lg text-blue-900 leading-none tracking-tight">{{ __('calendar_layered_card_event_1_title') }}</p>
                                 </div>
                                 <div class="h-20 bg-indigo-50/50 border-l-[6px] border-indigo-500 p-6 rounded-r-2xl opacity-40">
-                                    <p class="text-[11px] font-black text-indigo-400 uppercase mb-2 tracking-widest">{{ __('calendar_layered_card_event_2_time') }}</p>
-                                    <p class="text-lg font-black text-indigo-900 leading-none tracking-tight">{{ __('calendar_layered_card_event_2_title') }}</p>
+                                    <p class="text-[11px] text-indigo-400 uppercase mb-2 tracking-widest">{{ __('calendar_layered_card_event_2_time') }}</p>
+                                    <p class="text-lg text-indigo-900 leading-none tracking-tight">{{ __('calendar_layered_card_event_2_title') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -290,8 +290,8 @@
         <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:50px_50px] opacity-[0.05]"></div>
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-24 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                <span class="text-rose-500 font-black uppercase tracking-[0.5em] text-xs mb-6 block">{{ __('calendar_pulse_badge') }}</span>
-                <h2 class="text-4xl md:text-7xl font-black mb-10 tracking-tight">{{ __('calendar_pulse_title') }}</h2>
+                <span class="text-rose-500 uppercase tracking-[0.5em] text-xs mb-6 block">{{ __('calendar_pulse_badge') }}</span>
+                <h2 class="text-4xl md:text-7xl mb-10 tracking-tight font-black">{{ __('calendar_pulse_title') }}</h2>
                 <p class="text-indigo-100 text-xl opacity-80 leading-relaxed font-medium">{{ __('calendar_pulse_desc') }}</p>
             </div>
 
@@ -304,30 +304,30 @@
                         <div class="flex items-center gap-8 relative z-10">
                             <div class="relative">
                                 <div class="absolute inset-0 bg-rose-500 rounded-full animate-ping opacity-30"></div>
-                                <div class="w-20 h-20 bg-rose-500 text-white rounded-[2rem] flex items-center justify-center text-4xl font-black relative z-10 shadow-2xl shadow-rose-500/40 transform group-hover:rotate-12 transition group-hover:scale-110">!</div>
+                                <div class="w-20 h-20 bg-rose-500 text-white rounded-[2rem] flex items-center justify-center text-4xl relative z-10 shadow-2xl shadow-rose-500/40 transform group-hover:rotate-12 transition group-hover:scale-110 font-black">!</div>
                             </div>
                             <div>
-                                <h4 class="text-3xl font-black text-white mb-2">{{ __('calendar_pulse_item_1_title') }}</h4>
-                                <p class="text-rose-400 font-black uppercase tracking-[0.2em] text-[11px] bg-rose-500/10 inline-block px-3 py-1 rounded-full border border-rose-500/20">{{ __('calendar_pulse_item_1_status') }}</p>
+                                <h4 class="text-3xl text-white mb-2 font-black">{{ __('calendar_pulse_item_1_title') }}</h4>
+                                <p class="text-rose-400 uppercase tracking-[0.2em] text-[11px] bg-rose-500/10 inline-block px-3 py-1 rounded-full border border-rose-500/20">{{ __('calendar_pulse_item_1_status') }}</p>
                             </div>
                         </div>
                         <div class="text-right hidden sm:block relative z-10">
-                            <p class="text-4xl font-black text-white tabular-nums">{{ __('calendar_pulse_item_1_timer') }}</p>
-                            <p class="text-[10px] text-white/40 uppercase font-black tracking-widest mt-1">{{ __('calendar_pulse_item_1_sub') }}</p>
+                            <p class="text-4xl text-white tabular-nums font-black">{{ __('calendar_pulse_item_1_timer') }}</p>
+                            <p class="text-[10px] text-white/40 uppercase tracking-widest mt-1">{{ __('calendar_pulse_item_1_sub') }}</p>
                         </div>
                     </div>
 
                     {{-- Item 2: NORMAL --}}
                     <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 flex items-center justify-between group hover:bg-indigo-600/10 transition duration-500 border-l-4 border-l-indigo-500">
                         <div class="flex items-center gap-8 opacity-60 group-hover:opacity-100 transition">
-                            <div class="w-20 h-20 bg-slate-800 text-slate-400 rounded-[2rem] flex items-center justify-center text-4xl font-black group-hover:bg-indigo-600 group-hover:text-white transition duration-700">?</div>
+                            <div class="w-20 h-20 bg-slate-800 text-slate-400 rounded-[2rem] flex items-center justify-center text-4xl group-hover:bg-indigo-600 group-hover:text-white transition duration-700 font-black">?</div>
                             <div>
-                                <h4 class="text-3xl font-black text-white mb-2 tracking-tight">{{ __('calendar_pulse_item_2_title') }}</h4>
-                                <p class="text-indigo-400 font-black tracking-[0.2em] text-[11px] uppercase">{{ __('calendar_pulse_item_2_status') }}</p>
+                                <h4 class="text-3xl text-white mb-2 tracking-tight font-black">{{ __('calendar_pulse_item_2_title') }}</h4>
+                                <p class="text-indigo-400 tracking-[0.2em] text-[11px] uppercase">{{ __('calendar_pulse_item_2_status') }}</p>
                             </div>
                         </div>
                         <div class="hidden sm:block text-right">
-                             <span class="text-white/20 text-4xl">⚓</span>
+                             <span class="text-white/20 text-4xl font-black">⚓</span>
                         </div>
                     </div>
                  </div>
@@ -357,10 +357,10 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col lg:flex-row gap-20 items-center">
                 <div class="flex-1 animate-in fade-in slide-in-from-left-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-200">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-200">
                         {{ __('calendar_sync_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
                         {{ __('calendar_sync_title') }}
                     </h2>
                     <p class="text-gray-600 text-xl mb-12 leading-relaxed font-medium">
@@ -397,7 +397,7 @@
                 
                 <div class="flex-1 w-full relative h-[500px] flex items-center justify-center">
                     {{-- Central Calendar Node --}}
-                    <div class="relative z-20 w-32 h-32 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center text-4xl shadow-[0_0_60px_rgba(79,70,229,0.4)] animate-pulse border-4 border-white transform hover:scale-110 transition duration-500 cursor-pointer">
+                    <div class="relative z-20 w-32 h-32 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center text-4xl shadow-[0_0_60px_rgba(79,70,229,0.4)] animate-pulse border-4 border-white transform hover:scale-110 transition duration-500 cursor-pointer font-black">
                         🗓️
                     </div>
                     
@@ -412,25 +412,25 @@
                         </svg>
                         
                         {{-- Node: Finance --}}
-                        <div class="absolute top-[15%] left-[20%] w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl border border-emerald-50 transform hover:-translate-y-2 transition duration-500 group cursor-pointer shadow-emerald-100/50">
+                        <div class="absolute top-[15%] left-[20%] w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl border border-emerald-50 transform hover:-translate-y-2 transition duration-500 group cursor-pointer shadow-emerald-100/50 font-black">
                             <div class="absolute -inset-2 bg-emerald-400/10 rounded-[2rem] -z-10 animate-ping opacity-20"></div>
                             💰
                         </div>
                         
                         {{-- Node: Job --}}
-                        <div class="absolute top-[10%] right-[15%] w-24 h-24 bg-white rounded-[2rem] shadow-xl flex items-center justify-center text-4xl border border-indigo-50 transform hover:scale-105 transition duration-500 group cursor-pointer shadow-indigo-100/50">
+                        <div class="absolute top-[10%] right-[15%] w-24 h-24 bg-white rounded-[2rem] shadow-xl flex items-center justify-center text-4xl border border-indigo-50 transform hover:scale-105 transition duration-500 group cursor-pointer shadow-indigo-100/50 font-black">
                             <div class="absolute -inset-2 bg-indigo-400/10 rounded-[2.5rem] -z-10 animate-pulse"></div>
                             💼
                         </div>
                         
                         {{-- Node: Journal --}}
-                        <div class="absolute bottom-[10%] right-[15%] w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl border border-purple-50 transform hover:rotate-12 transition duration-500 group cursor-pointer shadow-purple-100/50">
+                        <div class="absolute bottom-[10%] right-[15%] w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl border border-purple-50 transform hover:rotate-12 transition duration-500 group cursor-pointer shadow-purple-100/50 font-black">
                             <div class="absolute -inset-1 bg-purple-400/10 rounded-[2rem] -z-10"></div>
                             📔
                         </div>
                         
                         {{-- Node: Habits --}}
-                        <div class="absolute bottom-[15%] left-[20%] w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl border border-amber-50 transform hover:-rotate-12 transition duration-500 group cursor-pointer shadow-amber-100/50">
+                        <div class="absolute bottom-[15%] left-[20%] w-20 h-20 bg-white rounded-[1.5rem] shadow-xl flex items-center justify-center text-3xl border border-amber-50 transform hover:-rotate-12 transition duration-500 group cursor-pointer shadow-amber-100/50 font-black">
                             🌱
                         </div>
                     </div>
@@ -458,22 +458,22 @@
                 <div class="flex-1 w-full relative h-[450px] flex items-center justify-center">
                     <div class="absolute inset-0 bg-gradient-to-tr from-indigo-100/20 to-transparent rounded-full blur-3xl shadow-2xl"></div>
                     <div class="relative w-64 h-64 bg-white border border-indigo-100 rounded-full flex items-center justify-center shadow-[0_30px_60px_rgba(79,70,229,0.15)] group">
-                        <span class="text-6xl group-hover:scale-125 transition duration-700">🧬</span>
+                        <span class="text-6xl group-hover:scale-125 transition duration-700 font-black">🧬</span>
                         {{-- Orbiting Rings --}}
                         <div class="absolute -inset-8 border-2 border-dashed border-indigo-200 rounded-full animate-spin-slow"></div>
                         <div class="absolute -inset-16 border border-dotted border-indigo-100 rounded-full animate-spin-slow-reverse"></div>
                         {{-- Floating Particles --}}
-                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-8 w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-xs font-black shadow-xl animate-bounce">01</div>
-                        <div class="absolute bottom-1/4 -right-12 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white text-[10px] font-black shadow-lg animate-pulse">02</div>
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-8 w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-xs shadow-xl animate-bounce">01</div>
+                        <div class="absolute bottom-1/4 -right-12 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white text-[10px] shadow-lg animate-pulse">02</div>
                     </div>
                 </div>
 
                 <div class="flex-1 animate-in fade-in slide-in-from-right-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-8 border border-indigo-100 rounded-full">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 text-indigo-700 text-[10px] uppercase tracking-widest mb-8 border border-indigo-100 rounded-full">
                         🧩 {{ __('calendar_science_badge') }}
                     </div>
                     
-                    <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-10 leading-tight">
+                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-10 leading-tight font-black">
                         {{ __('calendar_science_title') }}
                     </h2>
                     
@@ -485,15 +485,15 @@
 
                     <div class="flex flex-wrap gap-4">
                         <div class="px-6 py-3 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition cursor-default">
-                             <span class="text-[10px] font-black text-indigo-500 uppercase block mb-1">Architecture</span>
+                             <span class="text-[10px] text-indigo-500 uppercase block mb-1">Architecture</span>
                              <span class="font-bold text-gray-900">Cognitive Load Theory</span>
                         </div>
                         <div class="px-6 py-3 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition cursor-default">
-                             <span class="text-[10px] font-black text-purple-500 uppercase block mb-1">Biological Sync</span>
+                             <span class="text-[10px] text-purple-500 uppercase block mb-1">Biological Sync</span>
                              <span class="font-bold text-gray-900">Circadian Rhythm</span>
                         </div>
                         <div class="px-6 py-3 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition cursor-default">
-                             <span class="text-[10px] font-black text-emerald-500 uppercase block mb-1">Execution System</span>
+                             <span class="text-[10px] text-emerald-500 uppercase block mb-1">Execution System</span>
                              <span class="font-bold text-gray-900">Time Blocking</span>
                         </div>
                     </div>
@@ -507,16 +507,16 @@
     <section class="py-32 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16 text-left">
             <div class="lg:w-1/2">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-blue-500/20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] uppercase tracking-widest mb-8 border border-blue-500/20">
                     📅 {{ __('calendar_ai_promo_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                     {{ __('calendar_ai_promo_title') }}
                 </h2>
                 <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
                     {{ __('calendar_ai_promo_desc') }}
                 </p>
-                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-blue-700 transition transform hover:-translate-y-1">
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg hover:bg-blue-700 transition transform hover:-translate-y-1">
                     {{ __('calendar_ai_promo_btn') }} <span>→</span>
                 </a>
             </div>
@@ -527,7 +527,7 @@
                             <div class="h-32 bg-white/5 rounded-lg overflow-hidden relative">
                                 @if($i == 2 || $i == 4)
                                     <div class="absolute inset-x-1 top-4 bottom-12 bg-blue-600/30 border-x border-blue-500/50 flex flex-col items-center justify-center">
-                                         <span class="text-[8px] font-black text-blue-300 opacity-60">PRIME TIME</span>
+                                         <span class="text-[8px] text-blue-300 opacity-60">PRIME TIME</span>
                                     </div>
                                 @endif
                             </div>
@@ -541,12 +541,12 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('calendar_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">
                 <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('calendar_quote_author') }}</p>
+                <p class="text-indigo-600 tracking-[0.5em] uppercase text-xs">{{ __('calendar_quote_author') }}</p>
             </div>
         </div>
     </section>
@@ -558,15 +558,18 @@
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-500 rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
 
         <div class="max-w-3xl mx-auto text-center relative z-10">
-            <div class="w-20 h-20 bg-indigo-600/20 border border-indigo-500/30 rounded-3xl mx-auto flex items-center justify-center text-4xl mb-8 backdrop-blur-sm">🗓️</div>
-            <h2 class="text-4xl md:text-6xl font-black mb-8 text-white tracking-tight">{{ __('calendar_cta_title') }}</h2>
+            <div class="w-20 h-20 bg-indigo-600/20 border border-indigo-500/30 rounded-3xl mx-auto flex items-center justify-center text-4xl mb-8 backdrop-blur-sm font-black">🗓️</div>
+            <h2 class="text-4xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('calendar_cta_title') }}</h2>
             <p class="text-indigo-200 text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
                 {{ __('calendar_cta_desc') }}
             </p>
-            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-slate-900 px-12 py-5 rounded-full font-black text-lg hover:bg-indigo-50 hover:scale-105 transition transform shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-white text-slate-900 px-12 py-5 rounded-full text-lg hover:bg-indigo-50 hover:scale-105 transition transform shadow-[0_0_40px_rgba(255,255,255,0.2)]">
                 {{ __('calendar_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-slate-400 font-medium">{{ __('calendar_cta_note') }}</p>
         </div>
     </section>
 @endsection
+
+
+

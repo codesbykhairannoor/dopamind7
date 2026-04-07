@@ -87,7 +87,7 @@
                     <span class="text-lg">🌱</span> {{ __('habit_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('habit_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('habit_hero_title_2') }}</span>
                 </h1>
@@ -157,7 +157,7 @@
                     {{-- Floating Element (Level Up Badge) --}}
                     <div class="absolute -right-8 -bottom-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce duration-[3000ms]">
                         <div class="flex items-center gap-3">
-                            <div class="text-3xl">🏆</div>
+                            <div class="text-3xl font-black">🏆</div>
                             <div class="text-left">
                                 <p class="text-[10px] text-gray-500 font-bold uppercase tracking-wider">{{ __('habit_mockup_alert_1') }}</p>
                                 <p class="font-black text-indigo-900 text-sm">{{ __('habit_mockup_alert_2') }}</p>
@@ -178,7 +178,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-6">
                         {{ __('habit_heatmap_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+                    <h2 class="text-4xl md:text-5xl text-gray-900 mb-6 leading-tight font-black">
                         {{ __('habit_heatmap_title') }}
                     </h2>
                     <p class="text-gray-600 text-lg mb-8 leading-relaxed">
@@ -186,12 +186,12 @@
                     </p>
                     <div class="flex items-center gap-6">
                         <div class="flex flex-col">
-                            <span class="text-3xl font-black text-emerald-600">{{ __('habit_mockup_days') }}</span>
+                            <span class="text-3xl text-emerald-600 font-black">{{ __('habit_mockup_days') }}</span>
                             <span class="text-xs font-bold text-gray-400 uppercase">{{ __('habit_heatmap_label_1') }}</span>
                         </div>
                         <div class="w-px h-10 bg-gray-100"></div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-black text-indigo-600">{{ __('habit_mockup_percent') }}</span>
+                            <span class="text-3xl text-indigo-600 font-black">{{ __('habit_mockup_percent') }}</span>
                             <span class="text-xs font-bold text-gray-400 uppercase">{{ __('habit_heatmap_label_2') }}</span>
                         </div>
                     </div>
@@ -236,7 +236,7 @@
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <span class="text-indigo-400 font-bold uppercase tracking-[0.3em] text-xs mb-4 block">{{ __('habit_streak_badge') }}</span>
-                <h2 class="text-4xl md:text-5xl font-black mb-6">{{ __('habit_streak_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl mb-6 font-black">{{ __('habit_streak_title') }}</h2>
                 <p class="text-indigo-100 text-lg opacity-80">{{ __('habit_streak_desc') }}</p>
             </div>
 
@@ -248,10 +248,10 @@
                     {{-- Level 1 --}}
                     <div class="flex flex-col md:flex-row items-center gap-12 md:gap-0 relative">
                         <div class="flex-1 md:text-right md:pr-16 animate-in slide-in-from-left-12 duration-700">
-                            <h3 class="text-3xl font-black mb-4 text-indigo-400">{{ __('habit_level_1_title') }}</h3>
+                            <h3 class="text-3xl mb-4 text-indigo-400 font-black">{{ __('habit_level_1_title') }}</h3>
                             <p class="text-white/60 text-lg">{{ __('habit_level_1_desc') }}</p>
                         </div>
-                        <div class="w-16 h-16 rounded-[1.5rem] bg-indigo-600 border-4 border-slate-900 shadow-[0_0_30px_rgba(79,70,229,0.4)] flex items-center justify-center text-3xl z-10 transform rotate-12 group hover:rotate-0 transition duration-500">🚀</div>
+                        <div class="w-16 h-16 rounded-[1.5rem] bg-indigo-600 border-4 border-slate-900 shadow-[0_0_30px_rgba(79,70,229,0.4)] flex items-center justify-center text-3xl z-10 transform rotate-12 group hover:rotate-0 transition duration-500 font-black">🚀</div>
                         <div class="flex-1 md:pl-16 animate-in slide-in-from-right-12 duration-700">
                              <div class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[2rem] hover:bg-white/10 transition duration-500">
                                 <div class="w-10 h-10 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center mb-6">🔧</div>
@@ -270,9 +270,9 @@
                                 <p class="text-white text-lg">{{ __('habit_level_2_shift_desc') }}</p>
                              </div>
                         </div>
-                        <div class="w-16 h-16 rounded-[1.5rem] bg-purple-600 border-4 border-slate-900 shadow-[0_0_30px_rgba(147,51,234,0.4)] flex items-center justify-center text-3xl z-10 -rotate-12 group hover:rotate-0 transition duration-500 order-1 md:order-2">⚡</div>
+                        <div class="w-16 h-16 rounded-[1.5rem] bg-purple-600 border-4 border-slate-900 shadow-[0_0_30px_rgba(147,51,234,0.4)] flex items-center justify-center text-3xl z-10 -rotate-12 group hover:rotate-0 transition duration-500 order-1 md:order-2 font-black">⚡</div>
                         <div class="flex-1 order-3 md:pl-16 animate-in slide-in-from-right-12 duration-700">
-                            <h3 class="text-3xl font-black mb-4 text-purple-400">{{ __('habit_level_2_title') }}</h3>
+                            <h3 class="text-3xl mb-4 text-purple-400 font-black">{{ __('habit_level_2_title') }}</h3>
                             <p class="text-white/60 text-lg">{{ __('habit_level_2_desc') }}</p>
                         </div>
                     </div>
@@ -288,22 +288,22 @@
                 <div class="absolute -inset-4 bg-indigo-50 rounded-[4rem] -z-10 animate-pulse duration-[5000ms]"></div>
                 <div class="grid grid-cols-2 gap-6 relative">
                     <div class="bg-yellow-50 p-8 rounded-[2.5rem] border border-yellow-100 flex flex-col items-center text-center shadow-sm transform hover:-translate-y-2 transition duration-500">
-                        <span class="text-5xl mb-6">😊</span>
+                        <span class="text-5xl mb-6 font-black">😊</span>
                         <span class="text-lg font-bold text-yellow-800">{{ __('habit_mood_stat_1_title') }}</span>
                         <span class="text-xs text-yellow-600/70 mt-2">{{ __('habit_mood_stat_1_desc') }}</span>
                     </div>
                     <div class="bg-blue-50 p-8 rounded-[2.5rem] border border-blue-100 flex flex-col items-center text-center shadow-sm transform hover:-translate-y-2 transition duration-500 delay-100">
-                        <span class="text-5xl mb-6">💤</span>
+                        <span class="text-5xl mb-6 font-black">💤</span>
                         <span class="text-lg font-bold text-blue-800">{{ __('habit_mood_stat_2_title') }}</span>
                         <span class="text-xs text-blue-600/70 mt-2">{{ __('habit_mood_stat_2_desc') }}</span>
                     </div>
                     <div class="bg-indigo-50 p-8 rounded-[2.5rem] border border-indigo-100 flex flex-col items-center text-center col-span-2 shadow-sm">
                         <div class="w-full flex justify-between items-center mb-6">
                              <div class="text-left">
-                                <span class="text-2xl font-black text-indigo-900 leading-tight block">{{ __('habit_mood_correlation_title') }}</span>
-                                <span class="text-xs text-indigo-600 uppercase font-black tracking-widest mt-1">{{ __('habit_mood_correlation_badge') }}</span>
+                                <span class="text-2xl text-indigo-900 leading-tight block">{{ __('habit_mood_correlation_title') }}</span>
+                                <span class="text-xs text-indigo-600 uppercase tracking-widest mt-1">{{ __('habit_mood_correlation_badge') }}</span>
                              </div>
-                             <span class="text-xl font-black bg-white text-indigo-600 px-4 py-2 rounded-2xl shadow-sm">+24%</span>
+                             <span class="text-xl bg-white text-indigo-600 px-4 py-2 rounded-2xl shadow-sm">+24%</span>
                         </div>
                         <div class="w-full h-3 bg-indigo-200 rounded-full overflow-hidden mb-6">
                             <div class="w-[85%] h-full bg-indigo-600 animate-in slide-in-from-left duration-1000 delay-500 fill-mode-both"></div>
@@ -313,8 +313,8 @@
                 </div>
              </div>
              <div class="animate-in fade-in slide-in-from-right-8 duration-700 delay-300">
-                <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-sm">🧠</div>
-                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">{{ __('habit_mood_title') }}</h2>
+                <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-sm font-black">🧠</div>
+                <h2 class="text-4xl md:text-5xl text-gray-900 mb-8 leading-tight font-black">{{ __('habit_mood_title') }}</h2>
                 <p class="text-gray-600 text-xl mb-10 leading-relaxed">
                     {{ __('habit_mood_desc') }}
                 </p>
@@ -339,10 +339,10 @@
             
             {{-- Left Side: Copywriting --}}
             <div class="flex-1 text-center lg:text-left animate-in fade-in slide-in-from-left-8 duration-700">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[10px] font-black uppercase tracking-[0.2em] mb-6 lg:mb-8 shadow-sm border border-orange-200">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-[10px] uppercase tracking-[0.2em] mb-6 lg:mb-8 shadow-sm border border-orange-200">
                     {{ __('habit_identity_badge') }}
                 </div>
-                <h2 class="text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 lg:mb-8 leading-tight tracking-tight">
+                <h2 class="text-3xl md:text-5xl lg:text-6xl text-gray-900 mb-6 lg:mb-8 leading-tight tracking-tight font-black">
                     {{ __('habit_identity_title') }}
                 </h2>
                 <p class="text-gray-600 text-lg lg:text-xl leading-relaxed font-medium mb-10 lg:mb-12">
@@ -380,10 +380,10 @@
                     
                     {{-- Card 1 (Top) --}}
                     <div class="absolute w-full lg:w-[90%] h-56 lg:h-64 bg-white rounded-[2.5rem] lg:rounded-[3.5rem] shadow-[0_20px_50px_rgba(249,115,22,0.12)] lg:shadow-[0_30px_60px_rgba(249,115,22,0.15)] border border-orange-100 flex flex-col items-center justify-center p-8 lg:p-12 text-center group hover:-translate-y-2 lg:hover:-translate-y-4 transition duration-700 z-10">
-                        <div class="w-16 h-16 lg:w-20 lg:h-20 bg-orange-500 rounded-2xl lg:rounded-3xl flex items-center justify-center text-3xl lg:text-4xl text-white mb-4 lg:mb-6 shadow-xl shadow-orange-200 group-hover:rotate-12 transition duration-500">
+                        <div class="w-16 h-16 lg:w-20 lg:h-20 bg-orange-500 rounded-2xl lg:rounded-3xl flex items-center justify-center text-3xl lg:text-4xl text-white mb-4 lg:mb-6 shadow-xl shadow-orange-200 group-hover:rotate-12 transition duration-500 font-black">
                             ⭐
                         </div>
-                        <h3 class="text-xl lg:text-2xl font-black text-gray-900 mb-2">{{ __('habit_card_3_title') }}</h3>
+                        <h3 class="text-xl lg:text-2xl text-gray-900 mb-2">{{ __('habit_card_3_title') }}</h3>
                         <p class="text-gray-500 text-sm lg:text-base font-medium leading-relaxed">{{ __('habit_card_3_desc') }}</p>
                         
                         {{-- Sparkle Decorations --}}
@@ -418,11 +418,11 @@
                 <div class="max-w-4xl w-full bg-white border-l-8 border-indigo-500 shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] p-12 md:p-20 rounded-r-[3rem] relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-bl-[10rem] -z-10 opacity-50"></div>
                     
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black uppercase tracking-widest mb-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-widest mb-8">
                         🧬 {{ __('habit_science_badge') }}
                     </div>
                     
-                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
+                    <h2 class="text-4xl md:text-5xl text-gray-900 mb-8 leading-tight font-black">
                         {{ __('habit_science_title') }}
                     </h2>
                     
@@ -431,10 +431,10 @@
                     </p>
                     
                     <div class="flex flex-wrap items-center gap-4">
-                        <span class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] w-full mb-2">Verified Methods:</span>
-                        <div class="px-6 py-3 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 font-black text-xs shadow-sm hover:scale-110 transition">James Clear</div>
-                        <div class="px-6 py-3 rounded-full bg-purple-50 border border-purple-100 text-purple-700 font-black text-xs shadow-sm hover:scale-110 transition">BJ Fogg</div>
-                        <div class="px-6 py-3 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 font-black text-xs shadow-sm hover:scale-110 transition">Charles Duhigg</div>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-[0.2em] w-full mb-2">Verified Methods:</span>
+                        <div class="px-6 py-3 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs shadow-sm hover:scale-110 transition">James Clear</div>
+                        <div class="px-6 py-3 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-xs shadow-sm hover:scale-110 transition">BJ Fogg</div>
+                        <div class="px-6 py-3 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs shadow-sm hover:scale-110 transition">Charles Duhigg</div>
                     </div>
                 </div>
             </div>
@@ -446,16 +446,16 @@
         <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
         <div class="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16">
             <div class="lg:w-1/2 text-left">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-indigo-500/20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] uppercase tracking-widest mb-8 border border-indigo-500/20">
                     🧠 {{ __('habit_ai_promo_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight">
+                <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                     {{ __('habit_ai_promo_title') }}
                 </h2>
                 <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
                     {{ __('habit_ai_promo_desc') }}
                 </p>
-                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 transition transform hover:-translate-y-1">
+                <a hx-boost="false" href="{{ route('features.neural-os') }}" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-2xl text-lg hover:bg-indigo-700 transition transform hover:-translate-y-1">
                     {{ __('habit_ai_promo_btn') }} <span>→</span>
                 </a>
             </div>
@@ -472,7 +472,7 @@
                              <p class="text-xs font-bold text-slate-300">Detected: 14% drop in consistency when mood is 'Tired'</p>
                         </div>
                         <div class="p-6 bg-indigo-600/10 rounded-2xl border border-indigo-500/20">
-                             <p class="text-indigo-400 font-black text-[10px] uppercase mb-2">Neural Solution</p>
+                             <p class="text-indigo-400 text-[10px] uppercase mb-2">Neural Solution</p>
                              <p class="text-sm font-bold text-white leading-relaxed">Try Habit Stacking with 'Coffee' to reduce initial friction.</p>
                         </div>
                     </div>
@@ -484,12 +484,12 @@
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-700">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif">
+            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('habit_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">
                 <div class="w-24 h-2 bg-indigo-600 mb-8 rounded-full shadow-lg shadow-indigo-200"></div>
-                <p class="text-indigo-600 font-black tracking-[0.5em] uppercase text-xs">{{ __('habit_quote_author') }}</p>
+                <p class="text-indigo-600 tracking-[0.5em] uppercase text-xs">{{ __('habit_quote_author') }}</p>
             </div>
         </div>
     </section>
@@ -499,7 +499,7 @@
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-pulse duration-[5000ms]"></div>
             
             <div class="relative z-10">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">{{ __('habit_cta_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl mb-6 font-black">{{ __('habit_cta_title') }}</h2>
                 <p class="text-indigo-200 text-lg mb-10 max-w-2xl mx-auto">
                     {{ __('habit_cta_desc') }}
                 </p>
@@ -511,3 +511,6 @@
         </div>
     </section>
 @endsection
+
+
+

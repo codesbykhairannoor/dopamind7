@@ -67,7 +67,7 @@
                 💻 {{ __('freelance_hero_badge') }}
             </div>
             
-            <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl xl:text-7xl font-black mb-6 leading-[1.05] text-gray-900 tracking-tight">
+            <h1 class="text-[36px] leading-[1.1] md:text-6xl xl:text-7xl mb-6 leading-[1.05] text-gray-900 tracking-tight font-black">
                 {{ __('freelance_hero_title_1') }}
                 <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">
                     {{ __('freelance_hero_title_2') }}
@@ -106,7 +106,7 @@
                     <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-sky-500 p-0.5">
                         <img class="w-full h-full rounded-full border-2 border-white object-cover" src="https://ui-avatars.com/api/?name=U+M&background=fff&color=4f46e5" alt="User">
                     </div>
-                    <span class="bg-emerald-100 text-emerald-600 text-[10px] font-black uppercase px-3 py-1 rounded-full flex items-center gap-1">
+                    <span class="bg-emerald-100 text-emerald-600 text-[10px] uppercase px-3 py-1 rounded-full flex items-center gap-1">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> {{ __('freelance_mockup_available') }}
                     </span>
                 </div>
@@ -133,7 +133,7 @@
                     <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm">💰</div>
                     <div>
                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{{ __('freelance_mockup_payment_badge') }}</p>
-                        <p class="text-sm font-black text-white">$ 1,250.00</p>
+                        <p class="text-sm text-white">$ 1,250.00</p>
                     </div>
                 </div>
                 <p class="text-[10px] text-slate-400 italic">{{ __('freelance_mockup_payment_from') }}</p>
@@ -145,7 +145,7 @@
                     <div class="w-8 h-8 rounded-full bg-indigo-100 flex-shrink-0 flex items-center justify-center text-sm">👋</div>
                     <div>
                         <div class="flex justify-between items-center mb-1">
-                            <p class="text-xs font-black text-gray-900">{{ __('freelance_mockup_msg_name') }}</p>
+                            <p class="text-xs text-gray-900">{{ __('freelance_mockup_msg_name') }}</p>
                             <p class="text-[9px] font-bold text-gray-400">{{ __('freelance_mockup_msg_time') }}</p>
                         </div>
                         <p class="text-[11px] font-medium text-gray-600 leading-tight">
@@ -158,7 +158,7 @@
             {{-- Decorative Element: Project Milestone --}}
             <div class="absolute bottom-4 right-10 z-10 bg-white/80 backdrop-blur rounded-full px-4 py-2 shadow-sm border border-slate-100 flex items-center gap-2">
                 <span class="text-sky-500">🎯</span>
-                <p class="text-[10px] font-black text-slate-700 uppercase tracking-wide">{{ __('freelance_mockup_milestone') }}</p>
+                <p class="text-[10px] text-slate-700 uppercase tracking-wide">{{ __('freelance_mockup_milestone') }}</p>
             </div>
 
         </div>
@@ -169,7 +169,7 @@
     <section class="py-24 bg-white bg-pattern-dots relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('freelance_prob_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('freelance_prob_title') }}</h2>
                 <p class="text-xl text-gray-500">{{ __('freelance_prob_desc') }}</p>
             </div>
 
@@ -177,20 +177,20 @@
                 <div class="hidden md:block absolute top-1/2 left-10 right-10 h-1 bg-gray-100 -z-10 rounded-full border-b-2 border-dashed border-gray-200"></div>
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-200 transition duration-300 relative group">
-                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl font-black text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-indigo-600 group-hover:text-white transition">1</div>
-                        <div class="text-4xl mb-4 mt-2 text-center">🤯</div>
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-indigo-600 group-hover:text-white transition">1</div>
+                        <div class="text-4xl mb-4 mt-2 text-center font-black">🤯</div>
                         <h3 class="text-lg font-bold mb-3 text-center text-gray-900">{{ __('freelance_prob_1_title') }}</h3>
                         <p class="text-gray-500 text-sm text-center">{{ __('freelance_prob_1_desc') }}</p>
                     </div>
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-rose-200 transition duration-300 relative group delay-100">
-                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl font-black text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-rose-500 group-hover:text-white transition">2</div>
-                        <div class="text-4xl mb-4 mt-2 text-center">💸</div>
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-rose-500 group-hover:text-white transition">2</div>
+                        <div class="text-4xl mb-4 mt-2 text-center font-black">💸</div>
                         <h3 class="text-lg font-bold mb-3 text-center text-gray-900">{{ __('freelance_prob_2_title') }}</h3>
                         <p class="text-gray-500 text-sm text-center">{{ __('freelance_prob_2_desc') }}</p>
                     </div>
                     <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-amber-200 transition duration-300 relative group delay-200">
-                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl font-black text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-amber-500 group-hover:text-white transition">3</div>
-                        <div class="text-4xl mb-4 mt-2 text-center">🥱</div>
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl text-gray-400 absolute -top-6 left-1/2 -translate-x-1/2 border-4 border-white group-hover:bg-amber-500 group-hover:text-white transition">3</div>
+                        <div class="text-4xl mb-4 mt-2 text-center font-black">🥱</div>
                         <h3 class="text-lg font-bold mb-3 text-center text-gray-900">{{ __('freelance_prob_3_title') }}</h3>
                         <p class="text-gray-500 text-sm text-center">{{ __('freelance_prob_3_desc') }}</p>
                     </div>
@@ -234,7 +234,7 @@
             
             <div class="order-1 lg:order-2 animate-in fade-in slide-in-from-right-12 duration-700">
                 <div class="inline-flex items-center justify-center w-14 h-14 bg-indigo-500/20 border border-indigo-500/30 text-indigo-400 rounded-2xl text-2xl mb-6 shadow-[0_0_15px_rgba(99,102,241,0.2)]">🛠️</div>
-                <h2 class="text-3xl md:text-4xl font-black mb-6 text-white">{{ __('freelance_feat_1_title') }}</h2>
+                <h2 class="text-3xl md:text-4xl mb-6 text-white font-black">{{ __('freelance_feat_1_title') }}</h2>
                 <p class="text-slate-400 text-lg leading-relaxed mb-8">
                     {{ __('freelance_feat_1_desc') }}
                 </p>
@@ -251,7 +251,7 @@
         <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <div class="inline-flex items-center justify-center w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl text-2xl mb-6">💰</div>
-                <h2 class="text-3xl md:text-4xl font-black mb-6 text-gray-900">{{ __('freelance_feat_2_title') }}</h2>
+                <h2 class="text-3xl md:text-4xl mb-6 text-gray-900 font-black">{{ __('freelance_feat_2_title') }}</h2>
                 <p class="text-gray-500 text-lg leading-relaxed mb-8">
                     {{ __('freelance_feat_2_desc') }}
                 </p>
@@ -280,7 +280,7 @@
                         <div class="flex justify-between"><span>{{ __('freelance_mockup_invoice_item_1') }}</span><span>$500</span></div>
                         <div class="flex justify-between"><span>{{ __('freelance_mockup_invoice_item_2') }}</span><span>$200</span></div>
                     </div>
-                    <div class="flex justify-between font-black text-emerald-600 text-lg">
+                    <div class="flex justify-between text-emerald-600 text-lg">
                         <span>{{ __('freelance_mockup_invoice_total') }}</span><span>$700</span>
                     </div>
                     {{-- Zig-zag bottom edge illusion --}}
@@ -294,30 +294,30 @@
     <section class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4">{{ __('freelance_bento_title') }}</h2>
+                <h2 class="text-3xl md:text-4xl text-gray-900 mb-4 font-black">{{ __('freelance_bento_title') }}</h2>
                 <p class="text-gray-500 text-lg">{{ __('freelance_bento_desc') }}</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="lg:col-span-1 lg:row-span-2 bg-slate-900 text-white rounded-[2rem] p-8 shadow-xl hover:-translate-y-1 transition flex flex-col justify-between min-h-[300px]">
-                    <div class="text-3xl mb-4">🗂️</div>
+                    <div class="text-3xl mb-4 font-black">🗂️</div>
                     <div>
                         <h3 class="text-xl font-bold mb-2">{{ __('freelance_bento_1_title') }}</h3>
                         <p class="text-slate-400 text-sm">{{ __('freelance_bento_1_desc') }}</p>
                     </div>
                 </div>
                 <div class="bg-indigo-50 rounded-[2rem] p-8 border border-indigo-100 shadow-sm hover:shadow-lg transition">
-                    <div class="text-3xl mb-4">⏱️</div>
+                    <div class="text-3xl mb-4 font-black">⏱️</div>
                     <h3 class="text-xl font-bold mb-2 text-indigo-950">{{ __('freelance_bento_2_title') }}</h3>
                     <p class="text-indigo-800/70 text-sm">{{ __('freelance_bento_2_desc') }}</p>
                 </div>
                 <div class="bg-emerald-50 rounded-[2rem] p-8 border border-emerald-100 shadow-sm hover:shadow-lg transition">
-                    <div class="text-3xl mb-4">🧾</div>
+                    <div class="text-3xl mb-4 font-black">🧾</div>
                     <h3 class="text-xl font-bold mb-2 text-emerald-950">{{ __('freelance_bento_3_title') }}</h3>
                     <p class="text-emerald-800/70 text-sm">{{ __('freelance_bento_3_desc') }}</p>
                 </div>
                 <div class="lg:col-span-2 bg-white rounded-[2rem] p-8 border border-gray-200 shadow-sm hover:shadow-lg transition flex flex-col sm:flex-row items-center gap-6">
-                    <div class="w-16 h-16 bg-gray-100 text-gray-600 rounded-2xl flex items-center justify-center text-3xl shrink-0">🤝</div>
+                    <div class="w-16 h-16 bg-gray-100 text-gray-600 rounded-2xl flex items-center justify-center text-3xl shrink-0 font-black">🤝</div>
                     <div>
                         <h3 class="text-xl font-bold mb-2 text-gray-900">{{ __('freelance_bento_4_title') }}</h3>
                         <p class="text-gray-500 text-sm">{{ __('freelance_bento_4_desc') }}</p>
@@ -334,22 +334,22 @@
                 <div class="bg-slate-900 rounded-[3rem] p-10 border border-slate-800 shadow-2xl">
                     <div class="space-y-6">
                         <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <span class="text-xs font-black text-indigo-400 uppercase tracking-widest">Leads</span>
-                            <span class="text-xl font-black">12</span>
+                            <span class="text-xs text-indigo-400 uppercase tracking-widest">Leads</span>
+                            <span class="text-xl">12</span>
                         </div>
                         <div class="flex items-center justify-between p-4 bg-white/10 rounded-2xl border border-white/10 scale-105 shadow-xl shadow-indigo-500/10">
-                            <span class="text-xs font-black text-indigo-300 uppercase tracking-widest">Ongoing</span>
-                            <span class="text-xl font-black">4</span>
+                            <span class="text-xs text-indigo-300 uppercase tracking-widest">Ongoing</span>
+                            <span class="text-xl">4</span>
                         </div>
                         <div class="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5 opacity-50">
-                            <span class="text-xs font-black text-emerald-400 uppercase tracking-widest">Completed</span>
-                            <span class="text-xl font-black">148</span>
+                            <span class="text-xs text-emerald-400 uppercase tracking-widest">Completed</span>
+                            <span class="text-xl">148</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="order-1 md:order-2">
-                <h2 class="text-4xl font-black mb-6 leading-tight">{{ __('freelance_extra_1_title') }}</h2>
+                <h2 class="text-4xl mb-6 leading-tight font-black">{{ __('freelance_extra_1_title') }}</h2>
                 <p class="text-xl text-slate-400 leading-relaxed italic">
                     {{ __('freelance_extra_1_desc') }}
                 </p>
@@ -360,22 +360,22 @@
     {{-- SECTION: SUSTAINABLE INCOME (UNIQUE B) --}}
     <section class="py-32 bg-white relative">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black text-gray-900 mb-8">{{ __('freelance_extra_2_title') }}</h2>
+            <h2 class="text-4xl text-gray-900 mb-8 font-black">{{ __('freelance_extra_2_title') }}</h2>
             <p class="text-xl text-gray-500 leading-relaxed mb-12">
                 {{ __('freelance_extra_2_desc') }}
             </p>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
-                    <div class="text-3xl mb-2">🏖️</div>
-                    <div class="text-xs font-black text-slate-400 uppercase">{{ __('freelance_extra_2_item_1') }}</div>
+                    <div class="text-3xl mb-2 font-black">🏖️</div>
+                    <div class="text-xs text-slate-400 uppercase">{{ __('freelance_extra_2_item_1') }}</div>
                 </div>
                 <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100">
-                    <div class="text-3xl mb-2">🛡️</div>
-                    <div class="text-xs font-black text-slate-400 uppercase">{{ __('freelance_extra_2_item_2') }}</div>
+                    <div class="text-3xl mb-2 font-black">🛡️</div>
+                    <div class="text-xs text-slate-400 uppercase">{{ __('freelance_extra_2_item_2') }}</div>
                 </div>
                 <div class="p-6 bg-indigo-600 rounded-3xl border border-indigo-500 text-white md:col-span-1 col-span-2">
-                    <div class="text-3xl mb-2">💎</div>
-                    <div class="text-xs font-black text-indigo-100 uppercase">{{ __('freelance_extra_2_item_3') }}</div>
+                    <div class="text-3xl mb-2 font-black">💎</div>
+                    <div class="text-xs text-indigo-100 uppercase">{{ __('freelance_extra_2_item_3') }}</div>
                 </div>
             </div>
         </div>
@@ -391,11 +391,11 @@
                 
                 <div class="flex flex-col lg:flex-row gap-20 items-center">
                     <div class="flex-1">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-10 shadow-lg">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500 text-white text-[10px] uppercase tracking-[0.2em] mb-10 shadow-lg">
                             🧬 {{ __('freelance_science_badge') }}
                         </div>
 
-                        <h2 class="text-4xl md:text-6xl font-black text-white mb-10 leading-tight">
+                        <h2 class="text-4xl md:text-6xl text-white mb-10 leading-tight font-black">
                             {{ __('freelance_science_title') }}
                         </h2>
 
@@ -444,7 +444,7 @@
 
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('freelance_faq_title') }}</h2>
+            <h2 class="text-4xl text-center text-gray-900 mb-16 font-black">{{ __('freelance_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -462,11 +462,11 @@
             <div class="bg-slate-900 rounded-3xl md:rounded-[3rem] p-12 md:p-20 text-center relative shadow-2xl overflow-hidden border border-slate-700 border-t-8 border-t-indigo-500">
                 <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500 rounded-full blur-[80px] opacity-30"></div>
                 
-                <h2 class="text-4xl md:text-6xl font-black mb-8 text-white tracking-tight">{{ __('freelance_cta_title') }}</h2>
+                <h2 class="text-4xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('freelance_cta_title') }}</h2>
                 <p class="text-slate-400 text-xl md:text-2xl mb-12 font-medium leading-relaxed max-w-2xl mx-auto">
                     {{ __('freelance_cta_desc') }}
                 </p>
-                <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-lg hover:bg-indigo-500 transition transform hover:scale-105 shadow-xl shadow-indigo-900/50">
+                <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-2xl text-lg hover:bg-indigo-500 transition transform hover:scale-105 shadow-xl shadow-indigo-900/50">
                     {{ __('freelance_cta_btn') }}
                 </a>
             </div>
@@ -476,3 +476,6 @@
     </section>
 
 @endsection
+
+
+

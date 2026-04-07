@@ -82,7 +82,7 @@
             
             {{-- Icon / Gambar Dulu --}}
             <div class="flex justify-center mb-8">
-                <div class="w-24 h-24 bg-white/80 backdrop-blur-xl border border-indigo-100 rounded-[2rem] shadow-xl shadow-indigo-100 flex items-center justify-center text-4xl transform -rotate-3 hover:rotate-0 transition duration-300">
+                <div class="w-24 h-24 bg-white/80 backdrop-blur-xl border border-indigo-100 rounded-[2rem] shadow-xl shadow-indigo-100 flex items-center justify-center text-4xl transform -rotate-3 hover:rotate-0 transition duration-300 font-black">
                     🌱
                 </div>
             </div>
@@ -93,7 +93,7 @@
             </div>
             
             {{-- Teks Utama --}}
-            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-6 leading-tight text-gray-900 tracking-tight">
+            <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-6 leading-tight text-gray-900 tracking-tight font-black">
                 {{ __('atomic_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('atomic_hero_title_2') }}
@@ -106,7 +106,7 @@
             
             {{-- CTA --}}
             <div class="flex justify-center gap-4 mb-24">
-                <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.4)] transition transform hover:-translate-y-1">
+                <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-4 rounded-2xl text-lg hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_40px_rgba(79,70,229,0.4)] transition transform hover:-translate-y-1">
                     {{ __('atomic_hero_cta') }}
                 </a>
             </div>
@@ -146,18 +146,18 @@
     <section class="py-32 bg-white relative">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">{{ __('atomic_prob_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('atomic_prob_title') }}</h2>
                 <p class="text-xl text-gray-500 max-w-2xl mx-auto">{{ __('atomic_prob_desc') }}</p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="bg-rose-50/50 p-12 rounded-[3rem] border border-rose-100 text-center hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm text-4xl mb-6">📉</div>
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm text-4xl mb-6 font-black">📉</div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ __('atomic_prob_1_title') }}</h3>
                     <p class="text-gray-600 leading-relaxed text-lg">{{ __('atomic_prob_1_desc') }}</p>
                 </div>
                 <div class="bg-gray-50 p-12 rounded-[3rem] border border-gray-200 text-center hover:shadow-xl transition-shadow duration-300">
-                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm text-4xl mb-6">🔁</div>
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-sm text-4xl mb-6 font-black">🔁</div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ __('atomic_prob_2_title') }}</h3>
                     <p class="text-gray-600 leading-relaxed text-lg">{{ __('atomic_prob_2_desc') }}</p>
                 </div>
@@ -187,7 +187,7 @@
                 </div>
             </div>
             <div>
-                <h2 class="text-4xl font-black text-gray-900 mb-6">{{ __('atomic_extra_1_title') }}</h2>
+                <h2 class="text-4xl text-gray-900 mb-6 font-black">{{ __('atomic_extra_1_title') }}</h2>
                 <p class="text-xl text-gray-500 leading-relaxed">
                     {{ __('atomic_extra_1_desc') }}
                 </p>
@@ -200,7 +200,7 @@
         <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
         <div class="max-w-5xl mx-auto px-6 relative z-10">
             <div class="bg-gradient-to-br from-indigo-600/20 to-purple-600/20 rounded-[3rem] p-12 md:p-20 border border-white/10 backdrop-blur-sm">
-                <h2 class="text-4xl font-black mb-8 text-center">{{ __('atomic_extra_2_title') }}</h2>
+                <h2 class="text-4xl mb-8 text-center font-black">{{ __('atomic_extra_2_title') }}</h2>
                 <p class="text-xl text-indigo-200 text-center leading-relaxed mb-12 max-w-3xl mx-auto">
                     {{ __('atomic_extra_2_desc') }}
                 </p>
@@ -230,11 +230,11 @@
 
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-indigo-300 text-[10px] font-black uppercase tracking-[0.3em] mb-10 rounded-full border border-white/10">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-indigo-300 text-[10px] uppercase tracking-[0.3em] mb-10 rounded-full border border-white/10">
                             🧬 {{ __('atomic_science_badge') }}
                         </div>
 
-                        <h2 class="text-4xl md:text-6xl font-black text-white mb-10 leading-tight">
+                        <h2 class="text-4xl md:text-6xl text-white mb-10 leading-tight font-black">
                             {{ __('atomic_science_title') }}
                         </h2>
 
@@ -246,15 +246,15 @@
 
                         <div class="flex flex-wrap gap-4">
                             <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/5 hover:border-indigo-500/50 transition">
-                                <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">{{ __('atomic_science_reagent_1') }}</span>
+                                <span class="text-[10px] text-indigo-400 uppercase tracking-widest block mb-1">{{ __('atomic_science_reagent_1') }}</span>
                                 <h4 class="font-bold text-slate-300">{{ __('atomic_science_topic_1') }}</h4>
                             </div>
                             <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/5 hover:border-purple-500/50 transition">
-                                <span class="text-[10px] font-black text-purple-400 uppercase tracking-widest block mb-1">{{ __('atomic_science_reagent_2') }}</span>
+                                <span class="text-[10px] text-purple-400 uppercase tracking-widest block mb-1">{{ __('atomic_science_reagent_2') }}</span>
                                 <h4 class="font-bold text-slate-300">{{ __('atomic_science_topic_2') }}</h4>
                             </div>
                             <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/5 hover:border-emerald-500/50 transition">
-                                <span class="text-[10px] font-black text-emerald-400 uppercase tracking-widest block mb-1">{{ __('atomic_science_reagent_3') }}</span>
+                                <span class="text-[10px] text-emerald-400 uppercase tracking-widest block mb-1">{{ __('atomic_science_reagent_3') }}</span>
                                 <h4 class="font-bold text-slate-300">{{ __('atomic_science_topic_3') }}</h4>
                             </div>
                         </div>
@@ -264,7 +264,7 @@
                         {{-- Atomic Reaction Visualization --}}
                         <div class="relative w-full aspect-square flex items-center justify-center">
                             {{-- Nucleus --}}
-                            <div class="w-32 h-32 bg-indigo-600 rounded-full flex items-center justify-center text-5xl shadow-[0_0_60px_rgba(79,70,229,0.5)] z-20 animate-pulse">⚛️</div>
+                            <div class="w-32 h-32 bg-indigo-600 rounded-full flex items-center justify-center text-5xl shadow-[0_0_60px_rgba(79,70,229,0.5)] z-20 animate-pulse font-black">⚛️</div>
                             
                             {{-- Orbitals --}}
                             <div class="absolute inset-0 border-2 border-white/5 rounded-full animate-[spin_10s_linear_infinite]">
@@ -285,7 +285,7 @@
 
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl font-black text-center text-gray-900 mb-16">{{ __('atomic_faq_title') }}</h2>
+            <h2 class="text-4xl text-center text-gray-900 mb-16 font-black">{{ __('atomic_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -303,11 +303,13 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-indigo-50 to-white rounded-t-full -z-10"></div>
         
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black text-gray-900 mb-8 tracking-tight">{{ __('atomic_cta_title') }}</h2>
+            <h2 class="text-[42px] leading-[1.1] md:text-7xl text-gray-900 mb-8 tracking-tight font-black">{{ __('atomic_cta_title') }}</h2>
             <p class="text-xl text-gray-500 mb-12 max-w-2xl mx-auto">{{ __('atomic_cta_desc') }}</p>
-            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-800 shadow-2xl transition transform hover:-translate-y-1">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-950 text-white px-12 py-5 rounded-full text-xl hover:bg-indigo-800 shadow-2xl transition transform hover:-translate-y-1">
                 {{ __('atomic_cta_btn') }}
             </a>
         </div>
     </section>
 @endsection
+
+

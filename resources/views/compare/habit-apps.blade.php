@@ -95,7 +95,7 @@
                     🌱 {{ __('habitap_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] md:text-6xl lg:text-7xl mb-6 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('habitap_hero_title_1') }}<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('habitap_hero_title_2') }}</span>
                 </h1>
@@ -165,14 +165,14 @@
     <section class="py-24 bg-white relative overflow-hidden border-b border-gray-100">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900">{{ __('habitap_cycle_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('habitap_cycle_title') }}</h2>
                 <p class="text-xl text-gray-500">{{ __('habitap_cycle_desc') }}</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 items-center">
                 {{-- Card 1: The Dopamine --}}
                 <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-yellow-300 transition duration-300 relative group md:rotate-[-4deg] hover:rotate-0 z-10">
-                    <div class="text-5xl mb-6 text-center group-hover:scale-125 transition duration-500">🎮</div>
+                    <div class="text-5xl mb-6 text-center group-hover:scale-125 transition duration-500 font-black">🎮</div>
                     <h3 class="text-xl font-bold mb-3 text-center text-gray-900">{{ __('habitap_cycle_1_title') }}</h3>
                     <p class="text-gray-500 text-sm text-center leading-relaxed">{{ __('habitap_cycle_1_desc') }}</p>
                 </div>
@@ -180,14 +180,14 @@
                 {{-- Card 2: The Anxiety --}}
                 <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-xl border-red-100 transition duration-300 relative group z-20 scale-110">
                     <div class="absolute -top-4 -right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-bounce">STREAK LOST!</div>
-                    <div class="text-5xl mb-6 text-center group-hover:scale-125 transition duration-500">😱</div>
+                    <div class="text-5xl mb-6 text-center group-hover:scale-125 transition duration-500 font-black">😱</div>
                     <h3 class="text-xl font-bold mb-3 text-center text-gray-900">{{ __('habitap_cycle_2_title') }}</h3>
                     <p class="text-gray-500 text-sm text-center leading-relaxed">{{ __('habitap_cycle_2_desc') }}</p>
                 </div>
 
                 {{-- Card 3: The Quit --}}
                 <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm hover:shadow-xl hover:border-gray-400 transition duration-300 relative group md:rotate-[4deg] hover:rotate-0 z-10">
-                    <div class="text-5xl mb-6 text-center group-hover:scale-125 transition duration-500">🏳️</div>
+                    <div class="text-5xl mb-6 text-center group-hover:scale-125 transition duration-500 font-black">🏳️</div>
                     <h3 class="text-xl font-bold mb-3 text-center text-gray-900">{{ __('habitap_cycle_3_title') }}</h3>
                     <p class="text-gray-500 text-sm text-center leading-relaxed">{{ __('habitap_cycle_3_desc') }}</p>
                 </div>
@@ -203,8 +203,8 @@
             
             {{-- Text Side --}}
             <div class="order-2 lg:order-1 animate-in slide-in-from-bottom-12 fade-in duration-1000">
-                <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-red-200">⛓️</div>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 leading-tight">
+                <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-red-200 font-black">⛓️</div>
+                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 leading-tight font-black">
                     {{ __('habitap_prob_title_1') }} <span class="text-red-600 decoration-red-200 underline decoration-4 underline-offset-4">{{ __('habitap_prob_title_highlight') }}</span>.
                 </h2>
                 <p class="text-gray-500 text-xl leading-relaxed mb-8">
@@ -271,7 +271,7 @@
                 <div class="inline-block p-4 bg-white rounded-full shadow-md mb-6 animate-bounce">
                     🌱
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 leading-tight">
+                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 leading-tight font-black">
                     {{ __('habitap_sol_title_1') }} <span class="text-indigo-600">{{ __('habitap_sol_title_highlight') }}</span>.
                 </h2>
                 <p class="text-gray-500 text-xl">
@@ -289,7 +289,7 @@
 
                 {{-- Feature 2: Connected (The Centerpiece) --}}
                 <div class="bg-indigo-600 p-8 rounded-[2rem] shadow-2xl shadow-indigo-200 text-white transform scale-105 relative z-10">
-                    <div class="absolute top-0 right-0 p-6 opacity-20 text-6xl">🔗</div>
+                    <div class="absolute top-0 right-0 p-6 opacity-20 text-6xl font-black">🔗</div>
                     <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-2xl mb-6">🧠</div>
                     <h3 class="font-bold text-xl mb-3">{{ __('habitap_sol_2_title') }}</h3>
                     <p class="text-indigo-100 leading-relaxed">{{ __('habitap_sol_2_desc') }}</p>
@@ -318,7 +318,7 @@
     <section class="py-32 bg-white">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-6">{{ __('habitap_compare_title') }}</h2>
+                <h2 class="text-3xl md:text-5xl text-gray-900 mb-6 font-black">{{ __('habitap_compare_title') }}</h2>
                 <p class="text-gray-500 text-xl">{{ __('habitap_compare_desc') }}</p>
             </div>
 
@@ -376,13 +376,13 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-t from-indigo-200 to-transparent rounded-t-full blur-2xl -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-5xl md:text-7xl font-black mb-8 text-indigo-950 tracking-tight leading-tight">
+            <h2 class="text-5xl md:text-7xl mb-8 text-indigo-950 tracking-tight leading-tight font-black">
                 {!! __('habitap_cta_title') !!}
             </h2>
             <p class="text-indigo-900/60 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('habitap_cta_desc') }}
             </p>
-            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full font-black text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_60px_rgba(79,70,229,0.5)]">
+            <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-indigo-600 text-white px-12 py-5 rounded-full text-xl hover:bg-indigo-700 transition transform hover:-translate-y-2 shadow-[0_20px_40px_rgba(79,70,229,0.3)] hover:shadow-[0_20px_60px_rgba(79,70,229,0.5)]">
                 {{ __('habitap_cta_btn') }}
             </a>
             <p class="mt-8 text-sm text-indigo-400 font-bold uppercase tracking-widest">{{ __('habitap_cta_sub') }}</p>
@@ -410,7 +410,7 @@
                     <div class="relative w-full aspect-square max-w-[400px] mx-auto">
                         <div class="absolute inset-0 bg-indigo-100 rounded-full animate-pulse-slow"></div>
                         <div class="absolute inset-10 bg-indigo-600 rounded-full flex flex-col items-center justify-center text-white shadow-2xl border-8 border-white">
-                            <span class="text-5xl mb-2">🧬</span>
+                            <span class="text-5xl mb-2 font-black">🧬</span>
                             <p class="font-black text-xs uppercase tracking-widest text-indigo-200">Neural Pathway</p>
                         </div>
                         {{-- Orbiting Nuclei --}}
@@ -420,11 +420,11 @@
                 </div>
 
                 <div class="order-1 lg:order-2">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-950 text-indigo-100 text-[10px] font-black uppercase tracking-[0.3em] mb-10 rounded-full">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-950 text-indigo-100 text-[10px] uppercase tracking-[0.3em] mb-10 rounded-full">
                         🧬 {{ __('habitap_science_badge') }}
                     </div>
 
-                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
+                    <h2 class="text-4xl md:text-5xl text-gray-900 mb-8 leading-tight font-black">
                         {{ __('habitap_science_title') }}
                     </h2>
 
@@ -447,10 +447,13 @@
     {{-- SECTION: HOW IT WORKS (EXTRA CONTEXT) --}}
     <section class="py-24 bg-white">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-black text-gray-900 mb-8">{{ __('habitap_how_it_works_title') }}</h2>
+            <h2 class="text-3xl text-gray-900 mb-8 font-black">{{ __('habitap_how_it_works_title') }}</h2>
             <div class="prose prose-lg text-gray-600 leading-relaxed">
                 <p>{{ __('habitap_how_it_works_desc') }}</p>
             </div>
         </div>
     </section>
 @endsection
+
+
+

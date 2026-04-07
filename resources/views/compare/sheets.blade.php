@@ -95,7 +95,7 @@
                     ⚠️ {{ __('blank_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] md:text-6xl lg:text-7xl mb-6 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('blank_hero_title_1') }}<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('blank_hero_title_2') }}</span>
                 </h1>
@@ -167,11 +167,11 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="mb-16 md:flex md:items-end md:justify-between">
                 <div class="max-w-2xl">
-                    <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4">{{ __('blank_cycle_title') }}</h2>
+                    <h2 class="text-3xl md:text-5xl text-gray-900 mb-4 font-black">{{ __('blank_cycle_title') }}</h2>
                     <p class="text-xl text-gray-500">{{ __('blank_cycle_desc') }}</p>
                 </div>
                 {{-- Decorative Arrow --}}
-                <div class="hidden md:block text-5xl text-gray-200 rotate-90">⤵</div>
+                <div class="hidden md:block text-5xl text-gray-200 rotate-90 font-black">⤵</div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(250px,auto)]">
@@ -180,8 +180,8 @@
                 <div class="md:col-span-7 bg-gradient-to-br from-purple-50 to-white p-10 rounded-[2.5rem] border border-purple-100 relative overflow-hidden group hover:border-purple-300 transition-all duration-300">
                     <div class="absolute top-0 right-0 bg-purple-100 w-32 h-32 rounded-bl-[4rem] -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
                     <div class="relative z-10">
-                        <div class="w-14 h-14 bg-white text-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm mb-6">✨</div>
-                        <h3 class="text-2xl font-black mb-3 text-gray-900">{{ __('blank_cycle_1_title') }}</h3>
+                        <div class="w-14 h-14 bg-white text-purple-600 rounded-2xl flex items-center justify-center text-3xl shadow-sm mb-6 font-black">✨</div>
+                        <h3 class="text-2xl mb-3 text-gray-900">{{ __('blank_cycle_1_title') }}</h3>
                         <p class="text-gray-500 leading-relaxed">{{ __('blank_cycle_1_desc') }}</p>
                     </div>
                 </div>
@@ -193,8 +193,8 @@
                     
                     <div class="relative z-10 h-full flex flex-col justify-between">
                         <div>
-                            <div class="w-14 h-14 bg-gray-800 text-white rounded-2xl flex items-center justify-center text-3xl border border-gray-700 mb-6">🤯</div>
-                            <h3 class="text-2xl font-black mb-3">{{ __('blank_cycle_2_title') }}</h3>
+                            <div class="w-14 h-14 bg-gray-800 text-white rounded-2xl flex items-center justify-center text-3xl border border-gray-700 mb-6 font-black">🤯</div>
+                            <h3 class="text-2xl mb-3">{{ __('blank_cycle_2_title') }}</h3>
                             <p class="text-gray-400 leading-relaxed">{{ __('blank_cycle_2_desc') }}</p>
                         </div>
                         <div class="mt-8 p-4 bg-gray-800/50 rounded-2xl border border-gray-700 backdrop-blur-sm">
@@ -214,9 +214,9 @@
                 {{-- Node 3: Bottom Horizontal Card (Takes 7 Cols) --}}
                 <div class="md:col-span-7 bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-lg shadow-gray-100 relative group hover:-translate-y-1 transition-transform duration-300">
                     <div class="flex flex-col md:flex-row gap-6 md:items-center">
-                        <div class="w-14 h-14 shrink-0 bg-rose-50 text-rose-500 rounded-2xl flex items-center justify-center text-3xl">🏚️</div>
+                        <div class="w-14 h-14 shrink-0 bg-rose-50 text-rose-500 rounded-2xl flex items-center justify-center text-3xl font-black">🏚️</div>
                         <div>
-                            <h3 class="text-2xl font-black mb-2 text-gray-900">{{ __('blank_cycle_3_title') }}</h3>
+                            <h3 class="text-2xl mb-2 text-gray-900">{{ __('blank_cycle_3_title') }}</h3>
                             <p class="text-gray-500 leading-relaxed">{{ __('blank_cycle_3_desc') }}</p>
                         </div>
                     </div>
@@ -271,7 +271,7 @@
 
                 {{-- Text Side: High Contrast --}}
                 <div class="order-1 lg:order-1">
-                    <h2 class="text-4xl md:text-6xl font-black mb-8 text-white leading-tight">
+                    <h2 class="text-4xl md:text-6xl mb-8 text-white leading-tight font-black">
                         {{ __('blank_prob_title_1') }} <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">{{ __('blank_prob_title_highlight') }}</span>.
                     </h2>
@@ -306,9 +306,9 @@
             
             <div class="text-center max-w-3xl mx-auto mb-20">
                 <div class="inline-block p-3 bg-indigo-100 rounded-2xl mb-6">
-                    <span class="text-3xl">💎</span>
+                    <span class="text-3xl font-black">💎</span>
                 </div>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900">
+                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">
                     {{ __('blank_sol_title_1') }} <span class="text-indigo-600 underline decoration-wavy decoration-indigo-200">{{ __('blank_sol_title_highlight') }}</span>.
                 </h2>
                 <p class="text-xl text-gray-500">{{ __('blank_sol_desc') }}</p>
@@ -381,7 +381,7 @@
     <section class="py-24 bg-white border-t border-gray-100">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-black text-gray-900">{{ __('blank_compare_title') }}</h2>
+                <h2 class="text-3xl text-gray-900 font-black">{{ __('blank_compare_title') }}</h2>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 md:gap-0 items-stretch">
@@ -453,16 +453,16 @@
 
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-[0.4em] mb-12 rounded-full border border-emerald-200">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-700 text-[10px] uppercase tracking-[0.4em] mb-12 rounded-full border border-emerald-200">
                             🧬 {{ __('blank_science_badge') }}
                         </div>
 
-                        <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tighter">
+                        <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 leading-tight tracking-tighter font-black">
                             {{ __('blank_science_title') }}
                         </h2>
 
                         <div class="relative py-12 px-12 bg-slate-50 rounded-3xl mb-12 border border-slate-100 group-hover:rotate-1 transition duration-500">
-                             <span class="absolute -top-4 -right-4 text-4xl">🧪</span>
+                             <span class="absolute -top-4 -right-4 text-4xl font-black">🧪</span>
                             <p class="text-gray-600 text-xl font-light leading-relaxed">
                                 "{{ __('blank_science_desc') }}"
                             </p>
@@ -478,7 +478,7 @@
                         {{-- Formula Visual --}}
                         <div class="bg-white aspect-video rounded-3xl p-8 border border-slate-200 shadow-lg relative flex flex-col justify-center items-center text-center overflow-hidden">
                             <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
-                            <h3 class="text-5xl font-black text-emerald-600 mb-4 tracking-tighter relative z-10">∆E = S - F</h3>
+                            <h3 class="text-5xl text-emerald-600 mb-4 tracking-tighter relative z-10 font-black">∆E = S - F</h3>
                             <p class="text-slate-400 text-xs font-mono relative z-10">Systemic_Efficiency = Structure - Friction</p>
                             
                             <div class="mt-8 flex gap-4 relative z-10">
@@ -502,7 +502,7 @@
         <div class="absolute inset-0 bg-gradient-to-r from-indigo-50 via-white to-purple-50 opacity-50"></div>
         
         <div class="max-w-5xl mx-auto text-center relative z-10">
-            <h2 class="text-6xl md:text-8xl font-black mb-8 text-gray-900 tracking-tighter">
+            <h2 class="text-6xl md:text-8xl mb-8 text-gray-900 tracking-tighter font-black">
                 {!! __('blank_cta_title') !!}
             </h2>
             <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12">
@@ -515,3 +515,6 @@
         </div>
     </section>
 @endsection
+
+
+
