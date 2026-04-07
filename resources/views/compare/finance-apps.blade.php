@@ -97,7 +97,7 @@
                     💰 {{ __('finapp_badge') }}
                 </div>
                 
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] text-slate-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] text-slate-900 tracking-tight">
                     {{ __('finapp_hero_title_1') }}<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-indigo-600">{{ __('finapp_hero_title_2') }}</span>
                 </h1>

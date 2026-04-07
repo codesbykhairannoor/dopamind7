@@ -83,7 +83,7 @@
                     <span class="text-lg">📔</span> {{ __('journal_hero_badge') }}
                 </div>
                 
-                <h1 class="text-6xl md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
+                <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-8 leading-[1.1] text-gray-900 tracking-tight">
                     {{ __('journal_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('journal_hero_title_2') }}</span>
                 </h1>
@@ -156,7 +156,7 @@
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] mb-10">
                 {{ __('journal_editorial_badge') }}
             </div>
-            <h2 class="text-6xl md:text-7xl font-serif italic text-gray-900 mb-10 leading-[1.1] tracking-tight">
+            <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-serif italic text-gray-900 mb-10 leading-[1.1] tracking-tight">
                 {{ __('journal_editorial_title') }}
             </h2>
             <p class="text-gray-500 text-xl font-medium leading-relaxed mb-16 max-w-2xl mx-auto">

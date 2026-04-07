@@ -55,7 +55,7 @@
                     🌱 {{ __('growth_hero_badge') }}
                 </div>
                 
-                <h1 class="text-5xl md:text-6xl xl:text-7xl font-black mb-8 leading-[1.2] text-gray-900 tracking-tight">
+                <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl xl:text-7xl font-black mb-8 leading-[1.2] text-gray-900 tracking-tight">
     {{ __('growth_hero_title_1') }} 
     {{-- Tambahkan py-2 atau py-4 agar gradasi tidak kepotong --}}
     <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">
@@ -324,7 +324,7 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-t from-indigo-200 to-transparent rounded-t-full blur-2xl -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
-            <h2 class="text-6xl md:text-7xl font-black mb-8 text-indigo-950 tracking-tight leading-tight">{{ __('growth_cta_title') }}</h2>
+            <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-8 text-indigo-950 tracking-tight leading-tight">{{ __('growth_cta_title') }}</h2>
             <p class="text-indigo-900/60 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('growth_cta_desc') }}
             </p>

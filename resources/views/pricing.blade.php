@@ -50,7 +50,7 @@
                 💎 {{ __('pricing_badge') }}
             </div>
             
-            <h1 class="text-6xl md:text-7xl font-black text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
+            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
                 {{ __('pricing_title_1') }} <span class="text-indigo-600">{{ __('pricing_title_2') }}</span>
             </h1>
             

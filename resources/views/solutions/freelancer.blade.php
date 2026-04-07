@@ -67,7 +67,7 @@
                 💻 {{ __('freelance_hero_badge') }}
             </div>
             
-            <h1 class="text-5xl md:text-6xl xl:text-7xl font-black mb-6 leading-[1.05] text-gray-900 tracking-tight">
+            <h1 class="text-[36px] leading-[1.1] font-black md:text-6xl xl:text-7xl font-black mb-6 leading-[1.05] text-gray-900 tracking-tight">
                 {{ __('freelance_hero_title_1') }}
                 <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">
                     {{ __('freelance_hero_title_2') }}

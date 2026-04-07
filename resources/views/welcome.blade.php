@@ -82,7 +82,7 @@
                 {{ __('hero_badge') }}
             </div>
             
-            <h1 class="text-6xl md:text-7xl lg:text-8xl font-black mb-10 leading-[0.95] tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl lg:text-8xl font-black mb-10 leading-[0.95] tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                 {{ __('hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800">
                     {{ __('hero_title_2') }}
@@ -126,7 +126,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 font-black text-[10px] mb-8 border border-indigo-500/20">
                         {{ __('fric_badge') }}
                     </div>
-                    <h2 class="text-5xl md:text-6xl font-black text-white mb-8 leading-tight">
+                    <h2 class="text-[36px] leading-[1.1] font-black md:text-6xl font-black text-white mb-8 leading-tight">
                         {{ __('fric_title') }}
                     </h2>
                     <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">
@@ -183,7 +183,7 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 font-black text-[10px] mb-6 tracking-widest border border-slate-200">
                     {{ __('pill_badge') }}
                 </div>
-                <h2 class="text-6xl md:text-7xl font-black text-slate-900 mb-8 leading-tight">
+                <h2 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black text-slate-900 mb-8 leading-tight">
                     Unified Habit Tracker, Planner & Finance Manager.
                 </h2>
             </div>
@@ -251,7 +251,7 @@
                         </span>
                         {{ __('home_science_badge') }}
                     </div>
-                    <h2 class="text-5xl md:text-6xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
+                    <h2 class="text-[36px] leading-[1.1] font-black md:text-6xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
                         {{ __('home_science_title') }}
                     </h2>
                     <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">

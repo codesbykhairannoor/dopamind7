@@ -80,7 +80,7 @@
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs mb-6 uppercase tracking-wider border border-indigo-200">
                 <span class="text-lg">📅</span> {{ __('planner_hero_badge') }}
             </div>
-            <h1 class="text-6xl md:text-7xl font-black mb-6 leading-[1.1] text-gray-900 tracking-tight">
+            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-6 leading-[1.1] text-gray-900 tracking-tight">
                 {{ __('planner_hero_title_1') }} <br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">{{ __('planner_hero_title_2') }}</span>
             </h1>

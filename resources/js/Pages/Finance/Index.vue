@@ -58,7 +58,18 @@ const activeVault = ref(null);
 const isProcessingVaultTx = ref(false);
 
 const handleEditSaving = (saving = null) => {
-    activeSaving.value = saving;
+    if (!saving) {
+        // Reset form completely for NEW saving goal
+        activeSaving.value = {
+            id: null,
+            title: '',
+            target_amount: '',
+            icon: '🏦',
+            color: '#6366f1'
+        };
+    } else {
+        activeSaving.value = saving;
+    }
     showSavingModal.value = true;
 };
 
@@ -76,8 +87,9 @@ const handleStoreSaving = (form) => {
         preserveScroll: true,
         onSuccess: (page) => {
             // After success, localSavings will be replaced by the prop from the server
-            // But we can also set the local list manually if needed to be 100% sure
             localSavings.value = [...(page.props.savings || [])];
+            // Sync with storage for persistence
+            localStorage.setItem('dfm_local_savings', JSON.stringify(localSavings.value));
         },
         onFinish: () => {
             isSavingVault.value = false;
@@ -131,8 +143,9 @@ const handleDeleteSaving = (saving) => {
             data: { date: dayjs().format('YYYY-MM-DD') },
             preserveScroll: true,
             preserveState: true,
-            onSuccess: () => {
-                // Flash message usually handled by Inertia
+            onSuccess: (page) => {
+                localSavings.value = [...(page.props.savings || [])];
+                localStorage.setItem('dfm_local_savings', JSON.stringify(localSavings.value));
             },
             onError: () => {
                 localSavings.value = originalSavings;
@@ -180,8 +193,11 @@ const handleVaultTransaction = (data) => {
         amount: numAmount,
         date: data.date
     }, {
-        preserveScroll: true,
-        preserveState: true,
+        onSuccess: (page) => {
+            localSavings.value = [...(page.props.savings || [])];
+            localStats.value = JSON.parse(JSON.stringify(page.props.stats || {}));
+            localStorage.setItem('dfm_local_savings', JSON.stringify(localSavings.value));
+        },
         onFinish: () => {
             isProcessingVaultTx.value = false;
         },
@@ -392,7 +408,23 @@ onMounted(() => {
     window.addEventListener('resize', () => {
         isMobile.value = window.innerWidth < 1024;
     });
+
+    // 💡 LOAD PERSISTED SAVINGS FROM STORAGE (If props are empty or to prevent flash)
+    const storedSavings = localStorage.getItem('dfm_local_savings');
+    if (storedSavings && localSavings.value.length === 0) {
+        localSavings.value = JSON.parse(storedSavings);
+    }
 });
+
+// 💡 WATCH FOR PROP CHANGES TO SYNC LOCAL STATE & STORAGE
+watch(() => props.savings, (newSavings) => {
+    localSavings.value = [...(newSavings || [])];
+    localStorage.setItem('dfm_local_savings', JSON.stringify(localSavings.value));
+}, { deep: true });
+
+watch(() => props.stats, (newStats) => {
+    localStats.value = JSON.parse(JSON.stringify(newStats || {}));
+}, { deep: true });
 </script>
 
 <template>

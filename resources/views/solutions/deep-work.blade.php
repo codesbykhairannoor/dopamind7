@@ -91,7 +91,7 @@
                 {{ __('deepwork_hero_badge') }}
             </div>
             
-            <h1 class="text-6xl md:text-7xl font-black mb-6 leading-tight tracking-tight text-gray-900">
+            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl font-black mb-6 leading-tight tracking-tight text-gray-900">
                 {{ __('deepwork_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('deepwork_hero_title_2') }}
@@ -382,7 +382,7 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-indigo-100/50 to-transparent rounded-t-full -z-10"></div>
         
         <div class="max-w-3xl mx-auto mt-16">
-            <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-8 tracking-tight leading-tight">{{ __('deepwork_cta_title') }}</h2>
+            <h2 class="text-[36px] leading-[1.1] font-black md:text-6xl font-black text-gray-900 mb-8 tracking-tight leading-tight">{{ __('deepwork_cta_title') }}</h2>
             <p class="text-xl text-gray-500 mb-12 leading-relaxed max-w-2xl mx-auto">{{ __('deepwork_cta_desc') }}</p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">

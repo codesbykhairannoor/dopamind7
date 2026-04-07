@@ -35,7 +35,7 @@
                 <div class="absolute inset-0 bg-gradient-to-tr from-emerald-600 to-emerald-400 opacity-0 group-hover:opacity-100 transition duration-1000"></div>
                 
                 <div class="relative z-10 flex flex-col items-center">
-                    <div class="text-5xl md:text-6xl mb-4 md:mb-6 group-hover:scale-110 transition duration-500 transform">✅</div>
+                    <div class="text-[36px] leading-[1.1] font-black md:text-6xl mb-4 md:mb-6 group-hover:scale-110 transition duration-500 transform">✅</div>
                     <h2 class="text-2xl md:text-4xl font-black uppercase tracking-widest text-center">{{ __('stat_hero_operational') }}</h2>
                     <p class="mt-3 text-emerald-100 font-bold text-xs md:text-sm opacity-90 text-center">{{ __('stat_hero_last_check') }}</p>
                 </div>

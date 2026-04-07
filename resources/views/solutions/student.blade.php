@@ -366,7 +366,7 @@
                             🧬 {{ __('student_science_badge') }}
                         </div>
                         
-                        <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
+                        <h2 class="text-[36px] leading-[1.1] font-black md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tight">
                             {{ __('student_science_title') }}
                         </h2>
                         
@@ -429,7 +429,7 @@
         <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-500 rounded-full mix-blend-screen filter blur-[150px] opacity-40 -z-10 animate-pulse duration-[6000ms]"></div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-5xl md:text-6xl font-black mb-8 text-white tracking-tight">{{ __('student_cta_title') }}</h2>
+            <h2 class="text-[36px] leading-[1.1] font-black md:text-6xl font-black mb-8 text-white tracking-tight">{{ __('student_cta_title') }}</h2>
             <p class="text-indigo-100 text-xl md:text-2xl mb-12 font-medium leading-relaxed">
                 {{ __('student_cta_desc') }}
             </p>

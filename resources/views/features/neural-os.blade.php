@@ -26,7 +26,7 @@
                 {{ __('neural_hero_badge') }}
             </div>
             
-            <h1 class="text-6xl md:text-7xl lg:text-8xl font-black mb-10 leading-[0.95] tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <h1 class="text-[42px] leading-[1.1] font-black md:text-7xl lg:text-8xl font-black mb-10 leading-[0.95] tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                 {{ __('neural_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800">
                     {{ __('neural_hero_title_2') }}
