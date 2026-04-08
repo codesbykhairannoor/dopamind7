@@ -179,19 +179,19 @@
                         <p class="text-[10px] font-black text-amber-500 uppercase tracking-tight">{{ __('pricing_l4_initial') }}</p>
                         <p class="text-[9px] font-bold italic text-slate-600">{{ __('pricing_l4_recurring') }}</p>
                     </div>
-                    <p class="text-slate-400 text-[11px] mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l4_desc') }}</p>
+                    <p class="text-slate-400 text-[11px] mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l4_desc', []) }}</p>
                     <ul class="space-y-3 mb-10 flex-grow text-slate-300">
                         <li class="flex items-start gap-3">
                             <span class="text-amber-500 font-black">★</span>
-                            <span class="text-[11px] font-bold">{{ __('pricing_feat_l4_triggers') }}</span>
+                            <span class="text-[11px] font-bold">Lifetime Pro Access</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-amber-500 font-black">★</span>
-                            <span class="text-[11px] font-bold">{{ __('pricing_feat_l4_war_room') }}</span>
+                            <span class="text-[11px] font-bold">Unlocks All Modules</span>
                         </li>
                         <li class="flex items-start gap-3 border-t border-white/10 pt-3">
-                            <span class="text-emerald-400 font-black">✓</span>
-                            <span class="text-[11px] font-bold">{{ __('pricing_feat_l4_vip') }}</span>
+                            <span class="text-rose-400 font-black">✕</span>
+                            <span class="text-[11px] font-bold text-slate-500">Excludes Neural AI Features</span>
                         </li>
                     </ul>
                     <button hx-boost="false" data-plan="lifetime" class="checkout-trigger w-full py-4 rounded-3xl bg-white text-slate-900 font-black text-xs text-center hover:bg-slate-50 transition shadow-lg">
@@ -261,7 +261,7 @@
                             <td class="px-8 py-5 text-center text-slate-300">—</td>
                             <td class="px-8 py-5 text-center text-slate-300">—</td>
                             <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
-                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-rose-500/30">✕</td>
                         </tr>
 
                         {{-- Finance Module --}}
@@ -296,7 +296,7 @@
                             <td class="px-8 py-5 text-center text-slate-300">—</td>
                             <td class="px-8 py-5 text-center text-slate-300">—</td>
                             <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
-                            <td class="px-8 py-5 text-center text-emerald-500 font-black">✓</td>
+                            <td class="px-8 py-5 text-center text-rose-500/30">✕</td>
                         </tr>
 
                         {{-- Planning & Focus --}}

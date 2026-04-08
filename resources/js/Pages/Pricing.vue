@@ -61,7 +61,8 @@ const plans = computed(() => {
             features: [
                 'pricing_feat_l3_ai_coach',
                 'pricing_feat_l3_wealth',
-                'pricing_feat_l3_insights'
+                'pricing_feat_l3_insights',
+                'Including All Architect Pro Features'
             ],
             buttonText: 'pricing_ai_btn',
             buttonLink: '#',
@@ -74,13 +75,14 @@ const plans = computed(() => {
             name: 'pricing_l4_name',
             slug: 'lifetime',
             price: isEn ? '$59.00' : 'Rp 899k',
-            initial: 'pricing_l4_initial',
+            initial: 'One-Time Payment',
             recurring: 'pricing_l4_recurring',
-            desc: 'pricing_l4_desc',
+            desc: 'Akses seumur hidup untuk seluruh ekosistem inti OneForMind tanpa biaya bulanan.',
             features: [
-                'pricing_feat_lifetime_access',
-                'pricing_feat_goals_unlocked',
-                'pricing_feat_priority_support'
+                'Full Lifetime Pro Access',
+                'Unlocks All Modules (Non-AI)',
+                'Priority Life Support',
+                'Excludes Neural AI Features'
             ],
             buttonText: 'pricing_l4_btn',
             buttonLink: '#',

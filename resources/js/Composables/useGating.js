@@ -23,17 +23,23 @@ export const useGating = () => {
      * 4: Legendary (Infinite)
      */
 
+    const isAiEnabled = computed(() => {
+        // AI is strictly Quantum (Tier 3)
+        // Legendary (Tier 4) is LIFE for core features but DOES NOT include AI by default
+        return user.value?.plan_type === 'quantum';
+    });
+
     const canUse = (feature) => {
         switch (feature) {
             // HABITS
             case 'unlimited_habits':
             case 'habit_categories':
-                return tier.value >= 2;
+                return tier.value >= 2; // Architect, Quantum, Legendary
             case 'habit_ai_stacking':
             case 'habit_mood_correlation':
-                return tier.value >= 3;
+                return isAiEnabled.value; // Strictly Quantum
             case 'habit_systemic_triggers':
-                return tier.value >= 4;
+                return tier.value >= 4; // Strictly Legendary (Life feature)
 
             // FINANCE
             case 'finance_budgeting':
@@ -41,7 +47,7 @@ export const useGating = () => {
                 return tier.value >= 2;
             case 'finance_ai_audit':
             case 'finance_predictive_burn':
-                return tier.value >= 3;
+                return isAiEnabled.value; // Strictly Quantum
             case 'finance_net_worth':
             case 'finance_investment_sim':
                 return tier.value >= 4;
@@ -52,7 +58,7 @@ export const useGating = () => {
                 return tier.value >= 2;
             case 'planner_ai_scheduling':
             case 'journal_ai_search':
-                return tier.value >= 3;
+                return isAiEnabled.value; // Strictly Quantum
             case 'planner_focus_mode':
             case 'planner_war_room':
                 return tier.value >= 4;
@@ -65,9 +71,10 @@ export const useGating = () => {
     return {
         tier,
         canUse,
+        isAiEnabled,
         isExplorer: computed(() => tier.value === 1),
-        isArchitect: computed(() => tier.value >= 2), // Changed to >= for easier gating
-        isQuantum: computed(() => tier.value >= 3),
+        isArchitect: computed(() => tier.value === 2),
+        isQuantum: computed(() => tier.value === 3),
         isLegendary: computed(() => tier.value === 4),
     };
 };

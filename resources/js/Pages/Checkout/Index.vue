@@ -16,8 +16,18 @@ const props = defineProps({
     features: Array
 });
 
-const isQuantum = computed(() => props.plan.toLowerCase() === 'quantum');
-const isLegendary = computed(() => props.plan.toLowerCase() === 'lifetime');
+const isArchitect = computed(() => props.plan.toLowerCase().includes('architect'));
+const isQuantum = computed(() => props.plan.toLowerCase().includes('quantum'));
+const isLegendary = computed(() => props.plan.toLowerCase().includes('lifetime') || props.plan.toLowerCase().includes('legendary'));
+
+const periodLabel = computed(() => {
+    if (isLegendary.value) return 'One-Time Payment';
+    // If it's Architect or Quantum, it's a subscription. 
+    // We can infer yearly/monthly from the price string if needed, or default to appropriate text
+    const priceStr = props.price.toLowerCase();
+    if (priceStr.includes('79') || priceStr.includes('109')) return 'per Year';
+    return 'per Month';
+});
 
 const initiatePayment = async (method) => {
     const routeName = method === 'paypal' ? 'paypal.checkout' : 'payment.checkout';
@@ -78,7 +88,12 @@ const initiatePayment = async (method) => {
                                 </div>
                                 <div class="min-w-0">
                                     <h3 class="text-2xl font-black text-slate-900 dark:text-white truncate">OneForMind {{ plan }}</h3>
-                                    <p class="text-sm font-bold text-indigo-600 dark:text-indigo-400 capitalize">{{ price }} / {{ isLegendary ? 'Lifetime' : 'Yearly' }}</p>
+                                    <p class="text-sm font-bold text-indigo-600 dark:text-indigo-400 capitalize">
+                                        {{ price }} / {{ periodLabel }}
+                                    </p>
+                                    <p v-if="isArchitect" class="text-[10px] font-black text-emerald-500 uppercase tracking-widest mt-1">
+                                        ★ 14-Day Free Trial Included
+                                    </p>
                                 </div>
                             </div>
 
