@@ -103,7 +103,7 @@ const exportExcel = async () => {
 
 const runAiAudit = () => {
     if (props.isExplorer) {
-        router.get(route('pricing.index'));
+        router.visit(route('billing'), { data: { from: 'finance_ai_audit' } });
         return;
     }
     isAiAuditLoading.value = true;
@@ -225,7 +225,7 @@ const runAiAudit = () => {
               <div class="fixed inset-0 z-[-1]" @click="isExportDropdownOpen = false"></div>
               <div class="relative z-10 space-y-0.5">
                 <button 
-                  @click="isExplorer ? $inertia.get(route('pricing.index')) : exportExcel(); isExportDropdownOpen = false" 
+                  @click="isExplorer ? router.visit(route('billing'), { data: { from: 'finance_export_excel' } }) : exportExcel(); isExportDropdownOpen = false" 
                   class="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all group/item"
                 >
                   <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover/item:scale-110 transition-transform">
@@ -239,7 +239,7 @@ const runAiAudit = () => {
                   </div>
                 </button>
                 <button 
-                  @click="isExplorer ? $inertia.get(route('pricing.index')) : exportTax(); isExportDropdownOpen = false" 
+                  @click="isExplorer ? router.visit(route('billing'), { data: { from: 'finance_export_tax' } }) : exportTax(); isExportDropdownOpen = false" 
                   class="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all group/item"
                 >
                   <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:scale-110 transition-transform">

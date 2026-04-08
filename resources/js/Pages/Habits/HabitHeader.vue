@@ -132,7 +132,7 @@ const changeYear = (offset) => {
           </div>
 
           <button 
-            @click="isExplorer && habitsCount >= 5 ? $inertia.get(route('pricing.index', { from: 'habit_limit' })) : openCreateModal()" 
+            @click="isExplorer && habitsCount >= 5 ? router.visit(route('billing'), { data: { from: 'habit_count_limit' } }) : openCreateModal()" 
             class="h-[46px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-100 dark:shadow-indigo-900/40 transition-all duration-300 whitespace-nowrap"
             :class="{ 'opacity-80 grayscale-[0.3]': isExplorer && habitsCount >= 5 }"
           >
@@ -153,7 +153,7 @@ const changeYear = (offset) => {
                   {{ $t('habit_limit_reached', 'Anda telah mencapai batas 5 habit untuk akun Explorer.') }}
               </p>
           </div>
-          <button @click="$inertia.get(route('pricing.index'))" class="bg-indigo-600 text-white px-4 py-1.5 rounded-lg font-black uppercase tracking-widest text-[9px] hover:bg-indigo-700 transition">Upgrade</button>
+          <button @click="router.visit(route('billing'), { data: { from: 'habit_banner_upgrade' } })" class="bg-indigo-600 text-white px-4 py-1.5 rounded-lg font-black uppercase tracking-widest text-[9px] hover:bg-indigo-700 transition">Upgrade</button>
       </div>
 
       <Transition name="fade">

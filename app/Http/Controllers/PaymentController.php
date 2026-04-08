@@ -9,6 +9,38 @@ use Illuminate\Support\Facades\Http;
 
 class PaymentController extends Controller
 {
+    public function showCheckout(Request $request)
+    {
+        $planSlug = strtolower($request->query('plan', 'architect'));
+        $billing = $request->query('billing', 'yearly');
+
+        $plansData = [
+            'architect' => [
+                'name' => 'Architect',
+                'price' => $billing === 'yearly' ? 'Rp 79.000' : 'Rp 99.000',
+                'features' => ['All Pro Habit Features', 'Wealth Lab Access', 'Advanced Planner Mode', 'Cloud Sync']
+            ],
+            'quantum' => [
+                'name' => 'Quantum',
+                'price' => $billing === 'yearly' ? 'Rp 109.000' : 'Rp 159.000',
+                'features' => ['Neural OS AI Companion', 'AI Habit Alchemy', 'Predictive Wealth Insights', 'Priority AI Support']
+            ],
+            'lifetime' => [
+                'name' => 'Legendary',
+                'price' => 'Rp 899.000',
+                'features' => ['Lifetime Unlimited Access', 'Founder Badge', 'All Future Neural Modules', 'Infinite Storage']
+            ]
+        ];
+
+        $selected = $plansData[$planSlug] ?? $plansData['architect'];
+
+        return \Inertia\Inertia::render('Checkout/Index', [
+            'plan' => $selected['name'],
+            'price' => $selected['price'],
+            'features' => $selected['features']
+        ]);
+    }
+
     public function checkout(Request $request)
     {
         $user = auth()->user();
@@ -150,7 +182,11 @@ class PaymentController extends Controller
 
     public function finish(Request $request)
     {
-        return redirect()->route('settings.index', ['tab' => 'billing'])->with('success', 'Transaksi sedang diproses atau berhasil! Status akun Anda akan segera diupdate.');
+        $user = auth()->user();
+        return \Inertia\Inertia::render('Payment/Success', [
+            'plan' => $user->plan_type ?? 'Pro',
+            'userName' => $user->name
+        ]);
     }
 
     public function unfinish(Request $request)

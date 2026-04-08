@@ -50,7 +50,7 @@ const {
 
 const switchToBatch = () => { 
     if (gating.isExplorer.value) {
-        router.get(route('pricing.index'), { from: 'planner_batch' });
+        router.visit(route('billing'), { data: { from: 'planner_batch' } });
         return;
     }
     isModalOpen.value = false; 

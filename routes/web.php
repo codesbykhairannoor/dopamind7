@@ -555,6 +555,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     );
 
     // Duitku Payments
+    Route::get('/payment/checkout', [\App\Http\Controllers\PaymentController::class, 'showCheckout'])->name('payment.summary');
     Route::post('/payment/checkout', [\App\Http\Controllers\PaymentController::class, 'checkout'])->name('payment.checkout');
     Route::get('/payment/finish', [\App\Http\Controllers\PaymentController::class, 'finish'])->name('payment.finish');
     Route::get('/payment/unfinish', [\App\Http\Controllers\PaymentController::class, 'unfinish'])->name('payment.unfinish');

@@ -103,7 +103,7 @@ const showModule = (moduleName) => {
             </div>
 
             <!-- Premium Upgrade CTA -->
-            <Link :href="route('pricing.index')" class="mt-12 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-[2.5rem] p-8 text-white shadow-xl dark:shadow-none relative overflow-hidden group active:scale-[0.98] transition-all duration-300 block">
+            <Link :href="route('billing')" class="mt-12 bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-[2.5rem] p-8 text-white shadow-xl dark:shadow-none relative overflow-hidden group active:scale-[0.98] transition-all duration-300 block">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl group-hover:bg-white/20 transition-all duration-500"></div>
                 <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>

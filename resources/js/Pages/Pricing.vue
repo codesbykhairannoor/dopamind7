@@ -92,40 +92,16 @@ const plans = computed(() => {
     ];
 });
 
-const checkout = async (plan) => {
+const checkout = (plan) => {
     if (!plan || plan.slug === 'explorer') return;
-
-    try {
-        const usePaypal = appLocale.value === 'en';
-        const checkoutRoute = usePaypal ? route('paypal.checkout') : route('payment.checkout');
-
-        Swal.fire({
-            title: 'Preparing Secure Checkout...',
-            html: `Connecting to ${usePaypal ? 'PayPal' : 'Duitku'} safe gateway`,
-            allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        });
-
-        const response = await axios.post(checkoutRoute, {
-            plan: plan.slug
-        });
-
-        if (response.data.paymentUrl) {
-            window.location.href = response.data.paymentUrl;
-        } else {
-            throw new Error('Failed to get payment URL');
+    
+    // Redirect to internal checkout sumary page instead of direct gateway
+    router.visit(route('payment.summary'), {
+        data: {
+            plan: plan.slug,
+            billing: isAnnual.value ? 'yearly' : 'monthly'
         }
-    } catch (error) {
-        console.error('Checkout error:', error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Payment Error',
-            text: error.response?.data?.error || 'Sedang terjadi gangguan pada server pembayaran. Mohon coba beberapa saat lagi.',
-            confirmButtonColor: '#4f46e5'
-        });
-    }
+    });
 };
 
 onMounted(() => {

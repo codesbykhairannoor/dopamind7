@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { router } from '@inertiajs/vue3';
+import { useGating } from '@/Composables/useGating';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const props = defineProps({
@@ -10,10 +12,15 @@ const props = defineProps({
     }
 });
 
+const { isQuantum } = useGating();
 const synergy = ref(null);
 const loading = ref(false);
 
 const fetchSynergy = async () => {
+    if (!isQuantum.value) {
+        router.visit(route('billing'), { data: { from: 'neural_bridge' } });
+        return;
+    }
     loading.value = true;
     try {
         const response = await axios.post(route('coach.synergy'), { module: props.module });

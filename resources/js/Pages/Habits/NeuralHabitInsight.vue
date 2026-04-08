@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { router } from '@inertiajs/vue3';
+import { useGating } from '@/Composables/useGating';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import Swal from 'sweetalert2';
 
@@ -8,6 +10,7 @@ const props = defineProps({
     currentMood: String
 });
 
+const { isQuantum } = useGating();
 const isAnalyzing = ref(false);
 const showStack = ref(false);
 const stackData = ref(null);
@@ -17,6 +20,10 @@ const showAudit = ref(false);
 const stagnantData = ref(null);
 
 const checkStagnation = async () => {
+    if (!isQuantum.value) {
+        router.visit(route('billing'), { data: { from: 'habit_ai_stagnation' } });
+        return;
+    }
     isAnalyzing.value = true;
     try {
         const res = await axios.post(route('coach.habit.stagnation'));
@@ -38,6 +45,10 @@ const checkStagnation = async () => {
 };
 
 const getHabitStack = async () => {
+    if (!isQuantum.value) {
+        router.visit(route('billing'), { data: { from: 'habit_ai_stack' } });
+        return;
+    }
     isAnalyzing.value = true;
     showStack.value = true;
     try {
@@ -52,6 +63,7 @@ const getHabitStack = async () => {
 
 const getMoodAdvisory = async (mood) => {
     if (!mood) return;
+    if (!isQuantum.value) return; // Silent lock for automated calls
     isAnalyzing.value = true;
     try {
         const res = await axios.post(route('coach.habit.mood'), { mood });
@@ -64,6 +76,10 @@ const getMoodAdvisory = async (mood) => {
 };
 
 const runAudit = async (habitId) => {
+    if (!isQuantum.value) {
+        router.visit(route('billing'), { data: { from: 'habit_ai_audit' } });
+        return;
+    }
     isAnalyzing.value = true;
     showAudit.value = true;
     try {
@@ -108,7 +124,17 @@ defineExpose({ runAudit, getMoodAdvisory });
         </Transition>
 
         <!-- HABIT ALCHEMY (STACKING) TRIGGER -->
-        <div v-if="!showStack" class="flex flex-wrap justify-center gap-4 py-4">
+        <div v-if="!showStack" class="flex flex-wrap justify-center gap-4 py-4 relative group">
+            <!-- Lock Overlay for non-Quantum -->
+            <div v-if="!isQuantum" 
+                 @click="router.visit(route('billing'), { data: { from: 'habit_ai_locked' } })"
+                 class="absolute inset-0 z-20 flex items-center justify-center bg-white/20 dark:bg-slate-900/20 backdrop-blur-[2px] cursor-pointer rounded-2xl border border-dashed border-indigo-200/50 dark:border-indigo-500/20 hover:backdrop-blur-sm transition-all">
+                <div class="flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+                    <OneForMindIcon name="lock" size="12" />
+                    Neural OS (Quantum Only)
+                </div>
+            </div>
+
             <button @click="getHabitStack" :disabled="isAnalyzing" class="group flex items-center gap-3 px-6 py-3 bg-slate-900 dark:bg-indigo-600 text-white rounded-2xl shadow-xl hover:scale-105 transition-all active:scale-95 border border-white/10 disabled:opacity-50">
                 <div class="relative">
                     <OneForMindIcon name="sparkles" size="18" class="group-hover:rotate-12 transition-transform" />

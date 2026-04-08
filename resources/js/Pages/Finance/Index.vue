@@ -550,7 +550,7 @@ watch(() => props.stats, (newStats) => {
                     <div class="space-y-6 relative group">
                         <!-- Explorer Lock Overlay for Vault -->
                         <div v-if="isExplorer" 
-                             @click="router.visit(route('pricing.index'), { data: { from: 'finance_vault' } })"
+                             @click="router.visit(route('billing'), { data: { from: 'finance_vault' } })"
                              class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white/20 dark:bg-slate-900/20 backdrop-blur-md rounded-[3rem] border border-slate-200 dark:border-slate-800 cursor-pointer group-hover:bg-white/40 dark:group-hover:bg-slate-900/40 transition-all duration-500">
                             <div class="w-16 h-16 rounded-2xl bg-white dark:bg-slate-800 shadow-xl flex items-center justify-center text-3xl mb-4 border border-slate-100 dark:border-slate-700">🔒</div>
                             <h4 class="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest tracking-tighter">The Vault (Wealth)</h4>
