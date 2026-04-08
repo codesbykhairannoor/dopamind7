@@ -210,11 +210,11 @@ onMounted(() => {
                             <OneForMindIcon :name="plan.icon" size="20" stroke-width="2.5" />
                         </div>
                     </div>
-                        <div v-if="plan.initial" class="mt-2 space-y-0.5">
-                            <p class="text-[10px] font-black uppercase tracking-tight" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600 dark:text-indigo-400'">{{ $t(plan.initial) }}</p>
-                            <p v-if="plan.slug !== 'lifetime'" class="text-[9px] font-bold italic" :class="plan.theme === 'dark' ? 'text-slate-600' : 'text-slate-400 dark:text-slate-500'">{{ $t(plan.recurring) }}</p>
-                            <p v-else class="text-[9px] font-bold italic text-amber-500">{{ $t('pricing_feat_l4_triggers') }}</p>
-                        </div>
+
+                    <div v-if="plan.initial" class="mt-2 space-y-0.5">
+                        <p class="text-[10px] font-black uppercase tracking-tight" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600 dark:text-indigo-400'">{{ $t(plan.initial) }}</p>
+                        <p v-if="plan.slug !== 'lifetime'" class="text-[9px] font-bold italic" :class="plan.theme === 'dark' ? 'text-slate-600' : 'text-slate-400 dark:text-slate-500'">{{ $t(plan.recurring) }}</p>
+                        <p v-else class="text-[9px] font-bold italic text-amber-500">{{ $t('pricing_feat_l4_triggers') }}</p>
                     </div>
 
                     <p class="text-xs font-medium mb-8 leading-relaxed min-h-[40px]" :class="plan.theme === 'dark' ? 'text-slate-400' : 'text-slate-500 dark:text-slate-400'">
