@@ -46,7 +46,8 @@ const {
     // 🔥 Modal Batch Habit
     showBatchModal, batchForm, openBatchModal, closeBatchModal, 
     addBatchRow, removeBatchRow, submitBatchHabit, switchToBatch, switchToSingle, handleMouseDown, handleMouseEnter, isCellSelected, 
-    saveHabitOrder
+    saveHabitOrder,
+    isExplorer, habitsCount
 } = useHabits(props);
 
 // Intercept Mood Selection for AI
@@ -83,6 +84,8 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 :todayProgress="todayProgress"
                 :changeMonth="changeMonth"
                 :openCreateModal="openCreateModal"
+                :isExplorer="isExplorer"
+                :habitsCount="habitsCount"
             />
 
             <HabitGrid 
@@ -142,6 +145,8 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 :removeBatchRow="removeBatchRow"
                 :switchToBatch="switchToBatch"
                 :switchToSingle="switchToSingle"
+                :isExplorer="isExplorer"
+                :habitsCount="habitsCount"
             />
         </div>
     </div>

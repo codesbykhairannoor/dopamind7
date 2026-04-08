@@ -4,7 +4,16 @@ import { usePage } from '@inertiajs/vue3';
 export const useGating = () => {
     const page = usePage();
     const user = computed(() => page.props.auth.user);
-    const tier = computed(() => user.value?.tier || 1);
+    
+    const tier = computed(() => {
+        const plans = {
+            'explorer': 1,
+            'architect': 2,
+            'quantum': 3,
+            'legendary': 4
+        };
+        return plans[user.value?.plan_type] || 1;
+    });
 
     /**
      * Tiers:
@@ -28,9 +37,8 @@ export const useGating = () => {
 
             // FINANCE
             case 'finance_budgeting':
-            case 'finance_charts':
-            case 'finance_csv_import':
-                return true;
+            case 'finance_export':
+                return tier.value >= 2;
             case 'finance_ai_audit':
             case 'finance_predictive_burn':
                 return tier.value >= 3;
@@ -58,8 +66,8 @@ export const useGating = () => {
         tier,
         canUse,
         isExplorer: computed(() => tier.value === 1),
-        isArchitect: computed(() => tier.value === 2),
-        isQuantum: computed(() => tier.value === 3),
+        isArchitect: computed(() => tier.value >= 2), // Changed to >= for easier gating
+        isQuantum: computed(() => tier.value >= 3),
         isLegendary: computed(() => tier.value === 4),
     };
 };

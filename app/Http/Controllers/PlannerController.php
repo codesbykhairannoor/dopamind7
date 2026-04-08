@@ -82,12 +82,21 @@ class PlannerController extends Controller
         return back();
     }
 
-   public function batchStore(StoreBatchTaskRequest $request)
+    public function batchStore(StoreBatchTaskRequest $request)
     {
-        $timezone = Auth::user()->timezone ?? 'Asia/Jakarta';
+        $user = Auth::user();
+        
+        if ($user->isExplorer()) {
+            if ($request->wantsJson()) {
+                return response()->json(['message' => 'Batch mode is a Pro feature. Upgrade to Architect!'], 403);
+            }
+            return redirect()->route('pricing.index')->with('error', 'Batch Mode is a Pro feature.');
+        }
+
+        $timezone = $user->timezone ?? 'Asia/Jakarta';
         $date = $request->input('date', now()->timezone($timezone)->format('Y-m-d'));
 
-        $this->plannerService->batchStoreTasks(Auth::id(), $date, $request->tasks, $timezone);
+        $this->plannerService->batchStoreTasks($user->id, $date, $request->tasks, $timezone);
 
         return back()->with('success', count($request->tasks) . ' activities added successfully!');
     }

@@ -47,6 +47,18 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(3)->by($request->ip());
         });
 
+        // 5. LIMITER REGISTRATION (Anti Mass Account Creation)
+        // Batas: 3 registrasi per jam per IP.
+        RateLimiter::for('registration', function (Request $request) {
+            return Limit::perHour(3)->by($request->ip());
+        });
+
+        // 6. LIMITER AI FEATURES (Protect Gemini Quota/Costs)
+        // Batas: 60 request per jam per user.
+        RateLimiter::for('ai_feature', function (Request $request) {
+            return Limit::perHour(60)->by($request->user()?->id ?: $request->ip());
+        });
+
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')

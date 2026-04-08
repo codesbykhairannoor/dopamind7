@@ -5,94 +5,110 @@ import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+
+const { appLocale } = useFinanceFormat();
 
 const isAnnual = ref(true);
 
-const plans = computed(() => [
-    {
-        name: 'pricing_l1_name',
-        slug: 'explorer',
-        price: '0',
-        period: 'pricing_forever',
-        desc: 'pricing_l1_desc',
-        features: [
-            'pricing_feat_l1_habits',
-            'pricing_feat_l1_finance'
-        ],
-        buttonText: 'pricing_free_btn',
-        buttonLink: '#',
-        highlight: false,
-        theme: 'slate'
-    },
-    {
-        name: 'pricing_l2_name',
-        slug: 'architect',
-        price: isAnnual.value ? 'Rp 59k' : 'Rp 89k',
-        initial: 'pricing_l2_initial',
-        recurring: 'pricing_l2_recurring',
-        desc: 'pricing_l2_desc',
-        features: [
-            'pricing_feat_l2_habits',
-            'pricing_feat_l2_finance',
-            'pricing_feat_month_trial'
-        ],
-        buttonText: 'pricing_pro_btn',
-        buttonLink: '#',
-        highlight: false,
-        theme: 'indigo'
-    },
-    {
-        name: 'pricing_l3_name',
-        slug: 'quantum',
-        price: isAnnual.value ? 'Rp 99k' : 'Rp 129k',
-        initial: 'pricing_l3_initial',
-        recurring: 'pricing_l3_recurring',
-        desc: 'pricing_l3_desc',
-        features: [
-            'pricing_feat_l3_ai_coach',
-            'pricing_feat_l3_wealth',
-            'pricing_feat_l3_insights'
-        ],
-        buttonText: 'pricing_ai_btn',
-        buttonLink: '#',
-        highlight: true,
-        theme: 'premium',
-        badge: 'pricing_ai_badge'
-    },
-    {
-        name: 'pricing_l4_name',
-        slug: 'lifetime',
-        price: isAnnual.value ? 'Rp 159k' : 'Rp 199k',
-        initial: 'pricing_l4_initial',
-        recurring: 'pricing_l4_recurring',
-        desc: 'pricing_l4_desc',
-        features: [
-            'pricing_feat_l4_triggers',
-            'pricing_feat_l4_war_room',
-            'pricing_feat_l4_vip'
-        ],
-        buttonText: 'pricing_l4_btn',
-        buttonLink: '#',
-        highlight: false,
-        theme: 'dark',
-        badge: 'pricing_l4_badge'
-    }
-]);
+const plans = computed(() => {
+    const isEn = appLocale.value === 'en';
+    
+    return [
+        {
+            name: 'pricing_l1_name',
+            slug: 'explorer',
+            price: isEn ? '$0' : '0',
+            period: 'pricing_forever',
+            desc: 'pricing_l1_desc',
+            features: [
+                'pricing_feat_l1_habits',
+                'pricing_feat_l1_finance'
+            ],
+            buttonText: 'pricing_free_btn',
+            buttonLink: '#',
+            highlight: false,
+            theme: 'slate'
+        },
+        {
+            name: 'pricing_l2_name',
+            slug: 'architect',
+            price: isEn 
+                ? (isAnnual.value ? '$4.99' : '$6.99') 
+                : (isAnnual.value ? 'Rp 79k' : 'Rp 99k'),
+            initial: 'pricing_l2_initial',
+            recurring: 'pricing_l2_recurring',
+            desc: 'pricing_l2_desc',
+            features: [
+                'pricing_feat_l2_habits',
+                'pricing_feat_l2_finance',
+                'pricing_feat_month_trial'
+            ],
+            buttonText: 'pricing_pro_btn',
+            buttonLink: '#',
+            highlight: false,
+            theme: 'indigo'
+        },
+        {
+            name: 'pricing_l3_name',
+            slug: 'quantum',
+            price: isEn 
+                ? (isAnnual.value ? '$6.99' : '$9.99') 
+                : (isAnnual.value ? 'Rp 109k' : 'Rp 159k'),
+            initial: 'pricing_l3_initial',
+            recurring: 'pricing_l3_recurring',
+            desc: 'pricing_l3_desc',
+            features: [
+                'pricing_feat_l3_ai_coach',
+                'pricing_feat_l3_wealth',
+                'pricing_feat_l3_insights'
+            ],
+            buttonText: 'pricing_ai_btn',
+            buttonLink: '#',
+            highlight: true,
+            theme: 'premium',
+            badge: 'pricing_ai_badge',
+            icon: 'sparkles'
+        },
+        {
+            name: 'pricing_l4_name',
+            slug: 'lifetime',
+            price: isEn ? '$59.00' : 'Rp 899k',
+            initial: 'pricing_l4_initial',
+            recurring: 'pricing_l4_recurring',
+            desc: 'pricing_l4_desc',
+            features: [
+                'pricing_feat_lifetime_access',
+                'pricing_feat_goals_unlocked',
+                'pricing_feat_priority_support'
+            ],
+            buttonText: 'pricing_l4_btn',
+            buttonLink: '#',
+            highlight: false,
+            theme: 'dark',
+            badge: 'pricing_l4_badge',
+            icon: 'infinity'
+        }
+    ];
+});
 
 const checkout = async (plan) => {
     if (!plan || plan.slug === 'explorer') return;
 
     try {
+        const usePaypal = appLocale.value === 'en';
+        const checkoutRoute = usePaypal ? route('paypal.checkout') : route('payment.checkout');
+
         Swal.fire({
             title: 'Preparing Secure Checkout...',
-            html: 'Connecting to Duitku safe gateway',
+            html: `Connecting to ${usePaypal ? 'PayPal' : 'Duitku'} safe gateway`,
             allowOutsideClick: false,
             didOpen: () => {
                 Swal.showLoading();
             }
         });
 
-        const response = await axios.post(route('payment.checkout'), {
+        const response = await axios.post(checkoutRoute, {
             plan: plan.slug
         });
 
@@ -181,15 +197,23 @@ onMounted(() => {
                         {{ $t(plan.badge) }}
                     </div>
 
-                    <div class="mb-6">
-                        <h3 class="text-[10px] font-black uppercase tracking-widest mb-3" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-slate-400 dark:text-slate-500'">{{ $t(plan.name) }}</h3>
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-3xl font-black tracking-tighter" :class="plan.theme === 'dark' ? 'text-white' : 'text-slate-900 dark:text-white'">{{ plan.price }}</span>
-                            <span class="font-bold text-xs" :class="plan.theme === 'dark' ? 'text-slate-500' : 'text-slate-400 dark:text-slate-500'">/{{ $t(plan.period || 'pricing_month') }}</span>
+                    <div class="mb-6 flex justify-between items-start">
+                        <div>
+                            <h3 class="text-[10px] font-black uppercase tracking-widest mb-3" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-slate-400 dark:text-slate-500'">{{ $t(plan.name) }}</h3>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-black tracking-tighter" :class="plan.theme === 'dark' ? 'text-white' : 'text-slate-900 dark:text-white'">{{ plan.price }}</span>
+                                <span v-if="plan.slug !== 'lifetime'" class="font-bold text-xs" :class="plan.theme === 'dark' ? 'text-slate-500' : 'text-slate-400 dark:text-slate-500'">/{{ $t(plan.period || 'pricing_month') }}</span>
+                                <span v-else class="font-bold text-xs text-indigo-400 italic">One-Time</span>
+                            </div>
                         </div>
+                        <div v-if="plan.icon" class="w-10 h-10 rounded-2xl flex items-center justify-center bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600 dark:text-indigo-400'">
+                            <OneForMindIcon :name="plan.icon" size="20" stroke-width="2.5" />
+                        </div>
+                    </div>
                         <div v-if="plan.initial" class="mt-2 space-y-0.5">
                             <p class="text-[10px] font-black uppercase tracking-tight" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600 dark:text-indigo-400'">{{ $t(plan.initial) }}</p>
-                            <p class="text-[9px] font-bold italic" :class="plan.theme === 'dark' ? 'text-slate-600' : 'text-slate-400 dark:text-slate-500'">{{ $t(plan.recurring) }}</p>
+                            <p v-if="plan.slug !== 'lifetime'" class="text-[9px] font-bold italic" :class="plan.theme === 'dark' ? 'text-slate-600' : 'text-slate-400 dark:text-slate-500'">{{ $t(plan.recurring) }}</p>
+                            <p v-else class="text-[9px] font-bold italic text-amber-500">{{ $t('pricing_feat_l4_triggers') }}</p>
                         </div>
                     </div>
 

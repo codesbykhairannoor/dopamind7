@@ -12,7 +12,8 @@ const props = defineProps({
   currentMonthKey: String,
   onChangeDate: Function,
   onAddClick: Function,
-  aiAudit: String
+  aiAudit: String,
+  isExplorer: Boolean
 });
 
 // State & Composables
@@ -101,6 +102,10 @@ const exportExcel = async () => {
 };
 
 const runAiAudit = () => {
+    if (props.isExplorer) {
+        router.get(route('pricing.index'));
+        return;
+    }
     isAiAuditLoading.value = true;
     router.post(route('finance.export.audit'), {
         month: props.currentMonthKey
@@ -220,26 +225,28 @@ const runAiAudit = () => {
               <div class="fixed inset-0 z-[-1]" @click="isExportDropdownOpen = false"></div>
               <div class="relative z-10 space-y-0.5">
                 <button 
-                  @click="exportExcel(); isExportDropdownOpen = false" 
+                  @click="isExplorer ? $inertia.get(route('pricing.index')) : exportExcel(); isExportDropdownOpen = false" 
                   class="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all group/item"
                 >
                   <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover/item:scale-110 transition-transform">
-                    <OneForMindIcon name="excel" size="14" stroke-width="2.5" />
+                    <OneForMindIcon :name="isExplorer ? 'lock' : 'excel'" size="14" stroke-width="2.5" :class="isExplorer ? 'text-amber-500' : ''" />
                   </div>
                   <div class="text-left">
-                    <p class="text-[11px] font-bold text-slate-700 dark:text-slate-200">Export Excel</p>
+                    <p class="text-[11px] font-bold text-slate-700 dark:text-slate-200 flex items-center gap-2">
+                        Export Excel
+                    </p>
                     <p class="text-[9px] text-slate-400 font-medium">Buka di Excel / Sheets</p>
                   </div>
                 </button>
                 <button 
-                  @click="exportTax(); isExportDropdownOpen = false" 
+                  @click="isExplorer ? $inertia.get(route('pricing.index')) : exportTax(); isExportDropdownOpen = false" 
                   class="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all group/item"
                 >
                   <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:scale-110 transition-transform">
-                    <OneForMindIcon name="pdf" size="14" stroke-width="2.5" />
+                    <OneForMindIcon :name="isExplorer ? 'lock' : 'pdf'" size="14" stroke-width="2.5" :class="isExplorer ? 'text-amber-500' : ''" />
                   </div>
                   <div class="text-left">
-                    <p class="text-[11px] font-bold text-slate-700 dark:text-slate-200">Laporan Pajak</p>
+                    <p class="text-[11px] font-bold text-slate-700 dark:text-slate-200 text-left">Laporan Pajak</p>
                     <p class="text-[9px] text-slate-400 font-medium font-mono">Format Fiscal PDF</p>
                   </div>
                 </button>
@@ -248,9 +255,10 @@ const runAiAudit = () => {
                   @click="runAiAudit(); isExportDropdownOpen = false" 
                   :disabled="isAiAuditLoading"
                   class="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all group/item disabled:opacity-50"
+                  :title="isExplorer ? 'Quantum AI Subscription Required' : ''"
                 >
                   <div class="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover/item:scale-110 transition-transform">
-                    <OneForMindIcon :name="isAiAuditLoading ? 'refresh' : 'sparkles'" size="14" stroke-width="2.5" />
+                    <OneForMindIcon :name="isExplorer ? 'lock' : (isAiAuditLoading ? 'refresh' : 'sparkles')" size="14" stroke-width="2.5" :class="isExplorer ? 'text-amber-500' : ''" />
                   </div>
                   <div class="text-left">
                     <p class="text-[11px] font-bold text-slate-700 dark:text-slate-200">AI Financial Audit</p>

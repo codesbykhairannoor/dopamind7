@@ -15,6 +15,8 @@ import PlannerMobileTimeline from './PlannerMobileTimeline.vue';
 import PlannerModal from './PlannerModal.vue';
 import PlannerBatchModal from './PlannerBatchModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import { useGating } from '@/Composables/useGating';
+import { router } from '@inertiajs/vue3';
 
 // 🔥 TERIMA currentDate DARI CONTROLLER
 const props = defineProps({ 
@@ -27,6 +29,9 @@ defineOptions({ layout: AuthenticatedLayout });
 
 // 🔥 INIT CALENDAR LOGIC
 const { currentDate, formattedDate, changeDate, changeDay } = usePlannerCalendar(props.currentDate);
+
+// Init Gating
+const gating = useGating();
 
 // Logic Single (Kirim props ke usePlanner)
 const {
@@ -43,7 +48,14 @@ const {
     addBatchRow, removeBatchRow, submitBatch
 } = usePlannerBatch(currentDate, localTasks); // 🔥 FIX 2: Masukkan localTasks sebagai parameter kedua!
 
-const switchToBatch = () => { isModalOpen.value = false; openBatchModal(); };
+const switchToBatch = () => { 
+    if (gating.isExplorer.value) {
+        router.get(route('pricing.index'), { from: 'planner_batch' });
+        return;
+    }
+    isModalOpen.value = false; 
+    openBatchModal(); 
+};
 const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
 
 // Fungsi Reset
@@ -71,9 +83,10 @@ onMounted(() => {
             :tasks="tasks"
             @change-date="changeDate"
             @change-day="changeDay"
-            :openModal="() => openModal(null, null, 'full')"
+            :onAddClick="() => openModal(null, null, 'full')"
             :resetBoard="handleFullReset"
             :stats="scheduledStats"
+            :isExplorer="gating.isExplorer.value"
         />
 
         <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-500">

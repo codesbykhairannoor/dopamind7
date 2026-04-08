@@ -37,9 +37,9 @@ class HandleInertiaRequests extends Middleware
                     'avatar_url' => $request->user()->avatar_url,
                     'resume_text' => $request->user()->resume_text,
                     'resume_filename' => $request->user()->resume_filename,
-                    'is_premium' => true, // Temporarily unlocked for everyone globally.
-                    'premium_until' => now()->addYears(10), // Give arbitrarily long time
-                    'tier'       => 2, // Force Architect Tier (2) or higher
+                    'is_premium' => $request->user()->is_premium,
+                    'plan_type'  => $request->user()->plan_type,
+                    'premium_until' => $request->user()->premium_until,
                 ] : null,
             ],
 

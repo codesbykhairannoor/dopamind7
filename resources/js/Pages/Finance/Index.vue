@@ -20,9 +20,10 @@ import FinanceBatchModal from './FinanceBatchModal.vue';
 import FinanceInsights from './FinanceInsights.vue'; 
 import SavingCard from './SavingCard.vue';
 import SavingModal from './SavingModal.vue';
+import VaultTransactionModal from './VaultTransactionModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
 import { router } from '@inertiajs/vue3';
-import { Plus, Wallet } from 'lucide-vue-next';
+import { Plus, Wallet, Lock } from 'lucide-vue-next';
 
 // Composables
 import { useFinanceBatch } from '@/Composables/Finance/useFinanceBatch';
@@ -436,6 +437,7 @@ watch(() => props.stats, (newStats) => {
             :currentMonthKey="currentMonthKey"
             :onChangeDate="(payload) => changeMonth(payload)"
             :onAddClick="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
+            :isExplorer="isExplorer"
         />
 
         <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950/50 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-500">
@@ -545,7 +547,15 @@ watch(() => props.stats, (newStats) => {
                     </div>
 
                     <!-- 🏦 THE VAULT (SAVINGS SECTION) - DESKTOP -->
-                    <div class="space-y-6">
+                    <div class="space-y-6 relative group">
+                        <!-- Explorer Lock Overlay for Vault -->
+                        <div v-if="isExplorer" 
+                             @click="$inertia.get(route('pricing.index'), { from: 'finance_vault' })"
+                             class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white/20 dark:bg-slate-900/20 backdrop-blur-md rounded-[3rem] border border-slate-200 dark:border-slate-800 cursor-pointer group-hover:bg-white/40 dark:group-hover:bg-slate-900/40 transition-all duration-500">
+                            <div class="w-16 h-16 rounded-2xl bg-white dark:bg-slate-800 shadow-xl flex items-center justify-center text-3xl mb-4 border border-slate-100 dark:border-slate-700">🔒</div>
+                            <h4 class="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest tracking-tighter">The Vault (Wealth)</h4>
+                            <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-widest">Architect Feature</p>
+                        </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
@@ -582,7 +592,7 @@ watch(() => props.stats, (newStats) => {
                         </div>
                     </div>
 
-                   <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" @day-click="openDetail" />
+                   <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" :isExplorer="isExplorer" @day-click="openDetail" />
                 </div>
  
                 <div class="lg:col-span-2 w-full md:sticky md:top-24 h-fit space-y-6"> 
@@ -605,6 +615,7 @@ watch(() => props.stats, (newStats) => {
                         :expense-stats="localStats.expense_by_category" 
                         :income-stats="localStats.income_by_category" 
                         :budgets="localBudgets" 
+                        :isExplorer="isExplorer"
                         @update-stats="handleOptimisticInvestment"
                     />
                 </div>

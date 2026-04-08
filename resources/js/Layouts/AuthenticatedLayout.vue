@@ -41,6 +41,17 @@ const showModule = (moduleName) => {
     return user.value?.settings?.modules?.[moduleName] !== false;
 };
 
+// --- PLAN CHECKS ---
+const isExplorer = computed(() => user.value?.plan_type === 'explorer');
+const isArchitect = computed(() => ['architect', 'quantum', 'legendary'].includes(user.value?.plan_type));
+const isQuantum = computed(() => ['quantum', 'legendary'].includes(user.value?.plan_type));
+
+const canAccess = (feature) => {
+    const freeFeatures = ['dashboard', 'habit', 'planner', 'finance'];
+    if (freeFeatures.includes(feature)) return true;
+    return isArchitect.value;
+};
+
 const confirmLogout = () => { 
     router.post(route('logout'));
 };
@@ -135,55 +146,71 @@ watch(() => page.url, () => {
                     <div v-if="route().current('finance.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('journal')" :href="route('journal.index')" prefetch
+                <Link v-if="showModule('journal')" :href="canAccess('journal') ? route('journal.index') : route('pricing.index')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('journal.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
-                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
+                        !canAccess('journal') ? 'opacity-80' : ''
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_journal') : ''"
                 >
                     <OneForMindIcon name="journal" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_journal') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm flex items-center justify-between w-full">
+                        {{ $t('nav_item_journal') }}
+                        <OneForMindIcon v-if="!canAccess('journal')" name="lock" size="12" class="text-slate-400 ml-auto" />
+                    </span>
                     <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('calendar')" :href="route('calendar.index')" prefetch
+                <Link v-if="showModule('calendar')" :href="canAccess('calendar') ? route('calendar.index') : route('pricing.index')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('calendar.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
-                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
+                        !canAccess('calendar') ? 'opacity-80' : ''
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_calendar') : ''"
                 >
                     <OneForMindIcon name="calendar" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_calendar') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm flex items-center justify-between w-full">
+                        {{ $t('nav_item_calendar') }}
+                        <OneForMindIcon v-if="!canAccess('calendar')" name="lock" size="12" class="text-slate-400 ml-auto" />
+                    </span>
                     <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('job')" :href="route('jobs.index')" prefetch
+                <Link v-if="showModule('job')" :href="canAccess('job') ? route('jobs.index') : route('pricing.index')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('jobs.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
-                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
+                        !canAccess('job') ? 'opacity-80' : ''
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_jobs') : ''"
                 >
                     <OneForMindIcon name="job" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_jobs') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm flex items-center justify-between w-full">
+                        {{ $t('nav_item_jobs') }}
+                        <OneForMindIcon v-if="!canAccess('job')" name="lock" size="12" class="text-slate-400 ml-auto" />
+                    </span>
                     <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('goal')" :href="route('goals.index')" prefetch
+                <Link v-if="showModule('goal')" :href="canAccess('goal') ? route('goals.index') : route('pricing.index')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('goals.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
-                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
+                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
+                        !canAccess('goal') ? 'opacity-80' : ''
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_goals') : ''"
                 >
                     <OneForMindIcon name="goal" size="18" class="shrink-0" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm">{{ $t('nav_item_goals') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm flex items-center justify-between w-full">
+                        {{ $t('nav_item_goals') }}
+                        <OneForMindIcon v-if="!canAccess('goal')" name="lock" size="12" class="text-slate-400 ml-auto" />
+                    </span>
                     <div v-if="route().current('goals.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
             </nav>
@@ -284,13 +311,14 @@ watch(() => page.url, () => {
                     </Link>
 
                     <!-- AI COACH (CENTER - PROTRUDING) -->
-                    <Link :href="route('coach.index')" prefetch 
+                    <Link :href="canAccess('ai') ? route('coach.index') : route('pricing.index')" prefetch 
                           class="relative -top-5 flex-1 flex flex-col items-center">
                         <div class="w-[4.25rem] h-[4.25rem] bg-slate-900 dark:bg-indigo-600 rounded-[1.75rem] flex items-center justify-center shadow-2xl shadow-indigo-300 dark:shadow-none transition-all active:scale-90 border-[6px] border-white dark:border-slate-900 overflow-hidden group">
                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                           <OneForMindIcon name="sparkles" size="26" class="text-white relative z-10" />
+                           <OneForMindIcon v-if="canAccess('ai')" name="sparkles" size="26" class="text-white relative z-10" />
+                           <OneForMindIcon v-else name="lock" size="26" class="text-white relative z-10" />
                         </div>
-                        <span class="mt-1 text-[9px] font-black text-indigo-600 dark:text-indigo-400">OS AI</span>
+                        <span class="mt-1 text-[9px] font-black text-indigo-600 dark:text-indigo-400">{{ canAccess('ai') ? 'OS AI' : 'UNLOCK AI' }}</span>
                     </Link>
 
                     <!-- More Launcher -->
@@ -338,7 +366,7 @@ watch(() => page.url, () => {
         <!-- FLOATING AI COACH BUTTON (DESKTOP ONLY) -->
         <Link 
             v-if="!route().current('coach.*')"
-            :href="route('coach.index')" 
+            :href="canAccess('ai') ? route('coach.index') : route('pricing.index')" 
             prefetch
             class="hidden md:block fixed bottom-10 right-10 z-[100] group"
         >

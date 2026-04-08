@@ -27,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'settings',
         'avatar_path',
         'is_premium',
+        'plan_type',
         'premium_until',
         'resume_text',
         'resume_filename',
@@ -150,5 +151,47 @@ class User extends Authenticatable implements MustVerifyEmail
     public function goals(): HasMany
     {
         return $this->hasMany(Goal::class);
+    }
+
+    /**
+     * ==========================================
+     * SUBSCRIPTION HELPERS
+     * ==========================================
+     */
+
+    public function isExplorer(): bool
+    {
+        return $this->plan_type === 'explorer';
+    }
+
+    public function isArchitect(): bool
+    {
+        return in_array($this->plan_type, ['architect', 'quantum', 'legendary']);
+    }
+
+    public function isQuantum(): bool
+    {
+        return in_array($this->plan_type, ['quantum', 'legendary']);
+    }
+
+    public function isLegendary(): bool
+    {
+        return $this->plan_type === 'legendary';
+    }
+
+    public function hasFeature(string $featureGroup): bool
+    {
+        $freeGroups = ['habits', 'finance', 'planner'];
+        
+        if (in_array($featureGroup, $freeGroups)) {
+            return true;
+        }
+
+        return $this->isArchitect();
+    }
+
+    public function hasAiFeature(): bool
+    {
+        return $this->isQuantum();
     }
 }

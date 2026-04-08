@@ -48,16 +48,22 @@ class SecurityHeaders
         }
         else {
             // PRODUCTION: Ketat tapi tetap izinkan Midtrans
-            $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $midtransUrls $externalSources; ";
+            $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+            
+            $csp = "default-src 'self'; ";
             $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com $midtransUrls $externalSources; ";
             $csp .= "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://fonts.googleapis.com https://cdnjs.cloudflare.com $externalSources; ";
             $csp .= "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com; ";
             $csp .= "font-src 'self' data: https://fonts.bunny.net https://fonts.gstatic.com https://fonts.googleapis.com; ";
             $csp .= "worker-src 'self' blob:; ";
-            $csp .= "frame-src *; ";
+            $csp .= "frame-src 'self' $midtransUrls; "; // Batasi frame hanya untuk self & midtrans
+            $csp .= "frame-ancestors 'self'; "; // Cegah clickjacking ketat
             $csp .= "connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com $midtransUrls $externalSources; ";
             $csp .= "upgrade-insecure-requests;";
         }
+
+        // 3. Permissions Policy (Matikan fitur hardware yang tidak dipakai)
+        $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(self)');
 
         $cleanCsp = str_replace(["\r", "\n"], '', $csp);
         $response->headers->set('Content-Security-Policy', $cleanCsp);

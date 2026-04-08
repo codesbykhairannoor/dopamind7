@@ -18,17 +18,16 @@ class PaymentController extends Controller
         $env = config('duitku.env');
 
         $plan = $request->input('plan', 'architect');
-
-        $paymentAmount = 25000;
-        $productDetails = 'OneForMind Architect (Pro) Unlock';
+        $paymentAmount = 79000;
+        $productDetails = 'OneForMind Architect (Pro) - Unlock Plus';
 
         if ($plan === 'quantum') {
-            $paymentAmount = 49000;
-            $productDetails = 'OneForMind Quantum (AI) - 1 Bulan';
+            $paymentAmount = 109000;
+            $productDetails = 'OneForMind Quantum (AI) - Initial Unlock';
         }
         elseif ($plan === 'lifetime') {
-            $paymentAmount = 249000;
-            $productDetails = 'OneForMind Mind Master (Lifetime)';
+            $paymentAmount = 899000;
+            $productDetails = 'OneForMind Legendary Founder Edition';
         }
 
         $merchantOrderId = strtoupper($plan) . '-' . $user->id . '-' . time();

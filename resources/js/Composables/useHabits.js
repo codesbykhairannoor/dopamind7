@@ -1,3 +1,5 @@
+import { computed } from 'vue';
+import { usePage } from '@inertiajs/vue3';
 import { useHabitCore } from './Habits/useHabitCore';
 import { useHabitDates } from './Habits/useHabitDates';
 import { useHabitModals } from './Habits/useHabitModals';
@@ -11,6 +13,13 @@ export function useHabits(props) {
 
     // 3. Ekstrak dari Modals (gabungkan dengan data yang dibutuhkan)
     const modals = useHabitModals(props, core.localHabits);
+
+    const page = usePage();
+
+    const user = computed(() => page.props.auth.user);
+    const planType = computed(() => user.value?.plan_type || 'explorer');
+    const isExplorer = computed(() => planType.value === 'explorer');
+    const habitsCount = computed(() => props.habits.data.length);
 
     // Menggabungkan semua return dari 3 composable di atas
     return {
@@ -64,6 +73,11 @@ export function useHabits(props) {
         showCopyModal: modals.showCopyModal,
         openCopyModal: modals.openCopyModal,
         executeCopy: modals.executeCopy,
+
+        // Gating
+        isExplorer,
+        habitsCount,
+        planType,
 
         // Batch Modal
         showBatchModal: modals.showBatchModal,

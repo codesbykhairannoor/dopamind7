@@ -9,7 +9,8 @@ import { trans } from 'laravel-vue-i18n';
 const props = defineProps({
     expenseStats: { type: Object, default: () => ({}) },
     incomeStats: { type: Object, default: () => ({}) },
-    budgets: { type: Array, default: () => [] }
+    budgets: { type: Array, default: () => [] },
+    isExplorer: Boolean
 });
 
 const emit = defineEmits(['update-stats']);
@@ -183,6 +184,15 @@ const handleQuit = (asset) => {
 <template>
     <div class="mt-6 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div class="bg-indigo-900 dark:bg-slate-950 rounded-[2rem] p-1 shadow-2xl dark:shadow-none shadow-indigo-200/50 dark:shadow-indigo-900/20 relative overflow-hidden group transition-all duration-500">
+            <!-- Explorer Lock Overlay for Investment -->
+            <div v-if="isExplorer" 
+                 @click="$inertia.get(route('pricing.index'), { from: 'finance_investment' })"
+                 class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-indigo-900/40 backdrop-blur-md cursor-pointer group-hover:bg-indigo-900/60 transition-all duration-500">
+                <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-xl mb-3">🔒</div>
+                <h4 class="text-[11px] font-black text-white uppercase tracking-widest tracking-tighter">Investment Lab</h4>
+                <p class="text-[9px] font-bold text-indigo-200 mt-1 uppercase tracking-widest">Architect Feature Only</p>
+            </div>
+            
             <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-indigo-900 dark:from-indigo-900 dark:to-slate-950 transition-all duration-500"></div>
             <div class="absolute -right-10 -top-10 w-32 h-32 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-1000"></div>
 

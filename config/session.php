@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'encrypt' => false,
+    'encrypt' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -171,7 +171,7 @@ return [
     | secure automatically. You can still override via env var if needed.
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE', env('APP_ENV') === 'production'),
+    'secure' => true,
 
     /*
     |--------------------------------------------------------------------------

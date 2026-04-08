@@ -14,7 +14,8 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 const props = defineProps({ 
     transactions: Array, 
-    currentDate: String 
+    currentDate: String,
+    isExplorer: Boolean
 });
 
 // 🔥 Wajib daftarkan emit agar Index.vue bisa mendengarkan klik
@@ -120,7 +121,17 @@ const monthInsights = computed(() => {
 </script>
 
 <template>
-    <div class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-[2rem] shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 w-full mt-8 animate-in fade-in slide-in-from-bottom-4 duration-700 transition-all duration-500">
+    <div class="relative group">
+        <!-- Explorer Lock Overlay -->
+        <div v-if="isExplorer" 
+             @click="$inertia.get(route('pricing.index'), { from: 'finance_chart' })"
+             class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white/20 dark:bg-slate-900/20 backdrop-blur-md rounded-[2rem] border border-slate-200 dark:border-slate-800 cursor-pointer group-hover:bg-white/40 dark:group-hover:bg-slate-900/40 transition-all duration-500">
+            <div class="w-16 h-16 rounded-2xl bg-white dark:bg-slate-800 shadow-xl flex items-center justify-center text-3xl mb-4 border border-slate-100 dark:border-slate-700">🔒</div>
+            <h4 class="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest tracking-tighter">Advanced Analytics</h4>
+            <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-widest">Upgrade to Architect to unlock Trends</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-6 md:p-8 rounded-[2rem] shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 w-full mt-8 animate-in fade-in slide-in-from-bottom-4 duration-700 transition-all duration-500">
         
         <div class="flex justify-between items-start mb-6">
             <div>

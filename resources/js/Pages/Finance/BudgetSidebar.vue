@@ -6,7 +6,8 @@ const props = defineProps({
     budgets: Array,
     categories: Array, 
     expenseStats: Object,
-    incomeStats: Object 
+    incomeStats: Object,
+    isExplorer: Boolean
 });
 
 const emit = defineEmits(['add', 'delete-budget', 'edit-budget', 'add-category', 'edit-category', 'delete-category']);
@@ -52,10 +53,20 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
             
             <div class="flex justify-between items-center">
                 <h3 class="font-bold text-slate-800 dark:text-white text-sm transition-colors duration-500">{{ $t('budget_target') }}</h3>
-                <button @click="$emit('add')" class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-2.5 py-1.5 rounded-lg border border-indigo-100 dark:border-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition duration-300">+ {{ $t('set_budget') }}</button>
+                <button 
+                  @click="$emit('add')" 
+                  class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-2.5 py-1.5 rounded-lg border border-indigo-100 dark:border-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition duration-300 flex items-center gap-1.5"
+                >
+                  <span>+</span>
+                  {{ $t('set_budget') }}
+                </button>
             </div>
 
-            <div v-if="budgets.length === 0" class="text-center py-8 text-xs text-slate-400 dark:text-slate-600 border border-dashed border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 transition-colors duration-500">
+            <div v-if="false">
+                <!-- Removed Explorer Lock for Budgeting -->
+            </div>
+
+            <div v-else-if="budgets.length === 0" class="text-center py-8 text-xs text-slate-400 dark:text-slate-600 border border-dashed border-slate-200 dark:border-slate-800 rounded-xl bg-slate-50/50 dark:bg-slate-800/30 transition-colors duration-500">
                 <span class="text-2xl block mb-2">🎯</span>
                 {{ $t('no_budget') }}
             </div>

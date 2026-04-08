@@ -104,7 +104,7 @@
                 <div class="bg-white p-8 rounded-[2.5rem] border border-indigo-100 shadow-xl shadow-indigo-50/50 flex flex-col text-left group hover:-translate-y-2 transition duration-500 h-full relative border-t-8 border-t-indigo-600">
                     <h3 class="text-[10px] font-black text-indigo-600 uppercase mb-4 tracking-widest">{{ __('pricing_l2_name') }}</h3>
                     <div class="mb-4">
-                        <div class="text-2xl font-black text-gray-900 leading-tight" x-text="annual ? 'Rp 59rb' : 'Rp 89rb'">Rp 59rb</div>
+                        <div class="text-2xl font-black text-gray-900 leading-tight" x-text="annual ? '{{ __('pricing_l2_price_yr') }}' : '{{ __('pricing_l2_price_mo') }}'">{{ __('pricing_l2_price_yr') }}</div>
                         <div class="text-gray-400 font-bold text-[10px]">/{{ __('pricing_month') }}</div>
                     </div>
                     <div class="mb-6">
@@ -138,7 +138,7 @@
                     </div>
                     <h3 class="text-[10px] font-black text-indigo-600 uppercase mb-4 tracking-widest">{{ __('pricing_l3_name') }}</h3>
                     <div class="mb-4">
-                        <div class="text-2xl font-black text-gray-900 leading-tight" x-text="annual ? 'Rp 99rb' : 'Rp 129rb'">Rp 99rb</div>
+                        <div class="text-2xl font-black text-gray-900 leading-tight" x-text="annual ? '{{ __('pricing_l3_price_yr') }}' : '{{ __('pricing_l3_price_mo') }}'">{{ __('pricing_l3_price_yr') }}</div>
                         <div class="text-gray-400 font-bold text-[10px]">/{{ __('pricing_month') }}</div>
                     </div>
                     <div class="mb-6">
@@ -172,7 +172,7 @@
                     </div>
                     <h3 class="text-[10px] font-black text-indigo-400 uppercase mb-4 tracking-widest">{{ __('pricing_l4_name') }}</h3>
                     <div class="mb-4">
-                        <div class="text-2xl font-black text-white leading-tight" x-text="annual ? 'Rp 159rb' : 'Rp 199rb'">Rp 159rb</div>
+                        <div class="text-2xl font-black text-white leading-tight" x-text="annual ? '{{ __('pricing_l4_price_yr') }}' : '{{ __('pricing_l4_price_mo') }}'">{{ __('pricing_l4_price_yr') }}</div>
                         <div class="text-slate-500 font-bold text-[10px]">/{{ __('pricing_month') }}</div>
                     </div>
                     <div class="mb-6">
@@ -593,9 +593,7 @@
                         <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto px-12 py-5 rounded-2xl bg-white text-indigo-600 font-black text-xl hover:bg-slate-50 transition transform hover:scale-105 shadow-2xl active:scale-95">
                             {{ __('pricing_bottom_cta_btn') }}
                         </a>
-                        <p class="text-[10px] font-black uppercase tracking-widest text-indigo-200">
-                             FREE 30-DAY ARCHITECT TRIAL INCLUDED
-                        </p>
+                             {{ __('pricing_bottom_cta_sub') }}
                     </div>
                 </div>
             </div>

@@ -12,6 +12,8 @@ const props = defineProps({
   todayProgress: [Number, String],
   changeMonth: Function,
   openCreateModal: Function,
+  isExplorer: Boolean,
+  habitsCount: Number,
 });
 
 const isOpen = ref(false);
@@ -130,15 +132,28 @@ const changeYear = (offset) => {
           </div>
 
           <button 
-            @click="openCreateModal" 
+            @click="isExplorer && habitsCount >= 5 ? $inertia.get(route('pricing.index', { from: 'habit_limit' })) : openCreateModal()" 
             class="h-[46px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-100 dark:shadow-indigo-900/40 transition-all duration-300 whitespace-nowrap"
+            :class="{ 'opacity-80 grayscale-[0.3]': isExplorer && habitsCount >= 5 }"
           >
             <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
-              <OneForMindIcon name="plus" size="16" stroke-width="3" />
+              <OneForMindIcon :name="isExplorer && habitsCount >= 5 ? 'lock' : 'plus'" size="16" stroke-width="3" />
             </div>
-            <span class="hidden md:inline text-xs">{{ $t('btn_add_habit') }}</span>
+            <span class="hidden md:inline text-xs">
+                {{ isExplorer && habitsCount >= 5 ? 'Limit Reached' : $t('btn_add_habit') }}
+            </span>
           </button>
         </div>
+      </div>
+
+      <div v-if="isExplorer && habitsCount >= 5" class="mt-4 p-3 bg-rose-50 dark:bg-rose-550/10 border border-rose-100 dark:border-rose-500/20 rounded-2xl flex items-center justify-between text-[10px] md:text-xs">
+          <div class="flex items-center gap-3">
+              <span class="text-xl">⚠️</span>
+              <p class="font-bold text-rose-600 dark:text-rose-400">
+                  {{ $t('habit_limit_reached', 'Anda telah mencapai batas 5 habit untuk akun Explorer.') }}
+              </p>
+          </div>
+          <button @click="$inertia.get(route('pricing.index'))" class="bg-indigo-600 text-white px-4 py-1.5 rounded-lg font-black uppercase tracking-widest text-[9px] hover:bg-indigo-700 transition">Upgrade</button>
       </div>
 
       <Transition name="fade">

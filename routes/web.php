@@ -14,6 +14,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\FinanceSavingController;
+use App\Http\Controllers\PayPalController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
@@ -440,18 +441,24 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::get('/category/check/{category}', [FinanceController::class, 'checkCategoryUsage'])->name('category.check');
             Route::post('/category/rename', [FinanceController::class, 'renameCategory'])->name('category.rename');
 
-            Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
-            Route::put('/budget/{financeBudget}', [FinanceController::class, 'updateBudget'])->name('budget.update');
-            Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy');
+            Route::middleware('subscription:pro')->group(function () {
+                Route::post('/budget', [FinanceController::class, 'storeBudget'])->name('budget.store');
+                Route::put('/budget/{financeBudget}', [FinanceController::class, 'updateBudget'])->name('budget.update');
+                Route::delete('/budget/{financeBudget}', [FinanceController::class, 'destroyBudget'])->name('budget.destroy');
+            });
 
             Route::post('/categories', [FinanceController::class, 'storeCategory'])->name('categories.store');
             Route::put('/categories/{category}', [FinanceController::class, 'updateCategory'])->name('categories.update');
             Route::delete('/categories/{category}', [FinanceController::class, 'destroyCategory'])->name('categories.destroy');
 
             // Exports & Settings
-            Route::get('/export/excel', [FinanceController::class, 'exportExcel'])->name('export.excel');
-            Route::get('/export/tax', [FinanceController::class, 'exportTax'])->name('export.tax');
-            Route::post('/export/audit', [FinanceController::class, 'runAudit'])->name('export.audit');
+            Route::middleware('subscription:pro')->group(function () {
+                Route::get('/export/excel', [FinanceController::class, 'exportExcel'])->name('export.excel');
+                Route::get('/export/tax', [FinanceController::class, 'exportTax'])->name('export.tax');
+            });
+            Route::post('/export/audit', [FinanceController::class, 'runAudit'])
+                ->middleware(['throttle:ai_feature', 'subscription:ai'])
+                ->name('export.audit');
             Route::post('/settings/currency', [FinanceController::class, 'updateCurrency'])->name('settings.currency');
 
             // Savings / Vault
@@ -466,7 +473,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     );
 
     // --- MODULE: JOURNAL ---
-    Route::middleware(['module:journal'])->prefix('journal')->name('journal.')->group(
+    Route::middleware(['module:journal', 'subscription:pro'])->prefix('journal')->name('journal.')->group(
         function () {
             Route::get('/', [JournalController::class, 'index'])->name('index');
             Route::get('/write/{id?}', [JournalController::class, 'write'])->name('write');
@@ -484,7 +491,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     );
 
     // --- MODULE: CALENDAR ---
-    Route::middleware(['module:calendar'])->prefix('calendar')->name('calendar.')->group(
+    Route::middleware(['module:calendar', 'subscription:pro'])->prefix('calendar')->name('calendar.')->group(
         function () {
             Route::get('/', [CalendarController::class, 'index'])->name('index');
 
@@ -496,7 +503,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     );
 
     // Job Tracker Routes
-    Route::middleware(['module:job'])->prefix('jobs')->name('jobs.')->group(
+    Route::middleware(['module:job', 'subscription:pro'])->prefix('jobs')->name('jobs.')->group(
         function () {
             Route::get('/', [\App\Http\Controllers\JobController::class, 'index'])->name('index');
             Route::post('/', [\App\Http\Controllers\JobController::class, 'store'])->name('store');
@@ -510,7 +517,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     );
 
     // Goal Tracker Routes
-    Route::middleware(['module:goal'])->prefix('goals')->name('goals.')->group(
+    Route::middleware(['module:goal', 'subscription:pro'])->prefix('goals')->name('goals.')->group(
         function () {
             Route::get('/', [\App\Http\Controllers\GoalController::class, 'index'])->name('index');
             Route::post('/', [\App\Http\Controllers\GoalController::class, 'store'])->name('store');
@@ -553,10 +560,14 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     Route::get('/payment/unfinish', [\App\Http\Controllers\PaymentController::class, 'unfinish'])->name('payment.unfinish');
     Route::get('/payment/error', [\App\Http\Controllers\PaymentController::class, 'error'])->name('payment.error');
 
+    // PayPal Payments
+    Route::post('/paypal/checkout', [PayPalController::class, 'createOrder'])->name('paypal.checkout');
+    Route::get('/paypal/success', [PayPalController::class, 'success'])->name('paypal.success');
+
     // AI Coach
     Route::get('/dashboard/insight', [\App\Http\Controllers\DashboardController::class, 'getInsight'])->name('dashboard.insight');
     
-    Route::prefix('coach')->name('coach.')->group(function () {
+    Route::prefix('coach')->name('coach.')->middleware(['throttle:ai_feature', 'subscription:ai'])->group(function () {
         Route::get('/', [\App\Http\Controllers\AiCoachController::class, 'index'])->name('index');
         Route::post('/chat', [\App\Http\Controllers\AiCoachController::class, 'chat'])->name('chat');
         Route::post('/synergy', [\App\Http\Controllers\AiCoachController::class, 'synergy'])->name('synergy');

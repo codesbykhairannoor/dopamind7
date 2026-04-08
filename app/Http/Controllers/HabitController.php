@@ -55,7 +55,19 @@ class HabitController extends Controller
 
     public function store(StoreHabitRequest $request)
     {
-        $habit = $this->habitService->createHabit(Auth::id(), $request->validated());
+        $user = Auth::user();
+        
+        if ($user->isExplorer()) {
+            $count = Habit::ofUser($user->id)->forPeriod($request->period)->count();
+            if ($count >= 5) {
+                if ($request->wantsJson()) {
+                    return response()->json(['message' => 'Explorer limit reached. Only 5 habits allowed.'], 403);
+                }
+                return back()->with('error', 'Explorer limit reached (max 5 habits). Upgrade to Architect to add more!');
+            }
+        }
+
+        $habit = $this->habitService->createHabit($user->id, $request->validated());
 
         if ($request->wantsJson()) {
             return response()->json(['message' => 'Habit created', 'data' => new HabitResource($habit)], 201);
@@ -127,7 +139,20 @@ class HabitController extends Controller
             'habits.*.monthly_target' => 'required|integer|min:1|max:31',
         ]);
 
-        $this->habitService->batchStore(Auth::id(), $request->period, $request->habits, Auth::user()->timezone ?? 'Asia/Jakarta');
+        $user = Auth::user();
+        if ($user->isExplorer()) {
+            $currentCount = Habit::ofUser($user->id)->forPeriod($request->period)->count();
+            $newCount = count($request->habits);
+            
+            if (($currentCount + $newCount) > 5) {
+                if ($request->wantsJson()) {
+                    return response()->json(['message' => 'Explorer limit exceeded. Maximum 5 habits total.'], 403);
+                }
+                return back()->with('error', 'Explorer limit exceeded. You can only have 5 habits total.');
+            }
+        }
+
+        $this->habitService->batchStore($user->id, $request->period, $request->habits, $user->timezone ?? 'Asia/Jakarta');
 
         if ($request->wantsJson()) return response()->json(['message' => 'Batch habits saved.']);
         return back()->with('success', 'Habit berhasil ditambahkan secara massal!');
