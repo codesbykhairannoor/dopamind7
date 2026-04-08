@@ -36,9 +36,9 @@ const plans = computed(() => {
             price: isEn 
                 ? (isAnnual.value ? '$4.99' : '$6.99') 
                 : (isAnnual.value ? 'Rp 79k' : 'Rp 99k'),
-            initial: 'pricing_l2_initial',
+            initial: 'Subscription Base',
             recurring: 'pricing_l2_recurring',
-            desc: 'pricing_l2_desc',
+            desc: 'Unlock kerangka kerja produktivitas dan finansial lengkap. (Sistem Berlangganan)',
             features: [
                 'pricing_feat_l2_habits',
                 'pricing_feat_l2_finance',
@@ -55,9 +55,9 @@ const plans = computed(() => {
             price: isEn 
                 ? (isAnnual.value ? '$6.99' : '$9.99') 
                 : (isAnnual.value ? 'Rp 109k' : 'Rp 159k'),
-            initial: 'pricing_l3_initial',
+            initial: 'Neural Intelligence Subscription',
             recurring: 'pricing_l3_recurring',
-            desc: 'pricing_l3_desc',
+            desc: 'Kecerdasan Buatan terintegrasi untuk pertumbuhan eksponensial. (Sistem Berlangganan)',
             features: [
                 'pricing_feat_l3_ai_coach',
                 'pricing_feat_l3_wealth',

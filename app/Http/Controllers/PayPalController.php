@@ -15,26 +15,45 @@ class PayPalController extends Controller
     public function createOrder(Request $request)
     {
         $plan = $request->input('plan', 'architect');
+        $billing = $request->input('billing', 'yearly');
         
-        // Map Plans to USD Prices
+        // Map Plan + Billing to USD Prices
         $prices = [
-            'architect' => 4.99,
-            'quantum'   => 6.99,
-            'lifetime'  => 59.00
+            'architect' => [
+                'yearly' => 4.99,
+                'monthly' => 6.99
+            ],
+            'quantum' => [
+                'yearly' => 6.99,
+                'monthly' => 9.99
+            ],
+            'lifetime' => [
+                'yearly' => 59.00,
+                'monthly' => 59.00
+            ]
         ];
 
-        $amount = $prices[$plan] ?? 4.99;
-        $description = "OneForMind Subscription: " . ucfirst($plan);
+        $amount = $prices[$plan][$billing] ?? 4.99;
+        $description = "OneForMind " . ucfirst($plan) . " (" . ucfirst($billing) . ") Subscription";
+        
+        if ($plan === 'lifetime') {
+            $description = "OneForMind Legendary Founder (Lifetime Access)";
+        }
 
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
-        $paypalToken = $provider->getAccessToken();
+        try {
+            $paypalToken = $provider->getAccessToken();
+        } catch (\Exception $e) {
+            Log::error('PayPal Auth Error: ' . $e->getMessage());
+            return response()->json(['error' => 'Gagal autentikasi PayPal. Periksa konfigurasi API.'], 500);
+        }
 
         $response = $provider->createOrder([
             "intent" => "CAPTURE",
             "application_context" => [
-                "return_url" => route('paypal.success', ['plan' => $plan]),
-                "cancel_url" => route('pricing.index'),
+                "return_url" => route('paypal.success', ['plan' => $plan, 'billing' => $billing]),
+                "cancel_url" => route('billing'),
             ],
             "purchase_units" => [
                 0 => [
@@ -74,8 +93,9 @@ class PayPalController extends Controller
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             $user = auth()->user();
             $planType = strtoupper($request->query('plan', 'ARCHITECT'));
+            $billing = $request->query('billing', 'yearly');
             
-            $duration = 1; // Month
+            $duration = $billing === 'yearly' ? 12 : 1; 
             if ($planType === 'LIFETIME') {
                 $duration = 1200; // 100 years
             }

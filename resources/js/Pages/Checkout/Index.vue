@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
-import { Head, router } from '@inertiajs/vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Head, Link } from '@inertiajs/vue3';
+import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -22,8 +22,6 @@ const isLegendary = computed(() => props.plan.toLowerCase().includes('lifetime')
 
 const periodLabel = computed(() => {
     if (isLegendary.value) return 'One-Time Payment';
-    // If it's Architect or Quantum, it's a subscription. 
-    // We can infer yearly/monthly from the price string if needed, or default to appropriate text
     const priceStr = props.price.toLowerCase();
     if (priceStr.includes('79') || priceStr.includes('109')) return 'per Year';
     return 'per Month';
@@ -43,7 +41,8 @@ const initiatePayment = async (method) => {
 
     try {
         const response = await axios.post(route(routeName), {
-            plan: props.plan.toLowerCase()
+            plan: props.plan.toLowerCase(),
+            billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
         });
 
         if (response.data.paymentUrl) {
@@ -52,10 +51,11 @@ const initiatePayment = async (method) => {
             throw new Error('No payment URL received');
         }
     } catch (e) {
+        console.error('Checkout API Error:', e.response?.data || e.message);
         Swal.fire({
             icon: 'error',
             title: 'Gateway Error',
-            text: 'Gagal menghubungi server pembayaran. Silakan coba lagi.',
+            text: e.response?.data?.error || 'Gagal menghubungi server pembayaran. Silakan coba lagi.',
             confirmButtonColor: '#4f46e5'
         });
     }
@@ -65,101 +65,138 @@ const initiatePayment = async (method) => {
 <template>
     <Head title="Checkout Summary" />
 
-    <AuthenticatedLayout>
-        <div class="min-h-screen py-12 px-4 bg-slate-50/30 dark:bg-slate-950/20">
-            <div class="max-w-4xl mx-auto">
+    <div class="min-h-screen bg-slate-50 dark:bg-slate-950 selection:bg-indigo-100 dark:selection:bg-indigo-900/40">
+        
+        <!-- Top Navigation -->
+        <nav class="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
+            <Link href="/" class="group flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-xl shadow-indigo-200 dark:shadow-none transition-transform group-hover:scale-110">
+                    <ApplicationLogo class="w-8 h-8 fill-current" />
+                </div>
+                <span class="text-xl font-black text-slate-900 dark:text-white tracking-tighter uppercase transition-colors group-hover:text-indigo-600">OneForMind</span>
+            </Link>
+            
+            <Link :href="route('billing')" class="text-xs font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase tracking-[0.2em] flex items-center gap-2 group">
+                <OneForMindIcon name="chevron-left" size="14" class="transition-transform group-hover:-translate-x-1" stroke-width="4" />
+                Back to Pricing
+            </Link>
+        </nav>
+
+        <main class="max-w-6xl mx-auto px-6 py-12 md:py-20 lg:py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
                 
-                <!-- Back Button -->
-                <button @click="window.history.back()" class="flex items-center gap-2 text-xs font-black text-slate-400 hover:text-indigo-600 transition-colors mb-8 uppercase tracking-widest">
-                    <OneForMindIcon name="chevron-left" size="14" stroke-width="4" />
-                    Back to Selection
-                </button>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    
-                    <!-- Left: Order Summary -->
-                    <div class="space-y-6">
-                        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none">
-                            <h2 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-6">Order Summary</h2>
-                            
-                            <div class="flex items-center gap-4 mb-8">
-                                <div class="w-16 h-16 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-100 dark:shadow-none">
-                                    <OneForMindIcon :name="isQuantum || isLegendary ? 'sparkles' : 'shield-check'" size="32" />
-                                </div>
-                                <div class="min-w-0">
-                                    <h3 class="text-2xl font-black text-slate-900 dark:text-white truncate">OneForMind {{ plan }}</h3>
-                                    <p class="text-sm font-bold text-indigo-600 dark:text-indigo-400 capitalize">
-                                        {{ price }} / {{ periodLabel }}
-                                    </p>
-                                    <p v-if="isArchitect" class="text-[10px] font-black text-emerald-500 uppercase tracking-widest mt-1">
-                                        ★ 14-Day Free Trial Included
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="space-y-4 pt-6 border-t border-slate-50 dark:border-slate-800">
-                                <div v-for="feat in features" :key="feat" class="flex gap-3">
-                                    <OneForMindIcon name="check" size="14" class="text-emerald-500 shrink-0 mt-0.5" stroke-width="4" />
-                                    <span class="text-xs font-bold text-slate-600 dark:text-slate-400">{{ feat }}</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-8 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-200 dark:border-slate-700">
-                                <div class="flex justify-between items-center text-slate-800 dark:text-white">
-                                    <span class="text-sm font-black">Total Amount</span>
-                                    <span class="text-xl font-black tracking-tight">{{ price }}</span>
-                                </div>
-                            </div>
+                <!-- Left: Product Value -->
+                <div class="space-y-12 animate-in fade-in slide-in-from-left-8 duration-700">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-black text-[10px] mb-6 uppercase tracking-widest border border-indigo-100 dark:border-indigo-500/20 shadow-sm">
+                            🔒 Secure Subscription Checkout
                         </div>
+                        <h1 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 leading-[1.1] tracking-tighter">
+                            Upgrade to <br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400 dark:from-indigo-400 dark:to-indigo-200">{{ plan }} Experience</span>
+                        </h1>
+                        <p class="text-lg text-slate-500 dark:text-slate-400 font-bold leading-relaxed max-w-md">
+                            Bergabunglah dengan ribuan achiever lainnya yang telah mengoptimalkan hidup mereka dengan ekosistem kami.
+                        </p>
+                    </div>
 
-                        <!-- Trust Badge -->
-                        <div class="flex items-center justify-center gap-6 opacity-40 grayscale">
-                            <OneForMindIcon name="lock" size="24" />
-                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-500">Bank-Level Security & SSL Encryption</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div v-for="feat in features" :key="feat" class="flex gap-4 p-4 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-sm transition-transform hover:scale-105 duration-300">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center shrink-0">
+                                <OneForMindIcon name="check" size="14" class="text-emerald-500" stroke-width="4" />
+                            </div>
+                            <span class="text-xs font-bold text-slate-600 dark:text-slate-300 leading-tight flex items-center">{{ feat }}</span>
                         </div>
                     </div>
 
-                    <!-- Right: Payment Methods -->
-                    <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none">
-                        <h2 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Select Payment Method</h2>
+                    <div class="pt-8 border-t border-slate-100 dark:border-slate-800 flex items-center gap-6 opacity-30 grayscale hover:grayscale-0 transition-all duration-500">
+                        <div class="flex items-center gap-2">
+                             <OneForMindIcon name="lock" size="16" class="text-slate-400" />
+                             <span class="text-[10px] font-black uppercase tracking-widest text-slate-500">Bank-Level Security</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                             <OneForMindIcon name="shield-check" size="16" class="text-slate-400" />
+                             <span class="text-[10px] font-black uppercase tracking-widest text-slate-500">Certified Encryption</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Payment Card -->
+                <div class="relative animate-in fade-in slide-in-from-bottom-12 duration-1000">
+                    <!-- Dynamic Glow -->
+                    <div class="absolute inset-0 bg-indigo-500/10 dark:bg-indigo-500/10 blur-[120px] rounded-full scale-150 -z-10"></div>
+                    
+                    <div class="bg-white dark:bg-slate-900 rounded-[3rem] p-8 md:p-12 border border-slate-100 dark:border-slate-800 shadow-2xl shadow-indigo-100 dark:shadow-none ring-1 ring-slate-200/50 dark:ring-slate-800">
                         
-                        <div class="space-y-4">
+                        <!-- Selected Summary -->
+                        <div class="flex items-center justify-between mb-12 p-6 rounded-[2rem] bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700">
+                            <div>
+                                <h3 class="text-xl font-black text-slate-900 dark:text-white mb-1">Total Due</h3>
+                                <p class="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{{ periodLabel }}</p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">{{ price }}</span>
+                            </div>
+                        </div>
+
+                        <h2 class="text-sm font-black text-slate-400 uppercase tracking-[0.3em] mb-8 text-center">Select Payment</h2>
+                        
+                        <div class="space-y-4 mb-10">
                             <!-- Duitku -->
-                            <button @click="initiatePayment('duitku')" class="w-full group relative overflow-hidden p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 transition-all text-left">
+                            <button @click="initiatePayment('duitku')" class="w-full group relative overflow-hidden p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-slate-50 transition-all text-left">
                                 <div class="flex items-center justify-between relative z-10">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-2xl">🇮🇩</div>
+                                    <div class="flex items-center gap-5">
+                                        <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-3xl shadow-sm transition-transform group-hover:scale-110">🇮🇩</div>
                                         <div>
-                                            <h4 class="font-black text-slate-800 dark:text-white">Duitku (IDR)</h4>
+                                            <h4 class="font-black text-slate-800 dark:text-white">Duitku Local (IDR)</h4>
                                             <p class="text-[10px] font-bold text-slate-400">QRIS, Virtual Account, & Bank Transfer</p>
                                         </div>
                                     </div>
-                                    <OneForMindIcon name="chevron-right" size="16" class="text-slate-300 group-hover:text-indigo-600 transition-colors" stroke-width="4" />
+                                    <OneForMindIcon name="chevron-right" size="18" class="text-slate-300 group-hover:text-indigo-600 transition-all group-hover:translate-x-1" stroke-width="4" />
                                 </div>
                             </button>
 
                             <!-- PayPal -->
-                            <button @click="initiatePayment('paypal')" class="w-full group relative overflow-hidden p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 transition-all text-left">
+                            <button @click="initiatePayment('paypal')" class="w-full group relative overflow-hidden p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-slate-50 transition-all text-left">
                                 <div class="flex items-center justify-between relative z-10">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-2xl">🌍</div>
+                                    <div class="flex items-center gap-5">
+                                        <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-3xl shadow-sm transition-transform group-hover:scale-110">🌍</div>
                                         <div>
                                             <h4 class="font-black text-slate-800 dark:text-white">PayPal / Card (USD)</h4>
-                                            <p class="text-[10px] font-bold text-slate-400">International Credit Card & PayPal Wallet</p>
+                                            <p class="text-[10px] font-bold text-slate-400">International CC & PayPal Wallet</p>
                                         </div>
                                     </div>
-                                    <OneForMindIcon name="chevron-right" size="16" class="text-slate-300 group-hover:text-indigo-600 transition-colors" stroke-width="4" />
+                                    <OneForMindIcon name="chevron-right" size="18" class="text-slate-300 group-hover:text-indigo-600 transition-all group-hover:translate-x-1" stroke-width="4" />
                                 </div>
                             </button>
                         </div>
 
-                        <div class="mt-8 text-center text-[10px] font-medium text-slate-400 leading-relaxed italic">
-                            By clicking a payment method, you will be securely redirected to our payment partner. Your subscription will be active immediately after successful payment.
+                        <div class="text-center space-y-6">
+                            <p class="text-[10px] font-bold text-slate-400 italic">
+                                Your subscription starts immediately upon successful payment.
+                            </p>
+                            <div class="flex items-center justify-center gap-4">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" class="h-4 opacity-40 grayscale group-hover:grayscale-0 transition-opacity" />
+                                <div class="w-px h-4 bg-slate-200"></div>
+                                <span class="text-[8px] font-black text-slate-400 uppercase tracking-widest">Powered by Stripe & Duitku</span>
+                            </div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
-        </div>
-    </AuthenticatedLayout>
+        </main>
+        
+        <!-- Bottom Guard -->
+        <footer class="mt-auto py-12 text-center">
+            <p class="text-[10px] font-black text-slate-300 dark:text-slate-700 uppercase tracking-[0.4em]">© 2026 OneForMind - The Infinite Ecosystem</p>
+        </footer>
+    </div>
 </template>
+
+<style scoped>
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>

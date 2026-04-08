@@ -50,22 +50,35 @@ class PaymentController extends Controller
         $env = config('duitku.env');
 
         $plan = $request->input('plan', 'architect');
-        $paymentAmount = 79000;
-        $productDetails = 'OneForMind Architect (Pro) - Unlock Plus';
+        $billing = $request->input('billing', 'yearly'); // New param to handle price correctly
 
-        if ($plan === 'quantum') {
-            $paymentAmount = 109000;
-            $productDetails = 'OneForMind Quantum (AI) - Initial Unlock';
-        }
-        elseif ($plan === 'lifetime') {
-            $paymentAmount = 899000;
-            $productDetails = 'OneForMind Legendary Founder Edition';
+        // Map Plan + Billing to Price (IDR)
+        $prices = [
+            'architect' => [
+                'yearly' => 79000,
+                'monthly' => 99000
+            ],
+            'quantum' => [
+                'yearly' => 109000,
+                'monthly' => 159000
+            ],
+            'lifetime' => [
+                'yearly' => 899000,
+                'monthly' => 899000
+            ]
+        ];
+
+        $paymentAmount = $prices[$plan][$billing] ?? 79000;
+        $productDetails = "OneForMind " . ucfirst($plan) . " (" . ucfirst($billing) . ") Subscription";
+
+        if ($plan === 'lifetime') {
+            $productDetails = 'OneForMind Legendary Founder Edition (Lifetime)';
         }
 
         $merchantOrderId = strtoupper($plan) . '-' . $user->id . '-' . time();
         $email = $user->email;
         $customerVaName = $user->name;
-        $phoneNumber = '08123456789'; // Optional but recommended
+        $phoneNumber = '081234567890'; // Fixed to potentially more valid 12 digits for production vs dummy 11
 
         $callbackUrl = url('/callback');
         $returnUrl = url('/payment/finish');
