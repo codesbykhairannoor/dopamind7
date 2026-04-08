@@ -5,6 +5,7 @@ import { useFinanceForm } from '@/Composables/Finance/useFinanceForm';
 import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
+import { router } from '@inertiajs/vue3';
 
 const props = defineProps({
     expenseStats: { type: Object, default: () => ({}) },
@@ -186,7 +187,7 @@ const handleQuit = (asset) => {
         <div class="bg-indigo-900 dark:bg-slate-950 rounded-[2rem] p-1 shadow-2xl dark:shadow-none shadow-indigo-200/50 dark:shadow-indigo-900/20 relative overflow-hidden group transition-all duration-500">
             <!-- Explorer Lock Overlay for Investment -->
             <div v-if="isExplorer" 
-                 @click="$inertia.get(route('pricing.index'), { from: 'finance_investment' })"
+                 @click="router.visit(route('pricing.index'), { data: { from: 'finance_investment' } })"
                  class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-indigo-900/40 backdrop-blur-md cursor-pointer group-hover:bg-indigo-900/60 transition-all duration-500">
                 <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-xl mb-3">🔒</div>
                 <h4 class="text-[11px] font-black text-white uppercase tracking-widest tracking-tighter">Investment Lab</h4>

@@ -8,6 +8,7 @@ import {
 import { useFinanceChart } from '@/Composables/Finance/useFinanceChart';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 import dayjs from 'dayjs';
+import { router } from '@inertiajs/vue3';
 
 // Register ChartJS
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -124,7 +125,7 @@ const monthInsights = computed(() => {
     <div class="relative group">
         <!-- Explorer Lock Overlay -->
         <div v-if="isExplorer" 
-             @click="$inertia.get(route('pricing.index'), { from: 'finance_chart' })"
+             @click="router.visit(route('pricing.index'), { data: { from: 'finance_chart' } })"
              class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white/20 dark:bg-slate-900/20 backdrop-blur-md rounded-[2rem] border border-slate-200 dark:border-slate-800 cursor-pointer group-hover:bg-white/40 dark:group-hover:bg-slate-900/40 transition-all duration-500">
             <div class="w-16 h-16 rounded-2xl bg-white dark:bg-slate-800 shadow-xl flex items-center justify-center text-3xl mb-4 border border-slate-100 dark:border-slate-700">🔒</div>
             <h4 class="text-sm font-black text-slate-800 dark:text-white uppercase tracking-widest tracking-tighter">Advanced Analytics</h4>
