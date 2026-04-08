@@ -198,6 +198,7 @@ const monthInsights = computed(() => {
 
         </div>
     </div>
+    </div>
 </template>
 
 <style scoped>
