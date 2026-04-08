@@ -161,5 +161,8 @@
     "pricing_faq_4_q": "Is my data private?",
     "pricing_faq_4_a": "Absolutely. OneForMind uses industry-standard encryption. Your local data and AI interactions are strictly confidential and never sold.",
     "pricing_l4_btn": "Go Legendary",
-    "pricing_faq_subtitle": "Answers to your burning questions"
+    "pricing_faq_subtitle": "Answers to your burning questions",
+    "pricing_l2_price_yr": "$4.99",
+    "pricing_l3_price_yr": "$6.99",
+    "pricing_l4_price_yr": "$59.00"
 }
