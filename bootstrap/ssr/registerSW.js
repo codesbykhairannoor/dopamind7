@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('https://oneformind.com/build/sw.js', { scope: 'https://oneformind.com/build/' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('http://localhost:8001/build/sw.js', { scope: 'http://localhost:8001/build/' })})}

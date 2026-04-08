@@ -1619,6 +1619,16 @@ const finance_ai_promo_badge$1 = "Wealth Intelligence";
 const finance_ai_promo_title$1 = "Predictive Burn Rate Analysis";
 const finance_ai_promo_desc$1 = "Neural OS tracks your spending velocity and predicts your month-end balance, helping you avoid financial friction before it happens.";
 const finance_ai_promo_btn$1 = "Protect Your Wealth";
+const vault_deposit_prompt$1 = "How much do you want to deposit?";
+const vault_withdraw_prompt$1 = "How much do you want to withdraw?";
+const vault_insufficient$1 = "Insufficient funds! You only have :amount in this vault.";
+const vault_close_confirm$1 = "Are you sure you want to close this vault?";
+const vault_close_refund_confirm$1 = "Are you sure? Your remaining balance of :amount will be returned to your main wallet.";
+const vault_closed_success$1 = "Vault closed and balance returned!";
+const current$1 = "Current";
+const left_to_reach$1 = "Left to reach";
+const deposit$1 = "Deposit";
+const withdraw$1 = "Withdraw";
 const nav_home$2 = "Home";
 const nav_about$2 = "About Us";
 const nav_login$2 = "Log In";
@@ -2358,18 +2368,18 @@ const meta_ai_creator$1 = "[EN] Ai Creator";
 const meta_ai_service_type$1 = "[EN] Ai Service Type";
 const meta_global_description$1 = "[EN] Global  Ription";
 const meta_global_keywords$1 = "[EN] Global Keywords";
-const pricing_faq_subtitle$1 = "[EN] Pricing Faq Sub";
-const pricing_feat_l1_finance$1 = "[EN] Pricing Feat L1 Finance";
-const pricing_feat_l1_habits$1 = "[EN] Pricing Feat L1 Habits";
-const pricing_feat_l2_finance$1 = "[EN] Pricing Feat L2 Finance";
-const pricing_feat_l2_habits$1 = "[EN] Pricing Feat L2 Habits";
-const pricing_feat_l3_ai_coach$1 = "[EN] Pricing Feat L3 Ai Coach";
-const pricing_feat_l3_insights$1 = "[EN] Pricing Feat L3 Insights";
-const pricing_feat_l3_wealth$1 = "[EN] Pricing Feat L3 Wealth";
-const pricing_feat_l4_triggers$1 = "[EN] Pricing Feat L4 Triggers";
-const pricing_feat_l4_vip$1 = "[EN] Pricing Feat L4 Vip";
-const pricing_feat_l4_war_room$1 = "[EN] Pricing Feat L4 War Room";
-const pricing_l4_btn$1 = "[EN] Pricing L4 Btn";
+const pricing_faq_subtitle$1 = "Answers to your burning questions";
+const pricing_feat_l1_finance$1 = "Basic Expense Logs";
+const pricing_feat_l1_habits$1 = "Core Habit Tracking";
+const pricing_feat_l2_finance$1 = "Full Wealth Suite";
+const pricing_feat_l2_habits$1 = "Advanced Habit Ecosystem";
+const pricing_feat_l3_ai_coach$1 = "24/7 AI Neural Coach";
+const pricing_feat_l3_insights$1 = "Deep Life Analytics";
+const pricing_feat_l3_wealth$1 = "Smart Wealth Projections";
+const pricing_feat_l4_triggers$1 = "Zero Monthly/Yearly Fees";
+const pricing_feat_l4_vip$1 = "Feature Voting Rights";
+const pricing_feat_l4_war_room$1 = "Cheapest AI Maintenance (49k)";
+const pricing_l4_btn$1 = "Go Legendary";
 const pricing_meta_og_desc$1 = "[EN] Pricing  Og";
 const privacy_nav_4$1 = "04. Security Protocols";
 const schema_about_description$1 = "[EN] Schema About  Ription";
@@ -2638,11 +2648,11 @@ const pricing_feat_month_trial$1 = "14-Day Free Trial Included";
 const pricing_feat_habit_insights$1 = "Advanced Habit Analytics";
 const pricing_feat_finance_tax$1 = "Downloadable Tax Reports";
 const pricing_feat_dark_mode$1 = "Full Dark Mode Support";
-const pricing_pro_initial$1 = "Initial Unlock: Rp 89,000";
-const pricing_pro_recurring$1 = "Then Rp 69,000/mo";
+const pricing_pro_initial$1 = "Initial Unlock: $5.00";
+const pricing_pro_recurring$1 = "Then $4.99/mo";
 const pricing_pro_btn$1 = "Unlock All Now";
-const pricing_ai_initial$1 = "Initial Unlock: Rp 199,000";
-const pricing_ai_recurring$1 = "Then Rp 129,000/mo";
+const pricing_ai_initial$1 = "Initial Unlock: $10.00";
+const pricing_ai_recurring$1 = "Then $6.99/mo";
 const pricing_ai_desc$1 = "The future of productivity. Integrate AI into your daily workflow.";
 const pricing_feat_ai_chat$1 = "Talk with AI Assistant";
 const pricing_feat_ai_status$1 = "Coming Soon";
@@ -2650,12 +2660,12 @@ const pricing_feat_automated_insights$1 = "Automated Life Insights";
 const pricing_ai_btn$1 = "Go Quantum";
 const pricing_life_name$1 = "Mind Master";
 const pricing_once$1 = "once";
-const pricing_life_desc$1 = "The ultimate investment. Pay once, skip the unlock fee and recurring costs forever.";
-const pricing_feat_lifetime_access$1 = "Lifetime Feature Access";
-const pricing_feat_calendar_unlocked$1 = "Calendar Unlocked Forever";
-const pricing_feat_goals_unlocked$1 = "Goal Tracker Unlocked Forever";
+const pricing_life_desc$1 = "The ultimate investment. Unlock all systems forever with a one-time payment. No subscription fees.";
+const pricing_feat_lifetime_access$1 = "Full System Access Forever";
+const pricing_feat_calendar_unlocked$1 = "One-Time Payment (Lifetime)";
+const pricing_feat_goals_unlocked$1 = "No Recurring System Fees";
 const pricing_feat_jobs_unlocked$1 = "Job Tracker Unlocked Forever";
-const pricing_feat_priority_support$1 = "Priority Discord Support";
+const pricing_feat_priority_support$1 = "Optional AI Maintenance (49k)";
 const pricing_life_btn$1 = "Buy Lifetime";
 const pricing_compare_title$1 = "Compare Features";
 const pricing_compare_subtitle$1 = "See exactly what you get in each plan.";
@@ -2752,13 +2762,17 @@ const pricing_l4_name$1 = "Legendary (Life)";
 const pricing_l4_desc$1 = "The ultimate investment. Pay once, skip all future fees.";
 const pricing_l1_initial$1 = "Free Forever";
 const pricing_l2_initial$1 = "Pro Lifetime Unlock";
-const pricing_l2_recurring$1 = "Recurring maintenance fee";
+const pricing_l2_recurring$1 = "$4.99/mo";
 const pricing_l3_initial$1 = "AI Neural License";
-const pricing_l3_recurring$1 = "AI Maintenance Fee";
-const pricing_l4_initial$1 = "Lifetime Founder Access";
-const pricing_l4_recurring$1 = "Zero Fees Forever";
-const pricing_ai_badge$1 = "Best for AI Seekers";
+const pricing_l3_recurring$1 = "$6.99/mo";
+const pricing_l4_initial$1 = "Founder Access (One-Time)";
+const pricing_l4_recurring$1 = "$59.00";
+const pricing_ai_badge$1 = "Most Popular";
 const pricing_l4_badge$1 = "Founder Edition";
+const pricing_faq_3_q$1 = "Can I upgrade my plan later?";
+const pricing_faq_3_a$1 = "Yes, you can upgrade from Architect to Quantum or Legendary at any time. The system will automatically calculate the prorated difference.";
+const pricing_faq_4_q$1 = "Is my data private?";
+const pricing_faq_4_a$1 = "Absolutely. OneForMind uses industry-standard encryption. Your local data and AI interactions are strictly confidential and never sold.";
 const privacy_meta_title$1 = "Trust Center & Privacy Policy";
 const privacy_meta_desc$1 = "Learn how OneForMind protects your data and ensures your security.";
 const privacy_meta_og_title$1 = "Trust Center — OneForMind";
@@ -5538,6 +5552,16 @@ const en = {
   finance_ai_promo_title: finance_ai_promo_title$1,
   finance_ai_promo_desc: finance_ai_promo_desc$1,
   finance_ai_promo_btn: finance_ai_promo_btn$1,
+  vault_deposit_prompt: vault_deposit_prompt$1,
+  vault_withdraw_prompt: vault_withdraw_prompt$1,
+  vault_insufficient: vault_insufficient$1,
+  vault_close_confirm: vault_close_confirm$1,
+  vault_close_refund_confirm: vault_close_refund_confirm$1,
+  vault_closed_success: vault_closed_success$1,
+  current: current$1,
+  left_to_reach: left_to_reach$1,
+  deposit: deposit$1,
+  withdraw: withdraw$1,
   "____ SECTION_1 ____": "=== NAVIGATION & GLOBAL ===",
   nav_home: nav_home$2,
   nav_about: nav_about$2,
@@ -6687,6 +6711,10 @@ const en = {
   pricing_l4_recurring: pricing_l4_recurring$1,
   pricing_ai_badge: pricing_ai_badge$1,
   pricing_l4_badge: pricing_l4_badge$1,
+  pricing_faq_3_q: pricing_faq_3_q$1,
+  pricing_faq_3_a: pricing_faq_3_a$1,
+  pricing_faq_4_q: pricing_faq_4_q$1,
+  pricing_faq_4_a: pricing_faq_4_a$1,
   privacy_meta_title: privacy_meta_title$1,
   privacy_meta_desc: privacy_meta_desc$1,
   privacy_meta_og_title: privacy_meta_og_title$1,
@@ -8576,6 +8604,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   cta_final_desc: cta_final_desc$2,
   cta_final_sub: cta_final_sub$2,
   cta_final_title: cta_final_title$2,
+  current: current$1,
   current_password: current_password$1,
   daily_chart: daily_chart$1,
   daily_detail: daily_detail$1,
@@ -8706,6 +8735,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   delete_confirm_title: delete_confirm_title$1,
   delete_trx_text: delete_trx_text$1,
   delete_trx_title: delete_trx_title$1,
+  deposit: deposit$1,
   desc_placeholder: desc_placeholder$1,
   description: description$1,
   dev_desc: dev_desc$2,
@@ -10124,6 +10154,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   label_urgent: label_urgent$1,
   label_work: label_work$1,
   last_5: last_5$1,
+  left_to_reach: left_to_reach$1,
   legal_close: legal_close$1,
   legal_desc: legal_desc$1,
   legal_link_privacy: legal_link_privacy$1,
@@ -10790,6 +10821,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_faq_1_q: pricing_faq_1_q$1,
   pricing_faq_2_a: pricing_faq_2_a$1,
   pricing_faq_2_q: pricing_faq_2_q$1,
+  pricing_faq_3_a: pricing_faq_3_a$1,
+  pricing_faq_3_q: pricing_faq_3_q$1,
+  pricing_faq_4_a: pricing_faq_4_a$1,
+  pricing_faq_4_q: pricing_faq_4_q$1,
   pricing_faq_subtitle: pricing_faq_subtitle$1,
   pricing_faq_title: pricing_faq_title$1,
   pricing_feat_ai_chat: pricing_feat_ai_chat$1,
@@ -11721,6 +11756,12 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   user_desc: user_desc$2,
   user_name: user_name$2,
   user_role: user_role$2,
+  vault_close_confirm: vault_close_confirm$1,
+  vault_close_refund_confirm: vault_close_refund_confirm$1,
+  vault_closed_success: vault_closed_success$1,
+  vault_deposit_prompt: vault_deposit_prompt$1,
+  vault_insufficient: vault_insufficient$1,
+  vault_withdraw_prompt: vault_withdraw_prompt$1,
   view_full_archive: view_full_archive$1,
   vision_board_label: vision_board_label$1,
   vsn_badge: vsn_badge$1,
@@ -11748,6 +11789,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   welcome_meta_og_desc: welcome_meta_og_desc$1,
   welcome_meta_og_title: welcome_meta_og_title$1,
   welcome_meta_title: welcome_meta_title$1,
+  withdraw: withdraw$1,
   withdraw_asset: withdraw_asset$1,
   withdraw_notice: withdraw_notice$1,
   yes_delete: yes_delete$1,
@@ -13384,6 +13426,16 @@ const finance_ai_promo_badge = "Kecerdasan Kekayaan";
 const finance_ai_promo_title = "Analisis Burn Rate Prediktif";
 const finance_ai_promo_desc = "Neural OS melacak velositas pengeluaran Anda dan memprediksi saldo akhir bulan Anda, membantu Anda menghindari gesekan finansial sebelum itu terjadi.";
 const finance_ai_promo_btn = "Lindungi Kekayaan Anda";
+const vault_deposit_prompt = "Berapa banyak yang ingin kamu tabung?";
+const vault_withdraw_prompt = "Berapa banyak yang ingin kamu cairkan?";
+const vault_insufficient = "Saldo tabungan tidak cukup! Kamu cuma punya :amount di vault ini.";
+const vault_close_confirm = "Yakin mau tutup vault ini?";
+const vault_close_refund_confirm = "Yakin mau tutup vault ini? Sisa saldo :amount akan dikembalikan ke dompet utama.";
+const vault_closed_success = "Vault ditutup dan saldo dikembalikan!";
+const current = "Saat Ini";
+const left_to_reach = "Kurang";
+const deposit = "Tabung";
+const withdraw = "Cairkan";
 const nav_home$1 = "Beranda";
 const nav_about$1 = "Tentang Kami";
 const nav_login$1 = "Masuk";
@@ -14081,18 +14133,18 @@ const meta_ai_creator = "[ID] Ai Creator";
 const meta_ai_service_type = "[ID] Ai Service Type";
 const meta_global_description = "[ID] Deskripsi Global  Ription";
 const meta_global_keywords = "[ID] Global Keywords";
-const pricing_faq_subtitle = "[ID] Judul Pricing Faq Sub";
-const pricing_feat_l1_finance = "[ID] Pricing Feat L1 Finance";
-const pricing_feat_l1_habits = "[ID] Pricing Feat L1 Habits";
-const pricing_feat_l2_finance = "[ID] Pricing Feat L2 Finance";
-const pricing_feat_l2_habits = "[ID] Pricing Feat L2 Habits";
-const pricing_feat_l3_ai_coach = "[ID] Pricing Feat L3 Ai Coach";
-const pricing_feat_l3_insights = "[ID] Pricing Feat L3 Insights";
-const pricing_feat_l3_wealth = "[ID] Pricing Feat L3 Wealth";
-const pricing_feat_l4_triggers = "[ID] Pricing Feat L4 Triggers";
-const pricing_feat_l4_vip = "[ID] Pricing Feat L4 Vip";
-const pricing_feat_l4_war_room = "[ID] Pricing Feat L4 War Room";
-const pricing_l4_btn = "[ID] Pricing L4 Btn";
+const pricing_faq_subtitle = "Jawaban atas pertanyaan Anda";
+const pricing_feat_l1_finance = "Log Keuangan Dasar";
+const pricing_feat_l1_habits = "Pelacakan Habit Inti";
+const pricing_feat_l2_finance = "Paket Keuangan Lengkap";
+const pricing_feat_l2_habits = "Ekosistem Habit Lanjutan";
+const pricing_feat_l3_ai_coach = "Pelatih Neural AI 24/7";
+const pricing_feat_l3_insights = "Analitik Hidup Mendalam";
+const pricing_feat_l3_wealth = "Proyeksi Keuangan Cerdas";
+const pricing_feat_l4_triggers = "Bebas Biaya Tahunan/Bulanan";
+const pricing_feat_l4_vip = "Hak Suara Fitur Baru";
+const pricing_feat_l4_war_room = "Maintenance AI Termurah (49k)";
+const pricing_l4_btn = "Pilih Legendary";
 const pricing_meta_og_desc = "[ID] Deskripsi Pricing  Og";
 const privacy_nav_4 = "04. Protokol Keamanan";
 const schema_about_description = "[ID] Deskripsi Schema About  Ription";
@@ -14353,10 +14405,10 @@ const pricing_feat_habit_insights = "Analitik Habit Tingkat Lanjut";
 const pricing_feat_finance_tax = "Unduh Laporan Pajak";
 const pricing_feat_dark_mode = "Dukungan Mode Gelap Penuh";
 const pricing_pro_initial = "Buka Pertama: Rp 89.000";
-const pricing_pro_recurring = "Lalu Rp 69.000/bln";
+const pricing_pro_recurring = "Lalu Rp 79.000/bln";
 const pricing_pro_btn = "Buka Semua Sekarang";
-const pricing_ai_initial = "Buka Pertama: Rp 199.000";
-const pricing_ai_recurring = "Lalu Rp 129.000/bln";
+const pricing_ai_initial = "Buka Pertama: Rp 159.000";
+const pricing_ai_recurring = "Lalu Rp 109.000/bln";
 const pricing_ai_desc = "Masa depan produktivitas. Integrasikan AI ke dalam alur kerja harian Anda.";
 const pricing_feat_ai_chat = "Ngobrol dengan AI Assistant";
 const pricing_feat_ai_status = "Segera Hadir";
@@ -14364,12 +14416,13 @@ const pricing_feat_automated_insights = "Wawasan Hidup Otomatis";
 const pricing_ai_btn = "Pilih Quantum";
 const pricing_life_name = "Mind Master";
 const pricing_once = "sekali";
-const pricing_life_desc = "Investasi terbaik. Bayar sekali, hindari biaya unlock dan biaya langganan selamanya.";
-const pricing_feat_lifetime_access = "Akses Fitur Seumur Hidup";
-const pricing_feat_calendar_unlocked = "Calendar Terbuka Selamanya";
-const pricing_feat_goals_unlocked = "Goal Tracker Terbuka Selamanya";
+const pricing_life_desc = "Investasi terbaik. Buka semua sistem selamanya dengan satu kali bayar. Tanpa biaya langganan bulanan.";
+const pricing_feat_lifetime_access = "Buka Seluruh Sistem Selamanya";
+const pricing_feat_calendar_unlocked = "Satu Kali Bayar (One-Time Pay)";
+const pricing_feat_goals_unlocked = "Bebas Biaya Langganan Sistem";
 const pricing_feat_jobs_unlocked = "Job Tracker Terbuka Selamanya";
 const pricing_feat_priority_support = "Dukungan Prioritas Discord";
+const pricing_feat_ai_maintenance = "Opsi AI Maintenance Fee (Rp 49k)";
 const pricing_life_btn = "Beli Lifetime";
 const pricing_compare_title = "Bandingkan Fitur";
 const pricing_compare_subtitle = "Lihat detail apa saja yang Anda dapatkan di setiap paket.";
@@ -14464,13 +14517,17 @@ const pricing_l4_name = "Legendary (Life)";
 const pricing_l4_desc = "Investasi utama. Bayar sekali, hindari semua biaya masa depan.";
 const pricing_l1_initial = "Gratis Selamanya";
 const pricing_l2_initial = "Buka Seumur Hidup Pro";
-const pricing_l2_recurring = "Biaya pemeliharaan berulang";
+const pricing_l2_recurring = "Rp 79.000/bln";
 const pricing_l3_initial = "Lisensi AI Neural";
-const pricing_l3_recurring = "Biaya Pemeliharaan AI";
-const pricing_l4_initial = "Akses Pendiri Seumur Hidup";
-const pricing_l4_recurring = "Nol Biaya Selamanya";
-const pricing_ai_badge = "Terbaik untuk Pencari AI";
-const pricing_l4_badge = "Edisi Pendiri";
+const pricing_l3_recurring = "Rp 109.000/bln";
+const pricing_l4_initial = "Akses Founder (Satu Kali)";
+const pricing_l4_recurring = "Rp 899.000";
+const pricing_ai_badge = "Paling Populer";
+const pricing_l4_badge = "Edisi Founder";
+const pricing_faq_3_q = "Bisakah saya upgrade paket nanti?";
+const pricing_faq_3_a = "Ya, Anda dapat upgrade dari Architect ke Quantum atau Legendary kapan saja. Sistem akan otomatis menghitung selisih biayanya.";
+const pricing_faq_4_q = "Apakah data saya aman?";
+const pricing_faq_4_a = "Tentu saja. OneForMind menggunakan enkripsi standar industri. Data lokal dan interaksi AI Anda bersifat rahasia dan tidak pernah dijual.";
 const privacy_meta_title = "Pusat Privasi & Kepercayaan";
 const privacy_meta_desc = "Pelajari bagaimana OneForMind melindungi data, privasi, dan memastikan keamanan Anda.";
 const privacy_meta_og_title = "Trust Center — OneForMind";
@@ -17291,6 +17348,16 @@ const id = {
   finance_ai_promo_title,
   finance_ai_promo_desc,
   finance_ai_promo_btn,
+  vault_deposit_prompt,
+  vault_withdraw_prompt,
+  vault_insufficient,
+  vault_close_confirm,
+  vault_close_refund_confirm,
+  vault_closed_success,
+  current,
+  left_to_reach,
+  deposit,
+  withdraw,
   "____ SECTION_1 ____": "=== NAVIGASI & GLOBAL ===",
   nav_home: nav_home$1,
   nav_about: nav_about$1,
@@ -18287,6 +18354,7 @@ const id = {
   pricing_feat_goals_unlocked,
   pricing_feat_jobs_unlocked,
   pricing_feat_priority_support,
+  pricing_feat_ai_maintenance,
   pricing_life_btn,
   pricing_compare_title,
   pricing_compare_subtitle,
@@ -18388,6 +18456,10 @@ const id = {
   pricing_l4_recurring,
   pricing_ai_badge,
   pricing_l4_badge,
+  pricing_faq_3_q,
+  pricing_faq_3_a,
+  pricing_faq_4_q,
+  pricing_faq_4_a,
   privacy_meta_title,
   privacy_meta_desc,
   privacy_meta_og_title,
@@ -20304,6 +20376,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   cta_final_desc: cta_final_desc$1,
   cta_final_sub: cta_final_sub$1,
   cta_final_title: cta_final_title$1,
+  current,
   current_password,
   daily_chart,
   daily_detail,
@@ -20434,6 +20507,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   delete_confirm_title,
   delete_trx_text,
   delete_trx_title,
+  deposit,
   desc_placeholder,
   description,
   dev_desc: dev_desc$1,
@@ -21849,6 +21923,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   label_urgent,
   label_work,
   last_5,
+  left_to_reach,
   legal_close,
   legal_desc,
   legal_link_privacy,
@@ -22515,9 +22590,14 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_faq_1_q,
   pricing_faq_2_a,
   pricing_faq_2_q,
+  pricing_faq_3_a,
+  pricing_faq_3_q,
+  pricing_faq_4_a,
+  pricing_faq_4_q,
   pricing_faq_subtitle,
   pricing_faq_title,
   pricing_feat_ai_chat,
+  pricing_feat_ai_maintenance,
   pricing_feat_ai_status,
   pricing_feat_automated_insights,
   pricing_feat_calendar_unlocked,
@@ -23441,6 +23521,12 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   user_desc: user_desc$1,
   user_name: user_name$1,
   user_role: user_role$1,
+  vault_close_confirm,
+  vault_close_refund_confirm,
+  vault_closed_success,
+  vault_deposit_prompt,
+  vault_insufficient,
+  vault_withdraw_prompt,
   view_full_archive,
   vision_board_label,
   vsn_badge,
@@ -23468,6 +23554,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   welcome_meta_og_desc,
   welcome_meta_og_title,
   welcome_meta_title,
+  withdraw,
   withdraw_asset,
   withdraw_notice,
   yes_delete,
@@ -24229,7 +24316,7 @@ const _ = { install(t3, e2) {
   const o2 = (t4, o3, n2, r2 = e2) => D(t4, o3, n2, r2);
   parseInt(t3.version) > 2 ? (t3.config.globalProperties.route = o2, t3.provide("route", o2)) : t3.mixin({ methods: { route: o2 } });
 } };
-const Ziggy$1 = { "url": "https://oneformind.com", "port": null, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "settings.cookie-consent": { "uri": "settings/cookie-consent", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "resources.ai-trust": { "uri": "resources/neural-os-transparency", "methods": ["GET", "HEAD"] }, "company.contact": { "uri": "company/contact", "methods": ["GET", "HEAD"] }, "contact.send": { "uri": "company/contact", "methods": ["POST"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "finance.savings.store": { "uri": "finance/savings", "methods": ["POST"] }, "finance.savings.update": { "uri": "finance/savings/{financeSaving}", "methods": ["PATCH"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.destroy": { "uri": "finance/savings/{financeSaving}", "methods": ["DELETE"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.deposit": { "uri": "finance/savings/{financeSaving}/deposit", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.withdraw": { "uri": "finance/savings/{financeSaving}/withdraw", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.analyze": { "uri": "journal/analyze", "methods": ["POST"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "dashboard.insight": { "uri": "dashboard/insight", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "admin.blog.index": { "uri": "admin/blog", "methods": ["GET", "HEAD"] }, "admin.blog.create": { "uri": "admin/blog/create", "methods": ["GET", "HEAD"] }, "admin.blog.store": { "uri": "admin/blog", "methods": ["POST"] }, "admin.blog.edit": { "uri": "admin/blog/{post}/edit", "methods": ["GET", "HEAD"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.update": { "uri": "admin/blog/{post}", "methods": ["POST", "PATCH"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.destroy": { "uri": "admin/blog/{post}", "methods": ["DELETE"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.users.index": { "uri": "admin/users", "methods": ["GET", "HEAD"] }, "admin.users.toggle-premium": { "uri": "admin/users/{user}/toggle-premium", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "admin.users.toggle-admin": { "uri": "admin/users/{user}/toggle-admin", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
+const Ziggy$1 = { "url": "https://oneformind.com", "port": null, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "settings.cookie-consent": { "uri": "settings/cookie-consent", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "billing": { "uri": "billing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "resources.ai-trust": { "uri": "resources/neural-os-transparency", "methods": ["GET", "HEAD"] }, "company.contact": { "uri": "company/contact", "methods": ["GET", "HEAD"] }, "contact.send": { "uri": "company/contact", "methods": ["POST"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "finance.savings.store": { "uri": "finance/savings", "methods": ["POST"] }, "finance.savings.update": { "uri": "finance/savings/{financeSaving}", "methods": ["PATCH"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.destroy": { "uri": "finance/savings/{financeSaving}", "methods": ["DELETE"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.deposit": { "uri": "finance/savings/{financeSaving}/deposit", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.withdraw": { "uri": "finance/savings/{financeSaving}/withdraw", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.analyze": { "uri": "journal/analyze", "methods": ["POST"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "paypal.checkout": { "uri": "paypal/checkout", "methods": ["POST"] }, "paypal.success": { "uri": "paypal/success", "methods": ["GET", "HEAD"] }, "dashboard.insight": { "uri": "dashboard/insight", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "admin.blog.index": { "uri": "admin/blog", "methods": ["GET", "HEAD"] }, "admin.blog.create": { "uri": "admin/blog/create", "methods": ["GET", "HEAD"] }, "admin.blog.store": { "uri": "admin/blog", "methods": ["POST"] }, "admin.blog.edit": { "uri": "admin/blog/{post}/edit", "methods": ["GET", "HEAD"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.update": { "uri": "admin/blog/{post}", "methods": ["POST", "PATCH"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.destroy": { "uri": "admin/blog/{post}", "methods": ["DELETE"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.users.index": { "uri": "admin/users", "methods": ["GET", "HEAD"] }, "admin.users.toggle-premium": { "uri": "admin/users/{user}/toggle-premium", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "admin.users.toggle-admin": { "uri": "admin/users/{user}/toggle-admin", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
 if (typeof window !== "undefined" && typeof window.Ziggy !== "undefined") {
   Object.assign(Ziggy$1.routes, window.Ziggy.routes);
 }
@@ -24239,7 +24326,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-iavmTFjQ.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-BrX5fDXL.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-CctKlFpr.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-CA7x30q5.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-D0EiqJ7k.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D-snYFKm.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D6l7Z_pa.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-a9aLJQy7.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-C_OAqFau.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BH4kKwOd.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DD4JmzuL.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-DX4_dtvu.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CljMUTNv.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CJot4Lqc.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-BsQnYF-L.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-Bd5fJvxn.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-CXBun8xC.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-B1E8q9T1.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C2gRuJuR.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-CFlkSpPt.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-4uWCTwCE.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-D8aG2lGh.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-CwO2UQTv.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-D_Im-MTJ.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-BTbn80JU.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C86AZqFC.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-De9XZECV.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-DkaBFTD-.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-DsX1Rbiu.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-DI7Isjjk.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-MOlwhAoh.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-0m7CmsHV.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-CZ1Ebh4m.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-BCXn9n3e.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C3hbPCLt.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-DMf-K1Qd.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DKm4mbER.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-S2eQstqB.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-BjzKYero.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-1fBIKwAx.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-CbmpJfEh.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DMsaFBcp.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-DBtrJtTD.js"), "./Pages/More/Index.vue": () => import("./assets/Index-BNwbP5CJ.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DOyUUUH0.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-ZD3F4rym.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-DssEjM5E.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dn0pB-ZK.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-Co2_cJWa.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-Du7jZWRY.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-gfZhT-Rq.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DCp89kMX.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-C32UR2vO.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-x5fdnPa5.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-CDLwS7dO.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-D0A1YVNh.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-iavmTFjQ.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-DTCh1wIJ.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-DVmkyC_F.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-goOZ-mUZ.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-IKZN89VS.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D-snYFKm.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-CzPzEhsn.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-C0onoCpg.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-D6l7Z_pa.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-a9aLJQy7.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-qhC7xdEn.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-BE024jNM.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-C6OzoLV3.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-DJKq5MY4.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-Bmx_J1AR.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-C4EMjIQf.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-B0zBNxsz.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-D7k42qw8.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-Bd5fJvxn.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-m1v_piMk.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-BA_K-J9R.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-CI0PCYS_.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BJs8PHqf.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DY2vbql9.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-yrcYCNRS.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-L2LFmX15.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C86AZqFC.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-De9XZECV.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-238EhcxQ.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-DsX1Rbiu.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BefGRh1_.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-C5TZQP2e.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-0m7CmsHV.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-hlbYz1KW.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-CXfbS6fq.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-C3hbPCLt.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-Co1Ru0Du.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DquagjBC.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-Bp5Jg2k3.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DL_SGPF3.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-g2p5-kTe.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-aap2mUGF.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-C96aLkqP.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-CIPb-b4_.js"), "./Pages/Journal/Write.vue": () => import("./assets/Write-BrPzK6nb.js"), "./Pages/More/Index.vue": () => import("./assets/Index-Cc6kHpoz.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B_-ogsn3.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-ZD3F4rym.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-D3cv-AWu.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dm86BcmR.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CREn3Cta.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-bXZrEngU.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-DJ2rWyFq.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DCp89kMX.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-C32UR2vO.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-CZrPvTGU.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-CDLwS7dO.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-D0A1YVNh.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";
