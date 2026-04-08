@@ -45,8 +45,8 @@ class PaymentController extends Controller
     {
         $user = auth()->user();
 
-        $merchantCode = config('duitku.merchant_code');
-        $apiKey = config('duitku.api_key');
+        $merchantCode = trim(config('duitku.merchant_code'));
+        $apiKey = trim(config('duitku.api_key'));
         $env = config('duitku.env');
 
         $plan = $request->input('plan', 'architect');
@@ -136,7 +136,10 @@ class PaymentController extends Controller
             }
         }
         catch (\Exception $e) {
-            Log::error('Duitku Checkout Exception: ' . $e->getMessage());
+            Log::error('Duitku Checkout Exception: ' . $e->getMessage(), [
+                'merchantCode' => $merchantCode,
+                'params' => $params
+            ]);
             return response()->json(['error' => 'Exception: ' . $e->getMessage()], 500);
         }
     }

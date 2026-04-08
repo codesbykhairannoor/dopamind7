@@ -41,11 +41,17 @@ class PayPalController extends Controller
         }
 
         $provider = new PayPalClient;
-        $provider->setApiCredentials(config('paypal'));
+        $config = config('paypal');
+        $config['sandbox']['client_id'] = trim($config['sandbox']['client_id'] ?? '');
+        $config['sandbox']['client_secret'] = trim($config['sandbox']['client_secret'] ?? '');
+        $config['live']['client_id'] = trim($config['live']['client_id'] ?? '');
+        $config['live']['client_secret'] = trim($config['live']['client_secret'] ?? '');
+
+        $provider->setApiCredentials($config);
         try {
             $paypalToken = $provider->getAccessToken();
         } catch (\Exception $e) {
-            Log::error('PayPal Auth Error: ' . $e->getMessage());
+            Log::error('PayPal Auth Error: ' . $e->getMessage(), ['config' => $config]);
             return response()->json(['error' => 'Gagal autentikasi PayPal. Periksa konfigurasi API.'], 500);
         }
 
