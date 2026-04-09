@@ -66,6 +66,9 @@ const handleGoBack = () => {
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md animate-in fade-in duration-500" @click="handleGoBack"></div>
 
+        <!-- Modal Container (White Card) -->
+        <div class="relative w-full max-w-lg bg-white dark:bg-slate-950 rounded-[3.5rem] shadow-2xl border border-slate-100 dark:border-slate-800/50 overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-10 duration-500">
+            
             <!-- Visual Hero Section (Tailored per Module) -->
             <div class="relative h-44 overflow-hidden bg-slate-900 flex items-center justify-center">
                 <!-- Background Gradients -->
