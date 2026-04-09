@@ -82,7 +82,7 @@
                 {{ __('hero_badge') }}
             </div>
             
-            <h1 class="text-[42px] leading-[1.1] md:text-7xl lg:text-8xl mb-10 tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000 font-black">
+            <h1 class="text-5xl leading-[1.1] md:text-7xl lg:text-8xl mb-10 tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000 font-black">
                 {{ __('hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800">
                     {{ __('hero_title_2') }}
@@ -126,7 +126,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 font-black text-[10px] mb-8 border border-indigo-500/20">
                         {{ __('fric_badge') }}
                     </div>
-                    <h2 class="text-[36px] leading-[1.1] md:text-6xl text-white mb-8 font-black">
+                    <h2 class="text-4xl leading-[1.1] md:text-6xl text-white mb-8 font-black">
                         {{ __('fric_title') }}
                     </h2>
                     <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">
@@ -183,7 +183,7 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-slate-700 font-black text-[10px] mb-6 tracking-widest border border-slate-200">
                     {{ __('pill_badge') }}
                 </div>
-                <h2 class="text-[42px] leading-[1.1] md:text-7xl text-slate-900 mb-8 font-black">
+                <h2 class="text-5xl leading-[1.1] md:text-7xl text-slate-900 mb-8 font-black">
                     Unified Habit Tracker, Planner & Finance Manager.
                 </h2>
             </div>
@@ -251,7 +251,7 @@
                         </span>
                         {{ __('home_science_badge') }}
                     </div>
-                    <h2 class="text-[36px] leading-[1.1] md:text-6xl text-white mb-8 tracking-tighter font-black">
+                    <h2 class="text-4xl leading-[1.1] md:text-6xl text-white mb-8 tracking-tighter font-black">
                         {{ __('home_science_title') }}
                     </h2>
                     <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">
@@ -321,7 +321,7 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-black text-[10px] mb-6 tracking-widest border border-indigo-200">
                     {{ __('flow_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl text-slate-900 mb-8 leading-tight font-black">
+                <h2 class="text-5xl md:text-6xl text-slate-900 mb-8 leading-tight font-black">
                     Synchronized Habit & Finance Flow.
                 </h2>
             </div>
@@ -363,7 +363,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-indigo-100">
                         🔗 {{ __('home_synergy_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl text-slate-900 mb-8 leading-tight font-black">
+                    <h2 class="text-5xl md:text-6xl text-slate-900 mb-8 leading-tight font-black">
                         {{ __('home_synergy_title') }}
                     </h2>
                     <p class="text-slate-500 text-xl font-medium leading-relaxed mb-12">
@@ -469,7 +469,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-indigo-100">
                         {{ __('vsn_badge') }}
                     </div>
-                    <h2 class="text-5xl md:text-7xl text-slate-900 mb-8 leading-tight font-black">
+                    <h2 class="text-6xl md:text-7xl text-slate-900 mb-8 leading-tight font-black">
                         {{ __('vsn_title') }}
                     </h2>
                     <p class="text-slate-500 text-xl font-medium leading-relaxed mb-12">
@@ -493,7 +493,7 @@
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-black text-[10px] mb-8 tracking-widest border border-indigo-200">
                 {{ __('mig_badge') }}
             </div>
-            <h2 class="text-4xl md:text-6xl text-slate-900 mb-16 leading-tight font-black">
+            <h2 class="text-5xl md:text-6xl text-slate-900 mb-16 leading-tight font-black">
                 {{ __('mig_title') }}
             </h2>
 
@@ -534,7 +534,7 @@
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white/80 text-[10px] font-black tracking-widest mb-6 border border-white/10">
                     🚀 {{ __('home_solutions_badge') }}
                 </div>
-                <h2 class="text-3xl md:text-5xl text-white mb-6 tracking-tight font-black">{{ __('home_solutions_title') }}</h2>
+                <h2 class="text-4xl md:text-5xl text-white mb-6 tracking-tight font-black">{{ __('home_solutions_title') }}</h2>
                 <p class="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
                     {{ __('home_solutions_desc') }}
                 </p>
@@ -587,7 +587,7 @@
                         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-black text-[10px] mb-8 tracking-widest border border-white/10">
                             {{ __('eco_coming_soon') }}
                         </div>
-                        <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight font-black">
+                        <h2 class="text-5xl md:text-6xl text-white mb-8 leading-tight font-black">
                             {{ __('waitlist_title') }}
                         </h2>
                         <p class="text-slate-400 text-xl font-medium leading-relaxed mb-0">
@@ -631,7 +631,7 @@
     {{-- ================================================================= --}}
     <section class="py-32 bg-slate-50">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl text-slate-900 mb-16 text-center tracking-tight font-black">{{ __('faq_title') }}</h2>
+            <h2 class="text-5xl md:text-5xl text-slate-900 mb-16 text-center tracking-tight font-black">{{ __('faq_title') }}</h2>
             
             <div class="grid gap-4" x-data="{ active: null }">
                 @foreach([1, 2, 3, 4, 5] as $i)
@@ -656,7 +656,7 @@
     {{-- ================================================================= --}}
     <section class="py-40 px-6 text-center relative overflow-hidden bg-white bg-pattern-mesh-indigo">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-5xl md:text-[6rem] mb-10 leading-[0.9] tracking-tight text-slate-900 font-black">
+            <h2 class="text-6xl md:text-[6rem] mb-10 leading-[0.9] tracking-tight text-slate-900 font-black">
                 {{ __('cta_final_title') }}
             </h2>
             <p class="text-slate-500 text-xl md:text-2xl mb-14 max-w-2xl mx-auto font-medium">

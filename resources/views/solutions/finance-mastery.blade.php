@@ -52,7 +52,7 @@
                     💰 {{ __('solve_finance_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] md:text-6xl xl:text-7xl mb-6 leading-[1.05] text-gray-900 tracking-tight font-black">
+                <h1 class="text-6xl md:text-7xl mb-6 leading-[1.05] text-gray-900 tracking-tight font-black">
                     {{ __('solve_finance_hero_title_1') }}
                     <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                         {{ __('solve_finance_hero_title_2') }}
@@ -112,7 +112,7 @@
     <section class="py-32 bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('solve_finance_prob_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 text-gray-900 font-black">{{ __('solve_finance_prob_title') }}</h2>
                 <p class="text-xl text-gray-500">{{ __('solve_finance_prob_desc') }}</p>
             </div>
 
@@ -166,7 +166,7 @@
 
                 {{-- Right: Features --}}
                 <div>
-                    <h2 class="text-4xl md:text-5xl mb-8 leading-tight font-black">
+                    <h2 class="text-5xl md:text-6xl mb-8 leading-tight font-black">
                         {{ __('solve_finance_sol_title') }}
                     </h2>
                     <div class="space-y-8">
@@ -191,7 +191,7 @@
     {{-- SECTION 4: THE SYNERGY (HABITS MEET FINANCE) --}}
     <section class="py-32 bg-indigo-50/50 border-t border-indigo-100">
         <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl text-indigo-950 mb-6 font-black">{{ __('solve_finance_syn_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl text-indigo-950 mb-6 font-black">{{ __('solve_finance_syn_title') }}</h2>
             <p class="text-xl text-indigo-800/70 max-w-2xl mx-auto mb-16">{{ __('solve_finance_syn_desc') }}</p>
 
             <div class="flex flex-col md:flex-row items-center justify-center gap-8">
@@ -223,7 +223,7 @@
                 <div class="mt-8 text-center text-[10px] text-slate-500 uppercase tracking-widest">{{ __('finance_extra_1_label') }}</div>
             </div>
             <div>
-                <h2 class="text-4xl text-gray-900 mb-6 font-black">{{ __('solve_finance_extra_1_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl text-gray-900 mb-6 font-black">{{ __('solve_finance_extra_1_title') }}</h2>
                 <p class="text-xl text-gray-500 leading-relaxed">
                     {{ __('solve_finance_extra_1_desc') }}
                 </p>
@@ -234,7 +234,7 @@
     {{-- SECTION: FREEDOM RUNWAY (UNIQUE B) --}}
     <section class="py-32 bg-slate-950 text-white relative">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl mb-8 font-black">{{ __('solve_finance_extra_2_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl mb-8 font-black">{{ __('solve_finance_extra_2_title') }}</h2>
             <p class="text-xl text-slate-400 leading-relaxed mb-12 italic">
                 {{ __('solve_finance_extra_2_desc') }}
             </p>
@@ -259,7 +259,7 @@
                             🧬 {{ __('solve_finance_science_badge') }}
                         </div>
 
-                        <h2 class="text-4xl md:text-6xl text-slate-900 mb-10 leading-[1.1] font-black">
+                        <h2 class="text-5xl md:text-7xl text-slate-900 mb-10 leading-[1.1] font-black">
                             {{ __('solve_finance_science_title') }}
                         </h2>
 
@@ -307,7 +307,7 @@
 
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl text-center text-gray-900 mb-16 font-black">{{ __('solve_finance_faq_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl text-center text-gray-900 mb-16 font-black">{{ __('solve_finance_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -323,7 +323,7 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
             <div class="text-6xl mb-8 animate-bounce font-black">📈</div>
-            <h2 class="text-[42px] leading-[1.1] md:text-7xl text-gray-900 mb-8 tracking-tight font-black">{{ __('solve_finance_cta_title') }}</h2>
+            <h2 class="text-6xl md:text-7xl text-gray-900 mb-8 tracking-tight font-black">{{ __('solve_finance_cta_title') }}</h2>
             <p class="text-gray-500 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('solve_finance_cta_desc') }}
             </p>

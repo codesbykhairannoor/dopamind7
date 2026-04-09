@@ -55,7 +55,7 @@
                     🌱 {{ __('growth_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[36px] leading-[1.1] md:text-6xl xl:text-7xl mb-8 leading-[1.2] text-gray-900 tracking-tight font-black">
+                <h1 class="text-6xl md:text-7xl mb-8 leading-[1.2] text-gray-900 tracking-tight font-black">
     {{ __('growth_hero_title_1') }} 
     {{-- Tambahkan py-2 atau py-4 agar gradasi tidak kepotong --}}
     <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-500">
@@ -146,7 +146,7 @@
 
             <div class="order-1 lg:order-2">
                 <div class="inline-flex items-center justify-center w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl text-2xl mb-6 shadow-sm border border-indigo-100">🔥</div>
-                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('growth_feat_1_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 text-gray-900 font-black">{{ __('growth_feat_1_title') }}</h2>
                 <p class="text-gray-500 text-lg leading-relaxed mb-8">
                     {{ __('growth_feat_1_desc') }}
                 </p>
@@ -171,7 +171,7 @@
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
 
         <div class="relative z-10 max-w-5xl w-full px-6 text-center">
-            <h2 class="text-4xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('growth_feat_2_title') }}</h2>
+            <h2 class="text-5xl md:text-7xl mb-8 text-white tracking-tight font-black">{{ __('growth_feat_2_title') }}</h2>
             <p class="text-indigo-200 text-xl leading-relaxed mb-16 max-w-2xl mx-auto">
                 {{ __('growth_feat_2_desc') }}
             </p>
@@ -219,7 +219,7 @@
                 </div>
             </div>
             <div class="order-1 md:order-2">
-                <h2 class="text-4xl mb-6 font-black">{{ __('growth_extra_1_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 font-black">{{ __('growth_extra_1_title') }}</h2>
                 <p class="text-xl text-indigo-200 leading-relaxed italic">
                     {{ __('growth_extra_1_desc') }}
                 </p>
@@ -230,7 +230,7 @@
     {{-- SECTION: GROWTH TRAJECTORY (UNIQUE B) --}}
     <section class="py-32 bg-white relative">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl text-gray-900 mb-8 font-black">{{ __('growth_extra_2_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl text-gray-900 mb-8 font-black">{{ __('growth_extra_2_title') }}</h2>
             <p class="text-xl text-gray-500 leading-relaxed mb-12">
                 {{ __('growth_extra_2_desc') }}
             </p>
@@ -275,7 +275,7 @@
                         🧬 {{ __('growth_science_badge') }}
                     </div>
 
-                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-10 leading-tight font-black">
+                    <h2 class="text-5xl md:text-7xl text-gray-900 mb-10 leading-tight font-black">
                         {{ __('growth_science_title') }}
                     </h2>
 
@@ -306,7 +306,7 @@
 
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl text-center text-gray-900 mb-16 font-black">{{ __('growth_faq_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl text-center text-gray-900 mb-16 font-black">{{ __('growth_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -324,7 +324,7 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-t from-indigo-200 to-transparent rounded-t-full blur-2xl -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10 px-6">
-            <h2 class="text-[42px] leading-[1.1] md:text-7xl mb-8 text-indigo-950 tracking-tight leading-tight font-black">{{ __('growth_cta_title') }}</h2>
+            <h2 class="text-6xl md:text-7xl mb-8 text-indigo-950 tracking-tight leading-tight font-black">{{ __('growth_cta_title') }}</h2>
             <p class="text-indigo-900/60 text-xl md:text-2xl mb-12 font-medium max-w-2xl mx-auto">
                 {{ __('growth_cta_desc') }}
             </p>

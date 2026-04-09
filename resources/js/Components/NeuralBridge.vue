@@ -18,7 +18,8 @@ const loading = ref(false);
 
 const fetchSynergy = async () => {
     if (!isQuantum.value) {
-        router.visit(route('billing'), { data: { from: 'neural_bridge' } });
+        // Instead of redirecting, we can show a localized upgrade suggestion or do nothing
+        // for "soft" experience, we let the UI handle the locked state.
         return;
     }
     loading.value = true;
@@ -62,10 +63,20 @@ const fetchSynergy = async () => {
                 </div>
 
                 <div v-else class="py-1">
-                    <button @click="fetchSynergy" class="text-xs font-black text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 uppercase tracking-widest flex items-center gap-2 transition-all active:scale-95">
-                        <span>Get Intelligence</span>
-                        <OneForMindIcon name="chevron-right" size="12" stroke-width="4" />
-                    </button>
+                    <template v-if="isQuantum">
+                        <button @click="fetchSynergy" class="text-xs font-black text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 uppercase tracking-widest flex items-center gap-2 transition-all active:scale-95">
+                            <span>Get Intelligence</span>
+                            <OneForMindIcon name="chevron-right" size="12" stroke-width="4" />
+                        </button>
+                    </template>
+                    <template v-else>
+                        <div class="flex items-center justify-between">
+                            <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">Neural insights require Quantum Plan</p>
+                            <Link :href="route('billing')" class="text-[10px] font-black text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 uppercase tracking-widest border-b border-indigo-200 dark:border-indigo-800 pb-0.5 transition-all">
+                                Upgrade
+                            </Link>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>

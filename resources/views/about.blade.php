@@ -53,7 +53,7 @@
             {{ __('about_badge') }}
         </div>
         
-        <h1 class="text-5xl md:text-8xl mb-10 text-slate-900 leading-[0.95] tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-1000 font-black">
+        <h1 class="text-6xl md:text-8xl mb-10 text-slate-900 leading-[0.95] tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-1000 font-black">
             {{ __('about_title_1') }}<br>
             <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-900">
                 {{ __('about_title_2') }}
@@ -76,7 +76,7 @@
             <div class="grid lg:grid-cols-2 gap-32 items-center">
                 <div class="space-y-10">
                     <div class="h-1 w-20 bg-indigo-600"></div>
-                    <h2 class="text-5xl md:text-7xl text-slate-900 leading-[0.9] tracking-tighter font-black">
+                    <h2 class="text-6xl md:text-7xl text-slate-900 leading-[0.9] tracking-tighter font-black">
                         {{ __('story_1_title') }}
                     </h2>
                     <div class="space-y-6">
@@ -143,7 +143,7 @@
 
                 <div class="order-1 lg:order-2 space-y-10">
                     <div class="inline-block px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black tracking-[0.3em]">The Transition</div>
-                    <h2 class="text-5xl md:text-7xl text-slate-900 leading-[0.9] tracking-tighter font-black">{{ __('story_2_title') }}</h2>
+                    <h2 class="text-6xl md:text-7xl text-slate-900 leading-[0.9] tracking-tighter font-black">{{ __('story_2_title') }}</h2>
                     <p class="text-slate-600 text-xl leading-relaxed font-medium">{{ __('story_2_p1') }}</p>
                     <div class="p-12 bg-indigo-600 rounded-[4rem] text-white shadow-2xl relative group overflow-hidden">
                         {{-- Decorative --}}
@@ -170,7 +170,7 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white font-black text-[10px] mb-8 tracking-[0.4em] border border-white/20">
                     {{ __('manifesto_badge') }}
                 </div>
-                <h2 class="text-5xl md:text-8xl text-white leading-[0.85] tracking-tighter font-black">
+                <h2 class="text-6xl md:text-8xl text-white leading-[0.85] tracking-tighter font-black">
                     {{ __('manifesto_title') }}
                 </h2>
             </div>
@@ -206,7 +206,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black tracking-[0.3em] mb-6">
                         📚 {{ __('about_philosophy_badge') }}
                     </div>
-                    <h2 class="text-5xl md:text-7xl text-slate-900 leading-[0.9] tracking-tighter font-black">{{ __('about_philosophy_title') }}</h2>
+                    <h2 class="text-6xl md:text-7xl text-slate-900 leading-[0.9] tracking-tighter font-black">{{ __('about_philosophy_title') }}</h2>
                 </div>
                 <div class="lg:w-1/3 pb-4">
                     <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
@@ -249,7 +249,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <h2 class="text-4xl md:text-6xl mb-32 text-center text-white tracking-tighter italic font-black">{{ __('team_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl mb-32 text-center text-white tracking-tighter italic font-black">{{ __('team_title') }}</h2>
             
             <div class="grid md:grid-cols-2 gap-12">
                 {{-- THE BUILDER --}}
@@ -319,7 +319,7 @@
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-black tracking-[0.4em] mb-8">
                     🗺️ {{ __('about_roadmap_badge') }}
                 </div>
-                <h2 class="text-5xl md:text-8xl text-slate-900 leading-[0.85] tracking-tighter font-black">{{ __('about_roadmap_title') }}</h2>
+                <h2 class="text-6xl md:text-8xl text-slate-900 leading-[0.85] tracking-tighter font-black">{{ __('about_roadmap_title') }}</h2>
             </div>
 
             <div class="relative max-w-5xl mx-auto">
@@ -371,7 +371,7 @@
     {{-- ================================================================= --}}
     <section class="py-32 bg-indigo-50 border-t border-indigo-100 text-center relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 relative z-10 animate-in zoom-in-95 fade-in duration-1000">
-            <h2 class="text-[36px] leading-[1.05] md:text-6xl mb-8 text-indigo-950 tracking-tight font-black">{{ __('cta_about_title') }}</h2>
+            <h2 class="text-5xl leading-[1.05] md:text-6xl mb-8 text-indigo-950 tracking-tight font-black">{{ __('cta_about_title') }}</h2>
             <p class="text-2xl text-indigo-700/70 mb-14 font-medium max-w-2xl mx-auto">{{ __('cta_about_desc') }}</p>
             <div class="flex justify-center flex-col sm:flex-row gap-5">
                 <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-14 py-6 rounded-[2.5rem] font-black text-xl hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition transform hover:-translate-y-2 active:scale-95">

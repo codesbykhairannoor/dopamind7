@@ -3,6 +3,11 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import Modal from '@/Components/Modal.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
+import { useGating } from '@/Composables/useGating';
+import { Link } from '@inertiajs/vue3';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+
+const { isExplorer } = useGating();
 
 const props = defineProps({
     show: Boolean,
@@ -64,8 +69,27 @@ onUnmounted(() => {
                 </div>
             </div>
 
-            <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/50 dark:bg-slate-950/50 p-4 md:p-8">
+            <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/50 dark:bg-slate-950/50 p-4 md:p-8 relative">
                 
+                <!-- Premium Glass Overlay -->
+                <div v-if="isExplorer" class="absolute inset-x-0 inset-y-0 z-40 backdrop-blur-md bg-white/10 dark:bg-slate-900/10 flex items-center justify-center p-8 text-center animate-in fade-in duration-700">
+                    <div class="max-w-xs space-y-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-2xl flex items-center justify-center mx-auto text-2xl shadow-xl shadow-indigo-500/30">
+                            ⚡
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-slate-800 dark:text-white mb-2 leading-tight">Supercharge Your Habits</h3>
+                            <p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                                Organize your life rituals with speed. Batch Mode allows you to design and track multiple habits instantly.
+                            </p>
+                            <Link :href="route('billing')" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-[10px] uppercase tracking-widest px-8 py-4 rounded-xl shadow-lg transition-all active:scale-95">
+                                {{ $t('btn_unlock_now', 'Unlock Architect Plan') }}
+                                <OneForMindIcon name="arrow-right" size="14" stroke-width="4" />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="hidden md:grid grid-cols-12 gap-3 mb-3 px-4 text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">
                     <div class="col-span-4">{{ $t('habit_name', 'Nama Habit') }}</div>
                     <div class="col-span-2 text-center">{{ $t('habit_icon', 'Ikon') }}</div>
@@ -74,7 +98,7 @@ onUnmounted(() => {
                     <div class="col-span-1 text-center">{{ $t('action', 'Aksi') }}</div>
                 </div>
 
-                <div class="space-y-4 md:space-y-3">
+                <div class="space-y-4 md:space-y-3" :class="{'pointer-events-none': isExplorer}">
                     <div v-for="(trx, index) in form.habits" :key="index" 
                         class="bg-white dark:bg-slate-900 md:bg-transparent p-5 md:p-0 rounded-[2rem] md:rounded-none border border-slate-100 dark:border-slate-800 md:border-none shadow-sm md:shadow-none relative group animate-in fade-in slide-in-from-bottom-4 duration-300">
                         
@@ -169,7 +193,8 @@ onUnmounted(() => {
                         {{ $t('btn_cancel', 'Batal') }}
                     </SecondaryButton>
                     
-                    <PrimaryButton @click="submit" :disabled="form.processing" class="flex-[2] sm:flex-none !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none transition-all transform active:scale-95 font-black uppercase tracking-widest text-[11px]">
+                    <PrimaryButton @click="submit" :disabled="form.processing || isExplorer" class="flex-[2] sm:flex-none !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none transition-all transform active:scale-95 font-black uppercase tracking-widest text-[11px]"
+                        :class="{'!bg-slate-300 !text-slate-500 !cursor-not-allowed !shadow-none !transform-none': isExplorer}">
                         <span v-if="form.processing" class="flex items-center gap-2 justify-center">
                             <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                         </span>

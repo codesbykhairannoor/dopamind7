@@ -90,7 +90,7 @@ class PlannerController extends Controller
             if ($request->wantsJson()) {
                 return response()->json(['message' => 'Batch mode is a Pro feature. Upgrade to Architect!'], 403);
             }
-            return redirect()->route('pricing.index')->with('error', 'Batch Mode is a Pro feature.');
+            return redirect()->route('billing')->with('error', 'Batch Mode is a Pro feature.');
         }
 
         $timezone = $user->timezone ?? 'Asia/Jakarta';

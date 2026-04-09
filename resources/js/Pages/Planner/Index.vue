@@ -49,10 +49,6 @@ const {
 } = usePlannerBatch(currentDate, localTasks); // 🔥 FIX 2: Masukkan localTasks sebagai parameter kedua!
 
 const switchToBatch = () => { 
-    if (gating.isExplorer.value) {
-        router.visit(route('billing'), { data: { from: 'planner_batch' } });
-        return;
-    }
     isModalOpen.value = false; 
     openBatchModal(); 
 };
@@ -83,7 +79,7 @@ onMounted(() => {
             :tasks="tasks"
             @change-date="changeDate"
             @change-day="changeDay"
-            :onAddClick="() => openModal(null, null, 'full')"
+            :openModal="() => openModal(null, null, 'full')"
             :resetBoard="handleFullReset"
             :stats="scheduledStats"
             :isExplorer="gating.isExplorer.value"

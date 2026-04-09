@@ -89,7 +89,7 @@
                     <span class="text-lg">💼</span> {{ __('job_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
+                <h1 class="text-6xl leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('job_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('job_hero_title_2') }}</span>
                 </h1>
@@ -187,7 +187,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-xs uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-100">
                         {{ __('job_funnel_badge') }}
                     </div>
-                    <h2 class="text-[42px] leading-[1.1] md:text-7xl text-gray-900 mb-10 leading-[1.1] tracking-tight font-black">
+                    <h2 class="text-6xl leading-[1.1] md:text-7xl text-gray-900 mb-10 leading-[1.1] tracking-tight font-black">
                         {{ __('job_funnel_title') }}
                     </h2>
                     <p class="text-gray-500 text-xl mb-12 leading-relaxed font-medium">
@@ -291,7 +291,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white text-xs uppercase tracking-[0.2em] mb-8 shadow-2xl">
                         {{ __('job_matrix_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-10 leading-tight tracking-tight font-black">
+                    <h2 class="text-5xl md:text-6xl text-gray-900 mb-10 leading-tight tracking-tight font-black">
                         {{ __('job_matrix_title') }}
                     </h2>
                     <p class="text-gray-600 text-xl mb-12 leading-relaxed">
@@ -321,7 +321,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] uppercase tracking-[0.2em] mb-8 border border-cyan-500/20">
                         {{ __('job_value_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
+                    <h2 class="text-5xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                         {{ __('job_value_title') }}
                     </h2>
                     <p class="text-slate-400 text-xl leading-relaxed font-medium mb-12">
@@ -417,7 +417,7 @@
                         🧬 {{ __('job_science_badge') }}
                     </div>
 
-                    <h2 class="text-3xl md:text-5xl font-mono text-emerald-400 mb-10 leading-tight font-black">
+                    <h2 class="text-4xl md:text-5xl font-mono text-emerald-400 mb-10 leading-tight font-black">
                         <span class="text-white opacity-50 mr-4">></span>{{ __('job_science_title') }}<span class="animate-pulse">_</span>
                     </h2>
 
@@ -458,7 +458,7 @@
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] uppercase tracking-widest mb-8 border border-emerald-500/20">
                     🎯 {{ __('job_ai_promo_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
+                <h2 class="text-5xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                     {{ __('job_ai_promo_title') }}
                 </h2>
                 <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
@@ -488,7 +488,7 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
+            <h2 class="text-4xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('job_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">
@@ -503,7 +503,7 @@
             <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-pulse duration-[5000ms]"></div>
             
             <div class="relative z-10">
-                <h2 class="text-4xl md:text-5xl mb-6 font-black">{{ __('job_cta_title') }}</h2>
+                <h2 class="text-5xl md:text-5xl mb-6 font-black">{{ __('job_cta_title') }}</h2>
                 <p class="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">
                     {{ __('job_cta_desc') }}
                 </p>

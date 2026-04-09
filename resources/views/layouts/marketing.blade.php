@@ -377,8 +377,8 @@
                 padding-bottom: 0.75rem !important;
                 font-size: 0.875rem !important; /* text-sm */
             }
-            h1 { font-size: 2.25rem !important; line-height: 2.5rem !important; } /* text-4xl */
-            h2 { font-size: 1.875rem !important; line-height: 2.25rem !important; } /* text-3xl */
+            h1 { font-size: 2.75rem !important; line-height: 1.1 !important; } /* text-5xl-ish */
+            h2 { font-size: 2.25rem !important; line-height: 1.1 !important; } /* text-4xl */
         }
     </style>
     @if(env('VITE_GA_MEASUREMENT_ID'))
@@ -500,10 +500,10 @@
                 {{-- LOGO --}}
                 <a href="{{ route('home') }}" hx-boost="false" class="group flex items-center gap-2 z-[110]">
                     <div
-                        class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
-                        <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-5 h-5 brightness-0 invert" />
+                        class="w-10 h-10 lg:w-8 lg:h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
+                        <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-6 h-6 lg:w-5 lg:h-5 brightness-0 invert" />
                     </div>
-                    <span class="text-xl font-black tracking-tighter text-slate-900">OneForMind</span>
+                    <span class="hidden lg:block text-xl font-black tracking-tighter text-slate-900">OneForMind</span>
                 </a>
 
                 {{-- DESKTOP MENU --}}

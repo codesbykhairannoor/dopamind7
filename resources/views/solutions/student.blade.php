@@ -61,7 +61,7 @@
                 🎓 {{ __('student_hero_badge') }}
             </div>
             
-            <h1 class="text-6xl md:text-6xl xl:text-7xl mb-6 leading-[1.05] text-gray-900 tracking-tight font-black">
+            <h1 class="text-6xl md:text-7xl mb-6 leading-[1.05] text-gray-900 tracking-tight font-black">
                 {{ __('student_hero_title_1') }}
                 <span class="block py-2 text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('student_hero_title_2') }}
@@ -175,7 +175,7 @@
     <section class="py-24 bg-white bg-pattern-dots relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                <h2 class="text-5xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('student_prob_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 text-gray-900 font-black">{{ __('student_prob_title') }}</h2>
                 <p class="text-xl text-gray-500">{{ __('student_prob_desc') }}</p>
             </div>
 
@@ -219,7 +219,7 @@
             
             <div class="order-1 lg:order-2">
                 <div class="inline-flex items-center justify-center w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl text-2xl mb-6">🎯</div>
-                <h2 class="text-3xl md:text-4xl mb-6 text-gray-900 font-black">{{ __('student_feat_1_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 text-gray-900 font-black">{{ __('student_feat_1_title') }}</h2>
                 <p class="text-gray-500 text-lg leading-relaxed mb-8">
                     {{ __('student_feat_1_desc') }}
                 </p>
@@ -236,7 +236,7 @@
         <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <div class="inline-flex items-center justify-center w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl text-2xl mb-6">🍜</div>
-                <h2 class="text-3xl md:text-4xl mb-6 text-gray-900 font-black">{{ __('student_feat_2_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 text-gray-900 font-black">{{ __('student_feat_2_title') }}</h2>
                 <p class="text-gray-500 text-lg leading-relaxed mb-8">
                     {{ __('student_feat_2_desc') }}
                 </p>
@@ -263,7 +263,7 @@
     <section class="py-24 bg-gray-50 border-t border-gray-100">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl text-gray-900 mb-4 font-black">{{ __('student_bento_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl text-gray-900 mb-4 font-black">{{ __('student_bento_title') }}</h2>
                 <p class="text-gray-500 text-lg">{{ __('student_bento_desc') }}</p>
             </div>
 
@@ -309,7 +309,7 @@
                 </div>
             </div>
             <div>
-                <h2 class="text-4xl text-gray-900 mb-6 font-black">{{ __('student_extra_1_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl text-gray-900 mb-6 font-black">{{ __('student_extra_1_title') }}</h2>
                 <p class="text-xl text-gray-500 leading-relaxed">
                     {{ __('student_extra_1_desc') }}
                 </p>
@@ -320,7 +320,7 @@
     {{-- SECTION: GRADES VS SLEEP (UNIQUE B) --}}
     <section class="py-32 bg-indigo-50 border-y border-indigo-100">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl text-indigo-950 mb-8 font-black">{{ __('student_extra_2_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl text-indigo-950 mb-8 font-black">{{ __('student_extra_2_title') }}</h2>
             <p class="text-xl text-indigo-800/70 leading-relaxed mb-12">
                 {{ __('student_extra_2_desc') }}
             </p>
@@ -366,7 +366,7 @@
                             🧬 {{ __('student_science_badge') }}
                         </div>
                         
-                        <h2 class="text-[36px] leading-[1.1] md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
+                        <h2 class="text-5xl leading-[1.1] md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
                             {{ __('student_science_title') }}
                         </h2>
                         
@@ -411,7 +411,7 @@
 
     <section class="py-32 bg-white">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl text-center text-gray-900 mb-16 font-black">{{ __('student_faq_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl text-center text-gray-900 mb-16 font-black">{{ __('student_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -429,7 +429,7 @@
         <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-500 rounded-full mix-blend-screen filter blur-[150px] opacity-40 -z-10 animate-pulse duration-[6000ms]"></div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h2 class="text-[36px] leading-[1.1] md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('student_cta_title') }}</h2>
+            <h2 class="text-6xl leading-[1.1] md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('student_cta_title') }}</h2>
             <p class="text-indigo-100 text-xl md:text-2xl mb-12 font-medium leading-relaxed">
                 {{ __('student_cta_desc') }}
             </p>

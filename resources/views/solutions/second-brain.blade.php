@@ -91,7 +91,7 @@
             </div>
             
             {{-- Teks Utama --}}
-            <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-6 leading-tight text-slate-900 tracking-tight font-black">
+            <h1 class="text-6xl md:text-7xl mb-6 leading-tight text-slate-900 tracking-tight font-black">
                 {{ __('brain_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('brain_hero_title_2') }}
@@ -155,7 +155,7 @@
             
             {{-- Left: Text --}}
             <div class="relative z-10">
-                <h2 class="text-4xl md:text-5xl mb-6 text-slate-900 leading-tight font-black">{{ __('brain_prob_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 text-slate-900 leading-tight font-black">{{ __('brain_prob_title') }}</h2>
                 <p class="text-xl text-slate-500 leading-relaxed mb-10">{{ __('brain_prob_desc') }}</p>
                 
                 <div class="space-y-6">
@@ -213,7 +213,7 @@
         
         <div class="max-w-4xl mx-auto px-6 relative z-10">
             <div class="text-center mb-24">
-                <h2 class="text-4xl md:text-6xl mb-6 font-black">{{ __('brain_sol_title') }}</h2>
+                <h2 class="text-5xl md:text-7xl mb-6 font-black">{{ __('brain_sol_title') }}</h2>
                 <p class="text-indigo-300 text-xl">{{ __('brain_sol_desc') }}</p>
             </div>
 
@@ -287,7 +287,7 @@
     <section class="py-32 bg-white border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-20 max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-5xl mb-6 text-slate-900 font-black">{{ __('brain_feat_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 text-slate-900 font-black">{{ __('brain_feat_title') }}</h2>
                 <p class="text-xl text-slate-500">{{ __('brain_feat_sub') }}</p>
             </div>
             
@@ -317,7 +317,7 @@
     <section class="py-32 bg-slate-50 relative overflow-hidden">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="order-2 md:order-1">
-                <h2 class="text-4xl text-slate-900 mb-6 font-black">{{ __('brain_extra_1_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl text-slate-900 mb-6 font-black">{{ __('brain_extra_1_title') }}</h2>
                 <p class="text-xl text-slate-500 leading-relaxed mb-10">
                     {{ __('brain_extra_1_desc') }}
                 </p>
@@ -352,7 +352,7 @@
         <div class="max-w-5xl mx-auto px-6">
             <div class="bg-indigo-900 rounded-[3rem] p-12 md:p-20 text-white text-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-500/20 via-transparent to-transparent opacity-50"></div>
-                <h2 class="text-4xl mb-8 relative z-10 font-black">{{ __('brain_extra_2_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-8 relative z-10 font-black">{{ __('brain_extra_2_title') }}</h2>
                 <p class="text-xl text-indigo-100 leading-relaxed mb-12 max-w-3xl mx-auto relative z-10">
                     {{ __('brain_extra_2_desc') }}
                 </p>
@@ -390,7 +390,7 @@
                         🧬 {{ __('brain_science_badge') }}
                     </div>
 
-                    <h2 class="text-4xl md:text-7xl text-white mb-10 leading-[1.1] font-black">
+                    <h2 class="text-5xl md:text-7xl text-white mb-10 leading-[1.1] font-black">
                         {{ __('brain_science_title') }}
                     </h2>
 
@@ -438,7 +438,7 @@
 
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl text-center text-slate-900 mb-16 font-black">{{ __('brain_faq_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl text-center text-slate-900 mb-16 font-black">{{ __('brain_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
@@ -463,7 +463,7 @@
                 
                 <div class="relative z-10">
                     <div class="text-6xl mb-8 font-black">🕊️</div>
-                    <h2 class="text-4xl md:text-6xl text-white mb-6 tracking-tight leading-tight font-black">
+                    <h2 class="text-6xl md:text-7xl text-white mb-6 tracking-tight leading-tight font-black">
                         {{ __('brain_cta_title') }}
                     </h2>
                     <p class="text-lg md:text-xl text-indigo-200 mb-12 max-w-2xl mx-auto leading-relaxed">

@@ -83,7 +83,7 @@
                     <span class="text-lg">🗓️</span> {{ __('calendar_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
+                <h1 class="text-6xl leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('calendar_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('calendar_hero_title_2') }}</span>
                 </h1>
@@ -217,7 +217,7 @@
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 text-xs uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-100">
                         {{ __('calendar_layered_badge') }}
                     </div>
-                    <h2 class="text-[42px] leading-[1.1] md:text-7xl text-gray-900 mb-10 leading-[1.1] tracking-tight font-black">
+                    <h2 class="text-6xl leading-[1.1] md:text-7xl text-gray-900 mb-10 leading-[1.1] tracking-tight font-black">
                         {{ __('calendar_layered_title') }}
                     </h2>
                     <p class="text-gray-500 text-xl mb-12 leading-relaxed font-medium">
@@ -291,7 +291,7 @@
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-24 animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <span class="text-rose-500 uppercase tracking-[0.5em] text-xs mb-6 block">{{ __('calendar_pulse_badge') }}</span>
-                <h2 class="text-4xl md:text-7xl mb-10 tracking-tight font-black">{{ __('calendar_pulse_title') }}</h2>
+                <h2 class="text-5xl md:text-7xl mb-10 tracking-tight font-black">{{ __('calendar_pulse_title') }}</h2>
                 <p class="text-indigo-100 text-xl opacity-80 leading-relaxed font-medium">{{ __('calendar_pulse_desc') }}</p>
             </div>
 
@@ -360,7 +360,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-[0.2em] mb-8 shadow-sm border border-indigo-200">
                         {{ __('calendar_sync_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
+                    <h2 class="text-5xl md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
                         {{ __('calendar_sync_title') }}
                     </h2>
                     <p class="text-gray-600 text-xl mb-12 leading-relaxed font-medium">
@@ -473,7 +473,7 @@
                         🧩 {{ __('calendar_science_badge') }}
                     </div>
                     
-                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-10 leading-tight font-black">
+                    <h2 class="text-5xl md:text-6xl text-gray-900 mb-10 leading-tight font-black">
                         {{ __('calendar_science_title') }}
                     </h2>
                     
@@ -510,7 +510,7 @@
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] uppercase tracking-widest mb-8 border border-blue-500/20">
                     📅 {{ __('calendar_ai_promo_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
+                <h2 class="text-5xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                     {{ __('calendar_ai_promo_title') }}
                 </h2>
                 <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
@@ -541,7 +541,7 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
+            <h2 class="text-4xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('calendar_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">
@@ -559,7 +559,7 @@
 
         <div class="max-w-3xl mx-auto text-center relative z-10">
             <div class="w-20 h-20 bg-indigo-600/20 border border-indigo-500/30 rounded-3xl mx-auto flex items-center justify-center text-4xl mb-8 backdrop-blur-sm font-black">🗓️</div>
-            <h2 class="text-4xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('calendar_cta_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('calendar_cta_title') }}</h2>
             <p class="text-indigo-200 text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
                 {{ __('calendar_cta_desc') }}
             </p>

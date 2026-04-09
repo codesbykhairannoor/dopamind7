@@ -21,14 +21,14 @@ class EnsureSubscription
                 if ($request->wantsJson()) {
                     return response()->json(['message' => 'Quantum (AI) subscription required.'], 403);
                 }
-                return redirect()->route('pricing')->with('error', 'Quantum (AI) subscription required.');
+                return redirect()->route('billing')->with('error', 'Quantum (AI) subscription required.');
             }
         } else {
             if (!$user->isArchitect()) {
                 if ($request->wantsJson()) {
                     return response()->json(['message' => 'Architect (Pro) subscription required.'], 403);
                 }
-                return redirect()->route('pricing')->with('error', 'Architect (Pro) subscription required.');
+                return redirect()->route('billing')->with('error', 'Architect (Pro) subscription required.');
             }
         }
 

@@ -50,7 +50,7 @@
                 💎 {{ __('pricing_badge') }}
             </div>
             
-            <h1 class="text-[38px] leading-[1.05] md:text-7xl text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 font-black">
+            <h1 class="text-5xl leading-[1.05] md:text-7xl text-gray-900 tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 font-black">
                 {{ __('pricing_title_1') }} <span class="text-indigo-600">{{ __('pricing_title_2') }}</span>
             </h1>
             
@@ -206,7 +206,7 @@
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-5xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-5xl text-gray-900 mb-6 font-black">{{ __('pricing_compare_title') }}</h2>
+                <h2 class="text-6xl text-gray-900 mb-6 font-black">{{ __('pricing_compare_title') }}</h2>
                 <p class="text-gray-500 font-medium">{{ __('pricing_compare_subtitle') }}</p>
             </div>
             
@@ -471,7 +471,7 @@
                         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 text-[10px] font-black uppercase tracking-widest mb-6">
                             LEADERSHIP & PERFORMANCE
                         </div>
-                        <h2 class="text-3xl md:text-5xl text-white leading-tight mb-8 font-black">
+                        <h2 class="text-5xl md:text-5xl text-white leading-tight mb-8 font-black">
                             {{ __('quantum_feature') }} <br/>
                             <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">{{ __('pricing_elite_title') }}</span>
                         </h2>
@@ -549,7 +549,7 @@
     <section class="py-32 bg-slate-50">
         <div class="max-w-3xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl text-gray-900 mb-4 font-black">{{ __('faq_title') }}</h2>
+                <h2 class="text-5xl text-gray-900 mb-4 font-black">{{ __('faq_title') }}</h2>
                 <p class="text-gray-500 font-bold uppercase text-[10px] tracking-widest">{{ __('pricing_faq_subtitle') }}</p>
             </div>
             
@@ -583,7 +583,7 @@
                 <div class="absolute bottom-0 left-0 w-96 h-96 bg-indigo-400/20 rounded-full -ml-48 -mb-48 blur-3xl"></div>
                 
                 <div class="relative z-10">
-                    <h2 class="text-4xl md:text-6xl mb-8 leading-tight tracking-tighter font-black">
+                    <h2 class="text-5xl md:text-6xl mb-8 leading-tight tracking-tighter font-black">
                         {{ __('pricing_bottom_cta_title') }}
                     </h2>
                     <p class="text-indigo-100 text-lg mb-12 max-w-2xl mx-auto font-bold opacity-80 leading-relaxed">

@@ -91,7 +91,7 @@
                 {{ __('deepwork_hero_badge') }}
             </div>
             
-            <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-6 leading-tight tracking-tight text-gray-900 font-black">
+            <h1 class="text-6xl md:text-7xl mb-6 leading-tight tracking-tight text-gray-900 font-black">
                 {{ __('deepwork_hero_title_1') }}<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
                     {{ __('deepwork_hero_title_2') }}
@@ -164,7 +164,7 @@
     <section class="py-32 bg-white relative">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('deepwork_prob_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 text-gray-900 font-black">{{ __('deepwork_prob_title') }}</h2>
                 <p class="text-xl text-gray-500 max-w-3xl mx-auto">{{ __('deepwork_prob_desc') }}</p>
             </div>
             
@@ -193,7 +193,7 @@
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="order-2 md:order-1">
                 <div class="inline-flex items-center justify-center w-14 h-14 bg-indigo-600 text-white rounded-2xl text-2xl mb-6 shadow-lg shadow-indigo-200">🏛️</div>
-                <h2 class="text-4xl md:text-5xl mb-8 text-gray-900 leading-tight font-black">{{ __('deepwork_sol_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-8 text-gray-900 leading-tight font-black">{{ __('deepwork_sol_title') }}</h2>
                 <div class="space-y-8">
                     <div class="flex gap-4 items-start">
                         <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold shrink-0 mt-1">1</div>
@@ -238,7 +238,7 @@
     <section class="py-32 bg-white">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-20">
-                <h2 class="text-3xl md:text-5xl mb-6 text-gray-900 font-black">{{ __('deepwork_feat_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-6 text-gray-900 font-black">{{ __('deepwork_feat_title') }}</h2>
             </div>
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="flex gap-6 items-start p-8 rounded-[2rem] bg-indigo-50 border border-indigo-100">
@@ -277,7 +277,7 @@
                 </div>
             </div>
             <div class="order-1 md:order-2">
-                <h2 class="text-4xl text-gray-900 mb-6 font-black">{{ __('deepwork_extra_1_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl text-gray-900 mb-6 font-black">{{ __('deepwork_extra_1_title') }}</h2>
                 <p class="text-xl text-gray-500 leading-relaxed">
                     {{ __('deepwork_extra_1_desc') }}
                 </p>
@@ -291,7 +291,7 @@
             <div class="bg-slate-900 rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden">
                 <div class="absolute top-0 right-0 p-12 opacity-10 text-9xl">🌿</div>
                 <div class="relative z-10 max-w-2xl">
-                    <h2 class="text-4xl mb-6 font-black">{{ __('deepwork_extra_2_title') }}</h2>
+                    <h2 class="text-5xl md:text-6xl mb-6 font-black">{{ __('deepwork_extra_2_title') }}</h2>
                     <p class="text-xl text-slate-400 leading-relaxed mb-8">
                         {{ __('deepwork_extra_2_desc') }}
                     </p>
@@ -323,7 +323,7 @@
                         🧬 {{ __('deepwork_science_badge') }}
                     </div>
                     
-                    <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 leading-tight font-black">
+                    <h2 class="text-5xl md:text-7xl text-gray-900 mb-8 leading-tight font-black">
                         {{ __('deepwork_science_title') }}
                     </h2>
                     
@@ -365,7 +365,7 @@
 
     <section class="py-32 bg-slate-50 border-y border-slate-100">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-4xl text-center text-gray-900 mb-16 font-black">{{ __('deepwork_faq_title') }}</h2>
+            <h2 class="text-5xl md:text-6xl text-center text-gray-900 mb-16 font-black">{{ __('deepwork_faq_title') }}</h2>
             <div class="space-y-6">
                 @foreach([1, 2, 3] as $i)
                 <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition">
@@ -382,7 +382,7 @@
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-t from-indigo-100/50 to-transparent rounded-t-full -z-10"></div>
         
         <div class="max-w-3xl mx-auto mt-16">
-            <h2 class="text-[36px] leading-[1.1] md:text-6xl text-gray-900 mb-8 tracking-tight leading-tight font-black">{{ __('deepwork_cta_title') }}</h2>
+            <h2 class="text-6xl md:text-7xl text-gray-900 mb-8 tracking-tight leading-tight font-black">{{ __('deepwork_cta_title') }}</h2>
             <p class="text-xl text-gray-500 mb-12 leading-relaxed max-w-2xl mx-auto">{{ __('deepwork_cta_desc') }}</p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6">

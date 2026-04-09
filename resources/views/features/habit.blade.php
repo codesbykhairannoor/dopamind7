@@ -449,7 +449,7 @@
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] uppercase tracking-widest mb-8 border border-indigo-500/20">
                     🧠 {{ __('habit_ai_promo_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
+                <h2 class="text-5xl md:text-6xl text-white mb-8 leading-tight tracking-tight font-black">
                     {{ __('habit_ai_promo_title') }}
                 </h2>
                 <p class="text-slate-400 text-xl font-medium leading-relaxed mb-12">
@@ -484,7 +484,7 @@
     <section class="py-32 bg-gray-50 border-y border-gray-100">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-700">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
+            <h2 class="text-4xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('habit_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">

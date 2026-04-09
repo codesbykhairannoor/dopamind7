@@ -3,6 +3,11 @@ import Modal from '@/Components/Modal.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
+import { useGating } from '@/Composables/useGating';
+import { Link } from '@inertiajs/vue3';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+
+const { isExplorer } = useGating();
 
 const props = defineProps({
     show: Boolean,         
@@ -50,8 +55,27 @@ const props = defineProps({
                 </div>
             </div>
 
-            <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-slate-950/30 p-4 md:p-8 transition-colors">
+            <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-slate-950/30 p-4 md:p-8 transition-colors relative">
                 
+                <!-- Premium Glass Overlay -->
+                <div v-if="isExplorer" class="absolute inset-x-0 inset-y-0 z-40 backdrop-blur-md bg-white/10 dark:bg-slate-900/10 flex items-center justify-center p-8 text-center animate-in fade-in duration-700">
+                    <div class="max-w-xs space-y-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-2xl flex items-center justify-center mx-auto text-2xl shadow-xl shadow-indigo-500/30">
+                            ✨
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-slate-800 dark:text-white mb-2 leading-tight">Master Your Focus with Batch Mode</h3>
+                            <p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                                Experience high-velocity scheduling. Plan your entire day in seconds with the Architect Power.
+                            </p>
+                            <Link :href="route('billing')" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-[10px] uppercase tracking-widest px-8 py-4 rounded-xl shadow-lg transition-all active:scale-95">
+                                {{ $t('btn_unlock_now', 'Unlock Architect Plan') }}
+                                <OneForMindIcon name="arrow-right" size="14" stroke-width="4" />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="hidden md:grid grid-cols-12 gap-4 mb-4 px-2 text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em]">
                     <div class="col-span-5 ml-1">{{ $t('col_activity') }} <span class="text-rose-500">*</span></div>
                     <div class="col-span-2 text-center">{{ $t('col_start') }}</div>
@@ -60,7 +84,7 @@ const props = defineProps({
                     <div class="col-span-1"></div>
                 </div>
 
-                <div class="space-y-4 md:space-y-3 mt-2">
+                <div class="space-y-4 md:space-y-3 mt-2" :class="{'pointer-events-none': isExplorer}">
                     <div v-for="(task, index) in form.tasks" :key="index" 
                         class="bg-white dark:bg-slate-900 md:bg-transparent p-5 md:p-0 rounded-[2rem] md:rounded-none border border-slate-100 dark:border-slate-800 md:border-none shadow-sm md:shadow-none animate-in fade-in slide-in-from-bottom-4 duration-500 group transition-colors">
                         
@@ -127,7 +151,7 @@ const props = defineProps({
                     </div>
                 </div>
 
-                <button @click="addRow" type="button" class="mt-8 w-full py-4 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[1.5rem] text-slate-400 dark:text-slate-600 font-black uppercase tracking-widest text-[10px] hover:border-indigo-400 dark:hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white dark:hover:bg-slate-900 transition-all flex items-center justify-center gap-3 group active:scale-95 shadow-sm">
+                <button @click="addRow" type="button" class="mt-8 w-full py-4 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[1.5rem] text-slate-400 dark:text-slate-600 font-black uppercase tracking-widest text-[10px] hover:border-indigo-400 dark:hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white dark:hover:bg-slate-900 transition-all flex items-center justify-center gap-3 group active:scale-95 shadow-sm" :class="{'pointer-events-none opacity-50': isExplorer}">
                     <span class="w-6 h-6 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 flex items-center justify-center text-xs group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm">+</span> 
                     {{ $t('btn_add_another') }}
                 </button>
@@ -144,9 +168,9 @@ const props = defineProps({
                         {{ $t('btn_cancel') }}
                     </SecondaryButton>
                     
-                    <PrimaryButton @click="submit" :disabled="form.processing || conflictError" 
+                    <PrimaryButton @click="submit" :disabled="form.processing || conflictError || isExplorer" 
                         class="flex-[2] !bg-indigo-600 hover:!bg-indigo-700 !rounded-[1.2rem] !py-3.5 !px-8 shadow-xl shadow-indigo-100 transition-all transform active:scale-95 font-black uppercase tracking-widest text-[10px]"
-                        :class="{'!bg-slate-300 !text-slate-500 !cursor-not-allowed !shadow-none !transform-none': conflictError}">
+                        :class="{'!bg-slate-300 !text-slate-500 !cursor-not-allowed !shadow-none !transform-none': conflictError || isExplorer}">
                         <span v-if="form.processing">{{ $t('btn_saving') }}</span>
                         <span v-else>{{ $t('btn_save_all') }}</span>
                     </PrimaryButton>

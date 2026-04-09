@@ -10,6 +10,14 @@ const user = computed(() => page.props.auth.user);
 const showModule = (moduleName) => {
     return user.value?.settings?.modules?.[moduleName] !== false;
 };
+
+const isArchitect = computed(() => ['architect', 'quantum', 'legendary'].includes(user.value?.plan_type));
+
+const canAccess = (feature) => {
+    const freeFeatures = ['dashboard', 'habit', 'planner', 'finance'];
+    if (freeFeatures.includes(feature)) return true;
+    return isArchitect.value;
+};
 </script>
 
 <template>
@@ -25,8 +33,10 @@ const showModule = (moduleName) => {
                 </p>
             </div>
 
-            <!-- Productivity Tools Grid -->
-            <div class="grid grid-cols-2 gap-4">
+            <!-- Productivity Tools Grid (CORE) -->
+            <div class="px-1 mb-4">
+                <span class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em]">{{ $t('more_core_tools', 'Productivity Core') }}</span>
+            </div>
                 <!-- Daily Planner -->
                 <Link v-if="showModule('planner')" :href="route('planner.index')" 
                         class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
@@ -50,51 +60,74 @@ const showModule = (moduleName) => {
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-colors duration-500">Wealth Tracking</span>
                     </div>
                 </Link>
+            </div>
 
+            <!-- Platinum Suite Grid (LOCKED/PREMIUM) -->
+            <div class="px-1 mt-10 mb-4">
+                <span class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em]">{{ $t('more_premium_tools', 'Platinum Suite') }}</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
                 <!-- Digital Journal -->
-                <Link v-if="showModule('journal')" :href="route('journal.index')" 
-                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                <Link v-if="showModule('journal')" :href="canAccess('journal') ? route('journal.index') : route('billing')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group"
+                        :class="!canAccess('journal') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''">
                     <div class="w-12 h-12 bg-teal-50 dark:bg-teal-500/10 text-teal-600 dark:text-teal-400 rounded-2xl flex items-center justify-center group-hover:bg-teal-600 dark:group-hover:bg-teal-500 transition-all duration-300">
                         <OneForMindIcon name="journal" size="24" stroke-width="2.5" />
                     </div>
                     <div>
-                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_journal') }}</span>
+                        <div class="flex items-center justify-between">
+                            <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_journal') }}</span>
+                            <div v-if="!canAccess('journal')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)] mb-1"></div>
+                        </div>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-colors duration-500">{{ $t('nav_desc_journal') }}</span>
                     </div>
                 </Link>
 
                 <!-- Calendar -->
-                <Link v-if="showModule('calendar')" :href="route('calendar.index')" 
-                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                <Link v-if="showModule('calendar')" :href="canAccess('calendar') ? route('calendar.index') : route('billing')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group"
+                        :class="!canAccess('calendar') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''">
                     <div class="w-12 h-12 bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-2xl flex items-center justify-center group-hover:bg-rose-600 dark:group-hover:bg-rose-500 transition-all duration-300">
                         <OneForMindIcon name="calendar" size="24" stroke-width="2.5" />
                     </div>
                     <div>
-                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_calendar') }}</span>
+                        <div class="flex items-center justify-between">
+                            <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_calendar') }}</span>
+                            <div v-if="!canAccess('calendar')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)] mb-1"></div>
+                        </div>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-colors duration-500">{{ $t('nav_desc_calendar') }}</span>
                     </div>
                 </Link>
 
                 <!-- Job Tracker -->
-                <Link v-if="showModule('job')" :href="route('jobs.index')" 
-                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                <Link v-if="showModule('job')" :href="canAccess('job') ? route('jobs.index') : route('billing')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group"
+                        :class="!canAccess('job') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''">
                     <div class="w-12 h-12 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 dark:group-hover:bg-blue-500 transition-all duration-300">
                         <OneForMindIcon name="job" size="24" stroke-width="2.5" />
                     </div>
                     <div>
-                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_jobs') }}</span>
+                        <div class="flex items-center justify-between">
+                            <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_jobs') }}</span>
+                            <div v-if="!canAccess('job')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)] mb-1"></div>
+                        </div>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-colors duration-500">{{ $t('nav_desc_jobs') }}</span>
                     </div>
                 </Link>
 
                 <!-- Goal Tracker -->
-                <Link v-if="showModule('goal')" :href="route('goals.index')" 
-                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
+                <Link v-if="showModule('goal')" :href="canAccess('goal') ? route('goals.index') : route('billing')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group"
+                        :class="!canAccess('goal') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''">
                     <div class="w-12 h-12 bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center group-hover:bg-amber-600 dark:group-hover:bg-amber-500 transition-all duration-300">
                         <OneForMindIcon name="goal" size="24" stroke-width="2.5" />
                     </div>
                     <div>
-                        <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_goals') }}</span>
+                        <div class="flex items-center justify-between">
+                            <span class="block font-black text-slate-800 dark:text-slate-100 text-base leading-none mb-1 transition-colors duration-500">{{ $t('nav_item_goals') }}</span>
+                            <div v-if="!canAccess('goal')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)] mb-1"></div>
+                        </div>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-colors duration-500">{{ $t('nav_desc_goals') }}</span>
                     </div>
                 </Link>

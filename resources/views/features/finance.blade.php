@@ -89,7 +89,7 @@
                     <span class="text-lg">💰</span> {{ __('finance_hero_badge') }}
                 </div>
                 
-                <h1 class="text-[42px] leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
+                <h1 class="text-6xl leading-[1.1] md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
                     {{ __('finance_hero_title_1') }} <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('finance_hero_title_2') }}</span>
                 </h1>
@@ -166,7 +166,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-wider mb-6">
                         {{ __('finance_wallet_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-5xl text-gray-900 mb-6 leading-tight font-black">
+                    <h2 class="text-5xl md:text-5xl text-gray-900 mb-6 leading-tight font-black">
                         {{ __('finance_wallet_title') }}
                     </h2>
                     <p class="text-gray-600 text-lg mb-8 leading-relaxed">
@@ -240,7 +240,7 @@
          <div class="max-w-6xl mx-auto px-6 relative z-10 text-center">
              <div class="animate-in fade-in slide-in-from-bottom-8 duration-700">
                 <span class="text-emerald-400 font-bold uppercase tracking-[0.3em] text-xs mb-4 block">{{ __('finance_flow_badge') }}</span>
-                <h2 class="text-4xl md:text-6xl mb-8 font-black">{{ __('finance_flow_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-8 font-black">{{ __('finance_flow_title') }}</h2>
                 <p class="text-indigo-200 text-xl opacity-80 max-w-3xl mx-auto mb-24">{{ __('finance_flow_desc') }}</p>
              </div>
 
@@ -325,7 +325,7 @@
             <div class="inline-flex items-center justify-center px-6 py-2 bg-indigo-900/50 backdrop-blur-md border border-indigo-700/50 text-indigo-300 rounded-full text-sm font-bold uppercase tracking-widest mb-8">
                 {{ __('finance_privacy_badge') }}
             </div>
-            <h2 class="text-4xl md:text-5xl text-white mb-6 font-black">{{ __('finance_privacy_title') }}</h2>
+            <h2 class="text-5xl md:text-5xl text-white mb-6 font-black">{{ __('finance_privacy_title') }}</h2>
             <p class="text-indigo-200 text-xl max-w-3xl mx-auto leading-relaxed mb-16 font-medium">
                 {{ __('finance_privacy_desc') }}
             </p>
@@ -357,7 +357,7 @@
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] uppercase tracking-[0.2em] mb-8 shadow-sm border border-emerald-200">
                     {{ __('finance_trajectory_badge') }}
                 </div>
-                <h2 class="text-4xl md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
+                <h2 class="text-5xl md:text-6xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
                     {{ __('finance_trajectory_title') }}
                 </h2>
                 <p class="text-gray-600 text-xl leading-relaxed font-medium">
@@ -439,7 +439,7 @@
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-6 text-center animate-in zoom-in-95 fade-in duration-1000">
             <div class="text-9xl text-indigo-50 mb-4 font-serif leading-none italic select-none">"</div>
-            <h2 class="text-3xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
+            <h2 class="text-4xl md:text-5xl text-gray-900 leading-[1.4] mb-12 tracking-tight italic font-serif font-black">
                 {{ __('finance_quote_text') }}
             </h2>
             <div class="flex flex-col items-center">
@@ -463,7 +463,7 @@
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] uppercase tracking-widest mb-8">
                         🧬 {{ __('finance_science_badge') }}
                     </div>
-                    <h2 class="text-4xl md:text-5xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
+                    <h2 class="text-5xl md:text-5xl text-gray-900 mb-8 leading-tight tracking-tight font-black">
                         {{ __('finance_science_title') }}
                     </h2>
                     <p class="text-gray-600 text-xl leading-relaxed mb-10 italic font-medium opacity-80">
@@ -539,7 +539,7 @@
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-pulse duration-[6000ms]"></div>
             
             <div class="relative z-10">
-                <h2 class="text-4xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('finance_cta_title') }}</h2>
+                <h2 class="text-5xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('finance_cta_title') }}</h2>
                 <p class="text-indigo-200 text-xl md:text-2xl mb-12 max-w-3xl mx-auto font-medium">
                     {{ __('finance_cta_desc') }}
                 </p>

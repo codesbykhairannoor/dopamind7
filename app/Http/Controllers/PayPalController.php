@@ -119,7 +119,7 @@ class PayPalController extends Controller
         } else {
             Log::error('PayPal Capture Error:', $response);
             return redirect()
-                ->route('pricing.index')
+                ->route('billing')
                 ->with('error', $response['message'] ?? 'Something went wrong with PayPal capture.');
         }
     }
