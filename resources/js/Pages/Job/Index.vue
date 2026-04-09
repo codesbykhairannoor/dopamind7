@@ -1,5 +1,5 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useJobs } from '@/Composables/Job/useJobs';
 import JobTable from './JobTable.vue';
@@ -8,6 +8,7 @@ import JobFilterBar from './JobFilterBar.vue';
 import ResumeAiModal from './ResumeAiModal.vue';
 import MasterCvModal from './MasterCvModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -146,5 +147,11 @@ const onMasterSaved = () => {
                 </p>
             </div>
         </div>
+
+        <PremiumPreviewModal 
+            :isOpen="isExplorer" 
+            module="Jobs"
+            :onClose="() => router.visit(route('dashboard'))" 
+        />
     </div>
 </template>

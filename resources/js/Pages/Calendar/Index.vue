@@ -3,6 +3,8 @@ import { ref, watch, reactive } from 'vue';
 import { Head, router } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useCalendar } from '@/Composables/Calendar/useCalendar';
+import { useGating } from '@/Composables/useGating';
+import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 import dayjs from 'dayjs';
 
 // Import Komponen Anak
@@ -40,6 +42,8 @@ const {
     selectedDate, isEventModalOpen, isDetailModalOpen, eventForm,
     openEventModal, submitEvent, deleteEvent, openDayDetail, calendarDays
 } = useCalendar(calendarProps);
+
+const { isExplorer } = useGating();
 
 
 // ==========================================
@@ -122,6 +126,12 @@ const changeMonth = (newMonthPayload) => {
             @close="isDetailModalOpen = false"
             @edit-event="openEventModal"
             @delete-event="triggerDeleteEvent"
+        />
+
+        <PremiumPreviewModal 
+            :isOpen="isExplorer" 
+            module="Calendar"
+            :onClose="() => router.visit(route('dashboard'))" 
         />
 
     </div>

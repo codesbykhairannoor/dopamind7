@@ -11,5 +11,17 @@
     "more_upgrade_badge": "PREMIUM UPGRADE",
     "more_upgrade_title": "Elevate to Elite Performance",
     "more_upgrade_desc": "Unlock AI-powered life insights, advanced wealth tracking, and seamless external integrations.",
-    "more_upgrade_btn": "Upgrade Now"
+    "more_upgrade_btn": "Upgrade Now",
+    "preview_modal_title": "Elevate Your Story",
+    "preview_modal_desc": "You are witnessing a glimpse of the premium system. Upgrade to unlock full access.",
+    "preview_view_plans": "View Plans & Upgrades",
+    "preview_benefit_title": "Why Go Pro?",
+    "preview_journal_benefit_3": "Cloud Persistence - Unlimited entries with triple-layer security.",
+    "preview_calendar_benefit_1": "Universal Sync - Connect with Google, Apple, and Outlook calendars.",
+    "preview_calendar_benefit_2": "Neural Time Boxing - AI-powered scheduling for maximum productivity.",
+    "preview_calendar_benefit_3": "Multi-Layer Views - Strategic visualization for days, weeks, and months.",
+    "preview_job_benefit_1": "CV Neural Scanner - Get AI feedback on how to fix your resume for specific jobs.",
+    "preview_job_benefit_2": "Pipeline Intelligence - Track applications with automated status updates.",
+    "preview_job_benefit_3": "Master Cv Templates - Create beautiful, ATS-friendly resumes in seconds.",
+    "preview_cta_lock": "Unlock Now"
 }

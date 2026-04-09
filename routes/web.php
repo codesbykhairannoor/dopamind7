@@ -473,7 +473,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     );
 
     // --- MODULE: JOURNAL ---
-    Route::middleware(['module:journal', 'subscription:pro'])->prefix('journal')->name('journal.')->group(
+    Route::middleware(['module:journal'])->prefix('journal')->name('journal.')->group(
         function () {
             Route::get('/', [JournalController::class, 'index'])->name('index');
             Route::get('/write/{id?}', [JournalController::class, 'write'])->name('write');
@@ -491,7 +491,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     );
 
     // --- MODULE: CALENDAR ---
-    Route::middleware(['module:calendar', 'subscription:pro'])->prefix('calendar')->name('calendar.')->group(
+    Route::middleware(['module:calendar'])->prefix('calendar')->name('calendar.')->group(
         function () {
             Route::get('/', [CalendarController::class, 'index'])->name('index');
 
@@ -503,7 +503,7 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
     );
 
     // Job Tracker Routes
-    Route::middleware(['module:job', 'subscription:pro'])->prefix('jobs')->name('jobs.')->group(
+    Route::middleware(['module:job'])->prefix('jobs')->name('jobs.')->group(
         function () {
             Route::get('/', [\App\Http\Controllers\JobController::class, 'index'])->name('index');
             Route::post('/', [\App\Http\Controllers\JobController::class, 'store'])->name('store');

@@ -8,12 +8,16 @@ import Swal from 'sweetalert2';
 import JournalHeader from './JournalHeader.vue';
 import JournalCard from './JournalCard.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
+import { useGating } from '@/Composables/useGating';
 
 const props = defineProps({
     journals: Array,
     todayDate: String,
     synergy: Object
 });
+
+const { isExplorer } = useGating();
 
 defineOptions({ layout: AuthenticatedLayout });
 
@@ -99,6 +103,11 @@ const createEntry = () => {
                 />
             </div>
 
+            <PremiumPreviewModal 
+                :isOpen="isExplorer" 
+                module="Journal"
+                :onClose="() => router.visit(route('dashboard'))" 
+            />
         </div>
     </div>
 </template>
