@@ -59,5 +59,6 @@
     "waitlist_note": "Tenang, kami tidak akan mengirim spam. Hanya kabar saat aplikasi diluncurkan.",
     "footer_privacy": "Privasi",
     "footer_terms": "Ketentuan",
-    "auth_footer_help": "Bantuan"
+    "auth_footer_help": "Bantuan",
+    "auth_consent_notice": "Dengan melanjutkan, Anda menyetujui Ketentuan Layanan dan Kebijakan Privasi OneForMind."
 }

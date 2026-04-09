@@ -45,5 +45,6 @@
     "waitlist_note": "Don't worry, we won't spam you. Just launch news.",
     "footer_privacy": "Privacy",
     "footer_terms": "Terms",
-    "auth_footer_help": "Help"
+    "auth_footer_help": "Help",
+    "auth_consent_notice": "By continuing, you agree to our Terms of Service and Privacy Policy"
 }

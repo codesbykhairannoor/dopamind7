@@ -113,6 +113,10 @@ const loginWithGoogle = () => {
                     <span>{{ $t('auth_btn_login', 'Sign in with Email') }}</span>
                     <svg v-if="!form.processing" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
+
+                <p class="text-[10px] text-slate-400 text-center leading-relaxed mt-4">
+                    {{ $t('auth_consent_notice', 'By continuing, you agree to our Terms of Service and Privacy Policy') }}
+                </p>
             </form>
 
             <div class="mt-10 text-center font-medium">

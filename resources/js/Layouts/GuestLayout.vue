@@ -275,7 +275,7 @@ const switchLang = (lang) => {
                 leave-from-class="opacity-100 translate-y-0"
                 leave-to-class="opacity-0 translate-y-4"
             >
-                <div v-show="mobileMenuOpen" class="lg:hidden fixed inset-0 top-0 bg-white z-[100] pt-24 px-6 pb-10 flex flex-col h-screen overflow-y-auto">
+                <div v-show="mobileMenuOpen" class="lg:hidden fixed inset-0 top-0 bg-white z-[100] pt-24 px-6 pb-24 flex flex-col h-screen h-[100dvh] overflow-y-auto">
                     
                     <div class="flex-grow space-y-2">
                         <div class="border-b border-slate-50">
