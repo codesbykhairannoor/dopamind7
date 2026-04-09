@@ -167,14 +167,14 @@ const handleFeatureClick = (feature, targetRoute, moduleKey) => {
                         {{ $t('more_upgrade_btn', 'Upgrade Now') }}
                         <OneForMindIcon name="arrow-right" size="18" stroke-width="3" />
                     </div>
-                </Link>
+                </div>
+            </Link>
 
-                <PremiumPreviewModal 
-                    :isOpen="isPreviewOpen"
-                    :module="activePreviewModule"
-                    @close="isPreviewOpen = false"
-                />
-            </div>
+            <PremiumPreviewModal 
+                :isOpen="isPreviewOpen"
+                :module="activePreviewModule"
+                @close="isPreviewOpen = false"
+            />
         </div>
     </AuthenticatedLayout>
 </template>
