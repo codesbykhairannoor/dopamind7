@@ -9,6 +9,7 @@ import GoalModal from './GoalModal.vue';
 import GoalHeader from './GoalHeader.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
 import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
+import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -74,6 +75,8 @@ onMounted(() => {
         isMobile.value = window.innerWidth < 1024;
     });
 });
+
+const isPreviewOpen = ref(false);
 </script>
 
 <template>
@@ -212,7 +215,14 @@ onMounted(() => {
                 title="Complete Your Vision"
                 description="Unlock the full potential of your goal-setting system with Architect features."
                 :features="goalPremiumFeatures"
+                @show-preview="isPreviewOpen = true"
             />
         </div>
+
+        <PremiumPreviewModal 
+            :isOpen="isPreviewOpen"
+            module="Goal"
+            @close="isPreviewOpen = false"
+        />
     </div>
 </template>

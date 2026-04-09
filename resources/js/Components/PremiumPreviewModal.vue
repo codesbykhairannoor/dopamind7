@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { router } from '@inertiajs/vue3';
-import { Lock, CheckCircle2, ArrowRight, Sparkles, Zap, ShieldCheck, RefreshCcw, Layout, FileSearch2, Send, Rocket } from 'lucide-vue-next';
+import { Lock, CheckCircle2, ArrowRight, Sparkles, Zap, ShieldCheck, RefreshCcw, Layout, FileSearch2, Send, Rocket, Target, Shield, Landmark, TrendingUp } from 'lucide-vue-next';
 
 const props = defineProps({
     isOpen: Boolean,
@@ -31,6 +31,20 @@ const benefits = computed(() => {
             { icon: Rocket, text: 'preview_job_benefit_3', color: 'text-amber-500' }
         ];
     }
+    if (props.module === 'Finance') {
+        return [
+            { icon: Sparkles, text: 'preview_finance_benefit_1', color: 'text-indigo-500' },
+            { icon: Landmark, text: 'preview_finance_benefit_2', color: 'text-amber-500' },
+            { icon: TrendingUp, text: 'preview_finance_benefit_3', color: 'text-emerald-500' }
+        ];
+    }
+    if (props.module === 'Goal') {
+        return [
+            { icon: Layout, text: 'preview_goal_benefit_1', color: 'text-indigo-500' },
+            { icon: Target, text: 'preview_goal_benefit_2', color: 'text-orange-500' },
+            { icon: Shield, text: 'preview_goal_benefit_3', color: 'text-purple-500' }
+        ];
+    }
     return [];
 });
 
@@ -52,20 +66,36 @@ const handleGoBack = () => {
         <!-- Backdrop -->
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md animate-in fade-in duration-500" @click="handleGoBack"></div>
 
-        <!-- Modal Container -->
-        <div class="relative w-full max-w-lg bg-white dark:bg-slate-950 rounded-[3.5rem] shadow-2xl border border-slate-100 dark:border-slate-800/50 overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-10 duration-500">
-            
-            <!-- Animated Background Glow -->
-            <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/10 blur-[100px] rounded-full"></div>
-            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500/10 blur-[100px] rounded-full"></div>
+            <!-- Visual Hero Section (Tailored per Module) -->
+            <div class="relative h-44 overflow-hidden bg-slate-900 flex items-center justify-center">
+                <!-- Background Gradients -->
+                <div v-if="module === 'Journal'" class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-700 to-slate-900"></div>
+                <div v-if="module === 'Calendar'" class="absolute inset-0 bg-gradient-to-br from-amber-500 via-orange-600 to-slate-900"></div>
+                <div v-if="module === 'Jobs'" class="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-700 to-slate-900"></div>
+                <div v-if="module === 'Finance'" class="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-800 to-slate-900"></div>
+                <div v-if="module === 'Goal'" class="absolute inset-0 bg-gradient-to-br from-amber-400 via-rose-600 to-slate-900"></div>
 
-            <div class="p-8 md:p-12">
-                <!-- Header Section -->
-                <div class="flex flex-col items-center text-center mb-10">
-                    <div class="w-20 h-20 rounded-[2rem] bg-indigo-600 shadow-2xl shadow-indigo-200 dark:shadow-none flex items-center justify-center mb-6 rotate-3 hover:rotate-0 transition-transform duration-500">
-                        <Lock :size="32" class="text-white" />
+                <!-- Abstract Shapes -->
+                <div class="absolute inset-0 opacity-30">
+                    <div class="absolute top-0 left-0 w-32 h-32 bg-white/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+                    <div class="absolute bottom-0 right-0 w-48 h-48 bg-black/40 blur-3xl rounded-full translate-x-1/2 translate-y-1/2"></div>
+                </div>
+
+                <!-- Central Icon Visualization -->
+                <div class="relative z-10 flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center shadow-2xl rotate-6 group-hover:rotate-0 transition-transform duration-700">
+                        <Lock v-if="module === 'Journal'" :size="32" class="text-white" />
+                        <Rocket v-if="module === 'Jobs'" :size="32" class="text-white" />
+                        <Zap v-if="module === 'Calendar'" :size="32" class="text-white" />
+                        <Landmark v-if="module === 'Finance'" :size="32" class="text-white" />
+                        <Target v-if="module === 'Goal'" :size="32" class="text-white" />
                     </div>
-                    
+                </div>
+            </div>
+
+            <div class="p-8 md:p-10">
+                <!-- Header Section -->
+                <div class="flex flex-col items-center text-center mb-8">
                     <h2 class="text-2xl md:text-3xl font-black text-slate-800 dark:text-white uppercase tracking-tighter mb-3 leading-tight">
                         {{ $t('preview_modal_title') }}
                     </h2>

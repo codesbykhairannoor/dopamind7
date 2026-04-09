@@ -1,8 +1,9 @@
 <script setup>
-import { computed } from 'vue';
-import { Link, usePage } from '@inertiajs/vue3';
+import { computed, ref } from 'vue';
+import { Link, usePage, router } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 
 const page = usePage();
 const user = computed(() => page.props.auth.user);
@@ -17,6 +18,18 @@ const canAccess = (feature) => {
     const freeFeatures = ['dashboard', 'habit', 'planner', 'finance'];
     if (freeFeatures.includes(feature)) return true;
     return isArchitect.value;
+};
+
+const isPreviewOpen = ref(false);
+const activePreviewModule = ref('Journal');
+
+const handleFeatureClick = (feature, targetRoute, moduleKey) => {
+    if (canAccess(feature)) {
+        router.visit(targetRoute);
+    } else {
+        activePreviewModule.value = moduleKey;
+        isPreviewOpen.value = true;
+    }
 };
 </script>
 
@@ -71,8 +84,8 @@ const canAccess = (feature) => {
 
             <div class="grid grid-cols-2 gap-4">
                 <!-- Digital Journal -->
-                <Link v-if="showModule('journal')" :href="canAccess('journal') ? route('journal.index') : route('billing')" 
-                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group"
+                <div v-if="showModule('journal')" @click="handleFeatureClick('journal', route('journal.index'), 'Journal')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group cursor-pointer"
                         :class="!canAccess('journal') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''">
                     <div class="w-12 h-12 bg-teal-50 dark:bg-teal-500/10 text-teal-600 dark:text-teal-400 rounded-2xl flex items-center justify-center group-hover:bg-teal-600 dark:group-hover:bg-teal-500 transition-all duration-300">
                         <OneForMindIcon name="journal" size="24" stroke-width="2.5" />
@@ -84,11 +97,11 @@ const canAccess = (feature) => {
                         </div>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-colors duration-500">{{ $t('nav_desc_journal') }}</span>
                     </div>
-                </Link>
+                </div>
 
                 <!-- Calendar -->
-                <Link v-if="showModule('calendar')" :href="canAccess('calendar') ? route('calendar.index') : route('billing')" 
-                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group"
+                <div v-if="showModule('calendar')" @click="handleFeatureClick('calendar', route('calendar.index'), 'Calendar')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group cursor-pointer"
                         :class="!canAccess('calendar') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''">
                     <div class="w-12 h-12 bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-2xl flex items-center justify-center group-hover:bg-rose-600 dark:group-hover:bg-rose-500 transition-all duration-300">
                         <OneForMindIcon name="calendar" size="24" stroke-width="2.5" />
@@ -100,11 +113,11 @@ const canAccess = (feature) => {
                         </div>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-colors duration-500">{{ $t('nav_desc_calendar') }}</span>
                     </div>
-                </Link>
+                </div>
 
                 <!-- Job Tracker -->
-                <Link v-if="showModule('job')" :href="canAccess('job') ? route('jobs.index') : route('billing')" 
-                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group"
+                <div v-if="showModule('job')" @click="handleFeatureClick('job', route('jobs.index'), 'Jobs')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group cursor-pointer"
                         :class="!canAccess('job') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''">
                     <div class="w-12 h-12 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 dark:group-hover:bg-blue-500 transition-all duration-300">
                         <OneForMindIcon name="job" size="24" stroke-width="2.5" />
@@ -116,11 +129,11 @@ const canAccess = (feature) => {
                         </div>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-colors duration-500">{{ $t('nav_desc_jobs') }}</span>
                     </div>
-                </Link>
+                </div>
 
                 <!-- Goal Tracker -->
-                <Link v-if="showModule('goal')" :href="canAccess('goal') ? route('goals.index') : route('billing')" 
-                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group"
+                <div v-if="showModule('goal')" @click="handleFeatureClick('goal', route('goals.index'), 'Goal')" 
+                        class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group cursor-pointer"
                         :class="!canAccess('goal') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''">
                     <div class="w-12 h-12 bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center group-hover:bg-amber-600 dark:group-hover:bg-amber-500 transition-all duration-300">
                         <OneForMindIcon name="goal" size="24" stroke-width="2.5" />
@@ -132,7 +145,7 @@ const canAccess = (feature) => {
                         </div>
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-colors duration-500">{{ $t('nav_desc_goals') }}</span>
                     </div>
-                </Link>
+                </div>
 
                 <!-- Settings removal handled by grid change -->
             </div>
@@ -154,8 +167,14 @@ const canAccess = (feature) => {
                         {{ $t('more_upgrade_btn', 'Upgrade Now') }}
                         <OneForMindIcon name="arrow-right" size="18" stroke-width="3" />
                     </div>
-                </div>
-            </Link>
+                </Link>
+
+                <PremiumPreviewModal 
+                    :isOpen="isPreviewOpen"
+                    :module="activePreviewModule"
+                    @close="isPreviewOpen = false"
+                />
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>

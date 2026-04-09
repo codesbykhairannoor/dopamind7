@@ -21,8 +21,8 @@ import FinanceInsights from './FinanceInsights.vue';
 import SavingCard from './SavingCard.vue';
 import SavingModal from './SavingModal.vue';
 import VaultTransactionModal from './VaultTransactionModal.vue';
-import NeuralBridge from '@/Components/NeuralBridge.vue';
 import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
+import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 import { router } from '@inertiajs/vue3';
 import { Plus, Wallet, Lock } from 'lucide-vue-next';
 
@@ -58,6 +58,14 @@ const showVaultTxModal = ref(false);
 const vaultTxType = ref('deposit'); // 'deposit' | 'withdraw'
 const activeVault = ref(null);
 const isProcessingVaultTx = ref(false);
+
+const isPreviewOpen = ref(false);
+const activePreviewModule = ref('Finance');
+
+const openPremiumPreview = (module = 'Finance') => {
+    activePreviewModule.value = module;
+    isPreviewOpen.value = true;
+};
 
 const handleEditSaving = (saving = null) => {
     if (!saving) {
@@ -461,9 +469,9 @@ const financePremiumFeatures = [
         <FinanceHeader 
             :currentMonth="formattedMonth" 
             :currentMonthKey="currentMonthKey"
-            :onChangeDate="(payload) => changeMonth(payload)"
             :onAddClick="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
             :isExplorer="isExplorer"
+            @open-preview="openPremiumPreview"
         />
 
         <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950/50 px-3 sm:px-6 lg:px-8 py-6 transition-colors duration-500">
@@ -654,6 +662,7 @@ const financePremiumFeatures = [
                         title="Arsitektur Keuangan Masa Depan"
                         description="Tingkatkan ke tier Architect untuk mengaktifkan modul manajemen kekayaan tingkat lanjut ini."
                         :features="financePremiumFeatures"
+                        @show-preview="openPremiumPreview('Finance')"
                     />
                 </div>
             </div>
@@ -675,5 +684,11 @@ const financePremiumFeatures = [
                               :processing="isProcessingVaultTx"
                               @close="showVaultTxModal = false"
                               @save="handleVaultTransaction" />
+
+        <PremiumPreviewModal 
+            :isOpen="isPreviewOpen"
+            :module="activePreviewModule"
+            @close="isPreviewOpen = false"
+        />
     </div>
 </template>

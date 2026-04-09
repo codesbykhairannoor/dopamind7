@@ -101,9 +101,11 @@ const exportExcel = async () => {
     }
 };
 
+const emit = defineEmits(['openPreview']);
+
 const runAiAudit = () => {
     if (props.isExplorer) {
-        router.visit(route('billing'), { data: { from: 'finance_ai_audit' } });
+        emit('openPreview', 'Finance');
         return;
     }
     isAiAuditLoading.value = true;

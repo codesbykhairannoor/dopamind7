@@ -9,7 +9,13 @@ const props = defineProps({
     features: { type: Array, default: () => [] }
 });
 
+const emit = defineEmits(['showPreview']);
+
 const handleUpgrade = () => {
+    if (props.isExplorer) {
+        emit('showPreview');
+        return;
+    }
     router.visit(route('billing'), { data: { from: 'locked_wall_global' } });
 };
 </script>
@@ -39,6 +45,8 @@ const handleUpgrade = () => {
                     <div class="h-4 w-3/4 bg-slate-900 dark:bg-white rounded-full"></div>
                     <div class="h-24 w-full bg-indigo-500 rounded-3xl"></div>
                 </div>
+
+                <div @click="emit('showPreview')" class="absolute inset-0 z-20 cursor-pointer"></div>
 
                 <div class="relative z-10">
                     <div :class="[feat.bg || 'bg-indigo-500/10', feat.color || 'text-indigo-600']" class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
