@@ -37,6 +37,13 @@
     "full_name": "Full Name",
     "email_address": "Email Address",
     "save_changes": "Save Changes",
+    "photo_adjust_instruction": "Select a photo, then you can adjust the image position before uploading.",
+    "adjust_photo_title": "Adjust Photo",
+    "pan_instruction": "Use Mouse/Tap to Pan",
+    "cancel": "Cancel",
+    "save_photo": "Save Photo",
+    "settings_lang_label": "Interface Language",
+    "habit_limit": "Active Habit Limit",
     "saved": "Saved",
     "settings_modules_title": "Application Modules",
     "settings_modules_desc": "Enable or disable features you want to use.",
@@ -101,10 +108,5 @@
     "legal_section_2_desc": "Your privacy is our priority. Your data is stored with industry-standard encryption. We will never sell your personal data to any third party.",
     "legal_section_3_title": "3. Premium Payment",
     "legal_section_3_desc": "Payment transactions are processed through a secure third-party gateway (Midtrans). We do not store credit card information or other sensitive payment details on our servers.",
-    "legal_link_privacy": "Read Full Privacy Policy",
-    "photo_adjust_instruction": "Select a photo, then you can adjust the image position before uploading.",
-    "adjust_photo_title": "Adjust Photo",
-    "pan_instruction": "Use Mouse/Tap to Pan",
-    "cancel": "Cancel",
-    "save_photo": "Save Photo"
+    "legal_link_privacy": "Read Full Privacy Policy"
 }

@@ -37,6 +37,13 @@
     "full_name": "Nama Lengkap",
     "email_address": "Alamat Email",
     "save_changes": "Simpan Perubahan",
+    "photo_adjust_instruction": "Pilih foto, lalu Anda dapat menyesuaikan posisi gambar sebelum diunggah.",
+    "adjust_photo_title": "Sesuaikan Foto",
+    "pan_instruction": "Gunakan Mouse/Sentuhan Untuk Menggeser",
+    "cancel": "Batal",
+    "save_photo": "Simpan Foto",
+    "settings_lang_label": "Bahasa Antarmuka",
+    "habit_limit": "Batas Habit Aktif",
     "saved": "Tersimpan",
     "settings_modules_title": "Modul Aplikasi",
     "settings_modules_desc": "Aktifkan atau nonaktifkan fitur yang ingin kamu gunakan.",
@@ -101,10 +108,5 @@
     "legal_section_2_desc": "Privasi Anda adalah prioritas kami. Data Anda disimpan dengan enkripsi standar industri. Kami tidak akan pernah menjual data pribadi Anda kepada pihak ketiga manapun.",
     "legal_section_3_title": "3. Pembayaran Premium",
     "legal_section_3_desc": "Transaksi pembayaran diproses melalui gateway pihak ketiga yang aman (Midtrans). Kami tidak menyimpan informasi kartu kredit atau detail pembayaran sensitif lainnya di server kami.",
-    "legal_link_privacy": "Baca Kebijakan Privasi Lengkap",
-    "photo_adjust_instruction": "Pilih foto, lalu Anda dapat menyesuaikan posisi gambar sebelum diunggah.",
-    "adjust_photo_title": "Sesuaikan Foto",
-    "pan_instruction": "Gunakan Mouse/Sentuhan Untuk Menggeser",
-    "cancel": "Batal",
-    "save_photo": "Simpan Foto"
+    "legal_link_privacy": "Baca Kebijakan Privasi Lengkap"
 }

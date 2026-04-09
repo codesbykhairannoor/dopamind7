@@ -621,98 +621,107 @@ watch(() => props.stats, (newStats) => {
                 </div>
             </div>
 
-            <!-- 📱 PREMIUM MOBILE WALLET EXPERIENCE -->
-            <div v-else class="space-y-8 pb-40 px-2 lg:px-0">
-                 <!-- 💳 The Master Wallet Card -->
-                 <div id="mobile-finance-card" class="bg-indigo-600 p-8 rounded-[3rem] shadow-2xl shadow-indigo-200 dark:shadow-none text-white relative overflow-hidden group active:scale-95 transition-all duration-500">
-                    <div class="absolute -right-12 -top-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
-                    <div class="absolute -left-12 -bottom-12 w-48 h-48 bg-black/20 rounded-full blur-2xl"></div>
-                    
-                    <div class="relative z-10">
-                        <div class="flex justify-between items-start mb-10">
-                            <div>
-                                <p class="text-[10px] font-black uppercase tracking-[0.2em] opacity-60 mb-1">Current Balance</p>
-                                <h2 id="mobile-balance" class="text-4xl font-black tracking-tighter">{{ formatMoney(localStats.balance) }}</h2>
-                            </div>
-                            <div class="w-12 h-12 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/20">
-                                <OneForMindIcon name="finance" size="24" stroke-width="2.5" />
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-white/10 p-5 rounded-[2rem] border border-white/10 backdrop-blur-sm">
-                                <p class="text-[9px] font-black uppercase tracking-widest opacity-60 mb-1">Income</p>
-                                <p class="text-lg font-black tracking-tight">{{ formatMoney(localStats.total_income) }}</p>
-                            </div>
-                            <div class="bg-white/10 p-5 rounded-[2rem] border border-white/10 backdrop-blur-sm">
-                                <p class="text-[9px] font-black uppercase tracking-widest opacity-60 mb-1">Expense</p>
-                                <p class="text-lg font-black text-rose-300 tracking-tight">{{ formatMoney(localStats.total_expense) }}</p>
-                            </div>
-                        </div>
+            <!-- 📱 PREMIUM MOBILE WALLET EXPERIENCE (Match Desktop Style) -->
+            <div v-else class="space-y-10 pb-40">
+                
+                <!-- 💳 Integrated Stats (Matching Desktop FinanceStats) -->
+                <div class="px-2">
+                    <FinanceStats 
+                        :stats="localStats"
+                        :onUpdateTarget="handleUpdateTarget"
+                    />
+                </div>
 
-                        <!-- Mini Goal Progress -->
-                        <div class="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                            <span class="text-[10px] font-black uppercase tracking-widest opacity-60">Monthly Budget</span>
-                            <div class="flex items-center gap-3">
-                                <div class="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                    <div class="bg-white h-full" :style="`width: ${Math.min(100, (localStats.total_expense / (localStats.total_income || 1)) * 100)}%`"></div>
-                                </div>
-                                <span class="text-[10px] font-black">{{ Math.round((localStats.total_expense / (localStats.total_income || 1)) * 100) }}%</span>
+                <!-- 🏦 THE VAULT (SAVINGS) - NEW ON MOBILE -->
+                <div class="space-y-6 px-2">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500">
+                                <Wallet :size="18" />
                             </div>
+                            <h3 class="text-xs font-black uppercase tracking-widest text-slate-800 dark:text-white">The Vault</h3>
+                        </div>
+                        <button @click="handleEditSaving()" class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest active:scale-95 transition-all">
+                            + Goal
+                        </button>
+                    </div>
+
+                    <!-- Lock for Free users on Vault -->
+                    <div v-if="isExplorer" 
+                         @click="router.visit(route('billing'), { data: { from: 'finance_vault' } })"
+                         class="bg-white/40 dark:bg-slate-900/40 backdrop-blur-md rounded-[2.5rem] p-8 border border-slate-200 dark:border-slate-800 text-center cursor-pointer active:scale-95 transition-all">
+                        <span class="text-3xl mb-2 block">🔒</span>
+                        <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Upgrade to Architect to use Vault</h4>
+                    </div>
+
+                    <div v-else-if="localSavings.length === 0" class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center">
+                         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">No active saving goals</p>
+                         <button @click="handleEditSaving()" class="text-[9px] font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900 px-5 py-2 rounded-xl">
+                            Start Saving
+                         </button>
+                    </div>
+
+                    <div v-else class="flex overflow-x-auto no-scrollbar gap-4 pb-4 -mx-2 px-2">
+                        <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[240px]">
+                            <SavingCard 
+                                :saving="saving"
+                                :onDeposit="(s) => openVaultAction(s, 'deposit')"
+                                :onWithdraw="(s) => openVaultAction(s, 'withdraw')"
+                                :onEdit="handleEditSaving"
+                                :onDelete="handleDeleteSaving"
+                            />
                         </div>
                     </div>
-                 </div>
+                </div>
 
-                 <!-- ⚡ Quick Categorical Insights (Horizontal Scroll) -->
-                 <div class="space-y-4">
-                    <div class="flex items-center justify-between px-2">
-                        <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Spending By Group</h3>
-                    </div>
-                    <div class="flex overflow-x-auto no-scrollbar gap-3 pb-2 -mx-2 px-2">
-                        <div v-for="(amount, cat) in localStats.expense_by_category" :key="cat" class="shrink-0 bg-white dark:bg-slate-900 px-5 py-4 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center gap-3 active:scale-95 transition-all">
-                            <div class="w-10 h-10 bg-slate-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-lg">
-                                {{ categories.find(c => c.slug === cat)?.icon || '💸' }}
+                <!-- 📊 Activity & Budgets Timeline -->
+                <div class="space-y-6 px-2">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-500">
+                                <OneForMindIcon name="calendar-history" size="18" stroke-width="2.5" />
                             </div>
-                            <div>
-                                <p class="text-[9px] font-black text-slate-400 uppercase tracking-tight">{{ cat }}</p>
-                                <p class="text-xs font-black text-slate-800 dark:text-slate-100 leading-none">{{ formatMoney(amount) }}</p>
-                            </div>
+                            <h3 class="text-xs font-black uppercase tracking-widest text-slate-800 dark:text-white">Recent Activity</h3>
                         </div>
+                        <button @click="showFullHistoryModal = true" class="text-[10px] font-black text-indigo-600 py-1 px-3 bg-indigo-50 dark:bg-indigo-500/10 rounded-lg">See All</button>
                     </div>
-                 </div>
 
-                 <!-- 🕒 Visual Timeline of Transactions -->
-                 <div class="space-y-4">
-                    <div class="flex items-center justify-between px-2">
-                        <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Activity Timeline</h3>
-                        <button @click="showFullHistoryModal = true" class="text-[10px] font-black text-indigo-600">See All</button>
+                    <div v-if="localTransactions.length === 0" class="py-16 text-center bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800">
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">No activity found</p>
                     </div>
-                    
-                    <div v-if="localTransactions.length === 0" class="py-16 text-center bg-white dark:bg-slate-900 rounded-[3rem] border border-dashed border-slate-200 dark:border-slate-800">
-                        <p class="text-sm font-black text-slate-400">No transactions recorded.</p>
-                        <button @click="transactionForm.reset(); showTransactionModal = true" class="mt-4 text-[10px] bg-indigo-600 text-white px-6 py-2 rounded-full">Add First</button>
-                    </div>
-                    
+
                     <div v-else class="space-y-3">
-                        <div v-for="trx in localTransactions.slice(0, 10)" :key="trx.id" :id="'mobile-trx-' + trx.id" @click="handleEdit(trx)" class="group bg-white dark:bg-slate-900 p-5 rounded-[2.2rem] border border-slate-50 dark:border-slate-800 flex items-center justify-between active:scale-[0.98] transition-all duration-300 hover:shadow-lg">
+                        <div v-for="trx in localTransactions.slice(0, 8)" :key="trx.id" @click="handleEdit(trx)" class="group bg-white dark:bg-slate-900 p-4 rounded-3xl border border-slate-50 dark:border-slate-800/50 flex items-center justify-between active:scale-[0.97] transition-all duration-300">
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-2xl transition-transform group-hover:scale-110">
+                                <div class="w-10 h-10 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-xl">
                                     {{ trx.category_icon || '💸' }}
                                 </div>
                                 <div class="min-w-0">
-                                    <h4 class="text-sm font-black text-slate-800 dark:text-white leading-tight truncate">{{ trx.title }}</h4>
-                                    <p class="text-[10px] font-bold text-slate-400 capitalize tracking-tight">{{ dayjs(trx.date).format('DD MMM') }} • {{ trx.category_name }}</p>
+                                    <h4 class="text-xs font-black text-slate-800 dark:text-white truncate">{{ trx.title }}</h4>
+                                    <p class="text-[9px] font-bold text-slate-400 mt-0.5">
+                                        {{ dayjs(trx.date).format('DD MMM') }} • {{ trx.category_name }}
+                                    </p>
                                 </div>
                             </div>
-                            <div class="text-right shrink-0 ml-4">
-                                <p class="text-sm font-black font-mono tracking-tighter" :class="trx.type === 'income' ? 'text-emerald-500' : 'text-slate-900 dark:text-white'">
+                            <div class="text-right">
+                                <p class="text-sm font-black font-mono tracking-tighter" :class="trx.type === 'income' ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-900 dark:text-white'">
                                     {{ trx.type === 'income' ? '+' : '-' }}{{ formatMoney(trx.amount) }}
                                 </p>
-                                <OneForMindIcon v-if="trx.type === 'expense'" name="chevron-right" size="10" class="text-slate-300 ml-auto mt-1" />
                             </div>
                         </div>
                     </div>
-                 </div>
+                </div>
+
+                <!-- 🧠 AI Intelligence Insights -->
+                <div class="px-2">
+                    <FinanceInsights 
+                        :expense-stats="localStats.expense_by_category" 
+                        :income-stats="localStats.income_by_category" 
+                        :budgets="localBudgets" 
+                        @update-stats="handleOptimisticInvestment"
+                    />
+                </div>
+            </div>
 
                  <!-- 🧠 AI Intelligence Insights -->
                  <FinanceInsights 
