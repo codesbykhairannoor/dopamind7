@@ -37,6 +37,8 @@ const canAccess = (feature) => {
             <div class="px-1 mb-4">
                 <span class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em]">{{ $t('more_core_tools', 'Productivity Core') }}</span>
             </div>
+
+            <div class="grid grid-cols-2 gap-4">
                 <!-- Daily Planner -->
                 <Link v-if="showModule('planner')" :href="route('planner.index')" 
                         class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group">
