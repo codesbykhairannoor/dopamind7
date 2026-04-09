@@ -24,7 +24,7 @@ import VaultTransactionModal from './VaultTransactionModal.vue';
 import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
 import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 import { router } from '@inertiajs/vue3';
-import { Plus, Wallet, Lock } from 'lucide-vue-next';
+import { Plus, Wallet, Lock, TrendingUp, Zap } from 'lucide-vue-next';
 
 // Composables
 import { useFinanceBatch } from '@/Composables/Finance/useFinanceBatch';
@@ -435,7 +435,7 @@ watch(() => props.savings, (newSavings) => {
 watch(() => props.stats, (newStats) => {
     localStats.value = JSON.parse(JSON.stringify(newStats || {}));
 }, { deep: true });
-import { Wallet, TrendingUp, Zap } from 'lucide-vue-next';
+
 
 const financePremiumFeatures = [
     {
