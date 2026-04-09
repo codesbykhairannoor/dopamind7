@@ -1,4 +1,6 @@
 {
+    "settings_theme_title": "App Theme",
+    "settings_theme_desc": "Choose the display mode that's most comfortable for your eyes.",
     "settings_title": "Settings",
     "settings_header": "Account Control Center",
     "settings_subheader": "Manage everything about your productivity experience here.",

@@ -252,17 +252,6 @@ watch(() => page.url, () => {
                     </button>
                 </div>
 
-                <Link :href="route('billing')" prefetch
-                    class="flex items-center rounded-xl transition-all duration-300 group mb-2"
-                    :class="[
-                        route().current('billing') ? 'bg-indigo-600 dark:bg-indigo-500 text-white shadow-lg shadow-indigo-200 dark:shadow-none font-black' : 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 font-bold border border-indigo-100 dark:border-indigo-500/20',
-                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2 gap-2.5'
-                    ]"
-                    :title="isSidebarCollapsed ? $t('nav_item_premium', 'Elite Upgrade') : ''"
-                >
-                    <OneForMindIcon name="premium" size="18" class="shrink-0" :class="route().current('billing') ? 'text-white' : 'text-indigo-600 dark:text-indigo-400'" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-xs font-black uppercase tracking-widest">{{ $t('nav_item_premium', 'Go Elite') }}</span>
-                </Link>
 
                 <Link :href="route('settings.index')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group"
@@ -322,15 +311,14 @@ watch(() => page.url, () => {
 
                     <!-- AI COACH (CENTER - PROTRUDING) -->
                     <Link :href="canAccess('ai') ? route('coach.index') : route('billing')" prefetch 
-                          class="relative -top-5 flex-1 flex flex-col items-center transition-all duration-500"
-                          :class="!canAccess('ai') ? 'opacity-70 grayscale shadow-none' : ''">
-                        <div class="w-[4.25rem] h-[4.25rem] bg-slate-800 dark:bg-indigo-600 rounded-[1.75rem] flex items-center justify-center shadow-2xl shadow-indigo-300/30 dark:shadow-none transition-all active:scale-90 border-[6px] border-white dark:border-slate-900 overflow-hidden group">
+                          class="relative -top-3 lg:-top-5 flex-1 flex flex-col items-center transition-all duration-500"
+                          :class="!canAccess('ai') ? 'opacity-40 grayscale' : ''">
+                        <div class="w-14 h-14 lg:w-[4.25rem] lg:h-[4.25rem] bg-slate-900 dark:bg-indigo-600 rounded-2xl lg:rounded-[1.75rem] flex items-center justify-center shadow-lg transition-all active:scale-90 border-[4px] border-white dark:border-slate-950 overflow-hidden group">
                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                           <OneForMindIcon name="sparkles" size="26" class="text-white relative z-10" />
+                           <OneForMindIcon name="sparkles" :size="20" class="text-white relative z-10" />
                         </div>
-                        <div class="flex items-center gap-1.5 mt-1.5">
-                            <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">{{ canAccess('ai') ? 'Neural OS' : 'Platinum OS' }}</span>
-                            <div v-if="!canAccess('ai')" class="w-1 h-1 rounded-full bg-indigo-500 shadow-[0_0_5px_rgba(99,102,241,0.5)]"></div>
+                        <div class="flex items-center gap-1 mt-1">
+                            <span class="text-[8px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-tighter">{{ canAccess('ai') ? 'Neural OS' : 'Platinum OS' }}</span>
                         </div>
                     </Link>
 

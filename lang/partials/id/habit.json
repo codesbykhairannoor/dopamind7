@@ -1,6 +1,8 @@
 {
       "____ SECTION_5 ____": "=== HABIT TRACKER ===",
     "habit_page_title": "Habit Tracker",
+    "habit_mobile_hint": "Geser kartu ke kanan untuk menyelesaikan habit hari ini.",
+    "habit_limit": "Batas Habit Tercapai",
     "habit_subtitle": "Bangun konsistensi, pelan tapi pasti.",
     "habit_name": "Nama Habit",
     "habit_progress": "Progress Bulan Ini",

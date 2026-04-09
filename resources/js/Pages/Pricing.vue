@@ -161,10 +161,10 @@ onMounted(() => {
                 <div 
                     v-for="(plan, index) in plans" 
                     :key="index"
-                    class="group relative flex flex-col p-6 rounded-[2.5rem] transition-all duration-500 border hover:-translate-y-2"
+                    class="group relative flex flex-col p-5 lg:p-6 rounded-[2rem] lg:rounded-[2.5rem] transition-all duration-500 border hover:-translate-y-2"
                     :class="[
                         plan.highlight 
-                            ? 'bg-white dark:bg-slate-800 border-indigo-600 dark:border-indigo-500 shadow-2xl shadow-indigo-100 dark:shadow-none scale-105 z-10' 
+                            ? 'bg-white dark:bg-slate-800 border-indigo-600 dark:border-indigo-500 shadow-2xl shadow-indigo-100 dark:shadow-none lg:scale-105 z-10' 
                             : 'bg-white/70 dark:bg-slate-800/50 border-slate-100 dark:border-slate-700 shadow-xl shadow-slate-100 dark:shadow-none',
                         plan.theme === 'premium' ? 'ring-4 ring-indigo-600/5 dark:ring-indigo-400/5' : '',
                         plan.theme === 'dark' ? 'bg-slate-900 dark:bg-black text-white border-slate-800' : ''
@@ -195,16 +195,16 @@ onMounted(() => {
                         <p v-else class="text-[9px] font-bold italic text-amber-500">{{ $t('pricing_feat_l4_triggers') }}</p>
                     </div>
 
-                    <p class="text-xs font-medium mb-8 leading-relaxed min-h-[40px]" :class="plan.theme === 'dark' ? 'text-slate-400' : 'text-slate-500 dark:text-slate-400'">
+                    <p class="text-[11px] lg:text-xs font-medium mb-6 lg:mb-8 leading-relaxed min-h-[40px]" :class="plan.theme === 'dark' ? 'text-slate-400' : 'text-slate-500 dark:text-slate-400'">
                         {{ $t(plan.desc) }}
                     </p>
 
                     <ul class="space-y-3 mb-8 flex-grow">
-                        <li v-for="feat in plan.features" :key="feat" class="flex items-start gap-3">
-                            <div class="mt-1 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0" :class="plan.theme === 'dark' ? 'bg-indigo-500/20' : 'bg-emerald-50 dark:bg-emerald-500/10'">
+                        <li v-for="feat in plan.features" :key="feat" class="flex items-start gap-2 lg:gap-3">
+                            <div class="mt-0.5 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0" :class="plan.theme === 'dark' ? 'bg-indigo-500/20' : 'bg-emerald-50 dark:bg-emerald-500/10'">
                                 <OneForMindIcon name="check" size="8" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-emerald-500'" stroke-width="4" />
                             </div>
-                            <span class="text-[11px] font-bold leading-tight" :class="plan.theme === 'dark' ? 'text-slate-300' : 'text-slate-700 dark:text-slate-300'">{{ $t(feat) }}</span>
+                            <span class="text-[10px] lg:text-[11px] font-bold leading-tight" :class="plan.theme === 'dark' ? 'text-slate-300' : 'text-slate-700 dark:text-slate-300'">{{ $t(feat) }}</span>
                         </li>
                     </ul>
 

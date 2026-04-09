@@ -1,6 +1,8 @@
 {
      "____ SECTION_5 ____": "=== HABIT TRACKER ===",
     "habit_page_title": "Habit Tracker",
+    "habit_mobile_hint": "Swipe card right to complete your habit for today.",
+    "habit_limit": "Habit Limit Reached",
     "habit_subtitle": "Build consistency, slow but sure.",
     "habit_name": "Habit Name",
     "habit_progress": "Monthly Progress",
