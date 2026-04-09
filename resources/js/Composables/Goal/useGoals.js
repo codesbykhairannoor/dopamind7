@@ -332,6 +332,7 @@ export function useGoals(props) {
     return {
         localGoals, localStats, isModalOpen, editingGoal, isSaving, errors,
         openCreateModal, openEditModal, closeModal, saveGoal, deleteGoal,
-        uploadCoverImage, addMilestone, saveMilestone, toggleMilestone, deleteMilestone
+        uploadCoverImage, addMilestone, saveMilestone, toggleMilestone, deleteMilestone,
+        isExplorer
     };
 }

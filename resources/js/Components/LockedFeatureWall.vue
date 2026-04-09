@@ -1,60 +1,36 @@
 <script setup>
 import { router } from '@inertiajs/vue3';
-import { Lock, Wallet, TrendingUp, Zap } from 'lucide-vue-next';
+import { Lock } from 'lucide-vue-next';
 
 const props = defineProps({
-    isExplorer: Boolean
+    isExplorer: Boolean,
+    title: { type: String, default: 'Complete Your Systems' },
+    description: { type: String, default: 'Unlock advanced features for a more robust experience.' },
+    features: { type: Array, default: () => [] }
 });
 
-const features = [
-    {
-        id: 'vault',
-        title: 'The Vault',
-        desc: 'Sistem akumulasi kekayaan & target tabungan otomatis.',
-        icon: Wallet,
-        color: 'text-orange-500',
-        bg: 'bg-orange-500/10'
-    },
-    {
-        id: 'invest',
-        title: 'Investment Lab',
-        desc: 'Pantau pertumbuhan portofolio & estimasi P/L real-time.',
-        icon: TrendingUp,
-        color: 'text-indigo-500',
-        bg: 'bg-indigo-500/10'
-    },
-    {
-        id: 'neural',
-        title: 'Neural Financial Forecast',
-        desc: 'Prediksi arus kas masa depan dengan kecerdasan buatan.',
-        icon: Zap,
-        color: 'text-purple-500',
-        bg: 'bg-purple-500/10'
-    }
-];
-
 const handleUpgrade = () => {
-    router.visit(route('billing'), { data: { from: 'finance_locked_wall' } });
+    router.visit(route('billing'), { data: { from: 'locked_wall_global' } });
 };
 </script>
 
 <template>
     <div v-if="isExplorer" class="mt-16 pb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-        <div class="flex flex-col items-center text-center mb-10">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 mb-4">
+        <div class="flex flex-col items-center text-center mb-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 mb-4 transition-colors">
                 <Lock :size="12" class="text-slate-400" />
                 <span class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em]">Unlock Advanced Systems</span>
             </div>
             <h2 class="text-2xl lg:text-3xl font-black text-slate-800 dark:text-white mb-2 uppercase tracking-tighter transition-colors duration-500">
-                Arsitektur Keuangan Masa Depan
+                {{ title }}
             </h2>
             <p class="text-xs lg:text-sm font-bold text-slate-500 dark:text-slate-500 max-w-lg transition-colors">
-                Tingkatkan ke tier <span class="text-indigo-600 dark:text-indigo-400">Architect</span> untuk mengaktifkan modul manajemen kekayaan tingkat lanjut ini.
+                {{ description }}
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div v-for="feat in features" :key="feat.id" 
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div v-for="feat in features" :key="feat.title" 
                  class="group relative bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 border border-slate-200 dark:border-slate-800/50 shadow-sm dark:shadow-none transition-all duration-500 hover:scale-[1.02] overflow-hidden">
                 
                 <!-- Skeleton/Ghost UI Background -->
@@ -65,7 +41,7 @@ const handleUpgrade = () => {
                 </div>
 
                 <div class="relative z-10">
-                    <div :class="[feat.bg, feat.color]" class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+                    <div :class="[feat.bg || 'bg-indigo-500/10', feat.color || 'text-indigo-600']" class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
                         <component :is="feat.icon" :size="28" />
                     </div>
                     
@@ -87,10 +63,10 @@ const handleUpgrade = () => {
             </div>
         </div>
 
-        <div class="mt-8 flex justify-center">
+        <div class="mt-12 flex justify-center">
             <button @click="handleUpgrade" 
                     class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-black text-xs lg:text-sm uppercase tracking-widest shadow-xl shadow-indigo-100 dark:shadow-none transition-all active:scale-95">
-                Unlock Now — Upgrade to Architect
+                Unlock Now — Upgrade Tier
             </button>
         </div>
     </div>

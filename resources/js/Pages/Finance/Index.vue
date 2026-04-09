@@ -22,7 +22,7 @@ import SavingCard from './SavingCard.vue';
 import SavingModal from './SavingModal.vue';
 import VaultTransactionModal from './VaultTransactionModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
-import LockedFeatureWall from './LockedFeatureWall.vue';
+import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
 import { router } from '@inertiajs/vue3';
 import { Plus, Wallet, Lock } from 'lucide-vue-next';
 
@@ -427,6 +427,31 @@ watch(() => props.savings, (newSavings) => {
 watch(() => props.stats, (newStats) => {
     localStats.value = JSON.parse(JSON.stringify(newStats || {}));
 }, { deep: true });
+import { Wallet, TrendingUp, Zap } from 'lucide-vue-next';
+
+const financePremiumFeatures = [
+    {
+        title: 'The Vault',
+        desc: 'Sistem akumulasi kekayaan & target tabungan otomatis.',
+        icon: Wallet,
+        color: 'text-orange-500',
+        bg: 'bg-orange-500/10'
+    },
+    {
+        title: 'Investment Lab',
+        desc: 'Pantau pertumbuhan portofolio & estimasi P/L real-time.',
+        icon: TrendingUp,
+        color: 'text-indigo-500',
+        bg: 'bg-indigo-500/10'
+    },
+    {
+        title: 'Neural Financial Forecast',
+        desc: 'Prediksi arus kas masa depan dengan kecerdasan buatan.',
+        icon: Zap,
+        color: 'text-purple-500',
+        bg: 'bg-purple-500/10'
+    }
+];
 </script>
 
 <template>
@@ -624,7 +649,12 @@ watch(() => props.stats, (newStats) => {
 
                     <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" :isExplorer="isExplorer" @day-click="openDetail" />
                     
-                    <LockedFeatureWall :isExplorer="isExplorer" />
+                    <LockedFeatureWall 
+                        :isExplorer="isExplorer" 
+                        title="Arsitektur Keuangan Masa Depan"
+                        description="Tingkatkan ke tier Architect untuk mengaktifkan modul manajemen kekayaan tingkat lanjut ini."
+                        :features="financePremiumFeatures"
+                    />
                 </div>
             </div>
         </div>

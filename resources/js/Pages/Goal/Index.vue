@@ -8,6 +8,7 @@ import GoalCard from './GoalCard.vue';
 import GoalModal from './GoalModal.vue';
 import GoalHeader from './GoalHeader.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -32,8 +33,34 @@ const {
     isModalOpen, editingGoal, isSaving, errors,
     openCreateModal, openEditModal, closeModal, saveGoal,
     uploadCoverImage, deleteGoal,
-    addMilestone, saveMilestone, toggleMilestone, deleteMilestone
+    addMilestone, saveMilestone, toggleMilestone, deleteMilestone,
+    isExplorer
 } = useGoals(props);
+
+import { Image, Layers, Sparkles } from 'lucide-vue-next';
+const goalPremiumFeatures = [
+    {
+        title: 'Vision Board Covers',
+        desc: 'Unggah gambar kustom untuk memvisualisasikan manifestasi goal Anda secara nyata.',
+        icon: Image,
+        color: 'text-indigo-500',
+        bg: 'bg-indigo-500/10'
+    },
+    {
+        title: 'Advanced Milestones',
+        desc: 'Breakdown goal besar Anda menjadi puluhan langkah mikro untuk eksekusi presisi.',
+        icon: Layers,
+        color: 'text-orange-500',
+        bg: 'bg-orange-500/10'
+    },
+    {
+        title: 'AI Goal Strategist',
+        desc: 'Dapatkan strategi pemecahan masalah otomatis dari Neural OS saat goal Anda terhambat.',
+        icon: Sparkles,
+        color: 'text-purple-500',
+        bg: 'bg-purple-500/10'
+    }
+];
 
 const todayDate = computed(() => {
     const locale = usePage().props.locale || 'id';
@@ -179,6 +206,13 @@ onMounted(() => {
                 <span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full animate-ping"></span>
                 <span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full"></span>
             </button>
+
+            <LockedFeatureWall 
+                :isExplorer="isExplorer"
+                title="Complete Your Vision"
+                description="Unlock the full potential of your goal-setting system with Architect features."
+                :features="goalPremiumFeatures"
+            />
         </div>
     </div>
 </template>

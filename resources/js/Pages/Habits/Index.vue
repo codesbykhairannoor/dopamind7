@@ -11,6 +11,7 @@ import HabitStats from './HabitStats.vue';
 import HabitModals from './HabitModals.vue';
 import NeuralHabitInsight from './NeuralHabitInsight.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
 
 // PERSISTENT LAYOUT
 defineOptions({
@@ -68,6 +69,30 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
     // }
 };
 
+import { Sparkles, Activity, PieChart } from 'lucide-vue-next';
+const habitPremiumFeatures = [
+    {
+        title: 'Habit Alchemy',
+        desc: 'Sistem stacking otomatis untuk membangun momentum habit tanpa hambatan.',
+        icon: Sparkles,
+        color: 'text-indigo-500',
+        bg: 'bg-indigo-500/10'
+    },
+    {
+        title: 'Neural friction Audit',
+        desc: 'Audit cerdas untuk menemukan alasan kenapa Anda gagal di suatu habit.',
+        icon: Activity,
+        color: 'text-rose-500',
+        bg: 'bg-rose-500/10'
+    },
+    {
+        title: 'Atomic Analytics',
+        desc: 'Heatmap & visualisasi data habit yang mendalam untuk progres jangka panjang.',
+        icon: PieChart,
+        color: 'text-emerald-500',
+        bg: 'bg-emerald-500/10'
+    }
+];
 </script>
 
 <template>
@@ -109,8 +134,8 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 <NeuralBridge module="Habits" />
             </div>
 
-            <!-- NEW AI SECTION (Moved to bottom of grid) -->
-            <NeuralHabitInsight ref="neuralOs" :currentMood="savedMood" />
+            <!-- NEW AI SECTION (Hidden for Explorer in main flow, teased in Wall) -->
+            <NeuralHabitInsight v-if="!isExplorer" ref="neuralOs" :currentMood="savedMood" />
 
             <HabitStats 
                 :localHabits="localHabits"
@@ -147,6 +172,13 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 :switchToSingle="switchToSingle"
                 :isExplorer="isExplorer"
                 :habitsCount="habitsCount"
+            />
+
+            <LockedFeatureWall 
+                :isExplorer="isExplorer"
+                title="Master Your Identity"
+                description="Go beyond tracking. Build a lasting system with Quantum-tier Neural OS features."
+                :features="habitPremiumFeatures"
             />
         </div>
     </div>
