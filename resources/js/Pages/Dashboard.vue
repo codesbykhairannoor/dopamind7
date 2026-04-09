@@ -4,6 +4,9 @@ import { Head, usePage, Link } from '@inertiajs/vue3';
 import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+import { useGating } from '@/Composables/useGating';
+
+const { isExplorer, isArchitect, isQuantum, isLegendary } = useGating();
 
 const user = usePage().props.auth.user;
 const props = defineProps({
@@ -74,6 +77,24 @@ onMounted(() => {
             <header id="mobile-dash-header" class="pt-6 pb-4">
                 <div class="flex items-center justify-between gap-6 mb-10">
                     <div class="space-y-1 py-2">
+                        <!-- TIER BADGE -->
+                        <div v-if="isExplorer" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                            <span class="text-[8px] font-black text-slate-500 uppercase tracking-widest">Explorer</span>
+                        </div>
+                        <div v-else-if="isArchitect" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950 border border-indigo-100 dark:border-indigo-900 mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                            <span class="text-[8px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Architect</span>
+                        </div>
+                        <div v-else-if="isQuantum" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 dark:bg-violet-950 border border-violet-100 dark:border-violet-900 mb-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse"></span>
+                            <span class="text-[8px] font-black text-violet-600 dark:text-violet-400 uppercase tracking-widest">Quantum AI</span>
+                        </div>
+                        <div v-else-if="isLegendary" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-900 mb-2 shadow-sm">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                            <span class="text-[8px] font-black text-amber-700 dark:text-amber-400 uppercase tracking-widest">Legendary</span>
+                        </div>
+
                         <p id="dash-date" class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest">{{ synergy.date_formatted }}</p>
                         <h1 id="dash-greeting" class="text-3xl font-black text-slate-900 dark:text-white leading-[1.1] tracking-tight">
                             {{ $t(greetingKey) }},<br />
@@ -91,7 +112,8 @@ onMounted(() => {
                                 <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="5" class="text-slate-50 dark:text-slate-800" />
                                 <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" 
                                     :stroke-dasharray="276" :stroke-dashoffset="276 - (276 * overallScore / 100)"
-                                    class="text-indigo-600 dark:text-indigo-500 transition-all duration-[2000ms]" />
+                                    :class="isQuantum ? 'text-violet-600 dark:text-violet-500' : 'text-indigo-600 dark:text-indigo-500'" 
+                                    class="transition-all duration-[2000ms]" />
                             </svg>
                             <div class="text-center z-10">
                                 <span class="block text-3xl font-black text-slate-900 dark:text-white tracking-tighter tabular-nums">{{ overallScore }}%</span>
@@ -101,39 +123,64 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <!-- 🧠 Neural Intelligence Hub -->
-                <div id="neural-hub" class="mb-6">
-                    <button 
-                        v-if="!globalInsight && !loadingInsight" 
-                        id="btn-trigger-neural"
-                        @click="fetchInsight" 
-                        class="w-full relative overflow-hidden p-0.5 rounded-3xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 group transition-all"
-                    >
-                        <div class="bg-white dark:bg-slate-900 rounded-[1.4rem] py-4 px-6 flex items-center justify-between gap-3 active:scale-[0.99] transition-all">
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 bg-indigo-50 dark:bg-indigo-900/30 rounded-xl flex items-center justify-center transition-transform group-hover:rotate-12">
-                                    <OneForMindIcon name="sparkles" size="20" class="text-indigo-600 dark:text-indigo-400" />
-                                </div>
-                                <div class="text-left">
-                                    <span class="block text-xs font-black text-slate-800 dark:text-slate-100">Neural Sync Intelligence</span>
-                                    <span class="text-[9px] font-bold text-slate-400">Calibrate your day with AI</span>
-                                </div>
-                            </div>
-                            <OneForMindIcon name="chevron-right" size="14" class="text-slate-300 group-hover:translate-x-1 transition-transform" />
+                <!-- 🧠 TIER SPECIFIC HUB -->
+                <div id="tier-hub" class="mb-6">
+                    <!-- EXPLORER: Discovery Hub -->
+                    <Link v-if="isExplorer" :href="route('billing')" class="block bg-slate-900 p-6 rounded-[2rem] text-white relative overflow-hidden group active:scale-[0.98] transition-all">
+                        <div class="absolute -right-4 -bottom-4 opacity-20">
+                            <OneForMindIcon name="platinum" size="100" />
                         </div>
-                    </button>
-                    
-                    <!-- Neural Result Slot -->
-                    <transition enter-active-class="duration-500 ease-out" enter-from-class="opacity-0 translate-y-4" enter-to-class="opacity-100 translate-y-0">
-                        <div v-if="loadingInsight || globalInsight" class="bg-indigo-600 dark:bg-indigo-900/40 p-6 rounded-[2rem] text-white shadow-lg shadow-indigo-200 dark:shadow-none border border-indigo-500/20">
-                            <div class="flex items-center gap-3 mb-3">
-                                <OneForMindIcon name="sparkles" size="16" class="animate-pulse" />
-                                <span class="text-[10px] font-black uppercase tracking-widest opacity-80">Neural Recommendation</span>
+                        <div class="relative z-10 space-y-3">
+                            <div class="flex items-center gap-2">
+                                <OneForMindIcon name="sparkles" size="14" class="text-indigo-400" />
+                                <span class="text-[9px] font-black uppercase tracking-widest text-indigo-400">Upgrade Discovery</span>
                             </div>
-                            <p v-if="loadingInsight" class="text-sm font-bold animate-pulse italic">Connecting to Neural OS...</p>
-                            <p v-else class="text-base font-black leading-tight tracking-tight">{{ globalInsight?.summary || "Synergy looks stable. Focus on your top habit to maximize momentum." }}</p>
+                            <h4 class="text-lg font-black leading-tight">Unlock Neural Intelligence</h4>
+                            <p class="text-[10px] font-medium text-slate-400">Upgrade to Architect to sync your life with AI Insights.</p>
                         </div>
-                    </transition>
+                    </Link>
+
+                    <!-- ARCHITECT: Productivity Hub -->
+                    <div v-else-if="isArchitect" class="bg-indigo-50 dark:bg-indigo-950/30 p-5 rounded-[2rem] border border-indigo-100 dark:border-indigo-900/50 flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+                                <OneForMindIcon name="habit" size="20" />
+                            </div>
+                            <div>
+                                <span class="block text-xs font-black text-indigo-900 dark:text-indigo-100">Architect Mode</span>
+                                <span class="text-[9px] font-bold text-indigo-600/60 dark:text-indigo-400/60">Managing {{ synergy.habits.total }} Active Habits</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                             <div class="text-[10px] font-black text-indigo-600">{{ synergy.habits.percent }}%</div>
+                             <div class="text-[8px] font-bold text-slate-400 uppercase tracking-tight">MOMENTUM</div>
+                        </div>
+                    </div>
+
+                    <!-- QUANTUM: Neural AI Hub -->
+                    <div v-else-if="isQuantum" class="bg-violet-600 dark:bg-violet-900/60 p-6 rounded-[2.2rem] text-white shadow-xl shadow-violet-200 dark:shadow-none border border-violet-400/20 relative overflow-hidden">
+                        <div class="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <OneForMindIcon name="sparkles" size="18" class="animate-pulse" />
+                                    <span class="text-[10px] font-black uppercase tracking-widest opacity-80">Neural Active Insight</span>
+                                </div>
+                                <div class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-[8px] font-black uppercase tracking-widest border border-white/10">SYNCED</div>
+                            </div>
+                            <p v-if="loadingInsight" class="text-sm font-bold animate-pulse italic">Calibrating Neural Sync...</p>
+                            <p v-else class="text-base font-black leading-tight tracking-tight drop-shadow-sm">{{ globalInsight?.summary || "Synergy looks stable. Focus on your top habit to maximize momentum." }}</p>
+                        </div>
+                    </div>
+
+                    <!-- LEGENDARY: Monolith Hub -->
+                    <div v-else-if="isLegendary" class="bg-white dark:bg-black p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 text-center shadow-lg">
+                        <div class="w-12 h-12 bg-amber-50 dark:bg-amber-950 rounded-2xl mx-auto flex items-center justify-center text-amber-500 mb-4 border border-amber-100 dark:border-amber-900">
+                            <OneForMindIcon name="platinum" size="24" />
+                        </div>
+                        <h4 class="text-xl font-black text-slate-900 dark:text-amber-100 tracking-tighter mb-1">Monolith Performance</h4>
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Lifetime mastery in progress</p>
+                    </div>
                 </div>
             </header>
 
@@ -211,42 +258,54 @@ onMounted(() => {
                     <OneForMindIcon name="journal" size="100" class="absolute -right-8 -bottom-8 opacity-5 text-white" />
                 </Link>
 
-                <!-- 💰 Prime Finance (Full Width Card) -->
+                <!-- 💰 Prime Finance (Full Width Card) - TIER DIFFERENTIATED -->
                 <Link 
                     id="widget-finance"
                     :href="route('finance.index')" 
-                    class="col-span-12 group bg-indigo-600 p-8 rounded-[2.8rem] shadow-xl shadow-indigo-100 dark:shadow-none text-white active:scale-[0.98] transition-all relative overflow-hidden"
+                    class="col-span-12 group p-8 rounded-[2.8rem] transition-all relative overflow-hidden"
+                    :class="isExplorer ? 'bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800' : 'bg-indigo-600 shadow-xl shadow-indigo-100 dark:shadow-none text-white'"
                 >
-                    <!-- Decorative Circles -->
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full translate-x-1/2 -translate-y-1/2"></div>
-                    <div class="absolute -left-4 -bottom-10 w-24 h-24 bg-black/10 rounded-full"></div>
-                    <OneForMindIcon name="finance" size="200" class="absolute -right-16 -top-16 opacity-10 group-hover:rotate-12 transition-transform duration-[2000ms]" />
+                    <template v-if="!isExplorer">
+                        <!-- Decorative Circles -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full translate-x-1/2 -translate-y-1/2"></div>
+                        <div class="absolute -left-4 -bottom-10 w-24 h-24 bg-black/10 rounded-full"></div>
+                        <OneForMindIcon name="finance" size="200" class="absolute -right-16 -top-16 opacity-10 group-hover:rotate-12 transition-transform duration-[2000ms]" />
 
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-8">
-                            <h3 class="text-2xl font-black tracking-tight">Finance Ops</h3>
-                            <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/20">
-                                <span class="text-xs font-black">{{ $t('dash_income') }}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="space-y-1">
-                                <p class="text-[10px] font-bold text-indigo-100 uppercase tracking-widest opacity-80">Expenses</p>
-                                <p class="text-xl font-black tracking-tight truncate">{{ formatRupiah(synergy.finance.expense) }}</p>
-                                <div class="w-full bg-white/10 h-1 rounded-full mt-2">
-                                     <div class="bg-white h-full rounded-full" style="width: 65%"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-8">
+                                <h3 class="text-2xl font-black tracking-tight">Finance Ops</h3>
+                                <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/20">
+                                    <span class="text-xs font-black">{{ $t('dash_income') }}</span>
                                 </div>
                             </div>
-                            <div class="space-y-1">
-                                <p class="text-[10px] font-bold text-indigo-100 uppercase tracking-widest opacity-80">Revenue</p>
-                                <p class="text-xl font-black text-emerald-300 tracking-tight truncate">+{{ formatRupiah(synergy.finance.income) }}</p>
-                                <div class="w-full bg-black/20 h-1 rounded-full mt-2">
-                                     <div class="bg-emerald-400 h-full rounded-full" style="width: 85%"></div>
+                            
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="space-y-1">
+                                    <p class="text-[10px] font-bold text-indigo-100 uppercase tracking-widest opacity-80">Expenses</p>
+                                    <p class="text-xl font-black tracking-tight truncate">{{ formatRupiah(synergy.finance.expense) }}</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-[10px] font-bold text-emerald-100 uppercase tracking-widest opacity-80">Income</p>
+                                    <p class="text-xl font-black text-emerald-300 tracking-tight truncate">+{{ formatRupiah(synergy.finance.income) }}</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </template>
+                    <template v-else>
+                         <!-- Discovery Mode for Explorer -->
+                         <div class="flex items-center justify-between gap-6">
+                             <div class="space-y-2">
+                                 <h3 class="text-xl font-black text-slate-900 dark:text-white leading-tight">Monetary Intelligence</h3>
+                                 <p class="text-[10px] font-medium text-slate-500">Track your cashflow with Architect premium analytics.</p>
+                                 <div class="pt-2">
+                                     <span class="px-3 py-1 bg-indigo-600 text-white text-[8px] font-black uppercase tracking-widest rounded-lg">Upgrade Now</span>
+                                 </div>
+                             </div>
+                             <div class="w-20 h-20 bg-white dark:bg-slate-900 rounded-[2rem] flex items-center justify-center text-indigo-600 shadow-sm border border-slate-100 dark:border-slate-800 shrink-0">
+                                 <OneForMindIcon name="finance" size="32" />
+                             </div>
+                         </div>
+                    </template>
                 </Link>
 
                 <!-- 🎯 Goal Tracker (Wide Mini) -->
@@ -280,25 +339,35 @@ onMounted(() => {
                     
                     <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-10">
                         <div class="flex-1 space-y-5 text-center md:text-left">
-                            <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
-                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">{{ synergy.date_formatted }}</span>
+                            <div class="flex items-center justify-center md:justify-start gap-4">
+                                <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span class="text-xs font-bold text-slate-500 dark:text-slate-400">{{ synergy.date_formatted }}</span>
+                                </div>
+                                <!-- TIER LABEL -->
+                                <div v-if="isExplorer" class="text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 py-1.5 px-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">
+                                    Discovery Mode
+                                </div>
+                                <div v-else-if="isQuantum" class="text-[9px] font-black uppercase tracking-[0.2em] text-violet-600 dark:text-violet-400 py-1.5 px-4 bg-violet-50 dark:bg-violet-950/40 rounded-xl border border-violet-100 dark:border-violet-900/50">
+                                    Neural Active
+                                </div>
                             </div>
                             
                             <h1 class="text-4xl md:text-6xl font-black tracking-tighter text-slate-900 dark:text-white leading-[1.1]">
                                 {{ $t(greetingKey) }},<br />
-                                <span class="text-indigo-600 dark:text-indigo-400">{{ user.name }}</span>
+                                <span :class="isQuantum ? 'text-violet-600 dark:text-violet-400' : 'text-indigo-600 dark:text-indigo-400'">{{ user.name }}</span>
                             </h1>
                         </div>
 
                         <!-- Synergy Score -->
-                        <div class="flex flex-col items-center gap-6">
+                        <div class="flex flex-col items-center gap-6" :class="{ 'md:order-first': isQuantum }">
                             <div class="relative w-48 h-48 md:w-56 md:h-56 flex items-center justify-center">
                                 <svg class="absolute w-full h-full -rotate-90" viewBox="0 0 100 100">
                                     <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="4" class="text-slate-50 dark:text-slate-800" />
                                     <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" 
                                         :stroke-dasharray="276" :stroke-dashoffset="276 - (276 * overallScore / 100)"
-                                        class="text-indigo-600 dark:text-indigo-500 transition-all duration-[1500ms]" />
+                                        :class="isQuantum ? 'text-violet-600 dark:text-violet-500' : 'text-indigo-600 dark:text-indigo-500'" 
+                                        class="transition-all duration-[1500ms]" />
                                 </svg>
                                 <div class="text-center">
                                     <span class="block text-5xl md:text-6xl font-black text-slate-900 dark:text-white tabular-nums">{{ overallScore }}%</span>
@@ -306,12 +375,17 @@ onMounted(() => {
                                 </div>
                             </div>
 
-                            <button v-if="!globalInsight && !loadingInsight" @click="fetchInsight" class="group/btn relative px-8 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-lg transition-all active:scale-95 overflow-hidden">
+                            <button v-if="!isExplorer && !globalInsight && !loadingInsight" @click="fetchInsight" class="group/btn relative px-8 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-lg transition-all active:scale-95 overflow-hidden">
                                 <div class="flex items-center gap-3 relative z-10">
-                                    <OneForMindIcon name="sparkles" size="16" class="text-indigo-600" />
+                                    <OneForMindIcon name="sparkles" size="16" :class="isQuantum ? 'text-violet-600' : 'text-indigo-600'" />
                                     <span class="text-xs font-black text-slate-700 dark:text-slate-300">Neural Sync Engine</span>
                                 </div>
                             </button>
+
+                            <!-- Explorer Upsell -->
+                            <Link v-else-if="isExplorer" :href="route('billing')" class="text-[10px] font-black uppercase tracking-widest text-indigo-600 py-2 px-6 border border-indigo-100 rounded-xl hover:bg-indigo-50 transition-all">
+                                Unlock Neural Insights
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -334,10 +408,13 @@ onMounted(() => {
                         <h3 class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">{{ $t('dash_habit_title') }}</h3>
 
                         <!-- Neural Insight (Subtle Card) -->
-                        <div v-if="loadingInsight || globalInsight?.categories?.habits" class="bg-indigo-50/50 dark:bg-indigo-500/5 border border-indigo-100/50 dark:border-indigo-500/10 p-5 rounded-2xl">
+                        <div v-if="loadingInsight || globalInsight?.categories?.habits" 
+                            class="p-5 rounded-2xl border"
+                            :class="isQuantum ? 'bg-violet-500/10 border-violet-500/20 backdrop-blur-md' : 'bg-indigo-50/50 dark:bg-indigo-500/5 border-indigo-100/50 dark:border-indigo-500/10'"
+                        >
                             <div class="flex items-center gap-2 mb-2">
-                                <OneForMindIcon name="sparkles" size="14" class="text-indigo-500" :class="{ 'animate-spin': loadingInsight }" />
-                                <span class="text-[9px] font-black text-indigo-400">Neural Sync</span>
+                                <OneForMindIcon name="sparkles" size="14" :class="[isQuantum ? 'text-violet-400' : 'text-indigo-500', { 'animate-spin': loadingInsight }]" />
+                                <span class="text-[9px] font-black uppercase tracking-widest" :class="isQuantum ? 'text-violet-400' : 'text-indigo-400'">Neural Sync</span>
                             </div>
                             <p v-if="loadingInsight" class="text-xs font-bold text-slate-400 animate-pulse tracking-tight italic">Calibrating routines...</p>
                             <p v-else class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-snug">{{ globalInsight?.categories?.habits }}</p>
@@ -399,34 +476,52 @@ onMounted(() => {
 
                 <!-- FINANCE -->
                 <Link :href="route('finance.index')" 
-                    class="col-span-1 md:col-span-12 lg:col-span-5 bg-indigo-600 rounded-[2.5rem] p-10 text-white shadow-xl hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between"
+                    class="col-span-1 md:col-span-12 lg:col-span-5 rounded-[2.5rem] p-10 shadow-xl hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden flex flex-col justify-between"
+                    :class="isExplorer ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white' : 'bg-indigo-600 text-white'"
                 >
-                    <div class="absolute -right-6 -bottom-6 opacity-10 group-hover:scale-110 transition-transform duration-1000">
-                        <OneForMindIcon name="finance" size="240" />
-                    </div>
-                    <div class="relative z-10 flex flex-col gap-6 text-left">
-                        <div class="w-14 h-14 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/20">
-                            <OneForMindIcon name="finance" size="28" stroke-width="3" />
+                    <template v-if="!isExplorer">
+                        <div class="absolute -right-6 -bottom-6 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+                            <OneForMindIcon name="finance" size="240" />
                         </div>
-                        <div class="space-y-4">
-                            <h3 class="text-3xl font-black tracking-tighter">{{ $t('dash_finance_title') }}</h3>
-                            
-                            <div v-if="loadingInsight || globalInsight?.categories?.finance" class="bg-black/20 p-5 rounded-2xl border border-white/10">
-                                <p v-if="loadingInsight" class="text-xs font-bold text-indigo-200 animate-pulse tracking-tight italic">Auditing variables...</p>
-                                <p v-else class="text-sm font-bold leading-snug italic">{{ globalInsight?.categories?.finance }}</p>
+                        <div class="relative z-10 flex flex-col gap-6 text-left">
+                            <div class="w-14 h-14 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center border border-white/20">
+                                <OneForMindIcon name="finance" size="28" stroke-width="3" />
+                            </div>
+                            <div class="space-y-4">
+                                <h3 class="text-3xl font-black tracking-tighter">{{ $t('dash_finance_title') }}</h3>
+                                
+                                <div v-if="loadingInsight || globalInsight?.categories?.finance" class="bg-black/20 p-5 rounded-2xl border border-white/10">
+                                    <p v-if="loadingInsight" class="text-xs font-bold text-indigo-200 animate-pulse tracking-tight italic">Auditing variables...</p>
+                                    <p v-else class="text-sm font-bold leading-snug italic">{{ globalInsight?.categories?.finance }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="relative z-10 mt-10 grid grid-cols-2 gap-4">
-                        <div class="bg-white/10 rounded-2xl p-6 border border-white/5">
-                            <p class="text-[9px] font-bold text-indigo-200 mb-1">{{ $t('dash_expense') }}</p>
-                            <h4 class="text-2xl font-black truncate">{{ formatRupiah(synergy.finance.expense) }}</h4>
+                        <div class="relative z-10 mt-10 grid grid-cols-2 gap-4">
+                            <div class="bg-white/10 rounded-2xl p-6 border border-white/5">
+                                <p class="text-[9px] font-bold text-indigo-200 mb-1">{{ $t('dash_expense') }}</p>
+                                <h4 class="text-2xl font-black truncate">{{ formatRupiah(synergy.finance.expense) }}</h4>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-6 border border-white/5">
+                                <p class="text-[9px] font-bold text-indigo-200 mb-1">{{ $t('dash_income') }}</p>
+                                <h4 class="text-2xl font-black text-emerald-300 tabular-nums lining-nums">+{{ formatRupiah(synergy.finance.income) }}</h4>
+                            </div>
                         </div>
-                        <div class="bg-white/10 rounded-2xl p-6 border border-white/5">
-                            <p class="text-[9px] font-bold text-indigo-200 mb-1">{{ $t('dash_income') }}</p>
-                            <h4 class="text-2xl font-black text-emerald-300 tabular-nums lining-nums">+{{ formatRupiah(synergy.finance.income) }}</h4>
+                    </template>
+                    <template v-else>
+                        <!-- Discovery Hub for Explorer -->
+                        <div class="relative z-10 flex flex-col justify-center items-center text-center h-full space-y-6">
+                            <div class="w-20 h-20 bg-indigo-600 text-white rounded-[2rem] flex items-center justify-center shadow-lg shadow-indigo-200 dark:shadow-none mb-4">
+                                <OneForMindIcon name="finance" size="40" />
+                            </div>
+                            <div class="space-y-2">
+                                <h3 class="text-3xl font-black tracking-tighter">Finance Intelligence</h3>
+                                <p class="max-w-[280px] mx-auto text-sm font-bold text-slate-500 dark:text-slate-400">Master your cashflow and unlock predictive analytics with the Platinum Suite.</p>
+                            </div>
+                            <Link :href="route('billing')" class="px-8 py-3 bg-indigo-600 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-md hover:scale-105 transition-all">
+                                Upgrade Account
+                            </Link>
                         </div>
-                    </div>
+                    </template>
                 </Link>
 
                 <!-- JOURNAL -->
