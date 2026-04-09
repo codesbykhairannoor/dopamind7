@@ -723,15 +723,6 @@ watch(() => props.stats, (newStats) => {
                 </div>
             </div>
 
-                 <!-- 🧠 AI Intelligence Insights -->
-                 <FinanceInsights 
-                    :expense-stats="localStats.expense_by_category" 
-                    :income-stats="localStats.income_by_category" 
-                    :budgets="localBudgets" 
-                    @update-stats="handleOptimisticInvestment"
-                 />
-            </div>
-
         </div>
 
         <TransactionModal :show="showTransactionModal" :form="transactionForm" :budgets="localBudgets" :categories="categories" :close="() => showTransactionModal = false" :submit="submitNewTransaction" @switch-to-batch="switchToBatch" />
