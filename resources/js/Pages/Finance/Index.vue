@@ -22,6 +22,7 @@ import SavingCard from './SavingCard.vue';
 import SavingModal from './SavingModal.vue';
 import VaultTransactionModal from './VaultTransactionModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import LockedFeatureWall from './LockedFeatureWall.vue';
 import { router } from '@inertiajs/vue3';
 import { Plus, Wallet, Lock } from 'lucide-vue-next';
 
@@ -472,6 +473,7 @@ watch(() => props.stats, (newStats) => {
                     <NeuralBridge module="Finance" />
 
                     <FinanceInsights
+                        v-if="!isExplorer"
                         :expense-stats="localStats.expense_by_category"
                         :income-stats="localStats.income_by_category"
                         :budgets="localBudgets"
@@ -581,14 +583,7 @@ watch(() => props.stats, (newStats) => {
                     </div>
 
                     <!-- 🏦 The Vault (Savings) -->
-                    <div class="space-y-6 relative group">
-                        <div v-if="isExplorer" 
-                             @click="router.visit(route('billing'), { data: { from: 'finance_vault' } })"
-                             class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white/20 dark:bg-slate-900/20 backdrop-blur-md rounded-[3rem] border border-slate-200 dark:border-slate-800 cursor-pointer group-hover:bg-white/40 dark:group-hover:bg-slate-900/40 transition-all duration-500 p-8 text-center">
-                            <div class="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-white dark:bg-slate-800 shadow-xl flex items-center justify-center text-2xl lg:text-3xl mb-4 border border-slate-100 dark:border-slate-700">🔒</div>
-                            <h4 class="text-xs lg:text-sm font-black text-slate-800 dark:text-white uppercase tracking-tighter">The Vault (Wealth)</h4>
-                            <p class="text-[9px] lg:text-[10px] font-bold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-widest">Architect Feature</p>
-                        </div>
+                    <div v-if="!isExplorer" class="space-y-6 relative group">
                         <div class="flex items-center justify-between px-1 lg:px-0">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500 shadow-sm">
@@ -628,6 +623,8 @@ watch(() => props.stats, (newStats) => {
                     </div>
 
                     <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" :isExplorer="isExplorer" @day-click="openDetail" />
+                    
+                    <LockedFeatureWall :isExplorer="isExplorer" />
                 </div>
             </div>
         </div>
