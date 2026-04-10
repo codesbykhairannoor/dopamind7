@@ -1,5 +1,5 @@
 <script setup>
-精import { ref, computed, watch, onMounted } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { Link, usePage, router } from '@inertiajs/vue3'; 
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import ThemeToggle from '@/Components/ThemeToggle.vue';

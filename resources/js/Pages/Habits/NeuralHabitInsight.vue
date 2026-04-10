@@ -169,15 +169,6 @@ defineExpose({ getMoodAdvisory });
             </div>
         </Transition>
 
-                             <button @click="moodAdvisory = null" class="w-full py-6 bg-slate-900 dark:bg-indigo-600 text-white rounded-[2rem] font-black text-xs tracking-[0.2em] shadow-2xl hover:bg-slate-800 dark:hover:bg-indigo-700 active:scale-95 transition-all outline-none">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </Transition>
-
 
     </div>
 </template>

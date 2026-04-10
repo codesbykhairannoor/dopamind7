@@ -293,6 +293,7 @@ const date_format$1 = "dddd, MMMM D, YYYY";
 const no_category$1 = "Uncategorized";
 const no_date$1 = "No Deadline";
 const name = "Name";
+const goal_no_steps$1 = "There are no steps/milestones for this goal yet. Add steps to track your progress!";
 const notes_meta_title$1 = "OneForMind vs Paper Planners — The Digital Evolution of Focus";
 const notes_meta_desc$1 = "Standard notebooks are passive. OneForMind is an active life system. See why digital focus beats paper hoarding.";
 const notes_meta_og_title$1 = "Your Notes App is Where Ideas Go to Die.";
@@ -2663,18 +2664,19 @@ const pricing_save_amount$1 = "Save 40% with Yearly";
 const pricing_free_name$1 = "Explorer";
 const pricing_forever$1 = "forever";
 const pricing_free_desc$1 = "Perfect for beginners who want to start tracking habits and basic finances.";
-const pricing_feat_habits_limit$1 = "Up to 5 Active Habits";
-const pricing_feat_finance_basic$1 = "Basic Expense Tracking";
+const pricing_feat_habits_limit$1 = "Limit: 5 Active Habits";
+const pricing_feat_planner_basic$1 = "Daily Planner (No Batch Mode)";
+const pricing_feat_finance_basic$1 = "Basic Finance (No Savings/Trends)";
 const pricing_free_btn$1 = "Start for Free";
 const pricing_pro_name$1 = "Architect";
 const pricing_pro_badge$1 = "Best for Starters";
 const pricing_month$1 = "mo";
 const pricing_billed_annually$1 = "Billed annually";
 const pricing_pro_desc$1 = "Unlock all tabs and premium features. Includes a 14-day trial, then recurs at a lower rate.";
-const pricing_feat_unlock_all$1 = "Unlock All Tabs & Modules";
-const pricing_feat_month_trial$1 = "14-Day Free Trial Included";
-const pricing_feat_habit_insights$1 = "Advanced Habit Analytics";
-const pricing_feat_finance_tax$1 = "Downloadable Tax Reports";
+const pricing_feat_unlock_all$1 = "Unlock All Tabs (Journal, Goals, etc)";
+const pricing_feat_planner_batch$1 = "Batch Entry Planner Unlocked";
+const pricing_feat_finance_adv$1 = "Savings & Trends Modules Open";
+const pricing_feat_no_ai$1 = "Non-AI (Neural OS Locked)";
 const pricing_feat_dark_mode$1 = "Full Dark Mode Support";
 const pricing_pro_initial$1 = "Initial Unlock: $5.00";
 const pricing_pro_recurring$1 = "Then $4.99/mo";
@@ -2682,18 +2684,18 @@ const pricing_pro_btn$1 = "Unlock All Now";
 const pricing_ai_initial$1 = "Initial Unlock: $10.00";
 const pricing_ai_recurring$1 = "Then $6.99/mo";
 const pricing_ai_desc$1 = "The future of productivity. Integrate AI into your daily workflow.";
-const pricing_feat_ai_chat$1 = "Talk with AI Assistant";
-const pricing_feat_ai_status$1 = "Coming Soon";
-const pricing_feat_automated_insights$1 = "Automated Life Insights";
+const pricing_feat_ai_chat$1 = "Full Neural OS AI Access";
+const pricing_feat_ai_status$1 = "Neural Assistant Active";
+const pricing_feat_automated_insights$1 = "AI-Driven Life Insights";
+const pricing_feat_all_architect$1 = "Includes All Architect Pro Features";
 const pricing_ai_btn$1 = "Go Quantum";
 const pricing_life_name$1 = "Mind Master";
 const pricing_once$1 = "once";
 const pricing_life_desc$1 = "The ultimate investment. Unlock all systems forever with a one-time payment. No subscription fees.";
-const pricing_feat_lifetime_access$1 = "Full System Access Forever";
-const pricing_feat_calendar_unlocked$1 = "One-Time Payment (Lifetime)";
-const pricing_feat_goals_unlocked$1 = "No Recurring System Fees";
-const pricing_feat_jobs_unlocked$1 = "Job Tracker Unlocked Forever";
-const pricing_feat_priority_support$1 = "Optional AI Maintenance (49k)";
+const pricing_feat_lifetime_access$1 = "Lifetime Access (No Subscriptions)";
+const pricing_feat_calendar_unlocked$1 = "Unlock All Core Modules Forever";
+const pricing_feat_ai_trial$1 = "Free 2-Month Neural AI Trial";
+const pricing_feat_ai_discount$1 = "Heavy Discount on AI Maintenance";
 const pricing_life_btn$1 = "Buy Lifetime";
 const pricing_compare_title$1 = "Compare Features";
 const pricing_compare_subtitle$1 = "See exactly what you get in each plan.";
@@ -2786,7 +2788,7 @@ const pricing_l2_name$1 = "Architect (Pro)";
 const pricing_l2_desc$1 = "Unlock the full power of the unified life ecosystem. Perfect for those who want to organize habits and finances professionally.";
 const pricing_l3_name$1 = "Quantum (AI)";
 const pricing_l3_desc$1 = "Integrated AI to supercharge your execution and insights. Elevate your productivity to Quantum levels with a 24/7 smart assistant.";
-const pricing_l4_name$1 = "Legendary (Life)";
+const pricing_l4_name$1 = "Legendary";
 const pricing_l4_desc$1 = "The ultimate investment for your future. Pay once, access forever, and enjoy the most cost-effective AI maintenance.";
 const pricing_l1_initial$1 = "Free Forever";
 const pricing_l2_initial$1 = "Pro Lifetime Unlock";
@@ -4253,6 +4255,7 @@ const en = {
   no_category: no_category$1,
   no_date: no_date$1,
   name,
+  goal_no_steps: goal_no_steps$1,
   notes_meta_title: notes_meta_title$1,
   notes_meta_desc: notes_meta_desc$1,
   notes_meta_og_title: notes_meta_og_title$1,
@@ -6640,6 +6643,7 @@ const en = {
   pricing_forever: pricing_forever$1,
   pricing_free_desc: pricing_free_desc$1,
   pricing_feat_habits_limit: pricing_feat_habits_limit$1,
+  pricing_feat_planner_basic: pricing_feat_planner_basic$1,
   pricing_feat_finance_basic: pricing_feat_finance_basic$1,
   pricing_free_btn: pricing_free_btn$1,
   pricing_pro_name: pricing_pro_name$1,
@@ -6648,9 +6652,9 @@ const en = {
   pricing_billed_annually: pricing_billed_annually$1,
   pricing_pro_desc: pricing_pro_desc$1,
   pricing_feat_unlock_all: pricing_feat_unlock_all$1,
-  pricing_feat_month_trial: pricing_feat_month_trial$1,
-  pricing_feat_habit_insights: pricing_feat_habit_insights$1,
-  pricing_feat_finance_tax: pricing_feat_finance_tax$1,
+  pricing_feat_planner_batch: pricing_feat_planner_batch$1,
+  pricing_feat_finance_adv: pricing_feat_finance_adv$1,
+  pricing_feat_no_ai: pricing_feat_no_ai$1,
   pricing_feat_dark_mode: pricing_feat_dark_mode$1,
   pricing_pro_initial: pricing_pro_initial$1,
   pricing_pro_recurring: pricing_pro_recurring$1,
@@ -6661,15 +6665,15 @@ const en = {
   pricing_feat_ai_chat: pricing_feat_ai_chat$1,
   pricing_feat_ai_status: pricing_feat_ai_status$1,
   pricing_feat_automated_insights: pricing_feat_automated_insights$1,
+  pricing_feat_all_architect: pricing_feat_all_architect$1,
   pricing_ai_btn: pricing_ai_btn$1,
   pricing_life_name: pricing_life_name$1,
   pricing_once: pricing_once$1,
   pricing_life_desc: pricing_life_desc$1,
   pricing_feat_lifetime_access: pricing_feat_lifetime_access$1,
   pricing_feat_calendar_unlocked: pricing_feat_calendar_unlocked$1,
-  pricing_feat_goals_unlocked: pricing_feat_goals_unlocked$1,
-  pricing_feat_jobs_unlocked: pricing_feat_jobs_unlocked$1,
-  pricing_feat_priority_support: pricing_feat_priority_support$1,
+  pricing_feat_ai_trial: pricing_feat_ai_trial$1,
+  pricing_feat_ai_discount: pricing_feat_ai_discount$1,
   pricing_life_btn: pricing_life_btn$1,
   pricing_compare_title: pricing_compare_title$1,
   pricing_compare_subtitle: pricing_compare_subtitle$1,
@@ -9417,6 +9421,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_moonshot_label: goal_moonshot_label$1,
   goal_new: goal_new$1,
   goal_no_deadlines: goal_no_deadlines$1,
+  goal_no_steps: goal_no_steps$1,
   goal_overdue: goal_overdue$1,
   goal_page_title: goal_page_title$1,
   goal_performance_badge: goal_performance_badge$1,
@@ -10924,16 +10929,16 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_faq_subtitle: pricing_faq_subtitle$1,
   pricing_faq_title: pricing_faq_title$1,
   pricing_feat_ai_chat: pricing_feat_ai_chat$1,
+  pricing_feat_ai_discount: pricing_feat_ai_discount$1,
   pricing_feat_ai_status: pricing_feat_ai_status$1,
+  pricing_feat_ai_trial: pricing_feat_ai_trial$1,
+  pricing_feat_all_architect: pricing_feat_all_architect$1,
   pricing_feat_automated_insights: pricing_feat_automated_insights$1,
   pricing_feat_calendar_unlocked: pricing_feat_calendar_unlocked$1,
   pricing_feat_dark_mode: pricing_feat_dark_mode$1,
+  pricing_feat_finance_adv: pricing_feat_finance_adv$1,
   pricing_feat_finance_basic: pricing_feat_finance_basic$1,
-  pricing_feat_finance_tax: pricing_feat_finance_tax$1,
-  pricing_feat_goals_unlocked: pricing_feat_goals_unlocked$1,
-  pricing_feat_habit_insights: pricing_feat_habit_insights$1,
   pricing_feat_habits_limit: pricing_feat_habits_limit$1,
-  pricing_feat_jobs_unlocked: pricing_feat_jobs_unlocked$1,
   pricing_feat_l1_finance: pricing_feat_l1_finance$1,
   pricing_feat_l1_habits: pricing_feat_l1_habits$1,
   pricing_feat_l2_finance: pricing_feat_l2_finance$1,
@@ -10946,8 +10951,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_feat_l4_war_room: pricing_feat_l4_war_room$1,
   pricing_feat_label: pricing_feat_label$1,
   pricing_feat_lifetime_access: pricing_feat_lifetime_access$1,
-  pricing_feat_month_trial: pricing_feat_month_trial$1,
-  pricing_feat_priority_support: pricing_feat_priority_support$1,
+  pricing_feat_no_ai: pricing_feat_no_ai$1,
+  pricing_feat_planner_basic: pricing_feat_planner_basic$1,
+  pricing_feat_planner_batch: pricing_feat_planner_batch$1,
   pricing_feat_unlock_all: pricing_feat_unlock_all$1,
   pricing_forever: pricing_forever$1,
   pricing_free_btn: pricing_free_btn$1,
@@ -12202,6 +12208,7 @@ const select_hour = "Pilih Jam";
 const date_format = "dddd, D MMMM YYYY";
 const no_category = "Tanpa Kategori";
 const no_date = "Tanpa Tanggal";
+const goal_no_steps = "Belum ada langkah (steps/milestone) pada goal ini. Tambahkan langkah untuk melacak progres!";
 const notes_meta_title = "OneForMind vs Buku Catatan — Evolusi Digital untuk Fokus";
 const notes_meta_desc = "Buku catatan itu pasif. OneForMind adalah sistem hidup yang aktif. Lihat mengapa fokus digital lebih baik daripada sekadar mencatat.";
 const notes_meta_og_title = "Aplikasi Catatanmu adalah Tempat Ide Mati.";
@@ -14523,18 +14530,19 @@ const pricing_save_amount = "Hemat 40% dengan Tahunan";
 const pricing_free_name = "Explorer";
 const pricing_forever = "selamanya";
 const pricing_free_desc = "Cocok untuk pemula yang ingin mulai melacak habit dan keuangan dasar.";
-const pricing_feat_habits_limit = "Hingga 5 Habit Aktif";
-const pricing_feat_finance_basic = "Pelacak Keuangan Dasar";
+const pricing_feat_habits_limit = "Batasan 5 Habit Aktif";
+const pricing_feat_planner_basic = "Planner (Tanpa Batch Mode)";
+const pricing_feat_finance_basic = "Keuangan Dasar (Tanpa Save/Trend)";
 const pricing_free_btn = "Mulai Gratis";
 const pricing_pro_name = "Architect";
 const pricing_pro_badge = "Terbaik untuk Awal";
 const pricing_month = "bln";
 const pricing_billed_annually = "Ditagih tahunan";
 const pricing_pro_desc = "Buka semua tab dan fitur premium. Termasuk trial 14 hari, lalu berulang dengan biaya lebih rendah.";
-const pricing_feat_unlock_all = "Buka Semua Tab & Modul";
-const pricing_feat_month_trial = "Termasuk Trial Gratis 14 Hari";
-const pricing_feat_habit_insights = "Analitik Habit Tingkat Lanjut";
-const pricing_feat_finance_tax = "Unduh Laporan Pajak";
+const pricing_feat_unlock_all = "Buka Semua Tab (Journal, Goals, dll)";
+const pricing_feat_planner_batch = "Fitur Planner Batch Entry Terbuka";
+const pricing_feat_finance_adv = "Fitur Savings & Trend Terbuka";
+const pricing_feat_no_ai = "Non-AI (Neural OS Terkunci)";
 const pricing_feat_dark_mode = "Dukungan Mode Gelap Penuh";
 const pricing_pro_initial = "Buka Pertama: Rp 89.000";
 const pricing_pro_recurring = "Lalu Rp 79.000/bln";
@@ -14542,19 +14550,18 @@ const pricing_pro_btn = "Buka Semua Sekarang";
 const pricing_ai_initial = "Buka Pertama: Rp 159.000";
 const pricing_ai_recurring = "Lalu Rp 109.000/bln";
 const pricing_ai_desc = "Masa depan produktivitas. Integrasikan AI ke dalam alur kerja harian Anda.";
-const pricing_feat_ai_chat = "Ngobrol dengan AI Assistant";
-const pricing_feat_ai_status = "Segera Hadir";
-const pricing_feat_automated_insights = "Wawasan Hidup Otomatis";
+const pricing_feat_ai_chat = "Akses Penuh Neural OS AI";
+const pricing_feat_ai_status = "Neural Assistant Aktif";
+const pricing_feat_automated_insights = "Life Insights Berbasis AI";
+const pricing_feat_all_architect = "Termasuk Semua Fitur Architect";
 const pricing_ai_btn = "Pilih Quantum";
 const pricing_life_name = "Mind Master";
 const pricing_once = "sekali";
 const pricing_life_desc = "Investasi terbaik. Buka semua sistem selamanya dengan satu kali bayar. Tanpa biaya langganan bulanan.";
-const pricing_feat_lifetime_access = "Buka Seluruh Sistem Selamanya";
-const pricing_feat_calendar_unlocked = "Satu Kali Bayar (One-Time Pay)";
-const pricing_feat_goals_unlocked = "Bebas Biaya Langganan Sistem";
-const pricing_feat_jobs_unlocked = "Job Tracker Terbuka Selamanya";
-const pricing_feat_priority_support = "Dukungan Prioritas Discord";
-const pricing_feat_ai_maintenance = "Opsi AI Maintenance Fee (Rp 49k)";
+const pricing_feat_lifetime_access = "Akses Seumur Hidup Tanpa Monthly";
+const pricing_feat_calendar_unlocked = "Buka Semua Modul Selamanya";
+const pricing_feat_ai_trial = "Gratis Akses AI Selama 2 Bulan";
+const pricing_feat_ai_discount = "Diskon Besar Biaya AI Setelah Trial";
 const pricing_life_btn = "Beli Lifetime";
 const pricing_compare_title = "Bandingkan Fitur";
 const pricing_compare_subtitle = "Lihat detail apa saja yang Anda dapatkan di setiap paket.";
@@ -14645,7 +14652,7 @@ const pricing_l2_name = "Architect (Pro)";
 const pricing_l2_desc = "Buka kekuatan penuh ekosistem kehidupan terpadu. Cocok untuk Anda yang ingin mengorganisir habit dan finansial secara profesional.";
 const pricing_l3_name = "Quantum (AI)";
 const pricing_l3_desc = "AI terintegrasi untuk mempercepat eksekusi dan wawasan Anda. Tingkatkan produktivitas Anda ke level Quantum dengan asisten pintar 24/7.";
-const pricing_l4_name = "Legendary (Life)";
+const pricing_l4_name = "Legendary";
 const pricing_l4_desc = "Investasi utama untuk masa depan Anda. Bayar sekali, akses selamanya, dan nikmati biaya pemeliharaan AI paling hemat.";
 const pricing_l1_initial = "Gratis Selamanya";
 const pricing_l2_initial = "Buka Seumur Hidup Pro";
@@ -16153,6 +16160,7 @@ const id = {
   date_format,
   no_category,
   no_date,
+  goal_no_steps,
   notes_meta_title,
   notes_meta_desc,
   notes_meta_og_title,
@@ -18492,6 +18500,7 @@ const id = {
   pricing_forever,
   pricing_free_desc,
   pricing_feat_habits_limit,
+  pricing_feat_planner_basic,
   pricing_feat_finance_basic,
   pricing_free_btn,
   pricing_pro_name,
@@ -18500,9 +18509,9 @@ const id = {
   pricing_billed_annually,
   pricing_pro_desc,
   pricing_feat_unlock_all,
-  pricing_feat_month_trial,
-  pricing_feat_habit_insights,
-  pricing_feat_finance_tax,
+  pricing_feat_planner_batch,
+  pricing_feat_finance_adv,
+  pricing_feat_no_ai,
   pricing_feat_dark_mode,
   pricing_pro_initial,
   pricing_pro_recurring,
@@ -18513,16 +18522,15 @@ const id = {
   pricing_feat_ai_chat,
   pricing_feat_ai_status,
   pricing_feat_automated_insights,
+  pricing_feat_all_architect,
   pricing_ai_btn,
   pricing_life_name,
   pricing_once,
   pricing_life_desc,
   pricing_feat_lifetime_access,
   pricing_feat_calendar_unlocked,
-  pricing_feat_goals_unlocked,
-  pricing_feat_jobs_unlocked,
-  pricing_feat_priority_support,
-  pricing_feat_ai_maintenance,
+  pricing_feat_ai_trial,
+  pricing_feat_ai_discount,
   pricing_life_btn,
   pricing_compare_title,
   pricing_compare_subtitle,
@@ -21292,6 +21300,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_moonshot_label,
   goal_new,
   goal_no_deadlines,
+  goal_no_steps,
   goal_overdue,
   goal_page_title,
   goal_performance_badge,
@@ -22801,17 +22810,16 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_faq_subtitle,
   pricing_faq_title,
   pricing_feat_ai_chat,
-  pricing_feat_ai_maintenance,
+  pricing_feat_ai_discount,
   pricing_feat_ai_status,
+  pricing_feat_ai_trial,
+  pricing_feat_all_architect,
   pricing_feat_automated_insights,
   pricing_feat_calendar_unlocked,
   pricing_feat_dark_mode,
+  pricing_feat_finance_adv,
   pricing_feat_finance_basic,
-  pricing_feat_finance_tax,
-  pricing_feat_goals_unlocked,
-  pricing_feat_habit_insights,
   pricing_feat_habits_limit,
-  pricing_feat_jobs_unlocked,
   pricing_feat_l1_finance,
   pricing_feat_l1_habits,
   pricing_feat_l2_finance,
@@ -22824,8 +22832,9 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_feat_l4_war_room,
   pricing_feat_label,
   pricing_feat_lifetime_access,
-  pricing_feat_month_trial,
-  pricing_feat_priority_support,
+  pricing_feat_no_ai,
+  pricing_feat_planner_basic,
+  pricing_feat_planner_batch,
   pricing_feat_unlock_all,
   pricing_forever,
   pricing_free_btn,
@@ -24536,7 +24545,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Ds_x1FOD.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-DTCh1wIJ.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-DVmkyC_F.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-goOZ-mUZ.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BSdRgwJU.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D1GH9Mi0.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-BW8Rosoy.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-DCKmrnCR.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CMWKP6Kx.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-CsrUD78m.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-DlUgHCy_.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CyC2eTFc.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-Cgwu-dAo.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-IulQsC_A.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-gY22scCo.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-B0zBNxsz.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-C5vkfJha.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-CPodwfai.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-CI0PCYS_.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BLeGlfrC.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DY2vbql9.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-yrcYCNRS.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-GJUxtKTc.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-CWtZ5y7d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CeE_KrjK.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-238EhcxQ.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-DsX1Rbiu.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BefGRh1_.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BVpJ7kOs.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-awlHialw.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-hlbYz1KW.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-1wgaZhnH.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-CgvoFYU0.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-DxlCPNZu.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-WzMbJYeF.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-bbf8WAnK.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DL_SGPF3.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-g2p5-kTe.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-C3qrB-5o.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-OWGGCPUG.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-BOe6Jwr9.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CzmAmqCN.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-CoIImorf.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-CPXTMxzx.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-VwqcrO9J.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-D3cv-AWu.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dm86BcmR.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-TnIBlMPD.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-mmKXWyXV.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-8tuAoj9I.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DCp89kMX.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-C32UR2vO.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-CMVGFGzN.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-CDLwS7dO.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-KO2YT0FN.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Ds_x1FOD.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-DTCh1wIJ.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-DVmkyC_F.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-goOZ-mUZ.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BTKKxWUy.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D1GH9Mi0.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-BW8Rosoy.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-DCKmrnCR.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CMWKP6Kx.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CyC2eTFc.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-Dc_rW96h.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-IulQsC_A.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-C_0qU054.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BYuAFBxR.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-FNnSbdp8.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-C5vkfJha.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-BLjzDCQn.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-CI0PCYS_.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BhWnx3QE.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DY2vbql9.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-yrcYCNRS.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-h6P_pbXq.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-CWtZ5y7d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CeE_KrjK.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-238EhcxQ.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CINmz6SP.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BefGRh1_.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-B9Jqcsku.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-D3WrBVpv.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Clkwfs-e.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-1wgaZhnH.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-DNaZIEkZ.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-Bc9fU2Wd.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-BCG0mnhw.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CR39IUEh.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DL_SGPF3.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-g2p5-kTe.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-C4YglnOs.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-OwJ-OfUF.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-BOe6Jwr9.js"), "./Pages/More/Index.vue": () => import("./assets/Index-DxEsj0v7.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-DhlvYzXR.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-odpUIIqB.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-D6T1nKWy.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-D3cv-AWu.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dm86BcmR.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-B5Y85FsI.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-B4BZH0rE.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-CbTssqIk.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CuG_azPI.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DCp89kMX.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-C32UR2vO.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-C53AwOwo.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-CDLwS7dO.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-KO2YT0FN.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

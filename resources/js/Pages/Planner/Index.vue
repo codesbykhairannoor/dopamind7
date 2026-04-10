@@ -9,7 +9,7 @@ import EmptyState from '@/Components/EmptyState.vue';
 import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 
 // Components
-精import PlannerHeader from './PlannerHeader.vue';
+import PlannerHeader from './PlannerHeader.vue';
 import PlannerSidebar from './PlannerSidebar.vue';
 import PlannerTimeline from './PlannerTimeline.vue';
 import PlannerMobileTimeline from './PlannerMobileTimeline.vue';

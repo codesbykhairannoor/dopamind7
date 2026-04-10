@@ -6,7 +6,7 @@ import { Head, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
 
 // Components
-精import FinanceHeader from './FinanceHeader.vue';
+import FinanceHeader from './FinanceHeader.vue';
 import FinanceStats from './FinanceStats.vue';
 import BudgetSidebar from './BudgetSidebar.vue';
 import TransactionModal from './TransactionModal.vue';

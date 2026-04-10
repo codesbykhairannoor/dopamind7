@@ -128,7 +128,6 @@ const colorOptions = [
                             <textarea v-model="form.description" rows="4" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-[1.5rem] px-5 py-4 text-slate-700 dark:text-slate-300 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500/50 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-700 resize-none transition-colors duration-500 shadow-sm" :placeholder="$t('ph_event_desc', 'Briefly describe this event...')"></textarea>
                         </div>
                     </div>
- </div>
 
                     <div class="p-8 border-t border-slate-100/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex gap-4 transition-colors duration-500">
                         <button @click="emit('close')" type="button" class="flex-1 py-4 rounded-2xl font-black text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-95 shadow-sm">
