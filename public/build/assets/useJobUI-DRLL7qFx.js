@@ -1,1 +1,0 @@
-import{e as u,J as s,r}from"./app-B3GVtI91.js";function d(t){const e=r(null),n=o=>{e.value&&!e.value.contains(o.target)&&t()};return u(()=>{document.addEventListener("mousedown",n)}),s(()=>{document.removeEventListener("mousedown",n)}),e}export{d as u};

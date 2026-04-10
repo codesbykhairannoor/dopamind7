@@ -74,7 +74,7 @@
                                 <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_feat_planner_basic') }}</span>
                             </li>
                             <li class="flex items-center gap-3 opacity-30">
-                                <span class="text-[8px] font-black text-slate-400">✕</span>
+                                <span class="text-[8px] font-black text-slate-400">—</span>
                                 <span class="text-xs font-bold text-slate-400">Neural OS AI Coach</span>
                             </li>
                         </ul>
@@ -217,18 +217,18 @@
                                     ['Habit Tracker Limit', '5 Active', 'Unlimited', 'Unlimited'],
                                     ['Daily Planner View', 'Standard', 'Advanced', 'AI Energy-Based'],
                                     ['Financial Dashboard', 'Expense Only', 'Full Balance', 'Advanced Wealth'],
-                                    ['Planner Batch Mode', '✕', '✓', '✓'],
-                                    ['Savings & Budgeting', '✕', '✓', '✓'],
-                                    ['Investment Portfolio', '✕', '✓', '✓'],
-                                    ['Neural AI Assistant', '✕', '✕', 'Full Access'],
-                                    ['Life Audit Insights', '✕', '✕', 'AI Weekly'],
+                                    ['Planner Batch Mode', '—', '✓', '✓'],
+                                    ['Savings & Budgeting', '—', '✓', '✓'],
+                                    ['Investment Portfolio', '—', '✓', '✓'],
+                                    ['Neural AI Assistant', '—', '—', 'Full Access'],
+                                    ['Life Audit Insights', '—', '—', 'AI Weekly'],
                                     ['Custom Theme & Styles', 'Limited', 'Full', 'Full'],
                                 ];
                                 $modules = [
-                                    ['Journal Tracker', '✕', '✓', '✓'],
-                                    ['Goal Tracker', '✕', '✓', '✓'],
-                                    ['Job Application', '✕', '✓', '✓'],
-                                    ['Calendar Timeline', '✕', '✓', '✓'],
+                                    ['Journal Tracker', '—', '✓', '✓'],
+                                    ['Goal Tracker', '—', '✓', '✓'],
+                                    ['Job Application', '—', '✓', '✓'],
+                                    ['Calendar Timeline', '—', '✓', '✓'],
                                 ];
                             @endphp
                             
@@ -248,7 +248,7 @@
                             @foreach($modules as $m)
                             <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors">
                                 <td class="p-6 text-sm font-bold text-slate-700 dark:text-slate-200">{{ $m[0] }}</td>
-                                <td class="p-6 text-center text-slate-200 dark:text-slate-800 text-xs">✕</td>
+                                <td class="p-6 text-center text-slate-200 dark:text-slate-800 text-xs">—</td>
                                 <td class="p-6 text-center text-emerald-500 text-xs font-black">✓</td>
                                 <td class="p-6 text-center text-emerald-500 text-xs font-black">✓</td>
                             </tr>

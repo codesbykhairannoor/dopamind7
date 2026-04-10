@@ -226,16 +226,16 @@ onMounted(() => {
 
                 <div class="space-y-3">
                     <div v-for="f in [
-                        { name: 'Limit Habit Aktif', explorer: '5', architect: 'Unlimited', quantum: 'Unlimited' },
-                        { name: 'Planner Batch Modal', explorer: 'Terkunci', architect: 'Terbuka', quantum: 'Terbuka' },
-                        { name: 'Modul Savings & Trend', explorer: 'Terkunci', architect: 'Terbuka', quantum: 'Terbuka' },
-                        { name: 'Neural Coaching AI', explorer: 'Terkunci', architect: 'Terkunci', quantum: 'Terbuka' }
+                        { name: 'Kapasitas Habit Aktif', explorer: '5', architect: 'Unlimited', quantum: 'Unlimited' },
+                        { name: 'Planner Batch Mode', explorer: 'Standard', architect: 'Terbuka', quantum: 'Terbuka' },
+                        { name: 'Modul Savings & Trend', explorer: 'Standard', architect: 'Terbuka', quantum: 'Terbuka' },
+                        { name: 'Neural Coaching AI', explorer: '—', architect: '—', quantum: 'Terbuka' }
                     ]" :key="f.name" class="flex items-center justify-between p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 group hover:border-indigo-200 dark:hover:border-indigo-800 transition-all">
                         <span class="text-xs font-black text-slate-800 dark:text-slate-200 uppercase tracking-tighter">{{ f.name }}</span>
                         <div class="flex gap-4 sm:gap-12">
                             <div class="flex flex-col items-center">
                                 <span class="text-[8px] font-bold text-slate-400 uppercase">Free</span>
-                                <span class="text-[10px] font-black" :class="f.explorer === 'Terkunci' ? 'text-rose-500' : 'text-slate-600 dark:text-slate-400'">{{ f.explorer }}</span>
+                                <span class="text-[10px] font-black text-slate-600 dark:text-slate-400">{{ f.explorer }}</span>
                             </div>
                             <div class="flex flex-col items-center">
                                 <span class="text-[8px] font-bold text-indigo-400 uppercase">Arch</span>

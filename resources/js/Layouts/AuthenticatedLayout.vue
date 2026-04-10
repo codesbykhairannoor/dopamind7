@@ -222,25 +222,6 @@ const openPremiumPreview = (module = 'Coach') => {
                     <div v-if="route().current('goals.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <!-- NEURAL OS STATUS WIDGET (Fills Empty Space) -->
-                <div v-if="!isSidebarCollapsed" class="mt-6 mx-3 p-4 rounded-2xl bg-gradient-to-br from-slate-50 to-white dark:from-slate-800/50 dark:to-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-500 group/neural">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                            <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">Neural OS</span>
-                        </div>
-                        <OneForMindIcon name="sparkles" size="12" class="text-indigo-500 opacity-50 group-hover/neural:rotate-12 transition-transform" />
-                    </div>
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between text-[10px] font-bold text-slate-600 dark:text-slate-400">
-                            <span>System Load</span>
-                            <span class="font-mono opacity-60">Optimal</span>
-                        </div>
-                        <div class="h-1 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                            <div class="h-full w-2/3 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.4)]"></div>
-                        </div>
-                    </div>
-                </div>
             </nav>
             
             <div class="px-4 py-3 shrink-0">

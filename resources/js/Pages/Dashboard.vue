@@ -48,12 +48,17 @@ const formatRupiah = (number) => {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
 };
 
-// Hitung overall score hari ini (rata-rata dari habit dan planner)
+// Hitung overall score hari ini (rata-rata dari modul yang tersedia)
 const overallScore = computed(() => {
     if (!props.synergy) return 0;
+    
     let scores = [props.synergy.habits.percent, props.synergy.planner.percent];
-    if (props.synergy.goals.top_goal) scores.push(props.synergy.goals.top_goal.percent);
-    scores.push(props.synergy.journal.is_written ? 100 : 0);
+    
+    // Architect+ modules
+    if (!isExplorer.value) {
+        if (props.synergy.goals.top_goal) scores.push(props.synergy.goals.top_goal.percent);
+        scores.push(props.synergy.journal.is_written ? 100 : 0);
+    }
     
     return Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
 });
@@ -124,8 +129,18 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <!-- Neural Hub (Integrated Preview) -->
-                <div v-if="isExplorer" @click="openPremiumPreview('Coach')" class="mb-8 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-dashed border-slate-200 dark:border-slate-700 cursor-pointer active:scale-[0.98] transition-all">
+                <!-- Neural Hub (Architect+ Only) -->
+                <div v-if="isQuantum" class="mb-8 bg-violet-600 p-6 rounded-3xl text-white relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 mb-3">
+                            <Sparkles :size="14" class="animate-pulse" />
+                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-80">Neural Active</span>
+                        </div>
+                        <p class="text-lg font-bold leading-tight">{{ globalInsight?.summary || "Your synergy is optimized for deep focus today." }}</p>
+                    </div>
+                </div>
+                
+                <div v-else-if="isExplorer" @click="openPremiumPreview('Coach')" class="mb-8 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-dashed border-slate-200 dark:border-slate-700 cursor-pointer active:scale-[0.98] transition-all">
                     <div class="flex items-center justify-between mb-4 text-slate-400">
                         <div class="flex items-center gap-2">
                             <Brain :size="14" />
@@ -138,16 +153,6 @@ onMounted(() => {
                         <div class="h-1.5 w-5/6 bg-slate-200 dark:bg-slate-800 rounded-full"></div>
                     </div>
                     <p class="mt-4 text-[10px] font-semibold text-slate-400">Unlock AI Coaching projections</p>
-                </div>
-                
-                <div v-else-if="isQuantum" class="mb-8 bg-violet-600 p-6 rounded-3xl text-white relative overflow-hidden">
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-2 mb-3">
-                            <Sparkles :size="14" class="animate-pulse" />
-                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-80">Neural Active</span>
-                        </div>
-                        <p class="text-lg font-bold leading-tight">{{ globalInsight?.summary || "Your synergy is optimized for deep focus today." }}</p>
-                    </div>
                 </div>
             </header>
 
@@ -176,14 +181,19 @@ onMounted(() => {
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{{ synergy.habits.completed }}/{{ synergy.habits.total }} done</p>
                 </Link>
 
-                <!-- Journal -->
-                <Link :href="route('journal.index')" class="col-span-6 bg-slate-900 dark:bg-slate-800/50 p-6 rounded-3xl shadow-sm text-white">
+                <!-- Journal (Architect+ Only) -->
+                <Link v-if="!isExplorer" :href="route('journal.index')" class="col-span-6 bg-slate-900 dark:bg-slate-800/50 p-6 rounded-3xl shadow-sm text-white">
                     <div class="w-9 h-9 bg-white/10 text-white rounded-xl flex items-center justify-center mb-4">
                         <Brain :size="18" />
                     </div>
                     <h4 class="font-bold">Journal</h4>
                     <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{{ synergy.journal.is_written ? 'Written' : 'Log now' }}</p>
                 </Link>
+
+                <div v-else class="col-span-6 bg-indigo-50 dark:bg-indigo-900/10 p-6 rounded-3xl border border-indigo-100 dark:border-indigo-800/50">
+                    <p class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2">Explorer Rank</p>
+                    <p class="text-xs font-bold text-slate-500 line-clamp-2">Selesaikan habit harian untuk naik level.</p>
+                </div>
 
                 <!-- Finance -->
                 <div @click="isExplorer ? openPremiumPreview('Finance') : router.visit(route('finance.index'))" class="col-span-12 bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm cursor-pointer">
@@ -209,8 +219,8 @@ onMounted(() => {
                     </div>
                 </div>
 
-                <!-- Goals -->
-                <div @click="isExplorer ? openPremiumPreview('Goal') : router.visit(route('goals.index'))" class="col-span-12 bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm cursor-pointer">
+                <!-- Goals (Architect+ Only) -->
+                <div v-if="!isExplorer" @click="router.visit(route('goals.index'))" class="col-span-12 bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm cursor-pointer">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-3">
                             <Target :size="18" class="text-emerald-500" />
@@ -261,23 +271,29 @@ onMounted(() => {
                         </div>
                     </div>
 
-                    <!-- Hub Card -->
-                    <div @click="isExplorer ? openPremiumPreview('Coach') : null" class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm cursor-pointer group active:scale-[0.99] transition-all">
+                    <!-- Hub Card (Architect+ Only) -->
+                    <div v-if="!isExplorer" @click="router.visit(route('coach.index'))" class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm cursor-pointer group active:scale-[0.99] transition-all">
                         <div class="flex items-center justify-between mb-8">
                             <div class="flex items-center gap-3">
                                 <Brain :size="20" class="text-indigo-500" />
                                 <h3 class="text-lg font-bold text-slate-900 dark:text-white">Neural coach</h3>
                             </div>
-                            <div v-if="isExplorer" class="px-2 py-1 bg-indigo-50 text-[10px] font-bold text-indigo-600 rounded">PRO</div>
                         </div>
-                        <div v-if="isExplorer" class="space-y-3 opacity-30">
-                            <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full"></div>
-                            <div class="h-2 w-4/5 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
-                        </div>
-                        <p v-else class="text-sm text-slate-500 leading-relaxed">{{ globalInsight?.summary || "Neural engine active and monitoring your workflows." }}</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">{{ globalInsight?.summary || "Neural engine active and monitoring your workflows." }}</p>
                         <div class="mt-8 flex items-center gap-2 text-indigo-600 text-xs font-bold">
-                            {{ isExplorer ? 'Unlock coaching insights' : 'Open Neural Hub' }}
+                            Open Neural Hub
                             <ArrowRight :size="14" />
+                        </div>
+                    </div>
+
+                    <div v-else class="bg-indigo-600 p-10 rounded-[2.5rem] text-white shadow-xl shadow-indigo-100 dark:shadow-none">
+                        <h3 class="text-lg font-black mb-4">Explorer Rank</h3>
+                        <p class="text-xs font-bold opacity-80 leading-relaxed">Fokus pada pembentukan habit hari ini untuk membuka potensi penuh sistem di masa depan.</p>
+                        <div class="mt-8 flex items-center gap-2">
+                            <div class="h-1 w-2/3 bg-white/20 rounded-full">
+                                <div class="h-full w-1/2 bg-white rounded-full"></div>
+                            </div>
+                            <span class="text-[9px] font-black uppercase">Level 1</span>
                         </div>
                     </div>
                 </div>
@@ -307,8 +323,8 @@ onMounted(() => {
                         <OneForMindIcon name="finance" size="300" class="absolute -right-20 -bottom-20 opacity-5" />
                     </div>
 
-                    <!-- Goals -->
-                    <div @click="isExplorer ? openPremiumPreview('Goal') : router.visit(route('goals.index'))" class="bg-white dark:bg-slate-900 p-10 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-sm group cursor-pointer hover:shadow-md transition-all">
+                    <!-- Goals (Architect+ Only) -->
+                    <div v-if="!isExplorer" @click="router.visit(route('goals.index'))" class="bg-white dark:bg-slate-900 p-10 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-sm group cursor-pointer hover:shadow-md transition-all">
                         <div class="flex items-center justify-between mb-10">
                             <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 rounded-2xl flex items-center justify-center">
                                 <Target :size="24" />
@@ -320,6 +336,16 @@ onMounted(() => {
                         <div v-if="synergy.goals.top_goal" class="w-full bg-slate-50 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
                             <div class="h-full bg-emerald-500 transition-all duration-1000" :style="`width: ${synergy.goals.top_goal.percent}%`"></div>
                         </div>
+                    </div>
+
+                    <div v-else class="bg-white dark:bg-slate-900 p-10 rounded-[3rem] border border-slate-100 dark:border-slate-800">
+                         <div class="h-full flex flex-col justify-center">
+                             <div class="w-10 h-10 bg-slate-50 dark:bg-slate-800 rounded-xl flex items-center justify-center mb-6">
+                                <OneForMindIcon name="dashboard" size="18" class="text-slate-400" />
+                             </div>
+                             <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Core Access</h4>
+                             <p class="text-xs text-slate-400 font-medium">Sistem utama Anda sedang dalam performa terbaik.</p>
+                         </div>
                     </div>
 
                     <!-- Habits -->
