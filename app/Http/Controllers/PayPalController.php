@@ -40,14 +40,14 @@ class PayPalController extends Controller
             $description = "OneForMind Legendary Founder (Lifetime Access)";
         }
 
-        $provider = new PayPalClient;
         $config = config('paypal');
         $config['sandbox']['client_id'] = trim($config['sandbox']['client_id'] ?? '');
         $config['sandbox']['client_secret'] = trim($config['sandbox']['client_secret'] ?? '');
         $config['live']['client_id'] = trim($config['live']['client_id'] ?? '');
         $config['live']['client_secret'] = trim($config['live']['client_secret'] ?? '');
 
-        $provider->setApiCredentials($config);
+        $provider = new PayPalClient($config);
+        
         try {
             $paypalToken = $provider->getAccessToken();
             Log::info('PayPal Token acquired successfully.');

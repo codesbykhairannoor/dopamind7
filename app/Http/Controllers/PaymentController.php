@@ -89,17 +89,28 @@ class PaymentController extends Controller
         }
 
         $timestamp = round(microtime(true) * 1000);
-        $signature = hash('sha256', $merchantCode . $timestamp . $apiKey);
+        // Signature Duitku POP: md5(merchantCode + merchantOrderId + paymentAmount + apiKey)
+        $signature = md5($merchantCode . $merchantOrderId . (int)$paymentAmount . $apiKey);
+
+        $itemDetails = [
+            [
+                'name' => $productDetails,
+                'price' => (int)$paymentAmount,
+                'quantity' => 1
+            ]
+        ];
 
         $params = [
             'merchantCode' => $merchantCode,
             'paymentAmount' => (int)$paymentAmount,
-            'merchantOrderId' => $merchantOrderId,
+            'merchantOrderId' => (string)$merchantOrderId,
             'productDetails' => $productDetails,
             'email' => $email,
             'phoneNumber' => $phoneNumber,
+            'itemDetails' => $itemDetails,
             'callbackUrl' => route('payment.callback'),
             'returnUrl' => route('payment.finish'),
+            'signature' => $signature,
             'expiryPeriod' => 60
         ];
 
@@ -108,18 +119,15 @@ class PaymentController extends Controller
             : 'https://api-sandbox.duitku.com/webapi/api/merchant/createinvoice';
 
         try {
-            Log::info('Duitku Request:', [
+            Log::info('Duitku-POP Request:', [
                 'url' => $url,
-                'merchantCode' => $merchantCode,
                 'merchantOrderId' => $merchantOrderId,
-                'paymentAmount' => (int)$paymentAmount
+                'paymentAmount' => (int)$paymentAmount,
+                'signature' => $signature
             ]);
 
             $response = Http::withHeaders([
-                'Content-Type' => 'application/json',
-                'x-duitku-signature' => $signature,
-                'x-duitku-timestamp' => $timestamp,
-                'x-duitku-merchantcode' => $merchantCode
+                'Content-Type' => 'application/json'
             ])->post($url, $params);
             
             $status = $response->status();

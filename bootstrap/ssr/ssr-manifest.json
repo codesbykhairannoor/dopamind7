@@ -7,8 +7,8 @@
   "lang/zh.json": [],
   "node_modules/laravel-vite-plugin/inertia-helpers/index.js": [],
   "resources/js/Components/ApplicationLogo.vue": [
-    "http://localhost:8001/build/assets/Index-IulQsC_A.js",
-    "http://localhost:8001/build/assets/Index-DlAXHyjs.css"
+    "http://localhost:8001/build/assets/Index-vQNw9S44.js",
+    "http://localhost:8001/build/assets/Index-BFpQwGBX.css"
   ],
   "resources/js/Components/DangerButton.vue": [
     "http://localhost:8001/build/assets/DeleteUserForm-CuG_azPI.js"
@@ -218,12 +218,12 @@
     "http://localhost:8001/build/assets/Index-Btwx6YfS.js"
   ],
   "resources/js/Pages/Checkout/Index.vue": [
-    "http://localhost:8001/build/assets/Index-IulQsC_A.js",
-    "http://localhost:8001/build/assets/Index-DlAXHyjs.css"
+    "http://localhost:8001/build/assets/Index-vQNw9S44.js",
+    "http://localhost:8001/build/assets/Index-BFpQwGBX.css"
   ],
-  "resources/js/Pages/Checkout/Index.vue?vue&type=style&index=0&scoped=01dce0e1&lang.css": [
-    "http://localhost:8001/build/assets/Index-IulQsC_A.js",
-    "http://localhost:8001/build/assets/Index-DlAXHyjs.css"
+  "resources/js/Pages/Checkout/Index.vue?vue&type=style&index=0&scoped=b129b7fd&lang.css": [
+    "http://localhost:8001/build/assets/Index-vQNw9S44.js",
+    "http://localhost:8001/build/assets/Index-BFpQwGBX.css"
   ],
   "resources/js/Pages/Dashboard.vue": [
     "http://localhost:8001/build/assets/Dashboard-CMmU-7t5.js",

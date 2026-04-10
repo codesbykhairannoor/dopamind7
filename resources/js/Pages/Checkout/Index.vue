@@ -55,7 +55,7 @@ const initiatePayment = async (method) => {
         Swal.fire({
             icon: 'error',
             title: 'Gateway Error',
-            text: e.response?.data?.error || 'Gagal menghubungi server pembayaran. Silakan coba lagi.',
+            text: e.response?.data?.error || (e.response?.data ? 'Error: ' + JSON.stringify(e.response.data) : 'Gagal menghubungi server pembayaran. Silakan coba lagi.'),
             confirmButtonColor: '#4f46e5'
         });
     }
@@ -69,12 +69,7 @@ const initiatePayment = async (method) => {
         
         <!-- Top Navigation -->
         <nav class="w-full px-6 py-10 flex items-center justify-between relative z-50">
-            <Link href="/" class="group flex items-center gap-3">
-                <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-xl shadow-indigo-200">
-                    <img src="/favicon.svg" alt="Logo" class="w-6 h-6 brightness-0 invert" />
-                </div>
-                <span class="text-xl font-black text-slate-900 dark:text-white tracking-tighter uppercase">OneForMind</span>
-            </Link>
+            <div><!-- Brand removed as requested --></div>
 
             <Link :href="route('billing')" class="text-xs font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase tracking-[0.2em] flex items-center gap-2 group">
                 <OneForMindIcon name="chevron-left" size="14" class="transition-transform group-hover:-translate-x-1" stroke-width="4" />
