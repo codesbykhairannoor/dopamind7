@@ -114,6 +114,8 @@ class PaymentController extends Controller
             'productDetails' => $productDetails,
             'email' => $email,
             'phoneNumber' => $phoneNumber,
+            'customerVaName' => substr($user->name, 0, 20), // Duitku often requires this
+            'merchantUserInfo' => (string)$user->id,
             'itemDetails' => $itemDetails,
             'callbackUrl' => route('payment.callback'),
             'returnUrl' => route('payment.finish'),

@@ -27,6 +27,19 @@ const periodLabel = computed(() => {
     return 'per Month';
 });
 
+const displayPrice = computed(() => {
+    if (!periodLabel.value.toLowerCase().includes('year')) return props.price;
+    
+    // Extract numbers from "Rp 79.000"
+    const numericValue = parseInt(props.price.replace(/[^\d]/g, ''));
+    if (isNaN(numericValue)) return props.price;
+    
+    const total = numericValue * 12;
+    
+    // Format back to "Rp XXX.XXX"
+    return 'Rp ' + total.toLocaleString('id-ID');
+});
+
 const initiatePayment = async (method) => {
     const routeName = method === 'paypal' ? 'paypal.checkout' : 'payment.checkout';
     
@@ -137,7 +150,7 @@ const initiatePayment = async (method) => {
                                 <p class="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{{ periodLabel }}</p>
                             </div>
                             <div class="text-right">
-                                <span class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">{{ price }}</span>
+                                <span class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">{{ displayPrice }}</span>
                             </div>
                         </div>
 
