@@ -132,7 +132,7 @@ class PaymentController extends Controller
         $params = [
             'merchantCode' => $merchantCode,
             'paymentAmount' => (int)$paymentAmount,
-            'paymentMethod' => '', // Standard for V2 redirect
+            'paymentMethod' => (string)$request->input('paymentMethod', 'SP'), // QRIS as default
             'merchantOrderId' => (string)$merchantOrderId,
             'productDetails' => (string)$productDetails,
             'additionalParam' => '',

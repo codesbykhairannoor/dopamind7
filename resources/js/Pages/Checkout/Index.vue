@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { Head, Link } from '@inertiajs/vue3';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
@@ -40,6 +40,8 @@ const displayPrice = computed(() => {
     return 'Rp ' + total.toLocaleString('id-ID');
 });
 
+const selectedDuitkuMethod = ref('SP'); // Default to QRIS
+
 const initiatePayment = async (method) => {
     const routeName = method === 'paypal' ? 'paypal.checkout' : 'payment.checkout';
     
@@ -55,7 +57,8 @@ const initiatePayment = async (method) => {
     try {
         const response = await axios.post(route(routeName), {
             plan: props.plan.toLowerCase(),
-            billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
+            billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly',
+            paymentMethod: method === 'duitku' ? selectedDuitkuMethod.value : ''
         });
 
         if (response.data.paymentUrl) {
@@ -158,18 +161,48 @@ const initiatePayment = async (method) => {
                         
                         <div class="space-y-5 mb-10">
                             <!-- Duitku -->
-                            <button @click="initiatePayment('duitku')" class="w-full group relative overflow-hidden p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-white transition-all text-left shadow-sm">
-                                <div class="flex items-center justify-between relative z-10">
-                                    <div class="flex items-center gap-5">
-                                        <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-3xl shadow-sm transition-transform group-hover:scale-110">🇮🇩</div>
-                                        <div>
-                                            <h4 class="font-black text-slate-800 dark:text-white">Duitku Local (IDR)</h4>
-                                            <p class="text-[10px] font-bold text-slate-400">QRIS, Virtual Account, & Bank Transfer</p>
-                                        </div>
-                                    </div>
-                                    <OneForMindIcon name="chevron-right" size="18" class="text-slate-300 group-hover:text-indigo-600 transition-all group-hover:translate-x-1" stroke-width="4" />
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-2 gap-3 mb-4">
+                                    <button 
+                                        type="button"
+                                        @click="selectedDuitkuMethod = 'SP'"
+                                        :class="[
+                                            'p-4 rounded-2xl border transition-all text-center group relative overflow-hidden',
+                                            selectedDuitkuMethod === 'SP' 
+                                                ? 'bg-indigo-600 border-indigo-600' 
+                                                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+                                        ]"
+                                    >
+                                        <div :class="['text-xs font-black uppercase tracking-widest relative z-10', selectedDuitkuMethod === 'SP' ? 'text-white' : 'text-slate-500']">QRIS / E-Wallet</div>
+                                        <div v-if="selectedDuitkuMethod === 'SP'" class="absolute inset-0 bg-white/10 animate-pulse"></div>
+                                    </button>
+                                    <button 
+                                        type="button"
+                                        @click="selectedDuitkuMethod = 'BC'"
+                                        :class="[
+                                            'p-4 rounded-2xl border transition-all text-center group relative overflow-hidden',
+                                            selectedDuitkuMethod === 'BC' 
+                                                ? 'bg-indigo-600 border-indigo-600' 
+                                                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+                                        ]"
+                                    >
+                                        <div :class="['text-xs font-black uppercase tracking-widest relative z-10', selectedDuitkuMethod === 'BC' ? 'text-white' : 'text-slate-500']">Virtual Account</div>
+                                    </button>
                                 </div>
-                            </button>
+
+                                <button @click="initiatePayment('duitku')" class="w-full group relative overflow-hidden p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-white transition-all text-left shadow-sm">
+                                    <div class="flex items-center justify-between relative z-10">
+                                        <div class="flex items-center gap-5">
+                                            <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-3xl shadow-sm transition-transform group-hover:scale-110">🇮🇩</div>
+                                            <div>
+                                                <h4 class="font-black text-slate-800 dark:text-white">Pay with Duitku</h4>
+                                                <p class="text-[10px] font-bold text-slate-400">Secure Local Payment Gateway</p>
+                                            </div>
+                                        </div>
+                                        <OneForMindIcon name="chevron-right" size="18" class="text-slate-300 group-hover:text-indigo-600 transition-all group-hover:translate-x-1" stroke-width="4" />
+                                    </div>
+                                </button>
+                            </div>
 
                             <!-- PayPal -->
                             <button @click="initiatePayment('paypal')" class="w-full group relative overflow-hidden p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-white transition-all text-left shadow-sm">
