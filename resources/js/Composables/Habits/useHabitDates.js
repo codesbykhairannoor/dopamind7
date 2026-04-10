@@ -26,7 +26,7 @@ export function useHabitDates(props) {
             days.push({
                 dateString: date.format('YYYY-MM-DD'),
                 dayNumber: i,
-                dayName: date.format('ddd'),
+                dayName: date.format('ddd').charAt(0).toUpperCase() + date.format('ddd').slice(1).toLowerCase(),
                 isToday: date.isSame(dayjs(), 'day'),
                 isFuture: date.isAfter(dayjs(), 'day')
             });

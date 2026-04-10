@@ -125,7 +125,7 @@ onMounted(() => {
                                 : 'bg-white dark:bg-slate-800 text-slate-400 dark:text-slate-500 border border-slate-100 dark:border-slate-700'
                         ]"
                     >
-                        <span class="text-[10px] font-bold uppercase tracking-tighter opacity-80">{{ day.dayName }}</span>
+                        <span class="text-[10px] font-bold tracking-tighter opacity-80">{{ day.dayName }}</span>
                         <span class="text-sm font-black">{{ day.dayNumber }}</span>
                     </button>
                 </div>

@@ -88,50 +88,52 @@ const props = defineProps({
                     <div v-for="(task, index) in form.tasks" :key="index" 
                         class="bg-white dark:bg-slate-900 md:bg-transparent p-5 md:p-0 rounded-[2rem] md:rounded-none border border-slate-100 dark:border-slate-800 md:border-none shadow-sm md:shadow-none animate-in fade-in slide-in-from-bottom-4 duration-500 group transition-colors">
                         
-                        <div class="grid grid-cols-12 gap-3 md:gap-4 items-center">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 items-center md:bg-white md:dark:bg-slate-900 md:p-2.5 md:rounded-2xl md:border md:border-slate-200 md:dark:border-slate-800 md:shadow-sm">
                             
                             <div class="col-span-12 md:col-span-5">
                                 <label class="md:hidden text-[9px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 block">{{ $t('col_activity') }}</label>
                                 <TextInput 
                                     v-model="task.title" 
                                     :placeholder="$t('placeholder_activity')" 
-                                    class="w-full text-sm font-bold py-3.5 px-4 !rounded-2xl border-2 border-slate-200 dark:border-slate-700 focus:border-indigo-500 focus:ring-0 transition-all bg-white dark:bg-slate-800 dark:text-white" 
+                                    class="w-full text-sm font-bold py-3 md:py-2.5 px-4 !rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:bg-white dark:focus:bg-slate-900 focus:border-indigo-500 focus:ring-0 transition-all dark:text-white" 
                                     :class="{'!border-rose-300 !bg-rose-50 dark:!bg-rose-950/20': form.errors[`tasks.${index}.title`]}"
                                 />
                             </div>
 
-                            <div class="col-span-6 md:col-span-2">
-                                <label class="md:hidden text-[9px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 block">{{ $t('col_start') }}</label>
-                                <input 
-                                    type="time" 
-                                    v-model="task.start_time" 
-                                    class="w-full border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-2xl text-sm py-3.5 px-1 text-center font-bold text-slate-700 dark:text-slate-200 focus:border-indigo-500 focus:ring-0 cursor-pointer transition-all shadow-sm" 
-                                    :class="{'!border-rose-500 !bg-rose-50 dark:!bg-rose-950/20 !text-rose-700 dark:!text-rose-400': form.errors[`tasks.${index}.start_time`]}"
-                                />
-                            </div>
+                            <div class="col-span-12 md:col-span-4 grid grid-cols-2 gap-3 md:contents">
+                                <div class="flex flex-col">
+                                    <label class="md:hidden text-[9px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 block">{{ $t('col_start') }}</label>
+                                    <input 
+                                        type="time" 
+                                        v-model="task.start_time" 
+                                        class="w-full border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 rounded-xl text-sm py-3 md:py-2.5 px-1 text-center font-bold text-slate-700 dark:text-slate-200 focus:border-indigo-500 focus:ring-0 cursor-pointer transition-all shadow-sm" 
+                                        :class="{'!border-rose-500 !bg-rose-50 dark:!bg-rose-950/20 !text-rose-700 dark:!text-rose-400': form.errors[`tasks.${index}.start_time`]}"
+                                    />
+                                </div>
 
-                            <div class="col-span-6 md:col-span-2">
-                                <label class="md:hidden text-[9px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 block">{{ $t('col_end') }}</label>
-                                <input 
-                                    type="time" 
-                                    v-model="task.end_time" 
-                                    class="w-full border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-2xl text-sm py-3.5 px-1 text-center font-bold text-slate-700 dark:text-slate-200 focus:border-indigo-500 focus:ring-0 cursor-pointer transition-all shadow-sm" 
-                                    :class="{'!border-rose-500 !bg-rose-50 dark:!bg-rose-950/20 !text-rose-700 dark:!text-rose-400': form.errors[`tasks.${index}.end_time`]}"
-                                />
+                                <div class="flex flex-col">
+                                    <label class="md:hidden text-[9px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 block">{{ $t('col_end') }}</label>
+                                    <input 
+                                        type="time" 
+                                        v-model="task.end_time" 
+                                        class="w-full border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 rounded-xl text-sm py-3 md:py-2.5 px-1 text-center font-bold text-slate-700 dark:text-slate-200 focus:border-indigo-500 focus:ring-0 cursor-pointer transition-all shadow-sm" 
+                                        :class="{'!border-rose-500 !bg-rose-50 dark:!bg-rose-950/20 !text-rose-700 dark:!text-rose-400': form.errors[`tasks.${index}.end_time`]}"
+                                    />
+                                </div>
                             </div>
 
                             <div class="col-span-12 md:col-span-2">
                                 <label class="md:hidden text-[9px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 block">{{ $t('col_priority') }}</label>
                                 <div class="relative">
-                                    <select v-model="task.type" class="w-full border-2 border-slate-200 dark:border-slate-700 rounded-2xl text-[10px] py-3.5 pl-3 pr-8 font-bold text-slate-700 dark:text-slate-200 focus:border-indigo-500 focus:ring-0 bg-white dark:bg-slate-800 appearance-none cursor-pointer transition-all"
+                                    <select v-model="task.type" class="w-full border-2 border-slate-200 dark:border-slate-800 rounded-xl text-[10px] py-3 md:py-2.5 pl-3 pr-8 font-bold text-slate-700 dark:text-slate-200 focus:border-indigo-500 focus:ring-0 bg-slate-50 dark:bg-slate-950 appearance-none cursor-pointer transition-all"
                                         :class="{
-                                            '!text-rose-600 !bg-rose-50 dark:!bg-rose-950/30': task.type == 1,
-                                            '!text-indigo-600 !bg-indigo-50 dark:!bg-indigo-500/10': task.type == 2,
-                                            '!text-emerald-600 !bg-emerald-50 dark:!bg-emerald-500/10': task.type == 3
+                                            '!text-rose-600 dark:!text-rose-400 !bg-rose-50 dark:!bg-rose-500/10': task.type == 1,
+                                            '!text-indigo-600 dark:!text-indigo-400 !bg-indigo-50 dark:!bg-indigo-500/10': task.type == 2,
+                                            '!text-emerald-600 dark:!text-emerald-400 !bg-emerald-50 dark:!bg-emerald-500/10': task.type == 3
                                         }">
-                                        <option :value="1">{{ $t('priority_urgent') }}</option>
-                                        <option :value="2">{{ $t('priority_work') }}</option>
-                                        <option :value="3">{{ $t('priority_normal') }}</option>
+                                        <option :value="1" class="dark:bg-slate-900">{{ $t('priority_urgent') }}</option>
+                                        <option :value="2" class="dark:bg-slate-900">{{ $t('priority_work') }}</option>
+                                        <option :value="3" class="dark:bg-slate-900">{{ $t('priority_normal') }}</option>
                                     </select>
                                     <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
                                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path d="M19 9l-7 7-7-7"/></svg>

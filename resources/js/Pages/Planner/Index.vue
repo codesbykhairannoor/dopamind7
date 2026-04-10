@@ -6,9 +6,10 @@ import { usePlanner } from '@/Composables/Planner/usePlanner';
 import { usePlannerBatch } from '@/Composables/Planner/usePlannerBatch';
 import { usePlannerCalendar } from '@/Composables/Planner/usePlannerCalendar'; 
 import EmptyState from '@/Components/EmptyState.vue';
+import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 
 // Components
-import PlannerHeader from './PlannerHeader.vue';
+精import PlannerHeader from './PlannerHeader.vue';
 import PlannerSidebar from './PlannerSidebar.vue';
 import PlannerTimeline from './PlannerTimeline.vue';
 import PlannerMobileTimeline from './PlannerMobileTimeline.vue';
@@ -31,30 +32,35 @@ defineOptions({ layout: AuthenticatedLayout });
 const { currentDate, formattedDate, changeDate, changeDay } = usePlannerCalendar(props.currentDate);
 
 // Init Gating
-const gating = useGating();
+const { isExplorer } = useGating();
 
 // Logic Single (Kirim props ke usePlanner)
 const {
-    localTasks, // 🔥 FIX 1: Keluarkan localTasks dari sini
+    localTasks,
     scheduledTasks, timeSlots, scheduledStats,
-    form, isModalOpen, isEditing, conflictError, // pastikan conflictError juga diekstrak
+    form, isModalOpen, isEditing, conflictError,
     openModal, submitTask, deleteTask, resetBoard, toggleComplete,
     onDragStart, onDrop, getTypeColor, localNotes, localMeals, localWater, localTaskBox
 } = usePlanner(props);
 
-// Logic Batch (Kirim ref currentDate dan localTasks agar Optimistic UI jalan!)
+// Logic Batch
 const {
     isBatchModalOpen, batchForm, openBatchModal,
     addBatchRow, removeBatchRow, submitBatch
-} = usePlannerBatch(currentDate, localTasks); // 🔥 FIX 2: Masukkan localTasks sebagai parameter kedua!
+} = usePlannerBatch(currentDate, localTasks);
+
+const isPreviewOpen = ref(false);
+const openPremiumPreview = () => { isPreviewOpen.value = true; };
 
 const switchToBatch = () => { 
+    if (isExplorer.value) {
+        return openPremiumPreview();
+    }
     isModalOpen.value = false; 
     openBatchModal(); 
 };
 const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
 
-// Fungsi Reset
 const handleFullReset = () => {
     resetBoard(); 
     window.dispatchEvent(new Event('reset-local-storage'));
@@ -82,12 +88,11 @@ onMounted(() => {
             :openModal="() => openModal(null, null, 'full')"
             :resetBoard="handleFullReset"
             :stats="scheduledStats"
-            :isExplorer="gating.isExplorer.value"
+            :isExplorer="isExplorer"
         />
 
         <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-500">
             
-            <!-- 🖥️ DESKTOP VIEW -->
             <div v-if="!isMobile" class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
                 
                 <div class="lg:col-span-3 order-1 lg:order-2 w-full">
@@ -112,14 +117,10 @@ onMounted(() => {
                         v-model:localTaskBox="localTaskBox"
                     />
                 </div>
-
             </div>
 
-            <!-- 📱 MOBILE VIEW: WIDE TIMELINE FOCUS -->
             <div v-else class="space-y-12 pb-40 px-2">
                  <NeuralBridge id="mobile-planner-neural" module="Planner" />
-                 
-                 <!-- Wide Timeline for Mobile (As requested for "luas" view) -->
                  <div id="mobile-wide-timeline" class="w-full overflow-hidden">
                     <div class="flex items-center justify-between px-2 mb-4">
                         <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Flow Timeline</h3>
@@ -135,7 +136,6 @@ onMounted(() => {
                     />
                  </div>
 
-                 <!-- Daily Overview Sidebar at Bottom -->
                  <div id="mobile-daily-overview" class="space-y-6 pt-8 border-t border-slate-100 dark:border-slate-800">
                     <div class="px-2">
                         <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Daily Overview</h3>
@@ -149,7 +149,6 @@ onMounted(() => {
                     />
                  </div>
             </div>
-
         </div>
 
         <PlannerModal
@@ -167,6 +166,12 @@ onMounted(() => {
             :addRow="addBatchRow"
             :removeRow="removeBatchRow"
             :switchToSingle="switchToSingle"
+        />
+
+        <PremiumPreviewModal 
+            :isOpen="isPreviewOpen"
+            module="Planner"
+            @close="isPreviewOpen = false"
         />
     </div>
 </template>

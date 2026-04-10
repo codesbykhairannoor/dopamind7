@@ -120,36 +120,38 @@ onUnmounted(() => {
                                     :class="{'!border-rose-300 dark:!border-rose-500/50 !bg-rose-50 dark:!bg-rose-500/10 placeholder-rose-300 dark:placeholder-rose-500/50': form.errors?.[`habits.${index}.name`]}" />
                             </div>
 
-                            <div class="col-span-1 md:col-span-2 relative icon-dropdown-container">
-                                <label class="md:hidden text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">{{ $t('habit_icon', 'Ikon') }}</label>
-                                
-                                <button type="button" @click="openIconDropdown = openIconDropdown === index ? null : index" 
-                                    class="w-full h-12 md:h-11 flex items-center justify-center gap-2 border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:bg-white dark:hover:bg-slate-900 rounded-xl transition-all focus:border-indigo-500"
-                                    :class="openIconDropdown === index ? 'border-indigo-500 ring-2 ring-indigo-100 dark:ring-indigo-500/20 bg-white dark:bg-slate-900' : ''">
-                                    <span class="text-xl">{{ trx.icon }}</span>
-                                    <svg class="w-3 h-3 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M19 9l-7 7-7-7"/></svg>
-                                </button>
+                            <div class="grid grid-cols-2 gap-4 md:contents">
+                                <div class="relative icon-dropdown-container">
+                                    <label class="md:hidden text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">{{ $t('habit_icon', 'Ikon') }}</label>
+                                    
+                                    <button type="button" @click="openIconDropdown = openIconDropdown === index ? null : index" 
+                                        class="w-full h-12 md:h-11 flex items-center justify-center gap-2 border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:bg-white dark:hover:bg-slate-900 rounded-xl transition-all focus:border-indigo-500"
+                                        :class="openIconDropdown === index ? 'border-indigo-500 ring-2 ring-indigo-100 dark:ring-indigo-500/20 bg-white dark:bg-slate-900' : ''">
+                                        <span class="text-xl">{{ trx.icon }}</span>
+                                        <svg class="w-3 h-3 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M19 9l-7 7-7-7"/></svg>
+                                    </button>
 
-                                <transition enter-active-class="transition ease-out duration-100" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
-                                    <div v-if="openIconDropdown === index" class="absolute z-[100] top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl dark:shadow-none p-3 grid grid-cols-4 gap-2 origin-top max-h-48 overflow-y-auto custom-scrollbar">
-                                        <button type="button" v-for="icon in iconList" :key="icon" 
-                                            @click="trx.icon = icon; openIconDropdown = null"
-                                            class="w-8 h-8 flex items-center justify-center text-lg rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-500/20 hover:scale-110 transition-all"
-                                            :class="trx.icon === icon ? 'bg-indigo-100 dark:bg-indigo-500/30 shadow-sm' : 'opacity-70'">
-                                            {{ icon }}
+                                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
+                                        <div v-if="openIconDropdown === index" class="absolute z-[100] top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl dark:shadow-none p-3 grid grid-cols-4 gap-2 origin-top max-h-48 overflow-y-auto custom-scrollbar">
+                                            <button type="button" v-for="icon in iconList" :key="icon" 
+                                                @click="trx.icon = icon; openIconDropdown = null"
+                                                class="w-8 h-8 flex items-center justify-center text-lg rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-500/20 hover:scale-110 transition-all"
+                                                :class="trx.icon === icon ? 'bg-indigo-100 dark:bg-indigo-500/30 shadow-sm' : 'opacity-70'">
+                                                {{ icon }}
+                                            </button>
+                                        </div>
+                                    </transition>
+                                </div>
+
+                                <div class="flex flex-col">
+                                    <label class="md:hidden text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-tight mb-2 block w-full text-left">{{ $t('habit_color', 'Warna') }}</label>
+                                    <div class="flex flex-wrap items-center gap-1.5 p-1 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-100 dark:border-slate-800 h-12 md:h-11 justify-center md:bg-transparent md:border-none">
+                                        <button type="button" v-for="c in colorPalette.slice(0, 6)" :key="c" @click="trx.color = c" 
+                                            class="w-5 h-5 rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-sm" 
+                                            :class="trx.color === c ? 'ring-2 ring-offset-2 ring-indigo-500 scale-110' : 'opacity-80'"
+                                            :style="{ backgroundColor: c }">
                                         </button>
                                     </div>
-                                </transition>
-                            </div>
-
-                            <div class="col-span-1 md:col-span-3 flex justify-center">
-                                <label class="md:hidden text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-tight mb-2 block w-full text-left">{{ $t('habit_color', 'Warna') }}</label>
-                                <div class="flex flex-wrap justify-center gap-1.5 md:gap-1.5 p-1 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-100 dark:border-slate-800 w-full md:w-auto">
-                                    <button type="button" v-for="c in colorPalette" :key="c" @click="trx.color = c" 
-                                        class="w-6 h-6 md:w-5 md:h-5 rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-sm" 
-                                        :class="trx.color === c ? 'ring-2 ring-offset-2 ring-indigo-500 scale-110' : 'opacity-80'"
-                                        :style="{ backgroundColor: c }">
-                                    </button>
                                 </div>
                             </div>
 

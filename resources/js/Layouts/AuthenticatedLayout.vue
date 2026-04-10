@@ -1,13 +1,14 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
+精import { ref, computed, watch, onMounted } from 'vue';
 import { Link, usePage, router } from '@inertiajs/vue3'; 
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import ThemeToggle from '@/Components/ThemeToggle.vue';
 import { useAppearance } from '@/Composables/useAppearance';
+import { useGating } from '@/Composables/useGating';
 
 // --- DATA USER & HALAMAN ---
 const page = usePage();
-const user = computed(() => page.props.auth.user);
+const { isExplorer, isArchitect, isAiEnabled, canUse, user } = useGating();
 
 // --- STATE NAVIGASI MOBILE & MODAL ---
 const showLogoutModal = ref(false);
@@ -39,17 +40,6 @@ const toggleSidebar = () => {
 
 const showModule = (moduleName) => {
     return user.value?.settings?.modules?.[moduleName] !== false;
-};
-
-// --- PLAN CHECKS ---
-const isExplorer = computed(() => user.value?.plan_type === 'explorer');
-const isArchitect = computed(() => ['architect', 'quantum', 'legendary'].includes(user.value?.plan_type));
-const isQuantum = computed(() => ['quantum', 'legendary'].includes(user.value?.plan_type));
-
-const canAccess = (feature) => {
-    const freeFeatures = ['dashboard', 'habit', 'planner', 'finance'];
-    if (freeFeatures.includes(feature)) return true;
-    return isArchitect.value;
 };
 
 const confirmLogout = () => { 
@@ -164,70 +154,70 @@ const openPremiumPreview = (module = 'Coach') => {
                     <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ $t('nav_platinum_suite', 'Platinum suite') }}</span>
                 </div>
 
-                <Link v-if="showModule('journal')" :href="canAccess('journal') ? route('journal.index') : route('billing')" prefetch
+                <Link v-if="showModule('journal')" :href="canUse('journal') ? route('journal.index') : route('billing')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('journal.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
-                        !canAccess('journal') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
+                        !canUse('journal') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_journal') : ''"
                 >
                     <OneForMindIcon name="journal" size="18" class="shrink-0" />
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm flex items-center justify-between w-full">
                         {{ $t('nav_item_journal') }}
-                        <div v-if="!canAccess('journal')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
+                        <div v-if="!canUse('journal')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
                     </span>
                     <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('calendar')" :href="canAccess('calendar') ? route('calendar.index') : route('billing')" prefetch
+                <Link v-if="showModule('calendar')" :href="canUse('calendar') ? route('calendar.index') : route('billing')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('calendar.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
-                        !canAccess('calendar') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
+                        !canUse('calendar') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_calendar') : ''"
                 >
                     <OneForMindIcon name="calendar" size="18" class="shrink-0" />
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm flex items-center justify-between w-full">
                         {{ $t('nav_item_calendar') }}
-                        <div v-if="!canAccess('calendar')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
+                        <div v-if="!canUse('calendar')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
                     </span>
                     <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('job')" :href="canAccess('job') ? route('jobs.index') : route('billing')" prefetch
+                <Link v-if="showModule('job')" :href="canUse('job') ? route('jobs.index') : route('billing')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('jobs.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
-                        !canAccess('job') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
+                        !canUse('job') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_jobs') : ''"
                 >
                     <OneForMindIcon name="job" size="18" class="shrink-0" />
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm flex items-center justify-between w-full">
                         {{ $t('nav_item_jobs') }}
-                        <div v-if="!canAccess('job')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
+                        <div v-if="!canUse('job')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
                     </span>
                     <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
 
-                <Link v-if="showModule('goal')" :href="canAccess('goal') ? route('goals.index') : route('billing')" prefetch
+                <Link v-if="showModule('goal')" :href="canUse('goal') ? route('goals.index') : route('billing')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('goals.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
-                        !canAccess('goal') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
+                        !canUse('goal') ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_goals') : ''"
                 >
                     <OneForMindIcon name="goal" size="18" class="shrink-0" />
                     <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-sm flex items-center justify-between w-full">
                         {{ $t('nav_item_goals') }}
-                        <div v-if="!canAccess('goal')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
+                        <div v-if="!canUse('goal')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
                     </span>
                     <div v-if="route().current('goals.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
@@ -296,7 +286,7 @@ const openPremiumPreview = (module = 'Coach') => {
                 <div class="flex items-center justify-between group" :class="isSidebarCollapsed ? 'flex-col gap-2' : 'px-2 py-1'">
                     <div class="flex items-center gap-2.5 min-w-0" :title="isSidebarCollapsed ? user?.name : ''">
                         <img v-if="user?.avatar_url" :src="user.avatar_url" :alt="$t('nav_avatar', 'Avatar')" class="w-8 h-8 rounded-full object-cover shadow-sm dark:shadow-none border border-white shrink-0" />
-                        <div v-else class="w-8 h-8 rounded-full bg-indigo-600 dark:bg-indigo-500 text-white flex items-center justify-center font-bold text-[10px] shadow-md dark:shadow-none shrink-0">
+                        <div v-else class="w-8 h-8 rounded-full bg-indigo-600 dark:bg-indigo-50 text-white flex items-center justify-center font-bold text-[10px] shadow-md dark:shadow-none shrink-0">
                             {{ user?.name?.charAt(0).toUpperCase() || 'U' }}
                         </div>
                         
@@ -340,13 +330,13 @@ const openPremiumPreview = (module = 'Coach') => {
                     <!-- AI COACH (CENTER - PROTRUDING) -->
                     <button @click="isExplorer ? openPremiumPreview('Coach') : router.visit(route('coach.index'))"
                           class="relative -top-3 lg:-top-5 flex-1 flex flex-col items-center transition-all duration-500"
-                          :class="!canAccess('ai') && !isExplorer ? 'opacity-40 grayscale' : ''">
+                          :class="!isAiEnabled && !isExplorer ? 'opacity-40 grayscale' : ''">
                         <div class="w-14 h-14 lg:w-[4.25rem] lg:h-[4.25rem] bg-slate-900 dark:bg-indigo-600 rounded-2xl lg:rounded-[1.75rem] flex items-center justify-center shadow-lg transition-all active:scale-90 border-[4px] border-white dark:border-slate-950 overflow-hidden group">
                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                            <OneForMindIcon name="sparkles" :size="20" class="text-white relative z-10" />
                         </div>
                         <div class="flex items-center gap-1 mt-1">
-                            <span class="text-[8px] font-bold text-indigo-600 dark:text-indigo-400 tracking-tight">{{ canAccess('ai') ? 'Neural OS' : 'Platinum OS' }}</span>
+                            <span class="text-[8px] font-bold text-indigo-600 dark:text-indigo-400 tracking-tight">{{ isAiEnabled ? 'Neural OS' : 'Platinum OS' }}</span>
                         </div>
                     </button>
 
@@ -376,7 +366,7 @@ const openPremiumPreview = (module = 'Coach') => {
         <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
             <div v-if="showLogoutModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
                 <div class="absolute inset-0 bg-slate-900/40 dark:bg-slate-950/60 backdrop-blur-sm" @click="showLogoutModal = false"></div>
-                <div class="relative bg-white dark:bg-slate-900 w-full max-w-sm rounded-[2.5rem] shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
+                <div class="relative bg-white dark:bg-slate-900 w-full max-sm rounded-[2.5rem] shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 overflow-hidden transform transition-all animate-in zoom-in-95 duration-300">
                     <div class="p-8 text-center">
                         <div class="w-20 h-20 bg-rose-50 dark:bg-rose-500/10 text-rose-500 rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-inner">
                             <OneForMindIcon name="logout" size="40" stroke-width="2.5" />
@@ -404,12 +394,12 @@ const openPremiumPreview = (module = 'Coach') => {
                 
                 <!-- Main Button -->
                 <div class="relative w-16 h-16 bg-slate-900 dark:bg-indigo-600 rounded-[1.8rem] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 active:scale-95 ring-4 ring-white dark:ring-slate-950 group-hover:ring-indigo-50 dark:group-hover:ring-indigo-500/20 overflow-hidden"
-                     :class="!canAccess('ai') && !isExplorer ? 'grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100' : ''">
+                     :class="!isAiEnabled && !isExplorer ? 'grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100' : ''">
                     <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <OneForMindIcon name="sparkles" size="28" stroke-width="2" class="text-white group-hover:rotate-[20deg] transition-transform duration-500 relative z-10" />
                     
                     <!-- Notification/Locked Dot -->
-                    <span v-if="canAccess('ai')" class="absolute top-4 right-4 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-slate-900 rounded-full animate-pulse z-20"></span>
+                    <span v-if="isAiEnabled" class="absolute top-4 right-4 w-3 h-3 bg-emerald-500 border-2 border-white dark:border-slate-900 rounded-full animate-pulse z-20"></span>
                     <span v-else class="absolute top-4 right-4 w-2 h-2 bg-indigo-400 border border-white dark:border-slate-900 rounded-full shadow-[0_0_8px_rgba(129,140,248,0.5)] z-20"></span>
                 </div>
                 

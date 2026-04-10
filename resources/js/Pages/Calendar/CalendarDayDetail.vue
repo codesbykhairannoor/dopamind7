@@ -141,8 +141,8 @@ const plannerProgress = computed(() => {
                                     <Link :href="route('goals.index')" class="bg-orange-500 rounded-[3rem] p-6 text-white relative overflow-hidden group shadow-2xl shadow-orange-200 dark:shadow-none hover:-translate-y-2 transition-all duration-500">
                                         <div class="absolute -right-6 -top-6 text-9xl opacity-20 group-hover:rotate-12 transition-transform duration-700">🎯</div>
                                         <div class="relative z-10">
-                                            <div class="flex justify-between items-center mb-6">
-                                                <span class="text-[11px] font-black tracking-widest bg-white/20 px-3 py-1.5 rounded-xl backdrop-blur-sm border border-white/20">{{ $t('calendar_goals', 'Goals & milestones') }}</span>
+                                            <div class="flex justify-between items-center mb-4 md:mb-6">
+                                                <span class="text-[10px] sm:text-[11px] font-black tracking-widest bg-white/20 px-3 py-1.5 rounded-xl backdrop-blur-sm border border-white/20">{{ $t('calendar_goals', 'Goals & milestones') }}</span>
                                                 <div class="w-8 h-8 rounded-full bg-white/20 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-orange-500 transition-all duration-500">
                                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                                 </div>
@@ -168,8 +168,8 @@ const plannerProgress = computed(() => {
                                     <Link :href="route('planner.index', { date: props.date })" class="bg-blue-600 rounded-[3rem] p-6 text-white relative overflow-hidden group shadow-2xl shadow-blue-200 dark:shadow-none hover:-translate-y-2 transition-all duration-500">
                                         <div class="absolute -right-6 -top-6 text-9xl opacity-20 group-hover:rotate-12 transition-transform duration-700">✅</div>
                                         <div class="relative z-10">
-                                            <div class="flex justify-between items-center mb-6">
-                                                <span class="text-[11px] font-black tracking-widest bg-white/20 px-3 py-1.5 rounded-xl backdrop-blur-sm border border-white/20">{{ $t('calendar_planner', 'Daily planner') }}</span>
+                                            <div class="flex justify-between items-center mb-4 md:mb-6">
+                                                <span class="text-[10px] sm:text-[11px] font-black tracking-widest bg-white/20 px-3 py-1.5 rounded-xl backdrop-blur-sm border border-white/20">{{ $t('calendar_planner', 'Daily planner') }}</span>
                                                 <div class="w-8 h-8 rounded-full bg-white/20 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-blue-600 transition-all duration-500">
                                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                                 </div>
@@ -193,7 +193,7 @@ const plannerProgress = computed(() => {
                                         <Link :href="route('habits.index')" class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2.5rem] p-6 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl shadow-slate-200/20 dark:shadow-none min-h-[160px] flex flex-col justify-between">
                                             <div class="absolute -right-3 -bottom-3 text-6xl opacity-[0.05] group-hover:scale-125 transition-transform duration-700">🌱</div>
                                             <div>
-                                                <span class="text-[11px] font-black tracking-widest text-emerald-500 mb-3 block leading-none">{{ $t('calendar_habits', 'Habits') }}</span>
+                                                <span class="text-[10px] sm:text-[11px] font-black tracking-widest text-emerald-500 mb-2 md:mb-3 block leading-none">{{ $t('calendar_habits', 'Habits') }}</span>
                                                 <div v-if="dailyHabitCount > 0">
                                                     <span class="text-5xl font-black text-slate-800 dark:text-white block leading-none mb-2">{{ dailyHabitCount }}</span>
                                                     <span class="text-[11px] font-bold text-slate-400 tracking-wide">{{ $t('calendar_habits_done', 'Items completed') }}</span>
@@ -207,7 +207,7 @@ const plannerProgress = computed(() => {
                                         <Link :href="route('finance.index')" class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2.5rem] p-6 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500 shadow-xl shadow-slate-200/20 dark:shadow-none min-h-[160px] flex flex-col justify-between">
                                             <div class="absolute -right-3 -bottom-3 text-6xl opacity-[0.05] group-hover:scale-125 transition-transform duration-700">💸</div>
                                             <div>
-                                                <span class="text-[11px] font-black tracking-widest text-rose-500 mb-3 block leading-none">{{ $t('calendar_finance', 'Finance') }}</span>
+                                                <span class="text-[10px] sm:text-[11px] font-black tracking-widest text-rose-500 mb-2 md:mb-3 block leading-none">{{ $t('calendar_finance', 'Finance') }}</span>
                                                 <div v-if="dailyFinance > 0">
                                                     <h4 class="text-xl font-black text-slate-800 dark:text-white leading-tight mb-1 truncate">{{ formatCurrency(dailyFinance) }}</h4>
                                                     <span class="text-[11px] font-bold text-slate-400 tracking-wide">Daily spend</span>

@@ -87,13 +87,6 @@ const habitPremiumFeatures = [
         bg: 'bg-indigo-500/10'
     },
     {
-        title: 'Neural friction Audit',
-        desc: 'Audit cerdas untuk menemukan alasan kenapa Anda gagal di suatu habit.',
-        icon: Activity,
-        color: 'text-rose-500',
-        bg: 'bg-rose-500/10'
-    },
-    {
         title: 'Atomic Analytics',
         desc: 'Heatmap & visualisasi data habit yang mendalam untuk progres jangka panjang.',
         icon: PieChart,
@@ -155,32 +148,6 @@ const habitPremiumFeatures = [
             <!-- NEW AI SECTION (Hidden for Explorer in main flow, teased in Wall) -->
             <NeuralHabitInsight v-if="!isExplorer" ref="neuralOs" :currentMood="savedMood" />
 
-            <!-- 🧠 NEW: NEURAL CONSISTENCY SKELETAL UI (FOR EXPLORERS) -->
-            <div v-if="isExplorer" @click="openPremiumPreview('Habits')" 
-                 class="mx-4 md:mx-8 p-6 rounded-[2.5rem] bg-slate-900 border border-indigo-500/20 relative overflow-hidden group/habit-mastery cursor-pointer hover:scale-[1.01] transition-all duration-500 shadow-2xl">
-                <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/10 via-transparent to-transparent"></div>
-                
-                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30">
-                            <Activity :size="24" />
-                        </div>
-                        <div>
-                             <h4 class="text-sm font-black text-white tracking-tight leading-none mb-1">Neural consistency lab</h4>
-                             <p class="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Analyze your identity shifts with AI</p>
-                        </div>
-                    </div>
-
-                    <!-- Skeletal Heatmap Grid -->
-                    <div class="flex gap-1.5 blur-[1.5px] opacity-30 group-hover:opacity-60 transition-all">
-                        <div v-for="i in 12" :key="i" class="w-3 h-3 rounded-[3px]" :class="i % 3 === 0 ? 'bg-indigo-500' : 'bg-slate-700'"></div>
-                    </div>
-
-                      <div class="flex items-center gap-2 text-indigo-400 font-bold text-[10px] tracking-widest uppercase">
-                        Unlock Analytics <ArrowRight :size="14" />
-                    </div>
-                </div>
-            </div>
 
             <HabitModals 
                 :showDeleteModal="showDeleteModal"

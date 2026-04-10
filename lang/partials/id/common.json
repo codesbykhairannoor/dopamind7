@@ -92,5 +92,6 @@
     "select_hour": "Pilih Jam",
     "date_format": "dddd, MMMM D, YYYY",
     "no_category": "Tanpa Kategori",
-    "no_date": "Tanpa Tanggal"
+    "no_date": "Tanpa Tanggal",
+    "goal_no_steps": "Belum ada langkah (steps/milestone) pada goal ini. Tambahkan langkah untuk melacak progres!"
 }

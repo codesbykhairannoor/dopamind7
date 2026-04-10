@@ -171,7 +171,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isQuantum(): bool
     {
-        return in_array($this->plan_type, ['quantum', 'legendary']);
+        return $this->plan_type === 'quantum';
     }
 
     public function isLegendary(): bool
@@ -192,6 +192,15 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasAiFeature(): bool
     {
-        return $this->isQuantum();
+        if ($this->isQuantum()) {
+            return true;
+        }
+
+        if ($this->isLegendary()) {
+            // Legendary users get 2 months free AI bonus
+            return $this->created_at->gt(now()->subMonths(2));
+        }
+
+        return false;
     }
 }

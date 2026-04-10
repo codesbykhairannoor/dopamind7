@@ -94,5 +94,6 @@
     "date_format": "dddd, MMMM D, YYYY",
     "no_category": "No Category",
     "no_date": "No Date",
-    "name": "Name"
+    "name": "Name",
+    "goal_no_steps": "There are no steps/milestones for this goal yet. Add steps to track your progress!"
 }

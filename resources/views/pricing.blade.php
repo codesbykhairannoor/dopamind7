@@ -10,165 +10,182 @@
 @endsection
 
 @section('content')
-    <div class="bg-white dark:bg-slate-950 transition-colors duration-500" x-data="{ isAnnual: true }">
-        {{-- Header Section --}}
-        <header class="pt-32 pb-16 px-6 relative overflow-hidden">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-indigo-50/50 dark:from-indigo-500/5 to-transparent rounded-full blur-[120px] -z-10"></div>
+    <div class="bg-white dark:bg-slate-950 transition-colors duration-500 overflow-x-hidden" x-data="{ isAnnual: true }">
+        {{-- High-Impact Hero --}}
+        <header class="pt-32 pb-16 px-6 relative text-center">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[140%] h-[800px] bg-[radial-gradient(circle_at_50%_0%,#4f46e515_0,transparent_50%)] -z-10"></div>
             
-            <div class="max-w-7xl mx-auto text-center relative z-10">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-bold text-[10px] mb-8 uppercase tracking-widest shadow-sm border border-indigo-100 dark:border-indigo-500/20">
-                    ✨ {{ __('pricing_badge') }}
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-black text-[10px] mb-10 uppercase tracking-[0.3em] shadow-sm border border-indigo-100 dark:border-indigo-500/20">
+                    <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                    {{ __('pricing_badge') }}
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tight mb-6">
-                    {{ __('pricing_title_1') }} <span class="text-indigo-600 dark:text-indigo-400">{{ __('pricing_title_2') }}</span>
+                <h1 class="text-6xl md:text-8xl font-black text-slate-900 dark:text-white tracking-tighter mb-8 leading-[0.9]">
+                    Investasi pada<br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500 dark:from-indigo-400 dark:to-violet-400">Diri Sendiri.</span>
                 </h1>
                 
-                <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-12 font-bold leading-relaxed">
-                    {{ __('pricing_subtitle') }}
+                <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-16 font-bold leading-relaxed">
+                    Mulai gratis atau buka seluruh ekosistem. Pilih paket yang berkembang seiring kemajuan hidup Anda.
                 </p>
 
                 {{-- Billing Toggle --}}
-                <div class="flex items-center justify-center gap-6">
-                    <span class="text-sm font-black transition-colors duration-300" :class="!isAnnual ? 'text-slate-900 dark:text-white' : 'text-slate-400'">
+                <div class="flex items-center justify-center gap-8 mb-20">
+                    <span class="text-sm font-black transition-all duration-300" :class="!isAnnual ? 'text-slate-900 dark:text-white scale-110' : 'text-slate-400 opacity-50'">
                         {{ __('pricing_monthly') }}
                     </span>
-                    <button @click="isAnnual = !isAnnual" class="relative w-16 h-8 rounded-full bg-slate-200 dark:bg-slate-800 p-1 transition-all duration-500 hover:ring-4 hover:ring-indigo-100 dark:hover:ring-indigo-900/30">
-                        <div class="w-6 h-6 rounded-full bg-indigo-600 dark:bg-indigo-500 shadow-lg transform transition-transform duration-500" :class="isAnnual ? 'translate-x-8' : 'translate-x-0'"></div>
+                    <button @click="isAnnual = !isAnnual" class="relative w-20 h-10 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-1.5 transition-all duration-500 hover:scale-105 shadow-inner">
+                        <div class="w-6 h-6 rounded-full bg-indigo-600 dark:bg-indigo-500 shadow-xl transform transition-transform duration-500" :class="isAnnual ? 'translate-x-10' : 'translate-x-0'"></div>
                     </button>
-                    <span class="text-sm font-black transition-colors duration-300" :class="isAnnual ? 'text-slate-900 dark:text-white' : 'text-slate-400'">
+                    <span class="text-sm font-black transition-all duration-300" :class="isAnnual ? 'text-slate-900 dark:text-white scale-110' : 'text-slate-400 opacity-50'">
                         {{ __('pricing_yearly') }}
                     </span>
-                    <div class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-black uppercase tracking-tighter border border-emerald-200 dark:border-emerald-500/20 shadow-sm">
-                        {{ __('pricing_save_amount') }}
+                    <div class="hidden sm:block px-4 py-1.5 rounded-full bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-500/20 animate-bounce">
+                        SAVE 40%
                     </div>
                 </div>
             </div>
         </header>
 
-        {{-- Pricing Grid --}}
+        {{-- Premium Pricing Grid --}}
         <section class="pb-32 px-6">
             <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
                     
-                    {{-- Explorer --}}
-                    <div class="group relative flex flex-col p-8 rounded-[2.5rem] bg-white/70 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 shadow-xl shadow-slate-100 dark:shadow-none hover:-translate-y-2 transition-all duration-500">
-                        <h3 class="text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-widest mb-3 uppercase">{{ __('pricing_l1_name') }}</h3>
-                        <div class="flex items-baseline gap-2 mb-6">
-                            <span class="text-3xl font-black text-slate-900 dark:text-white">Rp 0</span>
-                            <span class="font-bold text-xs text-slate-400 dark:text-slate-500">/{{ __('pricing_forever') }}</span>
+                    {{-- 1. Explorer --}}
+                    <div class="group relative flex flex-col p-10 rounded-[3rem] bg-white/50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-800 hover:-translate-y-4 transition-all duration-700 hover:shadow-2xl">
+                        <div class="mb-10">
+                            <span class="text-[10px] font-black text-slate-400 tracking-[0.2em] uppercase">{{ __('pricing_l1_name') }}</span>
+                            <div class="mt-4 flex items-baseline gap-1">
+                                <span class="text-4xl font-black text-slate-900 dark:text-white">Free</span>
+                            </div>
                         </div>
-                        <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l1_desc') }}</p>
-                        <ul class="space-y-3 mb-10 flex-grow">
-                            <li class="flex items-start gap-3">
-                                <span class="bg-emerald-50 dark:bg-emerald-500/10 w-4 h-4 rounded-full flex items-center justify-center text-emerald-500 text-[8px] font-black shrink-0">✓</span>
-                                <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_feat_l1_habits') }}</span>
+                        
+                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">Mulai perjalanan Anda dengan alat dasar yang powerful.</p>
+                        
+                        <ul class="space-y-4 mb-12 flex-grow">
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_feat_habits_limit') }}</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <span class="bg-emerald-50 dark:bg-emerald-500/10 w-4 h-4 rounded-full flex items-center justify-center text-emerald-500 text-[8px] font-black shrink-0">✓</span>
-                                <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_feat_l1_finance') }}</span>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_feat_planner_basic') }}</span>
+                            </li>
+                            <li class="flex items-center gap-3 opacity-30">
+                                <span class="text-[8px] font-black text-slate-400">✕</span>
+                                <span class="text-xs font-bold text-slate-400">Neural OS AI Coach</span>
                             </li>
                         </ul>
-                        <a href="{{ route('register') }}" class="w-full py-4 rounded-3xl bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white font-black text-xs text-center border border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-600 transition shadow-lg transition-all active:scale-95">
+
+                        <a href="{{ route('register') }}" class="w-full py-5 rounded-3xl bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white font-black text-xs text-center border border-slate-200 dark:border-slate-600 hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900 transition-all active:scale-95 shadow-lg shadow-slate-200 dark:shadow-none">
                             {{ __('pricing_free_btn') }}
                         </a>
                     </div>
 
-                    {{-- Architect --}}
-                    <div class="group relative flex flex-col p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700 shadow-xl hover:-translate-y-2 transition-all duration-500 border-t-8 border-t-indigo-600">
-                        <h3 class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 tracking-widest mb-3 uppercase">{{ __('pricing_l2_name') }}</h3>
-                        <div class="mb-4">
-                            <div class="text-2xl font-black text-slate-900 dark:text-white" x-text="isAnnual ? 'Rp 79k' : 'Rp 99k'">Rp 79k</div>
-                            <div class="text-slate-400 font-bold text-[10px]">/{{ __('pricing_month') }}</div>
+                    {{-- 2. Architect --}}
+                    <div class="group relative flex flex-col p-10 rounded-[3rem] bg-white dark:bg-slate-800 border-4 border-indigo-50 shadow-2xl hover:-translate-y-4 transition-all duration-700">
+                        <div class="mb-10">
+                            <span class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 tracking-[0.2em] uppercase">{{ __('pricing_l2_name') }}</span>
+                            <div class="mt-4 flex items-baseline gap-1">
+                                <span class="text-4xl font-black text-slate-900 dark:text-white" x-text="isAnnual ? '{{ App::getLocale() == 'id' ? 'Rp 79k' : '$4.99' }}' : '{{ App::getLocale() == 'id' ? 'Rp 99k' : '$6.99' }}'"></span>
+                                <span class="text-xs font-bold text-slate-400 tracking-tighter">/bln</span>
+                            </div>
                         </div>
-                        <div class="mb-6">
-                            <p class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 tracking-tight">{{ __('pricing_l2_initial') }}</p>
-                            <p class="text-[9px] font-bold italic text-slate-400 dark:text-slate-500">{{ __('pricing_l2_recurring') }}</p>
-                        </div>
-                        <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l2_desc') }}</p>
-                        <ul class="space-y-3 mb-10 flex-grow">
-                            <li class="flex items-start gap-3 font-bold text-slate-700 dark:text-slate-300">
-                                <span class="bg-emerald-50 dark:bg-emerald-500/10 w-4 h-4 rounded-full flex items-center justify-center text-emerald-500 text-[8px] font-black shrink-0">✓</span>
-                                <span class="text-[11px]">{{ __('pricing_feat_l2_habits') }}</span>
+
+                        <p class="text-xs font-bold text-slate-600 dark:text-slate-300 mb-10 leading-relaxed min-h-[48px]">Bangun sistem produktivitas utuh dengan akses tanpa batas.</p>
+                        
+                        <ul class="space-y-4 mb-12 flex-grow border-t border-slate-50 dark:border-slate-700 pt-8">
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-[10px] font-black italic">★</div>
+                                <span class="text-xs font-black text-slate-900 dark:text-white">{{ __('pricing_feat_unlock_all') }}</span>
                             </li>
-                            <li class="flex items-start gap-3 font-bold text-slate-700 dark:text-slate-300">
-                                <span class="bg-emerald-50 dark:bg-emerald-500/10 w-4 h-4 rounded-full flex items-center justify-center text-emerald-500 text-[8px] font-black shrink-0">✓</span>
-                                <span class="text-[11px]">{{ __('pricing_feat_l2_finance') }}</span>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_feat_planner_batch') }}</span>
                             </li>
-                            <li class="flex items-start gap-3 font-bold text-indigo-600 dark:text-indigo-400">
-                                <span class="bg-indigo-50 dark:bg-indigo-500/10 w-4 h-4 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-[8px] font-black shrink-0">★</span>
-                                <span class="text-[11px]">{{ __('pricing_feat_month_trial') }}</span>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_feat_finance_adv') }}</span>
                             </li>
                         </ul>
-                        <button hx-boost="false" data-plan="architect" class="checkout-trigger w-full py-4 rounded-3xl bg-indigo-600 text-white font-black text-xs hover:bg-indigo-700 shadow-xl shadow-indigo-100 dark:shadow-none transition-all active:scale-95">
+
+                        <button onclick="openCheckout('architect')" class="w-full py-5 rounded-3xl bg-indigo-600 text-white font-black text-xs hover:bg-indigo-700 shadow-xl shadow-indigo-100 dark:shadow-none transition-all active:scale-95">
                             {{ __('pricing_pro_btn') }}
                         </button>
                     </div>
 
-                    {{-- Quantum --}}
-                    <div class="group relative flex flex-col p-8 rounded-[3rem] bg-white dark:bg-slate-800 border-4 border-indigo-600 shadow-2xl shadow-indigo-100 dark:shadow-none lg:scale-105 z-10 transition-all duration-500">
-                        <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-indigo-600 text-white px-6 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest whitespace-nowrap shadow-lg">
+                    {{-- 3. Quantum --}}
+                    <div class="group relative flex flex-col p-10 rounded-[3.5rem] bg-slate-900 border-4 border-indigo-500/20 shadow-[0_0_80px_rgba(79,70,229,0.15)] lg:scale-105 z-10 hover:-translate-y-4 transition-all duration-700 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent"></div>
+                        
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-indigo-600 text-white text-[9px] font-black tracking-[0.2em] uppercase shadow-lg border border-white/20 animate-pulse">
                             {{ __('pricing_ai_badge') }}
                         </div>
-                        <h3 class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 tracking-widest mb-3 uppercase">{{ __('pricing_l3_name') }}</h3>
-                        <div class="mb-4">
-                            <div class="text-2xl font-black text-slate-900 dark:text-white" x-text="isAnnual ? 'Rp 109k' : 'Rp 159k'">Rp 109k</div>
-                            <div class="text-slate-400 font-bold text-[10px]">/{{ __('pricing_month') }}</div>
+
+                        <div class="mb-10 relative">
+                            <span class="text-[10px] font-black text-indigo-400 tracking-[0.2em] uppercase">{{ __('pricing_l3_name') }}</span>
+                            <div class="mt-4 flex items-baseline gap-1 text-white">
+                                <span class="text-4xl font-black" x-text="isAnnual ? '{{ App::getLocale() == 'id' ? 'Rp 109k' : '$6.99' }}' : '{{ App::getLocale() == 'id' ? 'Rp 159k' : '$9.99' }}'"></span>
+                                <span class="text-xs font-bold opacity-50 tracking-tighter">/bln</span>
+                            </div>
                         </div>
-                        <div class="mb-6">
-                            <p class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 tracking-tight">{{ __('pricing_l3_initial') }}</p>
-                            <p class="text-[9px] font-bold italic text-slate-400 dark:text-slate-500">{{ __('pricing_l3_recurring') }}</p>
-                        </div>
-                        <p class="text-[11px] font-medium text-slate-500 dark:text-slate-400 mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l3_desc') }}</p>
-                        <ul class="space-y-3 mb-10 flex-grow">
-                            <li class="flex items-start gap-3 font-bold text-indigo-600 dark:text-indigo-400">
-                                <span class="bg-indigo-50 dark:bg-indigo-500/10 w-5 h-5 rounded-full flex items-center justify-center text-[10px] shrink-0">🤖</span>
-                                <span class="text-[11px]">{{ __('pricing_feat_l3_ai_coach') }}</span>
+
+                        <p class="text-xs font-bold text-slate-400 mb-10 leading-relaxed min-h-[48px]">Tingkatkan performa hidup Anda dengan asisten kecerdasan syaraf buatan.</p>
+                        
+                        <ul class="space-y-4 mb-12 flex-grow relative border-t border-white/5 pt-8">
+                            <li class="flex items-center gap-3">
+                                <span class="text-[14px]">🤖</span>
+                                <span class="text-xs font-black text-white">{{ __('pricing_feat_ai_chat') }}</span>
                             </li>
-                            <li class="flex items-start gap-3 font-bold text-slate-700 dark:text-slate-300">
-                                <span class="bg-emerald-50 dark:bg-emerald-500/10 w-4 h-4 rounded-full flex items-center justify-center text-emerald-500 text-[8px] font-black shrink-0">✓</span>
-                                <span class="text-[11px]">{{ __('pricing_feat_l3_wealth') }}</span>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-[8px] font-black animate-pulse">✨</div>
+                                <span class="text-xs font-bold text-indigo-200">{{ __('pricing_feat_automated_insights') }}</span>
                             </li>
-                            <li class="flex items-start gap-3 font-bold text-indigo-600 dark:text-indigo-400">
-                                <span class="bg-indigo-50 dark:bg-indigo-500/10 w-4 h-4 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-[8px] font-black shrink-0">✓</span>
-                                <span class="text-[11px]">{{ __('pricing_feat_l3_insights') }}</span>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-medium text-slate-400">{{ __('pricing_feat_all_architect') }}</span>
                             </li>
                         </ul>
-                        <button hx-boost="false" data-plan="quantum" class="checkout-trigger w-full py-5 rounded-3xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black text-xs hover:bg-black dark:hover:bg-indigo-50 shadow-xl transition-all active:scale-95">
-                            {{ __('pricing_ai_btn') }}
+
+                        <button onclick="openCheckout('quantum')" class="relative w-full py-6 rounded-[2rem] bg-white text-slate-950 font-black text-xs hover:scale-105 transition-all active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                            BUKA NEURAL OS
                         </button>
                     </div>
 
-                    {{-- Legendary --}}
-                    <div class="group relative flex flex-col p-8 rounded-[2.5rem] bg-slate-900 dark:bg-black border border-slate-800 shadow-2xl hover:-translate-y-2 transition-all duration-500 text-white relative">
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 sm:px-6 py-1.5 rounded-full bg-amber-500 text-white text-[8px] font-black tracking-widest shadow-lg whitespace-nowrap z-20 border border-white/20">
+                    {{-- 4. Legendary --}}
+                    <div class="group relative flex flex-col p-10 rounded-[3rem] bg-white dark:bg-black border border-slate-200 dark:border-slate-800 hover:-translate-y-4 transition-all duration-700 hover:shadow-2xl">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-amber-500 text-white text-[8px] font-black tracking-widest whitespace-nowrap shadow-lg">
                             {{ __('pricing_l4_badge') }}
                         </div>
-                        <h3 class="text-[10px] font-black text-indigo-400 tracking-widest mb-3 uppercase">{{ __('pricing_l4_name') }}</h3>
-                        <div class="mb-4">
-                            <div class="text-3xl font-black text-white leading-tight">Rp 899k</div>
-                            <div class="text-indigo-400 font-bold text-xs italic">One-Time</div>
+
+                        <div class="mb-10">
+                            <span class="text-[10px] font-black text-amber-600 dark:text-amber-500 tracking-[0.2em] uppercase">{{ __('pricing_l4_name') }}</span>
+                            <div class="mt-4 flex items-baseline gap-2">
+                                <span class="text-3xl font-black text-slate-900 dark:text-white">{{ App::getLocale() == 'id' ? 'Rp 899k' : '$59.00' }}</span>
+                            </div>
+                            <div class="text-[9px] font-black text-amber-500 mt-1 uppercase tracking-tighter">Sekali Bayar Selamanya</div>
                         </div>
-                        <div class="mb-6">
-                            <p class="text-[10px] font-black text-amber-500 tracking-tight">One-Time Payment</p>
-                            <p class="text-[9px] font-bold italic text-amber-500">{{ __('pricing_feat_l4_triggers') }}</p>
-                        </div>
-                        <p class="text-slate-400 text-[11px] mb-8 leading-relaxed min-h-[40px]">{{ __('pricing_l4_desc') }}</p>
-                        <ul class="space-y-3 mb-10 flex-grow text-slate-300">
-                            <li class="flex items-start gap-3">
-                                <span class="w-4 h-4 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 text-[10px] font-black shrink-0">★</span>
-                                <span class="text-[11px] font-bold">Lifetime Pro Access</span>
+
+                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">Investasi terbaik untuk kemerdekaan finansial & produktivitas.</p>
+                        
+                        <ul class="space-y-4 mb-12 flex-grow border-t border-slate-50 dark:border-slate-800 pt-8">
+                            <li class="flex items-center gap-3">
+                                <span class="text-[14px]">💎</span>
+                                <span class="text-xs font-black text-slate-900 dark:text-white">{{ __('pricing_feat_lifetime_access') }}</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <span class="w-4 h-4 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 text-[10px] font-black shrink-0">★</span>
-                                <span class="text-[11px] font-bold">Unlocks All Modules</span>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500 text-[8px] font-black">★</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_feat_ai_trial') }}</span>
                             </li>
-                            <li class="flex items-start gap-3 border-t border-white/10 pt-3 opacity-40">
-                                <span class="w-4 h-4 rounded-full bg-rose-500/10 flex items-center justify-center text-rose-400 text-[8px] font-black shrink-0">✕</span>
-                                <span class="text-[11px] font-bold">Excludes Neural AI Features</span>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[10px] opacity-50">∞</div>
+                                <span class="text-xs font-medium text-slate-400">Pembaruan Gratis Selamanya</span>
                             </li>
                         </ul>
-                        <button hx-boost="false" data-plan="lifetime" class="checkout-trigger w-full py-4 rounded-3xl bg-white text-slate-900 font-black text-xs hover:bg-slate-50 transition shadow-lg transition-all active:scale-95">
+
+                        <button onclick="openCheckout('lifetime')" class="w-full py-5 rounded-3xl bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-black text-xs hover:bg-black dark:hover:bg-slate-200 shadow-xl transition-all active:scale-95">
                             {{ __('pricing_l4_btn') }}
                         </button>
                     </div>
@@ -176,68 +193,93 @@
             </div>
         </section>
 
-        {{-- Elite Experience --}}
-        <section class="py-32 px-6">
-            <div class="max-w-7xl mx-auto">
-                <div class="relative overflow-hidden rounded-[4rem] bg-slate-900 border border-slate-800 p-8 md:p-20 group">
-                    <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 blur-[100px] -translate-y-1/2 translate-x-1/2 rounded-full group-hover:bg-indigo-500/20 transition-all duration-700"></div>
-                    <div class="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/5 blur-[100px] translate-y-1/2 -translate-x-1/2 rounded-full"></div>
-                    
-                    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20 text-[10px] font-black uppercase tracking-widest mb-6">
-                                LEADERSHIP & PERFORMANCE
-                            </div>
-                            <h2 class="text-3xl md:text-5xl font-black text-white leading-tight mb-8">
-                                {{ __('quantum_feature') }} <br/>
-                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">{{ __('pricing_elite_title') }}</span>
-                            </h2>
-                            <div class="space-y-6">
-                                @for ($i = 1; $i <= 3; $i++)
-                                <div class="flex gap-4">
-                                    <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 text-xl shadow-inner">
-                                        {{ $i === 1 ? '🧠' : ($i === 2 ? '⚡' : '🌈') }}
-                                    </div>
-                                    <div>
-                                        <h4 class="text-white font-black text-sm mb-1">
-                                            {{ __('pricing_elite_feat' . $i . '_title') }}
-                                        </h4>
-                                        <p class="text-slate-400 text-xs leading-relaxed font-bold">
-                                            {{ __('pricing_elite_feat' . $i . '_desc') }}
-                                        </p>
-                                    </div>
-                                </div>
-                                @endfor
-                            </div>
-                        </div>
-                        
-                        <div class="relative group/card">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-amber-500/20 blur-3xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-700"></div>
-                            <div class="relative aspect-square rounded-[3rem] bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 p-8 shadow-2xl overflow-hidden">
-                                <div class="absolute top-0 right-0 p-8 transform rotate-12 group-hover/card:rotate-0 transition-transform duration-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-amber-400/10">
-                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                                        <path d="m9 12 2 2 4-4" />
-                                    </svg>
-                                </div>
-                                <div class="h-full flex flex-col justify-end">
-                                    <div class="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
-                                        <div class="flex items-center gap-4 mb-4">
-                                            <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-black">Q</div>
-                                            <div>
-                                                <p class="text-white font-black text-xs">{{ __('pricing_elite_card_title') }}</p>
-                                                <p class="text-[10px] text-slate-500 font-bold uppercase">{{ __('pricing_elite_card_status') }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="h-1 bg-white/10 rounded-full overflow-hidden">
-                                            <div class="h-full w-2/3 bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        {{-- Expanded Comparison Table --}}
+        <section class="py-40 bg-slate-50/50 dark:bg-slate-900/30">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-24">
+                    <h2 class="text-4xl font-black text-slate-900 dark:text-white mb-6">{{ __('pricing_compare_title') }}</h2>
+                    <p class="text-slate-500 dark:text-slate-400 font-bold uppercase text-[10px] tracking-[0.4em]">{{ __('pricing_compare_subtitle') }}</p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 rounded-[3rem] border border-slate-100 dark:border-slate-700 shadow-2xl overflow-hidden scrollbar-hide overflow-x-auto">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead>
+                            <tr class="bg-slate-900 text-white">
+                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] opacity-60">Kemampuan Modul</th>
+                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] text-center">Explorer</th>
+                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] text-center text-indigo-400">Architect</th>
+                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] text-center text-amber-500">Quantum+</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50 dark:divide-slate-700">
+                            @php
+                                $features = [
+                                    ['Habit Tracker Limit', '5 Active', 'Unlimited', 'Unlimited'],
+                                    ['Daily Planner View', 'Standard', 'Advanced', 'AI Energy-Based'],
+                                    ['Financial Dashboard', 'Expense Only', 'Full Balance', 'Advanced Wealth'],
+                                    ['Planner Batch Mode', '✕', '✓', '✓'],
+                                    ['Savings & Budgeting', '✕', '✓', '✓'],
+                                    ['Investment Portfolio', '✕', '✓', '✓'],
+                                    ['Neural AI Assistant', '✕', '✕', 'Full Access'],
+                                    ['Life Audit Insights', '✕', '✕', 'AI Weekly'],
+                                    ['Custom Theme & Styles', 'Limited', 'Full', 'Full'],
+                                ];
+                                $modules = [
+                                    ['Journal Tracker', '✕', '✓', '✓'],
+                                    ['Goal Tracker', '✕', '✓', '✓'],
+                                    ['Job Application', '✕', '✓', '✓'],
+                                    ['Calendar Timeline', '✕', '✓', '✓'],
+                                ];
+                            @endphp
+                            
+                            @foreach($features as $f)
+                            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="p-6 text-sm font-bold text-slate-700 dark:text-slate-200">{{ $f[0] }}</td>
+                                <td class="p-6 text-xs font-black text-center text-slate-400">{{ $f[1] }}</td>
+                                <td class="p-6 text-xs font-black text-center text-indigo-600 dark:text-indigo-400">{{ $f[2] }}</td>
+                                <td class="p-6 text-xs font-black text-center text-amber-600 dark:text-amber-500">{{ $f[3] }}</td>
+                            </tr>
+                            @endforeach
+
+                            <tr class="bg-slate-50 dark:bg-slate-900/50">
+                                <td colspan="4" class="p-4 px-8 text-[9px] font-black text-slate-400 uppercase tracking-widest">Premium Modules</td>
+                            </tr>
+
+                            @foreach($modules as $m)
+                            <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors">
+                                <td class="p-6 text-sm font-bold text-slate-700 dark:text-slate-200">{{ $m[0] }}</td>
+                                <td class="p-6 text-center text-slate-200 dark:text-slate-800 text-xs">✕</td>
+                                <td class="p-6 text-center text-emerald-500 text-xs font-black">✓</td>
+                                <td class="p-6 text-center text-emerald-500 text-xs font-black">✓</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        {{-- FAQ --}}
+        <section class="py-40 max-w-4xl mx-auto px-6">
+            <div class="text-center mb-24">
+                <h2 class="text-4xl font-black text-slate-900 dark:text-white mb-6">{{ __('pricing_faq_title') }}</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4" x-data="{ expanded: null }">
+                @foreach([1, 2, 3, 4] as $i)
+                <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md">
+                    <button @click="expanded = (expanded === {{ $i }} ? null : {{ $i }})" class="w-full p-8 text-left flex items-center justify-between group">
+                        <span class="text-lg font-black text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors">{{ __("pricing_faq_{$i}_q") }}</span>
+                        <span class="text-indigo-600 text-2xl font-black transform transition-transform duration-300" :class="expanded === {{ $i }} ? 'rotate-45' : ''">+</span>
+                    </button>
+                    <div x-show="expanded === {{ $i }}" x-collapse x-cloak>
+                        <div class="p-8 pt-0 text-slate-500 dark:text-slate-400 font-bold leading-relaxed">
+                            {{ __("pricing_faq_{$i}_a") }}
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
         </section>
     </div>
@@ -252,16 +294,5 @@
             window.location.href = "{{ route('register') }}?plan=" + planId;
         @endauth
     }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const buttons = document.querySelectorAll('.checkout-trigger');
-        buttons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const planId = btn.getAttribute('data-plan');
-                openCheckout(planId);
-            });
-        });
-    });
 </script>
 @endpush

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Habit;
 use App\Models\HabitLog;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -48,7 +49,15 @@ class HabitService
             throw new \Exception('Habit bulan ini sudah ada! Tidak bisa copy lagi.');
         }
 
-        $oldHabits = Habit::where('user_id', $userId)->where('period', $prevPeriod)->get();
+        $user = User::find($userId);
+        $query = Habit::where('user_id', $userId)->where('period', $prevPeriod)->orderBy('position', 'asc');
+
+        // 🔥 TIER GATE: Explorer hanya boleh copy max 5 habit teratas
+        if ($user && $user->isExplorer()) {
+            $query->limit(5);
+        }
+
+        $oldHabits = $query->get();
 
         if ($oldHabits->isEmpty()) return 0;
 

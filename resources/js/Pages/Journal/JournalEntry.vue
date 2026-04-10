@@ -270,8 +270,21 @@ const setFontSize = (value) => {
                     </button>
                 </div>
 
-                <!-- Floating Toolbar -->
-                <div v-if="editor" class="sticky top-20 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-2 rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-none flex flex-wrap items-center gap-1 mb-10 w-full sm:w-fit transition-all duration-500 overflow-visible group/toolbar animate-in fade-in slide-in-from-top-4 duration-700">
+                    <!-- Floating Toolbar (Refined for Mobile Fixed Floating) -->
+                <div v-if="editor" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-2 rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-none flex flex-wrap items-center justify-center gap-1 w-[90%] sm:w-fit sm:sticky sm:top-20 sm:bottom-auto sm:left-auto sm:translate-x-0 transition-all duration-500 overflow-visible group/toolbar animate-in fade-in slide-in-from-bottom-4 sm:slide-in-from-top-4 duration-700">
+                    
+                    <button @click="editor.chain().focus().undo().run()" :disabled="!editor.can().undo()" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 disabled:opacity-30 group/btn relative">
+                        <OneForMindIcon name="rotate-ccw" size="18" stroke-width="3" />
+                        <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold">Undo</span>
+                    </button>
+
+                    <button @click="editor.chain().focus().redo().run()" :disabled="!editor.can().redo()" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 disabled:opacity-30 group/btn relative">
+                        <OneForMindIcon name="rotate-cw" size="18" stroke-width="3" />
+                        <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold">Redo</span>
+                    </button>
+
+                    <div class="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 self-center"></div>
+
                     <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'bg-indigo-600 text-white shadow-lg shadow-indigo-100 dark:shadow-none': editor.isActive('bold') }" class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 group/btn relative">
                         <OneForMindIcon name="bold" size="18" stroke-width="3" />
                          <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold">Tebalkan</span>
@@ -281,7 +294,7 @@ const setFontSize = (value) => {
                          <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold">Miringkan</span>
                     </button>
                     
-                    <div class="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 self-center"></div>
+                    <div class="hidden sm:block w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 self-center"></div>
 
                     <!-- Font Family Dropdown -->
                     <div class="relative">
@@ -289,7 +302,7 @@ const setFontSize = (value) => {
                             <Type class="w-4 h-4" />
                             <ChevronDown class="w-3 h-3 opacity-50" />
                         </button>
-                        <div v-if="showFontMenu" class="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-[100] animate-in fade-in zoom-in-95 duration-200 border border-slate-100 dark:border-slate-800">
+                        <div v-if="showFontMenu" class="absolute bottom-full mb-3 sm:bottom-auto sm:top-full sm:mt-2 left-0 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-[100] animate-in fade-in zoom-in-95 duration-200">
                             <button v-for="font in fontFamilies" :key="font.value" @click="setFontFamily(font.value)" class="w-full text-left px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-indigo-50 dark:hover:bg-indigo-500/10 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center justify-between" :class="{ 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400': editor.isActive('textStyle', { fontFamily: font.value }) }">
                                 <span :style="{ fontFamily: font.value }">{{ font.name }}</span>
                                 <Sparkles v-if="font.value !== 'Inter, sans-serif'" class="w-3 h-3 opacity-50" />
@@ -303,7 +316,7 @@ const setFontSize = (value) => {
                             <span class="text-xs">Aa</span>
                             <ChevronDown class="w-3 h-3 opacity-50" />
                         </button>
-                        <div v-if="showSizeMenu" class="absolute top-full left-0 mt-2 w-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-[100] animate-in fade-in zoom-in-95 duration-200 border border-slate-100 dark:border-slate-800">
+                        <div v-if="showSizeMenu" class="absolute bottom-full mb-3 sm:bottom-auto sm:top-full sm:mt-2 left-0 w-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-[100] animate-in fade-in zoom-in-95 duration-200">
                             <button v-for="size in fontSizes" :key="size.value" @click="setFontSize(size.value)" class="w-full text-left px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-indigo-50 dark:hover:bg-indigo-500/10 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center justify-between" :class="{ 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400': editor.isActive('textStyle', { fontSize: size.value }) }">
                                 <span>{{ size.label }}</span>
                                 <span class="text-[9px] opacity-40">{{ size.value }}</span>

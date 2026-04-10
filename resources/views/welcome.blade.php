@@ -95,7 +95,7 @@
             
             <div class="flex flex-col sm:flex-row justify-center gap-5 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
                 @guest
-                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 active:scale-95 group">
+                    <a @click="isInterfacing = true" hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 active:scale-95 group">
                         {{ __('hero_cta_primary') }}
                         <span class="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
                     </a>
@@ -105,7 +105,7 @@
                 @endguest
 
                 @auth
-                    <a hx-boost="false" href="{{ route('dashboard') }}" class="bg-indigo-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:shadow-2xl transition transform hover:-translate-y-1 active:scale-95">
+                    <a @click="isInterfacing = true" hx-boost="false" href="{{ route('dashboard') }}" class="bg-indigo-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:shadow-2xl transition transform hover:-translate-y-1 active:scale-95">
                         {{ __('nav_dashboard') }} →
                     </a>
                 @endauth

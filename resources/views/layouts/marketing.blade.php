@@ -491,6 +491,32 @@
     }" @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard') || $event.detail.pathInfo.requestPath.includes('login') || $event.detail.pathInfo.requestPath.includes('register')) isInterfacing = true"
         @scroll.window.passive="scrolled = (window.scrollY > 20)" class="relative">
 
+        {{-- INSTANT APP LOADER (Blade to Vue Transition) --}}
+        <div x-show="isInterfacing" 
+            x-transition:enter="transition duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center" x-cloak>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4f46e510_0,transparent_50%)]"></div>
+            <div class="absolute inset-0 bg-pattern-grid opacity-[0.03]"></div>
+
+            <div class="relative z-10 flex flex-col items-center text-center">
+                <div class="w-20 h-20 bg-indigo-600 rounded-[2rem] flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.2)] animate-bounce mb-8">
+                    <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-10 h-10 brightness-0 invert" />
+                </div>
+                <h2 class="text-slate-900 text-xl font-black tracking-[0.2em] uppercase mb-4 animate-pulse">Initializing System</h2>
+                <div class="w-48 h-0.5 bg-slate-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-indigo-500 w-1/2 animate-[skel-loading_1.5s_infinite_ease-in-out]"></div>
+                </div>
+            </div>
+            <style>
+                @keyframes skel-loading {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(400%); }
+                }
+            </style>
+        </div>
+
         {{-- NAVBAR --}}
         {{-- NAVBAR --}}
         <nav :class="(scrolled || mobileMenuOpen) ? 'bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'bg-transparent'"
@@ -746,10 +772,10 @@
                     {{-- MOBILE ACTIONS (Dashboard/Get Started) --}}
                     <div class="flex lg:hidden items-center gap-2">
                         @auth
-                            <a hx-boost="false" href="{{ route('dashboard') }}"
+                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('dashboard') }}"
                                 class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[13.5px] font-black shadow-lg">Dashboard</a>
                         @else
-                            <a hx-boost="false" href="{{ route('register') }}"
+                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('register') }}"
                                 class="px-5 py-2.5 bg-indigo-600 text-white rounded-full text-[13.5px] font-black shadow-lg shadow-indigo-200">
                                 Get Started
                             </a>

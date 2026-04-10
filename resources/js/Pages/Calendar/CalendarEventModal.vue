@@ -58,16 +58,16 @@ const colorOptions = [
                         </button>
                     </div>
 
-                    <div class="p-8 overflow-y-auto custom-scrollbar space-y-6 bg-slate-50/20 dark:bg-slate-950/20">
+                        <div class="p-8 overflow-y-auto custom-scrollbar space-y-6 bg-slate-50/20 dark:bg-slate-950/20">
                         <div>
-                            <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-2 transition-colors duration-500 ml-1 uppercase tracking-widest">{{ $t('label_title', 'Event title') }} <span class="text-rose-500">*</span></label>
+                            <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-2 transition-colors duration-500 ml-1 tracking-widest">{{ $t('label_title', 'Event title') }} <span class="text-rose-500">*</span></label>
                             <input v-model="form.title" type="text" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl px-5 py-4 text-slate-800 dark:text-white font-black text-lg focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500/50 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-700 transition-colors duration-500 shadow-sm" :placeholder="$t('ph_event_title', 'E.g. Strategy session')" required autofocus>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div class="relative">
-                                <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-2 transition-colors duration-500 ml-1 uppercase tracking-widest">{{ $t('label_start_date', 'Start date') }}</label>
-                                <button type="button" @click="showStartDatePicker = !showStartDatePicker" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl px-5 py-4 text-slate-700 dark:text-slate-300 font-bold hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-all flex items-center justify-between transition-colors duration-500 shadow-sm">
+                                <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-2 transition-colors duration-500 ml-1 tracking-widest">{{ $t('label_start_date', 'Start date') }}</label>
+                                <button type="button" @click="showStartDatePicker = !showStartDatePicker" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl px-5 py-4 text-slate-700 dark:text-slate-300 font-bold hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-all flex items-center justify-between transition-colors duration-500 shadow-sm">
                                     <span class="truncate">{{ dateDisplay(form.start_date, $t('select_date', 'Select date')) }}</span>
                                     <span class="text-slate-400 dark:text-slate-600 opacity-50">📅</span>
                                 </button>
@@ -85,7 +85,7 @@ const colorOptions = [
                                 </transition>
                             </div>
                             <div class="relative">
-                                <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-2 transition-colors duration-500 ml-1 uppercase tracking-widest">{{ $t('label_end_date', 'End date') }}</label>
+                                <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-2 transition-colors duration-500 ml-1 tracking-widest">{{ $t('label_end_date', 'End date') }}</label>
                                 <button type="button" @click="showEndDatePicker = !showEndDatePicker" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl px-5 py-4 text-slate-700 dark:text-slate-300 font-bold hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-all flex items-center justify-between transition-colors duration-500 shadow-sm">
                                     <span class="truncate">{{ form.end_date ? dateDisplay(form.end_date) : $t('optional', 'Optional') }}</span>
                                     <span v-if="form.end_date" @click.stop="form.end_date = ''" class="text-rose-400 hover:text-rose-600 transition-colors z-10 p-1">✕</span>
@@ -107,7 +107,7 @@ const colorOptions = [
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-3 transition-colors duration-500 ml-1 uppercase tracking-widest">
+                            <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-3 transition-colors duration-500 ml-1 tracking-widest">
                                 {{ $t('label_color', 'Pick a category color') }}
                             </label>
                             <div class="flex flex-wrap gap-4">
@@ -124,10 +124,11 @@ const colorOptions = [
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-2 transition-colors duration-500 ml-1 uppercase tracking-widest">{{ $t('label_description', 'Notes') }}</label>
+                            <label class="block text-[11px] font-bold text-slate-400 dark:text-slate-500 mb-2 transition-colors duration-500 ml-1 tracking-widest">{{ $t('label_description', 'Notes') }}</label>
                             <textarea v-model="form.description" rows="4" class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-[1.5rem] px-5 py-4 text-slate-700 dark:text-slate-300 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500/50 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-700 resize-none transition-colors duration-500 shadow-sm" :placeholder="$t('ph_event_desc', 'Briefly describe this event...')"></textarea>
                         </div>
                     </div>
+ </div>
 
                     <div class="p-8 border-t border-slate-100/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex gap-4 transition-colors duration-500">
                         <button @click="emit('close')" type="button" class="flex-1 py-4 rounded-2xl font-black text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-95 shadow-sm">
