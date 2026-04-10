@@ -99,9 +99,31 @@ class PaymentController extends Controller
         // Signature Duitku POP: md5(merchantCode + merchantOrderId + paymentAmount + apiKey)
         $signature = md5($merchantCode . $merchantOrderId . (int)$paymentAmount . $apiKey);
 
+        $firstName = explode(' ', $user->name)[0] ?: 'User';
+        $lastName = explode(' ', $user->name)[1] ?? $firstName;
+
+        $addressData = [
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'address' => 'Jl. Oneformind',
+            'city' => 'Jakarta',
+            'postalCode' => '10000',
+            'phone' => (string)$phoneNumber,
+            'countryCode' => 'ID'
+        ];
+
+        $customerDetail = [
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'email' => $email,
+            'phoneNumber' => (string)$phoneNumber,
+            'billingAddress' => $addressData,
+            'shippingAddress' => $addressData
+        ];
+
         $itemDetails = [
             [
-                'name' => $productDetails,
+                'name' => (string)$productDetails,
                 'price' => (int)$paymentAmount,
                 'quantity' => 1
             ]
@@ -110,13 +132,16 @@ class PaymentController extends Controller
         $params = [
             'merchantCode' => $merchantCode,
             'paymentAmount' => (int)$paymentAmount,
+            'paymentMethod' => '', // Standard for V2 redirect
             'merchantOrderId' => (string)$merchantOrderId,
-            'productDetails' => $productDetails,
-            'email' => $email,
-            'phoneNumber' => $phoneNumber,
-            'customerVaName' => substr($user->name, 0, 20), // Duitku often requires this
+            'productDetails' => (string)$productDetails,
+            'additionalParam' => '',
             'merchantUserInfo' => (string)$user->id,
+            'customerVaName' => substr($user->name, 0, 20),
+            'email' => $email,
+            'phoneNumber' => (string)$phoneNumber,
             'itemDetails' => $itemDetails,
+            'customerDetail' => $customerDetail,
             'callbackUrl' => route('payment.callback'),
             'returnUrl' => route('payment.finish'),
             'signature' => $signature,
@@ -124,11 +149,11 @@ class PaymentController extends Controller
         ];
 
         $url = $env === 'production'
-            ? 'https://passport.duitku.com/webapi/api/merchant/createinvoice'
-            : 'https://api-sandbox.duitku.com/webapi/api/merchant/createinvoice';
+            ? 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'
+            : 'https://sandbox.duitku.com/webapi/api/merchant/v2/inquiry';
 
         try {
-            Log::info('Duitku-POP Request:', [
+            Log::info('Duitku-V2-Inquiry Request:', [
                 'url' => $url,
                 'merchantOrderId' => $merchantOrderId,
                 'paymentAmount' => (int)$paymentAmount,
