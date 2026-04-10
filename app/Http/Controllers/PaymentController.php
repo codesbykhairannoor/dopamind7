@@ -115,7 +115,7 @@ class PaymentController extends Controller
         ];
 
         $url = $env === 'production'
-            ? 'https://passport.duitku.com/webapi/api/merchant/createinvoice'
+            ? 'https://api.duitku.com/webapi/api/merchant/createinvoice'
             : 'https://api-sandbox.duitku.com/webapi/api/merchant/createinvoice';
 
         try {
@@ -123,7 +123,7 @@ class PaymentController extends Controller
                 'url' => $url,
                 'merchantOrderId' => $merchantOrderId,
                 'paymentAmount' => (int)$paymentAmount,
-                'signature' => $signature
+                'signature_prefix' => substr($signature, 0, 8) . '***'
             ]);
 
             $response = Http::withHeaders([
