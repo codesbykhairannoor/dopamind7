@@ -9,7 +9,6 @@ import GoalModal from './GoalModal.vue';
 import GoalHeader from './GoalHeader.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
 import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
-import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -77,12 +76,7 @@ onMounted(() => {
 });
 
 const isPreviewOpen = ref(false);
-const activePreviewModule = ref('Goal');
-
-const openPremiumPreview = (module = 'Goal') => {
-    activePreviewModule.value = module;
-    isPreviewOpen.value = true;
-};
+const openPremiumPreview = () => router.visit(route('billing'));
 </script>
 
 <template>
@@ -220,10 +214,5 @@ const openPremiumPreview = (module = 'Goal') => {
 <!-- Removed LockedFeatureWall -->
         </div>
 
-        <PremiumPreviewModal 
-            :isOpen="isPreviewOpen"
-            :module="activePreviewModule"
-            @close="isPreviewOpen = false"
-        />
     </div>
 </template>

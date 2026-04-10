@@ -11,7 +11,6 @@ import HabitStats from './HabitStats.vue';
 import HabitModals from './HabitModals.vue';
 import NeuralHabitInsight from './NeuralHabitInsight.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
-import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 
 // PERSISTENT LAYOUT
 defineOptions({
@@ -51,13 +50,6 @@ const {
     isExplorer, habitsCount
 } = useHabits(props);
 
-const isPreviewOpen = ref(false);
-const activePreviewModule = ref('Habits');
-
-const openPremiumPreview = (module = 'Habits') => {
-    activePreviewModule.value = module;
-    isPreviewOpen.value = true;
-};
 
 // Intercept Mood Selection for AI
 const handleMoodSelect = async (mood) => {
@@ -179,11 +171,6 @@ const habitPremiumFeatures = [
 <!-- Removed LockedFeatureWall -->
         </div>
 
-        <PremiumPreviewModal 
-            :isOpen="isPreviewOpen"
-            :module="activePreviewModule"
-            @close="isPreviewOpen = false"
-        />
     </div>
 </template>
 

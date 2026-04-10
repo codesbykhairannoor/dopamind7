@@ -1,0 +1,58 @@
+{
+    "lock_title_required": "Architect Status Required",
+    "lock_title_ai": "Quantum Intelligence Required",
+    "btn_upgrade": "Manage Subscriptions",
+    "btn_stay": "Stay as Explorer",
+    "tier_platinum": "Platinum Suite",
+    "tier_neural": "Neural Ecosystem",
+
+    "journal": {
+        "title": "Neural Journal",
+        "description": "Unlock self-review and deep-dive mood analytics. Correlate your happiness with your productivity trajectory.",
+        "benefit_1": "Rich Media & Voice Entries",
+        "benefit_2": "Mood & Sentiment Tracking",
+        "benefit_3": "Private Biometric Lock"
+    },
+    "goal": {
+        "title": "Mission Manifest",
+        "description": "Transform vague desires into structured multi-phase goals with precision milestone tracking.",
+        "benefit_1": "Unlimited Goal Labs",
+        "benefit_2": "Sub-task Protocol Systems",
+        "benefit_3": "Visual Progress Projection"
+    },
+    "job": {
+        "title": "Career Transmissions",
+        "description": "Manage applications, optimize your master CV, and track your professional trajectory at scale.",
+        "benefit_1": "Unlimited Application Logs",
+        "benefit_2": "Resume Management Hub",
+        "benefit_3": "Market Opportunity Alerts"
+    },
+    "calendar": {
+        "title": "System Calendar",
+        "description": "A unified global timeline of your goals, habits, and tasks. View your life in 4D.",
+        "benefit_1": "Full Timeline View",
+        "benefit_2": "Gantt-Style Goal Mapping",
+        "benefit_3": "Automated Schedule Sync"
+    },
+    "planner_batch": {
+        "title": "Lightning Execution",
+        "description": "Architects log their entire daily protocol in bulk. Speed is a competitive advantage.",
+        "benefit_1": "Bulk Entry Mechanism",
+        "benefit_2": "Template Protocols",
+        "benefit_3": "Priority Matrix Mapping"
+    },
+    "ai_coach": {
+        "title": "Neural AI Hub",
+        "description": "Unlock synthetic intelligence for adaptive habit stacking and real-time synergy analysis.",
+        "benefit_1": "24/7 Personal Neural Coach",
+        "benefit_2": "Predictive Routine Tuning",
+        "benefit_3": "Deep Life Cycle Synthesis"
+    },
+    "finance_trends": {
+        "title": "Wealth Analytics",
+        "description": "Advanced visualization of your financial trajectory and asset maturity.",
+        "benefit_1": "Predictive Trend Charts",
+        "benefit_2": "Savings & Investment Labs",
+        "benefit_3": "Net Worth Forecasting"
+    }
+}

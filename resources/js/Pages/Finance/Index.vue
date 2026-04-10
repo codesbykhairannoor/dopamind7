@@ -22,7 +22,6 @@ import SavingCard from './SavingCard.vue';
 import SavingModal from './SavingModal.vue';
 import VaultTransactionModal from './VaultTransactionModal.vue';
 import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
-import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
 import { router } from '@inertiajs/vue3';
 import { Plus, Wallet, Lock, TrendingUp, Zap, ArrowRight } from 'lucide-vue-next';
@@ -61,12 +60,7 @@ const activeVault = ref(null);
 const isProcessingVaultTx = ref(false);
 
 const isPreviewOpen = ref(false);
-const activePreviewModule = ref('Finance');
-
-const openPremiumPreview = (module = 'Finance') => {
-    activePreviewModule.value = module;
-    isPreviewOpen.value = true;
-};
+const openPremiumPreview = () => router.visit(route('billing'));
 
 const handleEditSaving = (saving = null) => {
     if (isExplorer.value) return openPremiumPreview('Finance');
@@ -565,6 +559,5 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
         <CategoryModal :show="showCategoryModal" :form="categoryForm" :close="() => showCategoryModal = false" :submit="submitNewCategory" />
         <SavingModal :show="showSavingModal" :saving="activeSaving" :processing="isSavingVault" @close="showSavingModal = false" @save="(form) => form.id ? handleUpdateSaving(form) : handleStoreSaving(form)" />
         <VaultTransactionModal :show="showVaultTxModal" :saving="activeVault" :type="vaultTxType" :processing="isProcessingVaultTx" @close="showVaultTxModal = false" @save="handleVaultTransaction" />
-        <PremiumPreviewModal :isOpen="isPreviewOpen" :module="activePreviewModule" @close="isPreviewOpen = false" />
     </div>
 </template>

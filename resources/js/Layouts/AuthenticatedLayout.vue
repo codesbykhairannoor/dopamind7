@@ -5,11 +5,11 @@ import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import ThemeToggle from '@/Components/ThemeToggle.vue';
 import { useAppearance } from '@/Composables/useAppearance';
 import { useGating } from '@/Composables/useGating';
-import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
+import FeatureLockModal from '@/Components/FeatureLockModal.vue';
 
 // --- DATA USER & HALAMAN ---
 const page = usePage();
-const { isExplorer, isArchitect, isAiEnabled, canUse, user } = useGating();
+const { isExplorer, isArchitect, isAiEnabled, canUse, demandAccess, user } = useGating();
 
 // --- STATE NAVIGASI MOBILE & MODAL ---
 const showLogoutModal = ref(false);
@@ -59,13 +59,6 @@ watch(() => page.url, () => {
     showingNavigationDropdown.value = false;
 });
 
-const isPreviewOpen = ref(false);
-const activePreviewModule = ref('Coach');
-
-const openPremiumPreview = (module = 'Coach') => {
-    activePreviewModule.value = module;
-    isPreviewOpen.value = true;
-};
 </script>
 
 <template>
@@ -95,7 +88,7 @@ const openPremiumPreview = (module = 'Coach') => {
             <nav class="flex-1 px-3 space-y-0.5 overflow-y-auto py-2 custom-scrollbar transition-all duration-500" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
                 <!-- CORE SECTIONS -->
                 <div class="px-3 pt-1 pb-1">
-                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ $t('nav_core_modules', 'System core') }}</span>
+                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ $t('nav_core_modules') }}</span>
                 </div>
 
                 <Link :href="route('dashboard')" prefetch
@@ -152,11 +145,12 @@ const openPremiumPreview = (module = 'Coach') => {
 
                 <!-- PLATINUM SUITE SECTIONS -->
                 <div class="px-3 pt-4 pb-1">
-                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ $t('nav_platinum_suite', 'Platinum suite') }}</span>
+                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ $t('nav_platinum_suite') }}</span>
                 </div>
 
-                <Link v-if="showModule('journal')" :href="canUse('journal') ? route('journal.index') : route('billing')" prefetch
-                    class="flex items-center rounded-xl transition-all duration-300 group relative"
+                <div v-if="showModule('journal')"
+                    @click="demandAccess('journal', route('journal.index'))"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative cursor-pointer"
                     :class="[
                         route().current('journal.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
@@ -170,10 +164,11 @@ const openPremiumPreview = (module = 'Coach') => {
                         <div v-if="!canUse('journal')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
                     </span>
                     <div v-if="route().current('journal.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
-                </Link>
+                </div>
 
-                <Link v-if="showModule('calendar')" :href="canUse('calendar') ? route('calendar.index') : route('billing')" prefetch
-                    class="flex items-center rounded-xl transition-all duration-300 group relative"
+                <div v-if="showModule('calendar')"
+                    @click="demandAccess('calendar', route('calendar.index'))"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative cursor-pointer"
                     :class="[
                         route().current('calendar.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
@@ -187,10 +182,11 @@ const openPremiumPreview = (module = 'Coach') => {
                         <div v-if="!canUse('calendar')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
                     </span>
                     <div v-if="route().current('calendar.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
-                </Link>
+                </div>
 
-                <Link v-if="showModule('job')" :href="canUse('job') ? route('jobs.index') : route('billing')" prefetch
-                    class="flex items-center rounded-xl transition-all duration-300 group relative"
+                <div v-if="showModule('job')"
+                    @click="demandAccess('job', route('jobs.index'))"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative cursor-pointer"
                     :class="[
                         route().current('jobs.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
@@ -204,10 +200,11 @@ const openPremiumPreview = (module = 'Coach') => {
                         <div v-if="!canUse('job')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
                     </span>
                     <div v-if="route().current('jobs.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
-                </Link>
+                </div>
 
-                <Link v-if="showModule('goal')" :href="canUse('goal') ? route('goals.index') : route('billing')" prefetch
-                    class="flex items-center rounded-xl transition-all duration-300 group relative"
+                <div v-if="showModule('goal')"
+                    @click="demandAccess('goal', route('goals.index'))"
+                    class="flex items-center rounded-xl transition-all duration-300 group relative cursor-pointer"
                     :class="[
                         route().current('goals.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
                         isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3',
@@ -221,7 +218,7 @@ const openPremiumPreview = (module = 'Coach') => {
                         <div v-if="!canUse('goal')" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.5)]"></div>
                     </span>
                     <div v-if="route().current('goals.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
-                </Link>
+                </div>
 
             </nav>
             
@@ -261,7 +258,7 @@ const openPremiumPreview = (module = 'Coach') => {
                 >
                     <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <OneForMindIcon name="premium" size="18" class="shrink-0 relative z-10 animate-pulse" />
-                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-[10px] font-black uppercase tracking-widest relative z-10">{{ $t('nav_upgrade_pro', 'Go Architect') }}</span>
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-[10px] font-black uppercase tracking-widest relative z-10">{{ $t('nav_upgrade_pro') }}</span>
                 </Link>
 
                 <Link :href="route('settings.index')" prefetch
@@ -284,8 +281,8 @@ const openPremiumPreview = (module = 'Coach') => {
                         </div>
                         
                         <div v-if="!isSidebarCollapsed" class="flex-1 min-w-0 overflow-hidden">
-                            <p class="text-[10px] font-bold text-slate-800 dark:text-slate-200 truncate">{{ user?.name || 'User' }}</p>
-                            <p class="text-[9px] font-bold text-slate-400 truncate uppercase tracking-widest">{{ $t('nav_active_account', 'Active account') }}</p>
+                            <p class="text-[10px] font-bold text-slate-800 dark:text-slate-200 truncate">{{ user?.name || $t('nav_user_fallback') }}</p>
+                            <p class="text-[9px] font-bold text-slate-400 truncate uppercase tracking-widest">{{ $t('nav_active_account') }}</p>
                         </div>
                     </div>
 
@@ -321,7 +318,7 @@ const openPremiumPreview = (module = 'Coach') => {
                     </Link>
 
                     <!-- AI COACH (CENTER - PROTRUDING) -->
-                    <button @click="isExplorer ? openPremiumPreview('Coach') : router.visit(route('coach.index'))"
+                    <button @click="demandAccess('ai_coach', route('coach.index'))"
                           class="relative -top-3 lg:-top-5 flex-1 flex flex-col items-center transition-all duration-500"
                           :class="!isAiEnabled && !isExplorer ? 'opacity-40 grayscale' : ''">
                         <div class="w-14 h-14 lg:w-[4.25rem] lg:h-[4.25rem] bg-slate-900 dark:bg-indigo-600 rounded-2xl lg:rounded-[1.75rem] flex items-center justify-center shadow-lg transition-all active:scale-90 border-[4px] border-white dark:border-slate-950 overflow-hidden group">
@@ -378,7 +375,7 @@ const openPremiumPreview = (module = 'Coach') => {
         <!-- FLOATING AI COACH BUTTON (DESKTOP ONLY) -->
         <button 
             v-if="!route().current('coach.*')"
-            @click="isExplorer ? openPremiumPreview('Coach') : router.visit(route('coach.index'))"
+            @click="demandAccess('ai_coach', route('coach.index'))"
             class="hidden md:block fixed bottom-10 right-10 z-[100] group"
         >
             <div class="relative">
@@ -399,16 +396,12 @@ const openPremiumPreview = (module = 'Coach') => {
                 <!-- Hover Label -->
                 <div class="absolute right-full mr-5 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-bold px-5 py-3 rounded-2xl whitespace-nowrap opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none shadow-2xl border border-white/10 flex items-center gap-2">
                     <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                    Neural assistant active
+                    {{ $t('nav_neural_active') }}
                 </div>
             </div>
         </button>
 
-        <PremiumPreviewModal 
-            :isOpen="isPreviewOpen"
-            :module="activePreviewModule"
-            @close="isPreviewOpen = false"
-        />
+        <FeatureLockModal />
     </div>
 </template>
 

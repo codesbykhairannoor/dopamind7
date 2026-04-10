@@ -163,5 +163,16 @@
     "pricing_faq_subtitle": "Jawaban atas pertanyaan Anda",
     "pricing_l2_price_yr": "Rp 79k",
     "pricing_l3_price_yr": "Rp 109k",
-    "pricing_l4_price_yr": "Rp 899k"
+    "pricing_l4_price_yr": "Rp 899k",
+    "pricing_sub_os": "Subscription OS",
+    "pricing_boost_potential": "Tingkatkan Potensi Anda",
+    "pricing_active_now": "Aktif Sekarang",
+    "pricing_already_active": "Sudah Aktif",
+    "pricing_basic_level": "Level Dasar",
+    "pricing_matrix_title": "Matriks Kapasitas Sistem",
+    "pricing_matrix_subtitle": "Detail Teknis Pembatasan Arsitektur",
+    "feat_habit_capacity": "Kapasitas Sistem Kebiasaan",
+    "feat_planner_batch_unlocked": "Eksekusi Mode Batch",
+    "feat_finance_adv_unlocked": "Proyeksi Kekayaan Lanjutan",
+    "feat_neural_coaching_unlocked": "Neural AI Coaching Hub"
 }

@@ -165,5 +165,16 @@
     "pricing_faq_subtitle": "Answers to your burning questions",
     "pricing_l2_price_yr": "$4.99",
     "pricing_l3_price_yr": "$6.99",
-    "pricing_l4_price_yr": "$59.00"
+    "pricing_l4_price_yr": "$59.00",
+    "pricing_sub_os": "Subscription OS",
+    "pricing_boost_potential": "Elevate Your Potential",
+    "pricing_active_now": "Active Now",
+    "pricing_already_active": "Already Active",
+    "pricing_basic_level": "Basic Level",
+    "pricing_matrix_title": "System Capacity Matrix",
+    "pricing_matrix_subtitle": "Technical Details of Architectural Restrictions",
+    "feat_habit_capacity": "Habit System Capacity",
+    "feat_planner_batch_unlocked": "Batch Mode Execution",
+    "feat_finance_adv_unlocked": "Advanced Wealth Projection",
+    "feat_neural_coaching_unlocked": "Neural AI Coaching Hub"
 }

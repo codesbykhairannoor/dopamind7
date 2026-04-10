@@ -96,6 +96,12 @@
     "success_delete_habit": "Habit deleted successfully!",
     "error_delete_habit": "Failed to delete habit.",
 
+    "habit_edit_title": "Edit Habit",
+    "habit_btn_batch_mode": "Batch Mode",
+    "habit_btn_update": "Update Habit",
+    "habit_batch_promo_title": "Supercharge Your Habits",
+    "habit_batch_promo_desc": "Organize your life rituals with speed. Batch Mode allows you to design and track multiple habits instantly.",
+
     "greet_morning": "Good Morning",
     "greet_afternoon": "Good Afternoon",
     "greet_evening": "Good Evening",

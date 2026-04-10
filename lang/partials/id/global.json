@@ -10,6 +10,7 @@
     "nav_platinum_suite": "Platinum Suite",
     "nav_upgrade_pro": "Dapatkan Architect",
     "btn_upgrade_limit": "Tingkatkan Batas",
+    "btn_unlock_now": "Buka Sekarang",
     "label_usage_limit": "Batas Penggunaan",
 
     "nav_item_premium": "Buka Elite",
@@ -26,6 +27,8 @@
     "nav_item_more": "Lainnya",
     "nav_avatar": "Avatar",
     "nav_active_account": "Akun Aktif",
+    "nav_neural_active": "Asisten neural aktif",
+    "nav_user_fallback": "Pengguna",
     "theme_dark": "Mode Gelap",
     "theme_light": "Mode Terang",
 

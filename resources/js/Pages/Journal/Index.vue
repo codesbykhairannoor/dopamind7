@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 import JournalHeader from './JournalHeader.vue';
 import JournalCard from './JournalCard.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
-import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 import { useGating } from '@/Composables/useGating';
 
 const props = defineProps({
@@ -65,7 +64,7 @@ const createEntry = () => {
 };
 
 const isPreviewOpen = ref(false);
-const openPremiumPreview = () => isPreviewOpen.value = true;
+const openPremiumPreview = () => router.visit(route('billing'));
 </script>
 
 <template>
@@ -109,11 +108,6 @@ const openPremiumPreview = () => isPreviewOpen.value = true;
                 />
             </div>
 
-            <PremiumPreviewModal 
-                :isOpen="isPreviewOpen" 
-                module="Journal"
-                @close="isPreviewOpen = false" 
-            />
         </div>
     </div>
 </template>

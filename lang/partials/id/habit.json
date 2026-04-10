@@ -97,7 +97,13 @@
     "success_delete_habit": "Habit berhasil dihapus!",
     "error_delete_habit": "Gagal menghapus habit.",
 
-        "greet_morning": "Selamat Pagi",
+    "habit_edit_title": "Edit Kebiasaan",
+    "habit_btn_batch_mode": "Mode Batch",
+    "habit_btn_update": "Perbarui Kebiasaan",
+    "habit_batch_promo_title": "Optimalkan Kebiasaan Anda",
+    "habit_batch_promo_desc": "Atur ritual hidup Anda dengan cepat. Mode Batch memungkinkan Anda merancang dan melacak banyak kebiasaan sekaligus.",
+
+    "greet_morning": "Selamat Pagi",
     "greet_afternoon": "Selamat Siang",
     "greet_evening": "Selamat Sore",
     "greet_night": "Selamat Malam",

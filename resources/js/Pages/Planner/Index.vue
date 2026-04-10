@@ -6,7 +6,6 @@ import { usePlanner } from '@/Composables/Planner/usePlanner';
 import { usePlannerBatch } from '@/Composables/Planner/usePlannerBatch';
 import { usePlannerCalendar } from '@/Composables/Planner/usePlannerCalendar'; 
 import EmptyState from '@/Components/EmptyState.vue';
-import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 
 // Components
 import PlannerHeader from './PlannerHeader.vue';
@@ -32,7 +31,7 @@ defineOptions({ layout: AuthenticatedLayout });
 const { currentDate, formattedDate, changeDate, changeDay } = usePlannerCalendar(props.currentDate);
 
 // Init Gating
-const { isExplorer } = useGating();
+const { isExplorer, demandAccess } = useGating();
 
 // Logic Single (Kirim props ke usePlanner)
 const {
@@ -49,15 +48,12 @@ const {
     addBatchRow, removeBatchRow, submitBatch
 } = usePlannerBatch(currentDate, localTasks);
 
-const isPreviewOpen = ref(false);
-const openPremiumPreview = () => { isPreviewOpen.value = true; };
 
 const switchToBatch = () => { 
-    if (isExplorer.value) {
-        return openPremiumPreview();
+    if (demandAccess('planner_batch')) {
+        isModalOpen.value = false; 
+        openBatchModal(); 
     }
-    isModalOpen.value = false; 
-    openBatchModal(); 
 };
 const switchToSingle = () => { isBatchModalOpen.value = false; openModal(); };
 
@@ -168,10 +164,5 @@ onMounted(() => {
             :switchToSingle="switchToSingle"
         />
 
-        <PremiumPreviewModal 
-            :isOpen="isPreviewOpen"
-            module="Planner"
-            @close="isPreviewOpen = false"
-        />
     </div>
 </template>

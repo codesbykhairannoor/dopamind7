@@ -110,3 +110,24 @@
     position: relative;
     z-index: 1;
 }
+
+/* 🎨 GLASSMORPHISM & BENTO UTILITIES */
+.glass {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-800/20;
+}
+
+.bento-card {
+    @apply bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-300;
+}
+
+.bento-card-hover {
+    @apply hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1 dark:hover:border-indigo-500/30;
+}
+
+.ultra-shadow {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.035), 0 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dark .ultra-shadow {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 1px 0 rgba(255, 255, 255, 0.05);
+}

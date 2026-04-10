@@ -122,13 +122,13 @@ onMounted(() => {
             <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
                 <div class="max-w-2xl animate-in fade-in slide-in-from-left-8 duration-700">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-600 dark:bg-indigo-500 text-white font-black text-[9px] mb-4 uppercase tracking-[0.2em] shadow-lg shadow-indigo-200 dark:shadow-none">
-                        Subscription OS
+                        {{ $t('pricing_sub_os') }}
                     </div>
                     <h1 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">
-                        Tingkatkan <span class="text-indigo-600 dark:text-indigo-400">Potensi Anda.</span>
+                        {{ $t('pricing_boost_potential') }}
                     </h1>
                     <p class="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">
-                        Pilih level sistem yang sesuai dengan ambisi Anda saat ini. Semua pembaruan di masa mendatang sudah termasuk dalam setiap paket.
+                        {{ $t('pricing_subtitle') }}
                     </p>
                 </div>
 
@@ -137,12 +137,12 @@ onMounted(() => {
                     <button @click="isAnnual = false" 
                         class="px-6 py-2.5 rounded-xl text-xs font-black transition-all"
                         :class="!isAnnual ? 'bg-slate-950 text-white shadow-lg' : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'">
-                        Bulanan
+                        {{ $t('pricing_monthly') }}
                     </button>
                     <button @click="isAnnual = true" 
                         class="px-6 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2"
                         :class="isAnnual ? 'bg-slate-950 text-white shadow-lg' : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'">
-                        Tahunan
+                        {{ $t('pricing_yearly') }}
                         <span class="px-1.5 py-0.5 rounded-md bg-emerald-500 text-[8px] text-white">-40%</span>
                     </button>
                 </div>
@@ -162,7 +162,7 @@ onMounted(() => {
                 >
                     <!-- Badges -->
                     <div v-if="plan.tier === userTier" class="absolute -top-3 left-8 px-4 py-1 rounded-full bg-emerald-500 text-white text-[8px] font-black uppercase tracking-widest shadow-lg">
-                        Aktif Sekarang
+                        {{ $t('pricing_active_now') }}
                     </div>
                     <div v-else-if="plan.badge" class="absolute -top-3 left-8 px-4 py-1 rounded-full bg-indigo-600 text-white text-[8px] font-black uppercase tracking-widest shadow-lg">
                         {{ $t(plan.badge) }}
@@ -208,7 +208,7 @@ onMounted(() => {
                                         : 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-[1.02]'
                         ]"
                     >
-                        {{ plan.tier === userTier ? 'Sudah Aktif' : plan.tier < userTier ? 'Level Dasar' : $t(plan.buttonText) }}
+                        {{ plan.tier === userTier ? $t('pricing_already_active') : plan.tier < userTier ? $t('pricing_basic_level') : $t(plan.buttonText) }}
                     </button>
                     
                     <p v-if="plan.tier > userTier && plan.initial" class="text-center mt-4 text-[9px] font-bold text-indigo-500 animate-pulse">
@@ -220,18 +220,18 @@ onMounted(() => {
             <!-- Internal System Gating Comparison -->
             <div class="mt-32 max-w-4xl mx-auto">
                 <div class="text-center mb-16">
-                    <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-2">Matriks Kapasitas Sistem</h2>
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Detail Teknis Pembatasan Arsitektur</p>
+                    <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-2">{{ $t('pricing_matrix_title') }}</h2>
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">{{ $t('pricing_matrix_subtitle') }}</p>
                 </div>
 
                 <div class="space-y-3">
                     <div v-for="f in [
-                        { name: 'Kapasitas Habit Aktif', explorer: '5', architect: 'Unlimited', quantum: 'Unlimited' },
-                        { name: 'Planner Batch Mode', explorer: 'Standard', architect: 'Terbuka', quantum: 'Terbuka' },
-                        { name: 'Modul Savings & Trend', explorer: 'Standard', architect: 'Terbuka', quantum: 'Terbuka' },
-                        { name: 'Neural Coaching AI', explorer: '—', architect: '—', quantum: 'Terbuka' }
+                        { name: 'feat_habit_capacity', explorer: '5', architect: 'Unlimited', quantum: 'Unlimited' },
+                        { name: 'feat_planner_batch_unlocked', explorer: 'Standard', architect: 'Terbuka', quantum: 'Terbuka' },
+                        { name: 'feat_finance_adv_unlocked', explorer: 'Standard', architect: 'Terbuka', quantum: 'Terbuka' },
+                        { name: 'feat_neural_coaching_unlocked', explorer: '—', architect: '—', quantum: 'Terbuka' }
                     ]" :key="f.name" class="flex items-center justify-between p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 group hover:border-indigo-200 dark:hover:border-indigo-800 transition-all">
-                        <span class="text-xs font-black text-slate-800 dark:text-slate-200 uppercase tracking-tighter">{{ f.name }}</span>
+                        <span class="text-xs font-black text-slate-800 dark:text-slate-200 uppercase tracking-tighter">{{ $t(f.name) }}</span>
                         <div class="flex gap-4 sm:gap-12">
                             <div class="flex flex-col items-center">
                                 <span class="text-[8px] font-bold text-slate-400 uppercase">Free</span>

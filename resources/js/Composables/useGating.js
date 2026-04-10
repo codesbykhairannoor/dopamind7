@@ -1,6 +1,12 @@
-import { computed } from 'vue';
-import { usePage } from '@inertiajs/vue3';
+import { computed, reactive } from 'vue';
+import { usePage, router } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
+
+// Global state for gating modal
+const gatingState = reactive({
+    isOpen: false,
+    activeFeature: null,
+});
 
 export const useGating = () => {
     const page = usePage();
@@ -16,32 +22,19 @@ export const useGating = () => {
         return plans[user.value?.plan_type] || 1;
     });
 
-    /**
-     * Tiers:
-     * 1: Explorer (Free)
-     * 2: Architect (Pro)
-     * 3: Quantum (Elite)
-     * 4: Legendary (Infinite)
-     */
-
     const isAiEnabled = computed(() => {
         if (!user.value) return false;
-        
-        // AI is strictly Quantum (Tier 3)
         if (user.value.plan_type === 'quantum') return true;
-        
-        // Legendary (Tier 4) gets 2 months bonus AI upon registration
         if (user.value.plan_type === 'legendary') {
             const createdAt = dayjs(user.value.created_at);
             const bonusExpiry = createdAt.add(2, 'month');
             return dayjs().isBefore(bonusExpiry);
         }
-
         return false;
     });
 
     const isExplorer = computed(() => tier.value === 1);
-    const isArchitect = computed(() => tier.value >= 2); // Architect, Quantum, and Legendary all count as Architect+
+    const isArchitect = computed(() => tier.value >= 2);
     const isQuantum = computed(() => tier.value === 3);
     const isLegendary = computed(() => tier.value === 4);
 
@@ -49,30 +42,19 @@ export const useGating = () => {
         if (!user.value) return false;
 
         switch (feature) {
-            // HABITS
             case 'unlimited_habits':
-                return isArchitect.value;
-            
-            // PLANNER
             case 'planner_batch':
-                return isArchitect.value;
-
-            // FINANCE
-            case 'finance_savings':     // Menabung
-            case 'finance_trends':      // Trend Chart
-            case 'finance_investment':  // Investment Lab
+            case 'finance_savings':
+            case 'finance_trends':
+            case 'finance_investment':
             case 'finance_budgeting':
             case 'finance_export':
-                return isArchitect.value;
-
-            // MODULES (Platinum Suite)
             case 'journal':
             case 'goal':
             case 'job':
             case 'calendar':
                 return isArchitect.value;
 
-            // AI FEATURES
             case 'ai_coach':
             case 'ai_analysis':
             case 'ai_insight':
@@ -85,7 +67,31 @@ export const useGating = () => {
         }
     };
 
+    /**
+     * Smart redirect or modal trigger
+     * @param {string} feature 
+     * @param {string} targetRoute 
+     */
+    const demandAccess = (feature, targetRoute) => {
+        if (canUse(feature)) {
+            if (targetRoute) router.visit(targetRoute);
+            return true;
+        } else {
+            gatingState.activeFeature = feature;
+            gatingState.isOpen = true;
+            return false;
+        }
+    };
+
+    const closeGating = () => {
+        gatingState.isOpen = false;
+        gatingState.activeFeature = null;
+    };
+
     return {
+        gatingState,
+        demandAccess,
+        closeGating,
         tier,
         canUse,
         isAiEnabled,

@@ -11,6 +11,7 @@
     "nav_platinum_suite": "Platinum Suite",
     "nav_upgrade_pro": "Get Architect",
     "btn_upgrade_limit": "Upgrade Limit",
+    "btn_unlock_now": "Unlock Now",
     "label_usage_limit": "Usage Limit",
 
     "nav_item_premium": "Go Elite",
@@ -27,6 +28,8 @@
     "nav_item_more": "More",
     "nav_avatar": "Avatar",
     "nav_active_account": "Active Account",
+    "nav_neural_active": "Neural assistant active",
+    "nav_user_fallback": "User",
     "theme_dark": "Dark Mode",
     "theme_light": "Light Mode",
     

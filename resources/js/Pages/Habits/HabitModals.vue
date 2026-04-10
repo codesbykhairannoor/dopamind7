@@ -67,61 +67,65 @@ defineProps({
         </div>
     </div>
     
-    <div v-if="showCreateModal" class="fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-4 pb-32 sm:pb-4 transition-all duration-500">
+    <div v-if="showCreateModal" class="fixed inset-0 z-[70] flex items-center justify-center p-4 transition-all duration-500">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="closeModal"></div>
-        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 md:p-8 w-full max-w-lg relative z-10 shadow-2xl dark:shadow-none animate-in slide-in-from-bottom-10 sm:zoom-in-95 border border-slate-100 dark:border-slate-800 max-h-[85vh] overflow-y-auto custom-scrollbar">
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 md:p-8 w-full max-w-lg relative z-10 shadow-2xl dark:shadow-none animate-in slide-in-from-bottom-10 sm:zoom-in-95 border border-slate-100 dark:border-slate-800 max-h-[90vh] overflow-y-auto custom-scrollbar flex flex-col">
             
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex justify-between items-center mb-6 shrink-0">
                 <div>
                     <h3 class="text-xl md:text-2xl font-black text-slate-800 dark:text-slate-100">
-                        {{ isEditing ? 'Edit habit' : $t('habit_modal_title') }}
+                        {{ isEditing ? $t('habit_edit_title', 'Edit Habit') : $t('habit_modal_title') }}
                     </h3>
                     <button v-if="!isEditing" @click="switchToBatch" type="button" 
                         class="text-[10px] font-black tracking-tight px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition flex items-center gap-1.5 active:scale-95 w-fit border border-indigo-100 dark:border-indigo-500/30 mt-2">
-                        <span>⚡</span> Batch mode
+                        <span>⚡</span> {{ $t('habit_btn_batch_mode', 'Batch Mode') }}
                     </button>
                 </div>
                 <button @click="closeModal" class="bg-slate-100 dark:bg-slate-800 w-8 h-8 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition -mt-6">✕</button>
             </div>
 
-            <form @submit.prevent="submitHabit" class="space-y-5">
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-2 block ml-1">{{ $t('habit_modal_question') }}</label>
-                    <input v-model="form.name" class="w-full text-base md:text-lg font-bold py-3 px-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 focus:border-indigo-500 transition" placeholder="Contoh: Lari Pagi" required>
+            <form @submit.prevent="submitHabit" class="space-y-6 flex-1 overflow-y-auto pr-1">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-1">{{ $t('habit_modal_question') }}</label>
+                    <input v-model="form.name" class="w-full text-base md:text-lg font-bold py-4 px-5 rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 focus:border-indigo-500 focus:bg-white dark:focus:bg-slate-900 transition-all outline-none" :placeholder="$t('habit_name_placeholder', 'Example: Morning Run...')" required>
                 </div>
 
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-2 block ml-1">{{ $t('habit_modal_icon') }}</label>
-                    <div class="grid grid-cols-6 gap-2 bg-slate-50 dark:bg-slate-950/50 p-2 rounded-xl border border-slate-100 dark:border-slate-800 max-h-32 md:max-h-40 overflow-y-auto custom-scrollbar">
+                <div class="space-y-2">
+                    <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-1">{{ $t('habit_modal_icon') }}</label>
+                    <div class="grid grid-cols-6 gap-2 bg-slate-50/50 dark:bg-slate-950/50 p-3 rounded-2xl border border-slate-100 dark:border-slate-800 max-h-32 md:max-h-40 overflow-y-auto custom-scrollbar shadow-inner">
                         <button type="button" v-for="icon in iconList" :key="icon" @click="form.icon = icon"
-                            class="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center text-lg md:text-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm transition"
+                            class="w-10 h-10 rounded-xl flex items-center justify-center text-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm transition"
                             :class="form.icon === icon ? 'bg-white dark:bg-slate-800 shadow-md ring-2 ring-indigo-500 scale-110' : 'opacity-60 grayscale hover:grayscale-0 hover:opacity-100'">
                             {{ icon }}
                         </button>
                     </div>
                 </div>
 
-                <div class="flex gap-4 md:gap-6">
-                    <div class="flex-1">
-                        <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-2 block ml-1">{{ $t('habit_modal_color') }}</label>
-                        <div class="flex flex-wrap gap-2">
-                            <button type="button" v-for="c in colorPalette" :key="c" @click="form.color = c" class="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition hover:scale-110 shadow-sm" :style="{ backgroundColor: c }">
-                                <span v-if="form.color === c" class="text-white font-bold text-xs">✓</span>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-1">{{ $t('habit_modal_color') }}</label>
+                        <div class="flex flex-wrap gap-2.5">
+                            <button type="button" v-for="c in colorPalette" :key="c" @click="form.color = c" class="w-8 h-8 rounded-full flex items-center justify-center transition hover:scale-110 shadow-sm border-2 border-transparent" :class="form.color === c ? 'border-white dark:border-slate-900 ring-2 ring-indigo-500' : ''" :style="{ backgroundColor: c }">
                             </button>
                         </div>
                     </div>
-                    <div class="flex-1">
-                        <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-2 block ml-1">{{ $t('habit_modal_target') }}: {{ form.monthly_target }}</label>
-                        <input v-model="form.monthly_target" type="range" min="1" max="31" class="w-full accent-indigo-600 h-2 bg-slate-200 dark:bg-slate-800 rounded-lg cursor-pointer mt-3">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center ml-1">
+                            <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">{{ $t('habit_modal_target') }}</label>
+                            <span class="text-xs font-black text-indigo-600 dark:text-indigo-400">{{ form.monthly_target }} {{ $t('label_days') }}</span>
+                        </div>
+                        <div class="pt-2">
+                            <input v-model="form.monthly_target" type="range" min="1" max="31" class="w-full accent-indigo-600 h-2 bg-slate-200 dark:bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
                     </div>
                 </div>
 
-                <div class="flex gap-3 pt-2">
-                    <button v-if="isEditing" type="button" @click="deleteFromEdit" class="px-4 py-3 rounded-xl font-bold text-rose-500 dark:text-rose-400 bg-rose-50 dark:bg-rose-500/10 hover:bg-rose-100 dark:hover:bg-rose-500/20 transition flex items-center justify-center border border-rose-100 dark:border-rose-500/30" title="Hapus Habit">
+                <div class="flex gap-3 pt-6 shrink-0 bg-white dark:bg-slate-900 sticky bottom-0 border-t border-slate-50 dark:border-slate-800 mt-4 py-2">
+                    <button v-if="isEditing" type="button" @click="deleteFromEdit" class="w-12 h-12 rounded-xl text-xl bg-rose-50 dark:bg-rose-500/10 text-rose-500 hover:bg-rose-100 dark:hover:bg-rose-500/20 transition flex items-center justify-center border border-rose-100 dark:border-rose-500/30 shrink-0" title="Hapus Habit">
                         🗑️
                     </button>
-                    <button type="submit" class="flex-1 py-3 md:py-4 rounded-xl font-bold text-white bg-indigo-950 dark:bg-indigo-500 hover:bg-indigo-900 dark:hover:bg-indigo-600 shadow-xl dark:shadow-none transition transform hover:-translate-y-1" :disabled="form.processing">
-                        {{ isEditing ? 'Update habit' : $t('habit_modal_btn_save') }}
+                    <button type="submit" class="flex-1 py-4 rounded-2xl font-black text-sm text-white bg-slate-900 dark:bg-indigo-600 hover:opacity-90 shadow-xl transition-all active:scale-[0.98]" :disabled="form.processing">
+                        {{ isEditing ? $t('habit_btn_update', 'Update Habit') : $t('habit_modal_btn_save') }}
                     </button>
                 </div>
             </form>

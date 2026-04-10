@@ -1,285 +1,273 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { Link, router } from '@inertiajs/vue3';
+import { computed, ref, onMounted } from 'vue';
+import { Head, Link, router } from '@inertiajs/vue3';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
-import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
-import { Gem, Sparkles, ArrowRight, Zap, Target, Briefcase, Calendar, BookText, Settings, ShieldCheck } from 'lucide-vue-next';
+import { 
+    Gem, Sparkles, ArrowRight, Zap, Target, Briefcase, 
+    Calendar, BookText, Settings, ShieldCheck, Search,
+    LayoutGrid, Beaker, UserCircle, LogOut, Info
+} from 'lucide-vue-next';
 import { useGating } from '@/Composables/useGating';
 
-const { isExplorer, isArchitect, isQuantum, isLegendary, canUse } = useGating();
+const { isExplorer, isArchitect, isQuantum, isLegendary, canUse, demandAccess } = useGating();
 
-const isPreviewOpen = ref(false);
-const activePreviewModule = ref('Journal');
-
-const handleFeatureClick = (feature, targetRoute, moduleKey) => {
-    if (canUse(feature)) {
-        router.visit(targetRoute);
-    } else {
-        activePreviewModule.value = moduleKey;
-        isPreviewOpen.value = true;
-    }
+const handleFeatureClick = (feature, targetRoute) => {
+    demandAccess(feature, targetRoute);
 };
 
 const ctaConfig = computed(() => {
     if (isLegendary.value) return null;
     if (isQuantum.value) return {
-        label: 'Quantum Status Active',
+        label: 'Quantum Active',
         title: 'Neural access granted.',
-        desc: 'You have full access to the OneForMind Neural Ecosystem.',
-        btnText: 'Manage Subscription',
+        desc: 'You are operating within the full Neural Ecosystem.',
+        btnText: 'Subscription Console',
         route: 'billing'
     };
     if (isArchitect.value) return {
-        label: 'Upgrade to Quantum',
-        title: 'Unlock Neural Power.',
-        desc: 'Access AI-powered insights, neural forecasting, and automated manifest tools.',
-        btnText: 'Get Quantum Access',
+        label: 'Enhance to Quantum',
+        title: 'Unlock Synthetic Intelligence.',
+        desc: 'Access neural forecasting and automated workflow manifest tools.',
+        btnText: 'Quantum Upgrade',
         route: 'billing'
     };
     return {
-        label: 'Become an Architect',
-        title: 'Desain Hidup Tanpa Batas.',
-        desc: 'Buka akses ke Platinum Suite dan ekosistem performa tinggi.',
-        btnText: 'Join the Elite Tier',
+        label: 'Architect Tier',
+        title: 'Design Without Limits.',
+        desc: 'Unlock the Platinum Suite and the high-performance ecosystem.',
+        btnText: 'Initiate Upgrade',
         route: 'billing'
     };
+});
+
+onMounted(() => {
+    // Animation trigger could go here
 });
 </script>
 
 <template>
+    <Head :title="$t('nav_more')" />
+
     <AuthenticatedLayout>
-        <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-40 animate-in fade-in duration-700 px-6 transition-colors duration-500">
+        <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-40 transition-colors duration-500 px-4 md:px-8">
             
-            <!-- Launchpad Header (Redesigned for Premium Look) -->
-            <div class="pt-16 pb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-                <div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-8 h-[2px] bg-indigo-500 rounded-full"></span>
-                        <p class="text-indigo-500 dark:text-indigo-400 font-black uppercase tracking-[0.3em] text-[9px]">
-                            {{ isLegendary ? 'Legendary OS' : isQuantum ? 'Quantum OS' : isArchitect ? 'Architect OS' : 'Explorer OS' }}
-                        </p>
-                    </div>
-                    <h1 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter transition-colors duration-500">
-                         Universal Terminal
-                    </h1>
-                </div>
-
-                <div v-if="isLegendary" class="flex items-center gap-3 bg-white dark:bg-slate-900 px-5 py-3 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-md cursor-default group">
-                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-200 dark:shadow-none transition-transform group-hover:scale-110">
-                        <Gem :size="20" stroke-width="2.5" />
-                    </div>
-                    <div class="text-left">
-                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Lifetime</p>
-                        <p class="text-xs font-black text-slate-800 dark:text-white leading-none">Legendary Tier</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Core Grid (High Density) -->
-            <div class="space-y-10">
-                <!-- Productivity Essentials -->
-                <div>
-                    <div class="px-1 mb-5 flex items-center justify-between">
-                         <span class="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em] flex items-center gap-2">
-                             <Target :size="12" /> Productivity Essentials
-                         </span>
+            <!-- ⚡ HEADER & COMMAND BAR -->
+            <div class="max-w-[1200px] mx-auto pt-16 md:pt-24 lg:pt-32 pb-16">
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-10 mb-16">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="w-8 h-[2px] bg-indigo-500 rounded-full"></span>
+                            <p class="text-indigo-500 dark:text-indigo-400 font-black uppercase tracking-[0.4em] text-[9px]">
+                                {{ isLegendary ? 'Legendary OS' : isQuantum ? 'Quantum Terminal' : isArchitect ? 'Architect Console' : 'Explorer Core' }}
+                            </p>
+                        </div>
+                        <h1 class="text-5xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter transition-colors duration-500">
+                             Launchpad
+                        </h1>
                     </div>
 
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <!-- Habits -->
-                        <Link :href="route('habits.index')" 
-                              class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group overflow-hidden relative">
-                            <div class="absolute -right-4 -bottom-4 text-indigo-500/5 group-hover:scale-150 transition-transform duration-700">
-                                <OneForMindIcon name="habit" size="80" />
-                            </div>
-                            <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center group-hover:bg-indigo-600 dark:group-hover:bg-indigo-50 transition-all duration-300 relative z-10">
-                                <OneForMindIcon name="habit" size="24" stroke-width="2.5" />
-                            </div>
-                            <div class="relative z-10">
-                                <span class="block font-black text-slate-800 dark:text-slate-100 text-sm md:text-base leading-none mb-1">Habits</span>
-                                <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500">Architecture</span>
-                            </div>
-                        </Link>
-
-                        <!-- Planner -->
-                        <Link :href="route('planner.index')" 
-                              class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group overflow-hidden relative">
-                            <div class="absolute -right-4 -bottom-4 text-purple-500/5 group-hover:scale-150 transition-transform duration-700">
-                                <OneForMindIcon name="planner" size="80" />
-                            </div>
-                            <div class="w-12 h-12 bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-2xl flex items-center justify-center group-hover:bg-purple-600 dark:group-hover:bg-purple-50 transition-all duration-300 relative z-10">
-                                <OneForMindIcon name="planner" size="24" stroke-width="2.5" />
-                            </div>
-                            <div class="relative z-10">
-                                <span class="block font-black text-slate-800 dark:text-slate-100 text-sm md:text-base leading-none mb-1">Planner</span>
-                                <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500">Daily Flow</span>
-                            </div>
-                        </Link>
-
-                        <!-- Finance -->
-                        <Link :href="route('finance.index')" 
-                              class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group overflow-hidden relative">
-                            <div class="absolute -right-4 -bottom-4 text-emerald-500/5 group-hover:scale-150 transition-transform duration-700">
-                                <OneForMindIcon name="finance" size="80" />
-                            </div>
-                            <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center group-hover:bg-emerald-600 dark:group-hover:bg-emerald-50 transition-all duration-300 relative z-10">
-                                <OneForMindIcon name="finance" size="24" stroke-width="2.5" />
-                            </div>
-                            <div class="relative z-10">
-                                <span class="block font-black text-slate-800 dark:text-slate-100 text-sm md:text-base leading-none mb-1">Finance</span>
-                                <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500">Asset Control</span>
-                            </div>
-                        </Link>
-
-                        <!-- Goals -->
-                         <div @click="handleFeatureClick('goal', route('goals.index'), 'Goal')" 
-                              class="bg-white dark:bg-slate-900 p-6 rounded-[2.2rem] shadow-sm border border-slate-100 dark:border-slate-800 flex flex-col gap-4 active:scale-95 transition-all group overflow-hidden relative cursor-pointer">
-                            <div v-if="isExplorer" class="absolute top-4 right-4 text-amber-500/40">
-                                <Gem :size="14" />
-                            </div>
-                            <div class="absolute -right-4 -bottom-4 text-amber-500/5 group-hover:scale-150 transition-transform duration-700">
-                                <OneForMindIcon name="goal" size="80" />
-                            </div>
-                            <div class="w-12 h-12 bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-2xl flex items-center justify-center group-hover:bg-amber-600 dark:group-hover:bg-amber-50 transition-all duration-300 relative z-10">
-                                <OneForMindIcon name="goal" size="24" stroke-width="2.5" />
-                            </div>
-                            <div class="relative z-10">
-                                <span class="block font-black text-slate-800 dark:text-slate-100 text-sm md:text-base leading-none mb-1">Goal Lab</span>
-                                <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500">Strategic Target</span>
+                    <!-- Search Bar Placeholder (Notion-esque) -->
+                    <div class="w-full md:w-80 group cursor-text">
+                        <div class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-white/5 shadow-sm rounded-2xl flex items-center px-4 py-3.5 group-hover:shadow-md dark:group-hover:border-indigo-500/20 transition-all">
+                            <Search :size="18" class="text-slate-400 mr-3" />
+                            <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Quick Find...</span>
+                            <div class="ml-auto flex items-center gap-1 opacity-20">
+                                <span class="bg-slate-200 dark:bg-white/10 px-1.5 py-0.5 rounded text-[10px]">CMD</span>
+                                <span class="bg-slate-200 dark:bg-white/10 px-1.5 py-0.5 rounded text-[10px]">K</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Platinum Extensions -->
-                <div>
-                    <div class="px-1 mb-5 flex items-center justify-between">
-                         <span class="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em] flex items-center gap-2">
-                             <Sparkles :size="12" /> Platinum Extensions
-                         </span>
-                    </div>
-
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                         <!-- Journal -->
-                        <div @click="handleFeatureClick('journal', route('journal.index'), 'Journal')" 
-                              class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 flex items-center gap-5 hover:border-indigo-500/30 transition-all cursor-pointer group active:scale-95">
-                            <div class="w-12 h-12 bg-teal-50 dark:bg-teal-500/10 text-teal-600 dark:text-teal-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <BookText :size="20" />
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-black text-slate-800 dark:text-white leading-none mb-1">Journal</h4>
-                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Self Review</p>
-                            </div>
-                            <div v-if="isExplorer" class="ml-auto opacity-30"><Gem :size="12" /></div>
+                <!-- ⚡ EXPLORATION GRID -->
+                <div class="space-y-20">
+                    
+                    <!-- [SECTION 1] CORE WORKSPACE -->
+                    <section>
+                        <div class="flex items-center gap-3 mb-8 px-2">
+                             <LayoutGrid :size="16" class="text-slate-400" />
+                             <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Core Workspace</h2>
                         </div>
 
-                        <!-- Calendar -->
-                        <div @click="handleFeatureClick('calendar', route('calendar.index'), 'Calendar')" 
-                              class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 flex items-center gap-5 hover:border-indigo-500/30 transition-all cursor-pointer group active:scale-95">
-                            <div class="w-12 h-12 bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <Calendar :size="20" />
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-black text-slate-800 dark:text-white leading-none mb-1">Schedule</h4>
-                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Master Plan</p>
-                            </div>
-                            <div v-if="isExplorer" class="ml-auto opacity-30"><Gem :size="12" /></div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Habits -->
+                            <Link :href="route('habits.index')" class="bento-card bento-card-hover p-8 flex flex-col items-start gap-12 group">
+                                <div class="w-14 h-14 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center transition-all duration-300">
+                                    <OneForMindIcon name="habit" size="28" />
+                                </div>
+                                <div class="w-full flex items-end justify-between">
+                                    <div>
+                                        <h3 class="text-xl font-black text-slate-800 dark:text-white tracking-tight mb-1">Habit Systems</h3>
+                                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Identity Building</p>
+                                    </div>
+                                    <ArrowRight :size="16" class="text-slate-300 group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </Link>
+
+                            <!-- Planner -->
+                            <Link :href="route('planner.index')" class="bento-card bento-card-hover p-8 flex flex-col items-start gap-12 group">
+                                <div class="w-14 h-14 bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-2xl flex items-center justify-center transition-all duration-300">
+                                    <OneForMindIcon name="planner" size="28" />
+                                </div>
+                                <div class="w-full flex items-end justify-between">
+                                    <div>
+                                        <h3 class="text-xl font-black text-slate-800 dark:text-white tracking-tight mb-1">Daily Flow</h3>
+                                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Task Execution</p>
+                                    </div>
+                                    <ArrowRight :size="16" class="text-slate-300 group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </Link>
+
+                            <!-- Finance -->
+                            <Link :href="route('finance.index')" class="bento-card bento-card-hover p-8 flex flex-col items-start gap-12 group">
+                                <div class="w-14 h-14 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-2xl flex items-center justify-center transition-all duration-300">
+                                    <OneForMindIcon name="finance" size="28" />
+                                </div>
+                                <div class="w-full flex items-end justify-between">
+                                    <div>
+                                        <h3 class="text-xl font-black text-slate-800 dark:text-white tracking-tight mb-1">Asset Lab</h3>
+                                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Resources & Flow</p>
+                                    </div>
+                                    <ArrowRight :size="16" class="text-slate-300 group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </Link>
+                        </div>
+                    </section>
+
+                    <!-- [SECTION 2] THE NEURAL LAB (PRO/QUANTUM) -->
+                    <section>
+                        <div class="flex items-center gap-3 mb-8 px-2">
+                             <Beaker :size="16" class="text-slate-400" />
+                             <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Scientific Pillar</h2>
                         </div>
 
-                        <!-- Job Tracker -->
-                        <div @click="handleFeatureClick('job', route('jobs.index'), 'Jobs')" 
-                              class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 flex items-center gap-5 hover:border-indigo-500/30 transition-all cursor-pointer group active:scale-95">
-                            <div class="w-12 h-12 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <Briefcase :size="20" />
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                            <!-- Goal Lab -->
+                            <div @click="handleFeatureClick('goal', route('goals.index'))" class="bento-card bento-card-hover p-6 md:p-8 flex flex-col gap-6 cursor-pointer group">
+                                <div class="flex items-center justify-between">
+                                    <div class="w-12 h-12 bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 rounded-xl flex items-center justify-center">
+                                        <Target :size="20" />
+                                    </div>
+                                    <Gem v-if="isExplorer" :size="14" class="text-amber-500/30" />
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-slate-800 dark:text-white text-sm mb-1 line-clamp-1">Grand Missions</h4>
+                                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Goal Engine</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="text-sm font-black text-slate-800 dark:text-white leading-none mb-1">Career</h4>
-                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Job Tracker</p>
+
+                            <!-- Journal -->
+                            <div @click="handleFeatureClick('journal', route('journal.index'))" class="bento-card bento-card-hover p-6 md:p-8 flex flex-col gap-6 cursor-pointer group">
+                                <div class="flex items-center justify-between">
+                                    <div class="w-12 h-12 bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 rounded-xl flex items-center justify-center">
+                                        <BookText :size="20" />
+                                    </div>
+                                    <Gem v-if="isExplorer" :size="14" class="text-rose-500/30" />
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-slate-800 dark:text-white text-sm mb-1 line-clamp-1">Personal Logs</h4>
+                                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Deep Review</p>
+                                </div>
                             </div>
-                            <div v-if="isExplorer" class="ml-auto opacity-30"><Gem :size="12" /></div>
+
+                            <!-- Career -->
+                            <div @click="handleFeatureClick('job', route('jobs.index'))" class="bento-card bento-card-hover p-6 md:p-8 flex flex-col gap-6 cursor-pointer group">
+                                <div class="flex items-center justify-between">
+                                    <div class="w-12 h-12 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center">
+                                        <Briefcase :size="20" />
+                                    </div>
+                                    <Gem v-if="isExplorer" :size="14" class="text-blue-500/30" />
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-slate-800 dark:text-white text-sm mb-1 line-clamp-1">Career Transmissions</h4>
+                                    <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Market Opt.</p>
+                                </div>
+                            </div>
+
+                            <!-- Neural Hub -->
+                            <div @click="handleFeatureClick('ai_coach', route('coach.index'))" class="bento-card bento-card-hover p-6 md:p-8 flex flex-col gap-6 cursor-pointer group border-indigo-500/20 bg-indigo-50/10 dark:bg-indigo-500/5">
+                                <div class="flex items-center justify-between">
+                                    <div class="w-12 h-12 bg-indigo-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-indigo-100 dark:shadow-none">
+                                        <Sparkles :size="20" />
+                                    </div>
+                                    <Gem v-if="!isQuantum" :size="14" class="text-indigo-500/30" />
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-indigo-600 dark:text-indigo-400 text-sm mb-1 line-clamp-1">Neural Hub</h4>
+                                    <p class="text-[9px] font-bold text-indigo-400/60 uppercase tracking-widest">AI Synthesis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- [SECTION 3] SYSTEM CORE -->
+                    <section>
+                        <div class="flex items-center gap-3 mb-8 px-2">
+                             <Settings :size="16" class="text-slate-400" />
+                             <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">System Manifest</h2>
                         </div>
 
-                         <!-- Profile Settings (Quick Access) -->
-                        <Link :href="route('profile.edit')" 
-                              class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 flex items-center gap-5 hover:border-indigo-500/30 transition-all group active:scale-95">
-                            <div class="w-12 h-12 bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-400 rounded-2xl flex items-center justify-center group-hover:bg-slate-900 dark:group-hover:bg-white dark:group-hover:text-slate-900 group-hover:text-white transition-all">
-                                <Settings :size="20" />
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-black text-slate-800 dark:text-white leading-none mb-1">Settings</h4>
-                                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Configuration</p>
-                            </div>
-                        </Link>
-                    </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <!-- Settings -->
+                            <Link :href="route('profile.edit')" class="bento-card hover:bg-slate-50 dark:hover:bg-white/5 p-6 flex flex-col gap-4">
+                                <div class="text-slate-400"><UserCircle :size="18" /></div>
+                                <h4 class="text-xs font-black text-slate-800 dark:text-white tracking-widest uppercase">{{ $t('profile_settings') }}</h4>
+                            </Link>
+
+                            <!-- Billing -->
+                            <Link :href="route('billing')" class="bento-card hover:bg-slate-50 dark:hover:bg-white/5 p-6 flex flex-col gap-4">
+                                <div class="text-slate-400"><Gem :size="18" /></div>
+                                <h4 class="text-xs font-black text-slate-800 dark:text-white tracking-widest uppercase">Tier Console</h4>
+                            </Link>
+
+                            <!-- About/Help -->
+                            <Link :href="route('about')" class="bento-card hover:bg-slate-50 dark:hover:bg-white/5 p-6 flex flex-col gap-4">
+                                <div class="text-slate-400"><Info :size="18" /></div>
+                                <h4 class="text-xs font-black text-slate-800 dark:text-white tracking-widest uppercase">Knowledge Base</h4>
+                            </Link>
+
+                            <!-- Logout -->
+                            <Link :href="route('logout')" method="post" as="button" class="bento-card hover:bg-rose-50 dark:hover:bg-rose-500/10 p-6 flex flex-col gap-4 text-left">
+                                <div class="text-rose-400"><LogOut :size="18" /></div>
+                                <h4 class="text-xs font-black text-rose-500 tracking-widest uppercase">Terminate Session</h4>
+                            </Link>
+                        </div>
+                    </section>
                 </div>
 
-                <!-- Premium Lifecycle CTA -->
-                <transition enter-active-class="transition-all duration-700 ease-out" enter-from-class="opacity-0 translate-y-10 scale-95" enter-to-class="opacity-100 translate-y-0 scale-100">
-                    <Link v-if="ctaConfig" :href="route(ctaConfig.route)" 
-                          class="bg-slate-900 dark:bg-indigo-950 rounded-[3rem] p-10 text-white shadow-2xl relative overflow-hidden group active:scale-[0.98] transition-all duration-500 block border border-white/5">
-                        
-                        <!-- Mesh Gradient Background -->
+                <!-- ⚡ PREMIUM LIFECYCLE CTA -->
+                <div v-if="ctaConfig" class="mt-32">
+                     <Link :href="route(ctaConfig.route)" class="block bg-slate-900 dark:bg-indigo-950 rounded-[3rem] p-12 text-white relative overflow-hidden group shadow-2xl ultra-shadow border border-white/10 active:scale-[0.98] transition-all">
                         <div class="absolute inset-x-0 bottom-0 top-0 bg-gradient-to-br from-indigo-600/30 via-transparent to-transparent opacity-60"></div>
                         <div class="absolute -top-10 -right-10 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl group-hover:scale-125 transition-transform duration-1000"></div>
-                        
-                        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-10">
+
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-12">
                             <div class="max-w-xl">
-                                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/30 text-indigo-200 text-[10px] font-black mb-6 uppercase tracking-[0.2em] backdrop-blur-md border border-indigo-500/30 animate-pulse">
-                                    <Sparkles :size="12" />
+                                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/30 text-indigo-200 text-[10px] font-black mb-10 uppercase tracking-[0.2em] backdrop-blur-md border border-indigo-500/30">
+                                    <ShieldCheck :size="12" />
                                     <span>{{ ctaConfig.label }}</span>
                                 </div>
-                                <h4 class="text-3xl md:text-4xl font-black mb-4 tracking-tighter leading-tight group-hover:translate-x-1 transition-transform">{{ ctaConfig.title }}</h4>
-                                <p class="text-indigo-200/60 text-sm font-bold leading-relaxed">
-                                    {{ ctaConfig.desc }}
-                                </p>
+                                <h4 class="text-4xl md:text-5xl font-black mb-6 tracking-tighter leading-tight">{{ ctaConfig.title }}</h4>
+                                <p class="text-indigo-200/60 text-base font-bold leading-relaxed">{{ ctaConfig.desc }}</p>
                             </div>
                             
-                            <div class="flex flex-col gap-4 shrink-0">
-                                <div class="flex items-center gap-3 bg-white text-slate-900 px-10 py-5 rounded-[1.8rem] font-black text-sm shadow-2xl hover:bg-indigo-50 transition-all duration-300">
-                                    {{ ctaConfig.btnText }}
-                                    <ArrowRight :size="18" stroke-width="3" class="group-hover:translate-x-2 transition-transform duration-500" />
-                                </div>
+                            <div class="px-12 py-6 bg-white text-slate-900 rounded-2xl font-black text-sm shadow-2xl hover:bg-indigo-50 transition-all flex items-center gap-4 group-hover:translate-x-1">
+                                {{ ctaConfig.btnText }}
+                                <ArrowRight :size="20" stroke-width="3" />
                             </div>
                         </div>
                     </Link>
+                </div>
 
-                    <!-- Legendary Terminal Greeting -->
-                    <div v-else class="bg-white dark:bg-slate-900 rounded-[3rem] p-12 border-2 border-slate-100 dark:border-slate-800 shadow-xl relative overflow-hidden group transition-all duration-500 flex flex-col items-center text-center">
-                        <div class="absolute inset-0 bg-gradient-to-b from-indigo-50/50 dark:from-indigo-500/5 to-transparent"></div>
-                        <div class="relative z-10">
-                            <div class="w-20 h-20 bg-indigo-600 rounded-[2rem] flex items-center justify-center text-white mb-8 shadow-2xl shadow-indigo-200 dark:shadow-none mx-auto rotate-12 group-hover:rotate-0 transition-transform duration-700">
-                                <ShieldCheck :size="40" stroke-width="2.5" />
-                            </div>
-                            <p class="text-indigo-600 dark:text-indigo-400 font-black text-[10px] uppercase tracking-[0.4em] mb-3">Priority Protocol Active</p>
-                            <h4 class="text-3xl font-black text-slate-800 dark:text-white mb-4 tracking-tight">Access Granted, Legendary.</h4>
-                            <p class="text-sm font-bold text-slate-400 dark:text-slate-500 max-w-sm mx-auto leading-relaxed">
-                                You are operating at the highest architectural tier. Your lifecycle access is secured indefinitely.
-                            </p>
-                        </div>
-                    </div>
-                </transition>
             </div>
-
-            <PremiumPreviewModal 
-                :isOpen="isPreviewOpen"
-                :module="activePreviewModule"
-                @close="isPreviewOpen = false"
-            />
         </div>
     </AuthenticatedLayout>
 </template>
 
 <style scoped>
-.animate-in {
-    animation-duration: 0.8s;
-    animation-fill-mode: both;
-}
-.fade-in {
-    animation-name: fadeIn;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.bento-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 </style>

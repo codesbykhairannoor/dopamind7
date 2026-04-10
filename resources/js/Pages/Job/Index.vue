@@ -8,12 +8,12 @@ import JobFilterBar from './JobFilterBar.vue';
 import ResumeAiModal from './ResumeAiModal.vue';
 import MasterCvModal from './MasterCvModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
-import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
+import NeuralBridge from '@/Components/NeuralBridge.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { useGating } from '@/Composables/useGating';
 const { isExplorer, isArchitect, isQuantum, canUse } = useGating();
@@ -54,6 +54,11 @@ const onMasterSaved = () => {
     // Re-sync with server is handled by Inertia navigation/reload 
     // but in SPA we can just let computed reactive check it.
 };
+onMounted(() => {
+    if (isExplorer.value) {
+        router.visit(route('billing'));
+    }
+});
 </script>
 
 <template>
@@ -148,10 +153,5 @@ const onMasterSaved = () => {
             </div>
         </div>
 
-        <PremiumPreviewModal 
-            :isOpen="isExplorer" 
-            module="Jobs"
-            :onClose="() => router.visit(route('dashboard'))" 
-        />
     </div>
 </template>
