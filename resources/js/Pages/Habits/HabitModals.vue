@@ -38,7 +38,7 @@ defineProps({
 <template>
     <Teleport to="body">
     
-    <div v-if="showDeleteModal" class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+    <div v-if="showDeleteModal" class="fixed inset-0 z-[70] flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="closeModal"></div>
         <div class="bg-white dark:bg-slate-900 rounded-[2rem] p-6 md:p-8 w-full max-w-sm relative z-10 shadow-2xl dark:shadow-none animate-in zoom-in-95 text-center overflow-hidden border border-slate-100 dark:border-slate-800">
             <div class="w-16 h-16 bg-rose-50 dark:bg-rose-500/10 text-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-sm border border-rose-100 dark:border-rose-500/20">🗑️</div>
@@ -54,7 +54,7 @@ defineProps({
         </div>
     </div>
 
-    <div v-if="showCopyModal" class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+    <div v-if="showCopyModal" class="fixed inset-0 z-[70] flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="closeModal"></div>
         <div class="bg-white dark:bg-slate-900 rounded-[2rem] p-6 md:p-8 w-full max-w-sm relative z-10 shadow-2xl dark:shadow-none animate-in zoom-in-95 text-center overflow-hidden border border-slate-100 dark:border-slate-800">
             <div class="w-16 h-16 bg-indigo-50 dark:bg-indigo-500/10 text-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-sm border border-indigo-100 dark:border-indigo-500/20">📂</div>
@@ -67,9 +67,9 @@ defineProps({
         </div>
     </div>
     
-    <div v-if="showCreateModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div v-if="showCreateModal" class="fixed inset-0 z-[70] flex items-end sm:items-center justify-center p-4 pb-32 sm:pb-4 transition-all duration-500">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="closeModal"></div>
-        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 md:p-8 w-full max-w-lg relative z-10 shadow-2xl dark:shadow-none animate-in zoom-in-95 border border-slate-100 dark:border-slate-800">
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 md:p-8 w-full max-w-lg relative z-10 shadow-2xl dark:shadow-none animate-in slide-in-from-bottom-10 sm:zoom-in-95 border border-slate-100 dark:border-slate-800 max-h-[85vh] overflow-y-auto custom-scrollbar">
             
             <div class="flex justify-between items-center mb-6">
                 <div>

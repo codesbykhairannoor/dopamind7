@@ -117,7 +117,18 @@ const changeYear = (offset) => {
             </Transition>
           </div>
 
-          <div class="hidden lg:flex items-center gap-3 px-4 border-x border-slate-100/80 dark:border-slate-800/80">
+          <!-- USAGE INDICATOR (Explorer Only) -->
+          <div v-if="isExplorer" class="hidden lg:flex flex-col items-end gap-1 px-4 border-l border-slate-100/80 dark:border-slate-800/80">
+            <div class="flex items-center gap-2">
+              <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">{{ $t('label_usage_limit', 'Limit') }}</span>
+              <span class="text-[10px] font-black" :class="habitsCount >= 5 ? 'text-rose-500' : 'text-slate-700 dark:text-slate-300'">{{ habitsCount }}/5</span>
+            </div>
+            <div class="w-24 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+              <div class="h-full transition-all duration-500" :class="habitsCount >= 5 ? 'bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,0.4)]' : 'bg-indigo-600'" :style="{ width: (Math.min(habitsCount, 5) / 5 * 100) + '%' }"></div>
+            </div>
+          </div>
+
+          <div class="hidden lg:flex items-center gap-3 px-4 border-l border-slate-100/80 dark:border-slate-800/80">
             <div class="text-right">
               <p class="text-[9px] font-black text-slate-400 dark:text-slate-500 leading-none mb-1">{{ $t('label_daily') }}</p>
               <p class="text-lg font-black text-slate-700 dark:text-slate-200 leading-none">{{ todayProgress }}%</p>
@@ -132,15 +143,15 @@ const changeYear = (offset) => {
           </div>
 
           <button 
-            @click="isExplorer && habitsCount >= 5 ? router.visit(route('billing'), { data: { from: 'habit_count_limit' } }) : openCreateModal()" 
-            class="h-[46px] px-5 flex items-center gap-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-100 dark:shadow-indigo-900/40 transition-all duration-300 whitespace-nowrap"
-            :class="{ 'opacity-80 grayscale-[0.3]': isExplorer && habitsCount >= 5 }"
+            @click="isExplorer && habitsCount >= 5 ? $router.visit(route('billing'), { data: { from: 'habit_count_limit' } }) : openCreateModal()" 
+            class="h-[46px] px-5 flex items-center gap-3 text-white rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-lg transition-all duration-300 whitespace-nowrap"
+            :class="isExplorer && habitsCount >= 5 ? 'bg-gradient-to-r from-rose-500 to-rose-600 shadow-rose-200 dark:shadow-rose-900/20' : 'bg-indigo-600 shadow-indigo-100 dark:shadow-indigo-900/40 hover:bg-indigo-700'"
           >
             <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
-              <OneForMindIcon :name="isExplorer && habitsCount >= 5 ? 'lock' : 'plus'" size="16" stroke-width="3" />
+              <OneForMindIcon :name="isExplorer && habitsCount >= 5 ? 'premium' : 'plus'" size="16" stroke-width="3" />
             </div>
-            <span class="hidden md:inline text-xs">
-                {{ isExplorer && habitsCount >= 5 ? 'Limit Reached' : $t('btn_add_habit') }}
+            <span class="hidden md:inline text-xs uppercase tracking-widest font-black">
+                {{ isExplorer && habitsCount >= 5 ? $t('btn_upgrade_limit', 'Upgrade Limit') : $t('btn_add_habit') }}
             </span>
           </button>
         </div>

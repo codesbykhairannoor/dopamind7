@@ -9,6 +9,9 @@
     "nav_logout": "Log Out",
     "nav_core_modules": "System Core",
     "nav_platinum_suite": "Platinum Suite",
+    "nav_upgrade_pro": "Get Architect",
+    "btn_upgrade_limit": "Upgrade Limit",
+    "label_usage_limit": "Usage Limit",
 
     "nav_item_premium": "Go Elite",
     "nav_item_dashboard": "Dashboard",

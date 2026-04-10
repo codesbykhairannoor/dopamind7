@@ -3,6 +3,9 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { Head, usePage, router, Link } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
+import { useGating } from '@/Composables/useGating';
+
+const { isExplorer } = useGating();
 
 // Tab Components
 import GeneralTab from './Partials/GeneralTab.vue';
@@ -116,11 +119,15 @@ const confirmLogout = () => {
                                 :key="tab.id"
                                 :id="'tab-' + tab.id"
                                 @click="activeTab = tab.id"
-                                class="w-full flex items-center gap-4 p-4 rounded-[1.8rem] transition-all duration-300 group text-left"
-                                :class="activeTab === tab.id 
-                                    ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-100 dark:shadow-indigo-900/40 border border-indigo-500' 
-                                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200'"
+                                class="w-full flex items-center gap-4 p-4 rounded-[1.8rem] transition-all duration-300 group text-left relative overflow-hidden"
+                                :class="[
+                                    activeTab === tab.id 
+                                        ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-100 dark:shadow-indigo-900/40 border border-indigo-500' 
+                                        : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200',
+                                    tab.id === 'billing' && isExplorer && activeTab !== 'billing' ? 'ring-2 ring-indigo-500/20 border-indigo-200 dark:border-indigo-800 animate-pulse' : ''
+                                ]"
                             >
+                                <div v-if="tab.id === 'billing' && isExplorer" class="absolute top-0 right-0 w-8 h-8 bg-indigo-500/10 rounded-full translate-x-1/2 -translate-y-1/2 shrink-0"></div>
                                 <span class="text-2xl transition-transform group-hover:scale-110">{{ tab.icon }}</span>
                                 <div class="text-left">
                                     <h4 class="text-sm font-black leading-none" :class="activeTab === tab.id ? 'text-white' : 'text-slate-800 dark:text-slate-200'">{{ $t(tab.tName, tab.name) }}</h4>

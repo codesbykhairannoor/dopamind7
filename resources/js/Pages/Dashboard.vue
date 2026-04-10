@@ -6,7 +6,7 @@ import axios from 'axios';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { useGating } from '@/Composables/useGating';
 import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
-import { Sparkles, Target, Zap, TrendingUp, Brain, ArrowRight } from 'lucide-vue-next';
+import { Sparkles, Target, Zap, TrendingUp, Brain, ArrowRight, Gem } from 'lucide-vue-next';
 
 const { isExplorer, isArchitect, isQuantum, isLegendary } = useGating();
 
@@ -199,7 +199,7 @@ onMounted(() => {
                 <div @click="isExplorer ? openPremiumPreview('Finance') : router.visit(route('finance.index'))" class="col-span-12 bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm cursor-pointer">
                     <div class="flex items-center justify-between mb-6">
                         <h3 class="text-lg font-bold text-slate-900 dark:text-white">Finance status</h3>
-                        <TradingUp :size="18" class="text-indigo-500" />
+                        <TrendingUp :size="18" class="text-indigo-500" />
                     </div>
                     <div v-if="!isExplorer" class="grid grid-cols-2 gap-4">
                         <div>
@@ -232,6 +232,27 @@ onMounted(() => {
                         <div class="h-full bg-emerald-500 transition-all duration-1000" :style="`width: ${synergy.goals.top_goal.percent}%`"></div>
                     </div>
                 </div>
+            </div>
+
+            <!-- SMART UPGRADE BANNER (DASHBOARD MOBILE BOTTOM) -->
+            <div v-if="isExplorer" class="mt-8 group">
+                <Link :href="route('billing')" class="block relative overflow-hidden bg-white dark:bg-slate-900 rounded-3xl border border-indigo-100 dark:border-slate-800 shadow-sm p-8 transition-all hover:shadow-xl hover:border-indigo-200 dark:hover:border-indigo-500/30">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    
+                    <div class="relative z-10 flex flex-col items-center justify-between gap-6 text-center">
+                        <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-indigo-100 dark:shadow-none shrink-0">
+                            <OneForMindIcon name="premium" size="28" />
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-black text-slate-800 dark:text-white tracking-tighter mb-1">Upgrade to Architect</h3>
+                            <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 max-w-sm leading-relaxed mx-auto">Buka akses tak terbatas ke semua modul produktivitas dan proyeksi AI.</p>
+                        </div>
+                        <div class="w-full py-4 bg-slate-900 dark:bg-indigo-600 text-white rounded-xl font-black text-[10px] uppercase tracking-[0.2em] shadow-lg flex items-center justify-center gap-2">
+                            Lihat Paket
+                            <OneForMindIcon name="arrow-right" size="12" stroke-width="3" />
+                        </div>
+                    </div>
+                </Link>
             </div>
         </template>
 
@@ -286,16 +307,19 @@ onMounted(() => {
                         </div>
                     </div>
 
-                    <div v-else class="bg-indigo-600 p-10 rounded-[2.5rem] text-white shadow-xl shadow-indigo-100 dark:shadow-none">
-                        <h3 class="text-lg font-black mb-4">Explorer Rank</h3>
-                        <p class="text-xs font-bold opacity-80 leading-relaxed">Fokus pada pembentukan habit hari ini untuk membuka potensi penuh sistem di masa depan.</p>
-                        <div class="mt-8 flex items-center gap-2">
-                            <div class="h-1 w-2/3 bg-white/20 rounded-full">
-                                <div class="h-full w-1/2 bg-white rounded-full"></div>
-                            </div>
-                            <span class="text-[9px] font-black uppercase">Level 1</span>
+                    <Link v-else :href="route('billing')" class="bg-indigo-600 p-10 rounded-[2.5rem] text-white shadow-xl shadow-indigo-100 dark:shadow-none block hover:scale-[1.02] transition-transform group">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-black uppercase tracking-tighter">Explorer Rank</h3>
+                            <OneForMindIcon name="premium" size="16" class="animate-pulse" />
                         </div>
-                    </div>
+                        <p class="text-xs font-bold opacity-80 leading-relaxed">Fokus pada pembentukan habit harian untuk membuka potensi penuh sistem secara eksponensial.</p>
+                        <div class="mt-8 flex items-center justify-between gap-4">
+                            <div class="flex-1 h-1 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full w-1/4 bg-white rounded-full"></div>
+                            </div>
+                            <span class="text-[10px] font-black uppercase whitespace-nowrap group-hover:underline underline-offset-4 decoration-2">Upgrade Tier</span>
+                        </div>
+                    </Link>
                 </div>
 
                 <!-- Right Column (8 cols) -->
@@ -363,6 +387,29 @@ onMounted(() => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- SMART UPGRADE BANNER (DASHBOARD DESKTOP BOTTOM) -->
+            <div v-if="isExplorer" class="mt-12 group">
+                <Link :href="route('billing')" class="block relative overflow-hidden bg-white dark:bg-slate-900 rounded-[3.5rem] border border-indigo-100 dark:border-slate-800 shadow-sm p-12 transition-all hover:shadow-xl hover:border-indigo-200 dark:hover:border-indigo-500/30">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                    
+                    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                        <div class="flex items-center gap-8">
+                            <div class="w-20 h-20 bg-indigo-600 rounded-[2rem] flex items-center justify-center text-white shadow-2xl shadow-indigo-100 dark:shadow-none shrink-0 animate-bounce">
+                                <OneForMindIcon name="premium" size="40" />
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-black text-slate-800 dark:text-white tracking-tighter mb-2">Upgrade to Architect Tier</h3>
+                                <p class="text-sm font-bold text-slate-400 dark:text-slate-500 max-w-xl leading-relaxed">Dapatkan akses tak terbatas ke habit tracker, proyeksi keuangan, jurnalisme harian, dan fitur manajemen target strategis.</p>
+                            </div>
+                        </div>
+                        <div class="px-10 py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] shadow-lg flex items-center gap-3 transition-transform group-hover:scale-105 active:scale-95 shrink-0">
+                            Lihat Paket Baru
+                            <OneForMindIcon name="arrow-right" size="16" stroke-width="3" />
+                        </div>
+                    </div>
+                </Link>
             </div>
         </template>
 

@@ -184,7 +184,7 @@ onUnmounted(() => {
                 </button>
             </div>
 
-            <div class="px-6 md:px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 z-20 rounded-b-[2.5rem]">
+            <div class="px-6 md:px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 z-20 rounded-b-[2.5rem] pb-20 sm:pb-5">
                 <div class="text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-tight flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
                     {{ $t('total_input', 'Total input:') }} <span class="text-indigo-600 dark:text-indigo-400 text-sm font-black">{{ form.habits.length }}</span>

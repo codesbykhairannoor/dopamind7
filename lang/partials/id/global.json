@@ -8,6 +8,9 @@
     "nav_logout": "Keluar",
     "nav_core_modules": "Inti Sistem",
     "nav_platinum_suite": "Platinum Suite",
+    "nav_upgrade_pro": "Dapatkan Architect",
+    "btn_upgrade_limit": "Tingkatkan Batas",
+    "label_usage_limit": "Batas Penggunaan",
 
     "nav_item_premium": "Buka Elite",
     "nav_item_dashboard": "Dashboard",

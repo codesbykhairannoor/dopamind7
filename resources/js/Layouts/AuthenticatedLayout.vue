@@ -5,6 +5,7 @@ import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import ThemeToggle from '@/Components/ThemeToggle.vue';
 import { useAppearance } from '@/Composables/useAppearance';
 import { useGating } from '@/Composables/useGating';
+import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 
 // --- DATA USER & HALAMAN ---
 const page = usePage();
@@ -251,6 +252,17 @@ const openPremiumPreview = (module = 'Coach') => {
                     </button>
                 </div>
 
+
+                <!-- GO PRO / UPGRADE BUTTON (Explorer Only) -->
+                <Link v-if="isExplorer" :href="route('billing')" 
+                    class="flex items-center rounded-xl transition-all duration-500 group relative overflow-hidden bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none mb-2"
+                    :class="isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-2.5'"
+                    title="Upgrade to Architect"
+                >
+                    <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <OneForMindIcon name="premium" size="18" class="shrink-0 relative z-10 animate-pulse" />
+                    <span v-if="!isSidebarCollapsed" class="whitespace-nowrap text-[10px] font-black uppercase tracking-widest relative z-10">{{ $t('nav_upgrade_pro', 'Go Architect') }}</span>
+                </Link>
 
                 <Link :href="route('settings.index')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group"
