@@ -117,8 +117,8 @@
                     </div>
 
                     {{-- 3. Quantum --}}
-                    <div class="group relative flex flex-col p-10 rounded-[3.5rem] bg-slate-900 border-4 border-indigo-500/20 shadow-[0_0_80px_rgba(79,70,229,0.15)] lg:scale-105 z-10 hover:-translate-y-4 transition-all duration-700 overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent"></div>
+                    <div class="group relative flex flex-col p-10 rounded-[3.5rem] bg-slate-900 border-4 border-indigo-500/20 shadow-[0_0_80px_rgba(79,70,229,0.15)] lg:scale-105 z-10 hover:-translate-y-4 transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent rounded-[3.5rem] overflow-hidden"></div>
                         
                         <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-indigo-600 text-white text-[9px] font-black tracking-[0.2em] uppercase shadow-lg border border-white/20 animate-pulse">
                             {{ __('pricing_ai_badge') }}

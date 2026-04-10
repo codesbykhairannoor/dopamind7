@@ -25,6 +25,8 @@ class SecurityHeaders
             "http://127.0.0.1:5176 http://localhost:5176 ws://127.0.0.1:5176 ws://localhost:5176";
 
         $midtransUrls = "https://*.midtrans.com https://snap-assets.al-pc-id-b.cdn.gtflabs.io https://pay.google.com https://gwk.gopayapi.com";
+        $duitkuUrls = "https://passport.duitku.com https://app-sandbox.duitku.com";
+        $metaUrls = "https://connect.facebook.net https://www.facebook.com";
         $googleUrls = "https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com";
         $assetUrl = config('app.asset_url') ? config('app.asset_url') : "";
         $appUrl = config('app.url') ? config('app.url') : "";
@@ -38,27 +40,27 @@ class SecurityHeaders
 
         if ($isLocal) {
             // LOKAL: Longgar agar Vite HMR lancar + Izinkan font & analytics umum
-            $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $viteUrl $midtransUrls $googleUrls $externalSources; " .
-                "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page $viteUrl $midtransUrls $googleUrls $externalSources; " .
+            $csp = "default-src 'self' 'unsafe-inline' 'unsafe-eval' $viteUrl $midtransUrls $duitkuUrls $metaUrls $googleUrls $externalSources; " .
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page $viteUrl $midtransUrls $duitkuUrls $metaUrls $googleUrls $externalSources; " .
                 "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://fonts.googleapis.com https://cdnjs.cloudflare.com $viteUrl $externalSources; " .
                 "img-src 'self' data: blob: *; " .
                 "font-src 'self' data: https://fonts.bunny.net https://fonts.gstatic.com https://fonts.googleapis.com; " .
                 "frame-src *; " .
-                "connect-src 'self' ws: wss: $viteUrl $midtransUrls $googleUrls $externalSources;";
+                "connect-src 'self' ws: wss: $viteUrl $midtransUrls $duitkuUrls $metaUrls $googleUrls $externalSources;";
         }
         else {
             // PRODUCTION: Ketat tapi tetap izinkan Midtrans
             $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
             
             $csp = "default-src 'self'; ";
-            $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com $midtransUrls $externalSources; ";
+            $csp .= "script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://instant.page https://static.cloudflareinsights.com $midtransUrls $duitkuUrls $metaUrls $externalSources; ";
             $csp .= "style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://fonts.googleapis.com https://cdnjs.cloudflare.com $externalSources; ";
-            $csp .= "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com; ";
+            $csp .= "img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com $metaUrls; ";
             $csp .= "font-src 'self' data: https://fonts.bunny.net https://fonts.gstatic.com https://fonts.googleapis.com; ";
             $csp .= "worker-src 'self' blob:; ";
-            $csp .= "frame-src 'self' $midtransUrls; "; // Batasi frame hanya untuk self & midtrans
+            $csp .= "frame-src 'self' $midtransUrls $duitkuUrls $metaUrls; "; // Batasi frame 
             $csp .= "frame-ancestors 'self'; "; // Cegah clickjacking ketat
-            $csp .= "connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com $midtransUrls $externalSources; ";
+            $csp .= "connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com $midtransUrls $duitkuUrls $metaUrls $externalSources; ";
             $csp .= "upgrade-insecure-requests;";
         }
 

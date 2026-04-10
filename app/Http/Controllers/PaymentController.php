@@ -132,7 +132,7 @@ class PaymentController extends Controller
         $params = [
             'merchantCode' => (string)$merchantCode,
             'paymentAmount' => (int)$paymentAmount,
-            'paymentMethod' => '', // Leave empty to trigger selection page if supported, or pick 'VC'
+            'paymentMethod' => (string)$request->input('paymentMethod', '00'), // '00' is the wildcard for selection page in many Duitku setups
             'merchantOrderId' => (string)$merchantOrderId,
             'productDetails' => (string)$productDetails,
             'additionalParam' => '',

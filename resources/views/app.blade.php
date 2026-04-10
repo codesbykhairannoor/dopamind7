@@ -30,8 +30,8 @@
     <meta name="geo.placename" content="Indonesia" inertia />
     <meta name="ICBM" content="-6.200000, 106.816666" inertia />
 
-    {{-- Mobile Optimization --}}
     <meta name="theme-color" content="#4f46e5" inertia>
+    <meta name="mobile-web-app-capable" content="yes" inertia>
     <meta name="apple-mobile-web-app-capable" content="yes" inertia>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" inertia>
     <meta name="apple-mobile-web-app-title" content="Oneformind" inertia>
