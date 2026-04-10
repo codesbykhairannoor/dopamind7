@@ -67,6 +67,14 @@ const switchLang = (lang) => {
 watch(() => page.url, () => {
     showingNavigationDropdown.value = false;
 });
+
+const isPreviewOpen = ref(false);
+const activePreviewModule = ref('Coach');
+
+const openPremiumPreview = (module = 'Coach') => {
+    activePreviewModule.value = module;
+    isPreviewOpen.value = true;
+};
 </script>
 
 <template>
@@ -310,9 +318,9 @@ watch(() => page.url, () => {
                     </Link>
 
                     <!-- AI COACH (CENTER - PROTRUDING) -->
-                    <Link :href="canAccess('ai') ? route('coach.index') : route('billing')" prefetch 
+                    <button @click="isExplorer ? openPremiumPreview('Coach') : router.visit(route('coach.index'))"
                           class="relative -top-3 lg:-top-5 flex-1 flex flex-col items-center transition-all duration-500"
-                          :class="!canAccess('ai') ? 'opacity-40 grayscale' : ''">
+                          :class="!canAccess('ai') && !isExplorer ? 'opacity-40 grayscale' : ''">
                         <div class="w-14 h-14 lg:w-[4.25rem] lg:h-[4.25rem] bg-slate-900 dark:bg-indigo-600 rounded-2xl lg:rounded-[1.75rem] flex items-center justify-center shadow-lg transition-all active:scale-90 border-[4px] border-white dark:border-slate-950 overflow-hidden group">
                            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                            <OneForMindIcon name="sparkles" :size="20" class="text-white relative z-10" />
@@ -320,7 +328,7 @@ watch(() => page.url, () => {
                         <div class="flex items-center gap-1 mt-1">
                             <span class="text-[8px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-tighter">{{ canAccess('ai') ? 'Neural OS' : 'Platinum OS' }}</span>
                         </div>
-                    </Link>
+                    </button>
 
                     <!-- More Launcher -->
                     <Link :href="route('more.index')" prefetch 
@@ -365,10 +373,9 @@ watch(() => page.url, () => {
         </Transition>
 
         <!-- FLOATING AI COACH BUTTON (DESKTOP ONLY) -->
-        <Link 
+        <button 
             v-if="!route().current('coach.*')"
-            :href="canAccess('ai') ? route('coach.index') : route('billing')" 
-            prefetch
+            @click="isExplorer ? openPremiumPreview('Coach') : router.visit(route('coach.index'))"
             class="hidden md:block fixed bottom-10 right-10 z-[100] group"
         >
             <div class="relative">
@@ -377,7 +384,7 @@ watch(() => page.url, () => {
                 
                 <!-- Main Button -->
                 <div class="relative w-16 h-16 bg-slate-900 dark:bg-indigo-600 rounded-[1.8rem] flex items-center justify-center shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-2 active:scale-95 ring-4 ring-white dark:ring-slate-950 group-hover:ring-indigo-50 dark:group-hover:ring-indigo-500/20 overflow-hidden"
-                     :class="!canAccess('ai') ? 'grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100' : ''">
+                     :class="!canAccess('ai') && !isExplorer ? 'grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100' : ''">
                     <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <OneForMindIcon name="sparkles" size="28" stroke-width="2" class="text-white group-hover:rotate-[20deg] transition-transform duration-500 relative z-10" />
                     
@@ -392,7 +399,13 @@ watch(() => page.url, () => {
                     NEURAL OS ONLINE
                 </div>
             </div>
-        </Link>
+        </button>
+
+        <PremiumPreviewModal 
+            :isOpen="isPreviewOpen"
+            :module="activePreviewModule"
+            @close="isPreviewOpen = false"
+        />
     </div>
 </template>
 

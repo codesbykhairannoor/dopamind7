@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { router } from '@inertiajs/vue3';
-import { Lock, CheckCircle2, ArrowRight, Sparkles, Zap, ShieldCheck, RefreshCcw, Layout, FileSearch2, Send, Rocket, Target, Shield, Landmark, TrendingUp, Gem } from 'lucide-vue-next';
+import { Lock, CheckCircle2, ArrowRight, Sparkles, Zap, ShieldCheck, RefreshCcw, Layout, FileSearch2, Send, Rocket, Target, Shield, Landmark, TrendingUp, Gem, Brain } from 'lucide-vue-next';
 
 const props = defineProps({
     isOpen: Boolean,
@@ -45,6 +45,13 @@ const benefits = computed(() => {
             { icon: Shield, text: 'preview_goal_benefit_3', color: 'text-purple-500' }
         ];
     }
+    if (props.module === 'Coach') {
+        return [
+            { icon: Brain, text: 'preview_coach_benefit_1', color: 'text-indigo-500' },
+            { icon: Zap, text: 'preview_coach_benefit_2', color: 'text-fuchsia-500' },
+            { icon: TrendingUp, text: 'preview_coach_benefit_3', color: 'text-emerald-500' }
+        ];
+    }
     return [];
 });
 
@@ -77,6 +84,7 @@ const handleGoBack = () => {
                 <div v-if="module === 'Jobs'" class="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-700 to-slate-900"></div>
                 <div v-if="module === 'Finance'" class="absolute inset-0 bg-gradient-to-br from-blue-500 via-indigo-800 to-slate-900"></div>
                 <div v-if="module === 'Goal'" class="absolute inset-0 bg-gradient-to-br from-amber-400 via-rose-600 to-slate-900"></div>
+                <div v-if="module === 'Coach'" class="absolute inset-0 bg-gradient-to-br from-fuchsia-600 via-indigo-800 to-slate-900"></div>
 
                 <!-- Abstract Shapes -->
                 <div class="absolute inset-0 opacity-30">
@@ -131,6 +139,17 @@ const handleGoBack = () => {
                              </div>
                         </div>
 
+                        <!-- Coach: Spectral Brain -->
+                        <div v-if="module === 'Coach'" class="p-4 flex items-center justify-center h-full opacity-40">
+                             <div class="relative">
+                                 <Brain :size="48" class="text-white/40 animate-pulse" />
+                                 <div class="absolute inset-0 bg-white/10 blur-[10px] rounded-full scale-150 animate-pulse"></div>
+                                 <div class="absolute -top-4 -right-4">
+                                     <Sparkles :size="16" class="text-fuchsia-300 animate-bounce" />
+                                 </div>
+                             </div>
+                        </div>
+
                         <!-- Overlay Blur -->
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
                     </div>
@@ -142,6 +161,7 @@ const handleGoBack = () => {
                             <Zap v-if="module === 'Calendar'" :size="24" class="text-white" />
                             <Landmark v-if="module === 'Finance'" :size="24" class="text-white" />
                             <Target v-if="module === 'Goal'" :size="24" class="text-white" />
+                            <Brain v-if="module === 'Coach'" :size="24" class="text-white" />
                         </div>
                         <div class="flex flex-col">
                             <span class="text-[10px] font-black text-white/50 uppercase tracking-[0.2em] leading-none mb-1">Architect Tier</span>
