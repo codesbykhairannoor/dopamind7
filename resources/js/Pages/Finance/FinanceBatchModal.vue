@@ -14,7 +14,7 @@ import { Link } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const { isExplorer } = useGating();
-const { activeCurrency, getCategoryDetails, appLocale } = useFinanceFormat();
+const props = defineProps({
     show: Boolean,
     form: Object,
     categories: Array,
