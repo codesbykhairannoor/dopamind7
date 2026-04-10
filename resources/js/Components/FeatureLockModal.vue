@@ -89,7 +89,7 @@ const tKey = (key) => `gating.${gatingState.activeFeature}.${key}`;
 
 <template>
     <Modal :show="gatingState.isOpen" @close="closeGating" max-width="md">
-        <div class="overflow-hidden relative group transition-all duration-500" :class="featureConfig.bg">
+        <div class="overflow-hidden relative group transition-all duration-500 z-[100]" :class="featureConfig.bg">
             
             <!-- 🎨 DYNAMIC BACKGROUND PATTERNS -->
             <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.07] pointer-events-none">
@@ -110,59 +110,59 @@ const tKey = (key) => `gating.${gatingState.activeFeature}.${key}`;
             <!-- Header Glow -->
             <div class="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-[80px] opacity-20" :class="featureConfig.accent"></div>
 
-            <div class="p-8 md:p-12 relative z-10">
+            <div class="p-6 md:p-10 relative z-10">
                 <!-- Close -->
                 <button @click="closeGating" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all hover:rotate-90">
                     <X :size="20" />
                 </button>
 
                 <!-- Icon Container -->
-                <div class="relative mb-10">
-                    <div :class="[featureConfig.glow, featureConfig.isPremium ? 'bg-gradient-to-br from-violet-600 to-indigo-600' : 'bg-white dark:bg-slate-800']" class="w-24 h-24 rounded-[2.5rem] flex items-center justify-center mx-auto shadow-2xl relative z-10 transition-transform duration-700 group-hover:scale-110">
-                        <component :is="featureConfig.icon" :size="40" :class="featureConfig.isPremium ? 'text-white' : featureConfig.color" stroke-width="2.5" />
+                <div class="relative mb-8">
+                    <div :class="[featureConfig.glow, featureConfig.isPremium ? 'bg-gradient-to-br from-violet-600 to-indigo-600' : 'bg-white dark:bg-slate-800']" class="w-20 h-20 rounded-[2rem] flex items-center justify-center mx-auto shadow-2xl relative z-10 transition-transform duration-700 group-hover:scale-110">
+                        <component :is="featureConfig.icon" :size="32" :class="featureConfig.isPremium ? 'text-white' : featureConfig.color" stroke-width="2.5" />
                     </div>
                     <!-- Secondary decorative element -->
-                    <div class="absolute inset-0 w-24 h-24 bg-current opacity-10 blur-xl rounded-full mx-auto" :class="featureConfig.color"></div>
+                    <div class="absolute inset-0 w-20 h-20 bg-current opacity-10 blur-xl rounded-full mx-auto" :class="featureConfig.color"></div>
                 </div>
 
-                <div class="text-center mb-10">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/5 dark:bg-white/10 backdrop-blur-md mb-6 border border-white/10 shadow-sm">
-                        <Sparkle :size="10" :class="featureConfig.color" fill="currentColor" />
-                        <span class="text-[9px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/10 backdrop-blur-md mb-4 border border-white/10 shadow-sm">
+                        <Sparkle :size="9" :class="featureConfig.color" fill="currentColor" />
+                        <span class="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
                             {{ $t(featureConfig.isPremium ? 'gating.lock_title_ai' : 'gating.lock_title_required') }}
                         </span>
                     </div>
 
-                    <h3 class="text-4xl font-black tracking-tighter mb-4" :class="featureConfig.isPremium ? 'text-white' : 'text-slate-900 dark:text-white'">
+                    <h3 class="text-3xl font-black tracking-tighter mb-3 leading-tight" :class="featureConfig.isPremium ? 'text-white' : 'text-slate-900 dark:text-white'">
                         {{ $t(tKey('title')) }}
                     </h3>
                     
-                    <p class="text-sm font-bold leading-relaxed max-w-[280px] mx-auto transition-colors" :class="featureConfig.isPremium ? 'text-indigo-200/60' : 'text-slate-500 dark:text-slate-400'">
+                    <p class="text-[11px] font-bold leading-relaxed max-w-[260px] mx-auto transition-colors" :class="featureConfig.isPremium ? 'text-indigo-200/60' : 'text-slate-500 dark:text-slate-400'">
                         {{ $t(tKey('description')) }}
                     </p>
                 </div>
 
-                <!-- 💎 BENEFIT LIST (Non-Templated) -->
-                <div class="space-y-3 mb-12">
-                    <div v-for="i in 3" :key="i" class="flex items-center gap-4 p-4 rounded-2xl transition-all" :class="featureConfig.isPremium ? 'bg-white/5 hover:bg-white/10 border border-white/5' : 'bg-white dark:bg-slate-800 shadow-sm hover:shadow-md border border-slate-100 dark:border-white/5'">
-                        <div class="shrink-0 w-6 h-6 rounded-full flex items-center justify-center" :class="featureConfig.isPremium ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-50 dark:bg-slate-700 text-slate-400'">
-                            <CheckCircle2 :size="14" />
+                <!-- 💎 BENEFIT LIST (Compact) -->
+                <div class="space-y-2 mb-10">
+                    <div v-for="i in 3" :key="i" class="flex items-center gap-3 p-3.5 rounded-2xl transition-all" :class="featureConfig.isPremium ? 'bg-white/5 hover:bg-white/10 border border-white/5' : 'bg-white dark:bg-slate-800 shadow-sm hover:shadow-md border border-slate-100 dark:border-white/5'">
+                        <div class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" :class="featureConfig.isPremium ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-50 dark:bg-slate-700 text-slate-400'">
+                            <CheckCircle2 :size="12" />
                         </div>
-                        <span class="text-xs font-black tracking-tight" :class="featureConfig.isPremium ? 'text-indigo-100' : 'text-slate-700 dark:text-slate-200'">
+                        <span class="text-[11px] font-black tracking-tight" :class="featureConfig.isPremium ? 'text-indigo-100' : 'text-slate-700 dark:text-slate-200'">
                             {{ $t(tKey('benefit_' + i)) }}
                         </span>
                     </div>
                 </div>
 
                 <!-- ACTIONS -->
-                <div class="space-y-4">
-                    <Link :href="route('billing')" @click="closeGating" class="block w-full py-5 rounded-[1.5rem] font-black text-xs uppercase tracking-widest text-white shadow-2xl transition-all active:scale-95 flex items-center justify-center gap-3 group/btn relative overflow-hidden" :class="featureConfig.isPremium ? 'bg-indigo-600 hover:bg-indigo-500' : 'bg-slate-900 dark:bg-indigo-600 hover:scale-[1.02]'">
+                <div class="space-y-3">
+                    <Link :href="route('billing')" @click="closeGating" class="block w-full py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest text-white shadow-2xl transition-all active:scale-95 flex items-center justify-center gap-3 group/btn relative overflow-hidden" :class="featureConfig.isPremium ? 'bg-indigo-600 hover:bg-indigo-500' : 'bg-slate-900 dark:bg-indigo-600 hover:scale-[1.01]'">
                         <div v-if="featureConfig.isPremium" class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
                         {{ $t('gating.btn_upgrade') }}
-                        <ArrowRight :size="16" stroke-width="3" class="group-hover/btn:translate-x-1 transition-transform" />
+                        <ArrowRight :size="14" stroke-width="3" class="group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
                     
-                    <button @click="closeGating" class="block w-full py-4 font-bold text-[10px] uppercase tracking-widest transition-colors" :class="featureConfig.isPremium ? 'text-indigo-400/60 hover:text-white' : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'">
+                    <button @click="closeGating" class="block w-full py-2 font-bold text-[9px] uppercase tracking-widest transition-colors" :class="featureConfig.isPremium ? 'text-indigo-400/60 hover:text-white' : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'">
                         {{ $t('gating.btn_stay') }}
                     </button>
                 </div>

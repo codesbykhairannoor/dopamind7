@@ -1,58 +1,60 @@
 {
-    "lock_title_required": "Architect Status Diperlukan",
-    "lock_title_ai": "Quantum Intelligence Diperlukan",
-    "btn_upgrade": "Kelola Langganan",
-    "btn_stay": "Tetap Sebagai Explorer",
-    "tier_platinum": "Platinum Suite",
-    "tier_neural": "Neural Ecosystem",
+    "gating": {
+        "lock_title_required": "Architect Status Diperlukan",
+        "lock_title_ai": "Quantum Intelligence Diperlukan",
+        "btn_upgrade": "Kelola Langganan",
+        "btn_stay": "Tetap Sebagai Explorer",
+        "tier_platinum": "Platinum Suite",
+        "tier_neural": "Neural Ecosystem",
 
-    "journal": {
-        "title": "Neural Journal",
-        "description": "Buka ulasan mandiri dan analisis suasana hati yang mendalam. Korelasikan kebahagiaan Anda dengan trajektori produktivitas.",
-        "benefit_1": "Entri Media Kaya & Suara",
-        "benefit_2": "Pelacakan Mood & Sentimen",
-        "benefit_3": "Kunci Biometrik Pribadi"
-    },
-    "goal": {
-        "title": "Mission Manifest",
-        "description": "Ubah keinginan samar menjadi tujuan multi-fase terstruktur dengan pelacakan pencapaian yang presisi.",
-        "benefit_1": "Goal Lab Tak Terbatas",
-        "benefit_2": "Sistem Protokol Sub-tugas",
-        "benefit_3": "Proyeksi Kemajuan Visual"
-    },
-    "job": {
-        "title": "Career Transmissions",
-        "description": "Kelola lamaran, optimalkan CV utama, dan lacak trajektori profesional Anda dalam skala besar.",
-        "benefit_1": "Log Lamaran Tak Terbatas",
-        "benefit_2": "Hub Manajemen Resume",
-        "benefit_3": "Peringatan Peluang Pasar"
-    },
-    "calendar": {
-        "title": "System Calendar",
-        "description": "Linimasa global terpadu untuk tujuan, kebiasaan, dan tugas Anda. Lihat hidup Anda dalam 4D.",
-        "benefit_1": "Tampilan Linimasa Penuh",
-        "benefit_2": "Pemetaan Goal Gaya Gantt",
-        "benefit_3": "Sinkronisasi Jadwal Otomatis"
-    },
-    "planner_batch": {
-        "title": "Lightning Execution",
-        "description": "Architect mencatat seluruh protokol harian secara massal. Kecepatan adalah keunggulan kompetitif.",
-        "benefit_1": "Mekanisme Entri Massal",
-        "benefit_2": "Protokol Template",
-        "benefit_3": "Pemetaan Matriks Prioritas"
-    },
-    "ai_coach": {
-        "title": "Neural AI Hub",
-        "description": "Buka kecerdasan buatan untuk penumpukan kebiasaan adaptif dan analisis sinergi waktu nyata.",
-        "benefit_1": "Neural Coach Pribadi 24/7",
-        "benefit_2": "Penyetelan Rutinitas Prediktif",
-        "benefit_3": "Sintesis Siklus Hidup Mendalam"
-    },
-    "finance_trends": {
-        "title": "Wealth Analytics",
-        "description": "Visualisasi tingkat lanjut dari lintasan keuangan dan kematangan aset Anda.",
-        "benefit_1": "Bagan Tren Prediktif",
-        "benefit_2": "Lab Tabungan & Investasi",
-        "benefit_3": "Peramalan Kekayaan Bersih"
+        "journal": {
+            "title": "Neural Journal",
+            "description": "Buka ulasan mandiri dan analisis suasana hati yang mendalam. Korelasikan kebahagiaan Anda dengan trajektori produktivitas.",
+            "benefit_1": "Entri Media Kaya & Suara",
+            "benefit_2": "Pelacakan Mood & Sentimen",
+            "benefit_3": "Kunci Biometrik Pribadi"
+        },
+        "goal": {
+            "title": "Mission Manifest",
+            "description": "Ubah keinginan samar menjadi tujuan multi-fase terstruktur dengan pelacakan pencapaian yang presisi.",
+            "benefit_1": "Goal Lab Tak Terbatas",
+            "benefit_2": "Sistem Protokol Sub-tugas",
+            "benefit_3": "Proyeksi Kemajuan Visual"
+        },
+        "job": {
+            "title": "Career Transmissions",
+            "description": "Kelola lamaran, optimalkan CV utama, dan lacak trajektori profesional Anda dalam skala besar.",
+            "benefit_1": "Log Lamaran Tak Terbatas",
+            "benefit_2": "Hub Manajemen Resume",
+            "benefit_3": "Peringatan Peluang Pasar"
+        },
+        "calendar": {
+            "title": "System Calendar",
+            "description": "Linimasa global terpadu untuk tujuan, kebiasaan, dan tugas Anda. Lihat hidup Anda dalam 4D.",
+            "benefit_1": "Tampilan Linimasa Penuh",
+            "benefit_2": "Pemetaan Goal Gaya Gantt",
+            "benefit_3": "Sinkronisasi Jadwal Otomatis"
+        },
+        "planner_batch": {
+            "title": "Lightning Execution",
+            "description": "Architect mencatat seluruh protokol harian secara massal. Kecepatan adalah keunggulan kompetitif.",
+            "benefit_1": "Mekanisme Entri Massal",
+            "benefit_2": "Protokol Template",
+            "benefit_3": "Pemetaan Matriks Prioritas"
+        },
+        "ai_coach": {
+            "title": "Neural AI Hub",
+            "description": "Buka kecerdasan buatan untuk penumpukan kebiasaan adaptif dan analisis sinergi waktu nyata.",
+            "benefit_1": "Neural Coach Pribadi 24/7",
+            "benefit_2": "Penyetelan Rutinitas Prediktif",
+            "benefit_3": "Sintesis Siklus Hidup Mendalam"
+        },
+        "finance_trends": {
+            "title": "Wealth Analytics",
+            "description": "Visualisasi tingkat lanjut dari lintasan keuangan dan kematangan aset Anda.",
+            "benefit_1": "Bagan Tren Prediktif",
+            "benefit_2": "Lab Tabungan & Investasi",
+            "benefit_3": "Peramalan Kekayaan Bersih"
+        }
     }
 }

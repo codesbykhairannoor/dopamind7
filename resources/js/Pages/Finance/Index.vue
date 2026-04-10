@@ -425,18 +425,20 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                         @delete-category="triggerDeleteCategory"
                     />
 
-                    <NeuralBridge module="Finance" />
+                    <div class="hidden lg:block">
+                        <NeuralBridge module="Finance" />
 
-                    <!-- Investment Lab (FinanceInsights) -->
-                    <div class="relative">
-                        <LockedFeatureWall v-if="isExplorer" @click="openPremiumPreview('Finance')" />
-                        <FinanceInsights
-                            :expense-stats="localStats.expense_by_category"
-                            :income-stats="localStats.income_by_category"
-                            :budgets="localBudgets"
-                            :isExplorer="isExplorer"
-                            @update-stats="handleOptimisticInvestment"
-                        />
+                        <!-- Investment Lab (FinanceInsights) -->
+                        <div class="relative">
+                            <LockedFeatureWall v-if="isExplorer" @click="openPremiumPreview('Finance')" />
+                            <FinanceInsights
+                                :expense-stats="localStats.expense_by_category"
+                                :income-stats="localStats.income_by_category"
+                                :budgets="localBudgets"
+                                :isExplorer="isExplorer"
+                                @update-stats="handleOptimisticInvestment"
+                            />
+                        </div>
                     </div>
                 </div>
                 
@@ -544,11 +546,23 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                         </div>
                     </div>
 
-                    <!-- Trend Chart Section -->
-                    <div class="relative">
-                        <LockedFeatureWall v-if="isExplorer" @click="openPremiumPreview('Finance')" />
-                        <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" :isExplorer="isExplorer" @day-click="openDetail" />
-                    </div>
+                        <!-- Insights for Mobile (Placed above Trend Chart) -->
+                        <div class="lg:hidden relative">
+                             <LockedFeatureWall v-if="isExplorer" @click="openPremiumPreview('Finance')" />
+                             <FinanceInsights
+                                :expense-stats="localStats.expense_by_category"
+                                :income-stats="localStats.income_by_category"
+                                :budgets="localBudgets"
+                                :isExplorer="isExplorer"
+                                @update-stats="handleOptimisticInvestment"
+                            />
+                        </div>
+
+                        <!-- Trend Chart Section -->
+                         <div class="relative">
+                             <LockedFeatureWall v-if="isExplorer" @click="openPremiumPreview('Finance')" />
+                             <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" :isExplorer="isExplorer" @day-click="openDetail" />
+                         </div>
                 </div>
             </div>
         </div>

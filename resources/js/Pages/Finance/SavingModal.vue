@@ -57,7 +57,7 @@ const handleSave = () => {
         <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
             <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md transition-opacity" @click="handleClose"></div>
 
-            <div class="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col max-h-[90vh]">
+            <div class="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col max-h-[85dvh] md:max-h-[90vh]">
                 
                 <!-- Quick Header -->
                 <div class="px-8 pt-8 flex items-center justify-between">
@@ -115,7 +115,7 @@ const handleSave = () => {
                 </div>
 
                 <!-- Footer -->
-                <div class="p-8 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 transition-colors">
+                <div class="p-8 pb-10 md:pb-8 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 transition-colors z-20 sticky bottom-0">
                     <button @click="handleClose" class="text-[10px] font-bold text-slate-400 dark:text-slate-600 px-4 py-2 hover:text-rose-500 transition-colors">
                         {{ $t('btn_cancel') }}
                     </button>

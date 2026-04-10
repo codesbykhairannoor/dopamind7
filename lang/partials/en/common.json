@@ -23,6 +23,8 @@
     "btn_saving": "Saving...",
     "btn_save_all": "💾 Save All Tasks",
     "btn_add_timeline": "ADD",
+    "btn_unlock_now": "Unlock Now",
+    "btn_upgrade_tier": "Initiate Upgrade",
     "confirm_delete_title": "Are you sure?",
     "confirm_delete_text": "You won't be able to revert this!",
     "warn_empty_title": "Empty Title",

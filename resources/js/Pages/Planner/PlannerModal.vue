@@ -45,7 +45,7 @@ const confirmDelete = () => {
 
 <template>
     <Modal :show="show" @close="handleClose">
-        <div class="bg-white dark:bg-slate-900 rounded-2xl relative overflow-hidden transition-all duration-300 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl relative overflow-hidden transition-all duration-300 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none max-h-[85vh] md:max-h-[90vh] flex flex-col">
             
             <div v-if="isConfirmingDeletion" class="p-8 text-center animate-in fade-in zoom-in duration-200 bg-white dark:bg-slate-900 transition-colors duration-500">
                 <div class="w-20 h-20 bg-rose-100 dark:bg-rose-500/10 text-rose-500 dark:text-rose-400 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -97,7 +97,7 @@ const confirmDelete = () => {
                         <button @click="handleClose" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-rose-100 dark:hover:bg-rose-500/20 hover:text-rose-500 dark:hover:text-rose-400 transition font-bold">✕</button>
                     </div>
                 </div>
-                <div class="p-6 space-y-5 bg-white dark:bg-slate-900 transition-colors duration-500">
+                <div class="p-6 space-y-5 bg-white dark:bg-slate-900 transition-colors duration-500 flex-1 overflow-y-auto custom-scrollbar">
                     <div>
                         <InputLabel :value="$t('label_activity')" class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
                         <TextInput 
@@ -145,23 +145,23 @@ const confirmDelete = () => {
                             class="w-full border-2 border-slate-200 dark:border-slate-800 rounded-xl h-24 focus:border-indigo-500 focus:ring-0 resize-none p-4 text-sm font-medium text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 transition-colors duration-500"
                             :placeholder="$t('placeholder_notes')"></textarea>
                     </div>
+                </div>
 
-                    <div class="flex justify-between items-center mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 transition-colors duration-500">
-                        <button v-if="isEditing" @click="requestDelete" type="button" 
-                            class="text-rose-400 font-bold text-[10px] hover:text-rose-600 dark:hover:text-rose-300 transition px-2 flex items-center gap-1 active:scale-95 transition-colors duration-500">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                            {{ $t('btn_delete') }}
-                        </button>
-                        <div v-else></div>
+                <div class="flex justify-between items-center px-6 py-4 border-t border-slate-100 dark:border-slate-800 transition-colors duration-500 bg-white dark:bg-slate-900 sticky bottom-0 z-20 pb-8 md:pb-4">
+                    <button v-if="isEditing" @click="requestDelete" type="button" 
+                        class="text-rose-400 font-bold text-[10px] hover:text-rose-600 dark:hover:text-rose-300 transition px-2 flex items-center gap-1 active:scale-95 transition-colors duration-500">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        {{ $t('btn_delete') }}
+                    </button>
+                    <div v-else></div>
 
-                        <div class="flex gap-3">
-                            <SecondaryButton @click="handleClose" class="!rounded-xl !py-2.5 !px-6 !text-xs !font-bold">{{ $t('btn_cancel') }}</SecondaryButton>
-                            <PrimaryButton @click="submit" :disabled="form.processing || conflictError" 
-                                class="!bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-2.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none font-bold text-xs transition-all active:scale-95"
-                                :class="{'!bg-slate-300 dark:!bg-slate-800 !cursor-not-allowed !shadow-none': conflictError}">
-                                {{ isEditing ? $t('btn_save') : $t('btn_create') }}
-                            </PrimaryButton>
-                        </div>
+                    <div class="flex gap-3">
+                        <SecondaryButton @click="handleClose" class="!rounded-xl !py-2.5 !px-6 !text-xs !font-bold">{{ $t('btn_cancel') }}</SecondaryButton>
+                        <PrimaryButton @click="submit" :disabled="form.processing || conflictError" 
+                            class="!bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-2.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none font-bold text-xs transition-all active:scale-95"
+                            :class="{'!bg-slate-300 dark:!bg-slate-800 !cursor-not-allowed !shadow-none': conflictError}">
+                            {{ isEditing ? $t('btn_save') : $t('btn_create') }}
+                        </PrimaryButton>
                     </div>
                 </div>
             </div>

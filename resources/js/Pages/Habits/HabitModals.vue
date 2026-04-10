@@ -69,7 +69,7 @@ defineProps({
     
     <div v-if="showCreateModal" class="fixed inset-0 z-[70] flex items-center justify-center p-4 transition-all duration-500">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="closeModal"></div>
-        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 md:p-8 w-full max-w-lg relative z-10 shadow-2xl dark:shadow-none animate-in slide-in-from-bottom-10 sm:zoom-in-95 border border-slate-100 dark:border-slate-800 max-h-[90vh] overflow-y-auto custom-scrollbar flex flex-col">
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 md:p-8 w-full max-w-lg relative z-10 shadow-2xl dark:shadow-none animate-in slide-in-from-bottom-10 sm:zoom-in-95 border border-slate-100 dark:border-slate-800 max-h-[85vh] md:max-h-[90vh] overflow-hidden flex flex-col">
             
             <div class="flex justify-between items-center mb-6 shrink-0">
                 <div>
@@ -84,7 +84,7 @@ defineProps({
                 <button @click="closeModal" class="bg-slate-100 dark:bg-slate-800 w-8 h-8 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition -mt-6">✕</button>
             </div>
 
-            <form @submit.prevent="submitHabit" class="space-y-6 flex-1 overflow-y-auto pr-1">
+            <form @submit.prevent="submitHabit" class="space-y-6 flex-1 overflow-y-auto pr-1 custom-scrollbar">
                 <div class="space-y-2">
                     <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest ml-1">{{ $t('habit_modal_question') }}</label>
                     <input v-model="form.name" class="w-full text-base md:text-lg font-bold py-4 px-5 rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 focus:border-indigo-500 focus:bg-white dark:focus:bg-slate-900 transition-all outline-none" :placeholder="$t('habit_name_placeholder', 'Example: Morning Run...')" required>
@@ -120,7 +120,7 @@ defineProps({
                     </div>
                 </div>
 
-                <div class="flex gap-3 pt-6 shrink-0 bg-white dark:bg-slate-900 sticky bottom-0 border-t border-slate-50 dark:border-slate-800 mt-4 py-2">
+                <div class="flex gap-3 pt-4 shrink-0 bg-white dark:bg-slate-900 sticky bottom-[-1px] border-t border-slate-50 dark:border-slate-800 mt-4 py-2 pb-6 z-20">
                     <button v-if="isEditing" type="button" @click="deleteFromEdit" class="w-12 h-12 rounded-xl text-xl bg-rose-50 dark:bg-rose-500/10 text-rose-500 hover:bg-rose-100 dark:hover:bg-rose-500/20 transition flex items-center justify-center border border-rose-100 dark:border-rose-500/30 shrink-0" title="Hapus Habit">
                         🗑️
                     </button>

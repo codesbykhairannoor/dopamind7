@@ -62,7 +62,7 @@ const onInput = (e) => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="md">
-        <div class="bg-slate-50 dark:bg-slate-950 flex flex-col max-h-[85vh] relative overflow-visible transition-all duration-500 border border-slate-200 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem]">
+        <div class="bg-slate-50 dark:bg-slate-950 flex flex-col max-h-[85dvh] md:max-h-[85vh] relative overflow-visible transition-all duration-500 border border-slate-200 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem]">
             
             <div class="px-6 md:px-8 py-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 z-20 shrink-0 transition-colors duration-500">
                 <div class="flex items-center gap-4 transition-colors duration-500">
@@ -157,7 +157,7 @@ const onInput = (e) => {
 
             </div>
 
-            <div class="px-6 md:px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex gap-3 z-20 shrink-0 transition-colors duration-500">
+            <div class="px-6 md:px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex gap-3 z-20 shrink-0 transition-colors duration-500 pb-8 md:pb-6">
                 <SecondaryButton @click="close" class="flex-1 !py-3.5 !rounded-xl !text-[11px] !font-bold !border-2 dark:!border-slate-700 !text-slate-400 dark:!text-slate-600 hover:!text-slate-600 dark:hover:!text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 bg-white dark:bg-slate-900 transition-all duration-300">
                     {{ $t('btn_cancel') }}
                 </SecondaryButton>

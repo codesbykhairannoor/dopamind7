@@ -42,7 +42,7 @@ onUnmounted(() => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="2xl">
-        <div class="bg-white dark:bg-slate-900 flex flex-col max-h-[90dvh] md:max-h-[85vh] relative overflow-hidden transition-all duration-300 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem] w-full">
+        <div class="bg-white dark:bg-slate-900 flex flex-col max-h-[85dvh] md:max-h-[85vh] relative overflow-hidden transition-all duration-300 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem] w-full">
             
             <div class="px-6 md:px-8 py-5 md:py-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 z-20 shrink-0">
                 <div class="flex items-center gap-3 md:gap-4">
@@ -184,7 +184,7 @@ onUnmounted(() => {
                 </button>
             </div>
 
-            <div class="px-6 md:px-8 py-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 z-20 pb-6">
+            <div class="px-6 md:px-8 py-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 z-20 pb-8 md:pb-6">
                 <div class="text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-tight flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
                     {{ $t('total_input') }} <span class="text-indigo-600 dark:text-indigo-400 text-sm font-black">{{ form.habits.length }}</span>
