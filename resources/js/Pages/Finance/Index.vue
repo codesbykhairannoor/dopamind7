@@ -427,6 +427,8 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
 
                     <div class="hidden lg:block">
                         <NeuralBridge module="Finance" />
+                    </div>
+                </div>
 
                 <div class="lg:col-span-3 space-y-8 w-full order-2 lg:order-1 pb-24 lg:pb-0">
                     <!-- Investment Lab for Desk -->
