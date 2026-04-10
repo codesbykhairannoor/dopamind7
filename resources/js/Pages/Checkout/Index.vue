@@ -58,7 +58,26 @@ const initiatePayment = async (method) => {
             billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
         });
 
-        if (response.data.paymentUrl) {
+        if (response.data.reference && typeof window.checkout !== 'undefined') {
+            Swal.close();
+            // Trigger Duitku POP
+            window.checkout.process(response.data.reference, {
+                successEvent: function(result){
+                    Swal.fire('Success', 'Payment processed successfully!', 'success');
+                    window.location.href = route('payment.finish');
+                },
+                pendingEvent: function(result){
+                    Swal.fire('Pending', 'Waiting for your payment...', 'info');
+                    window.location.href = route('payment.finish');
+                },
+                errorEvent: function(result){
+                    Swal.fire('Error', 'Payment failed: ' + (result.statusMessage || 'Unknown error'), 'error');
+                },
+                closeEvent: function(result){
+                    console.log('Customer closed the popup without finishing the payment');
+                }
+            });
+        } else if (response.data.paymentUrl) {
             window.location.href = response.data.paymentUrl;
         } else {
             throw new Error('No payment URL received');

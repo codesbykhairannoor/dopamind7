@@ -240,6 +240,13 @@
             background: #94a3b8;
         }
     </style>
+
+    <!-- Duitku POP SDK -->
+    @if(config('duitku.env') === 'production')
+        <script src="https://passport.duitku.com/lib/js/duitku.js"></script>
+    @else
+        <script src="https://app-sandbox.duitku.com/lib/js/duitku.js"></script>
+    @endif
 </head>
 @if(env('VITE_GA_MEASUREMENT_ID'))
     <script>

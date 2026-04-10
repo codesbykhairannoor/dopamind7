@@ -168,7 +168,10 @@ class PaymentController extends Controller
             $data = json_decode($body, true);
 
             if ($status === 200 && is_array($data) && isset($data['paymentUrl'])) {
-                return response()->json(['paymentUrl' => $data['paymentUrl']]);
+                return response()->json([
+                    'paymentUrl' => $data['paymentUrl'],
+                    'reference' => $data['reference'] ?? null
+                ]);
             }
             else {
                 Log::error('Duitku Gateway Error:', [
