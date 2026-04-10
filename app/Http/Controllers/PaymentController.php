@@ -77,38 +77,30 @@ class PaymentController extends Controller
 
         $merchantOrderId = strtoupper($plan) . '-' . $user->id . '-' . time();
         $email = $user->email;
-        $customerVaName = $user->name;
-        $phoneNumber = '081234567890'; // Fixed to potentially more valid 12 digits for production vs dummy 11
+        $phoneNumber = '081234567890'; 
 
-        $callbackUrl = url('/callback');
-        $returnUrl = url('/payment/finish');
+        $merchantCode = trim(config('duitku.merchant_code'));
+        $apiKey = trim(config('duitku.api_key'));
+        $env = config('duitku.env');
+
+        if (!$merchantCode || !$apiKey) {
+            Log::error('Duitku API Credentials Missing', ['env' => $env]);
+            return response()->json(['error' => 'Duitku API credentials (Merchant Code or API Key) not configured in server .env'], 400);
+        }
 
         $timestamp = round(microtime(true) * 1000);
         $signature = hash('sha256', $merchantCode . $timestamp . $apiKey);
 
-        $itemDetails = [
-            [
-                'name' => $productDetails,
-                'price' => (int)$paymentAmount,
-                'quantity' => 1
-            ]
-        ];
-
         $params = [
             'merchantCode' => $merchantCode,
             'paymentAmount' => (int)$paymentAmount,
-            'paymentMethod' => '', // Blank to show all payment methods
-            'merchantOrderId' => (string)$merchantOrderId,
+            'merchantOrderId' => $merchantOrderId,
             'productDetails' => $productDetails,
-            'additionalParam' => '',
-            'merchantUserInfo' => (string)$user->id,
-            'customerVaName' => $customerVaName,
             'email' => $email,
             'phoneNumber' => $phoneNumber,
-            'itemDetails' => $itemDetails,
-            'callbackUrl' => $callbackUrl,
-            'returnUrl' => $returnUrl,
-            'expiryPeriod' => 60 // In minutes
+            'callbackUrl' => route('payment.callback'),
+            'returnUrl' => route('payment.finish'),
+            'expiryPeriod' => 60
         ];
 
         $url = $env === 'production'
@@ -120,7 +112,7 @@ class PaymentController extends Controller
                 'url' => $url,
                 'merchantCode' => $merchantCode,
                 'merchantOrderId' => $merchantOrderId,
-                'paymentAmount' => $paymentAmount
+                'paymentAmount' => (int)$paymentAmount
             ]);
 
             $response = Http::withHeaders([
@@ -145,9 +137,16 @@ class PaymentController extends Controller
                     'merchantOrderId' => $merchantOrderId
                 ]);
 
-                return response()->json([
-                    'error' => "Duitku returned " . $status . ": " . (json_decode($body)->Message ?? substr($body, 0, 100))
-                ], 400);
+                $errorMessage = "Duitku returned " . $status;
+                if (is_array($data) && isset($data['Message'])) {
+                    $errorMessage .= ": " . $data['Message'];
+                } elseif (is_array($data) && isset($data['responseMessage'])) {
+                    $errorMessage .= ": " . $data['responseMessage'];
+                } else {
+                    $errorMessage .= ": " . substr($body, 0, 100);
+                }
+
+                return response()->json(['error' => $errorMessage], 400);
             }
         }
         catch (\Exception $e) {
