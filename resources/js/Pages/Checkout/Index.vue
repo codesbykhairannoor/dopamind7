@@ -173,8 +173,7 @@ const initiatePayment = async (method) => {
                                                 : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
                                         ]"
                                     >
-                                        <div :class="['text-xs font-black uppercase tracking-widest relative z-10', selectedDuitkuMethod === 'SP' ? 'text-white' : 'text-slate-500']">QRIS / E-Wallet</div>
-                                        <div v-if="selectedDuitkuMethod === 'SP'" class="absolute inset-0 bg-white/10 animate-pulse"></div>
+                                        <div :class="['text-xs font-black uppercase tracking-widest relative z-10', selectedDuitkuMethod === 'SP' ? 'text-white' : 'text-slate-500']">QRIS</div>
                                     </button>
                                     <button 
                                         type="button"
@@ -186,7 +185,31 @@ const initiatePayment = async (method) => {
                                                 : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
                                         ]"
                                     >
-                                        <div :class="['text-xs font-black uppercase tracking-widest relative z-10', selectedDuitkuMethod === 'BC' ? 'text-white' : 'text-slate-500']">Virtual Account</div>
+                                        <div :class="['text-xs font-black uppercase tracking-widest relative z-10', selectedDuitkuMethod === 'BC' ? 'text-white' : 'text-slate-500']">VA BCA</div>
+                                    </button>
+                                    <button 
+                                        type="button"
+                                        @click="selectedDuitkuMethod = 'OV'"
+                                        :class="[
+                                            'p-4 rounded-2xl border transition-all text-center group relative overflow-hidden',
+                                            selectedDuitkuMethod === 'OV' 
+                                                ? 'bg-indigo-600 border-indigo-600' 
+                                                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+                                        ]"
+                                    >
+                                        <div :class="['text-xs font-black uppercase tracking-widest relative z-10', selectedDuitkuMethod === 'OV' ? 'text-white' : 'text-slate-500']">OVO</div>
+                                    </button>
+                                    <button 
+                                        type="button"
+                                        @click="selectedDuitkuMethod = 'DA'"
+                                        :class="[
+                                            'p-4 rounded-2xl border transition-all text-center group relative overflow-hidden',
+                                            selectedDuitkuMethod === 'DA' 
+                                                ? 'bg-indigo-600 border-indigo-600' 
+                                                : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800'
+                                        ]"
+                                    >
+                                        <div :class="['text-xs font-black uppercase tracking-widest relative z-10', selectedDuitkuMethod === 'DA' ? 'text-white' : 'text-slate-500']">DANA</div>
                                     </button>
                                 </div>
 
