@@ -34,7 +34,14 @@ class PayPalController extends Controller
         ];
 
         $amount = $prices[$plan][$billing] ?? 4.99;
-        $description = "OneForMind " . ucfirst($plan) . " (" . ucfirst($billing) . ") Subscription";
+        
+        // Final Billing Logic: If yearly, multiply monthly price by 12 (except for lifetime)
+        if ($billing === 'yearly' && $plan !== 'lifetime') {
+            $amount *= 12;
+            $description = "OneForMind " . ucfirst($plan) . " Annual (12 Months) Subscription";
+        } else {
+            $description = "OneForMind " . ucfirst($plan) . " (" . ucfirst($billing) . ") Subscription";
+        }
         
         if ($plan === 'lifetime') {
             $description = "OneForMind Legendary Founder (Lifetime Access)";

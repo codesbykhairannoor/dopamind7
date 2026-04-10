@@ -69,7 +69,14 @@ class PaymentController extends Controller
         ];
 
         $paymentAmount = $prices[$plan][$billing] ?? 79000;
-        $productDetails = "OneForMind " . ucfirst($plan) . " (" . ucfirst($billing) . ") Subscription";
+        
+        // Final Billing Logic: If yearly, multiply monthly price by 12 (except for lifetime)
+        if ($billing === 'yearly' && $plan !== 'lifetime') {
+            $paymentAmount *= 12;
+            $productDetails = "OneForMind " . ucfirst($plan) . " Annual (12 Months) Subscription";
+        } else {
+            $productDetails = "OneForMind " . ucfirst($plan) . " (" . ucfirst($billing) . ") Subscription";
+        }
 
         if ($plan === 'lifetime') {
             $productDetails = 'OneForMind Legendary Founder Edition (Lifetime)';
@@ -115,7 +122,7 @@ class PaymentController extends Controller
         ];
 
         $url = $env === 'production'
-            ? 'https://api.duitku.com/webapi/api/merchant/createinvoice'
+            ? 'https://passport.duitku.com/webapi/api/merchant/createinvoice'
             : 'https://api-sandbox.duitku.com/webapi/api/merchant/createinvoice';
 
         try {
