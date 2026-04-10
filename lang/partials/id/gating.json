@@ -55,6 +55,13 @@
             "benefit_1": "Bagan Tren Prediktif",
             "benefit_2": "Lab Tabungan & Investasi",
             "benefit_3": "Peramalan Kekayaan Bersih"
+        },
+        "finance_vault": {
+            "title": "Vault Architecture",
+            "description": "Manifestasikan kekayaan Anda dengan protokol akumulasi otomatis dan manifestasi multi-vault.",
+            "benefit_1": "Vault Kekayaan Tak Terbatas",
+            "benefit_2": "Log Riwayat Transaksi",
+            "benefit_3": "Peringatan Target Kematangan"
         }
     }
 }

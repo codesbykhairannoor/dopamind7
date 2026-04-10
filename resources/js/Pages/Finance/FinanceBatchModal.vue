@@ -5,10 +5,16 @@ import Modal from '@/Components/Modal.vue';
 import TextInput from '@/Components/TextInput.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
-import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
-import FinanceDatePicker from './FinanceDatePicker.vue';
+import { 
+    Gem, Sparkle, ArrowRight, Wallet, 
+    CheckCircle2, Sparkles, TrendingUp
+} from 'lucide-vue-next';
+import { useGating } from '@/Composables/useGating';
+import { Link } from '@inertiajs/vue3';
+import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
-const props = defineProps({
+const { isExplorer } = useGating();
+const { activeCurrency, getCategoryDetails, appLocale } = useFinanceFormat();
     show: Boolean,
     form: Object,
     categories: Array,
@@ -69,50 +75,104 @@ const changeType = (index, type) => {
     <Modal :show="show" @close="close" maxWidth="2xl">
         <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-500 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none">
             
-            <div v-if="conflictError" class="absolute top-0 left-0 right-0 bg-rose-500 text-white text-[10px] font-black px-6 py-3.5 text-center animate-in slide-in-from-top-full z-50 shadow-lg dark:shadow-none flex items-center justify-center gap-2 tracking-[0.1em] rounded-t-[2.5rem] shrink-0">
-                <svg class="w-4 h-4 shrink-0 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                <span>{{ conflictError }}</span>
-            </div>
+            <!-- [LOCKED STATE] Full Modal Cover -->
+            <div v-if="isExplorer" class="flex-1 flex flex-col items-center justify-center p-8 md:p-12 text-center relative overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500 min-h-[500px]">
+                <!-- Close Button for Locked State -->
+                <button @click="close" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-rose-500 transition-all z-50 font-bold">✕</button>
+                
+                <!-- Background Glow -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-cyan-500/10 rounded-full blur-[80px]"></div>
+                <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-indigo-500/5 rounded-full blur-[80px]"></div>
 
-            <div class="px-8 py-6 border-b border-slate-50 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 shrink-0 z-20 rounded-t-[2.5rem] transition-colors duration-500" :class="{'mt-12': conflictError}">
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-xl text-white shadow-lg dark:shadow-none shadow-indigo-100 dark:shadow-indigo-900/20">
-                        ✨
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-black text-slate-800 dark:text-white tracking-tight leading-none mb-1.5 transition-colors duration-500">
-                            {{ $t('batch_mode_title', 'Batch finance') }}
-                        </h2>
-                        <div class="relative">
-                            <button type="button" @click="showDatePicker = !showDatePicker" class="text-[10px] font-bold text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 border border-indigo-100 dark:border-indigo-500/20 rounded-lg px-2.5 py-1 transition-all tracking-widest flex items-center gap-2">
-                                <span>{{ dateDisplay }}</span>
-                                <span>📅</span>
-                            </button>
-                            <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
-                                <div v-if="showDatePicker" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:top-full sm:left-0 sm:mt-2 sm:origin-top-left sm:block sm:inset-auto">
-                                    <div class="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm sm:hidden" @click="showDatePicker = false"></div>
-                                    <FinanceDatePicker 
-                                        :show="true" 
-                                        :modelValue="form.date"
-                                        @update:modelValue="(val) => form.date = val"
-                                        @close="showDatePicker = false"
-                                        class="relative z-10"
-                                    />
-                                </div>
-                            </transition>
+                <div class="relative z-10 max-w-sm space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+                    <!-- Icon Stack -->
+                    <div class="relative w-20 h-20 mx-auto">
+                        <div class="absolute inset-0 bg-cyan-500/20 blur-2xl rounded-full"></div>
+                        <div class="relative w-20 h-20 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2rem] shadow-xl flex items-center justify-center">
+                            <TrendingUp :size="32" class="text-cyan-600 dark:text-cyan-400" stroke-width="2.5" />
                         </div>
                     </div>
-                </div>
-                
-                <div class="flex items-center gap-3">
-                    <button @click="switchToSingle" type="button" class="hidden sm:flex text-[10px] font-black tracking-widest px-4 py-2 rounded-xl border-2 border-slate-50 dark:border-slate-800 text-slate-400 dark:text-slate-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-100 dark:hover:border-indigo-500/20 transition-all active:scale-95 items-center gap-2">
-                        <span>↩️</span> {{ $t('btn_single_mode', 'Single mode') }}
-                    </button>
-                    <button @click="close" class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 hover:text-rose-500 dark:hover:text-rose-400 transition-all active:scale-90 flex items-center justify-center font-bold">
-                        ✕
-                    </button>
+
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4 shadow-sm">
+                            <Sparkle :size="10" class="text-cyan-500" fill="currentColor" />
+                            <span class="text-[8px] font-black uppercase tracking-[0.3em] text-cyan-600 dark:text-cyan-400">
+                                {{ $t('gating.lock_title_required') }}
+                            </span>
+                        </div>
+                        <h3 class="text-2xl md:text-3xl font-black text-slate-800 dark:text-white mb-3 tracking-tighter leading-tight">
+                            {{ $t('gating.finance_trends.title') }}
+                        </h3>
+                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 leading-relaxed">
+                            {{ $t('gating.finance_trends.description') }}
+                        </p>
+                    </div>
+
+                    <!-- Benefits -->
+                    <div class="space-y-3 text-left">
+                        <div v-for="i in [1, 2, 3]" :key="i" class="flex items-center gap-3 p-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm">
+                            <div class="w-5 h-5 rounded-full bg-cyan-500/10 text-cyan-500 flex items-center justify-center shrink-0">
+                                <CheckCircle2 :size="12" />
+                            </div>
+                            <span class="text-[10px] font-black text-slate-700 dark:text-slate-300 tracking-tight">
+                                {{ $t('gating.finance_trends.benefit_' + i) }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 space-y-3">
+                        <Link :href="route('billing')" class="w-full h-14 bg-slate-900 dark:bg-indigo-600 hover:scale-[1.01] text-white rounded-2xl flex items-center justify-center gap-3 font-black text-[11px] uppercase tracking-widest shadow-xl transition-all active:scale-95 group">
+                            {{ $t('gating.btn_upgrade') }}
+                            <ArrowRight :size="16" stroke-width="3" class="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                        <button @click="close" class="text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                             {{ $t('gating.btn_stay') }}
+                        </button>
+                    </div>
                 </div>
             </div>
+
+            <!-- [ACTIVE STATE] Original Modal Content -->
+            <template v-else>
+                <div class="px-8 py-6 border-b border-slate-50 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 shrink-0 z-20 rounded-t-[2.5rem] transition-colors duration-500" :class="{'mt-12': conflictError}">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-xl text-white shadow-lg dark:shadow-none shadow-indigo-100 dark:shadow-indigo-900/20">
+                            ✨
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-black text-slate-800 dark:text-white tracking-tight leading-none mb-1.5 transition-colors duration-500">
+                                {{ $t('batch_mode_title', 'Batch finance') }}
+                            </h2>
+                            <div class="relative">
+                                <button type="button" @click="showDatePicker = !showDatePicker" class="text-[10px] font-bold text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 border border-indigo-100 dark:border-indigo-500/20 rounded-lg px-2.5 py-1 transition-all tracking-widest flex items-center gap-2">
+                                    <span>{{ dateDisplay }}</span>
+                                    <span>📅</span>
+                                </button>
+                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
+                                    <div v-if="showDatePicker" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:top-full sm:left-0 sm:mt-2 sm:origin-top-left sm:block sm:inset-auto">
+                                        <div class="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm sm:hidden" @click="showDatePicker = false"></div>
+                                        <FinanceDatePicker 
+                                            :show="true" 
+                                            :modelValue="form.date"
+                                            @update:modelValue="(val) => form.date = val"
+                                            @close="showDatePicker = false"
+                                            class="relative z-10"
+                                        />
+                                    </div>
+                                </transition>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <button @click="switchToSingle" type="button" class="hidden sm:flex text-[10px] font-black tracking-widest px-4 py-2 rounded-xl border-2 border-slate-50 dark:border-slate-800 text-slate-400 dark:text-slate-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-100 dark:hover:border-indigo-500/20 transition-all active:scale-95 items-center gap-2">
+                            <span>↩️</span> {{ $t('btn_single_mode', 'Single mode') }}
+                        </button>
+                        <button @click="close" class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 hover:text-rose-500 dark:hover:text-rose-400 transition-all active:scale-90 flex items-center justify-center font-bold">
+                            ✕
+                        </button>
+                    </div>
+                </div>
 
             <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-slate-950 p-4 md:p-8 transition-colors duration-500">
                 
@@ -204,25 +264,7 @@ const changeType = (index, type) => {
                 </button>
             </div>
 
-            <div class="px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-50 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 rounded-b-[2.5rem] transition-colors duration-500">
-                <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest flex items-center gap-2 transition-colors duration-500">
-                    <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-                    {{ $t('total_label', 'Total input:') }} <span class="text-indigo-600 dark:text-indigo-400 text-sm font-black">{{ form.transactions.length }}</span>
-                </div>
-                
-                <div class="flex gap-3 w-full sm:w-auto">
-                    <SecondaryButton @click="close" class="flex-1 sm:flex-none !py-3 !rounded-xl !text-[10px] !font-bold !border-2 dark:!border-slate-700 !text-slate-400 dark:!text-slate-500 hover:!text-slate-600 dark:hover:!text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 bg-white dark:bg-slate-900 transition-all duration-300">
-                        {{ $t('btn_cancel', 'Cancel') }}
-                    </SecondaryButton>
-                    
-                    <PrimaryButton @click="submit" :disabled="form.processing || conflictError" 
-                        class="flex-[2] sm:flex-none !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3 !px-8 shadow-xl dark:shadow-none shadow-indigo-100 dark:shadow-indigo-900/40 transition-all transform active:scale-95 font-bold tracking-widest text-[10px] transition-all duration-300"
-                        :class="{'!bg-slate-300 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-600 !cursor-not-allowed !shadow-none !transform-none': conflictError}">
-                        <span v-if="form.processing">...</span>
-                        <span v-else>{{ $t('btn_save_all_transactions', 'Save batch') }}</span>
-                    </PrimaryButton>
-                </div>
-            </div>
+            </template>
         </div>
     </Modal>
 </template>

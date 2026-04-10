@@ -11,28 +11,39 @@ import path from 'path';
 function mergeTranslations() {
     const mergeFiles = () => {
         try {
-            const langs = ['id', 'en']; // Daftar bahasa
+            const rootDir = process.cwd();
+            const partialsBaseDir = path.resolve(rootDir, 'lang/partials');
+            
+            if (!fs.existsSync(partialsBaseDir)) return;
+
+            // Deteksi semua folder bahasa secara dinamis (id, en, dll)
+            const langs = fs.readdirSync(partialsBaseDir).filter(f => 
+                fs.statSync(path.join(partialsBaseDir, f)).isDirectory()
+            );
 
             langs.forEach(lang => {
-                const partialsDir = path.resolve(process.cwd(), `lang/partials/${lang}`);
-                const outputFile = path.resolve(process.cwd(), `lang/${lang}.json`);
+                const partialsDir = path.join(partialsBaseDir, lang);
+                const outputFile = path.resolve(rootDir, `lang/${lang}.json`);
 
-                if (fs.existsSync(partialsDir)) {
-                    let mergedContent = {};
-                    const files = fs.readdirSync(partialsDir).filter(f => f.endsWith('.json'));
+                let mergedContent = {};
+                // Ambil semua file JSON, sortir biar urutan merge konsisten (abjad)
+                const files = fs.readdirSync(partialsDir).filter(f => f.endsWith('.json')).sort();
 
-                    files.forEach(file => {
+                files.forEach(file => {
+                    try {
                         const content = fs.readFileSync(path.join(partialsDir, file), 'utf-8');
-                        try {
-                            mergedContent = { ...mergedContent, ...JSON.parse(content) };
-                        } catch (e) {
-                            console.error(`❌ Gagal membaca file JSON: ${file}`, e);
-                        }
-                    });
+                        const json = JSON.parse(content);
+                        mergedContent = { ...mergedContent, ...json };
+                    } catch (e) {
+                        console.error(`❌ Gagal membaca/parse JSON: ${lang}/${file}`, e);
+                    }
+                });
 
-                    fs.writeFileSync(outputFile, JSON.stringify(mergedContent, null, 4));
-                }
+                // Tulis hasil merge ke file utama
+                fs.writeFileSync(outputFile, JSON.stringify(mergedContent, null, 4));
             });
+            
+            console.log(`[i18n] ✅ ${new Date().toLocaleTimeString()} - Merged partials for: ${langs.join(', ')}`);
         } catch (error) {
             console.error('❌ Plugin merge-translations gagal!', error);
         }
@@ -40,16 +51,20 @@ function mergeTranslations() {
 
     return {
         name: 'merge-translations',
-        // 1. Jalan otomatis saat lo ngetik 'npm run dev' atau 'npm run build'
+        // 1. Tambahkan watcher manual biar Vite mantau folder partials
+        configureServer(server) {
+            server.watcher.add(path.resolve(process.cwd(), 'lang/partials/**'));
+        },
+        // 2. Jalankan saat build atau dev start
         buildStart() {
             mergeFiles();
         },
-        // 2. Jalan otomatis saat lo nge-save file di dalam folder 'lang/partials' (HMR)
+        // 3. Jalankan saat ada file di partials yang di-edit
         handleHotUpdate({ file, server }) {
-            // Deteksi perubahan di folder partials (Bisa Windows '\' atau Mac/Linux '/')
-            if (file.includes('lang/partials') || file.includes('lang\\partials')) {
+            const normalizedPath = file.replace(/\\/g, '/');
+            if (normalizedPath.includes('lang/partials/')) {
                 mergeFiles();
-                // Paksa browser nge-refresh biar text barunya langsung muncul di layar
+                // Paksa reload browser agar i18n memuat ulang JSON terbaru
                 server.ws.send({ type: 'full-reload' });
             }
         }
@@ -72,7 +87,11 @@ export default defineConfig({
                 'resources/js/app.js'
             ],
             ssr: 'resources/js/ssr.js',
-            refresh: true,
+            refresh: [
+                'resources/views/**',
+                'routes/**',
+                'lang/*.json', // Pantau file hasil merge juga biar aman
+            ],
         }),
         vue({
             template: {

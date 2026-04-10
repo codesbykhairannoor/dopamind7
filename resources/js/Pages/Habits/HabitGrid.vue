@@ -161,13 +161,16 @@ onMounted(() => {
                                 </button>
                             </div>
                         </div>
-                        <div class="flex items-center gap-2 mt-1">
+                        <div class="flex items-center justify-between gap-2 mt-2">
                             <div class="flex-1 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                                 <div class="h-full rounded-full transition-all duration-500" 
                                     :style="{ width: habit.progress_percent + '%', backgroundColor: habit.color }">
                                 </div>
                             </div>
-                            <span class="text-[10px] font-black text-slate-400 dark:text-slate-500">{{ Math.round(habit.progress_percent) }}%</span>
+                            <div class="flex items-center gap-1.5 shrink-0">
+                                <span class="text-[9px] font-black text-slate-700 dark:text-slate-300">{{ habit.progress_count }}<span class="text-slate-400 font-bold">/{{ habit.monthly_target }}</span></span>
+                                <span class="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-tighter">{{ Math.round(habit.progress_percent) }}%</span>
+                            </div>
                         </div>
                     </div>
 

@@ -428,6 +428,11 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                     <div class="hidden lg:block">
                         <NeuralBridge module="Finance" />
 
+                <div class="lg:col-span-3 space-y-8 w-full order-2 lg:order-1 pb-24 lg:pb-0">
+                    <!-- Investment Lab for Desk -->
+                    <div class="hidden lg:block">
+                        <NeuralBridge module="Finance" />
+
                         <!-- Investment Lab (FinanceInsights) -->
                         <div class="relative">
                             <LockedFeatureWall v-if="isExplorer" @click="openPremiumPreview('Finance')" />
@@ -440,9 +445,6 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                             />
                         </div>
                     </div>
-                </div>
-                
-                <div class="lg:col-span-3 space-y-8 w-full order-2 lg:order-1 pb-24 lg:pb-0">
                     <div class="space-y-4">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-1 lg:px-0">
                             <div class="flex items-center gap-2">
@@ -515,15 +517,25 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
                             <!-- Premium Lockdown Overlay for The Vault -->
-                            <div v-if="isExplorer" @click="openPremiumPreview('Finance')" class="absolute inset-0 z-20 rounded-[3rem] overflow-hidden group/locked-vault cursor-pointer transition-all duration-700 border border-slate-100 dark:border-slate-800 shadow-2xl">
-                                <div class="absolute inset-0 bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl transition-all duration-700 group-hover/locked-vault:backdrop-blur-none"></div>
-                                <div class="absolute inset-0 opacity-10 group-hover/locked-vault:opacity-20 transition-opacity duration-1000 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-400 via-transparent to-transparent"></div>
-                                <div class="relative z-10 h-full flex items-center justify-center p-8 text-center bg-white/50 dark:bg-slate-900/50">
-                                    <div class="max-w-xs animate-in zoom-in duration-500">
-                                        <div class="w-20 h-20 bg-gradient-to-br from-orange-400 to-amber-600 dark:from-orange-500 dark:to-amber-700 rounded-3xl flex items-center justify-center mx-auto mb-6 text-white shadow-2xl rotate-3 group-hover/locked-vault:rotate-0 transition-transform"><Lock :size="40" stroke-width="2.5" /></div>
-                                        <h4 class="text-xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">Vault architecture</h4>
-                                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 leading-relaxed mb-6">Manifest your wealth with automated accumulation protocols.</p>
-                                        <div class="inline-flex items-center gap-2 text-[10px] font-black text-orange-600 dark:text-orange-400 tracking-widest uppercase"><span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-ping"></span>Unlock architect tier</div>
+                            <div v-if="isExplorer" @click="openPremiumPreview('Finance')" class="absolute inset-x-0 -inset-y-4 z-40 rounded-[3rem] overflow-hidden group/locked-vault cursor-pointer transition-all duration-700 border border-slate-100 dark:border-slate-800 shadow-2xl">
+                                <div class="absolute inset-0 bg-white/60 dark:bg-slate-950/60 backdrop-blur-xl transition-all duration-700 group-hover/locked-vault:backdrop-blur-md"></div>
+                                <div class="absolute inset-0 opacity-10 group-hover/locked-vault:opacity-30 transition-opacity duration-1000 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-400 via-transparent to-transparent"></div>
+                                <div class="relative z-10 h-full flex flex-col items-center justify-center p-8 text-center">
+                                    <div class="max-w-xs animate-in zoom-in duration-500 space-y-4">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center mx-auto text-white shadow-xl rotate-3 group-hover/locked-vault:rotate-0 transition-transform">
+                                            <Wallet :size="32" stroke-width="2.5" />
+                                        </div>
+                                        <div>
+                                            <h4 class="text-xl font-black text-slate-900 dark:text-white mb-1 tracking-tight">
+                                                {{ $t('gating.finance_vault.title') }}
+                                            </h4>
+                                            <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 leading-relaxed px-4">
+                                                {{ $t('gating.finance_vault.description') }}
+                                            </p>
+                                        </div>
+                                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-500 text-white font-black text-[9px] uppercase tracking-widest shadow-lg shadow-orange-200 dark:shadow-none hover:scale-105 transition-all">
+                                            {{ $t('gating.btn_upgrade') }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -534,12 +546,29 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                                 <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] lg:w-full"><SavingCard :saving="saving" :onDeposit="(s) => openVaultAction(s, 'deposit')" :onWithdraw="(s) => openVaultAction(s, 'withdraw')" :onEdit="handleEditSaving" :onDelete="handleDeleteSaving" /></div>
                             </div>
 
-                            <div @click="openPremiumPreview('Finance')" class="relative bg-slate-900 dark:bg-indigo-950 rounded-[2.5rem] p-8 overflow-hidden group/forecast cursor-pointer hover:scale-[1.02] transition-all duration-500 shadow-2xl">
+                            <!-- Neural Forecast (Gated) -->
+                            <div @click="openPremiumPreview('Finance')" class="relative bg-slate-900 dark:bg-indigo-950 rounded-[2.5rem] p-8 overflow-hidden group/forecast cursor-pointer hover:scale-[1.02] transition-all duration-500 shadow-2xl border border-slate-800">
                                 <div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-500 via-slate-900 to-black"></div>
                                 <div class="relative z-10 flex flex-col h-full">
-                                    <div class="flex items-center justify-between mb-6"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white"><TrendingUp :size="20" /></div><div><h4 class="text-xs font-black text-white tracking-widest">Neural forecast</h4><p class="text-[9px] font-bold text-indigo-300 tracking-tighter">AI wealth prediction</p></div></div><div class="px-2 py-1 rounded-md bg-indigo-500 text-white text-[8px] font-black tracking-widest shadow-lg">Elite</div></div>
-                                    <div class="flex-1 flex items-end gap-1.5 h-24 mb-6 blur-[2px] group-hover:blur-0 transition-all duration-700 opacity-30"><div v-for="h in [30, 45, 35, 70, 85, 60, 100, 90, 110, 130]" :key="h" :style="{ height: h + '%' }" class="flex-1 bg-gradient-to-t from-indigo-400 to-transparent rounded-t-sm"></div></div>
-                                    <div class="mt-auto flex items-center justify-between"><span class="text-[10px] font-black text-indigo-200 tracking-widest">Unlock predictions</span><ArrowRight :size="16" class="text-white group-hover:translate-x-1 transition-transform" /></div>
+                                    <div class="flex items-center justify-between mb-6">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
+                                                <TrendingUp :size="20" />
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xs font-black text-white tracking-widest">{{ $t('gating.finance_trends.title') }}</h4>
+                                                <p class="text-[9px] font-bold text-indigo-300 tracking-tighter">AI wealth prediction</p>
+                                            </div>
+                                        </div>
+                                        <div class="px-2 py-1 rounded-md bg-indigo-500 text-white text-[8px] font-black tracking-widest shadow-lg uppercase">Architect</div>
+                                    </div>
+                                    <div class="flex-1 flex items-end gap-1.5 h-24 mb-6 blur-[3px] group-hover:blur-[1px] transition-all duration-700 opacity-20 group-hover:opacity-40">
+                                        <div v-for="h in [30, 45, 35, 70, 85, 60, 100, 90, 110, 130]" :key="h" :style="{ height: h + '%' }" class="flex-1 bg-gradient-to-t from-indigo-400 to-transparent rounded-t-sm"></div>
+                                    </div>
+                                    <div class="mt-auto flex items-center justify-between">
+                                        <span class="text-[10px] font-black text-indigo-200 tracking-widest uppercase">{{ $t('gating.btn_upgrade') }}</span>
+                                        <ArrowRight :size="16" class="text-white group-hover:translate-x-1 transition-transform" />
+                                    </div>
                                 </div>
                                 <div class="absolute inset-0 bg-white/5 backdrop-blur-[1px] opacity-20 transition-opacity group-hover:opacity-0"></div>
                             </div>

@@ -55,6 +55,14 @@ const featureConfig = computed(() => {
             pattern: 'pattern-motion',
             glow: 'shadow-emerald-500/20'
         },
+        'habit_batch': {
+            icon: Zap,
+            color: 'text-emerald-500',
+            bg: 'bg-emerald-50 dark:bg-emerald-950/30',
+            accent: 'bg-emerald-500',
+            pattern: 'pattern-motion',
+            glow: 'shadow-emerald-500/20'
+        },
         'ai_coach': {
             icon: Sparkles,
             color: 'text-violet-400',
@@ -84,7 +92,12 @@ const featureConfig = computed(() => {
     };
 });
 
-const tKey = (key) => `gating.${gatingState.activeFeature}.${key}`;
+const tKey = (key) => {
+    const feature = gatingState.activeFeature;
+    // Map habit_batch to planner_batch for translations to avoid duplication
+    const translationFeature = feature === 'habit_batch' ? 'planner_batch' : feature;
+    return `gating.${translationFeature}.${key}`;
+};
 </script>
 
 <template>
@@ -117,65 +130,67 @@ const tKey = (key) => `gating.${gatingState.activeFeature}.${key}`;
                 </button>
 
                 <!-- Icon Container -->
-                <div class="relative mb-8">
-                    <div :class="[featureConfig.glow, featureConfig.isPremium ? 'bg-gradient-to-br from-violet-600 to-indigo-600' : 'bg-white dark:bg-slate-800']" class="w-20 h-20 rounded-[2rem] flex items-center justify-center mx-auto shadow-2xl relative z-10 transition-transform duration-700 group-hover:scale-110">
-                        <component :is="featureConfig.icon" :size="32" :class="featureConfig.isPremium ? 'text-white' : featureConfig.color" stroke-width="2.5" />
+                <div class="relative mb-6 md:mb-8">
+                    <div :class="[featureConfig.glow, featureConfig.isPremium ? 'bg-gradient-to-br from-violet-600 to-indigo-600' : 'bg-white dark:bg-slate-800']" class="w-14 h-14 md:w-20 md:h-20 rounded-2xl md:rounded-[2rem] flex items-center justify-center mx-auto shadow-2xl relative z-10 transition-transform duration-700 group-hover:scale-110">
+                        <component :is="featureConfig.icon" :size="24" class="md:hidden" :class="featureConfig.isPremium ? 'text-white' : featureConfig.color" stroke-width="2.5" />
+                        <component :is="featureConfig.icon" :size="32" class="hidden md:block" :class="featureConfig.isPremium ? 'text-white' : featureConfig.color" stroke-width="2.5" />
                     </div>
-                    <!-- Secondary decorative element -->
-                    <div class="absolute inset-0 w-20 h-20 bg-current opacity-10 blur-xl rounded-full mx-auto" :class="featureConfig.color"></div>
                 </div>
 
-                <div class="text-center mb-8">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/10 backdrop-blur-md mb-4 border border-white/10 shadow-sm">
+                <div class="text-center mb-6 md:mb-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/10 backdrop-blur-md mb-3 md:mb-4 border border-white/10 shadow-sm">
                         <Sparkle :size="9" :class="featureConfig.color" fill="currentColor" />
-                        <span class="text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
+                        <span class="text-[7.5px] md:text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
                             {{ $t(featureConfig.isPremium ? 'gating.lock_title_ai' : 'gating.lock_title_required') }}
                         </span>
                     </div>
 
-                    <h3 class="text-3xl font-black tracking-tighter mb-3 leading-tight" :class="featureConfig.isPremium ? 'text-white' : 'text-slate-900 dark:text-white'">
+                    <h3 class="text-xl md:text-3xl font-black tracking-tighter mb-2 md:mb-3 leading-tight" :class="featureConfig.isPremium ? 'text-white' : 'text-slate-900 dark:text-white'">
                         {{ $t(tKey('title')) }}
                     </h3>
                     
-                    <p class="text-[11px] font-bold leading-relaxed max-w-[260px] mx-auto transition-colors" :class="featureConfig.isPremium ? 'text-indigo-200/60' : 'text-slate-500 dark:text-slate-400'">
+                    <p class="text-[10px] md:text-[11px] font-bold leading-relaxed max-w-[260px] mx-auto transition-colors" :class="featureConfig.isPremium ? 'text-indigo-200/60' : 'text-slate-500 dark:text-slate-400'">
                         {{ $t(tKey('description')) }}
                     </p>
                 </div>
 
                 <!-- 💎 BENEFIT LIST (Compact) -->
-                <div class="space-y-2 mb-10">
-                    <div v-for="i in 3" :key="i" class="flex items-center gap-3 p-3.5 rounded-2xl transition-all" :class="featureConfig.isPremium ? 'bg-white/5 hover:bg-white/10 border border-white/5' : 'bg-white dark:bg-slate-800 shadow-sm hover:shadow-md border border-slate-100 dark:border-white/5'">
-                        <div class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center" :class="featureConfig.isPremium ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-50 dark:bg-slate-700 text-slate-400'">
-                            <CheckCircle2 :size="12" />
+                <div class="space-y-1.5 md:space-y-2 mb-8 md:mb-10">
+                    <div v-for="i in 3" :key="i" class="flex items-center gap-3 p-3 md:p-3.5 rounded-xl md:rounded-2xl transition-all" :class="featureConfig.isPremium ? 'bg-white/5 hover:bg-white/10 border border-white/5' : 'bg-white dark:bg-slate-800 shadow-sm hover:shadow-md border border-slate-100 dark:border-white/5'">
+                        <div class="shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center" :class="featureConfig.isPremium ? 'bg-indigo-500/20 text-indigo-400' : 'bg-slate-50 dark:bg-slate-700 text-slate-400'">
+                            <CheckCircle2 :size="10" class="md:hidden" />
+                            <CheckCircle2 :size="12" class="hidden md:block" />
                         </div>
-                        <span class="text-[11px] font-black tracking-tight" :class="featureConfig.isPremium ? 'text-indigo-100' : 'text-slate-700 dark:text-slate-200'">
+                        <span class="text-[10px] md:text-[11px] font-black tracking-tight" :class="featureConfig.isPremium ? 'text-indigo-100' : 'text-slate-700 dark:text-slate-200'">
                             {{ $t(tKey('benefit_' + i)) }}
                         </span>
                     </div>
                 </div>
 
                 <!-- ACTIONS -->
-                <div class="space-y-3">
-                    <Link :href="route('billing')" @click="closeGating" class="block w-full py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest text-white shadow-2xl transition-all active:scale-95 flex items-center justify-center gap-3 group/btn relative overflow-hidden" :class="featureConfig.isPremium ? 'bg-indigo-600 hover:bg-indigo-500' : 'bg-slate-900 dark:bg-indigo-600 hover:scale-[1.01]'">
+                <div class="space-y-2 md:space-y-3">
+                    <Link :href="route('billing')" @click="closeGating" class="block w-full py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black text-[10px] md:text-[11px] uppercase tracking-widest text-white shadow-2xl transition-all active:scale-95 flex items-center justify-center gap-3 group/btn relative overflow-hidden" :class="featureConfig.isPremium ? 'bg-indigo-600 hover:bg-indigo-500' : 'bg-slate-900 dark:bg-indigo-600 hover:scale-[1.01]'">
                         <div v-if="featureConfig.isPremium" class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
                         {{ $t('gating.btn_upgrade') }}
                         <ArrowRight :size="14" stroke-width="3" class="group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
                     
-                    <button @click="closeGating" class="block w-full py-2 font-bold text-[9px] uppercase tracking-widest transition-colors" :class="featureConfig.isPremium ? 'text-indigo-400/60 hover:text-white' : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'">
+                    <button @click="closeGating" class="block w-full py-1 md:py-2 font-bold text-[8px] md:text-[9px] uppercase tracking-widest transition-colors" :class="featureConfig.isPremium ? 'text-indigo-400/60 hover:text-white' : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'">
                         {{ $t('gating.btn_stay') }}
                     </button>
                 </div>
 
                 <!-- FOOTER -->
-                <div class="mt-12 pt-8 border-t flex items-center justify-center gap-8 opacity-40 transition-colors" :class="featureConfig.isPremium ? 'border-white/5 text-indigo-200' : 'border-slate-100 dark:border-white/5 text-slate-400'">
+                <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t flex items-center justify-center gap-6 md:gap-8 opacity-40 transition-colors" :class="featureConfig.isPremium ? 'border-white/5 text-indigo-200' : 'border-slate-100 dark:border-white/5 text-slate-400'">
                     <div class="flex items-center gap-2">
-                        <Gem :size="14" />
-                        <span class="text-[8px] font-black uppercase tracking-widest">{{ $t('gating.tier_platinum') }}</span>
+                        <Gem :size="12" class="md:hidden" />
+                        <Gem :size="14" class="hidden md:block" />
+                        <span class="text-[7px] md:text-[8px] font-black uppercase tracking-widest">{{ $t('gating.tier_platinum') }}</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <Sparkles :size="14" />
-                        <span class="text-[8px] font-black uppercase tracking-widest">{{ $t('gating.tier_neural') }}</span>
+                        <Sparkles :size="12" class="md:hidden" />
+                        <Sparkles :size="14" class="hidden md:block" />
+                        <span class="text-[7px] md:text-[8px] font-black uppercase tracking-widest">{{ $t('gating.tier_neural') }}</span>
                     </div>
                 </div>
             </div>

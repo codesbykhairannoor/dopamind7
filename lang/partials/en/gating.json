@@ -55,6 +55,13 @@
             "benefit_1": "Predictive Trend Charts",
             "benefit_2": "Savings & Investment Labs",
             "benefit_3": "Net Worth Forecasting"
+        },
+        "finance_vault": {
+            "title": "Vault Architecture",
+            "description": "Manifest your wealth with automated accumulation protocols and multi-vault manifestation.",
+            "benefit_1": "Unlimited Wealth Vaults",
+            "benefit_2": "Transaction History Logs",
+            "benefit_3": "Target Maturity Alerts"
         }
     }
 }
