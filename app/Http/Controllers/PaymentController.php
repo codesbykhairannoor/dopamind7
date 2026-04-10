@@ -130,34 +130,32 @@ class PaymentController extends Controller
         ];
 
         $params = [
-            'merchantCode' => $merchantCode,
-            'paymentAmount' => (int)$paymentAmount,
-            'paymentMethod' => (string)$request->input('paymentMethod', 'SP'), // QRIS as default
+            'merchantCode' => (string)$merchantCode,
+            'paymentAmount' => (string)intval($paymentAmount),
             'merchantOrderId' => (string)$merchantOrderId,
             'productDetails' => (string)$productDetails,
             'additionalParam' => '',
             'merchantUserInfo' => (string)$user->id,
-            'customerVaName' => substr($user->name, 0, 20),
-            'email' => $email,
+            'customerVaName' => (string)substr($user->name, 0, 20),
+            'email' => (string)$email,
             'phoneNumber' => (string)$phoneNumber,
             'itemDetails' => $itemDetails,
             'customerDetail' => $customerDetail,
-            'callbackUrl' => route('payment.callback'),
-            'returnUrl' => route('payment.finish'),
-            'signature' => $signature,
-            'expiryPeriod' => 60
+            'callbackUrl' => (string)route('payment.callback'),
+            'returnUrl' => (string)route('payment.finish'),
+            'signature' => (string)$signature,
+            'expiryPeriod' => (string)'60'
         ];
 
         $url = $env === 'production'
-            ? 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'
-            : 'https://sandbox.duitku.com/webapi/api/merchant/v2/inquiry';
+            ? 'https://passport.duitku.com/webapi/api/merchant/createinvoice'
+            : 'https://api-sandbox.duitku.com/webapi/api/merchant/createinvoice';
 
         try {
-            Log::info('Duitku-V2-Inquiry Request:', [
+            Log::info('Duitku-POP-Passport Request:', [
                 'url' => $url,
                 'merchantOrderId' => $merchantOrderId,
-                'paymentAmount' => (int)$paymentAmount,
-                'signature_prefix' => substr($signature, 0, 8) . '***'
+                'paymentAmount' => $paymentAmount
             ]);
 
             $response = Http::withHeaders([
