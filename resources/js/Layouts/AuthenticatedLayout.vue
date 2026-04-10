@@ -104,7 +104,7 @@ const openPremiumPreview = (module = 'Coach') => {
             <nav class="flex-1 px-3 space-y-1 overflow-y-auto py-4 custom-scrollbar" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
                 <!-- CORE SECTIONS -->
                 <div class="px-3 pt-2 pb-1">
-                    <span class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em] ml-2">{{ $t('nav_core_modules', 'System Core') }}</span>
+                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-2">{{ $t('nav_core_modules', 'System core') }}</span>
                 </div>
 
                 <Link :href="route('dashboard')" prefetch
@@ -161,7 +161,7 @@ const openPremiumPreview = (module = 'Coach') => {
 
                 <!-- PLATINUM SUITE SECTIONS -->
                 <div class="px-3 pt-6 pb-1">
-                    <span class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em] ml-2">{{ $t('nav_platinum_suite', 'Platinum Suite') }}</span>
+                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-2">{{ $t('nav_platinum_suite', 'Platinum suite') }}</span>
                 </div>
 
                 <Link v-if="showModule('journal')" :href="canAccess('journal') ? route('journal.index') : route('billing')" prefetch
@@ -281,8 +281,8 @@ const openPremiumPreview = (module = 'Coach') => {
                         </div>
                         
                         <div v-if="!isSidebarCollapsed" class="flex-1 min-w-0 overflow-hidden">
-                            <p class="text-[10px] font-black text-slate-800 dark:text-slate-200 truncate">{{ user?.name || 'User' }}</p>
-                            <p class="text-[9px] font-bold text-slate-400 truncate uppercase tracking-widest">{{ $t('nav_active_account', 'Active Account') }}</p>
+                            <p class="text-[10px] font-bold text-slate-800 dark:text-slate-200 truncate">{{ user?.name || 'User' }}</p>
+                            <p class="text-[9px] font-bold text-slate-400 truncate uppercase tracking-widest">{{ $t('nav_active_account', 'Active account') }}</p>
                         </div>
                     </div>
 
@@ -326,7 +326,7 @@ const openPremiumPreview = (module = 'Coach') => {
                            <OneForMindIcon name="sparkles" :size="20" class="text-white relative z-10" />
                         </div>
                         <div class="flex items-center gap-1 mt-1">
-                            <span class="text-[8px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-tighter">{{ canAccess('ai') ? 'Neural OS' : 'Platinum OS' }}</span>
+                            <span class="text-[8px] font-bold text-indigo-600 dark:text-indigo-400 tracking-tight">{{ canAccess('ai') ? 'Neural OS' : 'Platinum OS' }}</span>
                         </div>
                     </button>
 
@@ -394,9 +394,9 @@ const openPremiumPreview = (module = 'Coach') => {
                 </div>
                 
                 <!-- Hover Label -->
-                <div class="absolute right-full mr-5 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.2em] px-5 py-3 rounded-2xl whitespace-nowrap opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none shadow-2xl border border-white/10 flex items-center gap-2">
+                <div class="absolute right-full mr-5 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-[10px] font-bold px-5 py-3 rounded-2xl whitespace-nowrap opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none shadow-2xl border border-white/10 flex items-center gap-2">
                     <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                    NEURAL OS ONLINE
+                    Neural assistant active
                 </div>
             </div>
         </button>

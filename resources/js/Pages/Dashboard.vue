@@ -83,476 +83,278 @@ onMounted(() => {
 <template>
     <Head :title="$t('nav_dashboard')" />
 
-    <div class="w-full lg:max-w-[96%] mx-auto p-4 md:p-8 space-y-6 lg:space-y-12 pb-32">
+    <div class="w-full lg:max-w-[1600px] mx-auto p-4 md:p-10 pb-32">
         
-        <!-- 📱 PREMIUM MOBILE BENTO EXPERIENCE -->
+        <!-- 📱 MOBILE EXPERIENCE (Minimalist) -->
         <template v-if="isMobile && synergy">
-            <!-- 💍 Synergy Ring & Header -->
-            <header id="mobile-dash-header" class="pt-8 pb-4">
-                <div class="flex items-center justify-between gap-6 mb-12">
-                    <div class="space-y-1 py-1">
-                        <!-- TIER BADGE -->
-                        <div class="mb-3">
-                            <div v-if="isExplorer" @click="openPremiumPreview('Coach')" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 shadow-xl cursor-pointer active:scale-95 transition-all">
-                                <Sparkles :size="10" class="text-indigo-400" />
-                                <span class="text-[8px] font-black text-white uppercase tracking-[0.2em]">Upgrade OS</span>
-                            </div>
-                            <div v-else-if="isArchitect" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950 border border-indigo-100 dark:border-indigo-900 shadow-sm">
-                                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
-                                <span class="text-[8px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Architect</span>
-                            </div>
-                            <div v-else-if="isQuantum" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 dark:bg-violet-950 border border-violet-100 dark:border-violet-900 shadow-sm">
-                                <span class="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse"></span>
-                                <span class="text-[8px] font-black text-violet-600 dark:text-violet-400 uppercase tracking-widest">Quantum AI</span>
-                            </div>
-                        </div>
+            <!-- Header -->
+            <header class="pt-8 pb-6">
+                <div class="mb-6">
+                    <p class="text-xs font-semibold text-slate-400 dark:text-slate-500 mb-2">{{ synergy.date_formatted }}</p>
+                    <h1 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
+                        {{ $t(greetingKey) }},<br />
+                        <span class="text-indigo-600 dark:text-indigo-400">{{ user.name.split(' ')[0] }}</span>
+                    </h1>
+                </div>
 
-                        <p class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] mb-1">{{ synergy.date_formatted }}</p>
-                        <h1 class="text-4xl font-black text-slate-900 dark:text-white leading-[1] tracking-tighter">
-                            {{ $t(greetingKey) }},<br />
-                            <span class="text-indigo-600 dark:text-indigo-400">{{ user.name.split(' ')[0] }}</span>
-                        </h1>
-                    </div>
-                    
-                    <div class="relative group active:scale-95 transition-transform duration-500 shrink-0">
-                        <div class="absolute inset-0 bg-indigo-500/20 dark:bg-indigo-500/10 rounded-full blur-2xl animate-pulse"></div>
-                        <div class="relative w-32 h-32 flex items-center justify-center bg-white dark:bg-slate-900 rounded-full border border-slate-100 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
-                            <svg class="absolute w-[92%] h-[92%] -rotate-90" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="4.5" class="text-slate-50 dark:text-slate-800" />
-                                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" 
+                <!-- Status Summary -->
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <!-- Synergy Card -->
+                    <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col items-center justify-center text-center">
+                        <div class="relative w-16 h-16 mb-2 flex items-center justify-center">
+                            <svg class="absolute w-full h-full -rotate-90" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="6" class="text-slate-50 dark:text-slate-800" />
+                                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" 
                                     :stroke-dasharray="276" :stroke-dashoffset="276 - (276 * overallScore / 100)"
-                                    :class="isQuantum ? 'text-violet-600 dark:text-violet-500' : 'text-indigo-600 dark:text-indigo-500'" 
+                                    :class="isQuantum ? 'text-violet-500' : 'text-indigo-500'" 
                                     class="transition-all duration-[2000ms]" />
                             </svg>
-                            <div class="text-center z-10">
-                                <span class="block text-4xl font-black text-slate-900 dark:text-white tracking-tighter tabular-nums">{{ overallScore }}%</span>
-                                <span class="text-[9px] font-bold text-slate-400 tracking-[0.2em] uppercase">SYNERGY</span>
-                            </div>
+                            <span class="text-lg font-bold text-slate-900 dark:text-white">{{ overallScore }}%</span>
                         </div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Synergy</span>
+                    </div>
+
+                    <!-- Tier Card -->
+                    <div @click="isExplorer ? openPremiumPreview('Coach') : null" class="bg-slate-900 p-5 rounded-3xl text-white flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-all">
+                        <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center mb-2">
+                            <Sparkles v-if="isExplorer" :size="18" class="text-indigo-400" />
+                            <Gem v-else :size="18" class="text-indigo-400" />
+                        </div>
+                        <span class="text-[10px] font-bold text-white uppercase tracking-widest">{{ isExplorer ? 'Upgrade' : (isQuantum ? 'Quantum' : 'Architect') }}</span>
                     </div>
                 </div>
 
-                <!-- 🧠 NEURAL HUB: SKELETAL PREVIEW FOR EXPLORERS -->
-                <div id="tier-hub" class="mb-10">
-                    <div v-if="isExplorer" @click="openPremiumPreview('Coach')" class="bg-slate-900 p-8 rounded-[3rem] text-white relative overflow-hidden group/discovery cursor-pointer active:scale-[0.98] transition-all shadow-2xl">
-                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-transparent to-transparent"></div>
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-6">
-                                <div class="flex items-center gap-3">
-                                    <div class="p-2 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/20">
-                                        <Sparkles :size="18" class="animate-pulse" />
-                                    </div>
-                                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400">Neural Intelligence</span>
-                                </div>
-                                <div class="px-3 py-1 bg-white/10 rounded-full text-[8px] font-black uppercase tracking-widest border border-white/10">Explorer</div>
-                            </div>
-                            
-                            <!-- Skeletal Insight Lines -->
-                            <div class="space-y-3 blur-[1.5px] opacity-30 group-hover/discovery:opacity-60 transition-all">
-                                <div class="h-2 w-full bg-slate-700 rounded-full"></div>
-                                <div class="h-2 w-5/6 bg-slate-700 rounded-full"></div>
-                                <div class="h-2 w-4/6 bg-slate-700 rounded-full"></div>
-                            </div>
-                            
-                            <div class="mt-8 flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-400">Sync with AI for life insights</span>
-                                <ArrowRight :size="16" class="text-indigo-400 group-hover/discovery:translate-x-2 transition-transform" />
-                            </div>
+                <!-- Neural Hub (Integrated Preview) -->
+                <div v-if="isExplorer" @click="openPremiumPreview('Coach')" class="mb-8 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-dashed border-slate-200 dark:border-slate-700 cursor-pointer active:scale-[0.98] transition-all">
+                    <div class="flex items-center justify-between mb-4 text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <Brain :size="14" />
+                            <span class="text-[10px] font-bold uppercase tracking-widest">Neural insight</span>
                         </div>
-                        <OneForMindIcon name="platinum" size="140" class="absolute -right-6 -bottom-6 opacity-5 rotate-12" />
+                        <ArrowRight :size="14" />
                     </div>
-
-                    <div v-else-if="isQuantum" class="bg-violet-600 dark:bg-violet-900/60 p-8 rounded-[3rem] text-white shadow-xl border border-violet-400/20 relative overflow-hidden">
-                        <div class="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-2xl font-black"></div>
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-4">
-                                <div class="flex items-center gap-3">
-                                    <Sparkles :size="20" class="animate-pulse" />
-                                    <span class="text-[10px] font-black uppercase tracking-[0.2em] opacity-80 leading-none">Neural Active Insight</span>
-                                </div>
-                            </div>
-                            <p v-if="loadingInsight" class="text-lg font-black animate-pulse italic tracking-tighter">Calibrating...</p>
-                            <p v-else class="text-xl font-black leading-tight tracking-tight">{{ globalInsight?.summary || "Synergy looks stable. Focus on deep work today." }}</p>
+                    <div class="space-y-2 opacity-30">
+                        <div class="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full"></div>
+                        <div class="h-1.5 w-5/6 bg-slate-200 dark:bg-slate-800 rounded-full"></div>
+                    </div>
+                    <p class="mt-4 text-[10px] font-semibold text-slate-400">Unlock AI Coaching projections</p>
+                </div>
+                
+                <div v-else-if="isQuantum" class="mb-8 bg-violet-600 p-6 rounded-3xl text-white relative overflow-hidden">
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 mb-3">
+                            <Sparkles :size="14" class="animate-pulse" />
+                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-80">Neural Active</span>
                         </div>
+                        <p class="text-lg font-bold leading-tight">{{ globalInsight?.summary || "Your synergy is optimized for deep focus today." }}</p>
                     </div>
                 </div>
             </header>
 
-            <!-- 🍱 Main Content Bento Grid -->
+            <!-- Bento Grid -->
             <div class="grid grid-cols-12 gap-4">
-                <!-- 📋 Next Up Widget (Large) -->
-                <Link 
-                    id="widget-planner"
-                    :href="route('planner.index')" 
-                    class="col-span-12 group bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm active:scale-[0.98] transition-all relative overflow-hidden"
-                >
-                    <div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-125 transition-transform duration-1000">
-                        <OneForMindIcon name="planner" size="140" />
-                    </div>
-                    
-                    <div class="flex items-center justify-between mb-6 relative z-10">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-slate-50 dark:bg-slate-800 text-indigo-600 rounded-2xl flex items-center justify-center">
-                                <OneForMindIcon name="planner" size="24" />
-                            </div>
-                            <h3 class="text-xl font-black text-slate-900 dark:text-white leading-none">Schedule</h3>
+                <!-- Planner -->
+                <Link :href="route('planner.index')" class="col-span-12 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-slate-50 dark:bg-slate-800 rounded-xl flex items-center justify-center text-indigo-500">
+                            <OneForMindIcon name="planner" size="20" />
                         </div>
-                        <span class="text-[10px] font-black px-4 py-1.5 bg-slate-50 dark:bg-slate-800 text-slate-400 rounded-full border border-slate-100 dark:border-slate-700 uppercase">{{ synergy.planner.upcoming.length }} Pending</span>
-                    </div>
-
-                    <div class="space-y-3 relative z-10">
-                        <div v-if="synergy.planner.upcoming.length > 0" class="flex items-center gap-4 p-4 bg-slate-50 dark:bg-black/20 rounded-2xl border border-slate-100/50 dark:border-white/5">
-                            <span class="text-xs font-black text-indigo-600 dark:text-indigo-400 tabular-nums">{{ synergy.planner.upcoming[0].start_time }}</span>
-                            <span class="text-sm font-black text-slate-700 dark:text-slate-200 truncate">{{ synergy.planner.upcoming[0].title }}</span>
-                        </div>
-                        <div v-else class="text-center py-4 text-slate-400 text-xs font-bold bg-slate-50 dark:bg-black/10 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800">
-                            {{ $t('dash_all_tasks_done') }}
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white">Schedule</h3>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{{ synergy.planner.upcoming.length }} Pending</p>
                         </div>
                     </div>
+                    <ArrowRight :size="16" class="text-slate-300" />
                 </Link>
 
-                <!-- 🌱 Habit Pulse (Mini Card) -->
-                <Link 
-                    id="widget-habits"
-                    :href="route('habits.index')" 
-                    class="col-span-6 bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm active:scale-[0.98] transition-all"
-                >
-                    <div class="w-11 h-11 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-2xl flex items-center justify-center mb-4">
-                        <OneForMindIcon name="habit" size="22" />
+                <!-- Habits -->
+                <Link :href="route('habits.index')" class="col-span-6 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                    <div class="w-9 h-9 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-500 rounded-xl flex items-center justify-center mb-4">
+                        <Zap :size="18" />
                     </div>
-                    <div class="space-y-1">
-                        <h4 class="text-base font-black text-slate-900 dark:text-white leading-tight">Habits</h4>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ synergy.habits.completed }}/{{ synergy.habits.total }} Done</p>
-                    </div>
-                    <div class="mt-4 flex items-center gap-2">
-                        <div class="flex-grow bg-slate-50 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                            <div class="bg-indigo-600 h-full rounded-full transition-all duration-1000" :style="`width: ${synergy.habits.percent}%`"></div>
-                        </div>
-                        <span class="text-[10px] font-black text-indigo-600">{{ synergy.habits.percent }}%</span>
-                    </div>
+                    <h4 class="font-bold text-slate-900 dark:text-white">Habits</h4>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{{ synergy.habits.completed }}/{{ synergy.habits.total }} done</p>
                 </Link>
 
-                <!-- 📓 Insight Slot (Mini Card) -->
-                <Link 
-                    id="widget-journal"
-                    :href="synergy.journal.is_written ? route('journal.write', synergy.journal.id) : route('journal.index')" 
-                    class="col-span-6 bg-slate-900 p-6 rounded-[2.5rem] shadow-lg active:scale-[0.98] transition-all relative overflow-hidden"
-                >
-                    <div class="relative z-10 h-full flex flex-col justify-between">
-                        <div class="w-11 h-11 bg-white/10 text-white rounded-2xl flex items-center justify-center mb-4">
-                            <OneForMindIcon name="journal" size="22" />
-                        </div>
-                        <div class="space-y-1">
-                            <h4 class="text-base font-black text-white leading-tight">Journal</h4>
-                            <p class="text-[10px] font-bold" :class="synergy.journal.is_written ? 'text-emerald-400' : 'text-slate-400 uppercase tracking-widest'">
-                                {{ synergy.journal.is_written ? 'Written' : 'Empty' }}
-                            </p>
-                        </div>
+                <!-- Journal -->
+                <Link :href="route('journal.index')" class="col-span-6 bg-slate-900 dark:bg-slate-800/50 p-6 rounded-3xl shadow-sm text-white">
+                    <div class="w-9 h-9 bg-white/10 text-white rounded-xl flex items-center justify-center mb-4">
+                        <Brain :size="18" />
                     </div>
-                    <OneForMindIcon name="journal" size="100" class="absolute -right-8 -bottom-8 opacity-5 text-white" />
+                    <h4 class="font-bold">Journal</h4>
+                    <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{{ synergy.journal.is_written ? 'Written' : 'Log now' }}</p>
                 </Link>
 
-                <!-- 💰 Prime Finance (Full Width Card) - TIER DIFFERENTIATED -->
-                <!-- 💰 Prime Finance (Full Width Card) - TIER DIFFERENTIATED -->
-                <div 
-                    id="widget-finance"
-                    @click="isExplorer ? openPremiumPreview('Finance') : router.visit(route('finance.index'))" 
-                    class="col-span-12 group p-10 rounded-[3rem] transition-all relative overflow-hidden cursor-pointer"
-                    :class="isExplorer ? 'bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm' : 'bg-indigo-600 shadow-xl shadow-indigo-100 dark:shadow-none text-white'"
-                >
-                    <template v-if="!isExplorer">
-                        <!-- Decorative Circles -->
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full translate-x-1/2 -translate-y-1/2"></div>
-                        <div class="absolute -left-4 -bottom-10 w-24 h-24 bg-black/10 rounded-full"></div>
-                        <OneForMindIcon name="finance" size="200" class="absolute -right-16 -top-16 opacity-10 group-hover:rotate-12 transition-transform duration-[2000ms]" />
-
-                        <div class="relative z-10">
-                            <div class="flex items-center justify-between mb-8">
-                                <h3 class="text-3xl font-black tracking-tighter uppercase leading-none">Monetary OS</h3>
-                                <div class="bg-white/20 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/20">
-                                    <OneForMindIcon name="finance" size="20" />
-                                </div>
-                            </div>
-                            
-                            <div class="grid grid-cols-2 gap-8">
-                                <div class="space-y-1">
-                                    <p class="text-[10px] font-black text-indigo-200 uppercase tracking-[0.2em] opacity-80">Expenses</p>
-                                    <p class="text-2xl font-black tracking-tight truncate tabular-nums">{{ formatRupiah(synergy.finance.expense) }}</p>
-                                </div>
-                                <div class="space-y-1">
-                                    <p class="text-[10px] font-black text-emerald-200 uppercase tracking-[0.2em] opacity-80">Income</p>
-                                    <p class="text-2xl font-black text-emerald-300 tracking-tight truncate tabular-nums">+{{ formatRupiah(synergy.finance.income) }}</p>
-                                </div>
-                            </div>
+                <!-- Finance -->
+                <div @click="isExplorer ? openPremiumPreview('Finance') : router.visit(route('finance.index'))" class="col-span-12 bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm cursor-pointer">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Finance status</h3>
+                        <TradingUp :size="18" class="text-indigo-500" />
+                    </div>
+                    <div v-if="!isExplorer" class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Expense</p>
+                            <p class="text-xl font-bold tabular-nums">{{ formatRupiah(synergy.finance.expense) }}</p>
                         </div>
-                    </template>
-                    <template v-else>
-                         <!-- INTEGRATED SKELETAL FINANCE PREVIEW -->
-                         <div class="flex flex-col gap-6">
-                             <div class="flex items-center justify-between">
-                                 <div>
-                                     <h3 class="text-xl font-black text-slate-800 dark:text-white leading-none mb-2">Neural Wealth Forecast</h3>
-                                     <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Architect Premium Insight</p>
-                                 </div>
-                                 <div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-slate-800 text-indigo-600 flex items-center justify-center">
-                                     <TrendingUp :size="24" />
-                                 </div>
-                             </div>
-
-                             <!-- Skeletal Forecast Chart -->
-                             <div class="h-20 flex items-end gap-1.5 opacity-20 blur-[1px] group-hover:opacity-40 transition-opacity">
-                                 <div v-for="h in [30, 50, 40, 70, 90, 60, 100, 80]" :key="h" 
-                                      :style="{ height: h + '%' }" 
-                                      class="flex-1 bg-indigo-500 rounded-t-lg"></div>
-                             </div>
-
-                             <div class="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-widest">
-                                 Unlock Predictive AI <ArrowRight :size="14" />
-                             </div>
-                         </div>
-                    </template>
+                        <div>
+                            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Income</p>
+                            <p class="text-xl font-bold tabular-nums text-emerald-500">{{ formatRupiah(synergy.finance.income) }}</p>
+                        </div>
+                    </div>
+                    <div v-else class="space-y-3">
+                        <div class="h-10 flex items-end gap-1 px-1 opacity-10">
+                            <div v-for="h in [30, 50, 40, 70, 90, 60]" :key="h" :style="{ height: h + '%' }" class="flex-1 bg-slate-400 rounded-t-sm"></div>
+                        </div>
+                        <p class="text-[10px] font-bold text-indigo-500 capitalize">Unlock Architect projections <ArrowRight :size="10" /></p>
+                    </div>
                 </div>
 
-                <!-- 🎯 Goal Tracker (Wide Mini) -->
-                <div 
-                    id="widget-goals"
-                    @click="isExplorer ? openPremiumPreview('Goal') : router.visit(route('goals.index'))" 
-                    class="col-span-12 group bg-white dark:bg-slate-900 p-8 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-sm active:scale-[0.98] transition-all flex flex-col gap-6 cursor-pointer"
-                >
-                    <div class="flex items-center justify-between w-full">
-                        <div class="flex items-center gap-5">
-                            <div class="w-14 h-14 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 border border-emerald-100 dark:border-emerald-500/20">
-                                <Target :size="28" stroke-width="2.5" />
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-black text-slate-900 dark:text-white leading-tight mb-1">Strategic Milestones</h4>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ synergy.goals.active }} Active Operations</p>
-                            </div>
-                        </div>
-                        <div v-if="synergy.goals.top_goal" class="px-5 py-2 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-100 dark:border-emerald-500/20">
-                             <div class="text-sm font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{{ synergy.goals.top_goal.percent }}%</div>
-                        </div>
-                    </div>
-
-                    <!-- INTEGRATED SKELETAL STRATEGIC PATH FOR EXPLORERS -->
-                    <div v-if="isExplorer" class="w-full space-y-3 pt-2">
+                <!-- Goals -->
+                <div @click="isExplorer ? openPremiumPreview('Goal') : router.visit(route('goals.index'))" class="col-span-12 bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm cursor-pointer">
+                    <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-3">
-                            <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-                            <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">AI Strategic Forecast</span>
+                            <Target :size="18" class="text-emerald-500" />
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Goal progress</h3>
                         </div>
-                        <div class="grid grid-cols-4 gap-2 px-1 blur-[1.5px] opacity-20 group-hover:opacity-40 transition-all">
-                            <div v-for="i in 4" :key="i" class="h-1.5 bg-slate-400 dark:bg-slate-600 rounded-full" :style="{ width: (100 - (i*10)) + '%' }"></div>
-                        </div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ synergy.goals.active }} Active</span>
+                    </div>
+                    <div v-if="synergy.goals.top_goal" class="w-full bg-slate-50 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                        <div class="h-full bg-emerald-500 transition-all duration-1000" :style="`width: ${synergy.goals.top_goal.percent}%`"></div>
                     </div>
                 </div>
             </div>
-
-            <PremiumPreviewModal 
-                :isOpen="isPreviewOpen"
-                :module="activePreviewModule"
-                @close="isPreviewOpen = false"
-            />
         </template>
 
-        <!-- 🖥️ DESKTOP REFINED BENTO -->
+        <!-- 🖥️ DESKTOP EXPERIENCE (Minimalist) -->
         <template v-else-if="synergy">
-            <div class="max-w-[1600px] mx-auto px-10 py-16">
-                <!-- 🏗️ ARCHITECTURAL HEADER -->
-                <header class="flex items-end justify-between mb-20">
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div v-if="isExplorer" @click="openPremiumPreview('Coach')" class="px-4 py-2 bg-slate-900 rounded-2xl text-white text-[10px] font-black uppercase tracking-[0.2em] shadow-2xl cursor-pointer active:scale-95 transition-all flex items-center gap-2">
-                                <Sparkles :size="12" class="text-indigo-400" />
-                                Upgrade System
-                            </div>
-                            <div v-else class="px-4 py-2 bg-indigo-50 dark:bg-indigo-950 border border-indigo-100 dark:border-indigo-900 rounded-2xl text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-2">
-                                <Gem :size="12" />
-                                {{ isQuantum ? 'Quantum AI Active' : 'Architect Core' }}
-                            </div>
-                            <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">{{ synergy.date_formatted }}</span>
-                        </div>
-                        <h1 class="text-7xl font-black text-slate-900 dark:text-white tracking-tighter leading-[0.9]">
-                            {{ $t(greetingKey) }},<br />
-                            <span class="text-indigo-600 dark:text-indigo-400">{{ user.name }}</span>
-                        </h1>
-                    </div>
+            <header class="mb-16">
+                <div class="flex items-center gap-3 mb-4 text-slate-400">
+                    <Brain :size="16" />
+                    <span class="text-xs font-semibold uppercase tracking-widest">{{ synergy.date_formatted }}</span>
+                </div>
+                <h1 class="text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
+                    {{ $t(greetingKey) }}, {{ user.name.split(' ')[0] }}
+                </h1>
+            </header>
 
-                    <!-- LARGE SYNERGY COMMAND -->
-                    <div class="relative group cursor-default">
-                        <div class="absolute inset-0 bg-indigo-500/10 rounded-full blur-[80px] animate-pulse"></div>
-                        <div class="relative w-56 h-56 flex items-center justify-center bg-white dark:bg-slate-900 rounded-full border border-slate-100 dark:border-slate-800/50 shadow-2xl">
-                            <svg class="absolute w-[94%] h-[94%] -rotate-90" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="3" class="text-slate-50 dark:text-slate-800" />
-                                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" 
-                                    :stroke-dasharray="276" :stroke-dashoffset="276 - (276 * overallScore / 100)"
-                                    :class="isQuantum ? 'text-violet-600 dark:text-violet-500' : 'text-indigo-600 dark:text-indigo-500'" 
-                                    class="transition-all duration-[2500ms]" />
-                            </svg>
-                            <div class="text-center">
-                                <span class="block text-6xl font-black text-slate-900 dark:text-white tracking-tighter tabular-nums">{{ overallScore }}%</span>
-                                <span class="text-[11px] font-black text-slate-400 tracking-[0.3em] uppercase">Life Synergy</span>
+            <div class="grid grid-cols-12 gap-8">
+                <!-- Left Column (4 cols) -->
+                <div class="col-span-4 space-y-8">
+                    <!-- Status Card -->
+                    <div class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">Life synergy status</h3>
+                        <div class="flex items-center gap-10">
+                            <div class="relative w-32 h-32 flex items-center justify-center">
+                                <svg class="absolute w-full h-full -rotate-90" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="6" class="text-slate-50 dark:text-slate-800" />
+                                    <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" 
+                                        :stroke-dasharray="276" :stroke-dashoffset="276 - (276 * overallScore / 100)"
+                                        :class="isQuantum ? 'text-violet-500' : 'text-indigo-500'" 
+                                        class="transition-all duration-[2000ms]" />
+                                </svg>
+                                <span class="text-4xl font-bold tabular-nums text-slate-900 dark:text-white">{{ overallScore }}%</span>
                             </div>
-                        </div>
-                    </div>
-                </header>
-
-                <!-- 🧩 MAIN BENTO GRID -->
-                <div class="grid grid-cols-12 gap-8">
-                    <!-- LEFT COLUMN: NEURAL COMMAND & TASKS -->
-                    <div class="col-span-12 lg:col-span-4 space-y-8">
-                        <!-- NEURAL INSIGHT WIDGET -->
-                        <div v-if="isExplorer" @click="openPremiumPreview('Coach')" class="bg-slate-900 p-10 rounded-[4rem] text-white relative overflow-hidden group/neural cursor-pointer active:scale-[0.99] transition-all shadow-2xl">
-                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/30 via-transparent to-transparent opacity-0 group-hover/neural:opacity-100 transition-opacity"></div>
-                            <div class="relative z-10">
-                                <div class="flex items-center gap-4 mb-8">
-                                    <div class="p-3 rounded-2xl bg-indigo-500/20 text-indigo-400 border border-indigo-500/20">
-                                        <Brain :size="24" />
-                                    </div>
-                                    <span class="text-[11px] font-black uppercase tracking-[0.3em] text-indigo-400">Neural Commander</span>
-                                </div>
-                                
-                                <h3 class="text-2xl font-black mb-4 tracking-tight">Access Proactive Intelligence</h3>
-                                <div class="space-y-4 opacity-20 blur-[1.5px]">
-                                    <div class="h-2.5 w-full bg-slate-700 rounded-full"></div>
-                                    <div class="h-2.5 w-3/4 bg-slate-700 rounded-full"></div>
-                                    <div class="h-2.5 w-5/6 bg-slate-700 rounded-full"></div>
-                                </div>
-                                <div class="mt-10 flex items-center justify-between text-indigo-400 font-black text-xs uppercase tracking-widest">
-                                    Unlock System <ArrowRight :size="16" class="group-hover/neural:translate-x-2 transition-transform" />
-                                </div>
-                            </div>
-                            <OneForMindIcon name="platinum" size="200" class="absolute -right-10 -bottom-10 opacity-5 rotate-12" />
-                        </div>
-
-                        <div v-else-if="isQuantum" class="bg-violet-600 p-10 rounded-[4rem] text-white shadow-2xl relative overflow-hidden">
-                             <div class="relative z-10">
-                                <div class="flex items-center gap-4 mb-6">
-                                    <Sparkles :size="24" class="text-violet-200 animate-pulse" />
-                                    <span class="text-[11px] font-black uppercase tracking-[0.3em] text-violet-200">Neural Sync Active</span>
-                                </div>
-                                <p class="text-2xl font-black leading-tight tracking-tight">{{ globalInsight?.summary || "System fully synchronized. High momentum detected in your routine." }}</p>
-                             </div>
-                        </div>
-
-                        <!-- TASKS/HABIT QUICK LIST -->
-                        <div @click="router.visit(route('habits.index'))" class="bg-white dark:bg-slate-950 p-10 rounded-[4rem] border border-slate-100 dark:border-slate-800/50 shadow-sm group cursor-pointer hover:shadow-xl transition-all">
-                            <div class="flex items-center justify-between mb-8">
-                                <h3 class="text-2xl font-black tracking-tight text-slate-900 dark:text-white uppercase leading-none">Habit Momentum</h3>
-                                <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/30 rounded-2xl flex items-center justify-center text-indigo-600">
-                                    <Zap :size="24" />
-                                </div>
-                            </div>
-                            <div class="space-y-6">
-                                <div class="flex items-end justify-between">
-                                    <span class="text-4xl font-black text-slate-900 dark:text-white tabular-nums">{{ synergy.habits.percent }}<span class="text-xl opacity-30">%</span></span>
-                                    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Global Status</span>
-                                </div>
-                                <div class="h-3 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                                    <div class="h-full bg-indigo-600 transition-all duration-1000" :style="{ width: synergy.habits.percent + '%' }"></div>
-                                </div>
-                                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ synergy.habits.done }} of {{ synergy.habits.total }} synchronized</p>
+                            <div class="space-y-1">
+                                <p class="text-lg font-bold text-slate-900 dark:text-white">Productivity pulse</p>
+                                <p class="text-sm text-slate-400 leading-relaxed">System balance is currently optimized for performance.</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- MIDDLE COLUMN: FINANCE & GOALS -->
-                    <div class="col-span-12 lg:col-span-8 flex flex-col gap-8">
-                        <!-- FINANCE COMMAND -->
-                        <div 
-                            @click="isExplorer ? openPremiumPreview('Finance') : router.visit(route('finance.index'))"
-                            class="group relative h-[380px] rounded-[4rem] overflow-hidden cursor-pointer"
-                        >
-                            <div v-if="!isExplorer" class="absolute inset-0 bg-indigo-600 text-white p-12 transition-transform duration-700 group-hover:scale-[1.02]">
-                                <OneForMindIcon name="finance" size="400" class="absolute -right-20 -top-20 opacity-10 rotate-12" />
-                                <div class="relative z-10 h-full flex flex-col justify-between">
-                                    <div class="flex items-start justify-between">
-                                        <div class="space-y-2">
-                                            <h3 class="text-5xl font-black tracking-tighter uppercase leading-none">Monetary OS</h3>
-                                            <p class="text-sm font-bold text-indigo-200 uppercase tracking-[0.2em] opacity-80">Advanced Wealth Tracking</p>
-                                        </div>
-                                        <div class="bg-white/20 backdrop-blur-md p-4 rounded-3xl border border-white/20">
-                                            <TrendingUp :size="32" />
-                                        </div>
+                    <!-- Hub Card -->
+                    <div @click="isExplorer ? openPremiumPreview('Coach') : null" class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm cursor-pointer group active:scale-[0.99] transition-all">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="flex items-center gap-3">
+                                <Brain :size="20" class="text-indigo-500" />
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white">Neural coach</h3>
+                            </div>
+                            <div v-if="isExplorer" class="px-2 py-1 bg-indigo-50 text-[10px] font-bold text-indigo-600 rounded">PRO</div>
+                        </div>
+                        <div v-if="isExplorer" class="space-y-3 opacity-30">
+                            <div class="h-2 w-full bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+                            <div class="h-2 w-4/5 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+                        </div>
+                        <p v-else class="text-sm text-slate-500 leading-relaxed">{{ globalInsight?.summary || "Neural engine active and monitoring your workflows." }}</p>
+                        <div class="mt-8 flex items-center gap-2 text-indigo-600 text-xs font-bold">
+                            {{ isExplorer ? 'Unlock coaching insights' : 'Open Neural Hub' }}
+                            <ArrowRight :size="14" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (8 cols) -->
+                <div class="col-span-8 grid grid-cols-2 gap-8">
+                    <!-- Finance (Wide) -->
+                    <div @click="isExplorer ? openPremiumPreview('Finance') : router.visit(route('finance.index'))" class="col-span-2 bg-slate-900 p-12 rounded-[3.5rem] text-white relative overflow-hidden group cursor-pointer shadow-xl">
+                        <div class="relative z-10 flex items-center justify-between">
+                            <div class="space-y-8">
+                                <h3 class="text-2xl font-bold tracking-tight">Finance overview</h3>
+                                <div class="flex gap-16">
+                                    <div>
+                                        <p class="text-[10px] font-bold text-indigo-300 uppercase tracking-widest mb-1">Total expenses</p>
+                                        <p class="text-4xl font-bold tabular-nums">{{ formatRupiah(synergy.finance.expense) }}</p>
                                     </div>
-                                    
-                                    <div class="grid grid-cols-2 gap-12">
-                                        <div class="space-y-3">
-                                            <p class="text-xs font-black text-indigo-200 uppercase tracking-widest opacity-60">Revenue Current</p>
-                                            <p class="text-5xl font-black tracking-tighter tabular-nums">{{ formatRupiah(synergy.finance.income) }}</p>
-                                        </div>
-                                        <div class="space-y-3">
-                                            <p class="text-xs font-black text-indigo-200 uppercase tracking-widest opacity-60">Burn Current</p>
-                                            <p class="text-5xl font-black tracking-tighter tabular-nums">{{ formatRupiah(synergy.finance.expense) }}</p>
-                                        </div>
+                                    <div>
+                                        <p class="text-[10px] font-bold text-emerald-300 uppercase tracking-widest mb-1">Current balance</p>
+                                        <p class="text-4xl font-bold text-emerald-400 tabular-nums">+{{ formatRupiah(synergy.finance.income - synergy.finance.expense) }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div v-else class="absolute inset-0 bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800/50 p-12">
-                                <div class="h-full flex flex-col justify-between">
-                                    <div class="flex items-center justify-between">
-                                        <div class="space-y-2">
-                                            <h3 class="text-4xl font-black text-slate-800 dark:text-white tracking-tighter uppercase leading-none">Neural Wealth Engine</h3>
-                                            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Architect Exclusive Feature</p>
-                                        </div>
-                                        <div class="w-16 h-16 rounded-[2rem] bg-indigo-50 dark:bg-slate-900 text-indigo-600 flex items-center justify-center border border-indigo-100 dark:border-indigo-900/30">
-                                            <TrendingUp :size="32" />
-                                        </div>
-                                    </div>
-
-                                    <!-- SKELETAL CHART LARGE -->
-                                    <div class="flex items-end gap-3 h-32 opacity-20 blur-[2px] group-hover:opacity-40 transition-all">
-                                        <div v-for="h in [40, 60, 50, 80, 100, 70, 90, 60, 110, 80]" :key="h" 
-                                             :style="{ height: h + '%' }" 
-                                             class="flex-1 bg-indigo-500 rounded-t-2xl"></div>
-                                    </div>
-
-                                    <div class="flex items-center gap-4 text-indigo-600 dark:text-indigo-400 font-black text-sm uppercase tracking-[0.2em]">
-                                        Unlock Predictive Projections <ArrowRight :size="20" />
-                                    </div>
-                                </div>
+                            <div class="w-24 h-24 bg-white/5 rounded-[2.5rem] flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-700">
+                                <TrendingUp :size="40" class="text-indigo-400" />
                             </div>
                         </div>
+                        <OneForMindIcon name="finance" size="300" class="absolute -right-20 -bottom-20 opacity-5" />
+                    </div>
 
-                        <!-- GOAL MINI WIDE -->
-                        <div 
-                            @click="isExplorer ? openPremiumPreview('Goal') : router.visit(route('goals.index'))"
-                            class="bg-white dark:bg-slate-950 p-10 rounded-[4rem] border border-slate-100 dark:border-slate-800/50 shadow-sm flex items-center justify-between group cursor-pointer hover:shadow-xl transition-all"
-                        >
-                            <div class="flex items-center gap-8">
-                                <div class="w-20 h-20 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 rounded-[2rem] flex items-center justify-center border border-emerald-100 dark:border-emerald-500/20 transition-transform group-hover:scale-110">
-                                    <Target :size="36" />
-                                </div>
-                                <div class="space-y-1">
-                                    <h4 class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter uppercase leading-none">Strategic Ambitions</h4>
-                                    <p class="text-[11px] font-black text-slate-400 uppercase tracking-[0.22em]">{{ synergy.goals.active }} Active Missions</p>
-                                </div>
+                    <!-- Goals -->
+                    <div @click="isExplorer ? openPremiumPreview('Goal') : router.visit(route('goals.index'))" class="bg-white dark:bg-slate-900 p-10 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-sm group cursor-pointer hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between mb-10">
+                            <div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 rounded-2xl flex items-center justify-center">
+                                <Target :size="24" />
                             </div>
-                            
-                            <div v-if="synergy.goals.top_goal || isExplorer" class="flex items-center gap-10">
-                                <div v-if="isExplorer" class="space-y-2 text-right">
-                                    <p class="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Neural Strategic Path</p>
-                                    <div class="flex gap-1.5 blur-[1.5px] opacity-30">
-                                        <div v-for="i in 5" :key="i" class="w-8 h-1.5 bg-indigo-500 rounded-full"></div>
-                                    </div>
-                                </div>
-                                <div v-if="synergy.goals.top_goal" class="px-8 py-4 bg-emerald-50 dark:bg-emerald-500/10 rounded-3xl border border-emerald-100 dark:border-emerald-500/20">
-                                    <span class="text-3xl font-black text-emerald-600 dark:text-emerald-400 tabular-nums">{{ synergy.goals.top_goal.percent || 0 }}<span class="text-lg opacity-40">%</span></span>
-                                </div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ synergy.goals.active }} Active targets</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Goal progress</h4>
+                        <p class="text-sm text-slate-400 mb-8">Tracking your strategic milestones across all categories.</p>
+                        <div v-if="synergy.goals.top_goal" class="w-full bg-slate-50 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div class="h-full bg-emerald-500 transition-all duration-1000" :style="`width: ${synergy.goals.top_goal.percent}%`"></div>
+                        </div>
+                    </div>
+
+                    <!-- Habits -->
+                    <div @click="router.visit(route('habits.index'))" class="bg-white dark:bg-slate-900 p-10 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-sm group cursor-pointer hover:shadow-md transition-all">
+                        <div class="flex items-center justify-between mb-10">
+                            <div class="w-12 h-12 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-500 rounded-2xl flex items-center justify-center">
+                                <Zap :size="24" />
                             </div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ synergy.habits.completed }} / {{ synergy.habits.total }} Today</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Habit systems</h4>
+                        <p class="text-sm text-slate-400 mb-8">Maintain your streaks and build long-term consistency.</p>
+                        <div class="w-full h-2 bg-slate-50 dark:bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-indigo-500 transition-all duration-1000" :style="`width: ${synergy.habits.percent}%`"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </template>
 
-        <!-- Skeleton -->
-        <div v-else class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
-            <div v-for="i in 3" :key="i" class="bg-white dark:bg-slate-900 rounded-[2rem] animate-pulse p-10 h-80 col-span-12 lg:col-span-4">
-                <div class="w-14 h-14 bg-slate-100 dark:bg-slate-800 rounded-2xl mb-8"></div>
-                <div class="h-10 w-3/4 bg-slate-100 dark:bg-slate-800 rounded-xl mb-6"></div>
-                <div class="h-24 w-full bg-slate-50 dark:bg-slate-800/50 rounded-2xl"></div>
+        <!-- Loading Skeleton -->
+        <div v-else class="grid grid-cols-12 gap-8">
+            <div v-for="i in 3" :key="i" class="col-span-12 lg:col-span-4 bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] border border-slate-100 animate-pulse h-80">
+                <div class="w-12 h-12 bg-slate-100 rounded-xl mb-8"></div>
+                <div class="h-8 w-3/4 bg-slate-100 rounded-lg mb-4"></div>
+                <div class="h-20 w-full bg-slate-50 rounded-2xl"></div>
             </div>
         </div>
+
+        <!-- Premium Preview Modal -->
+        <PremiumPreviewModal 
+            :isOpen="isPreviewOpen"
+            :module="activePreviewModule"
+            @close="isPreviewOpen = false"
+        />
 
     </div>
 </template>
