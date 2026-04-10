@@ -8,7 +8,6 @@ import JobFilterBar from './JobFilterBar.vue';
 import ResumeAiModal from './ResumeAiModal.vue';
 import MasterCvModal from './MasterCvModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
-import NeuralBridge from '@/Components/NeuralBridge.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
