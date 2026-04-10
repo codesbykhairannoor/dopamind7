@@ -42,7 +42,7 @@ class JournalController extends Controller
         $journal = $id ? Journal::ofUser($user->id)->findOrFail($id) : null;
         $synergy = $this->journalService->getSynergyStats($user->id, $user->timezone ?? 'Asia/Jakarta');
 
-        return Inertia::render('Journal/Write', array_merge([
+        return Inertia::render('Journal/JournalEntry', array_merge([
             'journal' => $journal ? (new JournalResource($journal))->resolve() : null,
             'date'    => $journal ? $journal->date : $synergy['todayDate'],
         ], $synergy));

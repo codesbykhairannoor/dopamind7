@@ -139,12 +139,13 @@ const props = defineProps({
                                 </div>
                             </div>
 
-                            <div class="col-span-2 md:col-span-1 flex justify-center items-end md:items-center">
+                            <div class="col-span-12 md:col-span-1 flex justify-center items-end md:items-center pt-2 md:pt-0 border-t border-slate-50 dark:border-slate-800 md:border-none mt-2 md:mt-0">
                                 <button @click="removeRow(index)" type="button" 
-                                    class="w-10 h-10 md:w-8 md:h-8 rounded-xl flex items-center justify-center text-slate-300 hover:text-rose-500 hover:bg-rose-50 transition-all active:scale-90"
+                                    class="w-full md:w-8 h-10 md:h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-all active:scale-95 gap-2"
                                     :disabled="form.tasks.length <= 1"
                                     :class="{'opacity-0 pointer-events-none': form.tasks.length <= 1}">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                    <span class="md:hidden text-[10px] font-bold">Hapus baris ini</span>
                                 </button>
                             </div>
                         </div>

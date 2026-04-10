@@ -145,7 +145,7 @@ const runAiAudit = () => {
             class="flex items-center justify-center w-[90px] md:w-auto md:px-4 h-11 transition border bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl gap-1.5 hover:bg-white dark:hover:bg-slate-700 hover:border-indigo-300 dark:hover:border-indigo-500/40 shadow-sm dark:shadow-none group transition-colors duration-300"
             :class="{'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-200 dark:border-indigo-500/20': isDateDropdownOpen}"
           >
-            <span class="text-[11px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest whitespace-nowrap transition-colors duration-300">
+            <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 tracking-tight whitespace-nowrap transition-colors duration-300">
                 <span class="md:hidden">{{ shortMonthDisplay }}</span>
                 <span class="hidden md:inline">{{ currentMonth }}</span>
             </span>
@@ -173,7 +173,7 @@ const runAiAudit = () => {
                   v-for="(m, i) in months" 
                   :key="m.name" 
                   @click="selectMonth(i)" 
-                  class="text-[11px] font-bold py-2.5 rounded-lg transition-all uppercase tracking-wider" 
+                  class="text-[11px] font-bold py-2.5 rounded-lg transition-all tracking-tight" 
                   :class="(activeMonthNum === i) ? 'bg-indigo-600 text-white shadow-md dark:shadow-none' : 'text-slate-500 dark:text-slate-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 transition-colors'"
                 >
                   {{ $t(m.name).slice(0,3) }}
@@ -219,7 +219,7 @@ const runAiAudit = () => {
             :class="{'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-200 dark:border-indigo-500/20': isExportDropdownOpen}"
           >
             <OneForMindIcon name="download" size="14" stroke-width="3" class="text-slate-400 group-hover:text-indigo-500" />
-            <span class="text-[9px] font-black text-slate-600 dark:text-slate-300 uppercase tracking-widest hidden lg:inline">{{ $t('export') }}</span>
+            <span class="text-[10px] font-bold text-slate-600 dark:text-slate-300 tracking-tight hidden lg:inline">{{ $t('export') }}</span>
           </button>
 
           <Transition name="slide-fade">
@@ -277,7 +277,7 @@ const runAiAudit = () => {
           class="flex items-center justify-center flex-1 h-11 px-3 md:px-6 transition shadow-lg dark:shadow-none bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-indigo-100 dark:shadow-indigo-900/40 gap-2 active:scale-95 whitespace-nowrap min-w-0 transition-colors duration-500"
         >
           <OneForMindIcon name="plus" size="16" stroke-width="3" class="text-white" />
-          <span class="text-[11px] font-black text-white tracking-tight uppercase truncate">{{ $t('btn_transaction') }}</span>
+          <span class="text-[11px] font-bold text-white tracking-tight truncate">{{ $t('btn_transaction') }}</span>
         </button>
 
       </div>
@@ -297,7 +297,7 @@ const runAiAudit = () => {
                 </div>
                 <div>
                     <h3 class="text-xl font-black tracking-tight leading-none text-white">Automated AI Fiscal Audit</h3>
-                    <p class="text-[10px] uppercase font-black tracking-widest text-indigo-100 opacity-60 mt-1.5 font-mono tracking-tighter">Powered by Google Gemini 1.5 • Beta Experience</p>
+                    <p class="text-[10px] font-black text-indigo-100 opacity-60 mt-1.5 font-mono tracking-tight">Powered by Google Gemini 1.5 • Beta Experience</p>
                 </div>
                 <button @click="$page.clearAiAudit = true" class="ml-auto w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
                     <OneForMindIcon name="close" size="14" />

@@ -76,7 +76,7 @@ const onMasterSaved = () => {
                                     {{ pagination.total }}
                                 </span>
                             </h1>
-                            <p class="mt-0.5 text-[10px] sm:text-sm font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 truncate transition-colors duration-500">{{ todayDate }}</p>
+                            <p class="mt-0.5 text-[10px] sm:text-sm font-bold text-slate-400 dark:text-slate-500 truncate transition-colors duration-500">{{ todayDate }}</p>
                         </div>
                     </div>
                     
@@ -87,7 +87,7 @@ const onMasterSaved = () => {
                         <button @click="isMasterModalOpen = true"
                             class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-2 group relative">
                             <OneForMindIcon name="job" size="18" :class="hasMasterCv ? 'text-emerald-500' : 'text-slate-400'" />
-                            <span class="text-[10px] font-black uppercase tracking-widest hidden lg:inline">
+                            <span class="text-[10px] font-bold hidden lg:inline">
                                 {{ hasMasterCv ? $t('job_master_cv_ready', 'CV Ready') : $t('job_master_cv_needs_setup', 'Setup Master CV') }}
                             </span>
                             <div v-if="!hasMasterCv" class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-rose-500 rounded-full border-2 border-white dark:border-slate-900 animate-pulse"></div>
@@ -98,7 +98,7 @@ const onMasterSaved = () => {
                             <div class="bg-white/20 rounded-lg p-0.5 group-hover:rotate-90 transition-transform duration-500">
                                 <OneForMindIcon name="plus" size="18" stroke-width="4" />
                             </div>
-                            <span class="hidden sm:inline uppercase text-xs tracking-widest">{{ $t('job_add_row', 'Tambah Baris') }}</span>
+                            <span class="hidden sm:inline text-xs font-bold">{{ $t('job_add_row', 'Tambah Baris') }}</span>
                         </button>
                     </div>
                 </div>

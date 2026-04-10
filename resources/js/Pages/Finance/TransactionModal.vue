@@ -74,7 +74,7 @@ const onInput = (e) => {
                             {{ form.id ? $t('edit_transaction', 'Edit transaction') : $t('record_transaction', 'Record transaction') }}
                         </h3>
                         <button v-if="!form.id" @click="$emit('switch-to-batch')" type="button" 
-                            class="text-[10px] font-bold tracking-widest px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition duration-300 flex items-center gap-1.5 active:scale-95 w-fit border border-indigo-100 dark:border-indigo-500/20">
+                            class="text-[10px] font-bold tracking-tight px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition duration-300 flex items-center gap-1.5 active:scale-95 w-fit border border-indigo-100 dark:border-indigo-500/20">
                             <span>⚡</span> {{ $t('batch_mode_title', 'Collective record') }}
                         </button>
                     </div>
@@ -87,16 +87,16 @@ const onInput = (e) => {
             <div class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-8 space-y-5">
                 
                 <div class="flex bg-slate-100 dark:bg-slate-800 p-1.5 rounded-2xl transition-colors duration-500">
-                    <button type="button" @click="form.type = 'expense'" class="flex-1 py-3 rounded-xl text-[10px] font-bold tracking-widest transition-all flex items-center justify-center gap-2 transition-colors duration-300" :class="form.type === 'expense' ? 'bg-white dark:bg-slate-700 text-rose-600 dark:text-rose-400 shadow-sm dark:shadow-none' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">
-                        {{ $t('out', 'Expense') }}
+                    <button type="button" @click="form.type = 'expense'" class="flex-1 py-3 rounded-xl text-[10px] font-bold tracking-tight transition-all flex items-center justify-center gap-2 transition-colors duration-300" :class="form.type === 'expense' ? 'bg-white dark:bg-slate-700 text-rose-600 dark:text-rose-400 shadow-sm dark:shadow-none' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">
+                        <span v-if="form.type === 'expense'">🔴</span> {{ $t('out', 'Expense') }}
                     </button>
-                    <button type="button" @click="form.type = 'income'" class="flex-1 py-3 rounded-xl text-[10px] font-bold tracking-widest transition-all flex items-center justify-center gap-2 transition-colors duration-300" :class="form.type === 'income' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm dark:shadow-none' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">
-                        {{ $t('in', 'Income') }}
+                    <button type="button" @click="form.type = 'income'" class="flex-1 py-3 rounded-xl text-[10px] font-bold tracking-tight transition-all flex items-center justify-center gap-2 transition-colors duration-300" :class="form.type === 'income' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm dark:shadow-none' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">
+                        <span v-if="form.type === 'income'">🟢</span> {{ $t('in', 'Income') }}
                     </button>
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold tracking-widest mb-2 transition-colors duration-500 ml-1" :class="form.type === 'expense' ? 'text-rose-400 dark:text-rose-400/80' : 'text-emerald-400 dark:text-emerald-400/80'">
+                    <label class="block text-[10px] font-bold tracking-tight mb-2 transition-colors duration-500 ml-1" :class="form.type === 'expense' ? 'text-rose-400 dark:text-rose-400/80' : 'text-emerald-400 dark:text-emerald-400/80'">
                         {{ $t('amount') }}
                     </label>
                     <div class="relative group">
@@ -111,7 +111,7 @@ const onInput = (e) => {
                 </div>
 
                 <div>
-                    <label class="block text-[10px] font-bold text-slate-400 dark:text-slate-600 mb-2 transition-colors duration-500 ml-1">{{ $t('description') }}</label>
+                    <label class="block text-[10px] font-bold text-slate-400 dark:text-slate-600 mb-2 transition-colors duration-500 ml-1 tracking-tight">{{ $t('description') }}</label>
                     <input v-model="form.title" type="text" :placeholder="$t('desc_placeholder', 'Cth: Kopi, Gaji...')" 
                         class="w-full px-4 h-12 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-indigo-500 focus:ring-0 font-bold text-sm text-slate-700 dark:text-slate-200 transition-all placeholder:text-slate-300 dark:placeholder:text-slate-700"
                         :class="{'!border-rose-300 dark:!border-rose-500/50 !bg-rose-50 dark:!bg-rose-500/10 text-rose-600 dark:text-rose-400 placeholder-rose-300': form.errors?.title}">
@@ -119,7 +119,7 @@ const onInput = (e) => {
 
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 dark:text-slate-600 mb-2 transition-colors duration-500 ml-1">{{ $t('category') }}</label>
+                        <label class="block text-[10px] font-bold text-slate-400 dark:text-slate-600 mb-2 transition-colors duration-500 ml-1 tracking-tight">{{ $t('category') }}</label>
                         <div class="relative">
                             <select v-model="form.category" class="w-full pl-4 pr-8 h-12 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:border-indigo-500 focus:ring-0 font-bold text-slate-700 dark:text-slate-200 text-sm appearance-none cursor-pointer transition-all"
                                 :class="{'!border-rose-300 dark:!border-rose-500/50 !bg-rose-50 dark:!bg-rose-500/10 text-rose-600 dark:text-rose-400': form.errors?.category}">
@@ -135,7 +135,7 @@ const onInput = (e) => {
                     </div>
 
                     <div class="relative">
-                        <label class="block text-[10px] font-bold text-slate-400 dark:text-slate-600 mb-2 transition-colors duration-500 ml-1">{{ $t('date') }}</label>
+                        <label class="block text-[10px] font-bold text-slate-400 dark:text-slate-600 mb-2 transition-colors duration-500 ml-1 tracking-tight">{{ $t('date') }}</label>
                         <button type="button" @click="showDatePicker = !showDatePicker" class="w-full px-4 h-12 rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-indigo-300 dark:hover:border-indigo-500/40 font-bold text-slate-700 dark:text-slate-200 text-sm transition-all flex items-center justify-between transition-colors duration-500">
                             <span class="truncate">{{ dateDisplay }}</span>
                             <span class="text-slate-400 dark:text-slate-600">📅</span>

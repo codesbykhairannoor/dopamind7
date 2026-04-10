@@ -45,8 +45,8 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
     <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none h-fit flex flex-col gap-6 transition-colors duration-500">
         
         <div class="flex p-1 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl transition-colors duration-500">
-            <button @click="activeTab = 'expense'" class="flex-1 py-2 text-[11px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'expense' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm dark:shadow-none' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">{{ $t('expense') }}</button>
-            <button @click="activeTab = 'income'" class="flex-1 py-2 text-[11px] font-black uppercase tracking-widest rounded-lg transition-all" :class="activeTab === 'income' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm dark:shadow-none' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">{{ $t('income') }}</button>
+            <button @click="activeTab = 'expense'" class="flex-1 py-2 text-[11px] font-black rounded-lg transition-all" :class="activeTab === 'expense' ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-sm dark:shadow-none' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">{{ $t('expense') }}</button>
+            <button @click="activeTab = 'income'" class="flex-1 py-2 text-[11px] font-black rounded-lg transition-all" :class="activeTab === 'income' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm dark:shadow-none' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">{{ $t('income') }}</button>
         </div>
 
         <div v-if="activeTab === 'expense'" class="space-y-6">
@@ -75,11 +75,11 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
                 
                 <div class="p-4 rounded-xl border border-indigo-100 dark:border-indigo-500/20 bg-indigo-50/30 dark:bg-indigo-500/5 flex justify-between items-center shadow-inner dark:shadow-none transition-colors duration-500">
                     <div class="flex flex-col">
-                        <span class="text-[11px] uppercase font-bold text-indigo-400 dark:text-indigo-500 tracking-wider transition-colors duration-500">Total Budget</span>
+                        <span class="text-[11px] font-bold text-indigo-400 dark:text-indigo-500 tracking-tight transition-colors duration-500">Total budget</span>
                         <span class="text-sm font-black text-slate-700 dark:text-slate-200 mt-0.5 transition-colors duration-500">{{ formatMoney(totalBudget) }}</span>
                     </div>
                     <div class="text-right flex flex-col">
-                        <span class="text-[11px] uppercase font-bold text-slate-400 dark:text-slate-600 tracking-wider transition-colors duration-500">Terpakai</span>
+                        <span class="text-[11px] font-bold text-slate-400 dark:text-slate-600 tracking-tight transition-colors duration-500">Terpakai</span>
                         <span class="text-sm font-black mt-0.5" :class="totalBudgetExpense > totalBudget ? 'text-rose-500 dark:text-rose-400' : 'text-indigo-600 dark:text-indigo-400'">
                             {{ formatMoney(totalBudgetExpense) }}
                         </span>

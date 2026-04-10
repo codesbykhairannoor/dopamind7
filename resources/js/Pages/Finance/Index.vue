@@ -630,35 +630,46 @@ const financePremiumFeatures = [
                                     <Lock v-if="isExplorer" :size="12" class="text-orange-500 animate-pulse ml-0.5" />
                                 </div>
                             </div>
-                            <button @click="isExplorer ? openPremiumPreview('Finance') : handleEditSaving()" class="flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 py-2 lg:px-4 rounded-xl text-[9px] lg:text-[10px] font-black tracking-widest hover:scale-105 transition-all active:scale-95 shadow-lg dark:shadow-none">
-                                <Plus :size="14" />
-                                <span class="hidden sm:inline">{{ isExplorer ? 'Unlock goal' : 'Create goal' }}</span>
-                                <span class="sm:hidden">Goal</span>
+                            <button @click="isExplorer ? openPremiumPreview('Finance') : handleEditSaving()" class="flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 rounded-[1.25rem] text-[10px] font-black tracking-widest hover:scale-105 transition-all active:scale-95 shadow-xl shadow-slate-200 dark:shadow-none relative group/btn overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
+                                <Plus :size="16" stroke-width="3" />
+                                <span class="hidden sm:inline relative z-10">{{ isExplorer ? 'Unlock goal' : 'Create goal' }}</span>
+                                <span class="sm:hidden relative z-10">Goal</span>
                             </button>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
-                            <!-- Premium Lockdown Overlay for The Vault Section -->
-                            <div v-if="isExplorer" @click="openPremiumPreview('Finance')" class="absolute inset-0 z-20 backdrop-blur-[2px] bg-white/10 dark:bg-slate-900/10 rounded-[2.5rem] flex items-center justify-center cursor-pointer group/locked-vault transition-all duration-500 border border-transparent hover:border-orange-500/20">
-                                <div class="bg-white/90 dark:bg-slate-900/90 p-8 rounded-[2rem] shadow-2xl border border-slate-100 dark:border-slate-800 text-center scale-95 group-hover/locked-vault:scale-100 transition-transform">
-                                    <div class="w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 text-orange-500">
-                                        <Lock :size="32" stroke-width="2.5" />
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+                            <!-- Premium Lockdown Overlay for The Vault Section (Refined with mesh and padlock) -->
+                            <div v-if="isExplorer" @click="openPremiumPreview('Finance')" class="absolute inset-0 z-20 rounded-[3rem] overflow-hidden group/locked-vault cursor-pointer transition-all duration-700 border border-slate-100 dark:border-slate-800 shadow-2xl">
+                                <!-- Mesh Gradient for Vault -->
+                                <div class="absolute inset-0 bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl transition-all duration-700 group-hover/locked-vault:backdrop-blur-none"></div>
+                                <div class="absolute inset-0 opacity-10 group-hover/locked-vault:opacity-20 transition-opacity duration-1000 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-400 via-transparent to-transparent"></div>
+                                
+                                <div class="relative z-10 h-full flex items-center justify-center p-8 text-center bg-white/50 dark:bg-slate-900/50">
+                                    <div class="max-w-xs animate-in zoom-in duration-500">
+                                        <div class="w-20 h-20 bg-gradient-to-br from-orange-400 to-amber-600 dark:from-orange-500 dark:to-amber-700 rounded-3xl flex items-center justify-center mx-auto mb-6 text-white shadow-2xl rotate-3 group-hover/locked-vault:rotate-0 transition-transform">
+                                            <Lock :size="40" stroke-width="2.5" />
+                                        </div>
+                                        <h4 class="text-xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">Vault architecture</h4>
+                                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+                                            Manifest your wealth with automated accumulation protocols.
+                                        </p>
+                                        <div class="inline-flex items-center gap-2 text-[10px] font-black text-orange-600 dark:text-orange-400 tracking-widest uppercase">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-ping"></span>
+                                            Unlock architect tier
+                                        </div>
                                     </div>
-                                    <h4 class="text-lg font-black text-slate-800 dark:text-white mb-2">Vault Integration</h4>
-                                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 max-w-[200px] mx-auto leading-relaxed">
-                                        Join the Architect tier to unlock automated wealth manifestation.
-                                    </p>
                                 </div>
                             </div>
 
                             <!-- Existing Saving Card or placeholder -->
-                            <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1">
-                                 <div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500">🏦</div>
-                                 <h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">You have no active saving goals yet.</h4>
-                                 <button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900 px-5 py-2 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-all">
-                                    Start Saving Now
-                                 </button>
-                            </div>
+                             <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1 border-2 border-slate-100 dark:border-slate-800 shadow-sm">
+                                  <div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500 animate-bounce">🏦</div>
+                                  <h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">You have no active saving goals yet.</h4>
+                                  <button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-black tracking-widest text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-6 py-2.5 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all active:scale-95 shadow-sm border border-indigo-100/50 dark:border-indigo-500/20">
+                                     Start saving now
+                                  </button>
+                             </div>
 
                             <div v-else class="flex lg:grid overflow-x-auto lg:overflow-visible no-scrollbar gap-4 pb-4 lg:pb-0">
                                 <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] lg:w-full">

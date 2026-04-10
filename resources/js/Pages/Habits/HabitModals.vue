@@ -77,8 +77,8 @@ defineProps({
                         {{ isEditing ? 'Edit habit' : $t('habit_modal_title') }}
                     </h3>
                     <button v-if="!isEditing" @click="switchToBatch" type="button" 
-                        class="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition flex items-center gap-1.5 active:scale-95 w-fit border border-indigo-100 dark:border-indigo-500/30 mt-2">
-                        <span>⚡</span> Batch Mode
+                        class="text-[10px] font-black tracking-tight px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition flex items-center gap-1.5 active:scale-95 w-fit border border-indigo-100 dark:border-indigo-500/30 mt-2">
+                        <span>⚡</span> Batch mode
                     </button>
                 </div>
                 <button @click="closeModal" class="bg-slate-100 dark:bg-slate-800 w-8 h-8 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition -mt-6">✕</button>

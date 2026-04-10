@@ -99,8 +99,8 @@
     "http://localhost:8001/build/assets/Index-bbf8WAnK.js"
   ],
   "resources/js/Composables/Journal/useJournalForm.js": [
-    "http://localhost:8001/build/assets/Write-Cn5FpK6M.js",
-    "http://localhost:8001/build/assets/Write-DVu6Yg_T.css"
+    "http://localhost:8001/build/assets/JournalEntry-OWGGCPUG.js",
+    "http://localhost:8001/build/assets/JournalEntry-6Fu5e6e-.css"
   ],
   "resources/js/Composables/Planner/usePlanner.js": [
     "http://localhost:8001/build/assets/Index-CPXTMxzx.js"
@@ -454,16 +454,16 @@
   "resources/js/Pages/Journal/JournalCard.vue": [
     "http://localhost:8001/build/assets/JournalCard-Kt1rBUv7.js"
   ],
+  "resources/js/Pages/Journal/JournalEntry.vue": [
+    "http://localhost:8001/build/assets/JournalEntry-OWGGCPUG.js",
+    "http://localhost:8001/build/assets/JournalEntry-6Fu5e6e-.css"
+  ],
+  "resources/js/Pages/Journal/JournalEntry.vue?vue&type=style&index=0&lang.css": [
+    "http://localhost:8001/build/assets/JournalEntry-OWGGCPUG.js",
+    "http://localhost:8001/build/assets/JournalEntry-6Fu5e6e-.css"
+  ],
   "resources/js/Pages/Journal/JournalHeader.vue": [
     "http://localhost:8001/build/assets/JournalHeader-BOe6Jwr9.js"
-  ],
-  "resources/js/Pages/Journal/Write.vue": [
-    "http://localhost:8001/build/assets/Write-Cn5FpK6M.js",
-    "http://localhost:8001/build/assets/Write-DVu6Yg_T.css"
-  ],
-  "resources/js/Pages/Journal/Write.vue?vue&type=style&index=0&lang.css": [
-    "http://localhost:8001/build/assets/Write-Cn5FpK6M.js",
-    "http://localhost:8001/build/assets/Write-DVu6Yg_T.css"
   ],
   "resources/js/Pages/More/Index.vue": [
     "http://localhost:8001/build/assets/Index-CzmAmqCN.js",

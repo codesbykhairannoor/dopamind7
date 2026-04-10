@@ -171,13 +171,13 @@ onMounted(() => {
                     ]"
                 >
                     <!-- Best Service Tag -->
-                    <div v-if="plan.badge" class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full bg-indigo-600 dark:bg-indigo-500 text-white text-[8px] font-black uppercase tracking-widest shadow-lg whitespace-nowrap">
+                    <div v-if="plan.badge" class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 sm:px-6 py-1.5 rounded-full bg-indigo-600 dark:bg-indigo-500 text-white text-[8px] font-black tracking-widest shadow-lg whitespace-nowrap z-20 border border-white/20">
                         {{ $t(plan.badge) }}
                     </div>
 
                     <div class="mb-6 flex justify-between items-start">
                         <div>
-                            <h3 class="text-[10px] font-black uppercase tracking-widest mb-3" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-slate-400 dark:text-slate-500'">{{ $t(plan.name) }}</h3>
+                            <h3 class="text-[10px] font-black tracking-widest mb-3" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-slate-400 dark:text-slate-500'">{{ $t(plan.name) }}</h3>
                             <div class="flex items-baseline gap-2">
                                 <span class="text-3xl font-black tracking-tighter" :class="plan.theme === 'dark' ? 'text-white' : 'text-slate-900 dark:text-white'">{{ plan.price }}</span>
                                 <span v-if="plan.slug !== 'lifetime'" class="font-bold text-xs" :class="plan.theme === 'dark' ? 'text-slate-500' : 'text-slate-400 dark:text-slate-500'">/{{ $t(plan.period || 'pricing_month') }}</span>
@@ -190,7 +190,7 @@ onMounted(() => {
                     </div>
 
                     <div v-if="plan.initial" class="mt-2 space-y-0.5">
-                        <p class="text-[10px] font-black uppercase tracking-tight" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600 dark:text-indigo-400'">{{ $t(plan.initial) }}</p>
+                        <p class="text-[10px] font-black tracking-tight" :class="plan.theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600 dark:text-indigo-400'">{{ $t(plan.initial) }}</p>
                         <p v-if="plan.slug !== 'lifetime'" class="text-[9px] font-bold italic" :class="plan.theme === 'dark' ? 'text-slate-600' : 'text-slate-400 dark:text-slate-500'">{{ $t(plan.recurring) }}</p>
                         <p v-else class="text-[9px] font-bold italic text-amber-500">{{ $t('pricing_feat_l4_triggers') }}</p>
                     </div>

@@ -101,17 +101,17 @@ const openPremiumPreview = (module = 'Coach') => {
                 </Link>
             </div>
 
-            <nav class="flex-1 px-3 space-y-1 overflow-y-auto py-4 custom-scrollbar" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
+            <nav class="flex-1 px-3 space-y-0.5 overflow-y-auto py-2 custom-scrollbar transition-all duration-500" :class="isSidebarCollapsed ? 'px-3' : 'px-4'">
                 <!-- CORE SECTIONS -->
-                <div class="px-3 pt-2 pb-1">
-                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-2">{{ $t('nav_core_modules', 'System core') }}</span>
+                <div class="px-3 pt-1 pb-1">
+                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ $t('nav_core_modules', 'System core') }}</span>
                 </div>
 
                 <Link :href="route('dashboard')" prefetch
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('dashboard') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm dark:shadow-none font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
-                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
+                        isSidebarCollapsed ? 'p-2 justify-center' : 'px-3 py-1.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_dashboard') : ''"
                 >
@@ -124,7 +124,7 @@ const openPremiumPreview = (module = 'Coach') => {
                     class="flex items-center rounded-xl transition-all duration-300 group relative"
                     :class="[
                         route().current('habits.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 shadow-sm font-bold' : 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium',
-                        isSidebarCollapsed ? 'p-2.5 justify-center' : 'px-3 py-2.5 gap-3'
+                        isSidebarCollapsed ? 'p-2 justify-center' : 'px-3 py-1.5 gap-3'
                     ]"
                     :title="isSidebarCollapsed ? $t('nav_item_habit') : ''"
                 >
@@ -160,8 +160,8 @@ const openPremiumPreview = (module = 'Coach') => {
                 </Link>
 
                 <!-- PLATINUM SUITE SECTIONS -->
-                <div class="px-3 pt-6 pb-1">
-                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-2">{{ $t('nav_platinum_suite', 'Platinum suite') }}</span>
+                <div class="px-3 pt-4 pb-1">
+                    <span class="text-[9px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ $t('nav_platinum_suite', 'Platinum suite') }}</span>
                 </div>
 
                 <Link v-if="showModule('journal')" :href="canAccess('journal') ? route('journal.index') : route('billing')" prefetch
@@ -231,6 +231,26 @@ const openPremiumPreview = (module = 'Coach') => {
                     </span>
                     <div v-if="route().current('goals.*') && !isSidebarCollapsed" class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-600 rounded-r-full"></div>
                 </Link>
+
+                <!-- NEURAL OS STATUS WIDGET (Fills Empty Space) -->
+                <div v-if="!isSidebarCollapsed" class="mt-6 mx-3 p-4 rounded-2xl bg-gradient-to-br from-slate-50 to-white dark:from-slate-800/50 dark:to-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-sm transition-all duration-500 group/neural">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                            <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">Neural OS</span>
+                        </div>
+                        <OneForMindIcon name="sparkles" size="12" class="text-indigo-500 opacity-50 group-hover/neural:rotate-12 transition-transform" />
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-[10px] font-bold text-slate-600 dark:text-slate-400">
+                            <span>System Load</span>
+                            <span class="font-mono opacity-60">Optimal</span>
+                        </div>
+                        <div class="h-1 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+                            <div class="h-full w-2/3 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.4)]"></div>
+                        </div>
+                    </div>
+                </div>
             </nav>
             
             <div class="px-4 py-3 shrink-0">

@@ -131,30 +131,46 @@ defineExpose({ runAudit, getMoodAdvisory });
             </div>
         </Transition>
 
-        <!-- AI COMMAND CENTER (TRIGGERS) -->
-        <div v-if="!showStack" class="flex flex-col md:flex-row items-center justify-center gap-6 py-8 relative">
-            <button @click="getHabitStack" :disabled="isAnalyzing" 
-                class="group relative overflow-hidden flex items-center gap-5 px-10 py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-[2rem] shadow-2xl hover:scale-105 transition-all active:scale-95 disabled:opacity-50 min-w-[280px]">
-                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
-                    <OneForMindIcon name="sparkles" size="24" class="group-hover:rotate-12 transition-transform duration-500" />
+        <!-- AI COMMAND CENTER (REFINED TRIGGERS) -->
+        <div v-if="!showStack" class="space-y-8 animate-in fade-in duration-700">
+            <!-- Hero Visual Card -->
+            <div class="relative w-full aspect-[21/9] md:aspect-[3/1] rounded-[3rem] overflow-hidden shadow-2xl group/hero border border-slate-100 dark:border-slate-800">
+                <img src="/images/neural_habit_ai.png" class="w-full h-full object-cover transition-transform duration-[10s] group-hover/hero:scale-110" alt="Neural AI Visual" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent flex flex-col justify-end p-8 md:p-12">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
+                        <span class="text-[10px] font-black text-indigo-400 tracking-[0.3em] uppercase">Core intelligence</span>
+                    </div>
+                    <h2 class="text-2xl md:text-4xl font-black text-white leading-tight tracking-tight max-w-xl">
+                        Map your habits through the <span class="text-indigo-400 underline decoration-indigo-500/30">neural pathways</span>.
+                    </h2>
                 </div>
-                <div class="text-left">
-                    <span class="block text-sm font-black tracking-tight leading-none mb-1">{{ $t('habit_btn_alchemy') }}</span>
-                    <span class="block text-[10px] font-bold text-indigo-300 tracking-tight">AI stacking protocol</span>
-                </div>
-            </button>
+            </div>
 
-            <button @click="checkStagnation" :disabled="isAnalyzing" 
-                class="group flex items-center gap-5 px-10 py-5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-[2rem] shadow-xl shadow-slate-200/50 dark:shadow-none hover:scale-105 transition-all active:scale-95 border border-slate-100 dark:border-slate-800 disabled:opacity-50 min-w-[280px]">
-                <div class="w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-500/10 flex items-center justify-center shrink-0 border border-rose-100/50 dark:border-rose-500/10 shadow-sm">
-                    <OneForMindIcon name="activity" size="24" class="text-rose-500 group-hover:scale-110 transition-transform" />
-                </div>
-                <div class="text-left">
-                    <span class="block text-sm font-black tracking-tight leading-none mb-1">Audit habit health</span>
-                    <span class="block text-[10px] font-bold text-slate-400 tracking-tight">Friction analysis</span>
-                </div>
-            </button>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 py-4 relative">
+                <button @click="getHabitStack" :disabled="isAnalyzing" 
+                    class="group relative overflow-hidden flex items-center gap-5 px-10 py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-[2rem] shadow-2xl hover:scale-105 transition-all active:scale-95 disabled:opacity-50 min-w-[280px]">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 border border-white/10 shadow-inner">
+                        <OneForMindIcon name="sparkles" size="24" class="group-hover:rotate-12 transition-transform duration-500" />
+                    </div>
+                    <div class="text-left">
+                        <span class="block text-sm font-black tracking-tight leading-none mb-1">{{ $t('habit_btn_alchemy') }}</span>
+                        <span class="block text-[10px] font-bold text-indigo-300 tracking-tight">AI stacking protocol</span>
+                    </div>
+                </button>
+
+                <button @click="checkStagnation" :disabled="isAnalyzing" 
+                    class="group flex items-center gap-5 px-10 py-5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-[2rem] shadow-xl shadow-slate-200/50 dark:shadow-none hover:scale-105 transition-all active:scale-95 border border-slate-100 dark:border-slate-800 disabled:opacity-50 min-w-[280px]">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-500/10 flex items-center justify-center shrink-0 border border-rose-100/50 dark:border-rose-500/10 shadow-sm">
+                        <OneForMindIcon name="activity" size="24" class="text-rose-500 group-hover:scale-110 transition-transform" />
+                    </div>
+                    <div class="text-left">
+                        <span class="block text-sm font-black tracking-tight leading-none mb-1">Audit habit health</span>
+                        <span class="block text-[10px] font-bold text-slate-400 tracking-tight">Friction analysis</span>
+                    </div>
+                </button>
+            </div>
         </div>
 
         <!-- AI INSIGHT CARD (STACKING) -->

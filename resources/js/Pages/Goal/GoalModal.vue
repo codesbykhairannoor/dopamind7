@@ -154,8 +154,8 @@ const t = (key, fallback) => {
 
                     <div class="absolute inset-x-6 bottom-5 flex justify-between items-end">
                         <div class="flex-grow min-w-0">
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] font-black uppercase tracking-widest mb-1.5">
-                                 {{ goal?.id ? t('goal_edit', 'Update Vision') : t('goal_new', 'Create New Vision') }}
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] font-black tracking-tight mb-1.5">
+                                 {{ goal?.id ? t('goal_edit', 'Update vision') : t('goal_new', 'Create new vision') }}
                             </span>
                             <h2 class="text-2xl font-black text-white drop-shadow-md truncate pr-4">
                                 {{ form.title || t('goal_placeholder_title', 'What is your dream?') }}
@@ -178,7 +178,7 @@ const t = (key, fallback) => {
                 <div class="p-6 md:p-8 overflow-y-auto custom-scrollbar space-y-6 pb-40">
                     
                     <div class="space-y-2">
-                        <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ t('goal_label_title', 'Goal Title') }}</label>
+                        <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 tracking-tight ml-1">{{ t('goal_label_title', 'Goal title') }}</label>
                         <div class="relative group">
                             <input v-model="form.title" type="text" 
                                     class="w-full bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent rounded-2xl px-5 py-5 text-slate-700 dark:text-white font-bold focus:bg-white dark:focus:bg-slate-800 focus:border-indigo-500/20 focus:ring-4 focus:ring-indigo-500/5 placeholder:text-slate-300 dark:placeholder:text-slate-600 transition-all text-lg shadow-sm"
@@ -191,7 +191,7 @@ const t = (key, fallback) => {
 
                     <!-- Archetype Selection -->
                     <div class="space-y-3">
-                        <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ t('goal_archetypes', 'Choose Template') }}</label>
+                        <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 tracking-tight ml-1">{{ t('goal_archetypes', 'Choose template') }}</label>
                         <div class="grid grid-cols-3 sm:grid-cols-5 gap-3">
                             <button v-for="arch in archetypes" :key="arch.id"
                                     @click="selectArchetype(arch)"
@@ -202,7 +202,7 @@ const t = (key, fallback) => {
                                         : 'border-slate-50 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 hover:border-slate-200 dark:hover:border-slate-700'">
                                 <component :is="arch.icon" :size="20" 
                                            :class="selectedArchetype === arch.id ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400'" />
-                                <span class="text-[8px] font-black uppercase text-center mt-2 leading-tight transition-colors"
+                                <span class="text-[8px] font-black text-center mt-2 leading-tight transition-colors"
                                       :class="selectedArchetype === arch.id ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-600'">
                                     {{ t(arch.label, arch.id) }}
                                 </span>
@@ -212,12 +212,12 @@ const t = (key, fallback) => {
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ t('goal_label_priority', 'Priority') }}</label>
+                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 tracking-tight ml-1">{{ t('goal_label_priority', 'Priority') }}</label>
                             <div class="flex gap-2 p-1.5 bg-slate-100 dark:bg-slate-800/80 rounded-2xl">
                                 <button v-for="p in ['vital', 'important', 'optional']" :key="p"
                                         @click="form.priority = p"
                                         :class="[
-                                            'flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all',
+                                            'flex-1 py-3 rounded-xl text-[10px] font-black tracking-tight transition-all',
                                             form.priority === p 
                                                 ? 'bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-400 shadow-md' 
                                                 : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-300'
@@ -228,7 +228,7 @@ const t = (key, fallback) => {
                         </div>
 
                         <div class="space-y-2">
-                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ t('goal_label_reward', 'Self Reward') }}</label>
+                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 tracking-tight ml-1">{{ t('goal_label_reward', 'Self reward') }}</label>
                             <div class="relative group">
                                 <input v-model="form.reward" type="text" 
                                        class="w-full bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent rounded-2xl px-5 py-4 text-slate-700 dark:text-white font-bold focus:bg-white dark:focus:bg-slate-800 focus:border-amber-500/20 focus:ring-4 focus:ring-amber-500/5 transition-all shadow-sm"
@@ -241,7 +241,7 @@ const t = (key, fallback) => {
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ t('goal_label_color', 'Goal Color Theme') }}</label>
+                        <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 tracking-tight ml-1">{{ t('goal_label_color', 'Goal color theme') }}</label>
                         <div class="flex flex-wrap gap-3 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-[2rem] border border-slate-100/50 dark:border-slate-800 shadow-inner transition-colors duration-500">
                             <button v-for="c in ['#6366f1', '#10b981', '#f59e0b', '#f43f5e', '#8b5cf6', '#0ea5e9', '#0f172a']" :key="c"
                                     @click="form.color = c"
@@ -258,7 +258,7 @@ const t = (key, fallback) => {
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-50">
                         <div class="space-y-2 relative">
-                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ t('goal_label_start', 'Start Date') }}</label>
+                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 tracking-tight ml-1">{{ t('goal_label_start', 'Start date') }}</label>
                             <div class="relative">
                                 <button type="button" @click="showStartPicker = !showStartPicker; showEndPicker = false"
                                         class="w-full bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent hover:border-indigo-100 dark:hover:border-indigo-500/20 rounded-2xl px-5 py-4 text-slate-700 dark:text-slate-200 font-bold text-left transition-all flex justify-between items-center group shadow-sm"
@@ -282,7 +282,7 @@ const t = (key, fallback) => {
                         </div>
 
                         <div class="space-y-2 relative">
-                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest ml-1">{{ t('goal_label_end', 'Target Deadline') }}</label>
+                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 tracking-tight ml-1">{{ t('goal_label_end', 'Target deadline') }}</label>
                             <div class="relative">
                                 <button type="button" @click="showEndPicker = !showEndPicker; showStartPicker = false"
                                         class="w-full bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent hover:border-rose-100 dark:hover:border-rose-500/20 rounded-2xl px-5 py-4 text-slate-700 dark:text-slate-200 font-bold text-left transition-all flex justify-between items-center group shadow-sm"
@@ -309,7 +309,7 @@ const t = (key, fallback) => {
                     <!-- Milestones Section in Modal -->
                     <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800 transition-colors duration-500">
                         <div class="flex items-center justify-between px-1">
-                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest">{{ t('goal_milestones_title', 'Mastery Steps') }}</label>
+                            <label class="text-[11px] font-black text-slate-400 dark:text-slate-600 tracking-tight">{{ t('goal_milestones_title', 'Mastery steps') }}</label>
                             <span class="text-[10px] font-bold text-indigo-500 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-2 py-0.5 rounded-lg">
                                 {{ trans('goal_steps_count', { count: form.milestones?.length || 0 }) }}
                             </span>
@@ -337,7 +337,7 @@ const t = (key, fallback) => {
                             }" 
                                 class="w-full py-4 rounded-2xl border-2 border-dashed border-slate-100 dark:border-slate-800 text-slate-400 dark:text-slate-600 hover:border-indigo-100 dark:hover:border-indigo-500/30 hover:text-indigo-50 dark:hover:text-indigo-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all flex items-center justify-center gap-2 group/add shadow-sm">
                                 <Plus :size="16" class="group-hover/add:rotate-90 transition-transform" />
-                                <span class="text-[11px] font-black uppercase tracking-widest">{{ t('goal_btn_add_milestone', 'Add Step') }}</span>
+                                <span class="text-[11px] font-black tracking-tight">{{ t('goal_btn_add_milestone', 'Add Step') }}</span>
                             </button>
                         </div>
                     </div>
@@ -345,13 +345,13 @@ const t = (key, fallback) => {
                 </div>
 
                 <div class="p-6 bg-slate-50/80 dark:bg-slate-900/90 backdrop-blur-sm shrink-0 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 relative z-50 transition-colors duration-500">
-                    <button @click="handleClose" class="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest hover:text-rose-500 dark:hover:text-rose-400 transition-colors px-4 py-2">
+                    <button @click="handleClose" class="text-[10px] font-black text-slate-400 dark:text-slate-600 tracking-tight hover:text-rose-500 dark:hover:text-rose-400 transition-colors px-4 py-2">
                         {{ t('btn_cancel', 'Cancel') }}
                     </button>
                     <button @click="handleSave"
-                            class="bg-indigo-600 text-white px-8 py-3.5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-lg shadow-indigo-600/20 dark:shadow-indigo-900/40 hover:bg-indigo-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+                            class="bg-indigo-600 text-white px-8 py-3.5 rounded-2xl font-black tracking-tight text-[11px] shadow-lg shadow-indigo-600/20 dark:shadow-indigo-900/40 hover:bg-indigo-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
                         <CheckCircle2 :size="16" />
-                        {{ goal?.id ? t('goal_btn_save', 'Update Vision') : t('goal_btn_create', 'Manifest Goal') }}
+                        {{ goal?.id ? t('goal_btn_save', 'Update vision') : t('goal_btn_create', 'Manifest goal') }}
                     </button>
                 </div>
             </div>

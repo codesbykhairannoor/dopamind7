@@ -60,8 +60,8 @@ onUnmounted(() => {
                 </div>
                 
                 <div class="flex items-center gap-3">
-                    <button @click="switchToSingle" type="button" class="hidden sm:flex text-[10px] font-black uppercase tracking-widest px-4 py-2.5 rounded-xl border-2 border-slate-100 dark:border-slate-800 text-slate-400 dark:text-slate-500 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-100 dark:hover:border-indigo-500/30 transition-all active:scale-95 items-center gap-2">
-                        <span>↩️</span> {{ $t('btn_single_mode', 'Single Mode') }}
+                    <button @click="switchToSingle" type="button" class="hidden sm:flex text-[10px] font-black tracking-tight px-4 py-2.5 rounded-xl border-2 border-slate-100 dark:border-slate-800 text-slate-400 dark:text-slate-500 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-100 dark:hover:border-indigo-500/30 transition-all active:scale-95 items-center gap-2">
+                        <span>↩️</span> {{ $t('btn_single_mode', 'Single mode') }}
                     </button>
                     <button @click="close" class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 hover:text-rose-500 dark:hover:text-rose-400 transition-all active:scale-90 flex items-center justify-center font-bold">
                         ✕
@@ -82,15 +82,15 @@ onUnmounted(() => {
                             <p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
                                 Organize your life rituals with speed. Batch Mode allows you to design and track multiple habits instantly.
                             </p>
-                            <Link :href="route('billing')" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-[10px] uppercase tracking-widest px-8 py-4 rounded-xl shadow-lg transition-all active:scale-95">
-                                {{ $t('btn_unlock_now', 'Unlock Architect Plan') }}
+                            <Link :href="route('billing')" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-black text-[10px] tracking-tight px-8 py-4 rounded-xl shadow-lg transition-all active:scale-95">
+                                {{ $t('btn_unlock_now', 'Unlock architect plan') }}
                                 <OneForMindIcon name="arrow-right" size="14" stroke-width="4" />
                             </Link>
                         </div>
                     </div>
                 </div>
 
-                <div class="hidden md:grid grid-cols-12 gap-3 mb-3 px-4 text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                <div class="hidden md:grid grid-cols-12 gap-3 mb-3 px-4 text-[9px] font-bold text-slate-400 tracking-tight">
                     <div class="col-span-4">{{ $t('habit_name', 'Habit name') }}</div>
                     <div class="col-span-2 text-center">{{ $t('habit_icon', 'Icon') }}</div>
                     <div class="col-span-3 text-center">{{ $t('habit_color', 'Color') }}</div>
@@ -143,7 +143,7 @@ onUnmounted(() => {
                             </div>
 
                             <div class="col-span-1 md:col-span-3 flex justify-center">
-                                <label class="md:hidden text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 block w-full text-left">{{ $t('habit_color', 'Warna') }}</label>
+                                <label class="md:hidden text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-tight mb-2 block w-full text-left">{{ $t('habit_color', 'Warna') }}</label>
                                 <div class="flex flex-wrap justify-center gap-1.5 md:gap-1.5 p-1 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-100 dark:border-slate-800 w-full md:w-auto">
                                     <button type="button" v-for="c in colorPalette" :key="c" @click="trx.color = c" 
                                         class="w-6 h-6 md:w-5 md:h-5 rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-sm" 
@@ -159,7 +159,7 @@ onUnmounted(() => {
                                     <input type="number" v-model="trx.monthly_target" min="1" max="31" 
                                         class="w-full text-center text-xs font-black h-12 md:h-11 pl-2 pr-6 !rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:bg-white dark:focus:bg-slate-900 focus:border-indigo-500 transition-all focus:ring-0 text-indigo-700 dark:text-indigo-400" 
                                         :class="{'!border-rose-300 dark:!border-rose-500/50 !bg-rose-50 dark:!bg-rose-500/10 text-rose-600 dark:text-rose-400': form.errors?.[`habits.${index}.monthly_target`]}" />
-                                    <span class="absolute right-3 text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest pointer-events-none">Hr</span>
+                                    <span class="absolute right-3 text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-tight pointer-events-none">Hr</span>
                                 </div>
                             </div>
 
@@ -176,24 +176,24 @@ onUnmounted(() => {
                     </div>
                 </div>
 
-                <button @click="addRow" type="button" class="mt-6 w-full py-4 border-2 border-dashed border-indigo-200 dark:border-indigo-500/30 bg-indigo-50/50 dark:bg-indigo-500/5 rounded-2xl text-indigo-600 dark:text-indigo-400 font-black uppercase tracking-widest text-[10px] hover:border-indigo-400 dark:hover:border-indigo-500 hover:bg-indigo-100 dark:hover:bg-indigo-500/10 transition-all flex items-center justify-center gap-3 active:scale-95 shadow-sm dark:shadow-none">
+                <button @click="addRow" type="button" class="mt-6 w-full py-4 border-2 border-dashed border-indigo-200 dark:border-indigo-500/30 bg-indigo-50/50 dark:bg-indigo-500/5 rounded-2xl text-indigo-600 dark:text-indigo-400 font-black tracking-tight text-[10px] hover:border-indigo-400 dark:hover:border-indigo-500 hover:bg-indigo-100 dark:hover:bg-indigo-500/10 transition-all flex items-center justify-center gap-3 active:scale-95 shadow-sm dark:shadow-none">
                     <span class="w-5 h-5 rounded-md bg-indigo-200 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs shadow-sm">+</span> 
-                    {{ $t('btn_add_habit_row', 'Tambah Baris Habit') }}
+                    {{ $t('btn_add_habit_row', 'Tambah baris habit') }}
                 </button>
             </div>
 
             <div class="px-6 md:px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 z-20 rounded-b-[2.5rem]">
-                <div class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                <div class="text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-tight flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-                    {{ $t('total_input', 'Total Input:') }} <span class="text-indigo-600 dark:text-indigo-400 text-sm font-black">{{ form.habits.length }}</span>
+                    {{ $t('total_input', 'Total input:') }} <span class="text-indigo-600 dark:text-indigo-400 text-sm font-black">{{ form.habits.length }}</span>
                 </div>
                 
                 <div class="flex gap-3 w-full sm:w-auto">
-                    <SecondaryButton @click="close" class="flex-1 sm:flex-none !py-3.5 !rounded-xl !text-[11px] !font-black !uppercase !tracking-widest !border-2 !border-slate-100 dark:!border-slate-800 !text-slate-400 dark:!text-slate-500 hover:!text-slate-600 dark:hover:!text-slate-400">
+                    <SecondaryButton @click="close" class="flex-1 sm:flex-none !py-3.5 !rounded-xl !text-[11px] !font-black !tracking-tight !border-2 !border-slate-100 dark:!border-slate-800 !text-slate-400 dark:!text-slate-500 hover:!text-slate-600 dark:hover:!text-slate-400">
                         {{ $t('btn_cancel', 'Batal') }}
                     </SecondaryButton>
                     
-                    <PrimaryButton @click="submit" :disabled="form.processing || isExplorer" class="flex-[2] sm:flex-none !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none transition-all transform active:scale-95 font-black uppercase tracking-widest text-[11px]"
+                    <PrimaryButton @click="submit" :disabled="form.processing || isExplorer" class="flex-[2] sm:flex-none !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none transition-all transform active:scale-95 font-black tracking-tight text-[11px]"
                         :class="{'!bg-slate-300 !text-slate-500 !cursor-not-allowed !shadow-none !transform-none': isExplorer}">
                         <span v-if="form.processing" class="flex items-center gap-2 justify-center">
                             <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
