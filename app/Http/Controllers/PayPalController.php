@@ -50,8 +50,12 @@ class PayPalController extends Controller
         $provider->setApiCredentials($config);
         try {
             $paypalToken = $provider->getAccessToken();
+            Log::info('PayPal Token acquired successfully.');
         } catch (\Exception $e) {
-            Log::error('PayPal Auth Error: ' . $e->getMessage(), ['config' => $config]);
+            Log::error('PayPal Auth Exception:', [
+                'message' => $e->getMessage(),
+                'config_mode' => $config['mode']
+            ]);
             return response()->json(['error' => 'Gagal autentikasi PayPal. Periksa konfigurasi API.'], 500);
         }
 
@@ -80,8 +84,14 @@ class PayPalController extends Controller
             }
             return response()->json(['error' => 'Something went wrong with PayPal links.'], 500);
         } else {
-            Log::error('PayPal Create Order Error:', $response);
-            return response()->json(['error' => $response['message'] ?? 'Unable to create PayPal order.'], 500);
+            Log::error('PayPal Gateway Error Response:', [
+                'full_response' => $response,
+                'plan' => $plan,
+                'amount' => $amount
+            ]);
+            
+            $errorMessage = $response['message'] ?? ($response['error']['message'] ?? 'Unable to create PayPal order.');
+            return response()->json(['error' => $errorMessage], 500);
         }
     }
 

@@ -68,22 +68,29 @@ const initiatePayment = async (method) => {
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 selection:bg-indigo-100 dark:selection:bg-indigo-900/40">
         
         <!-- Top Navigation -->
-        <nav class="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
-            <Link href="/" class="group flex items-center gap-4">
-                <div class="w-12 h-12 rounded-2xl bg-indigo-600 flex items-center justify-center text-white shadow-xl shadow-indigo-200 dark:shadow-none transition-transform group-hover:scale-110">
-                    <ApplicationLogo class="w-8 h-8 fill-current" />
+        <nav class="w-full px-6 py-10 flex items-center justify-between relative z-50">
+            <Link href="/" class="group flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-xl shadow-indigo-200">
+                    <img src="/favicon.svg" alt="Logo" class="w-6 h-6 brightness-0 invert" />
                 </div>
-                <span class="text-xl font-black text-slate-900 dark:text-white tracking-tighter uppercase transition-colors group-hover:text-indigo-600">OneForMind</span>
+                <span class="text-xl font-black text-slate-900 dark:text-white tracking-tighter uppercase">OneForMind</span>
             </Link>
-            
+
             <Link :href="route('billing')" class="text-xs font-black text-slate-400 hover:text-indigo-600 transition-colors uppercase tracking-[0.2em] flex items-center gap-2 group">
                 <OneForMindIcon name="chevron-left" size="14" class="transition-transform group-hover:-translate-x-1" stroke-width="4" />
                 Back to Pricing
             </Link>
         </nav>
 
-        <main class="max-w-6xl mx-auto px-6 py-12 md:py-20 lg:py-32">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+        <!-- Immersive Background Orbs -->
+        <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+            <div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-indigo-500/5 blur-[120px] rounded-full"></div>
+            <div class="absolute top-[40%] -right-[10%] w-[30%] h-[40%] bg-purple-500/5 blur-[120px] rounded-full"></div>
+            <div class="absolute -bottom-[10%] left-[20%] w-[50%] h-[30%] bg-indigo-500/5 blur-[120px] rounded-full"></div>
+        </div>
+
+        <main class="w-full px-6 py-12 md:py-20 lg:py-24 relative z-10">
+            <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-center">
                 
                 <!-- Left: Product Value -->
                 <div class="space-y-12 animate-in fade-in slide-in-from-left-8 duration-700">
@@ -141,9 +148,9 @@ const initiatePayment = async (method) => {
 
                         <h2 class="text-sm font-black text-slate-400 uppercase tracking-[0.3em] mb-8 text-center">Select Payment</h2>
                         
-                        <div class="space-y-4 mb-10">
+                        <div class="space-y-5 mb-10">
                             <!-- Duitku -->
-                            <button @click="initiatePayment('duitku')" class="w-full group relative overflow-hidden p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-slate-50 transition-all text-left">
+                            <button @click="initiatePayment('duitku')" class="w-full group relative overflow-hidden p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-white transition-all text-left shadow-sm">
                                 <div class="flex items-center justify-between relative z-10">
                                     <div class="flex items-center gap-5">
                                         <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-3xl shadow-sm transition-transform group-hover:scale-110">🇮🇩</div>
@@ -157,7 +164,7 @@ const initiatePayment = async (method) => {
                             </button>
 
                             <!-- PayPal -->
-                            <button @click="initiatePayment('paypal')" class="w-full group relative overflow-hidden p-6 rounded-3xl border-2 border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-slate-50 transition-all text-left">
+                            <button @click="initiatePayment('paypal')" class="w-full group relative overflow-hidden p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-white transition-all text-left shadow-sm">
                                 <div class="flex items-center justify-between relative z-10">
                                     <div class="flex items-center gap-5">
                                         <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-3xl shadow-sm transition-transform group-hover:scale-110">🌍</div>

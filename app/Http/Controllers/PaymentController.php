@@ -112,26 +112,41 @@ class PaymentController extends Controller
         ];
 
         $url = $env === 'production'
-            ? 'https://passport.duitku.com/webapi/api/merchant/createInvoice'
-            : 'https://api-sandbox.duitku.com/api/merchant/createInvoice';
+            ? 'https://passport.duitku.com/webapi/api/merchant/createinvoice'
+            : 'https://api-sandbox.duitku.com/webapi/api/merchant/createinvoice';
 
         try {
+            Log::info('Duitku Request:', [
+                'url' => $url,
+                'merchantCode' => $merchantCode,
+                'merchantOrderId' => $merchantOrderId,
+                'paymentAmount' => $paymentAmount
+            ]);
+
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
                 'x-duitku-signature' => $signature,
                 'x-duitku-timestamp' => $timestamp,
                 'x-duitku-merchantcode' => $merchantCode
             ])->post($url, $params);
+            
+            $status = $response->status();
             $body = $response->body();
             $data = json_decode($body, true);
 
-            if (is_array($data) && isset($data['paymentUrl'])) {
+            if ($status === 200 && is_array($data) && isset($data['paymentUrl'])) {
                 return response()->json(['paymentUrl' => $data['paymentUrl']]);
             }
             else {
-                Log::error('Duitku API Raw Body: ' . $body);
+                Log::error('Duitku Gateway Error:', [
+                    'status' => $status,
+                    'body' => $body,
+                    'merchantCode' => $merchantCode,
+                    'merchantOrderId' => $merchantOrderId
+                ]);
+
                 return response()->json([
-                    'error' => "Duitku returned " . $response->status() . ": " . substr($body, 0, 500)
+                    'error' => "Duitku returned " . $status . ": " . (json_decode($body)->Message ?? substr($body, 0, 100))
                 ], 400);
             }
         }
@@ -140,7 +155,7 @@ class PaymentController extends Controller
                 'merchantCode' => $merchantCode,
                 'params' => $params
             ]);
-            return response()->json(['error' => 'Exception: ' . $e->getMessage()], 500);
+            return response()->json(['error' => 'Connection Exception: ' . $e->getMessage()], 500);
         }
     }
 
