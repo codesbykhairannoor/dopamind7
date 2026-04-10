@@ -84,7 +84,7 @@ defineExpose({ getMoodAdvisory });
         <div v-if="!showStack" class="space-y-8 animate-in fade-in duration-700">
             <!-- Hero Visual Card -->
             <div class="relative w-full aspect-[21/9] md:aspect-[3/1] rounded-[3rem] overflow-hidden shadow-2xl group/hero border border-slate-100 dark:border-slate-800">
-                <img src="/images/neural_habit_ai.png" class="w-full h-full object-cover transition-transform duration-[10s] group-hover/hero:scale-110" alt="Neural AI Visual" />
+                <img src="/images/neural_habit_ai.png" class="w-full h-full object-cover transition-transform duration-&lsqb;10s&rsqb; group-hover/hero:scale-110" alt="Neural AI Visual" />
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/40 to-transparent flex flex-col justify-end p-8 md:p-12">
                     <div class="flex items-center gap-3 mb-3">
                         <span class="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>

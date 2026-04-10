@@ -230,6 +230,7 @@ const props = defineProps({
                     </button>
                 </div>
 
+                <!-- Footer -->
                 <div class="px-8 py-6 bg-white dark:bg-slate-900 border-t border-slate-50 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 transition-colors">
                     <div class="text-[10px] font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
@@ -242,7 +243,7 @@ const props = defineProps({
                         </SecondaryButton>
                         
                         <PrimaryButton @click="submit" :disabled="form.processing || conflictError" 
-                            class="flex-[2] !bg-indigo-600 hover:!bg-indigo-700 !rounded-[1.2rem] !py-3.5 !px-8 shadow-xl shadow-indigo-100 transition-all transform active:scale-95 font-bold text-[10px]"
+                            class="flex-[2] !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none transition-all transform active:scale-95 font-bold text-[10px]"
                             :class="{'!bg-slate-300 !text-slate-500 !cursor-not-allowed !shadow-none !transform-none': conflictError}">
                             <span v-if="form.processing">{{ $t('btn_saving') }}</span>
                             <span v-else>{{ $t('btn_save_all') }}</span>
@@ -250,8 +251,8 @@ const props = defineProps({
                     </div>
                 </div>
             </template>
-            
         </div>
+    </div>
     </Modal>
 </template>
 

@@ -110,7 +110,7 @@ onMounted(() => {
                             <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="6" class="text-slate-50 dark:text-slate-800" />
                             <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" 
                                 :stroke-dasharray="276" :stroke-dashoffset="276 - (276 * overallScore / 100)"
-                                class="text-indigo-500 dark:text-indigo-400 transition-all duration-[2000ms]" />
+                                class="text-indigo-500 dark:text-indigo-400 transition-all duration-&lsqb;2000ms&rsqb;" />
                         </svg>
                         <span class="text-xl md:text-2xl font-black text-slate-900 dark:text-white">{{ overallScore }}%</span>
                     </div>
@@ -236,7 +236,7 @@ onMounted(() => {
                         
                         <!-- Progress Arc -->
                         <div class="w-full h-2 bg-slate-50 dark:bg-white/5 rounded-full overflow-hidden mb-2">
-                            <div class="h-full bg-indigo-600 transition-all duration-[1500ms]" :style="`width: ${synergy?.habits.percent}%`"></div>
+                            <div class="h-full bg-indigo-600 transition-all duration-&lsqb;1500ms&rsqb;" :style="`width: ${synergy?.habits.percent}%`"></div>
                         </div>
                     </div>
 
@@ -277,7 +277,7 @@ onMounted(() => {
                         <div v-if="synergy?.goals.top_goal" class="space-y-3">
                              <p class="text-xs font-bold text-slate-400 line-clamp-1">{{ synergy.goals.top_goal.title }}</p>
                              <div class="w-full h-1.5 bg-slate-50 dark:bg-white/5 rounded-full overflow-hidden">
-                                <div class="h-full bg-amber-500 transition-all duration-[2000ms]" :style="`width: ${synergy.goals.top_goal.percent}%`"></div>
+                                <div class="h-full bg-amber-500 transition-all duration-&lsqb;2000ms&rsqb;" :style="`width: ${synergy.goals.top_goal.percent}%`"></div>
                              </div>
                         </div>
                         <p v-else class="text-xs font-bold text-slate-400">Assemble your first mission lab.</p>

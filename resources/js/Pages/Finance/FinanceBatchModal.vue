@@ -148,7 +148,7 @@ const changeType = (index, type) => {
                                     <span>{{ dateDisplay }}</span>
                                     <span>📅</span>
                                 </button>
-                                <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
+                                <transition enter-active-class="transition ease-out duration-[4200ms]" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
                                     <div v-if="showDatePicker" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:top-full sm:left-0 sm:mt-2 sm:origin-top-left sm:block sm:inset-auto">
                                         <div class="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm sm:hidden" @click="showDatePicker = false"></div>
                                         <FinanceDatePicker 
@@ -262,8 +262,28 @@ const changeType = (index, type) => {
                     <span class="w-5 h-5 rounded-md bg-indigo-200 dark:bg-indigo-500/30 text-indigo-700 dark:text-indigo-200 flex items-center justify-center text-xs shadow-sm">+</span> 
                     {{ $t('btn_add_another_transaction', 'Add more transaction') }}
                 </button>
-            </div>
+                </div>
 
+                <!-- Footer -->
+                <div class="px-8 py-6 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 transition-colors">
+                    <div class="text-[10px] font-bold text-slate-400 dark:text-slate-600 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+                        {{ $t('total_label') }} <span class="text-indigo-600 dark:text-indigo-400 text-sm font-black">{{ form.transactions.length }}</span>
+                    </div>
+                    
+                    <div class="flex gap-3 w-full sm:w-auto">
+                        <SecondaryButton @click="close" class="flex-1 !py-3.5 !rounded-xl !text-[10px] !font-bold !border-2 !text-slate-400 hover:!text-slate-600">
+                            {{ $t('btn_cancel') }}
+                        </SecondaryButton>
+                        
+                        <PrimaryButton @click="submit" :disabled="form.processing || conflictError" 
+                            class="flex-[2] !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none transition-all transform active:scale-95 font-bold text-[10px]"
+                            :class="{'!bg-slate-300 !text-slate-500 !cursor-not-allowed !shadow-none !transform-none': conflictError}">
+                            <span v-if="form.processing">{{ $t('btn_saving') }}</span>
+                            <span v-else>{{ $t('btn_save_all') }}</span>
+                        </PrimaryButton>
+                    </div>
+                </div>
             </template>
         </div>
     </Modal>

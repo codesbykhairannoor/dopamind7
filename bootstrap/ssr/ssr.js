@@ -1729,6 +1729,13 @@ const gating$1 = {
     benefit_1: "Predictive Trend Charts",
     benefit_2: "Savings & Investment Labs",
     benefit_3: "Net Worth Forecasting"
+  },
+  finance_vault: {
+    title: "Vault Architecture",
+    description: "Manifest your wealth with automated accumulation protocols and multi-vault manifestation.",
+    benefit_1: "Unlimited Wealth Vaults",
+    benefit_2: "Transaction History Logs",
+    benefit_3: "Target Maturity Alerts"
   }
 };
 const nav_home$2 = "Home";
@@ -1763,11 +1770,11 @@ const theme_dark$1 = "Dark Mode";
 const theme_light$1 = "Light Mode";
 const more_launcher_title$1 = "Launchpad";
 const more_launcher_subtitle$1 = "Productivity Ecosystem";
-const nav_desc_planner$1 = "Execute your daily strategy";
-const nav_desc_journal$1 = "Capture your morning reflections";
-const nav_desc_calendar$1 = "Synchronize your life events";
-const nav_desc_jobs$1 = "Track your career milestones";
-const nav_desc_goals$1 = "Manifest your dream vision";
+const nav_desc_planner$1 = "Daily Planning";
+const nav_desc_journal$1 = "Personal Journal";
+const nav_desc_calendar$1 = "Schedule Management";
+const nav_desc_jobs$1 = "Career Tracking";
+const nav_desc_goals$1 = "Life Milestones";
 const more_upgrade_badge$1 = "PREMIUM UPGRADE";
 const more_upgrade_title$1 = "Elevate to Elite Performance";
 const more_upgrade_desc$1 = "Unlock AI-powered life insights, advanced wealth tracking, and seamless external integrations.";
@@ -2297,23 +2304,23 @@ const launchpad_subtitle$1 = "Advanced Modules & Configuration";
 const section_advanced$1 = "Advanced Systems";
 const section_core$1 = "System Settings";
 const section_ai$1 = "Neural Ecosystem";
-const feature_goal_title$1 = "Grand Missions";
-const feature_goal_desc$1 = "Strategic Goal Engine";
-const feature_job_title$1 = "Career Transmissions";
-const feature_job_desc$1 = "Professional Trajectory";
+const feature_goal_title$1 = "Vision Manifest";
+const feature_goal_desc$1 = "Architect your destiny";
+const feature_job_title$1 = "Career Pipeline";
+const feature_job_desc$1 = "Scale your professional path";
 const feature_journal_title$1 = "Neural Journal";
-const feature_journal_desc$1 = "Deep Review & Mood";
-const feature_ai_title$1 = "Neural Hub";
-const feature_ai_desc$1 = "Synthetic Intelligence";
+const feature_journal_desc$1 = "Reflect and synthesize";
+const feature_ai_title = "Neural Hub";
+const feature_ai_desc = "Synthetic Intelligence";
 const sys_settings_title$1 = "System Preferences";
-const sys_billing_title$1 = "Tier Console";
-const sys_help_title$1 = "Knowledge Base";
+const sys_billing_title$1 = "Plans & Billing";
+const sys_help_title$1 = "Help & Support";
 const sys_logout_title$1 = "Terminate Session";
-const quick_find$1 = "Quick Find...";
+const quick_find$1 = "Quick Find Tools...";
 const explorer_core$1 = "Explorer Core";
 const architect_console$1 = "Architect Console";
 const quantum_terminal$1 = "Quantum Terminal";
-const legendary_os$1 = "Legendary OS";
+const legendary_os$1 = "Legendary OS Node";
 const Company$1 = "Company";
 const Compare$1 = "Compare";
 const Connect$1 = "Connect";
@@ -2606,6 +2613,15 @@ const solve_finance_syn_desc$1 = "Connect habits to cash flow.";
 const solve_finance_syn_title$1 = "The Synergy Loop";
 const more_core_tools$1 = "Core Ecosystem";
 const more_premium_tools$1 = "Platinum & Neural Suite";
+const section_architecture$1 = "Architecture Suite";
+const section_manifestation$1 = "Manifestation Lab";
+const section_system$1 = "System Core";
+const feature_planner_title$1 = "Neural Planner";
+const feature_planner_desc$1 = "Execute your daily strategy";
+const feature_finance_title$1 = "Wealth Systems";
+const feature_finance_desc$1 = "Manage multi-currency protocols";
+const feature_calendar_title$1 = "System Timeline";
+const feature_calendar_desc$1 = "Synchronize global events";
 const preview_modal_title$1 = "Elevate Your Story";
 const preview_modal_desc$1 = "You are witnessing a glimpse of the premium system. Upgrade to unlock full access.";
 const preview_view_plans$1 = "View Plans & Upgrades";
@@ -6361,8 +6377,8 @@ const en = {
   feature_job_desc: feature_job_desc$1,
   feature_journal_title: feature_journal_title$1,
   feature_journal_desc: feature_journal_desc$1,
-  feature_ai_title: feature_ai_title$1,
-  feature_ai_desc: feature_ai_desc$1,
+  feature_ai_title,
+  feature_ai_desc,
   sys_settings_title: sys_settings_title$1,
   sys_billing_title: sys_billing_title$1,
   sys_help_title: sys_help_title$1,
@@ -6670,6 +6686,15 @@ const en = {
   solve_finance_syn_title: solve_finance_syn_title$1,
   more_core_tools: more_core_tools$1,
   more_premium_tools: more_premium_tools$1,
+  section_architecture: section_architecture$1,
+  section_manifestation: section_manifestation$1,
+  section_system: section_system$1,
+  feature_planner_title: feature_planner_title$1,
+  feature_planner_desc: feature_planner_desc$1,
+  feature_finance_title: feature_finance_title$1,
+  feature_finance_desc: feature_finance_desc$1,
+  feature_calendar_title: feature_calendar_title$1,
+  feature_calendar_desc: feature_calendar_desc$1,
   preview_modal_title: preview_modal_title$1,
   preview_modal_desc: preview_modal_desc$1,
   preview_view_plans: preview_view_plans$1,
@@ -9194,14 +9219,20 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   feat_val_basic: feat_val_basic$1,
   feat_val_predictive: feat_val_predictive$1,
   feat_vision_board: feat_vision_board$1,
-  feature_ai_desc: feature_ai_desc$1,
-  feature_ai_title: feature_ai_title$1,
+  feature_ai_desc,
+  feature_ai_title,
+  feature_calendar_desc: feature_calendar_desc$1,
+  feature_calendar_title: feature_calendar_title$1,
+  feature_finance_desc: feature_finance_desc$1,
+  feature_finance_title: feature_finance_title$1,
   feature_goal_desc: feature_goal_desc$1,
   feature_goal_title: feature_goal_title$1,
   feature_job_desc: feature_job_desc$1,
   feature_job_title: feature_job_title$1,
   feature_journal_desc: feature_journal_desc$1,
   feature_journal_title: feature_journal_title$1,
+  feature_planner_desc: feature_planner_desc$1,
+  feature_planner_title: feature_planner_title$1,
   finance_ai_promo_badge: finance_ai_promo_badge$1,
   finance_ai_promo_btn: finance_ai_promo_btn$1,
   finance_ai_promo_desc: finance_ai_promo_desc$1,
@@ -11588,7 +11619,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   sec_toc_title: sec_toc_title$1,
   section_advanced: section_advanced$1,
   section_ai: section_ai$1,
+  section_architecture: section_architecture$1,
   section_core: section_core$1,
+  section_manifestation: section_manifestation$1,
+  section_system: section_system$1,
   security_btn_delete_account: security_btn_delete_account$1,
   security_btn_update: security_btn_update$1,
   security_confirm_delete_desc: security_confirm_delete_desc$1,
@@ -13961,6 +13995,13 @@ const gating = {
     benefit_1: "Bagan Tren Prediktif",
     benefit_2: "Lab Tabungan & Investasi",
     benefit_3: "Peramalan Kekayaan Bersih"
+  },
+  finance_vault: {
+    title: "Vault Architecture",
+    description: "Manifestasikan kekayaan Anda dengan protokol akumulasi otomatis dan manifestasi multi-vault.",
+    benefit_1: "Vault Kekayaan Tak Terbatas",
+    benefit_2: "Log Riwayat Transaksi",
+    benefit_3: "Peringatan Target Kematangan"
   }
 };
 const nav_home$1 = "Beranda";
@@ -13993,13 +14034,13 @@ const nav_neural_active = "Asisten neural aktif";
 const nav_user_fallback = "Pengguna";
 const theme_dark = "Mode Gelap";
 const theme_light = "Mode Terang";
-const more_launcher_title = "Pusat Kendali";
-const more_launcher_subtitle = "Ekosistem Produktivitas";
-const nav_desc_planner = "Eksekusi strategi harian Anda";
-const nav_desc_journal = "Abadikan refleksi pagi Anda";
-const nav_desc_calendar = "Sinkronisasi jadwal hidup Anda";
-const nav_desc_jobs = "Pantau pencapaian karier Anda";
-const nav_desc_goals = "Wujudkan visi impian Anda";
+const more_launcher_title = "Launchpad";
+const more_launcher_subtitle = "Produktivitas Ekosistem";
+const nav_desc_planner = "Perencanaan Harian";
+const nav_desc_journal = "Jurnal Pribadi";
+const nav_desc_calendar = "Manajemen Jadwal";
+const nav_desc_jobs = "Karir & Pekerjaan";
+const nav_desc_goals = "Tujuan Hidup";
 const more_upgrade_badge = "TINGKATKAN PREMIUM";
 const more_upgrade_title = "Naik ke Level Performa Elit";
 const more_upgrade_desc = "Buka wawasan hidup berbasis AI, pelacakan kekayaan tingkat lanjut, dan integrasi eksternal yang mulus.";
@@ -14489,14 +14530,18 @@ const launchpad_subtitle = "Modul Lanjutan & Konfigurasi";
 const section_advanced = "Sistem Lanjutan";
 const section_core = "Pengaturan Sistem";
 const section_ai = "Ekosistem Neural";
-const feature_goal_title = "Grand Missions";
-const feature_goal_desc = "Mesin Strategi Goal";
-const feature_job_title = "Career Transmissions";
-const feature_job_desc = "Lintasan Profesional";
+const feature_goal_title = "Vision Manifest";
+const feature_goal_desc = "Rancang takdir Anda";
+const feature_job_title = "Career Pipeline";
+const feature_job_desc = "Tingkatkan jalur profesional Anda";
 const feature_journal_title = "Neural Journal";
-const feature_journal_desc = "Tinjauan Mendalam & Mood";
-const feature_ai_title = "Neural Hub";
-const feature_ai_desc = "Synthetic Intelligence";
+const feature_journal_desc = "Refleksi dan sintesis";
+const feature_planner_title = "Neural Planner";
+const feature_planner_desc = "Eksekusi strategi harian Anda";
+const feature_finance_title = "Wealth Systems";
+const feature_finance_desc = "Kelola protokol multi-currency";
+const feature_calendar_title = "Linimasa Sistem";
+const feature_calendar_desc = "Sinkronisasi kejadian global";
 const sys_settings_title = "Preferensi Sistem";
 const sys_billing_title = "Konsol Tier";
 const sys_help_title = "Pusat Bantuan";
@@ -14787,6 +14832,9 @@ const solve_finance_syn_desc = "Hubungkan kebiasaan ke arus kas.";
 const solve_finance_syn_title = "Loop Sinergi";
 const more_core_tools = "Peralatan Utama";
 const more_premium_tools = "Fitur Premium & Intelijen";
+const section_architecture = "Protokol Arsitektur";
+const section_manifestation = "Lab Manifestasi";
+const section_system = "Sistem Utama";
 const preview_modal_title = "Tingkatkan Cerita Anda";
 const preview_modal_desc = "Anda sedang melihat sekilas dari sistem premium kami. Tingkatkan akun untuk akses penuh.";
 const preview_view_plans = "Lihat Paket & Upgrade";
@@ -18544,8 +18592,12 @@ const id = {
   feature_job_desc,
   feature_journal_title,
   feature_journal_desc,
-  feature_ai_title,
-  feature_ai_desc,
+  feature_planner_title,
+  feature_planner_desc,
+  feature_finance_title,
+  feature_finance_desc,
+  feature_calendar_title,
+  feature_calendar_desc,
   sys_settings_title,
   sys_billing_title,
   sys_help_title,
@@ -18842,6 +18894,9 @@ const id = {
   solve_finance_syn_title,
   more_core_tools,
   more_premium_tools,
+  section_architecture,
+  section_manifestation,
+  section_system,
   preview_modal_title,
   preview_modal_desc,
   preview_view_plans,
@@ -21391,14 +21446,18 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   feat_val_basic,
   feat_val_predictive,
   feat_vision_board,
-  feature_ai_desc,
-  feature_ai_title,
+  feature_calendar_desc,
+  feature_calendar_title,
+  feature_finance_desc,
+  feature_finance_title,
   feature_goal_desc,
   feature_goal_title,
   feature_job_desc,
   feature_job_title,
   feature_journal_desc,
   feature_journal_title,
+  feature_planner_desc,
+  feature_planner_title,
   finance_ai_promo_badge,
   finance_ai_promo_btn,
   finance_ai_promo_desc,
@@ -23786,7 +23845,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   sec_toc_title,
   section_advanced,
   section_ai,
+  section_architecture,
   section_core,
+  section_manifestation,
+  section_system,
   security_btn_delete_account,
   security_btn_update,
   security_confirm_delete_desc,
@@ -25179,7 +25241,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Ds_x1FOD.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-DTCh1wIJ.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-DVmkyC_F.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-goOZ-mUZ.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-Cz_9TGAX.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D1GH9Mi0.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-BW8Rosoy.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-DCKmrnCR.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CMWKP6Kx.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CyC2eTFc.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-xXMhP1iU.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-DzUPR4wT.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-prI4TJpG.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BfckbtdK.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-FNnSbdp8.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-C1SGZJWS.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-BLjzDCQn.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-cLIY3vZn.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BGqNqxu6.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-CAL30nhF.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Dw2-p7Em.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-CWtZ5y7d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CeE_KrjK.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-238EhcxQ.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CINmz6SP.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BefGRh1_.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-D_6jIV-j.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-BoW9AgvJ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Clkwfs-e.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-Bl2NoxIs.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-CGMQbI9K.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-CPEcJBtu.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-D8bh6Sqz.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-DKlo0WTp.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DL_SGPF3.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-g2p5-kTe.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-CXn5mpov.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-BLgPUB_a.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-BOe6Jwr9.js"), "./Pages/More/Index.vue": () => import("./assets/Index-DURyN7wL.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-Csf5j9eW.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-qKNOZeiV.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-D3n8haWt.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-D3cv-AWu.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dm86BcmR.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D5Wep17S.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-PxND_NIR.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-CF8qgy4J.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-_4kOV9Gq.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DCp89kMX.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-C32UR2vO.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-BJXvqcto.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-CDLwS7dO.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-KO2YT0FN.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Ds_x1FOD.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-DTCh1wIJ.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-DVmkyC_F.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-goOZ-mUZ.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-Dx8Hvmb2.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D1GH9Mi0.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-BW8Rosoy.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-DCKmrnCR.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CMWKP6Kx.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CyC2eTFc.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DFlE7CWy.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-DzUPR4wT.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-BUxjwEgP.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BfckbtdK.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-FNnSbdp8.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BoHUw9j9.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-BLjzDCQn.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-cLIY3vZn.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-1RYROEJY.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-CAL30nhF.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Dw2-p7Em.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-CWtZ5y7d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CeE_KrjK.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-238EhcxQ.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CINmz6SP.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BefGRh1_.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BZlEkQfG.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-D6itVhkO.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-DSH9Y4-r.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-Bl2NoxIs.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-mC9gx0Xo.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-B2PJ05cU.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-BLvB1DOy.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-BqQLQzi8.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DL_SGPF3.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-g2p5-kTe.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-upmFpOcy.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-BLgPUB_a.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-BOe6Jwr9.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CIcxa69u.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-DT313KQr.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-Bv8lQyym.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BgVBeFBd.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-D3cv-AWu.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dm86BcmR.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D5Wep17S.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DT07ctqh.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-iqt9uv_-.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-_4kOV9Gq.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DCp89kMX.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-C32UR2vO.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-CxhJnvuP.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-CDLwS7dO.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-KO2YT0FN.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

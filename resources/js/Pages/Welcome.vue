@@ -33,7 +33,7 @@ const submitWaitlist = () => {
     <GuestLayout>
         
         <header class="pt-32 pb-24 px-6 text-center relative overflow-hidden">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-indigo-50/80 to-white rounded-full blur-[100px] -z-10 animate-pulse duration-[5000ms]"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-indigo-50/80 to-white rounded-full blur-[100px] -z-10 animate-pulse duration-&lsqb;5000ms&rsqb;"></div>
             
             <div class="max-w-5xl mx-auto">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-indigo-100 shadow-sm text-indigo-600 font-bold text-xs mb-8 uppercase tracking-wider animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -303,8 +303,8 @@ const submitWaitlist = () => {
 
         <section class="py-24 px-6 text-center">
             <div class="max-w-5xl mx-auto bg-indigo-950 rounded-[3rem] p-12 md:p-24 text-white relative overflow-hidden shadow-2xl animate-in zoom-in-95 fade-in duration-1000 delay-200 fill-mode-both">
-                <div class="absolute top-0 left-0 w-64 h-64 bg-indigo-600 rounded-full mix-blend-screen filter blur-[80px] opacity-30 animate-pulse duration-[4000ms]"></div>
-                <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-600 rounded-full mix-blend-screen filter blur-[80px] opacity-30 animate-pulse duration-[4000ms]"></div>
+                <div class="absolute top-0 left-0 w-64 h-64 bg-indigo-600 rounded-full mix-blend-screen filter blur-[80px] opacity-30 animate-pulse duration-&lsqb;4000ms&rsqb;"></div>
+                <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-600 rounded-full mix-blend-screen filter blur-[80px] opacity-30 animate-pulse duration-&lsqb;4000ms&rsqb;"></div>
 
                 <div class="relative z-10">
                     <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">{{ $t('cta_final_title') }}</h2>

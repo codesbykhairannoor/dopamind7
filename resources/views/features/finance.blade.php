@@ -276,7 +276,7 @@
                         {{-- Animated Circles --}}
                         <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center">
                             <div class="w-64 h-64 bg-indigo-600/10 rounded-full animate-ping duration-[4000ms]"></div>
-                            <div class="absolute w-48 h-48 border border-white/5 rounded-full animate-spin duration-[10000ms]"></div>
+                            <div class="absolute w-48 h-48 border border-white/5 rounded-full animate-spin duration-&lsqb;10000ms&rsqb;"></div>
                         </div>
                         <div class="w-40 h-40 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center text-5xl shadow-[0_0_80px_rgba(79,70,229,0.6)] z-10 transform rotate-12 animate-pulse font-black">
                             💰

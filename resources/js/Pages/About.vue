@@ -47,7 +47,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
                 <div class="order-1 md:order-2 relative h-96 bg-gray-100 rounded-[3rem] overflow-hidden flex items-center justify-center animate-in slide-in-from-right-12 fade-in duration-700 delay-200 fill-mode-both">
                     <div class="absolute inset-0 bg-gradient-to-br from-red-100 to-orange-100 opacity-50"></div>
                     <div class="relative z-10 text-center transform rotate-3 transition hover:rotate-0 duration-500">
-                        <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs mx-auto animate-pulse duration-[4000ms]">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs mx-auto animate-pulse duration-&lsqb;4000ms&rsqb;">
                             <div class="flex justify-between text-xs text-gray-500 mb-4 font-bold tracking-widest uppercase">My To-Do List</div>
                             <div class="space-y-3">
                                 <div class="h-3 bg-red-200 rounded w-full"></div>
@@ -63,7 +63,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="relative h-96 bg-gray-100 rounded-[3rem] overflow-hidden flex items-center justify-center animate-in slide-in-from-left-12 fade-in duration-700 delay-100 fill-mode-both">
                     <div class="absolute inset-0 bg-gradient-to-br from-indigo-100 to-blue-100 opacity-50"></div>
-                    <div class="text-9xl relative z-10 animate-bounce duration-[3000ms]">🧘‍♂️</div>
+                    <div class="text-9xl relative z-10 animate-bounce duration-&lsqb;3000ms&rsqb;">🧘‍♂️</div>
                 </div>
 
                 <div class="animate-in slide-in-from-right-12 fade-in duration-700 delay-200 fill-mode-both">
@@ -79,7 +79,7 @@ import GuestLayout from '@/Layouts/GuestLayout.vue';
         </div>
 
         <div class="bg-indigo-950 text-white py-24 rounded-t-[3rem] md:rounded-[3rem] md:mx-6 mb-24 relative overflow-hidden animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-100 fill-mode-both">
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600 rounded-full blur-[120px] opacity-30 -mr-20 -mt-20 animate-pulse duration-[5000ms]"></div>
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600 rounded-full blur-[120px] opacity-30 -mr-20 -mt-20 animate-pulse duration-&lsqb;5000ms&rsqb;"></div>
 
             <div class="max-w-6xl mx-auto px-6 relative z-10">
                 <div class="text-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 fill-mode-both">
