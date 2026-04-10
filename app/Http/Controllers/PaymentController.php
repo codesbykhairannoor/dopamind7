@@ -131,7 +131,8 @@ class PaymentController extends Controller
 
         $params = [
             'merchantCode' => (string)$merchantCode,
-            'paymentAmount' => (string)intval($paymentAmount),
+            'paymentAmount' => (int)$paymentAmount,
+            'paymentMethod' => '', // Leave empty to trigger selection page if supported, or pick 'VC'
             'merchantOrderId' => (string)$merchantOrderId,
             'productDetails' => (string)$productDetails,
             'additionalParam' => '',
@@ -144,18 +145,18 @@ class PaymentController extends Controller
             'callbackUrl' => (string)route('payment.callback'),
             'returnUrl' => (string)route('payment.finish'),
             'signature' => (string)$signature,
-            'expiryPeriod' => (string)'60'
+            'expiryPeriod' => (int)60
         ];
 
         $url = $env === 'production'
-            ? 'https://passport.duitku.com/webapi/api/merchant/createinvoice'
-            : 'https://api-sandbox.duitku.com/webapi/api/merchant/createinvoice';
+            ? 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'
+            : 'https://sandbox.duitku.com/webapi/api/merchant/v2/inquiry';
 
         try {
-            Log::info('Duitku-POP-Passport Request:', [
+            Log::info('Duitku-V2-Inquiry Request:', [
                 'url' => $url,
                 'merchantOrderId' => $merchantOrderId,
-                'paymentAmount' => $paymentAmount
+                'paymentAmount' => (int)$paymentAmount
             ]);
 
             $response = Http::withHeaders([
