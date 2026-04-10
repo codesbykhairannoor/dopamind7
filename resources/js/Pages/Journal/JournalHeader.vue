@@ -30,7 +30,7 @@ const todayDisplay = computed(() => {
                     <OneForMindIcon name="journal" size="28" />
                 </div>
                 <div>
-                    <h2 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800 dark:text-white transition-colors duration-500">{{ $t('journal_title', 'My Journal') }}</h2>
+                    <h2 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800 dark:text-white transition-colors duration-500">{{ $t('journal_title', 'My journal') }}</h2>
                     <p class="mt-0.5 text-sm font-medium capitalize text-slate-500 dark:text-slate-400 transition-colors duration-500">{{ todayDisplay }}</p>
                 </div>
             </div>
@@ -54,7 +54,7 @@ const todayDisplay = computed(() => {
 
                 <Link :href="route('journal.write')" class="flex items-center justify-center flex-1 h-12 px-6 text-sm font-black text-white transition shadow-lg md:flex-none bg-indigo-600 rounded-2xl hover:bg-indigo-700 shadow-indigo-100 dark:shadow-none gap-2 active:scale-95 whitespace-nowrap">
                     <OneForMindIcon name="plus" size="18" stroke-width="3" />
-                    <span class="tracking-tight md:inline">{{ $t('journal_add', 'Tambah Jurnal') }}</span>
+                    <span class="tracking-tight md:inline">{{ $t('journal_add', 'Tambah jurnal') }}</span>
                 </Link>
 
             </div>

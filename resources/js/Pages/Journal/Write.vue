@@ -79,7 +79,7 @@ const triggerFileInput = () => fileInputRef.value.click();
                     </span>
                 </div>
 
-                <button @click="silentSave(true)" :disabled="isSaving" class="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-[10px] md:text-xs font-black uppercase tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-xl shadow-lg shadow-indigo-200 dark:shadow-none transition-all active:scale-95 disabled:opacity-50">
+                <button @click="silentSave(true)" :disabled="isSaving" class="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-[10px] md:text-xs font-black tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-xl shadow-lg shadow-indigo-200 dark:shadow-none transition-all active:scale-95 disabled:opacity-50">
                     {{ $t('btn_save_manual', 'Save') }}
                 </button>
             </div>
@@ -87,14 +87,14 @@ const triggerFileInput = () => fileInputRef.value.click();
 
         <div class="max-w-3xl mx-auto w-full px-4 py-8 md:py-12">
             <div class="bg-white dark:bg-slate-900 p-6 md:p-14 rounded-[2rem] md:rounded-[2.5rem] shadow-sm border border-slate-100 dark:border-slate-800 relative transition-colors duration-500">
-                <div class="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 mb-6 flex items-center gap-2">
+                <div class="text-[10px] font-black tracking-[0.2em] text-indigo-400 mb-6 flex items-center gap-2">
                     <span>📅</span> {{ dayjs(date).locale($page.props.locale || 'id').format('dddd, DD MMMM YYYY') }}
                 </div>
 
                 <input v-model="form.title" type="text" :placeholder="$t('journal_title_placeholder', 'Beri judul harimu...')" class="w-full text-3xl md:text-5xl font-black text-slate-800 dark:text-white placeholder:text-slate-200 dark:placeholder:text-slate-700 border-none bg-transparent focus:ring-0 p-0 mb-8 tracking-tight leading-tight transition-colors duration-500" />
 
                 <div class="flex flex-wrap items-center gap-3 mb-10">
-                    <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mr-2">{{ $t('journal_mood_label', 'Mood Hari Ini:') }}</span>
+                    <span class="text-[9px] font-black tracking-widest text-slate-400 dark:text-slate-500 mr-2">{{ $t('journal_mood_label', 'Mood hari ini:') }}</span>
                     <button v-for="mood in moods" :key="mood.slug" @click="form.mood = mood.slug" class="w-10 h-10 md:w-12 md:h-12 rounded-2xl text-xl md:text-2xl flex items-center justify-center transition-all border-2" :class="form.mood === mood.slug ? 'bg-indigo-50 dark:bg-indigo-500/10 border-indigo-200 dark:border-indigo-500/50 scale-110 shadow-sm' : 'bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 grayscale hover:grayscale-0'" :title="mood.label">
                         {{ mood.emoji }}
                     </button>
@@ -114,10 +114,10 @@ const triggerFileInput = () => fileInputRef.value.click();
                     <button v-else @click="triggerFileInput" class="w-full py-8 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-[2rem] flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:border-indigo-200 dark:hover:border-indigo-500/30 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all cursor-pointer relative overflow-hidden group">
                         <div v-if="isExplorer" class="absolute inset-0 bg-slate-50/50 dark:bg-slate-950/50 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center">
                             <span class="text-xl mb-1">🔒</span>
-                            <span class="text-[8px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-[0.2em]">{{ $t('premium_badge', 'Architect Feature') }}</span>
+                            <span class="text-[8px] font-black text-indigo-600 dark:text-indigo-400 tracking-[0.2em]">{{ $t('premium_badge', 'Architect feature') }}</span>
                         </div>
                         <span class="text-2xl mb-2">📸</span>
-                        <span class="text-[9px] font-black uppercase tracking-widest">{{ $t('journal_add_photo', 'Sisipkan Foto Jurnal') }}</span>
+                        <span class="text-[9px] font-black tracking-widest">{{ $t('journal_add_photo', 'Sisipkan foto jurnal') }}</span>
                     </button>
                 </div>
 

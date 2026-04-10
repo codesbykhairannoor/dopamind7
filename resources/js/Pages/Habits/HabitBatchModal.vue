@@ -53,8 +53,8 @@ onUnmounted(() => {
                         <h3 class="text-xl font-black text-slate-800 dark:text-slate-100 tracking-tight leading-none mb-1.5">
                             {{ $t('batch_habit_title', 'Batch Habit') }}
                         </h3>
-                        <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
-                            {{ $t('batch_habit_subtitle', 'Catat banyak habit sekaligus') }}
+                        <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest">
+                            {{ $t('batch_habit_subtitle', 'Record multiple habits at once') }}
                         </p>
                     </div>
                 </div>
@@ -90,12 +90,12 @@ onUnmounted(() => {
                     </div>
                 </div>
 
-                <div class="hidden md:grid grid-cols-12 gap-3 mb-3 px-4 text-[9px] font-black text-slate-400 uppercase tracking-[0.2em]">
-                    <div class="col-span-4">{{ $t('habit_name', 'Nama Habit') }}</div>
-                    <div class="col-span-2 text-center">{{ $t('habit_icon', 'Ikon') }}</div>
-                    <div class="col-span-3 text-center">{{ $t('habit_color', 'Warna') }}</div>
+                <div class="hidden md:grid grid-cols-12 gap-3 mb-3 px-4 text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                    <div class="col-span-4">{{ $t('habit_name', 'Habit name') }}</div>
+                    <div class="col-span-2 text-center">{{ $t('habit_icon', 'Icon') }}</div>
+                    <div class="col-span-3 text-center">{{ $t('habit_color', 'Color') }}</div>
                     <div class="col-span-2 text-center">{{ $t('target', 'Target') }}</div>
-                    <div class="col-span-1 text-center">{{ $t('action', 'Aksi') }}</div>
+                    <div class="col-span-1 text-center">{{ $t('action', 'Action') }}</div>
                 </div>
 
                 <div class="space-y-4 md:space-y-3" :class="{'pointer-events-none': isExplorer}">
@@ -103,7 +103,7 @@ onUnmounted(() => {
                         class="bg-white dark:bg-slate-900 md:bg-transparent p-5 md:p-0 rounded-[2rem] md:rounded-none border border-slate-100 dark:border-slate-800 md:border-none shadow-sm md:shadow-none relative group animate-in fade-in slide-in-from-bottom-4 duration-300">
                         
                         <div class="flex justify-between items-center mb-4 md:hidden">
-                            <span class="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 text-indigo-500 dark:text-indigo-400">
+                            <span class="text-[10px] font-black tracking-widest px-3 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 text-indigo-500 dark:text-indigo-400">
                                 {{ $t('habit_label', 'Habit') }} #{{ index + 1 }}
                             </span>
                             <button @click="removeRow(index)" type="button" class="w-8 h-8 rounded-full bg-rose-50 dark:bg-rose-500/10 text-rose-400 dark:text-rose-500 flex items-center justify-center hover:bg-rose-100 dark:hover:bg-rose-500/20 hover:text-rose-600 dark:hover:text-rose-400 transition-all" :disabled="form.habits.length <= 1" :class="{'opacity-50 cursor-not-allowed': form.habits.length <= 1}">

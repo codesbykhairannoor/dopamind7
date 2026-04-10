@@ -166,7 +166,7 @@ const habitPremiumFeatures = [
                             <Activity :size="24" />
                         </div>
                         <div>
-                             <h4 class="text-sm font-black text-white uppercase tracking-widest leading-none mb-1">Neural Consistency Lab</h4>
+                             <h4 class="text-sm font-black text-white tracking-tight leading-none mb-1">Neural consistency lab</h4>
                              <p class="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Analyze your identity shifts with AI</p>
                         </div>
                     </div>
@@ -176,7 +176,7 @@ const habitPremiumFeatures = [
                         <div v-for="i in 12" :key="i" class="w-3 h-3 rounded-[3px]" :class="i % 3 === 0 ? 'bg-indigo-500' : 'bg-slate-700'"></div>
                     </div>
 
-                     <div class="flex items-center gap-2 text-indigo-400 font-black text-[10px] uppercase tracking-widest">
+                      <div class="flex items-center gap-2 text-indigo-400 font-bold text-[10px] tracking-widest uppercase">
                         Unlock Analytics <ArrowRight :size="14" />
                     </div>
                 </div>

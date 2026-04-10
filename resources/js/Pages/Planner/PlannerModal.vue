@@ -70,7 +70,7 @@ const confirmDelete = () => {
             </div>
 
             <div v-else>
-                <div v-if="conflictError" class="absolute top-0 left-0 right-0 bg-rose-500 text-white text-[10px] font-black px-6 py-2.5 text-center animate-in slide-in-from-top-full z-50 shadow-md dark:shadow-none flex items-center justify-center gap-2 uppercase">
+                <div v-if="conflictError" class="absolute top-0 left-0 right-0 bg-rose-500 text-white text-[10px] font-black px-6 py-2.5 text-center animate-in slide-in-from-top-full z-50 shadow-md dark:shadow-none flex items-center justify-center gap-2">
                     <svg class="w-4 h-4 shrink-0 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                     <span>{{ conflictError }}</span>
                 </div>
@@ -84,13 +84,13 @@ const confirmDelete = () => {
                             <h2 class="text-lg font-black text-slate-800 dark:text-white tracking-tight leading-none mb-1 transition-colors duration-500">
                                 {{ isEditing ? $t('modal_title_edit') : $t('modal_title_new') }}
                             </h2>
-                            <p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest">{{ $t('modal_new_simple_title') }}</p>
+                            <p class="text-[9px] text-slate-400 font-bold tracking-widest">{{ $t('modal_new_simple_title', 'Standard session') }}</p>
                         </div>
                     </div>
                     
                     <div class="flex items-center gap-2">
                         <button v-if="!isEditing" @click="$emit('switch-to-batch')" type="button" 
-                            class="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition flex items-center gap-1 active:scale-95 relative group">
+                            class="text-[10px] font-black tracking-widest px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition flex items-center gap-1 active:scale-95 relative group">
                             <span v-if="isExplorer" class="mr-1">🔒</span>
                             Batch
                         </button>
@@ -99,35 +99,35 @@ const confirmDelete = () => {
                 </div>
                 <div class="p-6 space-y-5 bg-white dark:bg-slate-900 transition-colors duration-500">
                     <div>
-                        <InputLabel :value="$t('label_activity')" class="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
+                        <InputLabel :value="$t('label_activity')" class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
                         <TextInput 
                             v-model="form.title" 
                             class="w-full text-sm font-bold py-3 px-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 focus:border-indigo-500 focus:ring-0 transition-all bg-white dark:bg-slate-900 dark:text-slate-100" 
                             :placeholder="$t('placeholder_activity')" 
                             autofocus 
                         />
-                        <div v-if="form.errors?.title" class="text-rose-500 text-[10px] font-black mt-1 uppercase tracking-wide ml-1">{{ form.errors.title }}</div>
+                        <div v-if="form.errors?.title" class="text-rose-500 text-[10px] font-bold mt-1 tracking-wide ml-1">{{ form.errors.title }}</div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <InputLabel :value="$t('label_start_time')" class="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
+                            <InputLabel :value="$t('label_start_time')" class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
                             <input type="time" v-model="form.start_time"
-                                class="w-full border-2 border-slate-200 dark:border-slate-800 rounded-xl py-2.5 px-4 font-black text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 focus:border-indigo-500 focus:ring-0 transition-all cursor-pointer" />
+                                class="w-full border-2 border-slate-200 dark:border-slate-800 rounded-xl py-2.5 px-4 font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 focus:border-indigo-500 focus:ring-0 transition-all cursor-pointer" />
                         </div>
                         <div>
-                            <InputLabel :value="$t('label_end_time')" class="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
+                            <InputLabel :value="$t('label_end_time')" class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
                             <input type="time" v-model="form.end_time"
-                                class="w-full border-2 border-slate-200 dark:border-slate-800 rounded-xl py-2.5 px-4 font-black text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 focus:border-indigo-500 focus:ring-0 transition-all cursor-pointer" />
+                                class="w-full border-2 border-slate-200 dark:border-slate-800 rounded-xl py-2.5 px-4 font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 focus:border-indigo-500 focus:ring-0 transition-all cursor-pointer" />
                         </div>
                     </div>
 
                     <div>
-                        <InputLabel :value="$t('label_priority')" class="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
+                        <InputLabel :value="$t('label_priority')" class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
                         <div class="grid grid-cols-3 gap-3">
                             <label v-for="type in [1, 2, 3]" :key="type" class="cursor-pointer group">
                                 <input type="radio" v-model="form.type" :value="type" class="hidden peer">
-                                <div class="py-3 px-1 text-center rounded-xl border-2 border-slate-100 dark:border-slate-800 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 transition-all peer-checked:shadow-sm dark:peer-checked:shadow-none transition-colors duration-500"
+                                <div class="py-3 px-1 text-center rounded-xl border-2 border-slate-100 dark:border-slate-800 text-[10px] font-bold text-slate-400 dark:text-slate-500 transition-all peer-checked:shadow-sm dark:peer-checked:shadow-none transition-colors duration-500"
                                     :class="{
                                         'peer-checked:border-rose-500 peer-checked:bg-rose-50 dark:peer-checked:bg-rose-500/10 peer-checked:text-rose-700 dark:peer-checked:text-rose-400': type === 1,
                                         'peer-checked:border-indigo-500 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-500/10 peer-checked:text-indigo-700 dark:peer-checked:text-indigo-400': type === 2,
@@ -140,7 +140,7 @@ const confirmDelete = () => {
                     </div>
 
                     <div>
-                        <InputLabel :value="$t('label_notes')" class="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
+                        <InputLabel :value="$t('label_notes')" class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-1.5 ml-1 transition-colors duration-500" />
                         <textarea v-model="form.notes" 
                             class="w-full border-2 border-slate-200 dark:border-slate-800 rounded-xl h-24 focus:border-indigo-500 focus:ring-0 resize-none p-4 text-sm font-medium text-slate-600 dark:text-slate-300 bg-white dark:bg-slate-900 transition-colors duration-500"
                             :placeholder="$t('placeholder_notes')"></textarea>
@@ -148,16 +148,16 @@ const confirmDelete = () => {
 
                     <div class="flex justify-between items-center mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 transition-colors duration-500">
                         <button v-if="isEditing" @click="requestDelete" type="button" 
-                            class="text-rose-400 font-black text-[10px] uppercase tracking-widest hover:text-rose-600 dark:hover:text-rose-300 transition px-2 flex items-center gap-1 active:scale-95 transition-colors duration-500">
+                            class="text-rose-400 font-bold text-[10px] hover:text-rose-600 dark:hover:text-rose-300 transition px-2 flex items-center gap-1 active:scale-95 transition-colors duration-500">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                             {{ $t('btn_delete') }}
                         </button>
                         <div v-else></div>
 
                         <div class="flex gap-3">
-                            <SecondaryButton @click="handleClose" class="!rounded-xl !py-2.5 !px-6 !text-xs !font-black !uppercase !tracking-widest">{{ $t('btn_cancel') }}</SecondaryButton>
+                            <SecondaryButton @click="handleClose" class="!rounded-xl !py-2.5 !px-6 !text-xs !font-bold">{{ $t('btn_cancel') }}</SecondaryButton>
                             <PrimaryButton @click="submit" :disabled="form.processing || conflictError" 
-                                class="!bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-2.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none font-black uppercase tracking-widest text-xs transition-all active:scale-95"
+                                class="!bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-2.5 !px-8 shadow-xl shadow-indigo-100 dark:shadow-none font-bold text-xs transition-all active:scale-95"
                                 :class="{'!bg-slate-300 dark:!bg-slate-800 !cursor-not-allowed !shadow-none': conflictError}">
                                 {{ isEditing ? $t('btn_save') : $t('btn_create') }}
                             </PrimaryButton>

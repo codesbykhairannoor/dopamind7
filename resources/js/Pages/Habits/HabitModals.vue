@@ -74,7 +74,7 @@ defineProps({
             <div class="flex justify-between items-center mb-6">
                 <div>
                     <h3 class="text-xl md:text-2xl font-black text-slate-800 dark:text-slate-100">
-                        {{ isEditing ? 'Edit Habit' : $t('habit_modal_title') }}
+                        {{ isEditing ? 'Edit habit' : $t('habit_modal_title') }}
                     </h3>
                     <button v-if="!isEditing" @click="switchToBatch" type="button" 
                         class="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition flex items-center gap-1.5 active:scale-95 w-fit border border-indigo-100 dark:border-indigo-500/30 mt-2">
@@ -86,12 +86,12 @@ defineProps({
 
             <form @submit.prevent="submitHabit" class="space-y-5">
                 <div>
-                    <label class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase mb-2 block">{{ $t('habit_modal_question') }}</label>
+                    <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-2 block ml-1">{{ $t('habit_modal_question') }}</label>
                     <input v-model="form.name" class="w-full text-base md:text-lg font-bold py-3 px-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100 focus:border-indigo-500 transition" placeholder="Contoh: Lari Pagi" required>
                 </div>
 
                 <div>
-                    <label class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase mb-2 block">{{ $t('habit_modal_icon') }}</label>
+                    <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-2 block ml-1">{{ $t('habit_modal_icon') }}</label>
                     <div class="grid grid-cols-6 gap-2 bg-slate-50 dark:bg-slate-950/50 p-2 rounded-xl border border-slate-100 dark:border-slate-800 max-h-32 md:max-h-40 overflow-y-auto custom-scrollbar">
                         <button type="button" v-for="icon in iconList" :key="icon" @click="form.icon = icon"
                             class="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center text-lg md:text-xl hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm transition"
@@ -103,7 +103,7 @@ defineProps({
 
                 <div class="flex gap-4 md:gap-6">
                     <div class="flex-1">
-                        <label class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase mb-2 block">{{ $t('habit_modal_color') }}</label>
+                        <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-2 block ml-1">{{ $t('habit_modal_color') }}</label>
                         <div class="flex flex-wrap gap-2">
                             <button type="button" v-for="c in colorPalette" :key="c" @click="form.color = c" class="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition hover:scale-110 shadow-sm" :style="{ backgroundColor: c }">
                                 <span v-if="form.color === c" class="text-white font-bold text-xs">✓</span>
@@ -111,7 +111,7 @@ defineProps({
                         </div>
                     </div>
                     <div class="flex-1">
-                        <label class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase mb-2 block">{{ $t('habit_modal_target') }}: {{ form.monthly_target }}</label>
+                        <label class="text-[10px] font-bold text-slate-400 dark:text-slate-500 mb-2 block ml-1">{{ $t('habit_modal_target') }}: {{ form.monthly_target }}</label>
                         <input v-model="form.monthly_target" type="range" min="1" max="31" class="w-full accent-indigo-600 h-2 bg-slate-200 dark:bg-slate-800 rounded-lg cursor-pointer mt-3">
                     </div>
                 </div>
@@ -121,7 +121,7 @@ defineProps({
                         🗑️
                     </button>
                     <button type="submit" class="flex-1 py-3 md:py-4 rounded-xl font-bold text-white bg-indigo-950 dark:bg-indigo-500 hover:bg-indigo-900 dark:hover:bg-indigo-600 shadow-xl dark:shadow-none transition transform hover:-translate-y-1" :disabled="form.processing">
-                        {{ isEditing ? 'Update Habit' : $t('habit_modal_btn_save') }}
+                        {{ isEditing ? 'Update habit' : $t('habit_modal_btn_save') }}
                     </button>
                 </div>
             </form>

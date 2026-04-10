@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { Head, router } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
@@ -52,7 +53,7 @@ const deleteJournal = (id) => {
         buttonsStyling: false
     }).then((result) => {
         if (result.isConfirmed) {
-            fireToast('success', props.t?.('success_deleted') || 'Berhasil Dihapus!');
+            fireToast('success', props.t?.('success_deleted') || 'Berhasil dihapus!');
             router.delete(route('journal.destroy', id), {
                 preserveScroll: true, preserveState: true, progress: false, 
             });
@@ -92,7 +93,7 @@ const openPremiumPreview = () => isPreviewOpen.value = true;
                         {{ $t('journal_empty_subtitle', 'Mulai tulis jurnal pertamamu hari ini!') }}
                     </p>
                     <button @click="createEntry" class="mt-2 bg-indigo-600 text-white font-black py-2.5 px-6 rounded-xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 active:scale-95 transition-all outline-none">
-                        + {{ $t('journal_add', 'Tambah Jurnal') }}
+                        + {{ $t('journal_add', 'Tambah jurnal') }}
                     </button>
                 </div>
             </div>

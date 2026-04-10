@@ -581,7 +581,7 @@ const financePremiumFeatures = [
                             <div v-for="day in visibleStats" :key="day.date" @click="openDetail(day)" class="group p-3 lg:p-4 flex items-center justify-between hover:bg-indigo-50/50 dark:hover:bg-indigo-500/5 transition-colors cursor-pointer">
                                 <div class="flex items-center gap-3 lg:gap-4">
                                     <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center group-hover:bg-white dark:group-hover:bg-slate-700 transition-all shadow-sm">
-                                        <span class="text-[8px] lg:text-[10px] uppercase font-black text-slate-400 dark:text-slate-600 leading-none">{{ day.dateObj.format('MMM') }}</span>
+                                        <span class="text-[8px] lg:text-[10px] font-black text-slate-400 dark:text-slate-600 leading-none">{{ day.dateObj.format('MMM') }}</span>
                                         <span class="text-base lg:text-xl font-black leading-none text-slate-700 dark:text-slate-200 mt-0.5 transition-colors duration-500">{{ day.dateObj.format('DD') }}</span>
                                     </div>
                                     <div>
@@ -591,7 +591,7 @@ const financePremiumFeatures = [
                                 </div>
                                 <div class="flex items-center gap-3 lg:gap-6">
                                     <div class="pl-3 lg:pl-4 border-l border-slate-100 dark:border-slate-800 text-right">
-                                        <span class="block text-[8px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-wider">{{ $t('daily_net') }}</span>
+                                        <span class="block text-[8px] font-bold text-slate-400 dark:text-slate-600 tracking-wider">{{ $t('daily_net') }}</span>
                                         <span class="text-[11px] lg:text-sm font-black font-mono transition-colors duration-500" :class="(day.total_income - day.total_expense) >= 0 ? 'text-indigo-600 dark:text-indigo-400' : 'text-orange-500 dark:text-orange-400'">
                                             {{ (day.total_income - day.total_expense) >= 0 ? '+' : '' }}{{ formatMoney(day.total_income - day.total_expense) }}
                                         </span>
@@ -616,25 +616,41 @@ const financePremiumFeatures = [
                     </div>
 
                     <!-- 🏦 The Vault (Savings) & 🧠 Neural Forecast -->
-                    <div v-if="!isExplorer" class="space-y-6 relative group">
+                    <div class="space-y-6 relative group">
                         <div class="flex items-center justify-between px-1 lg:px-0">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500 shadow-sm">
                                     <Wallet :size="20" />
                                 </div>
-                                <div>
-                                    <h3 class="text-base lg:text-lg font-black text-slate-800 dark:text-white uppercase tracking-tight">The Vault</h3>
-                                    <p class="text-[9px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mt-0.5">Your wealth manifestation</p>
+                                <div class="flex items-center gap-2">
+                                    <div>
+                                        <h3 class="text-base lg:text-lg font-black text-slate-800 dark:text-white tracking-tight">The Vault</h3>
+                                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 tracking-widest leading-none mt-0.5">Your wealth manifestation</p>
+                                    </div>
+                                    <Lock v-if="isExplorer" :size="12" class="text-orange-500 animate-pulse ml-0.5" />
                                 </div>
                             </div>
-                            <button @click="handleEditSaving()" class="flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 py-2 lg:px-4 rounded-xl text-[9px] lg:text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all active:scale-95 shadow-lg dark:shadow-none">
+                            <button @click="isExplorer ? openPremiumPreview('Finance') : handleEditSaving()" class="flex items-center gap-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 py-2 lg:px-4 rounded-xl text-[9px] lg:text-[10px] font-black tracking-widest hover:scale-105 transition-all active:scale-95 shadow-lg dark:shadow-none">
                                 <Plus :size="14" />
-                                <span class="hidden sm:inline">Create Goal</span>
+                                <span class="hidden sm:inline">{{ isExplorer ? 'Unlock goal' : 'Create goal' }}</span>
                                 <span class="sm:hidden">Goal</span>
                             </button>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+                            <!-- Premium Lockdown Overlay for The Vault Section -->
+                            <div v-if="isExplorer" @click="openPremiumPreview('Finance')" class="absolute inset-0 z-20 backdrop-blur-[2px] bg-white/10 dark:bg-slate-900/10 rounded-[2.5rem] flex items-center justify-center cursor-pointer group/locked-vault transition-all duration-500 border border-transparent hover:border-orange-500/20">
+                                <div class="bg-white/90 dark:bg-slate-900/90 p-8 rounded-[2rem] shadow-2xl border border-slate-100 dark:border-slate-800 text-center scale-95 group-hover/locked-vault:scale-100 transition-transform">
+                                    <div class="w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4 text-orange-500">
+                                        <Lock :size="32" stroke-width="2.5" />
+                                    </div>
+                                    <h4 class="text-lg font-black text-slate-800 dark:text-white mb-2">Vault Integration</h4>
+                                    <p class="text-xs font-bold text-slate-500 dark:text-slate-400 max-w-[200px] mx-auto leading-relaxed">
+                                        Join the Architect tier to unlock automated wealth manifestation.
+                                    </p>
+                                </div>
+                            </div>
+
                             <!-- Existing Saving Card or placeholder -->
                             <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1">
                                  <div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500">🏦</div>
@@ -670,11 +686,11 @@ const financePremiumFeatures = [
                                                 <TrendingUp :size="20" />
                                             </div>
                                             <div>
-                                                <h4 class="text-xs font-black text-white uppercase tracking-widest">Neural Forecast</h4>
-                                                <p class="text-[9px] font-bold text-indigo-300 uppercase tracking-tighter">AI Wealth Prediction</p>
+                                                <h4 class="text-xs font-black text-white tracking-widest">Neural forecast</h4>
+                                                <p class="text-[9px] font-bold text-indigo-300 tracking-tighter">AI wealth prediction</p>
                                             </div>
                                         </div>
-                                        <div class="px-2 py-1 rounded-md bg-indigo-500 text-white text-[8px] font-black uppercase tracking-widest shadow-lg">Elite</div>
+                                        <div class="px-2 py-1 rounded-md bg-indigo-500 text-white text-[8px] font-black tracking-widest shadow-lg">Elite</div>
                                     </div>
 
                                     <!-- Skeletal Chart -->
@@ -685,7 +701,7 @@ const financePremiumFeatures = [
                                     </div>
 
                                     <div class="mt-auto flex items-center justify-between">
-                                        <span class="text-[10px] font-black text-indigo-200 uppercase tracking-widest">Unlock Predictions</span>
+                                        <span class="text-[10px] font-black text-indigo-200 tracking-widest">Unlock predictions</span>
                                         <ArrowRight :size="16" class="text-white group-hover:translate-x-1 transition-transform" />
                                     </div>
                                 </div>

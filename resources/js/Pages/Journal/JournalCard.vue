@@ -42,7 +42,7 @@ const handleDelete = (event) => {
 
         <div class="p-6 md:p-8 flex flex-col flex-1">
             <div class="flex items-center justify-between mb-4">
-                <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 px-3 py-1.5 rounded-lg transition-colors duration-500">
+                <span class="text-[9px] font-black tracking-widest text-slate-400 dark:text-slate-500 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 px-3 py-1.5 rounded-lg transition-colors duration-500">
                     {{ formatDate(journal.date) }}
                 </span>
                 <span v-if="journal.mood" class="text-2xl" title="Mood">{{ 
@@ -72,8 +72,8 @@ const handleDelete = (event) => {
                 <div class="relative z-10 flex flex-col gap-2">
                     <div class="flex items-center gap-2">
                         <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
-                        <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Neural Sentiment Analysis</span>
-                        <div v-if="isExplorer" class="ml-auto px-1.5 py-0.5 rounded bg-indigo-500 text-white text-[7px] font-black uppercase tracking-widest">Elite</div>
+                        <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 tracking-widest">Neural sentiment analysis</span>
+                        <div v-if="isExplorer" class="ml-auto px-1.5 py-0.5 rounded bg-indigo-500 text-white text-[7px] font-black tracking-widest">Elite</div>
                     </div>
 
                     <div v-if="isExplorer" class="space-y-1.5 blur-[1px] opacity-20 group-hover/sentiment:opacity-40 transition-all">

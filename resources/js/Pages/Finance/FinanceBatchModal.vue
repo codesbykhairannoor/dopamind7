@@ -69,7 +69,7 @@ const changeType = (index, type) => {
     <Modal :show="show" @close="close" maxWidth="2xl">
         <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-500 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none">
             
-            <div v-if="conflictError" class="absolute top-0 left-0 right-0 bg-rose-500 text-white text-[10px] font-black px-6 py-3.5 text-center animate-in slide-in-from-top-full z-50 shadow-lg dark:shadow-none flex items-center justify-center gap-2 uppercase tracking-[0.1em] rounded-t-[2.5rem] shrink-0">
+            <div v-if="conflictError" class="absolute top-0 left-0 right-0 bg-rose-500 text-white text-[10px] font-black px-6 py-3.5 text-center animate-in slide-in-from-top-full z-50 shadow-lg dark:shadow-none flex items-center justify-center gap-2 tracking-[0.1em] rounded-t-[2.5rem] shrink-0">
                 <svg class="w-4 h-4 shrink-0 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                 <span>{{ conflictError }}</span>
             </div>
@@ -81,10 +81,10 @@ const changeType = (index, type) => {
                     </div>
                     <div>
                         <h2 class="text-xl font-black text-slate-800 dark:text-white tracking-tight leading-none mb-1.5 transition-colors duration-500">
-                            {{ $t('batch_mode_title', 'Batch Finance') }}
+                            {{ $t('batch_mode_title', 'Batch finance') }}
                         </h2>
                         <div class="relative">
-                            <button type="button" @click="showDatePicker = !showDatePicker" class="text-[10px] font-black text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 border border-indigo-100 dark:border-indigo-500/20 rounded-lg px-2.5 py-1 transition-all uppercase tracking-widest flex items-center gap-2">
+                            <button type="button" @click="showDatePicker = !showDatePicker" class="text-[10px] font-bold text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 border border-indigo-100 dark:border-indigo-500/20 rounded-lg px-2.5 py-1 transition-all tracking-widest flex items-center gap-2">
                                 <span>{{ dateDisplay }}</span>
                                 <span>📅</span>
                             </button>
@@ -105,10 +105,10 @@ const changeType = (index, type) => {
                 </div>
                 
                 <div class="flex items-center gap-3">
-                    <button @click="switchToSingle" type="button" class="hidden sm:flex text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl border-2 border-slate-50 dark:border-slate-800 text-slate-400 dark:text-slate-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-100 dark:hover:border-indigo-500/20 transition-all active:scale-95 items-center gap-2">
-                        <span>↩️</span> {{ $t('btn_single_mode', 'Single Mode') }}
+                    <button @click="switchToSingle" type="button" class="hidden sm:flex text-[10px] font-black tracking-widest px-4 py-2 rounded-xl border-2 border-slate-50 dark:border-slate-800 text-slate-400 dark:text-slate-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-100 dark:hover:border-indigo-500/20 transition-all active:scale-95 items-center gap-2">
+                        <span>↩️</span> {{ $t('btn_single_mode', 'Single mode') }}
                     </button>
-                    <button @click="close" class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 hover:bg-rose-50 dark:hover:bg-rose-500/20 hover:text-rose-500 dark:hover:text-rose-400 transition-all active:scale-90 flex items-center justify-center font-bold">
+                    <button @click="close" class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 hover:text-rose-500 dark:hover:text-rose-400 transition-all active:scale-90 flex items-center justify-center font-bold">
                         ✕
                     </button>
                 </div>
@@ -121,9 +121,9 @@ const changeType = (index, type) => {
                         class="bg-white dark:bg-slate-900 p-5 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none relative group animate-in fade-in slide-in-from-bottom-4 duration-300 transition-colors duration-500">
                         
                         <div class="flex justify-between items-center mb-4">
-                            <span class="text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-lg"
+                            <span class="text-[10px] font-bold tracking-widest px-3 py-1 rounded-lg"
                                 :class="trx.type === 'expense' ? 'bg-rose-50 dark:bg-rose-500/10 text-rose-500 dark:text-rose-400' : 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-500 dark:text-emerald-400'">
-                                {{ $t('transaction', 'Transaksi') }} #{{ index + 1 }}
+                                {{ $t('transaction', 'Transaction') }} #{{ index + 1 }}
                             </span>
                             <button @click="removeRow(index)" type="button" class="w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 flex items-center justify-center hover:bg-rose-100 dark:hover:bg-rose-500/20 hover:text-rose-500 dark:hover:text-rose-400 transition-all transition-colors duration-300" :disabled="form.transactions.length <= 1" :class="{'opacity-50 cursor-not-allowed': form.transactions.length <= 1}">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
@@ -134,26 +134,26 @@ const changeType = (index, type) => {
                             
                             <div class="space-y-4">
                                 <div>
-                                    <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-1.5 ml-1 block transition-colors duration-500">{{ $t('type', 'Tipe') }}</label>
+                                    <label class="text-[9px] font-bold text-slate-400 dark:text-slate-600 tracking-widest mb-1.5 ml-1 block transition-colors duration-500">{{ $t('type', 'Type') }}</label>
                                     <div class="flex bg-slate-50 dark:bg-slate-800 p-1 rounded-xl h-11 border border-slate-100 dark:border-slate-700 transition-colors duration-500">
-                                        <button type="button" @click="changeType(index, 'expense')" class="flex-1 rounded-lg text-[10px] font-black transition-all flex items-center justify-center tracking-wider uppercase" :class="trx.type === 'expense' ? 'bg-white dark:bg-slate-700 text-rose-600 dark:text-rose-400 shadow-sm border border-slate-200 dark:border-slate-600' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">
-                                            {{ $t('out', 'Keluar') }}
+                                        <button type="button" @click="changeType(index, 'expense')" class="flex-1 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center tracking-wider" :class="trx.type === 'expense' ? 'bg-white dark:bg-slate-700 text-rose-600 dark:text-rose-400 shadow-sm border border-slate-200 dark:border-slate-600' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">
+                                            {{ $t('out', 'Out') }}
                                         </button>
-                                        <button type="button" @click="changeType(index, 'income')" class="flex-1 rounded-lg text-[10px] font-black transition-all flex items-center justify-center tracking-wider uppercase" :class="trx.type === 'income' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm border border-slate-200 dark:border-slate-600' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">
-                                            {{ $t('in', 'Masuk') }}
+                                        <button type="button" @click="changeType(index, 'income')" class="flex-1 rounded-lg text-[10px] font-bold transition-all flex items-center justify-center tracking-wider" :class="trx.type === 'income' ? 'bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm border border-slate-200 dark:border-slate-600' : 'text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300'">
+                                            {{ $t('in', 'In') }}
                                         </button>
                                     </div>
                                 </div>
                                 
                                 <div>
-                                    <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-1.5 ml-1 block transition-colors duration-500">{{ $t('category', 'Kategori') }}</label>
+                                    <label class="text-[9px] font-bold text-slate-400 dark:text-slate-600 tracking-widest mb-1.5 ml-1 block transition-colors duration-500">{{ $t('category', 'Category') }}</label>
                                     <div class="relative">
                                         <select v-model="trx.category" class="w-full pl-3 pr-8 h-11 !rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 focus:bg-white dark:focus:bg-slate-900 focus:ring-0 font-bold text-slate-700 dark:text-slate-200 capitalize text-xs appearance-none cursor-pointer transition-all transition-colors duration-500"
                                             :class="[
                                                 form.errors[`transactions.${index}.category`] ? '!border-rose-300 dark:!border-rose-500/50 !bg-rose-50 dark:!bg-rose-500/10 text-rose-600 dark:text-rose-400' : '',
                                                 trx.type === 'expense' ? 'focus:border-rose-400' : 'focus:border-emerald-400'
                                             ]">
-                                            <option value="" disabled>{{ $t('select_placeholder', 'Pilih...') }}</option>
+                                            <option value="" disabled>{{ $t('select_placeholder', 'Choose...') }}</option>
                                             <option v-for="catSlug in getCategoriesByType(trx.type)" :key="catSlug" :value="catSlug">
                                                 {{ getDetail(catSlug).icon }} {{ getDetail(catSlug).name }}
                                             </option>
@@ -167,7 +167,7 @@ const changeType = (index, type) => {
 
                             <div class="space-y-4">
                                 <div>
-                                    <label class="text-[9px] font-black uppercase tracking-widest mb-1.5 ml-1 block transition-colors duration-500" :class="trx.type === 'expense' ? 'text-rose-400 dark:text-rose-400/80' : 'text-emerald-400 dark:text-emerald-400/80'">{{ $t('amount', 'Nominal') }}</label>
+                                    <label class="text-[9px] font-bold tracking-widest mb-1.5 ml-1 block transition-colors duration-500" :class="trx.type === 'expense' ? 'text-rose-400 dark:text-rose-400/80' : 'text-emerald-400 dark:text-emerald-400/80'">{{ $t('amount', 'Amount') }}</label>
                                     <div class="relative group">
                                         <span class="absolute left-3 top-1/2 -translate-y-1/2 font-black text-[12px] transition-colors duration-500" :class="trx.type === 'expense' ? 'text-rose-500 dark:text-rose-400' : 'text-emerald-500 dark:text-emerald-400'">{{ currencySymbol }}</span>
                                         <input type="text" :value="formatDisplay(trx.amount)" @input="e => onInputAmount(e, index)" placeholder="0" 
@@ -181,7 +181,7 @@ const changeType = (index, type) => {
                                 </div>
 
                                 <div>
-                                    <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-1.5 ml-1 block transition-colors duration-500">{{ $t('description', 'Keterangan') }}</label>
+                                    <label class="text-[9px] font-bold text-slate-400 dark:text-slate-600 tracking-widest mb-1.5 ml-1 block transition-colors duration-500">{{ $t('description', 'Description') }}</label>
                                     <TextInput 
                                         v-model="trx.title" 
                                         :placeholder="$t('desc_placeholder', 'Cth: Kopi...')" 
@@ -198,32 +198,31 @@ const changeType = (index, type) => {
                     </div>
                 </div>
 
-                <button @click="addRow" type="button" class="mt-8 w-full py-4 border-2 border-dashed border-indigo-200 dark:border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5 rounded-2xl text-indigo-500 dark:text-indigo-400 font-black uppercase tracking-widest text-[10px] hover:border-indigo-400 dark:hover:border-indigo-500/40 hover:bg-indigo-100 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-300 transition-all flex items-center justify-center gap-3 active:scale-95 shadow-sm dark:shadow-none transition-colors duration-500">
+                <button @click="addRow" type="button" class="mt-8 w-full py-4 border-2 border-dashed border-indigo-200 dark:border-indigo-500/20 bg-indigo-50/50 dark:bg-indigo-500/5 rounded-2xl text-indigo-500 dark:text-indigo-400 font-bold tracking-widest text-[10px] hover:border-indigo-400 dark:hover:border-indigo-500/40 hover:bg-indigo-100 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-300 transition-all flex items-center justify-center gap-3 active:scale-95 shadow-sm dark:shadow-none transition-colors duration-500">
                     <span class="w-5 h-5 rounded-md bg-indigo-200 dark:bg-indigo-500/30 text-indigo-700 dark:text-indigo-200 flex items-center justify-center text-xs shadow-sm">+</span> 
-                    {{ $t('btn_add_another_transaction', 'Tambah Baris Transaksi') }}
+                    {{ $t('btn_add_another_transaction', 'Add more transaction') }}
                 </button>
             </div>
 
             <div class="px-8 py-5 bg-white dark:bg-slate-900 border-t border-slate-50 dark:border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0 rounded-b-[2.5rem] transition-colors duration-500">
-                <div class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center gap-2 transition-colors duration-500">
+                <div class="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-widest flex items-center gap-2 transition-colors duration-500">
                     <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-                    {{ $t('total_label', 'Total Input:') }} <span class="text-indigo-600 dark:text-indigo-400 text-sm font-black">{{ form.transactions.length }}</span>
+                    {{ $t('total_label', 'Total input:') }} <span class="text-indigo-600 dark:text-indigo-400 text-sm font-black">{{ form.transactions.length }}</span>
                 </div>
                 
                 <div class="flex gap-3 w-full sm:w-auto">
-                    <SecondaryButton @click="close" class="flex-1 sm:flex-none !py-3 !rounded-xl !text-[10px] !font-black !uppercase !tracking-widest !border-2 dark:!border-slate-700 !text-slate-400 dark:!text-slate-500 hover:!text-slate-600 dark:hover:!text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 bg-white dark:bg-slate-900 transition-all duration-300">
-                        {{ $t('btn_cancel', 'Batal') }}
+                    <SecondaryButton @click="close" class="flex-1 sm:flex-none !py-3 !rounded-xl !text-[10px] !font-bold !border-2 dark:!border-slate-700 !text-slate-400 dark:!text-slate-500 hover:!text-slate-600 dark:hover:!text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 bg-white dark:bg-slate-900 transition-all duration-300">
+                        {{ $t('btn_cancel', 'Cancel') }}
                     </SecondaryButton>
                     
                     <PrimaryButton @click="submit" :disabled="form.processing || conflictError" 
-                        class="flex-[2] sm:flex-none !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3 !px-8 shadow-xl dark:shadow-none shadow-indigo-100 dark:shadow-indigo-900/40 transition-all transform active:scale-95 font-black uppercase tracking-widest text-[10px] transition-all duration-300"
+                        class="flex-[2] sm:flex-none !bg-indigo-600 hover:!bg-indigo-700 !rounded-xl !py-3 !px-8 shadow-xl dark:shadow-none shadow-indigo-100 dark:shadow-indigo-900/40 transition-all transform active:scale-95 font-bold tracking-widest text-[10px] transition-all duration-300"
                         :class="{'!bg-slate-300 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-600 !cursor-not-allowed !shadow-none !transform-none': conflictError}">
                         <span v-if="form.processing">...</span>
-                        <span v-else>{{ $t('btn_save_all_transactions', 'Simpan Batch') }}</span>
+                        <span v-else>{{ $t('btn_save_all_transactions', 'Save batch') }}</span>
                     </PrimaryButton>
                 </div>
             </div>
-            
         </div>
     </Modal>
 </template>
