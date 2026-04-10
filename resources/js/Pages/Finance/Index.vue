@@ -615,7 +615,7 @@ const financePremiumFeatures = [
                         />
                     </div>
 
-                    <!-- 🏦 The Vault (Savings) -->
+                    <!-- 🏦 The Vault (Savings) & 🧠 Neural Forecast -->
                     <div v-if="!isExplorer" class="space-y-6 relative group">
                         <div class="flex items-center justify-between px-1 lg:px-0">
                             <div class="flex items-center gap-3">
@@ -634,36 +634,69 @@ const financePremiumFeatures = [
                             </button>
                         </div>
 
-                        <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 lg:p-12 text-center transition-colors">
-                             <div class="mb-4 text-3xl lg:text-4xl transform group-hover:scale-110 transition-transform duration-500">🏦</div>
-                             <h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">You have no active saving goals yet.</h4>
-                             <button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900 px-5 lg:px-6 py-2 rounded-xl lg:rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-all">
-                                Start Saving Now
-                             </button>
-                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Existing Saving Card or placeholder -->
+                            <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1">
+                                 <div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500">🏦</div>
+                                 <h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">You have no active saving goals yet.</h4>
+                                 <button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900 px-5 py-2 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-500/5 transition-all">
+                                    Start Saving Now
+                                 </button>
+                            </div>
 
-                        <div v-else class="flex lg:grid overflow-x-auto lg:overflow-visible no-scrollbar lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6 -mx-3 px-3 lg:mx-0 lg:px-0 pb-4 lg:pb-0">
-                            <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] lg:w-full">
-                                <SavingCard 
-                                    :saving="saving"
-                                    :onDeposit="(s) => openVaultAction(s, 'deposit')"
-                                    :onWithdraw="(s) => openVaultAction(s, 'withdraw')"
-                                    :onEdit="handleEditSaving"
-                                    :onDelete="handleDeleteSaving"
-                                />
+                            <div v-else class="flex lg:grid overflow-x-auto lg:overflow-visible no-scrollbar gap-4 pb-4 lg:pb-0">
+                                <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] lg:w-full">
+                                    <SavingCard 
+                                        :saving="saving"
+                                        :onDeposit="(s) => openVaultAction(s, 'deposit')"
+                                        :onWithdraw="(s) => openVaultAction(s, 'withdraw')"
+                                        :onEdit="handleEditSaving"
+                                        :onDelete="handleDeleteSaving"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- 🚀 NEW: NEURAL FORECAST SKELETAL CARD (FOR ALL BUT HIGHEST TIER, focus on Explorer) -->
+                            <div @click="openPremiumPreview('Finance')" 
+                                 class="relative bg-slate-900 dark:bg-indigo-950 rounded-[2.5rem] p-8 overflow-hidden group/forecast cursor-pointer hover:scale-[1.02] transition-all duration-500 shadow-2xl">
+                                
+                                <!-- Mesh Gradient Background -->
+                                <div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-500 via-slate-900 to-black"></div>
+                                
+                                <div class="relative z-10 flex flex-col h-full">
+                                    <div class="flex items-center justify-between mb-6">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
+                                                <TrendingUp :size="20" />
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xs font-black text-white uppercase tracking-widest">Neural Forecast</h4>
+                                                <p class="text-[9px] font-bold text-indigo-300 uppercase tracking-tighter">AI Wealth Prediction</p>
+                                            </div>
+                                        </div>
+                                        <div class="px-2 py-1 rounded-md bg-indigo-500 text-white text-[8px] font-black uppercase tracking-widest shadow-lg">Elite</div>
+                                    </div>
+
+                                    <!-- Skeletal Chart -->
+                                    <div class="flex-1 flex items-end gap-1.5 h-24 mb-6 blur-[2px] group-hover:blur-0 transition-all duration-700 opacity-30">
+                                        <div v-for="h in [30, 45, 35, 70, 85, 60, 100, 90, 110, 130]" :key="h" 
+                                             :style="{ height: h + '%' }" 
+                                             class="flex-1 bg-gradient-to-t from-indigo-400 to-transparent rounded-t-sm"></div>
+                                    </div>
+
+                                    <div class="mt-auto flex items-center justify-between">
+                                        <span class="text-[10px] font-black text-indigo-200 uppercase tracking-widest">Unlock Predictions</span>
+                                        <ArrowRight :size="16" class="text-white group-hover:translate-x-1 transition-transform" />
+                                    </div>
+                                </div>
+
+                                <!-- Glass Overlay -->
+                                <div class="absolute inset-0 bg-white/5 backdrop-blur-[1px] opacity-20 transition-opacity group-hover:opacity-0"></div>
                             </div>
                         </div>
                     </div>
 
                     <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" :isExplorer="isExplorer" @day-click="openDetail" />
-                    
-                    <LockedFeatureWall 
-                        :isExplorer="isExplorer" 
-                        title="Arsitektur Keuangan Masa Depan"
-                        description="Tingkatkan ke tier Architect untuk mengaktifkan modul manajemen kekayaan tingkat lanjut ini."
-                        :features="financePremiumFeatures"
-                        @show-preview="openPremiumPreview('Finance')"
-                    />
                 </div>
             </div>
         </div>

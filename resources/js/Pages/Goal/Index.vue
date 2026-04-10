@@ -77,6 +77,12 @@ onMounted(() => {
 });
 
 const isPreviewOpen = ref(false);
+const activePreviewModule = ref('Goal');
+
+const openPremiumPreview = (module = 'Goal') => {
+    activePreviewModule.value = module;
+    isPreviewOpen.value = true;
+};
 </script>
 
 <template>
@@ -100,10 +106,11 @@ const isPreviewOpen = ref(false);
                             :goal="goal"
                             :onEdit="openEditModal"
                             :onDelete="deleteGoal"
-                            :onAddMilestone="addMilestone"
                             :onSaveMilestone="saveMilestone"
                             :onToggleMilestone="toggleMilestone"
                             :onDeleteMilestone="deleteMilestone"
+                            :isExplorer="isExplorer"
+                            @open-preview="openPremiumPreview"
                         />
                     </div>
                 </div>
@@ -210,18 +217,12 @@ const isPreviewOpen = ref(false);
                 <span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full"></span>
             </button>
 
-            <LockedFeatureWall 
-                :isExplorer="isExplorer"
-                title="Complete Your Vision"
-                description="Unlock the full potential of your goal-setting system with Architect features."
-                :features="goalPremiumFeatures"
-                @show-preview="isPreviewOpen = true"
-            />
+<!-- Removed LockedFeatureWall -->
         </div>
 
         <PremiumPreviewModal 
             :isOpen="isPreviewOpen"
-            module="Goal"
+            :module="activePreviewModule"
             @close="isPreviewOpen = false"
         />
     </div>

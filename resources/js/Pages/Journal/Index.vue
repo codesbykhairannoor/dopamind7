@@ -62,6 +62,9 @@ const deleteJournal = (id) => {
 const createEntry = () => {
     router.get(route('journal.write'));
 };
+
+const isPreviewOpen = ref(false);
+const openPremiumPreview = () => isPreviewOpen.value = true;
 </script>
 
 <template>
@@ -99,14 +102,16 @@ const createEntry = () => {
                     v-for="journal in journals" 
                     :key="journal.id" 
                     :journal="journal"
+                    :isExplorer="isExplorer"
                     @delete="deleteJournal"
+                    @open-preview="openPremiumPreview"
                 />
             </div>
 
             <PremiumPreviewModal 
-                :isOpen="isExplorer" 
+                :isOpen="isPreviewOpen" 
                 module="Journal"
-                :onClose="() => router.visit(route('dashboard'))" 
+                @close="isPreviewOpen = false" 
             />
         </div>
     </div>

@@ -7,6 +7,8 @@ import isSameOrBefore from "dayjs/plugin/isSameOrBefore.js";
 import isBetween from "dayjs/plugin/isBetween.js";
 import Swal from "sweetalert2";
 import { trans } from "laravel-vue-i18n";
+import { u as useGating } from "./useGating-Dlt-HuEc.js";
+import { _ as _sfc_main$4 } from "./PremiumPreviewModal-C_TSLbT9.js";
 import CalendarHeader from "./CalendarHeader-DJKq5MY4.js";
 import CalendarGrid from "./CalendarGrid-C6OzoLV3.js";
 import _sfc_main$2 from "./CalendarEventModal-BE024jNM.js";
@@ -16,12 +18,12 @@ import "./OneForMindIcon-XdjRmiFl.js";
 import "./ThemeToggle-ByQSx4Ee.js";
 import "./useAppearance-rDoGVD4_.js";
 import "./_plugin-vue_export-helper-1tPrXgE0.js";
+import "lucide-vue-next";
 import "dayjs/locale/id.js";
 import "dayjs/locale/en.js";
 import "./FinanceDatePicker-CxOhCf2w.js";
 import "dayjs/plugin/localeData.js";
 import "./useFinanceFormat-CwGVpwq9.js";
-import "./useGating-Dlt-HuEc.js";
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isBetween);
 function useCalendarDates(props) {
@@ -260,6 +262,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
       openDayDetail,
       calendarDays
     } = useCalendar(calendarProps);
+    const { isExplorer } = useGating();
     const triggerSubmitEvent = () => {
       submitEvent({
         onOptimistic: (newData, isEditing) => {
@@ -327,6 +330,11 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
         onClose: ($event) => isDetailModalOpen.value = false,
         onEditEvent: unref(openEventModal),
         onDeleteEvent: triggerDeleteEvent
+      }, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$4, {
+        isOpen: unref(isExplorer),
+        module: "Calendar",
+        onClose: () => unref(router).visit(_ctx.route("dashboard"))
       }, null, _parent));
       _push(`</div><!--]-->`);
     };

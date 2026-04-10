@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 import _sfc_main$1 from "./JournalHeader-CIPb-b4_.js";
 import _sfc_main$3 from "./JournalCard-C96aLkqP.js";
 import { _ as _sfc_main$2 } from "./NeuralBridge-DkSDbyOa.js";
+import { _ as _sfc_main$4 } from "./PremiumPreviewModal-C_TSLbT9.js";
+import { u as useGating } from "./useGating-Dlt-HuEc.js";
 import "./ThemeToggle-ByQSx4Ee.js";
 import "./useAppearance-rDoGVD4_.js";
 import "./_plugin-vue_export-helper-1tPrXgE0.js";
@@ -15,7 +17,7 @@ import "./useFinanceFormat-CwGVpwq9.js";
 import "laravel-vue-i18n";
 import "dayjs/locale/id.js";
 import "dayjs/locale/en.js";
-import "./useGating-Dlt-HuEc.js";
+import "lucide-vue-next";
 const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout }, {
   __name: "Index",
   __ssrInlineRender: true,
@@ -26,6 +28,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
   },
   setup(__props) {
     const props = __props;
+    const { isExplorer } = useGating();
     const fireToast = (icon, message) => {
       Swal.fire({
         toast: true,
@@ -99,6 +102,11 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
         });
         _push(`<!--]--></div>`);
       }
+      _push(ssrRenderComponent(_sfc_main$4, {
+        isOpen: unref(isExplorer),
+        module: "Journal",
+        onClose: () => unref(router).visit(_ctx.route("dashboard"))
+      }, null, _parent));
       _push(`</div></div><!--]-->`);
     };
   }

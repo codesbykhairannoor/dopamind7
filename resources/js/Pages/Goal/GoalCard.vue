@@ -2,7 +2,7 @@
 import { computed, watch } from 'vue';
 import { 
     Target, Calendar, Award, Trash2, Edit3, 
-    MoreVertical, ChevronRight, Zap, CheckCircle2 
+    MoreVertical, ChevronRight, Zap, CheckCircle2, Sparkles, ArrowRight
 } from 'lucide-vue-next';
 import MilestoneItem from './MilestoneItem.vue';
 import { usePage } from '@inertiajs/vue3';
@@ -22,8 +22,11 @@ const props = defineProps({
     onToggleMilestone: Function,
     onAddMilestone: Function,
     onSaveMilestone: Function,
-    onDeleteMilestone: Function
+    onDeleteMilestone: Function,
+    isExplorer: Boolean
 });
+
+const emit = defineEmits(['openPreview']);
 
 const page = usePage();
 
@@ -138,6 +141,34 @@ const meshGradient = computed(() => {
                     class="h-full rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(99,102,241,0.2)]"
                     :style="{ width: progress + '%', backgroundColor: goal.color || '#6366f1' }"
                 ></div>
+            </div>
+
+            <!-- 🧠 NEW: AI STRATEGY LAB SKELETAL UI (FOR FREE USERS) -->
+            <div v-if="isExplorer" @click="emit('openPreview', 'Goal')" 
+                 class="mb-6 p-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 relative overflow-hidden group/strategy cursor-pointer hover:border-indigo-200 dark:hover:border-indigo-500/30 transition-all">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <Sparkles :size="14" class="text-indigo-500 animate-pulse" />
+                        <span class="text-[10px] font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest">AI Strategy Lab</span>
+                    </div>
+                    <div class="px-1.5 py-0.5 rounded bg-indigo-500 text-white text-[7px] font-black uppercase tracking-widest">Elite</div>
+                </div>
+
+                <!-- Skeletal Strategy Steps -->
+                <div class="space-y-2 blur-[1.5px] opacity-30 group-hover:opacity-50 transition-all">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-indigo-400"></div>
+                        <div class="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                        <div class="h-1.5 w-3/4 bg-slate-100 dark:bg-slate-800 rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-slate-50 dark:from-slate-800 to-transparent flex items-center justify-center">
+                    <span class="text-[9px] font-black text-indigo-500 uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">Generate Strategy</span>
+                </div>
             </div>
 
             <!-- Milestones Section -->

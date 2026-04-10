@@ -11,10 +11,12 @@ import GoalCard from "./GoalCard-C86AZqFC.js";
 import GoalModal from "./GoalModal-DsX1Rbiu.js";
 import _sfc_main$1 from "./GoalHeader-238EhcxQ.js";
 import { _ as _sfc_main$2 } from "./NeuralBridge-DkSDbyOa.js";
+import { _ as _sfc_main$3 } from "./LockedFeatureWall-DPg3CTtZ.js";
+import { _ as _sfc_main$4 } from "./PremiumPreviewModal-C_TSLbT9.js";
 import dayjs from "dayjs";
 import "dayjs/locale/id.js";
 import "dayjs/locale/en.js";
-import { Target, CheckCircle2 } from "lucide-vue-next";
+import { Target, CheckCircle2, Image, Layers, Sparkles } from "lucide-vue-next";
 import "./OneForMindIcon-XdjRmiFl.js";
 import "./ThemeToggle-ByQSx4Ee.js";
 import "./useAppearance-rDoGVD4_.js";
@@ -308,7 +310,8 @@ function useGoals(props) {
     addMilestone,
     saveMilestone,
     toggleMilestone,
-    deleteMilestone
+    deleteMilestone,
+    isExplorer
   };
 }
 const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout }, {
@@ -343,8 +346,32 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
       addMilestone,
       saveMilestone,
       toggleMilestone,
-      deleteMilestone
+      deleteMilestone,
+      isExplorer
     } = useGoals(props);
+    const goalPremiumFeatures = [
+      {
+        title: "Vision Board Covers",
+        desc: "Unggah gambar kustom untuk memvisualisasikan manifestasi goal Anda secara nyata.",
+        icon: Image,
+        color: "text-indigo-500",
+        bg: "bg-indigo-500/10"
+      },
+      {
+        title: "Advanced Milestones",
+        desc: "Breakdown goal besar Anda menjadi puluhan langkah mikro untuk eksekusi presisi.",
+        icon: Layers,
+        color: "text-orange-500",
+        bg: "bg-orange-500/10"
+      },
+      {
+        title: "AI Goal Strategist",
+        desc: "Dapatkan strategi pemecahan masalah otomatis dari Neural OS saat goal Anda terhambat.",
+        icon: Sparkles,
+        color: "text-purple-500",
+        bg: "bg-purple-500/10"
+      }
+    ];
     computed(() => {
       const locale = usePage().props.locale || "id";
       return dayjs().locale(locale).format("dddd, D MMMM YYYY");
@@ -356,6 +383,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
         isMobile.value = window.innerWidth < 1024;
       });
     });
+    const isPreviewOpen = ref(false);
     return (_ctx, _push, _parent, _attrs) => {
       const _component_Edit3 = resolveComponent("Edit3");
       const _component_Award = resolveComponent("Award");
@@ -453,7 +481,21 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
         size: 28,
         "stroke-width": "2.5"
       }, null, _parent));
-      _push(`<span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full animate-ping"></span><span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full"></span></button></div></div>`);
+      _push(`<span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full animate-ping"></span><span class="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 rounded-full"></span></button>`);
+      _push(ssrRenderComponent(_sfc_main$3, {
+        isExplorer: unref(isExplorer),
+        title: "Complete Your Vision",
+        description: "Unlock the full potential of your goal-setting system with Architect features.",
+        features: goalPremiumFeatures,
+        onShowPreview: ($event) => isPreviewOpen.value = true
+      }, null, _parent));
+      _push(`</div>`);
+      _push(ssrRenderComponent(_sfc_main$4, {
+        isOpen: isPreviewOpen.value,
+        module: "Goal",
+        onClose: ($event) => isPreviewOpen.value = false
+      }, null, _parent));
+      _push(`</div>`);
     };
   }
 });

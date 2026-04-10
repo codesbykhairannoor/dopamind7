@@ -4,10 +4,11 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 
 const props = defineProps({
-    journal: Object
+    journal: Object,
+    isExplorer: Boolean
 });
 
-const emit = defineEmits(['delete']);
+const emit = defineEmits(['delete', 'open-preview']);
 
 const formatDate = (date) => dayjs(date).locale('id').format('dddd, DD MMM YYYY');
 
@@ -61,15 +62,28 @@ const handleDelete = (event) => {
             </p>
 
             <!-- AI Sentiment Badge -->
-            <div v-if="journal.ai_sentiment" class="mt-6 p-4 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/20 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/20 transition-all duration-500">
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
-                    <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">AI Sentiment Analysis</span>
-                    <span class="ml-auto text-[10px] font-black text-indigo-500">{{ journal.mood_score }}/10</span>
+            <div v-if="journal.ai_sentiment || isExplorer" 
+                 @click.prevent="isExplorer ? emit('open-preview') : null"
+                 class="mt-6 p-4 rounded-2xl transition-all duration-500 overflow-hidden relative group/sentiment"
+                 :class="isExplorer ? 'bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 cursor-pointer' : 'bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/20'">
+                
+                <div v-if="isExplorer" class="absolute inset-0 bg-gradient-to-r from-indigo-500/5 to-transparent opacity-0 group-hover/sentiment:opacity-100 transition-opacity"></div>
+                
+                <div class="relative z-10 flex flex-col gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+                        <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Neural Sentiment Analysis</span>
+                        <div v-if="isExplorer" class="ml-auto px-1.5 py-0.5 rounded bg-indigo-500 text-white text-[7px] font-black uppercase tracking-widest">Elite</div>
+                    </div>
+
+                    <div v-if="isExplorer" class="space-y-1.5 blur-[1px] opacity-20 group-hover/sentiment:opacity-40 transition-all">
+                        <div class="h-1.5 w-full bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                        <div class="h-1.5 w-3/4 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+                    </div>
+                    <p v-else class="text-[10px] font-bold text-slate-600 dark:text-slate-300 leading-tight italic line-clamp-2">
+                        "{{ journal.ai_sentiment }}"
+                    </p>
                 </div>
-                <p class="text-[10px] font-bold text-slate-600 dark:text-slate-300 leading-tight italic line-clamp-2">
-                    "{{ journal.ai_sentiment }}"
-                </p>
             </div>
         </div>
     </Link>

@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { router } from '@inertiajs/vue3';
-import { Lock, CheckCircle2, ArrowRight, Sparkles, Zap, ShieldCheck, RefreshCcw, Layout, FileSearch2, Send, Rocket, Target, Shield, Landmark, TrendingUp } from 'lucide-vue-next';
+import { Lock, CheckCircle2, ArrowRight, Sparkles, Zap, ShieldCheck, RefreshCcw, Layout, FileSearch2, Send, Rocket, Target, Shield, Landmark, TrendingUp, Gem } from 'lucide-vue-next';
 
 const props = defineProps({
     isOpen: Boolean,
@@ -84,14 +84,72 @@ const handleGoBack = () => {
                     <div class="absolute bottom-0 right-0 w-48 h-48 bg-black/40 blur-3xl rounded-full translate-x-1/2 translate-y-1/2"></div>
                 </div>
 
-                <!-- Central Icon Visualization -->
-                <div class="relative z-10 flex flex-col items-center">
-                    <div class="w-16 h-16 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center shadow-2xl rotate-6 group-hover:rotate-0 transition-transform duration-700">
-                        <Lock v-if="module === 'Journal'" :size="32" class="text-white" />
-                        <Rocket v-if="module === 'Jobs'" :size="32" class="text-white" />
-                        <Zap v-if="module === 'Calendar'" :size="32" class="text-white" />
-                        <Landmark v-if="module === 'Finance'" :size="32" class="text-white" />
-                        <Target v-if="module === 'Goal'" :size="32" class="text-white" />
+                <!-- Central Icon & Skeletal Placeholder -->
+                <div class="relative z-10 flex flex-col items-center w-full px-12">
+                    <!-- Skeletal UI Mockups -->
+                    <div class="w-full h-24 mb-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden relative group/mockup">
+                        <!-- Journal: Ghost Editor -->
+                        <div v-if="module === 'Journal'" class="p-4 space-y-2 opacity-40">
+                            <div class="h-2 w-3/4 bg-white/40 rounded-full"></div>
+                            <div class="h-2 w-full bg-white/20 rounded-full"></div>
+                            <div class="h-2 w-5/6 bg-white/20 rounded-full"></div>
+                            <div class="flex gap-2 pt-2">
+                                <div class="w-8 h-4 bg-indigo-400/40 rounded-md"></div>
+                                <div class="w-12 h-4 bg-purple-400/40 rounded-md"></div>
+                            </div>
+                            <div class="absolute top-3 right-3 animate-bounce">
+                                <Sparkles :size="12" class="text-indigo-300" />
+                            </div>
+                        </div>
+
+                        <!-- Goal: Vision Grid -->
+                        <div v-if="module === 'Goal'" class="p-3 grid grid-cols-3 gap-2 opacity-50">
+                            <div v-for="i in 3" :key="i" class="aspect-square bg-white/20 rounded-lg border border-white/10 flex items-center justify-center">
+                                <div class="w-4 h-4 rounded-full bg-white/10 animate-pulse"></div>
+                            </div>
+                        </div>
+
+                        <!-- Finance: Forecast Chart -->
+                        <div v-if="module === 'Finance'" class="p-4 h-full flex flex-col justify-end opacity-50">
+                            <div class="flex items-end gap-1 h-12">
+                                <div v-for="h in [20, 40, 30, 60, 80, 50, 90]" :key="h" 
+                                     :style="{ height: h + '%' }" 
+                                     class="flex-1 bg-gradient-to-t from-blue-400/40 to-blue-300/10 rounded-t-sm"></div>
+                            </div>
+                            <div class="mt-2 h-1 w-full bg-white/10 rounded-full"></div>
+                        </div>
+
+                        <!-- Jobs: Pipeline -->
+                        <div v-if="module === 'Jobs'" class="p-4 space-y-3 opacity-40">
+                             <div class="flex items-center gap-3">
+                                 <div class="w-6 h-6 rounded-lg bg-emerald-400/40"></div>
+                                 <div class="h-2 w-24 bg-white/20 rounded-full"></div>
+                             </div>
+                             <div class="flex items-center gap-3 translate-x-4">
+                                 <div class="w-6 h-6 rounded-lg bg-teal-400/40"></div>
+                                 <div class="h-2 w-20 bg-white/20 rounded-full"></div>
+                             </div>
+                        </div>
+
+                        <!-- Overlay Blur -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center shadow-2xl rotate-6">
+                            <Lock v-if="module === 'Journal'" :size="24" class="text-white" />
+                            <Rocket v-if="module === 'Jobs'" :size="24" class="text-white" />
+                            <Zap v-if="module === 'Calendar'" :size="24" class="text-white" />
+                            <Landmark v-if="module === 'Finance'" :size="24" class="text-white" />
+                            <Target v-if="module === 'Goal'" :size="24" class="text-white" />
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] font-black text-white/50 uppercase tracking-[0.2em] leading-none mb-1">Architect Tier</span>
+                            <div class="flex items-center gap-1.5">
+                                <Gem :size="14" class="text-indigo-300" />
+                                <span class="text-sm font-black text-white uppercase tracking-tight">System Unlocked</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

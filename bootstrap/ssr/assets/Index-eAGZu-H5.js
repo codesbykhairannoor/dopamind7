@@ -15,8 +15,10 @@ import HabitHeader from "./HabitHeader-1wgaZhnH.js";
 import HabitGrid from "./HabitGrid-hlbYz1KW.js";
 import HabitStats from "./HabitStats-CoGFpEmR.js";
 import _sfc_main$2 from "./HabitModals-DqKZVc5Q.js";
-import NeuralHabitInsight from "./NeuralHabitInsight-CZaTFaoT.js";
+import NeuralHabitInsight from "./NeuralHabitInsight-DZBlaUT6.js";
 import { _ as _sfc_main$1 } from "./NeuralBridge-DkSDbyOa.js";
+import { _ as _sfc_main$3 } from "./LockedFeatureWall-DPg3CTtZ.js";
+import { Sparkles, Activity, PieChart } from "lucide-vue-next";
 import "./OneForMindIcon-XdjRmiFl.js";
 import "./ThemeToggle-ByQSx4Ee.js";
 import "./useAppearance-rDoGVD4_.js";
@@ -789,6 +791,29 @@ const _sfc_main = /* @__PURE__ */ Object.assign({
     const handleToggleProxy = async (habitId, date, forceStatus) => {
       toggleStatus(habitId, date, forceStatus);
     };
+    const habitPremiumFeatures = [
+      {
+        title: "Habit Alchemy",
+        desc: "Sistem stacking otomatis untuk membangun momentum habit tanpa hambatan.",
+        icon: Sparkles,
+        color: "text-indigo-500",
+        bg: "bg-indigo-500/10"
+      },
+      {
+        title: "Neural friction Audit",
+        desc: "Audit cerdas untuk menemukan alasan kenapa Anda gagal di suatu habit.",
+        icon: Activity,
+        color: "text-rose-500",
+        bg: "bg-rose-500/10"
+      },
+      {
+        title: "Atomic Analytics",
+        desc: "Heatmap & visualisasi data habit yang mendalam untuk progres jangka panjang.",
+        icon: PieChart,
+        color: "text-emerald-500",
+        bg: "bg-emerald-500/10"
+      }
+    ];
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${ssrRenderAttrs(mergeProps({ class: "min-h-screen bg-slate-50/50 dark:bg-slate-950/50" }, _attrs))}>`);
       _push(ssrRenderComponent(unref(Head), { title: "Habit Tracker" }, null, _parent));
@@ -824,11 +849,15 @@ const _sfc_main = /* @__PURE__ */ Object.assign({
       _push(`<div class="px-4 md:px-8">`);
       _push(ssrRenderComponent(_sfc_main$1, { module: "Habits" }, null, _parent));
       _push(`</div>`);
-      _push(ssrRenderComponent(NeuralHabitInsight, {
-        ref_key: "neuralOs",
-        ref: neuralOs,
-        currentMood: __props.savedMood
-      }, null, _parent));
+      if (!unref(isExplorer)) {
+        _push(ssrRenderComponent(NeuralHabitInsight, {
+          ref_key: "neuralOs",
+          ref: neuralOs,
+          currentMood: __props.savedMood
+        }, null, _parent));
+      } else {
+        _push(`<!---->`);
+      }
       _push(ssrRenderComponent(HabitStats, {
         localHabits: unref(localHabits),
         overallPercentage: unref(overallPercentage),
@@ -862,6 +891,12 @@ const _sfc_main = /* @__PURE__ */ Object.assign({
         switchToSingle: unref(switchToSingle),
         isExplorer: unref(isExplorer),
         habitsCount: unref(habitsCount)
+      }, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$3, {
+        isExplorer: unref(isExplorer),
+        title: "Master Your Identity",
+        description: "Go beyond tracking. Build a lasting system with Quantum-tier Neural OS features.",
+        features: habitPremiumFeatures
       }, null, _parent));
       _push(`</div></div>`);
     };

@@ -1,27 +1,27 @@
-import { ref, watch, computed, reactive, onMounted, unref, useSSRContext } from "vue";
+import { ref, watch, computed, reactive, onMounted, resolveComponent, unref, useSSRContext } from "vue";
 import { ssrRenderAttrs, ssrRenderComponent, ssrInterpolate, ssrRenderClass, ssrRenderList } from "vue/server-renderer";
 import { A as AuthenticatedLayout } from "./AuthenticatedLayout-DKue-asX.js";
-import { _ as _sfc_main$4 } from "./OneForMindIcon-XdjRmiFl.js";
+import { _ as _sfc_main$3 } from "./OneForMindIcon-XdjRmiFl.js";
 import { useForm, router, usePage, Head } from "@inertiajs/vue3";
 import dayjs from "dayjs";
-import FinanceHeader from "./FinanceHeader-CoI5Nasa.js";
+import FinanceHeader from "./FinanceHeader-CPodwfai.js";
 import _sfc_main$1 from "./FinanceStats-C0TUAz5n.js";
 import _sfc_main$2 from "./BudgetSidebar-B0zBNxsz.js";
 import TransactionModal from "./TransactionModal-L2LFmX15.js";
-import _sfc_main$8 from "./BudgetModal-BYd_Qwgx.js";
-import _sfc_main$9 from "./CategoryModal-DzJEpHWn.js";
+import _sfc_main$7 from "./BudgetModal-BYd_Qwgx.js";
+import _sfc_main$8 from "./CategoryModal-DzJEpHWn.js";
 import DailyTrendChart from "./DailyTrendChart-TOHlRPw2.js";
 import ArchiveModal from "./ArchiveModal-BYuAFBxR.js";
 import FullArchiveModal from "./FullArchiveModal-CI0PCYS_.js";
-import _sfc_main$5 from "./FinanceDatePicker-CxOhCf2w.js";
+import _sfc_main$4 from "./FinanceDatePicker-CxOhCf2w.js";
 import FinanceBatchModal from "./FinanceBatchModal-Bd5fJvxn.js";
 import { u as useFinanceForm, F as FinanceInsights } from "./FinanceInsights-Bb26wnio.js";
-import _sfc_main$6 from "./SavingCard-C3qPUs9X.js";
-import _sfc_main$a from "./SavingModal-DY2vbql9.js";
-import _sfc_main$b from "./VaultTransactionModal-Bt0fhf-P.js";
-import { _ as _sfc_main$3 } from "./NeuralBridge-DkSDbyOa.js";
-import _sfc_main$7 from "./LockedFeatureWall-kn4cVAkR.js";
-import { Wallet, Plus } from "lucide-vue-next";
+import _sfc_main$5 from "./SavingCard-C3qPUs9X.js";
+import _sfc_main$9 from "./SavingModal-DY2vbql9.js";
+import _sfc_main$a from "./VaultTransactionModal-Bt0fhf-P.js";
+import { _ as _sfc_main$6 } from "./LockedFeatureWall-DPg3CTtZ.js";
+import { _ as _sfc_main$b } from "./PremiumPreviewModal-C_TSLbT9.js";
+import { Wallet, Plus, TrendingUp, Zap } from "lucide-vue-next";
 import Swal from "sweetalert2";
 import { u as useFinanceFormat } from "./useFinanceFormat-CwGVpwq9.js";
 import { trans } from "laravel-vue-i18n";
@@ -237,6 +237,12 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
     const vaultTxType = ref("deposit");
     const activeVault = ref(null);
     const isProcessingVaultTx = ref(false);
+    const isPreviewOpen = ref(false);
+    const activePreviewModule = ref("Finance");
+    const openPremiumPreview = (module = "Finance") => {
+      activePreviewModule.value = module;
+      isPreviewOpen.value = true;
+    };
     const handleEditSaving = (saving = null) => {
       if (!saving) {
         activeSaving.value = {
@@ -376,7 +382,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
         return localCategories.value;
       }
     });
-    const { formattedMonth, changeMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
+    const { formattedMonth, currentMonthKey } = useFinanceCalendar(props.filters.date);
     const {
       transactionForm,
       setEditTransaction,
@@ -587,19 +593,43 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
     watch(() => props.stats, (newStats) => {
       localStats.value = JSON.parse(JSON.stringify(newStats || {}));
     }, { deep: true });
+    const financePremiumFeatures = [
+      {
+        title: "The Vault",
+        desc: "Sistem akumulasi kekayaan & target tabungan otomatis.",
+        icon: Wallet,
+        color: "text-orange-500",
+        bg: "bg-orange-500/10"
+      },
+      {
+        title: "Investment Lab",
+        desc: "Pantau pertumbuhan portofolio & estimasi P/L real-time.",
+        icon: TrendingUp,
+        color: "text-indigo-500",
+        bg: "bg-indigo-500/10"
+      },
+      {
+        title: "Neural Financial Forecast",
+        desc: "Prediksi arus kas masa depan dengan kecerdasan buatan.",
+        icon: Zap,
+        color: "text-purple-500",
+        bg: "bg-purple-500/10"
+      }
+    ];
     return (_ctx, _push, _parent, _attrs) => {
+      const _component_NeuralBridge = resolveComponent("NeuralBridge");
       _push(`<div${ssrRenderAttrs(_attrs)}>`);
       _push(ssrRenderComponent(unref(Head), { title: "Finance Plan" }, null, _parent));
       _push(ssrRenderComponent(FinanceHeader, {
         currentMonth: unref(formattedMonth),
         currentMonthKey: unref(currentMonthKey),
-        onChangeDate: (payload) => unref(changeMonth)(payload),
         onAddClick: () => {
           unref(transactionForm).reset();
           unref(transactionForm).id = null;
           showTransactionModal.value = true;
         },
-        isExplorer: unref(isExplorer)
+        isExplorer: unref(isExplorer),
+        onOpenPreview: openPremiumPreview
       }, null, _parent));
       _push(`<div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950/50 px-3 sm:px-6 lg:px-8 py-6 transition-colors duration-500"><div class="mb-8 overflow-x-auto no-scrollbar -mx-3 px-3 lg:mx-0 lg:px-0">`);
       _push(ssrRenderComponent(_sfc_main$1, {
@@ -623,7 +653,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
         onEditCategory: handleEditCategory,
         onDeleteCategory: triggerDeleteCategory
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$3, { module: "Finance" }, null, _parent));
+      _push(ssrRenderComponent(_component_NeuralBridge, { module: "Finance" }, null, _parent));
       if (!unref(isExplorer)) {
         _push(ssrRenderComponent(FinanceInsights, {
           "expense-stats": localStats.value.expense_by_category,
@@ -644,7 +674,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
       _push(`</div><div class="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">`);
       if (!unref(filterDate)) {
         _push(`<button class="text-[9px] lg:text-[10px] font-black text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 flex items-center gap-1.5 transition-all active:scale-95 group"><span class="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/20 transition-colors">`);
-        _push(ssrRenderComponent(_sfc_main$4, {
+        _push(ssrRenderComponent(_sfc_main$3, {
           name: "calendar-history",
           size: "14",
           "stroke-width": "2.5"
@@ -656,7 +686,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
       _push(`<div class="flex items-center gap-2"><div class="relative"><button class="${ssrRenderClass([unref(filterDate) ? "text-indigo-600 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/30" : "text-slate-500 dark:text-slate-400", "pl-3 pr-8 py-2 text-[10px] lg:text-xs font-bold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm dark:shadow-none hover:border-indigo-300 dark:hover:border-indigo-500/40 hover:ring-2 hover:ring-indigo-500/10 transition-all flex items-center gap-2 min-w-[120px] lg:min-w-[150px] relative transition-colors duration-500"])}"><span class="text-sm lg:text-base">📅</span><span>${ssrInterpolate(unref(filterDate) ? unref(dayjs)(unref(filterDate)).locale(_ctx.$page.props.locale).format("DD MMM YYYY") : _ctx.$t("date_filter"))}</span><span class="absolute right-3 text-slate-400 dark:text-slate-600 text-[10px]">${ssrInterpolate(showFilterPicker.value ? "▲" : "▼")}</span></button>`);
       if (showFilterPicker.value) {
         _push(`<div class="absolute right-0 top-full mt-2 z-50 origin-top-right">`);
-        _push(ssrRenderComponent(_sfc_main$5, {
+        _push(ssrRenderComponent(_sfc_main$4, {
           show: showFilterPicker.value,
           modelValue: unref(filterDate),
           transactions: localTransactions.value,
@@ -680,7 +710,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
         _push(`<div class="bg-white dark:bg-slate-900 rounded-3xl shadow-sm dark:shadow-none border border-slate-200 dark:border-slate-800 overflow-hidden divide-y divide-slate-50 dark:divide-slate-800/50 transition-colors duration-500"><!--[-->`);
         ssrRenderList(unref(visibleStats), (day) => {
           _push(`<div class="group p-3 lg:p-4 flex items-center justify-between hover:bg-indigo-50/50 dark:hover:bg-indigo-500/5 transition-colors cursor-pointer"><div class="flex items-center gap-3 lg:gap-4"><div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center group-hover:bg-white dark:group-hover:bg-slate-700 transition-all shadow-sm"><span class="text-[8px] lg:text-[10px] uppercase font-black text-slate-400 dark:text-slate-600 leading-none">${ssrInterpolate(day.dateObj.format("MMM"))}</span><span class="text-base lg:text-xl font-black leading-none text-slate-700 dark:text-slate-200 mt-0.5 transition-colors duration-500">${ssrInterpolate(day.dateObj.format("DD"))}</span></div><div><h4 class="font-bold text-slate-700 dark:text-white text-[11px] lg:text-sm capitalize transition-colors duration-500">${ssrInterpolate(day.dateObj.format("dddd"))}</h4><span class="text-[9px] lg:text-[11px] text-slate-400 dark:text-slate-500 font-bold bg-slate-50 dark:bg-slate-800 px-1.5 py-0.5 rounded border border-slate-100 dark:border-slate-700 mt-0.5 inline-block transition-colors duration-500">${ssrInterpolate(_ctx.$t("transaction_count", { count: day.transactions.length }))}</span></div></div><div class="flex items-center gap-3 lg:gap-6"><div class="pl-3 lg:pl-4 border-l border-slate-100 dark:border-slate-800 text-right"><span class="block text-[8px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-wider">${ssrInterpolate(_ctx.$t("daily_net"))}</span><span class="${ssrRenderClass([day.total_income - day.total_expense >= 0 ? "text-indigo-600 dark:text-indigo-400" : "text-orange-500 dark:text-orange-400", "text-[11px] lg:text-sm font-black font-mono transition-colors duration-500"])}">${ssrInterpolate(day.total_income - day.total_expense >= 0 ? "+" : "")}${ssrInterpolate(unref(formatMoney)(day.total_income - day.total_expense))}</span></div><span class="text-slate-300 dark:text-slate-700 group-hover:text-indigo-400 dark:group-hover:text-indigo-500 transition-colors">`);
-          _push(ssrRenderComponent(_sfc_main$4, {
+          _push(ssrRenderComponent(_sfc_main$3, {
             name: "chevron-right",
             size: "16"
           }, null, _parent));
@@ -717,7 +747,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
           _push(`<div class="flex lg:grid overflow-x-auto lg:overflow-visible no-scrollbar lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6 -mx-3 px-3 lg:mx-0 lg:px-0 pb-4 lg:pb-0"><!--[-->`);
           ssrRenderList(localSavings.value, (saving) => {
             _push(`<div class="shrink-0 w-[260px] lg:w-full">`);
-            _push(ssrRenderComponent(_sfc_main$6, {
+            _push(ssrRenderComponent(_sfc_main$5, {
               saving,
               onDeposit: (s) => openVaultAction(s, "deposit"),
               onWithdraw: (s) => openVaultAction(s, "withdraw"),
@@ -742,7 +772,13 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
       } else {
         _push(`<!---->`);
       }
-      _push(ssrRenderComponent(_sfc_main$7, { isExplorer: unref(isExplorer) }, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$6, {
+        isExplorer: unref(isExplorer),
+        title: "Arsitektur Keuangan Masa Depan",
+        description: "Tingkatkan ke tier Architect untuk mengaktifkan modul manajemen kekayaan tingkat lanjut ini.",
+        features: financePremiumFeatures,
+        onShowPreview: ($event) => openPremiumPreview("Finance")
+      }, null, _parent));
       _push(`</div></div></div>`);
       _push(ssrRenderComponent(TransactionModal, {
         show: showTransactionModal.value,
@@ -765,33 +801,38 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
         removeRow: unref(removeBatchRow),
         switchToSingle
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$8, {
+      _push(ssrRenderComponent(_sfc_main$7, {
         show: showBudgetModal.value,
         form: unref(budgetForm),
         categories: __props.categories,
         close: () => showBudgetModal.value = false,
         submit: submitNewBudget
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$9, {
+      _push(ssrRenderComponent(_sfc_main$8, {
         show: showCategoryModal.value,
         form: unref(categoryForm),
         close: () => showCategoryModal.value = false,
         submit: submitNewCategory
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$a, {
+      _push(ssrRenderComponent(_sfc_main$9, {
         show: showSavingModal.value,
         saving: activeSaving.value,
         processing: isSavingVault.value,
         onClose: ($event) => showSavingModal.value = false,
         onSave: (form) => form.id ? handleUpdateSaving(form) : handleStoreSaving(form)
       }, null, _parent));
-      _push(ssrRenderComponent(_sfc_main$b, {
+      _push(ssrRenderComponent(_sfc_main$a, {
         show: showVaultTxModal.value,
         saving: activeVault.value,
         type: vaultTxType.value,
         processing: isProcessingVaultTx.value,
         onClose: ($event) => showVaultTxModal.value = false,
         onSave: handleVaultTransaction
+      }, null, _parent));
+      _push(ssrRenderComponent(_sfc_main$b, {
+        isOpen: isPreviewOpen.value,
+        module: activePreviewModule.value,
+        onClose: ($event) => isPreviewOpen.value = false
       }, null, _parent));
       _push(`</div>`);
     };

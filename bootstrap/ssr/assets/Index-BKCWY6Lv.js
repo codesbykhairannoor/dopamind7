@@ -1,6 +1,6 @@
 import { ref, watch, computed, unref, useSSRContext } from "vue";
 import { ssrRenderComponent, ssrInterpolate } from "vue/server-renderer";
-import { usePage, Head } from "@inertiajs/vue3";
+import { usePage, Head, router } from "@inertiajs/vue3";
 import { A as AuthenticatedLayout } from "./AuthenticatedLayout-DKue-asX.js";
 import Swal from "sweetalert2";
 import { trans } from "laravel-vue-i18n";
@@ -12,6 +12,7 @@ import _sfc_main$4 from "./JobFilterBar-Bzn_Jmcz.js";
 import ResumeAiModal from "./ResumeAiModal-g2p5-kTe.js";
 import _sfc_main$5 from "./MasterCvModal-DL_SGPF3.js";
 import { _ as _sfc_main$2 } from "./NeuralBridge-DkSDbyOa.js";
+import { _ as _sfc_main$6 } from "./PremiumPreviewModal-C_TSLbT9.js";
 import dayjs from "dayjs";
 import "dayjs/locale/id.js";
 import "dayjs/locale/en.js";
@@ -24,6 +25,7 @@ import "dayjs/plugin/localeData.js";
 import "./useJobUI-ByDCvN_C.js";
 import "./JobStatusDropdown-CWqBlaKO.js";
 import "marked";
+import "lucide-vue-next";
 function useJobs(props) {
   const { canUse, isExplorer } = useGating();
   const localJobs = ref(props.jobs ? props.jobs.map((j) => ({ ...j, _key: "db_" + j.id, _original_status: j.status })) : []);
@@ -354,7 +356,13 @@ const _sfc_main = /* @__PURE__ */ Object.assign({ layout: AuthenticatedLayout },
       } else {
         _push(`<!---->`);
       }
-      _push(`<div class="mt-5 flex items-center justify-start"><p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium flex items-center gap-2 bg-indigo-50/50 dark:bg-indigo-500/10 px-4 py-2.5 rounded-xl border border-indigo-100 dark:border-indigo-900/30 shadow-sm transition-all duration-500"><span class="text-indigo-500 dark:text-indigo-400 text-base">💡</span> ${ssrInterpolate(_ctx.$t("job_tips", "Tips: Klik sel pada tabel untuk mengedit. Data otomatis tersimpan saat berpindah sel."))}</p></div></div></div><!--]-->`);
+      _push(`<div class="mt-5 flex items-center justify-start"><p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium flex items-center gap-2 bg-indigo-50/50 dark:bg-indigo-500/10 px-4 py-2.5 rounded-xl border border-indigo-100 dark:border-indigo-900/30 shadow-sm transition-all duration-500"><span class="text-indigo-500 dark:text-indigo-400 text-base">💡</span> ${ssrInterpolate(_ctx.$t("job_tips", "Tips: Klik sel pada tabel untuk mengedit. Data otomatis tersimpan saat berpindah sel."))}</p></div></div>`);
+      _push(ssrRenderComponent(_sfc_main$6, {
+        isOpen: unref(isExplorer),
+        module: "Jobs",
+        onClose: () => unref(router).visit(_ctx.route("dashboard"))
+      }, null, _parent));
+      _push(`</div><!--]-->`);
     };
   }
 });

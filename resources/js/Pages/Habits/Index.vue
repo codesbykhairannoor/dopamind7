@@ -11,7 +11,7 @@ import HabitStats from './HabitStats.vue';
 import HabitModals from './HabitModals.vue';
 import NeuralHabitInsight from './NeuralHabitInsight.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
-import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
+import PremiumPreviewModal from '@/Components/PremiumPreviewModal.vue';
 
 // PERSISTENT LAYOUT
 defineOptions({
@@ -50,6 +50,14 @@ const {
     saveHabitOrder,
     isExplorer, habitsCount
 } = useHabits(props);
+
+const isPreviewOpen = ref(false);
+const activePreviewModule = ref('Habits');
+
+const openPremiumPreview = (module = 'Habits') => {
+    activePreviewModule.value = module;
+    isPreviewOpen.value = true;
+};
 
 // Intercept Mood Selection for AI
 const handleMoodSelect = async (mood) => {
@@ -134,9 +142,6 @@ const habitPremiumFeatures = [
                 <NeuralBridge module="Habits" />
             </div>
 
-            <!-- NEW AI SECTION (Hidden for Explorer in main flow, teased in Wall) -->
-            <NeuralHabitInsight v-if="!isExplorer" ref="neuralOs" :currentMood="savedMood" />
-
             <HabitStats 
                 :localHabits="localHabits"
                 :overallPercentage="overallPercentage"
@@ -146,6 +151,36 @@ const habitPremiumFeatures = [
                 :savedMood="props.savedMood"
                 :selectMood="handleMoodSelect"
             />
+
+            <!-- NEW AI SECTION (Hidden for Explorer in main flow, teased in Wall) -->
+            <NeuralHabitInsight v-if="!isExplorer" ref="neuralOs" :currentMood="savedMood" />
+
+            <!-- 🧠 NEW: NEURAL CONSISTENCY SKELETAL UI (FOR EXPLORERS) -->
+            <div v-if="isExplorer" @click="openPremiumPreview('Habits')" 
+                 class="mx-4 md:mx-8 p-6 rounded-[2.5rem] bg-slate-900 border border-indigo-500/20 relative overflow-hidden group/habit-mastery cursor-pointer hover:scale-[1.01] transition-all duration-500 shadow-2xl">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/10 via-transparent to-transparent"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 border border-indigo-500/30">
+                            <Activity :size="24" />
+                        </div>
+                        <div>
+                             <h4 class="text-sm font-black text-white uppercase tracking-widest leading-none mb-1">Neural Consistency Lab</h4>
+                             <p class="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Analyze your identity shifts with AI</p>
+                        </div>
+                    </div>
+
+                    <!-- Skeletal Heatmap Grid -->
+                    <div class="flex gap-1.5 blur-[1.5px] opacity-30 group-hover:opacity-60 transition-all">
+                        <div v-for="i in 12" :key="i" class="w-3 h-3 rounded-[3px]" :class="i % 3 === 0 ? 'bg-indigo-500' : 'bg-slate-700'"></div>
+                    </div>
+
+                     <div class="flex items-center gap-2 text-indigo-400 font-black text-[10px] uppercase tracking-widest">
+                        Unlock Analytics <ArrowRight :size="14" />
+                    </div>
+                </div>
+            </div>
 
             <HabitModals 
                 :showDeleteModal="showDeleteModal"
@@ -174,13 +209,14 @@ const habitPremiumFeatures = [
                 :habitsCount="habitsCount"
             />
 
-            <LockedFeatureWall 
-                :isExplorer="isExplorer"
-                title="Master Your Identity"
-                description="Go beyond tracking. Build a lasting system with Quantum-tier Neural OS features."
-                :features="habitPremiumFeatures"
-            />
+<!-- Removed LockedFeatureWall -->
         </div>
+
+        <PremiumPreviewModal 
+            :isOpen="isPreviewOpen"
+            :module="activePreviewModule"
+            @close="isPreviewOpen = false"
+        />
     </div>
 </template>
 
