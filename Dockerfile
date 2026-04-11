@@ -35,14 +35,10 @@ COPY --from=builder /app /app
 # Set permissions for Laravel
 RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
 
-# Create startup script inline (avoids Windows CRLF line ending issues)
-RUN printf '#!/bin/bash\nset -e\necho "==> Running migrations..."\nphp artisan migrate --force\necho "==> Caching config, routes, views..."\nphp artisan config:cache\nphp artisan route:cache\nphp artisan view:cache\necho "==> Starting Octane + FrankenPHP..."\nexec php artisan octane:start --server=frankenphp --host=0.0.0.0 --port="${PORT:-8080}"\n' > /start.sh \
-    && chmod +x /start.sh
-
 # Environment configuration
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 ENV LOG_CHANNEL=stderr
 
-# Use startup script
-ENTRYPOINT ["/bin/bash", "/start.sh"]
+# Fallback entrypoint (Railway menggunakan nixpacks.toml deploy phase sebagai start command)
+ENTRYPOINT ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=8080"]
