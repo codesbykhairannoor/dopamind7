@@ -45,7 +45,7 @@
     {{-- SECTION 1: HERO (7:5 LAYOUT - VISION BOARD VIBE) --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-slate-50 relative border-b border-gray-100">
         {{-- Soft Abstract Shapes --}}
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-indigo-200/40 to-purple-200/40 rounded-full blur-[120px] -z-10 animate-pulse duration-[8000ms]"></div>
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-indigo-200/40 to-purple-200/40 rounded-full blur-[120px] -z-10 animate-pulse duration-&lsqb;8000ms&rsqb;"></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
             
@@ -102,7 +102,7 @@
                 </div>
 
                 {{-- Floating Habit Orb 1 --}}
-                <div class="absolute top-10 right-0 bg-white p-4 rounded-3xl shadow-xl border border-indigo-50 flex items-center gap-4 z-30 animate-bounce duration-[4000ms]">
+                <div class="absolute top-10 right-0 bg-white p-4 rounded-3xl shadow-xl border border-indigo-50 flex items-center gap-4 z-30 animate-bounce duration-&lsqb;4000ms&rsqb;">
                     <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg shadow-inner">✓</div>
                     <div>
                         <p class="font-bold text-gray-900 text-sm">{{ __('growth_mockup_habit_title') }}</p>
@@ -166,8 +166,8 @@
     {{-- SECTION 4: SURPRISE LAYOUT - IMMERSIVE GLASSMORPHISM --}}
     <section class="py-32 relative bg-indigo-950 flex items-center justify-center overflow-hidden min-h-[800px]">
         {{-- Giant Glowing Orbs Background --}}
-        <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-600 rounded-full mix-blend-screen filter blur-[150px] opacity-40 animate-pulse duration-[6000ms]"></div>
-        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-indigo-500 rounded-full mix-blend-screen filter blur-[150px] opacity-40 animate-pulse duration-[7000ms] delay-1000"></div>
+        <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-600 rounded-full mix-blend-screen filter blur-[150px] opacity-40 animate-pulse duration-&lsqb;6000ms&rsqb;"></div>
+        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-indigo-500 rounded-full mix-blend-screen filter blur-[150px] opacity-40 animate-pulse duration-&lsqb;7000ms&rsqb; delay-1000"></div>
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
 
         <div class="relative z-10 max-w-5xl w-full px-6 text-center">

@@ -98,7 +98,7 @@
         <div class="lg:col-span-5 mt-0 relative z-10 w-full h-[500px] animate-in fade-in slide-in-from-right-12 duration-1000 fill-mode-both flex items-center justify-center">
             
             {{-- Background Glow --}}
-            <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-indigo-500 rounded-full blur-[100px] opacity-20 animate-pulse duration-[5000ms]"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-sky-400 to-indigo-500 rounded-full blur-[100px] opacity-20 animate-pulse duration-&lsqb;5000ms&rsqb;"></div>
             
             {{-- 1. Center Piece: Freelancer ID Card --}}
             <div class="absolute z-20 w-72 bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-white p-6 transform hover:scale-105 transition duration-500">
@@ -128,7 +128,7 @@
             </div>
 
             {{-- 2. Floating Item Top Right: Payment Received --}}
-            <div class="absolute top-8 right-0 z-30 w-56 bg-slate-900 text-white rounded-2xl shadow-xl border border-slate-700 p-4 transform rotate-3 hover:rotate-0 transition duration-300 animate-bounce duration-[4000ms]">
+            <div class="absolute top-8 right-0 z-30 w-56 bg-slate-900 text-white rounded-2xl shadow-xl border border-slate-700 p-4 transform rotate-3 hover:rotate-0 transition duration-300 animate-bounce duration-&lsqb;4000ms&rsqb;">
                 <div class="flex items-center gap-3 mb-2">
                     <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm">💰</div>
                     <div>

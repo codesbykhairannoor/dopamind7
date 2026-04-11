@@ -275,7 +275,7 @@
                     <div class="relative flex items-center justify-center py-12 md:py-0">
                         {{-- Animated Circles --}}
                         <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-center">
-                            <div class="w-64 h-64 bg-indigo-600/10 rounded-full animate-ping duration-[4000ms]"></div>
+                            <div class="w-64 h-64 bg-indigo-600/10 rounded-full animate-ping duration-&lsqb;4000ms&rsqb;"></div>
                             <div class="absolute w-48 h-48 border border-white/5 rounded-full animate-spin duration-&lsqb;10000ms&rsqb;"></div>
                         </div>
                         <div class="w-40 h-40 bg-indigo-600 rounded-[2.5rem] flex items-center justify-center text-5xl shadow-[0_0_80px_rgba(79,70,229,0.6)] z-10 transform rotate-12 animate-pulse font-black">
@@ -536,7 +536,7 @@
 
     <section class="py-24 bg-white bg-pattern-cross px-6">
         <div class="max-w-6xl mx-auto bg-gradient-to-br from-indigo-900 to-indigo-950 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl border border-indigo-800">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-pulse duration-[6000ms]"></div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-600 rounded-full mix-blend-screen filter blur-[120px] opacity-30 animate-pulse duration-&lsqb;6000ms&rsqb;"></div>
             
             <div class="relative z-10">
                 <h2 class="text-5xl md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('finance_cta_title') }}</h2>

@@ -14,7 +14,7 @@ import DailyTrendChart from "./DailyTrendChart-TOHlRPw2.js";
 import ArchiveModal from "./ArchiveModal-BfckbtdK.js";
 import FullArchiveModal from "./FullArchiveModal-DDNXSd8t.js";
 import _sfc_main$5 from "./FinanceDatePicker-CxOhCf2w.js";
-import FinanceBatchModal from "./FinanceBatchModal-D0m_3WLF.js";
+import FinanceBatchModal from "./FinanceBatchModal-CmaJXLYh.js";
 import { u as useFinanceForm, F as FinanceInsights } from "./FinanceInsights-Bb26wnio.js";
 import _sfc_main$6 from "./SavingCard-C3qPUs9X.js";
 import _sfc_main$9 from "./SavingModal-BGDJzsry.js";

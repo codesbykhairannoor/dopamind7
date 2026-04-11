@@ -86,7 +86,7 @@
     {{-- ================================================================= --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white relative border-b border-slate-100">
         {{-- Cosmic Background --}}
-        <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-indigo-100/50 to-purple-100/20 rounded-full blur-[120px] -z-10 animate-pulse duration-[10000ms]"></div>
+        <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-indigo-100/50 to-purple-100/20 rounded-full blur-[120px] -z-10 animate-pulse duration-&lsqb;10000ms&rsqb;"></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center relative z-10">
             

@@ -48,13 +48,13 @@
 
         {{-- FLOATER ICONS (Styled like Stories Badge) --}}
         <div class="hidden xl:block absolute left-20 top-1/2 -translate-y-1/2 space-y-12 animate-in slide-in-from-left-12 duration-1000">
-            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-[4000ms]">🌱</div>
-            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-[5000ms] delay-500 ml-12">💰</div>
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-&lsqb;4000ms&rsqb;">🌱</div>
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-&lsqb;5000ms&rsqb; delay-500 ml-12">💰</div>
         </div>
 
         <div class="hidden xl:block absolute right-20 top-1/2 -translate-y-1/2 space-y-12 animate-in slide-in-from-right-12 duration-1000">
-            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-[4200ms] delay-300">📔</div>
-            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-[3800ms] mr-12">⚡</div>
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-&lsqb;4200ms&rsqb; delay-300">📔</div>
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-xl border border-gray-100 flex items-center justify-center text-2xl animate-bounce duration-&lsqb;3800ms&rsqb; mr-12">⚡</div>
         </div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10">

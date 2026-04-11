@@ -82,7 +82,7 @@
                 </div>
 
                 {{-- Floating Badge (🏆 gaya Habit) --}}
-                <div class="absolute -right-6 -bottom-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 z-20 animate-bounce duration-[4000ms] hidden md:block">
+                <div class="absolute -right-6 -bottom-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-50 z-20 animate-bounce duration-&lsqb;4000ms&rsqb; hidden md:block">
                     <div class="flex items-center gap-3">
                         <div class="text-2xl">✨</div>
                         <div class="text-left">

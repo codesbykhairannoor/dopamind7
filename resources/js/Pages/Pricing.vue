@@ -154,7 +154,6 @@ onMounted(() => {
                         <span class="absolute -top-4 -right-2 px-2 py-1 rounded-lg bg-emerald-500 text-[8px] text-white animate-bounce shadow-lg">{{ $t('pricing_billing_save') }}</span>
                     </button>
                 </div>
-            </div>
 
             <!-- 💎 Pricing Grid -->
             <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

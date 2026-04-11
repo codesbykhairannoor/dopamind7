@@ -131,7 +131,7 @@
         <div class="col-span-12 lg:col-span-8 space-y-12">
             @if($post->featured_image_url)
                 <div class="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-100/50 border border-slate-100 mb-20 animate-in fade-in zoom-in duration-1000">
-                    <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-[3s]">
+                    <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-&lsqb;3s&rsqb;">
                 </div>
             @endif
 

@@ -92,7 +92,7 @@
         <div class="lg:col-span-5 mt-0 relative z-10 w-full animate-in fade-in slide-in-from-right-12 duration-1000 fill-mode-both">
             
             {{-- Background Glow --}}
-            <div class="absolute -inset-1 bg-gradient-to-br from-indigo-500 via-purple-400 to-rose-400 rounded-[2.5rem] blur opacity-20 animate-pulse duration-[4000ms]"></div>
+            <div class="absolute -inset-1 bg-gradient-to-br from-indigo-500 via-purple-400 to-rose-400 rounded-[2.5rem] blur opacity-20 animate-pulse duration-&lsqb;4000ms&rsqb;"></div>
             
             {{-- Main App Window (Locked Height: 500px) --}}
             <div class="relative bg-white rounded-[2.5rem] shadow-2xl border border-white flex flex-col h-[500px] overflow-hidden transform transition hover:scale-[1.01] duration-500">
@@ -426,7 +426,7 @@
     {{-- SECTION 6: STUDENT CTA --}}
     <section class="py-24 px-6 relative overflow-hidden">
         <div class="absolute inset-0 bg-indigo-600 -z-20"></div>
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-500 rounded-full mix-blend-screen filter blur-[150px] opacity-40 -z-10 animate-pulse duration-[6000ms]"></div>
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-500 rounded-full mix-blend-screen filter blur-[150px] opacity-40 -z-10 animate-pulse duration-&lsqb;6000ms&rsqb;"></div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <h2 class="text-6xl leading-[1.1] md:text-6xl mb-8 text-white tracking-tight font-black">{{ __('student_cta_title') }}</h2>

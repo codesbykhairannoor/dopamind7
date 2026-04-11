@@ -1,11 +1,11 @@
-import { ref, computed, onMounted, unref, withCtx, createVNode, resolveDynamicComponent, toDisplayString, createTextVNode, createBlock, openBlock, Fragment, renderList, createCommentVNode, useSSRContext } from "vue";
+import { ref, computed, onMounted, unref, withCtx, createVNode, resolveDynamicComponent, createTextVNode, toDisplayString, createBlock, openBlock, Fragment, renderList, createCommentVNode, useSSRContext } from "vue";
 import { ssrRenderComponent, ssrInterpolate, ssrRenderClass, ssrRenderList, ssrRenderVNode, ssrIncludeBooleanAttr } from "vue/server-renderer";
 import { A as AuthenticatedLayout } from "./AuthenticatedLayout-Dn0NOYYa.js";
 import { Head, router } from "@inertiajs/vue3";
 import "./OneForMindIcon-BvGLCgx4.js";
 import { u as useFinanceFormat } from "./useFinanceFormat-CwGVpwq9.js";
 import { u as useGating } from "./useGating-PcBpuO-w.js";
-import { ListChecks, Calendar, Wallet, Globe, MessageSquare, Zap, TrendingUp, MousePointer2, ShieldCheck, Sparkles, Brain, Cloud, Star, Infinity, Shield, Check, ArrowRight } from "lucide-vue-next";
+import { ListChecks, Lock, Calendar, Zap, Wallet, MousePointer2, Sparkles, Brain, Star, Infinity, Globe, Shield, ShieldCheck, MessageSquare, ArrowRight } from "lucide-vue-next";
 import { _ as _export_sfc } from "./_plugin-vue_export-helper-1tPrXgE0.js";
 import "./useAppearance-rDoGVD4_.js";
 import "laravel-vue-i18n";
@@ -27,11 +27,13 @@ const _sfc_main = {
           period: "pricing_forever",
           desc: "pricing_explorer_desc",
           features: [
-            { text: "pricing_f_single_habit", icon: ListChecks },
-            { text: "pricing_f_basic_planner", icon: Calendar },
-            { text: "pricing_f_finance_monitor", icon: Wallet },
-            { text: "pricing_f_mobile_access", icon: Globe },
-            { text: "pricing_f_community", icon: MessageSquare }
+            { text: "pricing_f_habit_open", icon: ListChecks },
+            { text: "pricing_f_batch_habit_locked", icon: Lock, isLocked: true },
+            { text: "pricing_f_planner_tab_open", icon: Calendar },
+            { text: "pricing_f_batch_planner_locked", icon: Lock, isLocked: true },
+            { text: "pricing_f_vault_locked", icon: Lock, isLocked: true },
+            { text: "pricing_f_lab_locked", icon: Lock, isLocked: true },
+            { text: "pricing_f_trends_locked", icon: Lock, isLocked: true }
           ],
           buttonText: "pricing_btn_current",
           theme: "slate"
@@ -45,12 +47,11 @@ const _sfc_main = {
           desc: "pricing_architect_desc",
           features: [
             { text: "pricing_feature_header_explorer_plus", isHeader: true },
-            { text: "pricing_f_unlimited_habit", icon: ListChecks },
-            { text: "pricing_f_batch_planner", icon: Zap },
-            { text: "pricing_f_the_vault", icon: Wallet },
-            { text: "pricing_f_finance_trends", icon: TrendingUp },
+            { text: "pricing_f_all_tabs_open", icon: ListChecks },
+            { text: "pricing_f_batch_unlocked", icon: Zap },
+            { text: "pricing_f_financial_ecosystem", icon: Wallet },
             { text: "pricing_f_custom_themes", icon: MousePointer2 },
-            { text: "pricing_f_ad_free", icon: ShieldCheck }
+            { text: "pricing_f_ai_coach_locked", icon: Lock, isLocked: true }
           ],
           buttonText: "pricing_btn_upgrade",
           theme: "indigo"
@@ -64,17 +65,16 @@ const _sfc_main = {
           desc: "pricing_quantum_desc",
           features: [
             { text: "pricing_feature_header_architect_plus", isHeader: true },
-            { text: "pricing_f_neural_ai", icon: Sparkles },
-            { text: "pricing_f_ai_mind_mapping", icon: Brain },
-            { text: "pricing_f_mood_advisory", icon: Cloud },
+            { text: "pricing_f_ai_full_access", icon: Sparkles },
+            { text: "pricing_f_ai_insights", icon: Brain },
             { text: "pricing_f_ai_finance_insights", icon: Star },
-            { text: "pricing_f_early_access", icon: Globe },
-            { text: "pricing_f_neural_sync", icon: Infinity }
+            { text: "pricing_f_neural_sync", icon: Infinity },
+            { text: "pricing_f_early_access", icon: Globe }
           ],
           buttonText: "pricing_btn_unleash",
           highlight: true,
           theme: "premium",
-          badge: "Most Popular",
+          badge: "pricing_badge_popular",
           icon: "sparkles"
         },
         {
@@ -87,15 +87,14 @@ const _sfc_main = {
           features: [
             { text: "pricing_feature_header_quantum_plus", isHeader: true },
             { text: "pricing_f_lifetime_access", icon: Infinity },
+            { text: "pricing_f_legendary_trial_ai", icon: Zap },
             { text: "pricing_f_vvip_support", icon: Shield },
-            { text: "pricing_f_custom_branding", icon: Star },
-            { text: "pricing_f_beta_enrollment", icon: Brain },
             { text: "pricing_f_founder_badge", icon: ShieldCheck },
             { text: "pricing_f_onboarding", icon: MessageSquare }
           ],
           buttonText: "pricing_btn_legendary",
           theme: "dark",
-          badge: "Limited Offer",
+          badge: "pricing_badge_limited",
           icon: "infinity"
         }
       ];
@@ -125,49 +124,42 @@ const _sfc_main = {
       _push(ssrRenderComponent(AuthenticatedLayout, null, {
         default: withCtx((_, _push2, _parent2, _scopeId) => {
           if (_push2) {
-            _push2(`<div class="bg-slate-50 dark:bg-slate-950 min-h-screen pb-32 pt-10 px-4 md:px-8" data-v-70aa9c83${_scopeId}><div class="max-w-6xl mx-auto mb-12 animate-in fade-in duration-1000" data-v-70aa9c83${_scopeId}><div class="flex flex-col md:flex-row items-center justify-between p-4 md:p-6 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none gap-4" data-v-70aa9c83${_scopeId}><div class="flex items-center gap-4" data-v-70aa9c83${_scopeId}><div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-500" data-v-70aa9c83${_scopeId}>`);
-            _push2(ssrRenderComponent(unref(ShieldCheck), { size: 24 }, null, _parent2, _scopeId));
-            _push2(`</div><div data-v-70aa9c83${_scopeId}><p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_workspace_status_title"))}</p><h2 class="text-sm font-black text-slate-800 dark:text-white" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_workspace_status_text"))} <span class="text-indigo-600 dark:text-indigo-400 px-2 py-0.5 bg-indigo-50 dark:bg-indigo-500/10 rounded-lg" data-v-70aa9c83${_scopeId}>${ssrInterpolate(unref(userTier) === 1 ? "Explorer" : unref(userTier) === 2 ? "Architect" : unref(userTier) === 3 ? "Quantum" : "Legendary")} Plan</span></h2></div></div><div class="flex items-center gap-8" data-v-70aa9c83${_scopeId}><div class="text-right hidden sm:block" data-v-70aa9c83${_scopeId}><p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_storage_usage"))}</p><p class="text-sm font-black text-slate-800 dark:text-white" data-v-70aa9c83${_scopeId}>0 / 100 MB</p></div><div class="h-10 w-px bg-slate-100 dark:bg-slate-800 hidden md:block" data-v-70aa9c83${_scopeId}></div><div class="flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-500/10 rounded-2xl border border-emerald-100 dark:border-emerald-500/20" data-v-70aa9c83${_scopeId}>`);
-            _push2(ssrRenderComponent(unref(Check), {
-              size: 14,
-              class: "text-emerald-500"
-            }, null, _parent2, _scopeId));
-            _push2(`<span class="text-[10px] font-black text-emerald-600 uppercase tracking-tight" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_money_back"))}</span></div></div></div></div><div class="max-w-4xl mx-auto text-center mb-16 space-y-4" data-v-70aa9c83${_scopeId}><h1 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_hero_title"))} <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_hero_highlight"))}</span></h1><p class="text-slate-500 dark:text-slate-400 font-bold max-w-xl mx-auto leading-relaxed" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_hero_desc"))}</p><div class="inline-flex items-center p-1 bg-white dark:bg-slate-900 rounded-[1.8rem] border border-slate-100 dark:border-slate-800 shadow-sm mt-8 scale-110" data-v-70aa9c83${_scopeId}><button class="${ssrRenderClass([!isAnnual.value ? "bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl" : "text-slate-400 hover:text-slate-600", "px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all"])}" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_billing_monthly"))}</button><button class="${ssrRenderClass([isAnnual.value ? "bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl" : "text-slate-400 hover:text-slate-600", "px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all relative flex items-center gap-2"])}" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_billing_yearly"))} <span class="absolute -top-4 -right-2 px-2 py-1 rounded-lg bg-emerald-500 text-[8px] text-white animate-bounce shadow-lg" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_billing_save"))}</span></button></div></div><div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-v-70aa9c83${_scopeId}><!--[-->`);
+            _push2(`<div class="bg-slate-50 dark:bg-slate-950 min-h-screen pb-32 pt-20 px-4 md:px-8" data-v-41766a3e${_scopeId}><h1 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_hero_title"))} <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_hero_highlight"))}</span></h1><p class="text-slate-500 dark:text-slate-400 font-bold max-w-xl mx-auto leading-relaxed" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_hero_desc"))}</p><div class="inline-flex items-center p-1 bg-white dark:bg-slate-900 rounded-[1.8rem] border border-slate-100 dark:border-slate-800 shadow-sm mt-8 scale-110" data-v-41766a3e${_scopeId}><button class="${ssrRenderClass([!isAnnual.value ? "bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl" : "text-slate-400 hover:text-slate-600", "px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all"])}" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_billing_monthly"))}</button><button class="${ssrRenderClass([isAnnual.value ? "bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl" : "text-slate-400 hover:text-slate-600", "px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all relative flex items-center gap-2"])}" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_billing_yearly"))} <span class="absolute -top-4 -right-2 px-2 py-1 rounded-lg bg-emerald-500 text-[8px] text-white animate-bounce shadow-lg" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_billing_save"))}</span></button></div><div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-v-41766a3e${_scopeId}><!--[-->`);
             ssrRenderList(plans.value, (plan, index) => {
               _push2(`<div class="${ssrRenderClass([[
                 plan.highlight ? "border-indigo-500 ring-2 ring-indigo-500/20" : "border-slate-100 dark:border-slate-800",
                 plan.theme === "dark" ? "dark:bg-indigo-950 border-indigo-900" : ""
-              ], "group relative flex flex-col p-8 rounded-[3rem] border transition-all duration-700 bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-2 hover:shadow-2xl"])}" data-v-70aa9c83${_scopeId}>`);
+              ], "group relative flex flex-col p-8 rounded-[3rem] border transition-all duration-700 bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-2 hover:shadow-2xl"])}" data-v-41766a3e${_scopeId}>`);
               if (plan.badge) {
-                _push2(`<div class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest shadow-xl" data-v-70aa9c83${_scopeId}>${ssrInterpolate(plan.badge)}</div>`);
+                _push2(`<div class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest shadow-xl" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t(plan.badge))}</div>`);
               } else {
                 _push2(`<!---->`);
               }
-              _push2(`<div class="mb-8" data-v-70aa9c83${_scopeId}><h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-6" data-v-70aa9c83${_scopeId}>${ssrInterpolate(plan.name)}</h3><div class="flex items-baseline gap-2" data-v-70aa9c83${_scopeId}><span class="text-4xl lg:text-5xl font-black text-slate-950 dark:text-white tracking-tighter" data-v-70aa9c83${_scopeId}>${ssrInterpolate(plan.price)}</span>`);
+              _push2(`<div class="mb-8" data-v-41766a3e${_scopeId}><h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-6" data-v-41766a3e${_scopeId}>${ssrInterpolate(plan.name)}</h3><div class="flex items-baseline gap-2" data-v-41766a3e${_scopeId}><span class="text-4xl lg:text-5xl font-black text-slate-950 dark:text-white tracking-tighter" data-v-41766a3e${_scopeId}>${ssrInterpolate(plan.price)}</span>`);
               if (plan.tier > 1) {
-                _push2(`<span class="text-[10px] font-bold text-slate-400 mb-1" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t(plan.period))}</span>`);
+                _push2(`<span class="text-[10px] font-bold text-slate-400 mb-1" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t(plan.period))}</span>`);
               } else {
                 _push2(`<!---->`);
               }
-              _push2(`</div></div><p class="text-[11px] font-bold text-slate-500 leading-relaxed min-h-[44px] mb-8" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t(plan.desc))}</p><div class="space-y-4 mb-10 flex-grow border-t border-slate-50 dark:border-slate-800 pt-8" data-v-70aa9c83${_scopeId}><!--[-->`);
+              _push2(`</div></div><p class="text-[11px] font-bold text-slate-500 leading-relaxed min-h-[44px] mb-8" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t(plan.desc))}</p><div class="space-y-4 mb-10 flex-grow border-t border-slate-50 dark:border-slate-800 pt-8" data-v-41766a3e${_scopeId}><!--[-->`);
               ssrRenderList(plan.features, (feat, fIdx) => {
-                _push2(`<div class="flex items-start gap-4" data-v-70aa9c83${_scopeId}>`);
+                _push2(`<div class="${ssrRenderClass([feat.isLocked ? "opacity-40" : "", "flex items-start gap-4"])}" data-v-41766a3e${_scopeId}>`);
                 if (feat.isHeader) {
-                  _push2(`<p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-2 mb-1 w-full" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t(feat.text))}</p>`);
+                  _push2(`<p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-2 mb-1 w-full" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t(feat.text))}</p>`);
                 } else {
-                  _push2(`<!--[--><div class="mt-1 flex items-center justify-center shrink-0" data-v-70aa9c83${_scopeId}>`);
+                  _push2(`<!--[--><div class="mt-1 flex items-center justify-center shrink-0" data-v-41766a3e${_scopeId}>`);
                   ssrRenderVNode(_push2, createVNode(resolveDynamicComponent(feat.icon), {
                     size: 14,
-                    class: "text-indigo-500",
+                    class: feat.isLocked ? "text-slate-500" : "text-indigo-500",
                     "stroke-width": "2.5"
                   }, null), _parent2, _scopeId);
-                  _push2(`</div><span class="text-[11px] font-black text-slate-700 dark:text-slate-200 leading-tight" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t(feat.text))}</span><!--]-->`);
+                  _push2(`</div><span class="${ssrRenderClass([feat.isLocked ? "text-slate-500" : "text-slate-700 dark:text-slate-200", "text-[11px] font-black leading-tight"])}" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t(feat.text))}</span><!--]-->`);
                 }
                 _push2(`</div>`);
               });
-              _push2(`<!--]--></div><div class="mt-auto" data-v-70aa9c83${_scopeId}><button${ssrIncludeBooleanAttr(plan.tier <= unref(userTier)) ? " disabled" : ""} class="${ssrRenderClass([[
+              _push2(`<!--]--></div><div class="mt-auto" data-v-41766a3e${_scopeId}><button${ssrIncludeBooleanAttr(plan.tier <= unref(userTier)) ? " disabled" : ""} class="${ssrRenderClass([[
                 plan.tier === unref(userTier) ? "bg-slate-100 dark:bg-slate-800 text-slate-400 cursor-default" : plan.highlight ? "bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-indigo-500/40" : "bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:bg-slate-800"
-              ], "w-full py-5 rounded-[2rem] font-black text-xs transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-3 group/btn shadow-xl shadow-slate-200 dark:shadow-none"])}" data-v-70aa9c83${_scopeId}>${ssrInterpolate(plan.tier === unref(userTier) ? _ctx.$t("pricing_btn_current") : _ctx.$t(plan.buttonText))} `);
+              ], "w-full py-5 rounded-[2rem] font-black text-xs transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-3 group/btn shadow-xl shadow-slate-200 dark:shadow-none"])}" data-v-41766a3e${_scopeId}>${ssrInterpolate(plan.tier === unref(userTier) ? _ctx.$t("pricing_btn_current") : _ctx.$t(plan.buttonText))} `);
               if (plan.tier > unref(userTier)) {
                 _push2(ssrRenderComponent(unref(ArrowRight), {
                   size: 16,
@@ -178,13 +170,13 @@ const _sfc_main = {
               }
               _push2(`</button>`);
               if (plan.tier > unref(userTier) && plan.initial) {
-                _push2(`<p class="text-center mt-4 text-[9px] font-bold text-indigo-500" data-v-70aa9c83${_scopeId}> Guaranteed Lifetime Access </p>`);
+                _push2(`<p class="text-center mt-4 text-[9px] font-bold text-indigo-500" data-v-41766a3e${_scopeId}> Guaranteed Lifetime Access </p>`);
               } else {
                 _push2(`<!---->`);
               }
               _push2(`</div></div>`);
             });
-            _push2(`<!--]--></div><div class="mt-40 max-w-5xl mx-auto animate-in slide-in-from-bottom-12 duration-1000" data-v-70aa9c83${_scopeId}><div class="text-center mb-16" data-v-70aa9c83${_scopeId}><h2 class="text-3xl font-black text-slate-900 dark:text-white mb-4" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_comparison_title"))}</h2><p class="text-xs font-bold text-slate-400 capitalize tracking-widest" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_comparison_subtitle"))}</p></div><div class="bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-100 dark:border-slate-800 overflow-hidden shadow-2xl" data-v-70aa9c83${_scopeId}><table class="w-full text-left border-collapse" data-v-70aa9c83${_scopeId}><thead data-v-70aa9c83${_scopeId}><tr class="bg-slate-50 dark:bg-slate-800/50" data-v-70aa9c83${_scopeId}><th class="p-8 text-[10px] font-black uppercase tracking-widest text-slate-400" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_feature_col_name"))}</th><th class="p-8 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white text-center" data-v-70aa9c83${_scopeId}>Explorer</th><th class="p-8 text-[10px] font-black uppercase tracking-widest text-indigo-500 text-center" data-v-70aa9c83${_scopeId}>Architect</th><th class="p-8 text-[10px] font-black uppercase tracking-widest text-amber-500 text-center" data-v-70aa9c83${_scopeId}>Quantum</th></tr></thead><tbody class="divide-y divide-slate-50 dark:divide-slate-800" data-v-70aa9c83${_scopeId}><!--[-->`);
+            _push2(`<!--]--></div><div class="mt-40 max-w-5xl mx-auto animate-in slide-in-from-bottom-12 duration-1000" data-v-41766a3e${_scopeId}><div class="text-center mb-16" data-v-41766a3e${_scopeId}><h2 class="text-3xl font-black text-slate-900 dark:text-white mb-4" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_comparison_title"))}</h2><p class="text-xs font-bold text-slate-400 capitalize tracking-widest" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_comparison_subtitle"))}</p></div><div class="bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-100 dark:border-slate-800 overflow-hidden shadow-2xl" data-v-41766a3e${_scopeId}><table class="w-full text-left border-collapse" data-v-41766a3e${_scopeId}><thead data-v-41766a3e${_scopeId}><tr class="bg-slate-50 dark:bg-slate-800/50" data-v-41766a3e${_scopeId}><th class="p-8 text-[10px] font-black uppercase tracking-widest text-slate-400" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_feature_col_name"))}</th><th class="p-8 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white text-center" data-v-41766a3e${_scopeId}>Explorer</th><th class="p-8 text-[10px] font-black uppercase tracking-widest text-indigo-500 text-center" data-v-41766a3e${_scopeId}>Architect</th><th class="p-8 text-[10px] font-black uppercase tracking-widest text-amber-500 text-center" data-v-41766a3e${_scopeId}>Quantum</th></tr></thead><tbody class="divide-y divide-slate-50 dark:divide-slate-800" data-v-41766a3e${_scopeId}><!--[-->`);
             ssrRenderList([
               { name: _ctx.$t("pricing_f_active_habits"), explorer: "5 Habits", architect: _ctx.$t("pricing_v_unlimited"), quantum: _ctx.$t("pricing_v_unlimited") },
               { name: _ctx.$t("pricing_f_planner_engine"), explorer: _ctx.$t("pricing_v_standard"), architect: _ctx.$t("pricing_v_batch"), quantum: _ctx.$t("pricing_v_ai_powered") },
@@ -193,61 +185,29 @@ const _sfc_main = {
               { name: _ctx.$t("pricing_f_life_insights"), explorer: "Basic", architect: _ctx.$t("pricing_v_advanced"), quantum: _ctx.$t("pricing_v_predictive") },
               { name: _ctx.$t("pricing_f_custom_modules"), explorer: "—", architect: _ctx.$t("pricing_v_partial"), quantum: _ctx.$t("pricing_v_full") }
             ], (row) => {
-              _push2(`<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors" data-v-70aa9c83${_scopeId}><td class="p-8 text-xs font-black text-slate-700 dark:text-slate-200" data-v-70aa9c83${_scopeId}>${ssrInterpolate(row.name)}</td><td class="p-8 text-xs font-bold text-slate-400 text-center" data-v-70aa9c83${_scopeId}>${ssrInterpolate(row.explorer)}</td><td class="p-8 text-xs font-black text-indigo-600 dark:text-indigo-400 text-center" data-v-70aa9c83${_scopeId}>${ssrInterpolate(row.architect)}</td><td class="p-8 text-xs font-black text-amber-600 dark:text-amber-500 text-center" data-v-70aa9c83${_scopeId}>${ssrInterpolate(row.quantum)}</td></tr>`);
+              _push2(`<tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors" data-v-41766a3e${_scopeId}><td class="p-8 text-xs font-black text-slate-700 dark:text-slate-200" data-v-41766a3e${_scopeId}>${ssrInterpolate(row.name)}</td><td class="p-8 text-xs font-bold text-slate-400 text-center" data-v-41766a3e${_scopeId}>${ssrInterpolate(row.explorer)}</td><td class="p-8 text-xs font-black text-indigo-600 dark:text-indigo-400 text-center" data-v-41766a3e${_scopeId}>${ssrInterpolate(row.architect)}</td><td class="p-8 text-xs font-black text-amber-600 dark:text-amber-500 text-center" data-v-41766a3e${_scopeId}>${ssrInterpolate(row.quantum)}</td></tr>`);
             });
-            _push2(`<!--]--></tbody></table></div><div class="mt-16 text-center" data-v-70aa9c83${_scopeId}><p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4" data-v-70aa9c83${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_infra_badge"))}</p><div class="flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale contrast-125" data-v-70aa9c83${_scopeId}><div class="flex items-center gap-2" data-v-70aa9c83${_scopeId}><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full" data-v-70aa9c83${_scopeId}></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]" data-v-70aa9c83${_scopeId}>Asana Strength</span></div><div class="flex items-center gap-2" data-v-70aa9c83${_scopeId}><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full" data-v-70aa9c83${_scopeId}></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]" data-v-70aa9c83${_scopeId}>ClickUp Power</span></div><div class="flex items-center gap-2" data-v-70aa9c83${_scopeId}><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full" data-v-70aa9c83${_scopeId}></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]" data-v-70aa9c83${_scopeId}>Notion Clarity</span></div></div></div></div></div>`);
+            _push2(`<!--]--></tbody></table></div><div class="mt-16 text-center" data-v-41766a3e${_scopeId}><p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4" data-v-41766a3e${_scopeId}>${ssrInterpolate(_ctx.$t("pricing_infra_badge"))}</p><div class="flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale contrast-125" data-v-41766a3e${_scopeId}><div class="flex items-center gap-2" data-v-41766a3e${_scopeId}><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full" data-v-41766a3e${_scopeId}></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]" data-v-41766a3e${_scopeId}>Asana Strength</span></div><div class="flex items-center gap-2" data-v-41766a3e${_scopeId}><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full" data-v-41766a3e${_scopeId}></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]" data-v-41766a3e${_scopeId}>ClickUp Power</span></div><div class="flex items-center gap-2" data-v-41766a3e${_scopeId}><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full" data-v-41766a3e${_scopeId}></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]" data-v-41766a3e${_scopeId}>Notion Clarity</span></div></div></div></div></div>`);
           } else {
             return [
-              createVNode("div", { class: "bg-slate-50 dark:bg-slate-950 min-h-screen pb-32 pt-10 px-4 md:px-8" }, [
-                createVNode("div", { class: "max-w-6xl mx-auto mb-12 animate-in fade-in duration-1000" }, [
-                  createVNode("div", { class: "flex flex-col md:flex-row items-center justify-between p-4 md:p-6 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-200/50 dark:shadow-none gap-4" }, [
-                    createVNode("div", { class: "flex items-center gap-4" }, [
-                      createVNode("div", { class: "w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-500" }, [
-                        createVNode(unref(ShieldCheck), { size: 24 })
-                      ]),
-                      createVNode("div", null, [
-                        createVNode("p", { class: "text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1" }, toDisplayString(_ctx.$t("pricing_workspace_status_title")), 1),
-                        createVNode("h2", { class: "text-sm font-black text-slate-800 dark:text-white" }, [
-                          createTextVNode(toDisplayString(_ctx.$t("pricing_workspace_status_text")) + " ", 1),
-                          createVNode("span", { class: "text-indigo-600 dark:text-indigo-400 px-2 py-0.5 bg-indigo-50 dark:bg-indigo-500/10 rounded-lg" }, toDisplayString(unref(userTier) === 1 ? "Explorer" : unref(userTier) === 2 ? "Architect" : unref(userTier) === 3 ? "Quantum" : "Legendary") + " Plan", 1)
-                        ])
-                      ])
-                    ]),
-                    createVNode("div", { class: "flex items-center gap-8" }, [
-                      createVNode("div", { class: "text-right hidden sm:block" }, [
-                        createVNode("p", { class: "text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1" }, toDisplayString(_ctx.$t("pricing_storage_usage")), 1),
-                        createVNode("p", { class: "text-sm font-black text-slate-800 dark:text-white" }, "0 / 100 MB")
-                      ]),
-                      createVNode("div", { class: "h-10 w-px bg-slate-100 dark:bg-slate-800 hidden md:block" }),
-                      createVNode("div", { class: "flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-500/10 rounded-2xl border border-emerald-100 dark:border-emerald-500/20" }, [
-                        createVNode(unref(Check), {
-                          size: 14,
-                          class: "text-emerald-500"
-                        }),
-                        createVNode("span", { class: "text-[10px] font-black text-emerald-600 uppercase tracking-tight" }, toDisplayString(_ctx.$t("pricing_money_back")), 1)
-                      ])
-                    ])
-                  ])
+              createVNode("div", { class: "bg-slate-50 dark:bg-slate-950 min-h-screen pb-32 pt-20 px-4 md:px-8" }, [
+                createVNode("h1", { class: "text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter" }, [
+                  createTextVNode(toDisplayString(_ctx.$t("pricing_hero_title")) + " ", 1),
+                  createVNode("span", { class: "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" }, toDisplayString(_ctx.$t("pricing_hero_highlight")), 1)
                 ]),
-                createVNode("div", { class: "max-w-4xl mx-auto text-center mb-16 space-y-4" }, [
-                  createVNode("h1", { class: "text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter" }, [
-                    createTextVNode(toDisplayString(_ctx.$t("pricing_hero_title")) + " ", 1),
-                    createVNode("span", { class: "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" }, toDisplayString(_ctx.$t("pricing_hero_highlight")), 1)
-                  ]),
-                  createVNode("p", { class: "text-slate-500 dark:text-slate-400 font-bold max-w-xl mx-auto leading-relaxed" }, toDisplayString(_ctx.$t("pricing_hero_desc")), 1),
-                  createVNode("div", { class: "inline-flex items-center p-1 bg-white dark:bg-slate-900 rounded-[1.8rem] border border-slate-100 dark:border-slate-800 shadow-sm mt-8 scale-110" }, [
-                    createVNode("button", {
-                      onClick: ($event) => isAnnual.value = false,
-                      class: ["px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all", !isAnnual.value ? "bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl" : "text-slate-400 hover:text-slate-600"]
-                    }, toDisplayString(_ctx.$t("pricing_billing_monthly")), 11, ["onClick"]),
-                    createVNode("button", {
-                      onClick: ($event) => isAnnual.value = true,
-                      class: ["px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all relative flex items-center gap-2", isAnnual.value ? "bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl" : "text-slate-400 hover:text-slate-600"]
-                    }, [
-                      createTextVNode(toDisplayString(_ctx.$t("pricing_billing_yearly")) + " ", 1),
-                      createVNode("span", { class: "absolute -top-4 -right-2 px-2 py-1 rounded-lg bg-emerald-500 text-[8px] text-white animate-bounce shadow-lg" }, toDisplayString(_ctx.$t("pricing_billing_save")), 1)
-                    ], 10, ["onClick"])
-                  ])
+                createVNode("p", { class: "text-slate-500 dark:text-slate-400 font-bold max-w-xl mx-auto leading-relaxed" }, toDisplayString(_ctx.$t("pricing_hero_desc")), 1),
+                createVNode("div", { class: "inline-flex items-center p-1 bg-white dark:bg-slate-900 rounded-[1.8rem] border border-slate-100 dark:border-slate-800 shadow-sm mt-8 scale-110" }, [
+                  createVNode("button", {
+                    onClick: ($event) => isAnnual.value = false,
+                    class: ["px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all", !isAnnual.value ? "bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl" : "text-slate-400 hover:text-slate-600"]
+                  }, toDisplayString(_ctx.$t("pricing_billing_monthly")), 11, ["onClick"]),
+                  createVNode("button", {
+                    onClick: ($event) => isAnnual.value = true,
+                    class: ["px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all relative flex items-center gap-2", isAnnual.value ? "bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl" : "text-slate-400 hover:text-slate-600"]
+                  }, [
+                    createTextVNode(toDisplayString(_ctx.$t("pricing_billing_yearly")) + " ", 1),
+                    createVNode("span", { class: "absolute -top-4 -right-2 px-2 py-1 rounded-lg bg-emerald-500 text-[8px] text-white animate-bounce shadow-lg" }, toDisplayString(_ctx.$t("pricing_billing_save")), 1)
+                  ], 10, ["onClick"])
                 ]),
                 createVNode("div", { class: "max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" }, [
                   (openBlock(true), createBlock(Fragment, null, renderList(plans.value, (plan, index) => {
@@ -261,7 +221,7 @@ const _sfc_main = {
                       plan.badge ? (openBlock(), createBlock("div", {
                         key: 0,
                         class: "absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest shadow-xl"
-                      }, toDisplayString(plan.badge), 1)) : createCommentVNode("", true),
+                      }, toDisplayString(_ctx.$t(plan.badge)), 1)) : createCommentVNode("", true),
                       createVNode("div", { class: "mb-8" }, [
                         createVNode("h3", { class: "text-xs font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-6" }, toDisplayString(plan.name), 1),
                         createVNode("div", { class: "flex items-baseline gap-2" }, [
@@ -277,7 +237,7 @@ const _sfc_main = {
                         (openBlock(true), createBlock(Fragment, null, renderList(plan.features, (feat, fIdx) => {
                           return openBlock(), createBlock("div", {
                             key: fIdx,
-                            class: "flex items-start gap-4"
+                            class: ["flex items-start gap-4", feat.isLocked ? "opacity-40" : ""]
                           }, [
                             feat.isHeader ? (openBlock(), createBlock("p", {
                               key: 0,
@@ -286,13 +246,15 @@ const _sfc_main = {
                               createVNode("div", { class: "mt-1 flex items-center justify-center shrink-0" }, [
                                 (openBlock(), createBlock(resolveDynamicComponent(feat.icon), {
                                   size: 14,
-                                  class: "text-indigo-500",
+                                  class: feat.isLocked ? "text-slate-500" : "text-indigo-500",
                                   "stroke-width": "2.5"
-                                }))
+                                }, null, 8, ["class"]))
                               ]),
-                              createVNode("span", { class: "text-[11px] font-black text-slate-700 dark:text-slate-200 leading-tight" }, toDisplayString(_ctx.$t(feat.text)), 1)
+                              createVNode("span", {
+                                class: ["text-[11px] font-black leading-tight", feat.isLocked ? "text-slate-500" : "text-slate-700 dark:text-slate-200"]
+                              }, toDisplayString(_ctx.$t(feat.text)), 3)
                             ], 64))
-                          ]);
+                          ], 2);
                         }), 128))
                       ]),
                       createVNode("div", { class: "mt-auto" }, [
@@ -389,7 +351,7 @@ _sfc_main.setup = (props, ctx) => {
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Pricing.vue");
   return _sfc_setup ? _sfc_setup(props, ctx) : void 0;
 };
-const Pricing = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-70aa9c83"]]);
+const Pricing = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-41766a3e"]]);
 export {
   Pricing as default
 };

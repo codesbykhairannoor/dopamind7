@@ -163,7 +163,7 @@
                     </div>
 
                     {{-- Floating Element --}}
-                    <div class="absolute -right-8 -bottom-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce duration-[3000ms]">
+                    <div class="absolute -right-8 -bottom-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce duration-&lsqb;3000ms&rsqb;">
                         <div class="h-6 w-24 bg-indigo-600/20 rounded-lg flex items-center justify-center gap-2">
                             <div class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
                             <div class="h-1.5 w-12 bg-indigo-300 rounded-full"></div>
@@ -500,7 +500,7 @@
 
     <section class="py-24 px-6 text-center">
         <div class="max-w-5xl mx-auto bg-slate-900 rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
-            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-pulse duration-[5000ms]"></div>
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-pulse duration-&lsqb;5000ms&rsqb;"></div>
             
             <div class="relative z-10">
                 <h2 class="text-5xl md:text-5xl mb-6 font-black">{{ __('job_cta_title') }}</h2>
