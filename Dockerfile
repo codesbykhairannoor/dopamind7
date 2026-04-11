@@ -35,10 +35,13 @@ COPY --from=builder /app /app
 # Set permissions for Laravel
 RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
 
+# Make startup script executable
+RUN chmod +x /app/start.sh
+
 # Environment configuration
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 ENV LOG_CHANNEL=stderr
 
-# Use Laravel Octane with FrankenPHP
-ENTRYPOINT ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=8080"]
+# Use startup script (handles migrate + octane)
+ENTRYPOINT ["/bin/bash", "/app/start.sh"]
