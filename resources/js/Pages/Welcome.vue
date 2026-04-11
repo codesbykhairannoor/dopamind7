@@ -36,7 +36,7 @@ const submitWaitlist = () => {
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gradient-to-b from-indigo-50/80 to-white rounded-full blur-[100px] -z-10 animate-pulse duration-&lsqb;5000ms&rsqb;"></div>
             
             <div class="max-w-5xl mx-auto">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-indigo-100 shadow-sm text-indigo-600 font-bold text-xs mb-8 uppercase tracking-wider animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-indigo-100 shadow-sm text-indigo-600 font-bold text-xs mb-8 capitalize tracking-wide animate-in fade-in slide-in-from-bottom-4 duration-700">
                     {{ $t('hero_badge') }}
                 </div>
                 
@@ -72,7 +72,7 @@ const submitWaitlist = () => {
         <section class="py-24 bg-gray-50 border-y border-gray-200">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center max-w-3xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
-                    <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-4 text-sm">{{ $t('eco_badge') }}</h2>
+                    <h2 class="text-indigo-600 font-bold tracking-widest capitalize mb-4 text-sm">{{ $t('eco_badge') }}</h2>
                     <h3 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">{{ $t('eco_title') }}</h3>
                     <p class="text-xl text-gray-500">
                         {{ $t('eco_desc') }}
@@ -182,7 +182,7 @@ const submitWaitlist = () => {
         <section class="py-32 bg-gray-50 border-y border-gray-200">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both">
-                    <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-4 text-sm">{{ $t('sol_badge') }}</h2>
+                    <h2 class="text-indigo-600 font-bold tracking-widest capitalize mb-4 text-sm">{{ $t('sol_badge') }}</h2>
                     <h3 class="text-4xl font-black mb-6 text-gray-900">{{ $t('sol_title') }}</h3>
                 </div>
 
@@ -250,7 +250,7 @@ const submitWaitlist = () => {
                                 </div>
                             </div>
                             <div class="absolute bottom-8 w-full px-6">
-                                <div class="h-12 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/50 flex items-center justify-center text-[10px] font-bold text-white uppercase tracking-widest">OneForMind App</div>
+                                <div class="h-12 bg-indigo-600 rounded-xl shadow-lg shadow-indigo-500/50 flex items-center justify-center text-[10px] font-bold text-white capitalize tracking-wide">OneForMind App</div>
                             </div>
                         </div>
                         <div class="absolute top-10 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-indigo-50 animate-bounce">
@@ -259,7 +259,7 @@ const submitWaitlist = () => {
                     </div>
 
                     <div class="w-full md:w-1/2 text-center md:text-left relative z-10">
-                        <span class="inline-block bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">
+                        <span class="inline-block bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-black capitalize tracking-wide mb-6">
                             Coming Soon
                         </span>
                         <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">

@@ -45,18 +45,18 @@ const changeYear = (offset) => {
 </script>
 
 <template>
-    <div class="relative z-[60] transition-all bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b shadow-sm dark:shadow-none border-slate-200 dark:border-slate-800 md:sticky md:top-0 transition-colors duration-500">
-        <div class="max-w-full px-4 py-4 mx-auto sm:px-6 lg:px-8">
+    <div class="relative z-[60] transition-all bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b shadow-sm dark:shadow-none border-slate-100 dark:border-slate-800 md:sticky md:top-16 transition-colors duration-500">
+        <div class="max-w-7xl px-4 py-3 mx-auto sm:px-6 lg:px-8">
             
             <div class="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
                 
-                <div class="flex items-center w-full gap-4 md:w-auto">
-                    <div class="flex items-center justify-center text-white shadow-lg w-12 h-12 bg-indigo-600 rounded-xl shadow-indigo-200 dark:shadow-none shrink-0 transition-shadow duration-500">
-                        <OneForMindIcon name="calendar" size="28" />
-                    </div>
-                    <div>
-                        <h2 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800 dark:text-white transition-colors duration-500">{{ $t('calendar_title', 'Master Calendar') }}</h2>
-                        <p class="mt-1 text-sm font-bold text-slate-500 dark:text-slate-400 transition-colors duration-500">{{ displayMonth }}</p>
+                <div class="flex items-center gap-2 w-full md:w-auto">
+                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+                        {{ $t('calendar_title', 'Master Calendar') }}
+                    </p>
+                    <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50">
+                        <OneForMindIcon name="calendar" size="14" class="text-indigo-500" />
+                        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize">{{ displayMonth }}</span>
                     </div>
                 </div>
 

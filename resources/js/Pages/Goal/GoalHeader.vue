@@ -18,19 +18,16 @@ const todayDisplay = computed(() => {
 </script>
 
 <template>
-  <div class="relative z-[60] px-4 py-4 transition-all bg-white dark:bg-slate-900/80 backdrop-blur-md border-b shadow-sm border-slate-200 dark:border-slate-800 sm:px-6 lg:px-8 md:sticky md:top-0">
-    <div class="flex flex-col items-center justify-between w-full gap-3 md:flex-row">
+  <div class="relative z-[60] transition-all bg-white dark:bg-slate-900 border-b shadow-sm border-slate-100 dark:border-slate-800 transition-colors duration-500">
+    <div class="flex flex-col items-center justify-between w-full gap-3 md:flex-row max-w-7xl mx-auto px-4 md:px-8 py-4">
       
-      <div class="flex items-center justify-between w-full md:w-auto">
-        <div class="flex items-center gap-3 md:gap-4">
-            <div class="flex items-center justify-center text-white shadow-lg w-10 h-10 md:w-12 md:h-12 bg-indigo-600 rounded-xl shadow-indigo-200 dark:shadow-indigo-900/20 shrink-0">
-                <OneForMindIcon name="goal" size="24" stroke-width="2.5" class="md:hidden" />
-                <OneForMindIcon name="goal" size="30" stroke-width="2" class="hidden md:block" />
-            </div>
-            <div>
-              <h2 class="text-xl md:text-2xl font-black leading-tight tracking-tight text-slate-800 dark:text-white transition-colors duration-500">{{ $t('goal_page_title', 'Goal Tracker') }}</h2>
-              <p class="mt-0.5 text-sm font-medium capitalize text-slate-500 dark:text-slate-400 transition-colors duration-500">{{ todayDisplay }}</p>
-            </div>
+      <div class="flex items-center gap-2 w-full md:w-auto">
+        <p class="text-[10px] font-black capitalize tracking-wide text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+            {{ $t('goal_page_title', 'Goal Tracker') }}
+        </p>
+        <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50">
+            <OneForMindIcon name="calendar" size="14" class="text-indigo-500" />
+            <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize">{{ todayDisplay }}</span>
         </div>
       </div>
 

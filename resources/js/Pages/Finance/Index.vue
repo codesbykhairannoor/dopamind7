@@ -145,7 +145,6 @@ const handleDeleteSaving = (saving) => {
 };
 
 const openVaultAction = (saving, action = 'deposit') => {
-    if (isExplorer.value) return openPremiumPreview('Finance');
     activeVault.value = saving;
     vaultTxType.value = action;
     showVaultTxModal.value = false;
@@ -367,7 +366,6 @@ const triggerDeleteCategory = (cat) => {
 };
 
 const switchToBatch = () => {
-    if (isExplorer.value) return openPremiumPreview('Finance');
     showTransactionModal.value = false;
     setTimeout(() => { openBatchModal(); }, 150);
 };
@@ -401,8 +399,6 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
             :currentMonth="formattedMonth" 
             :currentMonthKey="currentMonthKey"
             :onAddClick="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
-            :isExplorer="isExplorer"
-            @open-preview="openPremiumPreview"
         />
 
         <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950/50 px-3 sm:px-6 lg:px-8 py-6 transition-colors duration-500">
@@ -433,16 +429,12 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                 <div class="lg:col-span-3 space-y-8 w-full order-2 lg:order-1 pb-24 lg:pb-0">
                     <!-- Investment Lab for Desk -->
                     <div class="hidden lg:block">
-                        <NeuralBridge module="Finance" />
-
                         <!-- Investment Lab (FinanceInsights) -->
                         <div class="relative">
-                            <LockedFeatureWall v-if="isExplorer" @click="openPremiumPreview('Finance')" />
                             <FinanceInsights
                                 :expense-stats="localStats.expense_by_category"
                                 :income-stats="localStats.income_by_category"
                                 :budgets="localBudgets"
-                                :isExplorer="isExplorer"
                                 @update-stats="handleOptimisticInvestment"
                             />
                         </div>
@@ -460,7 +452,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                                     <span class="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/20 transition-colors">
                                         <OneForMindIcon name="calendar-history" size="14" stroke-width="2.5" />
                                     </span>
-                                    <span class="hidden sm:inline">{{ $t('view_full_archive', 'Arsip Lengkap') }}</span>
+                                    <span class="hidden sm:inline">{{ $t('view_full_archive') }}</span>
                                     <span class="sm:hidden">Archive</span>
                                 </button>
 
@@ -502,54 +494,30 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
 
                         <ArchiveModal :show="isArchiveOpen" :dayData="selectedDayData" :categories="categories" :close="() => isArchiveOpen = false" :onDelete="triggerDeleteTransaction" :onEdit="handleEdit" />
                         <FullArchiveModal :show="showFullHistoryModal" :allStats="allStats" :categories="categories" :close="() => showFullHistoryModal = false" :onDelete="triggerDeleteTransaction" :onEdit="handleEdit" />
-                    </div>
-
-                    <!-- 🏦 The Vault (Savings) & 🧠 Neural Forecast -->
+                             <!-- 🏦 The Vault (Savings) & 🧠 Neural Forecast -->
                     <div class="space-y-6 relative group">
                         <div class="flex items-center justify-between px-1 lg:px-0">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500 shadow-sm"><Wallet :size="20" /></div>
                                 <div class="flex items-center gap-2">
-                                    <div><h3 class="text-base lg:text-lg font-black text-slate-800 dark:text-white tracking-tight">The Vault</h3><p class="text-[9px] lg:text-[10px] font-black text-slate-400 tracking-widest leading-none mt-0.5">Your wealth manifestation</p></div>
-                                    <Lock v-if="isExplorer" :size="12" class="text-orange-500 animate-pulse ml-0.5" />
-                                </div>
-                            </div>
-                            <button @click="handleEditSaving()" class="flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 rounded-[1.25rem] text-[10px] font-black tracking-widest hover:scale-105 transition-all active:scale-95 shadow-xl shadow-slate-200 dark:shadow-none relative group/btn overflow-hidden"><div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity"></div><Plus :size="16" stroke-width="3" /><span class="hidden sm:inline relative z-10">{{ isExplorer ? 'Unlock goal' : 'Create goal' }}</span><span class="sm:hidden relative z-10">Goal</span></button>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-                            <!-- Premium Lockdown Overlay for The Vault -->
-                            <div v-if="isExplorer" @click="openPremiumPreview('Finance')" class="absolute inset-x-0 -inset-y-4 z-40 rounded-[3rem] overflow-hidden group/locked-vault cursor-pointer transition-all duration-700 border border-slate-100 dark:border-slate-800 shadow-2xl">
-                                <div class="absolute inset-0 bg-white/60 dark:bg-slate-950/60 backdrop-blur-xl transition-all duration-700 group-hover/locked-vault:backdrop-blur-md"></div>
-                                <div class="absolute inset-0 opacity-10 group-hover/locked-vault:opacity-30 transition-opacity duration-1000 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-400 via-transparent to-transparent"></div>
-                                <div class="relative z-10 h-full flex flex-col items-center justify-center p-8 text-center">
-                                    <div class="max-w-xs animate-in zoom-in duration-500 space-y-4">
-                                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center mx-auto text-white shadow-xl rotate-3 group-hover/locked-vault:rotate-0 transition-transform">
-                                            <Wallet :size="32" stroke-width="2.5" />
-                                        </div>
-                                        <div>
-                                            <h4 class="text-xl font-black text-slate-900 dark:text-white mb-1 tracking-tight">
-                                                {{ $t('gating.finance_vault.title') }}
-                                            </h4>
-                                            <p class="text-[10px] font-bold text-slate-500 dark:text-slate-400 leading-relaxed px-4">
-                                                {{ $t('gating.finance_vault.description') }}
-                                            </p>
-                                        </div>
-                                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-500 text-white font-black text-[9px] uppercase tracking-widest shadow-lg shadow-orange-200 dark:shadow-none hover:scale-105 transition-all">
-                                            {{ $t('gating.btn_upgrade') }}
-                                        </div>
+                                    <div>
+                                        <h3 class="text-base lg:text-lg font-black text-slate-800 dark:text-white tracking-tight">The Vault</h3>
+                                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 tracking-widest leading-none mt-0.5">Your wealth manifestation</p>
                                     </div>
                                 </div>
                             </div>
+                            <button @click="handleEditSaving()" class="flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 rounded-[1.25rem] text-[10px] font-black tracking-widest hover:scale-105 transition-all active:scale-95 shadow-xl shadow-slate-200 dark:shadow-none relative group/btn overflow-hidden"><div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity"></div><Plus :size="16" stroke-width="3" /><span class="hidden sm:inline relative z-10">Create goal</span><span class="sm:hidden relative z-10">Goal</span></button>
+                        </div>
 
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
                              <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1 border-2 border-slate-100 dark:border-slate-800 shadow-sm"><div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500 animate-bounce">🏦</div><h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">You have no active saving goals yet.</h4><button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-black tracking-widest text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-6 py-2.5 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all active:scale-95 shadow-sm border border-indigo-100/50 dark:border-indigo-500/20">Start saving now</button></div>
 
                             <div v-else class="flex lg:grid overflow-x-auto lg:overflow-visible no-scrollbar gap-4 pb-4 lg:pb-0">
                                 <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] lg:w-full"><SavingCard :saving="saving" :onDeposit="(s) => openVaultAction(s, 'deposit')" :onWithdraw="(s) => openVaultAction(s, 'withdraw')" :onEdit="handleEditSaving" :onDelete="handleDeleteSaving" /></div>
                             </div>
 
-                            <!-- Neural Forecast (Gated) -->
-                            <div @click="openPremiumPreview('Finance')" class="relative bg-slate-900 dark:bg-indigo-950 rounded-[2.5rem] p-8 overflow-hidden group/forecast cursor-pointer hover:scale-[1.02] transition-all duration-500 shadow-2xl border border-slate-800">
+                            <!-- Neural Forecast -->
+                            <div class="relative bg-slate-900 dark:bg-indigo-950 rounded-[2.5rem] p-8 overflow-hidden group/forecast hover:scale-[1.02] transition-all duration-500 shadow-2xl border border-slate-800">
                                 <div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-500 via-slate-900 to-black"></div>
                                 <div class="relative z-10 flex flex-col h-full">
                                     <div class="flex items-center justify-between mb-6">
@@ -564,35 +532,34 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                                         </div>
                                         <div class="px-2 py-1 rounded-md bg-indigo-500 text-white text-[8px] font-black tracking-widest shadow-lg uppercase">Architect</div>
                                     </div>
-                                    <div class="flex-1 flex items-end gap-1.5 h-24 mb-6 blur-[3px] group-hover:blur-[1px] transition-all duration-700 opacity-20 group-hover:opacity-40">
+                                    <div class="flex-1 flex items-end gap-1.5 h-24 mb-6 transition-all duration-700 opacity-60">
                                         <div v-for="h in [30, 45, 35, 70, 85, 60, 100, 90, 110, 130]" :key="h" :style="{ height: h + '%' }" class="flex-1 bg-gradient-to-t from-indigo-400 to-transparent rounded-t-sm"></div>
                                     </div>
                                     <div class="mt-auto flex items-center justify-between">
-                                        <span class="text-[10px] font-black text-indigo-200 tracking-widest uppercase">{{ $t('gating.btn_upgrade') }}</span>
                                         <ArrowRight :size="16" class="text-white group-hover:translate-x-1 transition-transform" />
                                     </div>
                                 </div>
-                                <div class="absolute inset-0 bg-white/5 backdrop-blur-[1px] opacity-20 transition-opacity group-hover:opacity-0"></div>
                             </div>
                         </div>
                     </div>
 
+                    </div>
+
                         <!-- Insights for Mobile (Placed above Trend Chart) -->
                         <div class="lg:hidden relative">
-                             <LockedFeatureWall v-if="isExplorer" @click="openPremiumPreview('Finance')" />
+                         <!-- Unlocked Section -->
                              <FinanceInsights
                                 :expense-stats="localStats.expense_by_category"
                                 :income-stats="localStats.income_by_category"
                                 :budgets="localBudgets"
-                                :isExplorer="isExplorer"
                                 @update-stats="handleOptimisticInvestment"
                             />
                         </div>
 
                         <!-- Trend Chart Section -->
                          <div class="relative">
-                             <LockedFeatureWall v-if="isExplorer" @click="openPremiumPreview('Finance')" />
-                             <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" :isExplorer="isExplorer" @day-click="openDetail" />
+                         <!-- Unlocked Section -->
+                             <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" @day-click="openDetail" />
                          </div>
                 </div>
             </div>

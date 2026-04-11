@@ -39,32 +39,8 @@ export const useGating = () => {
     const isLegendary = computed(() => tier.value === 4);
 
     const canUse = (feature) => {
-        if (!user.value) return false;
-
-        switch (feature) {
-            case 'unlimited_habits':
-            case 'planner_batch':
-            case 'finance_savings':
-            case 'finance_trends':
-            case 'finance_investment':
-            case 'finance_budgeting':
-            case 'finance_export':
-            case 'journal':
-            case 'goal':
-            case 'job':
-            case 'calendar':
-                return isArchitect.value;
-
-            case 'ai_coach':
-            case 'ai_analysis':
-            case 'ai_insight':
-            case 'ai_habit_stacking':
-            case 'ai_mood_correlation':
-                return isAiEnabled.value;
-
-            default:
-                return true;
-        }
+        // Bypassing all locks as requested by user
+        return true;
     };
 
     /**
@@ -73,14 +49,10 @@ export const useGating = () => {
      * @param {string} targetRoute 
      */
     const demandAccess = (feature, targetRoute) => {
-        if (canUse(feature)) {
-            if (targetRoute) router.visit(targetRoute);
-            return true;
-        } else {
-            gatingState.activeFeature = feature;
-            gatingState.isOpen = true;
-            return false;
+        if (targetRoute) {
+            router.visit(targetRoute);
         }
+        return true;
     };
 
     const closeGating = () => {

@@ -22,28 +22,25 @@ const closeDatePicker = () => {
 </script>
 
 <template>
-    <div class="relative z-[60] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 transition-all md:sticky md:top-0">
-        <div class="px-4 sm:px-6 lg:px-8 py-4">
+    <div class="relative z-[60] transition-all bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors duration-500">
+        <div class="px-4 md:px-8 py-4 max-w-7xl mx-auto">
             
             <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4">
                 
-                <div class="flex items-center gap-4 w-full md:w-auto">
-                    <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-200 dark:shadow-none shrink-0">
-                        <OneForMindIcon name="planner" size="28" />
-                    </div>
+                <div class="flex items-center gap-2 w-full md:w-auto">
+                    <p class="text-[10px] font-black capitalize tracking-wide text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+                        {{ $t('header_title', 'Daily Planner') }}
+                    </p>
                     
                     <div>
-                        <h2 class="text-xl md:text-2xl font-black text-slate-800 dark:text-white tracking-tight leading-tight transition-colors duration-500">
-                            {{ $t('header_title', 'Daily Planner') }}
-                        </h2>
-                        
-                        <div class="flex items-center mt-1 relative">
+                        <div class="flex items-center relative">
                             <div class="relative">
                                 <button 
                                     @click="showDatePicker = !showDatePicker" 
-                                    class="text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-bold text-sm capitalize transition-colors flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800"
+                                    class="text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-bold text-xs capitalize transition-colors flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50"
                                     :class="{'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400': showDatePicker}"
                                 >
+                                    <OneForMindIcon name="calendar" size="14" class="text-indigo-500" />
                                     {{ formattedDate }} 
                                     <OneForMindIcon name="chevron-down" size="10" stroke-width="3" class="text-slate-400 dark:text-slate-600 transition-transform duration-300" :class="{'rotate-180': showDatePicker}" />
                                 </button>

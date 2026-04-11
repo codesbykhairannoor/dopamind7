@@ -12,6 +12,8 @@ import {
 import { useGating } from '@/Composables/useGating';
 import { Link } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+import FinanceDatePicker from './FinanceDatePicker.vue';
 
 const { isExplorer } = useGating();
 const props = defineProps({

@@ -8,7 +8,6 @@ import GoalCard from './GoalCard.vue';
 import GoalModal from './GoalModal.vue';
 import GoalHeader from './GoalHeader.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
-import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';

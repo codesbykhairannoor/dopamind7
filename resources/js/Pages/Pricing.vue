@@ -5,6 +5,13 @@ import { ref, computed, onMounted } from 'vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 import { useGating } from '@/Composables/useGating';
+import { 
+    Check, Sparkles, Zap, Shield, Globe, 
+    ArrowRight, Star, Infinity, ShieldCheck,
+    Cloud, MousePointer2, ListChecks, Wallet,
+    TrendingUp, Calendar, Brain, MessageSquare,
+    Lock
+} from 'lucide-vue-next';
 
 const { appLocale } = useFinanceFormat();
 const { user, tier: userTier } = useGating();
@@ -14,77 +21,85 @@ const isAnnual = ref(true);
 const plans = computed(() => {
     return [
         {
-            name: 'pricing_l1_name',
+            name: 'Explorer',
             slug: 'explorer',
             tier: 1,
             price: 'Free',
             period: 'pricing_forever',
-            desc: 'pricing_l1_desc',
+            desc: 'pricing_explorer_desc',
             features: [
-                'pricing_feat_habits_limit',
-                'pricing_feat_planner_basic',
-                'pricing_feat_finance_basic'
+                { text: 'pricing_f_habit_open', icon: ListChecks },
+                { text: 'pricing_f_batch_habit_locked', icon: Lock, isLocked: true },
+                { text: 'pricing_f_planner_tab_open', icon: Calendar },
+                { text: 'pricing_f_batch_planner_locked', icon: Lock, isLocked: true },
+                { text: 'pricing_f_vault_locked', icon: Lock, isLocked: true },
+                { text: 'pricing_f_lab_locked', icon: Lock, isLocked: true },
+                { text: 'pricing_f_trends_locked', icon: Lock, isLocked: true }
             ],
-            buttonText: 'pricing_free_btn',
+            buttonText: 'pricing_btn_current',
             theme: 'slate'
         },
         {
-            name: 'pricing_l2_name',
+            name: 'Architect',
             slug: 'architect',
             tier: 2,
             price: isAnnual.value 
                 ? (appLocale.value === 'id' ? 'Rp 79k' : '$4.99') 
                 : (appLocale.value === 'id' ? 'Rp 99k' : '$6.99'),
-            initial: 'pricing_l2_initial',
-            recurring: 'pricing_l2_recurring',
-            desc: 'pricing_l2_desc',
+            period: 'pricing_per_year',
+            desc: 'pricing_architect_desc',
             features: [
-                'pricing_feat_unlock_all',
-                'pricing_feat_planner_batch',
-                'pricing_feat_finance_adv',
-                'pricing_feat_no_ai'
+                { text: 'pricing_feature_header_explorer_plus', isHeader: true },
+                { text: 'pricing_f_all_tabs_open', icon: ListChecks },
+                { text: 'pricing_f_batch_unlocked', icon: Zap },
+                { text: 'pricing_f_financial_ecosystem', icon: Wallet },
+                { text: 'pricing_f_custom_themes', icon: MousePointer2 },
+                { text: 'pricing_f_ai_coach_locked', icon: Lock, isLocked: true }
             ],
-            buttonText: 'pricing_pro_btn',
+            buttonText: 'pricing_btn_upgrade',
             theme: 'indigo'
         },
         {
-            name: 'pricing_l3_name',
+            name: 'Quantum',
             slug: 'quantum',
             tier: 3,
             price: isAnnual.value 
                 ? (appLocale.value === 'id' ? 'Rp 109k' : '$6.99') 
                 : (appLocale.value === 'id' ? 'Rp 159k' : '$9.99'),
-            initial: 'pricing_l3_initial',
-            recurring: 'pricing_l3_recurring',
-            desc: 'pricing_l3_desc',
+            period: 'pricing_per_year',
+            desc: 'pricing_quantum_desc',
             features: [
-                'pricing_feat_ai_chat',
-                'pricing_feat_automated_insights',
-                'pricing_feat_all_architect'
+                { text: 'pricing_feature_header_architect_plus', isHeader: true },
+                { text: 'pricing_f_ai_full_access', icon: Sparkles },
+                { text: 'pricing_f_ai_insights', icon: Brain },
+                { text: 'pricing_f_ai_finance_insights', icon: Star },
+                { text: 'pricing_f_neural_sync', icon: Infinity },
+                { text: 'pricing_f_early_access', icon: Globe }
             ],
-            buttonText: 'pricing_ai_btn',
+            buttonText: 'pricing_btn_unleash',
             highlight: true,
             theme: 'premium',
-            badge: 'pricing_ai_badge',
+            badge: 'pricing_badge_popular',
             icon: 'sparkles'
         },
         {
-            name: 'pricing_l4_name',
+            name: 'Legendary',
             slug: 'legendary',
             tier: 4,
             price: (appLocale.value === 'id' ? 'Rp 899k' : '$59.00'),
-            initial: 'pricing_l4_initial',
-            recurring: 'pricing_l4_recurring',
-            desc: 'pricing_l4_desc',
+            period: 'pricing_lifetime',
+            desc: 'pricing_legendary_desc',
             features: [
-                'pricing_feat_lifetime_access',
-                'pricing_feat_calendar_unlocked',
-                'pricing_feat_ai_trial',
-                'pricing_feat_ai_discount'
+                { text: 'pricing_feature_header_quantum_plus', isHeader: true },
+                { text: 'pricing_f_lifetime_access', icon: Infinity },
+                { text: 'pricing_f_legendary_trial_ai', icon: Zap },
+                { text: 'pricing_f_vvip_support', icon: Shield },
+                { text: 'pricing_f_founder_badge', icon: ShieldCheck },
+                { text: 'pricing_f_onboarding', icon: MessageSquare }
             ],
-            buttonText: 'pricing_l4_btn',
+            buttonText: 'pricing_btn_legendary',
             theme: 'dark',
-            badge: 'pricing_l4_badge',
+            badge: 'pricing_badge_limited',
             icon: 'infinity'
         }
     ];
@@ -114,138 +129,143 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head :title="$t('pricing_meta_title')" />
+    <Head title="Pricing & Plans" />
 
     <AuthenticatedLayout>
-        <div class="py-12 px-6 lg:px-12 max-w-[1600px] mx-auto min-h-screen">
-            <!-- Header Section -->
-            <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
-                <div class="max-w-2xl animate-in fade-in slide-in-from-left-8 duration-700">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-600 dark:bg-indigo-500 text-white font-black text-[9px] mb-4 uppercase tracking-[0.2em] shadow-lg shadow-indigo-200 dark:shadow-none">
-                        {{ $t('pricing_sub_os') }}
-                    </div>
-                    <h1 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter mb-4">
-                        {{ $t('pricing_boost_potential') }}
-                    </h1>
-                    <p class="text-slate-500 dark:text-slate-400 font-bold leading-relaxed">
-                        {{ $t('pricing_subtitle') }}
-                    </p>
-                </div>
+        <div class="bg-slate-50 dark:bg-slate-950 min-h-screen pb-32 pt-20 px-4 md:px-8">
+                            <h1 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tighter">
+                    {{ $t('pricing_hero_title') }} <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">{{ $t('pricing_hero_highlight') }}</span>
+                </h1>
+                <p class="text-slate-500 dark:text-slate-400 font-bold max-w-xl mx-auto leading-relaxed">
+                    {{ $t('pricing_hero_desc') }}
+                </p>
 
-                <!-- Billing Toggle -->
-                <div class="flex items-center gap-4 bg-white dark:bg-slate-800 p-2 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm shrink-0">
+                <!-- 🗓️ Billing Toggle -->
+                <div class="inline-flex items-center p-1 bg-white dark:bg-slate-900 rounded-[1.8rem] border border-slate-100 dark:border-slate-800 shadow-sm mt-8 scale-110">
                     <button @click="isAnnual = false" 
-                        class="px-6 py-2.5 rounded-xl text-xs font-black transition-all"
-                        :class="!isAnnual ? 'bg-slate-950 text-white shadow-lg' : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'">
-                        {{ $t('pricing_monthly') }}
+                        class="px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all"
+                        :class="!isAnnual ? 'bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl' : 'text-slate-400 hover:text-slate-600'">
+                        {{ $t('pricing_billing_monthly') }}
                     </button>
                     <button @click="isAnnual = true" 
-                        class="px-6 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2"
-                        :class="isAnnual ? 'bg-slate-950 text-white shadow-lg' : 'text-slate-400 hover:text-slate-900 dark:hover:text-white'">
-                        {{ $t('pricing_yearly') }}
-                        <span class="px-1.5 py-0.5 rounded-md bg-emerald-500 text-[8px] text-white">-40%</span>
+                        class="px-8 py-3 rounded-[1.6rem] text-xs font-black transition-all relative flex items-center gap-2"
+                        :class="isAnnual ? 'bg-slate-950 dark:bg-white text-white dark:text-slate-950 shadow-xl' : 'text-slate-400 hover:text-slate-600'">
+                        {{ $t('pricing_billing_yearly') }}
+                        <span class="absolute -top-4 -right-2 px-2 py-1 rounded-lg bg-emerald-500 text-[8px] text-white animate-bounce shadow-lg">{{ $t('pricing_billing_save') }}</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Pricing Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- 💎 Pricing Grid -->
+            <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div 
                     v-for="(plan, index) in plans" 
                     :key="index"
-                    class="group relative flex flex-col p-8 rounded-[2.5rem] border transition-all duration-700"
+                    class="group relative flex flex-col p-8 rounded-[3rem] border transition-all duration-700 bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-none hover:-translate-y-2 hover:shadow-2xl"
                     :class="[
-                        plan.tier === userTier ? 'ring-4 ring-indigo-600/20 dark:ring-indigo-400/20 bg-indigo-50/10 dark:bg-indigo-500/5' : 'bg-white dark:bg-slate-800/50',
-                        plan.highlight ? 'border-indigo-500 shadow-2xl shadow-indigo-100 dark:shadow-none' : 'border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-100 dark:shadow-none',
-                        plan.theme === 'dark' ? 'dark:bg-black' : ''
+                        plan.highlight ? 'border-indigo-500 ring-2 ring-indigo-500/20' : 'border-slate-100 dark:border-slate-800',
+                        plan.theme === 'dark' ? 'dark:bg-indigo-950 border-indigo-900' : ''
                     ]"
                 >
-                    <!-- Badges -->
-                    <div v-if="plan.tier === userTier" class="absolute -top-3 left-8 px-4 py-1 rounded-full bg-emerald-500 text-white text-[8px] font-black uppercase tracking-widest shadow-lg">
-                        {{ $t('pricing_active_now') }}
-                    </div>
-                    <div v-else-if="plan.badge" class="absolute -top-3 left-8 px-4 py-1 rounded-full bg-indigo-600 text-white text-[8px] font-black uppercase tracking-widest shadow-lg">
+                    <!-- Badge Header -->
+                    <div v-if="plan.badge" class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest shadow-xl">
                         {{ $t(plan.badge) }}
                     </div>
 
-                    <div class="mb-10 flex justify-between items-start">
-                        <div>
-                            <h3 class="text-[10px] font-black tracking-[0.2em] mb-4 uppercase opacity-50">{{ $t(plan.name) }}</h3>
-                            <div class="flex items-baseline gap-1">
-                                <span class="text-4xl font-black tracking-tighter text-slate-900 dark:text-white">{{ plan.price }}</span>
-                                <span v-if="plan.slug !== 'legendary' && plan.slug !== 'explorer'" class="text-xs font-bold text-slate-400">/bln</span>
-                            </div>
-                        </div>
-                        <div v-if="plan.icon" class="w-12 h-12 rounded-2xl flex items-center justify-center bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-500">
-                            <OneForMindIcon :name="plan.icon" size="24" stroke-width="2.5" />
+                    <!-- Card Header -->
+                    <div class="mb-8">
+                        <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-6">{{ plan.name }}</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl lg:text-5xl font-black text-slate-950 dark:text-white tracking-tighter">{{ plan.price }}</span>
+                            <span class="text-[10px] font-bold text-slate-400 mb-1" v-if="plan.tier > 1">{{ $t(plan.period) }}</span>
                         </div>
                     </div>
 
-                    <p class="text-[11px] font-bold text-slate-500 dark:text-slate-400 mb-8 leading-relaxed min-h-[44px]">
+                    <p class="text-[11px] font-bold text-slate-500 leading-relaxed min-h-[44px] mb-8">
                         {{ $t(plan.desc) }}
                     </p>
 
+                    <!-- Feature List (Stacked Style) -->
                     <div class="space-y-4 mb-10 flex-grow border-t border-slate-50 dark:border-slate-800 pt-8">
-                        <div v-for="feat in plan.features" :key="feat" class="flex items-start gap-3">
-                            <div class="mt-0.5 w-4 h-4 rounded-full bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center shrink-0">
-                                <OneForMindIcon name="check" size="10" class="text-indigo-600 dark:text-indigo-400" stroke-width="4" />
-                            </div>
-                            <span class="text-[11px] font-black leading-[1.3] text-slate-700 dark:text-slate-200">{{ $t(feat) }}</span>
+                        <div v-for="(feat, fIdx) in plan.features" :key="fIdx" class="flex items-start gap-4" :class="feat.isLocked ? 'opacity-40' : ''">
+                            <template v-if="feat.isHeader">
+                                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-2 mb-1 w-full">{{ $t(feat.text) }}</p>
+                            </template>
+                            <template v-else>
+                                <div class="mt-1 flex items-center justify-center shrink-0">
+                                    <component :is="feat.icon" :size="14" :class="feat.isLocked ? 'text-slate-500' : 'text-indigo-500'" stroke-width="2.5" />
+                                </div>
+                                <span class="text-[11px] font-black leading-tight" :class="feat.isLocked ? 'text-slate-500' : 'text-slate-700 dark:text-slate-200'">{{ $t(feat.text) }}</span>
+                            </template>
                         </div>
                     </div>
 
-                    <button 
-                        @click="checkout(plan)"
-                        :disabled="plan.tier <= userTier"
-                        class="w-full py-5 rounded-[1.75rem] font-black text-xs transition-all duration-300 transform active:scale-95 shadow-xl"
-                        :class="[
-                            plan.tier === userTier 
-                                ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 cursor-default opacity-100' 
-                                : plan.tier < userTier
-                                    ? 'bg-slate-100 dark:bg-slate-800 text-slate-400 opacity-50 cursor-not-allowed'
+                    <!-- Action Button -->
+                    <div class="mt-auto">
+                        <button 
+                            @click="checkout(plan)"
+                            :disabled="plan.tier <= userTier"
+                            class="w-full py-5 rounded-[2rem] font-black text-xs transition-all duration-300 transform active:scale-95 flex items-center justify-center gap-3 group/btn shadow-xl shadow-slate-200 dark:shadow-none"
+                            :class="[
+                                plan.tier === userTier 
+                                    ? 'bg-slate-100 dark:bg-slate-800 text-slate-400 cursor-default' 
                                     : plan.highlight 
-                                        ? 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-indigo-100 dark:shadow-none' 
-                                        : 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:scale-[1.02]'
-                        ]"
-                    >
-                        {{ plan.tier === userTier ? $t('pricing_already_active') : plan.tier < userTier ? $t('pricing_basic_level') : $t(plan.buttonText) }}
-                    </button>
-                    
-                    <p v-if="plan.tier > userTier && plan.initial" class="text-center mt-4 text-[9px] font-bold text-indigo-500 animate-pulse">
-                        {{ $t(plan.initial) }}
-                    </p>
+                                        ? 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-indigo-500/40' 
+                                        : 'bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:bg-slate-800'
+                            ]"
+                        >
+                            {{ plan.tier === userTier ? $t('pricing_btn_current') : $t(plan.buttonText) }}
+                            <ArrowRight v-if="plan.tier > userTier" :size="16" class="group-hover/btn:translate-x-1 transition-transform" />
+                        </button>
+                        
+                        <p v-if="plan.tier > userTier && plan.initial" class="text-center mt-4 text-[9px] font-bold text-indigo-500">
+                             Guaranteed Lifetime Access
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Internal System Gating Comparison -->
-            <div class="mt-32 max-w-4xl mx-auto">
+            <!-- 📊 Clean Comparison Table -->
+            <div class="mt-40 max-w-5xl mx-auto animate-in slide-in-from-bottom-12 duration-1000">
                 <div class="text-center mb-16">
-                    <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-2">{{ $t('pricing_matrix_title') }}</h2>
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">{{ $t('pricing_matrix_subtitle') }}</p>
+                    <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-4">{{ $t('pricing_comparison_title') }}</h2>
+                    <p class="text-xs font-bold text-slate-400 capitalize tracking-widest">{{ $t('pricing_comparison_subtitle') }}</p>
                 </div>
 
-                <div class="space-y-3">
-                    <div v-for="f in [
-                        { name: 'feat_habit_capacity', explorer: '5', architect: 'Unlimited', quantum: 'Unlimited' },
-                        { name: 'feat_planner_batch_unlocked', explorer: 'Standard', architect: 'Terbuka', quantum: 'Terbuka' },
-                        { name: 'feat_finance_adv_unlocked', explorer: 'Standard', architect: 'Terbuka', quantum: 'Terbuka' },
-                        { name: 'feat_neural_coaching_unlocked', explorer: '—', architect: '—', quantum: 'Terbuka' }
-                    ]" :key="f.name" class="flex items-center justify-between p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 group hover:border-indigo-200 dark:hover:border-indigo-800 transition-all">
-                        <span class="text-xs font-black text-slate-800 dark:text-slate-200 uppercase tracking-tighter">{{ $t(f.name) }}</span>
-                        <div class="flex gap-4 sm:gap-12">
-                            <div class="flex flex-col items-center">
-                                <span class="text-[8px] font-bold text-slate-400 uppercase">Free</span>
-                                <span class="text-[10px] font-black text-slate-600 dark:text-slate-400">{{ f.explorer }}</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <span class="text-[8px] font-bold text-indigo-400 uppercase">Arch</span>
-                                <span class="text-[10px] font-black text-indigo-600 dark:text-indigo-400">{{ f.architect }}</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <span class="text-[8px] font-bold text-amber-500 uppercase">Quant</span>
-                                <span class="text-[10px] font-black text-amber-600 dark:text-amber-500">{{ f.quantum }}</span>
-                            </div>
-                        </div>
+                <div class="bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-100 dark:border-slate-800 overflow-hidden shadow-2xl">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 dark:bg-slate-800/50">
+                                <th class="p-8 text-[10px] font-black uppercase tracking-widest text-slate-400">{{ $t('pricing_feature_col_name') }}</th>
+                                <th class="p-8 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white text-center">Explorer</th>
+                                <th class="p-8 text-[10px] font-black uppercase tracking-widest text-indigo-500 text-center">Architect</th>
+                                <th class="p-8 text-[10px] font-black uppercase tracking-widest text-amber-500 text-center">Quantum</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50 dark:divide-slate-800">
+                            <tr v-for="row in [
+                                { name: $t('pricing_f_active_habits'), explorer: '5 Habits', architect: $t('pricing_v_unlimited'), quantum: $t('pricing_v_unlimited') },
+                                { name: $t('pricing_f_planner_engine'), explorer: $t('pricing_v_standard'), architect: $t('pricing_v_batch'), quantum: $t('pricing_v_ai_powered') },
+                                { name: $t('pricing_f_vault_savings'), explorer: $t('pricing_v_locked'), architect: $t('pricing_v_unlimited'), quantum: $t('pricing_v_unlimited') },
+                                { name: $t('pricing_f_ai_assistant'), explorer: '—', architect: '—', quantum: '24/7 Access' },
+                                { name: $t('pricing_f_life_insights'), explorer: 'Basic', architect: $t('pricing_v_advanced'), quantum: $t('pricing_v_predictive') },
+                                { name: $t('pricing_f_custom_modules'), explorer: '—', architect: $t('pricing_v_partial'), quantum: $t('pricing_v_full') },
+                            ]" :key="row.name" class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                <td class="p-8 text-xs font-black text-slate-700 dark:text-slate-200">{{ row.name }}</td>
+                                <td class="p-8 text-xs font-bold text-slate-400 text-center">{{ row.explorer }}</td>
+                                <td class="p-8 text-xs font-black text-indigo-600 dark:text-indigo-400 text-center">{{ row.architect }}</td>
+                                <td class="p-8 text-xs font-black text-amber-600 dark:text-amber-500 text-center">{{ row.quantum }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">{{ $t('pricing_infra_badge') }}</p>
+                    <div class="flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale contrast-125">
+                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]">Asana Strength</span></div>
+                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]">ClickUp Power</span></div>
+                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]">Notion Clarity</span></div>
                     </div>
                 </div>
             </div>
@@ -254,6 +274,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.custom-scrollbar::-webkit-scrollbar { width: 4px; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 </style>

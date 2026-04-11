@@ -120,13 +120,13 @@ const loginWithGoogle = () => {
             </form>
 
             <div class="mt-10 text-center font-medium">
-                <p class="text-[11px] text-slate-500 leading-relaxed">
+                <div class="text-[11px] text-slate-500 leading-relaxed">
                     <div class="flex flex-wrap justify-center items-center gap-x-4 gap-y-2 font-medium">
-                     <a :href="route('company.privacy')" class="text-[11px] text-slate-500 hover:text-indigo-600 transition-colors">{{ $t('footer_privacy') }}</a>
-                     <a :href="route('company.terms')" class="text-[11px] text-slate-500 hover:text-indigo-600 transition-colors">{{ $t('footer_terms') }}</a>
-                     <a :href="route('resources.help')" class="text-[11px] text-slate-500 hover:text-indigo-600 transition-colors">{{ $t('auth_footer_help') }}</a>
+                         <a :href="route('company.privacy')" class="text-[11px] text-slate-500 hover:text-indigo-600 transition-colors">{{ $t('footer_privacy') }}</a>
+                         <a :href="route('company.terms')" class="text-[11px] text-slate-500 hover:text-indigo-600 transition-colors">{{ $t('footer_terms') }}</a>
+                         <a :href="route('resources.help')" class="text-[11px] text-slate-500 hover:text-indigo-600 transition-colors">{{ $t('auth_footer_help') }}</a>
+                    </div>
                 </div>
-                </p>
             </div>
         </div>
     </div>

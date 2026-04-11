@@ -65,22 +65,20 @@ onMounted(() => {
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors duration-500">
         <!-- STICKY HEADER: Title + Add Button only -->
-        <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 shadow-sm transition-colors duration-500">
-            <div class="w-full px-4 sm:px-6 lg:px-8 py-3.5 sm:py-5">
-                <div class="flex items-center justify-between gap-4">
-                    <!-- Left: Icon + Title + Date -->
-                    <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-100 dark:shadow-none shrink-0 group-hover:scale-110 transition-transform duration-500">
-                            <OneForMindIcon name="job" size="24" :stroke-width="3" />
-                        </div>
-                        <div class="min-w-0">
-                            <h1 class="text-lg sm:text-2xl font-black leading-tight tracking-tight text-slate-800 dark:text-white flex items-center gap-1.5 sm:gap-2 transition-colors duration-500">
-                                <span class="truncate">{{ $t('job_page_title', 'Job Tracker') }}</span>
-                                <span v-if="pagination?.total" class="text-[10px] sm:text-sm font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-2 sm:px-2.5 py-0.5 rounded-full shrink-0 transition-colors duration-500">
-                                    {{ pagination.total }}
-                                </span>
-                            </h1>
-                            <p class="mt-0.5 text-[10px] sm:text-sm font-bold text-slate-400 dark:text-slate-500 truncate transition-colors duration-500">{{ todayDate }}</p>
+        <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 sticky top-16 z-40 shadow-sm transition-colors duration-500">
+            <div class="w-full px-4 sm:px-6 lg:px-8 py-3">
+                <div class="flex items-center justify-between gap-4 max-w-7xl mx-auto">
+                    
+                    <div class="flex items-center gap-2 w-full md:w-auto">
+                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+                            {{ $t('job_page_title', 'Job Tracker') }}
+                        </p>
+                        <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50">
+                            <OneForMindIcon name="job" size="14" class="text-indigo-500" />
+                            <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize">{{ todayDate }}</span>
+                            <span v-if="pagination?.total" class="ml-2 text-[9px] font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 rounded-full transition-colors duration-500">
+                                {{ pagination.total }}
+                            </span>
                         </div>
                     </div>
                     

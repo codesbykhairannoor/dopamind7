@@ -137,8 +137,8 @@ const habitPremiumFeatures = [
                 :selectMood="handleMoodSelect"
             />
 
-            <!-- NEW AI SECTION (Hidden for Explorer in main flow, teased in Wall) -->
-            <NeuralHabitInsight v-if="!isExplorer" ref="neuralOs" :currentMood="savedMood" />
+            <!-- AI SECTION (Unlocked) -->
+            <NeuralHabitInsight ref="neuralOs" :currentMood="savedMood" />
 
 
             <HabitModals 

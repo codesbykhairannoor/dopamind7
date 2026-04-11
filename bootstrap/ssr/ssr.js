@@ -2810,7 +2810,7 @@ const pricing_monthly$1 = "Monthly";
 const pricing_yearly$1 = "Yearly";
 const pricing_save_amount$1 = "Save 40% with Yearly";
 const pricing_free_name$1 = "Explorer";
-const pricing_forever$1 = "forever";
+const pricing_forever$1 = "Forever";
 const pricing_free_desc$1 = "Perfect for beginners who want to start tracking habits and basic finances.";
 const pricing_feat_habits_limit$1 = "Up to 5 Active Habits";
 const pricing_feat_planner_basic$1 = "Core Daily Planner";
@@ -2965,6 +2965,73 @@ const feat_habit_capacity$1 = "Habit System Capacity";
 const feat_planner_batch_unlocked$1 = "Batch Mode Execution";
 const feat_finance_adv_unlocked$1 = "Advanced Wealth Projection";
 const feat_neural_coaching_unlocked$1 = "Neural AI Coaching Hub";
+const pricing_explorer_desc$1 = "Essential tools to start your productivity journey.";
+const pricing_architect_desc$1 = "Powerful automation for precision execution.";
+const pricing_quantum_desc$1 = "Unlock the full power of Neural OS AI.";
+const pricing_legendary_desc$1 = "The ultimate investment in your future self.";
+const pricing_per_year$1 = "per year";
+const pricing_lifetime$1 = "Lifetime";
+const pricing_btn_current$1 = "Current Plan";
+const pricing_btn_upgrade$1 = "Upgrade to Architect";
+const pricing_btn_unleash$1 = "Unleash AI Power";
+const pricing_btn_legendary$1 = "Go Legendary";
+const pricing_feature_header_explorer_plus$1 = "Everything in Explorer, plus:";
+const pricing_feature_header_architect_plus$1 = "Everything in Architect, plus:";
+const pricing_feature_header_quantum_plus$1 = "Everything in Quantum, plus:";
+const pricing_f_single_habit$1 = "Single Habit Tracker";
+const pricing_f_basic_planner$1 = "Basic Daily Planner";
+const pricing_f_finance_monitor$1 = "Personal Finance Monitor";
+const pricing_f_mobile_access$1 = "Standard Mobile Access";
+const pricing_f_community$1 = "Community Support";
+const pricing_f_unlimited_habit$1 = "Unlimited Habit Stacks";
+const pricing_f_batch_planner$1 = "Batch Planner Engine";
+const pricing_f_the_vault$1 = "The Vault (Saving Goals)";
+const pricing_f_finance_trends$1 = "Advanced Financial Trends";
+const pricing_f_custom_themes$1 = "Custom Themes & Colors";
+const pricing_f_ad_free$1 = "No Interruptions (Ad-Free)";
+const pricing_f_neural_ai$1 = "Neural OS AI Assistant";
+const pricing_f_ai_mind_mapping$1 = "AI Mind Mapping";
+const pricing_f_mood_advisory$1 = "Automated Mood Advisory";
+const pricing_f_ai_finance_insights$1 = "AI Financial Insights";
+const pricing_f_early_access$1 = "Early Access to Modules";
+const pricing_f_neural_sync$1 = "Neural Data Sync";
+const pricing_f_lifetime_access$1 = "Lifetime Platform Access";
+const pricing_f_vvip_support$1 = "VVIP Priority Support";
+const pricing_f_custom_branding$1 = "Custom Branding Options";
+const pricing_f_beta_enrollment$1 = "Beta Lab Enrollment";
+const pricing_f_founder_badge$1 = "Founder Exclusive Badge";
+const pricing_f_onboarding$1 = "One-on-One Onboarding";
+const pricing_workspace_status_title$1 = "Current Membership";
+const pricing_workspace_status_text$1 = "Workspace is currently on the";
+const pricing_storage_usage$1 = "Storage Usage";
+const pricing_money_back$1 = "30-Day Money Back Guarantee";
+const pricing_hero_title$1 = "Upgrade to unleash";
+const pricing_hero_highlight$1 = "everything.";
+const pricing_hero_desc$1 = "Choose the plan that fits your ambition. From simple tracking to AI-powered life architecture.";
+const pricing_billing_monthly$1 = "Monthly";
+const pricing_billing_yearly$1 = "Yearly";
+const pricing_billing_save$1 = "SAVE 40%";
+const pricing_comparison_title$1 = "Deep comparison";
+const pricing_comparison_subtitle$1 = "Compare features across all tiers";
+const pricing_feature_col_name$1 = "Features";
+const pricing_f_active_habits$1 = "Active Habits Capacity";
+const pricing_f_planner_engine$1 = "Daily Planner Engine";
+const pricing_f_vault_savings$1 = "Financial Vault & Savings";
+const pricing_f_ai_assistant$1 = "Neural OS AI Assistant";
+const pricing_f_life_insights$1 = "Life Insights & Analytics";
+const pricing_f_custom_modules$1 = "Custom Modules & Lab";
+const pricing_v_standard$1 = "Standard";
+const pricing_v_batch$1 = "Batch System";
+const pricing_v_ai_powered$1 = "AI Powered";
+const pricing_v_locked$1 = "Locked";
+const pricing_v_unlimited$1 = "Unlimited";
+const pricing_v_advanced$1 = "Advanced";
+const pricing_v_predictive$1 = "Predictive";
+const pricing_v_partial$1 = "Partial";
+const pricing_v_full$1 = "Full Access";
+const pricing_infra_badge$1 = "World-class infrastructure";
+const pricing_badge_popular = "Most Popular";
+const pricing_badge_limited = "Limited Offer";
 const privacy_meta_title$1 = "Trust Center & Privacy Policy";
 const privacy_meta_desc$1 = "Learn how OneForMind protects your data and ensures your security.";
 const privacy_meta_og_title$1 = "Trust Center — OneForMind";
@@ -7039,6 +7106,73 @@ const en = {
   feat_planner_batch_unlocked: feat_planner_batch_unlocked$1,
   feat_finance_adv_unlocked: feat_finance_adv_unlocked$1,
   feat_neural_coaching_unlocked: feat_neural_coaching_unlocked$1,
+  pricing_explorer_desc: pricing_explorer_desc$1,
+  pricing_architect_desc: pricing_architect_desc$1,
+  pricing_quantum_desc: pricing_quantum_desc$1,
+  pricing_legendary_desc: pricing_legendary_desc$1,
+  pricing_per_year: pricing_per_year$1,
+  pricing_lifetime: pricing_lifetime$1,
+  pricing_btn_current: pricing_btn_current$1,
+  pricing_btn_upgrade: pricing_btn_upgrade$1,
+  pricing_btn_unleash: pricing_btn_unleash$1,
+  pricing_btn_legendary: pricing_btn_legendary$1,
+  pricing_feature_header_explorer_plus: pricing_feature_header_explorer_plus$1,
+  pricing_feature_header_architect_plus: pricing_feature_header_architect_plus$1,
+  pricing_feature_header_quantum_plus: pricing_feature_header_quantum_plus$1,
+  pricing_f_single_habit: pricing_f_single_habit$1,
+  pricing_f_basic_planner: pricing_f_basic_planner$1,
+  pricing_f_finance_monitor: pricing_f_finance_monitor$1,
+  pricing_f_mobile_access: pricing_f_mobile_access$1,
+  pricing_f_community: pricing_f_community$1,
+  pricing_f_unlimited_habit: pricing_f_unlimited_habit$1,
+  pricing_f_batch_planner: pricing_f_batch_planner$1,
+  pricing_f_the_vault: pricing_f_the_vault$1,
+  pricing_f_finance_trends: pricing_f_finance_trends$1,
+  pricing_f_custom_themes: pricing_f_custom_themes$1,
+  pricing_f_ad_free: pricing_f_ad_free$1,
+  pricing_f_neural_ai: pricing_f_neural_ai$1,
+  pricing_f_ai_mind_mapping: pricing_f_ai_mind_mapping$1,
+  pricing_f_mood_advisory: pricing_f_mood_advisory$1,
+  pricing_f_ai_finance_insights: pricing_f_ai_finance_insights$1,
+  pricing_f_early_access: pricing_f_early_access$1,
+  pricing_f_neural_sync: pricing_f_neural_sync$1,
+  pricing_f_lifetime_access: pricing_f_lifetime_access$1,
+  pricing_f_vvip_support: pricing_f_vvip_support$1,
+  pricing_f_custom_branding: pricing_f_custom_branding$1,
+  pricing_f_beta_enrollment: pricing_f_beta_enrollment$1,
+  pricing_f_founder_badge: pricing_f_founder_badge$1,
+  pricing_f_onboarding: pricing_f_onboarding$1,
+  pricing_workspace_status_title: pricing_workspace_status_title$1,
+  pricing_workspace_status_text: pricing_workspace_status_text$1,
+  pricing_storage_usage: pricing_storage_usage$1,
+  pricing_money_back: pricing_money_back$1,
+  pricing_hero_title: pricing_hero_title$1,
+  pricing_hero_highlight: pricing_hero_highlight$1,
+  pricing_hero_desc: pricing_hero_desc$1,
+  pricing_billing_monthly: pricing_billing_monthly$1,
+  pricing_billing_yearly: pricing_billing_yearly$1,
+  pricing_billing_save: pricing_billing_save$1,
+  pricing_comparison_title: pricing_comparison_title$1,
+  pricing_comparison_subtitle: pricing_comparison_subtitle$1,
+  pricing_feature_col_name: pricing_feature_col_name$1,
+  pricing_f_active_habits: pricing_f_active_habits$1,
+  pricing_f_planner_engine: pricing_f_planner_engine$1,
+  pricing_f_vault_savings: pricing_f_vault_savings$1,
+  pricing_f_ai_assistant: pricing_f_ai_assistant$1,
+  pricing_f_life_insights: pricing_f_life_insights$1,
+  pricing_f_custom_modules: pricing_f_custom_modules$1,
+  pricing_v_standard: pricing_v_standard$1,
+  pricing_v_batch: pricing_v_batch$1,
+  pricing_v_ai_powered: pricing_v_ai_powered$1,
+  pricing_v_locked: pricing_v_locked$1,
+  pricing_v_unlimited: pricing_v_unlimited$1,
+  pricing_v_advanced: pricing_v_advanced$1,
+  pricing_v_predictive: pricing_v_predictive$1,
+  pricing_v_partial: pricing_v_partial$1,
+  pricing_v_full: pricing_v_full$1,
+  pricing_infra_badge: pricing_infra_badge$1,
+  pricing_badge_popular,
+  pricing_badge_limited,
   privacy_meta_title: privacy_meta_title$1,
   privacy_meta_desc: privacy_meta_desc$1,
   privacy_meta_og_title: privacy_meta_og_title$1,
@@ -11236,15 +11370,27 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_ai_initial: pricing_ai_initial$1,
   pricing_ai_recurring: pricing_ai_recurring$1,
   pricing_already_active: pricing_already_active$1,
+  pricing_architect_desc: pricing_architect_desc$1,
   pricing_badge: pricing_badge$1,
+  pricing_badge_limited,
+  pricing_badge_popular,
   pricing_basic_level: pricing_basic_level$1,
   pricing_billed_annually: pricing_billed_annually$1,
+  pricing_billing_monthly: pricing_billing_monthly$1,
+  pricing_billing_save: pricing_billing_save$1,
+  pricing_billing_yearly: pricing_billing_yearly$1,
   pricing_boost_potential: pricing_boost_potential$1,
   pricing_bottom_cta_btn: pricing_bottom_cta_btn$1,
   pricing_bottom_cta_desc: pricing_bottom_cta_desc$1,
   pricing_bottom_cta_title: pricing_bottom_cta_title$1,
+  pricing_btn_current: pricing_btn_current$1,
+  pricing_btn_legendary: pricing_btn_legendary$1,
+  pricing_btn_unleash: pricing_btn_unleash$1,
+  pricing_btn_upgrade: pricing_btn_upgrade$1,
   pricing_compare_subtitle: pricing_compare_subtitle$1,
   pricing_compare_title: pricing_compare_title$1,
+  pricing_comparison_subtitle: pricing_comparison_subtitle$1,
+  pricing_comparison_title: pricing_comparison_title$1,
   pricing_elite_card_status: pricing_elite_card_status$1,
   pricing_elite_card_title: pricing_elite_card_title$1,
   pricing_elite_feat1_desc: pricing_elite_feat1_desc$1,
@@ -11254,6 +11400,36 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_elite_feat3_desc: pricing_elite_feat3_desc$1,
   pricing_elite_feat3_title: pricing_elite_feat3_title$1,
   pricing_elite_title: pricing_elite_title$1,
+  pricing_explorer_desc: pricing_explorer_desc$1,
+  pricing_f_active_habits: pricing_f_active_habits$1,
+  pricing_f_ad_free: pricing_f_ad_free$1,
+  pricing_f_ai_assistant: pricing_f_ai_assistant$1,
+  pricing_f_ai_finance_insights: pricing_f_ai_finance_insights$1,
+  pricing_f_ai_mind_mapping: pricing_f_ai_mind_mapping$1,
+  pricing_f_basic_planner: pricing_f_basic_planner$1,
+  pricing_f_batch_planner: pricing_f_batch_planner$1,
+  pricing_f_beta_enrollment: pricing_f_beta_enrollment$1,
+  pricing_f_community: pricing_f_community$1,
+  pricing_f_custom_branding: pricing_f_custom_branding$1,
+  pricing_f_custom_modules: pricing_f_custom_modules$1,
+  pricing_f_custom_themes: pricing_f_custom_themes$1,
+  pricing_f_early_access: pricing_f_early_access$1,
+  pricing_f_finance_monitor: pricing_f_finance_monitor$1,
+  pricing_f_finance_trends: pricing_f_finance_trends$1,
+  pricing_f_founder_badge: pricing_f_founder_badge$1,
+  pricing_f_life_insights: pricing_f_life_insights$1,
+  pricing_f_lifetime_access: pricing_f_lifetime_access$1,
+  pricing_f_mobile_access: pricing_f_mobile_access$1,
+  pricing_f_mood_advisory: pricing_f_mood_advisory$1,
+  pricing_f_neural_ai: pricing_f_neural_ai$1,
+  pricing_f_neural_sync: pricing_f_neural_sync$1,
+  pricing_f_onboarding: pricing_f_onboarding$1,
+  pricing_f_planner_engine: pricing_f_planner_engine$1,
+  pricing_f_single_habit: pricing_f_single_habit$1,
+  pricing_f_the_vault: pricing_f_the_vault$1,
+  pricing_f_unlimited_habit: pricing_f_unlimited_habit$1,
+  pricing_f_vault_savings: pricing_f_vault_savings$1,
+  pricing_f_vvip_support: pricing_f_vvip_support$1,
   pricing_faq_1_a: pricing_faq_1_a$1,
   pricing_faq_1_q: pricing_faq_1_q$1,
   pricing_faq_2_a: pricing_faq_2_a$1,
@@ -11291,10 +11467,18 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_feat_planner_basic: pricing_feat_planner_basic$1,
   pricing_feat_planner_batch: pricing_feat_planner_batch$1,
   pricing_feat_unlock_all: pricing_feat_unlock_all$1,
+  pricing_feature_col_name: pricing_feature_col_name$1,
+  pricing_feature_header_architect_plus: pricing_feature_header_architect_plus$1,
+  pricing_feature_header_explorer_plus: pricing_feature_header_explorer_plus$1,
+  pricing_feature_header_quantum_plus: pricing_feature_header_quantum_plus$1,
   pricing_forever: pricing_forever$1,
   pricing_free_btn: pricing_free_btn$1,
   pricing_free_desc: pricing_free_desc$1,
   pricing_free_name: pricing_free_name$1,
+  pricing_hero_desc: pricing_hero_desc$1,
+  pricing_hero_highlight: pricing_hero_highlight$1,
+  pricing_hero_title: pricing_hero_title$1,
+  pricing_infra_badge: pricing_infra_badge$1,
   pricing_l1_desc: pricing_l1_desc$1,
   pricing_l1_initial: pricing_l1_initial$1,
   pricing_l1_name: pricing_l1_name$1,
@@ -11315,25 +11499,31 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_l4_name: pricing_l4_name$1,
   pricing_l4_price_yr: pricing_l4_price_yr$1,
   pricing_l4_recurring: pricing_l4_recurring$1,
+  pricing_legendary_desc: pricing_legendary_desc$1,
   pricing_life_btn: pricing_life_btn$1,
   pricing_life_desc: pricing_life_desc$1,
   pricing_life_name: pricing_life_name$1,
+  pricing_lifetime: pricing_lifetime$1,
   pricing_matrix_subtitle: pricing_matrix_subtitle$1,
   pricing_matrix_title: pricing_matrix_title$1,
   pricing_meta_desc: pricing_meta_desc$1,
   pricing_meta_og_desc: pricing_meta_og_desc$1,
   pricing_meta_og_title: pricing_meta_og_title$1,
   pricing_meta_title: pricing_meta_title$1,
+  pricing_money_back: pricing_money_back$1,
   pricing_month: pricing_month$1,
   pricing_monthly: pricing_monthly$1,
   pricing_once: pricing_once$1,
+  pricing_per_year: pricing_per_year$1,
   pricing_pro_badge: pricing_pro_badge$1,
   pricing_pro_btn: pricing_pro_btn$1,
   pricing_pro_desc: pricing_pro_desc$1,
   pricing_pro_initial: pricing_pro_initial$1,
   pricing_pro_name: pricing_pro_name$1,
   pricing_pro_recurring: pricing_pro_recurring$1,
+  pricing_quantum_desc: pricing_quantum_desc$1,
   pricing_save_amount: pricing_save_amount$1,
+  pricing_storage_usage: pricing_storage_usage$1,
   pricing_sub_os: pricing_sub_os$1,
   pricing_subtitle: pricing_subtitle$1,
   pricing_title_1: pricing_title_1$1,
@@ -11344,6 +11534,17 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_trust_2_title: pricing_trust_2_title$1,
   pricing_trust_3_desc: pricing_trust_3_desc$1,
   pricing_trust_3_title: pricing_trust_3_title$1,
+  pricing_v_advanced: pricing_v_advanced$1,
+  pricing_v_ai_powered: pricing_v_ai_powered$1,
+  pricing_v_batch: pricing_v_batch$1,
+  pricing_v_full: pricing_v_full$1,
+  pricing_v_locked: pricing_v_locked$1,
+  pricing_v_partial: pricing_v_partial$1,
+  pricing_v_predictive: pricing_v_predictive$1,
+  pricing_v_standard: pricing_v_standard$1,
+  pricing_v_unlimited: pricing_v_unlimited$1,
+  pricing_workspace_status_text: pricing_workspace_status_text$1,
+  pricing_workspace_status_title: pricing_workspace_status_title$1,
   pricing_yearly: pricing_yearly$1,
   prio_important: prio_important$1,
   prio_important_desc: prio_important_desc$1,
@@ -15025,7 +15226,7 @@ const pricing_monthly = "Bulanan";
 const pricing_yearly = "Tahunan";
 const pricing_save_amount = "Hemat 40% dengan Tahunan";
 const pricing_free_name = "Explorer";
-const pricing_forever = "selamanya";
+const pricing_forever = "Selamanya";
 const pricing_free_desc = "Cocok untuk pemula yang ingin mulai melacak habit dan keuangan dasar.";
 const pricing_feat_habits_limit = "Hingga 5 Kebiasaan Aktif";
 const pricing_feat_planner_basic = "Sistem Perencana Harian";
@@ -15178,6 +15379,71 @@ const feat_habit_capacity = "Kapasitas Sistem Kebiasaan";
 const feat_planner_batch_unlocked = "Eksekusi Mode Batch";
 const feat_finance_adv_unlocked = "Proyeksi Kekayaan Lanjutan";
 const feat_neural_coaching_unlocked = "Neural AI Coaching Hub";
+const pricing_explorer_desc = "Alat esensial untuk memulai perjalanan produktivitas Anda.";
+const pricing_architect_desc = "Otomasi tingkat tinggi untuk eksekusi yang presisi.";
+const pricing_quantum_desc = "Buka potensi penuh dari Neural OS AI Assistant.";
+const pricing_legendary_desc = "Investasi mutakhir untuk pengembangan diri tanpa batas.";
+const pricing_per_year = "per tahun";
+const pricing_lifetime = "Seumur Hidup";
+const pricing_btn_current = "Paket Saat Ini";
+const pricing_btn_upgrade = "Berlangganan Architect";
+const pricing_btn_unleash = "Buka Kuasa AI";
+const pricing_btn_legendary = "Dapatkan Akses Legendary";
+const pricing_feature_header_explorer_plus = "Semua di Explorer, plus:";
+const pricing_feature_header_architect_plus = "Semua di Architect, plus:";
+const pricing_feature_header_quantum_plus = "Semua di Quantum, plus:";
+const pricing_f_single_habit = "Pelacak Kebiasaan Tunggal";
+const pricing_f_basic_planner = "Planner Harian Standar";
+const pricing_f_finance_monitor = "Pemantau Keuangan Pribadi";
+const pricing_f_mobile_access = "Akses Mobile Standar";
+const pricing_f_community = "Dukungan Komunitas";
+const pricing_f_unlimited_habit = "Unlimited Habit Stacks";
+const pricing_f_batch_planner = "Batch Planner Engine";
+const pricing_f_the_vault = "The Vault (Target Menabung)";
+const pricing_f_finance_trends = "Tren Keuangan Eksklusif";
+const pricing_f_custom_themes = "Tema & Warna Personalisasi";
+const pricing_f_ad_free = "Tanpa Iklan (Fokus Total)";
+const pricing_f_neural_ai = "Asisten Neural OS AI";
+const pricing_f_ai_mind_mapping = "Mind Mapping Berbasis AI";
+const pricing_f_mood_advisory = "Penasihat Mood Otomatis";
+const pricing_f_ai_finance_insights = "Wawasan Keuangan AI";
+const pricing_f_early_access = "Akses Awal ke Modul Lab";
+const pricing_f_neural_sync = "Sinkronisasi Data Neural";
+const pricing_f_lifetime_access = "Akses Platform Seumur Hidup";
+const pricing_f_vvip_support = "Dukungan Prioritas VVIP";
+const pricing_f_custom_branding = "Opsi Branding Kustom";
+const pricing_f_beta_enrollment = "Pendaftaran Lab Beta";
+const pricing_f_founder_badge = "Lencana Eksklusif Founder";
+const pricing_f_onboarding = "Onboarding Eksklusif 1-on-1";
+const pricing_workspace_status_title = "Keanggotaan Saat Ini";
+const pricing_workspace_status_text = "Workspace Anda saat ini menggunakan paket";
+const pricing_storage_usage = "Penggunaan Penyimpanan";
+const pricing_money_back = "Garansi 30 Hari Uang Kembali";
+const pricing_hero_title = "Upgrade untuk bebaskan";
+const pricing_hero_highlight = "segalanya.";
+const pricing_hero_desc = "Pilih paket yang sesuai dengan ambisi Anda. Dari pelacakan esensial hingga arsitektur hidup cerdas.";
+const pricing_billing_monthly = "Bulanan";
+const pricing_billing_yearly = "Tahunan (Hemat)";
+const pricing_billing_save = "HEMAT 40%";
+const pricing_comparison_title = "Perbandingan Mendalam";
+const pricing_comparison_subtitle = "Bandingkan fitur di setiap level";
+const pricing_feature_col_name = "Fitur Unggulan";
+const pricing_f_active_habits = "Kapasitas Kebiasaan Aktif";
+const pricing_f_planner_engine = "Mesin Planner Harian";
+const pricing_f_vault_savings = "The Vault & Menabung";
+const pricing_f_ai_assistant = "Asisten Neural OS AI";
+const pricing_f_life_insights = "Wawasan & Analitik Hidup";
+const pricing_f_custom_modules = "Modul Kustom & Lab";
+const pricing_v_standard = "Standar";
+const pricing_v_batch = "Mesin Batch";
+const pricing_v_ai_powered = "Didukung AI";
+const pricing_v_locked = "Terkunci";
+const pricing_v_unlimited = "Tanpa Batas";
+const pricing_v_advanced = "Lanjutan";
+const pricing_v_predictive = "Prediktif";
+const pricing_v_partial = "Parsial";
+const pricing_v_full = "Akses Penuh";
+const pricing_infra_badge = "Infrastruktur kelas dunia";
 const privacy_meta_title = "Pusat Privasi & Kepercayaan";
 const privacy_meta_desc = "Pelajari bagaimana OneForMind melindungi data, privasi, dan memastikan keamanan Anda.";
 const privacy_meta_og_title = "Trust Center — OneForMind";
@@ -19241,6 +19507,71 @@ const id = {
   feat_planner_batch_unlocked,
   feat_finance_adv_unlocked,
   feat_neural_coaching_unlocked,
+  pricing_explorer_desc,
+  pricing_architect_desc,
+  pricing_quantum_desc,
+  pricing_legendary_desc,
+  pricing_per_year,
+  pricing_lifetime,
+  pricing_btn_current,
+  pricing_btn_upgrade,
+  pricing_btn_unleash,
+  pricing_btn_legendary,
+  pricing_feature_header_explorer_plus,
+  pricing_feature_header_architect_plus,
+  pricing_feature_header_quantum_plus,
+  pricing_f_single_habit,
+  pricing_f_basic_planner,
+  pricing_f_finance_monitor,
+  pricing_f_mobile_access,
+  pricing_f_community,
+  pricing_f_unlimited_habit,
+  pricing_f_batch_planner,
+  pricing_f_the_vault,
+  pricing_f_finance_trends,
+  pricing_f_custom_themes,
+  pricing_f_ad_free,
+  pricing_f_neural_ai,
+  pricing_f_ai_mind_mapping,
+  pricing_f_mood_advisory,
+  pricing_f_ai_finance_insights,
+  pricing_f_early_access,
+  pricing_f_neural_sync,
+  pricing_f_lifetime_access,
+  pricing_f_vvip_support,
+  pricing_f_custom_branding,
+  pricing_f_beta_enrollment,
+  pricing_f_founder_badge,
+  pricing_f_onboarding,
+  pricing_workspace_status_title,
+  pricing_workspace_status_text,
+  pricing_storage_usage,
+  pricing_money_back,
+  pricing_hero_title,
+  pricing_hero_highlight,
+  pricing_hero_desc,
+  pricing_billing_monthly,
+  pricing_billing_yearly,
+  pricing_billing_save,
+  pricing_comparison_title,
+  pricing_comparison_subtitle,
+  pricing_feature_col_name,
+  pricing_f_active_habits,
+  pricing_f_planner_engine,
+  pricing_f_vault_savings,
+  pricing_f_ai_assistant,
+  pricing_f_life_insights,
+  pricing_f_custom_modules,
+  pricing_v_standard,
+  pricing_v_batch,
+  pricing_v_ai_powered,
+  pricing_v_locked,
+  pricing_v_unlimited,
+  pricing_v_advanced,
+  pricing_v_predictive,
+  pricing_v_partial,
+  pricing_v_full,
+  pricing_infra_badge,
   privacy_meta_title,
   privacy_meta_desc,
   privacy_meta_og_title,
@@ -23462,15 +23793,25 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_ai_initial,
   pricing_ai_recurring,
   pricing_already_active,
+  pricing_architect_desc,
   pricing_badge,
   pricing_basic_level,
   pricing_billed_annually,
+  pricing_billing_monthly,
+  pricing_billing_save,
+  pricing_billing_yearly,
   pricing_boost_potential,
   pricing_bottom_cta_btn,
   pricing_bottom_cta_desc,
   pricing_bottom_cta_title,
+  pricing_btn_current,
+  pricing_btn_legendary,
+  pricing_btn_unleash,
+  pricing_btn_upgrade,
   pricing_compare_subtitle,
   pricing_compare_title,
+  pricing_comparison_subtitle,
+  pricing_comparison_title,
   pricing_elite_card_status,
   pricing_elite_card_title,
   pricing_elite_feat1_desc,
@@ -23480,6 +23821,36 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_elite_feat3_desc,
   pricing_elite_feat3_title,
   pricing_elite_title,
+  pricing_explorer_desc,
+  pricing_f_active_habits,
+  pricing_f_ad_free,
+  pricing_f_ai_assistant,
+  pricing_f_ai_finance_insights,
+  pricing_f_ai_mind_mapping,
+  pricing_f_basic_planner,
+  pricing_f_batch_planner,
+  pricing_f_beta_enrollment,
+  pricing_f_community,
+  pricing_f_custom_branding,
+  pricing_f_custom_modules,
+  pricing_f_custom_themes,
+  pricing_f_early_access,
+  pricing_f_finance_monitor,
+  pricing_f_finance_trends,
+  pricing_f_founder_badge,
+  pricing_f_life_insights,
+  pricing_f_lifetime_access,
+  pricing_f_mobile_access,
+  pricing_f_mood_advisory,
+  pricing_f_neural_ai,
+  pricing_f_neural_sync,
+  pricing_f_onboarding,
+  pricing_f_planner_engine,
+  pricing_f_single_habit,
+  pricing_f_the_vault,
+  pricing_f_unlimited_habit,
+  pricing_f_vault_savings,
+  pricing_f_vvip_support,
   pricing_faq_1_a,
   pricing_faq_1_q,
   pricing_faq_2_a,
@@ -23517,10 +23888,18 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_feat_planner_basic,
   pricing_feat_planner_batch,
   pricing_feat_unlock_all,
+  pricing_feature_col_name,
+  pricing_feature_header_architect_plus,
+  pricing_feature_header_explorer_plus,
+  pricing_feature_header_quantum_plus,
   pricing_forever,
   pricing_free_btn,
   pricing_free_desc,
   pricing_free_name,
+  pricing_hero_desc,
+  pricing_hero_highlight,
+  pricing_hero_title,
+  pricing_infra_badge,
   pricing_l1_desc,
   pricing_l1_initial,
   pricing_l1_name,
@@ -23541,25 +23920,31 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_l4_name,
   pricing_l4_price_yr,
   pricing_l4_recurring,
+  pricing_legendary_desc,
   pricing_life_btn,
   pricing_life_desc,
   pricing_life_name,
+  pricing_lifetime,
   pricing_matrix_subtitle,
   pricing_matrix_title,
   pricing_meta_desc,
   pricing_meta_og_desc,
   pricing_meta_og_title,
   pricing_meta_title,
+  pricing_money_back,
   pricing_month,
   pricing_monthly,
   pricing_once,
+  pricing_per_year,
   pricing_pro_badge,
   pricing_pro_btn,
   pricing_pro_desc,
   pricing_pro_initial,
   pricing_pro_name,
   pricing_pro_recurring,
+  pricing_quantum_desc,
   pricing_save_amount,
+  pricing_storage_usage,
   pricing_sub_os,
   pricing_subtitle,
   pricing_title_1,
@@ -23570,6 +23955,17 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_trust_2_title,
   pricing_trust_3_desc,
   pricing_trust_3_title,
+  pricing_v_advanced,
+  pricing_v_ai_powered,
+  pricing_v_batch,
+  pricing_v_full,
+  pricing_v_locked,
+  pricing_v_partial,
+  pricing_v_predictive,
+  pricing_v_standard,
+  pricing_v_unlimited,
+  pricing_workspace_status_text,
+  pricing_workspace_status_title,
   pricing_yearly,
   prio_important,
   prio_important_desc,
@@ -25241,7 +25637,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Ds_x1FOD.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-DTCh1wIJ.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-DVmkyC_F.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-goOZ-mUZ.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-Dx8Hvmb2.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D1GH9Mi0.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-BW8Rosoy.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-DCKmrnCR.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CMWKP6Kx.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CyC2eTFc.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DFlE7CWy.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-DzUPR4wT.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-BUxjwEgP.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BfckbtdK.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-FNnSbdp8.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BoHUw9j9.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-BLjzDCQn.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-cLIY3vZn.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-1RYROEJY.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-CAL30nhF.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Dw2-p7Em.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-CWtZ5y7d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CeE_KrjK.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-238EhcxQ.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CINmz6SP.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BefGRh1_.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BZlEkQfG.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-D6itVhkO.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-DSH9Y4-r.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-Bl2NoxIs.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-mC9gx0Xo.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-B2PJ05cU.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-BLvB1DOy.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-BqQLQzi8.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-Bzn_Jmcz.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DL_SGPF3.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-g2p5-kTe.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-upmFpOcy.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-BLgPUB_a.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-BOe6Jwr9.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CIcxa69u.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-DT313KQr.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-Bv8lQyym.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BgVBeFBd.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-D3cv-AWu.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dm86BcmR.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-D5Wep17S.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DT07ctqh.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-iqt9uv_-.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-_4kOV9Gq.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DCp89kMX.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-C32UR2vO.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-CxhJnvuP.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-CDLwS7dO.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-KO2YT0FN.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Ds_x1FOD.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-DhXlvq4V.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-CiKHUaup.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-CFJiELgl.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-CyXNibKy.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-D1GH9Mi0.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-Ykibw0zp.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-DCKmrnCR.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CMWKP6Kx.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-moaGm53U.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-B-4S8SlY.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-DZR8-NBc.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-ZWHb_3Z4.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BfckbtdK.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-FNnSbdp8.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-D0m_3WLF.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-DmJZR4ID.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-DDNXSd8t.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-CssZnLzD.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-CAL30nhF.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Dw2-p7Em.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-DKrCtEVp.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-DRKcsOVZ.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-B5Uu9Itv.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CINmz6SP.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-cV2n666B.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-DS-5CfKb.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Bv4LZkki.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-QQODoKOG.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-FABkj7_4.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Bw0GTDn-.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CoGFpEmR.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-BQXaHvaP.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-DFrL0QpA.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-uiO0Xgu5.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-CpjmMXHD.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-B6_Jsbzz.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-BIZZxDvQ.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-C-YMQkdd.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-C9QCYgFV.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-C--KljH9.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DVybfcvd.js"), "./Pages/More/Index.vue": () => import("./assets/Index-DKytw8Ri.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-DPuMfe67.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-CyK4FuAn.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-DeanWNNu.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CpnAGraB.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-CJmK4o_x.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-9Y2tzYGn.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-BUTNmmcp.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-DHlmGrse.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DOAqaIHa.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-B4-gkasj.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-_4kOV9Gq.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-A4yaTtfz.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-DCp89kMX.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-C32UR2vO.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-DJn7o027.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-CDLwS7dO.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DEizwAG-.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-DoccWlf4.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-KcGRUnKp.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-CWI_nM13.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-BktdkQfl.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";
