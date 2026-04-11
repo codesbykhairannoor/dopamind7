@@ -247,9 +247,9 @@ onMounted(() => {
                             <div class="w-10 h-10 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <Wallet :size="20" />
                             </div>
-                            < TrendingUp :size="16" class="text-slate-300" />
-                        </div>
-                        <h4 class="text-xl font-black text-slate-800 dark:text-white mb-2 tracking-tight">{{ $t('dash_finance_overview') }}</h4>
+                        <TrendingUp :size="16" class="text-slate-300" />
+                    </div>
+                    <h4 class="text-xl font-black text-slate-800 dark:text-white mb-2 tracking-tight">{{ $t('dash_finance_overview') }}</h4>
                         
                         <div v-if="!isExplorer" class="space-y-4">
                             <div>
