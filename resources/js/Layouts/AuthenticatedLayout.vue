@@ -1,20 +1,37 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
-import { usePage, router, Link } from '@inertiajs/vue3'; 
+import { ref, watch, onMounted, onUnmounted } from 'vue';
+import { usePage, router } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { useAppearance } from '@/Composables/useAppearance';
 import { useGating } from '@/Composables/useGating';
 import GlobalHeader from '@/Components/GlobalHeader.vue';
+import AppSidebarNav from '@/Components/AppSidebarNav.vue';
 
 // --- DATA USER & HALAMAN ---
 const page = usePage();
-const { isExplorer, isAiEnabled, canUse, demandAccess, user } = useGating();
+const { demandAccess, user } = useGating();
 
 // --- STATE NAVIGASI ---
 const showLogoutModal = ref(false);
 
 // 🔥 STATE SIDEBAR DESKTOP COLLAPSE
 const isSidebarCollapsed = ref(false);
+
+const isMdUp = ref(false);
+const isMobileDrawerOpen = ref(false);
+let mediaQueryListener;
+let mdMediaQuery;
+
+const syncBreakpoint = () => {
+    if (typeof window === 'undefined') {
+        return;
+    }
+    const mq = window.matchMedia('(min-width: 768px)');
+    isMdUp.value = mq.matches;
+    if (mq.matches) {
+        isMobileDrawerOpen.value = false;
+    }
+};
 
 // 🔥 STATE SECTION COLLAPSE (Monday.com style)
 const coreExpanded = ref(true);
@@ -37,31 +54,57 @@ onMounted(() => {
 
     const savedPlatinum = localStorage.getItem('sidebar_platinum_expanded');
     if (savedPlatinum !== null) platinumExpanded.value = savedPlatinum !== 'false';
+
+    syncBreakpoint();
+    mdMediaQuery = window.matchMedia('(min-width: 768px)');
+    mediaQueryListener = () => syncBreakpoint();
+    mdMediaQuery.addEventListener('change', mediaQueryListener);
 });
 
+onUnmounted(() => {
+    mdMediaQuery?.removeEventListener('change', mediaQueryListener);
+    document.body.style.overflow = '';
+});
+
+const closeMobileDrawer = () => {
+    isMobileDrawerOpen.value = false;
+};
+
 const toggleSidebar = () => {
-    isSidebarCollapsed.value = !isSidebarCollapsed.value;
-    localStorage.setItem('sidebar_collapsed', isSidebarCollapsed.value);
+    if (isMdUp.value) {
+        isSidebarCollapsed.value = !isSidebarCollapsed.value;
+        localStorage.setItem('sidebar_collapsed', isSidebarCollapsed.value);
+    } else {
+        isMobileDrawerOpen.value = !isMobileDrawerOpen.value;
+    }
 };
 
 const toggleCore = () => {
-    if (isSidebarCollapsed.value) return;
+    if (isMdUp.value && isSidebarCollapsed.value) {
+        return;
+    }
     coreExpanded.value = !coreExpanded.value;
     localStorage.setItem('sidebar_core_expanded', coreExpanded.value);
 };
 
 const togglePlatinum = () => {
-    if (isSidebarCollapsed.value) return;
+    if (isMdUp.value && isSidebarCollapsed.value) {
+        return;
+    }
     platinumExpanded.value = !platinumExpanded.value;
     localStorage.setItem('sidebar_platinum_expanded', platinumExpanded.value);
 };
 
-const showModule = (moduleName) => {
-    return user.value?.settings?.modules?.[moduleName] !== false;
-};
+watch(() => page.url, () => {
+    closeMobileDrawer();
+});
 
-// Active indicator helper
-const isActive = (pattern) => route().current(pattern);
+watch(isMobileDrawerOpen, (open) => {
+    if (typeof document === 'undefined') {
+        return;
+    }
+    document.body.style.overflow = open ? 'hidden' : '';
+});
 </script>
 
 <template>
@@ -84,259 +127,61 @@ const isActive = (pattern) => route().current(pattern);
             >
                 <!-- ---- SCROLLABLE NAV AREA ---- -->
                 <nav class="flex-1 overflow-y-auto py-3 custom-scrollbar space-y-0.5" :class="isSidebarCollapsed ? 'px-2' : 'px-2.5'">
-
-                    <!-- ============================================ -->
-                    <!-- SECTION 1: CORE SYSTEM (Collapsible) -->
-                    <!-- ============================================ -->
-
-                    <!-- Section Header -->
-                    <button 
-                        @click="toggleCore"
-                        class="w-full flex items-center justify-between px-2 py-1.5 mb-0.5 rounded-lg group transition-all duration-200"
-                        :class="isSidebarCollapsed ? 'justify-center' : ''"
-                    >
-                        <div v-if="isSidebarCollapsed" class="h-px bg-slate-100 dark:bg-slate-800 w-full my-2"></div>
-                        <template v-else>
-                            <span class="text-[9px] font-black text-slate-400 dark:text-slate-600 tracking-wide ml-1 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">
-                                {{ $t('nav_core_modules', 'System Core') }}
-                            </span>
-                            <div class="flex items-center justify-center w-4 h-4 text-slate-300 transition-transform duration-200" :class="coreExpanded ? '' : '-rotate-90'">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                            </div>
-                        </template>
-                    </button>
-
-                    <!-- Core Nav Items -->
-                    <Transition 
-                        enter-active-class="transition-all duration-200 ease-out overflow-hidden"
-                        enter-from-class="opacity-0 max-h-0"
-                        enter-to-class="opacity-100 max-h-96"
-                        leave-active-class="transition-all duration-150 ease-in overflow-hidden"
-                        leave-from-class="opacity-100 max-h-96"
-                        leave-to-class="opacity-0 max-h-0"
-                    >
-                        <div v-show="coreExpanded || isSidebarCollapsed" class="space-y-0.5">
-                            
-                            <!-- Dashboard -->
-                            <Link :href="route('dashboard')" prefetch="hover" view-transition
-                                class="nav-item group"
-                                :class="[
-                                    isActive('dashboard') ? 'nav-item-active' : 'nav-item-default',
-                                    isSidebarCollapsed ? 'justify-center px-0 py-2.5' : 'px-2.5 py-2 gap-3'
-                                ]"
-                                :title="isSidebarCollapsed ? $t('nav_item_dashboard') : ''"
-                            >
-                                <div class="nav-icon shrink-0" :class="isActive('dashboard') ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'">
-                                    <OneForMindIcon name="dashboard" size="18" />
-                                </div>
-                                <span v-if="!isSidebarCollapsed" class="text-[12px] font-semibold tracking-tight truncate">{{ $t('nav_item_dashboard') }}</span>
-                                <div v-if="isActive('dashboard') && !isSidebarCollapsed" class="nav-active-bar"></div>
-                            </Link>
-
-                            <!-- Habits -->
-                            <Link v-if="showModule('habit')" :href="route('habits.index')" prefetch="hover" view-transition
-                                class="nav-item group"
-                                :class="[
-                                    isActive('habits.*') ? 'nav-item-active' : 'nav-item-default',
-                                    isSidebarCollapsed ? 'justify-center px-0 py-2.5' : 'px-2.5 py-2 gap-3'
-                                ]"
-                                :title="isSidebarCollapsed ? $t('nav_item_habit') : ''"
-                            >
-                                <div class="nav-icon shrink-0" :class="isActive('habits.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'">
-                                    <OneForMindIcon name="habit" size="18" />
-                                </div>
-                                <span v-if="!isSidebarCollapsed" class="text-[12px] font-semibold tracking-tight truncate">{{ $t('nav_item_habit') }}</span>
-                                <div v-if="isActive('habits.*') && !isSidebarCollapsed" class="nav-active-bar"></div>
-                            </Link>
-
-                            <!-- Planner -->
-                            <Link v-if="showModule('planner')" :href="route('planner.index')" prefetch="hover" view-transition
-                                class="nav-item group"
-                                :class="[
-                                    isActive('planner.*') ? 'nav-item-active' : 'nav-item-default',
-                                    isSidebarCollapsed ? 'justify-center px-0 py-2.5' : 'px-2.5 py-2 gap-3'
-                                ]"
-                                :title="isSidebarCollapsed ? $t('nav_item_planner') : ''"
-                            >
-                                <div class="nav-icon shrink-0" :class="isActive('planner.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'">
-                                    <OneForMindIcon name="planner" size="18" />
-                                </div>
-                                <span v-if="!isSidebarCollapsed" class="text-[12px] font-semibold tracking-tight truncate">{{ $t('nav_item_planner') }}</span>
-                                <div v-if="isActive('planner.*') && !isSidebarCollapsed" class="nav-active-bar"></div>
-                            </Link>
-
-                            <!-- Finance -->
-                            <Link v-if="showModule('finance')" :href="route('finance.index')" prefetch="hover" view-transition
-                                class="nav-item group"
-                                :class="[
-                                    isActive('finance.*') ? 'nav-item-active' : 'nav-item-default',
-                                    isSidebarCollapsed ? 'justify-center px-0 py-2.5' : 'px-2.5 py-2 gap-3'
-                                ]"
-                                :title="isSidebarCollapsed ? $t('nav_item_finance') : ''"
-                            >
-                                <div class="nav-icon shrink-0" :class="isActive('finance.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'">
-                                    <OneForMindIcon name="finance" size="18" />
-                                </div>
-                                <span v-if="!isSidebarCollapsed" class="text-[12px] font-semibold tracking-tight truncate">{{ $t('nav_item_finance') }}</span>
-                                <div v-if="isActive('finance.*') && !isSidebarCollapsed" class="nav-active-bar"></div>
-                            </Link>
-
-                        </div>
-                    </Transition>
-
-                    <!-- Spacer -->
-                    <div class="h-3"></div>
-
-                    <!-- ============================================ -->
-                    <!-- SECTION 2: PLATINUM SUITE (Collapsible) -->
-                    <!-- ============================================ -->
-
-                    <button 
-                        @click="togglePlatinum"
-                        class="w-full flex items-center justify-between px-2 py-1.5 mb-0.5 rounded-lg group transition-all duration-200"
-                        :class="isSidebarCollapsed ? 'justify-center' : ''"
-                    >
-                        <div v-if="isSidebarCollapsed" class="h-px bg-slate-100 dark:bg-slate-800 w-full my-2"></div>
-                        <template v-else>
-                            <div class="flex items-center gap-1.5 ml-1">
-                                <span class="text-[9px] font-black text-slate-400 dark:text-slate-600 tracking-wide group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">
-                                    {{ $t('nav_platinum_suite', 'Platinum Suite') }}
-                                </span>
-                                <!-- Lock icon if Explorer -->
-                                <div v-if="isExplorer" class="w-3 h-3 text-slate-300 dark:text-slate-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-center w-4 h-4 text-slate-300 transition-transform duration-200" :class="platinumExpanded ? '' : '-rotate-90'">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                            </div>
-                        </template>
-                    </button>
-
-                    <Transition 
-                        enter-active-class="transition-all duration-200 ease-out overflow-hidden"
-                        enter-from-class="opacity-0 max-h-0"
-                        enter-to-class="opacity-100 max-h-96"
-                        leave-active-class="transition-all duration-150 ease-in overflow-hidden"
-                        leave-from-class="opacity-100 max-h-96"
-                        leave-to-class="opacity-0 max-h-0"
-                    >
-                        <div v-show="platinumExpanded || isSidebarCollapsed" class="space-y-0.5">
-
-                            <!-- Journal -->
-                            <div v-if="showModule('journal')"
-                                @click="demandAccess('journal', route('journal.index'))"
-                                class="nav-item group cursor-pointer"
-                                :class="[
-                                    isActive('journal.*') ? 'nav-item-active' : 'nav-item-default',
-                                    isSidebarCollapsed ? 'justify-center px-0 py-2.5' : 'px-2.5 py-2 gap-3',
-                                    !canUse('journal') ? 'opacity-60' : ''
-                                ]"
-                                :title="isSidebarCollapsed ? $t('nav_item_journal') : ''"
-                            >
-                                <div class="nav-icon shrink-0" :class="isActive('journal.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'">
-                                    <OneForMindIcon name="journal" size="18" />
-                                </div>
-                                <span v-if="!isSidebarCollapsed" class="text-[12px] font-semibold tracking-tight truncate flex-1">{{ $t('nav_item_journal') }}</span>
-                                <div v-if="!canUse('journal') && !isSidebarCollapsed" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"></div>
-                                <div v-if="isActive('journal.*') && !isSidebarCollapsed" class="nav-active-bar"></div>
-                            </div>
-
-                            <!-- Calendar -->
-                            <div v-if="showModule('calendar')"
-                                @click="demandAccess('calendar', route('calendar.index'))"
-                                class="nav-item group cursor-pointer"
-                                :class="[
-                                    isActive('calendar.*') ? 'nav-item-active' : 'nav-item-default',
-                                    isSidebarCollapsed ? 'justify-center px-0 py-2.5' : 'px-2.5 py-2 gap-3',
-                                    !canUse('calendar') ? 'opacity-60' : ''
-                                ]"
-                                :title="isSidebarCollapsed ? $t('nav_item_calendar') : ''"
-                            >
-                                <div class="nav-icon shrink-0" :class="isActive('calendar.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'">
-                                    <OneForMindIcon name="calendar" size="18" />
-                                </div>
-                                <span v-if="!isSidebarCollapsed" class="text-[12px] font-semibold tracking-tight truncate flex-1">{{ $t('nav_item_calendar') }}</span>
-                                <div v-if="!canUse('calendar') && !isSidebarCollapsed" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"></div>
-                                <div v-if="isActive('calendar.*') && !isSidebarCollapsed" class="nav-active-bar"></div>
-                            </div>
-
-                            <!-- Jobs -->
-                            <div v-if="showModule('job')"
-                                @click="demandAccess('job', route('jobs.index'))"
-                                class="nav-item group cursor-pointer"
-                                :class="[
-                                    isActive('jobs.*') ? 'nav-item-active' : 'nav-item-default',
-                                    isSidebarCollapsed ? 'justify-center px-0 py-2.5' : 'px-2.5 py-2 gap-3',
-                                    !canUse('job') ? 'opacity-60' : ''
-                                ]"
-                                :title="isSidebarCollapsed ? $t('nav_item_jobs') : ''"
-                            >
-                                <div class="nav-icon shrink-0" :class="isActive('jobs.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'">
-                                    <OneForMindIcon name="job" size="18" />
-                                </div>
-                                <span v-if="!isSidebarCollapsed" class="text-[12px] font-semibold tracking-tight truncate flex-1">{{ $t('nav_item_jobs') }}</span>
-                                <div v-if="!canUse('job') && !isSidebarCollapsed" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"></div>
-                                <div v-if="isActive('jobs.*') && !isSidebarCollapsed" class="nav-active-bar"></div>
-                            </div>
-
-                            <!-- Goals -->
-                            <div v-if="showModule('goal')"
-                                @click="demandAccess('goal', route('goals.index'))"
-                                class="nav-item group cursor-pointer"
-                                :class="[
-                                    isActive('goals.*') ? 'nav-item-active' : 'nav-item-default',
-                                    isSidebarCollapsed ? 'justify-center px-0 py-2.5' : 'px-2.5 py-2 gap-3',
-                                    !canUse('goal') ? 'opacity-60' : ''
-                                ]"
-                                :title="isSidebarCollapsed ? $t('nav_item_goals') : ''"
-                            >
-                                <div class="nav-icon shrink-0" :class="isActive('goals.*') ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'">
-                                    <OneForMindIcon name="goal" size="18" />
-                                </div>
-                                <span v-if="!isSidebarCollapsed" class="text-[12px] font-semibold tracking-tight truncate flex-1">{{ $t('nav_item_goals') }}</span>
-                                <div v-if="!canUse('goal') && !isSidebarCollapsed" class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"></div>
-                                <div v-if="isActive('goals.*') && !isSidebarCollapsed" class="nav-active-bar"></div>
-                            </div>
-
-                        </div>
-                    </Transition>
-
-                    <!-- Spacer -->
-                    <div class="h-3"></div>
-
-                    <!-- ============================================ -->
-                    <!-- SECTION 3: NEURAL OS (AI Section - Monday Style) -->
-                    <!-- ============================================ -->
-                    <template v-if="!isExplorer">
-                        <div class="px-2 py-1.5 mb-0.5">
-                            <div v-if="isSidebarCollapsed" class="h-px bg-slate-100 dark:bg-slate-800 w-full my-2"></div>
-                             <span v-else class="text-[9px] font-black text-indigo-400/80 dark:text-indigo-600/80 tracking-wide ml-1">
-                                Neural OS
-                            </span>
-                        </div>
-
-                        <!-- AI Coach -->
-                        <div
-                            @click="demandAccess('ai_coach', route('coach.index'))"
-                            class="nav-item group cursor-pointer relative overflow-hidden"
-                            :class="[
-                                isActive('coach.*') ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300' : 'text-slate-500 dark:text-slate-400 hover:bg-indigo-50/50 dark:hover:bg-indigo-500/5 hover:text-indigo-700 dark:hover:text-indigo-300',
-                                isSidebarCollapsed ? 'justify-center px-0 py-2.5' : 'px-2.5 py-2 gap-3',
-                            ]"
-                            :title="isSidebarCollapsed ? $t('nav_item_coach', 'AI Coach') : ''"
-                        >
-                            <div class="shrink-0 text-indigo-500">
-                                <OneForMindIcon name="sparkles" size="18" />
-                            </div>
-                            <span v-if="!isSidebarCollapsed" class="text-[12px] font-semibold tracking-tight truncate flex-1">{{ $t('nav_item_coach', 'AI Coach') }}</span>
-                            <span v-if="!isSidebarCollapsed" class="text-[8px] font-black text-indigo-500 uppercase bg-indigo-100 dark:bg-indigo-500/20 px-1.5 py-0.5 rounded-full shrink-0">AI</span>
-                            <div v-if="isActive('coach.*') && !isSidebarCollapsed" class="nav-active-bar bg-indigo-500"></div>
-                        </div>
-                    </template>
-
+                    <AppSidebarNav
+                        variant="sidebar"
+                        :collapsed="isSidebarCollapsed"
+                        :core-expanded="coreExpanded"
+                        :platinum-expanded="platinumExpanded"
+                        @toggle-core="toggleCore"
+                        @toggle-platinum="togglePlatinum"
+                    />
                 </nav>
             </aside>
+
+            <!-- Mobile navigation drawer (< md) -->
+            <Teleport to="body">
+                <div class="md:hidden">
+                    <Transition name="mobile-drawer-backdrop">
+                        <div
+                            v-if="isMobileDrawerOpen"
+                            class="fixed inset-0 top-16 z-[60] bg-slate-950/50 backdrop-blur-sm"
+                            aria-hidden="true"
+                            @click="closeMobileDrawer"
+                        ></div>
+                    </Transition>
+                    <Transition name="mobile-drawer-panel">
+                        <aside
+                            v-if="isMobileDrawerOpen"
+                            class="fixed left-0 top-16 z-[61] flex h-[calc(100dvh-4rem)] w-[min(300px,92vw)] flex-col border-r border-slate-100 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-900 dark:shadow-none"
+                        >
+                        <div class="flex items-center justify-between border-b border-slate-100 px-4 py-3 dark:border-slate-800">
+                            <span class="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                                {{ $t('nav_menu_title') }}
+                            </span>
+                            <button
+                                type="button"
+                                class="flex h-10 w-10 items-center justify-center rounded-xl text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+                                :aria-label="$t('nav_close_menu')"
+                                @click="closeMobileDrawer"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                            </button>
+                        </div>
+                        <nav class="custom-scrollbar flex-1 overflow-y-auto py-2">
+                            <AppSidebarNav
+                                variant="drawer"
+                                :collapsed="false"
+                                :core-expanded="coreExpanded"
+                                :platinum-expanded="platinumExpanded"
+                                @toggle-core="toggleCore"
+                                @toggle-platinum="togglePlatinum"
+                                @navigate="closeMobileDrawer"
+                            />
+                        </nav>
+                        </aside>
+                    </Transition>
+                </div>
+            </Teleport>
 
             <!-- MAIN CONTENT AREA -->
             <main class="flex-1 overflow-y-auto relative w-full bg-slate-50 dark:bg-slate-950 pb-32 md:pb-0 transition-colors duration-500 custom-scrollbar">
@@ -394,29 +239,23 @@ const isActive = (pattern) => route().current(pattern);
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
 .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; }
 
-/* Nav item base */
-.nav-item {
-    @apply flex items-center w-full rounded-xl transition-all duration-150 relative;
+.mobile-drawer-backdrop-enter-active,
+.mobile-drawer-backdrop-leave-active {
+    transition: opacity 0.2s ease;
+}
+.mobile-drawer-backdrop-enter-from,
+.mobile-drawer-backdrop-leave-to {
+    opacity: 0;
 }
 
-/* Active state */
-.nav-item-active {
-    @apply bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 font-bold;
+.mobile-drawer-panel-enter-active,
+.mobile-drawer-panel-leave-active {
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.2s ease;
 }
-
-/* Default/hover state */
-.nav-item-default {
-    @apply text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100 font-medium;
-}
-
-/* Active left bar indicator */
-.nav-active-bar {
-    @apply absolute left-0 top-1/2 -translate-y-1/2 w-0.5 h-5 bg-indigo-600 rounded-r-full;
-}
-
-/* Nav icon wrapper */
-.nav-icon {
-    @apply flex items-center justify-center transition-colors;
+.mobile-drawer-panel-enter-from,
+.mobile-drawer-panel-leave-to {
+    transform: translateX(-100%);
+    opacity: 0.85;
 }
 
 .fade-enter-active, .fade-leave-active { transition: opacity 0.2s ease; }

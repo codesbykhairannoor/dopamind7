@@ -67,17 +67,17 @@ onMounted(() => {
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors duration-500">
         <!-- STICKY HEADER: Title + Add Button only -->
         <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 sticky top-16 z-40 shadow-sm transition-colors duration-500">
-            <div class="w-full px-4 sm:px-6 lg:px-8 py-3">
-                <div class="flex items-center justify-between gap-4 max-w-7xl mx-auto">
+            <div class="w-full min-w-0 px-4 sm:px-6 lg:px-8 py-3">
+                <div class="flex w-full min-w-0 flex-wrap items-center justify-between gap-3 sm:gap-4 md:flex-nowrap">
                     
-                    <div class="flex items-center gap-2 w-full md:w-auto">
-                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+                    <div class="flex min-w-0 flex-1 items-center gap-2 md:flex-initial md:max-w-[min(100%,28rem)]">
+                        <p class="shrink-0 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
                             {{ $t('job_page_title', 'Job Tracker') }}
                         </p>
-                        <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50">
-                            <OneForMindIcon name="job" size="14" class="text-indigo-500" />
-                            <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize">{{ todayDate }}</span>
-                            <span v-if="pagination?.total" class="ml-2 text-[9px] font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 rounded-full transition-colors duration-500">
+                        <div class="flex min-w-0 flex-1 items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50 overflow-hidden">
+                            <OneForMindIcon name="job" size="14" class="text-indigo-500 shrink-0" />
+                            <span class="min-w-0 truncate text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize">{{ todayDate }}</span>
+                            <span v-if="pagination?.total" class="shrink-0 ml-1 text-[9px] font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-1.5 py-0.5 rounded-full transition-colors duration-500">
                                 {{ pagination.total }}
                             </span>
                         </div>
@@ -85,7 +85,7 @@ onMounted(() => {
                     
                     
                     <!-- Right: Actions -->
-                    <div class="flex items-center gap-3">
+                    <div class="flex shrink-0 items-center gap-2 sm:gap-3">
                         <!-- Master CV Button -->
                         <button @click="isMasterModalOpen = true"
                             class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-2 group relative">

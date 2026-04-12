@@ -46,30 +46,30 @@ const changeYear = (offset) => {
 
 <template>
     <div class="relative z-[60] transition-all bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b shadow-sm dark:shadow-none border-slate-100 dark:border-slate-800 md:sticky md:top-16 transition-colors duration-500">
-        <div class="max-w-7xl px-4 py-3 mx-auto sm:px-6 lg:px-8">
+        <div class="w-full min-w-0 px-4 py-3 sm:px-6 lg:px-8">
             
-            <div class="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
+            <div class="flex flex-col items-stretch justify-between w-full min-w-0 gap-4 md:flex-row md:items-center">
                 
-                <div class="flex items-center gap-2 w-full md:w-auto">
-                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+                <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,22rem)]">
+                    <p class="shrink-0 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
                         {{ $t('calendar_title', 'Master Calendar') }}
                     </p>
-                    <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50">
-                        <OneForMindIcon name="calendar" size="14" class="text-indigo-500" />
-                        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize">{{ displayMonth }}</span>
+                    <div class="flex min-w-0 flex-1 items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50 overflow-hidden">
+                        <OneForMindIcon name="calendar" size="14" class="text-indigo-500 shrink-0" />
+                        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize truncate">{{ displayMonth }}</span>
                     </div>
                 </div>
 
-                <div class="flex items-center w-full gap-3 md:w-auto">
+                <div class="flex min-w-0 flex-wrap items-center w-full gap-3 md:w-auto md:flex-nowrap md:justify-end">
                     
-                    <div class="relative flex-1 md:flex-none">
+                    <div class="relative min-w-0 flex-1 md:flex-none md:max-w-xs">
                         <button 
                             @click="isOpen = !isOpen" 
-                            class="w-full flex items-center justify-between gap-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-100/50 dark:hover:shadow-none transition-all active:scale-95 transition-colors duration-500"
+                            class="w-full min-w-0 flex items-center justify-between gap-3 sm:gap-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-100/50 dark:hover:shadow-none transition-all active:scale-95 transition-colors duration-500"
                         >
-                            <div class="flex flex-col items-start leading-none gap-1">
+                            <div class="flex min-w-0 flex-1 flex-col items-start leading-none gap-1 text-left">
                                 <span class="text-[10px] text-slate-400 dark:text-slate-500 font-bold tracking-widest transition-colors duration-500 leading-none">{{ $t('label_period', 'Period') }}</span>
-                                <span class="text-xs font-black whitespace-nowrap leading-none mt-0.5">{{ displayMonth }}</span>
+                                <span class="w-full truncate text-xs font-black leading-none mt-0.5">{{ displayMonth }}</span>
                             </div>
                              <div class="p-1.5 bg-white dark:bg-slate-800 border shadow-sm dark:shadow-none rounded-xl border-slate-100 dark:border-slate-700 flex items-center justify-center transition-colors duration-500">
                                 <OneForMindIcon name="chevron-down" size="14" stroke-width="3" class="text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" />

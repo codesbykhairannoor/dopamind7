@@ -157,13 +157,13 @@ const currentTimeIndicatorStyle = computed(() => {
 <template>
     <div class="bg-slate-50 dark:bg-slate-950 rounded-3xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden select-none flex flex-col h-full transition-colors duration-500">
         
-        <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 sticky top-0 z-50 shadow-sm dark:shadow-none flex justify-between items-center shrink-0 transition-colors duration-500">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-lg shadow-indigo-200 dark:shadow-none shadow-lg">📅</div>
-                <h3 class="font-black text-slate-800 dark:text-white text-base leading-none transition-colors duration-500">{{ $t('timeline_title') }}</h3>
+        <div class="px-4 sm:px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 sticky top-0 z-50 shadow-sm dark:shadow-none flex min-w-0 justify-between items-center gap-3 shrink-0 transition-colors duration-500">
+            <div class="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-base sm:text-lg shadow-indigo-200 dark:shadow-none shadow-lg">📅</div>
+                <h3 class="min-w-0 truncate font-black text-slate-800 dark:text-white text-sm sm:text-base leading-none transition-colors duration-500">{{ $t('timeline_title') }}</h3>
             </div>
             
-           <div class="relative">
+           <div class="relative shrink-0">
     <button 
         @click="isStartHourOpen = !isStartHourOpen"
         class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all group"

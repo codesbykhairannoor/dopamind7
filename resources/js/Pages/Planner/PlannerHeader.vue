@@ -23,11 +23,11 @@ const closeDatePicker = () => {
 
 <template>
     <div class="relative z-[60] transition-all bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors duration-500">
-        <div class="px-4 md:px-8 py-4 max-w-7xl mx-auto">
+        <div class="w-full min-w-0 px-4 sm:px-6 lg:px-8 py-4">
             
-            <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="w-full min-w-0 flex flex-col md:flex-row md:items-center md:justify-between items-stretch gap-4">
                 
-                <div class="flex items-center gap-2 w-full md:w-auto">
+                <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,24rem)]">
                     <p class="text-[10px] font-black capitalize tracking-wide text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
                         {{ $t('header_title', 'Daily Planner') }}
                     </p>
@@ -37,12 +37,12 @@ const closeDatePicker = () => {
                             <div class="relative">
                                 <button 
                                     @click="showDatePicker = !showDatePicker" 
-                                    class="text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-bold text-xs capitalize transition-colors flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50"
+                                    class="max-w-full min-w-0 text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 font-bold text-xs capitalize transition-colors flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50"
                                     :class="{'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400': showDatePicker}"
                                 >
-                                    <OneForMindIcon name="calendar" size="14" class="text-indigo-500" />
-                                    {{ formattedDate }} 
-                                    <OneForMindIcon name="chevron-down" size="10" stroke-width="3" class="text-slate-400 dark:text-slate-600 transition-transform duration-300" :class="{'rotate-180': showDatePicker}" />
+                                    <OneForMindIcon name="calendar" size="14" class="text-indigo-500 shrink-0" />
+                                    <span class="truncate text-left">{{ formattedDate }}</span>
+                                    <OneForMindIcon name="chevron-down" size="10" stroke-width="3" class="text-slate-400 dark:text-slate-600 transition-transform duration-300 shrink-0" :class="{'rotate-180': showDatePicker}" />
                                 </button>
 
                                 <transition
@@ -70,7 +70,7 @@ const closeDatePicker = () => {
                     </div>
                 </div>
 
-                <div class="flex-1 w-full md:px-12 max-w-4xl order-3 md:order-none mt-2 md:mt-0"> 
+                <div class="flex-1 w-full min-w-0 md:px-8 lg:px-12 max-w-4xl order-3 md:order-none mt-2 md:mt-0"> 
                     <div class="flex justify-between text-[11px] font-black text-slate-400 dark:text-slate-500 mb-1.5 transition-colors duration-500">
                         <span>{{ $t('header_progress', 'Progress') }}</span>
                         <span class="text-indigo-600 dark:text-indigo-400">{{ stats.percent }}%</span>

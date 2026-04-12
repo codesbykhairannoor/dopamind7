@@ -50,30 +50,30 @@ const changeYear = (offset) => {
 
 <template>
   <div class="relative z-50 transition-all bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors duration-500">
-    <div class="max-w-7xl px-4 md:px-8 py-4 mx-auto">
+    <div class="w-full min-w-0 px-4 md:px-8 py-4">
       
-      <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+      <div class="flex flex-col items-stretch justify-between gap-4 min-w-0 md:flex-row md:items-center">
         
-        <div class="flex items-center gap-2 w-full md:w-auto">
-          <p class="text-[10px] font-black capitalize tracking-wide text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+        <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,22rem)]">
+          <p class="shrink-0 text-[10px] font-black capitalize tracking-wide text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
               {{ $t('habit_page_title', 'Habit Tracker') }}
           </p>
-          <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50">
-              <OneForMindIcon name="calendar" size="14" class="text-indigo-500" />
-              <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300">{{ todayDate }}</span>
+          <div class="flex min-w-0 flex-1 items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50 overflow-hidden">
+              <OneForMindIcon name="calendar" size="14" class="text-indigo-500 shrink-0" />
+              <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 truncate">{{ todayDate }}</span>
           </div>
         </div>
 
-        <div class="flex items-center w-full gap-3 md:w-auto">
+        <div class="flex min-w-0 flex-wrap items-center w-full gap-3 md:w-auto md:flex-nowrap md:justify-end">
           
-          <div class="relative flex-1 md:flex-none">
+          <div class="relative min-w-0 flex-1 md:flex-none md:max-w-xs">
             <button 
               @click="isOpen = !isOpen" 
-              class="w-full flex items-center justify-between gap-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 hover:shadow-sm transition-all active:scale-95"
+              class="w-full min-w-0 flex items-center justify-between gap-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 hover:shadow-sm transition-all active:scale-95"
             >
-              <div class="flex flex-col items-start leading-none">
+              <div class="flex min-w-0 flex-1 flex-col items-start leading-none text-left">
                 <span class="text-[9px] text-slate-400 dark:text-slate-500 mb-0.5">{{ $t('label_period') }}</span>
-                <span class="text-xs">{{ currentMonth }}</span>
+                <span class="w-full truncate text-xs">{{ currentMonth }}</span>
               </div>
               <div class="p-1 bg-white dark:bg-slate-800 border shadow-sm rounded-lg border-slate-100 dark:border-slate-700 flex items-center justify-center">
                 <OneForMindIcon name="chevron-down" size="12" stroke-width="3" class="text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" />
@@ -142,7 +142,7 @@ const changeYear = (offset) => {
 
           <button 
             @click="isExplorer && habitsCount >= 5 ? router.visit(route('billing'), { data: { from: 'habit_count_limit' } }) : openCreateModal()" 
-            class="h-[46px] px-5 flex items-center gap-3 text-white rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-lg transition-all duration-300 whitespace-nowrap"
+            class="h-[46px] shrink-0 px-5 flex items-center gap-3 text-white rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-lg transition-all duration-300 whitespace-nowrap"
             :class="isExplorer && habitsCount >= 5 ? 'bg-gradient-to-r from-rose-500 to-rose-600 shadow-rose-200 dark:shadow-rose-900/20' : 'bg-indigo-600 shadow-indigo-100 dark:shadow-indigo-900/40 hover:bg-indigo-700'"
           >
             <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">

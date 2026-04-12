@@ -73,14 +73,16 @@ onUnmounted(() => {
 
 <template>
     <header class="h-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 sticky top-top z-[70] transition-all duration-500">
-        <div class="h-full px-4 flex items-center justify-between gap-4">
+        <div class="flex h-full items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4">
             
             <!-- LEFT: HAMBURGER + LOGO -->
-            <div class="flex items-center gap-3 shrink-0">
+            <div class="flex shrink-0 items-center gap-2 sm:gap-3">
                 <button 
                     @click="emit('toggle-sidebar')"
-                    class="w-9 h-9 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition-all active:scale-90"
-                    title="Toggle Sidebar"
+                    class="flex h-10 w-10 items-center justify-center rounded-xl text-slate-400 transition-all hover:bg-slate-100 active:scale-95 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+                    type="button"
+                    :title="$t('nav_toggle_menu', 'Menu')"
+                    :aria-label="$t('nav_toggle_menu', 'Menu')"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                 </button>
@@ -93,27 +95,35 @@ onUnmounted(() => {
                 </Link>
             </div>
 
-            <!-- MIDDLE: SEARCH TRIGGER (COMMAND PALETTE) -->
-            <div class="hidden md:flex items-center flex-1 max-w-lg group px-2 relative">
-                <button 
+            <!-- CENTER: desktop search bar + palette (anchored here) -->
+            <div class="relative hidden min-w-0 max-w-lg flex-1 px-1 md:block md:px-2">
+                <button
+                    type="button"
+                    class="flex w-full items-center gap-3 rounded-2xl border-2 border-transparent bg-slate-100/60 px-4 py-2.5 shadow-sm shadow-transparent transition-all hover:border-indigo-100 hover:bg-white hover:shadow-indigo-100/30 dark:bg-slate-800/60 dark:hover:border-indigo-500/20 dark:hover:bg-slate-800 dark:hover:shadow-none"
+                    :class="showCommandPalette ? 'border-indigo-100 dark:border-indigo-500/30' : ''"
                     @click="showCommandPalette = !showCommandPalette"
-                    class="w-full flex items-center gap-3 px-4 py-2.5 bg-slate-100/60 dark:bg-slate-800/60 hover:bg-white dark:hover:bg-slate-800 border-2 border-transparent hover:border-indigo-100 dark:hover:border-indigo-500/20 rounded-2xl transition-all group shadow-sm shadow-transparent hover:shadow-indigo-100/30 dark:hover:shadow-none"
                 >
                     <div class="flex items-center gap-3">
-                        <OneForMindIcon name="search" size="14" class="text-slate-400 group-hover:text-indigo-500 transition-colors" />
-                        <span class="text-[13px] font-bold text-slate-400 dark:text-slate-500 group-hover:text-slate-500 transition-colors">Search anything...</span>
+                        <OneForMindIcon name="search" size="14" class="text-slate-400 transition-colors" />
+                        <span class="text-[13px] font-bold text-slate-400 transition-colors dark:text-slate-500">{{ $t('nav_search_anything') }}</span>
                     </div>
                 </button>
 
-                <!-- Search Dropdown Anchored Here -->
-                <CommandPalette 
-                    :is-open="showCommandPalette" 
-                    @close="showCommandPalette = false" 
-                />
+                <CommandPalette :is-open="showCommandPalette" @close="showCommandPalette = false" />
             </div>
 
-            <!-- RIGHT: ACTIONS + PROFILE -->
-            <div class="flex items-center gap-1 shrink-0">
+            <!-- RIGHT: mobile search + actions + profile -->
+            <div class="flex shrink-0 items-center gap-0.5 sm:gap-1">
+                <button
+                    type="button"
+                    class="flex h-10 w-10 items-center justify-center rounded-xl text-slate-400 transition-all hover:bg-slate-100 active:scale-95 dark:hover:bg-slate-800 dark:hover:text-slate-200 md:hidden"
+                    :class="showCommandPalette ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-400' : ''"
+                    :title="$t('nav_search')"
+                    :aria-label="$t('nav_search')"
+                    @click="showCommandPalette = true"
+                >
+                    <OneForMindIcon name="search" size="18" />
+                </button>
 
                 <div
                     class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-800/70 border border-transparent transition-all group mr-1.5 shadow-sm"

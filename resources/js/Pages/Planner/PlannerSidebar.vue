@@ -123,14 +123,14 @@ onUnmounted(() => clearInterval(timerInterval));
             <div class="absolute -right-24 -top-24 w-64 h-64 border-[40px] border-slate-50 dark:border-slate-800/50 rounded-full pointer-events-none group-hover:scale-105 transition-all duration-1000"></div>
             
             <div class="relative z-10 flex flex-col">
-                <div class="w-full flex justify-between items-start mb-6">
-                    <div>
-                        <h3 class="font-black text-slate-800 dark:text-white text-sm tracking-tight flex items-center gap-2 transition-colors duration-500">
-                            <span class="w-2 h-2 rounded-full" :class="isTimerRunning ? 'bg-indigo-500 animate-pulse' : 'bg-slate-300 dark:bg-slate-700'"></span>
-                            {{ $t('sidebar_pomodoro_title', 'Focus Session') }}
+                <div class="w-full min-w-0 flex justify-between items-start gap-3 mb-6">
+                    <div class="min-w-0 flex-1">
+                        <h3 class="font-black text-slate-800 dark:text-white text-sm tracking-tight flex min-w-0 items-center gap-2 transition-colors duration-500">
+                            <span class="w-2 h-2 shrink-0 rounded-full" :class="isTimerRunning ? 'bg-indigo-500 animate-pulse' : 'bg-slate-300 dark:bg-slate-700'"></span>
+                            <span class="min-w-0 truncate">{{ $t('sidebar_pomodoro_title', 'Focus Session') }}</span>
                         </h3>
                     </div>
-                    <button @click="resetTimer" :title="$t('sidebar_pomodoro_reset')" class="w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                    <button @click="resetTimer" :title="$t('sidebar_pomodoro_reset')" class="shrink-0 w-8 h-8 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
                         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
                     </button>
                 </div>
@@ -164,15 +164,15 @@ onUnmounted(() => clearInterval(timerInterval));
         </div>
 
         <div class="bg-white dark:bg-slate-900 p-6 rounded-[2.5rem] shadow-sm border border-slate-200 dark:border-slate-800 transition-colors duration-500">
-            <div class="flex justify-between items-center mb-5">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-xl">📥</div>
-                    <div>
-                        <h3 class="font-black text-slate-800 dark:text-white text-sm tracking-tight transition-colors duration-500">{{ $t('sidebar_inbox_title') }}</h3>
-                        <p class="text-[9px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-tighter italic transition-colors duration-500">{{ $t('sidebar_persistent') }}</p>
+            <div class="flex min-w-0 justify-between items-center gap-3 mb-5">
+                <div class="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-lg sm:text-xl">📥</div>
+                    <div class="min-w-0">
+                        <h3 class="font-black text-slate-800 dark:text-white text-sm tracking-tight transition-colors duration-500 truncate">{{ $t('sidebar_inbox_title') }}</h3>
+                        <p class="text-[9px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-tighter italic transition-colors duration-500 truncate">{{ $t('sidebar_persistent') }}</p>
                     </div>
                 </div>
-                <button @click="addNewTask" class="p-2.5 rounded-xl bg-slate-900 text-white hover:bg-indigo-600 transition-all active:scale-90 shadow-md">
+                <button @click="addNewTask" class="shrink-0 p-2.5 rounded-xl bg-slate-900 text-white hover:bg-indigo-600 transition-all active:scale-90 shadow-md">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path d="M12 4v16m8-8H4" /></svg>
                 </button>
             </div>

@@ -51,11 +51,11 @@ const getBarColor = (p) => p > 90 ? 'bg-rose-500' : p > 75 ? 'bg-orange-500' : '
 
         <div v-if="activeTab === 'expense'" class="space-y-6">
             
-            <div class="flex justify-between items-center">
-                <h3 class="font-bold text-slate-800 dark:text-white text-sm transition-colors duration-500">{{ $t('budget_target') }}</h3>
+            <div class="flex min-w-0 justify-between items-center gap-2">
+                <h3 class="min-w-0 flex-1 truncate font-bold text-slate-800 dark:text-white text-sm transition-colors duration-500">{{ $t('budget_target') }}</h3>
                 <button 
                   @click="$emit('add')" 
-                  class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-2.5 py-1.5 rounded-lg border border-indigo-100 dark:border-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition duration-300 flex items-center gap-1.5"
+                  class="shrink-0 text-[10px] font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-2.5 py-1.5 rounded-lg border border-indigo-100 dark:border-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition duration-300 flex items-center gap-1.5"
                 >
                   <span>+</span>
                   {{ $t('set_budget') }}

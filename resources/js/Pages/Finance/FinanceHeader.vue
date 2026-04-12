@@ -122,19 +122,19 @@ const runAiAudit = () => {
 
 <template>
   <div class="relative z-[60] transition-all bg-white dark:bg-slate-900 border-b shadow-sm dark:shadow-none border-slate-100 dark:border-slate-800 transition-colors duration-500">
-    <div class="flex flex-col items-center justify-between w-full gap-3 md:flex-row max-w-7xl mx-auto px-4 md:px-8 py-4">
+    <div class="flex flex-col items-stretch justify-between w-full min-w-0 gap-3 md:flex-row md:items-center px-3 sm:px-6 lg:px-8 py-4">
       
-      <div class="flex items-center gap-2 w-full md:w-auto">
-        <p class="text-[10px] font-black capitalize tracking-wide text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+      <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,28rem)]">
+        <p class="shrink-0 text-[10px] font-black capitalize tracking-wide text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
             {{ $t('finance_plan') }}
         </p>
-        <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50">
-            <OneForMindIcon name="calendar" size="14" class="text-indigo-500" />
-            <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize">{{ todayDisplay }}</span>
+        <div class="flex min-w-0 flex-1 items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50 overflow-hidden">
+            <OneForMindIcon name="calendar" size="14" class="text-indigo-500 shrink-0" />
+            <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize truncate">{{ todayDisplay }}</span>
         </div>
       </div>
 
-      <div class="flex items-center w-full gap-2 md:w-auto mt-1 md:mt-0">
+      <div class="flex min-w-0 flex-wrap items-center justify-stretch w-full gap-2 md:w-auto md:flex-nowrap md:justify-end mt-1 md:mt-0">
         
         <div class="relative shrink-0 transition-colors duration-500">
           <button 
@@ -282,7 +282,7 @@ const runAiAudit = () => {
   </div>
 
   <!-- AI Audit Highlight -->
-  <div v-if="aiAudit" class="px-4 mt-6 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <div v-if="aiAudit" class="w-full px-3 mt-6 sm:px-6 lg:px-8">
     <div class="relative overflow-hidden rounded-[2.5rem] bg-slate-900 dark:bg-indigo-600 p-8 text-white shadow-2xl shadow-indigo-100 dark:shadow-none animate-in fade-in slide-in-from-top-6 duration-700 border border-white/10">
         <div class="absolute top-0 right-0 p-8 opacity-10">
             <OneForMindIcon name="sparkles" size="120" />
