@@ -15,14 +15,14 @@ const activeFilter = ref('all');
 
 // Filters ala Asana
 const filters = [
-    { key: 'all', label: 'All', icon: 'zap' },
+    { key: 'all', label: 'All', icon: 'search' },
     { key: 'habit', label: 'Habits', icon: 'habit' },
     { key: 'task', label: 'Tasks', icon: 'planner' },
     { key: 'people', label: 'People', icon: 'avatar' },
 ];
 
 const navigation = [
-    { name: 'Dashboard', icon: 'zap', href: route('dashboard'), type: 'all' },
+    { name: 'Dashboard', icon: 'dashboard', href: route('dashboard'), type: 'all' },
     { name: 'Habit Tracker', icon: 'habit', href: route('habits.index'), type: 'habit' },
     { name: 'Daily Planner', icon: 'planner', href: route('planner.index'), type: 'task' },
     { name: 'Finance Manager', icon: 'finance', href: route('finance.index'), type: 'all' },
@@ -65,7 +65,7 @@ watch(() => props.isOpen, (val) => {
             <div class="p-4 border-b border-slate-100 dark:border-slate-800">
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <OneForMindIcon name="zap" size="16" class="text-indigo-500" />
+                        <OneForMindIcon name="search" size="16" class="text-indigo-500" />
                     </div>
                     <input 
                         ref="inputRef"

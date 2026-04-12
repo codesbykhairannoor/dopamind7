@@ -45,10 +45,10 @@ const savePreferences = () => {
 };
 
 const modules = [
-    { key: 'habit', label: 'Habit Tracker', icon: 'zap', color: 'text-orange-500' },
-    { key: 'planner', label: 'Daily Planner', icon: 'calendar', color: 'text-indigo-500' },
-    { key: 'journal', label: 'Daily Journal', icon: 'edit-3', color: 'text-emerald-500' },
-    { key: 'finance', label: 'Finance Manager', icon: 'dollar-sign', color: 'text-rose-500' },
+    { key: 'habit', label: 'Habit Tracker', icon: 'habit', color: 'text-orange-500' },
+    { key: 'planner', label: 'Daily Planner', icon: 'planner', color: 'text-indigo-500' },
+    { key: 'journal', label: 'Daily Journal', icon: 'journal', color: 'text-emerald-500' },
+    { key: 'finance', label: 'Finance Manager', icon: 'finance', color: 'text-rose-500' },
 ];
 
 </script>

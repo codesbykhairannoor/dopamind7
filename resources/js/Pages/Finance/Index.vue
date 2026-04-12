@@ -427,12 +427,9 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                     <div class="hidden lg:block">
                         <NeuralBridge module="Finance" />
                     </div>
-                </div>
 
-                <div class="lg:col-span-3 space-y-8 w-full order-2 lg:order-1 pb-24 lg:pb-0">
-                    <!-- Investment Lab for Desk -->
+                    <!-- 🔥 Relocated Investment Lab (Under Budgeting) -->
                     <div class="hidden lg:block">
-                        <!-- Investment Lab (FinanceInsights) -->
                         <div class="relative">
                             <FinanceInsights
                                 :expense-stats="localStats.expense_by_category"
@@ -442,6 +439,9 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                             />
                         </div>
                     </div>
+                </div>
+
+                <div class="lg:col-span-3 space-y-8 w-full order-2 lg:order-1 pb-24 lg:pb-0">
                     <div class="space-y-4">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-1 lg:px-0">
                             <div class="flex items-center gap-2">
@@ -519,30 +519,6 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                                 <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] lg:w-full"><SavingCard :saving="saving" :onDeposit="(s) => openVaultAction(s, 'deposit')" :onWithdraw="(s) => openVaultAction(s, 'withdraw')" :onEdit="handleEditSaving" :onDelete="handleDeleteSaving" /></div>
                             </div>
 
-                            <!-- Neural Forecast -->
-                            <div class="relative bg-slate-900 dark:bg-indigo-950 rounded-[2.5rem] p-8 overflow-hidden group/forecast hover:scale-[1.02] transition-all duration-500 shadow-2xl border border-slate-800">
-                                <div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-500 via-slate-900 to-black"></div>
-                                <div class="relative z-10 flex flex-col h-full">
-                                    <div class="flex items-center justify-between mb-6">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white">
-                                                <TrendingUp :size="20" />
-                                            </div>
-                                            <div>
-                                                <h4 class="text-xs font-black text-white tracking-widest">{{ $t('gating.finance_trends.title') }}</h4>
-                                                <p class="text-[9px] font-bold text-indigo-300 tracking-tighter">AI wealth prediction</p>
-                                            </div>
-                                        </div>
-                                        <div class="px-2 py-1 rounded-md bg-indigo-500 text-white text-[8px] font-black tracking-widest shadow-lg uppercase">Architect</div>
-                                    </div>
-                                    <div class="flex-1 flex items-end gap-1.5 h-24 mb-6 transition-all duration-700 opacity-60">
-                                        <div v-for="h in [30, 45, 35, 70, 85, 60, 100, 90, 110, 130]" :key="h" :style="{ height: h + '%' }" class="flex-1 bg-gradient-to-t from-indigo-400 to-transparent rounded-t-sm"></div>
-                                    </div>
-                                    <div class="mt-auto flex items-center justify-between">
-                                        <ArrowRight :size="16" class="text-white group-hover:translate-x-1 transition-transform" />
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 

@@ -97,16 +97,11 @@ onUnmounted(() => {
             <div class="hidden md:flex items-center flex-1 max-w-lg group px-2 relative">
                 <button 
                     @click="showCommandPalette = !showCommandPalette"
-                    class="w-full flex items-center justify-between gap-3 px-4 py-2.5 bg-slate-100/60 dark:bg-slate-800/60 hover:bg-white dark:hover:bg-slate-800 border-2 border-transparent hover:border-indigo-100 dark:hover:border-indigo-500/20 rounded-2xl transition-all group shadow-sm shadow-transparent hover:shadow-indigo-100/30 dark:hover:shadow-none"
+                    class="w-full flex items-center gap-3 px-4 py-2.5 bg-slate-100/60 dark:bg-slate-800/60 hover:bg-white dark:hover:bg-slate-800 border-2 border-transparent hover:border-indigo-100 dark:hover:border-indigo-500/20 rounded-2xl transition-all group shadow-sm shadow-transparent hover:shadow-indigo-100/30 dark:hover:shadow-none"
                 >
                     <div class="flex items-center gap-3">
-                        <OneForMindIcon name="zap" size="14" class="text-slate-400 group-hover:text-indigo-500 transition-colors" />
+                        <OneForMindIcon name="search" size="14" class="text-slate-400 group-hover:text-indigo-500 transition-colors" />
                         <span class="text-[13px] font-bold text-slate-400 dark:text-slate-500 group-hover:text-slate-500 transition-colors">Search anything...</span>
-                    </div>
-                    <div class="flex items-center gap-1.5 px-2 py-1 bg-white/50 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-slate-600 shadow-sm leading-none">
-                        <kbd class="text-[9px] font-black text-slate-400 tracking-wide uppercase">Cmd</kbd>
-                        <span class="text-[10px] text-slate-300 font-bold">+</span>
-                        <kbd class="text-[9px] font-black text-slate-400 tracking-wide uppercase">K</kbd>
                     </div>
                 </button>
 
