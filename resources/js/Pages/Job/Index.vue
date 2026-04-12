@@ -65,10 +65,10 @@ onMounted(() => {
     <Head :title="$t('job_page_title', 'Job Tracker')" />
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors duration-500">
-        <!-- STICKY HEADER: Title + Add Button only -->
-        <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 sticky top-16 z-40 shadow-sm transition-colors duration-500">
-            <div class="w-full min-w-0 px-4 sm:px-6 lg:px-8 py-3">
-                <div class="flex w-full min-w-0 flex-wrap items-center justify-between gap-3 sm:gap-4 md:flex-nowrap">
+        <!-- COMPACT HEADER: Title + Add Button only -->
+        <div class="bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 relative z-50 transition-colors duration-500">
+            <div class="w-full min-w-0 px-4 sm:px-6 lg:px-8 py-2">
+                <div class="flex w-full min-w-0 flex-wrap items-center justify-between gap-3 md:flex-nowrap">
                     
                     <div class="flex min-w-0 flex-1 items-center gap-2 md:flex-initial md:max-w-[min(100%,28rem)]">
                         <p class="shrink-0 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
@@ -88,20 +88,18 @@ onMounted(() => {
                     <div class="flex shrink-0 items-center gap-2 sm:gap-3">
                         <!-- Master CV Button -->
                         <button @click="isMasterModalOpen = true"
-                            class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-2 group relative">
-                            <OneForMindIcon name="job" size="18" :class="hasMasterCv ? 'text-emerald-500' : 'text-slate-400'" />
+                            class="px-4 h-11 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-2 group relative">
+                            <OneForMindIcon name="job" size="16" :class="hasMasterCv ? 'text-emerald-500' : 'text-slate-400'" />
                             <span class="text-[10px] font-bold hidden lg:inline">
                                 {{ hasMasterCv ? $t('job_master_cv_ready', 'CV Ready') : $t('job_master_cv_needs_setup', 'Setup Master CV') }}
                             </span>
-                            <div v-if="!hasMasterCv" class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-rose-500 rounded-full border-2 border-white dark:border-slate-900 animate-pulse"></div>
+                            <div v-if="!hasMasterCv" class="absolute -top-1 -right-1 w-2 h-2 bg-rose-500 rounded-full border-2 border-white dark:border-slate-900 animate-pulse"></div>
                         </button>
 
                         <button @click="addEmptyRow"
-                            class="bg-indigo-600 text-white font-black py-2.5 px-4 sm:px-6 rounded-xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 shrink-0 relative overflow-hidden group">
-                            <div class="bg-white/20 rounded-lg p-0.5 group-hover:rotate-90 transition-transform duration-500">
-                                <OneForMindIcon name="plus" size="18" stroke-width="4" />
-                            </div>
-                            <span class="hidden sm:inline text-xs font-bold">{{ $t('job_add_row', 'Tambah Baris') }}</span>
+                            class="bg-indigo-600 h-11 text-white font-black px-4 sm:px-6 rounded-xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 shrink-0 relative overflow-hidden group">
+                            <OneForMindIcon name="plus" size="16" stroke-width="4" />
+                            <span class="hidden sm:inline text-[11px] font-bold">{{ $t('job_add_row', 'Tambah Baris') }}</span>
                         </button>
                     </div>
                 </div>

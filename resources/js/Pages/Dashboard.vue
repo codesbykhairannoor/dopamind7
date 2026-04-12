@@ -125,7 +125,7 @@ onMounted(() => {
             class="pointer-events-none fixed inset-x-0 top-0 h-48 bg-gradient-to-b from-indigo-500/[0.06] to-transparent dark:from-indigo-500/10"
         />
 
-        <div class="relative mx-auto w-full max-w-6xl px-4 py-6 md:px-6 md:py-8 lg:px-8">
+        <div class="relative mx-auto w-full max-w-[1600px] px-4 py-6 md:px-6 md:py-8 lg:px-8">
             <!-- Hero: ringkas -->
             <header class="mb-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
                 <div class="min-w-0">

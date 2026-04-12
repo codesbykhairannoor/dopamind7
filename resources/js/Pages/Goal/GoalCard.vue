@@ -109,12 +109,11 @@ const meshGradient = computed(() => {
                 </h3>
             </div>
 
-            <!-- Quick Actions Overlay -->
             <div class="absolute top-4 right-4 flex gap-2">
-                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white transition-all shadow-xl opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-75">
+                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white transition-all shadow-xl md:opacity-0 md:group-hover:opacity-100 scale-90 md:group-hover:scale-100 delay-75">
                     <Edit3 :size="14" />
                 </button>
-                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 delay-150">
+                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl md:opacity-0 md:group-hover:opacity-100 scale-90 md:group-hover:scale-100 delay-150">
                     <Trash2 :size="14" />
                 </button>
             </div>

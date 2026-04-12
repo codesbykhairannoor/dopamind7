@@ -87,6 +87,46 @@ createInertiaApp({
     },
 });
 
+// Global Router Event Listeners to catch and handle navigation "hangs"
+router.on('start', () => NProgress.start());
+
+router.on('finish', (event) => {
+    // Ensure progress always finishes even on aborted requests
+    if (NProgress.isStarted()) NProgress.done();
+});
+
+router.on('cancel', () => {
+    if (NProgress.isStarted()) NProgress.done();
+});
+
+router.on('error', (errors) => {
+    console.error('[OneForMind] Navigation Error:', errors);
+    if (NProgress.isStarted()) NProgress.done();
+});
+
+/**
+ * Handle "Invalid" responses (e.g. 500 pages, session expirations, or 409 mismatch) 
+ * that are not valid Inertia responses. This prevents the "NP progress then stop" dead-end.
+ */
+router.on('invalid', (event) => {
+    console.warn('[OneForMind] Invalid Inertia response detected. Status:', event.detail.response.status);
+    event.preventDefault(); // Don't allow Inertia to handle it (which usually results in doing nothing)
+    
+    if (NProgress.isStarted()) NProgress.done();
+
+    // If it's a 409 Conflict (Version Mismatch), force a hard refresh
+    if (event.detail.response.status === 409) {
+        console.log('[OneForMind] Version mismatch. Performing hard reload...');
+        window.location.reload();
+        return;
+    }
+
+    // For other failures that leave the user stuck, offer a reload if it's a 500 or timeout
+    if (event.detail.response.status >= 500) {
+         window.location.reload();
+    }
+});
+
 // Single Google Analytics tracking listener
 router.on('navigate', (event) => {
     if (typeof gtag !== 'undefined' && window.GA_MEASUREMENT_ID) {

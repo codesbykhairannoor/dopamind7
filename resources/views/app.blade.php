@@ -241,11 +241,13 @@
         }
     </style>
 
-    <!-- Duitku POP SDK -->
-    @if(config('duitku.env') === 'production')
-        <script src="https://passport.duitku.com/lib/js/duitku.js"></script>
-    @else
-        <script src="https://app-sandbox.duitku.com/lib/js/duitku.js"></script>
+    <!-- Duitku POP SDK (Isolated to prevent global Lockdown interference) -->
+    @if(request()->routeIs('payment.summary'))
+        @if(config('duitku.env') === 'production')
+            <script src="https://passport.duitku.com/lib/js/duitku.js"></script>
+        @else
+            <script src="https://app-sandbox.duitku.com/lib/js/duitku.js"></script>
+        @endif
     @endif
 </head>
 @if(env('VITE_GA_MEASUREMENT_ID'))

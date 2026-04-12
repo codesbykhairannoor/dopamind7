@@ -45,10 +45,10 @@ const changeYear = (offset) => {
 </script>
 
 <template>
-    <div class="relative z-[60] transition-all bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl border-b shadow-sm dark:shadow-none border-slate-100 dark:border-slate-800 md:sticky md:top-16 transition-colors duration-500">
-        <div class="w-full min-w-0 px-4 py-3 sm:px-6 lg:px-8">
+    <div class="relative z-50 transition-all bg-white dark:bg-slate-900 border-b shadow-sm dark:shadow-none border-slate-100 dark:border-slate-800 transition-colors duration-500">
+        <div class="w-full min-w-0 px-4 py-2 sm:px-6 lg:px-8">
             
-            <div class="flex flex-col items-stretch justify-between w-full min-w-0 gap-4 md:flex-row md:items-center">
+            <div class="flex flex-col items-stretch justify-between w-full min-w-0 gap-3 md:flex-row md:items-center">
                 
                 <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,22rem)]">
                     <p class="shrink-0 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
@@ -65,14 +65,14 @@ const changeYear = (offset) => {
                     <div class="relative min-w-0 flex-1 md:flex-none md:max-w-xs">
                         <button 
                             @click="isOpen = !isOpen" 
-                            class="w-full min-w-0 flex items-center justify-between gap-3 sm:gap-6 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-3 rounded-2xl font-bold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-100/50 dark:hover:shadow-none transition-all active:scale-95 transition-colors duration-500"
+                            class="w-full min-w-0 flex items-center justify-between gap-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-2 rounded-xl font-bold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500/50 transition-all active:scale-95 transition-colors duration-500"
                         >
-                            <div class="flex min-w-0 flex-1 flex-col items-start leading-none gap-1 text-left">
-                                <span class="text-[10px] text-slate-400 dark:text-slate-500 font-bold tracking-widest transition-colors duration-500 leading-none">{{ $t('label_period', 'Period') }}</span>
-                                <span class="w-full truncate text-xs font-black leading-none mt-0.5">{{ displayMonth }}</span>
+                            <div class="flex min-w-0 flex-1 flex-col items-start leading-none text-left">
+                                <span class="text-[9px] text-slate-400 dark:text-slate-500 font-bold tracking-widest leading-none">{{ $t('label_period', 'Period') }}</span>
+                                <span class="w-full truncate text-[11px] font-black leading-none mt-1">{{ displayMonth }}</span>
                             </div>
-                             <div class="p-1.5 bg-white dark:bg-slate-800 border shadow-sm dark:shadow-none rounded-xl border-slate-100 dark:border-slate-700 flex items-center justify-center transition-colors duration-500">
-                                <OneForMindIcon name="chevron-down" size="14" stroke-width="3" class="text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" />
+                             <div class="p-1 bg-white dark:bg-slate-800 border shadow-sm dark:shadow-none rounded-lg border-slate-100 dark:border-slate-700 flex items-center justify-center transition-colors duration-500">
+                                <OneForMindIcon name="chevron-down" size="12" stroke-width="3" class="text-indigo-500 transition-transform duration-300" :class="{'rotate-180': isOpen}" />
                             </div>
                         </button>
 
@@ -113,12 +113,10 @@ const changeYear = (offset) => {
 
                     <button 
                         @click="emit('add-event')" 
-                        class="h-14 px-6 flex items-center gap-3 bg-indigo-600 text-white rounded-[1.25rem] font-black hover:bg-indigo-700 hover:-translate-y-1 active:translate-y-0 shadow-xl shadow-indigo-200 dark:shadow-none transition-all duration-500 shrink-0"
+                        class="h-11 px-6 flex items-center gap-3 bg-indigo-600 text-white rounded-xl font-black hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-indigo-100 dark:shadow-indigo-900/40 transition-all duration-500 shrink-0"
                     >
-                        <div class="bg-white rounded-xl p-1 flex items-center justify-center shadow-lg dark:shadow-none">
-                            <OneForMindIcon name="plus" size="18" stroke-width="4" class="text-indigo-600" />
-                        </div>
-                        <span class="hidden md:inline text-xs tracking-widest font-black">{{ $t('btn_add_event', 'Add event') }}</span>
+                        <OneForMindIcon name="plus" size="16" stroke-width="4" class="text-white" />
+                        <span class="hidden md:inline text-[11px] tracking-wide font-black">{{ $t('btn_add_event', 'Add event') }}</span>
                     </button>
 
                 </div>
