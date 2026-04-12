@@ -42,17 +42,17 @@ const deleteAccount = () => {
 
             <form @submit.prevent="updatePassword" class="space-y-5">
                 <div v-if="hasPassword" class="space-y-1.5">
-                    <label class="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1 transition-colors duration-500">{{ $t('security_label_current_password', 'Password Saat Ini') }}</label>
+                    <label class="text-xs font-black text-slate-500 dark:text-slate-400 tracking-wide ml-1 transition-colors duration-500">{{ $t('security_label_current_password', 'Password Saat Ini') }}</label>
                     <input type="password" v-model="passwordForm.current_password" class="w-full px-5 py-4 rounded-2xl border-slate-100 dark:border-slate-700 bg-slate-50/30 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div class="space-y-1.5">
-                        <label class="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1 transition-colors duration-500">{{ $t('security_label_new_password', 'Password Baru') }}</label>
+                        <label class="text-xs font-black text-slate-500 dark:text-slate-400 tracking-wide ml-1 transition-colors duration-500">{{ $t('security_label_new_password', 'Password Baru') }}</label>
                         <input type="password" v-model="passwordForm.password" class="w-full px-5 py-4 rounded-2xl border-slate-100 dark:border-slate-700 bg-slate-50/30 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all">
                     </div>
                     <div class="space-y-1.5">
-                        <label class="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1 transition-colors duration-500">{{ $t('security_label_confirm_password', 'Konfirmasi Password') }}</label>
+                        <label class="text-xs font-black text-slate-500 dark:text-slate-400 tracking-wide ml-1 transition-colors duration-500">{{ $t('security_label_confirm_password', 'Konfirmasi Password') }}</label>
                         <input type="password" v-model="passwordForm.password_confirmation" class="w-full px-5 py-4 rounded-2xl border-slate-100 dark:border-slate-700 bg-slate-50/30 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all">
                     </div>
                 </div>

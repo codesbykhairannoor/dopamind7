@@ -1,0 +1,1 @@
+import{f as u,L as s,r}from"./app-CukdDYnl.js";function d(t){const e=r(null),n=o=>{e.value&&!e.value.contains(o.target)&&t()};return u(()=>{document.addEventListener("mousedown",n)}),s(()=>{document.removeEventListener("mousedown",n)}),e}export{d as u};

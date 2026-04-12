@@ -45,7 +45,7 @@ onMounted(() => {
                     </div>
                     <div class="flex flex-col">
                         <span class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">OneForMind</span>
-                        <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest leading-none">Admin Console</span>
+                        <span class="text-[10px] font-semibold text-slate-400 tracking-wide leading-none">Admin Console</span>
                     </div>
                 </Link>
             </div>
@@ -80,7 +80,7 @@ onMounted(() => {
                      </button>
                 </div>
                 
-                <Link :href="route('dashboard')" class="mt-3 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-900 dark:bg-slate-700 text-[10px] font-bold uppercase tracking-wider text-white hover:bg-slate-800 transition-all shadow-md">
+                <Link :href="route('dashboard')" class="mt-3 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-900 dark:bg-slate-700 text-[10px] font-bold tracking-wide text-white hover:bg-slate-800 transition-all shadow-md">
                     <OneForMindIcon name="chevron-left" size="12" />
                     Exit to App
                 </Link>
@@ -94,7 +94,7 @@ onMounted(() => {
                 <div v-if="isLoading" class="absolute inset-0 z-50 bg-white/60 dark:bg-slate-900/60 backdrop-blur-[2px] flex items-center justify-center">
                     <div class="flex flex-col items-center gap-4">
                         <div class="w-10 h-10 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin"></div>
-                        <span class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest animate-pulse">Syncing...</span>
+                        <span class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 tracking-wide animate-pulse">Syncing...</span>
                     </div>
                 </div>
             </Transition>
@@ -103,12 +103,12 @@ onMounted(() => {
             <header class="h-20 bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700/50 flex items-center justify-between px-10 shrink-0">
                 <div class="flex items-center gap-3">
                     <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
-                    <h2 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Active Session Control</h2>
+                    <h2 class="text-xs font-bold text-slate-500 tracking-wide">Active Session Control</h2>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-2 px-4 py-2 bg-emerald-50 dark:bg-emerald-500/10 rounded-full border border-emerald-100 dark:border-emerald-500/20">
                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Operational</span>
+                        <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 tracking-wide">Operational</span>
                     </div>
                 </div>
             </header>

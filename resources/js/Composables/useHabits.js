@@ -19,7 +19,7 @@ export function useHabits(props) {
     const user = computed(() => page.props.auth.user);
     const planType = computed(() => user.value?.plan_type || 'explorer');
     const isExplorer = computed(() => planType.value === 'explorer');
-    const habitsCount = computed(() => props.habits.data.length);
+    const habitsCount = computed(() => props.habits?.data?.length || 0);
 
     // Menggabungkan semua return dari 3 composable di atas
     return {

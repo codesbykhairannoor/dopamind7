@@ -56,7 +56,7 @@ onMounted(() => {
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-black text-slate-800 dark:text-white uppercase tracking-widest transition-colors duration-500">
+            <h2 class="text-lg font-black text-slate-800 dark:text-white tracking-tight transition-colors duration-500">
                 {{ user.is_premium ? 'Premium Status' : 'Upgrade to Premium' }}
             </h2>
             <p class="mt-1 text-sm text-slate-500 dark:text-slate-400 font-medium transition-colors duration-500">
@@ -71,7 +71,7 @@ onMounted(() => {
                 ✨
             </div>
             <div>
-                <p class="text-sm font-black text-emerald-800 dark:text-emerald-400 uppercase tracking-tight transition-colors duration-500">Pro Plan Aktif</p>
+                <p class="text-sm font-black text-emerald-800 dark:text-emerald-400 tracking-tight transition-colors duration-500">Pro Plan Aktif</p>
                 <p class="text-xs text-emerald-600 font-bold" v-if="user.premium_until">
                     Valid hingga: {{ new Date(user.premium_until).toLocaleDateString() }}
                 </p>

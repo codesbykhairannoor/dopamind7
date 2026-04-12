@@ -1,5 +1,5 @@
 <script setup>
-import { Link, usePage } from '@inertiajs/vue3';
+import { Link, usePage, router } from '@inertiajs/vue3';
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 // --- STATE NAVIGASI & USER ---
@@ -27,7 +27,10 @@ onUnmounted(() => {
 
 // --- FUNGSI GANTI BAHASA ---
 const switchLang = (lang) => {
-    window.location.href = route('lang.switch', lang);
+    router.get(route('lang.switch', lang), {}, { 
+        preserveScroll: true,
+        preserveState: true
+    });
 };
 </script>
 
@@ -120,7 +123,7 @@ const switchLang = (lang) => {
                                 <div class="p-8 bg-white border border-slate-100 shadow-2xl rounded-[2.5rem] grid grid-cols-3 gap-6 text-left">
                                     <!-- Column 1: By Role -->
                                     <div>
-                                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">By Role</p>
+                                        <p class="text-[10px] font-black tracking-wide text-slate-400 mb-5 px-3">By Role</p>
                                         <div class="space-y-1.5">
                                             <a :href="route('solutions.student')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                                 <span class="text-lg group-hover/item:scale-110 transition-transform">🎓</span>
@@ -138,7 +141,7 @@ const switchLang = (lang) => {
                                     </div>
                                     <!-- Column 2: By Use Case -->
                                     <div>
-                                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">By Use Case</p>
+                                        <p class="text-[10px] font-black tracking-wide text-slate-400 mb-5 px-3">By Use Case</p>
                                         <div class="space-y-1.5">
                                             <a :href="route('solutions.finance')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                                 <span class="text-lg group-hover/item:scale-110 transition-transform">💰</span>
@@ -156,7 +159,7 @@ const switchLang = (lang) => {
                                     </div>
                                     <!-- Column 3: By Methodology -->
                                     <div>
-                                        <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-5 px-3 flex items-center gap-2">
+                                        <p class="text-[10px] font-black tracking-wide text-indigo-400 mb-5 px-3 flex items-center gap-2">
                                             <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
                                             By Methodology
                                         </p>
@@ -198,7 +201,7 @@ const switchLang = (lang) => {
                             <div v-show="activeMenu === 'resources'" class="absolute top-full -left-20 w-[600px] pt-4 z-50 text-left">
                                 <div class="p-8 bg-white border border-slate-100 shadow-2xl rounded-[2.5rem] grid grid-cols-2 gap-8">
                                     <div>
-                                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">Knowledge & Help</p>
+                                        <p class="text-[10px] font-black tracking-wide text-slate-400 mb-5 px-3">Knowledge & Help</p>
                                         <div class="space-y-1">
                                             <a :href="route('resources.guide')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                                 <span class="text-lg group-hover/item:scale-110 transition-transform">📖</span>
@@ -215,7 +218,7 @@ const switchLang = (lang) => {
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">Social & Community</p>
+                                        <p class="text-[10px] font-black tracking-wide text-slate-400 mb-5 px-3">Social & Community</p>
                                         <div class="space-y-1">
                                             <a :href="route('resources.community')" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition group/item">
                                                 <span class="text-lg group-hover/item:scale-110 transition-transform">🌍</span>
@@ -301,7 +304,7 @@ const switchLang = (lang) => {
                             </button>
                             <div v-show="activeAccordion === 'solutions'" class="pb-6 space-y-6">
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 px-3">By Role</p>
+                                    <p class="text-[10px] font-black tracking-wide text-slate-400 mb-3 px-3">By Role</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <a :href="route('solutions.student')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🎓 Students</a>
                                         <a :href="route('solutions.freelancer')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💻 Freelancers</a>
@@ -309,7 +312,7 @@ const switchLang = (lang) => {
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 px-3">By Use Case</p>
+                                    <p class="text-[10px] font-black tracking-wide text-slate-400 mb-3 px-3">By Use Case</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <a :href="route('solutions.finance')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💰 Financial Clarity</a>
                                         <a :href="route('solutions.career')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">💼 Career Tracker</a>
@@ -317,7 +320,7 @@ const switchLang = (lang) => {
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-3 px-3">By Methodology</p>
+                                    <p class="text-[10px] font-black tracking-wide text-indigo-400 mb-3 px-3">By Methodology</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <a :href="route('solutions.atomic')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🌱 Atomic Habits</a>
                                         <a :href="route('solutions.deepwork')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">⚡ Deep Work</a>
@@ -334,7 +337,7 @@ const switchLang = (lang) => {
                             </button>
                             <div v-show="activeAccordion === 'resources'" class="pb-6 space-y-6">
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 px-3">Knowledge & Help</p>
+                                    <p class="text-[10px] font-black tracking-wide text-slate-400 mb-3 px-3">Knowledge & Help</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <a :href="route('resources.guide')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">📖 User Guide</a>
                                         <a :href="route('resources.help')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🙋‍♂️ Help Center</a>
@@ -342,7 +345,7 @@ const switchLang = (lang) => {
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3 px-3">Social & Community</p>
+                                    <p class="text-[10px] font-black tracking-wide text-slate-400 mb-3 px-3">Social & Community</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <a :href="route('resources.community')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">🌍 Community</a>
                                         <a :href="route('resources.blog')" class="flex items-center gap-3 p-3 rounded-xl font-bold text-slate-600 hover:bg-slate-50">✍️ Blog</a>
@@ -394,7 +397,7 @@ const switchLang = (lang) => {
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Product</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('features.habit')" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
                             <li><a :href="route('features.finance')" class="hover:text-indigo-600 transition">Finance OS</a></li>
@@ -407,7 +410,7 @@ const switchLang = (lang) => {
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Compare</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('compare.paper')" class="hover:text-indigo-600 transition">Vs. Paper Planner</a></li>
                             <li><a :href="route('compare.sheets')" class="hover:text-indigo-600 transition">Vs. Excel/Sheets</a></li>
@@ -420,7 +423,7 @@ const switchLang = (lang) => {
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Resources</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Resources</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('resources.help')" class="hover:text-indigo-600 transition">Help Center</a></li>
                             <li><a :href="route('resources.blog')" class="hover:text-indigo-600 transition">Blog</a></li>
@@ -431,7 +434,7 @@ const switchLang = (lang) => {
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Company</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('about')" class="hover:text-indigo-600 transition">About Us</a></li>
                             <li><a :href="route('company.privacy')" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
@@ -443,7 +446,7 @@ const switchLang = (lang) => {
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Connect</h3>
                         <div class="flex gap-4">
                             <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">𝕏</a>
                             <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">📸</a>

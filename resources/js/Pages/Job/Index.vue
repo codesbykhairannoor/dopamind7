@@ -53,6 +53,7 @@ const onMasterSaved = () => {
     // Re-sync with server is handled by Inertia navigation/reload 
     // but in SPA we can just let computed reactive check it.
 };
+
 onMounted(() => {
     if (isExplorer.value) {
         router.visit(route('billing'));

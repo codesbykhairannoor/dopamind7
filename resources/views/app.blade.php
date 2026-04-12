@@ -306,6 +306,7 @@
         </div>
     @endif
 
+    {{-- 🔥 INERTIA ROOT --}}
     @inertia
 
     <script>

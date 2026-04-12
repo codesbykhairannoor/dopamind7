@@ -15,9 +15,31 @@ import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 window.trans = trans;
 
-const appName = import.meta.env.VITE_APP_NAME || 'Oneformind';
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || import.meta.env.VITE_APP_NAME || 'Oneformind';
+
+/**
+ * 🔥 SUPER-ROBUST BOOT SEQUENCE
+ * Menangani masalah di mana dataset.page mungkin null atau tidak terbaca karena 
+ * batasan keamanan di environment tertentu (misal SES/Lockdown dari SDK Duitku).
+ */
+const el = document.getElementById('app');
+let initialPage = null;
+
+if (el) {
+    try {
+        // Coba baca lewat dataset dulu (standard), fallback ke getAttribute jika dataset diblokir
+        const pageData = el.dataset.page || el.getAttribute('data-page');
+        if (pageData) {
+            initialPage = JSON.parse(pageData);
+        }
+    } catch (e) {
+        console.error('[OneForMind] Failed to parse initial page data:', e);
+    }
+}
 
 createInertiaApp({
+    id: 'app',
+    page: initialPage, // Berikan data awal secara eksplisit untuk menghindari internal failure di library
     title: (title) => `${title} - ${appName}`,
 
     resolve: (name) =>
@@ -27,7 +49,14 @@ createInertiaApp({
         ),
 
     setup({ el, App, props, plugin }) {
-        const activeLang = props.initialPage.props.locale || 'id';
+        // 🔥 Robust Locale Detection
+        let activeLang = 'id';
+        try {
+            // Cek shared props dari data awal atau gunakan data-lang di root
+            activeLang = props?.props?.locale || document.documentElement.lang || 'id';
+        } catch (e) {
+            console.warn('[OneForMind] Locale detection fallback used.', e);
+        }
 
         const vueApp = createApp({
             render: () => h(App, props),
@@ -51,49 +80,14 @@ createInertiaApp({
         vueApp.mount(el);
     },
 
-    progress: false,
+    progress: {
+        color: '#4f46e5',
+        showSpinner: false,
+        delay: 0,
+    },
 });
 
-/**
- * 🔥 NPROGRESS PERFORMANCE CONFIG
- */
-NProgress.configure({
-    showSpinner: false,
-    speed: 300,         // Smooth transition
-    minimum: 0.3,       // Start at 30% for responsive feel
-    trickleSpeed: 150,  // Natural progress speed
-    easing: 'ease',
-});
-
-let nprogressTimeout = null;
-
-router.on('start', (event) => {
-    // 🤫 STRICTLY DISABLE NPROGRESS FOR SILENT (CRUD) ACTIONS
-    const url = event.detail.visit.url.toString();
-    const method = event.detail.visit.method.toUpperCase();
-    const isCrud = ['POST', 'PATCH', 'PUT', 'DELETE'].includes(method);
-    
-    // Check if the URL belongs to finance or savings
-    const isFinanceOrSavings = url.includes('/finance') || url.includes('/savings');
-
-    // If it's a CRUD action on Finance/Savings, we stay silent
-    if (isCrud && isFinanceOrSavings) {
-        return;
-    }
-
-    nprogressTimeout = setTimeout(() => NProgress.start(), 50);
-});
-
-router.on('finish', () => {
-    clearTimeout(nprogressTimeout);
-    NProgress.done();
-});
-
-router.on('error', () => {
-    clearTimeout(nprogressTimeout);
-    NProgress.done();
-});
-
+// Single Google Analytics tracking listener
 router.on('navigate', (event) => {
     if (typeof gtag !== 'undefined' && window.GA_MEASUREMENT_ID) {
         gtag('config', window.GA_MEASUREMENT_ID, {

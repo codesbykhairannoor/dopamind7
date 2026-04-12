@@ -2,6 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Habit;
+use App\Models\HabitLog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -58,13 +61,57 @@ class HandleInertiaRequests extends Middleware
                 'success' => fn () => $request->session()->get('success'),
             ],
 
-            // 4. 🔥 BRIDGE BAHASA (Ini nyawa buat laravel-vue-i18n lo)
+            // 4. 🔥 BRIDGE BAHASA
             'locale' => function () {
                 return app()->getLocale();
             },
             'csrf_token' => csrf_token(),
             'midtrans_is_production' => config('midtrans.is_production'),
             'session_id' => $request->session()->getId(),
+
+            // 5. 🔥 GLOBAL HEADER: Habit streak & today progress
+            // Optimized with Caching to prevent back-breaking DB loops on every request
+            'today_streak' => function () use ($request) {
+                if (!$request->user()) return 0;
+                
+                $userId = $request->user()->id;
+                $cacheKey = "user_{$userId}_habit_streak_v2"; // Increment version to bust old slow cache
+
+                return \Illuminate\Support\Facades\Cache::remember($cacheKey, now()->addMinutes(30), function () use ($request, $userId) {
+                    $tz = $request->user()->timezone ?? 'Asia/Jakarta';
+                    $today = \Carbon\Carbon::now($tz);
+                    
+                    // 🚀 Optimized: Ambil SEMUA tanggal log 'completed' sekaligus dalam 60 hari terakhir
+                    $completedDates = \App\Models\HabitLog::whereHas('habit', fn($q) => $q->where('user_id', $userId))
+                        ->where('date', '>=', $today->copy()->subDays(60)->format('Y-m-d'))
+                        ->where('status', 'completed')
+                        ->distinct()
+                        ->pluck('date')
+                        ->toArray();
+
+                    if (empty($completedDates)) return 0;
+
+                    $streak = 0;
+                    $checkDate = $today->copy();
+                    $completedSet = array_flip($completedDates); // Hash map for O(1) lookup
+
+                    for ($i = 0; $i < 60; $i++) {
+                        $dateStr = $checkDate->format('Y-m-d');
+                        if (isset($completedSet[$dateStr])) {
+                            $streak++;
+                            $checkDate->subDay();
+                        } else {
+                            // Jika hari ini belum selesai, tapi kemarin selesai, streak tetap berlanjut (grace period for today)
+                            if ($i === 0) {
+                                $checkDate->subDay();
+                                continue;
+                            }
+                            break;
+                        }
+                    }
+                    return $streak;
+                });
+            },
         ]);
     }
 }

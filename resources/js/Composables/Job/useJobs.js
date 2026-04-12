@@ -7,10 +7,20 @@ import { useGating } from '@/Composables/useGating';
 
 export function useJobs(props) {
     const { canUse, isExplorer } = useGating();
-    const localJobs = ref(props.jobs ? props.jobs.map(j => ({ ...j, _key: 'db_' + j.id, _original_status: j.status })) : []);
+    const localJobs = ref([]);
     const selectedJobs = ref([]);
+    const localStats = ref({ total: 0, wishlist: 0, applied: 0, interview: 0, offer: 0, rejected: 0, accepted: 0 });
 
-    const localStats = ref(props.stats ? { ...props.stats } : { total: 0, wishlist: 0, applied: 0, interview: 0, offer: 0, rejected: 0, accepted: 0 });
+    const initLocalData = () => {
+        if (props.jobs) {
+            localJobs.value = props.jobs.map(j => ({ ...j, _key: 'db_' + j.id, _original_status: j.status }));
+        }
+        if (props.stats) {
+            localStats.value = { ...props.stats };
+        }
+    };
+
+    initLocalData();
 
     watch(() => props.jobs, (newJobs) => {
         const unsavedJobs = localJobs.value.filter(j => j.is_new);

@@ -44,7 +44,11 @@ class HabitController extends Controller
         if ($request->wantsJson()) return $dataResource;
 
         return Inertia::render('Habits/Index', [
-            'habits' => $dataResource,
+            'habits' => HabitResource::collection(Habit::ofUser($user->id)
+                ->forPeriod($dates['query'])
+                ->ordered()
+                ->withLogStats($dates['start'], $dates['end'])
+                ->get()),
             'currentMonth' => $dates['translated'],
             'monthQuery' => $dates['query'],
             'hasPrevHabits' => Habit::ofUser($user->id)->forPeriod($dates['prev'])->exists(),

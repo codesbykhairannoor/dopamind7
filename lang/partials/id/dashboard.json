@@ -69,5 +69,9 @@
     "dash_neural_default_summary": "Neural engine aktif dan terus memantau alur kerja Anda.",
     "dash_core_access": "Akses Inti",
     "dash_core_access_desc": "Sistem utama Anda sedang dalam performa terbaik.",
-    "dash_goal_subtitle": "Melacak pencapaian strategis Anda di semua kategori."
+    "dash_goal_subtitle": "Melacak pencapaian strategis Anda di semua kategori.",
+    "btn_log_expense": "Catat Pengeluaran",
+    "btn_check_habit": "Cek Habit",
+    "btn_add_task": "Simpan Tugas",
+    "btn_journal": "Refleksi Diri"
 }

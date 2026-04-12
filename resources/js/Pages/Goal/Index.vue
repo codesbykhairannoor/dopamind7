@@ -122,7 +122,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             </template>
                             <div v-else class="w-full h-full flex items-center justify-center relative" 
-                                 :style="{ background: `radial-gradient(at 0% 0%, ${goal.color || '#6366f1'}33 0px, transparent 50%), radial-gradient(at 100% 100%, ${goal.color || '#6366f1'}33 0px, transparent 50%), ${goal.color || '#6366f1'}05` }">
+                                    :style="{ background: `radial-gradient(at 0% 0%, ${goal.color || '#6366f1'}33 0px, transparent 50%), radial-gradient(at 100% 100%, ${goal.color || '#6366f1'}33 0px, transparent 50%), ${goal.color || '#6366f1'}05` }">
                                 <div class="absolute inset-0 backdrop-blur-[2px]"></div>
                                 <div class="relative z-10 w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-2xl">
                                     <Target :size="28" stroke-width="2.5" :style="{ color: goal.color || '#6366f1' }" />
@@ -182,8 +182,8 @@ const openPremiumPreview = () => router.visit(route('billing'));
 
                         <!-- Mobile Footer Action (Reward) -->
                         <div v-if="goal.reward" class="bg-amber-50/30 dark:bg-amber-500/5 px-6 py-4 border-t border-amber-100/50 dark:border-amber-900/20 flex items-center gap-3">
-                             <Award :size="14" class="text-amber-500" />
-                             <p class="text-[9px] font-black text-amber-600/80 uppercase tracking-widest truncate">Reward: {{ goal.reward }}</p>
+                                <Award :size="14" class="text-amber-500" />
+                                <p class="text-[9px] font-black text-amber-600/80 uppercase tracking-widest truncate">Reward: {{ goal.reward }}</p>
                         </div>
                     </div>
                 </div>

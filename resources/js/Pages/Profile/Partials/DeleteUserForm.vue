@@ -38,7 +38,7 @@ const closeModal = () => {
 <template>
     <section class="space-y-6">
         <header>
-            <h2 class="text-lg font-black text-rose-600 dark:text-rose-400 uppercase tracking-widest flex items-center gap-2 transition-colors duration-500">
+            <h2 class="text-lg font-black text-rose-600 dark:text-rose-400 tracking-tight flex items-center gap-2 transition-colors duration-500">
                 ⚠️ {{ $t('delete_account_title', 'Hapus Akun') }}
             </h2>
             <p class="mt-1 text-sm text-rose-500/80 dark:text-rose-400/80 font-medium transition-colors duration-500">
@@ -46,7 +46,7 @@ const closeModal = () => {
             </p>
         </header>
 
-        <DangerButton @click="confirmUserDeletion" class="!rounded-xl !py-3.5 !px-8 !bg-rose-500 hover:!bg-rose-600 !shadow-lg !shadow-rose-200 dark:!shadow-none !text-[11px] !font-black !uppercase !tracking-widest transition-all active:scale-95 transition-colors duration-500">
+        <DangerButton @click="confirmUserDeletion" class="!rounded-xl !py-3.5 !px-8 !bg-rose-500 hover:!bg-rose-600 !shadow-lg !shadow-rose-200 dark:!shadow-none !text-[11px] !font-black !tracking-wide transition-all active:scale-95 transition-colors duration-500">
             {{ $t('delete_account_btn', 'Hapus Akun Permanen') }}
         </DangerButton>
 
@@ -78,11 +78,11 @@ const closeModal = () => {
                 </div>
 
                 <div class="mt-6 flex gap-3">
-                    <SecondaryButton @click="closeModal" class="flex-1 !py-3.5 !rounded-xl !border-2 !border-slate-200 dark:!border-slate-700 !text-slate-500 dark:!text-slate-400 hover:!bg-slate-50 dark:hover:!bg-slate-800 hover:!text-slate-700 dark:hover:!text-slate-200 justify-center !text-[11px] !font-black !uppercase !tracking-widest transition-colors duration-500">
+                    <SecondaryButton @click="closeModal" class="flex-1 !py-3.5 !rounded-xl !border-2 !border-slate-200 dark:!border-slate-700 !text-slate-500 dark:!text-slate-400 hover:!bg-slate-50 dark:hover:!bg-slate-800 hover:!text-slate-700 dark:hover:!text-slate-200 justify-center !text-[11px] !font-black !tracking-wide transition-colors duration-500">
                         {{ $t('cancel', 'Batal') }}
                     </SecondaryButton>
 
-                    <DangerButton class="flex-1 justify-center !rounded-xl !py-3.5 !bg-rose-600 hover:!bg-rose-700 !text-[11px] !font-black !uppercase !tracking-widest shadow-lg shadow-rose-200 dark:shadow-none transition-colors duration-500" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" @click="deleteUser">
+                    <DangerButton class="flex-1 justify-center !rounded-xl !py-3.5 !bg-rose-600 hover:!bg-rose-700 !text-[11px] !font-black !tracking-wide shadow-lg shadow-rose-200 dark:shadow-none transition-colors duration-500" :class="{ 'opacity-25': form.processing }" :disabled="form.processing" @click="deleteUser">
                         {{ $t('yes_delete', 'Ya, Hapus') }}
                     </DangerButton>
                 </div>

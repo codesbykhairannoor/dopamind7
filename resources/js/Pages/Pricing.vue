@@ -167,13 +167,13 @@ onMounted(() => {
                     ]"
                 >
                     <!-- Badge Header -->
-                    <div v-if="plan.badge" class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest shadow-xl">
+                    <div v-if="plan.badge" class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 rounded-full bg-indigo-600 text-white text-[9px] font-black tracking-wide shadow-xl">
                         {{ $t(plan.badge) }}
                     </div>
 
                     <!-- Card Header -->
                     <div class="mb-8">
-                        <h3 class="text-xs font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-6">{{ plan.name }}</h3>
+                        <h3 class="text-xs font-black tracking-wide text-slate-400 dark:text-slate-500 mb-6">{{ plan.name }}</h3>
                         <div class="flex items-baseline gap-2">
                             <span class="text-4xl lg:text-5xl font-black text-slate-950 dark:text-white tracking-tighter">{{ plan.price }}</span>
                             <span class="text-[10px] font-bold text-slate-400 mb-1" v-if="plan.tier > 1">{{ $t(plan.period) }}</span>
@@ -188,7 +188,7 @@ onMounted(() => {
                     <div class="space-y-4 mb-10 flex-grow border-t border-slate-50 dark:border-slate-800 pt-8">
                         <div v-for="(feat, fIdx) in plan.features" :key="fIdx" class="flex items-start gap-4" :class="feat.isLocked ? 'opacity-40' : ''">
                             <template v-if="feat.isHeader">
-                                <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-2 mb-1 w-full">{{ $t(feat.text) }}</p>
+                                <p class="text-[9px] font-black text-slate-400 tracking-wide mt-2 mb-1 w-full">{{ $t(feat.text) }}</p>
                             </template>
                             <template v-else>
                                 <div class="mt-1 flex items-center justify-center shrink-0">
@@ -235,10 +235,10 @@ onMounted(() => {
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-slate-50 dark:bg-slate-800/50">
-                                <th class="p-8 text-[10px] font-black uppercase tracking-widest text-slate-400">{{ $t('pricing_feature_col_name') }}</th>
-                                <th class="p-8 text-[10px] font-black uppercase tracking-widest text-slate-900 dark:text-white text-center">Explorer</th>
-                                <th class="p-8 text-[10px] font-black uppercase tracking-widest text-indigo-500 text-center">Architect</th>
-                                <th class="p-8 text-[10px] font-black uppercase tracking-widest text-amber-500 text-center">Quantum</th>
+                                <th class="p-8 text-[10px] font-black tracking-wide text-slate-400">{{ $t('pricing_feature_col_name') }}</th>
+                                <th class="p-8 text-[10px] font-black tracking-wide text-slate-900 dark:text-white text-center">Explorer</th>
+                                <th class="p-8 text-[10px] font-black tracking-wide text-indigo-500 text-center">Architect</th>
+                                <th class="p-8 text-[10px] font-black tracking-wide text-amber-500 text-center">Quantum</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-50 dark:divide-slate-800">
@@ -260,11 +260,11 @@ onMounted(() => {
                 </div>
 
                 <div class="mt-16 text-center">
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">{{ $t('pricing_infra_badge') }}</p>
+                    <p class="text-[10px] font-black text-slate-400 tracking-wide mb-4">{{ $t('pricing_infra_badge') }}</p>
                     <div class="flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale contrast-125">
-                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]">Asana Strength</span></div>
-                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]">ClickUp Power</span></div>
-                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div><span class="font-black dark:text-white uppercase tracking-tighter text-[10px]">Notion Clarity</span></div>
+                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div><span class="font-black dark:text-white tracking-tight text-[10px]">Asana Strength</span></div>
+                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div><span class="font-black dark:text-white tracking-tight text-[10px]">ClickUp Power</span></div>
+                        <div class="flex items-center gap-2"><div class="w-2 h-2 bg-slate-900 dark:bg-white rounded-full"></div><span class="font-black dark:text-white tracking-tight text-[10px]">Notion Clarity</span></div>
                     </div>
                 </div>
             </div>

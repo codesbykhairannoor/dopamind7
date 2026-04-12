@@ -388,6 +388,9 @@ watch(() => props.savings, (newSavings) => {
     localStorage.setItem('dfm_local_savings', JSON.stringify(localSavings.value));
 }, { deep: true });
 
+watch(() => props.transactions, (newVal) => { if (newVal) localTransactions.value = [...newVal]; }, { deep: true });
+watch(() => props.budgets, (newVal) => { if (newVal) localBudgets.value = [...newVal]; }, { deep: true });
+watch(() => props.categories, (newVal) => { if (newVal) localCategories.value = [...newVal]; }, { deep: true });
 watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stringify(newStats || {})); }, { deep: true });
 </script>
 
@@ -475,7 +478,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                         </div>
 
                         <div v-if="localTransactions.length === 0" class="py-16 lg:py-20 text-center bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm dark:shadow-none mt-4 transition-colors duration-500">
-                             <div class="flex flex-col items-center gap-4">
+                                <div class="flex flex-col items-center gap-4">
                                 <span class="text-4xl lg:text-5xl animate-bounce">💸</span>
                                 <p class="text-[10px] lg:text-sm font-bold text-slate-400 dark:text-slate-600 px-8">{{ $t('no_transaction', 'Belum ada transaksi di bulan ini') }}</p>
                                 <button @click="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }" class="mt-2 bg-indigo-600 text-white font-black py-2 px-5 lg:py-2.5 lg:px-6 rounded-xl shadow-lg dark:shadow-none shadow-indigo-100 dark:shadow-indigo-900/40 hover:bg-indigo-700 active:scale-95 transition-all outline-none text-[10px] lg:text-xs">+ {{ $t('record_transaction', 'Catat Transaksi') }}</button>
@@ -494,7 +497,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
 
                         <ArchiveModal :show="isArchiveOpen" :dayData="selectedDayData" :categories="categories" :close="() => isArchiveOpen = false" :onDelete="triggerDeleteTransaction" :onEdit="handleEdit" />
                         <FullArchiveModal :show="showFullHistoryModal" :allStats="allStats" :categories="categories" :close="() => showFullHistoryModal = false" :onDelete="triggerDeleteTransaction" :onEdit="handleEdit" />
-                             <!-- 🏦 The Vault (Savings) & 🧠 Neural Forecast -->
+                                <!-- 🏦 The Vault (Savings) & 🧠 Neural Forecast -->
                     <div class="space-y-6 relative group">
                         <div class="flex items-center justify-between px-1 lg:px-0">
                             <div class="flex items-center gap-3">
@@ -510,7 +513,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-                             <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1 border-2 border-slate-100 dark:border-slate-800 shadow-sm"><div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500 animate-bounce">🏦</div><h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">You have no active saving goals yet.</h4><button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-black tracking-widest text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-6 py-2.5 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all active:scale-95 shadow-sm border border-indigo-100/50 dark:border-indigo-500/20">Start saving now</button></div>
+                                <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1 border-2 border-slate-100 dark:border-slate-800 shadow-sm"><div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500 animate-bounce">🏦</div><h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">You have no active saving goals yet.</h4><button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-black tracking-widest text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-6 py-2.5 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all active:scale-95 shadow-sm border border-indigo-100/50 dark:border-indigo-500/20">Start saving now</button></div>
 
                             <div v-else class="flex lg:grid overflow-x-auto lg:overflow-visible no-scrollbar gap-4 pb-4 lg:pb-0">
                                 <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] lg:w-full"><SavingCard :saving="saving" :onDeposit="(s) => openVaultAction(s, 'deposit')" :onWithdraw="(s) => openVaultAction(s, 'withdraw')" :onEdit="handleEditSaving" :onDelete="handleDeleteSaving" /></div>
@@ -547,8 +550,8 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
 
                         <!-- Insights for Mobile (Placed above Trend Chart) -->
                         <div class="lg:hidden relative">
-                         <!-- Unlocked Section -->
-                             <FinanceInsights
+                            <!-- Unlocked Section -->
+                                <FinanceInsights
                                 :expense-stats="localStats.expense_by_category"
                                 :income-stats="localStats.income_by_category"
                                 :budgets="localBudgets"
@@ -557,10 +560,10 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                         </div>
 
                         <!-- Trend Chart Section -->
-                         <div class="relative">
-                         <!-- Unlocked Section -->
-                             <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" @day-click="openDetail" />
-                         </div>
+                            <div class="relative">
+                            <!-- Unlocked Section -->
+                                <DailyTrendChart v-if="localTransactions.length" :transactions="localTransactions" :currentDate="filters.date" @day-click="openDetail" />
+                            </div>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ use App\Models\Habit;
 use App\Models\HabitLog;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class HabitService
@@ -22,7 +23,9 @@ class HabitService
         $data['user_id'] = $userId;
         $data['position'] = $maxPosition + 1;
 
-        return Habit::create($data);
+        $habit = Habit::create($data);
+        Cache::forget("user_{$userId}_habit_streak");
+        return $habit;
     }
 
     /**
@@ -38,6 +41,7 @@ class HabitService
                 ['status' => $status]
             );
         }
+        Cache::forget("user_{$habit->user_id}_habit_streak");
     }
 
     /**
@@ -78,6 +82,7 @@ class HabitService
         })->toArray();
 
         Habit::insert($newHabits);
+        Cache::forget("user_{$userId}_habit_streak");
 
         return count($newHabits);
     }
@@ -107,6 +112,7 @@ class HabitService
 
         if (!empty($habitsData)) {
             DB::transaction(fn () => Habit::insert($habitsData));
+            Cache::forget("user_{$userId}_habit_streak");
         }
     }
 
@@ -148,6 +154,7 @@ class HabitService
                     );
                 }
             }
+            Cache::forget("user_{$userId}_habit_streak");
         });
     }
 }

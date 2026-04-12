@@ -69,5 +69,9 @@
     "dash_neural_default_summary": "Neural engine active and monitoring your workflows.",
     "dash_core_access": "Core Access",
     "dash_core_access_desc": "Your core system is performing at its best.",
-    "dash_goal_subtitle": "Tracking your strategic milestones across all categories."
+    "dash_goal_subtitle": "Tracking your strategic milestones across all categories.",
+    "btn_log_expense": "Record Cash",
+    "btn_check_habit": "Daily Streak",
+    "btn_add_task": "New Task",
+    "btn_journal": "Self Reflect"
 }

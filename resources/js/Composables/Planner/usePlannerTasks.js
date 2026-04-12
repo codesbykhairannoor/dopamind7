@@ -4,7 +4,17 @@ import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 
 export function usePlannerTasks(props) {
-    const localTasks = ref([...props.tasks]);
+    const localTasks = ref([]);
+    
+    const getTasksArray = (t) => {
+        if (Array.isArray(t)) return t;
+        if (t && typeof t === 'object' && Array.isArray(t.data)) return t.data;
+        return [];
+    };
+
+    if (props.tasks) {
+        localTasks.value = [...getTasksArray(props.tasks)];
+    }
     const conflictError = ref(null);
     const isModalOpen = ref(false);
     const isEditing = ref(false);
@@ -185,7 +195,7 @@ export function usePlannerTasks(props) {
     };
 
     watch(() => props.tasks, (newTasks) => {
-        localTasks.value = [...newTasks];
+        localTasks.value = [...getTasksArray(newTasks)];
     }, { deep: true });
 
     // 🔥 FIX: Gunakan computed untuk currentDate agar reactive

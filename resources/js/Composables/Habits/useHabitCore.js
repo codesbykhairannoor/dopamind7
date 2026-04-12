@@ -8,10 +8,21 @@ export function useHabitCore(props) {
     const user = usePage().props.auth.user;
 
     // State Data (Optimistic UI)
-    const localHabits = ref(JSON.parse(JSON.stringify(props.habits.data)));
+    const localHabits = ref([]);
+    
+    // Initialize with data if available, otherwise wait for prop change (Defer)
+    if (props.habits && props.habits.data) {
+        localHabits.value = JSON.parse(JSON.stringify(props.habits.data));
+    }
 
     watch(() => props.habits, (newVal) => {
-        localHabits.value = JSON.parse(JSON.stringify(newVal.data));
+        if (newVal && newVal.data) {
+            localHabits.value = JSON.parse(JSON.stringify(newVal.data));
+            // Re-calc streaks on new data
+            localHabits.value.forEach(h => {
+                h.streak = calculateStreak(h);
+            });
+        }
     }, { deep: true });
 
     // --- GREETING & STATS ---
@@ -83,10 +94,12 @@ export function useHabitCore(props) {
         return habit.logs && habit.logs[dateString] ? habit.logs[dateString] : 'empty';
     };
 
-    // Initialize streaks
-    localHabits.value.forEach(h => {
-        h.streak = calculateStreak(h);
-    });
+    // Initialize streaks if data exists
+    if (localHabits.value && localHabits.value.length > 0) {
+        localHabits.value.forEach(h => {
+            h.streak = calculateStreak(h);
+        });
+    }
 
     // --- CONFETTI CELEBRATION 🎊 ---
     watch(todayProgress, (newVal, oldVal) => {

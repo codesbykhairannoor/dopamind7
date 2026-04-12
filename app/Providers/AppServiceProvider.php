@@ -24,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // 🔥 Disable resource wrapping for Inertia consistency
+        \Illuminate\Http\Resources\Json\JsonResource::withoutWrapping();
+
         /**
          * Mencegah lazy loading, silent assignment, dan akses atribut yang tidak ada.
          */

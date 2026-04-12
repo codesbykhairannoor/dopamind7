@@ -52,7 +52,7 @@ const updateProfile = () => {
                 </div>
                 <div class="flex-grow space-y-1 text-center sm:text-left">
                     <h4 class="font-black text-slate-700 dark:text-slate-200 text-sm transition-colors duration-500">{{ $t('profile_avatar_title', 'Foto Profil') }}</h4>
-                    <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest transition-colors duration-500">{{ $t('profile_avatar_format', 'JPG, PNG atau WEBP Max 2MB') }}</p>
+                    <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 tracking-wide transition-colors duration-500">{{ $t('profile_avatar_format', 'JPG, PNG atau WEBP Max 2MB') }}</p>
                     <button type="button" class="mt-2 text-xs font-black text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 text-left transition-colors duration-500">{{ $t('profile_avatar_remove', 'Hapus Foto') }}</button>
                 </div>
             </div>
@@ -60,13 +60,13 @@ const updateProfile = () => {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Name -->
                 <div class="space-y-1.5">
-                    <label class="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1 transition-colors duration-500">{{ $t('profile_label_name', 'Nama Lengkap') }}</label>
+                    <label class="text-xs font-black text-slate-500 dark:text-slate-400 tracking-wide ml-1 transition-colors duration-500">{{ $t('profile_label_name', 'Nama Lengkap') }}</label>
                     <input type="text" v-model="form.name" class="w-full px-5 py-4 rounded-2xl border-slate-100 dark:border-slate-700 bg-slate-50/30 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all" :placeholder="$t('profile_placeholder_name', 'Masukkan nama...')">
                 </div>
  
                 <!-- Email -->
                 <div class="space-y-1.5">
-                    <label class="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1 transition-colors duration-500">{{ $t('profile_label_email', 'Email') }}</label>
+                    <label class="text-xs font-black text-slate-500 dark:text-slate-400 tracking-wide ml-1 transition-colors duration-500">{{ $t('profile_label_email', 'Email') }}</label>
                     <input type="email" v-model="form.email" class="w-full px-5 py-4 rounded-2xl border-slate-100 dark:border-slate-700 bg-slate-50/30 dark:bg-slate-800/50 text-slate-700 dark:text-slate-200 font-bold focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all" :placeholder="$t('profile_placeholder_email', 'name@example.com')">
                 </div>
             </div>

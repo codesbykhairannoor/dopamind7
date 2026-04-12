@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import dayjs from 'dayjs';
+import { router } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const props = defineProps({
@@ -59,7 +60,7 @@ const changeYear = (offset) => {
           </p>
           <div class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50">
               <OneForMindIcon name="calendar" size="14" class="text-indigo-500" />
-              <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize">{{ todayDate }}</span>
+              <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300">{{ todayDate }}</span>
           </div>
         </div>
 
@@ -71,7 +72,7 @@ const changeYear = (offset) => {
               class="w-full flex items-center justify-between gap-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 hover:shadow-sm transition-all active:scale-95"
             >
               <div class="flex flex-col items-start leading-none">
-                <span class="text-[9px] text-slate-400 dark:text-slate-500 mb-0.5 capitalize">{{ $t('label_period') }}</span>
+                <span class="text-[9px] text-slate-400 dark:text-slate-500 mb-0.5">{{ $t('label_period') }}</span>
                 <span class="text-xs">{{ currentMonth }}</span>
               </div>
               <div class="p-1 bg-white dark:bg-slate-800 border shadow-sm rounded-lg border-slate-100 dark:border-slate-700 flex items-center justify-center">
@@ -100,7 +101,7 @@ const changeYear = (offset) => {
                       :key="month" 
                       @click="selectMonth(index)"
                       :class="[
-                        'py-3 rounded-2xl text-[10px] font-black transition-all capitalize',
+                        'py-3 rounded-2xl text-[10px] font-black transition-all',
                         activeMonthNum === index 
                           ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none' 
                           : 'hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400'
@@ -140,7 +141,7 @@ const changeYear = (offset) => {
           </div>
 
           <button 
-            @click="isExplorer && habitsCount >= 5 ? $router.visit(route('billing'), { data: { from: 'habit_count_limit' } }) : openCreateModal()" 
+            @click="isExplorer && habitsCount >= 5 ? router.visit(route('billing'), { data: { from: 'habit_count_limit' } }) : openCreateModal()" 
             class="h-[46px] px-5 flex items-center gap-3 text-white rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-lg transition-all duration-300 whitespace-nowrap"
             :class="isExplorer && habitsCount >= 5 ? 'bg-gradient-to-r from-rose-500 to-rose-600 shadow-rose-200 dark:shadow-rose-900/20' : 'bg-indigo-600 shadow-indigo-100 dark:shadow-indigo-900/40 hover:bg-indigo-700'"
           >

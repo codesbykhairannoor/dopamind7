@@ -85,7 +85,7 @@ const saveSettings = () => {
                         </div>
                         <div>
                             <h4 class="font-black text-slate-700 dark:text-slate-200 text-sm capitalize transition-colors duration-500">{{ $t(key) }}</h4>
-                            <p class="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest transition-colors duration-500">{{ $t('module_status_active') }}</p>
+                            <p class="text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-wide transition-colors duration-500">{{ $t('module_status_active') }}</p>
                         </div>
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
@@ -97,7 +97,7 @@ const saveSettings = () => {
         </div>
 
         <transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 -translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100" leave-to-class="opacity-0">
-            <div v-if="form.recentlySuccessful" class="text-center bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-4 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest border border-emerald-100 dark:border-emerald-500/20 shadow-sm dark:shadow-none shadow-emerald-100/50 flex items-center justify-center gap-2">
+            <div v-if="form.recentlySuccessful" class="text-center bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-4 py-3 rounded-2xl text-[10px] font-black tracking-wide border border-emerald-100 dark:border-emerald-500/20 shadow-sm dark:shadow-none shadow-emerald-100/50 flex items-center justify-center gap-2">
                 <span>✨</span> {{ $t('settings_saved', 'Tersimpan!') }}
             </div>
         </transition>

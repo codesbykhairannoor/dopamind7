@@ -142,7 +142,7 @@ const perfectDaysCount = computed(() => {
 
       <div class="md:col-span-5 bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 shadow-sm border border-slate-100 dark:border-slate-800 relative overflow-hidden">
         <div class="relative z-10">
-          <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-1">
+          <span class="text-[10px] font-bold tracking-normal text-slate-400 block mb-1">
             {{ $t('label_consistency', 'Konsistensi Bulan Ini') }}
           </span>
           <div class="flex items-end gap-1">
@@ -159,7 +159,7 @@ const perfectDaysCount = computed(() => {
         <div class="absolute -right-6 -top-6 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
         
         <div v-if="topHabit" class="relative z-10">
-          <span class="text-[10px] font-black uppercase tracking-widest text-indigo-200 block mb-3">
+          <span class="text-[10px] font-black tracking-wide text-indigo-200 block mb-3">
             🏆 {{ $t('label_mvp_habit', 'Habit Terbaik') }}
           </span>
           <div class="text-3xl mb-1">{{ topHabit.icon }}</div>
@@ -167,7 +167,7 @@ const perfectDaysCount = computed(() => {
         </div>
 
         <div v-if="topHabit" class="mt-4 flex justify-between items-end relative z-10">
-          <span class="text-[10px] font-bold uppercase text-indigo-200 leading-none">
+          <span class="text-[10px] font-bold text-indigo-200 leading-none">
             {{ $t('label_completed', 'Selesai') }}
           </span>
           <span class="text-2xl font-black leading-none">
@@ -186,10 +186,10 @@ const perfectDaysCount = computed(() => {
           </div>
 
           <div class="flex-1 min-w-0">
-            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-1">
+            <span class="text-[10px] font-black tracking-wide text-slate-400 block mb-1">
               {{ $t('label_mood_status', 'Mood Bulan Ini') }}
             </span>
-            <div class="text-xl font-black truncate uppercase text-slate-800 dark:text-slate-100">
+            <div class="text-xl font-black truncate text-slate-800 dark:text-slate-100">
               {{ $t(currentMoodData.label_key) }}
             </div>
           </div>
@@ -205,7 +205,7 @@ const perfectDaysCount = computed(() => {
               :class="savedMood === m.code ? 'bg-indigo-50 dark:bg-indigo-500/10 border border-indigo-100 dark:border-indigo-500/30' : 'border border-transparent'"
             >
               <span class="text-xl">{{ m.icon }}</span>
-              <span class="font-bold text-[10px] uppercase truncate text-slate-600 dark:text-slate-300">{{ $t(m.label_key).split(' ')[0] }}</span>
+              <span class="font-bold text-[10px] truncate text-slate-600 dark:text-slate-300">{{ $t(m.label_key).split(' ')[0] }}</span>
             </button>
           </div>
         </Transition>
@@ -216,7 +216,7 @@ const perfectDaysCount = computed(() => {
           🔥
         </div>
         <div>
-          <div class="text-[10px] font-black uppercase tracking-widest text-orange-400 mb-1">{{ $t('label_current_streak', 'Aktif Beruntun') }}</div>
+          <div class="text-[10px] font-black tracking-wide text-orange-400 mb-1">{{ $t('label_current_streak', 'Aktif Beruntun') }}</div>
           <div class="text-2xl font-black text-orange-600 dark:text-orange-400 leading-none">
             {{ currentStreak }} <span class="text-sm font-bold opacity-70">{{ $t('label_days', 'Hari') }}</span>
           </div>
@@ -228,7 +228,7 @@ const perfectDaysCount = computed(() => {
           🌟
         </div>
         <div>
-          <div class="text-[10px] font-black uppercase tracking-widest text-emerald-500 mb-1">{{ $t('label_perfect_days', 'Hari Sempurna') }}</div>
+          <div class="text-[10px] font-black tracking-wide text-emerald-500 mb-1">{{ $t('label_perfect_days', 'Hari Sempurna') }}</div>
           <div class="text-2xl font-black text-emerald-600 dark:text-emerald-400 leading-none">
             {{ perfectDaysCount }} <span class="text-sm font-bold opacity-70">{{ $t('label_days', 'Hari') }}</span>
           </div>
@@ -240,7 +240,7 @@ const perfectDaysCount = computed(() => {
           📝
         </div>
         <div>
-          <div class="text-[10px] font-black uppercase tracking-widest text-blue-400 mb-1">{{ $t('label_total_checkins', 'Total Eksekusi') }}</div>
+          <div class="text-[10px] font-black tracking-wide text-blue-400 mb-1">{{ $t('label_total_checkins', 'Total Eksekusi') }}</div>
           <div class="text-2xl font-black text-blue-600 dark:text-blue-400 leading-none">
             {{ totalCompletions }} <span class="text-sm font-bold opacity-70">{{ $t('label_times', 'Kali') }}</span>
           </div>

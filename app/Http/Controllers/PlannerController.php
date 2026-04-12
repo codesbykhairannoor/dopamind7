@@ -51,8 +51,16 @@ class PlannerController extends Controller
         }
 
         return Inertia::render('Planner/Index', [
-            'tasks'       => $tasksResource->resolve(),
-            'dailyLog'    => $logResource->resolve(),
+            'tasks'       => PlannerTaskResource::collection(PlannerTask::ofUser($user->id)->forDate($date)->ordered()->get()),
+            'dailyLog'    => new DailyLogResource(DailyLog::where('user_id', $user->id)->where('date', $date)->first() 
+                ?? new DailyLog([
+                    'user_id'  => $user->id, 
+                    'date'     => $date,
+                    'meals'    => ['breakfast' => '', 'lunch' => '', 'dinner' => ''], 
+                    'notes'    => '',
+                    'water'    => 0,
+                    'task_box' => []
+                ])),
             'currentDate' => $date,
         ]);
     }

@@ -38,13 +38,7 @@ Route::get('/lang/{locale}', function (Request $request, $locale) {
 
         $referer = $request->headers->get('referer') ?? url('/');
 
-        // JURUS PAMUNGKAS: Kalau dari Inertia, harus pake Inertia::location 
-        // biar state SPA bener-bener ke-reset.
-        if ($request->hasHeader('X-Inertia')) {
-            return Inertia::location($referer);
-        }
-
-        // Redirect dengan melampirkan cookie agar Blade langsung dapet
+        // Redirect with cookie. Inertia treats this as a soft navigation via XHR.
         return redirect()->to($referer)->withCookie($cookie);
     }
 
@@ -593,7 +587,9 @@ Route::middleware(['auth', 'throttle:global'])->group(function () { // 👈 Tamb
             Route::get('/{post}/edit', [AdminPostController::class, 'edit'])->name('edit');
             Route::match(['post', 'patch'], '/{post}', [AdminPostController::class, 'update'])->name('update');
             Route::delete('/{post}', [AdminPostController::class, 'destroy'])->name('destroy');
-        });
+            // --- NOTIFICATIONS ---
+    Route::post('/notifications/preferences', [\App\Http\Controllers\NotificationController::class, 'updatePreferences'])->name('notifications.update');
+});
 
         // Users
         Route::prefix('users')->name('users.')->group(function () {

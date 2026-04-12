@@ -16,7 +16,6 @@ import PlannerModal from './PlannerModal.vue';
 import PlannerBatchModal from './PlannerBatchModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
 import { useGating } from '@/Composables/useGating';
-import { router } from '@inertiajs/vue3';
 
 // 🔥 TERIMA currentDate DARI CONTROLLER
 const props = defineProps({ 
@@ -88,7 +87,6 @@ onMounted(() => {
         />
 
         <div class="w-full min-h-screen bg-slate-50/50 dark:bg-slate-950 px-4 sm:px-6 lg:px-8 py-8 transition-colors duration-500">
-            
             <div v-if="!isMobile" class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
                 
                 <div class="lg:col-span-3 order-1 lg:order-2 w-full">
@@ -116,8 +114,8 @@ onMounted(() => {
             </div>
 
             <div v-else class="space-y-12 pb-40 px-2">
-                 <NeuralBridge id="mobile-planner-neural" module="Planner" />
-                 <div id="mobile-wide-timeline" class="w-full overflow-hidden">
+                    <NeuralBridge id="mobile-planner-neural" module="Planner" />
+                    <div id="mobile-wide-timeline" class="w-full overflow-hidden">
                     <div class="flex items-center justify-between px-2 mb-4">
                         <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Flow Timeline</h3>
                     </div>
@@ -130,9 +128,9 @@ onMounted(() => {
                         :toggleComplete="toggleComplete" 
                         :getTypeColor="getTypeColor"
                     />
-                 </div>
+                    </div>
 
-                 <div id="mobile-daily-overview" class="space-y-6 pt-8 border-t border-slate-100 dark:border-slate-800">
+                    <div id="mobile-daily-overview" class="space-y-6 pt-8 border-t border-slate-100 dark:border-slate-800">
                     <div class="px-2">
                         <h3 class="text-xs font-black uppercase tracking-widest text-slate-400">Daily Overview</h3>
                     </div>
@@ -143,7 +141,7 @@ onMounted(() => {
                         v-model:localWater="localWater"
                         v-model:localTaskBox="localTaskBox"
                     />
-                 </div>
+                    </div>
             </div>
         </div>
 

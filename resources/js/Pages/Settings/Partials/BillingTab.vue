@@ -38,7 +38,7 @@ const checkout = (plan) => {
             <div class="relative z-10">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl">✨</div>
-                    <span class="text-xs font-black uppercase tracking-widest bg-white/20 backdrop-blur-md px-3 py-1 rounded-full">{{ $t('billing_premium_badge', 'Paket Premium') }}</span>
+                    <span class="text-xs font-black tracking-wide bg-white/20 backdrop-blur-md px-3 py-1 rounded-full">{{ $t('billing_premium_badge', 'Paket Premium') }}</span>
                 </div>
                 <h4 class="text-2xl font-black mb-2 leading-tight">{{ $t('billing_premium_thanks', 'Terima kasih atas dukungannya!') }}</h4>
                 <p class="text-sm font-bold text-indigo-100 opacity-90 max-w-sm mb-6">{{ $t('billing_premium_desc', 'Akun Anda saat ini aktif sebagai anggota Premium. Nikmati akses tanpa batas ke semua fitur produktivitas.') }}</p>
@@ -57,7 +57,7 @@ const checkout = (plan) => {
         <div v-else class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
             <!-- Free -->
             <div class="bg-white dark:bg-slate-900 p-6 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none flex flex-col h-full transition-all duration-500">
-                <h4 class="text-xs font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 transition-colors duration-500">{{ $t('pricing_free_name', 'Explorer') }}</h4>
+                <h4 class="text-xs font-black text-slate-400 dark:text-slate-500 tracking-wide mb-2 transition-colors duration-500">{{ $t('pricing_free_name', 'Explorer') }}</h4>
                 <div class="text-2xl font-black text-slate-900 dark:text-white mb-4 transition-colors duration-500">Rp 0</div>
                 <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 dark:text-slate-400 font-bold transition-colors duration-500">
                     <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> 5 Habits Max</li>
@@ -68,8 +68,8 @@ const checkout = (plan) => {
 
             <!-- Architect (Pro) -->
             <div class="bg-white dark:bg-slate-900 p-6 rounded-[2rem] border-2 border-indigo-100 dark:border-indigo-500/30 shadow-lg dark:shadow-none shadow-indigo-50/50 dark:shadow-indigo-900/10 flex flex-col h-full relative transition-all duration-500">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-100 dark:bg-indigo-600 text-indigo-600 dark:text-white px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest shadow-sm dark:shadow-none">Populer</div>
-                <h4 class="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest mb-2 transition-colors duration-500">{{ $t('pricing_pro_name', 'Architect') }}</h4>
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-100 dark:bg-indigo-600 text-indigo-600 dark:text-white px-3 py-1 rounded-full text-[9px] font-black tracking-wide shadow-sm dark:shadow-none">Populer</div>
+                <h4 class="text-xs font-black text-indigo-600 dark:text-indigo-400 tracking-wide mb-2 transition-colors duration-500">{{ $t('pricing_pro_name', 'Architect') }}</h4>
                 <div class="text-2xl font-black text-slate-900 dark:text-white leading-none transition-colors duration-500">Rp 25.000</div>
                 <div class="text-[10px] text-indigo-500 dark:text-indigo-400 font-black italic mb-4 transition-colors duration-500">Lalu Rp 15rb/bln</div>
                 <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 dark:text-slate-400 font-bold transition-colors duration-500">
@@ -82,7 +82,7 @@ const checkout = (plan) => {
 
             <!-- Quantum (AI) -->
             <div class="bg-indigo-50 dark:bg-slate-800 p-6 rounded-[2rem] border border-indigo-200 dark:border-slate-700 shadow-sm dark:shadow-none flex flex-col h-full relative transition-all duration-500">
-                <h4 class="text-xs font-black text-indigo-700 dark:text-indigo-400 uppercase tracking-widest mb-2 transition-colors duration-500">{{ $t('pricing_ai_name', 'Quantum') }}</h4>
+                <h4 class="text-xs font-black text-indigo-700 dark:text-indigo-400 tracking-wide mb-2 transition-colors duration-500">{{ $t('pricing_ai_name', 'Quantum') }}</h4>
                 <div class="text-2xl font-black text-slate-900 dark:text-white leading-none transition-colors duration-500">Rp 49.000</div>
                 <div class="text-[10px] text-indigo-500 dark:text-indigo-400 font-black italic mb-4 transition-colors duration-500">/bulan</div>
                 <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-700 dark:text-slate-300 font-bold transition-colors duration-500">
@@ -94,7 +94,7 @@ const checkout = (plan) => {
 
             <!-- Lifetime -->
             <div class="bg-slate-900 p-6 rounded-[2rem] shadow-xl dark:shadow-none flex flex-col h-full text-white">
-                <h4 class="text-xs font-black text-indigo-400 uppercase tracking-widest mb-2">{{ $t('pricing_life_name', 'Mind Master') }}</h4>
+                <h4 class="text-xs font-black text-indigo-400 tracking-wide mb-2">{{ $t('pricing_life_name', 'Mind Master') }}</h4>
                 <div class="text-2xl font-black mb-4">Rp 249.000</div>
                 <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-300 font-bold">
                     <li class="flex items-center gap-2"><span class="text-indigo-400">★</span> Buka Semua Selamanya</li>
