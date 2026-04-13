@@ -26,15 +26,14 @@ const plans = computed(() => {
             tier: 1,
             price: 'Free',
             period: 'pricing_forever',
-            desc: 'pricing_explorer_desc',
+            desc: 'Dasar produktivitas untuk memulai perubahan hidup Anda.',
             features: [
-                { text: 'pricing_f_habit_open', icon: ListChecks },
-                { text: 'pricing_f_batch_habit_locked', icon: Lock, isLocked: true },
-                { text: 'pricing_f_planner_tab_open', icon: Calendar },
-                { text: 'pricing_f_batch_planner_locked', icon: Lock, isLocked: true },
-                { text: 'pricing_f_vault_locked', icon: Lock, isLocked: true },
-                { text: 'pricing_f_lab_locked', icon: Lock, isLocked: true },
-                { text: 'pricing_f_trends_locked', icon: Lock, isLocked: true }
+                { text: 'Atomic Habit Tracker (Max 5)', icon: ListChecks },
+                { text: 'Daily Planner & Task List', icon: Calendar },
+                { text: 'Basic Finance (Income/Expense)', icon: Wallet },
+                { text: 'Standard Dashboards', icon: TrendingUp },
+                { text: 'Journal, Goals, & Jobs', icon: Lock, isLocked: true },
+                { text: 'Advanced AI Life Coach', icon: Lock, isLocked: true }
             ],
             buttonText: 'pricing_btn_current',
             theme: 'slate'
@@ -47,14 +46,15 @@ const plans = computed(() => {
                 ? (appLocale.value === 'id' ? 'Rp 79k' : '$4.99') 
                 : (appLocale.value === 'id' ? 'Rp 99k' : '$6.99'),
             period: 'pricing_per_year',
-            desc: 'pricing_architect_desc',
+            desc: 'Akses seluruh ekosistem tanpa batas untuk kontrol penuh.',
             features: [
-                { text: 'pricing_feature_header_explorer_plus', isHeader: true },
-                { text: 'pricing_f_all_tabs_open', icon: ListChecks },
-                { text: 'pricing_f_batch_unlocked', icon: Zap },
-                { text: 'pricing_f_financial_ecosystem', icon: Wallet },
-                { text: 'pricing_f_custom_themes', icon: MousePointer2 },
-                { text: 'pricing_f_ai_coach_locked', icon: Lock, isLocked: true }
+                { text: 'Semua Fitur Explorer, Ditambah:', isHeader: true },
+                { text: 'Buka Semua Tab (Journal, Goals, Job)', icon: ListChecks },
+                { text: 'Habit Unlimited & Batch Entry', icon: Zap },
+                { text: 'Wealth Lab (Budgeting & Savings)', icon: Wallet },
+                { text: 'Advanced Calendar Timeline', icon: Calendar },
+                { text: 'Job Application Tracker & CRM', icon: ShieldCheck },
+                { text: 'Cloud Sync & Data Backup', icon: Cloud }
             ],
             buttonText: 'pricing_btn_upgrade',
             theme: 'indigo'
@@ -67,19 +67,20 @@ const plans = computed(() => {
                 ? (appLocale.value === 'id' ? 'Rp 109k' : '$6.99') 
                 : (appLocale.value === 'id' ? 'Rp 159k' : '$9.99'),
             period: 'pricing_per_year',
-            desc: 'pricing_quantum_desc',
+            desc: 'Integrasikan Kecerdasan Buatan (AI) ke dalam seluruh hidup Anda.',
             features: [
-                { text: 'pricing_feature_header_architect_plus', isHeader: true },
-                { text: 'pricing_f_ai_full_access', icon: Sparkles },
-                { text: 'pricing_f_ai_insights', icon: Brain },
-                { text: 'pricing_f_ai_finance_insights', icon: Star },
-                { text: 'pricing_f_neural_sync', icon: Infinity },
-                { text: 'pricing_f_early_access', icon: Globe }
+                { text: 'Semua Fitur Architect, Ditambah:', isHeader: true },
+                { text: 'Neural OS AI Coach (Unlimited)', icon: Sparkles },
+                { text: 'AI Habit Stack & Behavioral Audit', icon: Brain },
+                { text: 'AI Financial Audit & Wealth Insights', icon: Star },
+                { text: 'AI Journal Sentiment Analysis', icon: MessageSquare },
+                { text: 'AI Resume Scan & Job Matching', icon: ShieldCheck },
+                { text: 'Prioritas Akses Fitur AI Terbaru', icon: Globe }
             ],
             buttonText: 'pricing_btn_unleash',
             highlight: true,
             theme: 'premium',
-            badge: 'pricing_badge_popular',
+            badge: 'REKOMENDASI AI',
             icon: 'sparkles'
         },
         {
@@ -88,18 +89,18 @@ const plans = computed(() => {
             tier: 4,
             price: (appLocale.value === 'id' ? 'Rp 899k' : '$59.00'),
             period: 'pricing_lifetime',
-            desc: 'pricing_legendary_desc',
+            desc: 'Miliki ekosistem produktivitas OneForMind seumur hidup.',
             features: [
-                { text: 'pricing_feature_header_quantum_plus', isHeader: true },
-                { text: 'pricing_f_lifetime_access', icon: Infinity },
-                { text: 'pricing_f_legendary_trial_ai', icon: Zap },
-                { text: 'pricing_f_vvip_support', icon: Shield },
-                { text: 'pricing_f_founder_badge', icon: ShieldCheck },
-                { text: 'pricing_f_onboarding', icon: MessageSquare }
+                { text: 'Hak Istimewa Legendary:', isHeader: true },
+                { text: 'Akses Lifetime Seluruh Tab (Pro)', icon: Infinity },
+                { text: 'Gratis 2 Bulan Quantum AI Access', icon: Zap },
+                { text: 'Founder Badge & VIP Role', icon: Star },
+                { text: 'Unlimited Cloud Storage', icon: Cloud },
+                { text: 'Prioritas Support One-on-One', icon: Shield }
             ],
             buttonText: 'pricing_btn_legendary',
             theme: 'dark',
-            badge: 'pricing_badge_limited',
+            badge: 'FOUNDER EDITION',
             icon: 'infinity'
         }
     ];

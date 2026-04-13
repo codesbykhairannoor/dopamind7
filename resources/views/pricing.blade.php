@@ -62,28 +62,32 @@
                             </div>
                         </div>
                         
-                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">Mulai perjalanan Anda dengan alat dasar yang powerful.</p>
+                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">Dasar produktivitas untuk memulai perubahan hidup Anda.</p>
                         
                         <ul class="space-y-4 mb-12 flex-grow">
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_habit_open') }}</span>
-                            </li>
-                            <li class="flex items-center gap-3 opacity-40">
-                                <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-[8px] font-black">🔒</div>
-                                <span class="text-xs font-bold text-slate-500">{{ __('pricing_f_batch_habit_locked') }}</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Atomic Habit Tracker (Max 5)</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_planner_tab_open') }}</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Daily Planner & Task List</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Basic Finance (Income/Expense)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Standard Dashboards</span>
                             </li>
                             <li class="flex items-center gap-3 opacity-40">
                                 <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-[8px] font-black">🔒</div>
-                                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">{{ __('pricing_f_batch_planner_locked') }}</span>
+                                <span class="text-xs font-bold text-slate-500">Journal, Goals, & Jobs</span>
                             </li>
                             <li class="flex items-center gap-3 opacity-40">
                                 <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-[8px] font-black">🔒</div>
-                                <span class="text-xs font-bold text-slate-500 dark:text-slate-400">{{ __('pricing_f_vault_locked') }}</span>
+                                <span class="text-xs font-bold text-slate-500">Advanced AI Life Coach</span>
                             </li>
                         </ul>
 
@@ -102,27 +106,35 @@
                             </div>
                         </div>
 
-                        <p class="text-xs font-bold text-slate-600 dark:text-slate-300 mb-10 leading-relaxed min-h-[48px]">Bangun sistem produktivitas utuh dengan akses tanpa batas.</p>
+                        <p class="text-xs font-bold text-slate-600 dark:text-slate-300 mb-10 leading-relaxed min-h-[48px]">Akses seluruh ekosistem tanpa batas untuk kontrol penuh.</p>
                         
                         <ul class="space-y-4 mb-12 flex-grow border-t border-slate-50 dark:border-slate-700 pt-8">
                             <li class="flex items-center justify-center py-2 mb-2 bg-indigo-50/50 dark:bg-indigo-500/5 rounded-xl border border-indigo-100 dark:border-indigo-500/10">
-                                <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">{{ __('pricing_feature_header_explorer_plus') }}</span>
+                                <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Semua Fitur Explorer, Ditambah:</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-[10px] font-black italic">★</div>
-                                <span class="text-xs font-black text-slate-900 dark:text-white">{{ __('pricing_f_all_tabs_open') }}</span>
+                                <span class="text-xs font-black text-slate-900 dark:text-white">Buka Semua Tab (Journal, Goals, Job)</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_batch_unlocked') }}</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Habit Unlimited & Batch Entry</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_financial_ecosystem') }}</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Wealth Lab (Finance Budgeting & Savings)</span>
                             </li>
-                            <li class="flex items-center gap-3 opacity-40">
-                                <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-[8px] font-black">🔒</div>
-                                <span class="text-xs font-bold text-slate-400 tracking-tight">{{ __('pricing_f_ai_coach_locked') }}</span>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Advanced Calendar Timeline</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Job Application Tracker & CRM</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Cloud Sync & Data Backup</span>
                             </li>
                         </ul>
 
@@ -136,7 +148,7 @@
                         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent rounded-[3.5rem] overflow-hidden"></div>
                         
                         <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-indigo-600 text-white text-[9px] font-black tracking-[0.2em] uppercase shadow-lg border border-white/20 animate-pulse">
-                            {{ __('pricing_ai_badge') }}
+                            REKOMENDASI AI
                         </div>
 
                         <div class="mb-10 relative">
@@ -147,23 +159,35 @@
                             </div>
                         </div>
 
-                        <p class="text-xs font-bold text-slate-400 mb-10 leading-relaxed min-h-[48px]">Tingkatkan performa hidup Anda dengan asisten kecerdasan syaraf buatan.</p>
+                        <p class="text-xs font-bold text-slate-400 mb-10 leading-relaxed min-h-[48px]">Integrasikan Kecerdasan Buatan (AI) ke dalam seluruh hidup Anda.</p>
                         
                         <ul class="space-y-4 mb-12 flex-grow relative border-t border-white/5 pt-8">
                             <li class="flex items-center justify-center py-2 mb-2 bg-white/5 rounded-xl border border-white/10">
-                                <span class="text-[9px] font-black text-indigo-300 uppercase tracking-widest">{{ __('pricing_feature_header_architect_plus') }}</span>
+                                <span class="text-[9px] font-black text-indigo-300 uppercase tracking-widest">Semua Fitur Architect, Ditambah:</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <span class="text-[14px]">🤖</span>
-                                <span class="text-xs font-black text-white">{{ __('pricing_f_ai_full_access') }}</span>
+                                <span class="text-xs font-black text-white">Neural OS AI Coach (Unlimited Chat)</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-[8px] font-black animate-pulse">✨</div>
-                                <span class="text-xs font-bold text-indigo-200">{{ __('pricing_f_ai_insights') }}</span>
+                                <span class="text-xs font-bold text-indigo-200">AI Habit Stack & Behavioral Audit</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-[8px] font-black">🧠</div>
+                                <span class="text-xs font-bold text-indigo-200">AI Financial Audit & Wealth Insights</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-[8px] font-black">📝</div>
+                                <span class="text-xs font-bold text-indigo-200">AI Journal Sentiment & Mental Analysis</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-[8px] font-black">📄</div>
+                                <span class="text-xs font-bold text-indigo-200">AI Resume Scan & Job Matching</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-medium text-slate-400">{{ __('pricing_f_neural_sync') }}</span>
+                                <span class="text-xs font-medium text-slate-400">Prioritas Akses Fitur AI Terbaru</span>
                             </li>
                         </ul>
 
@@ -175,7 +199,7 @@
                     {{-- 4. Legendary --}}
                     <div class="group relative flex flex-col p-10 rounded-[3rem] bg-white dark:bg-black border border-slate-200 dark:border-slate-800 hover:-translate-y-4 transition-all duration-700 hover:shadow-2xl">
                         <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-amber-500 text-white text-[8px] font-black tracking-widest whitespace-nowrap shadow-lg">
-                            {{ __('pricing_l4_badge') }}
+                            FOUNDER EDITION
                         </div>
 
                         <div class="mb-10">
@@ -186,23 +210,31 @@
                             <div class="text-[9px] font-black text-amber-500 mt-1 uppercase tracking-tighter">Sekali Bayar Selamanya</div>
                         </div>
 
-                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">Investasi terbaik untuk kemerdekaan finansial & produktivitas.</p>
+                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">Miliki ekosistem produktivitas OneForMind seumur hidup.</p>
                         
                         <ul class="space-y-4 mb-12 flex-grow border-t border-slate-50 dark:border-slate-800 pt-8">
                             <li class="flex items-center justify-center py-2 mb-2 bg-amber-500/5 rounded-xl border border-amber-500/10">
-                                <span class="text-[9px] font-black text-amber-500 uppercase tracking-widest">{{ __('pricing_feature_header_quantum_plus') }}</span>
+                                <span class="text-[9px] font-black text-amber-500 uppercase tracking-widest">Hak Istimewa Legendary:</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <span class="text-[14px]">💎</span>
-                                <span class="text-xs font-black text-slate-900 dark:text-white">{{ __('pricing_f_lifetime_access') }}</span>
+                                <span class="text-xs font-black text-slate-900 dark:text-white">Akses Lifetime Seluruh Tab (Pro)</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500 text-[8px] font-black">★</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_legendary_trial_ai') }}</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Gratis 2 Bulan Quantum AI Access</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Founder Badge & VIP Role</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Unlimited Cloud Storage</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[8px] font-black text-emerald-500">✓</div>
-                                <span class="text-xs font-medium text-slate-500">VIP Founding Support</span>
+                                <span class="text-xs font-medium text-slate-500">Prioritas Support One-on-One</span>
                             </li>
                         </ul>
 

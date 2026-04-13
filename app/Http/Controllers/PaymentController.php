@@ -225,19 +225,28 @@ class PaymentController extends Controller
 
             if ($resultCode === '00') {
                 $parts = explode('-', $merchantOrderId);
-                $planType = $parts[0] ?? 'ARCHITECT';
+                $planType = strtoupper($parts[0] ?? 'ARCHITECT');
                 $userId = $parts[1] ?? null;
 
                 if ($userId) {
                     $user = User::find($userId);
                     if ($user) {
                         $duration = 1;
+                        $finalPlan = strtolower($planType);
+
                         if ($planType === 'LIFETIME') {
                             $duration = 1200; // 100 years
+                            $finalPlan = 'legendary';
+                            $settings = $user->settings ?? [];
+                            $settings['ai_bonus_until'] = now()->addMonths(2)->toDateTimeString();
+                            $user->settings = $settings;
+                        } elseif ($planType === 'QUANTUM') {
+                            $finalPlan = 'quantum';
                         }
 
                         $user->update([
                             'is_premium' => true,
+                            'plan_type' => $finalPlan,
                             'premium_until' => now()->addMonths($duration),
                         ]);
                     }
@@ -251,8 +260,6 @@ class PaymentController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
-
-    // removed old activatePremium helper
 
     public function finish(Request $request)
     {

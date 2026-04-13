@@ -198,6 +198,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
         if ($this->isLegendary()) {
             // Legendary users get 2 months free AI bonus
+            $bonusUntil = $this->settings['ai_bonus_until'] ?? null;
+            if ($bonusUntil) {
+                return now()->lt(\Illuminate\Support\Carbon::parse($bonusUntil));
+            }
             return $this->created_at->gt(now()->subMonths(2));
         }
 
