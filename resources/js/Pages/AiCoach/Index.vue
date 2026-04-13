@@ -432,13 +432,6 @@ defineOptions({ layout: AuthenticatedLayout });
             </div>
         </main>
     </div>
-                    <p class="mt-4 text-[9px] text-center text-slate-400 font-black uppercase tracking-[0.2em] opacity-60">
-                        Synthesized Personal Intelligence • Powered by OneForMind OS
-                    </p>
-                </div>
-            </div>
-        </main>
-    </div>
 </template>
 
 <style scoped>
