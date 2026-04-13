@@ -192,12 +192,12 @@
     "http://localhost:8001/build/assets/Index-93JG4sNG.js"
   ],
   "resources/js/Pages/AiCoach/Index.vue": [
-    "http://localhost:8001/build/assets/Index-5zqQ6CQp.js",
-    "http://localhost:8001/build/assets/Index-Bp_RNdDW.css"
+    "http://localhost:8001/build/assets/Index-CgnvwIDf.js",
+    "http://localhost:8001/build/assets/Index-CzjFJEUt.css"
   ],
-  "resources/js/Pages/AiCoach/Index.vue?vue&type=style&index=0&scoped=596c761a&lang.css": [
-    "http://localhost:8001/build/assets/Index-5zqQ6CQp.js",
-    "http://localhost:8001/build/assets/Index-Bp_RNdDW.css"
+  "resources/js/Pages/AiCoach/Index.vue?vue&type=style&index=0&scoped=9d5dde6e&lang.css": [
+    "http://localhost:8001/build/assets/Index-CgnvwIDf.js",
+    "http://localhost:8001/build/assets/Index-CzjFJEUt.css"
   ],
   "resources/js/Pages/Auth/ConfirmPassword.vue": [
     "http://localhost:8001/build/assets/ConfirmPassword-DnPstKFr.js"

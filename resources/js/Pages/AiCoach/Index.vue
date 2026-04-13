@@ -158,7 +158,7 @@ onMounted(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const initialMsg = urlParams.get('initial_message');
     if (initialMsg) {
-        userInput.value = initialMsg;
+        newMessage.value = initialMsg;
         sendMessage();
         
         // Clean URL without refreshing

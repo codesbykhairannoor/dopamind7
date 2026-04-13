@@ -1,9 +1,5 @@
 import './bootstrap';
 import '../css/app.css';
-import { registerSW } from 'virtual:pwa-register';
-
-// PWA Service Worker Registration
-registerSW({ immediate: true });
 
 import { createApp, h } from 'vue';
 import { createInertiaApp, router, Link } from '@inertiajs/vue3';
@@ -95,22 +91,33 @@ createInertiaApp({
  * that are not valid Inertia responses. This prevents the "NP progress then stop" dead-end.
  */
 router.on('invalid', (event) => {
-    console.warn('[OneForMind] Invalid Inertia response detected. Status:', event.detail.response.status);
-    event.preventDefault(); // Don't allow Inertia to handle it (which usually results in doing nothing)
-    
+    const response = event?.detail?.response;
+    const status = response?.status;
+
+    console.warn('[OneForMind] Invalid Inertia response detected. Status:', status);
+
     if (NProgress.isStarted()) NProgress.done();
 
-    // If it's a 409 Conflict (Version Mismatch), force a hard refresh
-    if (event.detail.response.status === 409) {
-        console.log('[OneForMind] Version mismatch. Performing hard reload...');
+    if (status === 409) {
         window.location.reload();
         return;
     }
 
-    // For other failures that leave the user stuck, offer a reload if it's a 500 or timeout
-    if (event.detail.response.status >= 500) {
-         window.location.reload();
+    const inertiaLocation =
+        response?.headers?.get?.('X-Inertia-Location') ??
+        response?.headers?.get?.('x-inertia-location');
+
+    if (inertiaLocation) {
+        window.location.href = inertiaLocation;
+        return;
     }
+
+    if (response?.url) {
+        window.location.href = response.url;
+        return;
+    }
+
+    window.location.reload();
 });
 
 // Single Google Analytics tracking listener
