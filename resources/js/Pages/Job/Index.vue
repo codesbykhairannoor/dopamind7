@@ -1,6 +1,5 @@
 <script setup>
 import { Head, router } from '@inertiajs/vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useJobs } from '@/Composables/Job/useJobs';
 import JobTable from './JobTable.vue';
 import JobStats from './JobStats.vue';
@@ -25,7 +24,6 @@ const props = defineProps({
     pagination:   Object,
 });
 
-defineOptions({ layout: AuthenticatedLayout });
 
 const {
     localJobs, localStats,

@@ -41,11 +41,7 @@ class AiCoachController extends Controller
             })
             ->values();
 
-        // If no session specified, take latest or start new
-        // If no session specified and no 'new' flag, redirect to latest
-        if (!$currentSessionId && !$request->has('new') && $sessions->isNotEmpty()) {
-            return redirect()->route('coach.index', ['session' => $sessions->first()['id']]);
-        }
+        // Users are now allowed to land on the Welcome screen (session null)
 
         // Context for opener (only if starting fresh)
         $context = [

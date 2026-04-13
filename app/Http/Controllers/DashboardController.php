@@ -25,8 +25,8 @@ class DashboardController extends Controller
         $timezone = $user->timezone ?? 'Asia/Jakarta';
 
         return Inertia::render('Dashboard', [
-            'synergy' => $this->dashboardService->getTodaySynergy($user->id, $timezone),
-            'trend' => $this->dashboardService->getWeeklyTrend($user->id, $timezone),
+            'synergy' => Inertia::defer(fn () => $this->dashboardService->getTodaySynergy($user->id, $timezone)),
+            'trend' => Inertia::defer(fn () => $this->dashboardService->getWeeklyTrend($user->id, $timezone)),
             'stats' => [
                 'is_premium' => (bool)($user->is_premium ?? false),
             ],

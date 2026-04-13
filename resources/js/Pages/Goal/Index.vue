@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
 import { Head, usePage } from '@inertiajs/vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useGoals } from '@/Composables/Goal/useGoals';
 import GoalStats from './GoalStats.vue';
 import GoalCard from './GoalCard.vue';
@@ -25,7 +24,6 @@ const props = defineProps({
     locale: String
 });
 
-defineOptions({ layout: AuthenticatedLayout });
 
 const {
     localGoals, localStats,

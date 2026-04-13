@@ -1,7 +1,6 @@
 <script setup>
 import { ref, watch, reactive, onMounted } from 'vue';
 import { Head, router } from '@inertiajs/vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useCalendar } from '@/Composables/Calendar/useCalendar';
 import { useGating } from '@/Composables/useGating';
 import dayjs from 'dayjs';
@@ -18,7 +17,6 @@ const props = defineProps({
     data: [Object, Array] // Menerima data Event dari Laravel
 });
 
-defineOptions({ layout: AuthenticatedLayout });
 
 // ==========================================
 // 🔥 MEMORI OPTIMISTIC UI (STATE LOKAL)

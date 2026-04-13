@@ -8,6 +8,7 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import { i18nVue, trans } from 'laravel-vue-i18n';
 import NProgress from 'nprogress';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 window.trans = trans;
 
@@ -38,11 +39,21 @@ createInertiaApp({
     page: initialPage, // Berikan data awal secara eksplisit untuk menghindari internal failure di library
     title: (title) => `${title} - ${appName}`,
 
-    resolve: (name) =>
-        resolvePageComponent(
+    resolve: async (name) => {
+        const page = await resolvePageComponent(
             `./Pages/${name}.vue`,
             import.meta.glob('./Pages/**/*.vue')
-        ),
+        );
+
+        // 🔥 PERSISTENT LAYOUT CONFIGURATION
+        // All pages in Pages/Auth/ remain public (GuestLayout or no layout)
+        // Others (Dashboard, Habits, etc.) automatically use AuthenticatedLayout
+        if (page.default.layout === undefined && !name.startsWith('Auth/') && name !== 'Welcome') {
+            page.default.layout = AuthenticatedLayout;
+        }
+
+        return page;
+    },
 
     setup({ el, App, props, plugin }) {
         // 🔥 Robust Locale Detection
@@ -98,8 +109,16 @@ router.on('invalid', (event) => {
 
     if (NProgress.isStarted()) NProgress.done();
 
+    // Specific feedback for the user (can be replaced with a Toast later)
     if (status === 409) {
+        console.error('[OneForMind] Version mismatch detected. Refreshing...');
         window.location.reload();
+        return;
+    }
+
+    if (status === 401 || status === 419) {
+        alert('Sesi Anda telah berakhir. Silakan login kembali.');
+        window.location.href = route('login');
         return;
     }
 
@@ -117,7 +136,8 @@ router.on('invalid', (event) => {
         return;
     }
 
-    window.location.reload();
+    // fallback reload for debugging
+    // window.location.reload(); 
 });
 
 // Single Google Analytics tracking listener

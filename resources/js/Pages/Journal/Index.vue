@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import { Head, router } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import dayjs from 'dayjs';
 import Swal from 'sweetalert2';
 
@@ -19,7 +18,6 @@ const props = defineProps({
 
 const { isExplorer } = useGating();
 
-defineOptions({ layout: AuthenticatedLayout });
 
 const fireToast = (icon, message) => {
     Swal.fire({

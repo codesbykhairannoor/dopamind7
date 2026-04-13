@@ -49,9 +49,9 @@ class HabitController extends Controller
             'habits' => $habitsResource,
             'currentMonth' => $dates['translated'],
             'monthQuery' => $dates['query'],
-            'hasPrevHabits' => Habit::ofUser($user->id)->forPeriod($dates['prev'])->exists(),
+            'hasPrevHabits' => Inertia::defer(fn () => Habit::ofUser($user->id)->forPeriod($dates['prev'])->exists()),
             'prevMonthQuery' => $dates['prev'],
-            'savedMood' => Mood::where('user_id', $user->id)->where('period', $dates['query'])->value('mood_code'),
+            'savedMood' => Inertia::defer(fn () => Mood::where('user_id', $user->id)->where('period', $dates['query'])->value('mood_code')),
         ]);
     }
 

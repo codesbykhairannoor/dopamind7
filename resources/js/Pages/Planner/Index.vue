@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { Head } from '@inertiajs/vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { usePlanner } from '@/Composables/Planner/usePlanner';
 import { usePlannerBatch } from '@/Composables/Planner/usePlannerBatch';
 import { usePlannerCalendar } from '@/Composables/Planner/usePlannerCalendar'; 
@@ -24,7 +23,6 @@ const props = defineProps({
     currentDate: String 
 });
 
-defineOptions({ layout: AuthenticatedLayout });
 
 // 🔥 INIT CALENDAR LOGIC
 const { currentDate, formattedDate, changeDate, changeDay } = usePlannerCalendar(props.currentDate);

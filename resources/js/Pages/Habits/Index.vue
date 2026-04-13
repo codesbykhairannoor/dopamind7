@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue';
 import { Head } from '@inertiajs/vue3';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { useHabits } from '@/Composables/useHabits';
 
 // Component Anak
@@ -12,10 +11,6 @@ import HabitModals from './HabitModals.vue';
 import NeuralHabitInsight from './NeuralHabitInsight.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
 
-// PERSISTENT LAYOUT
-defineOptions({
-    layout: AuthenticatedLayout
-});
 
 const props = defineProps({
     habits: Object,

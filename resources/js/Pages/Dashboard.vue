@@ -1,5 +1,3 @@
-<script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, usePage, Link } from '@inertiajs/vue3';
 import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
@@ -55,7 +53,6 @@ const fetchInsight = async () => {
     }
 };
 
-defineOptions({ layout: AuthenticatedLayout });
 
 const greetingKey = computed(() => {
     const hour = new Date().getHours();

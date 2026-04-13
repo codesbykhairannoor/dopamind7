@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, nextTick, watch } from "vue";
 import { Head, router } from "@inertiajs/vue3";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { marked } from "marked";
 import axios from "axios";
 
@@ -22,7 +21,7 @@ const isLoading = ref(false);
 const scrollContainer = ref(null);
 const fileInput = ref(null);
 
-const isSidebarOpen = ref(false);
+const isSidebarOpen = ref(window.innerWidth >= 768);
 const isRecording = ref(false);
 const selectedImage = ref(null);
 const imagePreview = ref(null);
@@ -33,7 +32,7 @@ const editingIndex = ref(null);
 
 // ── COMPUTED ─────────────────────────────────────────────────────────────────
 const isWelcomeState = computed(
-    () => !messages.value.some((m) => m.role === "user"),
+    () => !props.currentSessionId || !messages.value.some((m) => m.role === "user"),
 );
 
 const firstName = computed(() => (props.userName ?? "Kamu").split(" ")[0]);
@@ -255,7 +254,6 @@ watch(
     { deep: true },
 );
 
-defineOptions({ layout: AuthenticatedLayout });
 </script>
 
 <template>

@@ -36,8 +36,8 @@ class FinanceController extends Controller
         $data = $this->financeService->getDashboardData($user->id, $validDate, $timezone);
 
         return Inertia::render('Finance/Index', [
-            'transactions' => FinanceTransactionResource::collection($data['transactions'])->resolve(),
-            'budgets'      => FinanceBudgetResource::collection($data['budgets'])->resolve(),
+            'transactions' => Inertia::defer(fn () => FinanceTransactionResource::collection($data['transactions'])->resolve()),
+            'budgets'      => Inertia::defer(fn () => FinanceBudgetResource::collection($data['budgets'])->resolve()),
             'categories'   => $data['categories'],
             'stats'        => $data['stats'],
             'filters'      => $data['filters'],

@@ -1,6 +1,5 @@
 <script setup>
 import { ref, watch, reactive, onMounted, nextTick } from 'vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { Head, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
@@ -41,7 +40,6 @@ const props = defineProps({
 });
 
 const page = usePage();
-defineOptions({ layout: AuthenticatedLayout });
 
 // 🔥 MAGIC OPTIMISTIC UI: Buat State Lokal
 const localTransactions = ref([...(props.transactions || [])]);
