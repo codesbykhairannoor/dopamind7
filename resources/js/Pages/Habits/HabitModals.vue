@@ -7,6 +7,8 @@ defineProps({
     showCopyModal: Boolean,
     showCreateModal: Boolean,
     isEditing: Boolean,
+    isExplorer: Boolean,
+    habitsCount: Number,
     
     // States Batch 🔥
     showBatchModal: Boolean,

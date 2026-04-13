@@ -32,8 +32,7 @@ const statusOptions = [
 const workingStatus = ref('active');
 const currentStatus = computed(() => statusOptions.find(s => s.key === workingStatus.value) ?? statusOptions[0]);
 
-// 🔥 Today streak from shared Inertia props
-const todayStreak = computed(() => page.props.today_streak ?? 0);
+
 
 // 📅 Today pill: format tanggal pendek
 const todayLabel = computed(() => {
@@ -133,17 +132,7 @@ onUnmounted(() => {
                     <span class="text-[11px] font-black text-slate-600 dark:text-slate-300 transition-colors whitespace-nowrap">{{ todayLabel }}</span>
                 </div>
 
-                <!-- 🔥 STREAK BADGE — only visible when streak > 0 -->
-                <Link
-                    v-if="todayStreak > 0"
-                    :href="route('habits.index')"
-                    prefetch="hover"
-                    class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-orange-50 dark:bg-orange-500/10 hover:bg-orange-100 dark:hover:bg-orange-500/20 border border-orange-100 dark:border-orange-500/20 transition-all group mr-1"
-                    title="Habit Streak"
-                >
-                    <span class="text-sm leading-none">🔥</span>
-                    <span class="text-[11px] font-black text-orange-600 dark:text-orange-400">{{ todayStreak }}</span>
-                </Link>
+
                 <Link 
                     v-if="isExplorer" 
                     :href="route('billing')" 

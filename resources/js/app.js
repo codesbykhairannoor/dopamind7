@@ -83,26 +83,12 @@ createInertiaApp({
     progress: {
         color: '#4f46e5',
         showSpinner: false,
-        delay: 0,
+        delay: 250,
+        includeCSS: true,
     },
 });
 
-// Global Router Event Listeners to catch and handle navigation "hangs"
-router.on('start', () => NProgress.start());
-
-router.on('finish', (event) => {
-    // Ensure progress always finishes even on aborted requests
-    if (NProgress.isStarted()) NProgress.done();
-});
-
-router.on('cancel', () => {
-    if (NProgress.isStarted()) NProgress.done();
-});
-
-router.on('error', (errors) => {
-    console.error('[OneForMind] Navigation Error:', errors);
-    if (NProgress.isStarted()) NProgress.done();
-});
+// Note: Standard NProgress start/done/finish is now handled internally by Inertia progress config above.
 
 /**
  * Handle "Invalid" responses (e.g. 500 pages, session expirations, or 409 mismatch) 

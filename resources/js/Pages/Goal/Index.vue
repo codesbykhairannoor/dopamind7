@@ -84,7 +84,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
 
         <GoalHeader :onAddClick="openCreateModal" />
 
-        <div class="w-full lg:max-w-[96%] mx-auto p-4 md:p-6 lg:p-8 space-y-8 pb-24">
+        <div class="w-full max-w-[1600px] mx-auto p-4 md:p-6 lg:p-8 space-y-8 pb-24 min-w-0">
             <NeuralBridge module="Goal" />
 
             <!-- 🖥️ DESKTOP VIEW -->
@@ -113,7 +113,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
             <template v-else>
                 <div class="space-y-12 pb-32">
                     <div v-for="goal in localGoals" :key="goal.id" :id="'mobile-goal-card-' + goal.id"
-                        class="bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl overflow-hidden group active:scale-[0.98] transition-all duration-500"
+                        class="bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl overflow-hidden group active:scale-[0.98] transition-all duration-500 w-full max-w-full"
                     >
                         <!-- Premium Mobile Goal Header (Visual First) -->
                         <div class="relative h-40 overflow-hidden">

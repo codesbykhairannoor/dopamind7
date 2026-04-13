@@ -2,9 +2,16 @@
 import { ref } from 'vue';
 import JobDatePicker from './JobDatePicker.vue';
 import JobStatusDropdown from './JobStatusDropdown.vue';
+import { onMounted, nextTick } from 'vue';
 
 const props = defineProps({ jobs: Array });
 const emit = defineEmits(['autoSave', 'delete', 'scan']);
+
+const autoGrow = (e) => {
+    const el = e.target;
+    el.style.height = '56px'; // Return to base height
+    el.style.height = Math.max(56, el.scrollHeight) + 'px';
+};
 
 const tableRef = ref(null);
 
@@ -28,10 +35,12 @@ const handleKeyDown = (e, rowIndex, colIndex) => {
     else if (e.key === 'ArrowLeft') nextCol = Math.max(0, colIndex - 1);
     else if (e.key === 'ArrowRight') nextCol = Math.min(totalCols - 1, colIndex + 1);
 
-    const nextInput = tableRef.value?.querySelector(`input[data-nav-row="${nextRow}"][data-nav-col="${nextCol}"]`);
+    const nextInput = tableRef.value?.querySelector(`[data-nav-row="${nextRow}"][data-nav-col="${nextCol}"]`);
     if (nextInput) {
         nextInput.focus();
-        setTimeout(() => nextInput.select(), 10);
+        if (nextInput.tagName === 'INPUT' || nextInput.tagName === 'TEXTAREA') {
+            setTimeout(() => nextInput.select(), 10);
+        }
     }
 };
 
@@ -121,40 +130,49 @@ const handleKeyDown = (e, rowIndex, colIndex) => {
         <!-- ==================== DESKTOP LAYOUT (>=sm) ==================== -->
         <div class="hidden sm:block bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden relative transition-colors duration-500">
             <div class="overflow-x-auto custom-scrollbar min-h-[500px]" ref="tableRef">
-                <table class="w-full text-sm border-collapse whitespace-nowrap text-left relative select-none sm:select-text">
+                <table class="w-full text-sm border-collapse text-left relative select-none sm:select-text">
                     <thead class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-20 shadow-sm transition-colors duration-500">
                         <tr>
-                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[220px]">{{ $t('job_col_company', 'Perusahaan') }} <span class="text-rose-500">*</span></th>
-                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[220px]">{{ $t('job_col_title', 'Pekerjaan') }} <span class="text-rose-500">*</span></th>
-                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[180px]">{{ $t('job_col_location', 'Lokasi') }}</th>
-                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[160px]">{{ $t('job_col_applied', 'Tgl Melamar') }}</th>
-                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[160px]">{{ $t('job_col_status', 'Status') }}</th>
-                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-indigo-600 dark:text-indigo-400 min-w-[100px] text-center">Neural</th>
-                            <th class="px-4 py-3.5 text-center font-extrabold text-slate-400 dark:text-slate-500 w-14">🗑️</th>
+                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[140px] w-1/4">{{ $t('job_col_company', 'Perusahaan') }} <span class="text-rose-500">*</span></th>
+                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[140px] w-1/4">{{ $t('job_col_title', 'Pekerjaan') }} <span class="text-rose-500">*</span></th>
+                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[120px] w-1/6">{{ $t('job_col_location', 'Lokasi') }}</th>
+                            <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[130px]">{{ $t('job_col_applied', 'Tgl Melamar') }}</th>
+                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-slate-600 dark:text-slate-300 min-w-[140px]">{{ $t('job_col_status', 'Status') }}</th>
+                             <th class="border-r border-slate-200 dark:border-slate-700 px-5 py-3.5 font-extrabold text-indigo-600 dark:text-indigo-400 min-w-[70px] text-center">Neural</th>
+                            <th class="px-4 py-3.5 text-center font-extrabold text-slate-400 dark:text-slate-500 w-12">🗑️</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(job, index) in jobs" :key="job._key" 
                             class="border-b border-slate-100 dark:border-slate-800 hover:bg-indigo-50/10 dark:hover:bg-indigo-500/5 focus-within:bg-indigo-50/30 dark:focus-within:bg-indigo-500/10 transition-colors group relative"
                         >
-                            <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative">
-                                <input v-model="job.company" type="text" @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
+                            <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative align-top">
+                                <textarea v-model="job.company" @blur="emit('autoSave', job)" 
+                                    @input="autoGrow"
+                                    @keydown.enter.prevent="$event.target.blur()"
                                     @keydown="handleKeyDown($event, index, 0)" :data-nav-row="index" data-nav-col="0"
-                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-bold text-sm text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans"
+                                    rows="1"
+                                    class="w-full min-h-[56px] px-5 py-4 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-bold text-sm text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans resize-none overflow-hidden break-words"
                                     :placeholder="$t('job_ph_company', 'Ketik perusahaan...')" />
                             </td>
 
-                            <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative">
-                                <input v-model="job.title" type="text" @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
+                            <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative align-top">
+                                <textarea v-model="job.title" @blur="emit('autoSave', job)"
+                                    @input="autoGrow"
+                                    @keydown.enter.prevent="$event.target.blur()"
                                     @keydown="handleKeyDown($event, index, 1)" :data-nav-row="index" data-nav-col="1"
-                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-bold text-sm text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans"
+                                    rows="1"
+                                    class="w-full min-h-[56px] px-5 py-4 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-bold text-sm text-slate-800 dark:text-white placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans resize-none overflow-hidden break-words"
                                     :placeholder="$t('job_ph_title', 'Cth: Frontend Dev')" />
                             </td>
 
-                            <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative">
-                                <input v-model="job.location" type="text" @blur="emit('autoSave', job)" @keyup.enter="$event.target.blur()"
+                            <td class="border-r border-slate-100 dark:border-slate-800 p-0 relative align-top">
+                                <textarea v-model="job.location" @blur="emit('autoSave', job)" 
+                                    @input="autoGrow"
+                                    @keydown.enter.prevent="$event.target.blur()"
                                     @keydown="handleKeyDown($event, index, 2)" :data-nav-row="index" data-nav-col="2"
-                                    class="w-full h-full min-h-[56px] px-5 py-0 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-medium text-sm text-slate-600 dark:text-slate-400 placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans"
+                                    rows="1"
+                                    class="w-full min-h-[56px] px-5 py-4 bg-transparent border-none outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 font-medium text-sm text-slate-600 dark:text-slate-400 placeholder-slate-300 dark:placeholder-slate-700 transition-all font-sans resize-none overflow-hidden break-words"
                                     :placeholder="$t('job_ph_location', 'Remote / ID')" />
                             </td>
 

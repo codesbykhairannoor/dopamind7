@@ -106,7 +106,7 @@ onMounted(() => {
             </div>
         </div>
 
-        <div class="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+        <div class="w-full max-w-[98%] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 min-w-0 overflow-x-hidden transition-all duration-500">
             <NeuralBridge module="Job" />
             
             <JobStats v-if="localStats" :stats="localStats" />

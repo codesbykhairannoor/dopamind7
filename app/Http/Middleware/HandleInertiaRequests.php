@@ -71,58 +71,7 @@ class HandleInertiaRequests extends Middleware
 
             // 5. 🔥 GLOBAL HEADER: Habit streak & today progress
             // Optimized with Caching to prevent back-breaking DB loops on every request
-            'today_streak' => function () use ($request) {
-                if (!$request->user()) return 0;
-                
-                $userId = $request->user()->id;
-                $cacheKey = "user_{$userId}_habit_streak_v3"; // Busting old cache again
 
-                return \Illuminate\Support\Facades\Cache::remember($cacheKey, now()->addMinutes(10), function () use ($request, $userId) {
-                    try {
-                        $tz = $request->user()->timezone ?? 'Asia/Jakarta';
-                        $today = \Carbon\Carbon::now($tz);
-                        
-                        // 1. Ambil ID habit user yang aktif (Hanya yang tidak diarsip)
-                        $habitIds = \App\Models\Habit::where('user_id', $userId)
-                             ->where('is_archived', false)
-                             ->pluck('id');
-
-                        if ($habitIds->isEmpty()) return 0;
-
-                        // 2. Tarik tanggal log 'completed' saja
-                        $completedDates = \App\Models\HabitLog::whereIn('habit_id', $habitIds)
-                            ->where('date', '>=', $today->copy()->subDays(60)->format('Y-m-d'))
-                            ->where('status', 'completed')
-                            ->distinct()
-                            ->pluck('date')
-                            ->toArray();
-
-                        if (empty($completedDates)) return 0;
-
-                        $streak = 0;
-                        $checkDate = $today->copy();
-                        $completedSet = array_flip($completedDates);
-
-                        for ($i = 0; $i < 60; $i++) {
-                            $dateStr = $checkDate->format('Y-m-d');
-                            if (isset($completedSet[$dateStr])) {
-                                $streak++;
-                                $checkDate->subDay();
-                            } else {
-                                if ($i === 0) {
-                                    $checkDate->subDay();
-                                    continue;
-                                }
-                                break;
-                            }
-                        }
-                        return $streak;
-                    } catch (\Exception $e) {
-                        \Illuminate\Support\Facades\Log::error("Streak Calculation Error: " . $e->getMessage());
-                        return 0;
-                    }
-                });
-            },
         ]);
     }
 }

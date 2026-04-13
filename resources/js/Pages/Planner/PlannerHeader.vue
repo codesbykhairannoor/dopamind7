@@ -6,7 +6,7 @@ import PlannerDatePicker from './PlannerDatePicker.vue';
 const props = defineProps({
     currentDate: String,
     formattedDate: String, 
-    tasks: Array, 
+    tasks: [Array, Object], 
     openModal: Function,
     resetBoard: Function,
     stats: Object

@@ -106,7 +106,7 @@ const changeMonth = (newMonthPayload) => {
             @add-event="() => openEventModal()"
         />
 
-        <div class="w-full px-4 py-6 sm:px-6 lg:px-8 max-w-full mx-auto space-y-6">
+        <div class="w-full max-w-[1600px] mx-auto px-4 py-6 sm:px-6 lg:px-8 space-y-6 min-w-0">
             <NeuralBridge module="Calendar" />
             <CalendarGrid 
                 :calendarDays="calendarDays"
