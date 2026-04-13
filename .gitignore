@@ -2,6 +2,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/build
 /storage/*.key
 /vendor
 .env
@@ -21,3 +22,9 @@ resources/js/ziggy.js
 vite.config.js.timestamp-*
 .DS_Store
 Thumbs.db
+.phpactor.json
+/bootstrap/ssr
+/bootstrap/cache/config.php
+/bootstrap/cache/routes*.php
+/bootstrap/cache/packages.php
+/bootstrap/cache/services.php
