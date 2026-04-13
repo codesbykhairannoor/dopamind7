@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Log;
 class GeminiService
 {
     protected ?string $apiKey;
-    protected string $model = 'gemini-1.5-flash';
+    protected string $model;
+    protected string $version;
 
     public function __construct()
     {
         $this->apiKey = config('services.gemini.key') ?: env('GEMINI_API_KEY');
+        $this->model = config('services.gemini.model') ?: env('GEMINI_MODEL', 'gemini-1.5-flash');
+        $this->version = config('services.gemini.version') ?: env('GEMINI_API_VERSION', 'v1beta');
     }
 
     /**
@@ -26,7 +29,8 @@ class GeminiService
         }
 
         try {
-            $response = Http::timeout(12)->post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
+            $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$this->model}:generateContent?key={$this->apiKey}";
+            $response = Http::timeout(12)->post($url, [
                 'contents' => [
                     [
                         'parts' => [
@@ -60,6 +64,12 @@ class GeminiService
                     Log::warning('GEMINI_QUOTA_EXCEEDED: Daily or RPM limit reached.');
                     return 'Sistem AI sedang mencapai batas kuota (Rate Limit). Silakan coba lagi beberapa saat lagi atau besok.';
                 }
+
+                if ($response->status() === 404) {
+                    Log::error("GEMINI_MODEL_NOT_FOUND: Model '{$this->model}' not found for version '{$this->version}'. Please check your GEMINI_MODEL env.");
+                    return 'Model AI tidak ditemukan. Silakan hubungi admin untuk update konfigurasi model.';
+                }
+
                 Log::error('GEMINI_API_ERROR: ' . $response->status() . ' | ' . $response->body());
             }
 
@@ -215,7 +225,8 @@ class GeminiService
         }
 
         try {
-            $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", $payload);
+            $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$this->model}:generateContent?key={$this->apiKey}";
+            $response = Http::post($url, $payload);
 
             if ($response->successful()) {
                 $candidates = $response->json('candidates');
@@ -257,9 +268,10 @@ class GeminiService
         }
 
         try {
+            $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$this->model}:generateContent?key={$this->apiKey}";
             $response = Http::timeout(180)->withHeaders([
                 'Content-Type' => 'application/json',
-            ])->post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
+            ])->post($url, [
                 'contents' => [
                     [
                         'parts' => [
@@ -296,9 +308,10 @@ class GeminiService
     public function analyzeResumeProgress($resumeText, $jobDescription)
     {
         try {
+            $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$this->model}:generateContent?key={$this->apiKey}";
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
-            ])->post("https://generativelanguage.googleapis.com/v1beta/models/{$this->model}:generateContent?key={$this->apiKey}", [
+            ])->post($url, [
                 'contents' => [
                     [
                         'parts' => [

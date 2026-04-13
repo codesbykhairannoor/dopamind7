@@ -93,9 +93,15 @@ class NeuralSynergyService
 
             try {
                 $response = $this->gemini->generate($prompt);
-                $parsed = $this->parseJson($response);
                 
+                // If Gemini returns null or an error message (string), check if it's usable JSON
+                $parsed = $this->parseJson($response);
+
                 if (!$parsed) {
+                    // Log only if it's unexpected (not a quota/model error which GeminiService already logs)
+                    if ($response && !str_contains($response, 'Model AI') && !str_contains($response, 'kuota')) {
+                        \Log::warning("NeuralSynergy: Invalid JSON response received.");
+                    }
                     throw new \Exception("NeuralSynergy output was invalid or empty.");
                 }
                 

@@ -163,7 +163,11 @@ const handleKeydown = (e) => {
 
 // ── SEND ──────────────────────────────────────────────────────────────────────
 const sendMessage = () => {
-    if ((!newMessage.value.trim() && !selectedImage.value) || isLoading.value)
+    if (
+        (!newMessage.value.trim() && !selectedImage.value) ||
+        isLoading.value ||
+        isPending.value
+    )
         return;
     isPending.value = true;
     countdown.value = 3;
@@ -204,10 +208,14 @@ const executeSend = async () => {
             messages: messages.value,
         });
         messages.value.push({ role: "assistant", content: res.data.content });
-    } catch {
+    } catch (err) {
+        let errorMsg = "Maaf, ada gangguan teknis sejenak. Coba lagi ya!";
+        if (err.response?.status === 404) {
+            errorMsg = "Neural OS Error: Gemini model tidak ditemukan. Silakan hubungi admin untuk update konfigurasi.";
+        }
         messages.value.push({
             role: "assistant",
-            content: "Maaf, ada gangguan teknis sejenak. Coba lagi ya!",
+            content: errorMsg,
         });
     } finally {
         isLoading.value = false;
