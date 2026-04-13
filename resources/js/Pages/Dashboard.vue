@@ -1,3 +1,4 @@
+<script setup>
 import { Head, usePage, Link } from '@inertiajs/vue3';
 import { ref, computed, onMounted } from 'vue';
 import axios from 'axios';
