@@ -2,10 +2,21 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    @php
+        $baseUrl = url()->current();
+        $currentQuery = request()->query();
+        $canonicalQuery = $currentQuery;
+        unset($canonicalQuery['hl']);
+        $canonicalUrl = $canonicalQuery ? $baseUrl . '?' . http_build_query($canonicalQuery) : $baseUrl;
+        $idUrl = $baseUrl . '?' . http_build_query(array_merge($canonicalQuery, ['hl' => 'id']));
+        $enUrl = $baseUrl . '?' . http_build_query(array_merge($canonicalQuery, ['hl' => 'en']));
+        $currentLocale = app()->getLocale();
+    @endphp
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="view-transition" content="same-origin">
-    <link rel="canonical" href="{{ url()->current() }}">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+    <meta http-equiv="content-language" content="{{ $currentLocale }}">
     @if(!View::hasSection('meta'))
         <meta name="description" content="{{ __('meta_global_description') }}">
         <meta name="keywords" content="{{ __('meta_global_keywords') }}">
@@ -18,10 +29,11 @@
     <meta name="geo.position" content="-2.548926;118.014863" />
     <meta name="ICBM" content="-2.548926, 118.014863" />
 
-    {{-- hreflang: same URL serves both languages via session --}}
-    <link rel="alternate" hreflang="id" href="{{ url()->current() }}" />
-    <link rel="alternate" hreflang="en" href="{{ url()->current() }}" />
-    <link rel="alternate" hreflang="x-default" href="{{ url()->current() }}" />
+    <link rel="alternate" hreflang="id-ID" href="{{ $idUrl }}" />
+    <link rel="alternate" hreflang="id" href="{{ $idUrl }}" />
+    <link rel="alternate" hreflang="en-US" href="{{ $enUrl }}" />
+    <link rel="alternate" hreflang="en" href="{{ $enUrl }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}" />
 
     {{-- Mobile Optimization --}}
     <meta name="theme-color" content="#4f46e5">
@@ -50,7 +62,9 @@
 
     <meta property="og:site_name" content="Oneformind">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:locale" content="{{ $currentLocale === 'id' ? 'id_ID' : 'en_US' }}">
+    <meta property="og:locale:alternate" content="{{ $currentLocale === 'id' ? 'en_US' : 'id_ID' }}">
     <meta property="og:title" content="{{ strip_tags($finalTitle) }}">
     <meta property="og:image" content="{{ asset('images/og-image.png') }}">
     <meta property="og:image:width" content="1200">

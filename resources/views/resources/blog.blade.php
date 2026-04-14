@@ -19,6 +19,13 @@
   "name": "OneForMind Blog",
   "description": "{{ __('blog_meta_desc') }}",
   "url": "{{ url('/resources/blog') }}"
+},
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "OneForMind Blog",
+  "description": "{{ __('blog_meta_desc') }}",
+  "url": "{{ url('/resources/blog') }}"
 },{
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -167,7 +174,7 @@
                 @endforelse
             </div>
             
-            <div class="mt-20">
+            <div class="mt-20" aria-label="Blog pagination navigation">
                 {{ $posts->links() }}
             </div>
         </div>

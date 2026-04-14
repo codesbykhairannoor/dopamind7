@@ -2,6 +2,16 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    @php
+        $baseUrl = url()->current();
+        $currentQuery = request()->query();
+        $canonicalQuery = $currentQuery;
+        unset($canonicalQuery['hl'], $canonicalQuery['lang']);
+        $canonicalUrl = $canonicalQuery ? $baseUrl . '?' . http_build_query($canonicalQuery) : $baseUrl;
+        $idUrl = $baseUrl . '?' . http_build_query(array_merge($canonicalQuery, ['hl' => 'id']));
+        $enUrl = $baseUrl . '?' . http_build_query(array_merge($canonicalQuery, ['hl' => 'en']));
+        $currentLocale = app()->getLocale();
+    @endphp
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -9,10 +19,13 @@
     {{-- 🛰️ PRIMARY SEO & AI AGENTS (Crawler First Priority) --}}
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" inertia>
     <meta name="googlebot" content="index, follow" inertia>
-    <link rel="canonical" href="{{ url()->current() }}" inertia>
-    <link rel="alternate" hreflang="id" href="{{ url()->current() }}?lang=id" inertia>
-    <link rel="alternate" hreflang="en" href="{{ url()->current() }}?lang=en" inertia>
-    <link rel="alternate" hreflang="x-default" href="{{ url()->current() }}" inertia>
+    <link rel="canonical" href="{{ $canonicalUrl }}" inertia>
+    <link rel="alternate" hreflang="id-ID" href="{{ $idUrl }}" inertia>
+    <link rel="alternate" hreflang="id" href="{{ $idUrl }}" inertia>
+    <link rel="alternate" hreflang="en-US" href="{{ $enUrl }}" inertia>
+    <link rel="alternate" hreflang="en" href="{{ $enUrl }}" inertia>
+    <link rel="alternate" hreflang="x-default" href="{{ $enUrl }}" inertia>
+    <meta http-equiv="content-language" content="{{ $currentLocale }}" inertia>
     
     {{-- 🏷️ CORE BRANDING --}}
     <title inertia>OneForMind - {{ app()->getLocale() === 'id' ? 'Satu Aplikasi Produktivitas Terpadu' : 'Unified Productivity OS' }}</title>
@@ -49,6 +62,9 @@
         content="{{ app()->getLocale() === 'id' ? 'Satu aplikasi produktivitas untuk segalanya. Kelola keuangan, kebiasaan, dan rencana harian dalam satu dashboard minimalis.' : 'The only productivity app you need. Manage finances, habits, and daily plans in one unified, minimalist dashboard.' }}"
         inertia>
     <meta property="og:image" content="{{ url('/favicon.svg') }}" inertia>
+    <meta property="og:url" content="{{ $canonicalUrl }}" inertia>
+    <meta property="og:locale" content="{{ $currentLocale === 'id' ? 'id_ID' : 'en_US' }}" inertia>
+    <meta property="og:locale:alternate" content="{{ $currentLocale === 'id' ? 'en_US' : 'id_ID' }}" inertia>
 
     <meta http-equiv="x-dns-prefetch-control" content="on">
 

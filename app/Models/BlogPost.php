@@ -22,6 +22,7 @@ class BlogPost extends Model
         'published_at',
         'meta_title',
         'meta_description',
+        'meta_keywords',
         'geo_targeting',
         'location_name',
         'latitude',
@@ -47,9 +48,8 @@ class BlogPost extends Model
             return $this->featured_image;
         }
 
-        // Fallback for old local images
-        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
-        return asset(\Illuminate\Support\Facades\Storage::disk($disk)->url($this->featured_image));
+        // Legacy local uploads should always resolve to /storage/{path}
+        return asset('storage/' . ltrim($this->featured_image, '/'));
     }
 
     public function getHtmlTitleAttribute()

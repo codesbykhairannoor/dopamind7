@@ -10,30 +10,47 @@ use Symfony\Component\HttpFoundation\Response;
 
 class HandleLocalization
 {
+    private const SUPPORTED_LOCALES = ["id", "en"];
+
     /**
      * Handle an incoming request.
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = config('app.locale');
+        $locale = config("app.locale", "en");
 
-        // 1. Cek Session (Manual Toggle Terkini)
-        if (Session::has('locale')) {
-            $locale = Session::get('locale');
-        }
-        // 2. Cek Cookie (Persistence)
-        elseif ($cookieLocale = $request->cookie('selected_locale')) {
-            if (in_array($cookieLocale, ['id', 'en'])) {
-                $locale = $cookieLocale;
-                Session::put('locale', $locale);
+        // 1) Crawler/user explicit query parameter (?hl=id|en)
+        $queryLocale = $request->query("hl");
+        if (in_array($queryLocale, self::SUPPORTED_LOCALES, true)) {
+            $locale = $queryLocale;
+            Session::put("locale", $locale);
+        } elseif (Session::has("locale")) {
+            // 2) Session (manual switch terbaru)
+            $locale = Session::get("locale");
+        } elseif (
+            ($cookieLocale = $request->cookie("selected_locale")) &&
+            in_array($cookieLocale, self::SUPPORTED_LOCALES, true)
+        ) {
+            // 3) Cookie persistence
+            $locale = $cookieLocale;
+            Session::put("locale", $locale);
+        } else {
+            // 4) Auto detect: prioritize country, then Accept-Language
+            $country = strtoupper(
+                (string) ($request->header("CF-IPCountry") ?:
+                    $request->header("X-Vercel-IP-Country") ?:
+                    $request->header("CloudFront-Viewer-Country") ?:
+                    "")
+            );
+
+            if ($country === "ID") {
+                $locale = "id";
+            } else {
+                $browserLocale = substr($request->getLanguages()[0] ?? "en", 0, 2);
+                $locale = $browserLocale === "id" ? "id" : "en";
             }
-        }
-        // 3. Fallback: Deteksi otomatis Browser (International SEO Friendly)
-        else {
-            $browserLocale = substr($request->getLanguages()[0] ?? 'en', 0, 2);
-            $locale = (in_array($browserLocale, ['id'])) ? 'id' : 'en'; // Default ke 'en' untuk global
 
-            Session::put('locale', $locale);
+            Session::put("locale", $locale);
         }
 
         App::setLocale($locale);
@@ -41,8 +58,8 @@ class HandleLocalization
         $response = $next($request);
 
         // Pastikan cookie selalu sinkron dengan locale yang aktif
-        if (method_exists($response, 'cookie')) {
-            $response->cookie('selected_locale', $locale, 60 * 24 * 30);
+        if (method_exists($response, "cookie")) {
+            $response->cookie("selected_locale", $locale, 60 * 24 * 30);
         }
 
         return $response;

@@ -11,8 +11,14 @@
     <meta property="og:description" content="{{ $post->meta_description ?? $post->excerpt }}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="article:published_time" content="{{ $post->published_at ? $post->published_at->toIso8601String() : $post->created_at->toIso8601String() }}">
+    <meta property="article:modified_time" content="{{ $post->updated_at->toIso8601String() }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $post->meta_title ?? $post->title }}">
+    <meta name="twitter:description" content="{{ $post->meta_description ?? $post->excerpt }}">
     @if($post->featured_image)
-        <meta property="og:image" content="{{ asset('storage/' . $post->featured_image) }}">
+        <meta property="og:image" content="{{ $post->featured_image_url }}">
+        <meta name="twitter:image" content="{{ $post->featured_image_url }}">
     @endif
     
     @if($post->location_name)
@@ -25,12 +31,47 @@
 @endsection
 
 @section('json-ld')
+@php
+    $faqBySlug = [
+        'why-habit-finance-in-one-app-beats-notion-templates' => [
+            [
+                'q' => 'Is OneForMind a good Notion alternative for habits and finance?',
+                'a' => 'Yes. If your main goal is consistency, OneForMind can reduce friction by keeping habits and money tracking in one focused workflow.',
+            ],
+            [
+                'q' => 'Why combine habit tracking and finance tracking?',
+                'a' => 'Financial behavior is habit-driven. Combining both helps you see behavior loops and improve decisions faster.',
+            ],
+        ],
+        'build-a-personal-operating-system-in-30-minutes' => [
+            [
+                'q' => 'How long does it take to set up a personal operating system?',
+                'a' => 'You can build a practical starter setup in about 30 minutes if you focus on daily anchors, task priorities, and cashflow tracking.',
+            ],
+            [
+                'q' => 'What is the minimum viable daily productivity system?',
+                'a' => 'Three habit anchors, three priority tasks, and a short end-of-day review are enough to create momentum.',
+            ],
+        ],
+        'from-planner-chaos-to-clarity-the-weekly-reset-framework' => [
+            [
+                'q' => 'What is a weekly reset framework?',
+                'a' => 'A weekly reset is a recurring review process to reflect, reconcile finances, reprioritize tasks, and recommit habits for the next week.',
+            ],
+            [
+                'q' => 'How often should I run a weekly reset?',
+                'a' => 'Run it once per week on the same day to maintain planning consistency and reduce mental overload.',
+            ],
+        ],
+    ];
+    $faqItems = $faqBySlug[$post->slug] ?? [];
+@endphp
 <script type="application/ld+json">
 [{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "{{ $post->title }}",
-  "image": "{{ $post->featured_image ? asset('storage/' . $post->featured_image) : asset('favicon.png') }}",
+  "image": "{{ $post->featured_image_url ?? asset('favicon.png') }}",
   "description": "{{ $post->meta_description ?? $post->excerpt }}",
   "datePublished": "{{ $post->published_at ? $post->published_at->toIso8601String() : $post->created_at->toIso8601String() }}",
   "author": {
@@ -59,6 +100,26 @@
   }]
 }]
 </script>
+@if(!empty($faqItems))
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    @foreach($faqItems as $index => $item)
+    {
+      "@type": "Question",
+      "name": "{{ $item['q'] }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ $item['a'] }}"
+      }
+    }@if($index < count($faqItems) - 1),@endif
+    @endforeach
+  ]
+}
+</script>
+@endif
 @endsection
 
 @section('content')
@@ -144,6 +205,20 @@
                 {!! $post->html_content !!}
             </article>
 
+            @if(!empty($faqItems))
+            <section class="mt-16 p-8 rounded-3xl border border-indigo-100 bg-indigo-50/40">
+                <h2 class="text-xl font-black text-slate-900 mb-6">Frequently Asked Questions</h2>
+                <div class="space-y-5">
+                    @foreach($faqItems as $item)
+                        <div class="bg-white rounded-2xl p-5 border border-slate-100">
+                            <h3 class="text-sm font-black text-slate-900 mb-2">{{ $item['q'] }}</h3>
+                            <p class="text-sm text-slate-600 font-medium">{{ $item['a'] }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </section>
+            @endif
+
             <!-- Metadata GEO Location Info -->
             @if($post->location_name)
             <div class="mt-20 p-10 bg-indigo-50/50 rounded-[3rem] border border-indigo-100/50 flex flex-col md:flex-row gap-8 items-center">
@@ -185,7 +260,7 @@
                 @foreach($related as $rel)
                 <a href="{{ route('resources.blog.show', $rel->slug) }}" class="group bg-white rounded-3xl border border-slate-100 p-6 shadow-sm hover:shadow-xl hover:border-indigo-100 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
                     <div class="aspect-video bg-slate-100 rounded-2xl overflow-hidden mb-6">
-                        <img src="{{ $rel->featured_image ? asset('storage/' . $rel->featured_image) : asset('favicon.png') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <img src="{{ $rel->featured_image_url ?? asset('favicon.png') }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                     </div>
                     <span class="text-[10px] font-black uppercase tracking-widest text-indigo-600 mb-3 block italic">{{ $rel->category?->name ?? 'Module' }}</span>
                     <h4 class="font-black text-slate-900 text-lg leading-tight mb-4 group-hover:text-indigo-600 transition-colors">{{ $rel->title }}</h4>
@@ -240,8 +315,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const isActive = l.getAttribute('href') === `#${id}`;
                     l.classList.toggle('text-indigo-600', isActive);
                     l.classList.toggle('translate-x-1', isActive);
-                    l.classList.toggle('text-slate-500', !isActive && l.tagName === 'H2');
-                    l.classList.toggle('text-slate-400', !isActive && l.tagName === 'H3');
+                    const isH3 = l.classList.contains('pl-4');
+                    l.classList.toggle('text-slate-500', !isActive && !isH3);
+                    l.classList.toggle('text-slate-400', !isActive && isH3);
                 });
             }
         });
