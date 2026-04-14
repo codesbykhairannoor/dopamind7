@@ -67,134 +67,208 @@
 @section('content')
 <main id="neural-interface">
     {{-- ================================================================= --}}
-    {{-- SECTION 1: HERO - THE UNIFIED ORB --}}
+    {{-- SECTION 1: HERO - THE MONUMENTAL CENTER --}}
     {{-- ================================================================= --}}
-    <header class="relative pt-20 pb-32 lg:pt-32 lg:pb-52 overflow-hidden bg-white">
+    <header class="relative pt-24 pb-48 lg:pt-40 lg:pb-64 overflow-hidden bg-white">
         {{-- High-End Ambient Lighting --}}
-        <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-indigo-50/40 rounded-full blur-[120px] -z-10 animate-pulse"></div>
-        <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-50/30 rounded-full blur-[100px] -z-10"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-indigo-50/50 rounded-full blur-[120px] -z-10 animate-pulse"></div>
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                {{-- Left Column: Copywriting --}}
-                <div class="text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 shadow-sm text-indigo-700 font-black text-[10px] mb-8 tracking-[0.2em] uppercase">
-                        <span class="relative flex h-2 w-2">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
-                        </span>
-                        {{ __('hero_premium_badge') }}
-                    </div>
-                    
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl mb-8 tracking-tighter text-slate-900 font-black leading-[0.95]">
-                        {{ __('hero_premium_title_1') }} <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-                            {{ __('hero_premium_title_2') }}
-                        </span>
-                    </h1>
-                    
-                    <p class="text-xl md:text-2xl text-slate-500 mb-12 leading-relaxed max-w-xl font-medium">
-                        {{ __('hero_premium_desc') }}
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-5">
-                        @guest
-                            <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition-all transform hover:-translate-y-1 active:scale-95 group text-center">
-                                {{ __('hero_premium_cta_primary') }}
-                                <span class="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
-                            </a>
-                            <a href="{{ route('about') }}" class="bg-white text-slate-700 border border-slate-200 px-10 py-5 rounded-2xl font-black text-lg hover:bg-slate-50 hover:border-slate-300 transition-all transform hover:-translate-y-1 active:scale-95 text-center">
-                                {{ __('hero_premium_cta_secondary') }}
-                            </a>
-                        @endguest
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            {{-- Badge --}}
+            <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 text-white font-black text-[10px] mb-12 tracking-[0.2em] uppercase shadow-2xl shadow-indigo-100 transform hover:scale-105 transition-transform cursor-default">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-400"></span>
+                </span>
+                {{ __('hero_premium_badge') }}
+            </div>
+            
+            {{-- Massive Title --}}
+            <h1 class="text-6xl md:text-8xl lg:text-[8.5rem] mb-10 tracking-[-0.04em] text-slate-900 font-black leading-[0.9] max-w-5xl mx-auto">
+                {{ __('hero_premium_title_1') }} 
+                <span class="text-transparent bg-clip-text bg-gradient-to-b from-indigo-600 to-indigo-900 block mt-2">
+                    {{ __('hero_premium_title_2') }}
+                </span>
+            </h1>
+            
+            {{-- Subheading --}}
+            <p class="text-xl md:text-2xl text-slate-500 mb-16 leading-relaxed max-w-3xl mx-auto font-medium">
+                {{ __('hero_premium_desc') }}
+            </p>
+            
+            {{-- CTA Group --}}
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-24">
+                @guest
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-indigo-600 text-white px-12 py-6 rounded-full font-black text-xl hover:bg-indigo-700 hover:shadow-[0_20px_50px_rgba(79,70,229,0.3)] transition-all transform hover:-translate-y-1 active:scale-95 group flex items-center justify-center gap-3">
+                        {{ __('hero_premium_cta_primary') }}
+                        <svg class="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </a>
+                    <a href="{{ route('about') }}" class="w-full sm:w-auto bg-white text-slate-700 border-2 border-slate-100 px-12 py-6 rounded-full font-black text-xl hover:bg-slate-50 hover:border-slate-200 transition-all transform hover:-translate-y-1 active:scale-95 text-center">
+                        {{ __('hero_premium_cta_secondary') }}
+                    </a>
+                @endguest
 
-                        @auth
-                            <a hx-boost="false" href="{{ route('dashboard') }}" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black text-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 active:scale-95 text-center">
-                                Enter Dashboard →
-                            </a>
-                        @endauth
+                @auth
+                    <a hx-boost="false" href="{{ route('dashboard') }}" class="w-full sm:w-auto bg-slate-900 text-white px-12 py-6 rounded-full font-black text-xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] transition-all transform hover:-translate-y-1 active:scale-95 text-center flex items-center justify-center gap-3 group">
+                        Enter Dashboard
+                        <svg class="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </a>
+                @endauth
+            </div>
+
+            {{-- Social Proof / Trust Logos --}}
+            <div class="mb-32">
+                <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-10">Trusted by modern high achievers</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter italic">NeuroSync</span>
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter italic font-serif">DeepWork</span>
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter italic">AtomicSys</span>
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter italic">BioHack</span>
+                    <span class="text-2xl font-black text-slate-900 tracking-tighter italic">MindFlow</span>
+                </div>
+            </div>
+
+            {{-- The "Big" Mockup --}}
+            <div class="relative max-w-6xl mx-auto group">
+                {{-- Glow --}}
+                <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
+                
+                {{-- Browser Container --}}
+                <div class="relative bg-slate-900 rounded-[2.5rem] p-1.5 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] border-[8px] border-slate-800/80 overflow-hidden transform group-hover:scale-[1.01] transition-transform duration-1000">
+                    {{-- Toolbar --}}
+                    <div class="h-10 w-full bg-slate-800/50 flex items-center px-6 gap-2 border-b border-white/5">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-400/20"></div>
+                            <div class="w-3 h-3 rounded-full bg-amber-400/20"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-400/20"></div>
+                        </div>
+                        <div class="mx-auto bg-slate-700/30 rounded-full px-8 py-1 text-[10px] text-slate-500 font-bold border border-white/5">
+                            app.oneformind.io/platinum/suite
+                        </div>
                     </div>
 
-                    <div class="mt-12 flex items-center gap-6">
-                        <div class="flex -space-x-3">
-                            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User" />
-                            </div>
-                            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aria" alt="User" />
-                            </div>
-                            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm flex items-center justify-center bg-indigo-600 text-[10px] font-bold text-white uppercase">
-                                +2k
+                    {{-- App UI Mockup --}}
+                    <div class="bg-[#fcfcfd] aspect-[16/10] overflow-hidden flex text-left">
+                        {{-- Sidebar --}}
+                        <div class="w-64 border-r border-slate-100 p-8 space-y-8 hidden md:block">
+                            <div class="w-32 h-4 bg-slate-100 rounded-full"></div>
+                            <div class="space-y-4">
+                                <div class="w-full h-10 bg-indigo-50 rounded-xl border border-indigo-100 flex items-center px-4 gap-3">
+                                    <div class="w-4 h-4 bg-indigo-500 rounded shadow-sm"></div>
+                                    <div class="w-20 h-2 bg-indigo-400 rounded-full"></div>
+                                </div>
+                                <div class="w-full h-10 bg-slate-50/50 rounded-xl flex items-center px-4 gap-3">
+                                    <div class="w-4 h-4 bg-slate-200 rounded"></div>
+                                    <div class="w-24 h-2 bg-slate-200 rounded-full"></div>
+                                </div>
+                                <div class="w-full h-10 bg-slate-50/50 rounded-xl flex items-center px-4 gap-3">
+                                    <div class="w-4 h-4 bg-slate-200 rounded"></div>
+                                    <div class="w-16 h-2 bg-slate-200 rounded-full"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="text-[11px] font-black text-slate-400 uppercase tracking-widest leading-none">
-                            Trusted by <span class="text-indigo-600">Global Achievers</span>
+
+                        {{-- Main Content --}}
+                        <div class="flex-1 p-10">
+                            <div class="flex justify-between items-center mb-12">
+                                <div class="w-48 h-8 bg-slate-900 rounded-2xl"></div>
+                                <div class="flex gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-slate-100"></div>
+                                    <div class="w-10 h-10 rounded-full bg-slate-100"></div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-6">
+                                <div class="col-span-2 space-y-6">
+                                    <div class="h-64 bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-100/50 p-8 flex flex-col justify-between">
+                                        <div class="flex justify-between">
+                                            <div class="w-32 h-4 bg-slate-100 rounded-full"></div>
+                                            <div class="w-8 h-8 bg-indigo-50 rounded-lg"></div>
+                                        </div>
+                                        <div class="h-32 w-full bg-indigo-50/30 rounded-2xl animate-pulse flex items-end p-4">
+                                            <div class="flex gap-2 w-full items-end h-full">
+                                                <div class="h-[20%] w-full bg-indigo-200 rounded-t-lg"></div>
+                                                <div class="h-[40%] w-full bg-indigo-200 rounded-t-lg"></div>
+                                                <div class="h-[60%] w-full bg-indigo-200 rounded-t-lg"></div>
+                                                <div class="h-[80%] w-full bg-indigo-500 rounded-t-lg shadow-lg"></div>
+                                                <div class="h-[30%] w-full bg-indigo-200 rounded-t-lg"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-6">
+                                        <div class="h-48 bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-100/50 p-8">
+                                            <div class="w-20 h-4 bg-slate-100 rounded-full mb-8"></div>
+                                            <div class="space-y-4">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-[10px]">✓</div>
+                                                    <div class="w-24 h-2 bg-slate-100 rounded-full"></div>
+                                                </div>
+                                                <div class="flex items-center gap-3 opacity-30">
+                                                    <div class="w-5 h-5 border border-slate-200 rounded-full"></div>
+                                                    <div class="w-32 h-2 bg-slate-100 rounded-full"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="h-48 bg-slate-900 rounded-[2rem] p-8 relative overflow-hidden">
+                                            <div class="absolute inset-0 bg-indigo-600/10"></div>
+                                            <div class="relative z-10">
+                                                <div class="text-indigo-400 font-medium text-[10px] tracking-widest uppercase mb-2">Finance</div>
+                                                <div class="text-3xl font-black text-white">Rp 12.5M</div>
+                                                <div class="mt-6 h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                                                    <div class="h-full bg-indigo-500 w-3/4 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-y-6">
+                                    <div class="h-[calc(64px*4+24px*3)] bg-slate-50 rounded-[2rem] border border-slate-100 p-8">
+                                        <div class="w-24 h-4 bg-slate-200 rounded-full mb-8"></div>
+                                        <div class="space-y-6">
+                                            @for($i=0; $i<4; $i++)
+                                                <div class="flex items-center gap-4">
+                                                    <div class="w-10 h-10 bg-white rounded-xl shadow-sm border border-slate-100"></div>
+                                                    <div class="flex-1 space-y-2">
+                                                        <div class="w-full h-2 bg-slate-200 rounded-full"></div>
+                                                        <div class="w-2/3 h-1.5 bg-slate-100 rounded-full"></div>
+                                                    </div>
+                                                </div>
+                                            @endfor
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {{-- Right Column: Mockup layers --}}
-                <div class="relative hidden lg:block">
-                    <div class="relative z-20 transform hover:scale-[1.02] transition-transform duration-700 cubic-bezier">
-                        {{-- Main Dashboard Peek --}}
-                        <div class="bg-slate-900 rounded-[2.5rem] p-1 shadow-2xl border-[10px] border-slate-800 overflow-hidden aspect-[4/3] relative">
-                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent"></div>
-                            {{-- Mini UI Elements --}}
-                            <div class="p-8 space-y-6">
-                                <div class="h-4 w-32 bg-indigo-500/20 rounded-full"></div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="h-32 bg-white/5 rounded-3xl border border-white/10 p-4">
-                                        <div class="h-2 w-12 bg-white/10 rounded-full mb-8"></div>
-                                        <div class="h-8 w-24 bg-indigo-500 rounded-lg"></div>
-                                    </div>
-                                    <div class="h-24 bg-white/5 rounded-3xl border border-white/10 p-4 self-end">
-                                        <div class="flex gap-1">
-                                            <div class="w-3 h-3 bg-indigo-400 rounded-full"></div>
-                                            <div class="w-3 h-3 bg-indigo-400/30 rounded-full"></div>
-                                            <div class="w-3 h-3 bg-indigo-400/30 rounded-full"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="h-20 bg-white/5 rounded-3xl border border-white/10"></div>
-                            </div>
-                        </div>
-
-                        {{-- Floating Glass Cards --}}
-                        <div class="absolute -top-10 -right-10 w-48 bg-white/80 backdrop-blur-xl p-6 rounded-3xl border border-white shadow-2xl transform rotate-6 animate-bounce-slow">
-                            <div class="flex items-center gap-3 mb-4">
-                                <div class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-black">🌱</div>
-                                <div class="text-[10px] font-black text-slate-800">Habit: Meditate</div>
-                            </div>
-                            <div class="flex gap-1.5">
-                                <div class="w-full h-1 bg-emerald-500 rounded-full"></div>
-                                <div class="w-full h-1 bg-emerald-500 rounded-full"></div>
-                                <div class="w-full h-1 bg-slate-100 rounded-full"></div>
-                            </div>
-                        </div>
-
-                        <div class="absolute -bottom-10 -left-10 w-56 bg-white/90 backdrop-blur-xl p-6 rounded-[2rem] border border-white shadow-2xl transform -rotate-3 animate-float">
-                            <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Finance Summary</div>
-                            <div class="text-2xl font-black text-indigo-600">Rp 15.420.000</div>
-                            <div class="mt-4 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                                <div class="h-full bg-indigo-500 w-3/4"></div>
-                            </div>
+                {{-- Floating Decorations --}}
+                <div class="absolute -top-12 -right-12 w-48 bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-indigo-50 shadow-2xl transform rotate-6 animate-float z-30 hidden lg:block">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-black">🌱</div>
+                        <div class="text-[10px] font-black text-slate-800">Streak: 12 Days</div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-12 -left-12 w-64 bg-slate-900 p-6 rounded-[2rem] border border-slate-800 shadow-2xl transform -rotate-3 animate-bounce-slow z-30 hidden lg:block">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/30">🌌</div>
+                        <div class="flex-1">
+                            <div class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Neural Mode</div>
+                            <div class="text-white text-xs font-black">Optimization Active</div>
                         </div>
                     </div>
-
-                    {{-- Background Shapes --}}
-                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-indigo-100/50 rounded-full blur-[80px] -z-10 animate-pulse"></div>
                 </div>
             </div>
         </div>
         
         <style>
             @keyframes bounce-slow {
-                0%, 100% { transform: translateY(0) rotate(6deg); }
-                50% { transform: translateY(-15px) rotate(6deg); }
+                0%, 100% { transform: translateY(0) rotate(-3deg); }
+                50% { transform: translateY(-15px) rotate(-3deg); }
             }
             @keyframes float {
-                0%, 100% { transform: translateY(0) rotate(-3deg); }
-                50% { transform: translateY(10px) rotate(-3deg); }
+                0%, 100% { transform: translateY(0) rotate(6deg); }
+                50% { transform: translateY(10px) rotate(6deg); }
             }
             .animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
             .animate-float { animation: float 8s ease-in-out infinite; }
