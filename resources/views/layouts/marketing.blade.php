@@ -12,17 +12,15 @@
     @endif
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-    {{-- Geo-SEO & Location Tags --}}
-    <meta name="geo.region" content="ID-JK" />
-    <meta name="geo.placename" content="Jakarta" />
-    <meta name="geo.position" content="-6.2088;106.8456" />
-    <meta name="ICBM" content="-6.2088, 106.8456" />
+    {{-- Geo-SEO: Indonesia broadly (global product, not city-specific) --}}
+    <meta name="geo.region" content="ID" />
+    <meta name="geo.placename" content="Indonesia" />
+    <meta name="geo.position" content="-2.548926;118.014863" />
+    <meta name="ICBM" content="-2.548926, 118.014863" />
 
-    {{-- Language Alternates - Using query params to avoid 302 redirects in hreflang --}}
-    <link rel="alternate" hreflang="id"
-        href="{{ url()->current() }}{{ str_contains(url()->current(), '?') ? '&' : '?' }}hl=id" />
-    <link rel="alternate" hreflang="en"
-        href="{{ url()->current() }}{{ str_contains(url()->current(), '?') ? '&' : '?' }}hl=en" />
+    {{-- hreflang: same URL serves both languages via session --}}
+    <link rel="alternate" hreflang="id" href="{{ url()->current() }}" />
+    <link rel="alternate" hreflang="en" href="{{ url()->current() }}" />
     <link rel="alternate" hreflang="x-default" href="{{ url()->current() }}" />
 
     {{-- Mobile Optimization --}}
@@ -45,12 +43,15 @@
             $finalTitle = 'Oneformind - The Unified Productivity OS';
         }
     @endphp
-    <title>{{ $finalTitle }}</title>
+    {{-- Use {!! !!} so bare & in titles is NOT double-escaped to &amp;
+         which causes Google sitelinks to show "&amp;" literally.
+         strip_tags() guards against any accidental HTML in translation strings. --}}
+    <title>{!! strip_tags($finalTitle) !!}</title>
 
     <meta property="og:site_name" content="Oneformind">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{{ $finalTitle }}">
+    <meta property="og:title" content="{{ strip_tags($finalTitle) }}">
     <meta property="og:image" content="{{ asset('images/og-image.png') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -72,7 +73,7 @@
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@Oneformind">
-    <meta name="twitter:title" content="{{ $finalTitle }}">
+    <meta name="twitter:title" content="{{ strip_tags($finalTitle) }}">
     <meta name="twitter:image" content="{{ asset('images/og-image.png') }}">
 
     <meta name="ai-creator" content="{{ __('meta_ai_creator') }}">
@@ -83,21 +84,29 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "OneForMind",
-      "alternateName": "Oneformind App",
+      "alternateName": "OneForMind App",
       "url": "{{ url('/') }}",
-      "logo": "{{ asset('favicon.png') }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ asset('favicon.png') }}",
+        "width": 512,
+        "height": 512
+      },
       "image": "{{ asset('images/og-image.png') }}",
+      "foundingDate": "2025",
+      "areaServed": "Worldwide",
       "sameAs": [
         "https://x.com/OneForMind",
         "https://instagram.com/oneformind",
         "https://facebook.com/oneformind"
       ],
       "contactPoint": {
-          "@type": "ContactPoint",
-          "email": "oneformindapp@gmail.com",
-          "contactType": "customer service"
+        "@type": "ContactPoint",
+        "email": "oneformindapp@gmail.com",
+        "contactType": "customer service",
+        "availableLanguage": ["Indonesian", "English"]
       },
-      "description": "The unified productivity OS for finances, atomic habits, and daily planning."
+      "description": "The unified productivity OS for finances, atomic habits, and daily planning in one mindful ecosystem."
     }
     </script>
     <script type="application/ld+json">
@@ -106,17 +115,79 @@
       "@type": "WebSite",
       "name": "OneForMind",
       "url": "{{ url('/') }}",
+      "inLanguage": ["id", "en"],
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "{{ url('/') }}/resources/blog?q={search_term_string}",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ url('/') }}/resources/blog?q={search_term_string}"
+        },
         "query-input": "required name=search_term_string"
       }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OneForMind",
+      "url": "{{ url('/') }}",
+      "applicationCategory": "ProductivityApplication",
+      "applicationSubCategory": "LifestyleApplication",
+      "operatingSystem": "Web Browser, iOS, Android",
+      "browserRequirements": "Requires JavaScript",
+      "inLanguage": ["id", "en"],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Explorer",
+          "price": "0",
+          "priceCurrency": "IDR",
+          "description": "Free forever plan with habit tracker, daily planner, and finance manager."
+        },
+        {
+          "@type": "Offer",
+          "name": "Architect",
+          "price": "79000",
+          "priceCurrency": "IDR",
+          "description": "Full ecosystem access including journal, goals, calendar, and job tracker."
+        },
+        {
+          "@type": "Offer",
+          "name": "Quantum",
+          "price": "109000",
+          "priceCurrency": "IDR",
+          "description": "Architect plan plus unlimited Neural OS AI coaching."
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "500",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "description": "OneForMind is the unified productivity OS — track atomic habits, manage finances, plan your day, write journals, and get AI-powered life coaching in one place.",
+      "featureList": [
+        "Atomic Habit Tracker",
+        "Finance Manager",
+        "Daily Planner",
+        "Digital Journal",
+        "Goal Tracker",
+        "Calendar",
+        "Job Application Tracker",
+        "Neural OS AI Life Coach"
+      ],
+      "screenshot": "{{ asset('images/og-image.png') }}",
+      "softwareVersion": "2.0",
+      "releaseNotes": "{{ url('/resources/changelog') }}"
     }
     </script>
     <meta name="ai-service-type" content="{{ __('meta_ai_service_type') }}">
     <meta name="ai-description" content="{{ __('meta_global_description') }}">
 
-    @yield('meta')
+    {{-- @yield('meta') intentionally NOT repeated here — already yielded above
+         in the conditional block. Only json-ld gets its own separate slot. --}}
     @yield('json-ld')
 
 
@@ -152,7 +223,7 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id={{ env('META_PIXEL_ID') }}&ev=PageView&noscript=1"
     /></noscript>
-    
+
     {{-- Meta Pixel CompleteRegistration Trigger --}}
     @if(session('meta_event_id'))
     <script>
@@ -483,8 +554,8 @@
 <body hx-boost="true" hx-swap="innerHTML"
     class="bg-white text-slate-900 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700 flex flex-col min-h-screen">
 
-    <div x-data="{ 
-        mobileMenuOpen: false, 
+    <div x-data="{
+        mobileMenuOpen: false,
         activeMenu: null,
         activeAccordion: null,
         scrolled: false,
@@ -493,7 +564,7 @@
         @scroll.window.passive="scrolled = (window.scrollY > 20)" class="relative">
 
         {{-- INSTANT APP LOADER (Blade to Vue Transition) --}}
-        <div x-show="isInterfacing" 
+        <div x-show="isInterfacing"
             x-transition:enter="transition duration-300"
             x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100"
