@@ -61,8 +61,7 @@ const isPreviewOpen = ref(false);
 const openPremiumPreview = () => router.visit(route('billing'));
 
 const handleEditSaving = (saving = null) => {
-    if (isExplorer.value) return openPremiumPreview('Finance');
-    
+    // Unlocked for everyone
     if (!saving) {
         activeSaving.value = { id: null, title: '', target_amount: '', icon: '🏦', color: '#6366f1' };
     } else {

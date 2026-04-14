@@ -64,23 +64,7 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
     // }
 };
 
-import { Sparkles, Activity, PieChart } from 'lucide-vue-next';
-const habitPremiumFeatures = [
-    {
-        title: 'Habit Alchemy',
-        desc: 'Sistem stacking otomatis untuk membangun momentum habit tanpa hambatan.',
-        icon: Sparkles,
-        color: 'text-indigo-500',
-        bg: 'bg-indigo-500/10'
-    },
-    {
-        title: 'Atomic Analytics',
-        desc: 'Heatmap & visualisasi data habit yang mendalam untuk progres jangka panjang.',
-        icon: PieChart,
-        color: 'text-emerald-500',
-        bg: 'bg-emerald-500/10'
-    }
-];
+
 </script>
 
 <template>
@@ -132,8 +116,7 @@ const habitPremiumFeatures = [
                 :selectMood="handleMoodSelect"
             />
 
-            <!-- AI SECTION (Unlocked) -->
-            <NeuralHabitInsight ref="neuralOs" :currentMood="savedMood" />
+
 
 
             <HabitModals 

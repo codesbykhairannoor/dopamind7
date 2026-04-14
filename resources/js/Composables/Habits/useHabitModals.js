@@ -89,12 +89,6 @@ export function useHabitModals(props, localHabits) {
 
     // 🔥 LOGIC SUBMIT BATCH (SUPER AMAN & INSTAN) 🔥
     const submitBatchHabit = () => {
-        // --- GATING: 3 HABIT LIMIT FOR EXPLORER ---
-        if (isExplorer.value && (localHabits.value.length + batchForm.habits.length) > 3) {
-            fireToast('error', t('warn_habit_limit_reached', 'Batas 3 habit tercapai. Silahkan upgrade!'));
-            return;
-        }
-
         batchForm.clearErrors();
         let hasError = false;
 
@@ -186,12 +180,6 @@ export function useHabitModals(props, localHabits) {
     };
 
     const submitHabit = () => {
-        // --- GATING: 3 HABIT LIMIT FOR EXPLORER ---
-        if (!isEditing.value && isExplorer.value && localHabits.value.length >= 3) {
-            fireToast('error', t('warn_habit_limit_reached', 'Batas 3 habit tercapai. Silahkan upgrade!'));
-            return;
-        }
-
         form.clearErrors();
         const payload = { ...form.data(), period: props.monthQuery };
 

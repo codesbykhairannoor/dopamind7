@@ -91,7 +91,6 @@ const confirmDelete = () => {
                     <div class="flex items-center gap-2">
                         <button v-if="!isEditing" @click="$emit('switch-to-batch')" type="button" 
                             class="text-[10px] font-black tracking-widest px-3 py-1.5 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-500/20 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition flex items-center gap-1 active:scale-95 relative group">
-                            <span v-if="isExplorer" class="mr-1">🔒</span>
                             Batch
                         </button>
                         <button @click="handleClose" class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-rose-100 dark:hover:bg-rose-500/20 hover:text-rose-500 dark:hover:text-rose-400 transition font-bold">✕</button>

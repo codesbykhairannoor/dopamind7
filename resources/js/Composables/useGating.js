@@ -14,8 +14,13 @@ const FEATURE_TIERS = {
     // Free (Explorer) - Fully Unlocked
     dashboard:      'explorer',
     habit:          'explorer',
+    habit_batch:    'explorer',
     finance:        'explorer',
+    finance_batch:  'explorer',
+    finance_savings:'explorer',
     planner:        'explorer',
+    planner_batch:  'explorer',
+    planner_recurring: 'explorer',
     finance_budget: 'explorer',
     finance_export: 'explorer',
 
