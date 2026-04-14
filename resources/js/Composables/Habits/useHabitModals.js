@@ -3,6 +3,7 @@ import { useForm, router } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 import { useGating } from '@/Composables/useGating';
+import axios from 'axios';
 
 export function useHabitModals(props, localHabits) {
     const { tier, isExplorer } = useGating();
@@ -43,6 +44,24 @@ export function useHabitModals(props, localHabits) {
         id: null, name: '', icon: '⚡', color: '#6366f1', monthly_target: 20,
         period: props.monthQuery
     });
+
+    const chainConnectForm = useForm({
+        target_type: 'goal',
+        target_id: null,
+        relation_type: 'supports_goal',
+        sync_mode: 'goal_progress',
+        increment: 1,
+    });
+
+    const quickTargetForm = useForm({
+        target_type: 'goal',
+        target_title: '',
+        target_value: 10,
+    });
+
+    const chainLinks = ref([]);
+    const chainTimeline = ref([]);
+    const chainLoading = ref(false);
 
     // --- STATE BATCH MODE 🔥 ---
     const showBatchModal = ref(false);
@@ -141,6 +160,143 @@ export function useHabitModals(props, localHabits) {
         });
     };
 
+    const isChainSyncEligible = () => tier.value >= 3;
+
+    const fetchChainData = async (habitId) => {
+        if (!habitId || String(habitId).startsWith('temp_') || !isChainSyncEligible()) return;
+        chainLoading.value = true;
+        try {
+            const [linksRes, timelineRes] = await Promise.all([
+                axios.get(route('chainsync.links.index'), {
+                    params: { source_type: 'habit', source_id: habitId },
+                }),
+                axios.get(route('chainsync.timeline'), {
+                    params: { entity_type: 'habit', entity_id: habitId, limit: 12 },
+                }),
+            ]);
+            chainLinks.value = linksRes?.data?.data || [];
+            chainTimeline.value = timelineRes?.data?.data || [];
+        } catch (error) {
+            fireToast('error', t('chainsync_load_failed', 'Failed to load ChainSync data.'));
+        } finally {
+            chainLoading.value = false;
+        }
+    };
+
+    const connectChain = async () => {
+        if (!isEditing.value || !form.id || String(form.id).startsWith('temp_')) {
+            fireToast('error', t('chainsync_save_habit_first', 'Save the habit first before connecting.'));
+            return;
+        }
+        if (!isChainSyncEligible()) {
+            fireToast('error', t('chainsync_quantum_required', 'ChainSync requires Quantum plan.'));
+            return;
+        }
+        if (!chainConnectForm.target_id) {
+            fireToast('error', t('chainsync_pick_target', 'Please pick a target item.'));
+            return;
+        }
+
+        const payload = {
+            source_type: 'habit',
+            source_id: form.id,
+            target_type: chainConnectForm.target_type,
+            target_id: Number(chainConnectForm.target_id),
+            relation_type: chainConnectForm.relation_type || 'related_to',
+        };
+
+        const syncMode = chainConnectForm.sync_mode;
+        if (syncMode !== 'link_only') {
+            let actionType = 'goal.increment_current_value';
+            let actionPayload = {
+                increment: Number(chainConnectForm.increment) || 1,
+                cap_to_target: true,
+            };
+
+            if (syncMode === 'planner_mark_done') {
+                actionType = 'planner.mark_completed';
+                actionPayload = {};
+            }
+
+            if (syncMode === 'journal_prompt') {
+                actionType = 'journal.append_prompt';
+                actionPayload = {
+                    prefix: t('chainsync_journal_prefix', 'Habit reflection:'),
+                };
+            }
+
+            payload.rule = {
+                trigger_event: 'habit.completed',
+                action_type: actionType,
+                action_payload: actionPayload,
+            };
+        }
+
+        try {
+            await axios.post(route('chainsync.links.store'), payload);
+            fireToast('success', t('chainsync_link_saved', 'Connection saved.'));
+            chainConnectForm.target_id = null;
+            chainConnectForm.increment = 1;
+            chainConnectForm.sync_mode = 'goal_progress';
+            await fetchChainData(form.id);
+        } catch (error) {
+            fireToast('error', error?.response?.data?.message || t('chainsync_link_failed', 'Failed to save connection.'));
+        }
+    };
+
+    const createQuickTargetAndLink = async () => {
+        if (!isEditing.value || !form.id || String(form.id).startsWith('temp_')) {
+            fireToast('error', t('chainsync_save_habit_first', 'Save the habit first before connecting.'));
+            return;
+        }
+        if (!isChainSyncEligible()) {
+            fireToast('error', t('chainsync_quantum_required', 'ChainSync requires Quantum plan.'));
+            return;
+        }
+        if (!quickTargetForm.target_title?.trim()) {
+            fireToast('error', t('chainsync_target_title_required', 'Target title is required.'));
+            return;
+        }
+
+        const payload = {
+            source_type: 'habit',
+            source_id: form.id,
+            target_type: quickTargetForm.target_type,
+            target_title: quickTargetForm.target_title,
+            relation_type: quickTargetForm.target_type === 'goal' ? 'supports_goal' : 'related_to',
+            target_payload: quickTargetForm.target_type === 'goal'
+                ? { target_value: Number(quickTargetForm.target_value) || 10 }
+                : {},
+            rule: quickTargetForm.target_type === 'goal'
+                ? {
+                    trigger_event: 'habit.completed',
+                    action_type: 'goal.increment_current_value',
+                    action_payload: { increment: 1, cap_to_target: true },
+                }
+                : null,
+        };
+
+        try {
+            await axios.post(route('chainsync.quick-target'), payload);
+            fireToast('success', t('chainsync_quick_target_created', 'Target created and connected.'));
+            quickTargetForm.target_title = '';
+            quickTargetForm.target_value = 10;
+            await fetchChainData(form.id);
+        } catch (error) {
+            fireToast('error', error?.response?.data?.message || t('chainsync_quick_target_failed', 'Failed to quick create target.'));
+        }
+    };
+
+    const removeChainLink = async (linkId) => {
+        try {
+            await axios.delete(route('chainsync.links.destroy', linkId));
+            fireToast('success', t('chainsync_link_removed', 'Connection removed.'));
+            await fetchChainData(form.id);
+        } catch (error) {
+            fireToast('error', t('chainsync_link_remove_failed', 'Failed to remove connection.'));
+        }
+    };
+
     // --- MODAL ACTIONS (SINGLE) ---
     const editHabit = (habit) => {
         if (String(habit.id).startsWith('temp_')) {
@@ -156,6 +312,7 @@ export function useHabitModals(props, localHabits) {
         form.icon = habit.icon;
         form.color = habit.color;
         form.monthly_target = habit.monthly_target;
+        fetchChainData(habit.id);
     };
 
     const openCreateModal = () => {
@@ -164,6 +321,8 @@ export function useHabitModals(props, localHabits) {
         form.clearErrors();
         form.id = null;
         showCreateModal.value = true;
+        chainLinks.value = [];
+        chainTimeline.value = [];
     };
 
     const closeModal = () => {
@@ -176,6 +335,8 @@ export function useHabitModals(props, localHabits) {
             form.reset();
             form.clearErrors();
             form.id = null;
+            chainLinks.value = [];
+            chainTimeline.value = [];
         }, 300);
     };
 
@@ -268,6 +429,8 @@ export function useHabitModals(props, localHabits) {
         showCreateModal, isEditing, editHabit, openCreateModal, closeModal, submitHabit,
         showBatchModal, batchForm, openBatchModal, closeBatchModal, addBatchRow, removeBatchRow, submitBatchHabit, switchToBatch, switchToSingle,
         showCopyModal, openCopyModal, executeCopy,
-        showDeleteModal, habitToDelete, confirmDelete, executeDelete, deleteFromEdit
+        showDeleteModal, habitToDelete, confirmDelete, executeDelete, deleteFromEdit,
+        chainConnectForm, quickTargetForm, chainLinks, chainTimeline, chainLoading,
+        connectChain, createQuickTargetAndLink, removeChainLink, fetchChainData, isChainSyncEligible
     };
 }

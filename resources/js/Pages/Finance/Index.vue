@@ -22,6 +22,7 @@ import SavingModal from './SavingModal.vue';
 import VaultTransactionModal from './VaultTransactionModal.vue';
 import LockedFeatureWall from '@/Components/LockedFeatureWall.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import ChainSyncDrawer from '@/Components/ChainSync/ChainSyncDrawer.vue';
 import { router } from '@inertiajs/vue3';
 import { Plus, Wallet, Lock, TrendingUp, Zap, ArrowRight } from 'lucide-vue-next';
 
@@ -32,8 +33,10 @@ import { useFinanceForm } from '@/Composables/Finance/useFinanceForm';
 import { useFinanceHistory } from '@/Composables/Finance/useFinanceHistory'; 
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat'; 
 import { useGating } from '@/Composables/useGating';
+import { useChainSyncDrawer } from '@/Composables/useChainSyncDrawer';
 
 const { isExplorer, canUse } = useGating();
+const { openDrawer } = useChainSyncDrawer();
 
 const props = defineProps({
     transactions: Array, budgets: Array, stats: Object, filters: Object, categories: Array, savings: Array
@@ -492,7 +495,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                             </div>
                         </div>
 
-                        <ArchiveModal :show="isArchiveOpen" :dayData="selectedDayData" :categories="categories" :close="() => isArchiveOpen = false" :onDelete="triggerDeleteTransaction" :onEdit="handleEdit" />
+                        <ArchiveModal :show="isArchiveOpen" :dayData="selectedDayData" :categories="categories" :close="() => isArchiveOpen = false" :onDelete="triggerDeleteTransaction" :onEdit="handleEdit" :onChain="(trx) => openDrawer({ type: 'finance_transaction', id: trx.id, title: trx.title })" />
                         <FullArchiveModal :show="showFullHistoryModal" :allStats="allStats" :categories="categories" :close="() => showFullHistoryModal = false" :onDelete="triggerDeleteTransaction" :onEdit="handleEdit" />
                                 <!-- 🏦 The Vault (Savings) & 🧠 Neural Forecast -->
                     <div class="space-y-6 relative group">
@@ -547,5 +550,6 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
         <CategoryModal :show="showCategoryModal" :form="categoryForm" :close="() => showCategoryModal = false" :submit="submitNewCategory" />
         <SavingModal :show="showSavingModal" :saving="activeSaving" :processing="isSavingVault" @close="showSavingModal = false" @save="(form) => form.id ? handleUpdateSaving(form) : handleStoreSaving(form)" />
         <VaultTransactionModal :show="showVaultTxModal" :saving="activeVault" :type="vaultTxType" :processing="isProcessingVaultTx" @close="showVaultTxModal = false" @save="handleVaultTransaction" />
+        <ChainSyncDrawer />
     </div>
 </template>

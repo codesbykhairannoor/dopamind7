@@ -7,6 +7,8 @@ import GoalCard from './GoalCard.vue';
 import GoalModal from './GoalModal.vue';
 import GoalHeader from './GoalHeader.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import ChainSyncDrawer from '@/Components/ChainSync/ChainSyncDrawer.vue';
+import { useChainSyncDrawer } from '@/Composables/useChainSyncDrawer';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
@@ -33,6 +35,7 @@ const {
     addMilestone, saveMilestone, toggleMilestone, deleteMilestone,
     isExplorer
 } = useGoals(props);
+const { openDrawer } = useChainSyncDrawer();
 
 import { Image, Layers, Sparkles } from 'lucide-vue-next';
 const goalPremiumFeatures = [
@@ -100,6 +103,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
                             :onSaveMilestone="saveMilestone"
                             :onToggleMilestone="toggleMilestone"
                             :onDeleteMilestone="deleteMilestone"
+                            :onOpenChainSync="(goal) => openDrawer({ type: 'goal', id: goal.id, title: goal.title })"
                             :isExplorer="isExplorer"
                             @open-preview="openPremiumPreview"
                         />
@@ -197,6 +201,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
                 @save="saveGoal"
                 :onUploadImage="uploadCoverImage"
             />
+            <ChainSyncDrawer />
 
             <!-- Mobile Sticky Floating Action Button (FAB) -->
             <button 

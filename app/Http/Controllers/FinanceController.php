@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChainSyncEventRaised;
 use App\Http\Requests\FinanceDateRequest;
 use App\Http\Requests\TransactionRequest;
 use App\Http\Requests\BudgetRequest;
@@ -85,7 +86,20 @@ class FinanceController extends Controller
     // --- TRANSAKSI TUNGGAL ---
     public function storeTransaction(TransactionRequest $request)
     {
-        Auth::user()->financeTransactions()->create($request->validated());
+        $transaction = Auth::user()->financeTransactions()->create($request->validated());
+        ChainSyncEventRaised::dispatch(
+            Auth::id(),
+            "finance.transaction_created",
+            "finance_transaction",
+            (int) $transaction->id,
+            [
+                "type" => $transaction->type,
+                "category" => $transaction->category,
+                "amount" => (float) $transaction->amount,
+                "date" => optional($transaction->date)->format("Y-m-d"),
+                "event_ref" => "finance_transaction:{$transaction->id}:created",
+            ],
+        );
         return back();
     }
 
@@ -99,6 +113,20 @@ class FinanceController extends Controller
     public function destroyTransaction(FinanceTransaction $financeTransaction)
     {
         if ($financeTransaction->user_id !== Auth::id()) abort(403);
+        ChainSyncEventRaised::dispatch(
+            Auth::id(),
+            "finance.transaction_deleted",
+            "finance_transaction",
+            (int) $financeTransaction->id,
+            [
+                "type" => $financeTransaction->type,
+                "category" => $financeTransaction->category,
+                "amount" => (float) $financeTransaction->amount,
+                "date" => optional($financeTransaction->date)->format("Y-m-d"),
+                "event_ref" => "finance_transaction:{$financeTransaction->id}:created",
+                "is_reversal" => true,
+            ],
+        );
         $financeTransaction->delete();
         return back();
     }

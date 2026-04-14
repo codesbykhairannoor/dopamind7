@@ -7,6 +7,7 @@ use App\Http\Controllers\HabitController;
 use App\Http\Controllers\PlannerController;
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\ChainSyncController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
@@ -496,6 +497,19 @@ Route::middleware(["auth", "throttle:global"])->group(function () {
                 HabitController::class,
                 "storeLog",
             ])->name("log");
+        });
+
+    Route::middleware(["quantum"])
+        ->prefix("chainsync")
+        ->name("chainsync.")
+        ->group(function () {
+            Route::get("/links", [ChainSyncController::class, "index"])->name("links.index");
+            Route::post("/links", [ChainSyncController::class, "store"])->name("links.store");
+            Route::delete("/links/{chainLink}", [ChainSyncController::class, "destroy"])->name("links.destroy");
+            Route::post("/quick-target", [ChainSyncController::class, "quickTarget"])->name("quick-target");
+            Route::get("/timeline", [ChainSyncController::class, "timeline"])->name("timeline");
+            Route::get("/search-options", [ChainSyncController::class, "search"])->name("search");
+            Route::get("/suggestions", [ChainSyncController::class, "suggestions"])->name("suggestions");
         });
 
     Route::middleware(["module:finance"])

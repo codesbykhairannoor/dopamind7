@@ -75,5 +75,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'module' => \App\Http\Middleware\CheckModuleStatus::class,
         'subscription' => \App\Http\Middleware\EnsureSubscription::class,
+        'quantum' => \App\Http\Middleware\EnsureQuantum::class,
     ];
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChainSyncEventRaised;
 use App\Http\Requests\PlannerDateRequest;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateLogRequest;
@@ -17,7 +18,9 @@ use Inertia\Inertia;
 
 class PlannerController extends Controller
 {
-    public function __construct(private PlannerService $plannerService) 
+    public function __construct(
+        private PlannerService $plannerService
+    )
     {
         // Inject Service otomatis
     }
@@ -68,6 +71,34 @@ class PlannerController extends Controller
     public function update(UpdateTaskRequest $request, PlannerTask $plannerTask)
     {
         $plannerTask->update($request->validated());
+        if ($plannerTask->is_completed) {
+            ChainSyncEventRaised::dispatch(
+                Auth::id(),
+                "planner.task_completed",
+                "planner_task",
+                (int) $plannerTask->id,
+                [
+                    "title" => $plannerTask->title,
+                    "date" => optional($plannerTask->date)->format("Y-m-d"),
+                    "type" => (int) $plannerTask->type,
+                    "event_ref" => "planner_task:{$plannerTask->id}:completed",
+                ],
+            );
+        } else {
+            ChainSyncEventRaised::dispatch(
+                Auth::id(),
+                "planner.task_uncompleted",
+                "planner_task",
+                (int) $plannerTask->id,
+                [
+                    "title" => $plannerTask->title,
+                    "date" => optional($plannerTask->date)->format("Y-m-d"),
+                    "type" => (int) $plannerTask->type,
+                    "event_ref" => "planner_task:{$plannerTask->id}:completed",
+                    "is_reversal" => true,
+                ],
+            );
+        }
 
         if ($request->wantsJson()) return response()->json(['message' => 'Task updated', 'data' => new PlannerTaskResource($plannerTask)]);
         return back();
@@ -77,6 +108,34 @@ class PlannerController extends Controller
     {
         if ($plannerTask->user_id !== Auth::id()) abort(403);
         $plannerTask->update(['is_completed' => !$plannerTask->is_completed]);
+        if ($plannerTask->is_completed) {
+            ChainSyncEventRaised::dispatch(
+                Auth::id(),
+                "planner.task_completed",
+                "planner_task",
+                (int) $plannerTask->id,
+                [
+                    "title" => $plannerTask->title,
+                    "date" => optional($plannerTask->date)->format("Y-m-d"),
+                    "type" => (int) $plannerTask->type,
+                    "event_ref" => "planner_task:{$plannerTask->id}:completed",
+                ],
+            );
+        } else {
+            ChainSyncEventRaised::dispatch(
+                Auth::id(),
+                "planner.task_uncompleted",
+                "planner_task",
+                (int) $plannerTask->id,
+                [
+                    "title" => $plannerTask->title,
+                    "date" => optional($plannerTask->date)->format("Y-m-d"),
+                    "type" => (int) $plannerTask->type,
+                    "event_ref" => "planner_task:{$plannerTask->id}:completed",
+                    "is_reversal" => true,
+                ],
+            );
+        }
 
         if (request()->wantsJson()) return response()->json(['message' => 'Status toggled', 'data' => new PlannerTaskResource($plannerTask)]);
         return back();

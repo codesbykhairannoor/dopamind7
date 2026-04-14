@@ -5,7 +5,8 @@ const props = defineProps({
     scheduledTasks: { type: Array, default: () => [] },
     openModal: { type: Function, required: true },
     toggleComplete: { type: Function, required: true },
-    getTypeColor: { type: Function, default: () => '' }
+    getTypeColor: { type: Function, default: () => '' },
+    openChainSync: { type: Function, default: null },
 });
 
 // --- KONFIGURASI ---
@@ -268,11 +269,15 @@ const currentTimeIndicatorStyle = computed(() => {
                                         {{ formatTimeRange(task) }}
                                     </span>
                                 </div>
-                                
-                                <button @click.stop="toggleComplete(task)" class="w-5 h-5 rounded border bg-white dark:bg-slate-800 flex items-center justify-center hover:scale-110 transition-transform shrink-0 shadow-sm dark:shadow-none" 
-                                    :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
-                                    <svg v-if="task.is_completed" class="w-3 h-3 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
-                                </button>
+                                <div class="flex items-center gap-1">
+                                    <button v-if="openChainSync" @click.stop="openChainSync(task)" class="w-5 h-5 rounded border bg-white dark:bg-slate-800 flex items-center justify-center text-[10px]">
+                                        🔗
+                                    </button>
+                                    <button @click.stop="toggleComplete(task)" class="w-5 h-5 rounded border bg-white dark:bg-slate-800 flex items-center justify-center hover:scale-110 transition-transform shrink-0 shadow-sm dark:shadow-none" 
+                                        :class="task.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : getTaskTheme(task.type).check">
+                                        <svg v-if="task.is_completed" class="w-3 h-3 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
+                                    </button>
+                                </div>
                             </div>
 
                             <div class="flex items-center gap-2 mt-0.5 min-h-0">

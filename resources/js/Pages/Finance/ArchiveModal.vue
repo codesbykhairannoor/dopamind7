@@ -15,7 +15,8 @@ const props = defineProps({
     categories: Array, 
     close: Function,
     onDelete: Function,
-    onEdit: Function 
+    onEdit: Function,
+    onChain: Function,
 });
 
 const { formatMoney, getCategoryDetails } = useFinanceFormat();
@@ -96,6 +97,9 @@ const handleDeleteAction = (id) => {
                                 {{ trx.type === 'income' ? '+' : '-' }} {{ formatMoney(trx.amount) }}
                             </p>
                             <div class="flex gap-3 justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button v-if="onChain" @click="onChain(trx)" class="text-[10px] font-bold text-violet-500 hover:underline">
+                                    Chain
+                                </button>
                                 <button @click="handleEditAction(trx)" class="text-[10px] font-bold text-indigo-500 dark:text-indigo-400 hover:underline">
                                     {{ $t('edit') }}
                                 </button>

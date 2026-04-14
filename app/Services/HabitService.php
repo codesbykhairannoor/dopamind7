@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\ChainSyncEventRaised;
 use App\Models\Habit;
 use App\Models\HabitLog;
 use App\Models\User;
@@ -33,13 +34,45 @@ class HabitService
      */
     public function logHabit(Habit $habit, string $date, string $status): void
     {
+        $eventRef = "habit:{$habit->id}:{$date}:completed";
+
         if ($status === 'uncheck') {
             HabitLog::where('habit_id', $habit->id)->where('date', $date)->delete();
+            ChainSyncEventRaised::dispatch(
+                $habit->user_id,
+                'habit.unchecked',
+                'habit',
+                (int) $habit->id,
+                [
+                        'habit_id' => (int) $habit->id,
+                        'source_title' => $habit->name,
+                    'status' => $status,
+                    'date' => $date,
+                    'event_ref' => $eventRef,
+                    'is_reversal' => true,
+                ]
+            );
         } else {
             HabitLog::updateOrCreate(
                 ['habit_id' => $habit->id, 'date' => $date],
                 ['status' => $status]
             );
+
+            if ($status === 'completed') {
+                ChainSyncEventRaised::dispatch(
+                    $habit->user_id,
+                    'habit.completed',
+                    'habit',
+                    (int) $habit->id,
+                    [
+                        'habit_id' => (int) $habit->id,
+                        'source_title' => $habit->name,
+                        'status' => $status,
+                        'date' => $date,
+                        'event_ref' => $eventRef,
+                    ]
+                );
+            }
         }
         Cache::forget("user_{$habit->user_id}_habit_streak");
     }
@@ -152,6 +185,34 @@ class HabitService
                         ['habit_id' => $log['habit_id'], 'date' => $log['date']],
                         ['status' => $log['status']]
                     );
+
+                    if ($log['status'] === 'completed') {
+                        ChainSyncEventRaised::dispatch(
+                            $userId,
+                            'habit.completed',
+                            'habit',
+                            (int) $log['habit_id'],
+                            [
+                                'habit_id' => (int) $log['habit_id'],
+                                'status' => $log['status'],
+                                'date' => $log['date'],
+                                'event_ref' => "habit:{$log['habit_id']}:{$log['date']}:completed",
+                            ]
+                        );
+                    } elseif ($log['status'] === 'uncheck') {
+                        ChainSyncEventRaised::dispatch(
+                            $userId,
+                            'habit.unchecked',
+                            'habit',
+                            (int) $log['habit_id'],
+                            [
+                                'status' => $log['status'],
+                                'date' => $log['date'],
+                                'event_ref' => "habit:{$log['habit_id']}:{$log['date']}:completed",
+                                'is_reversal' => true,
+                            ]
+                        );
+                    }
                 }
             }
             Cache::forget("user_{$userId}_habit_streak");

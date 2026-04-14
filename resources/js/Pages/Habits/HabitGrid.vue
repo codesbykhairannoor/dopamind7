@@ -23,6 +23,7 @@ const props = defineProps({
     handleMouseEnter: Function,
     isCellSelected: Function,
     saveHabitOrder: Function,
+    openChainSync: Function,
 });
 
 // Draggable list for desktop
@@ -256,6 +257,9 @@ onMounted(() => {
 
                                     <!-- Action Bubble (Desktop) -->
                                     <div class="flex items-center gap-1 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md px-1.5 py-1 rounded-full absolute right-2 top-2 shadow-xl border border-slate-200/50 dark:border-slate-700 z-50 transition-all opacity-0 scale-90 translate-x-1 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-x-0">
+                                        <button @click="openChainSync && openChainSync(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-500/10 rounded-full transition text-xs" title="ChainSync">
+                                            🔗
+                                        </button>
                                         <button @click="editHabit(habit)" class="p-1.5 text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 rounded-full transition" title="Edit">
                                             <OneForMindIcon name="planner" size="14" stroke-width="2.5" />
                                         </button>

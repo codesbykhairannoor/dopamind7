@@ -14,6 +14,8 @@ import PlannerMobileTimeline from './PlannerMobileTimeline.vue';
 import PlannerModal from './PlannerModal.vue';
 import PlannerBatchModal from './PlannerBatchModal.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import ChainSyncDrawer from '@/Components/ChainSync/ChainSyncDrawer.vue';
+import { useChainSyncDrawer } from '@/Composables/useChainSyncDrawer';
 import { useGating } from '@/Composables/useGating';
 
 // 🔥 TERIMA currentDate DARI CONTROLLER
@@ -29,6 +31,7 @@ const { currentDate, formattedDate, changeDate, changeDay } = usePlannerCalendar
 
 // Init Gating
 const { isExplorer, demandAccess } = useGating();
+const { openDrawer } = useChainSyncDrawer();
 
 // Logic Single (Kirim props ke usePlanner)
 const {
@@ -96,6 +99,7 @@ onMounted(() => {
                         :openModal="openModal"
                         :toggleComplete="toggleComplete" 
                         :getTypeColor="getTypeColor"
+                        :openChainSync="(task) => openDrawer({ type: 'planner_task', id: task.id, title: task.title })"
                     />
                 </div>
 
@@ -125,6 +129,7 @@ onMounted(() => {
                         :openModal="openModal"
                         :toggleComplete="toggleComplete" 
                         :getTypeColor="getTypeColor"
+                        :openChainSync="(task) => openDrawer({ type: 'planner_task', id: task.id, title: task.title })"
                     />
                     </div>
 
@@ -159,6 +164,7 @@ onMounted(() => {
             :removeRow="removeBatchRow"
             :switchToSingle="switchToSingle"
         />
+        <ChainSyncDrawer />
 
     </div>
 </template>

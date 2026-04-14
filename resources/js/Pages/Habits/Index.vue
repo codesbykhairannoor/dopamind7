@@ -10,6 +10,8 @@ import HabitStats from './HabitStats.vue';
 import HabitModals from './HabitModals.vue';
 import NeuralHabitInsight from './NeuralHabitInsight.vue';
 import NeuralBridge from '@/Components/NeuralBridge.vue';
+import ChainSyncDrawer from '@/Components/ChainSync/ChainSyncDrawer.vue';
+import { useChainSyncDrawer } from '@/Composables/useChainSyncDrawer';
 
 
 const props = defineProps({
@@ -22,6 +24,7 @@ const props = defineProps({
 });
 
 const neuralOs = ref(null);
+const { openDrawer } = useChainSyncDrawer();
 
 // 🔥 FIX UTAMA: Ekstrak SEMUA state dan action Batch dari useHabits
 const {
@@ -100,6 +103,7 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 :handleMouseEnter="handleMouseEnter"
                 :isCellSelected="isCellSelected"
                 :saveHabitOrder="saveHabitOrder"
+                :openChainSync="(habit) => openDrawer({ type: 'habit', id: habit.id, title: habit.name })"
             />
 
             <div class="px-4 md:px-8">
@@ -115,6 +119,8 @@ const handleToggleProxy = async (habitId, date, forceStatus) => {
                 :savedMood="props.savedMood"
                 :selectMood="handleMoodSelect"
             />
+
+            <ChainSyncDrawer />
 
 
 

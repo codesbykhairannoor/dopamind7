@@ -19,6 +19,7 @@ const props = defineProps({
     goal: Object,
     onEdit: Function,
     onDelete: Function,
+    onOpenChainSync: Function,
     onToggleMilestone: Function,
     onAddMilestone: Function,
     onSaveMilestone: Function,
@@ -110,6 +111,9 @@ const meshGradient = computed(() => {
             </div>
 
             <div class="absolute top-4 right-4 flex gap-2">
+                <button @click="onOpenChainSync(goal)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-violet-500 hover:text-white transition-all shadow-xl md:opacity-0 md:group-hover:opacity-100 scale-90 md:group-hover:scale-100">
+                    🔗
+                </button>
                 <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white transition-all shadow-xl md:opacity-0 md:group-hover:opacity-100 scale-90 md:group-hover:scale-100 delay-75">
                     <Edit3 :size="14" />
                 </button>
