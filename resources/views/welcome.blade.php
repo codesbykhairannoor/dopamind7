@@ -69,48 +69,136 @@
     {{-- ================================================================= --}}
     {{-- SECTION 1: HERO - THE UNIFIED ORB --}}
     {{-- ================================================================= --}}
-    <header class="pt-32 pb-40 px-6 text-center relative overflow-hidden bg-white bg-pattern-dots">
-        {{-- Deep Indigo Gradient Background --}}
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[800px] bg-gradient-to-b from-indigo-50/50 via-white to-white rounded-full blur-[120px] -z-10"></div>
+    <header class="relative pt-20 pb-32 lg:pt-32 lg:pb-52 overflow-hidden bg-white">
+        {{-- High-End Ambient Lighting --}}
+        <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-indigo-50/40 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-50/30 rounded-full blur-[100px] -z-10"></div>
         
-        <div class="max-w-5xl mx-auto relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 shadow-sm text-indigo-700 font-black text-[10px] mb-10 tracking-[0.2em] animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
-                </span>
-                {{ __('hero_badge') }}
-            </div>
-            
-            <h1 class="text-[42px] leading-[1.1] md:text-7xl lg:text-8xl mb-10 tracking-tight text-slate-900 animate-in fade-in slide-in-from-bottom-8 duration-1000 font-black">
-                {{ __('hero_title_1') }}<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800">
-                    {{ __('hero_title_2') }}
-                </span>
-            </h1>
-            
-            <p class="text-lg md:text-xl text-slate-500 mb-14 leading-relaxed max-w-3xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 fill-mode-both">
-                {{ __('hero_desc') }}
-            </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-5 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 fill-mode-both">
-                @guest
-                    <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition transform hover:-translate-y-1 active:scale-95 group">
-                        {{ __('hero_cta_primary') }}
-                        <span class="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
-                    </a>
-                    <a href="{{ route('about') }}" class="bg-white text-slate-700 border border-slate-200 px-12 py-6 rounded-3xl font-black text-xl hover:bg-slate-50 hover:border-slate-300 transition transform hover:-translate-y-1 active:scale-95">
-                        {{ __('hero_cta_secondary') }}
-                    </a>
-                @endguest
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                {{-- Left Column: Copywriting --}}
+                <div class="text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 border border-indigo-100 shadow-sm text-indigo-700 font-black text-[10px] mb-8 tracking-[0.2em] uppercase">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
+                        </span>
+                        {{ __('hero_premium_badge') }}
+                    </div>
+                    
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl mb-8 tracking-tighter text-slate-900 font-black leading-[0.95]">
+                        {{ __('hero_premium_title_1') }} <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                            {{ __('hero_premium_title_2') }}
+                        </span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-slate-500 mb-12 leading-relaxed max-w-xl font-medium">
+                        {{ __('hero_premium_desc') }}
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        @guest
+                            <a hx-boost="false" href="{{ route('register') }}" class="bg-indigo-600 text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-indigo-700 hover:shadow-2xl hover:shadow-indigo-200 transition-all transform hover:-translate-y-1 active:scale-95 group text-center">
+                                {{ __('hero_premium_cta_primary') }}
+                                <span class="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
+                            </a>
+                            <a href="{{ route('about') }}" class="bg-white text-slate-700 border border-slate-200 px-10 py-5 rounded-2xl font-black text-lg hover:bg-slate-50 hover:border-slate-300 transition-all transform hover:-translate-y-1 active:scale-95 text-center">
+                                {{ __('hero_premium_cta_secondary') }}
+                            </a>
+                        @endguest
 
-                @auth
-                    <a hx-boost="false" href="{{ route('dashboard') }}" class="bg-indigo-600 text-white px-12 py-6 rounded-3xl font-black text-xl hover:shadow-2xl transition transform hover:-translate-y-1 active:scale-95">
-                        {{ __('nav_dashboard') }} →
-                    </a>
-                @endauth
+                        @auth
+                            <a hx-boost="false" href="{{ route('dashboard') }}" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black text-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 active:scale-95 text-center">
+                                Enter Dashboard →
+                            </a>
+                        @endauth
+                    </div>
+
+                    <div class="mt-12 flex items-center gap-6">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User" />
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aria" alt="User" />
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm flex items-center justify-center bg-indigo-600 text-[10px] font-bold text-white uppercase">
+                                +2k
+                            </div>
+                        </div>
+                        <div class="text-[11px] font-black text-slate-400 uppercase tracking-widest leading-none">
+                            Trusted by <span class="text-indigo-600">Global Achievers</span>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Right Column: Mockup layers --}}
+                <div class="relative hidden lg:block">
+                    <div class="relative z-20 transform hover:scale-[1.02] transition-transform duration-700 cubic-bezier">
+                        {{-- Main Dashboard Peek --}}
+                        <div class="bg-slate-900 rounded-[2.5rem] p-1 shadow-2xl border-[10px] border-slate-800 overflow-hidden aspect-[4/3] relative">
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent"></div>
+                            {{-- Mini UI Elements --}}
+                            <div class="p-8 space-y-6">
+                                <div class="h-4 w-32 bg-indigo-500/20 rounded-full"></div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="h-32 bg-white/5 rounded-3xl border border-white/10 p-4">
+                                        <div class="h-2 w-12 bg-white/10 rounded-full mb-8"></div>
+                                        <div class="h-8 w-24 bg-indigo-500 rounded-lg"></div>
+                                    </div>
+                                    <div class="h-24 bg-white/5 rounded-3xl border border-white/10 p-4 self-end">
+                                        <div class="flex gap-1">
+                                            <div class="w-3 h-3 bg-indigo-400 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-indigo-400/30 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-indigo-400/30 rounded-full"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="h-20 bg-white/5 rounded-3xl border border-white/10"></div>
+                            </div>
+                        </div>
+
+                        {{-- Floating Glass Cards --}}
+                        <div class="absolute -top-10 -right-10 w-48 bg-white/80 backdrop-blur-xl p-6 rounded-3xl border border-white shadow-2xl transform rotate-6 animate-bounce-slow">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-black">🌱</div>
+                                <div class="text-[10px] font-black text-slate-800">Habit: Meditate</div>
+                            </div>
+                            <div class="flex gap-1.5">
+                                <div class="w-full h-1 bg-emerald-500 rounded-full"></div>
+                                <div class="w-full h-1 bg-emerald-500 rounded-full"></div>
+                                <div class="w-full h-1 bg-slate-100 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <div class="absolute -bottom-10 -left-10 w-56 bg-white/90 backdrop-blur-xl p-6 rounded-[2rem] border border-white shadow-2xl transform -rotate-3 animate-float">
+                            <div class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3">Finance Summary</div>
+                            <div class="text-2xl font-black text-indigo-600">Rp 15.420.000</div>
+                            <div class="mt-4 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full bg-indigo-500 w-3/4"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Background Shapes --}}
+                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-indigo-100/50 rounded-full blur-[80px] -z-10 animate-pulse"></div>
+                </div>
             </div>
         </div>
+        
+        <style>
+            @keyframes bounce-slow {
+                0%, 100% { transform: translateY(0) rotate(6deg); }
+                50% { transform: translateY(-15px) rotate(6deg); }
+            }
+            @keyframes float {
+                0%, 100% { transform: translateY(0) rotate(-3deg); }
+                50% { transform: translateY(10px) rotate(-3deg); }
+            }
+            .animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
+            .animate-float { animation: float 8s ease-in-out infinite; }
+        </style>
     </header>
 
     {{-- ================================================================= --}}

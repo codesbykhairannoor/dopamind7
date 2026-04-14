@@ -276,8 +276,8 @@
 @endif
 
 <body class="font-sans antialiased selection:bg-indigo-500 selection:text-white">
-    @if(request()->routeIs('dashboard'))
-        {{-- PREMIUM LOADER (Booting Effect) --}}
+    @if(request()->routeIs('dashboard') && !request()->has('no-loader'))
+        {{-- PREMIUM LOADER (Booting Effect) - Strictly for Dashboard only --}}
         <div id="neuro-loader"
             class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center transition-opacity duration-700">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4f46e510_0,transparent_50%)]"></div>
@@ -330,6 +330,20 @@
                     setTimeout(() => loader.remove(), 700);
                 }
             }, 3000);
+        });
+    </script>
+    {{-- Prefetch Script for Auth Pages --}}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const authLinks = document.querySelectorAll('a[href*="/login"], a[href*="/register"]');
+            authLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    const prefetchLink = document.createElement('link');
+                    prefetchLink.rel = 'prefetch';
+                    prefetchLink.href = link.href;
+                    document.head.appendChild(prefetchLink);
+                }, { once: true });
+            });
         });
     </script>
 </body>
