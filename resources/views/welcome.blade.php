@@ -69,15 +69,30 @@
     {{-- ================================================================= --}}
     {{-- SECTION 1: HERO - THE MONUMENTAL CENTER --}}
     {{-- ================================================================= --}}
-    <header class="relative pt-12 pb-40 lg:pt-16 lg:pb-56 overflow-hidden bg-white">
+    <header class="relative pt-24 pb-40 lg:pt-32 lg:pb-56 overflow-hidden bg-white">
         {{-- High-End Ambient Lighting --}}
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-full bg-indigo-50/40 rounded-full blur-[160px] -z-10"></div>
         
-        {{-- Floating Dynamic Icons --}}
-        <div class="absolute top-24 left-[10%] w-12 h-12 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl animate-bounce-slow hidden xl:flex border border-indigo-50 z-20">💰</div>
-        <div class="absolute top-32 right-[10%] w-14 h-14 bg-white rounded-2xl shadow-xl flex items-center justify-center text-3xl animate-float hidden xl:flex border border-indigo-50 z-20">🌱</div>
-        <div class="absolute bottom-40 left-[15%] w-14 h-14 bg-white rounded-2xl shadow-xl flex items-center justify-center text-3xl animate-float hidden xl:flex border border-indigo-50 z-20">📅</div>
-        <div class="absolute bottom-60 right-[15%] w-12 h-12 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl animate-bounce-slow hidden xl:flex border border-indigo-50 z-20">🎯</div>
+        {{-- Unique & Cool Floating UI Elements --}}
+        <div class="absolute top-32 left-[8%] w-20 h-20 bg-white/40 backdrop-blur-xl rounded-[2rem] shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-3xl animate-float hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-indigo-500/5 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <span class="relative">💰</span>
+        </div>
+        
+        <div class="absolute top-48 right-[8%] w-24 h-24 bg-white/40 backdrop-blur-xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-4xl animate-bounce-slow hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-emerald-500/5 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <span class="relative">🌱</span>
+        </div>
+
+        <div class="absolute bottom-60 left-[12%] w-16 h-16 bg-white/40 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-2xl animate-bounce-slow hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-purple-500/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <span class="relative">📅</span>
+        </div>
+
+        <div class="absolute bottom-80 right-[15%] w-20 h-20 bg-slate-900/5 backdrop-blur-xl rounded-[1.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] flex items-center justify-center text-3xl animate-float hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
+            <div class="absolute inset-0 bg-slate-900/5 rounded-[1.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <span class="relative">🎯</span>
+        </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
             {{-- Badge --}}
