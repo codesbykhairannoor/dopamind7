@@ -574,7 +574,10 @@
         activeAccordion: null,
         scrolled: false,
         isInterfacing: false
-    }" @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard') || $event.detail.pathInfo.requestPath.includes('login') || $event.detail.pathInfo.requestPath.includes('register')) isInterfacing = true"
+    }" @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard')) isInterfacing = true"
+        @htmx:after-request.window="isInterfacing = false"
+        @htmx:response-error.window="isInterfacing = false"
+        @pageshow.window="isInterfacing = false"
         @scroll.window.passive="scrolled = (window.scrollY > 20)" class="relative">
 
         {{-- INSTANT APP LOADER (Blade to Vue Transition) --}}
@@ -843,12 +846,12 @@
                     {{-- Login/Register (Desktop) --}}
                     <div class="hidden lg:flex items-center gap-3">
                         @auth
-                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('dashboard') }}"
+                            <a hx-boost="false" href="{{ route('dashboard') }}"
                                 class="px-5 py-2 bg-slate-900 text-white rounded-full text-[13px] font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
                         @else
-                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('login') }}"
+                            <a hx-boost="false" href="{{ route('login') }}"
                                 class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">Log In</a>
-                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('register') }}"
+                            <a hx-boost="false" href="{{ route('register') }}"
                                 class="px-5 py-2 bg-indigo-600 text-white rounded-full text-[13px] font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
                                 Get Started
                             </a>
@@ -858,10 +861,10 @@
                     {{-- MOBILE ACTIONS (Dashboard/Get Started) --}}
                     <div class="flex lg:hidden items-center gap-2">
                         @auth
-                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('dashboard') }}"
+                            <a hx-boost="false" href="{{ route('dashboard') }}"
                                 class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[13.5px] font-black shadow-lg">Dashboard</a>
                         @else
-                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('register') }}"
+                            <a hx-boost="false" href="{{ route('register') }}"
                                 class="px-5 py-2.5 bg-indigo-600 text-white rounded-full text-[13.5px] font-black shadow-lg shadow-indigo-200">
                                 Get Started
                             </a>
@@ -1038,15 +1041,15 @@
 
                     @guest
                         <div class="grid grid-cols-1 gap-3">
-                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('login') }}"
+                            <a hx-boost="false" href="{{ route('login') }}"
                                 class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">Log
                                 In</a>
-                            <a @click="isInterfacing = true" hx-boost="false" href="{{ route('register') }}"
+                            <a hx-boost="false" href="{{ route('register') }}"
                                 class="w-full py-4.5 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">Get
                                 Started</a>
                         </div>
                     @else
-                        <a @click="isInterfacing = true" hx-boost="false" href="{{ route('dashboard') }}"
+                        <a hx-boost="false" href="{{ route('dashboard') }}"
                             class="block w-full py-4.5 text-center font-black text-white bg-slate-900 rounded-2xl">Dashboard</a>
                     @endguest
                 </div>
