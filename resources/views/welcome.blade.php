@@ -69,10 +69,16 @@
     {{-- ================================================================= --}}
     {{-- SECTION 1: HERO - THE MONUMENTAL CENTER --}}
     {{-- ================================================================= --}}
-    <header class="relative pt-32 pb-40 lg:pt-48 lg:pb-56 overflow-hidden bg-white">
+    <header class="relative pt-12 pb-40 lg:pt-16 lg:pb-56 overflow-hidden bg-white">
         {{-- High-End Ambient Lighting --}}
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-full bg-indigo-50/40 rounded-full blur-[160px] -z-10"></div>
         
+        {{-- Floating Dynamic Icons --}}
+        <div class="absolute top-24 left-[10%] w-12 h-12 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl animate-bounce-slow hidden xl:flex border border-indigo-50 z-20">💰</div>
+        <div class="absolute top-32 right-[10%] w-14 h-14 bg-white rounded-2xl shadow-xl flex items-center justify-center text-3xl animate-float hidden xl:flex border border-indigo-50 z-20">🌱</div>
+        <div class="absolute bottom-40 left-[15%] w-14 h-14 bg-white rounded-2xl shadow-xl flex items-center justify-center text-3xl animate-float hidden xl:flex border border-indigo-50 z-20">📅</div>
+        <div class="absolute bottom-60 right-[15%] w-12 h-12 bg-white rounded-2xl shadow-xl flex items-center justify-center text-2xl animate-bounce-slow hidden xl:flex border border-indigo-50 z-20">🎯</div>
+
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
             {{-- Badge --}}
             <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-slate-600 font-bold text-[10px] mb-8 tracking-widest uppercase shadow-sm">
@@ -83,7 +89,7 @@
             {{-- Balanced Title --}}
             <h1 class="text-5xl md:text-7xl lg:text-8xl mb-8 tracking-[-0.03em] text-slate-900 font-[900] leading-[1.05] max-w-4xl mx-auto">
                 {{ __('hero_premium_title_1') }} 
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-900 block mt-2">
+                <span class="text-indigo-600 block mt-2">
                     {{ __('hero_premium_title_2') }}
                 </span>
             </h1>
