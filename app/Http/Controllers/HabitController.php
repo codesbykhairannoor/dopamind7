@@ -59,15 +59,8 @@ class HabitController extends Controller
     {
         $user = Auth::user();
         
-        if ($user->isExplorer()) {
-            $count = Habit::ofUser($user->id)->forPeriod($request->period)->count();
-            if ($count >= 5) {
-                if ($request->wantsJson()) {
-                    return response()->json(['message' => 'Explorer limit reached. Only 5 habits allowed.'], 403);
-                }
-                return back()->with('error', 'Explorer limit reached (max 5 habits). Upgrade to Architect to add more!');
-            }
-        }
+        // Explorer limit removed by request: habit, finance, and planner are now fully free.
+
 
         $habit = $this->habitService->createHabit($user->id, $request->validated());
 
@@ -142,17 +135,8 @@ class HabitController extends Controller
         ]);
 
         $user = Auth::user();
-        if ($user->isExplorer()) {
-            $currentCount = Habit::ofUser($user->id)->forPeriod($request->period)->count();
-            $newCount = count($request->habits);
-            
-            if (($currentCount + $newCount) > 5) {
-                if ($request->wantsJson()) {
-                    return response()->json(['message' => 'Explorer limit exceeded. Maximum 5 habits total.'], 403);
-                }
-                return back()->with('error', 'Explorer limit exceeded. You can only have 5 habits total.');
-            }
-        }
+        // Explorer limit removed by request: massal habit is now fully free.
+
 
         $this->habitService->batchStore($user->id, $request->period, $request->habits, $user->timezone ?? 'Asia/Jakarta');
 

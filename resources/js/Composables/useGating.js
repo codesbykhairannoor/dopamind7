@@ -11,19 +11,19 @@ const gatingState = reactive({
 
 // Feature → tier mapping
 const FEATURE_TIERS = {
-    // Free (Explorer)
-    dashboard:     'explorer',
-    habit:         'explorer',
-    finance:       'explorer',
-    planner:       'explorer',
+    // Free (Explorer) - Fully Unlocked
+    dashboard:      'explorer',
+    habit:          'explorer',
+    finance:        'explorer',
+    planner:        'explorer',
+    finance_budget: 'explorer',
+    finance_export: 'explorer',
 
     // Architect
     journal:       'architect',
     calendar:      'architect',
     job:           'architect',
     goals:         'architect',
-    finance_budget: 'architect',
-    finance_export: 'architect',
 
     // Quantum / AI
     ai_coach:         'quantum',

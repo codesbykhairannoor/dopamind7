@@ -37,8 +37,7 @@ onMounted(() => {
 <template>
     <Head title="Welcome to the Ecosystem!" />
 
-    <AuthenticatedLayout>
-        <div class="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-slate-50/30 dark:bg-slate-950/20">
+    <div class="min-h-[80vh] flex items-center justify-center px-4 py-12 bg-slate-50/30 dark:bg-slate-950/20">
             <div class="max-w-xl w-full text-center animate-in fade-in zoom-in-95 duration-1000">
                 
                 <!-- Success Icon -->
@@ -90,9 +89,8 @@ onMounted(() => {
                     SECURE ACCESS GRANTED
                     <span class="w-12 h-px bg-slate-200"></span>
                 </div>
-            </div>
         </div>
-    </AuthenticatedLayout>
+    </div>
 </template>
 
 <style scoped>

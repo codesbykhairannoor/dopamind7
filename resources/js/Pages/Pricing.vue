@@ -41,9 +41,9 @@ const plans = computed(() => {
             period: "pricing_forever",
             desc: "pricing_explorer_desc",
             features: [
-                { text: "pricing_f_habit_max5", icon: ListChecks },
+                { text: "pricing_f_unlimited_habit", icon: ListChecks },
                 { text: "pricing_f_daily_planner_tasks", icon: Calendar },
-                { text: "pricing_f_basic_finance_simple", icon: Wallet },
+                { text: "pricing_f_the_vault", icon: Wallet },
                 { text: "pricing_f_standard_dashboards", icon: TrendingUp },
                 {
                     text: "pricing_f_journal_goals_jobs_locked",
@@ -167,8 +167,7 @@ onMounted(() => {
 <template>
     <Head title="Pricing & Plans" />
 
-    <AuthenticatedLayout>
-        <div class="bg-slate-50 dark:bg-slate-950 min-h-screen pb-32">
+    <div class="bg-slate-50 dark:bg-slate-950 min-h-screen pb-32">
             <!-- ===== HERO SECTION ===== -->
             <div class="text-center pt-20 pb-2 px-4 md:px-8">
                 <h1
@@ -409,7 +408,7 @@ onMounted(() => {
                                     v-for="row in [
                                         {
                                             name: $t('pricing_f_active_habits'),
-                                            explorer: '5 Habits',
+                                            explorer: $t('pricing_v_unlimited'),
                                             architect: $t(
                                                 'pricing_v_unlimited',
                                             ),
@@ -419,13 +418,15 @@ onMounted(() => {
                                             name: $t(
                                                 'pricing_f_planner_engine',
                                             ),
-                                            explorer: $t('pricing_v_standard'),
+                                            explorer: $t('pricing_v_batch'),
                                             architect: $t('pricing_v_batch'),
                                             quantum: $t('pricing_v_ai_powered'),
                                         },
                                         {
                                             name: $t('pricing_f_vault_savings'),
-                                            explorer: $t('pricing_v_locked'),
+                                            explorer: $t(
+                                                'pricing_v_unlimited',
+                                            ),
                                             architect: $t(
                                                 'pricing_v_unlimited',
                                             ),
@@ -522,8 +523,8 @@ onMounted(() => {
             </div>
             <!-- end cards section (px-4 md:px-8) -->
         </div>
-    </AuthenticatedLayout>
 </template>
+
 
 <style scoped>
 .no-scrollbar::-webkit-scrollbar {
