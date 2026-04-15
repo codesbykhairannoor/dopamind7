@@ -118,28 +118,28 @@ const initiatePayment = async (method) => {
             <div class="absolute -bottom-[10%] left-[20%] w-[50%] h-[30%] bg-indigo-500/5 blur-[120px] rounded-full"></div>
         </div>
 
-        <main class="w-full px-6 py-12 md:py-20 lg:py-24 relative z-10">
-            <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-center">
+        <main class="w-full px-6 py-6 md:py-10 relative z-10">
+            <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                 
                 <!-- Left: Product Value -->
-                <div class="space-y-12 animate-in fade-in slide-in-from-left-8 duration-700">
+                <div class="space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
                     <div>
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-black text-[10px] mb-6 uppercase tracking-widest border border-indigo-100 dark:border-indigo-500/20 shadow-sm">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 font-black text-[10px] mb-4 uppercase tracking-widest border border-indigo-100 dark:border-indigo-500/20 shadow-sm">
                             🔒 Secure Subscription Checkout
                         </div>
-                        <h1 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 leading-[1.1] tracking-tighter">
+                        <h1 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4 leading-[1.1] tracking-tighter">
                             Upgrade to <br/>
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400 dark:from-indigo-400 dark:to-indigo-200">{{ plan }} Experience</span>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-400 dark:from-indigo-400 dark:to-indigo-200">{{ plan }}</span>
                         </h1>
-                        <p class="text-lg text-slate-500 dark:text-slate-400 font-bold leading-relaxed max-w-md">
+                        <p class="text-base text-slate-500 dark:text-slate-400 font-bold leading-relaxed max-w-md">
                             Bergabunglah dengan ribuan achiever lainnya yang telah mengoptimalkan hidup mereka dengan ekosistem kami.
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div v-for="feat in features" :key="feat" class="flex gap-4 p-4 rounded-3xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-sm transition-transform hover:scale-105 duration-300">
-                            <div class="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center shrink-0">
-                                <OneForMindIcon name="check" size="14" class="text-emerald-500" stroke-width="4" />
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div v-for="feat in features" :key="feat" class="flex gap-3 p-3 rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 shadow-sm transition-transform hover:scale-105 duration-300">
+                            <div class="w-6 h-6 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center shrink-0">
+                                <OneForMindIcon name="check" size="12" class="text-emerald-500" stroke-width="4" />
                             </div>
                             <span class="text-xs font-bold text-slate-600 dark:text-slate-300 leading-tight flex items-center">{{ feat }}</span>
                         </div>
@@ -162,47 +162,47 @@ const initiatePayment = async (method) => {
                     <!-- Dynamic Glow -->
                     <div class="absolute inset-0 bg-indigo-500/10 dark:bg-indigo-500/10 blur-[120px] rounded-full scale-150 -z-10"></div>
                     
-                    <div class="bg-white dark:bg-slate-900 rounded-[3rem] p-8 md:p-12 border border-slate-100 dark:border-slate-800 shadow-2xl shadow-indigo-100 dark:shadow-none ring-1 ring-slate-200/50 dark:ring-slate-800">
+                    <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-6 md:p-8 border border-slate-100 dark:border-slate-800 shadow-2xl shadow-indigo-100 dark:shadow-none ring-1 ring-slate-200/50 dark:ring-slate-800">
                         
                         <!-- Selected Summary -->
-                        <div class="flex items-center justify-between mb-12 p-6 rounded-[2rem] bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700">
+                        <div class="flex items-center justify-between mb-8 p-5 rounded-[1.5rem] bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700">
                             <div>
-                                <h3 class="text-xl font-black text-slate-900 dark:text-white mb-1">Total Due</h3>
-                                <p class="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{{ periodLabel }}</p>
+                                <h3 class="text-lg font-black text-slate-900 dark:text-white mb-1">Total Due</h3>
+                                <p class="text-[9px] font-black text-indigo-600 uppercase tracking-widest">{{ periodLabel }}</p>
                             </div>
                             <div class="text-right">
-                                <span class="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">{{ displayPrice }}</span>
+                                <span class="text-2xl font-black text-slate-900 dark:text-white tracking-tighter">{{ displayPrice }}</span>
                             </div>
                         </div>
 
-                        <h2 class="text-sm font-black text-slate-400 uppercase tracking-[0.3em] mb-8 text-center">Select Payment</h2>
+                        <h2 class="text-xs font-black text-slate-400 uppercase tracking-[0.3em] mb-6 text-center">Select Payment</h2>
                         
-                        <div class="space-y-5 mb-10">
+                        <div class="space-y-4 mb-8">
                             <!-- Duitku -->
-                            <button @click="initiatePayment('duitku')" class="w-full group relative overflow-hidden p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-white transition-all text-left shadow-sm">
+                            <button @click="initiatePayment('duitku')" class="w-full group relative overflow-hidden p-6 rounded-[2rem] bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-white transition-all text-left shadow-sm">
                                 <div class="flex items-center justify-between relative z-10">
-                                    <div class="flex items-center gap-5">
-                                        <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-3xl shadow-sm transition-transform group-hover:scale-110">🇮🇩</div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-2xl shadow-sm transition-transform group-hover:scale-110">🇮🇩</div>
                                         <div>
-                                            <h4 class="font-black text-slate-800 dark:text-white">Duitku Local (IDR)</h4>
-                                            <p class="text-[10px] font-bold text-slate-400">QRIS, Virtual Account, & Bank Transfer</p>
+                                            <h4 class="font-black text-sm text-slate-800 dark:text-white">Duitku Local (IDR)</h4>
+                                            <p class="text-[9px] font-bold text-slate-400">QRIS, Virtual Account, & Bank Transfer</p>
                                         </div>
                                     </div>
-                                    <OneForMindIcon name="chevron-right" size="18" class="text-slate-300 group-hover:text-indigo-600 transition-all group-hover:translate-x-1" stroke-width="4" />
+                                    <OneForMindIcon name="chevron-right" size="16" class="text-slate-300 group-hover:text-indigo-600 transition-all group-hover:translate-x-1" stroke-width="4" />
                                 </div>
                             </button>
 
                             <!-- PayPal -->
-                            <button @click="initiatePayment('paypal')" class="w-full group relative overflow-hidden p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-white transition-all text-left shadow-sm">
+                            <button @click="initiatePayment('paypal')" class="w-full group relative overflow-hidden p-6 rounded-[2rem] bg-slate-50 dark:bg-slate-800/30 border border-slate-100 dark:border-slate-800 hover:border-indigo-600 dark:hover:border-indigo-500 hover:bg-white transition-all text-left shadow-sm">
                                 <div class="flex items-center justify-between relative z-10">
-                                    <div class="flex items-center gap-5">
-                                        <div class="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-3xl shadow-sm transition-transform group-hover:scale-110">🌍</div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center text-2xl shadow-sm transition-transform group-hover:scale-110">🌍</div>
                                         <div>
-                                            <h4 class="font-black text-slate-800 dark:text-white">PayPal / Card (USD)</h4>
-                                            <p class="text-[10px] font-bold text-slate-400">International CC & PayPal Wallet</p>
+                                            <h4 class="font-black text-sm text-slate-800 dark:text-white">PayPal / Card (USD)</h4>
+                                            <p class="text-[9px] font-bold text-slate-400">International CC & PayPal Wallet</p>
                                         </div>
                                     </div>
-                                    <OneForMindIcon name="chevron-right" size="18" class="text-slate-300 group-hover:text-indigo-600 transition-all group-hover:translate-x-1" stroke-width="4" />
+                                    <OneForMindIcon name="chevron-right" size="16" class="text-slate-300 group-hover:text-indigo-600 transition-all group-hover:translate-x-1" stroke-width="4" />
                                 </div>
                             </button>
                         </div>

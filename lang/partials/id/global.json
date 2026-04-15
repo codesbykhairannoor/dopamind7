@@ -176,6 +176,20 @@
     "payment_btn_billing": "Kembali ke Tagihan",
     "payment_btn_ai": "Bicara dengan AI Coach",
 
+    "error_title_503": "503: Layanan Tidak Tersedia",
+    "error_title_500": "500: Server Error",
+    "error_title_404": "404: Halaman Tidak Ditemukan",
+    "error_title_403": "403: Akses Ditolak",
+    "error_title_default": "Terjadi Kesalahan",
+
+    "error_desc_503": "Maaf, server sedang dalam pemeliharaan sementara. Silakan kembali lagi nanti!",
+    "error_desc_500": "Ups, sepertinya ada masalah pada server kami. Tim OneForMind sedang memperbaikinya!",
+    "error_desc_404": "Halaman yang Anda cari tidak ditemukan. Mungkin Anda salah alamat atau halaman telah dipindahkan.",
+    "error_desc_403": "Maaf, Anda tidak memiliki izin untuk mengakses halaman ini.",
+    "error_desc_default": "Terjadi kendala teknis yang tidak terduga. Silakan coba lagi.",
+
+    "error_btn_back": "Kembali ke Beranda",
+
     "____ SECTION_8 ____": "=== TOMBOL & LABEL UMUM ===",
     "btn_add": "Tambah",
     "btn_save": "Simpan",

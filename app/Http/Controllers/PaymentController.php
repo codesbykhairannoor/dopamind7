@@ -82,9 +82,12 @@ class PaymentController extends Controller
             $productDetails = 'OneForMind Legendary Founder Edition (Lifetime)';
         }
 
-        if ($user->email === 'erstaunenn@gmail.com') {
-            $paymentAmount = 5000;
-        }
+        // --- TEMPORARY GLOBAL PRICE 5.000 ---
+        // if ($user->email === 'erstaunenn@gmail.com') {
+        //     $paymentAmount = 5000;
+        // }
+        $paymentAmount = 5000;
+        // ------------------------------------
 
         $merchantOrderId = strtoupper($plan) . '-' . $user->id . '-' . time();
         $email = $user->email;

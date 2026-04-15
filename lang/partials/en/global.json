@@ -186,5 +186,19 @@
     "payment_btn_billing": "Back to Billing",
     "payment_btn_ai": "Talk to AI Coach",
 
-    "____ SECTION_8 ____": "=== TOMBOL & LABEL UMUM ==="
+    "error_title_503": "503: Service Unavailable",
+    "error_title_500": "500: Server Error",
+    "error_title_404": "404: Page Not Found",
+    "error_title_403": "403: Forbidden",
+    "error_title_default": "An Error Occurred",
+
+    "error_desc_503": "Sorry, our servers are currently under maintenance. Please check back later!",
+    "error_desc_500": "Oops, something went wrong on our end. The OneForMind team is looking into it!",
+    "error_desc_404": "The page you are looking for does not exist. You might have mistyped the address or the page has moved.",
+    "error_desc_403": "Sorry, you do not have permission to access this page.",
+    "error_desc_default": "An unexpected technical issue occurred. Please try again.",
+
+    "error_btn_back": "Back to Home",
+
+    "____ SECTION_8 ____": "=== TOMBOL & LABEL UMUM ===",
 }
