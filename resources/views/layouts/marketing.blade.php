@@ -484,10 +484,11 @@
     <div x-data="{
         mobileMenuOpen: false,
         activeMenu: null,
-        activeAccordion: null,
+        mobilePanel: null,
         scrolled: false,
         isInterfacing: false
-    }" @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard')) isInterfacing = true"
+    }" @mobile-nav-close.window="mobileMenuOpen = false; mobilePanel = null"
+        @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard')) isInterfacing = true"
         @htmx:after-request.window="isInterfacing = false"
         @htmx:response-error.window="isInterfacing = false"
         @pageshow.window="isInterfacing = false"
@@ -520,7 +521,6 @@
         </div>
 
         {{-- NAVBAR --}}
-        {{-- NAVBAR --}}
         <nav :class="(scrolled || mobileMenuOpen) ? 'bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'bg-transparent'"
             class="fixed top-0 w-full z-[100] transition-all duration-300">
             <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center relative">
@@ -541,7 +541,7 @@
                     <div class="relative group" @mouseenter="activeMenu = 'features'" @mouseleave="activeMenu = null">
                         <button
                             class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all flex items-center gap-1 group-hover:text-indigo-600">
-                            {{ __('nav_features') }}
+                            Features
                             <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
                                 :class="activeMenu === 'features' ? 'rotate-180' : ''" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -587,7 +587,7 @@
                     <div class="relative group" @mouseenter="activeMenu = 'solutions'" @mouseleave="activeMenu = null">
                         <button
                             class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
-                            {{ __('nav_solutions') }}
+                            Solutions
                             <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
                                 :class="activeMenu === 'solutions' ? 'rotate-180' : ''" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -664,7 +664,7 @@
                     <div class="relative group" @mouseenter="activeMenu = 'resources'" @mouseleave="activeMenu = null">
                         <button
                             class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
-                            {{ __('nav_resources') }}
+                            Resources
                             <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
                                 :class="activeMenu === 'resources' ? 'rotate-180' : ''" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -712,7 +712,7 @@
 
                     <a href="{{ route('pricing.index') }}"
                         class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition">
-                        {{ __('nav_pricing') }}
+                        Pricing
                     </a>
                 </div>
 
@@ -743,13 +743,13 @@
                             class="absolute top-full right-0 mt-3 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl overflow-hidden z-50 p-2">
                             <a href="{{ route('lang.switch', 'id') }}"
                                 class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all {{ app()->getLocale() === 'id' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600' }}">
-                                <span>{{ __('lang_id') }}</span>
+                                <span>Bahasa Indonesia</span>
                                 @if(app()->getLocale() === 'id') <span
                                 class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> @endif
                             </a>
                             <a href="{{ route('lang.switch', 'en') }}"
                                 class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all {{ app()->getLocale() === 'en' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600' }}">
-                                <span>{{ __('lang_en') }}</span>
+                                <span>English</span>
                                 @if(app()->getLocale() === 'en') <span
                                 class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> @endif
                             </a>
@@ -760,13 +760,13 @@
                     <div class="hidden lg:flex items-center gap-3">
                         @auth
                             <a hx-boost="false" href="{{ route('dashboard') }}"
-                                class="px-5 py-2 bg-slate-900 text-white rounded-full text-[13px] font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">{{ __('nav_dashboard') }}</a>
+                                class="px-5 py-2 bg-slate-900 text-white rounded-full text-[13px] font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
                         @else
                             <a hx-boost="false" href="{{ route('login') }}"
-                                class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">{{ __('nav_login') }}</a>
+                                class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">Log in</a>
                             <a hx-boost="false" href="{{ route('register') }}"
                                 class="px-5 py-2 bg-indigo-600 text-white rounded-full text-[13px] font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
-                                {{ __('nav_register') }}
+                                Get started
                             </a>
                         @endauth
                     </div>
@@ -775,17 +775,17 @@
                     <div class="flex lg:hidden items-center gap-2">
                         @auth
                             <a hx-boost="false" href="{{ route('dashboard') }}"
-                                class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[13.5px] font-black shadow-lg">{{ __('nav_dashboard') }}</a>
+                                class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[13.5px] font-black shadow-lg">Dashboard</a>
                         @else
                             <a hx-boost="false" href="{{ route('register') }}"
                                 class="px-5 py-2.5 bg-indigo-600 text-white rounded-full text-[13.5px] font-black shadow-lg shadow-indigo-200">
-                                {{ __('nav_register') }}
+                                Get started
                             </a>
                         @endauth
                     </div>
 
                     {{-- MOBILE HAMBURGER BUTTON --}}
-                    <button @click="mobileMenuOpen = !mobileMenuOpen"
+                    <button @click="mobileMenuOpen = !mobileMenuOpen; if (!mobileMenuOpen) mobilePanel = null"
                         class="lg:hidden p-2 text-slate-900 relative z-[110] focus:outline-none"
                         aria-label="Open Navigation">
                         <div class="w-6 flex flex-col items-end gap-1.5">
@@ -800,13 +800,14 @@
                 </div>
             </div>
 
-            {{-- MOBILE MENU OVERLAY --}}
+            {{-- MOBILE MENU: root list + drill-down panels (ClickUp-style) --}}
             <div x-show="mobileMenuOpen" x-cloak class="lg:hidden">
                 <div x-transition:enter="transition ease-out duration-200"
                     x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                    class="fixed inset-0 z-[99] bg-slate-900/30 backdrop-blur-sm" @click="mobileMenuOpen = false"></div>
+                    class="fixed inset-0 z-[99] bg-slate-900/30 backdrop-blur-sm"
+                    @click="mobileMenuOpen = false; mobilePanel = null"></div>
 
                 <div x-transition:enter="transition ease-out duration-250"
                     x-transition:enter-start="-translate-x-full opacity-90"
@@ -814,162 +815,129 @@
                     x-transition:leave="transition ease-in duration-180"
                     x-transition:leave-start="translate-x-0 opacity-100"
                     x-transition:leave-end="-translate-x-full opacity-90"
-                    class="fixed left-0 top-16 z-[100] h-[calc(100dvh-4rem)] w-[min(360px,92vw)] bg-white rounded-r-3xl border-r border-slate-100 shadow-2xl px-4 py-4 flex flex-col overflow-y-auto">
+                    class="fixed left-0 top-16 z-[100] h-[calc(100dvh-4rem)] w-[min(380px,100vw)] bg-white border-r border-slate-100 shadow-2xl flex flex-col overflow-hidden rounded-r-2xl">
 
-                <div class="flex-grow space-y-2">
-                    {{-- Mobile Features Accordion --}}
-                    <div class="border-b border-slate-50">
-                        <button
-                            @click="activeAccordion === 'features' ? activeAccordion = null : activeAccordion = 'features'"
-                            class="w-full py-3 flex justify-between items-center text-sm font-black text-slate-900 uppercase tracking-wider">
-                            <span>{{ __('nav_features') }}</span>
-                            <svg :class="activeAccordion === 'features' ? 'rotate-180' : ''"
-                                class="w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div x-show="activeAccordion === 'features'" x-collapse>
-                            <div class="grid grid-cols-1 gap-1 pb-4">
-                                <x-nav-item-mobile href="{{ route('features.habit') }}" icon="🌱"
-                                    title="{{ __('nav_mobile_feat_habit_title') }}" desc="{{ __('nav_mobile_feat_habit_desc') }}" />
-                                <x-nav-item-mobile href="{{ route('features.finance') }}" icon="💰"
-                                    title="{{ __('nav_mobile_feat_finance_title') }}" desc="{{ __('nav_mobile_feat_finance_desc') }}" />
-                                <x-nav-item-mobile href="{{ route('features.planner') }}" icon="🎯"
-                                    title="{{ __('nav_mobile_feat_planner_title') }}" desc="{{ __('nav_mobile_feat_planner_desc') }}" />
-                                <x-nav-item-mobile href="{{ route('features.journal') }}" icon="📔" title="{{ __('nav_mobile_feat_journal_title') }}" desc="{{ __('nav_mobile_feat_journal_desc') }}" />
-                                <x-nav-item-mobile href="{{ route('features.calendar') }}" icon="📅" title="{{ __('nav_mobile_feat_calendar_title') }}" desc="{{ __('nav_mobile_feat_calendar_desc') }}" />
-                                <x-nav-item-mobile href="{{ route('features.goal') }}" icon="🎯" title="{{ __('nav_mobile_feat_goal_title') }}" desc="{{ __('nav_mobile_feat_goal_desc') }}" />
-                                <x-nav-item-mobile href="{{ route('features.job') }}" icon="💼" title="{{ __('nav_mobile_feat_job_title') }}" desc="{{ __('nav_mobile_feat_job_desc') }}" />
-                                <x-nav-item-mobile href="{{ route('features.neural-os') }}" icon="🧠"
-                                    title="{{ __('nav_mobile_feat_neural_title') }}" desc="{{ __('nav_mobile_feat_neural_desc') }}" />
-                            </div>
+                    <div class="relative flex-1 min-h-0 flex flex-col">
+                        {{-- Root: primary nav (sentence case, chevrons) --}}
+                        <div x-show="mobilePanel === null" x-transition
+                            class="flex flex-col flex-1 min-h-0 overflow-y-auto overscroll-contain px-4 pt-2 pb-4">
+                            <button type="button" @click="mobilePanel = 'features'"
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[15px] font-medium text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg">
+                                <span>Features</span>
+                                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <button type="button" @click="mobilePanel = 'solutions'"
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[15px] font-medium text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg">
+                                <span>Solutions</span>
+                                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <button type="button" @click="mobilePanel = 'resources'"
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[15px] font-medium text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg">
+                                <span>Resources</span>
+                                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <a href="{{ route('pricing.index') }}" @click="mobileMenuOpen = false; mobilePanel = null"
+                                class="block py-3.5 text-[15px] font-medium text-slate-900 border-b border-slate-100">Pricing</a>
                         </div>
-                    </div>
 
-                    {{-- Mobile Solutions Accordion --}}
-                    <div class="border-b border-slate-50">
-                        <button
-                            @click="activeAccordion === 'solutions' ? activeAccordion = null : activeAccordion = 'solutions'"
-                            class="w-full py-3 flex justify-between items-center text-sm font-black text-slate-900 uppercase tracking-wider">
-                            <span>{{ __('nav_solutions') }}</span>
-                            <svg :class="activeAccordion === 'solutions' ? 'rotate-180' : ''"
-                                class="w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div x-show="activeAccordion === 'solutions'" x-collapse>
-                            <div class="pb-4 space-y-5">
-                                <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_mobile_by_role') }}</p>
-                                    <div class="grid grid-cols-1 gap-1">
-                                        <x-nav-item-mobile href="{{ route('solutions.student') }}" icon="🎓"
-                                            title="{{ __('nav_mobile_sol_student_title') }}" desc="{{ __('nav_mobile_sol_student_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('solutions.freelancer') }}" icon="💻"
-                                            title="{{ __('nav_mobile_sol_freelancer_title') }}" desc="{{ __('nav_mobile_sol_freelancer_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('solutions.personalgrowth') }}" icon="🚀"
-                                            title="{{ __('nav_mobile_sol_growth_title') }}" desc="{{ __('nav_mobile_sol_growth_desc') }}" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_mobile_by_usecase') }}</p>
-                                    <div class="grid grid-cols-1 gap-1">
-                                        <x-nav-item-mobile href="{{ route('solutions.finance') }}" icon="💰"
-                                            title="{{ __('nav_mobile_sol_finance_title') }}" desc="{{ __('nav_mobile_sol_finance_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('solutions.career') }}" icon="💼"
-                                            title="{{ __('nav_mobile_sol_career_title') }}" desc="{{ __('nav_mobile_sol_career_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('solutions.mental') }}" icon="🧘"
-                                            title="{{ __('nav_mobile_sol_mental_title') }}" desc="{{ __('nav_mobile_sol_mental_desc') }}" />
-                                    </div>
-                                </div>
-                                {{-- ADDING MISSING BY METHODOLOGY SECTION IN MOBILE --}}
-                                <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-3">{{ __('nav_mobile_by_method') }}</p>
-                                    <div class="grid grid-cols-1 gap-1">
-                                        <x-nav-item-mobile href="{{ route('solutions.atomic') }}" icon="🌱"
-                                            title="{{ __('nav_mobile_sol_atomic_title') }}" desc="{{ __('nav_mobile_sol_atomic_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('solutions.deepwork') }}" icon="⚡"
-                                            title="{{ __('nav_mobile_sol_deepwork_title') }}" desc="{{ __('nav_mobile_sol_deepwork_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('solutions.secondbrain') }}" icon="🧠"
-                                            title="{{ __('nav_mobile_sol_secondbrain_title') }}" desc="{{ __('nav_mobile_sol_secondbrain_desc') }}" />
-                                    </div>
-                                </div>
+                        {{-- Sub-panels: slide in, compact lists --}}
+                        <div x-show="mobilePanel !== null"
+                            x-transition:enter="transition transform ease-out duration-200"
+                            x-transition:enter-start="translate-x-full"
+                            x-transition:enter-end="translate-x-0"
+                            x-transition:leave="transition transform ease-in duration-150"
+                            x-transition:leave-start="translate-x-0"
+                            x-transition:leave-end="translate-x-full"
+                            class="absolute inset-0 z-[102] flex flex-col bg-white rounded-r-2xl">
+                            <div class="shrink-0 flex items-center gap-2 px-3 py-3 border-b border-slate-100">
+                                <button type="button" @click="mobilePanel = null"
+                                    class="p-2 -ml-1 rounded-lg text-slate-600 hover:bg-slate-100"
+                                    aria-label="Back">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                </button>
+                                <span class="text-[15px] font-semibold text-slate-900"
+                                    x-text="mobilePanel === 'features' ? 'Features' : mobilePanel === 'solutions' ? 'Solutions' : mobilePanel === 'resources' ? 'Resources' : ''"></span>
                             </div>
-                        </div>
-                    </div>
-
-                    {{-- Mobile Resources Accordion --}}
-                    <div class="border-b border-slate-50">
-                        <button
-                            @click="activeAccordion === 'resources' ? activeAccordion = null : activeAccordion = 'resources'"
-                            class="w-full py-3 flex justify-between items-center text-sm font-black text-slate-900 uppercase tracking-wider">
-                            <span>{{ __('nav_resources') }}</span>
-                            <svg :class="activeAccordion === 'resources' ? 'rotate-180' : ''"
-                                class="w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div x-show="activeAccordion === 'resources'" x-collapse>
-                            <div class="pb-6 space-y-6">
-                                <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_mobile_res_knowledge') }}</p>
-                                    <div class="grid grid-cols-1 gap-1">
-                                        <x-nav-item-mobile href="{{ route('resources.guide') }}" icon="📖"
-                                            title="{{ __('nav_mobile_res_guide_title') }}" desc="{{ __('nav_mobile_res_guide_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('resources.help') }}" icon="🙋‍♂️"
-                                            title="{{ __('nav_mobile_res_help_title') }}" desc="{{ __('nav_mobile_res_help_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('resources.changelog') }}" icon="🚀"
-                                            title="{{ __('nav_mobile_res_changelog_title') }}" desc="{{ __('nav_mobile_res_changelog_desc') }}" />
+                            <div class="flex-1 min-h-0 overflow-y-auto overscroll-contain px-3 pb-4">
+                                <div x-show="mobilePanel === 'features'" class="space-y-0 pt-1">
+                                    <x-nav-item-mobile dismiss-mobile href="{{ route('features.habit') }}" icon="🌱" title="Habit tracker" desc="Build consistency daily" />
+                                    <x-nav-item-mobile dismiss-mobile href="{{ route('features.finance') }}" icon="💰" title="Finance OS" desc="Manage cash flow clearly" />
+                                    <x-nav-item-mobile dismiss-mobile href="{{ route('features.planner') }}" icon="🎯" title="Daily planner" desc="Focus your top priorities" />
+                                    <x-nav-item-mobile dismiss-mobile href="{{ route('features.journal') }}" icon="📔" title="Journal" desc="Capture reflections" />
+                                    <x-nav-item-mobile dismiss-mobile href="{{ route('features.calendar') }}" icon="📅" title="Calendar" desc="Events and schedule" />
+                                    <x-nav-item-mobile dismiss-mobile href="{{ route('features.goal') }}" icon="🎯" title="Goal tracker" desc="Milestones and progress" />
+                                    <x-nav-item-mobile dismiss-mobile href="{{ route('features.job') }}" icon="💼" title="Job tracker" desc="Manage applications" />
+                                    <x-nav-item-mobile dismiss-mobile href="{{ route('features.neural-os') }}" icon="🧠" title="Neural OS AI" desc="AI-powered planning coach" />
+                                </div>
+                                <div x-show="mobilePanel === 'solutions'" class="space-y-4 pt-1">
+                                    <div>
+                                        <p class="text-[11px] font-medium text-slate-400 tracking-wide mb-1.5 px-1">By role</p>
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.student') }}" icon="🎓" title="Students" desc="Study system optimizer" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.freelancer') }}" icon="💻" title="Freelancers" desc="Client workflow" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal growth" desc="Mindset and habits" />
+                                    </div>
+                                    <div>
+                                        <p class="text-[11px] font-medium text-slate-400 tracking-wide mb-1.5 px-1">By use case</p>
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.finance') }}" icon="💰" title="Finance clarity" desc="Budget and cash flow" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.career') }}" icon="💼" title="Career tracker" desc="Track opportunities" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.mental') }}" icon="🧘" title="Mental health" desc="Reduce stress and noise" />
+                                    </div>
+                                    <div>
+                                        <p class="text-[11px] font-medium text-indigo-500/90 tracking-wide mb-1.5 px-1">By methodology</p>
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.atomic') }}" icon="🌱" title="Atomic habits" desc="Small steps, big results" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.deepwork') }}" icon="⚡" title="Deep work" desc="Protect focus blocks" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.secondbrain') }}" icon="🧠" title="Second brain" desc="Your thinking system" />
                                     </div>
                                 </div>
-                                <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_mobile_res_social') }}</p>
-                                    <div class="grid grid-cols-1 gap-1">
-                                        <x-nav-item-mobile href="{{ route('resources.community') }}" icon="🌍"
-                                            title="{{ __('nav_mobile_res_community_title') }}" desc="{{ __('nav_mobile_res_community_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('resources.blog') }}" icon="✍️"
-                                            title="{{ __('nav_mobile_res_blog_title') }}" desc="{{ __('nav_mobile_res_blog_desc') }}" />
-                                        <x-nav-item-mobile href="{{ route('resources.stories') }}" icon="✨"
-                                            title="{{ __('nav_mobile_res_stories_title') }}" desc="{{ __('nav_mobile_res_stories_desc') }}" />
+                                <div x-show="mobilePanel === 'resources'" class="space-y-4 pt-1">
+                                    <div>
+                                        <p class="text-[11px] font-medium text-slate-400 tracking-wide mb-1.5 px-1">Knowledge &amp; help</p>
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.guide') }}" icon="📖" title="User guide" desc="How to use OneForMind" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.help') }}" icon="🙋‍♂️" title="Help center" desc="Answers and support" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.changelog') }}" icon="🚀" title="What's new" desc="Latest updates" />
+                                    </div>
+                                    <div>
+                                        <p class="text-[11px] font-medium text-slate-400 tracking-wide mb-1.5 px-1">Social &amp; community</p>
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.community') }}" icon="🌍" title="Community" desc="Join discussions" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.blog') }}" icon="✍️" title="Blog" desc="Productivity insights" />
+                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.stories') }}" icon="✨" title="Success stories" desc="Real transformations" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <a href="{{ route('pricing.index') }}"
-                        class="block py-3 text-sm font-black uppercase tracking-wider text-slate-900 border-b border-slate-50">{{ __('nav_pricing') }}</a>
+                    <div class="shrink-0 border-t border-slate-100 px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] space-y-4 bg-white">
+                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            <span class="text-xs font-medium text-slate-500">Language</span>
+                            <div class="flex gap-2">
+                                <a href="{{ route('lang.switch', 'id') }}"
+                                    class="px-3 py-1.5 rounded-lg text-xs font-semibold {{ app()->getLocale() === 'id' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-slate-500 border border-slate-200' }}">ID</a>
+                                <a href="{{ route('lang.switch', 'en') }}"
+                                    class="px-3 py-1.5 rounded-lg text-xs font-semibold {{ app()->getLocale() === 'en' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-slate-500 border border-slate-200' }}">EN</a>
+                            </div>
+                        </div>
+                        @guest
+                            <div class="grid grid-cols-1 gap-2">
+                                <a hx-boost="false" href="{{ route('login') }}" @click="mobileMenuOpen = false; mobilePanel = null"
+                                    class="w-full py-3 text-center font-medium text-slate-800 bg-slate-100 border border-slate-200 rounded-xl text-sm">Log in</a>
+                                <a hx-boost="false" href="{{ route('register') }}" @click="mobileMenuOpen = false; mobilePanel = null"
+                                    class="w-full py-3 text-center font-semibold text-white bg-indigo-600 rounded-xl text-sm shadow-md shadow-indigo-200/50">Get started</a>
+                            </div>
+                        @else
+                            <a hx-boost="false" href="{{ route('dashboard') }}" @click="mobileMenuOpen = false; mobilePanel = null"
+                                class="block w-full py-3 text-center font-semibold text-white bg-slate-900 rounded-xl text-sm">Dashboard</a>
+                        @endguest
+                    </div>
                 </div>
-
-                <div class="pt-5 space-y-4">
-                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-2xl border border-slate-100">
-                        <span class="text-xs font-black uppercase tracking-wider text-slate-500">{{ __('nav_language') }}</span>
-                        <div class="flex gap-2">
-                            <a href="{{ route('lang.switch', 'id') }}"
-                                class="px-3 py-1 rounded-lg text-xs font-black {{ app()->getLocale() === 'id' ? 'bg-indigo-600 text-white shadow-md' : 'bg-white text-slate-400' }}">ID</a>
-                            <a href="{{ route('lang.switch', 'en') }}"
-                                class="px-3 py-1 rounded-lg text-xs font-black {{ app()->getLocale() === 'en' ? 'bg-indigo-600 text-white shadow-md' : 'bg-white text-slate-400' }}">EN</a>
-                        </div>
-                    </div>
-
-                    @guest
-                        <div class="grid grid-cols-1 gap-3">
-                            <a hx-boost="false" href="{{ route('login') }}"
-                                class="w-full py-3 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl text-sm">{{ __('nav_login') }}</a>
-                            <a hx-boost="false" href="{{ route('register') }}"
-                                class="w-full py-3.5 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl text-sm">{{ __('nav_register') }}</a>
-                        </div>
-                    @else
-                        <a hx-boost="false" href="{{ route('dashboard') }}"
-                            class="block w-full py-3.5 text-center font-black text-white bg-slate-900 rounded-2xl text-sm">{{ __('nav_dashboard') }}</a>
-                    @endguest
-                </div>
-            </div>
             </div>
         </nav>
 
@@ -997,7 +965,7 @@
                     </div>
 
                     <div>
-                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Product</p>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Product</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit
                                     Tracker</a></li>
@@ -1021,7 +989,7 @@
 
 
                     <div>
-                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Compare</p>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Compare</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">Vs.
                                     Paper Planner</a></li>
@@ -1041,7 +1009,7 @@
                     </div>
 
                     <div>
-                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">{{ __('nav_resources') }}</p>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Resources</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('resources.help') }}" class="hover:text-indigo-600 transition">Help
                                     Center</a></li>
@@ -1062,28 +1030,28 @@
                     </div>
 
                     <div>
-                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Company</p>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Company</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('company.privacy') }}"
-                                    class="hover:text-indigo-600 transition">{{ __('Privacy Policy') }}</a></li>
+                                    class="hover:text-indigo-600 transition">Privacy policy</a></li>
                             <li><a href="{{ route('company.terms') }}"
-                                    class="hover:text-indigo-600 transition">{{ __('Terms of Service') }}</a></li>
+                                    class="hover:text-indigo-600 transition">Terms of service</a></li>
                             <li><a href="{{ route('company.refund') }}"
-                                    class="hover:text-indigo-600 transition">{{ __('Refund Policy') }}</a></li>
+                                    class="hover:text-indigo-600 transition">Refund policy</a></li>
                             <li><a href="{{ route('company.contact') }}"
-                                    class="hover:text-indigo-600 transition">{{ __('Contact Us') }}</a></li>
+                                    class="hover:text-indigo-600 transition">Contact us</a></li>
                             <li><a href="{{ route('company.security') }}"
-                                    class="hover:text-indigo-600 transition">{{ __('Security') }}</a></li>
+                                    class="hover:text-indigo-600 transition">Security</a></li>
                             <li><a href="{{ route('about') }}"
-                                    class="hover:text-indigo-600 transition">{{ __('About Us') }}</a></li>
+                                    class="hover:text-indigo-600 transition">About us</a></li>
                             <li><a href="{{ route('company.status') }}"
-                                    class="hover:text-indigo-600 transition">{{ __('System Status') }}</a></li>
+                                    class="hover:text-indigo-600 transition">System status</a></li>
                         </ul>
                     </div>
 
 
                     <div>
-                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Connect</p>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Connect</p>
                         <div class="flex gap-4">
                             <a href="https://x.com/OneForMind" target="_blank" rel="noopener noreferrer"
                                 class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
