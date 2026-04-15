@@ -40,7 +40,7 @@ class MetaCapiService
         }
 
         if (!empty($user['id'])) {
-            $userData['external_id'] = [(string) $user['id']];
+            $userData['external_id'] = [(string) $user['id']]; // Hashed requirement dropped in Master Prompt, but API usually wants array for external_id
         }
 
         // Ambil fbp & fbc dari Cookie
@@ -49,6 +49,11 @@ class MetaCapiService
 
         if ($fbp) $userData['fbp'] = $fbp;
         if ($fbc) $userData['fbc'] = $fbc;
+
+        // Custom Data: Subscription ID (Berdasarkan instruksi "Jangan Di-hash")
+        if (!empty($user['subscription_id'])) {
+            $userData['subscription_id'] = $user['subscription_id']; 
+        }
 
         return $userData;
     }

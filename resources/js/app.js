@@ -150,8 +150,19 @@ router.on('navigate', (event) => {
         });
     }
 
-    // Meta Pixel PageView
-    if (typeof fbq !== 'undefined') {
-        fbq('track', 'PageView');
+    // Meta Pixel Tracking
+    if (typeof window.fbq === 'function') {
+        window.fbq('track', 'PageView');
+        
+        // Pengecekan spesifik berdasarkan URL (misal: jika ada pendaftaran atau checkout)
+        const url = event.detail.page.url;
+        
+        if (url.includes('/register')) {
+            window.fbq('track', 'ViewContent', { content_name: 'Register Page' });
+        } else if (url.includes('/pricing')) {
+            window.fbq('track', 'ViewContent', { content_name: 'Pricing Page' });
+        } else if (url.includes('/payment')) {
+            window.fbq('track', 'InitiateCheckout', { currency: 'IDR' });
+        }
     }
 });
