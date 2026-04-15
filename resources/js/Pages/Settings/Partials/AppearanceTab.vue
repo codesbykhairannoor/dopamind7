@@ -1,6 +1,5 @@
 <script setup>
 import { useForm } from '@inertiajs/vue3';
-import { Info } from 'lucide-vue-next';
 
 const props = defineProps({ userSettings: Object });
 
@@ -27,16 +26,6 @@ const saveSettings = () => {
 
 <template>
     <div class="space-y-10 pb-12">
-        <!-- Language & theme live in global header (Notion / ClickUp pattern) -->
-        <div
-            class="flex gap-3 rounded-2xl border border-indigo-100 dark:border-indigo-500/30 bg-indigo-50/60 dark:bg-indigo-500/10 px-4 py-3 text-sm text-indigo-900 dark:text-indigo-200"
-        >
-            <Info class="w-5 h-5 shrink-0 opacity-80 mt-0.5" />
-            <p class="leading-relaxed">
-                {{ $t('settings_modules_header_hint', 'Language and light/dark theme are controlled from the top bar — same as Notion and ClickUp.') }}
-            </p>
-        </div>
-
         <!-- Modules -->
         <div>
             <div class="mb-6">

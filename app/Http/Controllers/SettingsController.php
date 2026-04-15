@@ -10,13 +10,48 @@ class SettingsController extends Controller
 {
     public function index(Request $request)
     {
-        return Inertia::render('Settings/Index', [
+        // Backward-compatible landing: /settings -> /settings/general
+        return redirect()->route('settings.general');
+    }
+
+    private function baseProps(Request $request): array
+    {
+        return [
             'mustVerifyEmail' => $request->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail,
             'status' => session('status'),
             'hasPassword' => !is_null($request->user()->password),
-            'midtrans_client_key' => config('midtrans.client_key'),
             'userSettings' => $request->user()->settings,
-        ]);
+        ];
+    }
+
+    public function general(Request $request)
+    {
+        return Inertia::render('Settings/General', $this->baseProps($request));
+    }
+
+    public function security(Request $request)
+    {
+        return Inertia::render('Settings/Security', $this->baseProps($request));
+    }
+
+    public function modules(Request $request)
+    {
+        return Inertia::render('Settings/Modules', $this->baseProps($request));
+    }
+
+    public function notifications(Request $request)
+    {
+        return Inertia::render('Settings/Notifications', $this->baseProps($request));
+    }
+
+    public function billing(Request $request)
+    {
+        return Inertia::render('Settings/Billing', $this->baseProps($request));
+    }
+
+    public function privacy(Request $request)
+    {
+        return Inertia::render('Settings/Privacy', $this->baseProps($request));
     }
 
     public function update(Request $request)

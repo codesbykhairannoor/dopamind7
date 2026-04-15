@@ -770,12 +770,18 @@ Route::middleware(["auth", "throttle:global"])->group(function () {
             ])->name("milestones.destroy");
         });
 
-    Route::get("/settings", [SettingsController::class, "index"])->name(
-        "settings.index",
-    );
-    Route::post("/settings", [SettingsController::class, "update"])->name(
-        "settings.update",
-    );
+    // Settings (GitHub/Vercel style sub-routes)
+    Route::get("/settings", [SettingsController::class, "index"])->name("settings.index");
+    Route::prefix("settings")->name("settings.")->group(function () {
+        Route::get("/general", [SettingsController::class, "general"])->name("general");
+        Route::get("/security", [SettingsController::class, "security"])->name("security");
+        Route::get("/modules", [SettingsController::class, "modules"])->name("modules");
+        Route::get("/notifications", [SettingsController::class, "notifications"])->name("notifications");
+        Route::get("/billing", [SettingsController::class, "billing"])->name("billing");
+        Route::get("/privacy", [SettingsController::class, "privacy"])->name("privacy");
+
+        Route::post("/", [SettingsController::class, "update"])->name("update");
+    });
 
     Route::get("/more", function () {
         return Inertia::render("More/Index");
