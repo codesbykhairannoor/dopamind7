@@ -250,6 +250,23 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    {{-- NProgress --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    <style>
+        /* Customize NProgress */
+        #nprogress .bar {
+            background: #4f46e5 !important;
+            height: 3px !important;
+        }
+        #nprogress .peg {
+            box-shadow: 0 0 10px #4f46e5, 0 0 5px #4f46e5 !important;
+        }
+        #nprogress .spinner {
+            display: none !important;
+        }
+    </style>
+
     <style>
     </style>
 
@@ -488,11 +505,29 @@
         scrolled: false,
         isInterfacing: false
     }" @mobile-nav-close.window="mobileMenuOpen = false; mobilePanel = null"
-        @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard')) isInterfacing = true"
-        @htmx:after-request.window="isInterfacing = false"
-        @htmx:response-error.window="isInterfacing = false"
-        @pageshow.window="isInterfacing = false"
+        @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard')) { isInterfacing = true; } else if (window.innerWidth < 768) { NProgress.start(); }"
+        @htmx:after-request.window="isInterfacing = false; NProgress.done();"
+        @htmx:response-error.window="isInterfacing = false; NProgress.done();"
+        @pageshow.window="isInterfacing = false; NProgress.done();"
         @scroll.window.passive="scrolled = (window.scrollY > 20)" class="relative">
+
+        <script>
+            // For normal navigation (non-HTMX links)
+            document.addEventListener('DOMContentLoaded', () => {
+                const links = document.querySelectorAll('a[href]:not([target=\"_blank\"]):not([href^=\"#\"]):not([href^=\"mailto:\"]):not([href^=\"tel:\"])');
+                links.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        // Check if not prevented and it's mobile
+                        if (!e.defaultPrevented && window.innerWidth < 768) {
+                            NProgress.start();
+                        }
+                    });
+                });
+            });
+            window.addEventListener('pageshow', () => {
+                NProgress.done();
+            });
+        </script>
 
         {{-- INSTANT APP LOADER (Blade to Vue Transition) --}}
         <div x-show="isInterfacing"
@@ -533,7 +568,7 @@
                         class="w-10 h-10 lg:w-8 lg:h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
                         <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-6 h-6 lg:w-5 lg:h-5 brightness-0 invert" />
                     </div>
-                    <span class="text-lg sm:text-xl font-bold tracking-tight text-slate-900">OneForMind</span>
+                    <span class="hidden sm:block text-lg sm:text-xl font-bold tracking-tight text-slate-900">OneForMind</span>
                 </a>
 
                 {{-- DESKTOP MENU --}}

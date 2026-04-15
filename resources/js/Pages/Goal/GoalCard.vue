@@ -109,11 +109,11 @@ const meshGradient = computed(() => {
                 </h3>
             </div>
 
-            <div class="absolute top-4 right-4 flex gap-2">
-                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white transition-all shadow-xl md:opacity-0 md:group-hover:opacity-100 scale-90 md:group-hover:scale-100 delay-75">
+            <div class="absolute top-4 right-4 flex gap-2 z-20">
+                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/20 dark:bg-black/40 border border-white/30 dark:border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-75">
                     <Edit3 :size="14" />
                 </button>
-                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/10 backdrop-blur-md text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl md:opacity-0 md:group-hover:opacity-100 scale-90 md:group-hover:scale-100 delay-150">
+                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/20 dark:bg-black/40 border border-white/30 dark:border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-150">
                     <Trash2 :size="14" />
                 </button>
             </div>
@@ -142,27 +142,7 @@ const meshGradient = computed(() => {
                 ></div>
             </div>
 
-            <!-- AI STRATEGY LAB (Unlocked) -->
-            <div @click="emit('openPreview', 'Goal')" 
-                 class="mb-6 p-4 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 relative overflow-hidden group/strategy cursor-pointer hover:border-indigo-200 dark:hover:border-indigo-500/30 transition-all">
-                <div class="flex items-center justify-between mb-3">
-                    <div class="flex items-center gap-2">
-                        <Sparkles :size="14" class="text-indigo-500 animate-pulse" />
-                        <span class="text-[10px] font-black text-slate-700 dark:text-slate-200 uppercase tracking-widest">AI Strategy Lab</span>
-                    </div>
-                </div>
 
-                <div class="space-y-2 opacity-60">
-                    <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-indigo-400"></div>
-                        <div class="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full animate-pulse"></div>
-                    </div>
-                </div>
-
-                <div class="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-slate-50 dark:from-slate-800 to-transparent flex items-center justify-center">
-                    <span class="text-[9px] font-black text-indigo-500 uppercase tracking-widest">Generate Strategy</span>
-                </div>
-            </div>
 
             <!-- Milestones Section -->
             <div class="flex-1">

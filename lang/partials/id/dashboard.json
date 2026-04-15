@@ -36,7 +36,7 @@
     "dash_unlock_ai": "Buka proyeksi AI Coaching",
     "dash_schedule": "Agenda",
     "dash_pending": "Tertunda",
-    "dash_planner_tasks_today": "{count} tugas terjadwal hari ini",
+    "dash_planner_tasks_today": ":count tugas terjadwal hari ini",
     "dash_habits": "Habit",
     "dash_done": "selesai",
     "dash_journal": "Jurnal",

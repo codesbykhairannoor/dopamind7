@@ -43,8 +43,8 @@ const isActive = (href) => {
             </p>
         </div>
 
-        <!-- Sticky sub-header tab bar (GitHub/Vercel style) -->
-        <div class="sticky top-16 z-20 -mx-3 sm:mx-0 mb-6 sm:mb-8">
+        <!-- Non-sticky sub-header tab bar -->
+        <div class="relative z-20 -mx-3 sm:mx-0 mb-6 sm:mb-8">
             <div class="px-3 sm:px-0">
                 <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/70 dark:border-slate-800/70 rounded-2xl shadow-sm">
                     <nav class="flex items-center gap-1 overflow-x-auto no-scrollbar px-2 py-2">
@@ -52,7 +52,6 @@ const isActive = (href) => {
                             v-for="tab in tabs"
                             :key="tab.id"
                             :href="tab.href"
-                            prefetch="hover"
                             class="shrink-0 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all"
                             :class="isActive(tab.href)
                                 ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200/30 dark:shadow-none'

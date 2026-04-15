@@ -7,43 +7,43 @@
   "lang/zh.json": [],
   "node_modules/laravel-vite-plugin/inertia-helpers/index.js": [],
   "resources/js/Components/AppSidebarNav.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
-  "resources/js/Components/AppSidebarNav.vue?vue&type=style&index=0&scoped=967c2978&lang.css": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+  "resources/js/Components/AppSidebarNav.vue?vue&type=style&index=0&scoped=52431880&lang.css": [
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
   "resources/js/Components/ApplicationLogo.vue": [
     "http://localhost:8001/build/assets/Index-CvYx0ZeA.js",
     "http://localhost:8001/build/assets/Index-UEIHZpcq.css"
   ],
   "resources/js/Components/CommandPalette.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
   "resources/js/Components/CommandPalettePanel.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
   "resources/js/Components/CommandPalettePanel.vue?vue&type=style&index=0&scoped=822f389f&lang.css": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
   "resources/js/Components/DangerButton.vue": [
     "http://localhost:8001/build/assets/DeleteUserForm-CIEWnmII.js"
   ],
   "resources/js/Components/Dropdown.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
   "resources/js/Components/DropdownLink.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
   "resources/js/Components/GlobalHeader.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
   "resources/js/Components/InputError.vue": [
     "http://localhost:8001/build/assets/InputError-CjMsDEOH.js"
@@ -58,8 +58,8 @@
     "http://localhost:8001/build/assets/NeuralBridge-DXVH_yQi.js"
   ],
   "resources/js/Components/NotificationSettings.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
   "resources/js/Components/OneForMindIcon.vue": [
     "http://localhost:8001/build/assets/OneForMindIcon-DZwBoKYB.js"
@@ -111,7 +111,7 @@
     "http://localhost:8001/build/assets/useFinanceHistory-6kktt4HE.js"
   ],
   "resources/js/Composables/Goal/useGoals.js": [
-    "http://localhost:8001/build/assets/Index-Djk-eAA-.js"
+    "http://localhost:8001/build/assets/Index-B-FB0V3K.js"
   ],
   "resources/js/Composables/Habits/useHabitCore.js": [
     "http://localhost:8001/build/assets/Index-BV701YHe.js",
@@ -153,10 +153,6 @@
   "resources/js/Composables/useAppearance.js": [
     "http://localhost:8001/build/assets/useAppearance-rDoGVD4_.js"
   ],
-  "resources/js/Composables/useBackgroundPrefetch.js": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
-  ],
   "resources/js/Composables/useGating.js": [
     "http://localhost:8001/build/assets/useGating-X1jrF-Xv.js"
   ],
@@ -168,12 +164,12 @@
     "http://localhost:8001/build/assets/AdminLayout-CF5aj6ak.js"
   ],
   "resources/js/Layouts/AuthenticatedLayout.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
-  "resources/js/Layouts/AuthenticatedLayout.vue?vue&type=style&index=0&scoped=23e90843&lang.css": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-wUasHXtU.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+  "resources/js/Layouts/AuthenticatedLayout.vue?vue&type=style&index=0&scoped=951c2519&lang.css": [
+    "http://localhost:8001/build/assets/AuthenticatedLayout-Uvd50S1S.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-DL7JB-KD.css"
   ],
   "resources/js/Layouts/GuestLayout.vue": [
     "http://localhost:8001/build/assets/GuestLayout-CNBcx5bx.js"
@@ -357,28 +353,28 @@
     "http://localhost:8001/build/assets/VaultTransactionModal-Bt0fhf-P.js"
   ],
   "resources/js/Pages/Goal/GoalCard.vue": [
-    "http://localhost:8001/build/assets/GoalCard-B_6MH-4S.js",
-    "http://localhost:8001/build/assets/GoalCard-CIh8HRt2.css"
+    "http://localhost:8001/build/assets/GoalCard-D1HipL2d.js",
+    "http://localhost:8001/build/assets/GoalCard-CnIu7bBP.css"
   ],
-  "resources/js/Pages/Goal/GoalCard.vue?vue&type=style&index=0&scoped=0e3da71a&lang.css": [
-    "http://localhost:8001/build/assets/GoalCard-B_6MH-4S.js",
-    "http://localhost:8001/build/assets/GoalCard-CIh8HRt2.css"
+  "resources/js/Pages/Goal/GoalCard.vue?vue&type=style&index=0&scoped=76ea8e83&lang.css": [
+    "http://localhost:8001/build/assets/GoalCard-D1HipL2d.js",
+    "http://localhost:8001/build/assets/GoalCard-CnIu7bBP.css"
   ],
   "resources/js/Pages/Goal/GoalDatePicker.vue": [
     "http://localhost:8001/build/assets/GoalDatePicker-Di7v62U2.js"
   ],
   "resources/js/Pages/Goal/GoalGrid.vue": [
-    "http://localhost:8001/build/assets/GoalGrid-nWpu4f0y.js"
+    "http://localhost:8001/build/assets/GoalGrid-CQuMqAHu.js"
   ],
   "resources/js/Pages/Goal/GoalHeader.vue": [
     "http://localhost:8001/build/assets/GoalHeader-DA6hLQpe.js"
   ],
   "resources/js/Pages/Goal/GoalModal.vue": [
-    "http://localhost:8001/build/assets/GoalModal-CINmz6SP.js",
+    "http://localhost:8001/build/assets/GoalModal-CQB73alA.js",
     "http://localhost:8001/build/assets/GoalModal-eVQxef5g.css"
   ],
   "resources/js/Pages/Goal/GoalModal.vue?vue&type=style&index=0&scoped=c643c6a3&lang.css": [
-    "http://localhost:8001/build/assets/GoalModal-CINmz6SP.js",
+    "http://localhost:8001/build/assets/GoalModal-CQB73alA.js",
     "http://localhost:8001/build/assets/GoalModal-eVQxef5g.css"
   ],
   "resources/js/Pages/Goal/GoalStats.vue": [
@@ -390,14 +386,14 @@
     "http://localhost:8001/build/assets/GoalStats-Cfb0Z6JQ.css"
   ],
   "resources/js/Pages/Goal/Index.vue": [
-    "http://localhost:8001/build/assets/Index-Djk-eAA-.js"
+    "http://localhost:8001/build/assets/Index-B-FB0V3K.js"
   ],
   "resources/js/Pages/Goal/MilestoneItem.vue": [
-    "http://localhost:8001/build/assets/MilestoneItem-pDR5JZap.js",
+    "http://localhost:8001/build/assets/MilestoneItem-ByNAk6xa.js",
     "http://localhost:8001/build/assets/MilestoneItem-BXMUoyFY.css"
   ],
-  "resources/js/Pages/Goal/MilestoneItem.vue?vue&type=style&index=0&scoped=8562b91b&lang.css": [
-    "http://localhost:8001/build/assets/MilestoneItem-pDR5JZap.js",
+  "resources/js/Pages/Goal/MilestoneItem.vue?vue&type=style&index=0&scoped=e09aae59&lang.css": [
+    "http://localhost:8001/build/assets/MilestoneItem-ByNAk6xa.js",
     "http://localhost:8001/build/assets/MilestoneItem-BXMUoyFY.css"
   ],
   "resources/js/Pages/Habits/HabitBatchModal.vue": [
@@ -510,11 +506,11 @@
     "http://localhost:8001/build/assets/Index-CRFNeV10.js"
   ],
   "resources/js/Pages/Payment/Success.vue": [
-    "http://localhost:8001/build/assets/Success-BGKXFW6w.js",
+    "http://localhost:8001/build/assets/Success-C1JVPGoG.js",
     "http://localhost:8001/build/assets/Success-BFGJG_XV.css"
   ],
   "resources/js/Pages/Payment/Success.vue?vue&type=style&index=0&scoped=a514fad3&lang.css": [
-    "http://localhost:8001/build/assets/Success-BGKXFW6w.js",
+    "http://localhost:8001/build/assets/Success-C1JVPGoG.js",
     "http://localhost:8001/build/assets/Success-BFGJG_XV.css"
   ],
   "resources/js/Pages/Planner/Index.vue": [
@@ -561,15 +557,15 @@
     "http://localhost:8001/build/assets/PlannerTimeline-H6vCGojU.css"
   ],
   "resources/js/Pages/Pricing.vue": [
-    "http://localhost:8001/build/assets/Pricing-B5JzamFi.js",
+    "http://localhost:8001/build/assets/Pricing-BACS_uEb.js",
     "http://localhost:8001/build/assets/Pricing-L8RVJqh4.css"
   ],
   "resources/js/Pages/Pricing.vue?vue&type=style&index=0&scoped=63be7c9f&lang.css": [
-    "http://localhost:8001/build/assets/Pricing-B5JzamFi.js",
+    "http://localhost:8001/build/assets/Pricing-BACS_uEb.js",
     "http://localhost:8001/build/assets/Pricing-L8RVJqh4.css"
   ],
   "resources/js/Pages/Profile/Edit.vue": [
-    "http://localhost:8001/build/assets/Edit-DwGq4Btx.js"
+    "http://localhost:8001/build/assets/Edit--t4esrxv.js"
   ],
   "resources/js/Pages/Profile/Partials/DeleteUserForm.vue": [
     "http://localhost:8001/build/assets/DeleteUserForm-CIEWnmII.js"
@@ -584,24 +580,24 @@
     "http://localhost:8001/build/assets/UpdateProfileInformationForm-GU_L7upc.js"
   ],
   "resources/js/Pages/Settings/Billing.vue": [
-    "http://localhost:8001/build/assets/Billing-sDIL5v2-.js"
+    "http://localhost:8001/build/assets/Billing-DQ-b2Ds6.js"
   ],
   "resources/js/Pages/Settings/General.vue": [
-    "http://localhost:8001/build/assets/General-B_y2PXxa.js"
+    "http://localhost:8001/build/assets/General-exnj4qJT.js"
   ],
   "resources/js/Pages/Settings/Layout.vue": [
-    "http://localhost:8001/build/assets/Layout-DrGfk85h.js",
-    "http://localhost:8001/build/assets/Layout-Bprd48K4.css"
+    "http://localhost:8001/build/assets/Layout-D-LRYdog.js",
+    "http://localhost:8001/build/assets/Layout-DsrDzncF.css"
   ],
-  "resources/js/Pages/Settings/Layout.vue?vue&type=style&index=0&scoped=31495991&lang.css": [
-    "http://localhost:8001/build/assets/Layout-DrGfk85h.js",
-    "http://localhost:8001/build/assets/Layout-Bprd48K4.css"
+  "resources/js/Pages/Settings/Layout.vue?vue&type=style&index=0&scoped=02b4f0b5&lang.css": [
+    "http://localhost:8001/build/assets/Layout-D-LRYdog.js",
+    "http://localhost:8001/build/assets/Layout-DsrDzncF.css"
   ],
   "resources/js/Pages/Settings/Modules.vue": [
-    "http://localhost:8001/build/assets/Modules-B9BczpiA.js"
+    "http://localhost:8001/build/assets/Modules-CtiOjhZ_.js"
   ],
   "resources/js/Pages/Settings/Notifications.vue": [
-    "http://localhost:8001/build/assets/Notifications-CZkGf7Gs.js"
+    "http://localhost:8001/build/assets/Notifications-9Bl-4Vay.js"
   ],
   "resources/js/Pages/Settings/Partials/AppearanceTab.vue": [
     "http://localhost:8001/build/assets/AppearanceTab-Bygf3Pt5.js"
@@ -619,10 +615,10 @@
     "http://localhost:8001/build/assets/SecurityTab-C49Z1wiR.js"
   ],
   "resources/js/Pages/Settings/Privacy.vue": [
-    "http://localhost:8001/build/assets/Privacy-B6wWc7f6.js"
+    "http://localhost:8001/build/assets/Privacy-8ReNFdmM.js"
   ],
   "resources/js/Pages/Settings/Security.vue": [
-    "http://localhost:8001/build/assets/Security-Dcr2z79j.js"
+    "http://localhost:8001/build/assets/Security-CbruOR_g.js"
   ],
   "resources/js/Pages/Welcome.vue": [
     "http://localhost:8001/build/assets/Welcome-B6XsWpzT.js"

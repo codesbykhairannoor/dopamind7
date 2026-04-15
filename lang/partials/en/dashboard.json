@@ -36,7 +36,7 @@
     "dash_unlock_ai": "Unlock AI Coaching projections",
     "dash_schedule": "Schedule",
     "dash_pending": "Pending",
-    "dash_planner_tasks_today": "{count} tasks scheduled for today",
+    "dash_planner_tasks_today": ":count tasks scheduled for today",
     "dash_habits": "Habits",
     "dash_done": "done",
     "dash_journal": "Journal",

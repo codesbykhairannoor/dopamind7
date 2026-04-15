@@ -6,12 +6,10 @@ import { useAppearance } from "@/Composables/useAppearance";
 import { useGating } from "@/Composables/useGating";
 import GlobalHeader from "@/Components/GlobalHeader.vue";
 import AppSidebarNav from "@/Components/AppSidebarNav.vue";
-import { useBackgroundPrefetch } from "@/Composables/useBackgroundPrefetch";
 
 // --- DATA USER & HALAMAN ---
 const page = usePage();
 const { demandAccess, user } = useGating();
-const { run, cancel } = useBackgroundPrefetch(user);
 
 // --- STATE NAVIGASI ---
 const showLogoutModal = ref(false);
@@ -62,13 +60,11 @@ onMounted(() => {
     mdMediaQuery = window.matchMedia("(min-width: 768px)");
     mediaQueryListener = () => syncBreakpoint();
     mdMediaQuery.addEventListener("change", mediaQueryListener);
-    run();
 });
 
 onUnmounted(() => {
     mdMediaQuery?.removeEventListener("change", mediaQueryListener);
     document.body.style.overflow = "";
-    cancel();
 });
 
 const closeMobileDrawer = () => {

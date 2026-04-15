@@ -117,7 +117,6 @@ const goCoach = () => {
             >
                 <Link
                     :href="route('dashboard')"
-                    prefetch="hover"
                     class="nav-item group"
                     :class="[
                         isActive('dashboard')
@@ -152,7 +151,6 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('habit')"
                     :href="route('habits.index')"
-                    prefetch="hover"
                     class="nav-item group"
                     :class="[
                         isActive('habits.*')
@@ -187,7 +185,6 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('planner')"
                     :href="route('planner.index')"
-                    prefetch="hover"
                     class="nav-item group"
                     :class="[
                         isActive('planner.*')
@@ -222,7 +219,6 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('finance')"
                     :href="route('finance.index')"
-                    prefetch="hover"
                     class="nav-item group"
                     :class="[
                         isActive('finance.*')
@@ -340,7 +336,6 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('journal')"
                     :href="route('journal.index')"
-                    prefetch="hover"
                     class="nav-item group"
                     :class="[
                         isActive('journal.*')
@@ -390,7 +385,6 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('calendar')"
                     :href="route('calendar.index')"
-                    prefetch="hover"
                     class="nav-item group"
                     :class="[
                         isActive('calendar.*')
@@ -440,7 +434,6 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('job')"
                     :href="route('jobs.index')"
-                    prefetch="hover"
                     class="nav-item group"
                     :class="[
                         isActive('jobs.*')
@@ -490,7 +483,6 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('goal')"
                     :href="route('goals.index')"
-                    prefetch="hover"
                     class="nav-item group"
                     :class="[
                         isActive('goals.*')

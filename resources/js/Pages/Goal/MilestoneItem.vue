@@ -131,7 +131,7 @@ const handleCheckbox = () => {
 
         <button 
             @click="emit('delete')"
-            class="opacity-0 group-hover/ms:opacity-100 p-1.5 text-slate-300 dark:text-slate-600 hover:text-rose-500 dark:hover:text-rose-400 transition-all rounded-xl hover:bg-rose-50 dark:hover:bg-rose-500/10 focus:outline-none shrink-0"
+            class="opacity-100 md:opacity-0 md:group-hover/ms:opacity-100 p-1.5 text-slate-300 dark:text-slate-600 hover:text-rose-500 dark:hover:text-rose-400 transition-all rounded-xl hover:bg-rose-50 dark:hover:bg-rose-500/10 focus:outline-none shrink-0"
         >
             <Trash2 :size="14" />
         </button>

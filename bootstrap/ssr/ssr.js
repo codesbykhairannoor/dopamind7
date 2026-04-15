@@ -822,7 +822,7 @@ const dash_neural_insight$1 = "Neural insight";
 const dash_unlock_ai$1 = "Unlock AI Coaching projections";
 const dash_schedule$1 = "Schedule";
 const dash_pending$1 = "Pending";
-const dash_planner_tasks_today$1 = "{count} tasks scheduled for today";
+const dash_planner_tasks_today$1 = ":count tasks scheduled for today";
 const dash_habits$1 = "Habits";
 const dash_done$1 = "done";
 const dash_journal$1 = "Journal";
@@ -1916,14 +1916,14 @@ const goal_add_row$1 = "Add Goal";
 const goal_bulk_selected$1 = "Goals Selected";
 const goal_bulk_copy$1 = "Duplicate";
 const goal_bulk_delete$1 = "Delete Selection";
-const goal_bulk_delete_confirm$1 = "Delete {count} goals at once?";
+const goal_bulk_delete_confirm$1 = "Delete :count goals at once?";
 const goal_bulk_delete_success$1 = "Deleted successfully!";
-const goal_bulk_copy_success$1 = "{count} goals duplicated.";
+const goal_bulk_copy_success$1 = ":count goals duplicated.";
 const goal_error_save$1 = "Failed to save! Check connection.";
 const goal_tips$1 = "Tips: Click a cell to edit. Data saves automatically when you switch cells.";
 const goal_col_title$1 = "Goal Title";
 const goal_col_category$1 = "Category";
-const goal_completed_pct$1 = "Completed %";
+const goal_completed_pct$1 = ":count% Completed";
 const goal_col_type$1 = "Frequency";
 const goal_col_target$1 = "Target";
 const goal_col_current$1 = "Progress";
@@ -1957,7 +1957,7 @@ const goal_stats_top_momentum$1 = "Top Momentum";
 const goal_stats_focus$1 = "Focus Project";
 const goal_stats_pulse$1 = "Project Pulse";
 const goal_stats_overall$1 = "Overall Progress";
-const goal_days_left$1 = "{days} days left";
+const goal_days_left$1 = ":days days left";
 const goal_overdue$1 = "Overdue";
 const goal_ending_today$1 = "Ending Today";
 const goal_duration$1 = "Duration";
@@ -2020,13 +2020,15 @@ const goal_delete_title$1 = "Delete Vision?";
 const goal_limit_explorer$1 = "Explorer limit: 1 Goal. Upgrade to Architect for unlimited goals!";
 const goal_cover_premium$1 = "Goal Covers are available for Architect and above!";
 const goal_error_file_large$1 = "File too large";
-const goal_steps_count$1 = "{count} Steps";
+const goal_steps_count$1 = ":count Steps";
 const goal_stats_momentum$1 = "Vision Momentum";
 const goal_stats_north_star$1 = "The North Star";
 const goal_stats_runway$1 = "Time Runway";
 const goal_stats_mastery$1 = "Mastery Depth";
 const goal_stats_calm$1 = "Strategic Calm";
-const goal_stats_day_left$1 = "{days} Days Left";
+const goal_stats_day_left$1 = ":days Days Left";
+const goal_manifestation$1 = "Manifestation";
+const goal_manifestasion$1 = "Manifestation";
 const goal_ai_promo_badge$1 = "Success Forecasting";
 const goal_ai_promo_title$1 = "Predict Your Achievement";
 const goal_ai_promo_desc$1 = "Neural OS calculates your velocity and predicts exactly when you'll reach your milestones, allowing you to adjust your strategy before a deadline even approaches.";
@@ -6320,6 +6322,8 @@ const en = {
   goal_stats_mastery: goal_stats_mastery$1,
   goal_stats_calm: goal_stats_calm$1,
   goal_stats_day_left: goal_stats_day_left$1,
+  goal_manifestation: goal_manifestation$1,
+  goal_manifestasion: goal_manifestasion$1,
   goal_ai_promo_badge: goal_ai_promo_badge$1,
   goal_ai_promo_title: goal_ai_promo_title$1,
   goal_ai_promo_desc: goal_ai_promo_desc$1,
@@ -10182,6 +10186,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_label_title: goal_label_title$1,
   goal_level_moonshot: goal_level_moonshot$1,
   goal_limit_explorer: goal_limit_explorer$1,
+  goal_manifestasion: goal_manifestasion$1,
+  goal_manifestation: goal_manifestation$1,
   goal_meta_desc: goal_meta_desc$1,
   goal_meta_og_desc: goal_meta_og_desc$1,
   goal_meta_og_title: goal_meta_og_title$1,
@@ -13769,7 +13775,7 @@ const dash_neural_insight = "Neural insight";
 const dash_unlock_ai = "Buka proyeksi AI Coaching";
 const dash_schedule = "Agenda";
 const dash_pending = "Tertunda";
-const dash_planner_tasks_today = "{count} tugas terjadwal hari ini";
+const dash_planner_tasks_today = ":count tugas terjadwal hari ini";
 const dash_habits = "Habit";
 const dash_done = "selesai";
 const dash_journal = "Jurnal";
@@ -14871,14 +14877,14 @@ const goal_add_row = "Tambah Target";
 const goal_bulk_selected = "Target Terpilih";
 const goal_bulk_copy = "Duplikat";
 const goal_bulk_delete = "Hapus Sekaligus";
-const goal_bulk_delete_confirm = "Hapus {count} target sekaligus?";
+const goal_bulk_delete_confirm = "Hapus :count target sekaligus?";
 const goal_bulk_delete_success = "Berhasil dihapus!";
-const goal_bulk_copy_success = "{count} target diduplikasi.";
+const goal_bulk_copy_success = ":count target diduplikasi.";
 const goal_error_save = "Gagal menyimpan! Cek koneksi.";
 const goal_tips = "Tips: Klik sel pada tabel untuk mengedit. Data otomatis tersimpan saat berpindah sel.";
 const goal_col_title = "Nama Target";
 const goal_col_category = "Kategori";
-const goal_completed_pct = "Completed %";
+const goal_completed_pct = ":count% Selesai";
 const goal_col_type = "Frekuensi";
 const goal_col_target = "Target";
 const goal_col_current = "Progress";
@@ -14912,7 +14918,7 @@ const goal_stats_top_momentum = "Top Momentum";
 const goal_stats_focus = "Focus Project";
 const goal_stats_pulse = "Project Pulse";
 const goal_stats_overall = "Rata-rata Kemajuan";
-const goal_days_left = "Sisa {days} hari";
+const goal_days_left = "Sisa :days hari";
 const goal_overdue = "Terlambat";
 const goal_ending_today = "Berakhir Hari Ini";
 const goal_duration = "Durasi";
@@ -14975,13 +14981,15 @@ const goal_delete_title = "Hapus Impian?";
 const goal_limit_explorer = "Limit Explorer: 1 Target. Upgrade ke Architect untuk target tanpa batas!";
 const goal_cover_premium = "Sampul Target tersedia untuk Architect ke atas!";
 const goal_error_file_large = "File terlalu besar";
-const goal_steps_count = "{count} Langkah";
+const goal_steps_count = ":count Langkah";
 const goal_stats_momentum = "Momentum Visi";
 const goal_stats_north_star = "Visi Utama";
 const goal_stats_runway = "Sisa Waktu";
 const goal_stats_mastery = "Kedalaman Mastery";
 const goal_stats_calm = "Ketenangan Strategis";
-const goal_stats_day_left = "{days} Hari";
+const goal_stats_day_left = ":days Hari";
+const goal_manifestation = "Manifestasi";
+const goal_manifestasion = "Manifestasi";
 const goal_ai_promo_badge = "Peramalan Kesuksesan";
 const goal_ai_promo_title = "Prediksi Pencapaian Anda";
 const goal_ai_promo_desc = "Neural OS menghitung velositas Anda dan memprediksi kapan tepatnya Anda akan mencapai milestone Anda, memungkinkan Anda menyesuaikan strategi sebelum tenggat waktu mendekat.";
@@ -19264,6 +19272,8 @@ const id = {
   goal_stats_mastery,
   goal_stats_calm,
   goal_stats_day_left,
+  goal_manifestation,
+  goal_manifestasion,
   goal_ai_promo_badge,
   goal_ai_promo_title,
   goal_ai_promo_desc,
@@ -23087,6 +23097,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_label_title,
   goal_level_moonshot,
   goal_limit_explorer,
+  goal_manifestasion,
+  goal_manifestation,
   goal_meta_desc,
   goal_meta_og_desc,
   goal_meta_og_title,
@@ -26603,7 +26615,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-ZdCfA3eF.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-p_ih5aBU.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-B6Wrsxny.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-G3bc5hUd.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-JrS2AWGE.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DnPstKFr.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-Ykibw0zp.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-LiO3zZdT.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-aCOHjnK2.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BWtWX_Bd.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-CSDIn1rq.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CvYx0ZeA.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DEk3oRZL.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BgLEfiL2.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BXSp97CZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-CL9HK3Vx.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-BcXs0ORb.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-C8EFcijR.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-WRsWA4yW.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-CEM28YKM.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-B_6MH-4S.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-nWpu4f0y.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-DA6hLQpe.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CINmz6SP.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-JG7MJ9vA.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-Djk-eAA-.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DqXuOYq_.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-BQGN6G5x.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-Csd0PuJy.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-B5HicurL.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-BV701YHe.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-ARrCGPVt.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CkvmVouY.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-CpjmMXHD.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CrQo8MSH.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-CL1g9B1Q.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-DMP1pfzD.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DRV_AEwv.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-B26M8PrI.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-B_pcTFnO.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-BjxnEiy1.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CRFNeV10.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-BGKXFW6w.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DzN8VcV3.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-DuGcvbi1.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CnhxeQQc.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dcp4Vr0v.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-VQ6J1TMc.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-CsGtqZuw.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-B5JzamFi.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-DwGq4Btx.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CIEWnmII.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-COl8ZQwj.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-GU_L7upc.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-sDIL5v2-.js"), "./Pages/Settings/General.vue": () => import("./assets/General-B_y2PXxa.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-DrGfk85h.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-B9BczpiA.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-CZkGf7Gs.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DvawROQy.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-C49Z1wiR.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-B6wWc7f6.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-Dcr2z79j.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-B6XsWpzT.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-ZdCfA3eF.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-p_ih5aBU.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-B6Wrsxny.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-G3bc5hUd.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-JrS2AWGE.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DnPstKFr.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-Ykibw0zp.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-LiO3zZdT.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-aCOHjnK2.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BWtWX_Bd.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-CSDIn1rq.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CvYx0ZeA.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DEk3oRZL.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BgLEfiL2.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BXSp97CZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-CL9HK3Vx.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-BcXs0ORb.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-C8EFcijR.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-WRsWA4yW.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-CEM28YKM.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-D1HipL2d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CQuMqAHu.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-DA6hLQpe.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CQB73alA.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-JG7MJ9vA.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-B-FB0V3K.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-ByNAk6xa.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DqXuOYq_.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-BQGN6G5x.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-Csd0PuJy.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-B5HicurL.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-BV701YHe.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-ARrCGPVt.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CkvmVouY.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-CpjmMXHD.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CrQo8MSH.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-CL1g9B1Q.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-DMP1pfzD.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DRV_AEwv.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-B26M8PrI.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-B_pcTFnO.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-BjxnEiy1.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CRFNeV10.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-C1JVPGoG.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DzN8VcV3.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-DuGcvbi1.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CnhxeQQc.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dcp4Vr0v.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-VQ6J1TMc.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-CsGtqZuw.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-BACS_uEb.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit--t4esrxv.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CIEWnmII.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-COl8ZQwj.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-GU_L7upc.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-DQ-b2Ds6.js"), "./Pages/Settings/General.vue": () => import("./assets/General-exnj4qJT.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-D-LRYdog.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-CtiOjhZ_.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-9Bl-4Vay.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DvawROQy.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-C49Z1wiR.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-8ReNFdmM.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-CbruOR_g.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-B6XsWpzT.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";
