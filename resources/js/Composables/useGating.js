@@ -52,6 +52,7 @@ export const useGating = () => {
         const plans = {
             'explorer':  1,
             'architect': 2,
+            'trial':     2, // Trial gives Architect features
             'quantum':   3,
             'legendary': 4,
         };

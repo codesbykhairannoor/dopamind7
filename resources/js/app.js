@@ -140,12 +140,18 @@ router.on('invalid', (event) => {
     // window.location.reload(); 
 });
 
-// Single Google Analytics tracking listener
+// Single Google Analytics & Meta Pixel tracking listener
 router.on('navigate', (event) => {
+    // Google Analytics
     if (typeof gtag !== 'undefined' && window.GA_MEASUREMENT_ID) {
         gtag('config', window.GA_MEASUREMENT_ID, {
             page_path: event.detail.page.url,
             page_title: document.title
         });
+    }
+
+    // Meta Pixel PageView
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'PageView');
     }
 });

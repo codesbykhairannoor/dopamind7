@@ -20,7 +20,7 @@ class TrialController extends Controller
 
         $user->update([
             'is_premium' => 'true',
-            'plan_type' => 'architect', // Mengikuti paket trial yang diminta user
+            'plan_type' => 'trial', // Mengikuti paket trial yang diminta user
             'premium_until' => now()->addDays(10),
             'has_used_trial' => 'true',
         ]);

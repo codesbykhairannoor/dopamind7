@@ -38,7 +38,7 @@ const startTrial = () => {
 };
 
 const trialDaysLeft = computed(() => {
-    if (!user.value || !user.value.premium_until || user.value.plan_type !== 'architect') return 0;
+    if (!user.value || !user.value.premium_until || user.value.plan_type !== 'trial') return 0;
     const diff = new Date(user.value.premium_until) - new Date();
     return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
 });
@@ -180,7 +180,7 @@ onUnmounted(() => {
                         <span class="text-[10px] font-black tracking-wide">Mulai Trial 10 Hari</span>
                     </button>
                 </template>
-                <template v-else-if="user?.is_premium && user?.plan_type === 'architect' && trialDaysLeft > 0">
+                <template v-else-if="user?.is_premium && user?.plan_type === 'trial' && trialDaysLeft > 0">
                     <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 rounded-lg mr-1 border border-amber-200 dark:border-amber-500/30">
                         <span class="text-[10px] font-black tracking-wide">Sisa Trial: {{ trialDaysLeft }} Hari</span>
                     </div>
