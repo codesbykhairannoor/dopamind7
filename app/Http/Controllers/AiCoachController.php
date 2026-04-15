@@ -71,16 +71,8 @@ class AiCoachController extends Controller
         if (empty($messages) || !$currentSessionId) {
             $newSid = $currentSessionId ?? (string) Str::uuid();
             
-            // [AI OPENER REMOVED for On-Demand]
             // We use a static welcome to save Gemini tokens.
             $opener = "Halo {$user->name}, apa kabar hari ini? Saya siap membantu menganalisis progres hidupmu. Apa yang ingin kita bahas?";
-            
-            AiChat::create([
-                'user_id' => $user->id,
-                'session_id' => $newSid,
-                'role' => 'assistant',
-                'content' => $opener
-            ]);
 
             if (!$currentSessionId) {
                 return redirect()->route('coach.index', ['session' => $newSid]);
@@ -111,6 +103,18 @@ class AiCoachController extends Controller
         $lastMessage = end($allMessages);
 
         // Save User Message
+        $isFirstMessage = !AiChat::where('session_id', $request->session_id)->exists();
+        if ($isFirstMessage) {
+            // Save the opener first so it appears in history
+            $opener = "Halo {$user->name}, apa kabar hari ini? Saya siap membantu menganalisis progres hidupmu. Apa yang ingin kita bahas?";
+            AiChat::create([
+                'user_id' => $user->id,
+                'session_id' => $request->session_id,
+                'role' => 'assistant',
+                'content' => $opener
+            ]);
+        }
+
         AiChat::create([
             'user_id' => $user->id,
             'session_id' => $request->session_id,

@@ -96,8 +96,7 @@ class PaymentController extends Controller
         }
 
         $timestamp = round(microtime(true) * 1000);
-        // Signature Duitku POP: md5(merchantCode + merchantOrderId + paymentAmount + apiKey)
-        $signature = md5($merchantCode . $merchantOrderId . (int)$paymentAmount . $apiKey);
+        $signature = hash('sha256', $merchantCode . $timestamp . $apiKey);
 
         $firstName = explode(' ', $user->name)[0] ?: 'User';
         $lastName = explode(' ', $user->name)[1] ?? $firstName;
@@ -130,37 +129,39 @@ class PaymentController extends Controller
         ];
 
         $params = [
-            'merchantCode' => (string)$merchantCode,
             'paymentAmount' => (int)$paymentAmount,
-            'paymentMethod' => (string)$request->input('paymentMethod', '00'), // '00' is the wildcard for selection page in many Duitku setups
             'merchantOrderId' => (string)$merchantOrderId,
             'productDetails' => (string)$productDetails,
-            'additionalParam' => '',
-            'merchantUserInfo' => (string)$user->id,
-            'customerVaName' => (string)substr($user->name, 0, 20),
             'email' => (string)$email,
             'phoneNumber' => (string)$phoneNumber,
             'itemDetails' => $itemDetails,
             'customerDetail' => $customerDetail,
             'callbackUrl' => (string)route('payment.callback'),
             'returnUrl' => (string)route('payment.finish'),
-            'signature' => (string)$signature,
             'expiryPeriod' => (int)60
         ];
+        
+        $paymentMethod = $request->input('paymentMethod');
+        if ($paymentMethod && $paymentMethod !== '00') {
+            $params['paymentMethod'] = (string)$paymentMethod;
+        }
 
         $url = $env === 'production'
-            ? 'https://passport.duitku.com/webapi/api/merchant/v2/inquiry'
-            : 'https://sandbox.duitku.com/webapi/api/merchant/v2/inquiry';
+            ? 'https://api-prod.duitku.com/api/merchant/createInvoice'
+            : 'https://api-sandbox.duitku.com/api/merchant/createInvoice';
 
         try {
-            Log::info('Duitku-V2-Inquiry Request:', [
+            Log::info('Duitku-CreateInvoice Request:', [
                 'url' => $url,
                 'merchantOrderId' => $merchantOrderId,
                 'paymentAmount' => (int)$paymentAmount
             ]);
 
             $response = Http::withHeaders([
-                'Content-Type' => 'application/json'
+                'Content-Type' => 'application/json',
+                'x-duitku-signature' => $signature,
+                'x-duitku-timestamp' => $timestamp,
+                'x-duitku-merchantcode' => $merchantCode
             ])->post($url, $params);
             
             $status = $response->status();

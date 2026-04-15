@@ -96,6 +96,24 @@ const togglePlatinum = () => {
     localStorage.setItem("sidebar_platinum_expanded", platinumExpanded.value);
 };
 
+const goToCoachWithContext = () => {
+    let currentPath = page.url.split('?')[0];
+    let contextMsg = "";
+    if (currentPath.includes('/habits')) contextMsg = "Saya sedang melihat halaman Habit. Berikan saya audit singkat atau saran mengenai habit saya saat ini.";
+    else if (currentPath.includes('/finance')) contextMsg = "Saya sedang melihat halaman Keuangan. Tolong analisis pengeluaran dan pemasukan saya bulan ini.";
+    else if (currentPath.includes('/planner')) contextMsg = "Saya sedang melihat halaman Planner. Bantu saya menyusun prioritas tugas hari ini.";
+    else if (currentPath.includes('/journal')) contextMsg = "Saya sedang melihat halaman Jurnal. Berikan insight atau prompt refleksi diri untuk hari ini.";
+    else if (currentPath.includes('/calendar')) contextMsg = "Saya sedang melihat halaman Kalender. Bagaimana jadwal saya saat ini?";
+    else if (currentPath.includes('/goals')) contextMsg = "Saya sedang melihat halaman Goals. Apa langkah terbaik untuk mencapai target saya?";
+    else if (currentPath.includes('/jobs')) contextMsg = "Saya sedang melihat halaman Lamaran Kerja. Berikan tips terkait pencarian kerja saya.";
+    
+    let routeParams = {};
+    if (contextMsg) {
+        routeParams.initial_message = contextMsg;
+    }
+    demandAccess('ai_coach', route('coach.index', routeParams));
+};
+
 watch(
     () => page.url,
     () => {
@@ -287,7 +305,7 @@ watch(isMobileDrawerOpen, (open) => {
         <!-- FLOATING AI COACH BUTTON (DESKTOP ONLY) -->
         <button
             v-if="!route().current('coach.*')"
-            @click="demandAccess('ai_coach', route('coach.index'))"
+            @click="goToCoachWithContext"
             class="hidden md:block fixed bottom-10 right-10 z-[100] group"
         >
             <div class="relative">
