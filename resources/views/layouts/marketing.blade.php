@@ -802,50 +802,71 @@
                 </div>
             </div>
 
-            {{-- MOBILE MENU: root list + drill-down panels (ClickUp-style) --}}
+            {{-- MOBILE MENU: Full-screen Notion style --}}
             <div x-show="mobileMenuOpen" x-cloak class="lg:hidden">
                 <div x-transition:enter="transition ease-out duration-200"
-                    x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                    x-transition:enter-start="opacity-0 scale-[0.98]"
+                    x-transition:enter-end="opacity-100 scale-100"
                     x-transition:leave="transition ease-in duration-150"
-                    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                    class="fixed inset-0 z-[99] bg-slate-900/20"
-                    @click="mobileMenuOpen = false; mobilePanel = null"></div>
+                    x-transition:leave-start="opacity-100 scale-100"
+                    x-transition:leave-end="opacity-0 scale-[0.98]"
+                    class="fixed inset-0 z-[120] bg-white flex flex-col h-[100dvh] w-full overflow-hidden origin-top">
 
-                <div x-transition:enter="transition ease-out duration-250"
-                    x-transition:enter-start="-translate-x-full opacity-90"
-                    x-transition:enter-end="translate-x-0 opacity-100"
-                    x-transition:leave="transition ease-in duration-180"
-                    x-transition:leave-start="translate-x-0 opacity-100"
-                    x-transition:leave-end="-translate-x-full opacity-90"
-                    class="fixed left-0 top-16 z-[100] h-[calc(100dvh-4rem)] w-[min(380px,100vw)] bg-white border-r border-slate-100 shadow-2xl flex flex-col overflow-hidden rounded-r-2xl">
+                    {{-- MOBILE MENU HEADER (Inside the fullscreen menu) --}}
+                    <div class="px-6 h-16 flex justify-between items-center bg-white shrink-0">
+                        {{-- LOGO --}}
+                        <a href="{{ route('home') }}" hx-boost="false" class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center shadow-sm">
+                                <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-5 h-5 brightness-0 invert" />
+                            </div>
+                            <span class="text-xl font-bold tracking-tight text-slate-900">OneForMind</span>
+                        </a>
 
-                    <div class="relative flex-1 min-h-0 flex flex-col">
-                        {{-- Root: primary nav (sentence case, chevrons) --}}
+                        <div class="flex items-center gap-3">
+                            {{-- Get Started Button (Notion style: blue button on right) --}}
+                            @auth
+                                <a hx-boost="false" href="{{ route('dashboard') }}" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-semibold transition">Dashboard</a>
+                            @else
+                                <a hx-boost="false" href="{{ route('register') }}" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-semibold transition">Get started</a>
+                            @endauth
+
+                            {{-- CLOSE BUTTON (Notion style: simple X) --}}
+                            <button @click="mobileMenuOpen = false; mobilePanel = null" class="p-1 -mr-2 text-slate-600 hover:text-slate-900 transition focus:outline-none" aria-label="Close Navigation">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="relative flex-1 flex flex-col min-h-0 bg-white">
+                        {{-- Root: primary nav (larger font, no borders) --}}
                         <div x-show="mobilePanel === null" x-transition
-                            class="flex flex-col flex-1 min-h-0 overflow-y-auto overscroll-contain px-4 pt-1 pb-4">
+                            class="flex flex-col flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 pt-4 pb-6">
+                            
                             <button type="button" @click="mobilePanel = 'features'"
-                                class="w-full flex items-center justify-between py-3.5 text-left text-[16px] font-bold text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg leading-snug">
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[19px] font-medium text-slate-900 active:opacity-70 leading-snug">
                                 <span>Features</span>
-                                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </button>
                             <button type="button" @click="mobilePanel = 'solutions'"
-                                class="w-full flex items-center justify-between py-3.5 text-left text-[16px] font-bold text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg leading-snug">
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[19px] font-medium text-slate-900 active:opacity-70 leading-snug">
                                 <span>Solutions</span>
-                                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </button>
                             <button type="button" @click="mobilePanel = 'resources'"
-                                class="w-full flex items-center justify-between py-3.5 text-left text-[16px] font-bold text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg leading-snug">
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[19px] font-medium text-slate-900 active:opacity-70 leading-snug">
                                 <span>Resources</span>
-                                <svg class="w-5 h-5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </button>
                             <a href="{{ route('pricing.index') }}" @click="mobileMenuOpen = false; mobilePanel = null"
-                                class="block py-3.5 text-[16px] font-bold text-slate-900 border-b border-slate-100 leading-snug">Pricing</a>
+                                class="block py-3.5 text-[19px] font-medium text-slate-900 leading-snug">Pricing</a>
                         </div>
 
                         {{-- Sub-panels: slide in, compact lists --}}
@@ -856,20 +877,22 @@
                             x-transition:leave="transition transform ease-in duration-150"
                             x-transition:leave-start="translate-x-0"
                             x-transition:leave-end="translate-x-full"
-                            class="absolute inset-0 z-[102] flex flex-col bg-white rounded-r-2xl">
-                            <div class="shrink-0 flex items-center gap-2 px-3 py-3 border-b border-slate-100">
+                            class="absolute inset-0 z-[102] flex flex-col bg-white">
+                            
+                            <div class="shrink-0 flex items-center gap-3 px-4 py-4">
                                 <button type="button" @click="mobilePanel = null"
-                                    class="p-2 -ml-1 rounded-lg text-slate-600 hover:bg-slate-100"
+                                    class="p-1 rounded text-slate-600 active:bg-slate-100"
                                     aria-label="Back">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
                                     </svg>
                                 </button>
-                                <span class="text-[17px] font-bold text-slate-900 tracking-tight"
+                                <span class="text-[19px] font-medium text-slate-900 tracking-tight"
                                     x-text="mobilePanel === 'features' ? 'Features' : mobilePanel === 'solutions' ? 'Solutions' : mobilePanel === 'resources' ? 'Resources' : ''"></span>
                             </div>
-                            <div class="flex-1 min-h-0 overflow-y-auto overscroll-contain px-3 pb-4">
-                                <div x-show="mobilePanel === 'features'" class="space-y-0 pt-1">
+
+                            <div class="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 pb-6">
+                                <div x-show="mobilePanel === 'features'" class="space-y-1">
                                     <x-nav-item-mobile dismiss-mobile href="{{ route('features.habit') }}" icon="🌱" title="Habit tracker" desc="Build consistency daily" />
                                     <x-nav-item-mobile dismiss-mobile href="{{ route('features.finance') }}" icon="💰" title="Finance OS" desc="Manage cash flow clearly" />
                                     <x-nav-item-mobile dismiss-mobile href="{{ route('features.planner') }}" icon="🎯" title="Daily planner" desc="Focus your top priorities" />
@@ -879,65 +902,84 @@
                                     <x-nav-item-mobile dismiss-mobile href="{{ route('features.job') }}" icon="💼" title="Job tracker" desc="Manage applications" />
                                     <x-nav-item-mobile dismiss-mobile href="{{ route('features.neural-os') }}" icon="🧠" title="Neural OS AI" desc="AI-powered planning coach" />
                                 </div>
-                                <div x-show="mobilePanel === 'solutions'" class="space-y-4 pt-1">
+                                <div x-show="mobilePanel === 'solutions'" class="space-y-6 pt-2">
                                     <div>
-                                        <p class="text-[11px] font-medium text-slate-400 tracking-wide mb-1.5 px-1">By role</p>
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.student') }}" icon="🎓" title="Students" desc="Study system optimizer" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.freelancer') }}" icon="💻" title="Freelancers" desc="Client workflow" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal growth" desc="Mindset and habits" />
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">By role</p>
+                                        <div class="space-y-1">
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.student') }}" icon="🎓" title="Students" desc="Study system optimizer" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.freelancer') }}" icon="💻" title="Freelancers" desc="Client workflow" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.personalgrowth') }}" icon="🚀" title="Personal growth" desc="Mindset and habits" />
+                                        </div>
                                     </div>
                                     <div>
-                                        <p class="text-[11px] font-medium text-slate-400 tracking-wide mb-1.5 px-1">By use case</p>
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.finance') }}" icon="💰" title="Finance clarity" desc="Budget and cash flow" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.career') }}" icon="💼" title="Career tracker" desc="Track opportunities" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.mental') }}" icon="🧘" title="Mental health" desc="Reduce stress and noise" />
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">By use case</p>
+                                        <div class="space-y-1">
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.finance') }}" icon="💰" title="Finance clarity" desc="Budget and cash flow" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.career') }}" icon="💼" title="Career tracker" desc="Track opportunities" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.mental') }}" icon="🧘" title="Mental health" desc="Reduce stress and noise" />
+                                        </div>
                                     </div>
                                     <div>
-                                        <p class="text-[11px] font-medium text-indigo-500/90 tracking-wide mb-1.5 px-1">By methodology</p>
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.atomic') }}" icon="🌱" title="Atomic habits" desc="Small steps, big results" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.deepwork') }}" icon="⚡" title="Deep work" desc="Protect focus blocks" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.secondbrain') }}" icon="🧠" title="Second brain" desc="Your thinking system" />
+                                        <p class="text-[12px] font-semibold text-indigo-500 uppercase tracking-wider mb-2 px-1">By methodology</p>
+                                        <div class="space-y-1">
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.atomic') }}" icon="🌱" title="Atomic habits" desc="Small steps, big results" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.deepwork') }}" icon="⚡" title="Deep work" desc="Protect focus blocks" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('solutions.secondbrain') }}" icon="🧠" title="Second brain" desc="Your thinking system" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div x-show="mobilePanel === 'resources'" class="space-y-4 pt-1">
+                                <div x-show="mobilePanel === 'resources'" class="space-y-6 pt-2">
                                     <div>
-                                        <p class="text-[11px] font-medium text-slate-400 tracking-wide mb-1.5 px-1">Knowledge &amp; help</p>
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.guide') }}" icon="📖" title="User guide" desc="How to use OneForMind" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.help') }}" icon="🙋‍♂️" title="Help center" desc="Answers and support" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.changelog') }}" icon="🚀" title="What's new" desc="Latest updates" />
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Knowledge &amp; help</p>
+                                        <div class="space-y-1">
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('resources.guide') }}" icon="📖" title="User guide" desc="How to use OneForMind" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('resources.help') }}" icon="🙋‍♂️" title="Help center" desc="Answers and support" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('resources.changelog') }}" icon="🚀" title="What's new" desc="Latest updates" />
+                                        </div>
                                     </div>
                                     <div>
-                                        <p class="text-[11px] font-medium text-slate-400 tracking-wide mb-1.5 px-1">Social &amp; community</p>
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.community') }}" icon="🌍" title="Community" desc="Join discussions" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.blog') }}" icon="✍️" title="Blog" desc="Productivity insights" />
-                                        <x-nav-item-mobile dismiss-mobile href="{{ route('resources.stories') }}" icon="✨" title="Success stories" desc="Real transformations" />
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Social &amp; community</p>
+                                        <div class="space-y-1">
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('resources.community') }}" icon="🌍" title="Community" desc="Join discussions" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('resources.blog') }}" icon="✍️" title="Blog" desc="Productivity insights" />
+                                            <x-nav-item-mobile dismiss-mobile href="{{ route('resources.stories') }}" icon="✨" title="Success stories" desc="Real transformations" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="shrink-0 border-t border-slate-100 px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] space-y-4 bg-white">
-                        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
-                            <span class="text-xs font-medium text-slate-500">Language</span>
-                            <div class="flex gap-2">
-                                <a href="{{ route('lang.switch', 'id') }}"
-                                    class="px-3 py-1.5 rounded-lg text-xs font-semibold {{ app()->getLocale() === 'id' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-slate-500 border border-slate-200' }}">ID</a>
-                                <a href="{{ route('lang.switch', 'en') }}"
-                                    class="px-3 py-1.5 rounded-lg text-xs font-semibold {{ app()->getLocale() === 'en' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-slate-500 border border-slate-200' }}">EN</a>
+                        {{-- Footer style bottom pane --}}
+                        <div x-show="mobilePanel === null" class="shrink-0 mt-auto px-6 pb-[max(2rem,env(safe-area-inset-bottom))] bg-white">
+                            
+                            <hr class="border-slate-50 scale-x-125 mx-6 relative" />
+
+                            <div class="pt-6">
+                                {{-- Language toggle --}}
+                                <div class="flex items-center gap-3 mb-6">
+                                    <span class="text-sm font-medium text-slate-500">Language</span>
+                                    <div class="bg-slate-50 flex items-center p-0.5 rounded-md border border-slate-100">
+                                        <a href="{{ route('lang.switch', 'id') }}"
+                                            class="px-2.5 py-1 rounded-[4px] text-[11px] uppercase tracking-wide font-bold transition-all {{ app()->getLocale() === 'id' ? 'bg-white text-slate-900 shadow-sm border border-slate-200' : 'text-slate-400' }}">ID</a>
+                                        <a href="{{ route('lang.switch', 'en') }}"
+                                            class="px-2.5 py-1 rounded-[4px] text-[11px] uppercase tracking-wide font-bold transition-all {{ app()->getLocale() === 'en' ? 'bg-white text-slate-900 shadow-sm border border-slate-200' : 'text-slate-400' }}">EN</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col gap-2.5">
+                                    @auth
+                                        <a hx-boost="false" href="{{ route('dashboard') }}" @click="mobileMenuOpen = false; mobilePanel = null"
+                                            class="w-full py-2.5 text-center font-semibold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md text-[15px] transition-colors">Dashboard</a>
+                                    @else
+                                        <a hx-boost="false" href="{{ route('login') }}" @click="mobileMenuOpen = false; mobilePanel = null"
+                                            class="w-full py-2.5 text-center font-semibold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md text-[15px] transition-colors">Log in</a>
+                                        <a hx-boost="false" href="{{ route('register') }}" @click="mobileMenuOpen = false; mobilePanel = null"
+                                            class="w-full py-2.5 text-center font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md text-[15px] transition-colors">Get started</a>
+                                    @endauth
+                                </div>
                             </div>
                         </div>
-                        @guest
-                            <div class="grid grid-cols-1 gap-2">
-                                <a hx-boost="false" href="{{ route('login') }}" @click="mobileMenuOpen = false; mobilePanel = null"
-                                    class="w-full py-3 text-center font-medium text-slate-800 bg-slate-100 border border-slate-200 rounded-xl text-sm">Log in</a>
-                                <a hx-boost="false" href="{{ route('register') }}" @click="mobileMenuOpen = false; mobilePanel = null"
-                                    class="w-full py-3 text-center font-semibold text-white bg-indigo-600 rounded-xl text-sm shadow-md shadow-indigo-200/50">Get started</a>
-                            </div>
-                        @else
-                            <a hx-boost="false" href="{{ route('dashboard') }}" @click="mobileMenuOpen = false; mobilePanel = null"
-                                class="block w-full py-3 text-center font-semibold text-white bg-slate-900 rounded-xl text-sm">Dashboard</a>
-                        @endguest
+
                     </div>
                 </div>
             </div>
