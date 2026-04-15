@@ -41,6 +41,16 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'has_used_trial' => false,
+            'settings' => [
+                'modules' => [
+                    'habit' => true,
+                    'planner' => true,
+                    'finance' => true,
+                ],
+                'currency' => 'IDR',
+                'timezone' => 'Asia/Jakarta'
+            ],
         ]);
 
         // Meta Pixel & CAPI Deduplication ID
@@ -55,8 +65,12 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         // Send Server-Side Event (CAPI)
-        $metaCapi = new \App\Services\MetaCapiService();
-        $metaCapi->sendCompleteRegistration(['email' => $user->email], $metaEventId);
+        try {
+            $metaCapi = new \App\Services\MetaCapiService();
+            $metaCapi->sendCompleteRegistration(['email' => $user->email], $metaEventId);
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Meta CAPI Error on Registration: ' . $e->getMessage());
+        }
 
         return redirect(RouteServiceProvider::HOME)->with('meta_event_id', $metaEventId);
     }

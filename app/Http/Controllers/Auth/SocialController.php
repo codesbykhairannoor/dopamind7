@@ -59,7 +59,8 @@ class SocialController extends Controller
                         ],
                         'currency' => 'IDR',
                         'timezone' => 'Asia/Jakarta'
-                    ]
+                    ],
+                    'has_used_trial' => false,
                 ]);
                 Auth::login($newUser, true);
             }
