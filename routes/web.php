@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\FinanceSavingController;
 use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\TrialController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
@@ -421,6 +422,9 @@ Route::get("/auth/google/callback", [SocialController::class, "callback"]);
 // --- GROUP 3: AUTHENTICATED APP ---
 Route::middleware(["auth", "throttle:global"])->group(function () {
     // 👈 Tambahan di sini
+    
+    // Trial Route
+    Route::post("/trial/start", [TrialController::class, "start"])->name("trial.start");
 
     Route::get("/dashboard", DashboardController::class)->name("dashboard");
 

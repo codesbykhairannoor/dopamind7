@@ -46,7 +46,11 @@ class RegisteredUserController extends Controller
         // Meta Pixel & CAPI Deduplication ID
         $metaEventId = (string) \Illuminate\Support\Str::uuid();
 
-        event(new Registered($user));
+        try {
+            event(new Registered($user));
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Registration Email Error: ' . $e->getMessage());
+        }
 
         Auth::login($user);
 

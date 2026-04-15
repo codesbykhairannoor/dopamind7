@@ -313,7 +313,7 @@
                 <p class="text-xl text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed">{{ __('cl_cta_desc') }}</p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-6">
-                    <a href="mailto:support@oneformind.com" class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] transition transform hover:-translate-y-1">
+                    <a href="mailto:oneformindapp@gmail.com" class="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-indigo-700 shadow-[0_15px_30px_rgba(79,70,229,0.3)] transition transform hover:-translate-y-1">
                         {{ __('cl_cta_btn') }}
                     </a>
                 </div>

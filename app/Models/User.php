@@ -33,6 +33,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'resume_filename',
         'cookie_consent',
         'timezone',
+        'has_used_trial',
     ];
 
     /**
@@ -41,6 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $attributes = [
         'avatar_path' => null,
         'settings' => '{}',
+        'has_used_trial' => false,
     ];
 
     /**
@@ -59,6 +61,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
         'settings' => 'array',
         'is_premium' => 'boolean',
+        'has_used_trial' => 'boolean',
         'premium_until' => 'datetime',
     ];
 

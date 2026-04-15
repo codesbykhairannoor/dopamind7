@@ -241,7 +241,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-8">
-                    <a href="mailto:support@oneformind.com" class="inline-flex items-center justify-center gap-4 bg-white text-indigo-950 px-12 py-6 rounded-3xl font-black text-xl hover:bg-indigo-50 shadow-2xl transition transform hover:-translate-y-1 w-full sm:w-auto active:scale-95">
+                    <a href="mailto:oneformindapp@gmail.com" class="inline-flex items-center justify-center gap-4 bg-white text-indigo-950 px-12 py-6 rounded-3xl font-black text-xl hover:bg-indigo-50 shadow-2xl transition transform hover:-translate-y-1 w-full sm:w-auto active:scale-95">
                         {{ __('help_cta_btn') }}
                         <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>

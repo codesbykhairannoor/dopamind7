@@ -29,29 +29,43 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $user = $request->user();
+        $trialExpired = false;
+
+        if ($user && $user->premium_until && now()->greaterThan($user->premium_until)) {
+            $user->update([
+                'is_premium' => false,
+                'plan_type' => 'explorer',
+                'premium_until' => null,
+            ]);
+            $trialExpired = true;
+        }
+
         return array_merge(parent::share($request), [
             // 1. DATA USER (Sudah rapi & aman)
             'auth' => [
-                'user' => $request->user() ? [
-                    'id'       => $request->user()->id,
-                    'name'     => $request->user()->name,
-                    'email'    => $request->user()->email,
-                    'settings' => $request->user()->settings,
-                    'timezone' => $request->user()->timezone ?? config('app.timezone'),
-                    'avatar_url' => $request->user()->avatar_url,
-                    'resume_text' => fn () => $request->user()->resume_text,
-                    'resume_filename' => fn () => $request->user()->resume_filename,
-                    'is_premium' => $request->user()->is_premium,
-                    'plan_type'  => $request->user()->plan_type,
-                    'premium_until' => $request->user()->premium_until,
+                'user' => $user ? [
+                    'id'       => $user->id,
+                    'name'     => $user->name,
+                    'email'    => $user->email,
+                    'settings' => $user->settings,
+                    'timezone' => $user->timezone ?? config('app.timezone'),
+                    'avatar_url' => $user->avatar_url,
+                    'resume_text' => fn () => $user->resume_text,
+                    'resume_filename' => fn () => $user->resume_filename,
+                    'is_premium' => $user->is_premium,
+                    'plan_type'  => $user->plan_type,
+                    'premium_until' => $user->premium_until,
+                    'has_used_trial' => $user->has_used_trial,
                 ] : null,
             ],
 
             // 2. CONFIG GLOBAL (Dibuat Guest-Safe agar tidak error pas belum login)
             'app_config' => [
                 'name'        => config('app.name'),
-                'currency'    => $request->user()?->settings['currency'] ?? 'IDR',
-                'date_format' => $request->user()?->settings['date_format'] ?? 'Y-m-d',
+                'currency'    => $user?->settings['currency'] ?? 'IDR',
+                'date_format' => $user?->settings['date_format'] ?? 'Y-m-d',
+                'trial_expired' => $trialExpired,
             ],
 
             // 3. FLASH MESSAGES (Notifikasi)

@@ -247,7 +247,7 @@
                     {{ __('guide_support_desc') }}
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-6">
-                    <a href="mailto:support@oneformind.com" class="bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-lg hover:bg-indigo-500 transition shadow-xl shadow-indigo-900/50 flex items-center justify-center gap-3">
+                    <a href="mailto:oneformindapp@gmail.com" class="bg-indigo-600 text-white px-12 py-5 rounded-2xl font-black text-lg hover:bg-indigo-500 transition shadow-xl shadow-indigo-900/50 flex items-center justify-center gap-3">
                         ✉️ {{ __('guide_btn_contact') }}
                     </a>
                     <a href="#" class="bg-white/5 backdrop-blur-md text-white border border-white/10 px-12 py-5 rounded-2xl font-black text-lg hover:bg-white/10 transition flex items-center justify-center gap-3">

@@ -109,8 +109,8 @@
                     </div>
                     
                     <div class="pt-10">
-                        <a href="mailto:press@oneformind.com" class="text-xl font-black text-indigo-600 hover:text-indigo-700 flex items-center gap-2 group">
-                            press@oneformind.com
+                        <a href="mailto:oneformindapp@gmail.com" class="text-xl font-black text-indigo-600 hover:text-indigo-700 flex items-center gap-2 group">
+                            oneformindapp@gmail.com
                             <svg class="w-5 h-5 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>

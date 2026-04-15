@@ -8,7 +8,8 @@ import NotificationSettings from '@/Components/NotificationSettings.vue';
 import CommandPalette from '@/Components/CommandPalette.vue';
 import { useGating } from '@/Composables/useGating';
 import { useAppearance } from '@/Composables/useAppearance';
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted, watch } from 'vue';
+import Swal from 'sweetalert2';
 
 const page = usePage();
 const { isExplorer, user } = useGating();
@@ -21,6 +22,45 @@ defineProps({
 });
 
 const emit = defineEmits(['toggle-sidebar', 'logout-request']);
+
+const startTrial = () => {
+    router.post(route('trial.start'), {}, {
+        preserveScroll: true,
+        onSuccess: () => {
+            Swal.fire({
+                title: 'Trial Dimulai!',
+                text: 'Nikmati semua fitur Architect secara gratis selama 10 hari.',
+                icon: 'success',
+                confirmButtonColor: '#4f46e5'
+            });
+        }
+    });
+};
+
+const trialDaysLeft = computed(() => {
+    if (!user.value || !user.value.premium_until || user.value.plan_type !== 'architect') return 0;
+    const diff = new Date(user.value.premium_until) - new Date();
+    return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+});
+
+watch(() => page.props.app_config?.trial_expired, (expired) => {
+    if (expired) {
+        Swal.fire({
+            title: 'Masa Uji Coba Berakhir',
+            text: 'Waktu uji coba gratis Anda telah habis. Jangan khawatir, data Anda tetap aman! Silakan upgrade untuk melanjutkan akses penuh.',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'Upgrade Sekarang',
+            cancelButtonText: 'Nanti Saja',
+            confirmButtonColor: '#4f46e5',
+            cancelButtonColor: '#94a3b8'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                router.get(route('pricing.index'));
+            }
+        });
+    }
+}, { immediate: true });
 
 // Working status — compact Monday-style row
 const statusOptions = [
@@ -132,6 +172,19 @@ onUnmounted(() => {
                     <span class="text-[11px] font-black text-slate-600 dark:text-slate-300 transition-colors whitespace-nowrap">{{ todayLabel }}</span>
                 </div>
 
+                <template v-if="!user?.has_used_trial && !user?.is_premium">
+                    <button
+                        @click="startTrial"
+                        class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-lg transition-all shadow-sm active:scale-95 mr-1"
+                    >
+                        <span class="text-[10px] font-black tracking-wide">Mulai Trial 10 Hari</span>
+                    </button>
+                </template>
+                <template v-else-if="user?.is_premium && user?.plan_type === 'architect' && trialDaysLeft > 0">
+                    <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 rounded-lg mr-1 border border-amber-200 dark:border-amber-500/30">
+                        <span class="text-[10px] font-black tracking-wide">Sisa Trial: {{ trialDaysLeft }} Hari</span>
+                    </div>
+                </template>
 
                 <Link 
                     v-if="isExplorer" 

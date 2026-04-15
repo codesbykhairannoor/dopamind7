@@ -291,8 +291,7 @@ watch(
         z-[60] ensures dropdowns/modals render above layout elements.
     -->
     <div
-        class="flex overflow-hidden bg-white dark:bg-slate-950 relative z-[60]"
-        style="height: 100dvh; height: 100vh"
+        class="flex-1 flex overflow-hidden bg-white dark:bg-slate-950 relative z-[60]"
     >
         <!-- ═══════ MOBILE SIDEBAR BACKDROP ═══════ -->
         <Transition
