@@ -20,7 +20,7 @@ defineProps({
     isSidebarCollapsed: Boolean,
 });
 
-const emit = defineEmits(['toggle-sidebar']);
+const emit = defineEmits(['toggle-sidebar', 'logout-request']);
 
 // Working status — compact Monday-style row
 const statusOptions = [
@@ -286,7 +286,7 @@ onUnmounted(() => {
                         <!-- ⑥ LOGOUT -->
                         <div class="border-t border-slate-100 dark:border-slate-800 p-1.5">
                             <button 
-                                @click="router.post(route('logout'))"
+                                @click="emit('logout-request')"
                                 class="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-rose-50 dark:hover:bg-rose-500/10 rounded-lg transition-all text-left group"
                             >
                                 <svg class="text-slate-400 group-hover:text-rose-500 transition-colors shrink-0" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>

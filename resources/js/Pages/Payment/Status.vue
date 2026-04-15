@@ -103,29 +103,29 @@ onMounted(() => {
                     <Link 
                         v-if="status === 'success'"
                         href="/dashboard" 
-                        class="px-8 py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-3xl font-black text-sm uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-slate-200 dark:shadow-none"
+                        class="px-8 py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-3xl font-black text-sm tracking-wide hover:scale-105 active:scale-95 transition-all shadow-xl shadow-slate-200 dark:shadow-none"
                     >
                         {{ $t('payment_btn_dashboard', 'Go to Dashboard') }}
                     </Link>
                     <Link 
                         v-else
-                        href="/settings?tab=billing" 
-                        class="px-8 py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-3xl font-black text-sm uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-slate-200 dark:shadow-none"
+                        href="/pricing" 
+                        class="px-8 py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-3xl font-black text-sm tracking-wide hover:scale-105 active:scale-95 transition-all shadow-xl shadow-slate-200 dark:shadow-none"
                     >
-                        {{ $t('payment_btn_billing', 'Back to Billing') }}
+                        {{ $t('payment_btn_pricing', 'Back to Pricing') }}
                     </Link>
 
                     <Link 
                         v-if="status === 'success'"
                         href="/coach" 
-                        class="px-8 py-5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-3xl font-black text-sm uppercase tracking-widest hover:bg-slate-50 dark:hover:bg-slate-700 transition-all"
+                        class="px-8 py-5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-3xl font-black text-sm tracking-wide hover:bg-slate-50 dark:hover:bg-slate-700 transition-all"
                     >
                         {{ $t('payment_btn_ai', 'Talk to AI Coach') }}
                     </Link>
                     <Link 
                         v-else
                         href="/dashboard" 
-                        class="px-8 py-5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-3xl font-black text-sm uppercase tracking-widest hover:bg-slate-50 dark:hover:bg-slate-700 transition-all"
+                        class="px-8 py-5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 rounded-3xl font-black text-sm tracking-wide hover:bg-slate-50 dark:hover:bg-slate-700 transition-all"
                     >
                         {{ $t('payment_btn_dashboard', 'Go to Dashboard') }}
                     </Link>

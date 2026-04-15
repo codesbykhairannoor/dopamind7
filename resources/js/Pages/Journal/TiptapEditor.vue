@@ -251,41 +251,11 @@ const setFontSize = (value) => {
 </script>
 
 <template>
-    <!-- Floating Toolbar (Refined for Mobile Fixed Floating) -->
+    <!-- Integrated Toolbar (Sub-header sticky) -->
     <div
         v-if="editor"
-        class="sticky top-16 sm:top-20 z-30 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-2 rounded-2xl border border-slate-200/60 dark:border-slate-800 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-slate-950/50 flex flex-wrap items-center justify-center gap-1 w-full sm:w-fit sm:mx-0 mx-auto transition-all duration-300 overflow-visible group/toolbar mb-4"
+        class="sticky top-[72px] z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 py-2 px-1 sm:px-2 mb-6 flex flex-wrap items-center gap-1 w-full shadow-sm rounded-2xl"
     >
-        <!-- Undo -->
-        <button
-            @click="editor.chain().focus().undo().run()"
-            :disabled="!editor.can().undo()"
-            class="hidden sm:flex w-10 h-10 rounded-xl items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 disabled:opacity-30 group/btn relative"
-        >
-            <OneForMindIcon name="rotate-ccw" size="18" stroke-width="3" />
-            <span
-                class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold"
-                >Undo</span
-            >
-        </button>
-
-        <!-- Redo -->
-        <button
-            @click="editor.chain().focus().redo().run()"
-            :disabled="!editor.can().redo()"
-            class="hidden sm:flex w-10 h-10 rounded-xl items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 disabled:opacity-30 group/btn relative"
-        >
-            <OneForMindIcon name="rotate-cw" size="18" stroke-width="3" />
-            <span
-                class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold"
-                >Redo</span
-            >
-        </button>
-
-        <div
-            class="hidden sm:block w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 self-center"
-        ></div>
-
         <!-- Bold -->
         <button
             @click="editor.chain().focus().toggleBold().run()"
@@ -296,10 +266,6 @@ const setFontSize = (value) => {
             class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 group/btn relative"
         >
             <OneForMindIcon name="bold" size="18" stroke-width="3" />
-            <span
-                class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold"
-                >Tebalkan</span
-            >
         </button>
 
         <!-- Italic -->
@@ -312,14 +278,10 @@ const setFontSize = (value) => {
             class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 group/btn relative"
         >
             <OneForMindIcon name="italic" size="18" stroke-width="3" />
-            <span
-                class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold"
-                >Miringkan</span
-            >
         </button>
 
         <div
-            class="hidden sm:block w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 self-center"
+            class="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-2 self-center"
         ></div>
 
         <!-- Font Family Dropdown -->
@@ -336,7 +298,7 @@ const setFontSize = (value) => {
             </button>
             <div
                 v-if="showFontMenu"
-                class="absolute bottom-full mb-3 sm:bottom-auto sm:top-full sm:mt-2 left-0 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-[100] animate-in fade-in zoom-in-95 duration-200"
+                class="absolute top-full mt-2 left-0 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-[100] animate-in fade-in zoom-in-95 duration-200"
             >
                 <button
                     v-for="font in fontFamilies"
@@ -375,7 +337,7 @@ const setFontSize = (value) => {
             </button>
             <div
                 v-if="showSizeMenu"
-                class="absolute bottom-full mb-3 sm:bottom-auto sm:top-full sm:mt-2 left-0 w-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-[100] animate-in fade-in zoom-in-95 duration-200"
+                class="absolute top-full mt-2 left-0 w-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-[100] animate-in fade-in zoom-in-95 duration-200"
             >
                 <button
                     v-for="size in fontSizes"
@@ -396,24 +358,8 @@ const setFontSize = (value) => {
         </div>
 
         <div
-            class="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 self-center"
+            class="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-2 self-center"
         ></div>
-
-        <!-- Heading -->
-        <button
-            @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
-            :class="{
-                'bg-indigo-600 text-white shadow-lg shadow-indigo-100 dark:shadow-none':
-                    editor.isActive('heading', { level: 2 }),
-            }"
-            class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 group/btn relative"
-        >
-            <OneForMindIcon name="heading" size="18" stroke-width="3" />
-            <span
-                class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold"
-                >Judul</span
-            >
-        </button>
 
         <!-- Bullet List -->
         <button
@@ -425,58 +371,8 @@ const setFontSize = (value) => {
             class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all active:scale-95 group/btn relative"
         >
             <OneForMindIcon name="list" size="18" stroke-width="3" />
-            <span
-                class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold"
-                >Daftar</span
-            >
         </button>
 
-        <div
-            class="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-1 self-center"
-        ></div>
-
-        <!-- Voice to Text -->
-        <div class="relative group/voice">
-            <button
-                @click="startVoiceRecognition"
-                :class="[
-                    isListening
-                        ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100 dark:shadow-none'
-                        : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300',
-                ]"
-                class="w-10 h-10 rounded-xl flex items-center justify-center transition-all active:scale-95 group/btn relative overflow-hidden"
-            >
-                <Mic
-                    class="w-4 h-4 transition-transform duration-300"
-                    :class="{ 'scale-125': isListening }"
-                />
-
-                <!-- Listening Pulse -->
-                <div
-                    v-if="isListening"
-                    class="absolute inset-0 bg-white/20 animate-ping rounded-full"
-                ></div>
-
-                <!-- Premium Lock Overlay -->
-                <div
-                    v-if="isExplorer"
-                    class="absolute inset-0 bg-white/40 dark:bg-black/40 backdrop-blur-[1px] flex items-center justify-center z-10"
-                >
-                    <OneForMindIcon
-                        name="lock"
-                        size="12"
-                        stroke-width="3"
-                        class="text-slate-800 dark:text-white"
-                    />
-                </div>
-
-                <span
-                    class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[9px] px-2 py-1 rounded opacity-0 group-hover/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold"
-                >
-                    {{ isListening ? "Sedang mendengar..." : "Voice to Text" }}
-                </span>
-            </button>
-        </div>
     </div>
 
     <!-- Editor Content -->

@@ -23,17 +23,24 @@ class PayPalController extends Controller
 
     private function getAccessToken($clientId, $clientSecret, $baseUrl)
     {
-        $response = Http::withBasicAuth($clientId, $clientSecret)
-            ->asForm()
-            ->post("{$baseUrl}/v1/oauth2/token", [
-                'grant_type' => 'client_credentials'
-            ]);
+        $credentials = base64_encode("{$clientId}:{$clientSecret}");
+        
+        $response = Http::withHeaders([
+            'Authorization' => "Basic {$credentials}",
+        ])
+        ->asForm()
+        ->post("{$baseUrl}/v1/oauth2/token", [
+            'grant_type' => 'client_credentials'
+        ]);
 
         if ($response->successful()) {
             return $response->json('access_token');
         }
 
-        Log::error('PayPal Auth Error:', $response->json());
+        Log::error('PayPal Auth Error:', [
+            'status' => $response->status(),
+            'body' => $response->body()
+        ]);
         throw new \Exception('Failed to authenticate with PayPal.');
     }
 

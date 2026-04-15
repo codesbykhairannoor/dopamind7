@@ -137,6 +137,7 @@ watch(isMobileDrawerOpen, (open) => {
         <GlobalHeader
             :is-sidebar-collapsed="isSidebarCollapsed"
             @toggle-sidebar="toggleSidebar"
+            @logout-request="showLogoutModal = true"
         />
 
         <div class="flex flex-1 overflow-hidden relative">

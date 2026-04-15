@@ -1750,6 +1750,189 @@ const gating$1 = {
     benefit_3: "Target Maturity Alerts"
   }
 };
+const nav_home$2 = "Home";
+const nav_about$2 = "About Us";
+const nav_login$2 = "Log In";
+const nav_register$2 = "Get Started";
+const nav_dashboard$2 = "Dashboard";
+const nav_settings$1 = "App Settings";
+const nav_logout$1 = "Log Out";
+const nav_core_modules$1 = "System Core";
+const nav_platinum_suite$1 = "Platinum Suite";
+const nav_upgrade_pro$1 = "Get Architect";
+const btn_upgrade_limit$1 = "Upgrade Limit";
+const label_usage_limit$1 = "Usage Limit";
+const nav_item_premium$1 = "Go Elite";
+const nav_item_dashboard$1 = "Dashboard";
+const nav_item_habit$1 = "Habits";
+const nav_item_planner$1 = "Planner";
+const nav_item_finance$1 = "Finance";
+const nav_item_journal$1 = "Journal";
+const nav_item_calendar$1 = "Calendar";
+const nav_item_jobs$1 = "Jobs";
+const nav_item_goals$1 = "Goals";
+const nav_item_settings$1 = "Settings";
+const nav_item_coach$1 = "AI Coach";
+const nav_item_more$1 = "More";
+const nav_search$1 = "Search";
+const nav_search_anything$1 = "Search anything…";
+const nav_search_placeholder$1 = "Search modules or pages…";
+const nav_menu_title$1 = "Menu";
+const nav_close_menu$1 = "Close menu";
+const nav_toggle_menu$1 = "Open navigation menu";
+const nav_avatar$1 = "Avatar";
+const nav_active_account$1 = "Active Account";
+const nav_neural_active$1 = "Neural assistant active";
+const nav_user_fallback$1 = "User";
+const theme_dark$1 = "Dark Mode";
+const theme_light$1 = "Light Mode";
+const more_launcher_title$1 = "Launchpad";
+const more_launcher_subtitle$1 = "Productivity Ecosystem";
+const nav_desc_planner$1 = "Daily Planning";
+const nav_desc_journal$1 = "Personal Journal";
+const nav_desc_calendar$1 = "Schedule Management";
+const nav_desc_jobs$1 = "Career Tracking";
+const nav_desc_goals$1 = "Life Milestones";
+const more_upgrade_badge$1 = "PREMIUM UPGRADE";
+const more_upgrade_title$1 = "Elevate to Elite Performance";
+const more_upgrade_desc$1 = "Unlock AI-powered life insights, advanced wealth tracking, and seamless external integrations.";
+const more_upgrade_btn$1 = "Upgrade Now";
+const seo_meta_desc_1 = "Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.";
+const footer_rights$1 = "© 2026 Oneformind. All rights reserved.";
+const nav_features$1 = "Features";
+const nav_solutions$1 = "Solutions";
+const nav_resources$1 = "Resources";
+const nav_pricing$1 = "Pricing";
+const nav_language$1 = "Language";
+const lang_id$1 = "Bahasa Indonesia";
+const lang_en$1 = "English";
+const nav_mobile_by_role$1 = "By Role";
+const nav_mobile_by_usecase$1 = "By Use Case";
+const nav_mobile_by_method$1 = "By Methodology";
+const nav_mobile_res_knowledge$1 = "Knowledge & Help";
+const nav_mobile_res_social$1 = "Social & Community";
+const nav_mobile_feat_habit_title$1 = "Habit Tracker";
+const nav_mobile_feat_habit_desc$1 = "Build consistency daily";
+const nav_mobile_feat_finance_title$1 = "Finance OS";
+const nav_mobile_feat_finance_desc$1 = "Manage cashflow clearly";
+const nav_mobile_feat_planner_title$1 = "Daily Planner";
+const nav_mobile_feat_planner_desc$1 = "Focus your top 3 tasks";
+const nav_mobile_feat_journal_title$1 = "Journal";
+const nav_mobile_feat_journal_desc$1 = "Capture reflections";
+const nav_mobile_feat_calendar_title$1 = "Calendar";
+const nav_mobile_feat_calendar_desc$1 = "Track events and schedule";
+const nav_mobile_feat_goal_title$1 = "Goal Tracker";
+const nav_mobile_feat_goal_desc$1 = "Milestones and progress";
+const nav_mobile_feat_job_title$1 = "Job Tracker";
+const nav_mobile_feat_job_desc$1 = "Manage applications";
+const nav_mobile_feat_neural_title$1 = "Neural OS AI";
+const nav_mobile_feat_neural_desc$1 = "AI-powered planning coach";
+const nav_mobile_sol_student_title$1 = "Students";
+const nav_mobile_sol_student_desc$1 = "Study system optimizer";
+const nav_mobile_sol_freelancer_title$1 = "Freelancers";
+const nav_mobile_sol_freelancer_desc$1 = "Control client workflow";
+const nav_mobile_sol_growth_title$1 = "Personal Growth";
+const nav_mobile_sol_growth_desc$1 = "Upgrade mindset and habits";
+const nav_mobile_sol_finance_title$1 = "Finance Clarity";
+const nav_mobile_sol_finance_desc$1 = "Budget and cashflow control";
+const nav_mobile_sol_career_title$1 = "Career Tracker";
+const nav_mobile_sol_career_desc$1 = "Track opportunities clearly";
+const nav_mobile_sol_mental_title$1 = "Mental Health";
+const nav_mobile_sol_mental_desc$1 = "Reduce stress and overthinking";
+const nav_mobile_sol_atomic_title$1 = "Atomic Habits";
+const nav_mobile_sol_atomic_desc$1 = "Small steps, big results";
+const nav_mobile_sol_deepwork_title$1 = "Deep Work";
+const nav_mobile_sol_deepwork_desc$1 = "Protect focus blocks";
+const nav_mobile_sol_secondbrain_title$1 = "Second Brain";
+const nav_mobile_sol_secondbrain_desc$1 = "Build your thinking system";
+const nav_mobile_res_guide_title$1 = "User Guide";
+const nav_mobile_res_guide_desc$1 = "How to use OneForMind";
+const nav_mobile_res_help_title$1 = "Help Center";
+const nav_mobile_res_help_desc$1 = "Common answers and support";
+const nav_mobile_res_changelog_title$1 = "What's New";
+const nav_mobile_res_changelog_desc$1 = "Latest product updates";
+const nav_mobile_res_community_title$1 = "Community";
+const nav_mobile_res_community_desc$1 = "Join user discussions";
+const nav_mobile_res_blog_title$1 = "Blog";
+const nav_mobile_res_blog_desc$1 = "Productivity insights";
+const nav_mobile_res_stories_title$1 = "Success Stories";
+const nav_mobile_res_stories_desc$1 = "Real transformation stories";
+const modal_logout_title$1 = "Want to say goodbye?";
+const modal_logout_subtitle$1 = "Don't forget to come back soon, your progress for today has been saved securely!";
+const modal_logout_confirm$1 = "Yes, Logout";
+const modal_logout_cancel$1 = "Cancel";
+const seo_about_desc$1 = "Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.";
+const footer_legal$1 = "Privacy & Terms";
+const legal_title$1 = "Terms & Conditions and Policy";
+const legal_ref$1 = "Official Privacy Reference:";
+const privacy_title$1 = "Privacy Policy for Oneformind";
+const privacy_p1$1 = "At Oneformind, accessible from https://oneformind.com, one of our main priorities is the privacy of our visitors.";
+const privacy_consent_title$1 = "Consent";
+const privacy_consent_p$1 = "By using our website, you hereby consent to our Privacy Policy and agree to its terms.";
+const privacy_info_title$1 = "Information we collect";
+const privacy_info_p$1 = "The personal information that you are asked to provide will be made clear to you at the point we ask you to provide it.";
+const tos_title$1 = "Terms of Service";
+const tos_intro$1 = "By accessing and using Oneformind, you agree to be bound by the following terms:";
+const tos_service_title$1 = "1. Service Availability";
+const tos_service_p$1 = 'Oneformind is provided on an "as is" and "as available" basis. While we strive for maximum uptime, we do not guarantee that the service will be uninterrupted, error-free, or completely secure.';
+const tos_data_title$1 = "2. Data Accuracy & Responsibility";
+const tos_data_p$1 = "You are solely responsible for the financial, habit, and planner data you input. Oneformind is a productivity tool, not a certified financial advisor. We are not liable for any financial losses or decisions made based on the data displayed.";
+const tos_security_title$1 = "3. Fair Use & Security";
+const tos_security_p$1 = "Users are strictly prohibited from attempting to breach system security, conducting SQL injections, scraping data, or disrupting the platform's infrastructure.";
+const tos_termination_title$1 = "4. Account Termination";
+const tos_termination_p$1 = "We reserve the right to suspend or terminate accounts immediately, without prior notice, if a user is found violating these terms or abusing system resources.";
+const legal_close$1 = "Close & Understand";
+const cookie_title$1 = "🍪 Care for a Cookie?";
+const cookie_desc$1 = "We use cookies to ensure you get the best and most secure experience on our system.";
+const cookie_btn_accept$1 = "Accept All";
+const cookie_btn_settings$1 = "Settings";
+const cookie_btn_essential$1 = "Essential Only";
+const contact_title$1 = "Contact Us";
+const contact_subtitle$1 = "Have questions or need help? Our team is ready to support your productivity journey.";
+const contact_form_name$1 = "Full Name";
+const contact_form_email$1 = "Email Address";
+const contact_form_subject$1 = "Subject";
+const contact_form_message$1 = "Your Message";
+const contact_btn_send$1 = "Send Message Now";
+const contact_success_title$1 = "Message Sent!";
+const contact_success_desc$1 = "Thank you! We will get back to you within 24-48 hours.";
+const contact_info_title$1 = "Contact Information";
+const contact_info_hq$1 = "OneForMind Headquarters";
+const contact_info_jakarta$1 = "Jakarta, Indonesia";
+const contact_info_support$1 = "Technical Support";
+const contact_info_billing$1 = "Billing & Licensing";
+const contact_info_chat$1 = "Live Chat";
+const contact_info_chat_status$1 = "Quick Support";
+const contact_faq_title$1 = "Have technical questions?";
+const contact_faq_desc$1 = "Check our help documentation for instant answers about features and licensing.";
+const contact_faq_btn$1 = "Open Help Center";
+const contact_form_message_placeholder$1 = "How can we help you?";
+const contact_form_name_placeholder$1 = "John Doe";
+const contact_form_email_placeholder$1 = "john@example.com";
+const contact_subject_partnership$1 = "Business Partnership";
+const contact_subject_other$1 = "Other";
+const payment_success_title$1 = "Access Granted!";
+const payment_pending_title$1 = "Payment Pending";
+const payment_failed_title$1 = "Payment Cancelled";
+const payment_welcome_msg$1 = "Welcome to the elite ecosystem,";
+const payment_quantum_praise$1 = "Your potential is now officially expanded.";
+const payment_pending_msg$1 = "Your payment is currently being processed. We will notify you once it is confirmed.";
+const payment_failed_msg$1 = "Your payment was cancelled or failed. You can try again anytime.";
+const payment_btn_dashboard$1 = "Go to Dashboard";
+const payment_btn_billing$1 = "Back to Billing";
+const payment_btn_pricing$1 = "Back to Pricing";
+const payment_btn_ai$1 = "Talk to AI Coach";
+const error_title_503$1 = "503: Service Unavailable";
+const error_title_500$1 = "500: Server Error";
+const error_title_404$1 = "404: Page Not Found";
+const error_title_403$1 = "403: Forbidden";
+const error_title_default$1 = "An Error Occurred";
+const error_desc_503$1 = "Sorry, our servers are currently under maintenance. Please check back later!";
+const error_desc_500$1 = "Oops, something went wrong on our end. The OneForMind team is looking into it!";
+const error_desc_404$1 = "The page you are looking for does not exist. You might have mistyped the address or the page has moved.";
+const error_desc_403$1 = "Sorry, you do not have permission to access this page.";
+const error_desc_default$1 = "An unexpected technical issue occurred. Please try again.";
+const error_btn_back$1 = "Back to Home";
 const goal_page_title$1 = "Goal Tracker";
 const goal_add_row$1 = "Add Goal";
 const goal_bulk_selected$1 = "Goals Selected";
@@ -1759,6 +1942,9 @@ const goal_bulk_delete_confirm$1 = "Delete :count goals at once?";
 const goal_bulk_delete_success$1 = "Deleted successfully!";
 const goal_bulk_copy_success$1 = ":count goals duplicated.";
 const goal_error_save$1 = "Failed to save! Check connection.";
+const goal_empty_title$1 = "No goals yet!";
+const goal_empty_desc$1 = "Start your journey and track your progress here.";
+const goal_create_new$1 = "Create New Goal";
 const goal_tips$1 = "Tips: Click a cell to edit. Data saves automatically when you switch cells.";
 const goal_col_title$1 = "Goal Title";
 const goal_col_category$1 = "Category";
@@ -1783,8 +1969,6 @@ const goal_status_paused$1 = "Paused";
 const goal_status_cancelled$1 = "Cancelled";
 const goal_progress$1 = "Progress";
 const goal_total$1 = "Total Projects";
-const goal_empty_title$1 = "No goals yet!";
-const goal_empty_desc$1 = "Start your journey and track your progress here.";
 const milestone_add$1 = "Add Step";
 const milestone_placeholder$1 = "New step...";
 const milestone_edit_placeholder$1 = "Click to edit...";
@@ -2536,8 +2720,6 @@ const solve_finance_syn_desc$1 = "Connect habits to cash flow.";
 const solve_finance_syn_title$1 = "The Synergy Loop";
 const more_core_tools$1 = "Core Ecosystem";
 const more_premium_tools$1 = "Platinum & Neural Suite";
-const more_launcher_title$1 = "Launchpad";
-const more_launcher_subtitle$1 = "Productivity Ecosystem";
 const section_architecture$1 = "Architecture Suite";
 const section_manifestation$1 = "Manifestation Lab";
 const section_system$1 = "System Core";
@@ -2547,10 +2729,6 @@ const feature_finance_title$1 = "Wealth Systems";
 const feature_finance_desc$1 = "Manage multi-currency protocols";
 const feature_calendar_title$1 = "System Timeline";
 const feature_calendar_desc$1 = "Synchronize global events";
-const more_upgrade_badge$1 = "PREMIUM UPGRADE";
-const more_upgrade_title$1 = "Elevate to Elite Performance";
-const more_upgrade_desc$1 = "Unlock AI-powered life insights, advanced wealth tracking, and seamless external integrations.";
-const more_upgrade_btn$1 = "Upgrade Now";
 const preview_modal_title$1 = "Elevate Your Story";
 const preview_modal_desc$1 = "You are witnessing a glimpse of the premium system. Upgrade to unlock full access.";
 const preview_view_plans$1 = "View Plans & Upgrades";
@@ -3636,7 +3814,6 @@ const billing_feature_calendar$1 = "Calendar (Lifetime Only)";
 const billing_feature_goals$1 = "Goal Tracker (Lifetime Only)";
 const billing_feature_jobs$1 = "Job Tracker (Lifetime Only)";
 const billing_feature_ai_soon$1 = "AI Features Coming Soon!";
-const legal_title$1 = "Terms & Conditions and Policy";
 const legal_desc$1 = "Important pages regarding your data and privacy on Oneformind.";
 const legal_section_1_title$1 = "1. Data Collection";
 const legal_section_1_desc$1 = "We collect data that you provide directly when registering, including name, email, and content you create within the Oneformind application such as habits, journals, and daily tasks.";
@@ -5890,6 +6067,190 @@ const en = {
   deposit: deposit$1,
   withdraw: withdraw$1,
   gating: gating$1,
+  "____ SECTION_1 ____": "=== NAVIGATION & GLOBAL ===",
+  nav_home: nav_home$2,
+  nav_about: nav_about$2,
+  nav_login: nav_login$2,
+  nav_register: nav_register$2,
+  nav_dashboard: nav_dashboard$2,
+  nav_settings: nav_settings$1,
+  nav_logout: nav_logout$1,
+  nav_core_modules: nav_core_modules$1,
+  nav_platinum_suite: nav_platinum_suite$1,
+  nav_upgrade_pro: nav_upgrade_pro$1,
+  btn_upgrade_limit: btn_upgrade_limit$1,
+  label_usage_limit: label_usage_limit$1,
+  nav_item_premium: nav_item_premium$1,
+  nav_item_dashboard: nav_item_dashboard$1,
+  nav_item_habit: nav_item_habit$1,
+  nav_item_planner: nav_item_planner$1,
+  nav_item_finance: nav_item_finance$1,
+  nav_item_journal: nav_item_journal$1,
+  nav_item_calendar: nav_item_calendar$1,
+  nav_item_jobs: nav_item_jobs$1,
+  nav_item_goals: nav_item_goals$1,
+  nav_item_settings: nav_item_settings$1,
+  nav_item_coach: nav_item_coach$1,
+  nav_item_more: nav_item_more$1,
+  nav_search: nav_search$1,
+  nav_search_anything: nav_search_anything$1,
+  nav_search_placeholder: nav_search_placeholder$1,
+  nav_menu_title: nav_menu_title$1,
+  nav_close_menu: nav_close_menu$1,
+  nav_toggle_menu: nav_toggle_menu$1,
+  nav_avatar: nav_avatar$1,
+  nav_active_account: nav_active_account$1,
+  nav_neural_active: nav_neural_active$1,
+  nav_user_fallback: nav_user_fallback$1,
+  theme_dark: theme_dark$1,
+  theme_light: theme_light$1,
+  more_launcher_title: more_launcher_title$1,
+  more_launcher_subtitle: more_launcher_subtitle$1,
+  nav_desc_planner: nav_desc_planner$1,
+  nav_desc_journal: nav_desc_journal$1,
+  nav_desc_calendar: nav_desc_calendar$1,
+  nav_desc_jobs: nav_desc_jobs$1,
+  nav_desc_goals: nav_desc_goals$1,
+  more_upgrade_badge: more_upgrade_badge$1,
+  more_upgrade_title: more_upgrade_title$1,
+  more_upgrade_desc: more_upgrade_desc$1,
+  more_upgrade_btn: more_upgrade_btn$1,
+  seo_meta_desc_1,
+  footer_rights: footer_rights$1,
+  nav_features: nav_features$1,
+  nav_solutions: nav_solutions$1,
+  nav_resources: nav_resources$1,
+  nav_pricing: nav_pricing$1,
+  nav_language: nav_language$1,
+  lang_id: lang_id$1,
+  lang_en: lang_en$1,
+  nav_mobile_by_role: nav_mobile_by_role$1,
+  nav_mobile_by_usecase: nav_mobile_by_usecase$1,
+  nav_mobile_by_method: nav_mobile_by_method$1,
+  nav_mobile_res_knowledge: nav_mobile_res_knowledge$1,
+  nav_mobile_res_social: nav_mobile_res_social$1,
+  nav_mobile_feat_habit_title: nav_mobile_feat_habit_title$1,
+  nav_mobile_feat_habit_desc: nav_mobile_feat_habit_desc$1,
+  nav_mobile_feat_finance_title: nav_mobile_feat_finance_title$1,
+  nav_mobile_feat_finance_desc: nav_mobile_feat_finance_desc$1,
+  nav_mobile_feat_planner_title: nav_mobile_feat_planner_title$1,
+  nav_mobile_feat_planner_desc: nav_mobile_feat_planner_desc$1,
+  nav_mobile_feat_journal_title: nav_mobile_feat_journal_title$1,
+  nav_mobile_feat_journal_desc: nav_mobile_feat_journal_desc$1,
+  nav_mobile_feat_calendar_title: nav_mobile_feat_calendar_title$1,
+  nav_mobile_feat_calendar_desc: nav_mobile_feat_calendar_desc$1,
+  nav_mobile_feat_goal_title: nav_mobile_feat_goal_title$1,
+  nav_mobile_feat_goal_desc: nav_mobile_feat_goal_desc$1,
+  nav_mobile_feat_job_title: nav_mobile_feat_job_title$1,
+  nav_mobile_feat_job_desc: nav_mobile_feat_job_desc$1,
+  nav_mobile_feat_neural_title: nav_mobile_feat_neural_title$1,
+  nav_mobile_feat_neural_desc: nav_mobile_feat_neural_desc$1,
+  nav_mobile_sol_student_title: nav_mobile_sol_student_title$1,
+  nav_mobile_sol_student_desc: nav_mobile_sol_student_desc$1,
+  nav_mobile_sol_freelancer_title: nav_mobile_sol_freelancer_title$1,
+  nav_mobile_sol_freelancer_desc: nav_mobile_sol_freelancer_desc$1,
+  nav_mobile_sol_growth_title: nav_mobile_sol_growth_title$1,
+  nav_mobile_sol_growth_desc: nav_mobile_sol_growth_desc$1,
+  nav_mobile_sol_finance_title: nav_mobile_sol_finance_title$1,
+  nav_mobile_sol_finance_desc: nav_mobile_sol_finance_desc$1,
+  nav_mobile_sol_career_title: nav_mobile_sol_career_title$1,
+  nav_mobile_sol_career_desc: nav_mobile_sol_career_desc$1,
+  nav_mobile_sol_mental_title: nav_mobile_sol_mental_title$1,
+  nav_mobile_sol_mental_desc: nav_mobile_sol_mental_desc$1,
+  nav_mobile_sol_atomic_title: nav_mobile_sol_atomic_title$1,
+  nav_mobile_sol_atomic_desc: nav_mobile_sol_atomic_desc$1,
+  nav_mobile_sol_deepwork_title: nav_mobile_sol_deepwork_title$1,
+  nav_mobile_sol_deepwork_desc: nav_mobile_sol_deepwork_desc$1,
+  nav_mobile_sol_secondbrain_title: nav_mobile_sol_secondbrain_title$1,
+  nav_mobile_sol_secondbrain_desc: nav_mobile_sol_secondbrain_desc$1,
+  nav_mobile_res_guide_title: nav_mobile_res_guide_title$1,
+  nav_mobile_res_guide_desc: nav_mobile_res_guide_desc$1,
+  nav_mobile_res_help_title: nav_mobile_res_help_title$1,
+  nav_mobile_res_help_desc: nav_mobile_res_help_desc$1,
+  nav_mobile_res_changelog_title: nav_mobile_res_changelog_title$1,
+  nav_mobile_res_changelog_desc: nav_mobile_res_changelog_desc$1,
+  nav_mobile_res_community_title: nav_mobile_res_community_title$1,
+  nav_mobile_res_community_desc: nav_mobile_res_community_desc$1,
+  nav_mobile_res_blog_title: nav_mobile_res_blog_title$1,
+  nav_mobile_res_blog_desc: nav_mobile_res_blog_desc$1,
+  nav_mobile_res_stories_title: nav_mobile_res_stories_title$1,
+  nav_mobile_res_stories_desc: nav_mobile_res_stories_desc$1,
+  modal_logout_title: modal_logout_title$1,
+  modal_logout_subtitle: modal_logout_subtitle$1,
+  modal_logout_confirm: modal_logout_confirm$1,
+  modal_logout_cancel: modal_logout_cancel$1,
+  seo_about_desc: seo_about_desc$1,
+  footer_legal: footer_legal$1,
+  legal_title: legal_title$1,
+  legal_ref: legal_ref$1,
+  privacy_title: privacy_title$1,
+  privacy_p1: privacy_p1$1,
+  privacy_consent_title: privacy_consent_title$1,
+  privacy_consent_p: privacy_consent_p$1,
+  privacy_info_title: privacy_info_title$1,
+  privacy_info_p: privacy_info_p$1,
+  tos_title: tos_title$1,
+  tos_intro: tos_intro$1,
+  tos_service_title: tos_service_title$1,
+  tos_service_p: tos_service_p$1,
+  tos_data_title: tos_data_title$1,
+  tos_data_p: tos_data_p$1,
+  tos_security_title: tos_security_title$1,
+  tos_security_p: tos_security_p$1,
+  tos_termination_title: tos_termination_title$1,
+  tos_termination_p: tos_termination_p$1,
+  legal_close: legal_close$1,
+  cookie_title: cookie_title$1,
+  cookie_desc: cookie_desc$1,
+  cookie_btn_accept: cookie_btn_accept$1,
+  cookie_btn_settings: cookie_btn_settings$1,
+  cookie_btn_essential: cookie_btn_essential$1,
+  contact_title: contact_title$1,
+  contact_subtitle: contact_subtitle$1,
+  contact_form_name: contact_form_name$1,
+  contact_form_email: contact_form_email$1,
+  contact_form_subject: contact_form_subject$1,
+  contact_form_message: contact_form_message$1,
+  contact_btn_send: contact_btn_send$1,
+  contact_success_title: contact_success_title$1,
+  contact_success_desc: contact_success_desc$1,
+  contact_info_title: contact_info_title$1,
+  contact_info_hq: contact_info_hq$1,
+  contact_info_jakarta: contact_info_jakarta$1,
+  contact_info_support: contact_info_support$1,
+  contact_info_billing: contact_info_billing$1,
+  contact_info_chat: contact_info_chat$1,
+  contact_info_chat_status: contact_info_chat_status$1,
+  contact_faq_title: contact_faq_title$1,
+  contact_faq_desc: contact_faq_desc$1,
+  contact_faq_btn: contact_faq_btn$1,
+  contact_form_message_placeholder: contact_form_message_placeholder$1,
+  contact_form_name_placeholder: contact_form_name_placeholder$1,
+  contact_form_email_placeholder: contact_form_email_placeholder$1,
+  contact_subject_partnership: contact_subject_partnership$1,
+  contact_subject_other: contact_subject_other$1,
+  payment_success_title: payment_success_title$1,
+  payment_pending_title: payment_pending_title$1,
+  payment_failed_title: payment_failed_title$1,
+  payment_welcome_msg: payment_welcome_msg$1,
+  payment_quantum_praise: payment_quantum_praise$1,
+  payment_pending_msg: payment_pending_msg$1,
+  payment_failed_msg: payment_failed_msg$1,
+  payment_btn_dashboard: payment_btn_dashboard$1,
+  payment_btn_billing: payment_btn_billing$1,
+  payment_btn_pricing: payment_btn_pricing$1,
+  payment_btn_ai: payment_btn_ai$1,
+  error_title_503: error_title_503$1,
+  error_title_500: error_title_500$1,
+  error_title_404: error_title_404$1,
+  error_title_403: error_title_403$1,
+  error_title_default: error_title_default$1,
+  error_desc_503: error_desc_503$1,
+  error_desc_500: error_desc_500$1,
+  error_desc_404: error_desc_404$1,
+  error_desc_403: error_desc_403$1,
+  error_desc_default: error_desc_default$1,
+  error_btn_back: error_btn_back$1,
   goal_page_title: goal_page_title$1,
   goal_add_row: goal_add_row$1,
   goal_bulk_selected: goal_bulk_selected$1,
@@ -5899,6 +6260,9 @@ const en = {
   goal_bulk_delete_success: goal_bulk_delete_success$1,
   goal_bulk_copy_success: goal_bulk_copy_success$1,
   goal_error_save: goal_error_save$1,
+  goal_empty_title: goal_empty_title$1,
+  goal_empty_desc: goal_empty_desc$1,
+  goal_create_new: goal_create_new$1,
   goal_tips: goal_tips$1,
   goal_col_title: goal_col_title$1,
   goal_col_category: goal_col_category$1,
@@ -5923,8 +6287,6 @@ const en = {
   goal_status_cancelled: goal_status_cancelled$1,
   goal_progress: goal_progress$1,
   goal_total: goal_total$1,
-  goal_empty_title: goal_empty_title$1,
-  goal_empty_desc: goal_empty_desc$1,
   milestone_add: milestone_add$1,
   milestone_placeholder: milestone_placeholder$1,
   milestone_edit_placeholder: milestone_edit_placeholder$1,
@@ -6683,8 +7045,6 @@ const en = {
   solve_finance_syn_title: solve_finance_syn_title$1,
   more_core_tools: more_core_tools$1,
   more_premium_tools: more_premium_tools$1,
-  more_launcher_title: more_launcher_title$1,
-  more_launcher_subtitle: more_launcher_subtitle$1,
   section_architecture: section_architecture$1,
   section_manifestation: section_manifestation$1,
   section_system: section_system$1,
@@ -6694,10 +7054,6 @@ const en = {
   feature_finance_desc: feature_finance_desc$1,
   feature_calendar_title: feature_calendar_title$1,
   feature_calendar_desc: feature_calendar_desc$1,
-  more_upgrade_badge: more_upgrade_badge$1,
-  more_upgrade_title: more_upgrade_title$1,
-  more_upgrade_desc: more_upgrade_desc$1,
-  more_upgrade_btn: more_upgrade_btn$1,
   preview_modal_title: preview_modal_title$1,
   preview_modal_desc: preview_modal_desc$1,
   preview_view_plans: preview_view_plans$1,
@@ -7784,7 +8140,6 @@ const en = {
   billing_feature_goals: billing_feature_goals$1,
   billing_feature_jobs: billing_feature_jobs$1,
   billing_feature_ai_soon: billing_feature_ai_soon$1,
-  legal_title: legal_title$1,
   legal_desc: legal_desc$1,
   legal_section_1_title: legal_section_1_title$1,
   legal_section_1_desc: legal_section_1_desc$1,
@@ -8724,6 +9079,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   btn_transaction: btn_transaction$1,
   btn_unlock_now: btn_unlock_now$1,
   btn_update: btn_update$1,
+  btn_upgrade_limit: btn_upgrade_limit$1,
   btn_upgrade_tier: btn_upgrade_tier$1,
   btn_yes_delete: btn_yes_delete$1,
   budget_limit: budget_limit$1,
@@ -9053,6 +9409,35 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   confirm_delete_title: confirm_delete_title$1,
   confirm_new_password: confirm_new_password$1,
   confirm_pay: confirm_pay$1,
+  contact_btn_send: contact_btn_send$1,
+  contact_faq_btn: contact_faq_btn$1,
+  contact_faq_desc: contact_faq_desc$1,
+  contact_faq_title: contact_faq_title$1,
+  contact_form_email: contact_form_email$1,
+  contact_form_email_placeholder: contact_form_email_placeholder$1,
+  contact_form_message: contact_form_message$1,
+  contact_form_message_placeholder: contact_form_message_placeholder$1,
+  contact_form_name: contact_form_name$1,
+  contact_form_name_placeholder: contact_form_name_placeholder$1,
+  contact_form_subject: contact_form_subject$1,
+  contact_info_billing: contact_info_billing$1,
+  contact_info_chat: contact_info_chat$1,
+  contact_info_chat_status: contact_info_chat_status$1,
+  contact_info_hq: contact_info_hq$1,
+  contact_info_jakarta: contact_info_jakarta$1,
+  contact_info_support: contact_info_support$1,
+  contact_info_title: contact_info_title$1,
+  contact_subject_other: contact_subject_other$1,
+  contact_subject_partnership: contact_subject_partnership$1,
+  contact_subtitle: contact_subtitle$1,
+  contact_success_desc: contact_success_desc$1,
+  contact_success_title: contact_success_title$1,
+  contact_title: contact_title$1,
+  cookie_btn_accept: cookie_btn_accept$1,
+  cookie_btn_essential: cookie_btn_essential$1,
+  cookie_btn_settings: cookie_btn_settings$1,
+  cookie_desc: cookie_desc$1,
+  cookie_title: cookie_title$1,
   create_budget_first: create_budget_first$1,
   cta_about_btn: cta_about_btn$2,
   cta_about_desc: cta_about_desc$2,
@@ -9288,12 +9673,23 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   err_min_15_mins: err_min_15_mins$1,
   err_save_failed: err_save_failed$1,
   err_schedule_conflict: err_schedule_conflict$1,
+  error_btn_back: error_btn_back$1,
   error_conflict: error_conflict$1,
   error_copy_habit: error_copy_habit$1,
   error_delete_habit: error_delete_habit$1,
+  error_desc_403: error_desc_403$1,
+  error_desc_404: error_desc_404$1,
+  error_desc_500: error_desc_500$1,
+  error_desc_503: error_desc_503$1,
+  error_desc_default: error_desc_default$1,
   error_save_habit: error_save_habit$1,
   error_server: error_server$1,
   error_title: error_title$1,
+  error_title_403: error_title_403$1,
+  error_title_404: error_title_404$1,
+  error_title_500: error_title_500$1,
+  error_title_503: error_title_503$1,
+  error_title_default: error_title_default$1,
   error_update_habit: error_update_habit$1,
   est_total: est_total$1,
   expense: expense$1,
@@ -9660,7 +10056,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   flow_step_4_desc: flow_step_4_desc$1,
   flow_step_4_title: flow_step_4_title$1,
   flow_title: flow_title$1,
+  footer_legal: footer_legal$1,
   footer_privacy: footer_privacy$1,
+  footer_rights: footer_rights$1,
   footer_terms: footer_terms$1,
   freelance_bento_1_desc: freelance_bento_1_desc$1,
   freelance_bento_1_title: freelance_bento_1_title$1,
@@ -9801,6 +10199,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_col_type: goal_col_type$1,
   goal_completed_pct: goal_completed_pct$1,
   goal_cover_premium: goal_cover_premium$1,
+  goal_create_new: goal_create_new$1,
   goal_cta_btn: goal_cta_btn$1,
   goal_cta_desc: goal_cta_desc$1,
   goal_cta_note: goal_cta_note$1,
@@ -10694,13 +11093,18 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   label_todo: label_todo$1,
   label_total_checkins: label_total_checkins$1,
   label_urgent: label_urgent$1,
+  label_usage_limit: label_usage_limit$1,
   label_work: label_work$1,
+  lang_en: lang_en$1,
+  lang_id: lang_id$1,
   last_5: last_5$1,
   launchpad_subtitle: launchpad_subtitle$1,
   launchpad_title: launchpad_title$1,
   left_to_reach: left_to_reach$1,
+  legal_close: legal_close$1,
   legal_desc: legal_desc$1,
   legal_link_privacy: legal_link_privacy$1,
+  legal_ref: legal_ref$1,
   legal_section_1_desc: legal_section_1_desc$1,
   legal_section_1_title: legal_section_1_title$1,
   legal_section_2_desc: legal_section_2_desc$1,
@@ -10820,6 +11224,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   modal_label_color: modal_label_color$1,
   modal_label_priority: modal_label_priority$1,
   modal_label_task_name: modal_label_task_name$1,
+  modal_logout_cancel: modal_logout_cancel$1,
+  modal_logout_confirm: modal_logout_confirm$1,
+  modal_logout_subtitle: modal_logout_subtitle$1,
+  modal_logout_title: modal_logout_title$1,
   modal_new_simple_title: modal_new_simple_title$1,
   modal_new_title: modal_new_title$1,
   modal_placeholder_simple_task: modal_placeholder_simple_task$1,
@@ -10864,6 +11272,99 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   more_upgrade_title: more_upgrade_title$1,
   most_wasteful: most_wasteful$1,
   name,
+  nav_about: nav_about$2,
+  nav_active_account: nav_active_account$1,
+  nav_avatar: nav_avatar$1,
+  nav_close_menu: nav_close_menu$1,
+  nav_core_modules: nav_core_modules$1,
+  nav_dashboard: nav_dashboard$2,
+  nav_desc_calendar: nav_desc_calendar$1,
+  nav_desc_goals: nav_desc_goals$1,
+  nav_desc_jobs: nav_desc_jobs$1,
+  nav_desc_journal: nav_desc_journal$1,
+  nav_desc_planner: nav_desc_planner$1,
+  nav_features: nav_features$1,
+  nav_home: nav_home$2,
+  nav_item_calendar: nav_item_calendar$1,
+  nav_item_coach: nav_item_coach$1,
+  nav_item_dashboard: nav_item_dashboard$1,
+  nav_item_finance: nav_item_finance$1,
+  nav_item_goals: nav_item_goals$1,
+  nav_item_habit: nav_item_habit$1,
+  nav_item_jobs: nav_item_jobs$1,
+  nav_item_journal: nav_item_journal$1,
+  nav_item_more: nav_item_more$1,
+  nav_item_planner: nav_item_planner$1,
+  nav_item_premium: nav_item_premium$1,
+  nav_item_settings: nav_item_settings$1,
+  nav_language: nav_language$1,
+  nav_login: nav_login$2,
+  nav_logout: nav_logout$1,
+  nav_menu_title: nav_menu_title$1,
+  nav_mobile_by_method: nav_mobile_by_method$1,
+  nav_mobile_by_role: nav_mobile_by_role$1,
+  nav_mobile_by_usecase: nav_mobile_by_usecase$1,
+  nav_mobile_feat_calendar_desc: nav_mobile_feat_calendar_desc$1,
+  nav_mobile_feat_calendar_title: nav_mobile_feat_calendar_title$1,
+  nav_mobile_feat_finance_desc: nav_mobile_feat_finance_desc$1,
+  nav_mobile_feat_finance_title: nav_mobile_feat_finance_title$1,
+  nav_mobile_feat_goal_desc: nav_mobile_feat_goal_desc$1,
+  nav_mobile_feat_goal_title: nav_mobile_feat_goal_title$1,
+  nav_mobile_feat_habit_desc: nav_mobile_feat_habit_desc$1,
+  nav_mobile_feat_habit_title: nav_mobile_feat_habit_title$1,
+  nav_mobile_feat_job_desc: nav_mobile_feat_job_desc$1,
+  nav_mobile_feat_job_title: nav_mobile_feat_job_title$1,
+  nav_mobile_feat_journal_desc: nav_mobile_feat_journal_desc$1,
+  nav_mobile_feat_journal_title: nav_mobile_feat_journal_title$1,
+  nav_mobile_feat_neural_desc: nav_mobile_feat_neural_desc$1,
+  nav_mobile_feat_neural_title: nav_mobile_feat_neural_title$1,
+  nav_mobile_feat_planner_desc: nav_mobile_feat_planner_desc$1,
+  nav_mobile_feat_planner_title: nav_mobile_feat_planner_title$1,
+  nav_mobile_res_blog_desc: nav_mobile_res_blog_desc$1,
+  nav_mobile_res_blog_title: nav_mobile_res_blog_title$1,
+  nav_mobile_res_changelog_desc: nav_mobile_res_changelog_desc$1,
+  nav_mobile_res_changelog_title: nav_mobile_res_changelog_title$1,
+  nav_mobile_res_community_desc: nav_mobile_res_community_desc$1,
+  nav_mobile_res_community_title: nav_mobile_res_community_title$1,
+  nav_mobile_res_guide_desc: nav_mobile_res_guide_desc$1,
+  nav_mobile_res_guide_title: nav_mobile_res_guide_title$1,
+  nav_mobile_res_help_desc: nav_mobile_res_help_desc$1,
+  nav_mobile_res_help_title: nav_mobile_res_help_title$1,
+  nav_mobile_res_knowledge: nav_mobile_res_knowledge$1,
+  nav_mobile_res_social: nav_mobile_res_social$1,
+  nav_mobile_res_stories_desc: nav_mobile_res_stories_desc$1,
+  nav_mobile_res_stories_title: nav_mobile_res_stories_title$1,
+  nav_mobile_sol_atomic_desc: nav_mobile_sol_atomic_desc$1,
+  nav_mobile_sol_atomic_title: nav_mobile_sol_atomic_title$1,
+  nav_mobile_sol_career_desc: nav_mobile_sol_career_desc$1,
+  nav_mobile_sol_career_title: nav_mobile_sol_career_title$1,
+  nav_mobile_sol_deepwork_desc: nav_mobile_sol_deepwork_desc$1,
+  nav_mobile_sol_deepwork_title: nav_mobile_sol_deepwork_title$1,
+  nav_mobile_sol_finance_desc: nav_mobile_sol_finance_desc$1,
+  nav_mobile_sol_finance_title: nav_mobile_sol_finance_title$1,
+  nav_mobile_sol_freelancer_desc: nav_mobile_sol_freelancer_desc$1,
+  nav_mobile_sol_freelancer_title: nav_mobile_sol_freelancer_title$1,
+  nav_mobile_sol_growth_desc: nav_mobile_sol_growth_desc$1,
+  nav_mobile_sol_growth_title: nav_mobile_sol_growth_title$1,
+  nav_mobile_sol_mental_desc: nav_mobile_sol_mental_desc$1,
+  nav_mobile_sol_mental_title: nav_mobile_sol_mental_title$1,
+  nav_mobile_sol_secondbrain_desc: nav_mobile_sol_secondbrain_desc$1,
+  nav_mobile_sol_secondbrain_title: nav_mobile_sol_secondbrain_title$1,
+  nav_mobile_sol_student_desc: nav_mobile_sol_student_desc$1,
+  nav_mobile_sol_student_title: nav_mobile_sol_student_title$1,
+  nav_neural_active: nav_neural_active$1,
+  nav_platinum_suite: nav_platinum_suite$1,
+  nav_pricing: nav_pricing$1,
+  nav_register: nav_register$2,
+  nav_resources: nav_resources$1,
+  nav_search: nav_search$1,
+  nav_search_anything: nav_search_anything$1,
+  nav_search_placeholder: nav_search_placeholder$1,
+  nav_settings: nav_settings$1,
+  nav_solutions: nav_solutions$1,
+  nav_toggle_menu: nav_toggle_menu$1,
+  nav_upgrade_pro: nav_upgrade_pro$1,
+  nav_user_fallback: nav_user_fallback$1,
   neural_audit_badge: neural_audit_badge$1,
   neural_audit_desc: neural_audit_desc$1,
   neural_audit_step1_desc: neural_audit_step1_desc$1,
@@ -11006,6 +11507,17 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   password_security_desc: password_security_desc$1,
   password_security_title: password_security_title$1,
   password_updated: password_updated$1,
+  payment_btn_ai: payment_btn_ai$1,
+  payment_btn_billing: payment_btn_billing$1,
+  payment_btn_dashboard: payment_btn_dashboard$1,
+  payment_btn_pricing: payment_btn_pricing$1,
+  payment_failed_msg: payment_failed_msg$1,
+  payment_failed_title: payment_failed_title$1,
+  payment_pending_msg: payment_pending_msg$1,
+  payment_pending_title: payment_pending_title$1,
+  payment_quantum_praise: payment_quantum_praise$1,
+  payment_success_title: payment_success_title$1,
+  payment_welcome_msg: payment_welcome_msg$1,
   per_day: per_day$1,
   ph_event_desc: ph_event_desc$1,
   ph_event_title: ph_event_title$1,
@@ -11563,6 +12075,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   priority_vital: priority_vital$1,
   priority_work: priority_work$1,
   privacy_badge: privacy_badge$1,
+  privacy_consent_p: privacy_consent_p$1,
+  privacy_consent_title: privacy_consent_title$1,
   privacy_contact_email: privacy_contact_email$1,
   privacy_contact_role: privacy_contact_role$1,
   privacy_contact_sla: privacy_contact_sla$1,
@@ -11590,6 +12104,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_h2_security: privacy_h2_security$1,
   privacy_h2_thirdparty: privacy_h2_thirdparty$1,
   privacy_h2_usage: privacy_h2_usage$1,
+  privacy_info_p: privacy_info_p$1,
+  privacy_info_title: privacy_info_title$1,
   privacy_last_updated: privacy_last_updated$1,
   privacy_li_collection_1_desc: privacy_li_collection_1_desc$1,
   privacy_li_collection_1_title: privacy_li_collection_1_title$1,
@@ -11618,6 +12134,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_nav_5: privacy_nav_5$1,
   privacy_nav_6: privacy_nav_6$1,
   privacy_nav_7: privacy_nav_7$1,
+  privacy_p1: privacy_p1$1,
   privacy_p_collection: privacy_p_collection$1,
   privacy_p_contact: privacy_p_contact$1,
   privacy_p_rights: privacy_p_rights$1,
@@ -11634,6 +12151,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_status_tracking: privacy_status_tracking$1,
   privacy_status_tracking_val: privacy_status_tracking_val$1,
   privacy_subtitle: privacy_subtitle$1,
+  privacy_title: privacy_title$1,
   privacy_title_1: privacy_title_1$1,
   privacy_title_2: privacy_title_2$1,
   privacy_tldr_1_desc: privacy_tldr_1_desc$1,
@@ -11836,6 +12354,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   see_less: see_less$1,
   select_hour: select_hour$1,
   select_placeholder: select_placeholder$1,
+  seo_about_desc: seo_about_desc$1,
+  seo_meta_desc_1,
   set_budget: set_budget$1,
   settings_billing_active_badge: settings_billing_active_badge$1,
   settings_billing_current_label: settings_billing_current_label$1,
@@ -12423,8 +12943,20 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_subtitle: terms_subtitle$1,
   terms_title_1: terms_title_1$1,
   terms_title_2: terms_title_2$1,
+  theme_dark: theme_dark$1,
+  theme_light: theme_light$1,
   timeline_now: timeline_now$1,
   timeline_title: timeline_title$1,
+  tos_data_p: tos_data_p$1,
+  tos_data_title: tos_data_title$1,
+  tos_intro: tos_intro$1,
+  tos_security_p: tos_security_p$1,
+  tos_security_title: tos_security_title$1,
+  tos_service_p: tos_service_p$1,
+  tos_service_title: tos_service_title$1,
+  tos_termination_p: tos_termination_p$1,
+  tos_termination_title: tos_termination_title$1,
+  tos_title: tos_title$1,
   total_input: total_input$1,
   total_label: total_label$1,
   total_pl: total_pl$1,
@@ -14379,6 +14911,7 @@ const payment_pending_msg = "Pembayaranmu sedang diproses. Kami akan memberitahu
 const payment_failed_msg = "Pembayaranmu dibatalkan atau gagal. Kamu bisa mencobanya lagi kapan saja.";
 const payment_btn_dashboard = "Buka Dashboard";
 const payment_btn_billing = "Kembali ke Tagihan";
+const payment_btn_pricing = "Kembali ke Pilihan Paket";
 const payment_btn_ai = "Bicara dengan AI Coach";
 const error_title_503 = "503: Layanan Tidak Tersedia";
 const error_title_500 = "500: Server Error";
@@ -14439,6 +14972,9 @@ const goal_bulk_delete_confirm = "Hapus :count target sekaligus?";
 const goal_bulk_delete_success = "Berhasil dihapus!";
 const goal_bulk_copy_success = ":count target diduplikasi.";
 const goal_error_save = "Gagal menyimpan! Cek koneksi.";
+const goal_empty_title = "Belum ada target!";
+const goal_empty_desc = "Mulai buat proyek perubahan lu sekarang.";
+const goal_create_new = "Buat Target Baru";
 const goal_tips = "Tips: Klik sel pada tabel untuk mengedit. Data otomatis tersimpan saat berpindah sel.";
 const goal_col_title = "Nama Target";
 const goal_col_category = "Kategori";
@@ -14463,8 +14999,6 @@ const goal_status_paused = "Ditunda";
 const goal_status_cancelled = "Dibatalkan";
 const goal_progress = "Progress";
 const goal_total = "Total Target";
-const goal_empty_title = "Belum ada target!";
-const goal_empty_desc = "Mulai buat proyek perubahan lu sekarang.";
 const milestone_add = "Tambah Langkah";
 const milestone_placeholder = "Langkah baru...";
 const milestone_edit_placeholder = "Klik untuk mengedit...";
@@ -18683,6 +19217,7 @@ const id = {
   payment_failed_msg,
   payment_btn_dashboard,
   payment_btn_billing,
+  payment_btn_pricing,
   payment_btn_ai,
   error_title_503,
   error_title_500,
@@ -18744,6 +19279,9 @@ const id = {
   goal_bulk_delete_success,
   goal_bulk_copy_success,
   goal_error_save,
+  goal_empty_title,
+  goal_empty_desc,
+  goal_create_new,
   goal_tips,
   goal_col_title,
   goal_col_category,
@@ -18768,8 +19306,6 @@ const id = {
   goal_status_cancelled,
   goal_progress,
   goal_total,
-  goal_empty_title,
-  goal_empty_desc,
   milestone_add,
   milestone_placeholder,
   milestone_edit_placeholder,
@@ -22643,6 +23179,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_col_type,
   goal_completed_pct,
   goal_cover_premium,
+  goal_create_new,
   goal_cta_btn,
   goal_cta_desc,
   goal_cta_note,
@@ -23953,6 +24490,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   payment_btn_ai,
   payment_btn_billing,
   payment_btn_dashboard,
+  payment_btn_pricing,
   payment_failed_msg,
   payment_failed_title,
   payment_pending_msg,
@@ -26205,7 +26743,7 @@ const _ = { install(t3, e2) {
   const o2 = (t4, o3, n2, r2 = e2) => D(t4, o3, n2, r2);
   parseInt(t3.version) > 2 ? (t3.config.globalProperties.route = o2, t3.provide("route", o2)) : t3.mixin({ methods: { route: o2 } });
 } };
-const Ziggy$1 = { "url": "http://192.168.1.5:8000", "port": 8e3, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "settings.cookie-consent": { "uri": "settings/cookie-consent", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "billing": { "uri": "billing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "resources.ai-trust": { "uri": "resources/neural-os-transparency", "methods": ["GET", "HEAD"] }, "company.contact": { "uri": "company/contact", "methods": ["GET", "HEAD"] }, "contact.send": { "uri": "company/contact", "methods": ["POST"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "finance.savings.store": { "uri": "finance/savings", "methods": ["POST"] }, "finance.savings.update": { "uri": "finance/savings/{financeSaving}", "methods": ["PATCH"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.destroy": { "uri": "finance/savings/{financeSaving}", "methods": ["DELETE"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.deposit": { "uri": "finance/savings/{financeSaving}/deposit", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.withdraw": { "uri": "finance/savings/{financeSaving}/withdraw", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.analyze": { "uri": "journal/analyze", "methods": ["POST"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.general": { "uri": "settings/general", "methods": ["GET", "HEAD"] }, "settings.security": { "uri": "settings/security", "methods": ["GET", "HEAD"] }, "settings.modules": { "uri": "settings/modules", "methods": ["GET", "HEAD"] }, "settings.notifications": { "uri": "settings/notifications", "methods": ["GET", "HEAD"] }, "settings.billing": { "uri": "settings/billing", "methods": ["GET", "HEAD"] }, "settings.privacy": { "uri": "settings/privacy", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.summary": { "uri": "payment/checkout", "methods": ["GET", "HEAD"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "paypal.checkout": { "uri": "paypal/checkout", "methods": ["POST"] }, "paypal.success": { "uri": "paypal/success", "methods": ["GET", "HEAD"] }, "dashboard.insight": { "uri": "dashboard/insight", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "admin.blog.index": { "uri": "admin/blog", "methods": ["GET", "HEAD"] }, "admin.blog.create": { "uri": "admin/blog/create", "methods": ["GET", "HEAD"] }, "admin.blog.store": { "uri": "admin/blog", "methods": ["POST"] }, "admin.blog.edit": { "uri": "admin/blog/{post}/edit", "methods": ["GET", "HEAD"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.update": { "uri": "admin/blog/{post}", "methods": ["POST", "PATCH"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.destroy": { "uri": "admin/blog/{post}", "methods": ["DELETE"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.notifications.update": { "uri": "admin/blog/notifications/preferences", "methods": ["POST"] }, "admin.users.index": { "uri": "admin/users", "methods": ["GET", "HEAD"] }, "admin.users.toggle-premium": { "uri": "admin/users/{user}/toggle-premium", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "admin.users.toggle-admin": { "uri": "admin/users/{user}/toggle-admin", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
+const Ziggy$1 = { "url": "http://192.168.1.5:8000", "port": 8e3, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "settings.cookie-consent": { "uri": "settings/cookie-consent", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "billing": { "uri": "billing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "resources.ai-trust": { "uri": "resources/neural-os-transparency", "methods": ["GET", "HEAD"] }, "company.contact": { "uri": "company/contact", "methods": ["GET", "HEAD"] }, "contact.send": { "uri": "company/contact", "methods": ["POST"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "finance.savings.store": { "uri": "finance/savings", "methods": ["POST"] }, "finance.savings.update": { "uri": "finance/savings/{financeSaving}", "methods": ["PATCH"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.destroy": { "uri": "finance/savings/{financeSaving}", "methods": ["DELETE"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.deposit": { "uri": "finance/savings/{financeSaving}/deposit", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.withdraw": { "uri": "finance/savings/{financeSaving}/withdraw", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.analyze": { "uri": "journal/analyze", "methods": ["POST"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.general": { "uri": "settings/general", "methods": ["GET", "HEAD"] }, "settings.security": { "uri": "settings/security", "methods": ["GET", "HEAD"] }, "settings.modules": { "uri": "settings/modules", "methods": ["GET", "HEAD"] }, "settings.notifications": { "uri": "settings/notifications", "methods": ["GET", "HEAD"] }, "settings.billing": { "uri": "settings/billing", "methods": ["GET", "HEAD"] }, "settings.privacy": { "uri": "settings/privacy", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.summary": { "uri": "payment/checkout", "methods": ["GET", "HEAD"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "paypal.checkout": { "uri": "paypal/checkout", "methods": ["POST"] }, "paypal.success": { "uri": "paypal/success", "methods": ["GET", "HEAD"] }, "dashboard.insight": { "uri": "dashboard/insight", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.session.destroy": { "uri": "coach/session/{session}", "methods": ["DELETE"], "parameters": ["session"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "admin.blog.index": { "uri": "admin/blog", "methods": ["GET", "HEAD"] }, "admin.blog.create": { "uri": "admin/blog/create", "methods": ["GET", "HEAD"] }, "admin.blog.store": { "uri": "admin/blog", "methods": ["POST"] }, "admin.blog.edit": { "uri": "admin/blog/{post}/edit", "methods": ["GET", "HEAD"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.update": { "uri": "admin/blog/{post}", "methods": ["POST", "PATCH"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.destroy": { "uri": "admin/blog/{post}", "methods": ["DELETE"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.notifications.update": { "uri": "admin/blog/notifications/preferences", "methods": ["POST"] }, "admin.users.index": { "uri": "admin/users", "methods": ["GET", "HEAD"] }, "admin.users.toggle-premium": { "uri": "admin/users/{user}/toggle-premium", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "admin.users.toggle-admin": { "uri": "admin/users/{user}/toggle-admin", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
 if (typeof window !== "undefined" && typeof window.Ziggy !== "undefined") {
   Object.assign(Ziggy$1.routes, window.Ziggy.routes);
 }
@@ -26215,7 +26753,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-ZdCfA3eF.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-p_ih5aBU.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-B6Wrsxny.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-G3bc5hUd.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-JrS2AWGE.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DnPstKFr.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-Ykibw0zp.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-LiO3zZdT.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-aCOHjnK2.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BWtWX_Bd.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-CSDIn1rq.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-tkweh5Rq.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DEk3oRZL.js"), "./Pages/Error.vue": () => import("./assets/Error-xq6SXWxT.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BgLEfiL2.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BXSp97CZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-CL9HK3Vx.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-BcXs0ORb.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-C8EFcijR.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-WRsWA4yW.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-CEM28YKM.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-D1HipL2d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CQuMqAHu.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-DA6hLQpe.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CQB73alA.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-JG7MJ9vA.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-B-FB0V3K.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-ByNAk6xa.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DqXuOYq_.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-BQGN6G5x.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-Csd0PuJy.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-B5HicurL.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-BV701YHe.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-ARrCGPVt.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CkvmVouY.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-CpjmMXHD.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CrQo8MSH.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-CL1g9B1Q.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-DMP1pfzD.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DRV_AEwv.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-B26M8PrI.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-B_pcTFnO.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-BjxnEiy1.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CRFNeV10.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-CbtTn6W0.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DzN8VcV3.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-DuGcvbi1.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CnhxeQQc.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dcp4Vr0v.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-VQ6J1TMc.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-CsGtqZuw.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DjrFTuR3.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-CuwFNC5t.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CIEWnmII.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-COl8ZQwj.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-GU_L7upc.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-DQ-b2Ds6.js"), "./Pages/Settings/General.vue": () => import("./assets/General-exnj4qJT.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-D-LRYdog.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-CtiOjhZ_.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-9Bl-4Vay.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DvawROQy.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-C49Z1wiR.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-8ReNFdmM.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-CbruOR_g.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-B6XsWpzT.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-ZdCfA3eF.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-cKphsFFD.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-COgm8QOT.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B_hEE8-C.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BN3KDZ4T.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DnPstKFr.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-Ykibw0zp.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-LiO3zZdT.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-aCOHjnK2.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-D_TLfCTb.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-C-OmE00W.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-DXif8llA.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-bVfpbgSP.js"), "./Pages/Error.vue": () => import("./assets/Error-xq6SXWxT.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BgLEfiL2.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-DUpgAQis.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-eVu82vlT.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-DAMTIC9D.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-xzZCAybv.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-WRsWA4yW.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-CEM28YKM.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-D1HipL2d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CQuMqAHu.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-DW3xkBa3.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CQB73alA.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-Hbfmw05c.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-DOcdL_lS.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-ByNAk6xa.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Dv_N-OcU.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-DYVqdbhs.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-ChLmF5yL.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Dk1CpjaM.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-DT7gsovJ.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-keuOsI2Y.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-l4np5XfJ.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-CpjmMXHD.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CrQo8MSH.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-BjjRppa7.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-C0SHXAub.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-JI_P14zO.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-Cpktr0wG.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-CnAg7e_7.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-DP23lJ8Q.js"), "./Pages/More/Index.vue": () => import("./assets/Index-Dvb6DZwv.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-BSs8V0g-.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-BbMYGIAb.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-C01jSldS.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-D37xgReM.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-BSvY8qzJ.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-VQ6J1TMc.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-CsGtqZuw.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-CZC-ewPZ.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-B9fZLQf6.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CIEWnmII.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-COl8ZQwj.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-GU_L7upc.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-DQ-b2Ds6.js"), "./Pages/Settings/General.vue": () => import("./assets/General-exnj4qJT.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-D-LRYdog.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-CtiOjhZ_.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-J0nyz_ZW.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DvawROQy.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-C49Z1wiR.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-8ReNFdmM.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-CbruOR_g.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-B6XsWpzT.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

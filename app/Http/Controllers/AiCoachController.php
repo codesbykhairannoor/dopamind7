@@ -163,4 +163,14 @@ class AiCoachController extends Controller
         $synergy = $this->neuralSynergy->getModuleSynergy(Auth::id(), $request->module);
         return response()->json($synergy);
     }
+
+    public function destroySession(Request $request, $sessionId)
+    {
+        $user = Auth::user();
+        AiChat::where('user_id', $user->id)
+              ->where('session_id', $sessionId)
+              ->delete();
+
+        return redirect()->route('coach.index')->with('success', 'Riwayat obrolan berhasil dihapus.');
+    }
 }

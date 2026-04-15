@@ -184,6 +184,7 @@
     "payment_failed_msg": "Your payment was cancelled or failed. You can try again anytime.",
     "payment_btn_dashboard": "Go to Dashboard",
     "payment_btn_billing": "Back to Billing",
+    "payment_btn_pricing": "Back to Pricing",
     "payment_btn_ai": "Talk to AI Coach",
 
     "error_title_503": "503: Service Unavailable",
@@ -198,7 +199,5 @@
     "error_desc_403": "Sorry, you do not have permission to access this page.",
     "error_desc_default": "An unexpected technical issue occurred. Please try again.",
 
-    "error_btn_back": "Back to Home",
-
-    "____ SECTION_8 ____": "=== TOMBOL & LABEL UMUM ===",
+    "error_btn_back": "Back to Home"
 }

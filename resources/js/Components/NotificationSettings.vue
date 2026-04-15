@@ -54,7 +54,7 @@ const modules = [
 </script>
 
 <template>
-    <div v-if="isOpen" class="absolute right-0 top-full mt-2 z-[100] w-80 sm:w-96 origin-top-right">
+    <div v-if="isOpen" class="fixed inset-x-4 top-16 sm:absolute sm:inset-x-auto sm:right-0 sm:top-full sm:mt-2 z-[100] sm:w-96 origin-top sm:origin-top-right">
         <!-- Overlay transparan untuk deteksi klik luar (opsional, tapi pakai ini agar simpel tanpa library) -->
         <div class="fixed inset-0 z-[-1]" @click="emit('close')"></div>
 

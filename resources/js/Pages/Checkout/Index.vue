@@ -28,10 +28,6 @@ const periodLabel = computed(() => {
 });
 
 const displayPrice = computed(() => {
-    // --- TEMPORARY GLOBAL PRICE OVERRIDE ---
-    return 'Rp 5.000';
-    // ---------------------------------------
-
     if (!periodLabel.value.toLowerCase().includes('year')) return props.price;
     
     // Extract numbers from "Rp 79.000"
@@ -62,28 +58,9 @@ const initiatePayment = async (method) => {
             billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
         });
 
-        if (response.data.reference && typeof window.checkout !== 'undefined') {
-            Swal.close();
-            // Trigger Duitku POP
-            window.checkout.process(response.data.reference, {
-                successEvent: function(result){
-                    Swal.fire('Success', 'Payment processed successfully!', 'success');
-                    window.location.href = route('payment.finish') + '?resultCode=00';
-                },
-                pendingEvent: function(result){
-                    Swal.fire('Pending', 'Waiting for your payment...', 'info');
-                    window.location.href = route('payment.finish') + '?resultCode=01';
-                },
-                errorEvent: function(result){
-                    Swal.fire('Error', 'Payment failed: ' + (result.statusMessage || 'Unknown error'), 'error');
-                    window.location.href = route('payment.finish') + '?resultCode=02';
-                },
-                closeEvent: function(result){
-                    console.log('Customer closed the popup without finishing the payment');
-                    window.location.href = route('payment.finish') + '?resultCode=02';
-                }
-            });
-        } else if (response.data.paymentUrl) {
+        if (method === 'duitku' && response.data.paymentUrl) {
+            window.location.href = response.data.paymentUrl;
+        } else if (method === 'paypal' && response.data.paymentUrl) {
             window.location.href = response.data.paymentUrl;
         } else {
             throw new Error('No payment URL received');

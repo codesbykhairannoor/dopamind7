@@ -316,38 +316,53 @@ watch(
                     Riwayat
                 </p>
 
-                <button
+                <div
                     v-for="session in sessions"
                     :key="session.id"
-                    @click="switchSession(session.id)"
-                    class="w-full text-left px-3 py-2.5 rounded-xl text-sm transition-colors flex items-start gap-2.5 group"
-                    :class="
-                        currentSessionId === session.id
-                            ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300'
-                            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5'
-                    "
+                    class="relative group"
                 >
-                    <svg
-                        class="w-4 h-4 mt-0.5 shrink-0 opacity-50"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
+                    <button
+                        @click="switchSession(session.id)"
+                        class="w-full text-left px-3 py-2.5 rounded-xl text-sm transition-colors flex items-start gap-2.5"
+                        :class="
+                            currentSessionId === session.id
+                                ? 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-300'
+                                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5'
+                        "
                     >
-                        <path
-                            d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
-                        />
-                    </svg>
-                    <div class="min-w-0 flex-1">
-                        <p class="font-semibold text-xs truncate">
-                            {{ session.title }}
-                        </p>
-                        <p class="text-[10px] opacity-50 mt-0.5">
-                            {{ session.date }}
-                        </p>
-                    </div>
-                </button>
+                        <svg
+                            class="w-4 h-4 mt-0.5 shrink-0 opacity-50"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                            />
+                        </svg>
+                        <div class="min-w-0 flex-1 pr-6">
+                            <p class="font-semibold text-xs truncate">
+                                {{ session.title }}
+                            </p>
+                            <p class="text-[10px] opacity-50 mt-0.5">
+                                {{ session.date }}
+                            </p>
+                        </div>
+                    </button>
+                    <!-- Delete Button -->
+                    <button
+                        @click.stop="router.delete(route('coach.session.destroy', session.id))"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-all"
+                        title="Hapus Percakapan"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                    </button>
+                </div>
 
                 <div v-if="!sessions?.length" class="px-3 py-8 text-center">
                     <p class="text-[11px] text-slate-400 dark:text-slate-600">

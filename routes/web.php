@@ -848,6 +848,10 @@ Route::middleware(["auth", "throttle:global"])->group(function () {
                 \App\Http\Controllers\AiCoachController::class,
                 "chat",
             ])->name("chat");
+            Route::delete("/session/{session}", [
+                \App\Http\Controllers\AiCoachController::class,
+                "destroySession",
+            ])->name("session.destroy");
             Route::post("/synergy", [
                 \App\Http\Controllers\AiCoachController::class,
                 "synergy",

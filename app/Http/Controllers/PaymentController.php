@@ -82,13 +82,6 @@ class PaymentController extends Controller
             $productDetails = 'OneForMind Legendary Founder Edition (Lifetime)';
         }
 
-        // --- TEMPORARY GLOBAL PRICE 5.000 ---
-        // if ($user->email === 'erstaunenn@gmail.com') {
-        //     $paymentAmount = 5000;
-        // }
-        $paymentAmount = 5000;
-        // ------------------------------------
-
         $merchantOrderId = strtoupper($plan) . '-' . $user->id . '-' . time();
         $email = $user->email;
         $phoneNumber = '081234567890'; 
@@ -105,28 +98,6 @@ class PaymentController extends Controller
         $timestamp = round(microtime(true) * 1000);
         $signature = hash('sha256', $merchantCode . $timestamp . $apiKey);
 
-        $firstName = explode(' ', $user->name)[0] ?: 'User';
-        $lastName = explode(' ', $user->name)[1] ?? $firstName;
-
-        $addressData = [
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'address' => 'Jl. Oneformind',
-            'city' => 'Jakarta',
-            'postalCode' => '10000',
-            'phone' => (string)$phoneNumber,
-            'countryCode' => 'ID'
-        ];
-
-        $customerDetail = [
-            'firstName' => $firstName,
-            'lastName' => $lastName,
-            'email' => $email,
-            'phoneNumber' => (string)$phoneNumber,
-            'billingAddress' => $addressData,
-            'shippingAddress' => $addressData
-        ];
-
         $itemDetails = [
             [
                 'name' => (string)$productDetails,
@@ -140,9 +111,7 @@ class PaymentController extends Controller
             'merchantOrderId' => (string)$merchantOrderId,
             'productDetails' => (string)$productDetails,
             'email' => (string)$email,
-            'phoneNumber' => (string)$phoneNumber,
             'itemDetails' => $itemDetails,
-            'customerDetail' => $customerDetail,
             'callbackUrl' => (string)route('payment.callback'),
             'returnUrl' => (string)route('payment.finish'),
             'expiryPeriod' => (int)60

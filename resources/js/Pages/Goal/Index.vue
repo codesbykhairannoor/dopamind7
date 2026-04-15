@@ -91,25 +91,43 @@ const openPremiumPreview = () => router.visit(route('billing'));
                 <GoalStats :stats="localStats" :goals="localGoals" />
 
                 <!-- Goals Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    <div v-for="goal in localGoals" :key="goal._key">
-                        <GoalCard
-                            :goal="goal"
-                            :onEdit="openEditModal"
-                            :onDelete="deleteGoal"
-                            :onSaveMilestone="saveMilestone"
-                            :onToggleMilestone="toggleMilestone"
-                            :onDeleteMilestone="deleteMilestone"
-                            :isExplorer="isExplorer"
-                            @open-preview="openPremiumPreview"
-                        />
+                <template v-if="localGoals.length > 0">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                        <div v-for="goal in localGoals" :key="goal._key">
+                            <GoalCard
+                                :goal="goal"
+                                :onEdit="openEditModal"
+                                :onDelete="deleteGoal"
+                                :onSaveMilestone="saveMilestone"
+                                :onToggleMilestone="toggleMilestone"
+                                :onDeleteMilestone="deleteMilestone"
+                                :isExplorer="isExplorer"
+                                @open-preview="openPremiumPreview"
+                            />
+                        </div>
                     </div>
+                </template>
+                <div v-else class="flex flex-col items-center justify-center py-20 px-4 text-center bg-white dark:bg-slate-900 rounded-[3rem] border border-dashed border-slate-200 dark:border-slate-800">
+                    <div class="w-24 h-24 bg-indigo-50 dark:bg-indigo-500/10 rounded-[2rem] flex items-center justify-center text-indigo-500 mb-6 relative">
+                        <Target :size="48" stroke-width="2" class="animate-pulse" />
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-emerald-500 text-white rounded-xl flex items-center justify-center animate-bounce shadow-lg">
+                            <Sparkles :size="16" />
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-800 dark:text-white mb-2">{{ $t('goal_empty_title', 'Belum Ada Target') }}</h3>
+                    <p class="text-slate-500 dark:text-slate-400 font-medium max-w-md mx-auto mb-8 leading-relaxed">
+                        {{ $t('goal_empty_desc', 'Mulai rancang masa depan Anda. Tetapkan target besar pertama Anda dan pecah menjadi langkah-langkah kecil yang bisa dicapai.') }}
+                    </p>
+                    <button @click="openCreateModal" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-2xl shadow-xl shadow-indigo-200 dark:shadow-none transition-all active:scale-95 flex items-center gap-2">
+                        <Target :size="18" stroke-width="3" />
+                        {{ $t('goal_create_new', 'Buat Target Baru') }}
+                    </button>
                 </div>
             </template>
 
             <!-- 📱 MOBILE VIEW: PREMIUM VISION ROADMAP -->
             <template v-else>
-                <div class="space-y-12 pb-32">
+                <div v-if="localGoals.length > 0" class="space-y-12 pb-32">
                     <div v-for="goal in localGoals" :key="goal.id" :id="'mobile-goal-card-' + goal.id"
                         class="bg-white dark:bg-slate-900 rounded-[3rem] border border-slate-100 dark:border-slate-800 shadow-xl overflow-hidden group active:scale-[0.98] transition-all duration-500 w-full max-w-full"
                     >
@@ -184,6 +202,18 @@ const openPremiumPreview = () => router.visit(route('billing'));
                                 <p class="text-[9px] font-black text-amber-600/80 uppercase tracking-widest truncate">Reward: {{ goal.reward }}</p>
                         </div>
                     </div>
+                </div>
+                <div v-else class="flex flex-col items-center justify-center py-20 px-4 text-center bg-white dark:bg-slate-900 rounded-[3rem] border border-dashed border-slate-200 dark:border-slate-800">
+                    <div class="w-24 h-24 bg-indigo-50 dark:bg-indigo-500/10 rounded-[2rem] flex items-center justify-center text-indigo-500 mb-6 relative">
+                        <Target :size="48" stroke-width="2" class="animate-pulse" />
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-emerald-500 text-white rounded-xl flex items-center justify-center animate-bounce shadow-lg">
+                            <Sparkles :size="16" />
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-800 dark:text-white mb-2">{{ $t('goal_empty_title', 'Belum Ada Target') }}</h3>
+                    <p class="text-slate-500 dark:text-slate-400 font-medium max-w-md mx-auto mb-8 leading-relaxed">
+                        {{ $t('goal_empty_desc', 'Mulai rancang masa depan Anda. Tetapkan target besar pertama Anda dan pecah menjadi langkah-langkah kecil yang bisa dicapai.') }}
+                    </p>
                 </div>
             </template>
 
