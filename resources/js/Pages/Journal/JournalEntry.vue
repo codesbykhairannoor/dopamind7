@@ -65,9 +65,9 @@ const triggerFileInput = () => fileInputRef.value.click();
     <div
         class="min-h-screen bg-slate-50 dark:bg-slate-950 relative selection:bg-indigo-100 dark:selection:bg-indigo-900/40 pb-32 transition-colors duration-500"
     >
-        <!-- Navigation Header -->
+        <!-- Navigation Header (Not Sticky) -->
         <div
-            class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 px-4 md:px-6 py-4 flex items-center justify-between shadow-sm transition-colors duration-500"
+            class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 px-4 md:px-6 py-4 flex items-center justify-between shadow-sm transition-colors duration-500"
         >
             <Link
                 :href="route('journal.index')"
@@ -80,62 +80,12 @@ const triggerFileInput = () => fileInputRef.value.click();
             </Link>
 
             <div class="flex items-center gap-4">
-                <div class="w-10 h-10 md:w-32">
-                    <ThemeToggle :collapsed="true" />
-                </div>
-                <div
-                    class="text-[9px] md:text-[10px] font-black uppercase tracking-widest bg-slate-100 dark:bg-slate-800 px-3 py-2 rounded-xl flex items-center gap-2 transition-colors duration-500"
-                >
-                    <span
-                        v-if="isSaving"
-                        class="text-indigo-500 dark:text-indigo-400 animate-pulse flex items-center gap-1"
-                    >
-                        <svg
-                            class="w-3 h-3"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                            ></path>
-                        </svg>
-                        <span class="hidden sm:inline">{{
-                            $t("status_saving", "Saving...")
-                        }}</span>
-                    </span>
-                    <span
-                        v-else
-                        class="text-emerald-500 dark:text-emerald-400 flex items-center gap-1"
-                    >
-                        <svg
-                            class="w-3 h-3"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M5 13l4 4L19 7"
-                                stroke-width="2.5"
-                            ></path>
-                        </svg>
-                        <span class="hidden sm:inline">{{
-                            $t("status_saved", "Saved")
-                        }}</span>
-                    </span>
-                </div>
-
                 <button
                     @click="silentSave(true)"
                     :disabled="isSaving"
                     class="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-[10px] md:text-xs font-black tracking-widest px-4 md:px-6 py-2 md:py-2.5 rounded-xl shadow-lg shadow-indigo-200 dark:shadow-none transition-all active:scale-95 disabled:opacity-50"
                 >
-                    {{ $t("btn_save_manual", "Save") }}
+                    {{ isSaving ? $t("status_saving", "Saving...") : $t("btn_save_manual", "Save") }}
                 </button>
             </div>
         </div>

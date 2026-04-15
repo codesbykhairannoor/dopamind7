@@ -254,7 +254,7 @@ const setFontSize = (value) => {
     <!-- Integrated Toolbar (Sub-header sticky) -->
     <div
         v-if="editor"
-        class="sticky top-[72px] z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 py-2 px-1 sm:px-2 mb-6 flex flex-wrap items-center gap-1 w-full shadow-sm rounded-2xl"
+        class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 py-2 px-1 sm:px-2 mb-6 flex flex-wrap items-center gap-1 w-full shadow-sm rounded-2xl"
     >
         <!-- Bold -->
         <button

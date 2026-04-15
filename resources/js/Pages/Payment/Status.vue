@@ -109,7 +109,7 @@ onMounted(() => {
                     </Link>
                     <Link 
                         v-else
-                        href="/pricing" 
+                        href="/settings?tab=billing" 
                         class="px-8 py-5 bg-slate-900 dark:bg-indigo-600 text-white rounded-3xl font-black text-sm tracking-wide hover:scale-105 active:scale-95 transition-all shadow-xl shadow-slate-200 dark:shadow-none"
                     >
                         {{ $t('payment_btn_pricing', 'Back to Pricing') }}

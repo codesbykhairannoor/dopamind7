@@ -3,6 +3,7 @@ import { ref, computed, onMounted, nextTick, watch } from "vue";
 import { Head, router } from "@inertiajs/vue3";
 import { marked } from "marked";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 // Configure marked
 marked.setOptions({ breaks: true, gfm: true });
@@ -13,6 +14,30 @@ const props = defineProps({
     initialMessages: { type: Array, default: () => [] },
     userName: { type: String, default: "Kamu" },
 });
+
+const deleteSession = (sessionId) => {
+    Swal.fire({
+        title: 'Hapus Riwayat?',
+        text: "Percakapan ini akan dihapus permanen.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ef4444',
+        cancelButtonColor: '#94a3b8',
+        confirmButtonText: 'Ya, Hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            router.delete(route('coach.session.destroy', sessionId), {
+                preserveScroll: true,
+                onSuccess: () => {
+                    if (props.currentSessionId === sessionId) {
+                        startNewChat();
+                    }
+                }
+            });
+        }
+    });
+};
 
 // ── STATE ────────────────────────────────────────────────────────────────────
 const messages = ref([...(props.initialMessages || [])]);
@@ -353,7 +378,7 @@ watch(
                     </button>
                     <!-- Delete Button -->
                     <button
-                        @click.stop="router.delete(route('coach.session.destroy', session.id))"
+                        @click.stop="deleteSession(session.id)"
                         class="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-all"
                         title="Hapus Percakapan"
                     >
@@ -651,7 +676,7 @@ watch(
 
                     <!-- ══════════ CHAT STATE (ChatGPT/Gemini style) ══════════ -->
                     <div v-else key="chat" class="py-6 pb-36 px-4">
-                        <div class="max-w-3xl mx-auto space-y-5">
+                        <div class="max-w-5xl mx-auto space-y-5">
                             <template
                                 v-for="(msg, index) in messages"
                                 :key="index"
@@ -810,10 +835,10 @@ watch(
                     </div>
                 </div>
 
-                <div class="max-w-3xl mx-auto">
+                <div class="max-w-5xl mx-auto">
                     <!-- Input row -->
                     <div
-                        class="flex items-end gap-2 bg-[#f4f4f5] dark:bg-[#1c1c1c] border border-transparent dark:border-white/[0.06] rounded-2xl px-3 py-2 focus-within:ring-2 focus-within:ring-indigo-400/30 dark:focus-within:ring-indigo-600/25 transition-all"
+                        class="flex items-end gap-2 bg-[#f4f4f5] dark:bg-[#1c1c1c] border border-transparent dark:border-white/[0.06] rounded-2xl px-3 py-2 focus-within:ring-2 focus-within:ring-indigo-400/30 dark:focus-within:ring-indigo-600/25 transition-all shadow-sm"
                     >
                         <!-- Attach + Voice -->
                         <div class="flex items-center gap-0.5 shrink-0 pb-1">

@@ -229,9 +229,10 @@ watch(isMobileDrawerOpen, (open) => {
 
             <!-- MAIN CONTENT AREA -->
             <main
-                class="flex-1 overflow-y-auto relative w-full bg-slate-50 dark:bg-slate-950 pb-32 md:pb-0 transition-colors duration-500 custom-scrollbar"
+                class="flex-1 overflow-y-auto relative w-full bg-slate-50 dark:bg-slate-950 pb-20 md:pb-0 transition-colors duration-500 custom-scrollbar"
+                :class="{ '!pb-0': route().current('coach.*') }"
             >
-                <div class="w-full relative z-0 px-0 pb-8 md:pb-10">
+                <div class="w-full relative z-0 px-0 pb-8 md:pb-10" :class="{ '!pb-0': route().current('coach.*') }">
                     <slot />
                 </div>
             </main>
