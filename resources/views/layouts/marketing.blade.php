@@ -802,42 +802,15 @@
                 </div>
             </div>
 
-            {{-- MOBILE MENU: Full-screen Notion style --}}
+            {{-- MOBILE MENU: Full-screen Notion style below Top Nav --}}
             <div x-show="mobileMenuOpen" x-cloak class="lg:hidden">
                 <div x-transition:enter="transition ease-out duration-200"
-                    x-transition:enter-start="opacity-0 scale-[0.98]"
-                    x-transition:enter-end="opacity-100 scale-100"
+                    x-transition:enter-start="opacity-0 translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
                     x-transition:leave="transition ease-in duration-150"
-                    x-transition:leave-start="opacity-100 scale-100"
-                    x-transition:leave-end="opacity-0 scale-[0.98]"
-                    class="fixed inset-0 z-[120] bg-white flex flex-col h-[100dvh] w-full overflow-hidden origin-top">
-
-                    {{-- MOBILE MENU HEADER (Inside the fullscreen menu) --}}
-                    <div class="px-6 h-16 flex justify-between items-center bg-white shrink-0">
-                        {{-- LOGO --}}
-                        <a href="{{ route('home') }}" hx-boost="false" class="flex items-center gap-2">
-                            <div class="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center shadow-sm">
-                                <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-5 h-5 brightness-0 invert" />
-                            </div>
-                            <span class="text-xl font-bold tracking-tight text-slate-900">OneForMind</span>
-                        </a>
-
-                        <div class="flex items-center gap-3">
-                            {{-- Get Started Button (Notion style: blue button on right) --}}
-                            @auth
-                                <a hx-boost="false" href="{{ route('dashboard') }}" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-semibold transition">Dashboard</a>
-                            @else
-                                <a hx-boost="false" href="{{ route('register') }}" class="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-semibold transition">Get started</a>
-                            @endauth
-
-                            {{-- CLOSE BUTTON (Notion style: simple X) --}}
-                            <button @click="mobileMenuOpen = false; mobilePanel = null" class="p-1 -mr-2 text-slate-600 hover:text-slate-900 transition focus:outline-none" aria-label="Close Navigation">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 translate-y-2"
+                    class="fixed inset-x-0 top-16 z-[95] bg-white flex flex-col h-[calc(100dvh-4rem)] w-full overflow-hidden border-t border-slate-100">
 
                     <div class="relative flex-1 flex flex-col min-h-0 bg-white">
                         {{-- Root: primary nav (larger font, no borders) --}}
@@ -845,28 +818,28 @@
                             class="flex flex-col flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 pt-4 pb-6">
                             
                             <button type="button" @click="mobilePanel = 'features'"
-                                class="w-full flex items-center justify-between py-3.5 text-left text-[19px] font-medium text-slate-900 active:opacity-70 leading-snug">
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[20px] font-bold text-slate-900 active:opacity-70 leading-snug">
                                 <span>Features</span>
                                 <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </button>
                             <button type="button" @click="mobilePanel = 'solutions'"
-                                class="w-full flex items-center justify-between py-3.5 text-left text-[19px] font-medium text-slate-900 active:opacity-70 leading-snug">
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[20px] font-bold text-slate-900 active:opacity-70 leading-snug">
                                 <span>Solutions</span>
                                 <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </button>
                             <button type="button" @click="mobilePanel = 'resources'"
-                                class="w-full flex items-center justify-between py-3.5 text-left text-[19px] font-medium text-slate-900 active:opacity-70 leading-snug">
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[20px] font-bold text-slate-900 active:opacity-70 leading-snug">
                                 <span>Resources</span>
                                 <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </button>
-                            <a href="{{ route('pricing.index') }}" @click="mobileMenuOpen = false; mobilePanel = null"
-                                class="block py-3.5 text-[19px] font-medium text-slate-900 leading-snug">Pricing</a>
+                            <a href="{{ route('pricing.index') }}"
+                                class="block py-3.5 text-[20px] font-bold text-slate-900 leading-snug">Pricing</a>
                         </div>
 
                         {{-- Sub-panels: slide in, compact lists --}}
@@ -884,10 +857,10 @@
                                     class="p-1 rounded text-slate-600 active:bg-slate-100"
                                     aria-label="Back">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                                     </svg>
                                 </button>
-                                <span class="text-[19px] font-medium text-slate-900 tracking-tight"
+                                <span class="text-[20px] font-bold text-slate-900 tracking-tight"
                                     x-text="mobilePanel === 'features' ? 'Features' : mobilePanel === 'solutions' ? 'Solutions' : mobilePanel === 'resources' ? 'Resources' : ''"></span>
                             </div>
 
@@ -957,7 +930,7 @@
                             <div class="pt-6">
                                 {{-- Language toggle --}}
                                 <div class="flex items-center gap-3 mb-6">
-                                    <span class="text-sm font-medium text-slate-500">Language</span>
+                                    <span class="text-sm font-bold text-slate-500">Language</span>
                                     <div class="bg-slate-50 flex items-center p-0.5 rounded-md border border-slate-100">
                                         <a href="{{ route('lang.switch', 'id') }}"
                                             class="px-2.5 py-1 rounded-[4px] text-[11px] uppercase tracking-wide font-bold transition-all {{ app()->getLocale() === 'id' ? 'bg-white text-slate-900 shadow-sm border border-slate-200' : 'text-slate-400' }}">ID</a>
@@ -968,13 +941,13 @@
 
                                 <div class="flex flex-col gap-2.5">
                                     @auth
-                                        <a hx-boost="false" href="{{ route('dashboard') }}" @click="mobileMenuOpen = false; mobilePanel = null"
-                                            class="w-full py-2.5 text-center font-semibold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md text-[15px] transition-colors">Dashboard</a>
+                                        <a hx-boost="false" href="{{ route('dashboard') }}"
+                                            class="w-full py-2.5 text-center font-bold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md text-[15px] transition-colors">Dashboard</a>
                                     @else
-                                        <a hx-boost="false" href="{{ route('login') }}" @click="mobileMenuOpen = false; mobilePanel = null"
-                                            class="w-full py-2.5 text-center font-semibold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md text-[15px] transition-colors">Log in</a>
-                                        <a hx-boost="false" href="{{ route('register') }}" @click="mobileMenuOpen = false; mobilePanel = null"
-                                            class="w-full py-2.5 text-center font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md text-[15px] transition-colors">Get started</a>
+                                        <a hx-boost="false" href="{{ route('login') }}"
+                                            class="w-full py-2.5 text-center font-bold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md text-[15px] transition-colors">Log in</a>
+                                        <a hx-boost="false" href="{{ route('register') }}"
+                                            class="w-full py-2.5 text-center font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md text-[15px] transition-colors">Get started</a>
                                     @endauth
                                 </div>
                             </div>
