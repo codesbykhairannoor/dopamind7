@@ -165,6 +165,17 @@
  
    
 
+    "payment_success_title": "Akses Diberikan!",
+    "payment_pending_title": "Pembayaran Tertunda",
+    "payment_failed_title": "Pembayaran Dibatalkan",
+    "payment_welcome_msg": "Selamat datang di ekosistem elit,",
+    "payment_quantum_praise": "Potensimu kini resmi diperluas.",
+    "payment_pending_msg": "Pembayaranmu sedang diproses. Kami akan memberitahumu setelah berhasil dikonfirmasi.",
+    "payment_failed_msg": "Pembayaranmu dibatalkan atau gagal. Kamu bisa mencobanya lagi kapan saja.",
+    "payment_btn_dashboard": "Buka Dashboard",
+    "payment_btn_billing": "Kembali ke Tagihan",
+    "payment_btn_ai": "Bicara dengan AI Coach",
+
     "____ SECTION_8 ____": "=== TOMBOL & LABEL UMUM ===",
     "btn_add": "Tambah",
     "btn_save": "Simpan",

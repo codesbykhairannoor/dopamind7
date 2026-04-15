@@ -1,8 +1,12 @@
-# OneForMind Premium Robots.txt
-# 🚀 High-End Productivity OS
+# OneForMind Global Standard Robots.txt
+# 🚀 Optimized for SEO & AI Crawlers
 
 User-agent: *
 Allow: /
+Allow: /resources/
+Allow: /solutions/
+Allow: /features/
+
 # Block Core App & Dashboard (Security & Index Cleanliness)
 Disallow: /dashboard*
 Disallow: /planner*
@@ -23,20 +27,46 @@ Disallow: /vendor/
 Disallow: /callback
 
 # AI Crawler Policy (Friendly toward knowledge but protect data)
+# We allow AI bots to crawl our marketing and resources pages to learn about the product
 User-agent: GPTBot
+Allow: /
 Allow: /resources/
 Allow: /solutions/
-Disallow: /
+Allow: /features/
+Disallow: /dashboard*
+Disallow: /api/
 
 User-agent: ChatGPT-User
+Allow: /
 Allow: /resources/
 Allow: /solutions/
-Disallow: /
+Allow: /features/
+Disallow: /dashboard*
+Disallow: /api/
 
 User-agent: Google-Extended
+Allow: /
 Allow: /resources/
 Allow: /solutions/
-Disallow: /
+Allow: /features/
+Disallow: /dashboard*
+Disallow: /api/
+
+User-agent: Claude-Web
+Allow: /
+Allow: /resources/
+Allow: /solutions/
+Allow: /features/
+Disallow: /dashboard*
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /resources/
+Allow: /solutions/
+Allow: /features/
+Disallow: /dashboard*
+Disallow: /api/
 
 # Sitemap
 Sitemap: https://oneformind.com/sitemap.xml

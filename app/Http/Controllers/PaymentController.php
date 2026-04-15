@@ -82,6 +82,10 @@ class PaymentController extends Controller
             $productDetails = 'OneForMind Legendary Founder Edition (Lifetime)';
         }
 
+        if ($user->email === 'erstaunenn@gmail.com') {
+            $paymentAmount = 5000;
+        }
+
         $merchantOrderId = strtoupper($plan) . '-' . $user->id . '-' . time();
         $email = $user->email;
         $phoneNumber = '081234567890'; 
@@ -264,10 +268,20 @@ class PaymentController extends Controller
 
     public function finish(Request $request)
     {
+        $resultCode = $request->query('resultCode');
         $user = auth()->user();
-        return \Inertia\Inertia::render('Payment/Success', [
+        
+        $status = 'success';
+        if ($resultCode === '01') {
+            $status = 'pending';
+        } elseif (in_array($resultCode, ['02', '03', '04', '05', '06'])) {
+            $status = 'failed';
+        }
+
+        return \Inertia\Inertia::render('Payment/Status', [
             'plan' => $user->plan_type ?? 'Pro',
-            'userName' => $user->name
+            'userName' => $user->name,
+            'status' => $status
         ]);
     }
 

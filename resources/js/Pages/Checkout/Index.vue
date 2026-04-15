@@ -64,17 +64,19 @@ const initiatePayment = async (method) => {
             window.checkout.process(response.data.reference, {
                 successEvent: function(result){
                     Swal.fire('Success', 'Payment processed successfully!', 'success');
-                    window.location.href = route('payment.finish');
+                    window.location.href = route('payment.finish') + '?resultCode=00';
                 },
                 pendingEvent: function(result){
                     Swal.fire('Pending', 'Waiting for your payment...', 'info');
-                    window.location.href = route('payment.finish');
+                    window.location.href = route('payment.finish') + '?resultCode=01';
                 },
                 errorEvent: function(result){
                     Swal.fire('Error', 'Payment failed: ' + (result.statusMessage || 'Unknown error'), 'error');
+                    window.location.href = route('payment.finish') + '?resultCode=02';
                 },
                 closeEvent: function(result){
                     console.log('Customer closed the popup without finishing the payment');
+                    window.location.href = route('payment.finish') + '?resultCode=02';
                 }
             });
         } else if (response.data.paymentUrl) {
