@@ -102,7 +102,7 @@
             </div>
             
             {{-- Balanced Title --}}
-            <h1 class="text-5xl md:text-7xl lg:text-8xl mb-8 tracking-[-0.03em] text-slate-900 font-[900] leading-[1.05] max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl mb-8 tracking-[-0.03em] text-slate-900 font-[900] leading-[1.05] max-w-6xl mx-auto">
                 {{ __('hero_premium_title_1') }} 
                 <span class="text-indigo-600 block mt-2">
                     {{ __('hero_premium_title_2') }}
