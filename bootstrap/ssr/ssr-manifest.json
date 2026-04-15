@@ -7,43 +7,43 @@
   "lang/zh.json": [],
   "node_modules/laravel-vite-plugin/inertia-helpers/index.js": [],
   "resources/js/Components/AppSidebarNav.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
-  "resources/js/Components/AppSidebarNav.vue?vue&type=style&index=0&scoped=572c5b9f&lang.css": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+  "resources/js/Components/AppSidebarNav.vue?vue&type=style&index=0&scoped=967c2978&lang.css": [
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
   "resources/js/Components/ApplicationLogo.vue": [
-    "http://localhost:8001/build/assets/Index-DrMreSYu.js",
+    "http://localhost:8001/build/assets/Index-CvYx0ZeA.js",
     "http://localhost:8001/build/assets/Index-UEIHZpcq.css"
   ],
   "resources/js/Components/CommandPalette.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
   "resources/js/Components/CommandPalettePanel.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
   "resources/js/Components/CommandPalettePanel.vue?vue&type=style&index=0&scoped=822f389f&lang.css": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
   "resources/js/Components/DangerButton.vue": [
-    "http://localhost:8001/build/assets/DeleteUserForm-BxwZ6qed.js"
+    "http://localhost:8001/build/assets/DeleteUserForm-CIEWnmII.js"
   ],
   "resources/js/Components/Dropdown.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
   "resources/js/Components/DropdownLink.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
   "resources/js/Components/GlobalHeader.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
   "resources/js/Components/InputError.vue": [
     "http://localhost:8001/build/assets/InputError-CjMsDEOH.js"
@@ -52,17 +52,17 @@
     "http://localhost:8001/build/assets/InputLabel-BgCYZe1F.js"
   ],
   "resources/js/Components/Modal.vue": [
-    "http://localhost:8001/build/assets/Modal-b6JySqy_.js"
+    "http://localhost:8001/build/assets/Modal-CbPO3kzO.js"
   ],
   "resources/js/Components/NeuralBridge.vue": [
-    "http://localhost:8001/build/assets/NeuralBridge-CPrgCaT4.js"
+    "http://localhost:8001/build/assets/NeuralBridge-DXVH_yQi.js"
   ],
   "resources/js/Components/NotificationSettings.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
   "resources/js/Components/OneForMindIcon.vue": [
-    "http://localhost:8001/build/assets/OneForMindIcon-eY-202Xp.js"
+    "http://localhost:8001/build/assets/OneForMindIcon-DZwBoKYB.js"
   ],
   "resources/js/Components/PrimaryButton.vue": [
     "http://localhost:8001/build/assets/PrimaryButton-DPmleQI_.js"
@@ -74,27 +74,27 @@
     "http://localhost:8001/build/assets/TextInput-xTq3OG6l.js"
   ],
   "resources/js/Components/ThemeToggle.vue": [
-    "http://localhost:8001/build/assets/JournalEntry-ByGICv4N.js",
-    "http://localhost:8001/build/assets/JournalEntry-C3gtBy1I.css"
+    "http://localhost:8001/build/assets/JournalEntry-B26M8PrI.js",
+    "http://localhost:8001/build/assets/JournalEntry-BvEFMDeP.css"
   ],
   "resources/js/Components/ThemeToggle.vue?vue&type=style&index=0&scoped=e4d7632c&lang.css": [
-    "http://localhost:8001/build/assets/JournalEntry-ByGICv4N.js",
-    "http://localhost:8001/build/assets/JournalEntry-C3gtBy1I.css"
+    "http://localhost:8001/build/assets/JournalEntry-B26M8PrI.js",
+    "http://localhost:8001/build/assets/JournalEntry-BvEFMDeP.css"
   ],
   "resources/js/Composables/Calendar/useCalendar.js": [
-    "http://localhost:8001/build/assets/Index-DySPZ8Lv.js"
+    "http://localhost:8001/build/assets/Index-CSDIn1rq.js"
   ],
   "resources/js/Composables/Calendar/useCalendarDates.js": [
-    "http://localhost:8001/build/assets/Index-DySPZ8Lv.js"
+    "http://localhost:8001/build/assets/Index-CSDIn1rq.js"
   ],
   "resources/js/Composables/Calendar/useCalendarForm.js": [
-    "http://localhost:8001/build/assets/Index-DySPZ8Lv.js"
+    "http://localhost:8001/build/assets/Index-CSDIn1rq.js"
   ],
   "resources/js/Composables/Finance/useFinanceBatch.js": [
-    "http://localhost:8001/build/assets/Index-Bfz3uwb6.js"
+    "http://localhost:8001/build/assets/Index-C8EFcijR.js"
   ],
   "resources/js/Composables/Finance/useFinanceCalendar.js": [
-    "http://localhost:8001/build/assets/Index-Bfz3uwb6.js"
+    "http://localhost:8001/build/assets/Index-C8EFcijR.js"
   ],
   "resources/js/Composables/Finance/useFinanceChart.js": [
     "http://localhost:8001/build/assets/DailyTrendChart-TOHlRPw2.js",
@@ -111,65 +111,69 @@
     "http://localhost:8001/build/assets/useFinanceHistory-6kktt4HE.js"
   ],
   "resources/js/Composables/Goal/useGoals.js": [
-    "http://localhost:8001/build/assets/Index-B45sUDuV.js"
+    "http://localhost:8001/build/assets/Index-Djk-eAA-.js"
   ],
   "resources/js/Composables/Habits/useHabitCore.js": [
-    "http://localhost:8001/build/assets/Index-CvhiMyiS.js",
+    "http://localhost:8001/build/assets/Index-BV701YHe.js",
     "http://localhost:8001/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Habits/useHabitDates.js": [
-    "http://localhost:8001/build/assets/Index-CvhiMyiS.js",
+    "http://localhost:8001/build/assets/Index-BV701YHe.js",
     "http://localhost:8001/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Habits/useHabitModals.js": [
-    "http://localhost:8001/build/assets/Index-CvhiMyiS.js",
+    "http://localhost:8001/build/assets/Index-BV701YHe.js",
     "http://localhost:8001/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Composables/Job/useJobUI.js": [
     "http://localhost:8001/build/assets/useJobUI-ByDCvN_C.js"
   ],
   "resources/js/Composables/Job/useJobs.js": [
-    "http://localhost:8001/build/assets/Index-BpKrxANh.js"
+    "http://localhost:8001/build/assets/Index-CkvmVouY.js"
   ],
   "resources/js/Composables/Journal/useJournalForm.js": [
-    "http://localhost:8001/build/assets/JournalEntry-ByGICv4N.js",
-    "http://localhost:8001/build/assets/JournalEntry-C3gtBy1I.css"
+    "http://localhost:8001/build/assets/JournalEntry-B26M8PrI.js",
+    "http://localhost:8001/build/assets/JournalEntry-BvEFMDeP.css"
   ],
   "resources/js/Composables/Planner/usePlanner.js": [
-    "http://localhost:8001/build/assets/Index-DNCXaaj5.js"
+    "http://localhost:8001/build/assets/Index-DzN8VcV3.js"
   ],
   "resources/js/Composables/Planner/usePlannerBatch.js": [
-    "http://localhost:8001/build/assets/Index-DNCXaaj5.js"
+    "http://localhost:8001/build/assets/Index-DzN8VcV3.js"
   ],
   "resources/js/Composables/Planner/usePlannerCalendar.js": [
-    "http://localhost:8001/build/assets/Index-DNCXaaj5.js"
+    "http://localhost:8001/build/assets/Index-DzN8VcV3.js"
   ],
   "resources/js/Composables/Planner/usePlannerDrag.js": [
-    "http://localhost:8001/build/assets/Index-DNCXaaj5.js"
+    "http://localhost:8001/build/assets/Index-DzN8VcV3.js"
   ],
   "resources/js/Composables/Planner/usePlannerTasks.js": [
-    "http://localhost:8001/build/assets/Index-DNCXaaj5.js"
+    "http://localhost:8001/build/assets/Index-DzN8VcV3.js"
   ],
   "resources/js/Composables/useAppearance.js": [
     "http://localhost:8001/build/assets/useAppearance-rDoGVD4_.js"
   ],
+  "resources/js/Composables/useBackgroundPrefetch.js": [
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
+  ],
   "resources/js/Composables/useGating.js": [
-    "http://localhost:8001/build/assets/useGating-DZoi6H2L.js"
+    "http://localhost:8001/build/assets/useGating-X1jrF-Xv.js"
   ],
   "resources/js/Composables/useHabits.js": [
-    "http://localhost:8001/build/assets/Index-CvhiMyiS.js",
+    "http://localhost:8001/build/assets/Index-BV701YHe.js",
     "http://localhost:8001/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Layouts/AdminLayout.vue": [
-    "http://localhost:8001/build/assets/AdminLayout-C50zs83J.js"
+    "http://localhost:8001/build/assets/AdminLayout-CF5aj6ak.js"
   ],
   "resources/js/Layouts/AuthenticatedLayout.vue": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
-  "resources/js/Layouts/AuthenticatedLayout.vue?vue&type=style&index=0&scoped=b6576338&lang.css": [
-    "http://localhost:8001/build/assets/AuthenticatedLayout-C9Lj9FZ-.js",
-    "http://localhost:8001/build/assets/AuthenticatedLayout-BUM78eYc.css"
+  "resources/js/Layouts/AuthenticatedLayout.vue?vue&type=style&index=0&scoped=23e90843&lang.css": [
+    "http://localhost:8001/build/assets/AuthenticatedLayout-P9-kwmWK.js",
+    "http://localhost:8001/build/assets/AuthenticatedLayout-CsBWiCxh.css"
   ],
   "resources/js/Layouts/GuestLayout.vue": [
     "http://localhost:8001/build/assets/GuestLayout-CNBcx5bx.js"
@@ -178,26 +182,26 @@
     "http://localhost:8001/build/assets/About-ZdCfA3eF.js"
   ],
   "resources/js/Pages/Admin/Blog/Form.vue": [
-    "http://localhost:8001/build/assets/Form-BWfd-oNh.js",
+    "http://localhost:8001/build/assets/Form-p_ih5aBU.js",
     "http://localhost:8001/build/assets/Form-DZp1ne2R.css"
   ],
   "resources/js/Pages/Admin/Blog/Form.vue?vue&type=style&index=0&scoped=76360a8d&lang.css": [
-    "http://localhost:8001/build/assets/Form-BWfd-oNh.js",
+    "http://localhost:8001/build/assets/Form-p_ih5aBU.js",
     "http://localhost:8001/build/assets/Form-DZp1ne2R.css"
   ],
   "resources/js/Pages/Admin/Blog/Index.vue": [
-    "http://localhost:8001/build/assets/Index-BBpcRf8H.js"
+    "http://localhost:8001/build/assets/Index-B6Wrsxny.js"
   ],
   "resources/js/Pages/Admin/User/Index.vue": [
-    "http://localhost:8001/build/assets/Index-93JG4sNG.js"
+    "http://localhost:8001/build/assets/Index-G3bc5hUd.js"
   ],
   "resources/js/Pages/AiCoach/Index.vue": [
-    "http://localhost:8001/build/assets/Index-CmeSrMuF.js",
-    "http://localhost:8001/build/assets/Index-CzjFJEUt.css"
+    "http://localhost:8001/build/assets/Index-JrS2AWGE.js",
+    "http://localhost:8001/build/assets/Index-BEjA4tJh.css"
   ],
-  "resources/js/Pages/AiCoach/Index.vue?vue&type=style&index=0&scoped=9d5dde6e&lang.css": [
-    "http://localhost:8001/build/assets/Index-CmeSrMuF.js",
-    "http://localhost:8001/build/assets/Index-CzjFJEUt.css"
+  "resources/js/Pages/AiCoach/Index.vue?vue&type=style&index=0&scoped=20b959bc&lang.css": [
+    "http://localhost:8001/build/assets/Index-JrS2AWGE.js",
+    "http://localhost:8001/build/assets/Index-BEjA4tJh.css"
   ],
   "resources/js/Pages/Auth/ConfirmPassword.vue": [
     "http://localhost:8001/build/assets/ConfirmPassword-DnPstKFr.js"
@@ -237,41 +241,41 @@
     "http://localhost:8001/build/assets/CalendarGrid-DGfNYRZB.css"
   ],
   "resources/js/Pages/Calendar/CalendarHeader.vue": [
-    "http://localhost:8001/build/assets/CalendarHeader-CBSFbHC2.js",
+    "http://localhost:8001/build/assets/CalendarHeader-BWtWX_Bd.js",
     "http://localhost:8001/build/assets/CalendarHeader-Bm_BsUc7.css"
   ],
   "resources/js/Pages/Calendar/CalendarHeader.vue?vue&type=style&index=0&scoped=03dce338&lang.css": [
-    "http://localhost:8001/build/assets/CalendarHeader-CBSFbHC2.js",
+    "http://localhost:8001/build/assets/CalendarHeader-BWtWX_Bd.js",
     "http://localhost:8001/build/assets/CalendarHeader-Bm_BsUc7.css"
   ],
   "resources/js/Pages/Calendar/Index.vue": [
-    "http://localhost:8001/build/assets/Index-DySPZ8Lv.js"
+    "http://localhost:8001/build/assets/Index-CSDIn1rq.js"
   ],
   "resources/js/Pages/Checkout/Index.vue": [
-    "http://localhost:8001/build/assets/Index-DrMreSYu.js",
+    "http://localhost:8001/build/assets/Index-CvYx0ZeA.js",
     "http://localhost:8001/build/assets/Index-UEIHZpcq.css"
   ],
   "resources/js/Pages/Checkout/Index.vue?vue&type=style&index=0&scoped=1c177ec2&lang.css": [
-    "http://localhost:8001/build/assets/Index-DrMreSYu.js",
+    "http://localhost:8001/build/assets/Index-CvYx0ZeA.js",
     "http://localhost:8001/build/assets/Index-UEIHZpcq.css"
   ],
   "resources/js/Pages/Dashboard.vue": [
-    "http://localhost:8001/build/assets/Dashboard-DOD4ecrI.js",
-    "http://localhost:8001/build/assets/Dashboard-Dm4vL21a.css"
+    "http://localhost:8001/build/assets/Dashboard-DEk3oRZL.js",
+    "http://localhost:8001/build/assets/Dashboard-BxLqgHA7.css"
   ],
-  "resources/js/Pages/Dashboard.vue?vue&type=style&index=0&scoped=496c3553&lang.css": [
-    "http://localhost:8001/build/assets/Dashboard-DOD4ecrI.js",
-    "http://localhost:8001/build/assets/Dashboard-Dm4vL21a.css"
+  "resources/js/Pages/Dashboard.vue?vue&type=style&index=0&scoped=524bf744&lang.css": [
+    "http://localhost:8001/build/assets/Dashboard-DEk3oRZL.js",
+    "http://localhost:8001/build/assets/Dashboard-BxLqgHA7.css"
   ],
   "resources/js/Pages/Error.vue": [
     "http://localhost:8001/build/assets/Error-CR45xnbP.js"
   ],
   "resources/js/Pages/Finance/ArchiveModal.vue": [
-    "http://localhost:8001/build/assets/ArchiveModal-BfckbtdK.js",
+    "http://localhost:8001/build/assets/ArchiveModal-BgLEfiL2.js",
     "http://localhost:8001/build/assets/ArchiveModal-KeIsf9XF.css"
   ],
   "resources/js/Pages/Finance/ArchiveModal.vue?vue&type=style&index=0&scoped=daf85c62&lang.css": [
-    "http://localhost:8001/build/assets/ArchiveModal-BfckbtdK.js",
+    "http://localhost:8001/build/assets/ArchiveModal-BgLEfiL2.js",
     "http://localhost:8001/build/assets/ArchiveModal-KeIsf9XF.css"
   ],
   "resources/js/Pages/Finance/BudgetModal.vue": [
@@ -292,22 +296,22 @@
     "http://localhost:8001/build/assets/DailyTrendChart-BLD2y6jm.css"
   ],
   "resources/js/Pages/Finance/FinanceBatchModal.vue": [
-    "http://localhost:8001/build/assets/FinanceBatchModal-De2bqTyV.js",
+    "http://localhost:8001/build/assets/FinanceBatchModal-BXSp97CZ.js",
     "http://localhost:8001/build/assets/FinanceBatchModal-Cy5E_s_g.css"
   ],
   "resources/js/Pages/Finance/FinanceBatchModal.vue?vue&type=style&index=0&scoped=34485134&lang.css": [
-    "http://localhost:8001/build/assets/FinanceBatchModal-De2bqTyV.js",
+    "http://localhost:8001/build/assets/FinanceBatchModal-BXSp97CZ.js",
     "http://localhost:8001/build/assets/FinanceBatchModal-Cy5E_s_g.css"
   ],
   "resources/js/Pages/Finance/FinanceDatePicker.vue": [
     "http://localhost:8001/build/assets/FinanceDatePicker-CxOhCf2w.js"
   ],
   "resources/js/Pages/Finance/FinanceHeader.vue": [
-    "http://localhost:8001/build/assets/FinanceHeader-CH-CgLyK.js",
+    "http://localhost:8001/build/assets/FinanceHeader-CL9HK3Vx.js",
     "http://localhost:8001/build/assets/FinanceHeader-DEf5K-fG.css"
   ],
   "resources/js/Pages/Finance/FinanceHeader.vue?vue&type=style&index=0&scoped=8145bbf1&lang.css": [
-    "http://localhost:8001/build/assets/FinanceHeader-CH-CgLyK.js",
+    "http://localhost:8001/build/assets/FinanceHeader-CL9HK3Vx.js",
     "http://localhost:8001/build/assets/FinanceHeader-DEf5K-fG.css"
   ],
   "resources/js/Pages/Finance/FinanceInsights.vue": [
@@ -322,15 +326,15 @@
     "http://localhost:8001/build/assets/FinanceStats-C0TUAz5n.js"
   ],
   "resources/js/Pages/Finance/FullArchiveModal.vue": [
-    "http://localhost:8001/build/assets/FullArchiveModal-v6buIjDo.js",
+    "http://localhost:8001/build/assets/FullArchiveModal-BcXs0ORb.js",
     "http://localhost:8001/build/assets/FullArchiveModal-DZPZrnJ-.css"
   ],
   "resources/js/Pages/Finance/FullArchiveModal.vue?vue&type=style&index=0&scoped=b6675d41&lang.css": [
-    "http://localhost:8001/build/assets/FullArchiveModal-v6buIjDo.js",
+    "http://localhost:8001/build/assets/FullArchiveModal-BcXs0ORb.js",
     "http://localhost:8001/build/assets/FullArchiveModal-DZPZrnJ-.css"
   ],
   "resources/js/Pages/Finance/Index.vue": [
-    "http://localhost:8001/build/assets/Index-Bfz3uwb6.js"
+    "http://localhost:8001/build/assets/Index-C8EFcijR.js"
   ],
   "resources/js/Pages/Finance/SavingCard.vue": [
     "http://localhost:8001/build/assets/SavingCard-C3qPUs9X.js"
@@ -339,35 +343,35 @@
     "http://localhost:8001/build/assets/SavingModal-BGDJzsry.js"
   ],
   "resources/js/Pages/Finance/TransactionList.vue": [
-    "http://localhost:8001/build/assets/TransactionList-CAL30nhF.js"
+    "http://localhost:8001/build/assets/TransactionList-WRsWA4yW.js"
   ],
   "resources/js/Pages/Finance/TransactionModal.vue": [
-    "http://localhost:8001/build/assets/TransactionModal-Dw2-p7Em.js",
+    "http://localhost:8001/build/assets/TransactionModal-CEM28YKM.js",
     "http://localhost:8001/build/assets/TransactionModal-D8ISA7td.css"
   ],
   "resources/js/Pages/Finance/TransactionModal.vue?vue&type=style&index=0&scoped=eddc22d0&lang.css": [
-    "http://localhost:8001/build/assets/TransactionModal-Dw2-p7Em.js",
+    "http://localhost:8001/build/assets/TransactionModal-CEM28YKM.js",
     "http://localhost:8001/build/assets/TransactionModal-D8ISA7td.css"
   ],
   "resources/js/Pages/Finance/VaultTransactionModal.vue": [
     "http://localhost:8001/build/assets/VaultTransactionModal-Bt0fhf-P.js"
   ],
   "resources/js/Pages/Goal/GoalCard.vue": [
-    "http://localhost:8001/build/assets/GoalCard-D5tQeMSW.js",
-    "http://localhost:8001/build/assets/GoalCard-Bxc6D0AE.css"
+    "http://localhost:8001/build/assets/GoalCard-B_6MH-4S.js",
+    "http://localhost:8001/build/assets/GoalCard-CIh8HRt2.css"
   ],
-  "resources/js/Pages/Goal/GoalCard.vue?vue&type=style&index=0&scoped=d6c5f8e7&lang.css": [
-    "http://localhost:8001/build/assets/GoalCard-D5tQeMSW.js",
-    "http://localhost:8001/build/assets/GoalCard-Bxc6D0AE.css"
+  "resources/js/Pages/Goal/GoalCard.vue?vue&type=style&index=0&scoped=0e3da71a&lang.css": [
+    "http://localhost:8001/build/assets/GoalCard-B_6MH-4S.js",
+    "http://localhost:8001/build/assets/GoalCard-CIh8HRt2.css"
   ],
   "resources/js/Pages/Goal/GoalDatePicker.vue": [
     "http://localhost:8001/build/assets/GoalDatePicker-Di7v62U2.js"
   ],
   "resources/js/Pages/Goal/GoalGrid.vue": [
-    "http://localhost:8001/build/assets/GoalGrid-Dx5gIK3Z.js"
+    "http://localhost:8001/build/assets/GoalGrid-nWpu4f0y.js"
   ],
   "resources/js/Pages/Goal/GoalHeader.vue": [
-    "http://localhost:8001/build/assets/GoalHeader-BcxKSHRU.js"
+    "http://localhost:8001/build/assets/GoalHeader-DA6hLQpe.js"
   ],
   "resources/js/Pages/Goal/GoalModal.vue": [
     "http://localhost:8001/build/assets/GoalModal-CINmz6SP.js",
@@ -378,15 +382,15 @@
     "http://localhost:8001/build/assets/GoalModal-eVQxef5g.css"
   ],
   "resources/js/Pages/Goal/GoalStats.vue": [
-    "http://localhost:8001/build/assets/GoalStats-DBrE-rYj.js",
+    "http://localhost:8001/build/assets/GoalStats-JG7MJ9vA.js",
     "http://localhost:8001/build/assets/GoalStats-Cfb0Z6JQ.css"
   ],
   "resources/js/Pages/Goal/GoalStats.vue?vue&type=style&index=0&scoped=ee6a72f3&lang.css": [
-    "http://localhost:8001/build/assets/GoalStats-DBrE-rYj.js",
+    "http://localhost:8001/build/assets/GoalStats-JG7MJ9vA.js",
     "http://localhost:8001/build/assets/GoalStats-Cfb0Z6JQ.css"
   ],
   "resources/js/Pages/Goal/Index.vue": [
-    "http://localhost:8001/build/assets/Index-B45sUDuV.js"
+    "http://localhost:8001/build/assets/Index-Djk-eAA-.js"
   ],
   "resources/js/Pages/Goal/MilestoneItem.vue": [
     "http://localhost:8001/build/assets/MilestoneItem-pDR5JZap.js",
@@ -397,31 +401,31 @@
     "http://localhost:8001/build/assets/MilestoneItem-BXMUoyFY.css"
   ],
   "resources/js/Pages/Habits/HabitBatchModal.vue": [
-    "http://localhost:8001/build/assets/HabitBatchModal-CfIWdiXt.js",
+    "http://localhost:8001/build/assets/HabitBatchModal-DqXuOYq_.js",
     "http://localhost:8001/build/assets/HabitBatchModal-BLCf5WN6.css"
   ],
   "resources/js/Pages/Habits/HabitBatchModal.vue?vue&type=style&index=0&scoped=587fc8cd&lang.css": [
-    "http://localhost:8001/build/assets/HabitBatchModal-CfIWdiXt.js",
+    "http://localhost:8001/build/assets/HabitBatchModal-DqXuOYq_.js",
     "http://localhost:8001/build/assets/HabitBatchModal-BLCf5WN6.css"
   ],
   "resources/js/Pages/Habits/HabitGrid.vue": [
-    "http://localhost:8001/build/assets/HabitGrid-Bhz5eaab.js",
+    "http://localhost:8001/build/assets/HabitGrid-BQGN6G5x.js",
     "http://localhost:8001/build/assets/HabitGrid-Bj9eGnLg.css"
   ],
   "resources/js/Pages/Habits/HabitGrid.vue?vue&type=style&index=0&scoped=bc0432f2&lang.css": [
-    "http://localhost:8001/build/assets/HabitGrid-Bhz5eaab.js",
+    "http://localhost:8001/build/assets/HabitGrid-BQGN6G5x.js",
     "http://localhost:8001/build/assets/HabitGrid-Bj9eGnLg.css"
   ],
   "resources/js/Pages/Habits/HabitHeader.vue": [
-    "http://localhost:8001/build/assets/HabitHeader-Di3OqJCc.js",
-    "http://localhost:8001/build/assets/HabitHeader-P9f_kyU2.css"
+    "http://localhost:8001/build/assets/HabitHeader-Csd0PuJy.js",
+    "http://localhost:8001/build/assets/HabitHeader-BVRouOIP.css"
   ],
-  "resources/js/Pages/Habits/HabitHeader.vue?vue&type=style&index=0&scoped=0284cd03&lang.css": [
-    "http://localhost:8001/build/assets/HabitHeader-Di3OqJCc.js",
-    "http://localhost:8001/build/assets/HabitHeader-P9f_kyU2.css"
+  "resources/js/Pages/Habits/HabitHeader.vue?vue&type=style&index=0&scoped=7223e82a&lang.css": [
+    "http://localhost:8001/build/assets/HabitHeader-Csd0PuJy.js",
+    "http://localhost:8001/build/assets/HabitHeader-BVRouOIP.css"
   ],
   "resources/js/Pages/Habits/HabitModals.vue": [
-    "http://localhost:8001/build/assets/HabitModals-DKaHJ25J.js"
+    "http://localhost:8001/build/assets/HabitModals-B5HicurL.js"
   ],
   "resources/js/Pages/Habits/HabitStats.vue": [
     "http://localhost:8001/build/assets/HabitStats-CvIzyUBI.js",
@@ -432,23 +436,23 @@
     "http://localhost:8001/build/assets/HabitStats-BEzqu388.css"
   ],
   "resources/js/Pages/Habits/Index.vue": [
-    "http://localhost:8001/build/assets/Index-CvhiMyiS.js",
+    "http://localhost:8001/build/assets/Index-BV701YHe.js",
     "http://localhost:8001/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Pages/Habits/Index.vue?vue&type=style&index=0&lang.css": [
-    "http://localhost:8001/build/assets/Index-CvhiMyiS.js",
+    "http://localhost:8001/build/assets/Index-BV701YHe.js",
     "http://localhost:8001/build/assets/Index-CPCZwC2s.css"
   ],
   "resources/js/Pages/Habits/NeuralHabitInsight.vue": [
-    "http://localhost:8001/build/assets/NeuralHabitInsight-Cs0QYhL7.js",
+    "http://localhost:8001/build/assets/NeuralHabitInsight-ARrCGPVt.js",
     "http://localhost:8001/build/assets/NeuralHabitInsight-DgOvDafc.css"
   ],
   "resources/js/Pages/Habits/NeuralHabitInsight.vue?vue&type=style&index=0&scoped=337ae6a5&lang.css": [
-    "http://localhost:8001/build/assets/NeuralHabitInsight-Cs0QYhL7.js",
+    "http://localhost:8001/build/assets/NeuralHabitInsight-ARrCGPVt.js",
     "http://localhost:8001/build/assets/NeuralHabitInsight-DgOvDafc.css"
   ],
   "resources/js/Pages/Job/Index.vue": [
-    "http://localhost:8001/build/assets/Index-BpKrxANh.js"
+    "http://localhost:8001/build/assets/Index-CkvmVouY.js"
   ],
   "resources/js/Pages/Job/JobDatePicker.vue": [
     "http://localhost:8001/build/assets/JobDatePicker-CBKaXF-H.js"
@@ -471,75 +475,79 @@
     "http://localhost:8001/build/assets/JobTable-Bw15HD1T.css"
   ],
   "resources/js/Pages/Job/MasterCvModal.vue": [
-    "http://localhost:8001/build/assets/MasterCvModal-DblYYzQ-.js"
+    "http://localhost:8001/build/assets/MasterCvModal-CL1g9B1Q.js"
   ],
   "resources/js/Pages/Job/ResumeAiModal.vue": [
-    "http://localhost:8001/build/assets/ResumeAiModal-DMiOxJA3.js",
+    "http://localhost:8001/build/assets/ResumeAiModal-DMP1pfzD.js",
     "http://localhost:8001/build/assets/ResumeAiModal-Bdl2hVkh.css"
   ],
   "resources/js/Pages/Job/ResumeAiModal.vue?vue&type=style&index=0&scoped=19f11c4a&lang.css": [
-    "http://localhost:8001/build/assets/ResumeAiModal-DMiOxJA3.js",
+    "http://localhost:8001/build/assets/ResumeAiModal-DMP1pfzD.js",
     "http://localhost:8001/build/assets/ResumeAiModal-Bdl2hVkh.css"
   ],
   "resources/js/Pages/Journal/Index.vue": [
-    "http://localhost:8001/build/assets/Index-D7z4hZfd.js"
+    "http://localhost:8001/build/assets/Index-DRV_AEwv.js"
   ],
   "resources/js/Pages/Journal/JournalCard.vue": [
     "http://localhost:8001/build/assets/JournalCard-Kt1rBUv7.js"
   ],
   "resources/js/Pages/Journal/JournalEntry.vue": [
-    "http://localhost:8001/build/assets/JournalEntry-ByGICv4N.js",
-    "http://localhost:8001/build/assets/JournalEntry-C3gtBy1I.css"
-  ],
-  "resources/js/Pages/Journal/JournalEntry.vue?vue&type=style&index=0&lang.css": [
-    "http://localhost:8001/build/assets/JournalEntry-ByGICv4N.js",
-    "http://localhost:8001/build/assets/JournalEntry-C3gtBy1I.css"
+    "http://localhost:8001/build/assets/JournalEntry-B26M8PrI.js",
+    "http://localhost:8001/build/assets/JournalEntry-BvEFMDeP.css"
   ],
   "resources/js/Pages/Journal/JournalHeader.vue": [
-    "http://localhost:8001/build/assets/JournalHeader-Dic8B0oI.js"
+    "http://localhost:8001/build/assets/JournalHeader-B_pcTFnO.js"
+  ],
+  "resources/js/Pages/Journal/TiptapEditor.vue": [
+    "http://localhost:8001/build/assets/TiptapEditor-BjxnEiy1.js",
+    "http://localhost:8001/build/assets/TiptapEditor-CGaE8qwM.css"
+  ],
+  "resources/js/Pages/Journal/TiptapEditor.vue?vue&type=style&index=0&lang.css": [
+    "http://localhost:8001/build/assets/TiptapEditor-BjxnEiy1.js",
+    "http://localhost:8001/build/assets/TiptapEditor-CGaE8qwM.css"
   ],
   "resources/js/Pages/More/Index.vue": [
-    "http://localhost:8001/build/assets/Index-C9LFVasn.js"
+    "http://localhost:8001/build/assets/Index-CRFNeV10.js"
   ],
   "resources/js/Pages/Payment/Success.vue": [
-    "http://localhost:8001/build/assets/Success-CIrM0UBk.js",
-    "http://localhost:8001/build/assets/Success-Bc2brAS2.css"
+    "http://localhost:8001/build/assets/Success-B6XYD0pv.js",
+    "http://localhost:8001/build/assets/Success-BFGJG_XV.css"
   ],
-  "resources/js/Pages/Payment/Success.vue?vue&type=style&index=0&scoped=f8ce2588&lang.css": [
-    "http://localhost:8001/build/assets/Success-CIrM0UBk.js",
-    "http://localhost:8001/build/assets/Success-Bc2brAS2.css"
+  "resources/js/Pages/Payment/Success.vue?vue&type=style&index=0&scoped=a514fad3&lang.css": [
+    "http://localhost:8001/build/assets/Success-B6XYD0pv.js",
+    "http://localhost:8001/build/assets/Success-BFGJG_XV.css"
   ],
   "resources/js/Pages/Planner/Index.vue": [
-    "http://localhost:8001/build/assets/Index-DNCXaaj5.js"
+    "http://localhost:8001/build/assets/Index-DzN8VcV3.js"
   ],
   "resources/js/Pages/Planner/PlannerBatchModal.vue": [
-    "http://localhost:8001/build/assets/PlannerBatchModal-RjMvdSde.js",
+    "http://localhost:8001/build/assets/PlannerBatchModal-DuGcvbi1.js",
     "http://localhost:8001/build/assets/PlannerBatchModal-racucHBG.css"
   ],
   "resources/js/Pages/Planner/PlannerBatchModal.vue?vue&type=style&index=0&scoped=42fe1a74&lang.css": [
-    "http://localhost:8001/build/assets/PlannerBatchModal-RjMvdSde.js",
+    "http://localhost:8001/build/assets/PlannerBatchModal-DuGcvbi1.js",
     "http://localhost:8001/build/assets/PlannerBatchModal-racucHBG.css"
   ],
   "resources/js/Pages/Planner/PlannerDatePicker.vue": [
     "http://localhost:8001/build/assets/PlannerDatePicker-C0E2B7JI.js"
   ],
   "resources/js/Pages/Planner/PlannerHeader.vue": [
-    "http://localhost:8001/build/assets/PlannerHeader-DLaSMRXA.js"
+    "http://localhost:8001/build/assets/PlannerHeader-CnhxeQQc.js"
   ],
   "resources/js/Pages/Planner/PlannerMobileTimeline.vue": [
-    "http://localhost:8001/build/assets/PlannerMobileTimeline-W6k1wIEU.js",
+    "http://localhost:8001/build/assets/PlannerMobileTimeline-Dcp4Vr0v.js",
     "http://localhost:8001/build/assets/PlannerMobileTimeline-DVxp9jKZ.css"
   ],
   "resources/js/Pages/Planner/PlannerMobileTimeline.vue?vue&type=style&index=0&scoped=f3d6cc9a&lang.css": [
-    "http://localhost:8001/build/assets/PlannerMobileTimeline-W6k1wIEU.js",
+    "http://localhost:8001/build/assets/PlannerMobileTimeline-Dcp4Vr0v.js",
     "http://localhost:8001/build/assets/PlannerMobileTimeline-DVxp9jKZ.css"
   ],
   "resources/js/Pages/Planner/PlannerMobileTimeline.vue?vue&type=style&index=1&scoped=f3d6cc9a&lang.css": [
-    "http://localhost:8001/build/assets/PlannerMobileTimeline-W6k1wIEU.js",
+    "http://localhost:8001/build/assets/PlannerMobileTimeline-Dcp4Vr0v.js",
     "http://localhost:8001/build/assets/PlannerMobileTimeline-DVxp9jKZ.css"
   ],
   "resources/js/Pages/Planner/PlannerModal.vue": [
-    "http://localhost:8001/build/assets/PlannerModal-DJ7xry4v.js"
+    "http://localhost:8001/build/assets/PlannerModal-VQ6J1TMc.js"
   ],
   "resources/js/Pages/Planner/PlannerSidebar.vue": [
     "http://localhost:8001/build/assets/PlannerSidebar-k9WGZyR0.js"
@@ -553,18 +561,18 @@
     "http://localhost:8001/build/assets/PlannerTimeline-H6vCGojU.css"
   ],
   "resources/js/Pages/Pricing.vue": [
-    "http://localhost:8001/build/assets/Pricing-CZFCiOYD.js",
-    "http://localhost:8001/build/assets/Pricing-CUBqoWzJ.css"
+    "http://localhost:8001/build/assets/Pricing-Ah10qitY.js",
+    "http://localhost:8001/build/assets/Pricing-L8RVJqh4.css"
   ],
-  "resources/js/Pages/Pricing.vue?vue&type=style&index=0&scoped=92cc54aa&lang.css": [
-    "http://localhost:8001/build/assets/Pricing-CZFCiOYD.js",
-    "http://localhost:8001/build/assets/Pricing-CUBqoWzJ.css"
+  "resources/js/Pages/Pricing.vue?vue&type=style&index=0&scoped=63be7c9f&lang.css": [
+    "http://localhost:8001/build/assets/Pricing-Ah10qitY.js",
+    "http://localhost:8001/build/assets/Pricing-L8RVJqh4.css"
   ],
   "resources/js/Pages/Profile/Edit.vue": [
-    "http://localhost:8001/build/assets/Edit-U_PsZzmn.js"
+    "http://localhost:8001/build/assets/Edit-BaK_cA4P.js"
   ],
   "resources/js/Pages/Profile/Partials/DeleteUserForm.vue": [
-    "http://localhost:8001/build/assets/DeleteUserForm-BxwZ6qed.js"
+    "http://localhost:8001/build/assets/DeleteUserForm-CIEWnmII.js"
   ],
   "resources/js/Pages/Profile/Partials/PremiumSubscriptionForm.vue": [
     "http://localhost:8001/build/assets/PremiumSubscriptionForm-DOVt1g4B.js"
@@ -576,21 +584,18 @@
     "http://localhost:8001/build/assets/UpdateProfileInformationForm-GU_L7upc.js"
   ],
   "resources/js/Pages/Settings/Index.vue": [
-    "http://localhost:8001/build/assets/Index-gB6K4Wdd.js",
-    "http://localhost:8001/build/assets/Index-Cmqqb8SE.css"
+    "http://localhost:8001/build/assets/Index-BcudoG71.js",
+    "http://localhost:8001/build/assets/Index-JWnfBbUy.css"
   ],
-  "resources/js/Pages/Settings/Index.vue?vue&type=style&index=0&scoped=c6281475&lang.css": [
-    "http://localhost:8001/build/assets/Index-gB6K4Wdd.js",
-    "http://localhost:8001/build/assets/Index-Cmqqb8SE.css"
+  "resources/js/Pages/Settings/Index.vue?vue&type=style&index=0&scoped=e9e52139&lang.css": [
+    "http://localhost:8001/build/assets/Index-BcudoG71.js",
+    "http://localhost:8001/build/assets/Index-JWnfBbUy.css"
   ],
   "resources/js/Pages/Settings/Partials/AppearanceTab.vue": [
-    "http://localhost:8001/build/assets/AppearanceTab-DaGLhXUv.js"
+    "http://localhost:8001/build/assets/AppearanceTab-ModyirZ5.js"
   ],
   "resources/js/Pages/Settings/Partials/BillingTab.vue": [
-    "http://localhost:8001/build/assets/BillingTab-CSFga90G.js"
-  ],
-  "resources/js/Pages/Settings/Partials/GeneralTab.vue": [
-    "http://localhost:8001/build/assets/GeneralTab-VY_2A7Ae.js"
+    "http://localhost:8001/build/assets/BillingTab-DvawROQy.js"
   ],
   "resources/js/Pages/Settings/Partials/LegalTab.vue": [
     "http://localhost:8001/build/assets/LegalTab-CmBTAEqc.js"

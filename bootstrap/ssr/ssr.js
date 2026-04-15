@@ -1803,6 +1803,60 @@ const nav_features$1 = "Features";
 const nav_solutions$1 = "Solutions";
 const nav_resources$1 = "Resources";
 const nav_pricing$1 = "Pricing";
+const nav_language$1 = "Language";
+const lang_id$1 = "Bahasa Indonesia";
+const lang_en$1 = "English";
+const nav_mobile_by_role$1 = "By Role";
+const nav_mobile_by_usecase$1 = "By Use Case";
+const nav_mobile_by_method$1 = "By Methodology";
+const nav_mobile_res_knowledge$1 = "Knowledge & Help";
+const nav_mobile_res_social$1 = "Social & Community";
+const nav_mobile_feat_habit_title$1 = "Habit Tracker";
+const nav_mobile_feat_habit_desc$1 = "Build consistency daily";
+const nav_mobile_feat_finance_title$1 = "Finance OS";
+const nav_mobile_feat_finance_desc$1 = "Manage cashflow clearly";
+const nav_mobile_feat_planner_title$1 = "Daily Planner";
+const nav_mobile_feat_planner_desc$1 = "Focus your top 3 tasks";
+const nav_mobile_feat_journal_title$1 = "Journal";
+const nav_mobile_feat_journal_desc$1 = "Capture reflections";
+const nav_mobile_feat_calendar_title$1 = "Calendar";
+const nav_mobile_feat_calendar_desc$1 = "Track events and schedule";
+const nav_mobile_feat_goal_title$1 = "Goal Tracker";
+const nav_mobile_feat_goal_desc$1 = "Milestones and progress";
+const nav_mobile_feat_job_title$1 = "Job Tracker";
+const nav_mobile_feat_job_desc$1 = "Manage applications";
+const nav_mobile_feat_neural_title$1 = "Neural OS AI";
+const nav_mobile_feat_neural_desc$1 = "AI-powered planning coach";
+const nav_mobile_sol_student_title$1 = "Students";
+const nav_mobile_sol_student_desc$1 = "Study system optimizer";
+const nav_mobile_sol_freelancer_title$1 = "Freelancers";
+const nav_mobile_sol_freelancer_desc$1 = "Control client workflow";
+const nav_mobile_sol_growth_title$1 = "Personal Growth";
+const nav_mobile_sol_growth_desc$1 = "Upgrade mindset and habits";
+const nav_mobile_sol_finance_title$1 = "Finance Clarity";
+const nav_mobile_sol_finance_desc$1 = "Budget and cashflow control";
+const nav_mobile_sol_career_title$1 = "Career Tracker";
+const nav_mobile_sol_career_desc$1 = "Track opportunities clearly";
+const nav_mobile_sol_mental_title$1 = "Mental Health";
+const nav_mobile_sol_mental_desc$1 = "Reduce stress and overthinking";
+const nav_mobile_sol_atomic_title$1 = "Atomic Habits";
+const nav_mobile_sol_atomic_desc$1 = "Small steps, big results";
+const nav_mobile_sol_deepwork_title$1 = "Deep Work";
+const nav_mobile_sol_deepwork_desc$1 = "Protect focus blocks";
+const nav_mobile_sol_secondbrain_title$1 = "Second Brain";
+const nav_mobile_sol_secondbrain_desc$1 = "Build your thinking system";
+const nav_mobile_res_guide_title$1 = "User Guide";
+const nav_mobile_res_guide_desc$1 = "How to use OneForMind";
+const nav_mobile_res_help_title$1 = "Help Center";
+const nav_mobile_res_help_desc$1 = "Common answers and support";
+const nav_mobile_res_changelog_title$1 = "What's New";
+const nav_mobile_res_changelog_desc$1 = "Latest product updates";
+const nav_mobile_res_community_title$1 = "Community";
+const nav_mobile_res_community_desc$1 = "Join user discussions";
+const nav_mobile_res_blog_title$1 = "Blog";
+const nav_mobile_res_blog_desc$1 = "Productivity insights";
+const nav_mobile_res_stories_title$1 = "Success Stories";
+const nav_mobile_res_stories_desc$1 = "Real transformation stories";
 const modal_logout_title$1 = "Want to say goodbye?";
 const modal_logout_subtitle$1 = "Don't forget to come back soon, your progress for today has been saved securely!";
 const modal_logout_confirm$1 = "Yes, Logout";
@@ -1853,6 +1907,10 @@ const contact_faq_title$1 = "Have technical questions?";
 const contact_faq_desc$1 = "Check our help documentation for instant answers about features and licensing.";
 const contact_faq_btn$1 = "Open Help Center";
 const contact_form_message_placeholder$1 = "How can we help you?";
+const contact_form_name_placeholder$1 = "John Doe";
+const contact_form_email_placeholder$1 = "john@example.com";
+const contact_subject_partnership$1 = "Business Partnership";
+const contact_subject_other$1 = "Other";
 const goal_page_title$1 = "Goal Tracker";
 const goal_add_row$1 = "Add Goal";
 const goal_bulk_selected$1 = "Goals Selected";
@@ -2129,12 +2187,18 @@ const welcome_meta_desc$1 = "OneForMind is the ultimate unified Life OS. Manage 
 const welcome_meta_og_title$1 = "OneForMind | Unified Habit Tracker, Planner & Finance OS";
 const welcome_meta_title$1 = "OneForMind | Unified Habit Tracker, Planner & Finance OS";
 const welcome_meta_og_desc$1 = "Stop the app-switching fatigue. Manage your habit tracker, finance manager, and daily planner in one dashboard.";
-const hero_badge$2 = "✨ v1.0: Unified Life OS";
-const hero_title_1$2 = "One System.";
-const hero_title_2$2 = "Unified Life OS.";
-const hero_desc$2 = "Stop the app-switching fatigue. Master your habit tracker, daily planner, and finance manager in one intelligent ecosystem designed for mindful execution.";
-const hero_cta_primary$2 = "Get Started for Free";
-const hero_cta_secondary$2 = "Explore Our Philosophy";
+const hero_premium_badge$1 = "✨ Introducing: Neuro-Sync v2.0";
+const hero_premium_title_1$1 = "One Mind.";
+const hero_premium_title_2$1 = "One Future System.";
+const hero_premium_desc$1 = "Ditch the app-fragmentation. Master your habit tracker, daily planner, and finance manager in one intelligent ecosystem designed for peak performance.";
+const hero_premium_cta_primary$1 = "Start Exclusively";
+const hero_premium_cta_secondary$1 = "See Design Philosophy";
+const hero_enter_dashboard$1 = "Enter Dashboard";
+const home_trust_tagline$1 = "Architecting the future of deep work";
+const home_pillars_title$1 = "Unified Insight into your Habit, Planning & Finance.";
+const home_pillars_desc$1 = "OneForMind eliminates application friction by consolidating your most critical life management tools into a single, high-performance ecosystem.";
+const home_flow_title$1 = "Synchronized Logic. Seamless Execution.";
+const home_flow_desc$1 = "Experience the synergy of having your brain's most critical systems working in perfect harmony.";
 const fric_badge$1 = "THE FRICTION TAX";
 const fric_title$1 = "Fragmented Apps are Killing Your Focus";
 const fric_desc$1 = "Most people use 5 separate apps to manage their life. We call this 'The Friction Tax'—a hidden drain on your mental energy.";
@@ -2532,8 +2596,8 @@ const meta_ai_service_type$1 = "[EN] Ai Service Type";
 const meta_global_description$1 = "[EN] Global  Ription";
 const meta_global_keywords$1 = "[EN] Global Keywords";
 const pricing_faq_subtitle$1 = "Answers to your burning questions";
-const pricing_feat_l1_finance$1 = "Basic Expense Logging";
-const pricing_feat_l1_habits$1 = "Core Habit Tracking";
+const pricing_feat_l1_finance$1 = "Full Financial Monitor & Vault";
+const pricing_feat_l1_habits$1 = "Unlimited Habit Tracker";
 const pricing_feat_l2_finance$1 = "Full Wealth & Budget Management";
 const pricing_feat_l2_habits$1 = "Unlimited Habit Ecosystem";
 const pricing_feat_l3_ai_coach$1 = "Neural AI Coach: 24/7 Personal Assistant";
@@ -2829,10 +2893,10 @@ const pricing_yearly$1 = "Yearly";
 const pricing_save_amount$1 = "Save 40% with Yearly";
 const pricing_free_name$1 = "Explorer";
 const pricing_forever$1 = "Forever";
-const pricing_free_desc$1 = "Perfect for beginners who want to start tracking habits and basic finances.";
-const pricing_feat_habits_limit$1 = "Up to 5 Active Habits";
+const pricing_free_desc$1 = "Full access to Habits, Finance, and Planning systems.";
+const pricing_feat_habits_limit$1 = "Unlimited Active Habits";
 const pricing_feat_planner_basic$1 = "Core Daily Planner";
-const pricing_feat_finance_basic$1 = "Basic Expense Management";
+const pricing_feat_finance_basic$1 = "Full Financial Monitoring";
 const pricing_free_btn$1 = "Start for Free";
 const pricing_pro_name$1 = "Architect";
 const pricing_pro_badge$1 = "Best for Starters";
@@ -2907,7 +2971,7 @@ const group_goals$1 = "GOALS & VISIONS";
 const group_jobs$1 = "CAREER & JOBS";
 const group_support$1 = "SUPPORT";
 const feat_habit_limit$1 = "Active Habit Limit";
-const feat_habit_limit_val_l1$1 = "Up to 5 Habits";
+const feat_habit_limit_val_l1$1 = "Unlimited";
 const feat_habit_limit_val_l2$1 = "Unlimited";
 const feat_detailed_analytics$1 = "Detailed Analytics";
 const feat_val_basic$1 = "Basic";
@@ -2920,7 +2984,7 @@ const feat_receipt_scanning$1 = "Receipt Scanning";
 const feat_net_worth$1 = "Net Worth Tracker";
 const feat_ai_audit$1 = "AI Financial Audit";
 const feat_planner_view$1 = "Planner View";
-const feat_planner_view_val_l1$1 = "Standard List";
+const feat_planner_view_val_l1$1 = "Batch System";
 const feat_planner_view_val_l2$1 = "Priority Matrix";
 const feat_recurring_tasks$1 = "Recurring Tasks";
 const feat_journal_type$1 = "Journal Type";
@@ -2949,7 +3013,7 @@ const pricing_elite_feat3_desc$1 = "Connect your focus scores with your physical
 const pricing_elite_card_title$1 = "Quantum Access";
 const pricing_elite_card_status$1 = "System Online";
 const pricing_l1_name$1 = "Explorer (Free)";
-const pricing_l1_desc$1 = "Perfect for beginners who want to start their mindful journey.";
+const pricing_l1_desc$1 = "Unlimited habits, financial vault, and daily planner for everyone.";
 const pricing_l2_name$1 = "Architect (Pro)";
 const pricing_l2_desc$1 = "Unlock the full power of the unified life ecosystem. Perfect for those who want to organize habits and finances professionally.";
 const pricing_l3_name$1 = "Quantum (AI)";
@@ -2983,7 +3047,7 @@ const feat_habit_capacity$1 = "Habit System Capacity";
 const feat_planner_batch_unlocked$1 = "Batch Mode Execution";
 const feat_finance_adv_unlocked$1 = "Advanced Wealth Projection";
 const feat_neural_coaching_unlocked$1 = "Neural AI Coaching Hub";
-const pricing_explorer_desc$1 = "Essential tools to start your productivity journey.";
+const pricing_explorer_desc$1 = "Full access to Habits, Finance, and Planning systems.";
 const pricing_architect_desc$1 = "Powerful automation for precision execution.";
 const pricing_quantum_desc$1 = "Unlock the full power of Neural OS AI.";
 const pricing_legendary_desc$1 = "The ultimate investment in your future self.";
@@ -2996,9 +3060,9 @@ const pricing_btn_legendary$1 = "Go Legendary";
 const pricing_feature_header_explorer_plus$1 = "Everything in Explorer, plus:";
 const pricing_feature_header_architect_plus$1 = "Everything in Architect, plus:";
 const pricing_feature_header_quantum_plus$1 = "Everything in Quantum, plus:";
-const pricing_f_single_habit$1 = "Single Habit Tracker";
-const pricing_f_basic_planner$1 = "Basic Daily Planner";
-const pricing_f_finance_monitor$1 = "Personal Finance Monitor";
+const pricing_f_single_habit$1 = "Unlimited Habit Tracker";
+const pricing_f_basic_planner$1 = "Daily Planner Engine";
+const pricing_f_finance_monitor$1 = "Full Finance & Savings System";
 const pricing_f_mobile_access$1 = "Standard Mobile Access";
 const pricing_f_community$1 = "Community Support";
 const pricing_f_unlimited_habit$1 = "Unlimited Habit Stacks";
@@ -3051,11 +3115,11 @@ const pricing_infra_badge$1 = "World-class infrastructure";
 const pricing_badge_popular$1 = "Most Popular";
 const pricing_badge_limited$1 = "Limited Offer";
 const pricing_f_habit_open$1 = "Habit Stacks (Open)";
-const pricing_f_batch_habit_locked$1 = "Batch Entry Habit (Locked)";
+const pricing_f_batch_habit_locked$1 = "Batch Entry Habit (Open)";
 const pricing_f_planner_tab_open$1 = "Daily Planner Tab (Open)";
-const pricing_f_batch_planner_locked$1 = "Batch Mode Execution (Locked)";
-const pricing_f_vault_locked$1 = "The Vault Systems (Locked)";
-const pricing_f_lab_locked$1 = "Wealth Lab Modules (Locked)";
+const pricing_f_batch_planner_locked$1 = "Batch Mode Execution (Open)";
+const pricing_f_vault_locked$1 = "The Vault Systems (Open)";
+const pricing_f_lab_locked$1 = "Wealth Lab Modules (Open)";
 const pricing_f_trends_locked$1 = "Neural AI Trend Chart (Locked)";
 const pricing_f_ai_coach_locked$1 = "Neural AI Coach (Locked)";
 const pricing_f_all_tabs_open$1 = "All System Tabs (Journal, Goals, etc)";
@@ -3064,6 +3128,29 @@ const pricing_f_financial_ecosystem$1 = "Full Financial Ecosystem";
 const pricing_f_ai_full_access$1 = "Full Neural OS AI Access";
 const pricing_f_ai_insights$1 = "AI-Driven Life Insights";
 const pricing_f_legendary_trial_ai$1 = "Free 2-Month AI Neural License";
+const pricing_f_habit_max5$1 = "Unlimited Habit Tracker";
+const pricing_f_daily_planner_tasks$1 = "Daily Planner & Task List";
+const pricing_f_basic_finance_simple$1 = "Full Finance (Monitor & Vault)";
+const pricing_f_standard_dashboards$1 = "Standard Dashboards";
+const pricing_f_journal_goals_jobs_locked$1 = "Journal, Goals, & Jobs";
+const pricing_f_advanced_ai_locked$1 = "Advanced AI Life Coach";
+const pricing_explorer_title$1 = "Explorer";
+const pricing_architect_title$1 = "Architect";
+const pricing_quantum_title$1 = "Quantum";
+const pricing_legendary_title$1 = "Legendary";
+const pricing_free$1 = "Free";
+const pricing_badge_ai_rec$1 = "AI RECOMMENDATION";
+const pricing_badge_founder$1 = "FOUNDER EDITION";
+const pricing_head_title$1 = "Pricing & Plans";
+const pricing_lifetime_guarantee$1 = "Guaranteed Lifetime Access";
+const pricing_v_247_access$1 = "24/7 Access";
+const pricing_v_basic$1 = "Basic";
+const pricing_infra_asana$1 = "Asana Strength";
+const pricing_infra_clickup$1 = "ClickUp Power";
+const pricing_infra_notion$1 = "Notion Clarity";
+const pricing_per_month_short$1 = "/mo";
+const pricing_once_short$1 = "once";
+const pricing_btn_unleash_neural$1 = "UNLEASH NEURAL OS";
 const privacy_meta_title$1 = "Trust Center & Privacy Policy";
 const privacy_meta_desc$1 = "Learn how OneForMind protects your data and ensures your security.";
 const privacy_meta_og_title$1 = "Trust Center — OneForMind";
@@ -3563,19 +3650,20 @@ const sto_hof_4_desc$1 = "Most active user in the Mindfulness Journal & Mental H
 const settings_theme_title$1 = "App Theme";
 const settings_theme_desc$1 = "Choose the display mode that's most comfortable for your eyes.";
 const settings_title$1 = "Settings";
-const settings_header$1 = "Account Control Center";
-const settings_subheader$1 = "Manage everything about your productivity experience here.";
+const settings_header$1 = "Settings";
+const settings_subheader$1 = "Account, modules, security, and subscription.";
+const settings_toolbar_hint$1 = "Tip: change language and theme from the top bar — no need to duplicate them here.";
 const settings_desc$1 = "Customize your Oneformind app experience.";
 const settings_tab_general$1 = "General";
 const settings_tab_general_desc$1 = "Language & Location";
 const settings_tab_profile$1 = "My Profile";
 const settings_tab_profile_desc$1 = "Account Info & Photo";
-const settings_tab_appearance$1 = "Appearance";
-const settings_tab_appearance_desc$1 = "Module Activation";
+const settings_tab_appearance$1 = "Modules";
+const settings_tab_appearance_desc$1 = "Sidebar & navigation";
 const settings_tab_security$1 = "Security";
 const settings_tab_security_desc$1 = "Password & Privacy";
-const settings_tab_billing$1 = "Subscription";
-const settings_tab_billing_desc$1 = "Premium Upgrade";
+const settings_tab_billing$1 = "Plan & billing";
+const settings_tab_billing_desc$1 = "Current plan & upgrade";
 const settings_tab_legal$1 = "Legal";
 const settings_tab_legal_desc$1 = "Terms & Conditions";
 const settings_language_title$1 = "App Language";
@@ -3606,8 +3694,9 @@ const pan_instruction$1 = "Use Mouse/Tap to Pan";
 const save_photo$1 = "Save Photo";
 const settings_lang_label$1 = "Interface Language";
 const saved$1 = "Saved";
-const settings_modules_title$1 = "Application Modules";
-const settings_modules_desc$1 = "Enable or disable features you want to use.";
+const settings_modules_title$1 = "Modules";
+const settings_modules_desc$1 = "Choose which areas appear in your sidebar and navigation.";
+const settings_modules_header_hint$1 = "Language and light/dark theme are controlled from the top bar — same as Notion and ClickUp.";
 const module_status_active$1 = "Active Status";
 const module_habit_desc$1 = "Track your daily habits";
 const module_planner_desc$1 = "Daily schedule & agenda";
@@ -3641,6 +3730,13 @@ const your_password$1 = "Your Password";
 const enter_password_placeholder$1 = "Enter your password...";
 const billing_title$1 = "Subscription & Billing";
 const billing_desc$1 = "Manage your subscription plan and premium features.";
+const settings_billing_section_title$1 = "Plan & billing";
+const settings_billing_section_desc$1 = "Your subscription status. Compare plans and upgrade on the pricing page.";
+const settings_billing_current_label$1 = "Current plan";
+const settings_billing_open_pricing$1 = "Compare plans & upgrade";
+const settings_billing_pricing_note$1 = "Checkout and full plan comparison are on the pricing page (secure payment via Midtrans).";
+const settings_billing_active_badge$1 = "Active";
+const settings_billing_no_expiry$1 = "Enjoy full access.";
 const billing_premium_badge$1 = "Premium Plan";
 const billing_premium_thanks$1 = "Thank you for your support!";
 const billing_premium_desc$1 = "Your account is currently active as a Premium member. Enjoy unlimited access to all productivity features.";
@@ -5968,6 +6064,60 @@ const en = {
   nav_solutions: nav_solutions$1,
   nav_resources: nav_resources$1,
   nav_pricing: nav_pricing$1,
+  nav_language: nav_language$1,
+  lang_id: lang_id$1,
+  lang_en: lang_en$1,
+  nav_mobile_by_role: nav_mobile_by_role$1,
+  nav_mobile_by_usecase: nav_mobile_by_usecase$1,
+  nav_mobile_by_method: nav_mobile_by_method$1,
+  nav_mobile_res_knowledge: nav_mobile_res_knowledge$1,
+  nav_mobile_res_social: nav_mobile_res_social$1,
+  nav_mobile_feat_habit_title: nav_mobile_feat_habit_title$1,
+  nav_mobile_feat_habit_desc: nav_mobile_feat_habit_desc$1,
+  nav_mobile_feat_finance_title: nav_mobile_feat_finance_title$1,
+  nav_mobile_feat_finance_desc: nav_mobile_feat_finance_desc$1,
+  nav_mobile_feat_planner_title: nav_mobile_feat_planner_title$1,
+  nav_mobile_feat_planner_desc: nav_mobile_feat_planner_desc$1,
+  nav_mobile_feat_journal_title: nav_mobile_feat_journal_title$1,
+  nav_mobile_feat_journal_desc: nav_mobile_feat_journal_desc$1,
+  nav_mobile_feat_calendar_title: nav_mobile_feat_calendar_title$1,
+  nav_mobile_feat_calendar_desc: nav_mobile_feat_calendar_desc$1,
+  nav_mobile_feat_goal_title: nav_mobile_feat_goal_title$1,
+  nav_mobile_feat_goal_desc: nav_mobile_feat_goal_desc$1,
+  nav_mobile_feat_job_title: nav_mobile_feat_job_title$1,
+  nav_mobile_feat_job_desc: nav_mobile_feat_job_desc$1,
+  nav_mobile_feat_neural_title: nav_mobile_feat_neural_title$1,
+  nav_mobile_feat_neural_desc: nav_mobile_feat_neural_desc$1,
+  nav_mobile_sol_student_title: nav_mobile_sol_student_title$1,
+  nav_mobile_sol_student_desc: nav_mobile_sol_student_desc$1,
+  nav_mobile_sol_freelancer_title: nav_mobile_sol_freelancer_title$1,
+  nav_mobile_sol_freelancer_desc: nav_mobile_sol_freelancer_desc$1,
+  nav_mobile_sol_growth_title: nav_mobile_sol_growth_title$1,
+  nav_mobile_sol_growth_desc: nav_mobile_sol_growth_desc$1,
+  nav_mobile_sol_finance_title: nav_mobile_sol_finance_title$1,
+  nav_mobile_sol_finance_desc: nav_mobile_sol_finance_desc$1,
+  nav_mobile_sol_career_title: nav_mobile_sol_career_title$1,
+  nav_mobile_sol_career_desc: nav_mobile_sol_career_desc$1,
+  nav_mobile_sol_mental_title: nav_mobile_sol_mental_title$1,
+  nav_mobile_sol_mental_desc: nav_mobile_sol_mental_desc$1,
+  nav_mobile_sol_atomic_title: nav_mobile_sol_atomic_title$1,
+  nav_mobile_sol_atomic_desc: nav_mobile_sol_atomic_desc$1,
+  nav_mobile_sol_deepwork_title: nav_mobile_sol_deepwork_title$1,
+  nav_mobile_sol_deepwork_desc: nav_mobile_sol_deepwork_desc$1,
+  nav_mobile_sol_secondbrain_title: nav_mobile_sol_secondbrain_title$1,
+  nav_mobile_sol_secondbrain_desc: nav_mobile_sol_secondbrain_desc$1,
+  nav_mobile_res_guide_title: nav_mobile_res_guide_title$1,
+  nav_mobile_res_guide_desc: nav_mobile_res_guide_desc$1,
+  nav_mobile_res_help_title: nav_mobile_res_help_title$1,
+  nav_mobile_res_help_desc: nav_mobile_res_help_desc$1,
+  nav_mobile_res_changelog_title: nav_mobile_res_changelog_title$1,
+  nav_mobile_res_changelog_desc: nav_mobile_res_changelog_desc$1,
+  nav_mobile_res_community_title: nav_mobile_res_community_title$1,
+  nav_mobile_res_community_desc: nav_mobile_res_community_desc$1,
+  nav_mobile_res_blog_title: nav_mobile_res_blog_title$1,
+  nav_mobile_res_blog_desc: nav_mobile_res_blog_desc$1,
+  nav_mobile_res_stories_title: nav_mobile_res_stories_title$1,
+  nav_mobile_res_stories_desc: nav_mobile_res_stories_desc$1,
   modal_logout_title: modal_logout_title$1,
   modal_logout_subtitle: modal_logout_subtitle$1,
   modal_logout_confirm: modal_logout_confirm$1,
@@ -6018,6 +6168,10 @@ const en = {
   contact_faq_desc: contact_faq_desc$1,
   contact_faq_btn: contact_faq_btn$1,
   contact_form_message_placeholder: contact_form_message_placeholder$1,
+  contact_form_name_placeholder: contact_form_name_placeholder$1,
+  contact_form_email_placeholder: contact_form_email_placeholder$1,
+  contact_subject_partnership: contact_subject_partnership$1,
+  contact_subject_other: contact_subject_other$1,
   goal_page_title: goal_page_title$1,
   goal_add_row: goal_add_row$1,
   goal_bulk_selected: goal_bulk_selected$1,
@@ -6295,12 +6449,18 @@ const en = {
   welcome_meta_og_title: welcome_meta_og_title$1,
   welcome_meta_title: welcome_meta_title$1,
   welcome_meta_og_desc: welcome_meta_og_desc$1,
-  hero_badge: hero_badge$2,
-  hero_title_1: hero_title_1$2,
-  hero_title_2: hero_title_2$2,
-  hero_desc: hero_desc$2,
-  hero_cta_primary: hero_cta_primary$2,
-  hero_cta_secondary: hero_cta_secondary$2,
+  hero_premium_badge: hero_premium_badge$1,
+  hero_premium_title_1: hero_premium_title_1$1,
+  hero_premium_title_2: hero_premium_title_2$1,
+  hero_premium_desc: hero_premium_desc$1,
+  hero_premium_cta_primary: hero_premium_cta_primary$1,
+  hero_premium_cta_secondary: hero_premium_cta_secondary$1,
+  hero_enter_dashboard: hero_enter_dashboard$1,
+  home_trust_tagline: home_trust_tagline$1,
+  home_pillars_title: home_pillars_title$1,
+  home_pillars_desc: home_pillars_desc$1,
+  home_flow_title: home_flow_title$1,
+  home_flow_desc: home_flow_desc$1,
   fric_badge: fric_badge$1,
   fric_title: fric_title$1,
   fric_desc: fric_desc$1,
@@ -7237,6 +7397,29 @@ const en = {
   pricing_f_ai_full_access: pricing_f_ai_full_access$1,
   pricing_f_ai_insights: pricing_f_ai_insights$1,
   pricing_f_legendary_trial_ai: pricing_f_legendary_trial_ai$1,
+  pricing_f_habit_max5: pricing_f_habit_max5$1,
+  pricing_f_daily_planner_tasks: pricing_f_daily_planner_tasks$1,
+  pricing_f_basic_finance_simple: pricing_f_basic_finance_simple$1,
+  pricing_f_standard_dashboards: pricing_f_standard_dashboards$1,
+  pricing_f_journal_goals_jobs_locked: pricing_f_journal_goals_jobs_locked$1,
+  pricing_f_advanced_ai_locked: pricing_f_advanced_ai_locked$1,
+  pricing_explorer_title: pricing_explorer_title$1,
+  pricing_architect_title: pricing_architect_title$1,
+  pricing_quantum_title: pricing_quantum_title$1,
+  pricing_legendary_title: pricing_legendary_title$1,
+  pricing_free: pricing_free$1,
+  pricing_badge_ai_rec: pricing_badge_ai_rec$1,
+  pricing_badge_founder: pricing_badge_founder$1,
+  pricing_head_title: pricing_head_title$1,
+  pricing_lifetime_guarantee: pricing_lifetime_guarantee$1,
+  pricing_v_247_access: pricing_v_247_access$1,
+  pricing_v_basic: pricing_v_basic$1,
+  pricing_infra_asana: pricing_infra_asana$1,
+  pricing_infra_clickup: pricing_infra_clickup$1,
+  pricing_infra_notion: pricing_infra_notion$1,
+  pricing_per_month_short: pricing_per_month_short$1,
+  pricing_once_short: pricing_once_short$1,
+  pricing_btn_unleash_neural: pricing_btn_unleash_neural$1,
   privacy_meta_title: privacy_meta_title$1,
   privacy_meta_desc: privacy_meta_desc$1,
   privacy_meta_og_title: privacy_meta_og_title$1,
@@ -7738,6 +7921,7 @@ const en = {
   settings_title: settings_title$1,
   settings_header: settings_header$1,
   settings_subheader: settings_subheader$1,
+  settings_toolbar_hint: settings_toolbar_hint$1,
   settings_desc: settings_desc$1,
   settings_tab_general: settings_tab_general$1,
   settings_tab_general_desc: settings_tab_general_desc$1,
@@ -7781,6 +7965,7 @@ const en = {
   saved: saved$1,
   settings_modules_title: settings_modules_title$1,
   settings_modules_desc: settings_modules_desc$1,
+  settings_modules_header_hint: settings_modules_header_hint$1,
   module_status_active: module_status_active$1,
   module_habit_desc: module_habit_desc$1,
   module_planner_desc: module_planner_desc$1,
@@ -7814,6 +7999,13 @@ const en = {
   enter_password_placeholder: enter_password_placeholder$1,
   billing_title: billing_title$1,
   billing_desc: billing_desc$1,
+  settings_billing_section_title: settings_billing_section_title$1,
+  settings_billing_section_desc: settings_billing_section_desc$1,
+  settings_billing_current_label: settings_billing_current_label$1,
+  settings_billing_open_pricing: settings_billing_open_pricing$1,
+  settings_billing_pricing_note: settings_billing_pricing_note$1,
+  settings_billing_active_badge: settings_billing_active_badge$1,
+  settings_billing_no_expiry: settings_billing_no_expiry$1,
   billing_premium_badge: billing_premium_badge$1,
   billing_premium_thanks: billing_premium_thanks$1,
   billing_premium_desc: billing_premium_desc$1,
@@ -9108,9 +9300,11 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   contact_faq_desc: contact_faq_desc$1,
   contact_faq_title: contact_faq_title$1,
   contact_form_email: contact_form_email$1,
+  contact_form_email_placeholder: contact_form_email_placeholder$1,
   contact_form_message: contact_form_message$1,
   contact_form_message_placeholder: contact_form_message_placeholder$1,
   contact_form_name: contact_form_name$1,
+  contact_form_name_placeholder: contact_form_name_placeholder$1,
   contact_form_subject: contact_form_subject$1,
   contact_info_billing: contact_info_billing$1,
   contact_info_chat: contact_info_chat$1,
@@ -9119,6 +9313,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   contact_info_jakarta: contact_info_jakarta$1,
   contact_info_support: contact_info_support$1,
   contact_info_title: contact_info_title$1,
+  contact_subject_other: contact_subject_other$1,
+  contact_subject_partnership: contact_subject_partnership$1,
   contact_subtitle: contact_subtitle$1,
   contact_success_desc: contact_success_desc$1,
   contact_success_title: contact_success_title$1,
@@ -10425,12 +10621,13 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   help_support_3_title: help_support_3_title$1,
   help_support_desc: help_support_desc$1,
   help_support_title: help_support_title$1,
-  hero_badge: hero_badge$2,
-  hero_cta_primary: hero_cta_primary$2,
-  hero_cta_secondary: hero_cta_secondary$2,
-  hero_desc: hero_desc$2,
-  hero_title_1: hero_title_1$2,
-  hero_title_2: hero_title_2$2,
+  hero_enter_dashboard: hero_enter_dashboard$1,
+  hero_premium_badge: hero_premium_badge$1,
+  hero_premium_cta_primary: hero_premium_cta_primary$1,
+  hero_premium_cta_secondary: hero_premium_cta_secondary$1,
+  hero_premium_desc: hero_premium_desc$1,
+  hero_premium_title_1: hero_premium_title_1$1,
+  hero_premium_title_2: hero_premium_title_2$1,
   hint_click_done: hint_click_done$1,
   hint_click_skip: hint_click_skip$1,
   hint_hold_skip: hint_hold_skip$1,
@@ -10445,6 +10642,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   hlp_sla_title: hlp_sla_title$1,
   hlp_tuts_desc: hlp_tuts_desc$1,
   hlp_tuts_title: hlp_tuts_title$1,
+  home_flow_desc: home_flow_desc$1,
+  home_flow_title: home_flow_title$1,
+  home_pillars_desc: home_pillars_desc$1,
+  home_pillars_title: home_pillars_title$1,
   home_science_badge: home_science_badge$1,
   home_science_desc: home_science_desc$1,
   home_science_title: home_science_title$1,
@@ -10460,6 +10661,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   home_synergy_step3_desc: home_synergy_step3_desc$1,
   home_synergy_step3_title: home_synergy_step3_title$1,
   home_synergy_title: home_synergy_title$1,
+  home_trust_tagline: home_trust_tagline$1,
   icon_tooltip: icon_tooltip$1,
   img_upload_error: img_upload_error$1,
   img_upload_success: img_upload_success$1,
@@ -10765,6 +10967,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   label_urgent: label_urgent$1,
   label_usage_limit: label_usage_limit$1,
   label_work: label_work$1,
+  lang_en: lang_en$1,
+  lang_id: lang_id$1,
   last_5: last_5$1,
   launchpad_subtitle: launchpad_subtitle$1,
   launchpad_title: launchpad_title$1,
@@ -10965,9 +11169,61 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   nav_item_planner: nav_item_planner$1,
   nav_item_premium: nav_item_premium$1,
   nav_item_settings: nav_item_settings$1,
+  nav_language: nav_language$1,
   nav_login: nav_login$2,
   nav_logout: nav_logout$1,
   nav_menu_title: nav_menu_title$1,
+  nav_mobile_by_method: nav_mobile_by_method$1,
+  nav_mobile_by_role: nav_mobile_by_role$1,
+  nav_mobile_by_usecase: nav_mobile_by_usecase$1,
+  nav_mobile_feat_calendar_desc: nav_mobile_feat_calendar_desc$1,
+  nav_mobile_feat_calendar_title: nav_mobile_feat_calendar_title$1,
+  nav_mobile_feat_finance_desc: nav_mobile_feat_finance_desc$1,
+  nav_mobile_feat_finance_title: nav_mobile_feat_finance_title$1,
+  nav_mobile_feat_goal_desc: nav_mobile_feat_goal_desc$1,
+  nav_mobile_feat_goal_title: nav_mobile_feat_goal_title$1,
+  nav_mobile_feat_habit_desc: nav_mobile_feat_habit_desc$1,
+  nav_mobile_feat_habit_title: nav_mobile_feat_habit_title$1,
+  nav_mobile_feat_job_desc: nav_mobile_feat_job_desc$1,
+  nav_mobile_feat_job_title: nav_mobile_feat_job_title$1,
+  nav_mobile_feat_journal_desc: nav_mobile_feat_journal_desc$1,
+  nav_mobile_feat_journal_title: nav_mobile_feat_journal_title$1,
+  nav_mobile_feat_neural_desc: nav_mobile_feat_neural_desc$1,
+  nav_mobile_feat_neural_title: nav_mobile_feat_neural_title$1,
+  nav_mobile_feat_planner_desc: nav_mobile_feat_planner_desc$1,
+  nav_mobile_feat_planner_title: nav_mobile_feat_planner_title$1,
+  nav_mobile_res_blog_desc: nav_mobile_res_blog_desc$1,
+  nav_mobile_res_blog_title: nav_mobile_res_blog_title$1,
+  nav_mobile_res_changelog_desc: nav_mobile_res_changelog_desc$1,
+  nav_mobile_res_changelog_title: nav_mobile_res_changelog_title$1,
+  nav_mobile_res_community_desc: nav_mobile_res_community_desc$1,
+  nav_mobile_res_community_title: nav_mobile_res_community_title$1,
+  nav_mobile_res_guide_desc: nav_mobile_res_guide_desc$1,
+  nav_mobile_res_guide_title: nav_mobile_res_guide_title$1,
+  nav_mobile_res_help_desc: nav_mobile_res_help_desc$1,
+  nav_mobile_res_help_title: nav_mobile_res_help_title$1,
+  nav_mobile_res_knowledge: nav_mobile_res_knowledge$1,
+  nav_mobile_res_social: nav_mobile_res_social$1,
+  nav_mobile_res_stories_desc: nav_mobile_res_stories_desc$1,
+  nav_mobile_res_stories_title: nav_mobile_res_stories_title$1,
+  nav_mobile_sol_atomic_desc: nav_mobile_sol_atomic_desc$1,
+  nav_mobile_sol_atomic_title: nav_mobile_sol_atomic_title$1,
+  nav_mobile_sol_career_desc: nav_mobile_sol_career_desc$1,
+  nav_mobile_sol_career_title: nav_mobile_sol_career_title$1,
+  nav_mobile_sol_deepwork_desc: nav_mobile_sol_deepwork_desc$1,
+  nav_mobile_sol_deepwork_title: nav_mobile_sol_deepwork_title$1,
+  nav_mobile_sol_finance_desc: nav_mobile_sol_finance_desc$1,
+  nav_mobile_sol_finance_title: nav_mobile_sol_finance_title$1,
+  nav_mobile_sol_freelancer_desc: nav_mobile_sol_freelancer_desc$1,
+  nav_mobile_sol_freelancer_title: nav_mobile_sol_freelancer_title$1,
+  nav_mobile_sol_growth_desc: nav_mobile_sol_growth_desc$1,
+  nav_mobile_sol_growth_title: nav_mobile_sol_growth_title$1,
+  nav_mobile_sol_mental_desc: nav_mobile_sol_mental_desc$1,
+  nav_mobile_sol_mental_title: nav_mobile_sol_mental_title$1,
+  nav_mobile_sol_secondbrain_desc: nav_mobile_sol_secondbrain_desc$1,
+  nav_mobile_sol_secondbrain_title: nav_mobile_sol_secondbrain_title$1,
+  nav_mobile_sol_student_desc: nav_mobile_sol_student_desc$1,
+  nav_mobile_sol_student_title: nav_mobile_sol_student_title$1,
   nav_neural_active: nav_neural_active$1,
   nav_platinum_suite: nav_platinum_suite$1,
   nav_pricing: nav_pricing$1,
@@ -11453,7 +11709,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_ai_recurring: pricing_ai_recurring$1,
   pricing_already_active: pricing_already_active$1,
   pricing_architect_desc: pricing_architect_desc$1,
+  pricing_architect_title: pricing_architect_title$1,
   pricing_badge: pricing_badge$1,
+  pricing_badge_ai_rec: pricing_badge_ai_rec$1,
+  pricing_badge_founder: pricing_badge_founder$1,
   pricing_badge_limited: pricing_badge_limited$1,
   pricing_badge_popular: pricing_badge_popular$1,
   pricing_basic_level: pricing_basic_level$1,
@@ -11468,6 +11727,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_btn_current: pricing_btn_current$1,
   pricing_btn_legendary: pricing_btn_legendary$1,
   pricing_btn_unleash: pricing_btn_unleash$1,
+  pricing_btn_unleash_neural: pricing_btn_unleash_neural$1,
   pricing_btn_upgrade: pricing_btn_upgrade$1,
   pricing_compare_subtitle: pricing_compare_subtitle$1,
   pricing_compare_title: pricing_compare_title$1,
@@ -11483,8 +11743,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_elite_feat3_title: pricing_elite_feat3_title$1,
   pricing_elite_title: pricing_elite_title$1,
   pricing_explorer_desc: pricing_explorer_desc$1,
+  pricing_explorer_title: pricing_explorer_title$1,
   pricing_f_active_habits: pricing_f_active_habits$1,
   pricing_f_ad_free: pricing_f_ad_free$1,
+  pricing_f_advanced_ai_locked: pricing_f_advanced_ai_locked$1,
   pricing_f_ai_assistant: pricing_f_ai_assistant$1,
   pricing_f_ai_coach_locked: pricing_f_ai_coach_locked$1,
   pricing_f_ai_finance_insights: pricing_f_ai_finance_insights$1,
@@ -11492,6 +11754,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_f_ai_insights: pricing_f_ai_insights$1,
   pricing_f_ai_mind_mapping: pricing_f_ai_mind_mapping$1,
   pricing_f_all_tabs_open: pricing_f_all_tabs_open$1,
+  pricing_f_basic_finance_simple: pricing_f_basic_finance_simple$1,
   pricing_f_basic_planner: pricing_f_basic_planner$1,
   pricing_f_batch_habit_locked: pricing_f_batch_habit_locked$1,
   pricing_f_batch_planner: pricing_f_batch_planner$1,
@@ -11502,12 +11765,15 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_f_custom_branding: pricing_f_custom_branding$1,
   pricing_f_custom_modules: pricing_f_custom_modules$1,
   pricing_f_custom_themes: pricing_f_custom_themes$1,
+  pricing_f_daily_planner_tasks: pricing_f_daily_planner_tasks$1,
   pricing_f_early_access: pricing_f_early_access$1,
   pricing_f_finance_monitor: pricing_f_finance_monitor$1,
   pricing_f_finance_trends: pricing_f_finance_trends$1,
   pricing_f_financial_ecosystem: pricing_f_financial_ecosystem$1,
   pricing_f_founder_badge: pricing_f_founder_badge$1,
+  pricing_f_habit_max5: pricing_f_habit_max5$1,
   pricing_f_habit_open: pricing_f_habit_open$1,
+  pricing_f_journal_goals_jobs_locked: pricing_f_journal_goals_jobs_locked$1,
   pricing_f_lab_locked: pricing_f_lab_locked$1,
   pricing_f_legendary_trial_ai: pricing_f_legendary_trial_ai$1,
   pricing_f_life_insights: pricing_f_life_insights$1,
@@ -11520,6 +11786,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_f_planner_engine: pricing_f_planner_engine$1,
   pricing_f_planner_tab_open: pricing_f_planner_tab_open$1,
   pricing_f_single_habit: pricing_f_single_habit$1,
+  pricing_f_standard_dashboards: pricing_f_standard_dashboards$1,
   pricing_f_the_vault: pricing_f_the_vault$1,
   pricing_f_trends_locked: pricing_f_trends_locked$1,
   pricing_f_unlimited_habit: pricing_f_unlimited_habit$1,
@@ -11568,13 +11835,18 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_feature_header_explorer_plus: pricing_feature_header_explorer_plus$1,
   pricing_feature_header_quantum_plus: pricing_feature_header_quantum_plus$1,
   pricing_forever: pricing_forever$1,
+  pricing_free: pricing_free$1,
   pricing_free_btn: pricing_free_btn$1,
   pricing_free_desc: pricing_free_desc$1,
   pricing_free_name: pricing_free_name$1,
+  pricing_head_title: pricing_head_title$1,
   pricing_hero_desc: pricing_hero_desc$1,
   pricing_hero_highlight: pricing_hero_highlight$1,
   pricing_hero_title: pricing_hero_title$1,
+  pricing_infra_asana: pricing_infra_asana$1,
   pricing_infra_badge: pricing_infra_badge$1,
+  pricing_infra_clickup: pricing_infra_clickup$1,
+  pricing_infra_notion: pricing_infra_notion$1,
   pricing_l1_desc: pricing_l1_desc$1,
   pricing_l1_initial: pricing_l1_initial$1,
   pricing_l1_name: pricing_l1_name$1,
@@ -11596,10 +11868,12 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_l4_price_yr: pricing_l4_price_yr$1,
   pricing_l4_recurring: pricing_l4_recurring$1,
   pricing_legendary_desc: pricing_legendary_desc$1,
+  pricing_legendary_title: pricing_legendary_title$1,
   pricing_life_btn: pricing_life_btn$1,
   pricing_life_desc: pricing_life_desc$1,
   pricing_life_name: pricing_life_name$1,
   pricing_lifetime: pricing_lifetime$1,
+  pricing_lifetime_guarantee: pricing_lifetime_guarantee$1,
   pricing_matrix_subtitle: pricing_matrix_subtitle$1,
   pricing_matrix_title: pricing_matrix_title$1,
   pricing_meta_desc: pricing_meta_desc$1,
@@ -11610,6 +11884,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_month: pricing_month$1,
   pricing_monthly: pricing_monthly$1,
   pricing_once: pricing_once$1,
+  pricing_once_short: pricing_once_short$1,
+  pricing_per_month_short: pricing_per_month_short$1,
   pricing_per_year: pricing_per_year$1,
   pricing_pro_badge: pricing_pro_badge$1,
   pricing_pro_btn: pricing_pro_btn$1,
@@ -11618,6 +11894,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_pro_name: pricing_pro_name$1,
   pricing_pro_recurring: pricing_pro_recurring$1,
   pricing_quantum_desc: pricing_quantum_desc$1,
+  pricing_quantum_title: pricing_quantum_title$1,
   pricing_save_amount: pricing_save_amount$1,
   pricing_storage_usage: pricing_storage_usage$1,
   pricing_sub_os: pricing_sub_os$1,
@@ -11630,8 +11907,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_trust_2_title: pricing_trust_2_title$1,
   pricing_trust_3_desc: pricing_trust_3_desc$1,
   pricing_trust_3_title: pricing_trust_3_title$1,
+  pricing_v_247_access: pricing_v_247_access$1,
   pricing_v_advanced: pricing_v_advanced$1,
   pricing_v_ai_powered: pricing_v_ai_powered$1,
+  pricing_v_basic: pricing_v_basic$1,
   pricing_v_batch: pricing_v_batch$1,
   pricing_v_full: pricing_v_full$1,
   pricing_v_locked: pricing_v_locked$1,
@@ -11939,12 +12218,20 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   seo_about_desc: seo_about_desc$1,
   seo_meta_desc_1,
   set_budget: set_budget$1,
+  settings_billing_active_badge: settings_billing_active_badge$1,
+  settings_billing_current_label: settings_billing_current_label$1,
+  settings_billing_no_expiry: settings_billing_no_expiry$1,
+  settings_billing_open_pricing: settings_billing_open_pricing$1,
+  settings_billing_pricing_note: settings_billing_pricing_note$1,
+  settings_billing_section_desc: settings_billing_section_desc$1,
+  settings_billing_section_title: settings_billing_section_title$1,
   settings_desc: settings_desc$1,
   settings_header: settings_header$1,
   settings_lang_label: settings_lang_label$1,
   settings_language_desc: settings_language_desc$1,
   settings_language_title: settings_language_title$1,
   settings_modules_desc: settings_modules_desc$1,
+  settings_modules_header_hint: settings_modules_header_hint$1,
   settings_modules_title: settings_modules_title$1,
   settings_saved: settings_saved$1,
   settings_saved_success: settings_saved_success$1,
@@ -11964,6 +12251,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   settings_theme_desc: settings_theme_desc$1,
   settings_theme_title: settings_theme_title$1,
   settings_title: settings_title$1,
+  settings_toolbar_hint: settings_toolbar_hint$1,
   sidebar_all_done_msg: sidebar_all_done_msg$1,
   sidebar_daily_focus: sidebar_daily_focus$1,
   sidebar_done_suffix: sidebar_done_suffix$1,
@@ -14364,6 +14652,60 @@ const nav_features = "Features";
 const nav_solutions = "Solutions";
 const nav_resources = "Resources";
 const nav_pricing = "Pricing";
+const nav_language = "Bahasa";
+const lang_id = "Bahasa Indonesia";
+const lang_en = "English";
+const nav_mobile_by_role = "Berdasarkan Peran";
+const nav_mobile_by_usecase = "Berdasarkan Kebutuhan";
+const nav_mobile_by_method = "Berdasarkan Metode";
+const nav_mobile_res_knowledge = "Panduan & Bantuan";
+const nav_mobile_res_social = "Sosial & Komunitas";
+const nav_mobile_feat_habit_title = "Habit Tracker";
+const nav_mobile_feat_habit_desc = "Bangun konsisten setiap hari";
+const nav_mobile_feat_finance_title = "Finance OS";
+const nav_mobile_feat_finance_desc = "Kelola cashflow dengan jelas";
+const nav_mobile_feat_planner_title = "Daily Planner";
+const nav_mobile_feat_planner_desc = "Fokus 3 prioritas utama";
+const nav_mobile_feat_journal_title = "Jurnal";
+const nav_mobile_feat_journal_desc = "Catat refleksi harian";
+const nav_mobile_feat_calendar_title = "Kalender";
+const nav_mobile_feat_calendar_desc = "Pantau event & jadwal";
+const nav_mobile_feat_goal_title = "Goal Tracker";
+const nav_mobile_feat_goal_desc = "Milestone & progres";
+const nav_mobile_feat_job_title = "Job Tracker";
+const nav_mobile_feat_job_desc = "Kelola lamaran kerja";
+const nav_mobile_feat_neural_title = "Neural OS AI";
+const nav_mobile_feat_neural_desc = "Coach planning berbasis AI";
+const nav_mobile_sol_student_title = "Pelajar";
+const nav_mobile_sol_student_desc = "Optimasi sistem belajar";
+const nav_mobile_sol_freelancer_title = "Freelancer";
+const nav_mobile_sol_freelancer_desc = "Kontrol alur kerja klien";
+const nav_mobile_sol_growth_title = "Personal Growth";
+const nav_mobile_sol_growth_desc = "Upgrade mindset & kebiasaan";
+const nav_mobile_sol_finance_title = "Finance Clarity";
+const nav_mobile_sol_finance_desc = "Budget & kontrol cashflow";
+const nav_mobile_sol_career_title = "Career Tracker";
+const nav_mobile_sol_career_desc = "Pantau peluang dengan jelas";
+const nav_mobile_sol_mental_title = "Mental Health";
+const nav_mobile_sol_mental_desc = "Kurangi stres & overthinking";
+const nav_mobile_sol_atomic_title = "Atomic Habits";
+const nav_mobile_sol_atomic_desc = "Langkah kecil, hasil besar";
+const nav_mobile_sol_deepwork_title = "Deep Work";
+const nav_mobile_sol_deepwork_desc = "Jaga sesi fokus";
+const nav_mobile_sol_secondbrain_title = "Second Brain";
+const nav_mobile_sol_secondbrain_desc = "Bangun sistem berpikir";
+const nav_mobile_res_guide_title = "User Guide";
+const nav_mobile_res_guide_desc = "Cara pakai OneForMind";
+const nav_mobile_res_help_title = "Help Center";
+const nav_mobile_res_help_desc = "Jawaban umum & bantuan";
+const nav_mobile_res_changelog_title = "What's New";
+const nav_mobile_res_changelog_desc = "Update produk terbaru";
+const nav_mobile_res_community_title = "Community";
+const nav_mobile_res_community_desc = "Gabung diskusi pengguna";
+const nav_mobile_res_blog_title = "Blog";
+const nav_mobile_res_blog_desc = "Insight produktivitas";
+const nav_mobile_res_stories_title = "Success Stories";
+const nav_mobile_res_stories_desc = "Cerita transformasi nyata";
 const modal_logout_title = "Mau pamit dulu?";
 const modal_logout_subtitle = "Jangan lupa balik lagi ya, progres kamu hari ini sudah tersimpan dengan aman!";
 const modal_logout_confirm = "Iya, Keluar";
@@ -14424,6 +14766,10 @@ const contact_faq_title = "Punya pertanyaan teknis?";
 const contact_faq_desc = "Cek dokumentasi bantuan kami untuk jawaban instan mengenai fitur dan lisensi.";
 const contact_faq_btn = "Buka Pusat Bantuan";
 const contact_form_message_placeholder = "Bagaimana kami bisa membantu Anda?";
+const contact_form_name_placeholder = "Nama lengkap Anda";
+const contact_form_email_placeholder = "email@contoh.com";
+const contact_subject_partnership = "Kemitraan Bisnis";
+const contact_subject_other = "Lainnya";
 const goal_page_title = "Goal Tracker";
 const goal_add_row = "Tambah Target";
 const goal_bulk_selected = "Target Terpilih";
@@ -14650,14 +14996,20 @@ const habit_ai_promo_desc = "Kebanyakan habit gagal karena hambatan tak terlihat
 const habit_ai_promo_btn = "Coba Neural Habit Audit";
 const welcome_meta_desc = "OneForMind adalah Life OS terpadu. Kelola habit tracker, daily planner, dan manajer keuangan dalam satu ekosistem produktivitas.";
 const welcome_meta_og_title = "OneForMind | Unified Habit Tracker, Planner & Finance OS";
+const welcome_meta_title = "OneForMind | Habit Tracker, Planner & Finance OS Terpadu";
 const welcome_meta_og_desc = "Hentikan kelelahan berganti aplikasi. Kelola habit tracker, manajer keuangan, dan daily planner Anda dalam satu dasbor.";
-const hero_badge$1 = "✨ v1.0: Unified Life OS";
-const welcome_meta_title = "OneForMind | Unified Habit Tracker, Planner & Finance OS";
-const hero_title_1$1 = "Satu Sistem.";
-const hero_title_2$1 = "Unified Life OS.";
-const hero_desc$1 = "Hentikan kelelahan berganti aplikasi. Kuasai habit tracker, daily planner, dan manajer keuangan Anda dalam satu ekosistem cerdas untuk eksekusi penuh kesadaran.";
-const hero_cta_primary$1 = "Mulai Gratis Sekarang";
-const hero_cta_secondary$1 = "Pelajari Filosofi Kami";
+const hero_premium_badge = "✨ Memperkenalkan: Neuro-Sync v2.0";
+const hero_premium_title_1 = "Satu Pikiran.";
+const hero_premium_title_2 = "Satu Sistem Masa Depan.";
+const hero_premium_desc = "Ucapkan selamat tinggal pada fragmentasi aplikasi. Kuasai habit tracker, daily planner, dan manajer keuangan Anda dalam satu ekosistem cerdas yang dirancang untuk performa puncak.";
+const hero_premium_cta_primary = "Mulai Secara Eksklusif";
+const hero_premium_cta_secondary = "Lihat Filosofi Desain";
+const hero_enter_dashboard = "Masuk Dashboard";
+const home_trust_tagline = "Merancang masa depan deep work";
+const home_pillars_title = "Insight terpadu untuk Habit, Planning & Finance Anda.";
+const home_pillars_desc = "OneForMind menghapus gesekan antar aplikasi dengan menggabungkan alat hidup paling penting Anda ke dalam satu ekosistem berperforma tinggi.";
+const home_flow_title = "Logika tersinkron. Eksekusi mulus.";
+const home_flow_desc = "Rasakan sinergi saat sistem paling penting di hidup Anda bekerja dalam harmoni.";
 const fric_badge = "PAJAK GESEKAN";
 const fric_title = "Aplikasi Terfragmentasi Membunuh Fokus Anda";
 const fric_desc = "Kebanyakan orang menggunakan 5 aplikasi terpisah untuk mengelola hidup mereka. Kami menyebutnya 'Pajak Gesekan'—beban tersembunyi pada energi mental Anda.";
@@ -15057,8 +15409,8 @@ const meta_ai_service_type = "[ID] Ai Service Type";
 const meta_global_description = "[ID] Deskripsi Global  Ription";
 const meta_global_keywords = "[ID] Global Keywords";
 const pricing_faq_subtitle = "Jawaban atas pertanyaan Anda";
-const pricing_feat_l1_finance = "Catatan Pengeluaran Dasar";
-const pricing_feat_l1_habits = "Pelacakan Kebiasaan Inti";
+const pricing_feat_l1_finance = "Pemantau Keuangan & The Vault Lengkap";
+const pricing_feat_l1_habits = "Pelacak Kebiasaan Tanpa Batas";
 const pricing_feat_l2_finance = "Manajemen Keuangan & Anggaran Lengkap";
 const pricing_feat_l2_habits = "Ekosistem Habit Tanpa Batas";
 const pricing_feat_l3_ai_coach = "Neural AI Coach: Asisten Pribadi 24/7";
@@ -15341,10 +15693,10 @@ const pricing_yearly = "Tahunan";
 const pricing_save_amount = "Hemat 40% dengan Tahunan";
 const pricing_free_name = "Explorer";
 const pricing_forever = "Selamanya";
-const pricing_free_desc = "Cocok untuk pemula yang ingin mulai melacak habit dan keuangan dasar.";
-const pricing_feat_habits_limit = "Hingga 5 Kebiasaan Aktif";
+const pricing_free_desc = "Akses penuh ke sistem Habit, Keuangan, dan Perencana.";
+const pricing_feat_habits_limit = "Kebiasaan Aktif Tanpa Batas";
 const pricing_feat_planner_basic = "Sistem Perencana Harian";
-const pricing_feat_finance_basic = "Manajemen Keuangan Inti";
+const pricing_feat_finance_basic = "Manajemen Keuangan Lengkap";
 const pricing_free_btn = "Mulai Gratis";
 const pricing_pro_name = "Architect";
 const pricing_pro_badge = "Terbaik untuk Awal";
@@ -15417,7 +15769,7 @@ const group_goals = "TUJUAN & VISI";
 const group_jobs = "KARIER & PEKERJAAN";
 const group_support = "DUKUNGAN";
 const feat_habit_limit = "Batasan Habit Aktif";
-const feat_habit_limit_val_l1 = "Sampai 5 Kebiasaan";
+const feat_habit_limit_val_l1 = "Tanpa Batas";
 const feat_habit_limit_val_l2 = "Tanpa Batas";
 const feat_detailed_analytics = "Analitik Detail";
 const feat_val_basic = "Dasar";
@@ -15430,7 +15782,7 @@ const feat_receipt_scanning = "Pindai Struk";
 const feat_net_worth = "Pelacak Kekayaan Bersih";
 const feat_ai_audit = "Audit Keuangan AI";
 const feat_planner_view = "Tampilan Perencana";
-const feat_planner_view_val_l1 = "Daftar Standar";
+const feat_planner_view_val_l1 = "Mesin Batch";
 const feat_planner_view_val_l2 = "Matriks Prioritas";
 const feat_recurring_tasks = "Tugas Berulang";
 const feat_journal_type = "Tipe Jurnal";
@@ -15459,7 +15811,7 @@ const pricing_elite_feat3_desc = "Hubungkan skor fokus Anda dengan metadata fisi
 const pricing_elite_card_title = "Akses Quantum";
 const pricing_elite_card_status = "Sistem Online";
 const pricing_l1_name = "Explorer (Gratis)";
-const pricing_l1_desc = "Cocok untuk pemula yang ingin memulai perjalanan penuh kesadaran mereka.";
+const pricing_l1_desc = "Habit tanpa batas, financial vault, dan perencana harian untuk semua orang.";
 const pricing_l2_name = "Architect (Pro)";
 const pricing_l2_desc = "Buka kekuatan penuh ekosistem kehidupan terpadu. Cocok untuk Anda yang ingin mengorganisir habit dan finansial secara profesional.";
 const pricing_l3_name = "Quantum (AI)";
@@ -15493,7 +15845,7 @@ const feat_habit_capacity = "Kapasitas Sistem Kebiasaan";
 const feat_planner_batch_unlocked = "Eksekusi Mode Batch";
 const feat_finance_adv_unlocked = "Proyeksi Kekayaan Lanjutan";
 const feat_neural_coaching_unlocked = "Neural AI Coaching Hub";
-const pricing_explorer_desc = "Alat esensial untuk memulai perjalanan produktivitas Anda.";
+const pricing_explorer_desc = "Akses penuh ke sistem Habit, Keuangan, dan Perencana.";
 const pricing_architect_desc = "Otomasi tingkat tinggi untuk eksekusi yang presisi.";
 const pricing_quantum_desc = "Buka potensi penuh dari Neural OS AI Assistant.";
 const pricing_legendary_desc = "Investasi mutakhir untuk pengembangan diri tanpa batas.";
@@ -15506,9 +15858,9 @@ const pricing_btn_legendary = "Dapatkan Akses Legendary";
 const pricing_feature_header_explorer_plus = "Semua di Explorer, plus:";
 const pricing_feature_header_architect_plus = "Semua di Architect, plus:";
 const pricing_feature_header_quantum_plus = "Semua di Quantum, plus:";
-const pricing_f_single_habit = "Pelacak Kebiasaan Tunggal";
-const pricing_f_basic_planner = "Planner Harian Standar";
-const pricing_f_finance_monitor = "Pemantau Keuangan Pribadi";
+const pricing_f_single_habit = "Pelacak Kebiasaan Tanpa Batas";
+const pricing_f_basic_planner = "Mesin Planner Harian";
+const pricing_f_finance_monitor = "Sistem Keuangan & Tabungan Lengkap";
 const pricing_f_mobile_access = "Akses Mobile Standar";
 const pricing_f_community = "Dukungan Komunitas";
 const pricing_f_unlimited_habit = "Unlimited Habit Stacks";
@@ -15561,11 +15913,11 @@ const pricing_infra_badge = "Infrastruktur kelas dunia";
 const pricing_badge_popular = "Paling Populer";
 const pricing_badge_limited = "Penawaran Terbatas";
 const pricing_f_habit_open = "Pelacak Kebiasaan (Terbuka)";
-const pricing_f_batch_habit_locked = "Batch Entry Habit (Terkunci)";
+const pricing_f_batch_habit_locked = "Batch Entry Habit (Terbuka)";
 const pricing_f_planner_tab_open = "Tab Daily Planner (Terbuka)";
-const pricing_f_batch_planner_locked = "Mode Eksekusi Batch (Terkunci)";
-const pricing_f_vault_locked = "Sistem The Vault (Terkunci)";
-const pricing_f_lab_locked = "Modul Wealth Lab (Terkunci)";
+const pricing_f_batch_planner_locked = "Mode Eksekusi Batch (Terbuka)";
+const pricing_f_vault_locked = "Sistem The Vault (Terbuka)";
+const pricing_f_lab_locked = "Modul Wealth Lab (Terbuka)";
 const pricing_f_trends_locked = "Neural AI Trend Chart (Terkunci)";
 const pricing_f_ai_coach_locked = "Neural AI Coach (Terkunci)";
 const pricing_f_all_tabs_open = "Semua Tab Sistem (Journal, Goals, dll)";
@@ -15574,6 +15926,29 @@ const pricing_f_financial_ecosystem = "Ekosistem Finansial Lengkap";
 const pricing_f_ai_full_access = "Akses Penuh Neural OS AI";
 const pricing_f_ai_insights = "Wawasan Hidup Berbasis AI";
 const pricing_f_legendary_trial_ai = "Lisensi AI Neural Gratis 2 Bulan";
+const pricing_f_habit_max5 = "Pelacak Kebiasaan Tanpa Batas";
+const pricing_f_daily_planner_tasks = "Daily Planner & Daftar Tugas";
+const pricing_f_basic_finance_simple = "Keuangan Lengkap (Monitor & Vault)";
+const pricing_f_standard_dashboards = "Dashboard Standar";
+const pricing_f_journal_goals_jobs_locked = "Jurnal, Target, & Pekerjaan";
+const pricing_f_advanced_ai_locked = "AI Life Coach Lanjutan";
+const pricing_explorer_title = "Explorer";
+const pricing_architect_title = "Architect";
+const pricing_quantum_title = "Quantum";
+const pricing_legendary_title = "Legendary";
+const pricing_free = "Gratis";
+const pricing_badge_ai_rec = "REKOMENDASI AI";
+const pricing_badge_founder = "EDISI FOUNDER";
+const pricing_head_title = "Harga & Paket";
+const pricing_lifetime_guarantee = "Jaminan Akses Seumur Hidup";
+const pricing_v_247_access = "Akses 24/7";
+const pricing_v_basic = "Dasaran";
+const pricing_infra_asana = "Kekuatan Asana";
+const pricing_infra_clickup = "Tenaga ClickUp";
+const pricing_infra_notion = "Kejernihan Notion";
+const pricing_per_month_short = "/bln";
+const pricing_once_short = "sekali";
+const pricing_btn_unleash_neural = "BUKA NEURAL OS";
 const privacy_meta_title = "Pusat Privasi & Kepercayaan";
 const privacy_meta_desc = "Pelajari bagaimana OneForMind melindungi data, privasi, dan memastikan keamanan Anda.";
 const privacy_meta_og_title = "Trust Center — OneForMind";
@@ -16121,19 +16496,20 @@ const sto_hof_4_desc = "Pengguna paling aktif di ekosistem Jurnal Mindfulness & 
 const settings_theme_title = "Tema Aplikasi";
 const settings_theme_desc = "Pilih mode tampilan yang paling nyaman untuk matamu.";
 const settings_title = "Pengaturan";
-const settings_header = "Pusat Kendali Akun";
-const settings_subheader = "Atur segalanya tentang pengalaman produktivitas Anda di sini.";
+const settings_header = "Pengaturan";
+const settings_subheader = "Akun, modul, keamanan, dan langganan.";
+const settings_toolbar_hint = "Tip: ganti bahasa dan tema lewat bilah atas — tidak perlu diulang di sini.";
 const settings_desc = "Sesuaikan pengalaman aplikasi Oneformind Anda.";
 const settings_tab_general = "Umum";
 const settings_tab_general_desc = "Bahasa & Lokasi";
 const settings_tab_profile = "Profil Saya";
 const settings_tab_profile_desc = "Info Akun & Foto";
-const settings_tab_appearance = "Tampilan";
-const settings_tab_appearance_desc = "Aktivasi Modul";
+const settings_tab_appearance = "Modul";
+const settings_tab_appearance_desc = "Sidebar & navigasi";
 const settings_tab_security = "Keamanan";
 const settings_tab_security_desc = "Password & Privasi";
-const settings_tab_billing = "Langganan";
-const settings_tab_billing_desc = "Upgrade Premium";
+const settings_tab_billing = "Paket & tagihan";
+const settings_tab_billing_desc = "Paket aktif & upgrade";
 const settings_tab_legal = "Legal";
 const settings_tab_legal_desc = "Syarat & Ketentuan";
 const settings_language_title = "Bahasa Aplikasi";
@@ -16154,8 +16530,9 @@ const adjust_photo_title = "Sesuaikan Foto";
 const pan_instruction = "Gunakan Mouse/Sentuhan Untuk Menggeser";
 const save_photo = "Simpan Foto";
 const settings_lang_label = "Bahasa Antarmuka";
-const settings_modules_title = "Modul Aplikasi";
-const settings_modules_desc = "Aktifkan atau nonaktifkan fitur yang ingin kamu gunakan.";
+const settings_modules_title = "Modul";
+const settings_modules_desc = "Pilih area yang tampil di sidebar dan navigasi.";
+const settings_modules_header_hint = "Bahasa dan tema terang/gelap diatur dari bilah atas — sama seperti Notion dan ClickUp.";
 const module_status_active = "Status Aktif";
 const module_habit_desc = "Pantau kebiasaan harianmu";
 const module_planner_desc = "Jadwal & Agenda Harian";
@@ -16175,6 +16552,13 @@ const security_confirm_delete_desc = "Masukkan password Anda untuk mengonfirmasi
 const security_placeholder_password = "Password Anda...";
 const billing_title = "Langganan & Billing";
 const billing_desc = "Kelola paket langganan dan fitur premium Anda.";
+const settings_billing_section_title = "Paket & tagihan";
+const settings_billing_section_desc = "Status langganan Anda. Bandingkan paket dan upgrade di halaman harga.";
+const settings_billing_current_label = "Paket saat ini";
+const settings_billing_open_pricing = "Lihat paket & upgrade";
+const settings_billing_pricing_note = "Checkout dan perbandingan lengkap ada di halaman harga (pembayaran aman via Midtrans).";
+const settings_billing_active_badge = "Aktif";
+const settings_billing_no_expiry = "Nikmati akses penuh.";
 const billing_premium_badge = "Paket Premium";
 const billing_premium_thanks = "Terima kasih atas dukungannya!";
 const billing_premium_desc = "Akun Anda saat ini aktif sebagai anggota Premium. Nikmati akses tanpa batas ke semua fitur produktivitas.";
@@ -18517,6 +18901,60 @@ const id = {
   nav_solutions,
   nav_resources,
   nav_pricing,
+  nav_language,
+  lang_id,
+  lang_en,
+  nav_mobile_by_role,
+  nav_mobile_by_usecase,
+  nav_mobile_by_method,
+  nav_mobile_res_knowledge,
+  nav_mobile_res_social,
+  nav_mobile_feat_habit_title,
+  nav_mobile_feat_habit_desc,
+  nav_mobile_feat_finance_title,
+  nav_mobile_feat_finance_desc,
+  nav_mobile_feat_planner_title,
+  nav_mobile_feat_planner_desc,
+  nav_mobile_feat_journal_title,
+  nav_mobile_feat_journal_desc,
+  nav_mobile_feat_calendar_title,
+  nav_mobile_feat_calendar_desc,
+  nav_mobile_feat_goal_title,
+  nav_mobile_feat_goal_desc,
+  nav_mobile_feat_job_title,
+  nav_mobile_feat_job_desc,
+  nav_mobile_feat_neural_title,
+  nav_mobile_feat_neural_desc,
+  nav_mobile_sol_student_title,
+  nav_mobile_sol_student_desc,
+  nav_mobile_sol_freelancer_title,
+  nav_mobile_sol_freelancer_desc,
+  nav_mobile_sol_growth_title,
+  nav_mobile_sol_growth_desc,
+  nav_mobile_sol_finance_title,
+  nav_mobile_sol_finance_desc,
+  nav_mobile_sol_career_title,
+  nav_mobile_sol_career_desc,
+  nav_mobile_sol_mental_title,
+  nav_mobile_sol_mental_desc,
+  nav_mobile_sol_atomic_title,
+  nav_mobile_sol_atomic_desc,
+  nav_mobile_sol_deepwork_title,
+  nav_mobile_sol_deepwork_desc,
+  nav_mobile_sol_secondbrain_title,
+  nav_mobile_sol_secondbrain_desc,
+  nav_mobile_res_guide_title,
+  nav_mobile_res_guide_desc,
+  nav_mobile_res_help_title,
+  nav_mobile_res_help_desc,
+  nav_mobile_res_changelog_title,
+  nav_mobile_res_changelog_desc,
+  nav_mobile_res_community_title,
+  nav_mobile_res_community_desc,
+  nav_mobile_res_blog_title,
+  nav_mobile_res_blog_desc,
+  nav_mobile_res_stories_title,
+  nav_mobile_res_stories_desc,
   modal_logout_title,
   modal_logout_subtitle,
   modal_logout_confirm,
@@ -18578,6 +19016,10 @@ const id = {
   contact_faq_desc,
   contact_faq_btn,
   contact_form_message_placeholder,
+  contact_form_name_placeholder,
+  contact_form_email_placeholder,
+  contact_subject_partnership,
+  contact_subject_other,
   goal_page_title,
   goal_add_row,
   goal_bulk_selected,
@@ -18805,14 +19247,20 @@ const id = {
   habit_ai_promo_btn,
   welcome_meta_desc,
   welcome_meta_og_title,
-  welcome_meta_og_desc,
-  hero_badge: hero_badge$1,
   welcome_meta_title,
-  hero_title_1: hero_title_1$1,
-  hero_title_2: hero_title_2$1,
-  hero_desc: hero_desc$1,
-  hero_cta_primary: hero_cta_primary$1,
-  hero_cta_secondary: hero_cta_secondary$1,
+  welcome_meta_og_desc,
+  hero_premium_badge,
+  hero_premium_title_1,
+  hero_premium_title_2,
+  hero_premium_desc,
+  hero_premium_cta_primary,
+  hero_premium_cta_secondary,
+  hero_enter_dashboard,
+  home_trust_tagline,
+  home_pillars_title,
+  home_pillars_desc,
+  home_flow_title,
+  home_flow_desc,
   fric_badge,
   fric_title,
   fric_desc,
@@ -19736,6 +20184,29 @@ const id = {
   pricing_f_ai_full_access,
   pricing_f_ai_insights,
   pricing_f_legendary_trial_ai,
+  pricing_f_habit_max5,
+  pricing_f_daily_planner_tasks,
+  pricing_f_basic_finance_simple,
+  pricing_f_standard_dashboards,
+  pricing_f_journal_goals_jobs_locked,
+  pricing_f_advanced_ai_locked,
+  pricing_explorer_title,
+  pricing_architect_title,
+  pricing_quantum_title,
+  pricing_legendary_title,
+  pricing_free,
+  pricing_badge_ai_rec,
+  pricing_badge_founder,
+  pricing_head_title,
+  pricing_lifetime_guarantee,
+  pricing_v_247_access,
+  pricing_v_basic,
+  pricing_infra_asana,
+  pricing_infra_clickup,
+  pricing_infra_notion,
+  pricing_per_month_short,
+  pricing_once_short,
+  pricing_btn_unleash_neural,
   privacy_meta_title,
   privacy_meta_desc,
   privacy_meta_og_title,
@@ -20285,6 +20756,7 @@ const id = {
   settings_title,
   settings_header,
   settings_subheader,
+  settings_toolbar_hint,
   settings_desc,
   settings_tab_general,
   settings_tab_general_desc,
@@ -20318,6 +20790,7 @@ const id = {
   settings_lang_label,
   settings_modules_title,
   settings_modules_desc,
+  settings_modules_header_hint,
   module_status_active,
   module_habit_desc,
   module_planner_desc,
@@ -20337,6 +20810,13 @@ const id = {
   security_placeholder_password,
   billing_title,
   billing_desc,
+  settings_billing_section_title,
+  settings_billing_section_desc,
+  settings_billing_current_label,
+  settings_billing_open_pricing,
+  settings_billing_pricing_note,
+  settings_billing_active_badge,
+  settings_billing_no_expiry,
   billing_premium_badge,
   billing_premium_thanks,
   billing_premium_desc,
@@ -21634,9 +22114,11 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   contact_faq_desc,
   contact_faq_title,
   contact_form_email,
+  contact_form_email_placeholder,
   contact_form_message,
   contact_form_message_placeholder,
   contact_form_name,
+  contact_form_name_placeholder,
   contact_form_subject,
   contact_info_billing,
   contact_info_chat,
@@ -21645,6 +22127,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   contact_info_jakarta,
   contact_info_support,
   contact_info_title,
+  contact_subject_other,
+  contact_subject_partnership,
   contact_subtitle,
   contact_success_desc,
   contact_success_title,
@@ -22946,12 +23430,13 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   help_support_3_title,
   help_support_desc,
   help_support_title,
-  hero_badge: hero_badge$1,
-  hero_cta_primary: hero_cta_primary$1,
-  hero_cta_secondary: hero_cta_secondary$1,
-  hero_desc: hero_desc$1,
-  hero_title_1: hero_title_1$1,
-  hero_title_2: hero_title_2$1,
+  hero_enter_dashboard,
+  hero_premium_badge,
+  hero_premium_cta_primary,
+  hero_premium_cta_secondary,
+  hero_premium_desc,
+  hero_premium_title_1,
+  hero_premium_title_2,
   hint_click_done,
   hint_click_skip,
   hint_hold_skip,
@@ -22966,6 +23451,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   hlp_sla_title,
   hlp_tuts_desc,
   hlp_tuts_title,
+  home_flow_desc,
+  home_flow_title,
+  home_pillars_desc,
+  home_pillars_title,
   home_science_badge,
   home_science_desc,
   home_science_title,
@@ -22981,6 +23470,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   home_synergy_step3_desc,
   home_synergy_step3_title,
   home_synergy_title,
+  home_trust_tagline,
   icon_tooltip,
   img_upload_error,
   img_upload_success,
@@ -23286,6 +23776,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   label_urgent,
   label_usage_limit,
   label_work,
+  lang_en,
+  lang_id,
   last_5,
   launchpad_subtitle,
   launchpad_title,
@@ -23485,9 +23977,61 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   nav_item_planner,
   nav_item_premium,
   nav_item_settings,
+  nav_language,
   nav_login: nav_login$1,
   nav_logout,
   nav_menu_title,
+  nav_mobile_by_method,
+  nav_mobile_by_role,
+  nav_mobile_by_usecase,
+  nav_mobile_feat_calendar_desc,
+  nav_mobile_feat_calendar_title,
+  nav_mobile_feat_finance_desc,
+  nav_mobile_feat_finance_title,
+  nav_mobile_feat_goal_desc,
+  nav_mobile_feat_goal_title,
+  nav_mobile_feat_habit_desc,
+  nav_mobile_feat_habit_title,
+  nav_mobile_feat_job_desc,
+  nav_mobile_feat_job_title,
+  nav_mobile_feat_journal_desc,
+  nav_mobile_feat_journal_title,
+  nav_mobile_feat_neural_desc,
+  nav_mobile_feat_neural_title,
+  nav_mobile_feat_planner_desc,
+  nav_mobile_feat_planner_title,
+  nav_mobile_res_blog_desc,
+  nav_mobile_res_blog_title,
+  nav_mobile_res_changelog_desc,
+  nav_mobile_res_changelog_title,
+  nav_mobile_res_community_desc,
+  nav_mobile_res_community_title,
+  nav_mobile_res_guide_desc,
+  nav_mobile_res_guide_title,
+  nav_mobile_res_help_desc,
+  nav_mobile_res_help_title,
+  nav_mobile_res_knowledge,
+  nav_mobile_res_social,
+  nav_mobile_res_stories_desc,
+  nav_mobile_res_stories_title,
+  nav_mobile_sol_atomic_desc,
+  nav_mobile_sol_atomic_title,
+  nav_mobile_sol_career_desc,
+  nav_mobile_sol_career_title,
+  nav_mobile_sol_deepwork_desc,
+  nav_mobile_sol_deepwork_title,
+  nav_mobile_sol_finance_desc,
+  nav_mobile_sol_finance_title,
+  nav_mobile_sol_freelancer_desc,
+  nav_mobile_sol_freelancer_title,
+  nav_mobile_sol_growth_desc,
+  nav_mobile_sol_growth_title,
+  nav_mobile_sol_mental_desc,
+  nav_mobile_sol_mental_title,
+  nav_mobile_sol_secondbrain_desc,
+  nav_mobile_sol_secondbrain_title,
+  nav_mobile_sol_student_desc,
+  nav_mobile_sol_student_title,
   nav_neural_active,
   nav_platinum_suite,
   nav_pricing,
@@ -23976,7 +24520,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_ai_recurring,
   pricing_already_active,
   pricing_architect_desc,
+  pricing_architect_title,
   pricing_badge,
+  pricing_badge_ai_rec,
+  pricing_badge_founder,
   pricing_badge_limited,
   pricing_badge_popular,
   pricing_basic_level,
@@ -23991,6 +24538,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_btn_current,
   pricing_btn_legendary,
   pricing_btn_unleash,
+  pricing_btn_unleash_neural,
   pricing_btn_upgrade,
   pricing_compare_subtitle,
   pricing_compare_title,
@@ -24006,8 +24554,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_elite_feat3_title,
   pricing_elite_title,
   pricing_explorer_desc,
+  pricing_explorer_title,
   pricing_f_active_habits,
   pricing_f_ad_free,
+  pricing_f_advanced_ai_locked,
   pricing_f_ai_assistant,
   pricing_f_ai_coach_locked,
   pricing_f_ai_finance_insights,
@@ -24015,6 +24565,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_f_ai_insights,
   pricing_f_ai_mind_mapping,
   pricing_f_all_tabs_open,
+  pricing_f_basic_finance_simple,
   pricing_f_basic_planner,
   pricing_f_batch_habit_locked,
   pricing_f_batch_planner,
@@ -24025,12 +24576,15 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_f_custom_branding,
   pricing_f_custom_modules,
   pricing_f_custom_themes,
+  pricing_f_daily_planner_tasks,
   pricing_f_early_access,
   pricing_f_finance_monitor,
   pricing_f_finance_trends,
   pricing_f_financial_ecosystem,
   pricing_f_founder_badge,
+  pricing_f_habit_max5,
   pricing_f_habit_open,
+  pricing_f_journal_goals_jobs_locked,
   pricing_f_lab_locked,
   pricing_f_legendary_trial_ai,
   pricing_f_life_insights,
@@ -24043,6 +24597,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_f_planner_engine,
   pricing_f_planner_tab_open,
   pricing_f_single_habit,
+  pricing_f_standard_dashboards,
   pricing_f_the_vault,
   pricing_f_trends_locked,
   pricing_f_unlimited_habit,
@@ -24091,13 +24646,18 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_feature_header_explorer_plus,
   pricing_feature_header_quantum_plus,
   pricing_forever,
+  pricing_free,
   pricing_free_btn,
   pricing_free_desc,
   pricing_free_name,
+  pricing_head_title,
   pricing_hero_desc,
   pricing_hero_highlight,
   pricing_hero_title,
+  pricing_infra_asana,
   pricing_infra_badge,
+  pricing_infra_clickup,
+  pricing_infra_notion,
   pricing_l1_desc,
   pricing_l1_initial,
   pricing_l1_name,
@@ -24119,10 +24679,12 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_l4_price_yr,
   pricing_l4_recurring,
   pricing_legendary_desc,
+  pricing_legendary_title,
   pricing_life_btn,
   pricing_life_desc,
   pricing_life_name,
   pricing_lifetime,
+  pricing_lifetime_guarantee,
   pricing_matrix_subtitle,
   pricing_matrix_title,
   pricing_meta_desc,
@@ -24133,6 +24695,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_month,
   pricing_monthly,
   pricing_once,
+  pricing_once_short,
+  pricing_per_month_short,
   pricing_per_year,
   pricing_pro_badge,
   pricing_pro_btn,
@@ -24141,6 +24705,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_pro_name,
   pricing_pro_recurring,
   pricing_quantum_desc,
+  pricing_quantum_title,
   pricing_save_amount,
   pricing_storage_usage,
   pricing_sub_os,
@@ -24153,8 +24718,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pricing_trust_2_title,
   pricing_trust_3_desc,
   pricing_trust_3_title,
+  pricing_v_247_access,
   pricing_v_advanced,
   pricing_v_ai_powered,
+  pricing_v_basic,
   pricing_v_batch,
   pricing_v_full,
   pricing_v_locked,
@@ -24461,12 +25028,20 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   select_placeholder,
   seo_about_desc,
   set_budget,
+  settings_billing_active_badge,
+  settings_billing_current_label,
+  settings_billing_no_expiry,
+  settings_billing_open_pricing,
+  settings_billing_pricing_note,
+  settings_billing_section_desc,
+  settings_billing_section_title,
   settings_desc,
   settings_header,
   settings_lang_label,
   settings_language_desc,
   settings_language_title,
   settings_modules_desc,
+  settings_modules_header_hint,
   settings_modules_title,
   settings_saved,
   settings_saved_success,
@@ -24486,6 +25061,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   settings_theme_desc,
   settings_theme_title,
   settings_title,
+  settings_toolbar_hint,
   sidebar_all_done_msg,
   sidebar_daily_focus,
   sidebar_done_suffix,
@@ -25835,7 +26411,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-ZdCfA3eF.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-BWfd-oNh.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-BBpcRf8H.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-93JG4sNG.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-CmeSrMuF.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DnPstKFr.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-Ykibw0zp.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-LiO3zZdT.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-aCOHjnK2.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-CBSFbHC2.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DySPZ8Lv.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-DrMreSYu.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DOD4ecrI.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BfckbtdK.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-De2bqTyV.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-CH-CgLyK.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-v6buIjDo.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-Bfz3uwb6.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-CAL30nhF.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-Dw2-p7Em.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-D5tQeMSW.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-Dx5gIK3Z.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-BcxKSHRU.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CINmz6SP.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-DBrE-rYj.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-B45sUDuV.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-CfIWdiXt.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Bhz5eaab.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-Di3OqJCc.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-DKaHJ25J.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-CvhiMyiS.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-Cs0QYhL7.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-BpKrxANh.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-CpjmMXHD.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CrQo8MSH.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DblYYzQ-.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-DMiOxJA3.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-D7z4hZfd.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-ByGICv4N.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-Dic8B0oI.js"), "./Pages/More/Index.vue": () => import("./assets/Index-C9LFVasn.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-CIrM0UBk.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DNCXaaj5.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-RjMvdSde.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-DLaSMRXA.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-W6k1wIEU.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-DJ7xry4v.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-CsGtqZuw.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-CZFCiOYD.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-U_PsZzmn.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-BxwZ6qed.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-COl8ZQwj.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-GU_L7upc.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-gB6K4Wdd.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-DaGLhXUv.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-CSFga90G.js"), "./Pages/Settings/Partials/GeneralTab.vue": () => import("./assets/GeneralTab-VY_2A7Ae.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-C49Z1wiR.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-B6XsWpzT.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-ZdCfA3eF.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-p_ih5aBU.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-B6Wrsxny.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-G3bc5hUd.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-JrS2AWGE.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DnPstKFr.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-Ykibw0zp.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-CgZrTCjn.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-LiO3zZdT.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-aCOHjnK2.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BWtWX_Bd.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-CSDIn1rq.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CvYx0ZeA.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DEk3oRZL.js"), "./Pages/Error.vue": () => import("./assets/Error-CR45xnbP.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BgLEfiL2.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BXSp97CZ.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-CL9HK3Vx.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-BcXs0ORb.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-C8EFcijR.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-WRsWA4yW.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-CEM28YKM.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-B_6MH-4S.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-nWpu4f0y.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-DA6hLQpe.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CINmz6SP.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-JG7MJ9vA.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-Djk-eAA-.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-pDR5JZap.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DqXuOYq_.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-BQGN6G5x.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-Csd0PuJy.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-B5HicurL.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-BV701YHe.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-ARrCGPVt.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CkvmVouY.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-CpjmMXHD.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CrQo8MSH.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-CL1g9B1Q.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-DMP1pfzD.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DRV_AEwv.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-B26M8PrI.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-B_pcTFnO.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-BjxnEiy1.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CRFNeV10.js"), "./Pages/Payment/Success.vue": () => import("./assets/Success-B6XYD0pv.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DzN8VcV3.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-DuGcvbi1.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CnhxeQQc.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-Dcp4Vr0v.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-VQ6J1TMc.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-CsGtqZuw.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-Ah10qitY.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-BaK_cA4P.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CIEWnmII.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-COl8ZQwj.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-GU_L7upc.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-BcudoG71.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-ModyirZ5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DvawROQy.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-C49Z1wiR.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-B6XsWpzT.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

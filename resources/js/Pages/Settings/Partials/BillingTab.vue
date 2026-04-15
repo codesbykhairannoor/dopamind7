@@ -1,108 +1,82 @@
 <script setup>
-import { usePage } from '@inertiajs/vue3';
+import { computed } from 'vue';
+import { Link, usePage } from '@inertiajs/vue3';
+import { ArrowRight, Sparkles } from 'lucide-vue-next';
+import { useGating } from '@/Composables/useGating';
 
-const props = defineProps({ midtransClientKey: String });
-const user = usePage().props.auth.user;
+const page = usePage();
+const user = computed(() => page.props.auth.user);
+const { isExplorer, PLAN_LABELS } = useGating();
 
-const checkout = (plan) => {
-    import('axios').then(axios => {
-        axios.default.post(route('payment.checkout'), { plan }, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            const data = response.data;
-            if (data.paymentUrl) {
-                window.location.href = data.paymentUrl;
-            } else {
-                alert('Checkout error: ' + (data.error || 'Unknown error'));
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            alert('Checkout error: ' + (error.response?.data?.error || error.message || 'Unknown error'));
-        });
+const planLabel = computed(() => {
+    const pt = user.value?.plan_type;
+    if (pt && PLAN_LABELS[pt]) return PLAN_LABELS[pt];
+    return 'Explorer';
+});
+
+const premiumUntilFormatted = computed(() => {
+    const raw = user.value?.premium_until;
+    if (!raw) return null;
+    const locale = page.props.locale === 'id' ? 'id-ID' : 'en-US';
+    return new Date(raw).toLocaleDateString(locale, {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
     });
-};
+});
 </script>
 
 <template>
     <div class="space-y-8">
         <div>
-            <h3 class="text-lg font-black text-slate-800 dark:text-white tracking-tight transition-colors duration-500">{{ $t('billing_title', 'Langganan & Billing') }}</h3>
-            <p class="text-xs font-bold text-slate-400 dark:text-slate-500 mt-1 transition-colors duration-500">{{ $t('billing_desc', 'Pilih paket yang sesuai untuk membuka lebih banyak fitur produktivitas.') }}</p>
+            <h3 class="text-lg font-bold text-slate-800 dark:text-white tracking-tight">
+                {{ $t('settings_billing_section_title', 'Plan & billing') }}
+            </h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                {{ $t('settings_billing_section_desc', 'Your subscription status. Compare plans and upgrade on the pricing page.') }}
+            </p>
         </div>
 
-        <div v-if="user.is_premium" class="bg-indigo-600 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-xl dark:shadow-none shadow-indigo-200">
-            <div class="relative z-10">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl">✨</div>
-                    <span class="text-xs font-black tracking-wide bg-white/20 backdrop-blur-md px-3 py-1 rounded-full">{{ $t('billing_premium_badge', 'Paket Premium') }}</span>
+        <!-- Current plan (Notion / ClickUp style: one summary card) -->
+        <div
+            class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/40 p-6 sm:p-8"
+        >
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+                <div class="space-y-3 min-w-0">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                        {{ $t('settings_billing_current_label', 'Current plan') }}
+                    </p>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="text-2xl font-bold text-slate-900 dark:text-white">{{ planLabel }}</span>
+                        <span
+                            v-if="user?.is_premium"
+                            class="inline-flex items-center gap-1 rounded-full bg-indigo-100 dark:bg-indigo-500/20 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-700 dark:text-indigo-300"
+                        >
+                            <Sparkles class="w-3.5 h-3.5" />
+                            {{ $t('settings_billing_active_badge', 'Active') }}
+                        </span>
+                    </div>
+                    <p v-if="premiumUntilFormatted" class="text-sm text-slate-600 dark:text-slate-300">
+                        <span class="text-slate-500 dark:text-slate-400">{{ $t('billing_valid_until', 'Valid until') }}:</span>
+                        {{ premiumUntilFormatted }}
+                    </p>
+                    <p v-else-if="!isExplorer && user?.is_premium" class="text-sm text-slate-600 dark:text-slate-300">
+                        {{ $t('settings_billing_no_expiry', 'Enjoy full access.') }}
+                    </p>
                 </div>
-                <h4 class="text-2xl font-black mb-2 leading-tight">{{ $t('billing_premium_thanks', 'Terima kasih atas dukungannya!') }}</h4>
-                <p class="text-sm font-bold text-indigo-100 opacity-90 max-w-sm mb-6">{{ $t('billing_premium_desc', 'Akun Anda saat ini aktif sebagai anggota Premium. Nikmati akses tanpa batas ke semua fitur produktivitas.') }}</p>
-                
-                <div class="flex items-center gap-2 text-xs font-black">
-                    <span class="opacity-70 italic">{{ $t('billing_valid_until', 'Berlaku sampai') }}:</span>
-                    <span class="bg-indigo-500/50 px-3 py-1 rounded-lg">{{ user.premium_until ? new Date(user.premium_until).toLocaleDateString($t('locale', 'id-ID'), { day: 'numeric', month: 'long', year: 'numeric' }) : $t('billing_forever', 'Selamanya') }}</span>
-                </div>
-            </div>
-            
-            <!-- Abstract Shapes -->
-            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-indigo-500 rounded-full blur-3xl opacity-50"></div>
-            <div class="absolute -left-12 -top-12 w-48 h-48 bg-indigo-400 rounded-full blur-3xl opacity-30"></div>
-        </div>
 
-        <div v-else class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
-            <!-- Free -->
-            <div class="bg-white dark:bg-slate-900 p-6 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-sm dark:shadow-none flex flex-col h-full transition-all duration-500">
-                <h4 class="text-xs font-black text-slate-400 dark:text-slate-500 tracking-wide mb-2 transition-colors duration-500">{{ $t('pricing_free_name', 'Explorer') }}</h4>
-                <div class="text-2xl font-black text-slate-900 dark:text-white mb-4 transition-colors duration-500">Rp 0</div>
-                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 dark:text-slate-400 font-bold transition-colors duration-500">
-                    <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> 5 Habits Max</li>
-                    <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Basic Finance</li>
-                </ul>
-                <button disabled class="w-full py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 font-bold text-xs transition-colors duration-500">{{ $t('billing_current_plan', 'Paket Saat Ini') }}</button>
+                <Link
+                    :href="route('billing')"
+                    class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-indigo-200/40 transition hover:bg-indigo-700 dark:shadow-none"
+                >
+                    {{ $t('settings_billing_open_pricing', 'Compare plans & upgrade') }}
+                    <ArrowRight class="w-4 h-4" />
+                </Link>
             </div>
 
-            <!-- Architect (Pro) -->
-            <div class="bg-white dark:bg-slate-900 p-6 rounded-[2rem] border-2 border-indigo-100 dark:border-indigo-500/30 shadow-lg dark:shadow-none shadow-indigo-50/50 dark:shadow-indigo-900/10 flex flex-col h-full relative transition-all duration-500">
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-100 dark:bg-indigo-600 text-indigo-600 dark:text-white px-3 py-1 rounded-full text-[9px] font-black tracking-wide shadow-sm dark:shadow-none">Populer</div>
-                <h4 class="text-xs font-black text-indigo-600 dark:text-indigo-400 tracking-wide mb-2 transition-colors duration-500">{{ $t('pricing_pro_name', 'Architect') }}</h4>
-                <div class="text-2xl font-black text-slate-900 dark:text-white leading-none transition-colors duration-500">Rp 25.000</div>
-                <div class="text-[10px] text-indigo-500 dark:text-indigo-400 font-black italic mb-4 transition-colors duration-500">Lalu Rp 15rb/bln</div>
-                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-600 dark:text-slate-400 font-bold transition-colors duration-500">
-                    <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Buka Semua Modul</li>
-                    <li class="flex items-center gap-2"><span class="text-emerald-500">✓</span> Trial 1 Bulan</li>
-                    <li class="flex items-center gap-2"><span class="text-indigo-500">✓</span> Pro Analytics</li>
-                </ul>
-                <button @click="checkout('architect')" class="w-full py-3 rounded-xl bg-indigo-600 dark:bg-indigo-500 text-white hover:bg-indigo-700 dark:hover:bg-indigo-600 transition font-bold text-xs shadow-md dark:shadow-none shadow-indigo-200 dark:shadow-indigo-900/20">Beli Sekarang</button>
-            </div>
-
-            <!-- Quantum (AI) -->
-            <div class="bg-indigo-50 dark:bg-slate-800 p-6 rounded-[2rem] border border-indigo-200 dark:border-slate-700 shadow-sm dark:shadow-none flex flex-col h-full relative transition-all duration-500">
-                <h4 class="text-xs font-black text-indigo-700 dark:text-indigo-400 tracking-wide mb-2 transition-colors duration-500">{{ $t('pricing_ai_name', 'Quantum') }}</h4>
-                <div class="text-2xl font-black text-slate-900 dark:text-white leading-none transition-colors duration-500">Rp 49.000</div>
-                <div class="text-[10px] text-indigo-500 dark:text-indigo-400 font-black italic mb-4 transition-colors duration-500">/bulan</div>
-                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-700 dark:text-slate-300 font-bold transition-colors duration-500">
-                    <li class="flex items-center gap-2"><span class="text-indigo-600 dark:text-indigo-400">🤖</span> AI Chat Assistant</li>
-                    <li class="flex items-center gap-2"><span class="text-indigo-600 dark:text-indigo-400">✓</span> Automated Insights</li>
-                </ul>
-                <button @click="checkout('quantum')" class="w-full py-3 rounded-xl bg-slate-900 dark:bg-indigo-600 text-white hover:bg-black dark:hover:bg-indigo-700 transition font-bold text-xs shadow-md dark:shadow-none">Beli Sekarang</button>
-            </div>
-
-            <!-- Lifetime -->
-            <div class="bg-slate-900 p-6 rounded-[2rem] shadow-xl dark:shadow-none flex flex-col h-full text-white">
-                <h4 class="text-xs font-black text-indigo-400 tracking-wide mb-2">{{ $t('pricing_life_name', 'Mind Master') }}</h4>
-                <div class="text-2xl font-black mb-4">Rp 249.000</div>
-                <ul class="space-y-3 mb-6 flex-grow text-xs text-slate-300 font-bold">
-                    <li class="flex items-center gap-2"><span class="text-indigo-400">★</span> Buka Semua Selamanya</li>
-                    <li class="flex items-center gap-2"><span class="text-indigo-400">★</span> Bebas Biaya Bulanan</li>
-                    <li class="flex items-center gap-2"><span class="text-indigo-400">★</span> Priority Support</li>
-                </ul>
-                <button @click="checkout('lifetime')" class="w-full py-3 rounded-xl bg-white text-slate-900 hover:bg-slate-100 transition font-black text-xs">Beli Lifetime</button>
-            </div>
+            <p class="mt-6 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200/80 dark:border-slate-600/50 pt-4">
+                {{ $t('settings_billing_pricing_note', 'Payment is handled securely. All plan details and checkout live on the pricing page.') }}
+            </p>
         </div>
     </div>
 </template>
