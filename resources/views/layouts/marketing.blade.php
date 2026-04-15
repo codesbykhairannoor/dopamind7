@@ -521,7 +521,9 @@
         </div>
 
         {{-- NAVBAR --}}
-        <nav :class="(scrolled || mobileMenuOpen) ? 'bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'bg-transparent'"
+        <nav :class="mobileMenuOpen
+                ? 'bg-white border-b border-slate-100 shadow-sm'
+                : (scrolled ? 'bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'bg-transparent')"
             class="fixed top-0 w-full z-[100] transition-all duration-300">
             <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center relative">
 
@@ -531,7 +533,7 @@
                         class="w-10 h-10 lg:w-8 lg:h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
                         <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-6 h-6 lg:w-5 lg:h-5 brightness-0 invert" />
                     </div>
-                    <span class="hidden lg:block text-xl font-black tracking-tighter text-slate-900">OneForMind</span>
+                    <span class="text-lg sm:text-xl font-bold tracking-tight text-slate-900">OneForMind</span>
                 </a>
 
                 {{-- DESKTOP MENU --}}
@@ -775,10 +777,10 @@
                     <div class="flex lg:hidden items-center gap-2">
                         @auth
                             <a hx-boost="false" href="{{ route('dashboard') }}"
-                                class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[13.5px] font-black shadow-lg">Dashboard</a>
+                                class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[13.5px] font-bold shadow-lg">Dashboard</a>
                         @else
                             <a hx-boost="false" href="{{ route('register') }}"
-                                class="px-5 py-2.5 bg-indigo-600 text-white rounded-full text-[13.5px] font-black shadow-lg shadow-indigo-200">
+                                class="px-5 py-2.5 bg-indigo-600 text-white rounded-full text-[13.5px] font-bold shadow-lg shadow-indigo-200">
                                 Get started
                             </a>
                         @endauth
@@ -806,7 +808,7 @@
                     x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                     x-transition:leave="transition ease-in duration-150"
                     x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                    class="fixed inset-0 z-[99] bg-slate-900/30 backdrop-blur-sm"
+                    class="fixed inset-0 z-[99] bg-slate-900/20"
                     @click="mobileMenuOpen = false; mobilePanel = null"></div>
 
                 <div x-transition:enter="transition ease-out duration-250"
@@ -820,30 +822,30 @@
                     <div class="relative flex-1 min-h-0 flex flex-col">
                         {{-- Root: primary nav (sentence case, chevrons) --}}
                         <div x-show="mobilePanel === null" x-transition
-                            class="flex flex-col flex-1 min-h-0 overflow-y-auto overscroll-contain px-4 pt-2 pb-4">
+                            class="flex flex-col flex-1 min-h-0 overflow-y-auto overscroll-contain px-4 pt-1 pb-4">
                             <button type="button" @click="mobilePanel = 'features'"
-                                class="w-full flex items-center justify-between py-3.5 text-left text-[15px] font-medium text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg">
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[16px] font-bold text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg leading-snug">
                                 <span>Features</span>
                                 <svg class="w-5 h-5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </button>
                             <button type="button" @click="mobilePanel = 'solutions'"
-                                class="w-full flex items-center justify-between py-3.5 text-left text-[15px] font-medium text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg">
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[16px] font-bold text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg leading-snug">
                                 <span>Solutions</span>
                                 <svg class="w-5 h-5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </button>
                             <button type="button" @click="mobilePanel = 'resources'"
-                                class="w-full flex items-center justify-between py-3.5 text-left text-[15px] font-medium text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg">
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[16px] font-bold text-slate-900 border-b border-slate-100 active:bg-slate-50 rounded-lg leading-snug">
                                 <span>Resources</span>
                                 <svg class="w-5 h-5 text-slate-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </button>
                             <a href="{{ route('pricing.index') }}" @click="mobileMenuOpen = false; mobilePanel = null"
-                                class="block py-3.5 text-[15px] font-medium text-slate-900 border-b border-slate-100">Pricing</a>
+                                class="block py-3.5 text-[16px] font-bold text-slate-900 border-b border-slate-100 leading-snug">Pricing</a>
                         </div>
 
                         {{-- Sub-panels: slide in, compact lists --}}
@@ -863,7 +865,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                                     </svg>
                                 </button>
-                                <span class="text-[15px] font-semibold text-slate-900"
+                                <span class="text-[17px] font-bold text-slate-900 tracking-tight"
                                     x-text="mobilePanel === 'features' ? 'Features' : mobilePanel === 'solutions' ? 'Solutions' : mobilePanel === 'resources' ? 'Resources' : ''"></span>
                             </div>
                             <div class="flex-1 min-h-0 overflow-y-auto overscroll-contain px-3 pb-4">
