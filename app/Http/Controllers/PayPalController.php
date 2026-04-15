@@ -168,7 +168,7 @@ class PayPalController extends Controller
 
                 if ($user) {
                     $user->update([
-                        'is_premium' => true,
+                        'is_premium' => 'true',
                         'premium_until' => now()->addMonths($duration),
                     ]);
                 }

@@ -34,7 +34,7 @@ class HandleInertiaRequests extends Middleware
 
         if ($user && $user->premium_until && now()->greaterThan($user->premium_until)) {
             $user->update([
-                'is_premium' => false,
+                'is_premium' => 'false',
                 'plan_type' => 'explorer',
                 'premium_until' => null,
             ]);

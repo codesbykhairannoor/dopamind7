@@ -42,7 +42,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $attributes = [
         'avatar_path' => null,
         'settings' => '{}',
-        'has_used_trial' => false,
     ];
 
     /**

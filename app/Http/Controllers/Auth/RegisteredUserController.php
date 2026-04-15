@@ -41,7 +41,6 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'has_used_trial' => false,
             'settings' => [
                 'modules' => [
                     'habit' => true,

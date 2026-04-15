@@ -222,7 +222,7 @@ class PaymentController extends Controller
                         }
 
                         $user->update([
-                            'is_premium' => true,
+                            'is_premium' => 'true',
                             'plan_type' => $finalPlan,
                             'premium_until' => now()->addMonths($duration),
                         ]);

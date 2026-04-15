@@ -18,7 +18,7 @@ class AdminUserController extends Controller
     public function togglePremium(User $user)
     {
         $user->update([
-            'is_premium' => !$user->is_premium,
+            'is_premium' => !$user->is_premium ? 'true' : 'false',
             'premium_until' => !$user->is_premium ? now()->addYear() : null,
         ]);
 
