@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'has_used_trial' => 'false',
+            'has_used_trial' => false,
             'settings' => [
                 'modules' => [
                     'habit' => true,
@@ -58,7 +58,7 @@ class RegisteredUserController extends Controller
 
         try {
             event(new Registered($user));
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::error('Registration Email Error: ' . $e->getMessage());
         }
 

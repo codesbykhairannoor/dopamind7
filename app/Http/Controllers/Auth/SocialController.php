@@ -51,7 +51,7 @@ class SocialController extends Controller
                     'google_id' => $googleUser->id,
                     'password' => bcrypt(Str::random(16)), // Password acak
                     'email_verified_at' => now(),
-                    'has_used_trial' => 'false',
+                    'has_used_trial' => false,
                     'settings' => [
                         'modules' => [
                             'habit' => true,
