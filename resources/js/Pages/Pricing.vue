@@ -34,10 +34,10 @@ const isAnnual = ref(true);
 const plans = computed(() => {
     return [
         {
-            name: "Explorer",
+            name: "pricing_explorer_title",
             slug: "explorer",
             tier: 1,
-            price: "Free",
+            price: "pricing_free",
             period: "pricing_forever",
             desc: "pricing_explorer_desc",
             features: [
@@ -60,7 +60,7 @@ const plans = computed(() => {
             theme: "slate",
         },
         {
-            name: "Architect",
+            name: "pricing_architect_title",
             slug: "architect",
             tier: 2,
             price: isAnnual.value
@@ -88,7 +88,7 @@ const plans = computed(() => {
             theme: "indigo",
         },
         {
-            name: "Quantum",
+            name: "pricing_quantum_title",
             slug: "quantum",
             tier: 3,
             price: isAnnual.value
@@ -115,11 +115,11 @@ const plans = computed(() => {
             buttonText: "pricing_btn_unleash",
             highlight: true,
             theme: "premium",
-            badge: "REKOMENDASI AI",
+            badge: "pricing_badge_ai_rec",
             icon: "sparkles",
         },
         {
-            name: "Legendary",
+            name: "pricing_legendary_title",
             slug: "legendary",
             tier: 4,
             price: appLocale.value === "id" ? "Rp 899k" : "$59.00",
@@ -135,7 +135,7 @@ const plans = computed(() => {
             ],
             buttonText: "pricing_btn_legendary",
             theme: "dark",
-            badge: "FOUNDER EDITION",
+            badge: "pricing_badge_founder",
             icon: "infinity",
         },
     ];
@@ -165,7 +165,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <Head title="Pricing & Plans" />
+    <Head :title="$t('pricing_head_title')" />
 
     <div class="bg-slate-50 dark:bg-slate-950 min-h-screen pb-32">
             <!-- ===== HERO SECTION ===== -->
@@ -254,12 +254,12 @@ onMounted(() => {
                             <h3
                                 class="text-xs font-black tracking-wide text-slate-400 dark:text-slate-500 mb-6"
                             >
-                                {{ plan.name }}
+                                {{ $t(plan.name) }}
                             </h3>
                             <div class="flex items-baseline gap-2">
                                 <span
                                     class="text-4xl lg:text-5xl font-black text-slate-950 dark:text-white tracking-tighter"
-                                    >{{ plan.price }}</span
+                                    >{{ plan.tier === 1 ? $t(plan.price) : plan.price }}</span
                                 >
                                 <span
                                     class="text-[10px] font-bold text-slate-400 mb-1"
@@ -350,7 +350,7 @@ onMounted(() => {
                                 v-if="plan.tier > userTier && plan.initial"
                                 class="text-center mt-4 text-[9px] font-bold text-indigo-500"
                             >
-                                Guaranteed Lifetime Access
+                                {{ $t('pricing_lifetime_guarantee') }}
                             </p>
                         </div>
                     </div>
@@ -387,17 +387,17 @@ onMounted(() => {
                                     <th
                                         class="p-8 text-[10px] font-black tracking-wide text-slate-900 dark:text-white text-center"
                                     >
-                                        Explorer
+                                        {{ $t('pricing_explorer_title') }}
                                     </th>
                                     <th
                                         class="p-8 text-[10px] font-black tracking-wide text-indigo-500 text-center"
                                     >
-                                        Architect
+                                        {{ $t('pricing_architect_title') }}
                                     </th>
                                     <th
                                         class="p-8 text-[10px] font-black tracking-wide text-amber-500 text-center"
                                     >
-                                        Quantum
+                                        {{ $t('pricing_quantum_title') }}
                                     </th>
                                 </tr>
                             </thead>
@@ -436,11 +436,11 @@ onMounted(() => {
                                             name: $t('pricing_f_ai_assistant'),
                                             explorer: '—',
                                             architect: '—',
-                                            quantum: '24/7 Access',
+                                            quantum: $t('pricing_v_247_access'),
                                         },
                                         {
                                             name: $t('pricing_f_life_insights'),
-                                            explorer: 'Basic',
+                                            explorer: $t('pricing_v_basic'),
                                             architect: $t('pricing_v_advanced'),
                                             quantum: $t('pricing_v_predictive'),
                                         },
@@ -496,7 +496,7 @@ onMounted(() => {
                                 ></div>
                                 <span
                                     class="font-black dark:text-white tracking-tight text-[10px]"
-                                    >Asana Strength</span
+                                    >{{ $t('pricing_infra_asana') }}</span
                                 >
                             </div>
                             <div class="flex items-center gap-2">
@@ -505,7 +505,7 @@ onMounted(() => {
                                 ></div>
                                 <span
                                     class="font-black dark:text-white tracking-tight text-[10px]"
-                                    >ClickUp Power</span
+                                    >{{ $t('pricing_infra_clickup') }}</span
                                 >
                             </div>
                             <div class="flex items-center gap-2">
@@ -514,7 +514,7 @@ onMounted(() => {
                                 ></div>
                                 <span
                                     class="font-black dark:text-white tracking-tight text-[10px]"
-                                    >Notion Clarity</span
+                                    >{{ $t('pricing_infra_notion') }}</span
                                 >
                             </div>
                         </div>

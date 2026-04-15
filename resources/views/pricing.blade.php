@@ -22,12 +22,12 @@
                 </div>
                 
                 <h1 class="text-6xl md:text-8xl font-black text-slate-900 dark:text-white tracking-tighter mb-8 leading-[0.9]">
-                    Investasi pada<br/>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500 dark:from-indigo-400 dark:to-violet-400">Diri Sendiri.</span>
+                    {{ __('pricing_title_1') }}<br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-500 dark:from-indigo-400 dark:to-violet-400">{{ __('pricing_title_2') }}</span>
                 </h1>
                 
                 <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-16 font-bold leading-relaxed">
-                    Mulai gratis atau buka seluruh ekosistem. Pilih paket yang berkembang seiring kemajuan hidup Anda.
+                    {{ __('pricing_subtitle') }}
                 </p>
 
                 {{-- Billing Toggle --}}
@@ -42,7 +42,7 @@
                         {{ __('pricing_yearly') }}
                     </span>
                     <div class="hidden sm:block px-4 py-1.5 rounded-full bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-emerald-500/20 animate-bounce">
-                        SAVE 40%
+                        {{ __('pricing_billing_save') }}
                     </div>
                 </div>
             </div>
@@ -58,36 +58,36 @@
                         <div class="mb-10">
                             <span class="text-[10px] font-black text-slate-400 tracking-[0.2em] uppercase">{{ __('pricing_l1_name') }}</span>
                             <div class="mt-4 flex items-baseline gap-1">
-                                <span class="text-4xl font-black text-slate-900 dark:text-white">Free</span>
+                                <span class="text-4xl font-black text-slate-900 dark:text-white">{{ __('pricing_free') }}</span>
                             </div>
                         </div>
                         
-                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">Dasar produktivitas untuk memulai perubahan hidup Anda.</p>
+                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">{{ __('pricing_explorer_desc') }}</p>
                         
                         <ul class="space-y-4 mb-12 flex-grow">
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Atomic Habit Tracker (Max 5)</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_habit_max5') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Daily Planner & Task List</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_daily_planner_tasks') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Basic Finance (Income/Expense)</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_basic_finance_simple') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Standard Dashboards</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_standard_dashboards') }}</span>
                             </li>
                             <li class="flex items-center gap-3 opacity-40">
                                 <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-[8px] font-black">🔒</div>
-                                <span class="text-xs font-bold text-slate-500">Journal, Goals, & Jobs</span>
+                                <span class="text-xs font-bold text-slate-500">{{ __('pricing_f_journal_goals_jobs_locked') }}</span>
                             </li>
                             <li class="flex items-center gap-3 opacity-40">
                                 <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 text-[8px] font-black">🔒</div>
-                                <span class="text-xs font-bold text-slate-500">Advanced AI Life Coach</span>
+                                <span class="text-xs font-bold text-slate-500">{{ __('pricing_f_advanced_ai_locked') }}</span>
                             </li>
                         </ul>
 
@@ -102,39 +102,39 @@
                             <span class="text-[10px] font-black text-indigo-600 dark:text-indigo-400 tracking-[0.2em] uppercase">{{ __('pricing_l2_name') }}</span>
                             <div class="mt-4 flex items-baseline gap-1">
                                 <span class="text-4xl font-black text-slate-900 dark:text-white" x-text="isAnnual ? '{{ App::getLocale() == 'id' ? 'Rp 79k' : '$4.99' }}' : '{{ App::getLocale() == 'id' ? 'Rp 99k' : '$6.99' }}'"></span>
-                                <span class="text-xs font-bold text-slate-400 tracking-tighter">/bln</span>
+                                <span class="text-xs font-bold text-slate-400 tracking-tighter">{{ __('pricing_per_month_short') }}</span>
                             </div>
                         </div>
 
-                        <p class="text-xs font-bold text-slate-600 dark:text-slate-300 mb-10 leading-relaxed min-h-[48px]">Akses seluruh ekosistem tanpa batas untuk kontrol penuh.</p>
+                        <p class="text-xs font-bold text-slate-600 dark:text-slate-300 mb-10 leading-relaxed min-h-[48px]">{{ __('pricing_architect_desc') }}</p>
                         
                         <ul class="space-y-4 mb-12 flex-grow border-t border-slate-50 dark:border-slate-700 pt-8">
                             <li class="flex items-center justify-center py-2 mb-2 bg-indigo-50/50 dark:bg-indigo-500/5 rounded-xl border border-indigo-100 dark:border-indigo-500/10">
-                                <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Semua Fitur Explorer, Ditambah:</span>
+                                <span class="text-[9px] font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">{{ __('pricing_feature_header_explorer_plus') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 text-[10px] font-black italic">★</div>
-                                <span class="text-xs font-black text-slate-900 dark:text-white">Buka Semua Tab (Journal, Goals, Job)</span>
+                                <span class="text-xs font-black text-slate-900 dark:text-white">{{ __('pricing_f_all_tabs_open') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Habit Unlimited & Batch Entry</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_unlimited_habit') }} & {{ __('pricing_v_batch') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Wealth Lab (Finance Budgeting & Savings)</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_the_vault') }} ({{ __('feat_budgeting') }} & {{ __('pricing_f_vault_savings') }})</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Advanced Calendar Timeline</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_finance_trends') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Job Application Tracker & CRM</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_batch_planner') }} & CRM</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Cloud Sync & Data Backup</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_neural_sync') }} & {{ __('pricing_storage_usage') }}</span>
                             </li>
                         </ul>
 
@@ -148,58 +148,58 @@
                         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent rounded-[3.5rem] overflow-hidden"></div>
                         
                         <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-indigo-600 text-white text-[9px] font-black tracking-[0.2em] uppercase shadow-lg border border-white/20 animate-pulse">
-                            REKOMENDASI AI
+                            {{ __('pricing_badge_ai_rec') }}
                         </div>
 
                         <div class="mb-10 relative">
                             <span class="text-[10px] font-black text-indigo-400 tracking-[0.2em] uppercase">{{ __('pricing_l3_name') }}</span>
                             <div class="mt-4 flex items-baseline gap-1 text-white">
                                 <span class="text-4xl font-black" x-text="isAnnual ? '{{ App::getLocale() == 'id' ? 'Rp 109k' : '$6.99' }}' : '{{ App::getLocale() == 'id' ? 'Rp 159k' : '$9.99' }}'"></span>
-                                <span class="text-xs font-bold opacity-50 tracking-tighter">/bln</span>
+                                <span class="text-xs font-bold opacity-50 tracking-tighter">{{ __('pricing_per_month_short') }}</span>
                             </div>
                         </div>
 
-                        <p class="text-xs font-bold text-slate-400 mb-10 leading-relaxed min-h-[48px]">Integrasikan Kecerdasan Buatan (AI) ke dalam seluruh hidup Anda.</p>
+                        <p class="text-xs font-bold text-slate-400 mb-10 leading-relaxed min-h-[48px]">{{ __('pricing_quantum_desc') }}</p>
                         
                         <ul class="space-y-4 mb-12 flex-grow relative border-t border-white/5 pt-8">
                             <li class="flex items-center justify-center py-2 mb-2 bg-white/5 rounded-xl border border-white/10">
-                                <span class="text-[9px] font-black text-indigo-300 uppercase tracking-widest">Semua Fitur Architect, Ditambah:</span>
+                                <span class="text-[9px] font-black text-indigo-300 uppercase tracking-widest">{{ __('pricing_feature_header_architect_plus') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <span class="text-[14px]">🤖</span>
-                                <span class="text-xs font-black text-white">Neural OS AI Coach (Unlimited Chat)</span>
+                                <span class="text-xs font-black text-white">{{ __('pricing_f_neural_ai') }} ({{ __('pricing_v_unlimited') }} Chat)</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-[8px] font-black animate-pulse">✨</div>
-                                <span class="text-xs font-bold text-indigo-200">AI Habit Stack & Behavioral Audit</span>
+                                <span class="text-xs font-bold text-indigo-200">{{ __('feat_ai_stacking') }} & Behavioral Audit</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-[8px] font-black">🧠</div>
-                                <span class="text-xs font-bold text-indigo-200">AI Financial Audit & Wealth Insights</span>
+                                <span class="text-xs font-bold text-indigo-200">{{ __('feat_ai_audit') }} & {{ __('pricing_f_ai_finance_insights') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-[8px] font-black">📝</div>
-                                <span class="text-xs font-bold text-indigo-200">AI Journal Sentiment & Mental Analysis</span>
+                                <span class="text-xs font-bold text-indigo-200">{{ __('feat_sentiment_ai') }} & Mental Analysis</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400 text-[8px] font-black">📄</div>
-                                <span class="text-xs font-bold text-indigo-200">AI Resume Scan & Job Matching</span>
+                                <span class="text-xs font-bold text-indigo-200">{{ __('feat_resume_ai') }} & Job Matching</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-medium text-slate-400">Prioritas Akses Fitur AI Terbaru</span>
+                                <span class="text-xs font-medium text-slate-400">{{ __('pricing_f_early_access') }} AI</span>
                             </li>
                         </ul>
 
                         <button onclick="openCheckout('quantum')" class="relative w-full py-6 rounded-[2rem] bg-white text-slate-950 font-black text-xs hover:scale-105 transition-all active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.1)]">
-                            BUKA NEURAL OS
+                            {{ __('pricing_btn_unleash_neural') }}
                         </button>
                     </div>
 
                     {{-- 4. Legendary --}}
                     <div class="group relative flex flex-col p-10 rounded-[3rem] bg-white dark:bg-black border border-slate-200 dark:border-slate-800 hover:-translate-y-4 transition-all duration-700 hover:shadow-2xl">
                         <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-amber-500 text-white text-[8px] font-black tracking-widest whitespace-nowrap shadow-lg">
-                            FOUNDER EDITION
+                            {{ __('pricing_badge_founder') }}
                         </div>
 
                         <div class="mb-10">
@@ -207,34 +207,34 @@
                             <div class="mt-4 flex items-baseline gap-2">
                                 <span class="text-3xl font-black text-slate-900 dark:text-white">{{ App::getLocale() == 'id' ? 'Rp 899k' : '$59.00' }}</span>
                             </div>
-                            <div class="text-[9px] font-black text-amber-500 mt-1 uppercase tracking-tighter">Sekali Bayar Selamanya</div>
+                            <div class="text-[9px] font-black text-amber-500 mt-1 uppercase tracking-tighter">{{ __('pricing_lifetime') }}</div>
                         </div>
 
-                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">Miliki ekosistem produktivitas OneForMind seumur hidup.</p>
+                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-10 leading-relaxed min-h-[48px]">{{ __('pricing_legendary_desc') }}</p>
                         
                         <ul class="space-y-4 mb-12 flex-grow border-t border-slate-50 dark:border-slate-800 pt-8">
                             <li class="flex items-center justify-center py-2 mb-2 bg-amber-500/5 rounded-xl border border-amber-500/10">
-                                <span class="text-[9px] font-black text-amber-500 uppercase tracking-widest">Hak Istimewa Legendary:</span>
+                                <span class="text-[9px] font-black text-amber-500 uppercase tracking-widest">{{ __('pricing_feature_header_quantum_plus') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <span class="text-[14px]">💎</span>
-                                <span class="text-xs font-black text-slate-900 dark:text-white">Akses Lifetime Seluruh Tab (Pro)</span>
+                                <span class="text-xs font-black text-slate-900 dark:text-white">{{ __('pricing_f_lifetime_access') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500 text-[8px] font-black">★</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Gratis 2 Bulan Quantum AI Access</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_legendary_trial_ai') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Founder Badge & VIP Role</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_founder_badge') }} & VIP</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-[8px] font-black">✓</div>
-                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">Unlimited Cloud Storage</span>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">{{ __('pricing_f_neural_sync') }}</span>
                             </li>
                             <li class="flex items-center gap-3">
                                 <div class="w-5 h-5 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[8px] font-black text-emerald-500">✓</div>
-                                <span class="text-xs font-medium text-slate-500">Prioritas Support One-on-One</span>
+                                <span class="text-xs font-medium text-slate-500">{{ __('pricing_f_vvip_support') }}</span>
                             </li>
                         </ul>
 
@@ -258,20 +258,20 @@
                     <table class="w-full text-left border-collapse min-w-[800px]">
                         <thead>
                             <tr class="bg-slate-900 text-white">
-                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] opacity-60">Kemampuan Modul</th>
+                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] opacity-60">{{ __('pricing_feature_col_name') }}</th>
                                 <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] text-center">Explorer</th>
-                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] text-center text-indigo-400">Architect</th>
-                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] text-center text-amber-500">Quantum+</th>
+                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] text-center text-indigo-400">{{ __('pricing_architect_title') }}</th>
+                                <th class="p-8 text-[11px] font-black uppercase tracking-[0.2em] text-center text-amber-500">{{ __('pricing_quantum_title') }}+</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-50 dark:divide-slate-700">
                             @php
                                 $features = [
-                                    [__('pricing_f_active_habits'), '5 Habits', __('pricing_v_unlimited'), __('pricing_v_unlimited')],
-                                    [__('pricing_f_planner_engine'), __('pricing_v_standard'), __('pricing_v_batch'), __('pricing_v_ai_powered')],
-                                    [__('pricing_f_vault_savings'), __('pricing_v_locked'), __('pricing_v_unlimited'), __('pricing_v_unlimited')],
-                                    [__('pricing_f_ai_assistant'), '—', '—', '24/7 Access'],
-                                    [__('pricing_f_life_insights'), 'Basic', __('pricing_v_advanced'), __('pricing_v_predictive')],
+                                    [__('pricing_f_active_habits'), __('pricing_v_unlimited'), __('pricing_v_unlimited'), __('pricing_v_unlimited')],
+                                    [__('pricing_f_planner_engine'), __('pricing_v_batch'), __('pricing_v_batch'), __('pricing_v_ai_powered')],
+                                    [__('pricing_f_vault_savings'), __('pricing_v_unlimited'), __('pricing_v_unlimited'), __('pricing_v_unlimited')],
+                                    [__('pricing_f_ai_assistant'), '—', '—', __('pricing_v_247_access')],
+                                    [__('pricing_f_life_insights'), __('pricing_v_basic'), __('pricing_v_advanced'), __('pricing_v_predictive')],
                                     [__('pricing_f_custom_modules'), '—', __('pricing_v_partial'), __('pricing_v_full')],
                                 ];
                                 $modules = [

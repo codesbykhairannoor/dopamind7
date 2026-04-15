@@ -264,5 +264,22 @@
     "pricing_f_basic_finance_simple": "Full Finance (Monitor & Vault)",
     "pricing_f_standard_dashboards": "Standard Dashboards",
     "pricing_f_journal_goals_jobs_locked": "Journal, Goals, & Jobs",
-    "pricing_f_advanced_ai_locked": "Advanced AI Life Coach"
+    "pricing_f_advanced_ai_locked": "Advanced AI Life Coach",
+    "pricing_explorer_title": "Explorer",
+    "pricing_architect_title": "Architect",
+    "pricing_quantum_title": "Quantum",
+    "pricing_legendary_title": "Legendary",
+    "pricing_free": "Free",
+    "pricing_badge_ai_rec": "AI RECOMMENDATION",
+    "pricing_badge_founder": "FOUNDER EDITION",
+    "pricing_head_title": "Pricing & Plans",
+    "pricing_lifetime_guarantee": "Guaranteed Lifetime Access",
+    "pricing_v_247_access": "24/7 Access",
+    "pricing_v_basic": "Basic",
+    "pricing_infra_asana": "Asana Strength",
+    "pricing_infra_clickup": "ClickUp Power",
+    "pricing_infra_notion": "Notion Clarity",
+    "pricing_per_month_short": "/mo",
+    "pricing_once_short": "once",
+    "pricing_btn_unleash_neural": "UNLEASH NEURAL OS"
 }
