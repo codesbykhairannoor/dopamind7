@@ -26,17 +26,13 @@ class Handler extends ExceptionHandler
 
         // 🔥 TAMBAHKAN LOGIC INI DISINI
         $this->renderable(function (Throwable $e, $request) {
-            // Cek jika aplikasi tidak sedang dalam mode debug (Production)
-            // Dan cek jika ini adalah request dari Inertia
-            if (!config('app.debug')) {
-                $status = $this->isHttpException($e) ? $e->getStatusCode() : 500;
+            $status = $this->isHttpException($e) ? $e->getStatusCode() : 500;
 
-                // Hanya tangkap error berat (500, 503, 404, 403)
-                if (in_array($status, [500, 503, 404, 403])) {
-                    return Inertia::render('Error', [
-                        'status' => $status
-                    ])->toResponse($request)->setStatusCode($status);
-                }
+            // Selalu render halaman Error kita bahkan saat debug true untuk memastikan terjemahan dll jalan
+            if (in_array($status, [500, 503, 404, 403])) {
+                return Inertia::render('Error', [
+                    'status' => $status
+                ])->toResponse($request)->setStatusCode($status);
             }
 
             return null;

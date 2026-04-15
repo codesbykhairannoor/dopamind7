@@ -944,3 +944,7 @@ Route::post("/callback", [
 ])->name("payment.callback");
 
 require __DIR__ . "/auth.php";
+
+Route::fallback(function () {
+    return Inertia::render('Error', ['status' => 404])->toResponse(request())->setStatusCode(404);
+});

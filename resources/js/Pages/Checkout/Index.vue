@@ -28,6 +28,10 @@ const periodLabel = computed(() => {
 });
 
 const displayPrice = computed(() => {
+    // --- TEMPORARY GLOBAL PRICE OVERRIDE ---
+    return 'Rp 5.000';
+    // ---------------------------------------
+
     if (!periodLabel.value.toLowerCase().includes('year')) return props.price;
     
     // Extract numbers from "Rp 79.000"

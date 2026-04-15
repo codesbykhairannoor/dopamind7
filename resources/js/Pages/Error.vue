@@ -1,3 +1,12 @@
+<script>
+import BlankLayout from '@/Layouts/GuestLayout.vue'; // You might not even need a layout if you want it completely raw, but usually we need one to avoid inheriting the persistent layout
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    layout: null // Explicitly disable any persistent layouts like AuthenticatedLayout
+});
+</script>
+
 <script setup>
 import { computed } from 'vue';
 import { Head } from '@inertiajs/vue3';

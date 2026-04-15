@@ -48,7 +48,7 @@ createInertiaApp({
         // 🔥 PERSISTENT LAYOUT CONFIGURATION
         // All pages in Pages/Auth/ remain public (GuestLayout or no layout)
         // Others (Dashboard, Habits, etc.) automatically use AuthenticatedLayout
-        if (page.default.layout === undefined && !name.startsWith('Auth/') && name !== 'Welcome') {
+        if (page.default.layout === undefined && !name.startsWith('Auth/') && name !== 'Welcome' && name !== 'Error') {
             page.default.layout = AuthenticatedLayout;
         }
 
