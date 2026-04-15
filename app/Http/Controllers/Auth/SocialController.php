@@ -62,6 +62,18 @@ class SocialController extends Controller
                     ]
                 ]);
                 Auth::login($newUser, true);
+
+                // Meta Pixel & CAPI Event
+                try {
+                    $metaCapi = new \App\Services\MetaCapiService();
+                    $metaCapi->completeRegistration([
+                        'id' => $newUser->id,
+                        'email' => $newUser->email,
+                        'first_name' => explode(' ', trim($newUser->name))[0] ?? $newUser->name,
+                    ]);
+                } catch (\Exception $e) {
+                    Log::error('Meta CAPI Error on Social Registration: ' . $e->getMessage());
+                }
             }
 
             // Lempar ke dashboard (Inertia/Vue)

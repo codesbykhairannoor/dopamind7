@@ -66,7 +66,11 @@ class RegisteredUserController extends Controller
         // Send Server-Side Event (CAPI)
         try {
             $metaCapi = new \App\Services\MetaCapiService();
-            $metaCapi->sendCompleteRegistration(['email' => $user->email], $metaEventId);
+            $metaCapi->completeRegistration([
+                'id' => $user->id,
+                'email' => $user->email,
+                'first_name' => explode(' ', trim($user->name))[0] ?? $user->name,
+            ], $metaEventId);
         } catch (\Exception $e) {
             \Illuminate\Support\Facades\Log::error('Meta CAPI Error on Registration: ' . $e->getMessage());
         }

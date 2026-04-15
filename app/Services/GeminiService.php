@@ -30,7 +30,7 @@ class GeminiService
 
         try {
             $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$this->model}:generateContent?key={$this->apiKey}";
-            $response = Http::timeout(12)->post($url, [
+            $response = Http::timeout(30)->post($url, [
                 'contents' => [
                     [
                         'parts' => [

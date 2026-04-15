@@ -25,6 +25,18 @@ class TrialController extends Controller
             'has_used_trial' => 'true',
         ]);
 
+        // Meta Pixel & CAPI Event
+        try {
+            $metaCapi = new \App\Services\MetaCapiService();
+            $metaCapi->startTrial([
+                'id' => $user->id,
+                'email' => $user->email,
+                'first_name' => explode(' ', trim($user->name))[0] ?? $user->name,
+            ]);
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Meta CAPI Error on Start Trial: ' . $e->getMessage());
+        }
+
         return back()->with('success', 'Masa percobaan 10 Hari Architect Anda telah dimulai!');
     }
 }
