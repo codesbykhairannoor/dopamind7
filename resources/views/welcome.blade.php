@@ -128,7 +128,7 @@
 
                 @auth
                     <a hx-boost="false" href="{{ route('dashboard') }}" class="w-full sm:w-auto bg-indigo-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-indigo-700 transition-all transform hover:-translate-y-1 active:scale-95 shadow-lg shadow-indigo-100 text-center flex items-center justify-center gap-2 group">
-                        Enter Dashboard
+                        {{ __('hero_enter_dashboard') }}
                         <svg class="w-5 h-5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 @endauth
@@ -136,7 +136,7 @@
 
             {{-- Trust Section --}}
             <div class="mb-40">
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-10 opacity-60">Architecting the future of deep work</p>
+                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-10 opacity-60">{{ __('home_trust_tagline') }}</p>
                 <div class="flex flex-wrap justify-center items-center gap-x-16 gap-y-10 opacity-30">
                     <span class="text-xl font-black text-slate-900 tracking-tighter uppercase">Linear</span>
                     <span class="text-xl font-bold text-slate-900 tracking-tighter">Notion</span>
@@ -363,9 +363,9 @@
                     {{ __('pill_badge') }}
                 </div>
                 <h2 class="text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-8 font-[900] tracking-tight leading-[1.1]">
-                    Unified Insight into your Habit, Planning & Finance.
+                    {{ __('home_pillars_title') }}
                 </h2>
-                <p class="text-slate-500 text-lg font-medium leading-relaxed max-w-2xl mx-auto">OneForMind eliminates application friction by consolidating your most critical life management tools into a single, high-performance ecosystem.</p>
+                <p class="text-slate-500 text-lg font-medium leading-relaxed max-w-2xl mx-auto">{{ __('home_pillars_desc') }}</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -502,9 +502,9 @@
                     {{ __('flow_badge') }}
                 </div>
                 <h2 class="text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-8 leading-tight font-[900] tracking-tight">
-                    Synchronized Logic. Seamless Execution.
+                    {{ __('home_flow_title') }}
                 </h2>
-                <p class="text-slate-500 text-lg font-medium leading-relaxed opacity-70">Experience the synergy of having your brain's most critical systems working in perfect harmony.</p>
+                <p class="text-slate-500 text-lg font-medium leading-relaxed opacity-70">{{ __('home_flow_desc') }}</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">

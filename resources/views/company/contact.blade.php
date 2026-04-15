@@ -78,13 +78,13 @@
                                 <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">
                                     {{ __('contact_form_name') }}
                                 </label>
-                                <input name="name" type="text" required class="w-full px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-900/30 font-bold text-sm transition" placeholder="John Doe">
+                                <input name="name" type="text" required class="w-full px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-900/30 font-bold text-sm transition" placeholder="{{ __('contact_form_name_placeholder') }}">
                             </div>
                             <div class="space-y-2">
                                 <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-2">
                                     {{ __('contact_form_email') }}
                                 </label>
-                                <input name="email" type="email" required class="w-full px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-900/30 font-bold text-sm transition" placeholder="john@example.com">
+                                <input name="email" type="email" required class="w-full px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-900/30 font-bold text-sm transition" placeholder="{{ __('contact_form_email_placeholder') }}">
                             </div>
                         </div>
 
@@ -95,8 +95,8 @@
                             <select name="subject" class="w-full px-6 py-4 rounded-3xl bg-slate-50 dark:bg-slate-800 border-none focus:ring-4 focus:ring-indigo-100 dark:focus:ring-indigo-900/30 font-bold text-sm transition appearance-none cursor-pointer">
                                 <option value="support">{{ __('contact_info_support') }}</option>
                                 <option value="billing">{{ __('contact_info_billing') }}</option>
-                                <option value="partnership">Business Partnership</option>
-                                <option value="other">Lainnya</option>
+                                <option value="partnership">{{ __('contact_subject_partnership') }}</option>
+                                <option value="other">{{ __('contact_subject_other') }}</option>
                             </select>
                         </div>
 

@@ -251,83 +251,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
-        /* NProgress Inline to kill render blocking */
-        #nprogress {
-            pointer-events: none
-        }
-
-        #nprogress .bar {
-            background: #4f46e5;
-            position: fixed;
-            z-index: 1031;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px
-        }
-
-        #nprogress .peg {
-            display: block;
-            position: absolute;
-            right: 0;
-            width: 100px;
-            height: 100%;
-            box-shadow: 0 0 10px #4f46e5, 0 0 5px #4f46e5;
-            opacity: 1;
-            -webkit-transform: rotate(3deg) translate(0, -4px);
-            -ms-transform: rotate(3deg) translate(0, -4px);
-            transform: rotate(3deg) translate(0, -4px)
-        }
-
-        #nprogress .spinner {
-            display: block;
-            position: fixed;
-            z-index: 1031;
-            top: 15px;
-            right: 15px
-        }
-
-        #nprogress .spinner-icon {
-            width: 18px;
-            height: 18px;
-            box-sizing: border-box;
-            border: 2px solid transparent;
-            border-top-color: #4f46e5;
-            border-left-color: #4f46e5;
-            border-radius: 50%;
-            -webkit-animation: nprogress-spinner 400ms linear infinite;
-            animation: nprogress-spinner 400ms linear infinite
-        }
-
-        .nprogress-custom-parent {
-            overflow: hidden;
-            position: relative
-        }
-
-        .nprogress-custom-parent #nprogress .bar,
-        .nprogress-custom-parent #nprogress .spinner {
-            position: absolute
-        }
-
-        @-webkit-keyframes nprogress-spinner {
-            0% {
-                -webkit-transform: rotate(0)
-            }
-
-            100% {
-                -webkit-transform: rotate(360deg)
-            }
-        }
-
-        @keyframes nprogress-spinner {
-            0% {
-                transform: rotate(0)
-            }
-
-            100% {
-                transform: rotate(360deg)
-            }
-        }
     </style>
 
     {{-- Vite otomatis handle preload CSS yang benar, JANGAN hardcode link CSS di sini --}}
@@ -390,16 +313,6 @@
         ::-webkit-scrollbar-thumb {
             background: #cbd5e1;
             border-radius: 10px;
-        }
-
-        /* 3. 🔥 CUSTOM NPROGRESS COLOR (Indigo 600) */
-        #nprogress .bar {
-            background: #4f46e5 !important;
-            height: 3px !important;
-        }
-
-        #nprogress .peg {
-            box-shadow: 0 0 10px #4f46e5, 0 0 5px #4f46e5 !important;
         }
 
         /* Fix scrollbar */
@@ -628,7 +541,7 @@
                     <div class="relative group" @mouseenter="activeMenu = 'features'" @mouseleave="activeMenu = null">
                         <button
                             class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all flex items-center gap-1 group-hover:text-indigo-600">
-                            {{ __('Features') }}
+                            {{ __('nav_features') }}
                             <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
                                 :class="activeMenu === 'features' ? 'rotate-180' : ''" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -674,7 +587,7 @@
                     <div class="relative group" @mouseenter="activeMenu = 'solutions'" @mouseleave="activeMenu = null">
                         <button
                             class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
-                            {{ __('Solutions') }}
+                            {{ __('nav_solutions') }}
                             <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
                                 :class="activeMenu === 'solutions' ? 'rotate-180' : ''" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -751,7 +664,7 @@
                     <div class="relative group" @mouseenter="activeMenu = 'resources'" @mouseleave="activeMenu = null">
                         <button
                             class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
-                            {{ __('Resources') }}
+                            {{ __('nav_resources') }}
                             <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
                                 :class="activeMenu === 'resources' ? 'rotate-180' : ''" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -799,7 +712,7 @@
 
                     <a href="{{ route('pricing.index') }}"
                         class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition">
-                        {{ __('Pricing') }}
+                        {{ __('nav_pricing') }}
                     </a>
                 </div>
 
@@ -830,13 +743,13 @@
                             class="absolute top-full right-0 mt-3 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl overflow-hidden z-50 p-2">
                             <a href="{{ route('lang.switch', 'id') }}"
                                 class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all {{ app()->getLocale() === 'id' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600' }}">
-                                <span>Bahasa Indonesia</span>
+                                <span>{{ __('lang_id') }}</span>
                                 @if(app()->getLocale() === 'id') <span
                                 class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> @endif
                             </a>
                             <a href="{{ route('lang.switch', 'en') }}"
                                 class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all {{ app()->getLocale() === 'en' ? 'bg-indigo-50 text-indigo-700' : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600' }}">
-                                <span>English</span>
+                                <span>{{ __('lang_en') }}</span>
                                 @if(app()->getLocale() === 'en') <span
                                 class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> @endif
                             </a>
@@ -847,13 +760,13 @@
                     <div class="hidden lg:flex items-center gap-3">
                         @auth
                             <a hx-boost="false" href="{{ route('dashboard') }}"
-                                class="px-5 py-2 bg-slate-900 text-white rounded-full text-[13px] font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">Dashboard</a>
+                                class="px-5 py-2 bg-slate-900 text-white rounded-full text-[13px] font-bold shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">{{ __('nav_dashboard') }}</a>
                         @else
                             <a hx-boost="false" href="{{ route('login') }}"
-                                class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">Log In</a>
+                                class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">{{ __('nav_login') }}</a>
                             <a hx-boost="false" href="{{ route('register') }}"
                                 class="px-5 py-2 bg-indigo-600 text-white rounded-full text-[13px] font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
-                                Get Started
+                                {{ __('nav_register') }}
                             </a>
                         @endauth
                     </div>
@@ -862,11 +775,11 @@
                     <div class="flex lg:hidden items-center gap-2">
                         @auth
                             <a hx-boost="false" href="{{ route('dashboard') }}"
-                                class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[13.5px] font-black shadow-lg">Dashboard</a>
+                                class="px-5 py-2.5 bg-slate-900 text-white rounded-full text-[13.5px] font-black shadow-lg">{{ __('nav_dashboard') }}</a>
                         @else
                             <a hx-boost="false" href="{{ route('register') }}"
                                 class="px-5 py-2.5 bg-indigo-600 text-white rounded-full text-[13.5px] font-black shadow-lg shadow-indigo-200">
-                                Get Started
+                                {{ __('nav_register') }}
                             </a>
                         @endauth
                     </div>
@@ -887,21 +800,31 @@
                 </div>
             </div>
 
-            {{-- MOBILE MENU OVERLAY (Isi sama dengan kodemu, aman) --}}
-            <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
-                x-cloak
-                class="lg:hidden fixed inset-0 top-0 bg-white z-[100] pt-24 px-6 pb-10 flex flex-col h-screen overflow-y-auto">
+            {{-- MOBILE MENU OVERLAY --}}
+            <div x-show="mobileMenuOpen" x-cloak class="lg:hidden">
+                <div x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                    class="fixed inset-0 z-[99] bg-slate-900/30 backdrop-blur-sm" @click="mobileMenuOpen = false"></div>
+
+                <div x-transition:enter="transition ease-out duration-250"
+                    x-transition:enter-start="-translate-x-full opacity-90"
+                    x-transition:enter-end="translate-x-0 opacity-100"
+                    x-transition:leave="transition ease-in duration-180"
+                    x-transition:leave-start="translate-x-0 opacity-100"
+                    x-transition:leave-end="-translate-x-full opacity-90"
+                    class="fixed left-0 top-16 z-[100] h-[calc(100dvh-4rem)] w-[min(360px,92vw)] bg-white rounded-r-3xl border-r border-slate-100 shadow-2xl px-4 py-4 flex flex-col overflow-y-auto">
 
                 <div class="flex-grow space-y-2">
                     {{-- Mobile Features Accordion --}}
                     <div class="border-b border-slate-50">
                         <button
                             @click="activeAccordion === 'features' ? activeAccordion = null : activeAccordion = 'features'"
-                            class="w-full py-5 flex justify-between items-center text-xl font-black text-slate-900">
-                            <span>Features</span>
+                            class="w-full py-3 flex justify-between items-center text-sm font-black text-slate-900 uppercase tracking-wider">
+                            <span>{{ __('nav_features') }}</span>
                             <svg :class="activeAccordion === 'features' ? 'rotate-180' : ''"
-                                class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor"
+                                class="w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 9l-7 7-7-7"></path>
@@ -910,17 +833,17 @@
                         <div x-show="activeAccordion === 'features'" x-collapse>
                             <div class="grid grid-cols-1 gap-1 pb-4">
                                 <x-nav-item-mobile href="{{ route('features.habit') }}" icon="🌱"
-                                    title="Habit Tracker" />
+                                    title="{{ __('nav_mobile_feat_habit_title') }}" desc="{{ __('nav_mobile_feat_habit_desc') }}" />
                                 <x-nav-item-mobile href="{{ route('features.finance') }}" icon="💰"
-                                    title="Finance OS" />
+                                    title="{{ __('nav_mobile_feat_finance_title') }}" desc="{{ __('nav_mobile_feat_finance_desc') }}" />
                                 <x-nav-item-mobile href="{{ route('features.planner') }}" icon="🎯"
-                                    title="Daily Planner" />
-                                <x-nav-item-mobile href="{{ route('features.journal') }}" icon="📔" title="Journal" />
-                                <x-nav-item-mobile href="{{ route('features.calendar') }}" icon="📅" title="Calendar" />
-                                <x-nav-item-mobile href="{{ route('features.goal') }}" icon="🎯" title="Goal Tracker" />
-                                <x-nav-item-mobile href="{{ route('features.job') }}" icon="💼" title="Job Tracker" />
+                                    title="{{ __('nav_mobile_feat_planner_title') }}" desc="{{ __('nav_mobile_feat_planner_desc') }}" />
+                                <x-nav-item-mobile href="{{ route('features.journal') }}" icon="📔" title="{{ __('nav_mobile_feat_journal_title') }}" desc="{{ __('nav_mobile_feat_journal_desc') }}" />
+                                <x-nav-item-mobile href="{{ route('features.calendar') }}" icon="📅" title="{{ __('nav_mobile_feat_calendar_title') }}" desc="{{ __('nav_mobile_feat_calendar_desc') }}" />
+                                <x-nav-item-mobile href="{{ route('features.goal') }}" icon="🎯" title="{{ __('nav_mobile_feat_goal_title') }}" desc="{{ __('nav_mobile_feat_goal_desc') }}" />
+                                <x-nav-item-mobile href="{{ route('features.job') }}" icon="💼" title="{{ __('nav_mobile_feat_job_title') }}" desc="{{ __('nav_mobile_feat_job_desc') }}" />
                                 <x-nav-item-mobile href="{{ route('features.neural-os') }}" icon="🧠"
-                                    title="Neural OS AI" />
+                                    title="{{ __('nav_mobile_feat_neural_title') }}" desc="{{ __('nav_mobile_feat_neural_desc') }}" />
                             </div>
                         </div>
                     </div>
@@ -929,52 +852,49 @@
                     <div class="border-b border-slate-50">
                         <button
                             @click="activeAccordion === 'solutions' ? activeAccordion = null : activeAccordion = 'solutions'"
-                            class="w-full py-5 flex justify-between items-center text-xl font-black text-slate-900">
-                            <span>Solutions</span>
+                            class="w-full py-3 flex justify-between items-center text-sm font-black text-slate-900 uppercase tracking-wider">
+                            <span>{{ __('nav_solutions') }}</span>
                             <svg :class="activeAccordion === 'solutions' ? 'rotate-180' : ''"
-                                class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor"
+                                class="w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
                         <div x-show="activeAccordion === 'solutions'" x-collapse>
-                            <div class="pb-6 space-y-6">
+                            <div class="pb-4 space-y-5">
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">By
-                                        Role</p>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_mobile_by_role') }}</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <x-nav-item-mobile href="{{ route('solutions.student') }}" icon="🎓"
-                                            title="Students" />
+                                            title="{{ __('nav_mobile_sol_student_title') }}" desc="{{ __('nav_mobile_sol_student_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('solutions.freelancer') }}" icon="💻"
-                                            title="Freelancers" />
+                                            title="{{ __('nav_mobile_sol_freelancer_title') }}" desc="{{ __('nav_mobile_sol_freelancer_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('solutions.personalgrowth') }}" icon="🚀"
-                                            title="Personal Growth" />
+                                            title="{{ __('nav_mobile_sol_growth_title') }}" desc="{{ __('nav_mobile_sol_growth_desc') }}" />
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">By
-                                        Use Case</p>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_mobile_by_usecase') }}</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <x-nav-item-mobile href="{{ route('solutions.finance') }}" icon="💰"
-                                            title="Finance Clarity" />
+                                            title="{{ __('nav_mobile_sol_finance_title') }}" desc="{{ __('nav_mobile_sol_finance_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('solutions.career') }}" icon="💼"
-                                            title="Career Tracker" />
+                                            title="{{ __('nav_mobile_sol_career_title') }}" desc="{{ __('nav_mobile_sol_career_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('solutions.mental') }}" icon="🧘"
-                                            title="Mental Health" />
+                                            title="{{ __('nav_mobile_sol_mental_title') }}" desc="{{ __('nav_mobile_sol_mental_desc') }}" />
                                     </div>
                                 </div>
                                 {{-- ADDING MISSING BY METHODOLOGY SECTION IN MOBILE --}}
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-3">By
-                                        Methodology</p>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-3">{{ __('nav_mobile_by_method') }}</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <x-nav-item-mobile href="{{ route('solutions.atomic') }}" icon="🌱"
-                                            title="Atomic Habits" />
+                                            title="{{ __('nav_mobile_sol_atomic_title') }}" desc="{{ __('nav_mobile_sol_atomic_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('solutions.deepwork') }}" icon="⚡"
-                                            title="Deep Work" />
+                                            title="{{ __('nav_mobile_sol_deepwork_title') }}" desc="{{ __('nav_mobile_sol_deepwork_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('solutions.secondbrain') }}" icon="🧠"
-                                            title="Second Brain" />
+                                            title="{{ __('nav_mobile_sol_secondbrain_title') }}" desc="{{ __('nav_mobile_sol_secondbrain_desc') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -985,10 +905,10 @@
                     <div class="border-b border-slate-50">
                         <button
                             @click="activeAccordion === 'resources' ? activeAccordion = null : activeAccordion = 'resources'"
-                            class="w-full py-5 flex justify-between items-center text-xl font-black text-slate-900">
-                            <span>Resources</span>
+                            class="w-full py-3 flex justify-between items-center text-sm font-black text-slate-900 uppercase tracking-wider">
+                            <span>{{ __('nav_resources') }}</span>
                             <svg :class="activeAccordion === 'resources' ? 'rotate-180' : ''"
-                                class="w-5 h-5 text-slate-400 transition-transform" fill="none" stroke="currentColor"
+                                class="w-4 h-4 text-slate-400 transition-transform" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 9l-7 7-7-7"></path>
@@ -997,27 +917,25 @@
                         <div x-show="activeAccordion === 'resources'" x-collapse>
                             <div class="pb-6 space-y-6">
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
-                                        Knowledge & Help</p>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_mobile_res_knowledge') }}</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <x-nav-item-mobile href="{{ route('resources.guide') }}" icon="📖"
-                                            title="User Guide" />
+                                            title="{{ __('nav_mobile_res_guide_title') }}" desc="{{ __('nav_mobile_res_guide_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('resources.help') }}" icon="🙋‍♂️"
-                                            title="Help Center" />
+                                            title="{{ __('nav_mobile_res_help_title') }}" desc="{{ __('nav_mobile_res_help_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('resources.changelog') }}" icon="🚀"
-                                            title="What's New" />
+                                            title="{{ __('nav_mobile_res_changelog_title') }}" desc="{{ __('nav_mobile_res_changelog_desc') }}" />
                                     </div>
                                 </div>
                                 <div>
-                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">
-                                        Social & Community</p>
+                                    <p class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">{{ __('nav_mobile_res_social') }}</p>
                                     <div class="grid grid-cols-1 gap-1">
                                         <x-nav-item-mobile href="{{ route('resources.community') }}" icon="🌍"
-                                            title="Community" />
+                                            title="{{ __('nav_mobile_res_community_title') }}" desc="{{ __('nav_mobile_res_community_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('resources.blog') }}" icon="✍️"
-                                            title="Blog" />
+                                            title="{{ __('nav_mobile_res_blog_title') }}" desc="{{ __('nav_mobile_res_blog_desc') }}" />
                                         <x-nav-item-mobile href="{{ route('resources.stories') }}" icon="✨"
-                                            title="Success Stories" />
+                                            title="{{ __('nav_mobile_res_stories_title') }}" desc="{{ __('nav_mobile_res_stories_desc') }}" />
                                     </div>
                                 </div>
                             </div>
@@ -1025,12 +943,12 @@
                     </div>
 
                     <a href="{{ route('pricing.index') }}"
-                        class="block py-5 text-xl font-black text-slate-900 border-b border-slate-50">Pricing</a>
+                        class="block py-3 text-sm font-black uppercase tracking-wider text-slate-900 border-b border-slate-50">{{ __('nav_pricing') }}</a>
                 </div>
 
-                <div class="pt-8 space-y-6">
-                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
-                        <span class="text-sm font-bold text-slate-600">Language</span>
+                <div class="pt-5 space-y-4">
+                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-2xl border border-slate-100">
+                        <span class="text-xs font-black uppercase tracking-wider text-slate-500">{{ __('nav_language') }}</span>
                         <div class="flex gap-2">
                             <a href="{{ route('lang.switch', 'id') }}"
                                 class="px-3 py-1 rounded-lg text-xs font-black {{ app()->getLocale() === 'id' ? 'bg-indigo-600 text-white shadow-md' : 'bg-white text-slate-400' }}">ID</a>
@@ -1042,17 +960,16 @@
                     @guest
                         <div class="grid grid-cols-1 gap-3">
                             <a hx-boost="false" href="{{ route('login') }}"
-                                class="w-full py-4 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl">Log
-                                In</a>
+                                class="w-full py-3 text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-2xl text-sm">{{ __('nav_login') }}</a>
                             <a hx-boost="false" href="{{ route('register') }}"
-                                class="w-full py-4.5 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl">Get
-                                Started</a>
+                                class="w-full py-3.5 text-center font-black text-white bg-indigo-600 rounded-2xl shadow-xl text-sm">{{ __('nav_register') }}</a>
                         </div>
                     @else
                         <a hx-boost="false" href="{{ route('dashboard') }}"
-                            class="block w-full py-4.5 text-center font-black text-white bg-slate-900 rounded-2xl">Dashboard</a>
+                            class="block w-full py-3.5 text-center font-black text-white bg-slate-900 rounded-2xl text-sm">{{ __('nav_dashboard') }}</a>
                     @endguest
                 </div>
+            </div>
             </div>
         </nav>
 
@@ -1124,7 +1041,7 @@
                     </div>
 
                     <div>
-                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">Resources</p>
+                        <p class="font-black text-xs uppercase tracking-widest text-slate-900 mb-6">{{ __('nav_resources') }}</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('resources.help') }}" class="hover:text-indigo-600 transition">Help
                                     Center</a></li>
@@ -1209,26 +1126,12 @@
 
     {{-- 3. Load Library --}}
     <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
     <script src="//instant.page/5.2.0" type="module"></script>
 
     {{-- 4. 🔥 TURBO NAVIGATION ENGINE --}}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. NProgress: Faster config
-            NProgress.configure({
-                showSpinner: false,
-                speed: 200,
-                minimum: 0.2,
-                trickle: true,
-                trickleSpeed: 50
-            });
-
-            // 2. HTMX Integration
-            document.body.addEventListener('htmx:configRequest', (event) => {
-                NProgress.start();
-            });
-
+            // 1. HTMX Integration (instant swap without progress bar)
             document.body.addEventListener('htmx:beforeSwap', (event) => {
                 document.documentElement.style.scrollBehavior = 'auto';
                 if (event.detail.target === document.body || event.detail.target.tagName === 'MAIN') {
@@ -1237,7 +1140,6 @@
             });
 
             document.body.addEventListener('htmx:afterSwap', (event) => {
-                NProgress.done();
                 setTimeout(() => {
                     document.documentElement.style.scrollBehavior = '';
                 }, 50);
@@ -1250,28 +1152,14 @@
                 }
             });
 
-            document.body.addEventListener('htmx:onLoadError', () => NProgress.done());
+            document.body.addEventListener('htmx:onLoadError', () => {
+                document.documentElement.style.scrollBehavior = '';
+            });
             document.body.addEventListener('htmx:historyRestore', () => {
-                NProgress.remove();
                 document.documentElement.style.scrollBehavior = '';
             });
 
-            // 3. Fallback NProgress for non-HTMX links
-            document.addEventListener('click', (event) => {
-                let link = event.target.closest('a');
-                if (link &&
-                    link.href &&
-                    !link.hasAttribute('hx-boost') &&
-                    link.href.startsWith(window.location.origin) &&
-                    !link.href.includes('#') &&
-                    link.target !== '_blank'
-                ) {
-                    NProgress.start();
-                    document.documentElement.style.scrollBehavior = 'auto';
-                }
-            });
-
-            // 4. 🔥 AGGRESSIVE PREFETCH ENGINE: Prefetch on hover (65ms threshold)
+            // 2. 🔥 AGGRESSIVE PREFETCH ENGINE: Prefetch on hover (65ms threshold)
             const prefetchedUrls = new Set();
             const prefetchLink = (url) => {
                 if (prefetchedUrls.has(url)) return;
@@ -1303,7 +1191,7 @@
                 if (link && link.href) prefetchLink(link.href);
             }, { capture: true, passive: true });
 
-            // 5. 🔥 PRELOAD VISIBLE LINKS: Intersection Observer
+            // 3. 🔥 PRELOAD VISIBLE LINKS: Intersection Observer
             const linkObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
