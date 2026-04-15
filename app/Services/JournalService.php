@@ -17,7 +17,7 @@ class JournalService
         // 🔥 SUDAH AMAN UNTUK POSTGRESQL (CASE WHEN)
         $taskStats = PlannerTask::where('user_id', $userId)
             ->where('date', $todayStr)
-            ->selectRaw('COUNT(*) as total, SUM(CASE WHEN is_completed = true THEN 1 ELSE 0 END) as completed')
+            ->selectRaw("COUNT(*) as total, SUM(CASE WHEN is_completed = 'true' THEN 1 ELSE 0 END) as completed")
             ->first();
 
         $expenseTotal = FinanceTransaction::where('user_id', $userId)

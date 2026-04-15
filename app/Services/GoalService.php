@@ -47,13 +47,13 @@ class GoalService
             ->where('goals.status', 'active')
             ->select(
                 DB::raw('count(*) as total'),
-                DB::raw('sum(case when completed = true then 1 else 0 end) as completed'),
-                DB::raw('AVG(case when 1=1 then (SELECT count(*) from goal_milestones m2 where m2.goal_id = goals.id AND m2.completed = true) * 100.0 / NULLIF((SELECT count(*) from goal_milestones m3 where m3.goal_id = goals.id), 0) else 0 end) as avg_p')
+                DB::raw("sum(case when completed = 'true' then 1 else 0 end) as completed"),
+                DB::raw("AVG(case when 1=1 then (SELECT count(*) from goal_milestones m2 where m2.goal_id = goals.id AND m2.completed = 'true') * 100.0 / NULLIF((SELECT count(*) from goal_milestones m3 where m3.goal_id = goals.id), 0) else 0 end) as avg_p")
             )->first();
             
         // 3. Specific Goals (Top & Urgent) - Use eager loading wisely
         $topGoal = Goal::ofUser($userId)->byStatus('active')
-            ->withCount(['milestones as total_ms', 'milestones as completed_ms' => fn($q) => $q->where('completed', true)])
+            ->withCount(['milestones as total_ms', 'milestones as completed_ms' => fn($q) => $q->where('completed', 'true')])
             ->get()
             ->sortByDesc(fn($g) => $g->total_ms > 0 ? $g->completed_ms / $g->total_ms : 0)
             ->first();

@@ -14,7 +14,7 @@ class GoalResource extends JsonResource
     {
         $milestones = $this->whenLoaded('milestones');
         $total = $milestones instanceof \Illuminate\Support\Collection || is_array($milestones) ? count($milestones) : 0;
-        $completed = $milestones instanceof \Illuminate\Support\Collection ? $milestones->where('completed', true)->count() : 0;
+        $completed = $milestones instanceof \Illuminate\Support\Collection ? $milestones->filter(fn($m) => $m->completed === true || $m->completed === 'true' || $m->completed === 1)->count() : 0;
         $progress = $total ? round(($completed / $total) * 100, 2) : 0;
 
         $daysRemaining = null;

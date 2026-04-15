@@ -24,11 +24,11 @@ class NeuralSynergyService
         // Gather all module data for context
         $todayStr = now()->toDateString();
         
-        $habits = Habit::where('user_id', $userId)->where('is_archived', false)->ordered()->get();
+        $habits = Habit::where('user_id', $userId)->where('is_archived', 'false')->ordered()->get();
         $compHabits = $habits->filter(fn($h) => $h->logs()->where('date', $todayStr)->where('status', 'completed')->exists());
         
         $tasks = PlannerTask::where('user_id', $userId)->whereDate('date', $todayStr)->get();
-        $compTasks = $tasks->where('is_completed', true);
+        $compTasks = $tasks->where('is_completed', 'true');
         
         $finance = FinanceTransaction::where('user_id', $userId)->where('date', $todayStr)->get();
         $journal = Journal::where('user_id', $userId)->where('date', $todayStr)->first();
@@ -58,7 +58,7 @@ class NeuralSynergyService
             ],
             'goals' => $goals->map(fn($g) => [
                 'title' => $g->title,
-                'progress' => $g->milestones->count() > 0 ? round(($g->milestones->where('completed', true)->count() / $g->milestones->count()) * 100) : 0,
+                'progress' => $g->milestones->count() > 0 ? round(($g->milestones->where('completed', 'true')->count() / $g->milestones->count()) * 100) : 0,
             ])->toArray(),
             'jobs' => $jobs->map(fn($j) => [
                 'company' => $j->company,
@@ -151,7 +151,7 @@ class NeuralSynergyService
     private function getGlobalContext(int $userId): array
     {
         $todayStr = now()->toDateString();
-        $habits = Habit::where('user_id', $userId)->where('is_archived', false)->ordered()->get();
+        $habits = Habit::where('user_id', $userId)->where('is_archived', 'false')->ordered()->get();
         $compHabits = $habits->filter(fn($h) => $h->logs()->where('date', $todayStr)->where('status', 'completed')->exists());
         $tasks = PlannerTask::where('user_id', $userId)->whereDate('date', $todayStr)->get();
         $finance = FinanceTransaction::where('user_id', $userId)->where('date', $todayStr)->get();
@@ -161,7 +161,7 @@ class NeuralSynergyService
 
         return [
             'habits' => $habits->count() . " active, " . $compHabits->count() . " done today.",
-            'planner' => $tasks->count() . " tasks, " . $tasks->where('is_completed', true)->count() . " done.",
+            'planner' => $tasks->count() . " tasks, " . $tasks->where('is_completed', 'true')->count() . " done.",
             'finance' => "Exp: " . $finance->where('type', 'expense')->sum('amount') . ", Inc: " . $finance->where('type', 'income')->sum('amount'),
             'journal' => $journal ? "Mood: " . $journal->mood : "Not written today",
             'goals' => $goals->pluck('title')->toArray(),

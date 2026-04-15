@@ -57,7 +57,7 @@ class CalendarService
                 ->select(
                 'date',
                 DB::raw('COUNT(id) as total_tasks'),
-                DB::raw('SUM(CASE WHEN is_completed = true THEN 1 ELSE 0 END) as completed_tasks')
+                DB::raw("SUM(CASE WHEN is_completed = 'true' THEN 1 ELSE 0 END) as completed_tasks")
             )
                 ->groupBy('date')
                 ->get()

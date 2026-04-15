@@ -21,7 +21,7 @@ class AiHabitController extends Controller
     public function suggestStack(Request $request)
     {
         $user = Auth::user();
-        $habits = Habit::ofUser($user->id)->where('is_archived', false)->ordered()->get();
+        $habits = Habit::ofUser($user->id)->where('is_archived', 'false')->ordered()->get();
         $tasks = PlannerTask::where('user_id', $user->id)->whereDate('date', now())->take(10)->get();
 
         // Count performance in last 14 days
@@ -67,7 +67,7 @@ class AiHabitController extends Controller
     {
         $request->validate(['mood' => 'required|string']);
         $user = Auth::user();
-        $habits = Habit::ofUser($user->id)->where('is_archived', false)->get();
+        $habits = Habit::ofUser($user->id)->where('is_archived', 'false')->get();
 
         $locale = app()->getLocale();
         $langName = ($locale === 'id') ? 'Indonesian' : 'English';
@@ -117,7 +117,7 @@ class AiHabitController extends Controller
     {
         $user = Auth::user();
         $stagnantHabits = Habit::ofUser($user->id)
-            ->where('is_archived', false)
+            ->where('is_archived', 'false')
             ->withCount(['logs' => function($q) {
                 $q->where('date', '>=', now()->subDays(7));
             }])
