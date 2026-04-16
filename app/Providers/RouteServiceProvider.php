@@ -48,9 +48,9 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         // 5. LIMITER REGISTRATION (Anti Mass Account Creation)
-        // Batas: 3 registrasi per jam per IP.
+        // Batas: 15 registrasi per jam per IP (Ditingkatkan dari 3 untuk stabilitas testing & multi-user)
         RateLimiter::for('registration', function (Request $request) {
-            return Limit::perHour(3)->by($request->ip());
+            return Limit::perHour(15)->by($request->ip());
         });
 
         // 6. LIMITER AI FEATURES (Protect Gemini Quota/Costs)

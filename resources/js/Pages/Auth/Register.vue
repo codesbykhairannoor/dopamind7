@@ -17,13 +17,24 @@ const showPassword = ref(false);
 const widgetId = ref(null);
 
 const submit = () => {
-    form.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // Detect timezone or fallback to Asia/Jakarta
+    try {
+        form.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    } catch (e) {
+        form.timezone = 'Asia/Jakarta';
+    }
+
     form.post(route('register'), {
         onFinish: () => {
-            form.reset('password');
-            if (window.grecaptcha && widgetId.value !== null) {
-                window.grecaptcha.reset(widgetId.value);
-                form['g-recaptcha-response'] = '';
+            // Kita hanya reset password jika ada error agar user tidak capek ketik ulang data lain
+            if (form.hasErrors) {
+                form.reset('password');
+                
+                // Reset reCAPTCHA biar user bisa verifikasi ulang (token cuma 1x pakai)
+                if (window.grecaptcha && widgetId.value !== null) {
+                    window.grecaptcha.reset(widgetId.value);
+                    form['g-recaptcha-response'] = '';
+                }
             }
         },
     });

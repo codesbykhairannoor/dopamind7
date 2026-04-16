@@ -33,7 +33,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class ,
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', Rules\Password::defaults()],
             'g-recaptcha-response' => 'required|string',
         ], [
@@ -54,11 +54,14 @@ class RegisteredUserController extends Controller
                 ]);
             }
         } catch (\Illuminate\Validation\ValidationException $e) {
-            throw $e; // Re-throw validasi error ke form
-        } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('ReCAPTCHA API Error: ' . $e->getMessage());
+            throw $e;
+        } catch (\Throwable $e) {
+            \Illuminate\Support\Facades\Log::error('ReCAPTCHA/Registration Error: ' . $e->getMessage(), [
+                'exception' => get_class($e),
+                'trace' => $e->getTraceAsString()
+            ]);
             throw \Illuminate\Validation\ValidationException::withMessages([
-                'g-recaptcha-response' => 'Sistem verifikasi (ReCAPTCHA) sedang gangguan, coba lagi nanti.'
+                'g-recaptcha-response' => 'Sistem verifikasi (ReCAPTCHA) sedang gangguan atau terjadi kesalahan server, coba lagi nanti.'
             ]);
         }
 
@@ -67,6 +70,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'has_used_trial' => false,
+            'timezone' => $request->input('timezone', 'Asia/Jakarta'),
             'settings' => [
                 'modules' => [
                     'habit' => true,
@@ -74,7 +78,7 @@ class RegisteredUserController extends Controller
                     'finance' => true,
                 ],
                 'currency' => 'IDR',
-                'timezone' => 'Asia/Jakarta'
+                'timezone' => $request->input('timezone', 'Asia/Jakarta')
             ],
         ]);
 
@@ -91,6 +95,7 @@ class RegisteredUserController extends Controller
         }
 
         Auth::login($user);
+        \Illuminate\Support\Facades\Log::info('User registered and logged in: ' . $user->id);
 
         // Send Server-Side Event (CAPI)
         try {

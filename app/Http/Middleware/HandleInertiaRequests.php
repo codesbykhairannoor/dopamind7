@@ -41,7 +41,7 @@ class HandleInertiaRequests extends Middleware
             $trialExpired = Cache::remember($cacheKey, 300, function () use ($user) {
                 if (now()->greaterThan($user->premium_until)) {
                     $user->update([
-                        'is_premium'    => 'false',
+                        'is_premium'    => false,
                         'plan_type'     => 'explorer',
                         'premium_until' => null,
                     ]);
