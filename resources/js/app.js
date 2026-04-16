@@ -152,11 +152,14 @@ router.on('invalid', (event) => {
 
 // Single Google Analytics & Meta Pixel tracking listener
 router.on('navigate', (event) => {
+    const url = event.detail.page.url;
+    const pageTitle = document.title;
+
     // Google Analytics
     if (typeof gtag !== 'undefined' && window.GA_MEASUREMENT_ID) {
         gtag('config', window.GA_MEASUREMENT_ID, {
-            page_path: event.detail.page.url,
-            page_title: document.title
+            page_path: url,
+            page_title: pageTitle
         });
     }
 
@@ -164,17 +167,46 @@ router.on('navigate', (event) => {
     if (typeof window.fbq === 'function') {
         window.fbq('track', 'PageView');
         
-        // Pengecekan spesifik berdasarkan URL (misal: jika ada pendaftaran atau checkout)
-        const url = event.detail.page.url;
-        
-        if (url.includes('/register')) {
-            window.fbq('track', 'ViewContent', { content_name: 'Register Page' });
+        // 1. Awareness: ViewContent (Detailed lookup)
+        if (url.includes('/features/')) {
+            window.fbq('track', 'ViewContent', { content_name: pageTitle, content_category: 'Features', content_type: 'product' });
         } else if (url.includes('/pricing')) {
-            window.fbq('track', 'ViewContent', { content_name: 'Pricing Page' });
-        } else if (url.includes('/payment')) {
+            window.fbq('track', 'ViewContent', { content_name: 'Pricing Plans', content_category: 'Pricing' });
+        }
+
+        // 2. Awareness: Search tracking (Catatan journal / data finance)
+        const searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('q') || searchParams.has('search')) {
+            const query = searchParams.get('q') || searchParams.get('search');
+            window.fbq('track', 'Search', { search_string: query });
+        }
+
+        // 3. Acquisition: CompleteRegistration (Detection after redirect from register)
+        // Note: Usually triggered once, can be passed via session in a flash message
+        if (event.detail.page.props.flash?.registration_success) {
+            window.fbq('track', 'CompleteRegistration', { status: 'free_tier' });
+        }
+        
+        // 4. Funnel: InitiateCheckout
+        if (url.includes('/payment') && !url.includes('/status')) {
             window.fbq('track', 'InitiateCheckout', { currency: 'IDR' });
-        } else if (url.includes('/features/')) {
-            window.fbq('track', 'ViewContent', { content_name: 'Feature Details', content_type: url });
+        }
+
+        // 4b. Funnel: StartTrial (Detect from success message)
+        const flashSuccess = event.detail.page.props.flash?.success;
+        if (flashSuccess && (flashSuccess.includes('Masa percobaan') || flashSuccess.includes('Trial started'))) {
+            window.fbq('track', 'StartTrial', { content_name: 'Architect Trial', days: 10 });
+        }
+
+        // 5. Revenue: Purchase & Subscribe (On status page / success)
+        if (url.includes('/payment/status') || url.includes('tab=billing')) {
+            const paymentSuccess = event.detail.page.props.flash?.success || event.detail.page.props.flash?.payment_success;
+            // Hanya track jika ini adalah event sukses pembayaran baru (biasanya ada flash message)
+            if (paymentSuccess && (paymentSuccess.includes('complete') || paymentSuccess.includes('berhasil') || paymentSuccess.includes('upgraded'))) {
+                // Approximate values - the server CAPI will be more accurate, but browser helps deduplication
+                window.fbq('track', 'Purchase', { currency: 'IDR' });
+                window.fbq('track', 'Subscribe', { status: 'active' });
+            }
         }
     }
 });

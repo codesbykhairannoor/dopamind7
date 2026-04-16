@@ -78,7 +78,11 @@ class SocialController extends Controller
             }
 
             // Lempar ke dashboard (Inertia/Vue)
-            return redirect()->route('dashboard');
+            $redirect = redirect()->route('dashboard');
+            if (isset($newUser)) {
+                $redirect->with('registration_success', true);
+            }
+            return $redirect;
 
         } catch (\Exception $e) {
             // Log error ke storage/logs biar lo bisa cek di terminal Railway

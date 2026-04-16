@@ -276,6 +276,7 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '{{ env('META_PIXEL_ID') }}');
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent'); // Awareness: People looking at features/landing
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id={{ env('META_PIXEL_ID') }}&ev=PageView&noscript=1"
@@ -302,11 +303,20 @@
             background: #4f46e5 !important;
             height: 3px !important;
         }
+
         #nprogress .peg {
             box-shadow: 0 0 10px #4f46e5, 0 0 5px #4f46e5 !important;
         }
+
         #nprogress .spinner {
             display: none !important;
+        }
+
+        /* 📱 Only show NProgress on Mobile */
+        @media (min-width: 769px) {
+            #nprogress {
+                display: none !important;
+            }
         }
     </style>
 

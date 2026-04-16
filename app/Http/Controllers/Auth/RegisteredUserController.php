@@ -104,6 +104,8 @@ class RegisteredUserController extends Controller
             \Illuminate\Support\Facades\Log::error('Meta CAPI Error on Registration: ' . $e->getMessage());
         }
 
-        return redirect()->route('verification.notice')->with('meta_event_id', $metaEventId);
+        return redirect()->route('verification.notice')
+            ->with('meta_event_id', $metaEventId)
+            ->with('registration_success', true);
     }
 }

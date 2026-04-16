@@ -44,6 +44,15 @@ const displayPrice = computed(() => {
 const page = usePage();
 
 const initiatePayment = async (method) => {
+    // Meta Pixel: AddPaymentInfo
+    if (typeof window.fbq === 'function') {
+        window.fbq('track', 'AddPaymentInfo', {
+            payment_type: method,
+            value: displayPrice.value.replace(/[^\d]/g, ''),
+            currency: 'IDR'
+        });
+    }
+
     const routeName = method === 'paypal' ? 'paypal.checkout' : 'payment.checkout';
     
     if (method === 'paypal') {

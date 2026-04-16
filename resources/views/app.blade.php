@@ -142,6 +142,13 @@
             animation: nprogress-spinner 400ms linear infinite
         }
 
+        /* 📱 Only show NProgress on Mobile */
+        @media (min-width: 769px) {
+            #nprogress {
+                display: none !important;
+            }
+        }
+
         .nprogress-custom-parent {
             overflow: hidden;
             position: relative
