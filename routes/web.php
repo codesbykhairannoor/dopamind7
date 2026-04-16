@@ -293,39 +293,49 @@ Route::get("/resources/guide", function () {
 })->name("resources.guide");
 
 Route::get("/resources/blog", function () {
-    $posts = \App\Models\BlogPost::with("category")
-        ->where("is_published", true)
-        ->where(function ($query) {
-            $query
-                ->whereNull("published_at")
-                ->orWhere("published_at", "<=", now());
-        })
-        ->orderBy("published_at", "desc")
-        ->orderBy("created_at", "desc")
-        ->paginate(12);
+    try {
+        $posts = \App\Models\BlogPost::with("category")
+            ->whereRaw('is_published IS TRUE')
+            ->where(function ($query) {
+                $query
+                    ->whereNull("published_at")
+                    ->orWhere("published_at", "<=", now());
+            })
+            ->orderBy("published_at", "desc")
+            ->orderBy("created_at", "desc")
+            ->paginate(12);
 
-    return view("resources.blog", compact("posts"));
+        return view("resources.blog", compact("posts"));
+    } catch (\Exception $e) {
+        \Log::error("Blog Error: " . $e->getMessage());
+        return view("resources.blog", ["posts" => new \Illuminate\Pagination\LengthAwarePaginator([], 0, 12)]);
+    }
 })->name("resources.blog");
 
 Route::get("/resources/blog/{slug}", function ($slug) {
-    $post = \App\Models\BlogPost::with("category", "user")
-        ->where("slug", $slug)
-        ->where("is_published", true)
-        ->where(function ($query) {
-            $query
-                ->whereNull("published_at")
-                ->orWhere("published_at", "<=", now());
-        })
-        ->firstOrFail();
+    try {
+        $post = \App\Models\BlogPost::with("category", "user")
+            ->where("slug", $slug)
+            ->whereRaw('is_published IS TRUE')
+            ->where(function ($query) {
+                $query
+                    ->whereNull("published_at")
+                    ->orWhere("published_at", "<=", now());
+            })
+            ->firstOrFail();
 
-    // Fetch RELATED POSTS (Same category, excluding current post)
-    $related = \App\Models\BlogPost::where("category_id", $post->category_id)
-        ->where("id", "!=", $post->id)
-        ->where("is_published", true)
-        ->limit(3)
-        ->get();
+        // Fetch RELATED POSTS (Same category, excluding current post)
+        $related = \App\Models\BlogPost::where("category_id", $post->category_id)
+            ->where("id", "!=", $post->id)
+            ->whereRaw('is_published IS TRUE')
+            ->limit(3)
+            ->get();
 
-    return view("resources.post", compact("post", "related"));
+        return view("resources.post", compact("post", "related"));
+    } catch (\Exception $e) {
+        \Log::error("Blog Show Error: " . $e->getMessage());
+        return redirect()->route("resources.blog");
+    }
 })->name("resources.blog.show");
 
 Route::get("/resources/stories", function () {

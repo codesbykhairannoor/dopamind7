@@ -2,6 +2,19 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <script>
+        // 🛡️ Global Safety Guard for Element.prototype.closest
+        if (typeof Element !== 'undefined' && !Element.prototype.closest) {
+            Element.prototype.closest = function(s) {
+                var el = this;
+                do {
+                    if (el.matches(s)) return el;
+                    el = el.parentElement || el.parentNode;
+                } while (el !== null && el.nodeType === 1);
+                return null;
+            };
+        }
+    </script>
     @php
         $baseUrl = url()->current();
         $currentQuery = request()->query();
@@ -268,18 +281,31 @@
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(n,arguments)};
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
     n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '{{ env('META_PIXEL_ID') }}');
+    
+    fbq('init', '951954810888805');
     fbq('track', 'PageView');
-    fbq('track', 'ViewContent'); // Awareness: People looking at features/landing
+    fbq('track', 'ViewContent');
+
+    // 🔥 Safety Guard for .closest() on public pages
+    if (typeof Element !== 'undefined' && !Element.prototype.closest) {
+        Element.prototype.closest = function(s) {
+            var el = this;
+            do {
+                if (el.matches(s)) return el;
+                el = el.parentElement || el.parentNode;
+            } while (el !== null && el.nodeType === 1);
+            return null;
+        };
+    }
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id={{ env('META_PIXEL_ID') }}&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=951954810888805&ev=PageView&noscript=1"
     /></noscript>
 
     {{-- Meta Pixel CompleteRegistration Trigger --}}
@@ -327,40 +353,7 @@
     @vite(['resources/css/app.css'])
 
     {{-- 🔥 3. SPECULATION RULES: Prefetch + Prerender SEMUA halaman publik --}}
-    <script type="speculationrules">
-    {
-      "prefetch": [
-        {
-          "source": "document",
-          "where": {
-            "and": [
-              { "href_matches": "/*" },
-              { "not": { "href_matches": "/dashboard*" } },
-              { "not": { "href_matches": "/api/*" } },
-              { "not": { "selector_matches": "[hx-boost='false']" } }
-            ]
-          },
-          "eagerness": "moderate"
-        }
-      ],
-      "prerender": [
-        {
-          "source": "document",
-          "where": {
-            "and": [
-              { "href_matches": "/*" },
-              { "not": { "href_matches": "/dashboard*" } },
-              { "not": { "href_matches": "/api/*" } },
-              { "not": { "href_matches": "/login" } },
-              { "not": { "href_matches": "/register" } },
-              { "not": { "selector_matches": "[hx-boost='false']" } }
-            ]
-          },
-          "eagerness": "moderate"
-        }
-      ]
-    }
-    </script>
+    {{-- Speculation Rules disabled to prevent server overload --}}
 
     <style>
         [x-cloak] {

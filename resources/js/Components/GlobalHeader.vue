@@ -61,15 +61,15 @@ const startTrial = () => {
 };
 
 const trialDaysLeft = computed(() => {
-    if (!user.value || !user.value.premium_until || !user.value.has_used_trial) return 0;
+    if (!user.value || !user.value.premium_until) return 0;
     
-    // Jika paketnya bukan paket premium dasar (architect), mungkin mereka sudah bayar beneran
-    // Tapi jika mereka masih di level 'architect' dan punya premium_until, kemungkinan besar itu Trial
+    // Banner hanya untuk yang sedang trial aktif
+    if (user.value.plan_type !== 'trial') return 0;
+
     const diff = new Date(user.value.premium_until) - new Date();
     const days = Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
     
-    // Kita tampilkan banner TRIAL hanya jika sisa harinya <= 10 (standar trial kita)
-    return days <= 12 ? days : 0; 
+    return days; 
 });
 
 watch(() => page.props.app_config?.trial_expired, (expired) => {

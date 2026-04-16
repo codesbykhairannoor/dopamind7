@@ -16,6 +16,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <script>
+        // 🛡️ Global Safety Guard for Element.prototype.closest
+        if (typeof Element !== 'undefined' && !Element.prototype.closest) {
+            Element.prototype.closest = function(s) {
+                var el = this;
+                do {
+                    if (el.matches(s)) return el;
+                    el = el.parentElement || el.parentNode;
+                } while (el !== null && el.nodeType === 1);
+                return null;
+            };
+        }
+    </script>
+
     {{-- 🛰️ PRIMARY SEO & AI AGENTS (Crawler First Priority) --}}
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" inertia>
     <meta name="googlebot" content="index, follow" inertia>
@@ -383,20 +397,5 @@
             }, 3000);
         });
     </script>
-    {{-- Prefetch Script for Auth Pages --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const authLinks = document.querySelectorAll('a[href*="/login"], a[href*="/register"]');
-            authLinks.forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    const prefetchLink = document.createElement('link');
-                    prefetchLink.rel = 'prefetch';
-                    prefetchLink.href = link.href;
-                    document.head.appendChild(prefetchLink);
-                }, { once: true });
-            });
-        });
-    </script>
 </body>
-
 </html>
