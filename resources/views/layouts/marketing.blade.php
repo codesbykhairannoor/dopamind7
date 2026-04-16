@@ -979,7 +979,7 @@
             </div>
         </nav>
 
-        <main class="flex-grow">
+        <main class="flex-grow" hx-boost="true">
             @yield('content')
         </main>
 
@@ -1136,20 +1136,17 @@
     {{-- 4. NAVIGATION ENGINE --}}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // HTMX Integration (instant swap)
+            // HTMX Integration (Instant swap & Scroll top)
             document.body.addEventListener('htmx:beforeSwap', (event) => {
-                document.documentElement.style.scrollBehavior = 'auto';
-                if (event.detail.target === document.body || event.detail.target.tagName === 'MAIN') {
-                    window.scrollTo(0, 0);
-                }
+                // Scroll to top instantly before swap to avoid "ghost" content view
+                window.scrollTo({ top: 0, behavior: 'instant' });
             });
 
             document.body.addEventListener('htmx:afterSwap', (event) => {
-                setTimeout(() => {
-                    document.documentElement.style.scrollBehavior = '';
-                }, 50);
-
-                if (typeof fbq !== 'undefined') fbq('track', 'PageView');
+                // Track FB PageView on HTMX swap
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'PageView');
+                }
             });
         });
     </script>
