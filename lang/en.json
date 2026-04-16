@@ -97,6 +97,7 @@
     "atomic_cta_btn": "Start Your System Now",
     "schema_solution_atomic_name": "OneForMind Atomic Habit Solution",
     "schema_solution_atomic_description": "A micro-habit tracking system for long-term identity change.",
+    "auth_error_trial_used": "You have already used your free trial.",
     "auth_error_email_taken": "This email is already registered. Please use another email or login.",
     "auth_val_email": "Email must contain @",
     "auth_val_pass_min": "Password must be at least 8 characters",
@@ -1766,6 +1767,10 @@
             "benefit_3": "Target Maturity Alerts"
         }
     },
+    "trial_success_title": "Welcome to Architect Plan!",
+    "trial_success_text": "Your trial period is now active. Enjoy all our premium features.",
+    "trial_remaining": "Trial Time Remaining:",
+    "trial_days": "Days",
     "trial_confirm_title": "Start Trial Period?",
     "trial_confirm_text": "You will get full access to Architect features for 10 days for free.",
     "btn_yes": "Yes, Start Now",

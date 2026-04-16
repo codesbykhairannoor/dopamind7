@@ -97,6 +97,7 @@
     "atomic_cta_btn": "Mulai Sistem Anda Sekarang",
     "schema_solution_atomic_name": "OneForMind Solusi Kebiasaan Atom",
     "schema_solution_atomic_description": "Sistem pelacakan kebiasaan mikro untuk perubahan identitas jangka panjang.",
+    "auth_error_trial_used": "Anda sudah pernah menggunakan masa percobaan gratis.",
     "auth_error_email_taken": "Email ini sudah terdaftar. Silakan gunakan email lain atau login.",
     "auth_val_email": "Email harus mengandung @",
     "auth_val_pass_min": "Password minimal 8 karakter",
@@ -1778,6 +1779,10 @@
             "benefit_3": "Peringatan Target Kematangan"
         }
     },
+    "trial_success_title": "Selamat Datang di Paket Architect!",
+    "trial_success_text": "Masa percobaan Anda telah aktif. Silakan nikmati seluruh fitur premium kami.",
+    "trial_remaining": "Sisa Masa Percobaan:",
+    "trial_days": "Hari",
     "trial_confirm_title": "Mulai Masa Percobaan?",
     "trial_confirm_text": "Anda akan mendapatkan akses penuh ke fitur Architect selama 10 hari secara gratis.",
     "btn_yes": "Ya, Mulai Sekarang",

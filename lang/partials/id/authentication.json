@@ -1,4 +1,4 @@
-{    "auth_error_email_taken": "Email ini sudah terdaftar. Silakan gunakan email lain atau login.",    "auth_val_email": "Email harus mengandung @",
+{    "auth_error_trial_used": "Anda sudah pernah menggunakan masa percobaan gratis.",    "auth_error_email_taken": "Email ini sudah terdaftar. Silakan gunakan email lain atau login.",    "auth_val_email": "Email harus mengandung @",
     "auth_val_pass_min": "Password minimal 8 karakter",
     "auth_val_pass_upper": "Password harus mengandung minimal satu huruf besar",    "auth_verify_title": "Verifikasi Email",
     "auth_verify_header": "Cek Inbox Lo!",
