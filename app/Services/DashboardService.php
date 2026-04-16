@@ -44,7 +44,7 @@ class DashboardService
         $tasks = PlannerTask::where('user_id', $userId)
             ->where('date', $todayStr)
             ->orderBy('start_time', 'asc')
-            ->get(['id', 'name', 'is_completed', 'start_time', 'date']);
+            ->get(['id', 'title', 'is_completed', 'start_time', 'date']);
 
         // 3. Finance aggregate hari ini (1 query, group by type)
         $financeStats = FinanceTransaction::where('user_id', $userId)
