@@ -44,9 +44,9 @@ class LoginRequest extends FormRequest
         'remoteip' => $this->ip()
     ]);
 
-    if (!$recaptchaResponse->json('success') || $recaptchaResponse->json('score') < 0.5) {
+    if (!$recaptchaResponse->json('success')) {
         throw ValidationException::withMessages([
-            'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal, skor terlalu rendah atau invalid.',
+            'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal atau invalid.',
         ]);
     }
 

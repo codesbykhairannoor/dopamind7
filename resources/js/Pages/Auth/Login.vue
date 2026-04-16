@@ -19,31 +19,46 @@ const form = useForm({
 });
 
 const showPassword = ref(false);
+const widgetId = ref(null);
 
 const submit = () => {
     form.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    if (window.grecaptcha) {
-        window.grecaptcha.ready(() => {
-            window.grecaptcha.execute(page.props.recaptcha_site_key, {action: 'login'}).then((token) => {
-                form['g-recaptcha-response'] = token;
-                form.post(route('login'), {
-                    onFinish: () => form.reset('password'),
-                });
-            });
-        });
-    } else {
-        form.post(route('login'), {
-            onFinish: () => form.reset('password'),
+    form.post(route('login'), {
+        onFinish: () => {
+            form.reset('password');
+            if (window.grecaptcha && widgetId.value !== null) {
+                window.grecaptcha.reset(widgetId.value);
+                form['g-recaptcha-response'] = '';
+            }
+        },
+    });
+};
+
+const renderRecaptcha = () => {
+    if (window.grecaptcha && window.grecaptcha.render) {
+        widgetId.value = window.grecaptcha.render('recaptcha-container', {
+            sitekey: page.props.recaptcha_site_key,
+            callback: (response) => {
+                form['g-recaptcha-response'] = response;
+            },
+            'expired-callback': () => {
+                form['g-recaptcha-response'] = '';
+            }
         });
     }
 };
 
 onMounted(() => {
-    if (!document.getElementById('recaptcha-script')) {
+    if (!window.grecaptcha) {
+        window.onRecaptchaLoad = renderRecaptcha;
         const script = document.createElement('script');
         script.id = 'recaptcha-script';
-        script.src = `https://www.google.com/recaptcha/api.js?render=${page.props.recaptcha_site_key}`;
+        script.src = `https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit`;
+        script.async = true;
+        script.defer = true;
         document.head.appendChild(script);
+    } else {
+        renderRecaptcha();
     }
 });
 
@@ -120,6 +135,10 @@ const loginWithGoogle = () => {
                         <svg v-else class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>
                     </button>
                     <InputError class="mt-1.5 ml-1" :message="form.errors.password" />
+                </div>
+
+                <div class="mt-4 mb-4 flex justify-center">
+                    <div id="recaptcha-container"></div>
                 </div>
                 <InputError class="mt-1.5 ml-1" :message="form.errors['g-recaptcha-response']" />
 

@@ -47,9 +47,9 @@ class RegisteredUserController extends Controller
             'remoteip' => $request->ip()
         ]);
 
-        if (!$recaptchaResponse->json('success') || $recaptchaResponse->json('score') < 0.5) {
+        if (!$recaptchaResponse->json('success')) {
             throw \Illuminate\Validation\ValidationException::withMessages([
-                'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal, skor terlalu rendah atau invalid.'
+                'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal atau invalid.'
             ]);
         }
 
