@@ -28,11 +28,14 @@ class Handler extends ExceptionHandler
         $this->renderable(function (Throwable $e, $request) {
             $status = $this->isHttpException($e) ? $e->getStatusCode() : 500;
 
-            // Selalu render halaman Error kita bahkan saat debug true untuk memastikan terjemahan dll jalan
-            if (in_array($status, [500, 503, 404, 403])) {
-                return Inertia::render('Error', [
-                    'status' => $status
-                ])->toResponse($request)->setStatusCode($status);
+            // 🔥 HANYA render halaman Error cantik jika kita sedanga di PRODUCTION (Debug False)
+            // Jika sedang debug (lokal), tunjukkan Stack Trace aslinya agar kita tahu apa yang salah!
+            if (!config('app.debug')) {
+                if (in_array($status, [500, 503, 404, 403])) {
+                    return Inertia::render('Error', [
+                        'status' => $status
+                    ])->toResponse($request)->setStatusCode($status);
+                }
             }
 
             return null;

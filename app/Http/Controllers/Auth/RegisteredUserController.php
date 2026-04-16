@@ -31,17 +31,17 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
-            'password' => ['required', Rules\Password::defaults()],
-            'g-recaptcha-response' => 'required|string',
-        ], [
-            'g-recaptcha-response.required' => 'Verifikasi reCAPTCHA diperlukan.'
-        ]);
-
-        // Validate reCAPTCHA
         try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
+                'password' => ['required', Rules\Password::defaults()],
+                'g-recaptcha-response' => 'required|string',
+            ], [
+                'g-recaptcha-response.required' => 'Verifikasi reCAPTCHA diperlukan.'
+            ]);
+
+            // Validate reCAPTCHA
             $recaptchaResponse = \Illuminate\Support\Facades\Http::timeout(5)->asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
                 'secret' => config('services.recaptcha.secret'),
                 'response' => $request->input('g-recaptcha-response'),
@@ -53,64 +53,61 @@ class RegisteredUserController extends Controller
                     'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal atau invalid.'
                 ]);
             }
+
+            // Create User (Remove has_used_trial for PostgreSQL compatibility)
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'timezone' => $request->input('timezone', 'Asia/Jakarta'),
+                'settings' => [
+                    'modules' => [
+                        'habit' => true,
+                        'planner' => true,
+                        'finance' => true,
+                    ],
+                    'currency' => 'IDR',
+                    'timezone' => $request->input('timezone', 'Asia/Jakarta')
+                ],
+            ]);
+
+            // Meta Pixel & CAPI Deduplication ID
+            $metaEventId = (string) \Illuminate\Support\Str::uuid();
+
+            // Paksa kirim email verifikasi secara langsung
+            try {
+                $user->sendEmailVerificationNotification();
+                \Illuminate\Support\Facades\Log::info('Direct verification email triggered for: ' . $user->email);
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::error('Direct verification email FAILED: ' . $e->getMessage());
+            }
+
+            Auth::login($user);
+            \Illuminate\Support\Facades\Log::info('User registered and logged in: ' . $user->id);
+
+            // Send Server-Side Event (CAPI)
+            try {
+                $metaCapi = new \App\Services\MetaCapiService();
+                $metaCapi->completeRegistration([
+                    'id' => $user->id,
+                    'email' => $user->email,
+                    'first_name' => explode(' ', trim($user->name))[0] ?? $user->name,
+                ], $metaEventId);
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::error('Meta CAPI Error on Registration: ' . $e->getMessage());
+            }
+
+            return redirect()->route('verification.notice')
+                ->with('meta_event_id', $metaEventId)
+                ->with('registration_success', true);
+
         } catch (\Illuminate\Validation\ValidationException $e) {
             throw $e;
         } catch (\Throwable $e) {
-            \Illuminate\Support\Facades\Log::error('ReCAPTCHA/Registration Error: ' . $e->getMessage(), [
-                'exception' => get_class($e),
-                'trace' => $e->getTraceAsString()
-            ]);
-            throw \Illuminate\Validation\ValidationException::withMessages([
-                'g-recaptcha-response' => 'Sistem verifikasi (ReCAPTCHA) sedang gangguan atau terjadi kesalahan server, coba lagi nanti.'
-            ]);
+            // TAMPILKAN FULL ERROR JELAS DILAYAR TEPAT SEPERTI PERMINTAAN USER
+            return back()->withErrors([
+                'g-recaptcha-response' => 'CRITICAL ERROR: ' . $e->getMessage() . ' (File: ' . basename($e->getFile()) . ' Line: ' . $e->getLine() . ')'
+            ])->withInput();
         }
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'has_used_trial' => false,
-            'timezone' => $request->input('timezone', 'Asia/Jakarta'),
-            'settings' => [
-                'modules' => [
-                    'habit' => true,
-                    'planner' => true,
-                    'finance' => true,
-                ],
-                'currency' => 'IDR',
-                'timezone' => $request->input('timezone', 'Asia/Jakarta')
-            ],
-        ]);
-
-        // Meta Pixel & CAPI Deduplication ID
-        $metaEventId = (string) \Illuminate\Support\Str::uuid();
-
-        // Safe event trigger
-        try {
-            event(new Registered($user));
-        } catch (\Throwable $e) {
-            \Illuminate\Support\Facades\Log::error('Registration Email Exception: ' . $e->getMessage());
-            // Optionally, we could let them continue and they can hit "Resend Email" later
-            // But we don't want a 500 error page
-        }
-
-        Auth::login($user);
-        \Illuminate\Support\Facades\Log::info('User registered and logged in: ' . $user->id);
-
-        // Send Server-Side Event (CAPI)
-        try {
-            $metaCapi = new \App\Services\MetaCapiService();
-            $metaCapi->completeRegistration([
-                'id' => $user->id,
-                'email' => $user->email,
-                'first_name' => explode(' ', trim($user->name))[0] ?? $user->name,
-            ], $metaEventId);
-        } catch (\Exception $e) {
-            \Illuminate\Support\Facades\Log::error('Meta CAPI Error on Registration: ' . $e->getMessage());
-        }
-
-        return redirect()->route('verification.notice')
-            ->with('meta_event_id', $metaEventId)
-            ->with('registration_success', true);
     }
 }

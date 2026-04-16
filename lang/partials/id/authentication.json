@@ -1,4 +1,10 @@
-{
+{    "auth_verify_title": "Verifikasi Email",
+    "auth_verify_header": "Cek Inbox Lo!",
+    "auth_verify_p1": "Makasih udah daftar! Satu langkah lagi nih.",
+    "auth_verify_p2": "Tolong klik link verifikasi yang baru saja kami kirim ke email di atas biar akunnya aktif.",
+    "auth_verify_resent_success": "Link verifikasi baru sudah dikirim. Cek inbox atau folder spam ya!",
+    "auth_verify_btn_resend": "Kirim Ulang Verifikasi",
+    "auth_verify_logout": "Log Out / Ganti Akun",
     "auth_login_title": "Welcome Back.",
     "auth_login_subtitle": "Lanjutkan progress hidup kamu.",
     "auth_register_title": "Mulai Fresh.",

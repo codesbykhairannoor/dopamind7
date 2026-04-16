@@ -1,4 +1,10 @@
-{
+{    "auth_verify_title": "Verify Email",
+    "auth_verify_header": "Check Your Inbox!",
+    "auth_verify_p1": "Thanks for signing up! One more step.",
+    "auth_verify_p2": "Please click the verification link we just sent to the email above to activate your account.",
+    "auth_verify_resent_success": "A new verification link has been sent. Check your inbox or spam folder!",
+    "auth_verify_btn_resend": "Resend Verification",
+    "auth_verify_logout": "Log Out / Switch Account",
     "____ SECTION_3 ____": "=== AUTHENTICATION (LOGIN & REGISTER) ===",
     "auth_login_title": "Welcome Back.",
     "auth_login_subtitle": "Continue your life's progress.",
