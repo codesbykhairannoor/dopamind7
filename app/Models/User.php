@@ -34,6 +34,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'cookie_consent',
         'timezone',
         'has_used_trial',
+        'notification_preferences',
     ];
 
     /**
@@ -62,6 +63,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_premium' => 'boolean',
         'has_used_trial' => 'boolean',
         'premium_until' => 'datetime',
+        'notification_preferences' => 'array',
     ];
 
     /**

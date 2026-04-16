@@ -22,6 +22,6 @@ class NotificationController extends Controller
             'notification_preferences' => $validated['preferences']
         ]);
 
-        return back()->with('success', 'Pengaturan notifikasi berhasil diperbarui!');
+        return back()->with('success', 'Notification settings updated successfully!');
     }
 }

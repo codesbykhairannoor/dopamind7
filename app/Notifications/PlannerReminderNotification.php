@@ -37,16 +37,16 @@ class PlannerReminderNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         $message = (new MailMessage)
-            ->subject('📅 Planner: Agenda Kamu Hari Ini')
-            ->greeting('Halo, ' . $notifiable->name . '!')
-            ->line('Hari ini kamu punya beberapa agenda penting. Jangan sampai ada yang terlewat:');
+            ->subject('📅 Planner: Your Agenda Today')
+            ->greeting('Hello, ' . $notifiable->name . '!')
+            ->line('You have several important tasks today. Don\'t miss any:');
 
         foreach ($this->tasks as $task) {
             $message->line('- ' . $task->title);
         }
 
         return $message
-            ->action('Lihat Planner', url('/planner'))
-            ->line('Fokus pada prioritas kamu hari ini. Kamu pasti bisa!');
+            ->action('View Planner', url('/planner'))
+            ->line('Focus on your priorities today. You can do it!');
     }
 }

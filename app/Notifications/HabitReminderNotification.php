@@ -37,16 +37,16 @@ class HabitReminderNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         $message = (new MailMessage)
-            ->subject('⚡ Reminder: Waktunya Cek Habit Kamu!')
-            ->greeting('Halo, ' . $notifiable->name . '!')
-            ->line('Jangan biarkan streak kamu terputus! Berikut adalah daftar habit yang perlu kamu cek hari ini:');
+            ->subject('⚡ Reminder: Time to Check Your Habits!')
+            ->greeting('Hello, ' . $notifiable->name . '!')
+            ->line('Don\'t let your streak break! Here are the habits you need to check today:');
 
         foreach ($this->habits as $habit) {
-            $message->line('- ' . $habit->icon . ' ' . $habit->name);
+            $message->line('- ' . ($habit->icon ?: '✅') . ' ' . $habit->name);
         }
 
         return $message
-            ->action('Cek Habit Sekarang', url('/habits'))
-            ->line('Konsistensi adalah kunci kesuksesan. Semangat!');
+            ->action('Check Habits Now', url('/habits'))
+            ->line('Consistency is the key to success. You got this!');
     }
 }

@@ -21,8 +21,16 @@ const preferences = ref({
 });
 
 onMounted(() => {
-    if (user.notification_preferences) {
-        preferences.value = JSON.parse(JSON.stringify(user.notification_preferences));
+    if (page.props.auth.user.notification_preferences) {
+        // Deep clone to avoid direct mutation of page props
+        const userPrefs = page.props.auth.user.notification_preferences;
+        
+        // Ensure we merge with defaults in case new modules are added
+        Object.keys(preferences.value).forEach(key => {
+            if (userPrefs[key]) {
+                preferences.value[key] = { ...userPrefs[key] };
+            }
+        });
     }
 });
 
@@ -99,14 +107,14 @@ const modules = [
                     </div>
                     <h4 class="text-base font-bold text-slate-700 dark:text-slate-200 mb-1">No new notifications</h4>
                     <p class="text-[12px] text-slate-500 dark:text-slate-400 max-w-[200px] leading-relaxed">
-                        Kami akan memberi tahu jika ada sesuatu yang perlu perhatianmu.
+                        We'll let you know when there's something that needs your attention.
                     </p>
                 </div>
 
                 <!-- VIEW 2: SETTINGS (REMINDERS) -->
                 <div v-else class="p-5 space-y-4">
                     <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium px-1 mb-2">
-                        Atur waktu pengiriman reminder harian ke email kamu:
+                        Set the delivery time for daily reminders to your email:
                     </p>
                     
                     <div v-for="mod in modules" :key="mod.key" 

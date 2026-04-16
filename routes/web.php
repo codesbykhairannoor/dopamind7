@@ -437,6 +437,12 @@ Route::middleware(["auth", "verified", "throttle:global"])->group(function () {
     Route::post("/trial/start", [TrialController::class, "start"])->name("trial.start");
 
     Route::get("/dashboard", DashboardController::class)->name("dashboard");
+    
+    // Notifications Configuration
+    Route::post("/notifications/preferences", [
+        \App\Http\Controllers\NotificationController::class,
+        "updatePreferences",
+    ])->name("notifications.update");
 
     Route::middleware(["module:planner"])
         ->prefix("planner")
@@ -925,11 +931,6 @@ Route::middleware(["auth", "verified", "throttle:global"])->group(function () {
                         AdminPostController::class,
                         "destroy",
                     ])->name("destroy");
-                    // --- NOTIFICATIONS ---
-                    Route::post("/notifications/preferences", [
-                        \App\Http\Controllers\NotificationController::class,
-                        "updatePreferences",
-                    ])->name("notifications.update");
                 });
 
             // Users

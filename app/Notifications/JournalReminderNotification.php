@@ -27,11 +27,11 @@ class JournalReminderNotification extends Notification implements ShouldQueue
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('📝 Journal: Sudah Menulis Hari Ini?')
-            ->greeting('Halo, ' . $notifiable->name . '!')
-            ->line('Hari hampir berakhir. Luangkan waktu sejenak untuk merefleksikan apa yang terjadi hari ini.')
-            ->line('Menulis jurnal membantu kamu menjaga kejernihan mental dan melacak perkembangan diri.')
-            ->action('Tulis Jurnal Sekarang', url('/journal/write'))
-            ->line('Setiap refleksi kecil membawa perubahan besar.');
+            ->subject('📝 Journal: Have you written today?')
+            ->greeting('Hello, ' . $notifiable->name . '!')
+            ->line('The day is almost over. Take a moment to reflect on what happened today.')
+            ->line('Journaling helps you maintain mental clarity and track your self-growth.')
+            ->action('Write Entry Now', url('/journal/write'))
+            ->line('Every small reflection brings big changes.');
     }
 }
