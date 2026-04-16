@@ -49,7 +49,7 @@ class DashboardService
         // 5. Goals & Jobs (New Integration)
         $goalsCount = \App\Models\Goal::where('user_id', $userId)->where('status', 'active')->count();
         $topGoal = \App\Models\Goal::where('user_id', $userId)->where('status', 'active')
-            ->withCount(['milestones as completed_milestones' => fn($q) => $q->where('completed', true)])
+            ->withCount(['milestones as completed_milestones' => fn($q) => $q->where('completed', \DB::raw('true'))])
             ->withCount('milestones as total_milestones')
             ->first();
 
