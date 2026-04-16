@@ -46,7 +46,7 @@ const colorOptions = [
                 
                 <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" @click="emit('close')"></div>
 
-                <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl dark:shadow-none w-full max-w-lg relative z-10 overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50 dark:ring-slate-800 transition-colors duration-500">
+                <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl dark:shadow-none w-full max-w-lg relative z-10 overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50 dark:ring-slate-800 transition-colors duration-500 will-change-transform">
                     
                     <div class="px-8 py-6 border-b border-slate-100/80 dark:border-slate-800 flex items-center justify-between transition-colors duration-500">
                         <h3 class="text-xl font-black text-slate-800 dark:text-white flex items-center gap-4 transition-colors duration-500">

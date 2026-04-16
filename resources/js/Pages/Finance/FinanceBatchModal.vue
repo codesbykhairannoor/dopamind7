@@ -75,7 +75,7 @@ const changeType = (index, type) => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="2xl">
-        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-500 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none">
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-300 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none will-change-transform">
             
             <!-- [LOCKED STATE] Full Modal Cover -->
             <div v-if="isExplorer" class="flex-1 flex flex-col items-center justify-center p-8 md:p-12 text-center relative overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500 min-h-[500px]">
@@ -180,7 +180,7 @@ const changeType = (index, type) => {
                 
                 <div class="space-y-4">
                     <div v-for="(trx, index) in form.transactions" :key="index" 
-                        class="bg-white dark:bg-slate-900 p-5 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none relative group animate-in fade-in slide-in-from-bottom-4 duration-300 transition-colors duration-500">
+                        class="bg-white dark:bg-slate-900 p-5 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none relative group animate-in fade-in duration-200 transition-colors duration-300">
                         
                         <div class="flex justify-between items-center mb-4">
                             <span class="text-[10px] font-bold tracking-widest px-3 py-1 rounded-lg"

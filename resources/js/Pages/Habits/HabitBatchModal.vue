@@ -46,7 +46,7 @@ onUnmounted(() => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="2xl">
-        <div class="bg-white dark:bg-slate-900 flex flex-col max-h-[85dvh] md:max-h-[85vh] relative overflow-hidden transition-all duration-300 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem] w-full">
+        <div class="bg-white dark:bg-slate-900 flex flex-col max-h-[85dvh] md:max-h-[85vh] relative overflow-hidden transition-all duration-200 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem] w-full will-change-transform">
             
             <!-- [LOCKED STATE] Full Modal Cover -->
             <div v-if="isExplorer" class="flex-1 flex flex-col items-center justify-center p-8 md:p-12 text-center relative overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500 min-h-[500px]">
@@ -138,7 +138,7 @@ onUnmounted(() => {
 
                     <div class="space-y-4">
                         <div v-for="(trx, index) in form.habits" :key="index" 
-                            class="bg-white dark:bg-slate-900 p-5 md:p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none relative group animate-in fade-in slide-in-from-bottom-4 duration-300">
+                            class="bg-white dark:bg-slate-900 p-5 md:p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none relative group animate-in fade-in duration-200">
                             
                             <div class="flex justify-between items-center mb-5">
                                 <span class="text-[10px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-500/20">

@@ -115,7 +115,7 @@
 
 /* 🎨 GLASSMORPHISM & BENTO UTILITIES */
 .glass {
-    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-slate-800/20;
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-white/20 dark:border-slate-800/20;
 }
 
 .bento-card {

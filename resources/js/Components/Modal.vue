@@ -80,7 +80,7 @@ const maxWidthClass = computed(() => {
                     leave-from-class="opacity-100"
                     leave-to-class="opacity-0"
                 >
-                    <div class="fixed inset-0 transform transition-all" @click="close">
+                    <div class="fixed inset-0 transform" @click="close">
                         <div class="absolute inset-0 bg-slate-500/70 dark:bg-slate-950/75" />
                     </div>
                 </Transition>
@@ -94,7 +94,7 @@ const maxWidthClass = computed(() => {
                     leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 >
                     <div
-                        class="bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-visible shadow-xl dark:shadow-none transform transition-all sm:w-full sm:mx-auto border border-transparent dark:border-slate-800 m-auto"
+                        class="bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-visible shadow-xl dark:shadow-none transform transition-all sm:w-full sm:mx-auto border border-transparent dark:border-slate-800 m-auto will-change-transform"
                         :class="maxWidthClass"
                     >
                         <slot />

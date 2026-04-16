@@ -139,9 +139,9 @@ const t = (key, fallback) => {
 <template>
     <Teleport to="body">
         <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md transition-opacity" @click="handleClose"></div>
+            <div class="absolute inset-0 bg-slate-900/40 dark:bg-slate-950/60 backdrop-blur-sm transition-opacity" @click="handleClose"></div>
 
-            <div class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col max-h-[90vh] transition-colors duration-500">
+            <div class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col max-h-[90vh] transition-colors duration-500 will-change-transform">
                 
                 <div class="relative h-44 bg-slate-100 dark:bg-slate-950 shrink-0 group rounded-t-[2.5rem] overflow-hidden">
                     <div v-if="imagePreview" class="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
@@ -154,7 +154,7 @@ const t = (key, fallback) => {
 
                     <div class="absolute inset-x-6 bottom-5 flex justify-between items-end">
                         <div class="flex-grow min-w-0">
-                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] font-black tracking-tight mb-1.5">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[9px] font-black tracking-tight mb-1.5">
                                  {{ goal?.id ? t('goal_edit', 'Update vision') : t('goal_new', 'Create new vision') }}
                             </span>
                             <h2 class="text-2xl font-black text-white drop-shadow-md truncate pr-4">
@@ -163,14 +163,14 @@ const t = (key, fallback) => {
                         </div>
                         
                         <button @click="triggerFileInput" type="button"
-                                class="shrink-0 w-11 h-11 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center text-white hover:bg-white/30 transition-all hover:scale-110 active:scale-95 shadow-xl">
+                                class="shrink-0 w-11 h-11 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center text-white hover:bg-white/30 transition-all hover:scale-110 active:scale-95 shadow-xl">
                             <Upload v-if="!isUploading" :size="18" />
                             <div v-else class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                         </button>
                         <input type="file" ref="fileInput" class="hidden" accept="image/*" @change="onFileChange" />
                     </div>
 
-                    <button @click="handleClose" class="absolute top-5 right-5 w-9 h-9 bg-black/20 backdrop-blur-md border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all z-10">
+                    <button @click="handleClose" class="absolute top-5 right-5 w-9 h-9 bg-black/20 border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all z-10">
                         <X :size="18" />
                     </button>
                 </div>
@@ -344,7 +344,7 @@ const t = (key, fallback) => {
 
                 </div>
 
-                <div class="p-6 bg-slate-50/80 dark:bg-slate-900/90 backdrop-blur-sm shrink-0 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 relative z-50 transition-colors duration-500">
+                <div class="p-6 bg-slate-50/80 dark:bg-slate-900/90 shrink-0 flex items-center justify-between border-t border-slate-100 dark:border-slate-800 relative z-50 transition-colors duration-500">
                     <button @click="handleClose" class="text-[10px] font-black text-slate-400 dark:text-slate-600 tracking-tight hover:text-rose-500 dark:hover:text-rose-400 transition-colors px-4 py-2">
                         {{ t('btn_cancel', 'Cancel') }}
                     </button>

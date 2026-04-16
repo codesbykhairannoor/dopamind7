@@ -56,9 +56,9 @@ const plannerProgress = computed(() => {
         >
             <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
                 
-                <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity" @click="emit('close')"></div>
+                <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" @click="emit('close')"></div>
 
-                <div class="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl dark:shadow-none overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50 dark:ring-slate-800 transition-colors duration-500">
+                <div class="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl dark:shadow-none overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50 dark:ring-slate-800 transition-colors duration-500 will-change-transform">
                     <div class="px-6 py-6 sm:px-8 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between shrink-0 relative overflow-hidden transition-colors duration-500">
                         <div class="absolute inset-0 bg-gradient-to-r from-indigo-50/50 dark:from-indigo-900/10 to-transparent"></div>
                         <div class="relative z-10 flex items-center gap-5">
@@ -142,14 +142,14 @@ const plannerProgress = computed(() => {
                                         <div class="absolute -right-6 -top-6 text-9xl opacity-20 group-hover:rotate-12 transition-transform duration-700">🎯</div>
                                         <div class="relative z-10">
                                             <div class="flex justify-between items-center mb-4 md:mb-6">
-                                                <span class="text-[10px] sm:text-[11px] font-black tracking-widest bg-white/20 px-3 py-1.5 rounded-xl backdrop-blur-sm border border-white/20">{{ $t('calendar_goals', 'Goals & milestones') }}</span>
+                                                <span class="text-[10px] sm:text-[11px] font-black tracking-widest bg-white/20 px-3 py-1.5 rounded-xl border border-white/20">{{ $t('calendar_goals', 'Goals & milestones') }}</span>
                                                 <div class="w-8 h-8 rounded-full bg-white/20 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-orange-500 transition-all duration-500">
                                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                                 </div>
                                             </div>
                                             <div v-if="dailyMilestones.length > 0">
                                                 <div class="space-y-3">
-                                                    <div v-for="ms in dailyMilestones" :key="ms.id" class="bg-white/10 backdrop-blur-xl px-4 py-3 rounded-2xl flex items-center justify-between border border-white/10 group-hover:border-white/30 transition-all shadow-lg">
+                                                    <div v-for="ms in dailyMilestones" :key="ms.id" class="bg-white/10 px-4 py-3 rounded-2xl flex items-center justify-between border border-white/10 group-hover:border-white/30 transition-all shadow-lg">
                                                         <div class="min-w-0 pr-4">
                                                             <p class="text-[10px] font-bold tracking-widest text-orange-100/80 mb-0.5 leading-none">{{ ms.goal_title }}</p>
                                                             <p class="text-[13px] font-black text-white truncate leading-tight">{{ ms.title }}</p>
@@ -169,7 +169,7 @@ const plannerProgress = computed(() => {
                                         <div class="absolute -right-6 -top-6 text-9xl opacity-20 group-hover:rotate-12 transition-transform duration-700">✅</div>
                                         <div class="relative z-10">
                                             <div class="flex justify-between items-center mb-4 md:mb-6">
-                                                <span class="text-[10px] sm:text-[11px] font-black tracking-widest bg-white/20 px-3 py-1.5 rounded-xl backdrop-blur-sm border border-white/20">{{ $t('calendar_planner', 'Daily planner') }}</span>
+                                                <span class="text-[10px] sm:text-[11px] font-black tracking-widest bg-white/20 px-3 py-1.5 rounded-xl border border-white/20">{{ $t('calendar_planner', 'Daily planner') }}</span>
                                                 <div class="w-8 h-8 rounded-full bg-white/20 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-blue-600 transition-all duration-500">
                                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                                 </div>
