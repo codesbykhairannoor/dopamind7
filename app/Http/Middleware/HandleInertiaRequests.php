@@ -2,10 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Habit;
-use App\Models\HabitLog;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -26,68 +24,75 @@ class HandleInertiaRequests extends Middleware
 
     /**
      * Define the props that are shared by default.
+     *
+     * Optimasi:
+     * - Trial expiry check di-cache per user (tidak query DB setiap request)
+     * - resume_text & resume_filename lazy (fn) — hanya di-load saat dibutuhkan
+     * - Tidak ada query DB berat di sini
      */
     public function share(Request $request): array
     {
         $user = $request->user();
         $trialExpired = false;
 
-        if ($user && $user->premium_until && now()->greaterThan($user->premium_until)) {
-            $user->update([
-                'is_premium' => 'false',
-                'plan_type' => 'explorer',
-                'premium_until' => null,
-            ]);
-            $trialExpired = true;
+        // Cek trial expiry hanya sekali per 5 menit per user (bukan setiap request)
+        if ($user && $user->premium_until) {
+            $cacheKey = "trial_check_{$user->id}";
+            $trialExpired = Cache::remember($cacheKey, 300, function () use ($user) {
+                if (now()->greaterThan($user->premium_until)) {
+                    $user->update([
+                        'is_premium'    => 'false',
+                        'plan_type'     => 'explorer',
+                        'premium_until' => null,
+                    ]);
+                    return true;
+                }
+                return false;
+            });
         }
 
         return array_merge(parent::share($request), [
-            // 1. DATA USER (Sudah rapi & aman)
+            // 1. DATA USER
             'auth' => [
                 'user' => $user ? [
-                    'id'       => $user->id,
-                    'name'     => $user->name,
-                    'email'    => $user->email,
-                    'settings' => $user->settings,
-                    'timezone' => $user->timezone ?? config('app.timezone'),
-                    'avatar_url' => $user->avatar_url,
-                    'resume_text' => fn () => $user->resume_text,
+                    'id'              => $user->id,
+                    'name'            => $user->name,
+                    'email'           => $user->email,
+                    'settings'        => $user->settings,
+                    'timezone'        => $user->timezone ?? config('app.timezone'),
+                    'avatar_url'      => $user->avatar_url,
+                    // Lazy: hanya di-load saat halaman yang butuh (Jobs/Profile)
+                    'resume_text'     => fn () => $user->resume_text,
                     'resume_filename' => fn () => $user->resume_filename,
-                    'is_premium' => $user->is_premium,
-                    'plan_type'  => $user->plan_type,
-                    'premium_until' => $user->premium_until,
-                    'has_used_trial' => $user->has_used_trial,
+                    'is_premium'      => $user->is_premium,
+                    'plan_type'       => $user->plan_type,
+                    'premium_until'   => $user->premium_until,
+                    'has_used_trial'  => $user->has_used_trial,
                 ] : null,
             ],
 
-            // 2. CONFIG GLOBAL (Dibuat Guest-Safe agar tidak error pas belum login)
+            // 2. CONFIG GLOBAL
             'app_config' => [
-                'name'        => config('app.name'),
-                'currency'    => $user?->settings['currency'] ?? 'IDR',
-                'date_format' => $user?->settings['date_format'] ?? 'Y-m-d',
+                'name'          => config('app.name'),
+                'currency'      => $user?->settings['currency'] ?? 'IDR',
+                'date_format'   => $user?->settings['date_format'] ?? 'Y-m-d',
                 'trial_expired' => $trialExpired,
             ],
 
-            // 3. FLASH MESSAGES (Notifikasi)
+            // 3. FLASH MESSAGES (lazy — hanya di-resolve saat ada)
             'flash' => [
                 'message' => fn () => $request->session()->get('message'),
                 'error'   => fn () => $request->session()->get('error'),
                 'success' => fn () => $request->session()->get('success'),
             ],
 
-            // 4. 🔥 BRIDGE BAHASA
-            'locale' => function () {
-                return app()->getLocale();
-            },
-            'csrf_token' => csrf_token(),
+            // 4. LOCALE & MISC
+            'locale'                 => fn () => app()->getLocale(),
+            'csrf_token'             => csrf_token(),
             'midtrans_is_production' => config('midtrans.is_production'),
-            'paypal_client_id' => config('paypal.' . config('paypal.mode', 'live') . '.client_id'),
-            'recaptcha_site_key' => config('services.recaptcha.site_key'),
-            'session_id' => $request->session()->getId(),
-
-            // 5. 🔥 GLOBAL HEADER: Habit streak & today progress
-            // Optimized with Caching to prevent back-breaking DB loops on every request
-
+            'paypal_client_id'       => config('paypal.' . config('paypal.mode', 'live') . '.client_id'),
+            'recaptcha_site_key'     => config('services.recaptcha.site_key'),
+            'session_id'             => $request->session()->getId(),
         ]);
     }
 }

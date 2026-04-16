@@ -14,52 +14,57 @@ class SettingsController extends Controller
         return redirect()->route('settings.general');
     }
 
-    private function baseProps(Request $request): array
+    /**
+     * Semua tab Settings di-render oleh satu Inertia component (Settings/Index).
+     * Tab switching terjadi di client-side tanpa server round-trip.
+     * initialTab dikirim agar deep-link (/settings/security) langsung buka tab yang benar.
+     */
+    private function renderSettings(Request $request, string $tab): \Inertia\Response
     {
-        return [
+        return Inertia::render('Settings/Index', [
             'mustVerifyEmail' => $request->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail,
-            'status' => session('status'),
-            'hasPassword' => !is_null($request->user()->password),
-            'userSettings' => $request->user()->settings,
-        ];
+            'status'          => session('status'),
+            'hasPassword'     => !is_null($request->user()->password),
+            'userSettings'    => $request->user()->settings,
+            'initialTab'      => $tab,
+        ]);
     }
 
     public function general(Request $request)
     {
-        return Inertia::render('Settings/General', $this->baseProps($request));
+        return $this->renderSettings($request, 'general');
     }
 
     public function security(Request $request)
     {
-        return Inertia::render('Settings/Security', $this->baseProps($request));
+        return $this->renderSettings($request, 'security');
     }
 
     public function modules(Request $request)
     {
-        return Inertia::render('Settings/Modules', $this->baseProps($request));
+        return $this->renderSettings($request, 'modules');
     }
 
     public function notifications(Request $request)
     {
-        return Inertia::render('Settings/Notifications', $this->baseProps($request));
+        return $this->renderSettings($request, 'notifications');
     }
 
     public function billing(Request $request)
     {
-        return Inertia::render('Settings/Billing', $this->baseProps($request));
+        return $this->renderSettings($request, 'billing');
     }
 
     public function privacy(Request $request)
     {
-        return Inertia::render('Settings/Privacy', $this->baseProps($request));
+        return $this->renderSettings($request, 'privacy');
     }
 
     public function update(Request $request)
     {
         $user = Auth::user();
 
-        // Update kolom JSON
-        // Kita merge dengan settingan lama biar gak ilang data lain
+        // Merge dengan settingan lama biar gak ilang data lain
         $currentSettings = $user->settings ?? [];
         $newSettings = array_merge($currentSettings, $request->input('settings'));
 
