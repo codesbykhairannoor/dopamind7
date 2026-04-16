@@ -26,10 +26,15 @@ class Handler extends ExceptionHandler
 
         // 🔥 TAMBAHKAN LOGIC INI DISINI
         $this->renderable(function (Throwable $e, $request) {
+            // JANGAN menyentuh error validasi atau auth (biarkan Laravel redirect balik dengan error)
+            if ($e instanceof \Illuminate\Validation\ValidationException || 
+                $e instanceof \Illuminate\Auth\AuthenticationException) {
+                return null;
+            }
+
             $status = $this->isHttpException($e) ? $e->getStatusCode() : 500;
 
             // 🔥 HANYA render halaman Error cantik jika kita sedanga di PRODUCTION (Debug False)
-            // Jika sedang debug (lokal), tunjukkan Stack Trace aslinya agar kita tahu apa yang salah!
             if (!config('app.debug')) {
                 if (in_array($status, [500, 503, 404, 403])) {
                     return Inertia::render('Error', [
