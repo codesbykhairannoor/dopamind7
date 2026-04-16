@@ -5,6 +5,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { loadScript } from "@paypal/paypal-js";
 
 const props = defineProps({
     plan: {
@@ -56,21 +57,49 @@ const initiatePayment = async (method) => {
         });
         
         try {
-            // Load PayPal SDK v6
-            if (!window.paypal) {
-                const script = document.createElement('script');
-                script.src = "https://www.paypal.com/web-sdk/v6/core";
-                document.head.appendChild(script);
-                await new Promise((resolve) => script.onload = resolve);
-            }
-
-            const sdkInstance = await window.paypal.createInstance({
-                clientId: page.props.paypal_client_id,
-                components: ["paypal-payments"]
+            // Load PayPal SDK using official NPM package
+            const paypal = await loadScript({ 
+                "client-id": page.props.paypal_client_id,
+                currency: "USD",
+                intent: "capture"
             });
 
-            const paypalPaymentSession = sdkInstance.createPayPalOneTimePaymentSession({
-                async onApprove(data) {
+            if (!paypal) {
+                throw new Error("PayPal SDK could not be loaded.");
+            }
+
+            // Create buttons
+            const Buttons = paypal.Buttons({
+                style: {
+                    layout: 'vertical',
+                    color:  'blue',
+                    shape:  'rect',
+                    label:  'paypal'
+                },
+                createOrder: async (data, actions) => {
+                    Swal.fire({
+                        title: 'Connecting...',
+                        html: 'Initializing secure transaction...',
+                        allowOutsideClick: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+                    
+                    try {
+                        const res = await axios.post(route('paypal.checkout'), {
+                            plan: props.plan.toLowerCase(),
+                            billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
+                        });
+                        
+                        Swal.close();
+                        return res.data.id; // Must return the valid order ID
+                    } catch (error) {
+                        Swal.close();
+                        console.error('Create Order Error:', error);
+                        Swal.fire('Error', 'Failed to create order on server.', 'error');
+                        throw error;
+                    }
+                },
+                onApprove: async (data, actions) => {
                     Swal.fire({
                         title: 'Processing...',
                         text: 'Please wait while we verify your payment.',
@@ -80,7 +109,7 @@ const initiatePayment = async (method) => {
                     
                     try {
                         const res = await axios.post(route('paypal.success'), {
-                            token: data.orderId,
+                            token: data.orderID,
                             plan: props.plan.toLowerCase(),
                             billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
                         });
@@ -94,23 +123,29 @@ const initiatePayment = async (method) => {
                         Swal.fire('Error', 'Payment capture failed. Contact support.', 'error');
                     }
                 },
-                onCancel(data) {
+                onCancel: (data) => {
                     Swal.fire('Cancelled', 'PayPal checkout was cancelled.', 'info');
                 },
-                onError(error) {
-                    console.error("PayPal Error:", error);
-                    Swal.fire('Error', 'Something went wrong with PayPal.', 'error');
+                onError: (err) => {
+                    console.error("PayPal Button Error:", err);
+                    Swal.fire('Error', 'Something went wrong with PayPal checkout.', 'error');
                 }
             });
 
             Swal.close();
-
-            await paypalPaymentSession.start({ presentationMode: "auto" }, async () => {
-                const res = await axios.post(route('paypal.checkout'), {
-                    plan: props.plan.toLowerCase(),
-                    billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
-                });
-                return { orderId: res.data.id };
+            
+            // Show custom modal to mount the button
+            Swal.fire({
+                title: 'Checkout with PayPal',
+                html: '<div id="paypal-button-container" class="mt-4 min-h-[150px]"></div>',
+                showConfirmButton: false,
+                showCancelButton: true,
+                cancelButtonText: 'Tutup',
+                didOpen: () => {
+                    Buttons.render('#paypal-button-container').catch((err) => {
+                        console.error("Failed to render buttons:", err);
+                    });
+                }
             });
 
         } catch (e) {
