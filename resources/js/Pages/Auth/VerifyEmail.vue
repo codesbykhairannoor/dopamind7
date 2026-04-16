@@ -54,6 +54,10 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                     ✨ {{ $t('auth_verify_resent_success', 'Link verifikasi baru sudah dikirim. Cek inbox atau folder spam ya!') }}
                 </div>
 
+                <div v-if="$page.props.flash?.error" class="mb-6 font-bold text-sm text-red-700 bg-red-50 p-4 rounded-xl border border-red-200 animate-shake">
+                    ⚠️ {{ $page.props.flash.error }}
+                </div>
+
                 <form @submit.prevent="submit" class="space-y-4">
                     <button 
                         class="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl shadow-lg hover:bg-indigo-700 transition transform hover:-translate-y-0.5 active:scale-95 disabled:opacity-75 disabled:cursor-not-allowed flex items-center justify-center gap-2" 
