@@ -401,6 +401,26 @@
             h1 { font-size: 2.75rem !important; line-height: 1.1 !important; } /* text-5xl-ish */
             h2 { font-size: 2.25rem !important; line-height: 1.1 !important; } /* text-4xl */
         }
+        /* HTMX Loading Bar */
+        .htmx-indicator-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #4f46e5;
+            z-index: 200;
+            transition: width 0.3s ease-out, opacity 0.3s ease;
+            width: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .htmx-request .htmx-indicator-bar {
+            opacity: 1;
+            width: 70%;
+        }
+        .htmx-request.htmx-settling .htmx-indicator-bar {
+            width: 100%;
+        }
     </style>
     @if(env('VITE_GA_MEASUREMENT_ID'))
         <script>
@@ -488,13 +508,8 @@
         mobileMenuOpen: false,
         activeMenu: null,
         mobilePanel: null,
-        scrolled: false,
-        isInterfacing: false
+        scrolled: false
     }" @mobile-nav-close.window="mobileMenuOpen = false; mobilePanel = null"
-        @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard')) { isInterfacing = true; } else { NProgress.start(); }"
-        @htmx:after-request.window="isInterfacing = false; NProgress.done(); window.scrollTo(0,0);"
-        @htmx:response-error.window="isInterfacing = false; NProgress.done();"
-        @pageshow.window="isInterfacing = false; NProgress.done();"
         @scroll.window.passive="scrolled = (window.scrollY > 20)" class="relative">
 
         <script>
@@ -1136,16 +1151,22 @@
     {{-- 4. NAVIGATION ENGINE --}}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // HTMX Integration (Instant swap & Scroll top)
+            // HTMX Integration
             document.body.addEventListener('htmx:beforeSwap', (event) => {
-                // Scroll to top instantly before swap to avoid "ghost" content view
-                window.scrollTo({ top: 0, behavior: 'instant' });
+                // If it's a boosted navigation, handle scroll
+                if (event.detail.boosted) {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                }
             });
 
             document.body.addEventListener('htmx:afterSwap', (event) => {
-                // Track FB PageView on HTMX swap
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'PageView');
+                // Tracking
+                if (typeof fbq !== 'undefined') fbq('track', 'PageView');
+                
+                // Close menu just in case
+                if (window.Alpine) {
+                    // We can't easily access the scope here without a reference, 
+                    // but our @click on links already handles this.
                 }
             });
         });
