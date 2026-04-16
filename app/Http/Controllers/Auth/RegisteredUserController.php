@@ -70,10 +70,13 @@ class RegisteredUserController extends Controller
         // Meta Pixel & CAPI Deduplication ID
         $metaEventId = (string) \Illuminate\Support\Str::uuid();
 
+        // Safe event trigger
         try {
             event(new Registered($user));
         } catch (\Throwable $e) {
-            \Illuminate\Support\Facades\Log::error('Registration Email Error: ' . $e->getMessage());
+            \Illuminate\Support\Facades\Log::error('Registration Email Exception: ' . $e->getMessage());
+            // Optionally, we could let them continue and they can hit "Resend Email" later
+            // But we don't want a 500 error page
         }
 
         Auth::login($user);
