@@ -50,9 +50,6 @@ const isSidebarOpen = ref(window.innerWidth >= 768);
 const isRecording = ref(false);
 const selectedImage = ref(null);
 const imagePreview = ref(null);
-const isPending = ref(false);
-const pendingTimer = ref(null);
-const countdown = ref(3);
 const editingIndex = ref(null);
 
 // ── COMPUTED ─────────────────────────────────────────────────────────────────
@@ -169,13 +166,14 @@ const editMessage = (index) => {
 };
 
 // ── CANCEL ───────────────────────────────────────────────────────────────────
-const cancelSend = () => {
-    if (pendingTimer.value) {
-        clearInterval(pendingTimer.value);
-        pendingTimer.value = null;
-        isPending.value = false;
-        countdown.value = 3;
+const abortController = ref(null);
+
+const stopGeneration = () => {
+    if (abortController.value) {
+        abortController.value.abort();
+        abortController.value = null;
     }
+    isLoading.value = false;
 };
 
 const handleKeydown = (e) => {
@@ -189,21 +187,10 @@ const handleKeydown = (e) => {
 const sendMessage = () => {
     if (
         (!newMessage.value.trim() && !selectedImage.value) ||
-        isLoading.value ||
-        isPending.value
+        isLoading.value
     )
         return;
-    isPending.value = true;
-    countdown.value = 3;
-    pendingTimer.value = setInterval(() => {
-        countdown.value--;
-        if (countdown.value <= 0) {
-            clearInterval(pendingTimer.value);
-            pendingTimer.value = null;
-            isPending.value = false;
-            executeSend();
-        }
-    }, 1000);
+    executeSend();
 };
 
 const executeSend = async () => {
@@ -226,23 +213,35 @@ const executeSend = async () => {
     isLoading.value = true;
     scrollToBottom();
 
+    abortController.value = new AbortController();
+
     try {
         const res = await axios.post(route("coach.chat"), {
             session_id: props.currentSessionId,
             messages: messages.value,
+        }, {
+            signal: abortController.value.signal
         });
         messages.value.push({ role: "assistant", content: res.data.content });
     } catch (err) {
-        let errorMsg = "Maaf, ada gangguan teknis sejenak. Coba lagi ya!";
-        if (err.response?.status === 404) {
-            errorMsg = "Neural OS Error: Gemini model tidak ditemukan. Silakan hubungi admin untuk update konfigurasi.";
+        if (axios.isCancel(err)) {
+            messages.value.push({
+                role: "assistant",
+                content: "Berhenti menghasilkan respon.",
+            });
+        } else {
+            let errorMsg = "Maaf, ada gangguan teknis sejenak. Coba lagi ya!";
+            if (err.response?.status === 404) {
+                errorMsg = "Neural OS Error: Gemini model tidak ditemukan. Silakan hubungi admin untuk update konfigurasi.";
+            }
+            messages.value.push({
+                role: "assistant",
+                content: errorMsg,
+            });
         }
-        messages.value.push({
-            role: "assistant",
-            content: errorMsg,
-        });
     } finally {
         isLoading.value = false;
+        abortController.value = null;
         scrollToBottom();
     }
 };
@@ -282,7 +281,7 @@ watch(
 </script>
 
 <template>
-    <Head title="AI Coach — Neural OS" />
+    <Head title="Neural OS" />
 
     <!--
         Full-screen AI Coach layout.
@@ -784,35 +783,6 @@ watch(
                 v-if="!isWelcomeState"
                 class="shrink-0 border-t border-slate-100 dark:border-white/[0.05] bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl px-4 pt-3 pb-4 md:pb-5 z-10"
             >
-                <!-- Pending cancellation pill -->
-                <Transition
-                    enter-active-class="transition-all duration-200"
-                    enter-from-class="opacity-0 -translate-y-2"
-                    enter-to-class="opacity-100 translate-y-0"
-                    leave-active-class="transition-all duration-150"
-                    leave-from-class="opacity-100"
-                    leave-to-class="opacity-0"
-                >
-                    <div v-if="isPending" class="flex justify-center mb-2">
-                        <div
-                            class="bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-black px-5 py-2 rounded-xl flex items-center gap-4 shadow-2xl"
-                        >
-                            <div class="flex items-center gap-2">
-                                <div
-                                    class="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-ping"
-                                ></div>
-                                Mengirim dalam {{ countdown }}s...
-                            </div>
-                            <button
-                                @click="cancelSend"
-                                class="text-rose-400 hover:text-rose-300 border-l border-white/20 dark:border-slate-300/20 pl-4 transition-colors"
-                            >
-                                Batalkan
-                            </button>
-                        </div>
-                    </div>
-                </Transition>
-
                 <!-- Image preview -->
                 <div
                     v-if="imagePreview"
@@ -909,14 +879,21 @@ watch(
                             class="flex-1 bg-transparent border-none focus:ring-0 text-sm text-slate-800 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 resize-none py-2 min-h-[36px] max-h-[180px] leading-relaxed custom-scrollbar"
                         ></textarea>
 
-                        <!-- Send button -->
+                        <!-- Send/Stop button -->
                         <button
+                            v-if="isLoading"
+                            @click="stopGeneration"
+                            class="w-9 h-9 shrink-0 mb-0.5 rounded-xl bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 flex items-center justify-center hover:bg-slate-300 dark:hover:bg-slate-600 transition-all active:scale-90 shadow-md"
+                            title="Stop"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <rect x="6" y="6" width="12" height="12" rx="2" ry="2" />
+                            </svg>
+                        </button>
+                        <button
+                            v-else
                             @click="sendMessage"
-                            :disabled="
-                                (!newMessage.trim() && !selectedImage) ||
-                                isLoading ||
-                                isPending
-                            "
+                            :disabled="(!newMessage.trim() && !selectedImage)"
                             class="w-9 h-9 shrink-0 mb-0.5 rounded-xl bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all active:scale-90 shadow-md shadow-indigo-200 dark:shadow-none"
                             title="Kirim (Enter)"
                         >

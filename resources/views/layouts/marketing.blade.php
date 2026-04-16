@@ -197,6 +197,49 @@
       "releaseNotes": "{{ url('/resources/changelog') }}"
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Daily Planner",
+          "description": "Schedule Your Success, Get More Done. Stop feeling busy...",
+          "url": "{{ route('features.planner') }}"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Atomic Habits System",
+          "description": "Build lasting habits with the ultimate atomic system. Track...",
+          "url": "{{ route('features.habit') }}"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Secure Digital Journal",
+          "description": "OneForMind integrates Positive Psychology and Reflective Journaling...",
+          "url": "{{ route('features.journal') }}"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "User Stories",
+          "description": "Hear real stories from people who have transformed their lives...",
+          "url": "{{ route('resources.stories') }}"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "Finance OS",
+          "description": "Master your money flow and track your assets securely.",
+          "url": "{{ route('features.finance') }}"
+        }
+      ]
+    }
+    </script>
     <meta name="ai-service-type" content="{{ __('meta_ai_service_type') }}">
     <meta name="ai-description" content="{{ __('meta_global_description') }}">
 

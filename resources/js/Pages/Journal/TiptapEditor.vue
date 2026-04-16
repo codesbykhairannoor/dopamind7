@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onBeforeUnmount } from "vue";
+import { ref, onBeforeUnmount, onMounted } from "vue";
 import { useEditor, EditorContent } from "@tiptap/vue-3";
 import { Extension, Mark, mergeAttributes } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
@@ -248,14 +248,20 @@ const setFontSize = (value) => {
     editor.value.chain().focus().setFontSize(value).run();
     showSizeMenu.value = false;
 };
+
+const isMounted = ref(false);
+onMounted(() => {
+    isMounted.value = true;
+});
 </script>
 
 <template>
     <!-- Integrated Toolbar (Sub-header sticky) -->
-    <div
-        v-if="editor"
-        class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 py-2 px-1 sm:px-2 mb-6 flex flex-wrap items-center gap-1 w-full shadow-sm rounded-2xl"
-    >
+    <Teleport to="#tiptap-toolbar-target" v-if="isMounted">
+        <div
+            v-if="editor"
+            class="flex flex-wrap items-center gap-1 md:gap-2 justify-center"
+        >
         <!-- Bold -->
         <button
             @click="editor.chain().focus().toggleBold().run()"
@@ -373,7 +379,8 @@ const setFontSize = (value) => {
             <OneForMindIcon name="list" size="18" stroke-width="3" />
         </button>
 
-    </div>
+        </div>
+    </Teleport>
 
     <!-- Editor Content -->
     <editor-content :editor="editor" />

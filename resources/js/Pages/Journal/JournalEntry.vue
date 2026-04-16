@@ -65,9 +65,9 @@ const triggerFileInput = () => fileInputRef.value.click();
     <div
         class="min-h-screen bg-slate-50 dark:bg-slate-950 relative selection:bg-indigo-100 dark:selection:bg-indigo-900/40 pb-32 transition-colors duration-500"
     >
-        <!-- Navigation Header (Not Sticky) -->
+        <!-- Navigation Header (Sticky) -->
         <div
-            class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 px-4 md:px-6 py-4 flex items-center justify-between shadow-sm transition-colors duration-500"
+            class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 px-4 md:px-6 py-4 flex items-center justify-between shadow-sm transition-colors duration-500"
         >
             <Link
                 :href="route('journal.index')"
@@ -78,6 +78,9 @@ const triggerFileInput = () => fileInputRef.value.click();
                     $t("btn_back_dashboard", "Kembali ke Dashboard")
                 }}</span>
             </Link>
+
+            <!-- Teleport target for Tiptap Toolbar -->
+            <div id="tiptap-toolbar-target" class="flex-1 flex justify-center px-4"></div>
 
             <div class="flex items-center gap-4">
                 <button

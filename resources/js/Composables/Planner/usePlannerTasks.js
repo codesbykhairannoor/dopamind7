@@ -15,6 +15,11 @@ export function usePlannerTasks(props) {
     if (props.tasks) {
         localTasks.value = [...getTasksArray(props.tasks)];
     }
+    
+    watch(() => props.tasks, (newTasks) => {
+        localTasks.value = [...getTasksArray(newTasks)];
+    });
+
     const conflictError = ref(null);
     const isModalOpen = ref(false);
     const isEditing = ref(false);

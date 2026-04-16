@@ -10,6 +10,7 @@ import { useGating } from '@/Composables/useGating';
 import { useAppearance } from '@/Composables/useAppearance';
 import { onMounted, onUnmounted, watch } from 'vue';
 import Swal from 'sweetalert2';
+import { trans } from 'laravel-vue-i18n';
 
 const page = usePage();
 const { isExplorer, user } = useGating();
@@ -24,14 +25,27 @@ defineProps({
 const emit = defineEmits(['toggle-sidebar', 'logout-request']);
 
 const startTrial = () => {
-    router.post(route('trial.start'), {}, {
-        preserveScroll: true,
-        onSuccess: () => {
-            Swal.fire({
-                title: 'Trial Dimulai!',
-                text: 'Nikmati semua fitur Architect secara gratis selama 10 hari.',
-                icon: 'success',
-                confirmButtonColor: '#4f46e5'
+    Swal.fire({
+        title: trans('trial_confirm_title') || 'Mulai Trial?',
+        text: trans('trial_confirm_text') || 'Apakah Anda yakin ingin memulai 10 hari trial gratis untuk akses semua fitur Architect?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#4f46e5',
+        cancelButtonColor: '#94a3b8',
+        confirmButtonText: trans('btn_yes') || 'Ya, Mulai!',
+        cancelButtonText: trans('btn_cancel') || 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            router.post(route('trial.start'), {}, {
+                preserveScroll: true,
+                onSuccess: () => {
+                    Swal.fire({
+                        title: trans('trial_success_title') || 'Trial Dimulai!',
+                        text: trans('trial_success_text') || 'Nikmati semua fitur Architect secara gratis selama 10 hari.',
+                        icon: 'success',
+                        confirmButtonColor: '#4f46e5'
+                    });
+                }
             });
         }
     });
@@ -172,17 +186,17 @@ onUnmounted(() => {
                     <span class="text-[11px] font-black text-slate-600 dark:text-slate-300 transition-colors whitespace-nowrap">{{ todayLabel }}</span>
                 </div>
 
-                <template v-if="!user?.has_used_trial && !user?.is_premium">
+                <template v-if="!user?.has_used_trial && user?.plan_type !== 'trial' && !user?.is_premium">
                     <button
                         @click="startTrial"
                         class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white rounded-lg transition-all shadow-sm active:scale-95 mr-1"
                     >
-                        <span class="text-[10px] font-black tracking-wide">Mulai Trial 10 Hari</span>
+                        <span class="text-[10px] font-black tracking-wide">{{ $t('btn_start_trial', 'Mulai Trial 10 Hari') }}</span>
                     </button>
                 </template>
-                <template v-else-if="user?.is_premium && user?.plan_type === 'trial' && trialDaysLeft > 0">
+                <template v-else-if="user?.plan_type === 'trial' && trialDaysLeft > 0">
                     <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-amber-100 dark:bg-amber-500/20 text-amber-700 dark:text-amber-400 rounded-lg mr-1 border border-amber-200 dark:border-amber-500/30">
-                        <span class="text-[10px] font-black tracking-wide">Sisa Trial: {{ trialDaysLeft }} Hari</span>
+                        <span class="text-[10px] font-black tracking-wide">{{ $t('trial_remaining', 'Sisa Trial:') }} {{ trialDaysLeft }} {{ $t('trial_days', 'Hari') }}</span>
                     </div>
                 </template>
 

@@ -22,13 +22,9 @@ const todayDisplay = computed(() => {
     <div class="mx-auto flex w-full min-w-0 flex-col items-stretch justify-between gap-3 px-4 md:px-6 lg:px-8 py-4 md:flex-row md:items-center lg:max-w-[96%]">
       
       <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,28rem)]">
-        <p class="shrink-0 text-[10px] font-black capitalize tracking-wide text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+        <p class="shrink-0 text-[13px] font-black capitalize tracking-wide text-slate-700 dark:text-slate-300 mr-2 pr-4">
             {{ $t('goal_page_title', 'Goal Tracker') }}
         </p>
-        <div class="flex min-w-0 flex-1 items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50 overflow-hidden">
-            <OneForMindIcon name="calendar" size="14" class="text-indigo-500 shrink-0" />
-            <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize truncate">{{ todayDisplay }}</span>
-        </div>
       </div>
 
       <div class="flex items-center w-full min-w-0 gap-2 md:w-auto md:justify-end mt-1 md:mt-0">
