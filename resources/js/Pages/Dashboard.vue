@@ -248,9 +248,10 @@ onMounted(() => {
 
                         <div v-if="synergy?.planner?.upcoming?.length > 0" class="space-y-2">
                             <div
-                                v-for="task in synergy.planner.upcoming"
+                                v-for="(task, index) in synergy.planner.upcoming"
                                 :key="task.id"
-                                class="flex items-center justify-between gap-3 rounded-xl border border-transparent bg-slate-50/80 px-3 py-3 transition hover:border-slate-200 dark:bg-white/[0.04] dark:hover:border-white/10"
+                                class="flex items-center justify-between gap-3 rounded-xl border border-transparent bg-slate-50/80 px-3 py-3 transition-all duration-300 hover:border-slate-200 dark:bg-white/[0.04] dark:hover:border-white/10 hover:translate-x-1"
+                                :style="{ transitionDelay: `${index * 50}ms` }"
                             >
                                 <div class="flex min-w-0 items-center gap-3">
                                     <span
@@ -330,12 +331,12 @@ onMounted(() => {
                                     <Sparkles :size="12" class="text-indigo-300" />
                                     {{ $t('dash_neural_active') }}
                                 </div>
-                                <p class="text-base font-bold leading-snug md:text-lg">
-                                    {{
-                                        loadingInsight
-                                            ? $t('dash_neural_default_summary')
-                                            : globalInsight?.summary || $t('dash_neural_default_summary')
-                                    }}
+                                <div v-if="loadingInsight" class="space-y-2">
+                                    <div class="h-5 bg-white/10 rounded-md w-full animate-shimmer"></div>
+                                    <div class="h-5 bg-white/10 rounded-md w-4/5 animate-shimmer"></div>
+                                </div>
+                                <p v-else class="text-base font-bold leading-snug md:text-lg animate-fade-in">
+                                    {{ globalInsight?.summary || $t('dash_neural_default_summary') }}
                                 </p>
                                 <p class="mt-2 text-xs font-medium text-indigo-200/80">
                                     {{ $t('dash_open_hub') }}
@@ -343,7 +344,7 @@ onMounted(() => {
                                 </p>
                             </div>
                             <div
-                                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5"
+                                class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12"
                             >
                                 <Brain :size="28" class="text-indigo-200" />
                             </div>
@@ -600,5 +601,30 @@ onMounted(() => {
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.bento-card {
+    @apply transition-all duration-500;
+}
+.bento-card-hover:hover {
+    @apply -translate-y-1 shadow-lg shadow-indigo-500/5;
 }
 </style>

@@ -199,5 +199,10 @@
     "error_desc_403": "Sorry, you do not have permission to access this page.",
     "error_desc_default": "An unexpected technical issue occurred. Please try again.",
 
-    "error_btn_back": "Back to Home"
+    "error_btn_back": "Back to Home",
+    "calendar_page_title": "Calendar",
+    "neural_bridge_title": "Neural Bridge",
+    "neural_bridge_limit": "Neural insights require Quantum Plan",
+    "btn_upgrade": "Upgrade",
+    "btn_get_intelligence": "Get Intelligence"
 }

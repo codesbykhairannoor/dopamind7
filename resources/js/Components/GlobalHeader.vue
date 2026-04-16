@@ -11,6 +11,8 @@ import { useAppearance } from '@/Composables/useAppearance';
 import { onMounted, onUnmounted, watch } from 'vue';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
+import PlannerDatePicker from '@/Components/PlannerDatePicker.vue';
+import dayjs from 'dayjs';
 
 const page = usePage();
 const { isExplorer, user } = useGating();
@@ -104,14 +106,20 @@ const todayLabel = computed(() => {
 const currentLocale = computed(() => page.props.locale);
 const switchLang = (lang) => {
     if (lang === currentLocale.value) return;
-    router.get(route('lang.switch', { locale: lang }), {}, { 
-        preserveScroll: true,
-        preserveState: true
-    });
+    
+    // 🔥 FORCED RELOAD for full localization sync
+    NProgress.start();
+    window.location.href = route('lang.switch', { locale: lang });
 };
 
 const showNotificationSettings = ref(false);
 const showCommandPalette = ref(false);
+const showHeaderDatePicker = ref(false);
+
+const onHeaderDateSelect = (date) => {
+    showHeaderDatePicker.value = false;
+    router.get(route('planner.index', { date }));
+};
 
 const handleGlobalShortcuts = (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -130,7 +138,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <header class="h-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 sticky top-top z-[70] transition-all duration-500">
+    <header class="h-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 sticky top-0 z-[70] transition-all duration-500">
         <div class="flex h-full items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4">
             
             <!-- LEFT: HAMBURGER + LOGO -->
@@ -183,12 +191,26 @@ onUnmounted(() => {
                     <OneForMindIcon name="search" size="18" />
                 </button>
 
-                <div
-                    class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-800/70 border border-transparent transition-all group mr-1.5 shadow-sm"
-                    title="Current Date"
-                >
-                    <svg class="text-slate-400 group-hover:text-indigo-500 transition-colors shrink-0" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    <span class="text-[11px] font-black text-slate-600 dark:text-slate-300 transition-colors whitespace-nowrap">{{ todayLabel }}</span>
+                <div class="hidden md:block relative mr-1.5">
+                    <button
+                        type="button"
+                        @click="showHeaderDatePicker = !showHeaderDatePicker"
+                        class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-100/70 dark:bg-slate-800/70 border border-transparent transition-all group shadow-sm hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-100 dark:hover:border-indigo-500/20"
+                        :class="showHeaderDatePicker ? 'ring-2 ring-indigo-500/20 border-indigo-200' : ''"
+                    >
+                        <svg class="text-slate-400 group-hover:text-indigo-500 transition-colors shrink-0" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <span class="text-[11px] font-black text-slate-600 dark:text-slate-300 transition-colors whitespace-nowrap">{{ todayLabel }}</span>
+                    </button>
+
+                    <div v-if="showHeaderDatePicker" class="absolute right-0 top-full mt-2 z-[100] origin-top-right">
+                        <div class="fixed inset-0 z-[-1]" @click="showHeaderDatePicker = false"></div>
+                        <PlannerDatePicker
+                            :show="showHeaderDatePicker"
+                            :modelValue="dayjs().format('YYYY-MM-DD')"
+                            @update:modelValue="onHeaderDateSelect"
+                            @close="showHeaderDatePicker = false"
+                        />
+                    </div>
                 </div>
 
                 <template v-if="!user?.has_used_trial && user?.plan_type !== 'trial' && !user?.is_premium">

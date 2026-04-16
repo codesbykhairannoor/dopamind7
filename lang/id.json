@@ -4376,5 +4376,10 @@
     "stat_metrics_uptime": "Uptime Tahunan",
     "stat_cta_title": "Tetap Terinformasi",
     "stat_cta_desc": "Ikuti pembaruan teknis kami untuk laporan insiden yang mendalam.",
-    "stat_cta_btn": "Ke Hub Komunitas"
+    "stat_cta_btn": "Ke Hub Komunitas",
+    "calendar_page_title": "Kalender",
+    "neural_bridge_title": "Neural Bridge",
+    "neural_bridge_limit": "Wawasan neural memerlukan paket Quantum",
+    "btn_get_intelligence": "Dapatkan Wawasan",
+    "btn_upgrade": "Tingkatkan"
 }

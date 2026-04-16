@@ -251,10 +251,13 @@
     "contact_info_chat_status": "Dukungan Cepat",
     "contact_faq_title": "Punya pertanyaan teknis?",
     "contact_faq_desc": "Cek dokumentasi bantuan kami untuk jawaban instan mengenai fitur dan lisensi.",
-    "contact_faq_btn": "Buka Pusat Bantuan",
+    "calendar_ai_promo_btn": "Kuasai Waktu Anda",
+    "calendar_page_title": "Kalender",
     "contact_form_message_placeholder": "Bagaimana kami bisa membantu Anda?",
     "contact_form_name_placeholder": "Nama lengkap Anda",
     "contact_form_email_placeholder": "email@contoh.com",
     "contact_subject_partnership": "Kemitraan Bisnis",
-    "contact_subject_other": "Lainnya"
+    "contact_subject_other": "Lainnya",
+    "neural_bridge_title": "Neural Bridge",
+    "neural_bridge_limit": "Wawasan neural memerlukan paket Quantum"
 }

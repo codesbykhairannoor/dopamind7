@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
-import PlannerDatePicker from './PlannerDatePicker.vue'; 
+import PlannerDatePicker from '@/Components/PlannerDatePicker.vue'; 
 
 const props = defineProps({
     currentDate: String,
