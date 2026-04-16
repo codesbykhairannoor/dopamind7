@@ -61,7 +61,7 @@ class SecurityHeaders
             $csp .= "worker-src 'self' blob:; ";
             $csp .= "frame-src 'self' https://www.google.com $midtransUrls $duitkuUrls $metaUrls $paypalUrls; "; // Batasi frame 
             $csp .= "frame-ancestors 'self'; "; // Cegah clickjacking ketat
-            $csp .= "connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com $midtransUrls $duitkuUrls $metaUrls $paypalUrls $externalSources; ";
+            $csp .= "connect-src 'self' https://cloudflareinsights.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://*.paypal.com $midtransUrls $duitkuUrls $metaUrls $paypalUrls $externalSources; ";
             $csp .= "upgrade-insecure-requests;";
         }
 

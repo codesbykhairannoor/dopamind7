@@ -102,6 +102,22 @@ createInertiaApp({
  * that are not valid Inertia responses. This prevents the "NP progress then stop" dead-end.
  */
 router.on('invalid', (event) => {
+    // If the server tells us our assets are outdated (409 Conflict), auto-reload!
+    if (event.detail.response && event.detail.response.status === 409) {
+        event.preventDefault();
+        console.warn('[OneForMind] Asset version mismatch detected. Auto-refreshing...');
+        window.location.reload();
+        return;
+    }
+
+    // Sometimes Vite/Inertia throws 404 when chunks are missing due to a new deploy
+    if (event.detail.response && event.detail.response.status === 404) {
+        event.preventDefault();
+        console.warn('[OneForMind] Chunk/Page not found (404). Likely a new deployment. Auto-refreshing...');
+        window.location.reload();
+        return;
+    }
+    
     const response = event?.detail?.response;
     const status = response?.status;
 
@@ -110,12 +126,6 @@ router.on('invalid', (event) => {
     if (NProgress.isStarted()) NProgress.done();
 
     // Specific feedback for the user (can be replaced with a Toast later)
-    if (status === 409) {
-        console.error('[OneForMind] Version mismatch detected. Refreshing...');
-        window.location.reload();
-        return;
-    }
-
     if (status === 401 || status === 419) {
         alert('Sesi Anda telah berakhir. Silakan login kembali.');
         window.location.href = route('login');
