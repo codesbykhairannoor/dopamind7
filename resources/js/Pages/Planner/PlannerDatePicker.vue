@@ -57,6 +57,11 @@ const selectDate = (day) => {
     emit('close');
 };
 
+const selectToday = () => {
+    emit('update:modelValue', dayjs().format('YYYY-MM-DD'));
+    emit('close');
+};
+
 const isSelected = (day) => props.modelValue === currentMonth.value.date(day).format('YYYY-MM-DD');
 const isToday = (day) => dayjs().format('YYYY-MM-DD') === currentMonth.value.date(day).format('YYYY-MM-DD');
 </script>
@@ -105,7 +110,7 @@ const isToday = (day) => dayjs().format('YYYY-MM-DD') === currentMonth.value.dat
             </div>
             
             <div class="mt-4 pt-3 border-t border-slate-50 text-center">
-                <button @click.prevent="currentMonth = dayjs()" class="text-[10px] font-bold text-slate-400 hover:text-indigo-600 uppercase tracking-widest transition">Ke Hari Ini</button>
+                <button @click.prevent="selectToday" class="text-[10px] font-bold text-slate-400 hover:text-indigo-600 uppercase tracking-widest transition">Ke Hari Ini</button>
             </div>
         </div>
     </div>

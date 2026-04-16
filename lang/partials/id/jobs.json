@@ -53,6 +53,7 @@
     "job_master_cv_upload_label": "Upload PDF atau Gambar (Maks 15MB)",
     "job_master_cv_ready_to_sync": "Siap Sinkronisasi Intelijen",
     "job_master_cv_save": "Simpan & Ekstrak CV",
+    "job_master_cv_update": "Ganti / Perbarui CV",
     "job_master_cv_extracting": "Mengekstrak Intelijen Teks...",
     "job_master_cv_error_save": "Gagal menyimpan CV. Coba lagi.",
     "job_master_cv_success": "Master CV berhasil disimpan.",

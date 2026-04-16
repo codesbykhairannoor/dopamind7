@@ -270,7 +270,7 @@ onMounted(() => {
                                             <span v-if="habit.streak > 1" class="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 rounded-lg text-[10px] font-black animate-pulse shadow-sm border border-orange-100/50 dark:border-orange-500/20">
                                                 {{ habit.streak }} <span class="text-xs">🔥</span>
                                             </span>
-                                            <span v-if="habit.is_stagnant" class="text-[8px] font-black bg-rose-50 text-rose-500 px-1.5 py-0.5 rounded-md">Dormant</span>
+                                            <span v-if="habit.is_stagnant" title="Habit ini sudah tidak dilakukan lebih dari 7 hari" class="text-[8px] font-black bg-rose-50 text-rose-500 px-1.5 py-0.5 rounded-md cursor-help">Dormant</span>
                                         </h4>
                                         <div class="flex items-center gap-1 text-[10px] font-medium text-slate-400 dark:text-slate-500 mb-1.5 mt-0.5">
                                             <span>🎯 Target: {{ habit.monthly_target }}</span>

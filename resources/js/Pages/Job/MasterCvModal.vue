@@ -141,9 +141,12 @@ const save = async () => {
                         </div>
                     </template>
                     <template v-else>
-                        <div class="relative z-10 text-center">
-                            <OneForMindIcon name="refresh" size="32" class="text-indigo-500 mx-auto mb-2 animate-spin-slow" />
-                            <p class="text-xs font-black text-slate-800 dark:text-white truncate px-4 max-w-[250px]">{{ fileName }}</p>
+                        <div class="absolute inset-0 w-full h-full">
+                            <embed v-if="filePreview.startsWith('data:application/pdf')" :src="filePreview" type="application/pdf" class="w-full h-full opacity-40 pointer-events-none" />
+                            <img v-else :src="filePreview" class="w-full h-full object-cover opacity-40" />
+                        </div>
+                        <div class="relative z-10 text-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm p-3 rounded-2xl border border-indigo-100 dark:border-indigo-900/30 shadow-sm">
+                            <p class="text-xs font-black text-indigo-600 dark:text-indigo-400 truncate max-w-[200px]">{{ fileName }}</p>
                             <p class="text-[9px] font-bold text-indigo-500 uppercase mt-1">
                                 Ready to Intelligence-Sync
                             </p>

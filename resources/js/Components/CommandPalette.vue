@@ -46,6 +46,12 @@ const filteredResults = computed(() => {
     if (!searchQuery.value) {
         return items;
     }
+    
+    // Meta Pixel Event for Search
+    if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Search', { search_string: searchQuery.value, test_event_code: 'TEST9631' });
+    }
+    
     return items.filter((item) => item.name.toLowerCase().includes(searchQuery.value.toLowerCase()));
 });
 

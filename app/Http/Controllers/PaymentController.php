@@ -132,6 +132,18 @@ class PaymentController extends Controller
                 'merchantOrderId' => $merchantOrderId,
                 'paymentAmount' => (int)$paymentAmount
             ]);
+            
+            // Meta Pixel CAPI Event: InitiateCheckout
+            try {
+                $metaCapi = new \App\Services\MetaCapiService();
+                $metaCapi->initiateCheckout([
+                    'id' => $user->id,
+                    'email' => $user->email,
+                    'first_name' => explode(' ', trim($user->name))[0] ?? $user->name,
+                ], (float)$paymentAmount);
+            } catch (\Exception $e) {
+                Log::error('Meta CAPI Error on Initiate Checkout: ' . $e->getMessage());
+            }
 
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json',
@@ -226,6 +238,20 @@ class PaymentController extends Controller
                             'plan_type' => $finalPlan,
                             'premium_until' => now()->addMonths($duration),
                         ]);
+                        
+                        // Meta Pixel CAPI Event: Purchase & Subscribe
+                        try {
+                            $metaCapi = new \App\Services\MetaCapiService();
+                            $userData = [
+                                'id' => $user->id,
+                                'email' => $user->email,
+                                'first_name' => explode(' ', trim($user->name))[0] ?? $user->name,
+                            ];
+                            $metaCapi->purchase($userData, (float)$amount, $merchantOrderId);
+                            $metaCapi->subscribe($userData, $merchantOrderId);
+                        } catch (\Exception $e) {
+                            Log::error('Meta CAPI Error on Purchase Callback: ' . $e->getMessage());
+                        }
                     }
                 }
             }

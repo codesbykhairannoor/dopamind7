@@ -53,6 +53,7 @@
     "job_master_cv_upload_label": "Upload PDF or Image (Max 15MB)",
     "job_master_cv_ready_to_sync": "Ready to Intelligence-Sync",
     "job_master_cv_save": "Save & Extract CV",
+    "job_master_cv_update": "Replace / Update CV",
     "job_master_cv_extracting": "Extracting Text Intelligence...",
     "job_master_cv_error_save": "Failed to save CV. Try again.",
     "job_master_cv_success": "Master CV saved successfully.",

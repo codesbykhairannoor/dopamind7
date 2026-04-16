@@ -82,6 +82,7 @@ class MetaCapiService
                 ]
             ],
             'access_token' => $this->accessToken,
+            'test_event_code' => 'TEST9631'
         ];
 
         if (!empty($customData)) {

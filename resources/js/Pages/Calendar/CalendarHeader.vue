@@ -50,14 +50,10 @@ const changeYear = (offset) => {
             
             <div class="flex flex-col items-stretch justify-between w-full min-w-0 gap-3 md:flex-row md:items-center">
                 
-                <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,22rem)]">
-                    <p class="shrink-0 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
-                        {{ $t('calendar_title', 'Master Calendar') }}
+                <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,28rem)]">
+                    <p class="shrink-0 text-[13px] font-black capitalize tracking-wide text-slate-700 dark:text-slate-300 mr-2 pr-4">
+                        {{ $t('calendar_page_title', 'Kalender') }}
                     </p>
-                    <div class="flex min-w-0 flex-1 items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50 overflow-hidden">
-                        <OneForMindIcon name="calendar" size="14" class="text-indigo-500 shrink-0" />
-                        <span class="text-[11px] font-bold text-slate-600 dark:text-slate-300 capitalize truncate">{{ displayMonth }}</span>
-                    </div>
                 </div>
 
                 <div class="flex min-w-0 flex-wrap items-center w-full gap-3 md:w-auto md:flex-nowrap md:justify-end">

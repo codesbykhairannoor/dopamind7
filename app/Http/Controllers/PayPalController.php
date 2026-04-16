@@ -87,6 +87,20 @@ class PayPalController extends Controller
         if (empty($clientId) || empty($clientSecret)) {
             return response()->json(['error' => 'Gagal autentikasi PayPal. Periksa konfigurasi API.'], 500);
         }
+        
+        $user = auth()->user();
+        
+        // Meta Pixel CAPI Event: InitiateCheckout
+        try {
+            $metaCapi = new \App\Services\MetaCapiService();
+            $metaCapi->initiateCheckout([
+                'id' => $user->id,
+                'email' => $user->email,
+                'first_name' => explode(' ', trim($user->name))[0] ?? $user->name,
+            ], (float)$amount);
+        } catch (\Exception $e) {
+            Log::error('Meta CAPI Error on Initiate Checkout PayPal: ' . $e->getMessage());
+        }
 
         try {
             $token = $this->getAccessToken($clientId, $clientSecret, $baseUrl);
@@ -171,6 +185,22 @@ class PayPalController extends Controller
                         'is_premium' => 'true',
                         'premium_until' => now()->addMonths($duration),
                     ]);
+                    
+                    // Meta Pixel CAPI Event: Purchase & Subscribe
+                    try {
+                        // Using approximate conversion rate for logging purposes 1 USD = 15000 IDR
+                        $amountInIDR = (float)($data['purchase_units'][0]['amount']['value'] ?? 0) * 15000;
+                        $metaCapi = new \App\Services\MetaCapiService();
+                        $userData = [
+                            'id' => $user->id,
+                            'email' => $user->email,
+                            'first_name' => explode(' ', trim($user->name))[0] ?? $user->name,
+                        ];
+                        $metaCapi->purchase($userData, $amountInIDR, $token);
+                        $metaCapi->subscribe($userData, $token);
+                    } catch (\Exception $e) {
+                        Log::error('Meta CAPI Error on Purchase Callback PayPal: ' . $e->getMessage());
+                    }
                 }
 
                 return redirect()

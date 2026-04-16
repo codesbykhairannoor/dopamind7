@@ -206,7 +206,7 @@
           "@type": "SiteNavigationElement",
           "position": 1,
           "name": "Daily Planner",
-          "description": "Schedule Your Success, Get More Done. Stop feeling busy...",
+          "description": "Schedule Your Success, Get More Done. Stop feeling busy but...",
           "url": "{{ route('features.planner') }}"
         },
         {
@@ -226,9 +226,9 @@
         {
           "@type": "SiteNavigationElement",
           "position": 4,
-          "name": "User Stories",
-          "description": "Hear real stories from people who have transformed their lives...",
-          "url": "{{ route('resources.stories') }}"
+          "name": "Job Tracker",
+          "description": "Organize your career journey. Track applications, interviews, and networking...",
+          "url": "{{ route('features.job') }}"
         },
         {
           "@type": "SiteNavigationElement",
@@ -275,7 +275,7 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '{{ env('META_PIXEL_ID') }}');
-    fbq('track', 'PageView');
+    fbq('track', 'PageView', { test_event_code: 'TEST9631' });
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id={{ env('META_PIXEL_ID') }}&ev=PageView&noscript=1"
@@ -284,7 +284,7 @@
     {{-- Meta Pixel CompleteRegistration Trigger --}}
     @if(session('meta_event_id'))
     <script>
-        fbq('track', 'CompleteRegistration', {}, {eventID: '{{ session('meta_event_id') }}'});
+        fbq('track', 'CompleteRegistration', { test_event_code: 'TEST9631' }, {eventID: '{{ session('meta_event_id') }}'});
     </script>
     @endif
 
@@ -362,20 +362,6 @@
         }
 
         /* Fix scrollbar biar cantik */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        /* Fix scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -523,7 +509,7 @@
                     }(window, document, 'script',
                         'https://connect.facebook.net/en_US/fbevents.js');
                     fbq('init', '{{ env('FACEBOOK_PIXEL_ID') }}');
-                    fbq('track', 'PageView');
+                    fbq('track', 'PageView', { test_event_code: 'TEST9631' });
                     console.log('⚡ FB Pixel Loaded (Efficiency Mode)');
                 };
 
@@ -548,8 +534,8 @@
         scrolled: false,
         isInterfacing: false
     }" @mobile-nav-close.window="mobileMenuOpen = false; mobilePanel = null"
-        @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard')) { isInterfacing = true; } else if (window.innerWidth < 768) { NProgress.start(); }"
-        @htmx:after-request.window="isInterfacing = false; NProgress.done();"
+        @htmx:before-request.window="if($event.detail.pathInfo.requestPath.includes('dashboard')) { isInterfacing = true; } else { NProgress.start(); }"
+        @htmx:after-request.window="isInterfacing = false; NProgress.done(); window.scrollTo(0,0);"
         @htmx:response-error.window="isInterfacing = false; NProgress.done();"
         @pageshow.window="isInterfacing = false; NProgress.done();"
         @scroll.window.passive="scrolled = (window.scrollY > 20)" class="relative">
@@ -560,8 +546,8 @@
                 const links = document.querySelectorAll('a[href]:not([target=\"_blank\"]):not([href^=\"#\"]):not([href^=\"mailto:\"]):not([href^=\"tel:\"])');
                 links.forEach(link => {
                     link.addEventListener('click', (e) => {
-                        // Check if not prevented and it's mobile
-                        if (!e.defaultPrevented && window.innerWidth < 768) {
+                        // Check if not prevented
+                        if (!e.defaultPrevented) {
                             NProgress.start();
                         }
                     });

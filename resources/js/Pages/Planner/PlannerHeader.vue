@@ -28,7 +28,7 @@ const closeDatePicker = () => {
             <div class="w-full min-w-0 flex flex-col md:flex-row md:items-center md:justify-between items-stretch gap-4">
                 
                 <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,24rem)]">
-                    <p class="text-[10px] font-black capitalize tracking-wide text-slate-400 dark:text-slate-600 mr-2 border-r border-slate-200 dark:border-slate-800 pr-4">
+                    <p class="shrink-0 text-[13px] font-black capitalize tracking-wide text-slate-700 dark:text-slate-300 mr-2 pr-4">
                         {{ $t('header_title', 'Daily Planner') }}
                     </p>
                     

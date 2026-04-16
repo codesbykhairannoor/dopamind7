@@ -152,17 +152,19 @@ router.on('navigate', (event) => {
 
     // Meta Pixel Tracking
     if (typeof window.fbq === 'function') {
-        window.fbq('track', 'PageView');
+        window.fbq('track', 'PageView', { test_event_code: 'TEST9631' });
         
         // Pengecekan spesifik berdasarkan URL (misal: jika ada pendaftaran atau checkout)
         const url = event.detail.page.url;
         
         if (url.includes('/register')) {
-            window.fbq('track', 'ViewContent', { content_name: 'Register Page' });
+            window.fbq('track', 'ViewContent', { content_name: 'Register Page', test_event_code: 'TEST9631' });
         } else if (url.includes('/pricing')) {
-            window.fbq('track', 'ViewContent', { content_name: 'Pricing Page' });
+            window.fbq('track', 'ViewContent', { content_name: 'Pricing Page', test_event_code: 'TEST9631' });
         } else if (url.includes('/payment')) {
-            window.fbq('track', 'InitiateCheckout', { currency: 'IDR' });
+            window.fbq('track', 'InitiateCheckout', { currency: 'IDR', test_event_code: 'TEST9631' });
+        } else if (url.includes('/features/')) {
+            window.fbq('track', 'ViewContent', { content_name: 'Feature Details', content_type: url, test_event_code: 'TEST9631' });
         }
     }
 });
