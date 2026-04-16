@@ -49,14 +49,23 @@ export const useGating = () => {
     const user = computed(() => page.props.auth.user);
 
     const tier = computed(() => {
-        const plans = {
-            'explorer':  1,
-            'architect': 2,
-            'trial':     2, // Trial gives Architect features
-            'quantum':   3,
-            'legendary': 4,
-        };
-        return plans[user.value?.plan_type] || 1;
+        if (!user.value) return 1;
+
+        // Jika user punya is_premium, minimal mereka adalah level 2 (Architect)
+        if (user.value.is_premium) {
+            const plans = {
+                'explorer':  1, // Tidak mungkin premium tapi explorer, tapi jaga-jaga
+                'architect': 2,
+                'trial':     2, 
+                'quantum':   3,
+                'legendary': 4,
+            };
+            
+            // Jika plan_type tidak terdaftar tapi is_premium=true, anggap Architect
+            return plans[user.value.plan_type] || 2;
+        }
+
+        return 1; // Bukan premium = Explorer
     });
 
     // --- Plan booleans ---

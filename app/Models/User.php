@@ -168,7 +168,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function isArchitect(): bool
     {
-        return in_array($this->plan_type, ['architect', 'quantum', 'legendary']);
+        // User dianggap Architect jika punya is_premium AKTIF ATAU label plan-nya sesuai
+        return $this->is_premium || in_array($this->plan_type, ['architect', 'quantum', 'legendary', 'trial']);
     }
 
     public function isQuantum(): bool
