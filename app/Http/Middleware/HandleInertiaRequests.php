@@ -81,6 +81,8 @@ class HandleInertiaRequests extends Middleware
             },
             'csrf_token' => csrf_token(),
             'midtrans_is_production' => config('midtrans.is_production'),
+            'paypal_client_id' => config('paypal.' . config('paypal.mode', 'live') . '.client_id'),
+            'recaptcha_site_key' => config('services.recaptcha.site_key'),
             'session_id' => $request->session()->getId(),
 
             // 5. 🔥 GLOBAL HEADER: Habit streak & today progress

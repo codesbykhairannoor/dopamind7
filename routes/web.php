@@ -420,7 +420,7 @@ Route::get("/auth/google", [SocialController::class, "redirect"])->name(
 Route::get("/auth/google/callback", [SocialController::class, "callback"]);
 
 // --- GROUP 3: AUTHENTICATED APP ---
-Route::middleware(["auth", "throttle:global"])->group(function () {
+Route::middleware(["auth", "verified", "throttle:global"])->group(function () {
     // 👈 Tambahan di sini
     
     // Trial Route
@@ -795,12 +795,8 @@ Route::middleware(["auth", "throttle:global"])->group(function () {
         ->name("profile.")
         ->group(function () {
             Route::get("/", [ProfileController::class, "edit"])->name("edit");
-            Route::patch("/", [ProfileController::class, "update"])->name(
-                "update",
-            );
-            Route::delete("/", [ProfileController::class, "destroy"])->name(
-                "destroy",
-            );
+            Route::patch("/", [ProfileController::class, "update"])->name("update");
+            Route::delete("/", [ProfileController::class, "destroy"])->name("destroy");
         });
 
     // Duitku Payments

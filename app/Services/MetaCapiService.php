@@ -40,7 +40,7 @@ class MetaCapiService
         }
 
         if (!empty($user['id'])) {
-            $userData['external_id'] = [(string) $user['id']]; // Hashed requirement dropped in Master Prompt, but API usually wants array for external_id
+            $userData['external_id'] = [(string) $user['id']];
         }
 
         // Ambil fbp & fbc dari Cookie
@@ -67,7 +67,6 @@ class MetaCapiService
             return;
         }
 
-        $eventId = $eventId ?? 'ofm-' . strtolower($eventName) . '-' . time();
         $url = "https://graph.facebook.com/{$this->apiVersion}/{$this->pixelId}/events";
 
         $payload = [
@@ -81,8 +80,7 @@ class MetaCapiService
                     'user_data' => $this->buildUserData($user),
                 ]
             ],
-            'access_token' => $this->accessToken,
-            'test_event_code' => 'TEST9631'
+            'access_token' => $this->accessToken
         ];
 
         if (!empty($customData)) {

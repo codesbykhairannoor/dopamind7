@@ -1,6 +1,6 @@
 <script setup>
-import { Head, Link, useForm } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
+import { ref, onMounted } from 'vue';
 import InputError from '@/Components/InputError.vue';
 
 defineProps({
@@ -8,21 +8,44 @@ defineProps({
     status: { type: String },
 });
 
+const page = usePage();
+
 const form = useForm({
     email: '',
     password: '',
     remember: false,
     timezone: '',
+    'g-recaptcha-response': '',
 });
 
 const showPassword = ref(false);
 
 const submit = () => {
     form.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    form.post(route('login'), {
-        onFinish: () => form.reset('password'),
-    });
+    if (window.grecaptcha) {
+        window.grecaptcha.ready(() => {
+            window.grecaptcha.execute(page.props.recaptcha_site_key, {action: 'login'}).then((token) => {
+                form['g-recaptcha-response'] = token;
+                form.post(route('login'), {
+                    onFinish: () => form.reset('password'),
+                });
+            });
+        });
+    } else {
+        form.post(route('login'), {
+            onFinish: () => form.reset('password'),
+        });
+    }
 };
+
+onMounted(() => {
+    if (!document.getElementById('recaptcha-script')) {
+        const script = document.createElement('script');
+        script.id = 'recaptcha-script';
+        script.src = `https://www.google.com/recaptcha/api.js?render=${page.props.recaptcha_site_key}`;
+        document.head.appendChild(script);
+    }
+});
 
 const loginWithGoogle = () => {
     window.location.href = '/auth/google';
@@ -98,6 +121,7 @@ const loginWithGoogle = () => {
                     </button>
                     <InputError class="mt-1.5 ml-1" :message="form.errors.password" />
                 </div>
+                <InputError class="mt-1.5 ml-1" :message="form.errors['g-recaptcha-response']" />
 
                 <div class="flex justify-end mt-1">
                     <Link v-if="canResetPassword" :href="route('password.request')" class="text-[11px] font-black uppercase tracking-wider text-slate-500 hover:text-indigo-600 transition-colors">

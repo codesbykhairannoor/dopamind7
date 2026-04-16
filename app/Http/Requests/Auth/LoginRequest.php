@@ -21,13 +21,34 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
-            'remember' => ['nullable', 'boolean'], // Tambahkan ini agar lebih eksplisit
+            'remember' => ['nullable', 'boolean'],
+            'g-recaptcha-response' => ['required', 'string'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'g-recaptcha-response.required' => 'Verifikasi reCAPTCHA diperlukan.',
         ];
     }
 
     public function authenticate(): void
 {
     $this->ensureIsNotRateLimited();
+
+    // Validate reCAPTCHA
+    $recaptchaResponse = \Illuminate\Support\Facades\Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+        'secret' => config('services.recaptcha.secret'),
+        'response' => $this->input('g-recaptcha-response'),
+        'remoteip' => $this->ip()
+    ]);
+
+    if (!$recaptchaResponse->json('success') || $recaptchaResponse->json('score') < 0.5) {
+        throw ValidationException::withMessages([
+            'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal, skor terlalu rendah atau invalid.',
+        ]);
+    }
 
     if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
         RateLimiter::hit($this->throttleKey());

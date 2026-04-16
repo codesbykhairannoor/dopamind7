@@ -35,7 +35,21 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:' . User::class ,
             'password' => ['required', Rules\Password::defaults()],
+            'g-recaptcha-response' => 'required|string',
+        ], [
+            'g-recaptcha-response.required' => 'Verifikasi reCAPTCHA diperlukan.'
         ]);
+
+        // Validate reCAPTCHA
+        $recaptchaResponse = \Illuminate\Support\Facades\Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $request->input('g-recaptcha-response'),
+            'remoteip' => $request->ip()
+        ]);
+
+        if (!$recaptchaResponse->json('success') || $recaptchaResponse->json('score') < 0.5) {
+            return back()->withErrors(['g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal, skor terlalu rendah atau invalid.'])->withInput();
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -76,6 +90,6 @@ class RegisteredUserController extends Controller
             \Illuminate\Support\Facades\Log::error('Meta CAPI Error on Registration: ' . $e->getMessage());
         }
 
-        return redirect(RouteServiceProvider::HOME)->with('meta_event_id', $metaEventId);
+        return redirect()->route('verification.notice')->with('meta_event_id', $metaEventId);
     }
 }

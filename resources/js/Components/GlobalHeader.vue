@@ -36,7 +36,12 @@ const startTrial = () => {
         cancelButtonText: trans('btn_cancel') || 'Batal'
     }).then((result) => {
         if (result.isConfirmed) {
-            router.post(route('trial.start'), {}, {
+            const metaEventId = `ofm-starttrial-${crypto.randomUUID()}`;
+            if (typeof window.fbq === 'function') {
+                window.fbq('track', 'StartTrial', { currency: 'IDR', value: 0.00 }, { eventID: metaEventId });
+            }
+
+            router.post(route('trial.start'), { meta_event_id: metaEventId }, {
                 preserveScroll: true,
                 onSuccess: () => {
                     Swal.fire({

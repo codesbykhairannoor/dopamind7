@@ -275,7 +275,7 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '{{ env('META_PIXEL_ID') }}');
-    fbq('track', 'PageView', { test_event_code: 'TEST9631' });
+    fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id={{ env('META_PIXEL_ID') }}&ev=PageView&noscript=1"
@@ -284,7 +284,7 @@
     {{-- Meta Pixel CompleteRegistration Trigger --}}
     @if(session('meta_event_id'))
     <script>
-        fbq('track', 'CompleteRegistration', { test_event_code: 'TEST9631' }, {eventID: '{{ session('meta_event_id') }}'});
+        fbq('track', 'CompleteRegistration', {}, {eventID: '{{ session('meta_event_id') }}'});
     </script>
     @endif
 
@@ -509,7 +509,7 @@
                     }(window, document, 'script',
                         'https://connect.facebook.net/en_US/fbevents.js');
                     fbq('init', '{{ env('FACEBOOK_PIXEL_ID') }}');
-                    fbq('track', 'PageView', { test_event_code: 'TEST9631' });
+                    fbq('track', 'PageView');
                     console.log('⚡ FB Pixel Loaded (Efficiency Mode)');
                 };
 

@@ -1,6 +1,6 @@
 <script setup>
-import { computed } from 'vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { computed, onMounted } from 'vue';
+import { Head, Link, usePage } from '@inertiajs/vue3';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import axios from 'axios';
@@ -40,12 +40,94 @@ const displayPrice = computed(() => {
     return 'Rp ' + total.toLocaleString('id-ID');
 });
 
+const page = usePage();
+
 const initiatePayment = async (method) => {
     const routeName = method === 'paypal' ? 'paypal.checkout' : 'payment.checkout';
     
+    if (method === 'paypal') {
+        Swal.fire({
+            title: 'Initializing PayPal...',
+            html: 'Please wait...',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
+        try {
+            // Load PayPal SDK v6
+            if (!window.paypal) {
+                const script = document.createElement('script');
+                script.src = "https://www.paypal.com/web-sdk/v6/core";
+                document.head.appendChild(script);
+                await new Promise((resolve) => script.onload = resolve);
+            }
+
+            const sdkInstance = await window.paypal.createInstance({
+                clientId: page.props.paypal_client_id,
+                components: ["paypal-payments"]
+            });
+
+            const paypalPaymentSession = sdkInstance.createPayPalOneTimePaymentSession({
+                async onApprove(data) {
+                    Swal.fire({
+                        title: 'Processing...',
+                        text: 'Please wait while we verify your payment.',
+                        allowOutsideClick: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+                    
+                    try {
+                        const res = await axios.post(route('paypal.success'), {
+                            token: data.orderId,
+                            plan: props.plan.toLowerCase(),
+                            billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
+                        });
+                        
+                        if (res.data.success) {
+                            window.location.href = route('settings.index', { tab: 'billing' });
+                        } else {
+                            throw new Error('Verification failed');
+                        }
+                    } catch (e) {
+                        Swal.fire('Error', 'Payment capture failed. Contact support.', 'error');
+                    }
+                },
+                onCancel(data) {
+                    Swal.fire('Cancelled', 'PayPal checkout was cancelled.', 'info');
+                },
+                onError(error) {
+                    console.error("PayPal Error:", error);
+                    Swal.fire('Error', 'Something went wrong with PayPal.', 'error');
+                }
+            });
+
+            Swal.close();
+
+            await paypalPaymentSession.start({ presentationMode: "auto" }, () => {
+                return axios.post(route('paypal.checkout'), {
+                    plan: props.plan.toLowerCase(),
+                    billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
+                }).then(res => ({ orderId: res.data.id }));
+            });
+
+        } catch (e) {
+            console.error('PayPal Init Error:', e);
+            Swal.fire({
+                icon: 'error',
+                title: 'PayPal Error',
+                text: 'Failed to load PayPal SDK or create order.',
+                confirmButtonColor: '#4f46e5'
+            });
+        }
+        return;
+    }
+
+    // For Duitku
     Swal.fire({
         title: 'Redirecting to Gateway...',
-        html: `Securing connection to ${method === 'paypal' ? 'PayPal' : 'Duitku'}...`,
+        html: `Securing connection to Duitku...`,
         allowOutsideClick: false,
         didOpen: () => {
             Swal.showLoading();
@@ -58,9 +140,7 @@ const initiatePayment = async (method) => {
             billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
         });
 
-        if (method === 'duitku' && response.data.paymentUrl) {
-            window.location.href = response.data.paymentUrl;
-        } else if (method === 'paypal' && response.data.paymentUrl) {
+        if (response.data.paymentUrl) {
             window.location.href = response.data.paymentUrl;
         } else {
             throw new Error('No payment URL received');

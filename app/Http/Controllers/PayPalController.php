@@ -126,12 +126,7 @@ class PayPalController extends Controller
             $data = $response->json();
 
             if (isset($data['id'])) {
-                foreach ($data['links'] as $link) {
-                    if ($link['rel'] === 'approve') {
-                        return response()->json(['paymentUrl' => $link['href']]);
-                    }
-                }
-                return response()->json(['error' => 'Something went wrong with PayPal links.'], 500);
+                return response()->json(['id' => $data['id']]);
             } else {
                 Log::error('PayPal Gateway Error Response:', [
                     'full_response' => $data,
@@ -154,8 +149,9 @@ class PayPalController extends Controller
      */
     public function success(Request $request)
     {
-        $token = $request->query('token');
+        $token = $request->input('token') ?? $request->query('token');
         if (!$token) {
+            if ($request->wantsJson()) return response()->json(['success' => false, 'error' => 'Invalid token from PayPal.'], 400);
             return redirect()->route('settings.index', ['tab' => 'billing'])->with('error', 'Invalid token from PayPal.');
         }
 
@@ -172,8 +168,8 @@ class PayPalController extends Controller
 
             if (isset($data['status']) && $data['status'] === 'COMPLETED') {
                 $user = auth()->user();
-                $planType = strtoupper($request->query('plan', 'ARCHITECT'));
-                $billing = $request->query('billing', 'yearly');
+                $planType = strtoupper($request->input('plan', 'ARCHITECT'));
+                $billing = $request->input('billing', 'yearly');
                 
                 $duration = $billing === 'yearly' ? 12 : 1; 
                 if ($planType === 'LIFETIME') {
@@ -203,11 +199,16 @@ class PayPalController extends Controller
                     }
                 }
 
+                if ($request->wantsJson()) {
+                    $request->session()->flash('success', 'Transaction complete! Your account has been upgraded via PayPal.');
+                    return response()->json(['success' => true]);
+                }
                 return redirect()
                     ->route('settings.index', ['tab' => 'billing'])
                     ->with('success', 'Transaction complete! Your account has been upgraded via PayPal.');
             } else {
                 Log::error('PayPal Capture Error:', $data);
+                if ($request->wantsJson()) return response()->json(['success' => false, 'error' => $data['message'] ?? 'Something went wrong with PayPal capture.'], 400);
                 return redirect()
                     ->route('settings.index', ['tab' => 'billing'])
                     ->with('error', $data['message'] ?? 'Something went wrong with PayPal capture.');
@@ -215,6 +216,7 @@ class PayPalController extends Controller
 
         } catch (\Exception $e) {
             Log::error('PayPal Capture Exception:', ['message' => $e->getMessage()]);
+            if ($request->wantsJson()) return response()->json(['success' => false, 'error' => 'Gagal memproses pembayaran PayPal.'], 500);
             return redirect()
                 ->route('settings.index', ['tab' => 'billing'])
                 ->with('error', 'Gagal memproses pembayaran PayPal.');

@@ -1,23 +1,46 @@
 <script setup>
-import { Head, Link, useForm } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
+import { ref, onMounted } from 'vue';
 import InputError from '@/Components/InputError.vue';
+
+const page = usePage();
 
 const form = useForm({
     name: '',
     email: '',
     password: '',
     timezone: '', 
+    'g-recaptcha-response': '',
 });
 
 const showPassword = ref(false);
 
 const submit = () => {
     form.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    form.post(route('register'), {
-        onFinish: () => form.reset('password'),
-    });
+    if (window.grecaptcha) {
+        window.grecaptcha.ready(() => {
+            window.grecaptcha.execute(page.props.recaptcha_site_key, {action: 'register'}).then((token) => {
+                form['g-recaptcha-response'] = token;
+                form.post(route('register'), {
+                    onFinish: () => form.reset('password'),
+                });
+            });
+        });
+    } else {
+        form.post(route('register'), {
+            onFinish: () => form.reset('password'),
+        });
+    }
 };
+
+onMounted(() => {
+    if (!document.getElementById('recaptcha-script')) {
+        const script = document.createElement('script');
+        script.id = 'recaptcha-script';
+        script.src = `https://www.google.com/recaptcha/api.js?render=${page.props.recaptcha_site_key}`;
+        document.head.appendChild(script);
+    }
+});
 
 const loginWithGoogle = () => {
     window.location.href = '/auth/google';
@@ -101,6 +124,7 @@ const loginWithGoogle = () => {
                     </button>
                     <InputError class="mt-1.5 ml-1" :message="form.errors.password" />
                 </div>
+                <InputError class="mt-1.5 ml-1" :message="form.errors['g-recaptcha-response']" />
 
                 <button
                     type="submit"
