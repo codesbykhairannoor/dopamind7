@@ -237,7 +237,7 @@ class User extends Authenticatable implements MustVerifyEmail
                 'api-key' => config('mail.mailers.smtp.password'),
                 'Content-Type' => 'application/json',
             ])->timeout(10)->post('https://api.brevo.com/v3/smtp/email', [
-                'sender' => ['name' => config('mail.from.name'), 'email' => config('mail.from.address')],
+                'sender' => ['name' => (string) config('app.name', 'OneForMind'), 'email' => config('mail.from.address')],
                 'to' => [['email' => $this->email, 'name' => $this->name]],
                 'subject' => 'Verify Your Email - ' . config('app.name'),
                 'htmlContent' => '

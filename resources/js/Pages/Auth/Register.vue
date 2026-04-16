@@ -17,6 +17,29 @@ const showPassword = ref(false);
 const widgetId = ref(null);
 
 const submit = () => {
+    // Reset errors
+    form.clearErrors();
+
+    // Client-side Validation (Global i18n)
+    let hasError = false;
+
+    if (!form.email.includes('@')) {
+        form.setError('email', window.trans('auth_val_email') || 'Email harus mengandung @');
+        hasError = true;
+    }
+
+    if (form.password.length < 8) {
+        form.setError('password', window.trans('auth_val_pass_min') || 'Password minimal 8 karakter');
+        hasError = true;
+    }
+
+    if (!/[A-Z]/.test(form.password)) {
+        form.setError('password', window.trans('auth_val_pass_upper') || 'Password harus mengandung huruf besar');
+        hasError = true;
+    }
+
+    if (hasError) return;
+
     // Detect timezone or fallback to Asia/Jakarta
     try {
         form.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -26,11 +49,8 @@ const submit = () => {
 
     form.post(route('register'), {
         onFinish: () => {
-            // Kita hanya reset password jika ada error agar user tidak capek ketik ulang data lain
             if (form.hasErrors) {
                 form.reset('password');
-                
-                // Reset reCAPTCHA biar user bisa verifikasi ulang (token cuma 1x pakai)
                 if (window.grecaptcha && widgetId.value !== null) {
                     window.grecaptcha.reset(widgetId.value);
                     form['g-recaptcha-response'] = '';

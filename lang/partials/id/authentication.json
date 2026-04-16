@@ -1,4 +1,6 @@
-{    "auth_verify_title": "Verifikasi Email",
+{    "auth_val_email": "Email harus mengandung @",
+    "auth_val_pass_min": "Password minimal 8 karakter",
+    "auth_val_pass_upper": "Password harus mengandung minimal satu huruf besar",    "auth_verify_title": "Verifikasi Email",
     "auth_verify_header": "Cek Inbox Lo!",
     "auth_verify_p1": "Makasih udah daftar! Satu langkah lagi nih.",
     "auth_verify_p2": "Tolong klik link verifikasi yang baru saja kami kirim ke email di atas biar akunnya aktif.",
