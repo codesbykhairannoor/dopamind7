@@ -12,6 +12,19 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 window.trans = trans;
 
+// 🔥 GLOBAL SAFETY GUARD: Menghindari error 'e.target.closest is not a function'
+// Terjadi jika event listener global menangkap klik pada objek non-elemen (document/window).
+if (typeof Element !== 'undefined' && !Element.prototype.closest) {
+    Element.prototype.closest = function(s) {
+        var el = this;
+        do {
+            if (el.matches(s)) return el;
+            el = el.parentElement || el.parentNode;
+        } while (el !== null && el.nodeType === 1);
+        return null;
+    };
+}
+
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || import.meta.env.VITE_APP_NAME || 'Oneformind';
 
 /**
@@ -165,47 +178,76 @@ router.on('navigate', (event) => {
 
     // Meta Pixel Tracking
     if (typeof window.fbq === 'function') {
+        const url = event.detail.page.url;
+        const pageTitle = document.title;
+        const flash = event.detail.page.props.flash || {};
+        const metaEventId = flash.meta_event_id || `ofm-evt-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
+        // 0. Base Page View
         window.fbq('track', 'PageView');
         
         // 1. Awareness: ViewContent (Detailed lookup)
         if (url.includes('/features/')) {
-            window.fbq('track', 'ViewContent', { content_name: pageTitle, content_category: 'Features', content_type: 'product' });
+            window.fbq('track', 'ViewContent', { 
+                content_name: pageTitle, 
+                content_category: 'Features', 
+                content_type: 'product' 
+            }, { eventID: metaEventId });
         } else if (url.includes('/pricing')) {
-            window.fbq('track', 'ViewContent', { content_name: 'Pricing Plans', content_category: 'Pricing' });
+            window.fbq('track', 'ViewContent', { 
+                content_name: 'Pricing Plans', 
+                content_category: 'Pricing' 
+            }, { eventID: metaEventId });
         }
 
         // 2. Awareness: Search tracking (Catatan journal / data finance)
         const searchParams = new URLSearchParams(window.location.search);
         if (searchParams.has('q') || searchParams.has('search')) {
             const query = searchParams.get('q') || searchParams.get('search');
-            window.fbq('track', 'Search', { search_string: query });
+            window.fbq('track', 'Search', { 
+                search_string: query 
+            }, { eventID: metaEventId });
         }
 
-        // 3. Acquisition: CompleteRegistration (Detection after redirect from register)
-        // Note: Usually triggered once, can be passed via session in a flash message
-        if (event.detail.page.props.flash?.registration_success) {
-            window.fbq('track', 'CompleteRegistration', { status: 'free_tier' });
+        // 3. Acquisition: CompleteRegistration (Deduplication with CAPI)
+        if (flash.registration_success) {
+            window.fbq('track', 'CompleteRegistration', { 
+                status: 'free_tier',
+                content_name: 'Manual/Google Signup'
+            }, { eventID: metaEventId });
         }
         
         // 4. Funnel: InitiateCheckout
         if (url.includes('/payment') && !url.includes('/status')) {
-            window.fbq('track', 'InitiateCheckout', { currency: 'IDR' });
+            window.fbq('track', 'InitiateCheckout', { 
+                currency: 'IDR',
+                content_category: 'Subscription'
+            }, { eventID: metaEventId });
         }
 
-        // 4b. Funnel: StartTrial (Detect from success message)
-        const flashSuccess = event.detail.page.props.flash?.success;
-        if (flashSuccess && (flashSuccess.includes('Masa percobaan') || flashSuccess.includes('Trial started'))) {
-            window.fbq('track', 'StartTrial', { content_name: 'Architect Trial', days: 10 });
+        // 4b. Funnel: StartTrial (Deduplication with CAPI)
+        if (flash.success && (flash.success.includes('Masa percobaan') || flash.success.includes('Trial started'))) {
+            window.fbq('track', 'StartTrial', { 
+                content_name: 'Architect Trial', 
+                days: 10,
+                currency: 'IDR',
+                value: 0.00
+            }, { eventID: metaEventId });
         }
 
-        // 5. Revenue: Purchase & Subscribe (On status page / success)
+        // 5. Revenue: Purchase & Subscribe (Deduplication with CAPI)
         if (url.includes('/payment/status') || url.includes('tab=billing')) {
-            const paymentSuccess = event.detail.page.props.flash?.success || event.detail.page.props.flash?.payment_success;
-            // Hanya track jika ini adalah event sukses pembayaran baru (biasanya ada flash message)
-            if (paymentSuccess && (paymentSuccess.includes('complete') || paymentSuccess.includes('berhasil') || paymentSuccess.includes('upgraded'))) {
-                // Approximate values - the server CAPI will be more accurate, but browser helps deduplication
-                window.fbq('track', 'Purchase', { currency: 'IDR' });
-                window.fbq('track', 'Subscribe', { status: 'active' });
+            const isSuccess = flash.success || flash.payment_success;
+            if (isSuccess && (isSuccess.includes('complete') || isSuccess.includes('berhasil') || isSuccess.includes('upgraded'))) {
+                window.fbq('track', 'Purchase', { 
+                    currency: 'IDR',
+                    content_type: 'product'
+                }, { eventID: metaEventId });
+                
+                window.fbq('track', 'Subscribe', { 
+                    status: 'active',
+                    currency: 'IDR'
+                }, { eventID: metaEventId });
             }
         }
     }

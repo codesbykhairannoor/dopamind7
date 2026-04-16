@@ -36,6 +36,19 @@ const navigation = [
     { name: 'Finance Manager', icon: 'finance', href: route('finance.index'), type: 'all' },
 ];
 
+// Meta Pixel Event for Search (Debounced)
+let searchTimeout = null;
+watch(searchQuery, (newVal) => {
+    if (!newVal) return;
+    
+    if (searchTimeout) clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        if (typeof window.fbq === 'function') {
+            window.fbq('track', 'Search', { search_string: newVal });
+        }
+    }, 500);
+});
+
 const filteredResults = computed(() => {
     let items = navigation;
 
@@ -45,11 +58,6 @@ const filteredResults = computed(() => {
 
     if (!searchQuery.value) {
         return items;
-    }
-    
-    // Meta Pixel Event for Search
-    if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Search', { search_string: searchQuery.value });
     }
     
     return items.filter((item) => item.name.toLowerCase().includes(searchQuery.value.toLowerCase()));
