@@ -19,10 +19,10 @@ class TrialController extends Controller
         }
 
         $user->update([
-            'is_premium' => true,
-            'plan_type' => 'architect', // User trial mendapatkan akses setara Architect
+            'is_premium' => \DB::raw('true'),
+            'plan_type' => 'trial',
             'premium_until' => now()->addDays(10),
-            'has_used_trial' => true,
+            'has_used_trial' => \DB::raw('true'),
         ]);
 
         // Meta Pixel & CAPI Event
@@ -39,6 +39,6 @@ class TrialController extends Controller
             \Illuminate\Support\Facades\Log::error('Meta CAPI Error on Start Trial: ' . $e->getMessage());
         }
 
-        return back()->with('success', __('global.trial_success_text') ?: 'Masa percobaan 10 Hari Architect Anda telah dimulai!');
+        return redirect()->route('dashboard')->with('success', __('global.trial_success_text') ?: 'Masa percobaan 10 Hari Architect Anda telah dimulai!');
     }
 }
