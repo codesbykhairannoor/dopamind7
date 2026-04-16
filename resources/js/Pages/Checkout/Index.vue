@@ -105,11 +105,12 @@ const initiatePayment = async (method) => {
 
             Swal.close();
 
-            await paypalPaymentSession.start({ presentationMode: "auto" }, () => {
-                return axios.post(route('paypal.checkout'), {
+            await paypalPaymentSession.start({ presentationMode: "auto" }, async () => {
+                const res = await axios.post(route('paypal.checkout'), {
                     plan: props.plan.toLowerCase(),
                     billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
-                }).then(res => ({ orderId: res.data.id }));
+                });
+                return { orderId: res.data.id };
             });
 
         } catch (e) {

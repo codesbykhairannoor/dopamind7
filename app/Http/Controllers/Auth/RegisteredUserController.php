@@ -48,7 +48,9 @@ class RegisteredUserController extends Controller
         ]);
 
         if (!$recaptchaResponse->json('success') || $recaptchaResponse->json('score') < 0.5) {
-            return back()->withErrors(['g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal, skor terlalu rendah atau invalid.'])->withInput();
+            throw \Illuminate\Validation\ValidationException::withMessages([
+                'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal, skor terlalu rendah atau invalid.'
+            ]);
         }
 
         $user = User::create([
