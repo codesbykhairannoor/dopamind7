@@ -38,20 +38,31 @@ class DashboardService
             ->groupBy('type')
             ->pluck('total', 'type');
 
-        // 4. Journal & Events
-        $journal = \App\Models\Journal::where('user_id', $userId)->where('date', $todayStr)->first();
+        // 4. Journal (Simple existence check)
+        $journal = \App\Models\Journal::where('user_id', $userId)
+            ->where('date', $todayStr)
+            ->select('id', 'mood')
+            ->first();
+
+        // 5. Calendar Events
         $events = \App\Models\CalendarEvent::where('user_id', $userId)
             ->where('start_date', '<=', $todayStr)
             ->where(function($q) use ($todayStr) {
                 $q->where('end_date', '>=', $todayStr)->orWhereNull('end_date');
-            })->take(2)->get();
+            })
+            ->select('id', 'title', 'start_time')
+            ->take(2)
+            ->get();
 
-        // 5. Goals & Jobs (New Integration)
-        $goalsCount = \App\Models\Goal::where('user_id', $userId)->where('status', 'active')->count();
-        $topGoal = \App\Models\Goal::where('user_id', $userId)->where('status', 'active')
+        // 6. Goals & Jobs (Consolidated Goal query)
+        $topGoal = \App\Models\Goal::where('user_id', $userId)
+            ->where('status', 'active')
             ->withCount(['milestones as completed_milestones' => fn($q) => $q->where('completed', \DB::raw('true'))])
             ->withCount('milestones as total_milestones')
             ->first();
+
+        // Separate count for active goals to keep it simple but fast
+        $goalsCount = \App\Models\Goal::where('user_id', $userId)->where('status', 'active')->count();
 
         $activeJobsCount = \App\Models\Job::where('user_id', $userId)->whereIn('status', ['applied', 'interviewing'])->count();
         $upcomingInterviews = \App\Models\Job::where('user_id', $userId)->where('status', 'interviewing')->take(2)->get();
@@ -60,12 +71,12 @@ class DashboardService
             'date_formatted' => $now->translatedFormat('l, d F Y'),
             'habits' => [
                 'total'     => $totalHabits,
-                'completed' => $completedHabits,
+                'completed' => (int) $completedHabits,
                 'percent'   => $totalHabits > 0 ? round(($completedHabits / $totalHabits) * 100) : 0,
             ],
             'planner' => [
                 'total'     => $totalTasks,
-                'completed' => $completedTasks,
+                'completed' => (int) $completedTasks,
                 'percent'   => $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0,
                 'upcoming'  => $upcomingTasks,
             ],
@@ -75,8 +86,8 @@ class DashboardService
             ],
             'journal' => [
                 'is_written' => (bool) $journal,
-                'mood'       => $journal ? $journal->mood : null,
-                'id'         => $journal ? $journal->id : null,
+                'mood'       => $journal?->mood,
+                'id'         => $journal?->id,
             ],
             'goals' => [
                 'active' => $goalsCount,
@@ -96,46 +107,56 @@ class DashboardService
     public function getWeeklyTrend(int $userId, string $timezone): array
     {
         $startDate = \Carbon\Carbon::now($timezone)->subDays(6)->startOfDay();
-        $endDate = \Carbon\Carbon::now($timezone)->endOfDay();
+        $startDateStr = $startDate->format('Y-m-d');
+        $endDateStr = \Carbon\Carbon::now($timezone)->endOfDay()->format('Y-m-d');
         
-        // 1. Fetch all needed data in bulk
-        $habits = \App\Models\Habit::where('user_id', $userId)
-            ->whereIn('period', [
-                $startDate->format('Y-m'),
-                $endDate->format('Y-m')
-            ])->get();
+        // 1. Fetch Habit Stats per day using SQL Aggregation (Much faster than loops)
+        $habitStats = \DB::table('habit_logs')
+            ->join('habits', 'habit_logs.habit_id', '=', 'habits.id')
+            ->where('habits.user_id', $userId)
+            ->whereBetween('habit_logs.date', [$startDateStr, $endDateStr])
+            ->where('habit_logs.status', 'completed')
+            ->select('habit_logs.date', \DB::raw('count(*) as completed_count'))
+            ->groupBy('habit_logs.date')
+            ->pluck('completed_count', 'date');
 
-        $habitLogs = \App\Models\HabitLog::whereIn('habit_id', $habits->pluck('id'))
-            ->whereBetween('date', [$startDate->format('Y-m-d'), $endDate->format('Y-m-d')])
-            ->where('status', 'completed')
-            ->get()
-            ->groupBy('date');
+        // Get total active habits per month for these dates
+        // (Assuming total habits don't change drastically within the week, 
+        // using a simple count for the current user's active habits)
+        $totalActiveHabits = \App\Models\Habit::where('user_id', $userId)
+            ->where('is_archived', 'false')
+            ->count();
 
-        $plannerTasks = \App\Models\PlannerTask::where('user_id', $userId)
-            ->whereBetween('date', [$startDate->format('Y-m-d'), $endDate->format('Y-m-d')])
+        // 2. Fetch Planner Stats per day using SQL Aggregation
+        $plannerStats = \DB::table('planner_tasks')
+            ->where('user_id', $userId)
+            ->whereBetween('date', [$startDateStr, $endDateStr])
+            ->select('date', 
+                \DB::raw('count(*) as total'),
+                \DB::raw('sum(case when is_completed = true then 1 else 0 end) as completed')
+            )
+            ->groupBy('date')
             ->get()
-            ->groupBy('date');
+            ->keyBy('date');
 
         $trend = [];
         for ($i = 6; $i >= 0; $i--) {
             $date = \Carbon\Carbon::now($timezone)->subDays($i);
             $dateStr = $date->format('Y-m-d');
-            $month = $date->format('Y-m');
 
             // Habits Score
-            $habitsInMonth = $habits->where('period', $month);
-            $totalHabits = $habitsInMonth->count();
-            $completedHabits = isset($habitLogs[$dateStr]) ? $habitLogs[$dateStr]->count() : 0;
-            $habitScore = $totalHabits > 0 ? ($completedHabits / $totalHabits) * 100 : 0;
+            $completedHabits = $habitStats->get($dateStr, 0);
+            $habitScore = $totalActiveHabits > 0 ? ($completedHabits / $totalActiveHabits) * 100 : 0;
 
             // Planner Score
-            $dayTasks = $plannerTasks->get($dateStr, collect());
-            $totalTasks = $dayTasks->count();
-            $completedTasks = $dayTasks->where('is_completed', true)->count();
-            $plannerScore = $totalTasks > 0 ? ($completedTasks / $totalTasks) * 100 : 0;
+            $dayPlanner = $plannerStats->get($dateStr);
+            $plannerScore = 0;
+            if ($dayPlanner && $dayPlanner->total > 0) {
+                $plannerScore = ($dayPlanner->completed / $dayPlanner->total) * 100;
+            }
 
             $trend[] = [
-                'score' => round(($habitScore + $plannerScore) / 2),
+                'score' => (int) round(($habitScore + $plannerScore) / 2),
                 'day' => $date->translatedFormat('D'),
             ];
         }

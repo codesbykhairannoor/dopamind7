@@ -21,30 +21,39 @@ class NeuralSynergyService
         $locale = App::getLocale();
         $langName = ($locale === 'id') ? 'Indonesian' : 'English';
 
-        // Gather all module data for context
-        $todayStr = now()->toDateString();
+        // 1. Habits (Optimized Count)
+        $habits = Habit::where('user_id', $userId)
+            ->where('is_archived', 'false')
+            ->withCount(['logs as is_completed_today' => function($q) use ($todayStr) {
+                $q->where('date', $todayStr)->where('status', 'completed');
+            }])
+            ->ordered()
+            ->get();
+        $totalHabitsCount = $habits->count();
+        $compHabitsCount = $habits->where('is_completed_today', '>', 0)->count();
         
-        $habits = Habit::where('user_id', $userId)->where('is_archived', 'false')->ordered()->get();
-        $compHabits = $habits->filter(fn($h) => $h->logs()->where('date', $todayStr)->where('status', 'completed')->exists());
-        
+        // 2. Planner Tasks
         $tasks = PlannerTask::where('user_id', $userId)->whereDate('date', $todayStr)->get();
-        $compTasks = $tasks->where('is_completed', 'true');
+        $totalTasksCount = $tasks->count();
+        $compTasksCount = $tasks->where('is_completed', 'true')->count();
         
+        // 3. Finance
         $finance = FinanceTransaction::where('user_id', $userId)->where('date', $todayStr)->get();
-        $journal = Journal::where('user_id', $userId)->where('date', $todayStr)->first();
         
-        $goals = Goal::where('user_id', $userId)->where('status', 'active')->with('milestones')->get();
+        // 4. Other Modules
+        $journal = Journal::where('user_id', $userId)->where('date', $todayStr)->first();
+        $goals = Goal::where('user_id', $userId)->where('status', 'active')->with(['milestones'])->get();
         $jobs = Job::where('user_id', $userId)->whereIn('status', ['applied', 'interviewing'])->get();
 
         $context = [
             'habits' => [
-                'total' => $habits->count(),
-                'completed' => $compHabits->count(),
+                'total' => $totalHabitsCount,
+                'completed' => $compHabitsCount,
                 'names' => $habits->pluck('name')->toArray(),
             ],
             'planner' => [
-                'total' => $tasks->count(),
-                'completed' => $compTasks->count(),
+                'total' => $totalTasksCount,
+                'completed' => $compTasksCount,
                 'titles' => $tasks->pluck('title')->toArray(),
             ],
             'finance' => [
@@ -151,8 +160,16 @@ class NeuralSynergyService
     private function getGlobalContext(int $userId): array
     {
         $todayStr = now()->toDateString();
-        $habits = Habit::where('user_id', $userId)->where('is_archived', 'false')->ordered()->get();
-        $compHabits = $habits->filter(fn($h) => $h->logs()->where('date', $todayStr)->where('status', 'completed')->exists());
+        $habits = Habit::where('user_id', $userId)
+            ->where('is_archived', 'false')
+            ->withCount(['logs as is_completed_today' => function($q) use ($todayStr) {
+                $q->where('date', $todayStr)->where('status', 'completed');
+            }])
+            ->ordered()
+            ->get();
+        $totalHabitsCount = $habits->count();
+        $compHabitsCount = $habits->where('is_completed_today', '>', 0)->count();
+
         $tasks = PlannerTask::where('user_id', $userId)->whereDate('date', $todayStr)->get();
         $finance = FinanceTransaction::where('user_id', $userId)->where('date', $todayStr)->get();
         $journal = Journal::where('user_id', $userId)->where('date', $todayStr)->first();
@@ -160,7 +177,7 @@ class NeuralSynergyService
         $jobs = Job::where('user_id', $userId)->whereIn('status', ['applied', 'interviewing'])->get();
 
         return [
-            'habits' => $habits->count() . " active, " . $compHabits->count() . " done today.",
+            'habits' => $totalHabitsCount . " active, " . $compHabitsCount . " done today.",
             'planner' => $tasks->count() . " tasks, " . $tasks->where('is_completed', 'true')->count() . " done.",
             'finance' => "Exp: " . $finance->where('type', 'expense')->sum('amount') . ", Inc: " . $finance->where('type', 'income')->sum('amount'),
             'journal' => $journal ? "Mood: " . $journal->mood : "Not written today",

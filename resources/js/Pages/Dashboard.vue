@@ -19,6 +19,7 @@ import {
     BookOpen,
     CalendarDays,
 } from 'lucide-vue-next';
+import SkeletonLoader from '@/Components/SkeletonLoader.vue';
 
 const { isExplorer, isAiEnabled, demandAccess } = useGating();
 
@@ -128,10 +129,12 @@ onMounted(() => {
             <header class="mb-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
                 <div class="min-w-0">
                     <p
+                        v-if="synergy"
                         class="mb-1 text-[10px] font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400"
                     >
                         {{ synergy?.date_formatted }}
                     </p>
+                    <SkeletonLoader v-else width="120px" height="14px" className="mb-2" />
                     <h1
                         class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white md:text-4xl"
                     >
@@ -144,6 +147,7 @@ onMounted(() => {
                 </div>
 
                 <div
+                    v-if="synergy"
                     class="flex shrink-0 items-center gap-4 rounded-2xl border border-slate-200/80 bg-white/90 px-4 py-3 shadow-sm dark:border-white/10 dark:bg-slate-900/90"
                     role="status"
                     :aria-label="$t('dash_synergy') + ' ' + overallScore + '%'"
@@ -183,6 +187,13 @@ onMounted(() => {
                         <p class="text-xs font-medium leading-snug text-slate-600 dark:text-slate-300">
                             {{ $t('dash_pulse_desc') }}
                         </p>
+                    </div>
+                </div>
+                <div v-else class="flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white/90 px-4 py-3 dark:border-white/10 dark:bg-slate-900/90">
+                    <SkeletonLoader width="56px" height="56px" borderRadius="100%" />
+                    <div class="space-y-2">
+                        <SkeletonLoader width="60px" height="12px" />
+                        <SkeletonLoader width="100px" height="12px" />
                     </div>
                 </div>
             </header>
@@ -246,47 +257,56 @@ onMounted(() => {
                             </Link>
                         </div>
 
-                        <div v-if="synergy?.planner?.upcoming?.length > 0" class="space-y-2">
-                            <div
-                                v-for="(task, index) in synergy.planner.upcoming"
-                                :key="task.id"
-                                class="flex items-center justify-between gap-3 rounded-xl border border-transparent bg-slate-50/80 px-3 py-3 transition-all duration-300 hover:border-slate-200 dark:bg-white/[0.04] dark:hover:border-white/10 hover:translate-x-1"
-                                :style="{ transitionDelay: `${index * 50}ms` }"
-                            >
-                                <div class="flex min-w-0 items-center gap-3">
-                                    <span
-                                        class="shrink-0 rounded-lg bg-white px-2 py-1 font-mono text-[11px] font-semibold text-slate-600 shadow-sm dark:bg-slate-800 dark:text-slate-300"
-                                    >
-                                        {{ task.start_time || '—' }}
-                                    </span>
-                                    <p class="truncate text-sm font-semibold text-slate-800 dark:text-slate-100">
-                                        {{ task.title }}
-                                    </p>
-                                </div>
-                                <span
-                                    class="shrink-0 rounded-md bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-200"
+                        <div v-if="!synergy" class="space-y-4 py-4">
+                            <SkeletonLoader v-for="i in 3" :key="i" width="100%" height="52px" borderRadius="0.75rem" />
+                        </div>
+                        <template v-else>
+                            <div v-if="synergy?.planner?.upcoming?.length > 0" class="space-y-2">
+                                <div
+                                    v-for="(task, index) in synergy.planner.upcoming"
+                                    :key="task.id"
+                                    class="flex items-center justify-between gap-3 rounded-xl border border-transparent bg-slate-50/80 px-3 py-3 transition-all duration-300 hover:border-slate-200 dark:bg-white/[0.04] dark:hover:border-white/10 hover:translate-x-1"
+                                    :style="{ transitionDelay: `${index * 50}ms` }"
                                 >
-                                    {{ $t('dash_task_scheduled') }}
-                                </span>
+                                    <div class="flex min-w-0 items-center gap-3">
+                                        <span
+                                            class="shrink-0 rounded-lg bg-white px-2 py-1 font-mono text-[11px] font-semibold text-slate-600 shadow-sm dark:bg-slate-800 dark:text-slate-300"
+                                        >
+                                            {{ task.start_time || '—' }}
+                                        </span>
+                                        <p class="truncate text-sm font-semibold text-slate-800 dark:text-slate-100">
+                                            {{ task.title }}
+                                        </p>
+                                    </div>
+                                    <span
+                                        class="shrink-0 rounded-md bg-indigo-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-200"
+                                    >
+                                        {{ $t('dash_task_scheduled') }}
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <div v-else class="rounded-xl border border-dashed border-slate-200 bg-slate-50/50 px-4 py-10 text-center dark:border-white/10 dark:bg-white/[0.02]">
-                            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">
-                                {{ $t('dash_all_tasks_done') }}
-                            </p>
-                            <Link
-                                :href="route('planner.index')"
-                                class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400"
-                            >
-                                <Plus :size="14" />
-                                {{ $t('btn_add_task') }}
-                            </Link>
-                        </div>
+                            <div v-else class="rounded-xl border border-dashed border-slate-200 bg-slate-50/50 px-4 py-10 text-center dark:border-white/10 dark:bg-white/[0.02]">
+                                <p class="text-sm font-medium text-slate-600 dark:text-slate-400">
+                                    {{ $t('dash_all_tasks_done') }}
+                                </p>
+                                <Link
+                                    :href="route('planner.index')"
+                                    class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400"
+                                >
+                                    <Plus :size="14" />
+                                    {{ $t('btn_add_task') }}
+                                </Link>
+                            </div>
+                        </template>
 
                         <div
                             class="mt-6 flex flex-col gap-4 border-t border-slate-100 pt-5 dark:border-white/5 sm:flex-row sm:items-center sm:justify-between"
                         >
-                            <div class="min-w-0 flex-1">
+                            <div v-if="!synergy" class="min-w-0 flex-1">
+                                <SkeletonLoader width="80px" height="12px" className="mb-2" />
+                                <SkeletonLoader width="100%" height="8px" borderRadius="100px" />
+                            </div>
+                            <div v-else class="min-w-0 flex-1">
                                 <div class="mb-2 flex items-center justify-between gap-2">
                                     <span class="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-200">
                                         <Zap class="text-indigo-500" :size="16" />
@@ -428,7 +448,10 @@ onMounted(() => {
                         <h3 class="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
                             {{ $t('dash_weekly_rhythm') }}
                         </h3>
-                        <div v-if="trend?.length" class="mt-4 flex h-28 items-end justify-between gap-1">
+                        <div v-if="!trend?.length" class="mt-4 flex h-28 items-end justify-between gap-1">
+                            <SkeletonLoader v-for="i in 7" :key="i" width="12px" :height="`${15 + (i * 10) % 60}px`" borderRadius="2px" />
+                        </div>
+                        <div v-else-if="trend?.length" class="mt-4 flex h-28 items-end justify-between gap-1">
                             <div
                                 v-for="(day, idx) in trend"
                                 :key="idx"

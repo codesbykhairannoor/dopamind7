@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 import PlannerDatePicker from '@/Components/PlannerDatePicker.vue';
 import dayjs from 'dayjs';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 const page = usePage();
 const { isExplorer, user } = useGating();
