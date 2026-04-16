@@ -34,30 +34,7 @@ const props = defineProps({
                 <span>{{ conflictError }}</span>
             </div>
 
-            <div class="px-8 py-6 border-b border-slate-50 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 shrink-0 z-20 transition-colors" :class="{'mt-12': conflictError}">
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-xl text-white shadow-lg shadow-indigo-100">
-                        ✨
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-black text-slate-800 dark:text-white tracking-tight leading-none mb-1 transition-colors">
-                            {{ $t('batch_mode_title') }}
-                        </h2>
-                        <p class="text-[10px] text-slate-400 dark:text-slate-600 font-bold tracking-widest transition-colors">{{ $t('modal_new_simple_title', 'Collective scheduling') }}</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center gap-3">
-                    <button @click="switchToSingle" 
-                        type="button"
-                        class="hidden sm:flex text-[10px] font-black tracking-widest px-4 py-2 rounded-xl border-2 border-slate-50 dark:border-slate-800 text-slate-400 dark:text-slate-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-100 dark:hover:border-indigo-500/30 transition-all active:scale-95 items-center gap-2">
-                        <span>↩️</span> {{ $t('btn_single_mode') }}
-                    </button>
-                    <button @click="close" class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 hover:text-rose-500 dark:hover:text-rose-400 transition-all active:scale-90 flex items-center justify-center font-bold">
-                        ✕
-                    </button>
-                </div>
-            </div>
+            <!-- Header (Removed outer duplicate to fix double header) -->
 
             <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-slate-950/30 p-4 md:p-8 transition-colors relative">
                 
@@ -118,26 +95,27 @@ const props = defineProps({
                 </div>
             </div>
 
-            <!-- [ACTIVE STATE] Original Modal Content -->
             <template v-else>
-                <div class="px-8 py-6 border-b border-slate-50 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 shrink-0 z-20 transition-colors" :class="{'mt-12': conflictError}">
+                <div class="px-6 md:px-8 py-5 md:py-7 border-b border-slate-50 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 shrink-0 z-20 transition-colors" :class="{'mt-12': conflictError}">
                     <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-xl text-white shadow-lg shadow-indigo-100">
+                        <div class="w-10 h-10 bg-indigo-600 rounded-2xl flex items-center justify-center text-xl text-white shadow-xl shadow-indigo-500/20">
                             ✨
                         </div>
                         <div>
-                            <h2 class="text-xl font-black text-slate-800 dark:text-white tracking-tight leading-none mb-1 transition-colors">
-                                {{ $t('batch_mode_title') }}
+                            <h2 class="text-lg md:text-xl font-black text-slate-800 dark:text-white tracking-tight leading-none mb-1.5 transition-colors">
+                                {{ $t('batch_mode_title', 'Batch Entry Mode') }}
                             </h2>
-                            <p class="text-[10px] text-slate-400 dark:text-slate-600 font-bold tracking-widest transition-colors">{{ $t('modal_new_simple_title', 'Collective scheduling') }}</p>
+                            <p class="text-[9px] md:text-[10px] text-slate-400 dark:text-slate-500 font-black uppercase tracking-[0.2em] transition-colors">
+                                {{ $t('modal_new_simple_title', 'Collective scheduling') }}
+                            </p>
                         </div>
                     </div>
                     
-                    <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 md:gap-3">
                         <button @click="switchToSingle" 
                             type="button"
-                            class="hidden sm:flex text-[10px] font-black tracking-widest px-4 py-2 rounded-xl border-2 border-slate-50 dark:border-slate-800 text-slate-400 dark:text-slate-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-100 dark:hover:border-indigo-500/30 transition-all active:scale-95 items-center gap-2">
-                            <span>↩️</span> {{ $t('btn_single_mode') }}
+                            class="hidden sm:flex h-10 text-[9px] font-black uppercase tracking-widest px-5 rounded-xl border-2 border-slate-50 dark:border-slate-800 text-slate-400 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all active:scale-95 items-center gap-2">
+                            <span>↩️</span> {{ $t('btn_single_mode', 'Single') }}
                         </button>
                         <button @click="close" class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 hover:bg-rose-50 dark:hover:bg-rose-500/10 hover:text-rose-500 dark:hover:text-rose-400 transition-all active:scale-90 flex items-center justify-center font-bold">
                             ✕

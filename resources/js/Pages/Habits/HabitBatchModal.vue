@@ -133,90 +133,82 @@ onUnmounted(() => {
                 </div>
 
                 <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/50 dark:bg-slate-950/50 p-4 md:p-8 relative">
-                    <div class="hidden md:grid grid-cols-12 gap-3 mb-3 px-4 text-[9px] font-bold text-slate-400 tracking-tight">
-                        <div class="col-span-4">{{ $t('habit_name') }}</div>
-                        <div class="col-span-2 text-center">{{ $t('habit_icon') }}</div>
-                        <div class="col-span-3 text-center">{{ $t('habit_color') }}</div>
-                        <div class="col-span-2 text-center">{{ $t('target') }}</div>
-                        <div class="col-span-1 text-center">{{ $t('action') }}</div>
-                    </div>
+                    <!-- Header Column (Hidden on Desktop because Card has its own labels) -->
+                    <div class="hidden md:block mb-4"></div>
 
-                    <div class="space-y-4 md:space-y-3">
+                    <div class="space-y-4">
                         <div v-for="(trx, index) in form.habits" :key="index" 
-                            class="bg-white dark:bg-slate-900 md:bg-transparent p-5 md:p-0 rounded-[2rem] md:rounded-none border border-slate-100 dark:border-slate-800 md:border-none shadow-sm md:shadow-none relative group animate-in fade-in slide-in-from-bottom-4 duration-300">
+                            class="bg-white dark:bg-slate-900 p-5 md:p-6 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none relative group animate-in fade-in slide-in-from-bottom-4 duration-300">
                             
-                            <div class="flex justify-between items-center mb-4 md:hidden">
-                                <span class="text-[10px] font-black tracking-widest px-3 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 text-indigo-500 dark:text-indigo-400">
-                                    {{ $t('habit_label') }} #{{ index + 1 }}
+                            <div class="flex justify-between items-center mb-5">
+                                <span class="text-[10px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-500/20">
+                                    {{ $t('habit_label', 'Habit') }} #{{ index + 1 }}
                                 </span>
-                                <button @click="removeRow(index)" type="button" class="w-8 h-8 rounded-full bg-rose-50 dark:bg-rose-500/10 text-rose-400 dark:text-rose-500 flex items-center justify-center hover:bg-rose-100 dark:hover:bg-rose-500/20 hover:text-rose-600 dark:hover:text-rose-400 transition-all" :disabled="form.habits.length <= 1" :class="{'opacity-50 cursor-not-allowed': form.habits.length <= 1}">
+                                <button @click="removeRow(index)" type="button" class="w-9 h-9 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 flex items-center justify-center hover:bg-rose-100 dark:hover:bg-rose-500/20 hover:text-rose-600 dark:hover:text-rose-400 transition-all shadow-sm" :disabled="form.habits.length <= 1" :class="{'opacity-50 cursor-not-allowed': form.habits.length <= 1}">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                                 </button>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-3 items-center md:bg-white md:dark:bg-slate-900 md:p-2.5 md:rounded-2xl md:border md:border-slate-200 md:dark:border-slate-800 md:shadow-sm">
-                                
-                                <div class="col-span-1 md:col-span-4">
-                                    <label class="md:hidden text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 block">{{ $t('habit_name') }}</label>
-                                    <input v-model="trx.name" :placeholder="$t('habit_name_placeholder')" 
-                                        class="w-full text-xs font-bold h-12 md:h-11 px-4 !rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:bg-white dark:focus:bg-slate-900 focus:border-indigo-500 dark:text-slate-100 transition-all focus:ring-0" 
-                                        :class="{'!border-rose-300 dark:!border-rose-500/50 !bg-rose-50 dark:!bg-rose-500/10 placeholder-rose-300 dark:placeholder-rose-500/50': form.errors?.[`habits.${index}.name`]}" />
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Col 1: Name and Target -->
+                                <div class="space-y-5">
+                                    <div>
+                                        <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-2 ml-1 block">{{ $t('habit_name') }}</label>
+                                        <input v-model="trx.name" :placeholder="$t('habit_name_placeholder', 'e.g., Morning Run...')" 
+                                            class="w-full text-xs font-bold h-12 px-4 !rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 focus:bg-white dark:focus:bg-slate-900 focus:border-indigo-500 dark:text-slate-100 transition-all focus:ring-0" 
+                                            :class="{'!border-rose-300 dark:!border-rose-500/50 !bg-rose-50 dark:!bg-rose-500/10 placeholder-rose-300 dark:placeholder-rose-500/50': form.errors?.[`habits.${index}.name`]}" />
+                                    </div>
+
+                                    <div>
+                                        <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-2 ml-1 block">{{ $t('target_days', 'Monthly Target') }}</label>
+                                        <div class="relative flex items-center">
+                                            <input type="number" v-model="trx.monthly_target" min="1" max="31" 
+                                                class="w-full text-left text-xs font-black h-12 pl-4 pr-12 !rounded-2xl border-2 border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 focus:bg-white dark:focus:bg-slate-900 focus:border-indigo-500 transition-all focus:ring-0 text-indigo-700 dark:text-indigo-400" 
+                                                :class="{'!border-rose-300 dark:!border-rose-500/50 !bg-rose-50 dark:!bg-rose-500/10 text-rose-600 dark:text-rose-400': form.errors?.[`habits.${index}.monthly_target`]}" />
+                                            <span class="absolute right-4 text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest pointer-events-none">Days</span>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="grid grid-cols-2 gap-4 md:contents">
+                                <!-- Col 2: Icon and Color -->
+                                <div class="space-y-5">
                                     <div class="relative icon-dropdown-container">
-                                        <label class="md:hidden text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 block">{{ $t('habit_icon') }}</label>
+                                        <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-2 ml-1 block">{{ $t('habit_icon') }}</label>
                                         
                                         <button type="button" @click="openIconDropdown = openIconDropdown === index ? null : index" 
-                                            class="w-full h-12 md:h-11 flex items-center justify-center gap-2 border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 hover:bg-white dark:hover:bg-slate-900 rounded-xl transition-all focus:border-indigo-500"
-                                            :class="openIconDropdown === index ? 'border-indigo-500 ring-2 ring-indigo-100 dark:ring-indigo-500/20 bg-white dark:bg-slate-900' : ''">
-                                            <span class="text-xl">{{ trx.icon }}</span>
-                                            <svg class="w-3 h-3 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M19 9l-7 7-7-7"/></svg>
+                                            class="w-full h-12 flex items-center justify-between px-5 border-2 border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 hover:bg-white dark:hover:bg-slate-900 rounded-2xl transition-all focus:border-indigo-500 group"
+                                            :class="openIconDropdown === index ? 'border-indigo-500 ring-4 ring-indigo-500/5 bg-white dark:bg-slate-900' : ''">
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-xl inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-100 dark:border-slate-700">{{ trx.icon }}</span>
+                                                <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500">Pick an icon</span>
+                                            </div>
+                                            <svg class="w-4 h-4 text-slate-300 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M19 9l-7 7-7-7"/></svg>
                                         </button>
 
-                                        <transition enter-active-class="transition ease-out duration-100" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
-                                            <div v-if="openIconDropdown === index" class="absolute z-[100] top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl dark:shadow-none p-3 grid grid-cols-4 gap-2 origin-top max-h-48 overflow-y-auto custom-scrollbar">
+                                        <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-2">
+                                            <div v-if="openIconDropdown === index" class="absolute z-[100] top-full left-0 right-0 mt-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] shadow-2xl p-4 grid grid-cols-5 gap-2 origin-top max-h-56 overflow-y-auto custom-scrollbar">
                                                 <button type="button" v-for="icon in iconList" :key="icon" 
                                                     @click="trx.icon = icon; openIconDropdown = null"
-                                                    class="w-8 h-8 flex items-center justify-center text-lg rounded-lg hover:bg-indigo-50 dark:hover:bg-indigo-500/20 hover:scale-110 transition-all"
-                                                    :class="trx.icon === icon ? 'bg-indigo-100 dark:bg-indigo-500/30 shadow-sm' : 'opacity-70'">
+                                                    class="w-10 h-10 flex items-center justify-center text-xl rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-500/20 hover:scale-110 transition-all"
+                                                    :class="trx.icon === icon ? 'bg-indigo-100 dark:bg-indigo-500/30 shadow-inner' : 'opacity-70'">
                                                     {{ icon }}
                                                 </button>
                                             </div>
                                         </transition>
                                     </div>
 
-                                    <div class="flex flex-col">
-                                        <label class="md:hidden text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-tight mb-2 block w-full text-left">{{ $t('habit_color') }}</label>
-                                        <div class="flex flex-wrap items-center gap-1.5 p-1 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-100 dark:border-slate-800 h-12 md:h-11 justify-center md:bg-transparent md:border-none">
-                                            <button type="button" v-for="c in colorPalette.slice(0, 6)" :key="c" @click="trx.color = c" 
-                                                class="w-5 h-5 rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-sm" 
-                                                :class="trx.color === c ? 'ring-2 ring-offset-2 ring-indigo-500 scale-110' : 'opacity-80'"
+                                    <div>
+                                        <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-2 ml-1 block">{{ $t('habit_color') }}</label>
+                                        <div class="flex flex-wrap items-center gap-2 p-3 bg-slate-50 dark:bg-slate-950/50 rounded-2xl border border-slate-100 dark:border-slate-800 min-h-[48px]">
+                                            <button type="button" v-for="c in colorPalette" :key="c" @click="trx.color = c" 
+                                                class="w-6 h-6 rounded-full flex items-center justify-center transition-all hover:scale-125 hover:rotate-12 shadow-sm relative group" 
                                                 :style="{ backgroundColor: c }">
+                                                <div v-if="trx.color === c" class="w-1.5 h-1.5 rounded-full bg-white shadow-sm animate-in zoom-in duration-300"></div>
+                                                <div class="absolute -inset-1 border-2 border-indigo-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity" :class="{'opacity-100': trx.color === c}"></div>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="col-span-1 md:col-span-2">
-                                    <label class="md:hidden text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 block">{{ $t('target_days') }}</label>
-                                    <div class="relative flex items-center">
-                                        <input type="number" v-model="trx.monthly_target" min="1" max="31" 
-                                            class="w-full text-center text-xs font-black h-12 md:h-11 pl-2 pr-6 !rounded-xl border-2 border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 focus:bg-white dark:focus:bg-slate-900 focus:border-indigo-500 transition-all focus:ring-0 text-indigo-700 dark:text-indigo-400" 
-                                            :class="{'!border-rose-300 dark:!border-rose-500/50 !bg-rose-50 dark:!bg-rose-500/10 text-rose-600 dark:text-rose-400': form.errors?.[`habits.${index}.monthly_target`]}" />
-                                        <span class="absolute right-3 text-[9px] font-bold text-slate-400 dark:text-slate-500 tracking-tight pointer-events-none">Hr</span>
-                                    </div>
-                                </div>
-
-                                <div class="hidden md:flex col-span-1 justify-center items-center">
-                                    <button @click="removeRow(index)" type="button" 
-                                        class="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-all active:scale-90"
-                                        :disabled="form.habits.length <= 1"
-                                        :class="form.habits.length <= 1 ? 'opacity-0 pointer-events-none' : 'text-slate-300 dark:text-slate-600 hover:text-rose-500 dark:hover:text-rose-400'">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                                    </button>
-                                </div>
-
                             </div>
                         </div>
                     </div>
