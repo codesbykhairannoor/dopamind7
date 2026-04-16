@@ -109,6 +109,10 @@ createInertiaApp({
 });
 
 // Note: Standard NProgress start/done/finish is now handled internally by Inertia progress config above.
+// 🔥 MANUAL OVERRIDE for maximum reliability on Desktop
+router.on('start', () => NProgress.start());
+router.on('finish', () => NProgress.done());
+router.on('error', () => NProgress.done());
 
 /**
  * Handle "Invalid" responses (e.g. 500 pages, session expirations, or 409 mismatch) 

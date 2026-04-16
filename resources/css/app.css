@@ -25,13 +25,14 @@
 /* Pastikan warna indigo lo muncul */
 #nprogress .bar {
     @apply bg-indigo-600 !important;
-    position: fixed;
-    z-index: 999999;
+    position: fixed !important;
+    z-index: 9999999 !important;
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
-    box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+    height: 5px !important;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.6) !important;
+    pointer-events: none !important;
 }
 
 #nprogress .spinner {
