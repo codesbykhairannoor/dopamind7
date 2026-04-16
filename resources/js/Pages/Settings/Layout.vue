@@ -1,11 +1,11 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
-import { Head, router, usePage } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
+import NProgress from 'nprogress';
 
 const props = defineProps({
-    title: { type: String, default: '' },
-    subtitle: { type: String, default: '' },
-    // activeTab bisa di-pass dari parent, atau auto-detect dari URL
+    title:     { type: String, default: '' },
+    subtitle:  { type: String, default: '' },
     activeTab: { type: String, default: null },
 });
 
@@ -13,7 +13,6 @@ const emit = defineEmits(['update:activeTab']);
 
 const page = usePage();
 
-// --- Tab definitions (no href needed for SPA switching) ---
 const tabs = [
     { id: 'general',       labelKey: 'settings_nav_general',       labelFallback: 'General' },
     { id: 'security',      labelKey: 'settings_nav_security',       labelFallback: 'Security' },
@@ -23,7 +22,6 @@ const tabs = [
     { id: 'privacy',       labelKey: 'settings_nav_privacy',        labelFallback: 'Data & privacy' },
 ];
 
-// Detect active tab from URL path (for deep-link / direct navigation support)
 const detectTabFromUrl = () => {
     const url = page.url || '';
     for (const tab of tabs) {
@@ -34,29 +32,30 @@ const detectTabFromUrl = () => {
 
 const currentTab = ref(props.activeTab || detectTabFromUrl());
 
-// Sync if parent passes activeTab prop
 watch(() => props.activeTab, (val) => { if (val) currentTab.value = val; });
 
-// When tab changes, update URL via Inertia (preserveState = no full reload)
+/**
+ * Tab switching: murni client-side, zero server request.
+ * NProgress memberikan feedback visual instan seperti navigasi halaman biasa.
+ */
 const switchTab = (tabId) => {
     if (currentTab.value === tabId) return;
+
+    NProgress.start();
+
     currentTab.value = tabId;
     emit('update:activeTab', tabId);
-    // Update URL without server round-trip (history pushState only)
-    router.visit(route(`settings.${tabId}`), {
-        preserveState: true,
-        preserveScroll: true,
-        replace: false,
-        only: [], // Request nothing from server — pure client navigation
-    });
+
+    // Update URL di browser history tanpa trigger Inertia/server
+    window.history.pushState({}, '', route(`settings.${tabId}`));
+
+    // Selesaikan progress bar setelah Vue selesai render frame berikutnya
+    requestAnimationFrame(() => NProgress.done());
 };
 
 const isActive = (tabId) => currentTab.value === tabId;
 
-// Compute title/subtitle based on active tab (for Head tag)
-const tabMeta = computed(() => {
-    return tabs.find(t => t.id === currentTab.value) || tabs[0];
-});
+const tabMeta = computed(() => tabs.find(t => t.id === currentTab.value) || tabs[0]);
 </script>
 
 <template>
@@ -94,7 +93,7 @@ const tabMeta = computed(() => {
             </div>
         </div>
 
-        <!-- Content — scoped slot passes currentTab ke parent agar bisa switch komponen -->
+        <!-- Content slot -->
         <div class="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 shadow-sm">
             <slot />
         </div>
@@ -105,4 +104,3 @@ const tabMeta = computed(() => {
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
-

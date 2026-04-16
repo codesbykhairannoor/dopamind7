@@ -32,13 +32,15 @@ class FinanceController extends Controller
         $timezone = $user->timezone ?? 'Asia/Jakarta';
         $validDate = $request->getValidDate($timezone);
 
-        // Lempar semua kalkulasi berat ke Service
+        // Semua data dikirim langsung (tidak defer) agar halaman langsung tampil penuh.
+        // getDashboardData sudah query semua data sekaligus — defer hanya menambah round-trip.
         $data = $this->financeService->getDashboardData($user->id, $validDate, $timezone);
 
         return Inertia::render('Finance/Index', [
-            'transactions' => Inertia::defer(fn () => FinanceTransactionResource::collection($data['transactions'])->resolve()),
-            'budgets'      => Inertia::defer(fn () => FinanceBudgetResource::collection($data['budgets'])->resolve()),
+            'transactions' => FinanceTransactionResource::collection($data['transactions'])->resolve(),
+            'budgets'      => FinanceBudgetResource::collection($data['budgets'])->resolve(),
             'categories'   => $data['categories'],
+            'savings'      => $data['savings'],
             'stats'        => $data['stats'],
             'filters'      => $data['filters'],
             'aiAudit'      => session('ai_audit'),

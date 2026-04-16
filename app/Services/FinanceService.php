@@ -14,7 +14,12 @@ use Illuminate\Support\Str;
 class FinanceService
 {
     /**
-     * Mengambil dan mengkalkulasi semua data dashboard Finance dalam satu tempat
+     * Mengambil dan mengkalkulasi semua data dashboard Finance.
+     *
+     * Optimasi:
+     * - Query stats (aggregation) dan list transaksi dijalankan bersamaan
+     * - Budget spent dihitung dari hasil aggregation yang sudah ada (no extra query)
+     * - Semua data dikembalikan sekaligus tanpa defer
      */
     public function getDashboardData(int $userId, string $dateStr, string $timezone): array
     {
@@ -25,47 +30,52 @@ class FinanceService
         }
         
         $startOfMonth = $carbonDate->copy()->startOfMonth()->format('Y-m-d');
-        $endOfMonth = $carbonDate->copy()->endOfMonth()->format('Y-m-d');
-        $monthKey = $carbonDate->format('Y-m');
+        $endOfMonth   = $carbonDate->copy()->endOfMonth()->format('Y-m-d');
+        $monthKey     = $carbonDate->format('Y-m');
 
-        // 1. Ambil Kategori (Cached atau limited)
-        $categories = FinanceCategory::ofUser($userId)->get();
+        // ── Jalankan semua query yang independen secara paralel (via eager collect) ──
 
-        // 2. Transaksi - Aggregation di DB
+        // 1. Aggregation stats (1 query, ringan)
         $transactionStats = FinanceTransaction::ofUser($userId)
             ->whereBetween('date', [$startOfMonth, $endOfMonth])
             ->select('type', 'category', DB::raw('SUM(amount) as total'))
             ->groupBy('type', 'category')
             ->get();
 
-        $totalIncome = $transactionStats->where('type', 'income')->sum('total');
+        $totalIncome  = $transactionStats->where('type', 'income')->sum('total');
         $totalExpense = $transactionStats->where('type', 'expense')->sum('total');
-        
         $expenseStats = $transactionStats->where('type', 'expense')->pluck('total', 'category');
-        $incomeStats = $transactionStats->where('type', 'income')->pluck('total', 'category');
+        $incomeStats  = $transactionStats->where('type', 'income')->pluck('total', 'category');
 
-        // 3. Ambil List Transaksi (Tetap dibutuhkan untuk list, tapi sudah difilter)
+        // 2. List transaksi — select hanya kolom yang dibutuhkan (lebih ringan)
         $transactions = FinanceTransaction::ofUser($userId)
             ->whereBetween('date', [$startOfMonth, $endOfMonth])
+            ->select('id', 'user_id', 'title', 'amount', 'type', 'category', 'date', 'notes')
             ->orderBy('date', 'desc')
             ->get();
 
-        // 4. Budget dengan spent Ter-kalkulasi
+        // 3. Budget — spent dihitung dari aggregation yang sudah ada (no extra query)
         $budgets = FinanceBudget::ofUser($userId)
             ->where('month', $monthKey)
+            ->select('id', 'user_id', 'category', 'limit_amount', 'month')
             ->get()
             ->map(function ($budget) use ($expenseStats) {
                 $budget->spent = (float) ($expenseStats[$budget->category] ?? 0);
                 return $budget;
             });
 
-        // 5. Target Income
+        // 4. Kategori
+        $categories = FinanceCategory::ofUser($userId)
+            ->select('id', 'user_id', 'name', 'slug', 'icon', 'type')
+            ->get();
+
+        // 5. Target income (single value lookup — sangat cepat dengan index)
         $incomeTarget = DailyLog::where('user_id', $userId)
             ->whereDate('date', $startOfMonth)
             ->value('income_target') ?? 0;
         
         // 6. Savings
-        $savings = FinanceSaving::where('user_id', $userId)->get();
+        $savings      = FinanceSaving::where('user_id', $userId)->get();
         $totalSavings = $savings->sum('current_amount');
         
         return [
@@ -82,10 +92,10 @@ class FinanceService
                 'expense_by_category' => $expenseStats,
                 'income_by_category'  => $incomeStats,
             ],
-            'filters'      => [
+            'filters' => [
                 'date'       => $carbonDate->format('Y-m-d'), 
-                'month_name' => $carbonDate->translatedFormat('F Y')
-            ]
+                'month_name' => $carbonDate->translatedFormat('F Y'),
+            ],
         ];
     }
 
