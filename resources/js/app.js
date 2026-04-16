@@ -90,7 +90,7 @@ createInertiaApp({
     progress: {
         color: '#4f46e5',
         showSpinner: false,
-        delay: 250,
+        delay: 0,       // Tampilkan langsung — tidak ada delay, feedback instan
         includeCSS: true,
     },
 });
