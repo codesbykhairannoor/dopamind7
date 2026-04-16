@@ -233,7 +233,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         // Jika Production, gunakan Jalur API Brevo (HTTPS - Port 443)
         try {
-            \Illuminate\Support\Facades\Http::withHeaders([
+            $response = \Illuminate\Support\Facades\Http::withHeaders([
                 'api-key' => config('mail.mailers.smtp.password'),
                 'Content-Type' => 'application/json',
             ])->timeout(10)->post('https://api.brevo.com/v3/smtp/email', [
@@ -250,7 +250,12 @@ class User extends Authenticatable implements MustVerifyEmail
                         <p style="font-size:12px;color:#666;">If you are having trouble, copy this link: <br>' . $verificationUrl . '</p>
                     </div>'
             ]);
-            \Illuminate\Support\Facades\Log::info('Production Email Sent via HTTP API for: ' . $this->email);
+
+            \Illuminate\Support\Facades\Log::info('BREVO API RESPONSE: ', [
+                'status' => $response->status(),
+                'body' => $response->json(),
+                'sender_used' => config('mail.from.address')
+            ]);
         } catch (\Throwable $e) {
             \Illuminate\Support\Facades\Log::error('Production Email API Failure: ' . $e->getMessage());
         }
