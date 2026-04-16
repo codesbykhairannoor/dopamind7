@@ -63,7 +63,7 @@ class DashboardService
             ->where('start_date', '<=', $todayStr)
             ->where(fn ($q) => $q->where('end_date', '>=', $todayStr)->orWhereNull('end_date'))
             ->take(2)
-            ->get(['id', 'title', 'start_date', 'end_date', 'color']);
+            ->get(['id', 'title', 'start_date', 'end_date', 'color', 'type']);
 
         // 6. Goals — 1 query untuk count + top goal sekaligus
         $goals = Goal::where('user_id', $userId)
@@ -71,7 +71,7 @@ class DashboardService
             ->withCount([
                 'milestones as total_milestones',
                 'milestones as completed_milestones' => fn ($q) =>
-                    $q->where('completed', DB::raw('true')),
+                    $q->where('completed', true),
             ])
             ->orderByDesc('created_at')
             ->get(['id', 'title', 'status']);
@@ -80,9 +80,11 @@ class DashboardService
         $topGoal    = $goals->first();
 
         // 7. Jobs — 1 query, filter di PHP (lebih cepat dari 2 query terpisah)
+        // status enum: 'wishlist','applied','interview','offer','rejected','accepted'
+        // 'interviewing' tidak ada — yang benar adalah 'interview'
         $jobs = Job::where('user_id', $userId)
-            ->whereIn('status', ['applied', 'interviewing'])
-            ->get(['id', 'status', 'company', 'position']);
+            ->whereIn('status', ['applied', 'interview'])
+            ->get(['id', 'status', 'company', 'title']);
 
         $activeJobsCount = $jobs->count();
 
@@ -128,7 +130,7 @@ class DashboardService
             ],
             'jobs' => [
                 'active'     => $activeJobsCount,
-                'interviews' => $jobs->where('status', 'interviewing')->count(),
+                'interviews' => $jobs->where('status', 'interview')->count(),
             ],
             'events' => $events,
         ];
