@@ -22,7 +22,10 @@ const currentLocale = computed(() => appLocale.value.split('-')[0]);
 // THE BRAIN: Indikator Task per hari
 const activityMap = computed(() => {
     const map = {};
-    props.tasks.forEach(task => {
+    const taskList = Array.isArray(props.tasks) ? props.tasks : Object.values(props.tasks || {});
+    
+    taskList.forEach(task => {
+        if (!task.date) return;
         const dateKey = dayjs(task.date).format('YYYY-MM-DD');
         if (!map[dateKey]) map[dateKey] = { total: 0, completed: 0 };
         map[dateKey].total++;
