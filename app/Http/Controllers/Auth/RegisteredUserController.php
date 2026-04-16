@@ -41,15 +41,24 @@ class RegisteredUserController extends Controller
         ]);
 
         // Validate reCAPTCHA
-        $recaptchaResponse = \Illuminate\Support\Facades\Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => config('services.recaptcha.secret'),
-            'response' => $request->input('g-recaptcha-response'),
-            'remoteip' => $request->ip()
-        ]);
+        try {
+            $recaptchaResponse = \Illuminate\Support\Facades\Http::timeout(5)->asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+                'secret' => config('services.recaptcha.secret'),
+                'response' => $request->input('g-recaptcha-response'),
+                'remoteip' => $request->ip()
+            ]);
 
-        if (!$recaptchaResponse->json('success')) {
+            if (!$recaptchaResponse->json('success')) {
+                throw \Illuminate\Validation\ValidationException::withMessages([
+                    'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal atau invalid.'
+                ]);
+            }
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            throw $e; // Re-throw validasi error ke form
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('ReCAPTCHA API Error: ' . $e->getMessage());
             throw \Illuminate\Validation\ValidationException::withMessages([
-                'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal atau invalid.'
+                'g-recaptcha-response' => 'Sistem verifikasi (ReCAPTCHA) sedang gangguan, coba lagi nanti.'
             ]);
         }
 

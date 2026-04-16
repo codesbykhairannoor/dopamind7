@@ -38,15 +38,24 @@ class LoginRequest extends FormRequest
     $this->ensureIsNotRateLimited();
 
     // Validate reCAPTCHA
-    $recaptchaResponse = \Illuminate\Support\Facades\Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
-        'secret' => config('services.recaptcha.secret'),
-        'response' => $this->input('g-recaptcha-response'),
-        'remoteip' => $this->ip()
-    ]);
+    try {
+        $recaptchaResponse = \Illuminate\Support\Facades\Http::timeout(5)->asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => config('services.recaptcha.secret'),
+            'response' => $this->input('g-recaptcha-response'),
+            'remoteip' => $this->ip()
+        ]);
 
-    if (!$recaptchaResponse->json('success')) {
+        if (!$recaptchaResponse->json('success')) {
+            throw ValidationException::withMessages([
+                'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal atau invalid.',
+            ]);
+        }
+    } catch (ValidationException $e) {
+        throw $e;
+    } catch (\Exception $e) {
+        \Illuminate\Support\Facades\Log::error('ReCAPTCHA API Error on Login: ' . $e->getMessage());
         throw ValidationException::withMessages([
-            'g-recaptcha-response' => 'Verifikasi reCAPTCHA gagal atau invalid.',
+            'g-recaptcha-response' => 'Sistem verifikasi (ReCAPTCHA) sedang gangguan, coba lagi nanti.',
         ]);
     }
 
