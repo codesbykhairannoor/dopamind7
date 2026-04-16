@@ -419,11 +419,10 @@
             });
 
             @auth
-                // Push User ID for Cross-Device Tracking
-                gtag('set', 'user_properties', {
-                    'user_id': '{{ hash('sha256', auth()->id()) }}',
-                    'v_status': 'authenticated'
-                });
+            gtag('set', 'user_properties', {
+                'user_id': '{{ hash('sha256', auth()->id()) }}',
+                'v_status': 'authenticated'
+            });
             @endauth
 
             // 2. 🔥 GTM SLAYER: Load only after first user interaction or 3.5s delay
@@ -466,38 +465,20 @@
         </script>
     @endif
 
-    @if(env('FACEBOOK_PIXEL_ID'))
-        <script>
-            // 🔥 Meta Pixel Efficiency Mode (Deferred Loading)
-            window.addEventListener('load', () => {
-                const loadPixel = () => {
-                    if (window.pixelLoaded) return;
-                    window.pixelLoaded = true;
-
-                    !function (f, b, e, v, n, t, s) {
-                        if (f.fbq) return; n = f.fbq = function () {
-                            n.callMethod ?
-                                n.callMethod.apply(n,arguments) : n.queue.push(arguments)
-                        };
-                        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-                        n.queue = []; t = b.createElement(e); t.async = !0;
-                        t.src = v; s = b.getElementsByTagName(e)[0];
-                        s.parentNode.insertBefore(t, s)
-                    }(window, document, 'script',
-                        'https://connect.facebook.net/en_US/fbevents.js');
-                    fbq('init', '951954810888805');
-                    fbq('track', 'PageView');
-                    console.log('⚡ Meta Pixel Loaded (Deduplicated)');
-                };
-
-                const interactionEvents = ['mouseover', 'keydown', 'touchmove', 'touchstart', 'scroll'];
-                interactionEvents.forEach(event => window.addEventListener(event, loadPixel, { once: true, passive: true }));
-                setTimeout(loadPixel, 4000);
-            });
-        </script>
-        <noscript><img height="1" width="1" style="display:none"
-                src="https://www.facebook.com/tr?id=951954810888805&ev=PageView&noscript=1" /></noscript>
-    @endif
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '951954810888805');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=951954810888805&ev=PageView&noscript=1" /></noscript>
 </head>
 {{-- HTMX Boost (Instant Swap) --}}
 
@@ -1151,12 +1132,11 @@
 
     {{-- 3. Load Library --}}
     <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
-    <script src="//instant.page/5.2.0" type="module"></script>
 
-    {{-- 4. 🔥 TURBO NAVIGATION ENGINE --}}
+    {{-- 4. NAVIGATION ENGINE --}}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. HTMX Integration (instant swap without progress bar)
+            // HTMX Integration (instant swap)
             document.body.addEventListener('htmx:beforeSwap', (event) => {
                 document.documentElement.style.scrollBehavior = 'auto';
                 if (event.detail.target === document.body || event.detail.target.tagName === 'MAIN') {
@@ -1169,69 +1149,7 @@
                     document.documentElement.style.scrollBehavior = '';
                 }, 50);
 
-                if (typeof gtag !== 'undefined' && window.GA_MEASUREMENT_ID) {
-                    gtag('config', window.GA_MEASUREMENT_ID, {
-                        page_path: window.location.pathname,
-                        page_title: document.title
-                    });
-                }
-            });
-
-            document.body.addEventListener('htmx:onLoadError', () => {
-                document.documentElement.style.scrollBehavior = '';
-            });
-            document.body.addEventListener('htmx:historyRestore', () => {
-                document.documentElement.style.scrollBehavior = '';
-            });
-
-            // 2. 🔥 AGGRESSIVE PREFETCH ENGINE: Prefetch on hover (65ms threshold)
-            const prefetchedUrls = new Set();
-            const prefetchLink = (url) => {
-                if (prefetchedUrls.has(url)) return;
-                if (!url.startsWith(window.location.origin)) return;
-                if (url.includes('/dashboard') || url.includes('/api/')) return;
-                prefetchedUrls.add(url);
-                const link = document.createElement('link');
-                link.rel = 'prefetch';
-                link.href = url;
-                link.as = 'document';
-                document.head.appendChild(link);
-            };
-
-            let hoverTimer = null;
-            document.addEventListener('pointerenter', (e) => {
-                const link = e.target.closest('a');
-                if (!link || !link.href) return;
-                if (link.target === '_blank' || link.hasAttribute('hx-boost')) return;
-                hoverTimer = setTimeout(() => prefetchLink(link.href), 65);
-            }, { capture: true, passive: true });
-
-            document.addEventListener('pointerleave', (e) => {
-                if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
-            }, { capture: true, passive: true });
-
-            // Also prefetch on touchstart for mobile
-            document.addEventListener('touchstart', (e) => {
-                const link = e.target.closest('a');
-                if (link && link.href) prefetchLink(link.href);
-            }, { capture: true, passive: true });
-
-            // 3. 🔥 PRELOAD VISIBLE LINKS: Intersection Observer
-            const linkObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const link = entry.target;
-                        if (link.href) prefetchLink(link.href);
-                        linkObserver.unobserve(link);
-                    }
-                });
-            }, { rootMargin: '200px' });
-
-            // Observe all internal links in viewport
-            document.querySelectorAll('a[href^="/"], a[href^="' + window.location.origin + '"]').forEach(link => {
-                if (!link.target && link.target !== '_blank' && !link.hasAttribute('hx-boost')) {
-                    linkObserver.observe(link);
-                }
+                if (typeof fbq !== 'undefined') fbq('track', 'PageView');
             });
         });
     </script>
