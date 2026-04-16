@@ -77,23 +77,14 @@ const initiatePayment = async (method) => {
                     label:  'paypal'
                 },
                 createOrder: async (data, actions) => {
-                    Swal.fire({
-                        title: 'Connecting...',
-                        html: 'Initializing secure transaction...',
-                        allowOutsideClick: false,
-                        didOpen: () => Swal.showLoading()
-                    });
-                    
                     try {
                         const res = await axios.post(route('paypal.checkout'), {
                             plan: props.plan.toLowerCase(),
                             billing: periodLabel.value.toLowerCase().includes('year') ? 'yearly' : 'monthly'
                         });
                         
-                        Swal.close();
                         return res.data.id; // Must return the valid order ID
                     } catch (error) {
-                        Swal.close();
                         console.error('Create Order Error:', error);
                         Swal.fire('Error', 'Failed to create order on server.', 'error');
                         throw error;
