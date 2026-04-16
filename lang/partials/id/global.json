@@ -1,4 +1,7 @@
-{     "____ SECTION_1 ____": "=== NAVIGASI & GLOBAL ===",
+{    "trial_confirm_title": "Mulai Masa Percobaan?",
+    "trial_confirm_text": "Anda akan mendapatkan akses penuh ke fitur Architect selama 10 hari secara gratis.",
+    "btn_yes": "Ya, Mulai Sekarang",
+    "btn_cancel": "Batal",     "____ SECTION_1 ____": "=== NAVIGASI & GLOBAL ===",
     "nav_home": "Beranda",
     "nav_about": "Tentang Kami",
     "nav_login": "Masuk",

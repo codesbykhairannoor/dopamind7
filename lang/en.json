@@ -1766,6 +1766,9 @@
             "benefit_3": "Target Maturity Alerts"
         }
     },
+    "trial_confirm_title": "Start Trial Period?",
+    "trial_confirm_text": "You will get full access to Architect features for 10 days for free.",
+    "btn_yes": "Yes, Start Now",
     "____ SECTION_1 ____": "=== NAVIGATION & GLOBAL ===",
     "nav_home": "Home",
     "nav_about": "About Us",

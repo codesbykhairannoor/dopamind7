@@ -1778,6 +1778,9 @@
             "benefit_3": "Peringatan Target Kematangan"
         }
     },
+    "trial_confirm_title": "Mulai Masa Percobaan?",
+    "trial_confirm_text": "Anda akan mendapatkan akses penuh ke fitur Architect selama 10 hari secara gratis.",
+    "btn_yes": "Ya, Mulai Sekarang",
     "____ SECTION_1 ____": "=== NAVIGASI & GLOBAL ===",
     "nav_home": "Beranda",
     "nav_about": "Tentang Kami",
