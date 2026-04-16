@@ -47,6 +47,8 @@ const startTrial = () => {
 
             router.post(route('trial.start'), { meta_event_id: metaEventId }, {
                 preserveScroll: true,
+                preserveState: true,
+                only: ['auth'],
                 onSuccess: () => {
                     Swal.fire({
                         title: trans('trial_success_title') || 'Trial Dimulai!',

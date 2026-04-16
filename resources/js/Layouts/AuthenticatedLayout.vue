@@ -233,11 +233,7 @@ watch(isMobileDrawerOpen, (open) => {
                 :class="[route().current('coach.*') ? '!pb-0 flex flex-col overflow-hidden' : 'overflow-y-auto']"
             >
                 <div class="w-full relative z-0 px-0 pb-8 md:pb-10" :class="{ '!pb-0 flex-1 flex flex-col min-h-0': route().current('coach.*') }">
-                    <Transition name="fade-screen" mode="out-in">
-                        <div :key="page.url">
-                            <slot />
-                        </div>
-                    </Transition>
+                    <slot />
                 </div>
             </main>
         </div>
@@ -387,17 +383,5 @@ watch(isMobileDrawerOpen, (open) => {
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
-}
-.fade-screen-enter-active,
-.fade-screen-leave-active {
-    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
-}
-.fade-screen-enter-from {
-    opacity: 0;
-    transform: translateY(10px);
-}
-.fade-screen-leave-to {
-    opacity: 0;
-    transform: translateY(-10px);
 }
 </style>

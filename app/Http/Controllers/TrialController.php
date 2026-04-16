@@ -39,6 +39,6 @@ class TrialController extends Controller
             \Illuminate\Support\Facades\Log::error('Meta CAPI Error on Start Trial: ' . $e->getMessage());
         }
 
-        return redirect()->route('dashboard')->with('success', __('global.trial_success_text') ?: 'Masa percobaan 10 Hari Architect Anda telah dimulai!');
+        return back()->with('success', __('global.trial_success_text') ?: 'Masa percobaan 10 Hari Architect Anda telah dimulai!');
     }
 }
