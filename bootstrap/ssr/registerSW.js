@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('http://localhost:8001/build/sw.js', { scope: 'http://localhost:8001/build/' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('http://localhost:8000/build/sw.js', { scope: 'http://localhost:8000/build/' })})}

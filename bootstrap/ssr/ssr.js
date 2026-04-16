@@ -101,6 +101,18 @@ const atomic_cta_desc$1 = "Join 5,000+ high-performers who use OneForMind to aut
 const atomic_cta_btn$1 = "Start Your System Now";
 const schema_solution_atomic_name$1 = "OneForMind Atomic Habit Solution";
 const schema_solution_atomic_description$1 = "A micro-habit tracking system for long-term identity change.";
+const auth_error_trial_used$1 = "You have already used your free trial.";
+const auth_error_email_taken$1 = "This email is already registered. Please use another email or login.";
+const auth_val_email$1 = "Email must contain @";
+const auth_val_pass_min$1 = "Password must be at least 8 characters";
+const auth_val_pass_upper$1 = "Password must contain at least one uppercase letter";
+const auth_verify_title$1 = "Verify Email";
+const auth_verify_header$1 = "Check Your Inbox!";
+const auth_verify_p1$1 = "Thanks for signing up! One more step.";
+const auth_verify_p2$1 = "Please click the verification link we just sent to the email above to activate your account.";
+const auth_verify_resent_success$1 = "A new verification link has been sent. Check your inbox or spam folder!";
+const auth_verify_btn_resend$1 = "Resend Verification";
+const auth_verify_logout$1 = "Log Out / Switch Account";
 const auth_login_title$2 = "Welcome Back.";
 const auth_login_subtitle$2 = "Continue your life's progress.";
 const auth_register_title$2 = "Start Fresh.";
@@ -1750,6 +1762,13 @@ const gating$1 = {
     benefit_3: "Target Maturity Alerts"
   }
 };
+const trial_success_title$1 = "Welcome to Architect Plan!";
+const trial_success_text$1 = "Your trial period is now active. Enjoy all our premium features.";
+const trial_remaining$1 = "Trial Time Remaining:";
+const trial_days$1 = "Days";
+const trial_confirm_title$1 = "Start Trial Period?";
+const trial_confirm_text$1 = "You will get full access to Architect features for 10 days for free.";
+const btn_yes$1 = "Yes, Start Now";
 const nav_home$2 = "Home";
 const nav_about$2 = "About Us";
 const nav_login$2 = "Log In";
@@ -1762,6 +1781,7 @@ const nav_platinum_suite$1 = "Platinum Suite";
 const nav_upgrade_pro$1 = "Get Architect";
 const btn_upgrade_limit$1 = "Upgrade Limit";
 const label_usage_limit$1 = "Usage Limit";
+const auth_processing$1 = "Processing…";
 const nav_item_premium$1 = "Go Elite";
 const nav_item_dashboard$1 = "Dashboard";
 const nav_item_habit$1 = "Habits";
@@ -1905,7 +1925,7 @@ const contact_info_chat$1 = "Live Chat";
 const contact_info_chat_status$1 = "Quick Support";
 const contact_faq_title$1 = "Have technical questions?";
 const contact_faq_desc$1 = "Check our help documentation for instant answers about features and licensing.";
-const contact_faq_btn$1 = "Open Help Center";
+const contact_faq_btn = "Open Help Center";
 const contact_form_message_placeholder$1 = "How can we help you?";
 const contact_form_name_placeholder$1 = "John Doe";
 const contact_form_email_placeholder$1 = "john@example.com";
@@ -1933,6 +1953,11 @@ const error_desc_404$1 = "The page you are looking for does not exist. You might
 const error_desc_403$1 = "Sorry, you do not have permission to access this page.";
 const error_desc_default$1 = "An unexpected technical issue occurred. Please try again.";
 const error_btn_back$1 = "Back to Home";
+const calendar_page_title$1 = "Calendar";
+const neural_bridge_title$1 = "Neural Bridge";
+const neural_bridge_limit$1 = "Neural insights require Quantum Plan";
+const btn_upgrade = "Upgrade";
+const btn_get_intelligence = "Get Intelligence";
 const goal_page_title$1 = "Goal Tracker";
 const goal_add_row$1 = "Add Goal";
 const goal_bulk_selected$1 = "Goals Selected";
@@ -2907,6 +2932,7 @@ const press_kit_contact_title$1 = "Media Inquiries";
 const press_kit_contact_desc$1 = "For interviews, press questions, or partnership opportunities, contact us at oneformindapp@gmail.com";
 const press_kit_foundation_title$1 = "Our Foundation";
 const press_kit_foundation_desc$1 = "Founded in 2024, OneForMind was born from the need to unify fragmented productivity tools into a single, cohesive human operating system.";
+const btn_start_trial$1 = "Start Free Trial";
 const pricing_meta_title$1 = "Pricing | Choose Your Growth Path";
 const pricing_meta_desc$1 = "Simple and transparent pricing for OneForMind. Unlock your full potential today.";
 const pricing_meta_og_title$1 = "OneForMind Pricing — Invest in Yourself";
@@ -4473,6 +4499,18 @@ const en = {
   atomic_cta_btn: atomic_cta_btn$1,
   schema_solution_atomic_name: schema_solution_atomic_name$1,
   schema_solution_atomic_description: schema_solution_atomic_description$1,
+  auth_error_trial_used: auth_error_trial_used$1,
+  auth_error_email_taken: auth_error_email_taken$1,
+  auth_val_email: auth_val_email$1,
+  auth_val_pass_min: auth_val_pass_min$1,
+  auth_val_pass_upper: auth_val_pass_upper$1,
+  auth_verify_title: auth_verify_title$1,
+  auth_verify_header: auth_verify_header$1,
+  auth_verify_p1: auth_verify_p1$1,
+  auth_verify_p2: auth_verify_p2$1,
+  auth_verify_resent_success: auth_verify_resent_success$1,
+  auth_verify_btn_resend: auth_verify_btn_resend$1,
+  auth_verify_logout: auth_verify_logout$1,
   "____ SECTION_3 ____": "=== AUTHENTICATION (LOGIN & REGISTER) ===",
   auth_login_title: auth_login_title$2,
   auth_login_subtitle: auth_login_subtitle$2,
@@ -6068,6 +6106,13 @@ const en = {
   deposit: deposit$1,
   withdraw: withdraw$1,
   gating: gating$1,
+  trial_success_title: trial_success_title$1,
+  trial_success_text: trial_success_text$1,
+  trial_remaining: trial_remaining$1,
+  trial_days: trial_days$1,
+  trial_confirm_title: trial_confirm_title$1,
+  trial_confirm_text: trial_confirm_text$1,
+  btn_yes: btn_yes$1,
   "____ SECTION_1 ____": "=== NAVIGATION & GLOBAL ===",
   nav_home: nav_home$2,
   nav_about: nav_about$2,
@@ -6081,6 +6126,7 @@ const en = {
   nav_upgrade_pro: nav_upgrade_pro$1,
   btn_upgrade_limit: btn_upgrade_limit$1,
   label_usage_limit: label_usage_limit$1,
+  auth_processing: auth_processing$1,
   nav_item_premium: nav_item_premium$1,
   nav_item_dashboard: nav_item_dashboard$1,
   nav_item_habit: nav_item_habit$1,
@@ -6224,7 +6270,7 @@ const en = {
   contact_info_chat_status: contact_info_chat_status$1,
   contact_faq_title: contact_faq_title$1,
   contact_faq_desc: contact_faq_desc$1,
-  contact_faq_btn: contact_faq_btn$1,
+  contact_faq_btn,
   contact_form_message_placeholder: contact_form_message_placeholder$1,
   contact_form_name_placeholder: contact_form_name_placeholder$1,
   contact_form_email_placeholder: contact_form_email_placeholder$1,
@@ -6252,6 +6298,11 @@ const en = {
   error_desc_403: error_desc_403$1,
   error_desc_default: error_desc_default$1,
   error_btn_back: error_btn_back$1,
+  calendar_page_title: calendar_page_title$1,
+  neural_bridge_title: neural_bridge_title$1,
+  neural_bridge_limit: neural_bridge_limit$1,
+  btn_upgrade,
+  btn_get_intelligence,
   goal_page_title: goal_page_title$1,
   goal_add_row: goal_add_row$1,
   goal_bulk_selected: goal_bulk_selected$1,
@@ -7234,6 +7285,7 @@ const en = {
   press_kit_contact_desc: press_kit_contact_desc$1,
   press_kit_foundation_title: press_kit_foundation_title$1,
   press_kit_foundation_desc: press_kit_foundation_desc$1,
+  btn_start_trial: btn_start_trial$1,
   pricing_meta_title: pricing_meta_title$1,
   pricing_meta_desc: pricing_meta_desc$1,
   pricing_meta_og_title: pricing_meta_og_title$1,
@@ -8815,6 +8867,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   auth_confirm_title: auth_confirm_title$2,
   auth_consent_notice: auth_consent_notice$1,
   auth_divider: auth_divider$2,
+  auth_error_email_taken: auth_error_email_taken$1,
+  auth_error_trial_used: auth_error_trial_used$1,
   auth_footer_help: auth_footer_help$1,
   auth_forgot_pass: auth_forgot_pass$2,
   auth_has_account: auth_has_account$2,
@@ -8831,11 +8885,22 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   auth_placeholder_name: auth_placeholder_name$2,
   auth_placeholder_pass: auth_placeholder_pass$2,
   auth_placeholder_pass_confirm: auth_placeholder_pass_confirm$2,
+  auth_processing: auth_processing$1,
   auth_register_subtitle: auth_register_subtitle$2,
   auth_register_title: auth_register_title$2,
   auth_remember: auth_remember$2,
   auth_reset_desc: auth_reset_desc$2,
   auth_reset_title: auth_reset_title$2,
+  auth_val_email: auth_val_email$1,
+  auth_val_pass_min: auth_val_pass_min$1,
+  auth_val_pass_upper: auth_val_pass_upper$1,
+  auth_verify_btn_resend: auth_verify_btn_resend$1,
+  auth_verify_header: auth_verify_header$1,
+  auth_verify_logout: auth_verify_logout$1,
+  auth_verify_p1: auth_verify_p1$1,
+  auth_verify_p2: auth_verify_p2$1,
+  auth_verify_resent_success: auth_verify_resent_success$1,
+  auth_verify_title: auth_verify_title$1,
   available_balance: available_balance$1,
   avg_daily_spend: avg_daily_spend$1,
   base_capital: base_capital$1,
@@ -9064,6 +9129,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   btn_create: btn_create$1,
   btn_delete: btn_delete$1,
   btn_edit: btn_edit$1,
+  btn_get_intelligence,
   btn_goal_error: btn_goal_error$1,
   btn_journal: btn_journal$1,
   btn_log_expense: btn_log_expense$1,
@@ -9078,11 +9144,14 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   btn_save_vision: btn_save_vision$1,
   btn_saving: btn_saving$1,
   btn_single_mode: btn_single_mode$1,
+  btn_start_trial: btn_start_trial$1,
   btn_transaction: btn_transaction$1,
   btn_unlock_now: btn_unlock_now$1,
   btn_update: btn_update$1,
+  btn_upgrade,
   btn_upgrade_limit: btn_upgrade_limit$1,
   btn_upgrade_tier: btn_upgrade_tier$1,
+  btn_yes: btn_yes$1,
   btn_yes_delete: btn_yes_delete$1,
   budget_limit: budget_limit$1,
   budget_target: budget_target$1,
@@ -9205,6 +9274,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   calendar_node_journal_desc: calendar_node_journal_desc$1,
   calendar_node_journal_title: calendar_node_journal_title$1,
   calendar_open: calendar_open$1,
+  calendar_page_title: calendar_page_title$1,
   calendar_planner: calendar_planner$1,
   calendar_prob_1_desc: calendar_prob_1_desc$1,
   calendar_prob_1_title: calendar_prob_1_title$1,
@@ -9412,7 +9482,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   confirm_new_password: confirm_new_password$1,
   confirm_pay: confirm_pay$1,
   contact_btn_send: contact_btn_send$1,
-  contact_faq_btn: contact_faq_btn$1,
+  contact_faq_btn,
   contact_faq_desc: contact_faq_desc$1,
   contact_faq_title: contact_faq_title$1,
   contact_form_email: contact_form_email$1,
@@ -11375,6 +11445,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   neural_audit_step2_desc: neural_audit_step2_desc$1,
   neural_audit_step2_title: neural_audit_step2_title$1,
   neural_audit_title: neural_audit_title$1,
+  neural_bridge_limit: neural_bridge_limit$1,
+  neural_bridge_title: neural_bridge_title$1,
   neural_coach_badge: neural_coach_badge$1,
   neural_coach_desc: neural_coach_desc$1,
   neural_coach_feat1: neural_coach_feat1$1,
@@ -12968,6 +13040,12 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   transaction: transaction$1,
   transaction_count: transaction_count$1,
   transactions_count: transactions_count$1,
+  trial_confirm_text: trial_confirm_text$1,
+  trial_confirm_title: trial_confirm_title$1,
+  trial_days: trial_days$1,
+  trial_remaining: trial_remaining$1,
+  trial_success_text: trial_success_text$1,
+  trial_success_title: trial_success_title$1,
   type: type$1,
   unified_ecosystem_title: unified_ecosystem_title$1,
   update_password: update_password$1,
@@ -13112,6 +13190,18 @@ const atomic_cta_desc = "Bergabunglah dengan 5.000+ performa tinggi yang menggun
 const atomic_cta_btn = "Mulai Sistem Anda Sekarang";
 const schema_solution_atomic_name = "OneForMind Solusi Kebiasaan Atom";
 const schema_solution_atomic_description = "Sistem pelacakan kebiasaan mikro untuk perubahan identitas jangka panjang.";
+const auth_error_trial_used = "Anda sudah pernah menggunakan masa percobaan gratis.";
+const auth_error_email_taken = "Email ini sudah terdaftar. Silakan gunakan email lain atau login.";
+const auth_val_email = "Email harus mengandung @";
+const auth_val_pass_min = "Password minimal 8 karakter";
+const auth_val_pass_upper = "Password harus mengandung minimal satu huruf besar";
+const auth_verify_title = "Verifikasi Email";
+const auth_verify_header = "Cek Inbox Lo!";
+const auth_verify_p1 = "Makasih udah daftar! Satu langkah lagi nih.";
+const auth_verify_p2 = "Tolong klik link verifikasi yang baru saja kami kirim ke email di atas biar akunnya aktif.";
+const auth_verify_resent_success = "Link verifikasi baru sudah dikirim. Cek inbox atau folder spam ya!";
+const auth_verify_btn_resend = "Kirim Ulang Verifikasi";
+const auth_verify_logout = "Log Out / Ganti Akun";
 const auth_login_title$1 = "Welcome Back.";
 const auth_login_subtitle$1 = "Lanjutkan progress hidup kamu.";
 const auth_register_title$1 = "Mulai Fresh.";
@@ -14775,6 +14865,13 @@ const gating = {
     benefit_3: "Peringatan Target Kematangan"
   }
 };
+const trial_success_title = "Selamat Datang di Paket Architect!";
+const trial_success_text = "Masa percobaan Anda telah aktif. Silakan nikmati seluruh fitur premium kami.";
+const trial_remaining = "Sisa Masa Percobaan:";
+const trial_days = "Hari";
+const trial_confirm_title = "Mulai Masa Percobaan?";
+const trial_confirm_text = "Anda akan mendapatkan akses penuh ke fitur Architect selama 10 hari secara gratis.";
+const btn_yes = "Ya, Mulai Sekarang";
 const nav_home$1 = "Beranda";
 const nav_about$1 = "Tentang Kami";
 const nav_login$1 = "Masuk";
@@ -14787,6 +14884,7 @@ const nav_platinum_suite = "Platinum Suite";
 const nav_upgrade_pro = "Dapatkan Architect";
 const btn_upgrade_limit = "Tingkatkan Batas";
 const label_usage_limit = "Batas Penggunaan";
+const auth_processing = "Sedang Memproses…";
 const nav_item_premium = "Buka Elite";
 const nav_item_dashboard = "Dashboard";
 const nav_item_habit = "Habits";
@@ -14960,12 +15058,14 @@ const contact_info_chat = "Live Chat";
 const contact_info_chat_status = "Dukungan Cepat";
 const contact_faq_title = "Punya pertanyaan teknis?";
 const contact_faq_desc = "Cek dokumentasi bantuan kami untuk jawaban instan mengenai fitur dan lisensi.";
-const contact_faq_btn = "Buka Pusat Bantuan";
+const calendar_page_title = "Kalender";
 const contact_form_message_placeholder = "Bagaimana kami bisa membantu Anda?";
 const contact_form_name_placeholder = "Nama lengkap Anda";
 const contact_form_email_placeholder = "email@contoh.com";
 const contact_subject_partnership = "Kemitraan Bisnis";
 const contact_subject_other = "Lainnya";
+const neural_bridge_title = "Neural Bridge";
+const neural_bridge_limit = "Wawasan neural memerlukan paket Quantum";
 const goal_page_title = "Goal Tracker";
 const goal_add_row = "Tambah Target";
 const goal_bulk_selected = "Target Terpilih";
@@ -15881,6 +15981,7 @@ const press_kit_contact_title = "Koneksi Media";
 const press_kit_contact_desc = "Untuk wawancara, pertanyaan pers, atau peluang kemitraan, hubungi kami di oneformindapp@gmail.com";
 const press_kit_foundation_title = "Fondasi Kami";
 const press_kit_foundation_desc = "Didirikan pada tahun 2024, OneForMind lahir dari kebutuhan untuk menyatukan alat produktivitas yang terfragmentasi menjadi satu sistem operasi manusia yang kohesif.";
+const btn_start_trial = "Mulai Trial Gratis";
 const pricing_meta_title = "Harga | Pilih Jalur Perkembangan Anda";
 const pricing_meta_desc = "Harga sederhana dan transparan untuk OneForMind. Buka potensi penuh Anda hari ini.";
 const pricing_meta_og_title = "Harga OneForMind — Investasi pada Diri Sendiri";
@@ -17474,6 +17575,18 @@ const id = {
   atomic_cta_btn,
   schema_solution_atomic_name,
   schema_solution_atomic_description,
+  auth_error_trial_used,
+  auth_error_email_taken,
+  auth_val_email,
+  auth_val_pass_min,
+  auth_val_pass_upper,
+  auth_verify_title,
+  auth_verify_header,
+  auth_verify_p1,
+  auth_verify_p2,
+  auth_verify_resent_success,
+  auth_verify_btn_resend,
+  auth_verify_logout,
   auth_login_title: auth_login_title$1,
   auth_login_subtitle: auth_login_subtitle$1,
   auth_register_title: auth_register_title$1,
@@ -19081,6 +19194,13 @@ const id = {
   deposit,
   withdraw,
   gating,
+  trial_success_title,
+  trial_success_text,
+  trial_remaining,
+  trial_days,
+  trial_confirm_title,
+  trial_confirm_text,
+  btn_yes,
   "____ SECTION_1 ____": "=== NAVIGASI & GLOBAL ===",
   nav_home: nav_home$1,
   nav_about: nav_about$1,
@@ -19094,6 +19214,7 @@ const id = {
   nav_upgrade_pro,
   btn_upgrade_limit,
   label_usage_limit,
+  auth_processing,
   nav_item_premium,
   nav_item_dashboard,
   nav_item_habit,
@@ -19268,12 +19389,14 @@ const id = {
   contact_info_chat_status,
   contact_faq_title,
   contact_faq_desc,
-  contact_faq_btn,
+  calendar_page_title,
   contact_form_message_placeholder,
   contact_form_name_placeholder,
   contact_form_email_placeholder,
   contact_subject_partnership,
   contact_subject_other,
+  neural_bridge_title,
+  neural_bridge_limit,
   goal_page_title,
   goal_add_row,
   goal_bulk_selected,
@@ -20197,6 +20320,7 @@ const id = {
   press_kit_contact_desc,
   press_kit_foundation_title,
   press_kit_foundation_desc,
+  btn_start_trial,
   pricing_meta_title,
   pricing_meta_desc,
   pricing_meta_og_title,
@@ -21805,6 +21929,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   auth_confirm_title: auth_confirm_title$1,
   auth_consent_notice,
   auth_divider: auth_divider$1,
+  auth_error_email_taken,
+  auth_error_trial_used,
   auth_footer_help,
   auth_forgot_pass: auth_forgot_pass$1,
   auth_has_account: auth_has_account$1,
@@ -21821,11 +21947,22 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   auth_placeholder_name: auth_placeholder_name$1,
   auth_placeholder_pass: auth_placeholder_pass$1,
   auth_placeholder_pass_confirm: auth_placeholder_pass_confirm$1,
+  auth_processing,
   auth_register_subtitle: auth_register_subtitle$1,
   auth_register_title: auth_register_title$1,
   auth_remember: auth_remember$1,
   auth_reset_desc: auth_reset_desc$1,
   auth_reset_title: auth_reset_title$1,
+  auth_val_email,
+  auth_val_pass_min,
+  auth_val_pass_upper,
+  auth_verify_btn_resend,
+  auth_verify_header,
+  auth_verify_logout,
+  auth_verify_p1,
+  auth_verify_p2,
+  auth_verify_resent_success,
+  auth_verify_title,
   available_balance,
   avg_daily_spend,
   base_capital,
@@ -22068,11 +22205,13 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   btn_save_vision,
   btn_saving,
   btn_single_mode,
+  btn_start_trial,
   btn_transaction,
   btn_unlock_now,
   btn_update,
   btn_upgrade_limit,
   btn_upgrade_tier,
+  btn_yes,
   btn_yes_delete,
   budget_limit,
   budget_target,
@@ -22193,6 +22332,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   calendar_node_journal_desc,
   calendar_node_journal_title,
   calendar_open,
+  calendar_page_title,
   calendar_planner,
   calendar_prob_1_desc,
   calendar_prob_1_title,
@@ -22400,7 +22540,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   confirm_new_password,
   confirm_pay,
   contact_btn_send,
-  contact_faq_btn,
   contact_faq_desc,
   contact_faq_title,
   contact_form_email,
@@ -24357,6 +24496,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   neural_audit_step2_desc,
   neural_audit_step2_title,
   neural_audit_title,
+  neural_bridge_limit,
+  neural_bridge_title,
   neural_coach_badge,
   neural_coach_desc,
   neural_coach_feat1,
@@ -25948,6 +26089,12 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   transaction,
   transaction_count,
   transactions_count,
+  trial_confirm_text,
+  trial_confirm_title,
+  trial_days,
+  trial_remaining,
+  trial_success_text,
+  trial_success_title,
   type,
   unified_ecosystem_title,
   update_password,
@@ -26749,7 +26896,7 @@ const _ = { install(t3, e2) {
   const o2 = (t4, o3, n2, r2 = e2) => D(t4, o3, n2, r2);
   parseInt(t3.version) > 2 ? (t3.config.globalProperties.route = o2, t3.provide("route", o2)) : t3.mixin({ methods: { route: o2 } });
 } };
-const Ziggy$1 = { "url": "http://192.168.1.5:8000", "port": 8e3, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "settings.cookie-consent": { "uri": "settings/cookie-consent", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "billing": { "uri": "billing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "resources.ai-trust": { "uri": "resources/neural-os-transparency", "methods": ["GET", "HEAD"] }, "company.contact": { "uri": "company/contact", "methods": ["GET", "HEAD"] }, "contact.send": { "uri": "company/contact", "methods": ["POST"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "trial.start": { "uri": "trial/start", "methods": ["POST"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "finance.savings.store": { "uri": "finance/savings", "methods": ["POST"] }, "finance.savings.update": { "uri": "finance/savings/{financeSaving}", "methods": ["PATCH"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.destroy": { "uri": "finance/savings/{financeSaving}", "methods": ["DELETE"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.deposit": { "uri": "finance/savings/{financeSaving}/deposit", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.withdraw": { "uri": "finance/savings/{financeSaving}/withdraw", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.analyze": { "uri": "journal/analyze", "methods": ["POST"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.general": { "uri": "settings/general", "methods": ["GET", "HEAD"] }, "settings.security": { "uri": "settings/security", "methods": ["GET", "HEAD"] }, "settings.modules": { "uri": "settings/modules", "methods": ["GET", "HEAD"] }, "settings.notifications": { "uri": "settings/notifications", "methods": ["GET", "HEAD"] }, "settings.billing": { "uri": "settings/billing", "methods": ["GET", "HEAD"] }, "settings.privacy": { "uri": "settings/privacy", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.summary": { "uri": "payment/checkout", "methods": ["GET", "HEAD"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "paypal.checkout": { "uri": "paypal/checkout", "methods": ["POST"] }, "paypal.success": { "uri": "paypal/success", "methods": ["GET", "HEAD"] }, "dashboard.insight": { "uri": "dashboard/insight", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.session.destroy": { "uri": "coach/session/{session}", "methods": ["DELETE"], "parameters": ["session"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "admin.blog.index": { "uri": "admin/blog", "methods": ["GET", "HEAD"] }, "admin.blog.create": { "uri": "admin/blog/create", "methods": ["GET", "HEAD"] }, "admin.blog.store": { "uri": "admin/blog", "methods": ["POST"] }, "admin.blog.edit": { "uri": "admin/blog/{post}/edit", "methods": ["GET", "HEAD"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.update": { "uri": "admin/blog/{post}", "methods": ["POST", "PATCH"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.destroy": { "uri": "admin/blog/{post}", "methods": ["DELETE"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.notifications.update": { "uri": "admin/blog/notifications/preferences", "methods": ["POST"] }, "admin.users.index": { "uri": "admin/users", "methods": ["GET", "HEAD"] }, "admin.users.toggle-premium": { "uri": "admin/users/{user}/toggle-premium", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "admin.users.toggle-admin": { "uri": "admin/users/{user}/toggle-admin", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
+const Ziggy$1 = { "url": "https://192.168.1.5:8000", "port": 8e3, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "settings.cookie-consent": { "uri": "settings/cookie-consent", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "billing": { "uri": "billing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "resources.ai-trust": { "uri": "resources/neural-os-transparency", "methods": ["GET", "HEAD"] }, "company.contact": { "uri": "company/contact", "methods": ["GET", "HEAD"] }, "contact.send": { "uri": "company/contact", "methods": ["POST"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "trial.start": { "uri": "trial/start", "methods": ["POST"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "finance.savings.store": { "uri": "finance/savings", "methods": ["POST"] }, "finance.savings.update": { "uri": "finance/savings/{financeSaving}", "methods": ["PATCH"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.destroy": { "uri": "finance/savings/{financeSaving}", "methods": ["DELETE"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.deposit": { "uri": "finance/savings/{financeSaving}/deposit", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.withdraw": { "uri": "finance/savings/{financeSaving}/withdraw", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.analyze": { "uri": "journal/analyze", "methods": ["POST"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.general": { "uri": "settings/general", "methods": ["GET", "HEAD"] }, "settings.security": { "uri": "settings/security", "methods": ["GET", "HEAD"] }, "settings.modules": { "uri": "settings/modules", "methods": ["GET", "HEAD"] }, "settings.notifications": { "uri": "settings/notifications", "methods": ["GET", "HEAD"] }, "settings.billing": { "uri": "settings/billing", "methods": ["GET", "HEAD"] }, "settings.privacy": { "uri": "settings/privacy", "methods": ["GET", "HEAD"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.summary": { "uri": "payment/checkout", "methods": ["GET", "HEAD"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "paypal.checkout": { "uri": "paypal/checkout", "methods": ["POST"] }, "paypal.success": { "uri": "paypal/success", "methods": ["GET", "HEAD"] }, "dashboard.insight": { "uri": "dashboard/insight", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.session.destroy": { "uri": "coach/session/{session}", "methods": ["DELETE"], "parameters": ["session"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "admin.blog.index": { "uri": "admin/blog", "methods": ["GET", "HEAD"] }, "admin.blog.create": { "uri": "admin/blog/create", "methods": ["GET", "HEAD"] }, "admin.blog.store": { "uri": "admin/blog", "methods": ["POST"] }, "admin.blog.edit": { "uri": "admin/blog/{post}/edit", "methods": ["GET", "HEAD"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.update": { "uri": "admin/blog/{post}", "methods": ["POST", "PATCH"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.destroy": { "uri": "admin/blog/{post}", "methods": ["DELETE"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.notifications.update": { "uri": "admin/blog/notifications/preferences", "methods": ["POST"] }, "admin.users.index": { "uri": "admin/users", "methods": ["GET", "HEAD"] }, "admin.users.toggle-premium": { "uri": "admin/users/{user}/toggle-premium", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "admin.users.toggle-admin": { "uri": "admin/users/{user}/toggle-admin", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
 if (typeof window !== "undefined" && typeof window.Ziggy !== "undefined") {
   Object.assign(Ziggy$1.routes, window.Ziggy.routes);
 }
@@ -26759,7 +26906,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-ZdCfA3eF.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-cKphsFFD.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-COgm8QOT.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B_hEE8-C.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-2fRJqQFX.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DnPstKFr.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-0MAZ1pcV.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-k1gx1sZX.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-LiO3zZdT.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-aCOHjnK2.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BUoRUkkL.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-arXszp4h.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CX8DD-uG.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-BXwQJYuU.js"), "./Pages/Error.vue": () => import("./assets/Error-xq6SXWxT.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BgLEfiL2.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-DlRGVvVM.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-oHdKdHG8.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-DAMTIC9D.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-DKjABVq0.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-WRsWA4yW.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-CEM28YKM.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-D1HipL2d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CQuMqAHu.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-ClfwrN8e.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CQB73alA.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-Hbfmw05c.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-w_bJwAZE.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-ByNAk6xa.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-2vLqpQs3.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Bj-0OmlP.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-D2QUj28J.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-63okJVEq.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-CUVVSeWo.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-BvsW6P-x.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-_1o4SPbG.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-CpjmMXHD.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CrQo8MSH.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DXptGLGZ.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-C0SHXAub.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-DK0dWdYM.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-CtpPtQpz.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-D0cNsZ9Y.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-DQ1IdbQU.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CV_i9Npd.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-Bps_xC8l.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DES3f2L0.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-CInitoUM.js"), "./Pages/Planner/PlannerDatePicker.vue": () => import("./assets/PlannerDatePicker-C0E2B7JI.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-Ckycyk08.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-BSvY8qzJ.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-5znnIPWk.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-CsGtqZuw.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-BaVDM2aY.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-6RDNnmnf.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CIEWnmII.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-COl8ZQwj.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-GU_L7upc.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-DVXy65Ey.js"), "./Pages/Settings/General.vue": () => import("./assets/General-exnj4qJT.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-D-LRYdog.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-CtiOjhZ_.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-J0nyz_ZW.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-B5SjuEQX.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-C49Z1wiR.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-8ReNFdmM.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-CbruOR_g.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-B6XsWpzT.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-ZdCfA3eF.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-cKphsFFD.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-COgm8QOT.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B_hEE8-C.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-2fRJqQFX.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-DnPstKFr.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-0MAZ1pcV.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-k1gx1sZX.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-LiO3zZdT.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-Bs_fyFMm.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail-BDFpJCQM.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-C_CwpWGY.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-B3PTdTiy.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BUoRUkkL.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DucroPDS.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CX8DD-uG.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-CBqivPAJ.js"), "./Pages/Error.vue": () => import("./assets/Error-xq6SXWxT.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-BgLEfiL2.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BYd_Qwgx.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-DzJEpHWn.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-DwzufIi_.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-oHdKdHG8.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-Bb26wnio.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-C0TUAz5n.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-DAMTIC9D.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-DJhCW7kn.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-C3qPUs9X.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-BGDJzsry.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-WRsWA4yW.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-CEM28YKM.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-Bt0fhf-P.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-D1HipL2d.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-Di7v62U2.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CQuMqAHu.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-ClfwrN8e.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CQB73alA.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-Hbfmw05c.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-JX-H84-h.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-ByNAk6xa.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-D_XA6Qo3.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Bj-0OmlP.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-D2QUj28J.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-2Hb_drtF.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-CQ9SyeM_.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-Czcjc-Tm.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-D2S235Yz.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-CBKaXF-H.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-CpjmMXHD.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-CWqBlaKO.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CrQo8MSH.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DXptGLGZ.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-C0SHXAub.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-CQnX0C6z.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-Kt1rBUv7.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-D5OCHbol.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-D0cNsZ9Y.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-BuKKvo22.js"), "./Pages/More/Index.vue": () => import("./assets/Index-X0PvmBb-.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-BrWd59FP.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-2EFvoa6Y.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-C3rAbvCf.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BkLtSaml.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-BSvY8qzJ.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-BuXX1B2o.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-CsGtqZuw.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-CW1NZy5d.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-CaLFb-e0.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CIEWnmII.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-GU_L7upc.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-Bja15lD6.js"), "./Pages/Settings/General.vue": () => import("./assets/General-CXPaPQOk.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-CAZRCrer.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-BkduF-fq.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-C4STamOA.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-DCj9xN7Z.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-izOWNUjL.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-C49Z1wiR.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-BrWWNJhL.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-FQ91fRoz.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-B6XsWpzT.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

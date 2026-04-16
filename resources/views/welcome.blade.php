@@ -134,17 +134,7 @@
                 @endauth
             </div>
 
-            {{-- Trust Section --}}
-            <div class="mb-40">
-                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em] mb-10 opacity-60">{{ __('home_trust_tagline') }}</p>
-                <div class="flex flex-wrap justify-center items-center gap-x-16 gap-y-10 opacity-30">
-                    <span class="text-xl font-black text-slate-900 tracking-tighter uppercase">Linear</span>
-                    <span class="text-xl font-bold text-slate-900 tracking-tighter">Notion</span>
-                    <span class="text-xl font-black text-slate-900 tracking-tight italic">Raycast</span>
-                    <span class="text-xl font-bold text-slate-900 tracking-tighter uppercase">Arc</span>
-                    <span class="text-xl font-black text-slate-900 tracking-tighter">Figma</span>
-                </div>
-            </div>
+
 
             {{-- High-Fidelity App UI --}}
             <div class="relative max-w-6xl mx-auto">
@@ -160,7 +150,7 @@
                             <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
                         </div>
                         <div class="mx-auto bg-white border border-slate-200 rounded-full px-6 py-0.5 text-[9px] text-slate-400 font-medium">
-                            app.oneformind.io
+                            &nbsp;
                         </div>
                     </div>
 
