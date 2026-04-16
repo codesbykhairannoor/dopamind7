@@ -116,14 +116,14 @@ const props = defineProps({
                 </div>
 
                 <div class="flex-1 overflow-y-auto custom-scrollbar bg-slate-50/30 dark:bg-slate-950/30 p-4 md:p-8 transition-colors relative">
-                    <div class="space-y-4">
+                    <div class="space-y-6">
                         <div v-for="(task, index) in form.tasks" :key="index" 
                             class="bg-white dark:bg-slate-900 p-6 md:p-7 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-sm dark:shadow-none relative group animate-in fade-in duration-200">
                             
                             <!-- Card Header -->
                             <div class="flex justify-between items-center mb-6">
                                 <span class="text-[10px] font-black tracking-[0.2em] uppercase px-4 py-1.5 rounded-full bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-500/20">
-                                    {{ $t('task_label', 'Task') }} #{{ index + 1 }}
+                                    {{ $t('task_label') }} #{{ index + 1 }}
                                 </span>
                                 <button @click="removeRow(index)" type="button" 
                                     class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-400 dark:text-slate-500 flex items-center justify-center hover:bg-rose-100 dark:hover:bg-rose-500/20 hover:text-rose-600 dark:hover:text-rose-400 transition-all shadow-sm"
@@ -133,8 +133,8 @@ const props = defineProps({
                                 </button>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <!-- Col 1: Activity Title -->
+                            <div class="space-y-6">
+                                <!-- Row 1: Activity Title (Full Width) -->
                                 <div class="space-y-2">
                                     <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-1.5 ml-1 block">{{ $t('col_activity') }}</label>
                                     <TextInput 
@@ -145,10 +145,10 @@ const props = defineProps({
                                     />
                                 </div>
 
-                                <!-- Col 2: Times and Priority -->
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <!-- Row 2: Times and Priority (Split) -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                     <div class="space-y-2">
-                                        <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-1.5 ml-1 block">{{ $t('time_range', 'Time Range') }}</label>
+                                        <label class="text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest mb-1.5 ml-1 block">{{ $t('time_range') }}</label>
                                         <div class="flex items-center gap-2">
                                             <input type="time" v-model="task.start_time" 
                                                 class="flex-1 h-14 border-2 border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/50 rounded-2xl text-xs text-center font-black text-slate-700 dark:text-slate-200 focus:bg-white dark:focus:bg-slate-900 focus:border-indigo-500 focus:ring-0 transition-all shadow-sm" :class="{'!border-rose-500': form.errors[`tasks.${index}.start_time`]}" />
