@@ -3,17 +3,19 @@
 
 <head>
     <script>
-        // 🛡️ Global Safety Guard for Element.prototype.closest
-        if (typeof Element !== 'undefined' && !Element.prototype.closest) {
-            Element.prototype.closest = function(s) {
-                var el = this;
-                do {
-                    if (el.matches(s)) return el;
-                    el = el.parentElement || el.parentNode;
-                } while (el !== null && el.nodeType === 1);
-                return null;
-            };
-        }
+        // 🛡️ Pre-emptive Safety Guard for Element.prototype.closest
+        (function() {
+            if (typeof Element !== 'undefined' && !Element.prototype.closest) {
+                Element.prototype.closest = function(s) {
+                    var el = this;
+                    do {
+                        if (el.matches(s)) return el;
+                        el = el.parentElement || el.parentNode;
+                    } while (el !== null && el.nodeType === 1);
+                    return null;
+                };
+            }
+        })();
     </script>
     @php
         $baseUrl = url()->current();
@@ -276,37 +278,8 @@
         <link rel="stylesheet"
             href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" />
     </noscript>
+    </noscript>
 
-    {{-- Meta Pixel Base Code --}}
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
-    fbq('init', '951954810888805');
-    fbq('track', 'PageView');
-    fbq('track', 'ViewContent');
-
-    // 🔥 Safety Guard for .closest() on public pages
-    if (typeof Element !== 'undefined' && !Element.prototype.closest) {
-        Element.prototype.closest = function(s) {
-            var el = this;
-            do {
-                if (el.matches(s)) return el;
-                el = el.parentElement || el.parentNode;
-            } while (el !== null && el.nodeType === 1);
-            return null;
-        };
-    }
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=951954810888805&ev=PageView&noscript=1"
-    /></noscript>
 
     {{-- Meta Pixel CompleteRegistration Trigger --}}
     @if(session('meta_event_id'))
@@ -495,6 +468,7 @@
 
     @if(env('FACEBOOK_PIXEL_ID'))
         <script>
+            // 🔥 Meta Pixel Efficiency Mode (Deferred Loading)
             window.addEventListener('load', () => {
                 const loadPixel = () => {
                     if (window.pixelLoaded) return;
@@ -503,7 +477,7 @@
                     !function (f, b, e, v, n, t, s) {
                         if (f.fbq) return; n = f.fbq = function () {
                             n.callMethod ?
-                                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                                n.callMethod.apply(n,arguments) : n.queue.push(arguments)
                         };
                         if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
                         n.queue = []; t = b.createElement(e); t.async = !0;
@@ -511,9 +485,9 @@
                         s.parentNode.insertBefore(t, s)
                     }(window, document, 'script',
                         'https://connect.facebook.net/en_US/fbevents.js');
-                    fbq('init', '{{ env('FACEBOOK_PIXEL_ID') }}');
+                    fbq('init', '951954810888805');
                     fbq('track', 'PageView');
-                    console.log('⚡ FB Pixel Loaded (Efficiency Mode)');
+                    console.log('⚡ Meta Pixel Loaded (Deduplicated)');
                 };
 
                 const interactionEvents = ['mouseover', 'keydown', 'touchmove', 'touchstart', 'scroll'];
@@ -522,13 +496,12 @@
             });
         </script>
         <noscript><img height="1" width="1" style="display:none"
-                src="https://www.facebook.com/tr?id={{ env('FACEBOOK_PIXEL_ID') }}&ev=PageView&noscript=1" /></noscript>
+                src="https://www.facebook.com/tr?id=951954810888805&ev=PageView&noscript=1" /></noscript>
     @endif
 </head>
 {{-- HTMX Boost (Instant Swap) --}}
 
-<body hx-boost="true" hx-swap="innerHTML"
-    class="bg-white text-slate-900 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700 flex flex-col min-h-screen">
+<body class="bg-white text-slate-900 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700 flex flex-col min-h-screen">
 
     <div x-data="{
         mobileMenuOpen: false,

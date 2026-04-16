@@ -2,6 +2,21 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <script>
+        // 🛡️ Pre-emptive Safety Guard for Element.prototype.closest
+        (function() {
+            if (typeof Element !== 'undefined' && !Element.prototype.closest) {
+                Element.prototype.closest = function(s) {
+                    var el = this;
+                    do {
+                        if (el.matches(s)) return el;
+                        el = el.parentElement || el.parentNode;
+                    } while (el !== null && el.nodeType === 1);
+                    return null;
+                };
+            }
+        })();
+    </script>
     @php
         $baseUrl = url()->current();
         $currentQuery = request()->query();
@@ -15,20 +30,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <script>
-        // 🛡️ Global Safety Guard for Element.prototype.closest
-        if (typeof Element !== 'undefined' && !Element.prototype.closest) {
-            Element.prototype.closest = function(s) {
-                var el = this;
-                do {
-                    if (el.matches(s)) return el;
-                    el = el.parentElement || el.parentNode;
-                } while (el !== null && el.nodeType === 1);
-                return null;
-            };
-        }
-    </script>
 
     {{-- 🛰️ PRIMARY SEO & AI AGENTS (Crawler First Priority) --}}
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" inertia>
