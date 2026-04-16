@@ -3,11 +3,15 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { useForm, usePage } from '@inertiajs/vue3';
+import { ref, computed } from 'vue';
 
+const page = usePage();
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
+
+// Cek apakah user login pakai Google
+const isGoogleUser = computed(() => !!page.props.auth.user.google_id);
 
 const form = useForm({
     current_password: '',
@@ -16,6 +20,24 @@ const form = useForm({
 });
 
 const updatePassword = () => {
+    // Reset errors
+    form.clearErrors();
+
+    // Client-side Validation (Global i18n)
+    let hasError = false;
+
+    if (form.password.length < 8) {
+        form.setError('password', window.trans('auth_val_pass_min') || 'Password minimal 8 karakter');
+        hasError = true;
+    }
+
+    if (!/[A-Z]/.test(form.password)) {
+        form.setError('password', window.trans('auth_val_pass_upper') || 'Password harus mengandung huruf besar');
+        hasError = true;
+    }
+
+    if (hasError) return;
+
     form.put(route('password.update'), {
         preserveScroll: true,
         onSuccess: () => form.reset(),
@@ -34,7 +56,7 @@ const updatePassword = () => {
 </script>
 
 <template>
-    <section>
+    <section v-if="!isGoogleUser">
         <header>
             <h2 class="text-lg font-black text-slate-800 dark:text-white tracking-tight flex items-center gap-2 transition-colors duration-500">
                 🔒 {{ $t('password_security_title', 'Keamanan Sandi') }}

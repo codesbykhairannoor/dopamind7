@@ -1,4 +1,4 @@
-{    "auth_val_email": "Email must contain @",
+{    "auth_error_email_taken": "This email is already registered. Please use another email or login.",    "auth_val_email": "Email must contain @",
     "auth_val_pass_min": "Password must be at least 8 characters",
     "auth_val_pass_upper": "Password must contain at least one uppercase letter",    "auth_verify_title": "Verify Email",
     "auth_verify_header": "Check Your Inbox!",

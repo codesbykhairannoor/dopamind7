@@ -104,6 +104,13 @@ class RegisteredUserController extends Controller
         } catch (\Illuminate\Validation\ValidationException $e) {
             throw $e;
         } catch (\Throwable $e) {
+            // Jika error disebabkan oleh email yang sudah terdaftar (SQL unique violation)
+            if (str_contains($e->getMessage(), 'users_email_unique') || str_contains($e->getMessage(), 'Duplicate entry')) {
+                return back()->withErrors([
+                    'email' => __('authentication.auth_error_email_taken')
+                ])->withInput();
+            }
+
             // TAMPILKAN FULL ERROR JELAS DILAYAR TEPAT SEPERTI PERMINTAAN USER
             return back()->withErrors([
                 'g-recaptcha-response' => 'CRITICAL ERROR: ' . $e->getMessage() . ' (File: ' . basename($e->getFile()) . ' Line: ' . $e->getLine() . ')'
