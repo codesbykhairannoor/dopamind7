@@ -18,7 +18,8 @@ import AppearanceTab    from './Partials/AppearanceTab.vue';
 import NotificationsTab from './Notifications.vue';
 import BillingTab       from './Partials/BillingTab.vue';
 import LegalTab         from './Partials/LegalTab.vue';
-import { Download }     from 'lucide-vue-next';
+import HelpSupportTab   from './Partials/HelpSupportTab.vue';
+import { Download, HelpCircle }     from 'lucide-vue-next';
 
 const props = defineProps({
     mustVerifyEmail: Boolean,
@@ -34,7 +35,7 @@ const page = usePage();
 // Detect tab dari URL saat pertama load (support deep-link)
 const detectTab = () => {
     const url = page.url || '';
-    const segments = ['general', 'security', 'modules', 'notifications', 'billing', 'privacy'];
+    const segments = ['general', 'security', 'modules', 'notifications', 'billing', 'privacy', 'help'];
     for (const seg of segments) {
         if (url.includes(`/settings/${seg}`)) return seg;
     }
@@ -51,6 +52,7 @@ const tabTitles = {
     notifications: { titleKey: 'settings_page_notifications_title', titleFallback: 'Notifications',    subtitleKey: 'settings_page_notifications_subtitle', subtitleFallback: 'Email reminders to help you stay consistent.' },
     billing:       { titleKey: 'settings_page_billing_title',       titleFallback: 'Billing & plan',   subtitleKey: 'settings_page_billing_subtitle',       subtitleFallback: 'Current plan, renewal, and upgrade options.' },
     privacy:       { titleKey: 'settings_page_privacy_title',       titleFallback: 'Data & privacy',   subtitleKey: 'settings_page_privacy_subtitle',       subtitleFallback: 'Privacy, terms, and exporting your data.' },
+    help:          { titleKey: 'settings_page_help_title',          titleFallback: 'Help & Support',   subtitleKey: 'settings_page_help_subtitle',          subtitleFallback: 'Get help, send feedback or contact support.' },
 };
 
 const activeMeta = computed(() => tabTitles[currentTab.value] || tabTitles.general);
@@ -80,6 +82,7 @@ watch(currentTab, (tab) => {
                    : currentTab === 'modules'       ? AppearanceTab
                    : currentTab === 'notifications' ? NotificationsTab
                    : currentTab === 'billing'       ? BillingTab
+                   : currentTab === 'help'          ? HelpSupportTab
                    : null"
                 :key="currentTab"
                 :has-password="hasPassword"

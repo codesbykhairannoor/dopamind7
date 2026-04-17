@@ -60,6 +60,34 @@ class SettingsController extends Controller
         return $this->renderSettings($request, 'privacy');
     }
 
+    public function help(Request $request)
+    {
+        return $this->renderSettings($request, 'help');
+    }
+
+    public function sendSupportMail(Request $request)
+    {
+        $validated = $request->validate([
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        $user = Auth::user();
+
+        // 🔥 LOGIC: Kirim email ke oneformindapp@gmail.com
+        try {
+            \Illuminate\Support\Facades\Mail::raw("From: {$user->name} ({$user->email})\n\nSubject: {$validated['subject']}\n\nMessage:\n{$validated['message']}", function ($message) use ($user, $validated) {
+                $message->to('oneformindapp@gmail.com')
+                    ->subject("[Support] {$validated['subject']} - From {$user->name}");
+            });
+
+            return back()->with('success', 'Your message has been sent to our support team!');
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error("Support Mail Failed: " . $e->getMessage());
+            return back()->with('error', 'Failed to send message. Please try again later.');
+        }
+    }
+
     public function update(Request $request)
     {
         $user = Auth::user();

@@ -799,6 +799,8 @@ Route::middleware(["auth", "verified", "throttle:global"])->group(function () {
         Route::get("/notifications", [SettingsController::class, "notifications"])->name("notifications");
         Route::get("/billing", [SettingsController::class, "billing"])->name("billing");
         Route::get("/privacy", [SettingsController::class, "privacy"])->name("privacy");
+        Route::get("/help", [SettingsController::class, "help"])->name("help");
+        Route::post("/help", [SettingsController::class, "sendSupportMail"])->name("help.send");
 
         Route::post("/", [SettingsController::class, "update"])->name("update");
     });

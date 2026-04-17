@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { usePage, router } from '@inertiajs/vue3';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
@@ -12,20 +12,34 @@ const emit = defineEmits(['close']);
 const page = usePage();
 const user = page.props.auth.user;
 
-// Preferensi lokal (clone dari user)
-const preferences = ref({
-    habit: { enabled: true, time: '07:00' },
-    planner: { enabled: true, time: '08:00' },
-    journal: { enabled: false, time: '20:00' },
-    finance: { enabled: false, time: '09:00' },
-});
+const debounce = (fn, delay) => {
+    let timeoutId;
+    return (...args) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), delay);
+    };
+};
+
+// 🔥 AUTO-SAVE LOGIC
+const savePreferencesSilent = debounce(() => {
+    router.post(route('notifications.update'), {
+        preferences: preferences.value
+    }, {
+        preserveScroll: true,
+        preserveState: true,
+        onSuccess: () => {
+        }
+    });
+}, 1000);
+
+// Watch for any change in preferences to trigger auto-save
+watch(preferences, () => {
+    savePreferencesSilent();
+}, { deep: true });
 
 onMounted(() => {
     if (page.props.auth.user.notification_preferences) {
-        // Deep clone to avoid direct mutation of page props
         const userPrefs = page.props.auth.user.notification_preferences;
-        
-        // Ensure we merge with defaults in case new modules are added
         Object.keys(preferences.value).forEach(key => {
             if (userPrefs[key]) {
                 preferences.value[key] = { ...userPrefs[key] };
@@ -34,23 +48,7 @@ onMounted(() => {
     }
 });
 
-const isSaving = ref(false);
 const currentView = ref('inbox'); // 'inbox' or 'settings'
-
-const savePreferences = () => {
-    isSaving.value = true;
-    router.post(route('notifications.update'), {
-        preferences: preferences.value
-    }, {
-        onSuccess: () => {
-            isSaving.value = false;
-            currentView.value = 'inbox';
-        },
-        onError: () => {
-            isSaving.value = false;
-        }
-    });
-};
 
 const modules = [
     { key: 'habit', label: 'Habit Tracker', icon: 'habit', color: 'text-orange-500' },
@@ -140,16 +138,12 @@ const modules = [
                         </div>
                     </div>
 
-                    <!-- Action -->
-                    <div class="pt-4 px-1">
-                        <button 
-                            @click="savePreferences"
-                            :disabled="isSaving"
-                            class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-[12px] uppercase tracking-wider transition-all active:scale-[0.97] flex items-center justify-center gap-2"
-                        >
-                            <svg v-if="isSaving" class="animate-spin h-3.5 w-3.5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                            {{ isSaving ? 'Saving...' : 'Save Changes' }}
-                        </button>
+                    <!-- Action (Auto-saved) -->
+                    <div class="pt-2 px-1 flex justify-center">
+                        <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 italic flex items-center gap-2">
+                           <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                           Changes saved automatically
+                        </span>
                     </div>
                 </div>
 

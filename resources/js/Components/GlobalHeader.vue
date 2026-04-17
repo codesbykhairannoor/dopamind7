@@ -266,9 +266,9 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Help -->
-                <button class="hidden sm:flex w-8 h-8 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition-all" title="Help">
+                <Link :href="route('settings.help')" class="hidden sm:flex w-8 h-8 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition-all font-bold" title="Help">
                     <OneForMindIcon name="help" size="18" />
-                </button>
+                </Link>
 
                 <!-- Theme -->
                 <button 

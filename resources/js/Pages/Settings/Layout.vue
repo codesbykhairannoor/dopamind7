@@ -20,6 +20,7 @@ const tabs = [
     { id: 'notifications', labelKey: 'settings_nav_notifications',  labelFallback: 'Notifications' },
     { id: 'billing',       labelKey: 'settings_nav_billing',        labelFallback: 'Billing' },
     { id: 'privacy',       labelKey: 'settings_nav_privacy',        labelFallback: 'Data & privacy' },
+    { id: 'help',          labelKey: 'settings_nav_help',           labelFallback: 'Help & Support' },
 ];
 
 const detectTabFromUrl = () => {

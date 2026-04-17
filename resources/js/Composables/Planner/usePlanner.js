@@ -18,10 +18,17 @@ export function usePlanner(props) {
     const dragLogic = usePlannerDrag(taskLogic.localTasks);
     
     // Notes, Meals, Water, & TaskBox (Terhubung dengan tanggal yang sedang aktif)
-    const localNotes = ref(props.dailyLog?.notes || '');
-    const localMeals = ref(props.dailyLog?.meals || { breakfast: '', lunch: '', dinner: '' });
-    const localWater = ref(props.dailyLog?.water || 0);
-    const localTaskBox = ref(props.dailyLog?.task_box || []);
+    // Laravel Resource kadang membungkus data dalam kunci 'data'
+    const getLogValue = (log, key, fallback) => {
+        if (!log) return fallback;
+        const target = log.data || log;
+        return target[key] !== undefined ? target[key] : fallback;
+    };
+
+    const localNotes = ref(getLogValue(props.dailyLog, 'notes', ''));
+    const localMeals = ref(getLogValue(props.dailyLog, 'meals', { breakfast: '', lunch: '', dinner: '' }));
+    const localWater = ref(getLogValue(props.dailyLog, 'water', 0));
+    const localTaskBox = ref(getLogValue(props.dailyLog, 'task_box', []));
     
     const activeModalType = ref('full');
 
@@ -35,7 +42,7 @@ export function usePlanner(props) {
         } catch (e) { 
             console.error("Auto-save failed:", e); 
         }
-    }, 1000);
+    }, 500);
 
     // Pantau Perubahan untuk Auto Save
     watch(localNotes, (val) => saveLogSilent({ notes: val }));
@@ -45,10 +52,10 @@ export function usePlanner(props) {
 
     // 🔥 Kalau user pindah tanggal, UPDATE SEMUA STATE dari database secara instan
     watch(() => props.dailyLog, (newLog) => {
-        localNotes.value = newLog?.notes || '';
-        localMeals.value = newLog?.meals || { breakfast: '', lunch: '', dinner: '' };
-        localWater.value = newLog?.water || 0;
-        localTaskBox.value = newLog?.task_box || [];
+        localNotes.value = getLogValue(newLog, 'notes', '');
+        localMeals.value = getLogValue(newLog, 'meals', { breakfast: '', lunch: '', dinner: '' });
+        localWater.value = getLogValue(newLog, 'water', 0);
+        localTaskBox.value = getLogValue(newLog, 'task_box', []);
     }, { deep: true });
 
     const timeSlots = Array.from({ length: 18 }, (_, i) => `${(i + 6).toString().padStart(2, '0')}:00`);
