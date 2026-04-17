@@ -12,6 +12,14 @@ const emit = defineEmits(['close']);
 const page = usePage();
 const user = page.props.auth.user;
 
+// Preferensi lokal (clone dari user)
+const preferences = ref({
+    habit: { enabled: true, time: '07:00' },
+    planner: { enabled: true, time: '08:00' },
+    journal: { enabled: false, time: '20:00' },
+    finance: { enabled: false, time: '09:00' },
+});
+
 const debounce = (fn, delay) => {
     let timeoutId;
     return (...args) => {

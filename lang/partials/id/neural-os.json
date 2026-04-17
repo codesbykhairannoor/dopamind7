@@ -54,5 +54,9 @@
     "neural_coach_user": "Anda",
     "neural_coach_msg1": "Saya perhatikan Anda 20% lebih mungkin menjalankan kebiasaan saat suasana hati pagi Anda 'Bersemangat'. Ingin saya memindahkan tugas energi tinggi Anda ke sana?",
     "neural_coach_msg2": "Ya, tolong optimalkan jadwal saya.",
-    "neural_coach_msg3": "Selesai! Planner Anda telah diperbarui untuk alur kerja maksimal."
+    "neural_coach_msg3": "Selesai! Planner Anda telah diperbarui untuk alur kerja maksimal.",
+    "neural_bridge_title": "Neural Bridge",
+    "neural_bridge_limit": "Wawasan neural memerlukan Paket Quantum",
+    "btn_get_intelligence": "Ambil Kecerdasan",
+    "btn_upgrade": "Upgrade Sekarang"
 }

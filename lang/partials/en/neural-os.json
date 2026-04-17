@@ -54,5 +54,9 @@
     "neural_coach_user": "You",
     "neural_coach_msg1": "I noticed you're 20% more likely to execute habits when your morning mood is 'Excited'. Want me to move your high-energy tasks there?",
     "neural_coach_msg2": "Yes, please optimize my schedule.",
-    "neural_coach_msg3": "Done! Your Planner has been updated for maximum flow."
+    "neural_coach_msg3": "Done! Your Planner has been updated for maximum flow.",
+    "neural_bridge_title": "Neural Bridge",
+    "neural_bridge_limit": "Neural insights require Quantum Plan",
+    "btn_get_intelligence": "Get Intelligence",
+    "btn_upgrade": "Upgrade Now"
 }
