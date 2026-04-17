@@ -67,7 +67,8 @@ class HandleInertiaRequests extends Middleware
                     'is_premium'      => $user->is_premium,
                     'plan_type'       => $user->plan_type,
                     'premium_until'   => $user->premium_until,
-                    'has_used_trial'  => $user->has_used_trial,
+                    'has_used_trial'           => $user->has_used_trial,
+                    'notification_preferences' => $user->notification_preferences,
                 ] : null,
             ],
 

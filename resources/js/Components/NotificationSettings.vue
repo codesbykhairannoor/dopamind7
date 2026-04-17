@@ -29,6 +29,8 @@ const debounce = (fn, delay) => {
 };
 
 // 🔥 AUTO-SAVE LOGIC
+const isInitializing = ref(true);
+
 const savePreferencesSilent = debounce(() => {
     router.post(route('notifications.update'), {
         preferences: preferences.value
@@ -36,12 +38,16 @@ const savePreferencesSilent = debounce(() => {
         preserveScroll: true,
         preserveState: true,
         onSuccess: () => {
+        },
+        onError: (errors) => {
         }
+
     });
-}, 1000);
+}, 500);
 
 // Watch for any change in preferences to trigger auto-save
 watch(preferences, () => {
+    if (isInitializing.value) return; // Don't save on mount
     savePreferencesSilent();
 }, { deep: true });
 
@@ -54,7 +60,12 @@ onMounted(() => {
             }
         });
     }
+    // Selesai inisialisasi, sekarang aman untuk watch
+    setTimeout(() => {
+        isInitializing.value = false;
+    }, 100);
 });
+
 
 const currentView = ref('inbox'); // 'inbox' or 'settings'
 
@@ -85,8 +96,9 @@ const modules = [
                         <OneForMindIcon name="chevron-left" size="16" stroke-width="2.5" />
                     </button>
                     <h3 class="text-sm font-black text-slate-800 dark:text-white tracking-tight">
-                        {{ currentView === 'inbox' ? 'Notifications' : 'Email Reminders' }}
+                        {{ currentView === 'inbox' ? $t('notif_title_main') : $t('notif_title_reminders') }}
                     </h3>
+
                 </div>
                 <div class="flex items-center gap-1">
                     <button 
@@ -111,17 +123,19 @@ const modules = [
                     <div class="w-24 h-24 bg-indigo-50 dark:bg-indigo-500/10 rounded-full flex items-center justify-center mb-6">
                         <OneForMindIcon name="notification" size="48" stroke-width="1.5" class="text-indigo-500 opacity-60" />
                     </div>
-                    <h4 class="text-base font-bold text-slate-700 dark:text-slate-200 mb-1">No new notifications</h4>
+                    <h4 class="text-base font-bold text-slate-700 dark:text-slate-200 mb-1">{{ $t('notif_empty_title') }}</h4>
                     <p class="text-[12px] text-slate-500 dark:text-slate-400 max-w-[200px] leading-relaxed">
-                        We'll let you know when there's something that needs your attention.
+                        {{ $t('notif_empty_subtitle') }}
                     </p>
+
                 </div>
 
                 <!-- VIEW 2: SETTINGS (REMINDERS) -->
                 <div v-else class="p-5 space-y-4">
                     <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium px-1 mb-2">
-                        Set the delivery time for daily reminders to your email:
+                        {{ $t('notif_reminders_desc') }}
                     </p>
+
                     
                     <div v-for="mod in modules" :key="mod.key" 
                          class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-sm">
@@ -150,8 +164,9 @@ const modules = [
                     <div class="pt-2 px-1 flex justify-center">
                         <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 italic flex items-center gap-2">
                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                           Changes saved automatically
+                           {{ $t('settings_save_auto') }}
                         </span>
+
                     </div>
                 </div>
 
@@ -159,7 +174,8 @@ const modules = [
 
             <!-- Footer (Optional) -->
             <div v-if="currentView === 'inbox'" class="px-5 py-3 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-100 dark:border-slate-800 text-center">
-                <button class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 hover:underline">Mark all as read</button>
+                <button class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 hover:underline">{{ $t('notif_mark_read') }}</button>
+
             </div>
 
         </div>
