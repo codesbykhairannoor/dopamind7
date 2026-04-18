@@ -74,24 +74,28 @@
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-full bg-indigo-50/40 rounded-full blur-2xl -z-10"></div>
         
         {{-- Unique & Cool Floating UI Elements --}}
-        <div class="absolute top-32 left-[8%] w-20 h-20 bg-white/40  rounded-[2rem] shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-3xl animate-float hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-indigo-500/5 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <span class="relative">💰</span>
+        <div class="absolute top-32 left-[5%] w-16 h-16 bg-white/60 backdrop-blur-md rounded-[1.5rem] shadow-[0_10px_40px_rgba(79,70,229,0.15)] flex items-center justify-center text-2xl animate-[float_6s_ease-in-out_infinite] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 rotate-6">
+            <span class="relative drop-shadow-sm">🚀</span>
         </div>
         
-        <div class="absolute top-48 right-[8%] w-24 h-24 bg-white/40  rounded-[2.5rem] shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-4xl animate-bounce-slow hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-emerald-500/5 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <span class="relative">🌱</span>
+        <div class="absolute top-56 left-[18%] w-12 h-12 bg-white/60 backdrop-blur-md rounded-full shadow-[0_10px_40px_rgba(16,185,129,0.15)] flex items-center justify-center text-xl animate-[bounce-slow_5s_ease-in-out_infinite_0.5s] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 -rotate-12">
+            <span class="relative drop-shadow-sm">💎</span>
         </div>
 
-        <div class="absolute bottom-60 left-[12%] w-16 h-16 bg-white/40  rounded-2xl shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-2xl animate-bounce-slow hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-purple-500/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <span class="relative">📅</span>
+        <div class="absolute top-24 right-[10%] w-20 h-20 bg-white/60 backdrop-blur-md rounded-[2rem] shadow-[0_20px_50px_rgba(245,158,11,0.15)] flex items-center justify-center text-3xl animate-[float_7s_ease-in-out_infinite_1s] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 -rotate-6">
+            <span class="relative drop-shadow-sm">🧠</span>
         </div>
 
-        <div class="absolute bottom-80 right-[15%] w-20 h-20 bg-slate-900/5  rounded-[1.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] flex items-center justify-center text-3xl animate-float hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
-            <div class="absolute inset-0 bg-slate-900/5 rounded-[1.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <span class="relative">🎯</span>
+        <div class="absolute bottom-60 left-[8%] w-14 h-14 bg-white/60 backdrop-blur-md rounded-2xl shadow-[0_15px_40px_rgba(168,85,247,0.15)] flex items-center justify-center text-2xl animate-[bounce-slow_6s_ease-in-out_infinite_1.5s] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 rotate-12">
+            <span class="relative drop-shadow-sm">📈</span>
+        </div>
+
+        <div class="absolute bottom-80 right-[8%] w-16 h-16 bg-white/60 backdrop-blur-md rounded-[1.5rem] shadow-[0_15px_40px_rgba(239,68,68,0.15)] flex items-center justify-center text-2xl animate-[float_5.5s_ease-in-out_infinite_0.2s] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 rotate-3">
+            <span class="relative drop-shadow-sm">⚡</span>
+        </div>
+
+        <div class="absolute bottom-40 right-[20%] w-10 h-10 bg-slate-900/5 backdrop-blur-sm rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.05)] flex items-center justify-center text-lg animate-[bounce-slow_4.5s_ease-in-out_infinite_2s] hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500 -rotate-6">
+            <span class="relative drop-shadow-sm">🔥</span>
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
@@ -137,132 +141,86 @@
 
 
             {{-- High-Fidelity App UI --}}
-            <div class="relative max-w-6xl mx-auto">
+            <div class="relative max-w-6xl mx-auto mt-24">
                 {{-- Glow Ambient --}}
-                <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[80%] h-64 bg-indigo-500/10 blur-2xl rounded-full"></div>
+                <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-full h-80 bg-gradient-to-b from-indigo-500/20 to-transparent blur-3xl rounded-full"></div>
                 
-                {{-- Minimalist Browser --}}
-                <div class="relative bg-white rounded-[2rem] p-1 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden">
-                    <div class="h-10 w-full bg-slate-50 border-b border-slate-100 flex items-center px-6 gap-2">
-                        <div class="flex gap-1.5">
-                            <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
-                        </div>
-                        <div class="mx-auto bg-white border border-slate-200 rounded-full px-6 py-0.5 text-[9px] text-slate-400 font-medium">
-                            &nbsp;
+                {{-- Core Value Visuals (3 Pillars) --}}
+                <div class="grid md:grid-cols-3 gap-8 relative z-10">
+                    
+                    {{-- Card 1: Habit Matrix --}}
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-2xl transform md:-translate-y-12 hover:-translate-y-16 transition-all duration-500 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">🌱</div>
+                        <h3 class="text-xl font-black text-slate-900 mb-2">Build Habits</h3>
+                        <p class="text-sm text-slate-500 mb-8">Track consistency with visual heatmaps that rewire your brain.</p>
+                        
+                        <div class="grid grid-cols-7 gap-1.5">
+                            @for($i=0; $i<28; $i++)
+                                @php
+                                    $op = [100, 300, 400, 500, 600][array_rand([0,1,2,3,4])];
+                                    if($i % 5 == 0) $op = 100;
+                                @endphp
+                                <div class="w-full aspect-square bg-emerald-{{$op}} rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity delay-[{{$i * 10}}ms]"></div>
+                            @endfor
                         </div>
                     </div>
 
-                    {{-- App UI Mockup --}}
-                    <div class="bg-[#fcfcfd] aspect-[16/10] overflow-hidden flex text-left">
-                        {{-- Sidebar --}}
-                        <div class="w-64 border-r border-slate-100 p-8 space-y-8 hidden md:block">
-                            <div class="w-32 h-4 bg-slate-100 rounded-full"></div>
-                            <div class="space-y-4">
-                                <div class="w-full h-10 bg-indigo-50 rounded-xl border border-indigo-100 flex items-center px-4 gap-3">
-                                    <div class="w-4 h-4 bg-indigo-500 rounded shadow-sm"></div>
-                                    <div class="w-20 h-2 bg-indigo-400 rounded-full"></div>
+                    {{-- Card 2: Finance OS --}}
+                    <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-[0_30px_60px_rgba(0,0,0,0.3)] transform hover:-translate-y-4 transition-all duration-500 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-500/20 rounded-full blur-3xl group-hover:bg-indigo-500/40 transition-all"></div>
+                        <div class="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl mb-6 border border-indigo-500/30">💰</div>
+                        <h3 class="text-xl font-black text-white mb-2">Master Finance</h3>
+                        <p class="text-sm text-slate-400 mb-8">Take control of your cash flow with zero-based budgeting.</p>
+                        
+                        <div class="space-y-3">
+                            <div class="bg-slate-800/50 p-4 rounded-2xl border border-slate-700/50 flex justify-between items-center backdrop-blur-sm">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-xs">☕</div>
+                                    <span class="text-slate-300 text-sm font-medium">Coffee</span>
                                 </div>
-                                <div class="w-full h-10 bg-slate-50/50 rounded-xl flex items-center px-4 gap-3">
-                                    <div class="w-4 h-4 bg-slate-200 rounded"></div>
-                                    <div class="w-24 h-2 bg-slate-200 rounded-full"></div>
+                                <span class="text-white font-bold text-sm">-$4.50</span>
+                            </div>
+                            <div class="bg-indigo-600/20 p-4 rounded-2xl border border-indigo-500/30 flex justify-between items-center backdrop-blur-sm">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-indigo-500/30 text-indigo-300 rounded-full flex items-center justify-center text-xs">💼</div>
+                                    <span class="text-indigo-200 text-sm font-medium">Salary</span>
                                 </div>
-                                <div class="w-full h-10 bg-slate-50/50 rounded-xl flex items-center px-4 gap-3">
-                                    <div class="w-4 h-4 bg-slate-200 rounded"></div>
-                                    <div class="w-16 h-2 bg-slate-200 rounded-full"></div>
-                                </div>
+                                <span class="text-indigo-400 font-bold text-sm">+$4,200</span>
                             </div>
                         </div>
+                    </div>
 
-                        {{-- Main Content --}}
-                        <div class="flex-1 p-10">
-                            <div class="flex justify-between items-center mb-12">
-                                <div class="w-48 h-8 bg-slate-900 rounded-2xl"></div>
-                                <div class="flex gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-slate-100"></div>
-                                    <div class="w-10 h-10 rounded-full bg-slate-100"></div>
+                    {{-- Card 3: Deep Focus --}}
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-2xl transform md:-translate-y-12 hover:-translate-y-16 transition-all duration-500 group relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all"></div>
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">🎯</div>
+                        <h3 class="text-xl font-black text-slate-900 mb-2">Execute Goals</h3>
+                        <p class="text-sm text-slate-500 mb-8">Break down massive visions into daily actionable blocks.</p>
+                        
+                        <div class="relative">
+                            <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-slate-100"></div>
+                            <div class="space-y-4 relative z-10">
+                                <div class="flex gap-4 items-center">
+                                    <div class="w-6 h-6 rounded-full bg-amber-500 border-4 border-white shadow-sm flex-shrink-0"></div>
+                                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1 text-sm font-bold text-slate-700">Deep Work Block</div>
                                 </div>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-6">
-                                <div class="col-span-2 space-y-6">
-                                    <div class="h-64 bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-100/50 p-8 flex flex-col justify-between">
-                                        <div class="flex justify-between">
-                                            <div class="w-32 h-4 bg-slate-100 rounded-full"></div>
-                                            <div class="w-8 h-8 bg-indigo-50 rounded-lg"></div>
-                                        </div>
-                                        <div class="h-32 w-full bg-indigo-50/30 rounded-2xl animate-pulse flex items-end p-4">
-                                            <div class="flex gap-2 w-full items-end h-full">
-                                                <div class="h-[20%] w-full bg-indigo-200 rounded-t-lg"></div>
-                                                <div class="h-[40%] w-full bg-indigo-200 rounded-t-lg"></div>
-                                                <div class="h-[60%] w-full bg-indigo-200 rounded-t-lg"></div>
-                                                <div class="h-[80%] w-full bg-indigo-500 rounded-t-lg shadow-lg"></div>
-                                                <div class="h-[30%] w-full bg-indigo-200 rounded-t-lg"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-2 gap-6">
-                                        <div class="h-48 bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-100/50 p-8">
-                                            <div class="w-20 h-4 bg-slate-100 rounded-full mb-8"></div>
-                                            <div class="space-y-4">
-                                                <div class="flex items-center gap-3">
-                                                    <div class="w-5 h-5 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-[10px]">✓</div>
-                                                    <div class="w-24 h-2 bg-slate-100 rounded-full"></div>
-                                                </div>
-                                                <div class="flex items-center gap-3 opacity-30">
-                                                    <div class="w-5 h-5 border border-slate-200 rounded-full"></div>
-                                                    <div class="w-32 h-2 bg-slate-100 rounded-full"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="h-48 bg-slate-900 rounded-[2rem] p-8 relative overflow-hidden">
-                                            <div class="absolute inset-0 bg-indigo-600/10"></div>
-                                            <div class="relative z-10">
-                                                <div class="text-indigo-400 font-medium text-[10px] tracking-widest uppercase mb-2">Finance</div>
-                                                <div class="text-3xl font-black text-white">Rp 12.5M</div>
-                                                <div class="mt-6 h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                                                    <div class="h-full bg-indigo-500 w-3/4 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="space-y-6">
-                                    <div class="h-[calc(64px*4+24px*3)] bg-slate-50 rounded-[2rem] border border-slate-100 p-8">
-                                        <div class="w-24 h-4 bg-slate-200 rounded-full mb-8"></div>
-                                        <div class="space-y-6">
-                                            @for($i=0; $i<4; $i++)
-                                                <div class="flex items-center gap-4">
-                                                    <div class="w-10 h-10 bg-white rounded-xl shadow-sm border border-slate-100"></div>
-                                                    <div class="flex-1 space-y-2">
-                                                        <div class="w-full h-2 bg-slate-200 rounded-full"></div>
-                                                        <div class="w-2/3 h-1.5 bg-slate-100 rounded-full"></div>
-                                                    </div>
-                                                </div>
-                                            @endfor
-                                        </div>
-                                    </div>
+                                <div class="flex gap-4 items-center opacity-50">
+                                    <div class="w-6 h-6 rounded-full bg-slate-300 border-4 border-white shadow-sm flex-shrink-0"></div>
+                                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1 text-sm font-medium text-slate-500 line-through">Check Emails</div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
-                {{-- Floating Decorations --}}
-                <div class="absolute -top-12 -right-12 w-48 bg-white/90  p-6 rounded-3xl border border-indigo-50 shadow-2xl transform rotate-6 animate-float z-30 hidden lg:block">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-black">🌱</div>
-                        <div class="text-[10px] font-black text-slate-800">Streak: 12 Days</div>
-                    </div>
-                </div>
-                <div class="absolute -bottom-12 -left-12 w-64 bg-slate-900 p-6 rounded-[2rem] border border-slate-800 shadow-2xl transform -rotate-3 animate-bounce-slow z-30 hidden lg:block">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/30">🌌</div>
-                        <div class="flex-1">
-                            <div class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Neural Mode</div>
-                            <div class="text-white text-xs font-black">Optimization Active</div>
-                        </div>
+                {{-- Floating AI Decoration --}}
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-auto bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-2xl z-30 hidden md:flex items-center gap-4 animate-[bounce-slow_4s_ease-in-out_infinite]">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30 text-xl">✨</div>
+                    <div class="pr-4">
+                        <div class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Neural OS</div>
+                        <div class="text-white text-sm font-black">All Systems Synced</div>
                     </div>
                 </div>
             </div>

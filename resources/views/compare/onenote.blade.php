@@ -58,25 +58,114 @@
 
     {{-- SECTION 2: THE PROBLEM --}}
     <section class="py-24 bg-slate-50">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6">
-                {{ __('onenote_prob_title_1') }} <span class="text-purple-600">{{ __('onenote_prob_title_highlight') }}</span>
-            </h2>
-            <p class="text-slate-500 text-xl leading-relaxed max-w-2xl mx-auto">
-                {{ __('onenote_prob_desc') }}
-            </p>
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative h-[400px] flex items-center justify-center bg-white rounded-[3rem] shadow-xl border border-slate-200 overflow-hidden">
+                <div class="absolute inset-0 p-8">
+                    {{-- Chaotic Canvas Representation --}}
+                    <div class="absolute top-10 left-10 w-48 h-32 border border-slate-300 bg-white shadow-sm rounded-md p-2 rotate-2">
+                        <div class="w-full h-2 bg-slate-200 rounded mb-2"></div>
+                        <div class="w-3/4 h-2 bg-slate-200 rounded"></div>
+                    </div>
+                    <div class="absolute top-20 right-12 w-40 h-24 border border-slate-300 bg-white shadow-sm rounded-md p-2 -rotate-6">
+                        <div class="flex gap-2 mb-2">
+                            <div class="w-4 h-4 border border-slate-300"></div>
+                            <div class="w-full h-2 bg-slate-200 rounded mt-1"></div>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="w-4 h-4 border border-slate-300"></div>
+                            <div class="w-2/3 h-2 bg-slate-200 rounded mt-1"></div>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-16 left-20 w-64 h-40 border border-slate-300 bg-white shadow-sm rounded-md p-2 -rotate-2">
+                        <table class="w-full text-left text-[8px]">
+                            <tr class="border-b border-slate-200"><th class="pb-1 text-slate-300">Item</th><th class="pb-1 text-slate-300">Cost</th></tr>
+                            <tr><td class="py-1 text-slate-200">Food</td><td class="py-1 text-slate-200">$50</td></tr>
+                            <tr><td class="py-1 text-slate-200">Gas</td><td class="py-1 text-slate-200">$30</td></tr>
+                        </table>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-red-500 rounded-full animate-ping opacity-50"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Lost Focus</div>
+                </div>
+            </div>
+            
+            <div>
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                    {{ __('onenote_prob_title_1') }} <span class="text-purple-600">{{ __('onenote_prob_title_highlight') }}</span>
+                </h2>
+                <p class="text-slate-500 text-xl leading-relaxed mb-8">
+                    {{ __('onenote_prob_desc') }}
+                </p>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-start gap-4">
+                        <div class="text-xl">😵‍💫</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Decision Fatigue</h4>
+                            <p class="text-xs text-slate-500">Every new page forces you to decide where to put text, tables, and images.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-start gap-4">
+                        <div class="text-xl">🔍</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Hard to Track</h4>
+                            <p class="text-xs text-slate-500">Good luck finding your consistency rate for a habit spread across 50 free-form pages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     {{-- SECTION 3: THE SOLUTION --}}
     <section class="py-24 bg-white border-t border-slate-100">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6">
-                {{ __('onenote_sol_title_1') }} <span class="text-indigo-600">{{ __('onenote_sol_title_highlight') }}</span>
-            </h2>
-            <p class="text-slate-500 text-xl leading-relaxed max-w-2xl mx-auto">
-                {{ __('onenote_sol_desc') }}
-            </p>
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                    {{ __('onenote_sol_title_1') }} <span class="text-indigo-600">{{ __('onenote_sol_title_highlight') }}</span>
+                </h2>
+                <p class="text-slate-500 text-xl leading-relaxed mb-8">
+                    {{ __('onenote_sol_desc') }}
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3 text-slate-700 font-medium">
+                        <div class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xs">✓</div> 
+                        Automated Data Visualization
+                    </div>
+                    <div class="flex items-center gap-3 text-slate-700 font-medium">
+                        <div class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xs">✓</div> 
+                        Pre-built Frameworks
+                    </div>
+                    <div class="flex items-center gap-3 text-slate-700 font-medium">
+                        <div class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xs">✓</div> 
+                        Zero Setup Time
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-1 md:order-2 relative h-[400px] flex items-center justify-center bg-slate-950 rounded-[3rem] shadow-2xl p-8 overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(79,70,229,0.15)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+                <div class="w-full space-y-4 relative z-10">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex justify-between items-center transform -translate-x-4">
+                        <div class="flex gap-3 items-center">
+                            <div class="w-10 h-10 bg-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400">📈</div>
+                            <div>
+                                <div class="text-white font-bold text-sm">Monthly Progress</div>
+                                <div class="text-slate-400 text-xs">Automatically generated</div>
+                            </div>
+                        </div>
+                        <div class="text-emerald-400 font-black">+12%</div>
+                    </div>
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex justify-between items-center transform translate-x-4">
+                        <div class="flex gap-3 items-center">
+                            <div class="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400">🎯</div>
+                            <div>
+                                <div class="text-white font-bold text-sm">Task Alignment</div>
+                                <div class="text-slate-400 text-xs">Linked to Long-term Goals</div>
+                            </div>
+                        </div>
+                        <div class="text-purple-400 font-black text-xl">✓</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

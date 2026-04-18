@@ -44,25 +44,86 @@
 
     {{-- SECTION 2: THE PROBLEM --}}
     <section class="py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6">
-                {{ __('evernote_prob_title_1') }} <span class="text-emerald-600">{{ __('evernote_prob_title_highlight') }}</span>
-            </h2>
-            <p class="text-slate-500 text-xl leading-relaxed max-w-2xl mx-auto">
-                {{ __('evernote_prob_desc') }}
-            </p>
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative h-[400px] flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 p-8 overflow-hidden">
+                    {{-- Visual Representation of "The Collector's Fallacy" --}}
+                    <div class="absolute inset-0 flex flex-col items-center justify-center opacity-30 blur-[1px]">
+                        <div class="w-64 h-12 bg-white border border-slate-200 rounded-lg mb-2 shadow-sm transform -rotate-6 translate-x-4"></div>
+                        <div class="w-72 h-16 bg-white border border-slate-200 rounded-lg mb-2 shadow-sm transform rotate-3 -translate-x-2"></div>
+                        <div class="w-56 h-10 bg-white border border-slate-200 rounded-lg mb-2 shadow-sm transform -rotate-12 translate-x-8"></div>
+                        <div class="w-80 h-20 bg-white border border-slate-200 rounded-lg shadow-sm transform rotate-6 -translate-x-4"></div>
+                    </div>
+                    <div class="relative bg-white p-8 rounded-3xl shadow-2xl border border-slate-200 text-center z-10 w-full max-w-sm">
+                        <div class="text-4xl mb-4">📚</div>
+                        <div class="font-black text-slate-800 text-xl mb-2">1,240 Notes</div>
+                        <div class="text-sm text-slate-500 font-medium mb-4">"10 Ways to be Productive"</div>
+                        <div class="w-full bg-slate-100 rounded-full h-2 mb-2">
+                            <div class="bg-red-500 h-2 rounded-full w-0"></div>
+                        </div>
+                        <div class="text-xs font-bold text-red-500 uppercase tracking-widest">0 Actions Taken</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                        {{ __('evernote_prob_title_1') }} <span class="text-emerald-600">{{ __('evernote_prob_title_highlight') }}</span>
+                    </h2>
+                    <p class="text-slate-500 text-xl leading-relaxed mb-8">
+                        {{ __('evernote_prob_desc') }}
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center font-bold shrink-0">✕</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Passive Storage</h4>
+                                <p class="text-sm text-slate-500">Clipping articles doesn't mean you're learning. It's just digital hoarding.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center font-bold shrink-0">✕</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">No Accountability</h4>
+                                <p class="text-sm text-slate-500">Evernote never asks you why you didn't work out today.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     {{-- SECTION 3: THE SOLUTION --}}
-    <section class="py-24 bg-emerald-950 text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-black mb-6">
-                {{ __('evernote_sol_title_1') }} <span class="text-emerald-400">{{ __('evernote_sol_title_highlight') }}</span>
-            </h2>
-            <p class="text-slate-400 text-xl leading-relaxed max-w-2xl mx-auto">
-                {{ __('evernote_sol_desc') }}
-            </p>
+    <section class="py-24 bg-emerald-950 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(16,185,129,0.15)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-black mb-6">
+                    {{ __('evernote_sol_title_1') }} <span class="text-emerald-400">{{ __('evernote_sol_title_highlight') }}</span>
+                </h2>
+                <p class="text-slate-400 text-xl leading-relaxed">
+                    {{ __('evernote_sol_desc') }}
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-slate-900 border border-emerald-900/50 rounded-3xl p-8 hover:border-emerald-500/50 transition-colors group">
+                    <div class="w-14 h-14 bg-emerald-900/50 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🌱</div>
+                    <h3 class="text-xl font-bold mb-3">Habit Engine</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Visual heatmaps and streaks that rewire your brain, instead of static checklists.</p>
+                </div>
+                <div class="bg-slate-900 border border-emerald-900/50 rounded-3xl p-8 hover:border-emerald-500/50 transition-colors group transform md:-translate-y-8">
+                    <div class="w-14 h-14 bg-emerald-900/50 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">💰</div>
+                    <h3 class="text-xl font-bold mb-3">Finance OS</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Zero-based budgeting that forces you to give every dollar a job.</p>
+                </div>
+                <div class="bg-slate-900 border border-emerald-900/50 rounded-3xl p-8 hover:border-emerald-500/50 transition-colors group">
+                    <div class="w-14 h-14 bg-emerald-900/50 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🎯</div>
+                    <h3 class="text-xl font-bold mb-3">Focus Planner</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Time-blocking calendar that connects your daily tasks to your long-term goals.</p>
+                </div>
+            </div>
         </div>
     </section>
 

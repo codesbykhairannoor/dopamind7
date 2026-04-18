@@ -47,25 +47,98 @@
 
     {{-- SECTION 2: THE PROBLEM --}}
     <section class="py-24 bg-white border-t border-slate-100">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6">
-                {{ __('applenotes_prob_title_1') }} <span class="text-amber-600">{{ __('applenotes_prob_title_highlight') }}</span>
-            </h2>
-            <p class="text-slate-500 text-xl leading-relaxed max-w-2xl mx-auto">
-                {{ __('applenotes_prob_desc') }}
-            </p>
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1">
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                    {{ __('applenotes_prob_title_1') }} <span class="text-amber-600">{{ __('applenotes_prob_title_highlight') }}</span>
+                </h2>
+                <p class="text-slate-500 text-xl leading-relaxed mb-8">
+                    {{ __('applenotes_prob_desc') }}
+                </p>
+                <div class="bg-amber-50 p-6 rounded-2xl border border-amber-100 mb-6">
+                    <p class="font-bold text-amber-800 text-sm mb-2">The Plain Text Trap:</p>
+                    <p class="text-amber-700/80 text-sm italic">"I will save $500 this month and workout 3x a week."</p>
+                    <div class="mt-4 pt-4 border-t border-amber-200/50 flex gap-2">
+                        <span class="px-2 py-1 bg-white rounded text-[10px] font-bold text-slate-400 uppercase tracking-widest">Result: Forgotten in 2 days</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="order-1 md:order-2 relative h-[400px] flex items-center justify-center bg-slate-50 rounded-[3rem] border border-slate-100 p-8">
+                <div class="w-full max-w-sm bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden transform rotate-2">
+                    <div class="bg-amber-400 h-2 w-full"></div>
+                    <div class="p-6">
+                        <div class="text-xs font-bold text-slate-400 mb-4">January 1st, 9:00 AM</div>
+                        <h3 class="text-2xl font-black text-slate-800 mb-4">New Year Goals</h3>
+                        <ul class="space-y-3 text-slate-600 font-medium">
+                            <li class="flex items-center gap-3"><div class="w-4 h-4 border-2 border-slate-300 rounded-sm"></div> Go to gym</li>
+                            <li class="flex items-center gap-3"><div class="w-4 h-4 border-2 border-slate-300 rounded-sm"></div> Stop spending on coffee</li>
+                            <li class="flex items-center gap-3"><div class="w-4 h-4 border-2 border-slate-300 rounded-sm"></div> Read more books</li>
+                        </ul>
+                        <div class="mt-8 text-center border-2 border-dashed border-red-200 bg-red-50 text-red-500 rounded-xl py-3 font-bold text-sm transform -rotate-6 scale-110 shadow-sm">
+                            ABANDONED
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     {{-- SECTION 3: THE SOLUTION --}}
     <section class="py-24 bg-amber-50">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6">
-                {{ __('applenotes_sol_title_1') }} <span class="text-indigo-600">{{ __('applenotes_sol_title_highlight') }}</span>
-            </h2>
-            <p class="text-slate-500 text-xl leading-relaxed max-w-2xl mx-auto">
-                {{ __('applenotes_sol_desc') }}
-            </p>
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative h-[500px] flex items-center justify-center bg-white rounded-[3rem] shadow-xl border border-slate-100 p-8">
+                <div class="w-full space-y-4">
+                    {{-- Interactive Habit Mockup --}}
+                    <div class="bg-slate-900 rounded-2xl p-4 shadow-lg transform -rotate-2 hover:rotate-0 transition-transform">
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="text-white font-bold text-sm">Read 10 Pages</div>
+                            <div class="text-xs font-black text-emerald-400 bg-emerald-400/20 px-2 py-1 rounded-md">12 Day Streak!</div>
+                        </div>
+                        <div class="flex gap-1">
+                            @for($i=0; $i<7; $i++)
+                                <div class="h-6 flex-1 rounded-sm bg-emerald-500"></div>
+                            @endfor
+                        </div>
+                    </div>
+                    
+                    {{-- Interactive Finance Mockup --}}
+                    <div class="bg-indigo-50 rounded-2xl p-4 shadow-lg border border-indigo-100 transform rotate-2 hover:rotate-0 transition-transform">
+                        <div class="flex justify-between items-center mb-2">
+                            <div class="text-indigo-900 font-bold text-sm">Coffee Budget</div>
+                            <div class="text-xs font-black text-indigo-600">$12 / $50</div>
+                        </div>
+                        <div class="w-full bg-indigo-200 rounded-full h-2">
+                            <div class="bg-indigo-600 h-2 rounded-full w-1/4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                    {{ __('applenotes_sol_title_1') }} <span class="text-indigo-600">{{ __('applenotes_sol_title_highlight') }}</span>
+                </h2>
+                <p class="text-slate-500 text-xl leading-relaxed mb-8">
+                    {{ __('applenotes_sol_desc') }}
+                </p>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl shrink-0">📊</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Visual Progress</h4>
+                            <p class="text-sm text-slate-500">Stop guessing. See your consistency through beautiful heatmaps and charts.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl shrink-0">🔔</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Smart Nudges</h4>
+                            <p class="text-sm text-slate-500">The system actively reminds you before you break a habit streak.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
