@@ -3104,6 +3104,18 @@ const hero_premium_desc$1 = "Ditch the app-fragmentation. Master your habit trac
 const hero_premium_cta_primary$1 = "Start Exclusively";
 const hero_premium_cta_secondary$1 = "See Design Philosophy";
 const hero_enter_dashboard$1 = "Enter Dashboard";
+const hero_card_1_title$1 = "Build Habits";
+const hero_card_1_desc$1 = "Track consistency with visual heatmaps that rewire your brain.";
+const hero_card_2_title$1 = "Master Finance";
+const hero_card_2_desc$1 = "Take control of your cash flow with zero-based budgeting.";
+const hero_card_2_item_1$1 = "Coffee";
+const hero_card_2_item_2$1 = "Salary";
+const hero_card_3_title$1 = "Execute Goals";
+const hero_card_3_desc$1 = "Break down massive visions into daily actionable blocks.";
+const hero_card_3_item_1$1 = "Deep Work Block";
+const hero_card_3_item_2$1 = "Check Emails";
+const hero_floating_ai_title$1 = "Neural OS";
+const hero_floating_ai_desc$1 = "All Systems Synced";
 const home_trust_tagline$1 = "Architecting the future of deep work";
 const home_pillars_title$1 = "Unified Insight into your Habit, Planning & Finance.";
 const home_pillars_desc$1 = "OneForMind eliminates application friction by consolidating your most critical life management tools into a single, high-performance ecosystem.";
@@ -8341,6 +8353,18 @@ const en = {
   hero_premium_cta_primary: hero_premium_cta_primary$1,
   hero_premium_cta_secondary: hero_premium_cta_secondary$1,
   hero_enter_dashboard: hero_enter_dashboard$1,
+  hero_card_1_title: hero_card_1_title$1,
+  hero_card_1_desc: hero_card_1_desc$1,
+  hero_card_2_title: hero_card_2_title$1,
+  hero_card_2_desc: hero_card_2_desc$1,
+  hero_card_2_item_1: hero_card_2_item_1$1,
+  hero_card_2_item_2: hero_card_2_item_2$1,
+  hero_card_3_title: hero_card_3_title$1,
+  hero_card_3_desc: hero_card_3_desc$1,
+  hero_card_3_item_1: hero_card_3_item_1$1,
+  hero_card_3_item_2: hero_card_3_item_2$1,
+  hero_floating_ai_title: hero_floating_ai_title$1,
+  hero_floating_ai_desc: hero_floating_ai_desc$1,
   home_trust_tagline: home_trust_tagline$1,
   home_pillars_title: home_pillars_title$1,
   home_pillars_desc: home_pillars_desc$1,
@@ -12903,7 +12927,19 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   help_support_technical_desc: help_support_technical_desc$1,
   help_support_technical_title: help_support_technical_title$1,
   help_support_title: help_support_title$1,
+  hero_card_1_desc: hero_card_1_desc$1,
+  hero_card_1_title: hero_card_1_title$1,
+  hero_card_2_desc: hero_card_2_desc$1,
+  hero_card_2_item_1: hero_card_2_item_1$1,
+  hero_card_2_item_2: hero_card_2_item_2$1,
+  hero_card_2_title: hero_card_2_title$1,
+  hero_card_3_desc: hero_card_3_desc$1,
+  hero_card_3_item_1: hero_card_3_item_1$1,
+  hero_card_3_item_2: hero_card_3_item_2$1,
+  hero_card_3_title: hero_card_3_title$1,
   hero_enter_dashboard: hero_enter_dashboard$1,
+  hero_floating_ai_desc: hero_floating_ai_desc$1,
+  hero_floating_ai_title: hero_floating_ai_title$1,
   hero_premium_badge: hero_premium_badge$1,
   hero_premium_cta_primary: hero_premium_cta_primary$1,
   hero_premium_cta_secondary: hero_premium_cta_secondary$1,
@@ -18833,10 +18869,22 @@ const welcome_meta_og_desc = "Hentikan kelelahan berganti aplikasi. Kelola habit
 const hero_premium_badge = "✨ Memperkenalkan: Neuro-Sync v2.0";
 const hero_premium_title_1 = "Satu Pikiran.";
 const hero_premium_title_2 = "Satu Sistem Masa Depan.";
-const hero_premium_desc = "Ucapkan selamat tinggal pada fragmentasi aplikasi. Kuasai habit tracker, daily planner, dan manajer keuangan Anda dalam satu ekosistem cerdas yang dirancang untuk performa puncak.";
-const hero_premium_cta_primary = "Mulai Secara Eksklusif";
+const hero_premium_desc = "Tinggalkan fragmentasi aplikasi. Kuasai habit tracker, planner harian, dan manajer keuangan Anda dalam satu ekosistem cerdas yang dirancang untuk performa puncak.";
+const hero_premium_cta_primary = "Mulai Eksklusif";
 const hero_premium_cta_secondary = "Lihat Filosofi Desain";
 const hero_enter_dashboard = "Masuk Dashboard";
+const hero_card_1_title = "Bangun Kebiasaan";
+const hero_card_1_desc = "Lacak konsistensi dengan heatmap visual yang melatih ulang otak Anda.";
+const hero_card_2_title = "Kuasai Keuangan";
+const hero_card_2_desc = "Kendalikan arus kas Anda dengan zero-based budgeting.";
+const hero_card_2_item_1 = "Kopi";
+const hero_card_2_item_2 = "Gaji";
+const hero_card_3_title = "Eksekusi Tujuan";
+const hero_card_3_desc = "Pecah visi besar menjadi blok tindakan harian.";
+const hero_card_3_item_1 = "Blok Kerja Fokus";
+const hero_card_3_item_2 = "Cek Email";
+const hero_floating_ai_title = "Neural OS";
+const hero_floating_ai_desc = "Semua Sistem Sinkron";
 const home_trust_tagline = "Merancang masa depan deep work";
 const home_pillars_title = "Insight terpadu untuk Habit, Planning & Finance Anda.";
 const home_pillars_desc = "OneForMind menghapus gesekan antar aplikasi dengan menggabungkan alat hidup paling penting Anda ke dalam satu ekosistem berperforma tinggi.";
@@ -24062,6 +24110,18 @@ const id = {
   hero_premium_cta_primary,
   hero_premium_cta_secondary,
   hero_enter_dashboard,
+  hero_card_1_title,
+  hero_card_1_desc,
+  hero_card_2_title,
+  hero_card_2_desc,
+  hero_card_2_item_1,
+  hero_card_2_item_2,
+  hero_card_3_title,
+  hero_card_3_desc,
+  hero_card_3_item_1,
+  hero_card_3_item_2,
+  hero_floating_ai_title,
+  hero_floating_ai_desc,
   home_trust_tagline,
   home_pillars_title,
   home_pillars_desc,
@@ -28634,7 +28694,19 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   help_support_technical_desc,
   help_support_technical_title,
   help_support_title,
+  hero_card_1_desc,
+  hero_card_1_title,
+  hero_card_2_desc,
+  hero_card_2_item_1,
+  hero_card_2_item_2,
+  hero_card_2_title,
+  hero_card_3_desc,
+  hero_card_3_item_1,
+  hero_card_3_item_2,
+  hero_card_3_title,
   hero_enter_dashboard,
+  hero_floating_ai_desc,
+  hero_floating_ai_title,
   hero_premium_badge,
   hero_premium_cta_primary,
   hero_premium_cta_secondary,

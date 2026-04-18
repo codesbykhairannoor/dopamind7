@@ -293,11 +293,11 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    {{-- NProgress --}}
+    {{-- NProgress (Only for HTMX pages if needed, but we can hide the custom one if it conflicts with Inertia) --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
     <style>
-        /* Customize NProgress */
+        /* Customize NProgress (HTMX) */
         #nprogress .bar {
             background: #4f46e5 !important;
             height: 3px !important;
@@ -310,9 +310,9 @@
         #nprogress .spinner {
             display: none !important;
         }
-
-        /* 📱 Only show NProgress on Mobile */
-        @media (min-width: 769px) {
+        
+        /* 📱 Sembunyikan NProgress kustom di mobile agar tidak double dengan bawaan Inertia.js */
+        @media (max-width: 768px) {
             #nprogress {
                 display: none !important;
             }
@@ -1002,13 +1002,13 @@
         {{-- FOOTER --}}
         <footer class="bg-slate-50 border-t border-slate-100 pt-20 pb-10">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 mb-16 text-left">
-                    <div class="col-span-2 md:col-span-1">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-8 mb-16 text-left">
+                    <div class="col-span-2 md:col-span-3 lg:col-span-2">
                         <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6">
                             <img src="/favicon.svg" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
                         </a>
-                        <p class="text-sm text-slate-700 leading-relaxed mb-6">
+                        <p class="text-sm text-slate-700 leading-relaxed mb-6 max-w-xs">
                             The unified productivity system designed to bring clarity to your life, habits, and
                             finances.
                         </p>
@@ -1018,7 +1018,7 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Product</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit
@@ -1042,7 +1042,7 @@
                     </div>
 
 
-                    <div>
+                    <div class="col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Compare</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('compare.notes-apps') }}" class="hover:text-indigo-600 transition">Vs.
@@ -1054,15 +1054,15 @@
                             <li><a href="{{ route('compare.planner-apps') }}"
                                     class="hover:text-indigo-600 transition">Vs. Planner Apps</a></li>
                             <li><a href="{{ route('compare.five-apps') }}" class="hover:text-indigo-600 transition">Vs.
-                                    5 Separate Apps</a></li>
+                                    5 Apps</a></li>
                             <li><a href="{{ route('compare.management-tools') }}"
-                                    class="hover:text-indigo-600 transition">Vs. Management Tools</a></li>
+                                    class="hover:text-indigo-600 transition">Vs. Management</a></li>
                             <li><a href="{{ route('compare.habit-apps') }}" class="hover:text-indigo-600 transition">Vs.
                                     Habit Apps</a></li>
                         </ul>
                     </div>
 
-                    <div>
+                    <div class="col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Resources</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('resources.help') }}" class="hover:text-indigo-600 transition">Help
@@ -1083,7 +1083,7 @@
                         </ul>
                     </div>
 
-                    <div>
+                    <div class="col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Company</p>
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('company.privacy') }}"

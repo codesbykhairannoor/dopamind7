@@ -104,7 +104,7 @@ createInertiaApp({
         color: '#4f46e5',
         showSpinner: false,
         delay: 250,     // Delay 250ms agar navigasi cepat terasa instan tanpa flash loading bar
-        includeCSS: true,
+        includeCSS: true, // Inertia akan inject CSS sendiri
     },
 });
 
