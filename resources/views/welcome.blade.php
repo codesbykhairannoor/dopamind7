@@ -152,8 +152,8 @@
                     <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl transform-gpu md:-translate-y-12 hover:-translate-y-16 transition-transform duration-300 group relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-xl group-hover:bg-emerald-500/10 transition-colors transform-gpu"></div>
                         <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">🌱</div>
-                        <h3 class="text-xl font-black text-slate-900 mb-2">Build Habits</h3>
-                        <p class="text-sm text-slate-500 mb-8">Track consistency with visual heatmaps that rewire your brain.</p>
+                        <h3 class="text-xl font-black text-slate-900 mb-2">{{ __('hero_card_1_title') }}</h3>
+                        <p class="text-sm text-slate-500 mb-8">{{ __('hero_card_1_desc') }}</p>
                         
                         <div class="grid grid-cols-7 gap-1.5">
                             @for($i=0; $i<28; $i++)
@@ -170,21 +170,21 @@
                     <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-[0_20px_40px_rgba(0,0,0,0.2)] transform-gpu hover:-translate-y-4 transition-transform duration-300 group relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 rounded-full blur-xl group-hover:bg-indigo-500/20 transition-colors transform-gpu"></div>
                         <div class="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl mb-6 border border-indigo-500/30">💰</div>
-                        <h3 class="text-xl font-black text-white mb-2">Master Finance</h3>
-                        <p class="text-sm text-slate-400 mb-8">Take control of your cash flow with zero-based budgeting.</p>
+                        <h3 class="text-xl font-black text-white mb-2">{{ __('hero_card_2_title') }}</h3>
+                        <p class="text-sm text-slate-400 mb-8">{{ __('hero_card_2_desc') }}</p>
                         
                         <div class="space-y-3 relative z-10">
                             <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/50 flex justify-between items-center">
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-xs">☕</div>
-                                    <span class="text-slate-300 text-sm font-medium">Coffee</span>
+                                    <span class="text-slate-300 text-sm font-medium">{{ __('hero_card_2_item_1') }}</span>
                                 </div>
                                 <span class="text-white font-bold text-sm">-$4.50</span>
                             </div>
                             <div class="bg-indigo-600/20 p-4 rounded-2xl border border-indigo-500/30 flex justify-between items-center">
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 bg-indigo-500/30 text-indigo-300 rounded-full flex items-center justify-center text-xs">💼</div>
-                                    <span class="text-indigo-200 text-sm font-medium">Salary</span>
+                                    <span class="text-indigo-200 text-sm font-medium">{{ __('hero_card_2_item_2') }}</span>
                                 </div>
                                 <span class="text-indigo-400 font-bold text-sm">+$4,200</span>
                             </div>
@@ -195,19 +195,19 @@
                     <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl transform-gpu md:-translate-y-12 hover:-translate-y-16 transition-transform duration-300 group relative overflow-hidden">
                         <div class="absolute top-0 left-0 w-32 h-32 bg-amber-500/5 rounded-full blur-xl group-hover:bg-amber-500/10 transition-colors transform-gpu"></div>
                         <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">🎯</div>
-                        <h3 class="text-xl font-black text-slate-900 mb-2">Execute Goals</h3>
-                        <p class="text-sm text-slate-500 mb-8">Break down massive visions into daily actionable blocks.</p>
+                        <h3 class="text-xl font-black text-slate-900 mb-2">{{ __('hero_card_3_title') }}</h3>
+                        <p class="text-sm text-slate-500 mb-8">{{ __('hero_card_3_desc') }}</p>
                         
                         <div class="relative">
                             <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-slate-100"></div>
                             <div class="space-y-4 relative z-10">
                                 <div class="flex gap-4 items-center">
                                     <div class="w-6 h-6 rounded-full bg-amber-500 border-4 border-white shadow-sm flex-shrink-0"></div>
-                                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1 text-sm font-bold text-slate-700">Deep Work Block</div>
+                                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1 text-sm font-bold text-slate-700">{{ __('hero_card_3_item_1') }}</div>
                                 </div>
                                 <div class="flex gap-4 items-center opacity-50">
                                     <div class="w-6 h-6 rounded-full bg-slate-300 border-4 border-white shadow-sm flex-shrink-0"></div>
-                                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1 text-sm font-medium text-slate-500 line-through">Check Emails</div>
+                                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1 text-sm font-medium text-slate-500 line-through">{{ __('hero_card_3_item_2') }}</div>
                                 </div>
                             </div>
                         </div>
@@ -219,8 +219,8 @@
                 <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-auto bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-xl z-30 hidden md:flex items-center gap-4 transform-gpu animate-[float_4s_ease-in-out_infinite]">
                     <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-md text-xl">✨</div>
                     <div class="pr-4">
-                        <div class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Neural OS</div>
-                        <div class="text-white text-sm font-black">All Systems Synced</div>
+                        <div class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">{{ __('hero_floating_ai_title') }}</div>
+                        <div class="text-white text-sm font-black">{{ __('hero_floating_ai_desc') }}</div>
                     </div>
                 </div>
             </div>
