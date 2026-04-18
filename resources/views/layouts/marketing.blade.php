@@ -1002,8 +1002,8 @@
         {{-- FOOTER --}}
         <footer class="bg-slate-50 border-t border-slate-100 pt-20 pb-10">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-12 gap-x-8 mb-16 text-left">
-                    <div class="col-span-2 md:col-span-4 lg:col-span-2">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 mb-16 text-left">
+                    <div class="col-span-2 md:col-span-1">
                         <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6">
                             <img src="/favicon.svg" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
@@ -1018,9 +1018,9 @@
                         </div>
                     </div>
 
-                    <div class="col-span-1">
+                    <div>
                         <p class="text-xs font-semibold text-slate-500 mb-5">Product</p>
-                        <ul class="space-y-4 text-sm font-bold text-slate-700 pl-0 ml-0">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit
                                     Tracker</a></li>
                             <li><a href="{{ route('features.finance') }}"
@@ -1042,9 +1042,9 @@
                     </div>
 
 
-                    <div class="col-span-1">
+                    <div>
                         <p class="text-xs font-semibold text-slate-500 mb-5">Compare</p>
-                        <ul class="space-y-4 text-sm font-bold text-slate-700 pl-0 ml-0">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('compare.notes-apps') }}" class="hover:text-indigo-600 transition">Vs.
                                     Notes Apps</a></li>
                             <li><a href="{{ route('compare.custom-apps') }}" class="hover:text-indigo-600 transition">Vs.
@@ -1062,9 +1062,9 @@
                         </ul>
                     </div>
 
-                    <div class="col-span-1">
+                    <div>
                         <p class="text-xs font-semibold text-slate-500 mb-5">Resources</p>
-                        <ul class="space-y-4 text-sm font-bold text-slate-700 pl-0 ml-0">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('resources.help') }}" class="hover:text-indigo-600 transition">Help
                                     Center</a></li>
                             <li><a href="{{ route('resources.blog') }}"
@@ -1083,9 +1083,9 @@
                         </ul>
                     </div>
 
-                    <div class="col-span-1">
+                    <div>
                         <p class="text-xs font-semibold text-slate-500 mb-5">Company</p>
-                        <ul class="space-y-4 text-sm font-bold text-slate-700 pl-0 ml-0">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('company.privacy') }}"
                                     class="hover:text-indigo-600 transition">Privacy policy</a></li>
                             <li><a href="{{ route('company.terms') }}"
@@ -1104,7 +1104,7 @@
                     </div>
 
 
-                    <div class="col-span-2 md:col-span-2 lg:col-span-1">
+                    <div>
                         <p class="text-xs font-semibold text-slate-500 mb-5">Connect</p>
                         <div class="flex gap-4">
                             <a href="https://x.com/OneForMind" target="_blank" rel="noopener noreferrer"
