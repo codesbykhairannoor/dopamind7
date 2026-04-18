@@ -3,6 +3,8 @@ import { ref, watch, reactive, onMounted, nextTick } from 'vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { Head, usePage } from '@inertiajs/vue3';
 import dayjs from 'dayjs';
+import Swal from 'sweetalert2';
+import { trans } from 'laravel-vue-i18n';
 
 // Components
 import FinanceHeader from './FinanceHeader.vue';
@@ -115,30 +117,57 @@ const handleDeleteSaving = (saving) => {
         ? trans('vault_close_refund_confirm', { amount: formatMoney(saving.current_amount) })
         : trans('vault_close_confirm');
 
-    if (confirm(msg)) {
-        const originalSavings = [...localSavings.value];
-        const originalStats = JSON.parse(JSON.stringify(localStats.value));
-        
-        if (saving.current_amount > 0) {
-            updateLocalStatsInstantly('income', 'saving', saving.current_amount, false);
-            localStats.value.total_savings -= Number(saving.current_amount);
-        }
-        localSavings.value = localSavings.value.filter(s => s.id !== saving.id);
-        
-        router.delete(route('finance.savings.destroy', saving.id), {
-            data: { date: dayjs().format('YYYY-MM-DD') },
-            preserveScroll: true,
-            preserveState: true,
-            onSuccess: (page) => {
-                localSavings.value = [...(page.props.savings || [])];
-                localStorage.setItem('dfm_local_savings', JSON.stringify(localSavings.value));
-            },
-            onError: () => {
-                localSavings.value = originalSavings;
-                localStats.value = originalStats;
+    Swal.fire({
+        title: `<span class="text-xl font-black text-slate-800 dark:text-white">${trans('confirm_delete_title', 'Hapus Tabungan?')}</span>`,
+        html: `<p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-2">${msg}</p>`,
+        showCancelButton: true,
+        confirmButtonText: trans('btn_yes_delete', 'Ya, Hapus!'),
+        cancelButtonText: trans('cancel', 'Batal'),
+        customClass: {
+            popup: '!rounded-[2rem] !p-8 !border !border-slate-100 dark:!border-slate-800 !shadow-2xl dark:!shadow-none dark:!bg-slate-900 transition-colors duration-500',
+            confirmButton: '!bg-rose-500 !text-white !font-bold !py-3.5 !px-6 !rounded-xl !shadow-lg dark:!shadow-none shadow-rose-200 dark:!shadow-rose-900/20 !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
+            cancelButton: '!bg-slate-100 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-400 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
+            actions: '!mt-8 flex flex-col-reverse sm:flex-row !gap-3'
+        },
+        backdrop: `rgba(15, 23, 42, 0.6) `
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const originalSavings = [...localSavings.value];
+            const originalStats = JSON.parse(JSON.stringify(localStats.value));
+            
+            if (saving.current_amount > 0) {
+                updateLocalStatsInstantly('income', 'saving', saving.current_amount, false);
+                localStats.value.total_savings -= Number(saving.current_amount);
             }
-        });
-    }
+            localSavings.value = localSavings.value.filter(s => s.id !== saving.id);
+            
+            router.delete(route('finance.savings.destroy', saving.id), {
+                data: { date: dayjs().format('YYYY-MM-DD') },
+                preserveScroll: true,
+                preserveState: true,
+                onSuccess: (page) => {
+                    localSavings.value = [...(page.props.savings || [])];
+                    localStorage.setItem('dfm_local_savings', JSON.stringify(localSavings.value));
+                    Swal.fire({
+                        title: trans('vault_closed_success', 'Vault ditutup!'),
+                        icon: 'success',
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        customClass: {
+                            popup: '!rounded-2xl !bg-white dark:!bg-slate-900 !border !border-slate-100 dark:!border-slate-800 !shadow-xl'
+                        }
+                    });
+                },
+                onError: () => {
+                    localSavings.value = originalSavings;
+                    localStats.value = originalStats;
+                }
+            });
+        }
+    });
 };
 
 const openVaultAction = (saving, action = 'deposit') => {
@@ -501,18 +530,18 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                                 <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500 shadow-sm"><Wallet :size="20" /></div>
                                 <div class="flex items-center gap-2">
                                     <div>
-                                        <h3 class="text-base lg:text-lg font-black text-slate-800 dark:text-white tracking-tight">The Vault</h3>
-                                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 tracking-widest leading-none mt-0.5">Your wealth manifestation</p>
+                                        <h3 class="text-base lg:text-lg font-black text-slate-800 dark:text-white tracking-tight">{{ $t('vault_header_title') }}</h3>
+                                        <p class="text-[9px] lg:text-[10px] font-black text-slate-400 tracking-widest leading-none mt-0.5">{{ $t('vault_header_subtitle') }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <button @click="handleEditSaving()" class="flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 rounded-[1.25rem] text-[10px] font-black tracking-widest hover:scale-105 transition-all active:scale-95 shadow-xl shadow-slate-200 dark:shadow-none relative group/btn overflow-hidden"><div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity"></div><Plus :size="16" stroke-width="3" /><span class="hidden sm:inline relative z-10">Create goal</span><span class="sm:hidden relative z-10">Goal</span></button>
+                            <button @click="handleEditSaving()" class="flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-2.5 rounded-[1.25rem] text-[10px] font-black tracking-widest hover:scale-105 transition-all active:scale-95 shadow-xl shadow-slate-200 dark:shadow-none relative group/btn overflow-hidden"><div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity"></div><Plus :size="16" stroke-width="3" /><span class="hidden sm:inline relative z-10">{{ $t('vault_btn_add') }}</span><span class="sm:hidden relative z-10">{{ $t('vault_btn_add') }}</span></button>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-                                <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1 border-2 border-slate-100 dark:border-slate-800 shadow-sm"><div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500 animate-bounce">🏦</div><h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">You have no active saving goals yet.</h4><button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-black tracking-widest text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-6 py-2.5 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all active:scale-95 shadow-sm border border-indigo-100/50 dark:border-indigo-500/20">Start saving now</button></div>
+                                <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1 md:col-span-2 border-2 border-slate-100 dark:border-slate-800 shadow-sm"><div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500 animate-bounce">🏦</div><h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">{{ $t('vault_empty_title') }}</h4><button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-black tracking-widest text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-6 py-2.5 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all active:scale-95 shadow-sm border border-indigo-100/50 dark:border-indigo-500/20">{{ $t('vault_empty_btn') }}</button></div>
 
-                            <div v-else class="flex overflow-x-auto no-scrollbar gap-4 pb-4">
+                            <div v-else class="flex overflow-x-auto no-scrollbar gap-4 pb-6 -mx-2 px-2 pt-2 md:col-span-2">
                                 <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] md:w-[280px]">
                                     <SavingCard :saving="saving" :onDeposit="(s) => openVaultAction(s, 'deposit')" :onWithdraw="(s) => openVaultAction(s, 'withdraw')" :onEdit="handleEditSaving" :onDelete="handleDeleteSaving" />
                                 </div>

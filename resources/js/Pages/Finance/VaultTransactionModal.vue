@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { X, Target, Save, CheckCircle2, TrendingUp, ArrowDownCircle, ArrowUpCircle } from 'lucide-vue-next';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 
@@ -13,12 +13,37 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['close', 'save']);
-const { formatMoney } = useFinanceFormat();
+const { formatMoney, activeCurrency } = useFinanceFormat();
 
 const amount = ref('');
 const date = ref(new Date().toISOString().split('T')[0]);
 
 const presets = [50000, 100000, 500000, 1000000];
+
+const currencySymbol = computed(() => {
+    const map = { IDR: 'Rp', USD: '$', GBP: '£', EUR: '€', JPY: '¥' };
+    return map[activeCurrency.value] || activeCurrency.value;
+});
+
+const isDotSeparator = computed(() => ['IDR', 'EUR', 'de-DE'].includes(activeCurrency.value));
+
+const formatDisplay = (val) => {
+    if (!val) return '';
+    const str = val.toString();
+    return isDotSeparator.value ? str.replace(/\B(?=(\d{3})+(?!\d))/g, ".") : str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+const onInput = (e) => {
+    let rawValue = e.target.value;
+    let cleanVal = isDotSeparator.value ? rawValue.replace(/\./g, '') : rawValue.replace(/,/g, '');
+    if (!isNaN(cleanVal) && cleanVal !== '') {
+        amount.value = cleanVal;
+    } else if (cleanVal === '') {
+        amount.value = '';
+    }
+    // Update display to avoid cursor jumping
+    e.target.value = formatDisplay(amount.value);
+};
 
 const handleClose = () => {
     amount.value = '';
@@ -98,8 +123,8 @@ const setAmount = (val) => {
                                 {{ type === 'deposit' ? $t('vault_deposit_label') : $t('vault_withdraw_label') }}
                             </label>
                             <div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/80 border-2 border-transparent focus-within:border-indigo-500/20 focus-within:bg-white dark:focus-within:bg-slate-800 rounded-[1.5rem] px-5 py-4 transition-all shadow-inner">
-                                <span class="text-slate-400 font-black text-lg">Rp</span>
-                                <input v-model="amount" type="number" 
+                                <span class="text-slate-400 font-black text-lg">{{ currencySymbol }}</span>
+                                <input :value="formatDisplay(amount)" @input="onInput" type="text" inputmode="numeric"
                                        class="w-full bg-transparent border-none p-0 text-2xl font-black text-slate-800 dark:text-white placeholder-slate-300 focus:ring-0"
                                        placeholder="0" autofocus />
                             </div>
@@ -117,7 +142,9 @@ const setAmount = (val) => {
 
                     <!-- Date Input -->
                     <div class="space-y-1">
-                        <label class="text-[10px] font-black text-slate-400 tracking-widest ml-1">{{ $t('vault_date_label') }}</label>
+                        <label class="text-[10px] font-black text-slate-400 tracking-widest ml-1">
+                            {{ $t('vault_date_label') }}
+                        </label>
                         <input v-model="date" type="date" 
                                class="w-full bg-slate-50 dark:bg-slate-800 border-none rounded-2xl px-5 py-3 text-sm font-bold text-slate-600 dark:text-slate-300 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer" />
                     </div>

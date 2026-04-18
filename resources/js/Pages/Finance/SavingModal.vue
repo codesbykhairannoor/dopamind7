@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, computed } from 'vue';
 import { X, Target, Save, Trash2, CheckCircle2 } from 'lucide-vue-next';
 import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
 
@@ -23,6 +23,26 @@ const form = ref({
     icon: '🏦',
     color: '#6366f1'
 });
+
+const isDotSeparator = computed(() => ['IDR', 'EUR', 'de-DE'].includes(activeCurrency.value));
+
+const formatDisplay = (val) => {
+    if (!val) return '';
+    const str = val.toString();
+    return isDotSeparator.value ? str.replace(/\B(?=(\d{3})+(?!\d))/g, ".") : str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+const onInput = (e) => {
+    let rawValue = e.target.value;
+    let cleanVal = isDotSeparator.value ? rawValue.replace(/\./g, '') : rawValue.replace(/,/g, '');
+    if (!isNaN(cleanVal) && cleanVal !== '') {
+        form.value.target_amount = cleanVal;
+    } else if (cleanVal === '') {
+        form.value.target_amount = '';
+    }
+    // Update display to avoid cursor jumping
+    e.target.value = formatDisplay(form.value.target_amount);
+};
 
 const colors = ['#6366f1', '#10b981', '#f59e0b', '#f43f5e', '#8b5cf6', '#0ea5e9', '#0f172a'];
 const icons = ['🏦', '💍', '🏠', '🚗', '🎓', '✈️', '💻', '👶', '🎁', '🏥', '🍱', '💼'];
@@ -85,7 +105,7 @@ const handleSave = () => {
                     <!-- Target Amount -->
                     <div class="space-y-2">
                         <label class="text-[11px] font-bold text-slate-400 dark:text-slate-600">{{ $t('vault_label_target') }} ({{ activeCurrency }})</label>
-                        <input v-model="form.target_amount" type="number" 
+                        <input :value="formatDisplay(form.target_amount)" @input="onInput" type="text" inputmode="numeric"
                                 class="w-full bg-slate-50 dark:bg-slate-800/50 border-2 border-transparent rounded-2xl px-5 py-4 text-slate-700 dark:text-white font-bold focus:bg-white dark:focus:bg-slate-800 focus:border-indigo-500/20 focus:ring-4 focus:ring-indigo-500/5 transition-all shadow-sm" />
                     </div>
 
