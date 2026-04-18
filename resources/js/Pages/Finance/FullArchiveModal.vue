@@ -128,7 +128,7 @@ const handleEditAction = (trx) => {
                                 </div>
                                 
                                 <!-- Floating Actions -->
-                                <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2 opacity-0 group-hover/row:opacity-100 transition-opacity bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm pl-2 rounded-lg">
+                                <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-2 opacity-0 group-hover/row:opacity-100 transition-opacity bg-white/80 dark:bg-slate-900/80  pl-2 rounded-lg">
                                     <button @click="handleEditAction(trx)" class="p-1.5 text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 rounded-md transition-all">
                                         <OneForMindIcon name="edit" size="14" stroke-width="2.5" />
                                     </button>

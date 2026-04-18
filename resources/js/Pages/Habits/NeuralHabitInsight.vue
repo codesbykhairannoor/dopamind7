@@ -145,7 +145,7 @@ defineExpose({ getMoodAdvisory });
                     </div>
 
                     <div v-else-if="stackData" class="space-y-8 animate-in fade-in zoom-in-95 duration-700">
-                        <div class="group/stack bg-white dark:bg-slate-900/80 backdrop-blur-xl p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-100 dark:shadow-none relative overflow-hidden">
+                        <div class="group/stack bg-white dark:bg-slate-900/80  p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-100 dark:shadow-none relative overflow-hidden">
                             <div class="absolute top-0 right-0 p-6 opacity-5 group-hover/stack:opacity-10 transition-opacity">
                                 <OneForMindIcon name="sparkles" size="80" />
                             </div>

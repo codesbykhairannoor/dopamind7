@@ -95,7 +95,7 @@ const save = async () => {
 
 <template>
     <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" @click="emit('close')"></div>
+        <div class="absolute inset-0 bg-slate-900/60 " @click="emit('close')"></div>
         
         <div class="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 animate-in zoom-in-95 duration-300">
             <div class="flex items-center justify-between mb-8">
@@ -145,7 +145,7 @@ const save = async () => {
                             <embed v-if="filePreview.startsWith('data:application/pdf')" :src="filePreview" type="application/pdf" class="w-full h-full opacity-40 pointer-events-none" />
                             <img v-else :src="filePreview" class="w-full h-full object-cover opacity-40" />
                         </div>
-                        <div class="relative z-10 text-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm p-3 rounded-2xl border border-indigo-100 dark:border-indigo-900/30 shadow-sm">
+                        <div class="relative z-10 text-center bg-white/80 dark:bg-slate-900/80  p-3 rounded-2xl border border-indigo-100 dark:border-indigo-900/30 shadow-sm">
                             <p class="text-xs font-black text-indigo-600 dark:text-indigo-400 truncate max-w-[200px]">{{ fileName }}</p>
                             <p class="text-[9px] font-bold text-indigo-500 uppercase mt-1">
                                 Ready to Intelligence-Sync

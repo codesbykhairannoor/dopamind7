@@ -49,7 +49,7 @@ const setAmount = (val) => {
 <template>
     <Teleport to="body">
         <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md transition-opacity" @click="handleClose"></div>
+            <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80  transition-opacity" @click="handleClose"></div>
 
             <div class="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
                 

@@ -138,7 +138,7 @@ const tKey = (key) => {
                 </div>
 
                 <div class="text-center mb-6 md:mb-8">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/10 backdrop-blur-md mb-3 md:mb-4 border border-white/10 shadow-sm">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/5 dark:bg-white/10  mb-3 md:mb-4 border border-white/10 shadow-sm">
                         <Sparkle :size="9" :class="featureConfig.color" fill="currentColor" />
                         <span class="text-[7.5px] md:text-[8px] font-black uppercase tracking-[0.3em] text-slate-600 dark:text-slate-300">
                             {{ $t(featureConfig.isPremium ? 'gating.lock_title_ai' : 'gating.lock_title_required') }}

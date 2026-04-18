@@ -75,7 +75,7 @@ const tabMeta = computed(() => tabs.find(t => t.id === currentTab.value) || tabs
         <!-- Tab bar — pure client-side switching, zero server requests -->
         <div class="relative z-20 -mx-3 sm:mx-0 mb-6 sm:mb-8">
             <div class="px-3 sm:px-0">
-                <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/70 dark:border-slate-800/70 rounded-2xl shadow-sm">
+                <div class="bg-white/80 dark:bg-slate-900/80  border border-slate-200/70 dark:border-slate-800/70 rounded-2xl shadow-sm">
                     <nav class="flex items-center gap-1 overflow-x-auto no-scrollbar px-2 py-2">
                         <button
                             v-for="tab in tabs"

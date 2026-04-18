@@ -20,6 +20,7 @@ class NeuralSynergyService
     {
         $locale = App::getLocale();
         $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+        $todayStr = now()->toDateString();
 
         // 1. Habits (Optimized Count)
         $habits = Habit::where('user_id', $userId)

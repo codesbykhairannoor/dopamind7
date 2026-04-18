@@ -234,7 +234,7 @@ const ctaConfig = computed(() => {
                         </div>
                         <h3 class="text-2xl font-black text-white tracking-tight mb-2 leading-tight max-w-xs">{{ ctaConfig.title }}</h3>
                         <p class="text-xs font-bold text-slate-500 mb-8 max-w-xs leading-relaxed">{{ ctaConfig.desc }}</p>
-                        <div class="inline-flex items-center gap-3 bg-white/10 px-6 py-3 rounded-xl text-white text-[10px] font-black uppercase tracking-[0.2em] backdrop-blur-md">
+                        <div class="inline-flex items-center gap-3 bg-white/10 px-6 py-3 rounded-xl text-white text-[10px] font-black uppercase tracking-[0.2em] ">
                             {{ ctaConfig.btnText }} <ArrowRight :size="14" class="group-hover:translate-x-1 transition-transform" />
                         </div>
                     </div>

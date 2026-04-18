@@ -75,7 +75,7 @@ const changeType = (index, type) => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="2xl">
-        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-300 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none will-change-transform">
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] flex flex-col max-h-[90vh] relative overflow-hidden transition-all duration-300 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none ">
             
             <!-- [LOCKED STATE] Full Modal Cover -->
             <div v-if="isExplorer" class="flex-1 flex flex-col items-center justify-center p-8 md:p-12 text-center relative overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500 min-h-[500px]">
@@ -152,7 +152,7 @@ const changeType = (index, type) => {
                                 </button>
                                 <transition enter-active-class="transition ease-out duration-&lsqb;4200ms&rsqb;" enter-from-class="opacity-0 translate-y-4 sm:translate-y-2" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4 sm:translate-y-2">
                                     <div v-if="showDatePicker" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:top-full sm:left-0 sm:mt-2 sm:origin-top-left sm:block sm:inset-auto">
-                                        <div class="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm sm:hidden" @click="showDatePicker = false"></div>
+                                        <div class="fixed inset-0 bg-slate-900/40 dark:bg-black/60  sm:hidden" @click="showDatePicker = false"></div>
                                         <FinanceDatePicker 
                                             :show="true" 
                                             :modelValue="form.date"

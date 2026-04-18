@@ -303,7 +303,7 @@ watch(
         >
             <div
                 v-if="isSidebarOpen"
-                class="fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-[69] md:hidden"
+                class="fixed inset-0 bg-slate-950/50  z-[69] md:hidden"
                 @click="isSidebarOpen = false"
             ></div>
         </Transition>
@@ -399,7 +399,7 @@ watch(
         <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
             <!-- ── HEADER ── -->
             <header
-                class="h-14 shrink-0 flex items-center px-4 gap-3 border-b border-slate-100 dark:border-white/[0.06] bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl z-10"
+                class="h-14 shrink-0 flex items-center px-4 gap-3 border-b border-slate-100 dark:border-white/[0.06] bg-white/80 dark:bg-[#0a0a0a]/80  z-10"
             >
                 <!-- Sidebar toggle -->
                 <button
@@ -781,7 +781,7 @@ watch(
             <!-- ══════════ BOTTOM INPUT BAR (chat state only) ══════════ -->
             <div
                 v-if="!isWelcomeState"
-                class="shrink-0 border-t border-slate-100 dark:border-white/[0.05] bg-white/95 dark:bg-[#0a0a0a]/95 backdrop-blur-xl px-4 pt-3 pb-4 md:pb-5 z-10"
+                class="shrink-0 border-t border-slate-100 dark:border-white/[0.05] bg-white/95 dark:bg-[#0a0a0a]/95  px-4 pt-3 pb-4 md:pb-5 z-10"
             >
                 <!-- Image preview -->
                 <div

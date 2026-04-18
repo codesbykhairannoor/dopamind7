@@ -139,9 +139,9 @@ const t = (key, fallback) => {
 <template>
     <Teleport to="body">
         <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <div class="absolute inset-0 bg-slate-900/40 dark:bg-slate-950/60 backdrop-blur-sm transition-opacity" @click="handleClose"></div>
+            <div class="absolute inset-0 bg-slate-900/40 dark:bg-slate-950/60  transition-opacity" @click="handleClose"></div>
 
-            <div class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col max-h-[90vh] transition-colors duration-500 will-change-transform">
+            <div class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col max-h-[90vh] transition-colors duration-500 ">
                 
                 <div class="relative h-44 bg-slate-100 dark:bg-slate-950 shrink-0 group rounded-t-[2.5rem] overflow-hidden">
                     <div v-if="imagePreview" class="absolute inset-0 transition-transform duration-700 group-hover:scale-105">

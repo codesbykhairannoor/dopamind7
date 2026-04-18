@@ -65,11 +65,11 @@ const handleDeleteAction = (id) => {
                 </div>
                 
                 <div class="flex gap-3 mt-4">
-                    <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 flex-1">
+                    <div class="bg-white/10  border border-white/10 rounded-xl p-2.5 flex-1">
                         <span class="text-[10px] text-indigo-100 uppercase block font-bold">{{ $t('income') }}</span>
                         <span class="text-sm font-bold text-emerald-300">+ {{ formatMoney(dayData.total_income) }}</span>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 flex-1">
+                    <div class="bg-white/10  border border-white/10 rounded-xl p-2.5 flex-1">
                         <span class="text-[10px] text-indigo-100 uppercase block font-bold">{{ $t('expense') }}</span>
                         <span class="text-sm font-bold text-rose-300">- {{ formatMoney(dayData.total_expense) }}</span>
                     </div>

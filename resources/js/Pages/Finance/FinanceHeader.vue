@@ -285,7 +285,7 @@ const runAiAudit = () => {
         </div>
         <div class="relative z-10">
             <div class="flex items-center gap-3 mb-6">
-                <div class="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center text-indigo-400 dark:text-white">
+                <div class="w-10 h-10 rounded-xl bg-white/10  flex items-center justify-center text-indigo-400 dark:text-white">
                     <OneForMindIcon name="sparkles" size="20" />
                 </div>
                 <div>

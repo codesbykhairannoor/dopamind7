@@ -88,7 +88,7 @@ const meshGradient = computed(() => {
             </template>
             <div v-else :style="meshGradient" class="w-full h-full flex items-center justify-center transition-transform duration-700 relative group-hover:scale-105">
                 <div class="absolute inset-0 backdrop-blur-[2px]"></div>
-                <div class="relative z-10 w-16 h-16 rounded-full bg-white/20 dark:bg-black/20 backdrop-blur-md border border-white/30 dark:border-white/10 flex items-center justify-center text-white shadow-xl">
+                <div class="relative z-10 w-16 h-16 rounded-full bg-white/20 dark:bg-black/20  border border-white/30 dark:border-white/10 flex items-center justify-center text-white shadow-xl">
                     <Target :size="32" stroke-width="2.5" :style="{ color: goal.color }" />
                 </div>
             </div>
@@ -96,10 +96,10 @@ const meshGradient = computed(() => {
             <!-- Header Content Overlay -->
             <div class="absolute inset-x-5 bottom-4 flex flex-col">
                 <div class="flex items-center gap-2 mb-1.5">
-                    <span :class="['px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest border border-white/20 backdrop-blur-md transition-colors', goal.cover_image_url ? 'bg-white/10 text-white' : priorityLabel.class]">
+                    <span :class="['px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest border border-white/20  transition-colors', goal.cover_image_url ? 'bg-white/10 text-white' : priorityLabel.class]">
                         {{ priorityLabel.text }}
                     </span>
-                    <span v-if="goal.end_date" class="px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest bg-black/20 text-white border border-white/10 backdrop-blur-md flex items-center gap-1">
+                    <span v-if="goal.end_date" class="px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-widest bg-black/20 text-white border border-white/10  flex items-center gap-1">
                         <Calendar :size="8" />
                         {{ dateDisplay(goal.end_date) }}
                     </span>
@@ -110,10 +110,10 @@ const meshGradient = computed(() => {
             </div>
 
             <div class="absolute top-4 right-4 flex gap-2 z-20">
-                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/20 dark:bg-black/40 border border-white/30 dark:border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-75">
+                <button @click="onEdit(goal)" class="w-8 h-8 rounded-full bg-white/20 dark:bg-black/40 border border-white/30 dark:border-white/20  text-white flex items-center justify-center hover:bg-white dark:hover:bg-indigo-600 hover:text-indigo-600 dark:hover:text-white transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-75">
                     <Edit3 :size="14" />
                 </button>
-                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/20 dark:bg-black/40 border border-white/30 dark:border-white/20 backdrop-blur-md text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-150">
+                <button @click="onDelete(goal.id)" class="w-8 h-8 rounded-full bg-white/20 dark:bg-black/40 border border-white/30 dark:border-white/20  text-white flex items-center justify-center hover:bg-rose-500 hover:text-white transition-all shadow-xl opacity-100 md:opacity-0 md:group-hover:opacity-100 scale-100 md:scale-90 md:group-hover:scale-100 delay-150">
                     <Trash2 :size="14" />
                 </button>
             </div>

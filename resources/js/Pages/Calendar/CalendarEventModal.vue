@@ -44,9 +44,9 @@ const colorOptions = [
         >
             <div v-if="show" class="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6">
                 
-                <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" @click="emit('close')"></div>
+                <div class="absolute inset-0 bg-slate-900/40  transition-opacity" @click="emit('close')"></div>
 
-                <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl dark:shadow-none w-full max-w-lg relative z-10 overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50 dark:ring-slate-800 transition-colors duration-500 will-change-transform">
+                <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl dark:shadow-none w-full max-w-lg relative z-10 overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50 dark:ring-slate-800 transition-colors duration-500 ">
                     
                     <div class="px-8 py-6 border-b border-slate-100/80 dark:border-slate-800 flex items-center justify-between transition-colors duration-500">
                         <h3 class="text-xl font-black text-slate-800 dark:text-white flex items-center gap-4 transition-colors duration-500">
@@ -73,7 +73,7 @@ const colorOptions = [
                                 </button>
                                 <transition enter-active-class="transition ease-out duration-300" enter-from-class="opacity-0 translate-y-4" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-200" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4">
                                     <div v-if="showStartDatePicker" class="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:top-full sm:left-0 sm:mt-3 sm:origin-top-left sm:block sm:inset-auto">
-                                        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm sm:hidden" @click="showStartDatePicker = false"></div>
+                                        <div class="fixed inset-0 bg-slate-900/40  sm:hidden" @click="showStartDatePicker = false"></div>
                                         <FinanceDatePicker 
                                             :show="true" 
                                             :modelValue="form.start_date"
@@ -93,7 +93,7 @@ const colorOptions = [
                                 </button>
                                 <transition enter-active-class="transition ease-out duration-300" enter-from-class="opacity-0 translate-y-4" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-200" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-4">
                                     <div v-if="showEndDatePicker" class="fixed inset-0 z-[120] flex items-center justify-center p-4 sm:p-0 sm:absolute sm:top-full sm:right-0 sm:mt-3 sm:origin-top-right sm:block sm:inset-auto">
-                                        <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm sm:hidden" @click="showEndDatePicker = false"></div>
+                                        <div class="fixed inset-0 bg-slate-900/40  sm:hidden" @click="showEndDatePicker = false"></div>
                                         <FinanceDatePicker 
                                             :show="true" 
                                             :modelValue="form.end_date"

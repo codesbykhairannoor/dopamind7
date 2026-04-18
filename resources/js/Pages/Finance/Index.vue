@@ -112,8 +112,8 @@ const handleUpdateSaving = (form) => {
 
 const handleDeleteSaving = (saving) => {
     const msg = saving.current_amount > 0 
-        ? page.props.words['vault_close_refund_confirm'].replace(':amount', formatMoney(saving.current_amount))
-        : page.props.words['vault_close_confirm'];
+        ? trans('vault_close_refund_confirm', { amount: formatMoney(saving.current_amount) })
+        : trans('vault_close_confirm');
 
     if (confirm(msg)) {
         const originalSavings = [...localSavings.value];
@@ -512,8 +512,10 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
                                 <div v-if="localSavings.length === 0" class="group bg-white dark:bg-slate-900 rounded-[2.5rem] border border-dashed border-slate-200 dark:border-slate-800 p-10 text-center transition-colors col-span-1 border-2 border-slate-100 dark:border-slate-800 shadow-sm"><div class="mb-4 text-3xl transform group-hover:scale-110 transition-transform duration-500 animate-bounce">🏦</div><h4 class="text-slate-400 font-bold text-[10px] lg:text-sm mb-4">You have no active saving goals yet.</h4><button @click="handleEditSaving()" class="text-[9px] lg:text-[10px] font-black tracking-widest text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 px-6 py-2.5 rounded-xl hover:bg-indigo-100 dark:hover:bg-indigo-500/20 transition-all active:scale-95 shadow-sm border border-indigo-100/50 dark:border-indigo-500/20">Start saving now</button></div>
 
-                            <div v-else class="flex lg:grid overflow-x-auto lg:overflow-visible no-scrollbar gap-4 pb-4 lg:pb-0">
-                                <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] lg:w-full"><SavingCard :saving="saving" :onDeposit="(s) => openVaultAction(s, 'deposit')" :onWithdraw="(s) => openVaultAction(s, 'withdraw')" :onEdit="handleEditSaving" :onDelete="handleDeleteSaving" /></div>
+                            <div v-else class="flex overflow-x-auto no-scrollbar gap-4 pb-4">
+                                <div v-for="saving in localSavings" :key="saving.id" class="shrink-0 w-[260px] md:w-[280px]">
+                                    <SavingCard :saving="saving" :onDeposit="(s) => openVaultAction(s, 'deposit')" :onWithdraw="(s) => openVaultAction(s, 'withdraw')" :onEdit="handleEditSaving" :onDelete="handleDeleteSaving" />
+                                </div>
                             </div>
 
                         </div>

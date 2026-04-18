@@ -54,10 +54,10 @@ const handleKeyDown = (e, rowIndex, colIndex) => {
                 class="group relative transition-all duration-300 active:scale-[0.99] z-10 hover:z-20 focus-within:z-30"
             >
                 <!-- Glass Background -->
-                <div class="absolute inset-0 bg-white/40 dark:bg-slate-950/40 backdrop-blur-md rounded-[2.5rem] -z-10 border border-white/60 dark:border-slate-800 transition-colors duration-500"></div>
+                <div class="absolute inset-0 bg-white/40 dark:bg-slate-950/40  rounded-[2.5rem] -z-10 border border-white/60 dark:border-slate-800 transition-colors duration-500"></div>
                 
                 <div 
-                    class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md rounded-[2rem] border border-slate-200/60 dark:border-slate-800 p-5 shadow-sm transition-all duration-300"
+                    class="bg-white/70 dark:bg-slate-900/70  rounded-[2rem] border border-slate-200/60 dark:border-slate-800 p-5 shadow-sm transition-all duration-300"
                 >
                     <div class="flex items-start gap-4">
                         <div class="flex-1 min-w-0 space-y-4">

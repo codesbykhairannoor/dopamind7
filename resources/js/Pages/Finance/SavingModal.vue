@@ -1,6 +1,9 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
 import { X, Target, Save, Trash2, CheckCircle2 } from 'lucide-vue-next';
+import { useFinanceFormat } from '@/Composables/Finance/useFinanceFormat';
+
+const { activeCurrency } = useFinanceFormat();
 
 const props = defineProps({
     show: Boolean,
@@ -55,7 +58,7 @@ const handleSave = () => {
 <template>
     <Teleport to="body">
         <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md transition-opacity" @click="handleClose"></div>
+            <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80  transition-opacity" @click="handleClose"></div>
 
             <div class="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 flex flex-col max-h-[85dvh] md:max-h-[90vh]">
                 

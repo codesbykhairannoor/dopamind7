@@ -4,6 +4,8 @@ import { ref, computed } from 'vue';
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import { Mail, MessageSquare, Send, CheckCircle2 } from 'lucide-vue-next';
 
+import { trans } from 'laravel-vue-i18n';
+
 const page = usePage();
 const user = page.props.auth.user;
 
@@ -28,9 +30,9 @@ const sendSupport = () => {
 };
 
 const supportOptions = computed(() => [
-    { title: page.props.lang?.help_support_technical_title || 'Technical Support', desc: page.props.lang?.help_support_technical_desc || 'Issues with tools, lag, or bugs.', icon: 'settings' },
-    { title: page.props.lang?.help_support_feature_title || 'Feature Request', desc: page.props.lang?.help_support_feature_desc || 'Suggestions for new additions.', icon: 'goal' },
-    { title: page.props.lang?.help_support_billing_title || 'Billing & Plan', desc: page.props.lang?.help_support_billing_desc || 'Subscription and payment queries.', icon: 'finance' },
+    { title: trans('help_support_technical_title'), desc: trans('help_support_technical_desc'), icon: 'settings' },
+    { title: trans('help_support_feature_title'), desc: trans('help_support_feature_desc'), icon: 'goal' },
+    { title: trans('help_support_billing_title'), desc: trans('help_support_billing_desc'), icon: 'finance' },
 ]);
 </script>
 

@@ -230,7 +230,7 @@ const getStatusColor = (color) => {
                 <div class="grid grid-cols-7 auto-rows-fr gap-4">
                     <div v-for="(day, index) in calendarDays" :key="index" 
                         @click="day.date ? emit('open-detail', day.date) : null"
-                        class="min-h-[220px] flex flex-col relative group rounded-[2.5rem] overflow-hidden border transition-all duration-300 will-change-transform"
+                        class="min-h-[220px] flex flex-col relative group rounded-[2.5rem] overflow-hidden border transition-all duration-300 "
                         :class="[
                             !day.date ? 'border-transparent' : 
                             !day.isCurrentMonth ? 'bg-slate-50/30 dark:bg-slate-900/30 text-slate-300 dark:text-slate-700 border-slate-50 dark:border-slate-800 opacity-40' : 'bg-white dark:bg-slate-900 border-slate-100 dark:border-slate-800 hover:border-indigo-500/30 dark:hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/10 dark:hover:shadow-none cursor-pointer z-10',

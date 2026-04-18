@@ -136,5 +136,7 @@
   "current": "Current",
   "left_to_reach": "Left to reach",
   "deposit": "Deposit",
-  "withdraw": "Withdraw"
+  "withdraw": "Withdraw",
+  "vault_progress_suffix": "Progress",
+  "vault_card_current": "Current Balance"
 }

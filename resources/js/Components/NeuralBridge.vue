@@ -35,7 +35,7 @@ const fetchSynergy = async () => {
 </script>
 
 <template>
-    <div class="group relative overflow-hidden bg-white/40 dark:bg-slate-900/40 backdrop-blur-md rounded-[2rem] border border-slate-200/50 dark:border-slate-800/50 p-6 transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/5">
+    <div class="group relative overflow-hidden bg-white/40 dark:bg-slate-900/40  rounded-[2rem] border border-slate-200/50 dark:border-slate-800/50 p-6 transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/5">
         <div class="absolute top-0 right-0 p-4 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity pointer-events-none">
             <OneForMindIcon name="sparkles" size="80" />
         </div>

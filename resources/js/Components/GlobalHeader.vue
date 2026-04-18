@@ -148,7 +148,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <header class="h-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 sticky top-0 z-[70] transition-all duration-500">
+    <header class="h-16 bg-white/95 dark:bg-slate-900/95  border-b border-slate-100 dark:border-slate-800 sticky top-0 z-[70] transition-all duration-500">
         <div class="flex h-full items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4">
             
             <!-- LEFT: HAMBURGER + LOGO -->

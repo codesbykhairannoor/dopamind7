@@ -221,7 +221,7 @@ const submitTextForm = () => {
         <Teleport to="body">
             <Transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-200 ease-in" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
                 <div v-if="showCropper" class="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-                    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md" @click="cancelCrop"></div>
+                    <div class="absolute inset-0 bg-slate-900/60 " @click="cancelCrop"></div>
                     <div class="relative bg-white dark:bg-slate-900 p-6 rounded-[2rem] w-full max-w-sm shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 flex flex-col items-center transition-colors duration-500">
                         <h3 class="font-black text-slate-800 dark:text-white mb-6 tracking-tight text-sm transition-colors duration-500">{{ $t('adjust_photo_title', 'Sesuaikan Foto') }}</h3>
                         

@@ -67,7 +67,7 @@ const triggerFileInput = () => fileInputRef.value.click();
     >
         <!-- Navigation Header (Sticky) -->
         <div
-            class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 px-4 md:px-6 py-4 flex items-center justify-between shadow-sm transition-colors duration-500"
+            class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80  border-b border-slate-100 dark:border-slate-800 px-4 md:px-6 py-4 flex items-center justify-between shadow-sm transition-colors duration-500"
         >
             <Link
                 :href="route('journal.index')"

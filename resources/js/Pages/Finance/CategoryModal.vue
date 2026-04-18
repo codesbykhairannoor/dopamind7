@@ -22,7 +22,7 @@ watch(() => props.show, (val) => {
     <Teleport to="body">
         <div v-if="show" class="fixed inset-0 z-[101] flex items-center justify-center p-4">
             
-            <div @click="close" class="absolute inset-0 bg-slate-900/30 dark:bg-black/60 backdrop-blur-md animate-in fade-in duration-200"></div>
+            <div @click="close" class="absolute inset-0 bg-slate-900/30 dark:bg-black/60  animate-in fade-in duration-200"></div>
             
             <div class="bg-white dark:bg-slate-900 w-full max-w-sm rounded-[2rem] shadow-2xl dark:shadow-none z-10 p-6 animate-in zoom-in-95 duration-200 border border-transparent dark:border-slate-800 transition-all duration-500 transition-colors duration-500">
                 <div class="flex justify-between items-center mb-6">

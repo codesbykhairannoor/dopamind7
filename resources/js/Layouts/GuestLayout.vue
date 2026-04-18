@@ -38,7 +38,7 @@ const switchLang = (lang) => {
     <div class="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans selection:bg-indigo-100 selection:text-indigo-700 relative">
         
         <nav 
-            :class="(scrolled || mobileMenuOpen) ? 'bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'bg-transparent'"
+            :class="(scrolled || mobileMenuOpen) ? 'bg-white/90  border-b border-slate-100 shadow-sm' : 'bg-transparent'"
             class="fixed top-0 w-full z-[100] transition-all duration-300"
         >
             <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center relative">

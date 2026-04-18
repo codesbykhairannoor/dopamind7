@@ -56,9 +56,9 @@ const plannerProgress = computed(() => {
         >
             <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
                 
-                <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" @click="emit('close')"></div>
+                <div class="absolute inset-0 bg-slate-900/40  transition-opacity" @click="emit('close')"></div>
 
-                <div class="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl dark:shadow-none overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50 dark:ring-slate-800 transition-colors duration-500 will-change-transform">
+                <div class="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl dark:shadow-none overflow-hidden flex flex-col max-h-[90vh] ring-1 ring-white/50 dark:ring-slate-800 transition-colors duration-500 ">
                     <div class="px-6 py-6 sm:px-8 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between shrink-0 relative overflow-hidden transition-colors duration-500">
                         <div class="absolute inset-0 bg-gradient-to-r from-indigo-50/50 dark:from-indigo-900/10 to-transparent"></div>
                         <div class="relative z-10 flex items-center gap-5">
@@ -179,7 +179,7 @@ const plannerProgress = computed(() => {
                                                     <span class="text-5xl font-black leading-none drop-shadow-md">{{ dailyPlanner.completed_tasks }}</span>
                                                     <span class="text-blue-100 font-bold mb-1.5 text-base">/ {{ dailyPlanner.total_tasks }} tasks completed</span>
                                                 </div>
-                                                <div class="w-full bg-white/20 rounded-full h-4 mt-4 overflow-hidden border border-white/10 backdrop-blur-sm">
+                                                <div class="w-full bg-white/20 rounded-full h-4 mt-4 overflow-hidden border border-white/10 ">
                                                     <div class="bg-white h-4 rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(255,255,255,0.5)]" :style="{ width: `${plannerProgress}%` }"></div>
                                                 </div>
                                             </div>

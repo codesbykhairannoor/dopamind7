@@ -148,7 +148,9 @@
     "vault_close_refund_confirm": "Yakin mau tutup vault ini? Sisa saldo :amount akan dikembalikan ke dompet utama.",
     "vault_closed_success": "Vault ditutup dan saldo dikembalikan!",
     "current": "Saat Ini",
-    "left_to_reach": "Kurang",
-    "deposit": "Tabung",
-    "withdraw": "Cairkan"
+    "left_to_reach": "Kekurangan",
+    "deposit": "Setor",
+    "withdraw": "Tarik",
+    "vault_progress_suffix": "Progres",
+    "vault_card_current": "Saldo Terkumpul"
 }

@@ -9,7 +9,7 @@ defineEmits(['close']);
 </script>
 
 <template>
-    <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm p-4" @click.self="$emit('close')">
+    <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 dark:bg-slate-950/80  p-4" @click.self="$emit('close')">
         <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-3xl w-full max-h-[85vh] shadow-2xl dark:shadow-none border border-transparent dark:border-slate-800 flex flex-col relative overflow-hidden transition-colors duration-500">
             
             <div class="px-8 py-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-900 sticky top-0 z-10 transition-colors duration-500">

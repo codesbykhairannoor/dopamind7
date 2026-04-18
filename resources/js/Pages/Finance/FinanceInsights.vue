@@ -70,7 +70,7 @@ const handleAddAsset = () => {
             cancelButton: '!bg-slate-100 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-400 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
             actions: '!mt-8 flex flex-col-reverse sm:flex-row !gap-3'
         },
-        backdrop: `rgba(15, 23, 42, 0.6) backdrop-blur-sm`, 
+        backdrop: `rgba(15, 23, 42, 0.6) `, 
         didOpen: () => {
             const input = document.getElementById('swal-capital');
             input.addEventListener('input', (e) => {
@@ -159,7 +159,7 @@ const handleQuit = (asset) => {
             cancelButton: '!bg-slate-100 dark:!bg-slate-800 !text-slate-500 dark:!text-slate-400 !font-bold !py-3.5 !px-6 !rounded-xl !text-xs !uppercase !tracking-widest !w-full sm:!w-auto transition-all duration-300',
             actions: '!mt-6 flex flex-col-reverse sm:flex-row !gap-3'
         },
-        backdrop: `rgba(15, 23, 42, 0.6) backdrop-blur-sm`
+        backdrop: `rgba(15, 23, 42, 0.6) `
     }).then((result) => {
         if (result.isConfirmed) {
             transactionForm.reset();
@@ -197,14 +197,14 @@ const handleQuit = (asset) => {
                             <p class="text-indigo-200 text-[9px] font-black uppercase tracking-[0.2em]">{{ $t('investment_lab') }}</p>
                         </div>
                         <h4 class="text-2xl font-black text-white tracking-tighter">{{ formatMoney(portfolioSummary.currentValue) }}</h4>
-                        <div class="inline-flex items-center gap-1.5 mt-1 bg-black/20 px-2.5 py-1 rounded-md border border-white/5 backdrop-blur-sm">
+                        <div class="inline-flex items-center gap-1.5 mt-1 bg-black/20 px-2.5 py-1 rounded-md border border-white/5 ">
                             <span class="w-1.5 h-1.5 rounded-full" :class="portfolioSummary.totalReturn >= 0 ? 'bg-emerald-400' : 'bg-rose-400'"></span>
                             <p class="text-[9px] font-bold" :class="portfolioSummary.totalReturn >= 0 ? 'text-emerald-300' : 'text-rose-300'">
                                 {{ portfolioSummary.totalReturn >= 0 ? '+' : '' }}{{ formatMoney(portfolioSummary.totalReturn) }} {{ $t('total_pl') }}
                             </p>
                         </div>
                     </div>
-                    <button @click="handleAddAsset" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md flex items-center justify-center text-xl text-white border border-white/20 transition-all active:scale-95 shadow-md">
+                    <button @click="handleAddAsset" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-white/20  flex items-center justify-center text-xl text-white border border-white/20 transition-all active:scale-95 shadow-md">
                         ＋
                     </button>
                 </div>

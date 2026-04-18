@@ -46,7 +46,7 @@ onUnmounted(() => {
 
 <template>
     <Modal :show="show" @close="close" maxWidth="2xl">
-        <div class="bg-white dark:bg-slate-900 flex flex-col max-h-[85dvh] md:max-h-[85vh] relative overflow-hidden transition-all duration-200 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem] w-full will-change-transform">
+        <div class="bg-white dark:bg-slate-900 flex flex-col max-h-[85dvh] md:max-h-[85vh] relative overflow-hidden transition-all duration-200 border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-none rounded-[2.5rem] w-full ">
             
             <!-- [LOCKED STATE] Full Modal Cover -->
             <div v-if="isExplorer" class="flex-1 flex flex-col items-center justify-center p-8 md:p-12 text-center relative overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500 min-h-[500px]">

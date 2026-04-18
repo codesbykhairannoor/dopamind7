@@ -83,7 +83,7 @@ const deleteAccount = () => {
         </section>
 
         <!-- Delete Confirm Modal (Simple version for tab) -->
-        <div v-if="showDeleteConfirm" class="fixed inset-0 bg-slate-900/40 dark:bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div v-if="showDeleteConfirm" class="fixed inset-0 bg-slate-900/40 dark:bg-slate-950/60  flex items-center justify-center p-4 z-50">
             <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-8 max-w-md w-full shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 animate-in fade-in zoom-in duration-300">
                 <h3 class="text-xl font-black text-slate-800 dark:text-white mb-2">{{ $t('security_confirm_delete_title', 'Konfirmasi Penghapusan') }}</h3>
                 <p class="text-xs font-bold text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">{{ $t('security_confirm_delete_desc', 'Masukkan password Anda untuk mengonfirmasi bahwa Anda benar-benar ingin menghapus akun Oneformind Anda.') }}</p>

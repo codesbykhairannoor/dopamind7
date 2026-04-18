@@ -170,7 +170,7 @@ watch(isMobileDrawerOpen, (open) => {
                     <Transition name="mobile-drawer-backdrop">
                         <div
                             v-if="isMobileDrawerOpen"
-                            class="fixed inset-0 top-16 z-[60] bg-slate-950/50 backdrop-blur-sm"
+                            class="fixed inset-0 top-16 z-[60] bg-slate-950/50 "
                             aria-hidden="true"
                             @click="closeMobileDrawer"
                         ></div>
@@ -252,7 +252,7 @@ watch(isMobileDrawerOpen, (open) => {
                 class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
             >
                 <div
-                    class="absolute inset-0 bg-slate-900/40 dark:bg-slate-950/60 backdrop-blur-sm"
+                    class="absolute inset-0 bg-slate-900/40 dark:bg-slate-950/60 "
                     @click="showLogoutModal = false"
                 ></div>
                 <div

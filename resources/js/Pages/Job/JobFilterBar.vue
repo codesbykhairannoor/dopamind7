@@ -100,7 +100,7 @@ watch(search, (val) => {
 </script>
 
 <template>
-    <div class="mb-5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm border-white/60 dark:border-slate-800 transition-colors duration-500">
+    <div class="mb-5 bg-white/80 dark:bg-slate-900/80  rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm border-white/60 dark:border-slate-800 transition-colors duration-500">
         <!-- Top Bar: Search + Date filter -->
         <div class="p-4 border-b border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row gap-3 items-start sm:items-center overflow-visible transition-colors duration-500">
             

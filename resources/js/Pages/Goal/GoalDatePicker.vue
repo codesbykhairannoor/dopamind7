@@ -73,10 +73,10 @@ const isToday = (day) => {
              ]">
             
             <!-- Backdrop only for Teleport mode -->
-            <div v-if="teleport" class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" @click="emit('close')"></div>
+            <div v-if="teleport" class="absolute inset-0 bg-slate-900/40 " @click="emit('close')"></div>
 
             <!-- High-Density Premium Glassmorphism Card -->
-            <div class="bg-white/95 backdrop-blur-xl rounded-[2.5rem] shadow-[0_25px_60px_rgba(0,0,0,0.2)] border border-slate-200 p-6 animate-in fade-in zoom-in-95 duration-200 relative z-10 w-[300px]">
+            <div class="bg-white/95  rounded-[2.5rem] shadow-[0_25px_60px_rgba(0,0,0,0.2)] border border-slate-200 p-6 animate-in fade-in zoom-in-95 duration-200 relative z-10 w-[300px]">
                 
                 <div class="flex items-center justify-between mb-5 px-1">
                     <button @click.prevent="prevMonth" class="w-9 h-9 rounded-xl hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-indigo-600 transition-all active:scale-90">
