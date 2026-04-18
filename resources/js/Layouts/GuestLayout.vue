@@ -412,7 +412,7 @@ const switchLang = (lang) => {
                     <div>
                         <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Compare</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
-                            <li><a :href="route('compare.paper')" class="hover:text-indigo-600 transition">Vs. Paper Planner</a></li>
+                            <li><a :href="route('compare.notes-apps')" class="hover:text-indigo-600 transition">Vs. Notes Apps</a></li>
                             <li><a :href="route('compare.custom-apps')" class="hover:text-indigo-600 transition">Vs. Excel/Sheets</a></li>
                             <li><a :href="route('compare.finance-apps')" class="hover:text-indigo-600 transition">Vs. Finance Apps</a></li>
                             <li><a :href="route('compare.planner-apps')" class="hover:text-indigo-600 transition">Vs. Planner Apps</a></li>

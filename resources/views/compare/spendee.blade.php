@@ -10,10 +10,10 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Holistic Theme) --}}
-    <header class="pt-32 pb-24 px-6 overflow-hidden bg-slate-950 relative border-b border-purple-900">
+    {{-- SECTION 1: HERO (Text Center, Visual Bottom) --}}
+    <header class="pt-32 pb-0 px-6 overflow-hidden bg-slate-950 relative border-b border-purple-900">
         <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(168,85,247,0.15)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20"></div>
-        <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+        <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 mb-16">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/50 text-purple-300 font-bold text-xs mb-8 uppercase tracking-wider border border-purple-500/30">
                 <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
                 {{ __('spendee_badge') }}
@@ -31,6 +31,32 @@
                 </a>
             </div>
             <p class="mt-4 text-xs text-slate-500 font-medium">{{ __('spendee_hero_note') }}</p>
+        </div>
+
+        {{-- Visual Bottom: A wide dashboard card sliding up --}}
+        <div class="max-w-5xl mx-auto relative z-10 translate-y-12 hover:translate-y-4 transition-transform duration-700 animate-in slide-in-from-bottom-24 fade-in duration-1000 delay-300">
+            <div class="bg-slate-900 border border-slate-800 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(168,85,247,0.15)] p-8 md:p-12 overflow-hidden relative">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-purple-500/30 rounded-b-full"></div>
+                <div class="flex flex-col md:flex-row gap-8 items-center justify-center">
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 w-full text-center">
+                        <div class="text-3xl mb-2">💰</div>
+                        <div class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-1">Finance</div>
+                        <div class="text-white text-xl font-black">$2,450</div>
+                    </div>
+                    <div class="text-purple-500 text-2xl font-black">↔️</div>
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 w-full text-center">
+                        <div class="text-3xl mb-2">🌱</div>
+                        <div class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-1">Habits</div>
+                        <div class="text-emerald-400 text-xl font-black">85% Completion</div>
+                    </div>
+                    <div class="text-purple-500 text-2xl font-black">↔️</div>
+                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 w-full text-center">
+                        <div class="text-3xl mb-2">🎯</div>
+                        <div class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-1">Planner</div>
+                        <div class="text-white text-xl font-black">3 Focus Tasks</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 

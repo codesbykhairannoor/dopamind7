@@ -10,26 +10,51 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Active Awareness Theme) --}}
+    {{-- SECTION 1: HERO (Text Left, Visual Right) --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-white relative border-b border-blue-100">
         <div class="absolute inset-0 bg-gradient-to-tr from-blue-50/50 to-transparent pointer-events-none"></div>
-        <div class="max-w-6xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-bold text-xs mb-8 uppercase tracking-wider shadow-sm">
-                {{ __('wallet_badge') }}
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="animate-in fade-in slide-in-from-left-8 duration-1000">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-bold text-xs mb-8 uppercase tracking-wider shadow-sm">
+                    {{ __('wallet_badge') }}
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                    {{ __('wallet_hero_title_1') }} <br/>
+                    <span class="text-blue-600">{{ __('wallet_hero_title_2') }}</span>
+                </h1>
+                <p class="text-xl text-slate-500 mb-10 max-w-xl leading-relaxed">
+                    {!! __('wallet_hero_desc') !!}
+                </p>
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-blue-600 text-white font-black px-10 py-5 rounded-2xl hover:bg-blue-700 transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:-translate-y-1">
+                        {{ __('wallet_hero_cta') }}
+                    </a>
+                    <p class="mt-4 text-xs text-slate-400 font-bold self-center sm:self-auto">{{ __('wallet_hero_note') }}</p>
+                </div>
             </div>
-            <h1 class="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
-                {{ __('wallet_hero_title_1') }} <br/>
-                <span class="text-blue-600">{{ __('wallet_hero_title_2') }}</span>
-            </h1>
-            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-                {!! __('wallet_hero_desc') !!}
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-blue-600 text-white font-black px-10 py-5 rounded-2xl hover:bg-blue-700 transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:-translate-y-1">
-                    {{ __('wallet_hero_cta') }}
-                </a>
+            
+            <div class="relative h-[500px] flex items-center justify-center animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
+                <div class="absolute w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+                <div class="relative bg-white border border-slate-200 rounded-[2.5rem] shadow-2xl p-8 w-80 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 mx-auto bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-4 font-black">💸</div>
+                        <h3 class="font-bold text-slate-900 text-xl">Log Expense</h3>
+                        <p class="text-sm text-slate-400">Feel every transaction.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex justify-between items-center">
+                            <span class="text-slate-500 font-medium">Coffee</span>
+                            <span class="font-bold text-slate-900">$4.50</span>
+                        </div>
+                        <button class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-200 active:scale-95 transition-transform">
+                            Confirm Purchase
+                        </button>
+                    </div>
+                    <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-2xl shadow-xl animate-bounce">
+                        💡
+                    </div>
+                </div>
             </div>
-            <p class="mt-4 text-xs text-slate-400 font-bold">{{ __('wallet_hero_note') }}</p>
         </div>
     </header>
 

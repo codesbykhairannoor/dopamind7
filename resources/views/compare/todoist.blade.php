@@ -10,9 +10,9 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Execution Theme) --}}
-    <header class="pt-32 pb-24 px-6 overflow-hidden bg-slate-900 relative border-b border-slate-800">
-        <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+    {{-- SECTION 1: HERO (Text Center, Visual Bottom) --}}
+    <header class="pt-32 pb-0 px-6 overflow-hidden bg-slate-900 relative border-b border-slate-800">
+        <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 mb-16">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/20 text-red-300 font-bold text-xs mb-8 uppercase tracking-wider border border-red-500/30">
                 <span class="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
                 {{ __('todoist_badge') }}
@@ -25,11 +25,35 @@
                 {!! __('todoist_hero_desc') !!}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-red-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-red-500 transition-all shadow-[0_0_40px_rgba(239,68,68,0.3)] hover:shadow-[0_0_60px_rgba(239,68,68,0.5)]">
+                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-red-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-red-500 transition-all shadow-[0_0_40px_rgba(239,68,68,0.3)] hover:shadow-[0_0_60px_rgba(239,68,68,0.5)] hover:-translate-y-1 transform">
                     {{ __('todoist_hero_cta') }}
                 </a>
             </div>
             <p class="mt-4 text-xs text-slate-500 font-medium">{{ __('todoist_hero_note') }}</p>
+        </div>
+
+        {{-- Visual Bottom: A focused daily timeline sliding up --}}
+        <div class="max-w-4xl mx-auto relative z-10 translate-y-12 hover:translate-y-4 transition-transform duration-700 animate-in slide-in-from-bottom-24 fade-in duration-1000 delay-300">
+            <div class="bg-slate-800 border border-slate-700 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] p-8 md:p-12 overflow-hidden relative">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-red-500/30 rounded-b-full"></div>
+                <div class="flex items-center gap-4 mb-8 justify-center">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/20 text-red-400 flex items-center justify-center text-xl border border-red-500/30">🎯</div>
+                    <div class="font-bold text-2xl text-white">Focus Timeline</div>
+                </div>
+                
+                <div class="space-y-4 max-w-2xl mx-auto relative before:absolute before:inset-y-0 before:left-[4.5rem] before:w-0.5 before:bg-slate-700">
+                    <div class="flex gap-6 items-center relative z-10">
+                        <div class="text-slate-400 font-mono w-16 text-right">09:00</div>
+                        <div class="w-3 h-3 bg-red-500 rounded-full border-2 border-slate-800 absolute left-[4.15rem]"></div>
+                        <div class="bg-red-500 text-white p-4 rounded-2xl flex-1 font-bold shadow-lg shadow-red-500/20">Deep Work Block</div>
+                    </div>
+                    <div class="flex gap-6 items-center relative z-10 opacity-50">
+                        <div class="text-slate-500 font-mono w-16 text-right">11:00</div>
+                        <div class="w-3 h-3 bg-slate-600 rounded-full border-2 border-slate-800 absolute left-[4.15rem]"></div>
+                        <div class="bg-slate-700 text-slate-300 p-4 rounded-2xl flex-1">Emails & Slack</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 

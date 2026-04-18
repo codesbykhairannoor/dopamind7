@@ -10,9 +10,16 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Corporate vs Personal Theme) --}}
+    {{-- SECTION 1: HERO (Text Center, Floating Elements) --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-slate-950 relative border-b border-purple-900/50">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f46e511_1px,transparent_1px),linear-gradient(to_bottom,#4f46e511_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        
+        {{-- Floating UI Fragments --}}
+        <div class="absolute top-24 left-[5%] bg-slate-800/80 border border-slate-700 rounded-lg p-3 text-xs text-slate-400 shadow-xl blur-[2px] opacity-60 animate-[pulse_5s_infinite] -rotate-6">Gantt View</div>
+        <div class="absolute bottom-32 left-[10%] bg-slate-800/80 border border-slate-700 rounded-lg p-3 text-xs text-slate-400 shadow-xl blur-[1px] opacity-70 animate-[pulse_6s_infinite_1s] rotate-12">Custom Field 42</div>
+        <div class="absolute top-40 right-[8%] bg-slate-800/80 border border-slate-700 rounded-lg p-3 text-xs text-slate-400 shadow-xl blur-[2px] opacity-50 animate-[pulse_4s_infinite_2s] rotate-6">Sprint Points</div>
+        <div class="absolute bottom-24 right-[12%] bg-slate-800/80 border border-slate-700 rounded-lg p-3 text-xs text-slate-400 shadow-xl blur-[1px] opacity-80 animate-[pulse_7s_infinite_0.5s] -rotate-12">Dependencies</div>
+
         <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 font-bold text-xs mb-8 uppercase tracking-wider border border-purple-500/30">
                 <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
@@ -22,11 +29,11 @@
                 {{ __('clickup_hero_title_1') }} <br/>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{{ __('clickup_hero_title_2') }}</span>
             </h1>
-            <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed bg-slate-900/50 backdrop-blur-sm p-4 rounded-2xl inline-block border border-slate-800">
                 {!! __('clickup_hero_desc') !!}
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-purple-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-purple-500 transition-all shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:shadow-[0_0_60px_rgba(168,85,247,0.5)]">
+                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-purple-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-purple-500 transition-all shadow-[0_0_40px_rgba(168,85,247,0.3)] hover:shadow-[0_0_60px_rgba(168,85,247,0.5)] hover:-translate-y-1 transform">
                     {{ __('clickup_hero_cta') }}
                 </a>
             </div>

@@ -10,26 +10,46 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Clean Finance Look) --}}
-    <header class="pt-32 pb-24 px-6 overflow-hidden bg-slate-50 relative border-b border-slate-200">
-        <div class="max-w-5xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-top-8 duration-1000">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs mb-8 uppercase tracking-wider border border-emerald-200">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                {{ __('ynab_badge') }}
+    {{-- SECTION 1: HERO (Visual Left, Text Right, Indigo 600 Dark Theme) --}}
+    <header class="pt-32 pb-24 px-6 overflow-hidden bg-slate-900 relative border-b border-slate-800">
+        <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-3xl -z-10 translate-x-[-20%] translate-y-[-20%]"></div>
+        
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="order-2 lg:order-1 relative h-[400px] lg:h-[500px] flex items-center justify-center">
+                <div class="absolute w-64 h-64 bg-indigo-600 rounded-[2.5rem] transform -rotate-12 shadow-[0_0_50px_rgba(79,70,229,0.3)]"></div>
+                <div class="absolute w-64 h-64 bg-slate-800 rounded-[2.5rem] transform rotate-6 border border-slate-700 shadow-2xl p-6 flex flex-col justify-between z-10">
+                    <div class="flex justify-between items-start">
+                        <div class="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-xl flex items-center justify-center text-xl border border-indigo-500/30">💰</div>
+                        <div class="px-3 py-1 bg-green-500/20 text-green-400 text-xs font-bold rounded-full border border-green-500/30">On Track</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-black text-white mb-2">$0.00</div>
+                        <div class="text-sm text-slate-400">Zero-Based Budgeting</div>
+                    </div>
+                    <div class="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
+                        <div class="w-full h-full bg-indigo-500 rounded-full"></div>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
-                {{ __('ynab_hero_title_1') }} <br/>
-                <span class="text-emerald-600 underline decoration-wavy decoration-emerald-200">{{ __('ynab_hero_title_2') }}</span>
-            </h1>
-            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-                {!! __('ynab_hero_desc') !!}
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-slate-900 text-white font-bold px-8 py-4 rounded-xl hover:bg-emerald-600 transition-colors shadow-xl hover:shadow-emerald-500/30">
-                    {{ __('ynab_hero_cta') }}
-                </a>
+
+            <div class="order-1 lg:order-2 text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 text-indigo-300 font-bold text-xs mb-8 uppercase tracking-wider border border-indigo-500/30">
+                    💸 {{ __('ynab_badge') }}
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
+                    {{ __('ynab_hero_title_1') }} <br/>
+                    <span class="text-indigo-400">{{ __('ynab_hero_title_2') }}</span>
+                </h1>
+                <p class="text-xl text-slate-400 mb-10 leading-relaxed max-w-lg">
+                    {!! __('ynab_hero_desc') !!}
+                </p>
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-indigo-500 transition-colors shadow-[0_10px_20px_rgba(79,70,229,0.3)] hover:-translate-y-1 transform">
+                        {{ __('ynab_hero_cta') }}
+                    </a>
+                    <p class="mt-4 text-xs text-slate-500 font-medium">{{ __('ynab_hero_note') }}</p>
+                </div>
             </div>
-            <p class="mt-4 text-xs text-slate-400 font-medium">{{ __('ynab_hero_note') }}</p>
         </div>
     </header>
 

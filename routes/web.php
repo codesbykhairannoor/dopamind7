@@ -395,9 +395,9 @@ Route::get("/company/press-kit", function () {
 // COMPARE
 // ==========================================
 
-Route::get("/compare/paper", function () {
-    return view("compare.paper");
-})->name("compare.paper");
+Route::get("/compare/notes-apps", function () {
+    return view("compare.notes-apps");
+})->name("compare.notes-apps");
 
 Route::get("/compare/custom-apps", function () {
     return view("compare.custom-apps");
@@ -437,6 +437,11 @@ Route::get('/compare/spendee-alternative', function () { return view('compare.sp
 Route::get('/compare/todoist-alternative', function () { return view('compare.todoist'); })->name('compare.todoist');
 Route::get('/compare/ticktick-alternative', function () { return view('compare.ticktick'); })->name('compare.ticktick');
 Route::get('/compare/clickup-alternative', function () { return view('compare.clickup'); })->name('compare.clickup');
+
+// Head-to-Head Compare Pages (Notes Apps)
+Route::get('/compare/evernote-alternative', function () { return view('compare.evernote'); })->name('compare.evernote');
+Route::get('/compare/apple-notes-alternative', function () { return view('compare.applenotes'); })->name('compare.applenotes');
+Route::get('/compare/onenote-alternative', function () { return view('compare.onenote'); })->name('compare.onenote');
 
 // Head-to-Head Compare Pages (Custom Apps)
 Route::get('/compare/spreadsheet-alternative', function () { return view('compare.spreadsheet'); })->name('compare.spreadsheet');

@@ -36,26 +36,57 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Minimalist/Orange vs Indigo Contrast) --}}
+    {{-- SECTION 1: HERO (Text Right, Visual Left) --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-slate-50 relative border-b border-slate-200">
-        <div class="max-w-5xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-top-8 duration-1000">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 text-orange-700 font-bold text-xs mb-8 uppercase tracking-wider border border-orange-200">
-                <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-                {{ __('streaks_badge') }}
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            
+            <div class="order-2 lg:order-1 relative h-[400px] flex items-center justify-center animate-in fade-in slide-in-from-left-8 duration-1000 delay-200">
+                <div class="absolute w-64 h-64 bg-orange-200 rounded-full blur-3xl opacity-50"></div>
+                <div class="relative bg-white border border-slate-200 rounded-[2.5rem] shadow-xl p-8 w-80 transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+                    <div class="text-center mb-6">
+                        <div class="font-bold text-slate-400 uppercase tracking-widest text-xs mb-4">Consistency Over Perfection</div>
+                    </div>
+                    <div class="grid grid-cols-7 gap-2 mb-6">
+                        @for($i=0; $i<28; $i++)
+                            @php
+                                $color = 'bg-emerald-100';
+                                if($i == 12 || $i == 13 || $i == 20) $color = 'bg-slate-100';
+                                if($i % 3 == 0 && $i != 12) $color = 'bg-emerald-300';
+                                if($i % 7 == 0) $color = 'bg-emerald-500';
+                            @endphp
+                            <div class="w-full aspect-square rounded-sm {{ $color }}"></div>
+                        @endfor
+                    </div>
+                    <div class="bg-emerald-50 text-emerald-700 p-4 rounded-xl border border-emerald-100 text-sm font-bold text-center">
+                        85% Consistency Rate
+                    </div>
+                    <div class="absolute -left-6 -top-6 w-16 h-16 bg-white border border-slate-200 text-red-500 rounded-full flex flex-col items-center justify-center shadow-lg opacity-50 grayscale rotate-12">
+                        <span class="text-lg">🔥</span>
+                        <span class="text-[8px] font-black">0</span>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
-                {{ __('streaks_hero_title_1') }} <br/>
-                <span class="text-indigo-600 underline decoration-wavy decoration-indigo-200">{{ __('streaks_hero_title_2') }}</span>
-            </h1>
-            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-                {!! __('streaks_hero_desc') !!}
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-slate-900 text-white font-bold px-8 py-4 rounded-xl hover:bg-indigo-600 transition-colors shadow-xl hover:shadow-indigo-500/30">
-                    {{ __('streaks_hero_cta') }}
-                </a>
+
+            <div class="order-1 lg:order-2 text-left animate-in fade-in slide-in-from-right-8 duration-1000">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 text-orange-700 font-bold text-xs mb-8 uppercase tracking-wider border border-orange-200">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                    {{ __('streaks_badge') }}
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                    {{ __('streaks_hero_title_1') }} <br/>
+                    <span class="text-indigo-600 underline decoration-wavy decoration-indigo-200">{{ __('streaks_hero_title_2') }}</span>
+                </h1>
+                <p class="text-xl text-slate-500 mb-10 max-w-xl leading-relaxed">
+                    {!! __('streaks_hero_desc') !!}
+                </p>
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-slate-900 text-white font-bold px-8 py-4 rounded-xl hover:bg-indigo-600 transition-colors shadow-xl hover:shadow-indigo-500/30 hover:-translate-y-1 transform">
+                        {{ __('streaks_hero_cta') }}
+                    </a>
+                    <p class="mt-4 text-xs text-slate-400 font-medium self-center sm:self-auto">{{ __('streaks_hero_note') }}</p>
+                </div>
             </div>
-            <p class="mt-4 text-xs text-slate-400 font-medium">{{ __('streaks_hero_note') }}</p>
+
         </div>
     </header>
 

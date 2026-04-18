@@ -10,26 +10,56 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Vision Theme) --}}
+    {{-- SECTION 1: HERO (Text Left, Visual Right) --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-white relative border-b border-indigo-100">
         <div class="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-white to-transparent pointer-events-none"></div>
-        <div class="max-w-6xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-bold text-xs mb-8 uppercase tracking-wider shadow-sm border border-blue-200">
-                {{ __('ticktick_badge') }}
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            
+            <div class="animate-in fade-in slide-in-from-left-8 duration-1000">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-700 font-bold text-xs mb-8 uppercase tracking-wider shadow-sm border border-blue-200">
+                    {{ __('ticktick_badge') }}
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                    {{ __('ticktick_hero_title_1') }} <br/>
+                    <span class="text-blue-600">{{ __('ticktick_hero_title_2') }}</span>
+                </h1>
+                <p class="text-xl text-slate-500 mb-10 max-w-xl leading-relaxed">
+                    {!! __('ticktick_hero_desc') !!}
+                </p>
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                    <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-blue-600 text-white font-black px-10 py-5 rounded-2xl hover:bg-blue-700 transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:-translate-y-1">
+                        {{ __('ticktick_hero_cta') }}
+                    </a>
+                    <p class="mt-4 text-xs text-slate-400 font-bold self-center sm:self-auto">{{ __('ticktick_hero_note') }}</p>
+                </div>
             </div>
-            <h1 class="text-5xl md:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
-                {{ __('ticktick_hero_title_1') }} <br/>
-                <span class="text-blue-600">{{ __('ticktick_hero_title_2') }}</span>
-            </h1>
-            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
-                {!! __('ticktick_hero_desc') !!}
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a hx-boost="false" href="{{ route('register') }}" class="w-full sm:w-auto bg-blue-600 text-white font-black px-10 py-5 rounded-2xl hover:bg-blue-700 transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:-translate-y-1">
-                    {{ __('ticktick_hero_cta') }}
-                </a>
+
+            <div class="relative h-[400px] flex items-center justify-center animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
+                <div class="absolute w-64 h-64 bg-blue-500/10 rounded-full blur-3xl opacity-50"></div>
+                
+                {{-- Hamster Wheel vs Mountain --}}
+                <div class="relative flex flex-col gap-6">
+                    <div class="bg-slate-50 border-2 border-slate-200 rounded-3xl p-6 shadow-md flex items-center gap-6 transform -rotate-2 hover:rotate-0 transition-transform">
+                        <div class="text-5xl animate-[spin_4s_linear_infinite]">🐹</div>
+                        <div>
+                            <div class="font-bold text-slate-700">Endless Tasks</div>
+                            <div class="text-xs text-slate-500">Checking boxes, going nowhere.</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center font-black text-slate-300">VS</div>
+
+                    <div class="bg-white border-2 border-blue-200 rounded-3xl p-6 shadow-2xl flex items-center gap-6 transform rotate-2 hover:rotate-0 transition-transform">
+                        <div class="text-5xl drop-shadow-md">⛰️</div>
+                        <div>
+                            <div class="font-bold text-blue-700">Vision Alignment</div>
+                            <div class="text-xs text-blue-500 font-medium">Every task climbs the mountain.</div>
+                        </div>
+                        <div class="absolute -right-4 -top-4 w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xl shadow-lg border border-emerald-200">✨</div>
+                    </div>
+                </div>
             </div>
-            <p class="mt-4 text-xs text-slate-400 font-bold">{{ __('ticktick_hero_note') }}</p>
+
         </div>
     </header>
 
