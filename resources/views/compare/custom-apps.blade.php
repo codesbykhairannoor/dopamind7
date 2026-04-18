@@ -22,7 +22,7 @@
     "@type": "ListItem",
     "position": 2,
     "name": "{{ __('blank_badge') }}",
-    "item": "{{ url('/compare/sheets') }}"
+    "item": "{{ url('/compare/custom-apps') }}"
   }]
 },
 {
@@ -158,6 +158,41 @@
             </div>
         </div>
     </header>
+
+    {{-- ================================================================= --}}
+    {{-- EXPLORE MORE ALTERNATIVES (CROSS-LINKING) --}}
+    {{-- ================================================================= --}}
+    <section class="py-12 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-black text-gray-900">Explore Other Custom App Alternatives</h2>
+                <p class="text-gray-500 mt-2">See how OneForMind replaces other popular workspace tools.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="{{ route('compare.spreadsheet') }}" class="group bg-white p-6 rounded-2xl border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform">📊</div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">Spreadsheet Alternative</h3>
+                        <p class="text-sm text-gray-500">Stop building trackers from scratch.</p>
+                    </div>
+                </a>
+                <a href="{{ route('compare.notion') }}" class="group bg-white p-6 rounded-2xl border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-gray-100 text-gray-800 rounded-xl flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform">📝</div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">Notion Alternative</h3>
+                        <p class="text-sm text-gray-500">Escape the infinite setup loop.</p>
+                    </div>
+                </a>
+                <a href="{{ route('compare.obsidian') }}" class="group bg-white p-6 rounded-2xl border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform">🧠</div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">Obsidian Alternative</h3>
+                        <p class="text-sm text-gray-500">Actionable structure over linked chaos.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
     {{-- ================================================================= --}}
     {{-- SECTION 2: REDESIGN - THE CYCLE (ASYMMETRIC BENTO GRID) --}}

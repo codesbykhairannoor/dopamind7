@@ -1047,7 +1047,7 @@
                         <ul class="space-y-4 text-sm font-bold text-slate-700">
                             <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">Vs.
                                     Paper Planner</a></li>
-                            <li><a href="{{ route('compare.sheets') }}" class="hover:text-indigo-600 transition">Vs.
+                            <li><a href="{{ route('compare.custom-apps') }}" class="hover:text-indigo-600 transition">Vs.
                                     Excel/Sheets</a></li>
                             <li><a href="{{ route('compare.finance-apps') }}"
                                     class="hover:text-indigo-600 transition">Vs. Finance Apps</a></li>

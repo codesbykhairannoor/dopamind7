@@ -161,6 +161,41 @@
     </header>
 
     {{-- ================================================================= --}}
+    {{-- EXPLORE MORE ALTERNATIVES (CROSS-LINKING) --}}
+    {{-- ================================================================= --}}
+    <section class="py-12 bg-gray-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-black text-gray-900">Explore Other Project Management Alternatives</h2>
+                <p class="text-gray-500 mt-2">See how OneForMind replaces bloated corporate tools.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="{{ route('compare.monday') }}" class="group bg-white p-6 rounded-2xl border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform">📊</div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">Monday Alternative</h3>
+                        <p class="text-sm text-gray-500">Stop managing the management.</p>
+                    </div>
+                </a>
+                <a href="{{ route('compare.trello') }}" class="group bg-white p-6 rounded-2xl border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform">📋</div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">Trello Alternative</h3>
+                        <p class="text-sm text-gray-500">Beyond simple kanban boards.</p>
+                    </div>
+                </a>
+                <a href="{{ route('compare.asana') }}" class="group bg-white p-6 rounded-2xl border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all flex items-center gap-4">
+                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center font-bold text-xl group-hover:scale-110 transition-transform">🦄</div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 group-hover:text-indigo-600 transition-colors">Asana Alternative</h3>
+                        <p class="text-sm text-gray-500">Focus on work, not assigning it.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
     {{-- SECTION 2: THE CYCLE -> "THE BROKEN TIMELINE" (VERTICAL) --}}
     {{-- ================================================================= --}}
     {{-- Konsep: Garis waktu vertikal yang menggambarkan penurunan produktivitas --}}

@@ -186,7 +186,7 @@ Route::get("/sitemap.xml", function () {
         "/company/privacy" => "0.5",
         "/company/terms" => "0.5",
         "/compare/paper" => "0.7",
-        "/compare/sheets" => "0.7",
+        "/compare/custom-apps" => "0.7",
         "/compare/finance-apps" => "0.7",
     ];
 
@@ -399,9 +399,9 @@ Route::get("/compare/paper", function () {
     return view("compare.paper");
 })->name("compare.paper");
 
-Route::get("/compare/sheets", function () {
-    return view("compare.sheets");
-})->name("compare.sheets");
+Route::get("/compare/custom-apps", function () {
+    return view("compare.custom-apps");
+})->name("compare.custom-apps");
 
 Route::get("/compare/management-tools", function () {
     return view("compare.management-tools");
@@ -437,6 +437,16 @@ Route::get('/compare/spendee-alternative', function () { return view('compare.sp
 Route::get('/compare/todoist-alternative', function () { return view('compare.todoist'); })->name('compare.todoist');
 Route::get('/compare/ticktick-alternative', function () { return view('compare.ticktick'); })->name('compare.ticktick');
 Route::get('/compare/clickup-alternative', function () { return view('compare.clickup'); })->name('compare.clickup');
+
+// Head-to-Head Compare Pages (Custom Apps)
+Route::get('/compare/spreadsheet-alternative', function () { return view('compare.spreadsheet'); })->name('compare.spreadsheet');
+Route::get('/compare/notion-alternative', function () { return view('compare.notion'); })->name('compare.notion');
+Route::get('/compare/obsidian-alternative', function () { return view('compare.obsidian'); })->name('compare.obsidian');
+
+// Head-to-Head Compare Pages (Management Tools)
+Route::get('/compare/monday-alternative', function () { return view('compare.monday'); })->name('compare.monday');
+Route::get('/compare/trello-alternative', function () { return view('compare.trello'); })->name('compare.trello');
+Route::get('/compare/asana-alternative', function () { return view('compare.asana'); })->name('compare.asana');
 
 // --- GROUP 2: SOCIAL LOGIN ---
 Route::get("/auth/google", [SocialController::class, "redirect"])->name(

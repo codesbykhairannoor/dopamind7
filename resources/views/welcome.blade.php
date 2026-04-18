@@ -674,7 +674,7 @@
                     <div class="text-xl font-bold text-slate-900 mb-2">{{ __('mig_card_1') }}</div>
                     <div class="text-indigo-600 font-bold text-sm opacity-0 group-hover:opacity-100 transition">{{ __('mig_view_card_1') }}</div>
                 </a>
-                <a href="{{ route('compare.sheets') }}" class="group bg-white p-12 rounded-[2.5rem] border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1">
+                <a href="{{ route('compare.custom-apps') }}" class="group bg-white p-12 rounded-[2.5rem] border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1">
                     <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📊</div>
                     <div class="text-xl font-bold text-slate-900 mb-2">{{ __('mig_card_2') }}</div>
                     <div class="text-indigo-600 font-bold text-sm opacity-0 group-hover:opacity-100 transition">{{ __('mig_view_card_2') }}</div>
