@@ -1020,7 +1020,7 @@
 
                     <div class="col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Product</p>
-                        <ul class="space-y-4 text-sm font-bold text-slate-700">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700 pl-0 ml-0">
                             <li><a href="{{ route('features.habit') }}" class="hover:text-indigo-600 transition">Habit
                                     Tracker</a></li>
                             <li><a href="{{ route('features.finance') }}"
@@ -1044,7 +1044,7 @@
 
                     <div class="col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Compare</p>
-                        <ul class="space-y-4 text-sm font-bold text-slate-700">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700 pl-0 ml-0">
                             <li><a href="{{ route('compare.notes-apps') }}" class="hover:text-indigo-600 transition">Vs.
                                     Notes Apps</a></li>
                             <li><a href="{{ route('compare.custom-apps') }}" class="hover:text-indigo-600 transition">Vs.
@@ -1064,7 +1064,7 @@
 
                     <div class="col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Resources</p>
-                        <ul class="space-y-4 text-sm font-bold text-slate-700">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700 pl-0 ml-0">
                             <li><a href="{{ route('resources.help') }}" class="hover:text-indigo-600 transition">Help
                                     Center</a></li>
                             <li><a href="{{ route('resources.blog') }}"
@@ -1085,7 +1085,7 @@
 
                     <div class="col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Company</p>
-                        <ul class="space-y-4 text-sm font-bold text-slate-700">
+                        <ul class="space-y-4 text-sm font-bold text-slate-700 pl-0 ml-0">
                             <li><a href="{{ route('company.privacy') }}"
                                     class="hover:text-indigo-600 transition">Privacy policy</a></li>
                             <li><a href="{{ route('company.terms') }}"
