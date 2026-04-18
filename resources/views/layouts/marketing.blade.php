@@ -508,7 +508,8 @@
         mobileMenuOpen: false,
         activeMenu: null,
         mobilePanel: null,
-        scrolled: false
+        scrolled: false,
+        isInterfacing: false
     }" @mobile-nav-close.window="mobileMenuOpen = false; mobilePanel = null"
         @scroll.window.passive="scrolled = (window.scrollY > 20)" class="relative">
 

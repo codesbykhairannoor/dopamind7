@@ -85,7 +85,7 @@
   "itemListElement": [{
     "@type": "ListItem",
     "position": 1,
-    "name": "OneForMind",
+    "name": "Home",
     "item": "{{ url('/') }}"
   },{
     "@type": "ListItem",
