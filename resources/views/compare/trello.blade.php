@@ -10,30 +10,45 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Indigo 600 Theme, Unique Layout) --}}
-    <header class="pt-32 pb-24 px-6 bg-slate-900 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900 via-slate-900 to-black opacity-80"></div>
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+    {{-- SECTION 1: HERO (Indigo 600 Solid Background, Center Text, Cards Below) --}}
+    <header class="pt-32 pb-24 px-6 bg-indigo-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay"></div>
         
-        <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 text-indigo-300 font-bold text-xs mb-8 uppercase tracking-wider border border-indigo-500/30 ">
-                ⚡ {{ __('trello_badge') }}
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500 text-white font-bold text-xs mb-8 uppercase tracking-wider border border-indigo-400">
+                📋 {{ __('trello_badge') }}
             </div>
             
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-tight max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-tight drop-shadow-sm">
                 {{ __('trello_hero_title_1') }} <br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-600">{{ __('trello_hero_title_2') }}</span>
+                <span class="text-indigo-200">{{ __('trello_hero_title_2') }}</span>
             </h1>
             
-            <p class="text-xl text-indigo-100/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto leading-relaxed">
                 {!! __('trello_hero_desc') !!}
             </p>
             
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-600/50 transition-all transform hover:-translate-y-1">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="{{ route('register') }}" class="bg-white text-indigo-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-50 hover:shadow-xl transition-all transform hover:-translate-y-1">
                     {{ __('trello_hero_cta') }}
                 </a>
-                <span class="text-sm text-slate-400 font-medium">{{ __('trello_hero_note') }}</span>
+                <span class="text-sm text-indigo-200 font-medium">{{ __('trello_hero_note') }}</span>
+            </div>
+            
+            <div class="flex justify-center gap-6 opacity-80">
+                <div class="w-32 h-40 bg-indigo-500 rounded-xl border border-indigo-400 transform -rotate-12 flex flex-col p-3 gap-2">
+                    <div class="w-full h-2 bg-indigo-400 rounded"></div>
+                    <div class="w-2/3 h-2 bg-indigo-400 rounded"></div>
+                </div>
+                <div class="w-40 h-48 bg-white rounded-xl border border-indigo-200 transform rotate-0 flex flex-col p-4 gap-3 shadow-2xl z-10">
+                    <div class="w-8 h-8 bg-indigo-100 rounded-full mb-2 flex items-center justify-center text-indigo-600 text-sm">✓</div>
+                    <div class="w-full h-3 bg-slate-200 rounded"></div>
+                    <div class="w-3/4 h-3 bg-slate-200 rounded"></div>
+                </div>
+                <div class="w-32 h-40 bg-indigo-500 rounded-xl border border-indigo-400 transform rotate-12 flex flex-col p-3 gap-2">
+                    <div class="w-full h-2 bg-indigo-400 rounded"></div>
+                    <div class="w-1/2 h-2 bg-indigo-400 rounded"></div>
+                </div>
             </div>
         </div>
     </header>

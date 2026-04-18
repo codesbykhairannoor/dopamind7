@@ -10,30 +10,43 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Indigo 600 Theme, Unique Layout) --}}
-    <header class="pt-32 pb-24 px-6 bg-slate-900 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900 via-slate-900 to-black opacity-80"></div>
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+    {{-- SECTION 1: HERO (Text Center, Visual Below, Dark Slate Theme) --}}
+    <header class="pt-32 pb-0 px-6 bg-slate-900 relative overflow-hidden border-b border-slate-800">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-indigo-600/20 rounded-full blur-3xl -z-10"></div>
         
-        <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 text-indigo-300 font-bold text-xs mb-8 uppercase tracking-wider border border-indigo-500/30 ">
-                ⚡ {{ __('obsidian_badge') }}
+        <div class="max-w-4xl mx-auto text-center relative z-10 mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 text-indigo-400 font-bold text-xs mb-8 uppercase tracking-wider border border-slate-700">
+                🧠 {{ __('obsidian_badge') }}
             </div>
             
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-tight max-w-5xl mx-auto">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-tight">
                 {{ __('obsidian_hero_title_1') }} <br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-600">{{ __('obsidian_hero_title_2') }}</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">{{ __('obsidian_hero_title_2') }}</span>
             </h1>
             
-            <p class="text-xl text-indigo-100/80 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
                 {!! __('obsidian_hero_desc') !!}
             </p>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-600/50 transition-all transform hover:-translate-y-1">
+                <a href="{{ route('register') }}" class="bg-indigo-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-400 hover:shadow-lg hover:shadow-indigo-500/20 transition-all transform hover:-translate-y-1">
                     {{ __('obsidian_hero_cta') }}
                 </a>
-                <span class="text-sm text-slate-400 font-medium">{{ __('obsidian_hero_note') }}</span>
+                <span class="text-sm text-slate-500 font-medium">{{ __('obsidian_hero_note') }}</span>
+            </div>
+        </div>
+
+        {{-- Visual Below --}}
+        <div class="max-w-5xl mx-auto relative z-10 flex justify-center">
+            <div class="w-full md:w-3/4 h-64 bg-slate-800 rounded-t-[2rem] border-t border-l border-r border-slate-700 shadow-2xl relative overflow-hidden flex items-end justify-center pb-8">
+                <div class="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:20px_20px] opacity-10"></div>
+                <div class="flex items-center gap-4 relative z-20">
+                    <div class="w-16 h-16 rounded-full bg-slate-700 border border-slate-600 flex items-center justify-center text-xl opacity-50">📝</div>
+                    <div class="w-16 h-0.5 bg-slate-600"></div>
+                    <div class="w-20 h-20 rounded-full bg-indigo-600 border-4 border-slate-800 flex items-center justify-center text-2xl shadow-[0_0_30px_rgba(79,70,229,0.5)]">⚡</div>
+                    <div class="w-16 h-0.5 bg-slate-600"></div>
+                    <div class="w-16 h-16 rounded-full bg-slate-700 border border-slate-600 flex items-center justify-center text-xl opacity-50">🔗</div>
+                </div>
             </div>
         </div>
     </header>

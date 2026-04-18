@@ -10,31 +10,55 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Indigo 600 Theme, Unique Layout) --}}
-    <header class="pt-32 pb-24 px-6 bg-slate-900 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900 via-slate-900 to-black opacity-80"></div>
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-        
-        <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 text-indigo-300 font-bold text-xs mb-8 uppercase tracking-wider border border-indigo-500/30 ">
-                ⚡ {{ __('monday_badge') }}
+    {{-- SECTION 1: HERO (Visual Left, Text Right, Light Gray Theme) --}}
+    <header class="pt-32 pb-24 px-6 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            
+            <div class="order-2 lg:order-1 relative h-[400px] lg:h-[500px] flex items-center justify-center">
+                <div class="absolute inset-0 bg-indigo-200 rounded-full blur-3xl opacity-30"></div>
+                <div class="relative w-full max-w-md bg-white p-8 rounded-[2.5rem] shadow-2xl border border-slate-100">
+                    <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-100">
+                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-xl">👤</div>
+                        <div>
+                            <div class="font-bold text-slate-900">Personal Growth</div>
+                            <div class="text-sm text-slate-500">Not a corporate sprint</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="h-12 bg-slate-50 rounded-xl border border-slate-100 flex items-center px-4 gap-3">
+                            <div class="w-5 h-5 rounded-full bg-green-500"></div>
+                            <div class="w-1/2 h-4 bg-slate-200 rounded"></div>
+                        </div>
+                        <div class="h-12 bg-slate-50 rounded-xl border border-slate-100 flex items-center px-4 gap-3">
+                            <div class="w-5 h-5 rounded-full bg-indigo-500"></div>
+                            <div class="w-2/3 h-4 bg-slate-200 rounded"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-1 lg:order-2 text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-indigo-600 font-bold text-xs mb-8 uppercase tracking-wider border border-slate-200 shadow-sm">
+                    👔 {{ __('monday_badge') }}
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                    {{ __('monday_hero_title_1') }} <br/>
+                    <span class="text-indigo-600">{{ __('monday_hero_title_2') }}</span>
+                </h1>
+                
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-lg">
+                    {!! __('monday_hero_desc') !!}
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 transition-all transform hover:-translate-y-1">
+                        {{ __('monday_hero_cta') }}
+                    </a>
+                    <span class="text-sm text-slate-500 font-medium py-4">{{ __('monday_hero_note') }}</span>
+                </div>
             </div>
             
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-tight max-w-5xl mx-auto">
-                {{ __('monday_hero_title_1') }} <br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-600">{{ __('monday_hero_title_2') }}</span>
-            </h1>
-            
-            <p class="text-xl text-indigo-100/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-                {!! __('monday_hero_desc') !!}
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-600/50 transition-all transform hover:-translate-y-1">
-                    {{ __('monday_hero_cta') }}
-                </a>
-                <span class="text-sm text-slate-400 font-medium">{{ __('monday_hero_note') }}</span>
-            </div>
         </div>
     </header>
 

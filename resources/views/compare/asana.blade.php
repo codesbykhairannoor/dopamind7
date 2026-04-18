@@ -10,30 +10,48 @@
 
 @section('content')
 
-    {{-- SECTION 1: HERO (Indigo 600 Theme, Unique Layout) --}}
-    <header class="pt-32 pb-24 px-6 bg-slate-900 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-900 via-slate-900 to-black opacity-80"></div>
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-        
-        <div class="max-w-7xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 text-indigo-300 font-bold text-xs mb-8 uppercase tracking-wider border border-indigo-500/30 ">
-                ⚡ {{ __('asana_badge') }}
+    {{-- SECTION 1: HERO (Text Left, Minimalist UI Right, Indigo-50 Theme) --}}
+    <header class="pt-32 pb-24 px-6 bg-indigo-50 relative overflow-hidden border-b border-indigo-100">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            
+            <div class="lg:col-span-7 text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-indigo-600 font-bold text-xs mb-8 uppercase tracking-wider shadow-sm border border-indigo-100">
+                    🦄 {{ __('asana_badge') }}
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                    {{ __('asana_hero_title_1') }} <br/>
+                    <span class="text-indigo-600">{{ __('asana_hero_title_2') }}</span>
+                </h1>
+                
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
+                    {!! __('asana_hero_desc') !!}
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                    <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-300 transition-all transform hover:-translate-y-1">
+                        {{ __('asana_hero_cta') }}
+                    </a>
+                    <span class="text-sm text-slate-500 font-medium py-4">{{ __('asana_hero_note') }}</span>
+                </div>
             </div>
             
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tight leading-tight max-w-5xl mx-auto">
-                {{ __('asana_hero_title_1') }} <br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-600">{{ __('asana_hero_title_2') }}</span>
-            </h1>
-            
-            <p class="text-xl text-indigo-100/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-                {!! __('asana_hero_desc') !!}
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="{{ route('register') }}" class="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-600/50 transition-all transform hover:-translate-y-1">
-                    {{ __('asana_hero_cta') }}
-                </a>
-                <span class="text-sm text-slate-400 font-medium">{{ __('asana_hero_note') }}</span>
+            <div class="lg:col-span-5 relative h-[400px] flex items-center justify-center">
+                <div class="absolute top-10 right-10 w-64 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 transform rotate-6 animate-[float_6s_ease-in-out_infinite]">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center">!</div>
+                        <div class="text-sm font-bold text-slate-700">Assignee Needed</div>
+                    </div>
+                    <div class="w-full h-2 bg-slate-100 rounded-full"></div>
+                </div>
+                
+                <div class="absolute bottom-10 left-0 w-72 bg-indigo-600 p-6 rounded-3xl shadow-2xl border border-indigo-500 transform -rotate-3 animate-[float_5s_ease-in-out_infinite_reverse] z-10 text-white">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center">✓</div>
+                        <div class="text-sm font-bold">Deep Work Complete</div>
+                    </div>
+                    <div class="w-full h-2 bg-indigo-500 rounded-full"></div>
+                </div>
             </div>
         </div>
     </header>
