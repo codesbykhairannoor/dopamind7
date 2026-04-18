@@ -560,7 +560,7 @@
         {{-- NAVBAR --}}
         <nav :class="mobileMenuOpen
                 ? 'bg-white border-b border-slate-100 shadow-sm'
-                : (scrolled ? 'bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'bg-transparent')"
+                : (scrolled ? 'bg-white/90  border-b border-slate-100 shadow-sm' : 'bg-transparent')"
             class="fixed top-0 w-full z-[100] transition-all duration-300">
             <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center relative">
 
@@ -1048,7 +1048,7 @@
                             <li><a href="{{ route('compare.paper') }}" class="hover:text-indigo-600 transition">Vs.
                                     Paper Planner</a></li>
                             <li><a href="{{ route('compare.custom-apps') }}" class="hover:text-indigo-600 transition">Vs.
-                                    Excel/Sheets</a></li>
+                                    Custom Apps</a></li>
                             <li><a href="{{ route('compare.finance-apps') }}"
                                     class="hover:text-indigo-600 transition">Vs. Finance Apps</a></li>
                             <li><a href="{{ route('compare.planner-apps') }}"
@@ -1056,7 +1056,7 @@
                             <li><a href="{{ route('compare.five-apps') }}" class="hover:text-indigo-600 transition">Vs.
                                     5 Separate Apps</a></li>
                             <li><a href="{{ route('compare.management-tools') }}"
-                                    class="hover:text-indigo-600 transition">Vs. General Tools</a></li>
+                                    class="hover:text-indigo-600 transition">Vs. Management Tools</a></li>
                             <li><a href="{{ route('compare.habit-apps') }}" class="hover:text-indigo-600 transition">Vs.
                                     Habit Apps</a></li>
                         </ul>

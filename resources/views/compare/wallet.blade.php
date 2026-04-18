@@ -69,14 +69,14 @@
                 <div class="absolute top-0 right-0 p-8 opacity-10 text-9xl font-black">✍️</div>
                 <h3 class="font-black text-3xl mb-8 relative z-10">Active Intent</h3>
                 <div class="space-y-4 relative z-10">
-                    <div class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl flex items-center gap-4">
+                    <div class="bg-white/10  border border-white/20 p-4 rounded-xl flex items-center gap-4">
                         <div class="text-2xl">⏳</div>
                         <div>
                             <div class="font-bold">5 Seconds of Friction</div>
                             <div class="text-xs text-blue-200">Forces you to think before you buy</div>
                         </div>
                     </div>
-                    <div class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl flex items-center gap-4">
+                    <div class="bg-white/10  border border-white/20 p-4 rounded-xl flex items-center gap-4">
                         <div class="text-2xl">🧠</div>
                         <div>
                             <div class="font-bold">Neural Awareness</div>

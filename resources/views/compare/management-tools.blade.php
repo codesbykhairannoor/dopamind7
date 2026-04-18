@@ -85,7 +85,7 @@
     {{-- ================================================================= --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-br from-indigo-50/50 via-white to-purple-50/50 relative border-b border-gray-100">
         {{-- Background Blobs --}}
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/30 to-purple-200/30 rounded-full blur-[100px] -z-10 animate-pulse duration-[8000ms]"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/30 to-purple-200/30 rounded-full blur-2xl -z-10 "></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
             
@@ -257,7 +257,7 @@
     <section class="py-32 bg-slate-900 relative overflow-hidden">
         {{-- Background Noise/Glitch effect --}}
         <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[100px]"></div>
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-2xl"></div>
 
         <div class="max-w-6xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-20 items-center">
             
@@ -354,10 +354,10 @@
 
                 {{-- Visual Side (Bigger, Right) -> The "Hub" Dashboard --}}
                 <div class="lg:col-span-8 relative">
-                    <div class="absolute inset-0 bg-indigo-300 rounded-full blur-[100px] opacity-20"></div>
+                    <div class="absolute inset-0 bg-indigo-300 rounded-full blur-2xl opacity-20"></div>
                     
                     {{-- Dashboard Container --}}
-                    <div class="relative bg-white/60 backdrop-blur-xl border border-white/50 p-8 rounded-[2.5rem] shadow-2xl">
+                    <div class="relative bg-white/60  border border-white/50 p-8 rounded-[2.5rem] shadow-2xl">
                         <div class="grid md:grid-cols-3 gap-6">
                             
                             {{-- Card 1: You (Profile) --}}

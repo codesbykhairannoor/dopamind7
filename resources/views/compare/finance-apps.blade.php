@@ -87,7 +87,7 @@
     {{-- ================================================================= --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-br from-emerald-50/50 via-white to-indigo-50/50 relative border-b border-slate-100">
         {{-- Background Blobs --}}
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-emerald-200/30 to-indigo-200/30 rounded-full blur-[100px] -z-10 animate-pulse duration-[8000ms]"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-emerald-200/30 to-indigo-200/30 rounded-full blur-2xl -z-10 "></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
             
@@ -314,7 +314,7 @@
             <div class="grid lg:grid-cols-12 gap-8 max-w-5xl mx-auto">
                 
                 {{-- Big Card --}}
-                <div class="lg:col-span-7 bg-white/5 border border-white/10 p-10 md:p-12 rounded-[3rem] backdrop-blur-sm">
+                <div class="lg:col-span-7 bg-white/5 border border-white/10 p-10 md:p-12 rounded-[3rem] ">
                     <h3 class="text-3xl mb-6 font-black">{{ __('finapp_sol_box_title') }}</h3>
                     <p class="text-slate-300 text-lg leading-relaxed mb-8">
                         {!! __('finapp_sol_box_desc') !!}
@@ -343,7 +343,7 @@
                         <h4 class="font-black text-white text-xl mb-2">Zero Bank Data Storage</h4>
                         <p class="text-indigo-200 text-sm">We don't want your bank credentials. Total security by design.</p>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-sm border border-white/10 p-8 rounded-[2.5rem] transform transition hover:translate-x-2">
+                    <div class="bg-white/10  border border-white/10 p-8 rounded-[2.5rem] transform transition hover:translate-x-2">
                         <div class="text-3xl mb-4 font-black">⚡</div>
                         <h4 class="font-black text-white text-xl mb-2">Synchronized with Goals</h4>
                         <p class="text-slate-400 text-sm">Your finances tied directly to your life milestones.</p>
@@ -474,10 +474,10 @@
     <section class="pt-32 pb-40 px-6 bg-slate-950 relative overflow-hidden">
         {{-- Emerald Glow Background --}}
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px] opacity-10"></div>
-        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-600/20 rounded-full blur-[120px] -z-0"></div>
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-600/20 rounded-full blur-2xl -z-0"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/5 backdrop-blur-md rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl font-black">⚡</div>
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/5  rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl font-black">⚡</div>
             <h2 class="text-5xl md:text-7xl mb-8 text-white tracking-tight leading-tight font-black">
                 {!! __('finapp_cta_title') !!}
             </h2>

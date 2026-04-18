@@ -99,21 +99,21 @@
                 <div class="absolute top-0 right-0 p-8 opacity-10 text-9xl font-black">🧬</div>
                 <h3 class="font-black text-3xl mb-8 relative z-10">The Unified Brain</h3>
                 <div class="space-y-4 relative z-10">
-                    <div class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl flex items-center gap-4">
+                    <div class="bg-white/10  border border-white/20 p-4 rounded-xl flex items-center gap-4">
                         <div class="text-2xl">⚡</div>
                         <div>
                             <div class="font-bold">Habits</div>
                             <div class="text-xs text-indigo-200">Feeds the Planner</div>
                         </div>
                     </div>
-                    <div class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl flex items-center gap-4">
+                    <div class="bg-white/10  border border-white/20 p-4 rounded-xl flex items-center gap-4">
                         <div class="text-2xl">📅</div>
                         <div>
                             <div class="font-bold">Planner</div>
                             <div class="text-xs text-indigo-200">Schedules the Habits</div>
                         </div>
                     </div>
-                    <div class="bg-white/10 backdrop-blur border border-white/20 p-4 rounded-xl flex items-center gap-4">
+                    <div class="bg-white/10  border border-white/20 p-4 rounded-xl flex items-center gap-4">
                         <div class="text-2xl">💰</div>
                         <div>
                             <div class="font-bold">Finance OS</div>
@@ -205,7 +205,7 @@
                     <p class="text-slate-500 text-lg mb-8">{{ __('habitify_ai_desc') }}</p>
                 </div>
                 <div class="order-1 lg:order-2 bg-gradient-to-br from-indigo-600 to-purple-700 p-8 rounded-[3rem] shadow-2xl relative text-white">
-                    <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-3xl mb-6 backdrop-blur-sm border border-white/20">✨</div>
+                    <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-3xl mb-6  border border-white/20">✨</div>
                     <div class="text-xl font-medium leading-relaxed italic mb-6">"I noticed your 'Junk Food' spending spikes by 40% on days when you miss your 'Morning Run' habit. Let's adjust your routine."</div>
                     <div class="text-indigo-200 text-sm font-bold">- Neural OS Coach</div>
                 </div>

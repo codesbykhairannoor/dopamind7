@@ -85,7 +85,7 @@
     {{-- ================================================================= --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-br from-indigo-50/50 via-white to-purple-50/50 relative border-b border-gray-100">
         {{-- Background Blobs (TETAP SAMA) --}}
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/30 to-purple-200/30 rounded-full blur-[100px] -z-10 animate-pulse duration-[8000ms]"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/30 to-purple-200/30 rounded-full blur-2xl -z-10 "></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
             
@@ -232,7 +232,7 @@
                             <h3 class="text-2xl mb-3">{{ __('blank_cycle_2_title') }}</h3>
                             <p class="text-gray-400 leading-relaxed">{{ __('blank_cycle_2_desc') }}</p>
                         </div>
-                        <div class="mt-8 p-4 bg-gray-800/50 rounded-2xl border border-gray-700 backdrop-blur-sm">
+                        <div class="mt-8 p-4 bg-gray-800/50 rounded-2xl border border-gray-700 ">
                             <div class="flex gap-2 mb-2">
                                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -268,8 +268,8 @@
     {{-- Konsep: Invert colors. Buat "Problem" kerasa berat dan serius --}}
     <section class="py-32 bg-gray-950 relative overflow-hidden">
         {{-- Glowing Effects --}}
-        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-900/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-red-900/20 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-2xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="grid lg:grid-cols-2 gap-20 items-center">

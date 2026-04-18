@@ -83,7 +83,7 @@
     {{-- SECTION 1: HERO (SPLIT LAYOUT - TEXT LEFT / VISUAL RIGHT) --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-br from-indigo-50/50 via-white to-purple-50/50 relative border-b border-gray-100">
         {{-- Background Blobs (Sesuai Referensi) --}}
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/30 to-purple-200/30 rounded-full blur-[100px] -z-10 animate-pulse duration-[8000ms]"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/30 to-purple-200/30 rounded-full blur-2xl -z-10 "></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
             
@@ -255,7 +255,7 @@
             {{-- Visual Side (System Flow) --}}
             <div class="relative h-[500px] flex items-center justify-center animate-in slide-in-from-left-12 fade-in duration-1000">
                 {{-- Background Glow --}}
-                <div class="absolute inset-0 bg-indigo-200 rounded-full blur-[120px] opacity-30"></div>
+                <div class="absolute inset-0 bg-indigo-200 rounded-full blur-2xl opacity-30"></div>
                 
                 {{-- The "Hub" Visual --}}
                 <div class="relative z-10 grid grid-cols-2 gap-4 w-full max-w-md">

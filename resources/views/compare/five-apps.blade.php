@@ -86,7 +86,7 @@
     {{-- ================================================================= --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white relative border-b border-slate-100">
         {{-- Cosmic Background --}}
-        <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-indigo-100/50 to-purple-100/20 rounded-full blur-[120px] -z-10 animate-pulse duration-[10000ms]"></div>
+        <div class="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-b from-indigo-100/50 to-purple-100/20 rounded-full blur-2xl -z-10 "></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-center relative z-10">
             
@@ -126,7 +126,7 @@
                 </div>
 
                 {{-- Element 2: The Unified Orb (Front) --}}
-                <div class="relative bg-white/90 backdrop-blur-2xl p-10 rounded-[3rem] shadow-2xl border border-white w-80 z-20 overflow-hidden transform hover:scale-105 transition duration-500" role="img" aria-label="OneForMind Unified Orb: A centralized dashboard representation showing a 100% synchronized status across habits, goals, money, and tasks.">
+                <div class="relative bg-white/90 -2xl p-10 rounded-[3rem] shadow-2xl border border-white w-80 z-20 overflow-hidden transform hover:scale-105 transition duration-500" role="img" aria-label="OneForMind Unified Orb: A centralized dashboard representation showing a 100% synchronized status across habits, goals, money, and tasks.">
                     <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-purple-500/5"></div>
                     
                     <div class="relative z-10 text-center">
@@ -161,7 +161,7 @@
             <div class="grid md:grid-cols-12 gap-6 max-w-5xl mx-auto">
                 
                 {{-- Card 1: Wide --}}
-                <div class="md:col-span-8 bg-slate-800/50 backdrop-blur-sm p-10 rounded-[2.5rem] border border-slate-700/50 hover:bg-slate-800 transition group">
+                <div class="md:col-span-8 bg-slate-800/50  p-10 rounded-[2.5rem] border border-slate-700/50 hover:bg-slate-800 transition group">
                     <div class="text-4xl mb-6 group-hover:scale-110 transition-transform origin-left font-black">🏃‍♂️</div>
                     <h3 class="text-2xl font-bold mb-3 text-white">{{ __('five_cycle_1_title') }}</h3>
                     <p class="text-slate-400 leading-relaxed">{{ __('five_cycle_1_desc') }}</p>
@@ -177,7 +177,7 @@
                 </div>
 
                 {{-- Card 3: Full Width --}}
-                <div class="md:col-span-12 bg-slate-800/50 backdrop-blur-sm p-10 rounded-[2.5rem] border border-slate-700/50 flex flex-col md:flex-row items-center gap-8 hover:border-slate-600 transition group">
+                <div class="md:col-span-12 bg-slate-800/50  p-10 rounded-[2.5rem] border border-slate-700/50 flex flex-col md:flex-row items-center gap-8 hover:border-slate-600 transition group">
                     <div class="text-6xl group-hover:rotate-12 transition-transform font-black">😴</div>
                     <div>
                         <h3 class="text-2xl font-bold mb-3 text-white">{{ __('five_cycle_3_title') }}</h3>
@@ -299,13 +299,13 @@
                         
                         <div class="flex flex-wrap justify-center gap-4 relative z-10 w-full">
                             @foreach(['Habits', 'Goals', 'Money', 'Tasks', 'Notes'] as $feature)
-                                <div class="px-6 py-3 bg-white/10 backdrop-blur-md rounded-2xl text-sm font-bold text-white border border-white/20 shadow-lg transform hover:scale-110 transition-transform cursor-default">
+                                <div class="px-6 py-3 bg-white/10  rounded-2xl text-sm font-bold text-white border border-white/20 shadow-lg transform hover:scale-110 transition-transform cursor-default">
                                     {{ $feature }}
                                 </div>
                             @endforeach
                         </div>
                         
-                        <div class="mt-12 bg-white/5 border border-white/10 p-6 rounded-3xl w-full backdrop-blur-md text-center">
+                        <div class="mt-12 bg-white/5 border border-white/10 p-6 rounded-3xl w-full  text-center">
                             <p class="text-xs text-indigo-400 uppercase tracking-widest mb-2">System Status</p>
                             <p class="text-white font-bold text-xl">100% Synchronized</p>
                         </div>
@@ -365,7 +365,7 @@
         </div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="bg-indigo-950/50 backdrop-blur-2xl border border-indigo-500/30 rounded-[4rem] p-8 md:p-24 relative overflow-hidden group">
+            <div class="bg-indigo-950/50 -2xl border border-indigo-500/30 rounded-[4rem] p-8 md:p-24 relative overflow-hidden group">
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div>
                         <div class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-400 text-[10px] uppercase tracking-[0.4em] mb-12 rounded-full border border-indigo-500/30">
@@ -398,7 +398,7 @@
                     <div class="relative flex justify-center">
                         {{-- Pulsing Core Visual --}}
                         <div class="relative w-full max-w-[400px] aspect-square flex items-center justify-center">
-                            <div class="absolute inset-0 bg-indigo-600 rounded-full blur-[100px] opacity-20 animate-pulse"></div>
+                            <div class="absolute inset-0 bg-indigo-600 rounded-full blur-2xl opacity-20 animate-pulse"></div>
                             <div class="w-48 h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-6xl shadow-[0_0_80px_rgba(79,70,229,0.6)] z-20 relative group-hover:scale-110 transition duration-700 font-black">
                                 ⚛️
                             </div>
@@ -419,7 +419,7 @@
     <section class="py-32 px-6 bg-indigo-600 relative overflow-hidden">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f46e5_1px,transparent_1px),linear-gradient(to_bottom,#4f46e5_1px,transparent_1px)] bg-[size:40px_40px] opacity-20"></div>
         
-        <div class="max-w-3xl mx-auto text-center relative z-10 bg-white/10 backdrop-blur-lg border border-white/20 p-12 md:p-20 rounded-[3rem] shadow-2xl">
+        <div class="max-w-3xl mx-auto text-center relative z-10 bg-white/10 -lg border border-white/20 p-12 md:p-20 rounded-[3rem] shadow-2xl">
             <h2 class="text-4xl md:text-6xl mb-6 text-white tracking-tight leading-tight font-black">
                 {!! __('five_cta_title') !!}
             </h2>

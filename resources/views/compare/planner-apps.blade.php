@@ -86,7 +86,7 @@
     {{-- ================================================================= --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-br from-indigo-50/80 via-white to-purple-50/40 relative border-b border-slate-100">
         {{-- Background Blobs --}}
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/40 to-purple-200/30 rounded-full blur-[100px] -z-10 animate-pulse duration-[8000ms]"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/40 to-purple-200/30 rounded-full blur-2xl -z-10 "></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
             
@@ -283,7 +283,7 @@
         <div class="max-w-6xl mx-auto px-6">
             
             <div class="bg-white rounded-[3rem] p-8 md:p-16 shadow-2xl border border-slate-100 relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-50 rounded-full blur-[100px] -z-10"></div>
+                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-50 rounded-full blur-2xl -z-10"></div>
                 
                 <div class="grid lg:grid-cols-2 gap-16 items-center z-10 relative">
                     <div>
@@ -401,7 +401,7 @@
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:200px_200px]"></div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="bg-white/5 backdrop-blur-md border border-white/10 rounded-[4rem] p-8 md:p-20 relative overflow-hidden group">
+            <div class="bg-white/5  border border-white/10 rounded-[4rem] p-8 md:p-20 relative overflow-hidden group">
                 {{-- Blueprint Elements --}}
                 <div class="absolute top-0 right-0 w-64 h-64 border-l border-b border-indigo-500/30 opacity-20 pointer-events-none"></div>
                 <div class="absolute bottom-0 left-0 w-32 h-32 border-r border-t border-indigo-500/30 opacity-20 pointer-events-none"></div>
@@ -416,7 +416,7 @@
                             {{ __('plan_science_title') }}
                         </h2>
 
-                        <div class="relative py-12 px-12 bg-white/5 rounded-3xl mb-12 border border-white/10 backdrop-blur-xl">
+                        <div class="relative py-12 px-12 bg-white/5 rounded-3xl mb-12 border border-white/10 ">
                             <div class="absolute top-4 right-6 font-mono text-[10px] text-indigo-400/50">v.4.1.2_Cognitive_Sync</div>
                             <p class="text-indigo-100 text-xl md:text-2xl font-light leading-relaxed">
                                 "{{ __('plan_science_desc') }}"
@@ -462,7 +462,7 @@
         <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-indigo-600/20 to-transparent -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-md rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl font-black">🚀</div>
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10  rounded-3xl text-4xl mb-10 border border-white/10 shadow-2xl font-black">🚀</div>
             <h2 class="text-5xl md:text-7xl mb-8 text-white tracking-tight leading-tight font-black">
                 {!! __('plan_cta_title') !!}
             </h2>

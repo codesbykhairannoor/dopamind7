@@ -54,7 +54,7 @@
                 <div class="flex justify-between text-red-500 font-bold mb-4">
                     <span>Overdue (342)</span>
                 </div>
-                <div class="space-y-3 opacity-50 blur-[1px]">
+                <div class="space-y-3 opacity-50 blur-2xl">
                     <div class="flex items-center gap-3"><input type="checkbox" disabled> <span>Read book</span></div>
                     <div class="flex items-center gap-3"><input type="checkbox" disabled> <span>Call mom</span></div>
                     <div class="flex items-center gap-3"><input type="checkbox" disabled> <span>Build app</span></div>

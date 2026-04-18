@@ -71,25 +71,25 @@
     {{-- ================================================================= --}}
     <header class="relative pt-24 pb-40 lg:pt-32 lg:pb-56 overflow-hidden bg-white">
         {{-- High-End Ambient Lighting --}}
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-full bg-indigo-50/40 rounded-full blur-[160px] -z-10"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-full bg-indigo-50/40 rounded-full blur-2xl -z-10"></div>
         
         {{-- Unique & Cool Floating UI Elements --}}
-        <div class="absolute top-32 left-[8%] w-20 h-20 bg-white/40 backdrop-blur-xl rounded-[2rem] shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-3xl animate-float hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
+        <div class="absolute top-32 left-[8%] w-20 h-20 bg-white/40  rounded-[2rem] shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-3xl animate-float hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
             <div class="absolute inset-0 bg-indigo-500/5 rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <span class="relative">💰</span>
         </div>
         
-        <div class="absolute top-48 right-[8%] w-24 h-24 bg-white/40 backdrop-blur-xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-4xl animate-bounce-slow hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
+        <div class="absolute top-48 right-[8%] w-24 h-24 bg-white/40  rounded-[2.5rem] shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-4xl animate-bounce-slow hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
             <div class="absolute inset-0 bg-emerald-500/5 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <span class="relative">🌱</span>
         </div>
 
-        <div class="absolute bottom-60 left-[12%] w-16 h-16 bg-white/40 backdrop-blur-xl rounded-2xl shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-2xl animate-bounce-slow hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
+        <div class="absolute bottom-60 left-[12%] w-16 h-16 bg-white/40  rounded-2xl shadow-[0_20px_50px_rgba(79,70,229,0.1)] flex items-center justify-center text-2xl animate-bounce-slow hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
             <div class="absolute inset-0 bg-purple-500/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <span class="relative">📅</span>
         </div>
 
-        <div class="absolute bottom-80 right-[15%] w-20 h-20 bg-slate-900/5 backdrop-blur-xl rounded-[1.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] flex items-center justify-center text-3xl animate-float hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
+        <div class="absolute bottom-80 right-[15%] w-20 h-20 bg-slate-900/5  rounded-[1.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] flex items-center justify-center text-3xl animate-float hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500">
             <div class="absolute inset-0 bg-slate-900/5 rounded-[1.5rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
             <span class="relative">🎯</span>
         </div>
@@ -139,7 +139,7 @@
             {{-- High-Fidelity App UI --}}
             <div class="relative max-w-6xl mx-auto">
                 {{-- Glow Ambient --}}
-                <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[80%] h-64 bg-indigo-500/10 blur-[120px] rounded-full"></div>
+                <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[80%] h-64 bg-indigo-500/10 blur-2xl rounded-full"></div>
                 
                 {{-- Minimalist Browser --}}
                 <div class="relative bg-white rounded-[2rem] p-1 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden">
@@ -250,7 +250,7 @@
                 </div>
 
                 {{-- Floating Decorations --}}
-                <div class="absolute -top-12 -right-12 w-48 bg-white/90 backdrop-blur-xl p-6 rounded-3xl border border-indigo-50 shadow-2xl transform rotate-6 animate-float z-30 hidden lg:block">
+                <div class="absolute -top-12 -right-12 w-48 bg-white/90  p-6 rounded-3xl border border-indigo-50 shadow-2xl transform rotate-6 animate-float z-30 hidden lg:block">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-black">🌱</div>
                         <div class="text-[10px] font-black text-slate-800">Streak: 12 Days</div>
@@ -313,7 +313,7 @@
                             ];
                         @endphp
                         @foreach($fragmented as $app)
-                            <div class="p-6 bg-slate-800/50 rounded-[2rem] border border-slate-700/50 backdrop-blur-sm group hover:bg-slate-800 transition">
+                            <div class="p-6 bg-slate-800/50 rounded-[2rem] border border-slate-700/50  group hover:bg-slate-800 transition">
                                 <div class="text-3xl mb-4 group-hover:scale-110 transition font-black">{{ $app['icon'] }}</div>
                                 <div class="text-[10px] font-black text-slate-500 tracking-widest">{{ __($app['name']) }}</div>
                             </div>
@@ -326,7 +326,7 @@
                 </div>
 
                 <div class="relative group">
-                    <div class="absolute inset-0 bg-indigo-600 rounded-[3.5rem] blur-[60px] opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    <div class="absolute inset-0 bg-indigo-600 rounded-[3.5rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
                     <div class="relative bg-slate-800 p-12 rounded-[3.5rem] border border-slate-700 shadow-2xl">
                         <div class="flex flex-col items-center text-center">
                             <div class="w-24 h-24 bg-indigo-600 text-white rounded-[2rem] flex items-center justify-center text-5xl mb-8 shadow-2xl shadow-indigo-500/50 animate-pulse font-black">
@@ -454,7 +454,7 @@
 
                 <div class="lg:w-1/2 relative">
                     {{-- Lab Visual --}}
-                    <div class="relative bg-slate-900/50 border border-white/10 p-2 rounded-[3rem] shadow-2xl backdrop-blur-xl">
+                    <div class="relative bg-slate-900/50 border border-white/10 p-2 rounded-[3rem] shadow-2xl ">
                         <div class="grid grid-cols-3 gap-2 overflow-hidden rounded-[2.5rem]">
                             <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-500">
                                 <div class="text-3xl mb-4 group-hover:rotate-12 transition font-black">🌀</div>
@@ -595,7 +595,7 @@
             <div class="grid lg:grid-cols-2 gap-24 items-center">
                 <div class="relative order-2 lg:order-1">
                     {{-- DEEP GRADIENT ORB --}}
-                    <div class="absolute -inset-20 bg-gradient-to-tr from-indigo-200 to-purple-200 rounded-full blur-[100px] opacity-40"></div>
+                    <div class="absolute -inset-20 bg-gradient-to-tr from-indigo-200 to-purple-200 rounded-full blur-2xl opacity-40"></div>
                     
                     <div class="relative bg-slate-900 rounded-[3rem] p-1 shadow-[0_50px_100px_-20px_rgba(79,70,229,0.3)] border-[12px] border-slate-800 overflow-hidden transform lg:-rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[16/10]" role="img" aria-label="OneForMind Dashboard Preview: A unified interface showing habit tracking heatmap, finance budgeting progress, and a clean task management layout.">
                         <div class="absolute top-0 w-full h-8 bg-slate-800 flex items-center px-4 gap-2">
@@ -697,8 +697,8 @@
     {{-- ================================================================= --}}
     <section class="py-40 bg-slate-900 relative overflow-hidden">
         {{-- Background Accents --}}
-        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/5 blur-[120px] rounded-full"></div>
-        <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-purple-500/5 blur-[120px] rounded-full"></div>
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/5 blur-2xl rounded-full"></div>
+        <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-purple-500/5 blur-2xl rounded-full"></div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-24">
@@ -751,7 +751,7 @@
     <section class="py-48 bg-white overflow-hidden">
         <div class="max-w-5xl mx-auto px-6">
             <div class="relative bg-slate-950 rounded-[3rem] p-12 md:p-20 shadow-2xl overflow-hidden group">
-                <div class="absolute -right-20 -top-20 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[140px] opacity-10 group-hover:opacity-20 transition duration-1000"></div>
+                <div class="absolute -right-20 -top-20 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-2xl opacity-10 group-hover:opacity-20 transition duration-1000"></div>
                 
                 <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
                     <div>
@@ -766,7 +766,7 @@
                         </p>
                     </div>
 
-                    <div class="bg-white/5 backdrop-blur-md p-8 rounded-[2rem] border border-white/10 shadow-inner">
+                    <div class="bg-white/5  p-8 rounded-[2rem] border border-white/10 shadow-inner">
                          <form action="{{ route('waitlist.store') }}" method="POST" class="space-y-4">
                             @csrf
                             <input 

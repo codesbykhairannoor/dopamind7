@@ -85,7 +85,7 @@
     {{-- ================================================================= --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-gradient-to-br from-indigo-50/50 via-white to-purple-50/50 relative border-b border-gray-100">
         {{-- Background Blobs --}}
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/30 to-purple-200/30 rounded-full blur-[100px] -z-10 animate-pulse duration-[8000ms]"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-indigo-200/30 to-purple-200/30 rounded-full blur-2xl -z-10 "></div>
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
             
@@ -328,7 +328,7 @@
                 {{-- Feature 2: Connected (The Centerpiece) --}}
                 <div class="bg-indigo-600 p-8 rounded-[2rem] shadow-2xl shadow-indigo-200 text-white transform scale-105 relative z-10">
                     <div class="absolute top-0 right-0 p-6 opacity-20 text-6xl font-black">🔗</div>
-                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center text-2xl mb-6">🧠</div>
+                    <div class="w-12 h-12 bg-white/20  rounded-xl flex items-center justify-center text-2xl mb-6">🧠</div>
                     <h3 class="font-bold text-xl mb-3">{{ __('habitap_sol_2_title') }}</h3>
                     <p class="text-indigo-100 leading-relaxed">{{ __('habitap_sol_2_desc') }}</p>
                     <div class="mt-6 pt-6 border-t border-indigo-500/50 flex items-center gap-3">
