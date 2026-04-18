@@ -182,6 +182,65 @@
         </div>
     </section>
 
+    {{-- SECTION 4.5: COST & AI --}}
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 mb-24 items-center">
+                <div class="bg-indigo-50 p-10 rounded-[3rem] text-center border border-indigo-100">
+                    <div class="text-indigo-900 font-black text-6xl mb-4">$40/yr</div>
+                    <div class="text-indigo-700 font-bold mb-8">Just for a checklist.</div>
+                    <div class="flex justify-center text-3xl">💸</div>
+                </div>
+                <div>
+                    <div class="text-red-500 font-bold tracking-widest uppercase mb-4 text-sm">The App Tax</div>
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('habitify_cost_title') }}</h2>
+                    <p class="text-slate-500 text-lg mb-8">{{ __('habitify_cost_desc') }}</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <div class="text-indigo-600 font-bold tracking-widest uppercase mb-4 text-sm">Beyond Charts</div>
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('habitify_ai_title') }}</h2>
+                    <p class="text-slate-500 text-lg mb-8">{{ __('habitify_ai_desc') }}</p>
+                </div>
+                <div class="order-1 lg:order-2 bg-gradient-to-br from-indigo-600 to-purple-700 p-8 rounded-[3rem] shadow-2xl relative text-white">
+                    <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-3xl mb-6 backdrop-blur-sm border border-white/20">✨</div>
+                    <div class="text-xl font-medium leading-relaxed italic mb-6">"I noticed your 'Junk Food' spending spikes by 40% on days when you miss your 'Morning Run' habit. Let's adjust your routine."</div>
+                    <div class="text-indigo-200 text-sm font-bold">- Neural OS Coach</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 4.6: EXPLORE MORE ALTERNATIVES --}}
+    <section class="py-24 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-900 mb-4">{{ __('explore_more_alt') }}</h2>
+                <p class="text-gray-500">{{ __('explore_more_desc') }}</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <a href="{{ route('compare.habitica') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-xl font-black">⚔️</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-indigo-600 transition-colors">vs Habitica</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_habitica_desc') }}</p>
+                </a>
+                
+                <a href="{{ route('compare.streaks') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-xl font-black">🔗</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-orange-600 transition-colors">vs Streaks</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_streaks_desc') }}</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 5: CTA --}}
     <section class="py-32 bg-white text-center px-6">
         <h2 class="text-4xl md:text-6xl text-slate-900 font-black mb-6">{!! __('habitify_cta_title') !!}</h2>

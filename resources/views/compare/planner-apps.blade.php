@@ -154,7 +154,45 @@
     </header>
 
     {{-- ================================================================= --}}
-    {{-- SECTION 2: NEW LAYOUT -> VERTICAL TIMELINE (THE TRAP) --}}
+    {{-- SECTION 2: EXPLORE MORE ALTERNATIVES --}}
+    {{-- ================================================================= --}}
+    <section class="py-24 bg-gray-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-900 mb-4">{{ __('explore_more_alt') }}</h2>
+                <p class="text-gray-500">{{ __('explore_more_desc') }}</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="{{ route('compare.todoist') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center text-xl font-black">📝</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-blue-600 transition-colors">vs Todoist</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_todoist_desc') }}</p>
+                </a>
+                
+                <a href="{{ route('compare.ticktick') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl font-black">✔️</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-blue-600 transition-colors">vs TickTick</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_ticktick_desc') }}</p>
+                </a>
+                
+                <a href="{{ route('compare.clickup') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-xl font-black">🏢</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-blue-600 transition-colors">vs ClickUp</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_clickup_desc') }}</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 3: NEW LAYOUT -> VERTICAL TIMELINE (THE TRAP) --}}
     {{-- ================================================================= --}}
     <section class="py-24 bg-slate-50 relative overflow-hidden border-b border-slate-100">
         <div class="max-w-4xl mx-auto px-6">

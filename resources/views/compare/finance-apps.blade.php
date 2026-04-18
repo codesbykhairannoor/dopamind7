@@ -156,7 +156,45 @@
     </header>
 
     {{-- ================================================================= --}}
-    {{-- SECTION 2: NEW LAYOUT -> HORIZONTAL FLOWCHART (THE TRAP) --}}
+    {{-- SECTION 2: EXPLORE MORE ALTERNATIVES --}}
+    {{-- ================================================================= --}}
+    <section class="py-24 bg-gray-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-900 mb-4">{{ __('explore_more_alt') }}</h2>
+                <p class="text-gray-500">{{ __('explore_more_desc') }}</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="{{ route('compare.ynab') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl font-black">📈</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-emerald-600 transition-colors">vs YNAB</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_ynab_desc') }}</p>
+                </a>
+                
+                <a href="{{ route('compare.wallet') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl font-black">💳</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-emerald-600 transition-colors">vs Wallet App</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_wallet_desc') }}</p>
+                </a>
+                
+                <a href="{{ route('compare.spendee') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-xl font-black">📊</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-emerald-600 transition-colors">vs Spendee</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_spendee_desc') }}</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{-- ================================================================= --}}
+    {{-- SECTION 3: NEW LAYOUT -> HORIZONTAL FLOWCHART (THE TRAP) --}}
     {{-- ================================================================= --}}
     <section class="py-24 bg-slate-50 relative overflow-hidden border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-6">

@@ -169,6 +169,92 @@
         </div>
     </section>
 
+    {{-- SECTION 4.5: PSYCHOLOGY & DATA --}}
+    <section class="py-24 bg-white overflow-hidden border-t border-slate-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 mb-24 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="absolute inset-0 bg-orange-100 rounded-full blur-3xl opacity-50"></div>
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl relative z-10">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-xl font-black">!</div>
+                            <div>
+                                <div class="font-bold text-slate-900">What The Hell Effect</div>
+                                <div class="text-sm text-slate-500">Cognitive Bias</div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 italic">"I've already ruined my diet by eating one cookie, so I might as well eat the whole box."</p>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <div class="text-orange-500 font-bold tracking-widest uppercase mb-4 text-sm">Behavioral Science</div>
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('streaks_psycho_title') }}</h2>
+                    <p class="text-slate-500 text-lg mb-8">{{ __('streaks_psycho_desc') }}</p>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                        <h3 class="font-bold text-lg text-slate-800 mb-2">{{ __('streaks_psycho_point1') }}</h3>
+                        <p class="text-slate-500 text-sm">{{ __('streaks_psycho_point1_desc') }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="text-indigo-500 font-bold tracking-widest uppercase mb-4 text-sm">Actionable Insights</div>
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 text-slate-900">{{ __('streaks_data_title') }}</h2>
+                    <p class="text-slate-500 text-lg mb-8">{{ __('streaks_data_desc') }}</p>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-3xl shadow-2xl relative text-white">
+                    <div class="flex justify-between items-center mb-6">
+                        <div class="font-bold">AI Friction Audit</div>
+                        <div class="text-xs bg-indigo-500 px-2 py-1 rounded">Completed</div>
+                    </div>
+                    <div class="space-y-4 font-mono text-sm">
+                        <div class="flex items-center gap-3 text-slate-400">
+                            <span>></span>
+                            <span>Analyzing missed habit: "Read 10 pages"</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-red-400">
+                            <span>></span>
+                            <span>Correlation found: Budget exceeded yesterday.</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-green-400">
+                            <span>></span>
+                            <span>Solution: Stress causes habit drop. Adjust schedule.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 4.6: EXPLORE MORE ALTERNATIVES --}}
+    <section class="py-24 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-900 mb-4">{{ __('explore_more_alt') }}</h2>
+                <p class="text-gray-500">{{ __('explore_more_desc') }}</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <a href="{{ route('compare.habitica') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-xl font-black">⚔️</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-indigo-600 transition-colors">vs Habitica</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_habitica_desc') }}</p>
+                </a>
+                
+                <a href="{{ route('compare.habitify') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl font-black">📱</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-blue-600 transition-colors">vs Habitify</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_habitify_desc') }}</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 5: CTA --}}
     <section class="py-32 bg-slate-50 text-center px-6 border-t border-slate-200">
         <h2 class="text-4xl md:text-6xl text-slate-900 font-black mb-6">{!! __('streaks_cta_title') !!}</h2>

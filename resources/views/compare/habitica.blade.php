@@ -157,6 +157,77 @@
         </div>
     </section>
 
+    {{-- SECTION 4.5: SCIENCE & TESTIMONIAL --}}
+    <section class="py-24 bg-slate-900 text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="text-indigo-400 font-bold tracking-widest uppercase mb-4 text-sm">Research-Backed</div>
+                    <h2 class="text-3xl md:text-5xl font-black mb-6">{{ __('habitica_science_title') }}</h2>
+                    <p class="text-slate-400 text-lg mb-8">{{ __('habitica_science_desc') }}</p>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="text-2xl mt-1">🧠</div>
+                            <div>
+                                <div class="font-bold text-xl">{{ __('habitica_science_point1') }}</div>
+                                <div class="text-slate-400">{{ __('habitica_science_point1_desc') }}</div>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="text-2xl mt-1">📉</div>
+                            <div>
+                                <div class="font-bold text-xl">{{ __('habitica_science_point2') }}</div>
+                                <div class="text-slate-400">{{ __('habitica_science_point2_desc') }}</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-indigo-500 rounded-3xl blur-3xl opacity-20"></div>
+                    <div class="bg-slate-800 p-10 rounded-3xl relative border border-slate-700">
+                        <div class="text-4xl text-indigo-400 mb-6">"</div>
+                        <p class="text-xl md:text-2xl font-medium leading-relaxed italic text-slate-300 mb-8">{{ __('habitica_testimonial') }}</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center text-xl font-bold text-slate-300">Ex</div>
+                            <div>
+                                <div class="font-bold">Former Habitica User</div>
+                                <div class="text-sm text-slate-500">Switched to OneForMind</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 4.6: EXPLORE MORE ALTERNATIVES --}}
+    <section class="py-24 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-900 mb-4">{{ __('explore_more_alt') }}</h2>
+                <p class="text-gray-500">{{ __('explore_more_desc') }}</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <a href="{{ route('compare.streaks') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-xl font-black">🔗</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-orange-600 transition-colors">vs Streaks</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_streaks_desc') }}</p>
+                </a>
+                
+                <a href="{{ route('compare.habitify') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl font-black">📱</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-blue-600 transition-colors">vs Habitify</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">{{ __('explore_habitify_desc') }}</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
     {{-- SECTION 5: CTA --}}
     <section class="py-32 bg-indigo-600 text-center px-6">
         <h2 class="text-4xl md:text-6xl text-white font-black mb-6">{!! __('habitica_cta_title') !!}</h2>

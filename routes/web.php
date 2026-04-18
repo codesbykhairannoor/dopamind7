@@ -428,6 +428,16 @@ Route::get('/compare/habitica-alternative', function () { return view('compare.h
 Route::get('/compare/streaks-alternative', function () { return view('compare.streaks'); })->name('compare.streaks');
 Route::get('/compare/habitify-alternative', function () { return view('compare.habitify'); })->name('compare.habitify');
 
+// Head-to-Head Compare Pages (Finance)
+Route::get('/compare/ynab-alternative', function () { return view('compare.ynab'); })->name('compare.ynab');
+Route::get('/compare/wallet-alternative', function () { return view('compare.wallet'); })->name('compare.wallet');
+Route::get('/compare/spendee-alternative', function () { return view('compare.spendee'); })->name('compare.spendee');
+
+// Head-to-Head Compare Pages (Planner)
+Route::get('/compare/todoist-alternative', function () { return view('compare.todoist'); })->name('compare.todoist');
+Route::get('/compare/ticktick-alternative', function () { return view('compare.ticktick'); })->name('compare.ticktick');
+Route::get('/compare/clickup-alternative', function () { return view('compare.clickup'); })->name('compare.clickup');
+
 // --- GROUP 2: SOCIAL LOGIN ---
 Route::get("/auth/google", [SocialController::class, "redirect"])->name(
     "google.login",
