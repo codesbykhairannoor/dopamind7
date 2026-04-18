@@ -1002,8 +1002,8 @@
         {{-- FOOTER --}}
         <footer class="bg-slate-50 border-t border-slate-100 pt-20 pb-10">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-8 mb-16 text-left">
-                    <div class="col-span-2 md:col-span-3 lg:col-span-2">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-12 gap-x-8 mb-16 text-left">
+                    <div class="col-span-2 md:col-span-4 lg:col-span-2">
                         <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6">
                             <img src="/favicon.svg" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
@@ -1104,7 +1104,7 @@
                     </div>
 
 
-                    <div class="col-span-2 md:col-span-1">
+                    <div class="col-span-2 md:col-span-2 lg:col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Connect</p>
                         <div class="flex gap-4">
                             <a href="https://x.com/OneForMind" target="_blank" rel="noopener noreferrer"
