@@ -385,19 +385,19 @@ const switchLang = (lang) => {
 
         <footer class="bg-slate-50 border-t border-slate-100 pt-20 pb-10 mt-auto">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 mb-16 text-left">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-12 md:gap-12 mb-16 text-left">
                     <div class="col-span-2 md:col-span-1">
                         <a :href="route('home')" class="flex items-center gap-2 mb-6">
-                            <img src="/favicon.svg?v=2" alt="Logo" class="w-7 h-7" />
+                            <img src="/favicon.svg" alt="Logo" class="w-7 h-7" />
                             <span class="text-lg font-black tracking-tighter">OneForMind</span>
                         </a>
-                        <p class="text-sm text-slate-600 leading-relaxed">
+                        <p class="text-sm text-slate-600 leading-relaxed max-w-xs">
                             {{ $t('footer_desc', 'The unified productivity system designed to bring clarity to your life, habits, and finances.') }}
                         </p>
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Product</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6 uppercase opacity-50">Product</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('features.habit')" class="hover:text-indigo-600 transition">Habit Tracker</a></li>
                             <li><a :href="route('features.finance')" class="hover:text-indigo-600 transition">Finance OS</a></li>
@@ -410,7 +410,7 @@ const switchLang = (lang) => {
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Compare</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6 uppercase opacity-50">Compare</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('compare.notes-apps')" class="hover:text-indigo-600 transition">Vs. Notes Apps</a></li>
                             <li><a :href="route('compare.custom-apps')" class="hover:text-indigo-600 transition">Vs. Excel/Sheets</a></li>
@@ -423,7 +423,7 @@ const switchLang = (lang) => {
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Resources</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6 uppercase opacity-50">Resources</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('resources.help')" class="hover:text-indigo-600 transition">Help Center</a></li>
                             <li><a :href="route('resources.blog')" class="hover:text-indigo-600 transition">Blog</a></li>
@@ -434,7 +434,7 @@ const switchLang = (lang) => {
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Company</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6 uppercase opacity-50">Company</h3>
                         <ul class="space-y-4 text-sm font-bold text-slate-600">
                             <li><a :href="route('about')" class="hover:text-indigo-600 transition">About Us</a></li>
                             <li><a :href="route('company.privacy')" class="hover:text-indigo-600 transition">Privacy Policy</a></li>
@@ -446,10 +446,20 @@ const switchLang = (lang) => {
                     </div>
 
                     <div>
-                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6">Connect</h3>
+                        <h3 class="font-black text-xs tracking-wide text-slate-900 mb-6 uppercase opacity-50">Connect</h3>
                         <div class="flex gap-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">𝕏</a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">📸</a>
+                            <a href="https://x.com/OneForMind" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.482 3.239h-2.19L17.607 20.65z" />
+                                </svg>
+                            </a>
+                            <a href="https://instagram.com/oneformind" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>

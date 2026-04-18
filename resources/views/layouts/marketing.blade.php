@@ -391,7 +391,7 @@
 
         /* 📱 Global Mobile Button Scaling: Make them tight & premium */
         @media (max-width: 768px) {
-            header a, section a, footer a, header button, section button {
+            header a, section a, header button, section button {
                 padding-left: 1.25rem !important; /* px-5 */
                 padding-right: 1.25rem !important;
                 padding-top: 0.75rem !important; /* py-3 */
@@ -1002,7 +1002,7 @@
         {{-- FOOTER --}}
         <footer class="bg-slate-50 border-t border-slate-100 pt-20 pb-10">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 mb-16 text-left">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-12 md:gap-12 mb-16 text-left">
                     <div class="col-span-2 md:col-span-1">
                         <a href="{{ route('home') }}" class="flex items-center gap-2 mb-6">
                             <img src="/favicon.svg" alt="Logo" class="w-7 h-7" />
@@ -1108,7 +1108,7 @@
                         <p class="text-xs font-semibold text-slate-500 mb-5">Connect</p>
                         <div class="flex gap-4">
                             <a href="https://x.com/OneForMind" target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
+                                class="!p-0 w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
                                 aria-label="Follow us on X">
                                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -1116,7 +1116,7 @@
                                 </svg>
                             </a>
                             <a href="https://instagram.com/oneformind" target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
+                                class="!p-0 w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
                                 aria-label="Follow us on Instagram">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
@@ -1126,7 +1126,7 @@
                                 </svg>
                             </a>
                             <a href="https://facebook.com/oneformind" target="_blank" rel="noopener noreferrer"
-                                class="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
+                                class="!p-0 w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
                                 aria-label="Follow us on Facebook">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
