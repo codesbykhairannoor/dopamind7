@@ -389,7 +389,45 @@
         </div>
     </section>
 
-    {{-- SECTION: SCIENTIFIC PILLAR (E-E-A-T) - HABIT LAB STYLE --}}
+    {{-- ================================================================= --}}
+    {{-- SECTION 6: EXPLORE MORE ALTERNATIVES --}}
+    {{-- ================================================================= --}}
+    <section class="py-24 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-900 mb-4">{{ __('explore_more_alt') }}</h2>
+                <p class="text-gray-500">{{ __('explore_more_desc') }}</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="{{ route('compare.habitica') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-xl font-black">⚔️</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-indigo-600 transition-colors">vs Habitica</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">Drop the toxic gamification and pixel rewards. Build real resilience.</p>
+                </a>
+                
+                <a href="{{ route('compare.streaks') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-xl font-black">🔗</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-orange-600 transition-colors">vs Streaks</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">Don't let a broken chain ruin your motivation. We track volume, not just streaks.</p>
+                </a>
+                
+                <a href="{{ route('compare.habitify') }}" class="group block bg-white p-8 rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl font-black">📱</div>
+                        <h3 class="font-black text-xl text-gray-900 group-hover:text-blue-600 transition-colors">vs Habitify</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm">A habit tracker shouldn't live in a vacuum. Connect it to your planner and budget.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{-- SECTION 7: SCIENTIFIC PILLAR (E-E-A-T) - HABIT LAB STYLE --}}
     <section class="py-32 bg-white bg-pattern-grid relative overflow-hidden">
         {{-- Biological Background Pattern --}}
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none">

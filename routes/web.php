@@ -423,6 +423,11 @@ Route::get("/compare/five-apps", function () {
     return view("compare.five-apps");
 })->name("compare.five-apps");
 
+// Head-to-Head Compare Pages (Habits)
+Route::get('/compare/habitica-alternative', function () { return view('compare.habitica'); })->name('compare.habitica');
+Route::get('/compare/streaks-alternative', function () { return view('compare.streaks'); })->name('compare.streaks');
+Route::get('/compare/habitify-alternative', function () { return view('compare.habitify'); })->name('compare.habitify');
+
 // --- GROUP 2: SOCIAL LOGIN ---
 Route::get("/auth/google", [SocialController::class, "redirect"])->name(
     "google.login",
