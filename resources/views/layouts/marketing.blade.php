@@ -1104,7 +1104,7 @@
                     </div>
 
 
-                    <div>
+                    <div class="col-span-2 md:col-span-1">
                         <p class="text-xs font-semibold text-slate-500 mb-5">Connect</p>
                         <div class="flex gap-4">
                             <a href="https://x.com/OneForMind" target="_blank" rel="noopener noreferrer"
