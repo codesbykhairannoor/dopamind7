@@ -142,15 +142,15 @@
 
             {{-- High-Fidelity App UI --}}
             <div class="relative max-w-6xl mx-auto mt-24">
-                {{-- Glow Ambient --}}
-                <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-full h-80 bg-gradient-to-b from-indigo-500/20 to-transparent blur-3xl rounded-full"></div>
+                {{-- Glow Ambient (Optimized: Reduced blur and opacity, hardware acceleration) --}}
+                <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-full h-80 bg-gradient-to-b from-indigo-500/10 to-transparent blur-2xl rounded-full transform-gpu pointer-events-none"></div>
                 
                 {{-- Core Value Visuals (3 Pillars) --}}
                 <div class="grid md:grid-cols-3 gap-8 relative z-10">
                     
                     {{-- Card 1: Habit Matrix --}}
-                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-2xl transform md:-translate-y-12 hover:-translate-y-16 transition-all duration-500 group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl transform-gpu md:-translate-y-12 hover:-translate-y-16 transition-transform duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-xl group-hover:bg-emerald-500/10 transition-colors transform-gpu"></div>
                         <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">🌱</div>
                         <h3 class="text-xl font-black text-slate-900 mb-2">Build Habits</h3>
                         <p class="text-sm text-slate-500 mb-8">Track consistency with visual heatmaps that rewire your brain.</p>
@@ -161,27 +161,27 @@
                                     $op = [100, 300, 400, 500, 600][array_rand([0,1,2,3,4])];
                                     if($i % 5 == 0) $op = 100;
                                 @endphp
-                                <div class="w-full aspect-square bg-emerald-{{$op}} rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity delay-[{{$i * 10}}ms]"></div>
+                                <div class="w-full aspect-square bg-emerald-{{$op}} rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
                             @endfor
                         </div>
                     </div>
 
                     {{-- Card 2: Finance OS --}}
-                    <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-[0_30px_60px_rgba(0,0,0,0.3)] transform hover:-translate-y-4 transition-all duration-500 group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-500/20 rounded-full blur-3xl group-hover:bg-indigo-500/40 transition-all"></div>
+                    <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-[0_20px_40px_rgba(0,0,0,0.2)] transform-gpu hover:-translate-y-4 transition-transform duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 rounded-full blur-xl group-hover:bg-indigo-500/20 transition-colors transform-gpu"></div>
                         <div class="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl mb-6 border border-indigo-500/30">💰</div>
                         <h3 class="text-xl font-black text-white mb-2">Master Finance</h3>
                         <p class="text-sm text-slate-400 mb-8">Take control of your cash flow with zero-based budgeting.</p>
                         
-                        <div class="space-y-3">
-                            <div class="bg-slate-800/50 p-4 rounded-2xl border border-slate-700/50 flex justify-between items-center backdrop-blur-sm">
+                        <div class="space-y-3 relative z-10">
+                            <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/50 flex justify-between items-center">
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-xs">☕</div>
                                     <span class="text-slate-300 text-sm font-medium">Coffee</span>
                                 </div>
                                 <span class="text-white font-bold text-sm">-$4.50</span>
                             </div>
-                            <div class="bg-indigo-600/20 p-4 rounded-2xl border border-indigo-500/30 flex justify-between items-center backdrop-blur-sm">
+                            <div class="bg-indigo-600/20 p-4 rounded-2xl border border-indigo-500/30 flex justify-between items-center">
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 bg-indigo-500/30 text-indigo-300 rounded-full flex items-center justify-center text-xs">💼</div>
                                     <span class="text-indigo-200 text-sm font-medium">Salary</span>
@@ -192,8 +192,8 @@
                     </div>
 
                     {{-- Card 3: Deep Focus --}}
-                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-2xl transform md:-translate-y-12 hover:-translate-y-16 transition-all duration-500 group relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition-all"></div>
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl transform-gpu md:-translate-y-12 hover:-translate-y-16 transition-transform duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-32 h-32 bg-amber-500/5 rounded-full blur-xl group-hover:bg-amber-500/10 transition-colors transform-gpu"></div>
                         <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">🎯</div>
                         <h3 class="text-xl font-black text-slate-900 mb-2">Execute Goals</h3>
                         <p class="text-sm text-slate-500 mb-8">Break down massive visions into daily actionable blocks.</p>
@@ -215,9 +215,9 @@
 
                 </div>
 
-                {{-- Floating AI Decoration --}}
-                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-auto bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-2xl z-30 hidden md:flex items-center gap-4 animate-[bounce-slow_4s_ease-in-out_infinite]">
-                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30 text-xl">✨</div>
+                {{-- Floating AI Decoration (Optimized Animation) --}}
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-auto bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-xl z-30 hidden md:flex items-center gap-4 transform-gpu animate-[float_4s_ease-in-out_infinite]">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-md text-xl">✨</div>
                     <div class="pr-4">
                         <div class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Neural OS</div>
                         <div class="text-white text-sm font-black">All Systems Synced</div>

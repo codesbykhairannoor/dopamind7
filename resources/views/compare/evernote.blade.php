@@ -56,12 +56,12 @@
                     </div>
                     <div class="relative bg-white p-8 rounded-3xl shadow-2xl border border-slate-200 text-center z-10 w-full max-w-sm">
                         <div class="text-4xl mb-4">📚</div>
-                        <div class="font-black text-slate-800 text-xl mb-2">1,240 Notes</div>
-                        <div class="text-sm text-slate-500 font-medium mb-4">"10 Ways to be Productive"</div>
+                        <div class="font-black text-slate-800 text-xl mb-2">{{ __('evernote_prob_visual_1') }}</div>
+                        <div class="text-sm text-slate-500 font-medium mb-4">{{ __('evernote_prob_visual_2') }}</div>
                         <div class="w-full bg-slate-100 rounded-full h-2 mb-2">
                             <div class="bg-red-500 h-2 rounded-full w-0"></div>
                         </div>
-                        <div class="text-xs font-bold text-red-500 uppercase tracking-widest">0 Actions Taken</div>
+                        <div class="text-xs font-bold text-red-500 uppercase tracking-widest">{{ __('evernote_prob_visual_3') }}</div>
                     </div>
                 </div>
                 
@@ -76,15 +76,15 @@
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center font-bold shrink-0">✕</div>
                             <div>
-                                <h4 class="font-bold text-slate-900">Passive Storage</h4>
-                                <p class="text-sm text-slate-500">Clipping articles doesn't mean you're learning. It's just digital hoarding.</p>
+                                <h4 class="font-bold text-slate-900">{{ __('evernote_prob_point_1_title') }}</h4>
+                                <p class="text-sm text-slate-500">{{ __('evernote_prob_point_1_desc') }}</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-red-50 text-red-500 flex items-center justify-center font-bold shrink-0">✕</div>
                             <div>
-                                <h4 class="font-bold text-slate-900">No Accountability</h4>
-                                <p class="text-sm text-slate-500">Evernote never asks you why you didn't work out today.</p>
+                                <h4 class="font-bold text-slate-900">{{ __('evernote_prob_point_2_title') }}</h4>
+                                <p class="text-sm text-slate-500">{{ __('evernote_prob_point_2_desc') }}</p>
                             </div>
                         </div>
                     </div>
@@ -110,18 +110,18 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-slate-900 border border-emerald-900/50 rounded-3xl p-8 hover:border-emerald-500/50 transition-colors group">
                     <div class="w-14 h-14 bg-emerald-900/50 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🌱</div>
-                    <h3 class="text-xl font-bold mb-3">Habit Engine</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Visual heatmaps and streaks that rewire your brain, instead of static checklists.</p>
+                    <h3 class="text-xl font-bold mb-3">{{ __('evernote_sol_point_1_title') }}</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">{{ __('evernote_sol_point_1_desc') }}</p>
                 </div>
                 <div class="bg-slate-900 border border-emerald-900/50 rounded-3xl p-8 hover:border-emerald-500/50 transition-colors group transform md:-translate-y-8">
                     <div class="w-14 h-14 bg-emerald-900/50 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">💰</div>
-                    <h3 class="text-xl font-bold mb-3">Finance OS</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Zero-based budgeting that forces you to give every dollar a job.</p>
+                    <h3 class="text-xl font-bold mb-3">{{ __('evernote_sol_point_2_title') }}</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">{{ __('evernote_sol_point_2_desc') }}</p>
                 </div>
                 <div class="bg-slate-900 border border-emerald-900/50 rounded-3xl p-8 hover:border-emerald-500/50 transition-colors group">
                     <div class="w-14 h-14 bg-emerald-900/50 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🎯</div>
-                    <h3 class="text-xl font-bold mb-3">Focus Planner</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Time-blocking calendar that connects your daily tasks to your long-term goals.</p>
+                    <h3 class="text-xl font-bold mb-3">{{ __('evernote_sol_point_3_title') }}</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">{{ __('evernote_sol_point_3_desc') }}</p>
                 </div>
             </div>
         </div>
@@ -131,33 +131,33 @@
     <section class="py-24 bg-white">
         <div class="max-w-4xl mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-black text-slate-900 mb-4">Evernote vs OneForMind</h2>
-                <p class="text-slate-500">See the difference in architecture.</p>
+                <h2 class="text-3xl font-black text-slate-900 mb-4">{{ __('evernote_table_title') }}</h2>
+                <p class="text-slate-500">{{ __('evernote_table_desc') }}</p>
             </div>
             <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden">
                 <table class="w-full text-left border-collapse">
                     <thead>
                         <tr class="bg-slate-50 border-b border-slate-200">
-                            <th class="p-6 text-xs text-slate-500 uppercase tracking-widest w-1/3">Feature</th>
-                            <th class="p-6 text-xs text-slate-500 uppercase tracking-widest w-1/3">Evernote</th>
-                            <th class="p-6 text-xs text-emerald-600 font-black uppercase tracking-widest w-1/3 bg-emerald-50/50">OneForMind</th>
+                            <th class="p-6 text-xs text-slate-500 uppercase tracking-widest w-1/3">{{ __('evernote_table_h1') }}</th>
+                            <th class="p-6 text-xs text-slate-500 uppercase tracking-widest w-1/3">{{ __('evernote_table_h2') }}</th>
+                            <th class="p-6 text-xs text-emerald-600 font-black uppercase tracking-widest w-1/3 bg-emerald-50/50">{{ __('evernote_table_h3') }}</th>
                         </tr>
                     </thead>
                     <tbody class="text-sm">
                         <tr class="border-b border-slate-100">
-                            <td class="p-6 font-bold text-slate-800">Core Paradigm</td>
-                            <td class="p-6 text-slate-500">Document Storage</td>
-                            <td class="p-6 font-bold text-emerald-600 bg-emerald-50/30">Action Engine</td>
+                            <td class="p-6 font-bold text-slate-800">{{ __('evernote_table_r1_1') }}</td>
+                            <td class="p-6 text-slate-500">{{ __('evernote_table_r1_2') }}</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-emerald-50/30">{{ __('evernote_table_r1_3') }}</td>
                         </tr>
                         <tr class="border-b border-slate-100">
-                            <td class="p-6 font-bold text-slate-800">Habit Tracking</td>
-                            <td class="p-6 text-slate-500">Checkboxes in notes</td>
-                            <td class="p-6 font-bold text-emerald-600 bg-emerald-50/30">Native Visual Heatmaps</td>
+                            <td class="p-6 font-bold text-slate-800">{{ __('evernote_table_r2_1') }}</td>
+                            <td class="p-6 text-slate-500">{{ __('evernote_table_r2_2') }}</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-emerald-50/30">{{ __('evernote_table_r2_3') }}</td>
                         </tr>
                         <tr>
-                            <td class="p-6 font-bold text-slate-800">Financial OS</td>
-                            <td class="p-6 text-slate-500">Tables (Manual Math)</td>
-                            <td class="p-6 font-bold text-emerald-600 bg-emerald-50/30">Automated Wealth Dashboard</td>
+                            <td class="p-6 font-bold text-slate-800">{{ __('evernote_table_r3_1') }}</td>
+                            <td class="p-6 text-slate-500">{{ __('evernote_table_r3_2') }}</td>
+                            <td class="p-6 font-bold text-emerald-600 bg-emerald-50/30">{{ __('evernote_table_r3_3') }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -169,15 +169,15 @@
     <section class="py-24 bg-slate-50 border-t border-slate-100">
         <div class="max-w-4xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-3xl font-black text-slate-900 mb-4">The Psychology of Action</h2>
+                <h2 class="text-3xl font-black text-slate-900 mb-4">{{ __('evernote_psy_title') }}</h2>
                 <p class="text-slate-500 leading-relaxed">
-                    Notes apps create a false sense of accomplishment. You clip an article, you feel productive. But nothing has changed in your life. OneForMind removes the friction of setup and forces you to face your daily actions.
+                    {{ __('evernote_psy_desc') }}
                 </p>
             </div>
             <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative">
                 <div class="absolute top-0 right-0 p-4 text-emerald-500 font-black text-4xl opacity-20">"</div>
                 <p class="font-medium text-slate-700 italic relative z-10 text-lg">
-                    Stop collecting the past.<br>Start building the future.
+                    {!! __('evernote_psy_quote') !!}
                 </p>
             </div>
         </div>
@@ -186,9 +186,9 @@
     {{-- SECTION 6: CTA --}}
     <section class="py-32 bg-white text-center border-t border-slate-100">
         <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight">Ready to graduate?</h2>
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight">{{ __('evernote_cta_title') }}</h2>
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-emerald-600 text-white px-12 py-5 rounded-full text-xl hover:bg-emerald-700 transition transform hover:-translate-y-1 shadow-[0_20px_40px_rgba(16,185,129,0.3)] font-bold">
-                Start Your Engine
+                {{ __('evernote_cta_btn') }}
             </a>
         </div>
     </section>

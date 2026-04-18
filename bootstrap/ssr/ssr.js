@@ -396,7 +396,7 @@ const blank_cycle_2_title$1 = "The Rabbit Hole";
 const blank_cycle_2_desc$1 = "5 hours later, you're still watching tutorials on how to link databases and fix formulas.";
 const blank_cycle_3_title$1 = "The Abandonment";
 const blank_cycle_3_desc$1 = "The system is too complex to use on mobile. You stop using it after 3 days.";
-const blank_meta_title$1 = "OneForMind vs Notion & Excel — Stop Building, Start Doing";
+const blank_meta_title$1 = "OneForMind vs Notion and Excel — Stop Building, Start Doing";
 const blank_meta_desc$1 = "Ditch the setup fatigue. Get an all-in-one Life OS that integrates habits, finance, and tasks out of the box. Better than Notion or Excel.";
 const blank_meta_og_title$1 = "You are not a UI Designer. Stop pretending.";
 const blank_meta_og_desc$1 = "Don't spend 10 hours building a tracker just to use it for 10 minutes. Get a real system.";
@@ -460,7 +460,7 @@ const blank_science_title$1 = "The Decision Fatigue Defense";
 const blank_science_desc$1 = "Every second spent 'designing' a spreadsheet is a second of willpower lost. OneForMind eliminates 'Architecting Fatigue', preserving your mental energy for execution.";
 const blank_how_it_works_title$1 = "The End of Infinite Customization";
 const blank_how_it_works_desc$1 = "Notion and Excel users often spend 80% of their time building and 20% doing. OneForMind flips the script. We provide the hard-coded structure of a high-performance OS, so you can stop being a tool-builder and start being an achiever.";
-const pm_meta_title$1 = "OneForMind vs ClickUp & Asana — Best Personal Alternative for Individuals";
+const pm_meta_title$1 = "OneForMind vs ClickUp and Asana — Best Personal Alternative for Individuals";
 const pm_meta_desc$1 = "Ditch the corporate bloat. OneForMind is the first Personal Growth OS designed for solopreneurs and high-performers. Better than ClickUp, Trello, or Monday.com for personal use.";
 const pm_meta_og_title$1 = "Stop Micromanaging Yourself with Corporate Tools";
 const pm_meta_og_desc$1 = "Why use enterprise project management for your personal life? Get a system built for YOU.";
@@ -598,7 +598,7 @@ const habitap_science_title$1 = "Identity-Based Habit Design";
 const habitap_science_desc$1 = "Based on James Clear's research, the most effective way to change is to focus not on what you want to achieve, but on who you wish to become.";
 const habitap_how_it_works_title$1 = "Beyond the Dopamine Hit";
 const habitap_how_it_works_desc$1 = "Traditional habit apps use 'Toxic Gamification'—streaks that make you feel guilty when life happens. OneForMind uses 'Atomic Resilience'. We focus on the trajectory of your identity, ensuring that one missed day doesn't break the system, but becomes a learning point for future growth.";
-const finapp_meta_title$1 = "OneForMind vs Other Trackers — Mindful Manual Finance Tracker & Wealth OS";
+const finapp_meta_title$1 = "OneForMind vs Other Trackers — Mindful Manual Finance Tracker and Wealth OS";
 const finapp_meta_desc$1 = "Stop passive bank syncing. Switch to a mindful manual expense tracker that connects your spending to your habits and goals. The best alternative to YNAB and Mint.";
 const finapp_meta_og_title$1 = "Stop the Automation Trap. Reclaim Your Wealth.";
 const finapp_meta_og_desc$1 = "Why traditional finance apps fail to change your behavior, and how OneForMind's mindful entry fixes it.";
@@ -664,7 +664,7 @@ const finapp_science_title$1 = "The Kakeibo Principle";
 const finapp_science_desc$1 = "OneForMind implements the 100-year-old Japanese art of 'Kakeibo'—mindful budgeting that transforms saving into a meditative practice of self-improvement.";
 const finapp_how_it_works_title$1 = "Turning Awareness into Wealth";
 const finapp_how_it_works_desc$1 = "Digital bank syncing creates an illusion of control while you keep spending. Manual logging in OneForMind is a ritual of awareness. By seeing exactly where your energy (money) goes in real-time, you naturally shift your behavior towards your long-term vision.";
-const plan_meta_title$1 = "Vision-Led Planner & Task Manager — OneForMind vs To-Do Lists";
+const plan_meta_title$1 = "Vision-Led Planner and Task Manager — OneForMind vs To-Do Lists";
 const plan_meta_desc$1 = "Standard checklists are cages. OneForMind is a vision-led system that turns daily tasks into milestones. The best alternative to Todoist and TickTick.";
 const plan_meta_og_title$1 = "Your To-Do List is a Cage. Set Your Vision Free.";
 const plan_meta_og_desc$1 = "Why checking off boxes won't make you successful, and why context-first planning is the key.";
@@ -730,7 +730,7 @@ const plan_science_title$1 = "The Zeigarnik Effect Mastery";
 const plan_science_desc$1 = "The Zeigarnik effect states that uncompleted tasks create mental tension. OneForMind eliminates this 'Brain Itch' by providing a trusted source of truth for every open loop.";
 const plan_how_it_works_title$1 = "Planning for Reality, Not Fantasy";
 const plan_how_it_works_desc$1 = "To-do lists often become 'Wish Lists' that grow forever. OneForMind's Context-First planning forces you to align tasks with your time and energy. By bridging the gap between your 'Vision' and 'Daily Actions', we ensure that your busy-ness is actually progress.";
-const five_meta_title$1 = "OneForMind vs Multiple Apps — Unified Life OS for Habits, Tasks & Finance";
+const five_meta_title$1 = "OneForMind vs Multiple Apps — Unified Life OS for Habits, Tasks and Finance";
 const five_meta_desc$1 = "OneForMind replaces 5+ fragmented apps with a single synchronized ecosystem. The ultimate alternative to Notion, ClickUp, and separate habit trackers.";
 const five_meta_og_title$1 = "One Life. One Mind. One All-in-One System.";
 const five_meta_og_desc$1 = "Consolidate your planner, habits, budget, and journal into a single Neural Synergy OS.";
@@ -797,7 +797,840 @@ const Distributed_Cognition_Active$1 = "Cognitive Load";
 const five_science_title$1 = "The Context Switching Cost";
 const five_science_desc$1 = "Research from UC Irvine shows that fragmented software leads to fragmented focus. OneForMind uses 'Unified Information Architecture' to keep your brain in a flow state.";
 const five_how_it_works_title$1 = "The Power of One Source";
-const five_how_it_works_desc$1 = "When your habits, money, and tasks live in separate worlds, your brain has to work 10x harder to connect them. OneForMind creates 'Cross-Feature Intelligence'. Your budget warns your bucket list. Your habits fuel your milestones. It's not just one app—it's one unified mind.";
+const five_how_it_works_desc$1 = "When your habits, money, and tasks live in separate worlds, your brain has to work 10x harder to connect them. OneForMind creates 'Cross-Feature Intelligence'. Your budget warns your wishlist. Your habits fuel your goals. It's not just one app—it's one unified mind.";
+const habitica_alt_title$1 = "OneForMind vs Habitica — The Habitica Alternative for Adults";
+const habitica_alt_desc$1 = "Stop treating your life like a pixelated game. Ditch the toxic gamification and build real identity-based habits with OneForMind.";
+const habitica_alt_og_title$1 = "Game Over for Gamification. Build Real Discipline.";
+const habitica_alt_og_desc$1 = "Why Habitica's HP system causes anxiety, and why OneForMind's Identity OS builds resilience.";
+const habitica_badge$1 = "Real Growth OS";
+const habitica_hero_title_1$1 = "Life Isn't a";
+const habitica_hero_title_2$1 = "Pixelated Game.";
+const habitica_hero_desc$1 = "Habitica treats you like a child who needs virtual swords to drink water. OneForMind treats you like an adult building a <strong>lasting identity</strong>. Drop the toxic gamification and start growing.";
+const habitica_hero_cta$1 = "Build Real Habits";
+const habitica_hero_note$1 = "No pixel swords included.";
+const habitica_prob_title_1$1 = "The Gamification";
+const habitica_prob_title_highlight$1 = "Hangover";
+const habitica_prob_desc$1 = "At first, getting XP feels great. But what happens when you get sick and miss a day? Your avatar dies, you lose your gear, and you feel terrible about yourself. That's toxic.";
+const habitica_prob_point_1$1 = "Losing health points causes anxiety";
+const habitica_prob_point_2$1 = "Distracting RPG mechanics";
+const habitica_prob_point_3$1 = "Pixel rewards don't translate to real life";
+const habitica_sol_title_1$1 = "Identity Over";
+const habitica_sol_title_highlight$1 = "Avatars";
+const habitica_sol_desc$1 = "OneForMind uses the 'Never Miss Twice' philosophy. If you skip a day, we don't punish you. We analyze the friction and help you recover. You build an identity, not an RPG character.";
+const habitica_sol_1_title$1 = "Resilience over Punishment";
+const habitica_sol_1_desc$1 = "No HP loss. Just objective data and gentle nudges to get back on track.";
+const habitica_sol_2_title$1 = "Connected to Reality";
+const habitica_sol_2_desc$1 = "Your habits affect your actual finances and real-world planner, not a virtual tavern.";
+const habitica_compare_title$1 = "Fantasy vs Reality";
+const habitica_compare_desc$1 = "Choose your operating system.";
+const habitica_table_head_2$1 = "Habitica";
+const habitica_table_row_1_title$1 = "Core Motivation";
+const habitica_table_row_1_col_1$1 = "Virtual Gold & Pets";
+const habitica_table_row_1_col_2$1 = "Identity & Data";
+const habitica_table_row_2_title$1 = "Missing a Day";
+const habitica_table_row_2_col_1$1 = "Takes Damage / Dies";
+const habitica_table_row_2_col_2$1 = "Analyzes Friction";
+const habitica_table_row_3_title$1 = "Interface";
+const habitica_table_row_3_col_1$1 = "Cluttered 8-bit RPG";
+const habitica_table_row_3_col_2$1 = "Clean, Minimalist OS";
+const habitica_cta_title$1 = "Ready to level up in <br/>the real world?";
+const habitica_cta_desc$1 = "Trade your virtual sword for actual discipline.";
+const habitica_cta_btn$1 = "Switch to OneForMind";
+const streaks_alt_title$1 = "OneForMind vs Streaks App — The Best Streaks Alternative";
+const streaks_alt_desc$1 = "The Streaks app breaks you when the chain breaks. Switch to OneForMind's forgiving, identity-based habit tracker.";
+const streaks_alt_og_title$1 = "Break the Chain. Keep the Habit.";
+const streaks_alt_og_desc$1 = "Why the 'Don't break the chain' method is flawed, and what to use instead.";
+const streaks_badge$1 = "Forgiving Habit Tracker";
+const streaks_hero_title_1$1 = "You Are More Than";
+const streaks_hero_title_2$1 = "A Number.";
+const streaks_hero_desc$1 = "The Streaks app relies entirely on the 'Don't Break the Chain' method. It works until life happens. When you lose a 100-day streak, motivation dies. <strong>OneForMind tracks consistency, not just consecutive days.</strong>";
+const streaks_hero_cta$1 = "Try Forgiving Habits";
+const streaks_hero_note$1 = "We celebrate recovery.";
+const streaks_prob_title_1$1 = "The Fragility of";
+const streaks_prob_title_highlight$1 = "The Chain";
+const streaks_prob_desc$1 = "Streak-based apps are binary: you are either perfect, or you failed. They don't account for sick days, vacations, or human error.";
+const streaks_prob_point_1$1 = "One missed day resets everything to zero";
+const streaks_prob_point_2$1 = "Focuses on the number, not the action";
+const streaks_prob_point_3$1 = "Leads to total abandonment when broken";
+const streaks_sol_title_1$1 = "Consistency Over";
+const streaks_sol_title_highlight$1 = "Perfection";
+const streaks_sol_desc$1 = "We use Heatmaps (like GitHub) instead of chains. If you complete a habit 28 out of 30 days, that's a 93% success rate, not a 'broken streak'. We celebrate the volume of your effort.";
+const streaks_sol_1_title$1 = "Volume Over Streaks";
+const streaks_sol_1_desc$1 = "A missed day just makes the heatmap slightly lighter, it doesn't erase your past work.";
+const streaks_sol_2_title$1 = "Contextual Logging";
+const streaks_sol_2_desc$1 = "Connect your journal to explain WHY you missed a day.";
+const streaks_compare_title$1 = "Fragile vs Anti-Fragile";
+const streaks_compare_desc$1 = "How do you handle failure?";
+const streaks_table_head_2$1 = "Streaks App";
+const streaks_table_row_1_title$1 = "Missed Day Impact";
+const streaks_table_row_1_col_1$1 = "Resets to 0. Demotivating.";
+const streaks_table_row_1_col_2$1 = "Lowers monthly % slightly.";
+const streaks_table_row_2_title$1 = "Visual Model";
+const streaks_table_row_2_col_1$1 = "A fragile chain";
+const streaks_table_row_2_col_2$1 = "A resilient heatmap";
+const streaks_table_row_3_title$1 = "Integration";
+const streaks_table_row_3_col_1$1 = "Standalone only";
+const streaks_table_row_3_col_2$1 = "Syncs with Tasks & Budget";
+const streaks_cta_title$1 = "Build habits that survive <br/>the real world.";
+const streaks_cta_desc$1 = "Because perfection is a myth. Consistency is reality.";
+const streaks_cta_btn$1 = "Start Your Journey";
+const habitify_alt_title$1 = "OneForMind vs Habitify — The Superior Habitify Alternative";
+const habitify_alt_desc$1 = "Habitify is a good tracker, but it's isolated. OneForMind integrates your habits with your planner, finances, and journal in one unified OS.";
+const habitify_alt_og_title$1 = "Why Pay for Just a Tracker?";
+const habitify_alt_og_desc$1 = "Get a Habit Tracker, Planner, and Finance OS for less than the price of Habitify Premium.";
+const habitify_badge$1 = "Unified Ecosystem";
+const habitify_hero_title_1$1 = "A Habit Tracker";
+const habitify_hero_title_2$1 = "Shouldn't Live in a Vacuum.";
+const habitify_hero_desc$1 = "Habitify is beautiful, but it's an island. Your habits dictate your spending, and your spending dictates your life. <strong>OneForMind connects the dots</strong>, giving you a full Life OS instead of just a checklist.";
+const habitify_hero_cta$1 = "Upgrade Your OS";
+const habitify_hero_note$1 = "More features, zero friction.";
+const habitify_prob_title_1$1 = "The Problem with";
+const habitify_prob_title_highlight$1 = "Siloed Data";
+const habitify_prob_desc$1 = "When your habit app doesn't talk to your daily planner, you end up doing double data entry. You schedule 'Gym' in your calendar, then check it off in Habitify. That's exhausting.";
+const habitify_prob_point_1$1 = "No connection to your daily schedule";
+const habitify_prob_point_2$1 = "Expensive subscription for just one feature";
+const habitify_prob_point_3$1 = "Lack of deep journaling context";
+const habitify_sol_title_1$1 = "The Power of";
+const habitify_sol_title_highlight$1 = "Cross-Pollination";
+const habitify_sol_desc$1 = "In OneForMind, your habits appear automatically in your Daily Planner. When you journal, your habit completion rate is right there to give you context. It's a living ecosystem.";
+const habitify_sol_1_title$1 = "Unified Daily View";
+const habitify_sol_1_desc$1 = "See your habits alongside your meetings and tasks.";
+const habitify_sol_2_title$1 = "Neural AI Insights";
+const habitify_sol_2_desc$1 = "Our AI analyzes how your habits affect your finances.";
+const habitify_compare_title$1 = "Isolated vs Integrated";
+const habitify_compare_desc$1 = "See the whole picture.";
+const habitify_table_head_2$1 = "Habitify";
+const habitify_table_row_1_title$1 = "Ecosystem";
+const habitify_table_row_1_col_1$1 = "Just habits";
+const habitify_table_row_1_col_2$1 = "Habits, Finance, Planner, Journal";
+const habitify_table_row_2_title$1 = "Daily Planner Sync";
+const habitify_table_row_2_col_1$1 = "No";
+const habitify_table_row_2_col_2$1 = "Yes, native integration";
+const habitify_table_row_3_title$1 = "Value";
+const habitify_table_row_3_col_1$1 = "Expensive single-use tool";
+const habitify_table_row_3_col_2$1 = "Ultimate Life OS";
+const habitify_cta_title$1 = "Stop paying for <br/>fragmented tools.";
+const habitify_cta_desc$1 = "Bring your entire life into one beautiful, unified workspace.";
+const habitify_cta_btn$1 = "Unify Your Life";
+const explore_more_alt$1 = "Explore More Alternatives";
+const explore_more_desc$1 = "See how OneForMind compares to specific tools in the market.";
+const explore_habitica_desc$1 = "Drop the toxic gamification and pixel rewards. Build real resilience.";
+const explore_streaks_desc$1 = "Don't let a broken chain ruin your motivation. We track volume, not just streaks.";
+const explore_habitify_desc$1 = "A habit tracker shouldn't live in a vacuum. Connect it to your planner and budget.";
+const habitica_science_title$1 = "The Science of Motivation";
+const habitica_science_desc$1 = "Extrinsic rewards (like gold coins) destroy intrinsic motivation. Over time, you stop caring about the habit and only care about the game.";
+const habitica_science_point1$1 = "Intrinsic Identity";
+const habitica_science_point1_desc$1 = "We help you believe 'I am a runner' instead of 'I need 10XP'.";
+const habitica_science_point2$1 = "No Reward Fatigue";
+const habitica_science_point2_desc$1 = "Pixel pets get boring. Real-world progress never does.";
+const habitica_testimonial$1 = '"I used Habitica for years until I realized I was just playing a game, not changing my life. OneForMind forced me to grow up and actually do the work."';
+const streaks_psycho_title$1 = "The Psychology of Failure";
+const streaks_psycho_desc$1 = "When a 200-day streak breaks, the 'What the Hell' effect takes over. You think, 'Well, the chain is broken, might as well give up.' We prevent this.";
+const streaks_psycho_point1$1 = "Graceful Degradation";
+const streaks_psycho_point1_desc$1 = "Missing a day is a data point, not a catastrophe.";
+const streaks_data_title$1 = "Data-Driven Recovery";
+const streaks_data_desc$1 = "Instead of guilt, we offer analysis. Why did you miss yesterday? Was your budget too tight? Was your schedule overloaded? Our integrated OS finds out.";
+const habitify_cost_title$1 = "The Hidden Cost of Single-Use Apps";
+const habitify_cost_desc$1 = "Paying a subscription just to check off boxes is absurd. With OneForMind, you get a world-class habit tracker, plus a planner and finance OS.";
+const habitify_ai_title$1 = "Neural Intelligence";
+const habitify_ai_desc$1 = "Habitify gives you charts. OneForMind gives you insights. Our AI Coach correlates your habit completion with your financial spending and daily mood.";
+const explore_ynab_desc$1 = "Stop needing an accounting degree just to track your coffee. Get visual, habit-driven finances.";
+const ynab_alt_title$1 = "OneForMind vs YNAB — The Best YNAB Alternative";
+const ynab_alt_desc$1 = "YNAB is too complex and expensive. Switch to a visual Finance OS that connects your spending to your daily habits.";
+const ynab_alt_og_title$1 = "You Don't Need an Accounting Degree to Budget.";
+const ynab_alt_og_desc$1 = "Why pay $109/year for a glorified spreadsheet when you can have a unified Life OS?";
+const ynab_badge$1 = "Visual Finance OS";
+const ynab_hero_title_1$1 = "You Need A Life,";
+const ynab_hero_title_2$1 = "Not Just A Budget.";
+const ynab_hero_desc$1 = "YNAB forces you to become a part-time accountant. OneForMind gives you a <strong>beautiful, intuitive dashboard</strong> that tracks your money while connecting it to your real-world habits. Stop balancing spreadsheets and start living.";
+const ynab_hero_cta$1 = "Try Visual Budgeting";
+const ynab_hero_note$1 = "No accounting degree required.";
+const ynab_prob_title_1$1 = "The Complexity";
+const ynab_prob_title_highlight$1 = "Trap";
+const ynab_prob_desc$1 = "When budgeting feels like doing your taxes, you'll eventually stop doing it. YNAB's steep learning curve makes financial awareness a chore rather than a habit.";
+const ynab_prob_point_1$1 = "Extremely steep learning curve";
+const ynab_prob_point_2$1 = "Punishing $109/year subscription fee";
+const ynab_prob_point_3$1 = "It's just a spreadsheet with lipstick";
+const ynab_sol_title_1$1 = "Clarity Over";
+const ynab_sol_title_highlight$1 = "Complexity";
+const ynab_sol_desc$1 = "We believe managing your money should take 2 minutes a day. Our visual vaults, colorful transaction tags, and simple budget bars give you instant clarity without the headache.";
+const ynab_sol_1_title$1 = "Habit-Driven Finance";
+const ynab_sol_1_desc$1 = "See exactly how your 'Eat Out Less' habit correlates with your bank account.";
+const ynab_sol_2_title$1 = "Visual Savings Vaults";
+const ynab_sol_2_desc$1 = "Watch your money grow towards your dreams, not just sit in categories.";
+const ynab_compare_title$1 = "Spreadsheets vs Visual OS";
+const ynab_compare_desc$1 = "Which one do you actually want to open?";
+const ynab_table_head_2$1 = "YNAB";
+const ynab_table_row_1_title$1 = "Learning Curve";
+const ynab_table_row_1_col_1$1 = "Requires hours of tutorials";
+const ynab_table_row_1_col_2$1 = "Intuitive from minute one";
+const ynab_table_row_2_title$1 = "Habit Integration";
+const ynab_table_row_2_col_1$1 = "None";
+const ynab_table_row_2_col_2$1 = "Deeply integrated";
+const ynab_table_row_3_title$1 = "Price";
+const ynab_table_row_3_col_1$1 = "$109/year";
+const ynab_table_row_3_col_2$1 = "Much more affordable";
+const ynab_cost_title$1 = "The Absurdity of Paying $109 to Save Money";
+const ynab_cost_desc$1 = "It's ironic: an app designed to help you save money is one of your biggest software expenses. With OneForMind, you get a full Life OS for less.";
+const ynab_psycho_title$1 = "Financial Fatigue";
+const ynab_psycho_desc$1 = "When every penny must be 'given a job', the mental load is exhausting. We use macro-budgets and visual cues to keep you aware without the burnout.";
+const ynab_cta_title$1 = "Ready to fire your <br/>robot accountant?";
+const ynab_cta_desc$1 = "Switch to a system that actually makes sense.";
+const ynab_cta_btn$1 = "Switch to OneForMind";
+const explore_wallet_desc$1 = "Passive automation is a trap. Stop letting apps do the work while your wallet bleeds.";
+const wallet_alt_title$1 = "OneForMind vs Wallet App — A Better Wallet Alternative";
+const wallet_alt_desc$1 = "Wallet's passive bank syncing makes you lazy. Take active control of your finances with OneForMind.";
+const wallet_alt_og_title$1 = "Automation is Making You Broke.";
+const wallet_alt_og_desc$1 = "Why passive tracking apps like Wallet fail to change your spending habits.";
+const wallet_badge$1 = "Active Financial Awareness";
+const wallet_hero_title_1$1 = "Stop Watching Your";
+const wallet_hero_title_2$1 = "Money Disappear.";
+const wallet_hero_desc$1 = "Apps like Wallet brag about automatic bank syncing. But when the app does all the work, your brain goes on autopilot. <strong>You need active awareness</strong>, not a post-mortem report of your empty bank account.";
+const wallet_hero_cta$1 = "Take Active Control";
+const wallet_hero_note$1 = "Feel every transaction.";
+const wallet_prob_title_1$1 = "The Automation";
+const wallet_prob_title_highlight$1 = "Illusion";
+const wallet_prob_desc$1 = "Syncing your bank feels productive, but it's totally passive. You only open the app at the end of the month to see the damage that's already done.";
+const wallet_prob_point_1$1 = "You don't 'feel' your spending";
+const wallet_prob_point_2$1 = "Delayed realization of over-budgeting";
+const wallet_prob_point_3$1 = "Creates financial detachment";
+const wallet_sol_title_1$1 = "Friction is a";
+const wallet_sol_title_highlight$1 = "Feature";
+const wallet_sol_desc$1 = "OneForMind requires manual entry by design. Taking 5 seconds to type in your $6 coffee forces you to acknowledge the purchase. That tiny friction is what actually changes your spending behavior.";
+const wallet_sol_1_title$1 = "Active Logging";
+const wallet_sol_1_desc$1 = "Build the habit of financial mindfulness every time you spend.";
+const wallet_sol_2_title$1 = "Predictive Control";
+const wallet_sol_2_desc$1 = "You know you're breaking the budget *before* you swipe your card.";
+const wallet_compare_title$1 = "Passive vs Active";
+const wallet_compare_desc$1 = "Who is really in control?";
+const wallet_table_head_2$1 = "Wallet / Mint";
+const wallet_table_row_1_title$1 = "Method";
+const wallet_table_row_1_col_1$1 = "Passive Auto-Sync";
+const wallet_table_row_1_col_2$1 = "Active Mindfulness Logging";
+const wallet_table_row_2_title$1 = "Behavior Change";
+const wallet_table_row_2_col_1$1 = "Minimal";
+const wallet_table_row_2_col_2$1 = "High impact";
+const wallet_table_row_3_title$1 = "Privacy";
+const wallet_table_row_3_col_1$1 = "Sells your banking data";
+const wallet_table_row_3_col_2$1 = "Your data is yours";
+const wallet_science_title$1 = "The Psychology of Friction";
+const wallet_science_desc$1 = "Studies show that people spend 20% less when using cash versus credit cards because it 'hurts' to hand over physical money. Manual logging mimics this psychological friction digitally.";
+const wallet_data_title$1 = "Your Bank Account is Not a Strategy";
+const wallet_data_desc$1 = "Looking at your past transactions is driving while looking in the rearview mirror. You need a system that looks forward.";
+const wallet_cta_title$1 = "Stop being a spectator <br/>to your own wealth.";
+const wallet_cta_desc$1 = "Take the wheel and drive your financial future.";
+const wallet_cta_btn$1 = "Start Manual Tracking";
+const explore_spendee_desc$1 = "Beautiful charts mean nothing if they aren't tied to your daily habits and goals.";
+const spendee_alt_title$1 = "OneForMind vs Spendee — The Ultimate Spendee Alternative";
+const spendee_alt_desc$1 = "Spendee is just a pretty calculator. Get a complete Life OS that connects your money to your habits and tasks.";
+const spendee_alt_og_title$1 = "Pretty Charts Don't Pay the Bills.";
+const spendee_alt_og_desc$1 = "Why standalone finance apps like Spendee aren't enough to fix your life.";
+const spendee_badge$1 = "Holistic Wealth System";
+const spendee_hero_title_1$1 = "A Calculator Won't";
+const spendee_hero_title_2$1 = "Fix Your Life.";
+const spendee_hero_desc$1 = "Spendee gives you beautiful pie charts. But charts don't tell you *why* you overspent. <strong>OneForMind connects your finances to your habits</strong>, showing you the root cause of your spending.";
+const spendee_hero_cta$1 = "See The Big Picture";
+const spendee_hero_note$1 = "Finance + Habits + Planner.";
+const spendee_prob_title_1$1 = "The Missing";
+const spendee_prob_title_highlight$1 = "Context";
+const spendee_prob_desc$1 = "If you see a spike in 'Food' spending on Spendee, you don't know why it happened. Was it a bad mood? A missed meal prep habit? Standalone apps are blind to context.";
+const spendee_prob_point_1$1 = "No integration with your daily routines";
+const spendee_prob_point_2$1 = "Just tracks symptoms, not causes";
+const spendee_prob_point_3$1 = "You still need 3 other apps to manage life";
+const spendee_sol_title_1$1 = "Connecting The";
+const spendee_sol_title_highlight$1 = "Dots";
+const spendee_sol_desc$1 = "Because OneForMind is a unified OS, you can see that your $50 takeout spike happened on the same day you missed your 'Grocery Shopping' task in the planner. That's real intelligence.";
+const spendee_sol_1_title$1 = "Root Cause Analysis";
+const spendee_sol_1_desc$1 = "Our AI Coach tells you exactly which habits are draining your wallet.";
+const spendee_sol_2_title$1 = "One Subscription";
+const spendee_sol_2_desc$1 = "Why pay for a finance app, a habit app, and a planner separately?";
+const spendee_compare_title$1 = "Isolated vs Unified";
+const spendee_compare_desc$1 = "Don't settle for half the picture.";
+const spendee_table_head_2$1 = "Spendee";
+const spendee_table_row_1_title$1 = "Context";
+const spendee_table_row_1_col_1$1 = "Blind numbers";
+const spendee_table_row_1_col_2$1 = "Deep behavioral context";
+const spendee_table_row_2_title$1 = "Ecosystem";
+const spendee_table_row_2_col_1$1 = "Finance only";
+const spendee_table_row_2_col_2$1 = "Finance, Planner, Habits, Journal";
+const spendee_table_row_3_title$1 = "Goal Synergy";
+const spendee_table_row_3_col_1$1 = "Basic limits";
+const spendee_table_row_3_col_2$1 = "Tied directly to Life Goals";
+const spendee_ai_title$1 = "The Neural Advantage";
+const spendee_ai_desc$1 = "Our integrated AI doesn't just show you a pie chart. It tells you: 'You spend 30% more on days you don't meditate.' That's the power of a unified system.";
+const spendee_cost_title$1 = "The Fragmentation Tax";
+const spendee_cost_desc$1 = "Paying for Spendee, plus a task manager, plus a habit tracker, is a waste of money and mental energy. Consolidate and conquer.";
+const spendee_cta_title$1 = "Stop tracking symptoms. <br/>Start fixing causes.";
+const spendee_cta_desc$1 = "Upgrade to a system that actually understands you.";
+const spendee_cta_btn$1 = "Unify Your Finances";
+const explore_todoist_desc$1 = "Endless laundry lists cause burnout. Upgrade to time-blocking and the Eisenhower Matrix.";
+const todoist_alt_title$1 = "OneForMind vs Todoist — The Ultimate Todoist Alternative";
+const todoist_alt_desc$1 = "Todoist is just an endless laundry list that causes stress. Switch to OneForMind for time-blocking and real prioritization.";
+const todoist_alt_og_title$1 = "Laundry Lists Don't Get Things Done.";
+const todoist_alt_og_desc$1 = "Why Todoist's endless lists cause burnout, and how OneForMind fixes it.";
+const todoist_badge$1 = "Execution Engine";
+const todoist_hero_title_1$1 = "Stop Making Lists.";
+const todoist_hero_title_2$1 = "Start Executing.";
+const todoist_hero_desc$1 = "Todoist lets you pile up 500 tasks with no context. It's a graveyard of good intentions. OneForMind uses <strong>Time-Blocking and the Eisenhower Matrix</strong> to force you to schedule exactly WHEN you'll do the work.";
+const todoist_hero_cta$1 = "Execute Your Day";
+const todoist_hero_note$1 = "Turn tasks into calendar blocks.";
+const todoist_prob_title_1$1 = "The Graveyard of";
+const todoist_prob_title_highlight$1 = "Good Intentions";
+const todoist_prob_desc$1 = "Writing down 'Build website' without scheduling it is just wishing. Todoist's endless lists create a false sense of productivity followed by overwhelming anxiety.";
+const todoist_prob_point_1$1 = "Overwhelming 'Overdue' red text";
+const todoist_prob_point_2$1 = "No built-in calendar scheduling";
+const todoist_prob_point_3$1 = "Treats 'Buy Milk' the same as 'Launch Startup'";
+const todoist_sol_title_1$1 = "Schedule It or";
+const todoist_sol_title_highlight$1 = "Trash It";
+const todoist_sol_desc$1 = "In OneForMind, tasks don't just sit there. You drop them into your daily calendar. If it's not on the calendar, it doesn't exist. We force you to be realistic with your time.";
+const todoist_sol_1_title$1 = "Eisenhower Matrix Built-in";
+const todoist_sol_1_desc$1 = "Instantly separate the Urgent from the Important.";
+const todoist_sol_2_title$1 = "Time-Blocking Native";
+const todoist_sol_2_desc$1 = "Drag tasks directly into your daily timeline.";
+const todoist_compare_title$1 = "Wishing vs Doing";
+const todoist_compare_desc$1 = "How do you handle your day?";
+const todoist_table_head_2$1 = "Todoist";
+const todoist_table_row_1_title$1 = "Philosophy";
+const todoist_table_row_1_col_1$1 = "Collect everything";
+const todoist_table_row_1_col_2$1 = "Schedule what matters";
+const todoist_table_row_2_title$1 = "Prioritization";
+const todoist_table_row_2_col_1$1 = "Basic P1-P4 flags";
+const todoist_table_row_2_col_2$1 = "Visual Eisenhower Matrix";
+const todoist_table_row_3_title$1 = "Habits Integration";
+const todoist_table_row_3_col_1$1 = "Hacky recurring tasks";
+const todoist_table_row_3_col_2$1 = "Dedicated Habit Engine";
+const todoist_psycho_title$1 = "The Zeigarnik Effect";
+const todoist_psycho_desc$1 = "Unfinished tasks cause mental tension. Seeing a list of 50 overdue items on Todoist spikes your cortisol. Scheduling 3 realistic blocks on OneForMind brings peace.";
+const todoist_data_title$1 = "Tasks vs Habits";
+const todoist_data_desc$1 = "Todoist treats habits like regular tasks. But 'Drink Water' is not a task, it's a routine. OneForMind separates them beautifully so your to-do list isn't cluttered.";
+const todoist_cta_title$1 = "Ready to clear the clutter <br/>and get to work?";
+const todoist_cta_desc$1 = "Stop organizing your tasks. Start executing them.";
+const todoist_cta_btn$1 = "Switch to OneForMind";
+const explore_ticktick_desc$1 = "Don't just tick boxes. Connect your daily tasks to your long-term life goals.";
+const ticktick_alt_title$1 = "OneForMind vs TickTick — A Smarter TickTick Alternative";
+const ticktick_alt_desc$1 = "TickTick is great for chores, but lacks vision. Switch to a Life OS that connects your daily tasks to your life goals.";
+const ticktick_alt_og_title$1 = "Don't Just Tick Boxes. Build a Life.";
+const ticktick_alt_og_desc$1 = "Why a simple checklist isn't enough to reach your long-term goals.";
+const ticktick_badge$1 = "Vision-Led Planner";
+const ticktick_hero_title_1$1 = "Checking Boxes Isn't";
+const ticktick_hero_title_2$1 = "The Same as Progress.";
+const ticktick_hero_desc$1 = "TickTick is great for remembering to buy groceries. But for building a business or changing your life? You need more. <strong>OneForMind connects your daily tasks directly to your macro life goals.</strong>";
+const ticktick_hero_cta$1 = "Connect Tasks to Goals";
+const ticktick_hero_note$1 = "A planner with a vision.";
+const ticktick_prob_title_1$1 = "The Productivity";
+const ticktick_prob_title_highlight$1 = "Mirage";
+const ticktick_prob_desc$1 = "You can check off 20 tasks in TickTick and still be in the exact same place in life. If your tasks aren't aligned with a larger vision, you're just running on a hamster wheel.";
+const ticktick_prob_point_1$1 = "No high-level goal tracking";
+const ticktick_prob_point_2$1 = "Disconnected from your finances";
+const ticktick_prob_point_3$1 = "Cluttered UI with too many features";
+const ticktick_sol_title_1$1 = "Top-Down";
+const ticktick_sol_title_highlight$1 = "Alignment";
+const ticktick_sol_desc$1 = "In OneForMind, you set a Goal first. Then you create Habits and Tasks that serve that goal. Every time you check a box, you know exactly what mountain you are climbing.";
+const ticktick_sol_1_title$1 = "Macro to Micro";
+const ticktick_sol_1_desc$1 = "See how today's tasks feed your 5-year vision.";
+const ticktick_sol_2_title$1 = "All-in-One Dashboard";
+const ticktick_sol_2_desc$1 = "Tasks, Habits, and Budget all in one clean view.";
+const ticktick_compare_title$1 = "Micro vs Macro";
+const ticktick_compare_desc$1 = "Are you climbing the right mountain?";
+const ticktick_table_head_2$1 = "TickTick";
+const ticktick_table_row_1_title$1 = "Focus";
+const ticktick_table_row_1_col_1$1 = "Getting chores done";
+const ticktick_table_row_1_col_2$1 = "Executing life goals";
+const ticktick_table_row_2_title$1 = "Ecosystem";
+const ticktick_table_row_2_col_1$1 = "Tasks & basic habits";
+const ticktick_table_row_2_col_2$1 = "Tasks, Goals, Finance, Journal";
+const ticktick_table_row_3_title$1 = "Journal Integration";
+const ticktick_table_row_3_col_1$1 = "None";
+const ticktick_table_row_3_col_2$1 = "Deep reflective journaling";
+const ticktick_psycho_title$1 = "The Meaning Crisis";
+const ticktick_psycho_desc$1 = "Task fatigue happens when we lose the 'Why'. By connecting your daily actions to a defined Goal in OneForMind, you restore meaning to your daily grind.";
+const ticktick_data_title$1 = "Design Matters";
+const ticktick_data_desc$1 = "TickTick feels like a utility app. OneForMind feels like a premium sanctuary for your thoughts. A calm environment leads to better focus.";
+const ticktick_cta_title$1 = "Stop running on <br/>a hamster wheel.";
+const ticktick_cta_desc$1 = "Start climbing your mountain with purpose.";
+const ticktick_cta_btn$1 = "Plan With Purpose";
+const explore_clickup_desc$1 = "Stop using enterprise tools for personal life. Get an OS designed for individuals, not corporations.";
+const clickup_alt_title$1 = "OneForMind vs ClickUp — The Best ClickUp Alternative for Individuals";
+const clickup_alt_desc$1 = "ClickUp is bloated corporate software. Switch to OneForMind, the personal OS designed for individual focus, not enterprise micromanagement.";
+const clickup_alt_og_title$1 = "You Are Not a Corporation.";
+const clickup_alt_og_desc$1 = "Why using enterprise tools like ClickUp or Asana ruins your personal productivity.";
+const clickup_badge$1 = "Personal OS";
+const clickup_hero_title_1$1 = "You Are a Human,";
+const clickup_hero_title_2$1 = "Not an Enterprise.";
+const clickup_hero_desc$1 = "ClickUp brags about having 'every feature imaginable'. But you don't need Gantt charts, Jira tickets, or team permissions to run your personal life. <strong>You need clarity, not corporate bloat.</strong>";
+const clickup_hero_cta$1 = "Get Personal Clarity";
+const clickup_hero_note$1 = "Zero corporate jargon.";
+const clickup_prob_title_1$1 = "The Feature";
+const clickup_prob_title_highlight$1 = "Bloat";
+const clickup_prob_desc$1 = "Using ClickUp for personal planning is like using a bulldozer to plant a flower. The endless menus, custom fields, and complex permissions just slow you down.";
+const clickup_prob_point_1$1 = "Painfully slow loading times";
+const clickup_prob_point_2$1 = "Overwhelming enterprise UI";
+const clickup_prob_point_3$1 = "Requires a Ph.D. to set up properly";
+const clickup_sol_title_1$1 = "Opinionated";
+const clickup_sol_title_highlight$1 = "Simplicity";
+const clickup_sol_desc$1 = "OneForMind is an 'Opinionated OS'. We made the hard design choices for you. There are no endless toggles. Just a perfectly crafted system for Habits, Tasks, and Finances that works out of the box.";
+const clickup_sol_1_title$1 = "Lightning Fast";
+const clickup_sol_1_desc$1 = "Instant page loads so you don't lose your train of thought.";
+const clickup_sol_2_title$1 = "Built for Individuals";
+const clickup_sol_2_desc$1 = "We care about your personal growth, not your 'sprint velocity'.";
+const clickup_compare_title$1 = "Corporate vs Personal";
+const clickup_compare_desc$1 = "Use the right tool for the job.";
+const clickup_table_head_2$1 = "ClickUp / Asana";
+const clickup_table_row_1_title$1 = "Target Audience";
+const clickup_table_row_1_col_1$1 = "Large corporate teams";
+const clickup_table_row_1_col_2$1 = "Ambitious individuals";
+const clickup_table_row_2_title$1 = "Setup Time";
+const clickup_table_row_2_col_1$1 = "Days or weeks";
+const clickup_table_row_2_col_2$1 = "Ready in 30 seconds";
+const clickup_table_row_3_title$1 = "Performance";
+const clickup_table_row_3_col_1$1 = "Heavy, slow, complex";
+const clickup_table_row_3_col_2$1 = "Lightweight, instant, calm";
+const clickup_psycho_title$1 = "Decision Fatigue";
+const clickup_psycho_desc$1 = "When an app gives you 50 different ways to view a task, you spend more time organizing than executing. OneForMind removes the friction of choice.";
+const clickup_data_title$1 = "Personal Context";
+const clickup_data_desc$1 = "ClickUp doesn't care about your mood, your habits, or your personal budget. It only cares about deadlines. We care about the whole you.";
+const clickup_cta_title$1 = "Fire your project manager. <br/>Reclaim your peace.";
+const clickup_cta_desc$1 = "Ditch the corporate bloatware and switch to a Personal OS.";
+const clickup_cta_btn$1 = "Switch to a Personal OS";
+const explore_spreadsheet_desc$1 = "Stop doing manual data entry. Get a system that works for you automatically.";
+const spreadsheet_alt_title$1 = "OneForMind vs Spreadsheets — The Ultimate Spreadsheet Alternative";
+const spreadsheet_alt_desc$1 = "Excel and Google Sheets are blank grids that require manual labor. Switch to a ready-made Life OS.";
+const spreadsheet_alt_og_title$1 = "Stop Doing Manual Data Entry.";
+const spreadsheet_alt_og_desc$1 = "Why managing your life in a spreadsheet is a massive waste of time.";
+const spreadsheet_badge$1 = "Ready-Made System";
+const spreadsheet_hero_title_1$1 = "You Are Not";
+const spreadsheet_hero_title_2$1 = "A Data Entry Clerk.";
+const spreadsheet_hero_desc$1 = "Spreadsheets are powerful, but they require constant maintenance. If you forget to update a cell, the whole system breaks. <strong>OneForMind is a fully automated Life OS</strong> that does the heavy lifting for you.";
+const spreadsheet_hero_cta$1 = "Automate Your Life";
+const spreadsheet_hero_note$1 = "No formulas required.";
+const spreadsheet_prob_title_1$1 = "The Maintenance";
+const spreadsheet_prob_title_highlight$1 = "Nightmare";
+const spreadsheet_prob_desc$1 = "When you build your own habit tracker in Excel, you spend more time fixing broken formulas than actually building the habit.";
+const spreadsheet_prob_point_1$1 = "Zero native mobile experience";
+const spreadsheet_prob_point_2$1 = "Requires constant manual updates";
+const spreadsheet_prob_point_3$1 = "No built-in reminders or AI insights";
+const spreadsheet_sol_title_1$1 = "An Opinionated";
+const spreadsheet_sol_title_highlight$1 = "Architecture";
+const spreadsheet_sol_desc$1 = "We made the hard design choices so you don't have to. The UI is gorgeous on every device, and your data flows seamlessly from your habits to your budget.";
+const spreadsheet_sol_1_title$1 = "Native Mobile App Feel";
+const spreadsheet_sol_1_desc$1 = "Works flawlessly on your phone, unlike a cramped spreadsheet.";
+const spreadsheet_sol_2_title$1 = "Cross-Feature Intelligence";
+const spreadsheet_sol_2_desc$1 = "Your habits talk to your planner automatically.";
+const spreadsheet_compare_title$1 = "Manual vs Automated";
+const spreadsheet_compare_desc$1 = "Where do you want to spend your time?";
+const spreadsheet_table_head_2$1 = "Spreadsheets";
+const spreadsheet_table_row_1_title$1 = "Setup Time";
+const spreadsheet_table_row_1_col_1$1 = "Days of tweaking";
+const spreadsheet_table_row_1_col_2$1 = "Instant";
+const spreadsheet_table_row_2_title$1 = "Mobile UX";
+const spreadsheet_table_row_2_col_1$1 = "Terrible";
+const spreadsheet_table_row_2_col_2$1 = "Perfectly responsive";
+const spreadsheet_table_row_3_title$1 = "AI Coaching";
+const spreadsheet_table_row_3_col_1$1 = "None";
+const spreadsheet_table_row_3_col_2$1 = "Built-in Neural Engine";
+const spreadsheet_psycho_title$1 = "The Sunk Cost Fallacy";
+const spreadsheet_psycho_desc$1 = "People stick with spreadsheets because they spent 20 hours building them. Don't let past effort trap you in a bad system.";
+const spreadsheet_data_title$1 = "Action over Organization";
+const spreadsheet_data_desc$1 = "Every minute you spend color-coding cells is a minute you aren't doing deep work.";
+const spreadsheet_cta_title$1 = "Close the spreadsheet.<br/>Open your life.";
+const spreadsheet_cta_desc$1 = "Switch to a system that works for you, not the other way around.";
+const spreadsheet_cta_btn$1 = "Switch to OneForMind";
+const explore_notion_desc$1 = "Cure your blank canvas syndrome. Stop designing templates and start executing.";
+const notion_alt_title$1 = "OneForMind vs Notion — The Best Notion Alternative for Personal Use";
+const notion_alt_desc$1 = "Notion forces you to build your own tools. OneForMind gives you a perfect, ready-made Personal OS.";
+const notion_alt_og_title$1 = "Stop Building. Start Doing.";
+const notion_alt_og_desc$1 = "Why Notion's blank canvas is terrible for personal productivity.";
+const notion_badge$1 = "Opinionated OS";
+const notion_hero_title_1$1 = "The Blank Canvas";
+const notion_hero_title_2$1 = "Syndrome.";
+const notion_hero_desc$1 = "Notion gives you a box of Lego bricks and tells you to build a house. <strong>OneForMind gives you the keys to a beautifully designed mansion.</strong> Stop wasting weekends designing templates and start executing your goals.";
+const notion_hero_cta$1 = "Move In Today";
+const notion_hero_note$1 = "Zero setup required.";
+const notion_prob_title_1$1 = "The Endless";
+const notion_prob_title_highlight$1 = "Tweaking";
+const notion_prob_desc$1 = "In Notion, you are the database architect. When a database breaks or a relation fails, you have to fix it. This creates a false sense of productivity.";
+const notion_prob_point_1$1 = "You spend hours designing instead of doing";
+const notion_prob_point_2$1 = "Mobile app is slow and clunky";
+const notion_prob_point_3$1 = "No native offline support";
+const notion_sol_title_1$1 = "Structured for";
+const notion_sol_title_highlight$1 = "Success";
+const notion_sol_desc$1 = "OneForMind is an Opinionated OS. We baked in the best productivity frameworks (Eisenhower Matrix, Time-blocking, Atomic Habits) directly into the code. It just works.";
+const notion_sol_1_title$1 = "Instant Onboarding";
+const notion_sol_1_desc$1 = "No templates to download. Just sign up and go.";
+const notion_sol_2_title$1 = "Native Speed";
+const notion_sol_2_desc$1 = "Lightning fast interactions without the database bloat.";
+const notion_compare_title$1 = "Builder vs User";
+const notion_compare_desc$1 = "Do you want to build tools, or use them?";
+const notion_table_head_2$1 = "Notion";
+const notion_table_row_1_title$1 = "Philosophy";
+const notion_table_row_1_col_1$1 = "Blank canvas";
+const notion_table_row_1_col_2$1 = "Structured framework";
+const notion_table_row_2_title$1 = "Speed";
+const notion_table_row_2_col_1$1 = "Heavy and slow";
+const notion_table_row_2_col_2$1 = "Instant and fluid";
+const notion_table_row_3_title$1 = "Purpose";
+const notion_table_row_3_col_1$1 = "Wikis and documents";
+const notion_table_row_3_col_2$1 = "Habits, Finance, Planner";
+const notion_psycho_title$1 = "Productivity Porn";
+const notion_psycho_desc$1 = "Creating the 'perfect' aesthetic dashboard gives your brain cheap dopamine. But it doesn't move you closer to your life goals.";
+const notion_data_title$1 = "Purpose-Built Engines";
+const notion_data_desc$1 = "Notion's databases are generic. OneForMind's Habit Engine is built specifically for behavioral psychology, with heatmaps and recovery states.";
+const notion_cta_title$1 = "Put down the Lego bricks.<br/>Pick up your life.";
+const notion_cta_desc$1 = "Switch to a system that's already built for you.";
+const notion_cta_btn$1 = "Get Your Ready-Made OS";
+const explore_obsidian_desc$1 = "Obsidian is great for notes, terrible for habits. Get a real execution engine.";
+const obsidian_alt_title$1 = "OneForMind vs Obsidian — The Obsidian Alternative for Action";
+const obsidian_alt_desc$1 = "Obsidian is a knowledge base, not an action base. Switch to OneForMind to turn your thoughts into execution.";
+const obsidian_alt_og_title$1 = "Notes Don't Execute Themselves.";
+const obsidian_alt_og_desc$1 = "Why Obsidian users need a dedicated Life OS for habits and finance.";
+const obsidian_badge$1 = "Action Engine";
+const obsidian_hero_title_1$1 = "Knowledge is Useless";
+const obsidian_hero_title_2$1 = "Without Action.";
+const obsidian_hero_desc$1 = "Obsidian is fantastic for connecting thoughts. But your daily habits and financial budget shouldn't be buried in a markdown file. <strong>OneForMind is the execution layer</strong> for your life.";
+const obsidian_hero_cta$1 = "Start Executing";
+const obsidian_hero_note$1 = "From thinking to doing.";
+const obsidian_prob_title_1$1 = "The Plugin";
+const obsidian_prob_title_highlight$1 = "Rabbit Hole";
+const obsidian_prob_desc$1 = "Trying to force Obsidian to be a habit tracker requires 15 community plugins, custom CSS, and constant maintenance. It's a fragile house of cards.";
+const obsidian_prob_point_1$1 = "Requires complex plugin stacks";
+const obsidian_prob_point_2$1 = "No native UI for finances or scheduling";
+const obsidian_prob_point_3$1 = "Syncing across devices is a headache";
+const obsidian_sol_title_1$1 = "Native";
+const obsidian_sol_title_highlight$1 = "Integration";
+const obsidian_sol_desc$1 = "In OneForMind, your habits, planner, and budget are native features. No plugins required. Everything syncs instantly to the cloud.";
+const obsidian_sol_1_title$1 = "Zero Maintenance";
+const obsidian_sol_1_desc$1 = "We handle the code. You handle your life.";
+const obsidian_sol_2_title$1 = "Beautiful UI";
+const obsidian_sol_2_desc$1 = "Designed to be calm and intuitive, not look like a code editor.";
+const obsidian_compare_title$1 = "Thinking vs Doing";
+const obsidian_compare_desc$1 = "Use the right tool for the job.";
+const obsidian_table_head_2$1 = "Obsidian";
+const obsidian_table_row_1_title$1 = "Primary Use";
+const obsidian_table_row_1_col_1$1 = "Personal Knowledge";
+const obsidian_table_row_1_col_2$1 = "Personal Execution";
+const obsidian_table_row_2_title$1 = "Habit Tracking";
+const obsidian_table_row_2_col_1$1 = "Hacky markdown tables";
+const obsidian_table_row_2_col_2$1 = "Native visual engine";
+const obsidian_table_row_3_title$1 = "Cloud Sync";
+const obsidian_table_row_3_col_1$1 = "Paid add-on or complex";
+const obsidian_table_row_3_col_2$1 = "Instant and included";
+const obsidian_psycho_title$1 = "The Collector's Fallacy";
+const obsidian_psycho_desc$1 = "We fool ourselves into thinking that collecting information is the same as taking action. Don't just log what you read; track what you DO.";
+const obsidian_data_title$1 = "A Different Paradigm";
+const obsidian_data_desc$1 = "Keep Obsidian for your deep research. Use OneForMind to actually execute your daily routines and manage your wealth.";
+const obsidian_cta_title$1 = "Turn your thoughts <br/>into reality.";
+const obsidian_cta_desc$1 = "Get the execution engine your brain deserves.";
+const obsidian_cta_btn$1 = "Start Executing";
+const explore_monday_desc$1 = "You don't need a corporate project manager to run your personal habits.";
+const monday_alt_title$1 = "OneForMind vs Monday.com — The Best Monday Alternative for Individuals";
+const monday_alt_desc$1 = "Monday.com is built for corporations. Switch to a Personal OS designed for your individual growth.";
+const monday_alt_og_title$1 = "You Are Not a Corporation.";
+const monday_alt_og_desc$1 = "Why enterprise tools like Monday ruin personal productivity.";
+const monday_badge$1 = "Personal OS";
+const monday_hero_title_1$1 = "Leave the Office";
+const monday_hero_title_2$1 = "At the Office.";
+const monday_hero_desc$1 = "Monday.com is great for managing a 50-person marketing team. But using it for your personal habits and budget is overkill. <strong>OneForMind is designed specifically for individuals.</strong>";
+const monday_hero_cta$1 = "Get Personal Clarity";
+const monday_hero_note$1 = "No enterprise bloat.";
+const monday_prob_title_1$1 = "Enterprise";
+const monday_prob_title_highlight$1 = "Bloatware";
+const monday_prob_desc$1 = "When you open Monday for your personal tasks, you are greeted with 'Workspaces', 'Boards', and 'Automations'. It's exhausting just to look at.";
+const monday_prob_point_1$1 = "Slow and heavy interface";
+const monday_prob_point_2$1 = "Expensive pricing model";
+const monday_prob_point_3$1 = "No native habit or finance tracking";
+const monday_sol_title_1$1 = "Designed for";
+const monday_sol_title_highlight$1 = "Humans";
+const monday_sol_desc$1 = "OneForMind is a sanctuary. We stripped away all the corporate features and left only what you need to master your own mind and life.";
+const monday_sol_1_title$1 = "Calm Interface";
+const monday_sol_1_desc$1 = "No stressful charts or team notifications.";
+const monday_sol_2_title$1 = "Holistic Tracking";
+const monday_sol_2_desc$1 = "Track your wealth, not your sprint velocity.";
+const monday_compare_title$1 = "Corporate vs Personal";
+const monday_compare_desc$1 = "Where do you belong?";
+const monday_table_head_2$1 = "Monday.com";
+const monday_table_row_1_title$1 = "Target Audience";
+const monday_table_row_1_col_1$1 = "Corporate Teams";
+const monday_table_row_1_col_2$1 = "Ambitious Individuals";
+const monday_table_row_2_title$1 = "Complexity";
+const monday_table_row_2_col_1$1 = "Overwhelming";
+const monday_table_row_2_col_2$1 = "Streamlined";
+const monday_table_row_3_title$1 = "Price";
+const monday_table_row_3_col_1$1 = "Per-user enterprise pricing";
+const monday_table_row_3_col_2$1 = "Fair individual pricing";
+const monday_psycho_title$1 = "Context Bleed";
+const monday_psycho_desc$1 = "Using the same tool for work and personal life prevents your brain from ever 'clocking out'. Give your personal life its own dedicated space.";
+const monday_data_title$1 = "Deep Personal Context";
+const monday_data_desc$1 = "Monday tracks deadlines. OneForMind tracks your mood, your finances, and your daily habits to give you real life insights.";
+const monday_cta_title$1 = "Fire your corporate <br/>software.";
+const monday_cta_desc$1 = "Reclaim your personal life with a dedicated OS.";
+const monday_cta_btn$1 = "Switch to a Personal OS";
+const explore_trello_desc$1 = "Moving cards across a board doesn't build discipline. Get a real execution system.";
+const trello_alt_title$1 = "OneForMind vs Trello — The Superior Trello Alternative";
+const trello_alt_desc$1 = "Kanban boards are for software development, not personal life. Switch to OneForMind.";
+const trello_alt_og_title$1 = "Kanban Boards Aren't Enough.";
+const trello_alt_og_desc$1 = "Why dragging cards in Trello fails to build lasting personal habits.";
+const trello_badge$1 = "Beyond Kanban";
+const trello_hero_title_1$1 = "Life Doesn't Fit";
+const trello_hero_title_2$1 = "On a Kanban Board.";
+const trello_hero_desc$1 = "Trello's 'To Do, Doing, Done' columns are great for software bugs. But personal growth requires nuance. <strong>OneForMind offers Time-Blocking and Habit Heatmaps</strong>, giving you the right tool for the right job.";
+const trello_hero_cta$1 = "Upgrade Your System";
+const trello_hero_note$1 = "Stop dragging cards.";
+const trello_prob_title_1$1 = "The Illusion of";
+const trello_prob_title_highlight$1 = "Progress";
+const trello_prob_desc$1 = "Dragging a card from 'To Do' to 'Done' feels good, but it lacks scheduling context. A task without a scheduled time is just a wish.";
+const trello_prob_point_1$1 = "No native calendar view";
+const trello_prob_point_2$1 = "Terrible for tracking daily habits";
+const trello_prob_point_3$1 = "Lists get infinitely long and messy";
+const trello_sol_title_1$1 = "Time-Blocking";
+const trello_sol_title_highlight$1 = "Supremacy";
+const trello_sol_desc$1 = "OneForMind forces you to put tasks onto a timeline. If it's not blocked on your calendar, it won't get done. This forces ruthless prioritization.";
+const trello_sol_1_title$1 = "Eisenhower Matrix";
+const trello_sol_1_desc$1 = "Prioritize before you schedule.";
+const trello_sol_2_title$1 = "Dedicated Habit Engine";
+const trello_sol_2_desc$1 = "Separate your routines from your one-off tasks.";
+const trello_compare_title$1 = "Dragging vs Executing";
+const trello_compare_desc$1 = "How do you get things done?";
+const trello_table_head_2$1 = "Trello";
+const trello_table_row_1_title$1 = "Methodology";
+const trello_table_row_1_col_1$1 = "Kanban Boards";
+const trello_table_row_1_col_2$1 = "Time-Blocking & Matrix";
+const trello_table_row_2_title$1 = "Habit Tracking";
+const trello_table_row_2_col_1$1 = "Clunky checklists";
+const trello_table_row_2_col_2$1 = "Native visual engine";
+const trello_table_row_3_title$1 = "Finance Integration";
+const trello_table_row_3_col_1$1 = "None";
+const trello_table_row_3_col_2$1 = "Deeply integrated";
+const trello_psycho_title$1 = "Parkinson's Law";
+const trello_psycho_desc$1 = "Work expands to fill the time allotted. Trello cards have no time limits. OneForMind's time-blocks force you to finish within a set boundary.";
+const trello_data_title$1 = "Visualizing Time";
+const trello_data_desc$1 = "You can't manage what you can't see. Seeing your day as a series of blocks gives you an honest assessment of your capacity.";
+const trello_cta_title$1 = "Stop moving cards. <br/>Start moving forward.";
+const trello_cta_desc$1 = "Switch to a system that respects your time.";
+const trello_cta_btn$1 = "Start Time-Blocking";
+const explore_asana_desc$1 = "Enterprise tools kill personal productivity. Get an OS that feels like a sanctuary.";
+const asana_alt_title$1 = "OneForMind vs Asana — The Asana Alternative for Individuals";
+const asana_alt_desc$1 = "Asana is for managing employees. OneForMind is for managing yourself. Switch to a true Personal OS.";
+const asana_alt_og_title$1 = "You Are Not a Project Manager.";
+const asana_alt_og_desc$1 = "Why using Asana for your personal life is a massive mistake.";
+const asana_badge$1 = "Individual Focus";
+const asana_hero_title_1$1 = "You Don't Need";
+const asana_hero_title_2$1 = "A Project Manager.";
+const asana_hero_desc$1 = "Asana is built to track employee deadlines. Using it for your personal goals feels cold and sterile. <strong>OneForMind is a personal sanctuary</strong> designed to help you grow, not just meet a KPI.";
+const asana_hero_cta$1 = "Reclaim Your Focus";
+const asana_hero_note$1 = "No status meetings required.";
+const asana_prob_title_1$1 = "The Corporate";
+const asana_prob_title_highlight$1 = "Coldness";
+const asana_prob_desc$1 = "There is no joy in checking off a personal milestone in a tool designed for corporate surveillance. The UI is cluttered with features you will never use.";
+const asana_prob_point_1$1 = "Sterile, work-focused interface";
+const asana_prob_point_2$1 = "Too complex for simple daily habits";
+const asana_prob_point_3$1 = "No space for personal reflection";
+const asana_sol_title_1$1 = "A Digital";
+const asana_sol_title_highlight$1 = "Sanctuary";
+const asana_sol_desc$1 = "We built OneForMind to be beautiful. It includes a mindfulness journal, a visual finance vault, and a calm daily planner. It's a place you actually want to visit.";
+const asana_sol_1_title$1 = "Integrated Journal";
+const asana_sol_1_desc$1 = "Reflect on your progress, don't just report it.";
+const asana_sol_2_title$1 = "Personal Wealth";
+const asana_sol_2_desc$1 = "Track your savings goals natively.";
+const asana_compare_title$1 = "Reporting vs Reflecting";
+const asana_compare_desc$1 = "Who are you working for?";
+const asana_table_head_2$1 = "Asana";
+const asana_table_row_1_title$1 = "Vibe";
+const asana_table_row_1_col_1$1 = "Corporate reporting";
+const asana_table_row_1_col_2$1 = "Personal sanctuary";
+const asana_table_row_2_title$1 = "Features";
+const asana_table_row_2_col_1$1 = "Team collaboration";
+const asana_table_row_2_col_2$1 = "Habits, Finance, Journal";
+const asana_table_row_3_title$1 = "Setup";
+const asana_table_row_3_col_1$1 = "Complex projects";
+const asana_table_row_3_col_2$1 = "Simple daily flow";
+const asana_psycho_title$1 = "The Environment Effect";
+const asana_psycho_desc$1 = "The digital environment you use shapes your mindset. A corporate tool puts you in a stressed, reporting mindset. A personal OS puts you in a growth mindset.";
+const asana_data_title$1 = "Whole-Life Metrics";
+const asana_data_desc$1 = "Asana measures tasks completed. OneForMind measures your financial health, habit consistency, and emotional well-being.";
+const asana_cta_title$1 = "Clock out of <br/>corporate software.";
+const asana_cta_desc$1 = "Step into a beautiful Personal OS.";
+const asana_cta_btn$1 = "Step Into OneForMind";
+const notes_apps_meta_title$1 = "OneForMind vs Notes Apps — The Digital Evolution of Focus";
+const notes_apps_meta_desc$1 = "Standard notes apps are passive. OneForMind is an active life system. See why an OS beats an endless digital filing cabinet.";
+const notes_apps_og_title$1 = "Your Notes App is Where Ideas Go to Die.";
+const notes_apps_og_desc$1 = "Stop hoarding ideas in passive note apps. Switch to a system that forces execution.";
+const notes_apps_badge$1 = "The Reality Check";
+const notes_apps_hero_title_1$1 = "Notes accept text.";
+const notes_apps_hero_title_2$1 = "But they refuse accountability.";
+const notes_apps_hero_desc$1 = "Notes apps are <strong>static graveyards</strong> for your brilliant ideas. They don't nudge you. They don't track progress. They just sit there.";
+const notes_apps_hero_cta$1 = "Build a Real System";
+const notes_apps_hero_note$1 = "No credit card required.";
+const notes_apps_prob_title_1$1 = "It's just";
+const notes_apps_prob_title_highlight$1 = "Digital Hoarding";
+const notes_apps_prob_desc$1 = `Writing it down feels productive, but it's a trap. Without a system to remind you, your "million-dollar ideas" get buried under grocery lists and random passwords.`;
+const notes_apps_prob_point_1$1 = "No feedback loop (Silent)";
+const notes_apps_prob_point_2$1 = "No connection to your calendar";
+const notes_apps_prob_point_3$1 = "Impossible to track progress";
+const notes_apps_sol_title_1$1 = "The Active";
+const notes_apps_sol_title_highlight$1 = "Execution Engine";
+const notes_apps_sol_desc$1 = "OneForMind doesn't just store information; it puts it to work. Goals break down into daily habits, which are tracked and measured automatically.";
+const notes_apps_sol_box_title$1 = "Active vs Passive";
+const notes_apps_sol_box_desc$1 = "A note says 'Save $10k'. An OS tracks your expenses, sets a budget limit, and shows your daily burn rate.";
+const notes_apps_compare_title$1 = "Storage vs Execution";
+const notes_apps_compare_desc$1 = "Where do you want to spend your time?";
+const notes_apps_table_head_1$1 = "Feature";
+const notes_apps_table_head_2$1 = "Notes Apps";
+const notes_apps_table_head_3$1 = "OneForMind";
+const notes_apps_table_row_1_title$1 = "Primary Function";
+const notes_apps_table_row_1_col_1$1 = "Storage";
+const notes_apps_table_row_1_col_2$1 = "Execution";
+const notes_apps_table_row_2_title$1 = "Feedback Loop";
+const notes_apps_table_row_2_col_1$1 = "Silent";
+const notes_apps_table_row_2_col_2$1 = "Smart Reminders";
+const notes_apps_table_row_3_title$1 = "Visual Clarity";
+const notes_apps_table_row_3_col_1$1 = "Wall of Text";
+const notes_apps_table_row_3_col_2$1 = "Charts & Dashboard";
+const explore_evernote_desc$1 = "Why a green elephant isn't enough for personal growth.";
+const explore_applenotes_desc$1 = "It's free, but it costs you execution.";
+const explore_onenote_desc$1 = "Infinite canvas means infinite chaos.";
+const evernote_badge$1 = "Vs Evernote";
+const evernote_hero_title_1$1 = "Evernote is a filing cabinet.";
+const evernote_hero_title_2$1 = "You need an engine.";
+const evernote_hero_desc$1 = "You have thousands of notes, but are you actually getting closer to your goals? Evernote stores the past; OneForMind builds the future.";
+const evernote_hero_cta$1 = "Switch to Execution";
+const evernote_hero_note$1 = "Migrate your mindset.";
+const evernote_prob_title_1$1 = "The";
+const evernote_prob_title_highlight$1 = "Collector's Fallacy";
+const evernote_prob_desc$1 = "Clipping articles and hoarding PDFs gives a false sense of productivity. You are building a library, not a life.";
+const evernote_sol_title_1$1 = "Action-Oriented";
+const evernote_sol_title_highlight$1 = "Architecture";
+const evernote_sol_desc$1 = "Instead of notebooks and tags, you get Habits, Finances, and Daily Tasks that actively push you forward.";
+const applenotes_badge$1 = "Vs Apple Notes";
+const applenotes_hero_title_1$1 = "Apple Notes is for groceries.";
+const applenotes_hero_title_2$1 = "Not for life goals.";
+const applenotes_hero_desc$1 = "It's quick and it's free. But when you try to run your finances, habits, and long-term vision in a plain text field, things fall apart.";
+const applenotes_hero_cta$1 = "Upgrade Your OS";
+const applenotes_hero_note$1 = "A dedicated space for growth.";
+const applenotes_prob_title_1$1 = "Too";
+const applenotes_prob_title_highlight$1 = "Simple";
+const applenotes_prob_desc$1 = "Plain text cannot calculate your net worth. It cannot give you a heatmap of your workout consistency. It just sits there.";
+const applenotes_sol_title_1$1 = "Structured";
+const applenotes_sol_title_highlight$1 = "Clarity";
+const applenotes_sol_desc$1 = "OneForMind gives you dedicated, beautiful modules for every aspect of your life. No more formatting tables manually.";
+const onenote_badge$1 = "Vs OneNote";
+const onenote_hero_title_1$1 = "Infinite canvas.";
+const onenote_hero_title_2$1 = "Infinite chaos.";
+const onenote_hero_desc$1 = "Click anywhere. Type anything. It sounds great until you're staring at a messy, unstructured page trying to figure out what to do today.";
+const onenote_hero_cta$1 = "Get Structured";
+const onenote_hero_note$1 = "Bring order to the noise.";
+const onenote_prob_title_1$1 = "Lack of";
+const onenote_prob_title_highlight$1 = "Boundaries";
+const onenote_prob_desc$1 = "Without constraints, personal management becomes a mess of text boxes. You spend more time organizing the page than doing the work.";
+const onenote_sol_title_1$1 = "Opinionated";
+const onenote_sol_title_highlight$1 = "Design";
+const onenote_sol_desc$1 = "We built the framework so you don't have to. Just plug in your habits, tasks, and budget, and let the system guide you.";
+const evernote_hero_visual_1$1 = "Dead Storage";
+const evernote_hero_visual_2$1 = "Active Progress";
+const evernote_prob_visual_1$1 = "1,240 Notes";
+const evernote_prob_visual_2$1 = '"10 Ways to be Productive"';
+const evernote_prob_visual_3$1 = "0 Actions Taken";
+const evernote_prob_point_1_title$1 = "Passive Storage";
+const evernote_prob_point_1_desc$1 = "Clipping articles doesn't mean you're learning. It's just digital hoarding.";
+const evernote_prob_point_2_title$1 = "No Accountability";
+const evernote_prob_point_2_desc$1 = "Evernote never asks you why you didn't work out today.";
+const evernote_sol_point_1_title$1 = "Habit Engine";
+const evernote_sol_point_1_desc$1 = "Visual heatmaps and streaks that rewire your brain, instead of static checklists.";
+const evernote_sol_point_2_title$1 = "Finance OS";
+const evernote_sol_point_2_desc$1 = "Zero-based budgeting that forces you to give every dollar a job.";
+const evernote_sol_point_3_title$1 = "Focus Planner";
+const evernote_sol_point_3_desc$1 = "Time-blocking calendar that connects your daily tasks to your long-term goals.";
+const evernote_table_title$1 = "Evernote vs OneForMind";
+const evernote_table_desc$1 = "See the difference in architecture.";
+const evernote_table_h1$1 = "Feature";
+const evernote_table_h2$1 = "Evernote";
+const evernote_table_h3$1 = "OneForMind";
+const evernote_table_r1_1$1 = "Core Paradigm";
+const evernote_table_r1_2$1 = "Document Storage";
+const evernote_table_r1_3$1 = "Action Engine";
+const evernote_table_r2_1$1 = "Habit Tracking";
+const evernote_table_r2_2$1 = "Checkboxes in notes";
+const evernote_table_r2_3$1 = "Native Visual Heatmaps";
+const evernote_table_r3_1$1 = "Financial OS";
+const evernote_table_r3_2$1 = "Tables (Manual Math)";
+const evernote_table_r3_3$1 = "Automated Wealth Dashboard";
+const evernote_psy_title$1 = "The Psychology of Action";
+const evernote_psy_desc$1 = "Notes apps create a false sense of accomplishment. You clip an article, you feel productive. But nothing has changed in your life. OneForMind removes the friction of setup and forces you to face your daily actions.";
+const evernote_psy_quote$1 = "Stop collecting the past.<br>Start building the future.";
+const evernote_cta_title$1 = "Ready to graduate?";
+const evernote_cta_btn$1 = "Start Your Engine";
+const applenotes_hero_visual_1$1 = "Apple Notes";
+const applenotes_hero_visual_2$1 = "Buy Milk";
+const applenotes_hero_visual_3$1 = "OneForMind";
+const applenotes_hero_visual_4$1 = "Build Wealth";
+const applenotes_prob_visual_1$1 = "The Plain Text Trap:";
+const applenotes_prob_visual_2$1 = '"I will save $500 this month and workout 3x a week."';
+const applenotes_prob_visual_3$1 = "Result: Forgotten in 2 days";
+const applenotes_prob_visual_4$1 = "January 1st, 9:00 AM";
+const applenotes_prob_visual_5$1 = "New Year Goals";
+const applenotes_prob_visual_6$1 = "Go to gym";
+const applenotes_prob_visual_7$1 = "Stop spending on coffee";
+const applenotes_prob_visual_8$1 = "Read more books";
+const applenotes_prob_visual_9$1 = "ABANDONED";
+const applenotes_sol_visual_1$1 = "Read 10 Pages";
+const applenotes_sol_visual_2$1 = "12 Day Streak!";
+const applenotes_sol_visual_3$1 = "Coffee Budget";
+const applenotes_sol_point_1_title$1 = "Visual Progress";
+const applenotes_sol_point_1_desc$1 = "Stop guessing. See your consistency through beautiful heatmaps and charts.";
+const applenotes_sol_point_2_title$1 = "Smart Nudges";
+const applenotes_sol_point_2_desc$1 = "The system actively reminds you before you break a habit streak.";
+const applenotes_gap_title$1 = "No Deadlines";
+const applenotes_gap_desc$1 = "Notes don't sync with your daily calendar schedule natively.";
+const applenotes_gap_title_2$1 = "No Visuals";
+const applenotes_gap_desc_2$1 = "You can't see a heatmap of your 30-day meditation habit.";
+const applenotes_gap_title_3$1 = "No Accountability";
+const applenotes_gap_desc_3$1 = "It never nudges you when you are falling behind your goals.";
+const applenotes_adv_title$1 = "The All-in-One Alternative";
+const applenotes_adv_desc$1 = "Stop jumping between Apple Notes, Apple Calendar, and random budget apps. Unify your life into a single, cohesive dashboard that actively works for you.";
+const applenotes_adv_badge$1 = "Live OS Active";
+const applenotes_cta_title$1 = "Make the switch today.";
+const applenotes_cta_btn$1 = "Get Started Free";
+const onenote_hero_visual_1$1 = "Structured Life OS";
+const onenote_hero_visual_2$1 = "Finances";
+const onenote_hero_visual_3$1 = "Healthy";
+const onenote_hero_visual_4$1 = "Habits";
+const onenote_hero_visual_5$1 = "85% Rate";
+const onenote_hero_visual_6$1 = "Goals";
+const onenote_hero_visual_7$1 = "On Track";
+const onenote_prob_visual_1$1 = "Item";
+const onenote_prob_visual_2$1 = "Cost";
+const onenote_prob_visual_3$1 = "Food";
+const onenote_prob_visual_4$1 = "Gas";
+const onenote_prob_visual_5$1 = "Lost Focus";
+const onenote_prob_point_1_title$1 = "Decision Fatigue";
+const onenote_prob_point_1_desc$1 = "Every new page forces you to decide where to put text, tables, and images.";
+const onenote_prob_point_2_title$1 = "Hard to Track";
+const onenote_prob_point_2_desc$1 = "Good luck finding your consistency rate for a habit spread across 50 free-form pages.";
+const onenote_sol_point_1$1 = "Automated Data Visualization";
+const onenote_sol_point_2$1 = "Pre-built Frameworks";
+const onenote_sol_point_3$1 = "Zero Setup Time";
+const onenote_sol_visual_1$1 = "Monthly Progress";
+const onenote_sol_visual_2$1 = "Automatically generated";
+const onenote_sol_visual_3$1 = "Task Alignment";
+const onenote_sol_visual_4$1 = "Linked to Long-term Goals";
+const onenote_cost_title$1 = "The blank page is your enemy.";
+const onenote_cost_desc$1 = "When you have infinite possibilities, you usually end up with nothing. A blank canvas forces you to make micro-decisions about formatting, layout, and structure every single time you want to record a habit or track an expense.";
+const onenote_cost_point_1$1 = "No more formatting tables";
+const onenote_cost_point_2$1 = "No more creating checkboxes";
+const onenote_cost_point_3$1 = "Ready-made, beautiful UI";
+const onenote_feat_visual_1$1 = "Typical Note App Canvas";
+const onenote_feat_title_1$1 = "OneNote Approach";
+const onenote_feat_point_1_title$1 = "Manual Formatting";
+const onenote_feat_point_1_desc$1 = "Spend 10 minutes making a budget table look okay.";
+const onenote_feat_point_2_title$1 = "Static Checkboxes";
+const onenote_feat_point_2_desc$1 = "Click a box. Nothing happens. No streaks.";
+const onenote_feat_title_2$1 = "OneForMind Advantage";
+const onenote_feat_point_3_title$1 = "Automated Finance Dashboard";
+const onenote_feat_point_3_desc$1 = "Input the number. See the trend charts instantly.";
+const onenote_feat_point_4_title$1 = "Intelligent Habit Engine";
+const onenote_feat_point_4_desc$1 = "Build streaks, earn neural insights, see heatmaps.";
+const onenote_cta_title$1 = "Embrace Structure.";
+const onenote_cta_btn$1 = "Start Your System";
+const compare_nav_title$1 = "Compare Notes Apps:";
 const dash_greet_morning$1 = "Good Morning";
 const dash_greet_afternoon$1 = "Good Afternoon";
 const dash_greet_evening$1 = "Good Evening";
@@ -880,7 +1713,7 @@ const btn_journal$1 = "Self Reflect";
 const dash_task_scheduled$1 = "Scheduled";
 const dash_weekly_rhythm$1 = "7-day rhythm";
 const dash_weekly_rhythm_empty$1 = "Weekly scores will appear once you log habits and planner tasks.";
-const habit_meta_title$1 = "OneForMind | Best Habit Tracker & Atomic Habits System";
+const habit_meta_title$1 = "OneForMind | Best Habit Tracker and Atomic Habits System";
 const habit_meta_desc$1 = "Build lasting habits with the ultimate atomic system. Track consistency, level up your identity, and sync habits with your life goals.";
 const habit_meta_og_title$1 = "Habit Tracker - OneForMind";
 const habit_meta_og_desc$1 = "Track your daily habits, build solid routines, and become the best version of yourself.";
@@ -972,7 +1805,7 @@ const habit_mood_insight$1 = "You feel 24% better on days you complete your morn
 const habit_mood_title$1 = "Understand Your Mind";
 const habit_mood_desc$1 = "We help you correlate your habits with your daily mood, giving you deep insights into what actually makes you happy.";
 const habit_mood_social_proof$1 = "Used by 1,000+ users to improve mental health";
-const finance_meta_title$1 = "OneForMind | Mindful Personal Finance OS & Expense Tracker";
+const finance_meta_title$1 = "OneForMind | Mindful Personal Finance OS and Expense Tracker";
 const finance_meta_desc$1 = "Master your cashflow with mindful accounting. No bank sync, total privacy, and deep insights into your financial behavior.";
 const finance_meta_og_title$1 = "Finance Manager - OneForMind";
 const finance_meta_og_desc$1 = "Track expenses, manage budgets, and monitor your finances easily.";
@@ -1070,7 +1903,7 @@ const finance_flow_allocation_label$1 = "Allocation";
 const finance_flow_expense_label_2$1 = "Wants";
 const finance_flow_expense_title_2$1 = "Dining & Lifestyle";
 const finance_privacy_badge$1 = "Security";
-const planner_meta_title$1 = "OneForMind | Unified Daily Planner & Focused Tasks System";
+const planner_meta_title$1 = "OneForMind | Unified Daily Planner and Focused Tasks System";
 const planner_meta_desc$1 = "The last planner you'll ever need. Align your daily schedule with your long-term vision using our context-first system.";
 const planner_meta_og_title$1 = "Daily Planner - OneForMind";
 const planner_meta_og_desc$1 = "Manage your daily schedule, block your time, and get important tasks done without distractions.";
@@ -1164,7 +1997,7 @@ const planner_flow_col_2_status$1 = "In the Zone";
 const planner_flow_col_3_title$1 = "Evening Review";
 const planner_flow_col_3_desc$1 = "Decompress and plan for a successful tomorrow.";
 const planner_flow_col_3_status$1 = "Shutting Down";
-const journal_meta_title$1 = "OneForMind | Secure Digital Journal & Mindful Mood Analytics";
+const journal_meta_title$1 = "OneForMind | Secure Digital Journal and Mindful Mood Analytics";
 const journal_meta_desc$1 = "A calm space for your thoughts. Practice daily reflection with encrypted journaling and beautiful mood tracking insights.";
 const journal_meta_og_title$1 = "Digital Journal - OneForMind";
 const journal_meta_og_desc$1 = "A safe place for your thoughts. Write journals, track moods, and find peace.";
@@ -1235,7 +2068,7 @@ const journal_nebula_feature_1_title$1 = "Insight Discovery";
 const journal_nebula_feature_1_desc$1 = "Find out how your sleep and habits affect your daily mood.";
 const journal_nebula_feature_2_title$1 = "Emotional Tracking";
 const journal_nebula_feature_2_desc$1 = "Visualize your emotional journey through beautiful mood maps.";
-const calendar_meta_title$1 = "OneForMind | Smart Life Calendar & Unified Timeblocking";
+const calendar_meta_title$1 = "OneForMind | Smart Life Calendar and Unified Timeblocking";
 const calendar_meta_desc$1 = "Visualize your time like never before. A smart calendar that integrates your tasks and habits into one clear timeline.";
 const calendar_meta_og_title$1 = "Smart Calendar - OneForMind";
 const calendar_meta_og_desc$1 = "Manage your time better with OneForMind Calendar.";
@@ -1321,7 +2154,7 @@ const calendar_pulse_item_1_timer$1 = "02:14:55";
 const calendar_pulse_item_1_sub$1 = "Remaining Time";
 const calendar_pulse_item_2_title$1 = "Quarterly Audit";
 const calendar_pulse_item_2_status$1 = "Scheduled";
-const goal_meta_title$1 = "OneForMind | Vision Board & Personal Goal Achievement OS";
+const goal_meta_title$1 = "OneForMind | Vision Board and Personal Goal Achievement OS";
 const goal_meta_desc$1 = "Turn your vision into reality. Break down big dreams into actionable milestones and track your momentum every step of the way.";
 const goal_meta_og_title$1 = "Goal Tracker - OneForMind";
 const goal_meta_og_desc$1 = "Achieve your long-term goals with our strategic planning tools.";
@@ -1378,7 +2211,7 @@ const goal_cta_title$1 = "Ready to Achieve Your Vision?";
 const goal_cta_desc$1 = "Stop wishing and start executing with our integrated goal management system.";
 const goal_cta_btn$1 = "Set Your First Goal";
 const goal_cta_note$1 = "Free forever for individuals.";
-const job_meta_title$1 = "OneForMind | Smart Job Application Tracker & Career Hub";
+const job_meta_title$1 = "OneForMind | Smart Job Application Tracker and Career Hub";
 const job_meta_desc$1 = "Organize your career growth. Track applications, interviews, and networking in one professional dashboard built for high-performers.";
 const job_meta_og_title$1 = "Job Tracker - OneForMind";
 const job_meta_og_desc$1 = "Track job applications and manage your career transition professionally.";
@@ -2108,7 +2941,7 @@ const goal_ai_promo_badge$1 = "Success Forecasting";
 const goal_ai_promo_title$1 = "Predict Your Achievement";
 const goal_ai_promo_desc$1 = "Neural OS calculates your velocity and predicts exactly when you'll reach your milestones, allowing you to adjust your strategy before a deadline even approaches.";
 const goal_ai_promo_btn$1 = "Forecast Progress";
-const guide_meta_title$1 = "Guide & Knowledge Base - OneForMind";
+const guide_meta_title$1 = "Guide and Knowledge Base - OneForMind";
 const guide_meta_desc$1 = "Everything you need to master your workflow and mindset.";
 const guide_meta_og_title$1 = "OneForMind Knowledge Base";
 const guide_meta_og_desc$1 = "Master your mind with our comprehensive guides.";
@@ -2262,7 +3095,7 @@ const habit_ai_promo_desc$1 = "Most habits fail due to invisible friction. Neura
 const habit_ai_promo_btn$1 = "Try Neural Habit Audit";
 const welcome_meta_desc$1 = "OneForMind is the ultimate unified Life OS. Manage your habit tracker, daily planner, and finance manager in one mindful ecosystem.";
 const welcome_meta_og_title$1 = "OneForMind | Unified Habit Tracker, Planner & Finance OS";
-const welcome_meta_title$1 = "OneForMind | Unified Habit Tracker, Planner & Finance OS";
+const welcome_meta_title$1 = "OneForMind | Unified Habit Tracker, Planner and Finance OS";
 const welcome_meta_og_desc$1 = "Stop the app-switching fatigue. Manage your habit tracker, finance manager, and daily planner in one dashboard.";
 const hero_premium_badge$1 = "✨ Introducing: Neuro-Sync v2.0";
 const hero_premium_title_1$1 = "One Mind.";
@@ -3232,7 +4065,7 @@ const pricing_infra_notion$1 = "Notion Clarity";
 const pricing_per_month_short$1 = "/mo";
 const pricing_once_short$1 = "once";
 const pricing_btn_unleash_neural$1 = "UNLEASH NEURAL OS";
-const privacy_meta_title$1 = "Trust Center & Privacy Policy";
+const privacy_meta_title$1 = "Trust Center and Privacy Policy";
 const privacy_meta_desc$1 = "Learn how OneForMind protects your data and ensures your security.";
 const privacy_meta_og_title$1 = "Trust Center — OneForMind";
 const privacy_meta_og_desc$1 = "Your habits, your data, our protection.";
@@ -3370,7 +4203,7 @@ const terms_cta_desc$1 = "By clicking below, you acknowledge full acceptance of 
 const terms_cta_btn_agree$1 = "I Accept All Terms";
 const terms_cta_btn_decline$1 = "Revoke My Access";
 const terms_cta_note$1 = "This agreement is binding from account creation.";
-const sec_meta_title$1 = "Security & Trust Overview";
+const sec_meta_title$1 = "Security and Trust Overview";
 const sec_meta_desc$1 = "Bank-grade encryption and architectural security protocols.";
 const sec_meta_og_title$1 = "Fortified Productivity - OneForMind";
 const sec_meta_og_desc$1 = "Your mind deserves a safe space.";
@@ -3419,7 +4252,7 @@ const sec_p_sovereignty$1 = "We do not sell data. We do not have 'backdoors' to 
 const sec_cta_title$1 = "Secure Your Progress Today.";
 const sec_cta_desc$1 = "Focus on growth, we handle the shield.";
 const sec_cta_btn$1 = "Create Secure Account";
-const refund_meta_title$1 = "Cancellation & Strict No-Refund Policy - OneForMind";
+const refund_meta_title$1 = "Cancellation and Strict No-Refund Policy - OneForMind";
 const refund_meta_desc$1 = "Transparent rules regarding our strictly final digital sales.";
 const refund_meta_og_title$1 = "No Refund Policy — OneForMind";
 const refund_meta_og_desc$1 = "Final payment policy for OneForMind users.";
@@ -3456,7 +4289,7 @@ const refund_merchant_protection_title$1 = "Merchant Protection";
 const refund_merchant_protection_desc$1 = "Your transaction is protected by digital transactional legal standards stating that digital products, once accessed/used, are non-refundable.";
 const refund_user_responsibility_title$1 = "User Responsibility Steps:";
 const refund_contact_label$1 = "Contact: oneformindapp@gmail.com";
-const blog_meta_title$1 = "Blog & Articles - OneForMind";
+const blog_meta_title$1 = "Blog and Articles - OneForMind";
 const blog_meta_desc$1 = "Read the latest insights on productivity, personal growth, and feature updates from the OneForMind team.";
 const blog_meta_og_title$1 = "OneForMind Blog";
 const blog_meta_og_desc$1 = "Insights and strategies to work smarter.";
@@ -3558,7 +4391,7 @@ const comm_event_date$1 = "March 2026";
 const comm_event_cta$1 = "Secure Your Spot";
 const comm_event_1$1 = "Mastering Your Mind System";
 const comm_event_2$1 = "Building in Public: Founder Q&A";
-const cl_meta_title$1 = "Changelog & Evolution - OneForMind";
+const cl_meta_title$1 = "Changelog and Evolution - OneForMind";
 const cl_meta_desc$1 = "Explore the constant evolution of OneForMind. See the latest features, improvements, and our future roadmap.";
 const cl_meta_og_title$1 = "OneForMind: The Evolution Map";
 const cl_meta_og_desc$1 = "Relentless improvement. Check out what we've shipped recently.";
@@ -4041,7 +4874,7 @@ const solve_mental_faq_a3$1 = "Yes, we provide various prompt templates for morn
 const solve_mental_cta_title$1 = "Take a Deep Breath.";
 const solve_mental_cta_desc$1 = "External disorder begins from internal disorder. Start clearing your mind today.";
 const solve_mental_cta_btn$1 = "Start Living Calmer";
-const growth_meta_title$1 = "Personal Growth & Productivity - OneForMind";
+const growth_meta_title$1 = "Personal Growth and Productivity - OneForMind";
 const growth_meta_desc$1 = "Build good habits, clear your mind with journaling, and achieve the best version of yourself every day.";
 const growth_meta_og_title$1 = "OneForMind for Personal Growth";
 const growth_meta_og_desc$1 = "A system to build new identities and unstoppable habits.";
@@ -4373,7 +5206,7 @@ const solve_atomic_faq_a3$1 = "Yes, your data is safe. Focus on building yoursel
 const solve_atomic_cta_title$1 = "Small is Powerful.";
 const solve_atomic_cta_desc$1 = "You are what you repeatedly do. Start one small step today.";
 const solve_atomic_cta_btn$1 = "Build My Micro Routine";
-const deep_meta_title$1 = "Deep Work & Max Focus - OneForMind";
+const deep_meta_title$1 = "Deep Work and Max Focus - OneForMind";
 const deep_meta_desc$1 = "Crush distractions. Enter flow state and produce your best work with the focus management system.";
 const deep_meta_og_title$1 = "Master Your Focus with OneForMind";
 const deep_meta_og_desc$1 = "The ability to focus deeply is a superpower in the 21st century.";
@@ -5256,6 +6089,839 @@ const en = {
   five_science_desc: five_science_desc$1,
   five_how_it_works_title: five_how_it_works_title$1,
   five_how_it_works_desc: five_how_it_works_desc$1,
+  habitica_alt_title: habitica_alt_title$1,
+  habitica_alt_desc: habitica_alt_desc$1,
+  habitica_alt_og_title: habitica_alt_og_title$1,
+  habitica_alt_og_desc: habitica_alt_og_desc$1,
+  habitica_badge: habitica_badge$1,
+  habitica_hero_title_1: habitica_hero_title_1$1,
+  habitica_hero_title_2: habitica_hero_title_2$1,
+  habitica_hero_desc: habitica_hero_desc$1,
+  habitica_hero_cta: habitica_hero_cta$1,
+  habitica_hero_note: habitica_hero_note$1,
+  habitica_prob_title_1: habitica_prob_title_1$1,
+  habitica_prob_title_highlight: habitica_prob_title_highlight$1,
+  habitica_prob_desc: habitica_prob_desc$1,
+  habitica_prob_point_1: habitica_prob_point_1$1,
+  habitica_prob_point_2: habitica_prob_point_2$1,
+  habitica_prob_point_3: habitica_prob_point_3$1,
+  habitica_sol_title_1: habitica_sol_title_1$1,
+  habitica_sol_title_highlight: habitica_sol_title_highlight$1,
+  habitica_sol_desc: habitica_sol_desc$1,
+  habitica_sol_1_title: habitica_sol_1_title$1,
+  habitica_sol_1_desc: habitica_sol_1_desc$1,
+  habitica_sol_2_title: habitica_sol_2_title$1,
+  habitica_sol_2_desc: habitica_sol_2_desc$1,
+  habitica_compare_title: habitica_compare_title$1,
+  habitica_compare_desc: habitica_compare_desc$1,
+  habitica_table_head_2: habitica_table_head_2$1,
+  habitica_table_row_1_title: habitica_table_row_1_title$1,
+  habitica_table_row_1_col_1: habitica_table_row_1_col_1$1,
+  habitica_table_row_1_col_2: habitica_table_row_1_col_2$1,
+  habitica_table_row_2_title: habitica_table_row_2_title$1,
+  habitica_table_row_2_col_1: habitica_table_row_2_col_1$1,
+  habitica_table_row_2_col_2: habitica_table_row_2_col_2$1,
+  habitica_table_row_3_title: habitica_table_row_3_title$1,
+  habitica_table_row_3_col_1: habitica_table_row_3_col_1$1,
+  habitica_table_row_3_col_2: habitica_table_row_3_col_2$1,
+  habitica_cta_title: habitica_cta_title$1,
+  habitica_cta_desc: habitica_cta_desc$1,
+  habitica_cta_btn: habitica_cta_btn$1,
+  streaks_alt_title: streaks_alt_title$1,
+  streaks_alt_desc: streaks_alt_desc$1,
+  streaks_alt_og_title: streaks_alt_og_title$1,
+  streaks_alt_og_desc: streaks_alt_og_desc$1,
+  streaks_badge: streaks_badge$1,
+  streaks_hero_title_1: streaks_hero_title_1$1,
+  streaks_hero_title_2: streaks_hero_title_2$1,
+  streaks_hero_desc: streaks_hero_desc$1,
+  streaks_hero_cta: streaks_hero_cta$1,
+  streaks_hero_note: streaks_hero_note$1,
+  streaks_prob_title_1: streaks_prob_title_1$1,
+  streaks_prob_title_highlight: streaks_prob_title_highlight$1,
+  streaks_prob_desc: streaks_prob_desc$1,
+  streaks_prob_point_1: streaks_prob_point_1$1,
+  streaks_prob_point_2: streaks_prob_point_2$1,
+  streaks_prob_point_3: streaks_prob_point_3$1,
+  streaks_sol_title_1: streaks_sol_title_1$1,
+  streaks_sol_title_highlight: streaks_sol_title_highlight$1,
+  streaks_sol_desc: streaks_sol_desc$1,
+  streaks_sol_1_title: streaks_sol_1_title$1,
+  streaks_sol_1_desc: streaks_sol_1_desc$1,
+  streaks_sol_2_title: streaks_sol_2_title$1,
+  streaks_sol_2_desc: streaks_sol_2_desc$1,
+  streaks_compare_title: streaks_compare_title$1,
+  streaks_compare_desc: streaks_compare_desc$1,
+  streaks_table_head_2: streaks_table_head_2$1,
+  streaks_table_row_1_title: streaks_table_row_1_title$1,
+  streaks_table_row_1_col_1: streaks_table_row_1_col_1$1,
+  streaks_table_row_1_col_2: streaks_table_row_1_col_2$1,
+  streaks_table_row_2_title: streaks_table_row_2_title$1,
+  streaks_table_row_2_col_1: streaks_table_row_2_col_1$1,
+  streaks_table_row_2_col_2: streaks_table_row_2_col_2$1,
+  streaks_table_row_3_title: streaks_table_row_3_title$1,
+  streaks_table_row_3_col_1: streaks_table_row_3_col_1$1,
+  streaks_table_row_3_col_2: streaks_table_row_3_col_2$1,
+  streaks_cta_title: streaks_cta_title$1,
+  streaks_cta_desc: streaks_cta_desc$1,
+  streaks_cta_btn: streaks_cta_btn$1,
+  habitify_alt_title: habitify_alt_title$1,
+  habitify_alt_desc: habitify_alt_desc$1,
+  habitify_alt_og_title: habitify_alt_og_title$1,
+  habitify_alt_og_desc: habitify_alt_og_desc$1,
+  habitify_badge: habitify_badge$1,
+  habitify_hero_title_1: habitify_hero_title_1$1,
+  habitify_hero_title_2: habitify_hero_title_2$1,
+  habitify_hero_desc: habitify_hero_desc$1,
+  habitify_hero_cta: habitify_hero_cta$1,
+  habitify_hero_note: habitify_hero_note$1,
+  habitify_prob_title_1: habitify_prob_title_1$1,
+  habitify_prob_title_highlight: habitify_prob_title_highlight$1,
+  habitify_prob_desc: habitify_prob_desc$1,
+  habitify_prob_point_1: habitify_prob_point_1$1,
+  habitify_prob_point_2: habitify_prob_point_2$1,
+  habitify_prob_point_3: habitify_prob_point_3$1,
+  habitify_sol_title_1: habitify_sol_title_1$1,
+  habitify_sol_title_highlight: habitify_sol_title_highlight$1,
+  habitify_sol_desc: habitify_sol_desc$1,
+  habitify_sol_1_title: habitify_sol_1_title$1,
+  habitify_sol_1_desc: habitify_sol_1_desc$1,
+  habitify_sol_2_title: habitify_sol_2_title$1,
+  habitify_sol_2_desc: habitify_sol_2_desc$1,
+  habitify_compare_title: habitify_compare_title$1,
+  habitify_compare_desc: habitify_compare_desc$1,
+  habitify_table_head_2: habitify_table_head_2$1,
+  habitify_table_row_1_title: habitify_table_row_1_title$1,
+  habitify_table_row_1_col_1: habitify_table_row_1_col_1$1,
+  habitify_table_row_1_col_2: habitify_table_row_1_col_2$1,
+  habitify_table_row_2_title: habitify_table_row_2_title$1,
+  habitify_table_row_2_col_1: habitify_table_row_2_col_1$1,
+  habitify_table_row_2_col_2: habitify_table_row_2_col_2$1,
+  habitify_table_row_3_title: habitify_table_row_3_title$1,
+  habitify_table_row_3_col_1: habitify_table_row_3_col_1$1,
+  habitify_table_row_3_col_2: habitify_table_row_3_col_2$1,
+  habitify_cta_title: habitify_cta_title$1,
+  habitify_cta_desc: habitify_cta_desc$1,
+  habitify_cta_btn: habitify_cta_btn$1,
+  explore_more_alt: explore_more_alt$1,
+  explore_more_desc: explore_more_desc$1,
+  explore_habitica_desc: explore_habitica_desc$1,
+  explore_streaks_desc: explore_streaks_desc$1,
+  explore_habitify_desc: explore_habitify_desc$1,
+  habitica_science_title: habitica_science_title$1,
+  habitica_science_desc: habitica_science_desc$1,
+  habitica_science_point1: habitica_science_point1$1,
+  habitica_science_point1_desc: habitica_science_point1_desc$1,
+  habitica_science_point2: habitica_science_point2$1,
+  habitica_science_point2_desc: habitica_science_point2_desc$1,
+  habitica_testimonial: habitica_testimonial$1,
+  streaks_psycho_title: streaks_psycho_title$1,
+  streaks_psycho_desc: streaks_psycho_desc$1,
+  streaks_psycho_point1: streaks_psycho_point1$1,
+  streaks_psycho_point1_desc: streaks_psycho_point1_desc$1,
+  streaks_data_title: streaks_data_title$1,
+  streaks_data_desc: streaks_data_desc$1,
+  habitify_cost_title: habitify_cost_title$1,
+  habitify_cost_desc: habitify_cost_desc$1,
+  habitify_ai_title: habitify_ai_title$1,
+  habitify_ai_desc: habitify_ai_desc$1,
+  explore_ynab_desc: explore_ynab_desc$1,
+  ynab_alt_title: ynab_alt_title$1,
+  ynab_alt_desc: ynab_alt_desc$1,
+  ynab_alt_og_title: ynab_alt_og_title$1,
+  ynab_alt_og_desc: ynab_alt_og_desc$1,
+  ynab_badge: ynab_badge$1,
+  ynab_hero_title_1: ynab_hero_title_1$1,
+  ynab_hero_title_2: ynab_hero_title_2$1,
+  ynab_hero_desc: ynab_hero_desc$1,
+  ynab_hero_cta: ynab_hero_cta$1,
+  ynab_hero_note: ynab_hero_note$1,
+  ynab_prob_title_1: ynab_prob_title_1$1,
+  ynab_prob_title_highlight: ynab_prob_title_highlight$1,
+  ynab_prob_desc: ynab_prob_desc$1,
+  ynab_prob_point_1: ynab_prob_point_1$1,
+  ynab_prob_point_2: ynab_prob_point_2$1,
+  ynab_prob_point_3: ynab_prob_point_3$1,
+  ynab_sol_title_1: ynab_sol_title_1$1,
+  ynab_sol_title_highlight: ynab_sol_title_highlight$1,
+  ynab_sol_desc: ynab_sol_desc$1,
+  ynab_sol_1_title: ynab_sol_1_title$1,
+  ynab_sol_1_desc: ynab_sol_1_desc$1,
+  ynab_sol_2_title: ynab_sol_2_title$1,
+  ynab_sol_2_desc: ynab_sol_2_desc$1,
+  ynab_compare_title: ynab_compare_title$1,
+  ynab_compare_desc: ynab_compare_desc$1,
+  ynab_table_head_2: ynab_table_head_2$1,
+  ynab_table_row_1_title: ynab_table_row_1_title$1,
+  ynab_table_row_1_col_1: ynab_table_row_1_col_1$1,
+  ynab_table_row_1_col_2: ynab_table_row_1_col_2$1,
+  ynab_table_row_2_title: ynab_table_row_2_title$1,
+  ynab_table_row_2_col_1: ynab_table_row_2_col_1$1,
+  ynab_table_row_2_col_2: ynab_table_row_2_col_2$1,
+  ynab_table_row_3_title: ynab_table_row_3_title$1,
+  ynab_table_row_3_col_1: ynab_table_row_3_col_1$1,
+  ynab_table_row_3_col_2: ynab_table_row_3_col_2$1,
+  ynab_cost_title: ynab_cost_title$1,
+  ynab_cost_desc: ynab_cost_desc$1,
+  ynab_psycho_title: ynab_psycho_title$1,
+  ynab_psycho_desc: ynab_psycho_desc$1,
+  ynab_cta_title: ynab_cta_title$1,
+  ynab_cta_desc: ynab_cta_desc$1,
+  ynab_cta_btn: ynab_cta_btn$1,
+  explore_wallet_desc: explore_wallet_desc$1,
+  wallet_alt_title: wallet_alt_title$1,
+  wallet_alt_desc: wallet_alt_desc$1,
+  wallet_alt_og_title: wallet_alt_og_title$1,
+  wallet_alt_og_desc: wallet_alt_og_desc$1,
+  wallet_badge: wallet_badge$1,
+  wallet_hero_title_1: wallet_hero_title_1$1,
+  wallet_hero_title_2: wallet_hero_title_2$1,
+  wallet_hero_desc: wallet_hero_desc$1,
+  wallet_hero_cta: wallet_hero_cta$1,
+  wallet_hero_note: wallet_hero_note$1,
+  wallet_prob_title_1: wallet_prob_title_1$1,
+  wallet_prob_title_highlight: wallet_prob_title_highlight$1,
+  wallet_prob_desc: wallet_prob_desc$1,
+  wallet_prob_point_1: wallet_prob_point_1$1,
+  wallet_prob_point_2: wallet_prob_point_2$1,
+  wallet_prob_point_3: wallet_prob_point_3$1,
+  wallet_sol_title_1: wallet_sol_title_1$1,
+  wallet_sol_title_highlight: wallet_sol_title_highlight$1,
+  wallet_sol_desc: wallet_sol_desc$1,
+  wallet_sol_1_title: wallet_sol_1_title$1,
+  wallet_sol_1_desc: wallet_sol_1_desc$1,
+  wallet_sol_2_title: wallet_sol_2_title$1,
+  wallet_sol_2_desc: wallet_sol_2_desc$1,
+  wallet_compare_title: wallet_compare_title$1,
+  wallet_compare_desc: wallet_compare_desc$1,
+  wallet_table_head_2: wallet_table_head_2$1,
+  wallet_table_row_1_title: wallet_table_row_1_title$1,
+  wallet_table_row_1_col_1: wallet_table_row_1_col_1$1,
+  wallet_table_row_1_col_2: wallet_table_row_1_col_2$1,
+  wallet_table_row_2_title: wallet_table_row_2_title$1,
+  wallet_table_row_2_col_1: wallet_table_row_2_col_1$1,
+  wallet_table_row_2_col_2: wallet_table_row_2_col_2$1,
+  wallet_table_row_3_title: wallet_table_row_3_title$1,
+  wallet_table_row_3_col_1: wallet_table_row_3_col_1$1,
+  wallet_table_row_3_col_2: wallet_table_row_3_col_2$1,
+  wallet_science_title: wallet_science_title$1,
+  wallet_science_desc: wallet_science_desc$1,
+  wallet_data_title: wallet_data_title$1,
+  wallet_data_desc: wallet_data_desc$1,
+  wallet_cta_title: wallet_cta_title$1,
+  wallet_cta_desc: wallet_cta_desc$1,
+  wallet_cta_btn: wallet_cta_btn$1,
+  explore_spendee_desc: explore_spendee_desc$1,
+  spendee_alt_title: spendee_alt_title$1,
+  spendee_alt_desc: spendee_alt_desc$1,
+  spendee_alt_og_title: spendee_alt_og_title$1,
+  spendee_alt_og_desc: spendee_alt_og_desc$1,
+  spendee_badge: spendee_badge$1,
+  spendee_hero_title_1: spendee_hero_title_1$1,
+  spendee_hero_title_2: spendee_hero_title_2$1,
+  spendee_hero_desc: spendee_hero_desc$1,
+  spendee_hero_cta: spendee_hero_cta$1,
+  spendee_hero_note: spendee_hero_note$1,
+  spendee_prob_title_1: spendee_prob_title_1$1,
+  spendee_prob_title_highlight: spendee_prob_title_highlight$1,
+  spendee_prob_desc: spendee_prob_desc$1,
+  spendee_prob_point_1: spendee_prob_point_1$1,
+  spendee_prob_point_2: spendee_prob_point_2$1,
+  spendee_prob_point_3: spendee_prob_point_3$1,
+  spendee_sol_title_1: spendee_sol_title_1$1,
+  spendee_sol_title_highlight: spendee_sol_title_highlight$1,
+  spendee_sol_desc: spendee_sol_desc$1,
+  spendee_sol_1_title: spendee_sol_1_title$1,
+  spendee_sol_1_desc: spendee_sol_1_desc$1,
+  spendee_sol_2_title: spendee_sol_2_title$1,
+  spendee_sol_2_desc: spendee_sol_2_desc$1,
+  spendee_compare_title: spendee_compare_title$1,
+  spendee_compare_desc: spendee_compare_desc$1,
+  spendee_table_head_2: spendee_table_head_2$1,
+  spendee_table_row_1_title: spendee_table_row_1_title$1,
+  spendee_table_row_1_col_1: spendee_table_row_1_col_1$1,
+  spendee_table_row_1_col_2: spendee_table_row_1_col_2$1,
+  spendee_table_row_2_title: spendee_table_row_2_title$1,
+  spendee_table_row_2_col_1: spendee_table_row_2_col_1$1,
+  spendee_table_row_2_col_2: spendee_table_row_2_col_2$1,
+  spendee_table_row_3_title: spendee_table_row_3_title$1,
+  spendee_table_row_3_col_1: spendee_table_row_3_col_1$1,
+  spendee_table_row_3_col_2: spendee_table_row_3_col_2$1,
+  spendee_ai_title: spendee_ai_title$1,
+  spendee_ai_desc: spendee_ai_desc$1,
+  spendee_cost_title: spendee_cost_title$1,
+  spendee_cost_desc: spendee_cost_desc$1,
+  spendee_cta_title: spendee_cta_title$1,
+  spendee_cta_desc: spendee_cta_desc$1,
+  spendee_cta_btn: spendee_cta_btn$1,
+  explore_todoist_desc: explore_todoist_desc$1,
+  todoist_alt_title: todoist_alt_title$1,
+  todoist_alt_desc: todoist_alt_desc$1,
+  todoist_alt_og_title: todoist_alt_og_title$1,
+  todoist_alt_og_desc: todoist_alt_og_desc$1,
+  todoist_badge: todoist_badge$1,
+  todoist_hero_title_1: todoist_hero_title_1$1,
+  todoist_hero_title_2: todoist_hero_title_2$1,
+  todoist_hero_desc: todoist_hero_desc$1,
+  todoist_hero_cta: todoist_hero_cta$1,
+  todoist_hero_note: todoist_hero_note$1,
+  todoist_prob_title_1: todoist_prob_title_1$1,
+  todoist_prob_title_highlight: todoist_prob_title_highlight$1,
+  todoist_prob_desc: todoist_prob_desc$1,
+  todoist_prob_point_1: todoist_prob_point_1$1,
+  todoist_prob_point_2: todoist_prob_point_2$1,
+  todoist_prob_point_3: todoist_prob_point_3$1,
+  todoist_sol_title_1: todoist_sol_title_1$1,
+  todoist_sol_title_highlight: todoist_sol_title_highlight$1,
+  todoist_sol_desc: todoist_sol_desc$1,
+  todoist_sol_1_title: todoist_sol_1_title$1,
+  todoist_sol_1_desc: todoist_sol_1_desc$1,
+  todoist_sol_2_title: todoist_sol_2_title$1,
+  todoist_sol_2_desc: todoist_sol_2_desc$1,
+  todoist_compare_title: todoist_compare_title$1,
+  todoist_compare_desc: todoist_compare_desc$1,
+  todoist_table_head_2: todoist_table_head_2$1,
+  todoist_table_row_1_title: todoist_table_row_1_title$1,
+  todoist_table_row_1_col_1: todoist_table_row_1_col_1$1,
+  todoist_table_row_1_col_2: todoist_table_row_1_col_2$1,
+  todoist_table_row_2_title: todoist_table_row_2_title$1,
+  todoist_table_row_2_col_1: todoist_table_row_2_col_1$1,
+  todoist_table_row_2_col_2: todoist_table_row_2_col_2$1,
+  todoist_table_row_3_title: todoist_table_row_3_title$1,
+  todoist_table_row_3_col_1: todoist_table_row_3_col_1$1,
+  todoist_table_row_3_col_2: todoist_table_row_3_col_2$1,
+  todoist_psycho_title: todoist_psycho_title$1,
+  todoist_psycho_desc: todoist_psycho_desc$1,
+  todoist_data_title: todoist_data_title$1,
+  todoist_data_desc: todoist_data_desc$1,
+  todoist_cta_title: todoist_cta_title$1,
+  todoist_cta_desc: todoist_cta_desc$1,
+  todoist_cta_btn: todoist_cta_btn$1,
+  explore_ticktick_desc: explore_ticktick_desc$1,
+  ticktick_alt_title: ticktick_alt_title$1,
+  ticktick_alt_desc: ticktick_alt_desc$1,
+  ticktick_alt_og_title: ticktick_alt_og_title$1,
+  ticktick_alt_og_desc: ticktick_alt_og_desc$1,
+  ticktick_badge: ticktick_badge$1,
+  ticktick_hero_title_1: ticktick_hero_title_1$1,
+  ticktick_hero_title_2: ticktick_hero_title_2$1,
+  ticktick_hero_desc: ticktick_hero_desc$1,
+  ticktick_hero_cta: ticktick_hero_cta$1,
+  ticktick_hero_note: ticktick_hero_note$1,
+  ticktick_prob_title_1: ticktick_prob_title_1$1,
+  ticktick_prob_title_highlight: ticktick_prob_title_highlight$1,
+  ticktick_prob_desc: ticktick_prob_desc$1,
+  ticktick_prob_point_1: ticktick_prob_point_1$1,
+  ticktick_prob_point_2: ticktick_prob_point_2$1,
+  ticktick_prob_point_3: ticktick_prob_point_3$1,
+  ticktick_sol_title_1: ticktick_sol_title_1$1,
+  ticktick_sol_title_highlight: ticktick_sol_title_highlight$1,
+  ticktick_sol_desc: ticktick_sol_desc$1,
+  ticktick_sol_1_title: ticktick_sol_1_title$1,
+  ticktick_sol_1_desc: ticktick_sol_1_desc$1,
+  ticktick_sol_2_title: ticktick_sol_2_title$1,
+  ticktick_sol_2_desc: ticktick_sol_2_desc$1,
+  ticktick_compare_title: ticktick_compare_title$1,
+  ticktick_compare_desc: ticktick_compare_desc$1,
+  ticktick_table_head_2: ticktick_table_head_2$1,
+  ticktick_table_row_1_title: ticktick_table_row_1_title$1,
+  ticktick_table_row_1_col_1: ticktick_table_row_1_col_1$1,
+  ticktick_table_row_1_col_2: ticktick_table_row_1_col_2$1,
+  ticktick_table_row_2_title: ticktick_table_row_2_title$1,
+  ticktick_table_row_2_col_1: ticktick_table_row_2_col_1$1,
+  ticktick_table_row_2_col_2: ticktick_table_row_2_col_2$1,
+  ticktick_table_row_3_title: ticktick_table_row_3_title$1,
+  ticktick_table_row_3_col_1: ticktick_table_row_3_col_1$1,
+  ticktick_table_row_3_col_2: ticktick_table_row_3_col_2$1,
+  ticktick_psycho_title: ticktick_psycho_title$1,
+  ticktick_psycho_desc: ticktick_psycho_desc$1,
+  ticktick_data_title: ticktick_data_title$1,
+  ticktick_data_desc: ticktick_data_desc$1,
+  ticktick_cta_title: ticktick_cta_title$1,
+  ticktick_cta_desc: ticktick_cta_desc$1,
+  ticktick_cta_btn: ticktick_cta_btn$1,
+  explore_clickup_desc: explore_clickup_desc$1,
+  clickup_alt_title: clickup_alt_title$1,
+  clickup_alt_desc: clickup_alt_desc$1,
+  clickup_alt_og_title: clickup_alt_og_title$1,
+  clickup_alt_og_desc: clickup_alt_og_desc$1,
+  clickup_badge: clickup_badge$1,
+  clickup_hero_title_1: clickup_hero_title_1$1,
+  clickup_hero_title_2: clickup_hero_title_2$1,
+  clickup_hero_desc: clickup_hero_desc$1,
+  clickup_hero_cta: clickup_hero_cta$1,
+  clickup_hero_note: clickup_hero_note$1,
+  clickup_prob_title_1: clickup_prob_title_1$1,
+  clickup_prob_title_highlight: clickup_prob_title_highlight$1,
+  clickup_prob_desc: clickup_prob_desc$1,
+  clickup_prob_point_1: clickup_prob_point_1$1,
+  clickup_prob_point_2: clickup_prob_point_2$1,
+  clickup_prob_point_3: clickup_prob_point_3$1,
+  clickup_sol_title_1: clickup_sol_title_1$1,
+  clickup_sol_title_highlight: clickup_sol_title_highlight$1,
+  clickup_sol_desc: clickup_sol_desc$1,
+  clickup_sol_1_title: clickup_sol_1_title$1,
+  clickup_sol_1_desc: clickup_sol_1_desc$1,
+  clickup_sol_2_title: clickup_sol_2_title$1,
+  clickup_sol_2_desc: clickup_sol_2_desc$1,
+  clickup_compare_title: clickup_compare_title$1,
+  clickup_compare_desc: clickup_compare_desc$1,
+  clickup_table_head_2: clickup_table_head_2$1,
+  clickup_table_row_1_title: clickup_table_row_1_title$1,
+  clickup_table_row_1_col_1: clickup_table_row_1_col_1$1,
+  clickup_table_row_1_col_2: clickup_table_row_1_col_2$1,
+  clickup_table_row_2_title: clickup_table_row_2_title$1,
+  clickup_table_row_2_col_1: clickup_table_row_2_col_1$1,
+  clickup_table_row_2_col_2: clickup_table_row_2_col_2$1,
+  clickup_table_row_3_title: clickup_table_row_3_title$1,
+  clickup_table_row_3_col_1: clickup_table_row_3_col_1$1,
+  clickup_table_row_3_col_2: clickup_table_row_3_col_2$1,
+  clickup_psycho_title: clickup_psycho_title$1,
+  clickup_psycho_desc: clickup_psycho_desc$1,
+  clickup_data_title: clickup_data_title$1,
+  clickup_data_desc: clickup_data_desc$1,
+  clickup_cta_title: clickup_cta_title$1,
+  clickup_cta_desc: clickup_cta_desc$1,
+  clickup_cta_btn: clickup_cta_btn$1,
+  explore_spreadsheet_desc: explore_spreadsheet_desc$1,
+  spreadsheet_alt_title: spreadsheet_alt_title$1,
+  spreadsheet_alt_desc: spreadsheet_alt_desc$1,
+  spreadsheet_alt_og_title: spreadsheet_alt_og_title$1,
+  spreadsheet_alt_og_desc: spreadsheet_alt_og_desc$1,
+  spreadsheet_badge: spreadsheet_badge$1,
+  spreadsheet_hero_title_1: spreadsheet_hero_title_1$1,
+  spreadsheet_hero_title_2: spreadsheet_hero_title_2$1,
+  spreadsheet_hero_desc: spreadsheet_hero_desc$1,
+  spreadsheet_hero_cta: spreadsheet_hero_cta$1,
+  spreadsheet_hero_note: spreadsheet_hero_note$1,
+  spreadsheet_prob_title_1: spreadsheet_prob_title_1$1,
+  spreadsheet_prob_title_highlight: spreadsheet_prob_title_highlight$1,
+  spreadsheet_prob_desc: spreadsheet_prob_desc$1,
+  spreadsheet_prob_point_1: spreadsheet_prob_point_1$1,
+  spreadsheet_prob_point_2: spreadsheet_prob_point_2$1,
+  spreadsheet_prob_point_3: spreadsheet_prob_point_3$1,
+  spreadsheet_sol_title_1: spreadsheet_sol_title_1$1,
+  spreadsheet_sol_title_highlight: spreadsheet_sol_title_highlight$1,
+  spreadsheet_sol_desc: spreadsheet_sol_desc$1,
+  spreadsheet_sol_1_title: spreadsheet_sol_1_title$1,
+  spreadsheet_sol_1_desc: spreadsheet_sol_1_desc$1,
+  spreadsheet_sol_2_title: spreadsheet_sol_2_title$1,
+  spreadsheet_sol_2_desc: spreadsheet_sol_2_desc$1,
+  spreadsheet_compare_title: spreadsheet_compare_title$1,
+  spreadsheet_compare_desc: spreadsheet_compare_desc$1,
+  spreadsheet_table_head_2: spreadsheet_table_head_2$1,
+  spreadsheet_table_row_1_title: spreadsheet_table_row_1_title$1,
+  spreadsheet_table_row_1_col_1: spreadsheet_table_row_1_col_1$1,
+  spreadsheet_table_row_1_col_2: spreadsheet_table_row_1_col_2$1,
+  spreadsheet_table_row_2_title: spreadsheet_table_row_2_title$1,
+  spreadsheet_table_row_2_col_1: spreadsheet_table_row_2_col_1$1,
+  spreadsheet_table_row_2_col_2: spreadsheet_table_row_2_col_2$1,
+  spreadsheet_table_row_3_title: spreadsheet_table_row_3_title$1,
+  spreadsheet_table_row_3_col_1: spreadsheet_table_row_3_col_1$1,
+  spreadsheet_table_row_3_col_2: spreadsheet_table_row_3_col_2$1,
+  spreadsheet_psycho_title: spreadsheet_psycho_title$1,
+  spreadsheet_psycho_desc: spreadsheet_psycho_desc$1,
+  spreadsheet_data_title: spreadsheet_data_title$1,
+  spreadsheet_data_desc: spreadsheet_data_desc$1,
+  spreadsheet_cta_title: spreadsheet_cta_title$1,
+  spreadsheet_cta_desc: spreadsheet_cta_desc$1,
+  spreadsheet_cta_btn: spreadsheet_cta_btn$1,
+  explore_notion_desc: explore_notion_desc$1,
+  notion_alt_title: notion_alt_title$1,
+  notion_alt_desc: notion_alt_desc$1,
+  notion_alt_og_title: notion_alt_og_title$1,
+  notion_alt_og_desc: notion_alt_og_desc$1,
+  notion_badge: notion_badge$1,
+  notion_hero_title_1: notion_hero_title_1$1,
+  notion_hero_title_2: notion_hero_title_2$1,
+  notion_hero_desc: notion_hero_desc$1,
+  notion_hero_cta: notion_hero_cta$1,
+  notion_hero_note: notion_hero_note$1,
+  notion_prob_title_1: notion_prob_title_1$1,
+  notion_prob_title_highlight: notion_prob_title_highlight$1,
+  notion_prob_desc: notion_prob_desc$1,
+  notion_prob_point_1: notion_prob_point_1$1,
+  notion_prob_point_2: notion_prob_point_2$1,
+  notion_prob_point_3: notion_prob_point_3$1,
+  notion_sol_title_1: notion_sol_title_1$1,
+  notion_sol_title_highlight: notion_sol_title_highlight$1,
+  notion_sol_desc: notion_sol_desc$1,
+  notion_sol_1_title: notion_sol_1_title$1,
+  notion_sol_1_desc: notion_sol_1_desc$1,
+  notion_sol_2_title: notion_sol_2_title$1,
+  notion_sol_2_desc: notion_sol_2_desc$1,
+  notion_compare_title: notion_compare_title$1,
+  notion_compare_desc: notion_compare_desc$1,
+  notion_table_head_2: notion_table_head_2$1,
+  notion_table_row_1_title: notion_table_row_1_title$1,
+  notion_table_row_1_col_1: notion_table_row_1_col_1$1,
+  notion_table_row_1_col_2: notion_table_row_1_col_2$1,
+  notion_table_row_2_title: notion_table_row_2_title$1,
+  notion_table_row_2_col_1: notion_table_row_2_col_1$1,
+  notion_table_row_2_col_2: notion_table_row_2_col_2$1,
+  notion_table_row_3_title: notion_table_row_3_title$1,
+  notion_table_row_3_col_1: notion_table_row_3_col_1$1,
+  notion_table_row_3_col_2: notion_table_row_3_col_2$1,
+  notion_psycho_title: notion_psycho_title$1,
+  notion_psycho_desc: notion_psycho_desc$1,
+  notion_data_title: notion_data_title$1,
+  notion_data_desc: notion_data_desc$1,
+  notion_cta_title: notion_cta_title$1,
+  notion_cta_desc: notion_cta_desc$1,
+  notion_cta_btn: notion_cta_btn$1,
+  explore_obsidian_desc: explore_obsidian_desc$1,
+  obsidian_alt_title: obsidian_alt_title$1,
+  obsidian_alt_desc: obsidian_alt_desc$1,
+  obsidian_alt_og_title: obsidian_alt_og_title$1,
+  obsidian_alt_og_desc: obsidian_alt_og_desc$1,
+  obsidian_badge: obsidian_badge$1,
+  obsidian_hero_title_1: obsidian_hero_title_1$1,
+  obsidian_hero_title_2: obsidian_hero_title_2$1,
+  obsidian_hero_desc: obsidian_hero_desc$1,
+  obsidian_hero_cta: obsidian_hero_cta$1,
+  obsidian_hero_note: obsidian_hero_note$1,
+  obsidian_prob_title_1: obsidian_prob_title_1$1,
+  obsidian_prob_title_highlight: obsidian_prob_title_highlight$1,
+  obsidian_prob_desc: obsidian_prob_desc$1,
+  obsidian_prob_point_1: obsidian_prob_point_1$1,
+  obsidian_prob_point_2: obsidian_prob_point_2$1,
+  obsidian_prob_point_3: obsidian_prob_point_3$1,
+  obsidian_sol_title_1: obsidian_sol_title_1$1,
+  obsidian_sol_title_highlight: obsidian_sol_title_highlight$1,
+  obsidian_sol_desc: obsidian_sol_desc$1,
+  obsidian_sol_1_title: obsidian_sol_1_title$1,
+  obsidian_sol_1_desc: obsidian_sol_1_desc$1,
+  obsidian_sol_2_title: obsidian_sol_2_title$1,
+  obsidian_sol_2_desc: obsidian_sol_2_desc$1,
+  obsidian_compare_title: obsidian_compare_title$1,
+  obsidian_compare_desc: obsidian_compare_desc$1,
+  obsidian_table_head_2: obsidian_table_head_2$1,
+  obsidian_table_row_1_title: obsidian_table_row_1_title$1,
+  obsidian_table_row_1_col_1: obsidian_table_row_1_col_1$1,
+  obsidian_table_row_1_col_2: obsidian_table_row_1_col_2$1,
+  obsidian_table_row_2_title: obsidian_table_row_2_title$1,
+  obsidian_table_row_2_col_1: obsidian_table_row_2_col_1$1,
+  obsidian_table_row_2_col_2: obsidian_table_row_2_col_2$1,
+  obsidian_table_row_3_title: obsidian_table_row_3_title$1,
+  obsidian_table_row_3_col_1: obsidian_table_row_3_col_1$1,
+  obsidian_table_row_3_col_2: obsidian_table_row_3_col_2$1,
+  obsidian_psycho_title: obsidian_psycho_title$1,
+  obsidian_psycho_desc: obsidian_psycho_desc$1,
+  obsidian_data_title: obsidian_data_title$1,
+  obsidian_data_desc: obsidian_data_desc$1,
+  obsidian_cta_title: obsidian_cta_title$1,
+  obsidian_cta_desc: obsidian_cta_desc$1,
+  obsidian_cta_btn: obsidian_cta_btn$1,
+  explore_monday_desc: explore_monday_desc$1,
+  monday_alt_title: monday_alt_title$1,
+  monday_alt_desc: monday_alt_desc$1,
+  monday_alt_og_title: monday_alt_og_title$1,
+  monday_alt_og_desc: monday_alt_og_desc$1,
+  monday_badge: monday_badge$1,
+  monday_hero_title_1: monday_hero_title_1$1,
+  monday_hero_title_2: monday_hero_title_2$1,
+  monday_hero_desc: monday_hero_desc$1,
+  monday_hero_cta: monday_hero_cta$1,
+  monday_hero_note: monday_hero_note$1,
+  monday_prob_title_1: monday_prob_title_1$1,
+  monday_prob_title_highlight: monday_prob_title_highlight$1,
+  monday_prob_desc: monday_prob_desc$1,
+  monday_prob_point_1: monday_prob_point_1$1,
+  monday_prob_point_2: monday_prob_point_2$1,
+  monday_prob_point_3: monday_prob_point_3$1,
+  monday_sol_title_1: monday_sol_title_1$1,
+  monday_sol_title_highlight: monday_sol_title_highlight$1,
+  monday_sol_desc: monday_sol_desc$1,
+  monday_sol_1_title: monday_sol_1_title$1,
+  monday_sol_1_desc: monday_sol_1_desc$1,
+  monday_sol_2_title: monday_sol_2_title$1,
+  monday_sol_2_desc: monday_sol_2_desc$1,
+  monday_compare_title: monday_compare_title$1,
+  monday_compare_desc: monday_compare_desc$1,
+  monday_table_head_2: monday_table_head_2$1,
+  monday_table_row_1_title: monday_table_row_1_title$1,
+  monday_table_row_1_col_1: monday_table_row_1_col_1$1,
+  monday_table_row_1_col_2: monday_table_row_1_col_2$1,
+  monday_table_row_2_title: monday_table_row_2_title$1,
+  monday_table_row_2_col_1: monday_table_row_2_col_1$1,
+  monday_table_row_2_col_2: monday_table_row_2_col_2$1,
+  monday_table_row_3_title: monday_table_row_3_title$1,
+  monday_table_row_3_col_1: monday_table_row_3_col_1$1,
+  monday_table_row_3_col_2: monday_table_row_3_col_2$1,
+  monday_psycho_title: monday_psycho_title$1,
+  monday_psycho_desc: monday_psycho_desc$1,
+  monday_data_title: monday_data_title$1,
+  monday_data_desc: monday_data_desc$1,
+  monday_cta_title: monday_cta_title$1,
+  monday_cta_desc: monday_cta_desc$1,
+  monday_cta_btn: monday_cta_btn$1,
+  explore_trello_desc: explore_trello_desc$1,
+  trello_alt_title: trello_alt_title$1,
+  trello_alt_desc: trello_alt_desc$1,
+  trello_alt_og_title: trello_alt_og_title$1,
+  trello_alt_og_desc: trello_alt_og_desc$1,
+  trello_badge: trello_badge$1,
+  trello_hero_title_1: trello_hero_title_1$1,
+  trello_hero_title_2: trello_hero_title_2$1,
+  trello_hero_desc: trello_hero_desc$1,
+  trello_hero_cta: trello_hero_cta$1,
+  trello_hero_note: trello_hero_note$1,
+  trello_prob_title_1: trello_prob_title_1$1,
+  trello_prob_title_highlight: trello_prob_title_highlight$1,
+  trello_prob_desc: trello_prob_desc$1,
+  trello_prob_point_1: trello_prob_point_1$1,
+  trello_prob_point_2: trello_prob_point_2$1,
+  trello_prob_point_3: trello_prob_point_3$1,
+  trello_sol_title_1: trello_sol_title_1$1,
+  trello_sol_title_highlight: trello_sol_title_highlight$1,
+  trello_sol_desc: trello_sol_desc$1,
+  trello_sol_1_title: trello_sol_1_title$1,
+  trello_sol_1_desc: trello_sol_1_desc$1,
+  trello_sol_2_title: trello_sol_2_title$1,
+  trello_sol_2_desc: trello_sol_2_desc$1,
+  trello_compare_title: trello_compare_title$1,
+  trello_compare_desc: trello_compare_desc$1,
+  trello_table_head_2: trello_table_head_2$1,
+  trello_table_row_1_title: trello_table_row_1_title$1,
+  trello_table_row_1_col_1: trello_table_row_1_col_1$1,
+  trello_table_row_1_col_2: trello_table_row_1_col_2$1,
+  trello_table_row_2_title: trello_table_row_2_title$1,
+  trello_table_row_2_col_1: trello_table_row_2_col_1$1,
+  trello_table_row_2_col_2: trello_table_row_2_col_2$1,
+  trello_table_row_3_title: trello_table_row_3_title$1,
+  trello_table_row_3_col_1: trello_table_row_3_col_1$1,
+  trello_table_row_3_col_2: trello_table_row_3_col_2$1,
+  trello_psycho_title: trello_psycho_title$1,
+  trello_psycho_desc: trello_psycho_desc$1,
+  trello_data_title: trello_data_title$1,
+  trello_data_desc: trello_data_desc$1,
+  trello_cta_title: trello_cta_title$1,
+  trello_cta_desc: trello_cta_desc$1,
+  trello_cta_btn: trello_cta_btn$1,
+  explore_asana_desc: explore_asana_desc$1,
+  asana_alt_title: asana_alt_title$1,
+  asana_alt_desc: asana_alt_desc$1,
+  asana_alt_og_title: asana_alt_og_title$1,
+  asana_alt_og_desc: asana_alt_og_desc$1,
+  asana_badge: asana_badge$1,
+  asana_hero_title_1: asana_hero_title_1$1,
+  asana_hero_title_2: asana_hero_title_2$1,
+  asana_hero_desc: asana_hero_desc$1,
+  asana_hero_cta: asana_hero_cta$1,
+  asana_hero_note: asana_hero_note$1,
+  asana_prob_title_1: asana_prob_title_1$1,
+  asana_prob_title_highlight: asana_prob_title_highlight$1,
+  asana_prob_desc: asana_prob_desc$1,
+  asana_prob_point_1: asana_prob_point_1$1,
+  asana_prob_point_2: asana_prob_point_2$1,
+  asana_prob_point_3: asana_prob_point_3$1,
+  asana_sol_title_1: asana_sol_title_1$1,
+  asana_sol_title_highlight: asana_sol_title_highlight$1,
+  asana_sol_desc: asana_sol_desc$1,
+  asana_sol_1_title: asana_sol_1_title$1,
+  asana_sol_1_desc: asana_sol_1_desc$1,
+  asana_sol_2_title: asana_sol_2_title$1,
+  asana_sol_2_desc: asana_sol_2_desc$1,
+  asana_compare_title: asana_compare_title$1,
+  asana_compare_desc: asana_compare_desc$1,
+  asana_table_head_2: asana_table_head_2$1,
+  asana_table_row_1_title: asana_table_row_1_title$1,
+  asana_table_row_1_col_1: asana_table_row_1_col_1$1,
+  asana_table_row_1_col_2: asana_table_row_1_col_2$1,
+  asana_table_row_2_title: asana_table_row_2_title$1,
+  asana_table_row_2_col_1: asana_table_row_2_col_1$1,
+  asana_table_row_2_col_2: asana_table_row_2_col_2$1,
+  asana_table_row_3_title: asana_table_row_3_title$1,
+  asana_table_row_3_col_1: asana_table_row_3_col_1$1,
+  asana_table_row_3_col_2: asana_table_row_3_col_2$1,
+  asana_psycho_title: asana_psycho_title$1,
+  asana_psycho_desc: asana_psycho_desc$1,
+  asana_data_title: asana_data_title$1,
+  asana_data_desc: asana_data_desc$1,
+  asana_cta_title: asana_cta_title$1,
+  asana_cta_desc: asana_cta_desc$1,
+  asana_cta_btn: asana_cta_btn$1,
+  notes_apps_meta_title: notes_apps_meta_title$1,
+  notes_apps_meta_desc: notes_apps_meta_desc$1,
+  notes_apps_og_title: notes_apps_og_title$1,
+  notes_apps_og_desc: notes_apps_og_desc$1,
+  notes_apps_badge: notes_apps_badge$1,
+  notes_apps_hero_title_1: notes_apps_hero_title_1$1,
+  notes_apps_hero_title_2: notes_apps_hero_title_2$1,
+  notes_apps_hero_desc: notes_apps_hero_desc$1,
+  notes_apps_hero_cta: notes_apps_hero_cta$1,
+  notes_apps_hero_note: notes_apps_hero_note$1,
+  notes_apps_prob_title_1: notes_apps_prob_title_1$1,
+  notes_apps_prob_title_highlight: notes_apps_prob_title_highlight$1,
+  notes_apps_prob_desc: notes_apps_prob_desc$1,
+  notes_apps_prob_point_1: notes_apps_prob_point_1$1,
+  notes_apps_prob_point_2: notes_apps_prob_point_2$1,
+  notes_apps_prob_point_3: notes_apps_prob_point_3$1,
+  notes_apps_sol_title_1: notes_apps_sol_title_1$1,
+  notes_apps_sol_title_highlight: notes_apps_sol_title_highlight$1,
+  notes_apps_sol_desc: notes_apps_sol_desc$1,
+  notes_apps_sol_box_title: notes_apps_sol_box_title$1,
+  notes_apps_sol_box_desc: notes_apps_sol_box_desc$1,
+  notes_apps_compare_title: notes_apps_compare_title$1,
+  notes_apps_compare_desc: notes_apps_compare_desc$1,
+  notes_apps_table_head_1: notes_apps_table_head_1$1,
+  notes_apps_table_head_2: notes_apps_table_head_2$1,
+  notes_apps_table_head_3: notes_apps_table_head_3$1,
+  notes_apps_table_row_1_title: notes_apps_table_row_1_title$1,
+  notes_apps_table_row_1_col_1: notes_apps_table_row_1_col_1$1,
+  notes_apps_table_row_1_col_2: notes_apps_table_row_1_col_2$1,
+  notes_apps_table_row_2_title: notes_apps_table_row_2_title$1,
+  notes_apps_table_row_2_col_1: notes_apps_table_row_2_col_1$1,
+  notes_apps_table_row_2_col_2: notes_apps_table_row_2_col_2$1,
+  notes_apps_table_row_3_title: notes_apps_table_row_3_title$1,
+  notes_apps_table_row_3_col_1: notes_apps_table_row_3_col_1$1,
+  notes_apps_table_row_3_col_2: notes_apps_table_row_3_col_2$1,
+  explore_evernote_desc: explore_evernote_desc$1,
+  explore_applenotes_desc: explore_applenotes_desc$1,
+  explore_onenote_desc: explore_onenote_desc$1,
+  evernote_badge: evernote_badge$1,
+  evernote_hero_title_1: evernote_hero_title_1$1,
+  evernote_hero_title_2: evernote_hero_title_2$1,
+  evernote_hero_desc: evernote_hero_desc$1,
+  evernote_hero_cta: evernote_hero_cta$1,
+  evernote_hero_note: evernote_hero_note$1,
+  evernote_prob_title_1: evernote_prob_title_1$1,
+  evernote_prob_title_highlight: evernote_prob_title_highlight$1,
+  evernote_prob_desc: evernote_prob_desc$1,
+  evernote_sol_title_1: evernote_sol_title_1$1,
+  evernote_sol_title_highlight: evernote_sol_title_highlight$1,
+  evernote_sol_desc: evernote_sol_desc$1,
+  applenotes_badge: applenotes_badge$1,
+  applenotes_hero_title_1: applenotes_hero_title_1$1,
+  applenotes_hero_title_2: applenotes_hero_title_2$1,
+  applenotes_hero_desc: applenotes_hero_desc$1,
+  applenotes_hero_cta: applenotes_hero_cta$1,
+  applenotes_hero_note: applenotes_hero_note$1,
+  applenotes_prob_title_1: applenotes_prob_title_1$1,
+  applenotes_prob_title_highlight: applenotes_prob_title_highlight$1,
+  applenotes_prob_desc: applenotes_prob_desc$1,
+  applenotes_sol_title_1: applenotes_sol_title_1$1,
+  applenotes_sol_title_highlight: applenotes_sol_title_highlight$1,
+  applenotes_sol_desc: applenotes_sol_desc$1,
+  onenote_badge: onenote_badge$1,
+  onenote_hero_title_1: onenote_hero_title_1$1,
+  onenote_hero_title_2: onenote_hero_title_2$1,
+  onenote_hero_desc: onenote_hero_desc$1,
+  onenote_hero_cta: onenote_hero_cta$1,
+  onenote_hero_note: onenote_hero_note$1,
+  onenote_prob_title_1: onenote_prob_title_1$1,
+  onenote_prob_title_highlight: onenote_prob_title_highlight$1,
+  onenote_prob_desc: onenote_prob_desc$1,
+  onenote_sol_title_1: onenote_sol_title_1$1,
+  onenote_sol_title_highlight: onenote_sol_title_highlight$1,
+  onenote_sol_desc: onenote_sol_desc$1,
+  evernote_hero_visual_1: evernote_hero_visual_1$1,
+  evernote_hero_visual_2: evernote_hero_visual_2$1,
+  evernote_prob_visual_1: evernote_prob_visual_1$1,
+  evernote_prob_visual_2: evernote_prob_visual_2$1,
+  evernote_prob_visual_3: evernote_prob_visual_3$1,
+  evernote_prob_point_1_title: evernote_prob_point_1_title$1,
+  evernote_prob_point_1_desc: evernote_prob_point_1_desc$1,
+  evernote_prob_point_2_title: evernote_prob_point_2_title$1,
+  evernote_prob_point_2_desc: evernote_prob_point_2_desc$1,
+  evernote_sol_point_1_title: evernote_sol_point_1_title$1,
+  evernote_sol_point_1_desc: evernote_sol_point_1_desc$1,
+  evernote_sol_point_2_title: evernote_sol_point_2_title$1,
+  evernote_sol_point_2_desc: evernote_sol_point_2_desc$1,
+  evernote_sol_point_3_title: evernote_sol_point_3_title$1,
+  evernote_sol_point_3_desc: evernote_sol_point_3_desc$1,
+  evernote_table_title: evernote_table_title$1,
+  evernote_table_desc: evernote_table_desc$1,
+  evernote_table_h1: evernote_table_h1$1,
+  evernote_table_h2: evernote_table_h2$1,
+  evernote_table_h3: evernote_table_h3$1,
+  evernote_table_r1_1: evernote_table_r1_1$1,
+  evernote_table_r1_2: evernote_table_r1_2$1,
+  evernote_table_r1_3: evernote_table_r1_3$1,
+  evernote_table_r2_1: evernote_table_r2_1$1,
+  evernote_table_r2_2: evernote_table_r2_2$1,
+  evernote_table_r2_3: evernote_table_r2_3$1,
+  evernote_table_r3_1: evernote_table_r3_1$1,
+  evernote_table_r3_2: evernote_table_r3_2$1,
+  evernote_table_r3_3: evernote_table_r3_3$1,
+  evernote_psy_title: evernote_psy_title$1,
+  evernote_psy_desc: evernote_psy_desc$1,
+  evernote_psy_quote: evernote_psy_quote$1,
+  evernote_cta_title: evernote_cta_title$1,
+  evernote_cta_btn: evernote_cta_btn$1,
+  applenotes_hero_visual_1: applenotes_hero_visual_1$1,
+  applenotes_hero_visual_2: applenotes_hero_visual_2$1,
+  applenotes_hero_visual_3: applenotes_hero_visual_3$1,
+  applenotes_hero_visual_4: applenotes_hero_visual_4$1,
+  applenotes_prob_visual_1: applenotes_prob_visual_1$1,
+  applenotes_prob_visual_2: applenotes_prob_visual_2$1,
+  applenotes_prob_visual_3: applenotes_prob_visual_3$1,
+  applenotes_prob_visual_4: applenotes_prob_visual_4$1,
+  applenotes_prob_visual_5: applenotes_prob_visual_5$1,
+  applenotes_prob_visual_6: applenotes_prob_visual_6$1,
+  applenotes_prob_visual_7: applenotes_prob_visual_7$1,
+  applenotes_prob_visual_8: applenotes_prob_visual_8$1,
+  applenotes_prob_visual_9: applenotes_prob_visual_9$1,
+  applenotes_sol_visual_1: applenotes_sol_visual_1$1,
+  applenotes_sol_visual_2: applenotes_sol_visual_2$1,
+  applenotes_sol_visual_3: applenotes_sol_visual_3$1,
+  applenotes_sol_point_1_title: applenotes_sol_point_1_title$1,
+  applenotes_sol_point_1_desc: applenotes_sol_point_1_desc$1,
+  applenotes_sol_point_2_title: applenotes_sol_point_2_title$1,
+  applenotes_sol_point_2_desc: applenotes_sol_point_2_desc$1,
+  applenotes_gap_title: applenotes_gap_title$1,
+  applenotes_gap_desc: applenotes_gap_desc$1,
+  applenotes_gap_title_2: applenotes_gap_title_2$1,
+  applenotes_gap_desc_2: applenotes_gap_desc_2$1,
+  applenotes_gap_title_3: applenotes_gap_title_3$1,
+  applenotes_gap_desc_3: applenotes_gap_desc_3$1,
+  applenotes_adv_title: applenotes_adv_title$1,
+  applenotes_adv_desc: applenotes_adv_desc$1,
+  applenotes_adv_badge: applenotes_adv_badge$1,
+  applenotes_cta_title: applenotes_cta_title$1,
+  applenotes_cta_btn: applenotes_cta_btn$1,
+  onenote_hero_visual_1: onenote_hero_visual_1$1,
+  onenote_hero_visual_2: onenote_hero_visual_2$1,
+  onenote_hero_visual_3: onenote_hero_visual_3$1,
+  onenote_hero_visual_4: onenote_hero_visual_4$1,
+  onenote_hero_visual_5: onenote_hero_visual_5$1,
+  onenote_hero_visual_6: onenote_hero_visual_6$1,
+  onenote_hero_visual_7: onenote_hero_visual_7$1,
+  onenote_prob_visual_1: onenote_prob_visual_1$1,
+  onenote_prob_visual_2: onenote_prob_visual_2$1,
+  onenote_prob_visual_3: onenote_prob_visual_3$1,
+  onenote_prob_visual_4: onenote_prob_visual_4$1,
+  onenote_prob_visual_5: onenote_prob_visual_5$1,
+  onenote_prob_point_1_title: onenote_prob_point_1_title$1,
+  onenote_prob_point_1_desc: onenote_prob_point_1_desc$1,
+  onenote_prob_point_2_title: onenote_prob_point_2_title$1,
+  onenote_prob_point_2_desc: onenote_prob_point_2_desc$1,
+  onenote_sol_point_1: onenote_sol_point_1$1,
+  onenote_sol_point_2: onenote_sol_point_2$1,
+  onenote_sol_point_3: onenote_sol_point_3$1,
+  onenote_sol_visual_1: onenote_sol_visual_1$1,
+  onenote_sol_visual_2: onenote_sol_visual_2$1,
+  onenote_sol_visual_3: onenote_sol_visual_3$1,
+  onenote_sol_visual_4: onenote_sol_visual_4$1,
+  onenote_cost_title: onenote_cost_title$1,
+  onenote_cost_desc: onenote_cost_desc$1,
+  onenote_cost_point_1: onenote_cost_point_1$1,
+  onenote_cost_point_2: onenote_cost_point_2$1,
+  onenote_cost_point_3: onenote_cost_point_3$1,
+  onenote_feat_visual_1: onenote_feat_visual_1$1,
+  onenote_feat_title_1: onenote_feat_title_1$1,
+  onenote_feat_point_1_title: onenote_feat_point_1_title$1,
+  onenote_feat_point_1_desc: onenote_feat_point_1_desc$1,
+  onenote_feat_point_2_title: onenote_feat_point_2_title$1,
+  onenote_feat_point_2_desc: onenote_feat_point_2_desc$1,
+  onenote_feat_title_2: onenote_feat_title_2$1,
+  onenote_feat_point_3_title: onenote_feat_point_3_title$1,
+  onenote_feat_point_3_desc: onenote_feat_point_3_desc$1,
+  onenote_feat_point_4_title: onenote_feat_point_4_title$1,
+  onenote_feat_point_4_desc: onenote_feat_point_4_desc$1,
+  onenote_cta_title: onenote_cta_title$1,
+  onenote_cta_btn: onenote_cta_btn$1,
+  compare_nav_title: compare_nav_title$1,
   dash_greet_morning: dash_greet_morning$1,
   dash_greet_afternoon: dash_greet_afternoon$1,
   dash_greet_evening: dash_greet_evening$1,
@@ -8916,7 +10582,92 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   adjust_photo_title: adjust_photo_title$1,
   amount: amount$1,
   amount_placeholder: amount_placeholder$1,
+  applenotes_adv_badge: applenotes_adv_badge$1,
+  applenotes_adv_desc: applenotes_adv_desc$1,
+  applenotes_adv_title: applenotes_adv_title$1,
+  applenotes_badge: applenotes_badge$1,
+  applenotes_cta_btn: applenotes_cta_btn$1,
+  applenotes_cta_title: applenotes_cta_title$1,
+  applenotes_gap_desc: applenotes_gap_desc$1,
+  applenotes_gap_desc_2: applenotes_gap_desc_2$1,
+  applenotes_gap_desc_3: applenotes_gap_desc_3$1,
+  applenotes_gap_title: applenotes_gap_title$1,
+  applenotes_gap_title_2: applenotes_gap_title_2$1,
+  applenotes_gap_title_3: applenotes_gap_title_3$1,
+  applenotes_hero_cta: applenotes_hero_cta$1,
+  applenotes_hero_desc: applenotes_hero_desc$1,
+  applenotes_hero_note: applenotes_hero_note$1,
+  applenotes_hero_title_1: applenotes_hero_title_1$1,
+  applenotes_hero_title_2: applenotes_hero_title_2$1,
+  applenotes_hero_visual_1: applenotes_hero_visual_1$1,
+  applenotes_hero_visual_2: applenotes_hero_visual_2$1,
+  applenotes_hero_visual_3: applenotes_hero_visual_3$1,
+  applenotes_hero_visual_4: applenotes_hero_visual_4$1,
+  applenotes_prob_desc: applenotes_prob_desc$1,
+  applenotes_prob_title_1: applenotes_prob_title_1$1,
+  applenotes_prob_title_highlight: applenotes_prob_title_highlight$1,
+  applenotes_prob_visual_1: applenotes_prob_visual_1$1,
+  applenotes_prob_visual_2: applenotes_prob_visual_2$1,
+  applenotes_prob_visual_3: applenotes_prob_visual_3$1,
+  applenotes_prob_visual_4: applenotes_prob_visual_4$1,
+  applenotes_prob_visual_5: applenotes_prob_visual_5$1,
+  applenotes_prob_visual_6: applenotes_prob_visual_6$1,
+  applenotes_prob_visual_7: applenotes_prob_visual_7$1,
+  applenotes_prob_visual_8: applenotes_prob_visual_8$1,
+  applenotes_prob_visual_9: applenotes_prob_visual_9$1,
+  applenotes_sol_desc: applenotes_sol_desc$1,
+  applenotes_sol_point_1_desc: applenotes_sol_point_1_desc$1,
+  applenotes_sol_point_1_title: applenotes_sol_point_1_title$1,
+  applenotes_sol_point_2_desc: applenotes_sol_point_2_desc$1,
+  applenotes_sol_point_2_title: applenotes_sol_point_2_title$1,
+  applenotes_sol_title_1: applenotes_sol_title_1$1,
+  applenotes_sol_title_highlight: applenotes_sol_title_highlight$1,
+  applenotes_sol_visual_1: applenotes_sol_visual_1$1,
+  applenotes_sol_visual_2: applenotes_sol_visual_2$1,
+  applenotes_sol_visual_3: applenotes_sol_visual_3$1,
   architect_console: architect_console$1,
+  asana_alt_desc: asana_alt_desc$1,
+  asana_alt_og_desc: asana_alt_og_desc$1,
+  asana_alt_og_title: asana_alt_og_title$1,
+  asana_alt_title: asana_alt_title$1,
+  asana_badge: asana_badge$1,
+  asana_compare_desc: asana_compare_desc$1,
+  asana_compare_title: asana_compare_title$1,
+  asana_cta_btn: asana_cta_btn$1,
+  asana_cta_desc: asana_cta_desc$1,
+  asana_cta_title: asana_cta_title$1,
+  asana_data_desc: asana_data_desc$1,
+  asana_data_title: asana_data_title$1,
+  asana_hero_cta: asana_hero_cta$1,
+  asana_hero_desc: asana_hero_desc$1,
+  asana_hero_note: asana_hero_note$1,
+  asana_hero_title_1: asana_hero_title_1$1,
+  asana_hero_title_2: asana_hero_title_2$1,
+  asana_prob_desc: asana_prob_desc$1,
+  asana_prob_point_1: asana_prob_point_1$1,
+  asana_prob_point_2: asana_prob_point_2$1,
+  asana_prob_point_3: asana_prob_point_3$1,
+  asana_prob_title_1: asana_prob_title_1$1,
+  asana_prob_title_highlight: asana_prob_title_highlight$1,
+  asana_psycho_desc: asana_psycho_desc$1,
+  asana_psycho_title: asana_psycho_title$1,
+  asana_sol_1_desc: asana_sol_1_desc$1,
+  asana_sol_1_title: asana_sol_1_title$1,
+  asana_sol_2_desc: asana_sol_2_desc$1,
+  asana_sol_2_title: asana_sol_2_title$1,
+  asana_sol_desc: asana_sol_desc$1,
+  asana_sol_title_1: asana_sol_title_1$1,
+  asana_sol_title_highlight: asana_sol_title_highlight$1,
+  asana_table_head_2: asana_table_head_2$1,
+  asana_table_row_1_col_1: asana_table_row_1_col_1$1,
+  asana_table_row_1_col_2: asana_table_row_1_col_2$1,
+  asana_table_row_1_title: asana_table_row_1_title$1,
+  asana_table_row_2_col_1: asana_table_row_2_col_1$1,
+  asana_table_row_2_col_2: asana_table_row_2_col_2$1,
+  asana_table_row_2_title: asana_table_row_2_title$1,
+  asana_table_row_3_col_1: asana_table_row_3_col_1$1,
+  asana_table_row_3_col_2: asana_table_row_3_col_2$1,
+  asana_table_row_3_title: asana_table_row_3_title$1,
   asset_name: asset_name$1,
   asset_name_placeholder: asset_name_placeholder$1,
   atomic_breadcrumb: atomic_breadcrumb$1,
@@ -9523,6 +11274,48 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   cl_stat_4_val: cl_stat_4_val$1,
   cl_timeline_desc: cl_timeline_desc$1,
   cl_timeline_title: cl_timeline_title$1,
+  clickup_alt_desc: clickup_alt_desc$1,
+  clickup_alt_og_desc: clickup_alt_og_desc$1,
+  clickup_alt_og_title: clickup_alt_og_title$1,
+  clickup_alt_title: clickup_alt_title$1,
+  clickup_badge: clickup_badge$1,
+  clickup_compare_desc: clickup_compare_desc$1,
+  clickup_compare_title: clickup_compare_title$1,
+  clickup_cta_btn: clickup_cta_btn$1,
+  clickup_cta_desc: clickup_cta_desc$1,
+  clickup_cta_title: clickup_cta_title$1,
+  clickup_data_desc: clickup_data_desc$1,
+  clickup_data_title: clickup_data_title$1,
+  clickup_hero_cta: clickup_hero_cta$1,
+  clickup_hero_desc: clickup_hero_desc$1,
+  clickup_hero_note: clickup_hero_note$1,
+  clickup_hero_title_1: clickup_hero_title_1$1,
+  clickup_hero_title_2: clickup_hero_title_2$1,
+  clickup_prob_desc: clickup_prob_desc$1,
+  clickup_prob_point_1: clickup_prob_point_1$1,
+  clickup_prob_point_2: clickup_prob_point_2$1,
+  clickup_prob_point_3: clickup_prob_point_3$1,
+  clickup_prob_title_1: clickup_prob_title_1$1,
+  clickup_prob_title_highlight: clickup_prob_title_highlight$1,
+  clickup_psycho_desc: clickup_psycho_desc$1,
+  clickup_psycho_title: clickup_psycho_title$1,
+  clickup_sol_1_desc: clickup_sol_1_desc$1,
+  clickup_sol_1_title: clickup_sol_1_title$1,
+  clickup_sol_2_desc: clickup_sol_2_desc$1,
+  clickup_sol_2_title: clickup_sol_2_title$1,
+  clickup_sol_desc: clickup_sol_desc$1,
+  clickup_sol_title_1: clickup_sol_title_1$1,
+  clickup_sol_title_highlight: clickup_sol_title_highlight$1,
+  clickup_table_head_2: clickup_table_head_2$1,
+  clickup_table_row_1_col_1: clickup_table_row_1_col_1$1,
+  clickup_table_row_1_col_2: clickup_table_row_1_col_2$1,
+  clickup_table_row_1_title: clickup_table_row_1_title$1,
+  clickup_table_row_2_col_1: clickup_table_row_2_col_1$1,
+  clickup_table_row_2_col_2: clickup_table_row_2_col_2$1,
+  clickup_table_row_2_title: clickup_table_row_2_title$1,
+  clickup_table_row_3_col_1: clickup_table_row_3_col_1$1,
+  clickup_table_row_3_col_2: clickup_table_row_3_col_2$1,
+  clickup_table_row_3_title: clickup_table_row_3_title$1,
   col_activity: col_activity$1,
   col_end: col_end$1,
   col_priority: col_priority$1,
@@ -9592,6 +11385,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   compare_explorer: compare_explorer$1,
   compare_feature: compare_feature$1,
   compare_legendary: compare_legendary$1,
+  compare_nav_title: compare_nav_title$1,
   compare_quantum: compare_quantum$1,
   compare_title: compare_title$1,
   confirm_delete_text: confirm_delete_text$1,
@@ -9881,7 +11675,73 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   error_title_default: error_title_default$1,
   error_update_habit: error_update_habit$1,
   est_total: est_total$1,
+  evernote_badge: evernote_badge$1,
+  evernote_cta_btn: evernote_cta_btn$1,
+  evernote_cta_title: evernote_cta_title$1,
+  evernote_hero_cta: evernote_hero_cta$1,
+  evernote_hero_desc: evernote_hero_desc$1,
+  evernote_hero_note: evernote_hero_note$1,
+  evernote_hero_title_1: evernote_hero_title_1$1,
+  evernote_hero_title_2: evernote_hero_title_2$1,
+  evernote_hero_visual_1: evernote_hero_visual_1$1,
+  evernote_hero_visual_2: evernote_hero_visual_2$1,
+  evernote_prob_desc: evernote_prob_desc$1,
+  evernote_prob_point_1_desc: evernote_prob_point_1_desc$1,
+  evernote_prob_point_1_title: evernote_prob_point_1_title$1,
+  evernote_prob_point_2_desc: evernote_prob_point_2_desc$1,
+  evernote_prob_point_2_title: evernote_prob_point_2_title$1,
+  evernote_prob_title_1: evernote_prob_title_1$1,
+  evernote_prob_title_highlight: evernote_prob_title_highlight$1,
+  evernote_prob_visual_1: evernote_prob_visual_1$1,
+  evernote_prob_visual_2: evernote_prob_visual_2$1,
+  evernote_prob_visual_3: evernote_prob_visual_3$1,
+  evernote_psy_desc: evernote_psy_desc$1,
+  evernote_psy_quote: evernote_psy_quote$1,
+  evernote_psy_title: evernote_psy_title$1,
+  evernote_sol_desc: evernote_sol_desc$1,
+  evernote_sol_point_1_desc: evernote_sol_point_1_desc$1,
+  evernote_sol_point_1_title: evernote_sol_point_1_title$1,
+  evernote_sol_point_2_desc: evernote_sol_point_2_desc$1,
+  evernote_sol_point_2_title: evernote_sol_point_2_title$1,
+  evernote_sol_point_3_desc: evernote_sol_point_3_desc$1,
+  evernote_sol_point_3_title: evernote_sol_point_3_title$1,
+  evernote_sol_title_1: evernote_sol_title_1$1,
+  evernote_sol_title_highlight: evernote_sol_title_highlight$1,
+  evernote_table_desc: evernote_table_desc$1,
+  evernote_table_h1: evernote_table_h1$1,
+  evernote_table_h2: evernote_table_h2$1,
+  evernote_table_h3: evernote_table_h3$1,
+  evernote_table_r1_1: evernote_table_r1_1$1,
+  evernote_table_r1_2: evernote_table_r1_2$1,
+  evernote_table_r1_3: evernote_table_r1_3$1,
+  evernote_table_r2_1: evernote_table_r2_1$1,
+  evernote_table_r2_2: evernote_table_r2_2$1,
+  evernote_table_r2_3: evernote_table_r2_3$1,
+  evernote_table_r3_1: evernote_table_r3_1$1,
+  evernote_table_r3_2: evernote_table_r3_2$1,
+  evernote_table_r3_3: evernote_table_r3_3$1,
+  evernote_table_title: evernote_table_title$1,
   expense: expense$1,
+  explore_applenotes_desc: explore_applenotes_desc$1,
+  explore_asana_desc: explore_asana_desc$1,
+  explore_clickup_desc: explore_clickup_desc$1,
+  explore_evernote_desc: explore_evernote_desc$1,
+  explore_habitica_desc: explore_habitica_desc$1,
+  explore_habitify_desc: explore_habitify_desc$1,
+  explore_monday_desc: explore_monday_desc$1,
+  explore_more_alt: explore_more_alt$1,
+  explore_more_desc: explore_more_desc$1,
+  explore_notion_desc: explore_notion_desc$1,
+  explore_obsidian_desc: explore_obsidian_desc$1,
+  explore_onenote_desc: explore_onenote_desc$1,
+  explore_spendee_desc: explore_spendee_desc$1,
+  explore_spreadsheet_desc: explore_spreadsheet_desc$1,
+  explore_streaks_desc: explore_streaks_desc$1,
+  explore_ticktick_desc: explore_ticktick_desc$1,
+  explore_todoist_desc: explore_todoist_desc$1,
+  explore_trello_desc: explore_trello_desc$1,
+  explore_wallet_desc: explore_wallet_desc$1,
+  explore_ynab_desc: explore_ynab_desc$1,
   explorer_core: explorer_core$1,
   faq_a1: faq_a1$2,
   faq_a2: faq_a2$2,
@@ -10890,6 +12750,93 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   habitap_table_row_3_col_1: habitap_table_row_3_col_1$1,
   habitap_table_row_3_col_2: habitap_table_row_3_col_2$1,
   habitap_table_row_3_title: habitap_table_row_3_title$1,
+  habitica_alt_desc: habitica_alt_desc$1,
+  habitica_alt_og_desc: habitica_alt_og_desc$1,
+  habitica_alt_og_title: habitica_alt_og_title$1,
+  habitica_alt_title: habitica_alt_title$1,
+  habitica_badge: habitica_badge$1,
+  habitica_compare_desc: habitica_compare_desc$1,
+  habitica_compare_title: habitica_compare_title$1,
+  habitica_cta_btn: habitica_cta_btn$1,
+  habitica_cta_desc: habitica_cta_desc$1,
+  habitica_cta_title: habitica_cta_title$1,
+  habitica_hero_cta: habitica_hero_cta$1,
+  habitica_hero_desc: habitica_hero_desc$1,
+  habitica_hero_note: habitica_hero_note$1,
+  habitica_hero_title_1: habitica_hero_title_1$1,
+  habitica_hero_title_2: habitica_hero_title_2$1,
+  habitica_prob_desc: habitica_prob_desc$1,
+  habitica_prob_point_1: habitica_prob_point_1$1,
+  habitica_prob_point_2: habitica_prob_point_2$1,
+  habitica_prob_point_3: habitica_prob_point_3$1,
+  habitica_prob_title_1: habitica_prob_title_1$1,
+  habitica_prob_title_highlight: habitica_prob_title_highlight$1,
+  habitica_science_desc: habitica_science_desc$1,
+  habitica_science_point1: habitica_science_point1$1,
+  habitica_science_point1_desc: habitica_science_point1_desc$1,
+  habitica_science_point2: habitica_science_point2$1,
+  habitica_science_point2_desc: habitica_science_point2_desc$1,
+  habitica_science_title: habitica_science_title$1,
+  habitica_sol_1_desc: habitica_sol_1_desc$1,
+  habitica_sol_1_title: habitica_sol_1_title$1,
+  habitica_sol_2_desc: habitica_sol_2_desc$1,
+  habitica_sol_2_title: habitica_sol_2_title$1,
+  habitica_sol_desc: habitica_sol_desc$1,
+  habitica_sol_title_1: habitica_sol_title_1$1,
+  habitica_sol_title_highlight: habitica_sol_title_highlight$1,
+  habitica_table_head_2: habitica_table_head_2$1,
+  habitica_table_row_1_col_1: habitica_table_row_1_col_1$1,
+  habitica_table_row_1_col_2: habitica_table_row_1_col_2$1,
+  habitica_table_row_1_title: habitica_table_row_1_title$1,
+  habitica_table_row_2_col_1: habitica_table_row_2_col_1$1,
+  habitica_table_row_2_col_2: habitica_table_row_2_col_2$1,
+  habitica_table_row_2_title: habitica_table_row_2_title$1,
+  habitica_table_row_3_col_1: habitica_table_row_3_col_1$1,
+  habitica_table_row_3_col_2: habitica_table_row_3_col_2$1,
+  habitica_table_row_3_title: habitica_table_row_3_title$1,
+  habitica_testimonial: habitica_testimonial$1,
+  habitify_ai_desc: habitify_ai_desc$1,
+  habitify_ai_title: habitify_ai_title$1,
+  habitify_alt_desc: habitify_alt_desc$1,
+  habitify_alt_og_desc: habitify_alt_og_desc$1,
+  habitify_alt_og_title: habitify_alt_og_title$1,
+  habitify_alt_title: habitify_alt_title$1,
+  habitify_badge: habitify_badge$1,
+  habitify_compare_desc: habitify_compare_desc$1,
+  habitify_compare_title: habitify_compare_title$1,
+  habitify_cost_desc: habitify_cost_desc$1,
+  habitify_cost_title: habitify_cost_title$1,
+  habitify_cta_btn: habitify_cta_btn$1,
+  habitify_cta_desc: habitify_cta_desc$1,
+  habitify_cta_title: habitify_cta_title$1,
+  habitify_hero_cta: habitify_hero_cta$1,
+  habitify_hero_desc: habitify_hero_desc$1,
+  habitify_hero_note: habitify_hero_note$1,
+  habitify_hero_title_1: habitify_hero_title_1$1,
+  habitify_hero_title_2: habitify_hero_title_2$1,
+  habitify_prob_desc: habitify_prob_desc$1,
+  habitify_prob_point_1: habitify_prob_point_1$1,
+  habitify_prob_point_2: habitify_prob_point_2$1,
+  habitify_prob_point_3: habitify_prob_point_3$1,
+  habitify_prob_title_1: habitify_prob_title_1$1,
+  habitify_prob_title_highlight: habitify_prob_title_highlight$1,
+  habitify_sol_1_desc: habitify_sol_1_desc$1,
+  habitify_sol_1_title: habitify_sol_1_title$1,
+  habitify_sol_2_desc: habitify_sol_2_desc$1,
+  habitify_sol_2_title: habitify_sol_2_title$1,
+  habitify_sol_desc: habitify_sol_desc$1,
+  habitify_sol_title_1: habitify_sol_title_1$1,
+  habitify_sol_title_highlight: habitify_sol_title_highlight$1,
+  habitify_table_head_2: habitify_table_head_2$1,
+  habitify_table_row_1_col_1: habitify_table_row_1_col_1$1,
+  habitify_table_row_1_col_2: habitify_table_row_1_col_2$1,
+  habitify_table_row_1_title: habitify_table_row_1_title$1,
+  habitify_table_row_2_col_1: habitify_table_row_2_col_1$1,
+  habitify_table_row_2_col_2: habitify_table_row_2_col_2$1,
+  habitify_table_row_2_title: habitify_table_row_2_title$1,
+  habitify_table_row_3_col_1: habitify_table_row_3_col_1$1,
+  habitify_table_row_3_col_2: habitify_table_row_3_col_2$1,
+  habitify_table_row_3_title: habitify_table_row_3_title$1,
   header_completed: header_completed$1,
   header_done_suffix: header_done_suffix$1,
   header_pending: header_pending$1,
@@ -11450,6 +13397,48 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   module_journal_desc: module_journal_desc$1,
   module_planner_desc: module_planner_desc$1,
   module_status_active: module_status_active$1,
+  monday_alt_desc: monday_alt_desc$1,
+  monday_alt_og_desc: monday_alt_og_desc$1,
+  monday_alt_og_title: monday_alt_og_title$1,
+  monday_alt_title: monday_alt_title$1,
+  monday_badge: monday_badge$1,
+  monday_compare_desc: monday_compare_desc$1,
+  monday_compare_title: monday_compare_title$1,
+  monday_cta_btn: monday_cta_btn$1,
+  monday_cta_desc: monday_cta_desc$1,
+  monday_cta_title: monday_cta_title$1,
+  monday_data_desc: monday_data_desc$1,
+  monday_data_title: monday_data_title$1,
+  monday_hero_cta: monday_hero_cta$1,
+  monday_hero_desc: monday_hero_desc$1,
+  monday_hero_note: monday_hero_note$1,
+  monday_hero_title_1: monday_hero_title_1$1,
+  monday_hero_title_2: monday_hero_title_2$1,
+  monday_prob_desc: monday_prob_desc$1,
+  monday_prob_point_1: monday_prob_point_1$1,
+  monday_prob_point_2: monday_prob_point_2$1,
+  monday_prob_point_3: monday_prob_point_3$1,
+  monday_prob_title_1: monday_prob_title_1$1,
+  monday_prob_title_highlight: monday_prob_title_highlight$1,
+  monday_psycho_desc: monday_psycho_desc$1,
+  monday_psycho_title: monday_psycho_title$1,
+  monday_sol_1_desc: monday_sol_1_desc$1,
+  monday_sol_1_title: monday_sol_1_title$1,
+  monday_sol_2_desc: monday_sol_2_desc$1,
+  monday_sol_2_title: monday_sol_2_title$1,
+  monday_sol_desc: monday_sol_desc$1,
+  monday_sol_title_1: monday_sol_title_1$1,
+  monday_sol_title_highlight: monday_sol_title_highlight$1,
+  monday_table_head_2: monday_table_head_2$1,
+  monday_table_row_1_col_1: monday_table_row_1_col_1$1,
+  monday_table_row_1_col_2: monday_table_row_1_col_2$1,
+  monday_table_row_1_title: monday_table_row_1_title$1,
+  monday_table_row_2_col_1: monday_table_row_2_col_1$1,
+  monday_table_row_2_col_2: monday_table_row_2_col_2$1,
+  monday_table_row_2_title: monday_table_row_2_title$1,
+  monday_table_row_3_col_1: monday_table_row_3_col_1$1,
+  monday_table_row_3_col_2: monday_table_row_3_col_2$1,
+  monday_table_row_3_title: monday_table_row_3_title$1,
   month_apr: month_apr$1,
   month_aug: month_aug$1,
   month_dec: month_dec$1,
@@ -11631,6 +13620,41 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   no_date: no_date$1,
   no_fund_source: no_fund_source$1,
   no_transaction: no_transaction$1,
+  notes_apps_badge: notes_apps_badge$1,
+  notes_apps_compare_desc: notes_apps_compare_desc$1,
+  notes_apps_compare_title: notes_apps_compare_title$1,
+  notes_apps_hero_cta: notes_apps_hero_cta$1,
+  notes_apps_hero_desc: notes_apps_hero_desc$1,
+  notes_apps_hero_note: notes_apps_hero_note$1,
+  notes_apps_hero_title_1: notes_apps_hero_title_1$1,
+  notes_apps_hero_title_2: notes_apps_hero_title_2$1,
+  notes_apps_meta_desc: notes_apps_meta_desc$1,
+  notes_apps_meta_title: notes_apps_meta_title$1,
+  notes_apps_og_desc: notes_apps_og_desc$1,
+  notes_apps_og_title: notes_apps_og_title$1,
+  notes_apps_prob_desc: notes_apps_prob_desc$1,
+  notes_apps_prob_point_1: notes_apps_prob_point_1$1,
+  notes_apps_prob_point_2: notes_apps_prob_point_2$1,
+  notes_apps_prob_point_3: notes_apps_prob_point_3$1,
+  notes_apps_prob_title_1: notes_apps_prob_title_1$1,
+  notes_apps_prob_title_highlight: notes_apps_prob_title_highlight$1,
+  notes_apps_sol_box_desc: notes_apps_sol_box_desc$1,
+  notes_apps_sol_box_title: notes_apps_sol_box_title$1,
+  notes_apps_sol_desc: notes_apps_sol_desc$1,
+  notes_apps_sol_title_1: notes_apps_sol_title_1$1,
+  notes_apps_sol_title_highlight: notes_apps_sol_title_highlight$1,
+  notes_apps_table_head_1: notes_apps_table_head_1$1,
+  notes_apps_table_head_2: notes_apps_table_head_2$1,
+  notes_apps_table_head_3: notes_apps_table_head_3$1,
+  notes_apps_table_row_1_col_1: notes_apps_table_row_1_col_1$1,
+  notes_apps_table_row_1_col_2: notes_apps_table_row_1_col_2$1,
+  notes_apps_table_row_1_title: notes_apps_table_row_1_title$1,
+  notes_apps_table_row_2_col_1: notes_apps_table_row_2_col_1$1,
+  notes_apps_table_row_2_col_2: notes_apps_table_row_2_col_2$1,
+  notes_apps_table_row_2_title: notes_apps_table_row_2_title$1,
+  notes_apps_table_row_3_col_1: notes_apps_table_row_3_col_1$1,
+  notes_apps_table_row_3_col_2: notes_apps_table_row_3_col_2$1,
+  notes_apps_table_row_3_title: notes_apps_table_row_3_title$1,
   notes_badge: notes_badge$1,
   notes_chaos_badge: notes_chaos_badge$1,
   notes_chaos_date: notes_chaos_date$1,
@@ -11717,7 +13741,144 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   notif_reminders_desc: notif_reminders_desc$1,
   notif_title_main: notif_title_main$1,
   notif_title_reminders: notif_title_reminders$1,
+  notion_alt_desc: notion_alt_desc$1,
+  notion_alt_og_desc: notion_alt_og_desc$1,
+  notion_alt_og_title: notion_alt_og_title$1,
+  notion_alt_title: notion_alt_title$1,
+  notion_badge: notion_badge$1,
+  notion_compare_desc: notion_compare_desc$1,
+  notion_compare_title: notion_compare_title$1,
+  notion_cta_btn: notion_cta_btn$1,
+  notion_cta_desc: notion_cta_desc$1,
+  notion_cta_title: notion_cta_title$1,
+  notion_data_desc: notion_data_desc$1,
+  notion_data_title: notion_data_title$1,
+  notion_hero_cta: notion_hero_cta$1,
+  notion_hero_desc: notion_hero_desc$1,
+  notion_hero_note: notion_hero_note$1,
+  notion_hero_title_1: notion_hero_title_1$1,
+  notion_hero_title_2: notion_hero_title_2$1,
+  notion_prob_desc: notion_prob_desc$1,
+  notion_prob_point_1: notion_prob_point_1$1,
+  notion_prob_point_2: notion_prob_point_2$1,
+  notion_prob_point_3: notion_prob_point_3$1,
+  notion_prob_title_1: notion_prob_title_1$1,
+  notion_prob_title_highlight: notion_prob_title_highlight$1,
+  notion_psycho_desc: notion_psycho_desc$1,
+  notion_psycho_title: notion_psycho_title$1,
+  notion_sol_1_desc: notion_sol_1_desc$1,
+  notion_sol_1_title: notion_sol_1_title$1,
+  notion_sol_2_desc: notion_sol_2_desc$1,
+  notion_sol_2_title: notion_sol_2_title$1,
+  notion_sol_desc: notion_sol_desc$1,
+  notion_sol_title_1: notion_sol_title_1$1,
+  notion_sol_title_highlight: notion_sol_title_highlight$1,
+  notion_table_head_2: notion_table_head_2$1,
+  notion_table_row_1_col_1: notion_table_row_1_col_1$1,
+  notion_table_row_1_col_2: notion_table_row_1_col_2$1,
+  notion_table_row_1_title: notion_table_row_1_title$1,
+  notion_table_row_2_col_1: notion_table_row_2_col_1$1,
+  notion_table_row_2_col_2: notion_table_row_2_col_2$1,
+  notion_table_row_2_title: notion_table_row_2_title$1,
+  notion_table_row_3_col_1: notion_table_row_3_col_1$1,
+  notion_table_row_3_col_2: notion_table_row_3_col_2$1,
+  notion_table_row_3_title: notion_table_row_3_title$1,
+  obsidian_alt_desc: obsidian_alt_desc$1,
+  obsidian_alt_og_desc: obsidian_alt_og_desc$1,
+  obsidian_alt_og_title: obsidian_alt_og_title$1,
+  obsidian_alt_title: obsidian_alt_title$1,
+  obsidian_badge: obsidian_badge$1,
+  obsidian_compare_desc: obsidian_compare_desc$1,
+  obsidian_compare_title: obsidian_compare_title$1,
+  obsidian_cta_btn: obsidian_cta_btn$1,
+  obsidian_cta_desc: obsidian_cta_desc$1,
+  obsidian_cta_title: obsidian_cta_title$1,
+  obsidian_data_desc: obsidian_data_desc$1,
+  obsidian_data_title: obsidian_data_title$1,
+  obsidian_hero_cta: obsidian_hero_cta$1,
+  obsidian_hero_desc: obsidian_hero_desc$1,
+  obsidian_hero_note: obsidian_hero_note$1,
+  obsidian_hero_title_1: obsidian_hero_title_1$1,
+  obsidian_hero_title_2: obsidian_hero_title_2$1,
+  obsidian_prob_desc: obsidian_prob_desc$1,
+  obsidian_prob_point_1: obsidian_prob_point_1$1,
+  obsidian_prob_point_2: obsidian_prob_point_2$1,
+  obsidian_prob_point_3: obsidian_prob_point_3$1,
+  obsidian_prob_title_1: obsidian_prob_title_1$1,
+  obsidian_prob_title_highlight: obsidian_prob_title_highlight$1,
+  obsidian_psycho_desc: obsidian_psycho_desc$1,
+  obsidian_psycho_title: obsidian_psycho_title$1,
+  obsidian_sol_1_desc: obsidian_sol_1_desc$1,
+  obsidian_sol_1_title: obsidian_sol_1_title$1,
+  obsidian_sol_2_desc: obsidian_sol_2_desc$1,
+  obsidian_sol_2_title: obsidian_sol_2_title$1,
+  obsidian_sol_desc: obsidian_sol_desc$1,
+  obsidian_sol_title_1: obsidian_sol_title_1$1,
+  obsidian_sol_title_highlight: obsidian_sol_title_highlight$1,
+  obsidian_table_head_2: obsidian_table_head_2$1,
+  obsidian_table_row_1_col_1: obsidian_table_row_1_col_1$1,
+  obsidian_table_row_1_col_2: obsidian_table_row_1_col_2$1,
+  obsidian_table_row_1_title: obsidian_table_row_1_title$1,
+  obsidian_table_row_2_col_1: obsidian_table_row_2_col_1$1,
+  obsidian_table_row_2_col_2: obsidian_table_row_2_col_2$1,
+  obsidian_table_row_2_title: obsidian_table_row_2_title$1,
+  obsidian_table_row_3_col_1: obsidian_table_row_3_col_1$1,
+  obsidian_table_row_3_col_2: obsidian_table_row_3_col_2$1,
+  obsidian_table_row_3_title: obsidian_table_row_3_title$1,
   old_data_hint: old_data_hint$1,
+  onenote_badge: onenote_badge$1,
+  onenote_cost_desc: onenote_cost_desc$1,
+  onenote_cost_point_1: onenote_cost_point_1$1,
+  onenote_cost_point_2: onenote_cost_point_2$1,
+  onenote_cost_point_3: onenote_cost_point_3$1,
+  onenote_cost_title: onenote_cost_title$1,
+  onenote_cta_btn: onenote_cta_btn$1,
+  onenote_cta_title: onenote_cta_title$1,
+  onenote_feat_point_1_desc: onenote_feat_point_1_desc$1,
+  onenote_feat_point_1_title: onenote_feat_point_1_title$1,
+  onenote_feat_point_2_desc: onenote_feat_point_2_desc$1,
+  onenote_feat_point_2_title: onenote_feat_point_2_title$1,
+  onenote_feat_point_3_desc: onenote_feat_point_3_desc$1,
+  onenote_feat_point_3_title: onenote_feat_point_3_title$1,
+  onenote_feat_point_4_desc: onenote_feat_point_4_desc$1,
+  onenote_feat_point_4_title: onenote_feat_point_4_title$1,
+  onenote_feat_title_1: onenote_feat_title_1$1,
+  onenote_feat_title_2: onenote_feat_title_2$1,
+  onenote_feat_visual_1: onenote_feat_visual_1$1,
+  onenote_hero_cta: onenote_hero_cta$1,
+  onenote_hero_desc: onenote_hero_desc$1,
+  onenote_hero_note: onenote_hero_note$1,
+  onenote_hero_title_1: onenote_hero_title_1$1,
+  onenote_hero_title_2: onenote_hero_title_2$1,
+  onenote_hero_visual_1: onenote_hero_visual_1$1,
+  onenote_hero_visual_2: onenote_hero_visual_2$1,
+  onenote_hero_visual_3: onenote_hero_visual_3$1,
+  onenote_hero_visual_4: onenote_hero_visual_4$1,
+  onenote_hero_visual_5: onenote_hero_visual_5$1,
+  onenote_hero_visual_6: onenote_hero_visual_6$1,
+  onenote_hero_visual_7: onenote_hero_visual_7$1,
+  onenote_prob_desc: onenote_prob_desc$1,
+  onenote_prob_point_1_desc: onenote_prob_point_1_desc$1,
+  onenote_prob_point_1_title: onenote_prob_point_1_title$1,
+  onenote_prob_point_2_desc: onenote_prob_point_2_desc$1,
+  onenote_prob_point_2_title: onenote_prob_point_2_title$1,
+  onenote_prob_title_1: onenote_prob_title_1$1,
+  onenote_prob_title_highlight: onenote_prob_title_highlight$1,
+  onenote_prob_visual_1: onenote_prob_visual_1$1,
+  onenote_prob_visual_2: onenote_prob_visual_2$1,
+  onenote_prob_visual_3: onenote_prob_visual_3$1,
+  onenote_prob_visual_4: onenote_prob_visual_4$1,
+  onenote_prob_visual_5: onenote_prob_visual_5$1,
+  onenote_sol_desc: onenote_sol_desc$1,
+  onenote_sol_point_1: onenote_sol_point_1$1,
+  onenote_sol_point_2: onenote_sol_point_2$1,
+  onenote_sol_point_3: onenote_sol_point_3$1,
+  onenote_sol_title_1: onenote_sol_title_1$1,
+  onenote_sol_title_highlight: onenote_sol_title_highlight$1,
+  onenote_sol_visual_1: onenote_sol_visual_1$1,
+  onenote_sol_visual_2: onenote_sol_visual_2$1,
+  onenote_sol_visual_3: onenote_sol_visual_3$1,
+  onenote_sol_visual_4: onenote_sol_visual_4$1,
   out: out$1,
   pan_instruction: pan_instruction$1,
   password_security_desc: password_security_desc$1,
@@ -12919,6 +15080,90 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_mental_sol_step_3_desc: solve_mental_sol_step_3_desc$1,
   solve_mental_sol_step_3_title: solve_mental_sol_step_3_title$1,
   solve_mental_sol_title: solve_mental_sol_title$1,
+  spendee_ai_desc: spendee_ai_desc$1,
+  spendee_ai_title: spendee_ai_title$1,
+  spendee_alt_desc: spendee_alt_desc$1,
+  spendee_alt_og_desc: spendee_alt_og_desc$1,
+  spendee_alt_og_title: spendee_alt_og_title$1,
+  spendee_alt_title: spendee_alt_title$1,
+  spendee_badge: spendee_badge$1,
+  spendee_compare_desc: spendee_compare_desc$1,
+  spendee_compare_title: spendee_compare_title$1,
+  spendee_cost_desc: spendee_cost_desc$1,
+  spendee_cost_title: spendee_cost_title$1,
+  spendee_cta_btn: spendee_cta_btn$1,
+  spendee_cta_desc: spendee_cta_desc$1,
+  spendee_cta_title: spendee_cta_title$1,
+  spendee_hero_cta: spendee_hero_cta$1,
+  spendee_hero_desc: spendee_hero_desc$1,
+  spendee_hero_note: spendee_hero_note$1,
+  spendee_hero_title_1: spendee_hero_title_1$1,
+  spendee_hero_title_2: spendee_hero_title_2$1,
+  spendee_prob_desc: spendee_prob_desc$1,
+  spendee_prob_point_1: spendee_prob_point_1$1,
+  spendee_prob_point_2: spendee_prob_point_2$1,
+  spendee_prob_point_3: spendee_prob_point_3$1,
+  spendee_prob_title_1: spendee_prob_title_1$1,
+  spendee_prob_title_highlight: spendee_prob_title_highlight$1,
+  spendee_sol_1_desc: spendee_sol_1_desc$1,
+  spendee_sol_1_title: spendee_sol_1_title$1,
+  spendee_sol_2_desc: spendee_sol_2_desc$1,
+  spendee_sol_2_title: spendee_sol_2_title$1,
+  spendee_sol_desc: spendee_sol_desc$1,
+  spendee_sol_title_1: spendee_sol_title_1$1,
+  spendee_sol_title_highlight: spendee_sol_title_highlight$1,
+  spendee_table_head_2: spendee_table_head_2$1,
+  spendee_table_row_1_col_1: spendee_table_row_1_col_1$1,
+  spendee_table_row_1_col_2: spendee_table_row_1_col_2$1,
+  spendee_table_row_1_title: spendee_table_row_1_title$1,
+  spendee_table_row_2_col_1: spendee_table_row_2_col_1$1,
+  spendee_table_row_2_col_2: spendee_table_row_2_col_2$1,
+  spendee_table_row_2_title: spendee_table_row_2_title$1,
+  spendee_table_row_3_col_1: spendee_table_row_3_col_1$1,
+  spendee_table_row_3_col_2: spendee_table_row_3_col_2$1,
+  spendee_table_row_3_title: spendee_table_row_3_title$1,
+  spreadsheet_alt_desc: spreadsheet_alt_desc$1,
+  spreadsheet_alt_og_desc: spreadsheet_alt_og_desc$1,
+  spreadsheet_alt_og_title: spreadsheet_alt_og_title$1,
+  spreadsheet_alt_title: spreadsheet_alt_title$1,
+  spreadsheet_badge: spreadsheet_badge$1,
+  spreadsheet_compare_desc: spreadsheet_compare_desc$1,
+  spreadsheet_compare_title: spreadsheet_compare_title$1,
+  spreadsheet_cta_btn: spreadsheet_cta_btn$1,
+  spreadsheet_cta_desc: spreadsheet_cta_desc$1,
+  spreadsheet_cta_title: spreadsheet_cta_title$1,
+  spreadsheet_data_desc: spreadsheet_data_desc$1,
+  spreadsheet_data_title: spreadsheet_data_title$1,
+  spreadsheet_hero_cta: spreadsheet_hero_cta$1,
+  spreadsheet_hero_desc: spreadsheet_hero_desc$1,
+  spreadsheet_hero_note: spreadsheet_hero_note$1,
+  spreadsheet_hero_title_1: spreadsheet_hero_title_1$1,
+  spreadsheet_hero_title_2: spreadsheet_hero_title_2$1,
+  spreadsheet_prob_desc: spreadsheet_prob_desc$1,
+  spreadsheet_prob_point_1: spreadsheet_prob_point_1$1,
+  spreadsheet_prob_point_2: spreadsheet_prob_point_2$1,
+  spreadsheet_prob_point_3: spreadsheet_prob_point_3$1,
+  spreadsheet_prob_title_1: spreadsheet_prob_title_1$1,
+  spreadsheet_prob_title_highlight: spreadsheet_prob_title_highlight$1,
+  spreadsheet_psycho_desc: spreadsheet_psycho_desc$1,
+  spreadsheet_psycho_title: spreadsheet_psycho_title$1,
+  spreadsheet_sol_1_desc: spreadsheet_sol_1_desc$1,
+  spreadsheet_sol_1_title: spreadsheet_sol_1_title$1,
+  spreadsheet_sol_2_desc: spreadsheet_sol_2_desc$1,
+  spreadsheet_sol_2_title: spreadsheet_sol_2_title$1,
+  spreadsheet_sol_desc: spreadsheet_sol_desc$1,
+  spreadsheet_sol_title_1: spreadsheet_sol_title_1$1,
+  spreadsheet_sol_title_highlight: spreadsheet_sol_title_highlight$1,
+  spreadsheet_table_head_2: spreadsheet_table_head_2$1,
+  spreadsheet_table_row_1_col_1: spreadsheet_table_row_1_col_1$1,
+  spreadsheet_table_row_1_col_2: spreadsheet_table_row_1_col_2$1,
+  spreadsheet_table_row_1_title: spreadsheet_table_row_1_title$1,
+  spreadsheet_table_row_2_col_1: spreadsheet_table_row_2_col_1$1,
+  spreadsheet_table_row_2_col_2: spreadsheet_table_row_2_col_2$1,
+  spreadsheet_table_row_2_title: spreadsheet_table_row_2_title$1,
+  spreadsheet_table_row_3_col_1: spreadsheet_table_row_3_col_1$1,
+  spreadsheet_table_row_3_col_2: spreadsheet_table_row_3_col_2$1,
+  spreadsheet_table_row_3_title: spreadsheet_table_row_3_title$1,
   stat_auth_desc: stat_auth_desc$1,
   stat_auth_name: stat_auth_name$1,
   stat_core_desc: stat_core_desc$1,
@@ -13016,6 +15261,50 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   story_2_p2: story_2_p2$2,
   story_2_quote: story_2_quote$2,
   story_2_title: story_2_title$2,
+  streaks_alt_desc: streaks_alt_desc$1,
+  streaks_alt_og_desc: streaks_alt_og_desc$1,
+  streaks_alt_og_title: streaks_alt_og_title$1,
+  streaks_alt_title: streaks_alt_title$1,
+  streaks_badge: streaks_badge$1,
+  streaks_compare_desc: streaks_compare_desc$1,
+  streaks_compare_title: streaks_compare_title$1,
+  streaks_cta_btn: streaks_cta_btn$1,
+  streaks_cta_desc: streaks_cta_desc$1,
+  streaks_cta_title: streaks_cta_title$1,
+  streaks_data_desc: streaks_data_desc$1,
+  streaks_data_title: streaks_data_title$1,
+  streaks_hero_cta: streaks_hero_cta$1,
+  streaks_hero_desc: streaks_hero_desc$1,
+  streaks_hero_note: streaks_hero_note$1,
+  streaks_hero_title_1: streaks_hero_title_1$1,
+  streaks_hero_title_2: streaks_hero_title_2$1,
+  streaks_prob_desc: streaks_prob_desc$1,
+  streaks_prob_point_1: streaks_prob_point_1$1,
+  streaks_prob_point_2: streaks_prob_point_2$1,
+  streaks_prob_point_3: streaks_prob_point_3$1,
+  streaks_prob_title_1: streaks_prob_title_1$1,
+  streaks_prob_title_highlight: streaks_prob_title_highlight$1,
+  streaks_psycho_desc: streaks_psycho_desc$1,
+  streaks_psycho_point1: streaks_psycho_point1$1,
+  streaks_psycho_point1_desc: streaks_psycho_point1_desc$1,
+  streaks_psycho_title: streaks_psycho_title$1,
+  streaks_sol_1_desc: streaks_sol_1_desc$1,
+  streaks_sol_1_title: streaks_sol_1_title$1,
+  streaks_sol_2_desc: streaks_sol_2_desc$1,
+  streaks_sol_2_title: streaks_sol_2_title$1,
+  streaks_sol_desc: streaks_sol_desc$1,
+  streaks_sol_title_1: streaks_sol_title_1$1,
+  streaks_sol_title_highlight: streaks_sol_title_highlight$1,
+  streaks_table_head_2: streaks_table_head_2$1,
+  streaks_table_row_1_col_1: streaks_table_row_1_col_1$1,
+  streaks_table_row_1_col_2: streaks_table_row_1_col_2$1,
+  streaks_table_row_1_title: streaks_table_row_1_title$1,
+  streaks_table_row_2_col_1: streaks_table_row_2_col_1$1,
+  streaks_table_row_2_col_2: streaks_table_row_2_col_2$1,
+  streaks_table_row_2_title: streaks_table_row_2_title$1,
+  streaks_table_row_3_col_1: streaks_table_row_3_col_1$1,
+  streaks_table_row_3_col_2: streaks_table_row_3_col_2$1,
+  streaks_table_row_3_title: streaks_table_row_3_title$1,
   student_bento_1_desc: student_bento_1_desc$1,
   student_bento_1_title: student_bento_1_title$1,
   student_bento_2_desc: student_bento_2_desc$1,
@@ -13167,9 +15456,93 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_title_2: terms_title_2$1,
   theme_dark: theme_dark$1,
   theme_light: theme_light$1,
+  ticktick_alt_desc: ticktick_alt_desc$1,
+  ticktick_alt_og_desc: ticktick_alt_og_desc$1,
+  ticktick_alt_og_title: ticktick_alt_og_title$1,
+  ticktick_alt_title: ticktick_alt_title$1,
+  ticktick_badge: ticktick_badge$1,
+  ticktick_compare_desc: ticktick_compare_desc$1,
+  ticktick_compare_title: ticktick_compare_title$1,
+  ticktick_cta_btn: ticktick_cta_btn$1,
+  ticktick_cta_desc: ticktick_cta_desc$1,
+  ticktick_cta_title: ticktick_cta_title$1,
+  ticktick_data_desc: ticktick_data_desc$1,
+  ticktick_data_title: ticktick_data_title$1,
+  ticktick_hero_cta: ticktick_hero_cta$1,
+  ticktick_hero_desc: ticktick_hero_desc$1,
+  ticktick_hero_note: ticktick_hero_note$1,
+  ticktick_hero_title_1: ticktick_hero_title_1$1,
+  ticktick_hero_title_2: ticktick_hero_title_2$1,
+  ticktick_prob_desc: ticktick_prob_desc$1,
+  ticktick_prob_point_1: ticktick_prob_point_1$1,
+  ticktick_prob_point_2: ticktick_prob_point_2$1,
+  ticktick_prob_point_3: ticktick_prob_point_3$1,
+  ticktick_prob_title_1: ticktick_prob_title_1$1,
+  ticktick_prob_title_highlight: ticktick_prob_title_highlight$1,
+  ticktick_psycho_desc: ticktick_psycho_desc$1,
+  ticktick_psycho_title: ticktick_psycho_title$1,
+  ticktick_sol_1_desc: ticktick_sol_1_desc$1,
+  ticktick_sol_1_title: ticktick_sol_1_title$1,
+  ticktick_sol_2_desc: ticktick_sol_2_desc$1,
+  ticktick_sol_2_title: ticktick_sol_2_title$1,
+  ticktick_sol_desc: ticktick_sol_desc$1,
+  ticktick_sol_title_1: ticktick_sol_title_1$1,
+  ticktick_sol_title_highlight: ticktick_sol_title_highlight$1,
+  ticktick_table_head_2: ticktick_table_head_2$1,
+  ticktick_table_row_1_col_1: ticktick_table_row_1_col_1$1,
+  ticktick_table_row_1_col_2: ticktick_table_row_1_col_2$1,
+  ticktick_table_row_1_title: ticktick_table_row_1_title$1,
+  ticktick_table_row_2_col_1: ticktick_table_row_2_col_1$1,
+  ticktick_table_row_2_col_2: ticktick_table_row_2_col_2$1,
+  ticktick_table_row_2_title: ticktick_table_row_2_title$1,
+  ticktick_table_row_3_col_1: ticktick_table_row_3_col_1$1,
+  ticktick_table_row_3_col_2: ticktick_table_row_3_col_2$1,
+  ticktick_table_row_3_title: ticktick_table_row_3_title$1,
   time_range: time_range$1,
   timeline_now: timeline_now$1,
   timeline_title: timeline_title$1,
+  todoist_alt_desc: todoist_alt_desc$1,
+  todoist_alt_og_desc: todoist_alt_og_desc$1,
+  todoist_alt_og_title: todoist_alt_og_title$1,
+  todoist_alt_title: todoist_alt_title$1,
+  todoist_badge: todoist_badge$1,
+  todoist_compare_desc: todoist_compare_desc$1,
+  todoist_compare_title: todoist_compare_title$1,
+  todoist_cta_btn: todoist_cta_btn$1,
+  todoist_cta_desc: todoist_cta_desc$1,
+  todoist_cta_title: todoist_cta_title$1,
+  todoist_data_desc: todoist_data_desc$1,
+  todoist_data_title: todoist_data_title$1,
+  todoist_hero_cta: todoist_hero_cta$1,
+  todoist_hero_desc: todoist_hero_desc$1,
+  todoist_hero_note: todoist_hero_note$1,
+  todoist_hero_title_1: todoist_hero_title_1$1,
+  todoist_hero_title_2: todoist_hero_title_2$1,
+  todoist_prob_desc: todoist_prob_desc$1,
+  todoist_prob_point_1: todoist_prob_point_1$1,
+  todoist_prob_point_2: todoist_prob_point_2$1,
+  todoist_prob_point_3: todoist_prob_point_3$1,
+  todoist_prob_title_1: todoist_prob_title_1$1,
+  todoist_prob_title_highlight: todoist_prob_title_highlight$1,
+  todoist_psycho_desc: todoist_psycho_desc$1,
+  todoist_psycho_title: todoist_psycho_title$1,
+  todoist_sol_1_desc: todoist_sol_1_desc$1,
+  todoist_sol_1_title: todoist_sol_1_title$1,
+  todoist_sol_2_desc: todoist_sol_2_desc$1,
+  todoist_sol_2_title: todoist_sol_2_title$1,
+  todoist_sol_desc: todoist_sol_desc$1,
+  todoist_sol_title_1: todoist_sol_title_1$1,
+  todoist_sol_title_highlight: todoist_sol_title_highlight$1,
+  todoist_table_head_2: todoist_table_head_2$1,
+  todoist_table_row_1_col_1: todoist_table_row_1_col_1$1,
+  todoist_table_row_1_col_2: todoist_table_row_1_col_2$1,
+  todoist_table_row_1_title: todoist_table_row_1_title$1,
+  todoist_table_row_2_col_1: todoist_table_row_2_col_1$1,
+  todoist_table_row_2_col_2: todoist_table_row_2_col_2$1,
+  todoist_table_row_2_title: todoist_table_row_2_title$1,
+  todoist_table_row_3_col_1: todoist_table_row_3_col_1$1,
+  todoist_table_row_3_col_2: todoist_table_row_3_col_2$1,
+  todoist_table_row_3_title: todoist_table_row_3_title$1,
   tos_data_p: tos_data_p$1,
   tos_data_title: tos_data_title$1,
   tos_intro: tos_intro$1,
@@ -13188,6 +15561,48 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   transaction: transaction$1,
   transaction_count: transaction_count$1,
   transactions_count: transactions_count$1,
+  trello_alt_desc: trello_alt_desc$1,
+  trello_alt_og_desc: trello_alt_og_desc$1,
+  trello_alt_og_title: trello_alt_og_title$1,
+  trello_alt_title: trello_alt_title$1,
+  trello_badge: trello_badge$1,
+  trello_compare_desc: trello_compare_desc$1,
+  trello_compare_title: trello_compare_title$1,
+  trello_cta_btn: trello_cta_btn$1,
+  trello_cta_desc: trello_cta_desc$1,
+  trello_cta_title: trello_cta_title$1,
+  trello_data_desc: trello_data_desc$1,
+  trello_data_title: trello_data_title$1,
+  trello_hero_cta: trello_hero_cta$1,
+  trello_hero_desc: trello_hero_desc$1,
+  trello_hero_note: trello_hero_note$1,
+  trello_hero_title_1: trello_hero_title_1$1,
+  trello_hero_title_2: trello_hero_title_2$1,
+  trello_prob_desc: trello_prob_desc$1,
+  trello_prob_point_1: trello_prob_point_1$1,
+  trello_prob_point_2: trello_prob_point_2$1,
+  trello_prob_point_3: trello_prob_point_3$1,
+  trello_prob_title_1: trello_prob_title_1$1,
+  trello_prob_title_highlight: trello_prob_title_highlight$1,
+  trello_psycho_desc: trello_psycho_desc$1,
+  trello_psycho_title: trello_psycho_title$1,
+  trello_sol_1_desc: trello_sol_1_desc$1,
+  trello_sol_1_title: trello_sol_1_title$1,
+  trello_sol_2_desc: trello_sol_2_desc$1,
+  trello_sol_2_title: trello_sol_2_title$1,
+  trello_sol_desc: trello_sol_desc$1,
+  trello_sol_title_1: trello_sol_title_1$1,
+  trello_sol_title_highlight: trello_sol_title_highlight$1,
+  trello_table_head_2: trello_table_head_2$1,
+  trello_table_row_1_col_1: trello_table_row_1_col_1$1,
+  trello_table_row_1_col_2: trello_table_row_1_col_2$1,
+  trello_table_row_1_title: trello_table_row_1_title$1,
+  trello_table_row_2_col_1: trello_table_row_2_col_1$1,
+  trello_table_row_2_col_2: trello_table_row_2_col_2$1,
+  trello_table_row_2_title: trello_table_row_2_title$1,
+  trello_table_row_3_col_1: trello_table_row_3_col_1$1,
+  trello_table_row_3_col_2: trello_table_row_3_col_2$1,
+  trello_table_row_3_title: trello_table_row_3_title$1,
   trial_confirm_text: trial_confirm_text$1,
   trial_confirm_title: trial_confirm_title$1,
   trial_days: trial_days$1,
@@ -13242,6 +15657,48 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   waitlist_input_placeholder: waitlist_input_placeholder$1,
   waitlist_note: waitlist_note$1,
   waitlist_title: waitlist_title$1,
+  wallet_alt_desc: wallet_alt_desc$1,
+  wallet_alt_og_desc: wallet_alt_og_desc$1,
+  wallet_alt_og_title: wallet_alt_og_title$1,
+  wallet_alt_title: wallet_alt_title$1,
+  wallet_badge: wallet_badge$1,
+  wallet_compare_desc: wallet_compare_desc$1,
+  wallet_compare_title: wallet_compare_title$1,
+  wallet_cta_btn: wallet_cta_btn$1,
+  wallet_cta_desc: wallet_cta_desc$1,
+  wallet_cta_title: wallet_cta_title$1,
+  wallet_data_desc: wallet_data_desc$1,
+  wallet_data_title: wallet_data_title$1,
+  wallet_hero_cta: wallet_hero_cta$1,
+  wallet_hero_desc: wallet_hero_desc$1,
+  wallet_hero_note: wallet_hero_note$1,
+  wallet_hero_title_1: wallet_hero_title_1$1,
+  wallet_hero_title_2: wallet_hero_title_2$1,
+  wallet_prob_desc: wallet_prob_desc$1,
+  wallet_prob_point_1: wallet_prob_point_1$1,
+  wallet_prob_point_2: wallet_prob_point_2$1,
+  wallet_prob_point_3: wallet_prob_point_3$1,
+  wallet_prob_title_1: wallet_prob_title_1$1,
+  wallet_prob_title_highlight: wallet_prob_title_highlight$1,
+  wallet_science_desc: wallet_science_desc$1,
+  wallet_science_title: wallet_science_title$1,
+  wallet_sol_1_desc: wallet_sol_1_desc$1,
+  wallet_sol_1_title: wallet_sol_1_title$1,
+  wallet_sol_2_desc: wallet_sol_2_desc$1,
+  wallet_sol_2_title: wallet_sol_2_title$1,
+  wallet_sol_desc: wallet_sol_desc$1,
+  wallet_sol_title_1: wallet_sol_title_1$1,
+  wallet_sol_title_highlight: wallet_sol_title_highlight$1,
+  wallet_table_head_2: wallet_table_head_2$1,
+  wallet_table_row_1_col_1: wallet_table_row_1_col_1$1,
+  wallet_table_row_1_col_2: wallet_table_row_1_col_2$1,
+  wallet_table_row_1_title: wallet_table_row_1_title$1,
+  wallet_table_row_2_col_1: wallet_table_row_2_col_1$1,
+  wallet_table_row_2_col_2: wallet_table_row_2_col_2$1,
+  wallet_table_row_2_title: wallet_table_row_2_title$1,
+  wallet_table_row_3_col_1: wallet_table_row_3_col_1$1,
+  wallet_table_row_3_col_2: wallet_table_row_3_col_2$1,
+  wallet_table_row_3_title: wallet_table_row_3_title$1,
   warn_check_red_form: warn_check_red_form$1,
   warn_empty_amount: warn_empty_amount$1,
   warn_empty_amount_text: warn_empty_amount_text$1,
@@ -13264,6 +15721,48 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   withdraw_notice: withdraw_notice$1,
   yes_delete: yes_delete$1,
   yes_withdraw: yes_withdraw$1,
+  ynab_alt_desc: ynab_alt_desc$1,
+  ynab_alt_og_desc: ynab_alt_og_desc$1,
+  ynab_alt_og_title: ynab_alt_og_title$1,
+  ynab_alt_title: ynab_alt_title$1,
+  ynab_badge: ynab_badge$1,
+  ynab_compare_desc: ynab_compare_desc$1,
+  ynab_compare_title: ynab_compare_title$1,
+  ynab_cost_desc: ynab_cost_desc$1,
+  ynab_cost_title: ynab_cost_title$1,
+  ynab_cta_btn: ynab_cta_btn$1,
+  ynab_cta_desc: ynab_cta_desc$1,
+  ynab_cta_title: ynab_cta_title$1,
+  ynab_hero_cta: ynab_hero_cta$1,
+  ynab_hero_desc: ynab_hero_desc$1,
+  ynab_hero_note: ynab_hero_note$1,
+  ynab_hero_title_1: ynab_hero_title_1$1,
+  ynab_hero_title_2: ynab_hero_title_2$1,
+  ynab_prob_desc: ynab_prob_desc$1,
+  ynab_prob_point_1: ynab_prob_point_1$1,
+  ynab_prob_point_2: ynab_prob_point_2$1,
+  ynab_prob_point_3: ynab_prob_point_3$1,
+  ynab_prob_title_1: ynab_prob_title_1$1,
+  ynab_prob_title_highlight: ynab_prob_title_highlight$1,
+  ynab_psycho_desc: ynab_psycho_desc$1,
+  ynab_psycho_title: ynab_psycho_title$1,
+  ynab_sol_1_desc: ynab_sol_1_desc$1,
+  ynab_sol_1_title: ynab_sol_1_title$1,
+  ynab_sol_2_desc: ynab_sol_2_desc$1,
+  ynab_sol_2_title: ynab_sol_2_title$1,
+  ynab_sol_desc: ynab_sol_desc$1,
+  ynab_sol_title_1: ynab_sol_title_1$1,
+  ynab_sol_title_highlight: ynab_sol_title_highlight$1,
+  ynab_table_head_2: ynab_table_head_2$1,
+  ynab_table_row_1_col_1: ynab_table_row_1_col_1$1,
+  ynab_table_row_1_col_2: ynab_table_row_1_col_2$1,
+  ynab_table_row_1_title: ynab_table_row_1_title$1,
+  ynab_table_row_2_col_1: ynab_table_row_2_col_1$1,
+  ynab_table_row_2_col_2: ynab_table_row_2_col_2$1,
+  ynab_table_row_2_title: ynab_table_row_2_title$1,
+  ynab_table_row_3_col_1: ynab_table_row_3_col_1$1,
+  ynab_table_row_3_col_2: ynab_table_row_3_col_2$1,
+  ynab_table_row_3_title: ynab_table_row_3_title$1,
   your_password: your_password$1
 }, Symbol.toStringTag, { value: "Module" }));
 const about_meta_desc = "Pelajari OneForMind, Life OS terpadu. Kami membangun sistem pelacak kebiasaan, perencana, dan keuangan untuk performa tinggi.";
@@ -13673,7 +16172,7 @@ const blank_cycle_2_title = "Tersesat di Fitur";
 const blank_cycle_2_desc = "5 jam kemudian, kamu masih nonton tutorial cara menyambungkan database dan rumus.";
 const blank_cycle_3_title = "Rumah Hantu";
 const blank_cycle_3_desc = "Sistemnya terlalu rumit dibuka di HP. Kamu berhenti memakainya setelah 3 hari.";
-const blank_meta_title = "OneForMind vs Notion & Excel — Berhenti Mendesain, Mulai Eksekusi";
+const blank_meta_title = "OneForMind vs Notion and Excel — Berhenti Mendesain, Mulai Eksekusi";
 const blank_meta_desc = "Hentikan kelelahan setup. Dapatkan Life OS all-in-one yang mengintegrasikan kebiasaan, keuangan, dan tugas secara instan. Alternatif Notion & Excel terbaik.";
 const blank_meta_og_title = "Kamu bukan UI Designer. Stop berpura-pura.";
 const blank_meta_og_desc = "Jangan habiskan 10 jam bikin tracker cuma buat dipake 10 menit. Pakai sistem beneran.";
@@ -13737,7 +16236,7 @@ const blank_science_title = "Pertahanan Kelelahan Keputusan";
 const blank_science_desc = "Setiap detik yang dihabiskan untuk 'mendesain' spreadsheet adalah satu detik kemauan (willpower) yang hilang. OneForMind menghilangkan 'Kelelahan Arsitektur', menjaga energi mental Anda untuk eksekusi.";
 const blank_how_it_works_title = "Akhir dari Kustomisasi Tanpa Batas";
 const blank_how_it_works_desc = "Pengguna Notion dan Excel sering menghabiskan 80% waktu untuk membangun dan cuma 20% untuk bekerja. OneForMind membalikkan keadaan. Kami menyediakan struktur OS berkinerja tinggi, sehingga Anda bisa berhenti jadi 'tukang alat' dan mulai jadi eksekutor.";
-const pm_meta_title = "OneForMind vs ClickUp & Asana — Alternatif Terbaik untuk Individu";
+const pm_meta_title = "OneForMind vs ClickUp and Asana — Alternatif Terbaik untuk Individu";
 const pm_meta_desc = "Tinggalkan kerumitan alat korporat. OneForMind adalah Personal Growth OS pertama untuk solopreneur. Alternatif terbaik ClickUp, Trello, atau Monday.com.";
 const pm_meta_og_title = "Berhenti Micromanaging Diri Sendiri dengan Alat Kantor";
 const pm_meta_og_desc = "Kenapa pake manajemen proyek perusahaan buat hidup pribadi? Pake sistem yang buat KAMU.";
@@ -13875,7 +16374,7 @@ const habitap_science_title = "Desain Habit Berbasis Identitas";
 const habitap_science_desc = "Berdasarkan penelitian James Clear, cara paling efektif untuk berubah adalah dengan fokus bukan pada apa yang ingin Anda capai, tetapi pada sosok seperti apa yang Anda inginkan.";
 const habitap_how_it_works_title = "Lebih dari Sekadar Suntikan Dopamin";
 const habitap_how_it_works_desc = "Aplikasi habit tradisional menggunakan 'Gamifikasi Beracun'—streak yang membuat Anda merasa bersalah saat hidup sedang padat. OneForMind menggunakan 'Resiliensi Atom'. Kami fokus pada lintasan identitas Anda, memastikan satu hari yang terlewat tidak menghancurkan sistem, tapi jadi poin pembelajaran.";
-const finapp_meta_title = "OneForMind vs Money Tracker Lain — Wealth OS & Pencatat Keuangan Manual";
+const finapp_meta_title = "OneForMind vs Money Tracker Lain — Wealth OS and Pencatat Keuangan Manual";
 const finapp_meta_desc = "Hentikan sinkronisasi bank pasif. Beralih ke pelacak pengeluaran manual yang menghubungkan belanja ke habit dan target. Alternatif YNAB & Mint terbaik.";
 const finapp_meta_og_title = "Hentikan Jebakan Otomatisasi. Ambil Alih Kekayaanmu.";
 const finapp_meta_og_desc = "Mengapa aplikasi keuangan tradisional gagal mengubah perilaku Anda, dan bagaimana OneForMind memperbaikinya.";
@@ -13941,7 +16440,7 @@ const finapp_science_title = "Prinsip Kakeibo";
 const finapp_science_desc = "OneForMind menerapkan seni Jepang 'Kakeibo' yang sudah berusia 100 tahun—penganggaran sadar yang mengubah menabung menjadi praktik meditatif pengembangan diri.";
 const finapp_how_it_works_title = "Mengubah Kesadaran Menjadi Kekayaan";
 const finapp_how_it_works_desc = "Sinkronisasi bank digital menciptakan ilusi kendali padahal Anda terus belanja. Pencatatan manual di OneForMind adalah ritual kesadaran. Dengan melihat ke mana energi (uang) Anda pergi secara real-time, Anda secara alami menggeser perilaku Anda menuju visi jangka panjang.";
-const plan_meta_title = "Planner & Task Manager Berbasis Visi — OneForMind vs Checklist Biasa";
+const plan_meta_title = "Planner and Task Manager Berbasis Visi — OneForMind vs Checklist Biasa";
 const plan_meta_desc = "Daftar to-do biasa itu menjebak. OneForMind adalah sistem berbasis visi yang mengubah tugas harian jadi pencapaian. Alternatif Todoist & TickTick terbaik.";
 const plan_meta_og_title = "Daftar To-Do-mu adalah Penjara. Bebaskan Visimu.";
 const plan_meta_og_desc = "Mengapa hanya mencentang kotak tidak akan membuat Anda sukses, dan mengapa perencanaan berbasis konteks adalah kuncinya.";
@@ -14007,7 +16506,7 @@ const plan_science_title = "Penguasaan Efek Zeigarnik";
 const plan_science_desc = "Efek Zeigarnik menyatakan bahwa tugas yang belum selesai menciptakan ketegangan mental. OneForMind menghilangkan 'Gatal Otak' ini dengan menyediakan sumber kebenaran terpercaya untuk setiap loop terbuka.";
 const plan_how_it_works_title = "Merencana untuk Realita, Bukan Fantasi";
 const plan_how_it_works_desc = "Daftar to-do sering jadi 'Daftar Keinginan' yang terus menumpuk. Perencanaan Context-First di OneForMind memaksa Anda menyelaraskan tugas dengan waktu dan energi. Dengan menjembatani 'Visi' dan 'Tindakan Harian', kami memastikan kesibukan Anda adalah progres nyata.";
-const five_meta_title = "OneForMind vs Banyak Aplikasi — Life OS & Habit, Tugas, Keuangan Terpadu";
+const five_meta_title = "OneForMind vs Banyak Aplikasi — Life OS and Habit, Tugas, Keuangan Terpadu";
 const five_meta_desc = "OneForMind menggantikan 5+ aplikasi terpisah dengan satu ekosistem tersinkronisasi. Alternatif utama Notion, ClickUp, dan tracker habit khusus.";
 const five_meta_og_title = "Satu Hidup. Satu Pikiran. Satu Sistem Terpadu.";
 const five_meta_og_desc = "Satukan planner, habit, budget, dan jurnal Anda ke dalam satu Neural Synergy OS.";
@@ -14075,6 +16574,839 @@ const five_how_it_works_title = "Kekuatan dari Satu Sumber";
 const Extended_Mind_Thesis_Verified = "Verified";
 const Distributed_Cognition_Active = "Cognitive Load";
 const five_how_it_works_desc = "Saat habit, uang, dan tugas Anda hidup di dunia terpisah, otak harus bekerja 10x lebih keras untuk menghubungkannya. OneForMind menciptakan 'Intelijen Lintas Fitur'. Anggaran Anda memperingatkan daftar keinginan Anda. Habit Anda memperkuat pencapaian Anda. Ini bukan cuma satu aplikasi—ini satu pikiran yang utuh.";
+const habitica_alt_title = "OneForMind vs Habitica — Alternatif Habitica untuk Dewasa";
+const habitica_alt_desc = "Berhenti main game dengan hidupmu. Tinggalkan gamifikasi beracun dan bangun habit berbasis identitas nyata dengan OneForMind.";
+const habitica_alt_og_title = "Game Over untuk Gamifikasi. Bangun Disiplin Nyata.";
+const habitica_alt_og_desc = "Kenapa sistem HP Habitica bikin cemas, dan kenapa OS Identitas OneForMind membangun ketangguhan.";
+const habitica_badge = "OS Pertumbuhan Nyata";
+const habitica_hero_title_1 = "Hidup Itu Bukan";
+const habitica_hero_title_2 = "Game Pixel.";
+const habitica_hero_desc = "Habitica memperlakukanmu seperti anak kecil yang butuh pedang virtual buat minum air. OneForMind memperlakukanmu seperti orang dewasa yang membangun <strong>identitas permanen</strong>. Tinggalkan gamifikasi beracun dan mulailah bertumbuh.";
+const habitica_hero_cta = "Bangun Habit Nyata";
+const habitica_hero_note = "Tidak termasuk pedang pixel.";
+const habitica_prob_title_1 = "Mabuk";
+const habitica_prob_title_highlight = "Gamifikasi";
+const habitica_prob_desc = "Awalnya, dapet XP itu asik. Tapi gimana kalau kamu sakit dan bolos sehari? Avatarmu mati, item hilang, dan kamu merasa bersalah banget. Itu toxic.";
+const habitica_prob_point_1 = "Kehilangan HP memicu kecemasan";
+const habitica_prob_point_2 = "Mekanik RPG yang mengganggu fokus";
+const habitica_prob_point_3 = "Hadiah pixel nggak ngaruh ke dunia nyata";
+const habitica_sol_title_1 = "Identitas di Atas";
+const habitica_sol_title_highlight = "Avatar";
+const habitica_sol_desc = "OneForMind pakai filosofi 'Jangan Pernah Bolos Dua Kali'. Kalau kamu bolos sehari, kami nggak ngehukum kamu. Kami analisa hambatannya dan bantu kamu pulih. Kamu bangun identitas, bukan karakter RPG.";
+const habitica_sol_1_title = "Ketangguhan vs Hukuman";
+const habitica_sol_1_desc = "Nggak ada HP berkurang. Cuma data objektif dan dorongan pelan biar balik ke jalur.";
+const habitica_sol_2_title = "Terkoneksi ke Realita";
+const habitica_sol_2_desc = "Habitmu ngaruh ke keuangan asli dan planner nyata, bukan tavern virtual.";
+const habitica_compare_title = "Fantasi vs Realita";
+const habitica_compare_desc = "Pilih OS kehidupanmu.";
+const habitica_table_head_2 = "Habitica";
+const habitica_table_row_1_title = "Motivasi Utama";
+const habitica_table_row_1_col_1 = "Emas Virtual & Pet";
+const habitica_table_row_1_col_2 = "Identitas & Data";
+const habitica_table_row_2_title = "Bolos Sehari";
+const habitica_table_row_2_col_1 = "Kena Damage / Mati";
+const habitica_table_row_2_col_2 = "Analisa Hambatan";
+const habitica_table_row_3_title = "Antarmuka";
+const habitica_table_row_3_col_1 = "RPG 8-bit yang Berantakan";
+const habitica_table_row_3_col_2 = "OS Minimalis & Bersih";
+const habitica_cta_title = "Siap naik level di <br/>dunia nyata?";
+const habitica_cta_desc = "Tukar pedang virtualmu dengan disiplin sejati.";
+const habitica_cta_btn = "Beralih ke OneForMind";
+const streaks_alt_title = "OneForMind vs Streaks App — Alternatif Streaks Terbaik";
+const streaks_alt_desc = "Aplikasi Streaks menghancurkanmu saat rantainya putus. Beralihlah ke tracker habit OneForMind yang memaafkan dan berbasis identitas.";
+const streaks_alt_og_title = "Putuskan Rantainya. Pertahankan Habitnya.";
+const streaks_alt_og_desc = "Kenapa metode 'Jangan putus rantai' itu cacat, dan apa yang harusnya kamu pakai.";
+const streaks_badge = "Tracker Habit Pemaaf";
+const streaks_hero_title_1 = "Kamu Lebih Dari";
+const streaks_hero_title_2 = "Sekadar Angka.";
+const streaks_hero_desc = "Aplikasi Streaks bergantung penuh pada metode 'Jangan Putus Rantai'. Itu berhasil sampai hidup terjadi. Saat kamu kehilangan streak 100 hari, motivasi mati. <strong>OneForMind melacak konsistensi, bukan cuma hari berturut-turut.</strong>";
+const streaks_hero_cta = "Coba Habit Pemaaf";
+const streaks_hero_note = "Kami merayakan pemulihan.";
+const streaks_prob_title_1 = "Rapuhnya";
+const streaks_prob_title_highlight = "Rantai Streak";
+const streaks_prob_desc = "Aplikasi berbasis streak itu biner: kamu sempurna, atau kamu gagal. Mereka nggak peduli kamu sakit, liburan, atau ada urusan mendadak.";
+const streaks_prob_point_1 = "Bolos sehari, semua balik ke nol";
+const streaks_prob_point_2 = "Fokus ke angka, bukan tindakannya";
+const streaks_prob_point_3 = "Bikin nyerah total pas rantainya putus";
+const streaks_sol_title_1 = "Konsistensi di Atas";
+const streaks_sol_title_highlight = "Kesersempurnaan";
+const streaks_sol_desc = "Kami pakai Heatmaps (kayak GitHub) bukan rantai. Kalau kamu nyelesain habit 28 dari 30 hari, itu 93% tingkat sukses, bukan 'streak yang hancur'. Kami merayakan volume usahamu.";
+const streaks_sol_1_title = "Volume di Atas Streak";
+const streaks_sol_1_desc = "Bolos sehari cuma bikin heatmap sedikit memudar, nggak menghapus usahamu yang lalu.";
+const streaks_sol_2_title = "Pencatatan Kontekstual";
+const streaks_sol_2_desc = "Hubungkan ke jurnal buat jelasin KENAPA kamu bolos hari itu.";
+const streaks_compare_title = "Rapuh vs Tangguh";
+const streaks_compare_desc = "Gimana kamu ngadepin kegagalan?";
+const streaks_table_head_2 = "Streaks App";
+const streaks_table_row_1_title = "Dampak Bolos Sehari";
+const streaks_table_row_1_col_1 = "Balik ke 0. Bikin Demotivasi.";
+const streaks_table_row_1_col_2 = "Cuma nurunin % bulanan dikit.";
+const streaks_table_row_2_title = "Model Visual";
+const streaks_table_row_2_col_1 = "Rantai yang rapuh";
+const streaks_table_row_2_col_2 = "Heatmap yang tangguh";
+const streaks_table_row_3_title = "Integrasi";
+const streaks_table_row_3_col_1 = "Berdiri sendiri aja";
+const streaks_table_row_3_col_2 = "Sinkron ke Tugas & Keuangan";
+const streaks_cta_title = "Bangun habit yang bertahan di <br/>dunia nyata.";
+const streaks_cta_desc = "Karena kesempurnaan itu mitos. Konsistensi itu realita.";
+const streaks_cta_btn = "Mulai Perjalananmu";
+const habitify_alt_title = "OneForMind vs Habitify — Alternatif Habitify Superior";
+const habitify_alt_desc = "Habitify itu bagus, tapi terisolasi. OneForMind mengintegrasikan habitmu dengan planner, keuangan, dan jurnal dalam satu OS terpadu.";
+const habitify_alt_og_title = "Kenapa Bayar Cuma Buat Tracker?";
+const habitify_alt_og_desc = "Dapatkan Habit Tracker, Planner, dan Finance OS lebih murah dari Habitify Premium.";
+const habitify_badge = "Ekosistem Terpadu";
+const habitify_hero_title_1 = "Tracker Habit";
+const habitify_hero_title_2 = "Nggak Boleh Hidup Sendirian.";
+const habitify_hero_desc = "Habitify emang cakep, tapi dia cuma pulau terpencil. Habitmu ngaruh ke keuanganmu, dan keuanganmu ngaruh ke hidupmu. <strong>OneForMind menghubungkan semuanya</strong>, ngasih kamu Life OS penuh, bukan sekadar daftar centang.";
+const habitify_hero_cta = "Upgrade OS-mu";
+const habitify_hero_note = "Lebih banyak fitur, tanpa gesekan.";
+const habitify_prob_title_1 = "Masalah dengan";
+const habitify_prob_title_highlight = "Data Terisolasi";
+const habitify_prob_desc = "Saat aplikasi habitmu nggak nyambung ke planner harianmu, kamu bakal masukin data dua kali. Kamu nulis 'Gym' di kalender, terus nyentang lagi di Habitify. Bikin capek.";
+const habitify_prob_point_1 = "Nggak nyambung ke jadwal harian";
+const habitify_prob_point_2 = "Langganan mahal cuma buat satu fitur";
+const habitify_prob_point_3 = "Nggak ada konteks jurnal yang mendalam";
+const habitify_sol_title_1 = "Kekuatan";
+const habitify_sol_title_highlight = "Sinergi";
+const habitify_sol_desc = "Di OneForMind, habitmu otomatis muncul di Daily Planner. Pas kamu ngejurnal, tingkat sukses habitmu ada di situ buat ngasih konteks. Ini ekosistem yang hidup.";
+const habitify_sol_1_title = "Tampilan Harian Terpadu";
+const habitify_sol_1_desc = "Lihat habit bareng meeting dan tugasmu.";
+const habitify_sol_2_title = "Insight AI Neural";
+const habitify_sol_2_desc = "AI kami menganalisa gimana habitmu ngaruh ke keuanganmu.";
+const habitify_compare_title = "Terisolasi vs Terintegrasi";
+const habitify_compare_desc = "Lihat gambaran besarnya.";
+const habitify_table_head_2 = "Habitify";
+const habitify_table_row_1_title = "Ekosistem";
+const habitify_table_row_1_col_1 = "Cuma habit doang";
+const habitify_table_row_1_col_2 = "Habit, Keuangan, Planner, Jurnal";
+const habitify_table_row_2_title = "Sinkronisasi Planner";
+const habitify_table_row_2_col_1 = "Nggak Ada";
+const habitify_table_row_2_col_2 = "Ya, integrasi bawaan";
+const habitify_table_row_3_title = "Nilai (Value)";
+const habitify_table_row_3_col_1 = "Alat tunggal yang mahal";
+const habitify_table_row_3_col_2 = "Life OS yang Nyata";
+const habitify_cta_title = "Berhenti bayar buat <br/>alat yang terpisah.";
+const habitify_cta_desc = "Bawa seluruh hidupmu ke dalam satu ruang kerja yang indah dan terpadu.";
+const habitify_cta_btn = "Satukan Hidupmu";
+const explore_more_alt = "Eksplorasi Alternatif Lainnya";
+const explore_more_desc = "Lihat bagaimana OneForMind bersaing dengan alat spesifik di pasar.";
+const explore_habitica_desc = "Tinggalkan gamifikasi beracun dan hadiah pixel. Bangun ketangguhan nyata.";
+const explore_streaks_desc = "Jangan biarkan rantai yang putus merusak motivasimu. Kami melacak volume, bukan sekadar streak.";
+const explore_habitify_desc = "Tracker habit nggak seharusnya hidup sendirian. Hubungkan ke planner dan anggaranmu.";
+const habitica_science_title = "Sains di Balik Motivasi";
+const habitica_science_desc = "Hadiah ekstrinsik (seperti koin emas) menghancurkan motivasi intrinsik. Lama-kelamaan, kamu nggak peduli lagi sama habitnya dan cuma peduli sama gamenya.";
+const habitica_science_point1 = "Identitas Intrinsik";
+const habitica_science_point1_desc = "Kami membantumu percaya 'Saya seorang pelari', bukan 'Saya butuh 10XP'.";
+const habitica_science_point2 = "Tanpa Kelelahan Hadiah";
+const habitica_science_point2_desc = "Pet pixel itu ngebosenin. Progres di dunia nyata nggak pernah ngebosenin.";
+const habitica_testimonial = '"Saya pakai Habitica bertahun-tahun sampai sadar saya cuma main game, bukan ngubah hidup. OneForMind maksa saya buat dewasa dan beneran kerja."';
+const streaks_psycho_title = "Psikologi Kegagalan";
+const streaks_psycho_desc = "Saat streak 200 hari putus, efek 'Bodo Amat lah' mengambil alih. Kamu mikir, 'Yah, rantainya udah putus, mending nyerah aja sekalian.' Kami mencegah ini.";
+const streaks_psycho_point1 = "Degradasi yang Anggun";
+const streaks_psycho_point1_desc = "Bolos sehari itu cuma titik data, bukan sebuah bencana.";
+const streaks_data_title = "Pemulihan Berbasis Data";
+const streaks_data_desc = "Daripada rasa bersalah, kami ngasih analisa. Kenapa kemarin bolos? Apa anggaranmu terlalu ketat? Jadwal kepenuhan? OS terpadu kami bakal nyari tau.";
+const habitify_cost_title = "Biaya Tersembunyi Aplikasi Tunggal";
+const habitify_cost_desc = "Bayar mahal tiap tahun cuma buat nyentang kotak itu konyol. Di OneForMind, kamu dapet habit tracker kelas dunia, plus planner dan Finance OS.";
+const habitify_ai_title = "Kecerdasan Neural";
+const habitify_ai_desc = "Habitify ngasih kamu grafik. OneForMind ngasih kamu insight. Pelatih AI kami menghubungkan penyelesaian habit dengan pengeluaran dan mood harianmu.";
+const explore_ynab_desc = "Nggak perlu gelar akuntan cuma buat nyatet kopi. Dapatkan OS Keuangan visual yang nyambung ke habitmu.";
+const ynab_alt_title = "OneForMind vs YNAB — Alternatif YNAB Terbaik";
+const ynab_alt_desc = "YNAB terlalu rumit dan mahal. Beralih ke Finance OS visual yang menghubungkan pengeluaran dengan habit harianmu.";
+const ynab_alt_og_title = "Nggak Butuh Gelar Akuntan Buat Budgeting.";
+const ynab_alt_og_desc = "Kenapa bayar mahal buat aplikasi yang mirip Excel kalau bisa dapet Life OS lengkap?";
+const ynab_badge = "Finance OS Visual";
+const ynab_hero_title_1 = "Kamu Butuh Kehidupan,";
+const ynab_hero_title_2 = "Bukan Sekadar Budget.";
+const ynab_hero_desc = "YNAB maksain kamu jadi akuntan paruh waktu. OneForMind ngasih <strong>dashboard yang indah dan intuitif</strong>, melacak uang sambil dihubungin ke habit dunia nyatamu. Berhenti pusing sama spreadsheet dan mulailah hidup.";
+const ynab_hero_cta = "Coba Budgeting Visual";
+const ynab_hero_note = "Tanpa perlu gelar akuntansi.";
+const ynab_prob_title_1 = "Jebakan";
+const ynab_prob_title_highlight = "Kerumitan";
+const ynab_prob_desc = "Kalau ngatur budget udah kayak ngisi pajak, kamu pasti bakal nyerah. Kurva belajar YNAB yang curam bikin kesadaran finansial jadi beban, bukan habit.";
+const ynab_prob_point_1 = "Kurva belajar yang sangat curam";
+const ynab_prob_point_2 = "Biaya langganan yang mahal banget";
+const ynab_prob_point_3 = "Cuma spreadsheet yang dikasih lipstik";
+const ynab_sol_title_1 = "Kejelasan di Atas";
+const ynab_sol_title_highlight = "Kerumitan";
+const ynab_sol_desc = "Kami percaya ngatur uang cukup 2 menit sehari. Tabungan visual, tag transaksi berwarna, dan bar budget simpel ngasih kejelasan instan tanpa pusing.";
+const ynab_sol_1_title = "Keuangan Berbasis Habit";
+const ynab_sol_1_desc = "Lihat persis gimana habit 'Kurangi GoFood' ngaruh ke saldo bankmu.";
+const ynab_sol_2_title = "Brankas Tabungan Visual";
+const ynab_sol_2_desc = "Lihat uangmu tumbuh buat impianmu, bukan sekadar nongkrong di kategori.";
+const ynab_compare_title = "Spreadsheet vs Visual OS";
+const ynab_compare_desc = "Mana yang sebenarnya mau kamu buka tiap hari?";
+const ynab_table_head_2 = "YNAB";
+const ynab_table_row_1_title = "Kurva Belajar";
+const ynab_table_row_1_col_1 = "Butuh berjam-jam tutorial";
+const ynab_table_row_1_col_2 = "Intuitif sejak menit pertama";
+const ynab_table_row_2_title = "Integrasi Habit";
+const ynab_table_row_2_col_1 = "Nggak ada";
+const ynab_table_row_2_col_2 = "Terintegrasi mendalam";
+const ynab_table_row_3_title = "Harga";
+const ynab_table_row_3_col_1 = "$109/tahun";
+const ynab_table_row_3_col_2 = "Jauh lebih terjangkau";
+const ynab_cost_title = "Konyolnya Bayar Mahal Buat Hemat Uang";
+const ynab_cost_desc = "Ironis kan: aplikasi yang niatnya bantu hemat uang malah jadi salah satu pengeluaran terbesarmu. Di OneForMind, kamu dapet Life OS lengkap dengan harga lebih murah.";
+const ynab_psycho_title = "Kelelahan Finansial";
+const ynab_psycho_desc = "Saat setiap sen harus 'dikasih tugas', beban mentalnya bikin capek. Kami pakai macro-budget dan petunjuk visual biar kamu tetap sadar tanpa harus burnout.";
+const ynab_cta_title = "Siap mecat robot <br/>akuntanmu?";
+const ynab_cta_desc = "Beralih ke sistem yang masuk akal.";
+const ynab_cta_btn = "Beralih ke OneForMind";
+const explore_wallet_desc = "Otomatisasi pasif itu jebakan. Jangan biarkan aplikasi yang kerja sementara dompetmu bocor.";
+const wallet_alt_title = "OneForMind vs Wallet App — Alternatif Wallet Terbaik";
+const wallet_alt_desc = "Sinkronisasi bank pasif di Wallet bikin kamu malas. Ambil kendali aktif atas keuanganmu dengan OneForMind.";
+const wallet_alt_og_title = "Otomatisasi Bikin Kamu Bokek.";
+const wallet_alt_og_desc = "Kenapa aplikasi pencatat pasif kayak Wallet gagal ngubah habit belanjamu.";
+const wallet_badge = "Kesadaran Finansial Aktif";
+const wallet_hero_title_1 = "Berhenti Nonton";
+const wallet_hero_title_2 = "Uangmu Lenyap.";
+const wallet_hero_desc = "Aplikasi kayak Wallet bangga sama sinkronisasi bank otomatis. Tapi saat aplikasi yang lakuin semuanya, otakmu masuk mode autopilot. <strong>Kamu butuh kesadaran aktif</strong>, bukan laporan otopsi dari rekeningmu yang kosong.";
+const wallet_hero_cta = "Ambil Kendali Aktif";
+const wallet_hero_note = "Rasakan setiap transaksinya.";
+const wallet_prob_title_1 = "Ilusi";
+const wallet_prob_title_highlight = "Otomatisasi";
+const wallet_prob_desc = "Sinkron bank kerasa produktif, padahal pasif banget. Kamu cuma buka aplikasi di akhir bulan buat ngeliat kerusakan yang udah terlanjur terjadi.";
+const wallet_prob_point_1 = "Kamu nggak 'ngerasain' pengeluaranmu";
+const wallet_prob_point_2 = "Telat nyadar kalau udah over-budget";
+const wallet_prob_point_3 = "Menciptakan keterlepasan finansial";
+const wallet_sol_title_1 = "Gesekan adalah";
+const wallet_sol_title_highlight = "Fitur";
+const wallet_sol_desc = "OneForMind sengaja butuh entri manual. Meluangkan 5 detik buat ngetik kopi Rp50rb maksain kamu mengakui pembelian itu. Gesekan kecil inilah yang beneran ngubah perilaku belanjamu.";
+const wallet_sol_1_title = "Pencatatan Aktif";
+const wallet_sol_1_desc = "Bangun habit kesadaran finansial tiap kali kamu jajan.";
+const wallet_sol_2_title = "Kendali Prediktif";
+const wallet_sol_2_desc = "Kamu tau bakal ngelewatin budget *sebelum* gesek kartu.";
+const wallet_compare_title = "Pasif vs Aktif";
+const wallet_compare_desc = "Siapa yang sebenarnya pegang kendali?";
+const wallet_table_head_2 = "Wallet / Mint";
+const wallet_table_row_1_title = "Metode";
+const wallet_table_row_1_col_1 = "Auto-Sync Pasif";
+const wallet_table_row_1_col_2 = "Pencatatan Kesadaran Aktif";
+const wallet_table_row_2_title = "Perubahan Perilaku";
+const wallet_table_row_2_col_1 = "Minimal";
+const wallet_table_row_2_col_2 = "Dampak Tinggi";
+const wallet_table_row_3_title = "Privasi";
+const wallet_table_row_3_col_1 = "Menjual data perbankanmu";
+const wallet_table_row_3_col_2 = "Datamu adalah milikmu";
+const wallet_science_title = "Psikologi Gesekan";
+const wallet_science_desc = "Studi bilang orang belanja 20% lebih dikit pas pakai cash dibanding kartu karena 'sakit' rasanya nyerahin uang fisik. Catat manual niru gesekan psikologis ini secara digital.";
+const wallet_data_title = "Rekening Bank Bukan Strategi";
+const wallet_data_desc = "Ngeliatin transaksi masa lalu itu kayak nyetir sambil ngeliat spion. Kamu butuh sistem yang ngeliat ke depan.";
+const wallet_cta_title = "Berhenti jadi penonton <br/>kekayaanmu sendiri.";
+const wallet_cta_desc = "Ambil alih kemudi dan arahkan masa depan finansialmu.";
+const wallet_cta_btn = "Mulai Catat Manual";
+const explore_spendee_desc = "Grafik cantik nggak ada gunanya kalau nggak nyambung sama habit dan tujuan harianmu.";
+const spendee_alt_title = "OneForMind vs Spendee — Alternatif Spendee Utama";
+const spendee_alt_desc = "Spendee cuma kalkulator cantik. Dapatkan Life OS lengkap yang menghubungkan uang dengan habit dan tugasmu.";
+const spendee_alt_og_title = "Grafik Cantik Nggak Bayar Tagihan.";
+const spendee_alt_og_desc = "Kenapa aplikasi keuangan tunggal kayak Spendee nggak cukup buat benerin hidupmu.";
+const spendee_badge = "Sistem Kekayaan Holistik";
+const spendee_hero_title_1 = "Kalkulator Nggak Akan";
+const spendee_hero_title_2 = "Ngebenerin Hidupmu.";
+const spendee_hero_desc = "Spendee ngasih kamu diagram pie yang cantik. Tapi grafik nggak ngasih tau *kenapa* kamu boros. <strong>OneForMind menghubungkan keuanganmu ke habitmu</strong>, nunjukin akar masalah pengeluaranmu.";
+const spendee_hero_cta = "Lihat Gambaran Besarnya";
+const spendee_hero_note = "Finance + Habits + Planner.";
+const spendee_prob_title_1 = "Konteks yang";
+const spendee_prob_title_highlight = "Hilang";
+const spendee_prob_desc = "Kalau kamu liat lonjakan jajan 'Makanan' di Spendee, kamu nggak tau kenapa itu terjadi. Apa karena bad mood? Lupa meal prep? Aplikasi tunggal buta sama konteks.";
+const spendee_prob_point_1 = "Nggak ada integrasi sama rutinitas harian";
+const spendee_prob_point_2 = "Cuma ngelacak gejala, bukan penyebab";
+const spendee_prob_point_3 = "Kamu tetep butuh 3 aplikasi lain buat hidup";
+const spendee_sol_title_1 = "Menghubungkan";
+const spendee_sol_title_highlight = "Titik-titik";
+const spendee_sol_desc = "Karena OneForMind itu OS terpadu, kamu bisa liat kalau lonjakan GoFood Rp100rb terjadi di hari yang sama saat kamu ngelewatin tugas 'Belanja Mingguan' di planner. Itu baru kecerdasan nyata.";
+const spendee_sol_1_title = "Analisa Akar Masalah";
+const spendee_sol_1_desc = "AI Coach kami ngasih tau persis habit mana yang nguras dompetmu.";
+const spendee_sol_2_title = "Satu Langganan";
+const spendee_sol_2_desc = "Ngapain bayar aplikasi finance, habit, dan planner secara terpisah?";
+const spendee_compare_title = "Terisolasi vs Terpadu";
+const spendee_compare_desc = "Jangan puas sama setengah gambaran.";
+const spendee_table_head_2 = "Spendee";
+const spendee_table_row_1_title = "Konteks";
+const spendee_table_row_1_col_1 = "Angka buta";
+const spendee_table_row_1_col_2 = "Konteks perilaku mendalam";
+const spendee_table_row_2_title = "Ekosistem";
+const spendee_table_row_2_col_1 = "Cuma Keuangan";
+const spendee_table_row_2_col_2 = "Keuangan, Planner, Habit, Jurnal";
+const spendee_table_row_3_title = "Sinergi Target";
+const spendee_table_row_3_col_1 = "Limit dasar";
+const spendee_table_row_3_col_2 = "Terhubung langsung ke Tujuan Hidup";
+const spendee_ai_title = "Keuntungan Neural";
+const spendee_ai_desc = "AI terintegrasi kami nggak cuma ngasih pie chart. Dia ngomong: 'Kamu belanja 30% lebih banyak di hari kamu nggak meditasi.' Itulah kekuatan sistem terpadu.";
+const spendee_cost_title = "Pajak Fragmentasi";
+const spendee_cost_desc = "Bayar buat Spendee, ditambah task manager, ditambah habit tracker, itu buang-buang uang dan energi mental. Satukan dan taklukkan.";
+const spendee_cta_title = "Berhenti melacak gejala. <br/>Mulai perbaiki penyebab.";
+const spendee_cta_desc = "Upgrade ke sistem yang beneran ngertiin kamu.";
+const spendee_cta_btn = "Satukan Keuanganmu";
+const explore_todoist_desc = "Daftar cucian tanpa akhir cuma bikin burnout. Upgrade ke time-blocking dan Matriks Eisenhower.";
+const todoist_alt_title = "OneForMind vs Todoist — Alternatif Todoist Terbaik";
+const todoist_alt_desc = "Todoist cuma daftar cucian tanpa akhir yang bikin stres. Beralih ke OneForMind untuk time-blocking dan penentuan prioritas nyata.";
+const todoist_alt_og_title = "Daftar Panjang Nggak Nyelesein Kerjaan.";
+const todoist_alt_og_desc = "Kenapa daftar tanpa akhir di Todoist bikin burnout, dan gimana OneForMind memperbaikinya.";
+const todoist_badge = "Mesin Eksekusi";
+const todoist_hero_title_1 = "Berhenti Bikin List.";
+const todoist_hero_title_2 = "Mulai Mengeksekusi.";
+const todoist_hero_desc = "Todoist ngebiarin kamu numpuk 500 tugas tanpa konteks. Itu kuburan niat baik. OneForMind pakai <strong>Time-Blocking dan Matriks Eisenhower</strong> buat maksa kamu ngejadwalin KAPAN pastinya kamu bakal kerja.";
+const todoist_hero_cta = "Eksekusi Harimu";
+const todoist_hero_note = "Ubah tugas jadi blok kalender.";
+const todoist_prob_title_1 = "Kuburan";
+const todoist_prob_title_highlight = "Niat Baik";
+const todoist_prob_desc = "Nulis 'Bikin website' tanpa ngejadwalinnya itu cuma harapan kosong. Daftar tanpa akhir Todoist ngasih ilusi produktivitas yang ujung-ujungnya bikin cemas parah.";
+const todoist_prob_point_1 = "Teks merah 'Overdue' yang mengintimidasi";
+const todoist_prob_point_2 = "Nggak ada penjadwalan kalender bawaan";
+const todoist_prob_point_3 = "Nyamain tugas 'Beli Susu' sama 'Bikin Startup'";
+const todoist_sol_title_1 = "Jadwalkan atau";
+const todoist_sol_title_highlight = "Buang Saja";
+const todoist_sol_desc = "Di OneForMind, tugas nggak cuma diem doang. Kamu masukin ke kalender harianmu. Kalau nggak ada di kalender, itu nggak eksis. Kami maksa kamu buat realistis sama waktumu.";
+const todoist_sol_1_title = "Matriks Eisenhower Bawaan";
+const todoist_sol_1_desc = "Pisahkan yang Mendesak dari yang Penting secara instan.";
+const todoist_sol_2_title = "Time-Blocking Native";
+const todoist_sol_2_desc = "Tarik tugas langsung ke timeline harianmu.";
+const todoist_compare_title = "Berharap vs Bertindak";
+const todoist_compare_desc = "Gimana kamu ngadepin harimu?";
+const todoist_table_head_2 = "Todoist";
+const todoist_table_row_1_title = "Filosofi";
+const todoist_table_row_1_col_1 = "Kumpulin semuanya";
+const todoist_table_row_1_col_2 = "Jadwalkan yang penting";
+const todoist_table_row_2_title = "Prioritas";
+const todoist_table_row_2_col_1 = "Bendera P1-P4 dasar";
+const todoist_table_row_2_col_2 = "Matriks Eisenhower Visual";
+const todoist_table_row_3_title = "Integrasi Habit";
+const todoist_table_row_3_col_1 = "Tugas berulang yang maksa";
+const todoist_table_row_3_col_2 = "Mesin Habit Khusus";
+const todoist_psycho_title = "Efek Zeigarnik";
+const todoist_psycho_desc = "Tugas yang belum selesai bikin tegang mental. Ngeliat 50 tugas telat di Todoist naikin kortisolmu. Ngejadwalin 3 blok realistis di OneForMind bawa kedamaian.";
+const todoist_data_title = "Tugas vs Habit";
+const todoist_data_desc = "Todoist nganggap habit kayak tugas biasa. Padahal 'Minum Air' itu bukan tugas, itu rutinitas. OneForMind misahin keduanya dengan cantik biar to-do list kamu nggak berantakan.";
+const todoist_cta_title = "Siap bersihin kekacauan <br/>dan mulai kerja?";
+const todoist_cta_desc = "Berhenti ngatur tugasmu. Mulai eksekusi mereka.";
+const todoist_cta_btn = "Beralih ke OneForMind";
+const explore_ticktick_desc = "Jangan cuma nyentang kotak. Hubungkan tugas harian ke tujuan hidup jangka panjangmu.";
+const ticktick_alt_title = "OneForMind vs TickTick — Alternatif TickTick yang Lebih Pintar";
+const ticktick_alt_desc = "TickTick bagus buat bersih-bersih, tapi kurang visi. Beralih ke Life OS yang menghubungkan tugas harian ke tujuan hidupmu.";
+const ticktick_alt_og_title = "Jangan Cuma Nyentang Kotak. Bangun Hidupmu.";
+const ticktick_alt_og_desc = "Kenapa checklist biasa nggak cukup buat nyapai tujuan jangka panjangmu.";
+const ticktick_badge = "Planner Berbasis Visi";
+const ticktick_hero_title_1 = "Nyentang Kotak Itu";
+const ticktick_hero_title_2 = "Bukan Berarti Progres.";
+const ticktick_hero_desc = "TickTick bagus buat ngingetin beli belanjaan. Tapi buat bangun bisnis atau ngubah hidup? Kamu butuh lebih. <strong>OneForMind menghubungkan tugas harianmu langsung ke tujuan hidup makromu.</strong>";
+const ticktick_hero_cta = "Hubungkan Tugas ke Tujuan";
+const ticktick_hero_note = "Planner yang punya visi.";
+const ticktick_prob_title_1 = "Fatamorgana";
+const ticktick_prob_title_highlight = "Produktivitas";
+const ticktick_prob_desc = "Kamu bisa nyentang 20 tugas di TickTick dan tetep ada di posisi hidup yang sama. Kalau tugasmu nggak sejalan sama visi besar, kamu cuma lari di roda hamster.";
+const ticktick_prob_point_1 = "Nggak ada pelacakan target tingkat tinggi";
+const ticktick_prob_point_2 = "Terputus dari keuanganmu";
+const ticktick_prob_point_3 = "UI berantakan kebanyakan fitur";
+const ticktick_sol_title_1 = "Penyelarasan";
+const ticktick_sol_title_highlight = "Top-Down";
+const ticktick_sol_desc = "Di OneForMind, kamu bikin Target dulu. Baru kamu bikin Habit dan Tugas yang ngelayanin target itu. Tiap kali kamu nyentang kotak, kamu tau persis gunung apa yang lagi didaki.";
+const ticktick_sol_1_title = "Makro ke Mikro";
+const ticktick_sol_1_desc = "Lihat gimana tugas hari ini ngasih makan visi 5 tahunmu.";
+const ticktick_sol_2_title = "Dashboard All-in-One";
+const ticktick_sol_2_desc = "Tugas, Habit, dan Anggaran semua dalam satu tampilan bersih.";
+const ticktick_compare_title = "Mikro vs Makro";
+const ticktick_compare_desc = "Apa kamu mendaki gunung yang bener?";
+const ticktick_table_head_2 = "TickTick";
+const ticktick_table_row_1_title = "Fokus";
+const ticktick_table_row_1_col_1 = "Nyelesein kerjaan rumah";
+const ticktick_table_row_1_col_2 = "Mengeksekusi tujuan hidup";
+const ticktick_table_row_2_title = "Ekosistem";
+const ticktick_table_row_2_col_1 = "Tugas & habit dasar";
+const ticktick_table_row_2_col_2 = "Tugas, Target, Keuangan, Jurnal";
+const ticktick_table_row_3_title = "Integrasi Jurnal";
+const ticktick_table_row_3_col_1 = "Nggak ada";
+const ticktick_table_row_3_col_2 = "Jurnal reflektif mendalam";
+const ticktick_psycho_title = "Krisis Makna";
+const ticktick_psycho_desc = "Kelelahan tugas terjadi saat kita kehilangan 'Kenapa'-nya. Dengan menghubungkan tindakan harian ke Target yang jelas di OneForMind, kamu mengembalikan makna ke rutinitas harianmu.";
+const ticktick_data_title = "Desain Itu Penting";
+const ticktick_data_desc = "TickTick kerasa kayak aplikasi utilitas. OneForMind kerasa kayak ruang suci premium buat pikiranmu. Lingkungan yang tenang ngasilin fokus yang lebih baik.";
+const ticktick_cta_title = "Berhenti lari di <br/>roda hamster.";
+const ticktick_cta_desc = "Mulai daki gunungmu dengan tujuan yang jelas.";
+const ticktick_cta_btn = "Rencanakan dengan Tujuan";
+const explore_clickup_desc = "Berhenti pakai alat perusahaan buat kehidupan pribadi. Pakai OS yang dirancang buat individu, bukan korporasi.";
+const clickup_alt_title = "OneForMind vs ClickUp — Alternatif ClickUp Terbaik untuk Individu";
+const clickup_alt_desc = "ClickUp itu software perusahaan yang lebay. Beralih ke OneForMind, OS pribadi yang didesain buat fokus individu, bukan micromanagement perusahaan.";
+const clickup_alt_og_title = "Kamu Itu Bukan Korporasi.";
+const clickup_alt_og_desc = "Kenapa pakai alat perusahaan kayak ClickUp atau Asana merusak produktivitas pribadimu.";
+const clickup_badge = "Personal OS";
+const clickup_hero_title_1 = "Kamu Itu Manusia,";
+const clickup_hero_title_2 = "Bukan Perusahaan.";
+const clickup_hero_desc = "ClickUp pamer punya 'semua fitur yang bisa dibayangin'. Tapi kamu nggak butuh Gantt chart, tiket Jira, atau izin tim buat jalanin hidup pribadimu. <strong>Kamu butuh kejelasan, bukan keribetan korporat.</strong>";
+const clickup_hero_cta = "Dapatkan Kejelasan";
+const clickup_hero_note = "Nggak ada bahasa korporat.";
+const clickup_prob_title_1 = "Kebanyakan";
+const clickup_prob_title_highlight = "Fitur";
+const clickup_prob_desc = "Pakai ClickUp buat planner pribadi itu kayak pakai buldoser buat nanam bunga. Menu tanpa akhir, custom field, dan izin kompleks cuma bikin kamu lambat.";
+const clickup_prob_point_1 = "Waktu loading yang super lambat";
+const clickup_prob_point_2 = "UI perusahaan yang bikin pusing";
+const clickup_prob_point_3 = "Butuh gelar Ph.D buat setup doang";
+const clickup_sol_title_1 = "Kesederhanaan yang";
+const clickup_sol_title_highlight = "Berprinsip";
+const clickup_sol_desc = "OneForMind itu 'Opinionated OS'. Kami udah ngambil keputusan desain yang susah buat kamu. Nggak ada toggle tanpa akhir. Cuma sistem sempurna buat Habit, Tugas, dan Keuangan yang langsung siap pakai.";
+const clickup_sol_1_title = "Secepat Kilat";
+const clickup_sol_1_desc = "Loading halaman instan biar kamu nggak lupa apa yang mau dipikirin.";
+const clickup_sol_2_title = "Dibuat buat Individu";
+const clickup_sol_2_desc = "Kami peduli sama pertumbuhan pribadimu, bukan 'sprint velocity'-mu.";
+const clickup_compare_title = "Korporat vs Personal";
+const clickup_compare_desc = "Pakai alat yang tepat buat kerjaannya.";
+const clickup_table_head_2 = "ClickUp / Asana";
+const clickup_table_row_1_title = "Target Audiens";
+const clickup_table_row_1_col_1 = "Tim perusahaan besar";
+const clickup_table_row_1_col_2 = "Individu yang ambisius";
+const clickup_table_row_2_title = "Waktu Setup";
+const clickup_table_row_2_col_1 = "Berhari-hari atau berminggu-minggu";
+const clickup_table_row_2_col_2 = "Siap dalam 30 detik";
+const clickup_table_row_3_title = "Performa";
+const clickup_table_row_3_col_1 = "Berat, lambat, rumit";
+const clickup_table_row_3_col_2 = "Ringan, instan, tenang";
+const clickup_psycho_title = "Kelelahan Keputusan";
+const clickup_psycho_desc = "Saat aplikasi ngasih 50 cara beda buat liat tugas, kamu ngabisin lebih banyak waktu buat ngatur daripada ngerjain. OneForMind ngilangin beban milih-milih.";
+const clickup_data_title = "Konteks Personal";
+const clickup_data_desc = "ClickUp nggak peduli sama moodmu, habitmu, atau budget pribadimu. Dia cuma peduli deadline. Kami peduli soal kamu seutuhnya.";
+const clickup_cta_title = "Pecat manajer proyekmu. <br/>Rebut kembali ketenanganmu.";
+const clickup_cta_desc = "Tinggalkan software korporat yang lebay dan beralih ke Personal OS.";
+const clickup_cta_btn = "Beralih ke Personal OS";
+const explore_spreadsheet_desc = "Berhenti masukin data manual. Dapatkan sistem yang otomatis kerja buatmu.";
+const spreadsheet_alt_title = "OneForMind vs Spreadsheet — Alternatif Spreadsheet Terbaik";
+const spreadsheet_alt_desc = "Excel dan Google Sheets itu kosong dan butuh kerja kasar. Beralih ke Life OS siap pakai.";
+const spreadsheet_alt_og_title = "Berhenti Entri Data Manual.";
+const spreadsheet_alt_og_desc = "Kenapa ngatur hidup pakai spreadsheet itu buang-buang waktu banget.";
+const spreadsheet_badge = "Sistem Siap Pakai";
+const spreadsheet_hero_title_1 = "Kamu Itu Bukan";
+const spreadsheet_hero_title_2 = "Tukang Entri Data.";
+const spreadsheet_hero_desc = "Spreadsheet emang canggih, tapi butuh dirawat terus. Lupa update satu sel aja, sistemnya hancur. <strong>OneForMind adalah Life OS otomatis</strong> yang ngelakuin kerja berat buatmu.";
+const spreadsheet_hero_cta = "Otomatiskan Hidupmu";
+const spreadsheet_hero_note = "Nggak butuh rumus Excel.";
+const spreadsheet_prob_title_1 = "Mimpi Buruk";
+const spreadsheet_prob_title_highlight = "Pemeliharaan";
+const spreadsheet_prob_desc = "Pas kamu bikin habit tracker di Excel, kamu lebih banyak ngabisin waktu benerin rumus error daripada beneran ngebangun habitnya.";
+const spreadsheet_prob_point_1 = "Pengalaman di HP jelek banget";
+const spreadsheet_prob_point_2 = "Butuh update manual terus-terusan";
+const spreadsheet_prob_point_3 = "Nggak ada pengingat bawaan atau insight AI";
+const spreadsheet_sol_title_1 = "Arsitektur yang";
+const spreadsheet_sol_title_highlight = "Berprinsip";
+const spreadsheet_sol_desc = "Kami udah ngambil keputusan desain tersulit biar kamu nggak pusing. UI-nya cakep di semua layar, dan datamu ngalir mulus dari habit ke anggaran.";
+const spreadsheet_sol_1_title = "Terasa Kayak App Native";
+const spreadsheet_sol_1_desc = "Lancar jaya di HP, nggak kayak spreadsheet yang sempit.";
+const spreadsheet_sol_2_title = "Kecerdasan Lintas Fitur";
+const spreadsheet_sol_2_desc = "Habitmu ngobrol langsung sama planner secara otomatis.";
+const spreadsheet_compare_title = "Manual vs Otomatis";
+const spreadsheet_compare_desc = "Kamu mau ngabisin waktu buat apa?";
+const spreadsheet_table_head_2 = "Spreadsheet";
+const spreadsheet_table_row_1_title = "Waktu Setup";
+const spreadsheet_table_row_1_col_1 = "Berhari-hari ngatur rumus";
+const spreadsheet_table_row_1_col_2 = "Instan";
+const spreadsheet_table_row_2_title = "UX di HP";
+const spreadsheet_table_row_2_col_1 = "Mengerikan";
+const spreadsheet_table_row_2_col_2 = "Responsif sempurna";
+const spreadsheet_table_row_3_title = "Pelatih AI";
+const spreadsheet_table_row_3_col_1 = "Nggak ada";
+const spreadsheet_table_row_3_col_2 = "Mesin Neural Bawaan";
+const spreadsheet_psycho_title = "Sunk Cost Fallacy";
+const spreadsheet_psycho_desc = "Orang bertahan pakai spreadsheet karena udah buang 20 jam bikinnya. Jangan biarkan usaha masa lalu menjebakmu di sistem yang buruk.";
+const spreadsheet_data_title = "Tindakan di Atas Organisasi";
+const spreadsheet_data_desc = "Tiap menit yang kamu pakai buat ngewarnain sel Excel adalah menit yang hilang buat kerja sungguhan.";
+const spreadsheet_cta_title = "Tutup spreadsheet-nya.<br/>Buka hidupmu.";
+const spreadsheet_cta_desc = "Beralih ke sistem yang kerja buatmu, bukan sebaliknya.";
+const spreadsheet_cta_btn = "Beralih ke OneForMind";
+const explore_notion_desc = "Sembuhkan sindrom kanvas kosongmu. Berhenti ngedesain template, mulai eksekusi.";
+const notion_alt_title = "OneForMind vs Notion — Alternatif Notion Terbaik buat Pribadi";
+const notion_alt_desc = "Notion maksa kamu bikin alat sendiri. OneForMind ngasih Personal OS yang udah jadi dan sempurna.";
+const notion_alt_og_title = "Berhenti Bikin Template. Mulai Kerja.";
+const notion_alt_og_desc = "Kenapa kanvas kosong Notion itu buruk banget buat produktivitas pribadi.";
+const notion_badge = "Opinionated OS";
+const notion_hero_title_1 = "Sindrom";
+const notion_hero_title_2 = "Kanvas Kosong.";
+const notion_hero_desc = "Notion ngasih kamu sekotak Lego dan nyuruh kamu bikin rumah. <strong>OneForMind ngasih kamu kunci ke mansion yang udah didesain indah.</strong> Berhenti buang waktu akhir pekan buat ngedesain template dan mulailah mengeksekusi targetmu.";
+const notion_hero_cta = "Pindah Sekarang";
+const notion_hero_note = "Nggak butuh setup sama sekali.";
+const notion_prob_title_1 = "Ngulik Terus";
+const notion_prob_title_highlight = "Tanpa Henti";
+const notion_prob_desc = "Di Notion, kamu itu arsitek database. Kalau ada relasi database yang rusak, kamu yang harus benerin. Ini nyiptain ilusi seolah-olah kamu lagi produktif.";
+const notion_prob_point_1 = "Habis waktu buat ngedesain, bukan ngerjain";
+const notion_prob_point_2 = "Aplikasi HP-nya lambat dan kaku";
+const notion_prob_point_3 = "Nggak ada support offline bawaan";
+const notion_sol_title_1 = "Terstruktur buat";
+const notion_sol_title_highlight = "Sukses";
+const notion_sol_desc = "OneForMind itu Opinionated OS. Kami udah masukin kerangka produktivitas terbaik (Matriks Eisenhower, Time-blocking, Atomic Habits) langsung ke dalam kodenya. Tinggal pakai.";
+const notion_sol_1_title = "Onboarding Instan";
+const notion_sol_1_desc = "Nggak usah download template. Daftar dan langsung jalan.";
+const notion_sol_2_title = "Kecepatan Native";
+const notion_sol_2_desc = "Interaksi secepat kilat tanpa beban database yang berat.";
+const notion_compare_title = "Pembuat vs Pengguna";
+const notion_compare_desc = "Kamu mau bikin alat, atau makai alat?";
+const notion_table_head_2 = "Notion";
+const notion_table_row_1_title = "Filosofi";
+const notion_table_row_1_col_1 = "Kanvas kosong";
+const notion_table_row_1_col_2 = "Kerangka terstruktur";
+const notion_table_row_2_title = "Kecepatan";
+const notion_table_row_2_col_1 = "Berat dan lambat";
+const notion_table_row_2_col_2 = "Instan dan mulus";
+const notion_table_row_3_title = "Tujuan";
+const notion_table_row_3_col_1 = "Wiki dan dokumen";
+const notion_table_row_3_col_2 = "Habit, Keuangan, Planner";
+const notion_psycho_title = "Pornografi Produktivitas";
+const notion_psycho_desc = "Bikin dashboard aesthetic yang 'sempurna' ngasih otakmu dopamin murahan. Tapi itu nggak bawa kamu lebih deket ke tujuan hidupmu.";
+const notion_data_title = "Mesin Khusus";
+const notion_data_desc = "Database Notion itu generik. Mesin Habit OneForMind dibangun khusus buat psikologi perilaku, lengkap dengan heatmap dan pemulihan.";
+const notion_cta_title = "Taruh mainan Legonya.<br/>Fokus ke hidupmu.";
+const notion_cta_desc = "Beralih ke sistem yang udah dibangun khusus buatmu.";
+const notion_cta_btn = "Dapatkan OS Siap Pakai";
+const explore_obsidian_desc = "Obsidian itu keren buat catatan, tapi buruk buat habit. Dapatkan mesin eksekusi nyata.";
+const obsidian_alt_title = "OneForMind vs Obsidian — Alternatif Obsidian untuk Eksekusi";
+const obsidian_alt_desc = "Obsidian adalah basis pengetahuan, bukan basis tindakan. Beralih ke OneForMind buat ngubah pikiran jadi tindakan.";
+const obsidian_alt_og_title = "Catatan Nggak Bisa Eksekusi Sendiri.";
+const obsidian_alt_og_desc = "Kenapa pengguna Obsidian butuh Life OS khusus buat habit dan keuangan.";
+const obsidian_badge = "Mesin Eksekusi";
+const obsidian_hero_title_1 = "Pengetahuan Itu Percuma";
+const obsidian_hero_title_2 = "Tanpa Tindakan.";
+const obsidian_hero_desc = "Obsidian itu luar biasa buat ngehubungin pikiran. Tapi habit harian dan anggaran keuanganmu nggak seharusnya dikubur di dalem file markdown. <strong>OneForMind adalah lapisan eksekusi</strong> buat hidupmu.";
+const obsidian_hero_cta = "Mulai Eksekusi";
+const obsidian_hero_note = "Dari berpikir jadi bertindak.";
+const obsidian_prob_title_1 = "Lubang Hitam";
+const obsidian_prob_title_highlight = "Plugin";
+const obsidian_prob_desc = "Maksa Obsidian jadi habit tracker itu butuh 15 plugin komunitas, CSS kustom, dan perbaikan terus-menerus. Itu sistem yang sangat rapuh.";
+const obsidian_prob_point_1 = "Butuh tumpukan plugin yang rumit";
+const obsidian_prob_point_2 = "Nggak ada UI bawaan buat uang atau jadwal";
+const obsidian_prob_point_3 = "Sinkronisasi antar HP itu bikin pusing";
+const obsidian_sol_title_1 = "Integrasi";
+const obsidian_sol_title_highlight = "Bawaan";
+const obsidian_sol_desc = "Di OneForMind, habit, planner, dan anggaranmu itu fitur bawaan. Nggak butuh plugin. Semuanya sinkron instan ke cloud.";
+const obsidian_sol_1_title = "Nol Pemeliharaan";
+const obsidian_sol_1_desc = "Kami yang ngurus kodenya. Kamu urus hidupmu.";
+const obsidian_sol_2_title = "UI yang Indah";
+const obsidian_sol_2_desc = "Didesain biar tenang dan intuitif, bukan keliatan kayak code editor.";
+const obsidian_compare_title = "Berpikir vs Bertindak";
+const obsidian_compare_desc = "Pakai alat yang bener buat tugasnya.";
+const obsidian_table_head_2 = "Obsidian";
+const obsidian_table_row_1_title = "Fungsi Utama";
+const obsidian_table_row_1_col_1 = "Pengetahuan Pribadi";
+const obsidian_table_row_1_col_2 = "Eksekusi Pribadi";
+const obsidian_table_row_2_title = "Pelacakan Habit";
+const obsidian_table_row_2_col_1 = "Tabel markdown yang dipaksain";
+const obsidian_table_row_2_col_2 = "Mesin visual bawaan";
+const obsidian_table_row_3_title = "Cloud Sync";
+const obsidian_table_row_3_col_1 = "Bayar tambahan atau rumit";
+const obsidian_table_row_3_col_2 = "Instan dan udah termasuk";
+const obsidian_psycho_title = "Kesesatan Kolektor";
+const obsidian_psycho_desc = "Kita nipu diri sendiri dengan mikir kalau ngumpulin informasi itu sama dengan ngambil tindakan. Jangan cuma nyatet apa yang kamu baca; lacak apa yang kamu LAKUKAN.";
+const obsidian_data_title = "Paradigma yang Beda";
+const obsidian_data_desc = "Simpan Obsidian buat riset mendalammu. Pakai OneForMind buat beneran mengeksekusi rutinitas harian dan ngatur kekayaanmu.";
+const obsidian_cta_title = "Ubah pikiranmu <br/>jadi realita.";
+const obsidian_cta_desc = "Dapatkan mesin eksekusi yang pantas buat otakmu.";
+const obsidian_cta_btn = "Mulai Eksekusi";
+const explore_monday_desc = "Kamu nggak butuh manajer proyek perusahaan buat jalanin habit pribadimu.";
+const monday_alt_title = "OneForMind vs Monday.com — Alternatif Monday Terbaik buat Pribadi";
+const monday_alt_desc = "Monday.com dibuat buat korporasi. Beralih ke Personal OS yang didesain buat pertumbuhan individumu.";
+const monday_alt_og_title = "Kamu Itu Bukan Korporasi.";
+const monday_alt_og_desc = "Kenapa alat perusahaan kayak Monday ngerusak produktivitas pribadi.";
+const monday_badge = "Personal OS";
+const monday_hero_title_1 = "Tinggalkan Kerjaan";
+const monday_hero_title_2 = "Di Kantor.";
+const monday_hero_desc = "Monday.com bagus buat ngatur 50 orang tim marketing. Tapi pakai itu buat habit dan anggaran pribadi itu lebay banget. <strong>OneForMind didesain khusus buat individu.</strong>";
+const monday_hero_cta = "Dapatkan Kejelasan";
+const monday_hero_note = "Tanpa keribetan perusahaan.";
+const monday_prob_title_1 = "Aplikasi";
+const monday_prob_title_highlight = "Korporat";
+const monday_prob_desc = "Pas kamu buka Monday buat tugas pribadi, kamu disambut sama 'Workspaces', 'Boards', dan 'Automations'. Ngeliatnya aja udah capek.";
+const monday_prob_point_1 = "Antarmuka yang lambat dan berat";
+const monday_prob_point_2 = "Model harga yang mahal";
+const monday_prob_point_3 = "Nggak ada pelacakan habit atau uang";
+const monday_sol_title_1 = "Didesain buat";
+const monday_sol_title_highlight = "Manusia";
+const monday_sol_desc = "OneForMind itu tempat yang tenang. Kami ngebuang semua fitur korporat dan cuma nyisain apa yang kamu butuhin buat nguasain pikiran dan hidupmu.";
+const monday_sol_1_title = "Antarmuka Tenang";
+const monday_sol_1_desc = "Nggak ada grafik bikin stres atau notif tim.";
+const monday_sol_2_title = "Pelacakan Holistik";
+const monday_sol_2_desc = "Lacak kekayaanmu, bukan sprint velocity-mu.";
+const monday_compare_title = "Korporat vs Personal";
+const monday_compare_desc = "Di mana tempatmu sebenarnya?";
+const monday_table_head_2 = "Monday.com";
+const monday_table_row_1_title = "Target Audiens";
+const monday_table_row_1_col_1 = "Tim Perusahaan";
+const monday_table_row_1_col_2 = "Individu Ambisius";
+const monday_table_row_2_title = "Kerumitan";
+const monday_table_row_2_col_1 = "Bikin pusing";
+const monday_table_row_2_col_2 = "Sangat rapi";
+const monday_table_row_3_title = "Harga";
+const monday_table_row_3_col_1 = "Harga enterprise per-user";
+const monday_table_row_3_col_2 = "Harga wajar buat individu";
+const monday_psycho_title = "Bocornya Konteks";
+const monday_psycho_desc = "Pakai aplikasi yang sama buat kerja dan kehidupan pribadi bikin otakmu nggak pernah bener-bener 'pulang kantor'. Kasih kehidupan pribadimu ruang khususnya sendiri.";
+const monday_data_title = "Konteks Personal Mendalam";
+const monday_data_desc = "Monday ngelacak deadline. OneForMind ngelacak moodmu, keuanganmu, dan habit harianmu buat ngasih insight hidup yang nyata.";
+const monday_cta_title = "Pecat software <br/>kantoranmu.";
+const monday_cta_desc = "Rebut kembali kehidupan pribadimu dengan OS khusus.";
+const monday_cta_btn = "Beralih ke Personal OS";
+const explore_trello_desc = "Geser-geser kartu di papan nggak bikin kamu disiplin. Dapatkan sistem eksekusi nyata.";
+const trello_alt_title = "OneForMind vs Trello — Alternatif Trello Superior";
+const trello_alt_desc = "Papan Kanban itu buat ngembangin software, bukan hidup. Beralih ke OneForMind.";
+const trello_alt_og_title = "Papan Kanban Aja Nggak Cukup.";
+const trello_alt_og_desc = "Kenapa geser kartu di Trello gagal ngebangun habit yang bertahan lama.";
+const trello_badge = "Lebih dari Kanban";
+const trello_hero_title_1 = "Hidup Itu Nggak Muat";
+const trello_hero_title_2 = "Di Papan Kanban.";
+const trello_hero_desc = "Kolom 'To Do, Doing, Done' Trello itu bagus buat bug software. Tapi pertumbuhan pribadi butuh kehalusan. <strong>OneForMind ngasih Time-Blocking dan Heatmap Habit</strong>, alat yang bener buat tugas yang bener.";
+const trello_hero_cta = "Upgrade Sistemmu";
+const trello_hero_note = "Berhenti ngegeser kartu.";
+const trello_prob_title_1 = "Ilusi";
+const trello_prob_title_highlight = "Kemajuan";
+const trello_prob_desc = "Ngegeser kartu dari 'To Do' ke 'Done' kerasa enak, tapi nggak ada konteks jadwal. Tugas tanpa jadwal waktu itu cuma angan-angan.";
+const trello_prob_point_1 = "Nggak ada tampilan kalender bawaan";
+const trello_prob_point_2 = "Buruk banget buat ngelacak habit harian";
+const trello_prob_point_3 = "Daftar jadi panjang banget dan berantakan";
+const trello_sol_title_1 = "Kehebatan";
+const trello_sol_title_highlight = "Time-Blocking";
+const trello_sol_desc = "OneForMind maksa kamu masukin tugas ke timeline. Kalau nggak di-block di kalendermu, itu nggak bakal dikerjain. Ini maksa penentuan prioritas yang kejam.";
+const trello_sol_1_title = "Matriks Eisenhower";
+const trello_sol_1_desc = "Prioritaskan sebelum menjadwalkan.";
+const trello_sol_2_title = "Mesin Habit Khusus";
+const trello_sol_2_desc = "Pisahkan rutinitas dari tugas sekali jalan.";
+const trello_compare_title = "Ngegeser vs Mengeksekusi";
+const trello_compare_desc = "Gimana kamu nyelesein sesuatu?";
+const trello_table_head_2 = "Trello";
+const trello_table_row_1_title = "Metodologi";
+const trello_table_row_1_col_1 = "Papan Kanban";
+const trello_table_row_1_col_2 = "Time-Blocking & Matriks";
+const trello_table_row_2_title = "Pelacakan Habit";
+const trello_table_row_2_col_1 = "Checklist yang kaku";
+const trello_table_row_2_col_2 = "Mesin visual bawaan";
+const trello_table_row_3_title = "Integrasi Keuangan";
+const trello_table_row_3_col_1 = "Nggak ada";
+const trello_table_row_3_col_2 = "Terintegrasi mendalam";
+const trello_psycho_title = "Hukum Parkinson";
+const trello_psycho_desc = "Kerjaan bakal melebar ngisi waktu yang ada. Kartu Trello nggak punya batas waktu. Time-block OneForMind maksa kamu nyelesein kerjaan dalam batas waktu yang jelas.";
+const trello_data_title = "Memvisualisasikan Waktu";
+const trello_data_desc = "Kamu nggak bisa ngatur apa yang nggak bisa kamu liat. Ngeliat harimu sebagai serangkaian blok ngasih penilaian jujur soal kapasitasmu.";
+const trello_cta_title = "Berhenti ngegeser kartu. <br/>Mulai bergerak maju.";
+const trello_cta_desc = "Beralih ke sistem yang ngehargain waktumu.";
+const trello_cta_btn = "Mulai Time-Blocking";
+const explore_asana_desc = "Alat perusahaan ngebunuh produktivitas pribadi. Dapatkan OS yang kerasa kayak tempat berlindung.";
+const asana_alt_title = "OneForMind vs Asana — Alternatif Asana buat Individu";
+const asana_alt_desc = "Asana itu buat ngatur karyawan. OneForMind itu buat ngatur diri sendiri. Beralih ke Personal OS sejati.";
+const asana_alt_og_title = "Kamu Itu Bukan Manajer Proyek.";
+const asana_alt_og_desc = "Kenapa pakai Asana buat kehidupan pribadi itu kesalahan besar.";
+const asana_badge = "Fokus Individu";
+const asana_hero_title_1 = "Kamu Nggak Butuh";
+const asana_hero_title_2 = "Manajer Proyek.";
+const asana_hero_desc = "Asana dibikin buat ngelacak deadline karyawan. Pakai itu buat tujuan pribadi kerasa dingin dan kaku. <strong>OneForMind adalah ruang suci pribadi</strong> yang didesain buat ngebantu kamu tumbuh, bukan cuma menuhi KPI.";
+const asana_hero_cta = "Rebut Kembali Fokusmu";
+const asana_hero_note = "Nggak butuh meeting status.";
+const asana_prob_title_1 = "Kedinginan";
+const asana_prob_title_highlight = "Korporat";
+const asana_prob_desc = "Nggak ada seneng-senengnya nyentang pencapaian pribadi di alat yang didesain buat pengawasan perusahaan. UI-nya penuh sama fitur yang nggak bakal pernah kamu pakai.";
+const asana_prob_point_1 = "Kaku, antarmuka fokus kerjaan";
+const asana_prob_point_2 = "Terlalu rumit buat habit harian simpel";
+const asana_prob_point_3 = "Nggak ada ruang buat refleksi pribadi";
+const asana_sol_title_1 = "Ruang Suci";
+const asana_sol_title_highlight = "Digital";
+const asana_sol_desc = "Kami ngebangun OneForMind biar cantik. Udah termasuk jurnal mindfulness, brankas keuangan visual, dan planner harian yang tenang. Ini tempat yang beneran pengen kamu kunjungin.";
+const asana_sol_1_title = "Jurnal Terintegrasi";
+const asana_sol_1_desc = "Refleksikan progresmu, jangan cuma dilaporin.";
+const asana_sol_2_title = "Kekayaan Pribadi";
+const asana_sol_2_desc = "Lacak tujuan tabunganmu secara langsung.";
+const asana_compare_title = "Laporan vs Refleksi";
+const asana_compare_desc = "Kamu kerja buat siapa?";
+const asana_table_head_2 = "Asana";
+const asana_table_row_1_title = "Suasana (Vibe)";
+const asana_table_row_1_col_1 = "Laporan perusahaan";
+const asana_table_row_1_col_2 = "Ruang suci pribadi";
+const asana_table_row_2_title = "Fitur";
+const asana_table_row_2_col_1 = "Kolaborasi tim";
+const asana_table_row_2_col_2 = "Habit, Keuangan, Jurnal";
+const asana_table_row_3_title = "Setup";
+const asana_table_row_3_col_1 = "Proyek yang rumit";
+const asana_table_row_3_col_2 = "Alur harian simpel";
+const asana_psycho_title = "Efek Lingkungan";
+const asana_psycho_desc = "Lingkungan digital yang kamu pakai ngebentuk mindsetmu. Alat korporat bikin kamu stres dan bermental laporan. Personal OS bikin kamu bermental pertumbuhan.";
+const asana_data_title = "Metrik Kehidupan Penuh";
+const asana_data_desc = "Asana ngukur tugas yang selesai. OneForMind ngukur kesehatan keuangan, konsistensi habit, dan kesejahteraan emosionalmu.";
+const asana_cta_title = "Clock out dari <br/>software korporat.";
+const asana_cta_desc = "Masuklah ke Personal OS yang indah.";
+const asana_cta_btn = "Masuk ke OneForMind";
+const notes_apps_meta_title = "OneForMind vs Aplikasi Catatan — Evolusi Fokus Digital";
+const notes_apps_meta_desc = "Aplikasi catatan standar itu pasif. OneForMind adalah sistem kehidupan aktif. Lihat kenapa OS lebih baik dari lemari arsip digital.";
+const notes_apps_og_title = "Aplikasi Catatanmu adalah Tempat Ide Mati.";
+const notes_apps_og_desc = "Berhenti menimbun ide di aplikasi catatan pasif. Pindah ke sistem yang memaksa eksekusi.";
+const notes_apps_badge = "Kenyataan Pahit";
+const notes_apps_hero_title_1 = "Catatan menerima teks.";
+const notes_apps_hero_title_2 = "Tapi menolak akuntabilitas.";
+const notes_apps_hero_desc = "Aplikasi catatan adalah <strong>kuburan statis</strong> buat ide brilianmu. Mereka nggak ngingetin. Nggak ngelacak progres. Cuma diam di sana.";
+const notes_apps_hero_cta = "Bangun Sistem Nyata";
+const notes_apps_hero_note = "Tanpa kartu kredit.";
+const notes_apps_prob_title_1 = "Cuma";
+const notes_apps_prob_title_highlight = "Menimbun Digital";
+const notes_apps_prob_desc = "Nulis aja kerasa produktif, padahal itu jebakan. Tanpa sistem yang ngingetin, 'ide jutaan dolar' kamu terkubur di bawah daftar belanja dan password.";
+const notes_apps_prob_point_1 = "Nggak ada umpan balik (Bisu)";
+const notes_apps_prob_point_2 = "Nggak terhubung ke kalender";
+const notes_apps_prob_point_3 = "Mustahil ngelacak progres";
+const notes_apps_sol_title_1 = "Mesin";
+const notes_apps_sol_title_highlight = "Eksekusi Aktif";
+const notes_apps_sol_desc = "OneForMind nggak cuma nyimpen informasi; tapi mempekerjakannya. Tujuan dipecah jadi habit harian yang dilacak dan diukur otomatis.";
+const notes_apps_sol_box_title = "Aktif vs Pasif";
+const notes_apps_sol_box_desc = "Catatan bilang 'Simpan 10jt'. OS ngelacak pengeluaran, ngatur batas budget, dan nunjukin uang yang udah kamu bakar tiap hari.";
+const notes_apps_compare_title = "Menyimpan vs Mengeksekusi";
+const notes_apps_compare_desc = "Di mana kamu mau ngabisin waktumu?";
+const notes_apps_table_head_1 = "Fitur";
+const notes_apps_table_head_2 = "Aplikasi Catatan";
+const notes_apps_table_head_3 = "OneForMind";
+const notes_apps_table_row_1_title = "Fungsi Utama";
+const notes_apps_table_row_1_col_1 = "Penyimpanan";
+const notes_apps_table_row_1_col_2 = "Eksekusi";
+const notes_apps_table_row_2_title = "Umpan Balik";
+const notes_apps_table_row_2_col_1 = "Bisu";
+const notes_apps_table_row_2_col_2 = "Pengingat Pintar";
+const notes_apps_table_row_3_title = "Kejelasan Visual";
+const notes_apps_table_row_3_col_1 = "Tembok Teks";
+const notes_apps_table_row_3_col_2 = "Grafik & Dashboard";
+const explore_evernote_desc = "Kenapa gajah hijau aja nggak cukup buat pertumbuhan diri.";
+const explore_applenotes_desc = "Memang gratis, tapi mengorbankan eksekusi.";
+const explore_onenote_desc = "Kanvas tak terbatas berarti kekacauan tak terbatas.";
+const evernote_badge = "Vs Evernote";
+const evernote_hero_title_1 = "Evernote itu lemari arsip.";
+const evernote_hero_title_2 = "Kamu butuh mesin.";
+const evernote_hero_desc = "Kamu punya ribuan catatan, tapi apa kamu beneran makin dekat ke tujuan? Evernote nyimpen masa lalu; OneForMind ngebangun masa depan.";
+const evernote_hero_cta = "Beralih ke Eksekusi";
+const evernote_hero_note = "Migrasikan pola pikirmu.";
+const evernote_prob_title_1 = "Kesesatan";
+const evernote_prob_title_highlight = "Sang Kolektor";
+const evernote_prob_desc = "Nyimpen artikel dan numpuk PDF ngasih ilusi produktivitas. Kamu lagi ngebangun perpustakaan, bukan ngebangun hidup.";
+const evernote_sol_title_1 = "Arsitektur";
+const evernote_sol_title_highlight = "Berorientasi Aksi";
+const evernote_sol_desc = "Bukannya dapet buku catatan dan tag, kamu dapet Habit, Keuangan, dan Tugas Harian yang secara aktif dorong kamu maju.";
+const applenotes_badge = "Vs Apple Notes";
+const applenotes_hero_title_1 = "Apple Notes buat daftar belanja.";
+const applenotes_hero_title_2 = "Bukan buat tujuan hidup.";
+const applenotes_hero_desc = "Memang cepet dan gratis. Tapi waktu kamu nyoba ngatur keuangan, habit, dan visi jangka panjang di kotak teks polos, semuanya bakal berantakan.";
+const applenotes_hero_cta = "Upgrade OS-mu";
+const applenotes_hero_note = "Ruang khusus buat pertumbuhan.";
+const applenotes_prob_title_1 = "Terlalu";
+const applenotes_prob_title_highlight = "Sederhana";
+const applenotes_prob_desc = "Teks polos nggak bisa ngitung kekayaan bersihmu. Nggak bisa ngasih heatmap konsistensi olahragamu. Cuma diam aja di situ.";
+const applenotes_sol_title_1 = "Kejelasan";
+const applenotes_sol_title_highlight = "Terstruktur";
+const applenotes_sol_desc = "OneForMind ngasih modul khusus dan indah buat setiap aspek kehidupanmu. Nggak perlu lagi bikin format tabel secara manual.";
+const onenote_badge = "Vs OneNote";
+const onenote_hero_title_1 = "Kanvas tak terbatas.";
+const onenote_hero_title_2 = "Kekacauan tak terbatas.";
+const onenote_hero_desc = "Klik di mana aja. Ketik apa aja. Kedengerannya bagus sampe kamu natap halaman berantakan dan nggak terstruktur pas lagi mikir mau ngapain hari ini.";
+const onenote_hero_cta = "Mulai Terstruktur";
+const onenote_hero_note = "Bawa keteraturan ke dalam kekacauan.";
+const onenote_prob_title_1 = "Kurangnya";
+const onenote_prob_title_highlight = "Batasan";
+const onenote_prob_desc = "Tanpa batasan, manajemen pribadi berubah jadi kumpulan kotak teks yang berantakan. Kamu malah ngabisin waktu buat ngatur halaman daripada ngerjain tugasnya.";
+const onenote_sol_title_1 = "Desain";
+const onenote_sol_title_highlight = "Berpendirian";
+const onenote_sol_desc = "Kami ngebangun frameworknya supaya kamu nggak perlu repot. Tinggal masukin habit, tugas, dan budgetmu, biarin sistem yang ngebimbing kamu.";
+const evernote_hero_visual_1 = "Penyimpanan Mati";
+const evernote_hero_visual_2 = "Progres Aktif";
+const evernote_prob_visual_1 = "1.240 Catatan";
+const evernote_prob_visual_2 = '"10 Cara Jadi Produktif"';
+const evernote_prob_visual_3 = "0 Aksi Nyata";
+const evernote_prob_point_1_title = "Penyimpanan Pasif";
+const evernote_prob_point_1_desc = "Nyimpen artikel bukan berarti kamu belajar. Itu cuma menimbun file digital.";
+const evernote_prob_point_2_title = "Tanpa Akuntabilitas";
+const evernote_prob_point_2_desc = "Evernote nggak pernah nanya kenapa kamu nggak olahraga hari ini.";
+const evernote_sol_point_1_title = "Mesin Habit";
+const evernote_sol_point_1_desc = "Heatmap visual dan runtutan streak yang ngebentuk ulang otakmu, bukan sekadar daftar periksa statis.";
+const evernote_sol_point_2_title = "OS Keuangan";
+const evernote_sol_point_2_desc = "Zero-based budgeting yang maksa kamu buat ngasih tugas ke setiap lembar uang.";
+const evernote_sol_point_3_title = "Perencana Fokus";
+const evernote_sol_point_3_desc = "Kalender time-blocking yang ngehubungin tugas harianmu ke tujuan jangka panjang.";
+const evernote_table_title = "Evernote vs OneForMind";
+const evernote_table_desc = "Lihat perbedaan arsitekturnya.";
+const evernote_table_h1 = "Fitur";
+const evernote_table_h2 = "Evernote";
+const evernote_table_h3 = "OneForMind";
+const evernote_table_r1_1 = "Paradigma Utama";
+const evernote_table_r1_2 = "Penyimpanan Dokumen";
+const evernote_table_r1_3 = "Mesin Aksi";
+const evernote_table_r2_1 = "Pelacakan Habit";
+const evernote_table_r2_2 = "Kotak centang di catatan";
+const evernote_table_r2_3 = "Heatmap Visual Bawaan";
+const evernote_table_r3_1 = "OS Keuangan";
+const evernote_table_r3_2 = "Tabel (Ngitung Manual)";
+const evernote_table_r3_3 = "Dashboard Kekayaan Otomatis";
+const evernote_psy_title = "Psikologi Sebuah Aksi";
+const evernote_psy_desc = "Aplikasi catatan nyiptain rasa pencapaian palsu. Kamu nyimpen artikel, kamu ngerasa produktif. Padahal nggak ada yang berubah di hidupmu. OneForMind ngebuang keribetan setup dan maksa kamu buat ngadepin tindakan harianmu.";
+const evernote_psy_quote = "Berhenti ngumpulin masa lalu.<br>Mulai bangun masa depan.";
+const evernote_cta_title = "Siap buat lulus?";
+const evernote_cta_btn = "Nyalakan Mesinmu";
+const applenotes_hero_visual_1 = "Apple Notes";
+const applenotes_hero_visual_2 = "Beli Susu";
+const applenotes_hero_visual_3 = "OneForMind";
+const applenotes_hero_visual_4 = "Bangun Kekayaan";
+const applenotes_prob_visual_1 = "Jebakan Teks Polos:";
+const applenotes_prob_visual_2 = '"Bulan ini nabung 500rb dan olahraga 3x seminggu."';
+const applenotes_prob_visual_3 = "Hasilnya: Lupa dalam 2 hari";
+const applenotes_prob_visual_4 = "1 Januari, 09:00";
+const applenotes_prob_visual_5 = "Resolusi Tahun Baru";
+const applenotes_prob_visual_6 = "Pergi ke gym";
+const applenotes_prob_visual_7 = "Berhenti beli kopi";
+const applenotes_prob_visual_8 = "Baca lebih banyak buku";
+const applenotes_prob_visual_9 = "DITELANTARKAN";
+const applenotes_sol_visual_1 = "Baca 10 Halaman";
+const applenotes_sol_visual_2 = "Streak 12 Hari!";
+const applenotes_sol_visual_3 = "Anggaran Kopi";
+const applenotes_sol_point_1_title = "Progres Visual";
+const applenotes_sol_point_1_desc = "Berhenti nebak-nebak. Lihat konsistensimu lewat heatmap dan grafik yang indah.";
+const applenotes_sol_point_2_title = "Dorongan Pintar";
+const applenotes_sol_point_2_desc = "Sistem secara aktif ngingetin kamu sebelum streak habitmu terputus.";
+const applenotes_gap_title = "Nggak Ada Tenggat Waktu";
+const applenotes_gap_desc = "Catatan nggak tersinkronisasi otomatis dengan jadwal kalender harianmu.";
+const applenotes_gap_title_2 = "Nggak Ada Visual";
+const applenotes_gap_desc_2 = "Kamu nggak bisa lihat heatmap dari habit meditasimu selama 30 hari.";
+const applenotes_gap_title_3 = "Nggak Ada Akuntabilitas";
+const applenotes_gap_desc_3 = "Dia nggak pernah ngingetin kamu pas kamu mulai ketinggalan dari targetmu.";
+const applenotes_adv_title = "Alternatif All-in-One";
+const applenotes_adv_desc = "Berhenti lompat-lompati Apple Notes, Kalender, dan aplikasi budget acak. Satukan hidupmu ke dalam satu dashboard padu yang secara aktif bekerja buatmu.";
+const applenotes_adv_badge = "Live OS Aktif";
+const applenotes_cta_title = "Beralihlah hari ini.";
+const applenotes_cta_btn = "Mulai Gratis";
+const onenote_hero_visual_1 = "OS Kehidupan Terstruktur";
+const onenote_hero_visual_2 = "Keuangan";
+const onenote_hero_visual_3 = "Sehat";
+const onenote_hero_visual_4 = "Habit";
+const onenote_hero_visual_5 = "Tingkat 85%";
+const onenote_hero_visual_6 = "Tujuan";
+const onenote_hero_visual_7 = "Sesuai Jalur";
+const onenote_prob_visual_1 = "Item";
+const onenote_prob_visual_2 = "Biaya";
+const onenote_prob_visual_3 = "Makan";
+const onenote_prob_visual_4 = "Bensin";
+const onenote_prob_visual_5 = "Kehilangan Fokus";
+const onenote_prob_point_1_title = "Kelelahan Mengambil Keputusan";
+const onenote_prob_point_1_desc = "Setiap halaman baru maksa kamu mikir mau naruh teks, tabel, dan gambar di mana.";
+const onenote_prob_point_2_title = "Susah Dilacak";
+const onenote_prob_point_2_desc = "Semoga sukses nemuin tingkat konsistensi habit yang tersebar di 50 halaman bentuk bebas.";
+const onenote_sol_point_1 = "Visualisasi Data Otomatis";
+const onenote_sol_point_2 = "Framework Siap Pakai";
+const onenote_sol_point_3 = "Tanpa Waktu Setup";
+const onenote_sol_visual_1 = "Progres Bulanan";
+const onenote_sol_visual_2 = "Dihasilkan secara otomatis";
+const onenote_sol_visual_3 = "Penyelarasan Tugas";
+const onenote_sol_visual_4 = "Terhubung ke Tujuan Jangka Panjang";
+const onenote_cost_title = "Halaman kosong adalah musuhmu.";
+const onenote_cost_desc = "Waktu kamu punya kemungkinan tak terbatas, kamu biasanya malah nggak dapet apa-apa. Kanvas kosong maksa kamu bikin keputusan kecil soal format, tata letak, dan struktur setiap kali kamu mau nyatet habit atau ngelacak pengeluaran.";
+const onenote_cost_point_1 = "Nggak perlu lagi ngatur format tabel";
+const onenote_cost_point_2 = "Nggak perlu lagi bikin kotak centang";
+const onenote_cost_point_3 = "UI yang udah jadi dan indah";
+const onenote_feat_visual_1 = "Kanvas Aplikasi Catatan Tipikal";
+const onenote_feat_title_1 = "Pendekatan OneNote";
+const onenote_feat_point_1_title = "Format Manual";
+const onenote_feat_point_1_desc = "Ngabisin 10 menit cuma buat bikin tabel budget keliatan lumayan.";
+const onenote_feat_point_2_title = "Kotak Centang Statis";
+const onenote_feat_point_2_desc = "Klik kotak. Nggak terjadi apa-apa. Nggak ada streak.";
+const onenote_feat_title_2 = "Keunggulan OneForMind";
+const onenote_feat_point_3_title = "Dashboard Keuangan Otomatis";
+const onenote_feat_point_3_desc = "Masukin angkanya. Lihat grafik trennya secara instan.";
+const onenote_feat_point_4_title = "Mesin Habit Cerdas";
+const onenote_feat_point_4_desc = "Bangun streak, dapet wawasan neural, lihat heatmap.";
+const onenote_cta_title = "Rangkul Keteraturan.";
+const onenote_cta_btn = "Mulai Sistemmu";
+const compare_nav_title = "Bandingkan Aplikasi Catatan:";
 const dash_greet_morning = "Selamat Pagi";
 const dash_greet_afternoon = "Selamat Siang";
 const dash_greet_evening = "Selamat Sore";
@@ -14157,7 +17489,7 @@ const btn_journal = "Refleksi Diri";
 const dash_task_scheduled = "Terjadwal";
 const dash_weekly_rhythm = "Irama 7 hari";
 const dash_weekly_rhythm_empty = "Skor mingguan muncul setelah kamu mencatat habit dan tugas planner.";
-const habit_meta_title = "OneForMind | Habit Tracker Terbaik & Sistem Atomic Habits";
+const habit_meta_title = "OneForMind | Habit Tracker Terbaik and Sistem Atomic Habits";
 const habit_meta_desc = "Bangun kebiasaan langgeng dengan sistem atomik terbaik. Lacak konsistensi, tingkatkan identitas, dan sinkronkan habit dengan tujuan hidup.";
 const habit_meta_og_title = "Habit Tracker - OneForMind";
 const habit_meta_og_desc = "Lacak kebiasaan harianmu, bangun rutinitas solid, dan jadilah versi terbaik dirimu dengan Habit Tracker.";
@@ -14249,7 +17581,7 @@ const habit_mood_insight = "Kamu merasa 24% lebih baik di hari kamu menyelesaika
 const habit_mood_title = "Pahami Pikiranmu";
 const habit_mood_desc = "Kami membantumu mengorelasikan kebiasaan dengan suasana hati harian, memberikan wawasan mendalam tentang apa yang sebenarnya membuatmu bahagia.";
 const habit_mood_social_proof = "Digunakan oleh 1.000+ pengguna untuk meningkatkan kesehatan mental";
-const finance_meta_title = "OneForMind | Mindful Personal Finance OS & Pelacak Pengeluaran";
+const finance_meta_title = "OneForMind | Mindful Personal Finance OS and Pelacak Pengeluaran";
 const finance_meta_desc = "Kuasai arus kas dengan akuntansi sadar. Tanpa sinkronisasi bank, privasi total, dan wawasan mendalam tentang perilaku finansial Anda.";
 const finance_meta_og_title = "Finance Manager - OneForMind";
 const finance_meta_og_desc = "Catat pengeluaran, atur budget, dan pantau keuanganmu dengan mudah.";
@@ -14347,7 +17679,7 @@ const finance_flow_allocation_label = "Alokasi";
 const finance_flow_expense_label_2 = "Keinginan";
 const finance_flow_expense_title_2 = "Makan & Gaya Hidup";
 const finance_privacy_badge = "Keamanan";
-const planner_meta_title = "OneForMind | Perencana Harian Terpadu & Sistem Fokus Tugas";
+const planner_meta_title = "OneForMind | Perencana Harian Terpadu and Sistem Fokus Tugas";
 const planner_meta_desc = "Satu-satunya perencana yang Anda butuhkan. Selaraskan jadwal harian dengan visi jangka panjang menggunakan sistem berbasis konteks kami.";
 const planner_meta_og_title = "Daily Planner - OneForMind";
 const planner_meta_og_desc = "Atur jadwal harian, blok waktu, dan selesaikan tugas-tugas penting tanpa distraksi.";
@@ -14441,7 +17773,7 @@ const planner_flow_col_2_status = "Fokus Penuh";
 const planner_flow_col_3_title = "Review Malam";
 const planner_flow_col_3_desc = "Decompress dan rencanakan hari esok yang sukses.";
 const planner_flow_col_3_status = "Selesai";
-const journal_meta_title = "OneForMind | Jurnal Digital Aman & Analitik Mood Sadar";
+const journal_meta_title = "OneForMind | Jurnal Digital Aman and Analitik Mood Sadar";
 const journal_meta_desc = "Ruang tenang untuk pikiran Anda. Latih refleksi harian dengan jurnal terenkripsi dan wawasan pelacakan mood yang indah.";
 const journal_meta_og_title = "Digital Journal - OneForMind";
 const journal_meta_og_desc = "Tempat aman untuk pikiranmu. Tulis jurnal, lacak mood, dan temukan ketenangan.";
@@ -14512,7 +17844,7 @@ const journal_nebula_feature_1_title = "Penemuan Insight";
 const journal_nebula_feature_1_desc = "Cari tahu bagaimana tidur dan kebiasaanmu memengaruhi suasana hati harian.";
 const journal_nebula_feature_2_title = "Pelacakan Emosional";
 const journal_nebula_feature_2_desc = "Visualisasikan perjalanan emosionalmu melalui peta suasana hati yang indah.";
-const calendar_meta_title = "OneForMind | Kalender Hidup Cerdas & Timeblocking Terpadu";
+const calendar_meta_title = "OneForMind | Kalender Hidup Cerdas and Timeblocking Terpadu";
 const calendar_meta_desc = "Visualisasikan waktu Anda dengan cara baru. Kalender cerdas yang mengintegrasikan tugas dan kebiasaan dalam satu lini masa yang jelas.";
 const calendar_meta_og_title = "Smart Calendar - OneForMind";
 const calendar_meta_og_desc = "Kelola waktumu dengan lebih baik bersama OneForMind Calendar.";
@@ -14598,7 +17930,7 @@ const calendar_pulse_item_1_timer = "02:14:55";
 const calendar_pulse_item_1_sub = "Sisa Waktu";
 const calendar_pulse_item_2_title = "Audit Kuartal";
 const calendar_pulse_item_2_status = "Terjadwal";
-const goal_meta_title = "OneForMind | Vision Board & OS Pencapaian Tujuan Personal";
+const goal_meta_title = "OneForMind | Vision Board and OS Pencapaian Tujuan Personal";
 const goal_meta_desc = "Ubah visi menjadi kenyataan. Pecah impian besar menjadi langkah nyata dan lacak momentum Anda di setiap tahap.";
 const goal_meta_og_title = "Goal Tracker - OneForMind";
 const goal_meta_og_desc = "Capai tujuan jangka panjangmu dengan alat perencanaan strategis kami.";
@@ -14655,7 +17987,7 @@ const goal_cta_title = "Siap Mencapai Visimu?";
 const goal_cta_desc = "Berhenti berharap dan mulai mengeksekusi dengan sistem manajemen tujuan terpadu kami.";
 const goal_cta_btn = "Tetapkan Tujuan Pertamamu";
 const goal_cta_note = "Gratis selamanya untuk individu.";
-const job_meta_title = "OneForMind | Pelacak Lamaran Kerja Cerdas & Hub Karir";
+const job_meta_title = "OneForMind | Pelacak Lamaran Kerja Cerdas and Hub Karir";
 const job_meta_desc = "Atur pertumbuhan karir Anda. Lacak lamaran, wawancara, dan networking dalam satu dashboard profesional untuk performa tinggi.";
 const job_meta_og_title = "Job Tracker - OneForMind";
 const job_meta_og_desc = "Lacak lamaran kerja dan kelola transisi karirmu secara profesional.";
@@ -15496,7 +18828,7 @@ const habit_ai_promo_desc = "Kebanyakan habit gagal karena hambatan tak terlihat
 const habit_ai_promo_btn = "Coba Neural Habit Audit";
 const welcome_meta_desc = "OneForMind adalah Life OS terpadu. Kelola habit tracker, daily planner, dan manajer keuangan dalam satu ekosistem produktivitas.";
 const welcome_meta_og_title = "OneForMind | Unified Habit Tracker, Planner & Finance OS";
-const welcome_meta_title = "OneForMind | Habit Tracker, Planner & Finance OS Terpadu";
+const welcome_meta_title = "OneForMind | Habit Tracker, Planner and Finance OS Terpadu";
 const welcome_meta_og_desc = "Hentikan kelelahan berganti aplikasi. Kelola habit tracker, manajer keuangan, dan daily planner Anda dalam satu dasbor.";
 const hero_premium_badge = "✨ Memperkenalkan: Neuro-Sync v2.0";
 const hero_premium_title_1 = "Satu Pikiran.";
@@ -16455,7 +19787,7 @@ const pricing_infra_notion = "Kejernihan Notion";
 const pricing_per_month_short = "/bln";
 const pricing_once_short = "sekali";
 const pricing_btn_unleash_neural = "BUKA NEURAL OS";
-const privacy_meta_title = "Pusat Privasi & Kepercayaan";
+const privacy_meta_title = "Pusat Privasi and Kepercayaan";
 const privacy_meta_desc = "Pelajari bagaimana OneForMind melindungi data, privasi, dan memastikan keamanan Anda.";
 const privacy_meta_og_title = "Trust Center — OneForMind";
 const privacy_meta_og_desc = "Kami percaya kebiasaan dan keuangan Anda adalah urusan pribadi Anda. Baca kebijakan privasi kami.";
@@ -16593,7 +19925,7 @@ const terms_cta_desc = "Dengan menekan tombol di bawah, Anda menyatakan paham da
 const terms_cta_btn_agree = "Saya Setuju Semuanya";
 const terms_cta_btn_decline = "Batalkan Akses";
 const terms_cta_note = "Kesepakatan ini mengikat secara hukum sejak akun dibuat.";
-const sec_meta_title = "Keamanan & Infrastruktur - OneForMind";
+const sec_meta_title = "Keamanan and Infrastruktur - OneForMind";
 const sec_meta_desc = "Pelajari bagaimana kami mengamankan data Anda dengan standar enkripsi militer dan arsitektur cloud modern.";
 const sec_meta_og_title = "Secure by Design - OneForMind";
 const sec_meta_og_desc = "Benteng digital untuk habit dan finansial Anda.";
@@ -16642,7 +19974,7 @@ const sec_p_sovereignty = "Kami percaya pada 'Privacy by Default'. Kami tidak me
 const sec_cta_title = "Mulai Membangun di Ruang Aman.";
 const sec_cta_desc = "Sistem kami siap melindungi progres hidup Anda. Fokus saja pada pertumbuhan, biar kami yang urus keamanannya.";
 const sec_cta_btn = "Daftar Akun Aman";
-const refund_meta_title = "Kebijakan Pembatalan & No-Refund - OneForMind";
+const refund_meta_title = "Kebijakan Pembatalan and No-Refund - OneForMind";
 const refund_meta_desc = "Informasi transparan mengenai kebijakan tanpa pengembalian dana kami sebagai produk digital instan.";
 const refund_meta_og_title = "No Refund Policy — OneForMind";
 const refund_meta_og_desc = "Kebijakan pembayaran final untuk pengguna OneForMind.";
@@ -16679,7 +20011,7 @@ const refund_merchant_protection_title = "Perlindungan Merchant";
 const refund_merchant_protection_desc = "Transaksi Anda dilindungi oleh aturan hukum transaksional digital yang menyatakan bahwa produk instan yang sudah dibuka/digunakan tidak dapat dikembalikan.";
 const refund_user_responsibility_title = "Langkah Mandiri (User Responsibility):";
 const refund_contact_label = "Kontak: oneformindapp@gmail.com";
-const guide_meta_title = "Panduan & Pusat Bantuan - OneForMind";
+const guide_meta_title = "Panduan and Pusat Bantuan - OneForMind";
 const guide_meta_desc = "Semua yang Anda butuhkan untuk menguasai alur kerja dan pola pikir.";
 const guide_meta_og_title = "Pusat Pengetahuan OneForMind";
 const guide_meta_og_desc = "Kuasai pikiran Anda dengan panduan komprehensif kami.";
@@ -16727,7 +20059,7 @@ const guide_art_2_title = "5 Tips Memaksimalkan Habit Tracker";
 const guide_art_2_desc = "Strategi untuk membangun kebiasaan yang tak terhentikan.";
 const guide_art_3_title = "Menggunakan Time Blocking untuk Fokus Maksimal";
 const guide_art_3_desc = "Cara merancang hari Anda untuk produktivitas puncak.";
-const blog_meta_title = "Blog & Artikel - OneForMind";
+const blog_meta_title = "Blog and Artikel - OneForMind";
 const blog_meta_desc = "Baca insight terbaru seputar produktivitas, pengembangan diri, dan pembaruan fitur dari tim OneForMind.";
 const blog_meta_og_title = "OneForMind Blog";
 const blog_meta_og_desc = "Wawasan dan strategi untuk bekerja lebih cerdas.";
@@ -16829,7 +20161,7 @@ const comm_event_date = "Maret 2026";
 const comm_event_cta = "Amankan Slot Anda";
 const comm_event_1 = "Menguasai Sistem Pikiran Anda";
 const comm_event_2 = "Membangun Secara Terbuka: Tanya Jawab Founder";
-const cl_meta_title = "Changelog & Evolusi - OneForMind";
+const cl_meta_title = "Changelog and Evolusi - OneForMind";
 const cl_meta_desc = "Jelajahi evolusi konstan OneForMind. Lihat fitur terbaru, peningkatan, dan roadmap masa depan kami.";
 const cl_meta_og_title = "OneForMind: Peta Evolusi";
 const cl_meta_og_desc = "Peningkatan tanpa henti. Cek apa yang baru saja kami luncurkan.";
@@ -17293,7 +20625,7 @@ const solve_mental_faq_a3 = "Ya, kami menyediakan berbagai template prompt untuk
 const solve_mental_cta_title = "Ambil Nafas Dalam-Dalam.";
 const solve_mental_cta_desc = "Ketidakteraturan di luar dimulai dari ketidakteraturan di dalam. Mulai jernihkan pikiranmu hari ini.";
 const solve_mental_cta_btn = "Mulai Hidup Lebih Tenang";
-const growth_meta_title = "Pengembangan Diri & Produktivitas - OneForMind";
+const growth_meta_title = "Pengembangan Diri and Produktivitas - OneForMind";
 const growth_meta_desc = "Bangun kebiasaan baik, jernihkan pikiran dengan jurnal, dan raih versi terbaik dirimu setiap hari.";
 const growth_meta_og_title = "OneForMind untuk Personal Growth";
 const growth_meta_og_desc = "Sistem untuk membangun identitas baru dan kebiasaan yang tak terhentikan.";
@@ -17625,7 +20957,7 @@ const solve_atomic_faq_a3 = "Iya, data Anda aman. Fokuslah membangun diri.";
 const solve_atomic_cta_title = "Kecil Itu Kuat.";
 const solve_atomic_cta_desc = "Anda adalah apa yang Anda lakukan berulang kali. Mulai satu langkah kecil hari ini.";
 const solve_atomic_cta_btn = "Bangun Rutinitas Mikro Saya";
-const deep_meta_title = "Deep Work & Fokus Maksimal - OneForMind";
+const deep_meta_title = "Deep Work and Fokus Maksimal - OneForMind";
 const deep_meta_desc = "Hancurkan distraksi. Masuki flow state dan hasilkan karya terbaik Anda dengan sistem manajemen fokus.";
 const deep_meta_og_title = "Kuasai Fokus Anda dengan OneForMind";
 const deep_meta_og_desc = "Kemampuan untuk fokus mendalam adalah superpower di abad ke-21.";
@@ -18520,6 +21852,839 @@ const id = {
   Extended_Mind_Thesis_Verified,
   Distributed_Cognition_Active,
   five_how_it_works_desc,
+  habitica_alt_title,
+  habitica_alt_desc,
+  habitica_alt_og_title,
+  habitica_alt_og_desc,
+  habitica_badge,
+  habitica_hero_title_1,
+  habitica_hero_title_2,
+  habitica_hero_desc,
+  habitica_hero_cta,
+  habitica_hero_note,
+  habitica_prob_title_1,
+  habitica_prob_title_highlight,
+  habitica_prob_desc,
+  habitica_prob_point_1,
+  habitica_prob_point_2,
+  habitica_prob_point_3,
+  habitica_sol_title_1,
+  habitica_sol_title_highlight,
+  habitica_sol_desc,
+  habitica_sol_1_title,
+  habitica_sol_1_desc,
+  habitica_sol_2_title,
+  habitica_sol_2_desc,
+  habitica_compare_title,
+  habitica_compare_desc,
+  habitica_table_head_2,
+  habitica_table_row_1_title,
+  habitica_table_row_1_col_1,
+  habitica_table_row_1_col_2,
+  habitica_table_row_2_title,
+  habitica_table_row_2_col_1,
+  habitica_table_row_2_col_2,
+  habitica_table_row_3_title,
+  habitica_table_row_3_col_1,
+  habitica_table_row_3_col_2,
+  habitica_cta_title,
+  habitica_cta_desc,
+  habitica_cta_btn,
+  streaks_alt_title,
+  streaks_alt_desc,
+  streaks_alt_og_title,
+  streaks_alt_og_desc,
+  streaks_badge,
+  streaks_hero_title_1,
+  streaks_hero_title_2,
+  streaks_hero_desc,
+  streaks_hero_cta,
+  streaks_hero_note,
+  streaks_prob_title_1,
+  streaks_prob_title_highlight,
+  streaks_prob_desc,
+  streaks_prob_point_1,
+  streaks_prob_point_2,
+  streaks_prob_point_3,
+  streaks_sol_title_1,
+  streaks_sol_title_highlight,
+  streaks_sol_desc,
+  streaks_sol_1_title,
+  streaks_sol_1_desc,
+  streaks_sol_2_title,
+  streaks_sol_2_desc,
+  streaks_compare_title,
+  streaks_compare_desc,
+  streaks_table_head_2,
+  streaks_table_row_1_title,
+  streaks_table_row_1_col_1,
+  streaks_table_row_1_col_2,
+  streaks_table_row_2_title,
+  streaks_table_row_2_col_1,
+  streaks_table_row_2_col_2,
+  streaks_table_row_3_title,
+  streaks_table_row_3_col_1,
+  streaks_table_row_3_col_2,
+  streaks_cta_title,
+  streaks_cta_desc,
+  streaks_cta_btn,
+  habitify_alt_title,
+  habitify_alt_desc,
+  habitify_alt_og_title,
+  habitify_alt_og_desc,
+  habitify_badge,
+  habitify_hero_title_1,
+  habitify_hero_title_2,
+  habitify_hero_desc,
+  habitify_hero_cta,
+  habitify_hero_note,
+  habitify_prob_title_1,
+  habitify_prob_title_highlight,
+  habitify_prob_desc,
+  habitify_prob_point_1,
+  habitify_prob_point_2,
+  habitify_prob_point_3,
+  habitify_sol_title_1,
+  habitify_sol_title_highlight,
+  habitify_sol_desc,
+  habitify_sol_1_title,
+  habitify_sol_1_desc,
+  habitify_sol_2_title,
+  habitify_sol_2_desc,
+  habitify_compare_title,
+  habitify_compare_desc,
+  habitify_table_head_2,
+  habitify_table_row_1_title,
+  habitify_table_row_1_col_1,
+  habitify_table_row_1_col_2,
+  habitify_table_row_2_title,
+  habitify_table_row_2_col_1,
+  habitify_table_row_2_col_2,
+  habitify_table_row_3_title,
+  habitify_table_row_3_col_1,
+  habitify_table_row_3_col_2,
+  habitify_cta_title,
+  habitify_cta_desc,
+  habitify_cta_btn,
+  explore_more_alt,
+  explore_more_desc,
+  explore_habitica_desc,
+  explore_streaks_desc,
+  explore_habitify_desc,
+  habitica_science_title,
+  habitica_science_desc,
+  habitica_science_point1,
+  habitica_science_point1_desc,
+  habitica_science_point2,
+  habitica_science_point2_desc,
+  habitica_testimonial,
+  streaks_psycho_title,
+  streaks_psycho_desc,
+  streaks_psycho_point1,
+  streaks_psycho_point1_desc,
+  streaks_data_title,
+  streaks_data_desc,
+  habitify_cost_title,
+  habitify_cost_desc,
+  habitify_ai_title,
+  habitify_ai_desc,
+  explore_ynab_desc,
+  ynab_alt_title,
+  ynab_alt_desc,
+  ynab_alt_og_title,
+  ynab_alt_og_desc,
+  ynab_badge,
+  ynab_hero_title_1,
+  ynab_hero_title_2,
+  ynab_hero_desc,
+  ynab_hero_cta,
+  ynab_hero_note,
+  ynab_prob_title_1,
+  ynab_prob_title_highlight,
+  ynab_prob_desc,
+  ynab_prob_point_1,
+  ynab_prob_point_2,
+  ynab_prob_point_3,
+  ynab_sol_title_1,
+  ynab_sol_title_highlight,
+  ynab_sol_desc,
+  ynab_sol_1_title,
+  ynab_sol_1_desc,
+  ynab_sol_2_title,
+  ynab_sol_2_desc,
+  ynab_compare_title,
+  ynab_compare_desc,
+  ynab_table_head_2,
+  ynab_table_row_1_title,
+  ynab_table_row_1_col_1,
+  ynab_table_row_1_col_2,
+  ynab_table_row_2_title,
+  ynab_table_row_2_col_1,
+  ynab_table_row_2_col_2,
+  ynab_table_row_3_title,
+  ynab_table_row_3_col_1,
+  ynab_table_row_3_col_2,
+  ynab_cost_title,
+  ynab_cost_desc,
+  ynab_psycho_title,
+  ynab_psycho_desc,
+  ynab_cta_title,
+  ynab_cta_desc,
+  ynab_cta_btn,
+  explore_wallet_desc,
+  wallet_alt_title,
+  wallet_alt_desc,
+  wallet_alt_og_title,
+  wallet_alt_og_desc,
+  wallet_badge,
+  wallet_hero_title_1,
+  wallet_hero_title_2,
+  wallet_hero_desc,
+  wallet_hero_cta,
+  wallet_hero_note,
+  wallet_prob_title_1,
+  wallet_prob_title_highlight,
+  wallet_prob_desc,
+  wallet_prob_point_1,
+  wallet_prob_point_2,
+  wallet_prob_point_3,
+  wallet_sol_title_1,
+  wallet_sol_title_highlight,
+  wallet_sol_desc,
+  wallet_sol_1_title,
+  wallet_sol_1_desc,
+  wallet_sol_2_title,
+  wallet_sol_2_desc,
+  wallet_compare_title,
+  wallet_compare_desc,
+  wallet_table_head_2,
+  wallet_table_row_1_title,
+  wallet_table_row_1_col_1,
+  wallet_table_row_1_col_2,
+  wallet_table_row_2_title,
+  wallet_table_row_2_col_1,
+  wallet_table_row_2_col_2,
+  wallet_table_row_3_title,
+  wallet_table_row_3_col_1,
+  wallet_table_row_3_col_2,
+  wallet_science_title,
+  wallet_science_desc,
+  wallet_data_title,
+  wallet_data_desc,
+  wallet_cta_title,
+  wallet_cta_desc,
+  wallet_cta_btn,
+  explore_spendee_desc,
+  spendee_alt_title,
+  spendee_alt_desc,
+  spendee_alt_og_title,
+  spendee_alt_og_desc,
+  spendee_badge,
+  spendee_hero_title_1,
+  spendee_hero_title_2,
+  spendee_hero_desc,
+  spendee_hero_cta,
+  spendee_hero_note,
+  spendee_prob_title_1,
+  spendee_prob_title_highlight,
+  spendee_prob_desc,
+  spendee_prob_point_1,
+  spendee_prob_point_2,
+  spendee_prob_point_3,
+  spendee_sol_title_1,
+  spendee_sol_title_highlight,
+  spendee_sol_desc,
+  spendee_sol_1_title,
+  spendee_sol_1_desc,
+  spendee_sol_2_title,
+  spendee_sol_2_desc,
+  spendee_compare_title,
+  spendee_compare_desc,
+  spendee_table_head_2,
+  spendee_table_row_1_title,
+  spendee_table_row_1_col_1,
+  spendee_table_row_1_col_2,
+  spendee_table_row_2_title,
+  spendee_table_row_2_col_1,
+  spendee_table_row_2_col_2,
+  spendee_table_row_3_title,
+  spendee_table_row_3_col_1,
+  spendee_table_row_3_col_2,
+  spendee_ai_title,
+  spendee_ai_desc,
+  spendee_cost_title,
+  spendee_cost_desc,
+  spendee_cta_title,
+  spendee_cta_desc,
+  spendee_cta_btn,
+  explore_todoist_desc,
+  todoist_alt_title,
+  todoist_alt_desc,
+  todoist_alt_og_title,
+  todoist_alt_og_desc,
+  todoist_badge,
+  todoist_hero_title_1,
+  todoist_hero_title_2,
+  todoist_hero_desc,
+  todoist_hero_cta,
+  todoist_hero_note,
+  todoist_prob_title_1,
+  todoist_prob_title_highlight,
+  todoist_prob_desc,
+  todoist_prob_point_1,
+  todoist_prob_point_2,
+  todoist_prob_point_3,
+  todoist_sol_title_1,
+  todoist_sol_title_highlight,
+  todoist_sol_desc,
+  todoist_sol_1_title,
+  todoist_sol_1_desc,
+  todoist_sol_2_title,
+  todoist_sol_2_desc,
+  todoist_compare_title,
+  todoist_compare_desc,
+  todoist_table_head_2,
+  todoist_table_row_1_title,
+  todoist_table_row_1_col_1,
+  todoist_table_row_1_col_2,
+  todoist_table_row_2_title,
+  todoist_table_row_2_col_1,
+  todoist_table_row_2_col_2,
+  todoist_table_row_3_title,
+  todoist_table_row_3_col_1,
+  todoist_table_row_3_col_2,
+  todoist_psycho_title,
+  todoist_psycho_desc,
+  todoist_data_title,
+  todoist_data_desc,
+  todoist_cta_title,
+  todoist_cta_desc,
+  todoist_cta_btn,
+  explore_ticktick_desc,
+  ticktick_alt_title,
+  ticktick_alt_desc,
+  ticktick_alt_og_title,
+  ticktick_alt_og_desc,
+  ticktick_badge,
+  ticktick_hero_title_1,
+  ticktick_hero_title_2,
+  ticktick_hero_desc,
+  ticktick_hero_cta,
+  ticktick_hero_note,
+  ticktick_prob_title_1,
+  ticktick_prob_title_highlight,
+  ticktick_prob_desc,
+  ticktick_prob_point_1,
+  ticktick_prob_point_2,
+  ticktick_prob_point_3,
+  ticktick_sol_title_1,
+  ticktick_sol_title_highlight,
+  ticktick_sol_desc,
+  ticktick_sol_1_title,
+  ticktick_sol_1_desc,
+  ticktick_sol_2_title,
+  ticktick_sol_2_desc,
+  ticktick_compare_title,
+  ticktick_compare_desc,
+  ticktick_table_head_2,
+  ticktick_table_row_1_title,
+  ticktick_table_row_1_col_1,
+  ticktick_table_row_1_col_2,
+  ticktick_table_row_2_title,
+  ticktick_table_row_2_col_1,
+  ticktick_table_row_2_col_2,
+  ticktick_table_row_3_title,
+  ticktick_table_row_3_col_1,
+  ticktick_table_row_3_col_2,
+  ticktick_psycho_title,
+  ticktick_psycho_desc,
+  ticktick_data_title,
+  ticktick_data_desc,
+  ticktick_cta_title,
+  ticktick_cta_desc,
+  ticktick_cta_btn,
+  explore_clickup_desc,
+  clickup_alt_title,
+  clickup_alt_desc,
+  clickup_alt_og_title,
+  clickup_alt_og_desc,
+  clickup_badge,
+  clickup_hero_title_1,
+  clickup_hero_title_2,
+  clickup_hero_desc,
+  clickup_hero_cta,
+  clickup_hero_note,
+  clickup_prob_title_1,
+  clickup_prob_title_highlight,
+  clickup_prob_desc,
+  clickup_prob_point_1,
+  clickup_prob_point_2,
+  clickup_prob_point_3,
+  clickup_sol_title_1,
+  clickup_sol_title_highlight,
+  clickup_sol_desc,
+  clickup_sol_1_title,
+  clickup_sol_1_desc,
+  clickup_sol_2_title,
+  clickup_sol_2_desc,
+  clickup_compare_title,
+  clickup_compare_desc,
+  clickup_table_head_2,
+  clickup_table_row_1_title,
+  clickup_table_row_1_col_1,
+  clickup_table_row_1_col_2,
+  clickup_table_row_2_title,
+  clickup_table_row_2_col_1,
+  clickup_table_row_2_col_2,
+  clickup_table_row_3_title,
+  clickup_table_row_3_col_1,
+  clickup_table_row_3_col_2,
+  clickup_psycho_title,
+  clickup_psycho_desc,
+  clickup_data_title,
+  clickup_data_desc,
+  clickup_cta_title,
+  clickup_cta_desc,
+  clickup_cta_btn,
+  explore_spreadsheet_desc,
+  spreadsheet_alt_title,
+  spreadsheet_alt_desc,
+  spreadsheet_alt_og_title,
+  spreadsheet_alt_og_desc,
+  spreadsheet_badge,
+  spreadsheet_hero_title_1,
+  spreadsheet_hero_title_2,
+  spreadsheet_hero_desc,
+  spreadsheet_hero_cta,
+  spreadsheet_hero_note,
+  spreadsheet_prob_title_1,
+  spreadsheet_prob_title_highlight,
+  spreadsheet_prob_desc,
+  spreadsheet_prob_point_1,
+  spreadsheet_prob_point_2,
+  spreadsheet_prob_point_3,
+  spreadsheet_sol_title_1,
+  spreadsheet_sol_title_highlight,
+  spreadsheet_sol_desc,
+  spreadsheet_sol_1_title,
+  spreadsheet_sol_1_desc,
+  spreadsheet_sol_2_title,
+  spreadsheet_sol_2_desc,
+  spreadsheet_compare_title,
+  spreadsheet_compare_desc,
+  spreadsheet_table_head_2,
+  spreadsheet_table_row_1_title,
+  spreadsheet_table_row_1_col_1,
+  spreadsheet_table_row_1_col_2,
+  spreadsheet_table_row_2_title,
+  spreadsheet_table_row_2_col_1,
+  spreadsheet_table_row_2_col_2,
+  spreadsheet_table_row_3_title,
+  spreadsheet_table_row_3_col_1,
+  spreadsheet_table_row_3_col_2,
+  spreadsheet_psycho_title,
+  spreadsheet_psycho_desc,
+  spreadsheet_data_title,
+  spreadsheet_data_desc,
+  spreadsheet_cta_title,
+  spreadsheet_cta_desc,
+  spreadsheet_cta_btn,
+  explore_notion_desc,
+  notion_alt_title,
+  notion_alt_desc,
+  notion_alt_og_title,
+  notion_alt_og_desc,
+  notion_badge,
+  notion_hero_title_1,
+  notion_hero_title_2,
+  notion_hero_desc,
+  notion_hero_cta,
+  notion_hero_note,
+  notion_prob_title_1,
+  notion_prob_title_highlight,
+  notion_prob_desc,
+  notion_prob_point_1,
+  notion_prob_point_2,
+  notion_prob_point_3,
+  notion_sol_title_1,
+  notion_sol_title_highlight,
+  notion_sol_desc,
+  notion_sol_1_title,
+  notion_sol_1_desc,
+  notion_sol_2_title,
+  notion_sol_2_desc,
+  notion_compare_title,
+  notion_compare_desc,
+  notion_table_head_2,
+  notion_table_row_1_title,
+  notion_table_row_1_col_1,
+  notion_table_row_1_col_2,
+  notion_table_row_2_title,
+  notion_table_row_2_col_1,
+  notion_table_row_2_col_2,
+  notion_table_row_3_title,
+  notion_table_row_3_col_1,
+  notion_table_row_3_col_2,
+  notion_psycho_title,
+  notion_psycho_desc,
+  notion_data_title,
+  notion_data_desc,
+  notion_cta_title,
+  notion_cta_desc,
+  notion_cta_btn,
+  explore_obsidian_desc,
+  obsidian_alt_title,
+  obsidian_alt_desc,
+  obsidian_alt_og_title,
+  obsidian_alt_og_desc,
+  obsidian_badge,
+  obsidian_hero_title_1,
+  obsidian_hero_title_2,
+  obsidian_hero_desc,
+  obsidian_hero_cta,
+  obsidian_hero_note,
+  obsidian_prob_title_1,
+  obsidian_prob_title_highlight,
+  obsidian_prob_desc,
+  obsidian_prob_point_1,
+  obsidian_prob_point_2,
+  obsidian_prob_point_3,
+  obsidian_sol_title_1,
+  obsidian_sol_title_highlight,
+  obsidian_sol_desc,
+  obsidian_sol_1_title,
+  obsidian_sol_1_desc,
+  obsidian_sol_2_title,
+  obsidian_sol_2_desc,
+  obsidian_compare_title,
+  obsidian_compare_desc,
+  obsidian_table_head_2,
+  obsidian_table_row_1_title,
+  obsidian_table_row_1_col_1,
+  obsidian_table_row_1_col_2,
+  obsidian_table_row_2_title,
+  obsidian_table_row_2_col_1,
+  obsidian_table_row_2_col_2,
+  obsidian_table_row_3_title,
+  obsidian_table_row_3_col_1,
+  obsidian_table_row_3_col_2,
+  obsidian_psycho_title,
+  obsidian_psycho_desc,
+  obsidian_data_title,
+  obsidian_data_desc,
+  obsidian_cta_title,
+  obsidian_cta_desc,
+  obsidian_cta_btn,
+  explore_monday_desc,
+  monday_alt_title,
+  monday_alt_desc,
+  monday_alt_og_title,
+  monday_alt_og_desc,
+  monday_badge,
+  monday_hero_title_1,
+  monday_hero_title_2,
+  monday_hero_desc,
+  monday_hero_cta,
+  monday_hero_note,
+  monday_prob_title_1,
+  monday_prob_title_highlight,
+  monday_prob_desc,
+  monday_prob_point_1,
+  monday_prob_point_2,
+  monday_prob_point_3,
+  monday_sol_title_1,
+  monday_sol_title_highlight,
+  monday_sol_desc,
+  monday_sol_1_title,
+  monday_sol_1_desc,
+  monday_sol_2_title,
+  monday_sol_2_desc,
+  monday_compare_title,
+  monday_compare_desc,
+  monday_table_head_2,
+  monday_table_row_1_title,
+  monday_table_row_1_col_1,
+  monday_table_row_1_col_2,
+  monday_table_row_2_title,
+  monday_table_row_2_col_1,
+  monday_table_row_2_col_2,
+  monday_table_row_3_title,
+  monday_table_row_3_col_1,
+  monday_table_row_3_col_2,
+  monday_psycho_title,
+  monday_psycho_desc,
+  monday_data_title,
+  monday_data_desc,
+  monday_cta_title,
+  monday_cta_desc,
+  monday_cta_btn,
+  explore_trello_desc,
+  trello_alt_title,
+  trello_alt_desc,
+  trello_alt_og_title,
+  trello_alt_og_desc,
+  trello_badge,
+  trello_hero_title_1,
+  trello_hero_title_2,
+  trello_hero_desc,
+  trello_hero_cta,
+  trello_hero_note,
+  trello_prob_title_1,
+  trello_prob_title_highlight,
+  trello_prob_desc,
+  trello_prob_point_1,
+  trello_prob_point_2,
+  trello_prob_point_3,
+  trello_sol_title_1,
+  trello_sol_title_highlight,
+  trello_sol_desc,
+  trello_sol_1_title,
+  trello_sol_1_desc,
+  trello_sol_2_title,
+  trello_sol_2_desc,
+  trello_compare_title,
+  trello_compare_desc,
+  trello_table_head_2,
+  trello_table_row_1_title,
+  trello_table_row_1_col_1,
+  trello_table_row_1_col_2,
+  trello_table_row_2_title,
+  trello_table_row_2_col_1,
+  trello_table_row_2_col_2,
+  trello_table_row_3_title,
+  trello_table_row_3_col_1,
+  trello_table_row_3_col_2,
+  trello_psycho_title,
+  trello_psycho_desc,
+  trello_data_title,
+  trello_data_desc,
+  trello_cta_title,
+  trello_cta_desc,
+  trello_cta_btn,
+  explore_asana_desc,
+  asana_alt_title,
+  asana_alt_desc,
+  asana_alt_og_title,
+  asana_alt_og_desc,
+  asana_badge,
+  asana_hero_title_1,
+  asana_hero_title_2,
+  asana_hero_desc,
+  asana_hero_cta,
+  asana_hero_note,
+  asana_prob_title_1,
+  asana_prob_title_highlight,
+  asana_prob_desc,
+  asana_prob_point_1,
+  asana_prob_point_2,
+  asana_prob_point_3,
+  asana_sol_title_1,
+  asana_sol_title_highlight,
+  asana_sol_desc,
+  asana_sol_1_title,
+  asana_sol_1_desc,
+  asana_sol_2_title,
+  asana_sol_2_desc,
+  asana_compare_title,
+  asana_compare_desc,
+  asana_table_head_2,
+  asana_table_row_1_title,
+  asana_table_row_1_col_1,
+  asana_table_row_1_col_2,
+  asana_table_row_2_title,
+  asana_table_row_2_col_1,
+  asana_table_row_2_col_2,
+  asana_table_row_3_title,
+  asana_table_row_3_col_1,
+  asana_table_row_3_col_2,
+  asana_psycho_title,
+  asana_psycho_desc,
+  asana_data_title,
+  asana_data_desc,
+  asana_cta_title,
+  asana_cta_desc,
+  asana_cta_btn,
+  notes_apps_meta_title,
+  notes_apps_meta_desc,
+  notes_apps_og_title,
+  notes_apps_og_desc,
+  notes_apps_badge,
+  notes_apps_hero_title_1,
+  notes_apps_hero_title_2,
+  notes_apps_hero_desc,
+  notes_apps_hero_cta,
+  notes_apps_hero_note,
+  notes_apps_prob_title_1,
+  notes_apps_prob_title_highlight,
+  notes_apps_prob_desc,
+  notes_apps_prob_point_1,
+  notes_apps_prob_point_2,
+  notes_apps_prob_point_3,
+  notes_apps_sol_title_1,
+  notes_apps_sol_title_highlight,
+  notes_apps_sol_desc,
+  notes_apps_sol_box_title,
+  notes_apps_sol_box_desc,
+  notes_apps_compare_title,
+  notes_apps_compare_desc,
+  notes_apps_table_head_1,
+  notes_apps_table_head_2,
+  notes_apps_table_head_3,
+  notes_apps_table_row_1_title,
+  notes_apps_table_row_1_col_1,
+  notes_apps_table_row_1_col_2,
+  notes_apps_table_row_2_title,
+  notes_apps_table_row_2_col_1,
+  notes_apps_table_row_2_col_2,
+  notes_apps_table_row_3_title,
+  notes_apps_table_row_3_col_1,
+  notes_apps_table_row_3_col_2,
+  explore_evernote_desc,
+  explore_applenotes_desc,
+  explore_onenote_desc,
+  evernote_badge,
+  evernote_hero_title_1,
+  evernote_hero_title_2,
+  evernote_hero_desc,
+  evernote_hero_cta,
+  evernote_hero_note,
+  evernote_prob_title_1,
+  evernote_prob_title_highlight,
+  evernote_prob_desc,
+  evernote_sol_title_1,
+  evernote_sol_title_highlight,
+  evernote_sol_desc,
+  applenotes_badge,
+  applenotes_hero_title_1,
+  applenotes_hero_title_2,
+  applenotes_hero_desc,
+  applenotes_hero_cta,
+  applenotes_hero_note,
+  applenotes_prob_title_1,
+  applenotes_prob_title_highlight,
+  applenotes_prob_desc,
+  applenotes_sol_title_1,
+  applenotes_sol_title_highlight,
+  applenotes_sol_desc,
+  onenote_badge,
+  onenote_hero_title_1,
+  onenote_hero_title_2,
+  onenote_hero_desc,
+  onenote_hero_cta,
+  onenote_hero_note,
+  onenote_prob_title_1,
+  onenote_prob_title_highlight,
+  onenote_prob_desc,
+  onenote_sol_title_1,
+  onenote_sol_title_highlight,
+  onenote_sol_desc,
+  evernote_hero_visual_1,
+  evernote_hero_visual_2,
+  evernote_prob_visual_1,
+  evernote_prob_visual_2,
+  evernote_prob_visual_3,
+  evernote_prob_point_1_title,
+  evernote_prob_point_1_desc,
+  evernote_prob_point_2_title,
+  evernote_prob_point_2_desc,
+  evernote_sol_point_1_title,
+  evernote_sol_point_1_desc,
+  evernote_sol_point_2_title,
+  evernote_sol_point_2_desc,
+  evernote_sol_point_3_title,
+  evernote_sol_point_3_desc,
+  evernote_table_title,
+  evernote_table_desc,
+  evernote_table_h1,
+  evernote_table_h2,
+  evernote_table_h3,
+  evernote_table_r1_1,
+  evernote_table_r1_2,
+  evernote_table_r1_3,
+  evernote_table_r2_1,
+  evernote_table_r2_2,
+  evernote_table_r2_3,
+  evernote_table_r3_1,
+  evernote_table_r3_2,
+  evernote_table_r3_3,
+  evernote_psy_title,
+  evernote_psy_desc,
+  evernote_psy_quote,
+  evernote_cta_title,
+  evernote_cta_btn,
+  applenotes_hero_visual_1,
+  applenotes_hero_visual_2,
+  applenotes_hero_visual_3,
+  applenotes_hero_visual_4,
+  applenotes_prob_visual_1,
+  applenotes_prob_visual_2,
+  applenotes_prob_visual_3,
+  applenotes_prob_visual_4,
+  applenotes_prob_visual_5,
+  applenotes_prob_visual_6,
+  applenotes_prob_visual_7,
+  applenotes_prob_visual_8,
+  applenotes_prob_visual_9,
+  applenotes_sol_visual_1,
+  applenotes_sol_visual_2,
+  applenotes_sol_visual_3,
+  applenotes_sol_point_1_title,
+  applenotes_sol_point_1_desc,
+  applenotes_sol_point_2_title,
+  applenotes_sol_point_2_desc,
+  applenotes_gap_title,
+  applenotes_gap_desc,
+  applenotes_gap_title_2,
+  applenotes_gap_desc_2,
+  applenotes_gap_title_3,
+  applenotes_gap_desc_3,
+  applenotes_adv_title,
+  applenotes_adv_desc,
+  applenotes_adv_badge,
+  applenotes_cta_title,
+  applenotes_cta_btn,
+  onenote_hero_visual_1,
+  onenote_hero_visual_2,
+  onenote_hero_visual_3,
+  onenote_hero_visual_4,
+  onenote_hero_visual_5,
+  onenote_hero_visual_6,
+  onenote_hero_visual_7,
+  onenote_prob_visual_1,
+  onenote_prob_visual_2,
+  onenote_prob_visual_3,
+  onenote_prob_visual_4,
+  onenote_prob_visual_5,
+  onenote_prob_point_1_title,
+  onenote_prob_point_1_desc,
+  onenote_prob_point_2_title,
+  onenote_prob_point_2_desc,
+  onenote_sol_point_1,
+  onenote_sol_point_2,
+  onenote_sol_point_3,
+  onenote_sol_visual_1,
+  onenote_sol_visual_2,
+  onenote_sol_visual_3,
+  onenote_sol_visual_4,
+  onenote_cost_title,
+  onenote_cost_desc,
+  onenote_cost_point_1,
+  onenote_cost_point_2,
+  onenote_cost_point_3,
+  onenote_feat_visual_1,
+  onenote_feat_title_1,
+  onenote_feat_point_1_title,
+  onenote_feat_point_1_desc,
+  onenote_feat_point_2_title,
+  onenote_feat_point_2_desc,
+  onenote_feat_title_2,
+  onenote_feat_point_3_title,
+  onenote_feat_point_3_desc,
+  onenote_feat_point_4_title,
+  onenote_feat_point_4_desc,
+  onenote_cta_title,
+  onenote_cta_btn,
+  compare_nav_title,
   dash_greet_morning,
   dash_greet_afternoon,
   dash_greet_evening,
@@ -22156,7 +26321,92 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   adjust_photo_title,
   amount,
   amount_placeholder,
+  applenotes_adv_badge,
+  applenotes_adv_desc,
+  applenotes_adv_title,
+  applenotes_badge,
+  applenotes_cta_btn,
+  applenotes_cta_title,
+  applenotes_gap_desc,
+  applenotes_gap_desc_2,
+  applenotes_gap_desc_3,
+  applenotes_gap_title,
+  applenotes_gap_title_2,
+  applenotes_gap_title_3,
+  applenotes_hero_cta,
+  applenotes_hero_desc,
+  applenotes_hero_note,
+  applenotes_hero_title_1,
+  applenotes_hero_title_2,
+  applenotes_hero_visual_1,
+  applenotes_hero_visual_2,
+  applenotes_hero_visual_3,
+  applenotes_hero_visual_4,
+  applenotes_prob_desc,
+  applenotes_prob_title_1,
+  applenotes_prob_title_highlight,
+  applenotes_prob_visual_1,
+  applenotes_prob_visual_2,
+  applenotes_prob_visual_3,
+  applenotes_prob_visual_4,
+  applenotes_prob_visual_5,
+  applenotes_prob_visual_6,
+  applenotes_prob_visual_7,
+  applenotes_prob_visual_8,
+  applenotes_prob_visual_9,
+  applenotes_sol_desc,
+  applenotes_sol_point_1_desc,
+  applenotes_sol_point_1_title,
+  applenotes_sol_point_2_desc,
+  applenotes_sol_point_2_title,
+  applenotes_sol_title_1,
+  applenotes_sol_title_highlight,
+  applenotes_sol_visual_1,
+  applenotes_sol_visual_2,
+  applenotes_sol_visual_3,
   architect_console,
+  asana_alt_desc,
+  asana_alt_og_desc,
+  asana_alt_og_title,
+  asana_alt_title,
+  asana_badge,
+  asana_compare_desc,
+  asana_compare_title,
+  asana_cta_btn,
+  asana_cta_desc,
+  asana_cta_title,
+  asana_data_desc,
+  asana_data_title,
+  asana_hero_cta,
+  asana_hero_desc,
+  asana_hero_note,
+  asana_hero_title_1,
+  asana_hero_title_2,
+  asana_prob_desc,
+  asana_prob_point_1,
+  asana_prob_point_2,
+  asana_prob_point_3,
+  asana_prob_title_1,
+  asana_prob_title_highlight,
+  asana_psycho_desc,
+  asana_psycho_title,
+  asana_sol_1_desc,
+  asana_sol_1_title,
+  asana_sol_2_desc,
+  asana_sol_2_title,
+  asana_sol_desc,
+  asana_sol_title_1,
+  asana_sol_title_highlight,
+  asana_table_head_2,
+  asana_table_row_1_col_1,
+  asana_table_row_1_col_2,
+  asana_table_row_1_title,
+  asana_table_row_2_col_1,
+  asana_table_row_2_col_2,
+  asana_table_row_2_title,
+  asana_table_row_3_col_1,
+  asana_table_row_3_col_2,
+  asana_table_row_3_title,
   asset_name,
   asset_name_placeholder,
   atomic_breadcrumb,
@@ -22761,6 +27011,48 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   cl_stat_4_val,
   cl_timeline_desc,
   cl_timeline_title,
+  clickup_alt_desc,
+  clickup_alt_og_desc,
+  clickup_alt_og_title,
+  clickup_alt_title,
+  clickup_badge,
+  clickup_compare_desc,
+  clickup_compare_title,
+  clickup_cta_btn,
+  clickup_cta_desc,
+  clickup_cta_title,
+  clickup_data_desc,
+  clickup_data_title,
+  clickup_hero_cta,
+  clickup_hero_desc,
+  clickup_hero_note,
+  clickup_hero_title_1,
+  clickup_hero_title_2,
+  clickup_prob_desc,
+  clickup_prob_point_1,
+  clickup_prob_point_2,
+  clickup_prob_point_3,
+  clickup_prob_title_1,
+  clickup_prob_title_highlight,
+  clickup_psycho_desc,
+  clickup_psycho_title,
+  clickup_sol_1_desc,
+  clickup_sol_1_title,
+  clickup_sol_2_desc,
+  clickup_sol_2_title,
+  clickup_sol_desc,
+  clickup_sol_title_1,
+  clickup_sol_title_highlight,
+  clickup_table_head_2,
+  clickup_table_row_1_col_1,
+  clickup_table_row_1_col_2,
+  clickup_table_row_1_title,
+  clickup_table_row_2_col_1,
+  clickup_table_row_2_col_2,
+  clickup_table_row_2_title,
+  clickup_table_row_3_col_1,
+  clickup_table_row_3_col_2,
+  clickup_table_row_3_title,
   col_activity,
   col_end,
   col_priority,
@@ -22830,6 +27122,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   compare_explorer,
   compare_feature,
   compare_legendary,
+  compare_nav_title,
   compare_quantum,
   compare_title,
   confirm_delete_text,
@@ -23118,7 +27411,73 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   error_title_default,
   error_update_habit,
   est_total,
+  evernote_badge,
+  evernote_cta_btn,
+  evernote_cta_title,
+  evernote_hero_cta,
+  evernote_hero_desc,
+  evernote_hero_note,
+  evernote_hero_title_1,
+  evernote_hero_title_2,
+  evernote_hero_visual_1,
+  evernote_hero_visual_2,
+  evernote_prob_desc,
+  evernote_prob_point_1_desc,
+  evernote_prob_point_1_title,
+  evernote_prob_point_2_desc,
+  evernote_prob_point_2_title,
+  evernote_prob_title_1,
+  evernote_prob_title_highlight,
+  evernote_prob_visual_1,
+  evernote_prob_visual_2,
+  evernote_prob_visual_3,
+  evernote_psy_desc,
+  evernote_psy_quote,
+  evernote_psy_title,
+  evernote_sol_desc,
+  evernote_sol_point_1_desc,
+  evernote_sol_point_1_title,
+  evernote_sol_point_2_desc,
+  evernote_sol_point_2_title,
+  evernote_sol_point_3_desc,
+  evernote_sol_point_3_title,
+  evernote_sol_title_1,
+  evernote_sol_title_highlight,
+  evernote_table_desc,
+  evernote_table_h1,
+  evernote_table_h2,
+  evernote_table_h3,
+  evernote_table_r1_1,
+  evernote_table_r1_2,
+  evernote_table_r1_3,
+  evernote_table_r2_1,
+  evernote_table_r2_2,
+  evernote_table_r2_3,
+  evernote_table_r3_1,
+  evernote_table_r3_2,
+  evernote_table_r3_3,
+  evernote_table_title,
   expense,
+  explore_applenotes_desc,
+  explore_asana_desc,
+  explore_clickup_desc,
+  explore_evernote_desc,
+  explore_habitica_desc,
+  explore_habitify_desc,
+  explore_monday_desc,
+  explore_more_alt,
+  explore_more_desc,
+  explore_notion_desc,
+  explore_obsidian_desc,
+  explore_onenote_desc,
+  explore_spendee_desc,
+  explore_spreadsheet_desc,
+  explore_streaks_desc,
+  explore_ticktick_desc,
+  explore_todoist_desc,
+  explore_trello_desc,
+  explore_wallet_desc,
+  explore_ynab_desc,
   explorer_core,
   faq_a1: faq_a1$1,
   faq_a2: faq_a2$1,
@@ -24122,6 +28481,93 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   habitap_table_row_3_col_1,
   habitap_table_row_3_col_2,
   habitap_table_row_3_title,
+  habitica_alt_desc,
+  habitica_alt_og_desc,
+  habitica_alt_og_title,
+  habitica_alt_title,
+  habitica_badge,
+  habitica_compare_desc,
+  habitica_compare_title,
+  habitica_cta_btn,
+  habitica_cta_desc,
+  habitica_cta_title,
+  habitica_hero_cta,
+  habitica_hero_desc,
+  habitica_hero_note,
+  habitica_hero_title_1,
+  habitica_hero_title_2,
+  habitica_prob_desc,
+  habitica_prob_point_1,
+  habitica_prob_point_2,
+  habitica_prob_point_3,
+  habitica_prob_title_1,
+  habitica_prob_title_highlight,
+  habitica_science_desc,
+  habitica_science_point1,
+  habitica_science_point1_desc,
+  habitica_science_point2,
+  habitica_science_point2_desc,
+  habitica_science_title,
+  habitica_sol_1_desc,
+  habitica_sol_1_title,
+  habitica_sol_2_desc,
+  habitica_sol_2_title,
+  habitica_sol_desc,
+  habitica_sol_title_1,
+  habitica_sol_title_highlight,
+  habitica_table_head_2,
+  habitica_table_row_1_col_1,
+  habitica_table_row_1_col_2,
+  habitica_table_row_1_title,
+  habitica_table_row_2_col_1,
+  habitica_table_row_2_col_2,
+  habitica_table_row_2_title,
+  habitica_table_row_3_col_1,
+  habitica_table_row_3_col_2,
+  habitica_table_row_3_title,
+  habitica_testimonial,
+  habitify_ai_desc,
+  habitify_ai_title,
+  habitify_alt_desc,
+  habitify_alt_og_desc,
+  habitify_alt_og_title,
+  habitify_alt_title,
+  habitify_badge,
+  habitify_compare_desc,
+  habitify_compare_title,
+  habitify_cost_desc,
+  habitify_cost_title,
+  habitify_cta_btn,
+  habitify_cta_desc,
+  habitify_cta_title,
+  habitify_hero_cta,
+  habitify_hero_desc,
+  habitify_hero_note,
+  habitify_hero_title_1,
+  habitify_hero_title_2,
+  habitify_prob_desc,
+  habitify_prob_point_1,
+  habitify_prob_point_2,
+  habitify_prob_point_3,
+  habitify_prob_title_1,
+  habitify_prob_title_highlight,
+  habitify_sol_1_desc,
+  habitify_sol_1_title,
+  habitify_sol_2_desc,
+  habitify_sol_2_title,
+  habitify_sol_desc,
+  habitify_sol_title_1,
+  habitify_sol_title_highlight,
+  habitify_table_head_2,
+  habitify_table_row_1_col_1,
+  habitify_table_row_1_col_2,
+  habitify_table_row_1_title,
+  habitify_table_row_2_col_1,
+  habitify_table_row_2_col_2,
+  habitify_table_row_2_title,
+  habitify_table_row_3_col_1,
+  habitify_table_row_3_col_2,
+  habitify_table_row_3_title,
   header_completed,
   header_done_suffix,
   header_pending,
@@ -24682,6 +29128,48 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   module_journal_desc,
   module_planner_desc,
   module_status_active,
+  monday_alt_desc,
+  monday_alt_og_desc,
+  monday_alt_og_title,
+  monday_alt_title,
+  monday_badge,
+  monday_compare_desc,
+  monday_compare_title,
+  monday_cta_btn,
+  monday_cta_desc,
+  monday_cta_title,
+  monday_data_desc,
+  monday_data_title,
+  monday_hero_cta,
+  monday_hero_desc,
+  monday_hero_note,
+  monday_hero_title_1,
+  monday_hero_title_2,
+  monday_prob_desc,
+  monday_prob_point_1,
+  monday_prob_point_2,
+  monday_prob_point_3,
+  monday_prob_title_1,
+  monday_prob_title_highlight,
+  monday_psycho_desc,
+  monday_psycho_title,
+  monday_sol_1_desc,
+  monday_sol_1_title,
+  monday_sol_2_desc,
+  monday_sol_2_title,
+  monday_sol_desc,
+  monday_sol_title_1,
+  monday_sol_title_highlight,
+  monday_table_head_2,
+  monday_table_row_1_col_1,
+  monday_table_row_1_col_2,
+  monday_table_row_1_title,
+  monday_table_row_2_col_1,
+  monday_table_row_2_col_2,
+  monday_table_row_2_title,
+  monday_table_row_3_col_1,
+  monday_table_row_3_col_2,
+  monday_table_row_3_title,
   month_apr,
   month_aug,
   month_dec,
@@ -24862,6 +29350,41 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   no_date,
   no_fund_source,
   no_transaction,
+  notes_apps_badge,
+  notes_apps_compare_desc,
+  notes_apps_compare_title,
+  notes_apps_hero_cta,
+  notes_apps_hero_desc,
+  notes_apps_hero_note,
+  notes_apps_hero_title_1,
+  notes_apps_hero_title_2,
+  notes_apps_meta_desc,
+  notes_apps_meta_title,
+  notes_apps_og_desc,
+  notes_apps_og_title,
+  notes_apps_prob_desc,
+  notes_apps_prob_point_1,
+  notes_apps_prob_point_2,
+  notes_apps_prob_point_3,
+  notes_apps_prob_title_1,
+  notes_apps_prob_title_highlight,
+  notes_apps_sol_box_desc,
+  notes_apps_sol_box_title,
+  notes_apps_sol_desc,
+  notes_apps_sol_title_1,
+  notes_apps_sol_title_highlight,
+  notes_apps_table_head_1,
+  notes_apps_table_head_2,
+  notes_apps_table_head_3,
+  notes_apps_table_row_1_col_1,
+  notes_apps_table_row_1_col_2,
+  notes_apps_table_row_1_title,
+  notes_apps_table_row_2_col_1,
+  notes_apps_table_row_2_col_2,
+  notes_apps_table_row_2_title,
+  notes_apps_table_row_3_col_1,
+  notes_apps_table_row_3_col_2,
+  notes_apps_table_row_3_title,
   notes_badge,
   notes_chaos_badge,
   notes_chaos_date,
@@ -24948,7 +29471,144 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   notif_reminders_desc,
   notif_title_main,
   notif_title_reminders,
+  notion_alt_desc,
+  notion_alt_og_desc,
+  notion_alt_og_title,
+  notion_alt_title,
+  notion_badge,
+  notion_compare_desc,
+  notion_compare_title,
+  notion_cta_btn,
+  notion_cta_desc,
+  notion_cta_title,
+  notion_data_desc,
+  notion_data_title,
+  notion_hero_cta,
+  notion_hero_desc,
+  notion_hero_note,
+  notion_hero_title_1,
+  notion_hero_title_2,
+  notion_prob_desc,
+  notion_prob_point_1,
+  notion_prob_point_2,
+  notion_prob_point_3,
+  notion_prob_title_1,
+  notion_prob_title_highlight,
+  notion_psycho_desc,
+  notion_psycho_title,
+  notion_sol_1_desc,
+  notion_sol_1_title,
+  notion_sol_2_desc,
+  notion_sol_2_title,
+  notion_sol_desc,
+  notion_sol_title_1,
+  notion_sol_title_highlight,
+  notion_table_head_2,
+  notion_table_row_1_col_1,
+  notion_table_row_1_col_2,
+  notion_table_row_1_title,
+  notion_table_row_2_col_1,
+  notion_table_row_2_col_2,
+  notion_table_row_2_title,
+  notion_table_row_3_col_1,
+  notion_table_row_3_col_2,
+  notion_table_row_3_title,
+  obsidian_alt_desc,
+  obsidian_alt_og_desc,
+  obsidian_alt_og_title,
+  obsidian_alt_title,
+  obsidian_badge,
+  obsidian_compare_desc,
+  obsidian_compare_title,
+  obsidian_cta_btn,
+  obsidian_cta_desc,
+  obsidian_cta_title,
+  obsidian_data_desc,
+  obsidian_data_title,
+  obsidian_hero_cta,
+  obsidian_hero_desc,
+  obsidian_hero_note,
+  obsidian_hero_title_1,
+  obsidian_hero_title_2,
+  obsidian_prob_desc,
+  obsidian_prob_point_1,
+  obsidian_prob_point_2,
+  obsidian_prob_point_3,
+  obsidian_prob_title_1,
+  obsidian_prob_title_highlight,
+  obsidian_psycho_desc,
+  obsidian_psycho_title,
+  obsidian_sol_1_desc,
+  obsidian_sol_1_title,
+  obsidian_sol_2_desc,
+  obsidian_sol_2_title,
+  obsidian_sol_desc,
+  obsidian_sol_title_1,
+  obsidian_sol_title_highlight,
+  obsidian_table_head_2,
+  obsidian_table_row_1_col_1,
+  obsidian_table_row_1_col_2,
+  obsidian_table_row_1_title,
+  obsidian_table_row_2_col_1,
+  obsidian_table_row_2_col_2,
+  obsidian_table_row_2_title,
+  obsidian_table_row_3_col_1,
+  obsidian_table_row_3_col_2,
+  obsidian_table_row_3_title,
   old_data_hint,
+  onenote_badge,
+  onenote_cost_desc,
+  onenote_cost_point_1,
+  onenote_cost_point_2,
+  onenote_cost_point_3,
+  onenote_cost_title,
+  onenote_cta_btn,
+  onenote_cta_title,
+  onenote_feat_point_1_desc,
+  onenote_feat_point_1_title,
+  onenote_feat_point_2_desc,
+  onenote_feat_point_2_title,
+  onenote_feat_point_3_desc,
+  onenote_feat_point_3_title,
+  onenote_feat_point_4_desc,
+  onenote_feat_point_4_title,
+  onenote_feat_title_1,
+  onenote_feat_title_2,
+  onenote_feat_visual_1,
+  onenote_hero_cta,
+  onenote_hero_desc,
+  onenote_hero_note,
+  onenote_hero_title_1,
+  onenote_hero_title_2,
+  onenote_hero_visual_1,
+  onenote_hero_visual_2,
+  onenote_hero_visual_3,
+  onenote_hero_visual_4,
+  onenote_hero_visual_5,
+  onenote_hero_visual_6,
+  onenote_hero_visual_7,
+  onenote_prob_desc,
+  onenote_prob_point_1_desc,
+  onenote_prob_point_1_title,
+  onenote_prob_point_2_desc,
+  onenote_prob_point_2_title,
+  onenote_prob_title_1,
+  onenote_prob_title_highlight,
+  onenote_prob_visual_1,
+  onenote_prob_visual_2,
+  onenote_prob_visual_3,
+  onenote_prob_visual_4,
+  onenote_prob_visual_5,
+  onenote_sol_desc,
+  onenote_sol_point_1,
+  onenote_sol_point_2,
+  onenote_sol_point_3,
+  onenote_sol_title_1,
+  onenote_sol_title_highlight,
+  onenote_sol_visual_1,
+  onenote_sol_visual_2,
+  onenote_sol_visual_3,
+  onenote_sol_visual_4,
   out,
   pan_instruction,
   password_security_desc,
@@ -26148,6 +30808,90 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   solve_mental_sol_step_3_desc,
   solve_mental_sol_step_3_title,
   solve_mental_sol_title,
+  spendee_ai_desc,
+  spendee_ai_title,
+  spendee_alt_desc,
+  spendee_alt_og_desc,
+  spendee_alt_og_title,
+  spendee_alt_title,
+  spendee_badge,
+  spendee_compare_desc,
+  spendee_compare_title,
+  spendee_cost_desc,
+  spendee_cost_title,
+  spendee_cta_btn,
+  spendee_cta_desc,
+  spendee_cta_title,
+  spendee_hero_cta,
+  spendee_hero_desc,
+  spendee_hero_note,
+  spendee_hero_title_1,
+  spendee_hero_title_2,
+  spendee_prob_desc,
+  spendee_prob_point_1,
+  spendee_prob_point_2,
+  spendee_prob_point_3,
+  spendee_prob_title_1,
+  spendee_prob_title_highlight,
+  spendee_sol_1_desc,
+  spendee_sol_1_title,
+  spendee_sol_2_desc,
+  spendee_sol_2_title,
+  spendee_sol_desc,
+  spendee_sol_title_1,
+  spendee_sol_title_highlight,
+  spendee_table_head_2,
+  spendee_table_row_1_col_1,
+  spendee_table_row_1_col_2,
+  spendee_table_row_1_title,
+  spendee_table_row_2_col_1,
+  spendee_table_row_2_col_2,
+  spendee_table_row_2_title,
+  spendee_table_row_3_col_1,
+  spendee_table_row_3_col_2,
+  spendee_table_row_3_title,
+  spreadsheet_alt_desc,
+  spreadsheet_alt_og_desc,
+  spreadsheet_alt_og_title,
+  spreadsheet_alt_title,
+  spreadsheet_badge,
+  spreadsheet_compare_desc,
+  spreadsheet_compare_title,
+  spreadsheet_cta_btn,
+  spreadsheet_cta_desc,
+  spreadsheet_cta_title,
+  spreadsheet_data_desc,
+  spreadsheet_data_title,
+  spreadsheet_hero_cta,
+  spreadsheet_hero_desc,
+  spreadsheet_hero_note,
+  spreadsheet_hero_title_1,
+  spreadsheet_hero_title_2,
+  spreadsheet_prob_desc,
+  spreadsheet_prob_point_1,
+  spreadsheet_prob_point_2,
+  spreadsheet_prob_point_3,
+  spreadsheet_prob_title_1,
+  spreadsheet_prob_title_highlight,
+  spreadsheet_psycho_desc,
+  spreadsheet_psycho_title,
+  spreadsheet_sol_1_desc,
+  spreadsheet_sol_1_title,
+  spreadsheet_sol_2_desc,
+  spreadsheet_sol_2_title,
+  spreadsheet_sol_desc,
+  spreadsheet_sol_title_1,
+  spreadsheet_sol_title_highlight,
+  spreadsheet_table_head_2,
+  spreadsheet_table_row_1_col_1,
+  spreadsheet_table_row_1_col_2,
+  spreadsheet_table_row_1_title,
+  spreadsheet_table_row_2_col_1,
+  spreadsheet_table_row_2_col_2,
+  spreadsheet_table_row_2_title,
+  spreadsheet_table_row_3_col_1,
+  spreadsheet_table_row_3_col_2,
+  spreadsheet_table_row_3_title,
   stat_auth_desc,
   stat_auth_name,
   stat_core_desc,
@@ -26245,6 +30989,50 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   story_2_p2: story_2_p2$1,
   story_2_quote: story_2_quote$1,
   story_2_title: story_2_title$1,
+  streaks_alt_desc,
+  streaks_alt_og_desc,
+  streaks_alt_og_title,
+  streaks_alt_title,
+  streaks_badge,
+  streaks_compare_desc,
+  streaks_compare_title,
+  streaks_cta_btn,
+  streaks_cta_desc,
+  streaks_cta_title,
+  streaks_data_desc,
+  streaks_data_title,
+  streaks_hero_cta,
+  streaks_hero_desc,
+  streaks_hero_note,
+  streaks_hero_title_1,
+  streaks_hero_title_2,
+  streaks_prob_desc,
+  streaks_prob_point_1,
+  streaks_prob_point_2,
+  streaks_prob_point_3,
+  streaks_prob_title_1,
+  streaks_prob_title_highlight,
+  streaks_psycho_desc,
+  streaks_psycho_point1,
+  streaks_psycho_point1_desc,
+  streaks_psycho_title,
+  streaks_sol_1_desc,
+  streaks_sol_1_title,
+  streaks_sol_2_desc,
+  streaks_sol_2_title,
+  streaks_sol_desc,
+  streaks_sol_title_1,
+  streaks_sol_title_highlight,
+  streaks_table_head_2,
+  streaks_table_row_1_col_1,
+  streaks_table_row_1_col_2,
+  streaks_table_row_1_title,
+  streaks_table_row_2_col_1,
+  streaks_table_row_2_col_2,
+  streaks_table_row_2_title,
+  streaks_table_row_3_col_1,
+  streaks_table_row_3_col_2,
+  streaks_table_row_3_title,
   student_bento_1_desc,
   student_bento_1_title,
   student_bento_2_desc,
@@ -26396,9 +31184,93 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_title_2,
   theme_dark,
   theme_light,
+  ticktick_alt_desc,
+  ticktick_alt_og_desc,
+  ticktick_alt_og_title,
+  ticktick_alt_title,
+  ticktick_badge,
+  ticktick_compare_desc,
+  ticktick_compare_title,
+  ticktick_cta_btn,
+  ticktick_cta_desc,
+  ticktick_cta_title,
+  ticktick_data_desc,
+  ticktick_data_title,
+  ticktick_hero_cta,
+  ticktick_hero_desc,
+  ticktick_hero_note,
+  ticktick_hero_title_1,
+  ticktick_hero_title_2,
+  ticktick_prob_desc,
+  ticktick_prob_point_1,
+  ticktick_prob_point_2,
+  ticktick_prob_point_3,
+  ticktick_prob_title_1,
+  ticktick_prob_title_highlight,
+  ticktick_psycho_desc,
+  ticktick_psycho_title,
+  ticktick_sol_1_desc,
+  ticktick_sol_1_title,
+  ticktick_sol_2_desc,
+  ticktick_sol_2_title,
+  ticktick_sol_desc,
+  ticktick_sol_title_1,
+  ticktick_sol_title_highlight,
+  ticktick_table_head_2,
+  ticktick_table_row_1_col_1,
+  ticktick_table_row_1_col_2,
+  ticktick_table_row_1_title,
+  ticktick_table_row_2_col_1,
+  ticktick_table_row_2_col_2,
+  ticktick_table_row_2_title,
+  ticktick_table_row_3_col_1,
+  ticktick_table_row_3_col_2,
+  ticktick_table_row_3_title,
   time_range,
   timeline_now,
   timeline_title,
+  todoist_alt_desc,
+  todoist_alt_og_desc,
+  todoist_alt_og_title,
+  todoist_alt_title,
+  todoist_badge,
+  todoist_compare_desc,
+  todoist_compare_title,
+  todoist_cta_btn,
+  todoist_cta_desc,
+  todoist_cta_title,
+  todoist_data_desc,
+  todoist_data_title,
+  todoist_hero_cta,
+  todoist_hero_desc,
+  todoist_hero_note,
+  todoist_hero_title_1,
+  todoist_hero_title_2,
+  todoist_prob_desc,
+  todoist_prob_point_1,
+  todoist_prob_point_2,
+  todoist_prob_point_3,
+  todoist_prob_title_1,
+  todoist_prob_title_highlight,
+  todoist_psycho_desc,
+  todoist_psycho_title,
+  todoist_sol_1_desc,
+  todoist_sol_1_title,
+  todoist_sol_2_desc,
+  todoist_sol_2_title,
+  todoist_sol_desc,
+  todoist_sol_title_1,
+  todoist_sol_title_highlight,
+  todoist_table_head_2,
+  todoist_table_row_1_col_1,
+  todoist_table_row_1_col_2,
+  todoist_table_row_1_title,
+  todoist_table_row_2_col_1,
+  todoist_table_row_2_col_2,
+  todoist_table_row_2_title,
+  todoist_table_row_3_col_1,
+  todoist_table_row_3_col_2,
+  todoist_table_row_3_title,
   tos_data_p,
   tos_data_title,
   tos_intro,
@@ -26417,6 +31289,48 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   transaction,
   transaction_count,
   transactions_count,
+  trello_alt_desc,
+  trello_alt_og_desc,
+  trello_alt_og_title,
+  trello_alt_title,
+  trello_badge,
+  trello_compare_desc,
+  trello_compare_title,
+  trello_cta_btn,
+  trello_cta_desc,
+  trello_cta_title,
+  trello_data_desc,
+  trello_data_title,
+  trello_hero_cta,
+  trello_hero_desc,
+  trello_hero_note,
+  trello_hero_title_1,
+  trello_hero_title_2,
+  trello_prob_desc,
+  trello_prob_point_1,
+  trello_prob_point_2,
+  trello_prob_point_3,
+  trello_prob_title_1,
+  trello_prob_title_highlight,
+  trello_psycho_desc,
+  trello_psycho_title,
+  trello_sol_1_desc,
+  trello_sol_1_title,
+  trello_sol_2_desc,
+  trello_sol_2_title,
+  trello_sol_desc,
+  trello_sol_title_1,
+  trello_sol_title_highlight,
+  trello_table_head_2,
+  trello_table_row_1_col_1,
+  trello_table_row_1_col_2,
+  trello_table_row_1_title,
+  trello_table_row_2_col_1,
+  trello_table_row_2_col_2,
+  trello_table_row_2_title,
+  trello_table_row_3_col_1,
+  trello_table_row_3_col_2,
+  trello_table_row_3_title,
   trial_confirm_text,
   trial_confirm_title,
   trial_days,
@@ -26471,6 +31385,48 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   waitlist_input_placeholder,
   waitlist_note,
   waitlist_title,
+  wallet_alt_desc,
+  wallet_alt_og_desc,
+  wallet_alt_og_title,
+  wallet_alt_title,
+  wallet_badge,
+  wallet_compare_desc,
+  wallet_compare_title,
+  wallet_cta_btn,
+  wallet_cta_desc,
+  wallet_cta_title,
+  wallet_data_desc,
+  wallet_data_title,
+  wallet_hero_cta,
+  wallet_hero_desc,
+  wallet_hero_note,
+  wallet_hero_title_1,
+  wallet_hero_title_2,
+  wallet_prob_desc,
+  wallet_prob_point_1,
+  wallet_prob_point_2,
+  wallet_prob_point_3,
+  wallet_prob_title_1,
+  wallet_prob_title_highlight,
+  wallet_science_desc,
+  wallet_science_title,
+  wallet_sol_1_desc,
+  wallet_sol_1_title,
+  wallet_sol_2_desc,
+  wallet_sol_2_title,
+  wallet_sol_desc,
+  wallet_sol_title_1,
+  wallet_sol_title_highlight,
+  wallet_table_head_2,
+  wallet_table_row_1_col_1,
+  wallet_table_row_1_col_2,
+  wallet_table_row_1_title,
+  wallet_table_row_2_col_1,
+  wallet_table_row_2_col_2,
+  wallet_table_row_2_title,
+  wallet_table_row_3_col_1,
+  wallet_table_row_3_col_2,
+  wallet_table_row_3_title,
   warn_check_red_form,
   warn_empty_amount,
   warn_empty_amount_text,
@@ -26493,6 +31449,48 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   withdraw_notice,
   yes_delete,
   yes_withdraw,
+  ynab_alt_desc,
+  ynab_alt_og_desc,
+  ynab_alt_og_title,
+  ynab_alt_title,
+  ynab_badge,
+  ynab_compare_desc,
+  ynab_compare_title,
+  ynab_cost_desc,
+  ynab_cost_title,
+  ynab_cta_btn,
+  ynab_cta_desc,
+  ynab_cta_title,
+  ynab_hero_cta,
+  ynab_hero_desc,
+  ynab_hero_note,
+  ynab_hero_title_1,
+  ynab_hero_title_2,
+  ynab_prob_desc,
+  ynab_prob_point_1,
+  ynab_prob_point_2,
+  ynab_prob_point_3,
+  ynab_prob_title_1,
+  ynab_prob_title_highlight,
+  ynab_psycho_desc,
+  ynab_psycho_title,
+  ynab_sol_1_desc,
+  ynab_sol_1_title,
+  ynab_sol_2_desc,
+  ynab_sol_2_title,
+  ynab_sol_desc,
+  ynab_sol_title_1,
+  ynab_sol_title_highlight,
+  ynab_table_head_2,
+  ynab_table_row_1_col_1,
+  ynab_table_row_1_col_2,
+  ynab_table_row_1_title,
+  ynab_table_row_2_col_1,
+  ynab_table_row_2_col_2,
+  ynab_table_row_2_title,
+  ynab_table_row_3_col_1,
+  ynab_table_row_3_col_2,
+  ynab_table_row_3_title,
   your_password
 }, Symbol.toStringTag, { value: "Module" }));
 const nav_home = "主页";
@@ -27250,7 +32248,7 @@ const _ = { install(t3, e2) {
   const o2 = (t4, o3, n2, r2 = e2) => D(t4, o3, n2, r2);
   parseInt(t3.version) > 2 ? (t3.config.globalProperties.route = o2, t3.provide("route", o2)) : t3.mixin({ methods: { route: o2 } });
 } };
-const Ziggy$1 = { "url": "https://192.168.1.5:8000", "port": 8e3, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "settings.cookie-consent": { "uri": "settings/cookie-consent", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "billing": { "uri": "billing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "resources.ai-trust": { "uri": "resources/neural-os-transparency", "methods": ["GET", "HEAD"] }, "company.contact": { "uri": "company/contact", "methods": ["GET", "HEAD"] }, "contact.send": { "uri": "company/contact", "methods": ["POST"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.paper": { "uri": "compare/paper", "methods": ["GET", "HEAD"] }, "compare.sheets": { "uri": "compare/sheets", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "trial.start": { "uri": "trial/start", "methods": ["POST"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "notifications.update": { "uri": "notifications/preferences", "methods": ["POST"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "finance.savings.store": { "uri": "finance/savings", "methods": ["POST"] }, "finance.savings.update": { "uri": "finance/savings/{financeSaving}", "methods": ["PATCH"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.destroy": { "uri": "finance/savings/{financeSaving}", "methods": ["DELETE"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.deposit": { "uri": "finance/savings/{financeSaving}/deposit", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.withdraw": { "uri": "finance/savings/{financeSaving}/withdraw", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.analyze": { "uri": "journal/analyze", "methods": ["POST"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.general": { "uri": "settings/general", "methods": ["GET", "HEAD"] }, "settings.security": { "uri": "settings/security", "methods": ["GET", "HEAD"] }, "settings.modules": { "uri": "settings/modules", "methods": ["GET", "HEAD"] }, "settings.notifications": { "uri": "settings/notifications", "methods": ["GET", "HEAD"] }, "settings.billing": { "uri": "settings/billing", "methods": ["GET", "HEAD"] }, "settings.privacy": { "uri": "settings/privacy", "methods": ["GET", "HEAD"] }, "settings.help": { "uri": "settings/help", "methods": ["GET", "HEAD"] }, "settings.help.send": { "uri": "settings/help", "methods": ["POST"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.summary": { "uri": "payment/checkout", "methods": ["GET", "HEAD"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "paypal.checkout": { "uri": "paypal/checkout", "methods": ["POST"] }, "paypal.success": { "uri": "paypal/success", "methods": ["GET", "HEAD"] }, "dashboard.insight": { "uri": "dashboard/insight", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.session.destroy": { "uri": "coach/session/{session}", "methods": ["DELETE"], "parameters": ["session"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "admin.blog.index": { "uri": "admin/blog", "methods": ["GET", "HEAD"] }, "admin.blog.create": { "uri": "admin/blog/create", "methods": ["GET", "HEAD"] }, "admin.blog.store": { "uri": "admin/blog", "methods": ["POST"] }, "admin.blog.edit": { "uri": "admin/blog/{post}/edit", "methods": ["GET", "HEAD"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.update": { "uri": "admin/blog/{post}", "methods": ["POST", "PATCH"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.destroy": { "uri": "admin/blog/{post}", "methods": ["DELETE"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.users.index": { "uri": "admin/users", "methods": ["GET", "HEAD"] }, "admin.users.toggle-premium": { "uri": "admin/users/{user}/toggle-premium", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "admin.users.toggle-admin": { "uri": "admin/users/{user}/toggle-admin", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
+const Ziggy$1 = { "url": "https://192.168.1.5:8000", "port": 8e3, "defaults": {}, "routes": { "debugbar.openhandler": { "uri": "_debugbar/open", "methods": ["GET", "HEAD"] }, "debugbar.clockwork": { "uri": "_debugbar/clockwork/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.telescope": { "uri": "_debugbar/telescope/{id}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "debugbar.assets.css": { "uri": "_debugbar/assets/stylesheets", "methods": ["GET", "HEAD"] }, "debugbar.assets.js": { "uri": "_debugbar/assets/javascript", "methods": ["GET", "HEAD"] }, "debugbar.cache.delete": { "uri": "_debugbar/cache/{key}/{tags?}", "methods": ["DELETE"], "parameters": ["key", "tags"] }, "debugbar.queries.explain": { "uri": "_debugbar/queries/explain", "methods": ["POST"] }, "filament.exports.download": { "uri": "filament/exports/{export}/download", "methods": ["GET", "HEAD"], "parameters": ["export"], "bindings": { "export": "id" } }, "filament.imports.failed-rows.download": { "uri": "filament/imports/{import}/failed-rows/download", "methods": ["GET", "HEAD"], "parameters": ["import"], "bindings": { "import": "id" } }, "filament.admin.auth.login": { "uri": "admin/login", "methods": ["GET", "HEAD"] }, "filament.admin.auth.logout": { "uri": "admin/logout", "methods": ["POST"] }, "filament.admin.pages.dashboard": { "uri": "admin", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.index": { "uri": "admin/blog-posts", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.create": { "uri": "admin/blog-posts/create", "methods": ["GET", "HEAD"] }, "filament.admin.resources.blog-posts.edit": { "uri": "admin/blog-posts/{record}/edit", "methods": ["GET", "HEAD"], "parameters": ["record"] }, "sanctum.csrf-cookie": { "uri": "sanctum/csrf-cookie", "methods": ["GET", "HEAD"] }, "livewire.update": { "uri": "livewire/update", "methods": ["POST"] }, "livewire.upload-file": { "uri": "livewire/upload-file", "methods": ["POST"] }, "livewire.preview-file": { "uri": "livewire/preview-file/{filename}", "methods": ["GET", "HEAD"], "parameters": ["filename"] }, "ignition.healthCheck": { "uri": "_ignition/health-check", "methods": ["GET", "HEAD"] }, "ignition.executeSolution": { "uri": "_ignition/execute-solution", "methods": ["POST"] }, "ignition.updateConfig": { "uri": "_ignition/update-config", "methods": ["POST"] }, "lang.switch": { "uri": "lang/{locale}", "methods": ["GET", "HEAD"], "parameters": ["locale"] }, "home": { "uri": "/", "methods": ["GET", "HEAD"] }, "waitlist.store": { "uri": "waitlist", "methods": ["POST"] }, "settings.cookie-consent": { "uri": "settings/cookie-consent", "methods": ["POST"] }, "about": { "uri": "about", "methods": ["GET", "HEAD"] }, "pricing.index": { "uri": "pricing", "methods": ["GET", "HEAD"] }, "billing": { "uri": "billing", "methods": ["GET", "HEAD"] }, "pricing": { "uri": "pricing-alias", "methods": ["GET", "HEAD"] }, "sitemap": { "uri": "sitemap.xml", "methods": ["GET", "HEAD"] }, "features.habit": { "uri": "features/habit", "methods": ["GET", "HEAD"] }, "features.finance": { "uri": "features/finance", "methods": ["GET", "HEAD"] }, "features.planner": { "uri": "features/planner", "methods": ["GET", "HEAD"] }, "features.journal": { "uri": "features/journal", "methods": ["GET", "HEAD"] }, "features.calendar": { "uri": "features/calendar", "methods": ["GET", "HEAD"] }, "features.goal": { "uri": "features/goal", "methods": ["GET", "HEAD"] }, "features.job": { "uri": "features/job", "methods": ["GET", "HEAD"] }, "features.neural-os": { "uri": "features/neural-os", "methods": ["GET", "HEAD"] }, "solutions.student": { "uri": "solutions/student", "methods": ["GET", "HEAD"] }, "solutions.freelancer": { "uri": "solutions/freelancer", "methods": ["GET", "HEAD"] }, "solutions.personalgrowth": { "uri": "solutions/personalgrowth", "methods": ["GET", "HEAD"] }, "solutions.finance": { "uri": "solutions/finance-mastery", "methods": ["GET", "HEAD"] }, "solutions.career": { "uri": "solutions/career-accelerator", "methods": ["GET", "HEAD"] }, "solutions.mental": { "uri": "solutions/mental-clarity", "methods": ["GET", "HEAD"] }, "solutions.atomic": { "uri": "solutions/atomic-system", "methods": ["GET", "HEAD"] }, "solutions.deepwork": { "uri": "solutions/deep-work", "methods": ["GET", "HEAD"] }, "solutions.secondbrain": { "uri": "solutions/second-brain", "methods": ["GET", "HEAD"] }, "resources.guide": { "uri": "resources/guide", "methods": ["GET", "HEAD"] }, "resources.blog": { "uri": "resources/blog", "methods": ["GET", "HEAD"] }, "resources.blog.show": { "uri": "resources/blog/{slug}", "methods": ["GET", "HEAD"], "parameters": ["slug"] }, "resources.stories": { "uri": "resources/stories", "methods": ["GET", "HEAD"] }, "resources.help": { "uri": "resources/help", "methods": ["GET", "HEAD"] }, "resources.community": { "uri": "resources/community", "methods": ["GET", "HEAD"] }, "resources.changelog": { "uri": "resources/changelog", "methods": ["GET", "HEAD"] }, "resources.ai-trust": { "uri": "resources/neural-os-transparency", "methods": ["GET", "HEAD"] }, "company.contact": { "uri": "company/contact", "methods": ["GET", "HEAD"] }, "contact.send": { "uri": "company/contact", "methods": ["POST"] }, "company.privacy": { "uri": "company/privacy", "methods": ["GET", "HEAD"] }, "company.terms": { "uri": "company/terms", "methods": ["GET", "HEAD"] }, "company.refund": { "uri": "company/refund", "methods": ["GET", "HEAD"] }, "company.security": { "uri": "company/security", "methods": ["GET", "HEAD"] }, "company.status": { "uri": "company/status", "methods": ["GET", "HEAD"] }, "company.press-kit": { "uri": "company/press-kit", "methods": ["GET", "HEAD"] }, "compare.notes-apps": { "uri": "compare/notes-apps", "methods": ["GET", "HEAD"] }, "compare.custom-apps": { "uri": "compare/custom-apps", "methods": ["GET", "HEAD"] }, "compare.management-tools": { "uri": "compare/management-tools", "methods": ["GET", "HEAD"] }, "compare.habit-apps": { "uri": "compare/habit-apps", "methods": ["GET", "HEAD"] }, "compare.finance-apps": { "uri": "compare/finance-apps", "methods": ["GET", "HEAD"] }, "compare.planner-apps": { "uri": "compare/planner-apps", "methods": ["GET", "HEAD"] }, "compare.five-apps": { "uri": "compare/five-apps", "methods": ["GET", "HEAD"] }, "compare.habitica": { "uri": "compare/habitica-alternative", "methods": ["GET", "HEAD"] }, "compare.streaks": { "uri": "compare/streaks-alternative", "methods": ["GET", "HEAD"] }, "compare.habitify": { "uri": "compare/habitify-alternative", "methods": ["GET", "HEAD"] }, "compare.ynab": { "uri": "compare/ynab-alternative", "methods": ["GET", "HEAD"] }, "compare.wallet": { "uri": "compare/wallet-alternative", "methods": ["GET", "HEAD"] }, "compare.spendee": { "uri": "compare/spendee-alternative", "methods": ["GET", "HEAD"] }, "compare.todoist": { "uri": "compare/todoist-alternative", "methods": ["GET", "HEAD"] }, "compare.ticktick": { "uri": "compare/ticktick-alternative", "methods": ["GET", "HEAD"] }, "compare.clickup": { "uri": "compare/clickup-alternative", "methods": ["GET", "HEAD"] }, "compare.evernote": { "uri": "compare/evernote-alternative", "methods": ["GET", "HEAD"] }, "compare.applenotes": { "uri": "compare/apple-notes-alternative", "methods": ["GET", "HEAD"] }, "compare.onenote": { "uri": "compare/onenote-alternative", "methods": ["GET", "HEAD"] }, "compare.spreadsheet": { "uri": "compare/spreadsheet-alternative", "methods": ["GET", "HEAD"] }, "compare.notion": { "uri": "compare/notion-alternative", "methods": ["GET", "HEAD"] }, "compare.obsidian": { "uri": "compare/obsidian-alternative", "methods": ["GET", "HEAD"] }, "compare.monday": { "uri": "compare/monday-alternative", "methods": ["GET", "HEAD"] }, "compare.trello": { "uri": "compare/trello-alternative", "methods": ["GET", "HEAD"] }, "compare.asana": { "uri": "compare/asana-alternative", "methods": ["GET", "HEAD"] }, "google.login": { "uri": "auth/google", "methods": ["GET", "HEAD"] }, "trial.start": { "uri": "trial/start", "methods": ["POST"] }, "dashboard": { "uri": "dashboard", "methods": ["GET", "HEAD"] }, "notifications.update": { "uri": "notifications/preferences", "methods": ["POST"] }, "planner.index": { "uri": "planner", "methods": ["GET", "HEAD"] }, "planner.store": { "uri": "planner", "methods": ["POST"] }, "planner.update": { "uri": "planner/{plannerTask}", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.destroy": { "uri": "planner/{plannerTask}", "methods": ["DELETE"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.toggle": { "uri": "planner/{plannerTask}/toggle", "methods": ["PATCH"], "parameters": ["plannerTask"], "bindings": { "plannerTask": "id" } }, "planner.updateLog": { "uri": "planner/log", "methods": ["POST"] }, "planner.reset": { "uri": "planner/reset", "methods": ["POST"] }, "planner.batchStore": { "uri": "planner/batch", "methods": ["POST"] }, "habits.index": { "uri": "habits", "methods": ["GET", "HEAD"] }, "habits.store": { "uri": "habits", "methods": ["POST"] }, "habits.batchStore": { "uri": "habits/batch", "methods": ["POST"] }, "habits.copy": { "uri": "habits/copy", "methods": ["POST"] }, "habits.mood": { "uri": "habits/mood", "methods": ["POST"] }, "habits.reorder": { "uri": "habits/reorder", "methods": ["POST"] }, "habits.batch-log": { "uri": "habits/batch-log", "methods": ["POST"] }, "habits.update": { "uri": "habits/{habit}", "methods": ["PATCH"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.destroy": { "uri": "habits/{habit}", "methods": ["DELETE"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "habits.log": { "uri": "habits/{habit}/log", "methods": ["POST"], "parameters": ["habit"], "bindings": { "habit": "id" } }, "finance.index": { "uri": "finance", "methods": ["GET", "HEAD"] }, "finance.income-target.update": { "uri": "finance/income-target", "methods": ["POST"] }, "finance.transaction.store": { "uri": "finance/transaction", "methods": ["POST"] }, "finance.transaction.update": { "uri": "finance/transaction/{financeTransaction}", "methods": ["PATCH"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.destroy": { "uri": "finance/transaction/{financeTransaction}", "methods": ["DELETE"], "parameters": ["financeTransaction"], "bindings": { "financeTransaction": "id" } }, "finance.transaction.batchStore": { "uri": "finance/transactions-batch", "methods": ["POST"] }, "finance.category.check": { "uri": "finance/category/check/{category}", "methods": ["GET", "HEAD"], "parameters": ["category"] }, "finance.category.rename": { "uri": "finance/category/rename", "methods": ["POST"] }, "finance.budget.store": { "uri": "finance/budget", "methods": ["POST"] }, "finance.budget.update": { "uri": "finance/budget/{financeBudget}", "methods": ["PUT"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.budget.destroy": { "uri": "finance/budget/{financeBudget}", "methods": ["DELETE"], "parameters": ["financeBudget"], "bindings": { "financeBudget": "id" } }, "finance.categories.store": { "uri": "finance/categories", "methods": ["POST"] }, "finance.categories.update": { "uri": "finance/categories/{category}", "methods": ["PUT"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.categories.destroy": { "uri": "finance/categories/{category}", "methods": ["DELETE"], "parameters": ["category"], "bindings": { "category": "id" } }, "finance.export.excel": { "uri": "finance/export/excel", "methods": ["GET", "HEAD"] }, "finance.export.tax": { "uri": "finance/export/tax", "methods": ["GET", "HEAD"] }, "finance.export.audit": { "uri": "finance/export/audit", "methods": ["POST"] }, "finance.settings.currency": { "uri": "finance/settings/currency", "methods": ["POST"] }, "finance.savings.store": { "uri": "finance/savings", "methods": ["POST"] }, "finance.savings.update": { "uri": "finance/savings/{financeSaving}", "methods": ["PATCH"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.destroy": { "uri": "finance/savings/{financeSaving}", "methods": ["DELETE"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.deposit": { "uri": "finance/savings/{financeSaving}/deposit", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "finance.savings.withdraw": { "uri": "finance/savings/{financeSaving}/withdraw", "methods": ["POST"], "parameters": ["financeSaving"], "bindings": { "financeSaving": "id" } }, "journal.index": { "uri": "journal", "methods": ["GET", "HEAD"] }, "journal.write": { "uri": "journal/write/{id?}", "methods": ["GET", "HEAD"], "parameters": ["id"] }, "journal.store": { "uri": "journal", "methods": ["POST"] }, "journal.update": { "uri": "journal/{id}", "methods": ["PATCH"], "parameters": ["id"] }, "journal.destroy": { "uri": "journal/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.uploadImage": { "uri": "journal/image", "methods": ["POST"] }, "journal.deleteImage": { "uri": "journal/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "journal.analyze": { "uri": "journal/analyze", "methods": ["POST"] }, "calendar.index": { "uri": "calendar", "methods": ["GET", "HEAD"] }, "calendar.events.store": { "uri": "calendar/events", "methods": ["POST"] }, "calendar.events.update": { "uri": "calendar/events/{id}", "methods": ["PUT"], "parameters": ["id"] }, "calendar.events.destroy": { "uri": "calendar/events/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "jobs.index": { "uri": "jobs", "methods": ["GET", "HEAD"] }, "jobs.store": { "uri": "jobs", "methods": ["POST"] }, "jobs.update": { "uri": "jobs/{job}", "methods": ["PATCH"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.destroy": { "uri": "jobs/{job}", "methods": ["DELETE"], "parameters": ["job"], "bindings": { "job": "id" } }, "jobs.bulk-update-status": { "uri": "jobs/bulk-update-status", "methods": ["POST"] }, "jobs.bulk-delete": { "uri": "jobs/bulk-delete", "methods": ["POST"] }, "jobs.ai-scan": { "uri": "jobs/ai-scan", "methods": ["POST"] }, "jobs.master-cv": { "uri": "jobs/master-cv", "methods": ["POST"] }, "goals.index": { "uri": "goals", "methods": ["GET", "HEAD"] }, "goals.store": { "uri": "goals", "methods": ["POST"] }, "goals.update": { "uri": "goals/{goal}", "methods": ["PATCH"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.destroy": { "uri": "goals/{goal}", "methods": ["DELETE"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.bulk-update-status": { "uri": "goals/bulk-update-status", "methods": ["POST"] }, "goals.bulk-delete": { "uri": "goals/bulk-delete", "methods": ["POST"] }, "goals.uploadImage": { "uri": "goals/image", "methods": ["POST"] }, "goals.deleteImage": { "uri": "goals/image/{id}", "methods": ["DELETE"], "parameters": ["id"] }, "goals.milestones.store": { "uri": "goals/{goal}/milestones", "methods": ["POST"], "parameters": ["goal"], "bindings": { "goal": "id" } }, "goals.milestones.update": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["PATCH"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.toggle": { "uri": "goals/{goal}/milestones/{milestone}/toggle", "methods": ["POST"], "parameters": ["goal", "milestone"], "bindings": { "goal": "id", "milestone": "id" } }, "goals.milestones.destroy": { "uri": "goals/{goal}/milestones/{milestone}", "methods": ["DELETE"], "parameters": ["goal", "milestone"] }, "settings.index": { "uri": "settings", "methods": ["GET", "HEAD"] }, "settings.general": { "uri": "settings/general", "methods": ["GET", "HEAD"] }, "settings.security": { "uri": "settings/security", "methods": ["GET", "HEAD"] }, "settings.modules": { "uri": "settings/modules", "methods": ["GET", "HEAD"] }, "settings.notifications": { "uri": "settings/notifications", "methods": ["GET", "HEAD"] }, "settings.billing": { "uri": "settings/billing", "methods": ["GET", "HEAD"] }, "settings.privacy": { "uri": "settings/privacy", "methods": ["GET", "HEAD"] }, "settings.help": { "uri": "settings/help", "methods": ["GET", "HEAD"] }, "settings.help.send": { "uri": "settings/help", "methods": ["POST"] }, "settings.update": { "uri": "settings", "methods": ["POST"] }, "more.index": { "uri": "more", "methods": ["GET", "HEAD"] }, "profile.edit": { "uri": "profile", "methods": ["GET", "HEAD"] }, "profile.update": { "uri": "profile", "methods": ["PATCH"] }, "profile.destroy": { "uri": "profile", "methods": ["DELETE"] }, "payment.summary": { "uri": "payment/checkout", "methods": ["GET", "HEAD"] }, "payment.checkout": { "uri": "payment/checkout", "methods": ["POST"] }, "payment.finish": { "uri": "payment/finish", "methods": ["GET", "HEAD"] }, "payment.unfinish": { "uri": "payment/unfinish", "methods": ["GET", "HEAD"] }, "payment.error": { "uri": "payment/error", "methods": ["GET", "HEAD"] }, "paypal.checkout": { "uri": "paypal/checkout", "methods": ["POST"] }, "paypal.success": { "uri": "paypal/success", "methods": ["GET", "HEAD"] }, "dashboard.insight": { "uri": "dashboard/insight", "methods": ["GET", "HEAD"] }, "coach.index": { "uri": "coach", "methods": ["GET", "HEAD"] }, "coach.chat": { "uri": "coach/chat", "methods": ["POST"] }, "coach.session.destroy": { "uri": "coach/session/{session}", "methods": ["DELETE"], "parameters": ["session"] }, "coach.synergy": { "uri": "coach/synergy", "methods": ["POST"] }, "coach.habit.stack": { "uri": "coach/habit-stack", "methods": ["POST"] }, "coach.habit.mood": { "uri": "coach/habit-mood", "methods": ["POST"] }, "coach.habit.audit": { "uri": "coach/habit-audit", "methods": ["POST"] }, "coach.habit.stagnation": { "uri": "coach/habit-stagnation", "methods": ["POST"] }, "coach.": { "uri": "coach/debug-gemini", "methods": ["GET", "HEAD"] }, "admin.blog.index": { "uri": "admin/blog", "methods": ["GET", "HEAD"] }, "admin.blog.create": { "uri": "admin/blog/create", "methods": ["GET", "HEAD"] }, "admin.blog.store": { "uri": "admin/blog", "methods": ["POST"] }, "admin.blog.edit": { "uri": "admin/blog/{post}/edit", "methods": ["GET", "HEAD"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.update": { "uri": "admin/blog/{post}", "methods": ["POST", "PATCH"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.blog.destroy": { "uri": "admin/blog/{post}", "methods": ["DELETE"], "parameters": ["post"], "bindings": { "post": "id" } }, "admin.users.index": { "uri": "admin/users", "methods": ["GET", "HEAD"] }, "admin.users.toggle-premium": { "uri": "admin/users/{user}/toggle-premium", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "admin.users.toggle-admin": { "uri": "admin/users/{user}/toggle-admin", "methods": ["POST"], "parameters": ["user"], "bindings": { "user": "id" } }, "payment.callback": { "uri": "callback", "methods": ["POST"] }, "register": { "uri": "register", "methods": ["GET", "HEAD"] }, "login": { "uri": "login", "methods": ["GET", "HEAD"] }, "password.request": { "uri": "forgot-password", "methods": ["GET", "HEAD"] }, "password.email": { "uri": "forgot-password", "methods": ["POST"] }, "password.reset": { "uri": "reset-password/{token}", "methods": ["GET", "HEAD"], "parameters": ["token"] }, "password.store": { "uri": "reset-password", "methods": ["POST"] }, "verification.notice": { "uri": "verify-email", "methods": ["GET", "HEAD"] }, "verification.verify": { "uri": "verify-email/{id}/{hash}", "methods": ["GET", "HEAD"], "parameters": ["id", "hash"] }, "verification.send": { "uri": "email/verification-notification", "methods": ["POST"] }, "password.confirm": { "uri": "confirm-password", "methods": ["GET", "HEAD"] }, "password.update": { "uri": "password", "methods": ["PUT"] }, "logout": { "uri": "logout", "methods": ["POST"] } } };
 if (typeof window !== "undefined" && typeof window.Ziggy !== "undefined") {
   Object.assign(Ziggy$1.routes, window.Ziggy.routes);
 }
@@ -27260,7 +32258,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-LZVkNmGB.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-cKphsFFD.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-COgm8QOT.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B_hEE8-C.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-Cy9urdfV.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-0MAZ1pcV.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-k1gx1sZX.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-725akF51.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-BoGN5SNf.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BUoRUkkL.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-D2r882Jv.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CX8DD-uG.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DtMVAKdz.js"), "./Pages/Error.vue": () => import("./assets/Error-DJpkm9t-.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BpeZfahG.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-D8av7Vle.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-Dg8YVJla.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BxkdVNkl.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-Cm2r5UN5.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CSdXLUqt.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-ClfwrN8e.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-Hbfmw05c.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-DIk8KKJ3.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Dit650HQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cfcc7wGh.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-D2QUj28J.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Cicxj_6R.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-Ck8I02wh.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-8Dz1QXjN.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-BGyjAzE6.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-CTemGUXL.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BFxVv4Hw.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-BBz-9D1d.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-6qWQ2t59.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-D0cNsZ9Y.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-gtmrbCo2.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CzhQrm4m.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-DPESpxxj.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B0ZaK-tZ.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Bf1UBZri.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BkLtSaml.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-BSvY8qzJ.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-Dm7bl6hb.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-CHEsVbqm.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-B1HyFzu6.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-DCj9xN7Z.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-6SqWtZ0O.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-Ddii9GRI.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-DLZNtowr.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-cKphsFFD.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-COgm8QOT.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B_hEE8-C.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C3-fjLGV.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-0MAZ1pcV.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-k1gx1sZX.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-W6HKjjm7.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-biEGcvWg.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BUoRUkkL.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-D2r882Jv.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CX8DD-uG.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DtMVAKdz.js"), "./Pages/Error.vue": () => import("./assets/Error-DGvxWKkm.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BpeZfahG.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-D8av7Vle.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-Dg8YVJla.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BxkdVNkl.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-Cm2r5UN5.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CSdXLUqt.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-ClfwrN8e.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-Hbfmw05c.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-DIk8KKJ3.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Dit650HQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cfcc7wGh.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-D2QUj28J.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Cicxj_6R.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-Ck8I02wh.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-8Dz1QXjN.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-BGyjAzE6.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-CTemGUXL.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BFxVv4Hw.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-BBz-9D1d.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-6qWQ2t59.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-D0cNsZ9Y.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-gtmrbCo2.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CzhQrm4m.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-DPESpxxj.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-B0ZaK-tZ.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Bf1UBZri.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-BkLtSaml.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-BSvY8qzJ.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-Dm7bl6hb.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-CHEsVbqm.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-B1HyFzu6.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-DCj9xN7Z.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-6SqWtZ0O.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-CpI-r4ER.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

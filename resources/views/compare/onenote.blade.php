@@ -12,20 +12,20 @@
                 <div class="absolute w-64 h-64 bg-purple-500/20 rounded-full blur-3xl opacity-50"></div>
                 <div class="relative bg-slate-900 border border-slate-800 rounded-3xl p-8 w-80 transform -rotate-3 hover:rotate-0 transition-transform duration-500 shadow-[0_20px_50px_rgba(168,85,247,0.15)]">
                     <div class="text-center mb-6 border-b border-slate-800 pb-4">
-                        <div class="text-purple-400 uppercase tracking-widest text-xs font-black">Structured Life OS</div>
+                        <div class="text-purple-400 uppercase tracking-widest text-xs font-black">{{ __('onenote_hero_visual_1') }}</div>
                     </div>
                     <div class="space-y-4">
                         <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 flex justify-between">
-                            <span class="text-slate-400 text-sm">Finances</span>
-                            <span class="text-emerald-400 font-bold text-sm">Healthy</span>
+                            <span class="text-slate-400 text-sm">{{ __('onenote_hero_visual_2') }}</span>
+                            <span class="text-emerald-400 font-bold text-sm">{{ __('onenote_hero_visual_3') }}</span>
                         </div>
                         <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 flex justify-between">
-                            <span class="text-slate-400 text-sm">Habits</span>
-                            <span class="text-indigo-400 font-bold text-sm">85% Rate</span>
+                            <span class="text-slate-400 text-sm">{{ __('onenote_hero_visual_4') }}</span>
+                            <span class="text-indigo-400 font-bold text-sm">{{ __('onenote_hero_visual_5') }}</span>
                         </div>
                         <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 flex justify-between">
-                            <span class="text-slate-400 text-sm">Goals</span>
-                            <span class="text-amber-400 font-bold text-sm">On Track</span>
+                            <span class="text-slate-400 text-sm">{{ __('onenote_hero_visual_6') }}</span>
+                            <span class="text-amber-400 font-bold text-sm">{{ __('onenote_hero_visual_7') }}</span>
                         </div>
                     </div>
                     <div class="absolute -right-6 -bottom-6 w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center text-2xl shadow-xl rotate-12">
@@ -78,13 +78,13 @@
                     </div>
                     <div class="absolute bottom-16 left-20 w-64 h-40 border border-slate-300 bg-white shadow-sm rounded-md p-2 -rotate-2">
                         <table class="w-full text-left text-[8px]">
-                            <tr class="border-b border-slate-200"><th class="pb-1 text-slate-300">Item</th><th class="pb-1 text-slate-300">Cost</th></tr>
-                            <tr><td class="py-1 text-slate-200">Food</td><td class="py-1 text-slate-200">$50</td></tr>
-                            <tr><td class="py-1 text-slate-200">Gas</td><td class="py-1 text-slate-200">$30</td></tr>
+                            <tr class="border-b border-slate-200"><th class="pb-1 text-slate-300">{{ __('onenote_prob_visual_1') }}</th><th class="pb-1 text-slate-300">{{ __('onenote_prob_visual_2') }}</th></tr>
+                            <tr><td class="py-1 text-slate-200">{{ __('onenote_prob_visual_3') }}</td><td class="py-1 text-slate-200">$50</td></tr>
+                            <tr><td class="py-1 text-slate-200">{{ __('onenote_prob_visual_4') }}</td><td class="py-1 text-slate-200">$30</td></tr>
                         </table>
                     </div>
                     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-red-500 rounded-full animate-ping opacity-50"></div>
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Lost Focus</div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">{{ __('onenote_prob_visual_5') }}</div>
                 </div>
             </div>
             
@@ -99,15 +99,15 @@
                     <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-start gap-4">
                         <div class="text-xl">😵‍💫</div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-sm">Decision Fatigue</h4>
-                            <p class="text-xs text-slate-500">Every new page forces you to decide where to put text, tables, and images.</p>
+                            <h4 class="font-bold text-slate-900 text-sm">{{ __('onenote_prob_point_1_title') }}</h4>
+                            <p class="text-xs text-slate-500">{{ __('onenote_prob_point_1_desc') }}</p>
                         </div>
                     </div>
                     <div class="bg-white p-4 rounded-xl border border-slate-100 flex items-start gap-4">
                         <div class="text-xl">🔍</div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-sm">Hard to Track</h4>
-                            <p class="text-xs text-slate-500">Good luck finding your consistency rate for a habit spread across 50 free-form pages.</p>
+                            <h4 class="font-bold text-slate-900 text-sm">{{ __('onenote_prob_point_2_title') }}</h4>
+                            <p class="text-xs text-slate-500">{{ __('onenote_prob_point_2_desc') }}</p>
                         </div>
                     </div>
                 </div>
@@ -128,15 +128,15 @@
                 <div class="space-y-4">
                     <div class="flex items-center gap-3 text-slate-700 font-medium">
                         <div class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xs">✓</div> 
-                        Automated Data Visualization
+                        {{ __('onenote_sol_point_1') }}
                     </div>
                     <div class="flex items-center gap-3 text-slate-700 font-medium">
                         <div class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xs">✓</div> 
-                        Pre-built Frameworks
+                        {{ __('onenote_sol_point_2') }}
                     </div>
                     <div class="flex items-center gap-3 text-slate-700 font-medium">
                         <div class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-xs">✓</div> 
-                        Zero Setup Time
+                        {{ __('onenote_sol_point_3') }}
                     </div>
                 </div>
             </div>
@@ -148,8 +148,8 @@
                         <div class="flex gap-3 items-center">
                             <div class="w-10 h-10 bg-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400">📈</div>
                             <div>
-                                <div class="text-white font-bold text-sm">Monthly Progress</div>
-                                <div class="text-slate-400 text-xs">Automatically generated</div>
+                                <div class="text-white font-bold text-sm">{{ __('onenote_sol_visual_1') }}</div>
+                                <div class="text-slate-400 text-xs">{{ __('onenote_sol_visual_2') }}</div>
                             </div>
                         </div>
                         <div class="text-emerald-400 font-black">+12%</div>
@@ -158,8 +158,8 @@
                         <div class="flex gap-3 items-center">
                             <div class="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400">🎯</div>
                             <div>
-                                <div class="text-white font-bold text-sm">Task Alignment</div>
-                                <div class="text-slate-400 text-xs">Linked to Long-term Goals</div>
+                                <div class="text-white font-bold text-sm">{{ __('onenote_sol_visual_3') }}</div>
+                                <div class="text-slate-400 text-xs">{{ __('onenote_sol_visual_4') }}</div>
                             </div>
                         </div>
                         <div class="text-purple-400 font-black text-xl">✓</div>
@@ -185,22 +185,22 @@
                         <div class="w-2/3 h-2 bg-slate-100 rounded"></div>
                     </div>
                 </div>
-                <div class="mt-6 text-center text-xs font-bold text-slate-400 uppercase tracking-widest">Typical Note App Canvas</div>
+                <div class="mt-6 text-center text-xs font-bold text-slate-400 uppercase tracking-widest">{{ __('onenote_feat_visual_1') }}</div>
             </div>
             <div>
-                <h3 class="text-2xl font-black text-slate-900 mb-4">The blank page is your enemy.</h3>
+                <h3 class="text-2xl font-black text-slate-900 mb-4">{{ __('onenote_cost_title') }}</h3>
                 <p class="text-slate-500 leading-relaxed mb-6">
-                    When you have infinite possibilities, you usually end up with nothing. A blank canvas forces you to make micro-decisions about formatting, layout, and structure every single time you want to record a habit or track an expense.
+                    {{ __('onenote_cost_desc') }}
                 </p>
                 <ul class="space-y-3">
                     <li class="flex items-center gap-3 text-slate-600 font-medium">
-                        <span class="text-purple-500">✓</span> No more formatting tables
+                        <span class="text-purple-500">✓</span> {{ __('onenote_cost_point_1') }}
                     </li>
                     <li class="flex items-center gap-3 text-slate-600 font-medium">
-                        <span class="text-purple-500">✓</span> No more creating checkboxes
+                        <span class="text-purple-500">✓</span> {{ __('onenote_cost_point_2') }}
                     </li>
                     <li class="flex items-center gap-3 text-slate-600 font-medium">
-                        <span class="text-purple-500">✓</span> Ready-made, beautiful UI
+                        <span class="text-purple-500">✓</span> {{ __('onenote_cost_point_3') }}
                     </li>
                 </ul>
             </div>
@@ -213,29 +213,29 @@
             <div class="bg-slate-900 rounded-[3rem] p-8 md:p-12 shadow-2xl text-white">
                 <div class="grid md:grid-cols-2 gap-12">
                     <div>
-                        <h3 class="text-xl font-bold text-slate-400 mb-6">OneNote Approach</h3>
+                        <h3 class="text-xl font-bold text-slate-400 mb-6">{{ __('onenote_feat_title_1') }}</h3>
                         <div class="space-y-6">
                             <div>
-                                <div class="font-bold text-white mb-1">Manual Formatting</div>
-                                <div class="text-slate-500 text-sm">Spend 10 minutes making a budget table look okay.</div>
+                                <div class="font-bold text-white mb-1">{{ __('onenote_feat_point_1_title') }}</div>
+                                <div class="text-slate-500 text-sm">{{ __('onenote_feat_point_1_desc') }}</div>
                             </div>
                             <div>
-                                <div class="font-bold text-white mb-1">Static Checkboxes</div>
-                                <div class="text-slate-500 text-sm">Click a box. Nothing happens. No streaks.</div>
+                                <div class="font-bold text-white mb-1">{{ __('onenote_feat_point_2_title') }}</div>
+                                <div class="text-slate-500 text-sm">{{ __('onenote_feat_point_2_desc') }}</div>
                             </div>
                         </div>
                     </div>
                     <div class="relative">
                         <div class="absolute -left-6 top-0 bottom-0 w-px bg-slate-800 hidden md:block"></div>
-                        <h3 class="text-xl font-bold text-purple-400 mb-6">OneForMind Advantage</h3>
+                        <h3 class="text-xl font-bold text-purple-400 mb-6">{{ __('onenote_feat_title_2') }}</h3>
                         <div class="space-y-6">
                             <div>
-                                <div class="font-bold text-white mb-1">Automated Finance Dashboard</div>
-                                <div class="text-slate-400 text-sm">Input the number. See the trend charts instantly.</div>
+                                <div class="font-bold text-white mb-1">{{ __('onenote_feat_point_3_title') }}</div>
+                                <div class="text-slate-400 text-sm">{{ __('onenote_feat_point_3_desc') }}</div>
                             </div>
                             <div>
-                                <div class="font-bold text-white mb-1">Intelligent Habit Engine</div>
-                                <div class="text-slate-400 text-sm">Build streaks, earn neural insights, see heatmaps.</div>
+                                <div class="font-bold text-white mb-1">{{ __('onenote_feat_point_4_title') }}</div>
+                                <div class="text-slate-400 text-sm">{{ __('onenote_feat_point_4_desc') }}</div>
                             </div>
                         </div>
                     </div>
@@ -247,9 +247,9 @@
     {{-- SECTION 6: CTA --}}
     <section class="py-32 bg-purple-50 text-center border-t border-purple-100">
         <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight">Embrace Structure.</h2>
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 mb-8 tracking-tight">{{ __('onenote_cta_title') }}</h2>
             <a hx-boost="false" href="{{ route('register') }}" class="inline-block bg-purple-600 text-white px-12 py-5 rounded-full text-xl hover:bg-purple-700 transition transform hover:-translate-y-1 shadow-[0_20px_40px_rgba(168,85,247,0.3)] font-bold">
-                Start Your System
+                {{ __('onenote_cta_btn') }}
             </a>
         </div>
     </section>
