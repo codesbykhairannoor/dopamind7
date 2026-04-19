@@ -6,7 +6,7 @@ import { createInertiaApp, router, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import { i18nVue, trans } from 'laravel-vue-i18n';
-import NProgress from 'nprogress';
+
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
@@ -100,12 +100,7 @@ createInertiaApp({
         vueApp.mount(el);
     },
 
-    progress: {
-        color: '#4f46e5',
-        showSpinner: false,
-        delay: 250,     // Delay 250ms agar navigasi cepat terasa instan tanpa flash loading bar
-        includeCSS: true, // Inertia akan inject CSS sendiri
-    },
+    progress: false,
 });
 
 /**
@@ -134,7 +129,7 @@ router.on('invalid', (event) => {
 
     console.warn('[OneForMind] Invalid Inertia response detected. Status:', status);
 
-    if (NProgress.isStarted()) NProgress.done();
+
 
     // Specific feedback for the user (can be replaced with a Toast later)
     if (status === 401 || status === 419) {

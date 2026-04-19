@@ -293,31 +293,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    {{-- NProgress (Only for HTMX pages if needed, but we can hide the custom one if it conflicts with Inertia) --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-    <style>
-        /* Customize NProgress (HTMX) */
-        #nprogress .bar {
-            background: #4f46e5 !important;
-            height: 3px !important;
-        }
 
-        #nprogress .peg {
-            box-shadow: 0 0 10px #4f46e5, 0 0 5px #4f46e5 !important;
-        }
-
-        #nprogress .spinner {
-            display: none !important;
-        }
-        
-        /* 📱 Sembunyikan NProgress kustom di mobile agar tidak double dengan bawaan Inertia.js */
-        @media (max-width: 768px) {
-            #nprogress {
-                display: none !important;
-            }
-        }
-    </style>
 
     <style>
     </style>
@@ -513,23 +489,7 @@
     }" @mobile-nav-close.window="mobileMenuOpen = false; mobilePanel = null"
         @scroll.window.passive="scrolled = (window.scrollY > 20)" class="relative">
 
-        <script>
-            // For normal navigation (non-HTMX links)
-            document.addEventListener('DOMContentLoaded', () => {
-                const links = document.querySelectorAll('a[href]:not([target=\"_blank\"]):not([href^=\"#\"]):not([href^=\"mailto:\"]):not([href^=\"tel:\"])');
-                links.forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        // Check if not prevented
-                        if (!e.defaultPrevented) {
-                            NProgress.start();
-                        }
-                    });
-                });
-            });
-            window.addEventListener('pageshow', () => {
-                NProgress.done();
-            });
-        </script>
+
 
         {{-- INSTANT APP LOADER (Blade to Vue Transition) --}}
         <div x-show="isInterfacing"
