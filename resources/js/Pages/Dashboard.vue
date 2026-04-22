@@ -444,26 +444,41 @@ onMounted(() => {
 
                 <!-- Sisi: ringkas + per tier -->
                 <aside class="space-y-4 lg:col-span-4">
-                    <div class="bento-card !rounded-2xl p-4 md:p-5">
-                        <h3 class="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                            {{ $t('dash_weekly_rhythm') }}
-                        </h3>
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
+                                {{ $t('dash_weekly_rhythm', 'Irama 7 Hari') }}
+                            </h3>
+                            <!-- Info Tooltip for Clarity -->
+                            <div class="group relative">
+                                <OneForMindIcon name="help" size="14" class="text-slate-300 dark:text-slate-600 cursor-help" />
+                                <div class="absolute bottom-full right-0 mb-2 w-48 p-3 bg-slate-900 text-white text-[10px] rounded-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 pointer-events-none shadow-2xl leading-relaxed">
+                                    {{ $t('dash_rhythm_info', 'Melacak rata-rata penyelesaian Habit dan Planner Task Anda selama seminggu terakhir.') }}
+                                </div>
+                            </div>
+                        </div>
+
                         <div v-if="!trend?.length" class="mt-4 flex h-28 items-end justify-between gap-1">
                             <SkeletonLoader v-for="i in 7" :key="i" width="12px" :height="`${15 + (i * 10) % 60}px`" borderRadius="2px" />
                         </div>
-                        <div v-else-if="trend?.length" class="mt-4 flex h-28 items-end justify-between gap-1">
-                            <div
-                                v-for="(day, idx) in trend"
-                                :key="idx"
-                                class="flex min-w-0 flex-1 flex-col items-center justify-end gap-1"
-                            >
+                        <div v-else-if="trend?.length" class="mt-4 flex flex-col gap-4">
+                            <div class="flex h-24 items-end justify-between gap-1 mt-1">
                                 <div
-                                    class="w-full max-w-[28px] rounded-t bg-indigo-500/85 dark:bg-indigo-400/80"
-                                    :style="{ height: `${Math.max(8, (day.score / trendMax) * 100)}%` }"
-                                    :title="String(day.score)"
-                                />
-                                <span class="truncate text-[9px] font-medium text-slate-400">{{ day.day }}</span>
+                                    v-for="(day, idx) in trend"
+                                    :key="idx"
+                                    class="flex min-w-0 flex-1 flex-col items-center justify-end gap-1 group/bar"
+                                >
+                                    <div
+                                        class="w-full max-w-[28px] rounded-t-md bg-indigo-500/85 dark:bg-indigo-400/80 transition-all duration-500 group-hover/bar:bg-indigo-600 dark:group-hover/bar:bg-indigo-300"
+                                        :style="{ height: `${Math.max(12, (day.score / trendMax) * 100)}%` }"
+                                        :title="`${day.day}: ${day.score}%`"
+                                    />
+                                    <span class="truncate text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-tighter">{{ day.day }}</span>
+                                </div>
                             </div>
+                            
+                            <p v-if="trend.every(d => d.score === 0)" class="text-[10px] text-center font-bold text-slate-400 dark:text-slate-600 bg-slate-50 dark:bg-slate-900/50 py-2 rounded-lg border border-dashed border-slate-200 dark:border-slate-800">
+                                {{ $t('dash_weekly_rhythm_empty', 'Belum ada aktivitas terselesaikan dlm 7 hari terakhir.') }}
+                            </p>
                         </div>
                         <p v-else class="mt-4 text-xs text-slate-400">{{ $t('dash_weekly_rhythm_empty') }}</p>
                     </div>

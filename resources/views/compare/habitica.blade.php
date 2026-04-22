@@ -30,6 +30,24 @@
     "name": "Habitica Alternative",
     "item": "{{ url('/compare/habitica-alternative') }}"
   }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_habitica_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_habitica_a1') }}"
+    }
+  }, {
+    "@type": "Question",
+    "name": "{{ __('faq_habitica_q2') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_habitica_a2') }}"
+    }
+  }]
 }]
 </script>
 @endsection
@@ -43,6 +61,9 @@
         
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="animate-in fade-in slide-in-from-left-8 duration-1000">
+                <div class="mb-4">
+                    <span class="text-indigo-400 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_habitica') }}</span>
+                </div>
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-900/50 text-indigo-300 font-bold text-xs mb-8 uppercase tracking-wider border border-indigo-500/30">
                     <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
                     {{ __('habitica_badge') }}

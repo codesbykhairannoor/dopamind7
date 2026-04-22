@@ -8,6 +8,42 @@
     <meta property="og:description" content="{{ __('obsidian_alt_og_desc') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/notes-apps') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Obsidian Alternative",
+    "item": "{{ url('/compare/obsidian-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_obsidian_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_obsidian_a1') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
 
     {{-- SECTION 1: HERO (Text Center, Visual Below, Dark Slate Theme) --}}
@@ -15,6 +51,9 @@
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-indigo-600/20 rounded-full blur-3xl -z-10"></div>
         
         <div class="max-w-4xl mx-auto text-center relative z-10 mb-12">
+            <div class="mb-4">
+                <span class="text-indigo-400 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_obsidian') }}</span>
+            </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800 text-indigo-400 font-bold text-xs mb-8 uppercase tracking-wider border border-slate-700">
                 🧠 {{ __('obsidian_badge') }}
             </div>

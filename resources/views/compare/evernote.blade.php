@@ -2,11 +2,50 @@
 
 @section('title', __('evernote_badge'))
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/notes-apps') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Evernote Alternative",
+    "item": "{{ url('/compare/evernote-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_evernote_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_evernote_a1') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
     {{-- SECTION 1: HERO (Text Left, Visual Right) --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-slate-50 relative border-b border-emerald-100">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="animate-in fade-in slide-in-from-left-8 duration-1000">
+                <div class="mb-4">
+                    <span class="text-emerald-600 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_evernote') }}</span>
+                </div>
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 font-bold text-xs mb-8 uppercase tracking-wider border border-emerald-200">
                     {{ __('evernote_badge') }}
                 </div>

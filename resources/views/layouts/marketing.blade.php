@@ -2,6 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('VITE_GA_MEASUREMENT_ID', 'G-WRSZV1R1YX') }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        window.GA_MEASUREMENT_ID = '{{ env('VITE_GA_MEASUREMENT_ID', 'G-WRSZV1R1YX') }}';
+        gtag('config', window.GA_MEASUREMENT_ID);
+    </script>
     <script>
         // 🛡️ Pre-emptive Safety Guard for Element.prototype.closest
         (function() {
@@ -220,37 +229,37 @@
         {
           "@type": "SiteNavigationElement",
           "position": 1,
-          "name": "Daily Planner",
-          "description": "Schedule Your Success, Get More Done. Stop feeling busy but...",
-          "url": "{{ route('features.planner') }}"
+          "name": "Pricing & Plans",
+          "description": "Choose the perfect plan for your productivity journey. Free and premium tiers available.",
+          "url": "{{ route('pricing.index') }}"
         },
         {
           "@type": "SiteNavigationElement",
           "position": 2,
-          "name": "Atomic Habits System",
-          "description": "Build lasting habits with the ultimate atomic system. Track...",
-          "url": "{{ route('features.habit') }}"
+          "name": "Get Started Now",
+          "description": "Join OneForMind today and start building your unified life operating system.",
+          "url": "{{ route('register') }}"
         },
         {
           "@type": "SiteNavigationElement",
           "position": 3,
-          "name": "Secure Digital Journal",
-          "description": "OneForMind integrates Positive Psychology and Reflective Journaling...",
-          "url": "{{ route('features.journal') }}"
+          "name": "Daily Planner",
+          "description": "Schedule Your Success, Get More Done. Focus on what truly matters.",
+          "url": "{{ route('features.planner') }}"
         },
         {
           "@type": "SiteNavigationElement",
           "position": 4,
-          "name": "Job Tracker",
-          "description": "Organize your career journey. Track applications, interviews, and networking...",
-          "url": "{{ route('features.job') }}"
+          "name": "Atomic Habits System",
+          "description": "Build lasting habits with the ultimate atomic system. Track your 1% growth.",
+          "url": "{{ route('features.habit') }}"
         },
         {
           "@type": "SiteNavigationElement",
           "position": 5,
-          "name": "Finance OS",
-          "description": "Master your money flow and track your assets securely.",
-          "url": "{{ route('features.finance') }}"
+          "name": "Secure Digital Journal",
+          "description": "Reflect and capture your thoughts in a private, mindful ecosystem.",
+          "url": "{{ route('features.journal') }}"
         }
       ]
     }
@@ -900,7 +909,7 @@
                                 </div>
                                 <div x-show="mobilePanel === 'resources'" class="space-y-6 pt-2">
                                     <div>
-                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Knowledge &amp; help</p>
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Knowledge & Help</p>
                                         <div class="space-y-1">
                                             <x-nav-item-mobile dismiss-mobile href="{{ route('resources.guide') }}" icon="📖" title="User guide" desc="How to use OneForMind" />
                                             <x-nav-item-mobile dismiss-mobile href="{{ route('resources.help') }}" icon="🙋‍♂️" title="Help center" desc="Answers and support" />
@@ -908,7 +917,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Social &amp; community</p>
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Social & Community</p>
                                         <div class="space-y-1">
                                             <x-nav-item-mobile dismiss-mobile href="{{ route('resources.community') }}" icon="🌍" title="Community" desc="Join discussions" />
                                             <x-nav-item-mobile dismiss-mobile href="{{ route('resources.blog') }}" icon="✍️" title="Blog" desc="Productivity insights" />

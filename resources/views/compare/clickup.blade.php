@@ -8,6 +8,42 @@
     <meta property="og:description" content="{{ __('clickup_alt_og_desc') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/planner-apps') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "ClickUp Alternative",
+    "item": "{{ url('/compare/clickup-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_clickup_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_clickup_a1') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
 
     {{-- SECTION 1: HERO (Text Center, Floating Elements) --}}
@@ -21,6 +57,9 @@
         <div class="absolute bottom-24 right-[12%] bg-slate-800/80 border border-slate-700 rounded-lg p-3 text-xs text-slate-400 shadow-xl blur-[1px] opacity-80 animate-[pulse_7s_infinite_0.5s] -rotate-12">Dependencies</div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <div class="mb-4">
+                <span class="text-purple-400 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_clickup') }}</span>
+            </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 font-bold text-xs mb-8 uppercase tracking-wider border border-purple-500/30">
                 <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
                 {{ __('clickup_badge') }}

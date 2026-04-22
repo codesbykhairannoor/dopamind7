@@ -8,12 +8,51 @@
     <meta property="og:description" content="{{ __('spendee_alt_og_desc') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/finance-apps') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Spendee Alternative",
+    "item": "{{ url('/compare/spendee-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_spendee_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_spendee_a1') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
 
     {{-- SECTION 1: HERO (Text Center, Visual Bottom) --}}
     <header class="pt-32 pb-0 px-6 overflow-hidden bg-slate-950 relative border-b border-purple-900">
         <div class="absolute inset-0 bg-[radial-gradient(circle,rgba(168,85,247,0.15)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20"></div>
         <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 mb-16">
+            <div class="mb-4">
+                <span class="text-purple-400 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_spendee') }}</span>
+            </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/50 text-purple-300 font-bold text-xs mb-8 uppercase tracking-wider border border-purple-500/30">
                 <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
                 {{ __('spendee_badge') }}

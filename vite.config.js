@@ -4,6 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import { VitePWA } from "vite-plugin-pwa";
 import fs from "fs";
 import path from "path";
+import viteCompression from "vite-plugin-compression";
 
 // ==========================================================
 // 🔥 MESIN AUTO-MERGE JSON TRANSLATIONS 🔥
@@ -148,6 +149,14 @@ export default defineConfig({
             },
         }),
         mergeTranslations(), // 🔥 PANGGIL MESIN TRANSLATION DI SINI
+        viteCompression({
+            algorithm: "gzip",
+            ext: ".gz",
+        }),
+        viteCompression({
+            algorithm: "brotliCompress",
+            ext: ".br",
+        }),
     ],
     // 🔥 BUILD SETTINGS (Standard)
     build: {

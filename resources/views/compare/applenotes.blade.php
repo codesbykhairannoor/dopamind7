@@ -2,10 +2,49 @@
 
 @section('title', __('applenotes_badge'))
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/notes-apps') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Apple Notes Alternative",
+    "item": "{{ url('/compare/applenotes-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_applenotes_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_applenotes_a1') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
     {{-- SECTION 1: HERO (Text Center, Visual Bottom) --}}
     <header class="pt-32 pb-0 px-6 overflow-hidden bg-amber-50 relative border-b border-amber-100">
         <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 mb-16">
+            <div class="mb-4">
+                <span class="text-amber-600 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_applenotes') }}</span>
+            </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 text-amber-700 font-bold text-xs mb-8 uppercase tracking-wider border border-amber-200">
                 {{ __('applenotes_badge') }}
             </div>

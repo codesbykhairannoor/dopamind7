@@ -8,6 +8,42 @@
     <meta property="og:description" content="{{ __('notion_alt_og_desc') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/custom-apps') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Notion Alternative",
+    "item": "{{ url('/compare/notion-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_notion_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_notion_a1') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
 
     {{-- SECTION 1: HERO (Center Text, Floating Icons, White/Indigo Theme) --}}
@@ -21,6 +57,9 @@
             <div class="absolute -right-8 top-12 text-5xl transform rotate-6 opacity-80 hidden md:block animate-[float_5s_ease-in-out_infinite_reverse]">🛠️</div>
             <div class="absolute right-16 bottom-0 text-4xl transform -rotate-12 opacity-80 hidden md:block">🗄️</div>
 
+            <div class="mb-4">
+                <span class="text-indigo-400 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_notion') }}</span>
+            </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs mb-8 uppercase tracking-wider">
                 🎯 {{ __('notion_badge') }}
             </div>

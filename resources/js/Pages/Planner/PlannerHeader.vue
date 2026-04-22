@@ -53,7 +53,7 @@ const closeDatePicker = () => {
                                     leave-from-class="opacity-100 translate-y-0 scale-100"
                                     leave-to-class="opacity-0 translate-y-2 scale-95"
                                 >
-                                    <div v-if="showDatePicker" class="absolute left-0 top-full mt-3 z-[100] origin-top-left">
+                                    <div v-if="showDatePicker" class="absolute left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 top-full mt-3 z-[100] origin-top">
                                         <div class="fixed inset-0 z-[-1]" @click="closeDatePicker"></div>
                                         
                                         <PlannerDatePicker 

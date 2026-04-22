@@ -82,5 +82,6 @@
     "btn_journal": "Self Reflect",
     "dash_task_scheduled": "Scheduled",
     "dash_weekly_rhythm": "7-day rhythm",
-    "dash_weekly_rhythm_empty": "Weekly scores will appear once you log habits and planner tasks."
+    "dash_weekly_rhythm_empty": "No recorded activity in the last 7 days.",
+    "dash_rhythm_info": "Tracks your average Habit and Planner Task completion over the past 7 days."
 }

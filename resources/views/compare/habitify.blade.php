@@ -30,6 +30,17 @@
     "name": "Habitify Alternative",
     "item": "{{ url('/compare/habitify-alternative') }}"
   }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_habitify_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_habitify_a1') }}"
+    }
+  }]
 }]
 </script>
 @endsection
@@ -47,6 +58,9 @@
         <div class="absolute bottom-32 right-[15%] w-14 h-14 bg-white border border-slate-100 shadow-md rounded-xl flex items-center justify-center text-2xl animate-[bounce_4.5s_infinite_0.2s] opacity-70 z-0 rotate-6">💰</div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <div class="mb-4">
+                <span class="text-indigo-400 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_habitify') }}</span>
+            </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs mb-8 uppercase tracking-wider shadow-sm">
                 {{ __('habitify_badge') }}
             </div>

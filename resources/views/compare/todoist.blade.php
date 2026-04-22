@@ -8,11 +8,50 @@
     <meta property="og:description" content="{{ __('todoist_alt_og_desc') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/planner-apps') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Todoist Alternative",
+    "item": "{{ url('/compare/todoist-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_todoist_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_todoist_a1') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
 
     {{-- SECTION 1: HERO (Text Center, Visual Bottom) --}}
     <header class="pt-32 pb-0 px-6 overflow-hidden bg-slate-900 relative border-b border-slate-800">
         <div class="max-w-4xl mx-auto text-center relative z-10 animate-in fade-in slide-in-from-bottom-8 duration-1000 mb-16">
+            <div class="mb-4">
+                <span class="text-red-400 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_todoist') }}</span>
+            </div>
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/20 text-red-300 font-bold text-xs mb-8 uppercase tracking-wider border border-red-500/30">
                 <span class="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
                 {{ __('todoist_badge') }}

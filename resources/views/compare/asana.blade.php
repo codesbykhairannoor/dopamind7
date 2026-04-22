@@ -8,6 +8,42 @@
     <meta property="og:description" content="{{ __('asana_alt_og_desc') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/management-tools') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Asana Alternative",
+    "item": "{{ url('/compare/asana-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_asana_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_asana_a1') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
 
     {{-- SECTION 1: HERO (Text Left, Minimalist UI Right, Indigo-50 Theme) --}}
@@ -15,6 +51,9 @@
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10">
             
             <div class="lg:col-span-7 text-left">
+                <div class="mb-4">
+                    <span class="text-indigo-600 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_asana') }}</span>
+                </div>
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-indigo-600 font-bold text-xs mb-8 uppercase tracking-wider shadow-sm border border-indigo-100">
                     🦄 {{ __('asana_badge') }}
                 </div>

@@ -8,6 +8,49 @@
     <meta property="og:description" content="{{ __('ynab_alt_og_desc') }}">
 @endsection
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/finance-apps') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "YNAB Alternative",
+    "item": "{{ url('/compare/ynab-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_ynab_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_ynab_a1') }}"
+    }
+  }, {
+    "@type": "Question",
+    "name": "{{ __('faq_ynab_q2') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_ynab_a2') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
 
     {{-- SECTION 1: HERO (Visual Left, Text Right, Indigo 600 Dark Theme) --}}
@@ -33,6 +76,9 @@
             </div>
 
             <div class="order-1 lg:order-2 text-left">
+                <div class="mb-4">
+                    <span class="text-indigo-400 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_ynab') }}</span>
+                </div>
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/20 text-indigo-300 font-bold text-xs mb-8 uppercase tracking-wider border border-indigo-500/30">
                     💸 {{ __('ynab_badge') }}
                 </div>

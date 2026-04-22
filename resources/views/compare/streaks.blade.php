@@ -30,6 +30,17 @@
     "name": "Streaks App Alternative",
     "item": "{{ url('/compare/streaks-alternative') }}"
   }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_streaks_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_streaks_a1') }}"
+    }
+  }]
 }]
 </script>
 @endsection
@@ -68,6 +79,9 @@
             </div>
 
             <div class="order-1 lg:order-2 text-left animate-in fade-in slide-in-from-right-8 duration-1000">
+                <div class="mb-4">
+                    <span class="text-orange-500 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_streaks') }}</span>
+                </div>
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-100 text-orange-700 font-bold text-xs mb-8 uppercase tracking-wider border border-orange-200">
                     <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
                     {{ __('streaks_badge') }}

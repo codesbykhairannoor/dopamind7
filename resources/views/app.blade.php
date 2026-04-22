@@ -2,6 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('VITE_GA_MEASUREMENT_ID', 'G-WRSZV1R1YX') }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        window.GA_MEASUREMENT_ID = '{{ env('VITE_GA_MEASUREMENT_ID', 'G-WRSZV1R1YX') }}';
+        gtag('config', window.GA_MEASUREMENT_ID);
+    </script>
     <script>
         // 🛡️ Pre-emptive Safety Guard for Element.prototype.closest
         (function() {
@@ -231,29 +240,6 @@
         @endif
     @endif
 </head>
-@if(env('VITE_GA_MEASUREMENT_ID'))
-    <script>
-        window.addEventListener('load', () => {
-            const loadGTM = () => {
-                if (window.gtmLoaded) return;
-                window.gtmLoaded = true;
-                const script = document.createElement('script');
-                script.src = "https://www.googletagmanager.com/gtag/js?id={{ env('VITE_GA_MEASUREMENT_ID') }}";
-                script.async = true;
-                document.head.appendChild(script);
-                script.onload = () => {
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag() { dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    window.GA_MEASUREMENT_ID = '{{ env('VITE_GA_MEASUREMENT_ID') }}';
-                    gtag('config', window.GA_MEASUREMENT_ID);
-                };
-            };
-            const interactionEvents = ['mouseover', 'keydown', 'touchmove', 'touchstart', 'scroll'];
-            interactionEvents.forEach(event => window.addEventListener(event, loadGTM, { once: true, passive: true }));
-            setTimeout(loadGTM, 3500);
-        });
-    </script>
 @endif
 
 <body class="font-sans antialiased selection:bg-indigo-500 selection:text-white">

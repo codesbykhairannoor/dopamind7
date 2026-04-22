@@ -1333,5 +1333,79 @@
   "onenote_cta_title": "Rangkul Keteraturan.",
   "onenote_cta_btn": "Mulai Sistemmu",
 
-  "compare_nav_title": "Bandingkan Aplikasi Catatan:"
+  "compare_nav_title": "Bandingkan Aplikasi Catatan:",
+
+  "seo_eyebrow_habitica": "OneForMind: Alternatif Habitica yang Profesional",
+  "seo_eyebrow_ynab": "OneForMind: Alternatif YNAB yang Elegan",
+  "seo_eyebrow_todoist": "OneForMind: Alternatif Todoist Level Tinggi",
+  "seo_eyebrow_notion": "OneForMind: Alternatif Notion yang Terstruktur",
+  "seo_eyebrow_clickup": "OneForMind: Alternatif ClickUp yang Personal",
+  "seo_eyebrow_spreadsheet": "OneForMind: Alternatif Spreadsheet Terbaik",
+  "seo_eyebrow_evernote": "OneForMind: Alternatif Evernote Modern",
+  "seo_eyebrow_applenotes": "OneForMind: Alternatif Apple Notes buat Power-User",
+  "seo_eyebrow_onenote": "OneForMind: Alternatif OneNote yang Terfokus",
+  "seo_eyebrow_streaks": "OneForMind: Alternatif Streaks Tingkat Lanjut",
+  "seo_eyebrow_habitify": "OneForMind: Alternatif Habitify yang Terpadu",
+  "seo_eyebrow_wallet": "OneForMind: Alternatif Wallet App Berbasis Kecerdasan",
+  "seo_eyebrow_spendee": "OneForMind: Alternatif Spendee Berbasis Perilaku",
+  "seo_eyebrow_ticktick": "OneForMind: Alternatif TickTick yang Terpadu",
+  "seo_eyebrow_obsidian": "OneForMind: Alternatif Obsidian yang Terintegrasi",
+
+  "faq_habitica_q1": "Apakah OneForMind lebih baik dari Habitica untuk produktivitas?",
+  "faq_habitica_a1": "Habitica bagus buat fans RPG, tapi OneForMind didesain buat orang dewasa yang mau bangun habit berbasis identitas tanpa gangguan avatar pixel atau equipment virtual. Kami fokus ke hasil dunia nyata dan pertumbuhan psikologis.",
+  "faq_habitica_q2": "Apakah OneForMind punya fitur gamifikasi?",
+  "faq_habitica_a2": "Iya, tapi dengan cara yang 'mindful'. Bukannya pedang dan HP, kami pakai wawasan neural, heatmap konsistensi, dan milestone level identitas buat ngasih dopamin yang beneran ngebangun habit permanen.",
+  
+  "faq_ynab_q1": "Kenapa harus pindah dari YNAB ke OneForMind?",
+  "faq_ynab_a1": "YNAB itu alat gaya spreadsheet yang kuat, tapi sering bikin 'micro-management burnout'. OneForMind pakai logika macro-budgeting yang ngebantu kamu liat gambaran besar keuangan tanpa perlu rekonsiliasi tiap sen secara manual.",
+  "faq_ynab_q2": "Apakah OneForMind pakai Zero-Based Budgeting?",
+  "faq_ynab_a2": "Kami pakai model 'Envelope Synergy'. Ini ngambil bagian terbaik dari Zero-Based Budgeting sambil diintegrasiin langsung ke target dan planner harianmu buat hidup finansial yang terpadu.",
+
+  "faq_todoist_q1": "Apakah OneForMind alternatif Todoist yang bagus?",
+  "faq_todoist_a1": "Iya. Todoist itu pengelola daftar yang oke, tapi nggak punya pelacakan habit dan keuangan terpadu. OneForMind nyelesein masalah 'aplikasi yang mencar-mencar' dengan nyatuin tugas sama seluruh OS hidupmu.",
+  
+  "faq_clickup_q1": "OneForMind vs ClickUp buat penggunaan pribadi?",
+  "faq_clickup_a1": "ClickUp dibuat buat tim besar dan bisa kerasa berlebihan buat individu. OneForMind didesain khusus buat performa tinggi personal, ngasih kekuatan project manager dengan kesederhanaan diary pribadi.",
+
+  "faq_notion_q1": "Kenapa pakai OneForMind daripada setup Notion?",
+  "faq_notion_a1": "Notion maksa kamu jadi arsitek—ngabisin waktu berjam-jam ngebangun sistem sendiri. OneForMind itu 'Sistem yang Udah Jadi'. Kamu nggak perlu bikin tracker atau benerin rumus; tinggal mulai kejar targetmu dari hari pertama.",
+
+  "faq_evernote_q1": "Apakah OneForMind lebih baik buat mencatat daripada Evernote?",
+  "faq_evernote_a1": "Evernote itu lemari arsip digital yang oke, tapi OneForMind adalah mesin eksekusi hidup. Kalau cuma mau simpan PDF, tetap di Evernote. Tapi kalau mau catatanmu berubah jadi habit, tugas, dan target finansial, OneForMind pilihan yang lebih tepat.",
+  
+  "faq_applenotes_q1": "Kenapa pakai OneForMind daripada Apple Notes?",
+  "faq_applenotes_a1": "Apple Notes memang praktis tapi nggak punya sistem yang proaktif. OneForMind ngubah pemikiranmu jadi 'Sistem Operasi Hidup', ngehubungin catatan acakmu ke habit target, planner proyek, dan pelacak pengeluaran.",
+
+  "faq_onenote_q1": "OneForMind vs Microsoft OneNote buat produktivitas?",
+  "faq_onenote_a1": "OneNote dibangun seperti buku catatan digital—tanpa batas dan seringkali nggak terorganisir. OneForMind dibangun buat hasil performa tinggi, ngasih ekosistem terstruktur di mana catatan terintegrasi sama planner harian dan coaching AI.",
+
+  "faq_obsidian_q1": "Kenapa harus pindah dari Obsidian ke OneForMind?",
+  "faq_obsidian_a1": "Obsidian kuat buat manajemen pengetahuan, tapi seringkali terlalu rumit buat pelacakan habit dan keuangan harian. OneForMind ngasih struktur yang kamu butuhin buat aksi harian tanpa perlu plugin rumit atau utak-atik markdown.",
+
+  "faq_spreadsheet_q1": "OneForMind vs Excel/Google Sheets buat pelacakan habit?",
+  "faq_spreadsheet_a1": "Spreadsheet itu kuat tapi payah buat penggunaan mobile dan konsistensi. OneForMind ngasih kejelasan data ala spreadsheet dengan UI yang cantik dan mobile-first, plus wawasan neural otomatis yang nggak bisa dikasih spreadsheet.",
+
+  "faq_streaks_q1": "Gimana perbandingan OneForMind sama aplikasi Streaks?",
+  "faq_streaks_a1": "Streaks adalah alat simpel yang bagus. OneForMind ngebawa itu lebih jauh dengan ngehubungin streak kamu ke planner harian dan anggaran belanja, ngebantu kamu liat gimana habit-mu berdampak ke produktivitas dan kekayaan secara real-time.",
+
+  "faq_habitify_q1": "OneForMind vs Habitify buat pelacakan habit?",
+  "faq_habitify_a1": "Meskipun Habitify adalah aplikasi yang solid dan terfokus, OneForMind nyelesein masalah 'data yang terpisah-pisah' dengan ngintegrasiin habit-mu langsung ke planner harian dan manajer keuangan. Kamu dapet alasan 'Kenapa' di balik konsistensi-mu.",
+
+  "faq_wallet_q1": "Kenapa pakai OneForMind sebagai alternatif aplikasi Wallet?",
+  "faq_wallet_a1": "Aplikasi dompet standar cuma ngelacak pengeluaran. OneForMind pakai mesin perilaku buat nunjukin gimana habit-mu (seperti bolos gym) berujung ke belanja impulsif. Kami nggak cuma ngelacak uang; kami ngelacak perilaku di baliknya.",
+
+  "faq_spendee_q1": "OneForMind vs Spendee buat manajemen keuangan?",
+  "faq_spendee_a1": "Spendee bagus buat grafik yang cantik, tapi itu cuma wadah terpisah. OneForMind ngehubungin manajer keuanganmu ke tugas harian dan target masa depan, mastiin setiap rupiah yang keluar sejalan dengan visi jangka panjangmu.",
+
+  "faq_ticktick_q1": "Apakah OneForMind alternatif TickTick yang bagus?",
+  "faq_ticktick_a1": "Iya. Meskipun TickTick adalah pengelola tugas yang solid, OneForMind ngintegrasiin daftar tugasmu dengan pelacakan habit mendalam dan manajemen keuangan harian, nyelesein masalah 'kebanyakan aplikasi' buat para achiever.",
+  
+  "faq_asana_q1": "Kenapa pakai OneForMind sebagai alternatif Asana buat penggunaan pribadi?",
+  "faq_asana_a1": "Asana itu alat buat tim. OneForMind dibangun buat 'Tim Satu Orang'. Kami ngintegrasiin manajemen proyekmu dengan habit harian dan target keuanganmu, sesuatu yang nggak didesain buat Asana.",
+
+  "faq_monday_q1": "OneForMind vs Monday.com buat produktivitas individu?",
+  "faq_monday_a1": "Monday.com adalah OS kerja yang kompleks buat bisnis. OneForMind adalah 'Life OS' buat kamu. Daripada ngelola kolom dan papan, kamu ngelola energimu, fokus neural, dan sistem hidup dalam satu antarmuka yang tenang.",
+
+  "faq_trello_q1": "Apakah OneForMind lebih baik dari Trello buat pelacakan tugas?",
+  "faq_trello_a1": "Trello cuma sebuah papan. OneForMind adalah sistem perilaku. Meskipun kamu bisa ngelacak tugas di OneForMind, kami juga ngebantu kamu paham kenapa kamu nggak nyelesein tugas itu dengan nganalisis hambatan habit dan keuanganmu."
 }

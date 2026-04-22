@@ -2,6 +2,42 @@
 
 @section('title', __('onenote_badge'))
 
+@section('json-ld')
+<script type="application/ld+json">
+[{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "OneForMind",
+    "item": "{{ url('/') }}"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Compare",
+    "item": "{{ url('/compare/notes-apps') }}"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "OneNote Alternative",
+    "item": "{{ url('/compare/onenote-alternative') }}"
+  }]
+},{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "{{ __('faq_onenote_q1') }}",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "{{ __('faq_onenote_a1') }}"
+    }
+  }]
+}]
+</script>
+@endsection
+
 @section('content')
     {{-- SECTION 1: HERO (Text Right, Visual Left) --}}
     <header class="pt-32 pb-24 px-6 overflow-hidden bg-slate-950 relative border-b border-purple-900/50">
@@ -35,6 +71,9 @@
             </div>
 
             <div class="order-1 lg:order-2 text-left animate-in fade-in slide-in-from-right-8 duration-1000">
+                <div class="mb-4">
+                    <span class="text-purple-400 font-bold text-sm tracking-widest uppercase opacity-70">{{ __('seo_eyebrow_onenote') }}</span>
+                </div>
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/50 text-purple-300 font-bold text-xs mb-8 uppercase tracking-wider border border-purple-500/30">
                     <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
                     {{ __('onenote_badge') }}

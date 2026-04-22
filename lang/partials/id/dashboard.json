@@ -82,5 +82,6 @@
     "btn_journal": "Refleksi Diri",
     "dash_task_scheduled": "Terjadwal",
     "dash_weekly_rhythm": "Irama 7 hari",
-    "dash_weekly_rhythm_empty": "Skor mingguan muncul setelah kamu mencatat habit dan tugas planner."
+    "dash_weekly_rhythm_empty": "Belum ada aktivitas terselesaikan dlm 7 hari terakhir.",
+    "dash_rhythm_info": "Melacak rata-rata penyelesaian Habit dan Planner Task Anda selama seminggu terakhir."
 }
