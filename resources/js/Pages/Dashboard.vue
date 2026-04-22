@@ -444,6 +444,7 @@ onMounted(() => {
 
                 <!-- Sisi: ringkas + per tier -->
                 <aside class="space-y-4 lg:col-span-4">
+                    <div class="bento-card !rounded-2xl p-4 md:p-5">
                         <div class="flex items-center justify-between">
                             <h3 class="text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
                                 {{ $t('dash_weekly_rhythm', 'Irama 7 Hari') }}
