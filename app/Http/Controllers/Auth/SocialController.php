@@ -55,8 +55,6 @@ class SocialController extends Controller
                     'avatar_path' => $googleUser->getAvatar(), // Simpan foto profil Google
                     'password' => bcrypt(Str::random(16)), 
                     'email_verified_at' => now(),
-                    'has_used_trial' => false,
-                    'onboarding_completed' => false, // Pastikan masuk ke onboarding
                     'settings' => [
                         'modules' => [
                             'habit' => true,
