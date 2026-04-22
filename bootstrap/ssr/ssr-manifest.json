@@ -78,12 +78,12 @@
     "http://localhost:8000/build/assets/SecondaryButton-BgIg9sGF.js"
   ],
   "resources/js/Components/SkeletonLoader.vue": [
-    "http://localhost:8000/build/assets/Dashboard-DtMVAKdz.js",
-    "http://localhost:8000/build/assets/Dashboard-DM3STjbP.css"
+    "http://localhost:8000/build/assets/Dashboard-DQcVaHIQ.js",
+    "http://localhost:8000/build/assets/Dashboard-nIHG5ofE.css"
   ],
   "resources/js/Components/SkeletonLoader.vue?vue&type=style&index=0&scoped=5c9601f4&lang.css": [
-    "http://localhost:8000/build/assets/Dashboard-DtMVAKdz.js",
-    "http://localhost:8000/build/assets/Dashboard-DM3STjbP.css"
+    "http://localhost:8000/build/assets/Dashboard-DQcVaHIQ.js",
+    "http://localhost:8000/build/assets/Dashboard-nIHG5ofE.css"
   ],
   "resources/js/Components/TextInput.vue": [
     "http://localhost:8000/build/assets/TextInput-xTq3OG6l.js"
@@ -151,19 +151,19 @@
     "http://localhost:8000/build/assets/JournalEntry-BvEFMDeP.css"
   ],
   "resources/js/Composables/Planner/usePlanner.js": [
-    "http://localhost:8000/build/assets/Index-B0ZaK-tZ.js"
+    "http://localhost:8000/build/assets/Index-CNqRZwiN.js"
   ],
   "resources/js/Composables/Planner/usePlannerBatch.js": [
-    "http://localhost:8000/build/assets/Index-B0ZaK-tZ.js"
+    "http://localhost:8000/build/assets/Index-CNqRZwiN.js"
   ],
   "resources/js/Composables/Planner/usePlannerCalendar.js": [
-    "http://localhost:8000/build/assets/Index-B0ZaK-tZ.js"
+    "http://localhost:8000/build/assets/Index-CNqRZwiN.js"
   ],
   "resources/js/Composables/Planner/usePlannerDrag.js": [
-    "http://localhost:8000/build/assets/Index-B0ZaK-tZ.js"
+    "http://localhost:8000/build/assets/Index-CNqRZwiN.js"
   ],
   "resources/js/Composables/Planner/usePlannerTasks.js": [
-    "http://localhost:8000/build/assets/Index-B0ZaK-tZ.js"
+    "http://localhost:8000/build/assets/Index-CNqRZwiN.js"
   ],
   "resources/js/Composables/useAppearance.js": [
     "http://localhost:8000/build/assets/useAppearance-rDoGVD4_.js"
@@ -221,10 +221,10 @@
     "http://localhost:8000/build/assets/ForgotPassword-8kDpVzlm.js"
   ],
   "resources/js/Pages/Auth/Login.vue": [
-    "http://localhost:8000/build/assets/Login-0MAZ1pcV.js"
+    "http://localhost:8000/build/assets/Login-GSVl5j_m.js"
   ],
   "resources/js/Pages/Auth/Register.vue": [
-    "http://localhost:8000/build/assets/Register-k1gx1sZX.js"
+    "http://localhost:8000/build/assets/Register-jo-3NLXi.js"
   ],
   "resources/js/Pages/Auth/ResetPassword.vue": [
     "http://localhost:8000/build/assets/ResetPassword-Dqo6FGcD.js"
@@ -271,12 +271,12 @@
     "http://localhost:8000/build/assets/Index-Aa5hvdZC.css"
   ],
   "resources/js/Pages/Dashboard.vue": [
-    "http://localhost:8000/build/assets/Dashboard-DtMVAKdz.js",
-    "http://localhost:8000/build/assets/Dashboard-DM3STjbP.css"
+    "http://localhost:8000/build/assets/Dashboard-DQcVaHIQ.js",
+    "http://localhost:8000/build/assets/Dashboard-nIHG5ofE.css"
   ],
-  "resources/js/Pages/Dashboard.vue?vue&type=style&index=0&scoped=615544f0&lang.css": [
-    "http://localhost:8000/build/assets/Dashboard-DtMVAKdz.js",
-    "http://localhost:8000/build/assets/Dashboard-DM3STjbP.css"
+  "resources/js/Pages/Dashboard.vue?vue&type=style&index=0&scoped=890c0263&lang.css": [
+    "http://localhost:8000/build/assets/Dashboard-DQcVaHIQ.js",
+    "http://localhost:8000/build/assets/Dashboard-nIHG5ofE.css"
   ],
   "resources/js/Pages/Error.vue": [
     "http://localhost:8000/build/assets/Error-CLhppdld.js"
@@ -520,6 +520,14 @@
   "resources/js/Pages/More/Index.vue": [
     "http://localhost:8000/build/assets/Index-CzhQrm4m.js"
   ],
+  "resources/js/Pages/Onboarding/Show.vue": [
+    "http://localhost:8000/build/assets/Show-DWP2ptYu.js",
+    "http://localhost:8000/build/assets/Show-DNVVz7sQ.css"
+  ],
+  "resources/js/Pages/Onboarding/Show.vue?vue&type=style&index=0&scoped=565b2557&lang.css": [
+    "http://localhost:8000/build/assets/Show-DWP2ptYu.js",
+    "http://localhost:8000/build/assets/Show-DNVVz7sQ.css"
+  ],
   "resources/js/Pages/Payment/Status.vue": [
     "http://localhost:8000/build/assets/Status-DPESpxxj.js",
     "http://localhost:8000/build/assets/Status-CrcuwGDB.css"
@@ -529,7 +537,7 @@
     "http://localhost:8000/build/assets/Status-CrcuwGDB.css"
   ],
   "resources/js/Pages/Planner/Index.vue": [
-    "http://localhost:8000/build/assets/Index-B0ZaK-tZ.js"
+    "http://localhost:8000/build/assets/Index-CNqRZwiN.js"
   ],
   "resources/js/Pages/Planner/PlannerBatchModal.vue": [
     "http://localhost:8000/build/assets/PlannerBatchModal-Bf1UBZri.js",
@@ -540,7 +548,7 @@
     "http://localhost:8000/build/assets/PlannerBatchModal-BRBCtrAe.css"
   ],
   "resources/js/Pages/Planner/PlannerHeader.vue": [
-    "http://localhost:8000/build/assets/PlannerHeader-BkLtSaml.js"
+    "http://localhost:8000/build/assets/PlannerHeader-Cy1AFwJV.js"
   ],
   "resources/js/Pages/Planner/PlannerMobileTimeline.vue": [
     "http://localhost:8000/build/assets/PlannerMobileTimeline-BSvY8qzJ.js",
