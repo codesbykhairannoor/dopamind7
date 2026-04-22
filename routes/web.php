@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\FinanceSavingController;
 use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\TrialController;
+use App\Http\Controllers\OnboardingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
@@ -459,8 +460,14 @@ Route::get("/auth/google", [SocialController::class, "redirect"])->name(
 );
 Route::get("/auth/google/callback", [SocialController::class, "callback"]);
 
+// --- ONBOARDING ---
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/onboarding', [OnboardingController::class, 'index'])->name('onboarding.index');
+    Route::post('/onboarding', [OnboardingController::class, 'store'])->name('onboarding.store');
+});
+
 // --- GROUP 3: AUTHENTICATED APP ---
-Route::middleware(["auth", "verified", "throttle:global"])->group(function () {
+Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(function () {
     // 👈 Tambahan di sini
     
     // Trial Route

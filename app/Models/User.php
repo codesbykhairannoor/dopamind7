@@ -35,6 +35,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'timezone',
         'has_used_trial',
         'notification_preferences',
+        'onboarding_completed',
+        'onboarding_data',
     ];
 
     /**
@@ -64,6 +66,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'has_used_trial' => 'boolean',
         'premium_until' => 'datetime',
         'notification_preferences' => 'array',
+        'onboarding_completed' => 'boolean',
+        'onboarding_data' => 'array',
     ];
 
     /**
