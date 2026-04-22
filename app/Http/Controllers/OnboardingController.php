@@ -34,10 +34,11 @@ class OnboardingController extends Controller
         ]);
 
         $user = Auth::user();
-        $user->update([
-            'onboarding_completed' => true,
-            'onboarding_data' => $validated,
-        ]);
+        // 🔥 FIX POSTGRES BOOLEAN: Pakai DB::statement biar true jadi boolean beneran di Postgres
+        \Illuminate\Support\Facades\DB::statement(
+            "UPDATE users SET onboarding_completed = true, onboarding_data = ?::jsonb WHERE id = ?",
+            [json_encode($validated), $user->id]
+        );
 
         return redirect()->route('dashboard')->with('success', __('onboarding.finish_success', 'Welcome aboard! Your Neural OS is ready.'));
     }

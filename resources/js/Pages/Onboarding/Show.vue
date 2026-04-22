@@ -19,7 +19,7 @@ import {
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 
 const step = ref(0);
-const totalSteps = 4;
+const totalSteps = 5;
 
 const form = useForm({
     goal: '',
@@ -65,13 +65,14 @@ const isStepValid = computed(() => {
     if (step.value === 2) return !!form.pain_point;
     if (step.value === 3) return !!form.ambition;
     if (step.value === 4) return !!form.persona;
+    if (step.value === 5) return true; // Offer step is always valid
     return true;
 });
 
 </script>
 
 <template>
-    <Head :title="$t('onboarding.welcome_title')" />
+    <Head :title="$t('onboarding.title')" />
 
     <div class="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-center p-4 relative overflow-hidden font-sans">
         <!-- Background Decorations -->
@@ -102,10 +103,10 @@ const isStepValid = computed(() => {
                         <Sparkles class="text-indigo-400" :size="40" />
                     </div>
                     <h1 class="text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                        {{ $t('onboarding.welcome_title') }}
+                        Neural OS
                     </h1>
                     <p class="text-slate-400 text-lg mb-10 leading-relaxed">
-                        {{ $t('onboarding.welcome_desc') }}
+                        {{ $t('onboarding.step_goal_desc') }}
                     </p>
                     <button 
                         @click="nextStep"
@@ -149,7 +150,7 @@ const isStepValid = computed(() => {
                     
                     <div class="space-y-3">
                         <button 
-                            v-for="id in ['procrastination', 'spending', 'burnout', 'consistency']"
+                            v-for="id in ['procrastination', 'disorganized', 'overspending', 'stress']"
                             :key="id"
                             @click="form.pain_point = id"
                             class="flex items-center gap-4 w-full p-5 rounded-2xl border-2 transition-all duration-300 text-left"
@@ -170,7 +171,7 @@ const isStepValid = computed(() => {
                     
                     <div class="space-y-4">
                         <button 
-                            v-for="id in ['low', 'mid', 'high']"
+                            v-for="id in ['low', 'medium', 'high']"
                             :key="id"
                             @click="form.ambition = id"
                             class="group flex items-center justify-between w-full p-6 rounded-3xl border-2 transition-all duration-300 text-left"
@@ -193,7 +194,7 @@ const isStepValid = computed(() => {
                     
                     <div class="grid grid-cols-2 gap-3">
                         <button 
-                            v-for="id in ['student', 'freelancer', 'pro', 'founder']"
+                            v-for="id in ['student', 'professional', 'entrepreneur', 'other']"
                             :key="id"
                             @click="form.persona = id"
                             class="flex flex-col items-center justify-center p-6 rounded-3xl border-2 transition-all duration-300 text-center gap-3"
@@ -202,6 +203,45 @@ const isStepValid = computed(() => {
                             <User class="text-slate-500" :size="24" :class="form.persona === id ? 'text-purple-400' : ''" />
                             <span class="font-bold text-xs">{{ $t(`onboarding.persona_${id}`) }}</span>
                         </button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Offer -->
+                <div v-if="step === 5" class="animate-in slide-in-from-right-8 duration-500 text-center">
+                    <div class="inline-flex p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 mb-4">
+                        <Gem class="text-amber-400" :size="32" />
+                    </div>
+                    <h2 class="text-2xl font-black mb-2">{{ $t('onboarding.step_offer_title') }}</h2>
+                    <p class="text-slate-400 text-sm mb-8">{{ $t('onboarding.step_offer_desc') }}</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Explorer (Free) -->
+                        <div class="p-6 rounded-3xl border-2 border-white/5 bg-white/[0.02] text-left flex flex-col h-full">
+                            <h3 class="font-black text-lg mb-1">{{ $t('onboarding.offer_free_title') }}</h3>
+                            <p class="text-xs text-slate-500 mb-6 flex-grow">{{ $t('onboarding.offer_free_desc') }}</p>
+                            <button 
+                                @click="submit"
+                                class="w-full py-3 rounded-xl bg-white/5 border border-white/10 font-bold text-sm hover:bg-white/10 transition"
+                            >
+                                {{ $t('onboarding.offer_btn_free') }}
+                            </button>
+                        </div>
+                        
+                        <!-- Architect (Pro) -->
+                        <div class="p-6 rounded-3xl border-2 border-indigo-500/30 bg-indigo-500/5 text-left flex flex-col h-full relative overflow-hidden group">
+                            <div class="absolute -right-4 -top-4 w-16 h-16 bg-indigo-500/10 rounded-full blur-xl group-hover:scale-150 transition-transform"></div>
+                            <h3 class="font-black text-lg mb-1 text-white flex items-center gap-2">
+                                {{ $t('onboarding.offer_pro_title') }}
+                                <Sparkles :size="16" class="text-amber-400" />
+                            </h3>
+                            <p class="text-xs text-slate-400 mb-6 flex-grow">{{ $t('onboarding.offer_pro_desc') }}</p>
+                            <button 
+                                @click="() => { /* Logic to pricing? */ submit(); }"
+                                class="w-full py-3 rounded-xl bg-indigo-600 font-black text-sm text-white shadow-lg shadow-indigo-900/20 hover:bg-indigo-500 transition"
+                            >
+                                {{ $t('onboarding.offer_btn_pro') }}
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -224,16 +264,7 @@ const isStepValid = computed(() => {
                         <ChevronRight :size="18" />
                     </button>
 
-                    <button 
-                        v-else
-                        @click="submit"
-                        :disabled="form.processing || !isStepValid"
-                        class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 disabled:opacity-30 text-white font-bold py-4 rounded-2xl transition hover:opacity-90 active:scale-[0.98]"
-                    >
-                        <span v-if="form.processing">{{ $t('onboarding.finishing_title') }}</span>
-                        <span v-else>{{ $t('onboarding.btn_finish') }}</span>
-                        <ArrowRight v-if="!form.processing" :size="18" />
-                    </button>
+                    <div v-else class="flex-1"></div>
                 </div>
 
             </div>
