@@ -240,7 +240,6 @@
         @endif
     @endif
 </head>
-@endif
 
 <body class="font-sans antialiased selection:bg-indigo-500 selection:text-white">
     @if(request()->routeIs('dashboard') && !request()->has('no-loader'))
