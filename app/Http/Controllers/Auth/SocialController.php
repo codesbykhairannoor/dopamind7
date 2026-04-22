@@ -13,8 +13,11 @@ class SocialController extends Controller
 {
     public function redirect()
     {
-        // 🔥 Pakai stateless() juga di sini biar gak nyimpen state di session
-        return Socialite::driver('google')->stateless()->redirect();
+        // 🔥 Pakai stateless() dan prompt=select_account agar user selalu bisa pilih akun
+        return Socialite::driver('google')
+            ->stateless()
+            ->with(['prompt' => 'select_account'])
+            ->redirect();
     }
 
     public function callback()
@@ -49,9 +52,11 @@ class SocialController extends Controller
                     'name' => $googleUser->name,
                     'email' => $googleUser->email,
                     'google_id' => $googleUser->id,
-                    'password' => bcrypt(Str::random(16)), // Password acak
+                    'avatar_path' => $googleUser->getAvatar(), // Simpan foto profil Google
+                    'password' => bcrypt(Str::random(16)), 
                     'email_verified_at' => now(),
                     'has_used_trial' => false,
+                    'onboarding_completed' => false, // Pastikan masuk ke onboarding
                     'settings' => [
                         'modules' => [
                             'habit' => true,
