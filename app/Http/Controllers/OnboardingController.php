@@ -40,6 +40,6 @@ class OnboardingController extends Controller
             [json_encode($validated), $user->id]
         );
 
-        return redirect()->route('dashboard')->with('success', __('onboarding.finish_success', 'Welcome aboard! Your Neural OS is ready.'));
+        return redirect()->route('dashboard')->with('success', __('onboarding_finish_success'));
     }
 }
