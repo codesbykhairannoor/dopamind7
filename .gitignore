@@ -28,3 +28,4 @@ Thumbs.db
 /bootstrap/cache/routes*.php
 /bootstrap/cache/packages.php
 /bootstrap/cache/services.php
+MOBILE_AGENT_BLUEPRINT.md

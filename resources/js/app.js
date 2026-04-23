@@ -15,7 +15,7 @@ window.trans = trans;
 // 🔥 GLOBAL SAFETY GUARD: Menghindari error 'e.target.closest is not a function'
 // Terjadi jika event listener global menangkap klik pada objek non-elemen (document/window).
 if (typeof Element !== 'undefined' && !Element.prototype.closest) {
-    Element.prototype.closest = function(s) {
+    Element.prototype.closest = function (s) {
         var el = this;
         do {
             if (el.matches(s)) return el;
@@ -123,7 +123,7 @@ router.on('invalid', (event) => {
         window.location.reload();
         return;
     }
-    
+
     const response = event?.detail?.response;
     const status = response?.status;
 
@@ -178,18 +178,18 @@ router.on('navigate', (event) => {
 
         // 0. Base Page View
         window.fbq('track', 'PageView');
-        
+
         // 1. Awareness: ViewContent (Detailed lookup)
         if (url.includes('/features/')) {
-            window.fbq('track', 'ViewContent', { 
-                content_name: pageTitle, 
-                content_category: 'Features', 
-                content_type: 'product' 
+            window.fbq('track', 'ViewContent', {
+                content_name: pageTitle,
+                content_category: 'Features',
+                content_type: 'product'
             }, { eventID: metaEventId });
         } else if (url.includes('/pricing')) {
-            window.fbq('track', 'ViewContent', { 
-                content_name: 'Pricing Plans', 
-                content_category: 'Pricing' 
+            window.fbq('track', 'ViewContent', {
+                content_name: 'Pricing Plans',
+                content_category: 'Pricing'
             }, { eventID: metaEventId });
         }
 
@@ -197,22 +197,22 @@ router.on('navigate', (event) => {
         const searchParams = new URLSearchParams(window.location.search);
         if (searchParams.has('q') || searchParams.has('search')) {
             const query = searchParams.get('q') || searchParams.get('search');
-            window.fbq('track', 'Search', { 
-                search_string: query 
+            window.fbq('track', 'Search', {
+                search_string: query
             }, { eventID: metaEventId });
         }
 
         // 3. Acquisition: CompleteRegistration (Deduplication with CAPI)
         if (flash.registration_success) {
-            window.fbq('track', 'CompleteRegistration', { 
+            window.fbq('track', 'CompleteRegistration', {
                 status: 'free_tier',
                 content_name: 'Manual/Google Signup'
             }, { eventID: metaEventId });
         }
-        
+
         // 4. Funnel: InitiateCheckout
         if (url.includes('/payment') && !url.includes('/status')) {
-            window.fbq('track', 'InitiateCheckout', { 
+            window.fbq('track', 'InitiateCheckout', {
                 currency: 'IDR',
                 content_category: 'Subscription'
             }, { eventID: metaEventId });
@@ -220,8 +220,8 @@ router.on('navigate', (event) => {
 
         // 4b. Funnel: StartTrial (Deduplication with CAPI)
         if (flash.success && (flash.success.includes('Masa percobaan') || flash.success.includes('Trial started'))) {
-            window.fbq('track', 'StartTrial', { 
-                content_name: 'Architect Trial', 
+            window.fbq('track', 'StartTrial', {
+                content_name: 'Architect Trial',
                 days: 10,
                 currency: 'IDR',
                 value: 0.00
@@ -232,12 +232,12 @@ router.on('navigate', (event) => {
         if (url.includes('/payment/status') || url.includes('tab=billing')) {
             const isSuccess = flash.success || flash.payment_success;
             if (isSuccess && (isSuccess.includes('complete') || isSuccess.includes('berhasil') || isSuccess.includes('upgraded'))) {
-                window.fbq('track', 'Purchase', { 
+                window.fbq('track', 'Purchase', {
                     currency: 'IDR',
                     content_type: 'product'
                 }, { eventID: metaEventId });
-                
-                window.fbq('track', 'Subscribe', { 
+
+                window.fbq('track', 'Subscribe', {
                     status: 'active',
                     currency: 'IDR'
                 }, { eventID: metaEventId });
