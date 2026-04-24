@@ -24,26 +24,26 @@ const props = defineProps({
 });
 
 
-// 🔥 INIT CALENDAR LOGIC
-const { currentDate, formattedDate, changeDate, changeDay } = usePlannerCalendar(props.currentDate);
+// 🔥 INIT CALENDAR LOGIC (Source of truth for dates)
+const { currentDate: activeDate, formattedDate, changeDate, changeDay } = usePlannerCalendar(props.currentDate);
 
 // Init Gating
 const { isExplorer, demandAccess } = useGating();
 
-// Logic Single (Kirim props ke usePlanner)
+// Logic Single (Kirim props & activeDate ke usePlanner)
 const {
     localTasks,
     scheduledTasks, timeSlots, scheduledStats,
     form, isModalOpen, isEditing, conflictError,
     openModal, submitTask, deleteTask, resetBoard, toggleComplete,
     onDragStart, onDrop, getTypeColor, localNotes, localMeals, localWater, localTaskBox
-} = usePlanner(props);
+} = usePlanner(props, activeDate);
 
 // Logic Batch
 const {
     isBatchModalOpen, batchForm, openBatchModal,
     addBatchRow, removeBatchRow, submitBatch
-} = usePlannerBatch(currentDate, localTasks);
+} = usePlannerBatch(activeDate, localTasks);
 
 
 const switchToBatch = () => { 
@@ -73,7 +73,7 @@ onMounted(() => {
 
     <div>
         <PlannerHeader
-            :currentDate="currentDate"
+            :currentDate="activeDate"
             :formattedDate="formattedDate"
             :tasks="tasks"
             @change-date="changeDate"

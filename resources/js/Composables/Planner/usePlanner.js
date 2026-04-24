@@ -13,8 +13,8 @@ const debounce = (fn, delay) => {
     };
 };
 
-export function usePlanner(props) {
-    const taskLogic = usePlannerTasks(props);
+export function usePlanner(props, activeDate) {
+    const taskLogic = usePlannerTasks(props, activeDate);
     const dragLogic = usePlannerDrag(taskLogic.localTasks);
     
     // Notes, Meals, Water, & TaskBox (Terhubung dengan tanggal yang sedang aktif)
@@ -37,7 +37,7 @@ export function usePlanner(props) {
         try {
             await axios.post(route('planner.updateLog'), {
                 ...data,
-                date: props.currentDate // Pastikan nge-save ke tanggal yang benar!
+                date: activeDate.value // 🔥 FIX: Gunakan activeDate agar instan saat pindah hari
             });
         } catch (e) { 
             console.error("Auto-save failed:", e); 
@@ -93,7 +93,7 @@ export function usePlanner(props) {
                 taskLogic.localTasks.value = []; 
 
                 // Reset Database via Inertia TAPI KIRIM PARAMETER TANGGAL
-                router.post(route('planner.reset'), { date: props.currentDate }, {
+                router.post(route('planner.reset'), { date: activeDate.value }, {
                     preserveScroll: true,
                     onSuccess: () => {
                         window.dispatchEvent(new Event('reset-local-storage')); // Jaga-jaga kalau masih ada event listener

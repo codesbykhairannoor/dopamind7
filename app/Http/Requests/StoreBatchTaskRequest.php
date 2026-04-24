@@ -13,9 +13,13 @@ class StoreBatchTaskRequest extends FormRequest
 
     public function rules(): array
     {
+        $timezone = auth()->user()->timezone ?? 'Asia/Jakarta';
+        $today = now()->timezone($timezone)->format('Y-m-d');
+        $maxDate = now()->timezone($timezone)->addDays(10)->format('Y-m-d');
+
         return [
-            // 🔥 WAJIB: Tanggal utama untuk batch ini
-            'date'               => ['required', 'date'],
+            // 🔥 LIMIT: Rentang 10 hari ke depan saja
+            'date'               => ['required', 'date', 'after_or_equal:' . $today, 'before_or_equal:' . $maxDate],
 
             // Array Tasks
             'tasks'              => ['required', 'array', 'min:1'],

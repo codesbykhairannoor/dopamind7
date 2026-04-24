@@ -22,6 +22,13 @@ export function usePlannerCalendar(initialDate) {
 
     // Fungsi Utama buat Hit Backend
     const changeDate = (newDate) => {
+        const today = dayjs().format('YYYY-MM-DD');
+        const maxDate = dayjs().add(10, 'day').format('YYYY-MM-DD');
+
+        if (dayjs(newDate).isAfter(dayjs(maxDate))) {
+            return; // ⛔ Jangan pindah kalau lebih dari 10 hari
+        }
+        
         currentDate.value = newDate;
         
         router.get(route('planner.index'), { date: newDate }, { 

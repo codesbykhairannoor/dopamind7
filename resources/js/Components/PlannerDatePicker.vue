@@ -67,6 +67,12 @@ const selectToday = () => {
 
 const isSelected = (day) => props.modelValue === currentMonth.value.date(day).format('YYYY-MM-DD');
 const isToday = (day) => dayjs().format('YYYY-MM-DD') === currentMonth.value.date(day).format('YYYY-MM-DD');
+
+const isDisabled = (day) => {
+    const targetDate = currentMonth.value.date(day);
+    const maxDate = dayjs().add(10, 'day').endOf('day');
+    return targetDate.isAfter(maxDate);
+};
 </script>
 
 <template>
@@ -91,11 +97,13 @@ const isToday = (day) => dayjs().format('YYYY-MM-DD') === currentMonth.value.dat
 
                 <button 
                     v-for="day in daysInMonth" :key="day"
-                    @click.prevent="selectDate(day)"
+                    @click.prevent="!isDisabled(day) && selectDate(day)"
+                    :disabled="isDisabled(day)"
                     class="h-9 w-9 sm:h-10 sm:w-10 rounded-xl flex flex-col items-center justify-center transition-all relative group"
                     :class="[
                         isSelected(day) ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200' : 'text-slate-600 hover:bg-slate-50 hover:text-indigo-600',
-                        isToday(day) && !isSelected(day) ? 'ring-1 ring-indigo-200 bg-indigo-50/50' : ''
+                        isToday(day) && !isSelected(day) ? 'ring-1 ring-indigo-200 bg-indigo-50/50' : '',
+                        isDisabled(day) ? 'opacity-20 cursor-not-allowed grayscale' : ''
                     ]"
                 >
                     <span class="text-xs sm:text-sm font-bold leading-none">{{ day }}</span>

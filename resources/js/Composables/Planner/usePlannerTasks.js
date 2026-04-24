@@ -3,7 +3,7 @@ import { router, useForm } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 import { trans } from 'laravel-vue-i18n';
 
-export function usePlannerTasks(props) {
+export function usePlannerTasks(props, activeDate) {
     const localTasks = ref([]);
     
     const getTasksArray = (t) => {
@@ -27,7 +27,7 @@ export function usePlannerTasks(props) {
 
     const form = useForm({
         id: null,
-        date: props.currentDate,
+        date: activeDate.value,
         title: '',
         start_time: null,
         end_time: null,
@@ -35,7 +35,7 @@ export function usePlannerTasks(props) {
         notes: ''
     });
 
-    watch(() => props.currentDate, (newDate) => {
+    watch(() => activeDate.value, (newDate) => {
         form.date = newDate;
     });
 
@@ -203,16 +203,13 @@ export function usePlannerTasks(props) {
         localTasks.value = [...getTasksArray(newTasks)];
     }, { deep: true });
 
-    // 🔥 FIX: Gunakan computed untuk currentDate agar reactive
-    const currentDateRef = computed(() => props.currentDate);
-
     const scheduledTasks = computed(() =>
         localTasks.value
-            .filter(t => t.start_time && t.date === currentDateRef.value) // 🔥 FIX: Filter by date
+            .filter(t => t.start_time && t.date === activeDate.value) // 🔥 FIX: Filter by activeDate
             .sort((a, b) => a.start_time.localeCompare(b.start_time))
     );
     const inboxTasks = computed(() =>
-        localTasks.value.filter(t => !t.start_time && t.date === currentDateRef.value) // 🔥 FIX: Filter by date
+        localTasks.value.filter(t => !t.start_time && t.date === activeDate.value) // 🔥 FIX: Filter by activeDate
     );
 
     const calculateStats = (tasks) => {
@@ -242,7 +239,7 @@ export function usePlannerTasks(props) {
         } else {
             isEditing.value = false;
             form.id = null;
-            form.date = props.currentDate;
+            form.date = activeDate.value;
 
             if (timeSlot) {
                 form.start_time = timeSlot;
