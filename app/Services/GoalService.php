@@ -152,7 +152,7 @@ class GoalService
         return $goal->milestones()->create([
             'title' => $data['title'],
             'order' => $data['position'] ?? $data['order'] ?? $order,
-            'completed' => $data['is_completed'] ?? $data['completed'] ?? false,
+            'completed' => filter_var($data['is_completed'] ?? $data['completed'] ?? false, FILTER_VALIDATE_BOOLEAN),
             'target_date' => $data['target_date'] ?? null,
         ]);
     }
@@ -169,11 +169,11 @@ class GoalService
         if (isset($data['target_date']))
             $updateData['target_date'] = $data['target_date'];
 
-        // Handle field parity
+        // Handle field parity with explicit boolean cast
         if (isset($data['is_completed']))
-            $updateData['completed'] = $data['is_completed'];
+            $updateData['completed'] = filter_var($data['is_completed'], FILTER_VALIDATE_BOOLEAN);
         elseif (isset($data['completed']))
-            $updateData['completed'] = $data['completed'];
+            $updateData['completed'] = filter_var($data['completed'], FILTER_VALIDATE_BOOLEAN);
 
         $milestone->update($updateData);
         return $milestone;
@@ -182,7 +182,7 @@ class GoalService
     public function toggleMilestone(GoalMilestone $milestone): GoalMilestone
     {
         $milestone->update([
-            'completed' => !$milestone->completed
+            'completed' => !((bool)$milestone->completed)
         ]);
         return $milestone;
     }
