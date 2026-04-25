@@ -181,9 +181,9 @@ class GoalService
 
     public function toggleMilestone(GoalMilestone $milestone): GoalMilestone
     {
-        $milestone->update([
-            'completed' => !((bool)$milestone->completed)
-        ]);
+        $milestone->completed = !$milestone->completed;
+        $milestone->save();
+        $milestone->refresh();
         return $milestone;
     }
 

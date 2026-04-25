@@ -36,31 +36,27 @@ export function useGoals(props) {
     // 2. Reactivity & State Syncing
     watch(() => props.goals, (newGoals) => {
         const normalized = (newGoals || []).map(normalizeGoal);
+        
+        // Update localGoals but be extremely careful not to overwrite goals being edited
         localGoals.value = normalized.map(incoming => {
             const existing = localGoals.value.find(lg => lg.id === incoming.id);
             if (!existing) return incoming;
 
-            // 🛡️ CRITICAL: Preserve temporary milestones that haven't been saved yet
-            const tempMilestones = existing.milestones.filter(m => String(m.id).startsWith('temp_'));
-            if (tempMilestones.length > 0) {
-                // Merge temp milestones into incoming data to prevent them from "disappearing"
-                const existingTempIds = new Set(tempMilestones.map(m => m.id));
-                incoming.milestones = [
-                    ...incoming.milestones,
-                    ...tempMilestones
-                ];
-                recalculateProgress(incoming);
+            // 🛡️ STRATEGY: If local is "busy", preserve it entirely
+            const isSavingGoal = existing.is_saving || existing.is_auto_saving;
+            const hasTempMilestones = existing.milestones.some(m => String(m.id).startsWith('temp_'));
+            const hasSavingMilestones = existing.milestones.some(m => m.is_saving);
+
+            if (isSavingGoal || hasTempMilestones || hasSavingMilestones) {
+                // Merge incoming metadata but keep our local milestones/state
+                return { 
+                    ...incoming, 
+                    ...existing,
+                    // Preserve incoming progress if local isn't currently calculating it
+                    progress: hasSavingMilestones ? existing.progress : incoming.progress 
+                };
             }
 
-            // Preserve local "is_saving" states for milestones to prevent UI flickers during sync
-            incoming.milestones = incoming.milestones.map(im => {
-                const em = existing.milestones.find(m => m.id === im.id);
-                return em ? { ...im, is_saving: em.is_saving } : im;
-            });
-
-            if (existing.is_auto_saving || existing.milestones.some(m => m.is_saving) || tempMilestones.length > 0) {
-                return { ...existing, ...incoming, milestones: incoming.milestones };
-            }
             return incoming;
         });
     }, { deep: true });
@@ -153,22 +149,25 @@ export function useGoals(props) {
 
     // 5. Public Actions
     const toggleMilestone = async (goal, milestone) => {
-        // Instant Optimistic Update
-        milestone.is_completed = !milestone.is_completed;
-        milestone.completed = milestone.is_completed;
-        recalculateProgress(goal);
+        // Find the goal in local state to ensure we are modifying the right reference
+        const targetGoal = localGoals.value.find(g => g.id === goal.id);
+        if (!targetGoal) return;
 
-        // If it's a new milestone, don't hit the toggle API yet. 
-        // The silentSaveMilestone (triggered by blur or other edits) will include the completed state.
-        if (String(milestone.id).startsWith('temp_')) {
-            return;
-        }
+        const targetMilestone = targetGoal.milestones.find(m => m.id === milestone.id);
+        if (!targetMilestone) return;
+
+        // Instant Optimistic Update (Daily Planner style)
+        targetMilestone.is_completed = !targetMilestone.is_completed;
+        targetMilestone.completed = targetMilestone.is_completed;
+        recalculateProgress(targetGoal);
+
+        if (String(targetMilestone.id).startsWith('temp_')) return;
 
         try {
-            const res = await axios.post(route('goals.milestones.toggle', [goal.id, milestone.id]));
+            const res = await axios.post(route('goals.milestones.toggle', [targetGoal.id, targetMilestone.id]));
             if (res.data.data) {
-                Object.assign(milestone, normalizeMilestones([res.data.data])[0]);
-                recalculateProgress(goal);
+                Object.assign(targetMilestone, normalizeMilestones([res.data.data])[0]);
+                recalculateProgress(targetGoal);
             }
         } catch (e) {
             // Rollback
@@ -188,22 +187,25 @@ export function useGoals(props) {
     };
 
     const addMilestone = (goal) => {
-        // Find the actual reactive goal object in our local state to ensure reactivity triggers
         const targetGoal = localGoals.value.find(g => g.id === goal.id || g._key === goal._key);
         if (!targetGoal) return;
 
+        // Ensure milestones array exists
         if (!targetGoal.milestones) targetGoal.milestones = [];
         
-        const m = { 
+        // Clone for safety (Daily Planner cloneTasks pattern)
+        const newMilestones = [...targetGoal.milestones];
+        
+        newMilestones.push({ 
             id: `temp_${Date.now()}`, 
             title: trans('goal_untitled_step', 'Untitled Step'), 
             is_completed: false, 
             completed: false,
-            order: targetGoal.milestones.length, 
+            order: newMilestones.length, 
             is_saving: false 
-        };
+        });
         
-        targetGoal.milestones.push(m);
+        targetGoal.milestones = newMilestones;
         recalculateProgress(targetGoal);
     };
 
