@@ -149,33 +149,19 @@ export function useGoals(props) {
 
     // 5. Public Actions
     const toggleMilestone = async (goal, milestone) => {
-        // Find the goal in local state to ensure we are modifying the right reference
         const targetGoal = localGoals.value.find(g => g.id === goal.id);
         if (!targetGoal) return;
 
         const targetMilestone = targetGoal.milestones.find(m => m.id === milestone.id);
         if (!targetMilestone) return;
 
-        // Instant Optimistic Update (Daily Planner style)
+        // Instant Optimistic Update (No rollback, just like Daily Planner Inbox)
         targetMilestone.is_completed = !targetMilestone.is_completed;
         targetMilestone.completed = targetMilestone.is_completed;
         recalculateProgress(targetGoal);
 
-        if (String(targetMilestone.id).startsWith('temp_')) return;
-
-        try {
-            const res = await axios.post(route('goals.milestones.toggle', [targetGoal.id, targetMilestone.id]));
-            if (res.data.data) {
-                Object.assign(targetMilestone, normalizeMilestones([res.data.data])[0]);
-                recalculateProgress(targetGoal);
-            }
-        } catch (e) {
-            // Rollback
-            milestone.is_completed = !milestone.is_completed;
-            milestone.completed = milestone.is_completed;
-            recalculateProgress(goal);
-            fireToast('error', trans('goal_error_update_status'));
-        }
+        // Persistent save (Debounced to prevent spamming)
+        debouncedSaveMilestone(targetGoal, targetMilestone);
     };
 
     const saveMilestone = (goal, milestoneData) => {
