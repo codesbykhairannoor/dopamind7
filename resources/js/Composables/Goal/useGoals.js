@@ -182,17 +182,21 @@ export function useGoals(props) {
         // Clone for safety (Daily Planner cloneTasks pattern)
         const newMilestones = [...targetGoal.milestones];
         
-        newMilestones.push({ 
+        const newMs = { 
             id: `temp_${Date.now()}`, 
             title: trans('goal_untitled_step', 'Untitled Step'), 
             is_completed: false, 
             completed: false,
             order: newMilestones.length, 
             is_saving: false 
-        });
+        };
         
+        newMilestones.push(newMs);
         targetGoal.milestones = newMilestones;
         recalculateProgress(targetGoal);
+
+        // 🔥 CRITICAL: Save immediately to server so it doesn't disappear on refresh
+        silentSaveMilestone(targetGoal, newMs);
     };
 
     const deleteMilestone = async (goal, mId) => {
