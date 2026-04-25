@@ -35,12 +35,31 @@ export function useGoals(props) {
 
     // 2. Reactivity & State Syncing
     watch(() => props.goals, (newGoals) => {
-        // Sync incoming props but preserve local "saving" states
         const normalized = (newGoals || []).map(normalizeGoal);
         localGoals.value = normalized.map(incoming => {
             const existing = localGoals.value.find(lg => lg.id === incoming.id);
-            if (existing && (existing.is_auto_saving || existing.milestones.some(m => m.is_saving))) {
-                return existing;
+            if (!existing) return incoming;
+
+            // 🛡️ CRITICAL: Preserve temporary milestones that haven't been saved yet
+            const tempMilestones = existing.milestones.filter(m => String(m.id).startsWith('temp_'));
+            if (tempMilestones.length > 0) {
+                // Merge temp milestones into incoming data to prevent them from "disappearing"
+                const existingTempIds = new Set(tempMilestones.map(m => m.id));
+                incoming.milestones = [
+                    ...incoming.milestones,
+                    ...tempMilestones
+                ];
+                recalculateProgress(incoming);
+            }
+
+            // Preserve local "is_saving" states for milestones to prevent UI flickers during sync
+            incoming.milestones = incoming.milestones.map(im => {
+                const em = existing.milestones.find(m => m.id === im.id);
+                return em ? { ...im, is_saving: em.is_saving } : im;
+            });
+
+            if (existing.is_auto_saving || existing.milestones.some(m => m.is_saving) || tempMilestones.length > 0) {
+                return { ...existing, ...incoming, milestones: incoming.milestones };
             }
             return incoming;
         });
@@ -139,6 +158,12 @@ export function useGoals(props) {
         milestone.completed = milestone.is_completed;
         recalculateProgress(goal);
 
+        // If it's a new milestone, don't hit the toggle API yet. 
+        // The silentSaveMilestone (triggered by blur or other edits) will include the completed state.
+        if (String(milestone.id).startsWith('temp_')) {
+            return;
+        }
+
         try {
             const res = await axios.post(route('goals.milestones.toggle', [goal.id, milestone.id]));
             if (res.data.data) {
@@ -171,7 +196,7 @@ export function useGoals(props) {
         
         const m = { 
             id: `temp_${Date.now()}`, 
-            title: '', 
+            title: trans('goal_untitled_step', 'Untitled Step'), 
             is_completed: false, 
             completed: false,
             order: targetGoal.milestones.length, 
