@@ -149,33 +149,39 @@ class GoalService
     public function addMilestone(Goal $goal, array $data): GoalMilestone
     {
         $order = $goal->milestones()->max('order') + 1;
-        return $goal->milestones()->create([
-            'title' => $data['title'],
-            'order' => $data['position'] ?? $data['order'] ?? $order,
-            'completed' => filter_var($data['is_completed'] ?? $data['completed'] ?? false, FILTER_VALIDATE_BOOLEAN),
-            'target_date' => $data['target_date'] ?? null,
-        ]);
+        $milestone = new GoalMilestone();
+        $milestone->goal_id = $goal->id;
+        $milestone->title = $data['title'];
+        $milestone->order = $data['position'] ?? $data['order'] ?? $order;
+        $milestone->completed = filter_var($data['is_completed'] ?? $data['completed'] ?? false, FILTER_VALIDATE_BOOLEAN);
+        if (isset($data['target_date'])) {
+            $milestone->target_date = $data['target_date'];
+        }
+        $milestone->save();
+        
+        return $milestone;
     }
 
     public function updateMilestone(GoalMilestone $milestone, array $data): GoalMilestone
     {
-        $updateData = [];
         if (isset($data['title']))
-            $updateData['title'] = $data['title'];
+            $milestone->title = $data['title'];
         if (isset($data['order']))
-            $updateData['order'] = $data['order'];
+            $milestone->order = $data['order'];
         if (isset($data['position']))
-            $updateData['order'] = $data['position'];
+            $milestone->order = $data['position'];
         if (isset($data['target_date']))
-            $updateData['target_date'] = $data['target_date'];
+            $milestone->target_date = $data['target_date'];
 
-        // Handle field parity with explicit boolean cast
-        if (isset($data['is_completed']))
-            $updateData['completed'] = filter_var($data['is_completed'], FILTER_VALIDATE_BOOLEAN);
-        elseif (isset($data['completed']))
-            $updateData['completed'] = filter_var($data['completed'], FILTER_VALIDATE_BOOLEAN);
+        // Handle field parity with explicit boolean assignment
+        if (isset($data['is_completed'])) {
+            $milestone->completed = filter_var($data['is_completed'], FILTER_VALIDATE_BOOLEAN);
+        } elseif (isset($data['completed'])) {
+            $milestone->completed = filter_var($data['completed'], FILTER_VALIDATE_BOOLEAN);
+        }
 
-        $milestone->update($updateData);
+        $milestone->save();
+        $milestone->refresh();
         return $milestone;
     }
 
