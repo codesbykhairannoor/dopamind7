@@ -6,6 +6,9 @@ use App\Http\Controllers\Api\AuthApiController;
 use App\Http\Controllers\Api\FinanceApiController;
 use App\Http\Controllers\Api\HabitApiController;
 use App\Http\Controllers\Api\PlannerApiController;
+use App\Http\Controllers\Api\V1\GoalApiController;
+use App\Http\Controllers\Api\V1\GoalMilestoneApiController;
+use App\Http\Controllers\Api\V1\JobApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +45,33 @@ Route::prefix('v1')->group(function () {
             Route::get('/', [PlannerApiController::class, 'index']);
             Route::post('/task', [PlannerApiController::class, 'store']);
             Route::post('/task/{plannerTask}/toggle', [PlannerApiController::class, 'toggle']);
+        });
+
+        // Goal Module
+        Route::prefix('goals')->group(function () {
+            Route::get('/', [GoalApiController::class, 'index']);
+            Route::get('/stats', [GoalApiController::class, 'stats']);
+            Route::post('/', [GoalApiController::class, 'store']);
+            Route::get('/{goal}', [GoalApiController::class, 'show']);
+            Route::patch('/{goal}', [GoalApiController::class, 'update']);
+            Route::delete('/{goal}', [GoalApiController::class, 'destroy']);
+            
+            // Milestones
+            Route::post('/{goal}/milestones', [GoalMilestoneApiController::class, 'store']);
+            Route::patch('/{goal}/milestones/{milestone}', [GoalMilestoneApiController::class, 'update']);
+            Route::post('/{goal}/milestones/{milestone}/toggle', [GoalMilestoneApiController::class, 'toggle']);
+            Route::delete('/{goal}/milestones/{milestone}', [GoalMilestoneApiController::class, 'destroy']);
+        });
+
+        // Job Module
+        Route::prefix('jobs')->group(function () {
+            Route::get('/', [JobApiController::class, 'index']);
+            Route::get('/stats', [JobApiController::class, 'stats']);
+            Route::get('/titles', [JobApiController::class, 'titles']);
+            Route::post('/', [JobApiController::class, 'store']);
+            Route::get('/{job}', [JobApiController::class, 'show']);
+            Route::patch('/{job}', [JobApiController::class, 'update']);
+            Route::delete('/{job}', [JobApiController::class, 'destroy']);
         });
 
     });

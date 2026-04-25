@@ -148,7 +148,14 @@ const meshGradient = computed(() => {
             <div class="flex-1">
                 <div class="flex items-center justify-between mb-3 px-1">
                     <h4 class="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.1em]">{{ t('goal_mastery_steps', 'Mastery Steps') }}</h4>
-                    <button @click="onAddMilestone(goal)" class="text-[9px] font-black text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 uppercase tracking-widest transition-colors">
+                    <button 
+                        @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && onAddMilestone(goal)" 
+                        class="text-[9px] font-black uppercase tracking-widest transition-all"
+                        :class="goal.is_saving || String(goal.id).startsWith('temp_') 
+                            ? 'text-slate-300 dark:text-slate-700 cursor-not-allowed' 
+                            : 'text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300'"
+                        :title="goal.is_saving || String(goal.id).startsWith('temp_') ? 'Wait for goal to save...' : ''"
+                    >
                         {{ t('goal_new_step', '+ New Step') }}
                     </button>
                 </div>

@@ -10,7 +10,8 @@ import NeuralBridge from '@/Components/NeuralBridge.vue';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import 'dayjs/locale/en';
-import { Tag, Target, ChevronRight, CheckCircle2, Zap } from 'lucide-vue-next';
+import { Tag, Target, ChevronRight, CheckCircle2, Zap, Edit3, Award } from 'lucide-vue-next';
+import MilestoneItem from './MilestoneItem.vue';
 
 const props = defineProps({
     goals: Array,
@@ -99,6 +100,7 @@ const openPremiumPreview = () => router.visit(route('billing'));
                                 :onEdit="openEditModal"
                                 :onDelete="deleteGoal"
                                 :onSaveMilestone="saveMilestone"
+                                :onAddMilestone="addMilestone"
                                 :onToggleMilestone="toggleMilestone"
                                 :onDeleteMilestone="deleteMilestone"
                                 :isExplorer="isExplorer"
@@ -171,24 +173,28 @@ const openPremiumPreview = () => router.visit(route('billing'));
 
                             <!-- Mobile Roadmap Timeline -->
                             <div class="space-y-4 relative pl-2">
-                                <div class="absolute left-[13px] top-4 bottom-4 w-0.5 bg-slate-100 dark:bg-slate-800 pointer-events-none"></div>
-                                
-                                <div v-for="(m, idx) in goal.milestones" :key="m.id" 
-                                    class="relative flex items-center gap-4 group/ms"
-                                    :class="m.is_completed ? 'opacity-40' : ''"
-                                >
-                                    <button @click="toggleMilestone(goal, m)" 
-                                        class="w-7 h-7 rounded-full border-2 z-10 shrink-0 flex items-center justify-center transition-all bg-white dark:bg-slate-900 shadow-sm"
-                                        :class="m.is_completed ? 'bg-emerald-500 border-emerald-500 text-white' : 'border-slate-100 dark:border-slate-800'"
+                                <div class="flex items-center justify-between mb-2 px-1">
+                                    <h4 class="text-[10px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-[0.1em]">{{ $t('goal_mastery_steps', 'Mastery Steps') }}</h4>
+                                    <button 
+                                        @click="!goal.is_saving && !String(goal.id).startsWith('temp_') && addMilestone(goal)" 
+                                        class="text-[9px] font-black uppercase tracking-widest transition-all"
+                                        :class="goal.is_saving || String(goal.id).startsWith('temp_') 
+                                            ? 'text-slate-300 dark:text-slate-700 cursor-not-allowed' 
+                                            : 'text-indigo-500 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300'"
                                     >
-                                        <CheckCircle2 v-if="m.is_completed" :size="14" stroke-width="3" />
-                                        <div v-else class="w-1.5 h-1.5 rounded-full" :style="{ backgroundColor: goal.color || '#6366f1' }"></div>
+                                        {{ $t('goal_new_step', '+ New Step') }}
                                     </button>
-                                    
-                                    <p class="text-xs font-black text-slate-700 dark:text-slate-200 flex-1 min-w-0" :class="m.is_completed ? 'line-through' : ''">
-                                        {{ m.title }}
-                                    </p>
                                 </div>
+                                <div class="absolute left-[13px] top-10 bottom-4 w-0.5 bg-slate-100 dark:bg-slate-800 pointer-events-none"></div>
+                                
+                                <MilestoneItem 
+                                    v-for="m in goal.milestones" 
+                                    :key="m.id" 
+                                    :milestone="m"
+                                    @toggle="toggleMilestone(goal, m)"
+                                    @save="(data) => saveMilestone(goal, data)"
+                                    @delete="deleteMilestone(goal, m.id)"
+                                />
                                 
                                 <div v-if="!goal.milestones?.length" class="py-4 text-center">
                                     <p class="text-[10px] font-bold text-slate-300 uppercase tracking-widest italic">{{ $t('goal_no_steps', 'No mastery steps') }}</p>

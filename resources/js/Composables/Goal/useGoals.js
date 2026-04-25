@@ -89,6 +89,13 @@ export function useGoals(props) {
         milestone.is_saving = true;
 
         try {
+            // 🛡️ GUARD: Jika Goal masih temp_ (belum disave ke DB), jangan save milestone dulu!
+            if (String(goal.id).startsWith('temp_')) {
+                console.warn('[Persistence] Deferring milestone save: Goal is still temporary.');
+                milestone.is_saving = false;
+                return;
+            }
+
             const url = isNew
                 ? route('goals.milestones.store', goal.id)
                 : route('goals.milestones.update', [goal.id, milestone.id]);
@@ -156,9 +163,23 @@ export function useGoals(props) {
     };
 
     const addMilestone = (goal) => {
-        const m = { id: `temp_${Date.now()}`, title: '', is_completed: false, order: goal.milestones.length, is_saving: false };
-        goal.milestones.push(m);
-        recalculateProgress(goal);
+        // Find the actual reactive goal object in our local state to ensure reactivity triggers
+        const targetGoal = localGoals.value.find(g => g.id === goal.id || g._key === goal._key);
+        if (!targetGoal) return;
+
+        if (!targetGoal.milestones) targetGoal.milestones = [];
+        
+        const m = { 
+            id: `temp_${Date.now()}`, 
+            title: '', 
+            is_completed: false, 
+            completed: false,
+            order: targetGoal.milestones.length, 
+            is_saving: false 
+        };
+        
+        targetGoal.milestones.push(m);
+        recalculateProgress(targetGoal);
     };
 
     const deleteMilestone = async (goal, mId) => {
