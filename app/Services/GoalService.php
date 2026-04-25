@@ -153,7 +153,7 @@ class GoalService
         $milestone->goal_id = $goal->id;
         $milestone->title = $data['title'];
         $milestone->order = $data['position'] ?? $data['order'] ?? $order;
-        $milestone->completed = filter_var($data['is_completed'] ?? $data['completed'] ?? false, FILTER_VALIDATE_BOOLEAN);
+        $milestone->completed = filter_var($data['is_completed'] ?? $data['completed'] ?? false, FILTER_VALIDATE_BOOLEAN) ? \DB::raw('true') : \DB::raw('false');
         if (isset($data['target_date'])) {
             $milestone->target_date = $data['target_date'];
         }
@@ -173,11 +173,11 @@ class GoalService
         if (isset($data['target_date']))
             $milestone->target_date = $data['target_date'];
 
-        // Handle field parity with explicit boolean assignment
+        // Handle field parity with explicit boolean assignment using PostgreSQL-safe DB::raw
         if (isset($data['is_completed'])) {
-            $milestone->completed = filter_var($data['is_completed'], FILTER_VALIDATE_BOOLEAN);
+            $milestone->completed = filter_var($data['is_completed'], FILTER_VALIDATE_BOOLEAN) ? \DB::raw('true') : \DB::raw('false');
         } elseif (isset($data['completed'])) {
-            $milestone->completed = filter_var($data['completed'], FILTER_VALIDATE_BOOLEAN);
+            $milestone->completed = filter_var($data['completed'], FILTER_VALIDATE_BOOLEAN) ? \DB::raw('true') : \DB::raw('false');
         }
 
         $milestone->save();
@@ -187,7 +187,7 @@ class GoalService
 
     public function toggleMilestone(GoalMilestone $milestone): GoalMilestone
     {
-        $milestone->completed = !$milestone->completed;
+        $milestone->completed = !$milestone->completed ? \DB::raw('true') : \DB::raw('false');
         $milestone->save();
         $milestone->refresh();
         return $milestone;
