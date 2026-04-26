@@ -27,12 +27,12 @@ class DashboardController extends Controller
         $userId = $user->id;
 
         return Inertia::render('Dashboard', [
-            'synergy' => Inertia::defer(fn () => Cache::remember("dash_synergy_{$userId}", 120, fn() => 
+            'synergy' => Cache::remember("dash_synergy_{$userId}", 120, fn() => 
                 $this->dashboardService->getTodaySynergy($userId, $timezone)
-            )),
-            'trend' => Inertia::defer(fn () => Cache::remember("dash_trend_{$userId}", 300, fn() => 
+            ),
+            'trend' => Cache::remember("dash_trend_{$userId}", 300, fn() => 
                 $this->dashboardService->getWeeklyTrend($userId, $timezone)
-            )),
+            ),
             'stats' => [
                 'is_premium' => (bool)($user->is_premium ?? false),
             ],
