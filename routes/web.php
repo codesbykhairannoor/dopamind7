@@ -49,9 +49,9 @@ Route::get("/lang/{locale}", function (Request $request, $locale) {
     ->name("lang.switch");
 
 // --- GROUP 1: PUBLIC PAGES (Guest) ---
-Route::get("/", function () {
+Route::get("/", function (Request $request, DashboardController $controller) {
     if (auth()->check()) {
-        return redirect()->route("dashboard");
+        return $controller($request);
     }
     return view("welcome");
 })->name("home");

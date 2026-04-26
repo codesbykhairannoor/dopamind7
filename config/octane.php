@@ -123,6 +123,8 @@ return [
         'translator',
         'url',
         'view',
+        \App\Services\DashboardService::class,
+        \App\Services\NeuralSynergyService::class,
     ],
 
     /*
