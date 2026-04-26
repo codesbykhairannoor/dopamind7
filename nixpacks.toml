@@ -7,7 +7,7 @@ nixPkgs = ['php83', 'php83Packages.intl', 'php83Packages.zip', 'php83Packages.so
 
 [phases.build]
 cmds = [
-    'composer install --no-dev --optimize-autoloader',
+    'composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-sockets',
     'npm ci',
     'npm run build',
     'php artisan octane:install --server=roadrunner'
@@ -22,3 +22,4 @@ cmds = [
 
 [variables]
 PHP_INI_SCAN_DIR = "/app:/usr/local/etc/php/conf.d"
+COMPOSER_IGNORE_PLATFORM_REQS = "1"
