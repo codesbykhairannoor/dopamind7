@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import { Head, usePage } from '@inertiajs/vue3';
+import { Head, usePage, Deferred } from '@inertiajs/vue3';
 import { useGoals } from '@/Composables/Goal/useGoals';
 import GoalStats from './GoalStats.vue';
 import GoalCard from './GoalCard.vue';
@@ -89,42 +89,56 @@ const openPremiumPreview = () => router.visit(route('billing'));
             <!-- 🖥️ DESKTOP VIEW -->
             <template v-if="!isMobile">
                 <!-- Global Stats Section -->
-                <GoalStats :stats="localStats" :goals="localGoals" />
+                <Deferred data="stats">
+                    <template #fallback>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 animate-pulse">
+                            <div v-for="i in 4" :key="i" class="h-24 bg-slate-100 dark:bg-slate-800 rounded-[2rem]"></div>
+                        </div>
+                    </template>
+                    <GoalStats :stats="localStats" :goals="localGoals" />
+                </Deferred>
 
                 <!-- Goals Grid -->
-                <template v-if="localGoals.length > 0">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                        <div v-for="goal in localGoals" :key="goal._key">
-                            <GoalCard
-                                :goal="goal"
-                                :onEdit="openEditModal"
-                                :onDelete="deleteGoal"
-                                :onSaveMilestone="saveMilestone"
-                                :onAddMilestone="addMilestone"
-                                :onToggleMilestone="toggleMilestone"
-                                :onDeleteMilestone="deleteMilestone"
-                                :isExplorer="isExplorer"
-                                @open-preview="openPremiumPreview"
-                            />
+                <Deferred data="goals">
+                    <template #fallback>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 animate-pulse">
+                            <div v-for="i in 3" :key="i" class="h-64 bg-slate-100 dark:bg-slate-800 rounded-[3rem]"></div>
                         </div>
-                    </div>
-                </template>
-                <div v-else class="flex flex-col items-center justify-center py-20 px-4 text-center bg-white dark:bg-slate-900 rounded-[3rem] border border-dashed border-slate-200 dark:border-slate-800">
-                    <div class="w-24 h-24 bg-indigo-50 dark:bg-indigo-500/10 rounded-[2rem] flex items-center justify-center text-indigo-500 mb-6 relative">
-                        <Target :size="48" stroke-width="2" class="animate-pulse" />
-                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-emerald-500 text-white rounded-xl flex items-center justify-center animate-bounce shadow-lg">
-                            <Sparkles :size="16" />
+                    </template>
+                    <template v-if="localGoals.length > 0">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            <div v-for="goal in localGoals" :key="goal._key">
+                                <GoalCard
+                                    :goal="goal"
+                                    :onEdit="openEditModal"
+                                    :onDelete="deleteGoal"
+                                    :onSaveMilestone="saveMilestone"
+                                    :onAddMilestone="addMilestone"
+                                    :onToggleMilestone="toggleMilestone"
+                                    :onDeleteMilestone="deleteMilestone"
+                                    :isExplorer="isExplorer"
+                                    @open-preview="openPremiumPreview"
+                                />
+                            </div>
                         </div>
+                    </template>
+                    <div v-else class="flex flex-col items-center justify-center py-20 px-4 text-center bg-white dark:bg-slate-900 rounded-[3rem] border border-dashed border-slate-200 dark:border-slate-800">
+                        <div class="w-24 h-24 bg-indigo-50 dark:bg-indigo-500/10 rounded-[2rem] flex items-center justify-center text-indigo-500 mb-6 relative">
+                            <Target :size="48" stroke-width="2" class="animate-pulse" />
+                            <div class="absolute -top-2 -right-2 w-8 h-8 bg-emerald-500 text-white rounded-xl flex items-center justify-center animate-bounce shadow-lg">
+                                <Sparkles :size="16" />
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-800 dark:text-white mb-2">{{ $t('goal_empty_title', 'Belum Ada Target') }}</h3>
+                        <p class="text-slate-500 dark:text-slate-400 font-medium max-w-md mx-auto mb-8 leading-relaxed">
+                            {{ $t('goal_empty_desc', 'Mulai rancang masa depan Anda. Tetapkan target besar pertama Anda dan pecah menjadi langkah-langkah kecil yang bisa dicapai.') }}
+                        </p>
+                        <button @click="openCreateModal" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-2xl shadow-xl shadow-indigo-200 dark:shadow-none transition-all active:scale-95 flex items-center gap-2">
+                            <Target :size="18" stroke-width="3" />
+                            {{ $t('goal_create_new', 'Buat Target Baru') }}
+                        </button>
                     </div>
-                    <h3 class="text-2xl font-black text-slate-800 dark:text-white mb-2">{{ $t('goal_empty_title', 'Belum Ada Target') }}</h3>
-                    <p class="text-slate-500 dark:text-slate-400 font-medium max-w-md mx-auto mb-8 leading-relaxed">
-                        {{ $t('goal_empty_desc', 'Mulai rancang masa depan Anda. Tetapkan target besar pertama Anda dan pecah menjadi langkah-langkah kecil yang bisa dicapai.') }}
-                    </p>
-                    <button @click="openCreateModal" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-2xl shadow-xl shadow-indigo-200 dark:shadow-none transition-all active:scale-95 flex items-center gap-2">
-                        <Target :size="18" stroke-width="3" />
-                        {{ $t('goal_create_new', 'Buat Target Baru') }}
-                    </button>
-                </div>
+                </Deferred>
             </template>
 
             <!-- 📱 MOBILE VIEW: PREMIUM VISION ROADMAP -->

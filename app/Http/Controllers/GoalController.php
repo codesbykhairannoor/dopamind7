@@ -36,8 +36,8 @@ class GoalController extends Controller
         $stats = $this->goalService->getGoalStats(Auth::id());
 
         return Inertia::render('Goal/Index', [
-            'goals' => GoalResource::collection($goals)->resolve(),
-            'stats' => $stats,
+            'goals' => Inertia::defer(fn() => GoalResource::collection($goals)->resolve()),
+            'stats' => Inertia::defer(fn() => $stats),
             'filters' => [
                 'search' => $search,
                 'status' => $status,

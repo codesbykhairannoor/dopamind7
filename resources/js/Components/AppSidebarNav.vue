@@ -117,7 +117,7 @@ const goCoach = () => {
             >
                 <Link
                     :href="route('dashboard')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
