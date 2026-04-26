@@ -5,10 +5,14 @@ node = true
 [phases.setup]
 nixPkgs = ['php83', 'php83Packages.intl', 'php83Packages.zip', 'php83Packages.sockets', 'nodejs_20', 'npm']
 
-[phases.build]
+[phases.install]
 cmds = [
     'composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-sockets',
-    'npm ci',
+    'npm ci'
+]
+
+[phases.build]
+cmds = [
     'npm run build',
     'php artisan octane:install --server=roadrunner'
 ]
@@ -23,3 +27,4 @@ cmds = [
 [variables]
 PHP_INI_SCAN_DIR = "/app:/usr/local/etc/php/conf.d"
 COMPOSER_IGNORE_PLATFORM_REQS = "1"
+COMPOSER_ALLOW_SUPERUSER = "1"
