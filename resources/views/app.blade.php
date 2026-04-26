@@ -242,61 +242,6 @@
 </head>
 
 <body class="font-sans antialiased selection:bg-indigo-500 selection:text-white">
-    @if(request()->routeIs('dashboard') && !request()->has('no-loader'))
-        {{-- PREMIUM LOADER (Booting Effect) - Strictly for Dashboard only --}}
-        <div id="neuro-loader"
-            class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center transition-opacity duration-700">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4f46e510_0,transparent_50%)]"></div>
-            <div class="absolute inset-0 bg-pattern-grid opacity-[0.03]"></div>
-
-            <div class="relative z-10 flex flex-col items-center text-center">
-                <div
-                    class="w-20 h-20 bg-indigo-600 rounded-[2rem] flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.2)] animate-bounce mb-8">
-                    <img src="{{ asset('favicon.svg') }}" alt="Logo" class="w-10 h-10 brightness-0 invert" />
-                </div>
-                <h2 class="text-slate-900 text-xl font-black tracking-[0.2em] uppercase mb-4 animate-pulse">Initializing
-                    System</h2>
-                <div class="w-48 h-0.5 bg-slate-100 rounded-full overflow-hidden">
-                    <div class="h-full bg-indigo-500 w-1/2 animate-[loading_1.5s_infinite_ease-in-out]"></div>
-                </div>
-            </div>
-            <style>
-                @keyframes loading {
-                    0% {
-                        transform: translateX(-100%);
-                    }
-
-                    100% {
-                        transform: translateX(400%);
-                    }
-                }
-            </style>
-        </div>
-    @endif
-
-    {{-- 🔥 INERTIA ROOT --}}
     @inertia
-
-    <script>
-        // Hapus loader saat Inertia selesai render komponen pertama
-        document.addEventListener('inertia:finish', function () {
-            const loader = document.getElementById('neuro-loader');
-            if (loader) {
-                loader.style.opacity = '0';
-                setTimeout(() => loader.remove(), 700);
-            }
-        }, { once: true });
-
-        // Fallback: Jika terjadi error atau loading terlalu lama
-        window.addEventListener('load', function () {
-            setTimeout(() => {
-                const loader = document.getElementById('neuro-loader');
-                if (loader && loader.style.opacity !== '0') {
-                    loader.style.opacity = '0';
-                    setTimeout(() => loader.remove(), 700);
-                }
-            }, 3000);
-        });
-    </script>
 </body>
 </html>

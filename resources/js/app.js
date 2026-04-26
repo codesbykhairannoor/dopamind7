@@ -101,6 +101,10 @@ createInertiaApp({
     },
 
     progress: false,
+    history: {
+        encrypt: false,
+        cache: true,
+    },
 });
 
 /**

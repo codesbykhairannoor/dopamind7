@@ -153,7 +153,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('habit')"
                     :href="route('habits.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -189,7 +189,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('planner')"
                     :href="route('planner.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -225,7 +225,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('finance')"
                     :href="route('finance.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -344,7 +344,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('journal')"
                     :href="route('journal.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -395,7 +395,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('calendar')"
                     :href="route('calendar.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -446,7 +446,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('job')"
                     :href="route('jobs.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -497,7 +497,7 @@ const goCoach = () => {
                 <Link
                     v-if="showModule('goal')"
                     :href="route('goals.index')"
-                    prefetch="hover"
+                    prefetch="mount"
                     view-transition
                     class="nav-item group"
                     :class="[
