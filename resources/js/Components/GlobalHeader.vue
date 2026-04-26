@@ -241,6 +241,7 @@ onUnmounted(() => {
                     v-if="isExplorer" 
                     :href="route('billing')" 
                     prefetch="hover"
+                    view-transition
                     class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white rounded-lg transition-all shadow-sm shadow-indigo-200 dark:shadow-none active:scale-95 mr-1"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2z"/></svg>
@@ -266,7 +267,12 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Help -->
-                <Link :href="route('settings.help')" class="hidden sm:flex w-8 h-8 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition-all font-bold" title="Help">
+                <Link 
+                    :href="route('settings.help')" 
+                    prefetch="hover"
+                    view-transition
+                    class="hidden sm:flex w-8 h-8 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition-all font-bold" title="Help"
+                >
                     <OneForMindIcon name="help" size="18" />
                 </Link>
 
