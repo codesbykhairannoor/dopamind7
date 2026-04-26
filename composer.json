@@ -11,6 +11,7 @@
         "php": "^8.2",
         "ext-intl": "*",
         "ext-zip": "*",
+        "ext-sockets": "*",
         "cloudinary-labs/cloudinary-laravel": "^2.2",
         "filament/filament": "3.2",
         "guzzlehttp/guzzle": "^7.2",

@@ -1,7 +1,3 @@
-[providers]
-php = true
-node = true
-
 [phases.setup]
 nixPkgs = ['php83', 'php83Packages.intl', 'php83Packages.zip', 'php83Packages.sockets', 'nodejs_20', 'npm']
 
@@ -28,3 +24,4 @@ cmds = [
 PHP_INI_SCAN_DIR = "/app:/usr/local/etc/php/conf.d"
 COMPOSER_IGNORE_PLATFORM_REQS = "1"
 COMPOSER_ALLOW_SUPERUSER = "1"
+NIXPACKS_PHP_EXTENSIONS = "intl,zip,sockets,pdo_pgsql,redis"
