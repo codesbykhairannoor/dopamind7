@@ -80,7 +80,7 @@ return [
             // TAMBAHAN WAJIB BUAT SUPABASE PORT 6543:
             'options' => [
                 PDO::ATTR_EMULATE_PREPARES => true,
-                PDO::ATTR_PERSISTENT => true,
+                PDO::ATTR_PERSISTENT => false,
             ],
         ],
 
