@@ -427,6 +427,7 @@ watch(() => props.stats, (newStats) => { localStats.value = JSON.parse(JSON.stri
         <FinanceHeader 
             :currentMonth="formattedMonth" 
             :currentMonthKey="currentMonthKey"
+            :onChangeDate="changeMonth"
             :onAddClick="() => { transactionForm.reset(); transactionForm.id = null; showTransactionModal = true; }"
         />
 

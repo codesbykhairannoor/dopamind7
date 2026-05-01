@@ -175,49 +175,81 @@ class FinanceController extends Controller
 
         $filename = "OneForMind_Finance_{$month}.xls";
 
+        // Improved Excel HTML Styling
         $html = "
         <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:x='urn:schemas-microsoft-com:office:excel' xmlns='http://www.w3.org/TR/REC-html40'>
         <head>
             <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
             <style>
-                .header { background-color: #4f46e5; color: white; font-weight: bold; }
-                .income { color: #059669; }
-                .expense { color: #dc2626; }
-                td { border: 0.5pt solid #e2e8f0; padding: 5px; }
+                .header-main { background-color: #1e293b; color: #ffffff; font-size: 14pt; font-weight: bold; text-align: center; height: 40px; }
+                .sub-header { background-color: #f8fafc; color: #64748b; font-size: 10pt; text-align: center; }
+                .col-header { background-color: #4f46e5; color: #ffffff; font-weight: bold; text-align: center; border: 0.5pt solid #312e81; }
+                .income { color: #059669; font-weight: bold; }
+                .expense { color: #dc2626; font-weight: bold; }
+                .border { border: 0.5pt solid #e2e8f0; }
+                .text-right { text-align: right; }
+                .text-center { text-align: center; }
+                td { padding: 8px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
             </style>
         </head>
         <body>
             <table>
                 <tr>
-                    <td colspan='6' style='font-size: 16pt; font-weight: bold;'>Finance Report - " . $month . "</td>
+                    <td colspan='6' class='header-main'>ONEFORMIND FINANCIAL REPORT</td>
                 </tr>
                 <tr>
-                    <td colspan='6' style='color: #64748b;'>Generated for: " . $user->name . " (" . $user->email . ")</td>
+                    <td colspan='6' class='sub-header'>Period: " . date('F Y', strtotime($month . '-01')) . " | Generated for: " . $user->name . "</td>
                 </tr>
                 <tr></tr>
-                <tr class='header'>
-                    <td>Date</td>
-                    <td>Title</td>
-                    <td>Type</td>
-                    <td>Category</td>
-                    <td>Amount</td>
-                    <td>Notes</td>
-                </tr>";
+                <thead>
+                    <tr>
+                        <th class='col-header'>DATE</th>
+                        <th class='col-header'>TITLE</th>
+                        <th class='col-header'>TYPE</th>
+                        <th class='col-header'>CATEGORY</th>
+                        <th class='col-header'>AMOUNT</th>
+                        <th class='col-header'>NOTES</th>
+                    </tr>
+                </thead>
+                <tbody>";
+
+        $totalIncome = 0;
+        $totalExpense = 0;
 
         foreach ($transactions as $trx) {
             $typeClass = $trx->type === 'income' ? 'income' : 'expense';
+            $amount = (float) $trx->amount;
+            if ($trx->type === 'income') $totalIncome += $amount; else $totalExpense += $amount;
+
             $html .= "
                 <tr>
-                    <td>{$trx->date}</td>
-                    <td>{$trx->title}</td>
-                    <td class='{$typeClass}'>" . ucfirst($trx->type) . "</td>
-                    <td>" . strtoupper($trx->category) . "</td>
-                    <td style='text-align: right;'>" . number_format($trx->amount, 2) . "</td>
-                    <td>{$trx->notes}</td>
+                    <td class='border text-center'>" . date('d M Y', strtotime($trx->date)) . "</td>
+                    <td class='border'>{$trx->title}</td>
+                    <td class='border text-center {$typeClass}'>" . strtoupper($trx->type) . "</td>
+                    <td class='border text-center'>" . strtoupper($trx->category) . "</td>
+                    <td class='border text-right {$typeClass}'>" . number_format($amount, 2) . "</td>
+                    <td class='border'>{$trx->notes}</td>
                 </tr>";
         }
 
         $html .= "
+                <tr></tr>
+                <tr>
+                    <td colspan='4' class='text-right' style='font-weight: bold;'>TOTAL INCOME</td>
+                    <td class='border text-right income'>" . number_format($totalIncome, 2) . "</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan='4' class='text-right' style='font-weight: bold;'>TOTAL EXPENSE</td>
+                    <td class='border text-right expense'>" . number_format($totalExpense, 2) . "</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan='4' class='text-right' style='font-weight: bold; background-color: #f1f5f9;'>NET BALANCE</td>
+                    <td class='border text-right' style='font-weight: bold; background-color: #f1f5f9;'>" . number_format($totalIncome - $totalExpense, 2) . "</td>
+                    <td style='background-color: #f1f5f9;'></td>
+                </tr>
+            </tbody>
             </table>
         </body>
         </html>";

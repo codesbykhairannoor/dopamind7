@@ -118,6 +118,10 @@ const runAiAudit = () => {
     });
 };
 
+const exportTax = () => {
+    window.location.href = route('finance.export.tax', { month: props.currentMonthKey });
+};
+
 </script>
 
 <template>
