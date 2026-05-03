@@ -56,7 +56,7 @@ class BlogPost extends Model
     {
         if (!$this->title) return '';
         $converter = new \League\CommonMark\CommonMarkConverter([
-            'html_input' => 'strip',
+            'html_input' => 'allow',
             'allow_unsafe_links' => false,
         ]);
         return str_replace(['<p>', '</p>'], '', $converter->convert($this->title)->getContent());
@@ -65,8 +65,14 @@ class BlogPost extends Model
     public function getHtmlContentAttribute()
     {
         if (!$this->content) return '';
+        
+        // If it looks like HTML, return as is to avoid double processing or stripping
+        if (str_contains($this->content, '<h') || str_contains($this->content, '<p') || str_contains($this->content, '<div')) {
+            return $this->content;
+        }
+
         $converter = new \League\CommonMark\CommonMarkConverter([
-            'html_input' => 'strip',
+            'html_input' => 'allow',
             'allow_unsafe_links' => false,
         ]);
         return $converter->convert($this->content)->getContent();
