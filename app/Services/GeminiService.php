@@ -8,14 +8,69 @@ use Illuminate\Support\Facades\Log;
 class GeminiService
 {
     protected ?string $apiKey;
-    protected string $model;
     protected string $version;
+
+    /**
+     * 🔥 MODEL HIERARCHY (Latest 2026 -> Legacy Fallbacks)
+     * We try these in order to find one with available quota.
+     */
+    protected array $models = [
+        'gemini-3.1-pro',
+        'gemini-3.1-flash',
+        'gemini-3.1-flash-lite',
+        'gemini-3-flash',
+        'gemini-2.5-pro',
+        'gemini-2.5-flash',
+        'gemini-2.5-flash-lite',
+        'gemini-1.5-flash-latest'
+    ];
 
     public function __construct()
     {
         $this->apiKey = config('services.gemini.key') ?: env('GEMINI_API_KEY');
-        $this->model = config('services.gemini.model') ?: env('GEMINI_MODEL', 'gemini-flash-latest');
         $this->version = config('services.gemini.version') ?: env('GEMINI_API_VERSION', 'v1beta');
+    }
+
+    /**
+     * 🔥 CORE EXECUTION ENGINE WITH MULTI-MODEL FALLBACK
+     */
+    private function executeRequest(string $payloadType, array $payload, int $timeout = 30): ?string
+    {
+        if (!$this->apiKey) {
+            Log::error('Gemini API key is not configured.');
+            return null;
+        }
+
+        foreach ($this->models as $modelName) {
+            try {
+                $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$modelName}:generateContent?key={$this->apiKey}";
+                $response = Http::timeout($timeout)->post($url, $payload);
+
+                if ($response->successful()) {
+                    $candidates = $response->json('candidates');
+                    if (!empty($candidates)) {
+                        return $candidates[0]['content']['parts'][0]['text'] ?? null;
+                    }
+                    continue; // Empty candidates, try next model
+                }
+
+                // If quota exceeded (429) or Forbidden (403), try next model
+                if (in_array($response->status(), [429, 403, 404])) {
+                    Log::warning("GEMINI_FALLBACK: Model {$modelName} failed with status {$response->status()}. Trying next...");
+                    continue;
+                }
+
+                // Other errors might be payload related, log and stop
+                Log::error("GEMINI_API_ERROR ({$modelName}): " . $response->status() . ' | ' . $response->body());
+                break; 
+
+            } catch (\Exception $e) {
+                Log::error("Gemini Exception ({$modelName}): " . $e->getMessage());
+                continue;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -23,61 +78,23 @@ class GeminiService
      */
     public function generate(string $prompt): ?string
     {
-        if (!$this->apiKey) {
-            Log::error('Gemini API key is not configured.');
-            return null;
-        }
+        $payload = [
+            'contents' => [['parts' => [['text' => $prompt]]]],
+            'generationConfig' => [
+                'temperature' => 0.7,
+                'topK' => 40,
+                'topP' => 0.95,
+                'maxOutputTokens' => 2048,
+            ],
+            'safetySettings' => [
+                ['category' => 'HARM_CATEGORY_HATE_SPEECH', 'threshold' => 'BLOCK_NONE'],
+                ['category' => 'HARM_CATEGORY_SEXUALLY_EXPLICIT', 'threshold' => 'BLOCK_NONE'],
+                ['category' => 'HARM_CATEGORY_HARASSMENT', 'threshold' => 'BLOCK_NONE'],
+                ['category' => 'HARM_CATEGORY_DANGEROUS_CONTENT', 'threshold' => 'BLOCK_NONE'],
+            ]
+        ];
 
-        try {
-            $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$this->model}:generateContent?key={$this->apiKey}";
-            $response = Http::timeout(30)->post($url, [
-                'contents' => [
-                    [
-                        'parts' => [
-                            ['text' => $prompt]
-                        ]
-                    ]
-                ],
-                'generationConfig' => [
-                    'temperature' => 0.7,
-                    'topK' => 40,
-                    'topP' => 0.95,
-                    'maxOutputTokens' => 2048,
-                ],
-                'safetySettings' => [
-                    ['category' => 'HARM_CATEGORY_HATE_SPEECH', 'threshold' => 'BLOCK_NONE'],
-                    ['category' => 'HARM_CATEGORY_SEXUALLY_EXPLICIT', 'threshold' => 'BLOCK_NONE'],
-                    ['category' => 'HARM_CATEGORY_HARASSMENT', 'threshold' => 'BLOCK_NONE'],
-                    ['category' => 'HARM_CATEGORY_DANGEROUS_CONTENT', 'threshold' => 'BLOCK_NONE'],
-                ]
-            ]);
-
-            if ($response->successful()) {
-                $candidates = $response->json('candidates');
-                if (!empty($candidates)) {
-                    return $candidates[0]['content']['parts'][0]['text'] ?? null;
-                } else {
-                    Log::warning('GEMINI_EMPTY_CANDIDATES: Response was successful but candidates list is empty. Body: ' . $response->body());
-                }
-            } else {
-                if ($response->status() === 429) {
-                    Log::warning('GEMINI_QUOTA_EXCEEDED: Daily or RPM limit reached.');
-                    return 'Sistem AI sedang mencapai batas kuota (Rate Limit). Silakan coba lagi beberapa saat lagi atau besok.';
-                }
-
-                if ($response->status() === 404) {
-                    Log::error("GEMINI_MODEL_NOT_FOUND: Model '{$this->model}' not found for version '{$this->version}'. Please check your GEMINI_MODEL env.");
-                    return 'Model AI tidak ditemukan. Silakan hubungi admin untuk update konfigurasi model.';
-                }
-
-                Log::error('GEMINI_API_ERROR: ' . $response->status() . ' | ' . $response->body());
-            }
-
-        } catch (\Exception $e) {
-            Log::error('Gemini Exception: ' . $e->getMessage());
-        }
-
-        return null;
+        return $this->executeRequest('generate', $payload);
     }
 
     /**
@@ -148,6 +165,7 @@ class GeminiService
 
         return $this->generate($prompt);
     }
+
     /**
      * Generate Opening Remark for AI Coach
      */
@@ -174,19 +192,14 @@ class GeminiService
      */
     public function chat(array $messages, ?string $systemContext = null): ?string
     {
-        // Formatting for Gemini - needs 'user' and 'model' roles
         $contents = [];
         foreach ($messages as $msg) {
             $parts = [];
-            
-            // Handle Text
             if (!empty($msg['content'])) {
                 $parts[] = ['text' => $msg['content']];
             }
 
-            // Handle Multimodal (Image)
             if (!empty($msg['image'])) {
-                // Expecting base64 string like "data:image/jpeg;base64,..."
                 if (preg_match('/data:(image\/[a-z]+);base64,(.*)/i', $msg['image'], $matches)) {
                     $parts[] = [
                         'inline_data' => [
@@ -218,47 +231,19 @@ class GeminiService
 
         if ($systemContext) {
             $payload['system_instruction'] = [
-                'parts' => [
-                    ['text' => $systemContext]
-                ]
+                'parts' => [['text' => $systemContext]]
             ];
         }
 
-        try {
-            $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$this->model}:generateContent?key={$this->apiKey}";
-            $response = Http::post($url, $payload);
-
-            if ($response->successful()) {
-                $candidates = $response->json('candidates');
-                if (!empty($candidates)) {
-                    return $candidates[0]['content']['parts'][0]['text'] ?? null;
-                }
-                Log::warning('GEMINI_CHAT_EMPTY: ' . $response->body());
-            } else {
-                if ($response->status() === 429) {
-                    return 'Kuotanya habis nih (API Quota Exceeded). Coba lagi nanti ya!';
-                }
-                Log::error('GEMINI_CHAT_ERROR: ' . $response->status() . ' | ' . $response->body());
-            }
-        } catch (\Exception $e) {
-            Log::error('Gemini Chat Exception: ' . $e->getMessage());
-        }
-
-        return null;
+        return $this->executeRequest('chat', $payload);
     }
     
-    public function analyzeResume(string $resumeBase64, string $jobDescription): ?string
-    {
-        return $this->analyzeResumeProgress($resumeBase64, $jobDescription);
-    }
-
     /**
      * Extract structured text from a Resume PDF/Image using Gemini
      */
     public function extractResumeText($base64Data)
     {
-        // Extract mime type and data
-        $mimeType = 'application/pdf'; // Default to PDF as requested
+        $mimeType = 'application/pdf';
         $data = $base64Data;
 
         if (str_contains($base64Data, ';base64,')) {
@@ -267,39 +252,26 @@ class GeminiService
             $data = $parts[1];
         }
 
-        try {
-            $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$this->model}:generateContent?key={$this->apiKey}";
-            $response = Http::timeout(180)->withHeaders([
-                'Content-Type' => 'application/json',
-            ])->post($url, [
-                'contents' => [
-                    [
-                        'parts' => [
-                            ['text' => "Extract ALL information from this resume precisely. Return a clean, master text version of the resume including skills, experience, and contact info. No extra commentary."],
-                            [
-                                'inline_data' => [
-                                    'mime_type' => $mimeType,
-                                    'data' => $data
-                                ]
+        $payload = [
+            'contents' => [
+                [
+                    'parts' => [
+                        ['text' => "Extract ALL information from this resume precisely. Return a clean, master text version of the resume including skills, experience, and contact info. No extra commentary."],
+                        [
+                            'inline_data' => [
+                                'mime_type' => $mimeType,
+                                'data' => $data
                             ]
                         ]
                     ]
-                ],
-                'generationConfig' => [
-                    'temperature' => 0.1, // Low temp for extraction
                 ]
-            ]);
+            ],
+            'generationConfig' => [
+                'temperature' => 0.1,
+            ]
+        ];
 
-            if ($response->successful()) {
-                return $response->json()['candidates'][0]['content']['parts'][0]['text'] ?? '';
-            }
-
-            Log::error('Gemini Resume Extraction Failed: ' . $response->body());
-            return null;
-        } catch (\Exception $e) {
-            Log::error('Gemini Resume Extraction Exception: ' . $e->getMessage());
-            return null;
-        }
+        return $this->executeRequest('extract', $payload, 180);
     }
 
     /**
@@ -307,16 +279,15 @@ class GeminiService
      */
     public function analyzeResumeProgress($resumeText, $jobDescription)
     {
-        try {
-            $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$this->model}:generateContent?key={$this->apiKey}";
-            $response = Http::withHeaders([
-                'Content-Type' => 'application/json',
-            ])->post($url, [
-                'contents' => [
-                    [
-                        'parts' => [
-                            [
-                                'text' => "Analyze ONLY THE MATCH PROBABILITY of this resume AGAINST the job description.
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
+        $payload = [
+            'contents' => [
+                [
+                    'parts' => [
+                        [
+                            'text' => "Analyze ONLY THE MATCH PROBABILITY of this resume AGAINST the job description.
                             
                             RESUME TEXT:
                             $resumeText
@@ -327,30 +298,21 @@ class GeminiService
                             TASK:
                             1. Calculate Match Percentage (0-100%).
                             2. Give a 1-sentence executive summary.
-                            LANGUAGE: MUST USE " . ((app()->getLocale() === 'id') ? 'Indonesian' : 'English') . " language.
+                            LANGUAGE: MUST USE $langName language.
                             
                             OUTPUT FORMAT (MARKDOWN):
                             # [PERCENTAGE]% MATCH
                             **Ringkasan Neural:** [Summary...]
                             "
-                            ]
                         ]
                     ]
-                ],
-                'generationConfig' => [
-                    'temperature' => 0.4,
                 ]
-            ]);
+            ],
+            'generationConfig' => [
+                'temperature' => 0.4,
+            ]
+        ];
 
-            if ($response->successful()) {
-                return $response->json()['candidates'][0]['content']['parts'][0]['text'] ?? '';
-            }
-
-            return "Error analyzing scan.";
-        } catch (\Exception $e) {
-            return "Error: " . $e->getMessage();
-        }
+        return $this->executeRequest('analyze', $payload);
     }
-
-    // End of Service
 }
