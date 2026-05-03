@@ -79,7 +79,13 @@ export function usePlannerBatch(currentDateRef, localTasksRef = null) {
         batchForm.clearErrors();
         globalConflictError.value = null;
         
-        const existingTasks = usePage().props.tasks || []; 
+        const getTasksArray = (t) => {
+            if (Array.isArray(t)) return t;
+            if (t && typeof t === 'object' && Array.isArray(t.data)) return t.data;
+            return [];
+        };
+
+        const existingTasks = getTasksArray(usePage().props.tasks); 
         let isValid = true;
 
         batchForm.tasks.forEach((task, index) => {
