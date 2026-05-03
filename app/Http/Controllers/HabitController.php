@@ -52,6 +52,7 @@ class HabitController extends Controller
             'hasPrevHabits' => Inertia::defer(fn () => Habit::ofUser($user->id)->forPeriod($dates['prev'])->exists()),
             'prevMonthQuery' => $dates['prev'],
             'savedMood' => Inertia::defer(fn () => Mood::where('user_id', $user->id)->where('period', $dates['query'])->value('mood_code')),
+        ]);
     }
 
     public function store(StoreHabitRequest $request)
