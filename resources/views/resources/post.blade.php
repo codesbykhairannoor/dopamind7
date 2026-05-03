@@ -137,7 +137,7 @@
  </div>
 
  <!-- Header Section -->
- <header class="pt-40 pb-20 px-6 bg-slate-50/50 border-b border-slate-100">
+ <header class="pt-24 md:pt-40 pb-12 md:pb-20 px-6 bg-slate-50/50 border-b border-slate-100">
  <div class="max-w-4xl mx-auto text-center">
  <nav class="flex justify-center items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest mb-8">
  <a href="{{ route('home') }}" class="hover:text-indigo-600">Home</a>
@@ -151,7 +151,7 @@
  </span>
  @endif
 
- <h1 class="text-4xl md:text-7xl text-slate-900 leading-[1.1] mb-12 tracking-tighter font-black">
+ <h1 class="text-3xl md:text-7xl text-slate-900 leading-[1.1] mb-8 md:mb-12 tracking-tighter font-black">
  {{ $post->title }}
  </h1>
 
@@ -173,7 +173,7 @@
  </div>
  </header>
 
- <div class="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-16 py-24 relative">
+ <div class="max-w-7xl mx-auto px-6 grid grid-cols-12 gap-8 lg:gap-16 py-12 md:py-24 relative">
  
  <!-- Sidebar: Floating Share & Progress -->
  <aside class="hidden lg:block col-span-1 sticky top-40 h-fit">

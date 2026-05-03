@@ -52,7 +52,7 @@
  @endphp
 
  {{-- SECTION 1: HERO (EDITORIAL STYLE - MATCHED WITH STORIES) --}}
- <header class="pt-32 pb-32 px-6 relative overflow-hidden bg-white border-b border-gray-100">
+ <header class="pt-24 md:pt-32 pb-20 md:pb-32 px-6 relative overflow-hidden bg-white border-b border-gray-100">
  {{-- Subtle Background: Grid & Glow --}}
  <div class="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px),linear-gradient(to_bottom,#f8fafc_1px,transparent_1px)] [background-size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10"></div>
  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-indigo-50/50 rounded-full blur-3xl -z-20"></div>
@@ -61,13 +61,13 @@
  <div class="animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100 fill-mode-both">
  
  {{-- Editorial Badge --}}
- <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-xs mb-8 uppercase tracking-wider shadow-sm border border-indigo-200">
+ <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-bold text-[10px] md:text-xs mb-6 md:mb-8 uppercase tracking-wider shadow-sm border border-indigo-200">
  ⭐ {{ __('blog_hero_badge') }}
  </div>
 
  {{-- Headline --}}
- <h1 class="text-5xl md:text-7xl mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
- {{ __('blog_hero_title_1') }} <br>
+ <h1 class="text-4xl md:text-7xl mb-6 md:mb-8 leading-[1.1] text-gray-900 tracking-tight font-black">
+ {{ __('blog_hero_title_1') }} <br class="hidden md:block">
  <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">{{ __('blog_hero_title_2') }}</span>
  </h1>
 
@@ -110,7 +110,7 @@
  <section class="py-24 bg-slate-50/50">
  <div class="max-w-7xl mx-auto px-6">
  
- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+ <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
  @forelse($remainingPosts as $post)
  <article class="group relative flex flex-col bg-white rounded-3xl border border-slate-200/60 overflow-hidden hover:shadow-[0_20px_50px_rgba(79,70,229,0.08)] hover:-translate-y-1 transition-all duration-500">
  <a href="{{ route('resources.blog.show', $post->slug) }}" class="block aspect-[16/10] overflow-hidden relative">
