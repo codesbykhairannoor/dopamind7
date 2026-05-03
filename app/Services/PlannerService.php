@@ -25,7 +25,7 @@ class PlannerService
                 'end_time'     => $task['end_time'],
                 'type'         => $task['type'],
                 'notes'        => $task['notes'] ?? null,
-                'is_completed' => false,
+                'is_completed' => \Illuminate\Support\Facades\DB::raw('false'),
                 'created_at'   => $now,
                 'updated_at'   => $now,
             ];

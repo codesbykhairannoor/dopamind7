@@ -14,11 +14,12 @@ class StoreBatchTaskRequest extends FormRequest
     public function rules(): array
     {
         $timezone = auth()->user()->timezone ?? 'Asia/Jakarta';
-        $minDate = now()->timezone($timezone)->subYear()->format('Y-m-d');
-        $maxDate = now()->timezone($timezone)->addYear()->format('Y-m-d');
+        $today = now()->timezone($timezone)->format('Y-m-d');
+        $maxDate = now()->timezone($timezone)->addDays(10)->format('Y-m-d');
 
         return [
-            'date'               => ['required', 'date', 'after_or_equal:' . $minDate, 'before_or_equal:' . $maxDate],
+            // 🔥 LIMIT: Rentang 10 hari ke depan saja
+            'date'               => ['required', 'date', 'after_or_equal:' . $today, 'before_or_equal:' . $maxDate],
 
             // Array Tasks
             'tasks'              => ['required', 'array', 'min:1'],
