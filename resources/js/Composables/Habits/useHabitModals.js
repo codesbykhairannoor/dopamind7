@@ -114,11 +114,13 @@ export function useHabitModals(props, localHabits) {
             ...h,
             id: 'temp_batch_' + Date.now() + '_' + i,
             period: props.monthQuery,
-            logs: [],
-            completed_count: 0
+            logs: {},
+            progress_count: 0,
+            progress_percent: 0,
+            streak: 0
         }));
 
-        localHabits.value.unshift(...newHabits);
+        localHabits.value.push(...newHabits);
         closeBatchModal();
         fireToast('success', t('success_batch_saved', 'Berhasil menyimpan banyak habit!'));
 
@@ -128,7 +130,7 @@ export function useHabitModals(props, localHabits) {
         }, {
             preserveScroll: true,
             preserveState: true,
-            progress: false, // 🔥 Matikan loading bar biar kerasa instan
+            progress: false, 
             onError: (errors) => {
                 const firstErrorMsg = Object.values(errors)[0] || t('error_server', 'Terjadi kesalahan di server.');
                 fireToast('error', `Gagal: ${firstErrorMsg}`);
@@ -200,7 +202,15 @@ export function useHabitModals(props, localHabits) {
             });
         } else {
             const tempId = 'temp_' + Date.now();
-            localHabits.value.unshift({ ...payload, id: tempId, logs: [], completed_count: 0 });
+            const newHabit = { 
+                ...payload, 
+                id: tempId, 
+                logs: {}, 
+                progress_count: 0, 
+                progress_percent: 0,
+                streak: 0
+            };
+            localHabits.value.push(newHabit);
 
             closeModal();
             fireToast('success', t('success_habit_created', 'Habit berhasil dibuat!'));

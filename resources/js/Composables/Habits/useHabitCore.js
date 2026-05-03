@@ -35,7 +35,7 @@ export function useHabitCore(props) {
     });
 
     const todayProgress = computed(() => {
-        if (localHabits.value.length === 0) return 0;
+        if (!localHabits.value || localHabits.value.length === 0) return 0;
         const todayStr = dayjs().format('YYYY-MM-DD');
         let completed = 0;
 
@@ -49,14 +49,14 @@ export function useHabitCore(props) {
 
     const totalCompletions = computed(() => {
         let total = 0;
-        localHabits.value.forEach(h => total += h.progress_count);
+        localHabits.value.forEach(h => total += (h.progress_count || 0));
         return total;
     });
 
     const overallPercentage = computed(() => {
-        if (localHabits.value.length === 0) return 0;
+        if (!localHabits.value || localHabits.value.length === 0) return 0;
         let totalPercent = 0;
-        localHabits.value.forEach(h => totalPercent += h.progress_percent);
+        localHabits.value.forEach(h => totalPercent += (h.progress_percent || 0));
         return Math.round(totalPercent / localHabits.value.length);
     });
 

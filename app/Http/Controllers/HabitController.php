@@ -52,21 +52,12 @@ class HabitController extends Controller
             'hasPrevHabits' => Inertia::defer(fn () => Habit::ofUser($user->id)->forPeriod($dates['prev'])->exists()),
             'prevMonthQuery' => $dates['prev'],
             'savedMood' => Inertia::defer(fn () => Mood::where('user_id', $user->id)->where('period', $dates['query'])->value('mood_code')),
-        ]);
     }
 
     public function store(StoreHabitRequest $request)
     {
         $user = Auth::user();
-        
-        // Explorer limit removed by request: habit, finance, and planner are now fully free.
-
-
-        $habit = $this->habitService->createHabit($user->id, $request->validated());
-
-        if ($request->wantsJson()) {
-            return response()->json(['message' => 'Habit created', 'data' => new HabitResource($habit)], 201);
-        }
+        $this->habitService->createHabit($user->id, $request->validated());
         return back();
     }
 
@@ -74,10 +65,6 @@ class HabitController extends Controller
     {
         $this->authorize('update', $habit);
         $habit->update($request->validated());
-
-        if ($request->wantsJson()) {
-            return response()->json(['message' => 'Habit updated', 'data' => new HabitResource($habit)]);
-        }
         return back();
     }
 
@@ -85,8 +72,6 @@ class HabitController extends Controller
     {
         $this->authorize('delete', $habit);
         $habit->delete();
-
-        if (request()->wantsJson()) return response()->json(['message' => 'Habit deleted'], 200);
         return back();
     }
 
@@ -94,8 +79,6 @@ class HabitController extends Controller
     {
         $this->authorize('log', $habit);
         $this->habitService->logHabit($habit, $request->date, $request->status);
-
-        if ($request->wantsJson()) return response()->json(['message' => 'Log updated']);
         return back();
     }
 
@@ -114,11 +97,8 @@ class HabitController extends Controller
                 Auth::user()->timezone ?? 'Asia/Jakarta'
             );
 
-            if ($request->wantsJson()) return response()->json(['message' => "$count habits copied"]);
             return back()->with('success', "$count habits berhasil disalin!");
-
         } catch (\Exception $e) {
-            if ($request->wantsJson()) return response()->json(['message' => $e->getMessage()], 400);
             return back()->with('error', $e->getMessage());
         }
     }
@@ -135,12 +115,7 @@ class HabitController extends Controller
         ]);
 
         $user = Auth::user();
-        // Explorer limit removed by request: massal habit is now fully free.
-
-
         $this->habitService->batchStore($user->id, $request->period, $request->habits, $user->timezone ?? 'Asia/Jakarta');
-
-        if ($request->wantsJson()) return response()->json(['message' => 'Batch habits saved.']);
         return back()->with('success', 'Habit berhasil ditambahkan secara massal!');
     }
 
