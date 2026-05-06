@@ -1,28 +1,18 @@
 import './bootstrap';
 import '../css/app.css';
-import 'nprogress/nprogress.css';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp, router, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import { i18nVue, trans } from 'laravel-vue-i18n';
-import NProgress from 'nprogress';
 
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 window.trans = trans;
 
-// NProgress config — tipis, cepat, tidak ada spinner
-NProgress.configure({
-    showSpinner: false,
-    minimum: 0.1,
-    speed: 200,
-    trickleSpeed: 80,
-});
-
-// 🔥 GLOBAL SAFETY GUARD: Menghindari error 'e.target.closest is not a function'
+// 🔥 GLOBAL SAFETY GUARD
 if (typeof Element !== 'undefined' && !Element.prototype.closest) {
     Element.prototype.closest = function (s) {
         var el = this;
@@ -113,11 +103,13 @@ createInertiaApp({
         vueApp.mount(el);
     },
 
+    // Inertia built-in progress — satu sistem, tidak ada konflik
+    // delay: 150 supaya navigasi cepat (<150ms) tidak tampilkan bar sama sekali
     progress: {
         color: '#4f46e5',
         showSpinner: false,
-        delay: 0,
-        includeCSS: false, // kita sudah import manual di atas
+        delay: 150,
+        includeCSS: true,
     },
 });
 

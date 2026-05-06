@@ -22,21 +22,17 @@
     }
 }
 
-/* Pastikan warna indigo lo muncul */
+/* NProgress — tipis, smooth, tidak mengganggu */
 #nprogress .bar {
-    @apply bg-indigo-600 !important;
+    background: #4f46e5 !important;
     position: fixed !important;
     z-index: 9999999 !important;
     top: 0;
     left: 0;
     width: 100%;
-    height: 5px !important;
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.6) !important;
+    height: 2px !important;
+    box-shadow: none !important;
     pointer-events: none !important;
-}
-
-#nprogress .spinner {
-    display: none; 
 }
 
 /* ================================================================= */

@@ -341,10 +341,11 @@ const goCoach = () => {
                 v-show="platinumExpanded || (!isDrawer && collapsed)"
                 class="space-y-0.5"
             >
-                <Link
+                <component
+                    :is="canUse('journal') ? Link : 'button'"
                     v-if="showModule('journal')"
-                    :href="route('journal.index')"
-                    prefetch="hover"
+                    :href="canUse('journal') ? route('journal.index') : undefined"
+                    :prefetch="canUse('journal') ? 'hover' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -355,17 +356,7 @@ const goCoach = () => {
                         !canUse('journal') ? 'opacity-60' : '',
                     ]"
                     :title="!showLabels ? $t('nav_item_journal') : ''"
-                    @click="
-                        (e) => {
-                            if (!canUse('journal')) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                goJournal();
-                            } else {
-                                onNav();
-                            }
-                        }
-                    "
+                    @click="canUse('journal') ? onNav() : goJournal()"
                 >
                     <div
                         class="nav-icon shrink-0"
@@ -390,12 +381,13 @@ const goCoach = () => {
                         v-if="isActive('journal.*') && showLabels"
                         class="nav-active-bar"
                     ></div>
-                </Link>
+                </component>
 
-                <Link
+                <component
+                    :is="canUse('calendar') ? Link : 'button'"
                     v-if="showModule('calendar')"
-                    :href="route('calendar.index')"
-                    prefetch="hover"
+                    :href="canUse('calendar') ? route('calendar.index') : undefined"
+                    :prefetch="canUse('calendar') ? 'hover' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -406,17 +398,7 @@ const goCoach = () => {
                         !canUse('calendar') ? 'opacity-60' : '',
                     ]"
                     :title="!showLabels ? $t('nav_item_calendar') : ''"
-                    @click="
-                        (e) => {
-                            if (!canUse('calendar')) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                goCalendar();
-                            } else {
-                                onNav();
-                            }
-                        }
-                    "
+                    @click="canUse('calendar') ? onNav() : goCalendar()"
                 >
                     <div
                         class="nav-icon shrink-0"
@@ -441,12 +423,13 @@ const goCoach = () => {
                         v-if="isActive('calendar.*') && showLabels"
                         class="nav-active-bar"
                     ></div>
-                </Link>
+                </component>
 
-                <Link
+                <component
+                    :is="canUse('job') ? Link : 'button'"
                     v-if="showModule('job')"
-                    :href="route('jobs.index')"
-                    prefetch="hover"
+                    :href="canUse('job') ? route('jobs.index') : undefined"
+                    :prefetch="canUse('job') ? 'hover' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -457,17 +440,7 @@ const goCoach = () => {
                         !canUse('job') ? 'opacity-60' : '',
                     ]"
                     :title="!showLabels ? $t('nav_item_jobs') : ''"
-                    @click="
-                        (e) => {
-                            if (!canUse('job')) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                goJob();
-                            } else {
-                                onNav();
-                            }
-                        }
-                    "
+                    @click="canUse('job') ? onNav() : goJob()"
                 >
                     <div
                         class="nav-icon shrink-0"
@@ -492,12 +465,13 @@ const goCoach = () => {
                         v-if="isActive('jobs.*') && showLabels"
                         class="nav-active-bar"
                     ></div>
-                </Link>
+                </component>
 
-                <Link
+                <component
+                    :is="canUse('goal') ? Link : 'button'"
                     v-if="showModule('goal')"
-                    :href="route('goals.index')"
-                    prefetch="hover"
+                    :href="canUse('goal') ? route('goals.index') : undefined"
+                    :prefetch="canUse('goal') ? 'hover' : undefined"
                     view-transition
                     class="nav-item group"
                     :class="[
@@ -508,17 +482,7 @@ const goCoach = () => {
                         !canUse('goal') ? 'opacity-60' : '',
                     ]"
                     :title="!showLabels ? $t('nav_item_goals') : ''"
-                    @click="
-                        (e) => {
-                            if (!canUse('goal')) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                goGoal();
-                            } else {
-                                onNav();
-                            }
-                        }
-                    "
+                    @click="canUse('goal') ? onNav() : goGoal()"
                 >
                     <div
                         class="nav-icon shrink-0"
@@ -543,7 +507,7 @@ const goCoach = () => {
                         v-if="isActive('goals.*') && showLabels"
                         class="nav-active-bar"
                     ></div>
-                </Link>
+                </component>
             </div>
         </Transition>
 
@@ -563,9 +527,10 @@ const goCoach = () => {
                 </span>
             </div>
 
-            <Link
-                :href="route('coach.index')"
-                prefetch="hover"
+            <component
+                :is="canUse('ai_coach') ? Link : 'button'"
+                :href="canUse('ai_coach') ? route('coach.index') : undefined"
+                :prefetch="canUse('ai_coach') ? 'hover' : undefined"
                 view-transition
                 class="nav-item group cursor-pointer relative overflow-hidden"
                 :class="[
@@ -575,17 +540,7 @@ const goCoach = () => {
                     itemLayout,
                 ]"
                 :title="!showLabels ? $t('nav_item_coach', 'AI Coach') : ''"
-                @click="
-                    (e) => {
-                        if (!canUse('ai_coach')) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            goCoach();
-                        } else {
-                            onNav();
-                        }
-                    }
-                "
+                @click="canUse('ai_coach') ? onNav() : goCoach()"
             >
                 <div class="shrink-0 text-indigo-500">
                     <OneForMindIcon name="sparkles" size="18" />
@@ -604,7 +559,7 @@ const goCoach = () => {
                     v-if="isActive('coach.*') && showLabels"
                     class="nav-active-bar bg-indigo-500"
                 ></div>
-            </Link>
+            </component>
         </template>
     </div>
 </template>

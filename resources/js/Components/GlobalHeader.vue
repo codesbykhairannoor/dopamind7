@@ -14,7 +14,7 @@ import { trans } from 'laravel-vue-i18n';
 import PlannerDatePicker from '@/Components/PlannerDatePicker.vue';
 import dayjs from 'dayjs';
 import NProgress from 'nprogress';
-// nprogress.css sudah di-import di app.js
+// nprogress dihandle Inertia — import ini hanya untuk switchLang loading indicator
 
 const page = usePage();
 const { isExplorer, user } = useGating();
