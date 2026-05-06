@@ -1,19 +1,28 @@
 import './bootstrap';
 import '../css/app.css';
+import 'nprogress/nprogress.css';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp, router, Link } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import { i18nVue, trans } from 'laravel-vue-i18n';
+import NProgress from 'nprogress';
 
 import OneForMindIcon from '@/Components/OneForMindIcon.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
 window.trans = trans;
 
+// NProgress config — tipis, cepat, tidak ada spinner
+NProgress.configure({
+    showSpinner: false,
+    minimum: 0.1,
+    speed: 200,
+    trickleSpeed: 80,
+});
+
 // 🔥 GLOBAL SAFETY GUARD: Menghindari error 'e.target.closest is not a function'
-// Terjadi jika event listener global menangkap klik pada objek non-elemen (document/window).
 if (typeof Element !== 'undefined' && !Element.prototype.closest) {
     Element.prototype.closest = function (s) {
         var el = this;
@@ -49,8 +58,12 @@ if (el) {
 
 createInertiaApp({
     id: 'app',
-    page: initialPage, // Berikan data awal secara eksplisit untuk menghindari internal failure di library
+    page: initialPage,
     title: (title) => `${title} - ${appName}`,
+
+    // Prefetch: saat sidebar mount, Inertia sudah fetch data halaman di background.
+    // Ketika user klik, response sudah ada di cache → perpindahan instan.
+    prefetch: true,
 
     resolve: async (name) => {
         const page = await resolvePageComponent(
@@ -100,10 +113,11 @@ createInertiaApp({
         vueApp.mount(el);
     },
 
-    progress: false,
-    history: {
-        encrypt: false,
-        cache: true,
+    progress: {
+        color: '#4f46e5',
+        showSpinner: false,
+        delay: 0,
+        includeCSS: false, // kita sudah import manual di atas
     },
 });
 

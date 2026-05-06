@@ -14,7 +14,7 @@ import { trans } from 'laravel-vue-i18n';
 import PlannerDatePicker from '@/Components/PlannerDatePicker.vue';
 import dayjs from 'dayjs';
 import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
+// nprogress.css sudah di-import di app.js
 
 const page = usePage();
 const { isExplorer, user } = useGating();
