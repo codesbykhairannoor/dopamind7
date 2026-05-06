@@ -1,6 +1,7 @@
 .git
 .github
 node_modules
+node_modules/.vite
 vendor
 storage/*.key
 .env
