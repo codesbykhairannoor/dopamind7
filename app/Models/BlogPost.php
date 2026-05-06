@@ -66,16 +66,18 @@ class BlogPost extends Model
     {
         if (!$this->content) return '';
         
-        // If it looks like HTML, return as is to avoid double processing or stripping
-        if (str_contains($this->content, '<h') || str_contains($this->content, '<p') || str_contains($this->content, '<div')) {
-            return $this->content;
+        $trimmedContent = trim($this->content);
+
+        // If it looks like HTML, return as is
+        if (str_contains($trimmedContent, '<h') || str_contains($trimmedContent, '<p') || str_contains($trimmedContent, '<div') || str_contains($trimmedContent, '<ul')) {
+            return $trimmedContent;
         }
 
         $converter = new \League\CommonMark\CommonMarkConverter([
             'html_input' => 'allow',
             'allow_unsafe_links' => false,
         ]);
-        return $converter->convert($this->content)->getContent();
+        return $converter->convert($trimmedContent)->getContent();
     }
 
     public function category(): BelongsTo
