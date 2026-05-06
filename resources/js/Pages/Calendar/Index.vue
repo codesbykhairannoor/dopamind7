@@ -83,12 +83,10 @@ const triggerDeleteEvent = (id) => {
     });
 };
 
-// Logic Ganti Bulan
+// Logic Ganti Bulan — hapus preserveState agar props benar-benar di-replace
 const changeMonth = (newMonthPayload) => {
     router.get(route('calendar.index'), { month: newMonthPayload }, { 
-        preserveState: true, 
         preserveScroll: true,
-        progress: false 
     });
 };
 </script>

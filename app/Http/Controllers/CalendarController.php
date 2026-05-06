@@ -30,11 +30,12 @@ class CalendarController extends Controller
         return Inertia::render('Calendar/Index', [
             'currentMonth' => $data['currentMonth'],
             'data' => [
-                'events'   => CalendarEventResource::collection($data['events'])->resolve(),
-                'journals' => $data['journals'],
-                'finances' => $data['finances'],
-                'planners' => $data['planners'],
-                'habits'   => $data['habits'], 
+                'events'     => CalendarEventResource::collection($data['events'])->resolve(),
+                'journals'   => $data['journals'],
+                'finances'   => $data['finances'],
+                'planners'   => $data['planners'],
+                'habits'     => $data['habits'],
+                'milestones' => $data['milestones'],
             ]
         ]);
     }
