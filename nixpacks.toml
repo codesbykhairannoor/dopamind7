@@ -15,13 +15,12 @@ cmds = [
 
 [phases.deploy]
 cmds = [
-    'php artisan optimize',
-    'php artisan route:cache',
-    'php artisan view:cache',
-    'php artisan config:cache',
     'php artisan migrate --force',
-    'php artisan octane:start --server=roadrunner --host=0.0.0.0 --port=$PORT'
+    'php artisan optimize',
+    'php artisan event:cache'
 ]
+
+startCmd = 'php artisan octane:start --server=roadrunner --host=0.0.0.0 --port=$PORT'
 
 [variables]
 PHP_INI_SCAN_DIR = "/app:/usr/local/etc/php/conf.d"
