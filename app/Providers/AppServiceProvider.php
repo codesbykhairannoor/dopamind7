@@ -24,11 +24,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $resetAssetRoot = function () {
+            try {
+                $urlGenerator = app('url');
+                $property = new \ReflectionProperty(get_class($urlGenerator), 'assetRoot');
+                $property->setAccessible(true);
+                $property->setValue($urlGenerator, null);
+            } catch (\Throwable $e) {
+                // Fallback in case of restriction or error
+            }
+        };
+
         if (app()->environment('production')) {
             \Illuminate\Support\Facades\URL::forceScheme('https');
             if (!app()->runningInConsole()) {
                 config(['app.url' => 'https://' . request()->getHost()]);
                 config(['app.asset_url' => null]);
+                $resetAssetRoot();
             }
             \Illuminate\Support\Facades\URL::forceRootUrl(config('app.url'));
         }
@@ -73,6 +85,7 @@ class AppServiceProvider extends ServiceProvider
 
             // Opsional: Matikan Asset URL jika ada
             config(['app.asset_url' => null]);
+            $resetAssetRoot();
 
             // Paksa APP_ENV agar tidak dianggap production jika sedang main di localhost
             config(['app.env' => 'local']);
