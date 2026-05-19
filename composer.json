@@ -58,6 +58,10 @@
         }
     },
     "scripts": {
+        "vercel": [
+            "@php lang_sync.php",
+            "@php artisan ziggy:generate resources/js/ziggy.js"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
