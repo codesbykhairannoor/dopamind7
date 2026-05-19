@@ -651,6 +651,5 @@
     "http://localhost:8000/build/assets/Welcome-_9G7Vit5.js"
   ],
   "resources/js/ssr.js": [],
-  "resources/js/ziggy.js": [],
-  "vendor/tightenco/ziggy/dist/index.js": []
+  "resources/js/ziggy.js": []
 }
