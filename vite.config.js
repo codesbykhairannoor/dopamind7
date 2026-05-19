@@ -6,6 +6,9 @@ import fs from "fs";
 import path from "path";
 import viteCompression from "vite-plugin-compression";
 
+// Force relative paths by unsetting ASSET_URL in process.env during Vite build
+delete process.env.ASSET_URL;
+
 // ==========================================================
 // 🔥 MESIN AUTO-MERGE JSON TRANSLATIONS 🔥
 // ==========================================================
