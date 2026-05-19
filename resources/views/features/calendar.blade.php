@@ -194,7 +194,7 @@
  </div>
 
  {{-- Floating Alert --}}
- <div class="absolute -right-6 -bottom-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce duration-[3000ms]">
+ <div class="absolute -right-6 -bottom-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce [animation-duration:3000ms]">
  <div class="flex items-center gap-3">
  <div class="text-3xl font-black">🔔</div>
  <div class="text-left">

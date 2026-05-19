@@ -128,7 +128,7 @@
  </div>
 
  {{-- 2. Floating Item Top Right: Payment Received --}}
- <div class="absolute top-8 right-0 z-30 w-56 bg-slate-900 text-white rounded-2xl shadow-xl border border-slate-700 p-4 transform rotate-3 hover:rotate-0 transition duration-300 animate-bounce duration-[4000ms]">
+ <div class="absolute top-8 right-0 z-30 w-56 bg-slate-900 text-white rounded-2xl shadow-xl border border-slate-700 p-4 transform rotate-3 hover:rotate-0 transition duration-300 animate-bounce [animation-duration:4000ms]">
  <div class="flex items-center gap-3 mb-2">
  <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-sm">💰</div>
  <div>

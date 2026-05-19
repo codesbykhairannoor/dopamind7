@@ -102,7 +102,7 @@
  </div>
 
  {{-- Floating Habit Orb 1 --}}
- <div class="absolute top-10 right-0 bg-white p-4 rounded-3xl shadow-xl border border-indigo-50 flex items-center gap-4 z-30 animate-bounce duration-[4000ms]">
+ <div class="absolute top-10 right-0 bg-white p-4 rounded-3xl shadow-xl border border-indigo-50 flex items-center gap-4 z-30 animate-bounce [animation-duration:4000ms]">
  <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg shadow-inner">✓</div>
  <div>
  <p class="font-bold text-gray-900 text-sm">{{ __('growth_mockup_habit_title') }}</p>

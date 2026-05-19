@@ -2997,6 +2997,7 @@ const goal_ai_promo_badge$1 = "Success Forecasting";
 const goal_ai_promo_title$1 = "Predict Your Achievement";
 const goal_ai_promo_desc$1 = "Neural OS calculates your velocity and predicts exactly when you'll reach your milestones, allowing you to adjust your strategy before a deadline even approaches.";
 const goal_ai_promo_btn$1 = "Forecast Progress";
+const goal_untitled_step$1 = "Untitled Step";
 const guide_meta_title$1 = "Guide and Knowledge Base - OneForMind";
 const guide_meta_desc$1 = "Everything you need to master your workflow and mindset.";
 const guide_meta_og_title$1 = "OneForMind Knowledge Base";
@@ -3298,8 +3299,8 @@ const job_ph_company$1 = "Enter company name...";
 const job_ph_title$1 = "e.g., Frontend Dev";
 const job_ph_location$1 = "Remote / US";
 const job_empty_table$1 = 'No data available. Click "+ Add Row" to start typing.';
-const job_status_wishlist$1 = "Wishlist";
-const job_status_applied$1 = "Applied";
+const job_status_wishlist$1 = "Applied";
+const job_status_applied$1 = "Reviewing";
 const job_status_interview$1 = "Interview";
 const job_status_offer$1 = "Offer Received";
 const job_status_rejected$1 = "Rejected";
@@ -3753,42 +3754,42 @@ const neural_coach_user$1 = "You";
 const neural_coach_msg1$1 = "I noticed you're 20% more likely to execute habits when your morning mood is 'Excited'. Want me to move your high-energy tasks there?";
 const neural_coach_msg2$1 = "Yes, please optimize my schedule.";
 const neural_coach_msg3$1 = "Done! Your Planner has been updated for maximum flow.";
-const title$1 = "Onboarding";
-const step_goal_title$1 = "What is your main goal?";
-const step_goal_desc$1 = "Select one focus that matters most to you right now.";
-const goal_habits$1 = "Build Positive Habits";
-const goal_finance$1 = "Manage Finance & Budget";
-const goal_planner$1 = "Productivity & Schedule";
-const goal_journal$1 = "Journal & Self-Reflection";
-const step_pain_title$1 = "What is your biggest hurdle?";
-const step_pain_desc$1 = "Don't worry, Neural OS is designed to help overcome this.";
-const pain_procrastination$1 = "Procrastination";
-const pain_disorganized$1 = "Disorganized";
-const pain_overspending$1 = "Overspending";
-const pain_stress$1 = "Stress & Overthinking";
-const step_ambition_title$1 = "How ambitious are you?";
-const step_ambition_desc$1 = "We will adjust the system intensity for you.";
-const ambition_low$1 = "Relaxed & Gradual";
-const ambition_medium$1 = "Balanced & Consistent";
-const ambition_high$1 = "Maximum & Disciplined";
-const step_persona_title$1 = "Who are you currently?";
-const step_persona_desc$1 = "Choose the identity that best matches your profile.";
-const persona_student$1 = "Student";
-const persona_professional$1 = "Professional / Worker";
-const persona_entrepreneur$1 = "Entrepreneur / Freelancer";
-const persona_other$1 = "Other";
-const step_offer_title$1 = "Elevate Your Experience";
-const step_offer_desc$1 = "Neural OS is more powerful with Architect features. Choose your plan.";
-const offer_free_title$1 = "Explorer Plan";
-const offer_free_desc$1 = "The basics of Neural OS to start your journey.";
-const offer_pro_title$1 = "Architect Plan";
-const offer_pro_desc$1 = "Access AI, Custom Modules, and unlimited premium features.";
-const offer_btn_free$1 = "Continue for Free";
-const offer_btn_pro$1 = "Upgrade to Architect";
-const btn_next$1 = "Continue";
-const btn_prev$1 = "Back";
-const btn_finish$1 = "Complete Setup";
-const finish_success$1 = "Setup Successful! Welcome to Neural OS.";
+const onboarding_title$1 = "Onboarding";
+const onboarding_step_goal_title$1 = "What is your main goal?";
+const onboarding_step_goal_desc$1 = "Select one focus that matters most to you right now.";
+const onboarding_goal_habits$1 = "Build Positive Habits";
+const onboarding_goal_finance$1 = "Manage Finance & Budget";
+const onboarding_goal_planner$1 = "Productivity & Schedule";
+const onboarding_goal_journal$1 = "Journal & Self-Reflection";
+const onboarding_step_pain_title$1 = "What is your biggest hurdle?";
+const onboarding_step_pain_desc$1 = "Don't worry, Neural OS is designed to help overcome this.";
+const onboarding_pain_procrastination$1 = "Procrastination";
+const onboarding_pain_disorganized$1 = "Disorganized";
+const onboarding_pain_overspending$1 = "Overspending";
+const onboarding_pain_stress$1 = "Stress & Overthinking";
+const onboarding_step_ambition_title$1 = "How ambitious are you?";
+const onboarding_step_ambition_desc$1 = "We will adjust the system intensity for you.";
+const onboarding_ambition_low$1 = "Relaxed & Gradual";
+const onboarding_ambition_medium$1 = "Balanced & Consistent";
+const onboarding_ambition_high$1 = "Maximum & Disciplined";
+const onboarding_step_persona_title$1 = "Who are you currently?";
+const onboarding_step_persona_desc$1 = "Choose the identity that best matches your profile.";
+const onboarding_persona_student$1 = "Student";
+const onboarding_persona_professional$1 = "Professional / Worker";
+const onboarding_persona_entrepreneur$1 = "Entrepreneur / Freelancer";
+const onboarding_persona_other$1 = "Other";
+const onboarding_step_offer_title$1 = "Elevate Your Experience";
+const onboarding_step_offer_desc$1 = "Neural OS is more powerful with Architect features. Choose your plan.";
+const onboarding_offer_free_title$1 = "Explorer Plan";
+const onboarding_offer_free_desc$1 = "The basics of Neural OS to start your journey.";
+const onboarding_offer_pro_title$1 = "Architect Plan";
+const onboarding_offer_pro_desc$1 = "Access AI, Custom Modules, and unlimited premium features.";
+const onboarding_offer_btn_free$1 = "Continue for Free";
+const onboarding_offer_btn_pro$1 = "Upgrade to Architect";
+const onboarding_btn_next$1 = "Continue";
+const onboarding_btn_prev$1 = "Back";
+const onboarding_btn_finish$1 = "Complete Setup";
+const onboarding_finish_success$1 = "Setup Successful! Welcome to Neural OS.";
 const task_label$1 = "Task";
 const time_range$1 = "Time Range";
 const planner_title$1 = "Daily Timeline";
@@ -8337,6 +8338,7 @@ const en = {
   goal_ai_promo_title: goal_ai_promo_title$1,
   goal_ai_promo_desc: goal_ai_promo_desc$1,
   goal_ai_promo_btn: goal_ai_promo_btn$1,
+  goal_untitled_step: goal_untitled_step$1,
   guide_meta_title: guide_meta_title$1,
   guide_meta_desc: guide_meta_desc$1,
   guide_meta_og_title: guide_meta_og_title$1,
@@ -9100,42 +9102,42 @@ const en = {
   neural_coach_msg1: neural_coach_msg1$1,
   neural_coach_msg2: neural_coach_msg2$1,
   neural_coach_msg3: neural_coach_msg3$1,
-  title: title$1,
-  step_goal_title: step_goal_title$1,
-  step_goal_desc: step_goal_desc$1,
-  goal_habits: goal_habits$1,
-  goal_finance: goal_finance$1,
-  goal_planner: goal_planner$1,
-  goal_journal: goal_journal$1,
-  step_pain_title: step_pain_title$1,
-  step_pain_desc: step_pain_desc$1,
-  pain_procrastination: pain_procrastination$1,
-  pain_disorganized: pain_disorganized$1,
-  pain_overspending: pain_overspending$1,
-  pain_stress: pain_stress$1,
-  step_ambition_title: step_ambition_title$1,
-  step_ambition_desc: step_ambition_desc$1,
-  ambition_low: ambition_low$1,
-  ambition_medium: ambition_medium$1,
-  ambition_high: ambition_high$1,
-  step_persona_title: step_persona_title$1,
-  step_persona_desc: step_persona_desc$1,
-  persona_student: persona_student$1,
-  persona_professional: persona_professional$1,
-  persona_entrepreneur: persona_entrepreneur$1,
-  persona_other: persona_other$1,
-  step_offer_title: step_offer_title$1,
-  step_offer_desc: step_offer_desc$1,
-  offer_free_title: offer_free_title$1,
-  offer_free_desc: offer_free_desc$1,
-  offer_pro_title: offer_pro_title$1,
-  offer_pro_desc: offer_pro_desc$1,
-  offer_btn_free: offer_btn_free$1,
-  offer_btn_pro: offer_btn_pro$1,
-  btn_next: btn_next$1,
-  btn_prev: btn_prev$1,
-  btn_finish: btn_finish$1,
-  finish_success: finish_success$1,
+  onboarding_title: onboarding_title$1,
+  onboarding_step_goal_title: onboarding_step_goal_title$1,
+  onboarding_step_goal_desc: onboarding_step_goal_desc$1,
+  onboarding_goal_habits: onboarding_goal_habits$1,
+  onboarding_goal_finance: onboarding_goal_finance$1,
+  onboarding_goal_planner: onboarding_goal_planner$1,
+  onboarding_goal_journal: onboarding_goal_journal$1,
+  onboarding_step_pain_title: onboarding_step_pain_title$1,
+  onboarding_step_pain_desc: onboarding_step_pain_desc$1,
+  onboarding_pain_procrastination: onboarding_pain_procrastination$1,
+  onboarding_pain_disorganized: onboarding_pain_disorganized$1,
+  onboarding_pain_overspending: onboarding_pain_overspending$1,
+  onboarding_pain_stress: onboarding_pain_stress$1,
+  onboarding_step_ambition_title: onboarding_step_ambition_title$1,
+  onboarding_step_ambition_desc: onboarding_step_ambition_desc$1,
+  onboarding_ambition_low: onboarding_ambition_low$1,
+  onboarding_ambition_medium: onboarding_ambition_medium$1,
+  onboarding_ambition_high: onboarding_ambition_high$1,
+  onboarding_step_persona_title: onboarding_step_persona_title$1,
+  onboarding_step_persona_desc: onboarding_step_persona_desc$1,
+  onboarding_persona_student: onboarding_persona_student$1,
+  onboarding_persona_professional: onboarding_persona_professional$1,
+  onboarding_persona_entrepreneur: onboarding_persona_entrepreneur$1,
+  onboarding_persona_other: onboarding_persona_other$1,
+  onboarding_step_offer_title: onboarding_step_offer_title$1,
+  onboarding_step_offer_desc: onboarding_step_offer_desc$1,
+  onboarding_offer_free_title: onboarding_offer_free_title$1,
+  onboarding_offer_free_desc: onboarding_offer_free_desc$1,
+  onboarding_offer_pro_title: onboarding_offer_pro_title$1,
+  onboarding_offer_pro_desc: onboarding_offer_pro_desc$1,
+  onboarding_offer_btn_free: onboarding_offer_btn_free$1,
+  onboarding_offer_btn_pro: onboarding_offer_btn_pro$1,
+  onboarding_btn_next: onboarding_btn_next$1,
+  onboarding_btn_prev: onboarding_btn_prev$1,
+  onboarding_btn_finish: onboarding_btn_finish$1,
+  onboarding_finish_success: onboarding_finish_success$1,
   task_label: task_label$1,
   time_range: time_range$1,
   "____ SECTION_6 ____": "=== DAILY PLANNER ===",
@@ -10788,9 +10790,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   add_category: add_category$1,
   add_source: add_source$1,
   adjust_photo_title: adjust_photo_title$1,
-  ambition_high: ambition_high$1,
-  ambition_low: ambition_low$1,
-  ambition_medium: ambition_medium$1,
   amount: amount$1,
   amount_placeholder: amount_placeholder$1,
   applenotes_adv_badge: applenotes_adv_badge$1,
@@ -11207,14 +11206,11 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   btn_create: btn_create$1,
   btn_delete: btn_delete$1,
   btn_edit: btn_edit$1,
-  btn_finish: btn_finish$1,
   btn_get_intelligence: btn_get_intelligence$1,
   btn_goal_error: btn_goal_error$1,
   btn_journal: btn_journal$1,
   btn_log_expense: btn_log_expense$1,
-  btn_next: btn_next$1,
   btn_ok: btn_ok$1,
-  btn_prev: btn_prev$1,
   btn_processing: btn_processing$1,
   btn_reset: btn_reset$1,
   btn_reset_tooltip: btn_reset_tooltip$1,
@@ -12284,7 +12280,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   finapp_table_row_4_col_1: finapp_table_row_4_col_1$1,
   finapp_table_row_4_col_2: finapp_table_row_4_col_2$1,
   finapp_table_row_4_title: finapp_table_row_4_title$1,
-  finish_success: finish_success$1,
   five_badge: five_badge$1,
   five_compare_desc: five_compare_desc$1,
   five_compare_title: five_compare_title$1,
@@ -12532,8 +12527,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_faq_q2: goal_faq_q2$1,
   goal_faq_q3: goal_faq_q3$1,
   goal_faq_title: goal_faq_title$1,
-  goal_finance: goal_finance$1,
-  goal_habits: goal_habits$1,
   goal_hero_badge: goal_hero_badge$1,
   goal_hero_cta_1: goal_hero_cta_1$1,
   goal_hero_cta_2: goal_hero_cta_2$1,
@@ -12543,7 +12536,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_id_label: goal_id_label$1,
   goal_impl_speed_desc: goal_impl_speed_desc$1,
   goal_impl_speed_title: goal_impl_speed_title$1,
-  goal_journal: goal_journal$1,
   goal_label_category: goal_label_category$1,
   goal_label_end: goal_label_end$1,
   goal_label_priority: goal_label_priority$1,
@@ -12595,7 +12587,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_ph_title: goal_ph_title$1,
   goal_placeholder_reward: goal_placeholder_reward$1,
   goal_placeholder_title: goal_placeholder_title$1,
-  goal_planner: goal_planner$1,
   goal_progress: goal_progress$1,
   goal_quote_author: goal_quote_author$1,
   goal_quote_text: goal_quote_text$1,
@@ -12651,6 +12642,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_type_specific_days: goal_type_specific_days$1,
   goal_type_weekly: goal_type_weekly$1,
   goal_type_yearly: goal_type_yearly$1,
+  goal_untitled_step: goal_untitled_step$1,
   goal_upload_error: goal_upload_error$1,
   greet_afternoon: greet_afternoon$1,
   greet_evening: greet_evening$1,
@@ -14097,13 +14089,43 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   obsidian_table_row_3_col_1: obsidian_table_row_3_col_1$1,
   obsidian_table_row_3_col_2: obsidian_table_row_3_col_2$1,
   obsidian_table_row_3_title: obsidian_table_row_3_title$1,
-  offer_btn_free: offer_btn_free$1,
-  offer_btn_pro: offer_btn_pro$1,
-  offer_free_desc: offer_free_desc$1,
-  offer_free_title: offer_free_title$1,
-  offer_pro_desc: offer_pro_desc$1,
-  offer_pro_title: offer_pro_title$1,
   old_data_hint: old_data_hint$1,
+  onboarding_ambition_high: onboarding_ambition_high$1,
+  onboarding_ambition_low: onboarding_ambition_low$1,
+  onboarding_ambition_medium: onboarding_ambition_medium$1,
+  onboarding_btn_finish: onboarding_btn_finish$1,
+  onboarding_btn_next: onboarding_btn_next$1,
+  onboarding_btn_prev: onboarding_btn_prev$1,
+  onboarding_finish_success: onboarding_finish_success$1,
+  onboarding_goal_finance: onboarding_goal_finance$1,
+  onboarding_goal_habits: onboarding_goal_habits$1,
+  onboarding_goal_journal: onboarding_goal_journal$1,
+  onboarding_goal_planner: onboarding_goal_planner$1,
+  onboarding_offer_btn_free: onboarding_offer_btn_free$1,
+  onboarding_offer_btn_pro: onboarding_offer_btn_pro$1,
+  onboarding_offer_free_desc: onboarding_offer_free_desc$1,
+  onboarding_offer_free_title: onboarding_offer_free_title$1,
+  onboarding_offer_pro_desc: onboarding_offer_pro_desc$1,
+  onboarding_offer_pro_title: onboarding_offer_pro_title$1,
+  onboarding_pain_disorganized: onboarding_pain_disorganized$1,
+  onboarding_pain_overspending: onboarding_pain_overspending$1,
+  onboarding_pain_procrastination: onboarding_pain_procrastination$1,
+  onboarding_pain_stress: onboarding_pain_stress$1,
+  onboarding_persona_entrepreneur: onboarding_persona_entrepreneur$1,
+  onboarding_persona_other: onboarding_persona_other$1,
+  onboarding_persona_professional: onboarding_persona_professional$1,
+  onboarding_persona_student: onboarding_persona_student$1,
+  onboarding_step_ambition_desc: onboarding_step_ambition_desc$1,
+  onboarding_step_ambition_title: onboarding_step_ambition_title$1,
+  onboarding_step_goal_desc: onboarding_step_goal_desc$1,
+  onboarding_step_goal_title: onboarding_step_goal_title$1,
+  onboarding_step_offer_desc: onboarding_step_offer_desc$1,
+  onboarding_step_offer_title: onboarding_step_offer_title$1,
+  onboarding_step_pain_desc: onboarding_step_pain_desc$1,
+  onboarding_step_pain_title: onboarding_step_pain_title$1,
+  onboarding_step_persona_desc: onboarding_step_persona_desc$1,
+  onboarding_step_persona_title: onboarding_step_persona_title$1,
+  onboarding_title: onboarding_title$1,
   onenote_badge: onenote_badge$1,
   onenote_cost_desc: onenote_cost_desc$1,
   onenote_cost_point_1: onenote_cost_point_1$1,
@@ -14158,10 +14180,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   onenote_sol_visual_3: onenote_sol_visual_3$1,
   onenote_sol_visual_4: onenote_sol_visual_4$1,
   out: out$1,
-  pain_disorganized: pain_disorganized$1,
-  pain_overspending: pain_overspending$1,
-  pain_procrastination: pain_procrastination$1,
-  pain_stress: pain_stress$1,
   pan_instruction: pan_instruction$1,
   password_security_desc: password_security_desc$1,
   password_security_title: password_security_title$1,
@@ -14178,10 +14196,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   payment_success_title: payment_success_title$1,
   payment_welcome_msg: payment_welcome_msg$1,
   per_day: per_day$1,
-  persona_entrepreneur: persona_entrepreneur$1,
-  persona_other: persona_other$1,
-  persona_professional: persona_professional$1,
-  persona_student: persona_student$1,
   ph_event_desc: ph_event_desc$1,
   ph_event_title: ph_event_title$1,
   photo_adjust_instruction: photo_adjust_instruction$1,
@@ -15506,16 +15520,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   status_image_saved: status_image_saved$1,
   status_saved: status_saved$1,
   status_saving: status_saving$1,
-  step_ambition_desc: step_ambition_desc$1,
-  step_ambition_title: step_ambition_title$1,
-  step_goal_desc: step_goal_desc$1,
-  step_goal_title: step_goal_title$1,
-  step_offer_desc: step_offer_desc$1,
-  step_offer_title: step_offer_title$1,
-  step_pain_desc: step_pain_desc$1,
-  step_pain_title: step_pain_title$1,
-  step_persona_desc: step_persona_desc$1,
-  step_persona_title: step_persona_title$1,
   sto_hof_1_desc: sto_hof_1_desc$1,
   sto_hof_1_name: sto_hof_1_name$1,
   sto_hof_1_title: sto_hof_1_title$1,
@@ -15812,7 +15816,6 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   time_range: time_range$1,
   timeline_now: timeline_now$1,
   timeline_title: timeline_title$1,
-  title: title$1,
   todoist_alt_desc: todoist_alt_desc$1,
   todoist_alt_og_desc: todoist_alt_og_desc$1,
   todoist_alt_og_title: todoist_alt_og_title$1,
@@ -19090,6 +19093,7 @@ const goal_ai_promo_badge = "Peramalan Kesuksesan";
 const goal_ai_promo_title = "Prediksi Pencapaian Anda";
 const goal_ai_promo_desc = "Neural OS menghitung velositas Anda dan memprediksi kapan tepatnya Anda akan mencapai milestone Anda, memungkinkan Anda menyesuaikan strategi sebelum tenggat waktu mendekat.";
 const goal_ai_promo_btn = "Ramal Progres";
+const goal_untitled_step = "Langkah Tanpa Judul";
 const habit_page_title = "Habit Tracker";
 const habit_mobile_hint = "Geser kartu ke kanan untuk menyelesaikan habit hari ini.";
 const habit_limit = "Batas Habit Aktif";
@@ -19343,8 +19347,8 @@ const job_ph_company = "Ketik nama perusahaan...";
 const job_ph_title = "Cth: Frontend Dev";
 const job_ph_location = "Remote / ID";
 const job_empty_table = 'Data kosong. Klik "+ Tambah Baris" untuk memulai ngetik.';
-const job_status_wishlist = "Wishlist";
-const job_status_applied = "Dilamar";
+const job_status_wishlist = "Dilamar";
+const job_status_applied = "Sedang Ditinjau";
 const job_status_interview = "Interview";
 const job_status_offer = "Dapat Offering";
 const job_status_rejected = "Ditolak";
@@ -19789,42 +19793,42 @@ const neural_coach_msg2 = "Ya, tolong optimalkan jadwal saya.";
 const neural_coach_msg3 = "Selesai! Planner Anda telah diperbarui untuk alur kerja maksimal.";
 const btn_get_intelligence = "Ambil Kecerdasan";
 const btn_upgrade = "Upgrade Sekarang";
-const title = "Onboarding";
-const step_goal_title = "Apa tujuan utama kamu?";
-const step_goal_desc = "Pilih satu fokus yang paling penting untukmu saat ini.";
-const goal_habits = "Bangun Kebiasaan Positif";
-const goal_finance = "Atur Keuangan & Budget";
-const goal_planner = "Produktivitas & Jadwal";
-const goal_journal = "Jurnal & Refleksi Diri";
-const step_pain_title = "Apa hambatan terbesarmu?";
-const step_pain_desc = "Tenang, Neural OS dirancang untuk membantu mengatasi ini.";
-const pain_procrastination = "Suka Menunda-nunda";
-const pain_disorganized = "Kurang Terorganisir";
-const pain_overspending = "Boros / Sulit Menabung";
-const pain_stress = "Stres & Overthinking";
-const step_ambition_title = "Seberapa ambisius kamu?";
-const step_ambition_desc = "Kami akan menyesuaikan intensitas sistem untukmu.";
-const ambition_low = "Santai & Bertahap";
-const ambition_medium = "Seimbang & Konsisten";
-const ambition_high = "Maksimal & Disiplin";
-const step_persona_title = "Siapa kamu saat ini?";
-const step_persona_desc = "Pilih identitas yang paling mendekati profilmu.";
-const persona_student = "Pelajar / Mahasiswa";
-const persona_professional = "Profesional / Pekerja";
-const persona_entrepreneur = "Pengusaha / Freelancer";
-const persona_other = "Lainnya";
-const step_offer_title = "Tingkatkan Pengalamanmu";
-const step_offer_desc = "Neural OS lebih kuat dengan fitur Architect. Pilih paket yang sesuai.";
-const offer_free_title = "Paket Explorer";
-const offer_free_desc = "Dasar-dasar Neural OS untuk memulai perjalananmu.";
-const offer_pro_title = "Paket Architect";
-const offer_pro_desc = "Akses AI, Custom Modules, dan fitur premium tanpa batas.";
-const offer_btn_free = "Lanjut dengan Gratis";
-const offer_btn_pro = "Upgrade ke Architect";
-const btn_next = "Lanjut";
-const btn_prev = "Kembali";
-const btn_finish = "Selesaikan Setup";
-const finish_success = "Setup Berhasil! Selamat datang di Neural OS.";
+const onboarding_title = "Onboarding";
+const onboarding_step_goal_title = "Apa tujuan utama kamu?";
+const onboarding_step_goal_desc = "Pilih satu fokus yang paling penting untukmu saat ini.";
+const onboarding_goal_habits = "Bangun Kebiasaan Positif";
+const onboarding_goal_finance = "Atur Keuangan & Budget";
+const onboarding_goal_planner = "Produktivitas & Jadwal";
+const onboarding_goal_journal = "Jurnal & Refleksi Diri";
+const onboarding_step_pain_title = "Apa hambatan terbesarmu?";
+const onboarding_step_pain_desc = "Tenang, Neural OS dirancang untuk membantu mengatasi ini.";
+const onboarding_pain_procrastination = "Suka Menunda-nunda";
+const onboarding_pain_disorganized = "Kurang Terorganisir";
+const onboarding_pain_overspending = "Boros / Sulit Menabung";
+const onboarding_pain_stress = "Stres & Overthinking";
+const onboarding_step_ambition_title = "Seberapa ambisius kamu?";
+const onboarding_step_ambition_desc = "Kami akan menyesuaikan intensitas sistem untukmu.";
+const onboarding_ambition_low = "Santai & Bertahap";
+const onboarding_ambition_medium = "Seimbang & Konsisten";
+const onboarding_ambition_high = "Maksimal & Disiplin";
+const onboarding_step_persona_title = "Siapa kamu saat ini?";
+const onboarding_step_persona_desc = "Pilih identitas yang paling mendekati profilmu.";
+const onboarding_persona_student = "Pelajar / Mahasiswa";
+const onboarding_persona_professional = "Profesional / Pekerja";
+const onboarding_persona_entrepreneur = "Pengusaha / Freelancer";
+const onboarding_persona_other = "Lainnya";
+const onboarding_step_offer_title = "Tingkatkan Pengalamanmu";
+const onboarding_step_offer_desc = "Neural OS lebih kuat dengan fitur Architect. Pilih paket yang sesuai.";
+const onboarding_offer_free_title = "Paket Explorer";
+const onboarding_offer_free_desc = "Dasar-dasar Neural OS untuk memulai perjalananmu.";
+const onboarding_offer_pro_title = "Paket Architect";
+const onboarding_offer_pro_desc = "Akses AI, Custom Modules, dan fitur premium tanpa batas.";
+const onboarding_offer_btn_free = "Lanjut dengan Gratis";
+const onboarding_offer_btn_pro = "Upgrade ke Architect";
+const onboarding_btn_next = "Lanjut";
+const onboarding_btn_prev = "Kembali";
+const onboarding_btn_finish = "Selesaikan Setup";
+const onboarding_finish_success = "Setup Berhasil! Selamat datang di Neural OS.";
 const task_label = "Tugas";
 const time_range = "Rentang Waktu";
 const planner_title = "Jadwal Harian";
@@ -20507,8 +20511,8 @@ const blog_news_desc = "Dapatkan satu email setiap hari Senin berisi tips produk
 const blog_news_placeholder = "Masukkan alamat email...";
 const blog_news_btn = "Berlangganan";
 const blog_news_note = "Berlangganan gratis. Unsubscribe kapan saja.";
-const blog_hero_title_1 = "Membangun Sistem Produktivitas yang Tahan Banting di Tahun Ini,";
-const blog_hero_title_2 = "Mindset & Growth";
+const blog_hero_title_1 = "Wawasan & Strategi untuk";
+const blog_hero_title_2 = "Produktivitas Puncak";
 const blog_meta_date = "Feb 18, 2026";
 const blog_feat_label = "Artikel Unggulan";
 const blog_feat_desc = "Artikel mendalam yang membahas topik penting untuk membantu Anda bekerja lebih cerdas, bukan lebih keras.";
@@ -24418,6 +24422,7 @@ const id = {
   goal_ai_promo_title,
   goal_ai_promo_desc,
   goal_ai_promo_btn,
+  goal_untitled_step,
   "____ SECTION_5 ____": "=== HABIT TRACKER ===",
   habit_page_title,
   habit_mobile_hint,
@@ -25124,42 +25129,42 @@ const id = {
   neural_coach_msg3,
   btn_get_intelligence,
   btn_upgrade,
-  title,
-  step_goal_title,
-  step_goal_desc,
-  goal_habits,
-  goal_finance,
-  goal_planner,
-  goal_journal,
-  step_pain_title,
-  step_pain_desc,
-  pain_procrastination,
-  pain_disorganized,
-  pain_overspending,
-  pain_stress,
-  step_ambition_title,
-  step_ambition_desc,
-  ambition_low,
-  ambition_medium,
-  ambition_high,
-  step_persona_title,
-  step_persona_desc,
-  persona_student,
-  persona_professional,
-  persona_entrepreneur,
-  persona_other,
-  step_offer_title,
-  step_offer_desc,
-  offer_free_title,
-  offer_free_desc,
-  offer_pro_title,
-  offer_pro_desc,
-  offer_btn_free,
-  offer_btn_pro,
-  btn_next,
-  btn_prev,
-  btn_finish,
-  finish_success,
+  onboarding_title,
+  onboarding_step_goal_title,
+  onboarding_step_goal_desc,
+  onboarding_goal_habits,
+  onboarding_goal_finance,
+  onboarding_goal_planner,
+  onboarding_goal_journal,
+  onboarding_step_pain_title,
+  onboarding_step_pain_desc,
+  onboarding_pain_procrastination,
+  onboarding_pain_disorganized,
+  onboarding_pain_overspending,
+  onboarding_pain_stress,
+  onboarding_step_ambition_title,
+  onboarding_step_ambition_desc,
+  onboarding_ambition_low,
+  onboarding_ambition_medium,
+  onboarding_ambition_high,
+  onboarding_step_persona_title,
+  onboarding_step_persona_desc,
+  onboarding_persona_student,
+  onboarding_persona_professional,
+  onboarding_persona_entrepreneur,
+  onboarding_persona_other,
+  onboarding_step_offer_title,
+  onboarding_step_offer_desc,
+  onboarding_offer_free_title,
+  onboarding_offer_free_desc,
+  onboarding_offer_pro_title,
+  onboarding_offer_pro_desc,
+  onboarding_offer_btn_free,
+  onboarding_offer_btn_pro,
+  onboarding_btn_next,
+  onboarding_btn_prev,
+  onboarding_btn_finish,
+  onboarding_finish_success,
   task_label,
   time_range,
   "____ SECTION_6 ____": "=== DAILY PLANNER ===",
@@ -26839,9 +26844,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   add_category,
   add_source,
   adjust_photo_title,
-  ambition_high,
-  ambition_low,
-  ambition_medium,
   amount,
   amount_placeholder,
   applenotes_adv_badge,
@@ -27258,14 +27260,11 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   btn_create,
   btn_delete,
   btn_edit,
-  btn_finish,
   btn_get_intelligence,
   btn_goal_error,
   btn_journal,
   btn_log_expense,
-  btn_next,
   btn_ok,
-  btn_prev,
   btn_processing,
   btn_reset,
   btn_reset_tooltip,
@@ -28328,7 +28327,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   finapp_table_row_4_col_1,
   finapp_table_row_4_col_2,
   finapp_table_row_4_title,
-  finish_success,
   five_badge,
   five_compare_desc,
   five_compare_title,
@@ -28575,8 +28573,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_faq_q2,
   goal_faq_q3,
   goal_faq_title,
-  goal_finance,
-  goal_habits,
   goal_hero_badge,
   goal_hero_cta_1,
   goal_hero_cta_2,
@@ -28586,7 +28582,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_id_label,
   goal_impl_speed_desc,
   goal_impl_speed_title,
-  goal_journal,
   goal_label_category,
   goal_label_end,
   goal_label_priority,
@@ -28638,7 +28633,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_ph_title,
   goal_placeholder_reward,
   goal_placeholder_title,
-  goal_planner,
   goal_progress,
   goal_quote_author,
   goal_quote_text,
@@ -28694,6 +28688,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   goal_type_specific_days,
   goal_type_weekly,
   goal_type_yearly,
+  goal_untitled_step,
   goal_upload_error,
   greet_afternoon,
   greet_evening,
@@ -30139,13 +30134,43 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   obsidian_table_row_3_col_1,
   obsidian_table_row_3_col_2,
   obsidian_table_row_3_title,
-  offer_btn_free,
-  offer_btn_pro,
-  offer_free_desc,
-  offer_free_title,
-  offer_pro_desc,
-  offer_pro_title,
   old_data_hint,
+  onboarding_ambition_high,
+  onboarding_ambition_low,
+  onboarding_ambition_medium,
+  onboarding_btn_finish,
+  onboarding_btn_next,
+  onboarding_btn_prev,
+  onboarding_finish_success,
+  onboarding_goal_finance,
+  onboarding_goal_habits,
+  onboarding_goal_journal,
+  onboarding_goal_planner,
+  onboarding_offer_btn_free,
+  onboarding_offer_btn_pro,
+  onboarding_offer_free_desc,
+  onboarding_offer_free_title,
+  onboarding_offer_pro_desc,
+  onboarding_offer_pro_title,
+  onboarding_pain_disorganized,
+  onboarding_pain_overspending,
+  onboarding_pain_procrastination,
+  onboarding_pain_stress,
+  onboarding_persona_entrepreneur,
+  onboarding_persona_other,
+  onboarding_persona_professional,
+  onboarding_persona_student,
+  onboarding_step_ambition_desc,
+  onboarding_step_ambition_title,
+  onboarding_step_goal_desc,
+  onboarding_step_goal_title,
+  onboarding_step_offer_desc,
+  onboarding_step_offer_title,
+  onboarding_step_pain_desc,
+  onboarding_step_pain_title,
+  onboarding_step_persona_desc,
+  onboarding_step_persona_title,
+  onboarding_title,
   onenote_badge,
   onenote_cost_desc,
   onenote_cost_point_1,
@@ -30200,10 +30225,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   onenote_sol_visual_3,
   onenote_sol_visual_4,
   out,
-  pain_disorganized,
-  pain_overspending,
-  pain_procrastination,
-  pain_stress,
   pan_instruction,
   password_security_desc,
   password_security_title,
@@ -30221,10 +30242,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   payment_success_title,
   payment_welcome_msg,
   per_day,
-  persona_entrepreneur,
-  persona_other,
-  persona_professional,
-  persona_student,
   ph_event_desc,
   ph_event_title,
   photo_adjust_instruction,
@@ -31546,16 +31563,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   status_image_saved,
   status_saved,
   status_saving,
-  step_ambition_desc,
-  step_ambition_title,
-  step_goal_desc,
-  step_goal_title,
-  step_offer_desc,
-  step_offer_title,
-  step_pain_desc,
-  step_pain_title,
-  step_persona_desc,
-  step_persona_title,
   sto_hof_1_desc,
   sto_hof_1_name,
   sto_hof_1_title,
@@ -31852,7 +31859,6 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   time_range,
   timeline_now,
   timeline_title,
-  title,
   todoist_alt_desc,
   todoist_alt_og_desc,
   todoist_alt_og_title,
@@ -32881,8 +32887,8 @@ createServer(
   (page) => createInertiaApp({
     page,
     render: renderToString,
-    title: (title2) => `${title2} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-cKphsFFD.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-COgm8QOT.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B_hEE8-C.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BUoRUkkL.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-D2r882Jv.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CX8DD-uG.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DQcVaHIQ.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BpeZfahG.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-D8av7Vle.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-Dg8YVJla.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BxkdVNkl.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-Cm2r5UN5.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-CSdXLUqt.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-ClfwrN8e.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-Hbfmw05c.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-DIk8KKJ3.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Dit650HQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cfcc7wGh.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-D2QUj28J.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Cicxj_6R.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-Ck8I02wh.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-8Dz1QXjN.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-BGyjAzE6.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-CTemGUXL.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BFxVv4Hw.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-BBz-9D1d.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-6qWQ2t59.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-D0cNsZ9Y.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-gtmrbCo2.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CzhQrm4m.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-DWP2ptYu.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-DPESpxxj.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-CNqRZwiN.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Bf1UBZri.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-Cy1AFwJV.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-BSvY8qzJ.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-Dm7bl6hb.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-CHEsVbqm.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-B1HyFzu6.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-DCj9xN7Z.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-6SqWtZ0O.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-cKphsFFD.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-COgm8QOT.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B_hEE8-C.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BUoRUkkL.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BlAJ9_oF.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CX8DD-uG.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DQcVaHIQ.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BpeZfahG.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-BlKHjbg0.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n2) => n2.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-Dg8YVJla.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-B044lnSm.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C9dXI0dE.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-B_EqONj9.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-ClfwrN8e.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-Hbfmw05c.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BlG5p8N-.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Dit650HQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cfcc7wGh.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-D2QUj28J.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Cicxj_6R.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-pGpp5Dn8.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-8Dz1QXjN.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-BGyjAzE6.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-CTemGUXL.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BFxVv4Hw.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-BBz-9D1d.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-6qWQ2t59.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-D0cNsZ9Y.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-gtmrbCo2.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CzhQrm4m.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-BNbfQGzE.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-BgYixRPO.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-CDMvuQ3m.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Bf1UBZri.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-D9mJF9dz.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-BSvY8qzJ.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-Dg4YXrhs.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-DcEnggri.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-B1HyFzu6.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-DCj9xN7Z.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-6SqWtZ0O.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

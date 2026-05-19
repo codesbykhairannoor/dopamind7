@@ -140,7 +140,7 @@
  </div>
 
  {{-- Floating Writing Indicator --}}
- <div class="absolute right-8 bottom-8 flex items-center gap-2 text-indigo-500 text-sm font-bold bg-indigo-50 px-4 py-2 rounded-full animate-bounce duration-[2000ms]">
+ <div class="absolute right-8 bottom-8 flex items-center gap-2 text-indigo-500 text-sm font-bold bg-indigo-50 px-4 py-2 rounded-full animate-bounce [animation-duration:2000ms]">
  <span class="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
  {{ __('journal_mockup_typing') }}
  </div>

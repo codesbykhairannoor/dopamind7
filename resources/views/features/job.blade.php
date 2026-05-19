@@ -163,7 +163,7 @@
  </div>
 
  {{-- Floating Element --}}
- <div class="absolute -right-8 -bottom-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce duration-[3000ms]">
+ <div class="absolute -right-8 -bottom-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce [animation-duration:3000ms]">
  <div class="h-6 w-24 bg-indigo-600/20 rounded-lg flex items-center justify-center gap-2">
  <div class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
  <div class="h-1.5 w-12 bg-indigo-300 rounded-full"></div>

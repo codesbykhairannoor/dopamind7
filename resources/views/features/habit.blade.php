@@ -155,7 +155,7 @@
  </div>
 
  {{-- Floating Element (Level Up Badge) --}}
- <div class="absolute -right-8 -bottom-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce duration-[3000ms]">
+ <div class="absolute -right-8 -bottom-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 z-20 animate-bounce [animation-duration:3000ms]">
  <div class="flex items-center gap-3">
  <div class="text-3xl font-black">🏆</div>
  <div class="text-left">
@@ -411,8 +411,8 @@
  </div>
  </div>
  {{-- Floating Atoms --}}
- <div class="absolute -top-6 -left-12 w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 animate-bounce duration-[3000ms]"></div>
- <div class="absolute -bottom-8 -right-10 w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 animate-bounce duration-[4000ms]"></div>
+ <div class="absolute -top-6 -left-12 w-8 h-8 rounded-full bg-purple-500/20 border border-purple-500/30 animate-bounce [animation-duration:3000ms]"></div>
+ <div class="absolute -bottom-8 -right-10 w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/30 animate-bounce [animation-duration:4000ms]"></div>
  </div>
 
  <div class="max-w-4xl w-full bg-white border-l-8 border-indigo-500 shadow-[20px_20px_60px_#bebebe,-20px_-20px_60px_#ffffff] p-12 md:p-20 rounded-r-[3rem] relative overflow-hidden">
