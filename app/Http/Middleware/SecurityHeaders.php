@@ -31,10 +31,18 @@ class SecurityHeaders
         $paypalUrls = "https://www.paypal.com https://*.paypal.com https://*.sandbox.paypal.com";
         $assetUrl = config('app.asset_url') ? config('app.asset_url') : "";
         $appUrl = config('app.url') ? config('app.url') : "";
-        $externalSources = "$assetUrl $appUrl";
+        
+        $host = $request->getHost();
+        $allowedDomains = array_filter([$assetUrl, $appUrl]);
+        
+        if (str_contains($host, 'oneformind.com')) {
+            $allowedDomains[] = "https://oneformind.com";
+            $allowedDomains[] = "https://www.oneformind.com";
+        }
+        
+        $externalSources = implode(' ', array_unique($allowedDomains));
 
         // 2. Deteksi Environment yang akurat
-        $host = $request->getHost();
         $isLocal = app()->isLocal() ||
             config('app.debug') === true ||
             in_array($host, ['127.0.0.1', 'localhost']);
