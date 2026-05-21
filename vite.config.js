@@ -6,9 +6,6 @@ import fs from "fs";
 import path from "path";
 import viteCompression from "vite-plugin-compression";
 
-// Force relative paths by unsetting ASSET_URL in process.env during Vite build
-delete process.env.ASSET_URL;
-
 // ==========================================================
 // 🔥 MESIN AUTO-MERGE JSON TRANSLATIONS 🔥
 // ==========================================================
@@ -94,7 +91,8 @@ function mergeTranslations() {
 // ==========================================================
 // 🚀 KONFIGURASI UTAMA VITE 🚀
 // ==========================================================
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+    base: command === "build" ? "/build/" : "",
     server: {
         host: "127.0.0.1",
         port: 5173,
@@ -202,4 +200,4 @@ export default defineConfig({
             },
         },
     },
-});
+}));

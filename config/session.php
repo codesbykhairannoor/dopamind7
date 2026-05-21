@@ -59,7 +59,7 @@ return [
     |
     */
 
-    'files' => storage_path('framework/sessions'),
+    'files' => env('SESSION_PATH', (env('VERCEL') || (env('APP_ENV') === 'production' && !is_writable(storage_path('framework/sessions')))) ? '/tmp/sessions' : storage_path('framework/sessions')),
 
     /*
     |--------------------------------------------------------------------------

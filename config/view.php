@@ -30,7 +30,7 @@ return [
 
     'compiled' => env(
         'VIEW_COMPILED_PATH',
-        realpath(storage_path('framework/views'))
+        (env('VERCEL') || (env('APP_ENV') === 'production' && !is_writable(storage_path('framework/views')))) ? '/tmp/views' : realpath(storage_path('framework/views'))
     ),
 
 ];
