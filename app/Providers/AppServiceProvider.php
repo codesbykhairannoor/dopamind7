@@ -17,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('local') && class_exists(\App\Providers\TelescopeServiceProvider::class)) {
             $this->app->register(\App\Providers\TelescopeServiceProvider::class);
         }
+
+        // Register custom Postgres connection resolver to handle boolean bindings
+        \Illuminate\Database\Connection::resolverFor('pgsql', function ($connection, $database, $prefix, $config) {
+            return new \App\Database\PostgresConnection($connection, $database, $prefix, $config);
+        });
     }
 
     /**
