@@ -24,6 +24,48 @@ use Inertia\Inertia;
 use App\Models\Waitlist;
 use Illuminate\Http\Request;
 
+Route::get("/debug-env-7a91", function () {
+    $results = [];
+    
+    $results['tmp_writable'] = is_writable('/tmp');
+    $results['tmp_views_writable'] = is_writable('/tmp/views') || (!file_exists('/tmp/views') && is_writable('/tmp'));
+    
+    try {
+        \Illuminate\Support\Facades\DB::connection()->getPdo();
+        $results['db_connection'] = 'SUCCESS';
+    } catch (\Throwable $e) {
+        $results['db_connection'] = 'FAILED: ' . $e->getMessage();
+    }
+    
+    try {
+        \Illuminate\Support\Facades\Cache::store()->put('debug_test', 'works', 10);
+        $results['cache_write'] = \Illuminate\Support\Facades\Cache::store()->get('debug_test') === 'works' ? 'SUCCESS' : 'FAILED_READ';
+    } catch (\Throwable $e) {
+        $results['cache_write'] = 'FAILED: ' . $e->getMessage();
+    }
+    
+    $results['session_driver'] = config('session.driver');
+    $results['session_path'] = config('session.files');
+    
+    $results['app_env'] = config('app.env');
+    $results['app_debug'] = config('app.debug');
+    $results['app_url'] = config('app.url');
+    $results['session_secure'] = config('session.secure');
+    
+    $results['redis_client'] = config('database.redis.client');
+    $results['redis_host'] = config('database.redis.default.host');
+    $results['redis_port'] = config('database.redis.default.port');
+    
+    $results['extensions'] = [
+        'redis' => extension_loaded('redis'),
+        'predis' => class_exists(\Predis\Client::class),
+        'pdo_pgsql' => extension_loaded('pdo_pgsql'),
+        'openssl' => extension_loaded('openssl'),
+    ];
+    
+    return response()->json($results);
+});
+
 // --- UTILITY: SWITCH LANGUAGE ---
 Route::get("/lang/{locale}", function (Request $request, $locale) {
     if (in_array($locale, ["id", "en"])) {
