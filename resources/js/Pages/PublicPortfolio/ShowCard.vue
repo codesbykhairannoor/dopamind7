@@ -66,7 +66,17 @@ const pdfStreamUrl = computed(() => {
 // Radar Chart Config
 const chartData = computed(() => {
     const competencies = props.competency?.competencies || {};
-    const labels = Object.keys(competencies);
+    // Split long labels to prevent shrinking the chart
+    const labels = Object.keys(competencies).map(label => {
+        if (label.length > 18) {
+            const words = label.split(' ');
+            if (words.length > 1) {
+                const mid = Math.ceil(words.length / 2);
+                return [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+            }
+        }
+        return label;
+    });
     const data = Object.values(competencies);
 
     if (labels.length === 0) {
@@ -175,6 +185,11 @@ const showMaterials = computed(() => {
     <Head :title="`${props.material.course_name} - Coursework Audit`" />
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-500 relative overflow-hidden font-sans">
+        <!-- Theme Toggle -->
+        <div class="absolute top-6 right-6 z-50">
+            <ThemeToggle />
+        </div>
+
         <!-- Floating Glow effects for premium aesthetic -->
         <div class="absolute top-[-10%] left-[-5%] w-[800px] h-[800px] bg-indigo-500/10 dark:bg-indigo-500/5 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
         <div class="absolute bottom-[-15%] right-[-5%] w-[700px] h-[700px] bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-3xl -z-10"></div>
@@ -264,7 +279,7 @@ const showMaterials = computed(() => {
                             <BarChart3 class="h-5 w-5 text-indigo-500" />
                             {{ $t('portfolio_verified_competencies', 'Verified Competencies Radar') }}
                         </h3>
-                        <div class="h-[300px] w-full relative flex items-center justify-center">
+                        <div class="h-[360px] w-full relative flex items-center justify-center">
                             <Radar :data="chartData" :options="chartOptions" />
                         </div>
                     </div>
