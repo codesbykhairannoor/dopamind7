@@ -32,12 +32,18 @@ class StudyController extends Controller
     public function academicSetup(Request $request)
     {
         $request->validate([
-            'education_level' => 'required|string|in:kuliah,sma,smp,sd,lainnya'
+            'education_level' => 'required|string|in:kuliah,sma,smp,sd,lainnya',
+            'major' => 'nullable|string|max:255',
+            'student_id' => 'nullable|string|max:255',
+            'current_semester' => 'nullable|integer|min:1|max:20'
         ]);
 
         $user = Auth::user();
         $settings = $user->settings ?? [];
         $settings['education_level'] = $request->education_level;
+        $settings['major'] = $request->major;
+        $settings['student_id'] = $request->student_id;
+        $settings['current_semester'] = $request->current_semester;
         $user->settings = $settings;
         $user->save();
 
@@ -105,6 +111,7 @@ class StudyController extends Controller
             'user' => [
                 'name' => $user->name,
                 'username' => $user->username,
+                'settings' => $user->settings,
             ],
         ]);
     }
