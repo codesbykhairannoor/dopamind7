@@ -576,6 +576,7 @@ const getTypeColor = (type) => {
                         </button>
                     </form>
                 </div>
+            </div>
             </Teleport>
         </template>
     </div>
