@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import { Link } from "@inertiajs/vue3";
 import OneForMindIcon from "@/Components/OneForMindIcon.vue";
 import { useGating } from "@/Composables/useGating";
@@ -145,7 +145,7 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[12px] font-semibold tracking-tight truncate"
+                        class="text-[13px] font-semibold tracking-tight truncate"
                         >{{ $t("nav_item_dashboard") }}</span
                     >
                     <div
@@ -181,7 +181,7 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[12px] font-semibold tracking-tight truncate"
+                        class="text-[13px] font-semibold tracking-tight truncate"
                         >{{ $t("nav_item_habit") }}</span
                     >
                     <div
@@ -217,7 +217,7 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[12px] font-semibold tracking-tight truncate"
+                        class="text-[13px] font-semibold tracking-tight truncate"
                         >{{ $t("nav_item_planner") }}</span
                     >
                     <div
@@ -253,7 +253,7 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[12px] font-semibold tracking-tight truncate"
+                        class="text-[13px] font-semibold tracking-tight truncate"
                         >{{ $t("nav_item_finance") }}</span
                     >
                     <div
@@ -374,7 +374,7 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[12px] font-semibold tracking-tight truncate flex-1"
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
                         >{{ $t("nav_item_journal") }}</span
                     >
                     <div
@@ -416,7 +416,7 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[12px] font-semibold tracking-tight truncate flex-1"
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
                         >{{ $t("nav_item_calendar") }}</span
                     >
                     <div
@@ -458,7 +458,7 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[12px] font-semibold tracking-tight truncate flex-1"
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
                         >{{ $t("nav_item_jobs") }}</span
                     >
                     <div
@@ -500,7 +500,7 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[12px] font-semibold tracking-tight truncate flex-1"
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
                         >{{ $t("nav_item_goals") }}</span
                     >
                     <div
@@ -542,7 +542,7 @@ const goCoach = () => {
                     </div>
                     <span
                         v-if="showLabels"
-                        class="text-[12px] font-semibold tracking-tight truncate flex-1"
+                        class="text-[13px] font-semibold tracking-tight truncate flex-1"
                         >{{ $t("nav_item_study", "Study Console") }}</span
                     >
                     <div
@@ -593,7 +593,7 @@ const goCoach = () => {
                 </div>
                 <span
                     v-if="showLabels"
-                    class="text-[12px] font-semibold tracking-tight truncate flex-1"
+                    class="text-[13px] font-semibold tracking-tight truncate flex-1"
                     >{{ $t("nav_item_coach", "AI Coach") }}</span
                 >
                 <span
@@ -631,3 +631,4 @@ const goCoach = () => {
     @apply flex items-center justify-center transition-colors;
 }
 </style>
+
