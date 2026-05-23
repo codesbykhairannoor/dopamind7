@@ -661,13 +661,16 @@
   "resources/js/Pages/Settings/Security.vue": [
     "/build/assets/Security-BcrnOERx.js"
   ],
-  "resources/js/Pages/Study/Index.vue": [
-    "/build/assets/Index-CTL3TZku.js",
-    "/build/assets/Index-BqD0ib9Z.css"
+  "resources/js/Pages/Study/AcademicProgress.vue": [
+    "/build/assets/AcademicProgress-CUBxkAOL.js"
   ],
-  "resources/js/Pages/Study/Index.vue?vue&type=style&index=0&scoped=26b56f59&lang.css": [
-    "/build/assets/Index-CTL3TZku.js",
-    "/build/assets/Index-BqD0ib9Z.css"
+  "resources/js/Pages/Study/Index.vue": [
+    "/build/assets/Index-Dvegq1KK.js",
+    "/build/assets/Index-DIertGNa.css"
+  ],
+  "resources/js/Pages/Study/Index.vue?vue&type=style&index=0&scoped=a8a276fe&lang.css": [
+    "/build/assets/Index-Dvegq1KK.js",
+    "/build/assets/Index-DIertGNa.css"
   ],
   "resources/js/Pages/Study/StudyArchetypeMatches.vue": [
     "/build/assets/StudyArchetypeMatches-ZGZjv5Mp.js"
@@ -676,18 +679,18 @@
     "/build/assets/StudyCompetencyRadar-UWRWRHej.js"
   ],
   "resources/js/Pages/Study/StudyMaterialList.vue": [
-    "/build/assets/StudyMaterialList-4czFiXUv.js",
-    "/build/assets/StudyMaterialList-DtXnn7qW.css"
+    "/build/assets/StudyMaterialList-CDuafH50.js",
+    "/build/assets/StudyMaterialList-DoTVWATI.css"
   ],
-  "resources/js/Pages/Study/StudyMaterialList.vue?vue&type=style&index=0&scoped=778eb631&lang.css": [
-    "/build/assets/StudyMaterialList-4czFiXUv.js",
-    "/build/assets/StudyMaterialList-DtXnn7qW.css"
+  "resources/js/Pages/Study/StudyMaterialList.vue?vue&type=style&index=0&scoped=aa80fa5d&lang.css": [
+    "/build/assets/StudyMaterialList-CDuafH50.js",
+    "/build/assets/StudyMaterialList-DoTVWATI.css"
   ],
   "resources/js/Pages/Study/StudySettingsForm.vue": [
     "/build/assets/StudySettingsForm-D_EPWYLM.js"
   ],
   "resources/js/Pages/Study/StudyUploadForm.vue": [
-    "/build/assets/StudyUploadForm-DTMJwGtg.js"
+    "/build/assets/StudyUploadForm-DmzB7TG7.js"
   ],
   "resources/js/Pages/Welcome.vue": [
     "/build/assets/Welcome-_9G7Vit5.js"

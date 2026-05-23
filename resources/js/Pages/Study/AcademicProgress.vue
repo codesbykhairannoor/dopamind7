@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { useForm, router } from '@inertiajs/vue3';
-import { Trash2, BookOpen, Clock, Activity, PlusCircle } from 'lucide-vue-next';
+import { Trash2, BookOpen, Activity, PlusCircle, FileText, ExternalLink } from 'lucide-vue-next';
 
 const props = defineProps({
     academicRecords: { type: Array, default: () => [] },
@@ -12,7 +12,9 @@ const form = useForm({
     course_name: '',
     semester: '',
     sks: '',
-    grade: ''
+    grade: '',
+    file: null,
+    link_url: ''
 });
 
 const submit = () => {
@@ -103,6 +105,18 @@ const deleteRecord = (id) => {
                                 class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                         </div>
 
+                        <div>
+                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Upload Arsip (Opsional, PDF max 5MB)</label>
+                            <input @input="form.file = $event.target.files[0]" type="file" accept=".pdf"
+                                class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Link Eksternal (Opsional, Drive/Notion)</label>
+                            <input v-model="form.link_url" type="url" placeholder="https://..."
+                                class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+                        </div>
+
                         <button type="submit" :disabled="form.processing"
                             class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl transition-colors disabled:opacity-50 mt-2">
                             Simpan Nilai
@@ -147,9 +161,21 @@ const deleteRecord = (id) => {
                                         </div>
                                     </div>
                                     
-                                    <button @click="deleteRecord(record.id)" class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors">
-                                        <Trash2 class="h-4 w-4" />
-                                    </button>
+                                    <div class="flex items-center gap-2">
+                                        <a v-if="record.file_path" :href="'/storage/' + record.file_path" target="_blank"
+                                           class="p-2 text-slate-400 hover:text-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 rounded-lg transition-colors"
+                                           title="Lihat PDF">
+                                            <FileText class="h-4 w-4" />
+                                        </a>
+                                        <a v-if="record.link_url" :href="record.link_url" target="_blank"
+                                           class="p-2 text-slate-400 hover:text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors"
+                                           title="Buka Link">
+                                            <ExternalLink class="h-4 w-4" />
+                                        </a>
+                                        <button @click="deleteRecord(record.id)" class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Hapus Data">
+                                            <Trash2 class="h-4 w-4" />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -91,6 +91,52 @@ class StudyController extends Controller
         ]);
     }
 
+    public function storeAcademicRecord(Request $request)
+    {
+        $request->validate([
+            'course_name' => 'required|string|max:255',
+            'semester' => 'required|integer|min:1|max:14',
+            'sks' => 'required|integer|min:1|max:10',
+            'grade' => 'required|numeric|min:0|max:100',
+            'file' => 'nullable|file|mimes:pdf|max:5120',
+            'link_url' => 'nullable|url|max:2083',
+        ]);
+
+        $fileName = null;
+        $filePath = null;
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $fileName = $file->getClientOriginalName();
+            $filePath = $file->store('academic_archives', 'public');
+        }
+
+        \App\Models\AcademicRecord::create([
+            'user_id' => Auth::id(),
+            'course_name' => $request->course_name,
+            'semester' => $request->semester,
+            'sks' => $request->sks,
+            'grade' => $request->grade,
+            'file_name' => $fileName,
+            'file_path' => $filePath,
+            'link_url' => $request->link_url,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function destroyAcademicRecord($id)
+    {
+        $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($id);
+        
+        if ($record->file_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($record->file_path)) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($record->file_path);
+        }
+
+        $record->delete();
+        return redirect()->back();
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -182,6 +228,17 @@ class StudyController extends Controller
 
     public function destroy($id)
     {
+        $user = Auth::user();
+        $material = StudyMaterial::where('user_id', $user->id)->findOrFail($id);
+
+        // Delete modern files
+        $contextData = $material->context_data ?? [];
+        if (is_string($contextData)) {
+            $contextData = json_decode($contextData, true) ?? [];
+        }
+        
+        $artifactData = $material->artifact_data ?? [];
+        if (is_string($artifactData)) {
             $artifactData = json_decode($artifactData, true) ?? [];
         }
         

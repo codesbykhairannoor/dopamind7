@@ -14,6 +14,9 @@ class AcademicRecord extends Model
         'course_name',
         'semester',
         'sks',
-        'grade'
+        'grade',
+        'file_name',
+        'file_path',
+        'link_url',
     ];
 }
