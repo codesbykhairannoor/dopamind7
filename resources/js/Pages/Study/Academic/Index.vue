@@ -63,6 +63,9 @@ const submitSetup = () => {
     if (!setupForm.education_level) {
         return fireToast('error', 'Pilih jenjang pendidikan terlebih dahulu!');
     }
+    if (!setupForm.current_semester) {
+        return fireToast('error', 'Semester tidak boleh kosong!');
+    }
     localEduLevel.value = setupForm.education_level;
     setupForm.post(route('study.academic.setup'), { 
         preserveScroll: true, 
@@ -126,9 +129,7 @@ const submitCourse = () => {
     if (!form.sks || form.sks < 1) {
         return fireToast('error', `Harap isi ${terms.value.sks} dengan benar!`);
     }
-    if (!form.grade || form.grade < 0) {
-        return fireToast('error', `Harap isi target ${terms.value.grade} dengan benar!`);
-    }
+    
     form.post(route('study.academic.store'), {
         preserveScroll: true,
         onSuccess: () => {
@@ -236,9 +237,9 @@ const getTypeColor = (type) => {
                 <div class="py-24 text-center bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800 shadow-sm dark:shadow-none transition-all duration-500 max-w-4xl mx-auto mb-12">
                     <div class="flex flex-col items-center gap-5">
                         <span class="text-6xl animate-bounce mb-2">🎓</span>
-                        <h4 class="text-2xl font-black text-slate-800 dark:text-slate-100 transition-colors duration-500">Profil Studi Belum Diatur</h4>
+                        <h4 class="text-2xl font-black text-slate-800 dark:text-slate-100 transition-colors duration-500">{{ $t('study_profile_not_set', 'Profil Studi Belum Diatur') }}</h4>
                         <p class="text-sm font-bold text-slate-400 dark:text-slate-500 px-8 max-w-lg mx-auto transition-colors duration-500 leading-relaxed">
-                            Mulai organisasikan seluruh modul, tugas, dan target nilai Anda secara cerdas. Mari sesuaikan sistem ini dengan profil akademis Anda sekarang!
+                            {{ $t('study_profile_not_set_desc', 'Mulai organisasikan seluruh modul, tugas, dan target nilai Anda secara cerdas. Mari sesuaikan sistem ini dengan profil akademis Anda sekarang!') }}
                         </p>
                         <button @click="openSetup" class="mt-4 bg-indigo-600 text-white font-black py-3.5 px-8 rounded-2xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 active:scale-95 transition-all outline-none flex items-center gap-2">
                             Mulai Setup <ChevronRight class="h-5 w-5" />
@@ -408,7 +409,45 @@ const getTypeColor = (type) => {
                 </div>
             </div>
 
-            <!-- MODAL TAMBAH MATKUL -->
+            
+        <!-- MODAL EDIT COURSE -->
+        <Teleport to="body">
+            <div v-if="isEditCourseModalOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" @click="isEditCourseModalOpen = false"></div>
+                <div class="bg-white dark:bg-slate-900 rounded-[2rem] w-full max-w-lg shadow-2xl relative z-10 p-8 border border-slate-100 dark:border-slate-800 transform transition-all">
+                    
+                    <button @click="isEditCourseModalOpen = false" class="absolute top-6 right-6 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+                        <X class="h-5 w-5" />
+                    </button>
+
+                    <h3 class="text-2xl font-black text-slate-800 dark:text-white mb-6">Edit {{ terms.course }}</h3>
+
+                    <form @submit.prevent="submitEditCourse" class="space-y-5">
+                        <div>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Nama {{ terms.course }} *</label>
+                            <input v-model="editCourseForm.course_name" type="text" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Bobot {{ terms.sks }} *</label>
+                                <input v-model="editCourseForm.sks" type="number" min="1" max="10" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Target {{ terms.grade }} (Opsional)</label>
+                                <input v-model="editCourseForm.grade" type="number" min="0" max="100" placeholder="Misal: 85" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            </div>
+                        </div>
+
+                        <button type="submit" :disabled="editCourseForm.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-4">
+                            Simpan Perubahan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </Teleport>
+
+        <!-- MODAL TAMBAH MATKUL -->
             <Teleport to="body">
             <div v-if="isAddCourseModalOpen" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
                 <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative">

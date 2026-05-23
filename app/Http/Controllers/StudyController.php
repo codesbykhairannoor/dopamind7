@@ -140,7 +140,7 @@ class StudyController extends Controller
             'course_name' => 'required|string|max:255',
             'semester' => 'required|integer|min:1|max:14',
             'sks' => 'required|integer|min:1|max:10',
-            'grade' => 'required|numeric|min:0|max:100',
+            'grade' => 'nullable|numeric|min:0|max:100',
         ]);
 
         \App\Models\AcademicRecord::create([
@@ -150,6 +150,36 @@ class StudyController extends Controller
             'sks' => $request->sks,
             'grade' => $request->grade,
         ]);
+
+        return redirect()->back();
+    }
+
+    
+    public function updateAcademicRecord(Request $request, $id)
+    {
+        $request->validate([
+            'course_name' => 'required|string|max:255',
+            'semester' => 'required|integer|min:1|max:100',
+            'sks' => 'required|integer|min:1|max:10',
+            'grade' => 'nullable|numeric|min:0|max:100',
+        ]);
+
+        $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($id);
+        $record->update([
+            'course_name' => $request->course_name,
+            'semester' => $request->semester,
+            'sks' => $request->sks,
+            'grade' => $request->grade,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function destroySemester($semester)
+    {
+        \App\Models\AcademicRecord::where('user_id', Auth::id())
+            ->where('semester', $semester)
+            ->delete();
 
         return redirect()->back();
     }
