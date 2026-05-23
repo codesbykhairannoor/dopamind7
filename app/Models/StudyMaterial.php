@@ -15,8 +15,6 @@ class StudyMaterial extends Model
         'type',
         'course_name',
         'week',
-        'semester',
-        'sks',
         'file_name',
         'file_path',
         'grade',

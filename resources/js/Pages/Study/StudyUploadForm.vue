@@ -18,8 +18,7 @@ const slotsLeft = computed(() => Math.max(0, 6 - props.materials.length));
 // ─── Shared Meta (Global for both panels) ─────────────────────────────────────
 const sharedMeta = reactive({
     course_name: '',
-    semester: '',
-    sks: '',
+    week: '',
     grade: '',
     show_radar: props.settings?.show_radar ?? true,
     show_archetypes: props.settings?.show_archetypes ?? true,
@@ -135,8 +134,7 @@ const submitAll = () => {
     // Use pure FormData to ensure arrays of files are handled properly
     const formData = new FormData();
     formData.append('course_name', sharedMeta.course_name);
-    if (sharedMeta.semester) formData.append('semester', sharedMeta.semester);
-    if (sharedMeta.sks) formData.append('sks', sharedMeta.sks);
+    if (sharedMeta.week) formData.append('week', sharedMeta.week);
     if (sharedMeta.grade) formData.append('grade', sharedMeta.grade);
 
     if (contextPanel.embed_url) formData.append('context_link', contextPanel.embed_url);
@@ -168,8 +166,7 @@ const submitAll = () => {
             artifactPanel.embed_url = '';
             artifactPanel.rich_text = '';
             sharedMeta.course_name = '';
-            sharedMeta.semester = '';
-            sharedMeta.sks = '';
+            sharedMeta.week = '';
             sharedMeta.grade = '';
             isSubmittingAll.value = false;
         },
@@ -228,24 +225,17 @@ const globalHasPending = computed(() => {
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
             <!-- Course Name -->
-            <div class="md:col-span-5">
+            <div class="md:col-span-6">
                 <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_course_name', 'Course Name') }} *</label>
                 <input v-model="sharedMeta.course_name" type="text"
                     placeholder="e.g. Algoritma Pemrograman, Machine Learning"
                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
             </div>
             
-            <!-- Semester -->
-            <div class="md:col-span-2">
-                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Semester *</label>
-                <input v-model="sharedMeta.semester" type="number" min="1" max="14" placeholder="1-14"
-                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
-            </div>
-
-            <!-- SKS -->
-            <div class="md:col-span-2">
-                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">SKS *</label>
-                <input v-model="sharedMeta.sks" type="number" min="1" max="10" placeholder="e.g. 3"
+            <!-- Week -->
+            <div class="md:col-span-3">
+                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_week', 'Week / Period') }}</label>
+                <input v-model="sharedMeta.week" type="text" placeholder="e.g. Week 4"
                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
             </div>
 

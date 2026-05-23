@@ -22,66 +22,66 @@ class StudyController extends Controller
     {
         $user = Auth::user();
         $materials = StudyMaterial::where('user_id', $user->id)
-            ->orderBy('semester', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
 
         $competency = StudyCompetency::where('user_id', $user->id)->first();
 
-        // Calculate IPK and Group by Semester
+        // Calculate IPK and Group by Semester for Academic Records
+        $academicRecords = \App\Models\AcademicRecord::where('user_id', $user->id)
+            ->orderBy('semester', 'desc')
+            ->get();
+
         $totalSks = 0;
         $totalPoints = 0;
-        $materialsBySemester = [];
+        $semesters = [];
 
-        foreach ($materials as $m) {
-            $sem = $m->semester ?: 1;
-            if (!isset($materialsBySemester[$sem])) {
-                $materialsBySemester[$sem] = [
+        foreach ($academicRecords as $record) {
+            $sem = $record->semester ?: 1;
+            if (!isset($semesters[$sem])) {
+                $semesters[$sem] = [
                     'semester' => $sem,
                     'total_sks' => 0,
                     'total_points' => 0,
                     'ips' => 0,
-                    'materials' => []
                 ];
             }
 
-            $materialsBySemester[$sem]['materials'][] = $m;
-
-            if ($m->grade !== null && $m->sks > 0) {
-                $sks = $m->sks;
+            if ($record->grade !== null && $record->sks > 0) {
+                $sks = $record->sks;
                 $gradePoint = 0;
-                if ($m->grade >= 85) $gradePoint = 4.0;
-                elseif ($m->grade >= 70) $gradePoint = 3.0;
-                elseif ($m->grade >= 60) $gradePoint = 2.0;
-                elseif ($m->grade >= 50) $gradePoint = 1.0;
+                if ($record->grade >= 85) $gradePoint = 4.0;
+                elseif ($record->grade >= 70) $gradePoint = 3.0;
+                elseif ($record->grade >= 60) $gradePoint = 2.0;
+                elseif ($record->grade >= 50) $gradePoint = 1.0;
 
                 $points = $sks * $gradePoint;
                 $totalSks += $sks;
                 $totalPoints += $points;
                 
-                $materialsBySemester[$sem]['total_sks'] += $sks;
-                $materialsBySemester[$sem]['total_points'] += $points;
+                $semesters[$sem]['total_sks'] += $sks;
+                $semesters[$sem]['total_points'] += $points;
             }
         }
 
-        foreach ($materialsBySemester as &$semData) {
+        foreach ($semesters as &$semData) {
             if ($semData['total_sks'] > 0) {
                 $semData['ips'] = round($semData['total_points'] / $semData['total_sks'], 2);
             }
         }
 
-        krsort($materialsBySemester);
-        $groupedMaterials = array_values($materialsBySemester);
+        krsort($semesters);
         $ipk = $totalSks > 0 ? round($totalPoints / $totalSks, 2) : 0;
-        $currentSemester = count($materialsBySemester) > 0 ? max(array_keys($materialsBySemester)) : 1;
+        $currentSemester = count($semesters) > 0 ? max(array_keys($semesters)) : 1;
 
         return Inertia::render('Study/Index', [
             'materials' => $materials,
-            'groupedMaterials' => $groupedMaterials,
+            'academicRecords' => $academicRecords,
             'academicStats' => [
                 'ipk' => $ipk,
                 'total_sks' => $totalSks,
-                'current_semester' => $currentSemester
+                'current_semester' => $currentSemester,
+                'semesters' => array_values($semesters)
             ],
             'competency' => $competency,
             'user' => [
@@ -95,8 +95,7 @@ class StudyController extends Controller
     {
         $request->validate([
             'course_name' => 'required|string|max:255',
-            'semester' => 'required|integer|min:1|max:14',
-            'sks' => 'required|integer|min:1|max:10',
+            'week' => 'nullable|string|max:100',
             'grade' => 'nullable|numeric|min:0|max:100',
             'context_files.*' => 'nullable|file|mimes:pdf,docx,pptx|max:10240',
             'context_link' => 'nullable|url|max:2083',
@@ -117,8 +116,7 @@ class StudyController extends Controller
         $material = StudyMaterial::create([
             'user_id' => $user->id,
             'course_name' => $request->course_name,
-            'semester' => $request->semester,
-            'sks' => $request->sks,
+            'week' => $request->week,
             'grade' => $request->grade,
             'status' => 'processing',
         ]);
@@ -184,17 +182,6 @@ class StudyController extends Controller
 
     public function destroy($id)
     {
-        $user = Auth::user();
-        $material = StudyMaterial::where('user_id', $user->id)->findOrFail($id);
-
-        // Delete modern files
-        $contextData = $material->context_data ?? [];
-        if (is_string($contextData)) {
-            $contextData = json_decode($contextData, true) ?? [];
-        }
-        
-        $artifactData = $material->artifact_data ?? [];
-        if (is_string($artifactData)) {
             $artifactData = json_decode($artifactData, true) ?? [];
         }
         

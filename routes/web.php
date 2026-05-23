@@ -988,7 +988,9 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
             Route::get("/", [StudyController::class, "index"])->name("index");
             Route::post("/", [StudyController::class, "store"])->name("store");
             Route::delete("/{id}", [StudyController::class, "destroy"])->name("destroy");
-            Route::post("/username", [StudyController::class, "updateUsername"])->name("username");
+            Route::post('/study/username', [StudyController::class, 'updateUsername'])->name('study.username');
+            Route::post('/study/academic-records', [StudyController::class, 'storeAcademicRecord'])->name('study.academic.store');
+            Route::delete('/study/academic-records/{id}', [StudyController::class, 'destroyAcademicRecord'])->name('study.academic.destroy');
             Route::post("/settings", [StudyController::class, "updateSettings"])->name("settings");
         });
 
