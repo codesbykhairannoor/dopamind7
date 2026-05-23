@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { trans } from 'laravel-vue-i18n';
+import Swal from 'sweetalert2';
 import { Head, useForm, router, Link } from '@inertiajs/vue3';
 import { 
     Trash2, BookOpen, Plus, ArrowLeft, FileText, 
@@ -31,6 +32,20 @@ const termMap = {
 
 const terms = computed(() => termMap[eduLevel.value]);
 
+
+const fireToast = (icon, message) => {
+    Swal.fire({
+        toast: true, position: 'top-end', showConfirmButton: false, timer: 3000, timerProgressBar: true,
+        background: icon === 'error' ? '#ef4444' : '#4f46e5', iconColor: '#ffffff', icon: icon,
+        title: `<span style="color: white; font-weight: 900; font-size: 14px; line-height: 1.2;">${message}</span>`,
+        customClass: {
+            container: '!fixed !top-5 !right-5 !p-0 !z-[100000] !items-start !justify-end',
+            popup: '!flex !items-center !gap-3 !py-3 !px-6 !rounded-full !shadow-2xl !border-none !m-0 !w-auto !min-w-[280px]',
+            timerProgressBar: '!bg-white/40 !h-1 !rounded-b-full'
+        }
+    });
+};
+
 // --- Setup Modal Logic ---
 const showSetupModal = ref(false);
 const setupForm = useForm({ 
@@ -45,6 +60,9 @@ const openSetup = () => {
 };
 
 const submitSetup = () => {
+    if (!setupForm.education_level) {
+        return fireToast('error', 'Pilih jenjang pendidikan terlebih dahulu!');
+    }
     localEduLevel.value = setupForm.education_level;
     setupForm.post(route('study.academic.setup'), { 
         preserveScroll: true, 
@@ -102,6 +120,15 @@ const openAddCourse = () => {
 };
 
 const submitCourse = () => {
+    if (!form.course_name.trim()) {
+        return fireToast('error', `Nama ${terms.value.course} tidak boleh kosong!`);
+    }
+    if (!form.sks || form.sks < 1) {
+        return fireToast('error', `Harap isi ${terms.value.sks} dengan benar!`);
+    }
+    if (!form.grade || form.grade < 0) {
+        return fireToast('error', `Harap isi target ${terms.value.grade} dengan benar!`);
+    }
     form.post(route('study.academic.store'), {
         preserveScroll: true,
         onSuccess: () => {
@@ -152,11 +179,14 @@ const openAddArchive = (prefillTag = '') => {
 
 const submitArchive = () => {
     if (!activeCourseReactive.value) return;
-    archiveForm.academic_record_id = activeCourseReactive.value.id;
-    // Default tag if empty
     if (!archiveForm.meeting_tag.trim()) {
-        archiveForm.meeting_tag = terms.value.meeting + ' Baru';
+        return fireToast('error', `Nama / Grup pertemuan tidak boleh kosong!`);
     }
+    if (!archiveForm.file && !archiveForm.link_url.trim()) {
+        return fireToast('error', `Anda harus mengunggah file atau menautkan link!`);
+    }
+
+    archiveForm.academic_record_id = activeCourseReactive.value.id;
     
     archiveForm.post(route('study.academic.archive.store'), {
         preserveScroll: true,
@@ -236,6 +266,7 @@ const getTypeColor = (type) => {
             </div>
 
             <!-- SETUP WIZARD MODAL -->
+            <Teleport to="body">
             <div v-if="showSetupModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[100] flex items-center justify-center p-4">
                 <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] shadow-2xl border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative overflow-hidden flex flex-col max-h-[90vh]">
                     <div class="bg-indigo-600 p-6 text-center relative shrink-0">
@@ -248,26 +279,26 @@ const getTypeColor = (type) => {
                     
                     <form @submit.prevent="submitSetup" class="p-6 space-y-5 overflow-y-auto custom-scrollbar">
                         <div>
-                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Jenjang Pendidikan *</label>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">Jenjang Pendidikan *</label>
                             <select v-model="setupForm.education_level" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none">
-                                <option value="kuliah">Universitas / Perguruan Tinggi</option>
-                                <option value="sma">SMA / SMK / Sederajat</option>
-                                <option value="smp">SMP / Sederajat</option>
-                                <option value="sd">SD / Sederajat</option>
+                                <option value="kuliah">University / College / Perguruan Tinggi</option>
+                                <option value="sma">High School / SMA / Sederajat</option>
+                                <option value="smp">Middle School / SMP / Sederajat</option>
+                                <option value="sd">Primary School / SD / Sederajat</option>
                                 <option value="lainnya">Lainnya</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Jurusan / Konsentrasi / Fokus Studi</label>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">Jurusan / Konsentrasi / Fokus Studi</label>
                             <input v-model="setupForm.major" type="text" placeholder="Misal: Teknik Informatika" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">NIM / NIS / ID</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">Student ID / NIM / NIS (Opsional)</label>
                                 <input v-model="setupForm.student_id" type="text" placeholder="No. Induk" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                             <div>
-                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Semester Berapa?</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">Semester Berapa?</label>
                                 <input v-model="setupForm.current_semester" type="number" min="1" max="20" placeholder="1" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                         </div>
@@ -278,6 +309,7 @@ const getTypeColor = (type) => {
                     </form>
                 </div>
             </div>
+        </Teleport>
         </template>
 
         <!-- ============================================== -->
@@ -354,8 +386,8 @@ const getTypeColor = (type) => {
                         
                         <div class="relative z-10 flex justify-between items-end mt-auto">
                             <div class="flex flex-col gap-1">
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{{ terms.sks }}: <span class="text-slate-600 dark:text-slate-300">{{ record.sks }}</span></span>
-                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{{ terms.grade }}: <span class="text-emerald-600 dark:text-emerald-400 text-xs">{{ record.grade }}</span></span>
+                                <span class="text-[10px] font-bold text-slate-400 capitalize tracking-wide">{{ terms.sks }}: <span class="text-slate-600 dark:text-slate-300">{{ record.sks }}</span></span>
+                                <span class="text-[10px] font-bold text-slate-400 capitalize tracking-wide">{{ terms.grade }}: <span class="text-emerald-600 dark:text-emerald-400 text-xs">{{ record.grade }}</span></span>
                             </div>
                             <div class="text-xs font-black text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-3 py-2 rounded-xl flex items-center gap-1.5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                                 <FileText class="h-4 w-4" /> {{ record.archives?.length || 0 }}
@@ -377,6 +409,7 @@ const getTypeColor = (type) => {
             </div>
 
             <!-- MODAL TAMBAH MATKUL -->
+            <Teleport to="body">
             <div v-if="isAddCourseModalOpen" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
                 <div class="bg-white dark:bg-slate-900 w-full max-w-md rounded-[2.5rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative">
                     <button @click="isAddCourseModalOpen = false" class="absolute top-6 right-6 p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors">
@@ -385,21 +418,21 @@ const getTypeColor = (type) => {
                     
                     <div class="mb-6">
                         <h3 class="text-xl font-black text-slate-800 dark:text-white">Tambah Data Baru</h3>
-                        <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mt-1">Untuk {{ terms.semester }} {{ selectedSemester }}</p>
+                        <p class="text-xs font-bold text-indigo-500 capitalize tracking-wide mt-1">Untuk {{ terms.semester }} {{ selectedSemester }}</p>
                     </div>
 
                     <form @submit.prevent="submitCourse" class="space-y-4">
                         <div>
-                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1.5">Nama {{ terms.course }} *</label>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Nama {{ terms.course }} *</label>
                             <input v-model="form.course_name" type="text" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1.5">{{ terms.sks }} *</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ terms.sks }} *</label>
                                 <input v-model="form.sks" type="number" min="1" max="20" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                             <div>
-                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1.5">{{ terms.grade }} Target / Akhir *</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ terms.grade }} Target / Akhir *</label>
                                 <input v-model="form.grade" type="number" step="0.01" min="0" max="100" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                         </div>
@@ -409,6 +442,7 @@ const getTypeColor = (type) => {
                     </form>
                 </div>
             </div>
+        </Teleport>
         </template>
 
         <!-- ============================================== -->
@@ -425,7 +459,7 @@ const getTypeColor = (type) => {
                     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
                         <div>
                             <div class="flex items-center gap-3 mb-3">
-                                <span class="bg-indigo-500/50 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-lg border border-white/20">{{ terms.semester }} {{ activeCourseReactive.semester }}</span>
+                                <span class="bg-indigo-500/50 text-white text-[10px] font-black capitalize tracking-wide px-3 py-1 rounded-lg border border-white/20">{{ terms.semester }} {{ activeCourseReactive.semester }}</span>
                                 <span class="bg-white/10 text-indigo-100 text-[10px] font-bold px-3 py-1 rounded-lg">{{ activeCourseReactive.sks }} {{ terms.sks }}</span>
                             </div>
                             <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight mb-2 max-w-4xl">{{ activeCourseReactive.course_name }}</h1>
@@ -468,7 +502,7 @@ const getTypeColor = (type) => {
                         <div v-for="arc in archives" :key="arc.id" class="group relative p-4 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl flex flex-col transition-all hover:border-indigo-300 hover:shadow-md">
                             <div class="flex items-start justify-between gap-3 mb-4">
                                 <div class="flex-1 min-w-0">
-                                    <span class="inline-block px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider mb-2" :class="getTypeColor(arc.type)">{{ arc.type }}</span>
+                                    <span class="inline-block px-2 py-0.5 rounded-md text-[9px] font-black capitalize tracking-wide mb-2" :class="getTypeColor(arc.type)">{{ arc.type }}</span>
                                     <p class="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2 leading-snug">{{ arc.file_name || arc.link_url || 'Arsip Tanpa Nama' }}</p>
                                 </div>
                                 <button @click="deleteArchive(arc.id)" class="text-slate-300 hover:text-red-500 p-1.5 rounded-lg hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100 shrink-0">
@@ -489,6 +523,7 @@ const getTypeColor = (type) => {
             </div>
 
             <!-- MODAL INPUT PERTEMUAN / FILE BARU -->
+            <Teleport to="body">
             <div v-if="isAddMeetingModalOpen" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
                 <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-[2.5rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative">
                     <button @click="isAddMeetingModalOpen = false" class="absolute top-6 right-6 p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-slate-800 transition-colors">
@@ -507,13 +542,13 @@ const getTypeColor = (type) => {
 
                     <form @submit.prevent="submitArchive" class="space-y-5">
                         <div>
-                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1.5">Nama / Grup Pertemuan *</label>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Nama / Grup Pertemuan *</label>
                             <input v-model="archiveForm.meeting_tag" type="text" :placeholder="'Misal: ' + terms.meeting + ' 1 - Pengantar'" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div class="col-span-2 sm:col-span-1">
-                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1.5">Jenis Konten</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Jenis Konten</label>
                                 <select v-model="archiveForm.type" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none">
                                     <option value="Modul">Modul / Materi</option>
                                     <option value="Soal">Tugas / Soal</option>
@@ -523,13 +558,13 @@ const getTypeColor = (type) => {
                                 </select>
                             </div>
                             <div class="col-span-2 sm:col-span-1">
-                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1.5">Upload PDF</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Upload PDF</label>
                                 <input @input="archiveForm.file = $event.target.files[0]" type="file" accept=".pdf" class="w-full text-xs file:mr-2 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-indigo-100 file:text-indigo-700 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-1.5 px-2 cursor-pointer" />
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1.5">Atau Tautkan Link Web</label>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Atau Tautkan Link Web</label>
                             <div class="relative">
                                 <Link2 class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                                 <input v-model="archiveForm.link_url" type="url" placeholder="https://..." class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 outline-none" />
@@ -541,7 +576,7 @@ const getTypeColor = (type) => {
                         </button>
                     </form>
                 </div>
-            </div>
+            </Teleport>
         </template>
     </div>
 </template>
