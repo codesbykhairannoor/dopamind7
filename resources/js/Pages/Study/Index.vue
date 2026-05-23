@@ -212,7 +212,7 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
 
                         <form @submit.prevent="updateUsername" class="flex flex-col sm:flex-row gap-3">
                             <div class="relative flex-1">
-                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-semibold select-none pointer-events-none">oneformind.com/p/</span>
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-semibold select-none pointer-events-none">dopmymind.com/p/</span>
                                 <input 
                                     v-model="usernameForm.username"
                                     type="text" 

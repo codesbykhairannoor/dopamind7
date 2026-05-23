@@ -137,7 +137,14 @@ const chartOptions = computed(() => ({
         </p>
 
         <!-- Radar Canvas Area -->
-        <div class="h-80 w-full relative flex items-center justify-center">
+        <div v-if="!props.competency?.competencies || Object.keys(props.competency.competencies).length === 0" class="h-80 w-full flex flex-col items-center justify-center text-center px-4">
+            <div class="h-16 w-16 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[1.5rem] flex items-center justify-center mb-4 text-slate-400">
+                <BarChart3 class="h-6 w-6 opacity-50" />
+            </div>
+            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">Belum Ada Analisis Kompetensi</h3>
+            <p class="text-xs text-slate-400 dark:text-slate-500 max-w-[220px]">Unggah dokumen belajar Anda untuk mulai membangun peta kompetensi neural Anda.</p>
+        </div>
+        <div v-else class="h-80 w-full relative flex items-center justify-center">
             <Radar :data="chartData" :options="chartOptions" />
         </div>
     </div>

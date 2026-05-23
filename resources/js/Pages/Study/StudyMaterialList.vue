@@ -82,7 +82,7 @@ const copyCardLink = (id) => {
             <div class="h-16 w-16 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[1.5rem] flex items-center justify-center text-4xl mb-4 mx-auto animate-bounce-slow">
                 📚
             </div>
-            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">{{ $t('study_no_academic_docs', 'No Academic Documents') }}</h3>
+            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">Belum Ada Dokumen Akademik</h3>
             <p class="text-xs text-slate-400 dark:text-slate-500 max-w-sm mx-auto px-4">
                 {{ $t('study_empty_state', 'No study materials uploaded yet. Upload your syllabus or task reports to begin building your neural competency profile.') }}
             </p>
