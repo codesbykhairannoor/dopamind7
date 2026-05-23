@@ -384,53 +384,57 @@ const getTypeColor = (type) => {
         <!-- ============================================== -->
         <template v-else-if="!activeCourseReactive">
             <!-- Header Khusus Study Console -->
-            <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 sm:px-8 py-4 sticky top-0 z-40 shadow-sm">
-                <div class="max-w-[1600px] w-full mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div class="flex items-center gap-4">
-                        <div class="h-12 w-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
-                            <BookOpen class="h-6 w-6" />
+            <!-- Header Khusus Study Console -->
+            <header class="relative z-40 transition-all bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 transition-colors duration-500">
+                <div class="w-full min-w-0 px-4 md:px-8 py-4">
+                    <div class="flex flex-col items-stretch justify-between gap-4 min-w-0 md:flex-row md:items-center">
+                        <div class="flex items-center gap-2 w-full min-w-0 md:w-auto md:max-w-[min(100%,22rem)]">
+                            <p class="shrink-0 text-[13px] font-black capitalize tracking-wide text-slate-700 dark:text-slate-300 mr-2 pr-4">
+                                {{ $t('study_academic_binder_title', 'Academic Binder') }} &bull; <span class="text-slate-400">{{ userSettings.major || terms.course }}</span>
+                            </p>
                         </div>
-                        <div>
-                            <h1 class="text-xl font-black text-slate-800 dark:text-white leading-tight">Academic Binder</h1>
-                            <p class="text-xs font-bold text-slate-500">{{ userSettings.major || terms.course }} &bull; {{ userSettings.student_id || '-' }}</p>
+                        
+                        <div class="flex min-w-0 flex-wrap items-center w-full gap-3 md:w-auto md:flex-nowrap md:justify-end">
+                            <!-- Dropdown Semester Dinamis -->
+                            <div class="relative min-w-0 flex-1 md:flex-none md:max-w-xs z-50">
+                                <Menu as="div" class="relative inline-block text-left w-full">
+                                    <MenuButton class="w-full min-w-0 flex items-center justify-between gap-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 hover:shadow-sm transition-all active:scale-95 outline-none">
+                                        <div class="flex min-w-0 flex-1 flex-col items-start leading-none text-left">
+                                            <span class="text-[9px] text-slate-400 dark:text-slate-500 mb-0.5">{{ terms.semester }}</span>
+                                            <span class="w-full truncate text-xs">{{ selectedSemester }}</span>
+                                        </div>
+                                        <div class="p-1 bg-white dark:bg-slate-800 border shadow-sm rounded-lg border-slate-100 dark:border-slate-700 flex items-center justify-center">
+                                            <ChevronDown class="h-3 w-3 text-indigo-500" />
+                                        </div>
+                                    </MenuButton>
+                                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                        <MenuItems class="absolute right-0 mt-2 w-56 origin-top-right bg-white dark:bg-slate-900 rounded-3xl shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 p-2 z-[60] max-h-60 overflow-y-auto custom-scrollbar">
+                                            <MenuItem v-for="sem in availableSemesters" :key="sem" v-slot="{ active }">
+                                                <button @click="selectedSemester = sem" :class="[active ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none' : 'hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400', 'group flex w-full items-center px-4 py-3 rounded-2xl text-[11px] font-black transition-all mb-1']">
+                                                    {{ terms.semester }} {{ sem }}
+                                                </button>
+                                            </MenuItem>
+                                            <div class="border-t border-slate-100 dark:border-slate-800 my-2 mx-2"></div>
+                                            <MenuItem v-slot="{ active }">
+                                                <button @click="promptNewSemester" :class="[active ? 'bg-indigo-50 dark:bg-slate-800' : '', 'group flex w-full items-center px-4 py-3 rounded-2xl text-[11px] font-black text-indigo-600 dark:text-indigo-400 transition-colors']">
+                                                    <Plus class="h-4 w-4 mr-2" /> {{ $t('study_custom', 'Custom') }}
+                                                </button>
+                                            </MenuItem>
+                                        </MenuItems>
+                                    </transition>
+                                </Menu>
+                            </div>
+    
+                            <!-- Button Tambah Matkul -->
+                            <button @click="openAddCourse" class="h-[46px] shrink-0 px-5 flex items-center gap-3 text-white rounded-xl font-bold hover:-translate-y-0.5 active:translate-y-0 shadow-lg transition-all duration-300 whitespace-nowrap bg-indigo-600 shadow-indigo-100 dark:shadow-indigo-900/40 hover:bg-indigo-700">
+                                <div class="bg-white/20 rounded-lg p-0.5 flex items-center justify-center">
+                                    <Plus class="h-4 w-4" />
+                                </div>
+                                <span class="hidden md:inline text-xs capitalize tracking-wide font-black">
+                                    Tambah {{ terms.course }}
+                                </span>
+                            </button>
                         </div>
-                    </div>
-                    
-                    <div class="flex flex-wrap sm:flex-nowrap items-center gap-3">
-                        <!-- Dropdown Semester Dinamis -->
-                        <div class="relative w-full sm:w-auto min-w-[220px] z-50">
-                            <Menu as="div" class="relative inline-block text-left w-full">
-                                <MenuButton class="w-full flex items-center justify-between bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 text-slate-800 dark:text-slate-100 font-black py-3.5 px-6 rounded-2xl shadow-sm hover:border-indigo-300 transition-colors outline-none text-base">
-                                    <span>{{ terms.semester }} {{ selectedSemester }}</span>
-                                    <ChevronDown class="h-5 w-5 text-slate-400" />
-                                </MenuButton>
-                                <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                                    <MenuItems class="absolute right-0 mt-2 w-full origin-top-right bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl outline-none overflow-hidden z-50 max-h-60 overflow-y-auto custom-scrollbar">
-                                        <MenuItem v-for="sem in availableSemesters" :key="sem" v-slot="{ active }">
-                                            <button @click="selectedSemester = sem" :class="[active ? 'bg-indigo-50 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400' : 'text-slate-700 dark:text-slate-300', 'group flex w-full items-center px-6 py-4 text-sm font-bold transition-colors']">
-                                                {{ terms.semester }} {{ sem }}
-                                            </button>
-                                        </MenuItem>
-                                        <div class="border-t border-slate-100 dark:border-slate-800 my-1"></div>
-                                        <MenuItem v-slot="{ active }">
-                                            <button @click="promptNewSemester" :class="[active ? 'bg-indigo-50 dark:bg-slate-800' : '', 'group flex w-full items-center px-6 py-4 text-sm font-bold text-indigo-600 dark:text-indigo-400 transition-colors']">
-                                                <Plus class="h-4 w-4 mr-2" /> Custom {{ terms.semester }}
-                                            </button>
-                                        </MenuItem>
-                                        <MenuItem v-slot="{ active }">
-                                            <button @click="deleteSemester" :class="[active ? 'bg-rose-50 dark:bg-slate-800' : '', 'group flex w-full items-center px-6 py-4 text-sm font-bold text-rose-500 transition-colors']">
-                                                <Trash2 class="h-4 w-4 mr-2" /> Hapus {{ terms.semester }} Ini
-                                            </button>
-                                        </MenuItem>
-                                    </MenuItems>
-                                </transition>
-                            </Menu>
-                        </div>
-
-                        <!-- Button Tambah Matkul -->
-                        <button @click="openAddCourse" class="w-full sm:w-auto px-5 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl font-bold shadow-md shadow-indigo-500/20 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2 whitespace-nowrap">
-                            <Plus class="h-5 w-5" /> Tambah {{ terms.course }}
-                        </button>
                     </div>
                 </div>
             </header>
@@ -448,10 +452,14 @@ const getTypeColor = (type) => {
                     <ChevronRight class="relative z-10 h-5 w-5 text-indigo-400 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
-                <div class="flex items-end justify-between mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div class="flex items-end justify-between mb-6 border-b border-slate-200 dark:border-slate-800 pb-4 group/header">
                     <h2 class="text-lg font-black text-slate-800 dark:text-white flex items-center gap-2">
                         <FolderOpen class="h-5 w-5 text-slate-400" />
-                        Daftar {{ terms.course }} di {{ terms.semester }} {{ selectedSemester }}
+                        {{ $t('study_course_list_in', 'Daftar') }} {{ terms.course }} {{ $t('study_course_list_in_2', 'di') }} {{ terms.semester }} {{ selectedSemester }}
+                        
+                        <button @click="deleteSemester" class="ml-2 text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 p-1.5 rounded-lg transition-colors opacity-0 group-hover/header:opacity-100" :title="$t('study_delete_this', 'Hapus')">
+                            <Trash2 class="h-4 w-4" />
+                        </button>
                     </h2>
                 </div>
 
