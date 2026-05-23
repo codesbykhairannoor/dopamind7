@@ -93,6 +93,12 @@ def predict_archetypes(text, model_dir="."):
                 archetypes_output = {}
                 if sorted_archetypes:
                     max_raw = max(sorted_archetypes.values())
+                    
+                    # PELINDUNG: If the model is extremely uncertain (e.g. max probability < 10%),
+                    # we trigger an error so the backend falls back to Gemini API.
+                    if max_raw < 10.0:
+                        return {"error": "Low confidence. Triggering Gemini Fallback."}
+                        
                     if max_raw > 0:
                         scale_factor = 90.0 / max_raw
                         for k, v in sorted_archetypes.items():
