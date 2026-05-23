@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { trans } from 'laravel-vue-i18n';
 import { Head, useForm, router, Link } from '@inertiajs/vue3';
-import { Trash2, BookOpen, PlusCircle, ArrowLeft, FileText, ExternalLink, X, Upload, ChevronDown, ChevronUp, GraduationCap, School, Book } from 'lucide-vue-next';
+import { Trash2, BookOpen, PlusCircle, ArrowLeft, FileText, ExternalLink, X, Upload, ChevronDown, ChevronUp, GraduationCap, School, Book, Sparkles, ChevronRight } from 'lucide-vue-next';
 
 const props = defineProps({
     academicRecords: { type: Array, default: () => [] },
@@ -10,9 +10,11 @@ const props = defineProps({
     user: { type: Object, required: true }
 });
 
+
 // --- Dynamic Terminology & Setup Wizard ---
 const userSettings = computed(() => props.user.settings || {});
-const eduLevel = computed(() => userSettings.value.education_level);
+const localEduLevel = ref(null);
+const eduLevel = computed(() => localEduLevel.value || userSettings.value.education_level);
 const showSetupModal = computed(() => !eduLevel.value);
 
 const setupForm = useForm({
@@ -20,9 +22,14 @@ const setupForm = useForm({
 });
 
 const submitSetup = (level) => {
+    localEduLevel.value = level;
     setupForm.education_level = level;
-    setupForm.post(route('study.academic.setup'), { preserveScroll: true });
+    setupForm.post(route('study.academic.setup'), { 
+        preserveScroll: true, 
+        preserveState: true 
+    });
 };
+
 
 const termMap = {
     kuliah: {
@@ -190,7 +197,7 @@ const getTypeColor = (type) => {
 </script>
 
 <template>
-    <Head title="{{ $t('study_academic_binder_title', 'Academic Binder') }}" />
+    <Head :title="$t('study_academic_binder_title', 'Academic Binder')" />
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors">
         
@@ -242,7 +249,7 @@ const getTypeColor = (type) => {
         <!-- Header -->
         <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex items-center justify-between sticky top-0 z-40">
             <div class="flex items-center gap-4">
-                <Link :href="route('study.index')" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-500">
+                <Link :href="route('home')" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-500" :title="$t('study_back', 'Kembali')">
                     <ArrowLeft class="h-5 w-5" />
                 </Link>
                 <div>
@@ -265,7 +272,29 @@ const getTypeColor = (type) => {
             </div>
         </header>
 
-        <div class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+        
+        <div class="max-w-7xl mx-auto px-4 pt-8 pb-4">
+            <!-- Neural Portfolio Banner -->
+            <Link :href="route('study.portfolio')" class="group relative flex items-center justify-between p-6 bg-slate-900 overflow-hidden rounded-[2rem] border border-slate-800 transition-all hover:border-indigo-500/50 shadow-xl">
+                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative z-10 flex items-center gap-4">
+                    <div class="h-12 w-12 rounded-2xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
+                        <Sparkles class="h-6 w-6" />
+                    </div>
+                    <div>
+                        <h3 class="text-white font-black text-lg">{{ $t('study_neural_portfolio_title', 'Neural Portfolio') }}</h3>
+                        <p class="text-slate-400 text-xs hidden md:block">{{ $t('study_neural_portfolio_desc', 'Unggah karya Anda dan biarkan AI merangkai portofolio kompetensi publik yang memukau.') }}</p>
+                    </div>
+                </div>
+                <div class="relative z-10 text-indigo-400 group-hover:translate-x-2 transition-transform font-bold text-sm flex items-center gap-2">
+                    <span class="hidden md:inline">{{ $t('study_neural_portfolio_open', 'Masuk Ruang AI') }}</span>
+                    <ChevronRight class="h-5 w-5" />
+                </div>
+            </Link>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 py-4 space-y-8">
+
             
             <!-- Semester Selector -->
             <div class="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 p-2 shadow-sm flex flex-wrap gap-2 justify-center">

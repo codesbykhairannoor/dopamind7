@@ -45,7 +45,7 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
 </script>
 
 <template>
-    <Head title="{{ $t('study_neural_portfolio_title', 'Neural Portfolio') }}" />
+    <Head :title="$t('study_neural_portfolio_title', 'Neural Portfolio')" />
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors">
         
