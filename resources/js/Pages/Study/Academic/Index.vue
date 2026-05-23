@@ -152,7 +152,7 @@ const archiveForm = useForm({
     file: null,
     link_url: '',
     meeting_tag: '',
-    type: '{{ $t('study_module', 'Modul') }}'
+    type: 'Modul'
 });
 
 const submitArchive = (meetingNum) => {
@@ -182,9 +182,9 @@ const getArchivesForMeeting = (course, meetingNum) => {
 };
 
 const getTypeColor = (type) => {
-    if (type === '{{ $t('study_module', 'Modul') }}') return 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800';
-    if (type === '{{ $t('study_question', 'Soal') }}') return 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-800';
-    if (type === '{{ $t('study_answer', 'Jawaban') }}') return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800';
+    if (type === 'Modul') return 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800';
+    if (type === 'Soal') return 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 border-amber-200 dark:border-amber-800';
+    if (type === 'Jawaban') return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800';
     return 'bg-slate-100 text-slate-700 dark:bg-slate-900/30 dark:text-slate-400 border-slate-200 dark:border-slate-800';
 };
 </script>
@@ -195,37 +195,37 @@ const getTypeColor = (type) => {
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors">
         
         <!-- SETUP WIZARD MODAL -->
-        <div v-if="showSetupModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[100] flex {{ $t('study_item', 'item') }}s-center justify-center p-4">
+        <div v-if="showSetupModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[100] flex items-center justify-center p-4">
             <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-[2rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300">
-                <div class="h-20 w-20 mx-auto mb-6 bg-indigo-500/20 rounded-[1.5rem] flex {{ $t('study_item', 'item') }}s-center justify-center">
+                <div class="h-20 w-20 mx-auto mb-6 bg-indigo-500/20 rounded-[1.5rem] flex items-center justify-center">
                     <GraduationCap class="h-10 w-10 text-indigo-500" />
                 </div>
                 <h2 class="text-2xl font-black text-center text-slate-800 dark:text-white mb-2">{{ $t('study_setup_title', 'Pilih Jenjang Pendidikan') }}</h2>
-                <p class="text-sm text-center text-slate-500 mb-8 max-w-sm mx-auto">{{ $t('study_setup_desc', 'Istilah (Semester, Matkul, SKS) akan disesuaikan otomatis agar Anda lebih nyaman menggunakan fitur {{ $t('study_this', 'ini.') }}') }}</p>
+                <p class="text-sm text-center text-slate-500 mb-8 max-w-sm mx-auto">{{ $t('study_setup_desc', 'Istilah (Semester, Matkul, SKS) akan disesuaikan otomatis agar Anda lebih nyaman menggunakan fitur ini.') }}</p>
                 
                 <div class="space-y-3">
-                    <button @click="submitSetup('kuliah')" class="w-full p-4 flex {{ $t('study_item', 'item') }}s-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
+                    <button @click="submitSetup('kuliah')" class="w-full p-4 flex items-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
                         <GraduationCap class="h-6 w-6 text-slate-400 group-hover:text-indigo-500" />
                         <div class="text-left flex-1">
                             <h4 class="font-bold text-slate-800 dark:text-slate-200">{{ $t('study_setup_uni', 'Universitas / Perguruan Tinggi') }}</h4>
                             <p class="text-[10px] text-slate-500">{{ $t('study_setup_uni_desc', 'Semester, SKS, Mata Kuliah, IPK') }}</p>
                         </div>
                     </button>
-                    <button @click="submitSetup('sma')" class="w-full p-4 flex {{ $t('study_item', 'item') }}s-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
+                    <button @click="submitSetup('sma')" class="w-full p-4 flex items-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
                         <School class="h-6 w-6 text-slate-400 group-hover:text-emerald-500" />
                         <div class="text-left flex-1">
                             <h4 class="font-bold text-slate-800 dark:text-slate-200">{{ $t('study_setup_hs', 'SMA / SMK / Sederajat') }}</h4>
                             <p class="text-[10px] text-slate-500">{{ $t('study_setup_hs_desc', 'Kelas, JP, Mata Pelajaran, Rata-rata') }}</p>
                         </div>
                     </button>
-                    <button @click="submitSetup('smp')" class="w-full p-4 flex {{ $t('study_item', 'item') }}s-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
+                    <button @click="submitSetup('smp')" class="w-full p-4 flex items-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
                         <School class="h-6 w-6 text-slate-400 group-hover:text-blue-500" />
                         <div class="text-left flex-1">
                             <h4 class="font-bold text-slate-800 dark:text-slate-200">{{ $t('study_setup_ms', 'SMP / Sederajat') }}</h4>
                             <p class="text-[10px] text-slate-500">{{ $t('study_setup_hs_desc', 'Kelas, JP, Mata Pelajaran, Rata-rata') }}</p>
                         </div>
                     </button>
-                    <button @click="submitSetup('sd')" class="w-full p-4 flex {{ $t('study_item', 'item') }}s-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-amber-50 dark:hover:bg-amber-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
+                    <button @click="submitSetup('sd')" class="w-full p-4 flex items-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-amber-50 dark:hover:bg-amber-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
                         <Book class="h-6 w-6 text-slate-400 group-hover:text-amber-500" />
                         <div class="text-left flex-1">
                             <h4 class="font-bold text-slate-800 dark:text-slate-200">{{ $t('study_setup_es', 'SD / Sederajat') }}</h4>
@@ -240,8 +240,8 @@ const getTypeColor = (type) => {
         </div>
 
         <!-- Header -->
-        <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex {{ $t('study_item', 'item') }}s-center justify-between sticky top-0 z-40">
-            <div class="flex {{ $t('study_item', 'item') }}s-center gap-4">
+        <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex items-center justify-between sticky top-0 z-40">
+            <div class="flex items-center gap-4">
                 <Link :href="route('study.index')" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-500">
                     <ArrowLeft class="h-5 w-5" />
                 </Link>
@@ -252,7 +252,7 @@ const getTypeColor = (type) => {
             </div>
             
             <!-- Global Stats -->
-            <div class="flex {{ $t('study_item', 'item') }}s-center gap-4 bg-slate-100 dark:bg-slate-950 px-4 py-2 rounded-2xl border border-slate-200 dark:border-slate-800">
+            <div class="flex items-center gap-4 bg-slate-100 dark:bg-slate-950 px-4 py-2 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div class="text-right">
                     <p class="text-[9px] uppercase tracking-widest font-bold text-slate-400">{{ terms.total_sks }}</p>
                     <p class="text-sm font-black text-slate-800 dark:text-slate-200">{{ props.academicStats.total_sks }}</p>
@@ -284,7 +284,7 @@ const getTypeColor = (type) => {
                 <!-- Left: Form Tambah Matkul -->
                 <div class="lg:col-span-1 space-y-6">
                     <div class="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-                        <h3 class="text-lg font-black text-slate-800 dark:text-slate-100 mb-4 flex {{ $t('study_item', 'item') }}s-center gap-2">
+                        <h3 class="text-lg font-black text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
                             <PlusCircle class="h-5 w-5 text-indigo-500" />
                             {{ $t('study_add_in', 'Tambah di') }} {{ terms.semester }} {{ selectedSemester }}
                         </h3>
@@ -320,8 +320,8 @@ const getTypeColor = (type) => {
                 <!-- Right: {{ $t('study_list', 'Daftar') }} Matkul Grid -->
                 <div class="lg:col-span-2">
                     <div class="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 p-6 shadow-sm min-h-[500px]">
-                        <div class="flex {{ $t('study_item', 'item') }}s-center justify-between mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
-                            <h3 class="text-lg font-black text-slate-800 dark:text-slate-100 flex {{ $t('study_item', 'item') }}s-center gap-2">
+                        <div class="flex items-center justify-between mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+                            <h3 class="text-lg font-black text-slate-800 dark:text-slate-100 flex items-center gap-2">
                                 <BookOpen class="h-5 w-5 text-emerald-500" />
                                 {{ $t('study_list', 'Daftar') }} {{ terms.course }}
                             </h3>
@@ -331,7 +331,7 @@ const getTypeColor = (type) => {
                             </div>
                         </div>
                         
-                        <div v-if="filteredCourses.length === 0" class="py-12 text-center text-slate-500 flex flex-col {{ $t('study_item', 'item') }}s-center justify-center h-64">
+                        <div v-if="filteredCourses.length === 0" class="py-12 text-center text-slate-500 flex flex-col items-center justify-center h-64">
                             <div class="text-5xl mb-4 opacity-50">📂</div>
                             <p class="text-base font-semibold">{{ terms.semester }} {{ selectedSemester }} {{ $t('study_is_empty', 'Masih Kosong') }}</p>
                             <p class="text-xs mt-2 max-w-xs">{{ $t('study_please_add', 'Silakan tambahkan') }} {{ terms.course.toLowerCase() }} {{ $t('study_to_start_saving', 'di form sebelah kiri untuk mulai menyimpan arsip.') }}</p>
@@ -344,19 +344,19 @@ const getTypeColor = (type) => {
                                 
                                 <div class="absolute inset-0 bg-gradient-to-br from-transparent to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-                                <div class="relative z-10 flex justify-between {{ $t('study_item', 'item') }}s-start mb-4">
+                                <div class="relative z-10 flex justify-between items-start mb-4">
                                     <h5 class="text-md font-black text-slate-800 dark:text-slate-200 group-hover:text-emerald-500 transition-colors pr-8 leading-tight">{{ record.course_name }}</h5>
                                     <button @click.stop="deleteRecord(record.id)" class="text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors p-1.5 absolute right-0 top-0">
                                         <Trash2 class="h-4 w-4" />
                                     </button>
                                 </div>
                                 
-                                <div class="relative z-10 flex justify-between {{ $t('study_item', 'item') }}s-end">
+                                <div class="relative z-10 flex justify-between items-end">
                                     <div class="flex gap-4 text-xs font-bold text-slate-400">
                                         <span>{{ terms.sks }}: {{ record.sks }}</span>
                                         <span class="text-emerald-500">{{ terms.grade }}: {{ record.grade }}</span>
                                     </div>
-                                    <div class="text-[10px] font-black text-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 px-3 py-1.5 rounded-lg border border-indigo-100 dark:border-indigo-800/50 flex {{ $t('study_item', 'item') }}s-center gap-1 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                                    <div class="text-[10px] font-black text-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 px-3 py-1.5 rounded-lg border border-indigo-100 dark:border-indigo-800/50 flex items-center gap-1 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
                                         <FileText class="h-3 w-3" /> {{ record.archives?.length || 0 }} {{ $t('study_archive', 'Arsip') }}
                                     </div>
                                 </div>
@@ -376,7 +376,7 @@ const getTypeColor = (type) => {
             
             <div v-if="selectedCourse" class="flex-1 flex flex-col h-full overflow-hidden">
                 <!-- Drawer Header -->
-                <div class="px-6 py-5 border-b border-slate-200 dark:border-slate-800 flex justify-between {{ $t('study_item', 'item') }}s-start bg-white dark:bg-slate-900 shadow-sm relative z-10">
+                <div class="px-6 py-5 border-b border-slate-200 dark:border-slate-800 flex justify-between items-start bg-white dark:bg-slate-900 shadow-sm relative z-10">
                     <div>
                         <p class="text-[10px] uppercase tracking-widest font-black text-emerald-500 mb-1">{{ terms.course }} {{ terms.semester }} {{ selectedCourse.semester }}</p>
                         <h3 class="text-xl font-black text-slate-800 dark:text-white leading-tight pr-4">{{ selectedCourse.course_name }}</h3>
@@ -392,14 +392,14 @@ const getTypeColor = (type) => {
                     
                     <div v-for="meetingNum in meetings" :key="meetingNum" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
                         <!-- Accordion Header -->
-                        <button @click="toggleMeeting(meetingNum)" class="w-full px-5 py-4 flex {{ $t('study_item', 'item') }}s-center justify-between bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
-                            <div class="flex {{ $t('study_item', 'item') }}s-center gap-3">
-                                <div class="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-black flex {{ $t('study_item', 'item') }}s-center justify-center text-xs">
+                        <button @click="toggleMeeting(meetingNum)" class="w-full px-5 py-4 flex items-center justify-between bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                            <div class="flex items-center gap-3">
+                                <div class="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-black flex items-center justify-center text-xs">
                                     {{ meetingNum }}
                                 </div>
                                 <h4 class="text-sm font-black text-slate-800 dark:text-slate-200">{{ terms.meeting }} {{ meetingNum }}</h4>
                             </div>
-                            <div class="flex {{ $t('study_item', 'item') }}s-center gap-3">
+                            <div class="flex items-center gap-3">
                                 <span v-if="getArchivesForMeeting(selectedCourse, meetingNum).length > 0" class="text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-2 py-1 rounded-md">
                                     {{ getArchivesForMeeting(selectedCourse, meetingNum).length }} {{ $t('study_item', 'item') }}
                                 </span>
@@ -415,8 +415,8 @@ const getTypeColor = (type) => {
                                 <div v-for="arc in getArchivesForMeeting(selectedCourse, meetingNum)" :key="arc.id" 
                                     class="p-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2">
                                     
-                                    <div class="flex {{ $t('study_item', 'item') }}s-start justify-between">
-                                        <div class="flex {{ $t('study_item', 'item') }}s-center gap-2 overflow-hidden">
+                                    <div class="flex items-start justify-between">
+                                        <div class="flex items-center gap-2 overflow-hidden">
                                             <span class="px-2 py-0.5 rounded text-[9px] font-bold uppercase border" :class="getTypeColor(arc.type)">
                                                 {{ arc.type }}
                                             </span>
@@ -426,11 +426,11 @@ const getTypeColor = (type) => {
                                         </div>
                                     </div>
                                     
-                                    <div class="flex {{ $t('study_item', 'item') }}s-center gap-1 justify-end">
-                                        <a v-if="arc.file_path" :href="'/storage/' + arc.file_path" target="_blank" class="flex {{ $t('study_item', 'item') }}s-center gap-1 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-emerald-500 bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 rounded-lg transition-colors">
+                                    <div class="flex items-center gap-1 justify-end">
+                                        <a v-if="arc.file_path" :href="'/storage/' + arc.file_path" target="_blank" class="flex items-center gap-1 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-emerald-500 bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 rounded-lg transition-colors">
                                             <FileText class="h-3 w-3" /> {{ $t('study_open_pdf', 'Buka PDF') }}
                                         </a>
-                                        <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="flex {{ $t('study_item', 'item') }}s-center gap-1 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-blue-500 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 rounded-lg transition-colors">
+                                        <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="flex items-center gap-1 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-blue-500 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 rounded-lg transition-colors">
                                             <ExternalLink class="h-3 w-3" /> {{ $t('study_open_link', 'Buka Link') }}
                                         </a>
                                         <button @click="deleteArchive(arc.id)" class="px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-red-500 bg-slate-100 dark:bg-slate-800 hover:bg-red-50 rounded-lg transition-colors">
@@ -445,16 +445,16 @@ const getTypeColor = (type) => {
 
                             <!-- Upload Form -->
                             <div class="bg-indigo-50/50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-500/20 rounded-xl p-3">
-                                <h5 class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 mb-2 uppercase tracking-wider flex {{ $t('study_item', 'item') }}s-center gap-1">
+                                <h5 class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 mb-2 uppercase tracking-wider flex items-center gap-1">
                                     <Upload class="h-3 w-3" /> {{ $t('study_add_file', 'Tambah File') }}
                                 </h5>
                                 <form @submit.prevent="submitArchive(meetingNum)" class="space-y-2">
                                     <div class="flex gap-2">
                                         <select v-model="archiveForm.type" class="w-1/3 px-2 py-1.5 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold focus:ring-1 focus:ring-indigo-500">
-                                            <option value="{{ $t('study_module', 'Modul') }}">📖 {{ $t('study_module', 'Modul') }}</option>
-                                            <option value="{{ $t('study_question', 'Soal') }}">📝 {{ $t('study_question', 'Soal') }}</option>
-                                            <option value="{{ $t('study_answer', 'Jawaban') }}">✅ {{ $t('study_answer', 'Jawaban') }}</option>
-                                            <option value="{{ $t('study_reference', 'Referensi') }}">🔗 {{ $t('study_reference', 'Referensi') }}</option>
+                                            <option value="Modul">📖 {{ $t('study_module', 'Modul') }}</option>
+                                            <option value="Soal">📝 {{ $t('study_question', 'Soal') }}</option>
+                                            <option value="Jawaban">✅ {{ $t('study_answer', 'Jawaban') }}</option>
+                                            <option value="Referensi">🔗 {{ $t('study_reference', 'Referensi') }}</option>
                                         </select>
                                         <input @input="archiveForm.file = $event.target.files[0]" type="file" accept=".pdf"
                                             class="w-2/3 text-[10px] file:mr-2 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-[10px] file:font-bold file:bg-indigo-100 file:text-indigo-700 hover:file:bg-indigo-200" />

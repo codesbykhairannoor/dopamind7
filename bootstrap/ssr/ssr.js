@@ -5516,6 +5516,52 @@ const study_no_data$1 = "No Data Yet";
 const study_ipow_protocol$1 = "IPoW Protocol";
 const study_delete_cancel$1 = "Cancel";
 const study_delete_yes$1 = "Yes, Delete";
+const study_academic_binder_title$1 = "Academic Binder";
+const study_academic_binder_desc$1 = "Store and manage all your academic archives, grades, and documents per course in an unlimited flexible container.";
+const study_academic_binder_open$1 = "Open Binder";
+const study_neural_portfolio_title$1 = "Neural Portfolio";
+const study_neural_portfolio_desc$1 = "Upload your work and let AI craft a stunning public competency portfolio to attract recruiters.";
+const study_neural_portfolio_open$1 = "Enter AI Space";
+const study_portfolio_subtitle$1 = "AI Competency Showcase";
+const study_analyzing$1 = "Analyzing...";
+const study_refresh_data$1 = "Refresh Data";
+const study_claim_url$1 = "Claim URL";
+const study_copy_link$1 = "Copy Link";
+const study_setup_title$1 = "Select Education Level";
+const study_setup_desc$1 = "Terms (Semester, Course, Credits) will be automatically adjusted to make you more comfortable using this feature.";
+const study_setup_uni$1 = "University / College";
+const study_setup_uni_desc$1 = "Semester, Credits, Course, GPA";
+const study_setup_hs$1 = "High School / Equivalent";
+const study_setup_hs_desc$1 = "Grade, Hours, Subject, Average";
+const study_setup_ms$1 = "Middle School / Equivalent";
+const study_setup_es$1 = "Elementary / Equivalent";
+const study_setup_es_desc$1 = "Grade, Weight, Subject, Average";
+const study_setup_other$1 = "Other / Custom International System";
+const study_academic_subtitle$1 = "Learning Archive Space";
+const study_add_in$1 = "Add in";
+const study_save$1 = "Save";
+const study_list$1 = "List of";
+const study_is_empty$1 = "is Empty";
+const study_please_add$1 = "Please add";
+const study_to_start_saving$1 = "in the left form to start saving archives.";
+const study_archive$1 = "Archive";
+const study_delete_course_confirm$1 = "Are you sure you want to delete this {course}? All archives inside will also be deleted.";
+const study_total$1 = "Total";
+const study_archives_saved$1 = "archives saved";
+const study_item$1 = "item";
+const study_open_pdf$1 = "Open PDF";
+const study_open_link$1 = "Open Link";
+const study_delete$1 = "Delete";
+const study_no_file_in$1 = "No files in this";
+const study_this$1 = "";
+const study_add_file$1 = "Add File";
+const study_module$1 = "Module";
+const study_question$1 = "Question";
+const study_answer$1 = "Answer";
+const study_reference$1 = "Reference";
+const study_paste_link$1 = "Or paste external link (Drive/Notion)";
+const study_upload$1 = "Upload";
+const study_back$1 = "Back";
 const en = {
   about_meta_desc: about_meta_desc$1,
   about_meta_og_title: about_meta_og_title$1,
@@ -10983,7 +11029,53 @@ const en = {
   study_no_data: study_no_data$1,
   study_ipow_protocol: study_ipow_protocol$1,
   study_delete_cancel: study_delete_cancel$1,
-  study_delete_yes: study_delete_yes$1
+  study_delete_yes: study_delete_yes$1,
+  study_academic_binder_title: study_academic_binder_title$1,
+  study_academic_binder_desc: study_academic_binder_desc$1,
+  study_academic_binder_open: study_academic_binder_open$1,
+  study_neural_portfolio_title: study_neural_portfolio_title$1,
+  study_neural_portfolio_desc: study_neural_portfolio_desc$1,
+  study_neural_portfolio_open: study_neural_portfolio_open$1,
+  study_portfolio_subtitle: study_portfolio_subtitle$1,
+  study_analyzing: study_analyzing$1,
+  study_refresh_data: study_refresh_data$1,
+  study_claim_url: study_claim_url$1,
+  study_copy_link: study_copy_link$1,
+  study_setup_title: study_setup_title$1,
+  study_setup_desc: study_setup_desc$1,
+  study_setup_uni: study_setup_uni$1,
+  study_setup_uni_desc: study_setup_uni_desc$1,
+  study_setup_hs: study_setup_hs$1,
+  study_setup_hs_desc: study_setup_hs_desc$1,
+  study_setup_ms: study_setup_ms$1,
+  study_setup_es: study_setup_es$1,
+  study_setup_es_desc: study_setup_es_desc$1,
+  study_setup_other: study_setup_other$1,
+  study_academic_subtitle: study_academic_subtitle$1,
+  study_add_in: study_add_in$1,
+  study_save: study_save$1,
+  study_list: study_list$1,
+  study_is_empty: study_is_empty$1,
+  study_please_add: study_please_add$1,
+  study_to_start_saving: study_to_start_saving$1,
+  study_archive: study_archive$1,
+  study_delete_course_confirm: study_delete_course_confirm$1,
+  study_total: study_total$1,
+  study_archives_saved: study_archives_saved$1,
+  study_item: study_item$1,
+  study_open_pdf: study_open_pdf$1,
+  study_open_link: study_open_link$1,
+  study_delete: study_delete$1,
+  study_no_file_in: study_no_file_in$1,
+  study_this: study_this$1,
+  study_add_file: study_add_file$1,
+  study_module: study_module$1,
+  study_question: study_question$1,
+  study_answer: study_answer$1,
+  study_reference: study_reference$1,
+  study_paste_link: study_paste_link$1,
+  study_upload: study_upload$1,
+  study_back: study_back$1
 };
 const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -15986,27 +16078,42 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_science_topic_1: student_science_topic_1$1,
   student_science_topic_2: student_science_topic_2$1,
   student_science_topic_3: student_science_topic_3$1,
+  study_academic_binder_desc: study_academic_binder_desc$1,
+  study_academic_binder_open: study_academic_binder_open$1,
+  study_academic_binder_title: study_academic_binder_title$1,
+  study_academic_subtitle: study_academic_subtitle$1,
+  study_add_file: study_add_file$1,
+  study_add_in: study_add_in$1,
   study_analyze_everything: study_analyze_everything$1,
   study_analyze_upload: study_analyze_upload$1,
+  study_analyzing: study_analyzing$1,
+  study_answer: study_answer$1,
   study_archetype_subtitle: study_archetype_subtitle$1,
   study_archetype_title: study_archetype_title$1,
+  study_archive: study_archive$1,
+  study_archives_saved: study_archives_saved$1,
   study_artifact_badge: study_artifact_badge$1,
   study_artifact_subtitle: study_artifact_subtitle$1,
   study_artifact_title: study_artifact_title$1,
+  study_back: study_back$1,
   study_card_slots_remaining: study_card_slots_remaining$1,
   study_career_target_input: study_career_target_input$1,
+  study_claim_url: study_claim_url$1,
   study_classifier_verdict: study_classifier_verdict$1,
   study_context_badge: study_context_badge$1,
   study_context_subtitle: study_context_subtitle$1,
   study_context_title: study_context_title$1,
+  study_copy_link: study_copy_link$1,
   study_copy_url: study_copy_url$1,
   study_course_info: study_course_info$1,
   study_course_info_desc: study_course_info_desc$1,
   study_course_name: study_course_name$1,
   study_coursework_materials: study_coursework_materials$1,
+  study_delete: study_delete$1,
   study_delete_cancel: study_delete_cancel$1,
   study_delete_confirm_desc: study_delete_confirm_desc$1,
   study_delete_confirm_title: study_delete_confirm_title$1,
+  study_delete_course_confirm: study_delete_course_confirm$1,
   study_delete_yes: study_delete_yes$1,
   study_display_settings: study_display_settings$1,
   study_drop_files: study_drop_files$1,
@@ -16014,23 +16121,50 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   study_files_label: study_files_label$1,
   study_grade: study_grade$1,
   study_ipow_protocol: study_ipow_protocol$1,
+  study_is_empty: study_is_empty$1,
+  study_item: study_item$1,
   study_link_label: study_link_label$1,
+  study_list: study_list$1,
+  study_module: study_module$1,
+  study_neural_portfolio_desc: study_neural_portfolio_desc$1,
+  study_neural_portfolio_open: study_neural_portfolio_open$1,
+  study_neural_portfolio_title: study_neural_portfolio_title$1,
   study_no_data: study_no_data$1,
+  study_no_file_in: study_no_file_in$1,
   study_notes_label: study_notes_label$1,
+  study_open_link: study_open_link$1,
+  study_open_pdf: study_open_pdf$1,
+  study_paste_link: study_paste_link$1,
+  study_please_add: study_please_add$1,
+  study_portfolio_subtitle: study_portfolio_subtitle$1,
   study_portfolio_url_desc: study_portfolio_url_desc$1,
   study_processing: study_processing$1,
   study_profile_not_live: study_profile_not_live$1,
   study_profile_not_live_desc: study_profile_not_live_desc$1,
   study_public_url: study_public_url$1,
+  study_question: study_question$1,
   study_radar_subtitle: study_radar_subtitle$1,
   study_radar_title: study_radar_title$1,
+  study_reference: study_reference$1,
   study_refresh: study_refresh$1,
+  study_refresh_data: study_refresh_data$1,
+  study_save: study_save$1,
   study_save_username: study_save_username$1,
   study_set_username: study_set_username$1,
   study_setting_archetypes: study_setting_archetypes$1,
   study_setting_career_target: study_setting_career_target$1,
   study_setting_materials: study_setting_materials$1,
   study_setting_radar: study_setting_radar$1,
+  study_setup_desc: study_setup_desc$1,
+  study_setup_es: study_setup_es$1,
+  study_setup_es_desc: study_setup_es_desc$1,
+  study_setup_hs: study_setup_hs$1,
+  study_setup_hs_desc: study_setup_hs_desc$1,
+  study_setup_ms: study_setup_ms$1,
+  study_setup_other: study_setup_other$1,
+  study_setup_title: study_setup_title$1,
+  study_setup_uni: study_setup_uni$1,
+  study_setup_uni_desc: study_setup_uni_desc$1,
   study_share_card: study_share_card$1,
   study_share_copied: study_share_copied$1,
   study_share_no_username: study_share_no_username$1,
@@ -16042,7 +16176,11 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   study_tab_cards: study_tab_cards$1,
   study_tab_portfolio: study_tab_portfolio$1,
   study_tab_upload: study_tab_upload$1,
+  study_this: study_this$1,
   study_title: study_title$1,
+  study_to_start_saving: study_to_start_saving$1,
+  study_total: study_total$1,
+  study_upload: study_upload$1,
   study_upload_artifact: study_upload_artifact$1,
   study_upload_context: study_upload_context$1,
   study_upload_limit_desc: study_upload_limit_desc$1,
@@ -21939,6 +22077,52 @@ const study_no_data = "Belum Ada Data";
 const study_ipow_protocol = "Protokol IPoW";
 const study_delete_cancel = "Batal";
 const study_delete_yes = "Ya, Hapus";
+const study_academic_binder_title = "Academic Binder";
+const study_academic_binder_desc = "Simpan dan kelola seluruh arsip kuliah, nilai, dan dokumen per mata kuliah dalam satu wadah fleksibel tanpa batas.";
+const study_academic_binder_open = "Buka Binder";
+const study_neural_portfolio_title = "Neural Portfolio";
+const study_neural_portfolio_desc = "Unggah karya Anda dan biarkan AI merangkai portofolio kompetensi publik yang memukau untuk memikat rekruter.";
+const study_neural_portfolio_open = "Masuk Ruang AI";
+const study_portfolio_subtitle = "AI Competency Showcase";
+const study_analyzing = "Sedang Menganalisis...";
+const study_refresh_data = "Refresh Data";
+const study_claim_url = "Klaim URL";
+const study_copy_link = "Salin Link";
+const study_setup_title = "Pilih Jenjang Pendidikan";
+const study_setup_desc = "Istilah (Semester, Matkul, SKS) akan disesuaikan otomatis agar Anda lebih nyaman menggunakan fitur ini.";
+const study_setup_uni = "Universitas / Perguruan Tinggi";
+const study_setup_uni_desc = "Semester, SKS, Mata Kuliah, IPK";
+const study_setup_hs = "SMA / SMK / Sederajat";
+const study_setup_hs_desc = "Kelas, JP, Mata Pelajaran, Rata-rata";
+const study_setup_ms = "SMP / Sederajat";
+const study_setup_es = "SD / Sederajat";
+const study_setup_es_desc = "Kelas, Bobot, Pelajaran, Rata-rata";
+const study_setup_other = "Lainnya / Sistem Kustom Internasional";
+const study_academic_subtitle = "Ruang Arsip Pembelajaran";
+const study_add_in = "Tambah di";
+const study_save = "Simpan";
+const study_list = "Daftar";
+const study_is_empty = "Masih Kosong";
+const study_please_add = "Silakan tambahkan";
+const study_to_start_saving = "di form sebelah kiri untuk mulai menyimpan arsip.";
+const study_archive = "Arsip";
+const study_delete_course_confirm = "Yakin ingin menghapus {course} ini? Semua arsip di dalamnya akan ikut terhapus.";
+const study_total = "Total";
+const study_archives_saved = "arsip tersimpan";
+const study_item = "item";
+const study_open_pdf = "Buka PDF";
+const study_open_link = "Buka Link";
+const study_delete = "Hapus";
+const study_no_file_in = "Belum ada file di";
+const study_this = "ini.";
+const study_add_file = "Tambah File";
+const study_module = "Modul";
+const study_question = "Soal";
+const study_answer = "Jawaban";
+const study_reference = "Referensi";
+const study_paste_link = "Atau paste link eksternal (Drive/Notion)";
+const study_upload = "Upload";
+const study_back = "Kembali";
 const id = {
   about_meta_desc,
   about_meta_og_title,
@@ -27394,7 +27578,53 @@ const id = {
   study_no_data,
   study_ipow_protocol,
   study_delete_cancel,
-  study_delete_yes
+  study_delete_yes,
+  study_academic_binder_title,
+  study_academic_binder_desc,
+  study_academic_binder_open,
+  study_neural_portfolio_title,
+  study_neural_portfolio_desc,
+  study_neural_portfolio_open,
+  study_portfolio_subtitle,
+  study_analyzing,
+  study_refresh_data,
+  study_claim_url,
+  study_copy_link,
+  study_setup_title,
+  study_setup_desc,
+  study_setup_uni,
+  study_setup_uni_desc,
+  study_setup_hs,
+  study_setup_hs_desc,
+  study_setup_ms,
+  study_setup_es,
+  study_setup_es_desc,
+  study_setup_other,
+  study_academic_subtitle,
+  study_add_in,
+  study_save,
+  study_list,
+  study_is_empty,
+  study_please_add,
+  study_to_start_saving,
+  study_archive,
+  study_delete_course_confirm,
+  study_total,
+  study_archives_saved,
+  study_item,
+  study_open_pdf,
+  study_open_link,
+  study_delete,
+  study_no_file_in,
+  study_this,
+  study_add_file,
+  study_module,
+  study_question,
+  study_answer,
+  study_reference,
+  study_paste_link,
+  study_upload,
+  study_back
 };
 const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -32386,27 +32616,42 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_science_topic_1,
   student_science_topic_2,
   student_science_topic_3,
+  study_academic_binder_desc,
+  study_academic_binder_open,
+  study_academic_binder_title,
+  study_academic_subtitle,
+  study_add_file,
+  study_add_in,
   study_analyze_everything,
   study_analyze_upload,
+  study_analyzing,
+  study_answer,
   study_archetype_subtitle,
   study_archetype_title,
+  study_archive,
+  study_archives_saved,
   study_artifact_badge,
   study_artifact_subtitle,
   study_artifact_title,
+  study_back,
   study_card_slots_remaining,
   study_career_target_input,
+  study_claim_url,
   study_classifier_verdict,
   study_context_badge,
   study_context_subtitle,
   study_context_title,
+  study_copy_link,
   study_copy_url,
   study_course_info,
   study_course_info_desc,
   study_course_name,
   study_coursework_materials,
+  study_delete,
   study_delete_cancel,
   study_delete_confirm_desc,
   study_delete_confirm_title,
+  study_delete_course_confirm,
   study_delete_yes,
   study_display_settings,
   study_drop_files,
@@ -32414,23 +32659,50 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   study_files_label,
   study_grade,
   study_ipow_protocol,
+  study_is_empty,
+  study_item,
   study_link_label,
+  study_list,
+  study_module,
+  study_neural_portfolio_desc,
+  study_neural_portfolio_open,
+  study_neural_portfolio_title,
   study_no_data,
+  study_no_file_in,
   study_notes_label,
+  study_open_link,
+  study_open_pdf,
+  study_paste_link,
+  study_please_add,
+  study_portfolio_subtitle,
   study_portfolio_url_desc,
   study_processing,
   study_profile_not_live,
   study_profile_not_live_desc,
   study_public_url,
+  study_question,
   study_radar_subtitle,
   study_radar_title,
+  study_reference,
   study_refresh,
+  study_refresh_data,
+  study_save,
   study_save_username,
   study_set_username,
   study_setting_archetypes,
   study_setting_career_target,
   study_setting_materials,
   study_setting_radar,
+  study_setup_desc,
+  study_setup_es,
+  study_setup_es_desc,
+  study_setup_hs,
+  study_setup_hs_desc,
+  study_setup_ms,
+  study_setup_other,
+  study_setup_title,
+  study_setup_uni,
+  study_setup_uni_desc,
   study_share_card,
   study_share_copied,
   study_share_no_username,
@@ -32442,7 +32714,11 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   study_tab_cards,
   study_tab_portfolio,
   study_tab_upload,
+  study_this,
   study_title,
+  study_to_start_saving,
+  study_total,
+  study_upload,
   study_upload_artifact,
   study_upload_context,
   study_upload_limit_desc,
@@ -33239,7 +33515,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-D3aMaE1P.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-NQy9OV9U.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B87qJvUV.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-D2RDHOku.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DlcpRL9j.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-C_lV_RDi.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-heyycDS1.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-Dt5MAp73.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-odvLZCzY.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n) => n.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-stB_g66m.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BjhG5_S-.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C9dXI0dE.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-B_EqONj9.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-CfKY2JdE.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BK6og38f.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BGrEHt6n.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DJWY98MQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-fybyLV4E.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-CxY5ApgX.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Dp6aJ9nN.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-2Gd2mIog.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-Bo_LLf91.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CPjshJtP.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DIx8N3NE.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-Bvjy0-Ms.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-D2-G8V42.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-C-JmRI_N.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DoIsQrsq.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-D5ufwNAn.js"), "./Pages/More/Index.vue": () => import("./assets/Index-wfyL85xi.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-BkpbzYRW.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-CZ3yCKIq.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DBUIkqkz.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BtvnDEM3.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CHVFEJ5f.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-DC3aNcJy.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DTR8h-1P.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-D3f8rFCT.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/PublicPortfolio/Show.vue": () => import("./assets/Show-CX5jK_W1.js"), "./Pages/PublicPortfolio/ShowCard.vue": () => import("./assets/ShowCard-uufvHpUi.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-II45sA7a.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-BzmGZC-H.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-DPQjERoD.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Study/Academic/Index.vue": () => import("./assets/Index-BBU6XwOS.js"), "./Pages/Study/AcademicProgress.vue": () => import("./assets/AcademicProgress-C7iF0BbA.js"), "./Pages/Study/Index.vue": () => import("./assets/Index-DoLbfGSb.js"), "./Pages/Study/Portfolio/Index.vue": () => import("./assets/Index-CAtRHgWY.js"), "./Pages/Study/StudyArchetypeMatches.vue": () => import("./assets/StudyArchetypeMatches-ZGZjv5Mp.js"), "./Pages/Study/StudyCompetencyRadar.vue": () => import("./assets/StudyCompetencyRadar-UWRWRHej.js"), "./Pages/Study/StudyMaterialList.vue": () => import("./assets/StudyMaterialList-CDuafH50.js"), "./Pages/Study/StudySettingsForm.vue": () => import("./assets/StudySettingsForm-D_EPWYLM.js"), "./Pages/Study/StudyUploadForm.vue": () => import("./assets/StudyUploadForm-DmzB7TG7.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-D3aMaE1P.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-NQy9OV9U.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B87qJvUV.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-D2RDHOku.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DlcpRL9j.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-C_lV_RDi.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-heyycDS1.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-Dt5MAp73.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-odvLZCzY.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n) => n.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-stB_g66m.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BjhG5_S-.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C9dXI0dE.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-B_EqONj9.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-CfKY2JdE.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BK6og38f.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BGrEHt6n.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DJWY98MQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-fybyLV4E.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-CxY5ApgX.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Dp6aJ9nN.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-2Gd2mIog.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-Bo_LLf91.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CPjshJtP.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DIx8N3NE.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-Bvjy0-Ms.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-D2-G8V42.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-C-JmRI_N.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DoIsQrsq.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-D5ufwNAn.js"), "./Pages/More/Index.vue": () => import("./assets/Index-wfyL85xi.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-BkpbzYRW.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-CZ3yCKIq.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DBUIkqkz.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BtvnDEM3.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CHVFEJ5f.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-DC3aNcJy.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DTR8h-1P.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-D3f8rFCT.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/PublicPortfolio/Show.vue": () => import("./assets/Show-CX5jK_W1.js"), "./Pages/PublicPortfolio/ShowCard.vue": () => import("./assets/ShowCard-uufvHpUi.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-II45sA7a.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-BzmGZC-H.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-DPQjERoD.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Study/Academic/Index.vue": () => import("./assets/Index-MkBFuxfh.js"), "./Pages/Study/AcademicProgress.vue": () => import("./assets/AcademicProgress-C7iF0BbA.js"), "./Pages/Study/Index.vue": () => import("./assets/Index-CKFKaNht.js"), "./Pages/Study/Portfolio/Index.vue": () => import("./assets/Index-C_RHaLwO.js"), "./Pages/Study/StudyArchetypeMatches.vue": () => import("./assets/StudyArchetypeMatches-ZGZjv5Mp.js"), "./Pages/Study/StudyCompetencyRadar.vue": () => import("./assets/StudyCompetencyRadar-UWRWRHej.js"), "./Pages/Study/StudyMaterialList.vue": () => import("./assets/StudyMaterialList-CDuafH50.js"), "./Pages/Study/StudySettingsForm.vue": () => import("./assets/StudySettingsForm-D_EPWYLM.js"), "./Pages/Study/StudyUploadForm.vue": () => import("./assets/StudyUploadForm-DmzB7TG7.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";
