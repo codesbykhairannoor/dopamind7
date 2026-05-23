@@ -63,7 +63,7 @@ const chartData = computed(() => {
         labels: labels,
         datasets: [
             {
-                label: 'Competency Level',
+                label: trans('study_radar_title') || 'Competency Level',
                 data: data,
                 backgroundColor: isDark.value ? 'rgba(99, 102, 241, 0.25)' : 'rgba(99, 102, 241, 0.15)',
                 borderColor: '#6366f1',
@@ -151,8 +151,8 @@ const chartOptions = computed(() => ({
             <div class="h-16 w-16 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[1.5rem] flex items-center justify-center mb-4 text-slate-400">
                 <BarChart3 class="h-6 w-6 opacity-50" />
             </div>
-            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">Belum Ada Analisis Kompetensi</h3>
-            <p class="text-xs text-slate-400 dark:text-slate-500 max-w-[220px]">Unggah dokumen belajar Anda untuk mulai membangun peta kompetensi neural Anda.</p>
+            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">{{ $t('study_no_competency_radar') }}</h3>
+            <p class="text-xs text-slate-400 dark:text-slate-500 max-w-[220px]">{{ $t('study_no_competency_desc') }}</p>
         </div>
         <div v-else class="h-80 w-full relative flex items-center justify-center">
             <Radar :data="chartData" :options="chartOptions" />

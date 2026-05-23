@@ -82,7 +82,7 @@ const copyCardLink = (id) => {
             <div class="h-16 w-16 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[1.5rem] flex items-center justify-center text-4xl mb-4 mx-auto animate-bounce-slow">
                 📚
             </div>
-            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">Belum Ada Dokumen Akademik</h3>
+            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">{{ $t('study_no_coursework_materials') }}</h3>
             <p class="text-xs text-slate-400 dark:text-slate-500 max-w-sm mx-auto px-4">
                 {{ $t('study_empty_state', 'No study materials uploaded yet. Upload your syllabus or task reports to begin building your neural competency profile.') }}
             </p>
@@ -110,7 +110,7 @@ const copyCardLink = (id) => {
 
                         <!-- Grade/Score -->
                         <span v-if="material.grade !== null" class="px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
-                            Grade: {{ material.grade }}
+                            {{ $t('study_grade') }}: {{ material.grade }}
                         </span>
                     </div>
 
@@ -180,7 +180,7 @@ const copyCardLink = (id) => {
                     <button 
                         @click="openDeleteModal(material.id)"
                         class="p-2 bg-red-50 dark:bg-red-950/30 text-red-500 hover:bg-red-100 dark:hover:bg-red-900 rounded-xl transition"
-                        title="Delete Material"
+                        :title="$t('study_delete')"
                     >
                         <Trash2 class="h-4 w-4" />
                     </button>
@@ -206,13 +206,13 @@ const copyCardLink = (id) => {
                         @click="closeDeleteModal"
                         class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl font-bold text-sm transition"
                     >
-                        {{ $t('study_delete_cancel', 'No, Keep it') }}
+                        {{ $t('study_delete_cancel') }}
                     </button>
                     <button 
                         @click="confirmDelete"
                         class="flex-1 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-red-500/20 transition"
                     >
-                        {{ $t('study_delete_yes', 'Yes, Delete') }}
+                        {{ $t('study_delete_yes') }}
                     </button>
                 </div>
             </div>

@@ -23,15 +23,19 @@ const hasCompletedSetup = computed(() => !!userSettings.value.education_level);
 const localEduLevel = ref(null);
 const eduLevel = computed(() => localEduLevel.value || userSettings.value.education_level || 'kuliah');
 
-const termMap = {
-    kuliah: { semester: 'Semester', course: 'Mata Kuliah', sks: 'SKS', grade: 'Nilai/Grade', meeting: 'Materi / Pertemuan', ipk: 'IPK', ips: 'IPS', total_sks: 'Total SKS' },
-    sma: { semester: 'Kelas', course: 'Mata Pelajaran', sks: 'JP', grade: 'Skor Akhir', meeting: 'Bab / Topik', ipk: 'Rata-rata Total', ips: 'Rata-rata Kelas', total_sks: 'Total JP' },
-    smp: { semester: 'Kelas', course: 'Mata Pelajaran', sks: 'JP', grade: 'Skor Akhir', meeting: 'Bab / Topik', ipk: 'Rata-rata Total', ips: 'Rata-rata Kelas', total_sks: 'Total JP' },
-    sd: { semester: 'Kelas', course: 'Pelajaran', sks: 'Bobot', grade: 'Nilai', meeting: 'Tema', ipk: 'Rata-rata Total', ips: 'Rata-rata Kelas', total_sks: 'Total Bobot' },
-    lainnya: { semester: 'Level', course: 'Subjek', sks: 'Bobot', grade: 'Skor', meeting: 'Bagian', ipk: 'Total Score', ips: 'Level Score', total_sks: 'Total Bobot' }
-};
-
-const terms = computed(() => termMap[eduLevel.value]);
+const terms = computed(() => {
+    const level = eduLevel.value;
+    return {
+        semester: trans(`study_term_semester_${level}`),
+        course: trans(`study_term_course_${level}`),
+        sks: trans(`study_term_sks_${level}`),
+        grade: trans(`study_term_grade_${level}`),
+        meeting: trans(`study_term_meeting_${level}`),
+        ipk: trans(`study_term_ipk_${level}`),
+        ips: trans(`study_term_ips_${level}`),
+        total_sks: trans(`study_term_total_sks_${level}`)
+    };
+});
 
 
 const fireToast = (icon, message) => {
@@ -62,10 +66,10 @@ const openSetup = () => {
 
 const submitSetup = () => {
     if (!setupForm.education_level) {
-        return fireToast('error', 'Pilih jenjang pendidikan terlebih dahulu!');
+        return fireToast('error', trans('study_select_edu_level_alert'));
     }
     if (!setupForm.current_semester) {
-        return fireToast('error', 'Semester tidak boleh kosong!');
+        return fireToast('error', trans('study_semester_empty_alert'));
     }
     localEduLevel.value = setupForm.education_level;
     setupForm.post(route('study.academic.setup'), { 
@@ -93,12 +97,12 @@ const selectedSemester = ref(userSettings.value.current_semester || 1);
 
 const promptNewSemester = () => {
     Swal.fire({
-        title: 'Tambah Semester Baru',
-        text: 'Masukkan angka semester yang ingin ditambahkan (Misal: 7)',
+        title: trans('study_add_new_semester_title'),
+        text: trans('study_add_new_semester_text'),
         input: 'number',
         inputAttributes: { min: 1, max: 100 },
         showCancelButton: true,
-        confirmButtonText: 'Lanjut',
+        confirmButtonText: trans('study_continue'),
         customClass: {
             confirmButton: 'bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
             cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
@@ -116,12 +120,12 @@ const promptNewSemester = () => {
 
 const deleteSemester = () => {
     Swal.fire({
-        title: 'Hapus Semester ' + selectedSemester.value + '?',
-        text: 'Semua mata kuliah dan file di dalamnya akan terhapus permanen!',
+        title: trans('study_delete_semester_title', { num: selectedSemester.value }),
+        text: trans('study_delete_semester_text'),
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Ya, Hapus',
-        cancelButtonText: 'Batal',
+        confirmButtonText: trans('study_delete_confirm_yes'),
+        cancelButtonText: trans('study_delete_confirm_cancel'),
         customClass: {
             confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
             cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
@@ -156,7 +160,7 @@ const openEditCourse = (course) => {
 };
 
 const submitEditCourse = () => {
-    if (!editCourseForm.course_name.trim()) return fireToast('error', `Nama ${terms.value.course} tidak boleh kosong!`);
+    if (!editCourseForm.course_name.trim()) return fireToast('error', trans('study_course_name_empty_alert', { course: terms.value.course }));
     
     editCourseForm.put(route('study.academic.update', editCourseForm.id), {
         preserveScroll: true,
@@ -190,10 +194,10 @@ const openAddCourse = () => {
 
 const submitCourse = () => {
     if (!form.course_name.trim()) {
-        return fireToast('error', `Nama ${terms.value.course} tidak boleh kosong!`);
+        return fireToast('error', trans('study_course_name_empty_alert', { course: terms.value.course }));
     }
     if (!form.sks || form.sks < 1) {
-        return fireToast('error', `Harap isi ${terms.value.sks} dengan benar!`);
+        return fireToast('error', trans('study_sks_invalid_alert', { sks: terms.value.sks }));
     }
     
     form.post(route('study.academic.store'), {
@@ -247,10 +251,10 @@ const openAddArchive = (prefillTag = '') => {
 const submitArchive = () => {
     if (!activeCourseReactive.value) return;
     if (!archiveForm.meeting_tag.trim()) {
-        return fireToast('error', `Nama / Grup pertemuan tidak boleh kosong!`);
+        return fireToast('error', trans('study_meeting_tag_empty_alert'));
     }
     if (!archiveForm.file && !archiveForm.link_url.trim()) {
-        return fireToast('error', `Anda harus mengunggah file atau menautkan link!`);
+        return fireToast('error', trans('study_archive_file_or_link_alert'));
     }
 
     archiveForm.academic_record_id = activeCourseReactive.value.id;
@@ -308,7 +312,7 @@ const getTypeColor = (type) => {
                             {{ $t('study_profile_not_set_desc', 'Mulai organisasikan seluruh modul, tugas, dan target nilai Anda secara cerdas. Mari sesuaikan sistem ini dengan profil akademis Anda sekarang!') }}
                         </p>
                         <button @click="openSetup" class="mt-4 bg-indigo-600 text-white font-black py-3.5 px-8 rounded-2xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 active:scale-95 transition-all outline-none flex items-center gap-2">
-                            Mulai Setup <ChevronRight class="h-5 w-5" />
+                            {{ $t('study_start_setup', 'Mulai Setup') }} <ChevronRight class="h-5 w-5" />
                         </button>
                     </div>
                 </div>
@@ -323,11 +327,11 @@ const getTypeColor = (type) => {
                         </div>
                         <div class="text-center sm:text-left">
                             <h3 class="text-slate-800 dark:text-white font-black text-xl mb-1">Neural Portfolio</h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl">Bangun portofolio publik elegan menggunakan AI. Bagikan pencapaian Anda ke dunia profesional.</p>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl">{{ $t('study_portfolio_banner_desc') }}</p>
                         </div>
                     </div>
                     <div class="bg-slate-50 dark:bg-slate-800 px-6 py-3 rounded-xl text-indigo-600 dark:text-indigo-400 font-bold text-sm flex items-center gap-2 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
-                        Jelajahi Ruang AI <ChevronRight class="h-5 w-5" />
+                        {{ $t('study_explore_ai_space') }} <ChevronRight class="h-5 w-5" />
                     </div>
                 </Link>
             </div>
@@ -341,37 +345,37 @@ const getTypeColor = (type) => {
                             <X class="h-5 w-5" />
                         </button>
                         <GraduationCap class="h-12 w-12 text-white/90 mx-auto mb-2" />
-                        <h2 class="text-2xl font-black text-white">Profil Studi</h2>
+                        <h2 class="text-2xl font-black text-white">{{ $t('study_profile_title') }}</h2>
                     </div>
                     
                     <form @submit.prevent="submitSetup" class="p-6 space-y-5 overflow-y-auto custom-scrollbar">
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">Jenjang Pendidikan *</label>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">{{ $t('study_edu_level_label') }}</label>
                             <select v-model="setupForm.education_level" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none">
-                                <option value="kuliah">University / College / Perguruan Tinggi</option>
-                                <option value="sma">High School / SMA / Sederajat</option>
-                                <option value="smp">Middle School / SMP / Sederajat</option>
-                                <option value="sd">Primary School / SD / Sederajat</option>
-                                <option value="lainnya">Lainnya</option>
+                                <option value="kuliah">{{ $t('study_edu_level_uni') }}</option>
+                                <option value="sma">{{ $t('study_edu_level_hs') }}</option>
+                                <option value="smp">{{ $t('study_edu_level_ms') }}</option>
+                                <option value="sd">{{ $t('study_edu_level_es') }}</option>
+                                <option value="lainnya">{{ $t('study_edu_level_other') }}</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">Jurusan / Konsentrasi / Fokus Studi</label>
-                            <input v-model="setupForm.major" type="text" placeholder="Misal: Teknik Informatika" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">{{ $t('study_major_label') }}</label>
+                            <input v-model="setupForm.major" type="text" :placeholder="$t('study_major_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">Student ID / NIM / NIS (Opsional)</label>
-                                <input v-model="setupForm.student_id" type="text" placeholder="No. Induk" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">{{ $t('study_student_id_label') }}</label>
+                                <input v-model="setupForm.student_id" type="text" :placeholder="$t('study_student_id_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                             <div>
-                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">Semester Berapa?</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-2">{{ $t('study_semester_label') }}</label>
                                 <input v-model="setupForm.current_semester" type="number" min="1" max="20" placeholder="1" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                         </div>
 
                         <button type="submit" :disabled="setupForm.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg shadow-indigo-500/25 transition-all hover:-translate-y-0.5 mt-2">
-                            Simpan & Mulai
+                            {{ $t('study_save_start') }}
                         </button>
                     </form>
                 </div>
@@ -431,7 +435,7 @@ const getTypeColor = (type) => {
                                     <Plus class="h-4 w-4" />
                                 </div>
                                 <span class="hidden md:inline text-xs capitalize tracking-wide font-black">
-                                    Tambah {{ terms.course }}
+                                    {{ $t('study_add_course_btn') }} {{ terms.course }}
                                 </span>
                             </button>
                         </div>
@@ -447,7 +451,7 @@ const getTypeColor = (type) => {
                         <div class="h-10 w-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform border border-indigo-500/30">
                             <Sparkles class="h-5 w-5" />
                         </div>
-                        <h3 class="text-white font-bold text-sm sm:text-base tracking-wide">Neural Portfolio <span class="hidden sm:inline text-slate-400 font-normal ml-2">&mdash; Publikasikan karya akademis Anda</span></h3>
+                        <h3 class="text-white font-bold text-sm sm:text-base tracking-wide">Neural Portfolio <span class="hidden sm:inline text-slate-400 font-normal ml-2">&mdash; {{ $t('study_portfolio_banner_sub') }}</span></h3>
                     </div>
                     <ChevronRight class="relative z-10 h-5 w-5 text-indigo-400 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -455,9 +459,9 @@ const getTypeColor = (type) => {
                 <div class="flex items-end justify-between mb-6 border-b border-slate-200 dark:border-slate-800 pb-4 group/header">
                     <h2 class="text-lg font-black text-slate-800 dark:text-white flex items-center gap-2">
                         <FolderOpen class="h-5 w-5 text-slate-400" />
-                        {{ $t('study_course_list_in', 'Daftar') }} {{ terms.course }} {{ $t('study_course_list_in_2', 'di') }} {{ terms.semester }} {{ selectedSemester }}
+                        {{ $t('study_course_list_title', { course: terms.course, semester: terms.semester, num: selectedSemester }) }}
                         
-                        <button @click="deleteSemester" class="ml-2 text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 p-1.5 rounded-lg transition-colors opacity-0 group-hover/header:opacity-100" :title="$t('study_delete_this', 'Hapus')">
+                        <button @click="deleteSemester" class="ml-2 text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 p-1.5 rounded-lg transition-colors opacity-0 group-hover/header:opacity-100" :title="$t('study_delete_this')">
                             <Trash2 class="h-4 w-4" />
                         </button>
                     </h2>
@@ -484,12 +488,12 @@ const getTypeColor = (type) => {
                                         <MenuItems class="absolute right-0 mt-2 w-48 origin-top-right bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl outline-none overflow-hidden z-50">
                                             <MenuItem v-slot="{ active }">
                                                 <button @click="openEditCourse(record)" :class="[active ? 'bg-slate-50 dark:bg-slate-800' : '', 'flex w-full items-center gap-3 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-300']">
-                                                    <Edit3 class="h-4 w-4" /> Edit
+                                                    <Edit3 class="h-4 w-4" /> {{ $t('study_edit') }}
                                                 </button>
                                             </MenuItem>
                                             <MenuItem v-slot="{ active }">
                                                 <button @click="deleteRecord(record.id)" :class="[active ? 'bg-rose-50 dark:bg-slate-800' : '', 'flex w-full items-center gap-3 px-4 py-3 text-sm font-bold text-rose-500']">
-                                                    <Trash2 class="h-4 w-4" /> Hapus
+                                                    <Trash2 class="h-4 w-4" /> {{ $t('study_delete') }}
                                                 </button>
                                             </MenuItem>
                                         </MenuItems>
@@ -514,10 +518,10 @@ const getTypeColor = (type) => {
                     <div class="h-16 w-16 mx-auto bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-4">
                         <FolderOpen class="h-8 w-8 text-slate-400" />
                     </div>
-                    <h3 class="text-lg font-black text-slate-600 dark:text-slate-300 mb-1">Belum ada data {{ terms.course }}</h3>
-                    <p class="text-sm text-slate-500 mb-6">Mulai tambahkan mata kuliah untuk {{ terms.semester }} {{ selectedSemester }} ini.</p>
+                    <h3 class="text-lg font-black text-slate-600 dark:text-slate-300 mb-1">{{ $t('study_no_course_data') }} {{ terms.course }}</h3>
+                    <p class="text-sm text-slate-500 mb-6">{{ $t('study_no_course_desc', { course: terms.course, semester: terms.semester, num: selectedSemester }) }}</p>
                     <button @click="openAddCourse" class="px-6 py-2.5 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-200 dark:hover:bg-indigo-900/60 rounded-full font-bold transition-colors">
-                        Tambah {{ terms.course }} Pertama
+                        {{ $t('study_add_first_course', { course: terms.course }) }}
                     </button>
                 </div>
             </div>
@@ -533,27 +537,27 @@ const getTypeColor = (type) => {
                         <X class="h-5 w-5" />
                     </button>
 
-                    <h3 class="text-2xl font-black text-slate-800 dark:text-white mb-6">Edit {{ terms.course }}</h3>
+                    <h3 class="text-2xl font-black text-slate-800 dark:text-white mb-6">{{ $t('study_edit_course', { course: terms.course }) }}</h3>
 
                     <form @submit.prevent="submitEditCourse" class="space-y-5">
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Nama {{ terms.course }} *</label>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_course_name_dynamic', { course: terms.course }) }}</label>
                             <input v-model="editCourseForm.course_name" type="text" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Bobot {{ terms.sks }} *</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_sks_weight_dynamic', { sks: terms.sks }) }}</label>
                                 <input v-model="editCourseForm.sks" type="number" min="1" max="10" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                             <div>
-                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Target {{ terms.grade }} (Opsional)</label>
-                                <input v-model="editCourseForm.grade" type="number" min="0" max="100" placeholder="Misal: 85" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_grade_target_dynamic', { grade: terms.grade }) }}</label>
+                                <input v-model="editCourseForm.grade" type="number" min="0" max="100" :placeholder="$t('study_grade_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                         </div>
 
                         <button type="submit" :disabled="editCourseForm.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-4">
-                            Simpan Perubahan
+                            {{ $t('study_save_changes') }}
                         </button>
                     </form>
                 </div>
@@ -569,13 +573,13 @@ const getTypeColor = (type) => {
                     </button>
                     
                     <div class="mb-6">
-                        <h3 class="text-xl font-black text-slate-800 dark:text-white">Tambah Data Baru</h3>
-                        <p class="text-xs font-bold text-indigo-500 capitalize tracking-wide mt-1">Untuk {{ terms.semester }} {{ selectedSemester }}</p>
+                        <h3 class="text-xl font-black text-slate-800 dark:text-white">{{ $t('study_add_new_data') }}</h3>
+                        <p class="text-xs font-bold text-indigo-500 capitalize tracking-wide mt-1">{{ $t('study_for_semester_dynamic', { semester: terms.semester, num: selectedSemester }) }}</p>
                     </div>
 
                     <form @submit.prevent="submitCourse" class="space-y-4">
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Nama {{ terms.course }} *</label>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_course_name_dynamic', { course: terms.course }) }}</label>
                             <input v-model="form.course_name" type="text" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         <div class="grid grid-cols-2 gap-4">
@@ -584,12 +588,12 @@ const getTypeColor = (type) => {
                                 <input v-model="form.sks" type="number" min="1" max="20" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                             <div>
-                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ terms.grade }} Target / Akhir *</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_grade_target_required', { grade: terms.grade }) }}</label>
                                 <input v-model="form.grade" type="number" step="0.01" min="0" max="100" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                         </div>
                         <button type="submit" :disabled="form.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-2">
-                            Simpan Data
+                            {{ $t('study_save_data') }}
                         </button>
                     </form>
                 </div>
@@ -606,7 +610,7 @@ const getTypeColor = (type) => {
                 <div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
                 <div class="max-w-[1600px] w-full md:w-[95%] mx-auto relative z-10">
                     <button @click="closeCourse" class="mb-6 flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl text-white text-xs font-bold transition-colors w-max">
-                        <ArrowLeft class="h-4 w-4" /> Kembali
+                        <ArrowLeft class="h-4 w-4" /> {{ $t('study_back') }}
                     </button>
                     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
                         <div>
@@ -619,7 +623,7 @@ const getTypeColor = (type) => {
                         <div class="shrink-0">
                             <!-- Tombol Input Pertemuan Baru (Dinamis) -->
                             <button @click="openAddArchive('')" class="px-6 py-4 bg-white text-indigo-600 hover:bg-indigo-50 rounded-2xl font-black shadow-xl transition-transform hover:scale-105 flex items-center gap-3">
-                                <PlusCircle class="h-5 w-5" /> Input {{ terms.meeting }} Baru
+                                <PlusCircle class="h-5 w-5" /> {{ $t('study_input_meeting_new', { meeting: terms.meeting }) }}
                             </button>
                         </div>
                     </div>
@@ -633,8 +637,8 @@ const getTypeColor = (type) => {
                     <div class="h-20 w-20 mx-auto bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center mb-6">
                         <FolderOpen class="h-10 w-10 text-slate-300" />
                     </div>
-                    <h3 class="text-2xl font-black text-slate-700 dark:text-slate-200 mb-2">Kelas Masih Kosong</h3>
-                    <p class="text-slate-500 max-w-md mx-auto">Klik tombol <strong>"Input {{ terms.meeting }} Baru"</strong> di atas untuk mulai membuat grup materi. Anda bebas menamai grup pertemuan sesuka hati.</p>
+                    <h3 class="text-2xl font-black text-slate-700 dark:text-slate-200 mb-2">{{ $t('study_class_is_empty') }}</h3>
+                    <p class="text-slate-500 max-w-md mx-auto" v-html="$t('study_empty_class_desc', { meeting: terms.meeting })"></p>
                 </div>
 
                 <!-- Iterate unique meeting tags as Blocks -->
@@ -645,7 +649,7 @@ const getTypeColor = (type) => {
                             <BookOpen class="h-5 w-5 text-indigo-500" /> {{ groupTag }}
                         </h3>
                         <button @click="openAddArchive(groupTag)" class="text-xs font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
-                            <Plus class="h-3 w-3" /> Tambah File
+                            <Plus class="h-3 w-3" /> {{ $t('study_add_file') }}
                         </button>
                     </div>
 
@@ -654,8 +658,10 @@ const getTypeColor = (type) => {
                         <div v-for="arc in archives" :key="arc.id" class="group relative p-4 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl flex flex-col transition-all hover:border-indigo-300 hover:shadow-md">
                             <div class="flex items-start justify-between gap-3 mb-4">
                                 <div class="flex-1 min-w-0">
-                                    <span class="inline-block px-2 py-0.5 rounded-md text-[9px] font-black capitalize tracking-wide mb-2" :class="getTypeColor(arc.type)">{{ arc.type }}</span>
-                                    <p class="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2 leading-snug">{{ arc.file_name || arc.link_url || 'Arsip Tanpa Nama' }}</p>
+                                    <span class="inline-block px-2 py-0.5 rounded-md text-[9px] font-black capitalize tracking-wide mb-2" :class="getTypeColor(arc.type)">
+                                        {{ $t('study_type_' + arc.type.toLowerCase()) }}
+                                    </span>
+                                    <p class="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2 leading-snug">{{ arc.file_name || arc.link_url || $t('study_untitled_archive') }}</p>
                                 </div>
                                 <button @click="deleteArchive(arc.id)" class="text-slate-300 hover:text-red-500 p-1.5 rounded-lg hover:bg-red-50 transition-colors opacity-0 group-hover:opacity-100 shrink-0">
                                     <Trash2 class="h-4 w-4" />
@@ -663,10 +669,10 @@ const getTypeColor = (type) => {
                             </div>
                             <div class="mt-auto">
                                 <a v-if="arc.file_path" :href="'/storage/' + arc.file_path" target="_blank" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-xl transition-colors">
-                                    <FileText class="h-4 w-4" /> Buka PDF
+                                    <FileText class="h-4 w-4" /> {{ $t('study_open_pdf') }}
                                 </a>
                                 <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 rounded-xl transition-colors">
-                                    <ExternalLink class="h-4 w-4" /> Kunjungi Link
+                                    <ExternalLink class="h-4 w-4" /> {{ $t('study_visit_link') }}
                                 </a>
                             </div>
                         </div>
@@ -687,36 +693,36 @@ const getTypeColor = (type) => {
                             <Upload class="h-6 w-6" />
                         </div>
                         <div>
-                            <h3 class="text-xl font-black text-slate-800 dark:text-white">Input Materi</h3>
+                            <h3 class="text-xl font-black text-slate-800 dark:text-white">{{ $t('study_input_material') }}</h3>
                             <p class="text-xs text-slate-500">{{ activeCourseReactive.course_name }}</p>
                         </div>
                     </div>
 
                     <form @submit.prevent="submitArchive" class="space-y-5">
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Nama / Grup Pertemuan *</label>
-                            <input v-model="archiveForm.meeting_tag" type="text" :placeholder="'Misal: ' + terms.meeting + ' 1 - Pengantar'" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_meeting_tag_label') }}</label>
+                            <input v-model="archiveForm.meeting_tag" type="text" :placeholder="$t('study_meeting_placeholder', { meeting: terms.meeting })" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                         </div>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <div class="col-span-2 sm:col-span-1">
-                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Jenis Konten</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_content_type') }}</label>
                                 <select v-model="archiveForm.type" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none">
-                                    <option value="Modul">Modul / Materi</option>
-                                    <option value="Soal">Tugas / Soal</option>
-                                    <option value="Jawaban">Jawaban / Pembahasan</option>
-                                    <option value="Referensi">Referensi Eksternal</option>
-                                    <option value="Catatan">Catatan Singkat</option>
+                                    <option value="Modul">{{ $t('study_type_modul') }}</option>
+                                    <option value="Soal">{{ $t('study_type_soal') }}</option>
+                                    <option value="Jawaban">{{ $t('study_type_jawaban') }}</option>
+                                    <option value="Referensi">{{ $t('study_type_referensi') }}</option>
+                                    <option value="Catatan">{{ $t('study_type_catatan') }}</option>
                                 </select>
                             </div>
                             <div class="col-span-2 sm:col-span-1">
-                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Upload PDF</label>
+                                <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_upload_pdf') }}</label>
                                 <input @input="archiveForm.file = $event.target.files[0]" type="file" accept=".pdf" class="w-full text-xs file:mr-2 file:py-2 file:px-3 file:rounded-xl file:border-0 file:bg-indigo-100 file:text-indigo-700 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-1.5 px-2 cursor-pointer" />
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">Atau Tautkan Link Web</label>
+                            <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_or_link') }}</label>
                             <div class="relative">
                                 <Link2 class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                                 <input v-model="archiveForm.link_url" type="url" placeholder="https://..." class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-medium focus:ring-2 focus:ring-indigo-500 outline-none" />
@@ -724,7 +730,7 @@ const getTypeColor = (type) => {
                         </div>
 
                         <button type="submit" :disabled="archiveForm.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-4">
-                            Upload & Simpan
+                            {{ $t('study_upload_save') }}
                         </button>
                     </form>
                 </div>

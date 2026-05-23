@@ -65,7 +65,7 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
             <button @click="refreshData" :disabled="isRefreshing" 
                 class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl font-bold text-xs transition-colors disabled:opacity-50">
                 <RefreshCw class="h-4 w-4" :class="{'animate-spin text-indigo-500': isRefreshing || hasPendingFiles}" />
-                <span class="hidden md:inline">{{ hasPendingFiles ? 'Sedang Menganalisis...' : $t('study_refresh_data', 'Refresh Data') }}</span>
+                <span class="hidden md:inline">{{ hasPendingFiles ? $t('study_analyzing') : $t('study_refresh_data') }}</span>
             </button>
         </header>
 

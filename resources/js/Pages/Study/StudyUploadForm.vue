@@ -1,5 +1,6 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3';
+import { trans } from 'laravel-vue-i18n';
 import { ref, computed, reactive } from 'vue';
 import { 
     Sparkles, Loader2, Link2, BookOpen, FileText, PlusCircle,
@@ -66,11 +67,11 @@ const addFilesToQueue = (panel, files) => {
         const ext = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
         
         if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(ext)) {
-            alert(`"${file.name}" is not supported. Only PDF, DOCX, and PPTX are allowed.`);
+            alert(trans('study_file_not_supported_alert', { name: file.name }));
             continue;
         }
         if (file.size > 10 * 1024 * 1024) {
-            alert(`"${file.name}" exceeds the 10MB limit.`);
+            alert(trans('study_file_size_alert', { name: file.name }));
             continue;
         }
         const alreadyAdded = panel.fileQueue.some(q => q.name === file.name && q.size === file.size);
@@ -109,24 +110,24 @@ const hasPendingItems = (panel) => {
 
 const submitAll = () => {
     if (!sharedMeta.course_name.trim()) {
-        alert('Please enter a Course Name first.');
+        alert(trans('study_course_name_required_alert'));
         return;
     }
     if (isLimitReached.value) {
-        alert('Upload limit reached (Max 6 Cards).');
+        alert(trans('study_upload_limit_reached_alert'));
         return;
     }
     
     if (!hasPendingItems(contextPanel) && !hasPendingItems(artifactPanel)) {
-        alert('Please add at least one context or artifact item to analyze.');
+        alert(trans('study_no_items_to_analyze_alert'));
         return;
     }
 
     if (contextPanel.rich_text && wordCount(contextPanel.rich_text) > maxWords) {
-        alert('Context text exceeds 500 words limit.'); return;
+        alert(trans('study_context_limit_alert')); return;
     }
     if (artifactPanel.rich_text && wordCount(artifactPanel.rich_text) > maxWords) {
-        alert('Artifact text exceeds 500 words limit.'); return;
+        alert(trans('study_artifact_limit_alert')); return;
     }
 
     isSubmittingAll.value = true;
@@ -172,7 +173,7 @@ const submitAll = () => {
         },
         onError: (errors) => {
             isSubmittingAll.value = false;
-            alert(Object.values(errors)[0] || 'Upload failed.');
+            alert(Object.values(errors)[0] || trans('study_upload_failed'));
         }
     });
 };
@@ -228,14 +229,14 @@ const globalHasPending = computed(() => {
             <div class="md:col-span-6">
                 <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_course_name', 'Course Name') }} *</label>
                 <input v-model="sharedMeta.course_name" type="text"
-                    placeholder="e.g. Algoritma Pemrograman, Machine Learning"
+                    :placeholder="$t('study_course_name_placeholder')"
                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
             </div>
             
             <!-- Week -->
             <div class="md:col-span-3">
                 <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_week', 'Week / Period') }}</label>
-                <input v-model="sharedMeta.week" type="text" placeholder="e.g. Week 4"
+                <input v-model="sharedMeta.week" type="text" :placeholder="$t('study_week_placeholder')"
                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
             </div>
 
@@ -288,7 +289,7 @@ const globalHasPending = computed(() => {
 
                     <div v-if="sharedMeta.show_career_target" class="md:col-span-12 mt-2">
                         <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_career_target_input', 'Custom Career Goal') }}</label>
-                        <input v-model="sharedMeta.career_target" type="text" placeholder="e.g. Machine Learning Engineer, Frontend Developer" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+                        <input v-model="sharedMeta.career_target" type="text" :placeholder="$t('study_career_goal_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
                     </div>
                 </div>
             </div>
@@ -359,7 +360,7 @@ const globalHasPending = computed(() => {
                     <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_link_label', 'Link') }}</label>
                     <div class="relative">
                         <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
-                        <textarea v-model="contextPanel.embed_url" rows="2" placeholder="https://github.com/...\n(Press Enter for multiple links)"
+                        <textarea v-model="contextPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
                             class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"></textarea>
                     </div>
                 </div>
@@ -373,7 +374,7 @@ const globalHasPending = computed(() => {
                         </span>
                     </div>
                     <textarea v-model="contextPanel.rich_text" rows="4"
-                        placeholder="Write or paste context details..."
+                        :placeholder="$t('study_context_text_placeholder')"
                         class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
                         :class="wordCount(contextPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>
@@ -439,10 +440,10 @@ const globalHasPending = computed(() => {
 
                 <!-- Link Mode -->
                 <div>
-                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Link</label>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_link_label', 'Link') }}</label>
                     <div class="relative">
                         <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
-                        <textarea v-model="artifactPanel.embed_url" rows="2" placeholder="https://github.com/...\n(Press Enter for multiple links)"
+                        <textarea v-model="artifactPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
                             class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"></textarea>
                     </div>
                 </div>
@@ -456,7 +457,7 @@ const globalHasPending = computed(() => {
                         </span>
                     </div>
                     <textarea v-model="artifactPanel.rich_text" rows="4"
-                        placeholder="Write or paste artifact details..."
+                        :placeholder="$t('study_artifact_text_placeholder')"
                         class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"
                         :class="wordCount(artifactPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>

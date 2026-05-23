@@ -64,21 +64,21 @@ const saveSettings = () => {
             {{ $t('study_settings_title', 'Portfolio Display Settings') }}
         </h2>
         <p class="text-slate-500 dark:text-slate-400 text-xs font-medium mb-6">
-            Configure which audited sections and career target metrics you want to show on your public portfolio page.
+            {{ $t('study_display_settings_desc') }}
         </p>
 
         <form @submit.prevent="saveSettings" class="space-y-6">
             <!-- Checklist Settings -->
             <div class="space-y-4">
-                <label class="block text-xs font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2">Visible Sections</label>
+                <label class="block text-xs font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2">{{ $t('study_visible_sections') }}</label>
                 
                 <!-- Toggle: Pemahaman Materi (Radar) -->
                 <label class="flex items-center justify-between p-3 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200/50 dark:border-slate-800/50 cursor-pointer select-none hover:bg-slate-100 dark:hover:bg-slate-900 transition">
                     <div class="flex items-center gap-3">
                         <span class="text-lg">📊</span>
                         <div class="text-left">
-                            <span class="text-sm font-bold text-slate-800 dark:text-slate-200 block">Pemahaman Materi (Radar Chart)</span>
-                            <span class="text-xs text-slate-400 dark:text-slate-500">Show verified academic competency levels</span>
+                            <span class="text-sm font-bold text-slate-800 dark:text-slate-200 block">{{ $t('study_setting_radar') }}</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">{{ $t('study_setting_radar_desc') }}</span>
                         </div>
                     </div>
                     <input 
@@ -93,8 +93,8 @@ const saveSettings = () => {
                     <div class="flex items-center gap-3">
                         <span class="text-lg">🎯</span>
                         <div class="text-left">
-                            <span class="text-sm font-bold text-slate-800 dark:text-slate-200 block">Kesiapan Karir (ML Archetype Fits)</span>
-                            <span class="text-xs text-slate-400 dark:text-slate-500">Show Scikit-Learn predicted archetype matches</span>
+                            <span class="text-sm font-bold text-slate-800 dark:text-slate-200 block">{{ $t('study_setting_archetypes') }}</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">{{ $t('study_setting_archetypes_desc') }}</span>
                         </div>
                     </div>
                     <input 
@@ -109,8 +109,8 @@ const saveSettings = () => {
                     <div class="flex items-center gap-3">
                         <span class="text-lg">📚</span>
                         <div class="text-left">
-                            <span class="text-sm font-bold text-slate-800 dark:text-slate-200 block">Daftar Dokumen (Audited Coursework)</span>
-                            <span class="text-xs text-slate-400 dark:text-slate-500">Show secure list of academic PDF, link, and notes</span>
+                            <span class="text-sm font-bold text-slate-800 dark:text-slate-200 block">{{ $t('study_setting_materials') }}</span>
+                            <span class="text-xs text-slate-400 dark:text-slate-500">{{ $t('study_setting_materials_desc') }}</span>
                         </div>
                     </div>
                     <input 
@@ -124,11 +124,11 @@ const saveSettings = () => {
             <!-- Custom Career Target Section -->
             <div class="pt-4 border-t border-slate-100 dark:border-slate-800/60 space-y-4">
                 <div class="flex items-center justify-between">
-                    <label class="block text-xs font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500">Custom Career Goal Target</label>
+                    <label class="block text-xs font-extrabold uppercase tracking-widest text-slate-400 dark:text-slate-500">{{ $t('study_career_target_input') }}</label>
                     
                     <!-- Toggle: Target career visible -->
                     <label class="flex items-center gap-2 cursor-pointer select-none">
-                        <span class="text-xs text-slate-400 dark:text-slate-500 font-semibold">Show Target</span>
+                        <span class="text-xs text-slate-400 dark:text-slate-500 font-semibold">{{ $t('study_setting_career_target') }}</span>
                         <input 
                             type="checkbox" 
                             v-model="form.show_career_target"
@@ -144,12 +144,12 @@ const saveSettings = () => {
                     <input 
                         v-model="form.career_target"
                         type="text" 
-                        placeholder="e.g. Fullstack Web Developer, AI Researcher, Cybersecurity Specialist"
+                        :placeholder="$t('study_career_goal_placeholder')"
                         class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
                     />
                 </div>
                 <p class="text-[11px] text-slate-400 dark:text-slate-500 font-medium">
-                    Input your target field (e.g. "Python Backend Engineer"). We calculate a career readiness index comparing your coursework against target requirements.
+                    {{ $t('study_career_target_desc') }}
                 </p>
             </div>
 
@@ -161,7 +161,7 @@ const saveSettings = () => {
             >
                 <span v-if="form.processing"><Loader2 class="h-4 w-4 animate-spin" /></span>
                 <span v-else class="flex items-center gap-1.5">
-                    Save Display Settings
+                    {{ $t('study_save_settings') }}
                     <Save class="h-4 w-4" />
                 </span>
             </button>
