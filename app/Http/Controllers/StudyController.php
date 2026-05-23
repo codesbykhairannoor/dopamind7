@@ -122,31 +122,43 @@ class StudyController extends Controller
             if ($inputMode === 'file') {
                 // Use the temporary uploaded file directly to bypass Vercel read-only local storage limits
                 $fullPath = $request->file('file')->getRealPath();
+                $ext = strtolower($request->file('file')->getClientOriginalExtension());
 
-                // 1. Try local Python pdfplumber extraction
-                try {
-                    $pythonOutput = $this->runPython([
-                        base_path('python_pipeline/pipeline.py'),
-                        '--action',
-                        'extract',
-                        '--file',
-                        $fullPath
-                    ]);
-                    $outputJson = json_decode($pythonOutput, true);
-                    if (isset($outputJson['text']) && !empty($outputJson['text'])) {
-                        $extractedText = $outputJson['text'];
-                    } else {
-                        throw new \Exception("Python extraction returned empty text or error: " . ($outputJson['error'] ?? 'Unknown error'));
-                    }
-                } catch (\Throwable $e) {
-                    Log::warning("Python extraction failed, falling back to Gemini API: " . $e->getMessage());
-                    
-                    // Fallback: Use Gemini Multimodal PDF Reader
-                    $base64 = base64_encode(file_get_contents($fullPath));
-                    $extractedText = $this->geminiService->extractResumeText($base64);
-                    
-                    if (empty($extractedText)) {
-                        throw new \Exception("Gemini PDF extraction also returned empty text.");
+                // Try native PHP extraction first for DOCX/PPTX to bypass Vercel Python limits
+                if ($ext === 'docx') {
+                    $extractedText = $this->extractDocxText($fullPath);
+                } elseif ($ext === 'pptx') {
+                    $extractedText = $this->extractPptxText($fullPath);
+                }
+                
+                // If native extraction didn't yield much, or it's a PDF, try Python then Gemini
+                if (empty($extractedText)) {
+                    try {
+                        $pythonOutput = $this->runPython([
+                            base_path('python_pipeline/pipeline.py'),
+                            '--action',
+                            'extract',
+                            '--file',
+                            $fullPath
+                        ]);
+                        $outputJson = json_decode($pythonOutput, true);
+                        if (isset($outputJson['text']) && !empty($outputJson['text'])) {
+                            $extractedText = $outputJson['text'];
+                        } else {
+                            throw new \Exception("Python extraction returned empty text or error: " . ($outputJson['error'] ?? 'Unknown error'));
+                        }
+                    } catch (\Throwable $e) {
+                        Log::warning("Python extraction failed, falling back to Gemini API: " . $e->getMessage());
+                        
+                        if ($ext === 'pdf') {
+                            // Fallback: Use Gemini Multimodal PDF Reader ONLY for PDF
+                            $base64 = base64_encode(file_get_contents($fullPath));
+                            $extractedText = $this->geminiService->extractResumeText($base64);
+                        }
+                        
+                        if (empty($extractedText)) {
+                            throw new \Exception("All extraction methods failed or returned empty text for this file.");
+                        }
                     }
                 }
             } elseif ($inputMode === 'text') {
@@ -415,5 +427,40 @@ class StudyController extends Controller
         }
 
         throw $lastException ?: new \Exception("Could not execute python script.");
+    }
+
+    private function extractDocxText($filePath)
+    {
+        $text = '';
+        $zip = new \ZipArchive;
+        if ($zip->open($filePath) === true) {
+            if (($index = $zip->locateName('word/document.xml')) !== false) {
+                $data = $zip->getFromIndex($index);
+                $xml = new \DOMDocument();
+                $xml->loadXML($data, LIBXML_NOENT | LIBXML_XINCLUDE | LIBXML_NOERROR | LIBXML_NOWARNING);
+                $text = strip_tags($xml->saveXML());
+            }
+            $zip->close();
+        }
+        return trim($text);
+    }
+
+    private function extractPptxText($filePath)
+    {
+        $text = '';
+        $zip = new \ZipArchive;
+        if ($zip->open($filePath) === true) {
+            for ($i = 0; $i < $zip->numFiles; $i++) {
+                $name = $zip->getNameIndex($i);
+                if (preg_match('/^ppt\/slides\/slide[0-9]+\.xml$/i', $name)) {
+                    $data = $zip->getFromIndex($i);
+                    $xml = new \DOMDocument();
+                    $xml->loadXML($data, LIBXML_NOENT | LIBXML_XINCLUDE | LIBXML_NOERROR | LIBXML_NOWARNING);
+                    $text .= strip_tags($xml->saveXML()) . " \n";
+                }
+            }
+            $zip->close();
+        }
+        return trim($text);
     }
 }
