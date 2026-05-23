@@ -123,9 +123,10 @@ class StudyController extends Controller
             $material->artifact_data = $artifactData;
             $material->extracted_text = "--- CONTEXT ---\n" . substr($aggregatedContextText, 0, 20000) . "\n\n--- ARTIFACT ---\n" . substr($aggregatedArtifactText, 0, 20000);
 
-            // DYNAMIC ML USING PYTHON WITH GEMINI FALLBACK
+            // DYNAMIC HYBRID ML (60% PYTHON ML for Archetypes, 40% GEMINI for Competencies)
             $metadata = null;
             try {
+                // 1. Python extracts text and predicts Archetypes
                 $pythonOutput = $this->runPython([
                     base_path('python_pipeline/pipeline.py'),
                     '--action',
@@ -133,17 +134,19 @@ class StudyController extends Controller
                 ], $aggregatedContextText . "\n" . $aggregatedArtifactText);
                 
                 $parsed = json_decode($pythonOutput, true);
-                if (isset($parsed['competencies']) && isset($parsed['archetypes'])) {
-                    $metadata = $parsed;
-                    $metadata['source'] = 'python_ml';
+                if (isset($parsed['archetypes'])) {
+                    // 2. Pass the ML Archetypes to Gemini to generate Competencies & Insights
+                    $mlArchetypes = $parsed['archetypes'];
+                    $metadata = $this->geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $request->course_name, $mlArchetypes);
+                    $metadata['source'] = 'hybrid_ml_gemini';
                 } else {
                     throw new \Exception("Invalid output format from Python ML.");
                 }
             } catch (\Throwable $e) {
-                // Fallback to Gemini if Python fails or is not available
-                Log::warning("Python ML failed, falling back to Gemini API: " . $e->getMessage());
+                // Fallback to 100% Gemini if Python fails or is not available
+                Log::warning("Python ML failed, falling back to 100% Gemini API: " . $e->getMessage());
                 $metadata = $this->geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $request->course_name);
-                $metadata['source'] = 'gemini_api';
+                $metadata['source'] = 'gemini_api_only';
             }
 
             $material->metadata = $metadata;

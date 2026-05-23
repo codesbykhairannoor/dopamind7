@@ -341,11 +341,12 @@ class GeminiService
     /**
      * Analyze Coursework for Dynamic Competencies and Archetypes
      */
-    public function analyzeCourseworkCompetencies($contextText, $artifactText, $courseName)
+    public function analyzeCourseworkCompetencies($contextText, $artifactText, $courseName, $mlArchetypes = null)
     {
         $locale = app()->getLocale();
         $langName = ($locale === 'id') ? 'Indonesian' : 'English';
 
+        // Base prompt
         $prompt = "You are an expert academic evaluator and career counselor.
         Analyze this student's coursework submission for the course: \"{$courseName}\".
         
@@ -357,10 +358,21 @@ class GeminiService
         
         TASK:
         Based strictly on the content provided:
-        1. Identify the 'Field of Study' (e.g., Corporate Finance, Data Science, Graphic Design, Nursing). Do not default to software engineering unless applicable.
+        1. Identify the 'Field of Study' (e.g., Corporate Finance, Data Science, Graphic Design, Nursing).
         2. Identify 4-6 specific technical 'Competencies' demonstrated in the artifact. Score each competency from 0-100 based on the depth of knowledge shown.
-        3. Identify 3 'Career Archetypes' (Job Titles) that this coursework aligns with. Score them from 0-100.
-        4. Provide a 2-sentence 'Verdict' describing their strengths. MUST USE $langName language.
+        ";
+        
+        // If ML Archetypes are provided, instruct Gemini to adopt them. Otherwise, generate them.
+        if ($mlArchetypes !== null) {
+            $archetypesJson = json_encode($mlArchetypes);
+            $prompt .= "3. The Machine Learning model has already predicted these 'Career Archetypes' with scores: {$archetypesJson}. DO NOT generate new archetypes. Output these exact archetypes and scores back in your JSON response.
+        4. Provide a 2-sentence 'Verdict' describing their strengths and how they align with the predicted archetypes. MUST USE $langName language.";
+        } else {
+            $prompt .= "3. Identify 3 'Career Archetypes' (Job Titles) that this coursework aligns with. Score them from 0-100.
+        4. Provide a 2-sentence 'Verdict' describing their strengths. MUST USE $langName language.";
+        }
+
+        $prompt .= "
         
         OUTPUT FORMAT (Strictly JSON, no markdown):
         {
