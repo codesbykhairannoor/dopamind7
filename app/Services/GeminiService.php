@@ -336,5 +336,56 @@ class GeminiService
         ];
 
         return $this->executeRequest('analyze', $payload);
+    /**
+     * Analyze Coursework for Dynamic Competencies and Archetypes
+     */
+    public function analyzeCourseworkCompetencies($contextText, $artifactText, $courseName)
+    {
+        $locale = app()->getLocale();
+        $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+
+        $prompt = "You are an expert academic evaluator and career counselor.
+        Analyze this student's coursework submission for the course: \"{$courseName}\".
+        
+        CONTEXT (Instructions/Syllabus):
+        " . substr($contextText, 0, 15000) . "
+        
+        ARTIFACT (Student's Submission/Answer):
+        " . substr($artifactText, 0, 15000) . "
+        
+        TASK:
+        Based strictly on the content provided:
+        1. Identify the 'Field of Study' (e.g., Corporate Finance, Data Science, Graphic Design, Nursing). Do not default to software engineering unless applicable.
+        2. Identify 4-6 specific technical 'Competencies' demonstrated in the artifact. Score each competency from 0-100 based on the depth of knowledge shown.
+        3. Identify 3 'Career Archetypes' (Job Titles) that this coursework aligns with. Score them from 0-100.
+        4. Provide a 2-sentence 'Verdict' describing their strengths. MUST USE $langName language.
+        
+        OUTPUT FORMAT (Strictly JSON, no markdown):
+        {
+          \"field_of_study\": \"Field Name\",
+          \"competencies\": {\"Competency 1\": 85, \"Competency 2\": 90},
+          \"archetypes\": {\"Job Title 1\": 85, \"Job Title 2\": 80},
+          \"verdict\": \"The narrative verdict...\"
+        }";
+
+        $response = $this->generate($prompt);
+        
+        $default = [
+            'field_of_study' => 'General Studies',
+            'competencies' => ['Analysis' => 50, 'Comprehension' => 50],
+            'archetypes' => ['Student' => 50],
+            'verdict' => 'Unable to generate dynamic analysis. Defaulting to general metrics.'
+        ];
+
+        if (!$response) return $default;
+
+        $cleaned = trim($response);
+        if (str_starts_with($cleaned, '```')) {
+            $cleaned = preg_replace('/^```(?:json)?\s*/', '', $cleaned);
+            $cleaned = preg_replace('/\s*```$/', '', $cleaned);
+        }
+
+        $decoded = json_decode(trim($cleaned), true);
+        return $decoded ?: $default;
     }
 }

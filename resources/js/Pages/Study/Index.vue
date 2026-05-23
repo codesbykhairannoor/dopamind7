@@ -34,17 +34,13 @@ const props = defineProps({
 const activeTab = ref('upload');
 
 const tabDefs = [
-    { key: 'upload',    icon: Upload,      labelKey: 'study_tab_upload',    label: 'Upload' },
-    { key: 'cards',     icon: LayoutGrid,  labelKey: 'study_tab_cards',     label: 'My Cards' },
-    { key: 'analytics', icon: BarChart3,   labelKey: 'study_tab_analytics', label: 'Analytics' },
-    { key: 'portfolio', icon: Settings2,   labelKey: 'study_tab_portfolio', label: 'Portfolio' },
+    { key: 'upload',    icon: Upload,      labelKey: 'study_tab_upload',    label: 'Add Materials' },
+    { key: 'portfolio', icon: LayoutGrid,  labelKey: 'study_tab_portfolio', label: 'My Portfolio' },
 ];
 
 const tabBadge = computed(() => ({
     upload:    null,
-    cards:     props.materials.length > 0 ? props.materials.length : null,
-    analytics: props.competency ? '✓' : null,
-    portfolio: props.user?.username ? '●' : null,
+    portfolio: props.materials.length > 0 ? props.materials.length : null,
 }));
 
 const badgeColorClass = (key, isActive) => {
@@ -148,20 +144,19 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
             <!-- TAB PANELS -->
             <Transition name="tab-fade" mode="out-in">
 
-                <div v-if="activeTab === 'upload'" key="upload">
-                    <StudyUploadForm :materials-count="props.materials.length" />
+                <!-- ADD MATERIALS TAB -->
+                <div v-if="activeTab === 'upload'" key="upload" class="flex flex-col gap-8">
+                    <StudyUploadForm :materials="props.materials" />
+                    <StudySettingsForm :settings="props.competency?.settings" />
                 </div>
 
-                <div v-else-if="activeTab === 'cards'" key="cards">
-                    <StudyMaterialList :materials="props.materials" :user="props.user" />
-                </div>
-
-                <div v-else-if="activeTab === 'analytics'" key="analytics" class="flex flex-col gap-8">
-                    <StudyCompetencyRadar :competency="props.competency" />
-                    <StudyArchetypeMatches :competency="props.competency" />
-                </div>
-
-                <div v-else-if="activeTab === 'portfolio'" key="portfolio" class="flex flex-col gap-6">
+                <!-- MY PORTFOLIO TAB -->
+                <div v-else-if="activeTab === 'portfolio'" key="portfolio" class="flex flex-col gap-8">
+                    
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                        <StudyCompetencyRadar :competency="props.competency" />
+                        <StudyArchetypeMatches :competency="props.competency" />
+                    </div>
 
                     <!-- Public URL Card -->
                     <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.03)]">
@@ -225,7 +220,7 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
                         <InputError :message="usernameForm.errors.username" class="mt-2 pl-2" />
                     </div>
 
-                    <StudySettingsForm :settings="props.competency?.settings" />
+                    <StudyMaterialList :materials="props.materials" :user="props.user" />
                 </div>
 
             </Transition>

@@ -2679,6 +2679,202 @@ const gating$1 = {
     benefit_3: "Target Maturity Alerts"
   }
 };
+const trial_success_title$1 = "Welcome to Architect Plan!";
+const trial_success_text$1 = "Your trial period is now active. Enjoy all our premium features.";
+const trial_remaining$1 = "Trial Time Remaining:";
+const trial_days$1 = "Days";
+const trial_confirm_title$1 = "Start Trial Period?";
+const trial_confirm_text$1 = "You will get full access to Architect features for 10 days for free.";
+const btn_yes$1 = "Yes, Start Now";
+const nav_home$2 = "Home";
+const nav_about$2 = "About Us";
+const nav_login$2 = "Log In";
+const nav_register$2 = "Get Started";
+const nav_dashboard$2 = "Dashboard";
+const nav_settings$1 = "App Settings";
+const nav_logout$1 = "Log Out";
+const nav_core_modules$1 = "System Core";
+const nav_platinum_suite$1 = "Platinum Suite";
+const nav_upgrade_pro$1 = "Get Architect";
+const btn_upgrade_limit$1 = "Upgrade Limit";
+const label_usage_limit$1 = "Usage Limit";
+const auth_processing$1 = "Processingâ€¦";
+const nav_item_premium$1 = "Go Elite";
+const nav_item_dashboard$1 = "Dashboard";
+const nav_item_habit$1 = "Habit Tracker";
+const nav_item_planner$1 = "Daily Planner";
+const nav_item_finance$1 = "Finance Manager";
+const nav_item_journal$1 = "My Journal";
+const nav_item_calendar$1 = "My Calendar";
+const nav_item_jobs$1 = "Job Tracker";
+const nav_item_goals$1 = "Goal Planner";
+const nav_item_settings$1 = "Settings";
+const nav_item_coach$1 = "AI Coach";
+const nav_item_more$1 = "More";
+const nav_search$1 = "Search";
+const nav_search_anything$1 = "Search anythingâ€¦";
+const nav_search_placeholder$1 = "Search modules or pagesâ€¦";
+const nav_menu_title$1 = "Menu";
+const nav_close_menu$1 = "Close menu";
+const nav_toggle_menu$1 = "Open navigation menu";
+const nav_avatar$1 = "Avatar";
+const nav_active_account$1 = "Active Account";
+const nav_neural_active$1 = "Neural assistant active";
+const nav_user_fallback$1 = "User";
+const theme_dark$1 = "Dark Mode";
+const theme_light$1 = "Light Mode";
+const more_launcher_title$1 = "Launchpad";
+const more_launcher_subtitle$1 = "Productivity Ecosystem";
+const nav_desc_planner$1 = "Daily Planning";
+const nav_desc_journal$1 = "Personal Journal";
+const nav_desc_calendar$1 = "Schedule Management";
+const nav_desc_jobs$1 = "Career Tracking";
+const nav_desc_goals$1 = "Life Milestones";
+const more_upgrade_badge$1 = "PREMIUM UPGRADE";
+const more_upgrade_title$1 = "Elevate to Elite Performance";
+const more_upgrade_desc$1 = "Unlock AI-powered life insights, advanced wealth tracking, and seamless external integrations.";
+const more_upgrade_btn$1 = "Upgrade Now";
+const seo_meta_desc_1 = "Oneformind is an all-in-one productivity tracker that efficiently combines finance management, habit tracking, and daily planning.";
+const footer_rights$1 = "Â© 2026 Oneformind. All rights reserved.";
+const nav_features$1 = "Features";
+const nav_solutions$1 = "Solutions";
+const nav_resources$1 = "Resources";
+const nav_pricing$1 = "Pricing";
+const nav_language$1 = "Language";
+const lang_id$1 = "Bahasa Indonesia";
+const lang_en$1 = "English";
+const nav_mobile_by_role$1 = "By Role";
+const nav_mobile_by_usecase$1 = "By Use Case";
+const nav_mobile_by_method$1 = "By Methodology";
+const nav_mobile_res_knowledge$1 = "Knowledge & Help";
+const nav_mobile_res_social$1 = "Social & Community";
+const nav_mobile_feat_habit_title$1 = "Habit Tracker";
+const nav_mobile_feat_habit_desc$1 = "Build consistency daily";
+const nav_mobile_feat_finance_title$1 = "Finance OS";
+const nav_mobile_feat_finance_desc$1 = "Manage cashflow clearly";
+const nav_mobile_feat_planner_title$1 = "Daily Planner";
+const nav_mobile_feat_planner_desc$1 = "Focus your top 3 tasks";
+const nav_mobile_feat_journal_title$1 = "Journal";
+const nav_mobile_feat_journal_desc$1 = "Capture reflections";
+const nav_mobile_feat_calendar_title$1 = "Calendar";
+const nav_mobile_feat_calendar_desc$1 = "Track events and schedule";
+const nav_mobile_feat_goal_title$1 = "Goal Tracker";
+const nav_mobile_feat_goal_desc$1 = "Milestones and progress";
+const nav_mobile_feat_job_title$1 = "Job Tracker";
+const nav_mobile_feat_job_desc$1 = "Manage applications";
+const nav_mobile_feat_neural_title$1 = "Neural OS AI";
+const nav_mobile_feat_neural_desc$1 = "AI-powered planning coach";
+const nav_mobile_sol_student_title$1 = "Students";
+const nav_mobile_sol_student_desc$1 = "Study system optimizer";
+const nav_mobile_sol_freelancer_title$1 = "Freelancers";
+const nav_mobile_sol_freelancer_desc$1 = "Control client workflow";
+const nav_mobile_sol_growth_title$1 = "Personal Growth";
+const nav_mobile_sol_growth_desc$1 = "Upgrade mindset and habits";
+const nav_mobile_sol_finance_title$1 = "Finance Clarity";
+const nav_mobile_sol_finance_desc$1 = "Budget and cashflow control";
+const nav_mobile_sol_career_title$1 = "Career Tracker";
+const nav_mobile_sol_career_desc$1 = "Track opportunities clearly";
+const nav_mobile_sol_mental_title$1 = "Mental Health";
+const nav_mobile_sol_mental_desc$1 = "Reduce stress and overthinking";
+const nav_mobile_sol_atomic_title$1 = "Atomic Habits";
+const nav_mobile_sol_atomic_desc$1 = "Small steps, big results";
+const nav_mobile_sol_deepwork_title$1 = "Deep Work";
+const nav_mobile_sol_deepwork_desc$1 = "Protect focus blocks";
+const nav_mobile_sol_secondbrain_title$1 = "Second Brain";
+const nav_mobile_sol_secondbrain_desc$1 = "Build your thinking system";
+const nav_mobile_res_guide_title$1 = "User Guide";
+const nav_mobile_res_guide_desc$1 = "How to use OneForMind";
+const nav_mobile_res_help_title$1 = "Help Center";
+const nav_mobile_res_help_desc$1 = "Common answers and support";
+const nav_mobile_res_changelog_title$1 = "What's New";
+const nav_mobile_res_changelog_desc$1 = "Latest product updates";
+const nav_mobile_res_community_title$1 = "Community";
+const nav_mobile_res_community_desc$1 = "Join user discussions";
+const nav_mobile_res_blog_title$1 = "Blog";
+const nav_mobile_res_blog_desc$1 = "Productivity insights";
+const nav_mobile_res_stories_title$1 = "Success Stories";
+const nav_mobile_res_stories_desc$1 = "Real transformation stories";
+const modal_logout_title$1 = "Want to say goodbye?";
+const modal_logout_subtitle$1 = "Don't forget to come back soon, your progress for today has been saved securely!";
+const modal_logout_confirm$1 = "Yes, Logout";
+const modal_logout_cancel$1 = "Cancel";
+const seo_about_desc$1 = "Discover the vision behind OneForMind. We are building the unified workspace for your daily habits, finances, and goals.";
+const footer_legal$1 = "Privacy & Terms";
+const legal_title$1 = "Terms & Conditions and Policy";
+const legal_ref$1 = "Official Privacy Reference:";
+const privacy_title$1 = "Privacy Policy for Oneformind";
+const privacy_p1$1 = "At Oneformind, accessible from https://oneformind.com, one of our main priorities is the privacy of our visitors.";
+const privacy_consent_title$1 = "Consent";
+const privacy_consent_p$1 = "By using our website, you hereby consent to our Privacy Policy and agree to its terms.";
+const privacy_info_title$1 = "Information we collect";
+const privacy_info_p$1 = "The personal information that you are asked to provide will be made clear to you at the point we ask you to provide it.";
+const tos_title$1 = "Terms of Service";
+const tos_intro$1 = "By accessing and using Oneformind, you agree to be bound by the following terms:";
+const tos_service_title$1 = "1. Service Availability";
+const tos_service_p$1 = 'Oneformind is provided on an "as is" and "as available" basis. While we strive for maximum uptime, we do not guarantee that the service will be uninterrupted, error-free, or completely secure.';
+const tos_data_title$1 = "2. Data Accuracy & Responsibility";
+const tos_data_p$1 = "You are solely responsible for the financial, habit, and planner data you input. Oneformind is a productivity tool, not a certified financial advisor. We are not liable for any financial losses or decisions made based on the data displayed.";
+const tos_security_title$1 = "3. Fair Use & Security";
+const tos_security_p$1 = "Users are strictly prohibited from attempting to breach system security, conducting SQL injections, scraping data, or disrupting the platform's infrastructure.";
+const tos_termination_title$1 = "4. Account Termination";
+const tos_termination_p$1 = "We reserve the right to suspend or terminate accounts immediately, without prior notice, if a user is found violating these terms or abusing system resources.";
+const legal_close$1 = "Close & Understand";
+const cookie_title$1 = "ðŸª Care for a Cookie?";
+const cookie_desc$1 = "We use cookies to ensure you get the best and most secure experience on our system.";
+const cookie_btn_accept$1 = "Accept All";
+const cookie_btn_settings$1 = "Settings";
+const cookie_btn_essential$1 = "Essential Only";
+const contact_title$1 = "Contact Us";
+const contact_subtitle$1 = "Have questions or need help? Our team is ready to support your productivity journey.";
+const contact_form_name$1 = "Full Name";
+const contact_form_email$1 = "Email Address";
+const contact_form_subject$1 = "Subject";
+const contact_form_message$1 = "Your Message";
+const contact_btn_send$1 = "Send Message Now";
+const contact_success_title$1 = "Message Sent!";
+const contact_success_desc$1 = "Thank you! We will get back to you within 24-48 hours.";
+const contact_info_title$1 = "Contact Information";
+const contact_info_hq$1 = "OneForMind Headquarters";
+const contact_info_jakarta$1 = "Jakarta, Indonesia";
+const contact_info_support$1 = "Technical Support";
+const contact_info_billing$1 = "Billing & Licensing";
+const contact_info_chat$1 = "Live Chat";
+const contact_info_chat_status$1 = "Quick Support";
+const contact_faq_title$1 = "Have technical questions?";
+const contact_faq_desc$1 = "Check our help documentation for instant answers about features and licensing.";
+const contact_faq_btn = "Open Help Center";
+const contact_form_message_placeholder$1 = "How can we help you?";
+const contact_form_name_placeholder$1 = "John Doe";
+const contact_form_email_placeholder$1 = "john@example.com";
+const contact_subject_partnership$1 = "Business Partnership";
+const contact_subject_other$1 = "Other";
+const payment_success_title$1 = "Access Granted!";
+const payment_pending_title$1 = "Payment Pending";
+const payment_failed_title$1 = "Payment Cancelled";
+const payment_welcome_msg$1 = "Welcome to the elite ecosystem,";
+const payment_quantum_praise$1 = "Your potential is now officially expanded.";
+const payment_pending_msg$1 = "Your payment is currently being processed. We will notify you once it is confirmed.";
+const payment_failed_msg$1 = "Your payment was cancelled or failed. You can try again anytime.";
+const payment_btn_dashboard$1 = "Go to Dashboard";
+const payment_btn_billing$1 = "Back to Billing";
+const payment_btn_pricing$1 = "Back to Pricing";
+const payment_btn_ai$1 = "Talk to AI Coach";
+const error_title_503$1 = "503: Service Unavailable";
+const error_title_500$1 = "500: Server Error";
+const error_title_404$1 = "404: Page Not Found";
+const error_title_403$1 = "403: Forbidden";
+const error_title_default$1 = "An Error Occurred";
+const error_desc_503$1 = "Sorry, our servers are currently under maintenance. Please check back later!";
+const error_desc_500$1 = "Oops, something went wrong on our end. The OneForMind team is looking into it!";
+const error_desc_404$1 = "The page you are looking for does not exist. You might have mistyped the address or the page has moved.";
+const error_desc_403$1 = "Sorry, you do not have permission to access this page.";
+const error_desc_default$1 = "An unexpected technical issue occurred. Please try again.";
+const error_btn_back$1 = "Back to Home";
+const calendar_page_title$1 = "Calendar";
+const neural_bridge_title$1 = "Neural Bridge";
+const neural_bridge_limit$1 = "Neural insights require Quantum Plan";
+const btn_upgrade$1 = "Upgrade Now";
+const btn_get_intelligence$1 = "Get Intelligence";
 const goal_page_title$1 = "Goal Tracker";
 const goal_add_row$1 = "Add Goal";
 const goal_bulk_selected$1 = "Goals Selected";
@@ -3480,8 +3676,6 @@ const solve_finance_syn_desc$1 = "Connect habits to cash flow.";
 const solve_finance_syn_title$1 = "The Synergy Loop";
 const more_core_tools$1 = "Core Ecosystem";
 const more_premium_tools$1 = "Platinum & Neural Suite";
-const more_launcher_title$1 = "Launchpad";
-const more_launcher_subtitle$1 = "Productivity Ecosystem";
 const section_architecture$1 = "Architecture Suite";
 const section_manifestation$1 = "Manifestation Lab";
 const section_system$1 = "System Core";
@@ -3491,10 +3685,6 @@ const feature_finance_title$1 = "Wealth Systems";
 const feature_finance_desc$1 = "Manage multi-currency protocols";
 const feature_calendar_title$1 = "System Timeline";
 const feature_calendar_desc$1 = "Synchronize global events";
-const more_upgrade_badge$1 = "PREMIUM UPGRADE";
-const more_upgrade_title$1 = "Elevate to Elite Performance";
-const more_upgrade_desc$1 = "Unlock AI-powered life insights, advanced wealth tracking, and seamless external integrations.";
-const more_upgrade_btn$1 = "Upgrade Now";
 const preview_modal_title$1 = "Elevate Your Story";
 const preview_modal_desc$1 = "You are witnessing a glimpse of the premium system. Upgrade to unlock full access.";
 const preview_view_plans$1 = "View Plans & Upgrades";
@@ -3565,10 +3755,6 @@ const neural_coach_user$1 = "You";
 const neural_coach_msg1$1 = "I noticed you're 20% more likely to execute habits when your morning mood is 'Excited'. Want me to move your high-energy tasks there?";
 const neural_coach_msg2$1 = "Yes, please optimize my schedule.";
 const neural_coach_msg3$1 = "Done! Your Planner has been updated for maximum flow.";
-const neural_bridge_title$1 = "Neural Bridge";
-const neural_bridge_limit$1 = "Neural insights require Quantum Plan";
-const btn_get_intelligence$1 = "Get Intelligence";
-const btn_upgrade$1 = "Upgrade Now";
 const onboarding_title$1 = "Onboarding";
 const onboarding_step_goal_title$1 = "What is your main goal?";
 const onboarding_step_goal_desc$1 = "Select one focus that matters most to you right now.";
@@ -4684,7 +4870,6 @@ const billing_feature_calendar$1 = "Calendar (Lifetime Only)";
 const billing_feature_goals$1 = "Goal Tracker (Lifetime Only)";
 const billing_feature_jobs$1 = "Job Tracker (Lifetime Only)";
 const billing_feature_ai_soon$1 = "AI Features Coming Soon!";
-const legal_title$1 = "Terms & Conditions and Policy";
 const legal_desc$1 = "Important pages regarding your data and privacy on Oneformind.";
 const legal_section_1_title$1 = "1. Data Collection";
 const legal_section_1_desc$1 = "We collect data that you provide directly when registering, including name, email, and content you create within the Oneformind application such as habits, journals, and daily tasks.";
@@ -7920,6 +8105,203 @@ const en = {
   vault_withdraw_notice: vault_withdraw_notice$1,
   btn_processing: btn_processing$1,
   gating: gating$1,
+  trial_success_title: trial_success_title$1,
+  trial_success_text: trial_success_text$1,
+  trial_remaining: trial_remaining$1,
+  trial_days: trial_days$1,
+  trial_confirm_title: trial_confirm_title$1,
+  trial_confirm_text: trial_confirm_text$1,
+  btn_yes: btn_yes$1,
+  "____ SECTION_1 ____": "=== NAVIGATION & GLOBAL ===",
+  nav_home: nav_home$2,
+  nav_about: nav_about$2,
+  nav_login: nav_login$2,
+  nav_register: nav_register$2,
+  nav_dashboard: nav_dashboard$2,
+  nav_settings: nav_settings$1,
+  nav_logout: nav_logout$1,
+  nav_core_modules: nav_core_modules$1,
+  nav_platinum_suite: nav_platinum_suite$1,
+  nav_upgrade_pro: nav_upgrade_pro$1,
+  btn_upgrade_limit: btn_upgrade_limit$1,
+  label_usage_limit: label_usage_limit$1,
+  auth_processing: auth_processing$1,
+  nav_item_premium: nav_item_premium$1,
+  nav_item_dashboard: nav_item_dashboard$1,
+  nav_item_habit: nav_item_habit$1,
+  nav_item_planner: nav_item_planner$1,
+  nav_item_finance: nav_item_finance$1,
+  nav_item_journal: nav_item_journal$1,
+  nav_item_calendar: nav_item_calendar$1,
+  nav_item_jobs: nav_item_jobs$1,
+  nav_item_goals: nav_item_goals$1,
+  nav_item_settings: nav_item_settings$1,
+  nav_item_coach: nav_item_coach$1,
+  nav_item_more: nav_item_more$1,
+  nav_search: nav_search$1,
+  nav_search_anything: nav_search_anything$1,
+  nav_search_placeholder: nav_search_placeholder$1,
+  nav_menu_title: nav_menu_title$1,
+  nav_close_menu: nav_close_menu$1,
+  nav_toggle_menu: nav_toggle_menu$1,
+  nav_avatar: nav_avatar$1,
+  nav_active_account: nav_active_account$1,
+  nav_neural_active: nav_neural_active$1,
+  nav_user_fallback: nav_user_fallback$1,
+  theme_dark: theme_dark$1,
+  theme_light: theme_light$1,
+  more_launcher_title: more_launcher_title$1,
+  more_launcher_subtitle: more_launcher_subtitle$1,
+  nav_desc_planner: nav_desc_planner$1,
+  nav_desc_journal: nav_desc_journal$1,
+  nav_desc_calendar: nav_desc_calendar$1,
+  nav_desc_jobs: nav_desc_jobs$1,
+  nav_desc_goals: nav_desc_goals$1,
+  more_upgrade_badge: more_upgrade_badge$1,
+  more_upgrade_title: more_upgrade_title$1,
+  more_upgrade_desc: more_upgrade_desc$1,
+  more_upgrade_btn: more_upgrade_btn$1,
+  seo_meta_desc_1,
+  footer_rights: footer_rights$1,
+  nav_features: nav_features$1,
+  nav_solutions: nav_solutions$1,
+  nav_resources: nav_resources$1,
+  nav_pricing: nav_pricing$1,
+  nav_language: nav_language$1,
+  lang_id: lang_id$1,
+  lang_en: lang_en$1,
+  nav_mobile_by_role: nav_mobile_by_role$1,
+  nav_mobile_by_usecase: nav_mobile_by_usecase$1,
+  nav_mobile_by_method: nav_mobile_by_method$1,
+  nav_mobile_res_knowledge: nav_mobile_res_knowledge$1,
+  nav_mobile_res_social: nav_mobile_res_social$1,
+  nav_mobile_feat_habit_title: nav_mobile_feat_habit_title$1,
+  nav_mobile_feat_habit_desc: nav_mobile_feat_habit_desc$1,
+  nav_mobile_feat_finance_title: nav_mobile_feat_finance_title$1,
+  nav_mobile_feat_finance_desc: nav_mobile_feat_finance_desc$1,
+  nav_mobile_feat_planner_title: nav_mobile_feat_planner_title$1,
+  nav_mobile_feat_planner_desc: nav_mobile_feat_planner_desc$1,
+  nav_mobile_feat_journal_title: nav_mobile_feat_journal_title$1,
+  nav_mobile_feat_journal_desc: nav_mobile_feat_journal_desc$1,
+  nav_mobile_feat_calendar_title: nav_mobile_feat_calendar_title$1,
+  nav_mobile_feat_calendar_desc: nav_mobile_feat_calendar_desc$1,
+  nav_mobile_feat_goal_title: nav_mobile_feat_goal_title$1,
+  nav_mobile_feat_goal_desc: nav_mobile_feat_goal_desc$1,
+  nav_mobile_feat_job_title: nav_mobile_feat_job_title$1,
+  nav_mobile_feat_job_desc: nav_mobile_feat_job_desc$1,
+  nav_mobile_feat_neural_title: nav_mobile_feat_neural_title$1,
+  nav_mobile_feat_neural_desc: nav_mobile_feat_neural_desc$1,
+  nav_mobile_sol_student_title: nav_mobile_sol_student_title$1,
+  nav_mobile_sol_student_desc: nav_mobile_sol_student_desc$1,
+  nav_mobile_sol_freelancer_title: nav_mobile_sol_freelancer_title$1,
+  nav_mobile_sol_freelancer_desc: nav_mobile_sol_freelancer_desc$1,
+  nav_mobile_sol_growth_title: nav_mobile_sol_growth_title$1,
+  nav_mobile_sol_growth_desc: nav_mobile_sol_growth_desc$1,
+  nav_mobile_sol_finance_title: nav_mobile_sol_finance_title$1,
+  nav_mobile_sol_finance_desc: nav_mobile_sol_finance_desc$1,
+  nav_mobile_sol_career_title: nav_mobile_sol_career_title$1,
+  nav_mobile_sol_career_desc: nav_mobile_sol_career_desc$1,
+  nav_mobile_sol_mental_title: nav_mobile_sol_mental_title$1,
+  nav_mobile_sol_mental_desc: nav_mobile_sol_mental_desc$1,
+  nav_mobile_sol_atomic_title: nav_mobile_sol_atomic_title$1,
+  nav_mobile_sol_atomic_desc: nav_mobile_sol_atomic_desc$1,
+  nav_mobile_sol_deepwork_title: nav_mobile_sol_deepwork_title$1,
+  nav_mobile_sol_deepwork_desc: nav_mobile_sol_deepwork_desc$1,
+  nav_mobile_sol_secondbrain_title: nav_mobile_sol_secondbrain_title$1,
+  nav_mobile_sol_secondbrain_desc: nav_mobile_sol_secondbrain_desc$1,
+  nav_mobile_res_guide_title: nav_mobile_res_guide_title$1,
+  nav_mobile_res_guide_desc: nav_mobile_res_guide_desc$1,
+  nav_mobile_res_help_title: nav_mobile_res_help_title$1,
+  nav_mobile_res_help_desc: nav_mobile_res_help_desc$1,
+  nav_mobile_res_changelog_title: nav_mobile_res_changelog_title$1,
+  nav_mobile_res_changelog_desc: nav_mobile_res_changelog_desc$1,
+  nav_mobile_res_community_title: nav_mobile_res_community_title$1,
+  nav_mobile_res_community_desc: nav_mobile_res_community_desc$1,
+  nav_mobile_res_blog_title: nav_mobile_res_blog_title$1,
+  nav_mobile_res_blog_desc: nav_mobile_res_blog_desc$1,
+  nav_mobile_res_stories_title: nav_mobile_res_stories_title$1,
+  nav_mobile_res_stories_desc: nav_mobile_res_stories_desc$1,
+  modal_logout_title: modal_logout_title$1,
+  modal_logout_subtitle: modal_logout_subtitle$1,
+  modal_logout_confirm: modal_logout_confirm$1,
+  modal_logout_cancel: modal_logout_cancel$1,
+  seo_about_desc: seo_about_desc$1,
+  footer_legal: footer_legal$1,
+  legal_title: legal_title$1,
+  legal_ref: legal_ref$1,
+  privacy_title: privacy_title$1,
+  privacy_p1: privacy_p1$1,
+  privacy_consent_title: privacy_consent_title$1,
+  privacy_consent_p: privacy_consent_p$1,
+  privacy_info_title: privacy_info_title$1,
+  privacy_info_p: privacy_info_p$1,
+  tos_title: tos_title$1,
+  tos_intro: tos_intro$1,
+  tos_service_title: tos_service_title$1,
+  tos_service_p: tos_service_p$1,
+  tos_data_title: tos_data_title$1,
+  tos_data_p: tos_data_p$1,
+  tos_security_title: tos_security_title$1,
+  tos_security_p: tos_security_p$1,
+  tos_termination_title: tos_termination_title$1,
+  tos_termination_p: tos_termination_p$1,
+  legal_close: legal_close$1,
+  cookie_title: cookie_title$1,
+  cookie_desc: cookie_desc$1,
+  cookie_btn_accept: cookie_btn_accept$1,
+  cookie_btn_settings: cookie_btn_settings$1,
+  cookie_btn_essential: cookie_btn_essential$1,
+  contact_title: contact_title$1,
+  contact_subtitle: contact_subtitle$1,
+  contact_form_name: contact_form_name$1,
+  contact_form_email: contact_form_email$1,
+  contact_form_subject: contact_form_subject$1,
+  contact_form_message: contact_form_message$1,
+  contact_btn_send: contact_btn_send$1,
+  contact_success_title: contact_success_title$1,
+  contact_success_desc: contact_success_desc$1,
+  contact_info_title: contact_info_title$1,
+  contact_info_hq: contact_info_hq$1,
+  contact_info_jakarta: contact_info_jakarta$1,
+  contact_info_support: contact_info_support$1,
+  contact_info_billing: contact_info_billing$1,
+  contact_info_chat: contact_info_chat$1,
+  contact_info_chat_status: contact_info_chat_status$1,
+  contact_faq_title: contact_faq_title$1,
+  contact_faq_desc: contact_faq_desc$1,
+  contact_faq_btn,
+  contact_form_message_placeholder: contact_form_message_placeholder$1,
+  contact_form_name_placeholder: contact_form_name_placeholder$1,
+  contact_form_email_placeholder: contact_form_email_placeholder$1,
+  contact_subject_partnership: contact_subject_partnership$1,
+  contact_subject_other: contact_subject_other$1,
+  payment_success_title: payment_success_title$1,
+  payment_pending_title: payment_pending_title$1,
+  payment_failed_title: payment_failed_title$1,
+  payment_welcome_msg: payment_welcome_msg$1,
+  payment_quantum_praise: payment_quantum_praise$1,
+  payment_pending_msg: payment_pending_msg$1,
+  payment_failed_msg: payment_failed_msg$1,
+  payment_btn_dashboard: payment_btn_dashboard$1,
+  payment_btn_billing: payment_btn_billing$1,
+  payment_btn_pricing: payment_btn_pricing$1,
+  payment_btn_ai: payment_btn_ai$1,
+  error_title_503: error_title_503$1,
+  error_title_500: error_title_500$1,
+  error_title_404: error_title_404$1,
+  error_title_403: error_title_403$1,
+  error_title_default: error_title_default$1,
+  error_desc_503: error_desc_503$1,
+  error_desc_500: error_desc_500$1,
+  error_desc_404: error_desc_404$1,
+  error_desc_403: error_desc_403$1,
+  error_desc_default: error_desc_default$1,
+  error_btn_back: error_btn_back$1,
+  calendar_page_title: calendar_page_title$1,
+  neural_bridge_title: neural_bridge_title$1,
+  neural_bridge_limit: neural_bridge_limit$1,
+  btn_upgrade: btn_upgrade$1,
+  btn_get_intelligence: btn_get_intelligence$1,
   goal_page_title: goal_page_title$1,
   goal_add_row: goal_add_row$1,
   goal_bulk_selected: goal_bulk_selected$1,
@@ -8728,8 +9110,6 @@ const en = {
   solve_finance_syn_title: solve_finance_syn_title$1,
   more_core_tools: more_core_tools$1,
   more_premium_tools: more_premium_tools$1,
-  more_launcher_title: more_launcher_title$1,
-  more_launcher_subtitle: more_launcher_subtitle$1,
   section_architecture: section_architecture$1,
   section_manifestation: section_manifestation$1,
   section_system: section_system$1,
@@ -8739,10 +9119,6 @@ const en = {
   feature_finance_desc: feature_finance_desc$1,
   feature_calendar_title: feature_calendar_title$1,
   feature_calendar_desc: feature_calendar_desc$1,
-  more_upgrade_badge: more_upgrade_badge$1,
-  more_upgrade_title: more_upgrade_title$1,
-  more_upgrade_desc: more_upgrade_desc$1,
-  more_upgrade_btn: more_upgrade_btn$1,
   preview_modal_title: preview_modal_title$1,
   preview_modal_desc: preview_modal_desc$1,
   preview_view_plans: preview_view_plans$1,
@@ -8813,10 +9189,6 @@ const en = {
   neural_coach_msg1: neural_coach_msg1$1,
   neural_coach_msg2: neural_coach_msg2$1,
   neural_coach_msg3: neural_coach_msg3$1,
-  neural_bridge_title: neural_bridge_title$1,
-  neural_bridge_limit: neural_bridge_limit$1,
-  btn_get_intelligence: btn_get_intelligence$1,
-  btn_upgrade: btn_upgrade$1,
   onboarding_title: onboarding_title$1,
   onboarding_step_goal_title: onboarding_step_goal_title$1,
   onboarding_step_goal_desc: onboarding_step_goal_desc$1,
@@ -9933,7 +10305,6 @@ const en = {
   billing_feature_goals: billing_feature_goals$1,
   billing_feature_jobs: billing_feature_jobs$1,
   billing_feature_ai_soon: billing_feature_ai_soon$1,
-  legal_title: legal_title$1,
   legal_desc: legal_desc$1,
   legal_section_1_title: legal_section_1_title$1,
   legal_section_1_desc: legal_section_1_desc$1,
@@ -10764,6 +11135,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   auth_placeholder_name: auth_placeholder_name$2,
   auth_placeholder_pass: auth_placeholder_pass$2,
   auth_placeholder_pass_confirm: auth_placeholder_pass_confirm$2,
+  auth_processing: auth_processing$1,
   auth_register_subtitle: auth_register_subtitle$2,
   auth_register_title: auth_register_title$2,
   auth_remember: auth_remember$2,
@@ -11028,7 +11400,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   btn_unlock_now: btn_unlock_now$1,
   btn_update: btn_update$1,
   btn_upgrade: btn_upgrade$1,
+  btn_upgrade_limit: btn_upgrade_limit$1,
   btn_upgrade_tier: btn_upgrade_tier$1,
+  btn_yes: btn_yes$1,
   btn_yes_delete: btn_yes_delete$1,
   budget_limit: budget_limit$1,
   budget_target: budget_target$1,
@@ -11151,6 +11525,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   calendar_node_journal_desc: calendar_node_journal_desc$1,
   calendar_node_journal_title: calendar_node_journal_title$1,
   calendar_open: calendar_open$1,
+  calendar_page_title: calendar_page_title$1,
   calendar_planner: calendar_planner$1,
   calendar_prob_1_desc: calendar_prob_1_desc$1,
   calendar_prob_1_title: calendar_prob_1_title$1,
@@ -11400,6 +11775,35 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   confirm_delete_title: confirm_delete_title$1,
   confirm_new_password: confirm_new_password$1,
   confirm_pay: confirm_pay$1,
+  contact_btn_send: contact_btn_send$1,
+  contact_faq_btn,
+  contact_faq_desc: contact_faq_desc$1,
+  contact_faq_title: contact_faq_title$1,
+  contact_form_email: contact_form_email$1,
+  contact_form_email_placeholder: contact_form_email_placeholder$1,
+  contact_form_message: contact_form_message$1,
+  contact_form_message_placeholder: contact_form_message_placeholder$1,
+  contact_form_name: contact_form_name$1,
+  contact_form_name_placeholder: contact_form_name_placeholder$1,
+  contact_form_subject: contact_form_subject$1,
+  contact_info_billing: contact_info_billing$1,
+  contact_info_chat: contact_info_chat$1,
+  contact_info_chat_status: contact_info_chat_status$1,
+  contact_info_hq: contact_info_hq$1,
+  contact_info_jakarta: contact_info_jakarta$1,
+  contact_info_support: contact_info_support$1,
+  contact_info_title: contact_info_title$1,
+  contact_subject_other: contact_subject_other$1,
+  contact_subject_partnership: contact_subject_partnership$1,
+  contact_subtitle: contact_subtitle$1,
+  contact_success_desc: contact_success_desc$1,
+  contact_success_title: contact_success_title$1,
+  contact_title: contact_title$1,
+  cookie_btn_accept: cookie_btn_accept$1,
+  cookie_btn_essential: cookie_btn_essential$1,
+  cookie_btn_settings: cookie_btn_settings$1,
+  cookie_desc: cookie_desc$1,
+  cookie_title: cookie_title$1,
   create_budget_first: create_budget_first$1,
   cta_about_btn: cta_about_btn$2,
   cta_about_desc: cta_about_desc$2,
@@ -11636,12 +12040,23 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   err_min_15_mins: err_min_15_mins$1,
   err_save_failed: err_save_failed$1,
   err_schedule_conflict: err_schedule_conflict$1,
+  error_btn_back: error_btn_back$1,
   error_conflict: error_conflict$1,
   error_copy_habit: error_copy_habit$1,
   error_delete_habit: error_delete_habit$1,
+  error_desc_403: error_desc_403$1,
+  error_desc_404: error_desc_404$1,
+  error_desc_500: error_desc_500$1,
+  error_desc_503: error_desc_503$1,
+  error_desc_default: error_desc_default$1,
   error_save_habit: error_save_habit$1,
   error_server: error_server$1,
   error_title: error_title$1,
+  error_title_403: error_title_403$1,
+  error_title_404: error_title_404$1,
+  error_title_500: error_title_500$1,
+  error_title_503: error_title_503$1,
+  error_title_default: error_title_default$1,
   error_update_habit: error_update_habit$1,
   est_total: est_total$1,
   evernote_badge: evernote_badge$1,
@@ -12114,7 +12529,9 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   flow_step_4_desc: flow_step_4_desc$1,
   flow_step_4_title: flow_step_4_title$1,
   flow_title: flow_title$1,
+  footer_legal: footer_legal$1,
   footer_privacy: footer_privacy$1,
+  footer_rights: footer_rights$1,
   footer_terms: footer_terms$1,
   freelance_bento_1_desc: freelance_bento_1_desc$1,
   freelance_bento_1_title: freelance_bento_1_title$1,
@@ -13268,13 +13685,18 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   label_todo: label_todo$1,
   label_total_checkins: label_total_checkins$1,
   label_urgent: label_urgent$1,
+  label_usage_limit: label_usage_limit$1,
   label_work: label_work$1,
+  lang_en: lang_en$1,
+  lang_id: lang_id$1,
   last_5: last_5$1,
   launchpad_subtitle: launchpad_subtitle$1,
   launchpad_title: launchpad_title$1,
   left_to_reach: left_to_reach$1,
+  legal_close: legal_close$1,
   legal_desc: legal_desc$1,
   legal_link_privacy: legal_link_privacy$1,
+  legal_ref: legal_ref$1,
   legal_section_1_desc: legal_section_1_desc$1,
   legal_section_1_title: legal_section_1_title$1,
   legal_section_2_desc: legal_section_2_desc$1,
@@ -13394,6 +13816,10 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   modal_label_color: modal_label_color$1,
   modal_label_priority: modal_label_priority$1,
   modal_label_task_name: modal_label_task_name$1,
+  modal_logout_cancel: modal_logout_cancel$1,
+  modal_logout_confirm: modal_logout_confirm$1,
+  modal_logout_subtitle: modal_logout_subtitle$1,
+  modal_logout_title: modal_logout_title$1,
   modal_new_simple_title: modal_new_simple_title$1,
   modal_new_title: modal_new_title$1,
   modal_placeholder_simple_task: modal_placeholder_simple_task$1,
@@ -13480,7 +13906,100 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   more_upgrade_title: more_upgrade_title$1,
   most_wasteful: most_wasteful$1,
   name,
+  nav_about: nav_about$2,
+  nav_active_account: nav_active_account$1,
+  nav_avatar: nav_avatar$1,
+  nav_close_menu: nav_close_menu$1,
+  nav_core_modules: nav_core_modules$1,
+  nav_dashboard: nav_dashboard$2,
+  nav_desc_calendar: nav_desc_calendar$1,
+  nav_desc_goals: nav_desc_goals$1,
+  nav_desc_jobs: nav_desc_jobs$1,
+  nav_desc_journal: nav_desc_journal$1,
+  nav_desc_planner: nav_desc_planner$1,
+  nav_features: nav_features$1,
+  nav_home: nav_home$2,
+  nav_item_calendar: nav_item_calendar$1,
+  nav_item_coach: nav_item_coach$1,
+  nav_item_dashboard: nav_item_dashboard$1,
+  nav_item_finance: nav_item_finance$1,
+  nav_item_goals: nav_item_goals$1,
+  nav_item_habit: nav_item_habit$1,
+  nav_item_jobs: nav_item_jobs$1,
+  nav_item_journal: nav_item_journal$1,
+  nav_item_more: nav_item_more$1,
+  nav_item_planner: nav_item_planner$1,
+  nav_item_premium: nav_item_premium$1,
+  nav_item_settings: nav_item_settings$1,
   nav_item_study: nav_item_study$1,
+  nav_language: nav_language$1,
+  nav_login: nav_login$2,
+  nav_logout: nav_logout$1,
+  nav_menu_title: nav_menu_title$1,
+  nav_mobile_by_method: nav_mobile_by_method$1,
+  nav_mobile_by_role: nav_mobile_by_role$1,
+  nav_mobile_by_usecase: nav_mobile_by_usecase$1,
+  nav_mobile_feat_calendar_desc: nav_mobile_feat_calendar_desc$1,
+  nav_mobile_feat_calendar_title: nav_mobile_feat_calendar_title$1,
+  nav_mobile_feat_finance_desc: nav_mobile_feat_finance_desc$1,
+  nav_mobile_feat_finance_title: nav_mobile_feat_finance_title$1,
+  nav_mobile_feat_goal_desc: nav_mobile_feat_goal_desc$1,
+  nav_mobile_feat_goal_title: nav_mobile_feat_goal_title$1,
+  nav_mobile_feat_habit_desc: nav_mobile_feat_habit_desc$1,
+  nav_mobile_feat_habit_title: nav_mobile_feat_habit_title$1,
+  nav_mobile_feat_job_desc: nav_mobile_feat_job_desc$1,
+  nav_mobile_feat_job_title: nav_mobile_feat_job_title$1,
+  nav_mobile_feat_journal_desc: nav_mobile_feat_journal_desc$1,
+  nav_mobile_feat_journal_title: nav_mobile_feat_journal_title$1,
+  nav_mobile_feat_neural_desc: nav_mobile_feat_neural_desc$1,
+  nav_mobile_feat_neural_title: nav_mobile_feat_neural_title$1,
+  nav_mobile_feat_planner_desc: nav_mobile_feat_planner_desc$1,
+  nav_mobile_feat_planner_title: nav_mobile_feat_planner_title$1,
+  nav_mobile_res_blog_desc: nav_mobile_res_blog_desc$1,
+  nav_mobile_res_blog_title: nav_mobile_res_blog_title$1,
+  nav_mobile_res_changelog_desc: nav_mobile_res_changelog_desc$1,
+  nav_mobile_res_changelog_title: nav_mobile_res_changelog_title$1,
+  nav_mobile_res_community_desc: nav_mobile_res_community_desc$1,
+  nav_mobile_res_community_title: nav_mobile_res_community_title$1,
+  nav_mobile_res_guide_desc: nav_mobile_res_guide_desc$1,
+  nav_mobile_res_guide_title: nav_mobile_res_guide_title$1,
+  nav_mobile_res_help_desc: nav_mobile_res_help_desc$1,
+  nav_mobile_res_help_title: nav_mobile_res_help_title$1,
+  nav_mobile_res_knowledge: nav_mobile_res_knowledge$1,
+  nav_mobile_res_social: nav_mobile_res_social$1,
+  nav_mobile_res_stories_desc: nav_mobile_res_stories_desc$1,
+  nav_mobile_res_stories_title: nav_mobile_res_stories_title$1,
+  nav_mobile_sol_atomic_desc: nav_mobile_sol_atomic_desc$1,
+  nav_mobile_sol_atomic_title: nav_mobile_sol_atomic_title$1,
+  nav_mobile_sol_career_desc: nav_mobile_sol_career_desc$1,
+  nav_mobile_sol_career_title: nav_mobile_sol_career_title$1,
+  nav_mobile_sol_deepwork_desc: nav_mobile_sol_deepwork_desc$1,
+  nav_mobile_sol_deepwork_title: nav_mobile_sol_deepwork_title$1,
+  nav_mobile_sol_finance_desc: nav_mobile_sol_finance_desc$1,
+  nav_mobile_sol_finance_title: nav_mobile_sol_finance_title$1,
+  nav_mobile_sol_freelancer_desc: nav_mobile_sol_freelancer_desc$1,
+  nav_mobile_sol_freelancer_title: nav_mobile_sol_freelancer_title$1,
+  nav_mobile_sol_growth_desc: nav_mobile_sol_growth_desc$1,
+  nav_mobile_sol_growth_title: nav_mobile_sol_growth_title$1,
+  nav_mobile_sol_mental_desc: nav_mobile_sol_mental_desc$1,
+  nav_mobile_sol_mental_title: nav_mobile_sol_mental_title$1,
+  nav_mobile_sol_secondbrain_desc: nav_mobile_sol_secondbrain_desc$1,
+  nav_mobile_sol_secondbrain_title: nav_mobile_sol_secondbrain_title$1,
+  nav_mobile_sol_student_desc: nav_mobile_sol_student_desc$1,
+  nav_mobile_sol_student_title: nav_mobile_sol_student_title$1,
+  nav_neural_active: nav_neural_active$1,
+  nav_platinum_suite: nav_platinum_suite$1,
+  nav_pricing: nav_pricing$1,
+  nav_register: nav_register$2,
+  nav_resources: nav_resources$1,
+  nav_search: nav_search$1,
+  nav_search_anything: nav_search_anything$1,
+  nav_search_placeholder: nav_search_placeholder$1,
+  nav_settings: nav_settings$1,
+  nav_solutions: nav_solutions$1,
+  nav_toggle_menu: nav_toggle_menu$1,
+  nav_upgrade_pro: nav_upgrade_pro$1,
+  nav_user_fallback: nav_user_fallback$1,
   neural_audit_badge: neural_audit_badge$1,
   neural_audit_desc: neural_audit_desc$1,
   neural_audit_step1_desc: neural_audit_step1_desc$1,
@@ -13839,6 +14358,17 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   password_security_desc: password_security_desc$1,
   password_security_title: password_security_title$1,
   password_updated: password_updated$1,
+  payment_btn_ai: payment_btn_ai$1,
+  payment_btn_billing: payment_btn_billing$1,
+  payment_btn_dashboard: payment_btn_dashboard$1,
+  payment_btn_pricing: payment_btn_pricing$1,
+  payment_failed_msg: payment_failed_msg$1,
+  payment_failed_title: payment_failed_title$1,
+  payment_pending_msg: payment_pending_msg$1,
+  payment_pending_title: payment_pending_title$1,
+  payment_quantum_praise: payment_quantum_praise$1,
+  payment_success_title: payment_success_title$1,
+  payment_welcome_msg: payment_welcome_msg$1,
   per_day: per_day$1,
   ph_event_desc: ph_event_desc$1,
   ph_event_title: ph_event_title$1,
@@ -14450,6 +14980,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   priority_vital: priority_vital$1,
   priority_work: priority_work$1,
   privacy_badge: privacy_badge$1,
+  privacy_consent_p: privacy_consent_p$1,
+  privacy_consent_title: privacy_consent_title$1,
   privacy_contact_email: privacy_contact_email$1,
   privacy_contact_role: privacy_contact_role$1,
   privacy_contact_sla: privacy_contact_sla$1,
@@ -14477,6 +15009,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_h2_security: privacy_h2_security$1,
   privacy_h2_thirdparty: privacy_h2_thirdparty$1,
   privacy_h2_usage: privacy_h2_usage$1,
+  privacy_info_p: privacy_info_p$1,
+  privacy_info_title: privacy_info_title$1,
   privacy_last_updated: privacy_last_updated$1,
   privacy_li_collection_1_desc: privacy_li_collection_1_desc$1,
   privacy_li_collection_1_title: privacy_li_collection_1_title$1,
@@ -14505,6 +15039,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_nav_5: privacy_nav_5$1,
   privacy_nav_6: privacy_nav_6$1,
   privacy_nav_7: privacy_nav_7$1,
+  privacy_p1: privacy_p1$1,
   privacy_p_collection: privacy_p_collection$1,
   privacy_p_contact: privacy_p_contact$1,
   privacy_p_rights: privacy_p_rights$1,
@@ -14521,6 +15056,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_status_tracking: privacy_status_tracking$1,
   privacy_status_tracking_val: privacy_status_tracking_val$1,
   privacy_subtitle: privacy_subtitle$1,
+  privacy_title: privacy_title$1,
   privacy_title_1: privacy_title_1$1,
   privacy_title_2: privacy_title_2$1,
   privacy_tldr_1_desc: privacy_tldr_1_desc$1,
@@ -14723,6 +15259,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   see_less: see_less$1,
   select_hour: select_hour$1,
   select_placeholder: select_placeholder$1,
+  seo_about_desc: seo_about_desc$1,
   seo_eyebrow_applenotes: seo_eyebrow_applenotes$1,
   seo_eyebrow_clickup: seo_eyebrow_clickup$1,
   seo_eyebrow_evernote: seo_eyebrow_evernote$1,
@@ -14738,6 +15275,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   seo_eyebrow_todoist: seo_eyebrow_todoist$1,
   seo_eyebrow_wallet: seo_eyebrow_wallet$1,
   seo_eyebrow_ynab: seo_eyebrow_ynab$1,
+  seo_meta_desc_1,
   set_budget: set_budget$1,
   setting_nav_plan: setting_nav_plan$1,
   settings_billing_active_badge: settings_billing_active_badge$1,
@@ -15490,6 +16028,8 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_subtitle: terms_subtitle$1,
   terms_title_1: terms_title_1$1,
   terms_title_2: terms_title_2$1,
+  theme_dark: theme_dark$1,
+  theme_light: theme_light$1,
   ticktick_alt_desc: ticktick_alt_desc$1,
   ticktick_alt_og_desc: ticktick_alt_og_desc$1,
   ticktick_alt_og_title: ticktick_alt_og_title$1,
@@ -15577,6 +16117,16 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   todoist_table_row_3_col_1: todoist_table_row_3_col_1$1,
   todoist_table_row_3_col_2: todoist_table_row_3_col_2$1,
   todoist_table_row_3_title: todoist_table_row_3_title$1,
+  tos_data_p: tos_data_p$1,
+  tos_data_title: tos_data_title$1,
+  tos_intro: tos_intro$1,
+  tos_security_p: tos_security_p$1,
+  tos_security_title: tos_security_title$1,
+  tos_service_p: tos_service_p$1,
+  tos_service_title: tos_service_title$1,
+  tos_termination_p: tos_termination_p$1,
+  tos_termination_title: tos_termination_title$1,
+  tos_title: tos_title$1,
   total_input: total_input$1,
   total_label: total_label$1,
   total_pl: total_pl$1,
@@ -15627,6 +16177,12 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   trello_table_row_3_col_1: trello_table_row_3_col_1$1,
   trello_table_row_3_col_2: trello_table_row_3_col_2$1,
   trello_table_row_3_title: trello_table_row_3_title$1,
+  trial_confirm_text: trial_confirm_text$1,
+  trial_confirm_title: trial_confirm_title$1,
+  trial_days: trial_days$1,
+  trial_remaining: trial_remaining$1,
+  trial_success_text: trial_success_text$1,
+  trial_success_title: trial_success_title$1,
   type: type$1,
   unified_ecosystem_title: unified_ecosystem_title$1,
   update_password: update_password$1,
@@ -16028,12 +16584,12 @@ const btn_add = "Tambah";
 const btn_update = "Perbarui";
 const btn_back_dashboard = "Kembali ke Dashboard";
 const btn_add_task = "Simpan Tugas";
-const btn_add_task_short = "Tugas";
+const btn_add_task_short = "Task";
 const btn_add_schedule = "Tambah Jadwal";
 const btn_create = "Buat Jadwal";
 const btn_reset = "Reset";
-const btn_reset_tooltip = "Hapus semua tugas hari ini";
-const btn_confirm_reset = "Konfirmasi Reset";
+const btn_reset_tooltip = "Hapus semua task hari ini";
+const btn_confirm_reset = "Ya";
 const btn_yes_delete = "Ya, Hapus!";
 const btn_single_mode = "Satuan";
 const btn_add_another_transaction = "Tambah Transaksi";
@@ -18472,6 +19028,207 @@ const gating = {
     benefit_3: "Peringatan Target Kematangan"
   }
 };
+const trial_success_title = "Selamat Datang di Paket Architect!";
+const trial_success_text = "Masa percobaan Anda telah aktif. Silakan nikmati seluruh fitur premium kami.";
+const trial_remaining = "Sisa Masa Percobaan:";
+const trial_days = "Hari";
+const trial_confirm_title = "Mulai Masa Percobaan?";
+const trial_confirm_text = "Anda akan mendapatkan akses penuh ke fitur Architect selama 10 hari secara gratis.";
+const btn_yes = "Ya, Mulai Sekarang";
+const nav_home$1 = "Beranda";
+const nav_about$1 = "Tentang Kami";
+const nav_login$1 = "Masuk";
+const nav_register$1 = "Mulai Gratis";
+const nav_dashboard$1 = "Dashboard";
+const nav_settings = "Pengaturan Aplikasi";
+const nav_logout = "Keluar";
+const nav_core_modules = "Inti Sistem";
+const nav_platinum_suite = "Platinum Suite";
+const nav_upgrade_pro = "Dapatkan Architect";
+const btn_upgrade_limit = "Tingkatkan Batas";
+const label_usage_limit = "Batas Penggunaan";
+const auth_processing = "Sedang Memprosesâ€¦";
+const nav_item_premium = "Buka Elite";
+const nav_item_dashboard = "Dashboard";
+const nav_item_habit = "Habit Tracker";
+const nav_item_planner = "Perencana Harian";
+const nav_item_finance = "Manajer Keuangan";
+const nav_item_journal = "Jurnal Saya";
+const nav_item_calendar = "Kalender Saya";
+const nav_item_jobs = "Pelacak Karir";
+const nav_item_goals = "Pelacak Tujuan";
+const nav_item_settings = "Pengaturan";
+const nav_item_coach = "AI Coach";
+const nav_item_more = "Lainnya";
+const nav_search = "Cari";
+const nav_search_anything = "Cari apa sajaâ€¦";
+const nav_search_placeholder = "Cari modul atau halamanâ€¦";
+const nav_menu_title = "Menu";
+const nav_close_menu = "Tutup menu";
+const nav_toggle_menu = "Buka menu navigasi";
+const nav_avatar = "Avatar";
+const nav_active_account = "Akun Aktif";
+const nav_neural_active = "Asisten neural aktif";
+const nav_user_fallback = "Pengguna";
+const theme_dark = "Mode Gelap";
+const theme_light = "Mode Terang";
+const more_launcher_title = "Launchpad";
+const more_launcher_subtitle = "Produktivitas Ekosistem";
+const nav_desc_planner = "Perencanaan Harian";
+const nav_desc_journal = "Jurnal Pribadi";
+const nav_desc_calendar = "Manajemen Jadwal";
+const nav_desc_jobs = "Karir & Pekerjaan";
+const nav_desc_goals = "Tujuan Hidup";
+const more_upgrade_badge = "TINGKATKAN PREMIUM";
+const more_upgrade_title = "Naik ke Level Performa Elit";
+const more_upgrade_desc = "Buka wawasan hidup berbasis AI, pelacakan kekayaan tingkat lanjut, dan integrasi eksternal yang mulus.";
+const more_upgrade_btn = "Tingkatkan Sekarang";
+const nav_features = "Features";
+const nav_solutions = "Solutions";
+const nav_resources = "Resources";
+const nav_pricing = "Pricing";
+const nav_language = "Bahasa";
+const lang_id = "Bahasa Indonesia";
+const lang_en = "English";
+const nav_mobile_by_role = "Berdasarkan Peran";
+const nav_mobile_by_usecase = "Berdasarkan Kebutuhan";
+const nav_mobile_by_method = "Berdasarkan Metode";
+const nav_mobile_res_knowledge = "Panduan & Bantuan";
+const nav_mobile_res_social = "Sosial & Komunitas";
+const nav_mobile_feat_habit_title = "Habit Tracker";
+const nav_mobile_feat_habit_desc = "Bangun konsisten setiap hari";
+const nav_mobile_feat_finance_title = "Finance OS";
+const nav_mobile_feat_finance_desc = "Kelola cashflow dengan jelas";
+const nav_mobile_feat_planner_title = "Daily Planner";
+const nav_mobile_feat_planner_desc = "Fokus 3 prioritas utama";
+const nav_mobile_feat_journal_title = "Jurnal";
+const nav_mobile_feat_journal_desc = "Catat refleksi harian";
+const nav_mobile_feat_calendar_title = "Kalender";
+const nav_mobile_feat_calendar_desc = "Pantau event & jadwal";
+const nav_mobile_feat_goal_title = "Goal Tracker";
+const nav_mobile_feat_goal_desc = "Milestone & progres";
+const nav_mobile_feat_job_title = "Job Tracker";
+const nav_mobile_feat_job_desc = "Kelola lamaran kerja";
+const nav_mobile_feat_neural_title = "Neural OS AI";
+const nav_mobile_feat_neural_desc = "Coach planning berbasis AI";
+const nav_mobile_sol_student_title = "Pelajar";
+const nav_mobile_sol_student_desc = "Optimasi sistem belajar";
+const nav_mobile_sol_freelancer_title = "Freelancer";
+const nav_mobile_sol_freelancer_desc = "Kontrol alur kerja klien";
+const nav_mobile_sol_growth_title = "Personal Growth";
+const nav_mobile_sol_growth_desc = "Upgrade mindset & kebiasaan";
+const nav_mobile_sol_finance_title = "Finance Clarity";
+const nav_mobile_sol_finance_desc = "Budget & kontrol cashflow";
+const nav_mobile_sol_career_title = "Career Tracker";
+const nav_mobile_sol_career_desc = "Pantau peluang dengan jelas";
+const nav_mobile_sol_mental_title = "Mental Health";
+const nav_mobile_sol_mental_desc = "Kurangi stres & overthinking";
+const nav_mobile_sol_atomic_title = "Atomic Habits";
+const nav_mobile_sol_atomic_desc = "Langkah kecil, hasil besar";
+const nav_mobile_sol_deepwork_title = "Deep Work";
+const nav_mobile_sol_deepwork_desc = "Jaga sesi fokus";
+const nav_mobile_sol_secondbrain_title = "Second Brain";
+const nav_mobile_sol_secondbrain_desc = "Bangun sistem berpikir";
+const nav_mobile_res_guide_title = "User Guide";
+const nav_mobile_res_guide_desc = "Cara pakai OneForMind";
+const nav_mobile_res_help_title = "Help Center";
+const nav_mobile_res_help_desc = "Jawaban umum & bantuan";
+const nav_mobile_res_changelog_title = "What's New";
+const nav_mobile_res_changelog_desc = "Update produk terbaru";
+const nav_mobile_res_community_title = "Community";
+const nav_mobile_res_community_desc = "Gabung diskusi pengguna";
+const nav_mobile_res_blog_title = "Blog";
+const nav_mobile_res_blog_desc = "Insight produktivitas";
+const nav_mobile_res_stories_title = "Success Stories";
+const nav_mobile_res_stories_desc = "Cerita transformasi nyata";
+const modal_logout_title = "Mau pamit dulu?";
+const modal_logout_subtitle = "Jangan lupa balik lagi ya, progres kamu hari ini sudah tersimpan dengan aman!";
+const modal_logout_confirm = "Iya, Keluar";
+const modal_logout_cancel = "Batal";
+const seo_about_desc = "Temukan visi di balik OneForMind. Kami membangun ruang kerja terpadu untuk melacak kebiasaan harian, keuangan, dan tujuan Anda.";
+const footer_legal = "Privasi & Ketentuan";
+const legal_title = "Syarat & Ketentuan Serta Kebijakan";
+const legal_ref = "Referensi Privasi Resmi:";
+const privacy_title = "Kebijakan Privasi Oneformind";
+const privacy_p1 = "Di Oneformind, yang dapat diakses dari https://oneformind.com, salah satu prioritas utama kami adalah privasi pengunjung kami.";
+const privacy_consent_title = "Persetujuan";
+const privacy_consent_p = "Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan Privasi kami dan menyetujui ketentuan-ketentuannya.";
+const privacy_info_title = "Informasi yang kami kumpulkan";
+const privacy_info_p = "Informasi pribadi yang diminta dari Anda akan dijelaskan secara transparan pada saat kami meminta Anda untuk memberikannya.";
+const tos_title = "Syarat dan Ketentuan (ToS)";
+const tos_intro = "Dengan mengakses dan menggunakan Oneformind, Anda menyetujui aturan berikut:";
+const tos_service_title = "1. Ketersediaan Layanan";
+const tos_service_p = 'Oneformind disediakan "sebagaimana adanya" dan "sebagaimana tersedia". Meskipun kami berusaha menjaga stabilitas, kami tidak menjamin layanan 100% tanpa gangguan, bebas dari kesalahan, atau sepenuhnya aman.';
+const tos_data_title = "2. Akurasi Data & Tanggung Jawab";
+const tos_data_p = "Anda bertanggung jawab penuh atas data finansial, habit, dan perencana yang Anda masukkan. Oneformind adalah alat produktivitas, bukan penasihat keuangan bersertifikat. Kami tidak bertanggung jawab atas kerugian finansial atau keputusan yang diambil berdasarkan data di platform ini.";
+const tos_security_title = "3. Penggunaan Wajar & Keamanan";
+const tos_security_p = "Pengguna dilarang keras mencoba merusak keamanan sistem, melakukan injeksi SQL, mengambil data secara paksa (scraping), atau mengganggu infrastruktur platform.";
+const tos_termination_title = "4. Pemutusan Akun";
+const tos_termination_p = "Kami berhak menangguhkan atau menghapus akun secara sepihak dan tanpa pemberitahuan sebelumnya jika pengguna terbukti melanggar ketentuan ini atau menyalahgunakan sumber daya sistem.";
+const legal_close = "Tutup & Pahami";
+const payment_success_title = "Akses Diberikan!";
+const payment_pending_title = "Pembayaran Tertunda";
+const payment_failed_title = "Pembayaran Dibatalkan";
+const payment_welcome_msg = "Selamat datang di ekosistem elit,";
+const payment_quantum_praise = "Potensimu kini resmi diperluas.";
+const payment_pending_msg = "Pembayaranmu sedang diproses. Kami akan memberitahumu setelah berhasil dikonfirmasi.";
+const payment_failed_msg = "Pembayaranmu dibatalkan atau gagal. Kamu bisa mencobanya lagi kapan saja.";
+const payment_btn_dashboard = "Buka Dashboard";
+const payment_btn_billing = "Kembali ke Tagihan";
+const payment_btn_pricing = "Kembali ke Pilihan Paket";
+const payment_btn_ai = "Bicara dengan AI Coach";
+const error_title_503 = "503: Layanan Tidak Tersedia";
+const error_title_500 = "500: Server Error";
+const error_title_404 = "404: Halaman Tidak Ditemukan";
+const error_title_403 = "403: Akses Ditolak";
+const error_title_default = "Terjadi Kesalahan";
+const error_desc_503 = "Maaf, server sedang dalam pemeliharaan sementara. Silakan kembali lagi nanti!";
+const error_desc_500 = "Ups, sepertinya ada masalah pada server kami. Tim OneForMind sedang memperbaikinya!";
+const error_desc_404 = "Halaman yang Anda cari tidak ditemukan. Mungkin Anda salah alamat atau halaman telah dipindahkan.";
+const error_desc_403 = "Maaf, Anda tidak memiliki izin untuk mengakses halaman ini.";
+const error_desc_default = "Terjadi kendala teknis yang tidak terduga. Silakan coba lagi.";
+const error_btn_back = "Kembali ke Beranda";
+const profile_settings = "Pengaturan Profil";
+const profile_info_title = "Informasi Profil";
+const profile_info_desc = "Perbarui nama, email, dan foto profil Anda.";
+const change_photo = "Ganti Foto";
+const photo_format_allowed = "Format yang diizinkan: JPG, JPEG, PNG.";
+const photo_max_size = "Maksimal ukuran file: 2MB.";
+const full_name = "Nama Lengkap";
+const email_address = "Alamat Email";
+const save_changes = "Simpan Perubahan";
+const saved = "Tersimpan";
+const cookie_title = "ðŸª Icip Cookie?";
+const cookie_desc = "Kami menggunakan cookie untuk memastikan Anda mendapatkan pengalaman terbaik dan aman di sistem kami.";
+const cookie_btn_accept = "Terima Semua";
+const cookie_btn_settings = "Pengaturan";
+const cookie_btn_essential = "Hanya Esensial";
+const contact_title = "Hubungi Kami";
+const contact_subtitle = "Ada pertanyaan atau butuh bantuan? Tim kami siap mendampingi perjalanan produktivitas Anda.";
+const contact_form_name = "Nama Lengkap";
+const contact_form_email = "Alamat Email";
+const contact_form_subject = "Subjek";
+const contact_form_message = "Pesan Anda";
+const contact_btn_send = "Kirim Pesan Sekarang";
+const contact_success_title = "Pesan Terkirim!";
+const contact_success_desc = "Terima kasih! Kami akan segera menghubungi Anda dalam waktu 24-48 jam.";
+const contact_info_title = "Informasi Kontak";
+const contact_info_hq = "Kantor Pusat OneForMind";
+const contact_info_jakarta = "Jakarta, Indonesia";
+const contact_info_support = "Dukungan Teknis";
+const contact_info_billing = "Pembayaran & Lisensi";
+const contact_info_chat = "Live Chat";
+const contact_info_chat_status = "Dukungan Cepat";
+const contact_faq_title = "Punya pertanyaan teknis?";
+const contact_faq_desc = "Cek dokumentasi bantuan kami untuk jawaban instan mengenai fitur dan lisensi.";
+const calendar_page_title = "Kalender";
+const contact_form_message_placeholder = "Bagaimana kami bisa membantu Anda?";
+const contact_form_name_placeholder = "Nama lengkap Anda";
+const contact_form_email_placeholder = "email@contoh.com";
+const contact_subject_partnership = "Kemitraan Bisnis";
+const contact_subject_other = "Lainnya";
+const neural_bridge_title = "Neural Bridge";
+const neural_bridge_limit = "Wawasan neural memerlukan Paket Quantum";
 const goal_page_title = "Goal Tracker";
 const goal_add_row = "Tambah Target";
 const goal_bulk_selected = "Target Terpilih";
@@ -19218,15 +19975,9 @@ const solve_finance_syn_desc = "Hubungkan kebiasaan ke arus kas.";
 const solve_finance_syn_title = "Loop Sinergi";
 const more_core_tools = "Peralatan Utama";
 const more_premium_tools = "Fitur Premium & Intelijen";
-const more_launcher_title = "Launchpad";
-const more_launcher_subtitle = "Produktivitas Ekosistem";
 const section_architecture = "Protokol Arsitektur";
 const section_manifestation = "Lab Manifestasi";
 const section_system = "Sistem Utama";
-const more_upgrade_badge = "TINGKATKAN PREMIUM";
-const more_upgrade_title = "Naik ke Level Performa Elit";
-const more_upgrade_desc = "Buka wawasan hidup berbasis AI, pelacakan kekayaan tingkat lanjut, dan integrasi eksternal yang mulus.";
-const more_upgrade_btn = "Tingkatkan Sekarang";
 const preview_modal_title = "Tingkatkan Cerita Anda";
 const preview_modal_desc = "Anda sedang melihat sekilas dari sistem premium kami. Tingkatkan akun untuk akses penuh.";
 const preview_view_plans = "Lihat Paket & Upgrade";
@@ -19299,8 +20050,6 @@ const neural_coach_user = "Anda";
 const neural_coach_msg1 = "Saya perhatikan Anda 20% lebih mungkin menjalankan kebiasaan saat suasana hati pagi Anda 'Bersemangat'. Ingin saya memindahkan tugas energi tinggi Anda ke sana?";
 const neural_coach_msg2 = "Ya, tolong optimalkan jadwal saya.";
 const neural_coach_msg3 = "Selesai! Planner Anda telah diperbarui untuk alur kerja maksimal.";
-const neural_bridge_title = "Neural Bridge";
-const neural_bridge_limit = "Wawasan neural memerlukan Paket Quantum";
 const btn_get_intelligence = "Ambil Kecerdasan";
 const btn_upgrade = "Upgrade Sekarang";
 const onboarding_title = "Onboarding";
@@ -20377,9 +21126,6 @@ const settings_language_title = "Bahasa Aplikasi";
 const settings_language_desc = "Pilih bahasa antarmuka aplikasi.";
 const settings_saved = "Pengaturan tersimpan otomatis!";
 const settings_saved_success = "Tersimpan!";
-const profile_settings = "Pengaturan Profil";
-const profile_info_title = "Informasi Profil";
-const profile_info_desc = "Perbarui nama, email, dan foto profil Anda.";
 const profile_avatar_title = "Foto Profil";
 const profile_avatar_format = "JPG, PNG atau WEBP Max 2MB";
 const profile_avatar_remove = "Hapus Foto";
@@ -20389,18 +21135,11 @@ const profile_label_email = "Email";
 const profile_placeholder_email = "name@example.com";
 const profile_btn_save = "Simpan Perubahan";
 const edit_profile = "Edit Profil";
-const change_photo = "Ganti Foto";
-const photo_format_allowed = "Format yang diizinkan: JPG, JPEG, PNG.";
-const photo_max_size = "Maksimal ukuran file: 2MB.";
-const full_name = "Nama Lengkap";
-const email_address = "Alamat Email";
-const save_changes = "Simpan Perubahan";
 const photo_adjust_instruction = "Pilih foto, lalu Anda dapat menyesuaikan posisi gambar sebelum diunggah.";
 const adjust_photo_title = "Sesuaikan Foto";
 const pan_instruction = "Gunakan Mouse/Sentuhan Untuk Menggeser";
 const save_photo = "Simpan Foto";
 const settings_lang_label = "Bahasa Antarmuka";
-const saved = "Tersimpan";
 const settings_modules_title = "Modul";
 const settings_modules_desc = "Pilih area yang tampil di sidebar dan navigasi.";
 const settings_modules_header_hint = "Bahasa dan tema terang/gelap diatur dari bilah atas — sama seperti Notion dan ClickUp.";
@@ -20450,7 +21189,6 @@ const billing_feature_calendar = "Calendar (Khusus Lifetime)";
 const billing_feature_goals = "Goal Tracker (Khusus Lifetime)";
 const billing_feature_jobs = "Job Tracker (Khusus Lifetime)";
 const billing_feature_ai_soon = "Fitur AI Segera Hadir!";
-const legal_title = "Syarat & Ketentuan Serta Kebijakan";
 const legal_desc = "Halaman penting mengenai data dan privasi Anda di Oneformind.";
 const legal_section_1_title = "1. Pengumpulan Data";
 const legal_section_1_desc = "Kami mengumpulkan data yang Anda berikan secara langsung saat mendaftar, termasuk nama, email, dan konten yang Anda buat dalam aplikasi Oneformind seperti habit, jurnal, dan tugas harian.";
@@ -23703,6 +24441,209 @@ const id = {
   vault_withdraw_notice,
   btn_processing,
   gating,
+  trial_success_title,
+  trial_success_text,
+  trial_remaining,
+  trial_days,
+  trial_confirm_title,
+  trial_confirm_text,
+  btn_yes,
+  "____ SECTION_1 ____": "=== NAVIGASI & GLOBAL ===",
+  nav_home: nav_home$1,
+  nav_about: nav_about$1,
+  nav_login: nav_login$1,
+  nav_register: nav_register$1,
+  nav_dashboard: nav_dashboard$1,
+  nav_settings,
+  nav_logout,
+  nav_core_modules,
+  nav_platinum_suite,
+  nav_upgrade_pro,
+  btn_upgrade_limit,
+  label_usage_limit,
+  auth_processing,
+  nav_item_premium,
+  nav_item_dashboard,
+  nav_item_habit,
+  nav_item_planner,
+  nav_item_finance,
+  nav_item_journal,
+  nav_item_calendar,
+  nav_item_jobs,
+  nav_item_goals,
+  nav_item_settings,
+  nav_item_coach,
+  nav_item_more,
+  nav_search,
+  nav_search_anything,
+  nav_search_placeholder,
+  nav_menu_title,
+  nav_close_menu,
+  nav_toggle_menu,
+  nav_avatar,
+  nav_active_account,
+  nav_neural_active,
+  nav_user_fallback,
+  theme_dark,
+  theme_light,
+  more_launcher_title,
+  more_launcher_subtitle,
+  nav_desc_planner,
+  nav_desc_journal,
+  nav_desc_calendar,
+  nav_desc_jobs,
+  nav_desc_goals,
+  more_upgrade_badge,
+  more_upgrade_title,
+  more_upgrade_desc,
+  more_upgrade_btn,
+  nav_features,
+  nav_solutions,
+  nav_resources,
+  nav_pricing,
+  nav_language,
+  lang_id,
+  lang_en,
+  nav_mobile_by_role,
+  nav_mobile_by_usecase,
+  nav_mobile_by_method,
+  nav_mobile_res_knowledge,
+  nav_mobile_res_social,
+  nav_mobile_feat_habit_title,
+  nav_mobile_feat_habit_desc,
+  nav_mobile_feat_finance_title,
+  nav_mobile_feat_finance_desc,
+  nav_mobile_feat_planner_title,
+  nav_mobile_feat_planner_desc,
+  nav_mobile_feat_journal_title,
+  nav_mobile_feat_journal_desc,
+  nav_mobile_feat_calendar_title,
+  nav_mobile_feat_calendar_desc,
+  nav_mobile_feat_goal_title,
+  nav_mobile_feat_goal_desc,
+  nav_mobile_feat_job_title,
+  nav_mobile_feat_job_desc,
+  nav_mobile_feat_neural_title,
+  nav_mobile_feat_neural_desc,
+  nav_mobile_sol_student_title,
+  nav_mobile_sol_student_desc,
+  nav_mobile_sol_freelancer_title,
+  nav_mobile_sol_freelancer_desc,
+  nav_mobile_sol_growth_title,
+  nav_mobile_sol_growth_desc,
+  nav_mobile_sol_finance_title,
+  nav_mobile_sol_finance_desc,
+  nav_mobile_sol_career_title,
+  nav_mobile_sol_career_desc,
+  nav_mobile_sol_mental_title,
+  nav_mobile_sol_mental_desc,
+  nav_mobile_sol_atomic_title,
+  nav_mobile_sol_atomic_desc,
+  nav_mobile_sol_deepwork_title,
+  nav_mobile_sol_deepwork_desc,
+  nav_mobile_sol_secondbrain_title,
+  nav_mobile_sol_secondbrain_desc,
+  nav_mobile_res_guide_title,
+  nav_mobile_res_guide_desc,
+  nav_mobile_res_help_title,
+  nav_mobile_res_help_desc,
+  nav_mobile_res_changelog_title,
+  nav_mobile_res_changelog_desc,
+  nav_mobile_res_community_title,
+  nav_mobile_res_community_desc,
+  nav_mobile_res_blog_title,
+  nav_mobile_res_blog_desc,
+  nav_mobile_res_stories_title,
+  nav_mobile_res_stories_desc,
+  modal_logout_title,
+  modal_logout_subtitle,
+  modal_logout_confirm,
+  modal_logout_cancel,
+  seo_about_desc,
+  footer_legal,
+  legal_title,
+  legal_ref,
+  privacy_title,
+  privacy_p1,
+  privacy_consent_title,
+  privacy_consent_p,
+  privacy_info_title,
+  privacy_info_p,
+  tos_title,
+  tos_intro,
+  tos_service_title,
+  tos_service_p,
+  tos_data_title,
+  tos_data_p,
+  tos_security_title,
+  tos_security_p,
+  tos_termination_title,
+  tos_termination_p,
+  legal_close,
+  payment_success_title,
+  payment_pending_title,
+  payment_failed_title,
+  payment_welcome_msg,
+  payment_quantum_praise,
+  payment_pending_msg,
+  payment_failed_msg,
+  payment_btn_dashboard,
+  payment_btn_billing,
+  payment_btn_pricing,
+  payment_btn_ai,
+  error_title_503,
+  error_title_500,
+  error_title_404,
+  error_title_403,
+  error_title_default,
+  error_desc_503,
+  error_desc_500,
+  error_desc_404,
+  error_desc_403,
+  error_desc_default,
+  error_btn_back,
+  "____ SECTION_8 ____": "=== TOMBOL & LABEL UMUM ===",
+  profile_settings,
+  profile_info_title,
+  profile_info_desc,
+  change_photo,
+  photo_format_allowed,
+  photo_max_size,
+  full_name,
+  email_address,
+  save_changes,
+  saved,
+  cookie_title,
+  cookie_desc,
+  cookie_btn_accept,
+  cookie_btn_settings,
+  cookie_btn_essential,
+  contact_title,
+  contact_subtitle,
+  contact_form_name,
+  contact_form_email,
+  contact_form_subject,
+  contact_form_message,
+  contact_btn_send,
+  contact_success_title,
+  contact_success_desc,
+  contact_info_title,
+  contact_info_hq,
+  contact_info_jakarta,
+  contact_info_support,
+  contact_info_billing,
+  contact_info_chat,
+  contact_info_chat_status,
+  contact_faq_title,
+  contact_faq_desc,
+  calendar_page_title,
+  contact_form_message_placeholder,
+  contact_form_name_placeholder,
+  contact_form_email_placeholder,
+  contact_subject_partnership,
+  contact_subject_other,
+  neural_bridge_title,
+  neural_bridge_limit,
   goal_page_title,
   goal_add_row,
   goal_bulk_selected,
@@ -24456,15 +25397,9 @@ const id = {
   solve_finance_syn_title,
   more_core_tools,
   more_premium_tools,
-  more_launcher_title,
-  more_launcher_subtitle,
   section_architecture,
   section_manifestation,
   section_system,
-  more_upgrade_badge,
-  more_upgrade_title,
-  more_upgrade_desc,
-  more_upgrade_btn,
   preview_modal_title,
   preview_modal_desc,
   preview_view_plans,
@@ -24537,8 +25472,6 @@ const id = {
   neural_coach_msg1,
   neural_coach_msg2,
   neural_coach_msg3,
-  neural_bridge_title,
-  neural_bridge_limit,
   btn_get_intelligence,
   btn_upgrade,
   onboarding_title,
@@ -25616,9 +26549,6 @@ const id = {
   settings_language_desc,
   settings_saved,
   settings_saved_success,
-  profile_settings,
-  profile_info_title,
-  profile_info_desc,
   profile_avatar_title,
   profile_avatar_format,
   profile_avatar_remove,
@@ -25628,18 +26558,11 @@ const id = {
   profile_placeholder_email,
   profile_btn_save,
   edit_profile,
-  change_photo,
-  photo_format_allowed,
-  photo_max_size,
-  full_name,
-  email_address,
-  save_changes,
   photo_adjust_instruction,
   adjust_photo_title,
   pan_instruction,
   save_photo,
   settings_lang_label,
-  saved,
   settings_modules_title,
   settings_modules_desc,
   settings_modules_header_hint,
@@ -25689,7 +26612,6 @@ const id = {
   billing_feature_goals,
   billing_feature_jobs,
   billing_feature_ai_soon,
-  legal_title,
   legal_desc,
   legal_section_1_title,
   legal_section_1_desc,
@@ -26525,6 +27447,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   auth_placeholder_name: auth_placeholder_name$1,
   auth_placeholder_pass: auth_placeholder_pass$1,
   auth_placeholder_pass_confirm: auth_placeholder_pass_confirm$1,
+  auth_processing,
   auth_register_subtitle: auth_register_subtitle$1,
   auth_register_title: auth_register_title$1,
   auth_remember: auth_remember$1,
@@ -26789,7 +27712,9 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   btn_unlock_now,
   btn_update,
   btn_upgrade,
+  btn_upgrade_limit,
   btn_upgrade_tier,
+  btn_yes,
   btn_yes_delete,
   budget_limit,
   budget_target,
@@ -26910,6 +27835,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   calendar_node_journal_desc,
   calendar_node_journal_title,
   calendar_open,
+  calendar_page_title,
   calendar_planner,
   calendar_prob_1_desc,
   calendar_prob_1_title,
@@ -27159,6 +28085,34 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   confirm_delete_title,
   confirm_new_password,
   confirm_pay,
+  contact_btn_send,
+  contact_faq_desc,
+  contact_faq_title,
+  contact_form_email,
+  contact_form_email_placeholder,
+  contact_form_message,
+  contact_form_message_placeholder,
+  contact_form_name,
+  contact_form_name_placeholder,
+  contact_form_subject,
+  contact_info_billing,
+  contact_info_chat,
+  contact_info_chat_status,
+  contact_info_hq,
+  contact_info_jakarta,
+  contact_info_support,
+  contact_info_title,
+  contact_subject_other,
+  contact_subject_partnership,
+  contact_subtitle,
+  contact_success_desc,
+  contact_success_title,
+  contact_title,
+  cookie_btn_accept,
+  cookie_btn_essential,
+  cookie_btn_settings,
+  cookie_desc,
+  cookie_title,
   create_budget_first,
   cta_about_btn: cta_about_btn$1,
   cta_about_desc: cta_about_desc$1,
@@ -27395,12 +28349,23 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   err_min_15_mins,
   err_save_failed,
   err_schedule_conflict,
+  error_btn_back,
   error_conflict,
   error_copy_habit,
   error_delete_habit,
+  error_desc_403,
+  error_desc_404,
+  error_desc_500,
+  error_desc_503,
+  error_desc_default,
   error_save_habit,
   error_server,
   error_title,
+  error_title_403,
+  error_title_404,
+  error_title_500,
+  error_title_503,
+  error_title_default,
   error_update_habit,
   est_total,
   evernote_badge,
@@ -27869,6 +28834,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   flow_step_4_desc,
   flow_step_4_title,
   flow_title,
+  footer_legal,
   footer_privacy,
   footer_terms,
   freelance_bento_1_desc,
@@ -29023,13 +29989,18 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   label_todo,
   label_total_checkins,
   label_urgent,
+  label_usage_limit,
   label_work,
+  lang_en,
+  lang_id,
   last_5,
   launchpad_subtitle,
   launchpad_title,
   left_to_reach,
+  legal_close,
   legal_desc,
   legal_link_privacy,
+  legal_ref,
   legal_section_1_desc,
   legal_section_1_title,
   legal_section_2_desc,
@@ -29149,6 +30120,10 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   modal_label_color,
   modal_label_priority,
   modal_label_task_name,
+  modal_logout_cancel,
+  modal_logout_confirm,
+  modal_logout_subtitle,
+  modal_logout_title,
   modal_new_simple_title,
   modal_new_title,
   modal_placeholder_simple_task,
@@ -29234,7 +30209,100 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   more_upgrade_desc,
   more_upgrade_title,
   most_wasteful,
+  nav_about: nav_about$1,
+  nav_active_account,
+  nav_avatar,
+  nav_close_menu,
+  nav_core_modules,
+  nav_dashboard: nav_dashboard$1,
+  nav_desc_calendar,
+  nav_desc_goals,
+  nav_desc_jobs,
+  nav_desc_journal,
+  nav_desc_planner,
+  nav_features,
+  nav_home: nav_home$1,
+  nav_item_calendar,
+  nav_item_coach,
+  nav_item_dashboard,
+  nav_item_finance,
+  nav_item_goals,
+  nav_item_habit,
+  nav_item_jobs,
+  nav_item_journal,
+  nav_item_more,
+  nav_item_planner,
+  nav_item_premium,
+  nav_item_settings,
   nav_item_study,
+  nav_language,
+  nav_login: nav_login$1,
+  nav_logout,
+  nav_menu_title,
+  nav_mobile_by_method,
+  nav_mobile_by_role,
+  nav_mobile_by_usecase,
+  nav_mobile_feat_calendar_desc,
+  nav_mobile_feat_calendar_title,
+  nav_mobile_feat_finance_desc,
+  nav_mobile_feat_finance_title,
+  nav_mobile_feat_goal_desc,
+  nav_mobile_feat_goal_title,
+  nav_mobile_feat_habit_desc,
+  nav_mobile_feat_habit_title,
+  nav_mobile_feat_job_desc,
+  nav_mobile_feat_job_title,
+  nav_mobile_feat_journal_desc,
+  nav_mobile_feat_journal_title,
+  nav_mobile_feat_neural_desc,
+  nav_mobile_feat_neural_title,
+  nav_mobile_feat_planner_desc,
+  nav_mobile_feat_planner_title,
+  nav_mobile_res_blog_desc,
+  nav_mobile_res_blog_title,
+  nav_mobile_res_changelog_desc,
+  nav_mobile_res_changelog_title,
+  nav_mobile_res_community_desc,
+  nav_mobile_res_community_title,
+  nav_mobile_res_guide_desc,
+  nav_mobile_res_guide_title,
+  nav_mobile_res_help_desc,
+  nav_mobile_res_help_title,
+  nav_mobile_res_knowledge,
+  nav_mobile_res_social,
+  nav_mobile_res_stories_desc,
+  nav_mobile_res_stories_title,
+  nav_mobile_sol_atomic_desc,
+  nav_mobile_sol_atomic_title,
+  nav_mobile_sol_career_desc,
+  nav_mobile_sol_career_title,
+  nav_mobile_sol_deepwork_desc,
+  nav_mobile_sol_deepwork_title,
+  nav_mobile_sol_finance_desc,
+  nav_mobile_sol_finance_title,
+  nav_mobile_sol_freelancer_desc,
+  nav_mobile_sol_freelancer_title,
+  nav_mobile_sol_growth_desc,
+  nav_mobile_sol_growth_title,
+  nav_mobile_sol_mental_desc,
+  nav_mobile_sol_mental_title,
+  nav_mobile_sol_secondbrain_desc,
+  nav_mobile_sol_secondbrain_title,
+  nav_mobile_sol_student_desc,
+  nav_mobile_sol_student_title,
+  nav_neural_active,
+  nav_platinum_suite,
+  nav_pricing,
+  nav_register: nav_register$1,
+  nav_resources,
+  nav_search,
+  nav_search_anything,
+  nav_search_placeholder,
+  nav_settings,
+  nav_solutions,
+  nav_toggle_menu,
+  nav_upgrade_pro,
+  nav_user_fallback,
   neural_audit_badge,
   neural_audit_desc,
   neural_audit_step1_desc,
@@ -29594,6 +30662,17 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   password_security_title,
   password_title,
   password_updated,
+  payment_btn_ai,
+  payment_btn_billing,
+  payment_btn_dashboard,
+  payment_btn_pricing,
+  payment_failed_msg,
+  payment_failed_title,
+  payment_pending_msg,
+  payment_pending_title,
+  payment_quantum_praise,
+  payment_success_title,
+  payment_welcome_msg,
   per_day,
   ph_event_desc,
   ph_event_title,
@@ -30207,6 +31286,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   priority_vital,
   priority_work,
   privacy_badge,
+  privacy_consent_p,
+  privacy_consent_title,
   privacy_contact_email,
   privacy_contact_role,
   privacy_contact_sla,
@@ -30234,6 +31315,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_h2_security,
   privacy_h2_thirdparty,
   privacy_h2_usage,
+  privacy_info_p,
+  privacy_info_title,
   privacy_last_updated,
   privacy_li_collection_1_desc,
   privacy_li_collection_1_title,
@@ -30262,6 +31345,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_nav_5,
   privacy_nav_6,
   privacy_nav_7,
+  privacy_p1,
   privacy_p_collection,
   privacy_p_contact,
   privacy_p_rights,
@@ -30278,6 +31362,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   privacy_status_tracking,
   privacy_status_tracking_val,
   privacy_subtitle,
+  privacy_title,
   privacy_title_1,
   privacy_title_2,
   privacy_tldr_1_desc,
@@ -30480,6 +31565,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   see_less,
   select_hour,
   select_placeholder,
+  seo_about_desc,
   seo_eyebrow_applenotes,
   seo_eyebrow_clickup,
   seo_eyebrow_evernote,
@@ -31243,6 +32329,8 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   terms_subtitle,
   terms_title_1,
   terms_title_2,
+  theme_dark,
+  theme_light,
   ticktick_alt_desc,
   ticktick_alt_og_desc,
   ticktick_alt_og_title,
@@ -31330,6 +32418,16 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   todoist_table_row_3_col_1,
   todoist_table_row_3_col_2,
   todoist_table_row_3_title,
+  tos_data_p,
+  tos_data_title,
+  tos_intro,
+  tos_security_p,
+  tos_security_title,
+  tos_service_p,
+  tos_service_title,
+  tos_termination_p,
+  tos_termination_title,
+  tos_title,
   total_input,
   total_label,
   total_pl,
@@ -31380,6 +32478,12 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   trello_table_row_3_col_1,
   trello_table_row_3_col_2,
   trello_table_row_3_title,
+  trial_confirm_text,
+  trial_confirm_title,
+  trial_days,
+  trial_remaining,
+  trial_success_text,
+  trial_success_title,
   type,
   unified_ecosystem_title,
   update_password,
@@ -31937,7 +33041,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-D3aMaE1P.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-NQy9OV9U.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B87qJvUV.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-D2RDHOku.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DlcpRL9j.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-C_lV_RDi.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-heyycDS1.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-Dt5MAp73.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-odvLZCzY.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n) => n.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-stB_g66m.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BjhG5_S-.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C9dXI0dE.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-B_EqONj9.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-CfKY2JdE.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BK6og38f.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BGrEHt6n.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DJWY98MQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-fybyLV4E.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-CxY5ApgX.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Dp6aJ9nN.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-2Gd2mIog.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-Bo_LLf91.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CPjshJtP.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DIx8N3NE.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-Bvjy0-Ms.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-D2-G8V42.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-CPcBCntd.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DoIsQrsq.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-D5ufwNAn.js"), "./Pages/More/Index.vue": () => import("./assets/Index-wfyL85xi.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-BkpbzYRW.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-CZ3yCKIq.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DBUIkqkz.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BtvnDEM3.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CHVFEJ5f.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-DC3aNcJy.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DTR8h-1P.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-D3f8rFCT.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/PublicPortfolio/Show.vue": () => import("./assets/Show-BsSsH2jX.js"), "./Pages/PublicPortfolio/ShowCard.vue": () => import("./assets/ShowCard-cATmFsUU.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-II45sA7a.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-BzmGZC-H.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-DPQjERoD.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Study/Index.vue": () => import("./assets/Index-Bqc4cZRT.js"), "./Pages/Study/StudyArchetypeMatches.vue": () => import("./assets/StudyArchetypeMatches-BIQ0WV1T.js"), "./Pages/Study/StudyCompetencyRadar.vue": () => import("./assets/StudyCompetencyRadar-apTYziFd.js"), "./Pages/Study/StudyMaterialList.vue": () => import("./assets/StudyMaterialList-C2MOzEu0.js"), "./Pages/Study/StudySettingsForm.vue": () => import("./assets/StudySettingsForm-D_EPWYLM.js"), "./Pages/Study/StudyUploadForm.vue": () => import("./assets/StudyUploadForm-xo3kjrDT.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-D3aMaE1P.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-NQy9OV9U.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B87qJvUV.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-D2RDHOku.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DlcpRL9j.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-C_lV_RDi.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-heyycDS1.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-Dt5MAp73.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-odvLZCzY.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n) => n.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-stB_g66m.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BjhG5_S-.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C9dXI0dE.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-B_EqONj9.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-CfKY2JdE.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BK6og38f.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BGrEHt6n.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DJWY98MQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-fybyLV4E.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-CxY5ApgX.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Dp6aJ9nN.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-2Gd2mIog.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-Bo_LLf91.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CPjshJtP.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DIx8N3NE.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-Bvjy0-Ms.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-D2-G8V42.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-CPcBCntd.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DoIsQrsq.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-D5ufwNAn.js"), "./Pages/More/Index.vue": () => import("./assets/Index-wfyL85xi.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-BkpbzYRW.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-CZ3yCKIq.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DBUIkqkz.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BtvnDEM3.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CHVFEJ5f.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-DC3aNcJy.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DTR8h-1P.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-D3f8rFCT.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/PublicPortfolio/Show.vue": () => import("./assets/Show-DXjpqEeg.js"), "./Pages/PublicPortfolio/ShowCard.vue": () => import("./assets/ShowCard-BYt-3ess.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-II45sA7a.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-BzmGZC-H.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-DPQjERoD.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Study/Index.vue": () => import("./assets/Index-B1m8yfc8.js"), "./Pages/Study/StudyArchetypeMatches.vue": () => import("./assets/StudyArchetypeMatches-BIQ0WV1T.js"), "./Pages/Study/StudyCompetencyRadar.vue": () => import("./assets/StudyCompetencyRadar-apTYziFd.js"), "./Pages/Study/StudyMaterialList.vue": () => import("./assets/StudyMaterialList-BHUaTa8b.js"), "./Pages/Study/StudySettingsForm.vue": () => import("./assets/StudySettingsForm-D_EPWYLM.js"), "./Pages/Study/StudyUploadForm.vue": () => import("./assets/StudyUploadForm-Bl2X6eXB.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

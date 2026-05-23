@@ -606,7 +606,7 @@ const profileBio = computed(() => {
                             
                             <div class="flex-1 space-y-3">
                                 <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold leading-relaxed">
-                                    {{ $t('portfolio_career_readiness_desc', 'Your coursework matches') }} <span class="text-indigo-600 dark:text-indigo-400 font-bold">{{ careerReadinessResult.score }}%</span> {{ $t('portfolio_career_readiness_of', 'of requirements for a role in') }} <span class="text-indigo-600 dark:text-indigo-400 font-bold">{{ careerTarget }}</span>, {{ $t('portfolio_career_readiness_align', 'aligning with the Scikit-learn predicted') }} <span class="text-indigo-600 dark:text-indigo-400 font-bold">{{ careerReadinessResult.alignedArchetype }}</span> {{ $t('portfolio_career_readiness_archetype', 'archetype.') }}
+                                    {{ $t('portfolio_career_readiness_desc', 'Your coursework matches') }} <span class="text-indigo-600 dark:text-indigo-400 font-bold">{{ careerReadinessResult.score }}%</span> {{ $t('portfolio_career_readiness_of', 'of requirements for a role in') }} <span class="text-indigo-600 dark:text-indigo-400 font-bold">{{ careerTarget }}</span>, {{ $t('portfolio_career_readiness_align', 'aligning with the dynamically predicted') }} <span class="text-indigo-600 dark:text-indigo-400 font-bold">{{ careerReadinessResult.alignedArchetype }}</span> {{ $t('portfolio_career_readiness_archetype', 'archetype.') }}
                                 </p>
                                 
                                 <!-- Present Skills List -->
@@ -636,10 +636,10 @@ const profileBio = computed(() => {
                     <div v-if="showArchetypes" class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-200/50 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.02)] hover:shadow-2xl transition duration-500 flex-1">
                         <h2 class="text-lg font-extrabold text-slate-900 dark:text-white mb-1 flex items-center gap-2">
                             <Sparkles class="h-5 w-5 text-indigo-500" />
-                            {{ $t('portfolio_ml_archetypes_title', 'ML Archetype Fits') }}
+                            {{ $t('portfolio_ml_archetypes_title', 'Dynamic Archetype Fits') }}
                         </h2>
                         <p class="text-slate-400 dark:text-slate-500 text-xs font-semibold mb-6">
-                            {{ $t('portfolio_archetypes_subtitle', 'Career path scores calculated using Scikit-Learn Local Classification Models') }}
+                            {{ $t('portfolio_archetypes_subtitle', 'Career path alignment calculated via dynamic ML analysis') }}
                         </p>
 
                         <!-- Archetypes Alignment -->
@@ -807,7 +807,7 @@ const profileBio = computed(() => {
                 <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shrink-0 bg-slate-50 dark:bg-slate-900/50">
                     <div class="min-w-0">
                         <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/50">
-                            {{ selectedMaterial.type === 'context' ? $t('portfolio_reader_context_type', 'Course syllabus context') : $t('portfolio_reader_artifact_type', 'Coursework task report') }}
+                            Coursework Material
                         </span>
                         <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-200 truncate mt-1">
                             {{ selectedMaterial.course_name }}
@@ -823,79 +823,82 @@ const profileBio = computed(() => {
                 </div>
 
                 <!-- Multi-format content viewer -->
-                <div class="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950/50 relative">
-                    <!-- PDF Mode -->
-                    <template v-if="!selectedMaterial.embed_url && !selectedMaterial.rich_text">
-                        <iframe 
-                            :src="pdfStreamUrl" 
-                            class="w-full h-full border-0"
-                            title="Document Viewer"
-                            allow="fullscreen"
-                        ></iframe>
-                    </template>
-
-                    <!-- Web Link Mode -->
-                    <template v-else-if="selectedMaterial.embed_url">
-                        <div class="p-8 max-w-4xl mx-auto flex flex-col justify-center min-h-full gap-8">
-                            <div class="p-8 rounded-[2.5rem] bg-white/70 dark:bg-slate-900/70 border border-slate-200/50 dark:border-slate-800/80 shadow-xl backdrop-blur-md flex flex-col items-center text-center gap-6 relative overflow-hidden group">
-                                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                                
-                                <div class="h-20 w-20 rounded-[2rem] bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-100 dark:border-indigo-900/50 flex items-center justify-center shadow-inner relative z-10">
-                                    <Link2 class="h-10 w-10 text-indigo-600 dark:text-indigo-400" />
+                <div class="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950/50 p-6 md:p-8 space-y-8">
+                    
+                    <!-- Context Data Section -->
+                    <div v-if="selectedMaterial.context_data" class="space-y-6">
+                        <h4 class="text-xs uppercase font-extrabold tracking-widest text-indigo-500 dark:text-indigo-400 mb-4 border-b border-indigo-100 dark:border-indigo-900/50 pb-2">Context Material</h4>
+                        
+                        <!-- Context Files -->
+                        <div v-if="selectedMaterial.context_data.files && selectedMaterial.context_data.files.length" class="space-y-4">
+                            <div v-for="(file, idx) in selectedMaterial.context_data.files" :key="idx" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+                                <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                                    <FileText class="h-4 w-4" /> {{ file.name }}
                                 </div>
-
-                                <div class="relative z-10">
-                                    <h4 class="text-xs uppercase font-extrabold tracking-widest text-indigo-500 dark:text-indigo-400 mb-1">External Resource Embed</h4>
-                                    <h3 class="text-xl font-black text-slate-800 dark:text-slate-200 break-all px-4 max-w-2xl">
-                                        {{ selectedMaterial.file_name }}
-                                    </h3>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 font-medium">
-                                        {{ selectedMaterial.embed_url }}
-                                    </p>
+                                <div class="h-[60vh] w-full" v-if="file.path.endsWith('.pdf')">
+                                    <iframe :src="`/storage/${file.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
                                 </div>
-
-                                <!-- AI Summary / Context Card -->
-                                <div v-if="selectedMaterial.extracted_text" class="w-full text-left p-6 rounded-3xl bg-slate-50/50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-900/60 relative z-10 max-h-60 overflow-y-auto">
-                                    <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 dark:text-slate-500 block mb-1">{{ $t('portfolio_card_ai_summary_label', 'AI Context & Competency Summary') }}</span>
-                                    <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-semibold">
-                                        {{ selectedMaterial.extracted_text }}
-                                    </p>
-                                </div>
-
-                                <a 
-                                    :target="selectedMaterial.embed_url.startsWith('javascript:') ? '_self' : '_blank'"
-                                    :href="selectedMaterial.embed_url" 
-                                    class="relative z-10 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm rounded-2xl shadow-lg shadow-indigo-600/10 hover:shadow-xl hover:shadow-indigo-600/20 transition-all flex items-center gap-2 group-hover:scale-105 duration-300"
-                                >
-                                    {{ $t('portfolio_open_external_demo', 'Open Demo / Codebase Link') }}
-                                    <ExternalLink class="h-4 w-4" />
-                                </a>
-                            </div>
-                        </div>
-                    </template>
-
-                    <!-- Plain Text Mode -->
-                    <template v-else-if="selectedMaterial.rich_text">
-                        <div class="p-6 md:p-8 max-w-4xl mx-auto">
-                            <div class="p-6 md:p-8 rounded-[2.5rem] bg-white/70 dark:bg-slate-900/70 border border-slate-200/50 dark:border-slate-800/80 shadow-xl backdrop-blur-md relative overflow-hidden">
-                                <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100 dark:border-slate-800/80">
-                                    <div class="h-10 w-10 rounded-xl bg-purple-50 dark:bg-purple-950/50 flex items-center justify-center text-purple-600 dark:text-purple-400 border border-purple-100/50 dark:border-purple-900/50">
-                                        <BookOpen class="h-5 w-5" />
-                                    </div>
-                                    <div>
-                                        <h4 class="text-[10px] uppercase font-bold tracking-widest text-purple-500 dark:text-purple-400">{{ $t('portfolio_card_reflective_header', 'Reflective Text Content') }}</h4>
-                                        <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold">{{ $t('portfolio_card_reflective_subtitle', 'Self-Reflective Proof of Work Document') }}</p>
-                                    </div>
-                                </div>
-
-                                <div class="prose prose-slate dark:prose-invert max-w-none">
-                                    <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium whitespace-pre-wrap select-text break-words">
-                                        {{ selectedMaterial.rich_text }}
-                                    </p>
+                                <div v-else class="p-6 text-center text-sm text-slate-500">
+                                    File cannot be previewed inline. <a :href="`/storage/${file.path}`" target="_blank" class="text-indigo-500 underline ml-2">Download File</a>
                                 </div>
                             </div>
                         </div>
-                    </template>
+                        
+                        <!-- Context Link -->
+                        <div v-if="selectedMaterial.context_data.link" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
+                            <div class="h-12 w-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center shrink-0">
+                                <Link2 class="h-6 w-6 text-indigo-500" />
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
+                                <a :href="selectedMaterial.context_data.link" target="_blank" class="text-sm font-bold text-indigo-600 dark:text-indigo-400 underline truncate block">{{ selectedMaterial.context_data.link }}</a>
+                            </div>
+                        </div>
+
+                        <!-- Context Text -->
+                        <div v-if="selectedMaterial.context_data.text" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ selectedMaterial.context_data.text }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Artifact Data Section -->
+                    <div v-if="selectedMaterial.artifact_data" class="space-y-6">
+                        <h4 class="text-xs uppercase font-extrabold tracking-widest text-emerald-500 dark:text-emerald-400 mb-4 border-b border-emerald-100 dark:border-emerald-900/50 pb-2 mt-8">Artifact Material</h4>
+                        
+                        <!-- Artifact Files -->
+                        <div v-if="selectedMaterial.artifact_data.files && selectedMaterial.artifact_data.files.length" class="space-y-4">
+                            <div v-for="(file, idx) in selectedMaterial.artifact_data.files" :key="idx" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+                                <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                                    <FileText class="h-4 w-4" /> {{ file.name }}
+                                </div>
+                                <div class="h-[60vh] w-full" v-if="file.path.endsWith('.pdf')">
+                                    <iframe :src="`/storage/${file.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
+                                </div>
+                                <div v-else class="p-6 text-center text-sm text-slate-500">
+                                    File cannot be previewed inline. <a :href="`/storage/${file.path}`" target="_blank" class="text-emerald-500 underline ml-2">Download File</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Artifact Link -->
+                        <div v-if="selectedMaterial.artifact_data.link" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
+                            <div class="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center shrink-0">
+                                <Link2 class="h-6 w-6 text-emerald-500" />
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
+                                <a :href="selectedMaterial.artifact_data.link" target="_blank" class="text-sm font-bold text-emerald-600 dark:text-emerald-400 underline truncate block">{{ selectedMaterial.artifact_data.link }}</a>
+                            </div>
+                        </div>
+
+                        <!-- Artifact Text -->
+                        <div v-if="selectedMaterial.artifact_data.text" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
+                            <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ selectedMaterial.artifact_data.text }}</p>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Modal Footer -->

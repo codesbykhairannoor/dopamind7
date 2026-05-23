@@ -42,6 +42,14 @@ const copyCardLink = (id) => {
         copiedCardId.value = null;
     }, 2000);
 };
+    const getMaterialSummary = (data) => {
+        if (!data) return 'None';
+        const parts = [];
+        if (data.files && data.files.length) parts.push(`${data.files.length} file(s)`);
+        if (data.link) parts.push('1 link');
+        if (data.text) parts.push('Notes');
+        return parts.length ? parts.join(', ') : 'None';
+    };
 </script>
 
 <template>
@@ -72,12 +80,8 @@ const copyCardLink = (id) => {
                 <div class="min-w-0">
                     <!-- Badge Header -->
                     <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                        <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider"
-                            :class="material.type === 'context' 
-                                ? 'bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 border border-blue-100/50 dark:border-blue-900/40' 
-                                : 'bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100/50 dark:border-emerald-900/40'"
-                        >
-                            {{ material.type === 'context' ? 'Context' : 'Artifact' }}
+                        <span v-if="material.metadata?.field_of_study" class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/40">
+                            {{ material.metadata.field_of_study }}
                         </span>
 
                         <!-- Period/Week -->
@@ -87,7 +91,7 @@ const copyCardLink = (id) => {
                         </span>
 
                         <!-- Grade/Score -->
-                        <span v-if="material.grade !== null" class="px-1.5 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-[9px] font-bold">
+                        <span v-if="material.grade !== null" class="px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
                             Grade: {{ material.grade }}
                         </span>
                     </div>
@@ -96,36 +100,28 @@ const copyCardLink = (id) => {
                         {{ material.course_name }}
                     </h3>
                     
-                    <p class="text-xs text-slate-400 dark:text-slate-500 truncate flex items-center gap-1.5 mt-0.5">
-                        <template v-if="material.embed_url">
-                            <Link2 class="h-3.5 w-3.5 text-indigo-500 shrink-0" />
-                            <a :href="material.embed_url" target="_blank" class="hover:text-indigo-600 dark:hover:text-indigo-400 underline truncate max-w-[200px] sm:max-w-xs">
-                                {{ material.embed_url }}
-                            </a>
-                        </template>
-                        <template v-else-if="material.rich_text">
-                            <BookOpen class="h-3.5 w-3.5 text-purple-500 shrink-0" />
-                            <span class="truncate max-w-[200px] sm:max-w-xs font-medium italic">
-                                "{{ material.rich_text.substring(0, 60) }}{{ material.rich_text.length > 60 ? '...' : '' }}"
-                            </span>
-                        </template>
-                        <template v-else>
-                            <FileText class="h-3.5 w-3.5 text-blue-500 shrink-0" />
-                            <span class="truncate max-w-[200px] sm:max-w-xs">{{ material.file_name }}</span>
-                        </template>
-                    </p>
+                    <div class="mt-2 text-xs text-slate-400 dark:text-slate-500 flex flex-col gap-1">
+                        <div v-if="material.context_data" class="flex items-center gap-2">
+                            <span class="text-[9px] font-bold uppercase text-slate-400 bg-slate-200/50 dark:bg-slate-800/50 px-1.5 py-0.5 rounded">Context</span>
+                            <span class="truncate">{{ getMaterialSummary(material.context_data) }}</span>
+                        </div>
+                        <div v-if="material.artifact_data" class="flex items-center gap-2">
+                            <span class="text-[9px] font-bold uppercase text-slate-400 bg-slate-200/50 dark:bg-slate-800/50 px-1.5 py-0.5 rounded">Artifact</span>
+                            <span class="truncate">{{ getMaterialSummary(material.artifact_data) }}</span>
+                        </div>
+                    </div>
 
-                    <!-- Keywords tags -->
-                    <div v-if="material.metadata?.keywords && material.metadata.keywords.length > 0" class="flex flex-wrap gap-1.5 mt-2">
+                    <!-- Competencies tags -->
+                    <div v-if="material.metadata?.competencies" class="flex flex-wrap gap-1.5 mt-3">
                         <span 
-                            v-for="kw in material.metadata.keywords.slice(0, 4)" 
-                            :key="kw"
+                            v-for="(score, comp) in Object.entries(material.metadata.competencies).slice(0, 4).reduce((acc, [k,v]) => ({...acc, [k]:v}), {})" 
+                            :key="comp"
                             class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[9px] font-bold border border-slate-200/30 dark:border-slate-700/30"
                         >
-                            {{ kw }}
+                            {{ comp }}
                         </span>
-                        <span v-if="material.metadata.keywords.length > 4" class="text-[9px] text-slate-400 dark:text-slate-500 font-bold self-center pl-1">
-                            +{{ material.metadata.keywords.length - 4 }} more
+                        <span v-if="Object.keys(material.metadata.competencies).length > 4" class="text-[9px] text-slate-400 dark:text-slate-500 font-bold self-center pl-1">
+                            +{{ Object.keys(material.metadata.competencies).length - 4 }} more
                         </span>
                     </div>
                 </div>

@@ -8,11 +8,11 @@ import {
 } from 'lucide-vue-next';
 
 const props = defineProps({
-    materialsCount: { type: Number, default: 0 }
+    materials: { type: Array, default: () => [] }
 });
 
-const isLimitReached = computed(() => props.materialsCount >= 6);
-const slotsLeft = computed(() => Math.max(0, 6 - props.materialsCount));
+const isLimitReached = computed(() => props.materials.length >= 6);
+const slotsLeft = computed(() => Math.max(0, 6 - props.materials.length));
 
 // ─── Shared Meta (Global for both panels) ─────────────────────────────────────
 const sharedMeta = reactive({
@@ -24,11 +24,9 @@ const sharedMeta = reactive({
 // ─── Factory: create a clean panel state ──────────────────────────────────────
 const makePanel = (type) => ({
     type,
-    input_mode: 'file',       // 'file' | 'link' | 'text'
     embed_url: '',
     rich_text: '',
-    // Multi-file queue (for PDF/DOCX/PPTX)
-    fileQueue: [],            // [{ file, name, size, status: 'pending'|'uploading'|'done'|'error', error }]
+    fileQueue: [], // [{ file, name, size }]
     dragOver: false,
 });
 
@@ -69,10 +67,9 @@ const addFilesToQueue = (panel, files) => {
             alert(`"${file.name}" exceeds the 10MB limit.`);
             continue;
         }
-        // Check if already in queue
         const alreadyAdded = panel.fileQueue.some(q => q.name === file.name && q.size === file.size);
         if (!alreadyAdded) {
-            panel.fileQueue.push({ file, name: file.name, size: file.size, status: 'pending', error: null });
+            panel.fileQueue.push({ file, name: file.name, size: file.size });
         }
     }
 };
@@ -100,83 +97,11 @@ const handleFileSelect = (panel, e) => {
 };
 
 // ─── Submit ───────────────────────────────────────────────────────────────────
-const submitSingleFile = (panel, queueItem) => {
-    return new Promise((resolve) => {
-        queueItem.status = 'uploading';
-        queueItem.error = null;
-
-        const form = useForm({
-            input_mode: 'file',
-            file: queueItem.file,
-            type: panel.type,
-            course_name: sharedMeta.course_name,
-            week: sharedMeta.week,
-            grade: sharedMeta.grade || null,
-        });
-
-        form.post(route('study.store'), {
-            forceFormData: true,
-            preserveScroll: true,
-            onSuccess: () => {
-                queueItem.status = 'done';
-                resolve(true);
-            },
-            onError: (errors) => {
-                queueItem.status = 'error';
-                queueItem.error = Object.values(errors)[0] || 'Upload failed.';
-                resolve(false);
-            },
-        });
-    });
+const hasPendingItems = (panel) => {
+    return panel.fileQueue.length > 0 || !!panel.embed_url.trim() || !!panel.rich_text.trim();
 };
 
-const submitLinkOrText = (panel) => {
-    return new Promise((resolve) => {
-        const formData = {
-            input_mode: panel.input_mode,
-            type: panel.type,
-            course_name: sharedMeta.course_name,
-            week: sharedMeta.week,
-            grade: sharedMeta.grade || null,
-        };
-        if (panel.input_mode === 'link') formData.embed_url = panel.embed_url;
-        if (panel.input_mode === 'text') formData.rich_text = panel.rich_text;
-
-        const form = useForm(formData);
-        form.post(route('study.store'), {
-            preserveScroll: true,
-            onSuccess: () => resolve(true),
-            onError: () => resolve(false),
-        });
-    });
-};
-
-const submitPanel = async (panel) => {
-    if (panel.input_mode === 'link' && !panel.embed_url.trim()) return;
-    if (panel.input_mode === 'text' && (!panel.rich_text.trim() || wordCount(panel.rich_text) > maxWords)) return;
-    if (panel.input_mode === 'file' && panel.fileQueue.filter(f => f.status === 'pending').length === 0) return;
-
-    if (panel.input_mode === 'file') {
-        const pending = panel.fileQueue.filter(f => f.status === 'pending');
-        for (const item of pending) {
-            if (props.materialsCount >= 6) {
-                item.status = 'error';
-                item.error = 'Card limit (6) reached.';
-                break;
-            }
-            await submitSingleFile(panel, item);
-        }
-        setTimeout(() => {
-            panel.fileQueue = panel.fileQueue.filter(f => f.status !== 'done');
-        }, 3000);
-    } else {
-        await submitLinkOrText(panel);
-        panel.embed_url = '';
-        panel.rich_text = '';
-    }
-};
-
-const submitAll = async () => {
+const submitAll = () => {
     if (!sharedMeta.course_name.trim()) {
         alert('Please enter a Course Name first.');
         return;
@@ -186,21 +111,58 @@ const submitAll = async () => {
         return;
     }
     
-    // Check if there's anything to submit at all
-    const hasContext = hasPendingItems(contextPanel);
-    const hasArtifact = hasPendingItems(artifactPanel);
-    
-    if (!hasContext && !hasArtifact) {
-        alert('Please add at least one context or artifact file/link to analyze.');
+    if (!hasPendingItems(contextPanel) && !hasPendingItems(artifactPanel)) {
+        alert('Please add at least one context or artifact item to analyze.');
         return;
+    }
+
+    if (contextPanel.rich_text && wordCount(contextPanel.rich_text) > maxWords) {
+        alert('Context text exceeds 500 words limit.'); return;
+    }
+    if (artifactPanel.rich_text && wordCount(artifactPanel.rich_text) > maxWords) {
+        alert('Artifact text exceeds 500 words limit.'); return;
     }
 
     isSubmittingAll.value = true;
 
-    if (hasContext) await submitPanel(contextPanel);
-    if (hasArtifact) await submitPanel(artifactPanel);
+    // Use pure FormData to ensure arrays of files are handled properly
+    const formData = new FormData();
+    formData.append('course_name', sharedMeta.course_name);
+    if (sharedMeta.week) formData.append('week', sharedMeta.week);
+    if (sharedMeta.grade) formData.append('grade', sharedMeta.grade);
 
-    isSubmittingAll.value = false;
+    if (contextPanel.embed_url) formData.append('context_link', contextPanel.embed_url);
+    if (contextPanel.rich_text) formData.append('context_text', contextPanel.rich_text);
+    contextPanel.fileQueue.forEach((q, i) => {
+        formData.append(`context_files[${i}]`, q.file);
+    });
+
+    if (artifactPanel.embed_url) formData.append('artifact_link', artifactPanel.embed_url);
+    if (artifactPanel.rich_text) formData.append('artifact_text', artifactPanel.rich_text);
+    artifactPanel.fileQueue.forEach((q, i) => {
+        formData.append(`artifact_files[${i}]`, q.file);
+    });
+
+    router.post(route('study.store'), formData, {
+        forceFormData: true,
+        preserveScroll: true,
+        onSuccess: () => {
+            contextPanel.fileQueue = [];
+            contextPanel.embed_url = '';
+            contextPanel.rich_text = '';
+            artifactPanel.fileQueue = [];
+            artifactPanel.embed_url = '';
+            artifactPanel.rich_text = '';
+            sharedMeta.course_name = '';
+            sharedMeta.week = '';
+            sharedMeta.grade = '';
+            isSubmittingAll.value = false;
+        },
+        onError: (errors) => {
+            isSubmittingAll.value = false;
+            alert(Object.values(errors)[0] || 'Upload failed.');
+        }
+    });
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -208,13 +170,6 @@ const formatBytes = (bytes) => {
     if (bytes < 1024) return bytes + ' B';
     if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
     return (bytes / 1024 / 1024).toFixed(2) + ' MB';
-};
-
-const hasPendingItems = (panel) => {
-    if (panel.input_mode === 'file') return panel.fileQueue.some(f => f.status === 'pending');
-    if (panel.input_mode === 'link') return !!panel.embed_url.trim();
-    if (panel.input_mode === 'text') return !!panel.rich_text.trim() && wordCount(panel.rich_text) <= maxWords;
-    return false;
 };
 
 const globalHasPending = computed(() => {
@@ -303,28 +258,10 @@ const globalHasPending = computed(() => {
             </div>
 
             <!-- Panel Form -->
-            <div class="p-6 space-y-4">
-                <!-- Input mode switcher -->
-                <div class="flex gap-1 p-1 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 mb-6">
-                    <button type="button" @click="contextPanel.input_mode = 'file'"
-                        class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
-                        :class="contextPanel.input_mode === 'file' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
-                        <FileText class="h-3 w-3" /> File
-                    </button>
-                    <button type="button" @click="contextPanel.input_mode = 'link'"
-                        class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
-                        :class="contextPanel.input_mode === 'link' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
-                        <Link2 class="h-3 w-3" /> Link
-                    </button>
-                    <button type="button" @click="contextPanel.input_mode = 'text'"
-                        class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
-                        :class="contextPanel.input_mode === 'text' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
-                        <BookOpen class="h-3 w-3" /> Text
-                    </button>
-                </div>
-
+            <div class="p-6 space-y-6">
                 <!-- File Drop Zone -->
-                <div v-if="contextPanel.input_mode === 'file'">
+                <div>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Files</label>
                     <input ref="contextFileInput" type="file" accept=".pdf,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation" multiple class="hidden"
                         @change="e => handleFileSelect(contextPanel, e)" />
                     <div
@@ -343,30 +280,14 @@ const globalHasPending = computed(() => {
                     <!-- File Queue -->
                     <div v-if="contextPanel.fileQueue.length > 0" class="mt-4 space-y-2">
                         <div v-for="(item, idx) in contextPanel.fileQueue" :key="idx"
-                            class="flex items-center gap-3 p-3 rounded-xl border transition"
-                            :class="{
-                                'bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800': item.status === 'pending',
-                                'bg-blue-50/50 dark:bg-blue-950/20 border-blue-200/50 dark:border-blue-900/30': item.status === 'uploading',
-                                'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200/50 dark:border-emerald-900/30': item.status === 'done',
-                                'bg-red-50/50 dark:bg-red-950/20 border-red-200/50 dark:border-red-900/30': item.status === 'error'
-                            }"
+                            class="flex items-center gap-3 p-3 rounded-xl border bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 transition"
                         >
-                            <File class="h-4 w-4 shrink-0"
-                                :class="{
-                                    'text-slate-400': item.status === 'pending',
-                                    'text-blue-500 animate-pulse': item.status === 'uploading',
-                                    'text-emerald-500': item.status === 'done',
-                                    'text-red-500': item.status === 'error'
-                                }" />
+                            <File class="h-4 w-4 shrink-0 text-slate-400" />
                             <div class="flex-1 min-w-0">
                                 <p class="text-[11px] font-bold text-slate-700 dark:text-slate-300 truncate">{{ item.name }}</p>
-                                <p v-if="item.status === 'error'" class="text-[10px] text-red-500 font-semibold">{{ item.error }}</p>
-                                <p v-else class="text-[10px] text-slate-400">{{ formatBytes(item.size) }}</p>
+                                <p class="text-[10px] text-slate-400">{{ formatBytes(item.size) }}</p>
                             </div>
-                            <Loader2 v-if="item.status === 'uploading'" class="h-4 w-4 text-blue-500 animate-spin shrink-0" />
-                            <CheckCircle2 v-else-if="item.status === 'done'" class="h-4 w-4 text-emerald-500 shrink-0" />
-                            <XCircle v-else-if="item.status === 'error'" class="h-4 w-4 text-red-500 shrink-0" />
-                            <button v-else type="button" @click="removeFromQueue(contextPanel, idx)"
+                            <button type="button" @click.stop="removeFromQueue(contextPanel, idx)"
                                 class="h-6 w-6 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition flex items-center justify-center shrink-0">
                                 <Trash2 class="h-3.5 w-3.5" />
                             </button>
@@ -375,7 +296,8 @@ const globalHasPending = computed(() => {
                 </div>
 
                 <!-- Link Mode -->
-                <div v-else-if="contextPanel.input_mode === 'link'">
+                <div>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Link</label>
                     <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"><Link2 class="h-4 w-4" /></span>
                         <input v-model="contextPanel.embed_url" type="url" placeholder="https://github.com/..."
@@ -384,15 +306,15 @@ const globalHasPending = computed(() => {
                 </div>
 
                 <!-- Text Mode -->
-                <div v-else-if="contextPanel.input_mode === 'text'">
+                <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Reflective Notes</label>
+                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">Notes / Text</label>
                         <span class="text-[10px] font-bold" :class="wordCount(contextPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
                             {{ wordCount(contextPanel.rich_text) }}/{{ maxWords }}
                         </span>
                     </div>
-                    <textarea v-model="contextPanel.rich_text" rows="5"
-                        placeholder="Write or paste course reflections, conceptual summaries..."
+                    <textarea v-model="contextPanel.rich_text" rows="4"
+                        placeholder="Write or paste context details..."
                         class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
                         :class="wordCount(contextPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>
@@ -419,28 +341,10 @@ const globalHasPending = computed(() => {
             </div>
 
             <!-- Panel Form -->
-            <div class="p-6 space-y-4">
-                <!-- Input mode switcher -->
-                <div class="flex gap-1 p-1 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 mb-6">
-                    <button type="button" @click="artifactPanel.input_mode = 'file'"
-                        class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
-                        :class="artifactPanel.input_mode === 'file' ? 'bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
-                        <FileText class="h-3 w-3" /> File
-                    </button>
-                    <button type="button" @click="artifactPanel.input_mode = 'link'"
-                        class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
-                        :class="artifactPanel.input_mode === 'link' ? 'bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
-                        <Link2 class="h-3 w-3" /> Link
-                    </button>
-                    <button type="button" @click="artifactPanel.input_mode = 'text'"
-                        class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
-                        :class="artifactPanel.input_mode === 'text' ? 'bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
-                        <BookOpen class="h-3 w-3" /> Text
-                    </button>
-                </div>
-
+            <div class="p-6 space-y-6">
                 <!-- File Drop Zone -->
-                <div v-if="artifactPanel.input_mode === 'file'">
+                <div>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Files</label>
                     <input ref="artifactFileInput" type="file" accept=".pdf,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation" multiple class="hidden"
                         @change="e => handleFileSelect(artifactPanel, e)" />
                     <div
@@ -459,30 +363,14 @@ const globalHasPending = computed(() => {
                     <!-- File Queue -->
                     <div v-if="artifactPanel.fileQueue.length > 0" class="mt-4 space-y-2">
                         <div v-for="(item, idx) in artifactPanel.fileQueue" :key="idx"
-                            class="flex items-center gap-3 p-3 rounded-xl border transition"
-                            :class="{
-                                'bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800': item.status === 'pending',
-                                'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200/50 dark:border-emerald-900/30': item.status === 'uploading',
-                                'bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-300/50 dark:border-emerald-800/30': item.status === 'done',
-                                'bg-red-50/50 dark:bg-red-950/20 border-red-200/50 dark:border-red-900/30': item.status === 'error'
-                            }"
+                            class="flex items-center gap-3 p-3 rounded-xl border bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 transition"
                         >
-                            <File class="h-4 w-4 shrink-0"
-                                :class="{
-                                    'text-slate-400': item.status === 'pending',
-                                    'text-emerald-500 animate-pulse': item.status === 'uploading',
-                                    'text-emerald-500': item.status === 'done',
-                                    'text-red-500': item.status === 'error'
-                                }" />
+                            <File class="h-4 w-4 shrink-0 text-slate-400" />
                             <div class="flex-1 min-w-0">
                                 <p class="text-[11px] font-bold text-slate-700 dark:text-slate-300 truncate">{{ item.name }}</p>
-                                <p v-if="item.status === 'error'" class="text-[10px] text-red-500 font-semibold">{{ item.error }}</p>
-                                <p v-else class="text-[10px] text-slate-400">{{ formatBytes(item.size) }}</p>
+                                <p class="text-[10px] text-slate-400">{{ formatBytes(item.size) }}</p>
                             </div>
-                            <Loader2 v-if="item.status === 'uploading'" class="h-4 w-4 text-emerald-500 animate-spin shrink-0" />
-                            <CheckCircle2 v-else-if="item.status === 'done'" class="h-4 w-4 text-emerald-500 shrink-0" />
-                            <XCircle v-else-if="item.status === 'error'" class="h-4 w-4 text-red-500 shrink-0" />
-                            <button v-else type="button" @click="removeFromQueue(artifactPanel, idx)"
+                            <button type="button" @click.stop="removeFromQueue(artifactPanel, idx)"
                                 class="h-6 w-6 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition flex items-center justify-center shrink-0">
                                 <Trash2 class="h-3.5 w-3.5" />
                             </button>
@@ -491,7 +379,8 @@ const globalHasPending = computed(() => {
                 </div>
 
                 <!-- Link Mode -->
-                <div v-else-if="artifactPanel.input_mode === 'link'">
+                <div>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Link</label>
                     <div class="relative">
                         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"><Link2 class="h-4 w-4" /></span>
                         <input v-model="artifactPanel.embed_url" type="url" placeholder="https://github.com/..."
@@ -500,15 +389,15 @@ const globalHasPending = computed(() => {
                 </div>
 
                 <!-- Text Mode -->
-                <div v-else-if="artifactPanel.input_mode === 'text'">
+                <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Reflective Notes</label>
+                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">Notes / Text</label>
                         <span class="text-[10px] font-bold" :class="wordCount(artifactPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
                             {{ wordCount(artifactPanel.rich_text) }}/{{ maxWords }}
                         </span>
                     </div>
-                    <textarea v-model="artifactPanel.rich_text" rows="5"
-                        placeholder="Write or paste assignment reflections, project details..."
+                    <textarea v-model="artifactPanel.rich_text" rows="4"
+                        placeholder="Write or paste artifact details..."
                         class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"
                         :class="wordCount(artifactPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>

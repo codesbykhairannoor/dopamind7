@@ -39,207 +39,196 @@ class StudyController extends Controller
 
     public function store(Request $request)
     {
-        $inputMode = $request->input('input_mode', 'file');
-
-        $rules = [
-            'input_mode' => 'required|string|in:file,link,text',
-            'type' => 'required|string|in:context,artifact',
+        $request->validate([
             'course_name' => 'required|string|max:255',
-            'week' => 'nullable|string|max:50',
+            'week' => 'nullable|string|max:100',
             'grade' => 'nullable|numeric|min:0|max:100',
-        ];
-
-        if ($inputMode === 'file') {
-            $rules['file'] = 'required|file|mimes:pdf|max:10240';
-        } elseif ($inputMode === 'link') {
-            $rules['embed_url'] = 'required|url|max:2083';
-        } elseif ($inputMode === 'text') {
-            $rules['rich_text'] = [
-                'required',
-                'string',
-                function ($attribute, $value, $fail) {
-                    $words = preg_split('/\s+/', trim($value));
-                    $wordCount = count(array_filter($words));
-                    if ($wordCount > 500) {
-                        $fail("The reflective text must not exceed 500 words (currently: {$wordCount} words).");
-                    }
-                }
-            ];
-        }
-
-        $request->validate($rules);
+            'context_files.*' => 'nullable|file|mimes:pdf,docx,pptx|max:10240',
+            'context_link' => 'nullable|url|max:2083',
+            'context_text' => 'nullable|string|max:5000',
+            'artifact_files.*' => 'nullable|file|mimes:pdf,docx,pptx|max:10240',
+            'artifact_link' => 'nullable|url|max:2083',
+            'artifact_text' => 'nullable|string|max:5000',
+        ]);
 
         $user = Auth::user();
         
         // Enforce maximum 6 coursework materials limit
         $existingCount = StudyMaterial::where('user_id', $user->id)->count();
         if ($existingCount >= 6) {
-            $errorField = $inputMode === 'file' ? 'file' : ($inputMode === 'link' ? 'embed_url' : 'rich_text');
-            return redirect()->back()->withErrors([$errorField => 'Limit reached. You cannot upload more than 6 coursework cards. Please delete an existing card first.']);
-        }
-
-        $fileName = null;
-        $path = null;
-        $embedUrl = null;
-        $richText = null;
-
-        if ($inputMode === 'file') {
-            $file = $request->file('file');
-            $fileName = $file->getClientOriginalName();
-            
-            try {
-                // Use default cloud disk for persistent storage (Cloudinary)
-                $path = $file->store('secure_study', 'cloudinary');
-            } catch (\Exception $e) {
-                Log::warning("Cloudinary storage failed, falling back to local: " . $e->getMessage());
-                $path = $file->store('secure_study', 'local');
-            }
-        } elseif ($inputMode === 'link') {
-            $embedUrl = $request->input('embed_url');
-            $fileName = parse_url($embedUrl, PHP_URL_HOST) ?: 'External Link';
-        } elseif ($inputMode === 'text') {
-            $richText = $request->input('rich_text');
-            $fileName = 'Text Content';
+            return redirect()->back()->withErrors(['course_name' => 'Limit reached. You cannot upload more than 6 coursework cards. Please delete an existing card first.']);
         }
 
         $material = StudyMaterial::create([
             'user_id' => $user->id,
-            'type' => $request->type,
             'course_name' => $request->course_name,
             'week' => $request->week,
-            'file_name' => $fileName,
-            'file_path' => $path,
             'grade' => $request->grade,
             'status' => 'processing',
-            'embed_url' => $embedUrl,
-            'rich_text' => $richText,
         ]);
 
-        // Process Content
         try {
-            $extractedText = '';
+            $contextData = [];
+            $artifactData = [];
+            $aggregatedContextText = '';
+            $aggregatedArtifactText = '';
 
-            if ($inputMode === 'file') {
-                // Use the temporary uploaded file directly to bypass Vercel read-only local storage limits
-                $fullPath = $request->file('file')->getRealPath();
-                $ext = strtolower($request->file('file')->getClientOriginalExtension());
-
-                // Try native PHP extraction first for DOCX/PPTX to bypass Vercel Python limits
-                if ($ext === 'docx') {
-                    $extractedText = $this->extractDocxText($fullPath);
-                } elseif ($ext === 'pptx') {
-                    $extractedText = $this->extractPptxText($fullPath);
+            // PROCESS CONTEXTS
+            if ($request->hasFile('context_files')) {
+                foreach ($request->file('context_files') as $file) {
+                    $res = $this->processFile($file);
+                    $contextData[] = [
+                        'type' => 'file',
+                        'name' => $res['name'],
+                        'path' => $res['path']
+                    ];
+                    $aggregatedContextText .= $res['text'] . "\n\n";
                 }
+            }
+            if ($request->filled('context_link')) {
+                $link = $request->context_link;
+                $text = $this->processLink($link);
+                $contextData[] = ['type' => 'link', 'url' => $link];
+                $aggregatedContextText .= $text . "\n\n";
+            }
+            if ($request->filled('context_text')) {
+                $contextData[] = ['type' => 'text', 'content' => substr($request->context_text, 0, 100)];
+                $aggregatedContextText .= $request->context_text . "\n\n";
+            }
+
+            // PROCESS ARTIFACTS
+            if ($request->hasFile('artifact_files')) {
+                foreach ($request->file('artifact_files') as $file) {
+                    $res = $this->processFile($file);
+                    $artifactData[] = [
+                        'type' => 'file',
+                        'name' => $res['name'],
+                        'path' => $res['path']
+                    ];
+                    $aggregatedArtifactText .= $res['text'] . "\n\n";
+                }
+            }
+            if ($request->filled('artifact_link')) {
+                $link = $request->artifact_link;
+                $text = $this->processLink($link);
+                $artifactData[] = ['type' => 'link', 'url' => $link];
+                $aggregatedArtifactText .= $text . "\n\n";
+            }
+            if ($request->filled('artifact_text')) {
+                $artifactData[] = ['type' => 'text', 'content' => substr($request->artifact_text, 0, 100)];
+                $aggregatedArtifactText .= $request->artifact_text . "\n\n";
+            }
+
+            $material->context_data = $contextData;
+            $material->artifact_data = $artifactData;
+            $material->extracted_text = "--- CONTEXT ---\n" . substr($aggregatedContextText, 0, 20000) . "\n\n--- ARTIFACT ---\n" . substr($aggregatedArtifactText, 0, 20000);
+
+            // DYNAMIC ML USING PYTHON WITH GEMINI FALLBACK
+            $metadata = null;
+            try {
+                $pythonOutput = $this->runPython([
+                    base_path('python_pipeline/pipeline.py'),
+                    '--action',
+                    'predict'
+                ], $aggregatedContextText . "\n" . $aggregatedArtifactText);
                 
-                // If native extraction didn't yield much, or it's a PDF, try Python then Gemini
-                if (empty($extractedText)) {
-                    try {
-                        $pythonOutput = $this->runPython([
-                            base_path('python_pipeline/pipeline.py'),
-                            '--action',
-                            'extract',
-                            '--file',
-                            $fullPath
-                        ]);
-                        $outputJson = json_decode($pythonOutput, true);
-                        if (isset($outputJson['text']) && !empty($outputJson['text'])) {
-                            $extractedText = $outputJson['text'];
-                        } else {
-                            throw new \Exception("Python extraction returned empty text or error: " . ($outputJson['error'] ?? 'Unknown error'));
-                        }
-                    } catch (\Throwable $e) {
-                        Log::warning("Python extraction failed, falling back to Gemini API: " . $e->getMessage());
-                        
-                        if ($ext === 'pdf') {
-                            // Fallback: Use Gemini Multimodal PDF Reader ONLY for PDF
-                            $base64 = base64_encode(file_get_contents($fullPath));
-                            $extractedText = $this->geminiService->extractResumeText($base64);
-                        }
-                        
-                        if (empty($extractedText)) {
-                            throw new \Exception("All extraction methods failed or returned empty text for this file.");
-                        }
-                    }
-                }
-            } elseif ($inputMode === 'text') {
-                $extractedText = $richText;
-            } elseif ($inputMode === 'link') {
-                $scrapedContent = null;
-                if (str_contains($embedUrl, 'github.com')) {
-                    try {
-                        $parsedUrl = parse_url($embedUrl);
-                        $path = trim($parsedUrl['path'] ?? '', '/');
-                        $parts = explode('/', $path);
-                        if (count($parts) >= 2) {
-                            $owner = $parts[0];
-                            $repo = preg_replace('/\.git$/', '', $parts[1]);
-
-                            $client = new \GuzzleHttp\Client(['timeout' => 8.0]);
-                            
-                            $readmeUrl = "https://raw.githubusercontent.com/{$owner}/{$repo}/main/README.md";
-                            try {
-                                $response = $client->get($readmeUrl);
-                                $scrapedContent = $response->getBody()->getContents();
-                            } catch (\Throwable $e) {
-                                $readmeUrl = "https://raw.githubusercontent.com/{$owner}/{$repo}/master/README.md";
-                                $response = $client->get($readmeUrl);
-                                $scrapedContent = $response->getBody()->getContents();
-                            }
-                        }
-                    } catch (\Throwable $e) {
-                        Log::warning("Failed scraping GitHub README for URL {$embedUrl}: " . $e->getMessage());
-                    }
-                }
-
-                if (!empty($scrapedContent)) {
-                    $cleanScraped = substr($scrapedContent, 0, 15000);
-                    $promptLink = "You are a professional ML data assistant. A student has submitted a GitHub repository for the course \"{$request->course_name}\". The URL is: {$embedUrl}.\n\nHere is the scraped README.md content from the repository:\n---\n{$cleanScraped}\n---\nBased on this README content, generate a detailed technical summary of the project. Focus on: 1. Programming languages, frameworks, and technologies used. 2. The core concepts, engineering challenges, or algorithms implemented. 3. Specific developer competencies this project demonstrates. Output a professional and concise technical summary paragraph.";
+                $parsed = json_decode($pythonOutput, true);
+                if (isset($parsed['competencies']) && isset($parsed['archetypes'])) {
+                    $metadata = $parsed;
+                    $metadata['source'] = 'python_ml';
                 } else {
-                    $promptLink = "You are a professional ML data assistant. A student has submitted a link for the course \"{$request->course_name}\". The URL is: {$embedUrl}. Based on this URL and the course name, generate a summary of the technical skills, programming languages, and concepts that this coursework or syllabus represents. Output a paragraph describing this technical context.";
+                    throw new \Exception("Invalid output format from Python ML.");
                 }
-
-                $extractedText = $this->geminiService->generate($promptLink) ?: "Course name: {$request->course_name}, link: {$embedUrl}";
+            } catch (\Throwable $e) {
+                // Fallback to Gemini if Python fails or is not available
+                Log::warning("Python ML failed, falling back to Gemini API: " . $e->getMessage());
+                $metadata = $this->geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $request->course_name);
+                $metadata['source'] = 'gemini_api';
             }
 
-            // Save extracted text
-            $material->extracted_text = $extractedText;
-
-            // 2. Extract keywords/skills using Gemini
-            $prompt = "You are a professional ML feature extractor. Analyze the following course syllabus/laporan text:\n---\n" . substr($extractedText, 0, 50000) . "\n---\nExtract the key technical skills, programming languages, technologies, frameworks, and programming concepts found in the text. Output a clean, valid JSON object containing an array of keywords. Do not include any markdown format or surrounding code blocks (e.g. do not wrap in ```json). Format:\n{\n  \"keywords\": [\"Python\", \"PostgreSQL\", \"Data Pipeline\", \"Docker\"]\n}";
-
-            $geminiResponse = $this->geminiService->generate($prompt);
-            $keywords = [];
-
-            if ($geminiResponse) {
-                // Clean markdown format if present
-                $cleanedResponse = trim($geminiResponse);
-                if (str_starts_with($cleanedResponse, '```')) {
-                    $cleanedResponse = preg_replace('/^```(?:json)?\s*/', '', $cleanedResponse);
-                    $cleanedResponse = preg_replace('/\s*```$/', '', $cleanedResponse);
-                }
-                $jsonObj = json_decode(trim($cleanedResponse), true);
-                if (isset($jsonObj['keywords'])) {
-                    $keywords = $jsonObj['keywords'];
-                }
-            }
-
-            $material->metadata = ['keywords' => $keywords];
+            $material->metadata = $metadata;
             $material->status = 'completed';
             $material->save();
 
-            // 3. Recalculate User Competency and Archetypes
+            // Recalculate User Competency
             $this->recalculateCompetencies($user->id);
 
-            return redirect()->back()->with('success', 'Study material uploaded and parsed successfully.');
+            return redirect()->back()->with('success', 'Coursework parsed successfully.');
 
         } catch (\Throwable $e) {
             Log::error("Failed processing study material ID {$material->id}: " . $e->getMessage());
             $material->status = 'failed';
             $material->save();
 
-            $errorField = $inputMode === 'file' ? 'file' : ($inputMode === 'link' ? 'embed_url' : 'rich_text');
-            return redirect()->back()->withErrors([$errorField => 'Failed to process document: ' . $e->getMessage()]);
+            return redirect()->back()->withErrors(['course_name' => 'Failed to process documents: ' . $e->getMessage()]);
         }
+    }
+
+    private function processFile($file)
+    {
+        $fileName = $file->getClientOriginalName();
+        $ext = strtolower($file->getClientOriginalExtension());
+        $fullPath = $file->getRealPath();
+
+        try {
+            $path = $file->store('secure_study', 'cloudinary');
+        } catch (\Exception $e) {
+            $path = $file->store('secure_study', 'local');
+        }
+
+        $text = '';
+        if ($ext === 'docx') {
+            $text = $this->extractDocxText($fullPath);
+        } elseif ($ext === 'pptx') {
+            $text = $this->extractPptxText($fullPath);
+        }
+
+        if (empty($text)) {
+            try {
+                $pythonOutput = $this->runPython([
+                    base_path('python_pipeline/pipeline.py'),
+                    '--action',
+                    'extract',
+                    '--file',
+                    $fullPath
+                ]);
+                $outputJson = json_decode($pythonOutput, true);
+                if (isset($outputJson['text'])) {
+                    $text = $outputJson['text'];
+                }
+            } catch (\Throwable $e) {
+                if ($ext === 'pdf') {
+                    $base64 = base64_encode(file_get_contents($fullPath));
+                    $text = $this->geminiService->extractResumeText($base64);
+                }
+            }
+        }
+        
+        return ['name' => $fileName, 'path' => $path, 'text' => $text];
+    }
+
+    private function processLink($url)
+    {
+        $text = "Link: $url\n";
+        if (str_contains($url, 'github.com')) {
+            try {
+                $parsed = parse_url($url);
+                $parts = explode('/', trim($parsed['path'] ?? '', '/'));
+                if (count($parts) >= 2) {
+                    $owner = $parts[0];
+                    $repo = preg_replace('/\.git$/', '', $parts[1]);
+                    $client = new \GuzzleHttp\Client(['timeout' => 8.0]);
+                    
+                    try {
+                        $response = $client->get("https://raw.githubusercontent.com/{$owner}/{$repo}/main/README.md");
+                    } catch (\Throwable $e) {
+                        $response = $client->get("https://raw.githubusercontent.com/{$owner}/{$repo}/master/README.md");
+                    }
+                    $text .= $response->getBody()->getContents();
+                }
+            } catch (\Throwable $e) {}
+        }
+        return $text;
     }
 
     public function destroy($id)
@@ -299,105 +288,56 @@ class StudyController extends Controller
 
     private function recalculateCompetencies($userId)
     {
-        // Gather all text from completed study materials of this user
         $materials = StudyMaterial::where('user_id', $userId)
             ->where('status', 'completed')
             ->get();
 
         if ($materials->isEmpty()) {
-            // Delete or reset competency profile
             StudyCompetency::where('user_id', $userId)->delete();
             return;
         }
 
-        $combinedText = '';
+        $aggCompetencies = [];
+        $aggArchetypes = [];
+        $fieldsOfStudy = [];
+
         foreach ($materials as $m) {
-            $combinedText .= ($m->extracted_text ?? '') . "\n";
-            // Include keywords from metadata as well to weight them
-            if (isset($m->metadata['keywords'])) {
-                $combinedText .= implode(' ', $m->metadata['keywords']) . "\n";
-            }
-        }
-
-        $competency = StudyCompetency::firstOrNew(['user_id' => $userId]);
-
-        try {
-            // Run Python predictor script
-            $pythonOutput = $this->runPython([
-                base_path('python_pipeline/pipeline.py'),
-                '--action',
-                'predict',
-            ], $combinedText); // Send text via standard input
-
-            $outputJson = json_decode($pythonOutput, true);
-
-            if (isset($outputJson['competencies']) && isset($outputJson['archetypes'])) {
-                $competency->competencies = $outputJson['competencies'];
-                $competency->archetypes = $outputJson['archetypes'];
-                $competency->verdict = $outputJson['verdict'] ?? '';
-                $competency->save();
-                return;
-            }
-        } catch (\Throwable $e) {
-            Log::error("Python prediction execution failed: " . $e->getMessage());
-        }
-
-        // Fallback calculation directly in PHP if Python predictor fails
-        $archetypeKeywords = [
-            "Data Engineer" => ["sql", "python", "spark", "etl", "hadoop", "kafka", "pipeline", "database", "warehousing", "airflow", "postgresql", "mysql"],
-            "Frontend Architect" => ["vue", "react", "javascript", "css", "html", "tailwind", "typescript", "webpack", "vite", "ui", "ux", "frontend"],
-            "Machine Learning Engineer" => ["python", "pytorch", "tensorflow", "scikit-learn", "sklearn", "pandas", "numpy", "deep learning", "ml", "model", "neural", "nlp", "ai"],
-            "Backend Specialist" => ["php", "laravel", "node", "express", "go", "api", "rest", "postgres", "mysql", "redis", "docker", "mvc", "backend"],
-            "DevOps Engineer" => ["aws", "docker", "kubernetes", "ci/cd", "git", "terraform", "linux", "cloud", "nginx", "jenkins"]
-        ];
-
-        $competencyKeywords = [
-            "Python Programming" => ["python", "pip", "py"],
-            "Database Systems" => ["sql", "database", "postgres", "mysql", "query", "nosql", "mongodb"],
-            "Software Engineering" => ["git", "api", "mvc", "php", "laravel", "javascript", "code", "architecture"],
-            "Data Analytics" => ["pandas", "numpy", "excel", "visualization", "tableau", "powerbi", "analysis"],
-            "Machine Learning" => ["scikit-learn", "pytorch", "tensorflow", "model", "training", "supervised", "unsupervised"],
-            "Web Development" => ["html", "css", "vue", "react", "tailwind", "frontend", "http", "js"]
-        ];
-
-        $textLower = strtolower($combinedText);
-        $archetypes = [];
-        foreach ($archetypeKeywords as $arch => $kws) {
-            $matches = 0;
-            foreach ($kws as $kw) {
-                if (str_contains($textLower, $kw)) {
-                    $matches++;
+            $meta = $m->metadata ?? [];
+            if (isset($meta['competencies']) && is_array($meta['competencies'])) {
+                foreach ($meta['competencies'] as $comp => $score) {
+                    $aggCompetencies[$comp] = ($aggCompetencies[$comp] ?? 0) + $score;
                 }
             }
-            $base = $matches > 0 ? 40 : 10;
-            $archetypes[$arch] = min(98, round($base + ($matches / count($kws)) * 60));
+            if (isset($meta['archetypes']) && is_array($meta['archetypes'])) {
+                foreach ($meta['archetypes'] as $arch => $score) {
+                    $aggArchetypes[$arch] = ($aggArchetypes[$arch] ?? 0) + $score;
+                }
+            }
+            if (isset($meta['field_of_study'])) {
+                $fieldsOfStudy[] = $meta['field_of_study'];
+            }
         }
 
-        $competencies = [];
-        foreach ($competencyKeywords as $comp => $kws) {
-            $matches = 0;
-            foreach ($kws as $kw) {
-                $matches += substr_count($textLower, $kw);
-            }
-            if ($matches == 0) {
-                $score = 40;
-            } elseif ($matches == 1) {
-                $score = 65;
-            } elseif ($matches == 2) {
-                $score = 80;
-            } else {
-                $score = min(98, 80 + $matches * 2);
-            }
-            $competencies[$comp] = $score;
+        // Average and slight boost based on frequency
+        $count = $materials->count();
+        foreach ($aggCompetencies as $k => $v) {
+            $aggCompetencies[$k] = min(100, round(($v / $count) * 1.3)); // Boost to reward consistency
+        }
+        foreach ($aggArchetypes as $k => $v) {
+            $aggArchetypes[$k] = min(100, round(($v / $count) * 1.3));
         }
 
-        $bestArchetype = array_keys($archetypes, max($archetypes))[0];
-        $bestScore = $archetypes[$bestArchetype];
-        $verdict = "Competency profile dynamically analyzed. Showing high alignment with {$bestArchetype} ({$bestScore}%) based on keyword mapping.";
+        arsort($aggCompetencies);
+        arsort($aggArchetypes);
 
-        $competency->competencies = $competencies;
-        $competency->archetypes = $archetypes;
-        $competency->verdict = $verdict;
+        $topField = !empty($fieldsOfStudy) ? array_count_values($fieldsOfStudy) : ['General Studies' => 1];
+        arsort($topField);
+        $primaryField = array_key_first($topField);
+
+        $competency = StudyCompetency::firstOrNew(['user_id' => $userId]);
+        $competency->competencies = array_slice($aggCompetencies, 0, 6, true);
+        $competency->archetypes = array_slice($aggArchetypes, 0, 3, true);
+        $competency->verdict = "Dynamic profile calculated. Primary field of study: {$primaryField}. Extracted from {$count} coursework materials.";
         $competency->save();
     }
 
