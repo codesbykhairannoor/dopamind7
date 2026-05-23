@@ -4,26 +4,54 @@ import os
 import sys
 import pickle
 
-# We try to import pdfplumber, if it fails, we will print an error
 try:
     import pdfplumber
 except ImportError:
     pdfplumber = None
 
-def extract_pdf_text(file_path):
+try:
+    from docx import Document
+except ImportError:
+    Document = None
+
+try:
+    from pptx import Presentation
+except ImportError:
+    Presentation = None
+
+def extract_file_text(file_path):
     if not os.path.exists(file_path):
         return {"error": f"File not found: {file_path}", "text": ""}
     
-    if pdfplumber is None:
-        return {"error": "pdfplumber is not installed", "text": ""}
+    ext = os.path.splitext(file_path)[1].lower()
+    text = ""
     
     try:
-        text = ""
-        with pdfplumber.open(file_path) as pdf:
-            for page in pdf.pages:
-                page_text = page.extract_text()
-                if page_text:
-                    text += page_text + "\n"
+        if ext == '.pdf':
+            if pdfplumber is None: return {"error": "pdfplumber is not installed", "text": ""}
+            with pdfplumber.open(file_path) as pdf:
+                for page in pdf.pages:
+                    page_text = page.extract_text()
+                    if page_text:
+                        text += page_text + "\n"
+                        
+        elif ext == '.docx':
+            if Document is None: return {"error": "python-docx is not installed", "text": ""}
+            doc = Document(file_path)
+            for para in doc.paragraphs:
+                text += para.text + "\n"
+                
+        elif ext == '.pptx':
+            if Presentation is None: return {"error": "python-pptx is not installed", "text": ""}
+            prs = Presentation(file_path)
+            for slide in prs.slides:
+                for shape in slide.shapes:
+                    if hasattr(shape, "text"):
+                        text += shape.text + "\n"
+                        
+        else:
+            return {"error": f"Unsupported file type: {ext}", "text": ""}
+            
         return {"text": text.strip()}
     except Exception as e:
         return {"error": f"Failed to extract text: {str(e)}", "text": ""}
@@ -151,9 +179,9 @@ if __name__ == "__main__":
     if args.action == "extract":
         if not args.file:
             print(json.dumps({"error": "--file argument is required for extract action"}))
-            sys.exit(1)
-        result = extract_pdf_text(args.file)
-        print(json.dumps(result))
+        else:
+            result = extract_file_text(args.file)
+            print(json.dumps(result))
         
     elif args.action == "predict":
         text_content = args.text or ""
