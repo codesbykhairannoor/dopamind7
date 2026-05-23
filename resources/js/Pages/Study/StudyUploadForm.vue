@@ -3,7 +3,8 @@ import { useForm, router } from '@inertiajs/vue3';
 import { ref, computed, reactive } from 'vue';
 import { 
     Sparkles, Loader2, Link2, BookOpen, FileText, PlusCircle,
-    Upload, Trash2, CheckCircle2, XCircle, AlertTriangle, Files
+    Upload, Trash2, CheckCircle2, XCircle, AlertTriangle, Files,
+    Info
 } from 'lucide-vue-next';
 import InputError from '@/Components/InputError.vue';
 
@@ -14,13 +15,17 @@ const props = defineProps({
 const isLimitReached = computed(() => props.materialsCount >= 6);
 const slotsLeft = computed(() => Math.max(0, 6 - props.materialsCount));
 
+// ─── Shared Meta (Global for both panels) ─────────────────────────────────────
+const sharedMeta = reactive({
+    course_name: '',
+    week: '',
+    grade: ''
+});
+
 // ─── Factory: create a clean panel state ──────────────────────────────────────
 const makePanel = (type) => ({
     type,
     input_mode: 'file',       // 'file' | 'link' | 'text'
-    course_name: '',
-    week: '',
-    grade: '',
     embed_url: '',
     rich_text: '',
     // Multi-file queue (for PDF mode)
@@ -92,9 +97,9 @@ const submitSingleFile = (panel, queueItem) => {
             input_mode: 'file',
             file: queueItem.file,
             type: panel.type,
-            course_name: panel.course_name,
-            week: panel.week,
-            grade: panel.grade || null,
+            course_name: sharedMeta.course_name,
+            week: sharedMeta.week,
+            grade: sharedMeta.grade || null,
         });
 
         form.post(route('study.store'), {
@@ -118,9 +123,9 @@ const submitLinkOrText = (panel) => {
         const formData = {
             input_mode: panel.input_mode,
             type: panel.type,
-            course_name: panel.course_name,
-            week: panel.week,
-            grade: panel.grade || null,
+            course_name: sharedMeta.course_name,
+            week: sharedMeta.week,
+            grade: sharedMeta.grade || null,
         };
         if (panel.input_mode === 'link') formData.embed_url = panel.embed_url;
         if (panel.input_mode === 'text') formData.rich_text = panel.rich_text;
@@ -135,7 +140,10 @@ const submitLinkOrText = (panel) => {
 };
 
 const submitPanel = async (panel) => {
-    if (!panel.course_name.trim()) return;
+    if (!sharedMeta.course_name.trim()) {
+        alert('Please enter a Course Name first.');
+        return;
+    }
     if (isLimitReached.value) return;
     if (panel.input_mode === 'link' && !panel.embed_url.trim()) return;
     if (panel.input_mode === 'text' && !panel.rich_text.trim()) return;
@@ -194,7 +202,7 @@ const hasPendingItems = (panel) => {
     </div>
 
     <!-- Slots left indicator -->
-    <div v-else class="mb-4 flex items-center gap-2 text-xs font-bold text-slate-400 dark:text-slate-500">
+    <div v-else class="mb-5 flex items-center gap-2 text-xs font-bold text-slate-400 dark:text-slate-500">
         <Files class="h-3.5 w-3.5" />
         <span>{{ slotsLeft }} card slot{{ slotsLeft !== 1 ? 's' : '' }} remaining</span>
         <div class="flex gap-1 ml-1">
@@ -202,6 +210,43 @@ const hasPendingItems = (panel) => {
                 class="h-1.5 w-5 rounded-full transition"
                 :class="i <= props.materialsCount ? 'bg-indigo-500' : 'bg-slate-200 dark:bg-slate-800'"
             ></span>
+        </div>
+    </div>
+
+    <!-- ─── SHARED COURSE DETAILS (Top Section) ──────────────────────────────── -->
+    <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-200/50 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.03)] mb-6">
+        <div class="flex items-center gap-3 mb-6">
+            <div class="h-10 w-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center border border-indigo-100/50 dark:border-indigo-900/50 text-indigo-600 dark:text-indigo-400 shadow-sm">
+                <Info class="h-5 w-5" />
+            </div>
+            <div>
+                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white leading-tight">Course Information</h3>
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">Set the basic details for the materials you are uploading below.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5">
+            <!-- Course Name -->
+            <div class="md:col-span-6">
+                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_course_name', 'Course Name') }} *</label>
+                <input v-model="sharedMeta.course_name" type="text"
+                    placeholder="e.g. Algoritma Pemrograman, Machine Learning"
+                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+            </div>
+            
+            <!-- Week -->
+            <div class="md:col-span-3">
+                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_week', 'Week / Period') }}</label>
+                <input v-model="sharedMeta.week" type="text" placeholder="e.g. Week 4"
+                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+            </div>
+
+            <!-- Grade -->
+            <div class="md:col-span-3">
+                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_grade', 'Grade / Score') }}</label>
+                <input v-model="sharedMeta.grade" type="number" min="0" max="100" step="0.01" placeholder="85.50"
+                    class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+            </div>
         </div>
     </div>
 
@@ -229,7 +274,7 @@ const hasPendingItems = (panel) => {
             <!-- Panel Form -->
             <div class="p-6 space-y-4">
                 <!-- Input mode switcher -->
-                <div class="flex gap-1 p-1 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50">
+                <div class="flex gap-1 p-1 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 mb-6">
                     <button type="button" @click="contextPanel.input_mode = 'file'"
                         class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
                         :class="contextPanel.input_mode === 'file' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
@@ -247,28 +292,6 @@ const hasPendingItems = (panel) => {
                     </button>
                 </div>
 
-                <!-- Course name -->
-                <div>
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5">{{ $t('study_course_name', 'Course Name') }} *</label>
-                    <input v-model="contextPanel.course_name" type="text"
-                        placeholder="e.g. Algoritma Pemrograman"
-                        class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
-                </div>
-
-                <!-- Week + Grade -->
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5">{{ $t('study_week', 'Week') }}</label>
-                        <input v-model="contextPanel.week" type="text" placeholder="e.g. Week 4"
-                            class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5">{{ $t('study_grade', 'Grade') }}</label>
-                        <input v-model="contextPanel.grade" type="number" min="0" max="100" step="0.01" placeholder="85.50"
-                            class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
-                    </div>
-                </div>
-
                 <!-- PDF Drop Zone -->
                 <div v-if="contextPanel.input_mode === 'file'">
                     <input ref="el => contextPanel.fileInput = el" type="file" accept="application/pdf" multiple class="hidden"
@@ -278,18 +301,18 @@ const hasPendingItems = (panel) => {
                         @dragleave="() => handleDragLeave(contextPanel)"
                         @drop="e => handleDrop(contextPanel, e)"
                         @click="triggerFileInput(contextPanel)"
-                        class="border-2 border-dashed rounded-2xl p-5 text-center cursor-pointer transition duration-300 flex flex-col items-center gap-2"
+                        class="border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition duration-300 flex flex-col items-center gap-2"
                         :class="contextPanel.dragOver ? 'border-blue-500 bg-blue-50/30 dark:bg-blue-950/20' : 'border-slate-300 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-700 bg-slate-50/50 dark:bg-slate-950/30'"
                     >
-                        <div class="h-8 w-8 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📥</div>
-                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Drop PDFs here or click to browse</span>
+                        <div class="h-10 w-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📥</div>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">Drop PDFs here or click to browse</span>
                         <span class="text-[10px] text-slate-400">Multiple files supported · Max 10MB each</span>
                     </div>
 
                     <!-- File Queue -->
-                    <div v-if="contextPanel.fileQueue.length > 0" class="mt-3 space-y-2">
+                    <div v-if="contextPanel.fileQueue.length > 0" class="mt-4 space-y-2">
                         <div v-for="(item, idx) in contextPanel.fileQueue" :key="idx"
-                            class="flex items-center gap-3 p-2.5 rounded-xl border transition"
+                            class="flex items-center gap-3 p-3 rounded-xl border transition"
                             :class="{
                                 'bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800': item.status === 'pending',
                                 'bg-blue-50/50 dark:bg-blue-950/20 border-blue-200/50 dark:border-blue-900/30': item.status === 'uploading',
@@ -309,12 +332,12 @@ const hasPendingItems = (panel) => {
                                 <p v-if="item.status === 'error'" class="text-[10px] text-red-500 font-semibold">{{ item.error }}</p>
                                 <p v-else class="text-[10px] text-slate-400">{{ formatBytes(item.size) }}</p>
                             </div>
-                            <Loader2 v-if="item.status === 'uploading'" class="h-3.5 w-3.5 text-blue-500 animate-spin shrink-0" />
-                            <CheckCircle2 v-else-if="item.status === 'done'" class="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                            <XCircle v-else-if="item.status === 'error'" class="h-3.5 w-3.5 text-red-500 shrink-0" />
+                            <Loader2 v-if="item.status === 'uploading'" class="h-4 w-4 text-blue-500 animate-spin shrink-0" />
+                            <CheckCircle2 v-else-if="item.status === 'done'" class="h-4 w-4 text-emerald-500 shrink-0" />
+                            <XCircle v-else-if="item.status === 'error'" class="h-4 w-4 text-red-500 shrink-0" />
                             <button v-else type="button" @click="removeFromQueue(contextPanel, idx)"
-                                class="h-5 w-5 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition flex items-center justify-center shrink-0">
-                                <Trash2 class="h-3 w-3" />
+                                class="h-6 w-6 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition flex items-center justify-center shrink-0">
+                                <Trash2 class="h-3.5 w-3.5" />
                             </button>
                         </div>
                     </div>
@@ -323,15 +346,15 @@ const hasPendingItems = (panel) => {
                 <!-- Link Mode -->
                 <div v-else-if="contextPanel.input_mode === 'link'">
                     <div class="relative">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><Link2 class="h-4 w-4" /></span>
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"><Link2 class="h-4 w-4" /></span>
                         <input v-model="contextPanel.embed_url" type="url" placeholder="https://github.com/..."
-                            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
+                            class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
                     </div>
                 </div>
 
                 <!-- Text Mode -->
                 <div v-else-if="contextPanel.input_mode === 'text'">
-                    <div class="flex justify-between items-center mb-1.5">
+                    <div class="flex justify-between items-center mb-2">
                         <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Reflective Notes</label>
                         <span class="text-[10px] font-bold" :class="wordCount(contextPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
                             {{ wordCount(contextPanel.rich_text) }}/{{ maxWords }}
@@ -339,24 +362,29 @@ const hasPendingItems = (panel) => {
                     </div>
                     <textarea v-model="contextPanel.rich_text" rows="5"
                         placeholder="Write or paste course reflections, conceptual summaries..."
-                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
                         :class="wordCount(contextPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>
                 </div>
 
                 <!-- Submit Button -->
-                <button 
-                    type="button"
-                    @click="submitPanel(contextPanel)"
-                    :disabled="contextPanel.isSubmitting || !contextPanel.course_name.trim() || !hasPendingItems(contextPanel) || isLimitReached"
-                    class="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm rounded-2xl shadow-md shadow-blue-600/10 transition flex items-center justify-center gap-2 group"
-                >
-                    <Loader2 v-if="contextPanel.isSubmitting" class="h-4 w-4 animate-spin" />
-                    <span v-else class="flex items-center gap-1.5">
-                        Analyze Context 
-                        <Sparkles class="h-3.5 w-3.5 group-hover:animate-pulse" />
-                    </span>
-                </button>
+                <div class="pt-4 border-t border-slate-100 dark:border-slate-800/50 mt-4">
+                    <button 
+                        type="button"
+                        @click="submitPanel(contextPanel)"
+                        :disabled="contextPanel.isSubmitting || !sharedMeta.course_name.trim() || !hasPendingItems(contextPanel) || isLimitReached"
+                        class="w-full py-4 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm rounded-2xl shadow-md shadow-blue-600/10 transition flex items-center justify-center gap-2 group"
+                    >
+                        <Loader2 v-if="contextPanel.isSubmitting" class="h-4 w-4 animate-spin" />
+                        <span v-else class="flex items-center gap-1.5">
+                            Analyze Context 
+                            <Sparkles class="h-4 w-4 group-hover:animate-pulse" />
+                        </span>
+                    </button>
+                    <p v-if="!sharedMeta.course_name.trim()" class="text-[10px] text-center text-slate-400 font-semibold mt-2">
+                        Please fill the Course Name above first.
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -381,7 +409,7 @@ const hasPendingItems = (panel) => {
             <!-- Panel Form -->
             <div class="p-6 space-y-4">
                 <!-- Input mode switcher -->
-                <div class="flex gap-1 p-1 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50">
+                <div class="flex gap-1 p-1 bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200/50 dark:border-slate-800/50 mb-6">
                     <button type="button" @click="artifactPanel.input_mode = 'file'"
                         class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
                         :class="artifactPanel.input_mode === 'file' ? 'bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
@@ -399,28 +427,6 @@ const hasPendingItems = (panel) => {
                     </button>
                 </div>
 
-                <!-- Course name -->
-                <div>
-                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5">{{ $t('study_course_name', 'Course Name') }} *</label>
-                    <input v-model="artifactPanel.course_name" type="text"
-                        placeholder="e.g. Machine Learning, Data Science"
-                        class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
-                </div>
-
-                <!-- Week + Grade -->
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5">{{ $t('study_week', 'Week') }}</label>
-                        <input v-model="artifactPanel.week" type="text" placeholder="e.g. Week 4"
-                            class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
-                    </div>
-                    <div>
-                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1.5">{{ $t('study_grade', 'Grade') }}</label>
-                        <input v-model="artifactPanel.grade" type="number" min="0" max="100" step="0.01" placeholder="85.50"
-                            class="w-full px-3 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
-                    </div>
-                </div>
-
                 <!-- PDF Drop Zone -->
                 <div v-if="artifactPanel.input_mode === 'file'">
                     <input ref="el => artifactPanel.fileInput = el" type="file" accept="application/pdf" multiple class="hidden"
@@ -430,18 +436,18 @@ const hasPendingItems = (panel) => {
                         @dragleave="() => handleDragLeave(artifactPanel)"
                         @drop="e => handleDrop(artifactPanel, e)"
                         @click="triggerFileInput(artifactPanel)"
-                        class="border-2 border-dashed rounded-2xl p-5 text-center cursor-pointer transition duration-300 flex flex-col items-center gap-2"
+                        class="border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition duration-300 flex flex-col items-center gap-2"
                         :class="artifactPanel.dragOver ? 'border-emerald-500 bg-emerald-50/30 dark:bg-emerald-950/20' : 'border-slate-300 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-700 bg-slate-50/50 dark:bg-slate-950/30'"
                     >
-                        <div class="h-8 w-8 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📤</div>
-                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400">Drop PDFs here or click to browse</span>
+                        <div class="h-10 w-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📤</div>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">Drop PDFs here or click to browse</span>
                         <span class="text-[10px] text-slate-400">Multiple files supported · Max 10MB each</span>
                     </div>
 
                     <!-- File Queue -->
-                    <div v-if="artifactPanel.fileQueue.length > 0" class="mt-3 space-y-2">
+                    <div v-if="artifactPanel.fileQueue.length > 0" class="mt-4 space-y-2">
                         <div v-for="(item, idx) in artifactPanel.fileQueue" :key="idx"
-                            class="flex items-center gap-3 p-2.5 rounded-xl border transition"
+                            class="flex items-center gap-3 p-3 rounded-xl border transition"
                             :class="{
                                 'bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800': item.status === 'pending',
                                 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-200/50 dark:border-emerald-900/30': item.status === 'uploading',
@@ -461,12 +467,12 @@ const hasPendingItems = (panel) => {
                                 <p v-if="item.status === 'error'" class="text-[10px] text-red-500 font-semibold">{{ item.error }}</p>
                                 <p v-else class="text-[10px] text-slate-400">{{ formatBytes(item.size) }}</p>
                             </div>
-                            <Loader2 v-if="item.status === 'uploading'" class="h-3.5 w-3.5 text-emerald-500 animate-spin shrink-0" />
-                            <CheckCircle2 v-else-if="item.status === 'done'" class="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                            <XCircle v-else-if="item.status === 'error'" class="h-3.5 w-3.5 text-red-500 shrink-0" />
+                            <Loader2 v-if="item.status === 'uploading'" class="h-4 w-4 text-emerald-500 animate-spin shrink-0" />
+                            <CheckCircle2 v-else-if="item.status === 'done'" class="h-4 w-4 text-emerald-500 shrink-0" />
+                            <XCircle v-else-if="item.status === 'error'" class="h-4 w-4 text-red-500 shrink-0" />
                             <button v-else type="button" @click="removeFromQueue(artifactPanel, idx)"
-                                class="h-5 w-5 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition flex items-center justify-center shrink-0">
-                                <Trash2 class="h-3 w-3" />
+                                class="h-6 w-6 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition flex items-center justify-center shrink-0">
+                                <Trash2 class="h-3.5 w-3.5" />
                             </button>
                         </div>
                     </div>
@@ -475,15 +481,15 @@ const hasPendingItems = (panel) => {
                 <!-- Link Mode -->
                 <div v-else-if="artifactPanel.input_mode === 'link'">
                     <div class="relative">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><Link2 class="h-4 w-4" /></span>
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"><Link2 class="h-4 w-4" /></span>
                         <input v-model="artifactPanel.embed_url" type="url" placeholder="https://github.com/..."
-                            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
+                            class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
                     </div>
                 </div>
 
                 <!-- Text Mode -->
                 <div v-else-if="artifactPanel.input_mode === 'text'">
-                    <div class="flex justify-between items-center mb-1.5">
+                    <div class="flex justify-between items-center mb-2">
                         <label class="text-[10px] font-black uppercase tracking-widest text-slate-400">Reflective Notes</label>
                         <span class="text-[10px] font-bold" :class="wordCount(artifactPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
                             {{ wordCount(artifactPanel.rich_text) }}/{{ maxWords }}
@@ -491,24 +497,29 @@ const hasPendingItems = (panel) => {
                     </div>
                     <textarea v-model="artifactPanel.rich_text" rows="5"
                         placeholder="Write or paste assignment reflections, project details..."
-                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"
+                        class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"
                         :class="wordCount(artifactPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>
                 </div>
 
                 <!-- Submit Button -->
-                <button 
-                    type="button"
-                    @click="submitPanel(artifactPanel)"
-                    :disabled="artifactPanel.isSubmitting || !artifactPanel.course_name.trim() || !hasPendingItems(artifactPanel) || isLimitReached"
-                    class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm rounded-2xl shadow-md shadow-emerald-600/10 transition flex items-center justify-center gap-2 group"
-                >
-                    <Loader2 v-if="artifactPanel.isSubmitting" class="h-4 w-4 animate-spin" />
-                    <span v-else class="flex items-center gap-1.5">
-                        Analyze Artifact 
-                        <Sparkles class="h-3.5 w-3.5 group-hover:animate-pulse" />
-                    </span>
-                </button>
+                <div class="pt-4 border-t border-slate-100 dark:border-slate-800/50 mt-4">
+                    <button 
+                        type="button"
+                        @click="submitPanel(artifactPanel)"
+                        :disabled="artifactPanel.isSubmitting || !sharedMeta.course_name.trim() || !hasPendingItems(artifactPanel) || isLimitReached"
+                        class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm rounded-2xl shadow-md shadow-emerald-600/10 transition flex items-center justify-center gap-2 group"
+                    >
+                        <Loader2 v-if="artifactPanel.isSubmitting" class="h-4 w-4 animate-spin" />
+                        <span v-else class="flex items-center gap-1.5">
+                            Analyze Artifact 
+                            <Sparkles class="h-4 w-4 group-hover:animate-pulse" />
+                        </span>
+                    </button>
+                    <p v-if="!sharedMeta.course_name.trim()" class="text-[10px] text-center text-slate-400 font-semibold mt-2">
+                        Please fill the Course Name above first.
+                    </p>
+                </div>
             </div>
         </div>
 

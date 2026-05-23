@@ -94,7 +94,7 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
         <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-indigo-500/8 dark:bg-indigo-500/5 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
         <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-500/8 dark:bg-purple-500/5 rounded-full blur-3xl -z-10"></div>
 
-        <div class="relative mx-auto w-full max-w-5xl px-4 py-8 md:px-6 lg:px-8 z-10">
+        <div class="relative mx-auto w-full max-w-7xl px-4 py-8 md:px-6 lg:px-8 z-10">
 
             <!-- PAGE HEADER -->
             <header class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
