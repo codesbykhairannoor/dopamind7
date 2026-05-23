@@ -86,10 +86,15 @@ class StudyController extends Controller
                 }
             }
             if ($request->filled('context_link')) {
-                $link = $request->context_link;
-                $text = $this->processLink($link);
-                $contextData[] = ['type' => 'link', 'url' => $link];
-                $aggregatedContextText .= $text . "\n\n";
+                $links = explode("\n", str_replace("\r", "", $request->context_link));
+                foreach ($links as $link) {
+                    $link = trim($link);
+                    if (!empty($link)) {
+                        $text = $this->processLink($link);
+                        $contextData[] = ['type' => 'link', 'url' => $link];
+                        $aggregatedContextText .= $text . "\n\n";
+                    }
+                }
             }
             if ($request->filled('context_text')) {
                 $contextData[] = ['type' => 'text', 'content' => substr($request->context_text, 0, 100)];
@@ -109,10 +114,15 @@ class StudyController extends Controller
                 }
             }
             if ($request->filled('artifact_link')) {
-                $link = $request->artifact_link;
-                $text = $this->processLink($link);
-                $artifactData[] = ['type' => 'link', 'url' => $link];
-                $aggregatedArtifactText .= $text . "\n\n";
+                $links = explode("\n", str_replace("\r", "", $request->artifact_link));
+                foreach ($links as $link) {
+                    $link = trim($link);
+                    if (!empty($link)) {
+                        $text = $this->processLink($link);
+                        $artifactData[] = ['type' => 'link', 'url' => $link];
+                        $aggregatedArtifactText .= $text . "\n\n";
+                    }
+                }
             }
             if ($request->filled('artifact_text')) {
                 $artifactData[] = ['type' => 'text', 'content' => substr($request->artifact_text, 0, 100)];

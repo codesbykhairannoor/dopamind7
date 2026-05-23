@@ -813,89 +813,106 @@ const profileBio = computed(() => {
                             {{ selectedMaterial.course_name }}
                         </h3>
                     </div>
-                    
-                    <button 
-                        @click="closeReader"
-                        class="p-2 text-slate-400 hover:text-slate-800 dark:hover:text-white bg-slate-200/50 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition"
-                    >
-                        <X class="h-4 w-4" />
-                    </button>
+                    <div class="flex items-center gap-2">
+                        <a 
+                            :href="route('portfolio.card', { username: props.student.username, id: selectedMaterial.id })"
+                            class="p-2 text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900 rounded-xl transition text-xs font-bold flex items-center gap-1"
+                            title="Open Full Details"
+                        >
+                            <ExternalLink class="h-4 w-4" />
+                            <span class="hidden sm:inline">Full Details</span>
+                        </a>
+                        <button 
+                            @click="closeReader"
+                            class="p-2 text-slate-400 hover:text-slate-800 dark:hover:text-white bg-slate-200/50 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition"
+                        >
+                            <X class="h-4 w-4" />
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Multi-format content viewer -->
                 <div class="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950/50 p-6 md:p-8 space-y-8">
                     
                     <!-- Context Data Section -->
-                    <div v-if="selectedMaterial.context_data" class="space-y-6">
+                    <div v-if="selectedMaterial.context_data && selectedMaterial.context_data.length > 0" class="space-y-6">
                         <h4 class="text-xs uppercase font-extrabold tracking-widest text-indigo-500 dark:text-indigo-400 mb-4 border-b border-indigo-100 dark:border-indigo-900/50 pb-2">Context Material</h4>
                         
-                        <!-- Context Files -->
-                        <div v-if="selectedMaterial.context_data.files && selectedMaterial.context_data.files.length" class="space-y-4">
-                            <div v-for="(file, idx) in selectedMaterial.context_data.files" :key="idx" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
-                                    <FileText class="h-4 w-4" /> {{ file.name }}
+                        <div class="space-y-4">
+                            <div v-for="(item, idx) in selectedMaterial.context_data" :key="idx">
+                                
+                                <!-- File -->
+                                <div v-if="item.type === 'file'" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+                                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                                        <FileText class="h-4 w-4" /> {{ item.name }}
+                                    </div>
+                                    <div class="h-[60vh] w-full" v-if="item.path.endsWith('.pdf')">
+                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
+                                    </div>
+                                    <div v-else class="p-6 text-center text-sm text-slate-500">
+                                        File cannot be previewed inline. <a :href="`/storage/${item.path}`" target="_blank" class="text-indigo-500 underline ml-2">Download File</a>
+                                    </div>
                                 </div>
-                                <div class="h-[60vh] w-full" v-if="file.path.endsWith('.pdf')">
-                                    <iframe :src="`/storage/${file.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
-                                </div>
-                                <div v-else class="p-6 text-center text-sm text-slate-500">
-                                    File cannot be previewed inline. <a :href="`/storage/${file.path}`" target="_blank" class="text-indigo-500 underline ml-2">Download File</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Context Link -->
-                        <div v-if="selectedMaterial.context_data.link" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
-                            <div class="h-12 w-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center shrink-0">
-                                <Link2 class="h-6 w-6 text-indigo-500" />
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
-                                <a :href="selectedMaterial.context_data.link" target="_blank" class="text-sm font-bold text-indigo-600 dark:text-indigo-400 underline truncate block">{{ selectedMaterial.context_data.link }}</a>
-                            </div>
-                        </div>
 
-                        <!-- Context Text -->
-                        <div v-if="selectedMaterial.context_data.text" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                            <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
-                            <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ selectedMaterial.context_data.text }}</p>
+                                <!-- Link -->
+                                <div v-else-if="item.type === 'link'" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
+                                    <div class="h-12 w-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center shrink-0">
+                                        <Link2 class="h-6 w-6 text-indigo-500" />
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
+                                        <a :href="item.url" target="_blank" class="text-sm font-bold text-indigo-600 dark:text-indigo-400 underline truncate block">{{ item.url }}</a>
+                                    </div>
+                                </div>
+
+                                <!-- Text -->
+                                <div v-else-if="item.type === 'text'" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                    <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
+                                    <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ item.content }}</p>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
 
                     <!-- Artifact Data Section -->
-                    <div v-if="selectedMaterial.artifact_data" class="space-y-6">
+                    <div v-if="selectedMaterial.artifact_data && selectedMaterial.artifact_data.length > 0" class="space-y-6">
                         <h4 class="text-xs uppercase font-extrabold tracking-widest text-emerald-500 dark:text-emerald-400 mb-4 border-b border-emerald-100 dark:border-emerald-900/50 pb-2 mt-8">Artifact Material</h4>
                         
-                        <!-- Artifact Files -->
-                        <div v-if="selectedMaterial.artifact_data.files && selectedMaterial.artifact_data.files.length" class="space-y-4">
-                            <div v-for="(file, idx) in selectedMaterial.artifact_data.files" :key="idx" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
-                                    <FileText class="h-4 w-4" /> {{ file.name }}
+                        <div class="space-y-4">
+                            <div v-for="(item, idx) in selectedMaterial.artifact_data" :key="idx">
+                                
+                                <!-- File -->
+                                <div v-if="item.type === 'file'" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+                                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                                        <FileText class="h-4 w-4" /> {{ item.name }}
+                                    </div>
+                                    <div class="h-[60vh] w-full" v-if="item.path.endsWith('.pdf')">
+                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
+                                    </div>
+                                    <div v-else class="p-6 text-center text-sm text-slate-500">
+                                        File cannot be previewed inline. <a :href="`/storage/${item.path}`" target="_blank" class="text-emerald-500 underline ml-2">Download File</a>
+                                    </div>
                                 </div>
-                                <div class="h-[60vh] w-full" v-if="file.path.endsWith('.pdf')">
-                                    <iframe :src="`/storage/${file.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
-                                </div>
-                                <div v-else class="p-6 text-center text-sm text-slate-500">
-                                    File cannot be previewed inline. <a :href="`/storage/${file.path}`" target="_blank" class="text-emerald-500 underline ml-2">Download File</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Artifact Link -->
-                        <div v-if="selectedMaterial.artifact_data.link" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
-                            <div class="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center shrink-0">
-                                <Link2 class="h-6 w-6 text-emerald-500" />
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
-                                <a :href="selectedMaterial.artifact_data.link" target="_blank" class="text-sm font-bold text-emerald-600 dark:text-emerald-400 underline truncate block">{{ selectedMaterial.artifact_data.link }}</a>
-                            </div>
-                        </div>
 
-                        <!-- Artifact Text -->
-                        <div v-if="selectedMaterial.artifact_data.text" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                            <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
-                            <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ selectedMaterial.artifact_data.text }}</p>
+                                <!-- Link -->
+                                <div v-else-if="item.type === 'link'" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
+                                    <div class="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center shrink-0">
+                                        <Link2 class="h-6 w-6 text-emerald-500" />
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
+                                        <a :href="item.url" target="_blank" class="text-sm font-bold text-emerald-600 dark:text-emerald-400 underline truncate block">{{ item.url }}</a>
+                                    </div>
+                                </div>
+
+                                <!-- Text -->
+                                <div v-else-if="item.type === 'text'" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                                    <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
+                                    <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ item.content }}</p>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
 

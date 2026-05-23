@@ -299,9 +299,9 @@ const globalHasPending = computed(() => {
                 <div>
                     <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Link</label>
                     <div class="relative">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"><Link2 class="h-4 w-4" /></span>
-                        <input v-model="contextPanel.embed_url" type="url" placeholder="https://github.com/..."
-                            class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" />
+                        <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
+                        <textarea v-model="contextPanel.embed_url" rows="2" placeholder="https://github.com/...\n(Press Enter for multiple links)"
+                            class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"></textarea>
                     </div>
                 </div>
 
@@ -382,9 +382,9 @@ const globalHasPending = computed(() => {
                 <div>
                     <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Link</label>
                     <div class="relative">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"><Link2 class="h-4 w-4" /></span>
-                        <input v-model="artifactPanel.embed_url" type="url" placeholder="https://github.com/..."
-                            class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition" />
+                        <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
+                        <textarea v-model="artifactPanel.embed_url" rows="2" placeholder="https://github.com/...\n(Press Enter for multiple links)"
+                            class="w-full pl-12 pr-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"></textarea>
                     </div>
                 </div>
 
