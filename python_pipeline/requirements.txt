@@ -1,4 +1,5 @@
 pdfplumber
+python-docx
+python-pptx
 scikit-learn
 pandas
-numpy
