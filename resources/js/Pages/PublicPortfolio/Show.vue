@@ -58,7 +58,6 @@ const props = defineProps({
 });
 
 const { isDark } = useAppearance();
-const { isDark } = useAppearance();
 
 // Radar Chart Config
 const chartData = computed(() => {
