@@ -68,100 +68,39 @@ class StudyController extends Controller
         ]);
 
         try {
-            $contextData = [];
-            $artifactData = [];
-            $aggregatedContextText = '';
-            $aggregatedArtifactText = '';
+            $filesData = ['context_files' => [], 'artifact_files' => []];
 
-            // PROCESS CONTEXTS
             if ($request->hasFile('context_files')) {
                 foreach ($request->file('context_files') as $file) {
-                    $res = $this->processFile($file);
-                    $contextData[] = [
-                        'type' => 'file',
-                        'name' => $res['name'],
-                        'path' => $res['path']
+                    $path = $file->store('secure_study', 'local');
+                    $filesData['context_files'][] = [
+                        'name' => $file->getClientOriginalName(), 
+                        'path' => $path, 
+                        'ext' => strtolower($file->getClientOriginalExtension())
                     ];
-                    $aggregatedContextText .= $res['text'] . "\n\n";
                 }
             }
-            if ($request->filled('context_link')) {
-                $links = explode("\n", str_replace("\r", "", $request->context_link));
-                foreach ($links as $link) {
-                    $link = trim($link);
-                    if (!empty($link)) {
-                        $text = $this->processLink($link);
-                        $contextData[] = ['type' => 'link', 'url' => $link];
-                        $aggregatedContextText .= $text . "\n\n";
-                    }
-                }
-            }
-            if ($request->filled('context_text')) {
-                $contextData[] = ['type' => 'text', 'content' => substr($request->context_text, 0, 100)];
-                $aggregatedContextText .= $request->context_text . "\n\n";
-            }
-
-            // PROCESS ARTIFACTS
+            
             if ($request->hasFile('artifact_files')) {
                 foreach ($request->file('artifact_files') as $file) {
-                    $res = $this->processFile($file);
-                    $artifactData[] = [
-                        'type' => 'file',
-                        'name' => $res['name'],
-                        'path' => $res['path']
+                    $path = $file->store('secure_study', 'local');
+                    $filesData['artifact_files'][] = [
+                        'name' => $file->getClientOriginalName(), 
+                        'path' => $path, 
+                        'ext' => strtolower($file->getClientOriginalExtension())
                     ];
-                    $aggregatedArtifactText .= $res['text'] . "\n\n";
                 }
             }
-            if ($request->filled('artifact_link')) {
-                $links = explode("\n", str_replace("\r", "", $request->artifact_link));
-                foreach ($links as $link) {
-                    $link = trim($link);
-                    if (!empty($link)) {
-                        $text = $this->processLink($link);
-                        $artifactData[] = ['type' => 'link', 'url' => $link];
-                        $aggregatedArtifactText .= $text . "\n\n";
-                    }
-                }
-            }
-            if ($request->filled('artifact_text')) {
-                $artifactData[] = ['type' => 'text', 'content' => substr($request->artifact_text, 0, 100)];
-                $aggregatedArtifactText .= $request->artifact_text . "\n\n";
-            }
 
-            $material->context_data = $contextData;
-            $material->artifact_data = $artifactData;
-            $material->extracted_text = "--- CONTEXT ---\n" . substr($aggregatedContextText, 0, 20000) . "\n\n--- ARTIFACT ---\n" . substr($aggregatedArtifactText, 0, 20000);
+            $textData = [
+                'context_link' => $request->context_link,
+                'context_text' => $request->context_text,
+                'artifact_link' => $request->artifact_link,
+                'artifact_text' => $request->artifact_text,
+            ];
 
-            // DYNAMIC HYBRID ML (60% PYTHON ML for Archetypes, 40% GEMINI for Competencies)
-            $metadata = null;
-            try {
-                // 1. Python extracts text and predicts Archetypes
-                $pythonOutput = $this->runPython([
-                    base_path('python_pipeline/pipeline.py'),
-                    '--action',
-                    'predict'
-                ], $aggregatedContextText . "\n" . $aggregatedArtifactText);
-                
-                $parsed = json_decode($pythonOutput, true);
-                if (isset($parsed['archetypes'])) {
-                    // 2. Pass the ML Archetypes to Gemini to generate Competencies & Insights
-                    $mlArchetypes = $parsed['archetypes'];
-                    $metadata = $this->geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $request->course_name, $mlArchetypes);
-                    $metadata['source'] = 'hybrid_ml_gemini';
-                } else {
-                    throw new \Exception("Invalid output format from Python ML.");
-                }
-            } catch (\Throwable $e) {
-                // Fallback to 100% Gemini if Python fails or is not available
-                Log::warning("Python ML failed, falling back to 100% Gemini API: " . $e->getMessage());
-                $metadata = $this->geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $request->course_name);
-                $metadata['source'] = 'gemini_api_only';
-            }
-
-            $material->metadata = $metadata;
-            $material->status = 'completed';
-            $material->save();
+            // Dispatch Background Job
+            \App\Jobs\ProcessCoursework::dispatch($material->id, $filesData, $textData);
 
             // Save display settings if provided
             if ($request->has('show_radar')) {
@@ -176,13 +115,10 @@ class StudyController extends Controller
                 $competency->save();
             }
 
-            // Recalculate User Competency
-            $this->recalculateCompetencies($user->id);
-
-            return redirect()->back()->with('success', 'Coursework parsed successfully.');
+            return redirect()->back()->with('success', 'Berhasil diunggah! Sistem sedang menganalisis coursework Anda di latar belakang...');
 
         } catch (\Throwable $e) {
-            Log::error("Failed processing study material ID {$material->id}: " . $e->getMessage());
+            Log::error("Failed to queue study material ID {$material->id}: " . $e->getMessage());
             $material->status = 'failed';
             $material->save();
 
@@ -190,84 +126,10 @@ class StudyController extends Controller
         }
     }
 
-    private function processFile($file)
-    {
-        $fileName = $file->getClientOriginalName();
-        $ext = strtolower($file->getClientOriginalExtension());
-        $fullPath = $file->getRealPath();
-
-        try {
-            $path = $file->store('secure_study', 'cloudinary');
-        } catch (\Exception $e) {
-            $path = $file->store('secure_study', 'local');
-        }
-
-        $text = '';
-        if ($ext === 'docx') {
-            $text = $this->extractDocxText($fullPath);
-        } elseif ($ext === 'pptx') {
-            $text = $this->extractPptxText($fullPath);
-        }
-
-        if (empty($text)) {
-            try {
-                $pythonOutput = $this->runPython([
-                    base_path('python_pipeline/pipeline.py'),
-                    '--action',
-                    'extract',
-                    '--file',
-                    $fullPath
-                ]);
-                $outputJson = json_decode($pythonOutput, true);
-                if (isset($outputJson['text'])) {
-                    $text = $outputJson['text'];
-                }
-            } catch (\Throwable $e) {
-                if ($ext === 'pdf') {
-                    $base64 = base64_encode(file_get_contents($fullPath));
-                    $text = $this->geminiService->extractResumeText($base64);
-                }
-            }
-        }
-        
-        return ['name' => $fileName, 'path' => $path, 'text' => $text];
-    }
-
-    private function processLink($url)
-    {
-        $text = "Link: $url\n";
-        if (str_contains($url, 'github.com')) {
-            try {
-                $parsed = parse_url($url);
-                $parts = explode('/', trim($parsed['path'] ?? '', '/'));
-                if (count($parts) >= 2) {
-                    $owner = $parts[0];
-                    $repo = preg_replace('/\.git$/', '', $parts[1]);
-                    $client = new \GuzzleHttp\Client(['timeout' => 8.0]);
-                    
-                    try {
-                        $response = $client->get("https://raw.githubusercontent.com/{$owner}/{$repo}/main/README.md");
-                    } catch (\Throwable $e) {
-                        $response = $client->get("https://raw.githubusercontent.com/{$owner}/{$repo}/master/README.md");
-                    }
-                    $text .= $response->getBody()->getContents();
-                }
-            } catch (\Throwable $e) {}
-        }
-        return $text;
-    }
-
     public function destroy($id)
     {
         $user = Auth::user();
         $material = StudyMaterial::where('user_id', $user->id)->findOrFail($id);
-
-        // Delete legacy file if exists
-        try {
-            if (!empty($material->file_path) && Storage::disk('local')->exists($material->file_path)) {
-                Storage::disk('local')->delete($material->file_path);
-            }
-        } catch (\Exception $e) {}
 
         // Delete modern files
         $contextData = $material->context_data ?? [];
@@ -338,7 +200,7 @@ class StudyController extends Controller
         return redirect()->back()->with('success', 'Study profile settings updated.');
     }
 
-    private function recalculateCompetencies($userId)
+    public function recalculateCompetencies($userId)
     {
         $materials = StudyMaterial::where('user_id', $userId)
             ->where('status', 'completed')
@@ -370,15 +232,17 @@ class StudyController extends Controller
             }
         }
 
-        // Average and slight boost based on frequency (flat +2% per material, max +10%)
+        // Average and slight boost based on frequency (flat +1% per material, max +5%)
         $count = $materials->count();
-        $bonus = min(5, $count) * 2;
+        $bonus = min(5, $count) * 1;
         
         foreach ($aggCompetencies as $k => $v) {
-            $aggCompetencies[$k] = min(100, round(($v / $count) + $bonus)); // Boost to reward consistency
+            $score = round(($v / $count) + $bonus);
+            $aggCompetencies[$k] = min(98, $score); // Cap at 98%
         }
         foreach ($aggArchetypes as $k => $v) {
-            $aggArchetypes[$k] = min(100, round(($v / $count) + $bonus));
+            $score = round(($v / $count) + $bonus);
+            $aggArchetypes[$k] = min(98, $score); // Cap at 98%
         }
 
         arsort($aggCompetencies);
@@ -393,68 +257,5 @@ class StudyController extends Controller
         $competency->archetypes = array_slice($aggArchetypes, 0, 3, true);
         $competency->verdict = "Dynamic profile calculated. Primary field of study: {$primaryField}. Extracted from {$count} coursework materials.";
         $competency->save();
-    }
-
-    private function runPython(array $args, ?string $stdinInput = null): string
-    {
-        $pythonCmds = ['python', 'python3', 'py'];
-        $lastException = null;
-
-        foreach ($pythonCmds as $cmd) {
-            try {
-                $command = array_merge([$cmd], $args);
-                
-                if ($stdinInput !== null) {
-                    $process = Process::input($stdinInput)->run($command);
-                } else {
-                    $process = Process::run($command);
-                }
-
-                if ($process->successful()) {
-                    return $process->output();
-                }
-                
-                $lastException = new \Exception("Process exited with code " . $process->exitCode() . ": " . $process->errorOutput());
-            } catch (\Throwable $e) {
-                $lastException = $e;
-            }
-        }
-
-        throw $lastException ?: new \Exception("Could not execute python script.");
-    }
-
-    private function extractDocxText($filePath)
-    {
-        $text = '';
-        $zip = new \ZipArchive;
-        if ($zip->open($filePath) === true) {
-            if (($index = $zip->locateName('word/document.xml')) !== false) {
-                $data = $zip->getFromIndex($index);
-                $xml = new \DOMDocument();
-                $xml->loadXML($data, LIBXML_NOENT | LIBXML_XINCLUDE | LIBXML_NOERROR | LIBXML_NOWARNING);
-                $text = strip_tags($xml->saveXML());
-            }
-            $zip->close();
-        }
-        return trim($text);
-    }
-
-    private function extractPptxText($filePath)
-    {
-        $text = '';
-        $zip = new \ZipArchive;
-        if ($zip->open($filePath) === true) {
-            for ($i = 0; $i < $zip->numFiles; $i++) {
-                $name = $zip->getNameIndex($i);
-                if (preg_match('/^ppt\/slides\/slide[0-9]+\.xml$/i', $name)) {
-                    $data = $zip->getFromIndex($i);
-                    $xml = new \DOMDocument();
-                    $xml->loadXML($data, LIBXML_NOENT | LIBXML_XINCLUDE | LIBXML_NOERROR | LIBXML_NOWARNING);
-                    $text .= strip_tags($xml->saveXML()) . " \n";
-                }
-            }
-            $zip->close();
-        }
-        return trim($text);
     }
 }

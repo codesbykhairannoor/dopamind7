@@ -358,7 +358,7 @@ class GeminiService
         
         Based strictly on the content provided:
         1. Identify the 'Field of Study' (e.g., Corporate Finance, Data Science, Graphic Design, Nursing).
-        2. Identify 6-10 specific technical 'Competencies' demonstrated in the artifact. Score each competency from 0-100 based on the depth of knowledge shown.
+        2. Identify 6-10 specific technical 'Competencies' demonstrated in the artifact. Score each competency realistically from 60 to 95 based on the depth of knowledge shown. NEVER give a score of exactly 100.
         ";
         
         // If ML Archetypes are provided, instruct Gemini to adopt them. Otherwise, generate them.
@@ -367,7 +367,7 @@ class GeminiService
             $prompt .= "3. The Machine Learning model has already predicted these 'Career Archetypes' with scores: {$archetypesJson}. DO NOT generate new archetypes. Output these exact archetypes and scores back in your JSON response.
         4. Provide a comprehensive 4-5 sentence 'Verdict' detailing their strengths and how they align with the predicted archetypes. CRITICAL LANGUAGE RULE: The Verdict MUST be written in the SAME language as the Student's Artifact text (e.g., if the artifact is in Indonesian, write the verdict in Indonesian).";
         } else {
-            $prompt .= "3. Identify 3 'Career Archetypes' (Job Titles) that this coursework aligns with. Score them from 0-100.
+            $prompt .= "3. Identify 3 'Career Archetypes' (Job Titles) that this coursework aligns with. Score them realistically from 60 to 95. NEVER give a score of exactly 100.
         4. Provide a comprehensive 4-5 sentence 'Verdict' detailing their strengths. CRITICAL LANGUAGE RULE: The Verdict MUST be written in the SAME language as the Student's Artifact text (e.g., if the artifact is in Indonesian, write the verdict in Indonesian).";
         }
 

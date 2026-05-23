@@ -100,9 +100,15 @@ def predict_archetypes(text, model_dir="."):
                         return {"error": "Low confidence. Triggering Gemini Fallback."}
                         
                     if max_raw > 0:
-                        scale_factor = 90.0 / max_raw
+                        scale_factor = 95.0 / max_raw
+                        
+                        # Apply sequential spreading to prevent identical high scores
+                        penalty = 0
                         for k, v in sorted_archetypes.items():
-                            archetypes_output[k] = min(99, round((v * scale_factor) * 0.9 + 10)) # add slight baseline
+                            scaled_v = (v * scale_factor) * 0.9 + 5
+                            final_score = min(95, round(scaled_v) - penalty)
+                            archetypes_output[k] = final_score
+                            penalty += 3 # Next archetype is at least 3% lower
                     else:
                          for k, v in sorted_archetypes.items():
                             archetypes_output[k] = 20

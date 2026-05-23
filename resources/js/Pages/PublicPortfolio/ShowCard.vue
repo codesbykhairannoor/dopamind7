@@ -203,200 +203,137 @@ const showMaterials = computed(() => {
                 </p>
             </div>
 
-            <!-- Responsive Bento Details Grid -->
-            <div v-else class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Premium Stacked Details Layout -->
+            <div v-else class="flex flex-col gap-8">
                 
-                <!-- LEFT COLUMN: Profile info & Metadata -->
-                <div class="lg:col-span-4 flex flex-col gap-6">
-                    
-                    <!-- Student Identity Card -->
-                    <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-md">
-                        <div class="flex items-center gap-4">
-                            <!-- Avatar fallback -->
-                            <div v-if="props.student.avatar_url" class="h-14 w-14 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm shrink-0">
+                <!-- 1. HERO BANNER -->
+                <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-8 lg:p-10 rounded-[2.5rem] border border-slate-200/50 dark:border-slate-800/80 shadow-lg relative overflow-hidden">
+                    <!-- Decorative Background -->
+                    <div class="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+                        <div class="flex-1">
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 font-extrabold text-[10px] uppercase tracking-wider mb-4 border border-indigo-100/50 dark:border-indigo-900/50">
+                                <Award class="h-3.5 w-3.5" />
+                                Coursework Material
+                            </div>
+                            <h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-tight">
+                                {{ props.material.course_name }}
+                            </h1>
+                            <div class="flex flex-wrap items-center gap-4 mt-4 text-sm font-semibold text-slate-500 dark:text-slate-400">
+                                <div class="flex items-center gap-1.5">
+                                    <Clock class="h-4 w-4 text-slate-400" />
+                                    {{ props.material.week || 'No Period Set' }}
+                                </div>
+                                <div v-if="props.material.grade !== null" class="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200/50 dark:border-emerald-900/30">
+                                    Grade: <span class="font-black">{{ props.material.grade }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Student Badge -->
+                        <div class="bg-slate-50/80 dark:bg-slate-950/80 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 flex items-center gap-4 min-w-[250px]">
+                            <div v-if="props.student.avatar_url" class="h-12 w-12 rounded-xl overflow-hidden shadow-sm shrink-0">
                                 <img :src="props.student.avatar_url" :alt="props.student.name" class="h-full w-full object-cover" />
                             </div>
-                            <div v-else class="h-14 w-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl font-black tracking-tight shadow-md border border-indigo-500 shrink-0">
+                            <div v-else class="h-12 w-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center text-xl font-black shadow-md shrink-0">
                                 {{ props.student.name.charAt(0) }}
                             </div>
-
-                            <div class="min-w-0">
-                                <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/5 text-emerald-600 dark:text-emerald-400 font-extrabold text-[8px] uppercase tracking-wider mb-1">
-                                    <span class="h-1 w-1 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    {{ $t('portfolio_ipow_verified', 'IPoW Verified') }}
+                            <div>
+                                <div class="inline-flex items-center gap-1 text-[9px] font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-0.5">
+                                    <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    IPoW Verified
                                 </div>
-                                <h2 class="text-md font-bold text-slate-900 dark:text-white truncate leading-tight">
+                                <h2 class="text-sm font-bold text-slate-900 dark:text-white leading-tight">
                                     {{ props.student.name }}
                                 </h2>
-                                <p class="text-slate-400 dark:text-slate-500 text-xs font-semibold mt-0.5">
+                                <p class="text-slate-400 dark:text-slate-500 text-xs font-semibold">
                                     @{{ props.student.username }}
                                 </p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Card Coursework Metadata -->
-                    <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-md flex flex-col gap-4">
-                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                            {{ $t('portfolio_card_details_label', 'Coursework Details') }}
+                <!-- 2. INSIGHTS & COMPETENCIES ROW -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- AI Verdict -->
+                    <div v-if="props.material.metadata?.verdict" class="bg-gradient-to-br from-indigo-50/80 to-purple-50/50 dark:from-slate-900/80 dark:to-indigo-950/30 backdrop-blur-md p-8 rounded-[2rem] border border-indigo-100/80 dark:border-indigo-900/40 shadow-lg flex flex-col justify-center">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-4 flex items-center gap-2">
+                            <Sparkles class="h-5 w-5" />
+                            AI Audit Insight
                         </h3>
-
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between text-xs font-semibold">
-                                <span class="text-slate-400">{{ $t('portfolio_card_course_label', 'Course / Class') }}</span>
-                                <span class="text-slate-800 dark:text-slate-200 font-extrabold text-right ml-4 truncate max-w-[180px]">
-                                    {{ props.material.course_name }}
-                                </span>
-                            </div>
-
-                            <div class="flex items-center justify-between text-xs font-semibold">
-                                <span class="text-slate-400">{{ $t('portfolio_card_category_label', 'Card Category') }}</span>
-                                <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/40">
-                                    Coursework Material
-                                </span>
-                            </div>
-
-                            <div v-if="props.material.week" class="flex items-center justify-between text-xs font-semibold">
-                                <span class="text-slate-400">{{ $t('portfolio_card_period_label', 'Audit Period') }}</span>
-                                <span class="text-slate-800 dark:text-slate-200 font-bold flex items-center gap-1">
-                                    <Clock class="h-3 w-3 text-indigo-500" />
-                                    {{ props.material.week }}
-                                </span>
-                            </div>
-
-                            <div v-if="props.material.grade !== null" class="flex items-center justify-between text-xs font-semibold">
-                                <span class="text-slate-400">{{ $t('portfolio_card_score_label', 'Academic Score') }}</span>
-                                <span class="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[10px] font-black border border-emerald-100/30 dark:border-emerald-900/30">
-                                    {{ props.material.grade }}
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Keywords / Competency Tags -->
-                        <div v-if="props.material.metadata?.competencies" class="pt-4 border-t border-slate-100 dark:border-slate-800/80">
-                            <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 dark:text-slate-500 block mb-2">{{ $t('portfolio_card_skill_tags_label', 'Verified Skill Tags') }}</span>
-                            <div class="flex flex-wrap gap-1.5">
-                                <span 
-                                    v-for="(score, comp) in props.material.metadata.competencies" 
-                                    :key="comp"
-                                    class="px-2.5 py-0.5 rounded-md bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 text-[10px] font-bold border border-slate-200/30 dark:border-slate-800/30"
-                                >
-                                    {{ comp }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AI Insight Verdict -->
-                    <div v-if="props.material.metadata?.verdict" class="bg-gradient-to-br from-indigo-50/40 to-purple-50/30 dark:from-slate-900/50 dark:to-indigo-950/20 backdrop-blur-md p-6 rounded-[2rem] border border-indigo-100/50 dark:border-indigo-900/30 shadow-md">
-                        <h3 class="text-xs font-black uppercase tracking-wider text-indigo-500 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
-                            ✨ AI Audit Insight
-                        </h3>
-                        <p class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-relaxed">
-                            {{ props.material.metadata.verdict }}
+                        <p class="text-base lg:text-lg font-medium text-slate-800 dark:text-slate-200 leading-relaxed">
+                            "{{ props.material.metadata.verdict }}"
                         </p>
                     </div>
 
-                    <!-- Radar Competency Chart -->
-                    <div v-if="showRadar" class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-md">
-                        <h3 class="text-xs font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-4 flex items-center gap-1.5">
-                            <BarChart3 class="h-4 w-4 text-indigo-500" />
-                            {{ $t('portfolio_verified_competencies', 'Verified Competencies') }}
+                    <!-- Verified Competencies -->
+                    <div v-if="props.material.metadata?.competencies" class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-8 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-lg">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 flex items-center gap-2">
+                            <ShieldAlert class="h-5 w-5" />
+                            Verified Skill Tags
                         </h3>
-                        <div class="h-64 w-full relative flex items-center justify-center">
-                            <Radar :data="chartData" :options="chartOptions" />
+                        <div class="flex flex-wrap gap-2.5">
+                            <span 
+                                v-for="(score, comp) in props.material.metadata.competencies" 
+                                :key="comp"
+                                class="px-4 py-2 rounded-xl bg-slate-100/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-sm font-bold border border-slate-200/50 dark:border-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-default shadow-sm"
+                            >
+                                {{ comp }}
+                            </span>
                         </div>
                     </div>
-
                 </div>
 
-                <!-- RIGHT COLUMN: Main Document Viewer -->
-                <div class="lg:col-span-8 flex flex-col gap-6">
-                    
-                    <!-- Context Data Section -->
-                    <div v-if="props.material.context_data && props.material.context_data.length > 0" class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-md space-y-6">
-                        <h4 class="text-xs uppercase font-extrabold tracking-widest text-indigo-500 dark:text-indigo-400 border-b border-indigo-100 dark:border-indigo-900/50 pb-2">Context Material</h4>
-                        
-                        <div class="space-y-4">
-                            <div v-for="(item, idx) in props.material.context_data" :key="idx">
-                                
-                                <!-- File -->
-                                <div v-if="item.type === 'file'" class="bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                    <div class="p-6 bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center text-center gap-4">
-                                        <div class="h-16 w-16 bg-indigo-100 dark:bg-indigo-900/50 rounded-2xl flex items-center justify-center">
-                                            <FileText class="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
-                                        </div>
-                                        <div>
-                                            <h5 class="text-sm font-bold text-slate-800 dark:text-slate-200">{{ item.name }}</h5>
-                                            <p class="text-xs text-slate-500 mt-1">Document ready to view or download</p>
-                                        </div>
-                                        <a :href="`/storage/${item.path}`" target="_blank" class="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-indigo-500/20">
-                                            Open Document <ExternalLink class="h-4 w-4" />
-                                        </a>
-                                    </div>
-                                </div>
+                <!-- 3. RADAR CHART (If enabled) -->
+                <div v-if="showRadar" class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-8 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-lg flex flex-col items-center">
+                    <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-6 flex items-center gap-2 w-full justify-center">
+                        <BarChart3 class="h-5 w-5 text-indigo-500" />
+                        {{ $t('portfolio_verified_competencies', 'Verified Competencies Radar') }}
+                    </h3>
+                    <div class="h-80 w-full max-w-2xl relative flex items-center justify-center">
+                        <Radar :data="chartData" :options="chartOptions" />
+                    </div>
+                </div>
 
-                                <!-- Link -->
-                                <div v-else-if="item.type === 'link'" class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
-                                    <div class="h-12 w-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center shrink-0">
-                                        <Link2 class="h-6 w-6 text-indigo-500" />
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
-                                        <a :href="item.url" target="_blank" class="text-sm font-bold text-indigo-600 dark:text-indigo-400 underline truncate block">{{ item.url }}</a>
-                                    </div>
+                <!-- 4. ATTACHED DOCUMENTS -->
+                <div class="space-y-6 mt-4">
+                    <div v-if="props.material.context_data && props.material.context_data.length > 0">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 px-2">Context Materials</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div v-for="(item, idx) in props.material.context_data" :key="'ctx-'+idx" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl flex items-center gap-4 hover:shadow-lg transition group">
+                                <div class="h-12 w-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition">
+                                    <FileText v-if="item.type === 'file'" class="h-5 w-5" />
+                                    <Link2 v-else-if="item.type === 'link'" class="h-5 w-5" />
+                                    <BookOpen v-else class="h-5 w-5" />
                                 </div>
-
-                                <!-- Text -->
-                                <div v-else-if="item.type === 'text'" class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-sm">
-                                    <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
-                                    <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ item.content }}</p>
+                                <div class="flex-1 min-w-0">
+                                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{{ item.type }}</h4>
+                                    <a v-if="item.type === 'file'" :href="`/storage/${item.path}`" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500">{{ item.name }}</a>
+                                    <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500">{{ item.url }}</a>
+                                    <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
 
-                    <!-- Artifact Data Section -->
-                    <div v-if="props.material.artifact_data && props.material.artifact_data.length > 0" class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-md space-y-6">
-                        <h4 class="text-xs uppercase font-extrabold tracking-widest text-emerald-500 dark:text-emerald-400 border-b border-emerald-100 dark:border-emerald-900/50 pb-2">Artifact Material</h4>
-                        
-                        <div class="space-y-4">
-                            <div v-for="(item, idx) in props.material.artifact_data" :key="idx">
-                                
-                                <!-- File -->
-                                <div v-if="item.type === 'file'" class="bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                    <div class="p-6 bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center text-center gap-4">
-                                        <div class="h-16 w-16 bg-emerald-100 dark:bg-emerald-900/50 rounded-2xl flex items-center justify-center">
-                                            <FileText class="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
-                                        </div>
-                                        <div>
-                                            <h5 class="text-sm font-bold text-slate-800 dark:text-slate-200">{{ item.name }}</h5>
-                                            <p class="text-xs text-slate-500 mt-1">Document ready to view or download</p>
-                                        </div>
-                                        <a :href="`/storage/${item.path}`" target="_blank" class="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-emerald-500/20">
-                                            Open Document <ExternalLink class="h-4 w-4" />
-                                        </a>
-                                    </div>
+                    <div v-if="props.material.artifact_data && props.material.artifact_data.length > 0" class="pt-4">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-500 mb-4 px-2">Artifact Deliverables</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div v-for="(item, idx) in props.material.artifact_data" :key="'art-'+idx" class="bg-white dark:bg-slate-900 border border-emerald-100 dark:border-emerald-900/30 p-5 rounded-2xl flex items-center gap-4 hover:shadow-lg shadow-emerald-500/5 transition group">
+                                <div class="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition">
+                                    <FileText v-if="item.type === 'file'" class="h-5 w-5" />
+                                    <Link2 v-else-if="item.type === 'link'" class="h-5 w-5" />
+                                    <BookOpen v-else class="h-5 w-5" />
                                 </div>
-
-                                <!-- Link -->
-                                <div v-else-if="item.type === 'link'" class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
-                                    <div class="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center shrink-0">
-                                        <Link2 class="h-6 w-6 text-emerald-500" />
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
-                                        <a :href="item.url" target="_blank" class="text-sm font-bold text-emerald-600 dark:text-emerald-400 underline truncate block">{{ item.url }}</a>
-                                    </div>
+                                <div class="flex-1 min-w-0">
+                                    <h4 class="text-xs font-bold text-emerald-500/70 uppercase tracking-wider mb-1">{{ item.type }}</h4>
+                                    <a v-if="item.type === 'file'" :href="`/storage/${item.path}`" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500">{{ item.name }}</a>
+                                    <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500">{{ item.url }}</a>
+                                    <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
                                 </div>
-
-                                <!-- Text -->
-                                <div v-else-if="item.type === 'text'" class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-sm">
-                                    <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
-                                    <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ item.content }}</p>
-                                </div>
-
                             </div>
                         </div>
                     </div>
