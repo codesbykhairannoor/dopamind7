@@ -22,13 +22,67 @@ class StudyController extends Controller
     {
         $user = Auth::user();
         $materials = StudyMaterial::where('user_id', $user->id)
+            ->orderBy('semester', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
 
         $competency = StudyCompetency::where('user_id', $user->id)->first();
 
+        // Calculate IPK and Group by Semester
+        $totalSks = 0;
+        $totalPoints = 0;
+        $materialsBySemester = [];
+
+        foreach ($materials as $m) {
+            $sem = $m->semester ?: 1;
+            if (!isset($materialsBySemester[$sem])) {
+                $materialsBySemester[$sem] = [
+                    'semester' => $sem,
+                    'total_sks' => 0,
+                    'total_points' => 0,
+                    'ips' => 0,
+                    'materials' => []
+                ];
+            }
+
+            $materialsBySemester[$sem]['materials'][] = $m;
+
+            if ($m->grade !== null && $m->sks > 0) {
+                $sks = $m->sks;
+                $gradePoint = 0;
+                if ($m->grade >= 85) $gradePoint = 4.0;
+                elseif ($m->grade >= 70) $gradePoint = 3.0;
+                elseif ($m->grade >= 60) $gradePoint = 2.0;
+                elseif ($m->grade >= 50) $gradePoint = 1.0;
+
+                $points = $sks * $gradePoint;
+                $totalSks += $sks;
+                $totalPoints += $points;
+                
+                $materialsBySemester[$sem]['total_sks'] += $sks;
+                $materialsBySemester[$sem]['total_points'] += $points;
+            }
+        }
+
+        foreach ($materialsBySemester as &$semData) {
+            if ($semData['total_sks'] > 0) {
+                $semData['ips'] = round($semData['total_points'] / $semData['total_sks'], 2);
+            }
+        }
+
+        krsort($materialsBySemester);
+        $groupedMaterials = array_values($materialsBySemester);
+        $ipk = $totalSks > 0 ? round($totalPoints / $totalSks, 2) : 0;
+        $currentSemester = count($materialsBySemester) > 0 ? max(array_keys($materialsBySemester)) : 1;
+
         return Inertia::render('Study/Index', [
             'materials' => $materials,
+            'groupedMaterials' => $groupedMaterials,
+            'academicStats' => [
+                'ipk' => $ipk,
+                'total_sks' => $totalSks,
+                'current_semester' => $currentSemester
+            ],
             'competency' => $competency,
             'user' => [
                 'name' => $user->name,
@@ -41,7 +95,8 @@ class StudyController extends Controller
     {
         $request->validate([
             'course_name' => 'required|string|max:255',
-            'week' => 'nullable|string|max:100',
+            'semester' => 'required|integer|min:1|max:14',
+            'sks' => 'required|integer|min:1|max:10',
             'grade' => 'nullable|numeric|min:0|max:100',
             'context_files.*' => 'nullable|file|mimes:pdf,docx,pptx|max:10240',
             'context_link' => 'nullable|url|max:2083',
@@ -62,7 +117,8 @@ class StudyController extends Controller
         $material = StudyMaterial::create([
             'user_id' => $user->id,
             'course_name' => $request->course_name,
-            'week' => $request->week,
+            'semester' => $request->semester,
+            'sks' => $request->sks,
             'grade' => $request->grade,
             'status' => 'processing',
         ]);

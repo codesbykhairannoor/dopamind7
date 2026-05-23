@@ -24,6 +24,8 @@ import StudyArchetypeMatches from './StudyArchetypeMatches.vue';
 
 const props = defineProps({
     materials: { type: Array, default: () => [] },
+    groupedMaterials: { type: Array, default: () => [] },
+    academicStats: { type: Object, default: () => ({ ipk: 0, total_sks: 0, current_semester: 1 }) },
     competency: { type: Object, default: null },
     user: { type: Object, required: true }
 });
@@ -130,6 +132,42 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
                 </div>
             </header>
 
+            <!-- ACADEMIC DASHBOARD -->
+            <div v-if="props.academicStats.total_sks > 0" class="mb-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- IPK Card -->
+                <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-[2rem] border border-slate-200/60 dark:border-slate-800/80 p-6 flex items-center gap-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:scale-[1.02] transition-transform">
+                    <div class="h-16 w-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20 text-white font-black text-2xl">
+                        {{ props.academicStats.ipk.toFixed(2) }}
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Cumulative GPA (IPK)</p>
+                        <h3 class="text-xl font-black text-slate-800 dark:text-slate-100 leading-tight">Prestasi Akademik</h3>
+                    </div>
+                </div>
+
+                <!-- SKS Card -->
+                <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-[2rem] border border-slate-200/60 dark:border-slate-800/80 p-6 flex items-center gap-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:scale-[1.02] transition-transform">
+                    <div class="h-16 w-16 rounded-2xl bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center border border-emerald-200 dark:border-emerald-800/50 text-emerald-600 dark:text-emerald-400 font-black text-2xl">
+                        {{ props.academicStats.total_sks }}
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Total Credits</p>
+                        <h3 class="text-xl font-black text-slate-800 dark:text-slate-100 leading-tight">SKS Ditempuh</h3>
+                    </div>
+                </div>
+
+                <!-- Semester Card -->
+                <div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-[2rem] border border-slate-200/60 dark:border-slate-800/80 p-6 flex items-center gap-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:scale-[1.02] transition-transform">
+                    <div class="h-16 w-16 rounded-2xl bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center border border-amber-200 dark:border-amber-800/50 text-amber-600 dark:text-amber-400 font-black text-2xl">
+                        {{ props.academicStats.current_semester }}
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Current Position</p>
+                        <h3 class="text-xl font-black text-slate-800 dark:text-slate-100 leading-tight">Semester Aktif</h3>
+                    </div>
+                </div>
+            </div>
+
             <!-- TAB BAR -->
             <div class="mb-8 flex items-center gap-1 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-slate-200/60 dark:border-slate-800/80 rounded-[1.75rem] p-1.5 shadow-sm">
                 <button
@@ -232,7 +270,7 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
                         <InputError :message="usernameForm.errors.username" class="mt-2 pl-2" />
                     </div>
 
-                    <StudyMaterialList :materials="props.materials" :user="props.user" />
+                    <StudyMaterialList :groupedMaterials="props.groupedMaterials" :user="props.user" />
                 </div>
 
             </Transition>

@@ -14,7 +14,7 @@ import {
 } from 'lucide-vue-next';
 
 const props = defineProps({
-    materials: {
+    groupedMaterials: {
         type: Array,
         default: () => []
     },
@@ -78,7 +78,7 @@ const copyCardLink = (id) => {
         </h2>
 
         <!-- Empty State -->
-        <div v-if="materials.length === 0" class="py-16 text-center">
+        <div v-if="groupedMaterials.length === 0" class="py-16 text-center">
             <div class="h-16 w-16 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[1.5rem] flex items-center justify-center text-4xl mb-4 mx-auto animate-bounce-slow">
                 📚
             </div>
@@ -89,30 +89,42 @@ const copyCardLink = (id) => {
         </div>
 
         <!-- Materials List -->
-        <div v-else class="space-y-4">
-            <div 
-                v-for="material in materials" 
-                :key="material.id"
-                class="p-4 bg-slate-50/50 dark:bg-slate-950/20 border border-slate-100 dark:border-slate-900/40 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4"
-            >
-                <div class="min-w-0">
-                    <!-- Badge Header -->
-                    <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-                        <span v-if="material.metadata?.field_of_study" class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/40">
-                            {{ material.metadata.field_of_study }}
-                        </span>
-
-                        <!-- Period/Week -->
-                        <span v-if="material.week" class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold flex items-center gap-1">
-                            <Clock class="h-3 w-3" />
-                            {{ material.week }}
-                        </span>
-
-                        <!-- Grade/Score -->
-                        <span v-if="material.grade !== null" class="px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
-                            Grade: {{ material.grade }}
-                        </span>
+        <div v-else class="space-y-8">
+            <div v-for="group in groupedMaterials" :key="group.semester" class="space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2 px-2">
+                    <h3 class="text-md font-black text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                        Semester {{ group.semester }}
+                    </h3>
+                    <div class="text-xs font-bold text-slate-500">
+                        <span class="mr-3">IPS: <span class="text-indigo-600 dark:text-indigo-400 text-sm">{{ group.ips.toFixed(2) }}</span></span>
+                        <span>SKS: <span class="text-emerald-600 dark:text-emerald-400 text-sm">{{ group.total_sks }}</span></span>
                     </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div 
+                        v-for="material in group.materials" 
+                        :key="material.id"
+                        class="p-4 bg-slate-50/50 dark:bg-slate-950/20 border border-slate-100 dark:border-slate-900/40 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4"
+                    >
+                        <div class="min-w-0">
+                            <!-- Badge Header -->
+                            <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                                <span v-if="material.metadata?.field_of_study" class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/40">
+                                    {{ material.metadata.field_of_study }}
+                                </span>
+
+                                <!-- Period/SKS -->
+                                <span v-if="material.sks" class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold flex items-center gap-1">
+                                    <Clock class="h-3 w-3" />
+                                    {{ material.sks }} SKS
+                                </span>
+
+                                <!-- Grade/Score -->
+                                <span v-if="material.grade !== null" class="px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 text-[9px] font-bold">
+                                    Grade: {{ material.grade }}
+                                </span>
+                            </div>
 
                     <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-200 truncate">
                         {{ material.course_name }}
@@ -186,8 +198,9 @@ const copyCardLink = (id) => {
                     </button>
                 </div>
             </div>
+                </div>
+            </div>
         </div>
-
         <!-- Custom Delete Modal -->
         <div v-if="showDeleteModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
             <!-- Backdrop -->
