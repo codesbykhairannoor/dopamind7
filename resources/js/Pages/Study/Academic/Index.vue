@@ -202,32 +202,19 @@ const getTypeColor = (type) => {
         <!-- STATE 1: EMPTY STATE & SETUP -->
         <!-- ============================================== -->
         <template v-if="!hasCompletedSetup">
-            <div class="flex flex-col items-center justify-center min-h-[85vh] max-w-3xl mx-auto px-6 text-center">
-                <!-- Illustration Placeholder / Icon -->
-                <div class="relative w-40 h-40 mb-10 mx-auto">
-                    <div class="absolute inset-0 bg-indigo-500/20 rounded-full blur-3xl animate-pulse"></div>
-                    <div class="relative w-full h-full bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-[3rem] shadow-2xl flex items-center justify-center rotate-3 hover:rotate-6 transition-transform duration-500">
-                        <GraduationCap class="h-20 w-20 text-white" />
-                    </div>
-                    <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-emerald-400 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                        <Sparkles class="h-8 w-8 text-white" />
+            <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-4 sm:px-8 py-12">
+                <div class="py-24 text-center bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800 shadow-sm dark:shadow-none transition-all duration-500 max-w-4xl mx-auto mb-12">
+                    <div class="flex flex-col items-center gap-5">
+                        <span class="text-6xl animate-bounce mb-2">🎓</span>
+                        <h4 class="text-2xl font-black text-slate-800 dark:text-slate-100 transition-colors duration-500">Profil Studi Belum Diatur</h4>
+                        <p class="text-sm font-bold text-slate-400 dark:text-slate-500 px-8 max-w-lg mx-auto transition-colors duration-500 leading-relaxed">
+                            Mulai organisasikan seluruh modul, tugas, dan target nilai Anda secara cerdas. Mari sesuaikan sistem ini dengan profil akademis Anda sekarang!
+                        </p>
+                        <button @click="openSetup" class="mt-4 bg-indigo-600 text-white font-black py-3.5 px-8 rounded-2xl shadow-lg shadow-indigo-100 dark:shadow-none hover:bg-indigo-700 active:scale-95 transition-all outline-none flex items-center gap-2">
+                            Mulai Setup <ChevronRight class="h-5 w-5" />
+                        </button>
                     </div>
                 </div>
-
-                <h1 class="text-4xl md:text-5xl font-black text-slate-800 dark:text-white mb-6 tracking-tight">
-                    Mulai Perjalanan Akademik Anda
-                </h1>
-                <p class="text-lg text-slate-500 dark:text-slate-400 mb-12 max-w-xl mx-auto leading-relaxed">
-                    Organisasikan seluruh modul, tugas, dan target nilai Anda secara cerdas. Mari kita sesuaikan sistem ini dengan profil akademis Anda.
-                </p>
-
-                <button @click="openSetup" class="group relative px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-black text-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all hover:scale-105 active:scale-95">
-                    <div class="absolute inset-0 bg-indigo-500 w-0 group-hover:w-full transition-all duration-300 ease-out z-0"></div>
-                    <span class="relative z-10 flex items-center gap-3 group-hover:text-white transition-colors">
-                        Mulai Setup Sekarang <ChevronRight class="h-5 w-5" />
-                    </span>
-                </button>
-            </div>
 
             <!-- Portfolio Banner di Bagian Bawah Layar Kosong -->
             <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-6 pb-12">
