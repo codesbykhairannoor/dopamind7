@@ -20,5 +20,15 @@
   "study_empty_state": "Belum ada dokumen belajar yang diunggah. Unggah silabus atau laporan tugas Anda untuk mulai membangun profil kompetensi neural Anda.",
   "study_share_card": "Salin Tautan Berbagi",
   "study_share_copied": "Tersalin!",
-  "study_share_no_username": "Atur username untuk berbagi kartu ini"
+  "study_share_no_username": "Atur username untuk berbagi kartu ini",
+  "study_tab_upload": "Upload",
+  "study_tab_cards": "Kartu Saya",
+  "study_tab_analytics": "Analitik",
+  "study_tab_portfolio": "Portofolio",
+  "study_refresh": "Perbarui",
+  "study_portfolio_url_desc": "Atur identitas unik Anda untuk menampilkan keahlian terverifikasi kepada rekruter.",
+  "study_profile_not_live": "Profil belum aktif",
+  "study_profile_not_live_desc": "Atur username unik di bawah untuk mengaktifkan tampilan rekrutmen publik Anda.",
+  "study_username_placeholder": "nama-anda",
+  "study_copy_url": "Salin"
 }

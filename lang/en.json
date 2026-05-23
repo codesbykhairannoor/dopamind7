@@ -5485,5 +5485,15 @@
     "study_empty_state": "No study materials uploaded yet. Upload your syllabus or task reports to begin building your neural competency profile.",
     "study_share_card": "Copy Shareable Link",
     "study_share_copied": "Copied!",
-    "study_share_no_username": "Set a username to share this card"
+    "study_share_no_username": "Set a username to share this card",
+    "study_tab_upload": "Upload",
+    "study_tab_cards": "My Cards",
+    "study_tab_analytics": "Analytics",
+    "study_tab_portfolio": "Portfolio",
+    "study_refresh": "Refresh",
+    "study_portfolio_url_desc": "Configure your unique identifier to showcase your verified skills to recruiters.",
+    "study_profile_not_live": "Profile is not live yet",
+    "study_profile_not_live_desc": "Set a unique username below to enable your public recruiting view.",
+    "study_username_placeholder": "your-name",
+    "study_copy_url": "Copy"
 }
