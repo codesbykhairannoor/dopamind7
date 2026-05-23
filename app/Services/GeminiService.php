@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 
 class GeminiService
 {
-    protected ?string $apiKey;
+    protected array $apiKeys = [];
     protected string $version;
 
     /**
@@ -27,46 +27,68 @@ class GeminiService
 
     public function __construct()
     {
-        $this->apiKey = config('services.gemini.key') ?: env('GEMINI_API_KEY');
+        // Load all available Gemini API keys from environment
+        $keys = [
+            config('services.gemini.key') ?: env('GEMINI_API_KEY'),
+            env('GEMINI_API_KEY_2'),
+            env('GEMINI_API_KEY_3'),
+            env('GEMINI_API_KEY_4'),
+        ];
+        
+        // Filter out empty keys and re-index
+        $this->apiKeys = array_values(array_filter($keys));
+        
         $this->version = config('services.gemini.version') ?: env('GEMINI_API_VERSION', 'v1beta');
     }
 
     /**
-     * 🔥 CORE EXECUTION ENGINE WITH MULTI-MODEL FALLBACK
+     * 🔥 CORE EXECUTION ENGINE WITH MULTI-KEY AND MULTI-MODEL FALLBACK
      */
     private function executeRequest(string $payloadType, array $payload, int $timeout = 30): ?string
     {
-        if (!$this->apiKey) {
-            Log::error('Gemini API key is not configured.');
+        if (empty($this->apiKeys)) {
+            Log::error('Gemini API keys are not configured.');
             return null;
         }
 
-        foreach ($this->models as $modelName) {
-            try {
-                $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$modelName}:generateContent?key={$this->apiKey}";
-                $response = Http::timeout($timeout)->post($url, $payload);
+        // Loop through all available API keys
+        foreach ($this->apiKeys as $keyIndex => $apiKey) {
+            
+            // For each key, loop through the model hierarchy
+            foreach ($this->models as $modelName) {
+                try {
+                    $url = "https://generativelanguage.googleapis.com/{$this->version}/models/{$modelName}:generateContent?key={$apiKey}";
+                    $response = Http::timeout($timeout)->post($url, $payload);
 
-                if ($response->successful()) {
-                    $candidates = $response->json('candidates');
-                    if (!empty($candidates)) {
-                        return $candidates[0]['content']['parts'][0]['text'] ?? null;
+                    if ($response->successful()) {
+                        $candidates = $response->json('candidates');
+                        if (!empty($candidates)) {
+                            return $candidates[0]['content']['parts'][0]['text'] ?? null;
+                        }
+                        continue; // Empty candidates, try next model
                     }
-                    continue; // Empty candidates, try next model
+
+                    // If quota exceeded (429) or Forbidden (403), it's likely an API Key level issue.
+                    // Break the model loop and try the NEXT API KEY.
+                    if (in_array($response->status(), [429, 403])) {
+                        Log::warning("GEMINI_FALLBACK: Key #" . ($keyIndex + 1) . " failed with status {$response->status()}. Trying next API KEY...");
+                        break; 
+                    }
+
+                    // If Model Not Found (404), try the NEXT MODEL with the SAME API KEY.
+                    if ($response->status() === 404) {
+                        Log::warning("GEMINI_FALLBACK: Model {$modelName} not found (404) on Key #" . ($keyIndex + 1) . ". Trying next model...");
+                        continue;
+                    }
+
+                    // Other errors (e.g. 400 Bad Request, payload issues), log and stop trying
+                    Log::error("GEMINI_API_ERROR ({$modelName}): " . $response->status() . ' | ' . $response->body());
+                    break 2; // Break out of BOTH loops
+
+                } catch (\Exception $e) {
+                    Log::error("Gemini Exception ({$modelName} on Key #" . ($keyIndex + 1) . "): " . $e->getMessage());
+                    continue; // Try next model on network timeout/error
                 }
-
-                // If quota exceeded (429) or Forbidden (403), try next model
-                if (in_array($response->status(), [429, 403, 404])) {
-                    Log::warning("GEMINI_FALLBACK: Model {$modelName} failed with status {$response->status()}. Trying next...");
-                    continue;
-                }
-
-                // Other errors might be payload related, log and stop
-                Log::error("GEMINI_API_ERROR ({$modelName}): " . $response->status() . ' | ' . $response->body());
-                break; 
-
-            } catch (\Exception $e) {
-                Log::error("Gemini Exception ({$modelName}): " . $e->getMessage());
-                continue;
             }
         }
 
