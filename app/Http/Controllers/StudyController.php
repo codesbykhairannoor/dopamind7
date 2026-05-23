@@ -263,9 +263,11 @@ class StudyController extends Controller
         $material = StudyMaterial::where('user_id', $user->id)->findOrFail($id);
 
         // Delete legacy file if exists
-        if (!empty($material->file_path) && Storage::disk('local')->exists($material->file_path)) {
-            Storage::disk('local')->delete($material->file_path);
-        }
+        try {
+            if (!empty($material->file_path) && Storage::disk('local')->exists($material->file_path)) {
+                Storage::disk('local')->delete($material->file_path);
+            }
+        } catch (\Exception $e) {}
 
         // Delete modern files
         $contextData = $material->context_data ?? [];
@@ -281,11 +283,13 @@ class StudyController extends Controller
         $allFiles = array_merge((array)$contextData, (array)$artifactData);
         foreach ($allFiles as $item) {
             if (isset($item['type']) && $item['type'] === 'file' && !empty($item['path'])) {
-                if (Storage::disk('cloudinary')->exists($item['path'])) {
-                    Storage::disk('cloudinary')->delete($item['path']);
-                } elseif (Storage::disk('local')->exists($item['path'])) {
-                    Storage::disk('local')->delete($item['path']);
-                }
+                try {
+                    if (Storage::disk('cloudinary')->exists($item['path'])) {
+                        Storage::disk('cloudinary')->delete($item['path']);
+                    } elseif (Storage::disk('local')->exists($item['path'])) {
+                        Storage::disk('local')->delete($item['path']);
+                    }
+                } catch (\Exception $e) {}
             }
         }
 

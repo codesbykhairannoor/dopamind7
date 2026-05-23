@@ -61,5 +61,7 @@
   "study_upload_to_run_ml": "Upload coursework data to run ML archetype prediction.",
   "study_classifier_verdict": "Classifier Verdict",
   "study_no_data": "No Data Yet",
-  "study_ipow_protocol": "IPoW Protocol"
+  "study_ipow_protocol": "IPoW Protocol",
+  "study_delete_cancel": "Cancel",
+  "study_delete_yes": "Yes, Delete"
 }

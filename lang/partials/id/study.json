@@ -61,5 +61,7 @@
   "study_upload_to_run_ml": "Unggah data tugas untuk menjalankan prediksi ML karir.",
   "study_classifier_verdict": "Keputusan Penggolong (Classifier)",
   "study_no_data": "Belum Ada Data",
-  "study_ipow_protocol": "Protokol IPoW"
+  "study_ipow_protocol": "Protokol IPoW",
+  "study_delete_cancel": "Batal",
+  "study_delete_yes": "Ya, Hapus"
 }
