@@ -336,6 +336,8 @@ class GeminiService
         ];
 
         return $this->executeRequest('analyze', $payload);
+    }
+    
     /**
      * Analyze Coursework for Dynamic Competencies and Archetypes
      */
