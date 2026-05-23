@@ -269,9 +269,16 @@ class StudyController extends Controller
 
         // Delete modern files
         $contextData = $material->context_data ?? [];
-        $artifactData = $material->artifact_data ?? [];
+        if (is_string($contextData)) {
+            $contextData = json_decode($contextData, true) ?? [];
+        }
         
-        $allFiles = array_merge($contextData, $artifactData);
+        $artifactData = $material->artifact_data ?? [];
+        if (is_string($artifactData)) {
+            $artifactData = json_decode($artifactData, true) ?? [];
+        }
+        
+        $allFiles = array_merge((array)$contextData, (array)$artifactData);
         foreach ($allFiles as $item) {
             if (isset($item['type']) && $item['type'] === 'file' && !empty($item['path'])) {
                 if (Storage::disk('cloudinary')->exists($item['path'])) {

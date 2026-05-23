@@ -23,10 +23,14 @@ class StudyMaterial extends Model
         'status',
         'embed_url',
         'rich_text',
+        'context_data',
+        'artifact_data',
     ];
 
     protected $casts = [
         'metadata' => 'array',
+        'context_data' => 'array',
+        'artifact_data' => 'array',
         'grade' => 'float',
     ];
 
