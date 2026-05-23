@@ -215,7 +215,7 @@ const getTypeColor = (type) => {
         <template v-if="!activeCourseReactive">
             <!-- Header -->
             <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 px-6 py-5 sticky top-0 z-40 shadow-sm">
-                <div class="max-w-7xl mx-auto flex items-center justify-between">
+                <div class="max-w-[1600px] w-full mx-auto flex items-center justify-between">
                     <div class="flex items-center gap-4">
                         <Link :href="route('home')" class="p-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-full transition-colors text-slate-600 dark:text-slate-300" :title="$t('study_back', 'Kembali')">
                             <ArrowLeft class="h-5 w-5" />
@@ -241,7 +241,7 @@ const getTypeColor = (type) => {
                 </div>
             </header>
 
-            <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-4 py-8">
                 <!-- Neural Portfolio Banner -->
                 <Link :href="route('study.portfolio')" class="group relative flex items-center justify-between p-6 bg-gradient-to-r from-slate-900 to-slate-800 overflow-hidden rounded-[2rem] border border-slate-800 transition-all hover:border-indigo-500/50 shadow-2xl mb-10 hover:-translate-y-1">
                     <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
@@ -380,7 +380,7 @@ const getTypeColor = (type) => {
                 <div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
                 <div class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-2xl"></div>
                 
-                <div class="max-w-7xl mx-auto relative z-10">
+                <div class="max-w-[1600px] w-full mx-auto relative z-10">
                     <button @click="closeCourse" class="mb-6 flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-xl text-white text-xs font-bold transition-colors w-max">
                         <ArrowLeft class="h-4 w-4" /> {{ $t('study_back_to_dashboard', 'Kembali ke Daftar') }}
                     </button>
@@ -404,7 +404,7 @@ const getTypeColor = (type) => {
             </header>
 
             <!-- Course Content Split -->
-            <div class="max-w-7xl mx-auto px-4 -mt-8 relative z-20 flex flex-col lg:flex-row gap-6 sm:gap-8 items-start">
+            <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-4 -mt-8 relative z-20 flex flex-col lg:flex-row gap-6 sm:gap-8 items-start">
                 
                 <!-- Left Sidebar: Meetings Navigation -->
                 <div class="w-full lg:w-1/4 shrink-0">
