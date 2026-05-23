@@ -29,6 +29,21 @@ class StudyController extends Controller
         ]);
     }
 
+    public function academicSetup(Request $request)
+    {
+        $request->validate([
+            'education_level' => 'required|string|in:kuliah,sma,smp,sd,lainnya'
+        ]);
+
+        $user = Auth::user();
+        $settings = $user->settings ?? [];
+        $settings['education_level'] = $request->education_level;
+        $user->settings = $settings;
+        $user->save();
+
+        return redirect()->back();
+    }
+
     public function academicIndex()
     {
         $user = Auth::user();
@@ -154,6 +169,7 @@ class StudyController extends Controller
             'file' => 'nullable|file|max:5120',
             'link_url' => 'nullable|url|max:2083',
             'meeting_tag' => 'nullable|string|max:255',
+            'type' => 'nullable|string|max:50',
         ]);
 
         // Ensure user owns the record
@@ -174,6 +190,7 @@ class StudyController extends Controller
             'file_path' => $filePath,
             'link_url' => $request->link_url,
             'meeting_tag' => $request->meeting_tag,
+            'type' => $request->type ?? 'document',
         ]);
 
         return redirect()->back();

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { Head, useForm, router, Link } from '@inertiajs/vue3';
-import { Trash2, BookOpen, PlusCircle, ArrowLeft, FileText, ExternalLink, X, Upload, ChevronDown, ChevronUp } from 'lucide-vue-next';
+import { Trash2, BookOpen, PlusCircle, ArrowLeft, FileText, ExternalLink, X, Upload, ChevronDown, ChevronUp, GraduationCap, School, Book } from 'lucide-vue-next';
 
 const props = defineProps({
     academicRecords: { type: Array, default: () => [] },
@@ -9,8 +9,76 @@ const props = defineProps({
     user: { type: Object, required: true }
 });
 
+// --- Dynamic Terminology & Setup Wizard ---
+const userSettings = computed(() => props.user.settings || {});
+const eduLevel = computed(() => userSettings.value.education_level);
+const showSetupModal = computed(() => !eduLevel.value);
+
+const setupForm = useForm({
+    education_level: ''
+});
+
+const submitSetup = (level) => {
+    setupForm.education_level = level;
+    setupForm.post(route('study.academic.setup'), { preserveScroll: true });
+};
+
+const termMap = {
+    kuliah: {
+        semester: 'Semester',
+        course: 'Mata Kuliah',
+        sks: 'SKS',
+        grade: 'Nilai Grade',
+        meeting: 'Pertemuan',
+        ipk: 'IPK',
+        ips: 'IPS',
+        total_sks: 'Total SKS'
+    },
+    sma: {
+        semester: 'Kelas',
+        course: 'Mata Pelajaran',
+        sks: 'Jam Pelajaran (JP)',
+        grade: 'Skor Akhir',
+        meeting: 'Bab / Topik',
+        ipk: 'Rata-rata Total',
+        ips: 'Rata-rata Kelas',
+        total_sks: 'Total JP'
+    },
+    smp: {
+        semester: 'Kelas',
+        course: 'Mata Pelajaran',
+        sks: 'Jam Pelajaran (JP)',
+        grade: 'Skor Akhir',
+        meeting: 'Bab / Topik',
+        ipk: 'Rata-rata Total',
+        ips: 'Rata-rata Kelas',
+        total_sks: 'Total JP'
+    },
+    sd: {
+        semester: 'Kelas',
+        course: 'Pelajaran',
+        sks: 'Bobot',
+        grade: 'Nilai',
+        meeting: 'Tema',
+        ipk: 'Rata-rata Total',
+        ips: 'Rata-rata Kelas',
+        total_sks: 'Total Bobot'
+    },
+    lainnya: {
+        semester: 'Level',
+        course: 'Subjek',
+        sks: 'Bobot',
+        grade: 'Skor',
+        meeting: 'Bagian',
+        ipk: 'Total Score',
+        ips: 'Level Score',
+        total_sks: 'Total Bobot'
+    }
+};
+
+const terms = computed(() => termMap[eduLevel.value || 'kuliah']);
+
 // --- Semester Selection Logic ---
-// We extract available semesters from the stats, or default to [1,2,3,4,5,6,7,8]
 const availableSemesters = computed(() => {
     let sems = props.academicStats.semesters.map(s => s.semester);
     for(let i=1; i<=8; i++) {
@@ -19,15 +87,12 @@ const availableSemesters = computed(() => {
     return sems.sort((a,b) => a - b);
 });
 
-// State for globally selected semester
 const selectedSemester = ref(props.academicStats.current_semester || 1);
 
-// Computed list of courses for the selected semester
 const filteredCourses = computed(() => {
     return props.academicRecords.filter(r => r.semester === selectedSemester.value);
 });
 
-// Get stats for the selected semester
 const currentSemesterStats = computed(() => {
     return props.academicStats.semesters.find(s => s.semester === selectedSemester.value) || { ips: 0, total_sks: 0 };
 });
@@ -40,7 +105,6 @@ const form = useForm({
     grade: ''
 });
 
-// Sync form semester when selectedSemester changes
 const changeSemester = (sem) => {
     selectedSemester.value = sem;
     form.semester = sem;
@@ -58,7 +122,7 @@ const submitCourse = () => {
 };
 
 const deleteRecord = (id) => {
-    if (confirm('Yakin ingin menghapus mata kuliah ini? Semua arsip di dalamnya akan ikut terhapus.')) {
+    if (confirm(`Yakin ingin menghapus ${terms.value.course.toLowerCase()} ini? Semua arsip di dalamnya akan ikut terhapus.`)) {
         router.delete(route('study.academic.destroy', id), { preserveScroll: true });
     }
 };
@@ -66,7 +130,7 @@ const deleteRecord = (id) => {
 // --- Drawer & Pertemuan Logic ---
 const selectedCourse = ref(null);
 const isDrawerOpen = ref(false);
-const expandedMeeting = ref(null); // Track which meeting accordion is open
+const expandedMeeting = ref(null); 
 
 const openDrawer = (course) => {
     selectedCourse.value = course;
@@ -93,7 +157,7 @@ const archiveForm = useForm({
 const submitArchive = (meetingNum) => {
     if (!selectedCourse.value) return;
     archiveForm.academic_record_id = selectedCourse.value.id;
-    archiveForm.meeting_tag = 'Pertemuan ' + meetingNum;
+    archiveForm.meeting_tag = terms.value.meeting + ' ' + meetingNum;
     
     archiveForm.post(route('study.academic.archive.store'), {
         preserveScroll: true,
@@ -109,12 +173,11 @@ const deleteArchive = (id) => {
     }
 };
 
-// Array of 14 meetings
 const meetings = Array.from({length: 14}, (_, i) => i + 1);
 
 const getArchivesForMeeting = (course, meetingNum) => {
     if (!course || !course.archives) return [];
-    return course.archives.filter(a => a.meeting_tag === ('Pertemuan ' + meetingNum));
+    return course.archives.filter(a => a.meeting_tag === (terms.value.meeting + ' ' + meetingNum));
 };
 
 const getTypeColor = (type) => {
@@ -129,6 +192,52 @@ const getTypeColor = (type) => {
     <Head title="Academic Binder" />
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors">
+        
+        <!-- SETUP WIZARD MODAL -->
+        <div v-if="showSetupModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[100] flex items-center justify-center p-4">
+            <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-[2rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300">
+                <div class="h-20 w-20 mx-auto mb-6 bg-indigo-500/20 rounded-[1.5rem] flex items-center justify-center">
+                    <GraduationCap class="h-10 w-10 text-indigo-500" />
+                </div>
+                <h2 class="text-2xl font-black text-center text-slate-800 dark:text-white mb-2">Pilih Jenjang Pendidikan</h2>
+                <p class="text-sm text-center text-slate-500 mb-8 max-w-sm mx-auto">Istilah (Semester, Matkul, SKS) akan disesuaikan otomatis agar Anda lebih nyaman menggunakan fitur ini.</p>
+                
+                <div class="space-y-3">
+                    <button @click="submitSetup('kuliah')" class="w-full p-4 flex items-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
+                        <GraduationCap class="h-6 w-6 text-slate-400 group-hover:text-indigo-500" />
+                        <div class="text-left flex-1">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200">Universitas / Perguruan Tinggi</h4>
+                            <p class="text-[10px] text-slate-500">Semester, SKS, Mata Kuliah, IPK</p>
+                        </div>
+                    </button>
+                    <button @click="submitSetup('sma')" class="w-full p-4 flex items-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
+                        <School class="h-6 w-6 text-slate-400 group-hover:text-emerald-500" />
+                        <div class="text-left flex-1">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200">SMA / SMK / Sederajat</h4>
+                            <p class="text-[10px] text-slate-500">Kelas, JP, Mata Pelajaran, Rata-rata</p>
+                        </div>
+                    </button>
+                    <button @click="submitSetup('smp')" class="w-full p-4 flex items-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
+                        <School class="h-6 w-6 text-slate-400 group-hover:text-blue-500" />
+                        <div class="text-left flex-1">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200">SMP / Sederajat</h4>
+                            <p class="text-[10px] text-slate-500">Kelas, JP, Mata Pelajaran, Rata-rata</p>
+                        </div>
+                    </button>
+                    <button @click="submitSetup('sd')" class="w-full p-4 flex items-center gap-4 bg-slate-50 dark:bg-slate-950 hover:bg-amber-50 dark:hover:bg-amber-900/30 border border-slate-200 dark:border-slate-800 rounded-2xl group transition-colors">
+                        <Book class="h-6 w-6 text-slate-400 group-hover:text-amber-500" />
+                        <div class="text-left flex-1">
+                            <h4 class="font-bold text-slate-800 dark:text-slate-200">SD / Sederajat</h4>
+                            <p class="text-[10px] text-slate-500">Kelas, Bobot, Pelajaran, Rata-rata</p>
+                        </div>
+                    </button>
+                    <button @click="submitSetup('lainnya')" class="w-full p-4 text-center bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 rounded-2xl text-xs font-bold text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+                        Lainnya / Sistem Kustom Internasional
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Header -->
         <header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-4 flex items-center justify-between sticky top-0 z-40">
             <div class="flex items-center gap-4">
@@ -141,15 +250,15 @@ const getTypeColor = (type) => {
                 </div>
             </div>
             
-            <!-- Global Stats (IPK & SKS) -->
+            <!-- Global Stats -->
             <div class="flex items-center gap-4 bg-slate-100 dark:bg-slate-950 px-4 py-2 rounded-2xl border border-slate-200 dark:border-slate-800">
                 <div class="text-right">
-                    <p class="text-[9px] uppercase tracking-widest font-bold text-slate-400">Total SKS</p>
+                    <p class="text-[9px] uppercase tracking-widest font-bold text-slate-400">{{ terms.total_sks }}</p>
                     <p class="text-sm font-black text-slate-800 dark:text-slate-200">{{ props.academicStats.total_sks }}</p>
                 </div>
                 <div class="w-px h-8 bg-slate-200 dark:bg-slate-800"></div>
                 <div class="text-right">
-                    <p class="text-[9px] uppercase tracking-widest font-bold text-slate-400">IPK</p>
+                    <p class="text-[9px] uppercase tracking-widest font-bold text-slate-400">{{ terms.ipk }}</p>
                     <p class="text-sm font-black text-indigo-600 dark:text-indigo-400">{{ props.academicStats.ipk.toFixed(2) }}</p>
                 </div>
             </div>
@@ -164,7 +273,7 @@ const getTypeColor = (type) => {
                     :class="selectedSemester === sem 
                         ? 'bg-emerald-500 text-white border-emerald-400 shadow-md transform scale-105' 
                         : 'bg-transparent text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-transparent'">
-                    Semester {{ sem }}
+                    {{ terms.semester }} {{ sem }}
                 </button>
             </div>
 
@@ -176,24 +285,24 @@ const getTypeColor = (type) => {
                     <div class="bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
                         <h3 class="text-lg font-black text-slate-800 dark:text-slate-100 mb-4 flex items-center gap-2">
                             <PlusCircle class="h-5 w-5 text-indigo-500" />
-                            Tambah di Sem {{ selectedSemester }}
+                            Tambah di {{ terms.semester }} {{ selectedSemester }}
                         </h3>
                         
                         <form @submit.prevent="submitCourse" class="space-y-4">
                             <div>
-                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Nama Mata Kuliah *</label>
+                                <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Nama {{ terms.course }} *</label>
                                 <input v-model="form.course_name" type="text" required
                                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 transition" />
                             </div>
                             
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">SKS *</label>
+                                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">{{ terms.sks }} *</label>
                                     <input v-model="form.sks" type="number" min="1" max="10" required
                                         class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 transition" />
                                 </div>
                                 <div>
-                                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">Nilai (0-100) *</label>
+                                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-1">{{ terms.grade }} *</label>
                                     <input v-model="form.grade" type="number" step="0.01" min="0" max="100" required
                                         class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 transition" />
                                 </div>
@@ -201,7 +310,7 @@ const getTypeColor = (type) => {
 
                             <button type="submit" :disabled="form.processing"
                                 class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-2xl transition-colors mt-2">
-                                Simpan Matkul
+                                Simpan {{ terms.course }}
                             </button>
                         </form>
                     </div>
@@ -213,18 +322,18 @@ const getTypeColor = (type) => {
                         <div class="flex items-center justify-between mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
                             <h3 class="text-lg font-black text-slate-800 dark:text-slate-100 flex items-center gap-2">
                                 <BookOpen class="h-5 w-5 text-emerald-500" />
-                                Daftar Mata Kuliah
+                                Daftar {{ terms.course }}
                             </h3>
                             <div class="text-xs font-bold text-slate-500 flex gap-4">
-                                <span>IPS Sem {{ selectedSemester }}: <span class="text-indigo-600 dark:text-indigo-400">{{ currentSemesterStats.ips.toFixed(2) }}</span></span>
-                                <span>Total SKS: <span class="text-emerald-600 dark:text-emerald-400">{{ currentSemesterStats.total_sks }}</span></span>
+                                <span>{{ terms.ips }} {{ terms.semester }} {{ selectedSemester }}: <span class="text-indigo-600 dark:text-indigo-400">{{ currentSemesterStats.ips.toFixed(2) }}</span></span>
+                                <span>{{ terms.total_sks }}: <span class="text-emerald-600 dark:text-emerald-400">{{ currentSemesterStats.total_sks }}</span></span>
                             </div>
                         </div>
                         
                         <div v-if="filteredCourses.length === 0" class="py-12 text-center text-slate-500 flex flex-col items-center justify-center h-64">
                             <div class="text-5xl mb-4 opacity-50">📂</div>
-                            <p class="text-base font-semibold">Semester {{ selectedSemester }} Masih Kosong</p>
-                            <p class="text-xs mt-2 max-w-xs">Silakan tambahkan mata kuliah di form sebelah kiri untuk mulai menyimpan arsip.</p>
+                            <p class="text-base font-semibold">{{ terms.semester }} {{ selectedSemester }} Masih Kosong</p>
+                            <p class="text-xs mt-2 max-w-xs">Silakan tambahkan {{ terms.course.toLowerCase() }} di form sebelah kiri untuk mulai menyimpan arsip.</p>
                         </div>
 
                         <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -243,8 +352,8 @@ const getTypeColor = (type) => {
                                 
                                 <div class="relative z-10 flex justify-between items-end">
                                     <div class="flex gap-4 text-xs font-bold text-slate-400">
-                                        <span>SKS: {{ record.sks }}</span>
-                                        <span class="text-emerald-500">Grade: {{ record.grade }}</span>
+                                        <span>{{ terms.sks }}: {{ record.sks }}</span>
+                                        <span class="text-emerald-500">{{ terms.grade }}: {{ record.grade }}</span>
                                     </div>
                                     <div class="text-[10px] font-black text-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 px-3 py-1.5 rounded-lg border border-indigo-100 dark:border-indigo-800/50 flex items-center gap-1 group-hover:bg-indigo-500 group-hover:text-white transition-colors">
                                         <FileText class="h-3 w-3" /> {{ record.archives?.length || 0 }} Arsip
@@ -268,7 +377,7 @@ const getTypeColor = (type) => {
                 <!-- Drawer Header -->
                 <div class="px-6 py-5 border-b border-slate-200 dark:border-slate-800 flex justify-between items-start bg-white dark:bg-slate-900 shadow-sm relative z-10">
                     <div>
-                        <p class="text-[10px] uppercase tracking-widest font-black text-emerald-500 mb-1">Mata Kuliah Semester {{ selectedCourse.semester }}</p>
+                        <p class="text-[10px] uppercase tracking-widest font-black text-emerald-500 mb-1">{{ terms.course }} {{ terms.semester }} {{ selectedCourse.semester }}</p>
                         <h3 class="text-xl font-black text-slate-800 dark:text-white leading-tight pr-4">{{ selectedCourse.course_name }}</h3>
                         <p class="text-xs text-slate-400 mt-1 font-semibold">Total {{ selectedCourse.archives?.length || 0 }} arsip tersimpan</p>
                     </div>
@@ -287,10 +396,9 @@ const getTypeColor = (type) => {
                                 <div class="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-black flex items-center justify-center text-xs">
                                     {{ meetingNum }}
                                 </div>
-                                <h4 class="text-sm font-black text-slate-800 dark:text-slate-200">Pertemuan {{ meetingNum }}</h4>
+                                <h4 class="text-sm font-black text-slate-800 dark:text-slate-200">{{ terms.meeting }} {{ meetingNum }}</h4>
                             </div>
                             <div class="flex items-center gap-3">
-                                <!-- Badge for items count -->
                                 <span v-if="getArchivesForMeeting(selectedCourse, meetingNum).length > 0" class="text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-2 py-1 rounded-md">
                                     {{ getArchivesForMeeting(selectedCourse, meetingNum).length }} item
                                 </span>
@@ -302,7 +410,6 @@ const getTypeColor = (type) => {
                         <!-- Accordion Body -->
                         <div v-show="expandedMeeting === meetingNum" class="px-5 pb-5 pt-2 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50">
                             
-                            <!-- List of Archives in this Meeting -->
                             <div class="space-y-2 mb-4 mt-2">
                                 <div v-for="arc in getArchivesForMeeting(selectedCourse, meetingNum)" :key="arc.id" 
                                     class="p-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl flex flex-col gap-2">
@@ -320,7 +427,7 @@ const getTypeColor = (type) => {
                                     
                                     <div class="flex items-center gap-1 justify-end">
                                         <a v-if="arc.file_path" :href="'/storage/' + arc.file_path" target="_blank" class="flex items-center gap-1 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-emerald-500 bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 rounded-lg transition-colors">
-                                            <FileText class="h-3 w-3" /> Lihat PDF
+                                            <FileText class="h-3 w-3" /> Buka PDF
                                         </a>
                                         <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="flex items-center gap-1 px-2 py-1 text-[10px] font-bold text-slate-500 hover:text-blue-500 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 rounded-lg transition-colors">
                                             <ExternalLink class="h-3 w-3" /> Buka Link
@@ -331,14 +438,14 @@ const getTypeColor = (type) => {
                                     </div>
                                 </div>
                                 <div v-if="getArchivesForMeeting(selectedCourse, meetingNum).length === 0" class="text-center py-4">
-                                    <p class="text-[10px] font-bold text-slate-400">Belum ada file di Pertemuan ini.</p>
+                                    <p class="text-[10px] font-bold text-slate-400">Belum ada file di {{ terms.meeting }} ini.</p>
                                 </div>
                             </div>
 
-                            <!-- Upload Form for this meeting -->
+                            <!-- Upload Form -->
                             <div class="bg-indigo-50/50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-500/20 rounded-xl p-3">
                                 <h5 class="text-[10px] font-bold text-indigo-600 dark:text-indigo-400 mb-2 uppercase tracking-wider flex items-center gap-1">
-                                    <Upload class="h-3 w-3" /> Tambah File ke Pert. {{ meetingNum }}
+                                    <Upload class="h-3 w-3" /> Tambah File
                                 </h5>
                                 <form @submit.prevent="submitArchive(meetingNum)" class="space-y-2">
                                     <div class="flex gap-2">

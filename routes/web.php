@@ -996,6 +996,7 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
             Route::post("/settings", [StudyController::class, "updateSettings"])->name("settings");
 
             // Academic Binder actions
+            Route::post('/academic/setup', [StudyController::class, 'academicSetup'])->name('academic.setup');
             Route::post('/academic/records', [StudyController::class, 'storeAcademicRecord'])->name('academic.store');
             Route::delete('/academic/records/{id}', [StudyController::class, 'destroyAcademicRecord'])->name('academic.destroy');
             Route::post('/academic/archives', [StudyController::class, 'storeAcademicArchive'])->name('academic.archive.store');
