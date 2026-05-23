@@ -91,29 +91,43 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
 
         <div class="relative mx-auto w-full max-w-[1600px] px-4 py-6 md:px-6 md:py-8 lg:px-8 z-10">
 
-            <!-- PAGE HEADER -->
-            <header class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-100 dark:border-indigo-950 bg-indigo-50/50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 font-bold text-[10px] tracking-[0.2em] uppercase shadow-sm mb-3">
-                        <span class="flex h-1.5 w-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-pulse"></span>
-                        {{ $t('study_ipow_protocol', 'IPoW Protocol') }}
-                    </div>
-                    <h1 class="text-3xl md:text-4xl font-[900] tracking-[-0.02em] text-slate-900 dark:text-white leading-[1.1] flex items-center gap-3">
-                        <GraduationCap class="h-8 w-8 text-indigo-600 dark:text-indigo-400 shrink-0" />
-                        {{ $t('study_title', 'Interactive Study Console') }}
-                    </h1>
-                    <p class="mt-2 text-slate-500 dark:text-slate-400 max-w-xl text-sm font-medium">
-                        {{ $t('study_subtitle', 'Upload syllabus context and course artifacts. Map your skills and verify career archetype fits.') }}
-                    </p>
-                </div>
+            <!-- PAGE HEADER HERO CARD -->
+            <header class="mb-8 relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-indigo-900 via-slate-900 to-purple-950 border border-indigo-500/20 shadow-[0_20px_60px_-10px_rgba(99,102,241,0.2)] p-8 md:p-10">
+                <!-- Abstract glowing orbs inside header -->
+                <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/30 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500/30 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <!-- Grid pattern overlay -->
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSA0MCAwIEwgMCAwIDAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjA1KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50"></div>
 
-                <button 
-                    @click="refreshData"
-                    class="self-start sm:self-auto shrink-0 p-3 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-600 dark:text-slate-300 transition shadow-sm flex items-center gap-2 text-xs font-bold"
-                >
-                    <RefreshCw class="h-4 w-4" :class="{'animate-spin': isRefreshing || hasPendingFiles}" />
-                    <span class="hidden sm:inline">{{ $t('study_refresh', 'Refresh') }}</span>
-                </button>
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div class="flex-1">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-400/30 bg-indigo-500/10 backdrop-blur-md text-indigo-300 font-extrabold text-[10px] tracking-[0.2em] uppercase shadow-sm mb-4">
+                            <span class="flex h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Neural Engine Active
+                        </div>
+                        <h1 class="text-3xl md:text-4xl font-[900] tracking-tight text-white leading-tight flex items-center gap-3">
+                            {{ $t('study_title', 'Interactive Study Console') }}
+                            <div class="hidden sm:flex h-8 w-8 rounded-full bg-indigo-500/20 items-center justify-center border border-indigo-400/30">
+                                <GraduationCap class="h-4 w-4 text-indigo-300" />
+                            </div>
+                        </h1>
+                        <p class="mt-3 text-indigo-100/70 max-w-xl text-sm font-medium leading-relaxed">
+                            {{ $t('study_subtitle', 'Upload syllabus context and course artifacts. Map your skills and verify career archetype fits.') }}
+                        </p>
+                    </div>
+
+                    <div class="shrink-0 flex items-center">
+                        <button 
+                            @click="refreshData"
+                            class="group relative overflow-hidden px-5 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 rounded-2xl text-white transition-all shadow-lg flex items-center gap-2 text-xs font-bold"
+                        >
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-white/10 to-indigo-500/0 -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out"></div>
+                            <RefreshCw class="h-4 w-4 text-indigo-300 group-hover:text-white transition-colors" :class="{'animate-spin text-white': isRefreshing || hasPendingFiles}" />
+                            <span>{{ $t('study_refresh', 'Sync Protocol') }}</span>
+                        </button>
+                    </div>
+                </div>
             </header>
 
             <!-- TAB BAR -->
