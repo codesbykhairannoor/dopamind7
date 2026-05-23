@@ -3,10 +3,11 @@ import { ref, computed } from 'vue';
 import { trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import { Head, useForm, router, Link } from '@inertiajs/vue3';
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
 import { 
     Trash2, BookOpen, Plus, ArrowLeft, FileText, 
     ExternalLink, X, Upload, GraduationCap, 
-    School, Book, Sparkles, ChevronRight, Link2, PlusCircle, FolderOpen, Calendar
+    School, Book, Sparkles, ChevronRight, Link2, PlusCircle, FolderOpen, Calendar, ChevronDown, MoreVertical, Edit3
 } from 'lucide-vue-next';
 
 const props = defineProps({
@@ -90,14 +91,79 @@ const availableSemesters = computed(() => {
 
 const selectedSemester = ref(userSettings.value.current_semester || 1);
 
-const handleSemesterChange = (e) => {
-    const val = e.target.value;
-    if (val === 'tambah') {
-        maxSemesterAdded.value = availableSemesters.value.length + 1;
-        selectedSemester.value = maxSemesterAdded.value;
-    } else {
-        selectedSemester.value = parseInt(val);
-    }
+const promptNewSemester = () => {
+    Swal.fire({
+        title: 'Tambah Semester Baru',
+        text: 'Masukkan angka semester yang ingin ditambahkan (Misal: 7)',
+        input: 'number',
+        inputAttributes: { min: 1, max: 100 },
+        showCancelButton: true,
+        confirmButtonText: 'Lanjut',
+        customClass: {
+            confirmButton: 'bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
+            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
+            input: 'w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none mt-4',
+            popup: 'rounded-[2.5rem] p-8'
+        },
+        buttonsStyling: false
+    }).then((res) => {
+        if (res.isConfirmed && res.value) {
+            maxSemesterAdded.value = Math.max(maxSemesterAdded.value, parseInt(res.value));
+            selectedSemester.value = parseInt(res.value);
+        }
+    });
+};
+
+const deleteSemester = () => {
+    Swal.fire({
+        title: 'Hapus Semester ' + selectedSemester.value + '?',
+        text: 'Semua mata kuliah dan file di dalamnya akan terhapus permanen!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, Hapus',
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
+            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
+            popup: 'rounded-[2.5rem] p-8'
+        },
+        buttonsStyling: false
+    }).then((res) => {
+        if (res.isConfirmed) {
+            router.delete(route('study.academic.semester.destroy', selectedSemester.value), {
+                preserveScroll: true
+            });
+        }
+    });
+};
+
+const isEditCourseModalOpen = ref(false);
+const editCourseForm = useForm({
+    id: null,
+    course_name: '',
+    semester: 1,
+    sks: 1,
+    grade: null,
+});
+
+const openEditCourse = (course) => {
+    editCourseForm.id = course.id;
+    editCourseForm.course_name = course.course_name;
+    editCourseForm.semester = course.semester;
+    editCourseForm.sks = course.sks;
+    editCourseForm.grade = course.grade;
+    isEditCourseModalOpen.value = true;
+};
+
+const submitEditCourse = () => {
+    if (!editCourseForm.course_name.trim()) return fireToast('error', `Nama ${terms.value.course} tidak boleh kosong!`);
+    
+    editCourseForm.put(route('study.academic.update', editCourseForm.id), {
+        preserveScroll: true,
+        onSuccess: () => {
+            isEditCourseModalOpen.value = false;
+        }
+    });
 };
 
 const filteredCourses = computed(() => {
@@ -332,14 +398,33 @@ const getTypeColor = (type) => {
                     
                     <div class="flex flex-wrap sm:flex-nowrap items-center gap-3">
                         <!-- Dropdown Semester Dinamis -->
-                        <div class="relative w-full sm:w-auto min-w-[180px]">
-                            <select :value="selectedSemester" @change="handleSemesterChange" class="w-full pl-10 pr-10 py-3 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-bold text-indigo-600 dark:text-indigo-400 appearance-none outline-none cursor-pointer transition-colors shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
-                                <option v-for="sem in availableSemesters" :key="sem" :value="sem">{{ terms.semester }} {{ sem }}</option>
-                                <option disabled>──────────</option>
-                                <option value="tambah">+ Tambah {{ terms.semester }} Baru</option>
-                            </select>
-                            <Calendar class="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-indigo-500 pointer-events-none" />
-                            <ChevronDown class="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                        <div class="relative w-full sm:w-auto min-w-[220px] z-50">
+                            <Menu as="div" class="relative inline-block text-left w-full">
+                                <MenuButton class="w-full flex items-center justify-between bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 text-slate-800 dark:text-slate-100 font-black py-3.5 px-6 rounded-2xl shadow-sm hover:border-indigo-300 transition-colors outline-none text-base">
+                                    <span>{{ terms.semester }} {{ selectedSemester }}</span>
+                                    <ChevronDown class="h-5 w-5 text-slate-400" />
+                                </MenuButton>
+                                <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                    <MenuItems class="absolute right-0 mt-2 w-full origin-top-right bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl outline-none overflow-hidden z-50 max-h-60 overflow-y-auto custom-scrollbar">
+                                        <MenuItem v-for="sem in availableSemesters" :key="sem" v-slot="{ active }">
+                                            <button @click="selectedSemester = sem" :class="[active ? 'bg-indigo-50 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400' : 'text-slate-700 dark:text-slate-300', 'group flex w-full items-center px-6 py-4 text-sm font-bold transition-colors']">
+                                                {{ terms.semester }} {{ sem }}
+                                            </button>
+                                        </MenuItem>
+                                        <div class="border-t border-slate-100 dark:border-slate-800 my-1"></div>
+                                        <MenuItem v-slot="{ active }">
+                                            <button @click="promptNewSemester" :class="[active ? 'bg-indigo-50 dark:bg-slate-800' : '', 'group flex w-full items-center px-6 py-4 text-sm font-bold text-indigo-600 dark:text-indigo-400 transition-colors']">
+                                                <Plus class="h-4 w-4 mr-2" /> Custom {{ terms.semester }}
+                                            </button>
+                                        </MenuItem>
+                                        <MenuItem v-slot="{ active }">
+                                            <button @click="deleteSemester" :class="[active ? 'bg-rose-50 dark:bg-slate-800' : '', 'group flex w-full items-center px-6 py-4 text-sm font-bold text-rose-500 transition-colors']">
+                                                <Trash2 class="h-4 w-4 mr-2" /> Hapus {{ terms.semester }} Ini
+                                            </button>
+                                        </MenuItem>
+                                    </MenuItems>
+                                </transition>
+                            </Menu>
                         </div>
 
                         <!-- Button Tambah Matkul -->
@@ -378,11 +463,31 @@ const getTypeColor = (type) => {
                         
                         <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-indigo-50 dark:bg-indigo-900/20 group-hover:scale-150 transition-transform duration-700 ease-out z-0"></div>
 
-                        <div class="relative z-10 flex justify-between items-start mb-6">
+                        <div class="relative z-20 flex justify-between items-start mb-6">
                             <h5 class="text-lg font-black text-slate-800 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors pr-8 leading-tight">{{ record.course_name }}</h5>
-                            <button @click.stop="deleteRecord(record.id)" class="text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-xl transition-colors p-2 absolute right-0 top-0 opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0">
-                                <Trash2 class="h-4 w-4" />
-                            </button>
+                            
+                            <!-- Action Menu -->
+                            <div class="absolute right-0 top-0 translate-x-2 group-hover:translate-x-0 opacity-0 group-hover:opacity-100 transition-all duration-300" @click.stop>
+                                <Menu as="div" class="relative inline-block text-left">
+                                    <MenuButton class="p-2 text-slate-400 hover:text-indigo-600 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors outline-none">
+                                        <MoreVertical class="h-5 w-5" />
+                                    </MenuButton>
+                                    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
+                                        <MenuItems class="absolute right-0 mt-2 w-48 origin-top-right bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-xl outline-none overflow-hidden z-50">
+                                            <MenuItem v-slot="{ active }">
+                                                <button @click="openEditCourse(record)" :class="[active ? 'bg-slate-50 dark:bg-slate-800' : '', 'flex w-full items-center gap-3 px-4 py-3 text-sm font-bold text-slate-700 dark:text-slate-300']">
+                                                    <Edit3 class="h-4 w-4" /> Edit
+                                                </button>
+                                            </MenuItem>
+                                            <MenuItem v-slot="{ active }">
+                                                <button @click="deleteRecord(record.id)" :class="[active ? 'bg-rose-50 dark:bg-slate-800' : '', 'flex w-full items-center gap-3 px-4 py-3 text-sm font-bold text-rose-500']">
+                                                    <Trash2 class="h-4 w-4" /> Hapus
+                                                </button>
+                                            </MenuItem>
+                                        </MenuItems>
+                                    </transition>
+                                </Menu>
+                            </div>
                         </div>
                         
                         <div class="relative z-10 flex justify-between items-end mt-auto">
