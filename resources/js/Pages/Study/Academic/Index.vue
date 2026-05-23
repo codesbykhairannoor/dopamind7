@@ -203,7 +203,10 @@ const getTypeColor = (type) => {
         
         <!-- SETUP WIZARD MODAL -->
         <div v-if="showSetupModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[100] flex items-center justify-center p-4">
-            <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-[2rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300">
+            <div class="bg-white dark:bg-slate-900 w-full max-w-lg rounded-[2rem] shadow-2xl p-8 border border-slate-200 dark:border-slate-800 transform animate-in zoom-in-95 duration-300 relative">
+                <button @click="submitSetup('kuliah')" class="absolute top-6 right-6 p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors" :title="$t('study_skip', 'Lewati')">
+                    <X class="h-5 w-5" />
+                </button>
                 <div class="h-20 w-20 mx-auto mb-6 bg-indigo-500/20 rounded-[1.5rem] flex items-center justify-center">
                     <GraduationCap class="h-10 w-10 text-indigo-500" />
                 </div>
