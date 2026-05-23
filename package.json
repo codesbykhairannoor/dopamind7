@@ -23,6 +23,7 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
+        "@headlessui/vue": "^1.7.23",
         "@inertiajs/core": "^3.0.3",
         "@paypal/paypal-js": "^9.6.0",
         "@tiptap/extension-font-family": "^3.20.0",
