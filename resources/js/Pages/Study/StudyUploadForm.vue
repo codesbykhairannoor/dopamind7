@@ -194,15 +194,15 @@ const globalHasPending = computed(() => {
     <div v-if="isLimitReached" class="mb-6 p-4 rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 flex items-start gap-3">
         <AlertTriangle class="h-5 w-5 text-amber-500 shrink-0 mt-0.5" />
         <div>
-            <h4 class="text-xs font-extrabold text-amber-800 dark:text-amber-400 uppercase tracking-wider">Upload Limit Reached (Max 6 Cards)</h4>
-            <p class="text-[11px] text-amber-600/80 dark:text-amber-500 mt-1 font-semibold">Delete an existing card to add more materials.</p>
+            <h4 class="text-xs font-extrabold text-amber-800 dark:text-amber-400 uppercase tracking-wider">{{ $t('study_upload_limit_title', 'Upload Limit Reached (Max 6 Cards)') }}</h4>
+            <p class="text-[11px] text-amber-600/80 dark:text-amber-500 mt-1 font-semibold">{{ $t('study_upload_limit_desc', 'Delete an existing card to add more materials.') }}</p>
         </div>
     </div>
 
     <!-- Slots left indicator -->
     <div v-else class="mb-5 flex items-center gap-2 text-xs font-bold text-slate-400 dark:text-slate-500">
         <Files class="h-3.5 w-3.5" />
-        <span>{{ slotsLeft }} card slot{{ slotsLeft !== 1 ? 's' : '' }} remaining</span>
+        <span>{{ slotsLeft }} {{ $t('study_card_slots_remaining', 'card slot(s) remaining') }}</span>
         <div class="flex gap-1 ml-1">
             <span v-for="i in 6" :key="i"
                 class="h-1.5 w-5 rounded-full transition"
@@ -218,8 +218,8 @@ const globalHasPending = computed(() => {
                 <Info class="h-5 w-5" />
             </div>
             <div>
-                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white leading-tight">Course Information</h3>
-                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">Set the basic details for the materials you are uploading below.</p>
+                <h3 class="text-lg font-extrabold text-slate-900 dark:text-white leading-tight">{{ $t('study_course_info', 'Course Information') }}</h3>
+                <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">{{ $t('study_course_info_desc', 'Set the basic details for the materials you are uploading below.') }}</p>
             </div>
         </div>
 
@@ -307,11 +307,11 @@ const globalHasPending = computed(() => {
                         <BookOpen class="h-4 w-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                        <h2 class="text-sm font-black text-slate-900 dark:text-white tracking-tight">Context</h2>
-                        <p class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold">Syllabus • Question Paper • Module</p>
+                        <h2 class="text-sm font-black text-slate-900 dark:text-white tracking-tight">{{ $t('study_context_title', 'Context') }}</h2>
+                        <p class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold">{{ $t('study_context_subtitle', 'Syllabus • Question Paper • Module') }}</p>
                     </div>
                     <span class="ml-auto px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-blue-50 dark:bg-blue-950/30 text-blue-600 dark:text-blue-400 border border-blue-100/50 dark:border-blue-900/30">
-                        Context
+                        {{ $t('study_context_badge', 'Context') }}
                     </span>
                 </div>
             </div>
@@ -320,7 +320,7 @@ const globalHasPending = computed(() => {
             <div class="p-6 space-y-6">
                 <!-- File Drop Zone -->
                 <div>
-                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Files</label>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_files_label', 'Files') }}</label>
                     <input ref="contextFileInput" type="file" accept=".pdf,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation" multiple class="hidden"
                         @change="e => handleFileSelect(contextPanel, e)" />
                     <div
@@ -332,8 +332,8 @@ const globalHasPending = computed(() => {
                         :class="contextPanel.dragOver ? 'border-blue-500 bg-blue-50/30 dark:bg-blue-950/20' : 'border-slate-300 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-700 bg-slate-50/50 dark:bg-slate-950/30'"
                     >
                         <div class="h-10 w-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📥</div>
-                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">Drop files here or click to browse</span>
-                        <span class="text-[10px] text-slate-400">PDF, DOCX, PPTX supported · Max 10MB each</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">{{ $t('study_drop_files', 'Drop files here or click to browse') }}</span>
+                        <span class="text-[10px] text-slate-400">{{ $t('study_supported_files', 'PDF, DOCX, PPTX supported · Max 10MB each') }}</span>
                     </div>
 
                     <!-- File Queue -->
@@ -356,7 +356,7 @@ const globalHasPending = computed(() => {
 
                 <!-- Link Mode -->
                 <div>
-                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Link</label>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_link_label', 'Link') }}</label>
                     <div class="relative">
                         <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
                         <textarea v-model="contextPanel.embed_url" rows="2" placeholder="https://github.com/...\n(Press Enter for multiple links)"
@@ -367,7 +367,7 @@ const globalHasPending = computed(() => {
                 <!-- Text Mode -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">Notes / Text</label>
+                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
                         <span class="text-[10px] font-bold" :class="wordCount(contextPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
                             {{ wordCount(contextPanel.rich_text) }}/{{ maxWords }}
                         </span>
@@ -390,11 +390,11 @@ const globalHasPending = computed(() => {
                         <FileText class="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                     </div>
                     <div>
-                        <h2 class="text-sm font-black text-slate-900 dark:text-white tracking-tight">Artifact</h2>
-                        <p class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold">Task Report • Presentation • Code Project</p>
+                        <h2 class="text-sm font-black text-slate-900 dark:text-white tracking-tight">{{ $t('study_artifact_title', 'Artifact') }}</h2>
+                        <p class="text-[10px] text-slate-400 dark:text-slate-500 font-semibold">{{ $t('study_artifact_subtitle', 'Task Report • Presentation • Code Project') }}</p>
                     </div>
                     <span class="ml-auto px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 border border-emerald-100/50 dark:border-emerald-900/30">
-                        Artifact
+                        {{ $t('study_artifact_badge', 'Artifact') }}
                     </span>
                 </div>
             </div>
@@ -403,7 +403,7 @@ const globalHasPending = computed(() => {
             <div class="p-6 space-y-6">
                 <!-- File Drop Zone -->
                 <div>
-                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">Files</label>
+                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_files_label', 'Files') }}</label>
                     <input ref="artifactFileInput" type="file" accept=".pdf,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation" multiple class="hidden"
                         @change="e => handleFileSelect(artifactPanel, e)" />
                     <div
@@ -415,8 +415,8 @@ const globalHasPending = computed(() => {
                         :class="artifactPanel.dragOver ? 'border-emerald-500 bg-emerald-50/30 dark:bg-emerald-950/20' : 'border-slate-300 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-700 bg-slate-50/50 dark:bg-slate-950/30'"
                     >
                         <div class="h-10 w-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📤</div>
-                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">Drop files here or click to browse</span>
-                        <span class="text-[10px] text-slate-400">PDF, DOCX, PPTX supported · Max 10MB each</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">{{ $t('study_drop_files', 'Drop files here or click to browse') }}</span>
+                        <span class="text-[10px] text-slate-400">{{ $t('study_supported_files', 'PDF, DOCX, PPTX supported · Max 10MB each') }}</span>
                     </div>
 
                     <!-- File Queue -->
@@ -450,7 +450,7 @@ const globalHasPending = computed(() => {
                 <!-- Text Mode -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">Notes / Text</label>
+                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
                         <span class="text-[10px] font-bold" :class="wordCount(artifactPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
                             {{ wordCount(artifactPanel.rich_text) }}/{{ maxWords }}
                         </span>
@@ -476,7 +476,7 @@ const globalHasPending = computed(() => {
         >
             <Loader2 v-if="isSubmittingAll" class="h-6 w-6 animate-spin" />
             <span v-else class="flex items-center gap-2">
-                Analyze Everything 
+                {{ $t('study_analyze_everything', 'Analyze Everything') }}
                 <Sparkles class="h-5 w-5 group-hover:scale-110 transition-transform" />
             </span>
         </button>

@@ -13,6 +13,7 @@ import {
 } from 'chart.js';
 import { BarChart3 } from 'lucide-vue-next';
 import { useAppearance } from '@/Composables/useAppearance';
+import { trans } from 'laravel-vue-i18n';
 
 ChartJS.register(Title, Tooltip, Legend, RadialLinearScale, PointElement, LineElement, Filler);
 
@@ -37,7 +38,7 @@ const chartData = computed(() => {
             labels: ['Python Programming', 'Database Systems', 'Software Engineering', 'Data Analytics', 'Machine Learning', 'Web Development'],
             datasets: [
                 {
-                    label: 'No Data Yet',
+                    label: trans('study_no_data') || 'No Data Yet',
                     data: [0, 0, 0, 0, 0, 0],
                     backgroundColor: 'rgba(99, 102, 241, 0.05)',
                     borderColor: 'rgba(99, 102, 241, 0.15)',

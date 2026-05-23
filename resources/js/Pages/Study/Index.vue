@@ -96,7 +96,7 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-100 dark:border-indigo-950 bg-indigo-50/50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 font-bold text-[10px] tracking-[0.2em] uppercase shadow-sm mb-3">
                         <span class="flex h-1.5 w-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400 animate-pulse"></span>
-                        IPoW Protocol
+                        {{ $t('study_ipow_protocol', 'IPoW Protocol') }}
                     </div>
                     <h1 class="text-3xl md:text-4xl font-[900] tracking-[-0.02em] text-slate-900 dark:text-white leading-[1.1] flex items-center gap-3">
                         <GraduationCap class="h-8 w-8 text-indigo-600 dark:text-indigo-400 shrink-0" />

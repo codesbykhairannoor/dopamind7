@@ -41,14 +41,14 @@ defineProps({
 
         <!-- Empty state archetypes -->
         <div v-else class="py-6 text-center text-slate-400 dark:text-slate-600 text-xs font-semibold">
-            Upload coursework data to run ML archetype prediction.
+            {{ $t('study_upload_to_run_ml', 'Upload coursework data to run ML archetype prediction.') }}
         </div>
 
         <!-- Card: Model Verdict -->
         <div v-if="competency?.verdict" class="p-4 rounded-3xl bg-indigo-50/30 dark:bg-indigo-950/20 border border-indigo-100/50 dark:border-indigo-900/30 flex items-start gap-3">
             <span class="text-2xl mt-0.5 select-none">🤖</span>
             <div>
-                <h4 class="text-xs font-extrabold uppercase tracking-widest text-indigo-500 dark:text-indigo-400">Classifier Verdict</h4>
+                <h4 class="text-xs font-extrabold uppercase tracking-widest text-indigo-500 dark:text-indigo-400">{{ $t('study_classifier_verdict', 'Classifier Verdict') }}</h4>
                 <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 font-medium leading-relaxed">
                     {{ competency.verdict }}
                 </p>
