@@ -215,6 +215,7 @@ const getTypeColor = (type) => {
                         </button>
                     </div>
                 </div>
+            </div>
 
             <!-- Portfolio Banner di Bagian Bawah Layar Kosong -->
             <div class="max-w-[1600px] w-full md:w-[95%] mx-auto px-6 pb-12">
