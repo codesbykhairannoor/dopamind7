@@ -262,9 +262,24 @@ class StudyController extends Controller
         $user = Auth::user();
         $material = StudyMaterial::where('user_id', $user->id)->findOrFail($id);
 
-        // Delete file from disk
-        if (Storage::disk('local')->exists($material->file_path)) {
+        // Delete legacy file if exists
+        if (!empty($material->file_path) && Storage::disk('local')->exists($material->file_path)) {
             Storage::disk('local')->delete($material->file_path);
+        }
+
+        // Delete modern files
+        $contextData = $material->context_data ?? [];
+        $artifactData = $material->artifact_data ?? [];
+        
+        $allFiles = array_merge($contextData, $artifactData);
+        foreach ($allFiles as $item) {
+            if (isset($item['type']) && $item['type'] === 'file' && !empty($item['path'])) {
+                if (Storage::disk('cloudinary')->exists($item['path'])) {
+                    Storage::disk('cloudinary')->delete($item['path']);
+                } elseif (Storage::disk('local')->exists($item['path'])) {
+                    Storage::disk('local')->delete($item['path']);
+                }
+            }
         }
 
         $material->delete();
