@@ -14,9 +14,11 @@ class AcademicRecord extends Model
         'course_name',
         'semester',
         'sks',
-        'grade',
-        'file_name',
-        'file_path',
-        'link_url',
+        'grade'
     ];
+
+    public function archives()
+    {
+        return $this->hasMany(AcademicArchive::class);
+    }
 }

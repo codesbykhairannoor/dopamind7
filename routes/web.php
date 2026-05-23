@@ -986,12 +986,20 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
         ->name("study.")
         ->group(function () {
             Route::get("/", [StudyController::class, "index"])->name("index");
-            Route::post("/", [StudyController::class, "store"])->name("store");
-            Route::delete("/{id}", [StudyController::class, "destroy"])->name("destroy");
-            Route::post('/study/username', [StudyController::class, 'updateUsername'])->name('study.username');
-            Route::post('/study/academic-records', [StudyController::class, 'storeAcademicRecord'])->name('study.academic.store');
-            Route::delete('/study/academic-records/{id}', [StudyController::class, 'destroyAcademicRecord'])->name('study.academic.destroy');
+            Route::get("/academic", [StudyController::class, "academicIndex"])->name("academic");
+            Route::get("/portfolio", [StudyController::class, "portfolioIndex"])->name("portfolio");
+
+            // Neural Portfolio actions
+            Route::post("/portfolio", [StudyController::class, "store"])->name("store");
+            Route::delete("/portfolio/{id}", [StudyController::class, "destroy"])->name("destroy");
+            Route::post('/username', [StudyController::class, 'updateUsername'])->name('username');
             Route::post("/settings", [StudyController::class, "updateSettings"])->name("settings");
+
+            // Academic Binder actions
+            Route::post('/academic/records', [StudyController::class, 'storeAcademicRecord'])->name('academic.store');
+            Route::delete('/academic/records/{id}', [StudyController::class, 'destroyAcademicRecord'])->name('academic.destroy');
+            Route::post('/academic/archives', [StudyController::class, 'storeAcademicArchive'])->name('academic.archive.store');
+            Route::delete('/academic/archives/{id}', [StudyController::class, 'destroyAcademicArchive'])->name('academic.archive.destroy');
         });
 
     // --- ADMIN CENTRAL (Inertia Custom) ---

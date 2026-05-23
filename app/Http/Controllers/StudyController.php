@@ -21,14 +21,19 @@ class StudyController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $materials = StudyMaterial::where('user_id', $user->id)
-            ->orderBy('created_at', 'desc')
-            ->get();
+        return Inertia::render('Study/Index', [
+            'user' => [
+                'name' => $user->name,
+                'username' => $user->username,
+            ]
+        ]);
+    }
 
-        $competency = StudyCompetency::where('user_id', $user->id)->first();
-
-        // Calculate IPK and Group by Semester for Academic Records
-        $academicRecords = \App\Models\AcademicRecord::where('user_id', $user->id)
+    public function academicIndex()
+    {
+        $user = Auth::user();
+        $academicRecords = \App\Models\AcademicRecord::with('archives')
+            ->where('user_id', $user->id)
             ->orderBy('semester', 'desc')
             ->get();
 
@@ -74,8 +79,7 @@ class StudyController extends Controller
         $ipk = $totalSks > 0 ? round($totalPoints / $totalSks, 2) : 0;
         $currentSemester = count($semesters) > 0 ? max(array_keys($semesters)) : 1;
 
-        return Inertia::render('Study/Index', [
-            'materials' => $materials,
+        return Inertia::render('Study/Academic/Index', [
             'academicRecords' => $academicRecords,
             'academicStats' => [
                 'ipk' => $ipk,
@@ -83,6 +87,23 @@ class StudyController extends Controller
                 'current_semester' => $currentSemester,
                 'semesters' => array_values($semesters)
             ],
+            'user' => [
+                'name' => $user->name,
+                'username' => $user->username,
+            ],
+        ]);
+    }
+
+    public function portfolioIndex()
+    {
+        $user = Auth::user();
+        $materials = StudyMaterial::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $competency = StudyCompetency::where('user_id', $user->id)->first();
+
+        return Inertia::render('Study/Portfolio/Index', [
+            'materials' => $materials,
             'competency' => $competency,
             'user' => [
                 'name' => $user->name,
@@ -98,9 +119,45 @@ class StudyController extends Controller
             'semester' => 'required|integer|min:1|max:14',
             'sks' => 'required|integer|min:1|max:10',
             'grade' => 'required|numeric|min:0|max:100',
-            'file' => 'nullable|file|mimes:pdf|max:5120',
-            'link_url' => 'nullable|url|max:2083',
         ]);
+
+        \App\Models\AcademicRecord::create([
+            'user_id' => Auth::id(),
+            'course_name' => $request->course_name,
+            'semester' => $request->semester,
+            'sks' => $request->sks,
+            'grade' => $request->grade,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function destroyAcademicRecord($id)
+    {
+        $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($id);
+        
+        // Also delete associated physical files
+        foreach ($record->archives as $archive) {
+            if ($archive->file_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($archive->file_path)) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($archive->file_path);
+            }
+        }
+
+        $record->delete();
+        return redirect()->back();
+    }
+
+    public function storeAcademicArchive(Request $request)
+    {
+        $request->validate([
+            'academic_record_id' => 'required|exists:academic_records,id',
+            'file' => 'nullable|file|max:5120',
+            'link_url' => 'nullable|url|max:2083',
+            'meeting_tag' => 'nullable|string|max:255',
+        ]);
+
+        // Ensure user owns the record
+        $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($request->academic_record_id);
 
         $fileName = null;
         $filePath = null;
@@ -111,29 +168,29 @@ class StudyController extends Controller
             $filePath = $file->store('academic_archives', 'public');
         }
 
-        \App\Models\AcademicRecord::create([
-            'user_id' => Auth::id(),
-            'course_name' => $request->course_name,
-            'semester' => $request->semester,
-            'sks' => $request->sks,
-            'grade' => $request->grade,
+        \App\Models\AcademicArchive::create([
+            'academic_record_id' => $record->id,
             'file_name' => $fileName,
             'file_path' => $filePath,
             'link_url' => $request->link_url,
+            'meeting_tag' => $request->meeting_tag,
         ]);
 
         return redirect()->back();
     }
 
-    public function destroyAcademicRecord($id)
+    public function destroyAcademicArchive($id)
     {
-        $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($id);
+        $archive = \App\Models\AcademicArchive::findOrFail($id);
         
-        if ($record->file_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($record->file_path)) {
-            \Illuminate\Support\Facades\Storage::disk('public')->delete($record->file_path);
+        // Ensure user owns the parent record
+        $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($archive->academic_record_id);
+
+        if ($archive->file_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($archive->file_path)) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($archive->file_path);
         }
 
-        $record->delete();
+        $archive->delete();
         return redirect()->back();
     }
 
