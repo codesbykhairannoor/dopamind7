@@ -179,31 +179,6 @@ const showMaterials = computed(() => {
         <div class="absolute top-[-10%] left-[-5%] w-[800px] h-[800px] bg-indigo-500/10 dark:bg-indigo-500/5 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
         <div class="absolute bottom-[-15%] right-[-5%] w-[700px] h-[700px] bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-3xl -z-10"></div>
 
-        <!-- Top Header Navigation -->
-        <nav class="border-b border-slate-200/60 dark:border-slate-800/80 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md sticky top-0 z-40">
-            <div class="w-full mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <span class="text-xl font-black tracking-tighter text-slate-900 dark:text-white flex items-center gap-1.5">
-                        <span class="text-indigo-600 dark:text-indigo-400">ONE</span>FOR<span class="text-indigo-600 dark:text-indigo-400">MIND</span>
-                    </span>
-                    <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
-                        {{ $t('portfolio_ipow_audited_profile', 'IPoW Audited Profile') }}
-                    </span>
-                </div>
-                <div class="flex items-center gap-4">
-                    <ThemeToggle />
-                    <a 
-                        href="https://oneformind.com" 
-                        target="_blank"
-                        class="text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition flex items-center gap-1"
-                    >
-                        {{ $t('portfolio_learn_about_ipow', 'Learn about IPoW') }}
-                        <ExternalLink class="h-3 w-3" />
-                    </a>
-                </div>
-            </div>
-        </nav>
-
         <!-- Main Showcase Area -->
         <main class="w-full mx-auto px-6 lg:px-12 py-12">
             <!-- Back navigation button -->
@@ -347,15 +322,17 @@ const showMaterials = computed(() => {
                                 
                                 <!-- File -->
                                 <div v-if="item.type === 'file'" class="bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                    <div class="px-4 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center justify-between text-slate-600 dark:text-slate-300">
-                                        <span class="flex items-center gap-2"><FileText class="h-4 w-4" /> {{ item.name }}</span>
-                                        <a :href="`/storage/${item.path}`" target="_blank" class="text-[10px] uppercase font-extrabold tracking-wider text-indigo-500 hover:text-indigo-600 flex items-center gap-1">Open <ExternalLink class="h-3 w-3" /></a>
-                                    </div>
-                                    <div class="h-64 w-full relative" v-if="item.path.endsWith('.pdf')">
-                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer"></iframe>
-                                    </div>
-                                    <div v-else class="p-6 text-center text-sm text-slate-500">
-                                        File cannot be previewed inline. <a :href="`/storage/${item.path}`" target="_blank" class="text-indigo-500 underline ml-2">Download File</a>
+                                    <div class="p-6 bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center text-center gap-4">
+                                        <div class="h-16 w-16 bg-indigo-100 dark:bg-indigo-900/50 rounded-2xl flex items-center justify-center">
+                                            <FileText class="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
+                                        </div>
+                                        <div>
+                                            <h5 class="text-sm font-bold text-slate-800 dark:text-slate-200">{{ item.name }}</h5>
+                                            <p class="text-xs text-slate-500 mt-1">Document ready to view or download</p>
+                                        </div>
+                                        <a :href="`/storage/${item.path}`" target="_blank" class="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-indigo-500/20">
+                                            Open Document <ExternalLink class="h-4 w-4" />
+                                        </a>
                                     </div>
                                 </div>
 
@@ -389,15 +366,17 @@ const showMaterials = computed(() => {
                                 
                                 <!-- File -->
                                 <div v-if="item.type === 'file'" class="bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                    <div class="px-4 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center justify-between text-slate-600 dark:text-slate-300">
-                                        <span class="flex items-center gap-2"><FileText class="h-4 w-4" /> {{ item.name }}</span>
-                                        <a :href="`/storage/${item.path}`" target="_blank" class="text-[10px] uppercase font-extrabold tracking-wider text-emerald-500 hover:text-emerald-600 flex items-center gap-1">Open <ExternalLink class="h-3 w-3" /></a>
-                                    </div>
-                                    <div class="h-64 w-full relative" v-if="item.path.endsWith('.pdf')">
-                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer"></iframe>
-                                    </div>
-                                    <div v-else class="p-6 text-center text-sm text-slate-500">
-                                        File cannot be previewed inline. <a :href="`/storage/${item.path}`" target="_blank" class="text-emerald-500 underline ml-2">Download File</a>
+                                    <div class="p-6 bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center text-center gap-4">
+                                        <div class="h-16 w-16 bg-emerald-100 dark:bg-emerald-900/50 rounded-2xl flex items-center justify-center">
+                                            <FileText class="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
+                                        </div>
+                                        <div>
+                                            <h5 class="text-sm font-bold text-slate-800 dark:text-slate-200">{{ item.name }}</h5>
+                                            <p class="text-xs text-slate-500 mt-1">Document ready to view or download</p>
+                                        </div>
+                                        <a :href="`/storage/${item.path}`" target="_blank" class="mt-2 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-emerald-500/20">
+                                            Open Document <ExternalLink class="h-4 w-4" />
+                                        </a>
                                     </div>
                                 </div>
 

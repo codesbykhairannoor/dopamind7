@@ -370,13 +370,15 @@ class StudyController extends Controller
             }
         }
 
-        // Average and slight boost based on frequency
+        // Average and slight boost based on frequency (flat +2% per material, max +10%)
         $count = $materials->count();
+        $bonus = min(5, $count) * 2;
+        
         foreach ($aggCompetencies as $k => $v) {
-            $aggCompetencies[$k] = min(100, round(($v / $count) * 1.3)); // Boost to reward consistency
+            $aggCompetencies[$k] = min(100, round(($v / $count) + $bonus)); // Boost to reward consistency
         }
         foreach ($aggArchetypes as $k => $v) {
-            $aggArchetypes[$k] = min(100, round(($v / $count) * 1.3));
+            $aggArchetypes[$k] = min(100, round(($v / $count) + $bonus));
         }
 
         arsort($aggCompetencies);

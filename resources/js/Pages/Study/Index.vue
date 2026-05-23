@@ -33,8 +33,8 @@ const props = defineProps({
 const activeTab = ref('portfolio');
 
 const tabDefs = [
-    { key: 'upload',    icon: Upload,      labelKey: 'study_tab_upload',    label: 'Add Materials' },
     { key: 'portfolio', icon: LayoutGrid,  labelKey: 'study_tab_portfolio', label: 'My Portfolio' },
+    { key: 'upload',    icon: Upload,      labelKey: 'study_tab_upload',    label: 'Add Materials' },
 ];
 
 const tabBadge = computed(() => ({

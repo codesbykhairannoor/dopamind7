@@ -335,7 +335,7 @@ const profileBio = computed(() => {
     if (verdict) return verdict;
 
     if (count === 0) {
-        return `${name} is building their verified academic profile on OneForMind. No coursework has been audited yet.`;
+        return `${name} is building their verified academic profile on Dopmymind. No coursework has been audited yet.`;
     }
 
     let bio = `${name} has ${count} verified coursework artifact${count > 1 ? 's' : ''} audited through the IPoW protocol, demonstrating proven academic work in the field of ${domain}.`;
@@ -353,30 +353,8 @@ const profileBio = computed(() => {
         <div class="absolute top-[-10%] left-[-5%] w-[800px] h-[800px] bg-indigo-500/10 dark:bg-indigo-500/5 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
         <div class="absolute bottom-[-15%] right-[-5%] w-[700px] h-[700px] bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-3xl -z-10"></div>
 
-        <!-- Top Header Navigation -->
-        <nav class="border-b border-slate-200/60 dark:border-slate-800/80 bg-white/60 dark:bg-slate-950/60 backdrop-blur-md sticky top-0 z-40">
-            <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <span class="text-xl font-black tracking-tighter text-slate-900 dark:text-white flex items-center gap-1.5">
-                        <span class="text-indigo-600 dark:text-indigo-400">ONE</span>FOR<span class="text-indigo-600 dark:text-indigo-400">MIND</span>
-                    </span>
-                    <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
-                        {{ $t('portfolio_ipow_audited_profile', 'IPoW Audited Profile') }}
-                    </span>
-                </div>
-                <a 
-                    href="https://oneformind.com" 
-                    target="_blank"
-                    class="text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition flex items-center gap-1"
-                >
-                    {{ $t('portfolio_learn_about_ipow', 'Learn about IPoW') }}
-                    <ExternalLink class="h-3 w-3" />
-                </a>
-            </div>
-        </nav>
-
         <!-- Main Showcase Area -->
-        <main class="max-w-7xl mx-auto px-6 py-12">
+        <main class="w-full mx-auto px-6 lg:px-12 py-12">
             
             <!-- ═══════════════════════════════════════════════════════════ -->
             <!-- PROFILE IDENTITY SUMMARY CARD                               -->
@@ -489,7 +467,7 @@ const profileBio = computed(() => {
                                 <template v-if="props.competency?.verdict">{{ props.competency.verdict }}</template>
                                 <!-- No materials yet -->
                                 <template v-else-if="props.materials.length === 0">
-                                    {{ props.student.name.split(' ')[0] }} {{ $t('portfolio_bio_empty', 'is building their verified academic profile on OneForMind. No coursework has been audited yet.') }}
+                                    {{ props.student.name.split(' ')[0] }} {{ $t('portfolio_bio_empty', 'is building their verified academic profile on Dopmymind. No coursework has been audited yet.') }}
                                 </template>
                                 <!-- Auto-generated bio from data -->
                                 <template v-else>
