@@ -255,7 +255,7 @@ class StudyController extends Controller
         $competency = StudyCompetency::firstOrNew(['user_id' => $userId]);
         $competency->competencies = array_slice($aggCompetencies, 0, 6, true);
         $competency->archetypes = array_slice($aggArchetypes, 0, 3, true);
-        $competency->verdict = "Dynamic profile calculated. Primary field of study: {$primaryField}. Extracted from {$count} coursework materials.";
+        $competency->verdict = "Profil dinamik telah dikalkulasi. Bidang studi utama: {$primaryField}. Diekstrak secara otomatis dari {$count} dokumen tugas/coursework.";
         $competency->save();
     }
 }

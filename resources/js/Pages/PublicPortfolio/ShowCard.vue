@@ -139,19 +139,19 @@ const chartOptions = computed(() => ({
                 color: isDark.value ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'
             },
             pointLabels: {
-                color: isDark.value ? '#94a3b8' : '#475569',
+                color: isDark.value ? '#e2e8f0' : '#334155',
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 10,
-                    weight: '600'
+                    size: 12,
+                    weight: 'bold'
                 }
             },
             ticks: {
                 backdropColor: 'transparent',
-                color: isDark.value ? '#64748b' : '#94a3b8',
+                color: isDark.value ? '#94a3b8' : '#64748b',
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 8
+                    size: 10
                 },
                 beginAtZero: true,
                 max: 100,
@@ -299,10 +299,10 @@ const showMaterials = computed(() => {
                 </div>
 
                 <!-- 4. ATTACHED DOCUMENTS -->
-                <div class="space-y-6 mt-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
                     <div v-if="props.material.context_data && props.material.context_data.length > 0">
                         <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 px-2">Context Materials</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="flex flex-col gap-4">
                             <div v-for="(item, idx) in props.material.context_data" :key="'ctx-'+idx" class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl flex items-center gap-4 hover:shadow-lg transition group">
                                 <div class="h-12 w-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition">
                                     <FileText v-if="item.type === 'file'" class="h-5 w-5" />
@@ -311,7 +311,7 @@ const showMaterials = computed(() => {
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{{ item.type }}</h4>
-                                    <a v-if="item.type === 'file'" :href="`/storage/${item.path}`" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500">{{ item.name }}</a>
+                                    <a v-if="item.type === 'file'" :href="`/storage/${item.path}`" download class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500">{{ item.name }}</a>
                                     <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-indigo-500">{{ item.url }}</a>
                                     <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
                                 </div>
@@ -319,9 +319,9 @@ const showMaterials = computed(() => {
                         </div>
                     </div>
 
-                    <div v-if="props.material.artifact_data && props.material.artifact_data.length > 0" class="pt-4">
+                    <div v-if="props.material.artifact_data && props.material.artifact_data.length > 0">
                         <h3 class="text-sm font-black uppercase tracking-widest text-emerald-600 dark:text-emerald-500 mb-4 px-2">Artifact Deliverables</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="flex flex-col gap-4">
                             <div v-for="(item, idx) in props.material.artifact_data" :key="'art-'+idx" class="bg-white dark:bg-slate-900 border border-emerald-100 dark:border-emerald-900/30 p-5 rounded-2xl flex items-center gap-4 hover:shadow-lg shadow-emerald-500/5 transition group">
                                 <div class="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 group-hover:scale-110 transition">
                                     <FileText v-if="item.type === 'file'" class="h-5 w-5" />
@@ -330,7 +330,7 @@ const showMaterials = computed(() => {
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h4 class="text-xs font-bold text-emerald-500/70 uppercase tracking-wider mb-1">{{ item.type }}</h4>
-                                    <a v-if="item.type === 'file'" :href="`/storage/${item.path}`" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500">{{ item.name }}</a>
+                                    <a v-if="item.type === 'file'" :href="`/storage/${item.path}`" download class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500">{{ item.name }}</a>
                                     <a v-else-if="item.type === 'link'" :href="item.url" target="_blank" class="text-sm font-bold text-slate-800 dark:text-slate-200 truncate block hover:text-emerald-500">{{ item.url }}</a>
                                     <p v-else class="text-sm font-medium text-slate-700 dark:text-slate-300 truncate">{{ item.content }}</p>
                                 </div>

@@ -109,14 +109,14 @@ class ProcessCoursework implements ShouldQueue
                 
                 $parsed = json_decode($pythonOutput, true);
                 if (isset($parsed['archetypes'])) {
-                    $metadata = $geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $material->course_name, $parsed['archetypes']);
+                    $metadata = $geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $material->course_name, $parsed['archetypes'], $material->user->name);
                     $metadata['source'] = 'hybrid_ml_gemini';
                 } else {
                     throw new \Exception("Invalid output format from Python ML.");
                 }
             } catch (\Throwable $e) {
                 Log::warning("Python ML failed, falling back to 100% Gemini API: " . $e->getMessage());
-                $metadata = $geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $material->course_name);
+                $metadata = $geminiService->analyzeCourseworkCompetencies($aggregatedContextText, $aggregatedArtifactText, $material->course_name, null, $material->user->name);
                 $metadata['source'] = 'gemini_api_only';
             }
 

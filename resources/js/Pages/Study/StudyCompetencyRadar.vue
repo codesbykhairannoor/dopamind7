@@ -103,19 +103,19 @@ const chartOptions = computed(() => ({
                 color: isDark.value ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.06)'
             },
             pointLabels: {
-                color: isDark.value ? '#94a3b8' : '#475569',
+                color: isDark.value ? '#e2e8f0' : '#334155',
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 11,
-                    weight: '600'
+                    size: 12,
+                    weight: 'bold'
                 }
             },
             ticks: {
                 backdropColor: 'transparent',
-                color: isDark.value ? '#64748b' : '#94a3b8',
+                color: isDark.value ? '#94a3b8' : '#64748b',
                 font: {
                     family: 'Plus Jakarta Sans',
-                    size: 9
+                    size: 10
                 },
                 beginAtZero: true,
                 max: 100,

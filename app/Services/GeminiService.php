@@ -341,14 +341,17 @@ class GeminiService
     /**
      * Analyze Coursework for Dynamic Competencies and Archetypes
      */
-    public function analyzeCourseworkCompetencies($contextText, $artifactText, $courseName, $mlArchetypes = null)
+    public function analyzeCourseworkCompetencies($contextText, $artifactText, $courseName, $mlArchetypes = null, $studentName = null)
     {
         $locale = app()->getLocale();
         $langName = ($locale === 'id') ? 'Indonesian' : 'English';
+        $studentNameStr = $studentName ? "Student Name: {$studentName}." : "";
 
         // Base prompt
         $prompt = "You are an expert academic evaluator and career counselor.
         Analyze this student's coursework submission for the course: \"{$courseName}\".
+        {$studentNameStr}
+        IMPORTANT RULE: ALWAYS evaluate the coursework in the context of the user ({$studentName}), even if the document belongs to a group. Focus on their individual capabilities.
         
         CONTEXT (Instructions/Syllabus):
         " . substr($contextText, 0, 15000) . "
