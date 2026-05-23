@@ -163,6 +163,19 @@ class StudyController extends Controller
             $material->status = 'completed';
             $material->save();
 
+            // Save display settings if provided
+            if ($request->has('show_radar')) {
+                $competency = StudyCompetency::firstOrCreate(['user_id' => $user->id]);
+                $competency->settings = [
+                    'show_radar' => filter_var($request->show_radar, FILTER_VALIDATE_BOOLEAN),
+                    'show_archetypes' => filter_var($request->show_archetypes, FILTER_VALIDATE_BOOLEAN),
+                    'show_materials' => filter_var($request->show_materials, FILTER_VALIDATE_BOOLEAN),
+                    'career_target' => $request->career_target,
+                    'show_career_target' => filter_var($request->show_career_target, FILTER_VALIDATE_BOOLEAN),
+                ];
+                $competency->save();
+            }
+
             // Recalculate User Competency
             $this->recalculateCompetencies($user->id);
 

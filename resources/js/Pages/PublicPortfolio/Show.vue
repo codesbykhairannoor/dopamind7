@@ -58,27 +58,7 @@ const props = defineProps({
 });
 
 const { isDark } = useAppearance();
-const selectedMaterial = ref(null);
-const isReaderOpen = ref(false);
-
-const openReader = (material) => {
-    selectedMaterial.value = material;
-    isReaderOpen.value = true;
-};
-
-const closeReader = () => {
-    isReaderOpen.value = false;
-    selectedMaterial.value = null;
-};
-
-// Stream route for PDF iframe
-const pdfStreamUrl = computed(() => {
-    if (!selectedMaterial.value) return '';
-    return route('portfolio.file', { 
-        username: props.student.username, 
-        id: selectedMaterial.value.id 
-    });
-});
+const { isDark } = useAppearance();
 
 // Radar Chart Config
 const chartData = computed(() => {
@@ -382,7 +362,7 @@ const profileBio = computed(() => {
                         <span class="text-indigo-600 dark:text-indigo-400">ONE</span>FOR<span class="text-indigo-600 dark:text-indigo-400">MIND</span>
                     </span>
                     <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
-                        IPoW Audited Profile
+                        {{ $t('portfolio_ipow_audited_profile', 'IPoW Audited Profile') }}
                     </span>
                 </div>
                 <a 
@@ -390,7 +370,7 @@ const profileBio = computed(() => {
                     target="_blank"
                     class="text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition flex items-center gap-1"
                 >
-                    Learn about IPoW
+                    {{ $t('portfolio_learn_about_ipow', 'Learn about IPoW') }}
                     <ExternalLink class="h-3 w-3" />
                 </a>
             </div>
@@ -715,10 +695,10 @@ const profileBio = computed(() => {
                 </div>
 
                 <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div 
+                    <a 
                         v-for="material in props.materials" 
                         :key="material.id"
-                        @click="openReader(material)"
+                        :href="route('portfolio.card', { username: props.student.username, id: material.id })"
                         class="p-5 bg-slate-50/50 dark:bg-slate-950/20 hover:bg-white dark:hover:bg-slate-900 border border-slate-100 dark:border-slate-900/40 hover:border-slate-200 dark:hover:border-slate-800 hover:shadow-xl rounded-3xl transition duration-300 flex flex-col justify-between gap-4 cursor-pointer group"
                     >
                         <div>
@@ -779,142 +759,15 @@ const profileBio = computed(() => {
                         <!-- Read button action hover -->
                         <div class="mt-2 flex items-center justify-between text-xs font-bold text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition pt-1">
                             <span class="flex items-center gap-1 text-[11px]">
-                                <Eye class="h-3.5 w-3.5" />
+                                <ExternalLink class="h-3.5 w-3.5" />
                                 {{ $t('portfolio_audit_action', 'Audit coursework') }}
                             </span>
                             <ChevronRight class="h-4 w-4 transform group-hover:translate-x-1 transition duration-300" />
                         </div>
-                    </div>
+                    </Link>
                 </div>
             </section>
         </main>
-
-        <!-- Inline PDF Modal Reader Dialog -->
-        <div 
-            v-if="isReaderOpen && selectedMaterial"
-            class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
-        >
-            <!-- Backdrop -->
-            <div 
-                class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md transition-opacity duration-300"
-                @click="closeReader"
-            ></div>
-
-            <!-- Content Panel -->
-            <div class="relative w-full max-w-5xl h-[85vh] bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-2xl flex flex-col animate-scale-up">
-                
-                <!-- Modal Header -->
-                <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 shrink-0 bg-slate-50 dark:bg-slate-900/50">
-                    <div class="min-w-0">
-                        <span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-100/50 dark:border-indigo-900/50">
-                            Coursework Material
-                        </span>
-                        <h3 class="text-sm font-extrabold text-slate-800 dark:text-slate-200 truncate mt-1">
-                            {{ selectedMaterial.course_name }}
-                        </h3>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <a 
-                            :href="route('portfolio.card', { username: props.student.username, id: selectedMaterial.id })"
-                            class="p-2 text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/50 hover:bg-indigo-100 dark:hover:bg-indigo-900 rounded-xl transition text-xs font-bold flex items-center gap-1"
-                            title="Open Full Details"
-                        >
-                            <ExternalLink class="h-4 w-4" />
-                            <span class="hidden sm:inline">Full Details</span>
-                        </a>
-                        <button 
-                            @click="closeReader"
-                            class="p-2 text-slate-400 hover:text-slate-800 dark:hover:text-white bg-slate-200/50 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition"
-                        >
-                            <X class="h-4 w-4" />
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Multi-format content viewer -->
-                <div class="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950/50 p-6 md:p-8 space-y-8">
-                    
-                    <!-- Context Data Section -->
-                    <div v-if="selectedMaterial.context_data && selectedMaterial.context_data.length > 0" class="space-y-6">
-                        <h4 class="text-xs uppercase font-extrabold tracking-widest text-indigo-500 dark:text-indigo-400 mb-4 border-b border-indigo-100 dark:border-indigo-900/50 pb-2">Context Material</h4>
-                        
-                        <div class="space-y-4">
-                            <div v-for="(item, idx) in selectedMaterial.context_data" :key="idx">
-                                
-                                <!-- File -->
-                                <div v-if="item.type === 'file'" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
-                                        <FileText class="h-4 w-4" /> {{ item.name }}
-                                    </div>
-                                    <div class="h-[60vh] w-full" v-if="item.path.endsWith('.pdf')">
-                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
-                                    </div>
-                                    <div v-else class="p-6 text-center text-sm text-slate-500">
-                                        File cannot be previewed inline. <a :href="`/storage/${item.path}`" target="_blank" class="text-indigo-500 underline ml-2">Download File</a>
-                                    </div>
-                                </div>
-
-                                <!-- Link -->
-                                <div v-else-if="item.type === 'link'" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
-                                    <div class="h-12 w-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center shrink-0">
-                                        <Link2 class="h-6 w-6 text-indigo-500" />
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
-                                        <a :href="item.url" target="_blank" class="text-sm font-bold text-indigo-600 dark:text-indigo-400 underline truncate block">{{ item.url }}</a>
-                                    </div>
-                                </div>
-
-                                <!-- Text -->
-                                <div v-else-if="item.type === 'text'" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                                    <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
-                                    <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ item.content }}</p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Artifact Data Section -->
-                    <div v-if="selectedMaterial.artifact_data && selectedMaterial.artifact_data.length > 0" class="space-y-6">
-                        <h4 class="text-xs uppercase font-extrabold tracking-widest text-emerald-500 dark:text-emerald-400 mb-4 border-b border-emerald-100 dark:border-emerald-900/50 pb-2 mt-8">Artifact Material</h4>
-                        
-                        <div class="space-y-4">
-                            <div v-for="(item, idx) in selectedMaterial.artifact_data" :key="idx">
-                                
-                                <!-- File -->
-                                <div v-if="item.type === 'file'" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
-                                        <FileText class="h-4 w-4" /> {{ item.name }}
-                                    </div>
-                                    <div class="h-[60vh] w-full" v-if="item.path.endsWith('.pdf')">
-                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
-                                    </div>
-                                    <div v-else class="p-6 text-center text-sm text-slate-500">
-                                        File cannot be previewed inline. <a :href="`/storage/${item.path}`" target="_blank" class="text-emerald-500 underline ml-2">Download File</a>
-                                    </div>
-                                </div>
-
-                                <!-- Link -->
-                                <div v-else-if="item.type === 'link'" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-4">
-                                    <div class="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 flex items-center justify-center shrink-0">
-                                        <Link2 class="h-6 w-6 text-emerald-500" />
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <h5 class="text-xs font-bold text-slate-400 uppercase">External Link</h5>
-                                        <a :href="item.url" target="_blank" class="text-sm font-bold text-emerald-600 dark:text-emerald-400 underline truncate block">{{ item.url }}</a>
-                                    </div>
-                                </div>
-
-                                <!-- Text -->
-                                <div v-else-if="item.type === 'text'" class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
-                                    <h5 class="text-xs font-bold text-slate-400 uppercase mb-2">Notes</h5>
-                                    <p class="text-sm text-slate-700 dark:text-slate-300 whitespace-pre-wrap">{{ item.content }}</p>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 

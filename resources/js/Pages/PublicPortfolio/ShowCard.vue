@@ -187,7 +187,7 @@ const showMaterials = computed(() => {
                         <span class="text-indigo-600 dark:text-indigo-400">ONE</span>FOR<span class="text-indigo-600 dark:text-indigo-400">MIND</span>
                     </span>
                     <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400">
-                        IPoW Audited Profile
+                        {{ $t('portfolio_ipow_audited_profile', 'IPoW Audited Profile') }}
                     </span>
                 </div>
                 <div class="flex items-center gap-4">
@@ -347,11 +347,12 @@ const showMaterials = computed(() => {
                                 
                                 <!-- File -->
                                 <div v-if="item.type === 'file'" class="bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
-                                        <FileText class="h-4 w-4" /> {{ item.name }}
+                                    <div class="px-4 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center justify-between text-slate-600 dark:text-slate-300">
+                                        <span class="flex items-center gap-2"><FileText class="h-4 w-4" /> {{ item.name }}</span>
+                                        <a :href="`/storage/${item.path}`" target="_blank" class="text-[10px] uppercase font-extrabold tracking-wider text-indigo-500 hover:text-indigo-600 flex items-center gap-1">Open <ExternalLink class="h-3 w-3" /></a>
                                     </div>
-                                    <div class="h-[60vh] w-full" v-if="item.path.endsWith('.pdf')">
-                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
+                                    <div class="h-64 w-full relative" v-if="item.path.endsWith('.pdf')">
+                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer"></iframe>
                                     </div>
                                     <div v-else class="p-6 text-center text-sm text-slate-500">
                                         File cannot be previewed inline. <a :href="`/storage/${item.path}`" target="_blank" class="text-indigo-500 underline ml-2">Download File</a>
@@ -388,11 +389,12 @@ const showMaterials = computed(() => {
                                 
                                 <!-- File -->
                                 <div v-if="item.type === 'file'" class="bg-slate-50 dark:bg-slate-950 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
-                                    <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center gap-2 text-slate-600 dark:text-slate-300">
-                                        <FileText class="h-4 w-4" /> {{ item.name }}
+                                    <div class="px-4 py-3 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs font-bold flex items-center justify-between text-slate-600 dark:text-slate-300">
+                                        <span class="flex items-center gap-2"><FileText class="h-4 w-4" /> {{ item.name }}</span>
+                                        <a :href="`/storage/${item.path}`" target="_blank" class="text-[10px] uppercase font-extrabold tracking-wider text-emerald-500 hover:text-emerald-600 flex items-center gap-1">Open <ExternalLink class="h-3 w-3" /></a>
                                     </div>
-                                    <div class="h-[60vh] w-full" v-if="item.path.endsWith('.pdf')">
-                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer" allow="fullscreen"></iframe>
+                                    <div class="h-64 w-full relative" v-if="item.path.endsWith('.pdf')">
+                                        <iframe :src="`/storage/${item.path}`" class="w-full h-full border-0" title="Document Viewer"></iframe>
                                     </div>
                                     <div v-else class="p-6 text-center text-sm text-slate-500">
                                         File cannot be previewed inline. <a :href="`/storage/${item.path}`" target="_blank" class="text-emerald-500 underline ml-2">Download File</a>

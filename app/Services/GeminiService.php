@@ -366,10 +366,10 @@ class GeminiService
         if ($mlArchetypes !== null) {
             $archetypesJson = json_encode($mlArchetypes);
             $prompt .= "3. The Machine Learning model has already predicted these 'Career Archetypes' with scores: {$archetypesJson}. DO NOT generate new archetypes. Output these exact archetypes and scores back in your JSON response.
-        4. Provide a 2-sentence 'Verdict' describing their strengths and how they align with the predicted archetypes. MUST USE $langName language.";
+        4. Provide a 2-sentence 'Verdict' describing their strengths and how they align with the predicted archetypes. CRITICAL LANGUAGE RULE: The Verdict MUST be written in the SAME language as the Student's Artifact text (e.g., if the artifact is in Indonesian, write the verdict in Indonesian).";
         } else {
             $prompt .= "3. Identify 3 'Career Archetypes' (Job Titles) that this coursework aligns with. Score them from 0-100.
-        4. Provide a 2-sentence 'Verdict' describing their strengths. MUST USE $langName language.";
+        4. Provide a 2-sentence 'Verdict' describing their strengths. CRITICAL LANGUAGE RULE: The Verdict MUST be written in the SAME language as the Student's Artifact text (e.g., if the artifact is in Indonesian, write the verdict in Indonesian).";
         }
 
         $prompt .= "

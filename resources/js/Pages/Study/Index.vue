@@ -21,7 +21,6 @@ import StudyUploadForm from './StudyUploadForm.vue';
 import StudyMaterialList from './StudyMaterialList.vue';
 import StudyCompetencyRadar from './StudyCompetencyRadar.vue';
 import StudyArchetypeMatches from './StudyArchetypeMatches.vue';
-import StudySettingsForm from './StudySettingsForm.vue';
 
 const props = defineProps({
     materials: { type: Array, default: () => [] },
@@ -31,7 +30,7 @@ const props = defineProps({
 
 // ─── Tab config ───────────────────────────────────────────────────────────────
 // NOTE: Use trans() here (script setup), NOT $t() which is template-only
-const activeTab = ref('upload');
+const activeTab = ref('portfolio');
 
 const tabDefs = [
     { key: 'upload',    icon: Upload,      labelKey: 'study_tab_upload',    label: 'Add Materials' },
@@ -146,8 +145,7 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
 
                 <!-- ADD MATERIALS TAB -->
                 <div v-if="activeTab === 'upload'" key="upload" class="flex flex-col gap-8">
-                    <StudyUploadForm :materials="props.materials" />
-                    <StudySettingsForm :settings="props.competency?.settings" />
+                    <StudyUploadForm :materials="props.materials" :settings="props.competency?.settings" />
                 </div>
 
                 <!-- MY PORTFOLIO TAB -->

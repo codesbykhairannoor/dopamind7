@@ -8,8 +8,10 @@ import {
     FileText, 
     Loader2, 
     CheckCircle2, 
+    CheckCircle2, 
     XCircle, 
-    Trash2 
+    Trash2,
+    AlertTriangle
 } from 'lucide-vue-next';
 
 const props = defineProps({
@@ -23,12 +25,29 @@ const props = defineProps({
     }
 });
 
-const deleteMaterial = (id) => {
-    if (confirm('Are you sure you want to delete this study material? This will recalculate your competency profile.')) {
-        router.delete(route('study.destroy', id), {
-            preserveScroll: true
+const showDeleteModal = ref(false);
+const materialToDelete = ref(null);
+
+const openDeleteModal = (id) => {
+    materialToDelete.value = id;
+    showDeleteModal.value = true;
+};
+
+const confirmDelete = () => {
+    if (materialToDelete.value) {
+        router.delete(route('study.destroy', materialToDelete.value), {
+            preserveScroll: true,
+            onSuccess: () => {
+                showDeleteModal.value = false;
+                materialToDelete.value = null;
+            }
         });
     }
+};
+
+const closeDeleteModal = () => {
+    showDeleteModal.value = false;
+    materialToDelete.value = null;
 };
 
 const copiedCardId = ref(null);
@@ -56,7 +75,7 @@ const copyCardLink = (id) => {
     <div class="group bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-100 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.03)] hover:shadow-2xl transition duration-500">
         <h2 class="text-xl font-extrabold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
             <BookOpen class="h-5 w-5 text-indigo-500" />
-            Coursework Materials
+            {{ $t('study_coursework_materials', 'Coursework Materials') }}
         </h2>
 
         <!-- Empty State -->
@@ -64,7 +83,7 @@ const copyCardLink = (id) => {
             <div class="h-16 w-16 bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[1.5rem] flex items-center justify-center text-4xl mb-4 mx-auto animate-bounce-slow">
                 📚
             </div>
-            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">No Academic Documents</h3>
+            <h3 class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-1">{{ $t('study_no_academic_docs', 'No Academic Documents') }}</h3>
             <p class="text-xs text-slate-400 dark:text-slate-500 max-w-sm mx-auto px-4">
                 {{ $t('study_empty_state', 'No study materials uploaded yet. Upload your syllabus or task reports to begin building your neural competency profile.') }}
             </p>
@@ -160,11 +179,42 @@ const copyCardLink = (id) => {
 
                     <!-- Delete Action -->
                     <button 
-                        @click="deleteMaterial(material.id)"
-                        class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 rounded-xl transition"
-                        title="Delete coursework"
+                        @click="openDeleteModal(material.id)"
+                        class="p-2 bg-red-50 dark:bg-red-950/30 text-red-500 hover:bg-red-100 dark:hover:bg-red-900 rounded-xl transition"
+                        title="Delete Material"
                     >
                         <Trash2 class="h-4 w-4" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Delete Modal -->
+        <div v-if="showDeleteModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <!-- Backdrop -->
+            <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm" @click="closeDeleteModal"></div>
+
+            <!-- Modal Content -->
+            <div class="relative w-full max-w-sm bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-200 dark:border-slate-800 text-center animate-scale-up">
+                <div class="w-16 h-16 rounded-full bg-red-50 dark:bg-red-950/50 flex items-center justify-center mx-auto mb-4 text-red-500">
+                    <AlertTriangle class="h-8 w-8" />
+                </div>
+                <h3 class="text-lg font-black text-slate-900 dark:text-white mb-2">{{ $t('study_delete_confirm_title', 'Delete Coursework?') }}</h3>
+                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-6">
+                    {{ $t('study_delete_confirm_desc', 'Are you sure you want to delete this material? This will recalculate your competency profile and AI insights.') }}
+                </p>
+                <div class="flex items-center gap-3 w-full">
+                    <button 
+                        @click="closeDeleteModal"
+                        class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl font-bold text-sm transition"
+                    >
+                        {{ $t('study_delete_cancel', 'No, Keep it') }}
+                    </button>
+                    <button 
+                        @click="confirmDelete"
+                        class="flex-1 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-red-500/20 transition"
+                    >
+                        {{ $t('study_delete_yes', 'Yes, Delete') }}
                     </button>
                 </div>
             </div>

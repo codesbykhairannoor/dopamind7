@@ -8,7 +8,8 @@ import {
 } from 'lucide-vue-next';
 
 const props = defineProps({
-    materials: { type: Array, default: () => [] }
+    materials: { type: Array, default: () => [] },
+    settings: { type: Object, default: () => ({}) }
 });
 
 const isLimitReached = computed(() => props.materials.length >= 6);
@@ -18,7 +19,12 @@ const slotsLeft = computed(() => Math.max(0, 6 - props.materials.length));
 const sharedMeta = reactive({
     course_name: '',
     week: '',
-    grade: ''
+    grade: '',
+    show_radar: props.settings?.show_radar ?? true,
+    show_archetypes: props.settings?.show_archetypes ?? true,
+    show_materials: props.settings?.show_materials ?? true,
+    show_career_target: props.settings?.show_career_target ?? true,
+    career_target: props.settings?.career_target ?? ''
 });
 
 // ─── Factory: create a clean panel state ──────────────────────────────────────
@@ -143,6 +149,12 @@ const submitAll = () => {
         formData.append(`artifact_files[${i}]`, q.file);
     });
 
+    formData.append('show_radar', sharedMeta.show_radar);
+    formData.append('show_archetypes', sharedMeta.show_archetypes);
+    formData.append('show_materials', sharedMeta.show_materials);
+    formData.append('show_career_target', sharedMeta.show_career_target);
+    if (sharedMeta.career_target) formData.append('career_target', sharedMeta.career_target);
+
     router.post(route('study.store'), formData, {
         forceFormData: true,
         preserveScroll: true,
@@ -232,6 +244,53 @@ const globalHasPending = computed(() => {
                 <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_grade', 'Grade / Score') }}</label>
                 <input v-model="sharedMeta.grade" type="number" min="0" max="100" step="0.01" placeholder="85.50"
                     class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+            </div>
+
+            <!-- Settings Divider -->
+            <div class="md:col-span-12 border-t border-slate-200/60 dark:border-slate-800/60 pt-4 mt-2">
+                <h4 class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4">{{ $t('study_display_settings', 'Display Settings') }}</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-3">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="relative flex items-center">
+                                <input type="checkbox" v-model="sharedMeta.show_radar" class="sr-only peer" />
+                                <div class="w-10 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-indigo-500"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">{{ $t('study_setting_radar', 'Show Competency Radar') }}</span>
+                        </label>
+
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="relative flex items-center">
+                                <input type="checkbox" v-model="sharedMeta.show_archetypes" class="sr-only peer" />
+                                <div class="w-10 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-indigo-500"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">{{ $t('study_setting_archetypes', 'Show Career Archetypes') }}</span>
+                        </label>
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="relative flex items-center">
+                                <input type="checkbox" v-model="sharedMeta.show_materials" class="sr-only peer" />
+                                <div class="w-10 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-indigo-500"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">{{ $t('study_setting_materials', 'Show Coursework Materials') }}</span>
+                        </label>
+
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="relative flex items-center">
+                                <input type="checkbox" v-model="sharedMeta.show_career_target" class="sr-only peer" />
+                                <div class="w-10 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-indigo-500"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition">{{ $t('study_setting_career_target', 'Show Career Target') }}</span>
+                        </label>
+                    </div>
+
+                    <div v-if="sharedMeta.show_career_target" class="md:col-span-12 mt-2">
+                        <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_career_target_input', 'Custom Career Goal') }}</label>
+                        <input v-model="sharedMeta.career_target" type="text" placeholder="e.g. Machine Learning Engineer, Frontend Developer" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
