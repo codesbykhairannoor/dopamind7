@@ -764,40 +764,10 @@ const profileBio = computed(() => {
                             </span>
                             <ChevronRight class="h-4 w-4 transform group-hover:translate-x-1 transition duration-300" />
                         </div>
-                    </Link>
+                    </a>
                 </div>
             </section>
         </main>
-
-                </div>
-
-                <!-- Modal Footer -->
-                <div class="px-6 py-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between shrink-0 bg-slate-50 dark:bg-slate-900/50">
-                    <div class="flex items-center gap-2 text-slate-400 dark:text-slate-500 text-xs font-semibold">
-                        <template v-if="selectedMaterial.embed_url">
-                            <Link2 class="h-4 w-4 text-indigo-500" />
-                            <span class="truncate max-w-[200px] md:max-w-md">{{ selectedMaterial.file_name }}</span>
-                        </template>
-                        <template v-else-if="selectedMaterial.rich_text">
-                            <BookOpen class="h-4 w-4 text-purple-500" />
-                            <span class="truncate max-w-[200px] md:max-w-md">Reflective Document (Text)</span>
-                        </template>
-                        <template v-else>
-                            <FileText class="h-4 w-4 text-blue-500" />
-                            <span class="truncate max-w-[200px] md:max-w-md">{{ selectedMaterial.file_name }}</span>
-                        </template>
-                    </div>
-                    <button 
-                        @click="closeReader"
-                        class="px-4 py-2 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 font-bold text-xs rounded-xl shadow transition"
-                    >
-                        {{ $t('portfolio_close_viewer', 'Close Viewer') }}
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
     </div>
 </template>
 
