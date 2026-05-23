@@ -4,9 +4,8 @@ import { ref, computed, reactive } from 'vue';
 import { 
     Sparkles, Loader2, Link2, BookOpen, FileText, PlusCircle,
     Upload, Trash2, CheckCircle2, XCircle, AlertTriangle, Files,
-    Info
+    Info, File
 } from 'lucide-vue-next';
-import InputError from '@/Components/InputError.vue';
 
 const props = defineProps({
     materialsCount: { type: Number, default: 0 }
@@ -28,15 +27,18 @@ const makePanel = (type) => ({
     input_mode: 'file',       // 'file' | 'link' | 'text'
     embed_url: '',
     rich_text: '',
-    // Multi-file queue (for PDF mode)
+    // Multi-file queue (for PDF/DOCX/PPTX)
     fileQueue: [],            // [{ file, name, size, status: 'pending'|'uploading'|'done'|'error', error }]
-    isSubmitting: false,
     dragOver: false,
-    fileInput: null,
 });
 
 const contextPanel = reactive(makePanel('context'));
 const artifactPanel = reactive(makePanel('artifact'));
+
+const contextFileInput = ref(null);
+const artifactFileInput = ref(null);
+
+const isSubmittingAll = ref(false);
 
 // ─── Computed ─────────────────────────────────────────────────────────────────
 const wordCount = (text) => {
@@ -47,11 +49,20 @@ const wordCount = (text) => {
 const maxWords = 500;
 
 // ─── File handling ────────────────────────────────────────────────────────────
+const allowedExtensions = ['.pdf', '.docx', '.pptx'];
+const allowedTypes = [
+    'application/pdf',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+];
+
 const addFilesToQueue = (panel, files) => {
     if (!files || files.length === 0) return;
     for (const file of files) {
-        if (file.type !== 'application/pdf') {
-            alert(`"${file.name}" is not a PDF file. Only PDF files are supported.`);
+        const ext = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+        
+        if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(ext)) {
+            alert(`"${file.name}" is not supported. Only PDF, DOCX, and PPTX are allowed.`);
             continue;
         }
         if (file.size > 10 * 1024 * 1024) {
@@ -78,8 +89,9 @@ const handleDrop = (panel, e) => {
     addFilesToQueue(panel, e.dataTransfer.files);
 };
 
-const triggerFileInput = (panel) => {
-    panel.fileInput?.click();
+const triggerFileInput = (panelType) => {
+    if (panelType === 'context' && contextFileInput.value) contextFileInput.value.click();
+    if (panelType === 'artifact' && artifactFileInput.value) artifactFileInput.value.click();
 };
 
 const handleFileSelect = (panel, e) => {
@@ -140,20 +152,11 @@ const submitLinkOrText = (panel) => {
 };
 
 const submitPanel = async (panel) => {
-    if (!sharedMeta.course_name.trim()) {
-        alert('Please enter a Course Name first.');
-        return;
-    }
-    if (isLimitReached.value) return;
     if (panel.input_mode === 'link' && !panel.embed_url.trim()) return;
-    if (panel.input_mode === 'text' && !panel.rich_text.trim()) return;
-    if (panel.input_mode === 'text' && wordCount(panel.rich_text) > maxWords) return;
+    if (panel.input_mode === 'text' && (!panel.rich_text.trim() || wordCount(panel.rich_text) > maxWords)) return;
     if (panel.input_mode === 'file' && panel.fileQueue.filter(f => f.status === 'pending').length === 0) return;
 
-    panel.isSubmitting = true;
-
     if (panel.input_mode === 'file') {
-        // Process queue sequentially
         const pending = panel.fileQueue.filter(f => f.status === 'pending');
         for (const item of pending) {
             if (props.materialsCount >= 6) {
@@ -163,7 +166,6 @@ const submitPanel = async (panel) => {
             }
             await submitSingleFile(panel, item);
         }
-        // Clean done items after a moment
         setTimeout(() => {
             panel.fileQueue = panel.fileQueue.filter(f => f.status !== 'done');
         }, 3000);
@@ -172,8 +174,33 @@ const submitPanel = async (panel) => {
         panel.embed_url = '';
         panel.rich_text = '';
     }
+};
 
-    panel.isSubmitting = false;
+const submitAll = async () => {
+    if (!sharedMeta.course_name.trim()) {
+        alert('Please enter a Course Name first.');
+        return;
+    }
+    if (isLimitReached.value) {
+        alert('Upload limit reached (Max 6 Cards).');
+        return;
+    }
+    
+    // Check if there's anything to submit at all
+    const hasContext = hasPendingItems(contextPanel);
+    const hasArtifact = hasPendingItems(artifactPanel);
+    
+    if (!hasContext && !hasArtifact) {
+        alert('Please add at least one context or artifact file/link to analyze.');
+        return;
+    }
+
+    isSubmittingAll.value = true;
+
+    if (hasContext) await submitPanel(contextPanel);
+    if (hasArtifact) await submitPanel(artifactPanel);
+
+    isSubmittingAll.value = false;
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -189,6 +216,10 @@ const hasPendingItems = (panel) => {
     if (panel.input_mode === 'text') return !!panel.rich_text.trim() && wordCount(panel.rich_text) <= maxWords;
     return false;
 };
+
+const globalHasPending = computed(() => {
+    return hasPendingItems(contextPanel) || hasPendingItems(artifactPanel);
+});
 </script>
 
 <template>
@@ -251,7 +282,7 @@ const hasPendingItems = (panel) => {
     </div>
 
     <!-- Two-panel layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 
         <!-- ── CONTEXT PANEL (Left / Blue) ─────────────────────────────────── -->
         <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md rounded-[2.5rem] border border-blue-100/60 dark:border-blue-900/30 shadow-[0_10px_45px_-4px_rgba(59,130,246,0.06)] overflow-hidden">
@@ -278,7 +309,7 @@ const hasPendingItems = (panel) => {
                     <button type="button" @click="contextPanel.input_mode = 'file'"
                         class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
                         :class="contextPanel.input_mode === 'file' ? 'bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
-                        <FileText class="h-3 w-3" /> PDF
+                        <FileText class="h-3 w-3" /> File
                     </button>
                     <button type="button" @click="contextPanel.input_mode = 'link'"
                         class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
@@ -292,21 +323,21 @@ const hasPendingItems = (panel) => {
                     </button>
                 </div>
 
-                <!-- PDF Drop Zone -->
+                <!-- File Drop Zone -->
                 <div v-if="contextPanel.input_mode === 'file'">
-                    <input ref="el => contextPanel.fileInput = el" type="file" accept="application/pdf" multiple class="hidden"
+                    <input ref="contextFileInput" type="file" accept=".pdf,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation" multiple class="hidden"
                         @change="e => handleFileSelect(contextPanel, e)" />
                     <div
                         @dragover="e => handleDragOver(contextPanel, e)"
                         @dragleave="() => handleDragLeave(contextPanel)"
                         @drop="e => handleDrop(contextPanel, e)"
-                        @click="triggerFileInput(contextPanel)"
+                        @click="triggerFileInput('context')"
                         class="border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition duration-300 flex flex-col items-center gap-2"
                         :class="contextPanel.dragOver ? 'border-blue-500 bg-blue-50/30 dark:bg-blue-950/20' : 'border-slate-300 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-700 bg-slate-50/50 dark:bg-slate-950/30'"
                     >
                         <div class="h-10 w-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📥</div>
-                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">Drop PDFs here or click to browse</span>
-                        <span class="text-[10px] text-slate-400">Multiple files supported · Max 10MB each</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">Drop files here or click to browse</span>
+                        <span class="text-[10px] text-slate-400">PDF, DOCX, PPTX supported · Max 10MB each</span>
                     </div>
 
                     <!-- File Queue -->
@@ -320,7 +351,7 @@ const hasPendingItems = (panel) => {
                                 'bg-red-50/50 dark:bg-red-950/20 border-red-200/50 dark:border-red-900/30': item.status === 'error'
                             }"
                         >
-                            <FileText class="h-4 w-4 shrink-0"
+                            <File class="h-4 w-4 shrink-0"
                                 :class="{
                                     'text-slate-400': item.status === 'pending',
                                     'text-blue-500 animate-pulse': item.status === 'uploading',
@@ -366,25 +397,6 @@ const hasPendingItems = (panel) => {
                         :class="wordCount(contextPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>
                 </div>
-
-                <!-- Submit Button -->
-                <div class="pt-4 border-t border-slate-100 dark:border-slate-800/50 mt-4">
-                    <button 
-                        type="button"
-                        @click="submitPanel(contextPanel)"
-                        :disabled="contextPanel.isSubmitting || !sharedMeta.course_name.trim() || !hasPendingItems(contextPanel) || isLimitReached"
-                        class="w-full py-4 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm rounded-2xl shadow-md shadow-blue-600/10 transition flex items-center justify-center gap-2 group"
-                    >
-                        <Loader2 v-if="contextPanel.isSubmitting" class="h-4 w-4 animate-spin" />
-                        <span v-else class="flex items-center gap-1.5">
-                            Analyze Context 
-                            <Sparkles class="h-4 w-4 group-hover:animate-pulse" />
-                        </span>
-                    </button>
-                    <p v-if="!sharedMeta.course_name.trim()" class="text-[10px] text-center text-slate-400 font-semibold mt-2">
-                        Please fill the Course Name above first.
-                    </p>
-                </div>
             </div>
         </div>
 
@@ -413,7 +425,7 @@ const hasPendingItems = (panel) => {
                     <button type="button" @click="artifactPanel.input_mode = 'file'"
                         class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
                         :class="artifactPanel.input_mode === 'file' ? 'bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 shadow-sm' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'">
-                        <FileText class="h-3 w-3" /> PDF
+                        <FileText class="h-3 w-3" /> File
                     </button>
                     <button type="button" @click="artifactPanel.input_mode = 'link'"
                         class="flex-1 py-2 px-2 rounded-xl text-[11px] font-bold transition flex items-center justify-center gap-1.5"
@@ -427,21 +439,21 @@ const hasPendingItems = (panel) => {
                     </button>
                 </div>
 
-                <!-- PDF Drop Zone -->
+                <!-- File Drop Zone -->
                 <div v-if="artifactPanel.input_mode === 'file'">
-                    <input ref="el => artifactPanel.fileInput = el" type="file" accept="application/pdf" multiple class="hidden"
+                    <input ref="artifactFileInput" type="file" accept=".pdf,.docx,.pptx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.presentationml.presentation" multiple class="hidden"
                         @change="e => handleFileSelect(artifactPanel, e)" />
                     <div
                         @dragover="e => handleDragOver(artifactPanel, e)"
                         @dragleave="() => handleDragLeave(artifactPanel)"
                         @drop="e => handleDrop(artifactPanel, e)"
-                        @click="triggerFileInput(artifactPanel)"
+                        @click="triggerFileInput('artifact')"
                         class="border-2 border-dashed rounded-2xl p-6 text-center cursor-pointer transition duration-300 flex flex-col items-center gap-2"
                         :class="artifactPanel.dragOver ? 'border-emerald-500 bg-emerald-50/30 dark:bg-emerald-950/20' : 'border-slate-300 dark:border-slate-800 hover:border-emerald-400 dark:hover:border-emerald-700 bg-slate-50/50 dark:bg-slate-950/30'"
                     >
                         <div class="h-10 w-10 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-center justify-center shadow-sm text-xl">📤</div>
-                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">Drop PDFs here or click to browse</span>
-                        <span class="text-[10px] text-slate-400">Multiple files supported · Max 10MB each</span>
+                        <span class="text-xs font-bold text-slate-600 dark:text-slate-400 mt-2">Drop files here or click to browse</span>
+                        <span class="text-[10px] text-slate-400">PDF, DOCX, PPTX supported · Max 10MB each</span>
                     </div>
 
                     <!-- File Queue -->
@@ -455,7 +467,7 @@ const hasPendingItems = (panel) => {
                                 'bg-red-50/50 dark:bg-red-950/20 border-red-200/50 dark:border-red-900/30': item.status === 'error'
                             }"
                         >
-                            <FileText class="h-4 w-4 shrink-0"
+                            <File class="h-4 w-4 shrink-0"
                                 :class="{
                                     'text-slate-400': item.status === 'pending',
                                     'text-emerald-500 animate-pulse': item.status === 'uploading',
@@ -501,27 +513,25 @@ const hasPendingItems = (panel) => {
                         :class="wordCount(artifactPanel.rich_text) > maxWords ? 'border-rose-500' : 'border-slate-200 dark:border-slate-800'"
                     ></textarea>
                 </div>
-
-                <!-- Submit Button -->
-                <div class="pt-4 border-t border-slate-100 dark:border-slate-800/50 mt-4">
-                    <button 
-                        type="button"
-                        @click="submitPanel(artifactPanel)"
-                        :disabled="artifactPanel.isSubmitting || !sharedMeta.course_name.trim() || !hasPendingItems(artifactPanel) || isLimitReached"
-                        class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm rounded-2xl shadow-md shadow-emerald-600/10 transition flex items-center justify-center gap-2 group"
-                    >
-                        <Loader2 v-if="artifactPanel.isSubmitting" class="h-4 w-4 animate-spin" />
-                        <span v-else class="flex items-center gap-1.5">
-                            Analyze Artifact 
-                            <Sparkles class="h-4 w-4 group-hover:animate-pulse" />
-                        </span>
-                    </button>
-                    <p v-if="!sharedMeta.course_name.trim()" class="text-[10px] text-center text-slate-400 font-semibold mt-2">
-                        Please fill the Course Name above first.
-                    </p>
-                </div>
             </div>
         </div>
 
     </div>
+
+    <!-- SINGLE GLOBAL SUBMIT BUTTON -->
+    <div class="flex justify-center mb-8">
+        <button 
+            type="button"
+            @click="submitAll"
+            :disabled="isSubmittingAll || isLimitReached || !globalHasPending"
+            class="px-12 py-5 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-extrabold text-base rounded-3xl shadow-xl shadow-indigo-600/20 hover:shadow-2xl hover:shadow-indigo-600/30 transition-all flex items-center justify-center gap-3 group min-w-[300px]"
+        >
+            <Loader2 v-if="isSubmittingAll" class="h-6 w-6 animate-spin" />
+            <span v-else class="flex items-center gap-2">
+                Analyze Everything 
+                <Sparkles class="h-5 w-5 group-hover:scale-110 transition-transform" />
+            </span>
+        </button>
+    </div>
+
 </template>
