@@ -3884,6 +3884,60 @@ const planner_ai_promo_badge$1 = "Neural OS Integration";
 const planner_ai_promo_title$1 = "AI-Powered Execution Loops";
 const planner_ai_promo_desc$1 = "Neural OS analyzes your cognitive load in real-time and dynamically reschedules low-impact tasks to ensure you always have peak energy for high-priority work.";
 const planner_ai_promo_btn$1 = "Explore Neural OS";
+const portfolio_learn_about_ipow$1 = "Learn about IPoW";
+const portfolio_back_to_profile$1 = "Back to Public Profile";
+const portfolio_ipow_verified$1 = "IPoW Verified";
+const portfolio_stat_verified_cards$1 = "Verified Cards";
+const portfolio_stat_coursework_artifacts$1 = "coursework artifacts";
+const portfolio_stat_ml_archetype$1 = "ML Archetype Fit";
+const portfolio_stat_confidence$1 = "confidence";
+const portfolio_stat_strongest_skill$1 = "Strongest Skill";
+const portfolio_stat_mastery_index$1 = "mastery index";
+const portfolio_stat_unique_tags$1 = "Unique Skill Tags";
+const portfolio_stat_extracted_by_ai$1 = "extracted by AI";
+const portfolio_neural_summary_label$1 = "Neural Profile Summary";
+const portfolio_all_skill_tags_label$1 = "All Verified Skill Tags Across Coursework";
+const portfolio_verified_competencies$1 = "Verified Competencies";
+const portfolio_competency_subtitle$1 = "Competency indices mapped dynamically from raw academic files";
+const portfolio_target_career_prefix$1 = "Target Career Fit:";
+const portfolio_acquired_skills_label$1 = "Acquired Skills Matching Goal";
+const portfolio_recommended_skills_label$1 = "Recommended Skill Additions";
+const portfolio_ml_archetypes_title$1 = "ML Archetype Fits";
+const portfolio_archetypes_subtitle$1 = "Career path scores calculated using Scikit-Learn Local Classification Models";
+const portfolio_no_alignment$1 = "No career alignment analysis available.";
+const portfolio_neural_verdict_label$1 = "Neural Classifier Verdict";
+const portfolio_content_hidden_title$1 = "Portfolio Content Hidden";
+const portfolio_content_hidden_desc$1 = "The student has configured their portfolio display settings to hide academic competencies, career target indicators, and coursework list.";
+const portfolio_audited_coursework_title$1 = "Audited Coursework & Documents";
+const portfolio_coursework_subtitle$1 = "A secure repository of coursework materials. Click on any document to audit the content inline.";
+const portfolio_no_coursework$1 = "No coursework records verified yet for this student.";
+const portfolio_audit_action$1 = "Audit coursework";
+const portfolio_bio_empty$1 = "is building their verified academic profile on OneForMind. No coursework has been audited yet.";
+const portfolio_bio_has$1 = "has";
+const portfolio_bio_in_field$1 = "verified coursework artifact(s) audited through the IPoW protocol, demonstrating proven academic work in the field of";
+const portfolio_bio_strongest$1 = "Strongest verified competency:";
+const portfolio_bio_key_skills$1 = "Key technical skills include:";
+const portfolio_card_details_label$1 = "Coursework Details";
+const portfolio_card_course_label$1 = "Course / Class";
+const portfolio_card_category_label$1 = "Card Category";
+const portfolio_card_type_context$1 = "Syllabus Context";
+const portfolio_card_type_artifact$1 = "Proof Artifact";
+const portfolio_card_period_label$1 = "Audit Period";
+const portfolio_card_score_label$1 = "Academic Score";
+const portfolio_card_skill_tags_label$1 = "Verified Skill Tags";
+const portfolio_card_competencies_label$1 = "Verified Competencies";
+const portfolio_card_external_label$1 = "External Resource Showcase";
+const portfolio_card_ai_summary_label$1 = "AI Context & Competency Summary";
+const portfolio_card_open_link$1 = "Open Resource Link";
+const portfolio_card_reflective_header$1 = "Reflective Text Content";
+const portfolio_card_reflective_subtitle$1 = "Self-Reflective Proof of Work Document";
+const portfolio_card_hidden_title$1 = "Coursework Document Hidden";
+const portfolio_card_hidden_desc$1 = "The student has configured their portfolio display settings to hide coursework audits.";
+const portfolio_security_audit_label$1 = "Security Audit status:";
+const portfolio_open_external_demo$1 = "Open Demo / Codebase Link";
+const portfolio_reader_context_type$1 = "Course syllabus context";
+const portfolio_reader_artifact_type$1 = "Coursework task report";
+const portfolio_close_viewer$1 = "Close Viewer";
 const press_kit_title$1 = "Press Kit";
 const press_kit_subtitle$1 = "Official assets and brand guidelines for OneForMind.";
 const press_kit_bio_title$1 = "About OneForMind";
@@ -5397,6 +5451,28 @@ const stat_metrics_uptime$1 = "Annual Uptime";
 const stat_cta_title$1 = "Stay Informed";
 const stat_cta_desc$1 = "Follow our technical updates for detailed incident reports.";
 const stat_cta_btn$1 = "Go to Community Hub";
+const nav_item_study$1 = "Study Console";
+const study_title$1 = "Interactive Study Console";
+const study_subtitle$1 = "Upload syllabus context and course artifacts. Map your skills and verify career archetype fits.";
+const study_upload_context$1 = "Upload Context (Syllabus/Question Sheet)";
+const study_upload_artifact$1 = "Upload Artifact (Report/PPT/Assignment)";
+const study_course_name$1 = "Course Name";
+const study_week$1 = "Week / Period (Optional)";
+const study_grade$1 = "Lecturer Grade / Score (Optional)";
+const study_processing$1 = "Processing...";
+const study_status_completed$1 = "Parsed Successfully";
+const study_status_failed$1 = "Parsing Failed";
+const study_radar_title$1 = "Competency Radar";
+const study_radar_subtitle$1 = "Derived from your verified academic records";
+const study_archetype_title$1 = "Career Archetypes Match";
+const study_archetype_subtitle$1 = "Predicted by our Scikit-Learn local classifier models";
+const study_public_url$1 = "Public Portfolio URL";
+const study_set_username$1 = "Set Username to Share";
+const study_save_username$1 = "Save URL";
+const study_empty_state$1 = "No study materials uploaded yet. Upload your syllabus or task reports to begin building your neural competency profile.";
+const study_share_card$1 = "Copy Shareable Link";
+const study_share_copied$1 = "Copied!";
+const study_share_no_username$1 = "Set a username to share this card";
 const en = {
   about_meta_desc: about_meta_desc$1,
   about_meta_og_title: about_meta_og_title$1,
@@ -9233,6 +9309,60 @@ const en = {
   planner_ai_promo_title: planner_ai_promo_title$1,
   planner_ai_promo_desc: planner_ai_promo_desc$1,
   planner_ai_promo_btn: planner_ai_promo_btn$1,
+  portfolio_learn_about_ipow: portfolio_learn_about_ipow$1,
+  portfolio_back_to_profile: portfolio_back_to_profile$1,
+  portfolio_ipow_verified: portfolio_ipow_verified$1,
+  portfolio_stat_verified_cards: portfolio_stat_verified_cards$1,
+  portfolio_stat_coursework_artifacts: portfolio_stat_coursework_artifacts$1,
+  portfolio_stat_ml_archetype: portfolio_stat_ml_archetype$1,
+  portfolio_stat_confidence: portfolio_stat_confidence$1,
+  portfolio_stat_strongest_skill: portfolio_stat_strongest_skill$1,
+  portfolio_stat_mastery_index: portfolio_stat_mastery_index$1,
+  portfolio_stat_unique_tags: portfolio_stat_unique_tags$1,
+  portfolio_stat_extracted_by_ai: portfolio_stat_extracted_by_ai$1,
+  portfolio_neural_summary_label: portfolio_neural_summary_label$1,
+  portfolio_all_skill_tags_label: portfolio_all_skill_tags_label$1,
+  portfolio_verified_competencies: portfolio_verified_competencies$1,
+  portfolio_competency_subtitle: portfolio_competency_subtitle$1,
+  portfolio_target_career_prefix: portfolio_target_career_prefix$1,
+  portfolio_acquired_skills_label: portfolio_acquired_skills_label$1,
+  portfolio_recommended_skills_label: portfolio_recommended_skills_label$1,
+  portfolio_ml_archetypes_title: portfolio_ml_archetypes_title$1,
+  portfolio_archetypes_subtitle: portfolio_archetypes_subtitle$1,
+  portfolio_no_alignment: portfolio_no_alignment$1,
+  portfolio_neural_verdict_label: portfolio_neural_verdict_label$1,
+  portfolio_content_hidden_title: portfolio_content_hidden_title$1,
+  portfolio_content_hidden_desc: portfolio_content_hidden_desc$1,
+  portfolio_audited_coursework_title: portfolio_audited_coursework_title$1,
+  portfolio_coursework_subtitle: portfolio_coursework_subtitle$1,
+  portfolio_no_coursework: portfolio_no_coursework$1,
+  portfolio_audit_action: portfolio_audit_action$1,
+  portfolio_bio_empty: portfolio_bio_empty$1,
+  portfolio_bio_has: portfolio_bio_has$1,
+  portfolio_bio_in_field: portfolio_bio_in_field$1,
+  portfolio_bio_strongest: portfolio_bio_strongest$1,
+  portfolio_bio_key_skills: portfolio_bio_key_skills$1,
+  portfolio_card_details_label: portfolio_card_details_label$1,
+  portfolio_card_course_label: portfolio_card_course_label$1,
+  portfolio_card_category_label: portfolio_card_category_label$1,
+  portfolio_card_type_context: portfolio_card_type_context$1,
+  portfolio_card_type_artifact: portfolio_card_type_artifact$1,
+  portfolio_card_period_label: portfolio_card_period_label$1,
+  portfolio_card_score_label: portfolio_card_score_label$1,
+  portfolio_card_skill_tags_label: portfolio_card_skill_tags_label$1,
+  portfolio_card_competencies_label: portfolio_card_competencies_label$1,
+  portfolio_card_external_label: portfolio_card_external_label$1,
+  portfolio_card_ai_summary_label: portfolio_card_ai_summary_label$1,
+  portfolio_card_open_link: portfolio_card_open_link$1,
+  portfolio_card_reflective_header: portfolio_card_reflective_header$1,
+  portfolio_card_reflective_subtitle: portfolio_card_reflective_subtitle$1,
+  portfolio_card_hidden_title: portfolio_card_hidden_title$1,
+  portfolio_card_hidden_desc: portfolio_card_hidden_desc$1,
+  portfolio_security_audit_label: portfolio_security_audit_label$1,
+  portfolio_open_external_demo: portfolio_open_external_demo$1,
+  portfolio_reader_context_type: portfolio_reader_context_type$1,
+  portfolio_reader_artifact_type: portfolio_reader_artifact_type$1,
+  portfolio_close_viewer: portfolio_close_viewer$1,
   press_kit_title: press_kit_title$1,
   press_kit_subtitle: press_kit_subtitle$1,
   press_kit_bio_title: press_kit_bio_title$1,
@@ -10745,7 +10875,29 @@ const en = {
   stat_metrics_uptime: stat_metrics_uptime$1,
   stat_cta_title: stat_cta_title$1,
   stat_cta_desc: stat_cta_desc$1,
-  stat_cta_btn: stat_cta_btn$1
+  stat_cta_btn: stat_cta_btn$1,
+  nav_item_study: nav_item_study$1,
+  study_title: study_title$1,
+  study_subtitle: study_subtitle$1,
+  study_upload_context: study_upload_context$1,
+  study_upload_artifact: study_upload_artifact$1,
+  study_course_name: study_course_name$1,
+  study_week: study_week$1,
+  study_grade: study_grade$1,
+  study_processing: study_processing$1,
+  study_status_completed: study_status_completed$1,
+  study_status_failed: study_status_failed$1,
+  study_radar_title: study_radar_title$1,
+  study_radar_subtitle: study_radar_subtitle$1,
+  study_archetype_title: study_archetype_title$1,
+  study_archetype_subtitle: study_archetype_subtitle$1,
+  study_public_url: study_public_url$1,
+  study_set_username: study_set_username$1,
+  study_save_username: study_save_username$1,
+  study_empty_state: study_empty_state$1,
+  study_share_card: study_share_card$1,
+  study_share_copied: study_share_copied$1,
+  study_share_no_username: study_share_no_username$1
 };
 const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -13759,6 +13911,7 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   nav_item_planner: nav_item_planner$1,
   nav_item_premium: nav_item_premium$1,
   nav_item_settings: nav_item_settings$1,
+  nav_item_study: nav_item_study$1,
   nav_language: nav_language$1,
   nav_login: nav_login$2,
   nav_logout: nav_logout$1,
@@ -14480,6 +14633,60 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pm_table_row_4_col_1: pm_table_row_4_col_1$1,
   pm_table_row_4_col_2: pm_table_row_4_col_2$1,
   pm_table_row_4_title: pm_table_row_4_title$1,
+  portfolio_acquired_skills_label: portfolio_acquired_skills_label$1,
+  portfolio_all_skill_tags_label: portfolio_all_skill_tags_label$1,
+  portfolio_archetypes_subtitle: portfolio_archetypes_subtitle$1,
+  portfolio_audit_action: portfolio_audit_action$1,
+  portfolio_audited_coursework_title: portfolio_audited_coursework_title$1,
+  portfolio_back_to_profile: portfolio_back_to_profile$1,
+  portfolio_bio_empty: portfolio_bio_empty$1,
+  portfolio_bio_has: portfolio_bio_has$1,
+  portfolio_bio_in_field: portfolio_bio_in_field$1,
+  portfolio_bio_key_skills: portfolio_bio_key_skills$1,
+  portfolio_bio_strongest: portfolio_bio_strongest$1,
+  portfolio_card_ai_summary_label: portfolio_card_ai_summary_label$1,
+  portfolio_card_category_label: portfolio_card_category_label$1,
+  portfolio_card_competencies_label: portfolio_card_competencies_label$1,
+  portfolio_card_course_label: portfolio_card_course_label$1,
+  portfolio_card_details_label: portfolio_card_details_label$1,
+  portfolio_card_external_label: portfolio_card_external_label$1,
+  portfolio_card_hidden_desc: portfolio_card_hidden_desc$1,
+  portfolio_card_hidden_title: portfolio_card_hidden_title$1,
+  portfolio_card_open_link: portfolio_card_open_link$1,
+  portfolio_card_period_label: portfolio_card_period_label$1,
+  portfolio_card_reflective_header: portfolio_card_reflective_header$1,
+  portfolio_card_reflective_subtitle: portfolio_card_reflective_subtitle$1,
+  portfolio_card_score_label: portfolio_card_score_label$1,
+  portfolio_card_skill_tags_label: portfolio_card_skill_tags_label$1,
+  portfolio_card_type_artifact: portfolio_card_type_artifact$1,
+  portfolio_card_type_context: portfolio_card_type_context$1,
+  portfolio_close_viewer: portfolio_close_viewer$1,
+  portfolio_competency_subtitle: portfolio_competency_subtitle$1,
+  portfolio_content_hidden_desc: portfolio_content_hidden_desc$1,
+  portfolio_content_hidden_title: portfolio_content_hidden_title$1,
+  portfolio_coursework_subtitle: portfolio_coursework_subtitle$1,
+  portfolio_ipow_verified: portfolio_ipow_verified$1,
+  portfolio_learn_about_ipow: portfolio_learn_about_ipow$1,
+  portfolio_ml_archetypes_title: portfolio_ml_archetypes_title$1,
+  portfolio_neural_summary_label: portfolio_neural_summary_label$1,
+  portfolio_neural_verdict_label: portfolio_neural_verdict_label$1,
+  portfolio_no_alignment: portfolio_no_alignment$1,
+  portfolio_no_coursework: portfolio_no_coursework$1,
+  portfolio_open_external_demo: portfolio_open_external_demo$1,
+  portfolio_reader_artifact_type: portfolio_reader_artifact_type$1,
+  portfolio_reader_context_type: portfolio_reader_context_type$1,
+  portfolio_recommended_skills_label: portfolio_recommended_skills_label$1,
+  portfolio_security_audit_label: portfolio_security_audit_label$1,
+  portfolio_stat_confidence: portfolio_stat_confidence$1,
+  portfolio_stat_coursework_artifacts: portfolio_stat_coursework_artifacts$1,
+  portfolio_stat_extracted_by_ai: portfolio_stat_extracted_by_ai$1,
+  portfolio_stat_mastery_index: portfolio_stat_mastery_index$1,
+  portfolio_stat_ml_archetype: portfolio_stat_ml_archetype$1,
+  portfolio_stat_strongest_skill: portfolio_stat_strongest_skill$1,
+  portfolio_stat_unique_tags: portfolio_stat_unique_tags$1,
+  portfolio_stat_verified_cards: portfolio_stat_verified_cards$1,
+  portfolio_target_career_prefix: portfolio_target_career_prefix$1,
+  portfolio_verified_competencies: portfolio_verified_competencies$1,
   preparing_analytics: preparing_analytics$1,
   press_kit_bio_desc: press_kit_bio_desc$1,
   press_kit_bio_title: press_kit_bio_title$1,
@@ -15693,6 +15900,27 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_science_topic_1: student_science_topic_1$1,
   student_science_topic_2: student_science_topic_2$1,
   student_science_topic_3: student_science_topic_3$1,
+  study_archetype_subtitle: study_archetype_subtitle$1,
+  study_archetype_title: study_archetype_title$1,
+  study_course_name: study_course_name$1,
+  study_empty_state: study_empty_state$1,
+  study_grade: study_grade$1,
+  study_processing: study_processing$1,
+  study_public_url: study_public_url$1,
+  study_radar_subtitle: study_radar_subtitle$1,
+  study_radar_title: study_radar_title$1,
+  study_save_username: study_save_username$1,
+  study_set_username: study_set_username$1,
+  study_share_card: study_share_card$1,
+  study_share_copied: study_share_copied$1,
+  study_share_no_username: study_share_no_username$1,
+  study_status_completed: study_status_completed$1,
+  study_status_failed: study_status_failed$1,
+  study_subtitle: study_subtitle$1,
+  study_title: study_title$1,
+  study_upload_artifact: study_upload_artifact$1,
+  study_upload_context: study_upload_context$1,
+  study_week: study_week$1,
   success_batch_saved: success_batch_saved$1,
   success_budget_saved: success_budget_saved$1,
   success_copy_habit: success_copy_habit$1,
@@ -19923,6 +20151,60 @@ const planner_ai_promo_badge = "Integrasi Neural OS";
 const planner_ai_promo_title = "Loop Eksekusi Berbasis AI";
 const planner_ai_promo_desc = "Neural OS menganalisa beban kognitif Anda secara real-time dan secara dinamis menjadwalkan ulang tugas berdampak rendah untuk memastikan Anda selalu memiliki energi puncak untuk pekerjaan prioritas tinggi.";
 const planner_ai_promo_btn = "Jelajahi Neural OS";
+const portfolio_learn_about_ipow = "Pelajari tentang IPoW";
+const portfolio_back_to_profile = "Kembali ke Profil Publik";
+const portfolio_ipow_verified = "Terverifikasi IPoW";
+const portfolio_stat_verified_cards = "Kartu Terverifikasi";
+const portfolio_stat_coursework_artifacts = "artefak mata kuliah";
+const portfolio_stat_ml_archetype = "Kecocokan Arketipe ML";
+const portfolio_stat_confidence = "kepercayaan";
+const portfolio_stat_strongest_skill = "Keahlian Terkuat";
+const portfolio_stat_mastery_index = "indeks penguasaan";
+const portfolio_stat_unique_tags = "Tag Keahlian Unik";
+const portfolio_stat_extracted_by_ai = "diekstrak oleh AI";
+const portfolio_neural_summary_label = "Ringkasan Profil Neural";
+const portfolio_all_skill_tags_label = "Semua Tag Keahlian Terverifikasi dari Seluruh Mata Kuliah";
+const portfolio_verified_competencies = "Kompetensi Terverifikasi";
+const portfolio_competency_subtitle = "Indeks kompetensi dipetakan secara dinamis dari berkas akademik asli";
+const portfolio_target_career_prefix = "Kecocokan Karir Target:";
+const portfolio_acquired_skills_label = "Keahlian yang Dimiliki Sesuai Target";
+const portfolio_recommended_skills_label = "Rekomendasi Keahlian Tambahan";
+const portfolio_ml_archetypes_title = "Kecocokan Arketipe ML";
+const portfolio_archetypes_subtitle = "Skor jalur karir dihitung menggunakan model Klasifikasi Scikit-Learn lokal";
+const portfolio_no_alignment = "Tidak ada analisis keselarasan karir yang tersedia.";
+const portfolio_neural_verdict_label = "Verdict Classifier Neural";
+const portfolio_content_hidden_title = "Konten Portofolio Disembunyikan";
+const portfolio_content_hidden_desc = "Mahasiswa telah mengkonfigurasi pengaturan tampilan portofolio untuk menyembunyikan kompetensi akademik, indikator target karir, dan daftar mata kuliah.";
+const portfolio_audited_coursework_title = "Arsip Mata Kuliah Teraudit";
+const portfolio_coursework_subtitle = "Repositori aman materi perkuliahan. Klik dokumen mana saja untuk mengaudit kontennya secara langsung.";
+const portfolio_no_coursework = "Belum ada rekaman mata kuliah yang terverifikasi untuk mahasiswa ini.";
+const portfolio_audit_action = "Audit mata kuliah";
+const portfolio_bio_empty = "sedang membangun profil akademik terverifikasi mereka di OneForMind. Belum ada mata kuliah yang diaudit.";
+const portfolio_bio_has = "memiliki";
+const portfolio_bio_in_field = "artefak mata kuliah terverifikasi yang diaudit melalui protokol IPoW, membuktikan karya akademik nyata di bidang";
+const portfolio_bio_strongest = "Kompetensi terverifikasi terkuat:";
+const portfolio_bio_key_skills = "Keahlian teknis utama meliputi:";
+const portfolio_card_details_label = "Detail Mata Kuliah";
+const portfolio_card_course_label = "Kursus / Kelas";
+const portfolio_card_category_label = "Kategori Kartu";
+const portfolio_card_type_context = "Konteks Silabus";
+const portfolio_card_type_artifact = "Artefak Bukti";
+const portfolio_card_period_label = "Periode Audit";
+const portfolio_card_score_label = "Nilai Akademik";
+const portfolio_card_skill_tags_label = "Tag Keahlian Terverifikasi";
+const portfolio_card_competencies_label = "Kompetensi Terverifikasi";
+const portfolio_card_external_label = "Tampilan Sumber Daya Eksternal";
+const portfolio_card_ai_summary_label = "Ringkasan Konteks & Kompetensi AI";
+const portfolio_card_open_link = "Buka Tautan Sumber Daya";
+const portfolio_card_reflective_header = "Konten Teks Reflektif";
+const portfolio_card_reflective_subtitle = "Dokumen Bukti Kerja Reflektif Mandiri";
+const portfolio_card_hidden_title = "Dokumen Mata Kuliah Disembunyikan";
+const portfolio_card_hidden_desc = "Mahasiswa telah mengkonfigurasi pengaturan tampilan portofolio untuk menyembunyikan audit mata kuliah.";
+const portfolio_security_audit_label = "Status Audit Keamanan:";
+const portfolio_open_external_demo = "Buka Tautan Demo / Kodebase";
+const portfolio_reader_context_type = "Konteks silabus mata kuliah";
+const portfolio_reader_artifact_type = "Laporan tugas mata kuliah";
+const portfolio_close_viewer = "Tutup Tampilan";
 const press_kit_title = "Press Kit";
 const press_kit_subtitle = "Aset resmi dan panduan brand untuk OneForMind.";
 const press_kit_bio_title = "Tentang OneForMind";
@@ -21463,6 +21745,28 @@ const stat_metrics_uptime = "Uptime Tahunan";
 const stat_cta_title = "Tetap Terinformasi";
 const stat_cta_desc = "Ikuti pembaruan teknis kami untuk laporan insiden yang mendalam.";
 const stat_cta_btn = "Ke Hub Komunitas";
+const nav_item_study = "Konsol Belajar";
+const study_title = "Konsol Belajar Interaktif";
+const study_subtitle = "Unggah konteks silabus dan berkas tugas kuliah. Petakan keterampilan Anda dan verifikasi kecocokan karir.";
+const study_upload_context = "Unggah Konteks (Silabus/Lembar Soal)";
+const study_upload_artifact = "Unggah Artefak (Laporan/Tugas/PPT)";
+const study_course_name = "Nama Mata Kuliah";
+const study_week = "Minggu / Periode (Opsional)";
+const study_grade = "Nilai Dosen (Opsional)";
+const study_processing = "Memproses...";
+const study_status_completed = "Berhasil Diparsing";
+const study_status_failed = "Parsing Gagal";
+const study_radar_title = "Radar Kompetensi";
+const study_radar_subtitle = "Dihasilkan dari rekaman akademik terverifikasi Anda";
+const study_archetype_title = "Kecocokan Model Karir";
+const study_archetype_subtitle = "Diprediksi oleh model klasifikasi Scikit-Learn lokal kami";
+const study_public_url = "URL Portofolio Publik";
+const study_set_username = "Atur Username untuk Berbagi";
+const study_save_username = "Simpan URL";
+const study_empty_state = "Belum ada dokumen belajar yang diunggah. Unggah silabus atau laporan tugas Anda untuk mulai membangun profil kompetensi neural Anda.";
+const study_share_card = "Salin Tautan Berbagi";
+const study_share_copied = "Tersalin!";
+const study_share_no_username = "Atur username untuk berbagi kartu ini";
 const id = {
   about_meta_desc,
   about_meta_og_title,
@@ -25260,6 +25564,60 @@ const id = {
   planner_ai_promo_title,
   planner_ai_promo_desc,
   planner_ai_promo_btn,
+  portfolio_learn_about_ipow,
+  portfolio_back_to_profile,
+  portfolio_ipow_verified,
+  portfolio_stat_verified_cards,
+  portfolio_stat_coursework_artifacts,
+  portfolio_stat_ml_archetype,
+  portfolio_stat_confidence,
+  portfolio_stat_strongest_skill,
+  portfolio_stat_mastery_index,
+  portfolio_stat_unique_tags,
+  portfolio_stat_extracted_by_ai,
+  portfolio_neural_summary_label,
+  portfolio_all_skill_tags_label,
+  portfolio_verified_competencies,
+  portfolio_competency_subtitle,
+  portfolio_target_career_prefix,
+  portfolio_acquired_skills_label,
+  portfolio_recommended_skills_label,
+  portfolio_ml_archetypes_title,
+  portfolio_archetypes_subtitle,
+  portfolio_no_alignment,
+  portfolio_neural_verdict_label,
+  portfolio_content_hidden_title,
+  portfolio_content_hidden_desc,
+  portfolio_audited_coursework_title,
+  portfolio_coursework_subtitle,
+  portfolio_no_coursework,
+  portfolio_audit_action,
+  portfolio_bio_empty,
+  portfolio_bio_has,
+  portfolio_bio_in_field,
+  portfolio_bio_strongest,
+  portfolio_bio_key_skills,
+  portfolio_card_details_label,
+  portfolio_card_course_label,
+  portfolio_card_category_label,
+  portfolio_card_type_context,
+  portfolio_card_type_artifact,
+  portfolio_card_period_label,
+  portfolio_card_score_label,
+  portfolio_card_skill_tags_label,
+  portfolio_card_competencies_label,
+  portfolio_card_external_label,
+  portfolio_card_ai_summary_label,
+  portfolio_card_open_link,
+  portfolio_card_reflective_header,
+  portfolio_card_reflective_subtitle,
+  portfolio_card_hidden_title,
+  portfolio_card_hidden_desc,
+  portfolio_security_audit_label,
+  portfolio_open_external_demo,
+  portfolio_reader_context_type,
+  portfolio_reader_artifact_type,
+  portfolio_close_viewer,
   press_kit_title,
   press_kit_subtitle,
   press_kit_bio_title,
@@ -26799,7 +27157,29 @@ const id = {
   stat_metrics_uptime,
   stat_cta_title,
   stat_cta_desc,
-  stat_cta_btn
+  stat_cta_btn,
+  nav_item_study,
+  study_title,
+  study_subtitle,
+  study_upload_context,
+  study_upload_artifact,
+  study_course_name,
+  study_week,
+  study_grade,
+  study_processing,
+  study_status_completed,
+  study_status_failed,
+  study_radar_title,
+  study_radar_subtitle,
+  study_archetype_title,
+  study_archetype_subtitle,
+  study_public_url,
+  study_set_username,
+  study_save_username,
+  study_empty_state,
+  study_share_card,
+  study_share_copied,
+  study_share_no_username
 };
 const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -29804,6 +30184,7 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   nav_item_planner,
   nav_item_premium,
   nav_item_settings,
+  nav_item_study,
   nav_language,
   nav_login: nav_login$1,
   nav_logout,
@@ -30526,6 +30907,60 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   pm_table_row_4_col_1,
   pm_table_row_4_col_2,
   pm_table_row_4_title,
+  portfolio_acquired_skills_label,
+  portfolio_all_skill_tags_label,
+  portfolio_archetypes_subtitle,
+  portfolio_audit_action,
+  portfolio_audited_coursework_title,
+  portfolio_back_to_profile,
+  portfolio_bio_empty,
+  portfolio_bio_has,
+  portfolio_bio_in_field,
+  portfolio_bio_key_skills,
+  portfolio_bio_strongest,
+  portfolio_card_ai_summary_label,
+  portfolio_card_category_label,
+  portfolio_card_competencies_label,
+  portfolio_card_course_label,
+  portfolio_card_details_label,
+  portfolio_card_external_label,
+  portfolio_card_hidden_desc,
+  portfolio_card_hidden_title,
+  portfolio_card_open_link,
+  portfolio_card_period_label,
+  portfolio_card_reflective_header,
+  portfolio_card_reflective_subtitle,
+  portfolio_card_score_label,
+  portfolio_card_skill_tags_label,
+  portfolio_card_type_artifact,
+  portfolio_card_type_context,
+  portfolio_close_viewer,
+  portfolio_competency_subtitle,
+  portfolio_content_hidden_desc,
+  portfolio_content_hidden_title,
+  portfolio_coursework_subtitle,
+  portfolio_ipow_verified,
+  portfolio_learn_about_ipow,
+  portfolio_ml_archetypes_title,
+  portfolio_neural_summary_label,
+  portfolio_neural_verdict_label,
+  portfolio_no_alignment,
+  portfolio_no_coursework,
+  portfolio_open_external_demo,
+  portfolio_reader_artifact_type,
+  portfolio_reader_context_type,
+  portfolio_recommended_skills_label,
+  portfolio_security_audit_label,
+  portfolio_stat_confidence,
+  portfolio_stat_coursework_artifacts,
+  portfolio_stat_extracted_by_ai,
+  portfolio_stat_mastery_index,
+  portfolio_stat_ml_archetype,
+  portfolio_stat_strongest_skill,
+  portfolio_stat_unique_tags,
+  portfolio_stat_verified_cards,
+  portfolio_target_career_prefix,
+  portfolio_verified_competencies,
   preparing_analytics,
   press_kit_bio_desc,
   press_kit_bio_title,
@@ -31736,6 +32171,27 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   student_science_topic_1,
   student_science_topic_2,
   student_science_topic_3,
+  study_archetype_subtitle,
+  study_archetype_title,
+  study_course_name,
+  study_empty_state,
+  study_grade,
+  study_processing,
+  study_public_url,
+  study_radar_subtitle,
+  study_radar_title,
+  study_save_username,
+  study_set_username,
+  study_share_card,
+  study_share_copied,
+  study_share_no_username,
+  study_status_completed,
+  study_status_failed,
+  study_subtitle,
+  study_title,
+  study_upload_artifact,
+  study_upload_context,
+  study_week,
   success_batch_saved,
   success_budget_saved,
   success_copy_habit,
@@ -32525,7 +32981,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-cKphsFFD.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-COgm8QOT.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B_hEE8-C.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-BUoRUkkL.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-BlAJ9_oF.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-CX8DD-uG.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-DQcVaHIQ.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-BpeZfahG.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-BlKHjbg0.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n) => n.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-Dg8YVJla.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-B044lnSm.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C9dXI0dE.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-B_EqONj9.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-ClfwrN8e.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-Hbfmw05c.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BlG5p8N-.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-Dit650HQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-Cfcc7wGh.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-D2QUj28J.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Cicxj_6R.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-pGpp5Dn8.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-8Dz1QXjN.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-BGyjAzE6.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-CTemGUXL.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-BFxVv4Hw.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-BBz-9D1d.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-6qWQ2t59.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-D0cNsZ9Y.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-gtmrbCo2.js"), "./Pages/More/Index.vue": () => import("./assets/Index-CzhQrm4m.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-BNbfQGzE.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-BgYixRPO.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-CDMvuQ3m.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-Bf1UBZri.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-D9mJF9dz.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-BSvY8qzJ.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-Dg4YXrhs.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-DcEnggri.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-B1HyFzu6.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-DCj9xN7Z.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-6SqWtZ0O.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-D3aMaE1P.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-NQy9OV9U.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B87qJvUV.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-D2RDHOku.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DlcpRL9j.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-C_lV_RDi.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-heyycDS1.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-Dt5MAp73.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-odvLZCzY.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n) => n.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-stB_g66m.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BjhG5_S-.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C9dXI0dE.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-B_EqONj9.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-CfKY2JdE.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BK6og38f.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BGrEHt6n.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DJWY98MQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-fybyLV4E.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-CxY5ApgX.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Dp6aJ9nN.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-2Gd2mIog.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-Bo_LLf91.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CPjshJtP.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DIx8N3NE.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-Bvjy0-Ms.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-D2-G8V42.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-CPcBCntd.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DoIsQrsq.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-D5ufwNAn.js"), "./Pages/More/Index.vue": () => import("./assets/Index-wfyL85xi.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-BkpbzYRW.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-BTYubewQ.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DBUIkqkz.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BtvnDEM3.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CHVFEJ5f.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-DC3aNcJy.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DdzTQ_QW.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-Xiiyz0G5.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/PublicPortfolio/Show.vue": () => import("./assets/Show-BsSsH2jX.js"), "./Pages/PublicPortfolio/ShowCard.vue": () => import("./assets/ShowCard-cATmFsUU.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-II45sA7a.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-BzmGZC-H.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-DPQjERoD.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Study/Index.vue": () => import("./assets/Index-CV_z86ry.js"), "./Pages/Study/StudyArchetypeMatches.vue": () => import("./assets/StudyArchetypeMatches-BIQ0WV1T.js"), "./Pages/Study/StudyCompetencyRadar.vue": () => import("./assets/StudyCompetencyRadar-apTYziFd.js"), "./Pages/Study/StudyMaterialList.vue": () => import("./assets/StudyMaterialList-C2MOzEu0.js"), "./Pages/Study/StudySettingsForm.vue": () => import("./assets/StudySettingsForm-D_EPWYLM.js"), "./Pages/Study/StudyUploadForm.vue": () => import("./assets/StudyUploadForm-xo3kjrDT.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

@@ -7,6 +7,8 @@ use App\Http\Controllers\HabitController;
 use App\Http\Controllers\PlannerController;
 use App\Http\Controllers\JournalController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\StudyController;
+use App\Http\Controllers\PublicPortfolioController;
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
@@ -979,6 +981,17 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
             ]);
         });
 
+    // Study Tracker Console
+    Route::prefix("study")
+        ->name("study.")
+        ->group(function () {
+            Route::get("/", [StudyController::class, "index"])->name("index");
+            Route::post("/", [StudyController::class, "store"])->name("store");
+            Route::delete("/{id}", [StudyController::class, "destroy"])->name("destroy");
+            Route::post("/username", [StudyController::class, "updateUsername"])->name("username");
+            Route::post("/settings", [StudyController::class, "updateSettings"])->name("settings");
+        });
+
     // --- ADMIN CENTRAL (Inertia Custom) ---
     Route::middleware(["can:admin"])
         ->prefix("admin")
@@ -1033,6 +1046,11 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
                 });
         });
 });
+
+// --- PUBLIC PORTFOLIO SHOWCASE ---
+Route::get("/p/{username}", [PublicPortfolioController::class, "show"])->name("portfolio.show");
+Route::get("/p/{username}/card/{id}", [PublicPortfolioController::class, "showCard"])->name("portfolio.card");
+Route::get("/p/{username}/file/{id}", [PublicPortfolioController::class, "streamFile"])->name("portfolio.file");
 
 Route::post("/callback", [
     \App\Http\Controllers\PaymentController::class,

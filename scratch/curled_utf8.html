@@ -1,0 +1,2535 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRSZV1R1YX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        window.GA_MEASUREMENT_ID = 'G-WRSZV1R1YX';
+        gtag('config', window.GA_MEASUREMENT_ID);
+    </script>
+    <script>
+        // 🛡️ Pre-emptive Safety Guard for Element.prototype.closest
+        (function() {
+            if (typeof Element !== 'undefined' && !Element.prototype.closest) {
+                Element.prototype.closest = function(s) {
+                    var el = this;
+                    do {
+                        if (el.matches(s)) return el;
+                        el = el.parentElement || el.parentNode;
+                    } while (el !== null && el.nodeType === 1);
+                    return null;
+                };
+            }
+        })();
+    </script>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="view-transition" content="same-origin">
+    <link rel="canonical" href="https://dopamind7.vercel.app">
+    <meta http-equiv="content-language" content="id">
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    
+    <meta name="geo.region" content="ID" />
+    <meta name="geo.placename" content="Indonesia" />
+    <meta name="geo.position" content="-2.548926;118.014863" />
+    <meta name="ICBM" content="-2.548926, 118.014863" />
+
+    <link rel="alternate" hreflang="id-ID" href="https://dopamind7.vercel.app?hl=id" />
+    <link rel="alternate" hreflang="id" href="https://dopamind7.vercel.app?hl=id" />
+    <link rel="alternate" hreflang="en-US" href="https://dopamind7.vercel.app?hl=en" />
+    <link rel="alternate" hreflang="en" href="https://dopamind7.vercel.app?hl=en" />
+    <link rel="alternate" hreflang="x-default" href="https://dopamind7.vercel.app?hl=en" />
+
+    
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="OneForMind">
+    <meta name="apple-touch-icon" content="https://oneformind.com/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://oneformind.com/favicon.png">
+    <link rel="icon" type="image/svg+xml" href="https://oneformind.com/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://oneformind.com/favicon.png">
+        
+    <title>OneForMind | Habit Tracker, Planner and Finance OS Terpadu | Oneformind - The Unified Productivity OS</title>
+
+    <meta property="og:site_name" content="Oneformind">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dopamind7.vercel.app">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:title" content="OneForMind | Habit Tracker, Planner and Finance OS Terpadu | Oneformind - The Unified Productivity OS">
+    <meta property="og:image" content="https://oneformind.com/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    
+                <meta name="description" content="OneForMind adalah Life OS terpadu. Kelola habit tracker, daily planner, dan manajer keuangan dalam satu ekosistem produktivitas.">
+    <meta property="og:title" content="OneForMind | Unified Habit Tracker, Planner &amp; Finance OS">
+    <meta property="og:description" content="Hentikan kelelahan berganti aplikasi. Kelola habit tracker, manajer keuangan, dan daily planner Anda dalam satu dasbor.">
+    <meta property="og:url" content="https://dopamind7.vercel.app">
+    
+
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Apakah data saya disimpan dengan aman?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tentu saja. Semua data Anda disimpan dengan aman di cloud. Anda dapat melihat kembali riwayat keuangan atau kebiasaan kapan saja untuk evaluasi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apakah ini benar-benar gratis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ya. Fitur Habit &amp; Finance Tracker saat ini GRATIS. Kami akan merilis fitur Premium nanti, tetapi fondasi utamanya akan tetap gratis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bisakah saya menggunakannya di HP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tentu saja! Website ini sepenuhnya responsif dan terasa seperti aplikasi native di HP."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apakah OneForMind mengikuti metode Atomic Habits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ya, OneForMind dibangun di atas pilar Atomic Habits (James Clear), Deep Work (Cal Newport), dan The Second Brain (Tiago Forte). Setiap fitur dirancang untuk mengurangi gesekan dan membangun perubahan perilaku yang langgeng."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bisakah saya mengelola keuangan dan habit di satu tempat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "OneForMind adalah Life OS terpadu pertama yang dirancang untuk sinkronisasi uang, habit, dan tugas Anda. Dengan melihat pengeluaran berdampingan dengan grafik pertumbuhan, Anda mendapatkan pandangan holistik tentang hidup Anda."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <meta name="ai-content-type" content="Productivity Operating System">
+    <meta name="ai-synergy-index" content="High">
+    
+    
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Oneformind">
+    <meta name="twitter:title" content="OneForMind | Habit Tracker, Planner and Finance OS Terpadu | Oneformind - The Unified Productivity OS">
+    <meta name="twitter:image" content="https://oneformind.com/images/og-image.png">
+
+    <meta name="ai-creator" content="[ID] Ai Creator">
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OneForMind",
+      "alternateName": "OneForMind App",
+      "url": "https://dopamind7.vercel.app",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://oneformind.com/favicon.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://oneformind.com/images/og-image.png",
+      "foundingDate": "2025",
+      "areaServed": "Worldwide",
+      "sameAs": [
+        "https://x.com/OneForMind",
+        "https://instagram.com/oneformind",
+        "https://facebook.com/oneformind"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "oneformindapp@gmail.com",
+        "contactType": "customer service",
+        "availableLanguage": ["Indonesian", "English"]
+      },
+      "description": "The unified productivity OS for finances, atomic habits, and daily planning in one mindful ecosystem."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "OneForMind",
+      "url": "https://dopamind7.vercel.app",
+      "inLanguage": ["id", "en"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://dopamind7.vercel.app/resources/blog?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OneForMind",
+      "url": "https://dopamind7.vercel.app",
+      "applicationCategory": "ProductivityApplication",
+      "applicationSubCategory": "LifestyleApplication",
+      "operatingSystem": "Web Browser, iOS, Android",
+      "browserRequirements": "Requires JavaScript",
+      "inLanguage": ["id", "en"],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Explorer",
+          "price": "0",
+          "priceCurrency": "IDR",
+          "description": "Free forever plan with habit tracker, daily planner, and finance manager."
+        },
+        {
+          "@type": "Offer",
+          "name": "Architect",
+          "price": "79000",
+          "priceCurrency": "IDR",
+          "description": "Full ecosystem access including journal, goals, calendar, and job tracker."
+        },
+        {
+          "@type": "Offer",
+          "name": "Quantum",
+          "price": "109000",
+          "priceCurrency": "IDR",
+          "description": "Architect plan plus unlimited Neural OS AI coaching."
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "500",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "description": "OneForMind is the unified productivity OS — track atomic habits, manage finances, plan your day, write journals, and get AI-powered life coaching in one place.",
+      "featureList": [
+        "Atomic Habit Tracker",
+        "Finance Manager",
+        "Daily Planner",
+        "Digital Journal",
+        "Goal Tracker",
+        "Calendar",
+        "Job Application Tracker",
+        "Neural OS AI Life Coach"
+      ],
+      "screenshot": "https://oneformind.com/images/og-image.png",
+      "softwareVersion": "2.0",
+      "releaseNotes": "https://dopamind7.vercel.app/resources/changelog"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Pricing & Plans",
+          "description": "Choose the perfect plan for your productivity journey. Free and premium tiers available.",
+          "url": "https://dopamind7.vercel.app/pricing"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Get Started Now",
+          "description": "Join OneForMind today and start building your unified life operating system.",
+          "url": "https://dopamind7.vercel.app/register"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Daily Planner",
+          "description": "Schedule Your Success, Get More Done. Focus on what truly matters.",
+          "url": "https://dopamind7.vercel.app/features/planner"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Atomic Habits System",
+          "description": "Build lasting habits with the ultimate atomic system. Track your 1% growth.",
+          "url": "https://dopamind7.vercel.app/features/habit"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "Secure Digital Journal",
+          "description": "Reflect and capture your thoughts in a private, mindful ecosystem.",
+          "url": "https://dopamind7.vercel.app/features/journal"
+        }
+      ]
+    }
+    </script>
+    <meta name="ai-service-type" content="[ID] Ai Service Type">
+    <meta name="ai-description" content="[ID] Deskripsi Global  Ription">
+
+    
+    
+
+
+    
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.bunny.net">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preload" as="style"
+        href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'" />
+
+    
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800&display=swap" />
+    </noscript>
+    </noscript>
+
+
+    
+    
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+
+    <style>
+    </style>
+
+    
+    <link rel="preload" as="style" href="https://oneformind.com/build/assets/app-CFxQOLwN.css" /><link rel="stylesheet" href="https://oneformind.com/build/assets/app-CFxQOLwN.css" data-navigate-track="reload" />
+    
+    
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        body {
+            position: static !important;
+        }
+
+        /* Fix scrollbar biar cantik */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        /* Re-enable smooth scroll secara terbatas agar tidak ganggu HTMX */
+        .allow-smooth {
+            scroll-behavior: smooth;
+        }
+
+        /* 🔥 View Transition API: Smooth cross-page morphing */
+        @view-transition {
+            navigation: auto;
+        }
+
+        ::view-transition-old(root) {
+            animation: fade-out 120ms ease-out;
+        }
+
+        ::view-transition-new(root) {
+            animation: fade-in 120ms ease-in;
+        }
+
+        @keyframes fade-out {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 📱 Global Mobile Button Scaling: Make them tight & premium */
+        @media (max-width: 768px) {
+            header a, section a, header button, section button {
+                padding-left: 1.25rem !important; /* px-5 */
+                padding-right: 1.25rem !important;
+                padding-top: 0.75rem !important; /* py-3 */
+                padding-bottom: 0.75rem !important;
+                font-size: 0.875rem !important; /* text-sm */
+            }
+            h1 { font-size: 2.75rem !important; line-height: 1.1 !important; } /* text-5xl-ish */
+            h2 { font-size: 2.25rem !important; line-height: 1.1 !important; } /* text-4xl */
+        }
+        /* HTMX Loading Bar */
+        .htmx-indicator-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: #4f46e5;
+            z-index: 200;
+            transition: width 0.3s ease-out, opacity 0.3s ease;
+            width: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .htmx-request .htmx-indicator-bar {
+            opacity: 1;
+            width: 70%;
+        }
+        .htmx-request.htmx-settling .htmx-indicator-bar {
+            width: 100%;
+        }
+    </style>
+            <script>
+            // 1. INITIALIZE DATALAYER & CONSENT MODE V2
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+
+            // Default consent to denied (Privacy First)
+            gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'personalization_storage': 'denied',
+                'functionality_storage': 'granted',
+                'security_storage': 'granted',
+                'wait_for_update': 500
+            });
+
+            
+            // 2. 🔥 GTM SLAYER: Load only after first user interaction or 3.5s delay
+            window.addEventListener('load', () => {
+                const loadGTM = () => {
+                    if (window.gtmLoaded) return;
+                    window.gtmLoaded = true;
+
+                    const script = document.createElement('script');
+                    script.src = "https://www.googletagmanager.com/gtag/js?id=G-WRSZV1R1YX";
+                    script.async = true;
+                    document.head.appendChild(script);
+
+                    script.onload = () => {
+                        gtag('js', new Date());
+                        window.GA_MEASUREMENT_ID = 'G-WRSZV1R1YX';
+
+                        // Check if we already have consent in localStorage
+                        const consent = localStorage.getItem('cookie_consent');
+                        if (consent === 'all') {
+                            gtag('consent', 'update', {
+                                'ad_storage': 'granted',
+                                'analytics_storage': 'granted',
+                                'personalization_storage': 'granted'
+                            });
+                        }
+
+                        gtag('config', window.GA_MEASUREMENT_ID, {
+                            'anonymize_ip': true,
+                            'user_id':                                 });
+                        console.log('⚡ Google Tag Loaded (Consent Mode v2 Ready)');
+                    };
+                };
+
+                const interactionEvents = ['mouseover', 'keydown', 'touchmove', 'touchstart', 'scroll'];
+                interactionEvents.forEach(event => window.addEventListener(event, loadGTM, { once: true, passive: true }));
+                setTimeout(loadGTM, 3500); // Fail-safe
+            });
+        </script>
+    
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '951954810888805');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=951954810888805&ev=PageView&noscript=1" /></noscript>
+</head>
+
+
+<body class="bg-white text-slate-900 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-700 flex flex-col min-h-screen">
+
+    <div x-data="{
+        mobileMenuOpen: false,
+        activeMenu: null,
+        mobilePanel: null,
+        scrolled: false,
+        isInterfacing: false
+    }" @mobile-nav-close.window="mobileMenuOpen = false; mobilePanel = null"
+        @scroll.window.passive="scrolled = (window.scrollY > 20)" class="relative">
+
+
+
+        
+        <div x-show="isInterfacing"
+            x-transition:enter="transition duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center" x-cloak>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#4f46e510_0,transparent_50%)]"></div>
+            <div class="absolute inset-0 bg-pattern-grid opacity-[0.03]"></div>
+
+            <div class="relative z-10 flex flex-col items-center text-center">
+                <div class="w-20 h-20 bg-indigo-600 rounded-[2rem] flex items-center justify-center shadow-[0_0_50px_rgba(79,70,229,0.2)] animate-bounce mb-8">
+                    <img src="https://oneformind.com/favicon.svg" alt="Logo" class="w-10 h-10 brightness-0 invert" />
+                </div>
+                <h2 class="text-slate-900 text-xl font-black tracking-[0.2em] uppercase mb-4 animate-pulse">Initializing System</h2>
+                <div class="w-48 h-0.5 bg-slate-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-indigo-500 w-1/2 animate-[skel-loading_1.5s_infinite_ease-in-out]"></div>
+                </div>
+            </div>
+            <style>
+                @keyframes skel-loading {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(400%); }
+                }
+            </style>
+        </div>
+
+        
+        <nav :class="mobileMenuOpen
+                ? 'bg-white border-b border-slate-100 shadow-sm'
+                : (scrolled ? 'bg-white/90  border-b border-slate-100 shadow-sm' : 'bg-transparent')"
+            class="fixed top-0 w-full z-[100] transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center relative">
+
+                
+                <a href="https://dopamind7.vercel.app" hx-boost="false" class="group flex items-center gap-2 z-[110]">
+                    <div
+                        class="w-10 h-10 lg:w-8 lg:h-8 bg-indigo-600 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg] shadow-lg shadow-indigo-200">
+                        <img src="https://oneformind.com/favicon.svg" alt="Logo" class="w-6 h-6 lg:w-5 lg:h-5 brightness-0 invert" />
+                    </div>
+                    <span class="hidden sm:block text-lg sm:text-xl font-bold tracking-tight text-slate-900">OneForMind</span>
+                </a>
+
+                
+                <div class="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+
+                    
+                    <div class="relative group" @mouseenter="activeMenu = 'features'" @mouseleave="activeMenu = null">
+                        <button
+                            class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-all flex items-center gap-1 group-hover:text-indigo-600">
+                            Features
+                            <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
+                                :class="activeMenu === 'features' ? 'rotate-180' : ''" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        
+                        <div x-show="activeMenu === 'features'" x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 translate-y-2" x-cloak
+                            class="absolute top-full left-0 w-[500px] pt-4 z-50">
+
+                            
+                            <div class="bg-white border border-slate-100 shadow-2xl rounded-[2rem] overflow-hidden p-4">
+                                <div class="grid grid-cols-2 gap-2 text-left">
+                                    <a href="https://dopamind7.vercel.app/features/habit" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🌱
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Habit Tracker</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Build consistency every day.</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/finance" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        💰
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Finance OS</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Master your money flow.</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/planner" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🎯
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Daily Planner</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Focus on what matters.</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/journal" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        📔
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Journal</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Capture your thoughts.</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/calendar" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        📅
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Calendar</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Sync your schedules.</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/goal" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🎯
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Goal Tracker</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Track your milestones.</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/job" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        💼
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Job Tracker</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Manage career growth.</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/neural-os" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🧠
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Neural OS AI</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Powered by Gemini Brain.</p>
+            </div>
+</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="relative group" @mouseenter="activeMenu = 'solutions'" @mouseleave="activeMenu = null">
+                        <button
+                            class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
+                            Solutions
+                            <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
+                                :class="activeMenu === 'solutions' ? 'rotate-180' : ''" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        
+                        <div x-show="activeMenu === 'solutions'" x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 translate-y-2" x-cloak
+                            class="absolute top-full -left-32 w-[860px] pt-4 z-50">
+
+                            
+                            <div
+                                class="p-8 bg-white border border-slate-100 shadow-2xl rounded-[2.5rem] grid grid-cols-3 gap-6 text-left">
+
+                                
+                                <div>
+                                    <p
+                                        class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">
+                                        By Role</p>
+                                    <div class="space-y-1.5">
+                                        <a href="https://dopamind7.vercel.app/solutions/student" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🎓
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Students</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Optimize your learning.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/solutions/freelancer" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        💻
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Freelancers</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Scale your workflow.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/solutions/personalgrowth" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🚀
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Personal Growth</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Master your self-system.</p>
+            </div>
+</a>
+                                    </div>
+                                </div>
+
+                                
+                                <div>
+                                    <p
+                                        class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">
+                                        By Use Case</p>
+                                    <div class="space-y-1.5">
+                                        <a href="https://dopamind7.vercel.app/solutions/finance-mastery" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        💰
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Financial Clarity</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Manage assets &amp; cashflow.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/solutions/career-accelerator" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        💼
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Career Tracker</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Focus on professional growth.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/solutions/mental-clarity" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🧘
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Mental Health</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Journaling &amp; mindfulness.</p>
+            </div>
+</a>
+                                    </div>
+                                </div>
+
+                                
+                                <div>
+                                    <p
+                                        class="text-[10px] font-black uppercase tracking-widest text-indigo-400 mb-5 px-3 flex items-center gap-2">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+                                        By Methodology
+                                    </p>
+                                    <div class="space-y-1.5">
+                                        <a href="https://dopamind7.vercel.app/solutions/atomic-system" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🌱
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Atomic Habits</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Small steps, big results.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/solutions/deep-work" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        ⚡
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Deep Work</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Uninterrupted focus.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/solutions/second-brain" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🧠
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Second Brain</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Digital knowledge map.</p>
+            </div>
+</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="relative group" @mouseenter="activeMenu = 'resources'" @mouseleave="activeMenu = null">
+                        <button
+                            class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition flex items-center gap-1 group-hover:text-indigo-600">
+                            Resources
+                            <svg class="w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180"
+                                :class="activeMenu === 'resources' ? 'rotate-180' : ''" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        
+                        <div x-show="activeMenu === 'resources'" x-transition x-cloak
+                            class="absolute top-full -left-20 w-[600px] pt-4 z-50 text-left">
+
+                            
+                            <div
+                                class="p-8 bg-white border border-slate-100 shadow-2xl rounded-[2.5rem] grid grid-cols-2 gap-8">
+                                <div>
+                                    <p
+                                        class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">
+                                        Knowledge & Help</p>
+                                    <div class="space-y-1">
+                                        <a href="https://dopamind7.vercel.app/resources/guide" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        📖
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">User Guide</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Master the OS.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/resources/help" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🙋‍♂️
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Help Center</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Find solutions.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/resources/changelog" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🚀
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">What&#039;s New</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Track app updates.</p>
+            </div>
+</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-5 px-3">
+                                        Social & Community</p>
+                                    <div class="space-y-1">
+                                        <a href="https://dopamind7.vercel.app/resources/community" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        🌍
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Community</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Connect with users.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/resources/blog" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        ✍️
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Blog</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">Productivity insights.</p>
+            </div>
+</a>
+                                        <a href="https://dopamind7.vercel.app/resources/stories" class="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition group">
+    <div class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition duration-300">
+        ✨
+    </div>
+    <div>
+        <h4 class="text-sm font-black text-slate-900 mb-0.5 group-hover:text-indigo-600 transition">Success Stories</h4>
+                    <p class="text-[11px] text-slate-600 font-medium leading-tight line-clamp-1">User transformations.</p>
+            </div>
+</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://dopamind7.vercel.app/pricing"
+                        class="px-3 py-1.5 rounded-full text-[13px] font-bold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition">
+                        Pricing
+                    </a>
+                </div>
+
+                
+                <div class="flex items-center gap-3">
+                    
+                    <div class="hidden lg:relative lg:block" x-data="{ langOpen: false }" @click.away="langOpen = false">
+                        <button @click="langOpen = !langOpen"
+                            class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-100 hover:bg-white hover:border-indigo-100 transition-all shadow-sm group">
+                            <span
+                                class="text-[11px] font-black text-slate-600 group-hover:text-indigo-600 uppercase tracking-tighter">
+                                id
+                            </span>
+                            <svg class="w-3 h-3 text-slate-400 group-hover:text-indigo-500 transition-transform"
+                                :class="langOpen ? 'rotate-180' : ''" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+
+                        <div x-show="langOpen" x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 translate-y-2"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 translate-y-2" x-cloak
+                            class="absolute top-full right-0 mt-3 w-40 bg-white border border-slate-100 shadow-2xl rounded-2xl overflow-hidden z-50 p-2">
+                            <a href="https://dopamind7.vercel.app/lang/id"
+                                class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all bg-indigo-50 text-indigo-700">
+                                <span>Bahasa Indonesia</span>
+                                 <span
+                                class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>                             </a>
+                            <a href="https://dopamind7.vercel.app/lang/en"
+                                class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all text-slate-600 hover:bg-slate-50 hover:text-indigo-600">
+                                <span>English</span>
+                                                            </a>
+                        </div>
+                    </div>
+
+                    
+                    <div class="hidden lg:flex items-center gap-3">
+                                                    <a hx-boost="false" href="https://dopamind7.vercel.app/login"
+                                class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition">Log in</a>
+                            <a hx-boost="false" href="https://dopamind7.vercel.app/register"
+                                class="px-5 py-2 bg-indigo-600 text-white rounded-full text-[13px] font-bold hover:bg-indigo-700 shadow-lg shadow-indigo-200 transition transform hover:-translate-y-0.5 active:scale-95">
+                                Get started
+                            </a>
+                                            </div>
+
+                    
+                    <div class="flex lg:hidden items-center gap-2">
+                                                    <a hx-boost="false" href="https://dopamind7.vercel.app/register"
+                                class="px-5 py-2.5 bg-indigo-600 text-white rounded-full text-[13.5px] font-bold shadow-lg shadow-indigo-200">
+                                Get started
+                            </a>
+                                            </div>
+
+                    
+                    <button @click="mobileMenuOpen = !mobileMenuOpen; if (!mobileMenuOpen) mobilePanel = null"
+                        class="lg:hidden p-2 text-slate-900 relative z-[110] focus:outline-none"
+                        aria-label="Open Navigation">
+                        <div class="w-6 flex flex-col items-end gap-1.5">
+                            <span :class="mobileMenuOpen ? 'rotate-45 translate-y-2 w-6' : 'w-6'"
+                                class="h-0.5 bg-current transition-all duration-300"></span>
+                            <span :class="mobileMenuOpen ? 'opacity-0' : 'w-4'"
+                                class="h-0.5 bg-current transition-all duration-300"></span>
+                            <span :class="mobileMenuOpen ? '-rotate-45 -translate-y-2 w-6' : 'w-5'"
+                                class="h-0.5 bg-current transition-all duration-300"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            
+            <div x-show="mobileMenuOpen" x-cloak class="lg:hidden">
+                <div x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="opacity-0 translate-y-2"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-150"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 translate-y-2"
+                    class="fixed inset-x-0 top-16 z-[95] bg-white flex flex-col h-[calc(100dvh-4rem)] w-full overflow-hidden border-t border-slate-100">
+
+                    <div class="relative flex-1 flex flex-col min-h-0 bg-white">
+                        
+                        <div x-show="mobilePanel === null" x-transition
+                            class="flex flex-col flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 pt-4 pb-6">
+                            
+                            <button type="button" @click="mobilePanel = 'features'"
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[20px] font-bold text-slate-900 active:opacity-70 leading-snug">
+                                <span>Features</span>
+                                <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <button type="button" @click="mobilePanel = 'solutions'"
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[20px] font-bold text-slate-900 active:opacity-70 leading-snug">
+                                <span>Solutions</span>
+                                <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <button type="button" @click="mobilePanel = 'resources'"
+                                class="w-full flex items-center justify-between py-3.5 text-left text-[20px] font-bold text-slate-900 active:opacity-70 leading-snug">
+                                <span>Resources</span>
+                                <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </button>
+                            <a href="https://dopamind7.vercel.app/pricing"
+                                class="block py-3.5 text-[20px] font-bold text-slate-900 leading-snug">Pricing</a>
+                        </div>
+
+                        
+                        <div x-show="mobilePanel !== null"
+                            x-transition:enter="transition transform ease-out duration-200"
+                            x-transition:enter-start="translate-x-full"
+                            x-transition:enter-end="translate-x-0"
+                            x-transition:leave="transition transform ease-in duration-150"
+                            x-transition:leave-start="translate-x-0"
+                            x-transition:leave-end="translate-x-full"
+                            class="absolute inset-0 z-[102] flex flex-col bg-white">
+                            
+                            <div class="shrink-0 flex items-center gap-3 px-4 py-4">
+                                <button type="button" @click="mobilePanel = null"
+                                    class="p-1 rounded text-slate-600 active:bg-slate-100"
+                                    aria-label="Back">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                </button>
+                                <span class="text-[20px] font-bold text-slate-900 tracking-tight"
+                                    x-text="mobilePanel === 'features' ? 'Features' : mobilePanel === 'solutions' ? 'Solutions' : mobilePanel === 'resources' ? 'Resources' : ''"></span>
+                            </div>
+
+                            <div class="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 pb-6">
+                                <div x-show="mobilePanel === 'features'" class="space-y-1">
+                                    <a href="https://dopamind7.vercel.app/features/habit" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🌱
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Habit tracker</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Build consistency daily</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/finance" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        💰
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Finance OS</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Manage cash flow clearly</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/planner" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🎯
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Daily planner</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Focus your top priorities</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/journal" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        📔
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Journal</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Capture reflections</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/calendar" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        📅
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Calendar</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Events and schedule</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/goal" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🎯
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Goal tracker</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Milestones and progress</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/job" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        💼
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Job tracker</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Manage applications</p>
+            </div>
+</a>
+                                    <a href="https://dopamind7.vercel.app/features/neural-os" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🧠
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Neural OS AI</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">AI-powered planning coach</p>
+            </div>
+</a>
+                                </div>
+                                <div x-show="mobilePanel === 'solutions'" class="space-y-6 pt-2">
+                                    <div>
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">By role</p>
+                                        <div class="space-y-1">
+                                            <a href="https://dopamind7.vercel.app/solutions/student" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🎓
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Students</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Study system optimizer</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/solutions/freelancer" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        💻
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Freelancers</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Client workflow</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/solutions/personalgrowth" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🚀
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Personal growth</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Mindset and habits</p>
+            </div>
+</a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">By use case</p>
+                                        <div class="space-y-1">
+                                            <a href="https://dopamind7.vercel.app/solutions/finance-mastery" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        💰
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Finance clarity</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Budget and cash flow</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/solutions/career-accelerator" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        💼
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Career tracker</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Track opportunities</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/solutions/mental-clarity" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🧘
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Mental health</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Reduce stress and noise</p>
+            </div>
+</a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-[12px] font-semibold text-indigo-500 uppercase tracking-wider mb-2 px-1">By methodology</p>
+                                        <div class="space-y-1">
+                                            <a href="https://dopamind7.vercel.app/solutions/atomic-system" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🌱
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Atomic habits</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Small steps, big results</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/solutions/deep-work" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        ⚡
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Deep work</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Protect focus blocks</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/solutions/second-brain" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🧠
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Second brain</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Your thinking system</p>
+            </div>
+</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div x-show="mobilePanel === 'resources'" class="space-y-6 pt-2">
+                                    <div>
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Knowledge & Help</p>
+                                        <div class="space-y-1">
+                                            <a href="https://dopamind7.vercel.app/resources/guide" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        📖
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">User guide</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">How to use OneForMind</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/resources/help" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🙋‍♂️
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Help center</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Answers and support</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/resources/changelog" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🚀
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">What&#039;s new</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Latest updates</p>
+            </div>
+</a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-[12px] font-semibold text-slate-500 uppercase tracking-wider mb-2 px-1">Social & Community</p>
+                                        <div class="space-y-1">
+                                            <a href="https://dopamind7.vercel.app/resources/community" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        🌍
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Community</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Join discussions</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/resources/blog" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        ✍️
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Blog</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Productivity insights</p>
+            </div>
+</a>
+                                            <a href="https://dopamind7.vercel.app/resources/stories" 
+   @click="mobileMenuOpen = false"
+   class="flex items-start gap-4 py-3 px-2 rounded-xl hover:bg-slate-50 active:bg-slate-100/80 transition-colors">
+    <div class="w-10 h-10 shrink-0 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-xl shadow-sm">
+        ✨
+    </div>
+    <div class="min-w-0 flex-1 pt-0.5">
+        <p class="font-bold text-slate-900 text-[16px] leading-tight">Success stories</p>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">Real transformations</p>
+            </div>
+</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div x-show="mobilePanel === null" class="shrink-0 mt-auto px-6 pb-[max(2rem,env(safe-area-inset-bottom))] bg-white">
+                            
+                            <hr class="border-slate-50 scale-x-125 mx-6 relative" />
+
+                            <div class="pt-6">
+                                
+                                <div class="flex items-center gap-3 mb-6">
+                                    <span class="text-sm font-bold text-slate-500">Language</span>
+                                    <div class="bg-slate-50 flex items-center p-0.5 rounded-md border border-slate-100">
+                                        <a href="https://dopamind7.vercel.app/lang/id"
+                                            class="px-2.5 py-1 rounded-[4px] text-[11px] uppercase tracking-wide font-bold transition-all bg-white text-slate-900 shadow-sm border border-slate-200">ID</a>
+                                        <a href="https://dopamind7.vercel.app/lang/en"
+                                            class="px-2.5 py-1 rounded-[4px] text-[11px] uppercase tracking-wide font-bold transition-all text-slate-400">EN</a>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col gap-2.5">
+                                                                            <a hx-boost="false" href="https://dopamind7.vercel.app/login"
+                                            class="w-full py-2.5 text-center font-bold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-md text-[15px] transition-colors">Log in</a>
+                                        <a hx-boost="false" href="https://dopamind7.vercel.app/register"
+                                            class="w-full py-2.5 text-center font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md text-[15px] transition-colors">Get started</a>
+                                                                    </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="flex-grow" hx-boost="true">
+            <main id="neural-interface">
+    
+    
+    
+    <header class="relative pt-24 pb-40 lg:pt-32 lg:pb-56 overflow-hidden bg-white">
+        
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-full bg-indigo-50/40 rounded-full blur-2xl -z-10"></div>
+        
+        
+        <div class="absolute top-32 left-[5%] w-16 h-16 bg-white/60 backdrop-blur-md rounded-[1.5rem] shadow-[0_10px_40px_rgba(79,70,229,0.15)] flex items-center justify-center text-2xl animate-[float_6s_ease-in-out_infinite] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 rotate-6">
+            <span class="relative drop-shadow-sm">🚀</span>
+        </div>
+        
+        <div class="absolute top-56 left-[18%] w-12 h-12 bg-white/60 backdrop-blur-md rounded-full shadow-[0_10px_40px_rgba(16,185,129,0.15)] flex items-center justify-center text-xl animate-[bounce-slow_5s_ease-in-out_infinite_0.5s] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 -rotate-12">
+            <span class="relative drop-shadow-sm">💎</span>
+        </div>
+
+        <div class="absolute top-24 right-[10%] w-20 h-20 bg-white/60 backdrop-blur-md rounded-[2rem] shadow-[0_20px_50px_rgba(245,158,11,0.15)] flex items-center justify-center text-3xl animate-[float_7s_ease-in-out_infinite_1s] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 -rotate-6">
+            <span class="relative drop-shadow-sm">🧠</span>
+        </div>
+
+        <div class="absolute bottom-60 left-[8%] w-14 h-14 bg-white/60 backdrop-blur-md rounded-2xl shadow-[0_15px_40px_rgba(168,85,247,0.15)] flex items-center justify-center text-2xl animate-[bounce-slow_6s_ease-in-out_infinite_1.5s] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 rotate-12">
+            <span class="relative drop-shadow-sm">📈</span>
+        </div>
+
+        <div class="absolute bottom-80 right-[8%] w-16 h-16 bg-white/60 backdrop-blur-md rounded-[1.5rem] shadow-[0_15px_40px_rgba(239,68,68,0.15)] flex items-center justify-center text-2xl animate-[float_5.5s_ease-in-out_infinite_0.2s] hidden xl:flex border border-white/80 z-20 group hover:scale-110 transition-transform duration-500 rotate-3">
+            <span class="relative drop-shadow-sm">⚡</span>
+        </div>
+
+        <div class="absolute bottom-40 right-[20%] w-10 h-10 bg-slate-900/5 backdrop-blur-sm rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.05)] flex items-center justify-center text-lg animate-[bounce-slow_4.5s_ease-in-out_infinite_2s] hidden xl:flex border border-white/50 z-20 group hover:scale-110 transition-transform duration-500 -rotate-6">
+            <span class="relative drop-shadow-sm">🔥</span>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-slate-600 font-bold text-[10px] mb-8 tracking-widest uppercase shadow-sm">
+                <span class="flex h-1.5 w-1.5 rounded-full bg-indigo-600"></span>
+                ✨ Memperkenalkan: Neuro-Sync v2.0
+            </div>
+            
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl mb-8 tracking-[-0.03em] text-slate-900 font-[900] leading-[1.05] max-w-6xl mx-auto">
+                Satu Pikiran. 
+                <span class="text-indigo-600 block mt-2">
+                    Satu Sistem Masa Depan.
+                </span>
+            </h1>
+            
+            
+            <p class="text-lg md:text-xl text-slate-500 mb-12 leading-relaxed max-w-2xl mx-auto font-medium opacity-80">
+                Tinggalkan fragmentasi aplikasi. Kuasai habit tracker, planner harian, dan manajer keuangan Anda dalam satu ekosistem cerdas yang dirancang untuk performa puncak.
+            </p>
+            
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-24">
+                                    <a hx-boost="false" href="https://dopamind7.vercel.app/register" class="w-full sm:w-auto bg-indigo-600 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-indigo-700 transition-all transform hover:-translate-y-1 active:scale-95 shadow-lg shadow-indigo-100 flex items-center justify-center gap-2 group">
+                        Mulai Eksklusif
+                        <svg class="w-5 h-5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                    <a href="https://dopamind7.vercel.app/about" class="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all transform hover:-translate-y-1 active:scale-95 text-center">
+                        Lihat Filosofi Desain
+                    </a>
+                
+                            </div>
+
+
+
+            
+            <div class="relative max-w-6xl mx-auto mt-24">
+                
+                <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-full h-80 bg-gradient-to-b from-indigo-500/10 to-transparent blur-2xl rounded-full transform-gpu pointer-events-none"></div>
+                
+                
+                <div class="grid md:grid-cols-3 gap-8 relative z-10">
+                    
+                    
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl transform-gpu md:-translate-y-12 hover:-translate-y-16 transition-transform duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-xl group-hover:bg-emerald-500/10 transition-colors transform-gpu"></div>
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">🌱</div>
+                        <h3 class="text-xl font-black text-slate-900 mb-2">Bangun Kebiasaan</h3>
+                        <p class="text-sm text-slate-500 mb-8">Lacak konsistensi dengan heatmap visual yang melatih ulang otak Anda.</p>
+                        
+                        <div class="grid grid-cols-7 gap-1.5">
+                                                                                            <div class="w-full aspect-square bg-emerald-100 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-300 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-600 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-400 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-600 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-100 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-400 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-500 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-600 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-500 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-100 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-400 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-400 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-100 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-400 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-100 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-500 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-300 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-300 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-500 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-100 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-400 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-500 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-100 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-300 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-100 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-300 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                                                            <div class="w-full aspect-square bg-emerald-400 rounded-[4px] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                                    </div>
+                    </div>
+
+                    
+                    <div class="bg-slate-900 rounded-3xl p-8 border border-slate-800 shadow-[0_20px_40px_rgba(0,0,0,0.2)] transform-gpu hover:-translate-y-4 transition-transform duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 rounded-full blur-xl group-hover:bg-indigo-500/20 transition-colors transform-gpu"></div>
+                        <div class="w-12 h-12 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl mb-6 border border-indigo-500/30">💰</div>
+                        <h3 class="text-xl font-black text-white mb-2">Kuasai Keuangan</h3>
+                        <p class="text-sm text-slate-400 mb-8">Kendalikan arus kas Anda dengan zero-based budgeting.</p>
+                        
+                        <div class="space-y-3 relative z-10">
+                            <div class="bg-slate-800/80 p-4 rounded-2xl border border-slate-700/50 flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center text-xs">☕</div>
+                                    <span class="text-slate-300 text-sm font-medium">Kopi</span>
+                                </div>
+                                <span class="text-white font-bold text-sm">-$4.50</span>
+                            </div>
+                            <div class="bg-indigo-600/20 p-4 rounded-2xl border border-indigo-500/30 flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-indigo-500/30 text-indigo-300 rounded-full flex items-center justify-center text-xs">💼</div>
+                                    <span class="text-indigo-200 text-sm font-medium">Gaji</span>
+                                </div>
+                                <span class="text-indigo-400 font-bold text-sm">+$4,200</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl transform-gpu md:-translate-y-12 hover:-translate-y-16 transition-transform duration-300 group relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-32 h-32 bg-amber-500/5 rounded-full blur-xl group-hover:bg-amber-500/10 transition-colors transform-gpu"></div>
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">🎯</div>
+                        <h3 class="text-xl font-black text-slate-900 mb-2">Eksekusi Tujuan</h3>
+                        <p class="text-sm text-slate-500 mb-8">Pecah visi besar menjadi blok tindakan harian.</p>
+                        
+                        <div class="relative">
+                            <div class="absolute left-3 top-0 bottom-0 w-0.5 bg-slate-100"></div>
+                            <div class="space-y-4 relative z-10">
+                                <div class="flex gap-4 items-center">
+                                    <div class="w-6 h-6 rounded-full bg-amber-500 border-4 border-white shadow-sm flex-shrink-0"></div>
+                                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1 text-sm font-bold text-slate-700">Blok Kerja Fokus</div>
+                                </div>
+                                <div class="flex gap-4 items-center opacity-50">
+                                    <div class="w-6 h-6 rounded-full bg-slate-300 border-4 border-white shadow-sm flex-shrink-0"></div>
+                                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex-1 text-sm font-medium text-slate-500 line-through">Cek Email</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+                <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-auto bg-slate-900 p-4 rounded-2xl border border-slate-800 shadow-xl z-30 hidden md:flex items-center gap-4 transform-gpu animate-[float_4s_ease-in-out_infinite]">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-md text-xl">✨</div>
+                    <div class="pr-4">
+                        <div class="text-[10px] text-indigo-400 font-bold uppercase tracking-widest">Neural OS</div>
+                        <div class="text-white text-sm font-black">Semua Sistem Sinkron</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <style>
+            @keyframes bounce-slow {
+                0%, 100% { transform: translateY(0) rotate(-3deg); }
+                50% { transform: translateY(-15px) rotate(-3deg); }
+            }
+            @keyframes float {
+                0%, 100% { transform: translateY(0) rotate(6deg); }
+                50% { transform: translateY(10px) rotate(6deg); }
+            }
+            .animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
+            .animate-float { animation: float 8s ease-in-out infinite; }
+        </style>
+    </header>
+
+    
+    
+    
+    <section class="py-32 bg-slate-900 relative overflow-hidden">
+        
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,#4f46e5_0,transparent_50%)]"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 font-black text-[10px] mb-8 border border-indigo-500/20">
+                        PAJAK GESEKAN
+                    </div>
+                    <h2 class="text-[36px] leading-[1.1] md:text-6xl text-white mb-8 font-black">
+                        Aplikasi Terfragmentasi Membunuh Fokus Anda
+                    </h2>
+                    <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">
+                        Kebanyakan orang menggunakan 5 aplikasi terpisah untuk mengelola hidup mereka. Kami menyebutnya &#039;Pajak Gesekan&#039;—beban tersembunyi pada energi mental Anda.
+                    </p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                                                            <div class="p-6 bg-slate-800/50 rounded-[2rem] border border-slate-700/50  group hover:bg-slate-800 transition">
+                                <div class="text-3xl mb-4 group-hover:scale-110 transition font-black">📅</div>
+                                <div class="text-[10px] font-black text-slate-500 tracking-widest">The Planner</div>
+                            </div>
+                                                    <div class="p-6 bg-slate-800/50 rounded-[2rem] border border-slate-700/50  group hover:bg-slate-800 transition">
+                                <div class="text-3xl mb-4 group-hover:scale-110 transition font-black">🌱</div>
+                                <div class="text-[10px] font-black text-slate-500 tracking-widest">Habit Tracker</div>
+                            </div>
+                                                    <div class="p-6 bg-slate-800/50 rounded-[2rem] border border-slate-700/50  group hover:bg-slate-800 transition">
+                                <div class="text-3xl mb-4 group-hover:scale-110 transition font-black">💰</div>
+                                <div class="text-[10px] font-black text-slate-500 tracking-widest">Finance Manager</div>
+                            </div>
+                                                    <div class="p-6 bg-slate-800/50 rounded-[2rem] border border-slate-700/50  group hover:bg-slate-800 transition">
+                                <div class="text-3xl mb-4 group-hover:scale-110 transition font-black">📔</div>
+                                <div class="text-[10px] font-black text-slate-500 tracking-widest">Digital Journal</div>
+                            </div>
+                                                    <div class="p-6 bg-slate-800/50 rounded-[2rem] border border-slate-700/50  group hover:bg-slate-800 transition">
+                                <div class="text-3xl mb-4 group-hover:scale-110 transition font-black">🎯</div>
+                                <div class="text-[10px] font-black text-slate-500 tracking-widest">Goal Tracker</div>
+                            </div>
+                                                <div class="p-6 bg-red-500/10 rounded-[2rem] border border-red-500/20 flex flex-col justify-center items-center text-center">
+                            <div class="text-red-400 font-black text-xs tracking-widest">Kekacauan</div>
+                            <div class="text-[10px] font-bold text-red-500/50">Catatan tersebar dan detail hilang.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-indigo-600 rounded-[3.5rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                    <div class="relative bg-slate-800 p-12 rounded-[3.5rem] border border-slate-700 shadow-2xl">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="w-24 h-24 bg-indigo-600 text-white rounded-[2rem] flex items-center justify-center text-5xl mb-8 shadow-2xl shadow-indigo-500/50 animate-pulse font-black">
+                                🌌
+                            </div>
+                            <h3 class="text-3xl text-white mb-6 uppercase tracking-wider font-black">Alternatif Terpadu</h3>
+                            <p class="text-slate-400 text-lg font-medium leading-relaxed">
+                                OneForMind menggantikan kekacauan dengan ekosistem tunggal yang tenang dan terintegrasi di mana data Anda akhirnya saling bicara.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    
+    
+    <section class="py-40 bg-white bg-pattern-grid scroll-mt-20" id="features">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-24">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 text-slate-900 font-bold text-[10px] mb-8 tracking-[0.2em] uppercase border border-slate-200">
+                    LIMA PILAR
+                </div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-8 font-[900] tracking-tight leading-[1.1]">
+                    Insight terpadu untuk Habit, Planning &amp; Finance Anda.
+                </h2>
+                <p class="text-slate-500 text-lg font-medium leading-relaxed max-w-2xl mx-auto">OneForMind menghapus gesekan antar aplikasi dengan menggabungkan alat hidup paling penting Anda ke dalam satu ekosistem berperforma tinggi.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="group bg-slate-50 p-12 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-indigo-100 transition duration-500 transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition font-black">💰</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Keuangan Sadar</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed">Lacak setiap sen dengan sistem entri 3 detik. Tanpa sinkronisasi bank, privasi total.</p>
+                </div>
+
+                
+                <div class="group bg-slate-50 p-12 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-emerald-100 transition duration-500 transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition font-black">🌱</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Kebiasaan Atom</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed">Bangun streak yang bertahan lama. Terintegrasi dengan jadwal harian Anda untuk konsistensi maksimal.</p>
+                </div>
+
+                
+                <div class="group bg-slate-900 p-12 rounded-[2.5rem] border border-slate-800 hover:bg-slate-900 hover:shadow-2xl hover:shadow-slate-300 transition duration-500 transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition font-black">📅</div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Planner Mendalam</h3>
+                    <p class="text-slate-400 font-medium leading-relaxed">Fokus pada &#039;Hanya Hari Ini&#039;. Bersihkan simpanan mental Anda dan eksekusi tugas terpenting.</p>
+                </div>
+
+                
+                <div class="group bg-slate-50 p-12 rounded-[2.5rem] border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-purple-100 transition duration-500 transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition font-black">📔</div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">Jurnal Reflektif</h3>
+                    <p class="text-slate-500 font-medium leading-relaxed">Ruang aman untuk pikiran Anda. Hubungkan suasana hati harian Anda dengan tingkat produktivitas.</p>
+                </div>
+
+                
+                <div class="group bg-indigo-50/50 p-12 rounded-[2.5rem] border border-indigo-100/50 hover:bg-indigo-600 hover:shadow-2xl hover:shadow-indigo-200 transition duration-500 transform hover:-translate-y-2 lg:col-span-2 lg:flex lg:items-center lg:gap-12">
+                   <div class="lg:shrink-0 lg:mb-0 mb-8">
+                        <div class="w-20 h-20 bg-white rounded-3xl shadow-md flex items-center justify-center text-5xl group-hover:scale-110 transition font-black">🎯</div>
+                   </div>
+                   <div>
+                        <h3 class="text-2xl lg:text-3xl text-indigo-950 mb-4 group-hover:text-white font-bold">Tujuan Besar</h3>
+                        <p class="text-indigo-900/60 font-medium leading-relaxed group-hover:text-indigo-50 text-lg">Pecah visi jangka panjang menjadi tonggak pencapaian yang dapat dieksekusi di planner Anda.</p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+    <section class="py-32 bg-slate-950 relative overflow-hidden">
+        
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_800px_at_50%_-100px,#3b82f620,transparent)]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-20 items-center">
+                <div class="lg:w-1/2">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-black tracking-[0.3em] mb-8 border border-emerald-500/20">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        PILAR ILMIAH
+                    </div>
+                    <h2 class="text-[36px] leading-[1.1] md:text-6xl text-white mb-8 tracking-tighter font-black">
+                        Dibangun di Atas Sinergi Kognitif
+                    </h2>
+                    <p class="text-slate-400 text-xl leading-relaxed mb-12 font-medium">
+                        Produktivitas bukan tentang bekerja lebih banyak; ini tentang mengurangi gesekan antara pikiran dan tindakan. OneForMind dirancang berdasarkan prinsip Flow State dan Teori Beban Kognitif.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-emerald-500/50 transition duration-500 group">
+                            <div class="text-emerald-400 font-black text-xs mb-2 flex justify-between">
+                                Cognitive Load
+                                <span class="group-hover:translate-x-1 transition">→</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 w-[85%] group-hover:w-[15%] transition-all duration-1000"></div>
+                            </div>
+                            <p class="mt-4 text-slate-500 text-xs font-bold leading-relaxed">Reduced by 70% in OneForMind.</p>
+                        </div>
+                        <div class="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-indigo-500/50 transition duration-500 group">
+                            <div class="text-indigo-400 font-black text-xs mb-2 flex justify-between">
+                                Flow Velocity
+                                <span class="group-hover:translate-x-1 transition">→</span>
+                            </div>
+                            <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-indigo-500 w-[20%] group-hover:w-[95%] transition-all duration-1000"></div>
+                            </div>
+                            <p class="mt-4 text-slate-500 text-xs font-bold leading-relaxed">Optimized for rapid task transitions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 relative">
+                    
+                    <div class="relative bg-slate-900/50 border border-white/10 p-2 rounded-[3rem] shadow-2xl ">
+                        <div class="grid grid-cols-3 gap-2 overflow-hidden rounded-[2.5rem]">
+                            <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-500">
+                                <div class="text-3xl mb-4 group-hover:rotate-12 transition font-black">🌀</div>
+                                <span class="text-white font-black text-[10px] tracking-widest">Flow State</span>
+                                <div class="mt-2 text-[8px] text-slate-500 font-black tracking-tighter uppercase">M. Csikszentmihalyi</div>
+                            </div>
+                            <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center border-x border-white/5 transform hover:scale-105 transition duration-500">
+                                <div class="text-3xl mb-4 font-black">⚛️</div>
+                                <span class="text-white font-black text-[10px] tracking-widest">Atomic Habits</span>
+                                <div class="mt-2 text-[8px] text-slate-500 font-black tracking-tighter uppercase">James Clear</div>
+                            </div>
+                            <div class="h-64 bg-slate-800 flex flex-col items-center justify-center p-6 text-center transform hover:scale-105 transition duration-500">
+                                <div class="text-3xl mb-4 font-black">🧠</div>
+                                <span class="text-white font-black text-[10px] tracking-widest">Second Brain</span>
+                                <div class="mt-2 text-[8px] text-slate-500 font-black tracking-tighter uppercase">Tiago Forte</div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="absolute -top-10 -right-10 w-32 h-32 border-t-2 border-r-2 border-white/20 rounded-tr-[3rem]"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 border-b-2 border-l-2 border-white/20 rounded-bl-[3rem]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    
+    
+    <section class="py-40 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 font-bold text-[10px] mb-6 tracking-[0.2em] uppercase border border-indigo-200">
+                    MESIN INTERAKSI
+                </div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-8 leading-tight font-[900] tracking-tight">
+                    Logika tersinkron. Eksekusi mulus.
+                </h2>
+                <p class="text-slate-500 text-lg font-medium leading-relaxed opacity-70">Rasakan sinergi saat sistem paling penting di hidup Anda bekerja dalam harmoni.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+                
+                <div class="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-slate-200 -translate-y-1/2 -z-0"></div>
+                
+                
+                                <div class="bg-white p-10 rounded-[2rem] border border-slate-200 flex flex-col items-start text-left shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 relative z-10">
+                    <div class="w-10 h-10 bg-slate-900 text-white rounded-xl flex items-center justify-center font-bold mb-8 text-sm shadow-lg">
+                        01
+                    </div>
+                    <div class="text-4xl mb-6">🎯</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Tetapkan Visi</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed opacity-80">Goal Anda menciptakan peta jalan untuk pertumbuhan Anda.</p>
+                </div>
+                                <div class="bg-white p-10 rounded-[2rem] border border-slate-200 flex flex-col items-start text-left shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 relative z-10">
+                    <div class="w-10 h-10 bg-slate-900 text-white rounded-xl flex items-center justify-center font-bold mb-8 text-sm shadow-lg">
+                        02
+                    </div>
+                    <div class="text-4xl mb-6">⚙️</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Hasilkan Tindakan</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed opacity-80">Goal secara otomatis menyarankan Tugas di Planner Harian Anda.</p>
+                </div>
+                                <div class="bg-white p-10 rounded-[2rem] border border-slate-200 flex flex-col items-start text-left shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 relative z-10">
+                    <div class="w-10 h-10 bg-slate-900 text-white rounded-xl flex items-center justify-center font-bold mb-8 text-sm shadow-lg">
+                        03
+                    </div>
+                    <div class="text-4xl mb-6">🌱</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Bangun Ritual</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed opacity-80">Tugas berkembang menjadi Kebiasaan yang mempertahankan momentum Anda.</p>
+                </div>
+                                <div class="bg-white p-10 rounded-[2rem] border border-slate-200 flex flex-col items-start text-left shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 relative z-10">
+                    <div class="w-10 h-10 bg-slate-900 text-white rounded-xl flex items-center justify-center font-bold mb-8 text-sm shadow-lg">
+                        04
+                    </div>
+                    <div class="text-4xl mb-6">📔</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Refleksi &amp; Sesuaikan</h3>
+                    <p class="text-slate-500 font-medium text-sm leading-relaxed opacity-80">Journaling memberikan konteks untuk goal besar Anda berikutnya.</p>
+                </div>
+                            </div>
+        </div>
+    </section>
+
+    
+    
+    
+    <section class="py-40 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 font-bold text-[10px] mb-8 uppercase tracking-[0.2em] border border-indigo-100/50">
+                        🔗 LOOP SINERGI
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-8 leading-[1.1] font-[900] tracking-tight">
+                        Bagaimana Hidup Anda Terhubung
+                    </h2>
+                    <p class="text-slate-500 text-lg font-medium leading-relaxed mb-12 opacity-80">
+                        OneForMind bukan sekadar 5 aplikasi jadi satu. Ini adalah mesin tunggal di mana setiap tindakan memengaruhi tindakan berikutnya, menciptakan siklus pertumbuhan yang positif.
+                    </p>
+
+                    <div class="space-y-4">
+                        
+                                                <div class="flex gap-6 p-8 rounded-[2rem] bg-slate-50/50 hover:bg-white transition-all border border-transparent hover:border-slate-200 group">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                                🌱
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1 tracking-tight">Implementasi Kebiasaan</h3>
+                                <p class="text-slate-500 font-medium text-sm leading-relaxed opacity-70">Tindakan harian kecil membangun disiplin yang dibutuhkan untuk tujuan besar.</p>
+                            </div>
+                        </div>
+                                                <div class="flex gap-6 p-8 rounded-[2rem] bg-slate-50/50 hover:bg-white transition-all border border-transparent hover:border-slate-200 group">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                                💰
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1 tracking-tight">Bahan Bakar Finansial</h3>
+                                <p class="text-slate-500 font-medium text-sm leading-relaxed opacity-70">Pengeluaran yang sadar memastikan Anda memiliki sumber daya untuk mendanai visi Anda.</p>
+                            </div>
+                        </div>
+                                                <div class="flex gap-6 p-8 rounded-[2rem] bg-slate-50/50 hover:bg-white transition-all border border-transparent hover:border-slate-200 group">
+                            <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition">
+                                📅
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-1 tracking-tight">Perencanaan Terstruktur</h3>
+                                <p class="text-slate-500 font-medium text-sm leading-relaxed opacity-70">Menyisihkan waktu untuk hal yang penting memastikan kebiasaan Anda benar-benar terjadi.</p>
+                            </div>
+                        </div>
+                                            </div>
+                </div>
+
+                <div class="relative">
+                    
+                    <div class="aspect-square relative flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-50/50 to-purple-50/50 rounded-full"></div>
+                        <div class="absolute inset-8 border border-slate-200/50 rounded-full scale-100 animate-pulse"></div>
+                        <div class="absolute inset-20 border border-slate-200/50 rounded-full scale-100"></div>
+                        
+                        <div class="relative w-40 h-40 bg-slate-900 rounded-[2.5rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.3)] flex items-center justify-center z-10 overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-indigo-800"></div>
+                            <div class="relative z-10 text-5xl group-hover:scale-110 transition duration-700">🌌</div>
+                        </div>
+
+                        
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-4 w-14 h-14 bg-white rounded-xl shadow-lg border border-slate-100 flex items-center justify-center text-2xl">🌱</div>
+                        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-4 w-14 h-14 bg-white rounded-xl shadow-lg border border-slate-100 flex items-center justify-center text-2xl">💰</div>
+                        <div class="absolute left-0 top-1/2 -translate-x-4 -translate-y-1/2 w-14 h-14 bg-white rounded-xl shadow-lg border border-slate-100 flex items-center justify-center text-2xl">📅</div>
+                        <div class="absolute right-0 top-1/2 translate-x-4 -translate-y-1/2 w-14 h-14 bg-white rounded-xl shadow-lg border border-slate-100 flex items-center justify-center text-2xl">📔</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    
+    
+    <section class="py-40 bg-white bg-pattern-diagonal relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div class="relative order-2 lg:order-1">
+                    
+                    <div class="absolute -inset-20 bg-gradient-to-tr from-indigo-200 to-purple-200 rounded-full blur-2xl opacity-40"></div>
+                    
+                    <div class="relative bg-slate-900 rounded-[3rem] p-1 shadow-[0_50px_100px_-20px_rgba(79,70,229,0.3)] border-[12px] border-slate-800 overflow-hidden transform lg:-rotate-2 hover:rotate-0 transition-transform duration-700 aspect-[16/10]" role="img" aria-label="OneForMind Dashboard Preview: A unified interface showing habit tracking heatmap, finance budgeting progress, and a clean task management layout.">
+                        <div class="absolute top-0 w-full h-8 bg-slate-800 flex items-center px-4 gap-2">
+                           <div class="flex gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-amber-500/50"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                           </div>
+                        </div>
+                        
+                        <div class="p-8 mt-8 grid grid-cols-12 gap-4 h-full">
+                            <div class="col-span-3 space-y-4">
+                                <div class="h-12 bg-slate-800 rounded-xl animate-pulse"></div>
+                                <div class="h-12 bg-slate-800/40 rounded-xl"></div>
+                                <div class="h-12 bg-slate-800/40 rounded-xl"></div>
+                            </div>
+                            <div class="col-span-9 space-y-4">
+                                <div class="h-32 bg-indigo-600 rounded-3xl p-6 flex items-end">
+                                    <div class="h-8 w-1/3 bg-white/20 rounded-full"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="h-40 bg-slate-800 rounded-3xl p-6">
+                                        <div class="flex gap-2 mb-4">
+                                            <div class="w-4 h-4 bg-emerald-500 rounded-full"></div>
+                                            <div class="w-4 h-4 bg-emerald-500/20 rounded-full"></div>
+                                        </div>
+                                        <div class="h-4 w-1/2 bg-slate-700 rounded-full"></div>
+                                    </div>
+                                    <div class="h-40 bg-slate-800 rounded-3xl p-6">
+                                         <div class="text-xl font-black text-indigo-400">Rp 12,5jt</div>
+                                         <div class="h-2 w-full bg-slate-700 rounded-full mt-4 overflow-hidden">
+                                            <div class="h-full bg-indigo-500 w-3/4"></div>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-indigo-700 font-black text-[10px] mb-8 uppercase tracking-widest border border-indigo-100">
+                        PENGALAMAN PREMIUM
+                    </div>
+                    <h2 class="text-5xl md:text-7xl text-slate-900 mb-8 leading-tight font-black">
+                        Desain Minimalis untuk Fokus Mendalam
+                    </h2>
+                    <p class="text-slate-500 text-xl font-medium leading-relaxed mb-12">
+                        Antarmuka bebas kekacauan yang terasa seperti udara segar. Tanpa gangguan, hanya hidup Anda, terorganisir.
+                    </p>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl">🖱️</div>
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl">⌨️</div>
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl">📱</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    
+    
+    <section class="py-40 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 font-bold text-[10px] mb-8 tracking-[0.2em] uppercase border border-indigo-200">
+                PERALIHAN
+            </div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl text-slate-900 mb-16 leading-tight font-[900] tracking-tight">
+                Datang dari Tempat Lain?
+            </h2>
+
+            <div class="grid sm:grid-cols-3 gap-6">
+                <a href="https://dopamind7.vercel.app/compare/notes-apps" class="group bg-white p-12 rounded-[2.5rem] border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1">
+                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📝</div>
+                    <div class="text-xl font-bold text-slate-900 mb-2">Vs. Planner Kertas</div>
+                    <div class="text-indigo-600 font-bold text-sm opacity-0 group-hover:opacity-100 transition">Jelajahi Alternatif Kertas</div>
+                </a>
+                <a href="https://dopamind7.vercel.app/compare/custom-apps" class="group bg-white p-12 rounded-[2.5rem] border border-slate-200 hover:border-indigo-600 hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1">
+                    <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition">📊</div>
+                    <div class="text-xl font-bold text-slate-900 mb-2">Vs. Excel / Sheets</div>
+                    <div class="text-indigo-600 font-bold text-sm opacity-0 group-hover:opacity-100 transition">Lihat Perbandingan Sheets</div>
+                </a>
+                <a href="https://dopamind7.vercel.app/compare/five-apps" class="group bg-slate-900 p-12 rounded-[2.5rem] border border-slate-800 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-500 transform hover:-translate-y-1">
+                    <div class="text-4xl mb-6">🌌</div>
+                    <div class="text-xl font-bold text-white mb-2">Vs. 5 Aplikasi Terpisah</div>
+                    <div class="text-indigo-400 font-bold text-sm opacity-70 group-hover:opacity-100 transition">Bandingkan Semua Aplikasi</div>
+                </a>
+            </div>
+
+            <p class="mt-16 text-slate-400 font-bold tracking-[0.3em] text-[10px] uppercase">
+                Lakukan lompatan ke sistem yang lebih cerdas.
+            </p>
+        </div>
+    </section>
+
+    
+    
+    
+    <section class="py-40 bg-slate-900 relative overflow-hidden">
+        
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/5 blur-2xl rounded-full"></div>
+        <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-purple-500/5 blur-2xl rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-white/60 text-[10px] font-bold tracking-[0.3em] mb-6 border border-white/10 uppercase">
+                    🚀 JELAJAHI SOLUSI
+                </div>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-white mb-8 tracking-tight font-[900]">Disesuaikan untuk Perjalanan Anda</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto font-medium opacity-80">
+                    Apakah Anda seorang pelajar, pekerja lepas, atau atlet berkinerja tinggi, OneForMind memiliki konfigurasi untuk Anda.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                
+                                <a href="https://dopamind7.vercel.app/solutions/student" class="group block p-[1px] rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-br from-blue-500/10 to-indigo-500/10 p-8 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition duration-500">
+                            🎓
+                        </div>
+                        <h3 class="text-white font-bold tracking-tight text-sm">
+                            Student
+                        </h3>
+                        <div class="mt-6 opacity-40 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-bold uppercase tracking-widest">
+                            Explore <svg class="w-3 h-3 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+                                <a href="https://dopamind7.vercel.app/solutions/career-accelerator" class="group block p-[1px] rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-br from-emerald-500/10 to-teal-500/10 p-8 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition duration-500">
+                            💼
+                        </div>
+                        <h3 class="text-white font-bold tracking-tight text-sm">
+                            Career Accelerator
+                        </h3>
+                        <div class="mt-6 opacity-40 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-bold uppercase tracking-widest">
+                            Explore <svg class="w-3 h-3 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+                                <a href="https://dopamind7.vercel.app/solutions/personalgrowth" class="group block p-[1px] rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-br from-purple-500/10 to-pink-500/10 p-8 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition duration-500">
+                            🌱
+                        </div>
+                        <h3 class="text-white font-bold tracking-tight text-sm">
+                            Personal Growth
+                        </h3>
+                        <div class="mt-6 opacity-40 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-bold uppercase tracking-widest">
+                            Explore <svg class="w-3 h-3 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+                                <a href="https://dopamind7.vercel.app/solutions/finance-mastery" class="group block p-[1px] rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-br from-amber-500/10 to-orange-500/10 p-8 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition duration-500">
+                            💰
+                        </div>
+                        <h3 class="text-white font-bold tracking-tight text-sm">
+                            Finance Mastery
+                        </h3>
+                        <div class="mt-6 opacity-40 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-bold uppercase tracking-widest">
+                            Explore <svg class="w-3 h-3 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+                                <a href="https://dopamind7.vercel.app/solutions/atomic-system" class="group block p-[1px] rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-br from-lime-500/10 to-green-500/10 p-8 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition duration-500">
+                            ⚛️
+                        </div>
+                        <h3 class="text-white font-bold tracking-tight text-sm">
+                            Atomic System
+                        </h3>
+                        <div class="mt-6 opacity-40 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-bold uppercase tracking-widest">
+                            Explore <svg class="w-3 h-3 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+                                <a href="https://dopamind7.vercel.app/solutions/mental-clarity" class="group block p-[1px] rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-br from-slate-500/10 to-gray-500/10 p-8 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition duration-500">
+                            🧠
+                        </div>
+                        <h3 class="text-white font-bold tracking-tight text-sm">
+                            Mental Clarity
+                        </h3>
+                        <div class="mt-6 opacity-40 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-bold uppercase tracking-widest">
+                            Explore <svg class="w-3 h-3 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+                                <a href="https://dopamind7.vercel.app/solutions/deep-work" class="group block p-[1px] rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-br from-cyan-500/10 to-blue-500/10 p-8 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition duration-500">
+                            ⚡
+                        </div>
+                        <h3 class="text-white font-bold tracking-tight text-sm">
+                            Deep Work
+                        </h3>
+                        <div class="mt-6 opacity-40 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-bold uppercase tracking-widest">
+                            Explore <svg class="w-3 h-3 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+                                <a href="https://dopamind7.vercel.app/solutions/freelancer" class="group block p-[1px] rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-br from-rose-500/10 to-red-500/10 p-8 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition duration-500">
+                            🚀
+                        </div>
+                        <h3 class="text-white font-bold tracking-tight text-sm">
+                            Freelancer
+                        </h3>
+                        <div class="mt-6 opacity-40 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-bold uppercase tracking-widest">
+                            Explore <svg class="w-3 h-3 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+                                <a href="https://dopamind7.vercel.app/solutions/second-brain" class="group block p-[1px] rounded-3xl bg-white/5 border border-white/5 hover:border-white/20 transition-all duration-500">
+                    <div class="relative overflow-hidden rounded-[calc(1.5rem-1px)] bg-gradient-to-br from-indigo-500/10 to-purple-500/10 p-8 h-full flex flex-col items-center text-center">
+                        <div class="text-4xl mb-4 group-hover:scale-110 transition duration-500">
+                            💎
+                        </div>
+                        <h3 class="text-white font-bold tracking-tight text-sm">
+                            Second Brain
+                        </h3>
+                        <div class="mt-6 opacity-40 group-hover:opacity-100 transition duration-500 flex items-center gap-2 text-[10px] text-white/60 font-bold uppercase tracking-widest">
+                            Explore <svg class="w-3 h-3 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    </div>
+                </a>
+                            </div>
+        </div>
+    </section>
+
+    
+    
+    
+    <section class="py-48 bg-white overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="relative bg-slate-950 rounded-[3rem] p-12 md:p-20 shadow-2xl overflow-hidden group">
+                <div class="absolute -right-20 -top-20 w-[600px] h-[600px] bg-indigo-600 rounded-full blur-2xl opacity-10 group-hover:opacity-20 transition duration-1000"></div>
+                
+                <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 text-slate-300 font-bold text-[10px] mb-8 tracking-[0.2em] uppercase border border-white/10">
+                            Ekosistem (Segera Hadir)
+                        </div>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight font-[900] tracking-tight">
+                            Aplikasi Mobile Segera Hadir
+                        </h2>
+                        <p class="text-slate-400 text-lg font-medium leading-relaxed mb-0 opacity-80">
+                            Aplikasi web kami sudah kuat, tetapi pengalaman native sudah dekat. Bergabunglah dengan lingkaran dalam kami.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/5  p-8 rounded-[2rem] border border-white/10 shadow-inner">
+                         <form action="https://dopamind7.vercel.app/waitlist" method="POST" class="space-y-4">
+                            <input type="hidden" name="_token" value="OdLNoxvsdseb5IAgVMArUFludHwIxAN9oX8ADJ4N" autocomplete="off">                            <input 
+                                name="email"
+                                type="email" 
+                                value=""
+                                placeholder="Masukkan email utama Anda..."
+                                class="w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:ring-2 focus:ring-indigo-500 outline-none font-medium transition-all"
+                                required
+                            />
+                            <button type="submit" class="w-full bg-white text-slate-950 px-6 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition transform active:scale-95 shadow-lg">
+                                Daftar Waitlist
+                            </button>
+                        </form>
+                        
+                        
+                        <p class="mt-6 text-[10px] text-slate-500 font-bold text-center tracking-widest uppercase opacity-60">
+                            Tanpa spam. Hanya tonggak teknis dan akses awal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    
+    
+    <section class="py-40 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl text-slate-900 mb-16 text-center tracking-tight font-[900]">Pertanyaan Umum Tentang OneForMind</h2>
+            
+            <div class="grid gap-4" x-data="{ active: null }">
+                                <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="active === 1 ? 'ring-2 ring-indigo-500 border-indigo-500' : ''">
+                    <button @click="active = active === 1 ? null : 1" class="flex justify-between items-center w-full p-8 text-left group">
+                        <span class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition tracking-tight">Apakah data saya disimpan dengan aman?</span>
+                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition">
+                            <span class="text-xs text-slate-400 group-hover:text-indigo-600 transition-transform duration-300" :class="active === 1 ? 'rotate-180' : ''">▼</span>
+                        </div>
+                    </button>
+                    <div x-show="active === 1" x-collapse x-cloak>
+                        <div class="px-8 pb-8 text-slate-500 font-medium text-lg leading-relaxed opacity-80">
+                            Tentu saja. Semua data Anda disimpan dengan aman di cloud. Anda dapat melihat kembali riwayat keuangan atau kebiasaan kapan saja untuk evaluasi.
+                        </div>
+                    </div>
+                </div>
+                                <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="active === 2 ? 'ring-2 ring-indigo-500 border-indigo-500' : ''">
+                    <button @click="active = active === 2 ? null : 2" class="flex justify-between items-center w-full p-8 text-left group">
+                        <span class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition tracking-tight">Apakah ini benar-benar gratis?</span>
+                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition">
+                            <span class="text-xs text-slate-400 group-hover:text-indigo-600 transition-transform duration-300" :class="active === 2 ? 'rotate-180' : ''">▼</span>
+                        </div>
+                    </button>
+                    <div x-show="active === 2" x-collapse x-cloak>
+                        <div class="px-8 pb-8 text-slate-500 font-medium text-lg leading-relaxed opacity-80">
+                            Ya. Fitur Habit &amp; Finance Tracker saat ini GRATIS. Kami akan merilis fitur Premium nanti, tetapi fondasi utamanya akan tetap gratis.
+                        </div>
+                    </div>
+                </div>
+                                <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="active === 3 ? 'ring-2 ring-indigo-500 border-indigo-500' : ''">
+                    <button @click="active = active === 3 ? null : 3" class="flex justify-between items-center w-full p-8 text-left group">
+                        <span class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition tracking-tight">Bisakah saya menggunakannya di HP?</span>
+                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition">
+                            <span class="text-xs text-slate-400 group-hover:text-indigo-600 transition-transform duration-300" :class="active === 3 ? 'rotate-180' : ''">▼</span>
+                        </div>
+                    </button>
+                    <div x-show="active === 3" x-collapse x-cloak>
+                        <div class="px-8 pb-8 text-slate-500 font-medium text-lg leading-relaxed opacity-80">
+                            Tentu saja! Website ini sepenuhnya responsif dan terasa seperti aplikasi native di HP.
+                        </div>
+                    </div>
+                </div>
+                                <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="active === 4 ? 'ring-2 ring-indigo-500 border-indigo-500' : ''">
+                    <button @click="active = active === 4 ? null : 4" class="flex justify-between items-center w-full p-8 text-left group">
+                        <span class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition tracking-tight">Apakah OneForMind mengikuti metode Atomic Habits?</span>
+                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition">
+                            <span class="text-xs text-slate-400 group-hover:text-indigo-600 transition-transform duration-300" :class="active === 4 ? 'rotate-180' : ''">▼</span>
+                        </div>
+                    </button>
+                    <div x-show="active === 4" x-collapse x-cloak>
+                        <div class="px-8 pb-8 text-slate-500 font-medium text-lg leading-relaxed opacity-80">
+                            Ya, OneForMind dibangun di atas pilar Atomic Habits (James Clear), Deep Work (Cal Newport), dan The Second Brain (Tiago Forte). Setiap fitur dirancang untuk mengurangi gesekan dan membangun perubahan perilaku yang langgeng.
+                        </div>
+                    </div>
+                </div>
+                                <div class="bg-white rounded-[2rem] border border-slate-200 overflow-hidden transition-all duration-300 shadow-sm" :class="active === 5 ? 'ring-2 ring-indigo-500 border-indigo-500' : ''">
+                    <button @click="active = active === 5 ? null : 5" class="flex justify-between items-center w-full p-8 text-left group">
+                        <span class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition tracking-tight">Bisakah saya mengelola keuangan dan habit di satu tempat?</span>
+                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-50 transition">
+                            <span class="text-xs text-slate-400 group-hover:text-indigo-600 transition-transform duration-300" :class="active === 5 ? 'rotate-180' : ''">▼</span>
+                        </div>
+                    </button>
+                    <div x-show="active === 5" x-collapse x-cloak>
+                        <div class="px-8 pb-8 text-slate-500 font-medium text-lg leading-relaxed opacity-80">
+                            OneForMind adalah Life OS terpadu pertama yang dirancang untuk sinkronisasi uang, habit, dan tugas Anda. Dengan melihat pengeluaran berdampingan dengan grafik pertumbuhan, Anda mendapatkan pandangan holistik tentang hidup Anda.
+                        </div>
+                    </div>
+                </div>
+                            </div>
+        </div>
+    </section>
+
+    
+    
+    
+    <section class="py-56 px-6 text-center relative overflow-hidden bg-white">
+        
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(79,70,229,0.05)_0%,transparent_50%)]"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-10">
+            <h2 class="text-5xl md:text-[6rem] mb-12 leading-[1] tracking-tight text-slate-900 font-[900]">
+                Siap Mengklaim Kembali Fokus Anda?
+            </h2>
+            <p class="text-slate-500 text-lg md:text-xl mb-16 max-w-xl mx-auto font-medium opacity-80">
+                Bergabunglah dengan 100+ high performers yang telah menghentikan kelelahan pindah aplikasi dan memulai aliran mereka.
+            </p>
+            
+            <div class="flex flex-col items-center gap-8">
+                <a hx-boost="false" href="https://dopamind7.vercel.app/register" class="inline-block bg-indigo-600 text-white px-16 py-6 rounded-2xl font-bold text-xl hover:bg-indigo-700 shadow-[0_20px_40px_-10px_rgba(79,70,229,0.3)] transition transform hover:-translate-y-1 active:scale-95 font-sans">
+                    Buat OS Terpadu Anda
+                </a>
+                <div class="flex items-center gap-3 text-[10px] font-bold text-slate-400 tracking-[0.3em] uppercase opacity-60">
+                    ✨ Fitur Utama Gratis Selamanya. Tidak perlu Kartu Kredit.
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+        </main>
+
+        
+        <footer class="bg-slate-50 border-t border-slate-100 pt-20 pb-10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-12 md:gap-12 mb-16 text-left">
+                    <div class="col-span-2 md:col-span-1">
+                        <a href="https://dopamind7.vercel.app" class="flex items-center gap-2 mb-6">
+                            <img src="/favicon.svg" alt="Logo" class="w-7 h-7" />
+                            <span class="text-lg font-black tracking-tighter">OneForMind</span>
+                        </a>
+                        <p class="text-sm text-slate-700 leading-relaxed mb-6 max-w-xs">
+                            The unified productivity system designed to bring clarity to your life, habits, and
+                            finances.
+                        </p>
+                        <div class="text-xs text-slate-600 space-y-2 mt-4 font-bold">
+                            <p><strong>Email:</strong> oneformindapp@gmail.com</p>
+                            <p><strong>Status:</strong> HQ Jakarta, ID</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Product</p>
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
+                            <li><a href="https://dopamind7.vercel.app/features/habit" class="hover:text-indigo-600 transition">Habit
+                                    Tracker</a></li>
+                            <li><a href="https://dopamind7.vercel.app/features/finance"
+                                    class="hover:text-indigo-600 transition">Finance OS</a></li>
+                            <li><a href="https://dopamind7.vercel.app/features/planner" class="hover:text-indigo-600 transition">Daily
+                                    Planner</a></li>
+                            <li><a href="https://dopamind7.vercel.app/features/journal"
+                                    class="hover:text-indigo-600 transition">Digital Journal</a></li>
+                            <li><a href="https://dopamind7.vercel.app/features/calendar"
+                                    class="hover:text-indigo-600 transition">Smart Calendar</a></li>
+                            <li><a href="https://dopamind7.vercel.app/features/goal" class="hover:text-indigo-600 transition">Goal
+                                    Tracker</a></li>
+                            <li><a href="https://dopamind7.vercel.app/features/job" class="hover:text-indigo-600 transition">Job
+                                    Tracker</a></li>
+                            <li><a href="https://dopamind7.vercel.app/features/neural-os"
+                                    class="hover:text-indigo-600 transition">Neural OS AI</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Compare</p>
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
+                            <li><a href="https://dopamind7.vercel.app/compare/notes-apps" class="hover:text-indigo-600 transition">Vs.
+                                    Notes Apps</a></li>
+                            <li><a href="https://dopamind7.vercel.app/compare/custom-apps" class="hover:text-indigo-600 transition">Vs.
+                                    Custom Apps</a></li>
+                            <li><a href="https://dopamind7.vercel.app/compare/finance-apps"
+                                    class="hover:text-indigo-600 transition">Vs. Finance Apps</a></li>
+                            <li><a href="https://dopamind7.vercel.app/compare/planner-apps"
+                                    class="hover:text-indigo-600 transition">Vs. Planner Apps</a></li>
+                            <li><a href="https://dopamind7.vercel.app/compare/five-apps" class="hover:text-indigo-600 transition">Vs.
+                                    5 Apps</a></li>
+                            <li><a href="https://dopamind7.vercel.app/compare/management-tools"
+                                    class="hover:text-indigo-600 transition">Vs. Management</a></li>
+                            <li><a href="https://dopamind7.vercel.app/compare/habit-apps" class="hover:text-indigo-600 transition">Vs.
+                                    Habit Apps</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Resources</p>
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
+                            <li><a href="https://dopamind7.vercel.app/resources/help" class="hover:text-indigo-600 transition">Help
+                                    Center</a></li>
+                            <li><a href="https://dopamind7.vercel.app/resources/blog"
+                                    class="hover:text-indigo-600 transition">Blog</a></li>
+                            <li><a href="https://dopamind7.vercel.app/resources/changelog"
+                                    class="hover:text-indigo-600 transition">Changelog</a></li>
+                            <li><a href="https://dopamind7.vercel.app/resources/community"
+                                    class="hover:text-indigo-600 transition">Community</a></li>
+                            <li><a href="https://dopamind7.vercel.app/resources/stories"
+                                    class="hover:text-indigo-600 transition">Success Stories</a></li>
+                            <li><a href="https://dopamind7.vercel.app/resources/guide" class="hover:text-indigo-600 transition">User
+                                    Guide</a></li>
+                            <li><a href="https://dopamind7.vercel.app/resources/neural-os-transparency" class="hover:text-indigo-600 transition">AI
+                                    Transparency</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Company</p>
+                        <ul class="space-y-4 text-sm font-bold text-slate-700">
+                            <li><a href="https://dopamind7.vercel.app/company/privacy"
+                                    class="hover:text-indigo-600 transition">Privacy policy</a></li>
+                            <li><a href="https://dopamind7.vercel.app/company/terms"
+                                    class="hover:text-indigo-600 transition">Terms of service</a></li>
+                            <li><a href="https://dopamind7.vercel.app/company/refund"
+                                    class="hover:text-indigo-600 transition">Refund policy</a></li>
+                            <li><a href="https://dopamind7.vercel.app/company/contact"
+                                    class="hover:text-indigo-600 transition">Contact us</a></li>
+                            <li><a href="https://dopamind7.vercel.app/company/security"
+                                    class="hover:text-indigo-600 transition">Security</a></li>
+                            <li><a href="https://dopamind7.vercel.app/about"
+                                    class="hover:text-indigo-600 transition">About us</a></li>
+                            <li><a href="https://dopamind7.vercel.app/company/status"
+                                    class="hover:text-indigo-600 transition">System status</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-5">Connect</p>
+                        <div class="flex gap-4">
+                            <a href="https://x.com/OneForMind" target="_blank" rel="noopener noreferrer"
+                                class="!p-0 w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
+                                aria-label="Follow us on X">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932zm-1.294 19.497h2.039L6.482 3.239h-2.19L17.607 20.65z" />
+                                </svg>
+                            </a>
+                            <a href="https://instagram.com/oneformind" target="_blank" rel="noopener noreferrer"
+                                class="!p-0 w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
+                                aria-label="Follow us on Instagram">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </a>
+                            <a href="https://facebook.com/oneformind" target="_blank" rel="noopener noreferrer"
+                                class="!p-0 w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-indigo-500 hover:text-indigo-600 transition shadow-sm"
+                                aria-label="Follow us on Facebook">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div
+                    class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-bold text-slate-700">
+                    <p>&copy; 2026 OneForMind. All rights reserved.</p>
+                    <p>Made with ❤️ for better focus.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    
+    <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // HTMX Integration
+            document.body.addEventListener('htmx:beforeSwap', (event) => {
+                // If it's a boosted navigation, handle scroll
+                if (event.detail.boosted) {
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                }
+            });
+
+            document.body.addEventListener('htmx:afterSwap', (event) => {
+                // Tracking
+                if (typeof fbq !== 'undefined') fbq('track', 'PageView');
+                
+                // Close menu just in case
+                if (window.Alpine) {
+                    // We can't easily access the scope here without a reference, 
+                    // but our @click on links already handles this.
+                }
+            });
+        });
+    </script>
+    <!-- Cookie Banner -->
+    <div x-data="{ 
+ show: false,
+ init() {
+ const dbConsent = null;
+ const localConsent = localStorage.getItem('cookie_consent');
+ 
+ if (!dbConsent && !localConsent) {
+ setTimeout(() => this.show = true, 2000);
+ }
+ },
+ async accept() {
+ this.save('all');
+ },
+ async essential() {
+ this.save('essential');
+ },
+ async save(type) {
+ localStorage.setItem('cookie_consent', type);
+ this.show = false;
+
+ // Update Google Tag Consent Mode
+ if (typeof gtag !== 'undefined') {
+ gtag('consent', 'update', {
+ 'ad_storage': type === 'all' ? 'granted' : 'denied',
+ 'analytics_storage': type === 'all' ? 'granted' : 'denied',
+ 'personalization_storage': type === 'all' ? 'granted' : 'denied'
+ });
+ }
+
+ if (false) {
+ try {
+ await fetch('https://dopamind7.vercel.app/settings/cookie-consent', {
+ method: 'POST',
+ headers: {
+ 'Content-Type': 'application/json',
+ 'X-CSRF-TOKEN': 'OdLNoxvsdseb5IAgVMArUFludHwIxAN9oX8ADJ4N'
+ },
+ body: JSON.stringify({ consent: type })
+ });
+ } catch (e) {
+ console.error('Consent sync failed');
+ }
+ }
+ }
+ }" x-show="show" x-transition:enter="transition ease-out duration-500"
+ x-transition:enter-start="opacity-0 translate-y-20 scale-95"
+ x-transition:enter-end="opacity-100 translate-y-0 scale-100" x-transition:leave="transition ease-in duration-300"
+ x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+ x-transition:leave-end="opacity-0 translate-y-20 scale-95"
+ class="fixed bottom-6 left-6 right-6 md:left-auto md:max-w-md z-[200]" x-cloak>
+ <div
+ class="bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 p-8 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] relative overflow-hidden group">
+ 
+ <div
+ class="absolute -right-20 -top-20 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-indigo-500/20 transition-all duration-700">
+ </div>
+
+ <div class="relative z-10">
+ <div class="flex items-start gap-4 mb-6">
+ <div
+ class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-indigo-200 shrink-0">
+ 🍪
+ </div>
+ <div>
+ <h3 class="text-lg font-black text-slate-900 dark:text-white mb-1">
+ 🍪 Icip Cookie?
+ </h3>
+ <p class="text-xs text-slate-500 dark:text-slate-400 font-bold leading-relaxed">
+ Kami menggunakan cookie untuk memastikan Anda mendapatkan pengalaman terbaik dan aman di sistem kami.
+ </p>
+ </div>
+ </div>
+
+ <div class="flex flex-col gap-2">
+ <button @click="accept()"
+ class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-xs transition transform active:scale-95 shadow-lg shadow-indigo-100 dark:shadow-none">
+ Terima Semua
+ </button>
+ <div class="grid grid-cols-2 gap-2">
+ <button @click="essential()"
+ class="py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-2xl font-black text-[10px] transition">
+ Hanya Esensial
+ </button>
+ <a href="https://dopamind7.vercel.app/company/privacy"
+ class="py-3 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-400 rounded-2xl font-black text-[10px] transition text-center">
+ Pengaturan
+ </a>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+    </body>
+
+</html>
+

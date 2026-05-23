@@ -21,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
         'google_id',
         'email_verified_at',
@@ -159,6 +160,16 @@ class User extends Authenticatable implements MustVerifyEmail
     public function goals(): HasMany
     {
         return $this->hasMany(Goal::class);
+    }
+
+    public function studyMaterials(): HasMany
+    {
+        return $this->hasMany(StudyMaterial::class);
+    }
+
+    public function studyCompetency(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(StudyCompetency::class);
     }
 
     /**

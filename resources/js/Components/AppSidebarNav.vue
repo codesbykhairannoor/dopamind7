@@ -54,6 +54,10 @@ const goGoal = () => {
     demandAccess("goal", route("goals.index"));
     onNav();
 };
+const goStudy = () => {
+    demandAccess("goal", route("study.index"));
+    onNav();
+};
 const goCoach = () => {
     demandAccess("ai_coach", route("coach.index"));
     onNav();
@@ -505,6 +509,48 @@ const goCoach = () => {
                     ></div>
                     <div
                         v-if="isActive('goals.*') && showLabels"
+                        class="nav-active-bar"
+                    ></div>
+                </component>
+
+                <component
+                    :is="canUse('goal') ? Link : 'button'"
+                    v-if="showModule('study')"
+                    :href="canUse('goal') ? route('study.index') : undefined"
+                    :prefetch="canUse('goal') ? 'hover' : undefined"
+                    view-transition
+                    class="nav-item group"
+                    :class="[
+                        isActive('study.*')
+                            ? 'nav-item-active'
+                            : 'nav-item-default',
+                        itemLayout,
+                        !canUse('goal') ? 'opacity-60' : '',
+                    ]"
+                    :title="!showLabels ? $t('nav_item_study', 'Study Console') : ''"
+                    @click="canUse('goal') ? onNav() : goStudy()"
+                >
+                    <div
+                        class="nav-icon shrink-0"
+                        :class="
+                            isActive('study.*')
+                                ? 'text-indigo-600 dark:text-indigo-400'
+                                : 'text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300'
+                        "
+                    >
+                        <OneForMindIcon name="study" size="18" />
+                    </div>
+                    <span
+                        v-if="showLabels"
+                        class="text-[12px] font-semibold tracking-tight truncate flex-1"
+                        >{{ $t("nav_item_study", "Study Console") }}</span
+                    >
+                    <div
+                        v-if="!canUse('goal') && showLabels"
+                        class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0 shadow-[0_0_6px_rgba(129,140,248,0.6)]"
+                    ></div>
+                    <div
+                        v-if="isActive('study.*') && showLabels"
                         class="nav-active-bar"
                     ></div>
                 </component>
