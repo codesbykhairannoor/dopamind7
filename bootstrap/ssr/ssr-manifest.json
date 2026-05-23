@@ -661,16 +661,17 @@
   "resources/js/Pages/Settings/Security.vue": [
     "/build/assets/Security-BcrnOERx.js"
   ],
+  "resources/js/Pages/Study/Academic/Index.vue": [
+    "/build/assets/Index-CaBbzYVS.js"
+  ],
   "resources/js/Pages/Study/AcademicProgress.vue": [
     "/build/assets/AcademicProgress-C7iF0BbA.js"
   ],
   "resources/js/Pages/Study/Index.vue": [
-    "/build/assets/Index-BzsVlF_7.js",
-    "/build/assets/Index-DIertGNa.css"
+    "/build/assets/Index-DoLbfGSb.js"
   ],
-  "resources/js/Pages/Study/Index.vue?vue&type=style&index=0&scoped=a8a276fe&lang.css": [
-    "/build/assets/Index-BzsVlF_7.js",
-    "/build/assets/Index-DIertGNa.css"
+  "resources/js/Pages/Study/Portfolio/Index.vue": [
+    "/build/assets/Index-CAtRHgWY.js"
   ],
   "resources/js/Pages/Study/StudyArchetypeMatches.vue": [
     "/build/assets/StudyArchetypeMatches-ZGZjv5Mp.js"
