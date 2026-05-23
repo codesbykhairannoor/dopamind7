@@ -95,28 +95,7 @@ const availableSemesters = computed(() => {
 
 const selectedSemester = ref(userSettings.value.current_semester || 1);
 
-const promptNewSemester = () => {
-    Swal.fire({
-        title: trans('study_add_new_semester_title'),
-        text: trans('study_add_new_semester_text'),
-        input: 'number',
-        inputAttributes: { min: 1, max: 100 },
-        showCancelButton: true,
-        confirmButtonText: trans('study_continue'),
-        customClass: {
-            confirmButton: 'bg-indigo-600 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
-            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
-            input: 'w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl outline-none mt-4',
-            popup: 'rounded-[2.5rem] p-8'
-        },
-        buttonsStyling: false
-    }).then((res) => {
-        if (res.isConfirmed && res.value) {
-            maxSemesterAdded.value = Math.max(maxSemesterAdded.value, parseInt(res.value));
-            selectedSemester.value = parseInt(res.value);
-        }
-    });
-};
+
 
 const deleteSemester = () => {
     Swal.fire({
@@ -139,6 +118,51 @@ const deleteSemester = () => {
             });
         }
     });
+};
+
+const isAddSemesterModalOpen = ref(false);
+const newSemesterValue = ref('');
+
+const submitNewSemester = () => {
+    const val = parseInt(newSemesterValue.value);
+    if (val && val >= 1) {
+        maxSemesterAdded.value = Math.max(maxSemesterAdded.value, val);
+        selectedSemester.value = val;
+        isAddSemesterModalOpen.value = false;
+    }
+};
+
+const deleteSpecificSemester = (sem) => {
+    Swal.fire({
+        title: trans('study_delete_semester_title', { num: sem }),
+        text: trans('study_delete_semester_text'),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: trans('study_delete_confirm_yes'),
+        cancelButtonText: trans('study_delete_confirm_cancel'),
+        customClass: {
+            confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
+            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
+            popup: 'rounded-[2.5rem] p-8'
+        },
+        buttonsStyling: false
+    }).then((res) => {
+        if (res.isConfirmed) {
+            router.delete(route('study.academic.semester.destroy', sem), {
+                preserveScroll: true,
+                onSuccess: () => {
+                    if (selectedSemester.value === sem) {
+                        selectedSemester.value = 1;
+                    }
+                }
+            });
+        }
+    });
+};
+
+const promptNewSemester = () => {
+    newSemesterValue.value = '';
+    isAddSemesterModalOpen.value = true;
 };
 
 const isEditCourseModalOpen = ref(false);
@@ -209,10 +233,32 @@ const submitCourse = () => {
 };
 
 const deleteRecord = (id) => {
-    if (confirm(trans('study_delete_course_confirm', { course: terms.value.course }) || `Hapus ${terms.value.course} ini?`)) {
-        router.delete(route('study.academic.destroy', id), { preserveScroll: true, preserveState: true });
-        if (selectedCourse.value && selectedCourse.value.id === id) closeCourse();
-    }
+    Swal.fire({
+        title: trans('study_delete_course_confirm_title', { course: terms.value.course }),
+        text: trans('study_delete_course_confirm', { course: terms.value.course }),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: trans('study_delete_confirm_yes'),
+        cancelButtonText: trans('study_delete_confirm_cancel'),
+        customClass: {
+            confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
+            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
+            popup: 'rounded-[2.5rem] p-8'
+        },
+        buttonsStyling: false
+    }).then((res) => {
+        if (res.isConfirmed) {
+            router.delete(route('study.academic.destroy', id), {
+                preserveScroll: true,
+                preserveState: true,
+                onSuccess: () => {
+                    if (selectedCourse.value && selectedCourse.value.id === id) {
+                        closeCourse();
+                    }
+                }
+            });
+        }
+    });
 };
 
 // --- Level 2 (Course Detail) Logic ---
@@ -269,9 +315,24 @@ const submitArchive = () => {
 };
 
 const deleteArchive = (id) => {
-    if (confirm(trans('study_delete_confirm_desc') || 'Hapus arsip ini?')) {
-        router.delete(route('study.academic.archive.destroy', id), { preserveScroll: true, preserveState: true });
-    }
+    Swal.fire({
+        title: trans('study_delete_archive_title'),
+        text: trans('study_delete_confirm_desc'),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: trans('study_delete_confirm_yes'),
+        cancelButtonText: trans('study_delete_confirm_cancel'),
+        customClass: {
+            confirmButton: 'bg-rose-500 text-white font-bold py-3.5 px-8 rounded-2xl mx-2',
+            cancelButton: 'bg-slate-100 text-slate-500 font-bold py-3.5 px-8 rounded-2xl mx-2',
+            popup: 'rounded-[2.5rem] p-8'
+        },
+        buttonsStyling: false
+    }).then((res) => {
+        if (res.isConfirmed) {
+            router.delete(route('study.academic.archive.destroy', id), { preserveScroll: true, preserveState: true });
+        }
+    });
 };
 
 // Extract unique meeting tags and group archives
@@ -414,9 +475,14 @@ const getTypeColor = (type) => {
                                     <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                                         <MenuItems class="absolute right-0 mt-2 w-56 origin-top-right bg-white dark:bg-slate-900 rounded-3xl shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 p-2 z-[60] max-h-60 overflow-y-auto custom-scrollbar">
                                             <MenuItem v-for="sem in availableSemesters" :key="sem" v-slot="{ active }">
-                                                <button @click="selectedSemester = sem" :class="[active ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none' : 'hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400', 'group flex w-full items-center px-4 py-3 rounded-2xl text-[11px] font-black transition-all mb-1']">
-                                                    {{ terms.semester }} {{ sem }}
-                                                </button>
+                                                <div class="relative group flex items-center w-full mb-1">
+                                                    <button @click="selectedSemester = sem" :class="[active ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none' : 'hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400', 'flex-1 text-left px-4 py-3 rounded-2xl text-[11px] font-black transition-all']">
+                                                        {{ terms.semester }} {{ sem }}
+                                                    </button>
+                                                    <button @click.stop="deleteSpecificSemester(sem)" class="absolute right-2 opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-500 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-all z-20">
+                                                        <Trash2 class="h-3.5 w-3.5" />
+                                                    </button>
+                                                </div>
                                             </MenuItem>
                                             <div class="border-t border-slate-100 dark:border-slate-800 my-2 mx-2"></div>
                                             <MenuItem v-slot="{ active }">
@@ -552,7 +618,7 @@ const getTypeColor = (type) => {
                             </div>
                             <div>
                                 <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_grade_target_dynamic', { grade: terms.grade }) }}</label>
-                                <input v-model="editCourseForm.grade" type="number" min="0" max="100" :placeholder="$t('study_grade_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                                <input v-model="editCourseForm.grade" type="text" :placeholder="$t('study_grade_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                         </div>
 
@@ -589,7 +655,7 @@ const getTypeColor = (type) => {
                             </div>
                             <div>
                                 <label class="block text-[11px] font-black capitalize tracking-wide text-slate-500 mb-1.5">{{ $t('study_grade_target_required', { grade: terms.grade }) }}</label>
-                                <input v-model="form.grade" type="number" step="0.01" min="0" max="100" required class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
+                                <input v-model="form.grade" type="text" :placeholder="$t('study_grade_placeholder')" class="w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm font-semibold focus:ring-2 focus:ring-indigo-500 outline-none" />
                             </div>
                         </div>
                         <button type="submit" :disabled="form.processing" class="w-full py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black rounded-2xl shadow-lg transition-all mt-2">

@@ -5545,7 +5545,7 @@ const study_is_empty$1 = "is Empty";
 const study_please_add$1 = "Please add";
 const study_to_start_saving$1 = "in the left form to start saving archives.";
 const study_archive$1 = "Archive";
-const study_delete_course_confirm$1 = "Are you sure you want to delete this {course}? All archives inside will also be deleted.";
+const study_delete_course_confirm$1 = "Are you sure you want to delete this :course? All archives inside will also be deleted.";
 const study_total$1 = "Total";
 const study_archives_saved$1 = "archives saved";
 const study_item$1 = "item";
@@ -5562,7 +5562,7 @@ const study_reference$1 = "Reference";
 const study_paste_link$1 = "Or paste external link (Drive/Notion)";
 const study_upload$1 = "Upload";
 const study_back$1 = "Back";
-const study_course_list_title$1 = "List of {course} in {semester} {num}";
+const study_course_list_title$1 = "List of :course in :semester :num";
 const study_delete_this$1 = "Delete";
 const study_start_setup$1 = "Start Setup";
 const study_explore_ai_space$1 = "Explore AI Space";
@@ -5584,26 +5584,26 @@ const study_save_start$1 = "Save & Start";
 const study_add_course_btn$1 = "Add";
 const study_edit$1 = "Edit";
 const study_no_course_data$1 = "No data for";
-const study_no_course_desc$1 = "Start adding your first {course} for {semester} {num}.";
-const study_add_first_course$1 = "Add First {course}";
-const study_edit_course$1 = "Edit {course}";
-const study_course_name_dynamic$1 = "{course} Name *";
-const study_sks_weight_dynamic$1 = "{sks} Weight *";
-const study_grade_target_dynamic$1 = "Target {grade} (Optional)";
-const study_grade_target_required$1 = "Target / Final {grade} *";
-const study_grade_placeholder$1 = "e.g., 85";
+const study_no_course_desc$1 = "Start adding your first :course for :semester :num.";
+const study_add_first_course$1 = "Add First :course";
+const study_edit_course$1 = "Edit :course";
+const study_course_name_dynamic$1 = ":course Name *";
+const study_sks_weight_dynamic$1 = ":sks Weight *";
+const study_grade_target_dynamic$1 = "Target :grade (Optional)";
+const study_grade_target_required$1 = "Target / Final :grade (Optional)";
+const study_grade_placeholder$1 = "e.g., A+, B, 85";
 const study_save_changes$1 = "Save Changes";
 const study_add_new_data$1 = "Add New Data";
-const study_for_semester_dynamic$1 = "For {semester} {num}";
+const study_for_semester_dynamic$1 = "For :semester :num";
 const study_save_data$1 = "Save Data";
-const study_input_meeting_new$1 = "Input New {meeting}";
+const study_input_meeting_new$1 = "Input New :meeting";
 const study_class_is_empty$1 = "Class is Empty";
-const study_empty_class_desc$1 = 'Click the <strong>"Input New {meeting}"</strong> button above to start creating material groups. You are free to name the meeting group as you wish.';
+const study_empty_class_desc$1 = 'Click the <strong>"Input New :meeting"</strong> button above to start creating material groups. You are free to name the meeting group as you wish.';
 const study_untitled_archive$1 = "Untitled Archive";
 const study_visit_link$1 = "Visit Link";
 const study_input_material$1 = "Input Material";
 const study_meeting_tag_label$1 = "Meeting / Topic Group Name *";
-const study_meeting_placeholder$1 = "e.g., {meeting} 1 - Introduction";
+const study_meeting_placeholder$1 = "e.g., :meeting 1 - Introduction";
 const study_content_type$1 = "Content Type";
 const study_type_modul$1 = "Module / Material";
 const study_type_soal$1 = "Task / Question";
@@ -5618,12 +5618,12 @@ const study_semester_empty_alert$1 = "Semester cannot be empty!";
 const study_add_new_semester_title$1 = "Add New Semester";
 const study_add_new_semester_text$1 = "Enter the semester number you want to add (e.g., 7)";
 const study_continue$1 = "Continue";
-const study_delete_semester_title$1 = "Delete Semester {num}?";
+const study_delete_semester_title$1 = "Delete Semester :num?";
 const study_delete_semester_text$1 = "All courses and files inside will be permanently deleted!";
 const study_delete_confirm_yes$1 = "Yes, Delete";
 const study_delete_confirm_cancel$1 = "Cancel";
-const study_course_name_empty_alert$1 = "{course} name cannot be empty!";
-const study_sks_invalid_alert$1 = "Please fill in {sks} correctly!";
+const study_course_name_empty_alert$1 = ":course name cannot be empty!";
+const study_sks_invalid_alert$1 = "Please fill in :sks correctly!";
 const study_meeting_tag_empty_alert$1 = "Meeting name/group cannot be empty!";
 const study_archive_file_or_link_alert$1 = "You must upload a file or link a URL!";
 const study_term_semester_kuliah$1 = "Semester";
@@ -5675,8 +5675,8 @@ const study_save_settings$1 = "Save Display Settings";
 const study_no_coursework_materials$1 = "No Academic Documents Yet";
 const study_no_competency_radar$1 = "No Competency Analysis Yet";
 const study_no_competency_desc$1 = "Upload your study documents to start building your neural competency map.";
-const study_file_not_supported_alert$1 = '"{name}" is not supported. Only PDF, DOCX, and PPTX are allowed.';
-const study_file_size_alert$1 = '"{name}" exceeds the 10MB limit.';
+const study_file_not_supported_alert$1 = '":name" is not supported. Only PDF, DOCX, and PPTX are allowed.';
+const study_file_size_alert$1 = '":name" exceeds the 10MB limit.';
 const study_course_name_required_alert$1 = "Please enter a Course Name first.";
 const study_upload_limit_reached_alert$1 = "Upload limit reached (Max 6 Cards).";
 const study_no_items_to_analyze_alert$1 = "Please add at least one context or artifact item to analyze.";
@@ -5690,6 +5690,8 @@ const study_course_name_placeholder$1 = "e.g. Programming Algorithm, Machine Lea
 const study_week_placeholder$1 = "e.g. Week 4";
 const study_career_goal_placeholder$1 = "e.g. Machine Learning Engineer, Frontend Developer";
 const study_display_settings_desc$1 = "Configure which audited sections and career target metrics you want to show on your public portfolio page.";
+const study_delete_course_confirm_title$1 = "Delete :course?";
+const study_delete_archive_title$1 = "Delete Archive?";
 const en = {
   about_meta_desc: about_meta_desc$1,
   about_meta_og_title: about_meta_og_title$1,
@@ -11331,7 +11333,9 @@ const en = {
   study_course_name_placeholder: study_course_name_placeholder$1,
   study_week_placeholder: study_week_placeholder$1,
   study_career_goal_placeholder: study_career_goal_placeholder$1,
-  study_display_settings_desc: study_display_settings_desc$1
+  study_display_settings_desc: study_display_settings_desc$1,
+  study_delete_course_confirm_title: study_delete_course_confirm_title$1,
+  study_delete_archive_title: study_delete_archive_title$1
 };
 const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -16386,12 +16390,14 @@ const __vite_glob_1_0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   study_course_name_required_alert: study_course_name_required_alert$1,
   study_coursework_materials: study_coursework_materials$1,
   study_delete: study_delete$1,
+  study_delete_archive_title: study_delete_archive_title$1,
   study_delete_cancel: study_delete_cancel$1,
   study_delete_confirm_cancel: study_delete_confirm_cancel$1,
   study_delete_confirm_desc: study_delete_confirm_desc$1,
   study_delete_confirm_title: study_delete_confirm_title$1,
   study_delete_confirm_yes: study_delete_confirm_yes$1,
   study_delete_course_confirm: study_delete_course_confirm$1,
+  study_delete_course_confirm_title: study_delete_course_confirm_title$1,
   study_delete_semester_text: study_delete_semester_text$1,
   study_delete_semester_title: study_delete_semester_title$1,
   study_delete_this: study_delete_this$1,
@@ -22490,7 +22496,7 @@ const study_is_empty = "Masih Kosong";
 const study_please_add = "Silakan tambahkan";
 const study_to_start_saving = "di form sebelah kiri untuk mulai menyimpan arsip.";
 const study_archive = "Arsip";
-const study_delete_course_confirm = "Yakin ingin menghapus {course} ini? Semua arsip di dalamnya akan ikut terhapus.";
+const study_delete_course_confirm = "Yakin ingin menghapus :course ini? Semua arsip di dalamnya akan ikut terhapus.";
 const study_total = "Total";
 const study_archives_saved = "arsip tersimpan";
 const study_item = "item";
@@ -22507,7 +22513,7 @@ const study_reference = "Referensi";
 const study_paste_link = "Atau paste link eksternal (Drive/Notion)";
 const study_upload = "Upload";
 const study_back = "Kembali";
-const study_course_list_title = "Daftar {course} di {semester} {num}";
+const study_course_list_title = "Daftar :course di :semester :num";
 const study_delete_this = "Hapus";
 const study_start_setup = "Mulai Setup";
 const study_explore_ai_space = "Jelajahi Ruang AI";
@@ -22529,26 +22535,26 @@ const study_save_start = "Simpan & Mulai";
 const study_add_course_btn = "Tambah";
 const study_edit = "Edit";
 const study_no_course_data = "Belum ada data";
-const study_no_course_desc = "Mulai tambahkan {course} untuk {semester} {num} ini.";
-const study_add_first_course = "Tambah {course} Pertama";
-const study_edit_course = "Edit {course}";
-const study_course_name_dynamic = "Nama {course} *";
-const study_sks_weight_dynamic = "Bobot {sks} *";
-const study_grade_target_dynamic = "Target {grade} (Opsional)";
-const study_grade_target_required = "{grade} Target / Akhir *";
-const study_grade_placeholder = "Misal: 85";
+const study_no_course_desc = "Mulai tambahkan :course untuk :semester :num ini.";
+const study_add_first_course = "Tambah :course Pertama";
+const study_edit_course = "Edit :course";
+const study_course_name_dynamic = "Nama :course *";
+const study_sks_weight_dynamic = "Bobot :sks *";
+const study_grade_target_dynamic = "Target :grade (Opsional)";
+const study_grade_target_required = ":grade Target / Akhir (Opsional)";
+const study_grade_placeholder = "misal: A+, B, 85";
 const study_save_changes = "Simpan Perubahan";
 const study_add_new_data = "Tambah Data Baru";
-const study_for_semester_dynamic = "Untuk {semester} {num}";
+const study_for_semester_dynamic = "Untuk :semester :num";
 const study_save_data = "Simpan Data";
-const study_input_meeting_new = "Input {meeting} Baru";
+const study_input_meeting_new = "Input :meeting Baru";
 const study_class_is_empty = "Kelas Masih Kosong";
-const study_empty_class_desc = 'Klik tombol <strong>"Input {meeting} Baru"</strong> di atas untuk mulai membuat grup materi. Anda bebas menamai grup pertemuan sesuka hati.';
+const study_empty_class_desc = 'Klik tombol <strong>"Input :meeting Baru"</strong> di atas untuk mulai membuat grup materi. Anda bebas menamai grup pertemuan sesuka hati.';
 const study_untitled_archive = "Arsip Tanpa Nama";
 const study_visit_link = "Kunjungi Link";
 const study_input_material = "Input Materi";
 const study_meeting_tag_label = "Nama / Grup Pertemuan *";
-const study_meeting_placeholder = "Misal: {meeting} 1 - Pengantar";
+const study_meeting_placeholder = "Misal: :meeting 1 - Pengantar";
 const study_content_type = "Jenis Konten";
 const study_type_modul = "Modul / Materi";
 const study_type_soal = "Tugas / Soal";
@@ -22563,12 +22569,12 @@ const study_semester_empty_alert = "Semester tidak boleh kosong!";
 const study_add_new_semester_title = "Tambah Semester Baru";
 const study_add_new_semester_text = "Masukkan angka semester yang ingin ditambahkan (Misal: 7)";
 const study_continue = "Lanjut";
-const study_delete_semester_title = "Hapus Semester {num}?";
+const study_delete_semester_title = "Hapus Semester :num?";
 const study_delete_semester_text = "Semua mata kuliah dan file di dalamnya akan terhapus permanen!";
 const study_delete_confirm_yes = "Ya, Hapus";
 const study_delete_confirm_cancel = "Batal";
-const study_course_name_empty_alert = "Nama {course} tidak boleh kosong!";
-const study_sks_invalid_alert = "Harap isi {sks} dengan benar!";
+const study_course_name_empty_alert = "Nama :course tidak boleh kosong!";
+const study_sks_invalid_alert = "Harap isi :sks dengan benar!";
 const study_meeting_tag_empty_alert = "Nama / Grup pertemuan tidak boleh kosong!";
 const study_archive_file_or_link_alert = "Anda harus mengunggah file atau menautkan link!";
 const study_term_semester_kuliah = "Semester";
@@ -22620,8 +22626,8 @@ const study_save_settings = "Simpan Pengaturan Tampilan";
 const study_no_coursework_materials = "Belum Ada Dokumen Akademik";
 const study_no_competency_radar = "Belum Ada Analisis Kompetensi";
 const study_no_competency_desc = "Unggah dokumen belajar Anda untuk mulai membangun peta kompetensi neural Anda.";
-const study_file_not_supported_alert = '"{name}" tidak didukung. Hanya PDF, DOCX, dan PPTX yang diizinkan.';
-const study_file_size_alert = '"{name}" melebihi batas 10MB.';
+const study_file_not_supported_alert = '":name" tidak didukung. Hanya PDF, DOCX, dan PPTX yang diizinkan.';
+const study_file_size_alert = '":name" melebihi batas 10MB.';
 const study_course_name_required_alert = "Harap masukkan Nama Mata Kuliah terlebih dahulu.";
 const study_upload_limit_reached_alert = "Batas unggah tercapai (Maks 6 Kartu).";
 const study_no_items_to_analyze_alert = "Harap tambahkan setidaknya satu item konteks atau artefak untuk dianalisis.";
@@ -22635,6 +22641,8 @@ const study_course_name_placeholder = "misal: Algoritma Pemrograman, Machine Lea
 const study_week_placeholder = "misal: Minggu 4";
 const study_career_goal_placeholder = "misal: Machine Learning Engineer, Frontend Developer";
 const study_display_settings_desc = "Konfigurasikan bagian audit dan target karir mana yang ingin Anda tampilkan pada halaman portofolio publik Anda.";
+const study_delete_course_confirm_title = "Hapus :course?";
+const study_delete_archive_title = "Hapus Arsip?";
 const id = {
   about_meta_desc,
   about_meta_og_title,
@@ -28264,7 +28272,9 @@ const id = {
   study_course_name_placeholder,
   study_week_placeholder,
   study_career_goal_placeholder,
-  study_display_settings_desc
+  study_display_settings_desc,
+  study_delete_course_confirm_title,
+  study_delete_archive_title
 };
 const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -33308,12 +33318,14 @@ const __vite_glob_1_1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   study_course_name_required_alert,
   study_coursework_materials,
   study_delete,
+  study_delete_archive_title,
   study_delete_cancel,
   study_delete_confirm_cancel,
   study_delete_confirm_desc,
   study_delete_confirm_title,
   study_delete_confirm_yes,
   study_delete_course_confirm,
+  study_delete_course_confirm_title,
   study_delete_semester_text,
   study_delete_semester_title,
   study_delete_this,
@@ -34283,7 +34295,7 @@ createServer(
     page,
     render: renderToString,
     title: (title) => `${title} - ${appName}`,
-    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-D3aMaE1P.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-NQy9OV9U.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B87qJvUV.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-D2RDHOku.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DlcpRL9j.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-C_lV_RDi.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-heyycDS1.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-Dt5MAp73.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-odvLZCzY.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n) => n.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-stB_g66m.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BjhG5_S-.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C9dXI0dE.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-B_EqONj9.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-CfKY2JdE.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BK6og38f.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BGrEHt6n.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DJWY98MQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-fybyLV4E.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-CxY5ApgX.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Dp6aJ9nN.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-2Gd2mIog.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-Bo_LLf91.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CPjshJtP.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DIx8N3NE.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-Bvjy0-Ms.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-D2-G8V42.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-C-JmRI_N.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DoIsQrsq.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-D5ufwNAn.js"), "./Pages/More/Index.vue": () => import("./assets/Index-wfyL85xi.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-BkpbzYRW.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-CZ3yCKIq.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DBUIkqkz.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BtvnDEM3.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CHVFEJ5f.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-DC3aNcJy.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DTR8h-1P.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-D3f8rFCT.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/PublicPortfolio/Show.vue": () => import("./assets/Show-CX5jK_W1.js"), "./Pages/PublicPortfolio/ShowCard.vue": () => import("./assets/ShowCard-uufvHpUi.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-II45sA7a.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-BzmGZC-H.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-DPQjERoD.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Study/Academic/Index.vue": () => import("./assets/Index-DFx-aQnb.js"), "./Pages/Study/AcademicProgress.vue": () => import("./assets/AcademicProgress-C7iF0BbA.js"), "./Pages/Study/Portfolio/Index.vue": () => import("./assets/Index-DgTen3Fk.js"), "./Pages/Study/StudyArchetypeMatches.vue": () => import("./assets/StudyArchetypeMatches-ZGZjv5Mp.js"), "./Pages/Study/StudyCompetencyRadar.vue": () => import("./assets/StudyCompetencyRadar-DxsdMplS.js"), "./Pages/Study/StudyMaterialList.vue": () => import("./assets/StudyMaterialList-grXmA01M.js"), "./Pages/Study/StudySettingsForm.vue": () => import("./assets/StudySettingsForm-Nio28hwP.js"), "./Pages/Study/StudyUploadForm.vue": () => import("./assets/StudyUploadForm-6pmICOKy.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
+    resolve: (name2) => resolvePageComponent(`./Pages/${name2}.vue`, /* @__PURE__ */ Object.assign({ "./Pages/About.vue": () => import("./assets/About-Cpo04Y9J.js"), "./Pages/Admin/Blog/Form.vue": () => import("./assets/Form-D3aMaE1P.js"), "./Pages/Admin/Blog/Index.vue": () => import("./assets/Index-NQy9OV9U.js"), "./Pages/Admin/User/Index.vue": () => import("./assets/Index-B87qJvUV.js"), "./Pages/AiCoach/Index.vue": () => import("./assets/Index-BwG8eB2w.js"), "./Pages/Auth/ConfirmPassword.vue": () => import("./assets/ConfirmPassword-C8AdLiVE.js"), "./Pages/Auth/ForgotPassword.vue": () => import("./assets/ForgotPassword-8kDpVzlm.js"), "./Pages/Auth/Login.vue": () => import("./assets/Login-GSVl5j_m.js"), "./Pages/Auth/Register.vue": () => import("./assets/Register-jo-3NLXi.js"), "./Pages/Auth/ResetPassword.vue": () => import("./assets/ResetPassword-Dqo6FGcD.js"), "./Pages/Auth/VerifyEmail.vue": () => import("./assets/VerifyEmail-CYIQMy28.js"), "./Pages/Calendar/CalendarDayDetail.vue": () => import("./assets/CalendarDayDetail--mp7Bmtk.js"), "./Pages/Calendar/CalendarEventModal.vue": () => import("./assets/CalendarEventModal-2IA9CM7N.js"), "./Pages/Calendar/CalendarGrid.vue": () => import("./assets/CalendarGrid-CLE4Vyn9.js"), "./Pages/Calendar/CalendarHeader.vue": () => import("./assets/CalendarHeader-D2RDHOku.js"), "./Pages/Calendar/Index.vue": () => import("./assets/Index-DlcpRL9j.js"), "./Pages/Checkout/Index.vue": () => import("./assets/Index-C_lV_RDi.js"), "./Pages/Dashboard.vue": () => import("./assets/Dashboard-heyycDS1.js"), "./Pages/Error.vue": () => import("./assets/Error-CLhppdld.js"), "./Pages/Finance/ArchiveModal.vue": () => import("./assets/ArchiveModal-PLMagCBh.js"), "./Pages/Finance/BudgetModal.vue": () => import("./assets/BudgetModal-BC_dn8R_.js"), "./Pages/Finance/BudgetSidebar.vue": () => import("./assets/BudgetSidebar-CUeU9PEn.js"), "./Pages/Finance/CategoryModal.vue": () => import("./assets/CategoryModal-CvcRgfl9.js"), "./Pages/Finance/DailyTrendChart.vue": () => import("./assets/DailyTrendChart-TOHlRPw2.js"), "./Pages/Finance/FinanceBatchModal.vue": () => import("./assets/FinanceBatchModal-Dt5MAp73.js"), "./Pages/Finance/FinanceDatePicker.vue": () => import("./assets/FinanceDatePicker-CxOhCf2w.js"), "./Pages/Finance/FinanceHeader.vue": () => import("./assets/FinanceHeader-odvLZCzY.js"), "./Pages/Finance/FinanceInsights.vue": () => import("./assets/FinanceInsights-D-wj17qM.js").then((n) => n.a), "./Pages/Finance/FinanceStats.vue": () => import("./assets/FinanceStats-CsTcBbS5.js"), "./Pages/Finance/FullArchiveModal.vue": () => import("./assets/FullArchiveModal-stB_g66m.js"), "./Pages/Finance/Index.vue": () => import("./assets/Index-BjhG5_S-.js"), "./Pages/Finance/SavingCard.vue": () => import("./assets/SavingCard-KeuwW8Vl.js"), "./Pages/Finance/SavingModal.vue": () => import("./assets/SavingModal-DntYxlq-.js"), "./Pages/Finance/TransactionList.vue": () => import("./assets/TransactionList-DjePVvXm.js"), "./Pages/Finance/TransactionModal.vue": () => import("./assets/TransactionModal-C6Va-lPY.js"), "./Pages/Finance/VaultTransactionModal.vue": () => import("./assets/VaultTransactionModal-C7YctZF5.js"), "./Pages/Goal/GoalCard.vue": () => import("./assets/GoalCard-C9dXI0dE.js"), "./Pages/Goal/GoalDatePicker.vue": () => import("./assets/GoalDatePicker-DPA4IFkv.js"), "./Pages/Goal/GoalGrid.vue": () => import("./assets/GoalGrid-B_EqONj9.js"), "./Pages/Goal/GoalHeader.vue": () => import("./assets/GoalHeader-CfKY2JdE.js"), "./Pages/Goal/GoalModal.vue": () => import("./assets/GoalModal-CmP0l5F6.js"), "./Pages/Goal/GoalStats.vue": () => import("./assets/GoalStats-BK6og38f.js"), "./Pages/Goal/Index.vue": () => import("./assets/Index-BGrEHt6n.js"), "./Pages/Goal/MilestoneItem.vue": () => import("./assets/MilestoneItem-DgHfkNzy.js"), "./Pages/Habits/HabitBatchModal.vue": () => import("./assets/HabitBatchModal-DJWY98MQ.js"), "./Pages/Habits/HabitGrid.vue": () => import("./assets/HabitGrid-fybyLV4E.js"), "./Pages/Habits/HabitHeader.vue": () => import("./assets/HabitHeader-CxY5ApgX.js"), "./Pages/Habits/HabitModals.vue": () => import("./assets/HabitModals-Dp6aJ9nN.js"), "./Pages/Habits/HabitStats.vue": () => import("./assets/HabitStats-CvIzyUBI.js"), "./Pages/Habits/Index.vue": () => import("./assets/Index-2Gd2mIog.js"), "./Pages/Habits/NeuralHabitInsight.vue": () => import("./assets/NeuralHabitInsight-Bo_LLf91.js"), "./Pages/Job/Index.vue": () => import("./assets/Index-CPjshJtP.js"), "./Pages/Job/JobDatePicker.vue": () => import("./assets/JobDatePicker-RDI6vHml.js"), "./Pages/Job/JobFilterBar.vue": () => import("./assets/JobFilterBar-BZvRVVB1.js"), "./Pages/Job/JobStats.vue": () => import("./assets/JobStats-BpSSUFiH.js"), "./Pages/Job/JobStatusDropdown.vue": () => import("./assets/JobStatusDropdown-DP1tUBlj.js"), "./Pages/Job/JobTable.vue": () => import("./assets/JobTable-CyMERLDx.js"), "./Pages/Job/MasterCvModal.vue": () => import("./assets/MasterCvModal-DIx8N3NE.js"), "./Pages/Job/ResumeAiModal.vue": () => import("./assets/ResumeAiModal-Bvjy0-Ms.js"), "./Pages/Journal/Index.vue": () => import("./assets/Index-D2-G8V42.js"), "./Pages/Journal/JournalCard.vue": () => import("./assets/JournalCard-BjC69pDI.js"), "./Pages/Journal/JournalEntry.vue": () => import("./assets/JournalEntry-C-JmRI_N.js"), "./Pages/Journal/JournalHeader.vue": () => import("./assets/JournalHeader-DoIsQrsq.js"), "./Pages/Journal/TiptapEditor.vue": () => import("./assets/TiptapEditor-D5ufwNAn.js"), "./Pages/More/Index.vue": () => import("./assets/Index-wfyL85xi.js"), "./Pages/Onboarding/Show.vue": () => import("./assets/Show-BkpbzYRW.js"), "./Pages/Payment/Status.vue": () => import("./assets/Status-CZ3yCKIq.js"), "./Pages/Planner/Index.vue": () => import("./assets/Index-DBUIkqkz.js"), "./Pages/Planner/PlannerBatchModal.vue": () => import("./assets/PlannerBatchModal-BtvnDEM3.js"), "./Pages/Planner/PlannerHeader.vue": () => import("./assets/PlannerHeader-CHVFEJ5f.js"), "./Pages/Planner/PlannerMobileTimeline.vue": () => import("./assets/PlannerMobileTimeline-DC3aNcJy.js"), "./Pages/Planner/PlannerModal.vue": () => import("./assets/PlannerModal-CkyxpOMZ.js"), "./Pages/Planner/PlannerSidebar.vue": () => import("./assets/PlannerSidebar-k9WGZyR0.js"), "./Pages/Planner/PlannerTimeline.vue": () => import("./assets/PlannerTimeline-wZCbHzl5.js"), "./Pages/Pricing.vue": () => import("./assets/Pricing-DTR8h-1P.js"), "./Pages/Profile/Edit.vue": () => import("./assets/Edit-D3f8rFCT.js"), "./Pages/Profile/Partials/DeleteUserForm.vue": () => import("./assets/DeleteUserForm-CDMR-sH2.js"), "./Pages/Profile/Partials/PremiumSubscriptionForm.vue": () => import("./assets/PremiumSubscriptionForm-DOVt1g4B.js"), "./Pages/Profile/Partials/UpdatePasswordForm.vue": () => import("./assets/UpdatePasswordForm-T1onZB01.js"), "./Pages/Profile/Partials/UpdateProfileInformationForm.vue": () => import("./assets/UpdateProfileInformationForm-LqRE3XZO.js"), "./Pages/PublicPortfolio/Show.vue": () => import("./assets/Show-CX5jK_W1.js"), "./Pages/PublicPortfolio/ShowCard.vue": () => import("./assets/ShowCard-uufvHpUi.js"), "./Pages/Settings/Billing.vue": () => import("./assets/Billing-BvQGC75r.js"), "./Pages/Settings/General.vue": () => import("./assets/General-DSA-3A_m.js"), "./Pages/Settings/Index.vue": () => import("./assets/Index-II45sA7a.js"), "./Pages/Settings/Layout.vue": () => import("./assets/Layout-C2t8-dE6.js"), "./Pages/Settings/Modules.vue": () => import("./assets/Modules-Cqyx8Zp8.js"), "./Pages/Settings/Notifications.vue": () => import("./assets/Notifications-BzmGZC-H.js"), "./Pages/Settings/Partials/AppearanceTab.vue": () => import("./assets/AppearanceTab-Bygf3Pt5.js"), "./Pages/Settings/Partials/BillingTab.vue": () => import("./assets/BillingTab-DDbmfDv2.js"), "./Pages/Settings/Partials/HelpSupportTab.vue": () => import("./assets/HelpSupportTab-DPQjERoD.js"), "./Pages/Settings/Partials/LegalTab.vue": () => import("./assets/LegalTab-CmBTAEqc.js"), "./Pages/Settings/Partials/ProfileTab.vue": () => import("./assets/ProfileTab-e_1kJr6-.js"), "./Pages/Settings/Partials/SecurityTab.vue": () => import("./assets/SecurityTab-BVcRW03w.js"), "./Pages/Settings/Privacy.vue": () => import("./assets/Privacy-KUBRt8Uf.js"), "./Pages/Settings/Security.vue": () => import("./assets/Security-BcrnOERx.js"), "./Pages/Study/Academic/Index.vue": () => import("./assets/Index-CpAODxkl.js"), "./Pages/Study/AcademicProgress.vue": () => import("./assets/AcademicProgress-C7iF0BbA.js"), "./Pages/Study/Portfolio/Index.vue": () => import("./assets/Index-DgTen3Fk.js"), "./Pages/Study/StudyArchetypeMatches.vue": () => import("./assets/StudyArchetypeMatches-ZGZjv5Mp.js"), "./Pages/Study/StudyCompetencyRadar.vue": () => import("./assets/StudyCompetencyRadar-DxsdMplS.js"), "./Pages/Study/StudyMaterialList.vue": () => import("./assets/StudyMaterialList-grXmA01M.js"), "./Pages/Study/StudySettingsForm.vue": () => import("./assets/StudySettingsForm-Nio28hwP.js"), "./Pages/Study/StudyUploadForm.vue": () => import("./assets/StudyUploadForm-6pmICOKy.js"), "./Pages/Welcome.vue": () => import("./assets/Welcome-_9G7Vit5.js") })),
     setup({ App, props, plugin }) {
       var _a;
       const activeLang = page.props.locale || "id";

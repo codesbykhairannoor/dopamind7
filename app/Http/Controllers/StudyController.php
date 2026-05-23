@@ -76,10 +76,24 @@ class StudyController extends Controller
             if ($record->grade !== null && $record->sks > 0) {
                 $sks = $record->sks;
                 $gradePoint = 0;
-                if ($record->grade >= 85) $gradePoint = 4.0;
-                elseif ($record->grade >= 70) $gradePoint = 3.0;
-                elseif ($record->grade >= 60) $gradePoint = 2.0;
-                elseif ($record->grade >= 50) $gradePoint = 1.0;
+                $gradeUpper = strtoupper(trim($record->grade));
+                if (is_numeric($gradeUpper)) {
+                    $gradeNumeric = floatval($gradeUpper);
+                    if ($gradeNumeric >= 85) $gradePoint = 4.0;
+                    elseif ($gradeNumeric >= 70) $gradePoint = 3.0;
+                    elseif ($gradeNumeric >= 60) $gradePoint = 2.0;
+                    elseif ($gradeNumeric >= 50) $gradePoint = 1.0;
+                } else {
+                    if ($gradeUpper === 'A+' || $gradeUpper === 'A') $gradePoint = 4.0;
+                    elseif ($gradeUpper === 'A-') $gradePoint = 3.7;
+                    elseif ($gradeUpper === 'B+') $gradePoint = 3.3;
+                    elseif ($gradeUpper === 'B') $gradePoint = 3.0;
+                    elseif ($gradeUpper === 'B-') $gradePoint = 2.7;
+                    elseif ($gradeUpper === 'C+') $gradePoint = 2.3;
+                    elseif ($gradeUpper === 'C') $gradePoint = 2.0;
+                    elseif ($gradeUpper === 'D') $gradePoint = 1.0;
+                    else $gradePoint = 0.0;
+                }
 
                 $points = $sks * $gradePoint;
                 $totalSks += $sks;
@@ -140,7 +154,7 @@ class StudyController extends Controller
             'course_name' => 'required|string|max:255',
             'semester' => 'required|integer|min:1|max:14',
             'sks' => 'required|integer|min:1|max:10',
-            'grade' => 'nullable|numeric|min:0|max:100',
+            'grade' => 'nullable|string|max:50',
         ]);
 
         \App\Models\AcademicRecord::create([
@@ -161,7 +175,7 @@ class StudyController extends Controller
             'course_name' => 'required|string|max:255',
             'semester' => 'required|integer|min:1|max:100',
             'sks' => 'required|integer|min:1|max:10',
-            'grade' => 'nullable|numeric|min:0|max:100',
+            'grade' => 'nullable|string|max:50',
         ]);
 
         $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($id);
