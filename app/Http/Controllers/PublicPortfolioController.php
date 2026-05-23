@@ -70,14 +70,28 @@ class PublicPortfolioController extends Controller
             ->where('status', 'completed')
             ->firstOrFail();
 
-        if (!Storage::disk('local')->exists($material->file_path)) {
-            abort(404, 'File not found in secure storage.');
+        // If it's a valid URL (like Cloudinary absolute URL), redirect to it directly
+        if (filter_var($material->file_path, FILTER_VALIDATE_URL)) {
+            return redirect($material->file_path);
         }
 
-        // Return inline PDF response
-        return response()->file(storage_path('app/' . $material->file_path), [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="' . $material->file_name . '"'
-        ]);
+        // Otherwise try local storage (fallback for local dev)
+        if (Storage::disk('local')->exists($material->file_path)) {
+            return response()->file(storage_path('app/' . $material->file_path), [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="' . $material->file_name . '"'
+            ]);
+        }
+        
+        // If it's stored on Cloudinary but returned as a public ID
+        try {
+            if (Storage::disk('cloudinary')->exists($material->file_path)) {
+                return redirect(Storage::disk('cloudinary')->url($material->file_path));
+            }
+        } catch (\Exception $e) {
+            // Ignore
+        }
+
+        abort(404, 'File not found or not accessible.');
     }
 }

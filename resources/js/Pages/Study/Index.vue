@@ -1,6 +1,7 @@
 <script setup>
 import { Head, useForm, router } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
+import { trans } from 'laravel-vue-i18n';
 import { 
     GraduationCap, 
     Link2, 
@@ -16,7 +17,6 @@ import {
 } from 'lucide-vue-next';
 import InputError from '@/Components/InputError.vue';
 
-// Import subcomponents
 import StudyUploadForm from './StudyUploadForm.vue';
 import StudyMaterialList from './StudyMaterialList.vue';
 import StudyCompetencyRadar from './StudyCompetencyRadar.vue';
@@ -29,36 +29,30 @@ const props = defineProps({
     user: { type: Object, required: true }
 });
 
-// ─── Active tab ───────────────────────────────────────────────────────────────
+// ─── Tab config ───────────────────────────────────────────────────────────────
+// NOTE: Use trans() here (script setup), NOT $t() which is template-only
 const activeTab = ref('upload');
 
-const tabs = computed(() => [
-    {
-        key: 'upload',
-        label: $t('study_tab_upload', 'Upload'),
-        icon: Upload,
-        badge: null
-    },
-    {
-        key: 'cards',
-        label: $t('study_tab_cards', 'My Cards'),
-        icon: LayoutGrid,
-        badge: props.materials.length > 0 ? props.materials.length : null
-    },
-    {
-        key: 'analytics',
-        label: $t('study_tab_analytics', 'Analytics'),
-        icon: BarChart3,
-        badge: props.competency ? '✓' : null
-    },
-    {
-        key: 'portfolio',
-        label: $t('study_tab_portfolio', 'Portfolio'),
-        icon: Settings2,
-        badge: props.user?.username ? '●' : null,
-        badgeColor: props.user?.username ? 'emerald' : 'amber'
-    }
-]);
+const tabDefs = [
+    { key: 'upload',    icon: Upload,      labelKey: 'study_tab_upload',    label: 'Upload' },
+    { key: 'cards',     icon: LayoutGrid,  labelKey: 'study_tab_cards',     label: 'My Cards' },
+    { key: 'analytics', icon: BarChart3,   labelKey: 'study_tab_analytics', label: 'Analytics' },
+    { key: 'portfolio', icon: Settings2,   labelKey: 'study_tab_portfolio', label: 'Portfolio' },
+];
+
+const tabBadge = computed(() => ({
+    upload:    null,
+    cards:     props.materials.length > 0 ? props.materials.length : null,
+    analytics: props.competency ? '✓' : null,
+    portfolio: props.user?.username ? '●' : null,
+}));
+
+const badgeColorClass = (key, isActive) => {
+    if (isActive) return 'bg-white text-indigo-600';
+    if (key === 'portfolio' && props.user?.username) return 'bg-emerald-500 text-white';
+    if (key === 'portfolio' && !props.user?.username) return 'bg-amber-500 text-white';
+    return 'bg-indigo-600 text-white';
+};
 
 // ─── Username / Public URL ─────────────────────────────────────────────────────
 const copied = ref(false);
@@ -97,15 +91,12 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
     <Head :title="$t('nav_item_study', 'Study Console')" />
 
     <div class="min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors duration-500 relative overflow-hidden">
-        <!-- Ambient glows -->
         <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-indigo-500/8 dark:bg-indigo-500/5 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
         <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-500/8 dark:bg-purple-500/5 rounded-full blur-3xl -z-10"></div>
 
         <div class="relative mx-auto w-full max-w-5xl px-4 py-8 md:px-6 lg:px-8 z-10">
 
-            <!-- ═══════════════════════════════════════════════════════════════ -->
-            <!-- PAGE HEADER                                                     -->
-            <!-- ═══════════════════════════════════════════════════════════════ -->
+            <!-- PAGE HEADER -->
             <header class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-100 dark:border-indigo-950 bg-indigo-50/50 dark:bg-indigo-950/30 text-indigo-600 dark:text-indigo-400 font-bold text-[10px] tracking-[0.2em] uppercase shadow-sm mb-3">
@@ -121,77 +112,59 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
                     </p>
                 </div>
 
-                <!-- Refresh button -->
                 <button 
                     @click="refreshData"
                     class="self-start sm:self-auto shrink-0 p-3 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-600 dark:text-slate-300 transition shadow-sm flex items-center gap-2 text-xs font-bold"
-                    :title="$t('study_refresh', 'Refresh Status')"
                 >
                     <RefreshCw class="h-4 w-4" :class="{'animate-spin': isRefreshing || hasPendingFiles}" />
                     <span class="hidden sm:inline">{{ $t('study_refresh', 'Refresh') }}</span>
                 </button>
             </header>
 
-            <!-- ═══════════════════════════════════════════════════════════════ -->
-            <!-- TAB BAR                                                          -->
-            <!-- ═══════════════════════════════════════════════════════════════ -->
+            <!-- TAB BAR -->
             <div class="mb-8 flex items-center gap-1 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-slate-200/60 dark:border-slate-800/80 rounded-[1.75rem] p-1.5 shadow-sm">
                 <button
-                    v-for="tab in tabs"
+                    v-for="tab in tabDefs"
                     :key="tab.key"
                     @click="activeTab = tab.key"
-                    class="relative flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-[1.4rem] text-xs font-bold transition-all duration-300 focus:outline-none group"
+                    class="relative flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-[1.4rem] text-xs font-bold transition-all duration-300 focus:outline-none"
                     :class="activeTab === tab.key
                         ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
                         : 'text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100/60 dark:hover:bg-slate-800/60'"
                 >
                     <component :is="tab.icon" class="h-3.5 w-3.5 shrink-0" />
-                    <span class="hidden sm:inline">{{ tab.label }}</span>
+                    <span class="hidden sm:inline">{{ $t(tab.labelKey, tab.label) }}</span>
 
-                    <!-- Badge dot/count -->
                     <span 
-                        v-if="tab.badge"
+                        v-if="tabBadge[tab.key]"
                         class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full text-[9px] font-black flex items-center justify-center leading-none"
-                        :class="activeTab === tab.key
-                            ? 'bg-white text-indigo-600'
-                            : tab.badgeColor === 'emerald'
-                                ? 'bg-emerald-500 text-white'
-                                : tab.badgeColor === 'amber'
-                                    ? 'bg-amber-500 text-white'
-                                    : 'bg-indigo-600 text-white'"
+                        :class="badgeColorClass(tab.key, activeTab === tab.key)"
                     >
-                        {{ tab.badge }}
+                        {{ tabBadge[tab.key] }}
                     </span>
                 </button>
             </div>
 
-            <!-- ═══════════════════════════════════════════════════════════════ -->
-            <!-- TAB PANELS                                                       -->
-            <!-- ═══════════════════════════════════════════════════════════════ -->
-
-            <!-- ── TAB: UPLOAD ──────────────────────────────────────────────── -->
+            <!-- TAB PANELS -->
             <Transition name="tab-fade" mode="out-in">
+
                 <div v-if="activeTab === 'upload'" key="upload">
                     <StudyUploadForm :materials-count="props.materials.length" />
                 </div>
 
-            <!-- ── TAB: MY CARDS ────────────────────────────────────────────── -->
                 <div v-else-if="activeTab === 'cards'" key="cards">
                     <StudyMaterialList :materials="props.materials" :user="props.user" />
                 </div>
 
-            <!-- ── TAB: ANALYTICS ───────────────────────────────────────────── -->
                 <div v-else-if="activeTab === 'analytics'" key="analytics" class="flex flex-col gap-8">
                     <StudyCompetencyRadar :competency="props.competency" />
                     <StudyArchetypeMatches :competency="props.competency" />
                 </div>
 
-            <!-- ── TAB: PORTFOLIO SETTINGS ──────────────────────────────────── -->
                 <div v-else-if="activeTab === 'portfolio'" key="portfolio" class="flex flex-col gap-6">
 
                     <!-- Public URL Card -->
                     <div class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 md:p-8 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800/80 shadow-[0_10px_45px_-4px_rgba(0,0,0,0.03)]">
-                        
                         <div class="flex items-center gap-3 mb-5">
                             <div class="h-10 w-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950/50 flex items-center justify-center border border-indigo-100/50 dark:border-indigo-900/50 shadow-sm">
                                 <Link2 class="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
@@ -206,7 +179,6 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
                             </div>
                         </div>
 
-                        <!-- Live link display -->
                         <div v-if="props.user?.username" class="mb-5 p-4 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/40 flex items-center justify-between gap-4">
                             <div class="min-w-0 flex items-center gap-2">
                                 <CheckCircle2 class="h-4 w-4 text-emerald-500 shrink-0" />
@@ -223,7 +195,6 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
                             </button>
                         </div>
                         
-                        <!-- Not live yet -->
                         <div v-else class="mb-5 p-4 rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/40 flex items-start gap-3">
                             <AlertCircle class="h-5 w-5 text-amber-500 shrink-0 mt-0.5" />
                             <div>
@@ -232,7 +203,6 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
                             </div>
                         </div>
 
-                        <!-- Username form -->
                         <form @submit.prevent="updateUsername" class="flex flex-col sm:flex-row gap-3">
                             <div class="relative flex-1">
                                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-semibold select-none pointer-events-none">oneformind.com/p/</span>
@@ -255,12 +225,10 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
                         <InputError :message="usernameForm.errors.username" class="mt-2 pl-2" />
                     </div>
 
-                    <!-- Display Settings -->
                     <StudySettingsForm :settings="props.competency?.settings" />
-
                 </div>
-            </Transition>
 
+            </Transition>
         </div>
     </div>
 </template>
@@ -273,8 +241,6 @@ const hasPendingFiles = computed(() => props.materials.some(m => m.status === 'p
 .animate-pulse-slow {
     animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
-
-/* Tab transition */
 .tab-fade-enter-active,
 .tab-fade-leave-active {
     transition: opacity 0.18s ease, transform 0.18s ease;

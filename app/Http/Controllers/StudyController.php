@@ -85,8 +85,15 @@ class StudyController extends Controller
 
         if ($inputMode === 'file') {
             $file = $request->file('file');
-            $path = $file->store('secure_study', 'local');
             $fileName = $file->getClientOriginalName();
+            
+            try {
+                // Use default cloud disk for persistent storage (Cloudinary)
+                $path = $file->store('secure_study', 'cloudinary');
+            } catch (\Exception $e) {
+                Log::warning("Cloudinary storage failed, falling back to local: " . $e->getMessage());
+                $path = $file->store('secure_study', 'local');
+            }
         } elseif ($inputMode === 'link') {
             $embedUrl = $request->input('embed_url');
             $fileName = parse_url($embedUrl, PHP_URL_HOST) ?: 'External Link';
@@ -113,7 +120,8 @@ class StudyController extends Controller
             $extractedText = '';
 
             if ($inputMode === 'file') {
-                $fullPath = storage_path('app/' . $path);
+                // Use the temporary uploaded file directly to bypass Vercel read-only local storage limits
+                $fullPath = $request->file('file')->getRealPath();
 
                 // 1. Try local Python pdfplumber extraction
                 try {
@@ -134,7 +142,7 @@ class StudyController extends Controller
                     Log::warning("Python extraction failed, falling back to Gemini API: " . $e->getMessage());
                     
                     // Fallback: Use Gemini Multimodal PDF Reader
-                    $base64 = base64_encode(Storage::disk('local')->get($path));
+                    $base64 = base64_encode(file_get_contents($fullPath));
                     $extractedText = $this->geminiService->extractResumeText($base64);
                     
                     if (empty($extractedText)) {
