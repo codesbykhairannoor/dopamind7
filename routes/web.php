@@ -1051,6 +1051,7 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
 Route::get("/p/{username}", [PublicPortfolioController::class, "show"])->name("portfolio.show");
 Route::get("/p/{username}/card/{id}", [PublicPortfolioController::class, "showCard"])->name("portfolio.card");
 Route::get("/p/{username}/file/{id}", [PublicPortfolioController::class, "streamFile"])->name("portfolio.file");
+Route::get("/p/{username}/download", [PublicPortfolioController::class, "downloadFile"])->name("portfolio.file.download");
 
 Route::post("/callback", [
     \App\Http\Controllers\PaymentController::class,
