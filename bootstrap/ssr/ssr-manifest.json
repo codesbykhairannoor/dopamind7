@@ -661,8 +661,29 @@
   "resources/js/Pages/Settings/Security.vue": [
     "/build/assets/Security-BcrnOERx.js"
   ],
+  "resources/js/Pages/Study/Academic/Components/AcademicHeader.vue": [
+    "/build/assets/AcademicHeader-o-G50WX8.js"
+  ],
+  "resources/js/Pages/Study/Academic/Components/AcademicSetup.vue": [
+    "/build/assets/AcademicSetup-LhzQ33Ty.js"
+  ],
+  "resources/js/Pages/Study/Academic/Components/ArchiveModal.vue": [
+    "/build/assets/ArchiveModal-BrVwzMON.js"
+  ],
+  "resources/js/Pages/Study/Academic/Components/ClassroomView.vue": [
+    "/build/assets/ClassroomView-l85DfLfp.js"
+  ],
+  "resources/js/Pages/Study/Academic/Components/CourseCard.vue": [
+    "/build/assets/CourseCard-BxcxmZEj.js"
+  ],
+  "resources/js/Pages/Study/Academic/Components/CourseModal.vue": [
+    "/build/assets/CourseModal-B9T95pYI.js"
+  ],
+  "resources/js/Pages/Study/Academic/Components/SemesterModal.vue": [
+    "/build/assets/SemesterModal-BzUQA6nc.js"
+  ],
   "resources/js/Pages/Study/Academic/Index.vue": [
-    "/build/assets/Index-Dbcgsf5z.js"
+    "/build/assets/Index-D6SSojNl.js"
   ],
   "resources/js/Pages/Study/AcademicProgress.vue": [
     "/build/assets/AcademicProgress-C7iF0BbA.js"
