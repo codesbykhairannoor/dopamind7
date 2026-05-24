@@ -229,7 +229,7 @@ class StudyController extends Controller
         $settings = $user->settings ?? [];
         $currentSem = isset($settings['current_semester']) ? intval($settings['current_semester']) : 1;
 
-        if ($currentSem >= $semester) {
+        if ($semester >= $currentSem) {
             // Find highest remaining semester from academic records
             $maxRemaining = \App\Models\AcademicRecord::where('user_id', $user->id)
                 ->where('semester', '!=', $semester)
@@ -530,23 +530,43 @@ class StudyController extends Controller
     public function updateSettings(Request $request)
     {
         $user = Auth::user();
+        
+        // Handle User Academic Settings (current_semester, etc.)
+        if ($request->has('current_semester')) {
+            $settings = $user->settings ?? [];
+            $settings['current_semester'] = intval($request->current_semester);
+            $user->settings = $settings;
+            $user->save();
+            
+            if ($request->wantsJson()) {
+                return response()->json(['success' => true, 'current_semester' => $settings['current_semester']]);
+            }
+        }
+
+        // Handle StudyCompetency Settings (Radar, Archetypes, etc.)
         $request->validate([
-            'show_radar' => 'required|boolean',
-            'show_archetypes' => 'required|boolean',
-            'show_materials' => 'required|boolean',
+            'show_radar' => 'nullable|boolean',
+            'show_archetypes' => 'nullable|boolean',
+            'show_materials' => 'nullable|boolean',
             'career_target' => 'nullable|string|max:100',
-            'show_career_target' => 'required|boolean',
+            'show_career_target' => 'nullable|boolean',
         ]);
 
         $competency = StudyCompetency::firstOrCreate(['user_id' => $user->id]);
-        $competency->settings = [
-            'show_radar' => (bool) $request->show_radar,
-            'show_archetypes' => (bool) $request->show_archetypes,
-            'show_materials' => (bool) $request->show_materials,
-            'career_target' => $request->career_target,
-            'show_career_target' => (bool) $request->show_career_target,
-        ];
+        $compSettings = $competency->settings ?? [];
+        
+        if ($request->has('show_radar')) $compSettings['show_radar'] = (bool) $request->show_radar;
+        if ($request->has('show_archetypes')) $compSettings['show_archetypes'] = (bool) $request->show_archetypes;
+        if ($request->has('show_materials')) $compSettings['show_materials'] = (bool) $request->show_materials;
+        if ($request->has('career_target')) $compSettings['career_target'] = $request->career_target;
+        if ($request->has('show_career_target')) $compSettings['show_career_target'] = (bool) $request->show_career_target;
+        
+        $competency->settings = $compSettings;
         $competency->save();
+
+        if ($request->wantsJson()) {
+            return response()->json(['success' => true]);
+        }
 
         return redirect()->back()->with('success', 'Study profile settings updated.');
     }

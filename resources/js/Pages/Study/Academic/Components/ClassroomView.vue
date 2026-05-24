@@ -89,11 +89,11 @@ const getTypeColor = (type) => {
                     </button>
                 </div>
 
-                <div class="p-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                    <div v-for="arc in archives" :key="arc.id" class="group relative p-6 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl flex flex-col transition-all hover:border-indigo-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
+                    <div v-for="arc in archives" :key="arc.id" class="group relative p-6 bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-[2rem] flex flex-col transition-all hover:border-indigo-300 hover:shadow-xl hover:-translate-y-1">
                         <div class="flex items-start justify-between gap-4 mb-6">
                             <div class="flex-1 min-w-0">
-                                <span class="inline-block px-3 py-1 rounded-lg text-[10px] font-black capitalize tracking-wider mb-3 shadow-sm border" :class="getTypeColor(arc.type)">
+                                <span class="inline-block px-3 py-1 rounded-lg text-[11px] font-black capitalize tracking-wider mb-3 shadow-sm border" :class="getTypeColor(arc.type)">
                                     {{ $t('study_type_' + arc.type.toLowerCase()) }}
                                 </span>
                                 <p class="text-base font-black text-slate-800 dark:text-slate-100 line-clamp-2 leading-tight">{{ arc.file_name || arc.link_url || $t('study_untitled_archive') }}</p>
@@ -104,22 +104,22 @@ const getTypeColor = (type) => {
                         </div>
                         <div class="mt-auto space-y-2">
                             <!-- Link External -->
-                            <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-[10px] font-black uppercase tracking-wider text-blue-600 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 rounded-xl transition-all active:scale-95 border border-blue-100 dark:border-blue-900/50">
-                                <ExternalLink class="h-3.5 w-3.5" /> {{ $t('study_visit_link') }}
+                            <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="w-full flex justify-center items-center gap-2 px-3 py-3 text-[11px] font-black uppercase tracking-wider text-blue-600 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 rounded-2xl transition-all active:scale-95 border border-blue-100 dark:border-blue-900/50">
+                                <ExternalLink class="h-4 w-4" /> {{ $t('study_visit_link') }}
                             </a>
 
                             <!-- File Actions -->
                             <div v-if="arc.file_path && arc.file_path !== 'pending'" class="grid grid-cols-2 gap-2">
-                                <a :href="route('study.academic.archive.download', { id: arc.id, view: 1 })" target="_blank" class="flex justify-center items-center gap-2 px-2 py-2.5 text-[10px] font-black uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-xl transition-all active:scale-95 border border-indigo-100 dark:border-indigo-900/50">
-                                    <FileText class="h-3.5 w-3.5" /> {{ $t('study_view_pdf', 'Lihat') }}
+                                <a :href="route('study.academic.archive.download', { id: arc.id, view: 1 })" target="_blank" class="flex justify-center items-center gap-2 px-2 py-3 text-[11px] font-black uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-2xl transition-all active:scale-95 border border-indigo-100 dark:border-indigo-900/50">
+                                    <FileText class="h-4 w-4" /> {{ $t('study_view_pdf', 'Lihat') }}
                                 </a>
-                                <a :href="route('study.academic.archive.download', arc.id)" download class="flex justify-center items-center gap-2 px-2 py-2.5 text-[10px] font-black uppercase tracking-wider text-emerald-600 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-xl transition-all active:scale-95 border border-emerald-100 dark:border-emerald-900/50">
-                                    <Download class="h-3.5 w-3.5" /> {{ $t('study_download_pdf', 'Unduh') }}
+                                <a :href="route('study.academic.archive.download', arc.id)" download class="flex justify-center items-center gap-2 px-2 py-3 text-[11px] font-black uppercase tracking-wider text-emerald-600 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-2xl transition-all active:scale-95 border border-emerald-100 dark:border-emerald-900/50">
+                                    <Download class="h-4 w-4" /> {{ $t('study_download_pdf', 'Unduh') }}
                                 </a>
                             </div>
 
-                            <span v-else-if="arc.file_path === 'pending'" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-[10px] font-black uppercase tracking-wider text-slate-400 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
-                                <Loader2 class="h-3.5 w-3.5 animate-spin" /> {{ $t('study_uploading', 'Mengunggah...') }}
+                            <span v-else-if="arc.file_path === 'pending'" class="w-full flex justify-center items-center gap-2 px-3 py-3 text-[11px] font-black uppercase tracking-wider text-slate-400 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
+                                <Loader2 class="h-4 w-4 animate-spin" /> {{ $t('study_uploading', 'Mengunggah...') }}
                             </span>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <script setup>
 import { useForm, router } from '@inertiajs/vue3';
 import { trans } from 'laravel-vue-i18n';
-import { ref, computed, reactive } from 'vue';
+import { ref, computed, reactive, onMounted } from 'vue';
 import { 
     Sparkles, Loader2, Link2, BookOpen, FileText, PlusCircle,
     Upload, Trash2, CheckCircle2, XCircle, AlertTriangle, Files,
@@ -190,6 +190,24 @@ const formatBytes = (bytes) => {
     if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
     return (bytes / 1024 / 1024).toFixed(2) + ' MB';
 };
+
+const resetForm = () => {
+    sharedMeta.course_name = '';
+    sharedMeta.week = '';
+    sharedMeta.grade = '';
+    contextPanel.embed_url = '';
+    contextPanel.rich_text = '';
+    contextPanel.fileQueue = [];
+    artifactPanel.embed_url = '';
+    artifactPanel.rich_text = '';
+    artifactPanel.fileQueue = [];
+    if (contextFileInput.value) contextFileInput.value.value = '';
+    if (artifactFileInput.value) artifactFileInput.value.value = '';
+};
+
+onMounted(() => {
+    resetForm();
+});
 
 const globalHasPending = computed(() => {
     return hasPendingItems(contextPanel) || hasPendingItems(artifactPanel);

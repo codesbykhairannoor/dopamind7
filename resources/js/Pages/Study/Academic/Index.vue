@@ -81,22 +81,25 @@ const handleSetupCompleted = (level) => {
 
 // --- Semesters Logic ---
 const localCurrentSemester = ref(parseInt(userSettings.value.current_semester) || 1);
+const maxSemesterAdded = ref(parseInt(userSettings.value.current_semester) || 1);
+
 watch(() => userSettings.value.current_semester, (newVal) => {
     if (newVal) {
-        localCurrentSemester.value = parseInt(newVal) || 1;
-        selectedSemester.value = parseInt(newVal) || 1;
+        const parsed = parseInt(newVal) || 1;
+        localCurrentSemester.value = parsed;
+        maxSemesterAdded.value = Math.max(maxSemesterAdded.value, parsed);
     }
 });
 
-const maxSemesterAdded = ref(0);
 const availableSemesters = computed(() => {
     const semsFromRecords = localAcademicStats.value.semesters.map(s => s.semester);
-    const semsFromSetup = localCurrentSemester.value;
-    let maxSem = Math.max(semsFromSetup, maxSemesterAdded.value, ...semsFromRecords, 1);
+    const maxVal = Math.max(localCurrentSemester.value, maxSemesterAdded.value, ...semsFromRecords, 1);
     
-    let sems = [];
-    for(let i=1; i<=maxSem; i++) { sems.push(i); }
-    return sems;
+    const all = [];
+    for (let i = 1; i <= maxVal; i++) {
+        all.push(i);
+    }
+    return all.reverse();
 });
 
 const selectedSemester = ref(userSettings.value.current_semester || 1);
@@ -159,13 +162,16 @@ const deleteSpecificSemester = (sem) => {
             const remainingSems = localAcademicStats.value.semesters.map(s => s.semester);
             const maxFromRecords = remainingSems.length > 0 ? Math.max(...remainingSems) : 1;
             
-            // Shrink range indicators
-            if (localCurrentSemester.value >= parseInt(sem)) {
+            // Only shrink if we deleted the current/tip semester
+            if (parseInt(sem) >= localCurrentSemester.value) {
                 localCurrentSemester.value = maxFromRecords;
+                maxSemesterAdded.value = maxFromRecords;
+            } else {
+                // If we deleted a lower semester, maxSemesterAdded might still be the same
+                maxSemesterAdded.value = Math.max(localCurrentSemester.value, maxFromRecords);
             }
-            maxSemesterAdded.value = Math.max(localCurrentSemester.value, maxFromRecords);
 
-            // If the selected semester was the one deleted, switch to the new max
+            // If the selected semester was the one deleted, switch to the new current
             if (selectedSemester.value === parseInt(sem)) {
                 selectedSemester.value = localCurrentSemester.value;
             }
