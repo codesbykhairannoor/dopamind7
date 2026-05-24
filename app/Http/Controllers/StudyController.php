@@ -224,7 +224,7 @@ class StudyController extends Controller
             $user->save();
         }
 
-        if ($request->wantsJson()) {
+        if ($request->wantsJson() || $request->ajax()) {
             return response()->json([
                 'success' => true,
                 'message' => 'Semester berhasil dihapus!'
@@ -324,7 +324,7 @@ class StudyController extends Controller
         return redirect()->back();
     }
 
-    public function downloadAcademicArchive($id)
+    public function downloadAcademicArchive(Request $request, $id)
     {
         $archive = \App\Models\AcademicArchive::findOrFail($id);
         
@@ -344,6 +344,11 @@ class StudyController extends Controller
 
         if (!\Illuminate\Support\Facades\Storage::disk($disk)->exists($archive->file_path)) {
             abort(404, 'File not found in storage');
+        }
+
+        // Support 'view' mode to open in browser instead of forcing download
+        if ($request->has('view')) {
+            return \Illuminate\Support\Facades\Storage::disk($disk)->response($archive->file_path);
         }
 
         return \Illuminate\Support\Facades\Storage::disk($disk)->download($archive->file_path, $archive->file_name ?? basename($archive->file_path));

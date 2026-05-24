@@ -158,7 +158,9 @@ const deleteSpecificSemester = (sem) => {
             fireToast('success', 'Semester berhasil dihapus!');
 
             // 2. Perform silent backend DELETE request using axios
-            axios.delete(route('study.academic.semester.destroy', sem))
+            axios.delete(route('study.academic.semester.destroy', sem), {
+                headers: { 'Accept': 'application/json' }
+            })
                 .then(() => {
                     // Silent success - state is already beautifully updated in Vue reactively
                 })
@@ -441,7 +443,7 @@ const deleteArchive = (id) => {
                             <FolderOpen class="h-5 w-5 text-slate-400" />
                             {{ $t('study_course_list_title', { course: terms.course, semester: terms.semester, num: selectedSemester }) }}
                             
-                            <button @click="deleteSemester" class="ml-2 text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 p-1.5 rounded-lg transition-colors opacity-0 group-hover/header:opacity-100" :title="$t('study_delete_this')">
+                            <button type="button" @click.prevent="deleteSemester" class="ml-2 text-slate-300 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 p-1.5 rounded-lg transition-colors opacity-0 group-hover/header:opacity-100" :title="$t('study_delete_this')">
                                 <Trash2 class="h-4 w-4" />
                             </button>
                         </h2>

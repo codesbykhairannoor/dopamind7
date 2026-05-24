@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { ArrowLeft, PlusCircle, FolderOpen, Calendar, Plus, Trash2, FileText, ExternalLink } from 'lucide-vue-next';
+import { ArrowLeft, PlusCircle, FolderOpen, Calendar, Plus, Trash2, FileText, ExternalLink, Download, Loader2 } from 'lucide-vue-next';
 
 const props = defineProps({
     course: { type: Object, required: true },
@@ -102,16 +102,25 @@ const getTypeColor = (type) => {
                                 <Trash2 class="h-4 w-4" />
                             </button>
                         </div>
-                        <div class="mt-auto">
-                            <a v-if="arc.file_path && arc.file_path !== 'pending'" :href="route('study.academic.archive.download', arc.id)" target="_blank" download class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-xl transition-colors">
-                                <FileText class="h-4 w-4" /> {{ $t('study_open_pdf', 'Unduh / Lihat PDF') }}
+                        <div class="mt-auto space-y-2">
+                            <!-- Link External -->
+                            <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-[10px] font-black uppercase tracking-wider text-blue-600 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 rounded-xl transition-all active:scale-95 border border-blue-100 dark:border-blue-900/50">
+                                <ExternalLink class="h-3.5 w-3.5" /> {{ $t('study_visit_link') }}
                             </a>
-                            <span v-else-if="arc.file_path === 'pending'" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-slate-400 bg-slate-100 rounded-xl">
-                                Mengunggah...
+
+                            <!-- File Actions -->
+                            <div v-if="arc.file_path && arc.file_path !== 'pending'" class="grid grid-cols-2 gap-2">
+                                <a :href="route('study.academic.archive.download', { id: arc.id, view: 1 })" target="_blank" class="flex justify-center items-center gap-2 px-2 py-2.5 text-[10px] font-black uppercase tracking-wider text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-xl transition-all active:scale-95 border border-indigo-100 dark:border-indigo-900/50">
+                                    <FileText class="h-3.5 w-3.5" /> {{ $t('study_view_pdf', 'Lihat') }}
+                                </a>
+                                <a :href="route('study.academic.archive.download', arc.id)" download class="flex justify-center items-center gap-2 px-2 py-2.5 text-[10px] font-black uppercase tracking-wider text-emerald-600 bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-xl transition-all active:scale-95 border border-emerald-100 dark:border-emerald-900/50">
+                                    <Download class="h-3.5 w-3.5" /> {{ $t('study_download_pdf', 'Unduh') }}
+                                </a>
+                            </div>
+
+                            <span v-else-if="arc.file_path === 'pending'" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-[10px] font-black uppercase tracking-wider text-slate-400 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <Loader2 class="h-3.5 w-3.5 animate-spin" /> {{ $t('study_uploading', 'Mengunggah...') }}
                             </span>
-                            <a v-if="arc.link_url" :href="arc.link_url" target="_blank" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 rounded-xl transition-colors">
-                                <ExternalLink class="h-4 w-4" /> {{ $t('study_visit_link') }}
-                            </a>
                         </div>
                     </div>
                 </div>
