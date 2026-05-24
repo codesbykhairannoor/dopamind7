@@ -1,10 +1,22 @@
 <script setup>
 import { Sparkles } from 'lucide-vue-next';
+import { computed } from 'vue';
+import { trans } from 'laravel-vue-i18n';
 
-defineProps({
+const props = defineProps({
     competency: {
         type: Object,
         default: null
+    }
+});
+
+const parsedVerdict = computed(() => {
+    if (!props.competency?.verdict) return '';
+    try {
+        const data = JSON.parse(props.competency.verdict);
+        return trans('study_dynamic_profile_verdict', { field: data.field, count: data.count });
+    } catch (e) {
+        return props.competency.verdict;
     }
 });
 </script>
@@ -50,7 +62,7 @@ defineProps({
             <div>
                 <h4 class="text-xs font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-1.5">{{ $t('study_classifier_verdict', 'Classifier Verdict') }}</h4>
                 <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-semibold leading-relaxed">
-                    "{{ competency.verdict }}"
+                    "{{ parsedVerdict }}"
                 </p>
             </div>
         </div>

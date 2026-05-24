@@ -4,6 +4,8 @@ import { trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import { Head, router, Link } from '@inertiajs/vue3';
 import { FolderOpen, Trash2, Sparkles, ChevronRight } from 'lucide-vue-next';
+import axios from 'axios';
+
 
 // Modular Child Components
 import AcademicSetup from './Components/AcademicSetup.vue';
@@ -78,10 +80,18 @@ const handleSetupCompleted = (level) => {
 };
 
 // --- Semesters Logic ---
+const localCurrentSemester = ref(parseInt(userSettings.value.current_semester) || 1);
+watch(() => userSettings.value.current_semester, (newVal) => {
+    if (newVal) {
+        localCurrentSemester.value = parseInt(newVal) || 1;
+        selectedSemester.value = parseInt(newVal) || 1;
+    }
+});
+
 const maxSemesterAdded = ref(0);
 const availableSemesters = computed(() => {
     const semsFromRecords = localAcademicStats.value.semesters.map(s => s.semester);
-    const semsFromSetup = parseInt(userSettings.value.current_semester) || 1;
+    const semsFromSetup = localCurrentSemester.value;
     let maxSem = Math.max(semsFromSetup, maxSemesterAdded.value, ...semsFromRecords, 1);
     
     let sems = [];
@@ -125,27 +135,44 @@ const deleteSpecificSemester = (sem) => {
             const originalRecords = JSON.parse(JSON.stringify(localAcademicRecords.value));
             const originalStats = JSON.parse(JSON.stringify(localAcademicStats.value));
             const originalSelectedSemester = selectedSemester.value;
+            const originalLocalCurrentSemester = localCurrentSemester.value;
+            const originalMaxSemesterAdded = maxSemesterAdded.value;
 
+            // 1. Update local states immediately
             localAcademicRecords.value = localAcademicRecords.value.filter(r => r.semester !== sem);
             localAcademicStats.value.semesters = localAcademicStats.value.semesters.filter(s => s.semester !== sem);
             
+            if (localCurrentSemester.value >= sem) {
+                const remaining = localAcademicStats.value.semesters.map(s => s.semester);
+                localCurrentSemester.value = remaining.length > 0 ? Math.max(...remaining) : Math.max(sem - 1, 1);
+            }
+
+            if (maxSemesterAdded.value >= sem) {
+                maxSemesterAdded.value = Math.max(localCurrentSemester.value, 1);
+            }
+
             if (selectedSemester.value === sem) {
-                selectedSemester.value = 1;
+                selectedSemester.value = Math.max(localCurrentSemester.value, 1);
             }
 
             fireToast('success', 'Semester berhasil dihapus!');
 
-            router.delete(route('study.academic.semester.destroy', sem), {
-                preserveScroll: true,
-                preserveState: true,
-                progress: false,
-                onError: (err) => {
+            // 2. Perform silent backend DELETE request using axios
+            axios.delete(route('study.academic.semester.destroy', sem))
+                .then(() => {
+                    // Silent success - state is already beautifully updated in Vue reactively
+                })
+                .catch((err) => {
+                    // Rollback on failure
                     localAcademicRecords.value = originalRecords;
                     localAcademicStats.value = originalStats;
                     selectedSemester.value = originalSelectedSemester;
-                    fireToast('error', Object.values(err)[0] || 'Gagal menghapus semester.');
-                }
-            });
+                    localCurrentSemester.value = originalLocalCurrentSemester;
+                    maxSemesterAdded.value = originalMaxSemesterAdded;
+                    
+                    const errorMsg = err.response?.data?.message || 'Gagal menghapus semester.';
+                    fireToast('error', errorMsg);
+                });
         }
     });
 };

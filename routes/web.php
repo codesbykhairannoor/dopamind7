@@ -1003,6 +1003,7 @@ Route::middleware(["auth", "verified", "onboarding", "throttle:global"])->group(
             Route::post('/academic/archives', [StudyController::class, 'storeAcademicArchive'])->name('academic.archive.store');
             Route::put('/academic/archives/{id}', [StudyController::class, 'updateAcademicArchive'])->name('academic.archive.update');
             Route::delete('/academic/archives/{id}', [StudyController::class, 'destroyAcademicArchive'])->name('academic.archive.destroy');
+            Route::get('/academic/archives/{id}/download', [StudyController::class, 'downloadAcademicArchive'])->name('academic.archive.download');
         });
 
     // --- ADMIN CENTRAL (Inertia Custom) ---

@@ -272,20 +272,9 @@ const showMaterials = computed(() => {
                 </div>
 
                 <!-- 2. DASHBOARD ROW (Radar + Insights) -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <!-- RADAR CHART -->
-                    <div v-if="showRadar" class="lg:col-span-5 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-6 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-lg flex flex-col items-center justify-center">
-                        <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-2 w-full justify-center text-center">
-                            <BarChart3 class="h-5 w-5 text-indigo-500" />
-                            {{ $t('portfolio_verified_competencies', 'Verified Competencies Radar') }}
-                        </h3>
-                        <div class="h-[360px] w-full relative flex items-center justify-center">
-                            <Radar :data="chartData" :options="chartOptions" />
-                        </div>
-                    </div>
-
+                <div class="flex flex-col gap-8">
                     <!-- INSIGHTS & SKILLS -->
-                    <div :class="showRadar ? 'lg:col-span-7' : 'lg:col-span-12'" class="flex flex-col gap-6">
+                    <div class="flex flex-col md:flex-row gap-6">
                         <!-- AI Verdict -->
                         <div v-if="props.material.metadata?.verdict" class="flex-1 bg-gradient-to-br from-indigo-50/80 to-purple-50/50 dark:from-slate-900/80 dark:to-indigo-950/30 backdrop-blur-md p-8 rounded-[2rem] border border-indigo-100/80 dark:border-indigo-900/40 shadow-lg flex flex-col justify-center">
                             <h3 class="text-sm font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-4 flex items-center gap-2">
@@ -298,7 +287,7 @@ const showMaterials = computed(() => {
                         </div>
 
                         <!-- Verified Competencies -->
-                        <div v-if="props.material.metadata?.competencies" class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-8 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-lg">
+                        <div v-if="props.material.metadata?.competencies" class="md:w-1/3 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-8 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-lg">
                             <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 flex items-center gap-2">
                                 <ShieldAlert class="h-5 w-5" />
                                 Verified Skill Tags
@@ -313,6 +302,17 @@ const showMaterials = computed(() => {
                                     <span class="ml-1 text-indigo-500">{{ score }}%</span>
                                 </span>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- RADAR CHART -->
+                    <div v-if="showRadar" class="w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-8 rounded-[2rem] border border-slate-200/50 dark:border-slate-800/80 shadow-lg flex flex-col items-center justify-center mt-4">
+                        <h3 class="text-sm font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-6 flex items-center gap-2 w-full justify-center text-center">
+                            <BarChart3 class="h-5 w-5 text-indigo-500" />
+                            {{ $t('portfolio_verified_competencies', 'Verified Competencies Radar') }}
+                        </h3>
+                        <div class="h-[400px] w-full max-w-3xl mx-auto relative flex items-center justify-center">
+                            <Radar :data="chartData" :options="chartOptions" />
                         </div>
                     </div>
                 </div>

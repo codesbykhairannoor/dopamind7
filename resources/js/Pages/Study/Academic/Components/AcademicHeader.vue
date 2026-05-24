@@ -47,7 +47,7 @@ const openAddCourse = () => {
                 <div class="flex min-w-0 flex-wrap items-center w-full gap-3 md:w-auto md:flex-nowrap md:justify-end">
                     <!-- Dropdown Semester Dinamis -->
                     <div class="relative min-w-0 flex-1 md:flex-none md:max-w-xs z-50">
-                        <Menu as="div" class="relative inline-block text-left w-full">
+                        <Menu as="div" class="relative inline-block text-left w-full" v-slot="{ close }">
                             <MenuButton class="w-full min-w-0 flex items-center justify-between gap-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 pl-4 pr-3 py-2.5 rounded-xl font-bold text-slate-700 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500 hover:shadow-sm transition-all active:scale-95 outline-none">
                                 <div class="flex min-w-0 flex-1 flex-col items-start leading-none text-left">
                                     <span class="text-[9px] text-slate-400 dark:text-slate-500 mb-0.5">{{ terms.semester }}</span>
@@ -62,10 +62,18 @@ const openAddCourse = () => {
                                 <MenuItems class="absolute right-0 mt-2 w-56 origin-top-right bg-white dark:bg-slate-900 rounded-3xl shadow-2xl dark:shadow-none border border-slate-100 dark:border-slate-800 p-2 z-[60] max-h-60 overflow-y-auto custom-scrollbar">
                                     <MenuItem v-for="sem in availableSemesters" :key="sem" v-slot="{ active }">
                                         <div class="relative group flex items-center w-full mb-1">
-                                            <button @click="selectSemester(sem)" :class="[active ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none' : 'hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400', 'flex-1 text-left px-4 py-3 rounded-2xl text-[11px] font-black transition-all']">
+                                            <button 
+                                                type="button"
+                                                @click="selectSemester(sem)" 
+                                                :class="[active ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 dark:shadow-none' : 'hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400', 'flex-1 text-left px-4 py-3 rounded-2xl text-[11px] font-black transition-all']"
+                                            >
                                                 {{ terms.semester }} {{ sem }}
                                             </button>
-                                            <button @click.stop="deleteSpecificSemester(sem)" class="absolute right-2 opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-500 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-all z-20">
+                                            <button 
+                                                type="button"
+                                                @click.stop.prevent="deleteSpecificSemester(sem); close()" 
+                                                class="absolute right-2 opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-500 p-1.5 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-all z-20"
+                                            >
                                                 <Trash2 class="h-3.5 w-3.5" />
                                             </button>
                                         </div>

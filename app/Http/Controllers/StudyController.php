@@ -202,11 +202,34 @@ class StudyController extends Controller
         return redirect()->back();
     }
 
-    public function destroySemester($semester)
+    public function destroySemester(Request $request, $semester)
     {
-        \App\Models\AcademicRecord::where('user_id', Auth::id())
+        $user = Auth::user();
+        
+        \App\Models\AcademicRecord::where('user_id', $user->id)
             ->where('semester', $semester)
             ->delete();
+
+        // Check if the deleted semester matches the current_semester in user settings
+        $settings = $user->settings ?? [];
+        if (isset($settings['current_semester']) && intval($settings['current_semester']) == intval($semester)) {
+            // Find highest remaining semester from academic records
+            $maxRemaining = \App\Models\AcademicRecord::where('user_id', $user->id)
+                ->where('semester', '!=', $semester)
+                ->max('semester');
+            
+            $newSem = $maxRemaining ? intval($maxRemaining) : max(intval($semester) - 1, 1);
+            $settings['current_semester'] = $newSem;
+            $user->settings = $settings;
+            $user->save();
+        }
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Semester berhasil dihapus!'
+            ]);
+        }
 
         return redirect()->back();
     }
@@ -300,6 +323,32 @@ class StudyController extends Controller
         $archive->delete();
         return redirect()->back();
     }
+
+    public function downloadAcademicArchive($id)
+    {
+        $archive = \App\Models\AcademicArchive::findOrFail($id);
+        
+        // Ensure user owns the parent record
+        $record = \App\Models\AcademicRecord::where('user_id', Auth::id())->findOrFail($archive->academic_record_id);
+
+        if (!$archive->file_path) {
+            abort(404, 'File not found');
+        }
+
+        // If it starts with http, it is likely already an external URL (e.g. Cloudinary direct link or S3 link)
+        if (str_starts_with($archive->file_path, 'http://') || str_starts_with($archive->file_path, 'https://')) {
+            return redirect($archive->file_path);
+        }
+
+        $disk = config('filesystems.default') === 'local' ? 'public' : config('filesystems.default');
+
+        if (!\Illuminate\Support\Facades\Storage::disk($disk)->exists($archive->file_path)) {
+            abort(404, 'File not found in storage');
+        }
+
+        return \Illuminate\Support\Facades\Storage::disk($disk)->download($archive->file_path, $archive->file_name ?? basename($archive->file_path));
+    }
+
 
     public function store(Request $request)
     {
@@ -519,7 +568,10 @@ class StudyController extends Controller
         $competency = StudyCompetency::firstOrNew(['user_id' => $userId]);
         $competency->competencies = array_slice($aggCompetencies, 0, 6, true);
         $competency->archetypes = array_slice($aggArchetypes, 0, 3, true);
-        $competency->verdict = "Profil dinamik telah dikalkulasi. Bidang studi utama: {$primaryField}. Diekstrak secara otomatis dari {$count} dokumen tugas/coursework.";
+        $competency->verdict = json_encode([
+            'field' => $primaryField,
+            'count' => $count
+        ]);
         $competency->save();
     }
 }

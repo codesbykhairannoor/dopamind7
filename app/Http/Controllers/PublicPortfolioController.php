@@ -107,7 +107,6 @@ class PublicPortfolioController extends Controller
         $user = User::where('username', strtolower($username))->firstOrFail();
         
         $materials = StudyMaterial::where('user_id', $user->id)
-            ->where('status', 'completed')
             ->get();
             
         $found = false;

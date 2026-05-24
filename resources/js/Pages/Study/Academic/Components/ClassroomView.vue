@@ -103,8 +103,8 @@ const getTypeColor = (type) => {
                             </button>
                         </div>
                         <div class="mt-auto">
-                            <a v-if="arc.file_path && arc.file_path !== 'pending'" :href="arc.file_path.startsWith('http') ? arc.file_path : '/storage/' + arc.file_path" target="_blank" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-xl transition-colors">
-                                <FileText class="h-4 w-4" /> {{ $t('study_open_pdf') }}
+                            <a v-if="arc.file_path && arc.file_path !== 'pending'" :href="route('study.academic.archive.download', arc.id)" target="_blank" download class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-xl transition-colors">
+                                <FileText class="h-4 w-4" /> {{ $t('study_open_pdf', 'Unduh / Lihat PDF') }}
                             </a>
                             <span v-else-if="arc.file_path === 'pending'" class="w-full flex justify-center items-center gap-2 px-3 py-2.5 text-xs font-bold text-slate-400 bg-slate-100 rounded-xl">
                                 Mengunggah...

@@ -45,6 +45,8 @@ const artifactFileInput = ref(null);
 
 const isSubmittingAll = ref(false);
 
+const emit = defineEmits(['close']);
+
 // ─── Computed ─────────────────────────────────────────────────────────────────
 const wordCount = (text) => {
     if (!text) return 0;
@@ -170,6 +172,7 @@ const submitAll = () => {
             sharedMeta.week = '';
             sharedMeta.grade = '';
             isSubmittingAll.value = false;
+            emit('close');
         },
         onError: (errors) => {
             isSubmittingAll.value = false;
@@ -177,6 +180,7 @@ const submitAll = () => {
         }
     });
 };
+
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const formatBytes = (bytes) => {
@@ -357,7 +361,12 @@ const globalHasPending = computed(() => {
 
                 <!-- Link Mode -->
                 <div>
-                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_link_label', 'Link') }}</label>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_link_label', 'Link') }}</label>
+                        <button v-if="contextPanel.embed_url" @click="contextPanel.embed_url = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
+                            <XCircle class="h-3 w-3" /> Hapus
+                        </button>
+                    </div>
                     <div class="relative">
                         <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
                         <textarea v-model="contextPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
@@ -369,9 +378,14 @@ const globalHasPending = computed(() => {
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
-                        <span class="text-[10px] font-bold" :class="wordCount(contextPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
-                            {{ wordCount(contextPanel.rich_text) }}/{{ maxWords }}
-                        </span>
+                        <div class="flex items-center gap-3">
+                            <button v-if="contextPanel.rich_text" @click="contextPanel.rich_text = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
+                                <XCircle class="h-3 w-3" /> Hapus
+                            </button>
+                            <span class="text-[10px] font-bold" :class="wordCount(contextPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
+                                {{ wordCount(contextPanel.rich_text) }}/{{ maxWords }}
+                            </span>
+                        </div>
                     </div>
                     <textarea v-model="contextPanel.rich_text" rows="4"
                         :placeholder="$t('study_context_text_placeholder')"
@@ -440,7 +454,12 @@ const globalHasPending = computed(() => {
 
                 <!-- Link Mode -->
                 <div>
-                    <label class="block text-[11px] font-black uppercase tracking-widest text-slate-400 mb-2">{{ $t('study_link_label', 'Link') }}</label>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_link_label', 'Link') }}</label>
+                        <button v-if="artifactPanel.embed_url" @click="artifactPanel.embed_url = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
+                            <XCircle class="h-3 w-3" /> Hapus
+                        </button>
+                    </div>
                     <div class="relative">
                         <span class="absolute left-4 top-4 text-slate-400"><Link2 class="h-4 w-4" /></span>
                         <textarea v-model="artifactPanel.embed_url" rows="2" :placeholder="$t('study_link_placeholder')"
@@ -452,9 +471,14 @@ const globalHasPending = computed(() => {
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label class="text-[11px] font-black uppercase tracking-widest text-slate-400">{{ $t('study_notes_label', 'Notes / Text') }}</label>
-                        <span class="text-[10px] font-bold" :class="wordCount(artifactPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
-                            {{ wordCount(artifactPanel.rich_text) }}/{{ maxWords }}
-                        </span>
+                        <div class="flex items-center gap-3">
+                            <button v-if="artifactPanel.rich_text" @click="artifactPanel.rich_text = ''" type="button" class="text-[10px] font-bold text-red-500 hover:text-red-600 transition flex items-center gap-1">
+                                <XCircle class="h-3 w-3" /> Hapus
+                            </button>
+                            <span class="text-[10px] font-bold" :class="wordCount(artifactPanel.rich_text) > maxWords ? 'text-rose-500' : 'text-slate-400'">
+                                {{ wordCount(artifactPanel.rich_text) }}/{{ maxWords }}
+                            </span>
+                        </div>
                     </div>
                     <textarea v-model="artifactPanel.rich_text" rows="4"
                         :placeholder="$t('study_artifact_text_placeholder')"
